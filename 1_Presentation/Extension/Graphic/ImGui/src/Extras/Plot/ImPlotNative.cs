@@ -157,7 +157,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="size">The size</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("cimgui", EntryPoint = "ImPlot_BeginPlot", CallingConvention = CallingConvention.Cdecl)]
         public static extern byte ImPlot_BeginPlot(byte[] titleId, Vector2 size, ImPlotFlags flags);
         
         /// <summary>
@@ -678,7 +678,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="shift">The shift</param>
         /// <param name="flags">The flags</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImPlot_PlotBarGroups_S64Ptr(byte[][] labelIds, ref short values, int itemCount, int groupCount, double groupSize, double shift, ImPlotBarGroupsFlags flags);
+        public static extern void ImPlot_PlotBarGroups_S64Ptr(byte[][] labelIds, ref long values, int itemCount, int groupCount, double groupSize, double shift, ImPlotBarGroupsFlags flags);
         
         /// <summary>
         ///     Ims the plot plot bar groups u 64 ptr using the specified label ids
@@ -704,8 +704,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImPlot_PlotBars_FloatPtrInt(byte[] labelId, ref float values, int count, double barSize, double shift, ImPlotBarsFlags flags, int offset, int stride);
+        [DllImport("cimgui", EntryPoint = "ImPlot_PlotBars_FloatPtrInt", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void ImPlot_PlotBars_FloatPtrInt(byte[] labelId, float[] values, int count, double barSize, double shift, ImPlotBarsFlags flags, int offset, int stride);
         
         /// <summary>
         ///     Ims the plot plot bars double ptr int using the specified label id
@@ -732,7 +732,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("cimgui", EntryPoint = "ImPlot_PlotBars_S8PtrInt", CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImPlot_PlotBars_S8PtrInt(byte[] labelId, ref sbyte values, int count, double barSize, double shift, ImPlotBarsFlags flags, int offset, int stride);
         
         /// <summary>
@@ -817,7 +817,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImPlot_PlotBars_S64PtrInt(byte[] labelId, ref short values, int count, double barSize, double shift, ImPlotBarsFlags flags, int offset, int stride);
+        public static extern void ImPlot_PlotBars_S64PtrInt(byte[] labelId, ref long values, int count, double barSize, double shift, ImPlotBarsFlags flags, int offset, int stride);
         
         /// <summary>
         ///     Ims the plot plot bars u 64 ptr int using the specified label id
@@ -901,7 +901,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImPlot_PlotBars_S16PtrS16Ptr(byte[] labelId, short xs, short ys, int count, double barSize, ImPlotBarsFlags flags, int offset, int stride);
+        public static extern void ImPlot_PlotBars_S16PtrS16Ptr(byte[] labelId, ref short xs, ref short ys, int count, double barSize, ImPlotBarsFlags flags, int offset, int stride);
         
         /// <summary>
         ///     Ims the plot plot bars u 16 ptr u 16 ptr using the specified label id
@@ -929,7 +929,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImPlot_PlotBars_S32PtrS32Ptr(byte[] labelId, int xs, int ys, int count, double barSize, ImPlotBarsFlags flags, int offset, int stride);
+        public static extern void ImPlot_PlotBars_S32PtrS32Ptr(byte[] labelId, ref int xs, ref int ys, int count, double barSize, ImPlotBarsFlags flags, int offset, int stride);
         
         /// <summary>
         ///     Ims the plot plot bars u 32 ptr u 32 ptr using the specified label id
@@ -943,7 +943,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImPlot_PlotBars_U32PtrU32Ptr(byte[] labelId, uint xs, uint ys, int count, double barSize, ImPlotBarsFlags flags, int offset, int stride);
+        public static extern void ImPlot_PlotBars_U32PtrU32Ptr(byte[] labelId, ref uint xs, ref uint ys, int count, double barSize, ImPlotBarsFlags flags, int offset, int stride);
         
         /// <summary>
         ///     Ims the plot plot bars s 64 ptr s 64 ptr using the specified label id
@@ -1048,7 +1048,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImPlot_PlotDigital_S16Ptr(byte[] labelId, short xs, short ys, int count, ImPlotDigitalFlags flags, int offset, int stride);
+        public static extern void ImPlot_PlotDigital_S16Ptr(byte[] labelId, ref short xs, ref short ys, int count, ImPlotDigitalFlags flags, int offset, int stride);
         
         /// <summary>
         ///     Ims the plot plot digital u 16 ptr using the specified label id
@@ -1074,7 +1074,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImPlot_PlotDigital_S32Ptr(byte[] labelId, int xs, int ys, int count, ImPlotDigitalFlags flags, int offset, int stride);
+        public static extern void ImPlot_PlotDigital_S32Ptr(byte[] labelId, ref int xs, ref int ys, int count, ImPlotDigitalFlags flags, int offset, int stride);
         
         /// <summary>
         ///     Ims the plot plot digital u 32 ptr using the specified label id
@@ -1087,7 +1087,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImPlot_PlotDigital_U32Ptr(byte[] labelId, uint xs, uint ys, int count, ImPlotDigitalFlags flags, int offset, int stride);
+        public static extern void ImPlot_PlotDigital_U32Ptr(byte[] labelId, ref uint xs, ref uint ys, int count, ImPlotDigitalFlags flags, int offset, int stride);
         
         /// <summary>
         ///     Ims the plot plot digital s 64 ptr using the specified label id
@@ -1566,7 +1566,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="boundsMax">The bounds max</param>
         /// <param name="flags">The flags</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImPlot_PlotHeatmap_S64Ptr(byte[] labelId, ref short values, int rows, int cols, double scaleMin, double scaleMax, byte[] labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax, ImPlotHeatmapFlags flags);
+        public static extern void ImPlot_PlotHeatmap_S64Ptr(byte[] labelId, ref long values, int rows, int cols, double scaleMin, double scaleMax, byte[] labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax, ImPlotHeatmapFlags flags);
         
         /// <summary>
         ///     Ims the plot plot heatmap u 64 ptr using the specified label id
@@ -1797,7 +1797,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <returns>The double</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern double ImPlot_PlotHistogram2D_S16Ptr(byte[] labelId, short xs, short ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags);
+        public static extern double ImPlot_PlotHistogram2D_S16Ptr(byte[] labelId, ref short xs, ref short ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags);
         
         /// <summary>
         ///     Ims the plot plot histogram 2 d u 16 ptr using the specified label id
@@ -1827,7 +1827,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <returns>The double</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern double ImPlot_PlotHistogram2D_S32Ptr(byte[] labelId, int xs, int ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags);
+        public static extern double ImPlot_PlotHistogram2D_S32Ptr(byte[] labelId, ref int xs, ref int ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags);
         
         /// <summary>
         ///     Ims the plot plot histogram 2 d u 32 ptr using the specified label id
@@ -1842,7 +1842,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <returns>The double</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern double ImPlot_PlotHistogram2D_U32Ptr(byte[] labelId, uint xs, uint ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags);
+        public static extern double ImPlot_PlotHistogram2D_U32Ptr(byte[] labelId, ref uint xs, ref uint ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags);
         
         /// <summary>
         ///     Ims the plot plot histogram 2 d s 64 ptr using the specified label id
@@ -2019,8 +2019,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImPlot_PlotLine_FloatPtrInt(byte[] labelId, ref float values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride);
+        [DllImport("cimgui", EntryPoint = "ImPlot_PlotLine_FloatPtrInt",CallingConvention = CallingConvention.Cdecl)]
+        public static extern void ImPlot_PlotLine_FloatPtrInt(byte[] labelId, float[] values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride);
         
         /// <summary>
         ///     Ims the plot plot line double ptr int using the specified label id
@@ -2938,7 +2938,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImPlot_PlotShaded_S16PtrS16PtrInt(byte[] labelId, short xs, short ys, int count, double yref, ImPlotShadedFlags flags, int offset, int stride);
+        public static extern void ImPlot_PlotShaded_S16PtrS16PtrInt(byte[] labelId,ref short xs, ref short ys, int count, double yref, ImPlotShadedFlags flags, int offset, int stride);
         
         /// <summary>
         ///     Ims the plot plot shaded u 16 ptr u 16 ptr int using the specified label id
@@ -2966,7 +2966,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImPlot_PlotShaded_S32PtrS32PtrInt(byte[] labelId, int xs, int ys, int count, double yref, ImPlotShadedFlags flags, int offset, int stride);
+        public static extern void ImPlot_PlotShaded_S32PtrS32PtrInt(byte[] labelId, ref int xs, ref int ys, int count, double yref, ImPlotShadedFlags flags, int offset, int stride);
         
         /// <summary>
         ///     Ims the plot plot shaded u 32 ptr u 32 ptr int using the specified label id
@@ -2980,7 +2980,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImPlot_PlotShaded_U32PtrU32PtrInt(byte[] labelId, uint xs, uint ys, int count, double yref, ImPlotShadedFlags flags, int offset, int stride);
+        public static extern void ImPlot_PlotShaded_U32PtrU32PtrInt(byte[] labelId, ref uint xs, ref uint ys, int count, double yref, ImPlotShadedFlags flags, int offset, int stride);
         
         /// <summary>
         ///     Ims the plot plot shaded s 64 ptr s 64 ptr int using the specified label id
@@ -3022,7 +3022,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImPlot_PlotShaded_FloatPtrFloatPtrFloatPtr(byte[] labelId, ref float xs, ref float ys1, float ys2, int count, ImPlotShadedFlags flags, int offset, int stride);
+        public static extern void ImPlot_PlotShaded_FloatPtrFloatPtrFloatPtr(byte[] labelId, ref float xs, ref float ys1, ref float ys2, int count, ImPlotShadedFlags flags, int offset, int stride);
         
         /// <summary>
         ///     Ims the plot plot shaded double ptrdouble ptrdouble ptr using the specified label id
@@ -3050,7 +3050,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImPlot_PlotShaded_S8PtrS8PtrS8Ptr(byte[] labelId, ref sbyte xs, sbyte ys1, sbyte ys2, int count, ImPlotShadedFlags flags, int offset, int stride);
+        public static extern void ImPlot_PlotShaded_S8PtrS8PtrS8Ptr(byte[] labelId, ref sbyte xs, ref sbyte ys1, ref sbyte ys2, int count, ImPlotShadedFlags flags, int offset, int stride);
         
         /// <summary>
         ///     Ims the plot plot shaded u 8 ptr u 8 ptr u 8 ptr using the specified label id
@@ -3259,7 +3259,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImPlot_PlotStairs_S32PtrInt(byte[] labelId, int values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset, int stride);
+        public static extern void ImPlot_PlotStairs_S32PtrInt(byte[] labelId,ref  int values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset, int stride);
         
         /// <summary>
         ///     Ims the plot plot stairs u 32 ptr int using the specified label id
@@ -3287,7 +3287,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImPlot_PlotStairs_S64PtrInt(byte[] labelId, ref short values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset, int stride);
+        public static extern void ImPlot_PlotStairs_S64PtrInt(byte[] labelId, ref long values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset, int stride);
         
         /// <summary>
         ///     Ims the plot plot stairs u 64 ptr int using the specified label id
@@ -3577,7 +3577,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImPlot_PlotStems_S64PtrInt(byte[] labelId, ref short values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset, int stride);
+        public static extern void ImPlot_PlotStems_S64PtrInt(byte[] labelId, ref long values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset, int stride);
         
         /// <summary>
         ///     Ims the plot plot stems u 64 ptr int using the specified label id
@@ -3662,7 +3662,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImPlot_PlotStems_S16PtrS16Ptr(byte[] labelId, short xs, short ys, int count, double @ref, ImPlotStemsFlags flags, int offset, int stride);
+        public static extern void ImPlot_PlotStems_S16PtrS16Ptr(byte[] labelId, ref short xs, ref short ys, int count, double @ref, ImPlotStemsFlags flags, int offset, int stride);
         
         /// <summary>
         ///     Ims the plot plot stems u 16 ptr u 16 ptr using the specified label id

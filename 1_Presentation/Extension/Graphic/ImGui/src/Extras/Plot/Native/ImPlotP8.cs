@@ -35,7 +35,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
     /// <summary>
     /// The im plot class
     /// </summary>
-    public static unsafe partial class ImPlot
+    public static partial class ImPlot
     {
         
         /// <summary>
@@ -50,7 +50,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="offset">The offset</param>
         public static void PlotShaded(string labelId, ref sbyte xs, ref sbyte ys1, ref sbyte ys2, int count, ImPlotShadedFlags flags, int offset)
         {
-            ImPlotNative.ImPlot_PlotShaded_S8PtrS8PtrS8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ys1, ys2, count, flags, offset, sizeof(sbyte));
+            ImPlotNative.ImPlot_PlotShaded_S8PtrS8PtrS8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys1, ref ys2, count, flags, offset, sizeof(sbyte));
         }
         
         /// <summary>
@@ -66,7 +66,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="stride">The stride</param>
         public static void PlotShaded(string labelId, ref sbyte xs, ref sbyte ys1, ref sbyte ys2, int count, ImPlotShadedFlags flags, int offset, int stride)
         {
-            ImPlotNative.ImPlot_PlotShaded_S8PtrS8PtrS8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ys1, ys2, count, flags, offset, stride);
+            ImPlotNative.ImPlot_PlotShaded_S8PtrS8PtrS8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys1, ref ys2, count, flags, offset, stride);
         }
         
         /// <summary>

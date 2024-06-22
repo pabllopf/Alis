@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 using System.Text;
 using Alis.Core.Aspect.Math.Vector;
 
@@ -290,11 +291,11 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The bool</returns>
         public static bool BeginPlot(string titleId)
         {
-            byte ret = ImPlotNative.ImPlot_BeginPlot(Encoding.UTF8.GetBytes(titleId),  new Vector2(1, 1), ImPlotFlags.None);
+            byte ret = ImPlotNative.ImPlot_BeginPlot( Encoding.UTF8.GetBytes(titleId), new Vector2(-1, 0), 0);
             return ret != 0;
         }
         
-        /// <summary>
+       /// <summary>
         ///     Describes whether begin plot
         /// </summary>
         /// <param name="titleId">The title id</param>
@@ -302,7 +303,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The bool</returns>
         public static bool BeginPlot(string titleId, Vector2 size)
         {
-            byte ret = ImPlotNative.ImPlot_BeginPlot(Encoding.UTF8.GetBytes(titleId), size, ImPlotFlags.None);
+            byte ret = ImPlotNative.ImPlot_BeginPlot( Encoding.UTF8.GetBytes(titleId), size, 0);
             return ret != 0;
         }
         
@@ -313,9 +314,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="size">The size</param>
         /// <param name="flags">The flags</param>
         /// <returns>The bool</returns>
-        public static bool BeginPlot(string titleId, Vector2 size, ImPlotFlags flags)
+        public static  bool BeginPlot(string titleId, Vector2 size, ImPlotFlags flags)
         {
-            byte ret = ImPlotNative.ImPlot_BeginPlot(Encoding.UTF8.GetBytes(titleId), size, flags);
+           byte ret = ImPlotNative.ImPlot_BeginPlot(Encoding.UTF8.GetBytes(titleId), size, flags);
             return ret != 0;
         }
         

@@ -34,7 +34,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
     /// <summary>
     /// The im plot class
     /// </summary>
-    public static unsafe partial class ImPlot
+    public static partial class ImPlot
     {
         /// <summary>
         ///     Plots the shaded using the specified label id
@@ -45,44 +45,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         public static void PlotShaded(string labelId, ref sbyte xs, ref sbyte ys, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double yref = 0;
-            ImPlotShadedFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(sbyte);
-            fixed (sbyte* nativeXs = &xs)
-            {
-                fixed (sbyte* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotShaded_S8PtrS8PtrInt(nativeLabelId, nativeXs, nativeYs, count, yref, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+           ImPlotNative.ImPlot_PlotShaded_S8PtrS8PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, 0, sizeof(sbyte));
         }
         
         /// <summary>
@@ -95,43 +58,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="yref">The yref</param>
         public static void PlotShaded(string labelId, ref sbyte xs, ref sbyte ys, int count, double yref)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotShadedFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(sbyte);
-            fixed (sbyte* nativeXs = &xs)
-            {
-                fixed (sbyte* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotShaded_S8PtrS8PtrInt(nativeLabelId, nativeXs, nativeYs, count, yref, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+              ImPlotNative.ImPlot_PlotShaded_S8PtrS8PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, yref, 0, 0, sizeof(sbyte));
         }
         
         /// <summary>
@@ -145,42 +72,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotShaded(string labelId, ref sbyte xs, ref sbyte ys, int count, double yref, ImPlotShadedFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int offset = 0;
-            int stride = sizeof(sbyte);
-            fixed (sbyte* nativeXs = &xs)
-            {
-                fixed (sbyte* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotShaded_S8PtrS8PtrInt(nativeLabelId, nativeXs, nativeYs, count, yref, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+                ImPlotNative.ImPlot_PlotShaded_S8PtrS8PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, yref, flags, 0, sizeof(sbyte));
         }
         
         /// <summary>
@@ -195,41 +87,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="offset">The offset</param>
         public static void PlotShaded(string labelId, ref sbyte xs, ref sbyte ys, int count, double yref, ImPlotShadedFlags flags, int offset)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int stride = sizeof(sbyte);
-            fixed (sbyte* nativeXs = &xs)
-            {
-                fixed (sbyte* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotShaded_S8PtrS8PtrInt(nativeLabelId, nativeXs, nativeYs, count, yref, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+                ImPlotNative.ImPlot_PlotShaded_S8PtrS8PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, yref, flags, offset, sizeof(sbyte));
         }
         
         /// <summary>
@@ -245,40 +103,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="stride">The stride</param>
         public static void PlotShaded(string labelId, ref sbyte xs, ref sbyte ys, int count, double yref, ImPlotShadedFlags flags, int offset, int stride)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (sbyte* nativeXs = &xs)
-            {
-                fixed (sbyte* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotShaded_S8PtrS8PtrInt(nativeLabelId, nativeXs, nativeYs, count, yref, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+                ImPlotNative.ImPlot_PlotShaded_S8PtrS8PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, yref, flags, offset, stride);
         }
         
         /// <summary>
@@ -290,44 +115,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         public static void PlotShaded(string labelId, ref byte xs, ref byte ys, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double yref = 0;
-            ImPlotShadedFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(byte);
-            fixed (byte* nativeXs = &xs)
-            {
-                fixed (byte* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotShaded_U8PtrU8PtrInt(nativeLabelId, nativeXs, nativeYs, count, yref, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotShaded_U8PtrU8PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, 0, sizeof(byte));
         }
         
         /// <summary>
@@ -340,43 +128,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="yref">The yref</param>
         public static void PlotShaded(string labelId, ref byte xs, ref byte ys, int count, double yref)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotShadedFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(byte);
-            fixed (byte* nativeXs = &xs)
-            {
-                fixed (byte* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotShaded_U8PtrU8PtrInt(nativeLabelId, nativeXs, nativeYs, count, yref, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotShaded_U8PtrU8PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, yref, 0, 0, sizeof(byte));
         }
         
         /// <summary>
@@ -390,42 +142,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotShaded(string labelId, ref byte xs, ref byte ys, int count, double yref, ImPlotShadedFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int offset = 0;
-            int stride = sizeof(byte);
-            fixed (byte* nativeXs = &xs)
-            {
-                fixed (byte* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotShaded_U8PtrU8PtrInt(nativeLabelId, nativeXs, nativeYs, count, yref, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotShaded_U8PtrU8PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, yref, flags, 0, sizeof(byte));
         }
         
         /// <summary>
@@ -440,42 +157,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="offset">The offset</param>
         public static void PlotShaded(string labelId, ref byte xs, ref byte ys, int count, double yref, ImPlotShadedFlags flags, int offset)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int stride = sizeof(byte);
-            fixed (byte* nativeXs = &xs)
-            {
-                fixed (byte* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotShaded_U8PtrU8PtrInt(nativeLabelId, nativeXs, nativeYs, count, yref, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotShaded_U8PtrU8PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, yref, flags, offset, sizeof(byte));
         }
+        
         
         /// <summary>
         ///     Plots the shaded using the specified label id
@@ -490,40 +174,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="stride">The stride</param>
         public static void PlotShaded(string labelId, ref byte xs, ref byte ys, int count, double yref, ImPlotShadedFlags flags, int offset, int stride)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (byte* nativeXs = &xs)
-            {
-                fixed (byte* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotShaded_U8PtrU8PtrInt(nativeLabelId, nativeXs, nativeYs, count, yref, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotShaded_U8PtrU8PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, yref, flags, offset, stride);
         }
         
         /// <summary>
@@ -535,44 +186,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         public static void PlotShaded(string labelId, ref short xs, ref short ys, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double yref = 0;
-            ImPlotShadedFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(short);
-            fixed (short* nativeXs = &xs)
-            {
-                fixed (short* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotShaded_S16PtrS16PtrInt(nativeLabelId, nativeXs, nativeYs, count, yref, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotShaded_S16PtrS16PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, 0, sizeof(short));
         }
         
         /// <summary>
@@ -585,43 +199,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="yref">The yref</param>
         public static void PlotShaded(string labelId, ref short xs, ref short ys, int count, double yref)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotShadedFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(short);
-            fixed (short* nativeXs = &xs)
-            {
-                fixed (short* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotShaded_S16PtrS16PtrInt(nativeLabelId, nativeXs, nativeYs, count, yref, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotShaded_S16PtrS16PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, yref, 0, 0, sizeof(short));
         }
         
         /// <summary>
@@ -635,42 +213,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotShaded(string labelId, ref short xs, ref short ys, int count, double yref, ImPlotShadedFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int offset = 0;
-            int stride = sizeof(short);
-            fixed (short* nativeXs = &xs)
-            {
-                fixed (short* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotShaded_S16PtrS16PtrInt(nativeLabelId, nativeXs, nativeYs, count, yref, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotShaded_S16PtrS16PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, yref, flags, 0, sizeof(short));
         }
         
         /// <summary>
@@ -685,41 +228,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="offset">The offset</param>
         public static void PlotShaded(string labelId, ref short xs, ref short ys, int count, double yref, ImPlotShadedFlags flags, int offset)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int stride = sizeof(short);
-            fixed (short* nativeXs = &xs)
-            {
-                fixed (short* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotShaded_S16PtrS16PtrInt(nativeLabelId, nativeXs, nativeYs, count, yref, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotShaded_S16PtrS16PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, yref, flags, offset, sizeof(short));
         }
         
         /// <summary>
@@ -735,40 +244,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="stride">The stride</param>
         public static void PlotShaded(string labelId, ref short xs, ref short ys, int count, double yref, ImPlotShadedFlags flags, int offset, int stride)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (short* nativeXs = &xs)
-            {
-                fixed (short* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotShaded_S16PtrS16PtrInt(nativeLabelId, nativeXs, nativeYs, count, yref, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotShaded_S16PtrS16PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, yref, flags, offset, stride);
         }
         
         /// <summary>
@@ -780,44 +256,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         public static void PlotShaded(string labelId, ref ushort xs, ref ushort ys, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double yref = 0;
-            ImPlotShadedFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(ushort);
-            fixed (ushort* nativeXs = &xs)
-            {
-                fixed (ushort* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotShaded_U16PtrU16PtrInt(nativeLabelId, nativeXs, nativeYs, count, yref, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotShaded_U16PtrU16PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, 0, sizeof(ushort));
         }
         
         /// <summary>
@@ -830,43 +269,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="yref">The yref</param>
         public static void PlotShaded(string labelId, ref ushort xs, ref ushort ys, int count, double yref)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotShadedFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(ushort);
-            fixed (ushort* nativeXs = &xs)
-            {
-                fixed (ushort* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotShaded_U16PtrU16PtrInt(nativeLabelId, nativeXs, nativeYs, count, yref, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotShaded_U16PtrU16PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, yref, 0, 0, sizeof(ushort));
         }
         
         /// <summary>
@@ -880,44 +283,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotShaded(string labelId, ref ushort xs, ref ushort ys, int count, double yref, ImPlotShadedFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int offset = 0;
-            int stride = sizeof(ushort);
-            fixed (ushort* nativeXs = &xs)
-            {
-                fixed (ushort* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotShaded_U16PtrU16PtrInt(nativeLabelId, nativeXs, nativeYs, count, yref, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotShaded_U16PtrU16PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, yref, flags, 0, sizeof(ushort));
         }
-        
+
         /// <summary>
         ///     Plots the shaded using the specified label id
         /// </summary>
@@ -930,41 +298,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="offset">The offset</param>
         public static void PlotShaded(string labelId, ref ushort xs, ref ushort ys, int count, double yref, ImPlotShadedFlags flags, int offset)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int stride = sizeof(ushort);
-            fixed (ushort* nativeXs = &xs)
-            {
-                fixed (ushort* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotShaded_U16PtrU16PtrInt(nativeLabelId, nativeXs, nativeYs, count, yref, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotShaded_U16PtrU16PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, yref, flags, offset, sizeof(ushort));
         }
         
         /// <summary>
@@ -980,40 +314,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="stride">The stride</param>
         public static void PlotShaded(string labelId, ref ushort xs, ref ushort ys, int count, double yref, ImPlotShadedFlags flags, int offset, int stride)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (ushort* nativeXs = &xs)
-            {
-                fixed (ushort* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotShaded_U16PtrU16PtrInt(nativeLabelId, nativeXs, nativeYs, count, yref, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotShaded_U16PtrU16PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, yref, flags, offset, stride);
         }
         
         /// <summary>
@@ -1025,44 +326,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         public static void PlotShaded(string labelId, ref int xs, ref int ys, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double yref = 0;
-            ImPlotShadedFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(int);
-            fixed (int* nativeXs = &xs)
-            {
-                fixed (int* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotShaded_S32PtrS32PtrInt(nativeLabelId, nativeXs, nativeYs, count, yref, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotShaded_S32PtrS32PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, 0, sizeof(int));
         }
         
         /// <summary>
@@ -1075,43 +339,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="yref">The yref</param>
         public static void PlotShaded(string labelId, ref int xs, ref int ys, int count, double yref)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotShadedFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(int);
-            fixed (int* nativeXs = &xs)
-            {
-                fixed (int* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotShaded_S32PtrS32PtrInt(nativeLabelId, nativeXs, nativeYs, count, yref, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotShaded_S32PtrS32PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, yref, 0, 0, sizeof(int));
         }
         
         /// <summary>
@@ -1125,42 +353,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotShaded(string labelId, ref int xs, ref int ys, int count, double yref, ImPlotShadedFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int offset = 0;
-            int stride = sizeof(int);
-            fixed (int* nativeXs = &xs)
-            {
-                fixed (int* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotShaded_S32PtrS32PtrInt(nativeLabelId, nativeXs, nativeYs, count, yref, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotShaded_S32PtrS32PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, yref, flags, 0, sizeof(int));
         }
         
         /// <summary>
@@ -1175,41 +368,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="offset">The offset</param>
         public static void PlotShaded(string labelId, ref int xs, ref int ys, int count, double yref, ImPlotShadedFlags flags, int offset)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int stride = sizeof(int);
-            fixed (int* nativeXs = &xs)
-            {
-                fixed (int* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotShaded_S32PtrS32PtrInt(nativeLabelId, nativeXs, nativeYs, count, yref, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotShaded_S32PtrS32PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, yref, flags, offset, sizeof(int));
         }
         
         /// <summary>
@@ -1225,40 +384,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="stride">The stride</param>
         public static void PlotShaded(string labelId, ref int xs, ref int ys, int count, double yref, ImPlotShadedFlags flags, int offset, int stride)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (int* nativeXs = &xs)
-            {
-                fixed (int* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotShaded_S32PtrS32PtrInt(nativeLabelId, nativeXs, nativeYs, count, yref, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotShaded_S32PtrS32PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, yref, flags, offset, stride);
         }
         
         /// <summary>
@@ -1270,44 +396,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         public static void PlotShaded(string labelId, ref uint xs, ref uint ys, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double yref = 0;
-            ImPlotShadedFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(uint);
-            fixed (uint* nativeXs = &xs)
-            {
-                fixed (uint* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotShaded_U32PtrU32PtrInt(nativeLabelId, nativeXs, nativeYs, count, yref, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotShaded_U32PtrU32PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, 0, sizeof(uint));
         }
         
         /// <summary>
@@ -1320,43 +409,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="yref">The yref</param>
         public static void PlotShaded(string labelId, ref uint xs, ref uint ys, int count, double yref)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotShadedFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(uint);
-            fixed (uint* nativeXs = &xs)
-            {
-                fixed (uint* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotShaded_U32PtrU32PtrInt(nativeLabelId, nativeXs, nativeYs, count, yref, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotShaded_U32PtrU32PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, yref, 0, 0, sizeof(uint));
         }
         
         /// <summary>
@@ -1370,42 +423,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotShaded(string labelId, ref uint xs, ref uint ys, int count, double yref, ImPlotShadedFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int offset = 0;
-            int stride = sizeof(uint);
-            fixed (uint* nativeXs = &xs)
-            {
-                fixed (uint* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotShaded_U32PtrU32PtrInt(nativeLabelId, nativeXs, nativeYs, count, yref, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotShaded_U32PtrU32PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, yref, flags, 0, sizeof(uint));
         }
         
         /// <summary>
@@ -1420,41 +438,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="offset">The offset</param>
         public static void PlotShaded(string labelId, ref uint xs, ref uint ys, int count, double yref, ImPlotShadedFlags flags, int offset)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int stride = sizeof(uint);
-            fixed (uint* nativeXs = &xs)
-            {
-                fixed (uint* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotShaded_U32PtrU32PtrInt(nativeLabelId, nativeXs, nativeYs, count, yref, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotShaded_U32PtrU32PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, yref, flags, offset, sizeof(uint));
         }
         
         /// <summary>
@@ -1470,40 +454,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="stride">The stride</param>
         public static void PlotShaded(string labelId, ref uint xs, ref uint ys, int count, double yref, ImPlotShadedFlags flags, int offset, int stride)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (uint* nativeXs = &xs)
-            {
-                fixed (uint* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotShaded_U32PtrU32PtrInt(nativeLabelId, nativeXs, nativeYs, count, yref, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotShaded_U32PtrU32PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, yref, flags, offset, stride);
         }
         
         /// <summary>
@@ -1515,44 +466,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         public static void PlotShaded(string labelId, ref long xs, ref long ys, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double yref = 0;
-            ImPlotShadedFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(long);
-            fixed (long* nativeXs = &xs)
-            {
-                fixed (long* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotShaded_S64PtrS64PtrInt(nativeLabelId, nativeXs, nativeYs, count, yref, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotShaded_S64PtrS64PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, 0, sizeof(long));
         }
         
         /// <summary>
@@ -1565,43 +479,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="yref">The yref</param>
         public static void PlotShaded(string labelId, ref long xs, ref long ys, int count, double yref)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotShadedFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(long);
-            fixed (long* nativeXs = &xs)
-            {
-                fixed (long* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotShaded_S64PtrS64PtrInt(nativeLabelId, nativeXs, nativeYs, count, yref, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotShaded_S64PtrS64PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, yref, 0, 0, sizeof(long));
         }
         
         /// <summary>
@@ -1615,42 +493,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotShaded(string labelId, ref long xs, ref long ys, int count, double yref, ImPlotShadedFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int offset = 0;
-            int stride = sizeof(long);
-            fixed (long* nativeXs = &xs)
-            {
-                fixed (long* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotShaded_S64PtrS64PtrInt(nativeLabelId, nativeXs, nativeYs, count, yref, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotShaded_S64PtrS64PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, yref, flags, 0, sizeof(long));
         }
         
         /// <summary>
@@ -1665,41 +508,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="offset">The offset</param>
         public static void PlotShaded(string labelId, ref long xs, ref long ys, int count, double yref, ImPlotShadedFlags flags, int offset)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int stride = sizeof(long);
-            fixed (long* nativeXs = &xs)
-            {
-                fixed (long* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotShaded_S64PtrS64PtrInt(nativeLabelId, nativeXs, nativeYs, count, yref, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotShaded_S64PtrS64PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, yref, flags, offset, sizeof(long));
         }
         
         /// <summary>
@@ -1715,40 +524,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="stride">The stride</param>
         public static void PlotShaded(string labelId, ref long xs, ref long ys, int count, double yref, ImPlotShadedFlags flags, int offset, int stride)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (long* nativeXs = &xs)
-            {
-                fixed (long* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotShaded_S64PtrS64PtrInt(nativeLabelId, nativeXs, nativeYs, count, yref, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotShaded_S64PtrS64PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, yref, flags, offset, stride);
         }
         
         /// <summary>
@@ -1760,44 +536,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         public static void PlotShaded(string labelId, ref ulong xs, ref ulong ys, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double yref = 0;
-            ImPlotShadedFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(ulong);
-            fixed (ulong* nativeXs = &xs)
-            {
-                fixed (ulong* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotShaded_U64PtrU64PtrInt(nativeLabelId, nativeXs, nativeYs, count, yref, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotShaded_U64PtrU64PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, 0, sizeof(ulong));
         }
         
         /// <summary>
@@ -1810,44 +549,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="yref">The yref</param>
         public static void PlotShaded(string labelId, ref ulong xs, ref ulong ys, int count, double yref)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotShadedFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(ulong);
-            fixed (ulong* nativeXs = &xs)
-            {
-                fixed (ulong* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotShaded_U64PtrU64PtrInt(nativeLabelId, nativeXs, nativeYs, count, yref, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotShaded_U64PtrU64PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, yref, 0, 0, sizeof(ulong));
         }
+        
         
         /// <summary>
         ///     Plots the shaded using the specified label id
@@ -1860,42 +564,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotShaded(string labelId, ref ulong xs, ref ulong ys, int count, double yref, ImPlotShadedFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int offset = 0;
-            int stride = sizeof(ulong);
-            fixed (ulong* nativeXs = &xs)
-            {
-                fixed (ulong* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotShaded_U64PtrU64PtrInt(nativeLabelId, nativeXs, nativeYs, count, yref, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotShaded_U64PtrU64PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, yref, flags, 0, sizeof(ulong));
         }
         
         /// <summary>
@@ -1910,41 +579,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="offset">The offset</param>
         public static void PlotShaded(string labelId, ref ulong xs, ref ulong ys, int count, double yref, ImPlotShadedFlags flags, int offset)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int stride = sizeof(ulong);
-            fixed (ulong* nativeXs = &xs)
-            {
-                fixed (ulong* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotShaded_U64PtrU64PtrInt(nativeLabelId, nativeXs, nativeYs, count, yref, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotShaded_U64PtrU64PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, yref, flags, offset, sizeof(ulong));
         }
         
         /// <summary>
@@ -1960,40 +595,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="stride">The stride</param>
         public static void PlotShaded(string labelId, ref ulong xs, ref ulong ys, int count, double yref, ImPlotShadedFlags flags, int offset, int stride)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (ulong* nativeXs = &xs)
-            {
-                fixed (ulong* nativeYs = &ys)
-                {
-                    ImPlotNative.ImPlot_PlotShaded_U64PtrU64PtrInt(nativeLabelId, nativeXs, nativeYs, count, yref, flags, offset, stride);
-                    if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                    {
-                        Util.Free(nativeLabelId);
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotShaded_U64PtrU64PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, yref, flags, offset, stride);
         }
         
         /// <summary>
@@ -2006,46 +608,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         public static void PlotShaded(string labelId, ref float xs, ref float ys1, ref float ys2, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotShadedFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(float);
-            fixed (float* nativeXs = &xs)
-            {
-                fixed (float* nativeYs1 = &ys1)
-                {
-                    fixed (float* nativeYs2 = &ys2)
-                    {
-                        ImPlotNative.ImPlot_PlotShaded_FloatPtrFloatPtrFloatPtr(nativeLabelId, nativeXs, nativeYs1, nativeYs2, count, flags, offset, stride);
-                        if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                        {
-                            Util.Free(nativeLabelId);
-                        }
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotShaded_FloatPtrFloatPtrFloatPtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys1, ref ys2, count, 0, 0, 0);
         }
         
         /// <summary>
@@ -2059,45 +622,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotShaded(string labelId, ref float xs, ref float ys1, ref float ys2, int count, ImPlotShadedFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int offset = 0;
-            int stride = sizeof(float);
-            fixed (float* nativeXs = &xs)
-            {
-                fixed (float* nativeYs1 = &ys1)
-                {
-                    fixed (float* nativeYs2 = &ys2)
-                    {
-                        ImPlotNative.ImPlot_PlotShaded_FloatPtrFloatPtrFloatPtr(nativeLabelId, nativeXs, nativeYs1, nativeYs2, count, flags, offset, stride);
-                        if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                        {
-                            Util.Free(nativeLabelId);
-                        }
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotShaded_FloatPtrFloatPtrFloatPtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys1, ref ys2, count, flags, 0, 0);
         }
         
         /// <summary>
@@ -2112,44 +637,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="offset">The offset</param>
         public static void PlotShaded(string labelId, ref float xs, ref float ys1, ref float ys2, int count, ImPlotShadedFlags flags, int offset)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int stride = sizeof(float);
-            fixed (float* nativeXs = &xs)
-            {
-                fixed (float* nativeYs1 = &ys1)
-                {
-                    fixed (float* nativeYs2 = &ys2)
-                    {
-                        ImPlotNative.ImPlot_PlotShaded_FloatPtrFloatPtrFloatPtr(nativeLabelId, nativeXs, nativeYs1, nativeYs2, count, flags, offset, stride);
-                        if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                        {
-                            Util.Free(nativeLabelId);
-                        }
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotShaded_FloatPtrFloatPtrFloatPtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys1, ref ys2, count, flags, offset, 0);
         }
         
         /// <summary>
@@ -2165,43 +653,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="stride">The stride</param>
         public static void PlotShaded(string labelId, ref float xs, ref float ys1, ref float ys2, int count, ImPlotShadedFlags flags, int offset, int stride)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (float* nativeXs = &xs)
-            {
-                fixed (float* nativeYs1 = &ys1)
-                {
-                    fixed (float* nativeYs2 = &ys2)
-                    {
-                        ImPlotNative.ImPlot_PlotShaded_FloatPtrFloatPtrFloatPtr(nativeLabelId, nativeXs, nativeYs1, nativeYs2, count, flags, offset, stride);
-                        if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                        {
-                            Util.Free(nativeLabelId);
-                        }
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotShaded_FloatPtrFloatPtrFloatPtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys1, ref ys2, count, flags, offset, stride);
         }
         
         /// <summary>
@@ -2214,46 +666,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         public static void PlotShaded(string labelId, ref double xs, ref double ys1, ref double ys2, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotShadedFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(double);
-            fixed (double* nativeXs = &xs)
-            {
-                fixed (double* nativeYs1 = &ys1)
-                {
-                    fixed (double* nativeYs2 = &ys2)
-                    {
-                        ImPlotNative.ImPlot_PlotShaded_doublePtrdoublePtrdoublePtr(nativeLabelId, nativeXs, nativeYs1, nativeYs2, count, flags, offset, stride);
-                        if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                        {
-                            Util.Free(nativeLabelId);
-                        }
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotShaded_doublePtrdoublePtrdoublePtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys1, ref ys2, count, 0, 0, 0);
         }
         
         /// <summary>
@@ -2267,45 +680,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotShaded(string labelId, ref double xs, ref double ys1, ref double ys2, int count, ImPlotShadedFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int offset = 0;
-            int stride = sizeof(double);
-            fixed (double* nativeXs = &xs)
-            {
-                fixed (double* nativeYs1 = &ys1)
-                {
-                    fixed (double* nativeYs2 = &ys2)
-                    {
-                        ImPlotNative.ImPlot_PlotShaded_doublePtrdoublePtrdoublePtr(nativeLabelId, nativeXs, nativeYs1, nativeYs2, count, flags, offset, stride);
-                        if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                        {
-                            Util.Free(nativeLabelId);
-                        }
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotShaded_doublePtrdoublePtrdoublePtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys1, ref ys2, count, flags, 0, 0);
         }
         
         /// <summary>
@@ -2320,44 +695,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="offset">The offset</param>
         public static void PlotShaded(string labelId, ref double xs, ref double ys1, ref double ys2, int count, ImPlotShadedFlags flags, int offset)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int stride = sizeof(double);
-            fixed (double* nativeXs = &xs)
-            {
-                fixed (double* nativeYs1 = &ys1)
-                {
-                    fixed (double* nativeYs2 = &ys2)
-                    {
-                        ImPlotNative.ImPlot_PlotShaded_doublePtrdoublePtrdoublePtr(nativeLabelId, nativeXs, nativeYs1, nativeYs2, count, flags, offset, stride);
-                        if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                        {
-                            Util.Free(nativeLabelId);
-                        }
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotShaded_doublePtrdoublePtrdoublePtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys1, ref ys2, count, flags, offset, 0);
         }
         
         /// <summary>
@@ -2373,43 +711,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="stride">The stride</param>
         public static void PlotShaded(string labelId, ref double xs, ref double ys1, ref double ys2, int count, ImPlotShadedFlags flags, int offset, int stride)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (double* nativeXs = &xs)
-            {
-                fixed (double* nativeYs1 = &ys1)
-                {
-                    fixed (double* nativeYs2 = &ys2)
-                    {
-                        ImPlotNative.ImPlot_PlotShaded_doublePtrdoublePtrdoublePtr(nativeLabelId, nativeXs, nativeYs1, nativeYs2, count, flags, offset, stride);
-                        if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                        {
-                            Util.Free(nativeLabelId);
-                        }
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotShaded_doublePtrdoublePtrdoublePtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys1, ref ys2, count, flags, offset, stride);
         }
         
         /// <summary>
@@ -2422,46 +724,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         public static void PlotShaded(string labelId, ref sbyte xs, ref sbyte ys1, ref sbyte ys2, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotShadedFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(sbyte);
-            fixed (sbyte* nativeXs = &xs)
-            {
-                fixed (sbyte* nativeYs1 = &ys1)
-                {
-                    fixed (sbyte* nativeYs2 = &ys2)
-                    {
-                        ImPlotNative.ImPlot_PlotShaded_S8PtrS8PtrS8Ptr(nativeLabelId, nativeXs, nativeYs1, nativeYs2, count, flags, offset, stride);
-                        if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                        {
-                            Util.Free(nativeLabelId);
-                        }
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotShaded_S8PtrS8PtrS8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys1, ref ys2, count, 0, 0, 0);
         }
         
         /// <summary>
@@ -2475,46 +738,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotShaded(string labelId, ref sbyte xs, ref sbyte ys1, ref sbyte ys2, int count, ImPlotShadedFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int offset = 0;
-            int stride = sizeof(sbyte);
-            fixed (sbyte* nativeXs = &xs)
-            {
-                fixed (sbyte* nativeYs1 = &ys1)
-                {
-                    fixed (sbyte* nativeYs2 = &ys2)
-                    {
-                        ImPlotNative.ImPlot_PlotShaded_S8PtrS8PtrS8Ptr(nativeLabelId, nativeXs, nativeYs1, nativeYs2, count, flags, offset, stride);
-                        if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                        {
-                            Util.Free(nativeLabelId);
-                        }
-                    }
-                }
-            }
+            ImPlotNative.ImPlot_PlotShaded_S8PtrS8PtrS8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys1, ref ys2, count, flags, 0, 0);
         }
-        
     }
 }

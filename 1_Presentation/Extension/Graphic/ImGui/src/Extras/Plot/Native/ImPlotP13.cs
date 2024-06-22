@@ -35,7 +35,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
     /// <summary>
     /// The im plot class
     /// </summary>
-    public static unsafe partial class ImPlot
+    public static partial class ImPlot
     {
         
         /// <summary>
@@ -170,7 +170,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         public static void PlotStairs(string labelId, ref int xs, ref int ys, int count)
         {
-            ImPlotNative.ImPlot_PlotStairs_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, sizeof(int));
+            ImPlotNative.ImPlot_PlotStairs_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId),  xs,  ys, count, 0, 0, sizeof(int));
         }
         
         /// <summary>
@@ -183,7 +183,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotStairs(string labelId, ref int xs, ref int ys, int count, ImPlotStairsFlags flags)
         {
-            ImPlotNative.ImPlot_PlotStairs_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, 0, sizeof(int));
+            ImPlotNative.ImPlot_PlotStairs_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId),  xs,  ys, count, flags, 0, sizeof(int));
         }
         
         /// <summary>
@@ -197,7 +197,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="offset">The offset</param>
         public static void PlotStairs(string labelId, ref int xs, ref int ys, int count, ImPlotStairsFlags flags, int offset)
         {
-            ImPlotNative.ImPlot_PlotStairs_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, sizeof(int));
+            ImPlotNative.ImPlot_PlotStairs_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId),  xs,  ys, count, flags, offset, sizeof(int));
         }
         
         /// <summary>
@@ -212,7 +212,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="stride">The stride</param>
         public static void PlotStairs(string labelId, ref int xs, ref int ys, int count, ImPlotStairsFlags flags, int offset, int stride)
         {
-            ImPlotNative.ImPlot_PlotStairs_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, stride);
+            ImPlotNative.ImPlot_PlotStairs_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId),  xs,  ys, count, flags, offset, stride);
         }
         
         /// <summary>
@@ -224,7 +224,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         public static void PlotStairs(string labelId, ref uint xs, ref uint ys, int count)
         {
-            ImPlotNative.ImPlot_PlotStairs_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, sizeof(uint));
+            ImPlotNative.ImPlot_PlotStairs_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId),  xs,  ys, count, 0, 0, sizeof(uint));
         }
         
         /// <summary>
@@ -237,7 +237,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotStairs(string labelId, ref uint xs, ref uint ys, int count, ImPlotStairsFlags flags)
         {
-            ImPlotNative.ImPlot_PlotStairs_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, 0, sizeof(uint));
+            ImPlotNative.ImPlot_PlotStairs_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId),  xs,  ys, count, flags, 0, sizeof(uint));
         }
         
         /// <summary>
@@ -251,7 +251,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="offset">The offset</param>
         public static void PlotStairs(string labelId, ref uint xs, ref uint ys, int count, ImPlotStairsFlags flags, int offset)
         {
-            ImPlotNative.ImPlot_PlotStairs_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, sizeof(uint));
+            ImPlotNative.ImPlot_PlotStairs_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId),  xs,  ys, count, flags, offset, sizeof(uint));
         }
         
         /// <summary>
@@ -266,7 +266,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="stride">The stride</param>
         public static void PlotStairs(string labelId, ref uint xs, ref uint ys, int count, ImPlotStairsFlags flags, int offset, int stride)
         {
-            ImPlotNative.ImPlot_PlotStairs_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, stride);
+            ImPlotNative.ImPlot_PlotStairs_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId),  xs,  ys, count, flags, offset, stride);
         }
         
         /// <summary>
@@ -386,7 +386,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         public static void PlotStairsG(string labelId, IntPtr getter, IntPtr data, int count)
         {
-            ImPlotNative.ImPlot_PlotStairsG(Encoding.UTF8.GetBytes(labelId), getter, data.ToPointer(), count, 0);
+            ImPlotNative.ImPlot_PlotStairsG(Encoding.UTF8.GetBytes(labelId), getter, data, count, 0);
         }
         
         /// <summary>
@@ -399,35 +399,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotStairsG(string labelId, IntPtr getter, IntPtr data, int count, ImPlotStairsFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            void* nativeData = data.ToPointer();
-            ImPlotNative.ImPlot_PlotStairsG(nativeLabelId, getter, nativeData, count, flags);
-            if (labelIdByteCount > Util.StackAllocationSizeLimit)
-            {
-                Util.Free(nativeLabelId);
-            }
+            ImPlotNative.ImPlot_PlotStairsG(Encoding.UTF8.GetBytes(labelId), getter, data, count, flags);
         }
         
         /// <summary>
@@ -438,43 +410,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         public static void PlotStems(string labelId, ref float values, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double @ref = 0;
-            double scale = 1;
-            double start = 0;
-            ImPlotStemsFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(float);
-            fixed (float* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotStems_FloatPtrInt(nativeLabelId, nativeValues, count, @ref, scale, start, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotStems_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 0, 1, 0, 0, 0, sizeof(float));
         }
         
         /// <summary>
@@ -486,42 +422,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="ref">The ref</param>
         public static void PlotStems(string labelId, ref float values, int count, double @ref)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double scale = 1;
-            double start = 0;
-            ImPlotStemsFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(float);
-            fixed (float* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotStems_FloatPtrInt(nativeLabelId, nativeValues, count, @ref, scale, start, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotStems_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, @ref, 1, 0, 0, 0, sizeof(float));
         }
         
         /// <summary>
@@ -534,41 +435,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="scale">The scale</param>
         public static void PlotStems(string labelId, ref float values, int count, double @ref, double scale)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double start = 0;
-            ImPlotStemsFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(float);
-            fixed (float* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotStems_FloatPtrInt(nativeLabelId, nativeValues, count, @ref, scale, start, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotStems_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, @ref, scale, 0, 0, 0, sizeof(float));
         }
         
         /// <summary>
@@ -582,40 +449,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="start">The start</param>
         public static void PlotStems(string labelId, ref float values, int count, double @ref, double scale, double start)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotStemsFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(float);
-            fixed (float* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotStems_FloatPtrInt(nativeLabelId, nativeValues, count, @ref, scale, start, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotStems_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, @ref, scale, start, 0, 0, sizeof(float));
         }
         
         /// <summary>
@@ -630,39 +464,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotStems(string labelId, ref float values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int offset = 0;
-            int stride = sizeof(float);
-            fixed (float* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotStems_FloatPtrInt(nativeLabelId, nativeValues, count, @ref, scale, start, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotStems_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, @ref, scale, start, flags, 0, sizeof(float));
         }
         
         /// <summary>
@@ -678,38 +480,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="offset">The offset</param>
         public static void PlotStems(string labelId, ref float values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int stride = sizeof(float);
-            fixed (float* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotStems_FloatPtrInt(nativeLabelId, nativeValues, count, @ref, scale, start, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotStems_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, @ref, scale, start, flags, offset, sizeof(float));
         }
         
         /// <summary>
@@ -726,37 +497,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="stride">The stride</param>
         public static void PlotStems(string labelId, ref float values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset, int stride)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (float* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotStems_FloatPtrInt(nativeLabelId, nativeValues, count, @ref, scale, start, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotStems_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, @ref, scale, start, flags, offset, stride);
         }
         
         /// <summary>
@@ -767,43 +508,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         public static void PlotStems(string labelId, ref double values, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double @ref = 0;
-            double scale = 1;
-            double start = 0;
-            ImPlotStemsFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(double);
-            fixed (double* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotStems_doublePtrInt(nativeLabelId, nativeValues, count, @ref, scale, start, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotStems_doublePtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 0, 1, 0, 0, 0, sizeof(double));
         }
         
         /// <summary>
@@ -815,42 +520,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="ref">The ref</param>
         public static void PlotStems(string labelId, ref double values, int count, double @ref)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double scale = 1;
-            double start = 0;
-            ImPlotStemsFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(double);
-            fixed (double* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotStems_doublePtrInt(nativeLabelId, nativeValues, count, @ref, scale, start, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotStems_doublePtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, @ref, 1, 0, 0, 0, sizeof(double));
         }
         
         /// <summary>
@@ -863,41 +533,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="scale">The scale</param>
         public static void PlotStems(string labelId, ref double values, int count, double @ref, double scale)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double start = 0;
-            ImPlotStemsFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(double);
-            fixed (double* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotStems_doublePtrInt(nativeLabelId, nativeValues, count, @ref, scale, start, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotStems_doublePtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, @ref, scale, 0, 0, 0, sizeof(double));
         }
         
         /// <summary>
@@ -911,40 +547,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="start">The start</param>
         public static void PlotStems(string labelId, ref double values, int count, double @ref, double scale, double start)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotStemsFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(double);
-            fixed (double* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotStems_doublePtrInt(nativeLabelId, nativeValues, count, @ref, scale, start, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotStems_doublePtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, @ref, scale, start, 0, 0, sizeof(double));
         }
         
         /// <summary>
@@ -959,39 +562,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotStems(string labelId, ref double values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int offset = 0;
-            int stride = sizeof(double);
-            fixed (double* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotStems_doublePtrInt(nativeLabelId, nativeValues, count, @ref, scale, start, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotStems_doublePtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, @ref, scale, start, flags, 0, sizeof(double));
         }
         
         /// <summary>
@@ -1007,38 +578,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="offset">The offset</param>
         public static void PlotStems(string labelId, ref double values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int stride = sizeof(double);
-            fixed (double* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotStems_doublePtrInt(nativeLabelId, nativeValues, count, @ref, scale, start, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotStems_doublePtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, @ref, scale, start, flags, offset, sizeof(double));
         }
         
         /// <summary>
@@ -1055,37 +595,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="stride">The stride</param>
         public static void PlotStems(string labelId, ref double values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset, int stride)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (double* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotStems_doublePtrInt(nativeLabelId, nativeValues, count, @ref, scale, start, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotStems_doublePtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, @ref, scale, start, flags, offset, stride);
         }
         
         /// <summary>
@@ -1096,43 +606,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         public static void PlotStems(string labelId, ref sbyte values, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double @ref = 0;
-            double scale = 1;
-            double start = 0;
-            ImPlotStemsFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(sbyte);
-            fixed (sbyte* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotStems_S8PtrInt(nativeLabelId, nativeValues, count, @ref, scale, start, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotStems_S8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 0, 1, 0, 0, 0, sizeof(sbyte));
         }
         
         /// <summary>
@@ -1144,42 +618,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="ref">The ref</param>
         public static void PlotStems(string labelId, ref sbyte values, int count, double @ref)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double scale = 1;
-            double start = 0;
-            ImPlotStemsFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(sbyte);
-            fixed (sbyte* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotStems_S8PtrInt(nativeLabelId, nativeValues, count, @ref, scale, start, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotStems_S8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, @ref, 1, 0, 0, 0, sizeof(sbyte));
         }
         
         /// <summary>
@@ -1192,41 +631,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="scale">The scale</param>
         public static void PlotStems(string labelId, ref sbyte values, int count, double @ref, double scale)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double start = 0;
-            ImPlotStemsFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(sbyte);
-            fixed (sbyte* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotStems_S8PtrInt(nativeLabelId, nativeValues, count, @ref, scale, start, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotStems_S8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, @ref, scale, 0, 0, 0, sizeof(sbyte));
         }
         
         /// <summary>
@@ -1240,40 +645,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="start">The start</param>
         public static void PlotStems(string labelId, ref sbyte values, int count, double @ref, double scale, double start)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotStemsFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(sbyte);
-            fixed (sbyte* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotStems_S8PtrInt(nativeLabelId, nativeValues, count, @ref, scale, start, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotStems_S8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, @ref, scale, start, 0, 0, sizeof(sbyte));
         }
         
         /// <summary>
@@ -1288,39 +660,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotStems(string labelId, ref sbyte values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int offset = 0;
-            int stride = sizeof(sbyte);
-            fixed (sbyte* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotStems_S8PtrInt(nativeLabelId, nativeValues, count, @ref, scale, start, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotStems_S8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, @ref, scale, start, flags, 0, sizeof(sbyte));
         }
         
         /// <summary>
@@ -1336,38 +676,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="offset">The offset</param>
         public static void PlotStems(string labelId, ref sbyte values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int stride = sizeof(sbyte);
-            fixed (sbyte* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotStems_S8PtrInt(nativeLabelId, nativeValues, count, @ref, scale, start, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotStems_S8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, @ref, scale, start, flags, offset, sizeof(sbyte));
         }
         
         /// <summary>
@@ -1384,37 +693,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="stride">The stride</param>
         public static void PlotStems(string labelId, ref sbyte values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset, int stride)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (sbyte* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotStems_S8PtrInt(nativeLabelId, nativeValues, count, @ref, scale, start, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotStems_S8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, @ref, scale, start, flags, offset, stride);
         }
         
         /// <summary>
@@ -1425,43 +704,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         public static void PlotStems(string labelId, ref byte values, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double @ref = 0;
-            double scale = 1;
-            double start = 0;
-            ImPlotStemsFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(byte);
-            fixed (byte* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotStems_U8PtrInt(nativeLabelId, nativeValues, count, @ref, scale, start, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotStems_U8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 0, 1, 0, 0, 0, sizeof(byte));
         }
         
         /// <summary>
@@ -1473,42 +716,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="ref">The ref</param>
         public static void PlotStems(string labelId, ref byte values, int count, double @ref)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double scale = 1;
-            double start = 0;
-            ImPlotStemsFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(byte);
-            fixed (byte* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotStems_U8PtrInt(nativeLabelId, nativeValues, count, @ref, scale, start, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotStems_U8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, @ref, 1, 0, 0, 0, sizeof(byte));
         }
         
         /// <summary>
@@ -1521,41 +729,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="scale">The scale</param>
         public static void PlotStems(string labelId, ref byte values, int count, double @ref, double scale)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double start = 0;
-            ImPlotStemsFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(byte);
-            fixed (byte* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotStems_U8PtrInt(nativeLabelId, nativeValues, count, @ref, scale, start, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotStems_U8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, @ref, scale, 0, 0, 0, sizeof(byte));
         }
         
         /// <summary>
@@ -1569,40 +743,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="start">The start</param>
         public static void PlotStems(string labelId, ref byte values, int count, double @ref, double scale, double start)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotStemsFlags flags = 0;
-            int offset = 0;
-            int stride = sizeof(byte);
-            fixed (byte* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotStems_U8PtrInt(nativeLabelId, nativeValues, count, @ref, scale, start, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotStems_U8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, @ref, scale, start, 0, 0, sizeof(byte));
         }
         
         /// <summary>
@@ -1617,40 +758,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotStems(string labelId, ref byte values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int offset = 0;
-            int stride = sizeof(byte);
-            fixed (byte* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotStems_U8PtrInt(nativeLabelId, nativeValues, count, @ref, scale, start, flags, offset, stride);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-            }
+            ImPlotNative.ImPlot_PlotStems_U8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, @ref, scale, start, flags, 0, sizeof(byte));
         }
-        
     }
 }
