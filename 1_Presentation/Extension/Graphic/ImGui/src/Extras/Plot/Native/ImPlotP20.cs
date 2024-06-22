@@ -34,7 +34,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
       /// <summary>
       /// The im plot class
       /// </summary>
-      public static unsafe partial class ImPlot
+      public static partial class ImPlot
     {
         
         /// <summary>
@@ -51,66 +51,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="boundsMax">The bounds max</param>
         public static void PlotHeatmap(string labelId, ref int values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            byte* nativeLabelFmt;
-            int labelFmtByteCount = 0;
-            if (labelFmt != null)
-            {
-                labelFmtByteCount = Encoding.UTF8.GetByteCount(labelFmt);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelFmt = Util.Allocate(labelFmtByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelFmtStackBytes = stackalloc byte[labelFmtByteCount + 1];
-                    nativeLabelFmt = nativeLabelFmtStackBytes;
-                }
-                
-                int nativeLabelFmtOffset = Util.GetUtf8(labelFmt, nativeLabelFmt, labelFmtByteCount);
-                nativeLabelFmt[nativeLabelFmtOffset] = 0;
-            }
-            else
-            {
-                nativeLabelFmt = null;
-            }
-            
-            ImPlotHeatmapFlags flags = 0;
-            fixed (int* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotHeatmap_S32Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelFmt);
-                }
-            }
+            ImPlotNative.ImPlot_PlotHeatmap_S32Ptr(Encoding.UTF8.GetBytes(labelId), ref values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, boundsMax, 0);
         }
         
         /// <summary>
@@ -128,65 +69,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotHeatmap(string labelId, ref int values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax, ImPlotHeatmapFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            byte* nativeLabelFmt;
-            int labelFmtByteCount = 0;
-            if (labelFmt != null)
-            {
-                labelFmtByteCount = Encoding.UTF8.GetByteCount(labelFmt);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelFmt = Util.Allocate(labelFmtByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelFmtStackBytes = stackalloc byte[labelFmtByteCount + 1];
-                    nativeLabelFmt = nativeLabelFmtStackBytes;
-                }
-                
-                int nativeLabelFmtOffset = Util.GetUtf8(labelFmt, nativeLabelFmt, labelFmtByteCount);
-                nativeLabelFmt[nativeLabelFmtOffset] = 0;
-            }
-            else
-            {
-                nativeLabelFmt = null;
-            }
-            
-            fixed (int* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotHeatmap_S32Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelFmt);
-                }
-            }
+            ImPlotNative.ImPlot_PlotHeatmap_S32Ptr(Encoding.UTF8.GetBytes(labelId), ref values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, boundsMax, flags);
         }
         
         /// <summary>
@@ -198,62 +81,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="cols">The cols</param>
         public static void PlotHeatmap(string labelId, ref uint values, int rows, int cols)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double scaleMin = 0;
-            double scaleMax = 0;
-            byte* nativeLabelFmt;
-            int labelFmtByteCount = 0;
-            labelFmtByteCount = Encoding.UTF8.GetByteCount("%.1f");
-            if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-            {
-                nativeLabelFmt = Util.Allocate(labelFmtByteCount + 1);
-            }
-            else
-            {
-                byte* nativeLabelFmtStackBytes = stackalloc byte[labelFmtByteCount + 1];
-                nativeLabelFmt = nativeLabelFmtStackBytes;
-            }
-            
-            int nativeLabelFmtOffset = Util.GetUtf8("%.1f", nativeLabelFmt, labelFmtByteCount);
-            nativeLabelFmt[nativeLabelFmtOffset] = 0;
-            ImPlotPoint boundsMin = new ImPlotPoint {X = 0, Y = 0};
-            ImPlotPoint boundsMax = new ImPlotPoint {X = 1, Y = 1};
-            ImPlotHeatmapFlags flags = 0;
-            fixed (uint* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotHeatmap_U32Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelFmt);
-                }
-            }
+            ImPlotNative.ImPlot_PlotHeatmap_U32Ptr(Encoding.UTF8.GetBytes(labelId), ref values, rows, cols, 0, 0, Encoding.UTF8.GetBytes("%.1f"), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
         }
         
         /// <summary>
@@ -266,61 +94,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="scaleMin">The scale min</param>
         public static void PlotHeatmap(string labelId, ref uint values, int rows, int cols, double scaleMin)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double scaleMax = 0;
-            byte* nativeLabelFmt;
-            int labelFmtByteCount = 0;
-            labelFmtByteCount = Encoding.UTF8.GetByteCount("%.1f");
-            if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-            {
-                nativeLabelFmt = Util.Allocate(labelFmtByteCount + 1);
-            }
-            else
-            {
-                byte* nativeLabelFmtStackBytes = stackalloc byte[labelFmtByteCount + 1];
-                nativeLabelFmt = nativeLabelFmtStackBytes;
-            }
-            
-            int nativeLabelFmtOffset = Util.GetUtf8("%.1f", nativeLabelFmt, labelFmtByteCount);
-            nativeLabelFmt[nativeLabelFmtOffset] = 0;
-            ImPlotPoint boundsMin = new ImPlotPoint {X = 0, Y = 0};
-            ImPlotPoint boundsMax = new ImPlotPoint {X = 1, Y = 1};
-            ImPlotHeatmapFlags flags = 0;
-            fixed (uint* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotHeatmap_U32Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelFmt);
-                }
-            }
+            ImPlotNative.ImPlot_PlotHeatmap_U32Ptr(Encoding.UTF8.GetBytes(labelId), ref values, rows, cols, scaleMin, 0, Encoding.UTF8.GetBytes("%.1f"), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
         }
         
         /// <summary>
@@ -334,60 +108,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="scaleMax">The scale max</param>
         public static void PlotHeatmap(string labelId, ref uint values, int rows, int cols, double scaleMin, double scaleMax)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            byte* nativeLabelFmt;
-            int labelFmtByteCount = 0;
-            labelFmtByteCount = Encoding.UTF8.GetByteCount("%.1f");
-            if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-            {
-                nativeLabelFmt = Util.Allocate(labelFmtByteCount + 1);
-            }
-            else
-            {
-                byte* nativeLabelFmtStackBytes = stackalloc byte[labelFmtByteCount + 1];
-                nativeLabelFmt = nativeLabelFmtStackBytes;
-            }
-            
-            int nativeLabelFmtOffset = Util.GetUtf8("%.1f", nativeLabelFmt, labelFmtByteCount);
-            nativeLabelFmt[nativeLabelFmtOffset] = 0;
-            ImPlotPoint boundsMin = new ImPlotPoint {X = 0, Y = 0};
-            ImPlotPoint boundsMax = new ImPlotPoint {X = 1, Y = 1};
-            ImPlotHeatmapFlags flags = 0;
-            fixed (uint* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotHeatmap_U32Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelFmt);
-                }
-            }
+            ImPlotNative.ImPlot_PlotHeatmap_U32Ptr(Encoding.UTF8.GetBytes(labelId), ref values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes("%.1f"), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
         }
         
         /// <summary>
@@ -402,68 +123,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="labelFmt">The label fmt</param>
         public static void PlotHeatmap(string labelId, ref uint values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            byte* nativeLabelFmt;
-            int labelFmtByteCount = 0;
-            if (labelFmt != null)
-            {
-                labelFmtByteCount = Encoding.UTF8.GetByteCount(labelFmt);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelFmt = Util.Allocate(labelFmtByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelFmtStackBytes = stackalloc byte[labelFmtByteCount + 1];
-                    nativeLabelFmt = nativeLabelFmtStackBytes;
-                }
-                
-                int nativeLabelFmtOffset = Util.GetUtf8(labelFmt, nativeLabelFmt, labelFmtByteCount);
-                nativeLabelFmt[nativeLabelFmtOffset] = 0;
-            }
-            else
-            {
-                nativeLabelFmt = null;
-            }
-            
-            ImPlotPoint boundsMin = new ImPlotPoint {X = 0, Y = 0};
-            ImPlotPoint boundsMax = new ImPlotPoint {X = 1, Y = 1};
-            ImPlotHeatmapFlags flags = 0;
-            fixed (uint* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotHeatmap_U32Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelFmt);
-                }
-            }
+            ImPlotNative.ImPlot_PlotHeatmap_U32Ptr(Encoding.UTF8.GetBytes(labelId), ref values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
         }
         
         /// <summary>
@@ -479,67 +139,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="boundsMin">The bounds min</param>
         public static void PlotHeatmap(string labelId, ref uint values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt, ImPlotPoint boundsMin)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            byte* nativeLabelFmt;
-            int labelFmtByteCount = 0;
-            if (labelFmt != null)
-            {
-                labelFmtByteCount = Encoding.UTF8.GetByteCount(labelFmt);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelFmt = Util.Allocate(labelFmtByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelFmtStackBytes = stackalloc byte[labelFmtByteCount + 1];
-                    nativeLabelFmt = nativeLabelFmtStackBytes;
-                }
-                
-                int nativeLabelFmtOffset = Util.GetUtf8(labelFmt, nativeLabelFmt, labelFmtByteCount);
-                nativeLabelFmt[nativeLabelFmtOffset] = 0;
-            }
-            else
-            {
-                nativeLabelFmt = null;
-            }
-            
-            ImPlotPoint boundsMax = new ImPlotPoint {X = 1, Y = 1};
-            ImPlotHeatmapFlags flags = 0;
-            fixed (uint* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotHeatmap_U32Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelFmt);
-                }
-            }
+            ImPlotNative.ImPlot_PlotHeatmap_U32Ptr(Encoding.UTF8.GetBytes(labelId), ref values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, new ImPlotPoint {X = 1, Y = 1}, 0);
         }
         
         /// <summary>
@@ -556,66 +156,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="boundsMax">The bounds max</param>
         public static void PlotHeatmap(string labelId, ref uint values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            byte* nativeLabelFmt;
-            int labelFmtByteCount = 0;
-            if (labelFmt != null)
-            {
-                labelFmtByteCount = Encoding.UTF8.GetByteCount(labelFmt);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelFmt = Util.Allocate(labelFmtByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelFmtStackBytes = stackalloc byte[labelFmtByteCount + 1];
-                    nativeLabelFmt = nativeLabelFmtStackBytes;
-                }
-                
-                int nativeLabelFmtOffset = Util.GetUtf8(labelFmt, nativeLabelFmt, labelFmtByteCount);
-                nativeLabelFmt[nativeLabelFmtOffset] = 0;
-            }
-            else
-            {
-                nativeLabelFmt = null;
-            }
-            
-            ImPlotHeatmapFlags flags = 0;
-            fixed (uint* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotHeatmap_U32Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelFmt);
-                }
-            }
+            ImPlotNative.ImPlot_PlotHeatmap_U32Ptr(Encoding.UTF8.GetBytes(labelId), ref values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, boundsMax, 0);
         }
         
         /// <summary>
@@ -633,65 +174,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotHeatmap(string labelId, ref uint values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax, ImPlotHeatmapFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            byte* nativeLabelFmt;
-            int labelFmtByteCount = 0;
-            if (labelFmt != null)
-            {
-                labelFmtByteCount = Encoding.UTF8.GetByteCount(labelFmt);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelFmt = Util.Allocate(labelFmtByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelFmtStackBytes = stackalloc byte[labelFmtByteCount + 1];
-                    nativeLabelFmt = nativeLabelFmtStackBytes;
-                }
-                
-                int nativeLabelFmtOffset = Util.GetUtf8(labelFmt, nativeLabelFmt, labelFmtByteCount);
-                nativeLabelFmt[nativeLabelFmtOffset] = 0;
-            }
-            else
-            {
-                nativeLabelFmt = null;
-            }
-            
-            fixed (uint* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotHeatmap_U32Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelFmt);
-                }
-            }
+            ImPlotNative.ImPlot_PlotHeatmap_U32Ptr(Encoding.UTF8.GetBytes(labelId), ref values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, boundsMax, flags);
         }
         
         /// <summary>
@@ -703,62 +186,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="cols">The cols</param>
         public static void PlotHeatmap(string labelId, ref long values, int rows, int cols)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double scaleMin = 0;
-            double scaleMax = 0;
-            byte* nativeLabelFmt;
-            int labelFmtByteCount = 0;
-            labelFmtByteCount = Encoding.UTF8.GetByteCount("%.1f");
-            if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-            {
-                nativeLabelFmt = Util.Allocate(labelFmtByteCount + 1);
-            }
-            else
-            {
-                byte* nativeLabelFmtStackBytes = stackalloc byte[labelFmtByteCount + 1];
-                nativeLabelFmt = nativeLabelFmtStackBytes;
-            }
-            
-            int nativeLabelFmtOffset = Util.GetUtf8("%.1f", nativeLabelFmt, labelFmtByteCount);
-            nativeLabelFmt[nativeLabelFmtOffset] = 0;
-            ImPlotPoint boundsMin = new ImPlotPoint {X = 0, Y = 0};
-            ImPlotPoint boundsMax = new ImPlotPoint {X = 1, Y = 1};
-            ImPlotHeatmapFlags flags = 0;
-            fixed (long* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotHeatmap_S64Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelFmt);
-                }
-            }
+            ImPlotNative.ImPlot_PlotHeatmap_S64Ptr(Encoding.UTF8.GetBytes(labelId), ref values, rows, cols, 0, 0, Encoding.UTF8.GetBytes("%.1f"), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
         }
         
         /// <summary>
@@ -771,61 +199,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="scaleMin">The scale min</param>
         public static void PlotHeatmap(string labelId, ref long values, int rows, int cols, double scaleMin)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double scaleMax = 0;
-            byte* nativeLabelFmt;
-            int labelFmtByteCount = 0;
-            labelFmtByteCount = Encoding.UTF8.GetByteCount("%.1f");
-            if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-            {
-                nativeLabelFmt = Util.Allocate(labelFmtByteCount + 1);
-            }
-            else
-            {
-                byte* nativeLabelFmtStackBytes = stackalloc byte[labelFmtByteCount + 1];
-                nativeLabelFmt = nativeLabelFmtStackBytes;
-            }
-            
-            int nativeLabelFmtOffset = Util.GetUtf8("%.1f", nativeLabelFmt, labelFmtByteCount);
-            nativeLabelFmt[nativeLabelFmtOffset] = 0;
-            ImPlotPoint boundsMin = new ImPlotPoint {X = 0, Y = 0};
-            ImPlotPoint boundsMax = new ImPlotPoint {X = 1, Y = 1};
-            ImPlotHeatmapFlags flags = 0;
-            fixed (long* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotHeatmap_S64Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelFmt);
-                }
-            }
+            ImPlotNative.ImPlot_PlotHeatmap_S64Ptr(Encoding.UTF8.GetBytes(labelId), ref values, rows, cols, scaleMin, 0, Encoding.UTF8.GetBytes("%.1f"), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
         }
         
         /// <summary>
@@ -839,60 +213,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="scaleMax">The scale max</param>
         public static void PlotHeatmap(string labelId, ref long values, int rows, int cols, double scaleMin, double scaleMax)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            byte* nativeLabelFmt;
-            int labelFmtByteCount = 0;
-            labelFmtByteCount = Encoding.UTF8.GetByteCount("%.1f");
-            if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-            {
-                nativeLabelFmt = Util.Allocate(labelFmtByteCount + 1);
-            }
-            else
-            {
-                byte* nativeLabelFmtStackBytes = stackalloc byte[labelFmtByteCount + 1];
-                nativeLabelFmt = nativeLabelFmtStackBytes;
-            }
-            
-            int nativeLabelFmtOffset = Util.GetUtf8("%.1f", nativeLabelFmt, labelFmtByteCount);
-            nativeLabelFmt[nativeLabelFmtOffset] = 0;
-            ImPlotPoint boundsMin = new ImPlotPoint {X = 0, Y = 0};
-            ImPlotPoint boundsMax = new ImPlotPoint {X = 1, Y = 1};
-            ImPlotHeatmapFlags flags = 0;
-            fixed (long* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotHeatmap_S64Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelFmt);
-                }
-            }
+            ImPlotNative.ImPlot_PlotHeatmap_S64Ptr(Encoding.UTF8.GetBytes(labelId), ref values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes("%.1f"), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
         }
         
         /// <summary>
@@ -907,68 +228,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="labelFmt">The label fmt</param>
         public static void PlotHeatmap(string labelId, ref long values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            byte* nativeLabelFmt;
-            int labelFmtByteCount = 0;
-            if (labelFmt != null)
-            {
-                labelFmtByteCount = Encoding.UTF8.GetByteCount(labelFmt);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelFmt = Util.Allocate(labelFmtByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelFmtStackBytes = stackalloc byte[labelFmtByteCount + 1];
-                    nativeLabelFmt = nativeLabelFmtStackBytes;
-                }
-                
-                int nativeLabelFmtOffset = Util.GetUtf8(labelFmt, nativeLabelFmt, labelFmtByteCount);
-                nativeLabelFmt[nativeLabelFmtOffset] = 0;
-            }
-            else
-            {
-                nativeLabelFmt = null;
-            }
-            
-            ImPlotPoint boundsMin = new ImPlotPoint {X = 0, Y = 0};
-            ImPlotPoint boundsMax = new ImPlotPoint {X = 1, Y = 1};
-            ImPlotHeatmapFlags flags = 0;
-            fixed (long* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotHeatmap_S64Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelFmt);
-                }
-            }
+            ImPlotNative.ImPlot_PlotHeatmap_S64Ptr(Encoding.UTF8.GetBytes(labelId), ref values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
         }
         
         /// <summary>
@@ -984,67 +244,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="boundsMin">The bounds min</param>
         public static void PlotHeatmap(string labelId, ref long values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt, ImPlotPoint boundsMin)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            byte* nativeLabelFmt;
-            int labelFmtByteCount = 0;
-            if (labelFmt != null)
-            {
-                labelFmtByteCount = Encoding.UTF8.GetByteCount(labelFmt);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelFmt = Util.Allocate(labelFmtByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelFmtStackBytes = stackalloc byte[labelFmtByteCount + 1];
-                    nativeLabelFmt = nativeLabelFmtStackBytes;
-                }
-                
-                int nativeLabelFmtOffset = Util.GetUtf8(labelFmt, nativeLabelFmt, labelFmtByteCount);
-                nativeLabelFmt[nativeLabelFmtOffset] = 0;
-            }
-            else
-            {
-                nativeLabelFmt = null;
-            }
-            
-            ImPlotPoint boundsMax = new ImPlotPoint {X = 1, Y = 1};
-            ImPlotHeatmapFlags flags = 0;
-            fixed (long* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotHeatmap_S64Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelFmt);
-                }
-            }
+            ImPlotNative.ImPlot_PlotHeatmap_S64Ptr(Encoding.UTF8.GetBytes(labelId), ref values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, new ImPlotPoint {X = 1, Y = 1}, 0);
         }
         
         /// <summary>
@@ -1061,66 +261,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="boundsMax">The bounds max</param>
         public static void PlotHeatmap(string labelId, ref long values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            byte* nativeLabelFmt;
-            int labelFmtByteCount = 0;
-            if (labelFmt != null)
-            {
-                labelFmtByteCount = Encoding.UTF8.GetByteCount(labelFmt);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelFmt = Util.Allocate(labelFmtByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelFmtStackBytes = stackalloc byte[labelFmtByteCount + 1];
-                    nativeLabelFmt = nativeLabelFmtStackBytes;
-                }
-                
-                int nativeLabelFmtOffset = Util.GetUtf8(labelFmt, nativeLabelFmt, labelFmtByteCount);
-                nativeLabelFmt[nativeLabelFmtOffset] = 0;
-            }
-            else
-            {
-                nativeLabelFmt = null;
-            }
-            
-            ImPlotHeatmapFlags flags = 0;
-            fixed (long* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotHeatmap_S64Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelFmt);
-                }
-            }
+            ImPlotNative.ImPlot_PlotHeatmap_S64Ptr(Encoding.UTF8.GetBytes(labelId), ref values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, boundsMax, 0);
         }
         
         /// <summary>
@@ -1138,65 +279,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotHeatmap(string labelId, ref long values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax, ImPlotHeatmapFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            byte* nativeLabelFmt;
-            int labelFmtByteCount = 0;
-            if (labelFmt != null)
-            {
-                labelFmtByteCount = Encoding.UTF8.GetByteCount(labelFmt);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelFmt = Util.Allocate(labelFmtByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelFmtStackBytes = stackalloc byte[labelFmtByteCount + 1];
-                    nativeLabelFmt = nativeLabelFmtStackBytes;
-                }
-                
-                int nativeLabelFmtOffset = Util.GetUtf8(labelFmt, nativeLabelFmt, labelFmtByteCount);
-                nativeLabelFmt[nativeLabelFmtOffset] = 0;
-            }
-            else
-            {
-                nativeLabelFmt = null;
-            }
-            
-            fixed (long* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotHeatmap_S64Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelFmt);
-                }
-            }
+            ImPlotNative.ImPlot_PlotHeatmap_S64Ptr(Encoding.UTF8.GetBytes(labelId), ref values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, boundsMax, flags);
         }
         
         /// <summary>
@@ -1208,62 +291,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="cols">The cols</param>
         public static void PlotHeatmap(string labelId, ref ulong values, int rows, int cols)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double scaleMin = 0;
-            double scaleMax = 0;
-            byte* nativeLabelFmt;
-            int labelFmtByteCount = 0;
-            labelFmtByteCount = Encoding.UTF8.GetByteCount("%.1f");
-            if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-            {
-                nativeLabelFmt = Util.Allocate(labelFmtByteCount + 1);
-            }
-            else
-            {
-                byte* nativeLabelFmtStackBytes = stackalloc byte[labelFmtByteCount + 1];
-                nativeLabelFmt = nativeLabelFmtStackBytes;
-            }
-            
-            int nativeLabelFmtOffset = Util.GetUtf8("%.1f", nativeLabelFmt, labelFmtByteCount);
-            nativeLabelFmt[nativeLabelFmtOffset] = 0;
-            ImPlotPoint boundsMin = new ImPlotPoint {X = 0, Y = 0};
-            ImPlotPoint boundsMax = new ImPlotPoint {X = 1, Y = 1};
-            ImPlotHeatmapFlags flags = 0;
-            fixed (ulong* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotHeatmap_U64Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelFmt);
-                }
-            }
+            ImPlotNative.ImPlot_PlotHeatmap_U64Ptr(Encoding.UTF8.GetBytes(labelId), ref values, rows, cols, 0, 0, Encoding.UTF8.GetBytes("%.1f"), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
         }
         
         /// <summary>
@@ -1276,61 +304,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="scaleMin">The scale min</param>
         public static void PlotHeatmap(string labelId, ref ulong values, int rows, int cols, double scaleMin)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double scaleMax = 0;
-            byte* nativeLabelFmt;
-            int labelFmtByteCount = 0;
-            labelFmtByteCount = Encoding.UTF8.GetByteCount("%.1f");
-            if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-            {
-                nativeLabelFmt = Util.Allocate(labelFmtByteCount + 1);
-            }
-            else
-            {
-                byte* nativeLabelFmtStackBytes = stackalloc byte[labelFmtByteCount + 1];
-                nativeLabelFmt = nativeLabelFmtStackBytes;
-            }
-            
-            int nativeLabelFmtOffset = Util.GetUtf8("%.1f", nativeLabelFmt, labelFmtByteCount);
-            nativeLabelFmt[nativeLabelFmtOffset] = 0;
-            ImPlotPoint boundsMin = new ImPlotPoint {X = 0, Y = 0};
-            ImPlotPoint boundsMax = new ImPlotPoint {X = 1, Y = 1};
-            ImPlotHeatmapFlags flags = 0;
-            fixed (ulong* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotHeatmap_U64Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelFmt);
-                }
-            }
+            ImPlotNative.ImPlot_PlotHeatmap_U64Ptr(Encoding.UTF8.GetBytes(labelId), ref values, rows, cols, scaleMin, 0, Encoding.UTF8.GetBytes("%.1f"), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
         }
         
         /// <summary>
@@ -1344,60 +318,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="scaleMax">The scale max</param>
         public static void PlotHeatmap(string labelId, ref ulong values, int rows, int cols, double scaleMin, double scaleMax)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            byte* nativeLabelFmt;
-            int labelFmtByteCount = 0;
-            labelFmtByteCount = Encoding.UTF8.GetByteCount("%.1f");
-            if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-            {
-                nativeLabelFmt = Util.Allocate(labelFmtByteCount + 1);
-            }
-            else
-            {
-                byte* nativeLabelFmtStackBytes = stackalloc byte[labelFmtByteCount + 1];
-                nativeLabelFmt = nativeLabelFmtStackBytes;
-            }
-            
-            int nativeLabelFmtOffset = Util.GetUtf8("%.1f", nativeLabelFmt, labelFmtByteCount);
-            nativeLabelFmt[nativeLabelFmtOffset] = 0;
-            ImPlotPoint boundsMin = new ImPlotPoint {X = 0, Y = 0};
-            ImPlotPoint boundsMax = new ImPlotPoint {X = 1, Y = 1};
-            ImPlotHeatmapFlags flags = 0;
-            fixed (ulong* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotHeatmap_U64Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelFmt);
-                }
-            }
+            ImPlotNative.ImPlot_PlotHeatmap_U64Ptr(Encoding.UTF8.GetBytes(labelId), ref values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes("%.1f"), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
         }
         
         /// <summary>
@@ -1412,68 +333,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="labelFmt">The label fmt</param>
         public static void PlotHeatmap(string labelId, ref ulong values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            byte* nativeLabelFmt;
-            int labelFmtByteCount = 0;
-            if (labelFmt != null)
-            {
-                labelFmtByteCount = Encoding.UTF8.GetByteCount(labelFmt);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelFmt = Util.Allocate(labelFmtByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelFmtStackBytes = stackalloc byte[labelFmtByteCount + 1];
-                    nativeLabelFmt = nativeLabelFmtStackBytes;
-                }
-                
-                int nativeLabelFmtOffset = Util.GetUtf8(labelFmt, nativeLabelFmt, labelFmtByteCount);
-                nativeLabelFmt[nativeLabelFmtOffset] = 0;
-            }
-            else
-            {
-                nativeLabelFmt = null;
-            }
-            
-            ImPlotPoint boundsMin = new ImPlotPoint {X = 0, Y = 0};
-            ImPlotPoint boundsMax = new ImPlotPoint {X = 1, Y = 1};
-            ImPlotHeatmapFlags flags = 0;
-            fixed (ulong* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotHeatmap_U64Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelFmt);
-                }
-            }
+            ImPlotNative.ImPlot_PlotHeatmap_U64Ptr(Encoding.UTF8.GetBytes(labelId), ref values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
         }
         
         /// <summary>
@@ -1489,67 +349,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="boundsMin">The bounds min</param>
         public static void PlotHeatmap(string labelId, ref ulong values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt, ImPlotPoint boundsMin)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            byte* nativeLabelFmt;
-            int labelFmtByteCount = 0;
-            if (labelFmt != null)
-            {
-                labelFmtByteCount = Encoding.UTF8.GetByteCount(labelFmt);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelFmt = Util.Allocate(labelFmtByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelFmtStackBytes = stackalloc byte[labelFmtByteCount + 1];
-                    nativeLabelFmt = nativeLabelFmtStackBytes;
-                }
-                
-                int nativeLabelFmtOffset = Util.GetUtf8(labelFmt, nativeLabelFmt, labelFmtByteCount);
-                nativeLabelFmt[nativeLabelFmtOffset] = 0;
-            }
-            else
-            {
-                nativeLabelFmt = null;
-            }
-            
-            ImPlotPoint boundsMax = new ImPlotPoint {X = 1, Y = 1};
-            ImPlotHeatmapFlags flags = 0;
-            fixed (ulong* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotHeatmap_U64Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelFmt);
-                }
-            }
+            ImPlotNative.ImPlot_PlotHeatmap_U64Ptr(Encoding.UTF8.GetBytes(labelId), ref values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, new ImPlotPoint {X = 1, Y = 1}, 0);
         }
         
         /// <summary>
@@ -1566,66 +366,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="boundsMax">The bounds max</param>
         public static void PlotHeatmap(string labelId, ref ulong values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            byte* nativeLabelFmt;
-            int labelFmtByteCount = 0;
-            if (labelFmt != null)
-            {
-                labelFmtByteCount = Encoding.UTF8.GetByteCount(labelFmt);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelFmt = Util.Allocate(labelFmtByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelFmtStackBytes = stackalloc byte[labelFmtByteCount + 1];
-                    nativeLabelFmt = nativeLabelFmtStackBytes;
-                }
-                
-                int nativeLabelFmtOffset = Util.GetUtf8(labelFmt, nativeLabelFmt, labelFmtByteCount);
-                nativeLabelFmt[nativeLabelFmtOffset] = 0;
-            }
-            else
-            {
-                nativeLabelFmt = null;
-            }
-            
-            ImPlotHeatmapFlags flags = 0;
-            fixed (ulong* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotHeatmap_U64Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelFmt);
-                }
-            }
+            ImPlotNative.ImPlot_PlotHeatmap_U64Ptr(Encoding.UTF8.GetBytes(labelId), ref values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, boundsMax, 0);
         }
         
         /// <summary>
@@ -1643,65 +384,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotHeatmap(string labelId, ref ulong values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax, ImPlotHeatmapFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            byte* nativeLabelFmt;
-            int labelFmtByteCount = 0;
-            if (labelFmt != null)
-            {
-                labelFmtByteCount = Encoding.UTF8.GetByteCount(labelFmt);
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelFmt = Util.Allocate(labelFmtByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelFmtStackBytes = stackalloc byte[labelFmtByteCount + 1];
-                    nativeLabelFmt = nativeLabelFmtStackBytes;
-                }
-                
-                int nativeLabelFmtOffset = Util.GetUtf8(labelFmt, nativeLabelFmt, labelFmtByteCount);
-                nativeLabelFmt[nativeLabelFmtOffset] = 0;
-            }
-            else
-            {
-                nativeLabelFmt = null;
-            }
-            
-            fixed (ulong* nativeValues = &values)
-            {
-                ImPlotNative.ImPlot_PlotHeatmap_U64Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                if (labelFmtByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelFmt);
-                }
-            }
+            ImPlotNative.ImPlot_PlotHeatmap_U64Ptr(Encoding.UTF8.GetBytes(labelId), ref values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, boundsMax, flags);
         }
         
         /// <summary>
@@ -1713,43 +396,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref float values, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int bins = (int) ImPlotBin.Sturges;
-            double barScale = 1.0;
-            ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = 0;
-            fixed (float* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_FloatPtr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            return ImPlotNative.ImPlot_PlotHistogram_FloatPtr(Encoding.UTF8.GetBytes(labelId), ref values, count, 0, 1.0, new ImPlotRange {Min = 0, Max = 0}, 0);
         }
         
         /// <summary>
@@ -1762,42 +409,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref float values, int count, int bins)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double barScale = 1.0;
-            ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = 0;
-            fixed (float* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_FloatPtr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            return ImPlotNative.ImPlot_PlotHistogram_FloatPtr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, 1.0, new ImPlotRange {Min = 0, Max = 0}, 0);
         }
         
         /// <summary>
@@ -1811,41 +423,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref float values, int count, int bins, double barScale)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = 0;
-            fixed (float* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_FloatPtr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            return ImPlotNative.ImPlot_PlotHistogram_FloatPtr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, new ImPlotRange {Min = 0, Max = 0}, 0);
         }
         
         /// <summary>
@@ -1860,40 +438,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref float values, int count, int bins, double barScale, ImPlotRange range)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotHistogramFlags flags = 0;
-            fixed (float* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_FloatPtr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            return ImPlotNative.ImPlot_PlotHistogram_FloatPtr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, range, 0);
         }
         
         /// <summary>
@@ -1909,39 +454,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref float values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (float* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_FloatPtr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            return ImPlotNative.ImPlot_PlotHistogram_FloatPtr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, range, flags);
         }
         
         /// <summary>
@@ -1953,43 +466,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref double values, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int bins = (int) ImPlotBin.Sturges;
-            double barScale = 1.0;
-            ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = 0;
-            fixed (double* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_doublePtr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            return ImPlotNative.ImPlot_PlotHistogram_doublePtr(Encoding.UTF8.GetBytes(labelId), ref values, count, 0, 1.0, new ImPlotRange {Min = 0, Max = 0}, 0);
         }
         
         /// <summary>
@@ -2002,42 +479,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref double values, int count, int bins)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double barScale = 1.0;
-            ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = 0;
-            fixed (double* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_doublePtr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            return ImPlotNative.ImPlot_PlotHistogram_doublePtr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, 1.0, new ImPlotRange {Min = 0, Max = 0}, 0);
         }
         
         /// <summary>
@@ -2051,41 +493,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref double values, int count, int bins, double barScale)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = 0;
-            fixed (double* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_doublePtr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            return ImPlotNative.ImPlot_PlotHistogram_doublePtr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, new ImPlotRange {Min = 0, Max = 0}, 0);
         }
         
         /// <summary>
@@ -2100,40 +508,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref double values, int count, int bins, double barScale, ImPlotRange range)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotHistogramFlags flags = 0;
-            fixed (double* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_doublePtr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            return ImPlotNative.ImPlot_PlotHistogram_doublePtr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, range, 0);
         }
         
         /// <summary>
@@ -2149,39 +524,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref double values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (double* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_doublePtr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            return ImPlotNative.ImPlot_PlotHistogram_doublePtr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, range, flags);
         }
         
         /// <summary>
@@ -2193,43 +536,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref sbyte values, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int bins = (int) ImPlotBin.Sturges;
-            double barScale = 1.0;
-            ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = 0;
-            fixed (sbyte* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_S8Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            return ImPlotNative.ImPlot_PlotHistogram_S8Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, 0, 1.0, new ImPlotRange {Min = 0, Max = 0}, 0);
         }
         
         /// <summary>
@@ -2242,42 +549,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref sbyte values, int count, int bins)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double barScale = 1.0;
-            ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = 0;
-            fixed (sbyte* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_S8Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            return ImPlotNative.ImPlot_PlotHistogram_S8Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, 1.0, new ImPlotRange {Min = 0, Max = 0}, 0);
         }
         
         /// <summary>
@@ -2291,41 +563,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref sbyte values, int count, int bins, double barScale)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = 0;
-            fixed (sbyte* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_S8Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            return ImPlotNative.ImPlot_PlotHistogram_S8Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, new ImPlotRange {Min = 0, Max = 0}, 0);
         }
         
         /// <summary>
@@ -2340,40 +578,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref sbyte values, int count, int bins, double barScale, ImPlotRange range)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotHistogramFlags flags = 0;
-            fixed (sbyte* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_S8Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            return ImPlotNative.ImPlot_PlotHistogram_S8Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, range, 0);
         }
         
         /// <summary>
@@ -2389,39 +594,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref sbyte values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            fixed (sbyte* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_S8Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            return ImPlotNative.ImPlot_PlotHistogram_S8Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, range, flags);
         }
         
         /// <summary>
@@ -2433,43 +606,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref byte values, int count)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            int bins = (int) ImPlotBin.Sturges;
-            double barScale = 1.0;
-            ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = 0;
-            fixed (byte* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_U8Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            return ImPlotNative.ImPlot_PlotHistogram_U8Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, 0, 1.0, new ImPlotRange {Min = 0, Max = 0}, 0);
         }
         
         /// <summary>
@@ -2482,42 +619,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref byte values, int count, int bins)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            double barScale = 1.0;
-            ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = 0;
-            fixed (byte* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_U8Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            return ImPlotNative.ImPlot_PlotHistogram_U8Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, 1.0, new ImPlotRange {Min = 0, Max = 0}, 0);
         }
         
         /// <summary>
@@ -2531,42 +633,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The double</returns>
         public static double PlotHistogram(string labelId, ref byte values, int count, int bins, double barScale)
         {
-            byte* nativeLabelId;
-            int labelIdByteCount = 0;
-            if (labelId != null)
-            {
-                labelIdByteCount = Encoding.UTF8.GetByteCount(labelId);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabelId = Util.Allocate(labelIdByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelIdStackBytes = stackalloc byte[labelIdByteCount + 1];
-                    nativeLabelId = nativeLabelIdStackBytes;
-                }
-                
-                int nativeLabelIdOffset = Util.GetUtf8(labelId, nativeLabelId, labelIdByteCount);
-                nativeLabelId[nativeLabelIdOffset] = 0;
-            }
-            else
-            {
-                nativeLabelId = null;
-            }
-            
-            ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = 0;
-            fixed (byte* nativeValues = &values)
-            {
-                double ret = ImPlotNative.ImPlot_PlotHistogram_U8Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
-                if (labelIdByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabelId);
-                }
-                
-                return ret;
-            }
+            return ImPlotNative.ImPlot_PlotHistogram_U8Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, bins, barScale, new ImPlotRange {Min = 0, Max = 0}, 0);
         }
-        
     }
 }

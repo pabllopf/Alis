@@ -43,6 +43,7 @@ using Alis.Core.Graphic.Sdl2.Structs;
 using Alis.Extension.Graphic.ImGui;
 using Alis.Extension.Graphic.ImGui.Extras.GuizMo;
 using Alis.Extension.Graphic.ImGui.Extras.Node;
+using Alis.Extension.Graphic.ImGui.Extras.Plot;
 using Alis.Extension.Graphic.ImGui.Extras.Plot.Native;
 using Alis.Extension.Graphic.ImGui.Native;
 using Alis.Extension.Graphic.OpenGL;
@@ -565,6 +566,20 @@ namespace Alis.App.Engine
             ImGui.End();
             
             ImPlot.ShowDemoWindow();
+            
+            // Show simple plot of bars plot demo
+            ImGui.Begin("Simple plot");
+            ImGui.Text("Demonstrating a basic bar plot with horizontal and vertical bars.");
+            float[] data = new float[10] {3,2,4,4,5,6,6,8,9,10};
+           float[] lineData = new float[10] {3,2,4,4,5,6,6,8,9,10};
+            if (ImPlot.BeginPlot("Bar Plot")) {
+                ImPlot.PlotBars("Horizontal",  data, 10, 0.7, 1, ImPlotBarsFlags.None);
+                ImPlot.PlotLine("Vertical", lineData, 10, 1, 1, ImPlotLineFlags.None, 0);
+                ImPlot.EndPlot();
+            }
+            
+            ImGui.End();
+            
         }
         
         /// <summary>
