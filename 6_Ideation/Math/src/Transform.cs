@@ -69,32 +69,6 @@ namespace Alis.Core.Aspect.Math
             Scale = scale;
         }
         
-        /// <summary>
-        /// Gets the object data using the specified info
-        /// </summary>
-        /// <param name="info">The info</param>
-        /// <param name="context">The context</param>
-        [ExcludeFromCodeCoverage]
-        public void GetObjectData(SerializationInfo info, StreamingContext context)
-        {
-            info.AddValue("Position", Position);
-            info.AddValue("Scale", Scale);
-            info.AddValue("Rotation", Rotation);
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Transform"/> class
-        /// </summary>
-        /// <param name="info">The info</param>
-        /// <param name="context">The context</param>
-        [ExcludeFromCodeCoverage]
-        public Transform(SerializationInfo info, StreamingContext context)
-        {
-            Position = (Vector2)info.GetValue("Position", typeof(Vector2));
-            Scale = (Vector2)info.GetValue("Scale", typeof(Vector2));
-            Rotation = (Rotation)info.GetValue("Rotation", typeof(Rotation));
-        }
-        
         /// <summary>Set this to the identity transform.</summary>
         public void SetIdentity()
         {
@@ -110,5 +84,15 @@ namespace Alis.Core.Aspect.Math
             Position = position;
             Rotation.Set(angle);
         }
+
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue("position", Position);
+            info.AddValue("scale", Scale);
+            info.AddValue("rotation", Rotation);
+        }
+        
+        
+        
     }
 }

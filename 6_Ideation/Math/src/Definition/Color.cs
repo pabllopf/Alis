@@ -122,24 +122,10 @@ namespace Alis.Core.Aspect.Math.Definition
         [ExcludeFromCodeCoverage]
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            info.AddValue("R", R);
-            info.AddValue("G", G);
-            info.AddValue("B", B);
-            info.AddValue("A", A);
-        }
-        
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Color"/> class
-        /// </summary>
-        /// <param name="info">The info</param>
-        /// <param name="context">The context</param>
-        [ExcludeFromCodeCoverage]
-        public Color(SerializationInfo info, StreamingContext context)
-        {
-            R = info.GetByte("R");
-            G = info.GetByte("G");
-            B = info.GetByte("B");
-            A = info.GetByte("A");
+            info.AddValue("r", R);
+            info.AddValue("g", G);
+            info.AddValue("b", B);
+            info.AddValue("a", A);
         }
     }
 }

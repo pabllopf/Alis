@@ -94,24 +94,10 @@ namespace Alis.Core.Aspect.Math.Vector
         [ExcludeFromCodeCoverage]
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-             info.AddValue("X", X);
-                info.AddValue("Y", Y);
-                info.AddValue("Z", Z);
-                info.AddValue("W", W);
-        }
-        
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Vector4"/> class
-        /// </summary>
-        /// <param name="info">The info</param>
-        /// <param name="context">The context</param>
-        [ExcludeFromCodeCoverage]
-        public Vector4(SerializationInfo info, StreamingContext context)
-        {
-            X = info.GetSingle("X");
-            Y = info.GetSingle("Y");
-            Z = info.GetSingle("Z");
-            W = info.GetSingle("W");
+             info.AddValue("x", X);
+                info.AddValue("y", Y);
+                info.AddValue("z", Z);
+                info.AddValue("w", W);
         }
     }
 }
