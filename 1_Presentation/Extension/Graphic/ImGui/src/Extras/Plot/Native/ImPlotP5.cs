@@ -525,9 +525,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             /// <param name="values">The values</param>
             /// <param name="rows">The rows</param>
             /// <param name="cols">The cols</param>
-            public static void PlotHeatmap(string labelId, ref float values, int rows, int cols)
+            public static void PlotHeatmap(string labelId, float[] values, int rows, int cols)
             {
-                ImPlotNative.ImPlot_PlotHeatmap_FloatPtr(Encoding.UTF8.GetBytes(labelId), ref values, rows, cols, 0, 0, Encoding.UTF8.GetBytes("%.1f"), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
+                ImPlotNative.ImPlot_PlotHeatmap_FloatPtr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, 0, 0, Encoding.UTF8.GetBytes("%.1f"), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
             }
             
             /// <summary>
@@ -538,9 +538,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             /// <param name="rows">The rows</param>
             /// <param name="cols">The cols</param>
             /// <param name="scaleMin">The scale min</param>
-            public static void PlotHeatmap(string labelId, ref float values, int rows, int cols, double scaleMin)
+            public static void PlotHeatmap(string labelId, float[] values, int rows, int cols, double scaleMin)
             {
-                ImPlotNative.ImPlot_PlotHeatmap_FloatPtr(Encoding.UTF8.GetBytes(labelId), ref values, rows, cols, scaleMin, 0, Encoding.UTF8.GetBytes("%.1f"), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
+                ImPlotNative.ImPlot_PlotHeatmap_FloatPtr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, 0, Encoding.UTF8.GetBytes("%.1f"), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
             }
             
             /// <summary>
@@ -552,9 +552,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             /// <param name="cols">The cols</param>
             /// <param name="scaleMin">The scale min</param>
             /// <param name="scaleMax">The scale max</param>
-            public static void PlotHeatmap(string labelId, ref float values, int rows, int cols, double scaleMin, double scaleMax)
+            public static void PlotHeatmap(string labelId, float[] values, int rows, int cols, double scaleMin, double scaleMax)
             {
-                ImPlotNative.ImPlot_PlotHeatmap_FloatPtr(Encoding.UTF8.GetBytes(labelId), ref values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes("%.1f"), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
+                ImPlotNative.ImPlot_PlotHeatmap_FloatPtr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes("%.1f"), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
             }
             
             /// <summary>
@@ -567,9 +567,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             /// <param name="scaleMin">The scale min</param>
             /// <param name="scaleMax">The scale max</param>
             /// <param name="labelFmt">The label fmt</param>
-            public static void PlotHeatmap(string labelId, ref float values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt)
+            public static void PlotHeatmap(string labelId, float[] values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt)
             {
-                ImPlotNative.ImPlot_PlotHeatmap_FloatPtr(Encoding.UTF8.GetBytes(labelId), ref values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
+                ImPlotNative.ImPlot_PlotHeatmap_FloatPtr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
             }
             
             /// <summary>
@@ -583,9 +583,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             /// <param name="scaleMax">The scale max</param>
             /// <param name="labelFmt">The label fmt</param>
             /// <param name="boundsMin">The bounds min</param>
-            public static void PlotHeatmap(string labelId, ref float values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt, ImPlotPoint boundsMin)
+            public static void PlotHeatmap(string labelId, float[] values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt, ImPlotPoint boundsMin)
             {
-                ImPlotNative.ImPlot_PlotHeatmap_FloatPtr(Encoding.UTF8.GetBytes(labelId), ref values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, new ImPlotPoint {X = 1, Y = 1}, 0);
+                ImPlotNative.ImPlot_PlotHeatmap_FloatPtr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, new ImPlotPoint {X = 1, Y = 1}, 0);
             }
             
             /// <summary>
@@ -600,9 +600,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             /// <param name="labelFmt">The label fmt</param>
             /// <param name="boundsMin">The bounds min</param>
             /// <param name="boundsMax">The bounds max</param>
-            public static void PlotHeatmap(string labelId, ref float values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax)
+            public static void PlotHeatmap(string labelId, float[] values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax)
             {
-                ImPlotNative.ImPlot_PlotHeatmap_FloatPtr(Encoding.UTF8.GetBytes(labelId), ref values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, boundsMax, 0);
+                ImPlotNative.ImPlot_PlotHeatmap_FloatPtr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, boundsMax, 0);
             }
             
             /// <summary>
@@ -618,9 +618,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             /// <param name="boundsMin">The bounds min</param>
             /// <param name="boundsMax">The bounds max</param>
             /// <param name="flags">The flags</param>
-            public static void PlotHeatmap(string labelId, ref float values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax, ImPlotHeatmapFlags flags)
+            public static void PlotHeatmap(string labelId, float[] values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax, ImPlotHeatmapFlags flags)
             {
-                ImPlotNative.ImPlot_PlotHeatmap_FloatPtr(Encoding.UTF8.GetBytes(labelId), ref values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, boundsMax, flags);
+                ImPlotNative.ImPlot_PlotHeatmap_FloatPtr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), boundsMin, boundsMax, flags);
             }
             
             /// <summary>
@@ -630,9 +630,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             /// <param name="values">The values</param>
             /// <param name="rows">The rows</param>
             /// <param name="cols">The cols</param>
-            public static void PlotHeatmap(string labelId, ref double values, int rows, int cols)
+            public static void PlotHeatmap(string labelId, double[] values, int rows, int cols)
             {
-                ImPlotNative.ImPlot_PlotHeatmap_doublePtr(Encoding.UTF8.GetBytes(labelId), ref values, rows, cols, 0, 0, Encoding.UTF8.GetBytes("%.1f"), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
+                ImPlotNative.ImPlot_PlotHeatmap_doublePtr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, 0, 0, Encoding.UTF8.GetBytes("%.1f"), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
             }
             
             /// <summary>
@@ -643,9 +643,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             /// <param name="rows">The rows</param>
             /// <param name="cols">The cols</param>
             /// <param name="scaleMin">The scale min</param>
-            public static void PlotHeatmap(string labelId, ref double values, int rows, int cols, double scaleMin)
+            public static void PlotHeatmap(string labelId, double[] values, int rows, int cols, double scaleMin)
             {
-                ImPlotNative.ImPlot_PlotHeatmap_doublePtr(Encoding.UTF8.GetBytes(labelId), ref values, rows, cols, scaleMin, 0, Encoding.UTF8.GetBytes("%.1f"), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
+                ImPlotNative.ImPlot_PlotHeatmap_doublePtr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, 0, Encoding.UTF8.GetBytes("%.1f"), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
             }
             
             /// <summary>
@@ -657,9 +657,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             /// <param name="cols">The cols</param>
             /// <param name="scaleMin">The scale min</param>
             /// <param name="scaleMax">The scale max</param>
-            public static void PlotHeatmap(string labelId, ref double values, int rows, int cols, double scaleMin, double scaleMax)
+            public static void PlotHeatmap(string labelId, double[] values, int rows, int cols, double scaleMin, double scaleMax)
             {
-                ImPlotNative.ImPlot_PlotHeatmap_doublePtr(Encoding.UTF8.GetBytes(labelId), ref values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes("%.1f"), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
+                ImPlotNative.ImPlot_PlotHeatmap_doublePtr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes("%.1f"), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
             }
             
             /// <summary>
@@ -672,9 +672,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             /// <param name="scaleMin">The scale min</param>
             /// <param name="scaleMax">The scale max</param>
             /// <param name="labelFmt">The label fmt</param>
-            public static void PlotHeatmap(string labelId, ref double values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt)
+            public static void PlotHeatmap(string labelId, double[] values, int rows, int cols, double scaleMin, double scaleMax, string labelFmt)
             {
-                ImPlotNative.ImPlot_PlotHeatmap_doublePtr(Encoding.UTF8.GetBytes(labelId), ref values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
+                ImPlotNative.ImPlot_PlotHeatmap_doublePtr(Encoding.UTF8.GetBytes(labelId), values, rows, cols, scaleMin, scaleMax, Encoding.UTF8.GetBytes(labelFmt), new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0);
             }
         }
 }

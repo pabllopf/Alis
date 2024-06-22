@@ -46,7 +46,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="itemCount">The item count</param>
         /// <param name="groupCount">The group count</param>
         /// <param name="groupSize">The group size</param>
-        public static void PlotBarGroups(string[] labelIds, ref uint values, int itemCount, int groupCount, double groupSize)
+        public static void PlotBarGroups(string[] labelIds, uint[] values, int itemCount, int groupCount, double groupSize)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
@@ -54,7 +54,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
             
-            ImPlotNative.ImPlot_PlotBarGroups_U32Ptr(nativeLabelIds, ref values, itemCount, groupCount, groupSize, 0, 0);
+            ImPlotNative.ImPlot_PlotBarGroups_U32Ptr(nativeLabelIds, values, itemCount, groupCount, groupSize, 0, 0);
         }
         
         /// <summary>
@@ -66,7 +66,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="groupCount">The group count</param>
         /// <param name="groupSize">The group size</param>
         /// <param name="shift">The shift</param>
-        public static void PlotBarGroups(string[] labelIds, ref uint values, int itemCount, int groupCount, double groupSize, double shift)
+        public static void PlotBarGroups(string[] labelIds, uint[] values, int itemCount, int groupCount, double groupSize, double shift)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
@@ -74,7 +74,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
             
-            ImPlotNative.ImPlot_PlotBarGroups_U32Ptr(nativeLabelIds, ref values, itemCount, groupCount, groupSize, shift, 0);
+            ImPlotNative.ImPlot_PlotBarGroups_U32Ptr(nativeLabelIds, values, itemCount, groupCount, groupSize, shift, 0);
         }
         
         /// <summary>
@@ -87,7 +87,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="groupSize">The group size</param>
         /// <param name="shift">The shift</param>
         /// <param name="flags">The flags</param>
-        public static void PlotBarGroups(string[] labelIds, ref uint values, int itemCount, int groupCount, double groupSize, double shift, ImPlotBarGroupsFlags flags)
+        public static void PlotBarGroups(string[] labelIds, uint[] values, int itemCount, int groupCount, double groupSize, double shift, ImPlotBarGroupsFlags flags)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
@@ -95,7 +95,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
             
-            ImPlotNative.ImPlot_PlotBarGroups_U32Ptr(nativeLabelIds, ref values, itemCount, groupCount, groupSize, shift, flags);
+            ImPlotNative.ImPlot_PlotBarGroups_U32Ptr(nativeLabelIds, values, itemCount, groupCount, groupSize, shift, flags);
         }
         
         /// <summary>
@@ -105,7 +105,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="values">The values</param>
         /// <param name="itemCount">The item count</param>
         /// <param name="groupCount">The group count</param>
-        public static void PlotBarGroups(string[] labelIds, ref long values, int itemCount, int groupCount)
+        public static void PlotBarGroups(string[] labelIds, long[] values, int itemCount, int groupCount)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
@@ -116,7 +116,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double groupSize = 0.67;
             double shift = 0;
             ImPlotBarGroupsFlags flags = 0;
-            ImPlotNative.ImPlot_PlotBarGroups_S64Ptr(nativeLabelIds, ref values, itemCount, groupCount, groupSize, shift, flags);
+            ImPlotNative.ImPlot_PlotBarGroups_S64Ptr(nativeLabelIds, values, itemCount, groupCount, groupSize, shift, flags);
         }
         
         /// <summary>
@@ -127,7 +127,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="itemCount">The item count</param>
         /// <param name="groupCount">The group count</param>
         /// <param name="groupSize">The group size</param>
-        public static void PlotBarGroups(string[] labelIds, ref long values, int itemCount, int groupCount, double groupSize)
+        public static void PlotBarGroups(string[] labelIds, long[] values, int itemCount, int groupCount, double groupSize)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
@@ -137,7 +137,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             
             double shift = 0;
             ImPlotBarGroupsFlags flags = 0;
-            ImPlotNative.ImPlot_PlotBarGroups_S64Ptr(nativeLabelIds, ref values, itemCount, groupCount, groupSize, shift, flags);
+            ImPlotNative.ImPlot_PlotBarGroups_S64Ptr(nativeLabelIds, values, itemCount, groupCount, groupSize, shift, flags);
         }
         
         /// <summary>
@@ -149,7 +149,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="groupCount">The group count</param>
         /// <param name="groupSize">The group size</param>
         /// <param name="shift">The shift</param>
-        public static void PlotBarGroups(string[] labelIds, ref long values, int itemCount, int groupCount, double groupSize, double shift)
+        public static void PlotBarGroups(string[] labelIds, long[] values, int itemCount, int groupCount, double groupSize, double shift)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
@@ -158,7 +158,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             }
             
             ImPlotBarGroupsFlags flags = 0;
-            ImPlotNative.ImPlot_PlotBarGroups_S64Ptr(nativeLabelIds, ref values, itemCount, groupCount, groupSize, shift, flags);
+            ImPlotNative.ImPlot_PlotBarGroups_S64Ptr(nativeLabelIds, values, itemCount, groupCount, groupSize, shift, flags);
         }
         
         /// <summary>
@@ -171,7 +171,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="groupSize">The group size</param>
         /// <param name="shift">The shift</param>
         /// <param name="flags">The flags</param>
-        public static void PlotBarGroups(string[] labelIds, ref long values, int itemCount, int groupCount, double groupSize, double shift, ImPlotBarGroupsFlags flags)
+        public static void PlotBarGroups(string[] labelIds, long[] values, int itemCount, int groupCount, double groupSize, double shift, ImPlotBarGroupsFlags flags)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
@@ -179,7 +179,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
             
-            ImPlotNative.ImPlot_PlotBarGroups_S64Ptr(nativeLabelIds, ref values, itemCount, groupCount, groupSize, shift, flags);
+            ImPlotNative.ImPlot_PlotBarGroups_S64Ptr(nativeLabelIds, values, itemCount, groupCount, groupSize, shift, flags);
         }
         
         /// <summary>
@@ -189,14 +189,14 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="values">The values</param>
         /// <param name="itemCount">The item count</param>
         /// <param name="groupCount">The group count</param>
-        public static void PlotBarGroups(string[] labelIds, ref ulong values, int itemCount, int groupCount)
+        public static void PlotBarGroups(string[] labelIds, ulong[] values, int itemCount, int groupCount)
         {
            byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
-            ImPlotNative.ImPlot_PlotBarGroups_U64Ptr(nativeLabelIds, ref values, itemCount, groupCount, 0, 0, 0);
+            ImPlotNative.ImPlot_PlotBarGroups_U64Ptr(nativeLabelIds, values, itemCount, groupCount, 0, 0, 0);
         }
         
         /// <summary>
@@ -207,7 +207,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="itemCount">The item count</param>
         /// <param name="groupCount">The group count</param>
         /// <param name="groupSize">The group size</param>
-        public static void PlotBarGroups(string[] labelIds, ref ulong values, int itemCount, int groupCount, double groupSize)
+        public static void PlotBarGroups(string[] labelIds, ulong[] values, int itemCount, int groupCount, double groupSize)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
@@ -215,7 +215,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
             double shift = 0;
-            ImPlotNative.ImPlot_PlotBarGroups_U64Ptr(nativeLabelIds, ref values, itemCount, groupCount, groupSize, shift, 0);
+            ImPlotNative.ImPlot_PlotBarGroups_U64Ptr(nativeLabelIds, values, itemCount, groupCount, groupSize, shift, 0);
         }
         
         /// <summary>
@@ -227,14 +227,14 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="groupCount">The group count</param>
         /// <param name="groupSize">The group size</param>
         /// <param name="shift">The shift</param>
-        public static void PlotBarGroups(string[] labelIds, ref ulong values, int itemCount, int groupCount, double groupSize, double shift)
+        public static void PlotBarGroups(string[] labelIds, ulong[] values, int itemCount, int groupCount, double groupSize, double shift)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
-            ImPlotNative.ImPlot_PlotBarGroups_U64Ptr(nativeLabelIds, ref values, itemCount, groupCount, groupSize, shift, 0);
+            ImPlotNative.ImPlot_PlotBarGroups_U64Ptr(nativeLabelIds, values, itemCount, groupCount, groupSize, shift, 0);
         }
         
         /// <summary>
@@ -247,14 +247,14 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="groupSize">The group size</param>
         /// <param name="shift">The shift</param>
         /// <param name="flags">The flags</param>
-        public static void PlotBarGroups(string[] labelIds, ref ulong values, int itemCount, int groupCount, double groupSize, double shift, ImPlotBarGroupsFlags flags)
+        public static void PlotBarGroups(string[] labelIds, ulong[] values, int itemCount, int groupCount, double groupSize, double shift, ImPlotBarGroupsFlags flags)
         {
             byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
-            ImPlotNative.ImPlot_PlotBarGroups_U64Ptr(nativeLabelIds, ref values, itemCount, groupCount, groupSize, shift, flags);
+            ImPlotNative.ImPlot_PlotBarGroups_U64Ptr(nativeLabelIds, values, itemCount, groupCount, groupSize, shift, flags);
         }
         
         /// <summary>
@@ -344,9 +344,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        public static void PlotBars(string labelId, ref double values, int count)
+        public static void PlotBars(string labelId, double[] values, int count)
         {
-            ImPlotNative.ImPlot_PlotBars_doublePtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 0.67, 0, 0, 0, 0);
+            ImPlotNative.ImPlot_PlotBars_doublePtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 0.67, 0, 0, 0, 0);
         }
         
         /// <summary>
@@ -356,9 +356,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
         /// <param name="barSize">The bar size</param>
-        public static void PlotBars(string labelId, ref double values, int count, double barSize)
+        public static void PlotBars(string labelId, double[] values, int count, double barSize)
         {
-            ImPlotNative.ImPlot_PlotBars_doublePtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, barSize, 0, 0, 0, 0);
+            ImPlotNative.ImPlot_PlotBars_doublePtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, 0, 0, 0, 0);
         }
         
         /// <summary>
@@ -369,9 +369,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         /// <param name="barSize">The bar size</param>
         /// <param name="shift">The shift</param>
-        public static void PlotBars(string labelId, ref double values, int count, double barSize, double shift)
+        public static void PlotBars(string labelId, double[] values, int count, double barSize, double shift)
         {
-            ImPlotNative.ImPlot_PlotBars_doublePtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, barSize, shift, 0, 0, 0);
+            ImPlotNative.ImPlot_PlotBars_doublePtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, 0, 0, 0);
         }
         
         /// <summary>
@@ -383,9 +383,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="barSize">The bar size</param>
         /// <param name="shift">The shift</param>
         /// <param name="flags">The flags</param>
-        public static void PlotBars(string labelId, ref double values, int count, double barSize, double shift, ImPlotBarsFlags flags)
+        public static void PlotBars(string labelId, double[] values, int count, double barSize, double shift, ImPlotBarsFlags flags)
         {
-            ImPlotNative.ImPlot_PlotBars_doublePtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, barSize, shift, flags, 0, 0);
+            ImPlotNative.ImPlot_PlotBars_doublePtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, 0, 0);
         }
         
         /// <summary>
@@ -398,9 +398,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="shift">The shift</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
-        public static void PlotBars(string labelId, ref double values, int count, double barSize, double shift, ImPlotBarsFlags flags, int offset)
+        public static void PlotBars(string labelId, double[] values, int count, double barSize, double shift, ImPlotBarsFlags flags, int offset)
         {
-            ImPlotNative.ImPlot_PlotBars_doublePtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, barSize, shift, flags, offset, 0);
+            ImPlotNative.ImPlot_PlotBars_doublePtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, offset, 0);
         }
         
         /// <summary>
@@ -414,9 +414,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        public static void PlotBars(string labelId, ref double values, int count, double barSize, double shift, ImPlotBarsFlags flags, int offset, int stride)
+        public static void PlotBars(string labelId, double[] values, int count, double barSize, double shift, ImPlotBarsFlags flags, int offset, int stride)
         {
-            ImPlotNative.ImPlot_PlotBars_doublePtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, barSize, shift, flags, offset, stride);
+            ImPlotNative.ImPlot_PlotBars_doublePtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, offset, stride);
         }
         
         /// <summary>
@@ -425,9 +425,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        public static void PlotBars(string labelId, ref sbyte values, int count)
+        public static void PlotBars(string labelId, sbyte[] values, int count)
         {
-          ImPlotNative.ImPlot_PlotBars_S8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 0.67, 0, 0, 0, 0);
+          ImPlotNative.ImPlot_PlotBars_S8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 0.67, 0, 0, 0, 0);
         }
         
         /// <summary>
@@ -437,9 +437,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
         /// <param name="barSize">The bar size</param>
-        public static void PlotBars(string labelId, ref sbyte values, int count, double barSize)
+        public static void PlotBars(string labelId, sbyte[] values, int count, double barSize)
         {
-            ImPlotNative.ImPlot_PlotBars_S8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, barSize, 0, 0, 0, 0);
+            ImPlotNative.ImPlot_PlotBars_S8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, 0, 0, 0, 0);
         }
         
         /// <summary>
@@ -450,9 +450,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         /// <param name="barSize">The bar size</param>
         /// <param name="shift">The shift</param>
-        public static void PlotBars(string labelId, ref sbyte values, int count, double barSize, double shift)
+        public static void PlotBars(string labelId, sbyte[] values, int count, double barSize, double shift)
         {
-            ImPlotNative.ImPlot_PlotBars_S8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, barSize, shift, 0, 0, 0);
+            ImPlotNative.ImPlot_PlotBars_S8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, 0, 0, 0);
         }
         
         /// <summary>
@@ -466,7 +466,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         public static void PlotBars(string labelId, sbyte[] values, int count, double barSize, double shift, ImPlotBarsFlags flags)
         {
-            ImPlotNative.ImPlot_PlotBars_S8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values[0], count, barSize, shift, flags, 0, 0);
+            ImPlotNative.ImPlot_PlotBars_S8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, 0, 0);
         }
         
         /// <summary>
@@ -479,90 +479,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="shift">The shift</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
-        public static void PlotBars(string labelId, ref sbyte values, int count, double barSize, double shift, ImPlotBarsFlags flags, int offset)
+        public static void PlotBars(string labelId, sbyte[] values, int count, double barSize, double shift, ImPlotBarsFlags flags, int offset)
         {
-            ImPlotNative.ImPlot_PlotBars_S8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, barSize, shift, flags, offset, 0);
-        }
-        
-        /// <summary>
-        ///     Plots the bars using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="barSize">The bar size</param>
-        /// <param name="shift">The shift</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        /// <param name="stride">The stride</param>
-        public static void PlotBars(string labelId, ref sbyte values, int count, double barSize, double shift, ImPlotBarsFlags flags, int offset, int stride)
-        {
-            ImPlotNative.ImPlot_PlotBars_S8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, barSize, shift, flags, offset, stride);
-        }
-        
-        /// <summary>
-        ///     Plots the bars using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        public static void PlotBars(string labelId, ref byte values, int count)
-        {
-            ImPlotNative.ImPlot_PlotBars_U8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 0.67, 0, 0, 0, 0);
-        }
-        
-        /// <summary>
-        ///     Plots the bars using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="barSize">The bar size</param>
-        public static void PlotBars(string labelId, ref byte values, int count, double barSize)
-        {
-            ImPlotNative.ImPlot_PlotBars_U8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, barSize, 0, 0, 0, 0);
-        }
-        
-        /// <summary>
-        ///     Plots the bars using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="barSize">The bar size</param>
-        /// <param name="shift">The shift</param>
-        public static void PlotBars(string labelId, ref byte values, int count, double barSize, double shift)
-        {
-            ImPlotNative.ImPlot_PlotBars_U8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, barSize, shift, 0, 0, 0);
-        }
-        
-        /// <summary>
-        ///     Plots the bars using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="barSize">The bar size</param>
-        /// <param name="shift">The shift</param>
-        /// <param name="flags">The flags</param>
-        public static void PlotBars(string labelId, ref byte values, int count, double barSize, double shift, ImPlotBarsFlags flags)
-        {
-            ImPlotNative.ImPlot_PlotBars_U8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, barSize, shift, flags, 0, 0);
-        }
-        
-        /// <summary>
-        ///     Plots the bars using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="barSize">The bar size</param>
-        /// <param name="shift">The shift</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        public static void PlotBars(string labelId, ref byte values, int count, double barSize, double shift, ImPlotBarsFlags flags, int offset)
-        {
-            ImPlotNative.ImPlot_PlotBars_U8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, barSize, shift, flags, offset, 0);
+            ImPlotNative.ImPlot_PlotBars_S8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, offset, 0);
         }
         
         /// <summary>
@@ -576,9 +495,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        public static void PlotBars(string labelId, ref byte values, int count, double barSize, double shift, ImPlotBarsFlags flags, int offset, int stride)
+        public static void PlotBars(string labelId, sbyte[] values, int count, double barSize, double shift, ImPlotBarsFlags flags, int offset, int stride)
         {
-            ImPlotNative.ImPlot_PlotBars_U8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, barSize, shift, flags, offset, stride);
+            ImPlotNative.ImPlot_PlotBars_S8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, offset, stride);
         }
         
         /// <summary>
@@ -587,21 +506,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        public static void PlotBars(string labelId, ref short values, int count)
+        public static void PlotBars(string labelId, byte[] values, int count)
         {
-            ImPlotNative.ImPlot_PlotBars_S16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 0.67, 0, 0, 0, 0);
-        }
-        
-        /// <summary>
-        ///     Plots the bars using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="barSize">The bar size</param>
-        public static void PlotBars(string labelId, ref short values, int count, double barSize)
-        {
-            ImPlotNative.ImPlot_PlotBars_S16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, barSize, 0, 0, 0, 0);
+            ImPlotNative.ImPlot_PlotBars_U8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 0.67, 0, 0, 0, 0);
         }
         
         /// <summary>
@@ -611,10 +518,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
         /// <param name="barSize">The bar size</param>
-        /// <param name="shift">The shift</param>
-        public static void PlotBars(string labelId, ref short values, int count, double barSize, double shift)
+        public static void PlotBars(string labelId, byte[] values, int count, double barSize)
         {
-            ImPlotNative.ImPlot_PlotBars_S16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, barSize, shift, 0, 0, 0);
+            ImPlotNative.ImPlot_PlotBars_U8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, 0, 0, 0, 0);
         }
         
         /// <summary>
@@ -625,10 +531,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         /// <param name="barSize">The bar size</param>
         /// <param name="shift">The shift</param>
-        /// <param name="flags">The flags</param>
-        public static void PlotBars(string labelId, ref short values, int count, double barSize, double shift, ImPlotBarsFlags flags)
+        public static void PlotBars(string labelId, byte[] values, int count, double barSize, double shift)
         {
-            ImPlotNative.ImPlot_PlotBars_S16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, barSize, shift, flags, 0, 0);
+            ImPlotNative.ImPlot_PlotBars_U8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, 0, 0, 0);
         }
         
         /// <summary>
@@ -640,10 +545,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="barSize">The bar size</param>
         /// <param name="shift">The shift</param>
         /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        public static void PlotBars(string labelId, ref short values, int count, double barSize, double shift, ImPlotBarsFlags flags, int offset)
+        public static void PlotBars(string labelId, byte[] values, int count, double barSize, double shift, ImPlotBarsFlags flags)
         {
-            ImPlotNative.ImPlot_PlotBars_S16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, barSize, shift, flags, offset, 0);
+            ImPlotNative.ImPlot_PlotBars_U8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, 0, 0);
         }
         
         /// <summary>
@@ -656,75 +560,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="shift">The shift</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
-        /// <param name="stride">The stride</param>
-        public static void PlotBars(string labelId, ref short values, int count, double barSize, double shift, ImPlotBarsFlags flags, int offset, int stride)
+        public static void PlotBars(string labelId, byte[] values, int count, double barSize, double shift, ImPlotBarsFlags flags, int offset)
         {
-            ImPlotNative.ImPlot_PlotBars_S16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, barSize, shift, flags, offset, stride);
-        }
-        
-        /// <summary>
-        ///     Plots the bars using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        public static void PlotBars(string labelId, ref ushort values, int count)
-        {
-            ImPlotNative.ImPlot_PlotBars_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 0.67, 0, 0, 0, 0);
-        }
-        
-        /// <summary>
-        ///     Plots the bars using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="barSize">The bar size</param>
-        public static void PlotBars(string labelId, ref ushort values, int count, double barSize)
-        {
-            ImPlotNative.ImPlot_PlotBars_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, barSize, 0, 0, 0, 0);
-        }
-        
-        /// <summary>
-        ///     Plots the bars using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="barSize">The bar size</param>
-        /// <param name="shift">The shift</param>
-        public static void PlotBars(string labelId, ref ushort values, int count, double barSize, double shift)
-        {
-            ImPlotNative.ImPlot_PlotBars_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, barSize, shift, 0, 0, 0);
-        }
-        
-        /// <summary>
-        ///     Plots the bars using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="barSize">The bar size</param>
-        /// <param name="shift">The shift</param>
-        /// <param name="flags">The flags</param>
-        public static void PlotBars(string labelId, ref ushort values, int count, double barSize, double shift, ImPlotBarsFlags flags)
-        {
-            ImPlotNative.ImPlot_PlotBars_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, barSize, shift, flags, 0, 0);
-        }
-        
-        /// <summary>
-        ///     Plots the bars using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="barSize">The bar size</param>
-        /// <param name="shift">The shift</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        public static void PlotBars(string labelId, ref ushort values, int count, double barSize, double shift, ImPlotBarsFlags flags, int offset)
-        {
-            ImPlotNative.ImPlot_PlotBars_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, barSize, shift, flags, offset, 0);
+            ImPlotNative.ImPlot_PlotBars_U8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, offset, 0);
         }
         
         /// <summary>
@@ -738,9 +576,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        public static void PlotBars(string labelId, ref ushort values, int count, double barSize, double shift, ImPlotBarsFlags flags, int offset, int stride)
+        public static void PlotBars(string labelId, byte[] values, int count, double barSize, double shift, ImPlotBarsFlags flags, int offset, int stride)
         {
-            ImPlotNative.ImPlot_PlotBars_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, barSize, shift, flags, offset, stride);
+            ImPlotNative.ImPlot_PlotBars_U8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, offset, stride);
         }
         
         /// <summary>
@@ -749,9 +587,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        public static void PlotBars(string labelId, ref int values, int count)
+        public static void PlotBars(string labelId, short[] values, int count)
         {
-            ImPlotNative.ImPlot_PlotBars_S32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 0.67, 0, 0, 0, 0);
+            ImPlotNative.ImPlot_PlotBars_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 0.67, 0, 0, 0, 0);
         }
         
         /// <summary>
@@ -761,9 +599,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
         /// <param name="barSize">The bar size</param>
-        public static void PlotBars(string labelId, ref int values, int count, double barSize)
+        public static void PlotBars(string labelId, short[] values, int count, double barSize)
         {
-            ImPlotNative.ImPlot_PlotBars_S32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, barSize, 0, 0, 0, 0);
+            ImPlotNative.ImPlot_PlotBars_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, 0, 0, 0, 0);
         }
         
         /// <summary>
@@ -774,9 +612,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         /// <param name="barSize">The bar size</param>
         /// <param name="shift">The shift</param>
-        public static void PlotBars(string labelId, ref int values, int count, double barSize, double shift)
+        public static void PlotBars(string labelId, short[] values, int count, double barSize, double shift)
         {
-            ImPlotNative.ImPlot_PlotBars_S32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, barSize, shift, 0, 0, 0);
+            ImPlotNative.ImPlot_PlotBars_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, 0, 0, 0);
         }
         
         /// <summary>
@@ -788,9 +626,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="barSize">The bar size</param>
         /// <param name="shift">The shift</param>
         /// <param name="flags">The flags</param>
-        public static void PlotBars(string labelId, ref int values, int count, double barSize, double shift, ImPlotBarsFlags flags)
+        public static void PlotBars(string labelId, short[] values, int count, double barSize, double shift, ImPlotBarsFlags flags)
         {
-            ImPlotNative.ImPlot_PlotBars_S32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, barSize, shift, flags, 0, 0);
+            ImPlotNative.ImPlot_PlotBars_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, 0, 0);
         }
         
         /// <summary>
@@ -803,9 +641,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="shift">The shift</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
-        public static void PlotBars(string labelId, ref int values, int count, double barSize, double shift, ImPlotBarsFlags flags, int offset)
+        public static void PlotBars(string labelId, short[] values, int count, double barSize, double shift, ImPlotBarsFlags flags, int offset)
         {
-            ImPlotNative.ImPlot_PlotBars_S32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, barSize, shift, flags, offset, sizeof(int));
+            ImPlotNative.ImPlot_PlotBars_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, offset, 0);
         }
         
         /// <summary>
@@ -819,9 +657,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        public static void PlotBars(string labelId, ref int values, int count, double barSize, double shift, ImPlotBarsFlags flags, int offset, int stride)
+        public static void PlotBars(string labelId, short[] values, int count, double barSize, double shift, ImPlotBarsFlags flags, int offset, int stride)
         {
-            ImPlotNative.ImPlot_PlotBars_S32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, barSize, shift, flags, offset, stride);
+            ImPlotNative.ImPlot_PlotBars_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, offset, stride);
         }
         
         /// <summary>
@@ -830,9 +668,171 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        public static void PlotBars(string labelId, ref uint values, int count)
+        public static void PlotBars(string labelId, ushort[] values, int count)
         {
-            ImPlotNative.ImPlot_PlotBars_U32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 0.67, 0, 0, 0, sizeof(uint));
+            ImPlotNative.ImPlot_PlotBars_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 0.67, 0, 0, 0, 0);
+        }
+        
+        /// <summary>
+        ///     Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        public static void PlotBars(string labelId, ushort[] values, int count, double barSize)
+        {
+            ImPlotNative.ImPlot_PlotBars_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, 0, 0, 0, 0);
+        }
+        
+        /// <summary>
+        ///     Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="shift">The shift</param>
+        public static void PlotBars(string labelId, ushort[] values, int count, double barSize, double shift)
+        {
+            ImPlotNative.ImPlot_PlotBars_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, 0, 0, 0);
+        }
+        
+        /// <summary>
+        ///     Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
+        public static void PlotBars(string labelId, ushort[] values, int count, double barSize, double shift, ImPlotBarsFlags flags)
+        {
+            ImPlotNative.ImPlot_PlotBars_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, 0, 0);
+        }
+        
+        /// <summary>
+        ///     Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        public static void PlotBars(string labelId, ushort[] values, int count, double barSize, double shift, ImPlotBarsFlags flags, int offset)
+        {
+            ImPlotNative.ImPlot_PlotBars_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, offset, 0);
+        }
+        
+        /// <summary>
+        ///     Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
+        public static void PlotBars(string labelId, ushort[] values, int count, double barSize, double shift, ImPlotBarsFlags flags, int offset, int stride)
+        {
+            ImPlotNative.ImPlot_PlotBars_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, offset, stride);
+        }
+        
+        /// <summary>
+        ///     Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        public static void PlotBars(string labelId, int[] values, int count)
+        {
+            ImPlotNative.ImPlot_PlotBars_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 0.67, 0, 0, 0, 0);
+        }
+        
+        /// <summary>
+        ///     Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        public static void PlotBars(string labelId, int[] values, int count, double barSize)
+        {
+            ImPlotNative.ImPlot_PlotBars_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, 0, 0, 0, 0);
+        }
+        
+        /// <summary>
+        ///     Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="shift">The shift</param>
+        public static void PlotBars(string labelId, int[] values, int count, double barSize, double shift)
+        {
+            ImPlotNative.ImPlot_PlotBars_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, 0, 0, 0);
+        }
+        
+        /// <summary>
+        ///     Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
+        public static void PlotBars(string labelId, int[] values, int count, double barSize, double shift, ImPlotBarsFlags flags)
+        {
+            ImPlotNative.ImPlot_PlotBars_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, 0, 0);
+        }
+        
+        /// <summary>
+        ///     Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        public static void PlotBars(string labelId, int[] values, int count, double barSize, double shift, ImPlotBarsFlags flags, int offset)
+        {
+            ImPlotNative.ImPlot_PlotBars_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, offset, sizeof(int));
+        }
+        
+        /// <summary>
+        ///     Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="barSize">The bar size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
+        public static void PlotBars(string labelId, int[] values, int count, double barSize, double shift, ImPlotBarsFlags flags, int offset, int stride)
+        {
+            ImPlotNative.ImPlot_PlotBars_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, offset, stride);
+        }
+        
+        /// <summary>
+        ///     Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        public static void PlotBars(string labelId, uint[] values, int count)
+        {
+            ImPlotNative.ImPlot_PlotBars_U32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 0.67, 0, 0, 0, sizeof(uint));
         }
     }
 }

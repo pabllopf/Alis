@@ -598,9 +598,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        public static void PlotInfLines(string labelId, ref float values, int count)
+        public static void PlotInfLines(string labelId, float[] values, int count)
         {
-            ImPlotNative.ImPlot_PlotInfLines_FloatPtr(Encoding.UTF8.GetBytes(labelId), ref values, count, 0, 0, sizeof(float));
+            ImPlotNative.ImPlot_PlotInfLines_FloatPtr(Encoding.UTF8.GetBytes(labelId), values, count, 0, 0, sizeof(float));
         }
         
         /// <summary>
@@ -610,22 +610,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
         /// <param name="flags">The flags</param>
-        public static void PlotInfLines(string labelId, ref float values, int count, ImPlotInfLinesFlags flags)
+        public static void PlotInfLines(string labelId, float[] values, int count, ImPlotInfLinesFlags flags)
         {
-            ImPlotNative.ImPlot_PlotInfLines_FloatPtr(Encoding.UTF8.GetBytes(labelId), ref values, count, flags, 0, sizeof(float));
-        }
-        
-        /// <summary>
-        ///     Plots the inf lines using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        public static void PlotInfLines(string labelId, ref float values, int count, ImPlotInfLinesFlags flags, int offset)
-        {
-            ImPlotNative.ImPlot_PlotInfLines_FloatPtr(Encoding.UTF8.GetBytes(labelId), ref values, count, flags, offset, sizeof(float));
+            ImPlotNative.ImPlot_PlotInfLines_FloatPtr(Encoding.UTF8.GetBytes(labelId), values, count, flags, 0, sizeof(float));
         }
         
         /// <summary>
@@ -636,46 +623,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
-        /// <param name="stride">The stride</param>
-        public static void PlotInfLines(string labelId, ref float values, int count, ImPlotInfLinesFlags flags, int offset, int stride)
+        public static void PlotInfLines(string labelId, float[] values, int count, ImPlotInfLinesFlags flags, int offset)
         {
-            ImPlotNative.ImPlot_PlotInfLines_FloatPtr(Encoding.UTF8.GetBytes(labelId), ref values, count, flags, offset, stride);
-        }
-        
-        /// <summary>
-        ///     Plots the inf lines using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        public static void PlotInfLines(string labelId, ref double values, int count)
-        {
-            ImPlotNative.ImPlot_PlotInfLines_doublePtr(Encoding.UTF8.GetBytes(labelId), ref values, count, 0, 0, sizeof(double));
-        }
-        
-        /// <summary>
-        ///     Plots the inf lines using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
-        public static void PlotInfLines(string labelId, ref double values, int count, ImPlotInfLinesFlags flags)
-        {
-            ImPlotNative.ImPlot_PlotInfLines_doublePtr(Encoding.UTF8.GetBytes(labelId), ref values, count, flags, 0, sizeof(double));
-        }
-        
-        /// <summary>
-        ///     Plots the inf lines using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        public static void PlotInfLines(string labelId, ref double values, int count, ImPlotInfLinesFlags flags, int offset)
-        {
-            ImPlotNative.ImPlot_PlotInfLines_doublePtr(Encoding.UTF8.GetBytes(labelId), ref values, count, flags, offset, sizeof(double));
+            ImPlotNative.ImPlot_PlotInfLines_FloatPtr(Encoding.UTF8.GetBytes(labelId), values, count, flags, offset, sizeof(float));
         }
         
         /// <summary>
@@ -687,9 +637,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        public static void PlotInfLines(string labelId, ref double values, int count, ImPlotInfLinesFlags flags, int offset, int stride)
+        public static void PlotInfLines(string labelId, float[] values, int count, ImPlotInfLinesFlags flags, int offset, int stride)
         {
-            ImPlotNative.ImPlot_PlotInfLines_doublePtr(Encoding.UTF8.GetBytes(labelId), ref values, count, flags, offset, stride);
+            ImPlotNative.ImPlot_PlotInfLines_FloatPtr(Encoding.UTF8.GetBytes(labelId), values, count, flags, offset, stride);
         }
         
         /// <summary>
@@ -698,12 +648,62 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        public static void PlotInfLines(string labelId, ref sbyte values, int count)
+        public static void PlotInfLines(string labelId, double[] values, int count)
+        {
+            ImPlotNative.ImPlot_PlotInfLines_doublePtr(Encoding.UTF8.GetBytes(labelId), values, count, 0, 0, sizeof(double));
+        }
+        
+        /// <summary>
+        ///     Plots the inf lines using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        public static void PlotInfLines(string labelId, double[] values, int count, ImPlotInfLinesFlags flags)
+        {
+            ImPlotNative.ImPlot_PlotInfLines_doublePtr(Encoding.UTF8.GetBytes(labelId), values, count, flags, 0, sizeof(double));
+        }
+        
+        /// <summary>
+        ///     Plots the inf lines using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        public static void PlotInfLines(string labelId, double[] values, int count, ImPlotInfLinesFlags flags, int offset)
+        {
+            ImPlotNative.ImPlot_PlotInfLines_doublePtr(Encoding.UTF8.GetBytes(labelId), values, count, flags, offset, sizeof(double));
+        }
+        
+        /// <summary>
+        ///     Plots the inf lines using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
+        public static void PlotInfLines(string labelId, double[] values, int count, ImPlotInfLinesFlags flags, int offset, int stride)
+        {
+            ImPlotNative.ImPlot_PlotInfLines_doublePtr(Encoding.UTF8.GetBytes(labelId), values, count, flags, offset, stride);
+        }
+        
+        /// <summary>
+        ///     Plots the inf lines using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        public static void PlotInfLines(string labelId, sbyte[] values, int count)
         {
             ImPlotInfLinesFlags flags = 0;
             int offset = 0;
             int stride = sizeof(sbyte);
-            ImPlotNative.ImPlot_PlotInfLines_S8Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, flags, offset, stride);
+            ImPlotNative.ImPlot_PlotInfLines_S8Ptr(Encoding.UTF8.GetBytes(labelId), values, count, flags, offset, stride);
         }
         
         /// <summary>
@@ -713,9 +713,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
         /// <param name="flags">The flags</param>
-        public static void PlotInfLines(string labelId, ref sbyte values, int count, ImPlotInfLinesFlags flags)
+        public static void PlotInfLines(string labelId, sbyte[] values, int count, ImPlotInfLinesFlags flags)
         {
-            ImPlotNative.ImPlot_PlotInfLines_S8Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, flags, 0, sizeof(sbyte));
+            ImPlotNative.ImPlot_PlotInfLines_S8Ptr(Encoding.UTF8.GetBytes(labelId), values, count, flags, 0, sizeof(sbyte));
         }
         
         /// <summary>
@@ -726,10 +726,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
-        public static void PlotInfLines(string labelId, ref sbyte values, int count, ImPlotInfLinesFlags flags, int offset)
+        public static void PlotInfLines(string labelId, sbyte[] values, int count, ImPlotInfLinesFlags flags, int offset)
         {
             int stride = sizeof(sbyte);
-            ImPlotNative.ImPlot_PlotInfLines_S8Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, flags, offset, stride);
+            ImPlotNative.ImPlot_PlotInfLines_S8Ptr(Encoding.UTF8.GetBytes(labelId), values, count, flags, offset, stride);
         }
         
         /// <summary>
@@ -741,9 +741,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        public static void PlotInfLines(string labelId, ref sbyte values, int count, ImPlotInfLinesFlags flags, int offset, int stride)
+        public static void PlotInfLines(string labelId, sbyte[] values, int count, ImPlotInfLinesFlags flags, int offset, int stride)
         {
-            ImPlotNative.ImPlot_PlotInfLines_S8Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, flags, offset, stride);
+            ImPlotNative.ImPlot_PlotInfLines_S8Ptr(Encoding.UTF8.GetBytes(labelId), values, count, flags, offset, stride);
         }
         
         /// <summary>
@@ -752,12 +752,12 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        public static void PlotInfLines(string labelId, ref byte values, int count)
+        public static void PlotInfLines(string labelId, byte[] values, int count)
         {
             ImPlotInfLinesFlags flags = 0;
             int offset = 0;
             int stride = sizeof(byte);
-            ImPlotNative.ImPlot_PlotInfLines_U8Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, flags, offset, stride);
+            ImPlotNative.ImPlot_PlotInfLines_U8Ptr(Encoding.UTF8.GetBytes(labelId), values, count, flags, offset, stride);
         }
         
         /// <summary>
@@ -767,9 +767,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
         /// <param name="flags">The flags</param>
-        public static void PlotInfLines(string labelId, ref byte values, int count, ImPlotInfLinesFlags flags)
+        public static void PlotInfLines(string labelId, byte[] values, int count, ImPlotInfLinesFlags flags)
         {
-            ImPlotNative.ImPlot_PlotInfLines_U8Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, flags, 0, sizeof(byte));
+            ImPlotNative.ImPlot_PlotInfLines_U8Ptr(Encoding.UTF8.GetBytes(labelId), values, count, flags, 0, sizeof(byte));
         }
         
         /// <summary>
@@ -780,10 +780,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
-        public static void PlotInfLines(string labelId, ref byte values, int count, ImPlotInfLinesFlags flags, int offset)
+        public static void PlotInfLines(string labelId, byte[] values, int count, ImPlotInfLinesFlags flags, int offset)
         {
             int stride = sizeof(byte);
-            ImPlotNative.ImPlot_PlotInfLines_U8Ptr(Encoding.UTF8.GetBytes(labelId), ref values, count, flags, offset, stride);
+            ImPlotNative.ImPlot_PlotInfLines_U8Ptr(Encoding.UTF8.GetBytes(labelId), values, count, flags, offset, stride);
         }
     }
 }

@@ -380,9 +380,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        public static void PlotShaded(string labelId, ref float values, int count)
+        public static void PlotShaded(string labelId, float[] values, int count)
         {
-            ImPlotNative.ImPlot_PlotShaded_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 0, 1, 0, 0, 0, sizeof(float));
+            ImPlotNative.ImPlot_PlotShaded_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 0, 1, 0, 0, 0, sizeof(float));
         }
         
         /// <summary>
@@ -392,22 +392,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
         /// <param name="yref">The yref</param>
-        public static void PlotShaded(string labelId, ref float values, int count, double yref)
+        public static void PlotShaded(string labelId, float[] values, int count, double yref)
         {
-            ImPlotNative.ImPlot_PlotShaded_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, 1, 0, 0, 0, sizeof(float));
-        }
-        
-        /// <summary>
-        ///     Plots the shaded using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        public static void PlotShaded(string labelId, ref float values, int count, double yref, double xscale)
-        {
-            ImPlotNative.ImPlot_PlotShaded_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, 0, 0, 0, sizeof(float));
+            ImPlotNative.ImPlot_PlotShaded_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, 1, 0, 0, 0, sizeof(float));
         }
         
         /// <summary>
@@ -418,10 +405,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         /// <param name="yref">The yref</param>
         /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        public static void PlotShaded(string labelId, ref float values, int count, double yref, double xscale, double xstart)
+        public static void PlotShaded(string labelId, float[] values, int count, double yref, double xscale)
         {
-            ImPlotNative.ImPlot_PlotShaded_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, xstart, 0, 0, sizeof(float));
+            ImPlotNative.ImPlot_PlotShaded_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, 0, 0, 0, sizeof(float));
         }
         
         /// <summary>
@@ -433,10 +419,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="yref">The yref</param>
         /// <param name="xscale">The xscale</param>
         /// <param name="xstart">The xstart</param>
-        /// <param name="flags">The flags</param>
-        public static void PlotShaded(string labelId, ref float values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags)
+        public static void PlotShaded(string labelId, float[] values, int count, double yref, double xscale, double xstart)
         {
-            ImPlotNative.ImPlot_PlotShaded_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, xstart, flags, 0, sizeof(float));
+            ImPlotNative.ImPlot_PlotShaded_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, 0, 0, sizeof(float));
         }
         
         /// <summary>
@@ -449,10 +434,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="xscale">The xscale</param>
         /// <param name="xstart">The xstart</param>
         /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        public static void PlotShaded(string labelId, ref float values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset)
+        public static void PlotShaded(string labelId, float[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags)
         {
-            ImPlotNative.ImPlot_PlotShaded_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, xstart, flags, offset, sizeof(float));
+            ImPlotNative.ImPlot_PlotShaded_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, flags, 0, sizeof(float));
         }
         
         /// <summary>
@@ -466,91 +450,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="xstart">The xstart</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
-        /// <param name="stride">The stride</param>
-        public static void PlotShaded(string labelId, ref float values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset, int stride)
+        public static void PlotShaded(string labelId, float[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset)
         {
-            ImPlotNative.ImPlot_PlotShaded_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, xstart, flags, offset, stride);
-        }
-        
-        /// <summary>
-        ///     Plots the shaded using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        public static void PlotShaded(string labelId, ref double values, int count)
-        {
-            ImPlotNative.ImPlot_PlotShaded_doublePtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 0, 1, 0, 0, 0, sizeof(double));
-        }
-        
-        /// <summary>
-        ///     Plots the shaded using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="yref">The yref</param>
-        public static void PlotShaded(string labelId, ref double values, int count, double yref)
-        {
-            ImPlotNative.ImPlot_PlotShaded_doublePtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, 1, 0, 0, 0, sizeof(double));
-        }
-        
-        /// <summary>
-        ///     Plots the shaded using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        public static void PlotShaded(string labelId, ref double values, int count, double yref, double xscale)
-        {
-            ImPlotNative.ImPlot_PlotShaded_doublePtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, 0, 0, 0, sizeof(double));
-        }
-        
-        /// <summary>
-        ///     Plots the shaded using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        public static void PlotShaded(string labelId, ref double values, int count, double yref, double xscale, double xstart)
-        {
-            ImPlotNative.ImPlot_PlotShaded_doublePtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, xstart, 0, 0, sizeof(double));
-        }
-        
-        /// <summary>
-        ///     Plots the shaded using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        /// <param name="flags">The flags</param>
-        public static void PlotShaded(string labelId, ref double values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags)
-        {
-            ImPlotNative.ImPlot_PlotShaded_doublePtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, xstart, flags, 0, sizeof(double));
-        }
-        
-        /// <summary>
-        ///     Plots the shaded using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        public static void PlotShaded(string labelId, ref double values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset)
-        {
-            ImPlotNative.ImPlot_PlotShaded_doublePtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, xstart, flags, offset, sizeof(double));
+            ImPlotNative.ImPlot_PlotShaded_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, flags, offset, sizeof(float));
         }
         
         /// <summary>
@@ -565,9 +467,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        public static void PlotShaded(string labelId, ref double values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset, int stride)
+        public static void PlotShaded(string labelId, float[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset, int stride)
         {
-            ImPlotNative.ImPlot_PlotShaded_doublePtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, xstart, flags, offset, stride);
+            ImPlotNative.ImPlot_PlotShaded_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, flags, offset, stride);
         }
         
         /// <summary>
@@ -576,21 +478,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        public static void PlotShaded(string labelId, ref sbyte values, int count)
+        public static void PlotShaded(string labelId, double[] values, int count)
         {
-            ImPlotNative.ImPlot_PlotShaded_S8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 0, 1, 0, 0, 0, sizeof(sbyte));
-        }
-        
-        /// <summary>
-        ///     Plots the shaded using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="yref">The yref</param>
-        public static void PlotShaded(string labelId, ref sbyte values, int count, double yref)
-        {
-            ImPlotNative.ImPlot_PlotShaded_S8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, 1, 0, 0, 0, sizeof(sbyte));
+            ImPlotNative.ImPlot_PlotShaded_doublePtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 0, 1, 0, 0, 0, sizeof(double));
         }
         
         /// <summary>
@@ -600,10 +490,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
         /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        public static void PlotShaded(string labelId, ref sbyte values, int count, double yref, double xscale)
+        public static void PlotShaded(string labelId, double[] values, int count, double yref)
         {
-            ImPlotNative.ImPlot_PlotShaded_S8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, 0, 0, 0, sizeof(sbyte));
+            ImPlotNative.ImPlot_PlotShaded_doublePtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, 1, 0, 0, 0, sizeof(double));
         }
         
         /// <summary>
@@ -614,10 +503,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         /// <param name="yref">The yref</param>
         /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        public static void PlotShaded(string labelId, ref sbyte values, int count, double yref, double xscale, double xstart)
+        public static void PlotShaded(string labelId, double[] values, int count, double yref, double xscale)
         {
-            ImPlotNative.ImPlot_PlotShaded_S8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, xstart, 0, 0, sizeof(sbyte));
+            ImPlotNative.ImPlot_PlotShaded_doublePtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, 0, 0, 0, sizeof(double));
         }
         
         /// <summary>
@@ -629,10 +517,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="yref">The yref</param>
         /// <param name="xscale">The xscale</param>
         /// <param name="xstart">The xstart</param>
-        /// <param name="flags">The flags</param>
-        public static void PlotShaded(string labelId, ref sbyte values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags)
+        public static void PlotShaded(string labelId, double[] values, int count, double yref, double xscale, double xstart)
         {
-            ImPlotNative.ImPlot_PlotShaded_S8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, xstart, flags, 0, sizeof(sbyte));
+            ImPlotNative.ImPlot_PlotShaded_doublePtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, 0, 0, sizeof(double));
         }
         
         /// <summary>
@@ -645,10 +532,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="xscale">The xscale</param>
         /// <param name="xstart">The xstart</param>
         /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        public static void PlotShaded(string labelId, ref sbyte values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset)
+        public static void PlotShaded(string labelId, double[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags)
         {
-            ImPlotNative.ImPlot_PlotShaded_S8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, xstart, flags, offset, sizeof(sbyte));
+            ImPlotNative.ImPlot_PlotShaded_doublePtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, flags, 0, sizeof(double));
         }
         
         /// <summary>
@@ -662,91 +548,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="xstart">The xstart</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
-        /// <param name="stride">The stride</param>
-        public static void PlotShaded(string labelId, ref sbyte values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset, int stride)
+        public static void PlotShaded(string labelId, double[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset)
         {
-            ImPlotNative.ImPlot_PlotShaded_S8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, xstart, flags, offset, stride);
-        }
-        
-        /// <summary>
-        ///     Plots the shaded using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        public static void PlotShaded(string labelId, ref byte values, int count)
-        {
-            ImPlotNative.ImPlot_PlotShaded_U8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 0, 1, 0, 0, 0, sizeof(byte));
-        }
-        
-        /// <summary>
-        ///     Plots the shaded using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="yref">The yref</param>
-        public static void PlotShaded(string labelId, ref byte values, int count, double yref)
-        {
-            ImPlotNative.ImPlot_PlotShaded_U8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, 1, 0, 0, 0, sizeof(byte));
-        }
-        
-        /// <summary>
-        ///     Plots the shaded using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        public static void PlotShaded(string labelId, ref byte values, int count, double yref, double xscale)
-        {
-            ImPlotNative.ImPlot_PlotShaded_U8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, 0, 0, 0, sizeof(byte));
-        }
-        
-        /// <summary>
-        ///     Plots the shaded using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        public static void PlotShaded(string labelId, ref byte values, int count, double yref, double xscale, double xstart)
-        {
-            ImPlotNative.ImPlot_PlotShaded_U8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, xstart, 0, 0, sizeof(byte));
-        }
-        
-        /// <summary>
-        ///     Plots the shaded using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        /// <param name="flags">The flags</param>
-        public static void PlotShaded(string labelId, ref byte values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags)
-        {
-            ImPlotNative.ImPlot_PlotShaded_U8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, xstart, flags, 0, sizeof(byte));
-        }
-        
-        /// <summary>
-        ///     Plots the shaded using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        public static void PlotShaded(string labelId, ref byte values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset)
-        {
-            ImPlotNative.ImPlot_PlotShaded_U8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, xstart, flags, offset, sizeof(byte));
+            ImPlotNative.ImPlot_PlotShaded_doublePtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, flags, offset, sizeof(double));
         }
         
         /// <summary>
@@ -761,9 +565,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        public static void PlotShaded(string labelId, ref byte values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset, int stride)
+        public static void PlotShaded(string labelId, double[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset, int stride)
         {
-            ImPlotNative.ImPlot_PlotShaded_U8PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, xstart, flags, offset, stride);
+            ImPlotNative.ImPlot_PlotShaded_doublePtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, flags, offset, stride);
         }
         
         /// <summary>
@@ -772,21 +576,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        public static void PlotShaded(string labelId, ref short values, int count)
+        public static void PlotShaded(string labelId, sbyte[] values, int count)
         {
-            ImPlotNative.ImPlot_PlotShaded_S16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 0, 1, 0, 0, 0, sizeof(short));
-        }
-        
-        /// <summary>
-        ///     Plots the shaded using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="yref">The yref</param>
-        public static void PlotShaded(string labelId, ref short values, int count, double yref)
-        {
-            ImPlotNative.ImPlot_PlotShaded_S16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, 1, 0, 0, 0, sizeof(short));
+            ImPlotNative.ImPlot_PlotShaded_S8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 0, 1, 0, 0, 0, sizeof(sbyte));
         }
         
         /// <summary>
@@ -796,10 +588,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
         /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        public static void PlotShaded(string labelId, ref short values, int count, double yref, double xscale)
+        public static void PlotShaded(string labelId, sbyte[] values, int count, double yref)
         {
-            ImPlotNative.ImPlot_PlotShaded_S16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, 0, 0, 0, sizeof(short));
+            ImPlotNative.ImPlot_PlotShaded_S8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, 1, 0, 0, 0, sizeof(sbyte));
         }
         
         /// <summary>
@@ -810,10 +601,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         /// <param name="yref">The yref</param>
         /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        public static void PlotShaded(string labelId, ref short values, int count, double yref, double xscale, double xstart)
+        public static void PlotShaded(string labelId, sbyte[] values, int count, double yref, double xscale)
         {
-            ImPlotNative.ImPlot_PlotShaded_S16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, xstart, 0, 0, sizeof(short));
+            ImPlotNative.ImPlot_PlotShaded_S8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, 0, 0, 0, sizeof(sbyte));
         }
         
         /// <summary>
@@ -825,10 +615,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="yref">The yref</param>
         /// <param name="xscale">The xscale</param>
         /// <param name="xstart">The xstart</param>
-        /// <param name="flags">The flags</param>
-        public static void PlotShaded(string labelId, ref short values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags)
+        public static void PlotShaded(string labelId, sbyte[] values, int count, double yref, double xscale, double xstart)
         {
-            ImPlotNative.ImPlot_PlotShaded_S16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, xstart, flags, 0, sizeof(short));
+            ImPlotNative.ImPlot_PlotShaded_S8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, 0, 0, sizeof(sbyte));
         }
         
         /// <summary>
@@ -841,10 +630,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="xscale">The xscale</param>
         /// <param name="xstart">The xstart</param>
         /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        public static void PlotShaded(string labelId, ref short values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset)
+        public static void PlotShaded(string labelId, sbyte[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags)
         {
-            ImPlotNative.ImPlot_PlotShaded_S16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, xstart, flags, offset, sizeof(short));
+            ImPlotNative.ImPlot_PlotShaded_S8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, flags, 0, sizeof(sbyte));
         }
         
         /// <summary>
@@ -858,91 +646,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="xstart">The xstart</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
-        /// <param name="stride">The stride</param>
-        public static void PlotShaded(string labelId, ref short values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset, int stride)
+        public static void PlotShaded(string labelId, sbyte[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset)
         {
-            ImPlotNative.ImPlot_PlotShaded_S16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, xstart, flags, offset, stride);
-        }
-        
-        /// <summary>
-        ///     Plots the shaded using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        public static void PlotShaded(string labelId, ref ushort values, int count)
-        {
-            ImPlotNative.ImPlot_PlotShaded_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 0, 1, 0, 0, 0, sizeof(ushort));
-        }
-        
-        /// <summary>
-        ///     Plots the shaded using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="yref">The yref</param>
-        public static void PlotShaded(string labelId, ref ushort values, int count, double yref)
-        {
-            ImPlotNative.ImPlot_PlotShaded_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, 1, 0, 0, 0, sizeof(ushort));
-        }
-        
-        /// <summary>
-        ///     Plots the shaded using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        public static void PlotShaded(string labelId, ref ushort values, int count, double yref, double xscale)
-        {
-ImPlotNative.ImPlot_PlotShaded_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, 0, 0, 0, sizeof(ushort));
-        }
-        
-        /// <summary>
-        ///     Plots the shaded using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        public static void PlotShaded(string labelId, ref ushort values, int count, double yref, double xscale, double xstart)
-        {
-            ImPlotNative.ImPlot_PlotShaded_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, xstart, 0, 0, sizeof(ushort));
-        }
-        
-        /// <summary>
-        ///     Plots the shaded using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        /// <param name="flags">The flags</param>
-        public static void PlotShaded(string labelId, ref ushort values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags)
-        {
-            ImPlotNative.ImPlot_PlotShaded_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, xstart, flags, 0, sizeof(ushort));
-        }
-        
-        /// <summary>
-        ///     Plots the shaded using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        public static void PlotShaded(string labelId, ref ushort values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset)
-        {
-            ImPlotNative.ImPlot_PlotShaded_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, xstart, flags, offset, sizeof(ushort));
+            ImPlotNative.ImPlot_PlotShaded_S8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, flags, offset, sizeof(sbyte));
         }
         
         /// <summary>
@@ -957,9 +663,9 @@ ImPlotNative.ImPlot_PlotShaded_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref va
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        public static void PlotShaded(string labelId, ref ushort values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset, int stride)
+        public static void PlotShaded(string labelId, sbyte[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset, int stride)
         {
-            ImPlotNative.ImPlot_PlotShaded_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, xstart, flags, offset, stride);
+            ImPlotNative.ImPlot_PlotShaded_S8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, flags, offset, stride);
         }
         
         /// <summary>
@@ -968,21 +674,9 @@ ImPlotNative.ImPlot_PlotShaded_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref va
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        public static void PlotShaded(string labelId, ref int values, int count)
+        public static void PlotShaded(string labelId, byte[] values, int count)
         {
-            ImPlotNative.ImPlot_PlotShaded_S32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 0, 1, 0, 0, 0, sizeof(int));
-        }
-        
-        /// <summary>
-        ///     Plots the shaded using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="yref">The yref</param>
-        public static void PlotShaded(string labelId, ref int values, int count, double yref)
-        {
-            ImPlotNative.ImPlot_PlotShaded_S32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, 1, 0, 0, 0, sizeof(int));
+            ImPlotNative.ImPlot_PlotShaded_U8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 0, 1, 0, 0, 0, sizeof(byte));
         }
         
         /// <summary>
@@ -992,10 +686,9 @@ ImPlotNative.ImPlot_PlotShaded_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref va
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
         /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        public static void PlotShaded(string labelId, ref int values, int count, double yref, double xscale)
+        public static void PlotShaded(string labelId, byte[] values, int count, double yref)
         {
-            ImPlotNative.ImPlot_PlotShaded_S32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, 0, 0, 0, sizeof(int));
+            ImPlotNative.ImPlot_PlotShaded_U8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, 1, 0, 0, 0, sizeof(byte));
         }
         
         /// <summary>
@@ -1006,10 +699,9 @@ ImPlotNative.ImPlot_PlotShaded_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref va
         /// <param name="count">The count</param>
         /// <param name="yref">The yref</param>
         /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        public static void PlotShaded(string labelId, ref int values, int count, double yref, double xscale, double xstart)
+        public static void PlotShaded(string labelId, byte[] values, int count, double yref, double xscale)
         {
-            ImPlotNative.ImPlot_PlotShaded_S32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, xstart, 0, 0, sizeof(int));
+            ImPlotNative.ImPlot_PlotShaded_U8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, 0, 0, 0, sizeof(byte));
         }
         
         /// <summary>
@@ -1021,10 +713,9 @@ ImPlotNative.ImPlot_PlotShaded_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref va
         /// <param name="yref">The yref</param>
         /// <param name="xscale">The xscale</param>
         /// <param name="xstart">The xstart</param>
-        /// <param name="flags">The flags</param>
-        public static void PlotShaded(string labelId, ref int values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags)
+        public static void PlotShaded(string labelId, byte[] values, int count, double yref, double xscale, double xstart)
         {
-            ImPlotNative.ImPlot_PlotShaded_S32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, xstart, flags, 0, sizeof(int));
+            ImPlotNative.ImPlot_PlotShaded_U8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, 0, 0, sizeof(byte));
         }
         
         /// <summary>
@@ -1037,10 +728,9 @@ ImPlotNative.ImPlot_PlotShaded_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref va
         /// <param name="xscale">The xscale</param>
         /// <param name="xstart">The xstart</param>
         /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        public static void PlotShaded(string labelId, ref int values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset)
+        public static void PlotShaded(string labelId, byte[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags)
         {
-            ImPlotNative.ImPlot_PlotShaded_S32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, xstart, flags, offset, sizeof(int));
+            ImPlotNative.ImPlot_PlotShaded_U8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, flags, 0, sizeof(byte));
         }
         
         /// <summary>
@@ -1054,91 +744,9 @@ ImPlotNative.ImPlot_PlotShaded_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref va
         /// <param name="xstart">The xstart</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
-        /// <param name="stride">The stride</param>
-        public static void PlotShaded(string labelId, ref int values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset, int stride)
+        public static void PlotShaded(string labelId, byte[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset)
         {
-            ImPlotNative.ImPlot_PlotShaded_S32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, xstart, flags, offset, stride);
-        }
-        
-        /// <summary>
-        ///     Plots the shaded using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        public static void PlotShaded(string labelId, ref uint values, int count)
-        {
-            ImPlotNative.ImPlot_PlotShaded_U32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 0, 1, 0, 0, 0, sizeof(uint));
-        }
-        
-        /// <summary>
-        ///     Plots the shaded using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="yref">The yref</param>
-        public static void PlotShaded(string labelId, ref uint values, int count, double yref)
-        {
-            ImPlotNative.ImPlot_PlotShaded_U32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, 1, 0, 0, 0, sizeof(uint));
-        }
-        
-        /// <summary>
-        ///     Plots the shaded using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        public static void PlotShaded(string labelId, ref uint values, int count, double yref, double xscale)
-        {
-            ImPlotNative.ImPlot_PlotShaded_U32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, 0, 0, 0, sizeof(uint));
-        }
-        
-        /// <summary>
-        ///     Plots the shaded using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        public static void PlotShaded(string labelId, ref uint values, int count, double yref, double xscale, double xstart)
-        {
-            ImPlotNative.ImPlot_PlotShaded_U32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, xstart, 0, 0, sizeof(uint));
-        }
-        
-        /// <summary>
-        ///     Plots the shaded using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        /// <param name="flags">The flags</param>
-        public static void PlotShaded(string labelId, ref uint values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags)
-        {
-            ImPlotNative.ImPlot_PlotShaded_U32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, xstart, flags, 0, sizeof(uint));
-        }
-        
-        /// <summary>
-        ///     Plots the shaded using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        public static void PlotShaded(string labelId, ref uint values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset)
-        {
-            ImPlotNative.ImPlot_PlotShaded_U32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, xstart, flags, offset, sizeof(uint));
+            ImPlotNative.ImPlot_PlotShaded_U8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, flags, offset, sizeof(byte));
         }
         
         /// <summary>
@@ -1153,9 +761,9 @@ ImPlotNative.ImPlot_PlotShaded_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref va
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        public static void PlotShaded(string labelId, ref uint values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset, int stride)
+        public static void PlotShaded(string labelId, byte[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset, int stride)
         {
-            ImPlotNative.ImPlot_PlotShaded_U32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, xstart, flags, offset, stride);
+            ImPlotNative.ImPlot_PlotShaded_U8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, flags, offset, stride);
         }
         
         /// <summary>
@@ -1164,21 +772,9 @@ ImPlotNative.ImPlot_PlotShaded_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref va
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        public static void PlotShaded(string labelId, ref long values, int count)
+        public static void PlotShaded(string labelId, short[] values, int count)
         {
-            ImPlotNative.ImPlot_PlotShaded_S64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 0, 1, 0, 0, 0, sizeof(long));
-        }
-        
-        /// <summary>
-        ///     Plots the shaded using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="yref">The yref</param>
-        public static void PlotShaded(string labelId, ref long values, int count, double yref)
-        {
-            ImPlotNative.ImPlot_PlotShaded_S64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, 1, 0, 0, 0, sizeof(long));
+            ImPlotNative.ImPlot_PlotShaded_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 0, 1, 0, 0, 0, sizeof(short));
         }
         
         /// <summary>
@@ -1188,10 +784,9 @@ ImPlotNative.ImPlot_PlotShaded_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref va
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
         /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        public static void PlotShaded(string labelId, ref long values, int count, double yref, double xscale)
+        public static void PlotShaded(string labelId, short[] values, int count, double yref)
         {
-            ImPlotNative.ImPlot_PlotShaded_S64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, 0, 0, 0, sizeof(long));
+            ImPlotNative.ImPlot_PlotShaded_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, 1, 0, 0, 0, sizeof(short));
         }
         
         /// <summary>
@@ -1202,10 +797,9 @@ ImPlotNative.ImPlot_PlotShaded_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref va
         /// <param name="count">The count</param>
         /// <param name="yref">The yref</param>
         /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        public static void PlotShaded(string labelId, ref long values, int count, double yref, double xscale, double xstart)
+        public static void PlotShaded(string labelId, short[] values, int count, double yref, double xscale)
         {
-            ImPlotNative.ImPlot_PlotShaded_S64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, xstart, 0, 0, sizeof(long));
+            ImPlotNative.ImPlot_PlotShaded_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, 0, 0, 0, sizeof(short));
         }
         
         /// <summary>
@@ -1217,10 +811,9 @@ ImPlotNative.ImPlot_PlotShaded_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref va
         /// <param name="yref">The yref</param>
         /// <param name="xscale">The xscale</param>
         /// <param name="xstart">The xstart</param>
-        /// <param name="flags">The flags</param>
-        public static void PlotShaded(string labelId, ref long values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags)
+        public static void PlotShaded(string labelId, short[] values, int count, double yref, double xscale, double xstart)
         {
-            ImPlotNative.ImPlot_PlotShaded_S64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, xstart, flags, 0, sizeof(long));
+            ImPlotNative.ImPlot_PlotShaded_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, 0, 0, sizeof(short));
         }
         
         /// <summary>
@@ -1233,10 +826,9 @@ ImPlotNative.ImPlot_PlotShaded_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref va
         /// <param name="xscale">The xscale</param>
         /// <param name="xstart">The xstart</param>
         /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        public static void PlotShaded(string labelId, ref long values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset)
+        public static void PlotShaded(string labelId, short[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags)
         {
-            ImPlotNative.ImPlot_PlotShaded_S64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, xstart, flags, offset, sizeof(long));
+            ImPlotNative.ImPlot_PlotShaded_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, flags, 0, sizeof(short));
         }
         
         /// <summary>
@@ -1250,91 +842,9 @@ ImPlotNative.ImPlot_PlotShaded_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref va
         /// <param name="xstart">The xstart</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
-        /// <param name="stride">The stride</param>
-        public static void PlotShaded(string labelId, ref long values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset, int stride)
+        public static void PlotShaded(string labelId, short[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset)
         {
-            ImPlotNative.ImPlot_PlotShaded_S64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, xstart, flags, offset, stride);
-        }
-        
-        /// <summary>
-        ///     Plots the shaded using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        public static void PlotShaded(string labelId, ref ulong values, int count)
-        {
-            ImPlotNative.ImPlot_PlotShaded_U64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 0, 1, 0, 0, 0, sizeof(ulong));
-        }
-        
-        /// <summary>
-        ///     Plots the shaded using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="yref">The yref</param>
-        public static void PlotShaded(string labelId, ref ulong values, int count, double yref)
-        {
-            ImPlotNative.ImPlot_PlotShaded_U64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, 1, 0, 0, 0, sizeof(ulong));
-        }
-        
-        /// <summary>
-        ///     Plots the shaded using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        public static void PlotShaded(string labelId, ref ulong values, int count, double yref, double xscale)
-        {
-            ImPlotNative.ImPlot_PlotShaded_U64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, 0, 0, 0, sizeof(ulong));
-        }
-        
-        /// <summary>
-        ///     Plots the shaded using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        public static void PlotShaded(string labelId, ref ulong values, int count, double yref, double xscale, double xstart)
-        {
-            ImPlotNative.ImPlot_PlotShaded_U64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, xstart, 0, 0, sizeof(ulong));
-        }
-        
-        /// <summary>
-        ///     Plots the shaded using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        /// <param name="flags">The flags</param>
-        public static void PlotShaded(string labelId, ref ulong values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags)
-        {
-            ImPlotNative.ImPlot_PlotShaded_U64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, xstart, flags, 0, sizeof(ulong));
-        }
-        
-        /// <summary>
-        ///     Plots the shaded using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="yref">The yref</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        public static void PlotShaded(string labelId, ref ulong values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset)
-        {
-            ImPlotNative.ImPlot_PlotShaded_U64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, xstart, flags, offset, sizeof(ulong));
+            ImPlotNative.ImPlot_PlotShaded_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, flags, offset, sizeof(short));
         }
         
         /// <summary>
@@ -1349,9 +859,499 @@ ImPlotNative.ImPlot_PlotShaded_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref va
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        public static void PlotShaded(string labelId, ref ulong values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset, int stride)
+        public static void PlotShaded(string labelId, short[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset, int stride)
         {
-            ImPlotNative.ImPlot_PlotShaded_U64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, yref, xscale, xstart, flags, offset, stride);
+            ImPlotNative.ImPlot_PlotShaded_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, flags, offset, stride);
+        }
+        
+        /// <summary>
+        ///     Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        public static void PlotShaded(string labelId, ushort[] values, int count)
+        {
+            ImPlotNative.ImPlot_PlotShaded_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 0, 1, 0, 0, 0, sizeof(ushort));
+        }
+        
+        /// <summary>
+        ///     Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        public static void PlotShaded(string labelId, ushort[] values, int count, double yref)
+        {
+            ImPlotNative.ImPlot_PlotShaded_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, 1, 0, 0, 0, sizeof(ushort));
+        }
+        
+        /// <summary>
+        ///     Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        public static void PlotShaded(string labelId, ushort[] values, int count, double yref, double xscale)
+        {
+ImPlotNative.ImPlot_PlotShaded_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, 0, 0, 0, sizeof(ushort));
+        }
+        
+        /// <summary>
+        ///     Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        public static void PlotShaded(string labelId, ushort[] values, int count, double yref, double xscale, double xstart)
+        {
+            ImPlotNative.ImPlot_PlotShaded_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, 0, 0, sizeof(ushort));
+        }
+        
+        /// <summary>
+        ///     Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        public static void PlotShaded(string labelId, ushort[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags)
+        {
+            ImPlotNative.ImPlot_PlotShaded_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, flags, 0, sizeof(ushort));
+        }
+        
+        /// <summary>
+        ///     Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        public static void PlotShaded(string labelId, ushort[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset)
+        {
+            ImPlotNative.ImPlot_PlotShaded_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, flags, offset, sizeof(ushort));
+        }
+        
+        /// <summary>
+        ///     Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
+        public static void PlotShaded(string labelId, ushort[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset, int stride)
+        {
+            ImPlotNative.ImPlot_PlotShaded_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, flags, offset, stride);
+        }
+        
+        /// <summary>
+        ///     Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        public static void PlotShaded(string labelId, int[] values, int count)
+        {
+            ImPlotNative.ImPlot_PlotShaded_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 0, 1, 0, 0, 0, sizeof(int));
+        }
+        
+        /// <summary>
+        ///     Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        public static void PlotShaded(string labelId, int[] values, int count, double yref)
+        {
+            ImPlotNative.ImPlot_PlotShaded_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, 1, 0, 0, 0, sizeof(int));
+        }
+        
+        /// <summary>
+        ///     Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        public static void PlotShaded(string labelId, int[] values, int count, double yref, double xscale)
+        {
+            ImPlotNative.ImPlot_PlotShaded_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, 0, 0, 0, sizeof(int));
+        }
+        
+        /// <summary>
+        ///     Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        public static void PlotShaded(string labelId, int[] values, int count, double yref, double xscale, double xstart)
+        {
+            ImPlotNative.ImPlot_PlotShaded_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, 0, 0, sizeof(int));
+        }
+        
+        /// <summary>
+        ///     Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        public static void PlotShaded(string labelId, int[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags)
+        {
+            ImPlotNative.ImPlot_PlotShaded_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, flags, 0, sizeof(int));
+        }
+        
+        /// <summary>
+        ///     Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        public static void PlotShaded(string labelId, int[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset)
+        {
+            ImPlotNative.ImPlot_PlotShaded_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, flags, offset, sizeof(int));
+        }
+        
+        /// <summary>
+        ///     Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
+        public static void PlotShaded(string labelId, int[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset, int stride)
+        {
+            ImPlotNative.ImPlot_PlotShaded_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, flags, offset, stride);
+        }
+        
+        /// <summary>
+        ///     Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        public static void PlotShaded(string labelId, uint[] values, int count)
+        {
+            ImPlotNative.ImPlot_PlotShaded_U32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 0, 1, 0, 0, 0, sizeof(uint));
+        }
+        
+        /// <summary>
+        ///     Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        public static void PlotShaded(string labelId, uint[] values, int count, double yref)
+        {
+            ImPlotNative.ImPlot_PlotShaded_U32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, 1, 0, 0, 0, sizeof(uint));
+        }
+        
+        /// <summary>
+        ///     Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        public static void PlotShaded(string labelId, uint[] values, int count, double yref, double xscale)
+        {
+            ImPlotNative.ImPlot_PlotShaded_U32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, 0, 0, 0, sizeof(uint));
+        }
+        
+        /// <summary>
+        ///     Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        public static void PlotShaded(string labelId, uint[] values, int count, double yref, double xscale, double xstart)
+        {
+            ImPlotNative.ImPlot_PlotShaded_U32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, 0, 0, sizeof(uint));
+        }
+        
+        /// <summary>
+        ///     Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        public static void PlotShaded(string labelId, uint[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags)
+        {
+            ImPlotNative.ImPlot_PlotShaded_U32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, flags, 0, sizeof(uint));
+        }
+        
+        /// <summary>
+        ///     Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        public static void PlotShaded(string labelId, uint[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset)
+        {
+            ImPlotNative.ImPlot_PlotShaded_U32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, flags, offset, sizeof(uint));
+        }
+        
+        /// <summary>
+        ///     Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
+        public static void PlotShaded(string labelId, uint[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset, int stride)
+        {
+            ImPlotNative.ImPlot_PlotShaded_U32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, flags, offset, stride);
+        }
+        
+        /// <summary>
+        ///     Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        public static void PlotShaded(string labelId, long[] values, int count)
+        {
+            ImPlotNative.ImPlot_PlotShaded_S64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 0, 1, 0, 0, 0, sizeof(long));
+        }
+        
+        /// <summary>
+        ///     Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        public static void PlotShaded(string labelId, long[] values, int count, double yref)
+        {
+            ImPlotNative.ImPlot_PlotShaded_S64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, 1, 0, 0, 0, sizeof(long));
+        }
+        
+        /// <summary>
+        ///     Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        public static void PlotShaded(string labelId, long[] values, int count, double yref, double xscale)
+        {
+            ImPlotNative.ImPlot_PlotShaded_S64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, 0, 0, 0, sizeof(long));
+        }
+        
+        /// <summary>
+        ///     Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        public static void PlotShaded(string labelId, long[] values, int count, double yref, double xscale, double xstart)
+        {
+            ImPlotNative.ImPlot_PlotShaded_S64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, 0, 0, sizeof(long));
+        }
+        
+        /// <summary>
+        ///     Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        public static void PlotShaded(string labelId, long[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags)
+        {
+            ImPlotNative.ImPlot_PlotShaded_S64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, flags, 0, sizeof(long));
+        }
+        
+        /// <summary>
+        ///     Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        public static void PlotShaded(string labelId, long[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset)
+        {
+            ImPlotNative.ImPlot_PlotShaded_S64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, flags, offset, sizeof(long));
+        }
+        
+        /// <summary>
+        ///     Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
+        public static void PlotShaded(string labelId, long[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset, int stride)
+        {
+            ImPlotNative.ImPlot_PlotShaded_S64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, flags, offset, stride);
+        }
+        
+        /// <summary>
+        ///     Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        public static void PlotShaded(string labelId, ulong[] values, int count)
+        {
+            ImPlotNative.ImPlot_PlotShaded_U64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 0, 1, 0, 0, 0, sizeof(ulong));
+        }
+        
+        /// <summary>
+        ///     Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        public static void PlotShaded(string labelId, ulong[] values, int count, double yref)
+        {
+            ImPlotNative.ImPlot_PlotShaded_U64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, 1, 0, 0, 0, sizeof(ulong));
+        }
+        
+        /// <summary>
+        ///     Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        public static void PlotShaded(string labelId, ulong[] values, int count, double yref, double xscale)
+        {
+            ImPlotNative.ImPlot_PlotShaded_U64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, 0, 0, 0, sizeof(ulong));
+        }
+        
+        /// <summary>
+        ///     Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        public static void PlotShaded(string labelId, ulong[] values, int count, double yref, double xscale, double xstart)
+        {
+            ImPlotNative.ImPlot_PlotShaded_U64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, 0, 0, sizeof(ulong));
+        }
+        
+        /// <summary>
+        ///     Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        public static void PlotShaded(string labelId, ulong[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags)
+        {
+            ImPlotNative.ImPlot_PlotShaded_U64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, flags, 0, sizeof(ulong));
+        }
+        
+        /// <summary>
+        ///     Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        public static void PlotShaded(string labelId, ulong[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset)
+        {
+            ImPlotNative.ImPlot_PlotShaded_U64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, flags, offset, sizeof(ulong));
+        }
+        
+        /// <summary>
+        ///     Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
+        public static void PlotShaded(string labelId, ulong[] values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset, int stride)
+        {
+            ImPlotNative.ImPlot_PlotShaded_U64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, yref, xscale, xstart, flags, offset, stride);
         }
         
         /// <summary>

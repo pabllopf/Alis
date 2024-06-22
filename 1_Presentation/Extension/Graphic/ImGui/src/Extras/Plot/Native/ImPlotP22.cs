@@ -48,9 +48,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        public static void PlotLine(string labelId, ref short values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride)
+        public static void PlotLine(string labelId, short[] values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride)
         {
-            ImPlotNative.ImPlot_PlotLine_S16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, stride);
+            ImPlotNative.ImPlot_PlotLine_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, stride);
         }
         
         /// <summary>
@@ -59,21 +59,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        public static void PlotLine(string labelId, ref ushort values, int count)
+        public static void PlotLine(string labelId, ushort[] values, int count)
         {
-            ImPlotNative.ImPlot_PlotLine_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 1, 0, 0, 0, 0);
-        }
-        
-        /// <summary>
-        ///     Plots the line using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="xscale">The xscale</param>
-        public static void PlotLine(string labelId, ref ushort values, int count, double xscale)
-        {
-            ImPlotNative.ImPlot_PlotLine_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, 0, 0, 0, 0);
+            ImPlotNative.ImPlot_PlotLine_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 1, 0, 0, 0, 0);
         }
         
         /// <summary>
@@ -83,10 +71,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
         /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        public static void PlotLine(string labelId, ref ushort values, int count, double xscale, double xstart)
+        public static void PlotLine(string labelId, ushort[] values, int count, double xscale)
         {
-            ImPlotNative.ImPlot_PlotLine_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, 0, 0, 0);
+            ImPlotNative.ImPlot_PlotLine_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, 0, 0, 0, 0);
         }
         
         /// <summary>
@@ -97,10 +84,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         /// <param name="xscale">The xscale</param>
         /// <param name="xstart">The xstart</param>
-        /// <param name="flags">The flags</param>
-        public static void PlotLine(string labelId, ref ushort values, int count, double xscale, double xstart, ImPlotLineFlags flags)
+        public static void PlotLine(string labelId, ushort[] values, int count, double xscale, double xstart)
         {
-            ImPlotNative.ImPlot_PlotLine_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, 0, 0);
+            ImPlotNative.ImPlot_PlotLine_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, 0, 0, 0);
         }
         
         /// <summary>
@@ -112,10 +98,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="xscale">The xscale</param>
         /// <param name="xstart">The xstart</param>
         /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        public static void PlotLine(string labelId, ref ushort values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset)
+        public static void PlotLine(string labelId, ushort[] values, int count, double xscale, double xstart, ImPlotLineFlags flags)
         {
-            ImPlotNative.ImPlot_PlotLine_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, 0);
+            ImPlotNative.ImPlot_PlotLine_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, 0, 0);
         }
         
         /// <summary>
@@ -128,75 +113,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="xstart">The xstart</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
-        /// <param name="stride">The stride</param>
-        public static void PlotLine(string labelId, ref ushort values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride)
+        public static void PlotLine(string labelId, ushort[] values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset)
         {
-            ImPlotNative.ImPlot_PlotLine_U16PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, stride);
-        }
-        
-        /// <summary>
-        ///     Plots the line using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        public static void PlotLine(string labelId, ref int values, int count)
-        {
-            ImPlotNative.ImPlot_PlotLine_S32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 1, 0, 0, 0, 0);
-        }
-        
-        /// <summary>
-        ///     Plots the line using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="xscale">The xscale</param>
-        public static void PlotLine(string labelId, ref int values, int count, double xscale)
-        {
-            ImPlotNative.ImPlot_PlotLine_S32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, 0, 0, 0, 0);
-        }
-        
-        /// <summary>
-        ///     Plots the line using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        public static void PlotLine(string labelId, ref int values, int count, double xscale, double xstart)
-        {
-            ImPlotNative.ImPlot_PlotLine_S32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, 0, 0, 0);
-        }
-        
-        /// <summary>
-        ///     Plots the line using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        /// <param name="flags">The flags</param>
-        public static void PlotLine(string labelId, ref int values, int count, double xscale, double xstart, ImPlotLineFlags flags)
-        {
-            ImPlotNative.ImPlot_PlotLine_S32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, 0, 0);
-        }
-        
-        /// <summary>
-        ///     Plots the line using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        public static void PlotLine(string labelId, ref int values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset)
-        {
-            ImPlotNative.ImPlot_PlotLine_S32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, 0);
+            ImPlotNative.ImPlot_PlotLine_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, 0);
         }
         
         /// <summary>
@@ -210,9 +129,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        public static void PlotLine(string labelId, ref int values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride)
+        public static void PlotLine(string labelId, ushort[] values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride)
         {
-            ImPlotNative.ImPlot_PlotLine_S32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, stride);
+            ImPlotNative.ImPlot_PlotLine_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, stride);
         }
         
         /// <summary>
@@ -221,21 +140,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        public static void PlotLine(string labelId, ref uint values, int count)
+        public static void PlotLine(string labelId, int[] values, int count)
         {
-            ImPlotNative.ImPlot_PlotLine_U32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 1, 0, 0, 0, 0);
-        }
-        
-        /// <summary>
-        ///     Plots the line using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="xscale">The xscale</param>
-        public static void PlotLine(string labelId, ref uint values, int count, double xscale)
-        {
-            ImPlotNative.ImPlot_PlotLine_U32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, 0, 0, 0, 0);
+            ImPlotNative.ImPlot_PlotLine_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 1, 0, 0, 0, 0);
         }
         
         /// <summary>
@@ -245,10 +152,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
         /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        public static void PlotLine(string labelId, ref uint values, int count, double xscale, double xstart)
+        public static void PlotLine(string labelId, int[] values, int count, double xscale)
         {
-            ImPlotNative.ImPlot_PlotLine_U32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, 0, 0, 0);
+            ImPlotNative.ImPlot_PlotLine_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, 0, 0, 0, 0);
         }
         
         /// <summary>
@@ -259,10 +165,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         /// <param name="xscale">The xscale</param>
         /// <param name="xstart">The xstart</param>
-        /// <param name="flags">The flags</param>
-        public static void PlotLine(string labelId, ref uint values, int count, double xscale, double xstart, ImPlotLineFlags flags)
+        public static void PlotLine(string labelId, int[] values, int count, double xscale, double xstart)
         {
-            ImPlotNative.ImPlot_PlotLine_U32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, 0, 0);
+            ImPlotNative.ImPlot_PlotLine_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, 0, 0, 0);
         }
         
         /// <summary>
@@ -274,10 +179,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="xscale">The xscale</param>
         /// <param name="xstart">The xstart</param>
         /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        public static void PlotLine(string labelId, ref uint values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset)
+        public static void PlotLine(string labelId, int[] values, int count, double xscale, double xstart, ImPlotLineFlags flags)
         {
-            ImPlotNative.ImPlot_PlotLine_U32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, 0);
+            ImPlotNative.ImPlot_PlotLine_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, 0, 0);
         }
         
         /// <summary>
@@ -290,75 +194,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="xstart">The xstart</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
-        /// <param name="stride">The stride</param>
-        public static void PlotLine(string labelId, ref uint values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride)
+        public static void PlotLine(string labelId, int[] values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset)
         {
-            ImPlotNative.ImPlot_PlotLine_U32PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, stride);
-        }
-        
-        /// <summary>
-        ///     Plots the line using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        public static void PlotLine(string labelId, ref long values, int count)
-        {
-            ImPlotNative.ImPlot_PlotLine_S64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 1, 0, 0, 0, 0);
-        }
-        
-        /// <summary>
-        ///     Plots the line using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="xscale">The xscale</param>
-        public static void PlotLine(string labelId, ref long values, int count, double xscale)
-        {
-            ImPlotNative.ImPlot_PlotLine_S64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, 0, 0, 0, 0);
-        }
-        
-        /// <summary>
-        ///     Plots the line using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        public static void PlotLine(string labelId, ref long values, int count, double xscale, double xstart)
-        {
-            ImPlotNative.ImPlot_PlotLine_S64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, 0, 0, 0);
-        }
-        
-        /// <summary>
-        ///     Plots the line using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        /// <param name="flags">The flags</param>
-        public static void PlotLine(string labelId, ref long values, int count, double xscale, double xstart, ImPlotLineFlags flags)
-        {
-            ImPlotNative.ImPlot_PlotLine_S64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, 0, 0);
-        }
-        
-        /// <summary>
-        ///     Plots the line using the specified label id
-        /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="values">The values</param>
-        /// <param name="count">The count</param>
-        /// <param name="xscale">The xscale</param>
-        /// <param name="xstart">The xstart</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="offset">The offset</param>
-        public static void PlotLine(string labelId, ref long values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset)
-        {
-            ImPlotNative.ImPlot_PlotLine_S64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, 0);
+            ImPlotNative.ImPlot_PlotLine_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, 0);
         }
         
         /// <summary>
@@ -372,9 +210,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        public static void PlotLine(string labelId, ref long values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride)
+        public static void PlotLine(string labelId, int[] values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride)
         {
-            ImPlotNative.ImPlot_PlotLine_S64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, stride);
+            ImPlotNative.ImPlot_PlotLine_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, stride);
         }
         
         /// <summary>
@@ -383,9 +221,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="labelId">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        public static void PlotLine(string labelId, ref ulong values, int count)
+        public static void PlotLine(string labelId, uint[] values, int count)
         {
-            ImPlotNative.ImPlot_PlotLine_U64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, 1, 0, 0, 0, 0);
+            ImPlotNative.ImPlot_PlotLine_U32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 1, 0, 0, 0, 0);
         }
         
         /// <summary>
@@ -395,9 +233,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
         /// <param name="xscale">The xscale</param>
-        public static void PlotLine(string labelId, ref ulong values, int count, double xscale)
+        public static void PlotLine(string labelId, uint[] values, int count, double xscale)
         {
-            ImPlotNative.ImPlot_PlotLine_U64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, 0, 0, 0, 0);
+            ImPlotNative.ImPlot_PlotLine_U32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, 0, 0, 0, 0);
         }
         
         /// <summary>
@@ -408,9 +246,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         /// <param name="xscale">The xscale</param>
         /// <param name="xstart">The xstart</param>
-        public static void PlotLine(string labelId, ref ulong values, int count, double xscale, double xstart)
+        public static void PlotLine(string labelId, uint[] values, int count, double xscale, double xstart)
         {
-            ImPlotNative.ImPlot_PlotLine_U64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, 0, 0, 0);
+            ImPlotNative.ImPlot_PlotLine_U32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, 0, 0, 0);
         }
         
         /// <summary>
@@ -422,9 +260,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="xscale">The xscale</param>
         /// <param name="xstart">The xstart</param>
         /// <param name="flags">The flags</param>
-        public static void PlotLine(string labelId, ref ulong values, int count, double xscale, double xstart, ImPlotLineFlags flags)
+        public static void PlotLine(string labelId, uint[] values, int count, double xscale, double xstart, ImPlotLineFlags flags)
         {
-            ImPlotNative.ImPlot_PlotLine_U64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, 0, 0);
+            ImPlotNative.ImPlot_PlotLine_U32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, 0, 0);
         }
         
         /// <summary>
@@ -437,9 +275,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="xstart">The xstart</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
-        public static void PlotLine(string labelId, ref ulong values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset)
+        public static void PlotLine(string labelId, uint[] values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset)
         {
-            ImPlotNative.ImPlot_PlotLine_U64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, 0);
+            ImPlotNative.ImPlot_PlotLine_U32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, 0);
         }
         
         /// <summary>
@@ -453,9 +291,171 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        public static void PlotLine(string labelId, ref ulong values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride)
+        public static void PlotLine(string labelId, uint[] values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride)
         {
-            ImPlotNative.ImPlot_PlotLine_U64PtrInt(Encoding.UTF8.GetBytes(labelId), ref values, count, xscale, xstart, flags, offset, stride);
+            ImPlotNative.ImPlot_PlotLine_U32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, stride);
+        }
+        
+        /// <summary>
+        ///     Plots the line using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        public static void PlotLine(string labelId, long[] values, int count)
+        {
+            ImPlotNative.ImPlot_PlotLine_S64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 1, 0, 0, 0, 0);
+        }
+        
+        /// <summary>
+        ///     Plots the line using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        public static void PlotLine(string labelId, long[] values, int count, double xscale)
+        {
+            ImPlotNative.ImPlot_PlotLine_S64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, 0, 0, 0, 0);
+        }
+        
+        /// <summary>
+        ///     Plots the line using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        public static void PlotLine(string labelId, long[] values, int count, double xscale, double xstart)
+        {
+            ImPlotNative.ImPlot_PlotLine_S64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, 0, 0, 0);
+        }
+        
+        /// <summary>
+        ///     Plots the line using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        public static void PlotLine(string labelId, long[] values, int count, double xscale, double xstart, ImPlotLineFlags flags)
+        {
+            ImPlotNative.ImPlot_PlotLine_S64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, 0, 0);
+        }
+        
+        /// <summary>
+        ///     Plots the line using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        public static void PlotLine(string labelId, long[] values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset)
+        {
+            ImPlotNative.ImPlot_PlotLine_S64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, 0);
+        }
+        
+        /// <summary>
+        ///     Plots the line using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
+        public static void PlotLine(string labelId, long[] values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride)
+        {
+            ImPlotNative.ImPlot_PlotLine_S64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, stride);
+        }
+        
+        /// <summary>
+        ///     Plots the line using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        public static void PlotLine(string labelId, ulong[] values, int count)
+        {
+            ImPlotNative.ImPlot_PlotLine_U64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 1, 0, 0, 0, 0);
+        }
+        
+        /// <summary>
+        ///     Plots the line using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        public static void PlotLine(string labelId, ulong[] values, int count, double xscale)
+        {
+            ImPlotNative.ImPlot_PlotLine_U64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, 0, 0, 0, 0);
+        }
+        
+        /// <summary>
+        ///     Plots the line using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        public static void PlotLine(string labelId, ulong[] values, int count, double xscale, double xstart)
+        {
+            ImPlotNative.ImPlot_PlotLine_U64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, 0, 0, 0);
+        }
+        
+        /// <summary>
+        ///     Plots the line using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        public static void PlotLine(string labelId, ulong[] values, int count, double xscale, double xstart, ImPlotLineFlags flags)
+        {
+            ImPlotNative.ImPlot_PlotLine_U64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, 0, 0);
+        }
+        
+        /// <summary>
+        ///     Plots the line using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        public static void PlotLine(string labelId, ulong[] values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset)
+        {
+            ImPlotNative.ImPlot_PlotLine_U64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, 0);
+        }
+        
+        /// <summary>
+        ///     Plots the line using the specified label id
+        /// </summary>
+        /// <param name="labelId">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
+        public static void PlotLine(string labelId, ulong[] values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride)
+        {
+            ImPlotNative.ImPlot_PlotLine_U64PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, xscale, xstart, flags, offset, stride);
         }
         
         /// <summary>
