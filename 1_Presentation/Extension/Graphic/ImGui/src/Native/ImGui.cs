@@ -30,6 +30,7 @@
 using System;
 using System.Text;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Extension.Graphic.ImGui;
 
 namespace Alis.Extension.Graphic.ImGui.Native
 {
@@ -50,63 +51,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool SliderFloat4(string label, ref Vector4 v, float vMin, float vMax, string format, ImGuiSliderFlags flags)
         {
-            byte* nativeLabel;
-            int labelByteCount = 0;
-            if (label != null)
-            {
-                labelByteCount = Encoding.UTF8.GetByteCount(label);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabel = Util.Allocate(labelByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
-                    nativeLabel = nativeLabelStackBytes;
-                }
-                
-                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
-                nativeLabel[nativeLabelOffset] = 0;
-            }
-            else
-            {
-                nativeLabel = null;
-            }
-            
-            byte* nativeFormat;
-            int formatByteCount = 0;
-            if (format != null)
-            {
-                formatByteCount = Encoding.UTF8.GetByteCount(format);
-                if (formatByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeFormat = Util.Allocate(formatByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
-                    nativeFormat = nativeFormatStackBytes;
-                }
-                
-                int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
-                nativeFormat[nativeFormatOffset] = 0;
-            }
-            else
-            {
-                nativeFormat = null;
-            }
-            
-            byte ret = ImGuiNative.igSliderFloat4(nativeLabel, v, vMin, vMax, nativeFormat, flags);
-            if (labelByteCount > Util.StackAllocationSizeLimit)
-            {
-                Util.Free(nativeLabel);
-            }
-            
-            if (formatByteCount > Util.StackAllocationSizeLimit)
-            {
-                Util.Free(nativeFormat);
-            }
-            
+            byte ret = ImGuiNative.igSliderFloat4(Encoding.UTF8.GetBytes(label), v, vMin, vMax, Encoding.UTF8.GetBytes(format), flags);
             return ret != 0;
         }
         
@@ -120,60 +65,8 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool SliderInt(string label, ref int v, int vMin, int vMax)
         {
-            byte* nativeLabel;
-            int labelByteCount = 0;
-            if (label != null)
-            {
-                labelByteCount = Encoding.UTF8.GetByteCount(label);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabel = Util.Allocate(labelByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
-                    nativeLabel = nativeLabelStackBytes;
-                }
-                
-                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
-                nativeLabel[nativeLabelOffset] = 0;
-            }
-            else
-            {
-                nativeLabel = null;
-            }
-            
-            byte* nativeFormat;
-            int formatByteCount = 0;
-            formatByteCount = Encoding.UTF8.GetByteCount("%d");
-            if (formatByteCount > Util.StackAllocationSizeLimit)
-            {
-                nativeFormat = Util.Allocate(formatByteCount + 1);
-            }
-            else
-            {
-                byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
-                nativeFormat = nativeFormatStackBytes;
-            }
-            
-            int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
-            nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlags flags = 0;
-            fixed (int* nativeV = &v)
-            {
-                byte ret = ImGuiNative.igSliderInt(nativeLabel, nativeV, vMin, vMax, nativeFormat, flags);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabel);
-                }
-                
-                if (formatByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeFormat);
-                }
-                
+            byte ret = ImGuiNative.igSliderInt(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes("%d"), 0);
                 return ret != 0;
-            }
         }
         
         /// <summary>
@@ -187,68 +80,8 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool SliderInt(string label, ref int v, int vMin, int vMax, string format)
         {
-            byte* nativeLabel;
-            int labelByteCount = 0;
-            if (label != null)
-            {
-                labelByteCount = Encoding.UTF8.GetByteCount(label);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabel = Util.Allocate(labelByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
-                    nativeLabel = nativeLabelStackBytes;
-                }
-                
-                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
-                nativeLabel[nativeLabelOffset] = 0;
-            }
-            else
-            {
-                nativeLabel = null;
-            }
-            
-            byte* nativeFormat;
-            int formatByteCount = 0;
-            if (format != null)
-            {
-                formatByteCount = Encoding.UTF8.GetByteCount(format);
-                if (formatByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeFormat = Util.Allocate(formatByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
-                    nativeFormat = nativeFormatStackBytes;
-                }
-                
-                int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
-                nativeFormat[nativeFormatOffset] = 0;
-            }
-            else
-            {
-                nativeFormat = null;
-            }
-            
-            ImGuiSliderFlags flags = 0;
-            fixed (int* nativeV = &v)
-            {
-                byte ret = ImGuiNative.igSliderInt(nativeLabel, nativeV, vMin, vMax, nativeFormat, flags);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabel);
-                }
-                
-                if (formatByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeFormat);
-                }
-                
+            byte ret = ImGuiNative.igSliderInt(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), 0);
                 return ret != 0;
-            }
         }
         
         /// <summary>
@@ -263,67 +96,8 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool SliderInt(string label, ref int v, int vMin, int vMax, string format, ImGuiSliderFlags flags)
         {
-            byte* nativeLabel;
-            int labelByteCount = 0;
-            if (label != null)
-            {
-                labelByteCount = Encoding.UTF8.GetByteCount(label);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabel = Util.Allocate(labelByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
-                    nativeLabel = nativeLabelStackBytes;
-                }
-                
-                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
-                nativeLabel[nativeLabelOffset] = 0;
-            }
-            else
-            {
-                nativeLabel = null;
-            }
-            
-            byte* nativeFormat;
-            int formatByteCount = 0;
-            if (format != null)
-            {
-                formatByteCount = Encoding.UTF8.GetByteCount(format);
-                if (formatByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeFormat = Util.Allocate(formatByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
-                    nativeFormat = nativeFormatStackBytes;
-                }
-                
-                int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
-                nativeFormat[nativeFormatOffset] = 0;
-            }
-            else
-            {
-                nativeFormat = null;
-            }
-            
-            fixed (int* nativeV = &v)
-            {
-                byte ret = ImGuiNative.igSliderInt(nativeLabel, nativeV, vMin, vMax, nativeFormat, flags);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabel);
-                }
-                
-                if (formatByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeFormat);
-                }
-                
-                return ret != 0;
-            }
+            byte ret = ImGuiNative.igSliderInt(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), flags);
+            return ret != 0;
         }
         
         /// <summary>
@@ -336,60 +110,8 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool SliderInt2(string label, ref int v, int vMin, int vMax)
         {
-            byte* nativeLabel;
-            int labelByteCount = 0;
-            if (label != null)
-            {
-                labelByteCount = Encoding.UTF8.GetByteCount(label);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabel = Util.Allocate(labelByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
-                    nativeLabel = nativeLabelStackBytes;
-                }
-                
-                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
-                nativeLabel[nativeLabelOffset] = 0;
-            }
-            else
-            {
-                nativeLabel = null;
-            }
-            
-            byte* nativeFormat;
-            int formatByteCount = 0;
-            formatByteCount = Encoding.UTF8.GetByteCount("%d");
-            if (formatByteCount > Util.StackAllocationSizeLimit)
-            {
-                nativeFormat = Util.Allocate(formatByteCount + 1);
-            }
-            else
-            {
-                byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
-                nativeFormat = nativeFormatStackBytes;
-            }
-            
-            int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
-            nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlags flags = 0;
-            fixed (int* nativeV = &v)
-            {
-                byte ret = ImGuiNative.igSliderInt2(nativeLabel, nativeV, vMin, vMax, nativeFormat, flags);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabel);
-                }
-                
-                if (formatByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeFormat);
-                }
-                
+            byte ret = ImGuiNative.igSliderInt2(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes("%d"), 0);
                 return ret != 0;
-            }
         }
         
         /// <summary>
@@ -403,68 +125,8 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool SliderInt2(string label, ref int v, int vMin, int vMax, string format)
         {
-            byte* nativeLabel;
-            int labelByteCount = 0;
-            if (label != null)
-            {
-                labelByteCount = Encoding.UTF8.GetByteCount(label);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabel = Util.Allocate(labelByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
-                    nativeLabel = nativeLabelStackBytes;
-                }
-                
-                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
-                nativeLabel[nativeLabelOffset] = 0;
-            }
-            else
-            {
-                nativeLabel = null;
-            }
-            
-            byte* nativeFormat;
-            int formatByteCount = 0;
-            if (format != null)
-            {
-                formatByteCount = Encoding.UTF8.GetByteCount(format);
-                if (formatByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeFormat = Util.Allocate(formatByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
-                    nativeFormat = nativeFormatStackBytes;
-                }
-                
-                int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
-                nativeFormat[nativeFormatOffset] = 0;
-            }
-            else
-            {
-                nativeFormat = null;
-            }
-            
-            ImGuiSliderFlags flags = 0;
-            fixed (int* nativeV = &v)
-            {
-                byte ret = ImGuiNative.igSliderInt2(nativeLabel, nativeV, vMin, vMax, nativeFormat, flags);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabel);
-                }
-                
-                if (formatByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeFormat);
-                }
-                
+                byte ret = ImGuiNative.igSliderInt2(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), 0);
                 return ret != 0;
-            }
         }
         
         /// <summary>
@@ -479,67 +141,8 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool SliderInt2(string label, ref int v, int vMin, int vMax, string format, ImGuiSliderFlags flags)
         {
-            byte* nativeLabel;
-            int labelByteCount = 0;
-            if (label != null)
-            {
-                labelByteCount = Encoding.UTF8.GetByteCount(label);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabel = Util.Allocate(labelByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
-                    nativeLabel = nativeLabelStackBytes;
-                }
-                
-                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
-                nativeLabel[nativeLabelOffset] = 0;
-            }
-            else
-            {
-                nativeLabel = null;
-            }
-            
-            byte* nativeFormat;
-            int formatByteCount = 0;
-            if (format != null)
-            {
-                formatByteCount = Encoding.UTF8.GetByteCount(format);
-                if (formatByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeFormat = Util.Allocate(formatByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
-                    nativeFormat = nativeFormatStackBytes;
-                }
-                
-                int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
-                nativeFormat[nativeFormatOffset] = 0;
-            }
-            else
-            {
-                nativeFormat = null;
-            }
-            
-            fixed (int* nativeV = &v)
-            {
-                byte ret = ImGuiNative.igSliderInt2(nativeLabel, nativeV, vMin, vMax, nativeFormat, flags);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabel);
-                }
-                
-                if (formatByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeFormat);
-                }
-                
+                byte ret = ImGuiNative.igSliderInt2(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), flags);
                 return ret != 0;
-            }
         }
         
         /// <summary>
@@ -552,60 +155,8 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool SliderInt3(string label, ref int v, int vMin, int vMax)
         {
-            byte* nativeLabel;
-            int labelByteCount = 0;
-            if (label != null)
-            {
-                labelByteCount = Encoding.UTF8.GetByteCount(label);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabel = Util.Allocate(labelByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
-                    nativeLabel = nativeLabelStackBytes;
-                }
-                
-                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
-                nativeLabel[nativeLabelOffset] = 0;
-            }
-            else
-            {
-                nativeLabel = null;
-            }
-            
-            byte* nativeFormat;
-            int formatByteCount = 0;
-            formatByteCount = Encoding.UTF8.GetByteCount("%d");
-            if (formatByteCount > Util.StackAllocationSizeLimit)
-            {
-                nativeFormat = Util.Allocate(formatByteCount + 1);
-            }
-            else
-            {
-                byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
-                nativeFormat = nativeFormatStackBytes;
-            }
-            
-            int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
-            nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlags flags = 0;
-            fixed (int* nativeV = &v)
-            {
-                byte ret = ImGuiNative.igSliderInt3(nativeLabel, nativeV, vMin, vMax, nativeFormat, flags);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabel);
-                }
-                
-                if (formatByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeFormat);
-                }
-                
+                byte ret = ImGuiNative.igSliderInt3(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes("%d"), 0);
                 return ret != 0;
-            }
         }
         
         /// <summary>
@@ -619,68 +170,8 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool SliderInt3(string label, ref int v, int vMin, int vMax, string format)
         {
-            byte* nativeLabel;
-            int labelByteCount = 0;
-            if (label != null)
-            {
-                labelByteCount = Encoding.UTF8.GetByteCount(label);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabel = Util.Allocate(labelByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
-                    nativeLabel = nativeLabelStackBytes;
-                }
-                
-                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
-                nativeLabel[nativeLabelOffset] = 0;
-            }
-            else
-            {
-                nativeLabel = null;
-            }
-            
-            byte* nativeFormat;
-            int formatByteCount = 0;
-            if (format != null)
-            {
-                formatByteCount = Encoding.UTF8.GetByteCount(format);
-                if (formatByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeFormat = Util.Allocate(formatByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
-                    nativeFormat = nativeFormatStackBytes;
-                }
-                
-                int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
-                nativeFormat[nativeFormatOffset] = 0;
-            }
-            else
-            {
-                nativeFormat = null;
-            }
-            
-            ImGuiSliderFlags flags = 0;
-            fixed (int* nativeV = &v)
-            {
-                byte ret = ImGuiNative.igSliderInt3(nativeLabel, nativeV, vMin, vMax, nativeFormat, flags);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabel);
-                }
-                
-                if (formatByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeFormat);
-                }
-                
+                byte ret = ImGuiNative.igSliderInt3(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), 0);
                 return ret != 0;
-            }
         }
         
         /// <summary>
@@ -695,67 +186,8 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool SliderInt3(string label, ref int v, int vMin, int vMax, string format, ImGuiSliderFlags flags)
         {
-            byte* nativeLabel;
-            int labelByteCount = 0;
-            if (label != null)
-            {
-                labelByteCount = Encoding.UTF8.GetByteCount(label);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabel = Util.Allocate(labelByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
-                    nativeLabel = nativeLabelStackBytes;
-                }
-                
-                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
-                nativeLabel[nativeLabelOffset] = 0;
-            }
-            else
-            {
-                nativeLabel = null;
-            }
-            
-            byte* nativeFormat;
-            int formatByteCount = 0;
-            if (format != null)
-            {
-                formatByteCount = Encoding.UTF8.GetByteCount(format);
-                if (formatByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeFormat = Util.Allocate(formatByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
-                    nativeFormat = nativeFormatStackBytes;
-                }
-                
-                int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
-                nativeFormat[nativeFormatOffset] = 0;
-            }
-            else
-            {
-                nativeFormat = null;
-            }
-            
-            fixed (int* nativeV = &v)
-            {
-                byte ret = ImGuiNative.igSliderInt3(nativeLabel, nativeV, vMin, vMax, nativeFormat, flags);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabel);
-                }
-                
-                if (formatByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeFormat);
-                }
-                
+                byte ret = ImGuiNative.igSliderInt3(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), flags);
                 return ret != 0;
-            }
         }
         
         /// <summary>
@@ -768,60 +200,8 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool SliderInt4(string label, ref int v, int vMin, int vMax)
         {
-            byte* nativeLabel;
-            int labelByteCount = 0;
-            if (label != null)
-            {
-                labelByteCount = Encoding.UTF8.GetByteCount(label);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabel = Util.Allocate(labelByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
-                    nativeLabel = nativeLabelStackBytes;
-                }
-                
-                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
-                nativeLabel[nativeLabelOffset] = 0;
-            }
-            else
-            {
-                nativeLabel = null;
-            }
-            
-            byte* nativeFormat;
-            int formatByteCount = 0;
-            formatByteCount = Encoding.UTF8.GetByteCount("%d");
-            if (formatByteCount > Util.StackAllocationSizeLimit)
-            {
-                nativeFormat = Util.Allocate(formatByteCount + 1);
-            }
-            else
-            {
-                byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
-                nativeFormat = nativeFormatStackBytes;
-            }
-            
-            int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
-            nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlags flags = 0;
-            fixed (int* nativeV = &v)
-            {
-                byte ret = ImGuiNative.igSliderInt4(nativeLabel, nativeV, vMin, vMax, nativeFormat, flags);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabel);
-                }
-                
-                if (formatByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeFormat);
-                }
-                
+                byte ret = ImGuiNative.igSliderInt4(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes("%d"), 0);
                 return ret != 0;
-            }
         }
         
         /// <summary>
@@ -835,68 +215,8 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool SliderInt4(string label, ref int v, int vMin, int vMax, string format)
         {
-            byte* nativeLabel;
-            int labelByteCount = 0;
-            if (label != null)
-            {
-                labelByteCount = Encoding.UTF8.GetByteCount(label);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabel = Util.Allocate(labelByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
-                    nativeLabel = nativeLabelStackBytes;
-                }
-                
-                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
-                nativeLabel[nativeLabelOffset] = 0;
-            }
-            else
-            {
-                nativeLabel = null;
-            }
-            
-            byte* nativeFormat;
-            int formatByteCount = 0;
-            if (format != null)
-            {
-                formatByteCount = Encoding.UTF8.GetByteCount(format);
-                if (formatByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeFormat = Util.Allocate(formatByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
-                    nativeFormat = nativeFormatStackBytes;
-                }
-                
-                int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
-                nativeFormat[nativeFormatOffset] = 0;
-            }
-            else
-            {
-                nativeFormat = null;
-            }
-            
-            ImGuiSliderFlags flags = 0;
-            fixed (int* nativeV = &v)
-            {
-                byte ret = ImGuiNative.igSliderInt4(nativeLabel, nativeV, vMin, vMax, nativeFormat, flags);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabel);
-                }
-                
-                if (formatByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeFormat);
-                }
-                
+                byte ret = ImGuiNative.igSliderInt4(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), 0);
                 return ret != 0;
-            }
         }
         
         /// <summary>
@@ -911,67 +231,8 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool SliderInt4(string label, ref int v, int vMin, int vMax, string format, ImGuiSliderFlags flags)
         {
-            byte* nativeLabel;
-            int labelByteCount = 0;
-            if (label != null)
-            {
-                labelByteCount = Encoding.UTF8.GetByteCount(label);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabel = Util.Allocate(labelByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
-                    nativeLabel = nativeLabelStackBytes;
-                }
-                
-                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
-                nativeLabel[nativeLabelOffset] = 0;
-            }
-            else
-            {
-                nativeLabel = null;
-            }
-            
-            byte* nativeFormat;
-            int formatByteCount = 0;
-            if (format != null)
-            {
-                formatByteCount = Encoding.UTF8.GetByteCount(format);
-                if (formatByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeFormat = Util.Allocate(formatByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
-                    nativeFormat = nativeFormatStackBytes;
-                }
-                
-                int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
-                nativeFormat[nativeFormatOffset] = 0;
-            }
-            else
-            {
-                nativeFormat = null;
-            }
-            
-            fixed (int* nativeV = &v)
-            {
-                byte ret = ImGuiNative.igSliderInt4(nativeLabel, nativeV, vMin, vMax, nativeFormat, flags);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeLabel);
-                }
-                
-                if (formatByteCount > Util.StackAllocationSizeLimit)
-                {
-                    Util.Free(nativeFormat);
-                }
-                
+                byte ret = ImGuiNative.igSliderInt4(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), flags);
                 return ret != 0;
-            }
         }
         
         /// <summary>
@@ -985,40 +246,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool SliderScalar(string label, ImGuiDataType dataType, IntPtr pData, IntPtr pMin, IntPtr pMax)
         {
-            byte* nativeLabel;
-            int labelByteCount = 0;
-            if (label != null)
-            {
-                labelByteCount = Encoding.UTF8.GetByteCount(label);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabel = Util.Allocate(labelByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
-                    nativeLabel = nativeLabelStackBytes;
-                }
-                
-                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
-                nativeLabel[nativeLabelOffset] = 0;
-            }
-            else
-            {
-                nativeLabel = null;
-            }
-            
-            IntPtr nativePData = pData;
-            IntPtr nativePMin = pMin;
-            IntPtr nativePMax = pMax;
-            byte* nativeFormat = null;
-            ImGuiSliderFlags flags = 0;
-            byte ret = ImGuiNative.igSliderScalar(nativeLabel, dataType, nativePData, nativePMin, nativePMax, nativeFormat, flags);
-            if (labelByteCount > Util.StackAllocationSizeLimit)
-            {
-                Util.Free(nativeLabel);
-            }
-            
+            byte ret = ImGuiNative.igSliderScalar(Encoding.UTF8.GetBytes(label), dataType, pData, pMin, pMax, null, 0);
             return ret != 0;
         }
         
@@ -1034,67 +262,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool SliderScalar(string label, ImGuiDataType dataType, IntPtr pData, IntPtr pMin, IntPtr pMax, string format)
         {
-            byte* nativeLabel;
-            int labelByteCount = 0;
-            if (label != null)
-            {
-                labelByteCount = Encoding.UTF8.GetByteCount(label);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabel = Util.Allocate(labelByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
-                    nativeLabel = nativeLabelStackBytes;
-                }
-                
-                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
-                nativeLabel[nativeLabelOffset] = 0;
-            }
-            else
-            {
-                nativeLabel = null;
-            }
-            
-            IntPtr nativePData = pData;
-            IntPtr nativePMin = pMin;
-            IntPtr nativePMax = pMax;
-            byte* nativeFormat;
-            int formatByteCount = 0;
-            if (format != null)
-            {
-                formatByteCount = Encoding.UTF8.GetByteCount(format);
-                if (formatByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeFormat = Util.Allocate(formatByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
-                    nativeFormat = nativeFormatStackBytes;
-                }
-                
-                int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
-                nativeFormat[nativeFormatOffset] = 0;
-            }
-            else
-            {
-                nativeFormat = null;
-            }
-            
-            ImGuiSliderFlags flags = 0;
-            byte ret = ImGuiNative.igSliderScalar(nativeLabel, dataType, nativePData, nativePMin, nativePMax, nativeFormat, flags);
-            if (labelByteCount > Util.StackAllocationSizeLimit)
-            {
-                Util.Free(nativeLabel);
-            }
-            
-            if (formatByteCount > Util.StackAllocationSizeLimit)
-            {
-                Util.Free(nativeFormat);
-            }
-            
+            byte ret = ImGuiNative.igSliderScalar(Encoding.UTF8.GetBytes(label), dataType, pData, pMin, pMax, Encoding.UTF8.GetBytes(format), 0);
             return ret != 0;
         }
         
@@ -1111,66 +279,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool SliderScalar(string label, ImGuiDataType dataType, IntPtr pData, IntPtr pMin, IntPtr pMax, string format, ImGuiSliderFlags flags)
         {
-            byte* nativeLabel;
-            int labelByteCount = 0;
-            if (label != null)
-            {
-                labelByteCount = Encoding.UTF8.GetByteCount(label);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabel = Util.Allocate(labelByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
-                    nativeLabel = nativeLabelStackBytes;
-                }
-                
-                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
-                nativeLabel[nativeLabelOffset] = 0;
-            }
-            else
-            {
-                nativeLabel = null;
-            }
-            
-            IntPtr nativePData = pData;
-            IntPtr nativePMin = pMin;
-            IntPtr nativePMax = pMax;
-            byte* nativeFormat;
-            int formatByteCount = 0;
-            if (format != null)
-            {
-                formatByteCount = Encoding.UTF8.GetByteCount(format);
-                if (formatByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeFormat = Util.Allocate(formatByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
-                    nativeFormat = nativeFormatStackBytes;
-                }
-                
-                int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
-                nativeFormat[nativeFormatOffset] = 0;
-            }
-            else
-            {
-                nativeFormat = null;
-            }
-            
-            byte ret = ImGuiNative.igSliderScalar(nativeLabel, dataType, nativePData, nativePMin, nativePMax, nativeFormat, flags);
-            if (labelByteCount > Util.StackAllocationSizeLimit)
-            {
-                Util.Free(nativeLabel);
-            }
-            
-            if (formatByteCount > Util.StackAllocationSizeLimit)
-            {
-                Util.Free(nativeFormat);
-            }
-            
+           byte ret = ImGuiNative.igSliderScalar(Encoding.UTF8.GetBytes(label), dataType, pData, pMin, pMax, Encoding.UTF8.GetBytes(format), flags);
             return ret != 0;
         }
         
@@ -1186,40 +295,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool SliderScalarN(string label, ImGuiDataType dataType, IntPtr pData, int components, IntPtr pMin, IntPtr pMax)
         {
-            byte* nativeLabel;
-            int labelByteCount = 0;
-            if (label != null)
-            {
-                labelByteCount = Encoding.UTF8.GetByteCount(label);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabel = Util.Allocate(labelByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
-                    nativeLabel = nativeLabelStackBytes;
-                }
-                
-                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
-                nativeLabel[nativeLabelOffset] = 0;
-            }
-            else
-            {
-                nativeLabel = null;
-            }
-            
-            IntPtr nativePData = pData;
-            IntPtr nativePMin = pMin;
-            IntPtr nativePMax = pMax;
-            byte* nativeFormat = null;
-            ImGuiSliderFlags flags = 0;
-            byte ret = ImGuiNative.igSliderScalarN(nativeLabel, dataType, nativePData, components, nativePMin, nativePMax, nativeFormat, flags);
-            if (labelByteCount > Util.StackAllocationSizeLimit)
-            {
-                Util.Free(nativeLabel);
-            }
-            
+            byte ret = ImGuiNative.igSliderScalarN(Encoding.UTF8.GetBytes(label), dataType, pData, components, pMin, pMax, null, 0);
             return ret != 0;
         }
         
@@ -1236,67 +312,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool SliderScalarN(string label, ImGuiDataType dataType, IntPtr pData, int components, IntPtr pMin, IntPtr pMax, string format)
         {
-            byte* nativeLabel;
-            int labelByteCount = 0;
-            if (label != null)
-            {
-                labelByteCount = Encoding.UTF8.GetByteCount(label);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabel = Util.Allocate(labelByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
-                    nativeLabel = nativeLabelStackBytes;
-                }
-                
-                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
-                nativeLabel[nativeLabelOffset] = 0;
-            }
-            else
-            {
-                nativeLabel = null;
-            }
-            
-            IntPtr nativePData = pData;
-            IntPtr nativePMin = pMin;
-            IntPtr nativePMax = pMax;
-            byte* nativeFormat;
-            int formatByteCount = 0;
-            if (format != null)
-            {
-                formatByteCount = Encoding.UTF8.GetByteCount(format);
-                if (formatByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeFormat = Util.Allocate(formatByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
-                    nativeFormat = nativeFormatStackBytes;
-                }
-                
-                int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
-                nativeFormat[nativeFormatOffset] = 0;
-            }
-            else
-            {
-                nativeFormat = null;
-            }
-            
-            ImGuiSliderFlags flags = 0;
-            byte ret = ImGuiNative.igSliderScalarN(nativeLabel, dataType, nativePData, components, nativePMin, nativePMax, nativeFormat, flags);
-            if (labelByteCount > Util.StackAllocationSizeLimit)
-            {
-                Util.Free(nativeLabel);
-            }
-            
-            if (formatByteCount > Util.StackAllocationSizeLimit)
-            {
-                Util.Free(nativeFormat);
-            }
-            
+            byte ret = ImGuiNative.igSliderScalarN(Encoding.UTF8.GetBytes(label), dataType, pData, components, pMin, pMax, Encoding.UTF8.GetBytes(format), 0);
             return ret != 0;
         }
         
@@ -1314,66 +330,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool SliderScalarN(string label, ImGuiDataType dataType, IntPtr pData, int components, IntPtr pMin, IntPtr pMax, string format, ImGuiSliderFlags flags)
         {
-            byte* nativeLabel;
-            int labelByteCount = 0;
-            if (label != null)
-            {
-                labelByteCount = Encoding.UTF8.GetByteCount(label);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabel = Util.Allocate(labelByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
-                    nativeLabel = nativeLabelStackBytes;
-                }
-                
-                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
-                nativeLabel[nativeLabelOffset] = 0;
-            }
-            else
-            {
-                nativeLabel = null;
-            }
-            
-            IntPtr nativePData = pData;
-            IntPtr nativePMin = pMin;
-            IntPtr nativePMax = pMax;
-            byte* nativeFormat;
-            int formatByteCount = 0;
-            if (format != null)
-            {
-                formatByteCount = Encoding.UTF8.GetByteCount(format);
-                if (formatByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeFormat = Util.Allocate(formatByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeFormatStackBytes = stackalloc byte[formatByteCount + 1];
-                    nativeFormat = nativeFormatStackBytes;
-                }
-                
-                int nativeFormatOffset = Util.GetUtf8(format, nativeFormat, formatByteCount);
-                nativeFormat[nativeFormatOffset] = 0;
-            }
-            else
-            {
-                nativeFormat = null;
-            }
-            
-            byte ret = ImGuiNative.igSliderScalarN(nativeLabel, dataType, nativePData, components, nativePMin, nativePMax, nativeFormat, flags);
-            if (labelByteCount > Util.StackAllocationSizeLimit)
-            {
-                Util.Free(nativeLabel);
-            }
-            
-            if (formatByteCount > Util.StackAllocationSizeLimit)
-            {
-                Util.Free(nativeFormat);
-            }
-            
+            byte ret = ImGuiNative.igSliderScalarN(Encoding.UTF8.GetBytes(label), dataType, pData, components, pMin, pMax, Encoding.UTF8.GetBytes(format), flags);
             return ret != 0;
         }
         
@@ -1384,35 +341,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool SmallButton(string label)
         {
-            byte* nativeLabel;
-            int labelByteCount = 0;
-            if (label != null)
-            {
-                labelByteCount = Encoding.UTF8.GetByteCount(label);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabel = Util.Allocate(labelByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
-                    nativeLabel = nativeLabelStackBytes;
-                }
-                
-                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
-                nativeLabel[nativeLabelOffset] = 0;
-            }
-            else
-            {
-                nativeLabel = null;
-            }
-            
-            byte ret = ImGuiNative.igSmallButton(nativeLabel);
-            if (labelByteCount > Util.StackAllocationSizeLimit)
-            {
-                Util.Free(nativeLabel);
-            }
-            
+            byte ret = ImGuiNative.igSmallButton(Encoding.UTF8.GetBytes(label));
             return ret != 0;
         }
         
@@ -1482,36 +411,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool TabItemButton(string label)
         {
-            byte* nativeLabel;
-            int labelByteCount = 0;
-            if (label != null)
-            {
-                labelByteCount = Encoding.UTF8.GetByteCount(label);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabel = Util.Allocate(labelByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
-                    nativeLabel = nativeLabelStackBytes;
-                }
-                
-                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
-                nativeLabel[nativeLabelOffset] = 0;
-            }
-            else
-            {
-                nativeLabel = null;
-            }
-            
-            ImGuiTabItemFlags flags = 0;
-            byte ret = ImGuiNative.igTabItemButton(nativeLabel, flags);
-            if (labelByteCount > Util.StackAllocationSizeLimit)
-            {
-                Util.Free(nativeLabel);
-            }
-            
+            byte ret = ImGuiNative.igTabItemButton(Encoding.UTF8.GetBytes(label), 0);
             return ret != 0;
         }
         
@@ -1523,35 +423,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool TabItemButton(string label, ImGuiTabItemFlags flags)
         {
-            byte* nativeLabel;
-            int labelByteCount = 0;
-            if (label != null)
-            {
-                labelByteCount = Encoding.UTF8.GetByteCount(label);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabel = Util.Allocate(labelByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
-                    nativeLabel = nativeLabelStackBytes;
-                }
-                
-                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
-                nativeLabel[nativeLabelOffset] = 0;
-            }
-            else
-            {
-                nativeLabel = null;
-            }
-            
-            byte ret = ImGuiNative.igTabItemButton(nativeLabel, flags);
-            if (labelByteCount > Util.StackAllocationSizeLimit)
-            {
-                Util.Free(nativeLabel);
-            }
-            
+            byte ret = ImGuiNative.igTabItemButton(Encoding.UTF8.GetBytes(label), flags);
             return ret != 0;
         }
         
@@ -1641,34 +513,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="label">The label</param>
         public static void TableHeader(string label)
         {
-            byte* nativeLabel;
-            int labelByteCount = 0;
-            if (label != null)
-            {
-                labelByteCount = Encoding.UTF8.GetByteCount(label);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabel = Util.Allocate(labelByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
-                    nativeLabel = nativeLabelStackBytes;
-                }
-                
-                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
-                nativeLabel[nativeLabelOffset] = 0;
-            }
-            else
-            {
-                nativeLabel = null;
-            }
-            
-            ImGuiNative.igTableHeader(nativeLabel);
-            if (labelByteCount > Util.StackAllocationSizeLimit)
-            {
-                Util.Free(nativeLabel);
-            }
+            ImGuiNative.igTableHeader(Encoding.UTF8.GetBytes(label));
         }
         
         /// <summary>
@@ -1769,37 +614,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="label">The label</param>
         public static void TableSetupColumn(string label)
         {
-            byte* nativeLabel;
-            int labelByteCount = 0;
-            if (label != null)
-            {
-                labelByteCount = Encoding.UTF8.GetByteCount(label);
-                if (labelByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeLabel = Util.Allocate(labelByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
-                    nativeLabel = nativeLabelStackBytes;
-                }
-                
-                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
-                nativeLabel[nativeLabelOffset] = 0;
-            }
-            else
-            {
-                nativeLabel = null;
-            }
-            
-            ImGuiTableColumnFlags flags = 0;
-            float initWidthOrWeight = 0.0f;
-            uint userId = 0;
-            ImGuiNative.igTableSetupColumn(nativeLabel, flags, initWidthOrWeight, userId);
-            if (labelByteCount > Util.StackAllocationSizeLimit)
-            {
-                Util.Free(nativeLabel);
-            }
+            ImGuiNative.igTableSetupColumn(Encoding.UTF8.GetBytes(label), 0, 0, 0);
         }
         
         /// <summary>

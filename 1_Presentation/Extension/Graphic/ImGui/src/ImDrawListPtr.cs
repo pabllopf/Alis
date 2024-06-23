@@ -914,7 +914,7 @@ namespace Alis.Extension.Graphic.ImGui
         public Vector2 GetClipRectMax()
         {
             Vector2 retval;
-            ImGuiNative.ImDrawList_GetClipRectMax(&retval, NativePtr);
+            ImGuiNative.ImDrawList_GetClipRectMax(out retval, NativePtr);
             return retval;
         }
         
@@ -925,7 +925,7 @@ namespace Alis.Extension.Graphic.ImGui
         public Vector2 GetClipRectMin()
         {
             Vector2 retval;
-            ImGuiNative.ImDrawList_GetClipRectMin(&retval, NativePtr);
+            ImGuiNative.ImDrawList_GetClipRectMin(out retval, NativePtr);
             return retval;
         }
         
@@ -1281,8 +1281,7 @@ namespace Alis.Extension.Graphic.ImGui
                 nativeTextBegin[nativeTextBeginOffset] = 0;
             }
             
-            byte* nativeTextEnd = null;
-            ImGuiNative.ImDrawList_AddText_Vec2(NativePtr, pos, col, nativeTextBegin, nativeTextEnd);
+            ImGuiNative.ImDrawList_AddText_Vec2(NativePtr, pos, col, nativeTextBegin, null);
         }
         
         /// <summary>
@@ -1303,10 +1302,9 @@ namespace Alis.Extension.Graphic.ImGui
                 int nativeTextBeginOffset = Encoding.UTF8.GetBytes(textBeginPtr, textBegin.Length, nativeTextBegin, textBeginByteCount);
                 nativeTextBegin[nativeTextBeginOffset] = 0;
             }
-            
-            byte* nativeTextEnd = null;
+                
             float wrapWidth = 0.0f;
-            ImGuiNative.ImDrawList_AddText_FontPtr(NativePtr, nativeFont, fontSize, pos, col, nativeTextBegin, nativeTextEnd, wrapWidth, new Vector4());
+            ImGuiNative.ImDrawList_AddText_FontPtr(NativePtr, nativeFont, fontSize, pos, col, nativeTextBegin, null, wrapWidth, new Vector4());
         }
     }
 }

@@ -189,7 +189,7 @@ namespace Alis.Extension.Graphic.ImGui
         public Vector2 GetCenter()
         {
             Vector2 retval;
-            ImGuiNative.ImGuiViewport_GetCenter(&retval, NativePtr);
+            ImGuiNative.ImGuiViewport_GetCenter(out retval, NativePtr);
             return retval;
         }
         
@@ -200,7 +200,7 @@ namespace Alis.Extension.Graphic.ImGui
         public Vector2 GetWorkCenter()
         {
             Vector2 retval;
-            ImGuiNative.ImGuiViewport_GetWorkCenter(&retval, NativePtr);
+            ImGuiNative.ImGuiViewport_GetWorkCenter(out retval, NativePtr);
             return retval;
         }
     }
