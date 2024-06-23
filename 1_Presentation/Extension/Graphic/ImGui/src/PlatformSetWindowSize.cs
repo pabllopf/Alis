@@ -34,5 +34,5 @@ namespace Alis.Extension.Graphic.ImGui
     /// <summary>
     ///     The platform setwindowsize
     /// </summary>
-    public delegate void PlatformSetWindowSize(ImGuiViewportPtr vp, Vector2 size);
+    public delegate void PlatformSetWindowSize(ImGuiViewport vp, Vector2 size);
 }

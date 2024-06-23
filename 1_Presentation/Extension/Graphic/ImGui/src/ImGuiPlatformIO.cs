@@ -160,5 +160,13 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The viewports
         /// </summary>
         public ImVector Viewports;
+        
+        /// <summary>
+        ///     Destroys this instance
+        /// </summary>
+        public void Destroy()
+        {
+            ImGuiNative.ImGuiPlatformIO_destroy(this);
+        }
     }
 }

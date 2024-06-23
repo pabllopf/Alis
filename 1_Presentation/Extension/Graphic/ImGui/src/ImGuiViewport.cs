@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Extension.Graphic.ImGui
@@ -34,7 +35,7 @@ namespace Alis.Extension.Graphic.ImGui
     /// <summary>
     ///     The im gui viewport
     /// </summary>
-    public unsafe struct ImGuiViewport
+    public struct ImGuiViewport
     {
         /// <summary>
         ///     The id
@@ -79,27 +80,27 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The draw data
         /// </summary>
-        public ImDrawData* DrawData;
+        public ImDrawData DrawData;
         
         /// <summary>
         ///     The renderer user data
         /// </summary>
-        public void* RendererUserData;
+        public IntPtr RendererUserData;
         
         /// <summary>
         ///     The platform user data
         /// </summary>
-        public void* PlatformUserData;
+        public IntPtr PlatformUserData;
         
         /// <summary>
         ///     The platform handle
         /// </summary>
-        public void* PlatformHandle;
+        public IntPtr PlatformHandle;
         
         /// <summary>
         ///     The platform handle raw
         /// </summary>
-        public void* PlatformHandleRaw;
+        public IntPtr PlatformHandleRaw;
         
         /// <summary>
         ///     The platform window created
@@ -120,5 +121,36 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The platform request close
         /// </summary>
         public byte PlatformRequestClose;
+        
+        
+        /// <summary>
+        ///     Destroys this instance
+        /// </summary>
+        public void Destroy()
+        {
+            ImGuiNative.ImGuiViewport_destroy(this);
+        }
+        
+        /// <summary>
+        ///     Gets the center
+        /// </summary>
+        /// <returns>The retval</returns>
+        public Vector2 GetCenter()
+        {
+            Vector2 retval;
+            ImGuiNative.ImGuiViewport_GetCenter(out retval, this);
+            return retval;
+        }
+        
+        /// <summary>
+        ///     Gets the work center
+        /// </summary>
+        /// <returns>The retval</returns>
+        public Vector2 GetWorkCenter()
+        {
+            Vector2 retval;
+            ImGuiNative.ImGuiViewport_GetWorkCenter(out retval, this);
+            return retval;
+        }
     }
 }

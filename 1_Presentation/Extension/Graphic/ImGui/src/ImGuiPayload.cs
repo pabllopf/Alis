@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Text;
 
 namespace Alis.Extension.Graphic.ImGui
@@ -34,12 +35,12 @@ namespace Alis.Extension.Graphic.ImGui
     /// <summary>
     ///     The im gui payload
     /// </summary>
-    public unsafe struct ImGuiPayload
+    public struct ImGuiPayload
     {
         /// <summary>
         ///     The data
         /// </summary>
-        public void* Data;
+        public IntPtr Data;
         
         /// <summary>
         ///     The data size
@@ -64,7 +65,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The data type
         /// </summary>
-        public fixed byte DataType[33];
+        public byte[] DataType;
         
         /// <summary>
         ///     The preview
@@ -99,35 +100,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The bool</returns>
         public bool IsDataType(string type)
         {
-            byte* nativeType;
-            int typeByteCount = 0;
-            if (type != null)
-            {
-                typeByteCount = Encoding.UTF8.GetByteCount(type);
-                if (typeByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeType = Util.Allocate(typeByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeTypeStackBytes = stackalloc byte[typeByteCount + 1];
-                    nativeType = nativeTypeStackBytes;
-                }
-                
-                int nativeTypeOffset = Util.GetUtf8(type, nativeType, typeByteCount);
-                nativeType[nativeTypeOffset] = 0;
-            }
-            else
-            {
-                nativeType = null;
-            }
-            
-            byte ret = ImGuiNative.ImGuiPayload_IsDataType(ref this, nativeType);
-            if (typeByteCount > Util.StackAllocationSizeLimit)
-            {
-                Util.Free(nativeType);
-            }
-            
+            byte ret = ImGuiNative.ImGuiPayload_IsDataType(ref this, Encoding.UTF8.GetBytes(type));
             return ret != 0;
         }
         

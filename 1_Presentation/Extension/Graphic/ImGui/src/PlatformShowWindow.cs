@@ -32,5 +32,5 @@ namespace Alis.Extension.Graphic.ImGui
     /// <summary>
     ///     The platform showwindow
     /// </summary>
-    public delegate void PlatformShowWindow(ImGuiViewportPtr vp);
+    public delegate void PlatformShowWindow(ImGuiViewport vp);
 }

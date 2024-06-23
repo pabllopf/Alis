@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Extension.Graphic.ImGui
@@ -129,6 +130,14 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The dst font
         /// </summary>
-        public ImFont* DstFont;
+        public IntPtr DstFont;
+        
+        /// <summary>
+        ///     Destroys this instance
+        /// </summary>
+        public void Destroy()
+        {
+            ImGuiNative.ImFontConfig_destroy(this);
+        }
     }
 }

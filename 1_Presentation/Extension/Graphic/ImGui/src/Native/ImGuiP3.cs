@@ -252,10 +252,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// </summary>
         /// <param name="id">The id</param>
         /// <returns>The im gui viewport ptr</returns>
-        public static ImGuiViewportPtr FindViewportById(uint id)
+        public static ImGuiViewport FindViewportById(uint id)
         {
-            ImGuiViewport* ret = ImGuiNative.igFindViewportByID(id);
-            return new ImGuiViewportPtr(ret);
+            return  ImGuiNative.igFindViewportByID(id);
         }
         
         /// <summary>
@@ -263,11 +262,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// </summary>
         /// <param name="platformHandle">The platform handle</param>
         /// <returns>The im gui viewport ptr</returns>
-        public static ImGuiViewportPtr FindViewportByPlatformHandle(IntPtr platformHandle)
+        public static ImGuiViewport FindViewportByPlatformHandle(IntPtr platformHandle)
         {
-            IntPtr nativePlatformHandle = platformHandle;
-            ImGuiViewport* ret = ImGuiNative.igFindViewportByPlatformHandle(nativePlatformHandle);
-            return new ImGuiViewportPtr(ret);
+            return ImGuiNative.igFindViewportByPlatformHandle(platformHandle);
         }
         
         /// <summary>
@@ -278,26 +275,16 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="pUserData">The user data</param>
         public static void GetAllocatorFunctions(ref IntPtr pAllocFunc, ref IntPtr pFreeFunc, ref IntPtr pUserData)
         {
-            fixed (IntPtr* nativePAllocFunc = &pAllocFunc)
-            {
-                fixed (IntPtr* nativePFreeFunc = &pFreeFunc)
-                {
-                    fixed (void* nativePUserData = &pUserData)
-                    {
-                        ImGuiNative.igGetAllocatorFunctions(nativePAllocFunc, nativePFreeFunc, nativePUserData);
-                    }
-                }
-            }
+            ImGuiNative.igGetAllocatorFunctions(ref pAllocFunc, ref pFreeFunc, ref pUserData);
         }
         
         /// <summary>
         ///     Gets the background draw list
         /// </summary>
         /// <returns>The im draw list ptr</returns>
-        public static ImDrawListPtr GetBackgroundDrawList()
+        public static ImDrawList GetBackgroundDrawList()
         {
-            ImDrawList* ret = ImGuiNative.igGetBackgroundDrawList_Nil();
-            return new ImDrawListPtr(ret);
+            return ImGuiNative.igGetBackgroundDrawList_Nil();
         }
         
         /// <summary>
@@ -305,11 +292,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// </summary>
         /// <param name="viewport">The viewport</param>
         /// <returns>The im draw list ptr</returns>
-        public static ImDrawListPtr GetBackgroundDrawList(ImGuiViewportPtr viewport)
+        public static ImDrawList GetBackgroundDrawList(ImGuiViewport viewport)
         {
-            ImGuiViewport* nativeViewport = viewport.NativePtr;
-            ImDrawList* ret = ImGuiNative.igGetBackgroundDrawList_ViewportPtr(nativeViewport);
-            return new ImDrawListPtr(ret);
+            return ImGuiNative.igGetBackgroundDrawList_ViewportPtr(viewport);
         }
         
         /// <summary>
@@ -318,8 +303,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The string</returns>
         public static string GetClipboardText()
         {
-            byte* ret = ImGuiNative.igGetClipboardText();
-            return Util.StringFromPtr(ret);
+            return Encoding.UTF8.GetString(ImGuiNative.igGetClipboardText());
         }
         
         /// <summary>
@@ -543,10 +527,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         ///     Gets the font
         /// </summary>
         /// <returns>The im font ptr</returns>
-        public static ImFontPtr GetFont()
+        public static ImFont GetFont()
         {
-            ImFont* ret = ImGuiNative.igGetFont();
-            return new ImFontPtr(ret);
+            return ImGuiNative.igGetFont();
         }
         
         /// <summary>
@@ -574,10 +557,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         ///     Gets the foreground draw list
         /// </summary>
         /// <returns>The im draw list ptr</returns>
-        public static ImDrawListPtr GetForegroundDrawList()
+        public static ImDrawList GetForegroundDrawList()
         {
-            ImDrawList* ret = ImGuiNative.igGetForegroundDrawList_Nil();
-            return new ImDrawListPtr(ret);
+            return ImGuiNative.igGetForegroundDrawList_Nil();
         }
         
         /// <summary>
@@ -585,11 +567,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// </summary>
         /// <param name="viewport">The viewport</param>
         /// <returns>The im draw list ptr</returns>
-        public static ImDrawListPtr GetForegroundDrawList(ImGuiViewportPtr viewport)
+        public static ImDrawList GetForegroundDrawList(ImGuiViewport viewport)
         {
-            ImGuiViewport* nativeViewport = viewport.NativePtr;
-            ImDrawList* ret = ImGuiNative.igGetForegroundDrawList_ViewportPtr(nativeViewport);
-            return new ImDrawListPtr(ret);
+            return  ImGuiNative.igGetForegroundDrawList_ViewportPtr(viewport);
         }
         
         /// <summary>
@@ -649,10 +629,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         ///     Gets the io
         /// </summary>
         /// <returns>The im gui io ptr</returns>
-        public static ImGuiIoPtr GetIo()
+        public static ImGuiIo GetIo()
         {
-            ImGuiIo* ret = ImGuiNative.igGetIO();
-            return new ImGuiIoPtr(ret);
+            return ImGuiNative.igGetIO();
         }
         
         /// <summary>
@@ -706,8 +685,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The string</returns>
         public static string GetKeyName(ImGuiKey key)
         {
-            byte* ret = ImGuiNative.igGetKeyName(key);
-            return Util.StringFromPtr(ret);
+            return  Encoding.UTF8.GetString(ImGuiNative.igGetKeyName(key));
         }
         
         /// <summary>
@@ -727,10 +705,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         ///     Gets the main viewport
         /// </summary>
         /// <returns>The im gui viewport ptr</returns>
-        public static ImGuiViewportPtr GetMainViewport()
+        public static ImGuiViewport GetMainViewport()
         {
-            ImGuiViewport* ret = ImGuiNative.igGetMainViewport();
-            return new ImGuiViewportPtr(ret);
+            return ImGuiNative.igGetMainViewport();
         }
         
         /// <summary>
@@ -819,10 +796,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         ///     Gets the platform io
         /// </summary>
         /// <returns>The im gui platform io ptr</returns>
-        public static ImGuiPlatformIoPtr GetPlatformIo()
+        public static ImGuiPlatformIo GetPlatformIo()
         {
-            ImGuiPlatformIo* ret = ImGuiNative.igGetPlatformIO();
-            return new ImGuiPlatformIoPtr(ret);
+            return ImGuiNative.igGetPlatformIO();
         }
         
         /// <summary>
@@ -884,8 +860,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The string</returns>
         public static string GetStyleColorName(ImGuiCol idx)
         {
-            byte* ret = ImGuiNative.igGetStyleColorName(idx);
-            return Util.StringFromPtr(ret);
+            return Encoding.UTF8.GetString(ImGuiNative.igGetStyleColorName(idx));
         }
         
         /// <summary>
@@ -945,8 +920,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The string</returns>
         public static string GetVersion()
         {
-            byte* ret = ImGuiNative.igGetVersion();
-            return Util.StringFromPtr(ret);
+            return Encoding.UTF8.GetString(ImGuiNative.igGetVersion());
         }
         
         /// <summary>
@@ -995,10 +969,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         ///     Gets the window draw list
         /// </summary>
         /// <returns>The im draw list ptr</returns>
-        public static ImDrawListPtr GetWindowDrawList()
+        public static ImDrawList GetWindowDrawList()
         {
-            ImDrawList* ret = ImGuiNative.igGetWindowDrawList();
-            return new ImDrawListPtr(ret);
+            return  ImGuiNative.igGetWindowDrawList();
         }
         
         /// <summary>
@@ -1037,10 +1010,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         ///     Gets the window viewport
         /// </summary>
         /// <returns>The im gui viewport ptr</returns>
-        public static ImGuiViewportPtr GetWindowViewport()
+        public static ImGuiViewport GetWindowViewport()
         {
-            ImGuiViewport* ret = ImGuiNative.igGetWindowViewport();
-            return new ImGuiViewportPtr(ret);
+            return ImGuiNative.igGetWindowViewport();
         }
         
         /// <summary>

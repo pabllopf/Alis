@@ -704,8 +704,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool IsMousePosValid()
         {
-            Vector2* mousePos = null;
-            byte ret = ImGuiNative.igIsMousePosValid(mousePos);
+            byte ret = ImGuiNative.igIsMousePosValid(new Vector2());
             return ret != 0;
         }
         
@@ -716,11 +715,8 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool IsMousePosValid(ref Vector2 mousePos)
         {
-            fixed (Vector2* nativeMousePos = &mousePos)
-            {
-                byte ret = ImGuiNative.igIsMousePosValid(nativeMousePos);
-                return ret != 0;
-            }
+            byte ret = ImGuiNative.igIsMousePosValid(mousePos);
+            return ret != 0;
         }
         
         /// <summary>
@@ -923,35 +919,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="iniData">The ini data</param>
         public static void LoadIniSettingsFromMemory(string iniData)
         {
-            byte* nativeIniData;
-            int iniDataByteCount = 0;
-            if (iniData != null)
-            {
-                iniDataByteCount = Encoding.UTF8.GetByteCount(iniData);
-                if (iniDataByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeIniData = Util.Allocate(iniDataByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeIniDataStackBytes = stackalloc byte[iniDataByteCount + 1];
-                    nativeIniData = nativeIniDataStackBytes;
-                }
-                
-                int nativeIniDataOffset = Util.GetUtf8(iniData, nativeIniData, iniDataByteCount);
-                nativeIniData[nativeIniDataOffset] = 0;
-            }
-            else
-            {
-                nativeIniData = null;
-            }
-            
-            uint iniSize = 0;
-            ImGuiNative.igLoadIniSettingsFromMemory(nativeIniData, iniSize);
-            if (iniDataByteCount > Util.StackAllocationSizeLimit)
-            {
-                Util.Free(nativeIniData);
-            }
+            ImGuiNative.igLoadIniSettingsFromMemory(Encoding.UTF8.GetBytes(iniData), (uint) Encoding.UTF8.GetByteCount(iniData));
         }
         
         /// <summary>
@@ -961,34 +929,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="iniSize">The ini size</param>
         public static void LoadIniSettingsFromMemory(string iniData, uint iniSize)
         {
-            byte* nativeIniData;
-            int iniDataByteCount = 0;
-            if (iniData != null)
-            {
-                iniDataByteCount = Encoding.UTF8.GetByteCount(iniData);
-                if (iniDataByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeIniData = Util.Allocate(iniDataByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeIniDataStackBytes = stackalloc byte[iniDataByteCount + 1];
-                    nativeIniData = nativeIniDataStackBytes;
-                }
-                
-                int nativeIniDataOffset = Util.GetUtf8(iniData, nativeIniData, iniDataByteCount);
-                nativeIniData[nativeIniDataOffset] = 0;
-            }
-            else
-            {
-                nativeIniData = null;
-            }
-            
-            ImGuiNative.igLoadIniSettingsFromMemory(nativeIniData, iniSize);
-            if (iniDataByteCount > Util.StackAllocationSizeLimit)
-            {
-                Util.Free(nativeIniData);
-            }
+            ImGuiNative.igLoadIniSettingsFromMemory(Encoding.UTF8.GetBytes(iniData), iniSize);
         }
         
         /// <summary>
@@ -1039,9 +980,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// </summary>
         public static void LogToFile()
         {
-            int autoOpenDepth = -1;
-            byte* nativeFilename = null;
-            ImGuiNative.igLogToFile(autoOpenDepth, nativeFilename);
+            ImGuiNative.igLogToFile(-1, null);
         }
         
         /// <summary>
@@ -1050,8 +989,8 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="autoOpenDepth">The auto open depth</param>
         public static void LogToFile(int autoOpenDepth)
         {
-            byte* nativeFilename = null;
-            ImGuiNative.igLogToFile(autoOpenDepth, nativeFilename);
+            ImGuiNative.igLogToFile(autoOpenDepth, null);
+            
         }
         
         /// <summary>
@@ -1061,34 +1000,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="filename">The filename</param>
         public static void LogToFile(int autoOpenDepth, string filename)
         {
-            byte* nativeFilename;
-            int filenameByteCount = 0;
-            if (filename != null)
-            {
-                filenameByteCount = Encoding.UTF8.GetByteCount(filename);
-                if (filenameByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeFilename = Util.Allocate(filenameByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeFilenameStackBytes = stackalloc byte[filenameByteCount + 1];
-                    nativeFilename = nativeFilenameStackBytes;
-                }
-                
-                int nativeFilenameOffset = Util.GetUtf8(filename, nativeFilename, filenameByteCount);
-                nativeFilename[nativeFilenameOffset] = 0;
-            }
-            else
-            {
-                nativeFilename = null;
-            }
-            
-            ImGuiNative.igLogToFile(autoOpenDepth, nativeFilename);
-            if (filenameByteCount > Util.StackAllocationSizeLimit)
-            {
-                Util.Free(nativeFilename);
-            }
+            ImGuiNative.igLogToFile(autoOpenDepth, Encoding.UTF8.GetBytes(filename));
         }
         
         /// <summary>

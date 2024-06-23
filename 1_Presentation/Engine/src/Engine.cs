@@ -186,11 +186,11 @@ namespace Alis.App.Engine
         ///     The dockspaceflags
         /// </summary>
         private ImGuiWindowFlags dockspaceflags;
-        
+
         /// <summary>
         ///     The io
         /// </summary>
-        private ImGuiIoPtr io = null;
+        private ImGuiIo io;
         
         /// <summary>
         ///     The menu down state
@@ -292,7 +292,7 @@ namespace Alis.App.Engine
             ImGui.SetCurrentContext(_context);
             
             // REBUILD ATLAS
-            ImFontAtlasPtr fonts = ImGui.GetIo().Fonts;
+            ImFontAtlas fonts = ImGui.GetIo().Fonts;
             
             string dirFonts = Environment.CurrentDirectory + "/Assets/Fonts/Jetbrains/";
             string fontToLoad = "JetBrainsMono-Bold.ttf";
@@ -310,16 +310,16 @@ namespace Alis.App.Engine
             }
             
             fonts.AddFontDefault();
-            ImFontPtr fontLoaded = fonts.AddFontFromFileTtf(@$"{dirFonts}{fontToLoad}", 14);
+            ImFont fontLoaded = fonts.AddFontFromFileTtf(@$"{dirFonts}{fontToLoad}", 14);
             
-            fonts.GetTexDataAsRgba32(out byte* pixelData, out int width, out int height, out int _);
-            _fontTextureId = LoadTexture((IntPtr) pixelData, width, height);
+            fonts.GetTexDataAsRgba32(out IntPtr pixelData, out int width, out int height, out int _);
+            _fontTextureId = LoadTexture(pixelData, width, height);
             
             fonts.TexId = (IntPtr) _fontTextureId;
             fonts.ClearTexData();
             
             // CONFIG DOCKSPACE
-            ImGuiViewportPtr viewport = ImGui.GetMainViewport();
+            ImGuiViewport viewport = ImGui.GetMainViewport();
             ImGui.SetNextWindowPos(viewport.WorkPos);
             ImGui.SetNextWindowSize(viewport.WorkSize);
             ImGui.SetNextWindowViewport(viewport.Id);
@@ -588,7 +588,7 @@ namespace Alis.App.Engine
         /// <param name="evt">The evt</param>
         private void ProcessEvent(Event evt)
         {
-            ImGuiIoPtr imGuiIoPtr = ImGui.GetIo();
+            ImGuiIo imGuiIoPtr = ImGui.GetIo();
             switch (evt.type)
             {
                 case EventType.Mousewheel:
@@ -644,8 +644,9 @@ namespace Alis.App.Engine
                 case EventType.Keyup:
                 {
                     SdlScancode key = evt.key.keySym.scancode;
-                    imGuiIoPtr.KeysDown[(int) key] = evt.type == EventType.Keydown;
-                    Logger.Info("io.KeysDown[" + key + "] = " + evt.type + imGuiIoPtr.KeysDown[(int) key]);
+                    
+                    //imGuiIoPtr.KeysDown[(int) key] = evt.type == EventType.Keydown;
+                    //Logger.Info("io.KeysDown[" + key + "] = " + evt.type + imGuiIoPtr.KeysDown[(int) key]);
                     imGuiIoPtr.KeyShift = (Sdl.GetModState() & KeyMods.KModShift) != 0;
                     imGuiIoPtr.KeyCtrl = (Sdl.GetModState() & KeyMods.KModCtrl) != 0;
                     imGuiIoPtr.KeyAlt = (Sdl.GetModState() & KeyMods.KModAlt) != 0;
@@ -660,42 +661,45 @@ namespace Alis.App.Engine
         /// </summary>
         private void UpdateMousePosAndButtons()
         {
-            ImGuiIoPtr imGuiIoPtr = ImGui.GetIo();
-            
-            // Set OS mouse position if requested (rarely used, only when ImGuiConfigFlags_NavEnableSetMousePos is enabled by user)
-            if (imGuiIoPtr.WantSetMousePos)
+            unsafe
             {
-                Sdl.WarpMouseInWindow(_window, (int) imGuiIoPtr.MousePos.X, (int) imGuiIoPtr.MousePos.Y);
-            }
-            else
-            {
-                imGuiIoPtr.MousePos = new Vector2(float.MinValue, float.MinValue);
-            }
+                ImGuiIo imGuiIoPtr = ImGui.GetIo();
             
-            uint mouseButtons = Sdl.GetMouseStateOutXAndY(out int mx, out int my);
-            imGuiIoPtr.MouseDown[0] =
-                _mousePressed[0] ||
-                (mouseButtons & Sdl.Button(Sdl.ButtonLeft)) !=
-                0; // If a mouse press event came, always pass it as "mouse held this frame", so we don't miss click-release events that are shorter than 1 frame.
-            imGuiIoPtr.MouseDown[1] = _mousePressed[1] || (mouseButtons & Sdl.Button(Sdl.ButtonRight)) != 0;
-            imGuiIoPtr.MouseDown[2] = _mousePressed[2] || (mouseButtons & Sdl.Button(Sdl.ButtonMiddle)) != 0;
-            _mousePressed[0] = _mousePressed[1] = _mousePressed[2] = false;
+                // Set OS mouse position if requested (rarely used, only when ImGuiConfigFlags_NavEnableSetMousePos is enabled by user)
+                if (imGuiIoPtr.WantSetMousePos)
+                {
+                    Sdl.WarpMouseInWindow(_window, (int) imGuiIoPtr.MousePos.X, (int) imGuiIoPtr.MousePos.Y);
+                }
+                else
+                {
+                    imGuiIoPtr.MousePos = new Vector2(float.MinValue, float.MinValue);
+                }
             
-            IntPtr focusedWindow = Sdl.GetKeyboardFocus();
-            if (_window == focusedWindow)
-            {
-                // SDL_GetMouseState() gives mouse position seemingly based on the last window entered/focused(?)
-                // The creation of a new windows at runtime and SDL_CaptureMouse both seems to severely mess up with that, so we retrieve that position globally.
-                Sdl.GetWindowPosition(focusedWindow, out int wx, out int wy);
-                Sdl.GetGlobalMouseStateOutXAndOutY(out mx, out my);
-                mx -= wx;
-                my -= wy;
-                imGuiIoPtr.MousePos = new Vector2(mx, my);
+                uint mouseButtons = Sdl.GetMouseStateOutXAndY(out int mx, out int my);
+               /* imGuiIoPtr.MouseDown[0] =
+                    _mousePressed[0] ||
+                    (mouseButtons & Sdl.Button(Sdl.ButtonLeft)) !=
+                    0; // If a mouse press event came, always pass it as "mouse held this frame", so we don't miss click-release events that are shorter than 1 frame.
+                imGuiIoPtr.MouseDown[1] = _mousePressed[1] || (mouseButtons & Sdl.Button(Sdl.ButtonRight)) != 0;
+                imGuiIoPtr.MouseDown[2] = _mousePressed[2] || (mouseButtons & Sdl.Button(Sdl.ButtonMiddle)) != 0;*/
+                _mousePressed[0] = _mousePressed[1] = _mousePressed[2] = false;
+            
+                IntPtr focusedWindow = Sdl.GetKeyboardFocus();
+                if (_window == focusedWindow)
+                {
+                    // SDL_GetMouseState() gives mouse position seemingly based on the last window entered/focused(?)
+                    // The creation of a new windows at runtime and SDL_CaptureMouse both seems to severely mess up with that, so we retrieve that position globally.
+                    Sdl.GetWindowPosition(focusedWindow, out int wx, out int wy);
+                    Sdl.GetGlobalMouseStateOutXAndOutY(out mx, out my);
+                    mx -= wx;
+                    my -= wy;
+                    imGuiIoPtr.MousePos = new Vector2(mx, my);
+                }
+            
+                // SDL_CaptureMouse() let the OS know e.g. that our imgui drag outside the SDL window boundaries shouldn't e.g. trigger the OS window resize cursor.
+                bool anyMouseButtonDown = ImGui.IsAnyMouseDown();
+                Sdl.CaptureMouse(anyMouseButtonDown);
             }
-            
-            // SDL_CaptureMouse() let the OS know e.g. that our imgui drag outside the SDL window boundaries shouldn't e.g. trigger the OS window resize cursor.
-            bool anyMouseButtonDown = ImGui.IsAnyMouseDown();
-            Sdl.CaptureMouse(anyMouseButtonDown);
         }
         
         /// <summary>
@@ -817,7 +821,7 @@ namespace Alis.App.Engine
             
             for (int n = 0; n < drawData.CmdListsCount; n++)
             {
-                ImDrawListPtr cmdList = drawData.CmdListsRange[n];
+                ImDrawList cmdList = drawData.CmdLists[n];
                 
                 // Upload vertex/index buffers
                 Gl.GlBufferData(BufferTarget.ArrayBuffer, (IntPtr) (cmdList.VtxBuffer.Size * drawVertSize), cmdList.VtxBuffer.Data, BufferUsageHint.StreamDraw);
