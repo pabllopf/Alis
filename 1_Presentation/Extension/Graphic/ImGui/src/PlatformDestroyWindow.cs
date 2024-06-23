@@ -32,5 +32,5 @@ namespace Alis.Extension.Graphic.ImGui
     /// <summary>
     ///     The platform destroywindow
     /// </summary>
-    public delegate void PlatformDestroyWindow(ImGuiViewportPtr vp);
+    public delegate void PlatformDestroyWindow(ImGuiViewport vp);
 }

@@ -32,5 +32,5 @@ namespace Alis.Extension.Graphic.ImGui
     /// <summary>
     ///     The platform getwindowminimized
     /// </summary>
-    public delegate byte PlatformGetWindowMinimized(ImGuiViewportPtr vp);
+    public delegate byte PlatformGetWindowMinimized(ImGuiViewport vp);
 }

@@ -74,6 +74,6 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The font
         /// </summary>
-        public ImFont* Font;
+        public ImFont Font;
     }
 }
