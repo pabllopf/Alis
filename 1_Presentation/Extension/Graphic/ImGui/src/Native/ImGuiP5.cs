@@ -932,16 +932,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="outV">The out</param>
         public static void ColorConvertRgBtoHsv(float r, float g, float b, out float outH, out float outS, out float outV)
         {
-            fixed (float* nativeOutH = &outH)
-            {
-                fixed (float* nativeOutS = &outS)
-                {
-                    fixed (float* nativeOutV = &outV)
-                    {
-                        ImGuiNative.igColorConvertRGBtoHSV(r, g, b, nativeOutH, nativeOutS, nativeOutV);
-                    }
-                }
-            }
+            ImGuiNative.igColorConvertRGBtoHSV(r, g, b, out outH, out outS, out outV);
         }
         
         /// <summary>
@@ -1084,10 +1075,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// </summary>
         public static void Columns()
         {
-            int count = 1;
-            byte* nativeId = null;
-            byte border = 1;
-            ImGuiNative.igColumns(count, nativeId, border);
+            ImGuiNative.igColumns(1, null, 1);
         }
         
         /// <summary>
@@ -1096,9 +1084,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="count">The count</param>
         public static void Columns(int count)
         {
-            byte* nativeId = null;
-            byte border = 1;
-            ImGuiNative.igColumns(count, nativeId, border);
+            ImGuiNative.igColumns(count, null, 1);
         }
         
         /// <summary>
@@ -1108,35 +1094,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="id">The id</param>
         public static void Columns(int count, string id)
         {
-            byte* nativeId;
-            int idByteCount = 0;
-            if (id != null)
-            {
-                idByteCount = Encoding.UTF8.GetByteCount(id);
-                if (idByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeId = Util.Allocate(idByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeIdStackBytes = stackalloc byte[idByteCount + 1];
-                    nativeId = nativeIdStackBytes;
-                }
-                
-                int nativeIdOffset = Util.GetUtf8(id, nativeId, idByteCount);
-                nativeId[nativeIdOffset] = 0;
-            }
-            else
-            {
-                nativeId = null;
-            }
-            
-            byte border = 1;
-            ImGuiNative.igColumns(count, nativeId, border);
-            if (idByteCount > Util.StackAllocationSizeLimit)
-            {
-                Util.Free(nativeId);
-            }
+            ImGuiNative.igColumns(count, Encoding.UTF8.GetBytes(id), 1);
         }
         
         /// <summary>
@@ -1147,35 +1105,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="border">The border</param>
         public static void Columns(int count, string id, bool border)
         {
-            byte* nativeId;
-            int idByteCount = 0;
-            if (id != null)
-            {
-                idByteCount = Encoding.UTF8.GetByteCount(id);
-                if (idByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeId = Util.Allocate(idByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeIdStackBytes = stackalloc byte[idByteCount + 1];
-                    nativeId = nativeIdStackBytes;
-                }
-                
-                int nativeIdOffset = Util.GetUtf8(id, nativeId, idByteCount);
-                nativeId[nativeIdOffset] = 0;
-            }
-            else
-            {
-                nativeId = null;
-            }
-            
-            byte nativeBorder = border ? (byte) 1 : (byte) 0;
-            ImGuiNative.igColumns(count, nativeId, nativeBorder);
-            if (idByteCount > Util.StackAllocationSizeLimit)
-            {
-                Util.Free(nativeId);
-            }
+            ImGuiNative.igColumns(count, Encoding.UTF8.GetBytes(id), border ? (byte)1 : (byte)0);
         }
         
         /// <summary>
