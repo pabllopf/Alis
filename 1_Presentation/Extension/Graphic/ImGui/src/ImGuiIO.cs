@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Text;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Extension.Graphic.ImGui
@@ -116,7 +115,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The fonts
         /// </summary>
-        public ImFontAtlas Fonts;
+        public ImFontAtlas* Fonts;
         
         /// <summary>
         ///     The font global scale
@@ -131,7 +130,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The font default
         /// </summary>
-        public ImFont FontDefault;
+        public ImFont* FontDefault;
         
         /// <summary>
         ///     The display framebuffer scale
@@ -291,7 +290,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The want set mouse pos
         /// </summary>
-        public bool WantSetMousePos;
+        public byte WantSetMousePos;
         
         /// <summary>
         ///     The want save ini settings
@@ -386,22 +385,22 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The key ctrl
         /// </summary>
-        public bool KeyCtrl;
+        public byte KeyCtrl;
         
         /// <summary>
         ///     The key shift
         /// </summary>
-        public bool KeyShift;
+        public byte KeyShift;
         
         /// <summary>
         ///     The key alt
         /// </summary>
-        public bool KeyAlt;
+        public byte KeyAlt;
         
         /// <summary>
         ///     The key super
         /// </summary>
-        public bool KeySuper;
+        public byte KeySuper;
         
         /// <summary>
         ///     The key mods
@@ -3817,163 +3816,5 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The input queue characters
         /// </summary>
         public ImVector InputQueueCharacters;
-        
-           /// <summary>
-        ///     Adds the focus event using the specified focused
-        /// </summary>
-        /// <param name="focused">The focused</param>
-        public void AddFocusEvent(bool focused)
-        {
-            byte nativeFocused = focused ? (byte) 1 : (byte) 0;
-            ImGuiNative.ImGuiIO_AddFocusEvent(this, nativeFocused);
-        }
-        
-        /// <summary>
-        ///     Adds the input character using the specified c
-        /// </summary>
-        /// <param name="c">The </param>
-        public void AddInputCharacter(uint c)
-        {
-            ImGuiNative.ImGuiIO_AddInputCharacter(this, c);
-        }
-        
-        /// <summary>
-        ///     Adds the input characters utf 8 using the specified str
-        /// </summary>
-        /// <param name="str">The str</param>
-        public void AddInputCharactersUtf8(string str)
-        {
-            ImGuiNative.ImGuiIO_AddInputCharactersUTF8(this, Encoding.UTF8.GetBytes(str));
-        }
-        
-        /// <summary>
-        ///     Adds the input character utf 16 using the specified c
-        /// </summary>
-        /// <param name="c">The </param>
-        public void AddInputCharacterUtf16(ushort c)
-        {
-            ImGuiNative.ImGuiIO_AddInputCharacterUTF16(this, c);
-        }
-        
-        /// <summary>
-        ///     Adds the key analog event using the specified key
-        /// </summary>
-        /// <param name="key">The key</param>
-        /// <param name="down">The down</param>
-        /// <param name="v">The </param>
-        public void AddKeyAnalogEvent(ImGuiKey key, bool down, float v)
-        {
-            byte nativeDown = down ? (byte) 1 : (byte) 0;
-            ImGuiNative.ImGuiIO_AddKeyAnalogEvent(this, key, nativeDown, v);
-        }
-        
-        /// <summary>
-        ///     Adds the key event using the specified key
-        /// </summary>
-        /// <param name="key">The key</param>
-        /// <param name="down">The down</param>
-        public void AddKeyEvent(ImGuiKey key, bool down)
-        {
-            byte nativeDown = down ? (byte) 1 : (byte) 0;
-            ImGuiNative.ImGuiIO_AddKeyEvent(this, key, nativeDown);
-        }
-        
-        /// <summary>
-        ///     Adds the mouse button event using the specified button
-        /// </summary>
-        /// <param name="button">The button</param>
-        /// <param name="down">The down</param>
-        public void AddMouseButtonEvent(int button, bool down)
-        {
-            byte nativeDown = down ? (byte) 1 : (byte) 0;
-            ImGuiNative.ImGuiIO_AddMouseButtonEvent(this, button, nativeDown);
-        }
-        
-        /// <summary>
-        ///     Adds the mouse pos event using the specified x
-        /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        public void AddMousePosEvent(float x, float y)
-        {
-            ImGuiNative.ImGuiIO_AddMousePosEvent(this, x, y);
-        }
-        
-        /// <summary>
-        ///     Adds the mouse viewport event using the specified id
-        /// </summary>
-        /// <param name="id">The id</param>
-        public void AddMouseViewportEvent(uint id)
-        {
-            ImGuiNative.ImGuiIO_AddMouseViewportEvent(this, id);
-        }
-        
-        /// <summary>
-        ///     Adds the mouse wheel event using the specified wh x
-        /// </summary>
-        /// <param name="whX">The wh</param>
-        /// <param name="whY">The wh</param>
-        public void AddMouseWheelEvent(float whX, float whY)
-        {
-            ImGuiNative.ImGuiIO_AddMouseWheelEvent(this, whX, whY);
-        }
-        
-        /// <summary>
-        ///     Clears the input characters
-        /// </summary>
-        public void ClearInputCharacters()
-        {
-            ImGuiNative.ImGuiIO_ClearInputCharacters(this);
-        }
-        
-        /// <summary>
-        ///     Clears the input keys
-        /// </summary>
-        public void ClearInputKeys()
-        {
-            ImGuiNative.ImGuiIO_ClearInputKeys(this);
-        }
-        
-        /// <summary>
-        ///     Destroys this instance
-        /// </summary>
-        public void Destroy()
-        {
-            ImGuiNative.ImGuiIO_destroy(this);
-        }
-        
-        /// <summary>
-        ///     Sets the app accepting events using the specified accepting events
-        /// </summary>
-        /// <param name="acceptingEvents">The accepting events</param>
-        public void SetAppAcceptingEvents(bool acceptingEvents)
-        {
-            byte nativeAcceptingEvents = acceptingEvents ? (byte) 1 : (byte) 0;
-            ImGuiNative.ImGuiIO_SetAppAcceptingEvents(this, nativeAcceptingEvents);
-        }
-        
-        /// <summary>
-        ///     Sets the key event native data using the specified key
-        /// </summary>
-        /// <param name="key">The key</param>
-        /// <param name="nativeKeycode">The native keycode</param>
-        /// <param name="nativeScancode">The native scancode</param>
-        public void SetKeyEventNativeData(ImGuiKey key, int nativeKeycode, int nativeScancode)
-        {
-            int nativeLegacyIndex = -1;
-            ImGuiNative.ImGuiIO_SetKeyEventNativeData(this, key, nativeKeycode, nativeScancode, nativeLegacyIndex);
-        }
-        
-        /// <summary>
-        ///     Sets the key event native data using the specified key
-        /// </summary>
-        /// <param name="key">The key</param>
-        /// <param name="nativeKeycode">The native keycode</param>
-        /// <param name="nativeScancode">The native scancode</param>
-        /// <param name="nativeLegacyIndex">The native legacy index</param>
-        public void SetKeyEventNativeData(ImGuiKey key, int nativeKeycode, int nativeScancode, int nativeLegacyIndex)
-        {
-            ImGuiNative.ImGuiIO_SetKeyEventNativeData(this, key, nativeKeycode, nativeScancode, nativeLegacyIndex);
-        }
     }
 }

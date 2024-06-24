@@ -71,7 +71,8 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The ret</returns>
         public static IntPtr CreateContext()
         {
-            IntPtr ret = ImGuiNative.igCreateContext(null);
+            ImFontAtlas* sharedFontAtlas = null;
+            IntPtr ret = ImGuiNative.igCreateContext(sharedFontAtlas);
             return ret;
         }
 
@@ -80,9 +81,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// </summary>
         /// <param name="sharedFontAtlas">The shared font atlas</param>
         /// <returns>The ret</returns>
-        public static IntPtr CreateContext(ImFontAtlas sharedFontAtlas)
+        public static IntPtr CreateContext(ImFontAtlasPtr sharedFontAtlas)
         {
-            IntPtr ret = ImGuiNative.igCreateContext(sharedFontAtlas);
+            ImFontAtlas* nativeSharedFontAtlas = sharedFontAtlas.NativePtr;
+            IntPtr ret = ImGuiNative.igCreateContext(nativeSharedFontAtlas);
             return ret;
         }
 
@@ -99,7 +101,35 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool DebugCheckVersionAndDataLayout(string versionStr, uint szIo, uint szStyle, uint szVec2, uint szVec4, uint szDrawvert, uint szDrawidx)
         {
-            byte ret = ImGuiNative.igDebugCheckVersionAndDataLayout(Encoding.UTF8.GetBytes(versionStr), szIo, szStyle, szVec2, szVec4, szDrawvert, szDrawidx);
+            byte* nativeVersionStr;
+            int versionStrByteCount = 0;
+            if (versionStr != null)
+            {
+                versionStrByteCount = Encoding.UTF8.GetByteCount(versionStr);
+                if (versionStrByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeVersionStr = Util.Allocate(versionStrByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeVersionStrStackBytes = stackalloc byte[versionStrByteCount + 1];
+                    nativeVersionStr = nativeVersionStrStackBytes;
+                }
+
+                int nativeVersionStrOffset = Util.GetUtf8(versionStr, nativeVersionStr, versionStrByteCount);
+                nativeVersionStr[nativeVersionStrOffset] = 0;
+            }
+            else
+            {
+                nativeVersionStr = null;
+            }
+
+            byte ret = ImGuiNative.igDebugCheckVersionAndDataLayout(nativeVersionStr, szIo, szStyle, szVec2, szVec4, szDrawvert, szDrawidx);
+            if (versionStrByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeVersionStr);
+            }
+
             return ret != 0;
         }
 
@@ -200,9 +230,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The ret</returns>
         public static uint DockSpaceOverViewport()
         {
+            ImGuiViewport* viewport = null;
             ImGuiDockNodeFlags flags = 0;
             ImGuiWindowClass windowClass = new ImGuiWindowClass();
-            uint ret = ImGuiNative.igDockSpaceOverViewport(new ImGuiViewport(), flags, windowClass);
+            uint ret = ImGuiNative.igDockSpaceOverViewport(viewport, flags, windowClass);
             return ret;
         }
 
@@ -211,11 +242,12 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// </summary>
         /// <param name="viewport">The viewport</param>
         /// <returns>The ret</returns>
-        public static uint DockSpaceOverViewport(ImGuiViewport viewport)
+        public static uint DockSpaceOverViewport(ImGuiViewportPtr viewport)
         {
+            ImGuiViewport* nativeViewport = viewport.NativePtr;
             ImGuiDockNodeFlags flags = 0;
             ImGuiWindowClass windowClass = new ImGuiWindowClass();
-            uint ret = ImGuiNative.igDockSpaceOverViewport(viewport, flags, windowClass);
+            uint ret = ImGuiNative.igDockSpaceOverViewport(nativeViewport, flags, windowClass);
             return ret;
         }
 
@@ -225,10 +257,11 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="viewport">The viewport</param>
         /// <param name="flags">The flags</param>
         /// <returns>The ret</returns>
-        public static uint DockSpaceOverViewport(ImGuiViewport viewport, ImGuiDockNodeFlags flags)
+        public static uint DockSpaceOverViewport(ImGuiViewportPtr viewport, ImGuiDockNodeFlags flags)
         {
+            ImGuiViewport* nativeViewport = viewport.NativePtr;
             ImGuiWindowClass windowClass = new ImGuiWindowClass();
-            uint ret = ImGuiNative.igDockSpaceOverViewport(viewport, flags, windowClass);
+            uint ret = ImGuiNative.igDockSpaceOverViewport(nativeViewport, flags, windowClass);
             return ret;
         }
 
@@ -239,9 +272,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="flags">The flags</param>
         /// <param name="windowClass">The window class</param>
         /// <returns>The ret</returns>
-        public static uint DockSpaceOverViewport(ImGuiViewport viewport, ImGuiDockNodeFlags flags, ImGuiWindowClass windowClass)
+        public static uint DockSpaceOverViewport(ImGuiViewportPtr viewport, ImGuiDockNodeFlags flags, ImGuiWindowClass windowClass)
         {
-            uint ret = ImGuiNative.igDockSpaceOverViewport(viewport, flags, windowClass);
+            ImGuiViewport* nativeViewport = viewport.NativePtr;
+            uint ret = ImGuiNative.igDockSpaceOverViewport(nativeViewport, flags, windowClass);
             return ret;
         }
 

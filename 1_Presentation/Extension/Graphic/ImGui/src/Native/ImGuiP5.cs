@@ -56,7 +56,36 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The im gui payload ptr</returns>
         public static ImGuiPayload AcceptDragDropPayload(string type)
         {
-            ImGuiPayload ret = ImGuiNative.igAcceptDragDropPayload(Encoding.UTF8.GetBytes(type), ImGuiDragDropFlags.None);
+            byte* nativeType;
+            int typeByteCount = 0;
+            if (type != null)
+            {
+                typeByteCount = Encoding.UTF8.GetByteCount(type);
+                if (typeByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeType = Util.Allocate(typeByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeTypeStackBytes = stackalloc byte[typeByteCount + 1];
+                    nativeType = nativeTypeStackBytes;
+                }
+                
+                int nativeTypeOffset = Util.GetUtf8(type, nativeType, typeByteCount);
+                nativeType[nativeTypeOffset] = 0;
+            }
+            else
+            {
+                nativeType = null;
+            }
+            
+            ImGuiDragDropFlags flags = 0;
+            ImGuiPayload ret = ImGuiNative.igAcceptDragDropPayload(nativeType, flags);
+            if (typeByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeType);
+            }
+            
             return ret;
         }
         
@@ -68,7 +97,35 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The im gui payload ptr</returns>
         public static ImGuiPayload AcceptDragDropPayload(string type, ImGuiDragDropFlags flags)
         {
-            ImGuiPayload ret = ImGuiNative.igAcceptDragDropPayload(Encoding.UTF8.GetBytes(type), flags);
+            byte* nativeType;
+            int typeByteCount = 0;
+            if (type != null)
+            {
+                typeByteCount = Encoding.UTF8.GetByteCount(type);
+                if (typeByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeType = Util.Allocate(typeByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeTypeStackBytes = stackalloc byte[typeByteCount + 1];
+                    nativeType = nativeTypeStackBytes;
+                }
+                
+                int nativeTypeOffset = Util.GetUtf8(type, nativeType, typeByteCount);
+                nativeType[nativeTypeOffset] = 0;
+            }
+            else
+            {
+                nativeType = null;
+            }
+            
+            ImGuiPayload ret = ImGuiNative.igAcceptDragDropPayload(nativeType, flags);
+            if (typeByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeType);
+            }
+            
             return ret;
         }
         
@@ -919,7 +976,16 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="outB">The out</param>
         public static void ColorConvertHsVtoRgb(float h, float s, float v, out float outR, out float outG, out float outB)
         {
-            ImGuiNative.igColorConvertHSVtoRGB(h, s, v, out outR, out outG, out outB);
+            fixed (float* nativeOutR = &outR)
+            {
+                fixed (float* nativeOutG = &outG)
+                {
+                    fixed (float* nativeOutB = &outB)
+                    {
+                        ImGuiNative.igColorConvertHSVtoRGB(h, s, v, nativeOutR, nativeOutG, nativeOutB);
+                    }
+                }
+            }
         }
         
         /// <summary>
@@ -933,7 +999,16 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="outV">The out</param>
         public static void ColorConvertRgBtoHsv(float r, float g, float b, out float outH, out float outS, out float outV)
         {
-            ImGuiNative.igColorConvertRGBtoHSV(r, g, b, out outH, out outS, out outV);
+            fixed (float* nativeOutH = &outH)
+            {
+                fixed (float* nativeOutS = &outS)
+                {
+                    fixed (float* nativeOutV = &outV)
+                    {
+                        ImGuiNative.igColorConvertRGBtoHSV(r, g, b, nativeOutH, nativeOutS, nativeOutV);
+                    }
+                }
+            }
         }
         
         /// <summary>
@@ -1077,8 +1152,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static void Columns()
         {
             int count = 1;
+            byte* nativeId = null;
             byte border = 1;
-            ImGuiNative.igColumns(count , null, border);
+            ImGuiNative.igColumns(count, nativeId, border);
         }
         
         /// <summary>
@@ -1087,8 +1163,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="count">The count</param>
         public static void Columns(int count)
         {
+            byte* nativeId = null;
             byte border = 1;
-            ImGuiNative.igColumns(count, null, border);
+            ImGuiNative.igColumns(count, nativeId, border);
         }
         
         /// <summary>
@@ -1098,7 +1175,35 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="id">The id</param>
         public static void Columns(int count, string id)
         {
-            ImGuiNative.igColumns(count, Encoding.UTF8.GetBytes(id), 1);
+            byte* nativeId;
+            int idByteCount = 0;
+            if (id != null)
+            {
+                idByteCount = Encoding.UTF8.GetByteCount(id);
+                if (idByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeId = Util.Allocate(idByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeIdStackBytes = stackalloc byte[idByteCount + 1];
+                    nativeId = nativeIdStackBytes;
+                }
+                
+                int nativeIdOffset = Util.GetUtf8(id, nativeId, idByteCount);
+                nativeId[nativeIdOffset] = 0;
+            }
+            else
+            {
+                nativeId = null;
+            }
+            
+            byte border = 1;
+            ImGuiNative.igColumns(count, nativeId, border);
+            if (idByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeId);
+            }
         }
         
         /// <summary>
@@ -1109,7 +1214,35 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="border">The border</param>
         public static void Columns(int count, string id, bool border)
         {
-            ImGuiNative.igColumns(count, Encoding.UTF8.GetBytes(id), border ? (byte) 1 : (byte) 0);
+            byte* nativeId;
+            int idByteCount = 0;
+            if (id != null)
+            {
+                idByteCount = Encoding.UTF8.GetByteCount(id);
+                if (idByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeId = Util.Allocate(idByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeIdStackBytes = stackalloc byte[idByteCount + 1];
+                    nativeId = nativeIdStackBytes;
+                }
+                
+                int nativeIdOffset = Util.GetUtf8(id, nativeId, idByteCount);
+                nativeId[nativeIdOffset] = 0;
+            }
+            else
+            {
+                nativeId = null;
+            }
+            
+            byte nativeBorder = border ? (byte) 1 : (byte) 0;
+            ImGuiNative.igColumns(count, nativeId, nativeBorder);
+            if (idByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeId);
+            }
         }
         
         /// <summary>

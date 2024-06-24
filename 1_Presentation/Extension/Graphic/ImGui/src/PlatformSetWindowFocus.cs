@@ -32,5 +32,5 @@ namespace Alis.Extension.Graphic.ImGui
     /// <summary>
     ///     The platform setwindowfocus
     /// </summary>
-    public delegate void PlatformSetWindowFocus(ImGuiViewport vp);
+    public delegate void PlatformSetWindowFocus(ImGuiViewportPtr vp);
 }

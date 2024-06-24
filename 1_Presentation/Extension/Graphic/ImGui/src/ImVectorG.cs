@@ -35,7 +35,7 @@ namespace Alis.Extension.Graphic.ImGui
     /// <summary>
     ///     The im vector
     /// </summary>
-    public readonly struct ImVectorG<T>
+    public readonly struct ImVectorG<T> where T : unmanaged
     {
         /// <summary>
         ///     The size

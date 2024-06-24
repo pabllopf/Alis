@@ -475,7 +475,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The string</returns>
         public static string TableGetColumnName()
         {
-            return Encoding.UTF8.GetString(ImGuiNative.igTableGetColumnName_Int(-1));
+            int columnN = -1;
+            byte* ret = ImGuiNative.igTableGetColumnName_Int(columnN);
+            return Util.StringFromPtr(ret);
         }
         
         /// <summary>
@@ -485,7 +487,8 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The string</returns>
         public static string TableGetColumnName(int columnN)
         {
-            return Encoding.UTF8.GetString(ImGuiNative.igTableGetColumnName_Int(columnN));
+            byte* ret = ImGuiNative.igTableGetColumnName_Int(columnN);
+            return Util.StringFromPtr(ret);
         }
         
         /// <summary>
