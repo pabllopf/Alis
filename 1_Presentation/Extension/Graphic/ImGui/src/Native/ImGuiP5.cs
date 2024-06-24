@@ -56,37 +56,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The im gui payload ptr</returns>
         public static ImGuiPayload AcceptDragDropPayload(string type)
         {
-            byte* nativeType;
-            int typeByteCount = 0;
-            if (type != null)
-            {
-                typeByteCount = Encoding.UTF8.GetByteCount(type);
-                if (typeByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeType = Util.Allocate(typeByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeTypeStackBytes = stackalloc byte[typeByteCount + 1];
-                    nativeType = nativeTypeStackBytes;
-                }
-                
-                int nativeTypeOffset = Util.GetUtf8(type, nativeType, typeByteCount);
-                nativeType[nativeTypeOffset] = 0;
-            }
-            else
-            {
-                nativeType = null;
-            }
-            
-            ImGuiDragDropFlags flags = 0;
-            ImGuiPayload ret = ImGuiNative.igAcceptDragDropPayload(nativeType, flags);
-            if (typeByteCount > Util.StackAllocationSizeLimit)
-            {
-                Util.Free(nativeType);
-            }
-            
-            return ret;
+            return ImGuiNative.igAcceptDragDropPayload(Encoding.UTF8.GetBytes(type), ImGuiDragDropFlags.None);
         }
         
         /// <summary>
@@ -97,35 +67,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The im gui payload ptr</returns>
         public static ImGuiPayload AcceptDragDropPayload(string type, ImGuiDragDropFlags flags)
         {
-            byte* nativeType;
-            int typeByteCount = 0;
-            if (type != null)
-            {
-                typeByteCount = Encoding.UTF8.GetByteCount(type);
-                if (typeByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeType = Util.Allocate(typeByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeTypeStackBytes = stackalloc byte[typeByteCount + 1];
-                    nativeType = nativeTypeStackBytes;
-                }
-                
-                int nativeTypeOffset = Util.GetUtf8(type, nativeType, typeByteCount);
-                nativeType[nativeTypeOffset] = 0;
-            }
-            else
-            {
-                nativeType = null;
-            }
-            
-            ImGuiPayload ret = ImGuiNative.igAcceptDragDropPayload(nativeType, flags);
-            if (typeByteCount > Util.StackAllocationSizeLimit)
-            {
-                Util.Free(nativeType);
-            }
-            
+            ImGuiPayload ret = ImGuiNative.igAcceptDragDropPayload(Encoding.UTF8.GetBytes(type), flags);
             return ret;
         }
         
