@@ -50,7 +50,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="flags">The flags</param>
         /// <returns>The im gui payload</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igAcceptDragDropPayload")]
-        public static extern ImGuiPayload igAcceptDragDropPayload(byte* type, ImGuiDragDropFlags flags);
+        public static extern ImGuiPayload igAcceptDragDropPayload(byte[] type, ImGuiDragDropFlags flags);
         
         /// <summary>
         ///     Igs the align text to frame padding
@@ -64,7 +64,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="platformIo">The platform io</param>
         /// <param name="funcPtr">The func ptr</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiPlatformIO_Set_Platform_GetWindowPos")]
-        public static extern void ImGuiPlatformIO_Set_Platform_GetWindowPos(ImGuiPlatformIo* platformIo, IntPtr funcPtr);
+        public static extern void ImGuiPlatformIO_Set_Platform_GetWindowPos(IntPtr platformIo, IntPtr funcPtr);
         
         /// <summary>
         ///     Ims the gui platform io set platform get window size using the specified platform io
@@ -72,7 +72,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="platformIo">The platform io</param>
         /// <param name="funcPtr">The func ptr</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiPlatformIO_Set_Platform_GetWindowSize")]
-        public static extern void ImGuiPlatformIO_Set_Platform_GetWindowSize(ImGuiPlatformIo* platformIo, IntPtr funcPtr);
+        public static extern void ImGuiPlatformIO_Set_Platform_GetWindowSize(IntPtr platformIo, IntPtr funcPtr);
         
         /// <summary>
         ///     Igs the arrow button using the specified str id
