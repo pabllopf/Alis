@@ -254,9 +254,8 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="id">The id</param>
         /// <returns>The im gui viewport ptr</returns>
         public static ImGuiViewportPtr FindViewportById(uint id)
-        {
-            ImGuiViewport* ret = ImGuiNative.igFindViewportByID(id);
-            return new ImGuiViewportPtr(ret);
+        { ;
+            return new ImGuiViewportPtr(ImGuiNative.igFindViewportByID(id));
         }
         
         /// <summary>
@@ -266,9 +265,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The im gui viewport ptr</returns>
         public static ImGuiViewportPtr FindViewportByPlatformHandle(IntPtr platformHandle)
         {
-            IntPtr nativePlatformHandle = platformHandle;
-            ImGuiViewport* ret = ImGuiNative.igFindViewportByPlatformHandle(nativePlatformHandle);
-            return new ImGuiViewportPtr(ret);
+            return new ImGuiViewportPtr( ImGuiNative.igFindViewportByPlatformHandle(platformHandle));
         }
         
         /// <summary>
@@ -279,16 +276,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="pUserData">The user data</param>
         public static void GetAllocatorFunctions(ref IntPtr pAllocFunc, ref IntPtr pFreeFunc, ref IntPtr pUserData)
         {
-            fixed (IntPtr* nativePAllocFunc = &pAllocFunc)
-            {
-                fixed (IntPtr* nativePFreeFunc = &pFreeFunc)
-                {
-                    fixed (void* nativePUserData = &pUserData)
-                    {
-                        ImGuiNative.igGetAllocatorFunctions(nativePAllocFunc, nativePFreeFunc, nativePUserData);
-                    }
-                }
-            }
+            ImGuiNative.igGetAllocatorFunctions(ref pAllocFunc, ref pFreeFunc, ref pUserData);
         }
         
         /// <summary>
