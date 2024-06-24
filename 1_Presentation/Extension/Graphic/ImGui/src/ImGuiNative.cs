@@ -4264,7 +4264,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="fontCfg">The font cfg</param>
         /// <returns>The im font</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl , EntryPoint = "ImFontAtlas_AddFontDefault")]
-        public static extern ImFont* ImFontAtlas_AddFontDefault(ImFontAtlas* self, ImFontConfig* fontCfg);
+        public static extern IntPtr ImFontAtlas_AddFontDefault(IntPtr self, IntPtr fontCfg);
         
         /// <summary>
         ///     Ims the font atlas add font from file ttf using the specified self

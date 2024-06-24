@@ -255,9 +255,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The im font ptr</returns>
         public ImFontPtr AddFontDefault()
         {
-            ImFontConfig* fontCfg = null;
-            ImFont* ret = ImGuiNative.ImFontAtlas_AddFontDefault(NativePtr, fontCfg);
-            return new ImFontPtr(ret);
+            return new ImFontPtr(ImGuiNative.ImFontAtlas_AddFontDefault((IntPtr)NativePtr, new IntPtr(null)));
         }
         
         /// <summary>
@@ -267,9 +265,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The im font ptr</returns>
         public ImFontPtr AddFontDefault(ImFontConfigPtr fontCfg)
         {
-            ImFontConfig* nativeFontCfg = fontCfg.NativePtr;
-            ImFont* ret = ImGuiNative.ImFontAtlas_AddFontDefault(NativePtr, nativeFontCfg);
-            return new ImFontPtr(ret);
+            return new ImFontPtr( ImGuiNative.ImFontAtlas_AddFontDefault((IntPtr)NativePtr,  (IntPtr)fontCfg.NativePtr));
         }
         
         /// <summary>
