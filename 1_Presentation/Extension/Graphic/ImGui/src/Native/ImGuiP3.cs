@@ -651,8 +651,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The im gui io ptr</returns>
         public static ImGuiIoPtr GetIo()
         {
-            ImGuiIo* ret = ImGuiNative.igGetIO();
-            return new ImGuiIoPtr(ret);
+            return new ImGuiIoPtr(ImGuiNative.igGetIO());
         }
         
         /// <summary>

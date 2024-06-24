@@ -1115,7 +1115,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <returns>The im gui io</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetIO")]
-        public static extern ImGuiIo* igGetIO();
+        public static extern IntPtr igGetIO();
         
         /// <summary>
         ///     Igs the get item rect max using the specified p out
