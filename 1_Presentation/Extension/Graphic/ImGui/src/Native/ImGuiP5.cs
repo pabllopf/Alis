@@ -976,16 +976,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="outB">The out</param>
         public static void ColorConvertHsVtoRgb(float h, float s, float v, out float outR, out float outG, out float outB)
         {
-            fixed (float* nativeOutR = &outR)
-            {
-                fixed (float* nativeOutG = &outG)
-                {
-                    fixed (float* nativeOutB = &outB)
-                    {
-                        ImGuiNative.igColorConvertHSVtoRGB(h, s, v, nativeOutR, nativeOutG, nativeOutB);
-                    }
-                }
-            }
+            ImGuiNative.igColorConvertHSVtoRGB(h, s, v, out outR, out outG, out outB);
         }
         
         /// <summary>

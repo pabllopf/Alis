@@ -71,9 +71,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The ret</returns>
         public static IntPtr CreateContext()
         {
-            ImFontAtlas* sharedFontAtlas = null;
-            IntPtr ret = ImGuiNative.igCreateContext(sharedFontAtlas);
-            return ret;
+            return ImGuiNative.igCreateContext(new IntPtr(null));
         }
 
         /// <summary>
@@ -83,8 +81,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The ret</returns>
         public static IntPtr CreateContext(ImFontAtlasPtr sharedFontAtlas)
         {
-            ImFontAtlas* nativeSharedFontAtlas = sharedFontAtlas.NativePtr;
-            IntPtr ret = ImGuiNative.igCreateContext(nativeSharedFontAtlas);
+            IntPtr ret = ImGuiNative.igCreateContext((IntPtr)sharedFontAtlas.NativePtr);
             return ret;
         }
 

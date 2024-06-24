@@ -401,7 +401,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="outG">The out</param>
         /// <param name="outB">The out</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igColorConvertHSVtoRGB")]
-        public static extern void igColorConvertHSVtoRGB(float h, float s, float v, float* outR, float* outG, float* outB);
+        public static extern void igColorConvertHSVtoRGB(float h, float s, float v, out float outR, out float outG, out float outB);
         
         /// <summary>
         ///     Igs the color convert rg bto hsv using the specified r
@@ -502,7 +502,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="sharedFontAtlas">The shared font atlas</param>
         /// <returns>The int ptr</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igCreateContext")]
-        public static extern IntPtr igCreateContext(ImFontAtlas* sharedFontAtlas);
+        public static extern IntPtr igCreateContext(IntPtr sharedFontAtlas);
         
         /// <summary>
         ///     Igs the debug check version and data layout using the specified version str
