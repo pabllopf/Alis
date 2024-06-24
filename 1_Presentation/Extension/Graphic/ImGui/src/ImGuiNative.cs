@@ -1307,7 +1307,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl , EntryPoint = "igGetVersion")]
-        public static extern byte* igGetVersion();
+        public static extern IntPtr igGetVersion();
         
         /// <summary>
         ///     Igs the get window content region max using the specified p out

@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 using System.Text;
 using Alis.Core.Aspect.Math.Vector;
 
@@ -944,8 +945,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The string</returns>
         public static string GetVersion()
         {
-            byte* ret = ImGuiNative.igGetVersion();
-            return Util.StringFromPtr(ret);
+            return Marshal.PtrToStringAnsi(ImGuiNative.igGetVersion());
         }
         
         /// <summary>
