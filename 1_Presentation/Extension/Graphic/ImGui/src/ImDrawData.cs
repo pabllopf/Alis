@@ -35,7 +35,7 @@ namespace Alis.Extension.Graphic.ImGui
     /// <summary>
     ///     The im draw data
     /// </summary>
-    public struct ImDrawData
+    public unsafe struct ImDrawData
     {
         /// <summary>
         ///     The valid
@@ -60,7 +60,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The cmd lists
         /// </summary>
-        public ImDrawList[] CmdLists;
+        public ImDrawList** CmdLists;
         
         /// <summary>
         ///     The display pos
@@ -76,6 +76,11 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The framebuffer scale
         /// </summary>
         public Vector2 FramebufferScale;
+        
+        /// <summary>
+        ///     The owner viewport
+        /// </summary>
+        public ImGuiViewport* OwnerViewport;
         
         /// <summary>
         ///     Clears this instance
@@ -109,5 +114,10 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.ImDrawData_ScaleClipRects(ref this, fbScale);
         }
+        
+        /// <summary>
+        ///     Gets the value of the cmd lists range
+        /// </summary>
+        public RangePtrAccessor<ImDrawListPtr> CmdListsRange => new RangePtrAccessor<ImDrawListPtr>((IntPtr)CmdLists, CmdListsCount);
     }
 }

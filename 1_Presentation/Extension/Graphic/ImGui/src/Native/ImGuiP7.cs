@@ -440,7 +440,8 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static void ProgressBar(float fraction)
         {
             Vector2 sizeArg = new Vector2(-float.MinValue, 0.0f);
-            ImGuiNative.igProgressBar(fraction, sizeArg, null);
+            byte* nativeOverlay = null;
+            ImGuiNative.igProgressBar(fraction, sizeArg, nativeOverlay);
         }
         
         /// <summary>
@@ -450,7 +451,8 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="sizeArg">The size arg</param>
         public static void ProgressBar(float fraction, Vector2 sizeArg)
         {
-            ImGuiNative.igProgressBar(fraction, sizeArg, null);
+            byte* nativeOverlay = null;
+            ImGuiNative.igProgressBar(fraction, sizeArg, nativeOverlay);
         }
         
         /// <summary>
@@ -461,7 +463,34 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="overlay">The overlay</param>
         public static void ProgressBar(float fraction, Vector2 sizeArg, string overlay)
         {
-            ImGuiNative.igProgressBar(fraction, sizeArg, Encoding.UTF8.GetBytes(overlay));
+            byte* nativeOverlay;
+            int overlayByteCount = 0;
+            if (overlay != null)
+            {
+                overlayByteCount = Encoding.UTF8.GetByteCount(overlay);
+                if (overlayByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeOverlay = Util.Allocate(overlayByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeOverlayStackBytes = stackalloc byte[overlayByteCount + 1];
+                    nativeOverlay = nativeOverlayStackBytes;
+                }
+                
+                int nativeOverlayOffset = Util.GetUtf8(overlay, nativeOverlay, overlayByteCount);
+                nativeOverlay[nativeOverlayOffset] = 0;
+            }
+            else
+            {
+                nativeOverlay = null;
+            }
+            
+            ImGuiNative.igProgressBar(fraction, sizeArg, nativeOverlay);
+            if (overlayByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeOverlay);
+            }
         }
         
         /// <summary>
@@ -500,9 +529,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         ///     Pushes the font using the specified font
         /// </summary>
         /// <param name="font">The font</param>
-        public static void PushFont(ImFont font)
+        public static void PushFont(ImFontPtr font)
         {
-            ImGuiNative.igPushFont(ref font);
+            ImFont* nativeFont = font.NativePtr;
+            ImGuiNative.igPushFont(nativeFont);
         }
         
         /// <summary>
@@ -731,7 +761,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The string</returns>
         public static string SaveIniSettingsToMemory()
         {
-            return Encoding.UTF8.GetString(ImGuiNative.igSaveIniSettingsToMemory(out _));
+            uint* outIniSize = null;
+            byte* ret = ImGuiNative.igSaveIniSettingsToMemory(outIniSize);
+            return Util.StringFromPtr(ret);
         }
         
         /// <summary>
@@ -741,7 +773,11 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The string</returns>
         public static string SaveIniSettingsToMemory(out uint outIniSize)
         {
-            return Encoding.UTF8.GetString(ImGuiNative.igSaveIniSettingsToMemory(out outIniSize));
+            fixed (uint* nativeOutIniSize = &outIniSize)
+            {
+                byte* ret = ImGuiNative.igSaveIniSettingsToMemory(nativeOutIniSize);
+                return Util.StringFromPtr(ret);
+            }
         }
         
         /// <summary>
@@ -957,7 +993,37 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool SetDragDropPayload(string type, IntPtr data, uint sz)
         {
-            byte ret = ImGuiNative.igSetDragDropPayload(Encoding.UTF8.GetBytes(type), data, sz, ImGuiCond.None);
+            byte* nativeType;
+            int typeByteCount = 0;
+            if (type != null)
+            {
+                typeByteCount = Encoding.UTF8.GetByteCount(type);
+                if (typeByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeType = Util.Allocate(typeByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeTypeStackBytes = stackalloc byte[typeByteCount + 1];
+                    nativeType = nativeTypeStackBytes;
+                }
+                
+                int nativeTypeOffset = Util.GetUtf8(type, nativeType, typeByteCount);
+                nativeType[nativeTypeOffset] = 0;
+            }
+            else
+            {
+                nativeType = null;
+            }
+            
+            IntPtr nativeData = data;
+            ImGuiCond cond = 0;
+            byte ret = ImGuiNative.igSetDragDropPayload(nativeType, nativeData, sz, cond);
+            if (typeByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeType);
+            }
+            
             return ret != 0;
         }
         
@@ -971,7 +1037,36 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool SetDragDropPayload(string type, IntPtr data, uint sz, ImGuiCond cond)
         {
-            byte ret = ImGuiNative.igSetDragDropPayload(Encoding.UTF8.GetBytes(type), data, sz, cond);
+            byte* nativeType;
+            int typeByteCount = 0;
+            if (type != null)
+            {
+                typeByteCount = Encoding.UTF8.GetByteCount(type);
+                if (typeByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeType = Util.Allocate(typeByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeTypeStackBytes = stackalloc byte[typeByteCount + 1];
+                    nativeType = nativeTypeStackBytes;
+                }
+                
+                int nativeTypeOffset = Util.GetUtf8(type, nativeType, typeByteCount);
+                nativeType[nativeTypeOffset] = 0;
+            }
+            else
+            {
+                nativeType = null;
+            }
+            
+            IntPtr nativeData = data;
+            byte ret = ImGuiNative.igSetDragDropPayload(nativeType, nativeData, sz, cond);
+            if (typeByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeType);
+            }
+            
             return ret != 0;
         }
         
@@ -1363,7 +1458,34 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="tabOrDockedWindowLabel">The tab or docked window label</param>
         public static void SetTabItemClosed(string tabOrDockedWindowLabel)
         {
-            ImGuiNative.igSetTabItemClosed(Encoding.UTF8.GetBytes(tabOrDockedWindowLabel));
+            byte* nativeTabOrDockedWindowLabel;
+            int tabOrDockedWindowLabelByteCount = 0;
+            if (tabOrDockedWindowLabel != null)
+            {
+                tabOrDockedWindowLabelByteCount = Encoding.UTF8.GetByteCount(tabOrDockedWindowLabel);
+                if (tabOrDockedWindowLabelByteCount > Util.StackAllocationSizeLimit)
+                {
+                    nativeTabOrDockedWindowLabel = Util.Allocate(tabOrDockedWindowLabelByteCount + 1);
+                }
+                else
+                {
+                    byte* nativeTabOrDockedWindowLabelStackBytes = stackalloc byte[tabOrDockedWindowLabelByteCount + 1];
+                    nativeTabOrDockedWindowLabel = nativeTabOrDockedWindowLabelStackBytes;
+                }
+                
+                int nativeTabOrDockedWindowLabelOffset = Util.GetUtf8(tabOrDockedWindowLabel, nativeTabOrDockedWindowLabel, tabOrDockedWindowLabelByteCount);
+                nativeTabOrDockedWindowLabel[nativeTabOrDockedWindowLabelOffset] = 0;
+            }
+            else
+            {
+                nativeTabOrDockedWindowLabel = null;
+            }
+            
+            ImGuiNative.igSetTabItemClosed(nativeTabOrDockedWindowLabel);
+            if (tabOrDockedWindowLabelByteCount > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(nativeTabOrDockedWindowLabel);
+            }
         }
         
         /// <summary>

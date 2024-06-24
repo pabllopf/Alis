@@ -34,5 +34,5 @@ namespace Alis.Extension.Graphic.ImGui
     /// <summary>
     ///     The platform setwindowtitle
     /// </summary>
-    public delegate void PlatformSetWindowTitle(ImGuiViewport vp, IntPtr title);
+    public delegate void PlatformSetWindowTitle(ImGuiViewportPtr vp, IntPtr title);
 }
