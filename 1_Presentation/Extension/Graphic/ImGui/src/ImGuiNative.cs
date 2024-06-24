@@ -413,7 +413,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="outS">The out</param>
         /// <param name="outV">The out</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igColorConvertRGBtoHSV")]
-        public static extern void igColorConvertRGBtoHSV(float r, float g, float b, float* outH, float* outS, float* outV);
+        public static extern void igColorConvertRGBtoHSV(float r, float g, float b, out float outH, out float outS, out float outV);
         
         /// <summary>
         ///     Igs the color convert u 32 to float 4 using the specified p out
@@ -471,7 +471,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="id">The id</param>
         /// <param name="border">The border</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igColumns")]
-        public static extern void igColumns(int count, byte* id, byte border);
+        public static extern void igColumns(int count, byte[] id, byte border);
         
         /// <summary>
         ///     Igs the combo str arr using the specified label
