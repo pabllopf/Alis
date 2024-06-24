@@ -516,7 +516,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="szDrawidx">The sz drawidx</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDebugCheckVersionAndDataLayout")]
-        public static extern byte igDebugCheckVersionAndDataLayout(byte* versionStr, uint szIo, uint szStyle, uint szVec2, uint szVec4, uint szDrawvert, uint szDrawidx);
+        public static extern byte igDebugCheckVersionAndDataLayout(byte[] versionStr, uint szIo, uint szStyle, uint szVec2, uint szVec4, uint szDrawvert, uint szDrawidx);
         
         /// <summary>
         ///     Igs the debug text encoding using the specified text
@@ -557,7 +557,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="windowClass">The window class</param>
         /// <returns>The uint</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDockSpaceOverViewport")]
-        public static extern uint igDockSpaceOverViewport(ImGuiViewport* viewport, ImGuiDockNodeFlags flags, ImGuiWindowClass windowClass);
+        public static extern uint igDockSpaceOverViewport(IntPtr viewport, ImGuiDockNodeFlags flags, ImGuiWindowClass windowClass);
         
         /// <summary>
         ///     Igs the drag float using the specified label
@@ -855,7 +855,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="id">The id</param>
         /// <returns>The im gui viewport</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igFindViewportByID")]
-        public static extern ImGuiViewport* igFindViewportByID(uint id);
+        public static extern IntPtr igFindViewportByID(uint id);
         
         /// <summary>
         ///     Igs the find viewport by platform handle using the specified platform handle
@@ -863,7 +863,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="platformHandle">The platform handle</param>
         /// <returns>The im gui viewport</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igFindViewportByPlatformHandle")]
-        public static extern ImGuiViewport* igFindViewportByPlatformHandle(IntPtr platformHandle);
+        public static extern IntPtr igFindViewportByPlatformHandle(IntPtr platformHandle);
         
         /// <summary>
         ///     Igs the get allocator functions using the specified p alloc func
@@ -872,7 +872,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="pFreeFunc">The free func</param>
         /// <param name="pUserData">The user data</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetAllocatorFunctions")]
-        public static extern void igGetAllocatorFunctions(IntPtr* pAllocFunc, IntPtr* pFreeFunc, void* pUserData);
+        public static extern void igGetAllocatorFunctions(ref IntPtr pAllocFunc, ref IntPtr pFreeFunc, ref IntPtr pUserData);
         
         /// <summary>
         ///     Igs the get background draw list nil
