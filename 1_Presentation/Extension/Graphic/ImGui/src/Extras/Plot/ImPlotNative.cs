@@ -1091,7 +1091,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotDigital_U32Ptr")]
         public static extern void ImPlot_PlotDigital_U32Ptr(byte[] labelId, ref uint xs, ref uint ys, int count, ImPlotDigitalFlags flags, int offset, int stride);
         
         /// <summary>
@@ -1104,7 +1104,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotDigital_S64Ptr")]
         public static extern void ImPlot_PlotDigital_S64Ptr(byte[] labelId, ref long xs, ref long ys, int count, ImPlotDigitalFlags flags, int offset, int stride);
         
         /// <summary>
@@ -1117,7 +1117,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotDigital_U64Ptr")]
         public static extern void ImPlot_PlotDigital_U64Ptr(byte[] labelId, ref ulong xs, ref ulong ys, int count, ImPlotDigitalFlags flags, int offset, int stride);
         
         /// <summary>
@@ -1128,7 +1128,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="data">The data</param>
         /// <param name="count">The count</param>
         /// <param name="flags">The flags</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotDigitalG")]
         public static extern void ImPlot_PlotDigitalG(byte[] labelId, IntPtr getter, IntPtr data, int count, ImPlotDigitalFlags flags);
         
         /// <summary>
@@ -1136,7 +1136,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// </summary>
         /// <param name="labelId">The label id</param>
         /// <param name="flags">The flags</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotDummy")]
         public static extern void ImPlot_PlotDummy(byte[] labelId, ImPlotDummyFlags flags);
         
         /// <summary>
@@ -1150,7 +1150,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotErrorBars_FloatPtrFloatPtrFloatPtrInt")]
         public static extern void ImPlot_PlotErrorBars_FloatPtrFloatPtrFloatPtrInt(byte[] labelId, ref float xs, ref float ys, float err, int count, ImPlotErrorBarsFlags flags, int offset, int stride);
         
         /// <summary>
@@ -1164,7 +1164,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotErrorBars_doublePtrdoublePtrdoublePtrInt")]
         public static extern void ImPlot_PlotErrorBars_doublePtrdoublePtrdoublePtrInt(byte[] labelId, ref double xs, ref double ys, double err, int count, ImPlotErrorBarsFlags flags, int offset, int stride);
         
         /// <summary>
@@ -1178,7 +1178,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotErrorBars_S8PtrS8PtrS8PtrInt")]
         public static extern void ImPlot_PlotErrorBars_S8PtrS8PtrS8PtrInt(byte[] labelId, ref sbyte xs, ref sbyte ys, sbyte err, int count, ImPlotErrorBarsFlags flags, int offset, int stride);
         
         /// <summary>
@@ -1192,7 +1192,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotErrorBars_U8PtrU8PtrU8PtrInt")]
         public static extern void ImPlot_PlotErrorBars_U8PtrU8PtrU8PtrInt(byte[] labelId, byte xs, byte ys, byte err, int count, ImPlotErrorBarsFlags flags, int offset, int stride);
         
         /// <summary>
@@ -1206,7 +1206,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotErrorBars_S16PtrS16PtrS16PtrInt")]
         public static extern void ImPlot_PlotErrorBars_S16PtrS16PtrS16PtrInt(byte[] labelId, short xs, short ys, short err, int count, ImPlotErrorBarsFlags flags, int offset, int stride);
         
         /// <summary>
@@ -1220,7 +1220,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotErrorBars_U16PtrU16PtrU16PtrInt")]
         public static extern void ImPlot_PlotErrorBars_U16PtrU16PtrU16PtrInt(byte[] labelId, ref ushort xs, ref ushort ys, ushort err, int count, ImPlotErrorBarsFlags flags, int offset, int stride);
         
         /// <summary>
@@ -1234,7 +1234,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotErrorBars_S32PtrS32PtrS32PtrInt")]
         public static extern void ImPlot_PlotErrorBars_S32PtrS32PtrS32PtrInt(byte[] labelId, int xs, int ys, int err, int count, ImPlotErrorBarsFlags flags, int offset, int stride);
         
         /// <summary>
@@ -1248,7 +1248,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotErrorBars_U32PtrU32PtrU32PtrInt")]
         public static extern void ImPlot_PlotErrorBars_U32PtrU32PtrU32PtrInt(byte[] labelId, uint xs, uint ys, uint err, int count, ImPlotErrorBarsFlags flags, int offset, int stride);
         
         /// <summary>
@@ -1262,7 +1262,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotErrorBars_S64PtrS64PtrS64PtrInt")]
         public static extern void ImPlot_PlotErrorBars_S64PtrS64PtrS64PtrInt(byte[] labelId, ref long xs, ref long ys, long err, int count, ImPlotErrorBarsFlags flags, int offset, int stride);
         
         /// <summary>
@@ -1276,7 +1276,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotErrorBars_U64PtrU64PtrU64PtrInt")]
         public static extern void ImPlot_PlotErrorBars_U64PtrU64PtrU64PtrInt(byte[] labelId, ref ulong xs, ref ulong ys, ulong err, int count, ImPlotErrorBarsFlags flags, int offset, int stride);
         
         /// <summary>
@@ -1291,7 +1291,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotErrorBars_FloatPtrFloatPtrFloatPtrFloatPtr")]
         public static extern void ImPlot_PlotErrorBars_FloatPtrFloatPtrFloatPtrFloatPtr(byte[] labelId, ref float xs, ref float ys, float neg, float pos, int count, ImPlotErrorBarsFlags flags, int offset, int stride);
         
         /// <summary>
@@ -1306,7 +1306,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotErrorBars_doublePtrdoublePtrdoublePtrdoublePtr")]
         public static extern void ImPlot_PlotErrorBars_doublePtrdoublePtrdoublePtrdoublePtr(byte[] labelId, ref double xs, ref double ys, double neg, double pos, int count, ImPlotErrorBarsFlags flags, int offset, int stride);
         
         /// <summary>
@@ -1321,7 +1321,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotErrorBars_S8PtrS8PtrS8PtrS8Ptr")]
         public static extern void ImPlot_PlotErrorBars_S8PtrS8PtrS8PtrS8Ptr(byte[] labelId, ref sbyte xs, ref sbyte ys, sbyte neg, sbyte pos, int count, ImPlotErrorBarsFlags flags, int offset, int stride);
         
         /// <summary>
@@ -1336,7 +1336,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotErrorBars_U8PtrU8PtrU8PtrU8Ptr")]
         public static extern void ImPlot_PlotErrorBars_U8PtrU8PtrU8PtrU8Ptr(byte[] labelId, byte xs, byte ys, byte neg, byte pos, int count, ImPlotErrorBarsFlags flags, int offset, int stride);
         
         /// <summary>
@@ -1351,7 +1351,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotErrorBars_S16PtrS16PtrS16PtrS16Ptr")]
         public static extern void ImPlot_PlotErrorBars_S16PtrS16PtrS16PtrS16Ptr(byte[] labelId, short xs, short ys, short neg, short pos, int count, ImPlotErrorBarsFlags flags, int offset, int stride);
         
         /// <summary>
@@ -1366,7 +1366,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotErrorBars_U16PtrU16PtrU16PtrU16Ptr")]
         public static extern void ImPlot_PlotErrorBars_U16PtrU16PtrU16PtrU16Ptr(byte[] labelId, ref ushort xs, ref ushort ys, ushort neg, ushort pos, int count, ImPlotErrorBarsFlags flags, int offset, int stride);
         
         /// <summary>
@@ -1381,7 +1381,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotErrorBars_S32PtrS32PtrS32PtrS32Ptr")]
         public static extern void ImPlot_PlotErrorBars_S32PtrS32PtrS32PtrS32Ptr(byte[] labelId, int xs, int ys, int neg, int pos, int count, ImPlotErrorBarsFlags flags, int offset, int stride);
         
         /// <summary>
@@ -1396,7 +1396,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotErrorBars_U32PtrU32PtrU32PtrU32Ptr")]
         public static extern void ImPlot_PlotErrorBars_U32PtrU32PtrU32PtrU32Ptr(byte[] labelId, uint xs, uint ys, uint neg, uint pos, int count, ImPlotErrorBarsFlags flags, int offset, int stride);
         
         /// <summary>
@@ -1411,7 +1411,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotErrorBars_S64PtrS64PtrS64PtrS64Ptr")]
         public static extern void ImPlot_PlotErrorBars_S64PtrS64PtrS64PtrS64Ptr(byte[] labelId, ref long xs, ref long ys, long neg, long pos, int count, ImPlotErrorBarsFlags flags, int offset, int stride);
         
         /// <summary>
@@ -1426,7 +1426,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotErrorBars_U64PtrU64PtrU64PtrU64Ptr")]
         public static extern void ImPlot_PlotErrorBars_U64PtrU64PtrU64PtrU64Ptr(byte[] labelId, ref ulong xs, ref ulong ys, ulong neg, ulong pos, int count, ImPlotErrorBarsFlags flags, int offset, int stride);
         
         /// <summary>
@@ -1442,7 +1442,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="boundsMin">The bounds min</param>
         /// <param name="boundsMax">The bounds max</param>
         /// <param name="flags">The flags</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHeatmap_FloatPtr")]
         public static extern void ImPlot_PlotHeatmap_FloatPtr(byte[] labelId, float[] values, int rows, int cols, double scaleMin, double scaleMax, byte[] labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax, ImPlotHeatmapFlags flags);
         
         /// <summary>
@@ -1458,7 +1458,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="boundsMin">The bounds min</param>
         /// <param name="boundsMax">The bounds max</param>
         /// <param name="flags">The flags</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHeatmap_doublePtr")]
         public static extern void ImPlot_PlotHeatmap_doublePtr(byte[] labelId, double[] values, int rows, int cols, double scaleMin, double scaleMax, byte[] labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax, ImPlotHeatmapFlags flags);
         
         /// <summary>
@@ -1474,7 +1474,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="boundsMin">The bounds min</param>
         /// <param name="boundsMax">The bounds max</param>
         /// <param name="flags">The flags</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHeatmap_S8Ptr")]
         public static extern void ImPlot_PlotHeatmap_S8Ptr(byte[] labelId, sbyte[] values, int rows, int cols, double scaleMin, double scaleMax, byte[] labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax, ImPlotHeatmapFlags flags);
         
         /// <summary>
@@ -1490,7 +1490,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="boundsMin">The bounds min</param>
         /// <param name="boundsMax">The bounds max</param>
         /// <param name="flags">The flags</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHeatmap_U8Ptr")]
         public static extern void ImPlot_PlotHeatmap_U8Ptr(byte[] labelId, byte[] values, int rows, int cols, double scaleMin, double scaleMax, byte[] labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax, ImPlotHeatmapFlags flags);
         
         /// <summary>
@@ -1506,7 +1506,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="boundsMin">The bounds min</param>
         /// <param name="boundsMax">The bounds max</param>
         /// <param name="flags">The flags</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHeatmap_S16Ptr")]
         public static extern void ImPlot_PlotHeatmap_S16Ptr(byte[] labelId, short[] values, int rows, int cols, double scaleMin, double scaleMax, byte[] labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax, ImPlotHeatmapFlags flags);
         
         /// <summary>
@@ -1522,7 +1522,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="boundsMin">The bounds min</param>
         /// <param name="boundsMax">The bounds max</param>
         /// <param name="flags">The flags</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHeatmap_U16Ptr")]
         public static extern void ImPlot_PlotHeatmap_U16Ptr(byte[] labelId, ushort[] values, int rows, int cols, double scaleMin, double scaleMax, byte[] labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax, ImPlotHeatmapFlags flags);
         
         /// <summary>
@@ -1538,7 +1538,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="boundsMin">The bounds min</param>
         /// <param name="boundsMax">The bounds max</param>
         /// <param name="flags">The flags</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHeatmap_S32Ptr")]
         public static extern void ImPlot_PlotHeatmap_S32Ptr(byte[] labelId, int[] values, int rows, int cols, double scaleMin, double scaleMax, byte[] labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax, ImPlotHeatmapFlags flags);
         
         /// <summary>
@@ -1554,7 +1554,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="boundsMin">The bounds min</param>
         /// <param name="boundsMax">The bounds max</param>
         /// <param name="flags">The flags</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHeatmap_U32Ptr")]
         public static extern void ImPlot_PlotHeatmap_U32Ptr(byte[] labelId, uint[] values, int rows, int cols, double scaleMin, double scaleMax, byte[] labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax, ImPlotHeatmapFlags flags);
         
         /// <summary>
@@ -1570,7 +1570,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="boundsMin">The bounds min</param>
         /// <param name="boundsMax">The bounds max</param>
         /// <param name="flags">The flags</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHeatmap_S64Ptr")]
         public static extern void ImPlot_PlotHeatmap_S64Ptr(byte[] labelId, long[] values, int rows, int cols, double scaleMin, double scaleMax, byte[] labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax, ImPlotHeatmapFlags flags);
         
         /// <summary>
@@ -1586,7 +1586,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="boundsMin">The bounds min</param>
         /// <param name="boundsMax">The bounds max</param>
         /// <param name="flags">The flags</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHeatmap_U64Ptr")]
         public static extern void ImPlot_PlotHeatmap_U64Ptr(byte[] labelId, ulong[] values, int rows, int cols, double scaleMin, double scaleMax, byte[] labelFmt, ImPlotPoint boundsMin, ImPlotPoint boundsMax, ImPlotHeatmapFlags flags);
         
         /// <summary>
@@ -1600,7 +1600,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="range">The range</param>
         /// <param name="flags">The flags</param>
         /// <returns>The double</returns>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHistogram_FloatPtr")]
         public static extern double ImPlot_PlotHistogram_FloatPtr(byte[] labelId, float[] values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags);
         
         /// <summary>
@@ -1614,7 +1614,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="range">The range</param>
         /// <param name="flags">The flags</param>
         /// <returns>The double</returns>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHistogram_doublePtr")]
         public static extern double ImPlot_PlotHistogram_doublePtr(byte[] labelId, double[] values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags);
         
         /// <summary>
@@ -1628,7 +1628,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="range">The range</param>
         /// <param name="flags">The flags</param>
         /// <returns>The double</returns>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHistogram_S8Ptr")]
         public static extern double ImPlot_PlotHistogram_S8Ptr(byte[] labelId, sbyte[] values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags);
         
         /// <summary>
@@ -1642,7 +1642,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="range">The range</param>
         /// <param name="flags">The flags</param>
         /// <returns>The double</returns>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHistogram_U8Ptr")]
         public static extern double ImPlot_PlotHistogram_U8Ptr(byte[] labelId, byte[] values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags);
         
         /// <summary>
@@ -1656,7 +1656,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="range">The range</param>
         /// <param name="flags">The flags</param>
         /// <returns>The double</returns>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHistogram_S16Ptr")]
         public static extern double ImPlot_PlotHistogram_S16Ptr(byte[] labelId, short[] values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags);
         
         /// <summary>
@@ -1670,7 +1670,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="range">The range</param>
         /// <param name="flags">The flags</param>
         /// <returns>The double</returns>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHistogram_U16Ptr")]
         public static extern double ImPlot_PlotHistogram_U16Ptr(byte[] labelId, ushort[] values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags);
         
         /// <summary>
@@ -1684,7 +1684,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="range">The range</param>
         /// <param name="flags">The flags</param>
         /// <returns>The double</returns>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHistogram_S32Ptr")]
         public static extern double ImPlot_PlotHistogram_S32Ptr(byte[] labelId, int[] values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags);
         
         /// <summary>
@@ -1698,7 +1698,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="range">The range</param>
         /// <param name="flags">The flags</param>
         /// <returns>The double</returns>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHistogram_U32Ptr")]
         public static extern double ImPlot_PlotHistogram_U32Ptr(byte[] labelId, uint[] values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags);
         
         /// <summary>
@@ -1712,7 +1712,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="range">The range</param>
         /// <param name="flags">The flags</param>
         /// <returns>The double</returns>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHistogram_S64Ptr")]
         public static extern double ImPlot_PlotHistogram_S64Ptr(byte[] labelId, long[] values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags);
         
         /// <summary>
@@ -1726,7 +1726,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="range">The range</param>
         /// <param name="flags">The flags</param>
         /// <returns>The double</returns>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHistogram_U64Ptr")]
         public static extern double ImPlot_PlotHistogram_U64Ptr(byte[] labelId, ulong[] values, int count, int bins, double barScale, ImPlotRange range, ImPlotHistogramFlags flags);
         
         /// <summary>
@@ -1741,7 +1741,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="range">The range</param>
         /// <param name="flags">The flags</param>
         /// <returns>The double</returns>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHistogram2D_FloatPtr")]
         public static extern double ImPlot_PlotHistogram2D_FloatPtr(byte[] labelId, ref float xs, ref float ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags);
         
         /// <summary>
@@ -1756,7 +1756,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="range">The range</param>
         /// <param name="flags">The flags</param>
         /// <returns>The double</returns>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHistogram2D_doublePtr")]
         public static extern double ImPlot_PlotHistogram2D_doublePtr(byte[] labelId, ref double xs, ref double ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags);
         
         /// <summary>
@@ -1771,7 +1771,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="range">The range</param>
         /// <param name="flags">The flags</param>
         /// <returns>The double</returns>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHistogram2D_S8Ptr")]
         public static extern double ImPlot_PlotHistogram2D_S8Ptr(byte[] labelId, ref sbyte xs, ref sbyte ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags);
         
         /// <summary>
@@ -1786,7 +1786,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="range">The range</param>
         /// <param name="flags">The flags</param>
         /// <returns>The double</returns>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHistogram2D_U8Ptr")]
         public static extern double ImPlot_PlotHistogram2D_U8Ptr(byte[] labelId, ref byte xs, ref byte ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags);
         
         /// <summary>
@@ -1801,7 +1801,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="range">The range</param>
         /// <param name="flags">The flags</param>
         /// <returns>The double</returns>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHistogram2D_S16Ptr")]
         public static extern double ImPlot_PlotHistogram2D_S16Ptr(byte[] labelId, ref short xs, ref short ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags);
         
         /// <summary>
@@ -1816,7 +1816,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="range">The range</param>
         /// <param name="flags">The flags</param>
         /// <returns>The double</returns>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHistogram2D_U16Ptr")]
         public static extern double ImPlot_PlotHistogram2D_U16Ptr(byte[] labelId, ref ushort xs, ref ushort ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags);
         
         /// <summary>
@@ -1831,7 +1831,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="range">The range</param>
         /// <param name="flags">The flags</param>
         /// <returns>The double</returns>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHistogram2D_S32Ptr")]
         public static extern double ImPlot_PlotHistogram2D_S32Ptr(byte[] labelId, ref int xs, ref int ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags);
         
         /// <summary>
@@ -1846,7 +1846,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="range">The range</param>
         /// <param name="flags">The flags</param>
         /// <returns>The double</returns>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHistogram2D_U32Ptr")]
         public static extern double ImPlot_PlotHistogram2D_U32Ptr(byte[] labelId, ref uint xs, ref uint ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags);
         
         /// <summary>
@@ -1861,7 +1861,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="range">The range</param>
         /// <param name="flags">The flags</param>
         /// <returns>The double</returns>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHistogram2D_S64Ptr")]
         public static extern double ImPlot_PlotHistogram2D_S64Ptr(byte[] labelId, ref long xs, ref long ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags);
         
         /// <summary>
@@ -1876,7 +1876,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="range">The range</param>
         /// <param name="flags">The flags</param>
         /// <returns>The double</returns>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotHistogram2D_U64Ptr")]
         public static extern double ImPlot_PlotHistogram2D_U64Ptr(byte[] labelId, ref ulong xs, ref ulong ys, int count, int xBins, int yBins, ImPlotRect range, ImPlotHistogramFlags flags);
         
         /// <summary>
@@ -1890,7 +1890,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="uv1">The uv</param>
         /// <param name="tintCol">The tint col</param>
         /// <param name="flags">The flags</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotImage")]
         public static extern void ImPlot_PlotImage(byte[] labelId, IntPtr userTextureId, ImPlotPoint boundsMin, ImPlotPoint boundsMax, Vector2 uv0, Vector2 uv1, Vector4 tintCol, ImPlotImageFlags flags);
         
         /// <summary>
@@ -1902,7 +1902,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotInfLines_FloatPtr")]
         public static extern void ImPlot_PlotInfLines_FloatPtr(byte[] labelId, float[] values, int count, ImPlotInfLinesFlags flags, int offset, int stride);
         
         /// <summary>
@@ -1914,7 +1914,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotInfLines_doublePtr")]
         public static extern void ImPlot_PlotInfLines_doublePtr(byte[] labelId, double[] values, int count, ImPlotInfLinesFlags flags, int offset, int stride);
         
         /// <summary>
@@ -1926,7 +1926,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotInfLines_S8Ptr")]
         public static extern void ImPlot_PlotInfLines_S8Ptr(byte[] labelId, sbyte[] values, int count, ImPlotInfLinesFlags flags, int offset, int stride);
         
         /// <summary>
@@ -1938,7 +1938,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotInfLines_U8Ptr")]
         public static extern void ImPlot_PlotInfLines_U8Ptr(byte[] labelId, byte[] values, int count, ImPlotInfLinesFlags flags, int offset, int stride);
         
         /// <summary>
@@ -1950,7 +1950,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotInfLines_S16Ptr")]
         public static extern void ImPlot_PlotInfLines_S16Ptr(byte[] labelId, short[] values, int count, ImPlotInfLinesFlags flags, int offset, int stride);
         
         /// <summary>
@@ -1962,7 +1962,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotInfLines_U16Ptr")]
         public static extern void ImPlot_PlotInfLines_U16Ptr(byte[] labelId, ushort[] values, int count, ImPlotInfLinesFlags flags, int offset, int stride);
         
         /// <summary>
@@ -1974,7 +1974,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotInfLines_S32Ptr")]
         public static extern void ImPlot_PlotInfLines_S32Ptr(byte[] labelId, int[] values, int count, ImPlotInfLinesFlags flags, int offset, int stride);
         
         /// <summary>
@@ -1986,7 +1986,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotInfLines_U32Ptr")]
         public static extern void ImPlot_PlotInfLines_U32Ptr(byte[] labelId, uint[] values, int count, ImPlotInfLinesFlags flags, int offset, int stride);
         
         /// <summary>
@@ -1998,7 +1998,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotInfLines_S64Ptr")]
         public static extern void ImPlot_PlotInfLines_S64Ptr(byte[] labelId, long[] values, int count, ImPlotInfLinesFlags flags, int offset, int stride);
         
         /// <summary>
@@ -2010,7 +2010,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotInfLines_U64Ptr")]
         public static extern void ImPlot_PlotInfLines_U64Ptr(byte[] labelId, ulong[] values, int count, ImPlotInfLinesFlags flags, int offset, int stride);
         
         /// <summary>
@@ -2038,7 +2038,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotLine_doublePtrInt")]
         public static extern void ImPlot_PlotLine_doublePtrInt(byte[] labelId, double[] values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride);
         
         /// <summary>
@@ -2052,7 +2052,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotLine_S8PtrInt")]
         public static extern void ImPlot_PlotLine_S8PtrInt(byte[] labelId, sbyte[] values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride);
         
         /// <summary>
@@ -2066,7 +2066,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotLine_U8PtrInt")]
         public static extern void ImPlot_PlotLine_U8PtrInt(byte[] labelId, byte[] values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride);
         
         /// <summary>
@@ -2080,7 +2080,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotLine_S16PtrInt")]
         public static extern void ImPlot_PlotLine_S16PtrInt(byte[] labelId, short[] values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride);
         
         /// <summary>
@@ -2094,7 +2094,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotLine_U16PtrInt")]
         public static extern void ImPlot_PlotLine_U16PtrInt(byte[] labelId, ushort[] values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride);
         
         /// <summary>
@@ -3788,14 +3788,14 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         ///     Ims the plot pop style color using the specified count
         /// </summary>
         /// <param name="count">The count</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PopStyleColor")]
         public static extern void ImPlot_PopStyleColor(int count);
         
         /// <summary>
         ///     Ims the plot pop style var using the specified count
         /// </summary>
         /// <param name="count">The count</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PopStyleVar")]
         public static extern void ImPlot_PopStyleVar(int count);
         
         /// <summary>
