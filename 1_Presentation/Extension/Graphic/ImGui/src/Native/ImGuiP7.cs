@@ -531,8 +531,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="font">The font</param>
         public static void PushFont(ImFontPtr font)
         {
-            ImFont* nativeFont = font.NativePtr;
-            ImGuiNative.igPushFont(nativeFont);
+            ImGuiNative.igPushFont((IntPtr)font.NativePtr);
         }
         
         /// <summary>
