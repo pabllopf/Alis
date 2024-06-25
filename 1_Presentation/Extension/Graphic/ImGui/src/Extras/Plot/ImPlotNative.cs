@@ -1000,7 +1000,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotDigital_FloatPtr")]
         public static extern void ImPlot_PlotDigital_FloatPtr(byte[] labelId, ref float xs, ref float ys, int count, ImPlotDigitalFlags flags, int offset, int stride);
         
         /// <summary>
@@ -1013,7 +1013,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotDigital_doublePtr")]
         public static extern void ImPlot_PlotDigital_doublePtr(byte[] labelId, ref double xs, ref double ys, int count, ImPlotDigitalFlags flags, int offset, int stride);
         
         /// <summary>
@@ -1026,7 +1026,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotDigital_S8Ptr")]
         public static extern void ImPlot_PlotDigital_S8Ptr(byte[] labelId, ref sbyte xs, ref sbyte ys, int count, ImPlotDigitalFlags flags, int offset, int stride);
         
         /// <summary>
@@ -1039,7 +1039,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotDigital_U8Ptr")]
         public static extern void ImPlot_PlotDigital_U8Ptr(byte[] labelId, ref byte xs, ref byte ys, int count, ImPlotDigitalFlags flags, int offset, int stride);
         
         /// <summary>
@@ -1052,7 +1052,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotDigital_S16Ptr")]
         public static extern void ImPlot_PlotDigital_S16Ptr(byte[] labelId, ref short xs, ref short ys, int count, ImPlotDigitalFlags flags, int offset, int stride);
         
         /// <summary>
@@ -1065,7 +1065,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotDigital_U16Ptr")]
         public static extern void ImPlot_PlotDigital_U16Ptr(byte[] labelId, ref ushort xs, ref ushort ys, int count, ImPlotDigitalFlags flags, int offset, int stride);
         
         /// <summary>
@@ -1078,7 +1078,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PlotDigital_S32Ptr")]
         public static extern void ImPlot_PlotDigital_S32Ptr(byte[] labelId, ref int xs, ref int ys, int count, ImPlotDigitalFlags flags, int offset, int stride);
         
         /// <summary>
@@ -3802,21 +3802,21 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         ///     Ims the plot push colormap plot colormap using the specified cmap
         /// </summary>
         /// <param name="cmap">The cmap</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PushColormap_PlotColormap")]
         public static extern void ImPlot_PushColormap_PlotColormap(ImPlotColormap cmap);
         
         /// <summary>
         ///     Ims the plot push colormap str using the specified name
         /// </summary>
         /// <param name="name">The name</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PushColormap_Str")]
         public static extern void ImPlot_PushColormap_Str(byte[] name);
         
         /// <summary>
         ///     Ims the plot push plot clip rect using the specified expand
         /// </summary>
         /// <param name="expand">The expand</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PushPlotClipRect")]
         public static extern void ImPlot_PushPlotClipRect(float expand);
         
         /// <summary>
@@ -3824,7 +3824,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// </summary>
         /// <param name="idx">The idx</param>
         /// <param name="col">The col</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PushStyleColor_U32")]
         public static extern void ImPlot_PushStyleColor_U32(ImPlotCol idx, uint col);
         
         /// <summary>
@@ -3832,7 +3832,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// </summary>
         /// <param name="idx">The idx</param>
         /// <param name="col">The col</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PushStyleColor_Vec4")]
         public static extern void ImPlot_PushStyleColor_Vec4(ImPlotCol idx, Vector4 col);
         
         /// <summary>
@@ -3840,7 +3840,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// </summary>
         /// <param name="idx">The idx</param>
         /// <param name="val">The val</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PushStyleVar_Float")]
         public static extern void ImPlot_PushStyleVar_Float(ImPlotStyleVar idx, float val);
         
         /// <summary>
@@ -3848,7 +3848,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// </summary>
         /// <param name="idx">The idx</param>
         /// <param name="val">The val</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PushStyleVar_Int")]
         public static extern void ImPlot_PushStyleVar_Int(ImPlotStyleVar idx, int val);
         
         /// <summary>
@@ -3856,7 +3856,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// </summary>
         /// <param name="idx">The idx</param>
         /// <param name="val">The val</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_PushStyleVar_Vec2")]
         public static extern void ImPlot_PushStyleVar_Vec2(ImPlotStyleVar idx, Vector2 val);
         
         /// <summary>
@@ -3865,7 +3865,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="pOut">The out</param>
         /// <param name="t">The </param>
         /// <param name="cmap">The cmap</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_SampleColormap")]
         public static extern void ImPlot_SampleColormap(out Vector4 pOut, float t, ImPlotColormap cmap);
         
         /// <summary>
@@ -3873,28 +3873,28 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// </summary>
         /// <param name="xAxis">The axis</param>
         /// <param name="yAxis">The axis</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_SetAxes")]
         public static extern void ImPlot_SetAxes(ImAxis xAxis, ImAxis yAxis);
         
         /// <summary>
         ///     Ims the plot set axis using the specified axis
         /// </summary>
         /// <param name="axis">The axis</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_SetAxis")]
         public static extern void ImPlot_SetAxis(ImAxis axis);
         
         /// <summary>
         ///     Ims the plot set current context using the specified ctx
         /// </summary>
         /// <param name="ctx">The ctx</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_SetCurrentContext")]
         public static extern void ImPlot_SetCurrentContext(IntPtr ctx);
         
         /// <summary>
         ///     Ims the plot set im gui context using the specified ctx
         /// </summary>
         /// <param name="ctx">The ctx</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_SetImGuiContext")]
         public static extern void ImPlot_SetImGuiContext(IntPtr ctx);
         
         /// <summary>
@@ -3905,13 +3905,13 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="yMin">The min</param>
         /// <param name="yMax">The max</param>
         /// <param name="cond">The cond</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_SetNextAxesLimits")]
         public static extern void ImPlot_SetNextAxesLimits(double xMin, double xMax, double yMin, double yMax, ImPlotCond cond);
         
         /// <summary>
         ///     Ims the plot set next axes to fit
         /// </summary>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_SetNextAxesToFit")]
         public static extern void ImPlot_SetNextAxesToFit();
         
         /// <summary>
@@ -3921,7 +3921,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="cond">The cond</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_SetNextAxisLimits")]
         public static extern void ImPlot_SetNextAxisLimits(ImAxis axis, double vMin, double vMax, ImPlotCond cond);
         
         /// <summary>
@@ -3930,14 +3930,14 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="axis">The axis</param>
         /// <param name="linkMin">The link min</param>
         /// <param name="linkMax">The link max</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_SetNextAxisLinks")]
         public static extern void ImPlot_SetNextAxisLinks(ImAxis axis, double linkMin, double linkMax);
         
         /// <summary>
         ///     Ims the plot set next axis to fit using the specified axis
         /// </summary>
         /// <param name="axis">The axis</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_SetNextAxisToFit")]
         public static extern void ImPlot_SetNextAxisToFit(ImAxis axis);
         
         /// <summary>
@@ -3946,7 +3946,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="col">The col</param>
         /// <param name="size">The size</param>
         /// <param name="weight">The weight</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_SetNextErrorBarStyle")]
         public static extern void ImPlot_SetNextErrorBarStyle(Vector4 col, float size, float weight);
         
         /// <summary>
@@ -3954,7 +3954,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// </summary>
         /// <param name="col">The col</param>
         /// <param name="alphaMod">The alpha mod</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_SetNextFillStyle")]
         public static extern void ImPlot_SetNextFillStyle(Vector4 col, float alphaMod);
         
         /// <summary>
@@ -3962,7 +3962,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// </summary>
         /// <param name="col">The col</param>
         /// <param name="weight">The weight</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_SetNextLineStyle")]
         public static extern void ImPlot_SetNextLineStyle(Vector4 col, float weight);
         
         /// <summary>
@@ -3973,7 +3973,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="fill">The fill</param>
         /// <param name="weight">The weight</param>
         /// <param name="outline">The outline</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_SetNextMarkerStyle")]
         public static extern void ImPlot_SetNextMarkerStyle(ImPlotMarker marker, float size, Vector4 fill, float weight, Vector4 outline);
         
         /// <summary>
@@ -3983,7 +3983,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="yLabel">The label</param>
         /// <param name="xFlags">The flags</param>
         /// <param name="yFlags">The flags</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_SetupAxes")]
         public static extern void ImPlot_SetupAxes(byte[] xLabel, byte[] yLabel, ImPlotAxisFlags xFlags, ImPlotAxisFlags yFlags);
         
         /// <summary>
@@ -3994,7 +3994,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="yMin">The min</param>
         /// <param name="yMax">The max</param>
         /// <param name="cond">The cond</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_SetupAxesLimits")]
         public static extern void ImPlot_SetupAxesLimits(double xMin, double xMax, double yMin, double yMax, ImPlotCond cond);
         
         /// <summary>
@@ -4003,7 +4003,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="axis">The axis</param>
         /// <param name="label">The label</param>
         /// <param name="flags">The flags</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_SetupAxis")]
         public static extern void ImPlot_SetupAxis(ImAxis axis, byte[] label, ImPlotAxisFlags flags);
         
         /// <summary>
@@ -4011,7 +4011,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// </summary>
         /// <param name="axis">The axis</param>
         /// <param name="fmt">The fmt</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_SetupAxisFormat_Str")]
         public static extern void ImPlot_SetupAxisFormat_Str(ImAxis axis, byte[] fmt);
         
         /// <summary>
@@ -4020,7 +4020,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="axis">The axis</param>
         /// <param name="formatter">The formatter</param>
         /// <param name="data">The data</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_SetupAxisFormat_PlotFormatter")]
         public static extern void ImPlot_SetupAxisFormat_PlotFormatter(ImAxis axis, IntPtr formatter, IntPtr data);
         
         /// <summary>
@@ -4030,7 +4030,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="cond">The cond</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_SetupAxisLimits")]
         public static extern void ImPlot_SetupAxisLimits(ImAxis axis, double vMin, double vMax, ImPlotCond cond);
         
         /// <summary>
@@ -4039,7 +4039,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="axis">The axis</param>
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_SetupAxisLimitsConstraints")]
         public static extern void ImPlot_SetupAxisLimitsConstraints(ImAxis axis, double vMin, double vMax);
         
         /// <summary>
@@ -4048,7 +4048,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="axis">The axis</param>
         /// <param name="linkMin">The link min</param>
         /// <param name="linkMax">The link max</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_SetupAxisLinks")]
         public static extern void ImPlot_SetupAxisLinks(ImAxis axis, double linkMin, double linkMax);
         
         /// <summary>
@@ -4056,7 +4056,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// </summary>
         /// <param name="axis">The axis</param>
         /// <param name="scale">The scale</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_SetupAxisScale_PlotScale")]
         public static extern void ImPlot_SetupAxisScale_PlotScale(ImAxis axis, ImPlotScale scale);
         
         /// <summary>
@@ -4066,7 +4066,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="forward">The forward</param>
         /// <param name="inverse">The inverse</param>
         /// <param name="data">The data</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_SetupAxisScale_PlotTransform")]
         public static extern void ImPlot_SetupAxisScale_PlotTransform(ImAxis axis, IntPtr forward, IntPtr inverse, IntPtr data);
         
         /// <summary>
@@ -4077,7 +4077,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="nTicks">The ticks</param>
         /// <param name="labels">The labels</param>
         /// <param name="keepDefault">The keep default</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_SetupAxisTicks_doublePtr")]
         public static extern void ImPlot_SetupAxisTicks_doublePtr(ImAxis axis, double[] values, int nTicks, byte[][] labels, byte keepDefault);
         
         /// <summary>
@@ -4089,7 +4089,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="nTicks">The ticks</param>
         /// <param name="labels">The labels</param>
         /// <param name="keepDefault">The keep default</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_SetupAxisTicks_double")]
         public static extern void ImPlot_SetupAxisTicks_double(ImAxis axis, double vMin, double vMax, int nTicks, byte[][] labels, byte keepDefault);
         
         /// <summary>
@@ -4098,13 +4098,13 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="axis">The axis</param>
         /// <param name="zMin">The min</param>
         /// <param name="zMax">The max</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_SetupAxisZoomConstraints")]
         public static extern void ImPlot_SetupAxisZoomConstraints(ImAxis axis, double zMin, double zMax);
         
         /// <summary>
         ///     Ims the plot setup finish
         /// </summary>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_SetupFinish")]
         public static extern void ImPlot_SetupFinish();
         
         /// <summary>
@@ -4143,21 +4143,21 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// </summary>
         /// <param name="label">The label</param>
         /// <returns>The byte</returns>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_ShowInputMapSelector")]
         public static extern byte ImPlot_ShowInputMapSelector(byte[] label);
         
         /// <summary>
         ///     Ims the plot show metrics window using the specified p popen
         /// </summary>
         /// <param name="pPopen">The popen</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_ShowMetricsWindow")]
         public static extern void ImPlot_ShowMetricsWindow(byte pPopen);
         
         /// <summary>
         ///     Ims the plot show style editor using the specified ref
         /// </summary>
         /// <param name="imPlotStyle"></param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_ShowStyleEditor")]
         public static extern void ImPlot_ShowStyleEditor(ImPlotStyle imPlotStyle);
         
         /// <summary>
@@ -4165,41 +4165,41 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// </summary>
         /// <param name="label">The label</param>
         /// <returns>The byte</returns>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_ShowStyleSelector")]
         public static extern byte ImPlot_ShowStyleSelector(byte[] label);
         
         /// <summary>
         ///     Ims the plot show user guide
         /// </summary>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_ShowUserGuide")]
         public static extern void ImPlot_ShowUserGuide();
         
         /// <summary>
         ///     Ims the plot style colors auto using the specified dst
         /// </summary>
         /// <param name="dst">The dst</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_StyleColorsAuto")]
         public static extern void ImPlot_StyleColorsAuto(ImPlotStyle dst);
         
         /// <summary>
         ///     Ims the plot style colors classic using the specified dst
         /// </summary>
         /// <param name="dst">The dst</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_StyleColorsClassic")]
         public static extern void ImPlot_StyleColorsClassic(ImPlotStyle dst);
         
         /// <summary>
         ///     Ims the plot style colors dark using the specified dst
         /// </summary>
         /// <param name="dst">The dst</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_StyleColorsDark")]
         public static extern void ImPlot_StyleColorsDark(ImPlotStyle dst);
         
         /// <summary>
         ///     Ims the plot style colors light using the specified dst
         /// </summary>
         /// <param name="dst">The dst</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_StyleColorsLight")]
         public static extern void ImPlot_StyleColorsLight(ImPlotStyle dst);
         
         /// <summary>
@@ -4208,7 +4208,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="x">The </param>
         /// <param name="col">The col</param>
         /// <param name="round">The round</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_TagX_Bool")]
         public static extern void ImPlot_TagX_Bool(double x, Vector4 col, byte round);
         
         /// <summary>
@@ -4217,7 +4217,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="x">The </param>
         /// <param name="col">The col</param>
         /// <param name="fmt">The fmt</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_TagX_Str")]
         public static extern void ImPlot_TagX_Str(double x, Vector4 col, byte[] fmt);
         
         /// <summary>
@@ -4226,7 +4226,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="y">The </param>
         /// <param name="col">The col</param>
         /// <param name="round">The round</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_TagY_Bool")]
         public static extern void ImPlot_TagY_Bool(double y, Vector4 col, byte round);
         
         /// <summary>
@@ -4235,35 +4235,35 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="y">The </param>
         /// <param name="col">The col</param>
         /// <param name="fmt">The fmt</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlot_TagY_Str")]
         public static extern void ImPlot_TagY_Str(double y, Vector4 col, byte[] fmt);
         
         /// <summary>
         ///     Ims the plot input map destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlotInputMap_destroy")]
         public static extern void ImPlotInputMap_destroy(ImPlotInputMap self);
         
         /// <summary>
         ///     Ims the plot input map im plot input map
         /// </summary>
         /// <returns>The im plot input map</returns>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlotInputMap_ImPlotInputMap")]
         public static extern ImPlotInputMap ImPlotInputMap_ImPlotInputMap();
         
         /// <summary>
         ///     Ims the plot point destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlotPoint_destroy")]
         public static extern void ImPlotPoint_destroy(ImPlotPoint self);
         
         /// <summary>
         ///     Ims the plot point im plot point nil
         /// </summary>
         /// <returns>The im plot point</returns>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlotPoint_ImPlotPoint_Nil")]
         public static extern ImPlotPoint ImPlotPoint_ImPlotPoint_Nil();
         
         /// <summary>
@@ -4272,7 +4272,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         /// <returns>The im plot point</returns>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlotPoint_ImPlotPoint_double")]
         public static extern ImPlotPoint ImPlotPoint_ImPlotPoint_double(double x, double y);
         
         /// <summary>
@@ -4280,7 +4280,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// </summary>
         /// <param name="p">The </param>
         /// <returns>The im plot point</returns>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlotPoint_ImPlotPoint_Vec2")]
         public static extern ImPlotPoint ImPlotPoint_ImPlotPoint_Vec2(Vector2 p);
         
         /// <summary>
@@ -4289,7 +4289,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="self">The self</param>
         /// <param name="value">The value</param>
         /// <returns>The double</returns>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlotRange_Clamp")]
         public static extern double ImPlotRange_Clamp(ref ImPlotRange self, double value);
         
         /// <summary>
@@ -4298,14 +4298,14 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <param name="self">The self</param>
         /// <param name="value">The value</param>
         /// <returns>The byte</returns>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlotRange_Contains")]
         public static extern byte ImPlotRange_Contains(ref ImPlotRange self, double value);
         
         /// <summary>
         ///     Ims the plot range destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImPlotRange_destroy")]
         public static extern void ImPlotRange_destroy(ref ImPlotRange self);
         
         /// <summary>
