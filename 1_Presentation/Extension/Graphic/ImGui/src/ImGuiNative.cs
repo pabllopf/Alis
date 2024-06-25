@@ -4461,7 +4461,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="outUvFill">The out uv fill</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl , EntryPoint = "ImFontAtlas_GetMouseCursorTexData")]
-        public static extern byte ImFontAtlas_GetMouseCursorTexData(IntPtr self, ImGuiMouseCursor cursor, Vector2* outOffset, Vector2* outSize, Vector2* outUvBorder, Vector2* outUvFill);
+        public static extern byte ImFontAtlas_GetMouseCursorTexData(IntPtr self, ImGuiMouseCursor cursor, out Vector2 outOffset, out Vector2 outSize, out Vector2 outUvBorder, out Vector2 outUvFill);
         
         /// <summary>
         ///     Ims the font atlas get tex data as alpha 8 using the specified self
@@ -4494,7 +4494,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="outHeight">The out height</param>
         /// <param name="outBytesPerPixel">The out bytes per pixel</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl , EntryPoint = "ImFontAtlas_GetTexDataAsRGBA32")]
-        public static extern void ImFontAtlas_GetTexDataAsRGBA32(IntPtr self, byte** outPixels, int* outWidth, int* outHeight, int* outBytesPerPixel);
+        public static extern void ImFontAtlas_GetTexDataAsRGBA32(IntPtr self, out byte[] outPixels, out int outWidth, out int outHeight, out int outBytesPerPixel);
         
         /// <summary>
         ///     Ims the font atlas get tex data as rgba 32 using the specified self
@@ -4505,7 +4505,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="outHeight">The out height</param>
         /// <param name="outBytesPerPixel">The out bytes per pixel</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl , EntryPoint = "ImFontAtlas_GetTexDataAsRGBA32")]
-        public static extern void ImFontAtlas_GetTexDataAsRGBA32(IntPtr self, IntPtr* outPixels, int* outWidth, int* outHeight, int* outBytesPerPixel);
+        public static extern void ImFontAtlas_GetTexDataAsRGBA32(IntPtr self, out IntPtr outPixels, out int outWidth, out int outHeight, out int outBytesPerPixel);
         
         /// <summary>
         ///     Ims the font atlas im font atlas
@@ -5116,7 +5116,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl , EntryPoint = "ImGuiStoragePair_destroy")]
-        public static extern void ImGuiStoragePair_destroy(ImGuiStoragePair* self);
+        public static extern void ImGuiStoragePair_destroy(IntPtr self);
         
         /// <summary>
         ///     Ims the gui storage pair im gui storage pair int using the specified  key
@@ -5125,7 +5125,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="valI">The val</param>
         /// <returns>The im gui storage pair</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl , EntryPoint = "ImGuiStoragePair_ImGuiStoragePair_Int")]
-        public static extern ImGuiStoragePair* ImGuiStoragePair_ImGuiStoragePair_Int(uint key, int valI);
+        public static extern IntPtr ImGuiStoragePair_ImGuiStoragePair_Int(uint key, int valI);
         
         /// <summary>
         ///     Ims the gui storage pair im gui storage pair float using the specified  key
@@ -5134,7 +5134,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="valF">The val</param>
         /// <returns>The im gui storage pair</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl , EntryPoint = "ImGuiStoragePair_ImGuiStoragePair_Float")]
-        public static extern ImGuiStoragePair* ImGuiStoragePair_ImGuiStoragePair_Float(uint key, float valF);
+        public static extern IntPtr ImGuiStoragePair_ImGuiStoragePair_Float(uint key, float valF);
         
         /// <summary>
         ///     Ims the gui storage pair im gui storage pair ptr using the specified  key
@@ -5143,7 +5143,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="valP">The val</param>
         /// <returns>The im gui storage pair</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl , EntryPoint = "ImGuiStoragePair_ImGuiStoragePair_Ptr")]
-        public static extern ImGuiStoragePair* ImGuiStoragePair_ImGuiStoragePair_Ptr(uint key, IntPtr valP);
+        public static extern IntPtr ImGuiStoragePair_ImGuiStoragePair_Ptr(uint key, IntPtr valP);
         
         /// <summary>
         ///     Ims the gui style destroy using the specified self

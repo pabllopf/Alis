@@ -800,20 +800,8 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The bool</returns>
         public bool GetMouseCursorTexData(ImGuiMouseCursor cursor, out Vector2 outOffset, out Vector2 outSize, out Vector2 outUvBorder, out Vector2 outUvFill)
         {
-            fixed (Vector2* nativeOutOffset = &outOffset)
-            {
-                fixed (Vector2* nativeOutSize = &outSize)
-                {
-                    fixed (Vector2* nativeOutUvBorder = &outUvBorder)
-                    {
-                        fixed (Vector2* nativeOutUvFill = &outUvFill)
-                        {
-                            byte ret = ImGuiNative.ImFontAtlas_GetMouseCursorTexData((IntPtr)NativePtr, cursor, nativeOutOffset, nativeOutSize, nativeOutUvBorder, nativeOutUvFill);
-                            return ret != 0;
-                        }
-                    }
-                }
-            }
+            byte ret = ImGuiNative.ImFontAtlas_GetMouseCursorTexData((IntPtr)NativePtr, cursor, out outOffset, out outSize, out outUvBorder, out outUvFill);
+            return ret != 0;
         }
         
         /// <summary>
@@ -912,43 +900,10 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="outPixels">The out pixels</param>
         /// <param name="outWidth">The out width</param>
         /// <param name="outHeight">The out height</param>
-        public void GetTexDataAsRgba32(out byte* outPixels, out int outWidth, out int outHeight)
-        {
-            int* outBytesPerPixel = null;
-            fixed (byte** nativeOutPixels = &outPixels)
-            {
-                fixed (int* nativeOutWidth = &outWidth)
-                {
-                    fixed (int* nativeOutHeight = &outHeight)
-                    {
-                        ImGuiNative.ImFontAtlas_GetTexDataAsRGBA32((IntPtr)NativePtr, nativeOutPixels, nativeOutWidth, nativeOutHeight, outBytesPerPixel);
-                    }
-                }
-            }
-        }
-        
-        /// <summary>
-        ///     Gets the tex data as rgba 32 using the specified out pixels
-        /// </summary>
-        /// <param name="outPixels">The out pixels</param>
-        /// <param name="outWidth">The out width</param>
-        /// <param name="outHeight">The out height</param>
         /// <param name="outBytesPerPixel">The out bytes per pixel</param>
-        public void GetTexDataAsRgba32(out byte* outPixels, out int outWidth, out int outHeight, out int outBytesPerPixel)
+        public void GetTexDataAsRgba32(out byte[] outPixels, out int outWidth, out int outHeight, out int outBytesPerPixel)
         {
-            fixed (byte** nativeOutPixels = &outPixels)
-            {
-                fixed (int* nativeOutWidth = &outWidth)
-                {
-                    fixed (int* nativeOutHeight = &outHeight)
-                    {
-                        fixed (int* nativeOutBytesPerPixel = &outBytesPerPixel)
-                        {
-                            ImGuiNative.ImFontAtlas_GetTexDataAsRGBA32((IntPtr)NativePtr, nativeOutPixels, nativeOutWidth, nativeOutHeight, nativeOutBytesPerPixel);
-                        }
-                    }
-                }
-            }
+            ImGuiNative.ImFontAtlas_GetTexDataAsRGBA32((IntPtr)NativePtr, out outPixels, out outWidth, out outHeight, out outBytesPerPixel);
         }
         
         /// <summary>
@@ -959,17 +914,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="outHeight">The out height</param>
         public void GetTexDataAsRgba32(out IntPtr outPixels, out int outWidth, out int outHeight)
         {
-            int* outBytesPerPixel = null;
-            fixed (IntPtr* nativeOutPixels = &outPixels)
-            {
-                fixed (int* nativeOutWidth = &outWidth)
-                {
-                    fixed (int* nativeOutHeight = &outHeight)
-                    {
-                        ImGuiNative.ImFontAtlas_GetTexDataAsRGBA32((IntPtr)NativePtr, nativeOutPixels, nativeOutWidth, nativeOutHeight, outBytesPerPixel);
-                    }
-                }
-            }
+            ImGuiNative.ImFontAtlas_GetTexDataAsRGBA32((IntPtr)NativePtr, out outPixels, out outWidth, out outHeight, out _);
         }
         
         /// <summary>
@@ -981,19 +926,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="outBytesPerPixel">The out bytes per pixel</param>
         public void GetTexDataAsRgba32(out IntPtr outPixels, out int outWidth, out int outHeight, out int outBytesPerPixel)
         {
-            fixed (IntPtr* nativeOutPixels = &outPixels)
-            {
-                fixed (int* nativeOutWidth = &outWidth)
-                {
-                    fixed (int* nativeOutHeight = &outHeight)
-                    {
-                        fixed (int* nativeOutBytesPerPixel = &outBytesPerPixel)
-                        {
-                            ImGuiNative.ImFontAtlas_GetTexDataAsRGBA32((IntPtr)NativePtr, nativeOutPixels, nativeOutWidth, nativeOutHeight, nativeOutBytesPerPixel);
-                        }
-                    }
-                }
-            }
+            ImGuiNative.ImFontAtlas_GetTexDataAsRGBA32((IntPtr)NativePtr, out outPixels, out outWidth, out outHeight, out outBytesPerPixel);
         }
         
         /// <summary>
