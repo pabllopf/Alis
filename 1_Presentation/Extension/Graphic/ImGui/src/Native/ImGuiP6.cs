@@ -704,8 +704,8 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool IsMousePosValid()
         {
-            Vector2* mousePos = null;
-            byte ret = ImGuiNative.igIsMousePosValid(mousePos);
+            Vector2 mousePos = Vector2.Zero;
+            byte ret = ImGuiNative.igIsMousePosValid(ref mousePos);
             return ret != 0;
         }
         
@@ -716,11 +716,8 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool IsMousePosValid(ref Vector2 mousePos)
         {
-            fixed (Vector2* nativeMousePos = &mousePos)
-            {
-                byte ret = ImGuiNative.igIsMousePosValid(nativeMousePos);
-                return ret != 0;
-            }
+            byte ret = ImGuiNative.igIsMousePosValid(ref mousePos);
+            return ret != 0;
         }
         
         /// <summary>
