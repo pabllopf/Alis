@@ -312,8 +312,8 @@ namespace Alis.App.Engine
             fonts.AddFontDefault();
             ImFontPtr fontLoaded = fonts.AddFontFromFileTtf(@$"{dirFonts}{fontToLoad}", 14);
             
-            fonts.GetTexDataAsRgba32(out byte* pixelData, out int width, out int height, out int _);
-            _fontTextureId = LoadTexture((IntPtr) pixelData, width, height);
+            fonts.GetTexDataAsRgba32(out IntPtr pixelData, out int width, out int height, out int _);
+            _fontTextureId = LoadTexture(pixelData, width, height);
             
             fonts.TexId = (IntPtr) _fontTextureId;
             fonts.ClearTexData();
