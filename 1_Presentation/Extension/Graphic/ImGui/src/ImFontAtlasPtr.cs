@@ -245,7 +245,7 @@ namespace Alis.Extension.Graphic.ImGui
         public ImFontPtr AddFont(ImFontConfigPtr fontCfg)
         {
             ImFontConfig* nativeFontCfg = fontCfg.NativePtr;
-            IntPtr ret = ImGuiNative.ImFontAtlas_AddFont((IntPtr)NativePtr, nativeFontCfg);
+            IntPtr ret = ImGuiNative.ImFontAtlas_AddFont((IntPtr)NativePtr, (IntPtr)nativeFontCfg);
             return new ImFontPtr(ret);
         }
         
@@ -301,7 +301,7 @@ namespace Alis.Extension.Graphic.ImGui
             
             ImFontConfig* fontCfg = null;
             ushort* glyphRanges = null;
-            IntPtr ret = ImGuiNative.ImFontAtlas_AddFontFromFileTTF((IntPtr)NativePtr, nativeFilename, sizePixels, fontCfg, glyphRanges);
+            IntPtr ret = ImGuiNative.ImFontAtlas_AddFontFromFileTTF((IntPtr)NativePtr, nativeFilename, sizePixels, (IntPtr)fontCfg, glyphRanges);
             if (filenameByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeFilename);
@@ -344,7 +344,7 @@ namespace Alis.Extension.Graphic.ImGui
             
             ImFontConfig* nativeFontCfg = fontCfg.NativePtr;
             ushort* glyphRanges = null;
-            IntPtr ret = ImGuiNative.ImFontAtlas_AddFontFromFileTTF((IntPtr)NativePtr, nativeFilename, sizePixels, nativeFontCfg, glyphRanges);
+            IntPtr ret = ImGuiNative.ImFontAtlas_AddFontFromFileTTF((IntPtr)NativePtr, nativeFilename, sizePixels, (IntPtr)nativeFontCfg, glyphRanges);
             if (filenameByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeFilename);
@@ -388,7 +388,7 @@ namespace Alis.Extension.Graphic.ImGui
             
             ImFontConfig* nativeFontCfg = fontCfg.NativePtr;
             ushort* nativeGlyphRanges = (ushort*) glyphRanges;
-            IntPtr ret = ImGuiNative.ImFontAtlas_AddFontFromFileTTF((IntPtr)NativePtr, nativeFilename, sizePixels, nativeFontCfg, nativeGlyphRanges);
+            IntPtr ret = ImGuiNative.ImFontAtlas_AddFontFromFileTTF((IntPtr)NativePtr, nativeFilename, sizePixels, (IntPtr)nativeFontCfg, nativeGlyphRanges);
             if (filenameByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeFilename);
@@ -430,7 +430,7 @@ namespace Alis.Extension.Graphic.ImGui
             
             ImFontConfig* fontCfg = null;
             ushort* glyphRanges = null;
-            IntPtr ret = ImGuiNative.ImFontAtlas_AddFontFromMemoryCompressedBase85TTF((IntPtr)NativePtr, nativeCompressedFontDataBase85, sizePixels, fontCfg, glyphRanges);
+            IntPtr ret = ImGuiNative.ImFontAtlas_AddFontFromMemoryCompressedBase85TTF((IntPtr)NativePtr, nativeCompressedFontDataBase85, sizePixels, (IntPtr)fontCfg, glyphRanges);
             if (compressedFontDataBase85ByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeCompressedFontDataBase85);
@@ -473,7 +473,7 @@ namespace Alis.Extension.Graphic.ImGui
             
             ImFontConfig* nativeFontCfg = fontCfg.NativePtr;
             ushort* glyphRanges = null;
-            IntPtr ret = ImGuiNative.ImFontAtlas_AddFontFromMemoryCompressedBase85TTF((IntPtr)NativePtr, nativeCompressedFontDataBase85, sizePixels, nativeFontCfg, glyphRanges);
+            IntPtr ret = ImGuiNative.ImFontAtlas_AddFontFromMemoryCompressedBase85TTF((IntPtr)NativePtr, nativeCompressedFontDataBase85, sizePixels, (IntPtr)nativeFontCfg, glyphRanges);
             if (compressedFontDataBase85ByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeCompressedFontDataBase85);
@@ -517,7 +517,7 @@ namespace Alis.Extension.Graphic.ImGui
             
             ImFontConfig* nativeFontCfg = fontCfg.NativePtr;
             ushort* nativeGlyphRanges = (ushort*) glyphRanges;
-            IntPtr ret = ImGuiNative.ImFontAtlas_AddFontFromMemoryCompressedBase85TTF((IntPtr)NativePtr, nativeCompressedFontDataBase85, sizePixels, nativeFontCfg, nativeGlyphRanges);
+            IntPtr ret = ImGuiNative.ImFontAtlas_AddFontFromMemoryCompressedBase85TTF((IntPtr)NativePtr, nativeCompressedFontDataBase85, sizePixels, (IntPtr)nativeFontCfg, nativeGlyphRanges);
             if (compressedFontDataBase85ByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeCompressedFontDataBase85);
@@ -538,7 +538,7 @@ namespace Alis.Extension.Graphic.ImGui
             IntPtr nativeCompressedFontData = compressedFontData;
             ImFontConfig* fontCfg = null;
             ushort* glyphRanges = null;
-            IntPtr ret = ImGuiNative.ImFontAtlas_AddFontFromMemoryCompressedTTF((IntPtr)NativePtr, nativeCompressedFontData, compressedFontSize, sizePixels, fontCfg, glyphRanges);
+            IntPtr ret = ImGuiNative.ImFontAtlas_AddFontFromMemoryCompressedTTF((IntPtr)NativePtr, nativeCompressedFontData, compressedFontSize, sizePixels, (IntPtr)fontCfg, glyphRanges);
             return new ImFontPtr(ret);
         }
         
@@ -555,7 +555,7 @@ namespace Alis.Extension.Graphic.ImGui
             IntPtr nativeCompressedFontData = compressedFontData;
             ImFontConfig* nativeFontCfg = fontCfg.NativePtr;
             ushort* glyphRanges = null;
-            IntPtr ret = ImGuiNative.ImFontAtlas_AddFontFromMemoryCompressedTTF((IntPtr)NativePtr, nativeCompressedFontData, compressedFontSize, sizePixels, nativeFontCfg, glyphRanges);
+            IntPtr ret = ImGuiNative.ImFontAtlas_AddFontFromMemoryCompressedTTF((IntPtr)NativePtr, nativeCompressedFontData, compressedFontSize, sizePixels, (IntPtr)nativeFontCfg, glyphRanges);
             return new ImFontPtr(ret);
         }
         
@@ -573,7 +573,7 @@ namespace Alis.Extension.Graphic.ImGui
             IntPtr nativeCompressedFontData = compressedFontData;
             ImFontConfig* nativeFontCfg = fontCfg.NativePtr;
             ushort* nativeGlyphRanges = (ushort*) glyphRanges;
-            IntPtr ret = ImGuiNative.ImFontAtlas_AddFontFromMemoryCompressedTTF((IntPtr)NativePtr, nativeCompressedFontData, compressedFontSize, sizePixels, nativeFontCfg, nativeGlyphRanges);
+            IntPtr ret = ImGuiNative.ImFontAtlas_AddFontFromMemoryCompressedTTF((IntPtr)NativePtr, nativeCompressedFontData, compressedFontSize, sizePixels, (IntPtr)nativeFontCfg, nativeGlyphRanges);
             return new ImFontPtr(ret);
         }
         
@@ -589,7 +589,7 @@ namespace Alis.Extension.Graphic.ImGui
             IntPtr nativeFontData = fontData;
             ImFontConfig* fontCfg = null;
             ushort* glyphRanges = null;
-            return new ImFontPtr(ImGuiNative.ImFontAtlas_AddFontFromMemoryTTF((IntPtr)NativePtr, nativeFontData, fontSize, sizePixels, fontCfg, glyphRanges));
+            return new ImFontPtr(ImGuiNative.ImFontAtlas_AddFontFromMemoryTTF((IntPtr)NativePtr, nativeFontData, fontSize, sizePixels, (IntPtr)fontCfg, glyphRanges));
         }
         
         /// <summary>
@@ -605,7 +605,7 @@ namespace Alis.Extension.Graphic.ImGui
             IntPtr nativeFontData = fontData;
             ImFontConfig* nativeFontCfg = fontCfg.NativePtr;
             ushort* glyphRanges = null;
-            return new ImFontPtr(ImGuiNative.ImFontAtlas_AddFontFromMemoryTTF((IntPtr)NativePtr, nativeFontData, fontSize, sizePixels, nativeFontCfg, glyphRanges));
+            return new ImFontPtr(ImGuiNative.ImFontAtlas_AddFontFromMemoryTTF((IntPtr)NativePtr, nativeFontData, fontSize, sizePixels, (IntPtr)nativeFontCfg, glyphRanges));
         }
         
         /// <summary>
@@ -622,7 +622,7 @@ namespace Alis.Extension.Graphic.ImGui
             IntPtr nativeFontData = fontData;
             ImFontConfig* nativeFontCfg = fontCfg.NativePtr;
             ushort* nativeGlyphRanges = (ushort*) glyphRanges;
-            return new ImFontPtr(ImGuiNative.ImFontAtlas_AddFontFromMemoryTTF((IntPtr)NativePtr, nativeFontData, fontSize, sizePixels, nativeFontCfg, nativeGlyphRanges));
+            return new ImFontPtr(ImGuiNative.ImFontAtlas_AddFontFromMemoryTTF((IntPtr)NativePtr, nativeFontData, fontSize, sizePixels, (IntPtr)nativeFontCfg, nativeGlyphRanges));
         }
         
         /// <summary>

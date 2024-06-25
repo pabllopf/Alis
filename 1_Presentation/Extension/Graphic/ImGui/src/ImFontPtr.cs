@@ -170,7 +170,7 @@ namespace Alis.Extension.Graphic.ImGui
         public void AddGlyph(ImFontConfigPtr srcCfg, ushort c, float x0, float y0, float x1, float y1, float u0, float v0, float u1, float v1, float advanceX)
         {
             ImFontConfig* nativeSrcCfg = srcCfg.NativePtr;
-            ImGuiNative.ImFont_AddGlyph((IntPtr)NativePtr, nativeSrcCfg, c, x0, y0, x1, y1, u0, v0, u1, v1, advanceX);
+            ImGuiNative.ImFont_AddGlyph((IntPtr)NativePtr, (IntPtr)nativeSrcCfg, c, x0, y0, x1, y1, u0, v0, u1, v1, advanceX);
         }
         
         /// <summary>
