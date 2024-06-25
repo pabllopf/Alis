@@ -28,6 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
+using System.Text;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.ImGui.Utils;
 
@@ -251,8 +253,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The string</returns>
         public string GetDebugName()
         {
-            byte* ret = ImGuiNative.ImFont_GetDebugName((IntPtr)NativePtr);
-            return Util.StringFromPtr(ret);
+            return Encoding.UTF8.GetString(ImGuiNative.ImFont_GetDebugName((IntPtr) NativePtr));
         }
         
         /// <summary>

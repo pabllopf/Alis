@@ -99,35 +99,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The bool</returns>
         public bool IsDataType(string type)
         {
-            byte* nativeType;
-            int typeByteCount = 0;
-            if (type != null)
-            {
-                typeByteCount = Encoding.UTF8.GetByteCount(type);
-                if (typeByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeType = Util.Allocate(typeByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeTypeStackBytes = stackalloc byte[typeByteCount + 1];
-                    nativeType = nativeTypeStackBytes;
-                }
-                
-                int nativeTypeOffset = Util.GetUtf8(type, nativeType, typeByteCount);
-                nativeType[nativeTypeOffset] = 0;
-            }
-            else
-            {
-                nativeType = null;
-            }
-            
-            byte ret = ImGuiNative.ImGuiPayload_IsDataType(ref this, nativeType);
-            if (typeByteCount > Util.StackAllocationSizeLimit)
-            {
-                Util.Free(nativeType);
-            }
-            
+            byte ret = ImGuiNative.ImGuiPayload_IsDataType(ref this,Encoding.UTF8.GetBytes(type));
             return ret != 0;
         }
         

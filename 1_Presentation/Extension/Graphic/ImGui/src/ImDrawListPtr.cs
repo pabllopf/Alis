@@ -1266,15 +1266,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="textBegin">The text begin</param>
         public void AddText(Vector2 pos, uint col, string textBegin)
         {
-            int textBeginByteCount = Encoding.UTF8.GetByteCount(textBegin);
-            byte* nativeTextBegin = stackalloc byte[textBeginByteCount + 1];
-            fixed (char* textBeginPtr = textBegin)
-            {
-                int nativeTextBeginOffset = Encoding.UTF8.GetBytes(textBeginPtr, textBegin.Length, nativeTextBegin, textBeginByteCount);
-                nativeTextBegin[nativeTextBeginOffset] = 0;
-            }
-            
-            ImGuiNative.ImDrawList_AddText_Vec2((IntPtr)NativePtr, pos, col, nativeTextBegin, null);
+            ImGuiNative.ImDrawList_AddText_Vec2((IntPtr)NativePtr, pos, col, Encoding.UTF8.GetBytes(textBegin), null);
         }
         
         /// <summary>
@@ -1287,17 +1279,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="textBegin">The text begin</param>
         public void AddText(ImFontPtr font, float fontSize, Vector2 pos, uint col, string textBegin)
         {
-            ImFont* nativeFont = font.NativePtr;
-            int textBeginByteCount = Encoding.UTF8.GetByteCount(textBegin);
-            byte* nativeTextBegin = stackalloc byte[textBeginByteCount + 1];
-            fixed (char* textBeginPtr = textBegin)
-            {
-                int nativeTextBeginOffset = Encoding.UTF8.GetBytes(textBeginPtr, textBegin.Length, nativeTextBegin, textBeginByteCount);
-                nativeTextBegin[nativeTextBeginOffset] = 0;
-            }
-                
-            float wrapWidth = 0.0f;
-            ImGuiNative.ImDrawList_AddText_FontPtr((IntPtr)NativePtr, (IntPtr)nativeFont, fontSize, pos, col, nativeTextBegin, null, wrapWidth, new Vector4());
+            ImGuiNative.ImDrawList_AddText_FontPtr((IntPtr)NativePtr, (IntPtr)font.NativePtr, fontSize, pos, col, Encoding.UTF8.GetBytes(textBegin), null, 0.0f, new Vector4());
         }
     }
 }

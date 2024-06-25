@@ -608,34 +608,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="str">The str</param>
         public void AddInputCharactersUtf8(string str)
         {
-            byte* nativeStr;
-            int strByteCount = 0;
-            if (str != null)
-            {
-                strByteCount = Encoding.UTF8.GetByteCount(str);
-                if (strByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeStr = Util.Allocate(strByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeStrStackBytes = stackalloc byte[strByteCount + 1];
-                    nativeStr = nativeStrStackBytes;
-                }
-                
-                int nativeStrOffset = Util.GetUtf8(str, nativeStr, strByteCount);
-                nativeStr[nativeStrOffset] = 0;
-            }
-            else
-            {
-                nativeStr = null;
-            }
-            
-            ImGuiNative.ImGuiIO_AddInputCharactersUTF8((IntPtr)NativePtr, nativeStr);
-            if (strByteCount > Util.StackAllocationSizeLimit)
-            {
-                Util.Free(nativeStr);
-            }
+            ImGuiNative.ImGuiIO_AddInputCharactersUTF8((IntPtr)NativePtr,Encoding.UTF8.GetBytes(str));
         }
         
         /// <summary>

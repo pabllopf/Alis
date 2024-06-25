@@ -304,8 +304,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The string</returns>
         public static string GetClipboardText()
         {
-            byte* ret = ImGuiNative.igGetClipboardText();
-            return Util.StringFromPtr(ret);
+            return Encoding.UTF8.GetString(ImGuiNative.igGetClipboardText());
         }
         
         /// <summary>
@@ -687,8 +686,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The string</returns>
         public static string GetKeyName(ImGuiKey key)
         {
-            byte* ret = ImGuiNative.igGetKeyName(key);
-            return Util.StringFromPtr(ret);
+            return Encoding.UTF8.GetString(ImGuiNative.igGetKeyName(key));
         }
         
         /// <summary>
@@ -863,8 +861,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The string</returns>
         public static string GetStyleColorName(ImGuiCol idx)
         {
-            byte* ret = ImGuiNative.igGetStyleColorName(idx);
-            return Util.StringFromPtr(ret);
+            return Encoding.UTF8.GetString(ImGuiNative.igGetStyleColorName(idx));
         }
         
         /// <summary>

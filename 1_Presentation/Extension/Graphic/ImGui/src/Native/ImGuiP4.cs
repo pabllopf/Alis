@@ -274,35 +274,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="b">The </param>
         public static void Value(string prefix, bool b)
         {
-            byte* nativePrefix;
-            int prefixByteCount = 0;
-            if (prefix != null)
-            {
-                prefixByteCount = Encoding.UTF8.GetByteCount(prefix);
-                if (prefixByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativePrefix = Util.Allocate(prefixByteCount + 1);
-                }
-                else
-                {
-                    byte* nativePrefixStackBytes = stackalloc byte[prefixByteCount + 1];
-                    nativePrefix = nativePrefixStackBytes;
-                }
-                
-                int nativePrefixOffset = Util.GetUtf8(prefix, nativePrefix, prefixByteCount);
-                nativePrefix[nativePrefixOffset] = 0;
-            }
-            else
-            {
-                nativePrefix = null;
-            }
-            
-            byte nativeB = b ? (byte) 1 : (byte) 0;
-            ImGuiNative.igValue_Bool(nativePrefix, nativeB);
-            if (prefixByteCount > Util.StackAllocationSizeLimit)
-            {
-                Util.Free(nativePrefix);
-            }
+            ImGuiNative.igValue_Bool(Encoding.UTF8.GetBytes(prefix), b);
         }
         
         /// <summary>
@@ -312,34 +284,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="v">The </param>
         public static void Value(string prefix, int v)
         {
-            byte* nativePrefix;
-            int prefixByteCount = 0;
-            if (prefix != null)
-            {
-                prefixByteCount = Encoding.UTF8.GetByteCount(prefix);
-                if (prefixByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativePrefix = Util.Allocate(prefixByteCount + 1);
-                }
-                else
-                {
-                    byte* nativePrefixStackBytes = stackalloc byte[prefixByteCount + 1];
-                    nativePrefix = nativePrefixStackBytes;
-                }
-                
-                int nativePrefixOffset = Util.GetUtf8(prefix, nativePrefix, prefixByteCount);
-                nativePrefix[nativePrefixOffset] = 0;
-            }
-            else
-            {
-                nativePrefix = null;
-            }
-            
-            ImGuiNative.igValue_Int(nativePrefix, v);
-            if (prefixByteCount > Util.StackAllocationSizeLimit)
-            {
-                Util.Free(nativePrefix);
-            }
+            ImGuiNative.igValue_Int(Encoding.UTF8.GetBytes(prefix), v);
         }
         
         /// <summary>
@@ -349,34 +294,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="v">The </param>
         public static void Value(string prefix, uint v)
         {
-            byte* nativePrefix;
-            int prefixByteCount = 0;
-            if (prefix != null)
-            {
-                prefixByteCount = Encoding.UTF8.GetByteCount(prefix);
-                if (prefixByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativePrefix = Util.Allocate(prefixByteCount + 1);
-                }
-                else
-                {
-                    byte* nativePrefixStackBytes = stackalloc byte[prefixByteCount + 1];
-                    nativePrefix = nativePrefixStackBytes;
-                }
-                
-                int nativePrefixOffset = Util.GetUtf8(prefix, nativePrefix, prefixByteCount);
-                nativePrefix[nativePrefixOffset] = 0;
-            }
-            else
-            {
-                nativePrefix = null;
-            }
-            
-            ImGuiNative.igValue_Uint(nativePrefix, v);
-            if (prefixByteCount > Util.StackAllocationSizeLimit)
-            {
-                Util.Free(nativePrefix);
-            }
+            ImGuiNative.igValue_Uint(Encoding.UTF8.GetBytes(prefix), v);
         }
         
         /// <summary>
@@ -386,35 +304,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="v">The </param>
         public static void Value(string prefix, float v)
         {
-            byte* nativePrefix;
-            int prefixByteCount = 0;
-            if (prefix != null)
-            {
-                prefixByteCount = Encoding.UTF8.GetByteCount(prefix);
-                if (prefixByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativePrefix = Util.Allocate(prefixByteCount + 1);
-                }
-                else
-                {
-                    byte* nativePrefixStackBytes = stackalloc byte[prefixByteCount + 1];
-                    nativePrefix = nativePrefixStackBytes;
-                }
-                
-                int nativePrefixOffset = Util.GetUtf8(prefix, nativePrefix, prefixByteCount);
-                nativePrefix[nativePrefixOffset] = 0;
-            }
-            else
-            {
-                nativePrefix = null;
-            }
-            
-            byte* nativeFloatFormat = null;
-            ImGuiNative.igValue_Float(nativePrefix, v, nativeFloatFormat);
-            if (prefixByteCount > Util.StackAllocationSizeLimit)
-            {
-                Util.Free(nativePrefix);
-            }
+            ImGuiNative.igValue_Float(Encoding.UTF8.GetBytes(prefix), v, null);
         }
         
         /// <summary>
@@ -425,62 +315,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="floatFormat">The float format</param>
         public static void Value(string prefix, float v, string floatFormat)
         {
-            byte* nativePrefix;
-            int prefixByteCount = 0;
-            if (prefix != null)
-            {
-                prefixByteCount = Encoding.UTF8.GetByteCount(prefix);
-                if (prefixByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativePrefix = Util.Allocate(prefixByteCount + 1);
-                }
-                else
-                {
-                    byte* nativePrefixStackBytes = stackalloc byte[prefixByteCount + 1];
-                    nativePrefix = nativePrefixStackBytes;
-                }
-                
-                int nativePrefixOffset = Util.GetUtf8(prefix, nativePrefix, prefixByteCount);
-                nativePrefix[nativePrefixOffset] = 0;
-            }
-            else
-            {
-                nativePrefix = null;
-            }
-            
-            byte* nativeFloatFormat;
-            int floatFormatByteCount = 0;
-            if (floatFormat != null)
-            {
-                floatFormatByteCount = Encoding.UTF8.GetByteCount(floatFormat);
-                if (floatFormatByteCount > Util.StackAllocationSizeLimit)
-                {
-                    nativeFloatFormat = Util.Allocate(floatFormatByteCount + 1);
-                }
-                else
-                {
-                    byte* nativeFloatFormatStackBytes = stackalloc byte[floatFormatByteCount + 1];
-                    nativeFloatFormat = nativeFloatFormatStackBytes;
-                }
-                
-                int nativeFloatFormatOffset = Util.GetUtf8(floatFormat, nativeFloatFormat, floatFormatByteCount);
-                nativeFloatFormat[nativeFloatFormatOffset] = 0;
-            }
-            else
-            {
-                nativeFloatFormat = null;
-            }
-            
-            ImGuiNative.igValue_Float(nativePrefix, v, nativeFloatFormat);
-            if (prefixByteCount > Util.StackAllocationSizeLimit)
-            {
-                Util.Free(nativePrefix);
-            }
-            
-            if (floatFormatByteCount > Util.StackAllocationSizeLimit)
-            {
-                Util.Free(nativeFloatFormat);
-            }
+            ImGuiNative.igValue_Float(Encoding.UTF8.GetBytes(prefix), v, Encoding.UTF8.GetBytes(floatFormat));
         }
         
         /// <summary>
