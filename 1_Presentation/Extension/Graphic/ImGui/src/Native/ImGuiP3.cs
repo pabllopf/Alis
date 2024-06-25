@@ -801,8 +801,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The im gui platform io ptr</returns>
         public static ImGuiPlatformIoPtr GetPlatformIo()
         {
-            ImGuiPlatformIo* ret = ImGuiNative.igGetPlatformIO();
-            return new ImGuiPlatformIoPtr(ret);
+            return new ImGuiPlatformIoPtr(ImGuiNative.igGetPlatformIO());
         }
         
         /// <summary>
