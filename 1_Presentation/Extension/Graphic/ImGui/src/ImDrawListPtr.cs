@@ -387,10 +387,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="col">The col</param>
         public void AddConvexPolyFilled(ref Vector2 points, int numPoints, uint col)
         {
-            fixed (Vector2* nativePoints = &points)
-            {
-                ImGuiNative.ImDrawList_AddConvexPolyFilled((IntPtr)NativePtr, nativePoints, numPoints, col);
-            }
+            ImGuiNative.ImDrawList_AddConvexPolyFilled((IntPtr)NativePtr, ref points, numPoints, col);
         }
         
         /// <summary>
@@ -669,10 +666,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="thickness">The thickness</param>
         public void AddPolyline(ref Vector2 points, int numPoints, uint col, ImDrawFlags flags, float thickness)
         {
-            fixed (Vector2* nativePoints = &points)
-            {
-                ImGuiNative.ImDrawList_AddPolyline((IntPtr)NativePtr, nativePoints, numPoints, col, flags, thickness);
-            }
+            ImGuiNative.ImDrawList_AddPolyline((IntPtr)NativePtr, ref points, numPoints, col, flags, thickness);
         }
         
         /// <summary>

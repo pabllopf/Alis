@@ -36,7 +36,7 @@ namespace Alis.Extension.Graphic.ImGui
     /// <summary>
     ///     The im gui native class
     /// </summary>
-    public static unsafe class ImGuiNative
+    internal static unsafe class ImGuiNative
     {
         /// <summary>
         ///     The dll name
@@ -1768,7 +1768,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="mousePos">The mouse pos</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl , EntryPoint = "igIsMousePosValid")]
-        public static extern byte igIsMousePosValid(Vector2* mousePos);
+        public static extern byte igIsMousePosValid(ref Vector2 mousePos);
         
         /// <summary>
         ///     Igs the is mouse released nil using the specified button
@@ -3497,7 +3497,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="numPoints">The num points</param>
         /// <param name="col">The col</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl , EntryPoint = "ImDrawList_AddConvexPolyFilled")]
-        public static extern void ImDrawList_AddConvexPolyFilled(IntPtr self, Vector2* points, int numPoints, uint col);
+        public static extern void ImDrawList_AddConvexPolyFilled(IntPtr self, ref Vector2 points, int numPoints, uint col);
         
         /// <summary>
         ///     Ims the draw list add draw cmd using the specified self
@@ -3595,7 +3595,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="flags">The flags</param>
         /// <param name="thickness">The thickness</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl , EntryPoint = "ImDrawList_AddPolyline")]
-        public static extern void ImDrawList_AddPolyline(IntPtr self, Vector2* points, int numPoints, uint col, ImDrawFlags flags, float thickness);
+        public static extern void ImDrawList_AddPolyline(IntPtr self, ref Vector2 points, int numPoints, uint col, ImDrawFlags flags, float thickness);
         
         /// <summary>
         ///     Ims the draw list add quad using the specified self
@@ -3995,28 +3995,28 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl , EntryPoint = "ImDrawListSplitter_Clear")]
-        public static extern void ImDrawListSplitter_Clear(ImDrawListSplitter* self);
+        public static extern void ImDrawListSplitter_Clear(IntPtr self);
         
         /// <summary>
         ///     Ims the draw list splitter clear free memory using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl , EntryPoint = "ImDrawListSplitter_ClearFreeMemory")]
-        public static extern void ImDrawListSplitter_ClearFreeMemory(ImDrawListSplitter* self);
+        public static extern void ImDrawListSplitter_ClearFreeMemory(IntPtr self);
         
         /// <summary>
         ///     Ims the draw list splitter destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl , EntryPoint = "ImDrawListSplitter_destroy")]
-        public static extern void ImDrawListSplitter_destroy(ImDrawListSplitter* self);
+        public static extern void ImDrawListSplitter_destroy(IntPtr self);
         
         /// <summary>
         ///     Ims the draw list splitter im draw list splitter
         /// </summary>
         /// <returns>The im draw list splitter</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl , EntryPoint = "ImDrawListSplitter_ImDrawListSplitter")]
-        public static extern ImDrawListSplitter* ImDrawListSplitter_ImDrawListSplitter();
+        public static extern IntPtr ImDrawListSplitter_ImDrawListSplitter();
         
         /// <summary>
         ///     Ims the draw list splitter merge using the specified self
@@ -4024,7 +4024,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="self">The self</param>
         /// <param name="drawList">The draw list</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl , EntryPoint = "ImDrawListSplitter_Merge")]
-        public static extern void ImDrawListSplitter_Merge(ImDrawListSplitter* self, IntPtr drawList);
+        public static extern void ImDrawListSplitter_Merge(IntPtr self, IntPtr drawList);
         
         /// <summary>
         ///     Ims the draw list splitter set current channel using the specified self
@@ -4033,7 +4033,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="drawList">The draw list</param>
         /// <param name="channelIdx">The channel idx</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl , EntryPoint = "ImDrawListSplitter_SetCurrentChannel")]
-        public static extern void ImDrawListSplitter_SetCurrentChannel(ImDrawListSplitter* self, IntPtr drawList, int channelIdx);
+        public static extern void ImDrawListSplitter_SetCurrentChannel(IntPtr self, IntPtr drawList, int channelIdx);
         
         /// <summary>
         ///     Ims the draw list splitter split using the specified self
@@ -4042,7 +4042,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="drawList">The draw list</param>
         /// <param name="count">The count</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl , EntryPoint = "ImDrawListSplitter_Split")]
-        public static extern void ImDrawListSplitter_Split(ImDrawListSplitter* self, IntPtr drawList, int count);
+        public static extern void ImDrawListSplitter_Split(IntPtr self, IntPtr drawList, int count);
         
         /// <summary>
         ///     Ims the font add glyph using the specified self
@@ -4276,7 +4276,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="glyphRanges">The glyph ranges</param>
         /// <returns>The im font</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl , EntryPoint = "ImFontAtlas_AddFontFromFileTTF")]
-        public static extern IntPtr ImFontAtlas_AddFontFromFileTTF(IntPtr self, byte* filename, float sizePixels, IntPtr fontCfg, ushort* glyphRanges);
+        public static extern IntPtr ImFontAtlas_AddFontFromFileTTF(IntPtr self, byte[] filename, float sizePixels, IntPtr fontCfg, IntPtr glyphRanges);
         
         /// <summary>
         ///     Ims the font atlas add font from memory compressed base 85 ttf using the specified self
@@ -4288,7 +4288,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="glyphRanges">The glyph ranges</param>
         /// <returns>The im font</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl , EntryPoint = "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
-        public static extern IntPtr ImFontAtlas_AddFontFromMemoryCompressedBase85TTF(IntPtr self, byte* compressedFontDataBase85, float sizePixels, IntPtr fontCfg, ushort* glyphRanges);
+        public static extern IntPtr ImFontAtlas_AddFontFromMemoryCompressedBase85TTF(IntPtr self, byte[] compressedFontDataBase85, float sizePixels, IntPtr fontCfg, IntPtr glyphRanges);
         
         /// <summary>
         ///     Ims the font atlas add font from memory compressed ttf using the specified self
@@ -4301,7 +4301,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="glyphRanges">The glyph ranges</param>
         /// <returns>The im font</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl , EntryPoint = "ImFontAtlas_AddFontFromMemoryCompressedTTF")]
-        public static extern IntPtr ImFontAtlas_AddFontFromMemoryCompressedTTF(IntPtr self, IntPtr compressedFontData, int compressedFontSize, float sizePixels, IntPtr fontCfg, ushort* glyphRanges);
+        public static extern IntPtr ImFontAtlas_AddFontFromMemoryCompressedTTF(IntPtr self, IntPtr compressedFontData, int compressedFontSize, float sizePixels, IntPtr fontCfg, IntPtr glyphRanges);
         
         /// <summary>
         ///     Ims the font atlas add font from memory ttf using the specified self
@@ -4314,7 +4314,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="glyphRanges">The glyph ranges</param>
         /// <returns>The im font</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl , EntryPoint = "ImFontAtlas_AddFontFromMemoryTTF")]
-        public static extern IntPtr ImFontAtlas_AddFontFromMemoryTTF(IntPtr self, IntPtr fontData, int fontSize, float sizePixels, IntPtr fontCfg, ushort* glyphRanges);
+        public static extern IntPtr ImFontAtlas_AddFontFromMemoryTTF(IntPtr self, IntPtr fontData, int fontSize, float sizePixels, IntPtr fontCfg, IntPtr glyphRanges);
         
         /// <summary>
         ///     Ims the font atlas build using the specified self
@@ -4332,7 +4332,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="outUvMin">The out uv min</param>
         /// <param name="outUvMax">The out uv max</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl , EntryPoint = "ImFontAtlas_CalcCustomRectUV")]
-        public static extern void ImFontAtlas_CalcCustomRectUV(IntPtr self, ImFontAtlasCustomRect rect, Vector2* outUvMin, Vector2* outUvMax);
+        public static extern void ImFontAtlas_CalcCustomRectUV(IntPtr self, ImFontAtlasCustomRect rect, out Vector2 outUvMin, out Vector2 outUvMax);
         
         /// <summary>
         ///     Ims the font atlas clear using the specified self
@@ -4384,7 +4384,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="self">The self</param>
         /// <returns>The ushort</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl , EntryPoint = "ImFontAtlas_GetGlyphRangesChineseFull")]
-        public static extern ushort* ImFontAtlas_GetGlyphRangesChineseFull(IntPtr self);
+        public static extern IntPtr ImFontAtlas_GetGlyphRangesChineseFull(IntPtr self);
         
         /// <summary>
         ///     Ims the font atlas get glyph ranges chinese simplified common using the specified self
@@ -4392,7 +4392,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="self">The self</param>
         /// <returns>The ushort</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl , EntryPoint = "ImFontAtlas_GetGlyphRangesChineseSimplifiedCommon")]
-        public static extern ushort* ImFontAtlas_GetGlyphRangesChineseSimplifiedCommon(IntPtr self);
+        public static extern IntPtr ImFontAtlas_GetGlyphRangesChineseSimplifiedCommon(IntPtr self);
         
         /// <summary>
         ///     Ims the font atlas get glyph ranges cyrillic using the specified self
@@ -4400,7 +4400,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="self">The self</param>
         /// <returns>The ushort</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl , EntryPoint = "ImFontAtlas_GetGlyphRangesCyrillic")]
-        public static extern ushort* ImFontAtlas_GetGlyphRangesCyrillic(IntPtr self);
+        public static extern IntPtr ImFontAtlas_GetGlyphRangesCyrillic(IntPtr self);
         
         /// <summary>
         ///     Ims the font atlas get glyph ranges default using the specified self
@@ -4408,7 +4408,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="self">The self</param>
         /// <returns>The ushort</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl , EntryPoint = "ImFontAtlas_GetGlyphRangesDefault")]
-        public static extern ushort* ImFontAtlas_GetGlyphRangesDefault(IntPtr self);
+        public static extern IntPtr ImFontAtlas_GetGlyphRangesDefault(IntPtr self);
         
         /// <summary>
         ///     Ims the font atlas get glyph ranges greek using the specified self
@@ -4416,7 +4416,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="self">The self</param>
         /// <returns>The ushort</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl , EntryPoint = "ImFontAtlas_GetGlyphRangesGreek")]
-        public static extern ushort* ImFontAtlas_GetGlyphRangesGreek(IntPtr self);
+        public static extern IntPtr ImFontAtlas_GetGlyphRangesGreek(IntPtr self);
         
         /// <summary>
         ///     Ims the font atlas get glyph ranges japanese using the specified self
@@ -4424,7 +4424,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="self">The self</param>
         /// <returns>The ushort</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl , EntryPoint = "ImFontAtlas_GetGlyphRangesJapanese")]
-        public static extern ushort* ImFontAtlas_GetGlyphRangesJapanese(IntPtr self);
+        public static extern IntPtr ImFontAtlas_GetGlyphRangesJapanese(IntPtr self);
         
         /// <summary>
         ///     Ims the font atlas get glyph ranges korean using the specified self
@@ -4432,7 +4432,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="self">The self</param>
         /// <returns>The ushort</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl , EntryPoint = "ImFontAtlas_GetGlyphRangesKorean")]
-        public static extern ushort* ImFontAtlas_GetGlyphRangesKorean(IntPtr self);
+        public static extern IntPtr ImFontAtlas_GetGlyphRangesKorean(IntPtr self);
         
         /// <summary>
         ///     Ims the font atlas get glyph ranges thai using the specified self
@@ -4440,7 +4440,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="self">The self</param>
         /// <returns>The ushort</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl , EntryPoint = "ImFontAtlas_GetGlyphRangesThai")]
-        public static extern ushort* ImFontAtlas_GetGlyphRangesThai(IntPtr self);
+        public static extern IntPtr ImFontAtlas_GetGlyphRangesThai(IntPtr self);
         
         /// <summary>
         ///     Ims the font atlas get glyph ranges vietnamese using the specified self
@@ -4448,7 +4448,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="self">The self</param>
         /// <returns>The ushort</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl , EntryPoint = "ImFontAtlas_GetGlyphRangesVietnamese")]
-        public static extern ushort* ImFontAtlas_GetGlyphRangesVietnamese(IntPtr self);
+        public static extern IntPtr ImFontAtlas_GetGlyphRangesVietnamese(IntPtr self);
         
         /// <summary>
         ///     Ims the font atlas get mouse cursor tex data using the specified self
@@ -4472,7 +4472,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="outHeight">The out height</param>
         /// <param name="outBytesPerPixel">The out bytes per pixel</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl , EntryPoint = "ImFontAtlas_GetTexDataAsAlpha8")]
-        public static extern void ImFontAtlas_GetTexDataAsAlpha8(IntPtr self, byte** outPixels, int* outWidth, int* outHeight, int* outBytesPerPixel);
+        public static extern void ImFontAtlas_GetTexDataAsAlpha8(IntPtr self, out byte[] outPixels, out int outWidth, out int outHeight, out int outBytesPerPixel);
         
         /// <summary>
         ///     Ims the font atlas get tex data as alpha 8 using the specified self
@@ -4483,7 +4483,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="outHeight">The out height</param>
         /// <param name="outBytesPerPixel">The out bytes per pixel</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl , EntryPoint = "ImFontAtlas_GetTexDataAsAlpha8")]
-        public static extern void ImFontAtlas_GetTexDataAsAlpha8(IntPtr self, IntPtr* outPixels, int* outWidth, int* outHeight, int* outBytesPerPixel);
+        public static extern void ImFontAtlas_GetTexDataAsAlpha8(IntPtr self, out IntPtr outPixels, out int outWidth, out int outHeight, out int outBytesPerPixel);
         
         /// <summary>
         ///     Ims the font atlas get tex data as rgba 32 using the specified self
@@ -4580,7 +4580,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="self">The self</param>
         /// <param name="ranges">The ranges</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl , EntryPoint = "ImFontGlyphRangesBuilder_AddRanges")]
-        public static extern void ImFontGlyphRangesBuilder_AddRanges(ref ImFontGlyphRangesBuilder self, ushort* ranges);
+        public static extern void ImFontGlyphRangesBuilder_AddRanges(ref ImFontGlyphRangesBuilder self, IntPtr ranges);
         
         /// <summary>
         ///     Ims the font glyph ranges builder add text using the specified self
@@ -4597,7 +4597,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="self">The self</param>
         /// <param name="outRanges">The out ranges</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl , EntryPoint = "ImFontGlyphRangesBuilder_BuildRanges")]
-        public static extern void ImFontGlyphRangesBuilder_BuildRanges(ref ImFontGlyphRangesBuilder self, ImVector* outRanges);
+        public static extern void ImFontGlyphRangesBuilder_BuildRanges(ref ImFontGlyphRangesBuilder self, IntPtr outRanges);
         
         /// <summary>
         ///     Ims the font glyph ranges builder clear using the specified self
@@ -5376,7 +5376,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="separator">The separator</param>
         /// <param name="out">The out</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl , EntryPoint = "ImGuiTextRange_split")]
-        public static extern void ImGuiTextRange_split(IntPtr self, byte separator, ImVector* @out);
+        public static extern void ImGuiTextRange_split(IntPtr self, byte separator, IntPtr @out);
         
         /// <summary>
         ///     Ims the gui viewport destroy using the specified self
@@ -5427,14 +5427,14 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl , EntryPoint = "ImVec2_destroy")]
-        public static extern void ImVec2_destroy(Vector2* self);
+        public static extern void ImVec2_destroy(IntPtr self);
         
         /// <summary>
         ///     Ims the vec 2 im vec 2 nil
         /// </summary>
         /// <returns>The vector</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl , EntryPoint = "ImVec2_ImVec2_Nil")]
-        public static extern Vector2* ImVec2_ImVec2_Nil();
+        public static extern IntPtr ImVec2_ImVec2_Nil();
         
         /// <summary>
         ///     Ims the vec 2 im vec 2 float using the specified  x
@@ -5443,7 +5443,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="y">The </param>
         /// <returns>The vector</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl , EntryPoint = "ImVec2_ImVec2_Float")]
-        public static extern Vector2* ImVec2_ImVec2_Float(float x, float y);
+        public static extern IntPtr ImVec2_ImVec2_Float(float x, float y);
         
         /// <summary>
         ///     Ims the vec 4 destroy using the specified self
