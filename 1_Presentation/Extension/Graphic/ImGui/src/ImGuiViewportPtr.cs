@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.ImGui.Utils;
 
@@ -41,31 +42,13 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the native ptr
         /// </summary>
-        public ImGuiViewport* NativePtr { get; }
+        public IntPtr NativePtr { get; }
         
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImGuiViewportPtr" /> class
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
-        public ImGuiViewportPtr(ImGuiViewport* nativePtr) => NativePtr = nativePtr;
-        
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="ImGuiViewportPtr" /> class
-        /// </summary>
-        /// <param name="nativePtr">The native ptr</param>
-        public ImGuiViewportPtr(IntPtr nativePtr) => NativePtr = (ImGuiViewport*) nativePtr;
-        
-        /// <summary>
-        /// </summary>
-        /// <param name="nativePtr"></param>
-        /// <returns></returns>
-        public static implicit operator ImGuiViewportPtr(ImGuiViewport* nativePtr) => new ImGuiViewportPtr(nativePtr);
-        
-        /// <summary>
-        /// </summary>
-        /// <param name="wrappedPtr"></param>
-        /// <returns></returns>
-        public static implicit operator ImGuiViewport*(ImGuiViewportPtr wrappedPtr) => wrappedPtr.NativePtr;
+        public ImGuiViewportPtr(IntPtr nativePtr) => NativePtr = nativePtr;
         
         /// <summary>
         /// </summary>
@@ -74,44 +57,41 @@ namespace Alis.Extension.Graphic.ImGui
         public static implicit operator ImGuiViewportPtr(IntPtr nativePtr) => new ImGuiViewportPtr(nativePtr);
         
         /// <summary>
+        /// </summary>
+        /// <param name="wrappedPtr"></param>
+        /// <returns></returns>
+        public static implicit operator IntPtr(ImGuiViewportPtr wrappedPtr) => wrappedPtr.NativePtr;
+        
+        /// <summary>
         ///     Gets the value of the id
         /// </summary>
-        public ref uint Id => ref Unsafe.AsRef<uint>(&NativePtr->Id);
+        public uint Id => (uint)Marshal.ReadInt32(NativePtr, 0);
         
-        /// <summary>
-        ///     Gets the value of the flags
-        /// </summary>
-        public ref ImGuiViewportFlags Flags => ref Unsafe.AsRef<ImGuiViewportFlags>(&NativePtr->Flags);
+        public ImGuiViewportFlags Flags => (ImGuiViewportFlags)Marshal.ReadInt32(NativePtr, sizeof(uint));
         
-        /// <summary>
-        ///     Gets the value of the pos
-        /// </summary>
-        public ref Vector2 Pos => ref Unsafe.AsRef<Vector2>(&NativePtr->Pos);
+        public Vector2 Pos => Marshal.PtrToStructure<Vector2>(NativePtr + 2 * sizeof(uint));
         
-        /// <summary>
-        ///     Gets the value of the size
-        /// </summary>
-        public ref Vector2 Size => ref Unsafe.AsRef<Vector2>(&NativePtr->Size);
-        
+        public Vector2 Size => Marshal.PtrToStructure<Vector2>(NativePtr + 2 * sizeof(uint) + sizeof(Vector2));
+
         /// <summary>
         ///     Gets the value of the work pos
         /// </summary>
-        public ref Vector2 WorkPos => ref Unsafe.AsRef<Vector2>(&NativePtr->WorkPos);
+        public Vector2 WorkPos => Marshal.PtrToStructure<Vector2>(NativePtr + 2 * sizeof(uint) + 2 * sizeof(Vector2));
         
         /// <summary>
         ///     Gets the value of the work size
         /// </summary>
-        public ref Vector2 WorkSize => ref Unsafe.AsRef<Vector2>(&NativePtr->WorkSize);
+        public Vector2 WorkSize => Marshal.PtrToStructure<Vector2>(NativePtr + 2 * sizeof(uint) + 3 * sizeof(Vector2));
         
         /// <summary>
         ///     Gets the value of the dpi scale
         /// </summary>
-        public ref float DpiScale => ref Unsafe.AsRef<float>(&NativePtr->DpiScale);
+        public float DpiScale => Marshal.PtrToStructure<float>(NativePtr + 2 * sizeof(uint) + 4 * sizeof(Vector2));
         
         /// <summary>
         ///     Gets the value of the parent viewport id
         /// </summary>
-        public ref uint ParentViewportId => ref Unsafe.AsRef<uint>(&NativePtr->ParentViewportId);
+        public uint ParentViewportId => (uint)Marshal.ReadInt32(NativePtr + 2 * sizeof(uint) + 4 * sizeof(Vector2) + sizeof(float));
         
         /// <summary>
         ///     Gets the value of the draw data
@@ -123,56 +103,56 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         public IntPtr RendererUserData
         {
-            get => (IntPtr) NativePtr->RendererUserData;
-            set => NativePtr->RendererUserData = (void*) value;
+            get => Marshal.ReadIntPtr(NativePtr, Marshal.OffsetOf<ImGuiViewportPtr>("RendererUserData").ToInt32());
+            set => Marshal.WriteIntPtr(NativePtr, Marshal.OffsetOf<ImGuiViewportPtr>("RendererUserData").ToInt32(), value);
         }
-        
+
         /// <summary>
         ///     Gets or sets the value of the platform user data
         /// </summary>
         public IntPtr PlatformUserData
         {
-            get => (IntPtr) NativePtr->PlatformUserData;
-            set => NativePtr->PlatformUserData = (void*) value;
+            get => Marshal.ReadIntPtr(NativePtr, Marshal.OffsetOf<ImGuiViewportPtr>("PlatformUserData").ToInt32());
+            set => Marshal.WriteIntPtr(NativePtr, Marshal.OffsetOf<ImGuiViewportPtr>("PlatformUserData").ToInt32(), value);
         }
-        
+
         /// <summary>
         ///     Gets or sets the value of the platform handle
         /// </summary>
         public IntPtr PlatformHandle
         {
-            get => (IntPtr) NativePtr->PlatformHandle;
-            set => NativePtr->PlatformHandle = (void*) value;
+            get => Marshal.ReadIntPtr(NativePtr, Marshal.OffsetOf<ImGuiViewportPtr>("PlatformHandle").ToInt32());
+            set => Marshal.WriteIntPtr(NativePtr, Marshal.OffsetOf<ImGuiViewportPtr>("PlatformHandle").ToInt32(), value);
         }
-        
+
         /// <summary>
         ///     Gets or sets the value of the platform handle raw
         /// </summary>
         public IntPtr PlatformHandleRaw
         {
-            get => (IntPtr) NativePtr->PlatformHandleRaw;
-            set => NativePtr->PlatformHandleRaw = (void*) value;
+            get => Marshal.ReadIntPtr(NativePtr, Marshal.OffsetOf<ImGuiViewportPtr>("PlatformHandleRaw").ToInt32());
+            set => Marshal.WriteIntPtr(NativePtr, Marshal.OffsetOf<ImGuiViewportPtr>("PlatformHandleRaw").ToInt32(), value);
         }
         
         /// <summary>
         ///     Gets the value of the platform window created
         /// </summary>
-        public ref bool PlatformWindowCreated => ref Unsafe.AsRef<bool>(&NativePtr->PlatformWindowCreated);
+        public bool PlatformWindowCreated => Marshal.ReadByte(NativePtr, Marshal.OffsetOf<ImGuiViewportPtr>("PlatformWindowCreated").ToInt32()) != 0;
         
         /// <summary>
         ///     Gets the value of the platform request move
         /// </summary>
-        public ref bool PlatformRequestMove => ref Unsafe.AsRef<bool>(&NativePtr->PlatformRequestMove);
+        public bool PlatformRequestMove => Marshal.ReadByte(NativePtr, Marshal.OffsetOf<ImGuiViewportPtr>("PlatformRequestMove").ToInt32()) != 0;
         
         /// <summary>
         ///     Gets the value of the platform request resize
         /// </summary>
-        public ref bool PlatformRequestResize => ref Unsafe.AsRef<bool>(&NativePtr->PlatformRequestResize);
+        public bool PlatformRequestResize => Marshal.ReadByte(NativePtr, Marshal.OffsetOf<ImGuiViewportPtr>("PlatformRequestResize").ToInt32()) != 0;
         
         /// <summary>
         ///     Gets the value of the platform request close
         /// </summary>
-        public ref bool PlatformRequestClose => ref Unsafe.AsRef<bool>(&NativePtr->PlatformRequestClose);
+        public bool PlatformRequestClose => Marshal.ReadByte(NativePtr, Marshal.OffsetOf<ImGuiViewportPtr>("PlatformRequestClose").ToInt32()) != 0;
         
         /// <summary>
         ///     Destroys this instance
