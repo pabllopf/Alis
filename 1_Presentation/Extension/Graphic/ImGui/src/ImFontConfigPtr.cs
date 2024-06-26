@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.ImGui.Utils;
 
@@ -36,36 +37,24 @@ namespace Alis.Extension.Graphic.ImGui
     /// <summary>
     ///     The im font config ptr
     /// </summary>
-    public readonly unsafe struct ImFontConfigPtr
+    public readonly struct ImFontConfigPtr
     {
         /// <summary>
         ///     Gets the value of the native ptr
         /// </summary>
-        public ImFontConfig* NativePtr { get; }
+        public IntPtr NativePtr { get; }
         
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImFontConfigPtr" /> class
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
-        public ImFontConfigPtr(ImFontConfig* nativePtr) => NativePtr = nativePtr;
-        
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="ImFontConfigPtr" /> class
-        /// </summary>
-        /// <param name="nativePtr">The native ptr</param>
-        public ImFontConfigPtr(IntPtr nativePtr) => NativePtr = (ImFontConfig*) nativePtr;
-        
-        /// <summary>
-        /// </summary>
-        /// <param name="nativePtr"></param>
-        /// <returns></returns>
-        public static implicit operator ImFontConfigPtr(ImFontConfig* nativePtr) => new ImFontConfigPtr(nativePtr);
+        public ImFontConfigPtr(IntPtr nativePtr) => NativePtr = nativePtr;
         
         /// <summary>
         /// </summary>
         /// <param name="wrappedPtr"></param>
         /// <returns></returns>
-        public static implicit operator ImFontConfig*(ImFontConfigPtr wrappedPtr) => wrappedPtr.NativePtr;
+        public static implicit operator IntPtr(ImFontConfigPtr wrappedPtr) => wrappedPtr.NativePtr;
         
         /// <summary>
         /// </summary>
@@ -73,108 +62,105 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns></returns>
         public static implicit operator ImFontConfigPtr(IntPtr nativePtr) => new ImFontConfigPtr(nativePtr);
         
-        /// <summary>
-        ///     Gets or sets the value of the font data
-        /// </summary>
         public IntPtr FontData
         {
-            get => (IntPtr) NativePtr->FontData;
-            set => NativePtr->FontData = (void*) value;
+            get => Marshal.ReadIntPtr(NativePtr);
+            set => Marshal.WriteIntPtr(NativePtr, value);
         }
         
         /// <summary>
         ///     Gets the value of the font data size
         /// </summary>
-        public ref int FontDataSize => ref Unsafe.AsRef<int>(&NativePtr->FontDataSize);
+        public int FontDataSize => Marshal.ReadInt32(NativePtr, IntPtr.Size);
         
         /// <summary>
         ///     Gets the value of the font data owned by atlas
         /// </summary>
-        public ref bool FontDataOwnedByAtlas => ref Unsafe.AsRef<bool>(&NativePtr->FontDataOwnedByAtlas);
+        public bool FontDataOwnedByAtlas => Convert.ToBoolean(Marshal.ReadByte(NativePtr, IntPtr.Size + sizeof(int)));
         
         /// <summary>
         ///     Gets the value of the font no
         /// </summary>
-        public ref int FontNo => ref Unsafe.AsRef<int>(&NativePtr->FontNo);
+        public int FontNo => Marshal.ReadInt32(NativePtr, IntPtr.Size + sizeof(int) + sizeof(byte)); 
         
         /// <summary>
         ///     Gets the value of the size pixels
         /// </summary>
-        public ref float SizePixels => ref Unsafe.AsRef<float>(&NativePtr->SizePixels);
+        public float SizePixels => Marshal.PtrToStructure<float>(NativePtr + IntPtr.Size + sizeof(int) + sizeof(byte) + sizeof(int));
         
         /// <summary>
         ///     Gets the value of the oversample h
         /// </summary>
-        public ref int OversampleH => ref Unsafe.AsRef<int>(&NativePtr->OversampleH);
+        public int OversampleH => Marshal.ReadInt32(NativePtr + IntPtr.Size + sizeof(int) + sizeof(byte) + sizeof(int) + sizeof(float)); 
         
         /// <summary>
         ///     Gets the value of the oversample v
         /// </summary>
-        public ref int OversampleV => ref Unsafe.AsRef<int>(&NativePtr->OversampleV);
+        public int OversampleV => Marshal.ReadInt32(NativePtr + IntPtr.Size + sizeof(int) + sizeof(byte) + sizeof(int) + sizeof(float) + sizeof(int));
         
         /// <summary>
         ///     Gets the value of the pixel snap h
         /// </summary>
-        public ref bool SnapH => ref Unsafe.AsRef<bool>(&NativePtr->SnapH);
+        public bool SnapH => Convert.ToBoolean(Marshal.ReadByte(NativePtr + IntPtr.Size + sizeof(int) + sizeof(byte) + sizeof(int) + sizeof(float) + sizeof(int) + sizeof(int)));
         
         /// <summary>
         ///     Gets the value of the glyph extra spacing
         /// </summary>
-        public ref Vector2 GlyphExtraSpacing => ref Unsafe.AsRef<Vector2>(&NativePtr->GlyphExtraSpacing);
+        public Vector2 GlyphExtraSpacing => Marshal.PtrToStructure<Vector2>(NativePtr + IntPtr.Size + sizeof(int) + sizeof(byte) + sizeof(int) + sizeof(float) + sizeof(int) + sizeof(int) + sizeof(byte));
         
         /// <summary>
         ///     Gets the value of the glyph offset
         /// </summary>
-        public ref Vector2 GlyphOffset => ref Unsafe.AsRef<Vector2>(&NativePtr->GlyphOffset);
+        public Vector2 GlyphOffset => Marshal.PtrToStructure<Vector2>(NativePtr + IntPtr.Size + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<int>() + Marshal.SizeOf<float>() + Marshal.SizeOf<int>() + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<Vector2>());
         
         /// <summary>
         ///     Gets or sets the value of the glyph ranges
         /// </summary>
         public IntPtr GlyphRanges
         {
-            get => (IntPtr) NativePtr->GlyphRanges;
-            set => NativePtr->GlyphRanges = (ushort*) value;
+            get => Marshal.ReadIntPtr(NativePtr + IntPtr.Size + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<int>() + Marshal.SizeOf<float>() + Marshal.SizeOf<int>() + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<Vector2>() + Marshal.SizeOf<Vector2>());
+            set => Marshal.WriteIntPtr(NativePtr + IntPtr.Size + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<int>() + Marshal.SizeOf<float>() + Marshal.SizeOf<int>() + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<Vector2>() + Marshal.SizeOf<Vector2>(), value);
         }
         
         /// <summary>
         ///     Gets the value of the glyph min advance x
         /// </summary>
-        public ref float GlyphMinAdvanceX => ref Unsafe.AsRef<float>(&NativePtr->GlyphMinAdvanceX);
+        public float GlyphMinAdvanceX => Marshal.PtrToStructure<float>(NativePtr + IntPtr.Size + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<int>() + Marshal.SizeOf<float>() + Marshal.SizeOf<int>() + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<Vector2>() + Marshal.SizeOf<Vector2>() + IntPtr.Size);
         
         /// <summary>
         ///     Gets the value of the glyph max advance x
         /// </summary>
-        public ref float GlyphMaxAdvanceX => ref Unsafe.AsRef<float>(&NativePtr->GlyphMaxAdvanceX);
+        public float GlyphMaxAdvanceX => Marshal.PtrToStructure<float>(NativePtr + IntPtr.Size + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<int>() + Marshal.SizeOf<float>() + Marshal.SizeOf<int>() + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<Vector2>() + Marshal.SizeOf<Vector2>() + IntPtr.Size + sizeof(float));
         
         /// <summary>
         ///     Gets the value of the merge mode
         /// </summary>
-        public ref bool MergeMode => ref Unsafe.AsRef<bool>(&NativePtr->MergeMode);
+        public bool MergeMode => Convert.ToBoolean(Marshal.ReadByte(NativePtr + IntPtr.Size + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<int>() + Marshal.SizeOf<float>() + Marshal.SizeOf<int>() + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<Vector2>() + Marshal.SizeOf<Vector2>() + IntPtr.Size + sizeof(float) + sizeof(float)));
         
         /// <summary>
         ///     Gets the value of the font builder flags
         /// </summary>
-        public ref uint FontBuilderFlags => ref Unsafe.AsRef<uint>(&NativePtr->FontBuilderFlags);
+        public uint FontBuilderFlags => (uint)Marshal.ReadInt32(NativePtr + IntPtr.Size + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<int>() + Marshal.SizeOf<float>() + Marshal.SizeOf<int>() + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<Vector2>() + Marshal.SizeOf<Vector2>() + IntPtr.Size + sizeof(float) + sizeof(float) + sizeof(byte));
         
         /// <summary>
         ///     Gets the value of the rasterizer multiply
         /// </summary>
-        public ref float RasterizerMultiply => ref Unsafe.AsRef<float>(&NativePtr->RasterizerMultiply);
+        public float RasterizerMultiply => Marshal.PtrToStructure<float>(NativePtr + IntPtr.Size + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<int>() + Marshal.SizeOf<float>() + Marshal.SizeOf<int>() + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<Vector2>() + Marshal.SizeOf<Vector2>() + IntPtr.Size + sizeof(float) + sizeof(float) + sizeof(byte) + sizeof(uint));
         
         /// <summary>
         ///     Gets the value of the ellipsis char
         /// </summary>
-        public ref ushort EllipsisChar => ref Unsafe.AsRef<ushort>(&NativePtr->EllipsisChar);
+        public ushort EllipsisChar => (ushort)Marshal.ReadInt16(NativePtr + IntPtr.Size + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<int>() + Marshal.SizeOf<float>() + Marshal.SizeOf<int>() + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<Vector2>() + Marshal.SizeOf<Vector2>() + IntPtr.Size + sizeof(float) + sizeof(float) + sizeof(byte) + sizeof(uint) + sizeof(float));
         
         /// <summary>
         ///     Gets the value of the name
         /// </summary>
-        public RangeAccessor<byte> Name => new RangeAccessor<byte>(NativePtr->Name, 40);
+        public RangeAccessor<byte> Name => new RangeAccessor<byte>(NativePtr + IntPtr.Size + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<int>() + Marshal.SizeOf<float>() + Marshal.SizeOf<int>() + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<Vector2>() + Marshal.SizeOf<Vector2>() + IntPtr.Size + sizeof(float) + sizeof(float) + sizeof(byte) + sizeof(uint) + sizeof(float) + sizeof(ushort), 40);
         
         /// <summary>
         ///     Gets the value of the dst font
         /// </summary>
-        public ImFontPtr DstFont => new ImFontPtr(NativePtr->DstFont);
+        public ImFontPtr DstFont => new ImFontPtr(Marshal.ReadIntPtr(NativePtr + IntPtr.Size + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<int>() + Marshal.SizeOf<float>() + Marshal.SizeOf<int>() + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<Vector2>() + Marshal.SizeOf<Vector2>() + IntPtr.Size + sizeof(float) + sizeof(float) + sizeof(byte) + sizeof(uint) + sizeof(float) + sizeof(ushort) + 40));
         
         /// <summary>
         ///     Destroys this instance

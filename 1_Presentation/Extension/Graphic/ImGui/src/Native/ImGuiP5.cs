@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Reflection;
 using System.Text;
 using Alis.Core.Aspect.Data.Dll;
@@ -39,7 +38,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
     /// <summary>
     ///     The im gui class
     /// </summary>
-    public static unsafe partial class ImGui
+    public static partial class ImGui
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImGui" /> class

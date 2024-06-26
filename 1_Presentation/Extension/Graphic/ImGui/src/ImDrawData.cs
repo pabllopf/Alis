@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Extension.Graphic.ImGui
@@ -35,7 +36,7 @@ namespace Alis.Extension.Graphic.ImGui
     /// <summary>
     ///     The im draw data
     /// </summary>
-    public unsafe struct ImDrawData
+    public struct ImDrawData
     {
         /// <summary>
         ///     The valid
@@ -60,7 +61,32 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The cmd lists
         /// </summary>
-        public ImDrawList** CmdLists;
+        public IntPtr CmdListsPtr;
+
+        /// <summary>
+        ///     The cmd lists
+        /// </summary>
+        public ImDrawList[] CmdLists
+        {
+            get
+            {
+                var cmdLists = new ImDrawList[CmdListsCount];
+                for (var i = 0; i < CmdListsCount; i++)
+                {
+                    cmdLists[i] = Marshal.PtrToStructure<ImDrawList>(Marshal.ReadIntPtr(CmdListsPtr, i * IntPtr.Size));
+                }
+
+                return cmdLists;
+            }
+            set
+            {
+                for (var i = 0; i < value.Length; i++)
+                {
+                    Marshal.WriteIntPtr(CmdListsPtr, i * IntPtr.Size, Marshal.AllocHGlobal(Marshal.SizeOf(value[i])));
+                    Marshal.StructureToPtr(value[i], Marshal.ReadIntPtr(CmdListsPtr, i * IntPtr.Size), false);
+                }
+            }
+        }
         
         /// <summary>
         ///     The display pos
@@ -80,7 +106,16 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The owner viewport
         /// </summary>
-        public ImGuiViewport* OwnerViewport;
+        public IntPtr OwnerViewportPtr;
+
+        /// <summary>
+        ///     The owner viewport
+        /// </summary>
+        public ImGuiViewport OwnerViewport
+        {
+            get => Marshal.PtrToStructure<ImGuiViewport>(OwnerViewportPtr);
+            set => Marshal.StructureToPtr(value, OwnerViewportPtr, false);
+        }
         
         /// <summary>
         ///     Clears this instance
@@ -118,6 +153,6 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the cmd lists range
         /// </summary>
-        public RangePtrAccessor<ImDrawListPtr> CmdListsRange => new RangePtrAccessor<ImDrawListPtr>((IntPtr)CmdLists, CmdListsCount);
+        public RangePtrAccessor<ImDrawListPtr> CmdListsRange => new RangePtrAccessor<ImDrawListPtr>(CmdListsPtr, CmdListsCount);
     }
 }

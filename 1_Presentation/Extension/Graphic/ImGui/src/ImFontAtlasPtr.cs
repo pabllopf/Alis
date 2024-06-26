@@ -244,8 +244,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The im font ptr</returns>
         public ImFontPtr AddFont(ImFontConfigPtr fontCfg)
         {
-            ImFontConfig* nativeFontCfg = fontCfg.NativePtr;
-            IntPtr ret = ImGuiNative.ImFontAtlas_AddFont((IntPtr)NativePtr, (IntPtr)nativeFontCfg);
+            IntPtr ret = ImGuiNative.ImFontAtlas_AddFont((IntPtr)NativePtr, fontCfg.NativePtr);
             return new ImFontPtr(ret);
         }
         
@@ -389,9 +388,8 @@ namespace Alis.Extension.Graphic.ImGui
         public ImFontPtr AddFontFromMemoryCompressedTtf(IntPtr compressedFontData, int compressedFontSize, float sizePixels, ImFontConfigPtr fontCfg, IntPtr glyphRanges)
         {
             IntPtr nativeCompressedFontData = compressedFontData;
-            ImFontConfig* nativeFontCfg = fontCfg.NativePtr;
             IntPtr nativeGlyphRanges = (IntPtr) glyphRanges;
-            IntPtr ret = ImGuiNative.ImFontAtlas_AddFontFromMemoryCompressedTTF((IntPtr)NativePtr, nativeCompressedFontData, compressedFontSize, sizePixels, (IntPtr)nativeFontCfg, nativeGlyphRanges);
+            IntPtr ret = ImGuiNative.ImFontAtlas_AddFontFromMemoryCompressedTTF((IntPtr)NativePtr, nativeCompressedFontData, compressedFontSize, sizePixels, (IntPtr)fontCfg.NativePtr, nativeGlyphRanges);
             return new ImFontPtr(ret);
         }
         
@@ -432,9 +430,8 @@ namespace Alis.Extension.Graphic.ImGui
         public ImFontPtr AddFontFromMemoryTtf(IntPtr fontData, int fontSize, float sizePixels, ImFontConfigPtr fontCfg, IntPtr glyphRanges)
         {
             IntPtr nativeFontData = fontData;
-            ImFontConfig* nativeFontCfg = fontCfg.NativePtr;
             IntPtr nativeGlyphRanges = (IntPtr) glyphRanges;
-            return new ImFontPtr(ImGuiNative.ImFontAtlas_AddFontFromMemoryTTF((IntPtr)NativePtr, nativeFontData, fontSize, sizePixels, (IntPtr)nativeFontCfg, nativeGlyphRanges));
+            return new ImFontPtr(ImGuiNative.ImFontAtlas_AddFontFromMemoryTTF((IntPtr)NativePtr, nativeFontData, fontSize, sizePixels, (IntPtr)fontCfg.NativePtr, nativeGlyphRanges));
         }
         
         /// <summary>
