@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Runtime.InteropServices;
 using System.Text;
 
 namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native

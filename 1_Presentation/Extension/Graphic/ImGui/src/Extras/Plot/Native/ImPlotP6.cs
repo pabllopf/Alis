@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.ComponentModel.Design.Serialization;
-using System.Drawing;
 using System.Text;
 
 namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native

@@ -37,7 +37,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
     /// <summary>
     /// The im gui class
     /// </summary>
-    public static unsafe partial class ImGui
+    public static partial class ImGui
     {
         
         
