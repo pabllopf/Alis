@@ -201,7 +201,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiDockNodeFlags flags = 0;
             ImGuiWindowClass windowClass = new ImGuiWindowClass();
-            uint ret = ImGuiNative.igDockSpaceOverViewport(new IntPtr(null), flags, windowClass);
+            uint ret = ImGuiNative.igDockSpaceOverViewport(new IntPtr(), flags, windowClass);
             return ret;
         }
 

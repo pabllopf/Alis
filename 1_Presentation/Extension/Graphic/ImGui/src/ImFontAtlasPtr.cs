@@ -202,9 +202,8 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The ret</returns>
         public int AddCustomRectFontGlyph(ImFontPtr font, ushort id, int width, int height, float advanceX)
         {
-            ImFont* nativeFont = font.NativePtr;
             Vector2 offset = new Vector2();
-            int ret = ImGuiNative.ImFontAtlas_AddCustomRectFontGlyph((IntPtr)NativePtr, (IntPtr)nativeFont, id, width, height, advanceX, offset);
+            int ret = ImGuiNative.ImFontAtlas_AddCustomRectFontGlyph((IntPtr)NativePtr, (IntPtr) font.NativePtr, id, width, height, advanceX, offset);
             return ret;
         }
         
@@ -220,8 +219,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The ret</returns>
         public int AddCustomRectFontGlyph(ImFontPtr font, ushort id, int width, int height, float advanceX, Vector2 offset)
         {
-            ImFont* nativeFont = font.NativePtr;
-            int ret = ImGuiNative.ImFontAtlas_AddCustomRectFontGlyph((IntPtr)NativePtr, (IntPtr)nativeFont, id, width, height, advanceX, offset);
+            int ret = ImGuiNative.ImFontAtlas_AddCustomRectFontGlyph((IntPtr)NativePtr, (IntPtr) font.NativePtr, id, width, height, advanceX, offset);
             return ret;
         }
         

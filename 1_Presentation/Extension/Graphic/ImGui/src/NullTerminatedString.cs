@@ -47,6 +47,14 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="data">The data</param>
         public NullTerminatedString(byte* data) => Data = data;
         
+        public NullTerminatedString(byte[] data)
+        {
+            fixed (byte* ptr = data)
+            {
+                Data = ptr;
+            }
+        }
+
         /// <summary>
         ///     Returns the string
         /// </summary>

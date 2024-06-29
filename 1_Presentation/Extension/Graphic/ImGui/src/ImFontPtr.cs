@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 using System.Text;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.ImGui.Utils;
@@ -37,36 +38,24 @@ namespace Alis.Extension.Graphic.ImGui
     /// <summary>
     ///     The im font ptr
     /// </summary>
-    public readonly unsafe struct ImFontPtr
+    public readonly struct ImFontPtr
     {
         /// <summary>
         ///     Gets the value of the native ptr
         /// </summary>
-        public ImFont* NativePtr { get; }
+        public IntPtr NativePtr { get; }
         
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImFontPtr" /> class
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
-        public ImFontPtr(ImFont* nativePtr) => NativePtr = nativePtr;
-        
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="ImFontPtr" /> class
-        /// </summary>
-        /// <param name="nativePtr">The native ptr</param>
-        public ImFontPtr(IntPtr nativePtr) => NativePtr = (ImFont*) nativePtr;
-        
-        /// <summary>
-        /// </summary>
-        /// <param name="nativePtr"></param>
-        /// <returns></returns>
-        public static implicit operator ImFontPtr(ImFont* nativePtr) => new ImFontPtr(nativePtr);
+        public ImFontPtr(IntPtr nativePtr) => NativePtr = nativePtr;
         
         /// <summary>
         /// </summary>
         /// <param name="wrappedPtr"></param>
         /// <returns></returns>
-        public static implicit operator ImFont*(ImFontPtr wrappedPtr) => wrappedPtr.NativePtr;
+        public static implicit operator IntPtr(ImFontPtr wrappedPtr) => wrappedPtr.NativePtr;
         
         /// <summary>
         /// </summary>
@@ -77,82 +66,82 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the index advance x
         /// </summary>
-        public ImVectorG<float> IndexAdvanceX => new ImVectorG<float>(NativePtr->IndexAdvanceX);
+        public ImVectorG<float> IndexAdvanceX => Marshal.PtrToStructure<ImVectorG<float>>(NativePtr);
         
         /// <summary>
         ///     Gets the value of the fallback advance x
         /// </summary>
-        public ref float FallbackAdvanceX => ref Unsafe.AsRef<float>(&NativePtr->FallbackAdvanceX);
+        public float FallbackAdvanceX => Marshal.PtrToStructure<float>(NativePtr + 16);
         
         /// <summary>
         ///     Gets the value of the font size
         /// </summary>
-        public ref float FontSize => ref Unsafe.AsRef<float>(&NativePtr->FontSize);
+        public  float FontSize => Marshal.PtrToStructure<float>(NativePtr + 20);
         
         /// <summary>
         ///     Gets the value of the index lookup
         /// </summary>
-        public ImVectorG<ushort> IndexLookup => new ImVectorG<ushort>(NativePtr->IndexLookup);
+        public ImVectorG<ushort> IndexLookup => Marshal.PtrToStructure<ImVectorG<ushort>>(NativePtr + 24);
         
         /// <summary>
         ///     Gets the value of the container atlas
         /// </summary>
-        public ImFontAtlasPtr ContainerAtlas => new ImFontAtlasPtr((IntPtr)NativePtr->ContainerAtlas);
+        public ImFontAtlasPtr ContainerAtlas => Marshal.PtrToStructure<ImFontAtlasPtr>(NativePtr + 40);
         
         /// <summary>
         ///     Gets the value of the config data
         /// </summary>
-        public ImFontConfigPtr ConfigData => new ImFontConfigPtr((IntPtr)NativePtr->ConfigData);
+        public ImFontConfigPtr ConfigData => Marshal.PtrToStructure<ImFontConfigPtr>(NativePtr + 48);
         
         /// <summary>
         ///     Gets the value of the config data count
         /// </summary>
-        public ref short ConfigDataCount => ref Unsafe.AsRef<short>(&NativePtr->ConfigDataCount);
+        public  short ConfigDataCount => Marshal.PtrToStructure<short>(NativePtr + 56);
         
         /// <summary>
         ///     Gets the value of the fallback char
         /// </summary>
-        public ref ushort FallbackChar => ref Unsafe.AsRef<ushort>(&NativePtr->FallbackChar);
+        public ushort FallbackChar => Marshal.PtrToStructure<ushort>(NativePtr + 58);
         
         /// <summary>
         ///     Gets the value of the ellipsis char
         /// </summary>
-        public ref ushort EllipsisChar => ref Unsafe.AsRef<ushort>(&NativePtr->EllipsisChar);
+        public ushort EllipsisChar => Marshal.PtrToStructure<ushort>(NativePtr + 60);
         
         /// <summary>
         ///     Gets the value of the dot char
         /// </summary>
-        public ref ushort DotChar => ref Unsafe.AsRef<ushort>(&NativePtr->DotChar);
+        public ushort DotChar => Marshal.PtrToStructure<ushort>(NativePtr + 62);
         
         /// <summary>
         ///     Gets the value of the dirty lookup tables
         /// </summary>
-        public ref bool DirtyLookupTables => ref Unsafe.AsRef<bool>(&NativePtr->DirtyLookupTables);
+        public  bool DirtyLookupTables => Marshal.PtrToStructure<byte>(NativePtr + 64) != 0;
         
         /// <summary>
         ///     Gets the value of the scale
         /// </summary>
-        public ref float Scale => ref Unsafe.AsRef<float>(&NativePtr->Scale);
+        public float Scale => Marshal.PtrToStructure<float>(NativePtr + 68);
         
         /// <summary>
         ///     Gets the value of the ascent
         /// </summary>
-        public ref float Ascent => ref Unsafe.AsRef<float>(&NativePtr->Ascent);
+        public float Ascent => Marshal.PtrToStructure<float>(NativePtr + 72);
         
         /// <summary>
         ///     Gets the value of the descent
         /// </summary>
-        public ref float Descent => ref Unsafe.AsRef<float>(&NativePtr->Descent);
+        public  float Descent => Marshal.PtrToStructure<float>(NativePtr + 76);
         
         /// <summary>
         ///     Gets the value of the metrics total surface
         /// </summary>
-        public ref int MetricsTotalSurface => ref Unsafe.AsRef<int>(&NativePtr->MetricsTotalSurface);
+        public int MetricsTotalSurface => Marshal.PtrToStructure<int>(NativePtr + 80);
         
         /// <summary>
         ///     Gets the value of the used 4k pages map
         /// </summary>
-        public RangeAccessor<byte> Used4KPagesMap => new RangeAccessor<byte>((IntPtr)NativePtr->Used4KPagesMap, 2);
+        public RangeAccessor<byte> Used4KPagesMap => new RangeAccessor<byte>(NativePtr + 84, 2);
         
         /// <summary>
         ///     Adds the glyph using the specified src cfg
@@ -282,10 +271,9 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="pos">The pos</param>
         /// <param name="col">The col</param>
         /// <param name="c">The </param>
-        public void RenderChar(ImDrawListPtr drawList, float size, Vector2 pos, uint col, ushort c)
+        public unsafe void RenderChar(ImDrawListPtr drawList, float size, Vector2 pos, uint col, ushort c)
         {
-            ImDrawList* nativeDrawList = drawList.NativePtr;
-            ImGuiNative.ImFont_RenderChar((IntPtr)NativePtr, (IntPtr)nativeDrawList, size, pos, col, c);
+            ImGuiNative.ImFont_RenderChar((IntPtr)NativePtr, (IntPtr)drawList.NativePtr, size, pos, col, c);
         }
         
         /// <summary>
