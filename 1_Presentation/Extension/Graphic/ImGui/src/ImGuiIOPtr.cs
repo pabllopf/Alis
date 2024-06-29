@@ -171,7 +171,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the font default
         /// </summary>
-        public ImFontPtr FontDefault => new ImFontPtr(NativePtr->FontDefault);
+        public ImFontPtr FontDefault => new ImFontPtr((IntPtr)NativePtr);
         
         /// <summary>
         ///     Gets the value of the display framebuffer scale
