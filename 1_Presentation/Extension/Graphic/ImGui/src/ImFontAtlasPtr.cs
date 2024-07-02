@@ -115,7 +115,7 @@ namespace Alis.Extension.Graphic.ImGui
         public IntPtr TexPixelsAlpha8
         {
             get => (IntPtr) NativePtr->TexPixelsAlpha8;
-            set => NativePtr->TexPixelsAlpha8 = (byte*) value;
+            set => NativePtr->TexPixelsAlpha8 =  value;
         }
         
         /// <summary>
@@ -124,7 +124,7 @@ namespace Alis.Extension.Graphic.ImGui
         public IntPtr TexPixelsRgba32
         {
             get => (IntPtr) NativePtr->TexPixelsRgba32;
-            set => NativePtr->TexPixelsRgba32 = (uint*) value;
+            set => NativePtr->TexPixelsRgba32 =  value;
         }
         
         /// <summary>
@@ -173,7 +173,7 @@ namespace Alis.Extension.Graphic.ImGui
         public IntPtr FontBuilderIo
         {
             get => (IntPtr) NativePtr->FontBuilderIo;
-            set => NativePtr->FontBuilderIo = (IntPtr*) value;
+            set => NativePtr->FontBuilderIo = value;
         }
         
         /// <summary>
