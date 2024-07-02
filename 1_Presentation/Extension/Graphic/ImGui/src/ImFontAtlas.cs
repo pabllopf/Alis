@@ -35,7 +35,7 @@ namespace Alis.Extension.Graphic.ImGui
     /// <summary>
     ///     The im font atlas
     /// </summary>
-    public unsafe struct ImFontAtlas
+    public struct ImFontAtlas
     {
         /// <summary>
         ///     The flags
@@ -75,12 +75,12 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The tex pixels alpha
         /// </summary>
-        public byte* TexPixelsAlpha8;
+        public IntPtr TexPixelsAlpha8;
         
         /// <summary>
         ///     The tex pixels rgba 32
         /// </summary>
-        public uint* TexPixelsRgba32;
+        public IntPtr TexPixelsRgba32;
         
         /// <summary>
         ///     The tex width
@@ -440,7 +440,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The font builder io
         /// </summary>
-        public IntPtr* FontBuilderIo;
+        public IntPtr FontBuilderIo;
         
         /// <summary>
         ///     The font builder flags
