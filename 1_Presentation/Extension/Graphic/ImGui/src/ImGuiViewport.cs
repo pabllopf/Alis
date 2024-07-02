@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Extension.Graphic.ImGui
@@ -34,7 +35,7 @@ namespace Alis.Extension.Graphic.ImGui
     /// <summary>
     ///     The im gui viewport
     /// </summary>
-    public unsafe struct ImGuiViewport
+    public struct ImGuiViewport
     {
         /// <summary>
         ///     The id
@@ -79,27 +80,27 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The draw data
         /// </summary>
-        public ImDrawData* DrawData;
+        public IntPtr DrawData;
         
         /// <summary>
         ///     The renderer user data
         /// </summary>
-        public void* RendererUserData;
+        public IntPtr RendererUserData;
         
         /// <summary>
         ///     The platform user data
         /// </summary>
-        public void* PlatformUserData;
+        public IntPtr PlatformUserData;
         
         /// <summary>
         ///     The platform handle
         /// </summary>
-        public void* PlatformHandle;
+        public IntPtr PlatformHandle;
         
         /// <summary>
         ///     The platform handle raw
         /// </summary>
-        public void* PlatformHandleRaw;
+        public IntPtr PlatformHandleRaw;
         
         /// <summary>
         ///     The platform window created
