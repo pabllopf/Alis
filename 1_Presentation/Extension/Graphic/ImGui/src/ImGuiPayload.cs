@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace Alis.Extension.Graphic.ImGui
@@ -34,12 +36,12 @@ namespace Alis.Extension.Graphic.ImGui
     /// <summary>
     ///     The im gui payload
     /// </summary>
-    public unsafe struct ImGuiPayload
+    public struct ImGuiPayload
     {
         /// <summary>
         ///     The data
         /// </summary>
-        public void* Data;
+        public IntPtr Data;
         
         /// <summary>
         ///     The data size
@@ -64,7 +66,8 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The data type
         /// </summary>
-        public fixed byte DataType[33];
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 33)]
+        public byte[] DataType;
         
         /// <summary>
         ///     The preview
