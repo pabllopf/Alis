@@ -337,28 +337,31 @@ namespace Alis.App.Engine
             
             // config input manager 
             
-            io.KeyMap[(int) ImGuiKey.Tab] = (int) SdlScancode.SdlScancodeTab;
-            io.KeyMap[(int) ImGuiKey.LeftArrow] = (int) SdlScancode.SdlScancodeLeft;
-            io.KeyMap[(int) ImGuiKey.RightArrow] = (int) SdlScancode.SdlScancodeRight;
-            io.KeyMap[(int) ImGuiKey.UpArrow] = (int) SdlScancode.SdlScancodeUp;
-            io.KeyMap[(int) ImGuiKey.DownArrow] = (int) SdlScancode.SdlScancodeDown;
-            io.KeyMap[(int) ImGuiKey.PageUp] = (int) SdlScancode.SdlScancodePageup;
-            io.KeyMap[(int) ImGuiKey.PageDown] = (int) SdlScancode.SdlScancodePagedown;
-            io.KeyMap[(int) ImGuiKey.Home] = (int) SdlScancode.SdlScancodeHome;
-            io.KeyMap[(int) ImGuiKey.End] = (int) SdlScancode.SdlScancodeEnd;
-            io.KeyMap[(int) ImGuiKey.Insert] = (int) SdlScancode.SdlScancodeInsert;
-            io.KeyMap[(int) ImGuiKey.Delete] = (int) SdlScancode.SdlScancodeDelete;
-            io.KeyMap[(int) ImGuiKey.Backspace] = (int) SdlScancode.SdlScancodeBackspace;
-            io.KeyMap[(int) ImGuiKey.Space] = (int) SdlScancode.SdlScancodeSpace;
-            io.KeyMap[(int) ImGuiKey.Enter] = (int) SdlScancode.SdlScancodeReturn;
-            io.KeyMap[(int) ImGuiKey.Escape] = (int) SdlScancode.SdlScancodeEscape;
-            io.KeyMap[(int) ImGuiKey.KeypadEnter] = (int) SdlScancode.SdlScancodeReturn2;
-            io.KeyMap[(int) ImGuiKey.A] = (int) SdlScancode.SdlScancodeA;
-            io.KeyMap[(int) ImGuiKey.C] = (int) SdlScancode.SdlScancodeC;
-            io.KeyMap[(int) ImGuiKey.V] = (int) SdlScancode.SdlScancodeV;
-            io.KeyMap[(int) ImGuiKey.X] = (int) SdlScancode.SdlScancodeX;
-            io.KeyMap[(int) ImGuiKey.Y] = (int) SdlScancode.SdlScancodeY;
-            io.KeyMap[(int) ImGuiKey.Z] = (int) SdlScancode.SdlScancodeZ;
+            RangeAccessor<int> ioKeyMap = io.KeyMap;
+            ioKeyMap[(int) ImGuiKey.Tab] = (int) SdlScancode.SdlScancodeTab;
+            ioKeyMap[(int) ImGuiKey.LeftArrow] = (int) SdlScancode.SdlScancodeLeft;
+            ioKeyMap[(int) ImGuiKey.RightArrow] = (int) SdlScancode.SdlScancodeRight;
+            ioKeyMap[(int) ImGuiKey.UpArrow] = (int) SdlScancode.SdlScancodeUp;
+            ioKeyMap[(int) ImGuiKey.DownArrow] = (int) SdlScancode.SdlScancodeDown;
+            ioKeyMap[(int) ImGuiKey.PageUp] = (int) SdlScancode.SdlScancodePageup;
+            ioKeyMap[(int) ImGuiKey.PageDown] = (int) SdlScancode.SdlScancodePagedown;
+            ioKeyMap[(int) ImGuiKey.Home] = (int) SdlScancode.SdlScancodeHome;
+            ioKeyMap[(int) ImGuiKey.End] = (int) SdlScancode.SdlScancodeEnd;
+            ioKeyMap[(int) ImGuiKey.Insert] = (int) SdlScancode.SdlScancodeInsert;
+            ioKeyMap[(int) ImGuiKey.Delete] = (int) SdlScancode.SdlScancodeDelete;
+            ioKeyMap[(int) ImGuiKey.Backspace] = (int) SdlScancode.SdlScancodeBackspace;
+            ioKeyMap[(int) ImGuiKey.Space] = (int) SdlScancode.SdlScancodeSpace;
+            ioKeyMap[(int) ImGuiKey.Enter] = (int) SdlScancode.SdlScancodeReturn;
+            ioKeyMap[(int) ImGuiKey.Escape] = (int) SdlScancode.SdlScancodeEscape;
+            ioKeyMap[(int) ImGuiKey.KeypadEnter] = (int) SdlScancode.SdlScancodeReturn2;
+            ioKeyMap[(int) ImGuiKey.A] = (int) SdlScancode.SdlScancodeA;
+            ioKeyMap[(int) ImGuiKey.C] = (int) SdlScancode.SdlScancodeC;
+            ioKeyMap[(int) ImGuiKey.V] = (int) SdlScancode.SdlScancodeV;
+            ioKeyMap[(int) ImGuiKey.X] = (int) SdlScancode.SdlScancodeX;
+            ioKeyMap[(int) ImGuiKey.Y] = (int) SdlScancode.SdlScancodeY;
+            ioKeyMap[(int) ImGuiKey.Z] = (int) SdlScancode.SdlScancodeZ;
+            
+            io.KeyMap = ioKeyMap;
             
             _vboHandle = Gl.GenBuffer();
             _elementsHandle = Gl.GenBuffer();
@@ -644,8 +647,9 @@ namespace Alis.App.Engine
                 case EventType.Keyup:
                 {
                     SdlScancode key = evt.key.keySym.scancode;
-                    imGuiIoPtr.KeysDown[(int) key] = evt.type == EventType.Keydown;
-                    Logger.Info("io.KeysDown[" + key + "] = " + evt.type + imGuiIoPtr.KeysDown[(int) key]);
+                    RangeAccessor<bool> rangeAccessor = imGuiIoPtr.KeysDown;
+                    rangeAccessor[(int) key] = evt.type == EventType.Keydown;
+                    Logger.Info("io.KeysDown[" + key + "] = " + evt.type + rangeAccessor[(int) key]);
                     imGuiIoPtr.KeyShift = (Sdl.GetModState() & KeyMods.KModShift) != 0;
                     imGuiIoPtr.KeyCtrl = (Sdl.GetModState() & KeyMods.KModCtrl) != 0;
                     imGuiIoPtr.KeyAlt = (Sdl.GetModState() & KeyMods.KModAlt) != 0;
@@ -673,12 +677,13 @@ namespace Alis.App.Engine
             }
             
             uint mouseButtons = Sdl.GetMouseStateOutXAndY(out int mx, out int my);
-            imGuiIoPtr.MouseDown[0] =
+            RangeAccessor<bool> rangeAccessor = imGuiIoPtr.MouseDown;
+            rangeAccessor[0] =
                 _mousePressed[0] ||
                 (mouseButtons & Sdl.Button(Sdl.ButtonLeft)) !=
                 0; // If a mouse press event came, always pass it as "mouse held this frame", so we don't miss click-release events that are shorter than 1 frame.
-            imGuiIoPtr.MouseDown[1] = _mousePressed[1] || (mouseButtons & Sdl.Button(Sdl.ButtonRight)) != 0;
-            imGuiIoPtr.MouseDown[2] = _mousePressed[2] || (mouseButtons & Sdl.Button(Sdl.ButtonMiddle)) != 0;
+            rangeAccessor[1] = _mousePressed[1] || (mouseButtons & Sdl.Button(Sdl.ButtonRight)) != 0;
+            rangeAccessor[2] = _mousePressed[2] || (mouseButtons & Sdl.Button(Sdl.ButtonMiddle)) != 0;
             _mousePressed[0] = _mousePressed[1] = _mousePressed[2] = false;
             
             IntPtr focusedWindow = Sdl.GetKeyboardFocus();

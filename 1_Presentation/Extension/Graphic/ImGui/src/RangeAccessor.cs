@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 using Alis.Extension.Graphic.ImGui.Utils;
 
 namespace Alis.Extension.Graphic.ImGui
@@ -35,7 +36,7 @@ namespace Alis.Extension.Graphic.ImGui
     /// <summary>
     ///     The range accessor
     /// </summary>
-    public readonly unsafe struct RangeAccessor<T> where T : unmanaged
+    public readonly struct RangeAccessor<T> where T : unmanaged
     {
         /// <summary>
         ///     The
@@ -45,7 +46,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The data
         /// </summary>
-        public readonly void* Data;
+        public readonly IntPtr Data;
         
         /// <summary>
         ///     The count
@@ -57,25 +58,13 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <param name="data">The data</param>
         /// <param name="count">The count</param>
-        public RangeAccessor(IntPtr data, int count) : this(data.ToPointer(), count)
-        {
-        }
-        
-        /// <summary>
-        ///     Initializes a new instance of the  class
-        /// </summary>
-        /// <param name="data">The data</param>
-        /// <param name="count">The count</param>
-        public RangeAccessor(void* data, int count)
+        public RangeAccessor(IntPtr data, int count) 
         {
             Data = data;
             Count = count;
         }
         
-        /// <summary>
-        ///     The index
-        /// </summary>
-        public ref T this[int index]
+        public T this[int index]
         {
             get
             {
@@ -83,8 +72,19 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     throw new IndexOutOfRangeException();
                 }
-                
-                return ref Unsafe.AsRef<T>((byte*) Data + SSizeOfT * index);
+
+                IntPtr offsetPtr = IntPtr.Add(Data, SSizeOfT * index);
+                return Marshal.PtrToStructure<T>(offsetPtr);
+            }
+            set
+            {
+                if (index < 0 || index >= Count)
+                {
+                    throw new IndexOutOfRangeException();
+                }
+
+                IntPtr offsetPtr = IntPtr.Add(Data, SSizeOfT * index);
+                Marshal.StructureToPtr(value, offsetPtr, false);
             }
         }
     }

@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace Alis.Extension.Graphic.ImGui
@@ -41,6 +42,6 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <param name="stringAccessor">The string accessor</param>
         /// <returns>The string</returns>
-        public static unsafe string GetStringAscii(this RangeAccessor<byte> stringAccessor) => Encoding.ASCII.GetString((byte*) stringAccessor.Data, stringAccessor.Count);
+        public static string GetStringAscii(this RangeAccessor<byte> stringAccessor) => Marshal.PtrToStringAnsi(stringAccessor.Data);
     }
 }

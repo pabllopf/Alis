@@ -165,7 +165,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the tex uv lines
         /// </summary>
-        public RangeAccessor<Vector4> TexUvLines => new RangeAccessor<Vector4>(&NativePtr->TexUvLines0, 64);
+        public RangeAccessor<Vector4> TexUvLines => new RangeAccessor<Vector4>((IntPtr)(&NativePtr->TexUvLines0), 64);
         
         /// <summary>
         ///     Gets or sets the value of the font builder io
