@@ -130,7 +130,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The font default
         /// </summary>
-        public ImFont* FontDefault;
+        public IntPtr FontDefault;
         
         /// <summary>
         ///     The display framebuffer scale

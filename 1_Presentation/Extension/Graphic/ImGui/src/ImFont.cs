@@ -28,13 +28,14 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 
 namespace Alis.Extension.Graphic.ImGui
 {
     /// <summary>
     ///     The im font
     /// </summary>
-    public unsafe struct ImFont
+    public struct ImFont
     {
         /// <summary>
         ///     The index advance
@@ -64,12 +65,12 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The fallback glyph
         /// </summary>
-        public ImFontGlyph* FallbackGlyph;
+        public IntPtr FallbackGlyph;
         
         /// <summary>
         ///     The container atlas
         /// </summary>
-        public ImFontAtlas* ContainerAtlas;
+        public IntPtr ContainerAtlas;
         
         /// <summary>
         ///     The config data
@@ -124,6 +125,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The used 4k pages map
         /// </summary>
-        public fixed byte Used4KPagesMap[2];
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
+        public byte[] Used4KPagesMap;
     }
 }
