@@ -271,7 +271,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="pos">The pos</param>
         /// <param name="col">The col</param>
         /// <param name="c">The </param>
-        public unsafe void RenderChar(ImDrawListPtr drawList, float size, Vector2 pos, uint col, ushort c)
+        public void RenderChar(ImDrawListPtr drawList, float size, Vector2 pos, uint col, ushort c)
         {
             ImGuiNative.ImFont_RenderChar((IntPtr)NativePtr, (IntPtr)drawList.NativePtr, size, pos, col, c);
         }

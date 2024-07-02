@@ -38,36 +38,24 @@ namespace Alis.Extension.Graphic.ImGui
     /// <summary>
     ///     The im draw list ptr
     /// </summary>
-    public readonly unsafe struct ImDrawListPtr
+    public readonly struct ImDrawListPtr
     {
         /// <summary>
         ///     Gets the value of the native ptr
         /// </summary>
-        public ImDrawList* NativePtr { get; }
+        public IntPtr NativePtr { get; }
         
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImDrawListPtr" /> class
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
-        public ImDrawListPtr(ImDrawList* nativePtr) => NativePtr = nativePtr;
-        
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="ImDrawListPtr" /> class
-        /// </summary>
-        /// <param name="nativePtr">The native ptr</param>
-        public ImDrawListPtr(IntPtr nativePtr) => NativePtr = (ImDrawList*) nativePtr;
-        
-        /// <summary>
-        /// </summary>
-        /// <param name="nativePtr"></param>
-        /// <returns></returns>
-        public static implicit operator ImDrawListPtr(ImDrawList* nativePtr) => new ImDrawListPtr(nativePtr);
+        public ImDrawListPtr(IntPtr nativePtr) => NativePtr = nativePtr;
         
         /// <summary>
         /// </summary>
         /// <param name="wrappedPtr"></param>
         /// <returns></returns>
-        public static implicit operator ImDrawList*(ImDrawListPtr wrappedPtr) => wrappedPtr.NativePtr;
+        public static implicit operator IntPtr(ImDrawListPtr wrappedPtr) => wrappedPtr.NativePtr;
         
         /// <summary>
         /// </summary>
@@ -78,81 +66,81 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the cmd buffer
         /// </summary>
-        public ImVectorG<ImDrawCmd> CmdBuffer => new ImVectorG<ImDrawCmd>(NativePtr->CmdBuffer);
+        public ImVectorG<ImDrawCmd> CmdBuffer => new ImVectorG<ImDrawCmd>(Marshal.PtrToStructure<ImDrawList>(NativePtr).CmdBuffer);
         
         /// <summary>
         ///     Gets the value of the idx buffer
         /// </summary>
-        public ImVectorG<ushort> IdxBuffer => new ImVectorG<ushort>(NativePtr->IdxBuffer);
+        public ImVectorG<ushort> IdxBuffer => new ImVectorG<ushort>(Marshal.PtrToStructure<ImDrawList>(NativePtr).IdxBuffer);
         
         /// <summary>
         ///     Gets the value of the vtx buffer
         /// </summary>
-        public ImVectorG<ImDrawVert> VtxBuffer => new ImVectorG<ImDrawVert>(NativePtr->VtxBuffer);
+        public ImVectorG<ImDrawVert> VtxBuffer => new ImVectorG<ImDrawVert>(Marshal.PtrToStructure<ImDrawList>(NativePtr).VtxBuffer);
         
         /// <summary>
         ///     Gets the value of the flags
         /// </summary>
-        public ref ImDrawListFlags Flags => ref Unsafe.AsRef<ImDrawListFlags>(&NativePtr->Flags);
+        public ImDrawListFlags Flags => Marshal.PtrToStructure<ImDrawList>(NativePtr).Flags;
         
         /// <summary>
         ///     Gets the value of the  vtxcurrentidx
         /// </summary>
-        public ref uint VtxCurrentIdx => ref Unsafe.AsRef<uint>(&NativePtr->VtxCurrentIdx);
+        public uint VtxCurrentIdx => Marshal.PtrToStructure<ImDrawList>(NativePtr).VtxCurrentIdx;
         
         /// <summary>
         ///     Gets the value of the  data
         /// </summary>
-        public ref IntPtr Data => ref Unsafe.AsRef<IntPtr>(&NativePtr->Data);
+        public IntPtr Data => Marshal.PtrToStructure<ImDrawList>(NativePtr).Data;
         
         /// <summary>
         ///     Gets the value of the  ownername
         /// </summary>
-        public NullTerminatedString OwnerName => new NullTerminatedString((IntPtr)NativePtr->OwnerName);
+        public NullTerminatedString OwnerName => new NullTerminatedString(Marshal.PtrToStructure<ImDrawList>(NativePtr).OwnerName);
         
         /// <summary>
         ///     Gets the value of the vtx write ptr
         /// </summary>
-        public ImDrawVert VtxWritePtr => Marshal.PtrToStructure<ImDrawVert>((IntPtr) NativePtr->VtxWritePtr);
+        public ImDrawVert VtxWritePtr => Marshal.PtrToStructure<ImDrawVert>(Marshal.PtrToStructure<ImDrawList>(NativePtr).VtxWritePtr);
         
         /// <summary>
         ///     Gets or sets the value of the  idxwriteptr
         /// </summary>
         public IntPtr IdxWritePtr
         {
-            get => (IntPtr) NativePtr->IdxWritePtr;
-            set => NativePtr->IdxWritePtr = value;
+            get => Marshal.PtrToStructure<ImDrawList>(NativePtr).IdxWritePtr;
+            set => Marshal.StructureToPtr(value, Marshal.PtrToStructure<ImDrawList>(NativePtr).IdxWritePtr, false);
         }
         
         /// <summary>
         ///     Gets the value of the  cliprectstack
         /// </summary>
-        public ImVectorG<Vector4> ClipRectStack => new ImVectorG<Vector4>(NativePtr->ClipRectStack);
+        public ImVectorG<Vector4> ClipRectStack => new ImVectorG<Vector4>(Marshal.PtrToStructure<ImDrawList>(NativePtr).ClipRectStack);
         
         /// <summary>
         ///     Gets the value of the  textureidstack
         /// </summary>
-        public ImVectorG<IntPtr> TextureIdStack => new ImVectorG<IntPtr>(NativePtr->TextureIdStack);
+        public ImVectorG<IntPtr> TextureIdStack => new ImVectorG<IntPtr>(Marshal.PtrToStructure<ImDrawList>(NativePtr).TextureIdStack);
         
         /// <summary>
         ///     Gets the value of the  path
         /// </summary>
-        public ImVectorG<Vector2> Path => new ImVectorG<Vector2>(NativePtr->Path);
+        public ImVectorG<Vector2> Path => new ImVectorG<Vector2>(Marshal.PtrToStructure<ImDrawList>(NativePtr).Path);
         
         /// <summary>
         ///     Gets the value of the  cmdheader
         /// </summary>
-        public ref ImDrawCmdHeader CmdHeader => ref Unsafe.AsRef<ImDrawCmdHeader>(&NativePtr->CmdHeader);
+        public ImDrawCmdHeader CmdHeader => Marshal.PtrToStructure<ImDrawList>(NativePtr).CmdHeader;
         
         /// <summary>
         ///     Gets the value of the  splitter
         /// </summary>
-        public ref ImDrawListSplitter Splitter => ref Unsafe.AsRef<ImDrawListSplitter>(&NativePtr->Splitter);
+        public ImDrawListSplitter Splitter => Marshal.PtrToStructure<ImDrawList>(NativePtr).Splitter;
         
         /// <summary>
         ///     Gets the value of the  fringescale
         /// </summary>
-        public ref float FringeScale => ref Unsafe.AsRef<float>(&NativePtr->FringeScale);
+        public float FringeScale => Marshal.PtrToStructure<ImDrawList>(NativePtr).FringeScale;
         
         /// <summary>
         ///     Calcs the circle auto segment count using the specified radius
