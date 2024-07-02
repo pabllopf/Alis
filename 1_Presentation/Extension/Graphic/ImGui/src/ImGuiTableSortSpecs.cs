@@ -27,17 +27,19 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+
 namespace Alis.Extension.Graphic.ImGui
 {
     /// <summary>
     ///     The im gui table sort specs
     /// </summary>
-    public unsafe struct ImGuiTableSortSpecs
+    public struct ImGuiTableSortSpecs
     {
         /// <summary>
         ///     The specs
         /// </summary>
-        public ImGuiTableColumnSortSpecs* Specs;
+        public IntPtr Specs;
         
         /// <summary>
         ///     The specs count

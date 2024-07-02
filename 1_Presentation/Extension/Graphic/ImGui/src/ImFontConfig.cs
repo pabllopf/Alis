@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Extension.Graphic.ImGui
@@ -34,12 +35,12 @@ namespace Alis.Extension.Graphic.ImGui
     /// <summary>
     ///     The im font config
     /// </summary>
-    public unsafe struct ImFontConfig
+    public struct ImFontConfig
     {
         /// <summary>
         ///     The font data
         /// </summary>
-        public void* FontData;
+        public IntPtr FontData;
         
         /// <summary>
         ///     The font data size
@@ -89,7 +90,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The glyph ranges
         /// </summary>
-        public ushort* GlyphRanges;
+        public IntPtr GlyphRanges;
         
         /// <summary>
         ///     The glyph min advance
@@ -124,11 +125,12 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The name
         /// </summary>
-        public fixed byte Name[40];
+        [System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst = 40)]
+        public byte[] Name;
         
         /// <summary>
         ///     The dst font
         /// </summary>
-        public ImFont* DstFont;
+        public IntPtr DstFont;
     }
 }

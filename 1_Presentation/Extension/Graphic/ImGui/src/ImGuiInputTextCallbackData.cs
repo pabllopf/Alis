@@ -27,12 +27,14 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+
 namespace Alis.Extension.Graphic.ImGui
 {
     /// <summary>
     ///     The im gui input text callback data
     /// </summary>
-    public unsafe struct ImGuiInputTextCallbackData
+    public struct ImGuiInputTextCallbackData
     {
         /// <summary>
         ///     The event flag
@@ -47,7 +49,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The user data
         /// </summary>
-        public void* UserData;
+        public IntPtr UserData;
         
         /// <summary>
         ///     The event char
@@ -62,7 +64,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The buf
         /// </summary>
-        public byte* Buf;
+        public IntPtr Buf;
         
         /// <summary>
         ///     The buf text len

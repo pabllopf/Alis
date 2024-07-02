@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+
 namespace Alis.Extension.Graphic.ImGui
 {
     /// <summary>
@@ -72,7 +74,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The config data
         /// </summary>
-        public ImFontConfig* ConfigData;
+        public IntPtr ConfigData;
         
         /// <summary>
         ///     The config data count

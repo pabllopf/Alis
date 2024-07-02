@@ -27,12 +27,14 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+
 namespace Alis.Extension.Graphic.ImGui
 {
     /// <summary>
     ///     The im gui list clipper
     /// </summary>
-    public unsafe struct ImGuiListClipper
+    public struct ImGuiListClipper
     {
         /// <summary>
         ///     The display start
@@ -62,6 +64,6 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The temp data
         /// </summary>
-        public void* TempData;
+        public IntPtr TempData;
     }
 }
