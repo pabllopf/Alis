@@ -34,7 +34,7 @@ namespace Alis.Extension.Graphic.ImGui
     /// <summary>
     ///     The im draw list
     /// </summary>
-    public unsafe struct ImDrawList
+    public struct ImDrawList
     {
         /// <summary>
         ///     The cmd buffer
@@ -69,17 +69,17 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The owner name
         /// </summary>
-        public byte* OwnerName;
+        public IntPtr OwnerName;
         
         /// <summary>
         ///     The vtx write ptr
         /// </summary>
-        public ImDrawVert* VtxWritePtr;
+        public IntPtr VtxWritePtr;
         
         /// <summary>
         ///     The idx write ptr
         /// </summary>
-        public ushort* IdxWritePtr;
+        public IntPtr IdxWritePtr;
         
         /// <summary>
         ///     The clip rect stack

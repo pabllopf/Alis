@@ -121,7 +121,7 @@ namespace Alis.Extension.Graphic.ImGui
         public IntPtr IdxWritePtr
         {
             get => (IntPtr) NativePtr->IdxWritePtr;
-            set => NativePtr->IdxWritePtr = (ushort*) value;
+            set => NativePtr->IdxWritePtr = value;
         }
         
         /// <summary>
