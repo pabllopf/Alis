@@ -36,7 +36,7 @@ namespace Alis.Extension.Graphic.ImGui
     /// <summary>
     ///     The im gui viewport ptr
     /// </summary>
-    public readonly unsafe struct ImGuiViewportPtr
+    public readonly struct ImGuiViewportPtr
     {
         /// <summary>
         ///     Gets the value of the native ptr
@@ -70,27 +70,27 @@ namespace Alis.Extension.Graphic.ImGui
         
         public Vector2 Pos => Marshal.PtrToStructure<Vector2>(NativePtr + 2 * sizeof(uint));
         
-        public Vector2 Size => Marshal.PtrToStructure<Vector2>(NativePtr + 2 * sizeof(uint) + sizeof(Vector2));
+        public Vector2 Size => Marshal.PtrToStructure<Vector2>(NativePtr + 2 * sizeof(uint) + Marshal.SizeOf<Vector2>());
 
         /// <summary>
         ///     Gets the value of the work pos
         /// </summary>
-        public Vector2 WorkPos => Marshal.PtrToStructure<Vector2>(NativePtr + 2 * sizeof(uint) + 2 * sizeof(Vector2));
+        public Vector2 WorkPos => Marshal.PtrToStructure<Vector2>(NativePtr + 2 * sizeof(uint) + 2 * Marshal.SizeOf<Vector2>());
         
         /// <summary>
         ///     Gets the value of the work size
         /// </summary>
-        public Vector2 WorkSize => Marshal.PtrToStructure<Vector2>(NativePtr + 2 * sizeof(uint) + 3 * sizeof(Vector2));
+        public Vector2 WorkSize => Marshal.PtrToStructure<Vector2>(NativePtr + 2 * sizeof(uint) + 3 * Marshal.SizeOf<Vector2>());
         
         /// <summary>
         ///     Gets the value of the dpi scale
         /// </summary>
-        public float DpiScale => Marshal.PtrToStructure<float>(NativePtr + 2 * sizeof(uint) + 4 * sizeof(Vector2));
+        public float DpiScale => Marshal.PtrToStructure<float>(NativePtr + 2 * sizeof(uint) + 4 * Marshal.SizeOf<Vector2>());
         
         /// <summary>
         ///     Gets the value of the parent viewport id
         /// </summary>
-        public uint ParentViewportId => (uint)Marshal.ReadInt32(NativePtr + 2 * sizeof(uint) + 4 * sizeof(Vector2) + sizeof(float));
+        public uint ParentViewportId => (uint)Marshal.ReadInt32(NativePtr + 2 * sizeof(uint) + 4 * Marshal.SizeOf<Vector2>() + sizeof(float));
         
         /// <summary>
         ///     Gets the value of the draw data
