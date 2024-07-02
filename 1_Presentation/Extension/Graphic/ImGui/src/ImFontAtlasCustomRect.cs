@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Extension.Graphic.ImGui
@@ -34,7 +35,7 @@ namespace Alis.Extension.Graphic.ImGui
     /// <summary>
     ///     The im font atlas custom rect
     /// </summary>
-    public unsafe struct ImFontAtlasCustomRect
+    public struct ImFontAtlasCustomRect
     {
         /// <summary>
         ///     The width
@@ -74,6 +75,6 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The font
         /// </summary>
-        public ImFont* Font;
+        public IntPtr Font;
     }
 }
