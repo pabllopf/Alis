@@ -27,17 +27,20 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Runtime.InteropServices;
+
 namespace Alis.Extension.Graphic.ImGui
 {
     /// <summary>
     ///     The im gui text filter
     /// </summary>
-    public unsafe struct ImGuiTextFilter
+    public struct ImGuiTextFilter
     {
         /// <summary>
         ///     The input buf
         /// </summary>
-        public fixed byte InputBuf[256];
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 256)]
+        public byte[] InputBuf;
         
         /// <summary>
         ///     The filters

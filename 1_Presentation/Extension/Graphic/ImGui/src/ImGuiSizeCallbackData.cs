@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Extension.Graphic.ImGui
@@ -34,12 +35,12 @@ namespace Alis.Extension.Graphic.ImGui
     /// <summary>
     ///     The im gui size callback data
     /// </summary>
-    public unsafe struct ImGuiSizeCallbackData
+    public struct ImGuiSizeCallbackData
     {
         /// <summary>
         ///     The user data
         /// </summary>
-        public void* UserData;
+        public IntPtr UserData;
         
         /// <summary>
         ///     The pos
