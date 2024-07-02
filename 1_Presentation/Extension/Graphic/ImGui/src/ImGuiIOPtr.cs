@@ -102,12 +102,12 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the ini filename
         /// </summary>
-        public NullTerminatedString IniFilename => new NullTerminatedString(NativePtr->IniFilename);
+        public NullTerminatedString IniFilename => new NullTerminatedString((IntPtr)NativePtr->IniFilename);
         
         /// <summary>
         ///     Gets the value of the log filename
         /// </summary>
-        public NullTerminatedString LogFilename => new NullTerminatedString(NativePtr->LogFilename);
+        public NullTerminatedString LogFilename => new NullTerminatedString((IntPtr)NativePtr->LogFilename);
         
         /// <summary>
         ///     Gets the value of the mouse double click time
@@ -266,12 +266,12 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the backend platform name
         /// </summary>
-        public NullTerminatedString BackendPlatformName => new NullTerminatedString(NativePtr->BackendPlatformName);
+        public NullTerminatedString BackendPlatformName => new NullTerminatedString((IntPtr)NativePtr->BackendPlatformName);
         
         /// <summary>
         ///     Gets the value of the backend renderer name
         /// </summary>
-        public NullTerminatedString BackendRendererName => new NullTerminatedString(NativePtr->BackendRendererName);
+        public NullTerminatedString BackendRendererName => new NullTerminatedString((IntPtr)NativePtr->BackendRendererName);
         
         /// <summary>
         ///     Gets or sets the value of the backend platform user data
