@@ -406,17 +406,37 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the key map
         /// </summary>
-        public RangeAccessor<int> KeyMap => new RangeAccessor<int>(NativePtr->KeyMap, 652);
+        public RangeAccessor<int> KeyMap
+        {
+            get
+            {
+                return new RangeAccessor<int>((IntPtr) NativePtr->KeyMap, 652);
+            }
+            set
+            {
+                if (value.Count != 652)
+                {
+                    throw new ArgumentException("The count of the value should be 652");
+                }
+                for (int i = 0; i < 652; i++)
+                {
+                    NativePtr->KeyMap[i] = value[i];
+                }
+            }
+        }
         
         /// <summary>
         ///     Gets the value of the keys down
         /// </summary>
-        public RangeAccessor<bool> KeysDown => new RangeAccessor<bool>(NativePtr->KeysDown, 652);
+        public RangeAccessor<bool> KeysDown
+        {
+            get { return new RangeAccessor<bool>((IntPtr) NativePtr->KeysDown, 652); }
+        }
         
         /// <summary>
         ///     Gets the value of the nav inputs
         /// </summary>
-        public RangeAccessor<float> NavInputs => new RangeAccessor<float>(NativePtr->NavInputs, 16);
+        public RangeAccessor<float> NavInputs => new RangeAccessor<float>((IntPtr)NativePtr->NavInputs, 16);
         
         /// <summary>
         ///     Gets the value of the mouse pos
@@ -426,7 +446,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the mouse down
         /// </summary>
-        public RangeAccessor<bool> MouseDown => new RangeAccessor<bool>(NativePtr->MouseDown, 5);
+        public RangeAccessor<bool> MouseDown => new RangeAccessor<bool>((IntPtr)NativePtr->MouseDown, 5);
         
         /// <summary>
         ///     Gets the value of the mouse wheel
@@ -471,7 +491,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the keys data
         /// </summary>
-        public RangeAccessor<ImGuiKeyData> KeysData => new RangeAccessor<ImGuiKeyData>(&NativePtr->KeysData0, 652);
+        public RangeAccessor<ImGuiKeyData> KeysData => new RangeAccessor<ImGuiKeyData>((IntPtr)(&NativePtr->KeysData0), 652);
         
         /// <summary>
         ///     Gets the value of the want capture mouse unless popup close
@@ -486,67 +506,67 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the mouse clicked pos
         /// </summary>
-        public RangeAccessor<Vector2> MouseClickedPos => new RangeAccessor<Vector2>(&NativePtr->MouseClickedPos0, 5);
+        public RangeAccessor<Vector2> MouseClickedPos => new RangeAccessor<Vector2>((IntPtr)(&NativePtr->MouseClickedPos0), 5);
         
         /// <summary>
         ///     Gets the value of the mouse clicked time
         /// </summary>
-        public RangeAccessor<double> MouseClickedTime => new RangeAccessor<double>(NativePtr->MouseClickedTime, 5);
+        public RangeAccessor<double> MouseClickedTime => new RangeAccessor<double>((IntPtr)NativePtr->MouseClickedTime, 5);
         
         /// <summary>
         ///     Gets the value of the mouse clicked
         /// </summary>
-        public RangeAccessor<bool> MouseClicked => new RangeAccessor<bool>(NativePtr->MouseClicked, 5);
+        public RangeAccessor<bool> MouseClicked => new RangeAccessor<bool>((IntPtr)NativePtr->MouseClicked, 5);
         
         /// <summary>
         ///     Gets the value of the mouse double clicked
         /// </summary>
-        public RangeAccessor<bool> MouseDoubleClicked => new RangeAccessor<bool>(NativePtr->MouseDoubleClicked, 5);
+        public RangeAccessor<bool> MouseDoubleClicked => new RangeAccessor<bool>((IntPtr)NativePtr->MouseDoubleClicked, 5);
         
         /// <summary>
         ///     Gets the value of the mouse clicked count
         /// </summary>
-        public RangeAccessor<ushort> MouseClickedCount => new RangeAccessor<ushort>(NativePtr->MouseClickedCount, 5);
+        public RangeAccessor<ushort> MouseClickedCount => new RangeAccessor<ushort>((IntPtr)NativePtr->MouseClickedCount, 5);
         
         /// <summary>
         ///     Gets the value of the mouse clicked last count
         /// </summary>
-        public RangeAccessor<ushort> MouseClickedLastCount => new RangeAccessor<ushort>(NativePtr->MouseClickedLastCount, 5);
+        public RangeAccessor<ushort> MouseClickedLastCount => new RangeAccessor<ushort>((IntPtr)NativePtr->MouseClickedLastCount, 5);
         
         /// <summary>
         ///     Gets the value of the mouse released
         /// </summary>
-        public RangeAccessor<bool> MouseReleased => new RangeAccessor<bool>(NativePtr->MouseReleased, 5);
+        public RangeAccessor<bool> MouseReleased => new RangeAccessor<bool>((IntPtr)NativePtr->MouseReleased, 5);
         
         /// <summary>
         ///     Gets the value of the mouse down owned
         /// </summary>
-        public RangeAccessor<bool> MouseDownOwned => new RangeAccessor<bool>(NativePtr->MouseDownOwned, 5);
+        public RangeAccessor<bool> MouseDownOwned => new RangeAccessor<bool>((IntPtr)NativePtr->MouseDownOwned, 5);
         
         /// <summary>
         ///     Gets the value of the mouse down owned unless popup close
         /// </summary>
-        public RangeAccessor<bool> MouseDownOwnedUnlessPopupClose => new RangeAccessor<bool>(NativePtr->MouseDownOwnedUnlessPopupClose, 5);
+        public RangeAccessor<bool> MouseDownOwnedUnlessPopupClose => new RangeAccessor<bool>((IntPtr)NativePtr->MouseDownOwnedUnlessPopupClose, 5);
         
         /// <summary>
         ///     Gets the value of the mouse down duration
         /// </summary>
-        public RangeAccessor<float> MouseDownDuration => new RangeAccessor<float>(NativePtr->MouseDownDuration, 5);
+        public RangeAccessor<float> MouseDownDuration => new RangeAccessor<float>((IntPtr)NativePtr->MouseDownDuration, 5);
         
         /// <summary>
         ///     Gets the value of the mouse down duration prev
         /// </summary>
-        public RangeAccessor<float> MouseDownDurationPrev => new RangeAccessor<float>(NativePtr->MouseDownDurationPrev, 5);
+        public RangeAccessor<float> MouseDownDurationPrev => new RangeAccessor<float>((IntPtr)NativePtr->MouseDownDurationPrev, 5);
         
         /// <summary>
         ///     Gets the value of the mouse drag max distance abs
         /// </summary>
-        public RangeAccessor<Vector2> MouseDragMaxDistanceAbs => new RangeAccessor<Vector2>(&NativePtr->MouseDragMaxDistanceAbs0, 5);
+        public RangeAccessor<Vector2> MouseDragMaxDistanceAbs => new RangeAccessor<Vector2>((IntPtr)(&NativePtr->MouseDragMaxDistanceAbs0), 5);
         
         /// <summary>
         ///     Gets the value of the mouse drag max distance sqr
         /// </summary>
-        public RangeAccessor<float> MouseDragMaxDistanceSqr => new RangeAccessor<float>(NativePtr->MouseDragMaxDistanceSqr, 5);
+        public RangeAccessor<float> MouseDragMaxDistanceSqr => new RangeAccessor<float>((IntPtr)NativePtr->MouseDragMaxDistanceSqr, 5);
         
         /// <summary>
         ///     Gets the value of the pen pressure
