@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace Alis.Extension.Graphic.ImGui
@@ -34,25 +36,24 @@ namespace Alis.Extension.Graphic.ImGui
     /// <summary>
     ///     The null terminated string
     /// </summary>
-    public readonly unsafe struct NullTerminatedString
+    public readonly struct NullTerminatedString
     {
         /// <summary>
         ///     The data
         /// </summary>
-        public readonly byte* Data;
+        public readonly IntPtr Data;
         
         /// <summary>
         ///     Initializes a new instance of the <see cref="NullTerminatedString" /> class
         /// </summary>
         /// <param name="data">The data</param>
-        public NullTerminatedString(byte* data) => Data = data;
+        public NullTerminatedString(IntPtr data) => Data = data;
         
         public NullTerminatedString(byte[] data)
         {
-            fixed (byte* ptr = data)
-            {
-                Data = ptr;
-            }
+            Data = Marshal.AllocHGlobal(data.Length + 1);
+            Marshal.Copy(data, 0, Data, data.Length);
+            Marshal.WriteByte(Data + data.Length, 0);
         }
 
         /// <summary>
@@ -61,15 +62,19 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The string</returns>
         public override string ToString()
         {
-            int length = 0;
-            byte* ptr = Data;
-            while (*ptr != 0)
-            {
-                length += 1;
-                ptr += 1;
-            }
-            
-            return Encoding.ASCII.GetString(Data, length);
+            if (Data == IntPtr.Zero)
+                return string.Empty;
+
+            var length = 0;
+            while (Marshal.ReadByte(Data, length) != 0)
+                length++;
+
+            if (length == 0)
+                return string.Empty;
+
+            var buffer = new byte[length];
+            Marshal.Copy(Data, buffer, 0, length);
+            return Encoding.UTF8.GetString(buffer);
         }
         
         /// <summary>

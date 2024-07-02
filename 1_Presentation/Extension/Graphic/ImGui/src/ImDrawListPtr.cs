@@ -108,7 +108,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the  ownername
         /// </summary>
-        public NullTerminatedString OwnerName => new NullTerminatedString(NativePtr->OwnerName);
+        public NullTerminatedString OwnerName => new NullTerminatedString((IntPtr)NativePtr->OwnerName);
         
         /// <summary>
         ///     Gets the value of the vtx write ptr
