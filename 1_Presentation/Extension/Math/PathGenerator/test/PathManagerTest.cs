@@ -29,6 +29,9 @@
 
 namespace Alis.Extension.Math.PathGenerator.Test
 {
+    /// <summary>
+    /// The path manager test class
+    /// </summary>
     public class PathManagerTest
     {
         

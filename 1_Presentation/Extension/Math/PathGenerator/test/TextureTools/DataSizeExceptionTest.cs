@@ -29,6 +29,9 @@
 
 namespace Alis.Extension.Math.PathGenerator.Test.TextureTools
 {
+    /// <summary>
+    /// The data size exception test class
+    /// </summary>
     public class DataSizeExceptionTest
     {
         

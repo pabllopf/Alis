@@ -29,6 +29,9 @@
 
 namespace Alis.Extension.Math.PathGenerator.Test.Triangulation.Seidel
 {
+    /// <summary>
+    /// The monotone mountain test class
+    /// </summary>
     public class MonotoneMountainTest
     {
         

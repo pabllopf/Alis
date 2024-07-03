@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:DefaultTest.cs
+//  File:ProfileDataTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,17 +32,36 @@ using Xunit;
 namespace Alis.Extension.Profile.Test
 {
     /// <summary>
-    ///     The default test class
+    /// The profile data test class
     /// </summary>
-    public class DefaultTest
+    public class ProfileDataTest
     {
         /// <summary>
-        ///     Tests that test
+        /// Tests that memory usage set and get returns correct value
         /// </summary>
         [Fact]
-        public void Test()
+        public void MemoryUsage_SetAndGet_ReturnsCorrectValue()
         {
-            Assert.True(true);
+            ProfileData profileData = new ProfileData();
+            long expectedMemoryUsage = 1024;
+
+            profileData.MemoryUsage = expectedMemoryUsage;
+
+            Assert.Equal(expectedMemoryUsage, profileData.MemoryUsage);
+        }
+
+        /// <summary>
+        /// Tests that cpu usage set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void CpuUsage_SetAndGet_ReturnsCorrectValue()
+        {
+            ProfileData profileData = new ProfileData();
+            double expectedCpuUsage = 3.14;
+
+            profileData.CpuUsage = expectedCpuUsage;
+
+            Assert.Equal(expectedCpuUsage, profileData.CpuUsage);
         }
     }
 }
