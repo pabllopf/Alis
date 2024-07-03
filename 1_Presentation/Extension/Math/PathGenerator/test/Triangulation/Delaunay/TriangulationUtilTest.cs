@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:DummyTest.cs
+//  File:TriangulationUtilTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,22 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Xunit;
-
-namespace Alis.Extension.Math.PathGenerator.Test
+namespace Alis.Extension.Math.PathGenerator.Test.Triangulation.Delaunay
 {
-    /// <summary>
-    ///     The dummy test class
-    /// </summary>
-    public class DummyTest
+    public class TriangulationUtilTest
     {
-        /// <summary>
-        ///     Tests that default test
-        /// </summary>
-        [Fact]
-        public void DefaultTest()
-        {
-            Assert.True(true);
-        }
+        
     }
 }
