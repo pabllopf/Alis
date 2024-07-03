@@ -498,6 +498,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             return ret;
         }
         
+        
         /// <summary>
         ///     Tables the get sort specs
         /// </summary>
