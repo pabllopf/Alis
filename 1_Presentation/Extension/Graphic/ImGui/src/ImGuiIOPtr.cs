@@ -435,6 +435,9 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         public  Vector2 MouseDelta => Marshal.PtrToStructure<ImGuiIo>(NativePtr).MouseDelta;
         
+        /// <summary>
+        /// Gets or sets the value of the key map
+        /// </summary>
         public RangeAccessor<int> KeyMap
         {
             get

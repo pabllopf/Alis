@@ -626,6 +626,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
             return ret;
         }
         
+        /// <summary>
+        /// The io
+        /// </summary>
         private static ImGuiIoPtr _io;
         
         /// <summary>

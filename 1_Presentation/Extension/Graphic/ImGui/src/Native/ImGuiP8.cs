@@ -33,6 +33,9 @@ using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Extension.Graphic.ImGui.Native
 {
+    /// <summary>
+    /// The im gui class
+    /// </summary>
     public static partial class ImGui
     {
         /// <summary>

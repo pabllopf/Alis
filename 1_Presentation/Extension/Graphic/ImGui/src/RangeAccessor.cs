@@ -63,6 +63,9 @@ namespace Alis.Extension.Graphic.ImGui
             Count = count;
         }
         
+        /// <summary>
+        /// The offset ptr
+        /// </summary>
         public T this[int index]
         {
             get
