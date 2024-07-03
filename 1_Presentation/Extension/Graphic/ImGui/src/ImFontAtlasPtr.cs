@@ -73,7 +73,7 @@ namespace Alis.Extension.Graphic.ImGui
         public  IntPtr TexId
         {
             get { return Marshal.PtrToStructure<ImFontAtlas>(NativePtr).TexId; }
-            set { Marshal.WriteIntPtr(NativePtr, Marshal.OffsetOf<ImFontAtlas>("TexID").ToInt32(), value); }
+            set { Marshal.WriteIntPtr(NativePtr, Marshal.OffsetOf<ImFontAtlas>("TexId").ToInt32(), value); }
         }
         
         /// <summary>
