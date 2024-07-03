@@ -5,6 +5,68 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.2.9] - 2024-07-03
+### :sparkles: New Features
+- [`174df27`](https://github.com/pabllopf/Alis/commit/174df27880ee69f290ff15e7b2adc0a7e4331c02) - divide in 21 parts the ImPlot *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1322e50`](https://github.com/pabllopf/Alis/commit/1322e5042e82432d78596fc0ec1cb084f9620aa2) - divide on 7 parts the imgui *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fd0d08b`](https://github.com/pabllopf/Alis/commit/fd0d08b3698a6f0d621456568f119667110feb1d) - splir imgui to 7 parts *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`387dfc7`](https://github.com/pabllopf/Alis/commit/387dfc746c5f0fe4127bb22c055545203addf3e0) - DeathZone sample *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a1fa53c`](https://github.com/pabllopf/Alis/commit/a1fa53c75837a28a1fbc3c90853b6a28d756b7c8) - samples of the paths *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`633da04`](https://github.com/pabllopf/Alis/commit/633da04b11f66744b00fc386925efc9034381ebd) - 4 bugs of sonarcloud *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`43db357`](https://github.com/pabllopf/Alis/commit/43db35701cac2f75ace8dbcef8c1210062d459d4) - delete unsafe code of Vector4* *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e41d131`](https://github.com/pabllopf/Alis/commit/e41d1311a177fdcbceb853182ec399b13133623a) - delete unsafe code of ImVector *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a96bbd5`](https://github.com/pabllopf/Alis/commit/a96bbd541720c686d18e8c202db4f9d3dcda2143) - delete unsafe code from RangePtrAccessor *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`39c2b94`](https://github.com/pabllopf/Alis/commit/39c2b941cd583ffd97ead1bf738f00a9f66d30ce) - delete ImPtrVector *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1a010d4`](https://github.com/pabllopf/Alis/commit/1a010d44d8ca8625a7fa119144c0086ad030a5e5) - delete ImDrawDataPtr *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`14401df`](https://github.com/pabllopf/Alis/commit/14401dffe66bfc0a929d40ab48d72019cda090dd) - delete ImPlotPointPtr *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5bc8ef8`](https://github.com/pabllopf/Alis/commit/5bc8ef8a6587be436e7aafb900ba2b387ca84fa8) - delete ImPlotRangePtr *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ebefeb1`](https://github.com/pabllopf/Alis/commit/ebefeb13c1eaacb418d45b9505f8e5b48f4f8880) - delete ImNodesEditorContextPtr *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`93b1d6c`](https://github.com/pabllopf/Alis/commit/93b1d6cb2c9e3b75d303dbc728eda8a6810dc706) - delete LinkDetachWithModifierClickPtr and MultipleSelectModifierPtr *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9bb7a12`](https://github.com/pabllopf/Alis/commit/9bb7a1281cc293646bb95aa23d2c63fa85fd00d3) - delete IoPtr *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d6adcdd`](https://github.com/pabllopf/Alis/commit/d6adcdda3b522241cca5b13b5bdbc5cbefb01a4a) - change name Guizmo and delete unsafe code *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9cf0ddf`](https://github.com/pabllopf/Alis/commit/9cf0ddfd97fe23fc36e678c784f2afa3c701d0fe) - delete unsafe code from EmulateThreeButtonMouse *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6974c0d`](https://github.com/pabllopf/Alis/commit/6974c0d9a79015e46c0559115319d715d40fbe99) - delete all code unsafe of ImNodes *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`af0552c`](https://github.com/pabllopf/Alis/commit/af0552c861149b99d451986896283bb98c5e598b) - delete unseless usings *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b9daacc`](https://github.com/pabllopf/Alis/commit/b9daacc0d140c691307a77f1641479060362d1c6) - delete unsafe code from implot part 1 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e0f62b4`](https://github.com/pabllopf/Alis/commit/e0f62b4782d73a17cdfb5a5b6075b004bb08a8bd) - ImPlotP22 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8c9d737`](https://github.com/pabllopf/Alis/commit/8c9d7376ff87002b0ae5040337b968105ee985bb) - ImPlotP13 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1060619`](https://github.com/pabllopf/Alis/commit/1060619c8cf3c1bc1b6725a59828fd90bbd22611) - delete all unsafe code of implot *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3a4ebfe`](https://github.com/pabllopf/Alis/commit/3a4ebfef45feb233e6cc9ffade145a01270339b2) - the implot values *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`01fc459`](https://github.com/pabllopf/Alis/commit/01fc45964111b106b1fce0ce080bd49459bec2e2) - the issues of serialize math module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d2799b1`](https://github.com/pabllopf/Alis/commit/d2799b15260dd54731209107bd1987b2e21c31c2) - reduce all input pointers *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5a785e1`](https://github.com/pabllopf/Alis/commit/5a785e1bf9a5c66bf9280d91d8ee00fc9300dea4) - delete all unsafe code of sln *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6c04f06`](https://github.com/pabllopf/Alis/commit/6c04f06d66a8df6a1387e13da228cbed3562e11d) - dlls from imgui *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e2c9adf`](https://github.com/pabllopf/Alis/commit/e2c9adfc3bdabc8ccf628b95a40dd32791eb0e53) - entrypoints on ImNodesNative *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4373bc9`](https://github.com/pabllopf/Alis/commit/4373bc99c2f1d1ec99a75a4449ddc4eb151794e2) - EntryPoints of implot *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d96e854`](https://github.com/pabllopf/Alis/commit/d96e85445623b36fb1a43e2535c0d59be18b9967) - EntryPoints of ImPlotNative *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`51d9531`](https://github.com/pabllopf/Alis/commit/51d95317a7836a3d10f552afa0944edf14a976da) - EntryPoints of ImPlotNative *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c40a3c4`](https://github.com/pabllopf/Alis/commit/c40a3c449e6f860f5201aa09d2db64bff5cbbca5) - delete unsafe code of ImGuiNative *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6bee9bc`](https://github.com/pabllopf/Alis/commit/6bee9bc2e87c6e97f33ba46ebc3878d086d1de33) - delete unsafe code *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`47d061b`](https://github.com/pabllopf/Alis/commit/47d061b6c2acf4f085e8aedb0bf81b64656be7f6) - delete unsafe code ImGuiNative *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`658fa1a`](https://github.com/pabllopf/Alis/commit/658fa1a93117115bc626ba2d88f1f4e1969de8cb) - delete unsafe code *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7d19766`](https://github.com/pabllopf/Alis/commit/7d19766a68a84f8e9f407b29967fb658713032c8) - delete unsafe code ImGuiNative *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c8f4555`](https://github.com/pabllopf/Alis/commit/c8f4555bb9d45d4d1202bace20603b8dd932931d) - ImFontPtr *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`07dc994`](https://github.com/pabllopf/Alis/commit/07dc994b87b9ff95cf9db7da05e56921596d5698) - ImFontPtr unsafe code *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3722bce`](https://github.com/pabllopf/Alis/commit/3722bce08ceb9e53775e95b8bfee75bcfc5a34ca) - delete unsafe code *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`41e6880`](https://github.com/pabllopf/Alis/commit/41e6880e81fe1d706b9fb0958ffb361c2acda0ab) - delete unsafe code ImGuiIO *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`642597e`](https://github.com/pabllopf/Alis/commit/642597e785cc4aa5c5e998e0d24ffcb459781818) - covert 99% code *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e64a895`](https://github.com/pabllopf/Alis/commit/e64a895fc25afa08132c96a93174c708352af114) - covert the 100% *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4b6710a`](https://github.com/pabllopf/Alis/commit/4b6710a54692186916216f060c375450085872e1) - pro fix all unsafe code *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :construction_worker: Build System
+- [`2462464`](https://github.com/pabllopf/Alis/commit/246246451a3965ee7851304c5816a8a2a6e6d1e9) - **deps**: bump akhilmhdh/contributors-readme-action *(commit by [@dependabot[bot]](https://github.com/apps/dependabot))*
+
+### :memo: Documentation Changes
+- [`34c9ed2`](https://github.com/pabllopf/Alis/commit/34c9ed264b3dfca545d4b469b06aa691be3bb400) - **contributor**: contrib-readme-action has updated readme *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+- [`5acb64f`](https://github.com/pabllopf/Alis/commit/5acb64f01a7b27d17a4da79ad81ead367f8f484d) - **contributor**: contrib-readme-action has updated readme *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+- [`d647807`](https://github.com/pabllopf/Alis/commit/d647807dafa0e05573af83f5708b026225e84cd2) - **contributor**: contrib-readme-action has updated readme *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+- [`bcb143e`](https://github.com/pabllopf/Alis/commit/bcb143ea4b00dd0dc10c81b4c6f8703fdabd0038) - **contributor**: contrib-readme-action has updated readme *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
 ## [v0.2.8] - 2024-06-01
 ### :sparkles: New Features
 - [`97acd15`](https://github.com/pabllopf/Alis/commit/97acd1530d138733a4518bb5160230c238c11fa5) - create a simple sample to Alis.Core.Aspect.Sample *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -2522,3 +2584,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [v0.2.7]: https://github.com/pabllopf/Alis/compare/v0.2.6...v0.2.7
 [v0.2.8]: https://github.com/pabllopf/Alis/compare/v0.2.7...v0.2.8
+[v0.2.9]: https://github.com/pabllopf/Alis/compare/v0.2.8...v0.2.9
