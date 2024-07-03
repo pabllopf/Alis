@@ -106,7 +106,13 @@ namespace Alis.Extension.Graphic.ImGui
         public  float DeltaTime
         {
             get { return Marshal.PtrToStructure<ImGuiIo>(NativePtr).DeltaTime; }
-            set { Marshal.WriteIntPtr(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("DeltaTime"), (IntPtr) value); }
+            set
+            {
+                // Write x and y values to the DisplaySize field
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.DeltaTime = value;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
         }
         
         /// <summary>
