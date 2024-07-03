@@ -54,6 +54,7 @@ using Version = Alis.Core.Graphic.Sdl2.Structs.Version;
 
 namespace Alis.App.Engine
 {
+    
     /// <summary>
     ///     The engine class
     /// </summary>
