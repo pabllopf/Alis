@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 using System.Text;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.ImGui.Utils;
@@ -42,31 +43,19 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the native ptr
         /// </summary>
-        public ImGuiIo* NativePtr { get; }
+        public IntPtr NativePtr { get; }
         
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImGuiIoPtr" /> class
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
-        public ImGuiIoPtr(ImGuiIo* nativePtr) => NativePtr = nativePtr;
-        
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="ImGuiIoPtr" /> class
-        /// </summary>
-        /// <param name="nativePtr">The native ptr</param>
-        public ImGuiIoPtr(IntPtr nativePtr) => NativePtr = (ImGuiIo*) nativePtr;
-        
-        /// <summary>
-        /// </summary>
-        /// <param name="nativePtr"></param>
-        /// <returns></returns>
-        public static implicit operator ImGuiIoPtr(ImGuiIo* nativePtr) => new ImGuiIoPtr(nativePtr);
+        public ImGuiIoPtr(IntPtr nativePtr) => NativePtr = nativePtr;
         
         /// <summary>
         /// </summary>
         /// <param name="wrappedPtr"></param>
         /// <returns></returns>
-        public static implicit operator ImGuiIo*(ImGuiIoPtr wrappedPtr) => wrappedPtr.NativePtr;
+        public static implicit operator IntPtr(ImGuiIoPtr wrappedPtr) => wrappedPtr.NativePtr;
         
         /// <summary>
         /// </summary>
@@ -77,209 +66,247 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the config flags
         /// </summary>
-        public ref ImGuiConfigFlags ConfigFlags => ref Unsafe.AsRef<ImGuiConfigFlags>(&NativePtr->ConfigFlags);
+        public  ImGuiConfigFlags ConfigFlags
+        {
+            get { return Marshal.PtrToStructure<ImGuiIo>(NativePtr).ConfigFlags; }
+            set { Marshal.WriteIntPtr(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("ConfigFlags"), (IntPtr) value); }
+        }
         
         /// <summary>
         ///     Gets the value of the backend flags
         /// </summary>
-        public ref ImGuiBackendFlags BackendFlags => ref Unsafe.AsRef<ImGuiBackendFlags>(&NativePtr->BackendFlags);
+        public ImGuiBackendFlags BackendFlags
+        {
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).BackendFlags;
+            set => Marshal.WriteIntPtr(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("BackendFlags"), (IntPtr) value);
+        }
         
         /// <summary>
         ///     Gets the value of the display size
         /// </summary>
-        public ref Vector2 DisplaySize => ref Unsafe.AsRef<Vector2>(&NativePtr->DisplaySize);
+        public Vector2 DisplaySize
+        {
+            get
+            {
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                return new Vector2(io.DisplaySize.X, io.DisplaySize.Y);
+            }
+            set
+            {
+                // Write x and y values to the DisplaySize field
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.DisplaySize.X = value.X;
+                io.DisplaySize.Y = value.Y;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
+        }
         
         /// <summary>
         ///     Gets the value of the delta time
         /// </summary>
-        public ref float DeltaTime => ref Unsafe.AsRef<float>(&NativePtr->DeltaTime);
+        public  float DeltaTime
+        {
+            get { return Marshal.PtrToStructure<ImGuiIo>(NativePtr).DeltaTime; }
+            set { Marshal.WriteIntPtr(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("DeltaTime"), (IntPtr) value); }
+        }
         
         /// <summary>
         ///     Gets the value of the ini saving rate
         /// </summary>
-        public ref float IniSavingRate => ref Unsafe.AsRef<float>(&NativePtr->IniSavingRate);
+        public  float IniSavingRate => Marshal.PtrToStructure<ImGuiIo>(NativePtr).IniSavingRate;
         
         /// <summary>
         ///     Gets the value of the ini filename
         /// </summary>
-        public NullTerminatedString IniFilename => new NullTerminatedString((IntPtr)NativePtr->IniFilename);
+        public NullTerminatedString IniFilename => new NullTerminatedString(Marshal.PtrToStructure<ImGuiIo>(NativePtr).IniFilename);
         
         /// <summary>
         ///     Gets the value of the log filename
         /// </summary>
-        public NullTerminatedString LogFilename => new NullTerminatedString((IntPtr)NativePtr->LogFilename);
+        public NullTerminatedString LogFilename => new NullTerminatedString(Marshal.PtrToStructure<ImGuiIo>(NativePtr).LogFilename);
         
         /// <summary>
         ///     Gets the value of the mouse double click time
         /// </summary>
-        public ref float MouseDoubleClickTime => ref Unsafe.AsRef<float>(&NativePtr->MouseDoubleClickTime);
+        public  float MouseDoubleClickTime =>  Marshal.PtrToStructure<ImGuiIo>(NativePtr).MouseDoubleClickTime;
         
         /// <summary>
         ///     Gets the value of the mouse double click max dist
         /// </summary>
-        public ref float MouseDoubleClickMaxDist => ref Unsafe.AsRef<float>(&NativePtr->MouseDoubleClickMaxDist);
+        public  float MouseDoubleClickMaxDist =>  Marshal.PtrToStructure<ImGuiIo>(NativePtr).MouseDoubleClickMaxDist;
         
         /// <summary>
         ///     Gets the value of the mouse drag threshold
         /// </summary>
-        public ref float MouseDragThreshold => ref Unsafe.AsRef<float>(&NativePtr->MouseDragThreshold);
+        public  float MouseDragThreshold => Marshal.PtrToStructure<ImGuiIo>(NativePtr).MouseDragThreshold;
         
         /// <summary>
         ///     Gets the value of the key repeat delay
         /// </summary>
-        public ref float KeyRepeatDelay => ref Unsafe.AsRef<float>(&NativePtr->KeyRepeatDelay);
+        public  float KeyRepeatDelay => Marshal.PtrToStructure<ImGuiIo>(NativePtr).KeyRepeatDelay;
         
         /// <summary>
         ///     Gets the value of the key repeat rate
         /// </summary>
-        public ref float KeyRepeatRate => ref Unsafe.AsRef<float>(&NativePtr->KeyRepeatRate);
+        public  float KeyRepeatRate => Marshal.PtrToStructure<ImGuiIo>(NativePtr).KeyRepeatRate;
         
         /// <summary>
         ///     Gets the value of the hover delay normal
         /// </summary>
-        public ref float HoverDelayNormal => ref Unsafe.AsRef<float>(&NativePtr->HoverDelayNormal);
+        public  float HoverDelayNormal => Marshal.PtrToStructure<ImGuiIo>(NativePtr).HoverDelayNormal;
         
         /// <summary>
         ///     Gets the value of the hover delay short
         /// </summary>
-        public ref float HoverDelayShort => ref Unsafe.AsRef<float>(&NativePtr->HoverDelayShort);
+        public  float HoverDelayShort => Marshal.PtrToStructure<ImGuiIo>(NativePtr).HoverDelayShort;
         
         /// <summary>
         ///     Gets or sets the value of the user data
         /// </summary>
         public IntPtr UserData
         {
-            get => (IntPtr) NativePtr->UserData;
-            set => NativePtr->UserData = (void*) value;
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).UserData;
+            set => Marshal.WriteIntPtr(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("UserData"), value);
         }
         
         /// <summary>
         ///     Gets the value of the fonts
         /// </summary>
-        public ImFontAtlasPtr Fonts => new ImFontAtlasPtr(NativePtr->Fonts);
+        public ImFontAtlasPtr Fonts => new ImFontAtlasPtr(Marshal.PtrToStructure<ImGuiIo>(NativePtr).Fonts);
         
         /// <summary>
         ///     Gets the value of the font global scale
         /// </summary>
-        public ref float FontGlobalScale => ref Unsafe.AsRef<float>(&NativePtr->FontGlobalScale);
+        public  float FontGlobalScale => Marshal.PtrToStructure<ImGuiIo>(NativePtr).FontGlobalScale;
         
         /// <summary>
         ///     Gets the value of the font allow user scaling
         /// </summary>
-        public ref bool FontAllowUserScaling => ref Unsafe.AsRef<bool>(&NativePtr->FontAllowUserScaling);
+        public  bool FontAllowUserScaling => Marshal.PtrToStructure<ImGuiIo>(NativePtr).FontAllowUserScaling != 0;
         
         /// <summary>
         ///     Gets the value of the font default
         /// </summary>
-        public ImFontPtr FontDefault => new ImFontPtr((IntPtr)NativePtr);
+        public ImFontPtr FontDefault => new ImFontPtr(Marshal.PtrToStructure<ImGuiIo>(NativePtr).FontDefault);
         
         /// <summary>
         ///     Gets the value of the display framebuffer scale
         /// </summary>
-        public ref Vector2 DisplayFramebufferScale => ref Unsafe.AsRef<Vector2>(&NativePtr->DisplayFramebufferScale);
+        public  Vector2 DisplayFramebufferScale
+        {
+            get { return Marshal.PtrToStructure<ImGuiIo>(NativePtr).DisplayFramebufferScale; }
+            set
+            {
+                // Write x and y values to the DisplayFramebufferScale field
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.DisplayFramebufferScale.X = value.X;
+                io.DisplayFramebufferScale.Y = value.Y;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
+        }
         
         /// <summary>
         ///     Gets the value of the config docking no split
         /// </summary>
-        public ref bool ConfigDockingNoSplit => ref Unsafe.AsRef<bool>(&NativePtr->ConfigDockingNoSplit);
+        public  bool ConfigDockingNoSplit => Marshal.PtrToStructure<ImGuiIo>(NativePtr).ConfigDockingNoSplit != 0;
         
         /// <summary>
         ///     Gets the value of the config docking with shift
         /// </summary>
-        public ref bool ConfigDockingWithShift => ref Unsafe.AsRef<bool>(&NativePtr->ConfigDockingWithShift);
+        public  bool ConfigDockingWithShift => Marshal.PtrToStructure<ImGuiIo>(NativePtr).ConfigDockingWithShift != 0;
         
         /// <summary>
         ///     Gets the value of the config docking always tab bar
         /// </summary>
-        public ref bool ConfigDockingAlwaysTabBar => ref Unsafe.AsRef<bool>(&NativePtr->ConfigDockingAlwaysTabBar);
+        public  bool ConfigDockingAlwaysTabBar => Marshal.PtrToStructure<ImGuiIo>(NativePtr).ConfigDockingAlwaysTabBar != 0;
         
         /// <summary>
         ///     Gets the value of the config docking transparent payload
         /// </summary>
-        public ref bool ConfigDockingTransparentPayload => ref Unsafe.AsRef<bool>(&NativePtr->ConfigDockingTransparentPayload);
+        public  bool ConfigDockingTransparentPayload => Marshal.PtrToStructure<ImGuiIo>(NativePtr).ConfigDockingTransparentPayload != 0;
         
         /// <summary>
         ///     Gets the value of the config viewports no auto merge
         /// </summary>
-        public ref bool ConfigViewportsNoAutoMerge => ref Unsafe.AsRef<bool>(&NativePtr->ConfigViewportsNoAutoMerge);
+        public  bool ConfigViewportsNoAutoMerge => Marshal.PtrToStructure<ImGuiIo>(NativePtr).ConfigViewportsNoAutoMerge != 0;
         
         /// <summary>
         ///     Gets the value of the config viewports no task bar icon
         /// </summary>
-        public ref bool ConfigViewportsNoTaskBarIcon => ref Unsafe.AsRef<bool>(&NativePtr->ConfigViewportsNoTaskBarIcon);
+        public  bool ConfigViewportsNoTaskBarIcon => Marshal.PtrToStructure<ImGuiIo>(NativePtr).ConfigViewportsNoTaskBarIcon != 0;
         
         /// <summary>
         ///     Gets the value of the config viewports no decoration
         /// </summary>
-        public ref bool ConfigViewportsNoDecoration => ref Unsafe.AsRef<bool>(&NativePtr->ConfigViewportsNoDecoration);
+        public  bool ConfigViewportsNoDecoration => Marshal.PtrToStructure<ImGuiIo>(NativePtr).ConfigViewportsNoDecoration != 0;
         
         /// <summary>
         ///     Gets the value of the config viewports no default parent
         /// </summary>
-        public ref bool ConfigViewportsNoDefaultParent => ref Unsafe.AsRef<bool>(&NativePtr->ConfigViewportsNoDefaultParent);
+        public  bool ConfigViewportsNoDefaultParent => Marshal.PtrToStructure<ImGuiIo>(NativePtr).ConfigViewportsNoDefaultParent != 0;
         
         /// <summary>
         ///     Gets the value of the mouse draw cursor
         /// </summary>
-        public ref bool MouseDrawCursor => ref Unsafe.AsRef<bool>(&NativePtr->MouseDrawCursor);
+        public  bool MouseDrawCursor => Marshal.PtrToStructure<ImGuiIo>(NativePtr).MouseDrawCursor != 0;
         
         /// <summary>
         ///     Gets the value of the config mac osx behaviors
         /// </summary>
-        public ref bool ConfigMacOsxBehaviors => ref Unsafe.AsRef<bool>(&NativePtr->ConfigMacOsxBehaviors);
+        public  bool ConfigMacOsxBehaviors => Marshal.PtrToStructure<ImGuiIo>(NativePtr).ConfigMacOsxBehaviors != 0;
         
         /// <summary>
         ///     Gets the value of the config input trickle event queue
         /// </summary>
-        public ref bool ConfigInputTrickleEventQueue => ref Unsafe.AsRef<bool>(&NativePtr->ConfigInputTrickleEventQueue);
+        public  bool ConfigInputTrickleEventQueue => Marshal.PtrToStructure<ImGuiIo>(NativePtr).ConfigInputTrickleEventQueue != 0;
         
         /// <summary>
         ///     Gets the value of the config input text cursor blink
         /// </summary>
-        public ref bool ConfigInputTextCursorBlink => ref Unsafe.AsRef<bool>(&NativePtr->ConfigInputTextCursorBlink);
+        public  bool ConfigInputTextCursorBlink => Marshal.PtrToStructure<ImGuiIo>(NativePtr).ConfigInputTextCursorBlink != 0;
         
         /// <summary>
         ///     Gets the value of the config input text enter keep active
         /// </summary>
-        public ref bool ConfigInputTextEnterKeepActive => ref Unsafe.AsRef<bool>(&NativePtr->ConfigInputTextEnterKeepActive);
+        public  bool ConfigInputTextEnterKeepActive =>  Marshal.PtrToStructure<ImGuiIo>(NativePtr).ConfigInputTextEnterKeepActive != 0;
         
         /// <summary>
         ///     Gets the value of the config drag click to input text
         /// </summary>
-        public ref bool ConfigDragClickToInputText => ref Unsafe.AsRef<bool>(&NativePtr->ConfigDragClickToInputText);
+        public  bool ConfigDragClickToInputText => Marshal.PtrToStructure<ImGuiIo>(NativePtr).ConfigDragClickToInputText != 0;
         
         /// <summary>
         ///     Gets the value of the config windows resize from edges
         /// </summary>
-        public ref bool ConfigWindowsResizeFromEdges => ref Unsafe.AsRef<bool>(&NativePtr->ConfigWindowsResizeFromEdges);
+        public  bool ConfigWindowsResizeFromEdges => Marshal.PtrToStructure<ImGuiIo>(NativePtr).ConfigWindowsResizeFromEdges != 0;
         
         /// <summary>
         ///     Gets the value of the config windows move from title bar only
         /// </summary>
-        public ref bool ConfigWindowsMoveFromTitleBarOnly => ref Unsafe.AsRef<bool>(&NativePtr->ConfigWindowsMoveFromTitleBarOnly);
+        public  bool ConfigWindowsMoveFromTitleBarOnly => Marshal.PtrToStructure<ImGuiIo>(NativePtr).ConfigWindowsMoveFromTitleBarOnly != 0;
         
         /// <summary>
         ///     Gets the value of the config memory compact timer
         /// </summary>
-        public ref float ConfigMemoryCompactTimer => ref Unsafe.AsRef<float>(&NativePtr->ConfigMemoryCompactTimer);
+        public  float ConfigMemoryCompactTimer => Marshal.PtrToStructure<ImGuiIo>(NativePtr).ConfigMemoryCompactTimer;
         
         /// <summary>
         ///     Gets the value of the backend platform name
         /// </summary>
-        public NullTerminatedString BackendPlatformName => new NullTerminatedString((IntPtr)NativePtr->BackendPlatformName);
+        public NullTerminatedString BackendPlatformName => new NullTerminatedString(Marshal.PtrToStructure<ImGuiIo>(NativePtr).BackendPlatformName);
         
         /// <summary>
         ///     Gets the value of the backend renderer name
         /// </summary>
-        public NullTerminatedString BackendRendererName => new NullTerminatedString((IntPtr)NativePtr->BackendRendererName);
+        public NullTerminatedString BackendRendererName => new NullTerminatedString(Marshal.PtrToStructure<ImGuiIo>(NativePtr).BackendRendererName);
         
         /// <summary>
         ///     Gets or sets the value of the backend platform user data
         /// </summary>
         public IntPtr BackendPlatformUserData
         {
-            get => (IntPtr) NativePtr->BackendPlatformUserData;
-            set => NativePtr->BackendPlatformUserData = (void*) value;
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).BackendPlatformUserData;
+            set => Marshal.WriteIntPtr(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("BackendPlatformUserData"), value);
         }
         
         /// <summary>
@@ -287,8 +314,8 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         public IntPtr BackendRendererUserData
         {
-            get => (IntPtr) NativePtr->BackendRendererUserData;
-            set => NativePtr->BackendRendererUserData = (void*) value;
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).BackendRendererUserData;
+            set => Marshal.WriteIntPtr(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("BackendRendererUserData"), value);
         }
         
         /// <summary>
@@ -296,132 +323,132 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         public IntPtr BackendLanguageUserData
         {
-            get => (IntPtr) NativePtr->BackendLanguageUserData;
-            set => NativePtr->BackendLanguageUserData = (void*) value;
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).BackendLanguageUserData;
+            set => Marshal.WriteIntPtr(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("BackendLanguageUserData"), value);
         }
         
         /// <summary>
         ///     Gets the value of the get clipboard text fn
         /// </summary>
-        public ref IntPtr GetClipboardTextFn => ref Unsafe.AsRef<IntPtr>(&NativePtr->GetClipboardTextFn);
+        public  IntPtr GetClipboardTextFn => Marshal.PtrToStructure<ImGuiIo>(NativePtr).GetClipboardTextFn;
         
         /// <summary>
         ///     Gets the value of the set clipboard text fn
         /// </summary>
-        public ref IntPtr SetClipboardTextFn => ref Unsafe.AsRef<IntPtr>(&NativePtr->SetClipboardTextFn);
+        public  IntPtr SetClipboardTextFn => Marshal.PtrToStructure<ImGuiIo>(NativePtr).SetClipboardTextFn;
         
         /// <summary>
         ///     Gets or sets the value of the clipboard user data
         /// </summary>
         public IntPtr ClipboardUserData
         {
-            get => (IntPtr) NativePtr->ClipboardUserData;
-            set => NativePtr->ClipboardUserData = (void*) value;
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).ClipboardUserData;
+            set => Marshal.WriteIntPtr(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("ClipboardUserData"), value);
         }
         
         /// <summary>
         ///     Gets the value of the set platform ime data fn
         /// </summary>
-        public ref IntPtr SetPlatformImeDataFn => ref Unsafe.AsRef<IntPtr>(&NativePtr->SetPlatformImeDataFn);
+        public  IntPtr SetPlatformImeDataFn =>  Marshal.PtrToStructure<ImGuiIo>(NativePtr).SetPlatformImeDataFn;
         
         /// <summary>
         ///     Gets or sets the value of the  unusedpadding
         /// </summary>
         public IntPtr UnusedPadding
         {
-            get => (IntPtr) NativePtr->UnusedPadding;
-            set => NativePtr->UnusedPadding = (void*) value;
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).UnusedPadding;
+            set => Marshal.WriteIntPtr(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("UnusedPadding"), value);
         }
         
         /// <summary>
         ///     Gets the value of the want capture mouse
         /// </summary>
-        public ref bool WantCaptureMouse => ref Unsafe.AsRef<bool>(&NativePtr->WantCaptureMouse);
+        public  bool WantCaptureMouse => Marshal.PtrToStructure<ImGuiIo>(NativePtr).WantCaptureMouse != 0;
         
         /// <summary>
         ///     Gets the value of the want capture keyboard
         /// </summary>
-        public ref bool WantCaptureKeyboard => ref Unsafe.AsRef<bool>(&NativePtr->WantCaptureKeyboard);
+        public  bool WantCaptureKeyboard => Marshal.PtrToStructure<ImGuiIo>(NativePtr).WantCaptureKeyboard != 0;
         
         /// <summary>
         ///     Gets the value of the want text input
         /// </summary>
-        public ref bool WantTextInput => ref Unsafe.AsRef<bool>(&NativePtr->WantTextInput);
+        public  bool WantTextInput => Marshal.PtrToStructure<ImGuiIo>(NativePtr).WantTextInput != 0;
         
         /// <summary>
         ///     Gets the value of the want set mouse pos
         /// </summary>
-        public ref bool WantSetMousePos => ref Unsafe.AsRef<bool>(&NativePtr->WantSetMousePos);
+        public  bool WantSetMousePos => Marshal.PtrToStructure<ImGuiIo>(NativePtr).WantSetMousePos != 0;
         
         /// <summary>
         ///     Gets the value of the want save ini settings
         /// </summary>
-        public ref bool WantSaveIniSettings => ref Unsafe.AsRef<bool>(&NativePtr->WantSaveIniSettings);
+        public  bool WantSaveIniSettings => Marshal.PtrToStructure<ImGuiIo>(NativePtr).WantSaveIniSettings != 0;
         
         /// <summary>
         ///     Gets the value of the nav active
         /// </summary>
-        public ref bool NavActive => ref Unsafe.AsRef<bool>(&NativePtr->NavActive);
+        public  bool NavActive => Marshal.PtrToStructure<ImGuiIo>(NativePtr).NavActive != 0;
         
         /// <summary>
         ///     Gets the value of the nav visible
         /// </summary>
-        public ref bool NavVisible => ref Unsafe.AsRef<bool>(&NativePtr->NavVisible);
+        public  bool NavVisible => Marshal.PtrToStructure<ImGuiIo>(NativePtr).NavVisible != 0;
         
         /// <summary>
         ///     Gets the value of the framerate
         /// </summary>
-        public ref float Framerate => ref Unsafe.AsRef<float>(&NativePtr->Framerate);
+        public  float Framerate => Marshal.PtrToStructure<ImGuiIo>(NativePtr).Framerate;
         
         /// <summary>
         ///     Gets the value of the metrics render vertices
         /// </summary>
-        public ref int MetricsRenderVertices => ref Unsafe.AsRef<int>(&NativePtr->MetricsRenderVertices);
+        public  int MetricsRenderVertices => Marshal.PtrToStructure<ImGuiIo>(NativePtr).MetricsRenderVertices;
         
         /// <summary>
         ///     Gets the value of the metrics render indices
         /// </summary>
-        public ref int MetricsRenderIndices => ref Unsafe.AsRef<int>(&NativePtr->MetricsRenderIndices);
+        public  int MetricsRenderIndices => Marshal.PtrToStructure<ImGuiIo>(NativePtr).MetricsRenderIndices;
         
         /// <summary>
         ///     Gets the value of the metrics render windows
         /// </summary>
-        public ref int MetricsRenderWindows => ref Unsafe.AsRef<int>(&NativePtr->MetricsRenderWindows);
+        public  int MetricsRenderWindows => Marshal.PtrToStructure<ImGuiIo>(NativePtr).MetricsRenderWindows;
         
         /// <summary>
         ///     Gets the value of the metrics active windows
         /// </summary>
-        public ref int MetricsActiveWindows => ref Unsafe.AsRef<int>(&NativePtr->MetricsActiveWindows);
+        public  int MetricsActiveWindows => Marshal.PtrToStructure<ImGuiIo>(NativePtr).MetricsActiveWindows;
         
         /// <summary>
         ///     Gets the value of the metrics active allocations
         /// </summary>
-        public ref int MetricsActiveAllocations => ref Unsafe.AsRef<int>(&NativePtr->MetricsActiveAllocations);
+        public  int MetricsActiveAllocations =>  Marshal.PtrToStructure<ImGuiIo>(NativePtr).MetricsActiveAllocations;
         
         /// <summary>
         ///     Gets the value of the mouse delta
         /// </summary>
-        public ref Vector2 MouseDelta => ref Unsafe.AsRef<Vector2>(&NativePtr->MouseDelta);
+        public  Vector2 MouseDelta => Marshal.PtrToStructure<ImGuiIo>(NativePtr).MouseDelta;
         
-        /// <summary>
-        ///     Gets the value of the key map
-        /// </summary>
         public RangeAccessor<int> KeyMap
         {
             get
             {
-                return new RangeAccessor<int>((IntPtr) NativePtr->KeyMap, 652);
+                // Assuming KeyMap is the first field in ImGuiIo, adjust the offset accordingly if it's not.
+                int offsetToKeyMap = Marshal.OffsetOf<ImGuiIo>("KeyMap").ToInt32();
+                IntPtr keyMapPtr = IntPtr.Add(NativePtr, offsetToKeyMap);
+
+                // Assuming the size of the key map is known to be 652
+                return new RangeAccessor<int>(keyMapPtr, 652);
             }
             set
             {
-                if (value.Count != 652)
-                {
-                    throw new ArgumentException("The count of the value should be 652");
-                }
-                for (int i = 0; i < 652; i++)
-                {
-                    NativePtr->KeyMap[i] = value[i];
-                }
+                // Assuming KeyMap is the first field in ImGuiIo, adjust the offset accordingly if it's not.
+                int offsetToKeyMap = Marshal.OffsetOf<ImGuiIo>("KeyMap").ToInt32();
+                IntPtr keyMapPtr = IntPtr.Add(NativePtr, offsetToKeyMap);
+
+                // Assuming the size of the key map is known to be 652
+                Marshal.WriteIntPtr(keyMapPtr, value.Data);
             }
         }
         
@@ -430,178 +457,566 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         public RangeAccessor<bool> KeysDown
         {
-            get { return new RangeAccessor<bool>((IntPtr) NativePtr->KeysDown, 652); }
+            get
+            {
+                // Assuming KeysDown is the first field in ImGuiIo, adjust the offset accordingly if it's not.
+                int offsetToKeysDown = Marshal.OffsetOf<ImGuiIo>("KeysDown").ToInt32();
+                IntPtr keysDownPtr = IntPtr.Add(NativePtr, offsetToKeysDown);
+
+                // Assuming the size of the keys down is known to be 512
+                return new RangeAccessor<bool>(keysDownPtr, 512);
+            }
+            set
+            {
+                // Assuming KeysDown is the first field in ImGuiIo, adjust the offset accordingly if it's not.
+                int offsetToKeysDown = Marshal.OffsetOf<ImGuiIo>("KeysDown").ToInt32();
+                IntPtr keysDownPtr = IntPtr.Add(NativePtr, offsetToKeysDown);
+
+                // Assuming the size of the keys down is known to be 512
+                Marshal.WriteIntPtr(keysDownPtr, value.Data);
+            }
         }
         
         /// <summary>
         ///     Gets the value of the nav inputs
         /// </summary>
-        public RangeAccessor<float> NavInputs => new RangeAccessor<float>((IntPtr)NativePtr->NavInputs, 16);
+        public RangeAccessor<float> NavInputs
+        {
+            get
+            {
+                // Assuming NavInputs is the first field in ImGuiIo, adjust the offset accordingly if it's not.
+                int offsetToNavInputs = Marshal.OffsetOf<ImGuiIo>("NavInputs").ToInt32();
+                IntPtr navInputsPtr = IntPtr.Add(NativePtr, offsetToNavInputs);
+
+                // Assuming the size of the nav inputs is known to be 21
+                return new RangeAccessor<float>(navInputsPtr, 21);
+            }
+            set
+            {
+                // Assuming NavInputs is the first field in ImGuiIo, adjust the offset accordingly if it's not.
+                int offsetToNavInputs = Marshal.OffsetOf<ImGuiIo>("NavInputs").ToInt32();
+                IntPtr navInputsPtr = IntPtr.Add(NativePtr, offsetToNavInputs);
+
+                // Assuming the size of the nav inputs is known to be 21
+                Marshal.WriteIntPtr(navInputsPtr, value.Data);
+            }
+        }
         
         /// <summary>
         ///     Gets the value of the mouse pos
         /// </summary>
-        public ref Vector2 MousePos => ref Unsafe.AsRef<Vector2>(&NativePtr->MousePos);
+        public  Vector2 MousePos
+        {
+            get { return Marshal.PtrToStructure<ImGuiIo>(NativePtr).MousePos; }
+            set
+            {
+                // Write x and y values to the MousePos field
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.MousePos.X = value.X;
+                io.MousePos.Y = value.Y;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
+        }
         
         /// <summary>
         ///     Gets the value of the mouse down
         /// </summary>
-        public RangeAccessor<bool> MouseDown => new RangeAccessor<bool>((IntPtr)NativePtr->MouseDown, 5);
+        public RangeAccessor<bool> MouseDown
+        {
+            get
+            {
+                // Assuming MouseDown is the first field in ImGuiIo, adjust the offset accordingly if it's not.
+                int offsetToMouseDown = Marshal.OffsetOf<ImGuiIo>("MouseDown").ToInt32();
+                IntPtr mouseDownPtr = IntPtr.Add(NativePtr, offsetToMouseDown);
+
+                // Assuming the size of the mouse down is known to be 5
+                return new RangeAccessor<bool>(mouseDownPtr, 5);
+            }
+            set
+            {
+                // Assuming MouseDown is the first field in ImGuiIo, adjust the offset accordingly if it's not.
+                int offsetToMouseDown = Marshal.OffsetOf<ImGuiIo>("MouseDown").ToInt32();
+                IntPtr mouseDownPtr = IntPtr.Add(NativePtr, offsetToMouseDown);
+
+                // Assuming the size of the mouse down is known to be 5
+                Marshal.WriteIntPtr(mouseDownPtr, value.Data);
+            }
+        }
         
         /// <summary>
         ///     Gets the value of the mouse wheel
         /// </summary>
-        public ref float MouseWheel => ref Unsafe.AsRef<float>(&NativePtr->MouseWheel);
+        public  float MouseWheel
+        {
+            get { return Marshal.PtrToStructure<ImGuiIo>(NativePtr).MouseWheel; }
+            set { Marshal.WriteIntPtr(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("MouseWheel"), (IntPtr) value); }
+        }
         
         /// <summary>
         ///     Gets the value of the mouse wheel h
         /// </summary>
-        public ref float MouseWheelH => ref Unsafe.AsRef<float>(&NativePtr->MouseWheelH);
+        public  float MouseWheelH
+        {
+            get { return Marshal.PtrToStructure<ImGuiIo>(NativePtr).MouseWheelH; }
+            set { Marshal.WriteIntPtr(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("MouseWheelH"), (IntPtr) value); }
+        }
         
         /// <summary>
         ///     Gets the value of the mouse hovered viewport
         /// </summary>
-        public ref uint MouseHoveredViewport => ref Unsafe.AsRef<uint>(&NativePtr->MouseHoveredViewport);
+        public  uint MouseHoveredViewport => Marshal.PtrToStructure<ImGuiIo>(NativePtr).MouseHoveredViewport;
         
         /// <summary>
         ///     Gets the value of the key ctrl
         /// </summary>
-        public ref bool KeyCtrl => ref Unsafe.AsRef<bool>(&NativePtr->KeyCtrl);
+        public  bool KeyCtrl
+        {
+            get { return Marshal.PtrToStructure<ImGuiIo>(NativePtr).KeyCtrl != 0; }
+            set {
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.KeyCtrl = value ? (byte) 1 : (byte) 0;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
+        }
         
         /// <summary>
         ///     Gets the value of the key shift
         /// </summary>
-        public ref bool KeyShift => ref Unsafe.AsRef<bool>(&NativePtr->KeyShift);
+        public  bool KeyShift
+        {
+            get { return Marshal.PtrToStructure<ImGuiIo>(NativePtr).KeyShift != 0; }
+            set {
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.KeyShift = value ? (byte) 1 : (byte) 0;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
+        }
         
         /// <summary>
         ///     Gets the value of the key alt
         /// </summary>
-        public ref bool KeyAlt => ref Unsafe.AsRef<bool>(&NativePtr->KeyAlt);
+        public  bool KeyAlt
+        {
+            get { return Marshal.PtrToStructure<ImGuiIo>(NativePtr).KeyAlt != 0; }
+            set {
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.KeyAlt = value ? (byte) 1 : (byte) 0;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
+        }
         
         /// <summary>
         ///     Gets the value of the key super
         /// </summary>
-        public ref bool KeySuper => ref Unsafe.AsRef<bool>(&NativePtr->KeySuper);
+        public  bool KeySuper
+        {
+            get { return Marshal.PtrToStructure<ImGuiIo>(NativePtr).KeySuper != 0; }
+            set {
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.KeySuper = value ? (byte) 1 : (byte) 0;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
+        }
         
         /// <summary>
         ///     Gets the value of the key mods
         /// </summary>
-        public ref ImGuiKey KeyMods => ref Unsafe.AsRef<ImGuiKey>(&NativePtr->KeyMods);
+        public  ImGuiKey KeyMods => Marshal.PtrToStructure<ImGuiIo>(NativePtr).KeyMods;
         
         /// <summary>
         ///     Gets the value of the keys data
         /// </summary>
-        public RangeAccessor<ImGuiKeyData> KeysData => new RangeAccessor<ImGuiKeyData>((IntPtr)(&NativePtr->KeysData0), 652);
+        public RangeAccessor<ImGuiKeyData> KeysData
+        {
+            get
+            {
+                // Assuming KeysData is the first field in ImGuiIo, adjust the offset accordingly if it's not.
+                int offsetToKeysData = Marshal.OffsetOf<ImGuiIo>("KeysData").ToInt32();
+                IntPtr keysDataPtr = IntPtr.Add(NativePtr, offsetToKeysData);
+
+                // Assuming the size of the keys data is known to be 512
+                return new RangeAccessor<ImGuiKeyData>(keysDataPtr, 512);
+            }
+            set
+            {
+                // Assuming KeysData is the first field in ImGuiIo, adjust the offset accordingly if it's not.
+                int offsetToKeysData = Marshal.OffsetOf<ImGuiIo>("KeysData").ToInt32();
+                IntPtr keysDataPtr = IntPtr.Add(NativePtr, offsetToKeysData);
+
+                // Assuming the size of the keys data is known to be 512
+                Marshal.WriteIntPtr(keysDataPtr, value.Data);
+            }
+        }
         
         /// <summary>
         ///     Gets the value of the want capture mouse unless popup close
         /// </summary>
-        public ref bool WantCaptureMouseUnlessPopupClose => ref Unsafe.AsRef<bool>(&NativePtr->WantCaptureMouseUnlessPopupClose);
+        public  bool WantCaptureMouseUnlessPopupClose => Marshal.PtrToStructure<ImGuiIo>(NativePtr).WantCaptureMouseUnlessPopupClose != 0;
         
         /// <summary>
         ///     Gets the value of the mouse pos prev
         /// </summary>
-        public ref Vector2 MousePosPrev => ref Unsafe.AsRef<Vector2>(&NativePtr->MousePosPrev);
+        public  Vector2 MousePosPrev => Marshal.PtrToStructure<ImGuiIo>(NativePtr).MousePosPrev;
         
         /// <summary>
         ///     Gets the value of the mouse clicked pos
         /// </summary>
-        public RangeAccessor<Vector2> MouseClickedPos => new RangeAccessor<Vector2>((IntPtr)(&NativePtr->MouseClickedPos0), 5);
+        public RangeAccessor<Vector2> MouseClickedPos
+        {
+            get
+            {
+                // Assuming MouseClickedPos is the first field in ImGuiIo, adjust the offset accordingly if it's not.
+                int offsetToMouseClickedPos = Marshal.OffsetOf<ImGuiIo>("MouseClickedPos").ToInt32();
+                IntPtr mouseClickedPosPtr = IntPtr.Add(NativePtr, offsetToMouseClickedPos);
+
+                // Assuming the size of the mouse clicked pos is known to be 5
+                return new RangeAccessor<Vector2>(mouseClickedPosPtr, 5);
+            }
+            set
+            {
+                // Assuming MouseClickedPos is the first field in ImGuiIo, adjust the offset accordingly if it's not.
+                int offsetToMouseClickedPos = Marshal.OffsetOf<ImGuiIo>("MouseClickedPos").ToInt32();
+                IntPtr mouseClickedPosPtr = IntPtr.Add(NativePtr, offsetToMouseClickedPos);
+
+                // Assuming the size of the mouse clicked pos is known to be 5
+                Marshal.WriteIntPtr(mouseClickedPosPtr, value.Data);
+            }
+        }
         
         /// <summary>
         ///     Gets the value of the mouse clicked time
         /// </summary>
-        public RangeAccessor<double> MouseClickedTime => new RangeAccessor<double>((IntPtr)NativePtr->MouseClickedTime, 5);
+        public RangeAccessor<double> MouseClickedTime
+        {
+            get
+            {
+                // Assuming MouseClickedTime is the first field in ImGuiIo, adjust the offset accordingly if it's not.
+                int offsetToMouseClickedTime = Marshal.OffsetOf<ImGuiIo>("MouseClickedTime").ToInt32();
+                IntPtr mouseClickedTimePtr = IntPtr.Add(NativePtr, offsetToMouseClickedTime);
+
+                // Assuming the size of the mouse clicked time is known to be 5
+                return new RangeAccessor<double>(mouseClickedTimePtr, 5);
+            }
+            set
+            {
+                // Assuming MouseClickedTime is the first field in ImGuiIo, adjust the offset accordingly if it's not.
+                int offsetToMouseClickedTime = Marshal.OffsetOf<ImGuiIo>("MouseClickedTime").ToInt32();
+                IntPtr mouseClickedTimePtr = IntPtr.Add(NativePtr, offsetToMouseClickedTime);
+
+                // Assuming the size of the mouse clicked time is known to be 5
+                Marshal.WriteIntPtr(mouseClickedTimePtr, value.Data);
+            }
+        }
         
         /// <summary>
         ///     Gets the value of the mouse clicked
         /// </summary>
-        public RangeAccessor<bool> MouseClicked => new RangeAccessor<bool>((IntPtr)NativePtr->MouseClicked, 5);
+        public RangeAccessor<bool> MouseClicked
+        {
+            get
+            {
+                // Assuming MouseClicked is the first field in ImGuiIo, adjust the offset accordingly if it's not.
+                int offsetToMouseClicked = Marshal.OffsetOf<ImGuiIo>("MouseClicked").ToInt32();
+                IntPtr mouseClickedPtr = IntPtr.Add(NativePtr, offsetToMouseClicked);
+
+                // Assuming the size of the mouse clicked is known to be 5
+                return new RangeAccessor<bool>(mouseClickedPtr, 5);
+            }
+            set
+            {
+                // Assuming MouseClicked is the first field in ImGuiIo, adjust the offset accordingly if it's not.
+                int offsetToMouseClicked = Marshal.OffsetOf<ImGuiIo>("MouseClicked").ToInt32();
+                IntPtr mouseClickedPtr = IntPtr.Add(NativePtr, offsetToMouseClicked);
+
+                // Assuming the size of the mouse clicked is known to be 5
+                Marshal.WriteIntPtr(mouseClickedPtr, value.Data);
+            }
+        }
         
         /// <summary>
         ///     Gets the value of the mouse double clicked
         /// </summary>
-        public RangeAccessor<bool> MouseDoubleClicked => new RangeAccessor<bool>((IntPtr)NativePtr->MouseDoubleClicked, 5);
+        public RangeAccessor<bool> MouseDoubleClicked
+        {
+            get
+            {
+                // Assuming MouseDoubleClicked is the first field in ImGuiIo, adjust the offset accordingly if it's not.
+                int offsetToMouseDoubleClicked = Marshal.OffsetOf<ImGuiIo>("MouseDoubleClicked").ToInt32();
+                IntPtr mouseDoubleClickedPtr = IntPtr.Add(NativePtr, offsetToMouseDoubleClicked);
+
+                // Assuming the size of the mouse double clicked is known to be 5
+                return new RangeAccessor<bool>(mouseDoubleClickedPtr, 5);
+            }
+            set
+            {
+                // Assuming MouseDoubleClicked is the first field in ImGuiIo, adjust the offset accordingly if it's not.
+                int offsetToMouseDoubleClicked = Marshal.OffsetOf<ImGuiIo>("MouseDoubleClicked").ToInt32();
+                IntPtr mouseDoubleClickedPtr = IntPtr.Add(NativePtr, offsetToMouseDoubleClicked);
+
+                // Assuming the size of the mouse double clicked is known to be 5
+                Marshal.WriteIntPtr(mouseDoubleClickedPtr, value.Data);
+            }
+        }
         
         /// <summary>
         ///     Gets the value of the mouse clicked count
         /// </summary>
-        public RangeAccessor<ushort> MouseClickedCount => new RangeAccessor<ushort>((IntPtr)NativePtr->MouseClickedCount, 5);
+        public RangeAccessor<ushort> MouseClickedCount
+        {
+            get
+            {
+                // Assuming MouseClickedCount is the first field in ImGuiIo, adjust the offset accordingly if it's not.
+                int offsetToMouseClickedCount = Marshal.OffsetOf<ImGuiIo>("MouseClickedCount").ToInt32();
+                IntPtr mouseClickedCountPtr = IntPtr.Add(NativePtr, offsetToMouseClickedCount);
+
+                // Assuming the size of the mouse clicked count is known to be 5
+                return new RangeAccessor<ushort>(mouseClickedCountPtr, 5);
+            }
+            set
+            {
+                // Assuming MouseClickedCount is the first field in ImGuiIo, adjust the offset accordingly if it's not.
+                int offsetToMouseClickedCount = Marshal.OffsetOf<ImGuiIo>("MouseClickedCount").ToInt32();
+                IntPtr mouseClickedCountPtr = IntPtr.Add(NativePtr, offsetToMouseClickedCount);
+
+                // Assuming the size of the mouse clicked count is known to be 5
+                Marshal.WriteIntPtr(mouseClickedCountPtr, value.Data);
+            }
+        }
         
         /// <summary>
         ///     Gets the value of the mouse clicked last count
         /// </summary>
-        public RangeAccessor<ushort> MouseClickedLastCount => new RangeAccessor<ushort>((IntPtr)NativePtr->MouseClickedLastCount, 5);
+        public RangeAccessor<ushort> MouseClickedLastCount
+        {
+            get
+            {
+                // Assuming MouseClickedLastCount is the first field in ImGuiIo, adjust the offset accordingly if it's not.
+                int offsetToMouseClickedLastCount = Marshal.OffsetOf<ImGuiIo>("MouseClickedLastCount").ToInt32();
+                IntPtr mouseClickedLastCountPtr = IntPtr.Add(NativePtr, offsetToMouseClickedLastCount);
+
+                // Assuming the size of the mouse clicked last count is known to be 5
+                return new RangeAccessor<ushort>(mouseClickedLastCountPtr, 5);
+            }
+            set
+            {
+                // Assuming MouseClickedLastCount is the first field in ImGuiIo, adjust the offset accordingly if it's not.
+                int offsetToMouseClickedLastCount = Marshal.OffsetOf<ImGuiIo>("MouseClickedLastCount").ToInt32();
+                IntPtr mouseClickedLastCountPtr = IntPtr.Add(NativePtr, offsetToMouseClickedLastCount);
+
+                // Assuming the size of the mouse clicked last count is known to be 5
+                Marshal.WriteIntPtr(mouseClickedLastCountPtr, value.Data);
+            }
+        }
         
         /// <summary>
         ///     Gets the value of the mouse released
         /// </summary>
-        public RangeAccessor<bool> MouseReleased => new RangeAccessor<bool>((IntPtr)NativePtr->MouseReleased, 5);
+        public RangeAccessor<bool> MouseReleased
+        {
+            get
+            {
+                // Assuming MouseReleased is the first field in ImGuiIo, adjust the offset accordingly if it's not.
+                int offsetToMouseReleased = Marshal.OffsetOf<ImGuiIo>("MouseReleased").ToInt32();
+                IntPtr mouseReleasedPtr = IntPtr.Add(NativePtr, offsetToMouseReleased);
+
+                // Assuming the size of the mouse released is known to be 5
+                return new RangeAccessor<bool>(mouseReleasedPtr, 5);
+            }
+            set
+            {
+                // Assuming MouseReleased is the first field in ImGuiIo, adjust the offset accordingly if it's not.
+                int offsetToMouseReleased = Marshal.OffsetOf<ImGuiIo>("MouseReleased").ToInt32();
+                IntPtr mouseReleasedPtr = IntPtr.Add(NativePtr, offsetToMouseReleased);
+
+                // Assuming the size of the mouse released is known to be 5
+                Marshal.WriteIntPtr(mouseReleasedPtr, value.Data);
+            }
+        }
         
         /// <summary>
         ///     Gets the value of the mouse down owned
         /// </summary>
-        public RangeAccessor<bool> MouseDownOwned => new RangeAccessor<bool>((IntPtr)NativePtr->MouseDownOwned, 5);
+        public RangeAccessor<bool> MouseDownOwned
+        {
+            get
+            {
+                // Assuming MouseDownOwned is the first field in ImGuiIo, adjust the offset accordingly if it's not.
+                int offsetToMouseDownOwned = Marshal.OffsetOf<ImGuiIo>("MouseDownOwned").ToInt32();
+                IntPtr mouseDownOwnedPtr = IntPtr.Add(NativePtr, offsetToMouseDownOwned);
+
+                // Assuming the size of the mouse down owned is known to be 5
+                return new RangeAccessor<bool>(mouseDownOwnedPtr, 5);
+            }
+            set
+            {
+                // Assuming MouseDownOwned is the first field in ImGuiIo, adjust the offset accordingly if it's not.
+                int offsetToMouseDownOwned = Marshal.OffsetOf<ImGuiIo>("MouseDownOwned").ToInt32();
+                IntPtr mouseDownOwnedPtr = IntPtr.Add(NativePtr, offsetToMouseDownOwned);
+
+                // Assuming the size of the mouse down owned is known to be 5
+                Marshal.WriteIntPtr(mouseDownOwnedPtr, value.Data);
+            }
+        }
         
         /// <summary>
         ///     Gets the value of the mouse down owned unless popup close
         /// </summary>
-        public RangeAccessor<bool> MouseDownOwnedUnlessPopupClose => new RangeAccessor<bool>((IntPtr)NativePtr->MouseDownOwnedUnlessPopupClose, 5);
+        public RangeAccessor<bool> MouseDownOwnedUnlessPopupClose
+        {
+            get
+            {
+                // Assuming MouseDownOwnedUnlessPopupClose is the first field in ImGuiIo, adjust the offset accordingly if it's not.
+                int offsetToMouseDownOwnedUnlessPopupClose = Marshal.OffsetOf<ImGuiIo>("MouseDownOwnedUnlessPopupClose").ToInt32();
+                IntPtr mouseDownOwnedUnlessPopupClosePtr = IntPtr.Add(NativePtr, offsetToMouseDownOwnedUnlessPopupClose);
+
+                // Assuming the size of the mouse down owned unless popup close is known to be 5
+                return new RangeAccessor<bool>(mouseDownOwnedUnlessPopupClosePtr, 5);
+            }
+            set
+            {
+                // Assuming MouseDownOwnedUnlessPopupClose is the first field in ImGuiIo, adjust the offset accordingly if it's not.
+                int offsetToMouseDownOwnedUnlessPopupClose = Marshal.OffsetOf<ImGuiIo>("MouseDownOwnedUnlessPopupClose").ToInt32();
+                IntPtr mouseDownOwnedUnlessPopupClosePtr = IntPtr.Add(NativePtr, offsetToMouseDownOwnedUnlessPopupClose);
+
+                // Assuming the size of the mouse down owned unless popup close is known to be 5
+                Marshal.WriteIntPtr(mouseDownOwnedUnlessPopupClosePtr, value.Data);
+            }
+        }
         
         /// <summary>
         ///     Gets the value of the mouse down duration
         /// </summary>
-        public RangeAccessor<float> MouseDownDuration => new RangeAccessor<float>((IntPtr)NativePtr->MouseDownDuration, 5);
+        public RangeAccessor<float> MouseDownDuration
+        {
+            get
+            {
+                // Assuming MouseDownDuration is the first field in ImGuiIo, adjust the offset accordingly if it's not.
+                int offsetToMouseDownDuration = Marshal.OffsetOf<ImGuiIo>("MouseDownDuration").ToInt32();
+                IntPtr mouseDownDurationPtr = IntPtr.Add(NativePtr, offsetToMouseDownDuration);
+
+                // Assuming the size of the mouse down duration is known to be 5
+                return new RangeAccessor<float>(mouseDownDurationPtr, 5);
+            }
+            set
+            {
+                // Assuming MouseDownDuration is the first field in ImGuiIo, adjust the offset accordingly if it's not.
+                int offsetToMouseDownDuration = Marshal.OffsetOf<ImGuiIo>("MouseDownDuration").ToInt32();
+                IntPtr mouseDownDurationPtr = IntPtr.Add(NativePtr, offsetToMouseDownDuration);
+
+                // Assuming the size of the mouse down duration is known to be 5
+                Marshal.WriteIntPtr(mouseDownDurationPtr, value.Data);
+            }
+        }
         
         /// <summary>
         ///     Gets the value of the mouse down duration prev
         /// </summary>
-        public RangeAccessor<float> MouseDownDurationPrev => new RangeAccessor<float>((IntPtr)NativePtr->MouseDownDurationPrev, 5);
+        public RangeAccessor<float> MouseDownDurationPrev
+        {
+            get
+            {
+                // Assuming MouseDownDurationPrev is the first field in ImGuiIo, adjust the offset accordingly if it's not.
+                int offsetToMouseDownDurationPrev = Marshal.OffsetOf<ImGuiIo>("MouseDownDurationPrev").ToInt32();
+                IntPtr mouseDownDurationPrevPtr = IntPtr.Add(NativePtr, offsetToMouseDownDurationPrev);
+
+                // Assuming the size of the mouse down duration prev is known to be 5
+                return new RangeAccessor<float>(mouseDownDurationPrevPtr, 5);
+            }
+            set
+            {
+                // Assuming MouseDownDurationPrev is the first field in ImGuiIo, adjust the offset accordingly if it's not.
+                int offsetToMouseDownDurationPrev = Marshal.OffsetOf<ImGuiIo>("MouseDownDurationPrev").ToInt32();
+                IntPtr mouseDownDurationPrevPtr = IntPtr.Add(NativePtr, offsetToMouseDownDurationPrev);
+
+                // Assuming the size of the mouse down duration prev is known to be 5
+                Marshal.WriteIntPtr(mouseDownDurationPrevPtr, value.Data);
+            }
+        }
         
         /// <summary>
         ///     Gets the value of the mouse drag max distance abs
         /// </summary>
-        public RangeAccessor<Vector2> MouseDragMaxDistanceAbs => new RangeAccessor<Vector2>((IntPtr)(&NativePtr->MouseDragMaxDistanceAbs0), 5);
+        public RangeAccessor<Vector2> MouseDragMaxDistanceAbs
+        {
+            get
+            {
+                // Assuming MouseDragMaxDistanceAbs is the first field in ImGuiIo, adjust the offset accordingly if it's not.
+                int offsetToMouseDragMaxDistanceAbs = Marshal.OffsetOf<ImGuiIo>("MouseDragMaxDistanceAbs").ToInt32();
+                IntPtr mouseDragMaxDistanceAbsPtr = IntPtr.Add(NativePtr, offsetToMouseDragMaxDistanceAbs);
+
+                // Assuming the size of the mouse drag max distance abs is known to be 5
+                return new RangeAccessor<Vector2>(mouseDragMaxDistanceAbsPtr, 5);
+            }
+            set
+            {
+                // Assuming MouseDragMaxDistanceAbs is the first field in ImGuiIo, adjust the offset accordingly if it's not.
+                int offsetToMouseDragMaxDistanceAbs = Marshal.OffsetOf<ImGuiIo>("MouseDragMaxDistanceAbs").ToInt32();
+                IntPtr mouseDragMaxDistanceAbsPtr = IntPtr.Add(NativePtr, offsetToMouseDragMaxDistanceAbs);
+
+                // Assuming the size of the mouse drag max distance abs is known to be 5
+                Marshal.WriteIntPtr(mouseDragMaxDistanceAbsPtr, value.Data);
+            }
+        }
         
         /// <summary>
         ///     Gets the value of the mouse drag max distance sqr
         /// </summary>
-        public RangeAccessor<float> MouseDragMaxDistanceSqr => new RangeAccessor<float>((IntPtr)NativePtr->MouseDragMaxDistanceSqr, 5);
+        public RangeAccessor<float> MouseDragMaxDistanceSqr
+        {
+            get
+            {
+                // Assuming MouseDragMaxDistanceSqr is the first field in ImGuiIo, adjust the offset accordingly if it's not.
+                int offsetToMouseDragMaxDistanceSqr = Marshal.OffsetOf<ImGuiIo>("MouseDragMaxDistanceSqr").ToInt32();
+                IntPtr mouseDragMaxDistanceSqrPtr = IntPtr.Add(NativePtr, offsetToMouseDragMaxDistanceSqr);
+
+                // Assuming the size of the mouse drag max distance sqr is known to be 5
+                return new RangeAccessor<float>(mouseDragMaxDistanceSqrPtr, 5);
+            }
+            set
+            {
+                // Assuming MouseDragMaxDistanceSqr is the first field in ImGuiIo, adjust the offset accordingly if it's not.
+                int offsetToMouseDragMaxDistanceSqr = Marshal.OffsetOf<ImGuiIo>("MouseDragMaxDistanceSqr").ToInt32();
+                IntPtr mouseDragMaxDistanceSqrPtr = IntPtr.Add(NativePtr, offsetToMouseDragMaxDistanceSqr);
+
+                // Assuming the size of the mouse drag max distance sqr is known to be 5
+                Marshal.WriteIntPtr(mouseDragMaxDistanceSqrPtr, value.Data);
+            }
+        }
         
         /// <summary>
         ///     Gets the value of the pen pressure
         /// </summary>
-        public ref float PenPressure => ref Unsafe.AsRef<float>(&NativePtr->PenPressure);
+        public  float PenPressure => Marshal.PtrToStructure<ImGuiIo>(NativePtr).PenPressure;
         
         /// <summary>
         ///     Gets the value of the app focus lost
         /// </summary>
-        public ref bool AppFocusLost => ref Unsafe.AsRef<bool>(&NativePtr->AppFocusLost);
+        public  bool AppFocusLost => Marshal.PtrToStructure<ImGuiIo>(NativePtr).AppFocusLost != 0;
         
         /// <summary>
         ///     Gets the value of the app accepting events
         /// </summary>
-        public ref bool AppAcceptingEvents => ref Unsafe.AsRef<bool>(&NativePtr->AppAcceptingEvents);
+        public  bool AppAcceptingEvents => Marshal.PtrToStructure<ImGuiIo>(NativePtr).AppAcceptingEvents != 0;
         
         /// <summary>
         ///     Gets the value of the backend using legacy key arrays
         /// </summary>
-        public ref sbyte BackendUsingLegacyKeyArrays => ref Unsafe.AsRef<sbyte>(&NativePtr->BackendUsingLegacyKeyArrays);
+        public  sbyte BackendUsingLegacyKeyArrays => Marshal.PtrToStructure<ImGuiIo>(NativePtr).BackendUsingLegacyKeyArrays;
         
         /// <summary>
         ///     Gets the value of the backend using legacy nav input array
         /// </summary>
-        public ref bool BackendUsingLegacyNavInputArray => ref Unsafe.AsRef<bool>(&NativePtr->BackendUsingLegacyNavInputArray);
+        public  bool BackendUsingLegacyNavInputArray => Marshal.PtrToStructure<ImGuiIo>(NativePtr).BackendUsingLegacyNavInputArray != 0;
         
         /// <summary>
         ///     Gets the value of the input queue surrogate
         /// </summary>
-        public ref ushort InputQueueSurrogate => ref Unsafe.AsRef<ushort>(&NativePtr->InputQueueSurrogate);
+        public  ushort InputQueueSurrogate => Marshal.PtrToStructure<ImGuiIo>(NativePtr).InputQueueSurrogate;
         
         /// <summary>
         ///     Gets the value of the input queue characters
         /// </summary>
-        public ImVectorG<ushort> InputQueueCharacters => new ImVectorG<ushort>(NativePtr->InputQueueCharacters);
+        public ImVectorG<ushort> InputQueueCharacters => new ImVectorG<ushort>(Marshal.PtrToStructure<ImGuiIo>(NativePtr).InputQueueCharacters);
         
         /// <summary>
         ///     Adds the focus event using the specified focused

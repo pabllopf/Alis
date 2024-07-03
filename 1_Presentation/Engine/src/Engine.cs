@@ -190,7 +190,7 @@ namespace Alis.App.Engine
         /// <summary>
         ///     The io
         /// </summary>
-        private ImGuiIoPtr io = null;
+        private ImGuiIoPtr io;
         
         /// <summary>
         ///     The menu down state
