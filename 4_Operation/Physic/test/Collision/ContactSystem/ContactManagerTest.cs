@@ -30,6 +30,7 @@
 using System;
 using Alis.Core.Physic.Collision.ContactSystem;
 using Alis.Core.Physic.Collision.Filtering;
+using Alis.Core.Physic.Collision.Handlers;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Collision.TOI;
 using Alis.Core.Physic.Dynamics;
@@ -355,7 +356,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
             ContactManager contactManager = new ContactManager(new BroadPhaseImplementation());
 
             // Act
-            var result = contactManager.ContactFilter;
+            CollisionFilterHandler result = contactManager.ContactFilter;
         }
     }
 }

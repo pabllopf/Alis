@@ -70,8 +70,8 @@ namespace Alis.Extension.Graphic.ImGui
         {
             get
             {
-                var cmdLists = new ImDrawList[CmdListsCount];
-                for (var i = 0; i < CmdListsCount; i++)
+                ImDrawList[] cmdLists = new ImDrawList[CmdListsCount];
+                for (int i = 0; i < CmdListsCount; i++)
                 {
                     cmdLists[i] = Marshal.PtrToStructure<ImDrawList>(Marshal.ReadIntPtr(CmdListsPtr, i * IntPtr.Size));
                 }
@@ -80,7 +80,7 @@ namespace Alis.Extension.Graphic.ImGui
             }
             set
             {
-                for (var i = 0; i < value.Length; i++)
+                for (int i = 0; i < value.Length; i++)
                 {
                     Marshal.WriteIntPtr(CmdListsPtr, i * IntPtr.Size, Marshal.AllocHGlobal(Marshal.SizeOf(value[i])));
                     Marshal.StructureToPtr(value[i], Marshal.ReadIntPtr(CmdListsPtr, i * IntPtr.Size), false);

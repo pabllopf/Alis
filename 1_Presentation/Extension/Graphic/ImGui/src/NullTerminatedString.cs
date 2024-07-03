@@ -49,6 +49,10 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="data">The data</param>
         public NullTerminatedString(IntPtr data) => Data = data;
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NullTerminatedString"/> class
+        /// </summary>
+        /// <param name="data">The data</param>
         public NullTerminatedString(byte[] data)
         {
             Data = Marshal.AllocHGlobal(data.Length + 1);
@@ -65,14 +69,14 @@ namespace Alis.Extension.Graphic.ImGui
             if (Data == IntPtr.Zero)
                 return string.Empty;
 
-            var length = 0;
+            int length = 0;
             while (Marshal.ReadByte(Data, length) != 0)
                 length++;
 
             if (length == 0)
                 return string.Empty;
 
-            var buffer = new byte[length];
+            byte[] buffer = new byte[length];
             Marshal.Copy(Data, buffer, 0, length);
             return Encoding.UTF8.GetString(buffer);
         }

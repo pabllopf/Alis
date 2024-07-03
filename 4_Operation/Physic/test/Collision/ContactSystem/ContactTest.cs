@@ -288,7 +288,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
             
             // Act
             contact.Manifold = expectedManifold;
-            var result = contact.Manifold;
+            Manifold result = contact.Manifold;
             
             // Assert
             Assert.Equal(expectedManifold, result);

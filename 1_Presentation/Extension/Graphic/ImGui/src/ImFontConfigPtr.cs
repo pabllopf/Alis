@@ -61,6 +61,9 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns></returns>
         public static implicit operator ImFontConfigPtr(IntPtr nativePtr) => new ImFontConfigPtr(nativePtr);
         
+        /// <summary>
+        /// Gets or sets the value of the font data
+        /// </summary>
         public IntPtr FontData
         {
             get => Marshal.ReadIntPtr(NativePtr);

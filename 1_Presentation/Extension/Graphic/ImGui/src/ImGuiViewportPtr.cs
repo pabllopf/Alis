@@ -66,10 +66,19 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         public uint Id => (uint)Marshal.ReadInt32(NativePtr, 0);
         
+        /// <summary>
+        /// Gets the value of the flags
+        /// </summary>
         public ImGuiViewportFlags Flags => (ImGuiViewportFlags)Marshal.ReadInt32(NativePtr, sizeof(uint));
         
+        /// <summary>
+        /// Gets the value of the pos
+        /// </summary>
         public Vector2 Pos => Marshal.PtrToStructure<Vector2>(NativePtr + 2 * sizeof(uint));
         
+        /// <summary>
+        /// Gets the value of the size
+        /// </summary>
         public Vector2 Size => Marshal.PtrToStructure<Vector2>(NativePtr + 2 * sizeof(uint) + Marshal.SizeOf<Vector2>());
 
         /// <summary>

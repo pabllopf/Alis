@@ -282,7 +282,7 @@ namespace Alis.Core.Physic.Test.Collision.TOI
             TimeOfImpact._toiMaxRootIter = expectedValue;
             
             // Act
-            var result = TimeOfImpact._toiMaxRootIter;
+            int result = TimeOfImpact._toiMaxRootIter;
             
             // Assert
             Assert.Equal(expectedValue, result);
@@ -299,7 +299,7 @@ namespace Alis.Core.Physic.Test.Collision.TOI
             TimeOfImpact.ToiCalls = expectedValue;
             
             // Act
-            var result = TimeOfImpact.ToiCalls;
+            int result = TimeOfImpact.ToiCalls;
             
             // Assert
             Assert.Equal(expectedValue, result);
@@ -316,7 +316,7 @@ namespace Alis.Core.Physic.Test.Collision.TOI
             TimeOfImpact.ToiIter = expectedValue;
             
             // Act
-            var result = TimeOfImpact.ToiIter;
+            int result = TimeOfImpact.ToiIter;
             
             // Assert
             Assert.Equal(expectedValue, result);
@@ -333,7 +333,7 @@ namespace Alis.Core.Physic.Test.Collision.TOI
             TimeOfImpact.ToiMaxIter = expectedValue;
             
             // Act
-            var result = TimeOfImpact.ToiMaxIter;
+            int result = TimeOfImpact.ToiMaxIter;
             
             // Assert
             Assert.Equal(expectedValue, result);
@@ -350,7 +350,7 @@ namespace Alis.Core.Physic.Test.Collision.TOI
             TimeOfImpact.ToiRootIter = expectedValue;
             
             // Act
-            var result = TimeOfImpact.ToiRootIter;
+            int result = TimeOfImpact.ToiRootIter;
             
             // Assert
             Assert.Equal(expectedValue, result);

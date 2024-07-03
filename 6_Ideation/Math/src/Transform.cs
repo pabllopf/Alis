@@ -84,6 +84,11 @@ namespace Alis.Core.Aspect.Math
             Rotation.Set(angle);
         }
 
+        /// <summary>
+        /// Gets the object data using the specified info
+        /// </summary>
+        /// <param name="info">The info</param>
+        /// <param name="context">The context</param>
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("position", Position);
