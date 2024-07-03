@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:DummyTest.cs
+//  File:IPriorityQueueTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,22 +27,36 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using Xunit;
 
 namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
 {
     /// <summary>
-    ///     The dummy test class
+    /// The priority queue test class
     /// </summary>
-    public class DummyTest
+    public class PriorityQueueTest
     {
         /// <summary>
-        ///     Tests that default test
+        /// Tests that queue initializes with correct max size
         /// </summary>
         [Fact]
-        public void DefaultTest()
+        public void Queue_InitializesWithCorrectMaxSize()
         {
-            Assert.True(true);
+            PriorityQueue<TestNode, int> queue = new PriorityQueue<TestNode, int>(10);
+            Assert.Equal(0, queue.Count);
+        }
+
+        /// <summary>
+        /// Tests that enqueue increases count
+        /// </summary>
+        [Fact]
+        public void Enqueue_IncreasesCount()
+        {
+            PriorityQueue<TestNode, int> queue = new PriorityQueue<TestNode, int>(10);
+            TestNode node = new TestNode();
+            queue.Enqueue(node, 1);
+            Assert.Equal(1, queue.Count);
         }
     }
 }
