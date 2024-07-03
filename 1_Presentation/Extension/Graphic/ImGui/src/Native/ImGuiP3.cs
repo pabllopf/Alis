@@ -626,13 +626,20 @@ namespace Alis.Extension.Graphic.ImGui.Native
             return ret;
         }
         
+        private static ImGuiIoPtr _io;
+        
         /// <summary>
         ///     Gets the io
         /// </summary>
         /// <returns>The im gui io ptr</returns>
         public static ImGuiIoPtr GetIo()
         {
-            return new ImGuiIoPtr(ImGuiNative.igGetIO());
+            if (_io.NativePtr == IntPtr.Zero)
+            {
+                _io = new ImGuiIoPtr(ImGuiNative.igGetIO());
+            }
+
+            return _io;
         }
         
         /// <summary>
