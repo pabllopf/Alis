@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Extension.Graphic.ImGui
@@ -35,7 +36,8 @@ namespace Alis.Extension.Graphic.ImGui
     /// <summary>
     ///     The im gui io
     /// </summary>
-    public unsafe struct ImGuiIo
+    [StructLayout(LayoutKind.Sequential)]
+    public struct ImGuiIo
     {
         /// <summary>
         ///     The config flags
@@ -65,12 +67,12 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The ini filename
         /// </summary>
-        public byte* IniFilename;
+        public IntPtr IniFilename;
         
         /// <summary>
         ///     The log filename
         /// </summary>
-        public byte* LogFilename;
+        public IntPtr LogFilename;
         
         /// <summary>
         ///     The mouse double click time
@@ -110,12 +112,12 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The user data
         /// </summary>
-        public void* UserData;
+        public IntPtr UserData;
         
         /// <summary>
         ///     The fonts
         /// </summary>
-        public ImFontAtlas* Fonts;
+        public IntPtr Fonts;
         
         /// <summary>
         ///     The font global scale
@@ -225,27 +227,27 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The backend platform name
         /// </summary>
-        public byte* BackendPlatformName;
+        public IntPtr BackendPlatformName;
         
         /// <summary>
         ///     The backend renderer name
         /// </summary>
-        public byte* BackendRendererName;
+        public IntPtr BackendRendererName;
         
         /// <summary>
         ///     The backend platform user data
         /// </summary>
-        public void* BackendPlatformUserData;
+        public IntPtr BackendPlatformUserData;
         
         /// <summary>
         ///     The backend renderer user data
         /// </summary>
-        public void* BackendRendererUserData;
+        public IntPtr BackendRendererUserData;
         
         /// <summary>
         ///     The backend language user data
         /// </summary>
-        public void* BackendLanguageUserData;
+        public IntPtr BackendLanguageUserData;
         
         /// <summary>
         ///     The get clipboard text fn
@@ -260,7 +262,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The clipboard user data
         /// </summary>
-        public void* ClipboardUserData;
+        public IntPtr ClipboardUserData;
         
         /// <summary>
         ///     The set platform ime data fn
@@ -270,7 +272,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The unused padding
         /// </summary>
-        public void* UnusedPadding;
+        public IntPtr UnusedPadding;
         
         /// <summary>
         ///     The want capture mouse
@@ -345,17 +347,20 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The key map
         /// </summary>
-        public fixed int KeyMap[652];
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 652)]
+        public int[] KeyMap;
         
         /// <summary>
         ///     The keys down
         /// </summary>
-        public fixed byte KeysDown[652];
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 652)]
+        public byte[] KeysDown;
         
         /// <summary>
         ///     The nav inputs
         /// </summary>
-        public fixed float NavInputs[16];
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 16)]
+        public float[] NavInputs;
         
         /// <summary>
         ///     The mouse pos
@@ -365,7 +370,8 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The mouse down
         /// </summary>
-        public fixed byte MouseDown[5];
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 5)]
+        public byte[] MouseDown;
         
         /// <summary>
         ///     The mouse wheel
@@ -3705,52 +3711,62 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The mouse clicked time
         /// </summary>
-        public fixed double MouseClickedTime[5];
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 5)]
+        public double[] MouseClickedTime;
         
         /// <summary>
         ///     The mouse clicked
         /// </summary>
-        public fixed byte MouseClicked[5];
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 5)]
+        public byte[] MouseClicked;
         
         /// <summary>
         ///     The mouse double clicked
         /// </summary>
-        public fixed byte MouseDoubleClicked[5];
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 5)]
+        public byte[] MouseDoubleClicked;
         
         /// <summary>
         ///     The mouse clicked count
         /// </summary>
-        public fixed ushort MouseClickedCount[5];
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 5)]
+        public ushort[] MouseClickedCount;
         
         /// <summary>
         ///     The mouse clicked last count
         /// </summary>
-        public fixed ushort MouseClickedLastCount[5];
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 5)]
+        public ushort[] MouseClickedLastCount;
         
         /// <summary>
         ///     The mouse released
         /// </summary>
-        public fixed byte MouseReleased[5];
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 5)]
+        public byte[] MouseReleased;
         
         /// <summary>
         ///     The mouse down owned
         /// </summary>
-        public fixed byte MouseDownOwned[5];
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 5)]
+        public byte[] MouseDownOwned;
         
         /// <summary>
         ///     The mouse down owned unless popup close
         /// </summary>
-        public fixed byte MouseDownOwnedUnlessPopupClose[5];
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 5)]
+        public byte[] MouseDownOwnedUnlessPopupClose;
         
         /// <summary>
         ///     The mouse down duration
         /// </summary>
-        public fixed float MouseDownDuration[5];
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 5)]
+        public float[] MouseDownDuration;
         
         /// <summary>
         ///     The mouse down duration prev
         /// </summary>
-        public fixed float MouseDownDurationPrev[5];
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 5)]
+        public float[] MouseDownDurationPrev;
         
         /// <summary>
         ///     The mousedragmaxdistanceabs
@@ -3780,7 +3796,8 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The mouse drag max distance sqr
         /// </summary>
-        public fixed float MouseDragMaxDistanceSqr[5];
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 5)]
+        public float[] MouseDragMaxDistanceSqr;
         
         /// <summary>
         ///     The pen pressure
