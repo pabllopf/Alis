@@ -31,14 +31,13 @@ using System;
 using System.Runtime.InteropServices;
 using System.Text;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Extension.Graphic.ImGui.Utils;
 
 namespace Alis.Extension.Graphic.ImGui.Native
 {
     /// <summary>
     /// The im gui class
     /// </summary>
-    public static unsafe partial class ImGui
+    public static partial class ImGui
     {
         /// <summary>
         ///     Tables the setup column using the specified label
@@ -771,99 +770,6 @@ namespace Alis.Extension.Graphic.ImGui.Native
                 callback,
                 userData);
             return result != 0;
-        }
-        
-        /// <summary>
-        ///     Gets the utf 8 bytes using the specified text
-        /// </summary>
-        /// <param name="text">The text</param>
-        /// <returns>The utf bytes</returns>
-        private static byte* GetUtf8Bytes(string text)
-        {
-            int byteCount = Encoding.UTF8.GetByteCount(text);
-            byte* utf8Bytes = (byte*) Marshal.AllocHGlobal(byteCount + 1);
-            Util.GetUtf8(text, utf8Bytes, byteCount);
-            utf8Bytes[byteCount] = 0; // Null-terminate the string
-            return utf8Bytes;
-        }
-        
-        
-        /// <summary>
-        ///     Gets the utf 8 bytes using the specified text
-        /// </summary>
-        /// <param name="text">The text</param>
-        /// <param name="maxLength">The max length</param>
-        /// <returns>The utf bytes</returns>
-        private static byte* GetUtf8Bytes(string text, uint maxLength)
-        {
-            int byteCount = Encoding.UTF8.GetByteCount(text);
-            int inputBufSize = Math.Max((int) maxLength + 1, byteCount + 1);
-            byte[] utf8BytesArray = new byte[inputBufSize];
-            
-            fixed (byte* utf8Bytes = utf8BytesArray)
-            {
-                Util.GetUtf8(text, utf8Bytes, inputBufSize);
-                Unsafe.InitBlockUnaligned(utf8Bytes, 0, (uint) inputBufSize);
-                
-                byte* result = (byte*) Marshal.AllocHGlobal(inputBufSize);
-                Buffer.MemoryCopy(utf8Bytes, result, inputBufSize, inputBufSize);
-                
-                return result;
-            }
-        }
-        
-        
-        /// <summary>
-        ///     Describes whether are utf 8 strings equal
-        /// </summary>
-        /// <param name="utf8Bytes">The utf bytes</param>
-        /// <param name="text">The text</param>
-        /// <returns>The bool</returns>
-        private static bool AreUtf8StringsEqual(byte* utf8Bytes, string text)
-        {
-            int byteCount = Encoding.UTF8.GetByteCount(text);
-            return Util.AreStringsEqual(utf8Bytes, byteCount, utf8Bytes);
-        }
-        
-        /// <summary>
-        ///     Gets the string from utf 8 using the specified utf 8 bytes
-        /// </summary>
-        /// <param name="utf8Bytes">The utf bytes</param>
-        /// <returns>The string</returns>
-        private static string GetStringFromUtf8(byte* utf8Bytes) => Util.StringFromPtr(utf8Bytes);
-        
-        /// <summary>
-        ///     Frees the utf 8 bytes using the specified utf 8 bytes
-        /// </summary>
-        /// <param name="utf8Bytes">The utf bytes</param>
-        private static void FreeUtf8Bytes(byte* utf8Bytes)
-        {
-            int allocatedSize = GetUtf8BytesLength(utf8Bytes);
-            if (allocatedSize > Util.StackAllocationSizeLimit)
-            {
-                Util.Free(utf8Bytes);
-            }
-        }
-        
-        /// <summary>
-        ///     Gets the utf 8 bytes length using the specified utf 8 bytes
-        /// </summary>
-        /// <param name="utf8Bytes">The utf bytes</param>
-        /// <returns>The length</returns>
-        private static int GetUtf8BytesLength(byte* utf8Bytes)
-        {
-            if (utf8Bytes == null)
-            {
-                return 0;
-            }
-            
-            int length = 0;
-            while (*(utf8Bytes + length) != 0)
-            {
-                length++;
-            }
-            
-            return length;
         }
         
         /// <summary>

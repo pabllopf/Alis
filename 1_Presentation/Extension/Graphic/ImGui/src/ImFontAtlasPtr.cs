@@ -28,45 +28,33 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 using System.Text;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Extension.Graphic.ImGui.Utils;
 
 namespace Alis.Extension.Graphic.ImGui
 {
     /// <summary>
     ///     The im font atlas ptr
     /// </summary>
-    public readonly unsafe struct ImFontAtlasPtr
+    public readonly struct ImFontAtlasPtr
     {
         /// <summary>
         ///     Gets the value of the native ptr
         /// </summary>
-        public ImFontAtlas* NativePtr { get; }
+        public IntPtr NativePtr { get; }
         
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImFontAtlasPtr" /> class
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
-        public ImFontAtlasPtr(ImFontAtlas* nativePtr) => NativePtr = nativePtr;
-        
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="ImFontAtlasPtr" /> class
-        /// </summary>
-        /// <param name="nativePtr">The native ptr</param>
-        public ImFontAtlasPtr(IntPtr nativePtr) => NativePtr = (ImFontAtlas*) nativePtr;
-        
-        /// <summary>
-        /// </summary>
-        /// <param name="nativePtr"></param>
-        /// <returns></returns>
-        public static implicit operator ImFontAtlasPtr(ImFontAtlas* nativePtr) => new ImFontAtlasPtr(nativePtr);
+        public ImFontAtlasPtr(IntPtr nativePtr) => NativePtr = nativePtr;
         
         /// <summary>
         /// </summary>
         /// <param name="wrappedPtr"></param>
         /// <returns></returns>
-        public static implicit operator ImFontAtlas*(ImFontAtlasPtr wrappedPtr) => wrappedPtr.NativePtr;
+        public static implicit operator IntPtr(ImFontAtlasPtr wrappedPtr) => wrappedPtr.NativePtr;
         
         /// <summary>
         /// </summary>
@@ -77,45 +65,49 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the flags
         /// </summary>
-        public ref ImFontAtlasFlags Flags => ref Unsafe.AsRef<ImFontAtlasFlags>(&NativePtr->Flags);
+        public  ImFontAtlasFlags Flags => Marshal.PtrToStructure<ImFontAtlas>(NativePtr).Flags;
         
         /// <summary>
         ///     Gets the value of the tex id
         /// </summary>
-        public ref IntPtr TexId => ref Unsafe.AsRef<IntPtr>(&NativePtr->TexId);
+        public  IntPtr TexId
+        {
+            get { return Marshal.PtrToStructure<ImFontAtlas>(NativePtr).TexId; }
+            set { Marshal.WriteIntPtr(NativePtr, Marshal.OffsetOf<ImFontAtlas>("TexID").ToInt32(), value); }
+        }
         
         /// <summary>
         ///     Gets the value of the tex desired width
         /// </summary>
-        public ref int TexDesiredWidth => ref Unsafe.AsRef<int>(&NativePtr->TexDesiredWidth);
+        public  int TexDesiredWidth => Marshal.PtrToStructure<ImFontAtlas>(NativePtr).TexDesiredWidth;
         
         /// <summary>
         ///     Gets the value of the tex glyph padding
         /// </summary>
-        public ref int TexGlyphPadding => ref Unsafe.AsRef<int>(&NativePtr->TexGlyphPadding);
+        public  int TexGlyphPadding => Marshal.PtrToStructure<ImFontAtlas>(NativePtr).TexGlyphPadding;
         
         /// <summary>
         ///     Gets the value of the locked
         /// </summary>
-        public ref bool Locked => ref Unsafe.AsRef<bool>(&NativePtr->Locked);
+        public  bool Locked => Marshal.PtrToStructure<ImFontAtlas>(NativePtr).Locked != 0;
         
         /// <summary>
         ///     Gets the value of the tex ready
         /// </summary>
-        public ref bool TexReady => ref Unsafe.AsRef<bool>(&NativePtr->TexReady);
+        public  bool TexReady => Marshal.PtrToStructure<ImFontAtlas>(NativePtr).TexReady != 0;
         
         /// <summary>
         ///     Gets the value of the tex pixels use colors
         /// </summary>
-        public ref bool TexPixelsUseColors => ref Unsafe.AsRef<bool>(&NativePtr->TexPixelsUseColors);
+        public  bool TexPixelsUseColors => Marshal.PtrToStructure<ImFontAtlas>(NativePtr).TexPixelsUseColors != 0;
         
         /// <summary>
         ///     Gets or sets the value of the tex pixels alpha 8
         /// </summary>
         public IntPtr TexPixelsAlpha8
         {
-            get => (IntPtr) NativePtr->TexPixelsAlpha8;
-            set => NativePtr->TexPixelsAlpha8 =  value;
+            get => Marshal.PtrToStructure<ImFontAtlas>(NativePtr).TexPixelsAlpha8;
+            set => Marshal.WriteIntPtr(NativePtr, Marshal.OffsetOf<ImFontAtlas>("TexPixelsAlpha8").ToInt32(), value);
         }
         
         /// <summary>
@@ -123,73 +115,68 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         public IntPtr TexPixelsRgba32
         {
-            get => (IntPtr) NativePtr->TexPixelsRgba32;
-            set => NativePtr->TexPixelsRgba32 =  value;
+            get => Marshal.PtrToStructure<ImFontAtlas>(NativePtr).TexPixelsRgba32;
+            set => Marshal.WriteIntPtr(NativePtr, Marshal.OffsetOf<ImFontAtlas>("TexPixelsRgba32").ToInt32(), value);
         }
         
         /// <summary>
         ///     Gets the value of the tex width
         /// </summary>
-        public ref int TexWidth => ref Unsafe.AsRef<int>(&NativePtr->TexWidth);
+        public  int TexWidth => Marshal.PtrToStructure<ImFontAtlas>(NativePtr).TexWidth;
         
         /// <summary>
         ///     Gets the value of the tex height
         /// </summary>
-        public ref int TexHeight => ref Unsafe.AsRef<int>(&NativePtr->TexHeight);
+        public  int TexHeight => Marshal.PtrToStructure<ImFontAtlas>(NativePtr).TexHeight;
         
         /// <summary>
         ///     Gets the value of the tex uv scale
         /// </summary>
-        public ref Vector2 TexUvScale => ref Unsafe.AsRef<Vector2>(&NativePtr->TexUvScale);
+        public  Vector2 TexUvScale => Marshal.PtrToStructure<ImFontAtlas>(NativePtr).TexUvScale;
         
         /// <summary>
         ///     Gets the value of the tex uv white pixel
         /// </summary>
-        public ref Vector2 TexUvWhitePixel => ref Unsafe.AsRef<Vector2>(&NativePtr->TexUvWhitePixel);
+        public  Vector2 TexUvWhitePixel => Marshal.PtrToStructure<ImFontAtlas>(NativePtr).TexUvWhitePixel;
         
         /// <summary>
         ///     Gets the value of the fonts
         /// </summary>
-        public ImVectorG<ImFontPtr> Fonts => new ImVectorG<ImFontPtr>(NativePtr->Fonts);
+        public ImVectorG<ImFontPtr> Fonts => new ImVectorG<ImFontPtr>(Marshal.PtrToStructure<ImFontAtlas>(NativePtr).Fonts);
         
         /// <summary>
         ///     Gets the value of the custom rects
         /// </summary>
-        public ImVectorG<ImFontAtlasCustomRect> CustomRects => new ImVectorG<ImFontAtlasCustomRect>(NativePtr->CustomRects);
+        public ImVectorG<ImFontAtlasCustomRect> CustomRects => new ImVectorG<ImFontAtlasCustomRect>(Marshal.PtrToStructure<ImFontAtlas>(NativePtr).CustomRects);
         
         /// <summary>
         ///     Gets the value of the config data
         /// </summary>
-        public ImVectorG<ImFontConfigPtr> ConfigData => new ImVectorG<ImFontConfigPtr>(NativePtr->ConfigData);
-        
-        /// <summary>
-        ///     Gets the value of the tex uv lines
-        /// </summary>
-        public RangeAccessor<Vector4> TexUvLines => new RangeAccessor<Vector4>((IntPtr)(&NativePtr->TexUvLines0), 64);
+        public ImVectorG<ImFontConfigPtr> ConfigData => new ImVectorG<ImFontConfigPtr>(Marshal.PtrToStructure<ImFontAtlas>(NativePtr).ConfigData);
         
         /// <summary>
         ///     Gets or sets the value of the font builder io
         /// </summary>
         public IntPtr FontBuilderIo
         {
-            get => (IntPtr) NativePtr->FontBuilderIo;
-            set => NativePtr->FontBuilderIo = value;
+            get => Marshal.PtrToStructure<ImFontAtlas>(NativePtr).FontBuilderIo;
+            set => Marshal.WriteIntPtr(NativePtr, Marshal.OffsetOf<ImFontAtlas>("FontBuilderIO").ToInt32(), value);
         }
         
         /// <summary>
         ///     Gets the value of the font builder flags
         /// </summary>
-        public ref uint FontBuilderFlags => ref Unsafe.AsRef<uint>(&NativePtr->FontBuilderFlags);
+        public  uint FontBuilderFlags => Marshal.PtrToStructure<ImFontAtlas>(NativePtr).FontBuilderFlags;
         
         /// <summary>
         ///     Gets the value of the pack id mouse cursors
         /// </summary>
-        public ref int PackIdMouseCursors => ref Unsafe.AsRef<int>(&NativePtr->PackIdMouseCursors);
+        public  int PackIdMouseCursors => Marshal.PtrToStructure<ImFontAtlas>(NativePtr).PackIdMouseCursors;
         
         /// <summary>
         ///     Gets the value of the pack id lines
         /// </summary>
-        public ref int PackIdLines => ref Unsafe.AsRef<int>(&NativePtr->PackIdLines);
+        public  int PackIdLines => Marshal.PtrToStructure<ImFontAtlas>(NativePtr).PackIdLines;
         
         /// <summary>
         ///     Adds the custom rect font glyph using the specified font
@@ -252,7 +239,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The im font ptr</returns>
         public ImFontPtr AddFontDefault()
         {
-            return new ImFontPtr(ImGuiNative.ImFontAtlas_AddFontDefault((IntPtr)NativePtr, new IntPtr(null)));
+            return new ImFontPtr(ImGuiNative.ImFontAtlas_AddFontDefault((IntPtr)NativePtr, new IntPtr()));
         }
         
         /// <summary>
@@ -273,7 +260,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The im font ptr</returns>
         public ImFontPtr AddFontFromFileTtf(string filename, float sizePixels)
         {
-            IntPtr ret = ImGuiNative.ImFontAtlas_AddFontFromFileTTF((IntPtr)NativePtr, Encoding.UTF8.GetBytes(filename), sizePixels, new IntPtr(null), new IntPtr(null));
+            IntPtr ret = ImGuiNative.ImFontAtlas_AddFontFromFileTTF((IntPtr)NativePtr, Encoding.UTF8.GetBytes(filename), sizePixels, new IntPtr(), new IntPtr());
             
             return new ImFontPtr(ret);
         }
@@ -287,7 +274,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The im font ptr</returns>
         public ImFontPtr AddFontFromFileTtf(string filename, float sizePixels, ImFontConfigPtr fontCfg)
         {
-            IntPtr ret = ImGuiNative.ImFontAtlas_AddFontFromFileTTF((IntPtr)NativePtr, Encoding.UTF8.GetBytes(filename), sizePixels, (IntPtr)fontCfg.NativePtr, new IntPtr(null));
+            IntPtr ret = ImGuiNative.ImFontAtlas_AddFontFromFileTTF((IntPtr)NativePtr, Encoding.UTF8.GetBytes(filename), sizePixels, (IntPtr)fontCfg.NativePtr, new IntPtr());
             return new ImFontPtr(ret);
         }
         
@@ -314,7 +301,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The im font ptr</returns>
         public ImFontPtr AddFontFromMemoryCompressedBase85Ttf(string compressedFontDataBase85, float sizePixels)
         {
-            IntPtr ret = ImGuiNative.ImFontAtlas_AddFontFromMemoryCompressedBase85TTF((IntPtr)NativePtr, Encoding.UTF8.GetBytes(compressedFontDataBase85), sizePixels, new IntPtr(null), new IntPtr(null));
+            IntPtr ret = ImGuiNative.ImFontAtlas_AddFontFromMemoryCompressedBase85TTF((IntPtr)NativePtr, Encoding.UTF8.GetBytes(compressedFontDataBase85), sizePixels, new IntPtr(), new IntPtr());
             
             return new ImFontPtr(ret);
         }
@@ -328,7 +315,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The im font ptr</returns>
         public ImFontPtr AddFontFromMemoryCompressedBase85Ttf(string compressedFontDataBase85, float sizePixels, ImFontConfigPtr fontCfg)
         {
-            IntPtr ret = ImGuiNative.ImFontAtlas_AddFontFromMemoryCompressedBase85TTF((IntPtr)NativePtr, Encoding.UTF8.GetBytes(compressedFontDataBase85), sizePixels, (IntPtr)fontCfg.NativePtr, new IntPtr(null));
+            IntPtr ret = ImGuiNative.ImFontAtlas_AddFontFromMemoryCompressedBase85TTF((IntPtr)NativePtr, Encoding.UTF8.GetBytes(compressedFontDataBase85), sizePixels, (IntPtr)fontCfg.NativePtr, new IntPtr());
             return new ImFontPtr(ret);
         }
         
@@ -356,7 +343,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The im font ptr</returns>
         public ImFontPtr AddFontFromMemoryCompressedTtf(IntPtr compressedFontData, int compressedFontSize, float sizePixels)
         {
-            IntPtr ret = ImGuiNative.ImFontAtlas_AddFontFromMemoryCompressedTTF((IntPtr)NativePtr, compressedFontData, compressedFontSize, sizePixels, new IntPtr(null), new IntPtr(null));
+            IntPtr ret = ImGuiNative.ImFontAtlas_AddFontFromMemoryCompressedTTF((IntPtr)NativePtr, compressedFontData, compressedFontSize, sizePixels, new IntPtr(), new IntPtr());
             return new ImFontPtr(ret);
         }
         
@@ -370,7 +357,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The im font ptr</returns>
         public ImFontPtr AddFontFromMemoryCompressedTtf(IntPtr compressedFontData, int compressedFontSize, float sizePixels, ImFontConfigPtr fontCfg)
         {
-            IntPtr ret = ImGuiNative.ImFontAtlas_AddFontFromMemoryCompressedTTF((IntPtr)NativePtr, compressedFontData, compressedFontSize, sizePixels, (IntPtr)fontCfg.NativePtr, new IntPtr(null));
+            IntPtr ret = ImGuiNative.ImFontAtlas_AddFontFromMemoryCompressedTTF((IntPtr)NativePtr, compressedFontData, compressedFontSize, sizePixels, (IntPtr)fontCfg.NativePtr, new IntPtr());
             return new ImFontPtr(ret);
         }
         
@@ -400,7 +387,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The im font ptr</returns>
         public ImFontPtr AddFontFromMemoryTtf(IntPtr fontData, int fontSize, float sizePixels)
         {
-            return new ImFontPtr(ImGuiNative.ImFontAtlas_AddFontFromMemoryTTF((IntPtr)NativePtr, fontData, fontSize, sizePixels, new IntPtr(null), new IntPtr(null)));
+            return new ImFontPtr(ImGuiNative.ImFontAtlas_AddFontFromMemoryTTF((IntPtr)NativePtr, fontData, fontSize, sizePixels, new IntPtr(), new IntPtr()));
         }
         
         /// <summary>
@@ -413,7 +400,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The im font ptr</returns>
         public ImFontPtr AddFontFromMemoryTtf(IntPtr fontData, int fontSize, float sizePixels, ImFontConfigPtr fontCfg)
         {
-            return new ImFontPtr(ImGuiNative.ImFontAtlas_AddFontFromMemoryTTF((IntPtr)NativePtr, fontData, fontSize, sizePixels, (IntPtr)fontCfg.NativePtr, new IntPtr(null)));
+            return new ImFontPtr(ImGuiNative.ImFontAtlas_AddFontFromMemoryTTF((IntPtr)NativePtr, fontData, fontSize, sizePixels, (IntPtr)fontCfg.NativePtr, new IntPtr()));
         }
         
         /// <summary>

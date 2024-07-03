@@ -29,7 +29,6 @@
 
 using System;
 using System.Runtime.InteropServices;
-using Alis.Extension.Graphic.ImGui.Utils;
 
 namespace Alis.Extension.Graphic.ImGui
 {

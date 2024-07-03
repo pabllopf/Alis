@@ -29,7 +29,6 @@
 
 using System;
 using System.Runtime.InteropServices;
-using Alis.Extension.Graphic.ImGui.Utils;
 
 namespace Alis.Extension.Graphic.ImGui
 {
@@ -41,7 +40,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The
         /// </summary>
-        private static readonly int SSizeOfT = Unsafe.SizeOf<T>();
+        private static readonly int SSizeOfT = Marshal.SizeOf<T>();
         
         /// <summary>
         ///     The data
