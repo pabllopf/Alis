@@ -31,14 +31,13 @@ using System;
 using System.Runtime.InteropServices;
 using System.Text;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Extension.Graphic.ImGui.Utils;
 
 namespace Alis.Extension.Graphic.ImGui
 {
     /// <summary>
     ///     The im gui io ptr
     /// </summary>
-    public readonly unsafe struct ImGuiIoPtr
+    public readonly struct ImGuiIoPtr
     {
         /// <summary>
         ///     Gets the value of the native ptr

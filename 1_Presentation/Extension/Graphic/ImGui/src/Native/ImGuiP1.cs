@@ -36,7 +36,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
     /// <summary>
     /// The im gui class
     /// </summary>
-    public static unsafe partial class ImGui
+    public static partial class ImGui
     {
         /// <summary>
         ///     Describes whether combo
@@ -71,7 +71,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The ret</returns>
         public static IntPtr CreateContext()
         {
-            return ImGuiNative.igCreateContext(new IntPtr(null));
+            return ImGuiNative.igCreateContext(new IntPtr());
         }
 
         /// <summary>

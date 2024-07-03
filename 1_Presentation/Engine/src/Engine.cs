@@ -219,7 +219,7 @@ namespace Alis.App.Engine
         ///     Starts this instance
         /// </summary>
         /// <returns>The int</returns>
-        public unsafe void Start()
+        public void Start()
         {
             // initialize SDL and set a few defaults for the OpenGL context
             if (Sdl.Init(InitSettings.InitVideo) != 0)
