@@ -29,6 +29,9 @@
 
 namespace Alis.Extension.Math.PathGenerator.Test.ConvexHull
 {
+    /// <summary>
+    /// The gift wrap test class
+    /// </summary>
     public class GiftWrapTest
     {
         

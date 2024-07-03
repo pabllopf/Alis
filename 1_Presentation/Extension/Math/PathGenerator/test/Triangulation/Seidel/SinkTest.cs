@@ -29,6 +29,9 @@
 
 namespace Alis.Extension.Math.PathGenerator.Test.Triangulation.Seidel
 {
+    /// <summary>
+    /// The sink test class
+    /// </summary>
     public class SinkTest
     {
         

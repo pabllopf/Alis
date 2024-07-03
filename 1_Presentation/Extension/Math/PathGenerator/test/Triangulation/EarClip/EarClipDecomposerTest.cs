@@ -29,6 +29,9 @@
 
 namespace Alis.Extension.Math.PathGenerator.Test.Triangulation.EarClip
 {
+    /// <summary>
+    /// The ear clip decomposer test class
+    /// </summary>
     public class EarClipDecomposerTest
     {
         

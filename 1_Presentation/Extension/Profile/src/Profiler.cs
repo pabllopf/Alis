@@ -67,5 +67,14 @@ namespace Alis.Extension.Profile
         /// </summary>
         /// <returns>The elapsed time</returns>
         public TimeSpan GetElapsedTime() => elapsedTime;
+
+        /// <summary>
+        /// Gets the start time
+        /// </summary>
+        /// <returns>The start time</returns>
+        public DateTime GetStartTime()
+        {
+            return startTime;
+        }
     }
 }

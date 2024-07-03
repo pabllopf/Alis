@@ -83,7 +83,7 @@ namespace Alis.Extension.Profile
         ///     Gets the cpu usage
         /// </summary>
         /// <returns>The cpu usage</returns>
-        private double GetCpuUsage()
+        public double GetCpuUsage()
         {
             double cpuUsage = Process.GetCurrentProcess().TotalProcessorTime.TotalMilliseconds;
             // This is a placeholder, replace with actual code
@@ -94,11 +94,16 @@ namespace Alis.Extension.Profile
         ///     Gets the memory usage
         /// </summary>
         /// <returns>The memory usage</returns>
-        private long GetMemoryUsage()
+        public long GetMemoryUsage()
         {
             long memoryUsage = Process.GetCurrentProcess().WorkingSet64;
             // This is a placeholder, replace with actual code
             return memoryUsage;
+        }
+
+        public ProfileData GetProfileData()
+        {
+          return profileData;
         }
     }
 }
