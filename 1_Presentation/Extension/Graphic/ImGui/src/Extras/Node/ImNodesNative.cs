@@ -10,19 +10,19 @@
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
-//  Copyright (c) 2021 GNU General Public License v3.0
+//  Copyright (c) 2021 GNU General internal License v3.0
 // 
 //  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
+//  it under the terms of the GNU General internal License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
+//  GNU General internal License for more details.
 // 
-//  You should have received a copy of the GNU General Public License
+//  You should have received a copy of the GNU General internal License
 //  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
@@ -36,7 +36,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
     /// <summary>
     ///     The imnodes native class
     /// </summary>
-    public static class ImNodesNative
+    internal static class ImNodesNative
     {
         /// <summary>
         ///     The dll name
@@ -48,14 +48,14 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "EmulateThreeButtonMouse_destroy")]
-        public static extern void EmulateThreeButtonMouse_destroy(EmulateThreeButtonMouse self);
+        internal static extern void EmulateThreeButtonMouse_destroy(EmulateThreeButtonMouse self);
         
         /// <summary>
         ///     Emulates the three button mouse emulate three button mouse
         /// </summary>
         /// <returns>The emulate three button mouse</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "EmulateThreeButtonMouse_EmulateThreeButtonMouse")]
-        public static extern EmulateThreeButtonMouse EmulateThreeButtonMouse_EmulateThreeButtonMouse();
+        internal static extern EmulateThreeButtonMouse EmulateThreeButtonMouse_EmulateThreeButtonMouse();
         
         /// <summary>
         ///     Ims the nodes begin input attribute using the specified id
@@ -63,26 +63,26 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="id">The id</param>
         /// <param name="shape">The shape</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_BeginInputAttribute")]
-        public static extern void ImNodes_BeginInputAttribute(int id, ImNodesPinShape shape);
+        internal static extern void ImNodes_BeginInputAttribute(int id, ImNodesPinShape shape);
         
         /// <summary>
         ///     Ims the nodes begin node using the specified id
         /// </summary>
         /// <param name="id">The id</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_BeginNode")]
-        public static extern void ImNodes_BeginNode(int id);
+        internal static extern void ImNodes_BeginNode(int id);
         
         /// <summary>
         ///     Ims the nodes begin node editor
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_BeginNodeEditor")]
-        public static extern void ImNodes_BeginNodeEditor();
+        internal static extern void ImNodes_BeginNodeEditor();
         
         /// <summary>
         ///     Ims the nodes begin node title bar
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_BeginNodeTitleBar")]
-        public static extern void ImNodes_BeginNodeTitleBar();
+        internal static extern void ImNodes_BeginNodeTitleBar();
         
         /// <summary>
         ///     Ims the nodes begin output attribute using the specified id
@@ -90,146 +90,146 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="id">The id</param>
         /// <param name="shape">The shape</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_BeginOutputAttribute")]
-        public static extern void ImNodes_BeginOutputAttribute(int id, ImNodesPinShape shape);
+        internal static extern void ImNodes_BeginOutputAttribute(int id, ImNodesPinShape shape);
         
         /// <summary>
         ///     Ims the nodes begin static attribute using the specified id
         /// </summary>
         /// <param name="id">The id</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_BeginStaticAttribute")]
-        public static extern void ImNodes_BeginStaticAttribute(int id);
+        internal static extern void ImNodes_BeginStaticAttribute(int id);
         
         /// <summary>
         ///     Ims the nodes clear link selection nil
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_ClearLinkSelection_Nil")]
-        public static extern void ImNodes_ClearLinkSelection_Nil();
+        internal static extern void ImNodes_ClearLinkSelection_Nil();
         
         /// <summary>
         ///     Ims the nodes clear link selection int using the specified link id
         /// </summary>
         /// <param name="linkId">The link id</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_ClearLinkSelection_Int")]
-        public static extern void ImNodes_ClearLinkSelection_Int(int linkId);
+        internal static extern void ImNodes_ClearLinkSelection_Int(int linkId);
         
         /// <summary>
         ///     Ims the nodes clear node selection nil
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_ClearNodeSelection_Nil")]
-        public static extern void ImNodes_ClearNodeSelection_Nil();
+        internal static extern void ImNodes_ClearNodeSelection_Nil();
         
         /// <summary>
         ///     Ims the nodes clear node selection int using the specified node id
         /// </summary>
         /// <param name="nodeId">The node id</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_ClearNodeSelection_Int")]
-        public static extern void ImNodes_ClearNodeSelection_Int(int nodeId);
+        internal static extern void ImNodes_ClearNodeSelection_Int(int nodeId);
         
         /// <summary>
         ///     Ims the nodes create context
         /// </summary>
         /// <returns>The im nodes context</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_CreateContext")]
-        public static extern ImNodesContext ImNodes_CreateContext();
+        internal static extern ImNodesContext ImNodes_CreateContext();
         
         /// <summary>
         ///     Ims the nodes destroy context using the specified ctx
         /// </summary>
         /// <param name="ctx">The ctx</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_DestroyContext")]
-        public static extern void ImNodes_DestroyContext(ImNodesContext ctx);
+        internal static extern void ImNodes_DestroyContext(ImNodesContext ctx);
         
         /// <summary>
         ///     Ims the nodes editor context create
         /// </summary>
         /// <returns>The im nodes editor context</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_EditorContextCreate")]
-        public static extern ImNodesEditorContext ImNodes_EditorContextCreate();
+        internal static extern ImNodesEditorContext ImNodes_EditorContextCreate();
         
         /// <summary>
         ///     Ims the nodes editor context free using the specified noname 1
         /// </summary>
         /// <param name="noname1">The noname</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_EditorContextFree")]
-        public static extern void ImNodes_EditorContextFree(ImNodesEditorContext noname1);
+        internal static extern void ImNodes_EditorContextFree(ImNodesEditorContext noname1);
         
         /// <summary>
         ///     Ims the nodes editor context get panning using the specified p out
         /// </summary>
         /// <param name="pOut">The out</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_EditorContextGetPanning")]
-        public static extern void ImNodes_EditorContextGetPanning(out Vector2 pOut);
+        internal static extern void ImNodes_EditorContextGetPanning(out Vector2 pOut);
         
         /// <summary>
         ///     Ims the nodes editor context move to node using the specified node id
         /// </summary>
         /// <param name="nodeId">The node id</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_EditorContextMoveToNode")]
-        public static extern void ImNodes_EditorContextMoveToNode(int nodeId);
+        internal static extern void ImNodes_EditorContextMoveToNode(int nodeId);
         
         /// <summary>
         ///     Ims the nodes editor context reset panning using the specified pos
         /// </summary>
         /// <param name="pos">The pos</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_EditorContextResetPanning")]
-        public static extern void ImNodes_EditorContextResetPanning(Vector2 pos);
+        internal static extern void ImNodes_EditorContextResetPanning(Vector2 pos);
         
         /// <summary>
         ///     Ims the nodes editor context set using the specified noname 1
         /// </summary>
         /// <param name="noname1">The noname</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_EditorContextSet")]
-        public static extern void ImNodes_EditorContextSet(ImNodesEditorContext noname1);
+        internal static extern void ImNodes_EditorContextSet(ImNodesEditorContext noname1);
         
         /// <summary>
         ///     Ims the nodes end input attribute
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_EndInputAttribute")]
-        public static extern void ImNodes_EndInputAttribute();
+        internal static extern void ImNodes_EndInputAttribute();
         
         /// <summary>
         ///     Ims the nodes end node
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_EndNode")]
-        public static extern void ImNodes_EndNode();
+        internal static extern void ImNodes_EndNode();
         
         /// <summary>
         ///     Ims the nodes end node editor
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_EndNodeEditor")]
-        public static extern void ImNodes_EndNodeEditor();
+        internal static extern void ImNodes_EndNodeEditor();
         
         /// <summary>
         ///     Ims the nodes end node title bar
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_EndNodeTitleBar")]
-        public static extern void ImNodes_EndNodeTitleBar();
+        internal static extern void ImNodes_EndNodeTitleBar();
         
         /// <summary>
         ///     Ims the nodes end output attribute
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_EndOutputAttribute")]
-        public static extern void ImNodes_EndOutputAttribute();
+        internal static extern void ImNodes_EndOutputAttribute();
         
         /// <summary>
         ///     Ims the nodes end static attribute
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_EndStaticAttribute")]
-        public static extern void ImNodes_EndStaticAttribute();
+        internal static extern void ImNodes_EndStaticAttribute();
         
         /// <summary>
         ///     Ims the nodes get current context
         /// </summary>
         /// <returns>The im nodes context</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_GetCurrentContext")]
-        public static extern ImNodesContext ImNodes_GetCurrentContext();
+        internal static extern ImNodesContext ImNodes_GetCurrentContext();
         
         /// <summary>
         ///     Ims the nodes get io
         /// </summary>
         /// <returns>The im nodes io</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_GetIO")]
-        public static extern ImNodesIo ImNodes_GetIO();
+        internal static extern ImNodesIo ImNodes_GetIO();
         
         /// <summary>
         ///     Ims the nodes get node dimensions using the specified p out
@@ -237,7 +237,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="pOut">The out</param>
         /// <param name="id">The id</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_GetNodeDimensions")]
-        public static extern void ImNodes_GetNodeDimensions(out Vector2 pOut, int id);
+        internal static extern void ImNodes_GetNodeDimensions(out Vector2 pOut, int id);
         
         /// <summary>
         ///     Ims the nodes get node editor space pos using the specified p out
@@ -245,7 +245,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="pOut">The out</param>
         /// <param name="nodeId">The node id</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_GetNodeEditorSpacePos")]
-        public static extern void ImNodes_GetNodeEditorSpacePos(out Vector2 pOut, int nodeId);
+        internal static extern void ImNodes_GetNodeEditorSpacePos(out Vector2 pOut, int nodeId);
         
         /// <summary>
         ///     Ims the nodes get node grid space pos using the specified p out
@@ -253,7 +253,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="pOut">The out</param>
         /// <param name="nodeId">The node id</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_GetNodeGridSpacePos")]
-        public static extern void ImNodes_GetNodeGridSpacePos(out Vector2 pOut, int nodeId);
+        internal static extern void ImNodes_GetNodeGridSpacePos(out Vector2 pOut, int nodeId);
         
         /// <summary>
         ///     Ims the nodes get node screen space pos using the specified p out
@@ -261,28 +261,28 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="pOut">The out</param>
         /// <param name="nodeId">The node id</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_GetNodeScreenSpacePos")]
-        public static extern void ImNodes_GetNodeScreenSpacePos(out Vector2 pOut, int nodeId);
+        internal static extern void ImNodes_GetNodeScreenSpacePos(out Vector2 pOut, int nodeId);
         
         /// <summary>
         ///     Ims the nodes get selected links using the specified link ids
         /// </summary>
         /// <param name="linkIds">The link ids</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_GetSelectedLinks")]
-        public static extern void ImNodes_GetSelectedLinks(int linkIds);
+        internal static extern void ImNodes_GetSelectedLinks(int linkIds);
         
         /// <summary>
         ///     Ims the nodes get selected nodes using the specified node ids
         /// </summary>
         /// <param name="nodeIds">The node ids</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_GetSelectedNodes")]
-        public static extern void ImNodes_GetSelectedNodes(int nodeIds);
+        internal static extern void ImNodes_GetSelectedNodes(int nodeIds);
         
         /// <summary>
         ///     Ims the nodes get style
         /// </summary>
         /// <returns>The im nodes style</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_GetStyle")]
-        public static extern ImNodesStyle ImNodes_GetStyle();
+        internal static extern ImNodesStyle ImNodes_GetStyle();
         
         /// <summary>
         ///     Ims the nodes is any attribute active using the specified attribute id
@@ -290,21 +290,21 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="attributeId">The attribute id</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_IsAnyAttributeActive")]
-        public static extern byte ImNodes_IsAnyAttributeActive(int attributeId);
+        internal static extern byte ImNodes_IsAnyAttributeActive(int attributeId);
         
         /// <summary>
         ///     Ims the nodes is attribute active
         /// </summary>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_IsAttributeActive")]
-        public static extern byte ImNodes_IsAttributeActive();
+        internal static extern byte ImNodes_IsAttributeActive();
         
         /// <summary>
         ///     Ims the nodes is editor hovered
         /// </summary>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_IsEditorHovered")]
-        public static extern byte ImNodes_IsEditorHovered();
+        internal static extern byte ImNodes_IsEditorHovered();
         
         /// <summary>
         ///     Ims the nodes is link created bool ptr using the specified started at attribute id
@@ -314,7 +314,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="createdFromSnap">The created from snap</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_IsLinkCreated_BoolPtr")]
-        public static extern byte ImNodes_IsLinkCreated_BoolPtr(int startedAtAttributeId, int endedAtAttributeId, byte[] createdFromSnap);
+        internal static extern byte ImNodes_IsLinkCreated_BoolPtr(int startedAtAttributeId, int endedAtAttributeId, byte[] createdFromSnap);
         
         /// <summary>
         ///     Ims the nodes is link created int ptr using the specified started at node id
@@ -326,7 +326,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="createdFromSnap">The created from snap</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_IsLinkCreated_IntPtr")]
-        public static extern byte ImNodes_IsLinkCreated_IntPtr(int startedAtNodeId, int startedAtAttributeId, int endedAtNodeId, int endedAtAttributeId, byte createdFromSnap);
+        internal static extern byte ImNodes_IsLinkCreated_IntPtr(int startedAtNodeId, int startedAtAttributeId, int endedAtNodeId, int endedAtAttributeId, byte createdFromSnap);
         
         /// <summary>
         ///     Ims the nodes is link destroyed using the specified link id
@@ -334,7 +334,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="linkId">The link id</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_IsLinkDestroyed")]
-        public static extern byte ImNodes_IsLinkDestroyed(int linkId);
+        internal static extern byte ImNodes_IsLinkDestroyed(int linkId);
         
         /// <summary>
         ///     Ims the nodes is link dropped using the specified started at attribute id
@@ -343,7 +343,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="includingDetachedLinks">The including detached links</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_IsLinkDropped")]
-        public static extern byte ImNodes_IsLinkDropped(int startedAtAttributeId, byte includingDetachedLinks);
+        internal static extern byte ImNodes_IsLinkDropped(int startedAtAttributeId, byte includingDetachedLinks);
         
         /// <summary>
         ///     Ims the nodes is link hovered using the specified link id
@@ -351,7 +351,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="linkId">The link id</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_IsLinkHovered")]
-        public static extern byte ImNodes_IsLinkHovered(int linkId);
+        internal static extern byte ImNodes_IsLinkHovered(int linkId);
         
         /// <summary>
         ///     Ims the nodes is link selected using the specified link id
@@ -359,7 +359,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="linkId">The link id</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_IsLinkSelected")]
-        public static extern byte ImNodes_IsLinkSelected(int linkId);
+        internal static extern byte ImNodes_IsLinkSelected(int linkId);
         
         /// <summary>
         ///     Ims the nodes is link started using the specified started at attribute id
@@ -367,7 +367,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="startedAtAttributeId">The started at attribute id</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_IsLinkStarted")]
-        public static extern byte ImNodes_IsLinkStarted(int startedAtAttributeId);
+        internal static extern byte ImNodes_IsLinkStarted(int startedAtAttributeId);
         
         /// <summary>
         ///     Ims the nodes is node hovered using the specified node id
@@ -375,7 +375,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="nodeId">The node id</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_IsNodeHovered")]
-        public static extern byte ImNodes_IsNodeHovered(int nodeId);
+        internal static extern byte ImNodes_IsNodeHovered(int nodeId);
         
         /// <summary>
         ///     Ims the nodes is node selected using the specified node id
@@ -383,7 +383,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="nodeId">The node id</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_IsNodeSelected")]
-        public static extern byte ImNodes_IsNodeSelected(int nodeId);
+        internal static extern byte ImNodes_IsNodeSelected(int nodeId);
         
         /// <summary>
         ///     Ims the nodes is pin hovered using the specified attribute id
@@ -391,7 +391,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="attributeId">The attribute id</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_IsPinHovered")]
-        public static extern byte ImNodes_IsPinHovered(int attributeId);
+        internal static extern byte ImNodes_IsPinHovered(int attributeId);
         
         /// <summary>
         ///     Ims the nodes link using the specified id
@@ -400,14 +400,14 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="startAttributeId">The start attribute id</param>
         /// <param name="endAttributeId">The end attribute id</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_Link")]
-        public static extern void ImNodes_Link(int id, int startAttributeId, int endAttributeId);
+        internal static extern void ImNodes_Link(int id, int startAttributeId, int endAttributeId);
         
         /// <summary>
         ///     Ims the nodes load current editor state from ini file using the specified file name
         /// </summary>
         /// <param name="fileName">The file name</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_LoadCurrentEditorStateFromIniFile")]
-        public static extern void ImNodes_LoadCurrentEditorStateFromIniFile(byte[] fileName);
+        internal static extern void ImNodes_LoadCurrentEditorStateFromIniFile(byte[] fileName);
         
         /// <summary>
         ///     Ims the nodes load current editor state from ini string using the specified data
@@ -415,7 +415,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="data">The data</param>
         /// <param name="dataSize">The data size</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_LoadCurrentEditorStateFromIniString")]
-        public static extern void ImNodes_LoadCurrentEditorStateFromIniString(byte[] data, uint dataSize);
+        internal static extern void ImNodes_LoadCurrentEditorStateFromIniString(byte[] data, uint dataSize);
         
         /// <summary>
         ///     Ims the nodes load editor state from ini file using the specified editor
@@ -423,7 +423,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="editor">The editor</param>
         /// <param name="fileName">The file name</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_LoadEditorStateFromIniFile")]
-        public static extern void ImNodes_LoadEditorStateFromIniFile(ImNodesEditorContext editor, byte[] fileName);
+        internal static extern void ImNodes_LoadEditorStateFromIniFile(ImNodesEditorContext editor, byte[] fileName);
         
         /// <summary>
         ///     Ims the nodes load editor state from ini string using the specified editor
@@ -432,7 +432,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="data">The data</param>
         /// <param name="dataSize">The data size</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_LoadEditorStateFromIniString")]
-        public static extern void ImNodes_LoadEditorStateFromIniString(ImNodesEditorContext editor, byte[] data, uint dataSize);
+        internal static extern void ImNodes_LoadEditorStateFromIniString(ImNodesEditorContext editor, byte[] data, uint dataSize);
         
         /// <summary>
         ///     Ims the nodes mini map using the specified minimap size fraction
@@ -442,47 +442,47 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="nodeHoveringCallback">The node hovering callback</param>
         /// <param name="nodeHoveringCallbackData">The node hovering callback data</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_MiniMap")]
-        public static extern void ImNodes_MiniMap(float minimapSizeFraction, ImNodesMiniMapLocation location, ImNodesMiniMapNodeHoveringCallback nodeHoveringCallback, ImNodesMiniMapNodeHoveringCallbackUserData nodeHoveringCallbackData);
+        internal static extern void ImNodes_MiniMap(float minimapSizeFraction, ImNodesMiniMapLocation location, ImNodesMiniMapNodeHoveringCallback nodeHoveringCallback, ImNodesMiniMapNodeHoveringCallbackUserData nodeHoveringCallbackData);
         
         /// <summary>
         ///     Ims the nodes num selected links
         /// </summary>
         /// <returns>The int</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_NumSelectedLinks")]
-        public static extern int ImNodes_NumSelectedLinks();
+        internal static extern int ImNodes_NumSelectedLinks();
         
         /// <summary>
         ///     Ims the nodes num selected nodes
         /// </summary>
         /// <returns>The int</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_NumSelectedNodes")]
-        public static extern int ImNodes_NumSelectedNodes();
+        internal static extern int ImNodes_NumSelectedNodes();
         
         /// <summary>
         ///     Ims the nodes pop attribute flag
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_PopAttributeFlag")]
-        public static extern void ImNodes_PopAttributeFlag();
+        internal static extern void ImNodes_PopAttributeFlag();
         
         /// <summary>
         ///     Ims the nodes pop color style
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_PopColorStyle")]
-        public static extern void ImNodes_PopColorStyle();
+        internal static extern void ImNodes_PopColorStyle();
         
         /// <summary>
         ///     Ims the nodes pop style var using the specified count
         /// </summary>
         /// <param name="count">The count</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_PopStyleVar")]
-        public static extern void ImNodes_PopStyleVar(int count);
+        internal static extern void ImNodes_PopStyleVar(int count);
         
         /// <summary>
         ///     Ims the nodes push attribute flag using the specified flag
         /// </summary>
         /// <param name="flag">The flag</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_PushAttributeFlag")]
-        public static extern void ImNodes_PushAttributeFlag(ImNodesAttribute flag);
+        internal static extern void ImNodes_PushAttributeFlag(ImNodesAttribute flag);
         
         /// <summary>
         ///     Ims the nodes push color style using the specified item
@@ -490,7 +490,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="item">The item</param>
         /// <param name="color">The color</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_PushColorStyle")]
-        public static extern void ImNodes_PushColorStyle(ImNodesCol item, uint color);
+        internal static extern void ImNodes_PushColorStyle(ImNodesCol item, uint color);
         
         /// <summary>
         ///     Ims the nodes push style var float using the specified style item
@@ -498,7 +498,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="styleItem">The style item</param>
         /// <param name="value">The value</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_PushStyleVar_Float")]
-        public static extern void ImNodes_PushStyleVar_Float(ImNodesStyleVar styleItem, float value);
+        internal static extern void ImNodes_PushStyleVar_Float(ImNodesStyleVar styleItem, float value);
         
         /// <summary>
         ///     Ims the nodes push style var vec 2 using the specified style item
@@ -506,14 +506,14 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="styleItem">The style item</param>
         /// <param name="value">The value</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_PushStyleVar_Vec2")]
-        public static extern void ImNodes_PushStyleVar_Vec2(ImNodesStyleVar styleItem, Vector2 value);
+        internal static extern void ImNodes_PushStyleVar_Vec2(ImNodesStyleVar styleItem, Vector2 value);
         
         /// <summary>
         ///     Ims the nodes save current editor state to ini file using the specified file name
         /// </summary>
         /// <param name="fileName">The file name</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_SaveCurrentEditorStateToIniFile")]
-        public static extern void ImNodes_SaveCurrentEditorStateToIniFile(byte[] fileName);
+        internal static extern void ImNodes_SaveCurrentEditorStateToIniFile(byte[] fileName);
         
         /// <summary>
         ///     Ims the nodes save current editor state to ini string using the specified data size
@@ -521,7 +521,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="dataSize">The data size</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_SaveCurrentEditorStateToIniString")]
-        public static extern byte[] ImNodes_SaveCurrentEditorStateToIniString(IntPtr dataSize);
+        internal static extern byte[] ImNodes_SaveCurrentEditorStateToIniString(IntPtr dataSize);
         
         /// <summary>
         ///     Ims the nodes save editor state to ini file using the specified editor
@@ -529,7 +529,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="editor">The editor</param>
         /// <param name="fileName">The file name</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_SaveEditorStateToIniFile")]
-        public static extern void ImNodes_SaveEditorStateToIniFile(ImNodesEditorContext editor, byte[] fileName);
+        internal static extern void ImNodes_SaveEditorStateToIniFile(ImNodesEditorContext editor, byte[] fileName);
         
         /// <summary>
         ///     Ims the nodes save editor state to ini string using the specified editor
@@ -538,35 +538,35 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="dataSize">The data size</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_SaveEditorStateToIniString")]
-        public static extern byte[] ImNodes_SaveEditorStateToIniString(ImNodesEditorContext editor, uint dataSize);
+        internal static extern byte[] ImNodes_SaveEditorStateToIniString(ImNodesEditorContext editor, uint dataSize);
         
         /// <summary>
         ///     Ims the nodes select link using the specified link id
         /// </summary>
         /// <param name="linkId">The link id</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_SelectLink")]
-        public static extern void ImNodes_SelectLink(int linkId);
+        internal static extern void ImNodes_SelectLink(int linkId);
         
         /// <summary>
         ///     Ims the nodes select node using the specified node id
         /// </summary>
         /// <param name="nodeId">The node id</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_SelectNode")]
-        public static extern void ImNodes_SelectNode(int nodeId);
+        internal static extern void ImNodes_SelectNode(int nodeId);
         
         /// <summary>
         ///     Ims the nodes set current context using the specified ctx
         /// </summary>
         /// <param name="ctx">The ctx</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_SetCurrentContext")]
-        public static extern void ImNodes_SetCurrentContext(ImNodesContext ctx);
+        internal static extern void ImNodes_SetCurrentContext(ImNodesContext ctx);
         
         /// <summary>
         ///     Ims the nodes set im gui context using the specified ctx
         /// </summary>
         /// <param name="ctx">The ctx</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_SetImGuiContext")]
-        public static extern void ImNodes_SetImGuiContext(IntPtr ctx);
+        internal static extern void ImNodes_SetImGuiContext(IntPtr ctx);
         
         /// <summary>
         ///     Ims the nodes set node draggable using the specified node id
@@ -574,7 +574,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="nodeId">The node id</param>
         /// <param name="draggable">The draggable</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_SetNodeDraggable")]
-        public static extern void ImNodes_SetNodeDraggable(int nodeId, byte draggable);
+        internal static extern void ImNodes_SetNodeDraggable(int nodeId, byte draggable);
         
         /// <summary>
         ///     Ims the nodes set node editor space pos using the specified node id
@@ -582,7 +582,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="nodeId">The node id</param>
         /// <param name="editorSpacePos">The editor space pos</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_SetNodeEditorSpacePos")]
-        public static extern void ImNodes_SetNodeEditorSpacePos(int nodeId, Vector2 editorSpacePos);
+        internal static extern void ImNodes_SetNodeEditorSpacePos(int nodeId, Vector2 editorSpacePos);
         
         /// <summary>
         ///     Ims the nodes set node grid space pos using the specified node id
@@ -590,7 +590,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="nodeId">The node id</param>
         /// <param name="gridPos">The grid pos</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_SetNodeGridSpacePos")]
-        public static extern void ImNodes_SetNodeGridSpacePos(int nodeId, Vector2 gridPos);
+        internal static extern void ImNodes_SetNodeGridSpacePos(int nodeId, Vector2 gridPos);
         
         /// <summary>
         ///     Ims the nodes set node screen space pos using the specified node id
@@ -598,90 +598,90 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <param name="nodeId">The node id</param>
         /// <param name="screenSpacePos">The screen space pos</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_SetNodeScreenSpacePos")]
-        public static extern void ImNodes_SetNodeScreenSpacePos(int nodeId, Vector2 screenSpacePos);
+        internal static extern void ImNodes_SetNodeScreenSpacePos(int nodeId, Vector2 screenSpacePos);
         
         /// <summary>
         ///     Ims the nodes snap node to grid using the specified node id
         /// </summary>
         /// <param name="nodeId">The node id</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_SnapNodeToGrid")]
-        public static extern void ImNodes_SnapNodeToGrid(int nodeId);
+        internal static extern void ImNodes_SnapNodeToGrid(int nodeId);
         
         /// <summary>
         ///     Ims the nodes style colors classic using the specified dest
         /// </summary>
         /// <param name="dest">The dest</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_StyleColorsClassic")]
-        public static extern void ImNodes_StyleColorsClassic(ImNodesStyle dest);
+        internal static extern void ImNodes_StyleColorsClassic(ImNodesStyle dest);
         
         /// <summary>
         ///     Ims the nodes style colors dark using the specified dest
         /// </summary>
         /// <param name="dest">The dest</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_StyleColorsDark")]
-        public static extern void ImNodes_StyleColorsDark(ImNodesStyle dest);
+        internal static extern void ImNodes_StyleColorsDark(ImNodesStyle dest);
         
         /// <summary>
         ///     Ims the nodes style colors light using the specified dest
         /// </summary>
         /// <param name="dest">The dest</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_StyleColorsLight")]
-        public static extern void ImNodes_StyleColorsLight(ImNodesStyle dest);
+        internal static extern void ImNodes_StyleColorsLight(ImNodesStyle dest);
         
         /// <summary>
         ///     Ims the nodes io destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodesIO_destroy")]
-        public static extern void ImNodesIO_destroy(ImNodesIo self);
+        internal static extern void ImNodesIO_destroy(ImNodesIo self);
         
         /// <summary>
         ///     Ims the nodes io im nodes io
         /// </summary>
         /// <returns>The im nodes io</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodesIO_ImNodesIO")]
-        public static extern ImNodesIo ImNodesIO_ImNodesIO();
+        internal static extern ImNodesIo ImNodesIO_ImNodesIO();
         
         /// <summary>
         ///     Ims the nodes style destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodesStyle_destroy")]
-        public static extern void ImNodesStyle_destroy(ImNodesStyle self);
+        internal static extern void ImNodesStyle_destroy(ImNodesStyle self);
         
         /// <summary>
         ///     Ims the nodes style im nodes style
         /// </summary>
         /// <returns>The im nodes style</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodesStyle_ImNodesStyle")]
-        public static extern ImNodesStyle ImNodesStyle_ImNodesStyle();
+        internal static extern ImNodesStyle ImNodesStyle_ImNodesStyle();
         
         /// <summary>
         ///     Links the detach with modifier click destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "LinkDetachWithModifierClick_destroy")]
-        public static extern void LinkDetachWithModifierClick_destroy(LinkDetachWithModifierClick self);
+        internal static extern void LinkDetachWithModifierClick_destroy(LinkDetachWithModifierClick self);
         
         /// <summary>
         ///     Links the detach with modifier click link detach with modifier click
         /// </summary>
         /// <returns>The link detach with modifier click</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "LinkDetachWithModifierClick_LinkDetachWithModifierClick")]
-        public static extern LinkDetachWithModifierClick LinkDetachWithModifierClick_LinkDetachWithModifierClick();
+        internal static extern LinkDetachWithModifierClick LinkDetachWithModifierClick_LinkDetachWithModifierClick();
         
         /// <summary>
         ///     Multiples the select modifier destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "MultipleSelectModifier_destroy")]
-        public static extern void MultipleSelectModifier_destroy(MultipleSelectModifier self);
+        internal static extern void MultipleSelectModifier_destroy(MultipleSelectModifier self);
         
         /// <summary>
         ///     Multiples the select modifier multiple select modifier
         /// </summary>
         /// <returns>The multiple select modifier</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "MultipleSelectModifier_MultipleSelectModifier")]
-        public static extern MultipleSelectModifier MultipleSelectModifier_MultipleSelectModifier();
+        internal static extern MultipleSelectModifier MultipleSelectModifier_MultipleSelectModifier();
     }
 }
