@@ -448,7 +448,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 // Assuming KeyMap is the first field in ImGuiIo, adjust the offset accordingly if it's not.
                 int offsetToKeyMap = Marshal.OffsetOf<ImGuiIo>("KeyMap").ToInt32();
-                IntPtr keyMapPtr = IntPtr.Add(NativePtr, offsetToKeyMap);
+                IntPtr.Add(NativePtr, offsetToKeyMap);
                 
                 // Create an empty list for the key map
                 List<int> map = new List<int>();
@@ -497,7 +497,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 // Assuming KeysDown is the first field in ImGuiIo, adjust the offset accordingly if it's not.
                 int offsetToKeysDown = Marshal.OffsetOf<ImGuiIo>("KeysDown").ToInt32();
-                IntPtr keysDownPtr = IntPtr.Add(NativePtr, offsetToKeysDown);
+                IntPtr.Add(NativePtr, offsetToKeysDown);
                 
                 // Assuming the size of the keys down is known to be 512
                 List<bool> down = new List<bool>(512);
@@ -537,7 +537,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 // Assuming NavInputs is the first field in ImGuiIo, adjust the offset accordingly if it's not.
                 int offsetToNavInputs = Marshal.OffsetOf<ImGuiIo>("NavInputs").ToInt32();
-                IntPtr navInputsPtr = IntPtr.Add(NativePtr, offsetToNavInputs);
+                IntPtr.Add(NativePtr, offsetToNavInputs);
                 
                 // Assuming the size of the nav inputs is known to be 21
                 List<float> inputs = new List<float>(21);
@@ -591,7 +591,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 // Assuming MouseDown is the first field in ImGuiIo, adjust the offset accordingly if it's not.
                 int offsetToMouseDown = Marshal.OffsetOf<ImGuiIo>("MouseDown").ToInt32();
-                IntPtr mouseDownPtr = IntPtr.Add(NativePtr, offsetToMouseDown);
+                IntPtr.Add(NativePtr, offsetToMouseDown);
                 
                 // Assuming the size of the mouse down is known to be 5
                 List<bool> down = new List<bool>(5);
