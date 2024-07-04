@@ -84,10 +84,10 @@ namespace Alis.Core.Network.Test.Internal
         [Fact]
         public async Task ReadLongExactly_ValidInput()
         {
-            MemoryStream stream = new MemoryStream(BitConverter.GetBytes((long) 1234567890123456789));
+            MemoryStream stream = new MemoryStream(BitConverter.GetBytes(1234567890123456789));
             ArraySegment<byte> buffer = new ArraySegment<byte>(new byte[8]);
             long result = await BinaryReaderWriter.ReadLongExactly(stream, BitConverter.IsLittleEndian, buffer, CancellationToken.None);
-            Assert.Equal((long) 1234567890123456789, result);
+            Assert.Equal(1234567890123456789, result);
         }
         
         /// <summary>
@@ -120,7 +120,7 @@ namespace Alis.Core.Network.Test.Internal
         {
             MemoryStream stream = new MemoryStream();
             BinaryReaderWriter.WriteLong(1234567890123456789, stream, BitConverter.IsLittleEndian);
-            Assert.Equal(BitConverter.GetBytes((long) 1234567890123456789), stream.ToArray());
+            Assert.Equal(BitConverter.GetBytes(1234567890123456789), stream.ToArray());
         }
         
         /// <summary>

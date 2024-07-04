@@ -295,7 +295,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The im draw list ptr</returns>
         public static ImDrawListPtr GetBackgroundDrawList(ImGuiViewportPtr viewport)
         {
-            return new ImDrawListPtr(ImGuiNative.igGetBackgroundDrawList_ViewportPtr((IntPtr)viewport.NativePtr));
+            return new ImDrawListPtr(ImGuiNative.igGetBackgroundDrawList_ViewportPtr(viewport.NativePtr));
         }
         
         /// <summary>
@@ -570,7 +570,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The im draw list ptr</returns>
         public static ImDrawListPtr GetForegroundDrawList(ImGuiViewportPtr viewport)
         {
-            return new ImDrawListPtr(ImGuiNative.igGetForegroundDrawList_ViewportPtr((IntPtr)viewport.NativePtr));
+            return new ImDrawListPtr(ImGuiNative.igGetForegroundDrawList_ViewportPtr(viewport.NativePtr));
         }
         
         /// <summary>

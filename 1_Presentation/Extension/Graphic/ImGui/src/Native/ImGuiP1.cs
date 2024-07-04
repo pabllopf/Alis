@@ -81,7 +81,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The ret</returns>
         public static IntPtr CreateContext(ImFontAtlasPtr sharedFontAtlas)
         {
-            IntPtr ret = ImGuiNative.igCreateContext((IntPtr)sharedFontAtlas.NativePtr);
+            IntPtr ret = ImGuiNative.igCreateContext(sharedFontAtlas.NativePtr);
             return ret;
         }
 
@@ -214,7 +214,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         { ;
             ImGuiDockNodeFlags flags = 0;
             ImGuiWindowClass windowClass = new ImGuiWindowClass();
-            uint ret = ImGuiNative.igDockSpaceOverViewport((IntPtr)viewport.NativePtr, flags, windowClass);
+            uint ret = ImGuiNative.igDockSpaceOverViewport(viewport.NativePtr, flags, windowClass);
             return ret;
         }
 
@@ -227,7 +227,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static uint DockSpaceOverViewport(ImGuiViewportPtr viewport, ImGuiDockNodeFlags flags)
         {
             ImGuiWindowClass windowClass = new ImGuiWindowClass();
-            uint ret = ImGuiNative.igDockSpaceOverViewport((IntPtr)viewport.NativePtr, flags, windowClass);
+            uint ret = ImGuiNative.igDockSpaceOverViewport(viewport.NativePtr, flags, windowClass);
             return ret;
         }
 
@@ -240,7 +240,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The ret</returns>
         public static uint DockSpaceOverViewport(ImGuiViewportPtr viewport, ImGuiDockNodeFlags flags, ImGuiWindowClass windowClass)
         {
-            uint ret = ImGuiNative.igDockSpaceOverViewport((IntPtr)viewport.NativePtr, flags, windowClass);
+            uint ret = ImGuiNative.igDockSpaceOverViewport(viewport.NativePtr, flags, windowClass);
             return ret;
         }
 
