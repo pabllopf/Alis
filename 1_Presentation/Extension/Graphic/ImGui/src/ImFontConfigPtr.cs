@@ -153,12 +153,7 @@ namespace Alis.Extension.Graphic.ImGui
         ///     Gets the value of the ellipsis char
         /// </summary>
         public ushort EllipsisChar => (ushort)Marshal.ReadInt16(NativePtr + IntPtr.Size + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<int>() + Marshal.SizeOf<float>() + Marshal.SizeOf<int>() + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<Vector2>() + Marshal.SizeOf<Vector2>() + IntPtr.Size + sizeof(float) + sizeof(float) + sizeof(byte) + sizeof(uint) + sizeof(float));
-        
-        /// <summary>
-        ///     Gets the value of the name
-        /// </summary>
-        public RangeAccessor<byte> Name => new RangeAccessor<byte>(NativePtr + IntPtr.Size + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<int>() + Marshal.SizeOf<float>() + Marshal.SizeOf<int>() + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<Vector2>() + Marshal.SizeOf<Vector2>() + IntPtr.Size + sizeof(float) + sizeof(float) + sizeof(byte) + sizeof(uint) + sizeof(float) + sizeof(ushort), 40);
-        
+
         /// <summary>
         ///     Gets the value of the dst font
         /// </summary>

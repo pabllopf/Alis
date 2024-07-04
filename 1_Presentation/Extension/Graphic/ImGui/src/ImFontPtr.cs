@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
 using Alis.Core.Aspect.Math.Vector;
@@ -136,11 +137,6 @@ namespace Alis.Extension.Graphic.ImGui
         ///     Gets the value of the metrics total surface
         /// </summary>
         public int MetricsTotalSurface => Marshal.PtrToStructure<int>(NativePtr + 80);
-        
-        /// <summary>
-        ///     Gets the value of the used 4k pages map
-        /// </summary>
-        public RangeAccessor<byte> Used4KPagesMap => new RangeAccessor<byte>(NativePtr + 84, 2);
         
         /// <summary>
         ///     Adds the glyph using the specified src cfg
