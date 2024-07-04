@@ -527,7 +527,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The bool</returns>
         public static bool ColormapSlider(string label, ref float t)
         {
-            byte ret = ImPlotNative.ImPlot_ColormapSlider(Encoding.UTF8.GetBytes(label),  t, out Vector4 @out, Encoding.UTF8.GetBytes(""), (ImPlotColormap) (-1));
+            byte ret = ImPlotNative.ImPlot_ColormapSlider(Encoding.UTF8.GetBytes(label),  t, out Vector4 _, Encoding.UTF8.GetBytes(""), (ImPlotColormap) (-1));
             return ret != 0;
         }
         
