@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
 using Alis.Core.Aspect.Math.Vector;
@@ -37,7 +38,7 @@ namespace Alis.Extension.Graphic.ImGui
     /// <summary>
     ///     The im gui io ptr
     /// </summary>
-    public readonly struct ImGuiIoPtr
+    public struct ImGuiIoPtr
     {
         /// <summary>
         ///     Gets the value of the native ptr
@@ -48,7 +49,10 @@ namespace Alis.Extension.Graphic.ImGui
         ///     Initializes a new instance of the <see cref="ImGuiIoPtr" /> class
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
-        public ImGuiIoPtr(IntPtr nativePtr) => NativePtr = nativePtr;
+        public ImGuiIoPtr(IntPtr nativePtr)
+        {
+            NativePtr = nativePtr;
+        }
         
         /// <summary>
         /// </summary>
@@ -438,75 +442,127 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         /// Gets or sets the value of the key map
         /// </summary>
-        public RangeAccessor<int> KeyMap
+       public List<int> KeyMap
         {
             get
             {
                 // Assuming KeyMap is the first field in ImGuiIo, adjust the offset accordingly if it's not.
                 int offsetToKeyMap = Marshal.OffsetOf<ImGuiIo>("KeyMap").ToInt32();
                 IntPtr keyMapPtr = IntPtr.Add(NativePtr, offsetToKeyMap);
-
-                // Assuming the size of the key map is known to be 652
-                return new RangeAccessor<int>(keyMapPtr, 652);
+                
+                // Create an empty list for the key map
+                List<int> map = new List<int>();
+                
+                // Retrieve the key map array from the ImGuiIo structure
+                int[] keyMap = Marshal.PtrToStructure<ImGuiIo>(NativePtr).KeyMap;
+                
+                // Add each key map value to the list
+                foreach (var key in keyMap)
+                {
+                    map.Add(key);
+                }
+                
+                return map;
             }
             set
             {
-                // Assuming KeyMap is the first field in ImGuiIo, adjust the offset accordingly if it's not.
-                int offsetToKeyMap = Marshal.OffsetOf<ImGuiIo>("KeyMap").ToInt32();
-                IntPtr keyMapPtr = IntPtr.Add(NativePtr, offsetToKeyMap);
-
-                // Assuming the size of the key map is known to be 652
-                Marshal.WriteIntPtr(keyMapPtr, value.Data);
+                // Retrieve the existing key map array from the ImGuiIo structure
+                int[] keyMap = Marshal.PtrToStructure<ImGuiIo>(NativePtr).KeyMap;
+                
+                // Ensure the value list and keyMap array have the same length
+                if (value.Count != keyMap.Length)
+                {
+                    throw new ArgumentException("The provided list does not match the size of the key map.");
+                }
+                
+                // Update the key map array with values from the provided list
+                for (int i = 0; i < keyMap.Length; i++)
+                {
+                    keyMap[i] = value[i];
+                }
+                
+                // Update the ImGuiIo structure with the modified key map array
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.KeyMap = keyMap;
+                Marshal.StructureToPtr(io, NativePtr, false);
             }
         }
-        
+                
         /// <summary>
         ///     Gets the value of the keys down
         /// </summary>
-        public RangeAccessor<bool> KeysDown
+        public List<bool> KeysDown
         {
             get
             {
                 // Assuming KeysDown is the first field in ImGuiIo, adjust the offset accordingly if it's not.
                 int offsetToKeysDown = Marshal.OffsetOf<ImGuiIo>("KeysDown").ToInt32();
                 IntPtr keysDownPtr = IntPtr.Add(NativePtr, offsetToKeysDown);
-
+                
                 // Assuming the size of the keys down is known to be 512
-                return new RangeAccessor<bool>(keysDownPtr, 512);
+                List<bool> down = new List<bool>(512);
+                
+                byte[] keysDown = Marshal.PtrToStructure<ImGuiIo>(NativePtr).KeysDown;
+                foreach (var b in keysDown)
+                {
+                    down.Add(b != 0);
+                }
+                
+                return down;
             }
             set
             {
                 // Assuming KeysDown is the first field in ImGuiIo, adjust the offset accordingly if it's not.
                 int offsetToKeysDown = Marshal.OffsetOf<ImGuiIo>("KeysDown").ToInt32();
                 IntPtr keysDownPtr = IntPtr.Add(NativePtr, offsetToKeysDown);
-
-                // Assuming the size of the keys down is known to be 512
-                Marshal.WriteIntPtr(keysDownPtr, value.Data);
+                
+                // Convert the List<bool> to a byte[] array.
+                byte[] keysDown = new byte[value.Count];
+                for (int i = 0; i < value.Count; i++)
+                {
+                    keysDown[i] = value[i] ? (byte) 1 : (byte) 0;
+                }
+                
+                // Copy the byte[] array directly to unmanaged memory.
+                Marshal.Copy(keysDown, 0, keysDownPtr, keysDown.Length);
             }
         }
         
         /// <summary>
         ///     Gets the value of the nav inputs
         /// </summary>
-        public RangeAccessor<float> NavInputs
+        public List<float> NavInputs
         {
             get
             {
                 // Assuming NavInputs is the first field in ImGuiIo, adjust the offset accordingly if it's not.
                 int offsetToNavInputs = Marshal.OffsetOf<ImGuiIo>("NavInputs").ToInt32();
                 IntPtr navInputsPtr = IntPtr.Add(NativePtr, offsetToNavInputs);
-
+                
                 // Assuming the size of the nav inputs is known to be 21
-                return new RangeAccessor<float>(navInputsPtr, 21);
+                List<float> inputs = new List<float>(21);
+                
+                float[] navInputs = Marshal.PtrToStructure<ImGuiIo>(NativePtr).NavInputs;
+                foreach (var f in navInputs)
+                {
+                    inputs.Add(f);
+                }
+                
+                return inputs;
             }
             set
             {
+                int offsetToMouseDown = Marshal.OffsetOf<ImGuiIo>("NavInputs").ToInt32();
+                IntPtr mouseDownPtr = IntPtr.Add(NativePtr, offsetToMouseDown);
+                
                 // Assuming NavInputs is the first field in ImGuiIo, adjust the offset accordingly if it's not.
-                int offsetToNavInputs = Marshal.OffsetOf<ImGuiIo>("NavInputs").ToInt32();
-                IntPtr navInputsPtr = IntPtr.Add(NativePtr, offsetToNavInputs);
-
-                // Assuming the size of the nav inputs is known to be 21
-                Marshal.WriteIntPtr(navInputsPtr, value.Data);
+                float[] navInputs = Marshal.PtrToStructure<ImGuiIo>(NativePtr).NavInputs;
+                for (int i = 0; i < navInputs.Length; i++)
+                {
+                    navInputs[i] = value[i];
+                }
+                // Copy the array directly to unmanaged memory.
+                Marshal.Copy(navInputs, 0, mouseDownPtr, navInputs.Length);
             }
         }
         
@@ -529,26 +585,42 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the mouse down
         /// </summary>
-        public RangeAccessor<bool> MouseDown
+        public List<bool> MouseDown
         {
             get
             {
                 // Assuming MouseDown is the first field in ImGuiIo, adjust the offset accordingly if it's not.
                 int offsetToMouseDown = Marshal.OffsetOf<ImGuiIo>("MouseDown").ToInt32();
                 IntPtr mouseDownPtr = IntPtr.Add(NativePtr, offsetToMouseDown);
-
+                
                 // Assuming the size of the mouse down is known to be 5
-                return new RangeAccessor<bool>(mouseDownPtr, 5);
+                List<bool> down = new List<bool>(5);
+                
+                byte[] mouseDown = Marshal.PtrToStructure<ImGuiIo>(NativePtr).MouseDown;
+                foreach (var b in mouseDown)
+                {
+                    down.Add(b != 0);
+                }
+                
+                return down;
             }
             set
             {
                 // Assuming MouseDown is the first field in ImGuiIo, adjust the offset accordingly if it's not.
                 int offsetToMouseDown = Marshal.OffsetOf<ImGuiIo>("MouseDown").ToInt32();
                 IntPtr mouseDownPtr = IntPtr.Add(NativePtr, offsetToMouseDown);
-
-                // Assuming the size of the mouse down is known to be 5
-                Marshal.WriteIntPtr(mouseDownPtr, value.Data);
+                
+                // Convert the List<bool> to a byte[] array.
+                byte[] mouseDown = new byte[value.Count];
+                for (int i = 0; i < value.Count; i++)
+                {
+                    mouseDown[i] = value[i] ? (byte) 1 : (byte) 0;
+                }
+                
+                // Copy the byte[] array directly to unmanaged memory.
+                Marshal.Copy(mouseDown, 0, mouseDownPtr, mouseDown.Length);
             }
+            
         }
         
         /// <summary>
@@ -634,7 +706,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the keys data
         /// </summary>
-        public RangeAccessor<ImGuiKeyData> KeysData
+        public List<ImGuiKeyData> KeysData
         {
             get
             {
@@ -643,7 +715,12 @@ namespace Alis.Extension.Graphic.ImGui
                 IntPtr keysDataPtr = IntPtr.Add(NativePtr, offsetToKeysData);
 
                 // Assuming the size of the keys data is known to be 512
-                return new RangeAccessor<ImGuiKeyData>(keysDataPtr, 512);
+                List<ImGuiKeyData> data = new List<ImGuiKeyData>(512);
+                for (int i = 0; i < 512; i++)
+                {
+                    data.Add(Marshal.PtrToStructure<ImGuiKeyData>(IntPtr.Add(keysDataPtr, i * Marshal.SizeOf<ImGuiKeyData>())));
+                }
+                return data;
             }
             set
             {
@@ -652,7 +729,10 @@ namespace Alis.Extension.Graphic.ImGui
                 IntPtr keysDataPtr = IntPtr.Add(NativePtr, offsetToKeysData);
 
                 // Assuming the size of the keys data is known to be 512
-                Marshal.WriteIntPtr(keysDataPtr, value.Data);
+                for (int i = 0; i < 512; i++)
+                {
+                    Marshal.StructureToPtr(value[i], IntPtr.Add(keysDataPtr, i * Marshal.SizeOf<ImGuiKeyData>()), false);
+                }
             }
         }
         
@@ -669,7 +749,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the mouse clicked pos
         /// </summary>
-        public RangeAccessor<Vector2> MouseClickedPos
+        public List<Vector2> MouseClickedPos
         {
             get
             {
@@ -678,7 +758,12 @@ namespace Alis.Extension.Graphic.ImGui
                 IntPtr mouseClickedPosPtr = IntPtr.Add(NativePtr, offsetToMouseClickedPos);
 
                 // Assuming the size of the mouse clicked pos is known to be 5
-                return new RangeAccessor<Vector2>(mouseClickedPosPtr, 5);
+                List<Vector2> pos = new List<Vector2>(5);
+                for (int i = 0; i < 5; i++)
+                {
+                    pos.Add(Marshal.PtrToStructure<Vector2>(IntPtr.Add(mouseClickedPosPtr, i * Marshal.SizeOf<Vector2>())));
+                }
+                return pos;
             }
             set
             {
@@ -687,14 +772,17 @@ namespace Alis.Extension.Graphic.ImGui
                 IntPtr mouseClickedPosPtr = IntPtr.Add(NativePtr, offsetToMouseClickedPos);
 
                 // Assuming the size of the mouse clicked pos is known to be 5
-                Marshal.WriteIntPtr(mouseClickedPosPtr, value.Data);
+                for (int i = 0; i < 5; i++)
+                {
+                    Marshal.StructureToPtr(value[i], IntPtr.Add(mouseClickedPosPtr, i * Marshal.SizeOf<Vector2>()), false);
+                }
             }
         }
         
         /// <summary>
         ///     Gets the value of the mouse clicked time
         /// </summary>
-        public RangeAccessor<double> MouseClickedTime
+        public List<double> MouseClickedTime
         {
             get
             {
@@ -703,7 +791,12 @@ namespace Alis.Extension.Graphic.ImGui
                 IntPtr mouseClickedTimePtr = IntPtr.Add(NativePtr, offsetToMouseClickedTime);
 
                 // Assuming the size of the mouse clicked time is known to be 5
-                return new RangeAccessor<double>(mouseClickedTimePtr, 5);
+                List<double> time = new List<double>(5);
+                for (int i = 0; i < 5; i++)
+                {
+                    time.Add(Marshal.PtrToStructure<double>(IntPtr.Add(mouseClickedTimePtr, i * Marshal.SizeOf<double>())));
+                }
+                return time;
             }
             set
             {
@@ -712,14 +805,17 @@ namespace Alis.Extension.Graphic.ImGui
                 IntPtr mouseClickedTimePtr = IntPtr.Add(NativePtr, offsetToMouseClickedTime);
 
                 // Assuming the size of the mouse clicked time is known to be 5
-                Marshal.WriteIntPtr(mouseClickedTimePtr, value.Data);
+                for (int i = 0; i < 5; i++)
+                {
+                    Marshal.StructureToPtr(value[i], IntPtr.Add(mouseClickedTimePtr, i * Marshal.SizeOf<double>()), false);
+                }
             }
         }
         
         /// <summary>
         ///     Gets the value of the mouse clicked
         /// </summary>
-        public RangeAccessor<bool> MouseClicked
+        public List<bool> MouseClicked
         {
             get
             {
@@ -728,7 +824,12 @@ namespace Alis.Extension.Graphic.ImGui
                 IntPtr mouseClickedPtr = IntPtr.Add(NativePtr, offsetToMouseClicked);
 
                 // Assuming the size of the mouse clicked is known to be 5
-                return new RangeAccessor<bool>(mouseClickedPtr, 5);
+                List<bool> clicked = new List<bool>(5);
+                for (int i = 0; i < 5; i++)
+                {
+                    clicked.Add(Marshal.PtrToStructure<bool>(IntPtr.Add(mouseClickedPtr, i * Marshal.SizeOf<bool>())));
+                }
+                return clicked;
             }
             set
             {
@@ -737,14 +838,17 @@ namespace Alis.Extension.Graphic.ImGui
                 IntPtr mouseClickedPtr = IntPtr.Add(NativePtr, offsetToMouseClicked);
 
                 // Assuming the size of the mouse clicked is known to be 5
-                Marshal.WriteIntPtr(mouseClickedPtr, value.Data);
+                for (int i = 0; i < 5; i++)
+                {
+                    Marshal.StructureToPtr(value[i], IntPtr.Add(mouseClickedPtr, i * Marshal.SizeOf<bool>()), false);
+                }
             }
         }
         
         /// <summary>
         ///     Gets the value of the mouse double clicked
         /// </summary>
-        public RangeAccessor<bool> MouseDoubleClicked
+        public List<bool> MouseDoubleClicked
         {
             get
             {
@@ -753,7 +857,12 @@ namespace Alis.Extension.Graphic.ImGui
                 IntPtr mouseDoubleClickedPtr = IntPtr.Add(NativePtr, offsetToMouseDoubleClicked);
 
                 // Assuming the size of the mouse double clicked is known to be 5
-                return new RangeAccessor<bool>(mouseDoubleClickedPtr, 5);
+                List<bool> doubleClicked = new List<bool>(5);
+                for (int i = 0; i < 5; i++)
+                {
+                    doubleClicked.Add(Marshal.PtrToStructure<bool>(IntPtr.Add(mouseDoubleClickedPtr, i * Marshal.SizeOf<bool>())));
+                }
+                return doubleClicked;
             }
             set
             {
@@ -762,14 +871,17 @@ namespace Alis.Extension.Graphic.ImGui
                 IntPtr mouseDoubleClickedPtr = IntPtr.Add(NativePtr, offsetToMouseDoubleClicked);
 
                 // Assuming the size of the mouse double clicked is known to be 5
-                Marshal.WriteIntPtr(mouseDoubleClickedPtr, value.Data);
+                for (int i = 0; i < 5; i++)
+                {
+                    Marshal.StructureToPtr(value[i], IntPtr.Add(mouseDoubleClickedPtr, i * Marshal.SizeOf<bool>()), false);
+                }
             }
         }
         
         /// <summary>
         ///     Gets the value of the mouse clicked count
         /// </summary>
-        public RangeAccessor<ushort> MouseClickedCount
+        public List<ushort> MouseClickedCount
         {
             get
             {
@@ -778,7 +890,12 @@ namespace Alis.Extension.Graphic.ImGui
                 IntPtr mouseClickedCountPtr = IntPtr.Add(NativePtr, offsetToMouseClickedCount);
 
                 // Assuming the size of the mouse clicked count is known to be 5
-                return new RangeAccessor<ushort>(mouseClickedCountPtr, 5);
+                List<ushort> count = new List<ushort>(5);
+                for (int i = 0; i < 5; i++)
+                {
+                    count.Add(Marshal.PtrToStructure<ushort>(IntPtr.Add(mouseClickedCountPtr, i * Marshal.SizeOf<ushort>())));
+                }
+                return count;
             }
             set
             {
@@ -787,14 +904,17 @@ namespace Alis.Extension.Graphic.ImGui
                 IntPtr mouseClickedCountPtr = IntPtr.Add(NativePtr, offsetToMouseClickedCount);
 
                 // Assuming the size of the mouse clicked count is known to be 5
-                Marshal.WriteIntPtr(mouseClickedCountPtr, value.Data);
+                for (int i = 0; i < 5; i++)
+                {
+                    Marshal.StructureToPtr(value[i], IntPtr.Add(mouseClickedCountPtr, i * Marshal.SizeOf<ushort>()), false);
+                }
             }
         }
         
         /// <summary>
         ///     Gets the value of the mouse clicked last count
         /// </summary>
-        public RangeAccessor<ushort> MouseClickedLastCount
+        public List<ushort> MouseClickedLastCount
         {
             get
             {
@@ -803,7 +923,12 @@ namespace Alis.Extension.Graphic.ImGui
                 IntPtr mouseClickedLastCountPtr = IntPtr.Add(NativePtr, offsetToMouseClickedLastCount);
 
                 // Assuming the size of the mouse clicked last count is known to be 5
-                return new RangeAccessor<ushort>(mouseClickedLastCountPtr, 5);
+                List<ushort> lastCount = new List<ushort>(5);
+                for (int i = 0; i < 5; i++)
+                {
+                    lastCount.Add(Marshal.PtrToStructure<ushort>(IntPtr.Add(mouseClickedLastCountPtr, i * Marshal.SizeOf<ushort>())));
+                }
+                return lastCount;
             }
             set
             {
@@ -812,14 +937,17 @@ namespace Alis.Extension.Graphic.ImGui
                 IntPtr mouseClickedLastCountPtr = IntPtr.Add(NativePtr, offsetToMouseClickedLastCount);
 
                 // Assuming the size of the mouse clicked last count is known to be 5
-                Marshal.WriteIntPtr(mouseClickedLastCountPtr, value.Data);
+                for (int i = 0; i < 5; i++)
+                {
+                    Marshal.StructureToPtr(value[i], IntPtr.Add(mouseClickedLastCountPtr, i * Marshal.SizeOf<ushort>()), false);
+                }
             }
         }
         
         /// <summary>
         ///     Gets the value of the mouse released
         /// </summary>
-        public RangeAccessor<bool> MouseReleased
+        public List<bool> MouseReleased
         {
             get
             {
@@ -828,7 +956,12 @@ namespace Alis.Extension.Graphic.ImGui
                 IntPtr mouseReleasedPtr = IntPtr.Add(NativePtr, offsetToMouseReleased);
 
                 // Assuming the size of the mouse released is known to be 5
-                return new RangeAccessor<bool>(mouseReleasedPtr, 5);
+                List<bool> released = new List<bool>(5);
+                for (int i = 0; i < 5; i++)
+                {
+                    released.Add(Marshal.PtrToStructure<bool>(IntPtr.Add(mouseReleasedPtr, i * Marshal.SizeOf<bool>())));
+                }
+                return released;
             }
             set
             {
@@ -837,14 +970,17 @@ namespace Alis.Extension.Graphic.ImGui
                 IntPtr mouseReleasedPtr = IntPtr.Add(NativePtr, offsetToMouseReleased);
 
                 // Assuming the size of the mouse released is known to be 5
-                Marshal.WriteIntPtr(mouseReleasedPtr, value.Data);
+                for (int i = 0; i < 5; i++)
+                {
+                    Marshal.StructureToPtr(value[i], IntPtr.Add(mouseReleasedPtr, i * Marshal.SizeOf<bool>()), false);
+                }
             }
         }
         
         /// <summary>
         ///     Gets the value of the mouse down owned
         /// </summary>
-        public RangeAccessor<bool> MouseDownOwned
+        public List<bool> MouseDownOwned
         {
             get
             {
@@ -853,7 +989,12 @@ namespace Alis.Extension.Graphic.ImGui
                 IntPtr mouseDownOwnedPtr = IntPtr.Add(NativePtr, offsetToMouseDownOwned);
 
                 // Assuming the size of the mouse down owned is known to be 5
-                return new RangeAccessor<bool>(mouseDownOwnedPtr, 5);
+                List<bool> owned = new List<bool>(5);
+                for (int i = 0; i < 5; i++)
+                {
+                    owned.Add(Marshal.PtrToStructure<bool>(IntPtr.Add(mouseDownOwnedPtr, i * Marshal.SizeOf<bool>())));
+                }
+                return owned;
             }
             set
             {
@@ -862,14 +1003,17 @@ namespace Alis.Extension.Graphic.ImGui
                 IntPtr mouseDownOwnedPtr = IntPtr.Add(NativePtr, offsetToMouseDownOwned);
 
                 // Assuming the size of the mouse down owned is known to be 5
-                Marshal.WriteIntPtr(mouseDownOwnedPtr, value.Data);
+                for (int i = 0; i < 5; i++)
+                {
+                    Marshal.StructureToPtr(value[i], IntPtr.Add(mouseDownOwnedPtr, i * Marshal.SizeOf<bool>()), false);
+                }
             }
         }
         
         /// <summary>
         ///     Gets the value of the mouse down owned unless popup close
         /// </summary>
-        public RangeAccessor<bool> MouseDownOwnedUnlessPopupClose
+        public List<bool> MouseDownOwnedUnlessPopupClose
         {
             get
             {
@@ -878,7 +1022,12 @@ namespace Alis.Extension.Graphic.ImGui
                 IntPtr mouseDownOwnedUnlessPopupClosePtr = IntPtr.Add(NativePtr, offsetToMouseDownOwnedUnlessPopupClose);
 
                 // Assuming the size of the mouse down owned unless popup close is known to be 5
-                return new RangeAccessor<bool>(mouseDownOwnedUnlessPopupClosePtr, 5);
+                List<bool> ownedUnlessPopupClose = new List<bool>(5);
+                for (int i = 0; i < 5; i++)
+                {
+                    ownedUnlessPopupClose.Add(Marshal.PtrToStructure<bool>(IntPtr.Add(mouseDownOwnedUnlessPopupClosePtr, i * Marshal.SizeOf<bool>())));
+                }
+                return ownedUnlessPopupClose;
             }
             set
             {
@@ -887,14 +1036,17 @@ namespace Alis.Extension.Graphic.ImGui
                 IntPtr mouseDownOwnedUnlessPopupClosePtr = IntPtr.Add(NativePtr, offsetToMouseDownOwnedUnlessPopupClose);
 
                 // Assuming the size of the mouse down owned unless popup close is known to be 5
-                Marshal.WriteIntPtr(mouseDownOwnedUnlessPopupClosePtr, value.Data);
+                for (int i = 0; i < 5; i++)
+                {
+                    Marshal.StructureToPtr(value[i], IntPtr.Add(mouseDownOwnedUnlessPopupClosePtr, i * Marshal.SizeOf<bool>()), false);
+                }
             }
         }
         
         /// <summary>
         ///     Gets the value of the mouse down duration
         /// </summary>
-        public RangeAccessor<float> MouseDownDuration
+        public List<float> MouseDownDuration
         {
             get
             {
@@ -903,7 +1055,12 @@ namespace Alis.Extension.Graphic.ImGui
                 IntPtr mouseDownDurationPtr = IntPtr.Add(NativePtr, offsetToMouseDownDuration);
 
                 // Assuming the size of the mouse down duration is known to be 5
-                return new RangeAccessor<float>(mouseDownDurationPtr, 5);
+                List<float> duration = new List<float>(5);
+                for (int i = 0; i < 5; i++)
+                {
+                    duration.Add(Marshal.PtrToStructure<float>(IntPtr.Add(mouseDownDurationPtr, i * Marshal.SizeOf<float>())));
+                }
+                return duration;
             }
             set
             {
@@ -912,14 +1069,17 @@ namespace Alis.Extension.Graphic.ImGui
                 IntPtr mouseDownDurationPtr = IntPtr.Add(NativePtr, offsetToMouseDownDuration);
 
                 // Assuming the size of the mouse down duration is known to be 5
-                Marshal.WriteIntPtr(mouseDownDurationPtr, value.Data);
+                for (int i = 0; i < 5; i++)
+                {
+                    Marshal.StructureToPtr(value[i], IntPtr.Add(mouseDownDurationPtr, i * Marshal.SizeOf<float>()), false);
+                }
             }
         }
         
         /// <summary>
         ///     Gets the value of the mouse down duration prev
         /// </summary>
-        public RangeAccessor<float> MouseDownDurationPrev
+        public List<float> MouseDownDurationPrev
         {
             get
             {
@@ -928,7 +1088,12 @@ namespace Alis.Extension.Graphic.ImGui
                 IntPtr mouseDownDurationPrevPtr = IntPtr.Add(NativePtr, offsetToMouseDownDurationPrev);
 
                 // Assuming the size of the mouse down duration prev is known to be 5
-                return new RangeAccessor<float>(mouseDownDurationPrevPtr, 5);
+                List<float> durationPrev = new List<float>(5);
+                for (int i = 0; i < 5; i++)
+                {
+                    durationPrev.Add(Marshal.PtrToStructure<float>(IntPtr.Add(mouseDownDurationPrevPtr, i * Marshal.SizeOf<float>())));
+                }
+                return durationPrev;
             }
             set
             {
@@ -937,14 +1102,17 @@ namespace Alis.Extension.Graphic.ImGui
                 IntPtr mouseDownDurationPrevPtr = IntPtr.Add(NativePtr, offsetToMouseDownDurationPrev);
 
                 // Assuming the size of the mouse down duration prev is known to be 5
-                Marshal.WriteIntPtr(mouseDownDurationPrevPtr, value.Data);
+                for (int i = 0; i < 5; i++)
+                {
+                    Marshal.StructureToPtr(value[i], IntPtr.Add(mouseDownDurationPrevPtr, i * Marshal.SizeOf<float>()), false);
+                }
             }
         }
         
         /// <summary>
         ///     Gets the value of the mouse drag max distance abs
         /// </summary>
-        public RangeAccessor<Vector2> MouseDragMaxDistanceAbs
+        public List<Vector2> MouseDragMaxDistanceAbs
         {
             get
             {
@@ -953,7 +1121,12 @@ namespace Alis.Extension.Graphic.ImGui
                 IntPtr mouseDragMaxDistanceAbsPtr = IntPtr.Add(NativePtr, offsetToMouseDragMaxDistanceAbs);
 
                 // Assuming the size of the mouse drag max distance abs is known to be 5
-                return new RangeAccessor<Vector2>(mouseDragMaxDistanceAbsPtr, 5);
+                List<Vector2> distanceAbs = new List<Vector2>(5);
+                for (int i = 0; i < 5; i++)
+                {
+                    distanceAbs.Add(Marshal.PtrToStructure<Vector2>(IntPtr.Add(mouseDragMaxDistanceAbsPtr, i * Marshal.SizeOf<Vector2>())));
+                }
+                return distanceAbs;
             }
             set
             {
@@ -962,14 +1135,17 @@ namespace Alis.Extension.Graphic.ImGui
                 IntPtr mouseDragMaxDistanceAbsPtr = IntPtr.Add(NativePtr, offsetToMouseDragMaxDistanceAbs);
 
                 // Assuming the size of the mouse drag max distance abs is known to be 5
-                Marshal.WriteIntPtr(mouseDragMaxDistanceAbsPtr, value.Data);
+                for (int i = 0; i < 5; i++)
+                {
+                    Marshal.StructureToPtr(value[i], IntPtr.Add(mouseDragMaxDistanceAbsPtr, i * Marshal.SizeOf<Vector2>()), false);
+                }
             }
         }
         
         /// <summary>
         ///     Gets the value of the mouse drag max distance sqr
         /// </summary>
-        public RangeAccessor<float> MouseDragMaxDistanceSqr
+        public List<float> MouseDragMaxDistanceSqr
         {
             get
             {
@@ -978,7 +1154,12 @@ namespace Alis.Extension.Graphic.ImGui
                 IntPtr mouseDragMaxDistanceSqrPtr = IntPtr.Add(NativePtr, offsetToMouseDragMaxDistanceSqr);
 
                 // Assuming the size of the mouse drag max distance sqr is known to be 5
-                return new RangeAccessor<float>(mouseDragMaxDistanceSqrPtr, 5);
+                List<float> distanceSqr = new List<float>(5);
+                for (int i = 0; i < 5; i++)
+                {
+                    distanceSqr.Add(Marshal.PtrToStructure<float>(IntPtr.Add(mouseDragMaxDistanceSqrPtr, i * Marshal.SizeOf<float>())));
+                }
+                return distanceSqr;
             }
             set
             {
@@ -987,7 +1168,10 @@ namespace Alis.Extension.Graphic.ImGui
                 IntPtr mouseDragMaxDistanceSqrPtr = IntPtr.Add(NativePtr, offsetToMouseDragMaxDistanceSqr);
 
                 // Assuming the size of the mouse drag max distance sqr is known to be 5
-                Marshal.WriteIntPtr(mouseDragMaxDistanceSqrPtr, value.Data);
+                for (int i = 0; i < 5; i++)
+                {
+                    Marshal.StructureToPtr(value[i], IntPtr.Add(mouseDragMaxDistanceSqrPtr, i * Marshal.SizeOf<float>()), false);
+                }
             }
         }
         
