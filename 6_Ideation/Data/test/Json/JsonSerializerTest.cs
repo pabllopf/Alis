@@ -5653,7 +5653,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Assert
             Assert.NotNull(result);
             Assert.IsType<string[]>(result);
-            Assert.Equal(elementsCount, ((Array) result).Length);
+            Assert.Equal(elementsCount, result.Length);
         }
         
         /// <summary>

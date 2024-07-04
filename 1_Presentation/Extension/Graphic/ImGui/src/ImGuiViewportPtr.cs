@@ -167,7 +167,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         public void Destroy()
         {
-            ImGuiNative.ImGuiViewport_destroy((IntPtr)NativePtr);
+            ImGuiNative.ImGuiViewport_destroy(NativePtr);
         }
         
         /// <summary>
@@ -177,7 +177,7 @@ namespace Alis.Extension.Graphic.ImGui
         public Vector2 GetCenter()
         {
             Vector2 retval;
-            ImGuiNative.ImGuiViewport_GetCenter(out retval, (IntPtr)NativePtr);
+            ImGuiNative.ImGuiViewport_GetCenter(out retval, NativePtr);
             return retval;
         }
         
@@ -188,7 +188,7 @@ namespace Alis.Extension.Graphic.ImGui
         public Vector2 GetWorkCenter()
         {
             Vector2 retval;
-            ImGuiNative.ImGuiViewport_GetWorkCenter(out retval, (IntPtr)NativePtr);
+            ImGuiNative.ImGuiViewport_GetWorkCenter(out retval, NativePtr);
             return retval;
         }
     }

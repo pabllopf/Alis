@@ -169,7 +169,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         public void Destroy()
         {
-            ImGuiNative.ImFontConfig_destroy((IntPtr)NativePtr);
+            ImGuiNative.ImFontConfig_destroy(NativePtr);
         }
     }
 }

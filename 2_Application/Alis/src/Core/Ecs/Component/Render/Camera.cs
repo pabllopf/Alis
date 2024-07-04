@@ -154,7 +154,7 @@ namespace Alis.Core.Ecs.Component.Render
                 return;
             }
 
-            Viewport = new RectangleI((int) GameObject.Transform.Position.X, (int) GameObject.Transform.Position.Y, (int) Viewport.W, (int) Viewport.H);
+            Viewport = new RectangleI((int) GameObject.Transform.Position.X, (int) GameObject.Transform.Position.Y, Viewport.W, Viewport.H);
         }
         
         /// <summary>

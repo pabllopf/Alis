@@ -192,8 +192,8 @@ namespace Alis.Core.Physic.Figure
                     phase--;
                 }
                 
-                vertices.Add(posOffset + new Vector2(xRadius * (float) CustomMathF.Cos(stepSize * -(i + phase)),
-                    -yRadius * (float) CustomMathF.Sin(stepSize * -(i + phase))));
+                vertices.Add(posOffset + new Vector2(xRadius * CustomMathF.Cos(stepSize * -(i + phase)),
+                    -yRadius * CustomMathF.Sin(stepSize * -(i + phase))));
             }
         }
         
@@ -241,8 +241,8 @@ namespace Alis.Core.Physic.Figure
             vertices.Add(new Vector2(xRadius, 0));
             for (int i = numberOfEdges - 1; i > 0; --i)
             {
-                vertices.Add(new Vector2(xRadius * (float) CustomMathF.Cos(stepSize * i),
-                    -yRadius * (float) CustomMathF.Sin(stepSize * i)));
+                vertices.Add(new Vector2(xRadius * CustomMathF.Cos(stepSize * i),
+                    -yRadius * CustomMathF.Sin(stepSize * i)));
             }
             
             return vertices;
@@ -263,8 +263,8 @@ namespace Alis.Core.Physic.Figure
             float stepSize = radians / sides;
             for (int i = sides - 1; i > 0; i--)
             {
-                vertices.Add(new Vector2(radius * (float) CustomMathF.Cos(stepSize * i),
-                    radius * (float) CustomMathF.Sin(stepSize * i)));
+                vertices.Add(new Vector2(radius * CustomMathF.Cos(stepSize * i),
+                    radius * CustomMathF.Sin(stepSize * i)));
             }
             
             return vertices;
@@ -440,8 +440,8 @@ namespace Alis.Core.Physic.Figure
             float stepSize = Constant.Pi / topEdges;
             for (int i = 1; i < topEdges; i++)
             {
-                vertices.Add(new Vector2(topRadius * (float) CustomMathF.Cos(stepSize * i),
-                    topRadius * (float) CustomMathF.Sin(stepSize * i) + newHeight));
+                vertices.Add(new Vector2(topRadius * CustomMathF.Cos(stepSize * i),
+                    topRadius * CustomMathF.Sin(stepSize * i) + newHeight));
             }
             
             vertices.Add(new Vector2(-topRadius, newHeight));
@@ -461,8 +461,8 @@ namespace Alis.Core.Physic.Figure
             float stepSize = Constant.Pi / bottomEdges;
             for (int i = 1; i < bottomEdges; i++)
             {
-                vertices.Add(new Vector2(-bottomRadius * (float) CustomMathF.Cos(stepSize * i),
-                    -bottomRadius * (float) CustomMathF.Sin(stepSize * i) - newHeight));
+                vertices.Add(new Vector2(-bottomRadius * CustomMathF.Cos(stepSize * i),
+                    -bottomRadius * CustomMathF.Sin(stepSize * i) - newHeight));
             }
             
             vertices.Add(new Vector2(bottomRadius, -newHeight));
@@ -494,24 +494,24 @@ namespace Alis.Core.Physic.Figure
                 {
                     vertices.Add(
                         new Vector2(radius *
-                                    (float) CustomMathF.Cos(stepSize * i + toothAngleStepSize * 2f + toothTipStepSize),
+                                    CustomMathF.Cos(stepSize * i + toothAngleStepSize * 2f + toothTipStepSize),
                             -radius *
-                            (float) CustomMathF.Sin(stepSize * i + toothAngleStepSize * 2f + toothTipStepSize)));
+                            CustomMathF.Sin(stepSize * i + toothAngleStepSize * 2f + toothTipStepSize)));
                     
                     vertices.Add(
                         new Vector2((radius + toothHeight) *
-                                    (float) CustomMathF.Cos(stepSize * i + toothAngleStepSize + toothTipStepSize),
+                                    CustomMathF.Cos(stepSize * i + toothAngleStepSize + toothTipStepSize),
                             -(radius + toothHeight) *
-                            (float) CustomMathF.Sin(stepSize * i + toothAngleStepSize + toothTipStepSize)));
+                            CustomMathF.Sin(stepSize * i + toothAngleStepSize + toothTipStepSize)));
                 }
                 
                 vertices.Add(new Vector2((radius + toothHeight) *
-                                         (float) CustomMathF.Cos(stepSize * i + toothAngleStepSize),
+                                         CustomMathF.Cos(stepSize * i + toothAngleStepSize),
                     -(radius + toothHeight) *
-                    (float) CustomMathF.Sin(stepSize * i + toothAngleStepSize)));
+                    CustomMathF.Sin(stepSize * i + toothAngleStepSize)));
                 
-                vertices.Add(new Vector2(radius * (float) CustomMathF.Cos(stepSize * i),
-                    -radius * (float) CustomMathF.Sin(stepSize * i)));
+                vertices.Add(new Vector2(radius * CustomMathF.Cos(stepSize * i),
+                    -radius * CustomMathF.Sin(stepSize * i)));
             }
             
             return vertices;

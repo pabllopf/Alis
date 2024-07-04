@@ -191,7 +191,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         public void Destroy()
         {
-            ImGuiNative.ImGuiPlatformIO_destroy((IntPtr)NativePtr);
+            ImGuiNative.ImGuiPlatformIO_destroy(NativePtr);
         }
     }
 }

@@ -67,8 +67,8 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         public  ImGuiConfigFlags ConfigFlags
         {
-            get { return Marshal.PtrToStructure<ImGuiIo>(NativePtr).ConfigFlags; }
-            set { Marshal.WriteIntPtr(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("ConfigFlags"), (IntPtr) value); }
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).ConfigFlags;
+            set => Marshal.WriteIntPtr(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("ConfigFlags"), (IntPtr) value);
         }
         
         /// <summary>
@@ -105,7 +105,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         public  float DeltaTime
         {
-            get { return Marshal.PtrToStructure<ImGuiIo>(NativePtr).DeltaTime; }
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).DeltaTime;
             set
             {
                 // Write x and y values to the DisplaySize field
@@ -199,7 +199,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         public  Vector2 DisplayFramebufferScale
         {
-            get { return Marshal.PtrToStructure<ImGuiIo>(NativePtr).DisplayFramebufferScale; }
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).DisplayFramebufferScale;
             set
             {
                 // Write x and y values to the DisplayFramebufferScale field
@@ -515,7 +515,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         public  Vector2 MousePos
         {
-            get { return Marshal.PtrToStructure<ImGuiIo>(NativePtr).MousePos; }
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).MousePos;
             set
             {
                 // Write x and y values to the MousePos field
@@ -556,8 +556,8 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         public  float MouseWheel
         {
-            get { return Marshal.PtrToStructure<ImGuiIo>(NativePtr).MouseWheel; }
-            set { Marshal.WriteIntPtr(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("MouseWheel"), (IntPtr) value); }
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).MouseWheel;
+            set => Marshal.WriteIntPtr(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("MouseWheel"), (IntPtr) value);
         }
         
         /// <summary>
@@ -565,8 +565,8 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         public  float MouseWheelH
         {
-            get { return Marshal.PtrToStructure<ImGuiIo>(NativePtr).MouseWheelH; }
-            set { Marshal.WriteIntPtr(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("MouseWheelH"), (IntPtr) value); }
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).MouseWheelH;
+            set => Marshal.WriteIntPtr(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("MouseWheelH"), (IntPtr) value);
         }
         
         /// <summary>
@@ -579,7 +579,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         public  bool KeyCtrl
         {
-            get { return Marshal.PtrToStructure<ImGuiIo>(NativePtr).KeyCtrl != 0; }
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).KeyCtrl != 0;
             set {
                 ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
                 io.KeyCtrl = value ? (byte) 1 : (byte) 0;
@@ -592,7 +592,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         public  bool KeyShift
         {
-            get { return Marshal.PtrToStructure<ImGuiIo>(NativePtr).KeyShift != 0; }
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).KeyShift != 0;
             set {
                 ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
                 io.KeyShift = value ? (byte) 1 : (byte) 0;
@@ -605,7 +605,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         public  bool KeyAlt
         {
-            get { return Marshal.PtrToStructure<ImGuiIo>(NativePtr).KeyAlt != 0; }
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).KeyAlt != 0;
             set {
                 ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
                 io.KeyAlt = value ? (byte) 1 : (byte) 0;
@@ -618,7 +618,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         public  bool KeySuper
         {
-            get { return Marshal.PtrToStructure<ImGuiIo>(NativePtr).KeySuper != 0; }
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).KeySuper != 0;
             set {
                 ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
                 io.KeySuper = value ? (byte) 1 : (byte) 0;
@@ -1033,7 +1033,7 @@ namespace Alis.Extension.Graphic.ImGui
         public void AddFocusEvent(bool focused)
         {
             byte nativeFocused = focused ? (byte) 1 : (byte) 0;
-            ImGuiNative.ImGuiIO_AddFocusEvent((IntPtr)NativePtr, nativeFocused);
+            ImGuiNative.ImGuiIO_AddFocusEvent(NativePtr, nativeFocused);
         }
         
         /// <summary>
@@ -1042,7 +1042,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="c">The </param>
         public void AddInputCharacter(uint c)
         {
-            ImGuiNative.ImGuiIO_AddInputCharacter((IntPtr)NativePtr, c);
+            ImGuiNative.ImGuiIO_AddInputCharacter(NativePtr, c);
         }
         
         /// <summary>
@@ -1051,7 +1051,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="str">The str</param>
         public void AddInputCharactersUtf8(string str)
         {
-            ImGuiNative.ImGuiIO_AddInputCharactersUTF8((IntPtr)NativePtr,Encoding.UTF8.GetBytes(str));
+            ImGuiNative.ImGuiIO_AddInputCharactersUTF8(NativePtr,Encoding.UTF8.GetBytes(str));
         }
         
         /// <summary>
@@ -1060,7 +1060,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="c">The </param>
         public void AddInputCharacterUtf16(ushort c)
         {
-            ImGuiNative.ImGuiIO_AddInputCharacterUTF16((IntPtr)NativePtr, c);
+            ImGuiNative.ImGuiIO_AddInputCharacterUTF16(NativePtr, c);
         }
         
         /// <summary>
@@ -1072,7 +1072,7 @@ namespace Alis.Extension.Graphic.ImGui
         public void AddKeyAnalogEvent(ImGuiKey key, bool down, float v)
         {
             byte nativeDown = down ? (byte) 1 : (byte) 0;
-            ImGuiNative.ImGuiIO_AddKeyAnalogEvent((IntPtr)NativePtr, key, nativeDown, v);
+            ImGuiNative.ImGuiIO_AddKeyAnalogEvent(NativePtr, key, nativeDown, v);
         }
         
         /// <summary>
@@ -1083,7 +1083,7 @@ namespace Alis.Extension.Graphic.ImGui
         public void AddKeyEvent(ImGuiKey key, bool down)
         {
             byte nativeDown = down ? (byte) 1 : (byte) 0;
-            ImGuiNative.ImGuiIO_AddKeyEvent((IntPtr)NativePtr, key, nativeDown);
+            ImGuiNative.ImGuiIO_AddKeyEvent(NativePtr, key, nativeDown);
         }
         
         /// <summary>
@@ -1094,7 +1094,7 @@ namespace Alis.Extension.Graphic.ImGui
         public void AddMouseButtonEvent(int button, bool down)
         {
             byte nativeDown = down ? (byte) 1 : (byte) 0;
-            ImGuiNative.ImGuiIO_AddMouseButtonEvent((IntPtr)NativePtr, button, nativeDown);
+            ImGuiNative.ImGuiIO_AddMouseButtonEvent(NativePtr, button, nativeDown);
         }
         
         /// <summary>
@@ -1104,7 +1104,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="y">The </param>
         public void AddMousePosEvent(float x, float y)
         {
-            ImGuiNative.ImGuiIO_AddMousePosEvent((IntPtr)NativePtr, x, y);
+            ImGuiNative.ImGuiIO_AddMousePosEvent(NativePtr, x, y);
         }
         
         /// <summary>
@@ -1113,7 +1113,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="id">The id</param>
         public void AddMouseViewportEvent(uint id)
         {
-            ImGuiNative.ImGuiIO_AddMouseViewportEvent((IntPtr)NativePtr, id);
+            ImGuiNative.ImGuiIO_AddMouseViewportEvent(NativePtr, id);
         }
         
         /// <summary>
@@ -1123,7 +1123,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="whY">The wh</param>
         public void AddMouseWheelEvent(float whX, float whY)
         {
-            ImGuiNative.ImGuiIO_AddMouseWheelEvent((IntPtr)NativePtr, whX, whY);
+            ImGuiNative.ImGuiIO_AddMouseWheelEvent(NativePtr, whX, whY);
         }
         
         /// <summary>
@@ -1131,7 +1131,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         public void ClearInputCharacters()
         {
-            ImGuiNative.ImGuiIO_ClearInputCharacters((IntPtr)NativePtr);
+            ImGuiNative.ImGuiIO_ClearInputCharacters(NativePtr);
         }
         
         /// <summary>
@@ -1139,7 +1139,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         public void ClearInputKeys()
         {
-            ImGuiNative.ImGuiIO_ClearInputKeys((IntPtr)NativePtr);
+            ImGuiNative.ImGuiIO_ClearInputKeys(NativePtr);
         }
         
         /// <summary>
@@ -1147,7 +1147,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         public void Destroy()
         {
-            ImGuiNative.ImGuiIO_destroy((IntPtr)NativePtr);
+            ImGuiNative.ImGuiIO_destroy(NativePtr);
         }
         
         /// <summary>
@@ -1157,7 +1157,7 @@ namespace Alis.Extension.Graphic.ImGui
         public void SetAppAcceptingEvents(bool acceptingEvents)
         {
             byte nativeAcceptingEvents = acceptingEvents ? (byte) 1 : (byte) 0;
-            ImGuiNative.ImGuiIO_SetAppAcceptingEvents((IntPtr)NativePtr, nativeAcceptingEvents);
+            ImGuiNative.ImGuiIO_SetAppAcceptingEvents(NativePtr, nativeAcceptingEvents);
         }
         
         /// <summary>
@@ -1169,7 +1169,7 @@ namespace Alis.Extension.Graphic.ImGui
         public void SetKeyEventNativeData(ImGuiKey key, int nativeKeycode, int nativeScancode)
         {
             int nativeLegacyIndex = -1;
-            ImGuiNative.ImGuiIO_SetKeyEventNativeData((IntPtr)NativePtr, key, nativeKeycode, nativeScancode, nativeLegacyIndex);
+            ImGuiNative.ImGuiIO_SetKeyEventNativeData(NativePtr, key, nativeKeycode, nativeScancode, nativeLegacyIndex);
         }
         
         /// <summary>
@@ -1181,7 +1181,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="nativeLegacyIndex">The native legacy index</param>
         public void SetKeyEventNativeData(ImGuiKey key, int nativeKeycode, int nativeScancode, int nativeLegacyIndex)
         {
-            ImGuiNative.ImGuiIO_SetKeyEventNativeData((IntPtr)NativePtr, key, nativeKeycode, nativeScancode, nativeLegacyIndex);
+            ImGuiNative.ImGuiIO_SetKeyEventNativeData(NativePtr, key, nativeKeycode, nativeScancode, nativeLegacyIndex);
         }
     }
 }
