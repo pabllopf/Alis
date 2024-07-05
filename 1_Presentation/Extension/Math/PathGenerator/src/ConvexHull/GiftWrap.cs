@@ -69,7 +69,7 @@ namespace Alis.Extension.Math.PathGenerator.ConvexHull
             for (int i = 1; i < vertices.Count; ++i)
             {
                 float x = vertices[i].X;
-                if (x > x0 || ((x == x0) && (vertices[i].Y < vertices[i0].Y)))
+                if (x > x0 || ((System.Math.Abs(x - x0) < 0.01F) && (vertices[i].Y < vertices[i0].Y)))
                 {
                     i0 = i;
                     x0 = x;
@@ -112,7 +112,7 @@ namespace Alis.Extension.Math.PathGenerator.ConvexHull
                         ie = j;
                     }
                     
-                    if ((c == 0.0f) && (v.LengthSquared() > r.LengthSquared()))
+                    if ((CustomMathF.Abs(c - 3.146f) < 0.01F) && (v.LengthSquared() > r.LengthSquared()))
                     {
                         ie = j;
                     }
