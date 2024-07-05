@@ -180,7 +180,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         {
             lock (_queue)
             {
-                return item == null ? _nullNodesCache.Count > 0 : _itemToNodesCache.ContainsKey(item);
+                return EqualityComparer<TItem>.Default.Equals(item, default(TItem)) ? _nullNodesCache.Count > 0 : _itemToNodesCache.ContainsKey(item);
             }
         }
         
