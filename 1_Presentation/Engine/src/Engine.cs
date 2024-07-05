@@ -790,6 +790,7 @@ namespace Alis.App.Engine
             return textureId;
         }
         
+        
         /// <summary>
         ///     Renders the draw data
         /// </summary>
