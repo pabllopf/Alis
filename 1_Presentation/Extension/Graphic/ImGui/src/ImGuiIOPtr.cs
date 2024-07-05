@@ -446,10 +446,6 @@ namespace Alis.Extension.Graphic.ImGui
         {
             get
             {
-                // Assuming KeyMap is the first field in ImGuiIo, adjust the offset accordingly if it's not.
-                int offsetToKeyMap = Marshal.OffsetOf<ImGuiIo>("KeyMap").ToInt32();
-                IntPtr.Add(NativePtr, offsetToKeyMap);
-                
                 // Create an empty list for the key map
                 List<int> map = new List<int>();
                 
@@ -457,7 +453,7 @@ namespace Alis.Extension.Graphic.ImGui
                 int[] keyMap = Marshal.PtrToStructure<ImGuiIo>(NativePtr).KeyMap;
                 
                 // Add each key map value to the list
-                foreach (var key in keyMap)
+                foreach (int key in keyMap)
                 {
                     map.Add(key);
                 }
@@ -495,15 +491,11 @@ namespace Alis.Extension.Graphic.ImGui
         {
             get
             {
-                // Assuming KeysDown is the first field in ImGuiIo, adjust the offset accordingly if it's not.
-                int offsetToKeysDown = Marshal.OffsetOf<ImGuiIo>("KeysDown").ToInt32();
-                IntPtr.Add(NativePtr, offsetToKeysDown);
-                
                 // Assuming the size of the keys down is known to be 512
                 List<bool> down = new List<bool>(512);
                 
                 byte[] keysDown = Marshal.PtrToStructure<ImGuiIo>(NativePtr).KeysDown;
-                foreach (var b in keysDown)
+                foreach (byte b in keysDown)
                 {
                     down.Add(b != 0);
                 }
@@ -535,15 +527,11 @@ namespace Alis.Extension.Graphic.ImGui
         {
             get
             {
-                // Assuming NavInputs is the first field in ImGuiIo, adjust the offset accordingly if it's not.
-                int offsetToNavInputs = Marshal.OffsetOf<ImGuiIo>("NavInputs").ToInt32();
-                IntPtr.Add(NativePtr, offsetToNavInputs);
-                
                 // Assuming the size of the nav inputs is known to be 21
                 List<float> inputs = new List<float>(21);
                 
                 float[] navInputs = Marshal.PtrToStructure<ImGuiIo>(NativePtr).NavInputs;
-                foreach (var f in navInputs)
+                foreach (float f in navInputs)
                 {
                     inputs.Add(f);
                 }
@@ -589,15 +577,11 @@ namespace Alis.Extension.Graphic.ImGui
         {
             get
             {
-                // Assuming MouseDown is the first field in ImGuiIo, adjust the offset accordingly if it's not.
-                int offsetToMouseDown = Marshal.OffsetOf<ImGuiIo>("MouseDown").ToInt32();
-                IntPtr.Add(NativePtr, offsetToMouseDown);
-                
                 // Assuming the size of the mouse down is known to be 5
                 List<bool> down = new List<bool>(5);
                 
                 byte[] mouseDown = Marshal.PtrToStructure<ImGuiIo>(NativePtr).MouseDown;
-                foreach (var b in mouseDown)
+                foreach (byte b in mouseDown)
                 {
                     down.Add(b != 0);
                 }
