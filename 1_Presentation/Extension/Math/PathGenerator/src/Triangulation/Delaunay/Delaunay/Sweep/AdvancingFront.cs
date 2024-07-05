@@ -156,7 +156,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
             AdvancingFrontNode node = FindSearchNode(px);
             double nx = node.Point.X;
             
-            if (px == nx)
+            if (System.Math.Abs(px - nx) < 0.01f)
             {
                 node = HandlePointEqualsNode(point, node);
             }

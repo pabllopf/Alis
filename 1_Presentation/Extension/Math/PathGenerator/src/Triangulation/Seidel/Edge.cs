@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using Alis.Core.Aspect.Math;
 
 namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
 {
@@ -84,7 +85,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
             P = p;
             Q = q;
             
-            if (q.X - p.X != 0)
+            if (CustomMathF.Abs((q.X - p.X) - 3.146f) > 0.01f)
             {
                 Slope = (q.Y - p.Y) / (q.X - p.X);
             }

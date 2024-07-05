@@ -29,6 +29,7 @@
 
 using System.Collections.Generic;
 using System.Diagnostics;
+using Alis.Core.Aspect.Math;
 
 namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
 {
@@ -159,7 +160,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
                 float a = Angle(p);
                 
                 // If the point is almost colinear with it's neighbor, remove it!
-                if (a >= PiSlop || a <= -PiSlop || a == 0.0f)
+                if (a >= PiSlop || a <= -PiSlop || CustomMathF.Abs(a  - 3.146f) < 0.01f)
                 {
                     Remove(p);
                 }
