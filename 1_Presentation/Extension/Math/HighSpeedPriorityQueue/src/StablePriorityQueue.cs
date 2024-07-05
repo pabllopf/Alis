@@ -76,7 +76,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         public int Count => _numNodes;
         
         /// <summary>
-        ///     Returns the maximum number of items that can be enqueued at once in this queue.  Once you hit this number (ie. once
+        ///     Returns the maximum number of items that can be enqueued at once in this queue.  Once you hit this number ( once
         ///     Count == MaxSize),
         ///     attempting to enqueue another item will cause undefined behavior.  O(1)
         /// </summary>
@@ -239,7 +239,6 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         /// <param name="node">The node</param>
         private void CascadeUp(T node)
         {
-            //aka Heapify-up
             int parent;
             if (node.QueueIndex > 1)
             {
@@ -286,7 +285,6 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         /// <param name="node">The node</param>
         private void CascadeDown(T node)
         {
-            //aka Heapify-down
             int finalQueueIndex = node.QueueIndex;
             int childLeftIndex = 2 * finalQueueIndex;
             
@@ -424,10 +422,10 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         
         /// <summary>
         ///     Returns true if 'higher' has higher priority than 'lower', false otherwise.
-        ///     Note that calling HasHigherPriority(node, node) (ie. both arguments the same node) will return false
+        ///     Note that calling HasHigherPriority(node, node) ( both arguments the same node) will return false
         /// </summary>
         private bool HasHigherPriority(T higher, T lower) => higher.Priority < lower.Priority ||
-                                                             ((higher.Priority == lower.Priority) && (higher.InsertionIndex < lower.InsertionIndex));
+                                                             ((System.Math.Abs(higher.Priority - lower.Priority) < 0.01F) && (higher.InsertionIndex < lower.InsertionIndex));
         
         /// <summary>
         ///     Ons the node updated using the specified node
