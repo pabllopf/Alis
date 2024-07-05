@@ -215,7 +215,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
             lock (_queue)
             {
                 IList<SimpleNode> nodes;
-                if (item == null)
+                if (EqualityComparer<TItem>.Default.Equals(item, default(TItem)))
                 {
                     nodes = _nullNodesCache;
                 }
@@ -242,7 +242,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
             {
                 SimpleNode removeMe;
                 IList<SimpleNode> nodes;
-                if (item == null)
+                if (EqualityComparer<TItem>.Default.Equals(item, default(TItem)))
                 {
                     if (_nullNodesCache.Count == 0)
                     {
@@ -323,7 +323,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         /// </summary>
         private SimpleNode GetExistingNode(TItem item)
         {
-            if (item == null)
+            if (EqualityComparer<TItem>.Default.Equals(item, default(TItem)))
             {
                 return _nullNodesCache.Count > 0 ? _nullNodesCache[0] : null;
             }
@@ -413,7 +413,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
             lock (_queue)
             {
                 IList<SimpleNode> nodes;
-                if (item == null)
+                if (EqualityComparer<TItem>.Default.Equals(item, default(TItem)))
                 {
                     if (_nullNodesCache.Count > 0)
                     {
@@ -576,7 +576,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
             {
                 SimpleNode removeMe;
                 IList<SimpleNode> nodes;
-                if (item == null)
+                if (EqualityComparer<TItem>.Default.Equals(item, default(TItem)))
                 {
                     if (_nullNodesCache.Count == 0)
                     {
