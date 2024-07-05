@@ -342,7 +342,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         /// </summary>
         private void AddToNodeCache(SimpleNode node)
         {
-            if (node.Data == null)
+            if ((EqualityComparer<TItem>.Default.Equals( node.Data, default(TItem))))
             {
                 _nullNodesCache.Add(node);
                 return;
@@ -363,7 +363,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         /// </summary>
         private void RemoveFromNodeCache(SimpleNode node)
         {
-            if (node.Data == null)
+            if (EqualityComparer<TItem>.Default.Equals(node.Data, default(TItem)))
             {
                 _nullNodesCache.Remove(node);
                 return;
