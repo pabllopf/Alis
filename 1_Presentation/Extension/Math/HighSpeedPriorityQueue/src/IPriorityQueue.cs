@@ -69,12 +69,12 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         /// <summary>
         ///     Returns whether the given node is in the queue.
         /// </summary>
-        bool Contains(TItem node);
+        bool Contains(TItem item);
         
         /// <summary>
         ///     Removes a node from the queue.  The node does not need to be the head of the queue.
         /// </summary>
-        void Remove(TItem node);
+        void Remove(TItem item);
         
         /// <summary>
         ///     Call this method to change the priority of a node.
