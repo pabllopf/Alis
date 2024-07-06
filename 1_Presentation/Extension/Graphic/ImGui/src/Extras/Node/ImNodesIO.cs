@@ -37,26 +37,26 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <summary>
         ///     The emulate three button mouse
         /// </summary>
-        public EmulateThreeButtonMouse EmulateThreeButtonMouse;
+        public EmulateThreeButtonMouse ThreeButtonMouse { get; set; }
 
         /// <summary>
         ///     The link detach with modifier click
         /// </summary>
-        public LinkDetachWithModifierClick LinkDetachWithModifierClick;
+        public LinkDetachWithModifierClick DetachWithModifierClick { get; set; }
 
         /// <summary>
         ///     The multiple select modifier
         /// </summary>
-        public MultipleSelectModifier MultipleSelectModifier;
+        public MultipleSelectModifier SelectModifier { get; set; }
 
         /// <summary>
         ///     The alt mouse button
         /// </summary>
-        public int AltMouseButton;
+        public int AltMouseButton { get; set; }
 
         /// <summary>
         ///     The auto panning speed
         /// </summary>
-        public float AutoPanningSpeed;
+        public float AutoPanningSpeed { get; set; }
     }
 }
