@@ -250,7 +250,7 @@ namespace Alis.Extension.Graphic.OpenGL
         /// <summary>
         ///     The disable vertex attrib array
         /// </summary>
-        public static DisableVertexAttribArray GlDisableVertexAttribArray = _<DisableVertexAttribArray>("glDisableVertexAttribArray");
+        public static readonly DisableVertexAttribArray GlDisableVertexAttribArray = _<DisableVertexAttribArray>("glDisableVertexAttribArray");
         
         /// <summary>
         ///     The vertex attrib pointer del
