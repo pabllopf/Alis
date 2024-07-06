@@ -38,12 +38,12 @@ using Xunit;
 namespace Alis.Core.Network.Test
 {
     /// <summary>
-    /// The http helper test class
+    ///     The http helper test class
     /// </summary>
     public class HttpHelperTest
     {
         /// <summary>
-        /// Tests that calculate web socket key should return valid key
+        ///     Tests that calculate web socket key should return valid key
         /// </summary>
         [Fact]
         public void CalculateWebSocketKey_ShouldReturnValidKey()
@@ -52,9 +52,9 @@ namespace Alis.Core.Network.Test
             Assert.NotNull(key);
             Assert.Equal(24, key.Length); // Base64 string should be 24 characters long
         }
-        
+
         /// <summary>
-        /// Tests that compute socket accept string should return valid accept string
+        ///     Tests that compute socket accept string should return valid accept string
         /// </summary>
         [Fact]
         public void ComputeSocketAcceptString_ShouldReturnValidAcceptString()
@@ -63,9 +63,9 @@ namespace Alis.Core.Network.Test
             string acceptString = HttpHelper.ComputeSocketAcceptString(key);
             Assert.NotNull(acceptString);
         }
-        
+
         /// <summary>
-        /// Tests that read http header async should return valid header
+        ///     Tests that read http header async should return valid header
         /// </summary>
         [Fact]
         public async Task ReadHttpHeaderAsync_ShouldReturnValidHeader()
@@ -74,9 +74,9 @@ namespace Alis.Core.Network.Test
             string header = await HttpHelper.ReadHttpHeaderAsync(stream, CancellationToken.None);
             Assert.Equal("GET / HTTP/1.1", header.Trim());
         }
-        
+
         /// <summary>
-        /// Tests that is web socket upgrade request should return true for valid request
+        ///     Tests that is web socket upgrade request should return true for valid request
         /// </summary>
         [Fact]
         public void IsWebSocketUpgradeRequest_ShouldReturnTrueForValidRequest()
@@ -85,9 +85,9 @@ namespace Alis.Core.Network.Test
             bool result = HttpHelper.IsWebSocketUpgradeRequest(header);
             Assert.True(result);
         }
-        
+
         /// <summary>
-        /// Tests that get path from header should return correct path
+        ///     Tests that get path from header should return correct path
         /// </summary>
         [Fact]
         public void GetPathFromHeader_ShouldReturnCorrectPath()
@@ -96,9 +96,9 @@ namespace Alis.Core.Network.Test
             string path = HttpHelper.GetPathFromHeader(header);
             Assert.Equal("/test", path);
         }
-        
+
         /// <summary>
-        /// Tests that get sub protocols should return correct protocols
+        ///     Tests that get sub protocols should return correct protocols
         /// </summary>
         [Fact]
         public void GetSubProtocols_ShouldReturnCorrectProtocols()
@@ -108,9 +108,9 @@ namespace Alis.Core.Network.Test
             Assert.Contains("protocol1", protocols);
             Assert.Contains("protocol2", protocols);
         }
-        
+
         /// <summary>
-        /// Tests that read http response code should return correct response code
+        ///     Tests that read http response code should return correct response code
         /// </summary>
         [Fact]
         public void ReadHttpResponseCode_ShouldReturnCorrectResponseCode()
@@ -119,9 +119,9 @@ namespace Alis.Core.Network.Test
             string responseCode = HttpHelper.ReadHttpResponseCode(response);
             Assert.Equal("200 OK", responseCode);
         }
-        
+
         /// <summary>
-        /// Tests that write http header async should write correct header
+        ///     Tests that write http header async should write correct header
         /// </summary>
         [Fact]
         public async Task WriteHttpHeaderAsync_ShouldWriteCorrectHeader()
@@ -133,9 +133,9 @@ namespace Alis.Core.Network.Test
             string header = await reader.ReadToEndAsync();
             Assert.Equal("HTTP/1.1 200 OK\r\n\r\n", header);
         }
-        
+
         /// <summary>
-        /// Tests that is web socket upgrade request should return true when web socket upgrade request
+        ///     Tests that is web socket upgrade request should return true when web socket upgrade request
         /// </summary>
         [Fact]
         public void IsWebSocketUpgradeRequest_ShouldReturnTrue_WhenWebSocketUpgradeRequest()
@@ -148,14 +148,14 @@ namespace Alis.Core.Network.Test
                             "Sec-WebSocket-Protocol: chat, superchat\r\n" +
                             "Sec-WebSocket-Version: 13\r\n" +
                             "Origin: http://example.com\r\n";
-            
+
             bool result = HttpHelper.IsWebSocketUpgradeRequest(header);
-            
+
             Assert.True(result);
         }
-        
+
         /// <summary>
-        /// Tests that is web socket upgrade request should return false when not web socket upgrade request
+        ///     Tests that is web socket upgrade request should return false when not web socket upgrade request
         /// </summary>
         [Fact]
         public void IsWebSocketUpgradeRequest_ShouldReturnFalse_WhenNotWebSocketUpgradeRequest()
@@ -167,14 +167,14 @@ namespace Alis.Core.Network.Test
                             "Sec-WebSocket-Protocol: chat, superchat\r\n" +
                             "Sec-WebSocket-Version: 13\r\n" +
                             "Origin: http://example.com\r\n";
-            
+
             bool result = HttpHelper.IsWebSocketUpgradeRequest(header);
-            
+
             Assert.False(result);
         }
-        
+
         /// <summary>
-        /// Tests that get sub protocols should return correct protocols v 2
+        ///     Tests that get sub protocols should return correct protocols v 2
         /// </summary>
         [Fact]
         public void GetSubProtocols_ShouldReturnCorrectProtocols_v2()
@@ -184,9 +184,9 @@ namespace Alis.Core.Network.Test
             Assert.Contains("protocol1", protocols);
             Assert.Contains("protocol2", protocols);
         }
-        
+
         /// <summary>
-        /// Tests that get sub protocols should return empty list when no protocols
+        ///     Tests that get sub protocols should return empty list when no protocols
         /// </summary>
         [Fact]
         public void GetSubProtocols_ShouldReturnEmptyList_WhenNoProtocols()
@@ -195,9 +195,9 @@ namespace Alis.Core.Network.Test
             IList<string> protocols = HttpHelper.GetSubProtocols(header);
             Assert.Empty(protocols);
         }
-        
+
         /// <summary>
-        /// Tests that get sub protocols should throw exception when header too large
+        ///     Tests that get sub protocols should throw exception when header too large
         /// </summary>
         [Fact]
         public void GetSubProtocols_ShouldThrowException_WhenHeaderTooLarge()

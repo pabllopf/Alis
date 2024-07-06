@@ -30,10 +30,9 @@
 namespace Alis.Extension.Math.PathGenerator.Test.Triangulation
 {
     /// <summary>
-    /// The triangulation algorithm test class
+    ///     The triangulation algorithm test class
     /// </summary>
     public class TriangulationAlgorithmTest
     {
-        
     }
 }

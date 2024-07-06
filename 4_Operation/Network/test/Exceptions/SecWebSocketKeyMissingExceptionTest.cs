@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Core.Network.Test.Exceptions
 {
     /// <summary>
-    /// The sec web socket key missing exception test class
+    ///     The sec web socket key missing exception test class
     /// </summary>
     public class SecWebSocketKeyMissingExceptionTest
     {
         /// <summary>
-        /// Tests that sec web socket key missing exception default constructor
+        ///     Tests that sec web socket key missing exception default constructor
         /// </summary>
         [Fact]
         public void SecWebSocketKeyMissingException_DefaultConstructor()
@@ -47,9 +47,9 @@ namespace Alis.Core.Network.Test.Exceptions
             SecWebSocketKeyMissingException exception = new SecWebSocketKeyMissingException();
             Assert.NotNull(exception);
         }
-        
+
         /// <summary>
-        /// Tests that sec web socket key missing exception constructor with message
+        ///     Tests that sec web socket key missing exception constructor with message
         /// </summary>
         [Fact]
         public void SecWebSocketKeyMissingException_ConstructorWithMessage()
@@ -58,9 +58,9 @@ namespace Alis.Core.Network.Test.Exceptions
             Assert.NotNull(exception);
             Assert.Equal("Test message", exception.Message);
         }
-        
+
         /// <summary>
-        /// Tests that sec web socket key missing exception constructor with message and inner exception
+        ///     Tests that sec web socket key missing exception constructor with message and inner exception
         /// </summary>
         [Fact]
         public void SecWebSocketKeyMissingException_ConstructorWithMessageAndInnerException()

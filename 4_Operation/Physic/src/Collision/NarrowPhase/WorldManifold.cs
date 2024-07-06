@@ -50,12 +50,12 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
             normal = Vector2.Zero;
             points = new Vector2[2];
             float[] separations = new float[2];
-            
+
             if (manifold.PointCount == 0)
             {
                 return;
             }
-            
+
             switch (manifold.Type)
             {
                 case ManifoldType.Circles:
@@ -68,19 +68,19 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
                         normal = pointB - pointA;
                         normal = Vector2.Normalize(normal);
                     }
-                    
+
                     Vector2 cA = pointA + radiusA * normal;
                     Vector2 cB = pointB - radiusB * normal;
                     points[0] = 0.5f * (cA + cB);
                     separations[0] = Vector2.Dot(cB - cA, normal);
                 }
                     break;
-                
+
                 case ManifoldType.FaceA:
                 {
                     normal = MathUtils.Mul(xfA.Rotation, manifold.LocalNormal);
                     Vector2 planePoint = MathUtils.Mul(ref xfA, manifold.LocalPoint);
-                    
+
                     for (int i = 0; i < manifold.PointCount; ++i)
                     {
                         Vector2 clipPoint = MathUtils.Mul(ref xfB, manifold.Points[i].LocalPoint);
@@ -91,12 +91,12 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
                     }
                 }
                     break;
-                
+
                 case ManifoldType.FaceB:
                 {
                     normal = MathUtils.Mul(xfB.Rotation, manifold.LocalNormal);
                     Vector2 planePoint = MathUtils.Mul(ref xfB, manifold.LocalPoint);
-                    
+
                     for (int i = 0; i < manifold.PointCount; ++i)
                     {
                         Vector2 clipPoint = MathUtils.Mul(ref xfA, manifold.Points[i].LocalPoint);
@@ -105,7 +105,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
                         points[i] = 0.5f * (cA + cB);
                         separations[i] = Vector2.Dot(cA - cB, normal);
                     }
-                    
+
                     // Ensure normal points from A to B.
                     normal = -normal;
                 }

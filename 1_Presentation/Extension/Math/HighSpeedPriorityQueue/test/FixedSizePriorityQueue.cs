@@ -26,29 +26,24 @@
 //  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 
 namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
 {
-
-
     /// <summary>
-    /// The fixed size priority queue class
+    ///     The fixed size priority queue class
     /// </summary>
     public class FixedSizePriorityQueue<TItem, TPriority> where TPriority : IComparable<TPriority>
     {
         /// <summary>
-        /// The items
+        ///     The items
         /// </summary>
         private readonly List<(TItem item, TPriority priority)> _items;
-        /// <summary>
-        /// Gets or sets the value of the max size
-        /// </summary>
-        public int MaxSize { get; private set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FixedSizePriorityQueue"/> class
+        ///     Initializes a new instance of the <see cref="FixedSizePriorityQueue" /> class
         /// </summary>
         /// <param name="maxSize">The max size</param>
         public FixedSizePriorityQueue(int maxSize)
@@ -58,7 +53,12 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Enqueues the item
+        ///     Gets or sets the value of the max size
+        /// </summary>
+        public int MaxSize { get; }
+
+        /// <summary>
+        ///     Enqueues the item
         /// </summary>
         /// <param name="item">The item</param>
         /// <param name="priority">The priority</param>
@@ -73,7 +73,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Dequeues this instance
+        ///     Dequeues this instance
         /// </summary>
         /// <exception cref="InvalidOperationException">Queue is empty.</exception>
         /// <returns>The item</returns>

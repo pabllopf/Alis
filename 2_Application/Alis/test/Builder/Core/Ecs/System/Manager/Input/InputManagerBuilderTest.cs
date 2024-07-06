@@ -34,31 +34,31 @@ using Xunit;
 namespace Alis.Test.Builder.Core.Ecs.System.Manager.Input
 {
     /// <summary>
-    /// The input manager builder test class
+    ///     The input manager builder test class
     /// </summary>
     public class InputManagerBuilderTest
     {
         /// <summary>
-        /// Tests that input manager builder default constructor valid input
+        ///     Tests that input manager builder default constructor valid input
         /// </summary>
         [Fact]
         public void InputManagerBuilder_DefaultConstructor_ValidInput()
         {
             InputManagerBuilder inputManagerBuilder = new InputManagerBuilder();
-            
+
             Assert.NotNull(inputManagerBuilder);
         }
-        
+
         /// <summary>
-        /// Tests that build valid input
+        ///     Tests that build valid input
         /// </summary>
         [Fact]
         public void Build_ValidInput()
         {
             InputManagerBuilder inputManagerBuilder = new InputManagerBuilder();
-            
+
             InputManager inputManager = inputManagerBuilder.Build();
-            
+
             Assert.NotNull(inputManager);
         }
     }

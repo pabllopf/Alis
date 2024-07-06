@@ -34,6 +34,5 @@ namespace Alis.Core.Aspect.Security.Test
     /// </summary>
     public class SecureRandomTests
     {
-        
     }
 }

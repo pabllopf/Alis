@@ -35,41 +35,41 @@ using Xunit;
 namespace Alis.Test.Core.Ecs.System.Setting.Graphic
 {
     /// <summary>
-    /// The graphic setting test class
+    ///     The graphic setting test class
     /// </summary>
     public class GraphicSettingTest
     {
         /// <summary>
-        /// Tests that test graphic setting window
+        ///     Tests that test graphic setting window
         /// </summary>
         [Fact]
         public void Test_GraphicSetting_Window()
         {
             // Arrange
             GraphicSetting graphicSetting = new GraphicSetting();
-            
+
             // Act
             graphicSetting.Window = new Window();
             IWindow result = graphicSetting.Window;
-            
+
             // Assert
             Assert.NotNull(graphicSetting);
             Assert.NotNull(result);
             Assert.IsType<Window>(result);
         }
-        
+
         /// <summary>
-        /// Tests that test graphic setting builder
+        ///     Tests that test graphic setting builder
         /// </summary>
         [Fact]
         public void Test_GraphicSetting_Builder()
         {
             // Arrange
             GraphicSetting graphicSetting = new GraphicSetting();
-            
+
             // Act
             GraphicSettingBuilder result = graphicSetting.Builder();
-            
+
             // Assert
             Assert.NotNull(result);
             Assert.IsType<GraphicSettingBuilder>(result);

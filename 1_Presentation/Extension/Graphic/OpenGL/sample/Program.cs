@@ -45,7 +45,7 @@ namespace Alis.Extension.Graphic.OpenGL.Sample
             Console.WriteLine("1. Triangle Sample");
             Console.WriteLine("2. Cube Sample");
             int sampleNumber = Convert.ToInt32(Console.ReadLine());
-            
+
             switch (sampleNumber)
             {
                 case 1:

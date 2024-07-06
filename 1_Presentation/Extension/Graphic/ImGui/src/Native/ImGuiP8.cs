@@ -34,7 +34,7 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Extension.Graphic.ImGui.Native
 {
     /// <summary>
-    /// The im gui class
+    ///     The im gui class
     /// </summary>
     public static partial class ImGui
     {
@@ -45,7 +45,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igShowAboutWindow(IntPtr.Zero);
         }
-        
+
         /// <summary>
         ///     Shows the about window using the specified p open
         /// </summary>
@@ -53,10 +53,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static void ShowAboutWindow(ref bool pOpen)
         {
             byte nativePOpenVal = pOpen ? (byte) 1 : (byte) 0;
-            ImGuiNative.igShowAboutWindow((IntPtr)nativePOpenVal);
+            ImGuiNative.igShowAboutWindow((IntPtr) nativePOpenVal);
             pOpen = nativePOpenVal != 0;
         }
-        
+
         /// <summary>
         ///     Shows the debug log window
         /// </summary>
@@ -64,7 +64,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igShowDebugLogWindow(IntPtr.Zero);
         }
-        
+
         /// <summary>
         ///     Shows the debug log window using the specified p open
         /// </summary>
@@ -72,10 +72,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static void ShowDebugLogWindow(ref bool pOpen)
         {
             byte nativePOpenVal = pOpen ? (byte) 1 : (byte) 0;
-            ImGuiNative.igShowDebugLogWindow((IntPtr)nativePOpenVal);
+            ImGuiNative.igShowDebugLogWindow((IntPtr) nativePOpenVal);
             pOpen = nativePOpenVal != 0;
         }
-        
+
         /// <summary>
         ///     Shows the demo window
         /// </summary>
@@ -84,7 +84,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             IntPtr pOpen = IntPtr.Zero;
             ImGuiNative.igShowDemoWindow(pOpen);
         }
-        
+
         /// <summary>
         ///     Shows the demo window using the specified p open
         /// </summary>
@@ -92,10 +92,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static void ShowDemoWindow(ref bool pOpen)
         {
             byte nativePOpenVal = pOpen ? (byte) 1 : (byte) 0;
-            ImGuiNative.igShowDemoWindow((IntPtr)nativePOpenVal);
+            ImGuiNative.igShowDemoWindow((IntPtr) nativePOpenVal);
             pOpen = nativePOpenVal != 0;
         }
-        
+
         /// <summary>
         ///     Shows the font selector using the specified label
         /// </summary>
@@ -104,7 +104,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igShowFontSelector(Encoding.UTF8.GetBytes(label));
         }
-        
+
         /// <summary>
         ///     Shows the metrics window
         /// </summary>
@@ -112,7 +112,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igShowMetricsWindow(IntPtr.Zero);
         }
-        
+
         /// <summary>
         ///     Shows the metrics window using the specified p open
         /// </summary>
@@ -120,10 +120,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static void ShowMetricsWindow(ref bool pOpen)
         {
             byte nativePOpenVal = pOpen ? (byte) 1 : (byte) 0;
-            ImGuiNative.igShowMetricsWindow((IntPtr)nativePOpenVal);
+            ImGuiNative.igShowMetricsWindow((IntPtr) nativePOpenVal);
             pOpen = nativePOpenVal != 0;
         }
-        
+
         /// <summary>
         ///     Shows the stack tool window
         /// </summary>
@@ -131,7 +131,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igShowStackToolWindow(IntPtr.Zero);
         }
-        
+
         /// <summary>
         ///     Shows the stack tool window using the specified p open
         /// </summary>
@@ -139,10 +139,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static void ShowStackToolWindow(ref bool pOpen)
         {
             byte nativePOpenVal = pOpen ? (byte) 1 : (byte) 0;
-            ImGuiNative.igShowStackToolWindow((IntPtr)nativePOpenVal);
+            ImGuiNative.igShowStackToolWindow((IntPtr) nativePOpenVal);
             pOpen = nativePOpenVal != 0;
         }
-        
+
         /// <summary>
         ///     Shows the style editor
         /// </summary>
@@ -150,7 +150,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igShowStyleEditor(new ImGuiStyle());
         }
-        
+
         /// <summary>
         ///     Shows the style editor using the specified ref
         /// </summary>
@@ -159,7 +159,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igShowStyleEditor(imGuiStyle);
         }
-        
+
         /// <summary>
         ///     Describes whether show style selector
         /// </summary>
@@ -170,7 +170,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igShowStyleSelector(Encoding.UTF8.GetBytes(label));
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Shows the user guide
         /// </summary>
@@ -178,7 +178,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igShowUserGuide();
         }
-        
+
         /// <summary>
         ///     Describes whether slider angle
         /// </summary>
@@ -188,9 +188,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool SliderAngle(string label, ref float vRad)
         {
             byte ret = ImGuiNative.igSliderAngle(Encoding.UTF8.GetBytes(label), ref vRad, -360.0f, +360.0f, Encoding.UTF8.GetBytes("%.0f deg"), 0);
-                return ret != 0;
+            return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether slider angle
         /// </summary>
@@ -201,10 +201,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool SliderAngle(string label, ref float vRad, float vDegreesMin)
         {
             byte ret = ImGuiNative.igSliderAngle(Encoding.UTF8.GetBytes(label), ref vRad, vDegreesMin, +360.0f, Encoding.UTF8.GetBytes("%.0f deg"), 0);
-                
-                return ret != 0;
+
+            return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether slider angle
         /// </summary>
@@ -216,10 +216,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool SliderAngle(string label, ref float vRad, float vDegreesMin, float vDegreesMax)
         {
             byte ret = ImGuiNative.igSliderAngle(Encoding.UTF8.GetBytes(label), ref vRad, vDegreesMin, vDegreesMax, Encoding.UTF8.GetBytes("%.0f deg"), 0);
-                
-                return ret != 0;
+
+            return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether slider angle
         /// </summary>
@@ -232,9 +232,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool SliderAngle(string label, ref float vRad, float vDegreesMin, float vDegreesMax, string format)
         {
             byte ret = ImGuiNative.igSliderAngle(Encoding.UTF8.GetBytes(label), ref vRad, vDegreesMin, vDegreesMax, Encoding.UTF8.GetBytes(format), 0);
-                return ret != 0;
+            return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether slider angle
         /// </summary>
@@ -248,9 +248,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool SliderAngle(string label, ref float vRad, float vDegreesMin, float vDegreesMax, string format, ImGuiSliderFlags flags)
         {
             byte ret = ImGuiNative.igSliderAngle(Encoding.UTF8.GetBytes(label), ref vRad, vDegreesMin, vDegreesMax, Encoding.UTF8.GetBytes(format), flags);
-                return ret != 0;
+            return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether slider float
         /// </summary>
@@ -262,10 +262,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool SliderFloat(string label, ref float v, float vMin, float vMax)
         {
             byte ret = ImGuiNative.igSliderFloat(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes("%.3f"), 0);
-                
-                return ret != 0;
+
+            return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether slider float
         /// </summary>
@@ -278,10 +278,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool SliderFloat(string label, ref float v, float vMin, float vMax, string format)
         {
             byte ret = ImGuiNative.igSliderFloat(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), 0);
-                
-                return ret != 0;
+
+            return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether slider float
         /// </summary>
@@ -295,9 +295,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool SliderFloat(string label, ref float v, float vMin, float vMax, string format, ImGuiSliderFlags flags)
         {
             byte ret = ImGuiNative.igSliderFloat(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), flags);
-                return ret != 0;
+            return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether slider float 2
         /// </summary>
@@ -309,10 +309,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool SliderFloat2(string label, ref Vector2 v, float vMin, float vMax)
         {
             byte ret = ImGuiNative.igSliderFloat2(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes("%.3f"), 0);
-                
-                return ret != 0;
+
+            return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether slider float 2
         /// </summary>
@@ -325,9 +325,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool SliderFloat2(string label, ref Vector2 v, float vMin, float vMax, string format)
         {
             byte ret = ImGuiNative.igSliderFloat2(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), 0);
-                return ret != 0;
+            return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether slider float 2
         /// </summary>
@@ -341,9 +341,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool SliderFloat2(string label, ref Vector2 v, float vMin, float vMax, string format, ImGuiSliderFlags flags)
         {
             byte ret = ImGuiNative.igSliderFloat2(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), flags);
-                return ret != 0;
+            return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether slider float 3
         /// </summary>
@@ -355,9 +355,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool SliderFloat3(string label, ref Vector3 v, float vMin, float vMax)
         {
             byte ret = ImGuiNative.igSliderFloat3(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes("%.3f"), 0);
-                return ret != 0;
+            return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether slider float 3
         /// </summary>
@@ -370,9 +370,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool SliderFloat3(string label, ref Vector3 v, float vMin, float vMax, string format)
         {
             byte ret = ImGuiNative.igSliderFloat3(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), 0);
-                return ret != 0;
+            return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether slider float 3
         /// </summary>
@@ -386,10 +386,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool SliderFloat3(string label, ref Vector3 v, float vMin, float vMax, string format, ImGuiSliderFlags flags)
         {
             byte ret = ImGuiNative.igSliderFloat3(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), flags);
-                
-                return ret != 0;
+
+            return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether slider float 4
         /// </summary>
@@ -401,10 +401,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool SliderFloat4(string label, ref Vector4 v, float vMin, float vMax)
         {
             byte ret = ImGuiNative.igSliderFloat4(Encoding.UTF8.GetBytes(label), v, vMin, vMax, Encoding.UTF8.GetBytes("%.3f"), 0);
-            
+
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether slider float 4
         /// </summary>
@@ -416,10 +416,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool SliderFloat4(string label, ref Vector4 v, float vMin, float vMax, string format)
         {
-            byte ret = ImGuiNative.igSliderFloat4(Encoding.UTF8.GetBytes(label),  v, vMin, vMax, Encoding.UTF8.GetBytes(format), 0);
-                
-                return ret != 0;
+            byte ret = ImGuiNative.igSliderFloat4(Encoding.UTF8.GetBytes(label), v, vMin, vMax, Encoding.UTF8.GetBytes(format), 0);
+
+            return ret != 0;
         }
-        
     }
 }

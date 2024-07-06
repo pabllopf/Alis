@@ -36,61 +36,61 @@ using Xunit;
 namespace Alis.Test.Core.Graphic
 {
     /// <summary>
-    /// The window test class
+    ///     The window test class
     /// </summary>
     public class WindowTest
     {
         /// <summary>
-        /// Tests that background set value should change background
+        ///     Tests that background set value should change background
         /// </summary>
         [Fact]
         public void Background_SetValue_ShouldChangeBackground()
         {
             Window window = new Window();
             Color color = new Color(255, 255, 255, 255);
-            
+
             window.Background = color;
-            
+
             Assert.Equal(color, window.Background);
         }
-        
+
         /// <summary>
-        /// Tests that resolution set value should change resolution
+        ///     Tests that resolution set value should change resolution
         /// </summary>
         [Fact]
         public void Resolution_SetValue_ShouldChangeResolution()
         {
             Window window = new Window();
             Vector2 resolution = new Vector2(1920, 1080);
-            
+
             window.Resolution = resolution;
-            
+
             Assert.Equal(resolution, window.Resolution);
         }
-        
+
         /// <summary>
-        /// Tests that is window resizable set value should change is window resizable
+        ///     Tests that is window resizable set value should change is window resizable
         /// </summary>
         [Fact]
         public void IsWindowResizable_SetValue_ShouldChangeIsWindowResizable()
         {
             Window window = new Window();
-            
+
             window.IsWindowResizable = false;
-            
+
             Assert.False(window.IsWindowResizable);
         }
-        
+
         /// <summary>
-        /// Tests that builder call method should return window builder
+        ///     Tests that builder call method should return window builder
         /// </summary>
         [Fact]
         public void Builder_CallMethod_ShouldReturnWindowBuilder()
         {
             Window window = new Window();
-            
+
             WindowBuilder result = window.Builder();
-            
+
             Assert.IsType<WindowBuilder>(result);
         }
     }

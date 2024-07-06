@@ -66,7 +66,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             float restitutionThresholdA = 1.5f;
             bool isSensorA = true;
             Fixture fixtureA = new Fixture(shapeA, filterA, frictionA, restitutionA, restitutionThresholdA, isSensorA);
-            
+
             AShape shapeB = new CircleShape(1.0f, 1.0f); // Replace with the actual Circle constructor
             Filter filterB = new Filter();
             float frictionB = 0.3f;
@@ -74,16 +74,16 @@ namespace Alis.Core.Physic.Test.Dynamics
             float restitutionThresholdB = 1.5f;
             bool isSensorB = true;
             Fixture fixtureB = new Fixture(shapeB, filterB, frictionB, restitutionB, restitutionThresholdB, isSensorB);
-            
+
             int indexA = 0;
             int indexB = 0;
             Contact minContact = new Contact(fixtureA, indexA, fixtureB, indexB);
             float minAlpha = 0.5f;
-            
+
             // Act
             Assert.Throws<NullReferenceException>(() => BodyHelper.AdvanceBody(contactManager, island, minContact, minAlpha));
         }
-        
+
         /// <summary>
         ///     Tests that advance bodies test
         /// </summary>
@@ -99,7 +99,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             float restitutionThresholdA = 1.5f;
             bool isSensorA = true;
             Fixture fixtureA = new Fixture(shapeA, filterA, frictionA, restitutionA, restitutionThresholdA, isSensorA);
-            
+
             AShape shapeB = new CircleShape(1.0f, 1.0f); // Replace with the actual Circle constructor
             Filter filterB = new Filter();
             float frictionB = 0.3f;
@@ -107,16 +107,16 @@ namespace Alis.Core.Physic.Test.Dynamics
             float restitutionThresholdB = 1.5f;
             bool isSensorB = true;
             Fixture fixtureB = new Fixture(shapeB, filterB, frictionB, restitutionB, restitutionThresholdB, isSensorB);
-            
+
             int indexA = 0;
             int indexB = 0;
             Contact minContact = new Contact(fixtureA, indexA, fixtureB, indexB);
             float minAlpha = 0.5f;
-            
+
             // Act
             Assert.Throws<NullReferenceException>(() => BodyHelper.AdvanceBodies(minContact, minAlpha));
         }
-        
+
         /// <summary>
         ///     Tests that update contact test
         /// </summary>
@@ -133,7 +133,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             float restitutionThresholdA = 1.5f;
             bool isSensorA = true;
             Fixture fixtureA = new Fixture(shapeA, filterA, frictionA, restitutionA, restitutionThresholdA, isSensorA);
-            
+
             AShape shapeB = new CircleShape(1.0f, 1.0f); // Replace with the actual Circle constructor
             Filter filterB = new Filter();
             float frictionB = 0.3f;
@@ -141,18 +141,18 @@ namespace Alis.Core.Physic.Test.Dynamics
             float restitutionThresholdB = 1.5f;
             bool isSensorB = true;
             Fixture fixtureB = new Fixture(shapeB, filterB, frictionB, restitutionB, restitutionThresholdB, isSensorB);
-            
+
             int indexA = 0;
             int indexB = 0;
             Contact minContact = new Contact(fixtureA, indexA, fixtureB, indexB);
-            
+
             // Act
             Assert.Throws<NullReferenceException>(() => BodyHelper.UpdateContact(contactManager, minContact));
-            
+
             // Assert
             // Add assertions here based on the expected outcome of the UpdateContact method
         }
-        
+
         /// <summary>
         ///     Tests that check contact solid test
         /// </summary>
@@ -168,7 +168,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             float restitutionThresholdA = 1.5f;
             bool isSensorA = true;
             Fixture fixtureA = new Fixture(shapeA, filterA, frictionA, restitutionA, restitutionThresholdA, isSensorA);
-            
+
             AShape shapeB = new CircleShape(1.0f, 1.0f); // Replace with the actual Circle constructor
             Filter filterB = new Filter();
             float frictionB = 0.3f;
@@ -176,18 +176,18 @@ namespace Alis.Core.Physic.Test.Dynamics
             float restitutionThresholdB = 1.5f;
             bool isSensorB = true;
             Fixture fixtureB = new Fixture(shapeB, filterB, frictionB, restitutionB, restitutionThresholdB, isSensorB);
-            
+
             int indexA = 0;
             int indexB = 0;
             Contact minContact = new Contact(fixtureA, indexA, fixtureB, indexB);
             Body[] bodies = new Body[2];
             Sweep backup1 = new Sweep();
             Sweep backup2 = new Sweep();
-            
+
             // Act
             Assert.Throws<NullReferenceException>(() => BodyHelper.CheckContactSolid(minContact, bodies, backup1, backup2));
         }
-        
+
         /// <summary>
         ///     Tests that build island test
         /// </summary>
@@ -204,7 +204,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             float restitutionThresholdA = 1.5f;
             bool isSensorA = true;
             Fixture fixtureA = new Fixture(shapeA, filterA, frictionA, restitutionA, restitutionThresholdA, isSensorA);
-            
+
             AShape shapeB = new CircleShape(1.0f, 1.0f); // Replace with the actual Circle constructor
             Filter filterB = new Filter();
             float frictionB = 0.3f;
@@ -212,19 +212,19 @@ namespace Alis.Core.Physic.Test.Dynamics
             float restitutionThresholdB = 1.5f;
             bool isSensorB = true;
             Fixture fixtureB = new Fixture(shapeB, filterB, frictionB, restitutionB, restitutionThresholdB, isSensorB);
-            
+
             int indexA = 0;
             int indexB = 0;
             Contact minContact = new Contact(fixtureA, indexA, fixtureB, indexB);
             Body[] bodies = new Body[2];
-            
+
             // Act
             Assert.Throws<NullReferenceException>(() => BodyHelper.BuildIsland(island, minContact, bodies));
-            
+
             // Assert
             // Add assertions here based on the expected outcome of the BuildIsland method
         }
-        
+
         /// <summary>
         ///     Tests that get contacts test
         /// </summary>
@@ -244,7 +244,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             float restitutionThresholdA = 1.5f;
             bool isSensorA = true;
             Fixture fixtureA = new Fixture(shapeA, filterA, frictionA, restitutionA, restitutionThresholdA, isSensorA);
-            
+
             AShape shapeB = new CircleShape(1.0f, 1.0f); // Replace with the actual Circle constructor
             Filter filterB = new Filter();
             float frictionB = 0.3f;
@@ -252,19 +252,19 @@ namespace Alis.Core.Physic.Test.Dynamics
             float restitutionThresholdB = 1.5f;
             bool isSensorB = true;
             Fixture fixtureB = new Fixture(shapeB, filterB, frictionB, restitutionB, restitutionThresholdB, isSensorB);
-            
+
             int indexA = 0;
             int indexB = 0;
             Contact minContact = new Contact(fixtureA, indexA, fixtureB, indexB);
-            
-            
+
+
             // Act
             Assert.Throws<NullReferenceException>(() => BodyHelper.GetContacts(contactManager, minAlpha, bodies, island, minContact));
-            
+
             // Assert
             // Add assertions here based on the expected outcome of the GetContacts method
         }
-        
+
         /// <summary>
         ///     Tests that process body contacts test
         /// </summary>
@@ -276,12 +276,12 @@ namespace Alis.Core.Physic.Test.Dynamics
             Body body = new Rectangle(1.0f, 1.0f,
                 new Vector2(0, 0),
                 new Vector2(1, 1), BodyType.Static, 1.0f);
-            
-            
+
+
             ContactManager contactManager = new ContactManager(new BroadPhaseImplementation());
-            
+
             Island island = new Island();
-            
+
             // Assuming you have fixtures available for the contact
             AShape shapeA = new CircleShape(1.0f, 1.0f); // Replace with the actual Circle constructor
             Filter filterA = new Filter();
@@ -290,7 +290,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             float restitutionThresholdA = 1.5f;
             bool isSensorA = true;
             Fixture fixtureA = new Fixture(shapeA, filterA, frictionA, restitutionA, restitutionThresholdA, isSensorA);
-            
+
             AShape shapeB = new CircleShape(1.0f, 1.0f); // Replace with the actual Circle constructor
             Filter filterB = new Filter();
             float frictionB = 0.3f;
@@ -298,19 +298,19 @@ namespace Alis.Core.Physic.Test.Dynamics
             float restitutionThresholdB = 1.5f;
             bool isSensorB = true;
             Fixture fixtureB = new Fixture(shapeB, filterB, frictionB, restitutionB, restitutionThresholdB, isSensorB);
-            
+
             int indexA = 0;
             int indexB = 0;
             Contact minContact = new Contact(fixtureA, indexA, fixtureB, indexB);
-            
+
             // Act
             BodyHelper.ProcessBodyContacts(body, contactManager, 0.5f, island, minContact);
-            
+
             // Assert
             // Add assertions here based on the expected outcome of the ProcessBodyContacts method
             // For example, you might want to check if the body's contact list has been processed correctly
         }
-        
+
         /// <summary>
         ///     Tests that post solve test
         /// </summary>
@@ -324,7 +324,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             Vector2 position = new Vector2(0, 0);
             float rotation = 0.0f;
             MyBreakableBody breakableBody = new MyBreakableBody(world, parts, density, position, rotation);
-            
+
             // Assuming you have shapes and filters available for the fixtures
             AShape shapeA = new CircleShape(1.0f, 1.0f); // Replace with the actual Circle constructor
             Filter filterA = new Filter();
@@ -333,7 +333,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             float restitutionThresholdA = 1.5f;
             bool isSensorA = true;
             Fixture fixtureA = new Fixture(shapeA, filterA, frictionA, restitutionA, restitutionThresholdA, isSensorA);
-            
+
             AShape shapeB = new CircleShape(1.0f, 1.0f); // Replace with the actual Circle constructor
             Filter filterB = new Filter();
             float frictionB = 0.3f;
@@ -341,16 +341,16 @@ namespace Alis.Core.Physic.Test.Dynamics
             float restitutionThresholdB = 1.5f;
             bool isSensorB = true;
             Fixture fixtureB = new Fixture(shapeB, filterB, frictionB, restitutionB, restitutionThresholdB, isSensorB);
-            
+
             int indexA = 0;
             int indexB = 0;
             Contact contact = new Contact(fixtureA, indexA, fixtureB, indexB);
-            
+
             ContactVelocityConstraint impulse = new ContactVelocityConstraint();
-            
+
             // Act
             breakableBody.PostSolve(contact, impulse);
-            
+
             // Assert
             // Add assertions here based on the expected outcome of the PostSolve method
         }

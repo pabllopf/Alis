@@ -38,12 +38,12 @@ namespace Alis.Core.Ecs.Entity.Property
         ///     Gets or sets the value of the name
         /// </summary>
         public string Name { get; set; }
-        
+
         /// <summary>
         ///     Gets or sets the value of the id
         /// </summary>
         public string Id { get; set; }
-        
+
         /// <summary>
         ///     Gets or sets the value of the tag
         /// </summary>

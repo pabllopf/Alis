@@ -45,15 +45,15 @@ namespace Alis.Core.Aspect.Data.Json
         public JsonPropertyNameAttribute()
         {
         }
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="JsonPropertyNameAttribute" /> class.
         /// </summary>
         /// <param name="name">The name to use for JSON serialization and deserialization.</param>
         public JsonPropertyNameAttribute(string name) => Name = name;
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="JsonPropertyNameAttribute"/> class
+        ///     Initializes a new instance of the <see cref="JsonPropertyNameAttribute" /> class
         /// </summary>
         /// <param name="name">The name</param>
         /// <param name="ignoreWhenSerializing">The ignore when serializing</param>
@@ -64,7 +64,7 @@ namespace Alis.Core.Aspect.Data.Json
             IgnoreWhenSerializing = ignoreWhenSerializing;
             IgnoreWhenDeserializing = ignoreWhenDeserializing;
         }
-        
+
         /// <summary>
         ///     Gets or sets the name to use for JSON serialization and deserialization.
         /// </summary>
@@ -72,7 +72,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     The name.
         /// </value>
         public string Name { get; set; }
-        
+
         /// <summary>
         ///     Gets or sets a value indicating whether to ignore this instance's owner when serializing.
         /// </summary>
@@ -80,7 +80,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     <c>true</c> if this instance's owner must be ignored when serializing; otherwise, <c>false</c>.
         /// </value>
         public bool IgnoreWhenSerializing { get; set; }
-        
+
         /// <summary>
         ///     Gets or sets a value indicating whether to ignore this instance's owner when deserializing.
         /// </summary>
@@ -88,7 +88,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     <c>true</c> if this instance's owner must be ignored when deserializing; otherwise, <c>false</c>.
         /// </value>
         public bool IgnoreWhenDeserializing { get; set; }
-        
+
         /// <summary>
         ///     Gets or sets the default value.
         /// </summary>
@@ -96,7 +96,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     The default value.
         /// </value>
         public object DefaultValue { get; set; }
-        
+
         /// <summary>
         ///     Gets or sets a value indicating whether this instance has a default value. In this case, it's defined by the
         ///     DefaultValue property.

@@ -45,22 +45,22 @@ namespace Alis.Core.Physic.Dynamics
         ///     The world
         /// </summary>
         private readonly World world;
-        
+
         /// <summary>
         ///     The angular velocities cache
         /// </summary>
         private float[] angularVelocitiesCache = new float[8];
-        
+
         /// <summary>
         ///     The break
         /// </summary>
         private bool breakable;
-        
+
         /// <summary>
         ///     The vector
         /// </summary>
         private Vector2[] velocitiesCache = new Vector2[8];
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="BreakableBody" /> class
         /// </summary>
@@ -78,9 +78,9 @@ namespace Alis.Core.Physic.Dynamics
             Parts = new List<Fixture>(parts.Count);
             MainBody = new Body(position, Vector2.Zero, BodyType.Dynamic, rotation);
             world.AddBody(MainBody);
-            
+
             Strength = 500.0f;
-            
+
             foreach (Vertices part in parts)
             {
                 PolygonShape polygonShape = new PolygonShape(part, density);
@@ -88,7 +88,7 @@ namespace Alis.Core.Physic.Dynamics
                 Parts.Add(fixture);
             }
         }
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="BreakableBody" /> class
         /// </summary>
@@ -102,39 +102,39 @@ namespace Alis.Core.Physic.Dynamics
         {
             this.world = world;
             this.world.ContactManager.PostSolve += PostSolve;
-            
+
             MainBody = new Body(position, Vector2.Zero, BodyType.Dynamic, rotation);
             world.AddBody(MainBody);
-            
+
             Parts = new List<Fixture>(8);
-            
+
             foreach (AShape part in shapes)
             {
                 Fixture fixture = MainBody.AddFixture(part);
                 Parts.Add(fixture);
             }
         }
-        
+
         /// <summary>The force needed to break the body apart. Default: 500</summary>
         [ExcludeFromCodeCoverage]
         private float Strength { get; }
-        
+
         /// <summary>
         ///     Gets or sets the value of the broken
         /// </summary>
         [ExcludeFromCodeCoverage]
         private bool Broken { get; set; }
-        
+
         /// <summary>
         ///     Gets the value of the main body
         /// </summary>
         internal Body MainBody { get; }
-        
+
         /// <summary>
         ///     Gets the value of the parts
         /// </summary>
         private List<Fixture> Parts { get; }
-        
+
         /// <summary>
         ///     Posts the solve using the specified contact
         /// </summary>
@@ -149,12 +149,12 @@ namespace Alis.Core.Physic.Dynamics
                 {
                     float maxImpulse = 0.0f;
                     int count = contact.Manifold.PointCount;
-                    
+
                     for (int i = 0; i < count; ++i)
                     {
                         maxImpulse = Math.Max(maxImpulse, impulse.Points[i].NormalImpulse);
                     }
-                    
+
                     if (maxImpulse > Strength)
                     {
                         // Flag the body for breaking.
@@ -163,7 +163,7 @@ namespace Alis.Core.Physic.Dynamics
                 }
             }
         }
-        
+
         /// <summary>
         ///     Updates this instance
         /// </summary>
@@ -176,7 +176,7 @@ namespace Alis.Core.Physic.Dynamics
                 Broken = true;
                 breakable = false;
             }
-            
+
             // Cache velocities to improve movement on breakage.
             if (!Broken)
             {
@@ -186,7 +186,7 @@ namespace Alis.Core.Physic.Dynamics
                     velocitiesCache = new Vector2[Parts.Count];
                     angularVelocitiesCache = new float[Parts.Count];
                 }
-                
+
                 //Cache the linear and angular velocities.
                 for (int i = 0; i < Parts.Count; i++)
                 {
@@ -195,7 +195,7 @@ namespace Alis.Core.Physic.Dynamics
                 }
             }
         }
-        
+
         /// <summary>
         ///     Decomposes this instance
         /// </summary>
@@ -203,28 +203,28 @@ namespace Alis.Core.Physic.Dynamics
         internal void Decompose()
         {
             world.ContactManager.PostSolve -= PostSolve;
-            
+
             for (int i = 0; i < Parts.Count; i++)
             {
                 Fixture oldFixture = Parts[i];
-                
+
                 AShape shape = oldFixture.Shape.Clone();
-                
+
                 MainBody.RemoveFixture(oldFixture);
-                
+
                 Body body = new Body(MainBody.Position, MainBody.LinearVelocity, BodyType.Dynamic, MainBody.Rotation);
-                
+
                 Fixture newFixture = body.AddFixture(shape);
                 Parts[i] = newFixture;
-                
+
                 body.AngularVelocity = angularVelocitiesCache[i];
                 body.LinearVelocity = velocitiesCache[i];
             }
-            
+
             world.RemoveBody(MainBody);
             world.RemoveBreakableBody(this);
         }
-        
+
         /// <summary>
         ///     Breaks this instance
         /// </summary>

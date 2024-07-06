@@ -43,7 +43,7 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
     public class CollideEdgeTest
     {
         /// <summary>
-        /// Tests that collide edge and circle should collide correctly
+        ///     Tests that collide edge and circle should collide correctly
         /// </summary>
         [Fact]
         public void CollideEdgeAndCircle_ShouldCollideCorrectly()
@@ -55,16 +55,15 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             CircleShape circleB = new CircleShape(
                 1, 1);
             Transform transformB = new Transform();
-            
+
             // Act
             Assert.Throws<NullReferenceException>(() => CollideEdge.CollideEdgeAndCircle(ref manifold, edgeA, ref transformA, circleB, ref transformB));
-            
+
             // Assert
-            
         }
-        
+
         /// <summary>
-        /// Tests that collide edge and polygon should collide correctly
+        ///     Tests that collide edge and polygon should collide correctly
         /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_ShouldCollideCorrectly()
@@ -74,7 +73,7 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             EdgeShape edgeA = new EdgeShape();
             Transform transformA = new Transform();
             PolygonShape polygonB = new PolygonShape(
-                new Vertices()
+                new Vertices
                 {
                     new Vector2(0, 0),
                     new Vector2(1, 0),
@@ -82,16 +81,15 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
                     new Vector2(0, 1)
                 }, 4);
             Transform transformB = new Transform();
-            
+
             // Act
             CollideEdge.CollideEdgeAndPolygon(ref manifold, edgeA, ref transformA, polygonB, ref transformB);
-            
+
             // Assert
-            
         }
-        
+
         /// <summary>
-        /// Tests that collide edge and polygon should collide correctly v 2
+        ///     Tests that collide edge and polygon should collide correctly v 2
         /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_ShouldCollideCorrectly_v2()
@@ -101,7 +99,7 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             EdgeShape edgeA = new EdgeShape();
             Transform transformA = new Transform();
             PolygonShape polygonB = new PolygonShape(
-                new Vertices()
+                new Vertices
                 {
                     new Vector2(0, 0),
                     new Vector2(1, 0),
@@ -109,10 +107,10 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
                     new Vector2(0, 1)
                 }, 4);
             Transform transformB = new Transform();
-            
+
             // Act
             CollideEdge.CollideEdgeAndPolygon(ref manifold, edgeA, ref transformA, polygonB, ref transformB);
-            
+
             // Assert
             // Replace this with actual assertions
         }

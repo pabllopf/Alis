@@ -52,14 +52,14 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             // Arrange
             EpAxis epAxis = new EpAxis();
             Vector2 expectedValue = new Vector2(1, 1);
-            
+
             // Act
             epAxis.Normal = expectedValue;
-            
+
             // Assert
             Assert.Equal(expectedValue, epAxis.Normal);
         }
-        
+
         /// <summary>
         ///     Tests that test index property
         /// </summary>
@@ -69,14 +69,14 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             // Arrange
             EpAxis epAxis = new EpAxis();
             int expectedValue = 5;
-            
+
             // Act
             epAxis.Index = expectedValue;
-            
+
             // Assert
             Assert.Equal(expectedValue, epAxis.Index);
         }
-        
+
         /// <summary>
         ///     Tests that test separation property
         /// </summary>
@@ -86,14 +86,14 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             // Arrange
             EpAxis epAxis = new EpAxis();
             float expectedValue = 1.5f;
-            
+
             // Act
             epAxis.Separation = expectedValue;
-            
+
             // Assert
             Assert.Equal(expectedValue, epAxis.Separation);
         }
-        
+
         /// <summary>
         ///     Tests that test type property
         /// </summary>
@@ -103,14 +103,14 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             // Arrange
             EpAxis epAxis = new EpAxis();
             EpAxisType expectedValue = EpAxisType.EdgeA; // Assuming EpAxisType is an enum and FaceA is one of its values
-            
+
             // Act
             epAxis.Type = expectedValue;
-            
+
             // Assert
             Assert.Equal(expectedValue, epAxis.Type);
         }
-        
+
         /// <summary>
         ///     Tests that test contact constructor
         /// </summary>
@@ -120,12 +120,12 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             Fixture fixtureA = new Fixture(new CircleShape(1), new Filter());
             Fixture fixtureB = new Fixture(new CircleShape(1), new Filter());
             Contact contact = new Contact(fixtureA, 0, fixtureB, 0);
-            
+
             Assert.NotNull(contact);
             Assert.Equal(fixtureA, contact.FixtureA);
             Assert.Equal(fixtureB, contact.FixtureB);
         }
-        
+
         /// <summary>
         ///     Tests that test contact reset
         /// </summary>
@@ -135,15 +135,15 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             Fixture fixtureA = new Fixture(new CircleShape(1), new Filter());
             Fixture fixtureB = new Fixture(new CircleShape(1), new Filter());
             Contact contact = new Contact(fixtureA, 0, fixtureB, 0);
-            
+
             Fixture fixtureC = new Fixture(new CircleShape(2), new Filter());
             Fixture fixtureD = new Fixture(new CircleShape(2), new Filter());
             contact.Reset(fixtureC, 1, fixtureD, 1);
-            
+
             Assert.Equal(fixtureC, contact.FixtureA);
             Assert.Equal(fixtureD, contact.FixtureB);
         }
-        
+
         /// <summary>
         ///     Tests that test contact reset restitution
         /// </summary>
@@ -155,12 +155,12 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             Fixture fixtureB = new Fixture(new CircleShape(1), new Filter());
             fixtureB.Restitution = 0.5f;
             Contact contact = new Contact(fixtureA, 0, fixtureB, 0);
-            
+
             contact.ResetRestitution();
-            
+
             Assert.Equal(Settings.MixRestitution(fixtureA.Restitution, fixtureB.Restitution), contact.Restitution);
         }
-        
+
         /// <summary>
         ///     Tests that test contact reset restitution threshold
         /// </summary>
@@ -170,12 +170,12 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             Fixture fixtureA = new Fixture(new CircleShape(1), new Filter());
             Fixture fixtureB = new Fixture(new CircleShape(1), new Filter());
             Contact contact = new Contact(fixtureA, 0, fixtureB, 0);
-            
+
             contact.ResetRestitutionThreshold();
-            
+
             Assert.Equal(0, contact.RestitutionThreshold);
         }
-        
+
         /// <summary>
         ///     Tests that test contact reset friction
         /// </summary>
@@ -187,12 +187,12 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             Fixture fixtureB = new Fixture(new CircleShape(1), new Filter());
             fixtureB.Friction = 0.5f;
             Contact contact = new Contact(fixtureA, 0, fixtureB, 0);
-            
+
             contact.ResetFriction();
-            
+
             Assert.Equal(Settings.MixFriction(fixtureA.Friction, fixtureB.Friction), contact.Friction);
         }
-        
+
         /// <summary>
         ///     Tests that test fixture constructor
         /// </summary>
@@ -202,7 +202,7 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             CircleShape shape = new CircleShape(1);
             Filter filter = new Filter();
             Fixture fixture = new Fixture(shape, filter);
-            
+
             Assert.NotNull(fixture);
             Assert.Equal(shape.RadiusPrivate, fixture.Shape.RadiusPrivate);
             Assert.Equal(filter.Category, fixture.Filter.Category);

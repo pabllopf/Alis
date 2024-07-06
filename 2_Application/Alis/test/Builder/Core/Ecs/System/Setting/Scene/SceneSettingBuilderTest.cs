@@ -34,31 +34,31 @@ using Xunit;
 namespace Alis.Test.Builder.Core.Ecs.System.Setting.Scene
 {
     /// <summary>
-    /// The scene setting builder test class
+    ///     The scene setting builder test class
     /// </summary>
     public class SceneSettingBuilderTest
     {
         /// <summary>
-        /// Tests that scene setting builder default constructor valid input
+        ///     Tests that scene setting builder default constructor valid input
         /// </summary>
         [Fact]
         public void SceneSettingBuilder_DefaultConstructor_ValidInput()
         {
             SceneSettingBuilder sceneSettingBuilder = new SceneSettingBuilder();
-            
+
             Assert.NotNull(sceneSettingBuilder);
         }
-        
+
         /// <summary>
-        /// Tests that build valid input
+        ///     Tests that build valid input
         /// </summary>
         [Fact]
         public void Build_ValidInput()
         {
             SceneSettingBuilder sceneSettingBuilder = new SceneSettingBuilder();
-            
+
             SceneSetting sceneSetting = sceneSettingBuilder.Build();
-            
+
             Assert.NotNull(sceneSetting);
         }
     }

@@ -52,7 +52,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Joint jointA = new RevoluteJoint(bodyA, bodyB, new Vector2(0.5f, 0.5f), true);
             Joint jointB = new PrismaticJoint(bodyA, bodyB, new Vector2(0.5f, 0.5f), new Vector2(1, 0), true);
             float ratio = 1.0f;
-            
+
             // Act
             Assert.Throws<InvalidCastException>(() => new GearJoint(bodyA, bodyB, jointA, jointB, ratio));
         }

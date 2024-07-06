@@ -43,10 +43,10 @@ namespace Alis.Core.Ecs.Component.Audio
     public class AudioClip
     {
         /// <summary>
-        /// The player
+        ///     The player
         /// </summary>
         private readonly Player player = new Player();
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="AudioClip" /> class
         /// </summary>
@@ -60,9 +60,9 @@ namespace Alis.Core.Ecs.Component.Audio
             Volume = 100;
             Logger.Trace();
         }
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="AudioClip"/> class
+        ///     Initializes a new instance of the <see cref="AudioClip" /> class
         /// </summary>
         /// <param name="nameFile">The name file</param>
         public AudioClip(string nameFile)
@@ -75,9 +75,9 @@ namespace Alis.Core.Ecs.Component.Audio
             Volume = 100;
             Logger.Trace();
         }
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="AudioClip"/> class
+        ///     Initializes a new instance of the <see cref="AudioClip" /> class
         /// </summary>
         /// <param name="nameFile">The name file</param>
         /// <param name="isPlaying">The is playing</param>
@@ -96,43 +96,43 @@ namespace Alis.Core.Ecs.Component.Audio
             FullPathAudioFile = AssetManager.Find(nameFile);
             Logger.Trace();
         }
-        
+
         /// <summary>
-        /// Gets or sets the value of the is playing
+        ///     Gets or sets the value of the is playing
         /// </summary>
         [JsonPropertyName("_IsPlaying_")]
-        public bool IsPlaying { get;  set; }
-        
+        public bool IsPlaying { get; set; }
+
         /// <summary>
-        /// Gets or sets the value of the is mute
+        ///     Gets or sets the value of the is mute
         /// </summary>
         [JsonPropertyName("_IsMute_")]
         public bool IsMute { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the is looping
+        ///     Gets or sets the value of the is looping
         /// </summary>
         [JsonPropertyName("_IsLooping_")]
         public bool IsLooping { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the volume
+        ///     Gets or sets the value of the volume
         /// </summary>
         [JsonPropertyName("_Volume_")]
         public float Volume { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the name file
+        ///     Gets or sets the value of the name file
         /// </summary>
         [JsonPropertyName("_NameFile_")]
         public string NameFile { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the full path audio file
+        ///     Gets or sets the value of the full path audio file
         /// </summary>
         [JsonIgnore]
         private string FullPathAudioFile { get; set; }
-        
+
         /// <summary>
         ///     Plays this instance
         /// </summary>
@@ -143,13 +143,13 @@ namespace Alis.Core.Ecs.Component.Audio
             {
                 FullPathAudioFile = AssetManager.Find(NameFile);
             }
-            
+
             if (!string.IsNullOrEmpty(FullPathAudioFile))
             {
-                _= player.Play(FullPathAudioFile); 
+                _ = player.Play(FullPathAudioFile);
             }
         }
-        
+
         /// <summary>
         ///     Stops this instance
         /// </summary>
@@ -161,7 +161,7 @@ namespace Alis.Core.Ecs.Component.Audio
                 _ = player.Stop();
             }
         }
-        
+
         /// <summary>
         ///     Resumes this instance
         /// </summary>
@@ -172,7 +172,7 @@ namespace Alis.Core.Ecs.Component.Audio
                 _ = player.Resume();
             }
         }
-        
+
         /// <summary>
         ///     Builders
         /// </summary>

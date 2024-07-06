@@ -49,14 +49,14 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
         {
             // Arrange
             CircleShape circleShape = new CircleShape(1.0f, 1.0f, new Vector2(1, 1));
-            
+
             // Act
             int result = circleShape.ChildCount;
-            
+
             // Assert
             Assert.Equal(1, result);
         }
-        
+
         /// <summary>
         ///     Tests that test position property
         /// </summary>
@@ -66,14 +66,14 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
             // Arrange
             CircleShape circleShape = new CircleShape(1.0f, 1.0f, new Vector2(1, 1));
             Vector2 expectedValue = new Vector2(2, 2);
-            
+
             // Act
             circleShape.Position = expectedValue;
-            
+
             // Assert
             Assert.Equal(expectedValue, circleShape.Position);
         }
-        
+
         /// <summary>
         ///     Tests that test test point method
         /// </summary>
@@ -84,14 +84,14 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
             CircleShape circleShape = new CircleShape(1.0f, 1.0f, new Vector2(1, 1));
             Transform transform = new Transform();
             Vector2 point = new Vector2(1, 1);
-            
+
             // Act
             bool result = circleShape.TestPoint(ref transform, ref point);
-            
+
             // Assert
             // Add your assertions here based on what you expect from TestPoint
         }
-        
+
         /// <summary>
         ///     Tests that test ray cast method
         /// </summary>
@@ -103,14 +103,14 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
             RayCastInput input = new RayCastInput();
             Transform transform = new Transform();
             RayCastOutput output;
-            
+
             // Act
             bool result = circleShape.RayCast(ref input, ref transform, 0, out output);
-            
+
             // Assert
             // Add your assertions here based on what you expect from RayCast
         }
-        
+
         /// <summary>
         ///     Tests that test compute aabb method
         /// </summary>
@@ -121,14 +121,14 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
             CircleShape circleShape = new CircleShape(1.0f, 1.0f, new Vector2(1, 1));
             Transform transform = new Transform();
             Aabb aabb;
-            
+
             // Act
             circleShape.ComputeAabb(ref transform, 0, out aabb);
-            
+
             // Assert
             // Add your assertions here based on what you expect from ComputeAabb
         }
-        
+
         /// <summary>
         ///     Tests that test clone method
         /// </summary>
@@ -137,10 +137,10 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
         {
             // Arrange
             CircleShape circleShape = new CircleShape(1.0f, 1.0f, new Vector2(1, 1));
-            
+
             // Act
             AShape result = circleShape.Clone();
-            
+
             // Assert
             Assert.NotNull(result);
             Assert.IsType<CircleShape>(result);

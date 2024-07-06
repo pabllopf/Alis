@@ -41,28 +41,28 @@ using Xunit;
 namespace Alis.Test.Core.Ecs.System
 {
     /// <summary>
-    /// The context test class
+    ///     The context test class
     /// </summary>
     public class ContextTest
     {
         /// <summary>
-        /// Tests that test context constructor
+        ///     Tests that test context constructor
         /// </summary>
         [Fact]
         public void Test_Context_Constructor()
         {
             // Arrange
             Settings settings = new Settings();
-            
+
             // Act
             Context context = new Context(settings);
-            
+
             // Assert
             Assert.NotNull(context);
         }
-        
+
         /// <summary>
-        /// Tests that test context audio manager
+        ///     Tests that test context audio manager
         /// </summary>
         [Fact]
         public void Test_Context_AudioManager()
@@ -70,16 +70,16 @@ namespace Alis.Test.Core.Ecs.System
             // Arrange
             Settings settings = new Settings();
             Context context = new Context(settings);
-            
+
             // Act
             AudioManager audioManager = context.AudioManager;
-            
+
             // Assert
             Assert.NotNull(audioManager);
         }
-        
+
         /// <summary>
-        /// Tests that test context exit
+        ///     Tests that test context exit
         /// </summary>
         [Fact]
         public void Test_Context_Exit()
@@ -87,14 +87,14 @@ namespace Alis.Test.Core.Ecs.System
             // Arrange
             Settings settings = new Settings();
             Context context = new Context(settings);
-            
+
             // Act
             context.Exit();
         }
-        
-        
+
+
         /// <summary>
-        /// Tests that test context graphic manager
+        ///     Tests that test context graphic manager
         /// </summary>
         [Fact]
         public void Test_Context_GraphicManager()
@@ -102,17 +102,17 @@ namespace Alis.Test.Core.Ecs.System
             // Arrange
             Settings settings = new Settings();
             Context context = new Context(settings);
-            
+
             // Act
             GraphicManager result = context.GraphicManager;
-            
+
             // Assert
             Assert.NotNull(result);
             Assert.IsType<GraphicManager>(result);
         }
-        
+
         /// <summary>
-        /// Tests that test context input manager
+        ///     Tests that test context input manager
         /// </summary>
         [Fact]
         public void Test_Context_InputManager()
@@ -120,17 +120,17 @@ namespace Alis.Test.Core.Ecs.System
             // Arrange
             Settings settings = new Settings();
             Context context = new Context(settings);
-            
+
             // Act
             InputManager result = context.InputManager;
-            
+
             // Assert
             Assert.NotNull(result);
             Assert.IsType<InputManager>(result);
         }
-        
+
         /// <summary>
-        /// Tests that test context network manager
+        ///     Tests that test context network manager
         /// </summary>
         [Fact]
         public void Test_Context_NetworkManager()
@@ -138,17 +138,17 @@ namespace Alis.Test.Core.Ecs.System
             // Arrange
             Settings settings = new Settings();
             Context context = new Context(settings);
-            
+
             // Act
             NetworkManager result = context.NetworkManager;
-            
+
             // Assert
             Assert.NotNull(result);
             Assert.IsType<NetworkManager>(result);
         }
-        
+
         /// <summary>
-        /// Tests that test context physic manager
+        ///     Tests that test context physic manager
         /// </summary>
         [Fact]
         public void Test_Context_PhysicManager()
@@ -156,17 +156,17 @@ namespace Alis.Test.Core.Ecs.System
             // Arrange
             Settings settings = new Settings();
             Context context = new Context(settings);
-            
+
             // Act
             PhysicManager result = context.PhysicManager;
-            
+
             // Assert
             Assert.NotNull(result);
             Assert.IsType<PhysicManager>(result);
         }
-        
+
         /// <summary>
-        /// Tests that test context time manager
+        ///     Tests that test context time manager
         /// </summary>
         [Fact]
         public void Test_Context_TimeManager()
@@ -174,17 +174,17 @@ namespace Alis.Test.Core.Ecs.System
             // Arrange
             Settings settings = new Settings();
             Context context = new Context(settings);
-            
+
             // Act
             TimeManager result = context.TimeManager;
-            
+
             // Assert
             Assert.NotNull(result);
             Assert.IsType<TimeManager>(result);
         }
-        
+
         /// <summary>
-        /// Tests that test context scene manager
+        ///     Tests that test context scene manager
         /// </summary>
         [Fact]
         public void Test_Context_SceneManager()
@@ -192,10 +192,10 @@ namespace Alis.Test.Core.Ecs.System
             // Arrange
             Settings settings = new Settings();
             Context context = new Context(settings);
-            
+
             // Act
             SceneManager result = context.SceneManager;
-            
+
             // Assert
             Assert.NotNull(result);
             Assert.IsType<SceneManager>(result);

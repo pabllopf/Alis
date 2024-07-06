@@ -279,7 +279,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
 
 
         /// <summary>
-        /// Cascades the down using the specified node
+        ///     Cascades the down using the specified node
         /// </summary>
         /// <param name="node">The node</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -308,7 +308,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         }
 
         /// <summary>
-        /// Gets the swap index using the specified final queue index
+        ///     Gets the swap index using the specified final queue index
         /// </summary>
         /// <param name="finalQueueIndex">The final queue index</param>
         /// <param name="childLeftIndex">The child left index</param>
@@ -320,7 +320,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         private int GetSwapIndex(int finalQueueIndex, int childLeftIndex, int childRightIndex, T childLeft, T childRight)
         {
             bool isLeftHigherPriority = HasHigherPriority(childLeft, _nodes[finalQueueIndex]);
-            bool isRightHigherPriority = childRight != null && HasHigherPriority(childRight, _nodes[finalQueueIndex]);
+            bool isRightHigherPriority = (childRight != null) && HasHigherPriority(childRight, _nodes[finalQueueIndex]);
 
             if (isLeftHigherPriority || isRightHigherPriority)
             {
@@ -336,7 +336,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         }
 
         /// <summary>
-        /// Swaps the index 1
+        ///     Swaps the index 1
         /// </summary>
         /// <param name="index1">The index</param>
         /// <param name="index2">The index</param>

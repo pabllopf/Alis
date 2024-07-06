@@ -34,40 +34,40 @@ using Xunit;
 namespace Alis.Test.Core.Ecs.System.Setting.Scene
 {
     /// <summary>
-    /// The scene setting test class
+    ///     The scene setting test class
     /// </summary>
     public class SceneSettingTest
     {
         /// <summary>
-        /// Tests that test scene setting max number of scenes
+        ///     Tests that test scene setting max number of scenes
         /// </summary>
         [Fact]
         public void Test_SceneSetting_MaxNumberOfScenes()
         {
             // Arrange
             SceneSetting sceneSetting = new SceneSetting();
-            
+
             // Act
             sceneSetting.MaxNumberOfScenes = 500;
             int result = sceneSetting.MaxNumberOfScenes;
-            
+
             // Assert
             Assert.NotNull(sceneSetting);
             Assert.Equal(500, result);
         }
-        
+
         /// <summary>
-        /// Tests that test scene setting builder
+        ///     Tests that test scene setting builder
         /// </summary>
         [Fact]
         public void Test_SceneSetting_Builder()
         {
             // Arrange
             SceneSetting sceneSetting = new SceneSetting();
-            
+
             // Act
             SceneSettingBuilder result = sceneSetting.Builder();
-            
+
             // Assert
             Assert.NotNull(result);
             Assert.IsType<SceneSettingBuilder>(result);

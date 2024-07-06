@@ -34,122 +34,122 @@ using Xunit;
 namespace Alis.Test.Builder.Core.Ecs.System.Setting.General
 {
     /// <summary>
-    /// The general setting builder test class
+    ///     The general setting builder test class
     /// </summary>
     public class GeneralSettingBuilderTest
     {
         /// <summary>
-        /// Tests that general setting builder default constructor valid input
+        ///     Tests that general setting builder default constructor valid input
         /// </summary>
         [Fact]
         public void GeneralSettingBuilder_DefaultConstructor_ValidInput()
         {
             GeneralSettingBuilder generalSettingBuilder = new GeneralSettingBuilder();
-            
+
             Assert.NotNull(generalSettingBuilder);
         }
-        
+
         /// <summary>
-        /// Tests that build valid input
+        ///     Tests that build valid input
         /// </summary>
         [Fact]
         public void Build_ValidInput()
         {
             GeneralSettingBuilder generalSettingBuilder = new GeneralSettingBuilder();
-            
+
             GeneralSetting generalSetting = generalSettingBuilder.Build();
-            
+
             Assert.NotNull(generalSetting);
         }
-        
+
         /// <summary>
-        /// Tests that author valid input
+        ///     Tests that author valid input
         /// </summary>
         [Fact]
         public void Author_ValidInput()
         {
             GeneralSettingBuilder generalSettingBuilder = new GeneralSettingBuilder();
-            
+
             generalSettingBuilder.Author("Test Author");
-            
+
             Assert.Equal("Test Author", generalSettingBuilder.Build().Author);
         }
-        
+
         /// <summary>
-        /// Tests that debug valid input
+        ///     Tests that debug valid input
         /// </summary>
         [Fact]
         public void Debug_ValidInput()
         {
             GeneralSettingBuilder generalSettingBuilder = new GeneralSettingBuilder();
-            
+
             generalSettingBuilder.Debug(true);
-            
+
             Assert.True(generalSettingBuilder.Build().Debug);
         }
-        
+
         /// <summary>
-        /// Tests that description valid input
+        ///     Tests that description valid input
         /// </summary>
         [Fact]
         public void Description_ValidInput()
         {
             GeneralSettingBuilder generalSettingBuilder = new GeneralSettingBuilder();
-            
+
             generalSettingBuilder.Description("Test Description");
-            
+
             Assert.Equal("Test Description", generalSettingBuilder.Build().Description);
         }
-        
+
         /// <summary>
-        /// Tests that icon valid input
+        ///     Tests that icon valid input
         /// </summary>
         [Fact]
         public void Icon_ValidInput()
         {
             GeneralSettingBuilder generalSettingBuilder = new GeneralSettingBuilder();
-            
+
             generalSettingBuilder.Icon("Test Icon");
-            
+
             Assert.Equal("Test Icon", generalSettingBuilder.Build().Icon);
         }
-        
+
         /// <summary>
-        /// Tests that license valid input
+        ///     Tests that license valid input
         /// </summary>
         [Fact]
         public void License_ValidInput()
         {
             GeneralSettingBuilder generalSettingBuilder = new GeneralSettingBuilder();
-            
+
             generalSettingBuilder.License("Test License");
-            
+
             Assert.Equal("Test License", generalSettingBuilder.Build().License);
         }
-        
+
         /// <summary>
-        /// Tests that name valid input
+        ///     Tests that name valid input
         /// </summary>
         [Fact]
         public void Name_ValidInput()
         {
             GeneralSettingBuilder generalSettingBuilder = new GeneralSettingBuilder();
-            
+
             generalSettingBuilder.Name("Test Name");
-            
+
             Assert.Equal("Test Name", generalSettingBuilder.Build().Name);
         }
-        
+
         /// <summary>
-        /// Tests that version valid input
+        ///     Tests that version valid input
         /// </summary>
         [Fact]
         public void Version_ValidInput()
         {
             GeneralSettingBuilder generalSettingBuilder = new GeneralSettingBuilder();
-            
+
             generalSettingBuilder.Version("Test Version");
-            
+
             Assert.Equal("Test Version", generalSettingBuilder.Build().Version);
         }
     }

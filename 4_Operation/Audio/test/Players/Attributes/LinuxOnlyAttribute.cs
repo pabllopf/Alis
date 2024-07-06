@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:RunnableInDebugOnlyAttribute.cs
+//  File:LinuxOnlyAttribute.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -33,13 +33,13 @@ using Xunit;
 namespace Alis.Core.Audio.Test.Players.Attributes
 {
     /// <summary>
-    /// The linux only attribute class
+    ///     The linux only attribute class
     /// </summary>
-    /// <seealso cref="FactAttribute"/>
+    /// <seealso cref="FactAttribute" />
     public class LinuxOnlyAttribute : FactAttribute
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="LinuxOnlyAttribute"/> class
+        ///     Initializes a new instance of the <see cref="LinuxOnlyAttribute" /> class
         /// </summary>
         public LinuxOnlyAttribute()
         {

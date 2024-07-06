@@ -49,7 +49,7 @@ namespace Alis.Core.Physic.Test.Collision.Filtering
             Assert.Equal(Settings.DefaultFixtureCollisionCategories, filter.Category);
             Assert.Equal(Settings.DefaultFixtureCollidesWith, filter.CategoryMask);
         }
-        
+
         /// <summary>
         ///     Tests that parameterized constructor test
         /// </summary>

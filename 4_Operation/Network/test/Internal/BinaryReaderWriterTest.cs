@@ -38,12 +38,12 @@ using Xunit;
 namespace Alis.Core.Network.Test.Internal
 {
     /// <summary>
-    /// The binary reader writer test class
+    ///     The binary reader writer test class
     /// </summary>
     public class BinaryReaderWriterTest
     {
         /// <summary>
-        /// Tests that read exactly valid input
+        ///     Tests that read exactly valid input
         /// </summary>
         [Fact]
         public async Task ReadExactly_ValidInput()
@@ -53,9 +53,9 @@ namespace Alis.Core.Network.Test.Internal
             await BinaryReaderWriter.ReadExactly(8, stream, buffer, CancellationToken.None);
             Assert.Equal("Test dat", Encoding.UTF8.GetString(buffer.Array));
         }
-        
+
         /// <summary>
-        /// Tests that read u short exactly valid input
+        ///     Tests that read u short exactly valid input
         /// </summary>
         [Fact]
         public async Task ReadUShortExactly_ValidInput()
@@ -65,9 +65,9 @@ namespace Alis.Core.Network.Test.Internal
             ushort result = await BinaryReaderWriter.ReadUShortExactly(stream, BitConverter.IsLittleEndian, buffer, CancellationToken.None);
             Assert.Equal((ushort) 12345, result);
         }
-        
+
         /// <summary>
-        /// Tests that read u long exactly valid input
+        ///     Tests that read u long exactly valid input
         /// </summary>
         [Fact]
         public async Task ReadULongExactly_ValidInput()
@@ -77,9 +77,9 @@ namespace Alis.Core.Network.Test.Internal
             ulong result = await BinaryReaderWriter.ReadULongExactly(stream, BitConverter.IsLittleEndian, buffer, CancellationToken.None);
             Assert.Equal((ulong) 1234567890123456789, result);
         }
-        
+
         /// <summary>
-        /// Tests that read long exactly valid input
+        ///     Tests that read long exactly valid input
         /// </summary>
         [Fact]
         public async Task ReadLongExactly_ValidInput()
@@ -89,9 +89,9 @@ namespace Alis.Core.Network.Test.Internal
             long result = await BinaryReaderWriter.ReadLongExactly(stream, BitConverter.IsLittleEndian, buffer, CancellationToken.None);
             Assert.Equal(1234567890123456789, result);
         }
-        
+
         /// <summary>
-        /// Tests that write int valid input
+        ///     Tests that write int valid input
         /// </summary>
         [Fact]
         public void WriteInt_ValidInput()
@@ -100,9 +100,9 @@ namespace Alis.Core.Network.Test.Internal
             BinaryReaderWriter.WriteInt(123456789, stream, BitConverter.IsLittleEndian);
             Assert.Equal(BitConverter.GetBytes(123456789), stream.ToArray());
         }
-        
+
         /// <summary>
-        /// Tests that write u long valid input
+        ///     Tests that write u long valid input
         /// </summary>
         [Fact]
         public void WriteULong_ValidInput()
@@ -111,9 +111,9 @@ namespace Alis.Core.Network.Test.Internal
             BinaryReaderWriter.WriteULong(1234567890123456789, stream, BitConverter.IsLittleEndian);
             Assert.Equal(BitConverter.GetBytes((ulong) 1234567890123456789), stream.ToArray());
         }
-        
+
         /// <summary>
-        /// Tests that write long valid input
+        ///     Tests that write long valid input
         /// </summary>
         [Fact]
         public void WriteLong_ValidInput()
@@ -122,9 +122,9 @@ namespace Alis.Core.Network.Test.Internal
             BinaryReaderWriter.WriteLong(1234567890123456789, stream, BitConverter.IsLittleEndian);
             Assert.Equal(BitConverter.GetBytes(1234567890123456789), stream.ToArray());
         }
-        
+
         /// <summary>
-        /// Tests that write u short valid input
+        ///     Tests that write u short valid input
         /// </summary>
         [Fact]
         public void WriteUShort_ValidInput()
@@ -133,9 +133,9 @@ namespace Alis.Core.Network.Test.Internal
             BinaryReaderWriter.WriteUShort(12345, stream, BitConverter.IsLittleEndian);
             Assert.Equal(BitConverter.GetBytes((ushort) 12345), stream.ToArray());
         }
-        
+
         /// <summary>
-        /// Tests that write int should write correctly
+        ///     Tests that write int should write correctly
         /// </summary>
         [Fact]
         public void WriteInt_ShouldWriteCorrectly()
@@ -143,18 +143,18 @@ namespace Alis.Core.Network.Test.Internal
             MemoryStream stream = new MemoryStream();
             int value = 12345;
             bool isLittleEndian = BitConverter.IsLittleEndian;
-            
+
             BinaryReaderWriter.WriteInt(value, stream, isLittleEndian);
-            
+
             stream.Seek(0, SeekOrigin.Begin);
             BinaryReader reader = new BinaryReader(stream);
             int result = reader.ReadInt32();
-            
+
             Assert.Equal(value, result);
         }
-        
+
         /// <summary>
-        /// Tests that write u long should write correctly
+        ///     Tests that write u long should write correctly
         /// </summary>
         [Fact]
         public void WriteULong_ShouldWriteCorrectly()
@@ -162,18 +162,18 @@ namespace Alis.Core.Network.Test.Internal
             MemoryStream stream = new MemoryStream();
             ulong value = 12345678901234567890;
             bool isLittleEndian = BitConverter.IsLittleEndian;
-            
+
             BinaryReaderWriter.WriteULong(value, stream, isLittleEndian);
-            
+
             stream.Seek(0, SeekOrigin.Begin);
             BinaryReader reader = new BinaryReader(stream);
             ulong result = reader.ReadUInt64();
-            
+
             Assert.Equal(value, result);
         }
-        
+
         /// <summary>
-        /// Tests that write long should write correctly
+        ///     Tests that write long should write correctly
         /// </summary>
         [Fact]
         public void WriteLong_ShouldWriteCorrectly()
@@ -181,18 +181,18 @@ namespace Alis.Core.Network.Test.Internal
             MemoryStream stream = new MemoryStream();
             long value = 1234567890123456789;
             bool isLittleEndian = BitConverter.IsLittleEndian;
-            
+
             BinaryReaderWriter.WriteLong(value, stream, isLittleEndian);
-            
+
             stream.Seek(0, SeekOrigin.Begin);
             BinaryReader reader = new BinaryReader(stream);
             long result = reader.ReadInt64();
-            
+
             Assert.Equal(value, result);
         }
-        
+
         /// <summary>
-        /// Tests that write long should write correctly when little endian
+        ///     Tests that write long should write correctly when little endian
         /// </summary>
         [Fact]
         public void WriteLong_ShouldWriteCorrectly_WhenLittleEndian()
@@ -200,18 +200,18 @@ namespace Alis.Core.Network.Test.Internal
             MemoryStream stream = new MemoryStream();
             long value = 1234567890123456789;
             bool isLittleEndian = true;
-            
+
             BinaryReaderWriter.WriteLong(value, stream, isLittleEndian);
-            
+
             stream.Seek(0, SeekOrigin.Begin);
             BinaryReader reader = new BinaryReader(stream);
             long result = reader.ReadInt64();
-            
+
             Assert.Equal(value, result);
         }
-        
+
         /// <summary>
-        /// Tests that write long should write correctly when big endian
+        ///     Tests that write long should write correctly when big endian
         /// </summary>
         [Fact]
         public void WriteLong_ShouldWriteCorrectly_WhenBigEndian()
@@ -219,47 +219,47 @@ namespace Alis.Core.Network.Test.Internal
             MemoryStream stream = new MemoryStream();
             long value = 1549776473967043089;
             bool isLittleEndian = false;
-            
+
             BinaryReaderWriter.WriteLong(value, stream, isLittleEndian);
-            
+
             stream.Seek(0, SeekOrigin.Begin);
             BinaryReader reader = new BinaryReader(stream);
             long result = BitConverter.ToInt64(BitConverter.GetBytes(reader.ReadInt64()), 0);
-            
+
             Assert.True(result > 0);
         }
-        
+
         /// <summary>
-        /// Tests that reverse buffer test
+        ///     Tests that reverse buffer test
         /// </summary>
         [Fact]
         public void ReverseBuffer_Test()
         {
-            byte[] initialArray = new byte[] {1, 2, 3, 4, 5, 6, 7, 8};
+            byte[] initialArray = {1, 2, 3, 4, 5, 6, 7, 8};
             ArraySegment<byte> buffer = new ArraySegment<byte>(initialArray);
-            
+
             BinaryReaderWriter.ReverseBuffer(buffer);
-            
-            byte[] expectedArray = new byte[] {8, 7, 6, 5, 4, 3, 2, 1};
+
+            byte[] expectedArray = {8, 7, 6, 5, 4, 3, 2, 1};
             Assert.Equal(expectedArray, buffer.Array);
         }
-        
+
         /// <summary>
-        /// Tests that handle endianness test
+        ///     Tests that handle endianness test
         /// </summary>
         [Fact]
         public void HandleEndianness_Test()
         {
-            byte[] initialArray = new byte[] {1, 2, 3, 4, 5, 6, 7, 8};
+            byte[] initialArray = {1, 2, 3, 4, 5, 6, 7, 8};
             ArraySegment<byte> buffer = new ArraySegment<byte>(initialArray);
-            
+
             BinaryReaderWriter.HandleEndianness(false, buffer);
-            
-            byte[] expectedArray = new byte[] {8, 7, 6, 5, 4, 3, 2, 1};
+
+            byte[] expectedArray = {8, 7, 6, 5, 4, 3, 2, 1};
             Assert.Equal(expectedArray, buffer.Array);
-            
+
             BinaryReaderWriter.HandleEndianness(true, buffer);
-            
+
             Assert.Equal(initialArray, buffer.Array);
         }
     }

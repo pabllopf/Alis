@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:EntityTooLargeExceptionTest+.cs
+//  File:EntityTooLargeExceptionTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Core.Network.Test.Exceptions
 {
     /// <summary>
-    /// The entitytoolargeexceptiontest class
+    ///     The entitytoolargeexceptiontest class
     /// </summary>
     public class EntityTooLargeExceptionTest
     {
         /// <summary>
-        /// Tests that entity too large exception default constructor
+        ///     Tests that entity too large exception default constructor
         /// </summary>
         [Fact]
         public void EntityTooLargeException_DefaultConstructor()
@@ -47,9 +47,9 @@ namespace Alis.Core.Network.Test.Exceptions
             EntityTooLargeException exception = new EntityTooLargeException();
             Assert.NotNull(exception);
         }
-        
+
         /// <summary>
-        /// Tests that entity too large exception constructor with message
+        ///     Tests that entity too large exception constructor with message
         /// </summary>
         [Fact]
         public void EntityTooLargeException_ConstructorWithMessage()
@@ -58,9 +58,9 @@ namespace Alis.Core.Network.Test.Exceptions
             Assert.NotNull(exception);
             Assert.Equal("Test message", exception.Message);
         }
-        
+
         /// <summary>
-        /// Tests that entity too large exception constructor with message and inner exception
+        ///     Tests that entity too large exception constructor with message and inner exception
         /// </summary>
         [Fact]
         public void EntityTooLargeException_ConstructorWithMessageAndInnerException()

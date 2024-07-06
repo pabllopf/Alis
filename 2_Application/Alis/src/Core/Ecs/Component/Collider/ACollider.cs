@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Collider.cs
+//  File:ACollider.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -44,7 +44,7 @@ namespace Alis.Core.Ecs.Component.Collider
         {
             Logger.Trace();
         }
-        
+
         /// <summary>
         ///     Updates this instance
         /// </summary>

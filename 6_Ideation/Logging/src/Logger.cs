@@ -43,12 +43,12 @@ namespace Alis.Core.Aspect.Logging
         ///     The normal
         /// </summary>
         public static LogLevel LogLevel { get; set; } = LogLevel.Info;
-        
+
         /// <summary>
         ///     Gets or sets the value of the detail level
         /// </summary>
         public static DetailLevel DetailLevel { get; set; } = DetailLevel.Minimal;
-        
+
         /// <summary>
         ///     Traces the message
         /// </summary>
@@ -60,7 +60,7 @@ namespace Alis.Core.Aspect.Logging
                 ConsoleController.Print(new Message(MessageType.Trace), DetailLevel);
             }
         }
-        
+
         /// <summary>
         ///     Traces the message
         /// </summary>
@@ -73,7 +73,7 @@ namespace Alis.Core.Aspect.Logging
                 ConsoleController.Print(new Message(MessageType.Trace, message), DetailLevel);
             }
         }
-        
+
         /// <summary>
         ///     Info
         /// </summary>
@@ -85,7 +85,7 @@ namespace Alis.Core.Aspect.Logging
                 ConsoleController.Print(new Message(MessageType.Info, "Info method called with no message."), DetailLevel);
             }
         }
-        
+
         /// <summary>
         ///     Info the message
         /// </summary>
@@ -98,7 +98,7 @@ namespace Alis.Core.Aspect.Logging
                 ConsoleController.Print(new Message(MessageType.Info, message), DetailLevel);
             }
         }
-        
+
         /// <summary>
         ///     Logs the message
         /// </summary>
@@ -111,7 +111,7 @@ namespace Alis.Core.Aspect.Logging
                 ConsoleController.Print(new Message(MessageType.Log, message), DetailLevel);
             }
         }
-        
+
         /// <summary>
         ///     Events the message
         /// </summary>
@@ -124,7 +124,7 @@ namespace Alis.Core.Aspect.Logging
                 ConsoleController.Print(new Message(MessageType.Event, message), DetailLevel);
             }
         }
-        
+
         /// <summary>
         ///     Events
         /// </summary>
@@ -136,7 +136,7 @@ namespace Alis.Core.Aspect.Logging
                 ConsoleController.Print(new Message(MessageType.Event, "Event method called with no message."), DetailLevel);
             }
         }
-        
+
         /// <summary>
         ///     Warnings the message
         /// </summary>
@@ -149,7 +149,7 @@ namespace Alis.Core.Aspect.Logging
                 ConsoleController.Print(new Message(MessageType.Warning, message), DetailLevel);
             }
         }
-        
+
         /// <summary>
         ///     Errors the message
         /// </summary>
@@ -162,7 +162,7 @@ namespace Alis.Core.Aspect.Logging
                 ConsoleController.Print(new Message(MessageType.Error, message), DetailLevel);
             }
         }
-        
+
         /// <summary>
         ///     Exceptions the message
         /// </summary>
@@ -175,7 +175,7 @@ namespace Alis.Core.Aspect.Logging
                 ConsoleController.Print(new Message(MessageType.Exception, message), DetailLevel);
             }
         }
-        
+
         /// <summary>
         ///     Exceptions the exception
         /// </summary>
@@ -188,14 +188,14 @@ namespace Alis.Core.Aspect.Logging
                 ConsoleController.Print(new Message(MessageType.Exception, exception.Message), DetailLevel);
             }
         }
-        
+
         /// <summary>
         ///     Sets the detail level using the specified detail level
         /// </summary>
         /// <param name="detailLevel">The detail level</param>
         [Conditional("DEBUG")]
         public static void SetDetailLevel(DetailLevel detailLevel) => DetailLevel = detailLevel;
-        
+
         /// <summary>
         ///     Sets the log level using the specified trace
         /// </summary>

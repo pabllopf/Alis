@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Core.Network.Test.Exceptions
 {
     /// <summary>
-    /// The server listener socket exception test class
+    ///     The server listener socket exception test class
     /// </summary>
     public class ServerListenerSocketExceptionTest
     {
         /// <summary>
-        /// Tests that server listener socket exception default constructor
+        ///     Tests that server listener socket exception default constructor
         /// </summary>
         [Fact]
         public void ServerListenerSocketException_DefaultConstructor()
@@ -47,9 +47,9 @@ namespace Alis.Core.Network.Test.Exceptions
             ServerListenerSocketException exception = new ServerListenerSocketException();
             Assert.NotNull(exception);
         }
-        
+
         /// <summary>
-        /// Tests that server listener socket exception constructor with message
+        ///     Tests that server listener socket exception constructor with message
         /// </summary>
         [Fact]
         public void ServerListenerSocketException_ConstructorWithMessage()
@@ -58,9 +58,9 @@ namespace Alis.Core.Network.Test.Exceptions
             Assert.NotNull(exception);
             Assert.Equal("Test message", exception.Message);
         }
-        
+
         /// <summary>
-        /// Tests that server listener socket exception constructor with message and inner exception
+        ///     Tests that server listener socket exception constructor with message and inner exception
         /// </summary>
         [Fact]
         public void ServerListenerSocketException_ConstructorWithMessageAndInnerException()

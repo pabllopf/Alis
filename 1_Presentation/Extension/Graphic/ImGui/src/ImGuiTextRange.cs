@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The
         /// </summary>
         public IntPtr B;
-        
+
         /// <summary>
         ///     The
         /// </summary>

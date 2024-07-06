@@ -40,257 +40,257 @@ using Xunit;
 namespace Alis.Test.Core.Ecs.System.Setting
 {
     /// <summary>
-    /// The settings test class
+    ///     The settings test class
     /// </summary>
     public class SettingsTest
     {
         /// <summary>
-        /// Tests that test settings general
+        ///     Tests that test settings general
         /// </summary>
         [Fact]
         public void Test_Settings_General()
         {
             // Arrange
             Settings settings = new Settings();
-            
+
             // Act
             GeneralSetting general = settings.General;
-            
+
             // Assert
             Assert.NotNull(general);
             Assert.IsType<GeneralSetting>(general);
         }
-        
+
         /// <summary>
-        /// Tests that test settings audio
+        ///     Tests that test settings audio
         /// </summary>
         [Fact]
         public void Test_Settings_Audio()
         {
             // Arrange
             Settings settings = new Settings();
-            
+
             // Act
             IAudioSetting audio = settings.Audio;
-            
+
             // Assert
             Assert.NotNull(audio);
             Assert.IsType<AudioSetting>(audio);
         }
-        
+
         /// <summary>
-        /// Tests that test settings graphic
+        ///     Tests that test settings graphic
         /// </summary>
         [Fact]
         public void Test_Settings_Graphic()
         {
             // Arrange
             Settings settings = new Settings();
-            
+
             // Act
             GraphicSetting graphic = settings.Graphic;
-            
+
             // Assert
             Assert.NotNull(graphic);
             Assert.IsType<GraphicSetting>(graphic);
         }
-        
+
         /// <summary>
-        /// Tests that test settings input
+        ///     Tests that test settings input
         /// </summary>
         [Fact]
         public void Test_Settings_Input()
         {
             // Arrange
             Settings settings = new Settings();
-            
+
             // Act
             InputSetting input = settings.Input;
-            
+
             // Assert
             Assert.NotNull(input);
             Assert.IsType<InputSetting>(input);
         }
-        
+
         /// <summary>
-        /// Tests that test settings network
+        ///     Tests that test settings network
         /// </summary>
         [Fact]
         public void Test_Settings_Network()
         {
             // Arrange
             Settings settings = new Settings();
-            
+
             // Act
             NetworkSetting network = settings.Network;
-            
+
             // Assert
             Assert.NotNull(network);
             Assert.IsType<NetworkSetting>(network);
         }
-        
+
         /// <summary>
-        /// Tests that test settings physic
+        ///     Tests that test settings physic
         /// </summary>
         [Fact]
         public void Test_Settings_Physic()
         {
             // Arrange
             Settings settings = new Settings();
-            
+
             // Act
             PhysicSetting physic = settings.Physic;
-            
+
             // Assert
             Assert.NotNull(physic);
             Assert.IsType<PhysicSetting>(physic);
         }
-        
-        
+
+
         /// <summary>
-        /// Tests that test settings scene
+        ///     Tests that test settings scene
         /// </summary>
         [Fact]
         public void Test_Settings_Scene()
         {
             // Arrange
             Settings settings = new Settings();
-            
+
             // Act
             SceneSetting scene = settings.Scene;
-            
+
             // Assert
             Assert.NotNull(scene);
             Assert.IsType<SceneSetting>(scene);
         }
-        
+
         /// <summary>
-        /// Tests that test settings general v 2
+        ///     Tests that test settings general v 2
         /// </summary>
         [Fact]
         public void Test_Settings_General_v2()
         {
             // Arrange
             Settings settings = new Settings();
-            
+
             // Act
             settings.General = new GeneralSetting();
             GeneralSetting result = settings.General;
-            
+
             // Assert
             Assert.NotNull(settings);
             Assert.NotNull(result);
             Assert.IsType<GeneralSetting>(result);
         }
-        
+
         /// <summary>
-        /// Tests that test settings audio v 2
+        ///     Tests that test settings audio v 2
         /// </summary>
         [Fact]
         public void Test_Settings_Audio_v2()
         {
             // Arrange
             Settings settings = new Settings();
-            
+
             // Act
             settings.Audio = new AudioSetting();
             IAudioSetting result = settings.Audio;
-            
+
             // Assert
             Assert.NotNull(settings);
             Assert.NotNull(result);
             Assert.IsType<AudioSetting>(result);
         }
-        
+
         /// <summary>
-        /// Tests that test settings graphic v 2
+        ///     Tests that test settings graphic v 2
         /// </summary>
         [Fact]
         public void Test_Settings_Graphic_v2()
         {
             // Arrange
             Settings settings = new Settings();
-            
+
             // Act
             settings.Graphic = new GraphicSetting();
             GraphicSetting result = settings.Graphic;
-            
+
             // Assert
             Assert.NotNull(settings);
             Assert.NotNull(result);
             Assert.IsType<GraphicSetting>(result);
         }
-        
+
         /// <summary>
-        /// Tests that test settings input v 2
+        ///     Tests that test settings input v 2
         /// </summary>
         [Fact]
         public void Test_Settings_Input_v2()
         {
             // Arrange
             Settings settings = new Settings();
-            
+
             // Act
             settings.Input = new InputSetting();
             InputSetting result = settings.Input;
-            
+
             // Assert
             Assert.NotNull(settings);
             Assert.NotNull(result);
             Assert.IsType<InputSetting>(result);
         }
-        
+
         /// <summary>
-        /// Tests that test settings network v 2
+        ///     Tests that test settings network v 2
         /// </summary>
         [Fact]
         public void Test_Settings_Network_v2()
         {
             // Arrange
             Settings settings = new Settings();
-            
+
             // Act
             settings.Network = new NetworkSetting();
             NetworkSetting result = settings.Network;
-            
+
             // Assert
             Assert.NotNull(settings);
             Assert.NotNull(result);
             Assert.IsType<NetworkSetting>(result);
         }
-        
+
         /// <summary>
-        /// Tests that test settings physic v 2
+        ///     Tests that test settings physic v 2
         /// </summary>
         [Fact]
         public void Test_Settings_Physic_v2()
         {
             // Arrange
             Settings settings = new Settings();
-            
+
             // Act
             settings.Physic = new PhysicSetting();
             PhysicSetting result = settings.Physic;
-            
+
             // Assert
             Assert.NotNull(settings);
             Assert.NotNull(result);
             Assert.IsType<PhysicSetting>(result);
         }
-        
+
         /// <summary>
-        /// Tests that test settings scene v 2
+        ///     Tests that test settings scene v 2
         /// </summary>
         [Fact]
         public void Test_Settings_Scene_v2()
         {
             // Arrange
             Settings settings = new Settings();
-            
+
             // Act
             settings.Scene = new SceneSetting();
             SceneSetting result = settings.Scene;
-            
+
             // Assert
             Assert.NotNull(settings);
             Assert.NotNull(result);

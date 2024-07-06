@@ -30,27 +30,27 @@
 namespace Alis.Core.Ecs.System.Setting.Input
 {
     /// <summary>
-    /// The update mode enum
+    ///     The update mode enum
     /// </summary>
     public enum UpdateMode
     {
         /// <summary>
-        /// The default update mode
+        ///     The default update mode
         /// </summary>
         Default,
-        
+
         /// <summary>
-        /// The dynamic update update mode
+        ///     The dynamic update update mode
         /// </summary>
         DynamicUpdate,
-        
+
         /// <summary>
-        /// The fixed update update mode
+        ///     The fixed update update mode
         /// </summary>
         FixedUpdate,
-        
+
         /// <summary>
-        /// The manual update update mode
+        ///     The manual update update mode
         /// </summary>
         ManualUpdate
     }

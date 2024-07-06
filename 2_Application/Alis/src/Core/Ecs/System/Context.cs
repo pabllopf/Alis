@@ -47,7 +47,7 @@ namespace Alis.Core.Ecs.System
     public class Context : IContext
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Context"/> class
+        ///     Initializes a new instance of the <see cref="Context" /> class
         /// </summary>
         public Context()
         {
@@ -60,7 +60,7 @@ namespace Alis.Core.Ecs.System
             PhysicManager = new PhysicManager();
             SceneManager = new SceneManager();
         }
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="Context" /> class
         /// </summary>
@@ -76,9 +76,9 @@ namespace Alis.Core.Ecs.System
             PhysicManager = new PhysicManager();
             SceneManager = new SceneManager();
         }
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="Context"/> class
+        ///     Initializes a new instance of the <see cref="Context" /> class
         /// </summary>
         /// <param name="settings">The settings</param>
         /// <param name="sceneManager">The scene manager</param>
@@ -95,9 +95,9 @@ namespace Alis.Core.Ecs.System
             PhysicManager = new PhysicManager();
             SceneManager = sceneManager;
         }
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="Context"/> class
+        ///     Initializes a new instance of the <see cref="Context" /> class
         /// </summary>
         /// <param name="settings">The settings</param>
         /// <param name="audioManager">The audio manager</param>
@@ -109,65 +109,65 @@ namespace Alis.Core.Ecs.System
         [ExcludeFromCodeCoverage]
         public Context(Settings settings, AudioManager audioManager, GraphicManager graphicManager, InputManager inputManager, NetworkManager networkManager, PhysicManager physicManager, SceneManager sceneManager)
         {
-           Settings = settings;
-           AudioManager = audioManager;
-           GraphicManager = graphicManager;
-           InputManager = inputManager;
-           NetworkManager = networkManager;
-           PhysicManager = physicManager;
-           SceneManager = sceneManager;
+            Settings = settings;
+            AudioManager = audioManager;
+            GraphicManager = graphicManager;
+            InputManager = inputManager;
+            NetworkManager = networkManager;
+            PhysicManager = physicManager;
+            SceneManager = sceneManager;
         }
-        
+
         /// <summary>
         ///     Gets the value of the audio manager
         /// </summary>
         [JsonPropertyName("_AudioManager_", true, true)]
         public AudioManager AudioManager { get; set; }
-        
+
         /// <summary>
         ///     Gets the value of the graphic manager
         /// </summary>
         [JsonPropertyName("_GraphicManager_", true, true)]
         public GraphicManager GraphicManager { get; set; }
-        
+
         /// <summary>
         ///     Gets the value of the input manager
         /// </summary>
         [JsonPropertyName("_InputManager_", true, true)]
         public InputManager InputManager { get; set; }
-        
+
         /// <summary>
         ///     Gets the value of the network manager
         /// </summary>
         [JsonPropertyName("_NetworkManager_", true, true)]
         public NetworkManager NetworkManager { get; set; }
-        
+
         /// <summary>
         ///     Gets the value of the physic manager
         /// </summary>
         [JsonPropertyName("_PhysicManager_", true, true)]
         public PhysicManager PhysicManager { get; set; }
-        
+
         /// <summary>
         ///     Gets the value of the time manager
         /// </summary>
         [JsonPropertyName("_TimeManager_", true, true)]
         public TimeManager TimeManager { get; set; }
-        
+
         /// <summary>
         ///     The settings
         /// </summary>
         [JsonPropertyName("_Settings_")]
         public Settings Settings { get; set; }
-        
+
         /// <summary>
         ///     Gets the value of the scene manager
         /// </summary>
         [JsonPropertyName("_SceneManager_")]
         public SceneManager SceneManager { get; set; }
-        
+
         /// <summary>
-        /// Ons the exit
+        ///     Ons the exit
         /// </summary>
         [ExcludeFromCodeCoverage]
         public void OnExit()
@@ -179,9 +179,9 @@ namespace Alis.Core.Ecs.System
             PhysicManager.OnExit();
             SceneManager.OnExit();
         }
-        
+
         /// <summary>
-        /// Ons the stop
+        ///     Ons the stop
         /// </summary>
         [ExcludeFromCodeCoverage]
         public void OnStop()
@@ -193,9 +193,9 @@ namespace Alis.Core.Ecs.System
             PhysicManager.OnStop();
             SceneManager.OnStop();
         }
-        
+
         /// <summary>
-        /// Ons the init
+        ///     Ons the init
         /// </summary>
         [ExcludeFromCodeCoverage]
         public void OnInit()
@@ -207,9 +207,9 @@ namespace Alis.Core.Ecs.System
             PhysicManager.OnInit();
             SceneManager.OnInit();
         }
-        
+
         /// <summary>
-        /// Ons the awake
+        ///     Ons the awake
         /// </summary>
         [ExcludeFromCodeCoverage]
         public void OnAwake()
@@ -221,9 +221,9 @@ namespace Alis.Core.Ecs.System
             PhysicManager.OnAwake();
             SceneManager.OnAwake();
         }
-        
+
         /// <summary>
-        /// Ons the start
+        ///     Ons the start
         /// </summary>
         [ExcludeFromCodeCoverage]
         public void OnStart()
@@ -235,9 +235,9 @@ namespace Alis.Core.Ecs.System
             PhysicManager.OnStart();
             SceneManager.OnStart();
         }
-        
+
         /// <summary>
-        /// Ons the dispatch events
+        ///     Ons the dispatch events
         /// </summary>
         [ExcludeFromCodeCoverage]
         public void OnDispatchEvents()
@@ -249,9 +249,9 @@ namespace Alis.Core.Ecs.System
             PhysicManager.OnDispatchEvents();
             SceneManager.OnDispatchEvents();
         }
-        
+
         /// <summary>
-        /// Ons the before update
+        ///     Ons the before update
         /// </summary>
         [ExcludeFromCodeCoverage]
         public void OnBeforeUpdate()
@@ -263,9 +263,9 @@ namespace Alis.Core.Ecs.System
             PhysicManager.OnBeforeUpdate();
             SceneManager.OnBeforeUpdate();
         }
-        
+
         /// <summary>
-        /// Ons the update
+        ///     Ons the update
         /// </summary>
         [ExcludeFromCodeCoverage]
         public void OnUpdate()
@@ -277,9 +277,9 @@ namespace Alis.Core.Ecs.System
             PhysicManager.OnUpdate();
             SceneManager.OnUpdate();
         }
-        
+
         /// <summary>
-        /// Ons the after update
+        ///     Ons the after update
         /// </summary>
         [ExcludeFromCodeCoverage]
         public void OnAfterUpdate()
@@ -291,9 +291,9 @@ namespace Alis.Core.Ecs.System
             PhysicManager.OnAfterUpdate();
             SceneManager.OnAfterUpdate();
         }
-        
+
         /// <summary>
-        /// Ons the before fixed update
+        ///     Ons the before fixed update
         /// </summary>
         [ExcludeFromCodeCoverage]
         public void OnBeforeFixedUpdate()
@@ -305,9 +305,9 @@ namespace Alis.Core.Ecs.System
             PhysicManager.OnBeforeFixedUpdate();
             SceneManager.OnBeforeFixedUpdate();
         }
-        
+
         /// <summary>
-        /// Ons the fixed update
+        ///     Ons the fixed update
         /// </summary>
         [ExcludeFromCodeCoverage]
         public void OnFixedUpdate()
@@ -319,9 +319,9 @@ namespace Alis.Core.Ecs.System
             PhysicManager.OnFixedUpdate();
             SceneManager.OnFixedUpdate();
         }
-        
+
         /// <summary>
-        /// Ons the after fixed update
+        ///     Ons the after fixed update
         /// </summary>
         [ExcludeFromCodeCoverage]
         public void OnAfterFixedUpdate()
@@ -333,9 +333,9 @@ namespace Alis.Core.Ecs.System
             PhysicManager.OnAfterFixedUpdate();
             SceneManager.OnAfterFixedUpdate();
         }
-        
+
         /// <summary>
-        /// Ons the draw
+        ///     Ons the draw
         /// </summary>
         [ExcludeFromCodeCoverage]
         public void OnDraw()
@@ -347,9 +347,9 @@ namespace Alis.Core.Ecs.System
             PhysicManager.OnDraw();
             SceneManager.OnDraw();
         }
-        
+
         /// <summary>
-        /// Ons the gui
+        ///     Ons the gui
         /// </summary>
         [ExcludeFromCodeCoverage]
         public void OnGui()
@@ -361,9 +361,9 @@ namespace Alis.Core.Ecs.System
             PhysicManager.OnGui();
             SceneManager.OnGui();
         }
-        
+
         /// <summary>
-        /// Ons the calculate
+        ///     Ons the calculate
         /// </summary>
         [ExcludeFromCodeCoverage]
         public void OnCalculate()
@@ -375,15 +375,15 @@ namespace Alis.Core.Ecs.System
             PhysicManager.OnCalculate();
             SceneManager.OnCalculate();
         }
-        
+
         /// <summary>
         ///     Exits this instance
         /// </summary>
         [ExcludeFromCodeCoverage]
         public void Exit() => TimeManager.IsRunning = false;
-        
+
         /// <summary>
-        /// Sets the scene manager using the specified scene manager
+        ///     Sets the scene manager using the specified scene manager
         /// </summary>
         /// <param name="sceneManager">The scene manager</param>
         [ExcludeFromCodeCoverage]

@@ -50,7 +50,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             BroadPhaseImplementation broadPhase = new BroadPhaseImplementation();
             Assert.Equal(0, broadPhase.ProxyCount);
         }
-        
+
         /// <summary>
         ///     Tests that test update pairs
         /// </summary>
@@ -61,7 +61,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             broadPhase.UpdatePairs(null);
             // Add your assertions here
         }
-        
+
         /// <summary>
         ///     Tests that test test overlap
         /// </summary>
@@ -72,7 +72,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             bool result = broadPhase.TestOverlap(0, 1);
             // Add your assertions here
         }
-        
+
         /// <summary>
         ///     Tests that test add proxy
         /// </summary>
@@ -84,7 +84,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             int result = broadPhase.AddProxy(ref proxy);
             // Add your assertions here
         }
-        
+
         /// <summary>
         ///     Tests that test remove proxy
         /// </summary>
@@ -95,7 +95,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             broadPhase.RemoveProxy(0);
             // Add your assertions here
         }
-        
+
         /// <summary>
         ///     Tests that test move proxy
         /// </summary>
@@ -108,7 +108,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             broadPhase.MoveProxy(0, ref aabb, displacement);
             // Add your assertions here
         }
-        
+
         /// <summary>
         ///     Tests that test get proxy
         /// </summary>
@@ -119,7 +119,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             FixtureProxy result = broadPhase.GetProxy(0);
             // Add your assertions here
         }
-        
+
         /// <summary>
         ///     Tests that test touch proxy
         /// </summary>
@@ -130,7 +130,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             broadPhase.TouchProxy(0);
             // Add your assertions here
         }
-        
+
         /// <summary>
         ///     Tests that test get fat aabb
         /// </summary>
@@ -142,7 +142,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             broadPhase.GetFatAabb(0, out aabb);
             // Add your assertions here
         }
-        
+
         /// <summary>
         ///     Tests that test query
         /// </summary>
@@ -154,7 +154,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             broadPhase.Query(null, ref aabb);
             // Add your assertions here
         }
-        
+
         /// <summary>
         ///     Tests that test ray cast
         /// </summary>
@@ -166,7 +166,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             broadPhase.RayCast(null, ref input);
             // Add your assertions here
         }
-        
+
         /// <summary>
         ///     Tests that test shift origin
         /// </summary>

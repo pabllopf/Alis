@@ -35,90 +35,90 @@ using Xunit;
 namespace Alis.Test.Core.Ecs.Component.Audio
 {
     /// <summary>
-    /// The audio source test class
+    ///     The audio source test class
     /// </summary>
     public class AudioSourceTest
     {
         /// <summary>
-        /// Tests that audio source default constructor valid input
+        ///     Tests that audio source default constructor valid input
         /// </summary>
         [Fact]
         public void AudioSource_DefaultConstructor_ValidInput()
         {
             AudioSource audioSource = new AudioSource();
-            
+
             Assert.NotNull(audioSource);
             Assert.NotNull(audioSource.AudioClip);
         }
-        
+
         /// <summary>
-        /// Tests that audio source constructor with audio clip valid input
+        ///     Tests that audio source constructor with audio clip valid input
         /// </summary>
         [Fact]
         public void AudioSource_ConstructorWithAudioClip_ValidInput()
         {
             AudioClip audioClip = new AudioClip();
             AudioSource audioSource = new AudioSource(audioClip);
-            
+
             Assert.NotNull(audioSource);
             Assert.Equal(audioClip, audioSource.AudioClip);
         }
-        
+
         /// <summary>
-        /// Tests that play valid input
+        ///     Tests that play valid input
         /// </summary>
         [Fact]
         public void Play_ValidInput()
         {
             AudioSource audioSource = new AudioSource();
-            
+
             audioSource.Play();
-            
+
             Assert.False(audioSource.IsPlaying);
         }
-        
+
         /// <summary>
-        /// Tests that stop valid input
+        ///     Tests that stop valid input
         /// </summary>
         [Fact]
         public void Stop_ValidInput()
         {
             AudioSource audioSource = new AudioSource();
-            
+
             audioSource.Play();
             audioSource.Stop();
-            
+
             Assert.False(audioSource.IsPlaying);
         }
-        
+
         /// <summary>
-        /// Tests that resume valid input
+        ///     Tests that resume valid input
         /// </summary>
         [Fact]
         public void Resume_ValidInput()
         {
             AudioSource audioSource = new AudioSource();
-            
+
             audioSource.Play();
             audioSource.Stop();
             audioSource.Resume();
-            
+
             Assert.False(audioSource.IsPlaying);
         }
-        
+
         /// <summary>
-        /// Tests that builder valid input
+        ///     Tests that builder valid input
         /// </summary>
         [Fact]
         public void Builder_ValidInput()
         {
             AudioSourceBuilder audioSourceBuilder = new AudioSource().Builder();
-            
+
             Assert.NotNull(audioSourceBuilder);
         }
-        
+
         /// <summary>
-        /// Tests that on init should set thread pool min threads
+        ///     Tests that on init should set thread pool min threads
         /// </summary>
         [Fact]
         public void OnInit_ShouldSetThreadPoolMinThreads()
@@ -129,9 +129,9 @@ namespace Alis.Test.Core.Ecs.Component.Audio
             Assert.Equal(200, workerThreads);
             Assert.Equal(200, completionPortThreads);
         }
-        
+
         /// <summary>
-        /// Tests that on start should play if play on awake is true
+        ///     Tests that on start should play if play on awake is true
         /// </summary>
         [Fact]
         public void OnStart_ShouldPlayIfPlayOnAwakeIsTrue()
@@ -140,9 +140,9 @@ namespace Alis.Test.Core.Ecs.Component.Audio
             audioSource.OnStart();
             Assert.False(audioSource.IsPlaying);
         }
-        
+
         /// <summary>
-        /// Tests that on start should not play if play on awake is false
+        ///     Tests that on start should not play if play on awake is false
         /// </summary>
         [Fact]
         public void OnStart_ShouldNotPlayIfPlayOnAwakeIsFalse()
@@ -151,9 +151,9 @@ namespace Alis.Test.Core.Ecs.Component.Audio
             audioSource.OnStart();
             Assert.False(audioSource.IsPlaying);
         }
-        
+
         /// <summary>
-        /// Tests that on stop should stop playing
+        ///     Tests that on stop should stop playing
         /// </summary>
         [Fact]
         public void OnStop_ShouldStopPlaying()
@@ -163,9 +163,9 @@ namespace Alis.Test.Core.Ecs.Component.Audio
             audioSource.OnStop();
             Assert.False(audioSource.IsPlaying);
         }
-        
+
         /// <summary>
-        /// Tests that on exit should stop playing
+        ///     Tests that on exit should stop playing
         /// </summary>
         [Fact]
         public void OnExit_ShouldStopPlaying()
@@ -175,9 +175,9 @@ namespace Alis.Test.Core.Ecs.Component.Audio
             audioSource.OnExit();
             Assert.False(audioSource.IsPlaying);
         }
-        
+
         /// <summary>
-        /// Tests that set mute should change value
+        ///     Tests that set mute should change value
         /// </summary>
         [Fact]
         public void SetMute_ShouldChangeValue()
@@ -188,9 +188,9 @@ namespace Alis.Test.Core.Ecs.Component.Audio
             audioSource.Mute = false;
             Assert.False(audioSource.Mute);
         }
-        
+
         /// <summary>
-        /// Tests that set loop should change value
+        ///     Tests that set loop should change value
         /// </summary>
         [Fact]
         public void SetLoop_ShouldChangeValue()
@@ -201,9 +201,9 @@ namespace Alis.Test.Core.Ecs.Component.Audio
             audioSource.Loop = false;
             Assert.False(audioSource.Loop);
         }
-        
+
         /// <summary>
-        /// Tests that set volume should change value
+        ///     Tests that set volume should change value
         /// </summary>
         [Fact]
         public void SetVolume_ShouldChangeValue()

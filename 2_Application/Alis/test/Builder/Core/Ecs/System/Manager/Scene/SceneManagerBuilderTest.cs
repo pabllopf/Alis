@@ -36,47 +36,47 @@ using Xunit;
 namespace Alis.Test.Builder.Core.Ecs.System.Manager.Scene
 {
     /// <summary>
-    /// The scene manager builder test class
+    ///     The scene manager builder test class
     /// </summary>
     public class SceneManagerBuilderTest
     {
         /// <summary>
-        /// Tests that scene manager builder default constructor valid input
+        ///     Tests that scene manager builder default constructor valid input
         /// </summary>
         [Fact]
         public void SceneManagerBuilder_DefaultConstructor_ValidInput()
         {
             SceneManagerBuilder sceneManagerBuilder = new SceneManagerBuilder();
-            
+
             Assert.NotNull(sceneManagerBuilder);
         }
-        
+
         /// <summary>
-        /// Tests that add valid input
+        ///     Tests that add valid input
         /// </summary>
         [Fact]
         public void Add_ValidInput()
         {
             SceneManagerBuilder sceneManagerBuilder = new SceneManagerBuilder();
             Func<SceneBuilder, Alis.Core.Ecs.Entity.Scene> sceneFunc = sb => sb.Build();
-            
+
             sceneManagerBuilder.Add<SceneManagerBuilder>(sceneFunc);
-            
+
             SceneManager sceneManager = sceneManagerBuilder.Build();
             Assert.Single(sceneManager.Scenes);
             Assert.Equal(sceneManager.Scenes[0], sceneManager.CurrentScene);
         }
-        
+
         /// <summary>
-        /// Tests that build valid input
+        ///     Tests that build valid input
         /// </summary>
         [Fact]
         public void Build_ValidInput()
         {
             SceneManagerBuilder sceneManagerBuilder = new SceneManagerBuilder();
-            
+
             SceneManager sceneManager = sceneManagerBuilder.Build();
-            
+
             Assert.NotNull(sceneManager);
         }
     }

@@ -33,13 +33,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Data.Test.Json
 {
     /// <summary>
-    /// The list object test class
+    ///     The list object test class
     /// </summary>
     public class ListObjectTest
     {
-        
         /// <summary>
-        /// Tests that test add method
+        ///     Tests that test add method
         /// </summary>
         [Fact]
         public void TestAddMethod()
@@ -48,17 +47,17 @@ namespace Alis.Core.Aspect.Data.Test.Json
             ConcreteListObject listObject = new ConcreteListObject(); // Assuming ConcreteListObject is a concrete implementation of ListObject
             object value = new object();
             JsonOptions options = new JsonOptions(); // Assuming JsonOptions is a valid class
-            
+
             // Act
             listObject.Add(value, options);
-            
+
             // Assert
             // Here you would assert that the value has been added to the list
             // The exact assertion will depend on how the Add method is implemented
         }
-        
+
         /// <summary>
-        /// Tests that test clear method
+        ///     Tests that test clear method
         /// </summary>
         [Fact]
         public void TestClearMethod()
@@ -68,10 +67,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
             object value = new object();
             JsonOptions options = new JsonOptions(); // Assuming JsonOptions is a valid class
             listObject.Add(value, options);
-            
+
             // Act
             listObject.Clear();
-            
+
             // Assert
             // Here you would assert that the list is now empty
             // The exact assertion will depend on how the Clear method is implemented

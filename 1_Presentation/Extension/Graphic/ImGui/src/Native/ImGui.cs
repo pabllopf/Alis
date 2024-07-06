@@ -34,7 +34,7 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Extension.Graphic.ImGui.Native
 {
     /// <summary>
-    /// The im gui class
+    ///     The im gui class
     /// </summary>
     public static partial class ImGui
     {
@@ -53,7 +53,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igSliderFloat4(Encoding.UTF8.GetBytes(label), v, vMin, vMax, Encoding.UTF8.GetBytes(format), flags);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether slider int
         /// </summary>
@@ -65,9 +65,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool SliderInt(string label, ref int v, int vMin, int vMax)
         {
             byte ret = ImGuiNative.igSliderInt(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes("%d"), 0);
-                return ret != 0;
+            return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether slider int
         /// </summary>
@@ -80,9 +80,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool SliderInt(string label, ref int v, int vMin, int vMax, string format)
         {
             byte ret = ImGuiNative.igSliderInt(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), 0);
-                return ret != 0;
+            return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether slider int
         /// </summary>
@@ -98,7 +98,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igSliderInt(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), flags);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether slider int 2
         /// </summary>
@@ -110,9 +110,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool SliderInt2(string label, ref int v, int vMin, int vMax)
         {
             byte ret = ImGuiNative.igSliderInt2(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes("%d"), 0);
-                return ret != 0;
+            return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether slider int 2
         /// </summary>
@@ -124,10 +124,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool SliderInt2(string label, ref int v, int vMin, int vMax, string format)
         {
-                byte ret = ImGuiNative.igSliderInt2(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), 0);
-                return ret != 0;
+            byte ret = ImGuiNative.igSliderInt2(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), 0);
+            return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether slider int 2
         /// </summary>
@@ -140,10 +140,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool SliderInt2(string label, ref int v, int vMin, int vMax, string format, ImGuiSliderFlags flags)
         {
-                byte ret = ImGuiNative.igSliderInt2(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), flags);
-                return ret != 0;
+            byte ret = ImGuiNative.igSliderInt2(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), flags);
+            return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether slider int 3
         /// </summary>
@@ -154,10 +154,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool SliderInt3(string label, ref int v, int vMin, int vMax)
         {
-                byte ret = ImGuiNative.igSliderInt3(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes("%d"), 0);
-                return ret != 0;
+            byte ret = ImGuiNative.igSliderInt3(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes("%d"), 0);
+            return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether slider int 3
         /// </summary>
@@ -169,10 +169,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool SliderInt3(string label, ref int v, int vMin, int vMax, string format)
         {
-                byte ret = ImGuiNative.igSliderInt3(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), 0);
-                return ret != 0;
+            byte ret = ImGuiNative.igSliderInt3(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), 0);
+            return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether slider int 3
         /// </summary>
@@ -185,10 +185,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool SliderInt3(string label, ref int v, int vMin, int vMax, string format, ImGuiSliderFlags flags)
         {
-                byte ret = ImGuiNative.igSliderInt3(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), flags);
-                return ret != 0;
+            byte ret = ImGuiNative.igSliderInt3(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), flags);
+            return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether slider int 4
         /// </summary>
@@ -199,10 +199,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool SliderInt4(string label, ref int v, int vMin, int vMax)
         {
-                byte ret = ImGuiNative.igSliderInt4(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes("%d"), 0);
-                return ret != 0;
+            byte ret = ImGuiNative.igSliderInt4(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes("%d"), 0);
+            return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether slider int 4
         /// </summary>
@@ -214,10 +214,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool SliderInt4(string label, ref int v, int vMin, int vMax, string format)
         {
-                byte ret = ImGuiNative.igSliderInt4(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), 0);
-                return ret != 0;
+            byte ret = ImGuiNative.igSliderInt4(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), 0);
+            return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether slider int 4
         /// </summary>
@@ -230,10 +230,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool SliderInt4(string label, ref int v, int vMin, int vMax, string format, ImGuiSliderFlags flags)
         {
-                byte ret = ImGuiNative.igSliderInt4(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), flags);
-                return ret != 0;
+            byte ret = ImGuiNative.igSliderInt4(Encoding.UTF8.GetBytes(label), ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), flags);
+            return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether slider scalar
         /// </summary>
@@ -248,7 +248,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igSliderScalar(Encoding.UTF8.GetBytes(label), dataType, pData, pMin, pMax, null, 0);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether slider scalar
         /// </summary>
@@ -264,7 +264,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igSliderScalar(Encoding.UTF8.GetBytes(label), dataType, pData, pMin, pMax, Encoding.UTF8.GetBytes(format), 0);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether slider scalar
         /// </summary>
@@ -278,10 +278,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool SliderScalar(string label, ImGuiDataType dataType, IntPtr pData, IntPtr pMin, IntPtr pMax, string format, ImGuiSliderFlags flags)
         {
-           byte ret = ImGuiNative.igSliderScalar(Encoding.UTF8.GetBytes(label), dataType, pData, pMin, pMax, Encoding.UTF8.GetBytes(format), flags);
+            byte ret = ImGuiNative.igSliderScalar(Encoding.UTF8.GetBytes(label), dataType, pData, pMin, pMax, Encoding.UTF8.GetBytes(format), flags);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether slider scalar n
         /// </summary>
@@ -297,7 +297,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igSliderScalarN(Encoding.UTF8.GetBytes(label), dataType, pData, components, pMin, pMax, null, 0);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether slider scalar n
         /// </summary>
@@ -314,7 +314,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igSliderScalarN(Encoding.UTF8.GetBytes(label), dataType, pData, components, pMin, pMax, Encoding.UTF8.GetBytes(format), 0);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether slider scalar n
         /// </summary>
@@ -332,7 +332,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igSliderScalarN(Encoding.UTF8.GetBytes(label), dataType, pData, components, pMin, pMax, Encoding.UTF8.GetBytes(format), flags);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether small button
         /// </summary>
@@ -343,7 +343,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igSmallButton(Encoding.UTF8.GetBytes(label));
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Spacings
         /// </summary>
@@ -351,7 +351,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSpacing();
         }
-        
+
         /// <summary>
         ///     Styles the colors classic
         /// </summary>
@@ -359,7 +359,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igStyleColorsClassic(new ImGuiStyle());
         }
-        
+
         /// <summary>
         ///     Styles the colors classic using the specified dst
         /// </summary>
@@ -368,7 +368,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igStyleColorsClassic(dst);
         }
-        
+
         /// <summary>
         ///     Styles the colors dark
         /// </summary>
@@ -376,7 +376,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igStyleColorsDark(new ImGuiStyle());
         }
-        
+
         /// <summary>
         ///     Styles the colors dark using the specified dst
         /// </summary>
@@ -385,7 +385,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igStyleColorsDark(dst);
         }
-        
+
         /// <summary>
         ///     Styles the colors light
         /// </summary>
@@ -393,7 +393,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igStyleColorsLight(new ImGuiStyle());
         }
-        
+
         /// <summary>
         ///     Styles the colors light using the specified dst
         /// </summary>
@@ -402,7 +402,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igStyleColorsLight(dst);
         }
-        
+
         /// <summary>
         ///     Describes whether tab item button
         /// </summary>
@@ -413,7 +413,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igTabItemButton(Encoding.UTF8.GetBytes(label), 0);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether tab item button
         /// </summary>
@@ -425,7 +425,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igTabItemButton(Encoding.UTF8.GetBytes(label), flags);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Tables the get column count
         /// </summary>
@@ -435,7 +435,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             int ret = ImGuiNative.igTableGetColumnCount();
             return ret;
         }
-        
+
         /// <summary>
         ///     Tables the get column flags
         /// </summary>
@@ -446,7 +446,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             ImGuiTableColumnFlags ret = ImGuiNative.igTableGetColumnFlags(columnN);
             return ret;
         }
-        
+
         /// <summary>
         ///     Tables the get column flags using the specified column n
         /// </summary>
@@ -457,7 +457,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             ImGuiTableColumnFlags ret = ImGuiNative.igTableGetColumnFlags(columnN);
             return ret;
         }
-        
+
         /// <summary>
         ///     Tables the get column index
         /// </summary>
@@ -467,7 +467,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             int ret = ImGuiNative.igTableGetColumnIndex();
             return ret;
         }
-        
+
         /// <summary>
         ///     Tables the get column name
         /// </summary>
@@ -477,17 +477,14 @@ namespace Alis.Extension.Graphic.ImGui.Native
             int columnN = -1;
             return Encoding.UTF8.GetString(ImGuiNative.igTableGetColumnName_Int(columnN));
         }
-        
+
         /// <summary>
         ///     Tables the get column name using the specified column n
         /// </summary>
         /// <param name="columnN">The column</param>
         /// <returns>The string</returns>
-        public static string TableGetColumnName(int columnN)
-        {
-            return Encoding.UTF8.GetString(ImGuiNative.igTableGetColumnName_Int(columnN));
-        }
-        
+        public static string TableGetColumnName(int columnN) => Encoding.UTF8.GetString(ImGuiNative.igTableGetColumnName_Int(columnN));
+
         /// <summary>
         ///     Tables the get row index
         /// </summary>
@@ -497,13 +494,13 @@ namespace Alis.Extension.Graphic.ImGui.Native
             int ret = ImGuiNative.igTableGetRowIndex();
             return ret;
         }
-        
+
         /// <summary>
         ///     Tables the get sort specs
         /// </summary>
         /// <returns>The im gui table sort specs ptr</returns>
         public static ImGuiTableSortSpecs TableGetSortSpecs() => ImGuiNative.igTableGetSortSpecs();
-        
+
         /// <summary>
         ///     Tables the header using the specified label
         /// </summary>
@@ -512,7 +509,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igTableHeader(Encoding.UTF8.GetBytes(label));
         }
-        
+
         /// <summary>
         ///     Tables the headers row
         /// </summary>
@@ -520,7 +517,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igTableHeadersRow();
         }
-        
+
         /// <summary>
         ///     Describes whether table next column
         /// </summary>
@@ -530,7 +527,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igTableNextColumn();
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Tables the next row
         /// </summary>
@@ -540,7 +537,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             float minRowHeight = 0.0f;
             ImGuiNative.igTableNextRow(rowFlags, minRowHeight);
         }
-        
+
         /// <summary>
         ///     Tables the next row using the specified row flags
         /// </summary>
@@ -550,7 +547,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             float minRowHeight = 0.0f;
             ImGuiNative.igTableNextRow(rowFlags, minRowHeight);
         }
-        
+
         /// <summary>
         ///     Tables the next row using the specified row flags
         /// </summary>
@@ -560,7 +557,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igTableNextRow(rowFlags, minRowHeight);
         }
-        
+
         /// <summary>
         ///     Tables the set bg color using the specified target
         /// </summary>
@@ -571,7 +568,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             int columnN = -1;
             ImGuiNative.igTableSetBgColor(target, color, columnN);
         }
-        
+
         /// <summary>
         ///     Tables the set bg color using the specified target
         /// </summary>
@@ -582,7 +579,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igTableSetBgColor(target, color, columnN);
         }
-        
+
         /// <summary>
         ///     Tables the set column enabled using the specified column n
         /// </summary>
@@ -593,7 +590,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte nativeV = v ? (byte) 1 : (byte) 0;
             ImGuiNative.igTableSetColumnEnabled(columnN, nativeV);
         }
-        
+
         /// <summary>
         ///     Describes whether table set column index
         /// </summary>
@@ -604,7 +601,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igTableSetColumnIndex(columnN);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Tables the setup column using the specified label
         /// </summary>
@@ -613,13 +610,13 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igTableSetupColumn(Encoding.UTF8.GetBytes(label), 0, 0, 0);
         }
-        
+
         /// <summary>
-                ///     Describes whether menu item
-                /// </summary>
-                /// <param name="label">The label</param>
-                /// <param name="enabled">The enabled</param>
-                /// <returns>The bool</returns>
-                public static bool MenuItem(string label, bool enabled) => MenuItem(label, string.Empty, false, enabled);
+        ///     Describes whether menu item
+        /// </summary>
+        /// <param name="label">The label</param>
+        /// <param name="enabled">The enabled</param>
+        /// <returns>The bool</returns>
+        public static bool MenuItem(string label, bool enabled) => MenuItem(label, string.Empty, false, enabled);
     }
 }

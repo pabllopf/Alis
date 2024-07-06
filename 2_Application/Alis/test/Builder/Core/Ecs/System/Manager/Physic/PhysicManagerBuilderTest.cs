@@ -34,31 +34,31 @@ using Xunit;
 namespace Alis.Test.Builder.Core.Ecs.System.Manager.Physic
 {
     /// <summary>
-    /// The physic manager builder test class
+    ///     The physic manager builder test class
     /// </summary>
     public class PhysicManagerBuilderTest
     {
         /// <summary>
-        /// Tests that physic manager builder default constructor valid input
+        ///     Tests that physic manager builder default constructor valid input
         /// </summary>
         [Fact]
         public void PhysicManagerBuilder_DefaultConstructor_ValidInput()
         {
             PhysicManagerBuilder physicManagerBuilder = new PhysicManagerBuilder();
-            
+
             Assert.NotNull(physicManagerBuilder);
         }
-        
+
         /// <summary>
-        /// Tests that build valid input
+        ///     Tests that build valid input
         /// </summary>
         [Fact]
         public void Build_ValidInput()
         {
             PhysicManagerBuilder physicManagerBuilder = new PhysicManagerBuilder();
-            
+
             PhysicManager physicManager = physicManagerBuilder.Build();
-            
+
             Assert.NotNull(physicManager);
         }
     }

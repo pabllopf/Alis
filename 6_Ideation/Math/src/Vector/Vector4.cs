@@ -55,7 +55,7 @@ namespace Alis.Core.Aspect.Math.Vector
             Z = z;
             W = w;
         }
-        
+
         /// <summary>
         ///     Gets the v
         /// </summary>
@@ -73,31 +73,31 @@ namespace Alis.Core.Aspect.Math.Vector
                 default: return 0; // error case
             }
         }
-        
+
         /// <summary>Horizontal component of the vector</summary>
         public float X;
-        
+
         /// <summary>Vertical component of the vector</summary>
         public float Y;
-        
+
         /// <summary>Depth component of the vector</summary>
         public float Z;
-        
+
         /// <summary>Projective/Homogenous component of the vector</summary>
         public float W;
-        
+
         /// <summary>
-        /// Gets the object data using the specified info
+        ///     Gets the object data using the specified info
         /// </summary>
         /// <param name="info">The info</param>
         /// <param name="context">The context</param>
         [ExcludeFromCodeCoverage]
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-             info.AddValue("x", X);
-                info.AddValue("y", Y);
-                info.AddValue("z", Z);
-                info.AddValue("w", W);
+            info.AddValue("x", X);
+            info.AddValue("y", Y);
+            info.AddValue("z", Z);
+            info.AddValue("w", W);
         }
     }
 }

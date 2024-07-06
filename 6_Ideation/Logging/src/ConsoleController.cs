@@ -58,7 +58,7 @@ namespace Alis.Core.Aspect.Logging
                                   $"   file:   '{message.File}' \n" +
                                   $"   {message.StackTrace} \n");
             }
-            
+
             Console.ResetColor();
         }
     }

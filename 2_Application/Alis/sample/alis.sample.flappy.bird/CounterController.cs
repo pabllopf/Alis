@@ -44,17 +44,17 @@ namespace Alis.Sample.Flappy.Bird
         ///     The audio source
         /// </summary>
         private AudioSource audioSource;
-        
+
         /// <summary>
         ///     The is enter
         /// </summary>
         private bool isEnter;
-        
+
         /// <summary>
         ///     Gets or sets the value of the counter
         /// </summary>
         public int Counter { get; set; }
-        
+
         /// <summary>
         ///     Increments this instance
         /// </summary>
@@ -62,7 +62,7 @@ namespace Alis.Sample.Flappy.Bird
         {
             Counter++;
         }
-        
+
         /// <summary>
         ///     Resets this instance
         /// </summary>
@@ -70,13 +70,13 @@ namespace Alis.Sample.Flappy.Bird
         {
             Counter = 0;
         }
-        
+
         /// <summary>
         ///     Returns the string
         /// </summary>
         /// <returns>The string</returns>
         public override string ToString() => Counter.ToString();
-        
+
         /// <summary>
         ///     Ons the init
         /// </summary>
@@ -84,7 +84,7 @@ namespace Alis.Sample.Flappy.Bird
         {
             audioSource = GameObject.Get<AudioSource>();
         }
-        
+
         /// <summary>
         ///     Ons the collision enter using the specified game object
         /// </summary>
@@ -99,7 +99,7 @@ namespace Alis.Sample.Flappy.Bird
                 isEnter = true;
             }
         }
-        
+
         /// <summary>
         ///     Ons the collision exit using the specified game object
         /// </summary>

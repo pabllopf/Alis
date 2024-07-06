@@ -27,36 +27,35 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Core.Aspect.Data.Json;
 
 namespace Alis.Core.Aspect.Data.Test.Json.Sample
 {
     /// <summary>
-    /// The test class
+    ///     The test class
     /// </summary>
     public class TestClass
     {
         /// <summary>
-        /// Gets or sets the value of the property with ignore when serializing
+        ///     Gets or sets the value of the property with ignore when serializing
         /// </summary>
         [JsonPropertyName("test")]
         public string PropertyWithIgnoreWhenSerializing { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the property with ignore when deserializing
+        ///     Gets or sets the value of the property with ignore when deserializing
         /// </summary>
         [JsonPropertyName("test")]
         public string PropertyWithIgnoreWhenDeserializing { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the property without ignore when serializing
+        ///     Gets or sets the value of the property without ignore when serializing
         /// </summary>
         [JsonPropertyName("test")]
         public string PropertyWithoutIgnoreWhenSerializing { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the property without ignore when deserializing
+        ///     Gets or sets the value of the property without ignore when deserializing
         /// </summary>
         [JsonPropertyName("test")]
         public string PropertyWithoutIgnoreWhenDeserializing { get; set; }

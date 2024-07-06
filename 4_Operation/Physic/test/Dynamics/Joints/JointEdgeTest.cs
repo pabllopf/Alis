@@ -49,13 +49,13 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Body bodyA = new Body(new Vector2(0, 0), new Vector2(0, 0));
             Body bodyB = new Body(new Vector2(1, 1), new Vector2(1, 1));
             Joint joint = new RevoluteJoint(bodyA, bodyB, new Vector2(0.5f, 0.5f), true);
-            
+
             // Act
             JointEdge jointEdge = new JointEdge();
-            
+
             Assert.Null(jointEdge.Other);
         }
-        
+
         /// <summary>
         ///     Tests that joint edge constructor test 2
         /// </summary>
@@ -66,13 +66,13 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Body bodyA = new Body(new Vector2(0, 0), new Vector2(0, 0));
             Body bodyB = new Body(new Vector2(1, 1), new Vector2(1, 1));
             Joint joint = new RevoluteJoint(bodyA, bodyB, new Vector2(0.5f, 0.5f), true);
-            
+
             // Act
             JointEdge jointEdge = new JointEdge();
-            
+
             Assert.Null(jointEdge.Joint1);
         }
-        
+
         /// <summary>
         ///     Tests that joint edge constructor test 3
         /// </summary>
@@ -83,13 +83,13 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Body bodyA = new Body(new Vector2(0, 0), new Vector2(0, 0));
             Body bodyB = new Body(new Vector2(1, 1), new Vector2(1, 1));
             Joint joint = new RevoluteJoint(bodyA, bodyB, new Vector2(0.5f, 0.5f), true);
-            
+
             // Act
             JointEdge jointEdge = new JointEdge();
-            
+
             Assert.Null(jointEdge.Next);
         }
-        
+
         /// <summary>
         ///     Tests that joint edge constructor test 4
         /// </summary>
@@ -100,10 +100,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Body bodyA = new Body(new Vector2(0, 0), new Vector2(0, 0));
             Body bodyB = new Body(new Vector2(1, 1), new Vector2(1, 1));
             Joint joint = new RevoluteJoint(bodyA, bodyB, new Vector2(0.5f, 0.5f), true);
-            
+
             // Act
             JointEdge jointEdge = new JointEdge();
-            
+
             Assert.Null(jointEdge.Prev);
         }
     }

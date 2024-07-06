@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:MockComponent.cs
+//  File:Sample2Component.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,9 +32,9 @@ using Alis.Core.Ecs.Component;
 namespace Alis.Test.Builder.Core.Ecs.Entity.GameObject.Sample
 {
     /// <summary>
-    /// The mock component class
+    ///     The mock component class
     /// </summary>
-    /// <seealso cref="AComponent"/>
+    /// <seealso cref="AComponent" />
     public class Sample2Component : AComponent
     {
     }

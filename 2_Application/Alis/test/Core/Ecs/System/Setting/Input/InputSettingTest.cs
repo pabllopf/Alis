@@ -34,40 +34,40 @@ using Xunit;
 namespace Alis.Test.Core.Ecs.System.Setting.Input
 {
     /// <summary>
-    /// The input setting test class
+    ///     The input setting test class
     /// </summary>
     public class InputSettingTest
     {
         /// <summary>
-        /// Tests that test input setting update mode
+        ///     Tests that test input setting update mode
         /// </summary>
         [Fact]
         public void Test_InputSetting_UpdateMode()
         {
             // Arrange
             InputSetting inputSetting = new InputSetting();
-            
+
             // Act
             inputSetting.UpdateMode = UpdateMode.DynamicUpdate;
             UpdateMode result = inputSetting.UpdateMode;
-            
+
             // Assert
             Assert.NotNull(inputSetting);
             Assert.Equal(UpdateMode.DynamicUpdate, result);
         }
-        
+
         /// <summary>
-        /// Tests that test input setting builder
+        ///     Tests that test input setting builder
         /// </summary>
         [Fact]
         public void Test_InputSetting_Builder()
         {
             // Arrange
             InputSetting inputSetting = new InputSetting();
-            
+
             // Act
             InputSettingBuilder result = inputSetting.Builder();
-            
+
             // Assert
             Assert.NotNull(result);
             Assert.IsType<InputSettingBuilder>(result);

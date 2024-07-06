@@ -37,7 +37,6 @@ namespace Alis.Core.Sample
     /// </summary>
     public static class Program
     {
-        
         /// <summary>
         ///     Main the args
         /// </summary>

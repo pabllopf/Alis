@@ -33,43 +33,41 @@ using Xunit;
 namespace Alis.Test.Core.Ecs.Component.Collider
 {
     /// <summary>
-    /// The collider test class
+    ///     The collider test class
     /// </summary>
     public class ColliderTest
     {
         /// <summary>
-        /// Tests that collider default constructor valid input
+        ///     Tests that collider default constructor valid input
         /// </summary>
         [Fact]
         public void Collider_DefaultConstructor_ValidInput()
         {
             ColliderSample collider = new ColliderSample();
-            
+
             Assert.NotNull(collider);
         }
-        
+
         /// <summary>
-        /// Tests that on start valid input
+        ///     Tests that on start valid input
         /// </summary>
         [Fact]
         public void OnStart_ValidInput()
         {
             ColliderSample collider = new ColliderSample();
-            
+
             collider.OnStart();
         }
-        
+
         /// <summary>
-        /// Tests that on update valid input
+        ///     Tests that on update valid input
         /// </summary>
         [Fact]
         public void OnUpdate_ValidInput()
         {
             ColliderSample collider = new ColliderSample();
-            
+
             collider.OnUpdate();
-            
-        
         }
     }
 }

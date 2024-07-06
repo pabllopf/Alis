@@ -30,10 +30,9 @@
 namespace Alis.Extension.Math.PathGenerator.Test.Triangulation.Seidel
 {
     /// <summary>
-    /// The seidel decomposer test class
+    ///     The seidel decomposer test class
     /// </summary>
     public class SeidelDecomposerTest
     {
-        
     }
 }

@@ -54,11 +54,11 @@ namespace Alis.Core.Physic.Test.Dynamics
                 // Act
                 Aabb = aabb
             };
-            
+
             // Assert
             Assert.Equal(aabb, fixtureProxy.Aabb);
         }
-        
+
         /// <summary>
         ///     Tests that child index property test
         /// </summary>
@@ -72,11 +72,11 @@ namespace Alis.Core.Physic.Test.Dynamics
                 // Act
                 ChildIndex = childIndex
             };
-            
+
             // Assert
             Assert.Equal(childIndex, fixtureProxy.ChildIndex);
         }
-        
+
         /// <summary>
         ///     Tests that fixture constructor test
         /// </summary>
@@ -90,10 +90,10 @@ namespace Alis.Core.Physic.Test.Dynamics
             float restitution = 0.1f;
             float restitutionThreshold = 1.5f;
             bool isSensor = true;
-            
+
             // Act
             Fixture fixture = new Fixture(circle, filter, friction, restitution, restitutionThreshold, isSensor);
-            
+
             // Assert
             Assert.Equal(circle.ShapeType, fixture.Shape.ShapeType);
             Assert.Equal(filter.CategoryMask, fixture.Filter.CategoryMask);
@@ -102,7 +102,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(restitutionThreshold, fixture.RestitutionThreshold);
             Assert.Equal(isSensor, fixture.IsSensor);
         }
-        
+
         /// <summary>
         ///     Tests that proxy id property test
         /// </summary>
@@ -116,7 +116,7 @@ namespace Alis.Core.Physic.Test.Dynamics
                 // Act
                 ProxyId = proxyId
             };
-            
+
             // Assert
             Assert.Equal(proxyId, fixtureProxy.ProxyId);
         }

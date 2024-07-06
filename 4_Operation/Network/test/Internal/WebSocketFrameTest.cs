@@ -35,12 +35,12 @@ using Xunit;
 namespace Alis.Core.Network.Test.Internal
 {
     /// <summary>
-    /// The web socket frame test class
+    ///     The web socket frame test class
     /// </summary>
     public class WebSocketFrameTest
     {
         /// <summary>
-        /// Tests that web socket frame constructor 1 valid input
+        ///     Tests that web socket frame constructor 1 valid input
         /// </summary>
         [Fact]
         public void WebSocketFrame_Constructor1_ValidInput()
@@ -49,17 +49,17 @@ namespace Alis.Core.Network.Test.Internal
             WebSocketOpCode webSocketOpCode = WebSocketOpCode.TextFrame;
             int count = 10;
             ArraySegment<byte> maskKey = new ArraySegment<byte>(new byte[4]);
-            
+
             WebSocketFrame frame = new WebSocketFrame(isFinBitSet, webSocketOpCode, count, maskKey);
-            
+
             Assert.True(frame.IsFinBitSet);
             Assert.Equal(webSocketOpCode, frame.OpCode);
             Assert.Equal(count, frame.Count);
             Assert.Equal(maskKey, frame.MaskKey);
         }
-        
+
         /// <summary>
-        /// Tests that web socket frame constructor 2 valid input
+        ///     Tests that web socket frame constructor 2 valid input
         /// </summary>
         [Fact]
         public void WebSocketFrame_Constructor2_ValidInput()
@@ -70,9 +70,9 @@ namespace Alis.Core.Network.Test.Internal
             WebSocketCloseStatus closeStatus = WebSocketCloseStatus.NormalClosure;
             string closeStatusDescription = "Test description";
             ArraySegment<byte> maskKey = new ArraySegment<byte>(new byte[4]);
-            
+
             WebSocketFrame frame = new WebSocketFrame(isFinBitSet, webSocketOpCode, count, closeStatus, closeStatusDescription, maskKey);
-            
+
             Assert.True(frame.IsFinBitSet);
             Assert.Equal(webSocketOpCode, frame.OpCode);
             Assert.Equal(count, frame.Count);

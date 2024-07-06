@@ -33,12 +33,12 @@ using Xunit;
 namespace Alis.Core.Network.Test.Exceptions
 {
     /// <summary>
-    /// The mask key length exception test class
+    ///     The mask key length exception test class
     /// </summary>
     public class MaskKeyLengthExceptionTest
     {
         /// <summary>
-        /// Tests that mask key length exception default constructor
+        ///     Tests that mask key length exception default constructor
         /// </summary>
         [Fact]
         public void MaskKeyLengthException_DefaultConstructor()

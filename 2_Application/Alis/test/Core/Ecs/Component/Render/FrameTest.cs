@@ -35,37 +35,37 @@ using Xunit;
 namespace Alis.Test.Core.Ecs.Component.Render
 {
     /// <summary>
-    /// The frame test class
+    ///     The frame test class
     /// </summary>
     public class FrameTest
     {
         /// <summary>
-        /// Tests that frame default constructor valid input
+        ///     Tests that frame default constructor valid input
         /// </summary>
         [Fact]
         public void Frame_DefaultConstructor_ValidInput()
         {
             Frame frame = new Frame();
-            
+
             Assert.NotNull(frame);
         }
-        
+
         /// <summary>
-        /// Tests that frame constructor with parameters valid input
+        ///     Tests that frame constructor with parameters valid input
         /// </summary>
         [Fact]
         public void Frame_ConstructorWithParameters_ValidInput()
         {
             VideoGame videoGame = new VideoGame();
-            
+
             string filePath = "dino_assets.png";
             Frame frame = new Frame(filePath);
-            
+
             Assert.NotNull(frame);
         }
-        
+
         /// <summary>
-        /// Tests that frame file path property valid input
+        ///     Tests that frame file path property valid input
         /// </summary>
         [Fact]
         public void Frame_FilePathProperty_ValidInput()
@@ -73,19 +73,19 @@ namespace Alis.Test.Core.Ecs.Component.Render
             string filePath = "dino_assets.png";
             Frame frame = new Frame();
             frame.FilePath = filePath;
-            
+
             Assert.NotNull(frame);
         }
-        
+
         /// <summary>
-        /// Tests that frame builder valid input
+        ///     Tests that frame builder valid input
         /// </summary>
         [Fact]
         public void Frame_Builder_ValidInput()
         {
             Frame frame = new Frame();
             FrameBuilder frameBuilder = frame.Builder();
-            
+
             Assert.NotNull(frame);
         }
     }

@@ -57,16 +57,16 @@ namespace Alis.Core.Physic.Test.Dynamics
             float density = 1.0f;
             Vector2 position = new Vector2(0, 0);
             float rotation = 0.0f;
-            
+
             // Act
             MyBreakableBody breakableBody = new MyBreakableBody(world, parts, density, position, rotation);
-            
+
             // Assert
             Assert.NotNull(breakableBody);
             Assert.Equal(position, breakableBody.MainBody.Position);
             Assert.Equal(rotation, breakableBody.MainBody.Rotation);
         }
-        
+
         /// <summary>
         ///     Tests that post solve test
         /// </summary>
@@ -80,7 +80,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             Vector2 position = new Vector2(0, 0);
             float rotation = 0.0f;
             MyBreakableBody breakableBody = new MyBreakableBody(world, parts, density, position, rotation);
-            
+
             // Assuming you have shapes and filters available for the fixtures
             AShape shapeA = new CircleShape(1.0f, 1.0f); // Replace with the actual Circle constructor
             Filter filterA = new Filter();
@@ -89,7 +89,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             float restitutionThresholdA = 1.5f;
             bool isSensorA = true;
             Fixture fixtureA = new Fixture(shapeA, filterA, frictionA, restitutionA, restitutionThresholdA, isSensorA);
-            
+
             AShape shapeB = new CircleShape(1.0f, 1.0f); // Replace with the actual Circle constructor
             Filter filterB = new Filter();
             float frictionB = 0.3f;
@@ -97,20 +97,20 @@ namespace Alis.Core.Physic.Test.Dynamics
             float restitutionThresholdB = 1.5f;
             bool isSensorB = true;
             Fixture fixtureB = new Fixture(shapeB, filterB, frictionB, restitutionB, restitutionThresholdB, isSensorB);
-            
+
             int indexA = 0;
             int indexB = 0;
             Contact contact = new Contact(fixtureA, indexA, fixtureB, indexB);
-            
+
             ContactVelocityConstraint impulse = new ContactVelocityConstraint();
-            
+
             // Act
             breakableBody.PostSolve(contact, impulse);
-            
+
             // Assert
             // Add assertions here based on the expected outcome of the PostSolve method
         }
-        
+
         /// <summary>
         ///     Tests that update test
         /// </summary>
@@ -124,14 +124,14 @@ namespace Alis.Core.Physic.Test.Dynamics
             Vector2 position = new Vector2(0, 0);
             float rotation = 0.0f;
             MyBreakableBody breakableBody = new MyBreakableBody(world, parts, density, position, rotation);
-            
+
             // Act
             breakableBody.Update();
-            
+
             // Assert
             // Add assertions here based on the expected outcome of the Update method
         }
-        
+
         /// <summary>
         ///     Tests that decompose test
         /// </summary>
@@ -145,14 +145,14 @@ namespace Alis.Core.Physic.Test.Dynamics
             Vector2 position = new Vector2(0, 0);
             float rotation = 0.0f;
             MyBreakableBody breakableBody = new MyBreakableBody(world, parts, density, position, rotation);
-            
+
             // Act
             breakableBody.Decompose();
-            
+
             // Assert
             // Add assertions here based on the expected outcome of the Decompose method
         }
-        
+
         /// <summary>
         ///     Tests that break test
         /// </summary>
@@ -166,26 +166,27 @@ namespace Alis.Core.Physic.Test.Dynamics
             Vector2 position = new Vector2(0, 0);
             float rotation = 0.0f;
             MyBreakableBody breakableBody = new MyBreakableBody(world, parts, density, position, rotation);
-            
+
             // Act
             breakableBody.Break();
-            
+
             // Assert
             // Add assertions here based on the expected outcome of the Break method
         }
-        
+
         /// <summary>
-        /// Tests that breakable body constructor test
+        ///     Tests that breakable body constructor test
         /// </summary>
         [Fact]
         public void BreakableBodyConstructorTest()
         {
             // Arrange
-            World world = new World( new Vector2(0, -9.8f));
-            List<AShape> shapes = new List<AShape>() {new CircleShape(1, 1.0f)};
+            World world = new World(new Vector2(0, -9.8f));
+            List<AShape> shapes = new List<AShape>
+                {new CircleShape(1, 1.0f)};
             Vector2 position = new Vector2();
             float rotation = 0;
-            
+
             // Act
             BreakableBody breakableBody = new MyBreakableBody(
                 world,
@@ -193,22 +194,23 @@ namespace Alis.Core.Physic.Test.Dynamics
                 1.0f,
                 position,
                 rotation);
-            
+
             // Assert
             Assert.Equal(position, breakableBody.MainBody.Position);
             Assert.Equal(rotation, breakableBody.MainBody.Rotation);
             Assert.Equal(BodyType.Dynamic, breakableBody.MainBody.BodyType);
         }
-        
+
         /// <summary>
-        /// Tests that breakable body update test
+        ///     Tests that breakable body update test
         /// </summary>
         [Fact]
         public void BreakableBodyUpdateTest()
         {
             // Arrange
-            World world = new World( new Vector2(0, -9.8f));
-            List<AShape> shapes = new List<AShape>() {new CircleShape(1, 1.0f)};
+            World world = new World(new Vector2(0, -9.8f));
+            List<AShape> shapes = new List<AShape>
+                {new CircleShape(1, 1.0f)};
             Vector2 position = new Vector2();
             float rotation = 0;
             BreakableBody breakableBody = new MyBreakableBody(
@@ -217,23 +219,24 @@ namespace Alis.Core.Physic.Test.Dynamics
                 1.0f,
                 position,
                 rotation);
-            
+
             // Act
             breakableBody.Update();
-            
+
             // Assert
             // Here you would assert that the properties of wheelJoint have been set correctly.
         }
-        
+
         /// <summary>
-        /// Tests that breakable body decompose test
+        ///     Tests that breakable body decompose test
         /// </summary>
         [Fact]
         public void BreakableBodyDecomposeTest()
         {
             // Arrange
-            World world = new World( new Vector2(0, -9.8f));
-            List<AShape> shapes = new List<AShape>() {new CircleShape(1, 1.0f)};
+            World world = new World(new Vector2(0, -9.8f));
+            List<AShape> shapes = new List<AShape>
+                {new CircleShape(1, 1.0f)};
             Vector2 position = new Vector2();
             float rotation = 0;
             BreakableBody breakableBody = new MyBreakableBody(
@@ -242,22 +245,22 @@ namespace Alis.Core.Physic.Test.Dynamics
                 1.0f,
                 position,
                 rotation);
-            
+
             // Act
             breakableBody.Decompose();
-            
+
             // Assert
             // Here you would assert that the properties of wheelJoint have been set correctly.
         }
-        
+
         /// <summary>
-        /// Tests that breakable body break test
+        ///     Tests that breakable body break test
         /// </summary>
         [Fact]
         public void BreakableBodyBreakTest()
         {
             // Arrange
-            World world = new World( new Vector2(0, -9.8f));
+            World world = new World(new Vector2(0, -9.8f));
             Vector2 position = new Vector2();
             float rotation = 0;
             BreakableBody breakableBody = new MyBreakableBody(
@@ -266,11 +269,11 @@ namespace Alis.Core.Physic.Test.Dynamics
                 1.0f,
                 position,
                 rotation);
-            
-            
+
+
             // Act
             breakableBody.Break();
-            
+
             // Assert
             // Here you would assert that the properties of wheelJoint have been set correctly.
         }

@@ -34,31 +34,31 @@ using Xunit;
 namespace Alis.Test.Builder.Core.Ecs.System.Manager.Graphic
 {
     /// <summary>
-    /// The graphic manager builder test class
+    ///     The graphic manager builder test class
     /// </summary>
     public class GraphicManagerBuilderTest
     {
         /// <summary>
-        /// Tests that graphic manager builder default constructor valid input
+        ///     Tests that graphic manager builder default constructor valid input
         /// </summary>
         [Fact]
         public void GraphicManagerBuilder_DefaultConstructor_ValidInput()
         {
             GraphicManagerBuilder graphicManagerBuilder = new GraphicManagerBuilder();
-            
+
             Assert.NotNull(graphicManagerBuilder);
         }
-        
+
         /// <summary>
-        /// Tests that build valid input
+        ///     Tests that build valid input
         /// </summary>
         [Fact]
         public void Build_ValidInput()
         {
             GraphicManagerBuilder graphicManagerBuilder = new GraphicManagerBuilder();
-            
+
             GraphicManager graphicManager = graphicManagerBuilder.Build();
-            
+
             Assert.NotNull(graphicManager);
         }
     }

@@ -46,14 +46,14 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
             // Arrange
             ContactId contactId = new ContactId();
             ContactFeature contactFeature = new ContactFeature();
-            
+
             // Act
             contactId.ContactFeature = contactFeature;
-            
+
             // Assert
             Assert.Equal(contactFeature, contactId.ContactFeature);
         }
-        
+
         /// <summary>
         ///     Tests that test key property
         /// </summary>
@@ -63,10 +63,10 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
             // Arrange
             ContactId contactId = new ContactId();
             uint key = 1;
-            
+
             // Act
             contactId.Key = key;
-            
+
             // Assert
             Assert.Equal(key, contactId.Key);
         }

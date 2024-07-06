@@ -40,10 +40,8 @@ namespace Alis.Core.Physic.Test.Collision.TOI
     /// </summary>
     public class SeparationFunctionTest
     {
-
-        
         /// <summary>
-        /// Tests that find min separation should return correct value
+        ///     Tests that find min separation should return correct value
         /// </summary>
         [Fact]
         public void FindMinSeparation_ShouldReturnCorrectValue()
@@ -59,17 +57,17 @@ namespace Alis.Core.Physic.Test.Collision.TOI
             Vector2 axis = new Vector2();
             Vector2 localPoint = new Vector2();
             SeparationFunctionType type = SeparationFunctionType.Points;
-            
+
             // Act
             Assert.Throws<NullReferenceException>(() => SeparationFunction.FindMinSeparation(out indexA, out indexB, t, proxyA, ref sweepA, proxyB, ref sweepB, ref axis,
                 ref localPoint, type));
-            
+
             // Assert
             // Here you would assert that the properties of wheelJoint have been set correctly.
         }
-        
+
         /// <summary>
-        /// Tests that evaluate should return correct value
+        ///     Tests that evaluate should return correct value
         /// </summary>
         [Fact]
         public void Evaluate_ShouldReturnCorrectValue()
@@ -85,10 +83,10 @@ namespace Alis.Core.Physic.Test.Collision.TOI
             Vector2 axis = new Vector2();
             Vector2 localPoint = new Vector2();
             SeparationFunctionType type = SeparationFunctionType.Points;
-            
+
             // Act
             Assert.Throws<NullReferenceException>(() => SeparationFunction.Evaluate(indexA, indexB, t, proxyA, ref sweepA, proxyB, ref sweepB, ref axis, ref localPoint, type));
-            
+
             // Assert
             // Here you would assert that the properties of wheelJoint have been set correctly.
         }

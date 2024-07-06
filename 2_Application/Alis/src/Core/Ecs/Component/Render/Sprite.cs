@@ -39,16 +39,16 @@ using Alis.Core.Graphic.Sdl2.Enums;
 namespace Alis.Core.Ecs.Component.Render
 {
     /// <summary>
-    /// The sprite class
+    ///     The sprite class
     /// </summary>
-    /// <seealso cref="AComponent"/>
-    /// <seealso cref="IBuilder{SpriteBuilder}"/>
-    public class Sprite : 
-        AComponent, 
+    /// <seealso cref="AComponent" />
+    /// <seealso cref="IBuilder{SpriteBuilder}" />
+    public class Sprite :
+        AComponent,
         IBuilder<SpriteBuilder>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Sprite"/> class
+        ///     Initializes a new instance of the <see cref="Sprite" /> class
         /// </summary>
         public Sprite()
         {
@@ -56,9 +56,9 @@ namespace Alis.Core.Ecs.Component.Render
             Depth = 0;
             Flips = RendererFlips.None;
         }
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="Sprite"/> class
+        ///     Initializes a new instance of the <see cref="Sprite" /> class
         /// </summary>
         /// <param name="image">The image</param>
         [ExcludeFromCodeCoverage]
@@ -68,9 +68,9 @@ namespace Alis.Core.Ecs.Component.Render
             Depth = 0;
             Flips = RendererFlips.None;
         }
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="Sprite"/> class
+        ///     Initializes a new instance of the <see cref="Sprite" /> class
         /// </summary>
         /// <param name="image">The image</param>
         /// <param name="depth">The depth</param>
@@ -83,31 +83,31 @@ namespace Alis.Core.Ecs.Component.Render
             Depth = depth;
             Flips = flips;
         }
-        
+
         /// <summary>
         ///     The image
         /// </summary>
         [JsonPropertyName("_Image_")]
-        public Image Image  { get; set; }
-        
+        public Image Image { get; set; }
+
         /// <summary>
         ///     The level
         /// </summary>
         [JsonPropertyName("_Depth_")]
         public int Depth { get; set; }
-        
+
         /// <summary>
         ///     Gets or sets the value of the flip
         /// </summary>
         [JsonPropertyName("_Flips_")]
         public RendererFlips Flips { get; set; }
-        
+
         /// <summary>
         ///     Builders this instance
         /// </summary>
         /// <returns>The sprite builder</returns>
         public SpriteBuilder Builder() => new SpriteBuilder();
-        
+
         /// <summary>
         ///     Inits this instance
         /// </summary>
@@ -116,7 +116,7 @@ namespace Alis.Core.Ecs.Component.Render
         {
             Image.Load();
         }
-        
+
         /// <summary>
         ///     Awakes this instance
         /// </summary>
@@ -125,7 +125,7 @@ namespace Alis.Core.Ecs.Component.Render
         {
             Context?.GraphicManager.Attach(this);
         }
-        
+
         /// <summary>
         ///     Exits this instance
         /// </summary>
@@ -134,7 +134,7 @@ namespace Alis.Core.Ecs.Component.Render
         {
             Context?.GraphicManager.UnAttach(this);
         }
-        
+
         /// <summary>
         ///     Renders the renderer
         /// </summary>
@@ -147,18 +147,18 @@ namespace Alis.Core.Ecs.Component.Render
             {
                 return;
             }
-            
+
             Sdl.QueryTexture(Image.Texture, out _, out _, out int w, out int h);
-            
+
             RectangleI dstRect = new RectangleI(
                 (int) (GameObject.Transform.Position.X - w * GameObject.Transform.Scale.X / 2 - (camera.Viewport.X - camera.Viewport.W / 2) + camera.CameraBorder),
                 (int) (GameObject.Transform.Position.Y - h * GameObject.Transform.Scale.Y / 2 - (camera.Viewport.Y - camera.Viewport.H / 2) + camera.CameraBorder),
                 (int) (w * GameObject.Transform.Scale.X),
                 (int) (h * GameObject.Transform.Scale.Y));
-            
+
             Sdl.RenderCopyEx(renderer, Image.Texture, IntPtr.Zero, ref dstRect, GameObject.Transform.Rotation.Angle, IntPtr.Zero, Flips);
         }
-        
+
         /// <summary>
         ///     Renders the renderer
         /// </summary>
@@ -170,15 +170,15 @@ namespace Alis.Core.Ecs.Component.Render
             {
                 return;
             }
-            
+
             Sdl.QueryTexture(Image.Texture, out _, out _, out int w, out int h);
-            
+
             RectangleI dstRect = new RectangleI(
                 (int) (GameObject.Transform.Position.X - w * GameObject.Transform.Scale.X / 2),
                 (int) (GameObject.Transform.Position.Y - h * GameObject.Transform.Scale.Y / 2),
                 (int) (w * GameObject.Transform.Scale.X),
                 (int) (h * GameObject.Transform.Scale.Y));
-            
+
             Sdl.RenderCopyEx(renderer, Image.Texture, IntPtr.Zero, ref dstRect, GameObject.Transform.Rotation.Angle, IntPtr.Zero, Flips);
         }
     }

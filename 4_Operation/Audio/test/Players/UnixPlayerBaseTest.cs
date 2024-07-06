@@ -47,16 +47,16 @@ namespace Alis.Core.Audio.Test.Players
         {
             Assert.True(true);
         }
-        
+
         /// <summary>
-        /// Tests that play valid input
+        ///     Tests that play valid input
         /// </summary>
         [UnixOnly]
         public async Task Play_ValidInput()
         {
             TestUnixPlayer player = new TestUnixPlayer();
             await player.Play("test.mp3");
-            
+
             Assert.True(player.Playing);
         }
     }

@@ -32,9 +32,9 @@ using Alis.Core.Ecs.Component.Light;
 namespace Alis.Test.Core.Ecs.Component.Light.Sample
 {
     /// <summary>
-    /// The light sample class
+    ///     The light sample class
     /// </summary>
-    /// <seealso cref="ALight"/>
+    /// <seealso cref="ALight" />
     public class LightSample : ALight
     {
     }

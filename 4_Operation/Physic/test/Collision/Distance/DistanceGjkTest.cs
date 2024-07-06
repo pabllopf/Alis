@@ -51,14 +51,14 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             DistanceInput input = new DistanceInput();
             DistanceOutput output;
             SimplexCache cache;
-            
+
             // Act
             Assert.Throws<NullReferenceException>(() => DistanceGjk.ComputeDistance(ref input, out output, out cache));
-            
+
             // Assert
             // Add your assertions here based on your business logic
         }
-        
+
         /// <summary>
         ///     Tests that test shape cast
         /// </summary>
@@ -68,28 +68,28 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             // Arrange
             ShapeCastInput input = new ShapeCastInput();
             ShapeCastOutput output;
-            
+
             // Act
             Assert.Throws<NullReferenceException>(() => DistanceGjk.ShapeCast(ref input, out output));
-            
+
             // Assert
             // Add your assertions here based on your business logic
         }
-        
+
         /// <summary>
-        /// Tests that initialize simplex returns correct simplex
+        ///     Tests that initialize simplex returns correct simplex
         /// </summary>
         [Fact]
         public void InitializeSimplex_ReturnsCorrectSimplex()
         {
             Simplex result = DistanceGjk.InitializeSimplex();
-            
+
             Assert.Equal(0, result.Count);
             Assert.Equal(3, result.V.Length);
         }
-        
+
         /// <summary>
-        /// Tests that compute v returns correct vector
+        ///     Tests that compute v returns correct vector
         /// </summary>
         [Fact]
         public void ComputeV_ReturnsCorrectVector()
@@ -104,14 +104,14 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             float lambda = 0.5f;
             Simplex simplex = new Simplex();
             float radius = 1.0f;
-            
+
             Assert.Throws<NullReferenceException>(() => DistanceGjk.ComputeV(ref proxyA, ref proxyB, ref xfA, ref xfB, ref r, ref n, ref lambda, ref simplex, radius));
-            
+
             // Asserts would go here
         }
-        
+
         /// <summary>
-        /// Tests that compute support returns correct vector
+        ///     Tests that compute support returns correct vector
         /// </summary>
         [Fact]
         public void ComputeSupport_ReturnsCorrectVector()
@@ -122,14 +122,14 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             Transform xfA = new Transform();
             Transform xfB = new Transform();
             Vector2 r = new Vector2(1, 1);
-            
+
             Assert.Throws<NullReferenceException>(() => DistanceGjk.ComputeSupport(ref proxyA, ref proxyB, ref xfA, ref xfB, ref r));
-            
+
             // Asserts would go here
         }
-        
+
         /// <summary>
-        /// Tests that is converged returns correct bool
+        ///     Tests that is converged returns correct bool
         /// </summary>
         [Fact]
         public void IsConverged_ReturnsCorrectBool()
@@ -137,14 +137,14 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             Vector2 v = new Vector2(1, 1);
             float lambda = 0.5f;
             float radius = 1.0f;
-            
+
             bool result = DistanceGjk.IsConverged(v, ref lambda, radius);
-            
+
             Assert.True(result);
         }
-        
+
         /// <summary>
-        /// Tests that is new direction needed returns correct bool
+        ///     Tests that is new direction needed returns correct bool
         /// </summary>
         [Fact]
         public void IsNewDirectionNeeded_ReturnsCorrectBool()
@@ -153,14 +153,14 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             Vector2 r = new Vector2(1, 1);
             float lambda = 0.5f;
             float radius = 1.0f;
-            
+
             bool result = DistanceGjk.IsNewDirectionNeeded(ref n, ref r, ref lambda, radius);
-            
+
             Assert.False(result);
         }
-        
+
         /// <summary>
-        /// Tests that update simplex updates simplex correctly
+        ///     Tests that update simplex updates simplex correctly
         /// </summary>
         [Fact]
         public void UpdateSimplex_UpdatesSimplexCorrectly()
@@ -176,14 +176,14 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             float lambda = 0.5f;
             Simplex simplex = new Simplex();
             float radius = 1.0f;
-            
+
             Assert.Throws<NullReferenceException>(() => DistanceGjk.UpdateSimplex(ref proxyA, ref proxyB, ref xfA, ref xfB, ref r, ref v, ref n, ref lambda, ref simplex, radius));
-            
+
             // Asserts would go here
         }
-        
+
         /// <summary>
-        /// Tests that calculate output calculates output correctly
+        ///     Tests that calculate output calculates output correctly
         /// </summary>
         [Fact]
         public void CalculateOutput_CalculatesOutputCorrectly()
@@ -195,14 +195,14 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             float lambda = 0.5f;
             Vector2 n = new Vector2(1, 1);
             float radiusA = 1.0f;
-            
+
             DistanceGjk.CalculateOutput(ref output, ref simplex, ref r, ref lambda, ref n, radiusA);
-            
+
             // Asserts would go here
         }
-        
+
         /// <summary>
-        /// Tests that apply radii when distance is greater than radii and epsilon updates distance and points
+        ///     Tests that apply radii when distance is greater than radii and epsilon updates distance and points
         /// </summary>
         [Fact]
         public void ApplyRadii_WhenDistanceIsGreaterThanRadiiAndEpsilon_UpdatesDistanceAndPoints()
@@ -213,22 +213,23 @@ namespace Alis.Core.Physic.Test.Collision.Distance
                 PointA = new Vector2(1, 1),
                 PointB = new Vector2(5, 5)
             };
-            
+
             DistanceInput input = new DistanceInput
             {
                 ProxyA = new DistanceProxy {Radius = 2.0f},
                 ProxyB = new DistanceProxy {Radius = 2.0f}
             };
-            
+
             DistanceGjk.ApplyRadii(ref output, ref input);
-            
+
             Assert.Equal(6.0f, output.Distance);
             Assert.Equal(new Vector2(2.4142137f, 2.4142137f), output.PointA);
             Assert.Equal(new Vector2(3.5857863f, 3.5857863f), output.PointB);
         }
-        
+
         /// <summary>
-        /// Tests that apply radii when distance is not greater than radii and epsilon sets distance to zero and points to middle
+        ///     Tests that apply radii when distance is not greater than radii and epsilon sets distance to zero and points to
+        ///     middle
         /// </summary>
         [Fact]
         public void ApplyRadii_WhenDistanceIsNotGreaterThanRadiiAndEpsilon_SetsDistanceToZeroAndPointsToMiddle()
@@ -239,54 +240,54 @@ namespace Alis.Core.Physic.Test.Collision.Distance
                 PointA = new Vector2(1, 1),
                 PointB = new Vector2(5, 5)
             };
-            
+
             DistanceInput input = new DistanceInput
             {
                 ProxyA = new DistanceProxy {Radius = 2.0f},
                 ProxyB = new DistanceProxy {Radius = 2.0f}
             };
-            
+
             DistanceGjk.ApplyRadii(ref output, ref input);
-            
+
             Assert.Equal(0.0f, output.Distance);
             Assert.Equal(new Vector2(3, 3), output.PointA);
             Assert.Equal(new Vector2(3, 3), output.PointB);
         }
-        
+
         /// <summary>
-        /// Tests that is duplicate support point returns correct bool
+        ///     Tests that is duplicate support point returns correct bool
         /// </summary>
         [Fact]
         public void IsDuplicateSupportPoint_ReturnsCorrectBool()
         {
-            int[] saveA = new int[] {1, 2, 3};
-            int[] saveB = new int[] {1, 2, 3};
+            int[] saveA = {1, 2, 3};
+            int[] saveB = {1, 2, 3};
             SimplexVertex vertex = new SimplexVertex {IndexA = 2, IndexB = 2};
             int saveCount = 3;
-            
+
             bool result = DistanceGjk.IsDuplicateSupportPoint(saveA, saveB, vertex, saveCount);
-            
+
             Assert.True(result);
         }
-        
+
         /// <summary>
-        /// Tests that is duplicate support point returns false when no duplicate
+        ///     Tests that is duplicate support point returns false when no duplicate
         /// </summary>
         [Fact]
         public void IsDuplicateSupportPoint_ReturnsFalseWhenNoDuplicate()
         {
-            int[] saveA = new int[] {1, 2, 3};
-            int[] saveB = new int[] {1, 2, 3};
+            int[] saveA = {1, 2, 3};
+            int[] saveB = {1, 2, 3};
             SimplexVertex vertex = new SimplexVertex {IndexA = 4, IndexB = 4};
             int saveCount = 3;
-            
+
             bool result = DistanceGjk.IsDuplicateSupportPoint(saveA, saveB, vertex, saveCount);
-            
+
             Assert.False(result);
         }
-        
+
         /// <summary>
-        /// Tests that prepare output writes cache and applies radii
+        ///     Tests that prepare output writes cache and applies radii
         /// </summary>
         [Fact]
         public void PrepareOutput_WritesCacheAndAppliesRadii()
@@ -295,12 +296,12 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             Simplex simplex = new Simplex {Count = 2};
             SimplexCache cache = new SimplexCache();
             DistanceInput input = new DistanceInput {UseRadii = true};
-            
+
             Assert.Throws<NullReferenceException>(() => DistanceGjk.PrepareOutput(out output, ref simplex, ref cache, ref input));
         }
-        
+
         /// <summary>
-        /// Tests that add new vertex to simplex returns correct vertex
+        ///     Tests that add new vertex to simplex returns correct vertex
         /// </summary>
         [Fact]
         public void AddNewVertexToSimplex_ReturnsCorrectVertex()
@@ -308,17 +309,17 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             Simplex simplex = new Simplex();
             DistanceInput input = new DistanceInput
             {
-                ProxyA = new DistanceProxy {Vertices = new Vector2[] {new Vector2(1, 1)}},
-                ProxyB = new DistanceProxy {Vertices = new Vector2[] {new Vector2(2, 2)}},
+                ProxyA = new DistanceProxy {Vertices = new[] {new Vector2(1, 1)}},
+                ProxyB = new DistanceProxy {Vertices = new[] {new Vector2(2, 2)}},
                 TransformA = new Transform(),
                 TransformB = new Transform()
             };
-            
+
             Assert.Throws<NullReferenceException>(() => DistanceGjk.AddNewVertexToSimplex(ref simplex, ref input));
         }
-        
+
         /// <summary>
-        /// Tests that solve simplex solves correctly for one vertex
+        ///     Tests that solve simplex solves correctly for one vertex
         /// </summary>
         [Fact]
         public void SolveSimplex_SolvesCorrectlyForOneVertex()
@@ -326,16 +327,16 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             Simplex simplex = new Simplex
             {
                 Count = 1,
-                V = new SimplexVertex[] {new SimplexVertex {W = new Vector2(1, 1)}}
+                V = new[] {new SimplexVertex {W = new Vector2(1, 1)}}
             };
-            
+
             DistanceGjk.SolveSimplex(ref simplex);
-            
+
             Assert.Equal(1, simplex.Count);
         }
-        
+
         /// <summary>
-        /// Tests that solve simplex solves correctly for two vertices
+        ///     Tests that solve simplex solves correctly for two vertices
         /// </summary>
         [Fact]
         public void SolveSimplex_SolvesCorrectlyForTwoVertices()
@@ -343,16 +344,16 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             Simplex simplex = new Simplex
             {
                 Count = 2,
-                V = new SimplexVertex[] {new SimplexVertex {W = new Vector2(1, 1)}, new SimplexVertex {W = new Vector2(2, 2)}}
+                V = new[] {new SimplexVertex {W = new Vector2(1, 1)}, new SimplexVertex {W = new Vector2(2, 2)}}
             };
-            
+
             DistanceGjk.SolveSimplex(ref simplex);
-            
+
             Assert.True(simplex.Count > 0);
         }
-        
+
         /// <summary>
-        /// Tests that solve simplex solves correctly for three vertices
+        ///     Tests that solve simplex solves correctly for three vertices
         /// </summary>
         [Fact]
         public void SolveSimplex_SolvesCorrectlyForThreeVertices()
@@ -360,16 +361,16 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             Simplex simplex = new Simplex
             {
                 Count = 3,
-                V = new SimplexVertex[] {new SimplexVertex {W = new Vector2(1, 1)}, new SimplexVertex {W = new Vector2(2, 2)}, new SimplexVertex {W = new Vector2(3, 3)}}
+                V = new[] {new SimplexVertex {W = new Vector2(1, 1)}, new SimplexVertex {W = new Vector2(2, 2)}, new SimplexVertex {W = new Vector2(3, 3)}}
             };
-            
+
             DistanceGjk.SolveSimplex(ref simplex);
-            
+
             Assert.True(simplex.Count > 0);
         }
-        
+
         /// <summary>
-        /// Tests that save simplex vertices saves correctly
+        ///     Tests that save simplex vertices saves correctly
         /// </summary>
         [Fact]
         public void SaveSimplexVertices_SavesCorrectly()
@@ -377,25 +378,25 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             Simplex simplex = new Simplex
             {
                 Count = 3,
-                V = new SimplexVertex[]
+                V = new[]
                 {
                     new SimplexVertex {IndexA = 1, IndexB = 1},
                     new SimplexVertex {IndexA = 2, IndexB = 2},
                     new SimplexVertex {IndexA = 3, IndexB = 3}
                 }
             };
-            
+
             int[] saveA = new int[3];
             int[] saveB = new int[3];
-            
+
             DistanceGjk.SaveSimplexVertices(simplex, ref saveA, ref saveB);
-            
-            Assert.Equal(new int[] {1, 2, 3}, saveA);
-            Assert.Equal(new int[] {1, 2, 3}, saveB);
+
+            Assert.Equal(new[] {1, 2, 3}, saveA);
+            Assert.Equal(new[] {1, 2, 3}, saveB);
         }
-        
+
         /// <summary>
-        /// Tests that save simplex vertices saves correctly when simplex count is less than array length
+        ///     Tests that save simplex vertices saves correctly when simplex count is less than array length
         /// </summary>
         [Fact]
         public void SaveSimplexVertices_SavesCorrectlyWhenSimplexCountIsLessThanArrayLength()
@@ -403,25 +404,25 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             Simplex simplex = new Simplex
             {
                 Count = 2,
-                V = new SimplexVertex[]
+                V = new[]
                 {
                     new SimplexVertex {IndexA = 1, IndexB = 1},
                     new SimplexVertex {IndexA = 2, IndexB = 2},
                     new SimplexVertex {IndexA = 3, IndexB = 3}
                 }
             };
-            
+
             int[] saveA = new int[3];
             int[] saveB = new int[3];
-            
+
             DistanceGjk.SaveSimplexVertices(simplex, ref saveA, ref saveB);
-            
-            Assert.Equal(new int[] {1, 2, 0}, saveA);
-            Assert.Equal(new int[] {1, 2, 0}, saveB);
+
+            Assert.Equal(new[] {1, 2, 0}, saveA);
+            Assert.Equal(new[] {1, 2, 0}, saveB);
         }
-        
+
         /// <summary>
-        /// Tests that gjk iter set get returns correct value
+        ///     Tests that gjk iter set get returns correct value
         /// </summary>
         [Fact]
         public void GjkIter_Set_Get_ReturnsCorrectValue()
@@ -429,9 +430,9 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             DistanceGjk.GjkIter = 5;
             Assert.Equal(5, DistanceGjk.GjkIter);
         }
-        
+
         /// <summary>
-        /// Tests that gjk iter set negative throws argument out of range exception
+        ///     Tests that gjk iter set negative throws argument out of range exception
         /// </summary>
         [Fact]
         public void GjkIter_SetNegative_ThrowsArgumentOutOfRangeException()
@@ -439,9 +440,9 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             DistanceGjk.GjkIter = -1;
             Assert.Equal(-1, DistanceGjk.GjkIter);
         }
-        
+
         /// <summary>
-        /// Tests that gjk max iter set get returns correct value
+        ///     Tests that gjk max iter set get returns correct value
         /// </summary>
         [Fact]
         public void GjkMaxIter_Set_Get_ReturnsCorrectValue()
@@ -449,9 +450,9 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             DistanceGjk.GjkMaxIter = 10;
             Assert.Equal(10, DistanceGjk.GjkMaxIter);
         }
-        
+
         /// <summary>
-        /// Tests that gjk max iter set negative throws argument out of range exception
+        ///     Tests that gjk max iter set negative throws argument out of range exception
         /// </summary>
         [Fact]
         public void GjkMaxIter_SetNegative_ThrowsArgumentOutOfRangeException()
@@ -459,15 +460,15 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             DistanceGjk.GjkMaxIter = -1;
             Assert.Equal(-1, DistanceGjk.GjkMaxIter);
         }
-        
+
         /// <summary>
-        /// Tests that compute v returns correct vector v 2
+        ///     Tests that compute v returns correct vector v 2
         /// </summary>
         [Fact]
         public void ComputeV_ReturnsCorrectVector_V2()
         {
-            DistanceProxy proxyA = new DistanceProxy {Vertices = new Vector2[] {new Vector2(1, 1)}, Radius = 1.0f};
-            DistanceProxy proxyB = new DistanceProxy {Vertices = new Vector2[] {new Vector2(2, 2)}, Radius = 1.0f};
+            DistanceProxy proxyA = new DistanceProxy {Vertices = new[] {new Vector2(1, 1)}, Radius = 1.0f};
+            DistanceProxy proxyB = new DistanceProxy {Vertices = new[] {new Vector2(2, 2)}, Radius = 1.0f};
             Transform xfA = new Transform();
             Transform xfB = new Transform();
             Vector2 r = new Vector2(1, 0);
@@ -475,22 +476,22 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             float lambda = 0.5f;
             Simplex simplex = new Simplex();
             float radius = 1.0f;
-            
+
             Vector2 result = DistanceGjk.ComputeV(ref proxyA, ref proxyB, ref xfA, ref xfB, ref r, ref n, ref lambda, ref simplex, radius);
-            
+
             Assert.Equal(new Vector2(0, 0), result);
             Assert.Equal(new Vector2(0, 1), n);
             Assert.Equal(0, simplex.Count);
         }
-        
+
         /// <summary>
-        /// Tests that compute v does not change direction when not needed
+        ///     Tests that compute v does not change direction when not needed
         /// </summary>
         [Fact]
         public void ComputeV_DoesNotChangeDirectionWhenNotNeeded()
         {
-            DistanceProxy proxyA = new DistanceProxy {Vertices = new Vector2[] {new Vector2(1, 1)}, Radius = 1.0f};
-            DistanceProxy proxyB = new DistanceProxy {Vertices = new Vector2[] {new Vector2(2, 2)}, Radius = 1.0f};
+            DistanceProxy proxyA = new DistanceProxy {Vertices = new[] {new Vector2(1, 1)}, Radius = 1.0f};
+            DistanceProxy proxyB = new DistanceProxy {Vertices = new[] {new Vector2(2, 2)}, Radius = 1.0f};
             Transform xfA = new Transform();
             Transform xfB = new Transform();
             Vector2 r = new Vector2(0, 1);
@@ -498,15 +499,15 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             float lambda = 0.5f;
             Simplex simplex = new Simplex();
             float radius = 1.0f;
-            
+
             Vector2 result = DistanceGjk.ComputeV(ref proxyA, ref proxyB, ref xfA, ref xfB, ref r, ref n, ref lambda, ref simplex, radius);
-            
+
             Assert.Equal(new Vector2(0, 0), result);
             Assert.Equal(new Vector2(1, 0), n);
         }
-        
+
         /// <summary>
-        /// Tests that iterate until converged returns false when converged
+        ///     Tests that iterate until converged returns false when converged
         /// </summary>
         [Fact]
         public void IterateUntilConverged_ReturnsFalse_WhenConverged()
@@ -520,12 +521,12 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             float lambda = 0.5f;
             Simplex simplex = new Simplex();
             float radius = 1.0f;
-            
+
             Assert.Throws<NullReferenceException>(() => DistanceGjk.IterateUntilConverged(ref proxyA, ref proxyB, ref xfA, ref xfB, ref r, ref n, ref lambda, ref simplex, radius));
         }
-        
+
         /// <summary>
-        /// Tests that iterate until converged returns true when not converged
+        ///     Tests that iterate until converged returns true when not converged
         /// </summary>
         [Fact]
         public void IterateUntilConverged_ReturnsTrue_WhenNotConverged()
@@ -539,33 +540,32 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             float lambda = 0.5f;
             Simplex simplex = new Simplex();
             float radius = 0.1f;
-            
+
             Assert.Throws<NullReferenceException>(() => DistanceGjk.IterateUntilConverged(ref proxyA, ref proxyB, ref xfA, ref xfB, ref r, ref n, ref lambda, ref simplex, radius));
-            
         }
-        
+
         /// <summary>
-        /// Tests that initialize simplex returns correct simplex when given valid input
+        ///     Tests that initialize simplex returns correct simplex when given valid input
         /// </summary>
         [Fact]
         public void InitializeSimplex_ReturnsCorrectSimplex_WhenGivenValidInput()
         {
             SimplexCache cache = new SimplexCache();
             DistanceInput input = new DistanceInput();
-            
-            Assert.Throws<NullReferenceException>( () =>DistanceGjk.InitializeSimplex(ref cache, ref input));
+
+            Assert.Throws<NullReferenceException>(() => DistanceGjk.InitializeSimplex(ref cache, ref input));
         }
-        
+
         /// <summary>
-        /// Tests that initialize simplex reads cache correctly when given valid input
+        ///     Tests that initialize simplex reads cache correctly when given valid input
         /// </summary>
         [Fact]
         public void InitializeSimplex_ReadsCacheCorrectly_WhenGivenValidInput()
         {
             SimplexCache cache = new SimplexCache();
             DistanceInput input = new DistanceInput();
-            
-            Assert.Throws<NullReferenceException>( () => DistanceGjk.InitializeSimplex(ref cache, ref input));
+
+            Assert.Throws<NullReferenceException>(() => DistanceGjk.InitializeSimplex(ref cache, ref input));
         }
     }
 }

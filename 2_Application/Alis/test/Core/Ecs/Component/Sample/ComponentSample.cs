@@ -32,9 +32,9 @@ using Alis.Core.Ecs.Component;
 namespace Alis.Test.Core.Ecs.Component.Sample
 {
     /// <summary>
-    /// The component sample class
+    ///     The component sample class
     /// </summary>
-    /// <seealso cref="AComponent"/>
+    /// <seealso cref="AComponent" />
     public class ComponentSample : AComponent
     {
     }

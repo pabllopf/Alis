@@ -53,11 +53,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
             {
                 throw new ArgumentNullException(nameof(dictionary));
             }
-            
+
             // Act & Assert
             Assert.Throws<NotSupportedException>(() => dictionary.Add("key", "value"));
         }
-        
+
         /// <summary>
         ///     Tests that test key value type dictionary clear throws exception
         /// </summary>
@@ -71,11 +71,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
             {
                 throw new ArgumentNullException(nameof(dictionary));
             }
-            
+
             // Act & Assert
             Assert.Throws<NotSupportedException>(() => dictionary.Clear());
         }
-        
+
         /// <summary>
         ///     Tests that test key value type dictionary contains throws exception
         /// </summary>
@@ -89,11 +89,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
             {
                 throw new ArgumentNullException(nameof(dictionary));
             }
-            
+
             // Act & Assert
             Assert.Throws<NotSupportedException>(() => dictionary.Contains("key"));
         }
-        
+
         /// <summary>
         ///     Tests that test key value type dictionary remove throws exception
         /// </summary>
@@ -107,11 +107,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
             {
                 throw new ArgumentNullException(nameof(dictionary));
             }
-            
+
             // Act & Assert
             Assert.Throws<NotSupportedException>(() => dictionary.Remove("key"));
         }
-        
+
         /// <summary>
         ///     Tests that test key value type dictionary copy to throws exception
         /// </summary>
@@ -125,13 +125,13 @@ namespace Alis.Core.Aspect.Data.Test.Json
             {
                 throw new ArgumentNullException(nameof(dictionary));
             }
-            
+
             object[] array = new object[10];
-            
+
             // Act & Assert
             Assert.Throws<NotSupportedException>(() => dictionary.CopyTo(array, 0));
         }
-        
+
         /// <summary>
         ///     Tests that test key value type dictionary get enumerator throws exception
         /// </summary>
@@ -141,11 +141,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             List<string> list = new List<string> {"value"};
             KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary(list);
-            
+
             // Act & Assert
             Assert.Throws<NotSupportedException>(() => ((IEnumerable) dictionary).GetEnumerator());
         }
-        
+
         /// <summary>
         ///     Tests that test key value type dictionary indexer throws exception
         /// </summary>
@@ -159,11 +159,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
             {
                 throw new ArgumentNullException(nameof(dictionary));
             }
-            
+
             // Act & Assert
             Assert.Throws<NotSupportedException>(() => dictionary["key"] = "value");
         }
-        
+
         /// <summary>
         ///     Tests that key value type dictionary constructor sets enumerator
         /// </summary>
@@ -174,7 +174,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.NotNull(dictionary);
             // You might need to add additional assertions to check the state of the _enumerator field
         }
-        
+
         /// <summary>
         ///     Tests that get enumerator returns enumerator
         /// </summary>
@@ -186,7 +186,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.NotNull(result);
             // You might need to add additional assertions to check the state of the result
         }
-        
+
         /// <summary>
         ///     Tests that test count property
         /// </summary>
@@ -196,14 +196,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             List<object> list = new List<object> {new object()};
             KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary(list);
-            
+
             // Act & Assert
             Assert.Throws<NotSupportedException>(() =>
             {
                 int count = dictionary.Count;
             });
         }
-        
+
         /// <summary>
         ///     Tests that test is synchronized property
         /// </summary>
@@ -213,14 +213,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             List<object> list = new List<object> {new object()};
             KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary(list);
-            
+
             // Act & Assert
             Assert.Throws<NotSupportedException>(() =>
             {
                 bool isSynchronized = dictionary.IsSynchronized;
             });
         }
-        
+
         /// <summary>
         ///     Tests that test sync root property
         /// </summary>
@@ -230,14 +230,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             List<object> list = new List<object> {new object()};
             KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary(list);
-            
+
             // Act & Assert
             Assert.Throws<NotSupportedException>(() =>
             {
                 object syncRoot = dictionary.SyncRoot;
             });
         }
-        
+
         /// <summary>
         ///     Tests that test is fixed size property
         /// </summary>
@@ -247,14 +247,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             List<object> list = new List<object> {new object()};
             KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary(list);
-            
+
             // Act & Assert
             Assert.Throws<NotSupportedException>(() =>
             {
                 bool isFixedSize = dictionary.IsFixedSize;
             });
         }
-        
+
         /// <summary>
         ///     Tests that test is read only property
         /// </summary>
@@ -264,14 +264,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             List<object> list = new List<object> {new object()};
             KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary(list);
-            
+
             // Act & Assert
             Assert.Throws<NotSupportedException>(() =>
             {
                 bool isReadOnly = dictionary.IsReadOnly;
             });
         }
-        
+
         /// <summary>
         ///     Tests that test keys property
         /// </summary>
@@ -281,14 +281,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             List<object> list = new List<object> {new object()};
             KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary(list);
-            
+
             // Act & Assert
             Assert.Throws<NotSupportedException>(() =>
             {
                 ICollection keys = dictionary.Keys;
             });
         }
-        
+
         /// <summary>
         ///     Tests that test values property
         /// </summary>
@@ -298,14 +298,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             List<object> list = new List<object> {new object()};
             KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary(list);
-            
+
             // Act & Assert
             Assert.Throws<NotSupportedException>(() =>
             {
                 ICollection values = dictionary.Values;
             });
         }
-        
+
         /// <summary>
         ///     Tests that test dispose enumerator is disposable
         /// </summary>
@@ -315,15 +315,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             List<string> list = new List<string> {"value"};
             KeyValueTypeEnumerator enumerator = new KeyValueTypeEnumerator(list);
-            
+
             // Act
             enumerator.Dispose();
-            
+
             // Assert
             // Here you should assert that the Dispose method of the enumerator was called.
             // This might involve using a mock for the enumerator, which is not requested in this case.
         }
-        
+
         /// <summary>
         ///     Tests that test dispose value is disposable
         /// </summary>
@@ -334,14 +334,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
             DisposableTestObject disposableValue = new DisposableTestObject();
             List<DisposableTestObject> nonDisposableValue = new List<DisposableTestObject>();
             KeyValueTypeEnumerator enumerator = new KeyValueTypeEnumerator(nonDisposableValue);
-            
+
             // Act
             enumerator.Dispose();
-            
+
             // Assert
             Assert.False(disposableValue.IsDisposed);
         }
-        
+
         /// <summary>
         ///     Tests that test dispose enumerator and value are not disposable
         /// </summary>
@@ -351,14 +351,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             List<int> nonDisposableValue = new List<int> {1};
             KeyValueTypeEnumerator enumerator = new KeyValueTypeEnumerator(nonDisposableValue);
-            
+
             // Act
             Exception ex = Record.Exception(() => enumerator.Dispose());
-            
+
             // Assert
             Assert.Null(ex);
         }
-        
+
         /// <summary>
         ///     Tests that indexer getter throws not supported exception
         /// </summary>
@@ -369,14 +369,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             List<int> nonDisposableValue = new List<int> {1};
             KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary(nonDisposableValue);
-            
+
             // Act and Assert
             Assert.Throws<NotSupportedException>(() =>
             {
                 object value = dictionary[new object()];
             });
         }
-        
+
         /// <summary>
         ///     Tests that indexer setter throws not supported exception
         /// </summary>
@@ -386,7 +386,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             List<int> nonDisposableValue = new List<int> {1};
             KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary(nonDisposableValue);
-            
+
             // Act and Assert
             Assert.Throws<NotSupportedException>(() => { dictionary[new object()] = new object(); });
         }

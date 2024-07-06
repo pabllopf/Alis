@@ -41,7 +41,7 @@ namespace Alis.Core.Network.Internal
         ///     The mask key length
         /// </summary>
         public const int MaskKeyLength = 4;
-        
+
         /// <summary>
         ///     Mutate payload with the mask key
         ///     This is a reversible process
@@ -52,18 +52,18 @@ namespace Alis.Core.Network.Internal
         public static void ToggleMask(ArraySegment<byte> maskKey, ArraySegment<byte> payload)
         {
             ValidateMaskKey(maskKey);
-            
+
             byte[] buffer = payload.Array;
             byte[] maskKeyArray = maskKey.Array;
             int payloadOffset = payload.Offset;
             int payloadCountPlusOffset = payload.Count + payloadOffset;
             int maskKeyOffset = maskKey.Offset;
-            
+
             ApplyMaskKey(buffer, maskKeyArray, payloadOffset, payloadCountPlusOffset, maskKeyOffset);
         }
-        
+
         /// <summary>
-        /// Validates the mask key using the specified mask key
+        ///     Validates the mask key using the specified mask key
         /// </summary>
         /// <param name="maskKey">The mask key</param>
         /// <exception cref="MaskKeyLengthException">MaskKey key must be {MaskKeyLength} bytes</exception>
@@ -74,9 +74,9 @@ namespace Alis.Core.Network.Internal
                 throw new MaskKeyLengthException($"MaskKey key must be {MaskKeyLength} bytes");
             }
         }
-        
+
         /// <summary>
-        /// Applies the mask key using the specified buffer
+        ///     Applies the mask key using the specified buffer
         /// </summary>
         /// <param name="buffer">The buffer</param>
         /// <param name="maskKeyArray">The mask key array</param>
@@ -90,9 +90,9 @@ namespace Alis.Core.Network.Internal
                 ApplyMaskKeyAtIndex(buffer, maskKeyArray, i, payloadOffset, maskKeyOffset);
             }
         }
-        
+
         /// <summary>
-        /// Applies the mask key at index using the specified buffer
+        ///     Applies the mask key at index using the specified buffer
         /// </summary>
         /// <param name="buffer">The buffer</param>
         /// <param name="maskKeyArray">The mask key array</param>
@@ -103,12 +103,10 @@ namespace Alis.Core.Network.Internal
         {
             int payloadIndex = i - payloadOffset; // index should start at zero
             int maskKeyIndex = maskKeyOffset + payloadIndex % MaskKeyLength;
-            if (buffer != null && maskKeyArray != null)
+            if ((buffer != null) && (maskKeyArray != null))
             {
                 buffer[i] = (byte) (buffer[i] ^ maskKeyArray[maskKeyIndex]);
             }
         }
-        
-        
     }
 }

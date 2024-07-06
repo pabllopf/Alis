@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Core.Network.Test.Internal
 {
     /// <summary>
-    /// The web socket read cursor test class
+    ///     The web socket read cursor test class
     /// </summary>
     public class WebSocketReadCursorTest
     {
         /// <summary>
-        /// Tests that web socket read cursor constructor valid input
+        ///     Tests that web socket read cursor constructor valid input
         /// </summary>
         [Fact]
         public void WebSocketReadCursor_Constructor_ValidInput()
@@ -51,9 +51,9 @@ namespace Alis.Core.Network.Test.Internal
             WebSocketFrame frame = new WebSocketFrame(isFinBitSet, webSocketOpCode, count, maskKey);
             int numBytesRead = 5;
             int numBytesLeftToRead = 5;
-            
+
             WebSocketReadCursor cursor = new WebSocketReadCursor(frame, numBytesRead, numBytesLeftToRead);
-            
+
             Assert.Equal(frame, cursor.WebSocketFrame);
             Assert.Equal(numBytesRead, cursor.NumBytesRead);
             Assert.Equal(numBytesLeftToRead, cursor.NumBytesLeftToRead);

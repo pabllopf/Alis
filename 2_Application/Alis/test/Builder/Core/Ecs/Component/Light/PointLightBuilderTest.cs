@@ -34,31 +34,31 @@ using Xunit;
 namespace Alis.Test.Builder.Core.Ecs.Component.Light
 {
     /// <summary>
-    /// The point light builder test class
+    ///     The point light builder test class
     /// </summary>
     public class PointLightBuilderTest
     {
         /// <summary>
-        /// Tests that point light builder default constructor valid input
+        ///     Tests that point light builder default constructor valid input
         /// </summary>
         [Fact]
         public void PointLightBuilder_DefaultConstructor_ValidInput()
         {
             PointLightBuilder pointLightBuilder = new PointLightBuilder();
-            
+
             Assert.NotNull(pointLightBuilder);
         }
-        
+
         /// <summary>
-        /// Tests that build valid input
+        ///     Tests that build valid input
         /// </summary>
         [Fact]
         public void Build_ValidInput()
         {
             PointLightBuilder pointLightBuilder = new PointLightBuilder();
-            
+
             PointLight pointLight = pointLightBuilder.Build();
-            
+
             Assert.NotNull(pointLight);
         }
     }

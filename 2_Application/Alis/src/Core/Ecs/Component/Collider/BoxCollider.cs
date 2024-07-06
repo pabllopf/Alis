@@ -53,89 +53,89 @@ namespace Alis.Core.Ecs.Component.Collider
         ///     The rectangle shape
         /// </summary>
         public RectangleF RectangleF;
-        
+
         /// <summary>
         ///     Gets or sets the value of the is trigger
         /// </summary>
         public bool IsTrigger { get; set; }
-        
+
         /// <summary>
         ///     Gets or sets the value of the width
         /// </summary>
         public float Width { get; set; } = 10.0f;
-        
+
         /// <summary>
         ///     Gets or sets the value of the height
         /// </summary>
         public float Height { get; set; } = 10.0f;
-        
+
         /// <summary>
         ///     Gets or sets the value of the rotation
         /// </summary>
         public float Rotation { get; set; } = 1.0f;
-        
+
         /// <summary>
         ///     Gets or sets the value of the relative position
         /// </summary>
         public Vector2 RelativePosition { get; set; } = new Vector2(0, 0);
-        
+
         /// <summary>
         ///     Gets or sets the value of the body
         /// </summary>
         [ExcludeFromCodeCoverage]
         public Physic.Dynamics.Body Body { get; private set; }
-        
+
         /// <summary>
         ///     Gets or sets the value of the auto tilling
         /// </summary>
         public bool AutoTilling { get; set; }
-        
+
         /// <summary>
         ///     Gets or sets the value of the body type
         /// </summary>
         public BodyType BodyType { get; set; } = BodyType.Static;
-        
+
         /// <summary>
         ///     Gets or sets the value of the restitution
         /// </summary>
         public float Restitution { get; set; }
-        
+
         /// <summary>
         ///     Gets or sets the value of the friction
         /// </summary>
         public float Friction { get; set; }
-        
+
         /// <summary>
         ///     Gets or sets the value of the fixed rotation
         /// </summary>
         public bool FixedRotation { get; set; }
-        
+
         /// <summary>
         ///     Gets or sets the value of the mass
         /// </summary>
         public float Mass { get; set; } = 10.0f;
-        
+
         /// <summary>
         ///     Gets or sets the value of the gravity scale
         /// </summary>
         public float GravityScale { get; set; } = 1.0f;
-        
+
         /// <summary>
         ///     Gets or sets the value of the linear velocity
         /// </summary>
         public Vector2 LinearVelocity { get; set; } = Vector2.Zero;
-        
+
         /// <summary>
         ///     Gets or sets the value of the angular velocity
         /// </summary>
         public float AngularVelocity { get; set; }
-        
+
         /// <summary>
         ///     Builders this instance
         /// </summary>
         /// <returns>The box collider builder</returns>
         public BoxColliderBuilder Builder() => new BoxColliderBuilder();
-        
+
         /// <summary>
         ///     Inits this instance
         /// </summary>
@@ -156,7 +156,7 @@ namespace Alis.Core.Ecs.Component.Collider
                 Height *= GameObject.Transform.Scale.Y;
             }
         }
-        
+
         /// <summary>
         ///     Awakes this instance
         /// </summary>
@@ -170,8 +170,8 @@ namespace Alis.Core.Ecs.Component.Collider
                 w = Width,
                 h = Height
             };
-            
-            
+
+
             Body = new Rectangle(
                 Width,
                 Height,
@@ -192,7 +192,7 @@ namespace Alis.Core.Ecs.Component.Collider
                 true,
                 GravityScale
             );
-            
+
             Body.Restitution = Restitution;
             Body.Friction = Friction;
             Body.FixedRotation = FixedRotation;
@@ -204,14 +204,14 @@ namespace Alis.Core.Ecs.Component.Collider
             Body.Awake = true;
             Body.IsSensor = IsTrigger;
             Body.GameObject = GameObject;
-            
+
             Body.OnCollision += OnCollision;
             Body.OnSeparation += OnSeparation;
-            
+
             Context.GraphicManager.Attach(this);
             Context.PhysicManager.Attach(Body);
         }
-        
+
         /// <summary>
         ///     Ons the separation using the specified fixture a
         /// </summary>
@@ -223,7 +223,7 @@ namespace Alis.Core.Ecs.Component.Collider
         {
             GameObject fixtureGameObject = (GameObject) fixtureA.Body.GameObject;
             GameObject fixtureBGameObject = (GameObject) fixtureB.Body.GameObject;
-            
+
             if (fixtureGameObject.Equals(GameObject) && fixtureBGameObject.Contains<BoxCollider>())
             {
                 fixtureBGameObject.Components.ForEach(i => i.OnCollisionExit(GameObject));
@@ -233,7 +233,7 @@ namespace Alis.Core.Ecs.Component.Collider
                 fixtureGameObject.Components.ForEach(i => i.OnCollisionExit(GameObject));
             }
         }
-        
+
         /// <summary>
         ///     Ons the collision using the specified fixture a
         /// </summary>
@@ -245,7 +245,7 @@ namespace Alis.Core.Ecs.Component.Collider
         {
             GameObject fixtureGameObject = (GameObject) fixtureA.Body.GameObject;
             GameObject fixtureBGameObject = (GameObject) fixtureB.Body.GameObject;
-            
+
             if (fixtureGameObject.Equals(GameObject) && fixtureBGameObject.Contains<BoxCollider>())
             {
                 fixtureBGameObject.Components.ForEach(i => i.OnCollisionEnter(GameObject));
@@ -255,7 +255,7 @@ namespace Alis.Core.Ecs.Component.Collider
                 fixtureGameObject.Components.ForEach(i => i.OnCollisionEnter(GameObject));
             }
         }
-        
+
         /// <summary>
         ///     Starts this instance
         /// </summary>
@@ -263,7 +263,7 @@ namespace Alis.Core.Ecs.Component.Collider
         {
             Logger.Trace();
         }
-        
+
         /// <summary>
         ///     Before the update
         /// </summary>
@@ -272,10 +272,10 @@ namespace Alis.Core.Ecs.Component.Collider
         {
             float xOdl = GameObject.Transform.Position.X;
             float yOld = GameObject.Transform.Position.Y;
-            
+
             float xNew = Body.Position.X;
             float yNew = Body.Position.Y;
-            
+
             if (Math.Abs(xOdl - xNew) >= 1.1f)
             {
                 Transform transform = new Transform
@@ -284,10 +284,10 @@ namespace Alis.Core.Ecs.Component.Collider
                     Rotation = new Rotation(Body.Rotation),
                     Scale = GameObject.Transform.Scale
                 };
-                
+
                 GameObject.Transform = transform;
             }
-            
+
             if (Math.Abs(yOld - yNew) >= 1.1f)
             {
                 Transform transform = new Transform
@@ -296,11 +296,11 @@ namespace Alis.Core.Ecs.Component.Collider
                     Rotation = new Rotation(Body.Rotation),
                     Scale = GameObject.Transform.Scale
                 };
-                
+
                 GameObject.Transform = transform;
             }
         }
-        
+
         /// <summary>
         ///     Updates this instance
         /// </summary>
@@ -308,7 +308,7 @@ namespace Alis.Core.Ecs.Component.Collider
         {
             Logger.Trace();
         }
-        
+
         /// <summary>
         ///     Draws this instance
         /// </summary>
@@ -318,7 +318,7 @@ namespace Alis.Core.Ecs.Component.Collider
             RectangleF.x = GameObject.Transform.Position.X + RelativePosition.X - Width / 2;
             RectangleF.y = GameObject.Transform.Position.Y + RelativePosition.Y - Height / 2;
         }
-        
+
         /// <summary>
         ///     Ons the exit
         /// </summary>

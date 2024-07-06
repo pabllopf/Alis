@@ -34,12 +34,10 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Extension.Graphic.ImGui.Native
 {
     /// <summary>
-    /// The im gui class
+    ///     The im gui class
     /// </summary>
     public static partial class ImGui
     {
-        
-        
         /// <summary>
         ///     Describes whether input float 4
         /// </summary>
@@ -50,10 +48,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool InputFloat4(string label, ref Vector4 v, string format)
         {
             byte ret = ImGuiNative.igInputFloat4(Encoding.UTF8.GetBytes(label), ref v, Encoding.UTF8.GetBytes(format), ImGuiInputTextFlags.None);
-            
+
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether input float 4
         /// </summary>
@@ -67,7 +65,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igInputFloat4(Encoding.UTF8.GetBytes(label), ref v, Encoding.UTF8.GetBytes(format), flags);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether input int
         /// </summary>
@@ -77,10 +75,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool InputInt(string label, ref int v)
         {
             byte ret = ImGuiNative.igInputInt(Encoding.UTF8.GetBytes(label), ref v, 1, 100, ImGuiInputTextFlags.None);
-                
-                return ret != 0;
+
+            return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether input int
         /// </summary>
@@ -91,10 +89,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool InputInt(string label, ref int v, int step)
         {
             byte ret = ImGuiNative.igInputInt(Encoding.UTF8.GetBytes(label), ref v, step, 100, ImGuiInputTextFlags.None);
-                
-                return ret != 0;
+
+            return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether input int
         /// </summary>
@@ -106,9 +104,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool InputInt(string label, ref int v, int step, int stepFast)
         {
             byte ret = ImGuiNative.igInputInt(Encoding.UTF8.GetBytes(label), ref v, step, stepFast, ImGuiInputTextFlags.None);
-                return ret != 0;
+            return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether input int
         /// </summary>
@@ -121,9 +119,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool InputInt(string label, ref int v, int step, int stepFast, ImGuiInputTextFlags flags)
         {
             byte ret = ImGuiNative.igInputInt(Encoding.UTF8.GetBytes(label), ref v, step, stepFast, flags);
-                return ret != 0;
+            return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether input int 2
         /// </summary>
@@ -133,10 +131,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool InputInt2(string label, ref int v)
         {
             byte ret = ImGuiNative.igInputInt2(Encoding.UTF8.GetBytes(label), ref v, ImGuiInputTextFlags.None);
-                
-                return ret != 0;
+
+            return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether input int 2
         /// </summary>
@@ -147,9 +145,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool InputInt2(string label, ref int v, ImGuiInputTextFlags flags)
         {
             byte ret = ImGuiNative.igInputInt2(Encoding.UTF8.GetBytes(label), ref v, flags);
-                return ret != 0;
+            return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether input int 3
         /// </summary>
@@ -159,9 +157,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool InputInt3(string label, ref int v)
         {
             byte ret = ImGuiNative.igInputInt3(Encoding.UTF8.GetBytes(label), ref v, ImGuiInputTextFlags.None);
-                return ret != 0;
+            return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether input int 3
         /// </summary>
@@ -172,10 +170,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool InputInt3(string label, ref int v, ImGuiInputTextFlags flags)
         {
             byte ret = ImGuiNative.igInputInt3(Encoding.UTF8.GetBytes(label), ref v, flags);
-                
-                return ret != 0;
+
+            return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether input int 4
         /// </summary>
@@ -185,10 +183,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool InputInt4(string label, ref int v)
         {
             byte ret = ImGuiNative.igInputInt4(Encoding.UTF8.GetBytes(label), ref v, ImGuiInputTextFlags.None);
-                
-                return ret != 0;
+
+            return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether input int 4
         /// </summary>
@@ -199,10 +197,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool InputInt4(string label, ref int v, ImGuiInputTextFlags flags)
         {
             byte ret = ImGuiNative.igInputInt4(Encoding.UTF8.GetBytes(label), ref v, flags);
-                
-                return ret != 0;
+
+            return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether input scalar
         /// </summary>
@@ -215,7 +213,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igInputScalar(Encoding.UTF8.GetBytes(label), dataType, pData, IntPtr.Zero, IntPtr.Zero, null, ImGuiInputTextFlags.None);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether input scalar
         /// </summary>
@@ -229,7 +227,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igInputScalar(Encoding.UTF8.GetBytes(label), dataType, pData, pStep, IntPtr.Zero, null, ImGuiInputTextFlags.None);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether input scalar
         /// </summary>
@@ -242,10 +240,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool InputScalar(string label, ImGuiDataType dataType, IntPtr pData, IntPtr pStep, IntPtr pStepFast)
         {
             byte ret = ImGuiNative.igInputScalar(Encoding.UTF8.GetBytes(label), dataType, pData, pStep, pStepFast, null, ImGuiInputTextFlags.None);
-            
+
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether input scalar
         /// </summary>
@@ -259,10 +257,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool InputScalar(string label, ImGuiDataType dataType, IntPtr pData, IntPtr pStep, IntPtr pStepFast, string format)
         {
             byte ret = ImGuiNative.igInputScalar(Encoding.UTF8.GetBytes(label), dataType, pData, pStep, pStepFast, Encoding.UTF8.GetBytes(format), ImGuiInputTextFlags.None);
-            
+
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether input scalar
         /// </summary>
@@ -279,7 +277,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igInputScalar(Encoding.UTF8.GetBytes(label), dataType, pData, pStep, pStepFast, Encoding.UTF8.GetBytes(format), flags);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether input scalar n
         /// </summary>
@@ -291,10 +289,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool InputScalarN(string label, ImGuiDataType dataType, IntPtr pData, int components)
         {
             byte ret = ImGuiNative.igInputScalarN(Encoding.UTF8.GetBytes(label), dataType, pData, components, IntPtr.Zero, IntPtr.Zero, null, ImGuiInputTextFlags.None);
-            
+
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether input scalar n
         /// </summary>
@@ -309,7 +307,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igInputScalarN(Encoding.UTF8.GetBytes(label), dataType, pData, components, pStep, IntPtr.Zero, null, ImGuiInputTextFlags.None);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether input scalar n
         /// </summary>
@@ -323,10 +321,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool InputScalarN(string label, ImGuiDataType dataType, IntPtr pData, int components, IntPtr pStep, IntPtr pStepFast)
         {
             byte ret = ImGuiNative.igInputScalarN(Encoding.UTF8.GetBytes(label), dataType, pData, components, pStep, pStepFast, null, ImGuiInputTextFlags.None);
-            
+
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether input scalar n
         /// </summary>
@@ -341,10 +339,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool InputScalarN(string label, ImGuiDataType dataType, IntPtr pData, int components, IntPtr pStep, IntPtr pStepFast, string format)
         {
             byte ret = ImGuiNative.igInputScalarN(Encoding.UTF8.GetBytes(label), dataType, pData, components, pStep, pStepFast, Encoding.UTF8.GetBytes(format), ImGuiInputTextFlags.None);
-            
+
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether input scalar n
         /// </summary>
@@ -360,10 +358,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool InputScalarN(string label, ImGuiDataType dataType, IntPtr pData, int components, IntPtr pStep, IntPtr pStepFast, string format, ImGuiInputTextFlags flags)
         {
             byte ret = ImGuiNative.igInputScalarN(Encoding.UTF8.GetBytes(label), dataType, pData, components, pStep, pStepFast, Encoding.UTF8.GetBytes(format), flags);
-            
+
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether invisible button
         /// </summary>
@@ -375,7 +373,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igInvisibleButton(Encoding.UTF8.GetBytes(strId), size, ImGuiButtonFlags.None);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether invisible button
         /// </summary>
@@ -388,7 +386,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igInvisibleButton(Encoding.UTF8.GetBytes(strId), size, flags);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is any item active
         /// </summary>
@@ -398,7 +396,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igIsAnyItemActive();
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is any item focused
         /// </summary>
@@ -408,7 +406,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igIsAnyItemFocused();
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is any item hovered
         /// </summary>
@@ -418,7 +416,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igIsAnyItemHovered();
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is any mouse down
         /// </summary>
@@ -428,7 +426,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igIsAnyMouseDown();
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is item activated
         /// </summary>
@@ -438,7 +436,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igIsItemActivated();
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is item active
         /// </summary>
@@ -448,7 +446,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igIsItemActive();
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is item clicked
         /// </summary>
@@ -459,7 +457,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igIsItemClicked(mouseButton);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is item clicked
         /// </summary>
@@ -470,7 +468,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igIsItemClicked(mouseButton);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is item deactivated
         /// </summary>
@@ -480,7 +478,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igIsItemDeactivated();
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is item deactivated after edit
         /// </summary>
@@ -490,7 +488,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igIsItemDeactivatedAfterEdit();
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is item edited
         /// </summary>
@@ -500,7 +498,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igIsItemEdited();
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is item focused
         /// </summary>
@@ -510,7 +508,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igIsItemFocused();
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is item hovered
         /// </summary>
@@ -521,7 +519,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igIsItemHovered(flags);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is item hovered
         /// </summary>
@@ -532,7 +530,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igIsItemHovered(flags);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is item toggled open
         /// </summary>
@@ -542,7 +540,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igIsItemToggledOpen();
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is item visible
         /// </summary>
@@ -552,7 +550,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igIsItemVisible();
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is key down
         /// </summary>
@@ -563,7 +561,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igIsKeyDown_Nil(key);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is key pressed
         /// </summary>
@@ -575,7 +573,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igIsKeyPressed_Bool(key, repeat);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is key pressed
         /// </summary>
@@ -588,7 +586,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igIsKeyPressed_Bool(key, nativeRepeat);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is key released
         /// </summary>
@@ -599,7 +597,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igIsKeyReleased_Nil(key);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is mouse clicked
         /// </summary>
@@ -611,7 +609,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igIsMouseClicked_Bool(button, repeat);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is mouse clicked
         /// </summary>
@@ -624,7 +622,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igIsMouseClicked_Bool(button, nativeRepeat);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is mouse double clicked
         /// </summary>
@@ -635,7 +633,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igIsMouseDoubleClicked(button);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is mouse down
         /// </summary>
@@ -646,7 +644,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igIsMouseDown_Nil(button);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is mouse dragging
         /// </summary>
@@ -658,7 +656,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igIsMouseDragging(button, lockThreshold);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is mouse dragging
         /// </summary>
@@ -670,7 +668,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igIsMouseDragging(button, lockThreshold);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is mouse hovering rect
         /// </summary>
@@ -683,7 +681,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igIsMouseHoveringRect(rMin, rMax, clip);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is mouse hovering rect
         /// </summary>
@@ -697,7 +695,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igIsMouseHoveringRect(rMin, rMax, nativeClip);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is mouse pos valid
         /// </summary>
@@ -708,7 +706,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igIsMousePosValid(ref mousePos);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is mouse pos valid
         /// </summary>
@@ -719,7 +717,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igIsMousePosValid(ref mousePos);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is mouse released
         /// </summary>
@@ -730,7 +728,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igIsMouseReleased_Nil(button);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is popup open
         /// </summary>
@@ -739,10 +737,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool IsPopupOpen(string strId)
         {
             byte ret = ImGuiNative.igIsPopupOpen_Str(Encoding.UTF8.GetBytes(strId), ImGuiPopupFlags.None);
-            
+
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is popup open
         /// </summary>
@@ -754,7 +752,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igIsPopupOpen_Str(Encoding.UTF8.GetBytes(strId), flags);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is rect visible
         /// </summary>
@@ -765,7 +763,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igIsRectVisible_Nil(size);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is rect visible
         /// </summary>
@@ -777,7 +775,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igIsRectVisible_Vec2(rectMin, rectMax);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is window appearing
         /// </summary>
@@ -787,7 +785,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igIsWindowAppearing();
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is window collapsed
         /// </summary>
@@ -797,7 +795,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igIsWindowCollapsed();
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is window docked
         /// </summary>
@@ -807,7 +805,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igIsWindowDocked();
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is window focused
         /// </summary>
@@ -818,7 +816,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igIsWindowFocused(flags);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is window focused
         /// </summary>
@@ -829,7 +827,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igIsWindowFocused(flags);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is window hovered
         /// </summary>
@@ -840,7 +838,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igIsWindowHovered(flags);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is window hovered
         /// </summary>
@@ -851,7 +849,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igIsWindowHovered(flags);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Labels the text using the specified label
         /// </summary>
@@ -861,7 +859,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igLabelText(Encoding.UTF8.GetBytes(label), Encoding.UTF8.GetBytes(fmt));
         }
-        
+
         /// <summary>
         ///     Describes whether list box
         /// </summary>
@@ -877,11 +875,11 @@ namespace Alis.Extension.Graphic.ImGui.Native
             {
                 itemsNative[i] = Encoding.UTF8.GetBytes(items[i]);
             }
-            
+
             byte ret = ImGuiNative.igListBox_Str_arr(Encoding.UTF8.GetBytes(label), ref currentItem, itemsNative, itemsCount, -1);
-                return ret != 0;
+            return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether list box
         /// </summary>
@@ -898,13 +896,12 @@ namespace Alis.Extension.Graphic.ImGui.Native
             {
                 itemsNative[i] = Encoding.UTF8.GetBytes(items[i]);
             }
-            
+
             byte ret = ImGuiNative.igListBox_Str_arr(Encoding.UTF8.GetBytes(label), ref currentItem, itemsNative, itemsCount, heightInItems);
-                
-                return ret != 0;
-            
+
+            return ret != 0;
         }
-        
+
         /// <summary>
         ///     Loads the ini settings from disk using the specified ini filename
         /// </summary>
@@ -913,7 +910,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igLoadIniSettingsFromDisk(Encoding.UTF8.GetBytes(iniFilename));
         }
-        
+
         /// <summary>
         ///     Loads the ini settings from memory using the specified ini data
         /// </summary>
@@ -922,7 +919,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igLoadIniSettingsFromMemory(Encoding.UTF8.GetBytes(iniData), 0);
         }
-        
+
         /// <summary>
         ///     Loads the ini settings from memory using the specified ini data
         /// </summary>
@@ -932,7 +929,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igLoadIniSettingsFromMemory(Encoding.UTF8.GetBytes(iniData), iniSize);
         }
-        
+
         /// <summary>
         ///     Logs the buttons
         /// </summary>
@@ -940,7 +937,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igLogButtons();
         }
-        
+
         /// <summary>
         ///     Logs the finish
         /// </summary>
@@ -948,7 +945,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igLogFinish();
         }
-        
+
         /// <summary>
         ///     Logs the text using the specified fmt
         /// </summary>
@@ -957,7 +954,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igLogText(Encoding.UTF8.GetBytes(fmt));
         }
-        
+
         /// <summary>
         ///     Logs the to clipboard
         /// </summary>
@@ -966,7 +963,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             int autoOpenDepth = -1;
             ImGuiNative.igLogToClipboard(autoOpenDepth);
         }
-        
+
         /// <summary>
         ///     Logs the to clipboard using the specified auto open depth
         /// </summary>
@@ -975,7 +972,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igLogToClipboard(autoOpenDepth);
         }
-        
+
         /// <summary>
         ///     Logs the to file
         /// </summary>
@@ -984,7 +981,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             int autoOpenDepth = -1;
             ImGuiNative.igLogToFile(autoOpenDepth, null);
         }
-        
+
         /// <summary>
         ///     Logs the to file using the specified auto open depth
         /// </summary>
@@ -993,7 +990,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igLogToFile(autoOpenDepth, null);
         }
-        
+
         /// <summary>
         ///     Logs the to file using the specified auto open depth
         /// </summary>
@@ -1003,7 +1000,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igLogToFile(autoOpenDepth, Encoding.UTF8.GetBytes(filename));
         }
-        
+
         /// <summary>
         ///     Logs the to tty
         /// </summary>
@@ -1012,7 +1009,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             int autoOpenDepth = -1;
             ImGuiNative.igLogToTTY(autoOpenDepth);
         }
-        
+
         /// <summary>
         ///     Logs the to tty using the specified auto open depth
         /// </summary>
@@ -1021,7 +1018,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igLogToTTY(autoOpenDepth);
         }
-        
+
         /// <summary>
         ///     Mems the alloc using the specified size
         /// </summary>
@@ -1032,7 +1029,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             IntPtr ret = ImGuiNative.igMemAlloc(size);
             return ret;
         }
-        
+
         /// <summary>
         ///     Mems the free using the specified ptr
         /// </summary>
@@ -1042,7 +1039,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             IntPtr nativePtr = ptr;
             ImGuiNative.igMemFree(nativePtr);
         }
-        
+
         /// <summary>
         ///     Describes whether menu item
         /// </summary>
@@ -1053,7 +1050,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igMenuItem_Bool(Encoding.UTF8.GetBytes(label), null, 0, 1);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether menu item
         /// </summary>
@@ -1065,7 +1062,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igMenuItem_Bool(Encoding.UTF8.GetBytes(label), Encoding.UTF8.GetBytes(shortcut), 0, 1);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether menu item
         /// </summary>
@@ -1076,10 +1073,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool MenuItem(string label, string shortcut, bool selected)
         {
             byte ret = ImGuiNative.igMenuItem_Bool(Encoding.UTF8.GetBytes(label), Encoding.UTF8.GetBytes(shortcut), selected ? (byte) 1 : (byte) 0, 1);
-            
+
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether menu item
         /// </summary>
@@ -1091,10 +1088,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool MenuItem(string label, string shortcut, bool selected, bool enabled)
         {
             byte ret = ImGuiNative.igMenuItem_Bool(Encoding.UTF8.GetBytes(label), Encoding.UTF8.GetBytes(shortcut), selected ? (byte) 1 : (byte) 0, enabled ? (byte) 1 : (byte) 0);
-            
+
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether menu item
         /// </summary>
@@ -1104,7 +1101,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool MenuItem(string label, string shortcut, ref bool pSelected)
         {
-            byte ret = ImGuiNative.igMenuItem_BoolPtr(Encoding.UTF8.GetBytes(label), Encoding.UTF8.GetBytes(shortcut),  pSelected, true);
+            byte ret = ImGuiNative.igMenuItem_BoolPtr(Encoding.UTF8.GetBytes(label), Encoding.UTF8.GetBytes(shortcut), pSelected, true);
             return ret != 0;
         }
     }

@@ -49,14 +49,14 @@ namespace Alis.Core.Physic.Test.Figure
             // Arrange
             float hx = 1.0f;
             float hy = 2.0f;
-            
+
             // Act
             Vertices result = Polygon.CreateRectangle(hx, hy);
-            
+
             // Assert
             Assert.Equal(4, result.Count);
         }
-        
+
         /// <summary>
         ///     Tests that create rounded rectangle test
         /// </summary>
@@ -69,14 +69,14 @@ namespace Alis.Core.Physic.Test.Figure
             float xRadius = 1.0f;
             float yRadius = 1.0f;
             int segments = 4;
-            
+
             // Act
             Vertices result = Polygon.CreateRoundedRectangle(width, height, xRadius, yRadius, segments);
-            
+
             // Assert
             Assert.Equal(24, result.Count);
         }
-        
+
         /// <summary>
         ///     Tests that create line test
         /// </summary>
@@ -86,14 +86,14 @@ namespace Alis.Core.Physic.Test.Figure
             // Arrange
             Vector2 start = new Vector2(0, 0);
             Vector2 end = new Vector2(1, 1);
-            
+
             // Act
             Vertices result = Polygon.CreateLine(start, end);
-            
+
             // Assert
             Assert.Equal(2, result.Count);
         }
-        
+
         /// <summary>
         ///     Tests that create circle test
         /// </summary>
@@ -103,14 +103,14 @@ namespace Alis.Core.Physic.Test.Figure
             // Arrange
             float radius = 1.0f;
             int numberOfEdges = 4;
-            
+
             // Act
             Vertices result = Polygon.CreateCircle(radius, numberOfEdges);
-            
+
             // Assert
             Assert.Equal(4, result.Count);
         }
-        
+
         /// <summary>
         ///     Tests that create ellipse test
         /// </summary>
@@ -121,14 +121,14 @@ namespace Alis.Core.Physic.Test.Figure
             float xRadius = 1.0f;
             float yRadius = 2.0f;
             int numberOfEdges = 4;
-            
+
             // Act
             Vertices result = Polygon.CreateEllipse(xRadius, yRadius, numberOfEdges);
-            
+
             // Assert
             Assert.Equal(4, result.Count);
         }
-        
+
         /// <summary>
         ///     Tests that create arc test
         /// </summary>
@@ -139,14 +139,14 @@ namespace Alis.Core.Physic.Test.Figure
             float radians = (float) Math.PI / 2; // 90 degrees
             int sides = 4;
             float radius = 1.0f;
-            
+
             // Act
             Vertices result = Polygon.CreateArc(radians, sides, radius);
-            
+
             // Assert
             Assert.Equal(3, result.Count);
         }
-        
+
         /// <summary>
         ///     Tests that create capsule test
         /// </summary>
@@ -157,14 +157,14 @@ namespace Alis.Core.Physic.Test.Figure
             float height = 2.0f;
             float endRadius = 0.5f;
             int edges = 4;
-            
+
             // Act
             Vertices result = Polygon.CreateCapsule(height, endRadius, edges);
-            
+
             // Assert
             Assert.Equal(10, result.Count);
         }
-        
+
         /// <summary>
         ///     Tests that create gear test
         /// </summary>
@@ -176,16 +176,16 @@ namespace Alis.Core.Physic.Test.Figure
             int numberOfTeeth = 4;
             float tipPercentage = 25.0f;
             float toothHeight = 0.1f;
-            
+
             // Act
             Vertices result = Polygon.CreateGear(radius, numberOfTeeth, tipPercentage, toothHeight);
-            
+
             // Assert
             Assert.Equal(16, result.Count);
         }
-        
+
         /// <summary>
-        /// Tests that create rectangle with valid parameters returns correct vertices
+        ///     Tests that create rectangle with valid parameters returns correct vertices
         /// </summary>
         [Fact]
         public void CreateRectangle_WithValidParameters_ReturnsCorrectVertices()
@@ -194,16 +194,16 @@ namespace Alis.Core.Physic.Test.Figure
             float hy = 2.3f;
             Vector2 center = new Vector2(1.0f, 1.0f);
             float angle = 45.0f;
-            
+
             Vertices result = Polygon.CreateRectangle(hx, hy, center, angle);
-            
+
             Assert.Equal(4, result.Count);
             Assert.Equal(new Vector2(1.6437731f, -2.3354993f), result[0]);
             Assert.Equal(new Vector2(4.270383f, 1.9190183f), result[1]);
         }
-        
+
         /// <summary>
-        /// Tests that transform vertices with valid parameters changes vertices correctly
+        ///     Tests that transform vertices with valid parameters changes vertices correctly
         /// </summary>
         [Fact]
         public void TransformVertices_WithValidParameters_ChangesVerticesCorrectly()
@@ -217,12 +217,12 @@ namespace Alis.Core.Physic.Test.Figure
             };
             Vector2 center = new Vector2(1.0f, 1.0f);
             float angle = 45.0f;
-            
+
             Polygon.TransformVertices(vertices, center, angle);
         }
-        
+
         /// <summary>
-        /// Tests that create capsule with valid parameters returns correct vertices
+        ///     Tests that create capsule with valid parameters returns correct vertices
         /// </summary>
         [Fact]
         public void CreateCapsule_WithValidParameters_ReturnsCorrectVertices()
@@ -230,15 +230,15 @@ namespace Alis.Core.Physic.Test.Figure
             float height = 2.0f;
             float endRadius = 0.5f;
             int edges = 4;
-            
+
             Vertices result = Polygon.CreateCapsule(height, endRadius, edges);
-            
+
             Assert.Equal(10, result.Count);
             // Here you would assert that the properties of result have been set correctly.
         }
-        
+
         /// <summary>
-        /// Tests that create capsule with end radius greater than half height throws argument exception
+        ///     Tests that create capsule with end radius greater than half height throws argument exception
         /// </summary>
         [Fact]
         public void CreateCapsule_WithEndRadiusGreaterThanHalfHeight_ThrowsArgumentException()
@@ -246,12 +246,12 @@ namespace Alis.Core.Physic.Test.Figure
             float height = 2.0f;
             float endRadius = 1.5f;
             int edges = 4;
-            
+
             Assert.Throws<ArgumentException>(() => Polygon.CreateCapsule(height, endRadius, edges));
         }
-        
+
         /// <summary>
-        /// Tests that create rectangle without segments with valid parameters returns correct vertices
+        ///     Tests that create rectangle without segments with valid parameters returns correct vertices
         /// </summary>
         [Fact]
         public void CreateRectangleWithoutSegments_WithValidParameters_ReturnsCorrectVertices()
@@ -261,9 +261,9 @@ namespace Alis.Core.Physic.Test.Figure
             float height = 3.0f;
             float xRadius = 0.5f;
             float yRadius = 0.5f;
-            
+
             Polygon.CreateRectangleWithoutSegments(vertices, width, height, xRadius, yRadius);
-            
+
             Assert.Equal(8, vertices.Count);
             Assert.Equal(new Vector2(width * .5f - xRadius, -height * .5f), vertices[0]);
             Assert.Equal(new Vector2(width * .5f, -height * .5f + yRadius), vertices[1]);
@@ -274,9 +274,9 @@ namespace Alis.Core.Physic.Test.Figure
             Assert.Equal(new Vector2(-width * .5f, -height * .5f + yRadius), vertices[6]);
             Assert.Equal(new Vector2(-width * .5f + xRadius, -height * .5f), vertices[7]);
         }
-        
+
         /// <summary>
-        /// Tests that create rounded rectangle with valid parameters and no segments returns correct vertices
+        ///     Tests that create rounded rectangle with valid parameters and no segments returns correct vertices
         /// </summary>
         [Fact]
         public void CreateRoundedRectangle_WithValidParametersAndNoSegments_ReturnsCorrectVertices()
@@ -286,9 +286,9 @@ namespace Alis.Core.Physic.Test.Figure
             float xRadius = 0.5f;
             float yRadius = 0.5f;
             int segments = 0;
-            
+
             Vertices result = Polygon.CreateRoundedRectangle(width, height, xRadius, yRadius, segments);
-            
+
             Assert.Equal(8, result.Count);
             Assert.Equal(new Vector2(width * .5f - xRadius, -height * .5f), result[0]);
             Assert.Equal(new Vector2(width * .5f, -height * .5f + yRadius), result[1]);
@@ -299,9 +299,9 @@ namespace Alis.Core.Physic.Test.Figure
             Assert.Equal(new Vector2(-width * .5f, -height * .5f + yRadius), result[6]);
             Assert.Equal(new Vector2(-width * .5f + xRadius, -height * .5f), result[7]);
         }
-        
+
         /// <summary>
-        /// Tests that create rounded rectangle with valid parameters and segments returns correct vertices
+        ///     Tests that create rounded rectangle with valid parameters and segments returns correct vertices
         /// </summary>
         [Fact]
         public void CreateRoundedRectangle_WithValidParametersAndSegments_ReturnsCorrectVertices()
@@ -311,14 +311,14 @@ namespace Alis.Core.Physic.Test.Figure
             float xRadius = 0.5f;
             float yRadius = 0.5f;
             int segments = 4;
-            
+
             Vertices result = Polygon.CreateRoundedRectangle(width, height, xRadius, yRadius, segments);
-            
+
             // Here you would assert that the properties of result have been set correctly.
         }
-        
+
         /// <summary>
-        /// Tests that create rounded rectangle with invalid parameters throws exception
+        ///     Tests that create rounded rectangle with invalid parameters throws exception
         /// </summary>
         [Fact]
         public void CreateRoundedRectangle_WithInvalidParameters_ThrowsException()
@@ -328,12 +328,12 @@ namespace Alis.Core.Physic.Test.Figure
             float xRadius = 2.0f; // Invalid xRadius
             float yRadius = 2.0f; // Invalid yRadius
             int segments = 4;
-            
-            Assert.Throws<System.Exception>(() => Polygon.CreateRoundedRectangle(width, height, xRadius, yRadius, segments));
+
+            Assert.Throws<Exception>(() => Polygon.CreateRoundedRectangle(width, height, xRadius, yRadius, segments));
         }
-        
+
         /// <summary>
-        /// Tests that validate rounded rectangle parameters with valid parameters does not throw exception
+        ///     Tests that validate rounded rectangle parameters with valid parameters does not throw exception
         /// </summary>
         [Fact]
         public void ValidateRoundedRectangleParameters_WithValidParameters_DoesNotThrowException()
@@ -343,13 +343,13 @@ namespace Alis.Core.Physic.Test.Figure
             float xRadius = 0.5f;
             float yRadius = 0.5f;
             int segments = 4;
-            
+
             Exception ex = Record.Exception(() => Polygon.ValidateRoundedRectangleParameters(width, height, xRadius, yRadius, segments));
             Assert.Null(ex);
         }
-        
+
         /// <summary>
-        /// Tests that validate rounded rectangle parameters with invalid radius throws exception
+        ///     Tests that validate rounded rectangle parameters with invalid radius throws exception
         /// </summary>
         [Fact]
         public void ValidateRoundedRectangleParameters_WithInvalidRadius_ThrowsException()
@@ -359,12 +359,12 @@ namespace Alis.Core.Physic.Test.Figure
             float xRadius = 2.0f; // Invalid xRadius
             float yRadius = 2.0f; // Invalid yRadius
             int segments = 4;
-            
-            Assert.Throws<System.Exception>(() => Polygon.ValidateRoundedRectangleParameters(width, height, xRadius, yRadius, segments));
+
+            Assert.Throws<Exception>(() => Polygon.ValidateRoundedRectangleParameters(width, height, xRadius, yRadius, segments));
         }
-        
+
         /// <summary>
-        /// Tests that validate rounded rectangle parameters with negative segments throws exception
+        ///     Tests that validate rounded rectangle parameters with negative segments throws exception
         /// </summary>
         [Fact]
         public void ValidateRoundedRectangleParameters_WithNegativeSegments_ThrowsException()
@@ -374,12 +374,12 @@ namespace Alis.Core.Physic.Test.Figure
             float xRadius = 0.5f;
             float yRadius = 0.5f;
             int segments = -1; // Invalid segments
-            
-            Assert.Throws<System.Exception>(() => Polygon.ValidateRoundedRectangleParameters(width, height, xRadius, yRadius, segments));
+
+            Assert.Throws<Exception>(() => Polygon.ValidateRoundedRectangleParameters(width, height, xRadius, yRadius, segments));
         }
-        
+
         /// <summary>
-        /// Tests that validate capsule parameters with valid parameters does not throw exception
+        ///     Tests that validate capsule parameters with valid parameters does not throw exception
         /// </summary>
         [Fact]
         public void ValidateCapsuleParameters_WithValidParameters_DoesNotThrowException()
@@ -389,13 +389,13 @@ namespace Alis.Core.Physic.Test.Figure
             int topEdges = 4;
             float bottomRadius = 0.5f;
             int bottomEdges = 4;
-            
+
             Exception ex = Record.Exception(() => Polygon.ValidateCapsuleParameters(height, topRadius, topEdges, bottomRadius, bottomEdges));
             Assert.Null(ex);
         }
-        
+
         /// <summary>
-        /// Tests that validate capsule parameters with invalid height throws exception
+        ///     Tests that validate capsule parameters with invalid height throws exception
         /// </summary>
         [Fact]
         public void ValidateCapsuleParameters_WithInvalidHeight_ThrowsException()
@@ -405,12 +405,12 @@ namespace Alis.Core.Physic.Test.Figure
             int topEdges = 4;
             float bottomRadius = 0.5f;
             int bottomEdges = 4;
-            
-            Assert.Throws<System.ArgumentException>(() => Polygon.ValidateCapsuleParameters(height, topRadius, topEdges, bottomRadius, bottomEdges));
+
+            Assert.Throws<ArgumentException>(() => Polygon.ValidateCapsuleParameters(height, topRadius, topEdges, bottomRadius, bottomEdges));
         }
-        
+
         /// <summary>
-        /// Tests that validate capsule parameters with invalid top radius throws exception
+        ///     Tests that validate capsule parameters with invalid top radius throws exception
         /// </summary>
         [Fact]
         public void ValidateCapsuleParameters_WithInvalidTopRadius_ThrowsException()
@@ -420,12 +420,12 @@ namespace Alis.Core.Physic.Test.Figure
             int topEdges = 4;
             float bottomRadius = 0.5f;
             int bottomEdges = 4;
-            
-            Assert.Throws<System.ArgumentException>(() => Polygon.ValidateCapsuleParameters(height, topRadius, topEdges, bottomRadius, bottomEdges));
+
+            Assert.Throws<ArgumentException>(() => Polygon.ValidateCapsuleParameters(height, topRadius, topEdges, bottomRadius, bottomEdges));
         }
-        
+
         /// <summary>
-        /// Tests that validate capsule parameters with invalid top edges throws exception
+        ///     Tests that validate capsule parameters with invalid top edges throws exception
         /// </summary>
         [Fact]
         public void ValidateCapsuleParameters_WithInvalidTopEdges_ThrowsException()
@@ -435,12 +435,12 @@ namespace Alis.Core.Physic.Test.Figure
             int topEdges = 0; // Invalid topEdges
             float bottomRadius = 0.5f;
             int bottomEdges = 4;
-            
-            Assert.Throws<System.ArgumentException>(() => Polygon.ValidateCapsuleParameters(height, topRadius, topEdges, bottomRadius, bottomEdges));
+
+            Assert.Throws<ArgumentException>(() => Polygon.ValidateCapsuleParameters(height, topRadius, topEdges, bottomRadius, bottomEdges));
         }
-        
+
         /// <summary>
-        /// Tests that validate capsule parameters with invalid bottom radius throws exception
+        ///     Tests that validate capsule parameters with invalid bottom radius throws exception
         /// </summary>
         [Fact]
         public void ValidateCapsuleParameters_WithInvalidBottomRadius_ThrowsException()
@@ -450,12 +450,12 @@ namespace Alis.Core.Physic.Test.Figure
             int topEdges = 4;
             float bottomRadius = 2.0f; // Invalid bottomRadius
             int bottomEdges = 4;
-            
-            Assert.Throws<System.ArgumentException>(() => Polygon.ValidateCapsuleParameters(height, topRadius, topEdges, bottomRadius, bottomEdges));
+
+            Assert.Throws<ArgumentException>(() => Polygon.ValidateCapsuleParameters(height, topRadius, topEdges, bottomRadius, bottomEdges));
         }
-        
+
         /// <summary>
-        /// Tests that validate capsule parameters with invalid bottom edges throws exception
+        ///     Tests that validate capsule parameters with invalid bottom edges throws exception
         /// </summary>
         [Fact]
         public void ValidateCapsuleParameters_WithInvalidBottomEdges_ThrowsException()
@@ -465,12 +465,12 @@ namespace Alis.Core.Physic.Test.Figure
             int topEdges = 4;
             float bottomRadius = 0.5f;
             int bottomEdges = 0; // Invalid bottomEdges
-            
-            Assert.Throws<System.ArgumentException>(() => Polygon.ValidateCapsuleParameters(height, topRadius, topEdges, bottomRadius, bottomEdges));
+
+            Assert.Throws<ArgumentException>(() => Polygon.ValidateCapsuleParameters(height, topRadius, topEdges, bottomRadius, bottomEdges));
         }
-        
+
         /// <summary>
-        /// Tests that validate radius with valid parameters does not throw exception
+        ///     Tests that validate radius with valid parameters does not throw exception
         /// </summary>
         [Fact]
         public void ValidateRadius_WithValidParameters_DoesNotThrowException()
@@ -478,13 +478,13 @@ namespace Alis.Core.Physic.Test.Figure
             float radius = 0.5f;
             float height = 2.0f;
             string position = "top";
-            
+
             Exception ex = Record.Exception(() => Polygon.ValidateRadius(radius, height, position));
             Assert.Null(ex);
         }
-        
+
         /// <summary>
-        /// Tests that validate radius with zero radius throws exception
+        ///     Tests that validate radius with zero radius throws exception
         /// </summary>
         [Fact]
         public void ValidateRadius_WithZeroRadius_ThrowsException()
@@ -492,12 +492,12 @@ namespace Alis.Core.Physic.Test.Figure
             float radius = 0.0f; // Invalid radius
             float height = 2.0f;
             string position = "top";
-            
-            Assert.Throws<System.ArgumentException>(() => Polygon.ValidateRadius(radius, height, position));
+
+            Assert.Throws<ArgumentException>(() => Polygon.ValidateRadius(radius, height, position));
         }
-        
+
         /// <summary>
-        /// Tests that validate radius with radius greater than half height throws exception
+        ///     Tests that validate radius with radius greater than half height throws exception
         /// </summary>
         [Fact]
         public void ValidateRadius_WithRadiusGreaterThanHalfHeight_ThrowsException()
@@ -505,8 +505,8 @@ namespace Alis.Core.Physic.Test.Figure
             float radius = 2.0f; // Invalid radius
             float height = 2.0f;
             string position = "top";
-            
-            Assert.Throws<System.ArgumentException>(() => Polygon.ValidateRadius(radius, height, position));
+
+            Assert.Throws<ArgumentException>(() => Polygon.ValidateRadius(radius, height, position));
         }
     }
 }

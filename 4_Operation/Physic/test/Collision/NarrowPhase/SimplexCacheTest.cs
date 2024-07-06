@@ -46,14 +46,14 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             // Arrange
             SimplexCache simplexCache = new SimplexCache();
             ushort expectedValue = 3;
-            
+
             // Act
             simplexCache.Count = expectedValue;
-            
+
             // Assert
             Assert.Equal(expectedValue, simplexCache.Count);
         }
-        
+
         /// <summary>
         ///     Tests that test index a property
         /// </summary>
@@ -63,14 +63,14 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             // Arrange
             SimplexCache simplexCache = new SimplexCache();
             byte[] expectedValue = new byte[3];
-            
+
             // Act
             simplexCache.IndexA = expectedValue;
-            
+
             // Assert
             Assert.Equal(expectedValue, simplexCache.IndexA);
         }
-        
+
         /// <summary>
         ///     Tests that test index b property
         /// </summary>
@@ -80,15 +80,15 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             // Arrange
             SimplexCache simplexCache = new SimplexCache();
             byte[] expectedValue = new byte[3];
-            
-            
+
+
             // Act
             simplexCache.IndexB = expectedValue;
-            
+
             // Assert
             Assert.Equal(expectedValue, simplexCache.IndexB);
         }
-        
+
         /// <summary>
         ///     Tests that test metric property
         /// </summary>
@@ -98,10 +98,10 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             // Arrange
             SimplexCache simplexCache = new SimplexCache();
             float expectedValue = 1.5f;
-            
+
             // Act
             simplexCache.Metric = expectedValue;
-            
+
             // Assert
             Assert.Equal(expectedValue, simplexCache.Metric);
         }

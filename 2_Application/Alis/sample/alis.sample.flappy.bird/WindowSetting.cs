@@ -33,32 +33,26 @@ using Alis.Core.Graphic;
 namespace Alis.Sample.Flappy.Bird
 {
     /// <summary>
-    /// The window setting class
+    ///     The window setting class
     /// </summary>
-    public class WindowSetting 
+    public class WindowSetting
     {
         /// <summary>
-        /// Gets or sets the value of the window
+        ///     Initializes a new instance of the <see cref="WindowSetting" /> class
         /// </summary>
-        [JsonPropertyName("_Window_")]
-        public Window Window { get; set; }
-        
+        public WindowSetting() => Window = new Window();
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="WindowSetting"/> class
-        /// </summary>
-        public WindowSetting()
-        {
-            Window = new Window();
-        }
-        
-        /// <summary>
-        /// Initializes a new instance of the <see cref="WindowSetting"/> class
+        ///     Initializes a new instance of the <see cref="WindowSetting" /> class
         /// </summary>
         /// <param name="window">The window</param>
         [JsonConstructor]
-        public WindowSetting(Window window)
-        {
-            Window = window;
-        }
+        public WindowSetting(Window window) => Window = window;
+
+        /// <summary>
+        ///     Gets or sets the value of the window
+        /// </summary>
+        [JsonPropertyName("_Window_")]
+        public Window Window { get; set; }
     }
 }

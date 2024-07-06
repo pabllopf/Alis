@@ -34,31 +34,31 @@ using Xunit;
 namespace Alis.Test.Builder.Core.Ecs.System.Manager.Network
 {
     /// <summary>
-    /// The network manager builder test class
+    ///     The network manager builder test class
     /// </summary>
     public class NetworkManagerBuilderTest
     {
         /// <summary>
-        /// Tests that network manager builder default constructor valid input
+        ///     Tests that network manager builder default constructor valid input
         /// </summary>
         [Fact]
         public void NetworkManagerBuilder_DefaultConstructor_ValidInput()
         {
             NetworkManagerBuilder networkManagerBuilder = new NetworkManagerBuilder();
-            
+
             Assert.NotNull(networkManagerBuilder);
         }
-        
+
         /// <summary>
-        /// Tests that build valid input
+        ///     Tests that build valid input
         /// </summary>
         [Fact]
         public void Build_ValidInput()
         {
             NetworkManagerBuilder networkManagerBuilder = new NetworkManagerBuilder();
-            
+
             NetworkManager networkManager = networkManagerBuilder.Build();
-            
+
             Assert.NotNull(networkManager);
         }
     }

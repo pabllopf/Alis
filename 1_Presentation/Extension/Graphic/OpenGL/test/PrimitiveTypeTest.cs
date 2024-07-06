@@ -30,10 +30,9 @@
 namespace Alis.Extension.Graphic.OpenGL.Test
 {
     /// <summary>
-    /// The primitive type test class
+    ///     The primitive type test class
     /// </summary>
     public class PrimitiveTypeTest
     {
-        
     }
 }

@@ -46,7 +46,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
             // Assert
             Assert.Equal(0, (int) ContactType.NotSupported);
         }
-        
+
         /// <summary>
         ///     Tests that test contact type polygon
         /// </summary>
@@ -56,7 +56,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
             // Assert
             Assert.Equal(1, (int) ContactType.Polygon);
         }
-        
+
         /// <summary>
         ///     Tests that test contact type polygon and circle
         /// </summary>
@@ -66,7 +66,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
             // Assert
             Assert.Equal(2, (int) ContactType.PolygonAndCircle);
         }
-        
+
         /// <summary>
         ///     Tests that test contact type circle
         /// </summary>
@@ -76,7 +76,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
             // Assert
             Assert.Equal(3, (int) ContactType.Circle);
         }
-        
+
         /// <summary>
         ///     Tests that test contact type edge and polygon
         /// </summary>
@@ -86,7 +86,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
             // Assert
             Assert.Equal(4, (int) ContactType.EdgeAndPolygon);
         }
-        
+
         /// <summary>
         ///     Tests that test contact type edge and circle
         /// </summary>
@@ -96,7 +96,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
             // Assert
             Assert.Equal(5, (int) ContactType.EdgeAndCircle);
         }
-        
+
         /// <summary>
         ///     Tests that test contact type chain and polygon
         /// </summary>
@@ -106,7 +106,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
             // Assert
             Assert.Equal(6, (int) ContactType.ChainAndPolygon);
         }
-        
+
         /// <summary>
         ///     Tests that test contact type chain and circle
         /// </summary>

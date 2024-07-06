@@ -42,22 +42,22 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The valid
         /// </summary>
         public byte Valid;
-        
+
         /// <summary>
         ///     The cmd lists count
         /// </summary>
         public int CmdListsCount;
-        
+
         /// <summary>
         ///     The total idx count
         /// </summary>
         public int TotalIdxCount;
-        
+
         /// <summary>
         ///     The total vtx count
         /// </summary>
         public int TotalVtxCount;
-        
+
         /// <summary>
         ///     The cmd lists
         /// </summary>
@@ -87,22 +87,22 @@ namespace Alis.Extension.Graphic.ImGui
                 }
             }
         }
-        
+
         /// <summary>
         ///     The display pos
         /// </summary>
         public Vector2 DisplayPos;
-        
+
         /// <summary>
         ///     The display size
         /// </summary>
         public Vector2 DisplaySize;
-        
+
         /// <summary>
         ///     The framebuffer scale
         /// </summary>
         public Vector2 FramebufferScale;
-        
+
         /// <summary>
         ///     The owner viewport
         /// </summary>
@@ -116,7 +116,7 @@ namespace Alis.Extension.Graphic.ImGui
             get => Marshal.PtrToStructure<ImGuiViewport>(OwnerViewportPtr);
             set => Marshal.StructureToPtr(value, OwnerViewportPtr, false);
         }
-        
+
         /// <summary>
         ///     Clears this instance
         /// </summary>
@@ -124,7 +124,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.ImDrawData_Clear(ref this);
         }
-        
+
         /// <summary>
         ///     Des the index all buffers
         /// </summary>
@@ -132,7 +132,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.ImDrawData_DeIndexAllBuffers(ref this);
         }
-        
+
         /// <summary>
         ///     Destroys this instance
         /// </summary>
@@ -140,7 +140,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.ImDrawData_destroy(ref this);
         }
-        
+
         /// <summary>
         ///     Scales the clip rects using the specified fb scale
         /// </summary>
@@ -149,7 +149,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.ImDrawData_ScaleClipRects(ref this, fbScale);
         }
-        
+
         /// <summary>
         ///     Gets the value of the cmd lists range
         /// </summary>

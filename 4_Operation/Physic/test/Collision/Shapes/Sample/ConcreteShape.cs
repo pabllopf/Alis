@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.RayCast;
@@ -36,13 +37,13 @@ using Alis.Core.Physic.Shared;
 namespace Alis.Core.Physic.Test.Collision.Shapes.Sample
 {
     /// <summary>
-    /// The concrete shape class
+    ///     The concrete shape class
     /// </summary>
-    /// <seealso cref="AShape"/>
+    /// <seealso cref="AShape" />
     public class ConcreteShape : AShape
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ConcreteShape"/> class
+        ///     Initializes a new instance of the <see cref="ConcreteShape" /> class
         /// </summary>
         /// <param name="type">The type</param>
         /// <param name="radius">The radius</param>
@@ -50,37 +51,38 @@ namespace Alis.Core.Physic.Test.Collision.Shapes.Sample
         public ConcreteShape(ShapeType type, float radius = 0, float density = 0) : base(type, radius, density)
         {
         }
-        
+
         /// <summary>
-        /// Gets the value of the child count
+        ///     Gets the value of the child count
         /// </summary>
         public override int ChildCount { get; }
+
         /// <summary>
-        /// Clones this instance
+        ///     Clones this instance
         /// </summary>
         /// <returns>The shape</returns>
-        public override AShape Clone() => throw new System.NotImplementedException();
-        
+        public override AShape Clone() => throw new NotImplementedException();
+
         /// <summary>
-        /// Describes whether this instance test point
+        ///     Describes whether this instance test point
         /// </summary>
         /// <param name="transform">The transform</param>
         /// <param name="point">The point</param>
         /// <returns>The bool</returns>
-        public override bool TestPoint(ref Transform transform, ref Vector2 point) => throw new System.NotImplementedException();
-        
+        public override bool TestPoint(ref Transform transform, ref Vector2 point) => throw new NotImplementedException();
+
         /// <summary>
-        /// Describes whether this instance ray cast
+        ///     Describes whether this instance ray cast
         /// </summary>
         /// <param name="input">The input</param>
         /// <param name="transform">The transform</param>
         /// <param name="childIndex">The child index</param>
         /// <param name="output">The output</param>
         /// <returns>The bool</returns>
-        public override bool RayCast(ref RayCastInput input, ref Transform transform, int childIndex, out RayCastOutput output) => throw new System.NotImplementedException();
-        
+        public override bool RayCast(ref RayCastInput input, ref Transform transform, int childIndex, out RayCastOutput output) => throw new NotImplementedException();
+
         /// <summary>
-        /// Computes the aabb using the specified transform
+        ///     Computes the aabb using the specified transform
         /// </summary>
         /// <param name="transform">The transform</param>
         /// <param name="childIndex">The child index</param>
@@ -88,7 +90,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes.Sample
         /// <exception cref="System.NotImplementedException"></exception>
         public override void ComputeAabb(ref Transform transform, int childIndex, out Aabb aabb)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

@@ -33,13 +33,13 @@ using System.Text;
 namespace Alis.Core.Aspect.Data.Test.Json
 {
     /// <summary>
-    /// The string writer throwing exception on write class
+    ///     The string writer throwing exception on write class
     /// </summary>
-    /// <seealso cref="TextWriter"/>
+    /// <seealso cref="TextWriter" />
     public class StringWriterThrowingExceptionOnWrite : TextWriter
     {
         /// <summary>
-        /// Gets the value of the encoding
+        ///     Gets the value of the encoding
         /// </summary>
         public override Encoding Encoding { get; }
     }

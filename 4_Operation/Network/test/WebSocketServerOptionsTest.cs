@@ -33,12 +33,12 @@ using Xunit;
 namespace Alis.Core.Network.Test
 {
     /// <summary>
-    /// The web socket server options test class
+    ///     The web socket server options test class
     /// </summary>
     public class WebSocketServerOptionsTest
     {
         /// <summary>
-        /// Tests that web socket server options default constructor
+        ///     Tests that web socket server options default constructor
         /// </summary>
         [Fact]
         public void WebSocketServerOptions_DefaultConstructor()
@@ -49,9 +49,9 @@ namespace Alis.Core.Network.Test
             Assert.False(options.IncludeExceptionInCloseResponse);
             Assert.Equal("", options.SubProtocol);
         }
-        
+
         /// <summary>
-        /// Tests that web socket server options constructor with parameters
+        ///     Tests that web socket server options constructor with parameters
         /// </summary>
         [Fact]
         public void WebSocketServerOptions_ConstructorWithParameters()
@@ -62,9 +62,9 @@ namespace Alis.Core.Network.Test
             Assert.True(options.IncludeExceptionInCloseResponse);
             Assert.Equal("test", options.SubProtocol);
         }
-        
+
         /// <summary>
-        /// Tests that web socket server options constructor with time span and sub protocol
+        ///     Tests that web socket server options constructor with time span and sub protocol
         /// </summary>
         [Fact]
         public void WebSocketServerOptions_ConstructorWithTimeSpanAndSubProtocol()

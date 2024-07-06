@@ -36,199 +36,199 @@ using Xunit;
 namespace Alis.Test.Builder.Core.Graphic
 {
     /// <summary>
-    /// The window builder test class
+    ///     The window builder test class
     /// </summary>
     public class WindowBuilderTest
     {
         /// <summary>
-        /// Tests that window builder default constructor valid input
+        ///     Tests that window builder default constructor valid input
         /// </summary>
         [Fact]
         public void WindowBuilder_DefaultConstructor_ValidInput()
         {
             WindowBuilder windowBuilder = new WindowBuilder();
-            
+
             Assert.NotNull(windowBuilder);
         }
-        
+
         /// <summary>
-        /// Tests that background valid input
+        ///     Tests that background valid input
         /// </summary>
         [Fact]
         public void Background_ValidInput()
         {
             WindowBuilder windowBuilder = new WindowBuilder();
             Color color = new Color(255, 255, 255, 255);
-            
+
             windowBuilder.Background(color);
-            
+
             Assert.Equal(color, windowBuilder.Build().Background);
         }
-        
+
         /// <summary>
-        /// Tests that build valid input
+        ///     Tests that build valid input
         /// </summary>
         [Fact]
         public void Build_ValidInput()
         {
             WindowBuilder windowBuilder = new WindowBuilder();
-            
+
             Window window = windowBuilder.Build();
-            
+
             Assert.NotNull(window);
         }
-        
+
         /// <summary>
-        /// Tests that is resizable valid input
+        ///     Tests that is resizable valid input
         /// </summary>
         [Fact]
         public void IsResizable_ValidInput()
         {
             WindowBuilder windowBuilder = new WindowBuilder();
-            
+
             windowBuilder.IsResizable(true);
-            
+
             Assert.True(windowBuilder.Build().IsWindowResizable);
         }
-        
+
         /// <summary>
-        /// Tests that resolution valid input
+        ///     Tests that resolution valid input
         /// </summary>
         [Fact]
         public void Resolution_ValidInput()
         {
             WindowBuilder windowBuilder = new WindowBuilder();
             Vector2 resolution = new Vector2(800, 600);
-            
+
             windowBuilder.Resolution(resolution.X, resolution.Y);
-            
+
             Assert.Equal(resolution, windowBuilder.Build().Resolution);
         }
-        
+
         /// <summary>
-        /// Tests that window builder default constructor valid input v 2
+        ///     Tests that window builder default constructor valid input v 2
         /// </summary>
         [Fact]
         public void WindowBuilder_DefaultConstructor_ValidInput_v2()
         {
             WindowBuilder windowBuilder = new WindowBuilder();
-            
+
             Assert.NotNull(windowBuilder);
         }
-        
+
         /// <summary>
-        /// Tests that build valid input v 2
+        ///     Tests that build valid input v 2
         /// </summary>
         [Fact]
         public void Build_ValidInput_v2()
         {
             WindowBuilder windowBuilder = new WindowBuilder();
-            
+
             Window window = windowBuilder.Build();
-            
+
             Assert.NotNull(window);
         }
-        
+
         /// <summary>
-        /// Tests that background valid input v 2
+        ///     Tests that background valid input v 2
         /// </summary>
         [Fact]
         public void Background_ValidInput_v2()
         {
             WindowBuilder windowBuilder = new WindowBuilder();
             Color color = new Color(255, 255, 255, 255);
-            
+
             windowBuilder.Background(color);
-            
+
             Assert.Equal(color, windowBuilder.Build().Background);
         }
-        
+
         /// <summary>
-        /// Tests that is resizable valid input v 2
+        ///     Tests that is resizable valid input v 2
         /// </summary>
         [Fact]
         public void IsResizable_ValidInput_v2()
         {
             WindowBuilder windowBuilder = new WindowBuilder();
-            
+
             windowBuilder.IsResizable(true);
-            
+
             Assert.True(windowBuilder.Build().IsWindowResizable);
         }
-        
+
         /// <summary>
-        /// Tests that resolution valid input v 2
+        ///     Tests that resolution valid input v 2
         /// </summary>
         [Fact]
         public void Resolution_ValidInput_v2()
         {
             WindowBuilder windowBuilder = new WindowBuilder();
             Vector2 resolution = new Vector2(1920, 1080);
-            
+
             windowBuilder.Resolution(resolution.X, resolution.Y);
-            
+
             Assert.Equal(resolution, windowBuilder.Build().Resolution);
         }
-        
+
         /// <summary>
-        /// Tests that is resizable no argument sets is window resizable to true
+        ///     Tests that is resizable no argument sets is window resizable to true
         /// </summary>
         [Fact]
         public void IsResizable_NoArgument_SetsIsWindowResizableToTrue()
         {
             WindowBuilder builder = new WindowBuilder();
-            
+
             builder.IsResizable();
-            
+
             Window result = builder.Build();
-            
+
             Assert.True(result.IsWindowResizable);
         }
-        
+
         /// <summary>
-        /// Tests that is resizable with argument sets is window resizable to given value
+        ///     Tests that is resizable with argument sets is window resizable to given value
         /// </summary>
         [Fact]
         public void IsResizable_WithArgument_SetsIsWindowResizableToGivenValue()
         {
             WindowBuilder builder = new WindowBuilder();
-            
+
             builder.IsResizable(false);
-            
+
             Window result = builder.Build();
-            
+
             Assert.False(result.IsWindowResizable);
         }
-        
+
         /// <summary>
-        /// Tests that background sets background to given value
+        ///     Tests that background sets background to given value
         /// </summary>
         [Fact]
         public void Background_SetsBackgroundToGivenValue()
         {
             WindowBuilder builder = new WindowBuilder();
             Color color = new Color(255, 255, 255, 255);
-            
+
             builder.Background(color);
-            
+
             Window result = builder.Build();
-            
+
             Assert.Equal(color, result.Background);
         }
-        
+
         /// <summary>
-        /// Tests that resolution sets resolution to given value
+        ///     Tests that resolution sets resolution to given value
         /// </summary>
         [Fact]
         public void Resolution_SetsResolutionToGivenValue()
         {
             WindowBuilder builder = new WindowBuilder();
             Vector2 resolution = new Vector2(1920, 1080);
-            
+
             builder.Resolution(resolution.X, resolution.Y);
-            
+
             Window result = builder.Build();
-            
+
             Assert.Equal(resolution, result.Resolution);
         }
     }

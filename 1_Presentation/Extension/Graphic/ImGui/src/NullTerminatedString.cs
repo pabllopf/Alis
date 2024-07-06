@@ -42,15 +42,15 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The data
         /// </summary>
         public readonly IntPtr Data;
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="NullTerminatedString" /> class
         /// </summary>
         /// <param name="data">The data</param>
         public NullTerminatedString(IntPtr data) => Data = data;
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="NullTerminatedString"/> class
+        ///     Initializes a new instance of the <see cref="NullTerminatedString" /> class
         /// </summary>
         /// <param name="data">The data</param>
         public NullTerminatedString(byte[] data)
@@ -80,7 +80,7 @@ namespace Alis.Extension.Graphic.ImGui
             Marshal.Copy(Data, buffer, 0, length);
             return Encoding.UTF8.GetString(buffer);
         }
-        
+
         /// <summary>
         /// </summary>
         /// <param name="nts"></param>

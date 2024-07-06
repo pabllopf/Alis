@@ -34,31 +34,31 @@ using Xunit;
 namespace Alis.Test.Builder.Core.Ecs.Component.Ui
 {
     /// <summary>
-    /// The canvas builder test class
+    ///     The canvas builder test class
     /// </summary>
     public class CanvasBuilderTest
     {
         /// <summary>
-        /// Tests that canvas builder default constructor valid input
+        ///     Tests that canvas builder default constructor valid input
         /// </summary>
         [Fact]
         public void CanvasBuilder_DefaultConstructor_ValidInput()
         {
             CanvasBuilder canvasBuilder = new CanvasBuilder();
-            
+
             Assert.NotNull(canvasBuilder);
         }
-        
+
         /// <summary>
-        /// Tests that build valid input
+        ///     Tests that build valid input
         /// </summary>
         [Fact]
         public void Build_ValidInput()
         {
             CanvasBuilder canvasBuilder = new CanvasBuilder();
-            
+
             Canvas canvas = canvasBuilder.Build();
-            
+
             Assert.NotNull(canvas);
         }
     }

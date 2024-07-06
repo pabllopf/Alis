@@ -37,12 +37,12 @@ using Xunit;
 namespace Alis.Test.Core.Ecs.Component.Render
 {
     /// <summary>
-    /// The sprite test class
+    ///     The sprite test class
     /// </summary>
     public class SpriteTest
     {
         /// <summary>
-        /// Tests that on init valid input
+        ///     Tests that on init valid input
         /// </summary>
         [Fact]
         public void OnInit_ValidInput()
@@ -50,12 +50,10 @@ namespace Alis.Test.Core.Ecs.Component.Render
             VideoGame videoGame = new VideoGame();
             Sprite sprite = new Sprite(new Image("dino_assets.png"));
             sprite.OnInit();
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that on awake valid input
+        ///     Tests that on awake valid input
         /// </summary>
         [Fact]
         public void OnAwake_ValidInput()
@@ -63,12 +61,10 @@ namespace Alis.Test.Core.Ecs.Component.Render
             VideoGame videoGame = new VideoGame();
             Sprite sprite = new Sprite(new Image("dino_assets.png"));
             sprite.OnAwake();
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that on exit valid input
+        ///     Tests that on exit valid input
         /// </summary>
         [Fact]
         public void OnExit_ValidInput()
@@ -76,12 +72,10 @@ namespace Alis.Test.Core.Ecs.Component.Render
             VideoGame videoGame = new VideoGame();
             Sprite sprite = new Sprite(new Image("dino_assets.png"));
             sprite.OnExit();
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that render valid input
+        ///     Tests that render valid input
         /// </summary>
         [Fact]
         public void Render_ValidInput()
@@ -90,11 +84,10 @@ namespace Alis.Test.Core.Ecs.Component.Render
             Sprite sprite = new Sprite(new Image("dino_assets.png"));
             IntPtr renderer = IntPtr.Zero; // You would need to initialize a valid renderer here
             Camera camera = new Camera(); // You would need to initialize a valid camera here
-            
         }
-        
+
         /// <summary>
-        /// Tests that render without camera valid input
+        ///     Tests that render without camera valid input
         /// </summary>
         [Fact]
         public void RenderWithoutCamera_ValidInput()
@@ -102,11 +95,10 @@ namespace Alis.Test.Core.Ecs.Component.Render
             VideoGame videoGame = new VideoGame();
             Sprite sprite = new Sprite(new Image("dino_assets.png"));
             IntPtr renderer = IntPtr.Zero; // You would need to initialize a valid renderer here
-            
         }
-        
+
         /// <summary>
-        /// Tests that builder should return sprite builder
+        ///     Tests that builder should return sprite builder
         /// </summary>
         [Fact]
         public void Builder_ShouldReturnSpriteBuilder()
@@ -116,9 +108,9 @@ namespace Alis.Test.Core.Ecs.Component.Render
             Assert.NotNull(result);
             Assert.IsType<SpriteBuilder>(result);
         }
-        
+
         /// <summary>
-        /// Tests that render with renderer and camera should not throw exception
+        ///     Tests that render with renderer and camera should not throw exception
         /// </summary>
         [Fact]
         public void Render_WithRendererAndCamera_ShouldNotThrowException()
@@ -127,13 +119,13 @@ namespace Alis.Test.Core.Ecs.Component.Render
             Sprite sprite = new Sprite();
             IntPtr renderer = IntPtr.Zero; // You would replace this with a valid renderer
             Camera camera = new Camera(); // You would replace this with a valid camera
-            
+
             Exception exception = Record.Exception(() => sprite.Render(renderer, camera));
             Assert.NotNull(exception);
         }
-        
+
         /// <summary>
-        /// Tests that render with renderer should not throw exception
+        ///     Tests that render with renderer should not throw exception
         /// </summary>
         [Fact]
         public void Render_WithRenderer_ShouldNotThrowException()
@@ -141,13 +133,13 @@ namespace Alis.Test.Core.Ecs.Component.Render
             VideoGame videoGame = new VideoGame();
             Sprite sprite = new Sprite();
             IntPtr renderer = IntPtr.Zero; // You would replace this with a valid renderer
-            
+
             Exception exception = Record.Exception(() => sprite.Render(renderer));
             Assert.NotNull(exception);
         }
-        
+
         /// <summary>
-        /// Tests that flips set value should change value
+        ///     Tests that flips set value should change value
         /// </summary>
         [Fact]
         public void Flips_SetValue_ShouldChangeValue()
@@ -155,10 +147,10 @@ namespace Alis.Test.Core.Ecs.Component.Render
             Sprite sprite = new Sprite();
             sprite.Flips = RendererFlips.FlipHorizontal;
             Assert.Equal(RendererFlips.FlipHorizontal, sprite.Flips);
-            
+
             sprite.Flips = RendererFlips.FlipVertical;
             Assert.Equal(RendererFlips.FlipVertical, sprite.Flips);
-            
+
             sprite.Flips = RendererFlips.None;
             Assert.Equal(RendererFlips.None, sprite.Flips);
         }

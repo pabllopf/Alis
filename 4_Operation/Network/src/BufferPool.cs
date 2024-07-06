@@ -45,24 +45,24 @@ namespace Alis.Core.Network
         ///     The default buffer size
         /// </summary>
         private const int DefaultBufferSize = 16384;
-        
+
         /// <summary>
         ///     The buffer pool stack
         /// </summary>
         private readonly ConcurrentStack<byte[]> _bufferPoolStack;
-        
+
         /// <summary>
         ///     The buffer size
         /// </summary>
         private readonly int _bufferSize;
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="BufferPool" /> class
         /// </summary>
         public BufferPool() : this(DefaultBufferSize)
         {
         }
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="BufferPool" /> class
         /// </summary>
@@ -72,7 +72,7 @@ namespace Alis.Core.Network
             _bufferSize = bufferSize;
             _bufferPoolStack = new ConcurrentStack<byte[]>();
         }
-        
+
         /// <summary>
         ///     Gets a MemoryStream built from a buffer plucked from a thread safe pool
         ///     The pool grows automatically.
@@ -84,10 +84,10 @@ namespace Alis.Core.Network
             {
                 buffer = new byte[_bufferSize];
             }
-            
+
             return new PublicBufferMemoryStream(buffer, this);
         }
-        
+
         /// <summary>
         ///     Returns the buffer using the specified buffer
         /// </summary>

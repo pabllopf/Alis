@@ -32,12 +32,12 @@ using Xunit;
 namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
 {
     /// <summary>
-    /// The stable priority queue test class
+    ///     The stable priority queue test class
     /// </summary>
     public class StablePriorityQueueTest
     {
         /// <summary>
-        /// Tests that queue initializes with zero nodes
+        ///     Tests that queue initializes with zero nodes
         /// </summary>
         [Fact]
         public void Queue_InitializesWithZeroNodes()
@@ -47,7 +47,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Tests that enqueue increases count
+        ///     Tests that enqueue increases count
         /// </summary>
         [Fact]
         public void Enqueue_IncreasesCount()
@@ -59,7 +59,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Tests that dequeue decreases count
+        ///     Tests that dequeue decreases count
         /// </summary>
         [Fact]
         public void Dequeue_DecreasesCount()
@@ -73,7 +73,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Tests that first returns correct node
+        ///     Tests that first returns correct node
         /// </summary>
         [Fact]
         public void First_ReturnsCorrectNode()
@@ -87,7 +87,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Tests that clear resets queue
+        ///     Tests that clear resets queue
         /// </summary>
         [Fact]
         public void Clear_ResetsQueue()
@@ -100,7 +100,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Tests that contains returns true for enqueued node
+        ///     Tests that contains returns true for enqueued node
         /// </summary>
         [Fact]
         public void Contains_ReturnsTrueForEnqueuedNode()
@@ -112,7 +112,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Tests that contains returns false for not enqueued node
+        ///     Tests that contains returns false for not enqueued node
         /// </summary>
         [Fact]
         public void Contains_ReturnsFalseForNotEnqueuedNode()
@@ -123,7 +123,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Tests that update priority changes node priority
+        ///     Tests that update priority changes node priority
         /// </summary>
         [Fact]
         public void UpdatePriority_ChangesNodePriority()
@@ -136,7 +136,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Tests that remove removes node from queue
+        ///     Tests that remove removes node from queue
         /// </summary>
         [Fact]
         public void Remove_RemovesNodeFromQueue()
@@ -149,7 +149,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Tests that resize increases max size
+        ///     Tests that resize increases max size
         /// </summary>
         [Fact]
         public void Resize_IncreasesMaxSize()

@@ -30,10 +30,9 @@
 namespace Alis.Extension.Math.PathGenerator.Test.TextureTools
 {
     /// <summary>
-    /// The texture converter test class
+    ///     The texture converter test class
     /// </summary>
     public class TextureConverterTest
     {
-        
     }
 }

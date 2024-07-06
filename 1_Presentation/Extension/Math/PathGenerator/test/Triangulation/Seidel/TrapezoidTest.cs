@@ -30,10 +30,9 @@
 namespace Alis.Extension.Math.PathGenerator.Test.Triangulation.Seidel
 {
     /// <summary>
-    /// The trapezoid test class
+    ///     The trapezoid test class
     /// </summary>
     public class TrapezoidTest
     {
-        
     }
 }

@@ -30,10 +30,9 @@
 namespace Alis.Extension.Math.PathGenerator.Test.Triangulation.BayaZit
 {
     /// <summary>
-    /// The baya zit decomposer test class
+    ///     The baya zit decomposer test class
     /// </summary>
     public class BayaZitDecomposerTest
     {
-        
     }
 }

@@ -33,221 +33,202 @@ using Xunit;
 namespace Alis.Test.Core.Ecs.System.Manager
 {
     /// <summary>
-    /// The manager test class
+    ///     The manager test class
     /// </summary>
     public class AManagerTest
     {
         /// <summary>
-        /// Tests that test on enable
+        ///     Tests that test on enable
         /// </summary>
         [Fact]
         public void Test_OnEnable()
         {
             MockManager manager = new MockManager();
             manager.OnEnable();
-            
         }
-        
+
         /// <summary>
-        /// Tests that test on init
+        ///     Tests that test on init
         /// </summary>
         [Fact]
         public void Test_OnInit()
         {
             MockManager manager = new MockManager();
             manager.OnInit();
-            
         }
-        
+
         /// <summary>
-        /// Tests that test on awake
+        ///     Tests that test on awake
         /// </summary>
         [Fact]
         public void Test_OnAwake()
         {
             MockManager manager = new MockManager();
             manager.OnAwake();
-            
         }
-        
+
         /// <summary>
-        /// Tests that test on start
+        ///     Tests that test on start
         /// </summary>
         [Fact]
         public void Test_OnStart()
         {
             MockManager manager = new MockManager();
             manager.OnStart();
-            
         }
-        
+
         /// <summary>
-        /// Tests that test on before update
+        ///     Tests that test on before update
         /// </summary>
         [Fact]
         public void Test_OnBeforeUpdate()
         {
             MockManager manager = new MockManager();
             manager.OnBeforeUpdate();
-            
         }
-        
+
         /// <summary>
-        /// Tests that test on update
+        ///     Tests that test on update
         /// </summary>
         [Fact]
         public void Test_OnUpdate()
         {
             MockManager manager = new MockManager();
             manager.OnUpdate();
-            
         }
-        
+
         /// <summary>
-        /// Tests that test on after update
+        ///     Tests that test on after update
         /// </summary>
         [Fact]
         public void Test_OnAfterUpdate()
         {
             MockManager manager = new MockManager();
             manager.OnAfterUpdate();
-            
         }
-        
+
         /// <summary>
-        /// Tests that test on before fixed update
+        ///     Tests that test on before fixed update
         /// </summary>
         [Fact]
         public void Test_OnBeforeFixedUpdate()
         {
             MockManager manager = new MockManager();
             manager.OnBeforeFixedUpdate();
-            
         }
-        
+
         /// <summary>
-        /// Tests that test on fixed update
+        ///     Tests that test on fixed update
         /// </summary>
         [Fact]
         public void Test_OnFixedUpdate()
         {
             MockManager manager = new MockManager();
             manager.OnFixedUpdate();
-            
         }
-        
+
         /// <summary>
-        /// Tests that test on after fixed update
+        ///     Tests that test on after fixed update
         /// </summary>
         [Fact]
         public void Test_OnAfterFixedUpdate()
         {
             MockManager manager = new MockManager();
             manager.OnAfterFixedUpdate();
-            
         }
-        
+
         /// <summary>
-        /// Tests that test on dispatch events
+        ///     Tests that test on dispatch events
         /// </summary>
         [Fact]
         public void Test_OnDispatchEvents()
         {
             MockManager manager = new MockManager();
             manager.OnDispatchEvents();
-            
         }
-        
+
         /// <summary>
-        /// Tests that test on calculate
+        ///     Tests that test on calculate
         /// </summary>
         [Fact]
         public void Test_OnCalculate()
         {
             MockManager manager = new MockManager();
             manager.OnCalculate();
-            
         }
-        
+
         /// <summary>
-        /// Tests that test on draw
+        ///     Tests that test on draw
         /// </summary>
         [Fact]
         public void Test_OnDraw()
         {
             MockManager manager = new MockManager();
             manager.OnDraw();
-            
         }
-        
+
         /// <summary>
-        /// Tests that test on gui
+        ///     Tests that test on gui
         /// </summary>
         [Fact]
         public void Test_OnGui()
         {
             MockManager manager = new MockManager();
             manager.OnGui();
-            
         }
-        
+
         /// <summary>
-        /// Tests that test on disable
+        ///     Tests that test on disable
         /// </summary>
         [Fact]
         public void Test_OnDisable()
         {
             MockManager manager = new MockManager();
             manager.OnDisable();
-            
         }
-        
+
         /// <summary>
-        /// Tests that test on reset
+        ///     Tests that test on reset
         /// </summary>
         [Fact]
         public void Test_OnReset()
         {
             MockManager manager = new MockManager();
             manager.OnReset();
-            
         }
-        
+
         /// <summary>
-        /// Tests that test on stop
+        ///     Tests that test on stop
         /// </summary>
         [Fact]
         public void Test_OnStop()
         {
             MockManager manager = new MockManager();
             manager.OnStop();
-            
         }
-        
+
         /// <summary>
-        /// Tests that test on exit
+        ///     Tests that test on exit
         /// </summary>
         [Fact]
         public void Test_OnExit()
         {
             MockManager manager = new MockManager();
             manager.OnExit();
-            
         }
-        
+
         /// <summary>
-        /// Tests that test on destroy
+        ///     Tests that test on destroy
         /// </summary>
         [Fact]
         public void Test_OnDestroy()
         {
             MockManager manager = new MockManager();
             manager.OnDestroy();
-            
         }
-        
+
         /// <summary>
-        /// Tests that is enable property set get returns correct value
+        ///     Tests that is enable property set get returns correct value
         /// </summary>
         [Fact]
         public void IsEnable_PropertySet_GetReturnsCorrectValue()
@@ -256,9 +237,9 @@ namespace Alis.Test.Core.Ecs.System.Manager
             manager.IsEnable = true;
             Assert.True(manager.IsEnable);
         }
-        
+
         /// <summary>
-        /// Tests that name property set get returns correct value
+        ///     Tests that name property set get returns correct value
         /// </summary>
         [Fact]
         public void Name_PropertySet_GetReturnsCorrectValue()
@@ -267,9 +248,9 @@ namespace Alis.Test.Core.Ecs.System.Manager
             manager.Name = "TestManager";
             Assert.Equal("TestManager", manager.Name);
         }
-        
+
         /// <summary>
-        /// Tests that id property set get returns correct value
+        ///     Tests that id property set get returns correct value
         /// </summary>
         [Fact]
         public void Id_PropertySet_GetReturnsCorrectValue()
@@ -278,9 +259,9 @@ namespace Alis.Test.Core.Ecs.System.Manager
             manager.Id = "TestId";
             Assert.Equal("TestId", manager.Id);
         }
-        
+
         /// <summary>
-        /// Tests that tag property set get returns correct value
+        ///     Tests that tag property set get returns correct value
         /// </summary>
         [Fact]
         public void Tag_PropertySet_GetReturnsCorrectValue()
