@@ -35,7 +35,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
     ///     The attribute flags enum
     /// </summary>
     [Flags]
-    public enum EnableLinkAttribute
+    public enum EnableLink
     {
         /// <summary>
         ///     The none attribute flags
