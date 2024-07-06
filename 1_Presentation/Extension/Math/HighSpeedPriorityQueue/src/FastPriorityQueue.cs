@@ -91,7 +91,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     has been called
         ///     O(1)
         /// </summary>
-        public bool Contains(T node) => _nodes[node.QueueIndex] == node;
+        public bool Contains(T item) => _nodes[item.QueueIndex] == item;
 
         /// <summary>
         ///     Enqueue a node to the priority queue.  Lower values are placed in front. Ties are broken arbitrarily.
@@ -178,10 +178,10 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     O(log n)
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void Remove(T node)
+        public void Remove(T item)
         {
             //If the node is already the last node, we can remove it immediately
-            if (node.QueueIndex == _numNodes)
+            if (item.QueueIndex == _numNodes)
             {
                 _nodes[_numNodes] = null;
                 _numNodes--;
@@ -190,8 +190,8 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
 
             //Swap the node with the last node
             T formerLastNode = _nodes[_numNodes];
-            _nodes[node.QueueIndex] = formerLastNode;
-            formerLastNode.QueueIndex = node.QueueIndex;
+            _nodes[item.QueueIndex] = formerLastNode;
+            formerLastNode.QueueIndex = item.QueueIndex;
             _nodes[_numNodes] = null;
             _numNodes--;
 
