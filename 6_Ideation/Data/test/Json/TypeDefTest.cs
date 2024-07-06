@@ -2014,7 +2014,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void ShouldCreateMemberDefinitionForField_WithValidField_ReturnsTrue()
         {
             // Arrange
-            FieldInfo field = typeof(MyClass).GetField("myField");
+            FieldInfo field = typeof(MyClass).GetField("MyField");
             JsonOptions options = new JsonOptions();
 
             // Act
@@ -2142,7 +2142,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             bool serialization = true;
-            FieldInfo field = typeof(MyClass).GetField("myField");
+            FieldInfo field = typeof(MyClass).GetField("MyField");
             JsonOptions options = new JsonOptions();
 
             // Act
@@ -2160,7 +2160,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             bool serialization = true;
-            FieldInfo field = typeof(MyClass).GetField("myField");
+            FieldInfo field = typeof(MyClass).GetField("MyField");
             JsonOptions options = new JsonOptions();
 
             // Act
@@ -2178,7 +2178,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             bool serialization = true;
-            FieldInfo field = typeof(MyClass).GetField("myField");
+            FieldInfo field = typeof(MyClass).GetField("MyField");
             JsonOptions options = new JsonOptions();
 
             // Act
@@ -2197,7 +2197,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             bool serialization = true;
-            FieldInfo field = typeof(MyClass).GetField("myField");
+            FieldInfo field = typeof(MyClass).GetField("MyField");
             JsonOptions options = new JsonOptions();
 
             // Act

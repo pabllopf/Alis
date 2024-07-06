@@ -37,6 +37,6 @@ namespace Alis.Core.Aspect.Data.Test.Json.Sample
         /// <summary>
         ///     The my field
         /// </summary>
-        public string myField { get; set; }
+        public string MyField;
     }
 }
