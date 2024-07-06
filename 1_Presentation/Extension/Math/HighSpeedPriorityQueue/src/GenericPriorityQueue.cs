@@ -300,149 +300,44 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
             
             _nodes[node.QueueIndex] = node;
         }
-        
-        /// <summary>
-        ///     Cascades the down using the specified node
-        /// </summary>
-        /// <param name="node">The node</param>
+
         private void CascadeDown(TItem node)
         {
-            //aka Heapify-down
             int finalQueueIndex = node.QueueIndex;
-            int childLeftIndex = 2 * finalQueueIndex;
-            
-            // If leaf node, we're done
-            if (childLeftIndex > _numNodes)
+
+            while (finalQueueIndex * 2 <= _numNodes)
             {
-                return;
-            }
-            
-            // Check if the left-child is higher-priority than the current node
-            int childRightIndex = childLeftIndex + 1;
-            TItem childLeft = _nodes[childLeftIndex];
-            if (HasHigherPriority(childLeft, node))
-            {
-                // Check if there is a right child. If not, swap and finish.
-                if (childRightIndex > _numNodes)
+                int childLeftIndex = 2 * finalQueueIndex;
+                int childRightIndex = childLeftIndex + 1;
+
+                int swapIndex = childLeftIndex; // Assume left child is the swap candidate
+
+                if (childRightIndex <= _numNodes && HasHigherPriority(_nodes[childRightIndex], _nodes[childLeftIndex]))
                 {
-                    node.QueueIndex = childLeftIndex;
-                    childLeft.QueueIndex = finalQueueIndex;
-                    _nodes[finalQueueIndex] = childLeft;
-                    _nodes[childLeftIndex] = node;
-                    return;
+                    swapIndex = childRightIndex; // Right child exists and is higher-priority
                 }
-                
-                // Check if the left-child is higher-priority than the right-child
-                TItem childRight = _nodes[childRightIndex];
-                if (HasHigherPriority(childLeft, childRight))
+
+                if (HasHigherPriority(_nodes[swapIndex], node))
                 {
-                    // left is highest, move it up and continue
-                    childLeft.QueueIndex = finalQueueIndex;
-                    _nodes[finalQueueIndex] = childLeft;
-                    finalQueueIndex = childLeftIndex;
+                    // Perform the swap
+                    (_nodes[finalQueueIndex], _nodes[swapIndex]) = (_nodes[swapIndex], _nodes[finalQueueIndex]);
+
+                    // Update the QueueIndex for swapped nodes
+                    _nodes[finalQueueIndex].QueueIndex = finalQueueIndex;
+                    _nodes[swapIndex].QueueIndex = swapIndex;
+
+                    finalQueueIndex = swapIndex; // Update finalQueueIndex for next iteration
                 }
                 else
                 {
-                    // right is even higher, move it up and continue
-                    childRight.QueueIndex = finalQueueIndex;
-                    _nodes[finalQueueIndex] = childRight;
-                    finalQueueIndex = childRightIndex;
+                    break; // The node is in the correct position
                 }
             }
-            // Not swapping with left-child, does right-child exist?
-            else if (childRightIndex > _numNodes)
-            {
-                return;
-            }
-            else
-            {
-                // Check if the right-child is higher-priority than the current node
-                TItem childRight = _nodes[childRightIndex];
-                if (HasHigherPriority(childRight, node))
-                {
-                    childRight.QueueIndex = finalQueueIndex;
-                    _nodes[finalQueueIndex] = childRight;
-                    finalQueueIndex = childRightIndex;
-                }
-                // Neither child is higher-priority than current, so finish and stop.
-                else
-                {
-                    return;
-                }
-            }
-            
-            while (true)
-            {
-                childLeftIndex = 2 * finalQueueIndex;
-                
-                // If leaf node, we're done
-                if (childLeftIndex > _numNodes)
-                {
-                    node.QueueIndex = finalQueueIndex;
-                    _nodes[finalQueueIndex] = node;
-                    break;
-                }
-                
-                // Check if the left-child is higher-priority than the current node
-                childRightIndex = childLeftIndex + 1;
-                childLeft = _nodes[childLeftIndex];
-                if (HasHigherPriority(childLeft, node))
-                {
-                    // Check if there is a right child. If not, swap and finish.
-                    if (childRightIndex > _numNodes)
-                    {
-                        node.QueueIndex = childLeftIndex;
-                        childLeft.QueueIndex = finalQueueIndex;
-                        _nodes[finalQueueIndex] = childLeft;
-                        _nodes[childLeftIndex] = node;
-                        break;
-                    }
-                    
-                    // Check if the left-child is higher-priority than the right-child
-                    TItem childRight = _nodes[childRightIndex];
-                    if (HasHigherPriority(childLeft, childRight))
-                    {
-                        // left is highest, move it up and continue
-                        childLeft.QueueIndex = finalQueueIndex;
-                        _nodes[finalQueueIndex] = childLeft;
-                        finalQueueIndex = childLeftIndex;
-                    }
-                    else
-                    {
-                        // right is even higher, move it up and continue
-                        childRight.QueueIndex = finalQueueIndex;
-                        _nodes[finalQueueIndex] = childRight;
-                        finalQueueIndex = childRightIndex;
-                    }
-                }
-                // Not swapping with left-child, does right-child exist?
-                else if (childRightIndex > _numNodes)
-                {
-                    node.QueueIndex = finalQueueIndex;
-                    _nodes[finalQueueIndex] = node;
-                    break;
-                }
-                else
-                {
-                    // Check if the right-child is higher-priority than the current node
-                    TItem childRight = _nodes[childRightIndex];
-                    if (HasHigherPriority(childRight, node))
-                    {
-                        childRight.QueueIndex = finalQueueIndex;
-                        _nodes[finalQueueIndex] = childRight;
-                        finalQueueIndex = childRightIndex;
-                    }
-                    // Neither child is higher-priority than current, so finish and stop.
-                    else
-                    {
-                        node.QueueIndex = finalQueueIndex;
-                        _nodes[finalQueueIndex] = node;
-                        break;
-                    }
-                }
-            }
+
+            node.QueueIndex = finalQueueIndex;
+            _nodes[finalQueueIndex] = node;
         }
-        
+
         /// <summary>
         ///     Returns true if 'higher' has higher priority than 'lower', false otherwise.
         ///     Note that calling HasHigherPriority(node, node) (ie. both arguments the same node) will return false
