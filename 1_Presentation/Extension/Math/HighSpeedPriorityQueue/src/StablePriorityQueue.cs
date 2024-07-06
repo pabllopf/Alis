@@ -279,146 +279,47 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
             _nodes[node.QueueIndex] = node;
         }
         
-        /// <summary>
-        ///     Cascades the down using the specified node
-        /// </summary>
-        /// <param name="node">The node</param>
-        private void CascadeDown(T node)
-        {
-            int finalQueueIndex = node.QueueIndex;
-            int childLeftIndex = 2 * finalQueueIndex;
-            
-            // If leaf node, we're done
-            if (childLeftIndex > _numNodes)
-            {
-                return;
-            }
-            
-            // Check if the left-child is higher-priority than the current node
-            int childRightIndex = childLeftIndex + 1;
-            T childLeft = _nodes[childLeftIndex];
-            if (HasHigherPriority(childLeft, node))
-            {
-                // Check if there is a right child. If not, swap and finish.
-                if (childRightIndex > _numNodes)
-                {
-                    node.QueueIndex = childLeftIndex;
-                    childLeft.QueueIndex = finalQueueIndex;
-                    _nodes[finalQueueIndex] = childLeft;
-                    _nodes[childLeftIndex] = node;
-                    return;
-                }
-                
-                // Check if the left-child is higher-priority than the right-child
-                T childRight = _nodes[childRightIndex];
-                if (HasHigherPriority(childLeft, childRight))
-                {
-                    // left is highest, move it up and continue
-                    childLeft.QueueIndex = finalQueueIndex;
-                    _nodes[finalQueueIndex] = childLeft;
-                    finalQueueIndex = childLeftIndex;
-                }
-                else
-                {
-                    // right is even higher, move it up and continue
-                    childRight.QueueIndex = finalQueueIndex;
-                    _nodes[finalQueueIndex] = childRight;
-                    finalQueueIndex = childRightIndex;
-                }
-            }
-            // Not swapping with left-child, does right-child exist?
-            else if (childRightIndex > _numNodes)
-            {
-                return;
-            }
-            else
-            {
-                // Check if the right-child is higher-priority than the current node
-                T childRight = _nodes[childRightIndex];
-                if (HasHigherPriority(childRight, node))
-                {
-                    childRight.QueueIndex = finalQueueIndex;
-                    _nodes[finalQueueIndex] = childRight;
-                    finalQueueIndex = childRightIndex;
-                }
-                // Neither child is higher-priority than current, so finish and stop.
-                else
-                {
-                    return;
-                }
-            }
-            
-            while (true)
-            {
-                childLeftIndex = 2 * finalQueueIndex;
-                
-                // If leaf node, we're done
-                if (childLeftIndex > _numNodes)
-                {
-                    node.QueueIndex = finalQueueIndex;
-                    _nodes[finalQueueIndex] = node;
-                    break;
-                }
-                
-                // Check if the left-child is higher-priority than the current node
-                childRightIndex = childLeftIndex + 1;
-                childLeft = _nodes[childLeftIndex];
-                if (HasHigherPriority(childLeft, node))
-                {
-                    // Check if there is a right child. If not, swap and finish.
-                    if (childRightIndex > _numNodes)
-                    {
-                        node.QueueIndex = childLeftIndex;
-                        childLeft.QueueIndex = finalQueueIndex;
-                        _nodes[finalQueueIndex] = childLeft;
-                        _nodes[childLeftIndex] = node;
-                        break;
-                    }
-                    
-                    // Check if the left-child is higher-priority than the right-child
-                    T childRight = _nodes[childRightIndex];
-                    if (HasHigherPriority(childLeft, childRight))
-                    {
-                        // left is highest, move it up and continue
-                        childLeft.QueueIndex = finalQueueIndex;
-                        _nodes[finalQueueIndex] = childLeft;
-                        finalQueueIndex = childLeftIndex;
-                    }
-                    else
-                    {
-                        // right is even higher, move it up and continue
-                        childRight.QueueIndex = finalQueueIndex;
-                        _nodes[finalQueueIndex] = childRight;
-                        finalQueueIndex = childRightIndex;
-                    }
-                }
-                // Not swapping with left-child, does right-child exist?
-                else if (childRightIndex > _numNodes)
-                {
-                    node.QueueIndex = finalQueueIndex;
-                    _nodes[finalQueueIndex] = node;
-                    break;
-                }
-                else
-                {
-                    // Check if the right-child is higher-priority than the current node
-                    T childRight = _nodes[childRightIndex];
-                    if (HasHigherPriority(childRight, node))
-                    {
-                        childRight.QueueIndex = finalQueueIndex;
-                        _nodes[finalQueueIndex] = childRight;
-                        finalQueueIndex = childRightIndex;
-                    }
-                    // Neither child is higher-priority than current, so finish and stop.
-                    else
-                    {
-                        node.QueueIndex = finalQueueIndex;
-                        _nodes[finalQueueIndex] = node;
-                        break;
-                    }
-                }
-            }
-        }
+      private void CascadeDown(T node)
+{
+    int finalQueueIndex = node.QueueIndex;
+
+    while (true)
+    {
+        int childLeftIndex = 2 * finalQueueIndex;
+        if (IsLeafNode(childLeftIndex)) break;
+
+        int childRightIndex = childLeftIndex + 1;
+        T childLeft = _nodes[childLeftIndex];
+        T childRight = childRightIndex <= _numNodes ? _nodes[childRightIndex] : null;
+
+        int higherPriorityChildIndex = GetHigherPriorityChildIndex(childLeft, childRight, childLeftIndex, childRightIndex);
+        T higherPriorityChild = _nodes[higherPriorityChildIndex];
+
+        if (HasHigherPriority(node, higherPriorityChild)) break;
+
+        Swap(node, higherPriorityChild, finalQueueIndex, higherPriorityChildIndex);
+        finalQueueIndex = higherPriorityChildIndex;
+    }
+
+    node.QueueIndex = finalQueueIndex;
+    _nodes[finalQueueIndex] = node;
+}
+
+private bool IsLeafNode(int childIndex) => childIndex > _numNodes;
+
+private int GetHigherPriorityChildIndex(T childLeft, T childRight, int childLeftIndex, int childRightIndex)
+{
+    if (childRight == null) return childLeftIndex;
+    return HasHigherPriority(childLeft, childRight) ? childLeftIndex : childRightIndex;
+}
+
+private void Swap(T node, T child, int nodeIndex, int childIndex)
+{
+    _nodes[nodeIndex] = child;
+    child.QueueIndex = nodeIndex;
+    _nodes[childIndex] = node;
+    node.QueueIndex = childIndex;
+}
         
         /// <summary>
         ///     Returns true if 'higher' has higher priority than 'lower', false otherwise.
