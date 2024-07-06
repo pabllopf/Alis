@@ -632,52 +632,155 @@ namespace Alis.Core.Aspect.Data.Json
             return null;
         }
 
-        /// <summary>
-        /// Creates the instance with special constructor using the specified type
-        /// </summary>
-        /// <param name="type">The type</param>
-        /// <param name="value">The value</param>
-        /// <param name="elementsCount">The elements count</param>
-        /// <param name="options">The options</param>
-        /// <param name="serializationTypeToken">The serialization type token</param>
-        /// <returns>The object</returns>
-        private static object CreateInstanceWithSpecialConstructor(Type type, object value, int elementsCount, JsonOptions options, string serializationTypeToken)
+       /// <summary>
+       /// Creates the instance with special constructor using the specified type
+       /// </summary>
+       /// <param name="type">The type</param>
+       /// <param name="value">The value</param>
+       /// <param name="elementsCount">The elements count</param>
+       /// <param name="options">The options</param>
+       /// <param name="serializationTypeToken">The serialization type token</param>
+       /// <returns>The object</returns>
+       private static object CreateInstanceWithSpecialConstructor(Type type, object value, int elementsCount, JsonOptions options, string serializationTypeToken)
+{
+    if (CanUseSpecialConstructor(type))
+    {
+        return TryCreateInstanceUsingSpecialConstructor(type, value, elementsCount, options, serializationTypeToken);
+    }
+
+    return null;
+}
+
+/// <summary>
+
+/// Describes whether can use special constructor
+
+/// </summary>
+
+/// <param name="type">The type</param>
+
+/// <returns>The bool</returns>
+
+private static bool CanUseSpecialConstructor(Type type)
+{
+    return !type.IsPrimitive && !type.IsInterface && !type.IsAbstract;
+}
+
+/// <summary>
+
+/// Tries the create instance using special constructor using the specified type
+
+/// </summary>
+
+/// <param name="type">The type</param>
+
+/// <param name="value">The value</param>
+
+/// <param name="elementsCount">The elements count</param>
+
+/// <param name="options">The options</param>
+
+/// <param name="serializationTypeToken">The serialization type token</param>
+
+/// <returns>The object</returns>
+
+private static object TryCreateInstanceUsingSpecialConstructor(Type type, object value, int elementsCount, JsonOptions options, string serializationTypeToken)
+{
+    ConstructorInfo specialConstructor = FindSpecialConstructor(type);
+    if (specialConstructor != null)
+    {
+        object[] parameterValues = PrepareConstructorParameters(specialConstructor, value, elementsCount, options, serializationTypeToken);
+        if (parameterValues != null)
         {
-            if (!type.IsPrimitive && !type.IsInterface && !type.IsAbstract) // Check if type is a struct
-            {
-
-
-                ConstructorInfo specialConstructor = type.GetConstructors()
-                    .FirstOrDefault(c => c.GetCustomAttributesData()
-                        .Any(a => a.AttributeType.Name.Contains("JsonConstructorAttribute")));
-                if (specialConstructor != null)
-                {
-                    ParameterInfo[] parameters = specialConstructor.GetParameters();
-                    object[] parameterValues = new object[parameters.Length];
-
-                    if (value is IDictionary dictionary)
-                    {
-                        for (int i = 0; i < parameters.Length; i++)
-                        {
-                            foreach (object key in dictionary.Keys)
-                            {
-                                if (!key.ToString().Equals(serializationTypeToken) && key.ToString().ToLower().Contains(parameters[i].Name.ToLower()))
-                                {
-                                    parameterValues[i] = CreateInstance(null, parameters[i].ParameterType, elementsCount, options, dictionary[key]);
-                                    break;
-                                }
-                            }
-                        }
-
-                        return Activator.CreateInstance(type, parameterValues);
-                    }
-                }
-
-                return null;
-            }
-
-            return null;
+            return Activator.CreateInstance(type, parameterValues);
         }
+    }
+
+    return null;
+}
+
+/// <summary>
+
+/// Finds the special constructor using the specified type
+
+/// </summary>
+
+/// <param name="type">The type</param>
+
+/// <returns>The constructor info</returns>
+
+private static ConstructorInfo FindSpecialConstructor(Type type)
+{
+    return type.GetConstructors()
+        .FirstOrDefault(c => c.GetCustomAttributesData()
+            .Any(a => a.AttributeType.Name.Contains("JsonConstructorAttribute")));
+}
+
+/// <summary>
+
+/// Prepares the constructor parameters using the specified constructor
+
+/// </summary>
+
+/// <param name="constructor">The constructor</param>
+
+/// <param name="value">The value</param>
+
+/// <param name="elementsCount">The elements count</param>
+
+/// <param name="options">The options</param>
+
+/// <param name="serializationTypeToken">The serialization type token</param>
+
+/// <returns>The object array</returns>
+
+private static object[] PrepareConstructorParameters(ConstructorInfo constructor, object value, int elementsCount, JsonOptions options, string serializationTypeToken)
+{
+    ParameterInfo[] parameters = constructor.GetParameters();
+    object[] parameterValues = new object[parameters.Length];
+
+    if (value is IDictionary dictionary)
+    {
+        for (int i = 0; i < parameters.Length; i++)
+        {
+            parameterValues[i] = FindParameterValueForConstructor(parameters[i], dictionary, elementsCount, options, serializationTypeToken);
+        }
+        return parameterValues;
+    }
+
+    return null;
+}
+
+/// <summary>
+
+/// Finds the parameter value for constructor using the specified parameter
+
+/// </summary>
+
+/// <param name="parameter">The parameter</param>
+
+/// <param name="dictionary">The dictionary</param>
+
+/// <param name="elementsCount">The elements count</param>
+
+/// <param name="options">The options</param>
+
+/// <param name="serializationTypeToken">The serialization type token</param>
+
+/// <returns>The object</returns>
+
+private static object FindParameterValueForConstructor(ParameterInfo parameter, IDictionary dictionary, int elementsCount, JsonOptions options, string serializationTypeToken)
+{
+    foreach (object key in dictionary.Keys)
+    {
+        if (!key.ToString().Equals(serializationTypeToken) && key.ToString().ToLower().Contains(parameter.Name.ToLower()))
+        {
+            return CreateInstance(null, parameter.ParameterType, elementsCount, options, dictionary[key]);
+        }
+    }
+
+    return null;
+}
 
         /// <summary>
         ///     Gets the type from text using the specified type name
