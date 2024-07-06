@@ -41,27 +41,27 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The valid
         /// </summary>
-        public byte Valid;
+        public byte Valid { get; set; }
 
         /// <summary>
         ///     The cmd lists count
         /// </summary>
-        public int CmdListsCount;
+        public int CmdListsCount { get; set; }
 
         /// <summary>
         ///     The total idx count
         /// </summary>
-        public int TotalIdxCount;
+        public int TotalIdxCount { get; set; }
 
         /// <summary>
         ///     The total vtx count
         /// </summary>
-        public int TotalVtxCount;
+        public int TotalVtxCount { get; set; }
 
         /// <summary>
         ///     The cmd lists
         /// </summary>
-        public IntPtr CmdListsPtr;
+        public IntPtr CmdListsPtr { get; set; }
 
         /// <summary>
         ///     The cmd lists
@@ -91,22 +91,22 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The display pos
         /// </summary>
-        public Vector2 DisplayPos;
+        public Vector2 DisplayPos { get; set; }
 
         /// <summary>
         ///     The display size
         /// </summary>
-        public Vector2 DisplaySize;
+        public Vector2 DisplaySize { get; set; }
 
         /// <summary>
         ///     The framebuffer scale
         /// </summary>
-        public Vector2 FramebufferScale;
+        public Vector2 FramebufferScale { get; set; }
 
         /// <summary>
         ///     The owner viewport
         /// </summary>
-        public IntPtr OwnerViewportPtr;
+        public IntPtr OwnerViewportPtr { get; set; }
 
         /// <summary>
         ///     The owner viewport
