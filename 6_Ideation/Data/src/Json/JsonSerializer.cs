@@ -557,6 +557,7 @@ namespace Alis.Core.Aspect.Data.Json
             }
         }
         
+        
         /// <summary>
         /// Creates the instance from dictionary using the specified type
         /// </summary>
