@@ -41,7 +41,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The name
         /// </summary>
-        public IntPtr name;
+        public IntPtr name { get; set; }
 
         /// <summary>
         ///     The flags

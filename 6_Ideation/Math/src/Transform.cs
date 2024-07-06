@@ -45,15 +45,21 @@ namespace Alis.Core.Aspect.Math
         /// </summary>
         public Vector2 Position;
 
+
+
         /// <summary>
         ///     The scale
         /// </summary>
         public Vector2 Scale;
 
+
+
         /// <summary>
         ///     The
         /// </summary>
         public Rotation Rotation;
+
+
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Transform" /> class

@@ -46,24 +46,36 @@ namespace Alis.Core.Physic.Collision.TOI
         /// <summary>Local center of mass position</summary>
         public Vector2 LocalCenter;
 
+
+
         /// <summary>World angles</summary>
-        public float A { get; set; }
+        public float A;
+
+
 
         /// <summary>
         ///     The
         /// </summary>
-        public float A0 { get; set; }
+        public float A0;
+
+
 
         /// <summary>Fraction of the current time step in the range [0,1] c0 and a0 are the positions at alpha0.</summary>
-        public float Alpha0 { get; set; }
+        public float Alpha0;
+
+
 
         /// <summary>Center world positions</summary>
-        public Vector2 C { get; set; }
+        public Vector2 C;
+
+
 
         /// <summary>
         ///     The
         /// </summary>
-        public Vector2 C0 { get; set; }
+        public Vector2 C0;
+
+
 
         /// <summary>Get the interpolated transform at a specific time.</summary>
         /// <param name="xfb">The transform.</param>

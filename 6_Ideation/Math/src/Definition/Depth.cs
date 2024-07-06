@@ -42,7 +42,7 @@ namespace Alis.Core.Aspect.Math.Definition
         /// <summary>
         ///     The value
         /// </summary>
-        public int Value;
+        public int Value { get; set; }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Depth" /> class

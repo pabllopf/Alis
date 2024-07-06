@@ -63,7 +63,7 @@ namespace Alis.Extension.Graphic.OpenGL.Constructs
         /// <summary>
         ///     Specifies the OpenGL shader program ID.
         /// </summary>
-        public uint ProgramId;
+        public uint ProgramId { get; set; }
 
         /// <summary>
         ///     The shader params

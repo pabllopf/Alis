@@ -41,27 +41,27 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The size
         /// </summary>
-        public IntPtr size;
+        public IntPtr size { get; set; }
 
         /// <summary>
         ///     The seek
         /// </summary>
-        public IntPtr seek;
+        public IntPtr seek { get; set; }
 
         /// <summary>
         ///     The read
         /// </summary>
-        public IntPtr read;
+        public IntPtr read { get; set; }
 
         /// <summary>
         ///     The write
         /// </summary>
-        public IntPtr write;
+        public IntPtr write { get; set; }
 
         /// <summary>
         ///     The close
         /// </summary>
-        public IntPtr close;
+        public IntPtr close { get; set; }
 
         /// <summary>
         ///     The type

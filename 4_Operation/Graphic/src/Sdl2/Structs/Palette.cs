@@ -46,7 +46,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The colors
         /// </summary>
-        public IntPtr colors;
+        public IntPtr colors { get; set; }
 
         /// <summary>
         ///     The version

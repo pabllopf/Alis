@@ -51,13 +51,13 @@ namespace Alis.Core.Physic.Dynamics
     public class Fixture
     {
         /// <summary>Fires after two shapes has collided and are solved. This gives you a chance to get the impact force.</summary>
-        public AfterCollisionHandler AfterCollision;
+        public AfterCollisionHandler AfterCollision { get; set; }
 
         /// <summary>
         ///     Fires when two fixtures are close to each other. Due to how the broadphase works, this can be quite inaccurate
         ///     as shapes are approximated using AABBs.
         /// </summary>
-        public BeforeCollisionHandler BeforeCollision;
+        public BeforeCollisionHandler BeforeCollision { get; set; }
 
         /// <summary>
         ///     The collides with
@@ -83,7 +83,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Fires when two shapes collide and a contact is created between them. Note that the first fixture argument is
         ///     always the fixture that the delegate is subscribed to.
         /// </summary>
-        public OnCollisionHandler OnCollision;
+        public OnCollisionHandler OnCollision { get; set; }
 
         /// <summary>
         ///     Fires when two shapes separate and a contact is removed between them. Note: This can in some cases be called
@@ -91,7 +91,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     the
         ///     delegate is subscribed to.
         /// </summary>
-        public OnSeparationHandler OnSeparation;
+        public OnSeparationHandler OnSeparation { get; set; }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Fixture" /> class

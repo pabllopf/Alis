@@ -57,7 +57,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <summary>
         ///     The normal
         /// </summary>
-        public Vector2 Normal;
+        public Vector2 Normal { get; set; }
 
         /// <summary>
         ///     The side normal

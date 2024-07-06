@@ -51,13 +51,13 @@ namespace Alis.Core.Aspect.Math.Vector
         private readonly int hashCode;
 
         /// <summary>The X component of the vector.</summary>
-        public float X;
+        public float X { get; set; }
 
         /// <summary>The Y component of the vector.</summary>
-        public float Y;
+        public float Y { get; set; }
 
         /// <summary>The Z component of the vector.</summary>
-        public float Z;
+        public float Z { get; set; }
 
         /// <summary>Creates a new <see cref="Vector3" /> object whose three elements have the same value.</summary>
         /// <param name="value">The value to assign to all three elements.</param>

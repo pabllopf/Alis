@@ -47,17 +47,17 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
         /// <summary>
         ///     The next
         /// </summary>
-        public AdvancingFrontNode Next;
+        public AdvancingFrontNode Next { get; set; }
 
         /// <summary>
         ///     The prev
         /// </summary>
-        public AdvancingFrontNode Prev;
+        public AdvancingFrontNode Prev { get; set; }
 
         /// <summary>
         ///     The triangle
         /// </summary>
-        public DelaunayTriangle Triangle;
+        public DelaunayTriangle Triangle { get; set; }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="AdvancingFrontNode" /> class

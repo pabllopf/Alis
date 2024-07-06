@@ -40,16 +40,16 @@ namespace Alis.Core.Aspect.Math.Shape.Square
         /// <summary>
         ///     The
         /// </summary>
-        public float x;
+        public float x { get; set; }
 
         /// <summary>
         ///     The
         /// </summary>
-        public float y;
+        public float y { get; set; }
 
         /// <summary>
         ///     The
         /// </summary>
-        public float w;
+        public float w { get; set; }
     }
 }

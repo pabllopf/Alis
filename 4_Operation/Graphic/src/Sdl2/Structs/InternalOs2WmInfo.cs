@@ -41,11 +41,11 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     Refers to window
         /// </summary>
-        public IntPtr hwnd;
+        public IntPtr hwnd { get; set; }
 
         /// <summary>
         ///     Refers to frame
         /// </summary>
-        public IntPtr hwndFrame;
+        public IntPtr hwndFrame { get; set; }
     }
 }

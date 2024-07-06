@@ -39,12 +39,12 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <summary>
         ///     The col
         /// </summary>
-        public Vector2 Ex;
+        public Vector2 Ex { get; set; }
 
         /// <summary>
         ///     The col
         /// </summary>
-        public Vector2 Ey;
+        public Vector2 Ey { get; set; }
 
         /// <summary>
         ///     Construct this matrix using scalars.

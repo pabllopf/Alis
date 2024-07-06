@@ -55,7 +55,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The game object
         /// </summary>
-        public object GameObject;
+        public object GameObject { get; set; }
 
         /// <summary>
         ///     The inertia
@@ -76,7 +76,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Fires when two shapes collide and a contact is created between them. Note that the first fixture argument is
         ///     always the fixture that the delegate is subscribed to.
         /// </summary>
-        public OnCollisionHandler OnCollision;
+        public OnCollisionHandler OnCollision { get; set; }
 
         /// <summary>
         ///     Fires when two shapes separate and a contact is removed between them. Note: This can in some cases be called
@@ -84,7 +84,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     the
         ///     delegate is subscribed to.
         /// </summary>
-        public OnSeparationHandler OnSeparation;
+        public OnSeparationHandler OnSeparation { get; set; }
 
         /// <summary>
         ///     The type

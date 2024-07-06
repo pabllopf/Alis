@@ -68,12 +68,12 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
         /// <summary>
         ///     The above
         /// </summary>
-        public Trapezoid Above;
+        public Trapezoid Above { get; set; }
 
         /// <summary>
         ///     The below
         /// </summary>
-        public Trapezoid Below;
+        public Trapezoid Below { get; set; }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Edge" /> class

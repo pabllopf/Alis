@@ -58,17 +58,17 @@ namespace Alis.Extension.Graphic.OpenGL.Constructs
         /// <summary>
         ///     Specifies the location of the parameter in the OpenGL program.
         /// </summary>
-        public int Location;
+        public int Location { get; set; }
 
         /// <summary>
         ///     Specifies the OpenGL program ID.
         /// </summary>
-        public uint Program;
+        public uint Program { get; set; }
 
         /// <summary>
         ///     The program id
         /// </summary>
-        public uint ProgramId;
+        public uint ProgramId { get; set; }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="GlShaderProgramParam" /> class

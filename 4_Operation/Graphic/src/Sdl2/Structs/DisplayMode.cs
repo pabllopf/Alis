@@ -61,6 +61,6 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The driver data
         /// </summary>
-        public IntPtr driverData;
+        public IntPtr driverData { get; set; }
     }
 }

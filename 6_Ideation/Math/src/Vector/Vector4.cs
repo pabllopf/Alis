@@ -75,16 +75,16 @@ namespace Alis.Core.Aspect.Math.Vector
         }
 
         /// <summary>Horizontal component of the vector</summary>
-        public float X;
+        public float X { get; set; }
 
         /// <summary>Vertical component of the vector</summary>
-        public float Y;
+        public float Y { get; set; }
 
         /// <summary>Depth component of the vector</summary>
-        public float Z;
+        public float Z { get; set; }
 
         /// <summary>Projective/Homogenous component of the vector</summary>
-        public float W;
+        public float W { get; set; }
 
         /// <summary>
         ///     Gets the object data using the specified info

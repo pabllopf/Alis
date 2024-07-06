@@ -41,6 +41,6 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     Refers to an inspect
         /// </summary>
-        public IntPtr window;
+        public IntPtr window { get; set; }
     }
 }
