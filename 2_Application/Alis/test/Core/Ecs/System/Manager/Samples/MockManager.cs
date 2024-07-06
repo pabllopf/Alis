@@ -32,9 +32,9 @@ using Alis.Core.Ecs.System.Manager;
 namespace Alis.Test.Core.Ecs.System.Manager.Samples
 {
     /// <summary>
-    /// The mock manager class
+    ///     The mock manager class
     /// </summary>
-    /// <seealso cref="AManager"/>
+    /// <seealso cref="AManager" />
     public class MockManager : AManager
     {
     }

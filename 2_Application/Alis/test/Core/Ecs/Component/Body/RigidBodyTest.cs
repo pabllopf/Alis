@@ -34,30 +34,30 @@ using Xunit;
 namespace Alis.Test.Core.Ecs.Component.Body
 {
     /// <summary>
-    /// The rigid body test class
+    ///     The rigid body test class
     /// </summary>
     public class RigidBodyTest
     {
         /// <summary>
-        /// Tests that rigid body default constructor valid input
+        ///     Tests that rigid body default constructor valid input
         /// </summary>
         [Fact]
         public void RigidBody_DefaultConstructor_ValidInput()
         {
             RigidBody rigidBody = new RigidBody();
-            
+
             Assert.NotNull(rigidBody);
         }
-        
+
         /// <summary>
-        /// Tests that builder valid input
+        ///     Tests that builder valid input
         /// </summary>
         [Fact]
         public void Builder_ValidInput()
         {
             RigidBody rigidBody = new RigidBody();
             RigidBodyBuilder rigidBodyBuilder = rigidBody.Builder();
-            
+
             Assert.NotNull(rigidBodyBuilder);
         }
     }

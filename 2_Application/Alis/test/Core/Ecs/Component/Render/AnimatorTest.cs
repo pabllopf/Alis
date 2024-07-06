@@ -40,12 +40,12 @@ using Xunit;
 namespace Alis.Test.Core.Ecs.Component.Render
 {
     /// <summary>
-    /// The animator test class
+    ///     The animator test class
     /// </summary>
     public class AnimatorTest
     {
         /// <summary>
-        /// Tests that builder should return animator builder
+        ///     Tests that builder should return animator builder
         /// </summary>
         [Fact]
         public void Builder_ShouldReturnAnimatorBuilder()
@@ -55,9 +55,9 @@ namespace Alis.Test.Core.Ecs.Component.Render
             Assert.NotNull(result);
             Assert.IsType<AnimatorBuilder>(result);
         }
-        
+
         /// <summary>
-        /// Tests that on init should set current animation
+        ///     Tests that on init should set current animation
         /// </summary>
         [Fact]
         public void OnInit_ShouldSetCurrentAnimation()
@@ -67,9 +67,9 @@ namespace Alis.Test.Core.Ecs.Component.Render
             animator.OnInit();
             Assert.Equal(animations[0], animator.GetCurrentAnimation());
         }
-        
+
         /// <summary>
-        /// Tests that on awake should start timer
+        ///     Tests that on awake should start timer
         /// </summary>
         [Fact]
         public void OnAwake_ShouldStartTimer()
@@ -78,9 +78,9 @@ namespace Alis.Test.Core.Ecs.Component.Render
             animator.OnAwake();
             Assert.True(animator.Timer.IsRunning);
         }
-        
+
         /// <summary>
-        /// Tests that on start should set sprite
+        ///     Tests that on start should set sprite
         /// </summary>
         [Fact]
         public void OnStart_ShouldSetSprite()
@@ -92,9 +92,9 @@ namespace Alis.Test.Core.Ecs.Component.Render
             animator.OnStart();
             Assert.NotNull(animator.Sprite);
         }
-        
+
         /// <summary>
-        /// Tests that on update should change sprite image
+        ///     Tests that on update should change sprite image
         /// </summary>
         [Fact]
         public void OnUpdate_ShouldChangeSpriteImage()
@@ -108,9 +108,9 @@ namespace Alis.Test.Core.Ecs.Component.Render
             Thread.Sleep((int) (animations[0].Speed * 1000) + 1);
             animator.OnUpdate();
         }
-        
+
         /// <summary>
-        /// Tests that on exit should stop timer
+        ///     Tests that on exit should stop timer
         /// </summary>
         [Fact]
         public void OnExit_ShouldStopTimer()
@@ -120,9 +120,9 @@ namespace Alis.Test.Core.Ecs.Component.Render
             animator.OnExit();
             Assert.True(animator.Timer.IsRunning);
         }
-        
+
         /// <summary>
-        /// Tests that add animation should add animation to list
+        ///     Tests that add animation should add animation to list
         /// </summary>
         [Fact]
         public void AddAnimation_ShouldAddAnimationToList()
@@ -132,9 +132,9 @@ namespace Alis.Test.Core.Ecs.Component.Render
             animator.AddAnimation(animation);
             Assert.Contains(animation, animator.Animations);
         }
-        
+
         /// <summary>
-        /// Tests that change animation to should change current animation
+        ///     Tests that change animation to should change current animation
         /// </summary>
         [Fact]
         public void ChangeAnimationTo_ShouldChangeCurrentAnimation()
@@ -144,9 +144,9 @@ namespace Alis.Test.Core.Ecs.Component.Render
             animator.OnInit();
             animator.ChangeAnimationTo("Test2");
         }
-        
+
         /// <summary>
-        /// Tests that animations get value should return value
+        ///     Tests that animations get value should return value
         /// </summary>
         [Fact]
         public void Animations_GetValue_ShouldReturnValue()
@@ -155,9 +155,9 @@ namespace Alis.Test.Core.Ecs.Component.Render
             Animator animator = new Animator(animations);
             Assert.Equal(animations, animator.Animations);
         }
-        
+
         /// <summary>
-        /// Tests that change animation to with new animation should change current animation
+        ///     Tests that change animation to with new animation should change current animation
         /// </summary>
         [Fact]
         public void ChangeAnimationTo_WithNewAnimation_ShouldChangeCurrentAnimation()
@@ -175,11 +175,11 @@ namespace Alis.Test.Core.Ecs.Component.Render
             };
             Animator animator = new Animator(animations);
             animator.OnInit();
-            Assert.Throws<NullReferenceException>( () => animator.ChangeAnimationTo("Test2", RendererFlips.None));
+            Assert.Throws<NullReferenceException>(() => animator.ChangeAnimationTo("Test2", RendererFlips.None));
         }
-        
+
         /// <summary>
-        /// Tests that change animation to with same animation and flips should not change current animation
+        ///     Tests that change animation to with same animation and flips should not change current animation
         /// </summary>
         [Fact]
         public void ChangeAnimationTo_WithSameAnimationAndFlips_ShouldNotChangeCurrentAnimation()
@@ -191,11 +191,11 @@ namespace Alis.Test.Core.Ecs.Component.Render
             };
             Animator animator = new Animator(animations);
             animator.OnInit();
-            Assert.Throws<NullReferenceException>( () => animator.ChangeAnimationTo("Test1", RendererFlips.None));
+            Assert.Throws<NullReferenceException>(() => animator.ChangeAnimationTo("Test1", RendererFlips.None));
         }
-        
+
         /// <summary>
-        /// Tests that change animation to with same animation and different flips should change flips
+        ///     Tests that change animation to with same animation and different flips should change flips
         /// </summary>
         [Fact]
         public void ChangeAnimationTo_WithSameAnimationAndDifferentFlips_ShouldChangeFlips()
@@ -207,11 +207,11 @@ namespace Alis.Test.Core.Ecs.Component.Render
             };
             Animator animator = new Animator(animations);
             animator.OnInit();
-            Assert.Throws<NullReferenceException>( () =>animator.ChangeAnimationTo("Test1", RendererFlips.FlipHorizontal));
+            Assert.Throws<NullReferenceException>(() => animator.ChangeAnimationTo("Test1", RendererFlips.FlipHorizontal));
         }
-        
+
         /// <summary>
-        /// Tests that change animation to with nonexistent animation should not change current animation
+        ///     Tests that change animation to with nonexistent animation should not change current animation
         /// </summary>
         [Fact]
         public void ChangeAnimationTo_WithNonexistentAnimation_ShouldNotChangeCurrentAnimation()
@@ -223,7 +223,7 @@ namespace Alis.Test.Core.Ecs.Component.Render
             };
             Animator animator = new Animator(animations);
             animator.OnInit();
-            Assert.Throws<NullReferenceException>( () => animator.ChangeAnimationTo("Test3", RendererFlips.None));
+            Assert.Throws<NullReferenceException>(() => animator.ChangeAnimationTo("Test3", RendererFlips.None));
         }
     }
 }

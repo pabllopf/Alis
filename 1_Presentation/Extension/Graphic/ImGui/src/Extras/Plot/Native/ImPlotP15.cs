@@ -31,7 +31,7 @@ using System.Text;
 
 namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
 {
-     /// <summary>
+    /// <summary>
     ///     The im plot class
     /// </summary>
     public static partial class ImPlot
@@ -51,10 +51,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
-            
+
             ImPlotNative.ImPlot_PlotBarGroups_U32Ptr(nativeLabelIds, values, itemCount, groupCount, groupSize, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
@@ -71,10 +71,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
-            
+
             ImPlotNative.ImPlot_PlotBarGroups_U32Ptr(nativeLabelIds, values, itemCount, groupCount, groupSize, shift, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
@@ -92,10 +92,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
-            
+
             ImPlotNative.ImPlot_PlotBarGroups_U32Ptr(nativeLabelIds, values, itemCount, groupCount, groupSize, shift, flags);
         }
-        
+
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
@@ -110,13 +110,13 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
-            
+
             double groupSize = 0.67;
             double shift = 0;
             ImPlotBarGroupsFlags flags = 0;
             ImPlotNative.ImPlot_PlotBarGroups_S64Ptr(nativeLabelIds, values, itemCount, groupCount, groupSize, shift, flags);
         }
-        
+
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
@@ -132,12 +132,12 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
-            
+
             double shift = 0;
             ImPlotBarGroupsFlags flags = 0;
             ImPlotNative.ImPlot_PlotBarGroups_S64Ptr(nativeLabelIds, values, itemCount, groupCount, groupSize, shift, flags);
         }
-        
+
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
@@ -154,11 +154,11 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
-            
+
             ImPlotBarGroupsFlags flags = 0;
             ImPlotNative.ImPlot_PlotBarGroups_S64Ptr(nativeLabelIds, values, itemCount, groupCount, groupSize, shift, flags);
         }
-        
+
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
@@ -176,10 +176,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
-            
+
             ImPlotNative.ImPlot_PlotBarGroups_S64Ptr(nativeLabelIds, values, itemCount, groupCount, groupSize, shift, flags);
         }
-        
+
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
@@ -189,14 +189,15 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="groupCount">The group count</param>
         public static void PlotBarGroups(string[] labelIds, ulong[] values, int itemCount, int groupCount)
         {
-           byte[][] nativeLabelIds = new byte[labelIds.Length][];
+            byte[][] nativeLabelIds = new byte[labelIds.Length][];
             for (int i = 0; i < labelIds.Length; i++)
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
+
             ImPlotNative.ImPlot_PlotBarGroups_U64Ptr(nativeLabelIds, values, itemCount, groupCount, 0, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
@@ -212,10 +213,11 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
+
             double shift = 0;
             ImPlotNative.ImPlot_PlotBarGroups_U64Ptr(nativeLabelIds, values, itemCount, groupCount, groupSize, shift, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
@@ -232,9 +234,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
+
             ImPlotNative.ImPlot_PlotBarGroups_U64Ptr(nativeLabelIds, values, itemCount, groupCount, groupSize, shift, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
@@ -252,9 +255,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
+
             ImPlotNative.ImPlot_PlotBarGroups_U64Ptr(nativeLabelIds, values, itemCount, groupCount, groupSize, shift, flags);
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -265,7 +269,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 0.67, 0, 0, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -277,7 +281,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, 0, 0, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -290,7 +294,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, 0, 0, sizeof(float));
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -304,7 +308,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, 0, sizeof(float));
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -319,7 +323,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, offset, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -335,7 +339,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_FloatPtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -346,7 +350,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_doublePtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 0.67, 0, 0, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -358,7 +362,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_doublePtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, 0, 0, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -371,7 +375,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_doublePtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, 0, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -385,7 +389,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_doublePtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -400,7 +404,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_doublePtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, offset, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -416,7 +420,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_doublePtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -425,9 +429,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         public static void PlotBars(string labelId, sbyte[] values, int count)
         {
-          ImPlotNative.ImPlot_PlotBars_S8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 0.67, 0, 0, 0, 0);
+            ImPlotNative.ImPlot_PlotBars_S8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 0.67, 0, 0, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -439,7 +443,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_S8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, 0, 0, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -452,7 +456,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_S8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, 0, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -466,7 +470,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_S8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -481,7 +485,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_S8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, offset, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -497,7 +501,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_S8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -508,7 +512,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_U8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 0.67, 0, 0, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -520,7 +524,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_U8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, 0, 0, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -533,7 +537,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_U8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, 0, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -547,7 +551,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_U8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -562,7 +566,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_U8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, offset, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -578,7 +582,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_U8PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -589,7 +593,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 0.67, 0, 0, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -601,7 +605,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, 0, 0, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -614,7 +618,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, 0, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -628,7 +632,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -643,7 +647,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, offset, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -659,7 +663,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_S16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -670,7 +674,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 0.67, 0, 0, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -682,7 +686,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, 0, 0, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -695,7 +699,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, 0, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -709,7 +713,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -724,7 +728,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, offset, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -740,7 +744,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_U16PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -751,7 +755,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, 0.67, 0, 0, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -763,7 +767,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, 0, 0, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -776,7 +780,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, 0, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -790,7 +794,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -805,7 +809,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, offset, sizeof(int));
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -821,7 +825,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_S32PtrInt(Encoding.UTF8.GetBytes(labelId), values, count, barSize, shift, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>

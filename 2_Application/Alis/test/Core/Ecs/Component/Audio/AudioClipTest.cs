@@ -34,88 +34,88 @@ using Xunit;
 namespace Alis.Test.Core.Ecs.Component.Audio
 {
     /// <summary>
-    /// The audio clip test class
+    ///     The audio clip test class
     /// </summary>
     public class AudioClipTest
     {
         /// <summary>
-        /// Tests that audio clip default constructor valid input
+        ///     Tests that audio clip default constructor valid input
         /// </summary>
         [Fact]
         public void AudioClip_DefaultConstructor_ValidInput()
         {
             AudioClip audioClip = new AudioClip();
-            
+
             Assert.NotNull(audioClip);
         }
-        
+
         /// <summary>
-        /// Tests that audio clip constructor with full path valid input
+        ///     Tests that audio clip constructor with full path valid input
         /// </summary>
         [Fact]
         public void AudioClip_ConstructorWithFullPath_ValidInput()
         {
             AudioClip audioClip = new AudioClip("soundtrack.wav");
-            
+
             Assert.NotNull(audioClip);
             Assert.Equal("soundtrack.wav", audioClip.NameFile);
         }
-        
+
         /// <summary>
-        /// Tests that play valid input
+        ///     Tests that play valid input
         /// </summary>
         [Fact]
         public void Play_ValidInput()
         {
             AudioClip audioClip = new AudioClip();
-            
+
             audioClip.Play();
-            
+
             Assert.False(audioClip.IsPlaying);
         }
-        
+
         /// <summary>
-        /// Tests that stop valid input
+        ///     Tests that stop valid input
         /// </summary>
         [Fact]
         public void Stop_ValidInput()
         {
             AudioClip audioClip = new AudioClip();
-            
+
             audioClip.Play();
             audioClip.Stop();
-            
+
             Assert.False(audioClip.IsPlaying);
         }
-        
+
         /// <summary>
-        /// Tests that resume valid input
+        ///     Tests that resume valid input
         /// </summary>
         [Fact]
         public void Resume_ValidInput()
         {
             AudioClip audioClip = new AudioClip();
-            
+
             audioClip.Play();
             audioClip.Stop();
             audioClip.Resume();
-            
+
             Assert.False(audioClip.IsPlaying);
         }
-        
+
         /// <summary>
-        /// Tests that builder valid input
+        ///     Tests that builder valid input
         /// </summary>
         [Fact]
         public void Builder_ValidInput()
         {
             AudioClipBuilder audioClipBuilder = AudioClip.Builder();
-            
+
             Assert.NotNull(audioClipBuilder);
         }
-        
+
         /// <summary>
-        /// Tests that set is playing should change value
+        ///     Tests that set is playing should change value
         /// </summary>
         [Fact]
         public void SetIsPlaying_ShouldChangeValue()
@@ -126,9 +126,9 @@ namespace Alis.Test.Core.Ecs.Component.Audio
             audioClip.IsPlaying = false;
             Assert.False(audioClip.IsPlaying);
         }
-        
+
         /// <summary>
-        /// Tests that set is mute should change value
+        ///     Tests that set is mute should change value
         /// </summary>
         [Fact]
         public void SetIsMute_ShouldChangeValue()
@@ -139,9 +139,9 @@ namespace Alis.Test.Core.Ecs.Component.Audio
             audioClip.IsMute = false;
             Assert.False(audioClip.IsMute);
         }
-        
+
         /// <summary>
-        /// Tests that set is looping should change value
+        ///     Tests that set is looping should change value
         /// </summary>
         [Fact]
         public void SetIsLooping_ShouldChangeValue()

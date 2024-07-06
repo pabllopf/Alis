@@ -3,7 +3,7 @@ name: "[DEV][TEST]"
 on:
   push:
     branches: [ master ]
-    
+
 jobs:
   macos_12_x64:
     if: "contains(github.event.head_commit.message, 'test:')"
@@ -24,7 +24,7 @@ jobs:
             6.0.420
             7.0.408
             8.0.202
-            
+
       - name: Dotnet test Debug
         run: dotnet test alis.sln -c Debug
   

@@ -33,40 +33,40 @@ using Xunit;
 namespace Alis.Test.Core.Ecs.Component.Collider
 {
     /// <summary>
-    /// The circle collider test class
+    ///     The circle collider test class
     /// </summary>
     public class CircleColliderTest
     {
         /// <summary>
-        /// Tests that circle collider default constructor valid input
+        ///     Tests that circle collider default constructor valid input
         /// </summary>
         [Fact]
         public void CircleCollider_DefaultConstructor_ValidInput()
         {
             CircleCollider circleCollider = new CircleCollider();
-            
+
             Assert.NotNull(circleCollider);
         }
-        
+
         /// <summary>
-        /// Tests that on start valid input
+        ///     Tests that on start valid input
         /// </summary>
         [Fact]
         public void OnStart_ValidInput()
         {
             CircleCollider circleCollider = new CircleCollider();
-            
+
             circleCollider.OnStart();
         }
-        
+
         /// <summary>
-        /// Tests that on update valid input
+        ///     Tests that on update valid input
         /// </summary>
         [Fact]
         public void OnUpdate_ValidInput()
         {
             CircleCollider circleCollider = new CircleCollider();
-            
+
             circleCollider.OnUpdate();
         }
     }

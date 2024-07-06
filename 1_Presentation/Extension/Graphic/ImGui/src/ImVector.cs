@@ -41,17 +41,17 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The size
         /// </summary>
         public readonly int Size;
-        
+
         /// <summary>
         ///     The capacity
         /// </summary>
         public readonly int Capacity;
-        
+
         /// <summary>
         ///     The data
         /// </summary>
         public readonly IntPtr Data;
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImVector" /> class
         /// </summary>
@@ -64,9 +64,9 @@ namespace Alis.Extension.Graphic.ImGui
             Capacity = capacity;
             Data = data;
         }
-        
+
         /// <summary>
-        /// Refs the index
+        ///     Refs the index
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="index">The index</param>
@@ -78,16 +78,16 @@ namespace Alis.Extension.Graphic.ImGui
             GCHandle handle = GCHandle.Alloc(bytes, GCHandleType.Pinned);
             try
             {
-                return (T)Marshal.PtrToStructure(handle.AddrOfPinnedObject(), typeof(T));
+                return (T) Marshal.PtrToStructure(handle.AddrOfPinnedObject(), typeof(T));
             }
             finally
             {
                 handle.Free();
             }
         }
-        
+
         /// <summary>
-        /// Addresses the index
+        ///     Addresses the index
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="index">The index</param>

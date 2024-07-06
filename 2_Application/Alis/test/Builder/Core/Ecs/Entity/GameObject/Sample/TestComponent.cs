@@ -32,9 +32,9 @@ using Alis.Core.Ecs.Component;
 namespace Alis.Test.Builder.Core.Ecs.Entity.GameObject.Sample
 {
     /// <summary>
-    /// The test component class
+    ///     The test component class
     /// </summary>
-    /// <seealso cref="AComponent"/>
+    /// <seealso cref="AComponent" />
     public class TestComponent : AComponent
     {
     }

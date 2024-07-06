@@ -45,22 +45,22 @@ namespace Alis.Core.Aspect.Math.Shape.Rectangle
         ///     The
         /// </summary>
         public int X { get; set; }
-        
+
         /// <summary>
         ///     The
         /// </summary>
         public int Y { get; set; }
-        
+
         /// <summary>
         ///     The
         /// </summary>
         public int W { get; set; }
-        
+
         /// <summary>
         ///     The
         /// </summary>
         public int H { get; set; }
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="RectangleI" /> class
         /// </summary>
@@ -70,14 +70,14 @@ namespace Alis.Core.Aspect.Math.Shape.Rectangle
         /// <param name="h">The </param>
         public RectangleI(int x, int y, int w, int h)
         {
-            this.X = x;
-            this.Y = y;
-            this.H = h;
-            this.W = w;
+            X = x;
+            Y = y;
+            H = h;
+            W = w;
         }
-        
+
         /// <summary>
-        /// Gets the object data using the specified info
+        ///     Gets the object data using the specified info
         /// </summary>
         /// <param name="info">The info</param>
         /// <param name="context">The context</param>

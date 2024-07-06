@@ -32,12 +32,12 @@ using Xunit;
 namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
 {
     /// <summary>
-    /// The generic priority queue node test class
+    ///     The generic priority queue node test class
     /// </summary>
     public class GenericPriorityQueueNodeTest
     {
         /// <summary>
-        /// Tests that priority set and get returns correct value
+        ///     Tests that priority set and get returns correct value
         /// </summary>
         [Fact]
         public void Priority_SetAndGet_ReturnsCorrectValue()
@@ -48,7 +48,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Tests that queue index set and get returns correct value
+        ///     Tests that queue index set and get returns correct value
         /// </summary>
         [Fact]
         public void QueueIndex_SetAndGet_ReturnsCorrectValue()
@@ -59,7 +59,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Tests that insertion index set and get returns correct value
+        ///     Tests that insertion index set and get returns correct value
         /// </summary>
         [Fact]
         public void InsertionIndex_SetAndGet_ReturnsCorrectValue()

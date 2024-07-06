@@ -32,12 +32,12 @@ using Xunit;
 namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
 {
     /// <summary>
-    /// The stable priority queue node test class
+    ///     The stable priority queue node test class
     /// </summary>
     public class StablePriorityQueueNodeTest
     {
         /// <summary>
-        /// Tests that insertion index initially zero
+        ///     Tests that insertion index initially zero
         /// </summary>
         [Fact]
         public void InsertionIndex_InitiallyZero()
@@ -47,7 +47,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Tests that insertion index set correctly
+        ///     Tests that insertion index set correctly
         /// </summary>
         [Fact]
         public void InsertionIndex_SetCorrectly()

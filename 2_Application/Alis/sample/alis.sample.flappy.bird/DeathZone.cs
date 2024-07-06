@@ -48,12 +48,12 @@ namespace Alis.Sample.Flappy.Bird
         ///     The is death
         /// </summary>
         public static bool IsDeath;
-        
+
         /// <summary>
         ///     The time delta
         /// </summary>
         public static float TimeDelta = 10.0f;
-        
+
         /// <summary>
         ///     Ons the init
         /// </summary>
@@ -62,7 +62,7 @@ namespace Alis.Sample.Flappy.Bird
             IsDeath = false;
             TimeDelta = 10.0f;
         }
-        
+
         /// <summary>
         ///     Ons the update
         /// </summary>
@@ -78,7 +78,7 @@ namespace Alis.Sample.Flappy.Bird
                 }
             }
         }
-        
+
         /// <summary>
         ///     Ons the collision enter using the specified game object
         /// </summary>
@@ -88,25 +88,25 @@ namespace Alis.Sample.Flappy.Bird
             if (gameObject.Tag == "Player")
             {
                 Logger.Info($"Player dead by '{GameObject.Name}'");
-                
+
                 if (gameObject.Contains<BirdController>() && !gameObject.Get<BirdController>().IsDead)
                 {
                     gameObject.Get<AudioSource>().AudioClip = new AudioClip("die.wav");
                     gameObject.Get<AudioSource>().Play();
-                    
+
                     gameObject.Remove(gameObject.Get<BirdController>());
                     Logger.Info("Player remove bird controller");
-                    
+
                     gameObject.Get<BoxCollider>().Body.Rotation = 45f;
                     gameObject.Get<BoxCollider>().Body.LinearVelocity = new Vector2(0, 7);
                     gameObject.Get<BoxCollider>().IsTrigger = true;
                     gameObject.Get<BoxCollider>().Body.BodyType = BodyType.Kinematic;
-                    
+
                     gameObject.Remove(gameObject.Get<Animator>());
-                    
+
                     PipelineController.IsStop = true;
-                    
-                    
+
+
                     IsDeath = true;
                 }
             }

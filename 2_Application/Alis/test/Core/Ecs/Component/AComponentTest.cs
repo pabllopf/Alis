@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AComponent.cs
+//  File:AComponentTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -39,228 +39,192 @@ using Xunit;
 namespace Alis.Test.Core.Ecs.Component
 {
     /// <summary>
-    /// The component test class
+    ///     The component test class
     /// </summary>
     public class AComponentTest
     {
         /// <summary>
-        /// Tests that on enable valid input
+        ///     Tests that on enable valid input
         /// </summary>
         [Fact]
         public void OnEnable_ValidInput()
         {
             ComponentSample component = new ComponentSample();
             component.OnEnable();
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that on init valid input
+        ///     Tests that on init valid input
         /// </summary>
         [Fact]
         public void OnInit_ValidInput()
         {
             ComponentSample component = new ComponentSample();
             component.OnInit();
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that on awake valid input
+        ///     Tests that on awake valid input
         /// </summary>
         [Fact]
         public void OnAwake_ValidInput()
         {
             ComponentSample component = new ComponentSample();
             component.OnAwake();
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that on start valid input
+        ///     Tests that on start valid input
         /// </summary>
         [Fact]
         public void OnStart_ValidInput()
         {
             ComponentSample component = new ComponentSample();
             component.OnStart();
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that on before update valid input
+        ///     Tests that on before update valid input
         /// </summary>
         [Fact]
         public void OnBeforeUpdate_ValidInput()
         {
             ComponentSample component = new ComponentSample();
             component.OnBeforeUpdate();
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that on update valid input
+        ///     Tests that on update valid input
         /// </summary>
         [Fact]
         public void OnUpdate_ValidInput()
         {
             ComponentSample component = new ComponentSample();
             component.OnUpdate();
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that on after update valid input
+        ///     Tests that on after update valid input
         /// </summary>
         [Fact]
         public void OnAfterUpdate_ValidInput()
         {
             ComponentSample component = new ComponentSample();
             component.OnAfterUpdate();
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that on before fixed update valid input
+        ///     Tests that on before fixed update valid input
         /// </summary>
         [Fact]
         public void OnBeforeFixedUpdate_ValidInput()
         {
             ComponentSample component = new ComponentSample();
             component.OnBeforeFixedUpdate();
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that on fixed update valid input
+        ///     Tests that on fixed update valid input
         /// </summary>
         [Fact]
         public void OnFixedUpdate_ValidInput()
         {
             ComponentSample component = new ComponentSample();
             component.OnFixedUpdate();
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that on after fixed update valid input
+        ///     Tests that on after fixed update valid input
         /// </summary>
         [Fact]
         public void OnAfterFixedUpdate_ValidInput()
         {
             ComponentSample component = new ComponentSample();
             component.OnAfterFixedUpdate();
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that on dispatch events valid input
+        ///     Tests that on dispatch events valid input
         /// </summary>
         [Fact]
         public void OnDispatchEvents_ValidInput()
         {
             ComponentSample component = new ComponentSample();
             component.OnDispatchEvents();
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that on calculate valid input
+        ///     Tests that on calculate valid input
         /// </summary>
         [Fact]
         public void OnCalculate_ValidInput()
         {
             ComponentSample component = new ComponentSample();
             component.OnCalculate();
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that on draw valid input
+        ///     Tests that on draw valid input
         /// </summary>
         [Fact]
         public void OnDraw_ValidInput()
         {
             ComponentSample component = new ComponentSample();
             component.OnDraw();
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that on gui valid input
+        ///     Tests that on gui valid input
         /// </summary>
         [Fact]
         public void OnGui_ValidInput()
         {
             ComponentSample component = new ComponentSample();
             component.OnGui();
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that on disable valid input
+        ///     Tests that on disable valid input
         /// </summary>
         [Fact]
         public void OnDisable_ValidInput()
         {
             ComponentSample component = new ComponentSample();
             component.OnDisable();
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that on reset valid input
+        ///     Tests that on reset valid input
         /// </summary>
         [Fact]
         public void OnReset_ValidInput()
         {
             ComponentSample component = new ComponentSample();
             component.OnReset();
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that on stop valid input
+        ///     Tests that on stop valid input
         /// </summary>
         [Fact]
         public void OnStop_ValidInput()
         {
             ComponentSample component = new ComponentSample();
             component.OnStop();
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that on exit valid input
+        ///     Tests that on exit valid input
         /// </summary>
         [Fact]
         public void OnExit_ValidInput()
         {
             ComponentSample component = new ComponentSample();
             component.OnExit();
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that on destroy valid input
+        ///     Tests that on destroy valid input
         /// </summary>
         [Fact]
         public void OnDestroy_ValidInput()
@@ -268,10 +232,10 @@ namespace Alis.Test.Core.Ecs.Component
             ComponentSample component = new ComponentSample();
             component.OnDestroy();
         }
-        
-        
+
+
         /// <summary>
-        /// Tests that on press down key calls logger trace
+        ///     Tests that on press down key calls logger trace
         /// </summary>
         [Fact]
         public void OnPressDownKey_CallsLoggerTrace()
@@ -279,9 +243,9 @@ namespace Alis.Test.Core.Ecs.Component
             Sample2Component sample2Component = new Sample2Component();
             sample2Component.OnPressDownKey(KeyCodes.A);
         }
-        
+
         /// <summary>
-        /// Tests that on release key calls logger trace
+        ///     Tests that on release key calls logger trace
         /// </summary>
         [Fact]
         public void OnReleaseKey_CallsLoggerTrace()
@@ -289,9 +253,9 @@ namespace Alis.Test.Core.Ecs.Component
             Sample2Component sample2Component = new Sample2Component();
             sample2Component.OnReleaseKey(KeyCodes.A);
         }
-        
+
         /// <summary>
-        /// Tests that on press key calls logger trace
+        ///     Tests that on press key calls logger trace
         /// </summary>
         [Fact]
         public void OnPressKey_CallsLoggerTrace()
@@ -299,9 +263,9 @@ namespace Alis.Test.Core.Ecs.Component
             Sample2Component sample2Component = new Sample2Component();
             sample2Component.OnPressKey(KeyCodes.A);
         }
-        
+
         /// <summary>
-        /// Tests that on collision enter calls logger trace
+        ///     Tests that on collision enter calls logger trace
         /// </summary>
         [Fact]
         public void OnCollisionEnter_CallsLoggerTrace()
@@ -310,9 +274,9 @@ namespace Alis.Test.Core.Ecs.Component
             GameObject gameObject = new GameObject();
             sample2Component.OnCollisionEnter(gameObject);
         }
-        
+
         /// <summary>
-        /// Tests that on collision exit calls logger trace
+        ///     Tests that on collision exit calls logger trace
         /// </summary>
         [Fact]
         public void OnCollisionExit_CallsLoggerTrace()
@@ -321,9 +285,9 @@ namespace Alis.Test.Core.Ecs.Component
             GameObject gameObject = new GameObject();
             sample2Component.OnCollisionExit(gameObject);
         }
-        
+
         /// <summary>
-        /// Tests that set context sets context
+        ///     Tests that set context sets context
         /// </summary>
         [Fact]
         public void SetContext_SetsContext()
@@ -333,9 +297,9 @@ namespace Alis.Test.Core.Ecs.Component
             Context context = new Context(new Settings());
             Assert.NotEqual(context, sample2Component.Context);
         }
-        
+
         /// <summary>
-        /// Tests that on collision stay calls logger trace
+        ///     Tests that on collision stay calls logger trace
         /// </summary>
         [Fact]
         public void OnCollisionStay_CallsLoggerTrace()
@@ -344,9 +308,9 @@ namespace Alis.Test.Core.Ecs.Component
             GameObject gameObject = new GameObject();
             sample2Component.OnCollisionStay(gameObject);
         }
-        
+
         /// <summary>
-        /// Tests that on trigger enter calls logger trace
+        ///     Tests that on trigger enter calls logger trace
         /// </summary>
         [Fact]
         public void OnTriggerEnter_CallsLoggerTrace()
@@ -355,9 +319,9 @@ namespace Alis.Test.Core.Ecs.Component
             GameObject gameObject = new GameObject();
             sample2Component.OnTriggerEnter(gameObject);
         }
-        
+
         /// <summary>
-        /// Tests that on trigger exit calls logger trace
+        ///     Tests that on trigger exit calls logger trace
         /// </summary>
         [Fact]
         public void OnTriggerExit_CallsLoggerTrace()
@@ -366,9 +330,9 @@ namespace Alis.Test.Core.Ecs.Component
             GameObject gameObject = new GameObject();
             sample2Component.OnTriggerExit(gameObject);
         }
-        
+
         /// <summary>
-        /// Tests that on trigger stay calls logger trace
+        ///     Tests that on trigger stay calls logger trace
         /// </summary>
         [Fact]
         public void OnTriggerStay_CallsLoggerTrace()
@@ -377,9 +341,9 @@ namespace Alis.Test.Core.Ecs.Component
             GameObject gameObject = new GameObject();
             sample2Component.OnTriggerStay(gameObject);
         }
-        
+
         /// <summary>
-        /// Tests that name property set get returns correct value
+        ///     Tests that name property set get returns correct value
         /// </summary>
         [Fact]
         public void Name_PropertySet_GetReturnsCorrectValue()
@@ -388,9 +352,9 @@ namespace Alis.Test.Core.Ecs.Component
             component.Name = "TestComponent";
             Assert.Equal("TestComponent", component.Name);
         }
-        
+
         /// <summary>
-        /// Tests that id property set get returns correct value
+        ///     Tests that id property set get returns correct value
         /// </summary>
         [Fact]
         public void Id_PropertySet_GetReturnsCorrectValue()
@@ -399,9 +363,9 @@ namespace Alis.Test.Core.Ecs.Component
             component.Id = "1";
             Assert.Equal("1", component.Id);
         }
-        
+
         /// <summary>
-        /// Tests that tag property set get returns correct value
+        ///     Tests that tag property set get returns correct value
         /// </summary>
         [Fact]
         public void Tag_PropertySet_GetReturnsCorrectValue()

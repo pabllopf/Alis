@@ -30,10 +30,9 @@
 namespace Alis.Extension.Math.PathGenerator.Test.Triangulation.Delaunay
 {
     /// <summary>
-    /// The triangulation util test class
+    ///     The triangulation util test class
     /// </summary>
     public class TriangulationUtilTest
     {
-        
     }
 }

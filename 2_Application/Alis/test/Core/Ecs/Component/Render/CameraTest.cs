@@ -39,12 +39,12 @@ using Xunit;
 namespace Alis.Test.Core.Ecs.Component.Render
 {
     /// <summary>
-    /// The camera test class
+    ///     The camera test class
     /// </summary>
     public class CameraTest
     {
         /// <summary>
-        /// Tests that builder when called returns camera builder
+        ///     Tests that builder when called returns camera builder
         /// </summary>
         [Fact]
         public void Builder_WhenCalled_ReturnsCameraBuilder()
@@ -53,9 +53,9 @@ namespace Alis.Test.Core.Ecs.Component.Render
             CameraBuilder result = camera.Builder();
             Assert.IsType<CameraBuilder>(result);
         }
-        
+
         /// <summary>
-        /// Tests that on start initializes correctly
+        ///     Tests that on start initializes correctly
         /// </summary>
         [Fact]
         public void OnStart_InitializesCorrectly()
@@ -63,9 +63,9 @@ namespace Alis.Test.Core.Ecs.Component.Render
             Camera camera = new Camera();
             camera.OnStart();
         }
-        
+
         /// <summary>
-        /// Tests that on update updates viewport position
+        ///     Tests that on update updates viewport position
         /// </summary>
         [Fact]
         public void OnUpdate_UpdatesViewportPosition()
@@ -77,9 +77,9 @@ namespace Alis.Test.Core.Ecs.Component.Render
             Assert.Equal(0, camera.Viewport.X);
             Assert.Equal(0, camera.Viewport.Y);
         }
-        
+
         /// <summary>
-        /// Tests that on exit detaches from graphic manager
+        ///     Tests that on exit detaches from graphic manager
         /// </summary>
         [Fact]
         public void OnExit_DetachesFromGraphicManager()
@@ -89,9 +89,9 @@ namespace Alis.Test.Core.Ecs.Component.Render
             camera.OnStart();
             camera.OnExit();
         }
-        
+
         /// <summary>
-        /// Tests that resolution property set get returns correct value
+        ///     Tests that resolution property set get returns correct value
         /// </summary>
         [Fact]
         public void Resolution_PropertySet_GetReturnsCorrectValue()
@@ -100,9 +100,9 @@ namespace Alis.Test.Core.Ecs.Component.Render
             camera.Resolution = new Vector2(800, 600);
             Assert.Equal(new Vector2(800, 600), camera.Resolution);
         }
-        
+
         /// <summary>
-        /// Tests that background color property set get returns correct value
+        ///     Tests that background color property set get returns correct value
         /// </summary>
         [Fact]
         public void BackgroundColor_PropertySet_GetReturnsCorrectValue()
@@ -111,9 +111,9 @@ namespace Alis.Test.Core.Ecs.Component.Render
             camera.BackgroundColor = Color.Black;
             Assert.Equal(Color.Black, camera.BackgroundColor);
         }
-        
+
         /// <summary>
-        /// Tests that camera border property set get returns correct value
+        ///     Tests that camera border property set get returns correct value
         /// </summary>
         [Fact]
         public void CameraBorder_PropertySet_GetReturnsCorrectValue()
@@ -122,9 +122,9 @@ namespace Alis.Test.Core.Ecs.Component.Render
             camera.CameraBorder = 1f;
             Assert.Equal(1f, camera.CameraBorder);
         }
-        
+
         /// <summary>
-        /// Tests that texture target property set get returns correct value
+        ///     Tests that texture target property set get returns correct value
         /// </summary>
         [Fact]
         public void TextureTarget_PropertySet_GetReturnsCorrectValue()

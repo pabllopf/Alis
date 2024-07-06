@@ -3,7 +3,7 @@ name: "[PRO][PUBLISH]"
 on:
   push:
     branches: [ master ]
-    
+
 jobs:
   
   Create_Packages:
@@ -26,7 +26,7 @@ jobs:
             6.0.x
             7.0.x
             8.0.x
-            
+
       - name: Define file name to update version
         run: echo "FILENAME=$(echo './Directory.Build.props')" >> $GITHUB_ENV
 

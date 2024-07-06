@@ -46,29 +46,29 @@ namespace Alis.Core.Audio.Players
         ///     The pause process command
         /// </summary>
         internal const string PauseProcessCommand = "kill -STOP {0}";
-        
+
         /// <summary>
         ///     The resume process command
         /// </summary>
         internal const string ResumeProcessCommand = "kill -CONT {0}";
-        
+
         /// <summary>
         ///     The process
         /// </summary>
         private Process _process;
-        
+
         public event EventHandler PlaybackFinished;
-        
+
         /// <summary>
         ///     Gets or sets the value of the playing
         /// </summary>
         public bool Playing { get; private set; }
-        
+
         /// <summary>
         ///     Gets or sets the value of the paused
         /// </summary>
         public bool Paused { get; private set; }
-        
+
         /// <summary>
         ///     Plays the file name
         /// </summary>
@@ -84,7 +84,7 @@ namespace Alis.Core.Audio.Players
             _process.Disposed += HandlePlaybackFinished;
             Playing = true;
         }
-        
+
         /// <summary>
         ///     Pauses this instance
         /// </summary>
@@ -96,10 +96,10 @@ namespace Alis.Core.Audio.Players
                 tempProcess.WaitForExit();
                 Paused = true;
             }
-            
+
             return Task.CompletedTask;
         }
-        
+
         /// <summary>
         ///     Resumes this instance
         /// </summary>
@@ -111,10 +111,10 @@ namespace Alis.Core.Audio.Players
                 tempProcess.WaitForExit();
                 Paused = false;
             }
-            
+
             return Task.CompletedTask;
         }
-        
+
         /// <summary>
         ///     Stops this instance
         /// </summary>
@@ -126,26 +126,26 @@ namespace Alis.Core.Audio.Players
                 _process.Dispose();
                 _process = null;
             }
-            
+
             Playing = false;
             Paused = false;
-            
+
             return Task.CompletedTask;
         }
-        
+
         /// <summary>
         ///     Sets the volume using the specified percent
         /// </summary>
         /// <param name="percent">The percent</param>
         public abstract Task SetVolume(byte percent);
-        
+
         /// <summary>
         ///     Gets the bash command using the specified file name
         /// </summary>
         /// <param name="fileName">The file name</param>
         /// <returns>The string</returns>
         internal abstract string GetBashCommand(string fileName);
-        
+
         /// <summary>
         ///     Starts the bash process using the specified command
         /// </summary>
@@ -154,7 +154,7 @@ namespace Alis.Core.Audio.Players
         protected Process StartBashProcess(string command)
         {
             string escapedArgs = command.Replace("\"", "\\\"");
-            
+
             Process process = new Process
             {
                 StartInfo = new ProcessStartInfo
@@ -170,7 +170,7 @@ namespace Alis.Core.Audio.Players
             process.Start();
             return process;
         }
-        
+
         /// <summary>
         ///     Handles the playback finished using the specified sender
         /// </summary>

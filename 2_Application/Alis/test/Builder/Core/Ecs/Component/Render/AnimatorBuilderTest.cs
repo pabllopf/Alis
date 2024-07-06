@@ -35,47 +35,47 @@ using Xunit;
 namespace Alis.Test.Builder.Core.Ecs.Component.Render
 {
     /// <summary>
-    /// The animator builder test class
+    ///     The animator builder test class
     /// </summary>
     public class AnimatorBuilderTest
     {
         /// <summary>
-        /// Tests that animator builder default constructor valid input
+        ///     Tests that animator builder default constructor valid input
         /// </summary>
         [Fact]
         public void AnimatorBuilder_DefaultConstructor_ValidInput()
         {
             AnimatorBuilder animatorBuilder = new AnimatorBuilder();
-            
+
             Assert.NotNull(animatorBuilder);
         }
-        
+
         /// <summary>
-        /// Tests that build valid input
+        ///     Tests that build valid input
         /// </summary>
         [Fact]
         public void Build_ValidInput()
         {
             AnimatorBuilder animatorBuilder = new AnimatorBuilder();
-            
+
             Animator animator = animatorBuilder.Build();
-            
+
             Assert.NotNull(animator);
         }
-        
+
         /// <summary>
-        /// Tests that add animation valid input
+        ///     Tests that add animation valid input
         /// </summary>
         [Fact]
         public void AddAnimation_ValidInput()
         {
             AnimatorBuilder animatorBuilder = new AnimatorBuilder();
             Func<AnimationBuilder, Animation> animationFunc = ab => ab.Build();
-            
+
             animatorBuilder.AddAnimation(animationFunc);
-            
+
             Animator animator = animatorBuilder.Build();
-            
+
             Assert.Single(animator.Animations);
         }
     }

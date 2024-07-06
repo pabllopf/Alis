@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
 {
     /// <summary>
-    /// The simple priority queue test class
+    ///     The simple priority queue test class
     /// </summary>
     public class SimplePriorityQueueTest
     {
         /// <summary>
-        /// Tests that constructor initializes with default comparer and equality comparer
+        ///     Tests that constructor initializes with default comparer and equality comparer
         /// </summary>
         [Fact]
         public void Constructor_InitializesWithDefaultComparerAndEqualityComparer()
@@ -49,7 +49,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Tests that enqueue increases count
+        ///     Tests that enqueue increases count
         /// </summary>
         [Fact]
         public void Enqueue_IncreasesCount()
@@ -60,7 +60,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Tests that dequeue returns correct item and decreases count
+        ///     Tests that dequeue returns correct item and decreases count
         /// </summary>
         [Fact]
         public void Dequeue_ReturnsCorrectItemAndDecreasesCount()
@@ -73,7 +73,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Tests that first returns correct item without removing
+        ///     Tests that first returns correct item without removing
         /// </summary>
         [Fact]
         public void First_ReturnsCorrectItemWithoutRemoving()
@@ -86,7 +86,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Tests that clear resets queue
+        ///     Tests that clear resets queue
         /// </summary>
         [Fact]
         public void Clear_ResetsQueue()
@@ -98,7 +98,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Tests that contains returns true for enqueued item
+        ///     Tests that contains returns true for enqueued item
         /// </summary>
         [Fact]
         public void Contains_ReturnsTrueForEnqueuedItem()
@@ -109,7 +109,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Tests that contains returns false for not enqueued item
+        ///     Tests that contains returns false for not enqueued item
         /// </summary>
         [Fact]
         public void Contains_ReturnsFalseForNotEnqueuedItem()
@@ -119,7 +119,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Tests that remove removes correct item
+        ///     Tests that remove removes correct item
         /// </summary>
         [Fact]
         public void Remove_RemovesCorrectItem()
@@ -131,7 +131,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Tests that update priority changes item priority
+        ///     Tests that update priority changes item priority
         /// </summary>
         [Fact]
         public void UpdatePriority_ChangesItemPriority()
@@ -143,7 +143,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Tests that enqueue without duplicates enqueues item only once
+        ///     Tests that enqueue without duplicates enqueues item only once
         /// </summary>
         [Fact]
         public void EnqueueWithoutDuplicates_EnqueuesItemOnlyOnce()
@@ -157,7 +157,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Tests that get priority returns correct priority
+        ///     Tests that get priority returns correct priority
         /// </summary>
         [Fact]
         public void GetPriority_ReturnsCorrectPriority()
@@ -169,7 +169,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Tests that is valid queue after operations returns true
+        ///     Tests that is valid queue after operations returns true
         /// </summary>
         [Fact]
         public void IsValidQueue_AfterOperations_ReturnsTrue()
@@ -184,7 +184,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Tests that constructor initializes with default comparer and equality
+        ///     Tests that constructor initializes with default comparer and equality
         /// </summary>
         [Fact]
         public void Constructor_InitializesWithDefaultComparerAndEquality()
@@ -194,7 +194,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Tests that constructor initializes with custom priority comparer
+        ///     Tests that constructor initializes with custom priority comparer
         /// </summary>
         [Fact]
         public void Constructor_InitializesWithCustomPriorityComparer()
@@ -204,7 +204,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Tests that constructor initializes with custom priority comparison
+        ///     Tests that constructor initializes with custom priority comparison
         /// </summary>
         [Fact]
         public void Constructor_InitializesWithCustomPriorityComparison()
@@ -214,7 +214,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Tests that constructor initializes with custom item equality
+        ///     Tests that constructor initializes with custom item equality
         /// </summary>
         [Fact]
         public void Constructor_InitializesWithCustomItemEquality()
@@ -224,7 +224,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Tests that constructor initializes with custom priority comparer and item equality
+        ///     Tests that constructor initializes with custom priority comparer and item equality
         /// </summary>
         [Fact]
         public void Constructor_InitializesWithCustomPriorityComparerAndItemEquality()
@@ -234,7 +234,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Tests that enqueue increases count v 2
+        ///     Tests that enqueue increases count v 2
         /// </summary>
         [Fact]
         public void Enqueue_IncreasesCount_v2()
@@ -245,7 +245,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Tests that dequeue decreases count and returns correct item
+        ///     Tests that dequeue decreases count and returns correct item
         /// </summary>
         [Fact]
         public void Dequeue_DecreasesCountAndReturnsCorrectItem()
@@ -258,7 +258,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Tests that first returns correct item without removing v 2
+        ///     Tests that first returns correct item without removing v 2
         /// </summary>
         [Fact]
         public void First_ReturnsCorrectItemWithoutRemoving_v2()
@@ -271,7 +271,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Tests that clear resets queue v 2
+        ///     Tests that clear resets queue v 2
         /// </summary>
         [Fact]
         public void Clear_ResetsQueue_v2()
@@ -283,7 +283,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Tests that contains returns true for enqueued item v 2
+        ///     Tests that contains returns true for enqueued item v 2
         /// </summary>
         [Fact]
         public void Contains_ReturnsTrueForEnqueuedItem_v2()
@@ -294,7 +294,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Tests that contains returns false for not enqueued item v 2
+        ///     Tests that contains returns false for not enqueued item v 2
         /// </summary>
         [Fact]
         public void Contains_ReturnsFalseForNotEnqueuedItem_v2()
@@ -304,7 +304,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Tests that remove removes correct item v 2
+        ///     Tests that remove removes correct item v 2
         /// </summary>
         [Fact]
         public void Remove_RemovesCorrectItem_v2()
@@ -316,7 +316,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Tests that update priority changes item priority v 2
+        ///     Tests that update priority changes item priority v 2
         /// </summary>
         [Fact]
         public void UpdatePriority_ChangesItemPriority_v2()
@@ -330,7 +330,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Tests that default constructor initializes queue
+        ///     Tests that default constructor initializes queue
         /// </summary>
         [Fact]
         public void DefaultConstructor_InitializesQueue()
@@ -341,7 +341,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Tests that constructor with comparer initializes queue
+        ///     Tests that constructor with comparer initializes queue
         /// </summary>
         [Fact]
         public void Constructor_WithComparer_InitializesQueue()
@@ -353,7 +353,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Tests that constructor with comparison initializes queue
+        ///     Tests that constructor with comparison initializes queue
         /// </summary>
         [Fact]
         public void Constructor_WithComparison_InitializesQueue()

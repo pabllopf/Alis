@@ -33,31 +33,31 @@ using Xunit;
 namespace Alis.Test.Builder.Core.Ecs.Component.Light
 {
     /// <summary>
-    /// The directional light builder test class
+    ///     The directional light builder test class
     /// </summary>
     public class DirectionalLightBuilderTest
     {
         /// <summary>
-        /// Tests that directional light builder default constructor valid input
+        ///     Tests that directional light builder default constructor valid input
         /// </summary>
         [Fact]
         public void DirectionalLightBuilder_DefaultConstructor_ValidInput()
         {
             DirectionalLightBuilder directionalLightBuilder = new DirectionalLightBuilder();
-            
+
             Assert.NotNull(directionalLightBuilder);
         }
-        
+
         /// <summary>
-        /// Tests that build valid input
+        ///     Tests that build valid input
         /// </summary>
         [Fact]
         public void Build_ValidInput()
         {
             DirectionalLightBuilder directionalLightBuilder = new DirectionalLightBuilder();
-            
+
             DirectionalLightBuilder directionalLight = directionalLightBuilder.Build();
-            
+
             Assert.NotNull(directionalLight);
         }
     }

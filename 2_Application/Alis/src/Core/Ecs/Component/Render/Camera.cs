@@ -44,7 +44,7 @@ namespace Alis.Core.Ecs.Component.Render
     ///     The camera class
     /// </summary>
     /// <seealso cref="AComponent" />
-    public class Camera : 
+    public class Camera :
         AComponent,
         IBuilder<CameraBuilder>
     {
@@ -60,9 +60,9 @@ namespace Alis.Core.Ecs.Component.Render
             BackgroundColor = Color.Black;
             CameraBorder = 1f;
         }
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="Camera"/> class
+        ///     Initializes a new instance of the <see cref="Camera" /> class
         /// </summary>
         /// <param name="id">The id</param>
         /// <param name="name">The name</param>
@@ -74,7 +74,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// <param name="cameraBorder">The camera border</param>
         [JsonConstructor]
         [ExcludeFromCodeCoverage]
-        public Camera( string id, string name, string tag, bool isEnable, RectangleI viewport, Vector2 resolution, Color backgroundColor, float cameraBorder)
+        public Camera(string id, string name, string tag, bool isEnable, RectangleI viewport, Vector2 resolution, Color backgroundColor, float cameraBorder)
         {
             Id = id;
             Name = name;
@@ -85,43 +85,43 @@ namespace Alis.Core.Ecs.Component.Render
             BackgroundColor = backgroundColor;
             CameraBorder = cameraBorder;
         }
-        
+
         /// <summary>
         ///     The viewport
         /// </summary>
         [JsonPropertyName("_Viewport_")]
         public RectangleI Viewport { get; set; }
-        
+
         /// <summary>
         ///     Gets or sets the value of the texture target
         /// </summary>
         [JsonPropertyName("_TextureTarget_", true, true)]
         public IntPtr TextureTarget { get; set; }
-        
+
         /// <summary>
         ///     Gets or sets the value of the resolution
         /// </summary>
         [JsonPropertyName("_Resolution_")]
         public Vector2 Resolution { get; set; }
-        
+
         /// <summary>
         ///     Gets or sets the value of the background color
         /// </summary>
         [JsonPropertyName("_BackgroundColor_")]
         public Color BackgroundColor { get; set; }
-        
+
         /// <summary>
         ///     Gets or sets the value of the camera border
         /// </summary>
         [JsonPropertyName("_CameraBorder_")]
         public float CameraBorder { get; set; }
-        
+
         /// <summary>
         ///     Builders this instance
         /// </summary>
         /// <returns>The camera builder</returns>
         public CameraBuilder Builder() => new CameraBuilder();
-        
+
         /// <summary>
         ///     Starts this instance
         /// </summary>
@@ -132,17 +132,17 @@ namespace Alis.Core.Ecs.Component.Render
             {
                 return;
             }
-            
+
             int x = (int) Math.Truncate(GameObject.Transform.Position.X);
             int y = (int) Math.Truncate(GameObject.Transform.Position.Y);
             int w = (int) Math.Truncate(Resolution.X);
             int h = (int) Math.Truncate(Resolution.Y);
-            
+
             Viewport = new RectangleI(x, y, w, h);
             TextureTarget = Sdl.CreateTexture(Context.GraphicManager.Renderer, Sdl.PixelFormatRgba8888, (int) TextureAccess.SdlTextureAccessTarget, Viewport.W, Viewport.H);
             Context.GraphicManager.Attach(this);
         }
-        
+
         /// <summary>
         ///     Ons the update
         /// </summary>
@@ -156,7 +156,7 @@ namespace Alis.Core.Ecs.Component.Render
 
             Viewport = new RectangleI((int) GameObject.Transform.Position.X, (int) GameObject.Transform.Position.Y, Viewport.W, Viewport.H);
         }
-        
+
         /// <summary>
         ///     Ons the exit
         /// </summary>

@@ -96,7 +96,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that set identity sets position to zero and rotation to identity
+        ///     Tests that set identity sets position to zero and rotation to identity
         /// </summary>
         [Fact]
         public void SetIdentity_SetsPositionToZeroAndRotationToIdentity()
@@ -109,7 +109,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that set sets position and angle correctly
+        ///     Tests that set sets position and angle correctly
         /// </summary>
         [Fact]
         public void Set_SetsPositionAndAngleCorrectly()
@@ -125,7 +125,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        /// Tests that get object data serializes properties correctly
+        ///     Tests that get object data serializes properties correctly
         /// </summary>
         [Fact]
         public void GetObjectData_SerializesPropertiesCorrectly()

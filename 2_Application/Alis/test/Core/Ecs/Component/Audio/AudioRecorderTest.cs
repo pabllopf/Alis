@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Test.Core.Ecs.Component.Audio
 {
     /// <summary>
-    /// The audio recorder test class
+    ///     The audio recorder test class
     /// </summary>
     public class AudioRecorderTest
     {
         /// <summary>
-        /// Tests that builder should return audio recorder builder
+        ///     Tests that builder should return audio recorder builder
         /// </summary>
         [Fact]
         public void Builder_ShouldReturnAudioRecorderBuilder()

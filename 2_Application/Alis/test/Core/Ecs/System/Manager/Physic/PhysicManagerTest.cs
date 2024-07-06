@@ -36,12 +36,12 @@ using Xunit;
 namespace Alis.Test.Core.Ecs.System.Manager.Physic
 {
     /// <summary>
-    /// The physic manager test class
+    ///     The physic manager test class
     /// </summary>
     public class PhysicManagerTest
     {
         /// <summary>
-        /// Tests that test on update
+        ///     Tests that test on update
         /// </summary>
         [Fact]
         public void Test_OnUpdate()
@@ -51,9 +51,9 @@ namespace Alis.Test.Core.Ecs.System.Manager.Physic
             manager.OnUpdate();
             // Asserts would go here
         }
-        
+
         /// <summary>
-        /// Tests that test attach
+        ///     Tests that test attach
         /// </summary>
         [Fact]
         public void Test_Attach()
@@ -67,9 +67,9 @@ namespace Alis.Test.Core.Ecs.System.Manager.Physic
             manager.Attach(body);
             // Asserts would go here
         }
-        
+
         /// <summary>
-        /// Tests that test un attach
+        ///     Tests that test un attach
         /// </summary>
         [Fact]
         public void Test_UnAttach()

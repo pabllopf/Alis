@@ -38,38 +38,32 @@ namespace Alis.Core.Ecs.System.Setting.Input
     ///     The input setting class
     /// </summary>
     /// <seealso cref="IInputSetting" />
-    public class InputSetting : 
+    public class InputSetting :
         IInputSetting,
         IBuilder<InputSettingBuilder>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="InputSetting"/> class
+        ///     Initializes a new instance of the <see cref="InputSetting" /> class
         /// </summary>
         [ExcludeFromCodeCoverage]
-        public InputSetting()
-        {
-            UpdateMode = UpdateMode.DynamicUpdate;
-        }
-        
+        public InputSetting() => UpdateMode = UpdateMode.DynamicUpdate;
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="InputSetting"/> class
+        ///     Initializes a new instance of the <see cref="InputSetting" /> class
         /// </summary>
         /// <param name="updateMode">The update mode</param>
         [JsonConstructor]
         [ExcludeFromCodeCoverage]
-        public InputSetting(UpdateMode updateMode)
-        {
-            UpdateMode = updateMode;
-        }
-        
+        public InputSetting(UpdateMode updateMode) => UpdateMode = updateMode;
+
         /// <summary>
-        /// Gets or sets the value of the update mode
+        ///     Gets or sets the value of the update mode
         /// </summary>
         [JsonPropertyName("_UpdateMode_")]
         public UpdateMode UpdateMode { get; set; }
-        
+
         /// <summary>
-        /// Builders this instance
+        ///     Builders this instance
         /// </summary>
         /// <returns>The input setting builder</returns>
         public InputSettingBuilder Builder() => new InputSettingBuilder();

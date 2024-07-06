@@ -33,12 +33,12 @@ using Xunit;
 namespace Alis.Core.Network.Test
 {
     /// <summary>
-    /// The buffer pool test class
+    ///     The buffer pool test class
     /// </summary>
     public class IBufferPoolTest
     {
         /// <summary>
-        /// Tests that get buffer should return memory stream
+        ///     Tests that get buffer should return memory stream
         /// </summary>
         [Fact]
         public void GetBuffer_ShouldReturnMemoryStream()
@@ -47,9 +47,9 @@ namespace Alis.Core.Network.Test
             MemoryStream buffer = bufferPool.GetBuffer();
             Assert.IsType<PublicBufferMemoryStream>(buffer);
         }
-        
+
         /// <summary>
-        /// Tests that get buffer should return different instances
+        ///     Tests that get buffer should return different instances
         /// </summary>
         [Fact]
         public void GetBuffer_ShouldReturnDifferentInstances()
@@ -59,9 +59,9 @@ namespace Alis.Core.Network.Test
             MemoryStream buffer2 = bufferPool.GetBuffer();
             Assert.NotSame(buffer1, buffer2);
         }
-        
+
         /// <summary>
-        /// Tests that get buffer should return pooled memory stream
+        ///     Tests that get buffer should return pooled memory stream
         /// </summary>
         [Fact]
         public void GetBuffer_ShouldReturnPooledMemoryStream()

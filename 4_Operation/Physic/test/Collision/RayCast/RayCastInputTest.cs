@@ -47,14 +47,14 @@ namespace Alis.Core.Physic.Test.Collision.RayCast
             // Arrange
             RayCastInput rayCastInput = new RayCastInput();
             float expected = 0.5f;
-            
+
             // Act
             rayCastInput.Fraction = expected;
-            
+
             // Assert
             Assert.Equal(expected, rayCastInput.Fraction);
         }
-        
+
         /// <summary>
         ///     Tests that test point 1
         /// </summary>
@@ -64,14 +64,14 @@ namespace Alis.Core.Physic.Test.Collision.RayCast
             // Arrange
             RayCastInput rayCastInput = new RayCastInput();
             Vector2 expected = new Vector2(1, 1);
-            
+
             // Act
             rayCastInput.Point1 = expected;
-            
+
             // Assert
             Assert.Equal(expected, rayCastInput.Point1);
         }
-        
+
         /// <summary>
         ///     Tests that test point 2
         /// </summary>
@@ -81,10 +81,10 @@ namespace Alis.Core.Physic.Test.Collision.RayCast
             // Arrange
             RayCastInput rayCastInput = new RayCastInput();
             Vector2 expected = new Vector2(2, 2);
-            
+
             // Act
             rayCastInput.Point2 = expected;
-            
+
             // Assert
             Assert.Equal(expected, rayCastInput.Point2);
         }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IPriorityQueueTest.cs
+//  File:PriorityQueueTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -33,12 +33,12 @@ using Xunit;
 namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
 {
     /// <summary>
-    /// The priority queue test class
+    ///     The priority queue test class
     /// </summary>
     public class PriorityQueueTest
     {
         /// <summary>
-        /// Tests that queue initializes with correct max size
+        ///     Tests that queue initializes with correct max size
         /// </summary>
         [Fact]
         public void Queue_InitializesWithCorrectMaxSize()
@@ -48,7 +48,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Tests that enqueue increases count
+        ///     Tests that enqueue increases count
         /// </summary>
         [Fact]
         public void Enqueue_IncreasesCount()

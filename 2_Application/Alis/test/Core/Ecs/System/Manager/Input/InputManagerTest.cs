@@ -36,12 +36,12 @@ using Xunit;
 namespace Alis.Test.Core.Ecs.System.Manager.Input
 {
     /// <summary>
-    /// The input manager test class
+    ///     The input manager test class
     /// </summary>
     public class InputManagerTest
     {
         /// <summary>
-        /// Tests that on init valid input
+        ///     Tests that on init valid input
         /// </summary>
         [Fact]
         public void OnInit_ValidInput()
@@ -49,12 +49,10 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
             VideoGame videoGame = new VideoGame();
             InputManager inputManager = new InputManager();
             inputManager.OnInit();
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that on dispatch events valid input
+        ///     Tests that on dispatch events valid input
         /// </summary>
         [Fact]
         public void OnDispatchEvents_ValidInput()
@@ -62,12 +60,10 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
             VideoGame videoGame = new VideoGame();
             InputManager inputManager = new InputManager();
             inputManager.OnDispatchEvents();
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that handle sdl quit event valid input
+        ///     Tests that handle sdl quit event valid input
         /// </summary>
         [Fact]
         public void HandleSdlQuitEvent_ValidInput()
@@ -75,12 +71,10 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
             VideoGame videoGame = new VideoGame();
             InputManager inputManager = new InputManager();
             // You would need to simulate an SDL Quit event here
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that handle sdl keyup event valid input
+        ///     Tests that handle sdl keyup event valid input
         /// </summary>
         [Fact]
         public void HandleSdlKeyupEvent_ValidInput()
@@ -88,12 +82,10 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
             VideoGame videoGame = new VideoGame();
             InputManager inputManager = new InputManager();
             // You would need to simulate an SDL Keyup event here
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that handle sdl keydown event valid input
+        ///     Tests that handle sdl keydown event valid input
         /// </summary>
         [Fact]
         public void HandleSdlKeydownEvent_ValidInput()
@@ -101,12 +93,10 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
             VideoGame videoGame = new VideoGame();
             InputManager inputManager = new InputManager();
             // You would need to simulate an SDL Keydown event here
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that handle sdl joy button down event valid input
+        ///     Tests that handle sdl joy button down event valid input
         /// </summary>
         [Fact]
         public void HandleSdlJoyButtonDownEvent_ValidInput()
@@ -114,12 +104,10 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
             VideoGame videoGame = new VideoGame();
             InputManager inputManager = new InputManager();
             // You would need to simulate an SDL JoyButtonDown event here
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that handle sdl joy axis motion event valid input
+        ///     Tests that handle sdl joy axis motion event valid input
         /// </summary>
         [Fact]
         public void HandleSdlJoyAxisMotionEvent_ValidInput()
@@ -127,12 +115,10 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
             VideoGame videoGame = new VideoGame();
             InputManager inputManager = new InputManager();
             // You would need to simulate an SDL JoyAxisMotion event here
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that notify key hold valid input
+        ///     Tests that notify key hold valid input
         /// </summary>
         [Fact]
         public void NotifyKeyHold_ValidInput()
@@ -140,9 +126,9 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
             VideoGame videoGame = new VideoGame();
             InputManager inputManager = new InputManager();
         }
-        
+
         /// <summary>
-        /// Tests that notify key press valid input
+        ///     Tests that notify key press valid input
         /// </summary>
         [Fact]
         public void NotifyKeyPress_ValidInput()
@@ -150,12 +136,10 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
             VideoGame videoGame = new VideoGame();
             InputManager inputManager = new InputManager();
             // You would need to simulate a key press here
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that notify key release valid input
+        ///     Tests that notify key release valid input
         /// </summary>
         [Fact]
         public void NotifyKeyRelease_ValidInput()
@@ -164,9 +148,9 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
             InputManager inputManager = new InputManager();
             // You would need to simulate a key release here
         }
-        
+
         /// <summary>
-        /// Tests that notify key hold valid input v 2
+        ///     Tests that notify key hold valid input v 2
         /// </summary>
         [Fact]
         public void NotifyKeyHold_ValidInput_v2()
@@ -175,11 +159,10 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
             InputManager inputManager = new InputManager();
             inputManager.tempListOfKeys = new List<KeyCodes> {KeyCodes.A, KeyCodes.B};
             inputManager.NotifyKeyHold();
-            
         }
-        
+
         /// <summary>
-        /// Tests that notify key press valid input v 2
+        ///     Tests that notify key press valid input v 2
         /// </summary>
         [Fact]
         public void NotifyKeyPress_ValidInput_v2()
@@ -187,11 +170,10 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
             VideoGame videoGame = new VideoGame();
             InputManager inputManager = new InputManager();
             inputManager.NotifyKeyPress(KeyCodes.A);
-            
         }
-        
+
         /// <summary>
-        /// Tests that notify key release valid input v 2
+        ///     Tests that notify key release valid input v 2
         /// </summary>
         [Fact]
         public void NotifyKeyRelease_ValidInput_v2()
@@ -199,11 +181,10 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
             VideoGame videoGame = new VideoGame();
             InputManager inputManager = new InputManager();
             inputManager.NotifyKeyRelease(KeyCodes.A);
-            
         }
-        
+
         /// <summary>
-        /// Tests that notify key hold with key valid input
+        ///     Tests that notify key hold with key valid input
         /// </summary>
         [Fact]
         public void NotifyKeyHoldWithKey_ValidInput()
@@ -211,7 +192,6 @@ namespace Alis.Test.Core.Ecs.System.Manager.Input
             VideoGame videoGame = new VideoGame();
             InputManager inputManager = new InputManager();
             inputManager.NotifyKeyHold(KeyCodes.A);
-            
         }
     }
 }

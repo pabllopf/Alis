@@ -34,56 +34,56 @@ using Xunit;
 namespace Alis.Test.Core.Ecs.Component.Ui
 {
     /// <summary>
-    /// The canvas test class
+    ///     The canvas test class
     /// </summary>
     public class CanvasTest
     {
         /// <summary>
-        /// Tests that canvas default constructor valid input
+        ///     Tests that canvas default constructor valid input
         /// </summary>
         [Fact]
         public void Canvas_DefaultConstructor_ValidInput()
         {
             Canvas canvas = new Canvas();
-            
+
             Assert.NotNull(canvas);
             Assert.Equal(0, canvas.Width);
             Assert.Equal(0, canvas.Height);
         }
-        
+
         /// <summary>
-        /// Tests that canvas width property valid input
+        ///     Tests that canvas width property valid input
         /// </summary>
         [Fact]
         public void Canvas_WidthProperty_ValidInput()
         {
             Canvas canvas = new Canvas();
             canvas.Width = 800;
-            
+
             Assert.Equal(800, canvas.Width);
         }
-        
+
         /// <summary>
-        /// Tests that canvas height property valid input
+        ///     Tests that canvas height property valid input
         /// </summary>
         [Fact]
         public void Canvas_HeightProperty_ValidInput()
         {
             Canvas canvas = new Canvas();
             canvas.Height = 600;
-            
+
             Assert.Equal(600, canvas.Height);
         }
-        
+
         /// <summary>
-        /// Tests that canvas builder valid input
+        ///     Tests that canvas builder valid input
         /// </summary>
         [Fact]
         public void Canvas_Builder_ValidInput()
         {
             Canvas canvas = new Canvas();
             CanvasBuilder canvasBuilder = canvas.Builder();
-            
+
             Assert.NotNull(canvasBuilder);
             Assert.IsType<CanvasBuilder>(canvasBuilder);
         }

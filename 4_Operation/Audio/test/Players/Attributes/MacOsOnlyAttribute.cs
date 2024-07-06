@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:RunnableInDebugOnlyAttribute.cs
+//  File:MacOsOnlyAttribute.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -33,13 +33,13 @@ using Xunit;
 namespace Alis.Core.Audio.Test.Players.Attributes
 {
     /// <summary>
-    /// The mac os only attribute class
+    ///     The mac os only attribute class
     /// </summary>
-    /// <seealso cref="FactAttribute"/>
+    /// <seealso cref="FactAttribute" />
     public class MacOsOnlyAttribute : FactAttribute
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="MacOsOnlyAttribute"/> class
+        ///     Initializes a new instance of the <see cref="MacOsOnlyAttribute" /> class
         /// </summary>
         public MacOsOnlyAttribute()
         {

@@ -33,12 +33,12 @@ using Xunit;
 namespace Alis.Core.Network.Test.Internal
 {
     /// <summary>
-    /// The web socket op code test class
+    ///     The web socket op code test class
     /// </summary>
     public class WebSocketOpCodeTest
     {
         /// <summary>
-        /// Tests that web socket op code values
+        ///     Tests that web socket op code values
         /// </summary>
         [Fact]
         public void WebSocketOpCode_Values()

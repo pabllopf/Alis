@@ -54,7 +54,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             int result = dynamicTree.CreateProxy(ref aabb, proxy);
             Assert.True(result <= 0);
         }
-        
+
         /// <summary>
         ///     Tests that test destroy proxy
         /// </summary>
@@ -69,7 +69,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             FixtureProxy result = dynamicTree.GetUserData(proxyId);
             Assert.IsType<FixtureProxy>(result);
         }
-        
+
         /// <summary>
         ///     Tests that test move proxy
         /// </summary>
@@ -84,7 +84,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             bool result = dynamicTree.MoveProxy(proxyId, ref aabb, displacement);
             Assert.False(result);
         }
-        
+
         /// <summary>
         ///     Tests that test was moved
         /// </summary>
@@ -98,7 +98,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             bool result = dynamicTree.WasMoved(proxyId);
             Assert.True(result);
         }
-        
+
         /// <summary>
         ///     Tests that test clear moved
         /// </summary>
@@ -112,7 +112,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             dynamicTree.ClearMoved(proxyId);
             Assert.False(dynamicTree.WasMoved(proxyId));
         }
-        
+
         /// <summary>
         ///     Tests that test get user data
         /// </summary>
@@ -126,7 +126,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             FixtureProxy result = dynamicTree.GetUserData(proxyId);
             Assert.Equal(proxy, result);
         }
-        
+
         /// <summary>
         ///     Tests that test get fat aabb
         /// </summary>
@@ -140,7 +140,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             dynamicTree.GetFatAabb(proxyId, out Aabb fatAabb);
             Assert.NotEqual(aabb, fatAabb);
         }
-        
+
         /// <summary>
         ///     Tests that test query
         /// </summary>
@@ -152,7 +152,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             dynamicTree.Query(null, ref aabb);
             Assert.True(true); // No exception means pass
         }
-        
+
         /// <summary>
         ///     Tests that test ray cast
         /// </summary>
@@ -164,7 +164,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             dynamicTree.RayCast(null, ref input);
             Assert.True(true); // No exception means pass
         }
-        
+
         /// <summary>
         ///     Tests that test shift origin
         /// </summary>
@@ -176,35 +176,33 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             dynamicTree.ShiftOrigin(ref newOrigin);
             Assert.True(true); // No exception means pass
         }
-        
+
         /// <summary>
-        /// Tests that compute height returns correct height
+        ///     Tests that compute height returns correct height
         /// </summary>
         [Fact]
         public void ComputeHeight_ReturnsCorrectHeight()
         {
             DynamicTree<int> tree = new DynamicTree<int>();
             // Add nodes to the tree
-            
+
             Assert.Throws<IndexOutOfRangeException>(() => tree.ComputeHeight());
         }
-        
+
         /// <summary>
-        /// Tests that shift origin changes node origins
+        ///     Tests that shift origin changes node origins
         /// </summary>
         [Fact]
         public void ShiftOrigin_ChangesNodeOrigins()
         {
             DynamicTree<int> tree = new DynamicTree<int>();
             // Add nodes to the tree
-            
+
             Vector2 newOrigin = new Vector2(1, 1);
             tree.ShiftOrigin(ref newOrigin);
-            
+
             // Assert that the origins of the nodes have been shifted correctly
             // This depends on your specific tree structure and nodes
         }
-        
-        
     }
 }

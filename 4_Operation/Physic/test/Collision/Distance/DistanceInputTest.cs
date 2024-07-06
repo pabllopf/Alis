@@ -47,14 +47,14 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             // Arrange
             DistanceInput distanceInput = new DistanceInput();
             DistanceProxy proxyA = new DistanceProxy();
-            
+
             // Act
             distanceInput.ProxyA = proxyA;
-            
+
             // Assert
             Assert.Equal(proxyA, distanceInput.ProxyA);
         }
-        
+
         /// <summary>
         ///     Tests that proxy b property test
         /// </summary>
@@ -64,14 +64,14 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             // Arrange
             DistanceInput distanceInput = new DistanceInput();
             DistanceProxy proxyB = new DistanceProxy();
-            
+
             // Act
             distanceInput.ProxyB = proxyB;
-            
+
             // Assert
             Assert.Equal(proxyB, distanceInput.ProxyB);
         }
-        
+
         /// <summary>
         ///     Tests that transform a property test
         /// </summary>
@@ -81,14 +81,14 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             // Arrange
             DistanceInput distanceInput = new DistanceInput();
             Transform transformA = new Transform();
-            
+
             // Act
             distanceInput.TransformA = transformA;
-            
+
             // Assert
             Assert.Equal(transformA, distanceInput.TransformA);
         }
-        
+
         /// <summary>
         ///     Tests that transform b property test
         /// </summary>
@@ -98,14 +98,14 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             // Arrange
             DistanceInput distanceInput = new DistanceInput();
             Transform transformB = new Transform();
-            
+
             // Act
             distanceInput.TransformB = transformB;
-            
+
             // Assert
             Assert.Equal(transformB, distanceInput.TransformB);
         }
-        
+
         /// <summary>
         ///     Tests that use radii property test
         /// </summary>
@@ -115,10 +115,10 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             // Arrange
             DistanceInput distanceInput = new DistanceInput();
             bool useRadii = true;
-            
+
             // Act
             distanceInput.UseRadii = useRadii;
-            
+
             // Assert
             Assert.Equal(useRadii, distanceInput.UseRadii);
         }

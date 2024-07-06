@@ -48,14 +48,14 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             // Arrange
             ManifoldPoint manifoldPoint = new ManifoldPoint();
             Vector2 expectedValue = new Vector2(1, 1);
-            
+
             // Act
             manifoldPoint.LocalPoint = expectedValue;
-            
+
             // Assert
             Assert.Equal(expectedValue, manifoldPoint.LocalPoint);
         }
-        
+
         /// <summary>
         ///     Tests that test normal impulse property
         /// </summary>
@@ -65,14 +65,14 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             // Arrange
             ManifoldPoint manifoldPoint = new ManifoldPoint();
             float expectedValue = 1.5f;
-            
+
             // Act
             manifoldPoint.NormalImpulse = expectedValue;
-            
+
             // Assert
             Assert.Equal(expectedValue, manifoldPoint.NormalImpulse);
         }
-        
+
         /// <summary>
         ///     Tests that test tangent impulse property
         /// </summary>
@@ -82,14 +82,14 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             // Arrange
             ManifoldPoint manifoldPoint = new ManifoldPoint();
             float expectedValue = 1.5f;
-            
+
             // Act
             manifoldPoint.TangentImpulse = expectedValue;
-            
+
             // Assert
             Assert.Equal(expectedValue, manifoldPoint.TangentImpulse);
         }
-        
+
         /// <summary>
         ///     Tests that test id property
         /// </summary>
@@ -99,10 +99,10 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             // Arrange
             ManifoldPoint manifoldPoint = new ManifoldPoint();
             ContactId expectedValue = new ContactId();
-            
+
             // Act
             manifoldPoint.Id = expectedValue;
-            
+
             // Assert
             Assert.Equal(expectedValue, manifoldPoint.Id);
         }

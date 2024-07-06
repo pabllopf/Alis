@@ -34,59 +34,59 @@ using Xunit;
 namespace Alis.Test.Core.Ecs.System.Setting.Audio
 {
     /// <summary>
-    /// The audio setting test class
+    ///     The audio setting test class
     /// </summary>
     public class AudioSettingTest
     {
         /// <summary>
-        /// Tests that test audio setting volume
+        ///     Tests that test audio setting volume
         /// </summary>
         [Fact]
         public void Test_AudioSetting_Volume()
         {
             // Arrange
             AudioSetting audioSetting = new AudioSetting();
-            
+
             // Act
             audioSetting.Volume = 80;
             int result = audioSetting.Volume;
-            
+
             // Assert
             Assert.NotNull(audioSetting);
             Assert.Equal(80, result);
         }
-        
+
         /// <summary>
-        /// Tests that test audio setting mute
+        ///     Tests that test audio setting mute
         /// </summary>
         [Fact]
         public void Test_AudioSetting_Mute()
         {
             // Arrange
             AudioSetting audioSetting = new AudioSetting();
-            
+
             // Act
             audioSetting.Mute = true;
             bool result = audioSetting.Mute;
-            
+
             // Assert
             Assert.NotNull(audioSetting);
             Assert.True(result);
         }
-        
-        
+
+
         /// <summary>
-        /// Tests that test audio setting builder
+        ///     Tests that test audio setting builder
         /// </summary>
         [Fact]
         public void Test_AudioSetting_Builder()
         {
             // Arrange
             AudioSetting audioSetting = new AudioSetting();
-            
+
             // Act
             AudioSettingBuilder result = audioSetting.Builder();
-            
+
             // Assert
             Assert.NotNull(result);
             Assert.IsType<AudioSettingBuilder>(result);

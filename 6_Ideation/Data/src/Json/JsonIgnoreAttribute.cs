@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:JsonIgnore.cs
+//  File:JsonIgnoreAttribute.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -33,9 +33,9 @@ using System.Diagnostics.CodeAnalysis;
 namespace Alis.Core.Aspect.Data.Json
 {
     /// <summary>
-    /// The json ignore attribute class
+    ///     The json ignore attribute class
     /// </summary>
-    /// <seealso cref="Attribute"/>
+    /// <seealso cref="Attribute" />
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Struct | AttributeTargets.Class)]
     [ExcludeFromCodeCoverage]
     public class JsonIgnoreAttribute : Attribute
@@ -47,13 +47,13 @@ namespace Alis.Core.Aspect.Data.Json
         ///     <c>true</c> if this instance's owner must be ignored when serializing; otherwise, <c>false</c>.
         /// </value>
         public bool IgnoreWhenSerializing { get; } = true;
-        
+
         /// <summary>
         ///     Gets or sets a value indicating whether to ignore this instance's owner when deserializing.
         /// </summary>
         /// <value>
         ///     <c>true</c> if this instance's owner must be ignored when deserializing; otherwise, <c>false</c>.
         /// </value>
-        public bool IgnoreWhenDeserializing { get;  } = true;
+        public bool IgnoreWhenDeserializing { get; } = true;
     }
 }

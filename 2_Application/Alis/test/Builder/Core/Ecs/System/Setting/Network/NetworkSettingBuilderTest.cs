@@ -34,31 +34,31 @@ using Xunit;
 namespace Alis.Test.Builder.Core.Ecs.System.Setting.Network
 {
     /// <summary>
-    /// The network setting builder test class
+    ///     The network setting builder test class
     /// </summary>
     public class NetworkSettingBuilderTest
     {
         /// <summary>
-        /// Tests that network setting builder default constructor valid input
+        ///     Tests that network setting builder default constructor valid input
         /// </summary>
         [Fact]
         public void NetworkSettingBuilder_DefaultConstructor_ValidInput()
         {
             NetworkSettingBuilder networkSettingBuilder = new NetworkSettingBuilder();
-            
+
             Assert.NotNull(networkSettingBuilder);
         }
-        
+
         /// <summary>
-        /// Tests that build valid input
+        ///     Tests that build valid input
         /// </summary>
         [Fact]
         public void Build_ValidInput()
         {
             NetworkSettingBuilder networkSettingBuilder = new NetworkSettingBuilder();
-            
+
             NetworkSetting networkSetting = networkSettingBuilder.Build();
-            
+
             Assert.NotNull(networkSetting);
         }
     }

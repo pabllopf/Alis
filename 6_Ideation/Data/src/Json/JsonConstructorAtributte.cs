@@ -31,14 +31,12 @@ using System;
 
 namespace Alis.Core.Aspect.Data.Json
 {
-    
     /// <summary>
-    /// The json constructor attribute class
+    ///     The json constructor attribute class
     /// </summary>
-    /// <seealso cref="Attribute"/>
+    /// <seealso cref="Attribute" />
     [AttributeUsage(AttributeTargets.Constructor)]
     public class JsonConstructorAttribute : Attribute
     {
-        
     }
 }

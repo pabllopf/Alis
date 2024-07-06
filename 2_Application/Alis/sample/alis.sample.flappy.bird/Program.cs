@@ -77,7 +77,7 @@ namespace Alis.Sample.Flappy.Bird
                         .Build())
                     .Build())
                 .World(sceneManager => sceneManager
-                    
+
                     ////////////////////////////////////////
                     // MAIN MENU SCENE:
                     ////////////////////////////////////////
@@ -95,7 +95,7 @@ namespace Alis.Sample.Flappy.Bird
                                 .BackgroundColor(Color.Black)
                                 .Build())
                             .Build())
-                        
+
                         ////////////////////////////////////////
                         // MAIN MENU SCENE: BACKGROUND
                         ////////////////////////////////////////
@@ -116,7 +116,7 @@ namespace Alis.Sample.Flappy.Bird
                                 .Builder()
                                 .Build())
                             .Build())
-                        
+
                         ////////////////////////////////////////
                         // MAIN MENU SCENE: FLOOR
                         ////////////////////////////////////////
@@ -134,7 +134,7 @@ namespace Alis.Sample.Flappy.Bird
                                 .Build())
                             .AddComponent(new FloorAnimation())
                             .Build())
-                        
+
                         ////////////////////////////////////////
                         // MAIN MENU SCENE: MESSAGE MENU
                         ////////////////////////////////////////
@@ -152,7 +152,7 @@ namespace Alis.Sample.Flappy.Bird
                                 .Build())
                             .AddComponent(new MainMenuController())
                             .Build())
-                        
+
                         ////////////////////////////////////////
                         // MAIN MENU SCENE: COUNTER
                         ////////////////////////////////////////
@@ -164,7 +164,7 @@ namespace Alis.Sample.Flappy.Bird
                                 .Scale(1f, 1.0f)
                                 .Build())
                             .Build())
-                        
+
                         ////////////////////////////////////////
                         // MAIN MENU SCENE: BIRD
                         ////////////////////////////////////////
@@ -198,7 +198,7 @@ namespace Alis.Sample.Flappy.Bird
                                 .Build())
                             .AddComponent(new BirdIdle())
                             .Build())
-                        
+
                         ////////////////////////////////////////
                         // MAIN MENU SCENE: SOUNDTRACK
                         ////////////////////////////////////////
@@ -213,7 +213,7 @@ namespace Alis.Sample.Flappy.Bird
                                 .Build())
                             .Build())
                         .Build())
-                    
+
                     ////////////////////////////////////////
                     // GAME SCENE:
                     ////////////////////////////////////////
@@ -231,7 +231,7 @@ namespace Alis.Sample.Flappy.Bird
                                 .BackgroundColor(Color.Black)
                                 .Build())
                             .Build())
-                        
+
                         ////////////////////////////////////////
                         // GAME SCENE: BACKGROUND
                         ////////////////////////////////////////
@@ -246,7 +246,7 @@ namespace Alis.Sample.Flappy.Bird
                                 .Depth(0)
                                 .Build())
                             .Build())
-                        
+
                         ////////////////////////////////////////
                         // GAME SCENE: FLOOR
                         ////////////////////////////////////////
@@ -264,7 +264,7 @@ namespace Alis.Sample.Flappy.Bird
                                 .Build())
                             .AddComponent(new FloorAnimation())
                             .Build())
-                        
+
                         ////////////////////////////////////////
                         // GAME SCENE: FLOOR COLLISION
                         ////////////////////////////////////////
@@ -292,7 +292,7 @@ namespace Alis.Sample.Flappy.Bird
                                 .Build())
                             .AddComponent(new DeathZone())
                             .Build())
-                        
+
                         ////////////////////////////////////////
                         // GAME SCENE: SKY COLLISION
                         ////////////////////////////////////////
@@ -320,7 +320,7 @@ namespace Alis.Sample.Flappy.Bird
                                 .Build())
                             .AddComponent(new DeathZone())
                             .Build())
-                        
+
                         ////////////////////////////////////////
                         // GAME SCENE: COUNTER
                         ////////////////////////////////////////
@@ -332,7 +332,7 @@ namespace Alis.Sample.Flappy.Bird
                                 .Scale(1f, 1.0f)
                                 .Build())
                             .Build())
-                        
+
                         ////////////////////////////////////////
                         // GAME SCENE: PIPELINE UP
                         ////////////////////////////////////////
@@ -365,7 +365,7 @@ namespace Alis.Sample.Flappy.Bird
                             .AddComponent(new PipelineController())
                             .AddComponent(new DeathZone())
                             .Build())
-                        
+
                         ////////////////////////////////////////
                         // GAME SCENE: PIPELINE MIDDLE
                         ////////////////////////////////////////
@@ -401,7 +401,7 @@ namespace Alis.Sample.Flappy.Bird
                             .AddComponent(new PipelineController())
                             .AddComponent(new CounterController())
                             .Build())
-                        
+
                         ////////////////////////////////////////
                         // GAME SCENE: PIPELINE DOWN
                         ////////////////////////////////////////
@@ -434,7 +434,7 @@ namespace Alis.Sample.Flappy.Bird
                             .AddComponent(new PipelineController())
                             .AddComponent(new DeathZone())
                             .Build())
-                        
+
                         ////////////////////////////////////////
                         // GAME SCENE: BIRD
                         ////////////////////////////////////////
@@ -493,8 +493,8 @@ namespace Alis.Sample.Flappy.Bird
                         .Build()) // end scene manager
                     .Build()) // end video game
                 .Build();
-            
-           game.Run();
+
+            game.Run();
         }
     }
 }

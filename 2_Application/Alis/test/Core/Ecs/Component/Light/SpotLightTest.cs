@@ -33,29 +33,29 @@ using Xunit;
 namespace Alis.Test.Core.Ecs.Component.Light
 {
     /// <summary>
-    /// The spot light test class
+    ///     The spot light test class
     /// </summary>
     public class SpotLightTest
     {
         /// <summary>
-        /// Tests that spot light default constructor valid input
+        ///     Tests that spot light default constructor valid input
         /// </summary>
         [Fact]
         public void SpotLight_DefaultConstructor_ValidInput()
         {
             SpotLight spotLight = new SpotLight();
-            
+
             Assert.NotNull(spotLight);
         }
-        
+
         /// <summary>
-        /// Tests that on init valid input
+        ///     Tests that on init valid input
         /// </summary>
         [Fact]
         public void OnInit_ValidInput()
         {
             SpotLight spotLight = new SpotLight();
-            
+
             spotLight.OnInit();
         }
     }

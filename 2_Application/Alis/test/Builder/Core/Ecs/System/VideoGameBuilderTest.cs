@@ -38,23 +38,23 @@ using Xunit;
 namespace Alis.Test.Builder.Core.Ecs.System
 {
     /// <summary>
-    /// The video game builder test class
+    ///     The video game builder test class
     /// </summary>
     public class VideoGameBuilderTest
     {
         /// <summary>
-        /// Tests that video game builder default constructor valid input
+        ///     Tests that video game builder default constructor valid input
         /// </summary>
         [Fact]
         public void VideoGameBuilder_DefaultConstructor_ValidInput()
         {
             VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
-            
+
             Assert.NotNull(videoGameBuilder);
         }
-        
+
         /// <summary>
-        /// Tests that settings valid input
+        ///     Tests that settings valid input
         /// </summary>
         [Fact]
         public void Settings_ValidInput()
@@ -62,14 +62,14 @@ namespace Alis.Test.Builder.Core.Ecs.System
             VideoGame videoGame = new VideoGame();
             VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
             Settings settings = new Settings();
-            
+
             videoGameBuilder.Settings(s => settings);
-            
+
             Assert.Equal(settings.Scene.MaxNumberOfScenes, videoGameBuilder.Build().Context.Settings.Scene.MaxNumberOfScenes);
         }
-        
+
         /// <summary>
-        /// Tests that world valid input
+        ///     Tests that world valid input
         /// </summary>
         [Fact]
         public void World_ValidInput()
@@ -77,75 +77,74 @@ namespace Alis.Test.Builder.Core.Ecs.System
             VideoGame videoGame = new VideoGame();
             VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
             SceneManager sceneManager = new SceneManager();
-            
+
             videoGameBuilder.World(s => sceneManager);
-            
+
             Assert.Equal(sceneManager.Scenes.Count, videoGameBuilder.Build().Context.SceneManager.Scenes.Count);
         }
-        
+
         /// <summary>
-        /// Tests that build valid input
+        ///     Tests that build valid input
         /// </summary>
         [Fact]
         public void Build_ValidInput_v2()
         {
-            
             VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
-            
+
             VideoGame videoGame = videoGameBuilder.Build();
-            
+
             Assert.NotNull(videoGame);
         }
-        
+
         /// <summary>
-        /// Tests that video game builder default constructor valid input v 2
+        ///     Tests that video game builder default constructor valid input v 2
         /// </summary>
         [Fact]
         public void VideoGameBuilder_DefaultConstructor_ValidInput_v2()
         {
             VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
-            
+
             Assert.NotNull(videoGameBuilder);
         }
-        
+
         /// <summary>
-        /// Tests that build valid input
+        ///     Tests that build valid input
         /// </summary>
         [Fact]
         public void Build_ValidInput()
         {
             VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
-            
+
             VideoGame videoGame = videoGameBuilder.Build();
-            
+
             Assert.NotNull(videoGame);
         }
-        
+
         /// <summary>
-        /// Tests that settings valid input v 2
+        ///     Tests that settings valid input v 2
         /// </summary>
         [Fact]
         public void Settings_ValidInput_v2()
         {
             VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
             SettingsBuilder settingsBuilder = new SettingsBuilder();
-            
+
             videoGameBuilder.Settings(s => settingsBuilder.Build());
-            
+
             Assert.NotNull(videoGameBuilder.Build().Context.Settings);
         }
-        
+
         /// <summary>
-        /// Tests that world valid input v 2
+        ///     Tests that world valid input v 2
         /// </summary>
         [Fact]
         public void World_ValidInput_v2()
         {
             VideoGameBuilder videoGameBuilder = new VideoGameBuilder();
             SceneManagerBuilder sceneManagerBuilder = new SceneManagerBuilder();
-            
+
             videoGameBuilder.World(s => sceneManagerBuilder.Build());
-            
+
             Assert.NotNull(videoGameBuilder.Build().Context.SceneManager);
         }
     }

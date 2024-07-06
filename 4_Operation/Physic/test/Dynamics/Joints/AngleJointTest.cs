@@ -51,15 +51,15 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             // Arrange
             Body bodyA = new Body(new Vector2(0, 0), new Vector2(0, 0));
             Body bodyB = new Body(new Vector2(1, 1), new Vector2(1, 1));
-            
+
             // Act
             AngleJoint angleJoint = new AngleJoint(bodyA, bodyB);
-            
+
             // Assert
             Assert.Equal(bodyA, angleJoint.BodyA);
             Assert.Equal(bodyB, angleJoint.BodyB);
         }
-        
+
         /// <summary>
         ///     Tests that angle joint properties test
         /// </summary>
@@ -74,11 +74,11 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
                 // Act
                 TargetAngle = 0.5f
             };
-            
+
             // Assert
             Assert.Equal(0.5f, angleJoint.TargetAngle);
         }
-        
+
         /// <summary>
         ///     Tests that angle joint world anchor test
         /// </summary>
@@ -89,11 +89,11 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Body bodyA = new Body(new Vector2(0, 0), new Vector2(0, 0));
             Body bodyB = new Body(new Vector2(1, 1), new Vector2(1, 1));
             AngleJoint angleJoint = new AngleJoint(bodyA, bodyB);
-            
+
             // Act
             Vector2 worldAnchorA = angleJoint.WorldAnchorA;
             Vector2 worldAnchorB = angleJoint.WorldAnchorB;
-            
+
             // Assert
             Assert.Equal(bodyA.Position, worldAnchorA);
             Assert.Equal(bodyB.Position, worldAnchorB);

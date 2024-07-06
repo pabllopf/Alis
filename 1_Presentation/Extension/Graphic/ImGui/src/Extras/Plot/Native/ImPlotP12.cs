@@ -31,12 +31,11 @@ using System.Text;
 
 namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
 {
-  /// <summary>
-  /// The im plot class
-  /// </summary>
-  public static partial class ImPlot
-      {
-        
+    /// <summary>
+    ///     The im plot class
+    /// </summary>
+    public static partial class ImPlot
+    {
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -52,7 +51,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram_U8Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, range, 0);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -69,7 +68,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram_U8Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, range, flags);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -82,7 +81,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram_S16Ptr(Encoding.UTF8.GetBytes(labelId), values, count, 0, 1.0, new ImPlotRange(), 0);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -96,7 +95,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram_S16Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, 1.0, new ImPlotRange(), 0);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -111,7 +110,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram_S16Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, new ImPlotRange(), 0);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -127,7 +126,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram_S16Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, range, 0);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -144,7 +143,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram_S16Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, range, flags);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -157,7 +156,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram_U16Ptr(Encoding.UTF8.GetBytes(labelId), values, count, 0, 1.0, new ImPlotRange(), 0);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -171,7 +170,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram_U16Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, 1.0, new ImPlotRange(), 0);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -186,7 +185,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram_U16Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, new ImPlotRange(), 0);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -202,7 +201,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram_U16Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, range, 0);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -219,7 +218,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram_U16Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, range, flags);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -232,7 +231,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram_S32Ptr(Encoding.UTF8.GetBytes(labelId), values, count, 0, 1.0, new ImPlotRange(), 0);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -246,7 +245,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram_S32Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, 1.0, new ImPlotRange(), 0);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -261,7 +260,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram_S32Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, new ImPlotRange(), 0);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -277,7 +276,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram_S32Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, range, 0);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -294,7 +293,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram_S32Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, range, flags);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -307,7 +306,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram_U32Ptr(Encoding.UTF8.GetBytes(labelId), values, count, 0, 1.0, new ImPlotRange(), 0);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -321,7 +320,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram_U32Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, 1.0, new ImPlotRange(), 0);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -336,7 +335,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram_U32Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, new ImPlotRange(), 0);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -352,7 +351,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram_U32Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, range, 0);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -369,7 +368,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram_U32Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, range, flags);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -382,7 +381,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram_S64Ptr(Encoding.UTF8.GetBytes(labelId), values, count, 0, 1.0, new ImPlotRange(), 0);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -396,7 +395,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram_S64Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, 1.0, new ImPlotRange(), 0);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -411,7 +410,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram_S64Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, new ImPlotRange(), 0);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -427,7 +426,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram_S64Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, range, 0);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -444,7 +443,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram_S64Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, range, flags);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -457,7 +456,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram_U64Ptr(Encoding.UTF8.GetBytes(labelId), values, count, 0, 1.0, new ImPlotRange(), 0);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -471,7 +470,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram_U64Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, 1.0, new ImPlotRange(), 0);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -486,7 +485,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram_U64Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, new ImPlotRange(), 0);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -502,7 +501,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram_U64Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, range, 0);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram using the specified label id
         /// </summary>
@@ -519,7 +518,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram_U64Ptr(Encoding.UTF8.GetBytes(labelId), values, count, bins, barScale, range, flags);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -533,7 +532,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram2D_FloatPtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, new ImPlotRect(), 0);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -548,7 +547,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram2D_FloatPtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, 0, new ImPlotRect(), 0);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -564,7 +563,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram2D_FloatPtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, new ImPlotRect(), 0);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -581,7 +580,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram2D_FloatPtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, 0);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -599,7 +598,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram2D_FloatPtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, flags);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -613,7 +612,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram2D_doublePtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, new ImPlotRect(), 0);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -628,7 +627,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram2D_doublePtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, 0, new ImPlotRect(), 0);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -644,7 +643,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram2D_doublePtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, new ImPlotRect(), 0);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -661,7 +660,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram2D_doublePtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, 0);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -679,7 +678,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram2D_doublePtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, flags);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -693,7 +692,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram2D_S8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, new ImPlotRect(), 0);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -708,7 +707,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram2D_S8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, 0, new ImPlotRect(), 0);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -724,7 +723,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram2D_S8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, new ImPlotRect(), 0);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -741,7 +740,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram2D_S8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, 0);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -759,7 +758,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram2D_S8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, yBins, range, flags);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -773,7 +772,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram2D_U8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, new ImPlotRect(), 0);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>
@@ -788,7 +787,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             double ret = ImPlotNative.ImPlot_PlotHistogram2D_U8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, xBins, 0, new ImPlotRect(), 0);
             return ret;
         }
-        
+
         /// <summary>
         ///     Plots the histogram 2 d using the specified label id
         /// </summary>

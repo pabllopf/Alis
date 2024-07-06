@@ -49,7 +49,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             };
             Assert.Equal(1, treeNode.Child1);
         }
-        
+
         /// <summary>
         ///     Tests that test child 2
         /// </summary>
@@ -62,7 +62,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             };
             Assert.Equal(2, treeNode.Child2);
         }
-        
+
         /// <summary>
         ///     Tests that test height
         /// </summary>
@@ -75,7 +75,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             };
             Assert.Equal(3, treeNode.Height);
         }
-        
+
         /// <summary>
         ///     Tests that test moved
         /// </summary>
@@ -88,7 +88,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             };
             Assert.True(treeNode.Moved);
         }
-        
+
         /// <summary>
         ///     Tests that test parent or next
         /// </summary>
@@ -101,7 +101,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             };
             Assert.Equal(4, treeNode.ParentOrNext);
         }
-        
+
         /// <summary>
         ///     Tests that test user data
         /// </summary>
@@ -114,7 +114,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             };
             Assert.Equal(5, treeNode.UserData);
         }
-        
+
         /// <summary>
         ///     Tests that test is leaf
         /// </summary>

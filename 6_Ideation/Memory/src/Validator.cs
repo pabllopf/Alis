@@ -54,12 +54,12 @@ namespace Alis.Core.Aspect.Memory
             StackTrace stackTrace = new StackTrace();
             MethodBase methodBase = stackTrace.GetFrame(1).GetMethod();
             Type callingType = methodBase.ReflectedType;
-            
+
             ValidateParameter(value, name, callingType, methodBase);
             ValidateField(value, name, callingType);
             ValidateProperty(value, name, callingType);
         }
-        
+
         /// <summary>
         ///     Validates the property using the specified value
         /// </summary>
@@ -72,16 +72,16 @@ namespace Alis.Core.Aspect.Memory
             if (callingType != null)
             {
                 PropertyInfo[] properties = callingType.GetProperties(BindingFlags.Public | BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Instance);
-                
+
                 foreach (PropertyInfo property in properties)
                 {
                     if (property.Name != name)
                     {
                         continue;
                     }
-                    
+
                     object[] attributes = property.GetCustomAttributes(true);
-                    
+
                     foreach (object attribute in attributes)
                     {
                         if (attribute is IsValidationAttribute validationAttribute)
@@ -92,7 +92,7 @@ namespace Alis.Core.Aspect.Memory
                 }
             }
         }
-        
+
         /// <summary>
         ///     Validates the field using the specified value
         /// </summary>
@@ -105,16 +105,16 @@ namespace Alis.Core.Aspect.Memory
             if (callingType != null)
             {
                 FieldInfo[] fields = callingType.GetFields(BindingFlags.Public | BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Instance);
-                
+
                 foreach (FieldInfo field in fields)
                 {
                     if (field.Name != name)
                     {
                         continue;
                     }
-                    
+
                     object[] attributes = field.GetCustomAttributes(true);
-                    
+
                     foreach (object attribute in attributes)
                     {
                         if (attribute is IsValidationAttribute validationAttribute)
@@ -125,7 +125,7 @@ namespace Alis.Core.Aspect.Memory
                 }
             }
         }
-        
+
         /// <summary>
         ///     Validates the parameter using the specified value
         /// </summary>
@@ -145,9 +145,9 @@ namespace Alis.Core.Aspect.Memory
                     {
                         continue;
                     }
-                    
+
                     object[] attributes = parameter.GetCustomAttributes(true);
-                    
+
                     foreach (object attribute in attributes)
                     {
                         if (attribute is IsValidationAttribute validationAttribute)

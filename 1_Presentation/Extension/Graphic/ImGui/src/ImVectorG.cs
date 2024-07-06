@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ImVector.cs
+//  File:ImVectorG.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -41,17 +41,17 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The size
         /// </summary>
         public readonly int Size;
-        
+
         /// <summary>
         ///     The capacity
         /// </summary>
         public readonly int Capacity;
-        
+
         /// <summary>
         ///     The data
         /// </summary>
         public readonly IntPtr Data;
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImVector" /> class
         /// </summary>
@@ -62,7 +62,7 @@ namespace Alis.Extension.Graphic.ImGui
             Capacity = vector.Capacity;
             Data = vector.Data;
         }
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImVector" /> class
         /// </summary>
@@ -75,9 +75,9 @@ namespace Alis.Extension.Graphic.ImGui
             Capacity = capacity;
             Data = data;
         }
-        
+
         /// <summary>
-        /// The free
+        ///     The free
         /// </summary>
         public T this[int index]
         {

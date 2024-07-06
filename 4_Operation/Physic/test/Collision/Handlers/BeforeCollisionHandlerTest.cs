@@ -49,13 +49,13 @@ namespace Alis.Core.Physic.Test.Collision.Handlers
             // Arrange
             bool isHandlerInvoked = false;
             Action<Fixture, Fixture> handler = (fixtureA, fixtureB) => { isHandlerInvoked = true; };
-            
+
             Fixture fixtureA = new Fixture(new CircleShape(1, 1), new Filter(), 0.3f, 0.1f, 1.5f, true);
             Fixture fixtureB = new Fixture(new CircleShape(1, 1), new Filter(), 0.3f, 0.1f, 1.5f, true);
-            
+
             // Act
             handler(fixtureA, fixtureB);
-            
+
             // Assert
             Assert.True(isHandlerInvoked);
         }

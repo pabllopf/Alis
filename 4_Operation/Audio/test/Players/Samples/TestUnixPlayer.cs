@@ -33,30 +33,26 @@ using Alis.Core.Audio.Players;
 namespace Alis.Core.Audio.Test.Players.Samples
 {
     /// <summary>
-    /// The test unix player class
+    ///     The test unix player class
     /// </summary>
-    /// <seealso cref="UnixPlayerBase"/>
+    /// <seealso cref="UnixPlayerBase" />
     public class TestUnixPlayer : UnixPlayerBase
     {
         /// <summary>
-        /// Sets the volume using the specified percent
+        ///     Sets the volume using the specified percent
         /// </summary>
         /// <param name="percent">The percent</param>
-        public override Task SetVolume(byte percent)
-        {
+        public override Task SetVolume(byte percent) =>
             // Implement the method for testing purposes
-            return Task.CompletedTask;
-        }
-        
+            Task.CompletedTask;
+
         /// <summary>
-        /// Gets the bash command using the specified file name
+        ///     Gets the bash command using the specified file name
         /// </summary>
         /// <param name="fileName">The file name</param>
         /// <returns>The string</returns>
-        internal override string GetBashCommand(string fileName)
-        {
+        internal override string GetBashCommand(string fileName) =>
             // Implement the method for testing purposes
-            return "bashCommand";
-        }
+            "bashCommand";
     }
 }

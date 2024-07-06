@@ -33,10 +33,10 @@ using System.Text;
 namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
 {
     /// <summary>
-    /// The im plot class
+    ///     The im plot class
     /// </summary>
     public static partial class ImPlot
-        {
+    {
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
@@ -48,7 +48,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLine_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, 0, 0, sizeof(int));
         }
-        
+
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
@@ -61,7 +61,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLine_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, flags, 0, sizeof(int));
         }
-        
+
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
@@ -75,7 +75,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLine_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, flags, offset, sizeof(int));
         }
-        
+
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
@@ -90,7 +90,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLine_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
@@ -102,7 +102,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLine_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, 0, 0, sizeof(uint));
         }
-        
+
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
@@ -115,7 +115,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLine_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, flags, 0, sizeof(uint));
         }
-        
+
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
@@ -129,7 +129,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLine_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, flags, offset, sizeof(uint));
         }
-        
+
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
@@ -144,7 +144,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLine_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
@@ -156,7 +156,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLine_S64PtrS64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, sizeof(long));
         }
-        
+
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
@@ -169,7 +169,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLine_S64PtrS64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, 0, sizeof(long));
         }
-        
+
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
@@ -183,7 +183,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLine_S64PtrS64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, sizeof(long));
         }
-        
+
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
@@ -198,7 +198,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLine_S64PtrS64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
@@ -210,7 +210,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLine_U64PtrU64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, sizeof(ulong));
         }
-        
+
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
@@ -223,7 +223,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLine_U64PtrU64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, 0, sizeof(ulong));
         }
-        
+
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
@@ -237,7 +237,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLine_U64PtrU64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, sizeof(ulong));
         }
-        
+
         /// <summary>
         ///     Plots the line using the specified label id
         /// </summary>
@@ -252,7 +252,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLine_U64PtrU64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the line g using the specified label id
         /// </summary>
@@ -264,7 +264,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLineG(Encoding.UTF8.GetBytes(labelId), getter, data, count, 0);
         }
-        
+
         /// <summary>
         ///     Plots the line g using the specified label id
         /// </summary>
@@ -277,7 +277,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotLineG(Encoding.UTF8.GetBytes(labelId), getter, data, count, flags);
         }
-        
+
         /// <summary>
         ///     Plots the pie chart using the specified label ids
         /// </summary>
@@ -294,9 +294,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
+
             ImPlotNative.ImPlot_PlotPieChart_FloatPtr(nativeLabelIds, values, count, x, y, radius, null, 90, 0);
         }
-        
+
         /// <summary>
         ///     Plots the pie chart using the specified label ids
         /// </summary>
@@ -314,9 +315,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
+
             ImPlotNative.ImPlot_PlotPieChart_FloatPtr(nativeLabelIds, values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), 90, 0);
         }
-        
+
         /// <summary>
         ///     Plots the pie chart using the specified label ids
         /// </summary>
@@ -335,9 +337,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
+
             ImPlotNative.ImPlot_PlotPieChart_FloatPtr(nativeLabelIds, values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), angle0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the pie chart using the specified label ids
         /// </summary>
@@ -357,9 +360,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
+
             ImPlotNative.ImPlot_PlotPieChart_FloatPtr(nativeLabelIds, values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), angle0, flags);
         }
-        
+
         /// <summary>
         ///     Plots the pie chart using the specified label ids
         /// </summary>
@@ -376,9 +380,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
+
             ImPlotNative.ImPlot_PlotPieChart_doublePtr(nativeLabelIds, values, count, x, y, radius, null, 90, 0);
         }
-        
+
         /// <summary>
         ///     Plots the pie chart using the specified label ids
         /// </summary>
@@ -396,9 +401,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
+
             ImPlotNative.ImPlot_PlotPieChart_doublePtr(nativeLabelIds, values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), 90, 0);
         }
-        
+
         /// <summary>
         ///     Plots the pie chart using the specified label ids
         /// </summary>
@@ -417,9 +423,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
+
             ImPlotNative.ImPlot_PlotPieChart_doublePtr(nativeLabelIds, values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), angle0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the pie chart using the specified label ids
         /// </summary>
@@ -439,9 +446,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
+
             ImPlotNative.ImPlot_PlotPieChart_doublePtr(nativeLabelIds, values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), angle0, flags);
         }
-        
+
         /// <summary>
         ///     Plots the pie chart using the specified label ids
         /// </summary>
@@ -458,9 +466,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
+
             ImPlotNative.ImPlot_PlotPieChart_S8Ptr(nativeLabelIds, values, count, x, y, radius, null, 90, 0);
         }
-        
+
         /// <summary>
         ///     Plots the pie chart using the specified label ids
         /// </summary>
@@ -478,9 +487,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
+
             ImPlotNative.ImPlot_PlotPieChart_S8Ptr(nativeLabelIds, values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), 90, 0);
         }
-        
+
         /// <summary>
         ///     Plots the pie chart using the specified label ids
         /// </summary>
@@ -499,9 +509,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
+
             ImPlotNative.ImPlot_PlotPieChart_S8Ptr(nativeLabelIds, values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), angle0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the pie chart using the specified label ids
         /// </summary>
@@ -521,9 +532,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
+
             ImPlotNative.ImPlot_PlotPieChart_S8Ptr(nativeLabelIds, values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), angle0, flags);
         }
-        
+
         /// <summary>
         ///     Plots the pie chart using the specified label ids
         /// </summary>
@@ -540,9 +552,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
+
             ImPlotNative.ImPlot_PlotPieChart_U8Ptr(nativeLabelIds, values, count, x, y, radius, null, 90, 0);
         }
-        
+
         /// <summary>
         ///     Plots the pie chart using the specified label ids
         /// </summary>
@@ -560,9 +573,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
+
             ImPlotNative.ImPlot_PlotPieChart_U8Ptr(nativeLabelIds, values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), 90, 0);
         }
-        
+
         /// <summary>
         ///     Plots the pie chart using the specified label ids
         /// </summary>
@@ -581,9 +595,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
+
             ImPlotNative.ImPlot_PlotPieChart_U8Ptr(nativeLabelIds, values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), angle0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the pie chart using the specified label ids
         /// </summary>
@@ -603,9 +618,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
+
             ImPlotNative.ImPlot_PlotPieChart_U8Ptr(nativeLabelIds, values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), angle0, flags);
         }
-        
+
         /// <summary>
         ///     Plots the pie chart using the specified label ids
         /// </summary>
@@ -622,9 +638,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
+
             ImPlotNative.ImPlot_PlotPieChart_S16Ptr(nativeLabelIds, values, count, x, y, radius, null, 90, 0);
         }
-        
+
         /// <summary>
         ///     Plots the pie chart using the specified label ids
         /// </summary>
@@ -642,9 +659,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
+
             ImPlotNative.ImPlot_PlotPieChart_S16Ptr(nativeLabelIds, values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), 90, 0);
         }
-        
+
         /// <summary>
         ///     Plots the pie chart using the specified label ids
         /// </summary>
@@ -663,9 +681,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
+
             ImPlotNative.ImPlot_PlotPieChart_S16Ptr(nativeLabelIds, values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), angle0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the pie chart using the specified label ids
         /// </summary>
@@ -685,9 +704,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
+
             ImPlotNative.ImPlot_PlotPieChart_S16Ptr(nativeLabelIds, values, count, x, y, radius, Encoding.UTF8.GetBytes(labelFmt), angle0, flags);
         }
-        
+
         /// <summary>
         ///     Plots the pie chart using the specified label ids
         /// </summary>
@@ -704,6 +724,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             {
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(labelIds[i]);
             }
+
             ImPlotNative.ImPlot_PlotPieChart_U16Ptr(nativeLabelIds, values, count, x, y, radius, null, 90, 0);
         }
     }

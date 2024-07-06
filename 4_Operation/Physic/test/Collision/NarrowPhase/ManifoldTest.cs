@@ -47,14 +47,14 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             // Arrange
             Manifold manifold = new Manifold();
             Vector2 expectedValue = new Vector2(1, 1);
-            
+
             // Act
             manifold.LocalNormal = expectedValue;
-            
+
             // Assert
             Assert.Equal(expectedValue, manifold.LocalNormal);
         }
-        
+
         /// <summary>
         ///     Tests that test local point property
         /// </summary>
@@ -64,14 +64,14 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             // Arrange
             Manifold manifold = new Manifold();
             Vector2 expectedValue = new Vector2(1, 1);
-            
+
             // Act
             manifold.LocalPoint = expectedValue;
-            
+
             // Assert
             Assert.Equal(expectedValue, manifold.LocalPoint);
         }
-        
+
         /// <summary>
         ///     Tests that test point count property
         /// </summary>
@@ -81,14 +81,14 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             // Arrange
             Manifold manifold = new Manifold();
             int expectedValue = 2;
-            
+
             // Act
             manifold.PointCount = expectedValue;
-            
+
             // Assert
             Assert.Equal(expectedValue, manifold.PointCount);
         }
-        
+
         /// <summary>
         ///     Tests that test points property
         /// </summary>
@@ -98,14 +98,14 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             // Arrange
             Manifold manifold = new Manifold();
             ManifoldPoint[] expectedValue = new ManifoldPoint[2];
-            
+
             // Act
             manifold.Points = expectedValue;
-            
+
             // Assert
             Assert.Equal(expectedValue, manifold.Points);
         }
-        
+
         /// <summary>
         ///     Tests that test type property
         /// </summary>
@@ -115,10 +115,10 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             // Arrange
             Manifold manifold = new Manifold();
             ManifoldType expectedValue = ManifoldType.FaceA; // Assuming ManifoldType is an enum and FaceA is one of its values
-            
+
             // Act
             manifold.Type = expectedValue;
-            
+
             // Assert
             Assert.Equal(expectedValue, manifold.Type);
         }

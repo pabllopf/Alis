@@ -30,10 +30,9 @@
 namespace Alis.Extension.Math.PathGenerator.Test.Triangulation.FlipCode
 {
     /// <summary>
-    /// The flip code decomposer test class
+    ///     The flip code decomposer test class
     /// </summary>
     public class FlipCodeDecomposerTest
     {
-        
     }
 }

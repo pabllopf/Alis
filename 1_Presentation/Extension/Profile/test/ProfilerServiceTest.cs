@@ -27,18 +27,17 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Xunit;
 
 namespace Alis.Extension.Profile.Test
 {
     /// <summary>
-    /// The profiler service test class
+    ///     The profiler service test class
     /// </summary>
     public class ProfilerServiceTest
     {
         /// <summary>
-        /// Tests that start profiling initializes cpu and memory usage
+        ///     Tests that start profiling initializes cpu and memory usage
         /// </summary>
         [Fact]
         public void StartProfiling_InitializesCpuAndMemoryUsage()
@@ -50,7 +49,7 @@ namespace Alis.Extension.Profile.Test
         }
 
         /// <summary>
-        /// Tests that stop profiling returns profile data with cpu and memory usage
+        ///     Tests that stop profiling returns profile data with cpu and memory usage
         /// </summary>
         [Fact]
         public void StopProfiling_ReturnsProfileDataWithCpuAndMemoryUsage()
@@ -64,7 +63,7 @@ namespace Alis.Extension.Profile.Test
         }
 
         /// <summary>
-        /// Tests that get cpu usage returns positive value
+        ///     Tests that get cpu usage returns positive value
         /// </summary>
         [Fact]
         public void GetCpuUsage_ReturnsPositiveValue()
@@ -76,7 +75,7 @@ namespace Alis.Extension.Profile.Test
         }
 
         /// <summary>
-        /// Tests that get memory usage returns positive value
+        ///     Tests that get memory usage returns positive value
         /// </summary>
         [Fact]
         public void GetMemoryUsage_ReturnsPositiveValue()

@@ -44,7 +44,7 @@ namespace Alis.Core.Ecs.System.Manager.Physic
         ///     The vector
         /// </summary>
         private readonly World world = new World(new Vector2(0, 9.8f));
-        
+
         /// <summary>
         ///     Ons the update
         /// </summary>
@@ -55,10 +55,10 @@ namespace Alis.Core.Ecs.System.Manager.Physic
             {
                 return;
             }
-            
+
             world.Step(Context.TimeManager.Configuration.FixedTimeStep);
         }
-        
+
         /// <summary>
         ///     Attaches the body
         /// </summary>
@@ -67,7 +67,7 @@ namespace Alis.Core.Ecs.System.Manager.Physic
         {
             world.AddBody(body);
         }
-        
+
         /// <summary>
         ///     Uns the attach using the specified body
         /// </summary>

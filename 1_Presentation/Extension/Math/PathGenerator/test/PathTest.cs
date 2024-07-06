@@ -30,10 +30,9 @@
 namespace Alis.Extension.Math.PathGenerator.Test
 {
     /// <summary>
-    /// The path test class
+    ///     The path test class
     /// </summary>
     public class PathTest
     {
-        
     }
 }

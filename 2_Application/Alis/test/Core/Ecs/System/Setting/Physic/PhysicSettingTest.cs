@@ -36,76 +36,76 @@ using Xunit;
 namespace Alis.Test.Core.Ecs.System.Setting.Physic
 {
     /// <summary>
-    /// The physic setting test class
+    ///     The physic setting test class
     /// </summary>
     public class PhysicSettingTest
     {
         /// <summary>
-        /// Tests that test physic setting debug mode
+        ///     Tests that test physic setting debug mode
         /// </summary>
         [Fact]
         public void Test_PhysicSetting_DebugMode()
         {
             // Arrange
             PhysicSetting physicSetting = new PhysicSetting();
-            
+
             // Act
             physicSetting.DebugMode = true;
             bool result = physicSetting.DebugMode;
-            
+
             // Assert
             Assert.NotNull(physicSetting);
             Assert.True(result);
         }
-        
+
         /// <summary>
-        /// Tests that test physic setting debug color
+        ///     Tests that test physic setting debug color
         /// </summary>
         [Fact]
         public void Test_PhysicSetting_DebugColor()
         {
             // Arrange
             PhysicSetting physicSetting = new PhysicSetting();
-            
+
             // Act
             physicSetting.DebugColor = Color.Red;
             Color result = physicSetting.DebugColor;
-            
+
             // Assert
             Assert.NotNull(physicSetting);
             Assert.Equal(Color.Red, result);
         }
-        
+
         /// <summary>
-        /// Tests that test physic setting gravity
+        ///     Tests that test physic setting gravity
         /// </summary>
         [Fact]
         public void Test_PhysicSetting_Gravity()
         {
             // Arrange
             PhysicSetting physicSetting = new PhysicSetting();
-            
+
             // Act
             physicSetting.Gravity = new Vector2(0.0f, -9.8f);
             Vector2 result = physicSetting.Gravity;
-            
+
             // Assert
             Assert.NotNull(physicSetting);
             Assert.Equal(new Vector2(0.0f, -9.8f), result);
         }
-        
+
         /// <summary>
-        /// Tests that test physic setting builder
+        ///     Tests that test physic setting builder
         /// </summary>
         [Fact]
         public void Test_PhysicSetting_Builder()
         {
             // Arrange
             PhysicSetting physicSetting = new PhysicSetting();
-            
+
             // Act
             PhysicSettingBuilder result = physicSetting.Builder();
-            
+
             // Assert
             Assert.NotNull(result);
             Assert.IsType<PhysicSettingBuilder>(result);

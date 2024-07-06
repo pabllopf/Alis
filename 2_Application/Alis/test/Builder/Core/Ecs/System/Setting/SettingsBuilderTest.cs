@@ -49,129 +49,129 @@ using Xunit;
 namespace Alis.Test.Builder.Core.Ecs.System.Setting
 {
     /// <summary>
-    /// The settings builder test class
+    ///     The settings builder test class
     /// </summary>
     public class SettingsBuilderTest
     {
         /// <summary>
-        /// Tests that settings builder default constructor valid input
+        ///     Tests that settings builder default constructor valid input
         /// </summary>
         [Fact]
         public void SettingsBuilder_DefaultConstructor_ValidInput()
         {
             SettingsBuilder settingsBuilder = new SettingsBuilder();
-            
+
             Assert.NotNull(settingsBuilder);
         }
-        
+
         /// <summary>
-        /// Tests that build valid input
+        ///     Tests that build valid input
         /// </summary>
         [Fact]
         public void Build_ValidInput()
         {
             SettingsBuilder settingsBuilder = new SettingsBuilder();
-            
+
             Settings settings = settingsBuilder.Build();
-            
+
             Assert.NotNull(settings);
         }
-        
+
         /// <summary>
-        /// Tests that audio valid input
+        ///     Tests that audio valid input
         /// </summary>
         [Fact]
         public void Audio_ValidInput()
         {
             SettingsBuilder settingsBuilder = new SettingsBuilder();
             Func<AudioSettingBuilder, AudioSetting> audioSettingFunc = asb => asb.Build();
-            
+
             settingsBuilder.Audio(audioSettingFunc);
-            
+
             Assert.NotNull(settingsBuilder.Build().Audio);
         }
-        
+
         /// <summary>
-        /// Tests that general valid input
+        ///     Tests that general valid input
         /// </summary>
         [Fact]
         public void General_ValidInput()
         {
             SettingsBuilder settingsBuilder = new SettingsBuilder();
             Func<GeneralSettingBuilder, GeneralSetting> generalSettingFunc = gsb => gsb.Build();
-            
+
             settingsBuilder.General(generalSettingFunc);
-            
+
             Assert.NotNull(settingsBuilder.Build().General);
         }
-        
+
         /// <summary>
-        /// Tests that graphic valid input
+        ///     Tests that graphic valid input
         /// </summary>
         [Fact]
         public void Graphic_ValidInput()
         {
             SettingsBuilder settingsBuilder = new SettingsBuilder();
             Func<GraphicSettingBuilder, GraphicSetting> graphicSettingFunc = gsb => gsb.Build();
-            
+
             settingsBuilder.Graphic(graphicSettingFunc);
-            
+
             Assert.NotNull(settingsBuilder.Build().Graphic);
         }
-        
+
         /// <summary>
-        /// Tests that input valid input
+        ///     Tests that input valid input
         /// </summary>
         [Fact]
         public void Input_ValidInput()
         {
             SettingsBuilder settingsBuilder = new SettingsBuilder();
             Func<InputSettingBuilder, InputSetting> inputSettingFunc = isb => isb.Build();
-            
+
             settingsBuilder.Input(inputSettingFunc);
-            
+
             Assert.NotNull(settingsBuilder.Build().Input);
         }
-        
+
         /// <summary>
-        /// Tests that network valid input
+        ///     Tests that network valid input
         /// </summary>
         [Fact]
         public void Network_ValidInput()
         {
             SettingsBuilder settingsBuilder = new SettingsBuilder();
             Func<NetworkSettingBuilder, NetworkSetting> networkSettingFunc = nsb => nsb.Build();
-            
+
             settingsBuilder.Network(networkSettingFunc);
-            
+
             Assert.NotNull(settingsBuilder.Build().Network);
         }
-        
+
         /// <summary>
-        /// Tests that physic valid input
+        ///     Tests that physic valid input
         /// </summary>
         [Fact]
         public void Physic_ValidInput()
         {
             SettingsBuilder settingsBuilder = new SettingsBuilder();
             Func<PhysicSettingBuilder, PhysicSetting> physicSettingFunc = psb => psb.Build();
-            
+
             settingsBuilder.Physic(physicSettingFunc);
-            
+
             Assert.NotNull(settingsBuilder.Build().Physic);
         }
-        
+
         /// <summary>
-        /// Tests that scene valid input
+        ///     Tests that scene valid input
         /// </summary>
         [Fact]
         public void Scene_ValidInput()
         {
             SettingsBuilder settingsBuilder = new SettingsBuilder();
             Func<SceneSettingBuilder, SceneSetting> sceneSettingFunc = ssb => ssb.Build();
-            
+
             settingsBuilder.Scene(sceneSettingFunc);
-            
+
             Assert.NotNull(settingsBuilder.Build().Scene);
         }
     }

@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
 using Alis.Core.Aspect.Math.Vector;
@@ -44,100 +43,100 @@ namespace Alis.Extension.Graphic.ImGui
         ///     Gets the value of the native ptr
         /// </summary>
         public IntPtr NativePtr { get; }
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImFontPtr" /> class
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
         public ImFontPtr(IntPtr nativePtr) => NativePtr = nativePtr;
-        
+
         /// <summary>
         /// </summary>
         /// <param name="wrappedPtr"></param>
         /// <returns></returns>
         public static implicit operator IntPtr(ImFontPtr wrappedPtr) => wrappedPtr.NativePtr;
-        
+
         /// <summary>
         /// </summary>
         /// <param name="nativePtr"></param>
         /// <returns></returns>
         public static implicit operator ImFontPtr(IntPtr nativePtr) => new ImFontPtr(nativePtr);
-        
+
         /// <summary>
         ///     Gets the value of the index advance x
         /// </summary>
         public ImVectorG<float> IndexAdvanceX => Marshal.PtrToStructure<ImVectorG<float>>(NativePtr);
-        
+
         /// <summary>
         ///     Gets the value of the fallback advance x
         /// </summary>
         public float FallbackAdvanceX => Marshal.PtrToStructure<float>(NativePtr + 16);
-        
+
         /// <summary>
         ///     Gets the value of the font size
         /// </summary>
-        public  float FontSize => Marshal.PtrToStructure<float>(NativePtr + 20);
-        
+        public float FontSize => Marshal.PtrToStructure<float>(NativePtr + 20);
+
         /// <summary>
         ///     Gets the value of the index lookup
         /// </summary>
         public ImVectorG<ushort> IndexLookup => Marshal.PtrToStructure<ImVectorG<ushort>>(NativePtr + 24);
-        
+
         /// <summary>
         ///     Gets the value of the container atlas
         /// </summary>
         public ImFontAtlasPtr ContainerAtlas => Marshal.PtrToStructure<ImFontAtlasPtr>(NativePtr + 40);
-        
+
         /// <summary>
         ///     Gets the value of the config data
         /// </summary>
         public ImFontConfigPtr ConfigData => Marshal.PtrToStructure<ImFontConfigPtr>(NativePtr + 48);
-        
+
         /// <summary>
         ///     Gets the value of the config data count
         /// </summary>
-        public  short ConfigDataCount => Marshal.PtrToStructure<short>(NativePtr + 56);
-        
+        public short ConfigDataCount => Marshal.PtrToStructure<short>(NativePtr + 56);
+
         /// <summary>
         ///     Gets the value of the fallback char
         /// </summary>
         public ushort FallbackChar => Marshal.PtrToStructure<ushort>(NativePtr + 58);
-        
+
         /// <summary>
         ///     Gets the value of the ellipsis char
         /// </summary>
         public ushort EllipsisChar => Marshal.PtrToStructure<ushort>(NativePtr + 60);
-        
+
         /// <summary>
         ///     Gets the value of the dot char
         /// </summary>
         public ushort DotChar => Marshal.PtrToStructure<ushort>(NativePtr + 62);
-        
+
         /// <summary>
         ///     Gets the value of the dirty lookup tables
         /// </summary>
-        public  bool DirtyLookupTables => Marshal.PtrToStructure<byte>(NativePtr + 64) != 0;
-        
+        public bool DirtyLookupTables => Marshal.PtrToStructure<byte>(NativePtr + 64) != 0;
+
         /// <summary>
         ///     Gets the value of the scale
         /// </summary>
         public float Scale => Marshal.PtrToStructure<float>(NativePtr + 68);
-        
+
         /// <summary>
         ///     Gets the value of the ascent
         /// </summary>
         public float Ascent => Marshal.PtrToStructure<float>(NativePtr + 72);
-        
+
         /// <summary>
         ///     Gets the value of the descent
         /// </summary>
-        public  float Descent => Marshal.PtrToStructure<float>(NativePtr + 76);
-        
+        public float Descent => Marshal.PtrToStructure<float>(NativePtr + 76);
+
         /// <summary>
         ///     Gets the value of the metrics total surface
         /// </summary>
         public int MetricsTotalSurface => Marshal.PtrToStructure<int>(NativePtr + 80);
-        
+
         /// <summary>
         ///     Adds the glyph using the specified src cfg
         /// </summary>
@@ -154,10 +153,9 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="advanceX">The advance</param>
         public void AddGlyph(ImFontConfigPtr srcCfg, ushort c, float x0, float y0, float x1, float y1, float u0, float v0, float u1, float v1, float advanceX)
         {
-   
             ImGuiNative.ImFont_AddGlyph(NativePtr, srcCfg.NativePtr, c, x0, y0, x1, y1, u0, v0, u1, v1, advanceX);
         }
-        
+
         /// <summary>
         ///     Adds the remap char using the specified dst
         /// </summary>
@@ -168,7 +166,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte overwriteDst = 1;
             ImGuiNative.ImFont_AddRemapChar(NativePtr, dst, src, overwriteDst);
         }
-        
+
         /// <summary>
         ///     Adds the remap char using the specified dst
         /// </summary>
@@ -180,7 +178,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte nativeOverwriteDst = overwriteDst ? (byte) 1 : (byte) 0;
             ImGuiNative.ImFont_AddRemapChar(NativePtr, dst, src, nativeOverwriteDst);
         }
-        
+
         /// <summary>
         ///     Builds the lookup table
         /// </summary>
@@ -188,7 +186,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.ImFont_BuildLookupTable(NativePtr);
         }
-        
+
         /// <summary>
         ///     Clears the output data
         /// </summary>
@@ -196,7 +194,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.ImFont_ClearOutputData(NativePtr);
         }
-        
+
         /// <summary>
         ///     Destroys this instance
         /// </summary>
@@ -204,21 +202,21 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.ImFont_destroy(NativePtr);
         }
-        
+
         /// <summary>
         ///     Finds the glyph using the specified c
         /// </summary>
         /// <param name="c">The </param>
         /// <returns>The im font glyph ptr</returns>
         public ImFontGlyph FindGlyph(ushort c) => ImGuiNative.ImFont_FindGlyph(NativePtr, c);
-        
+
         /// <summary>
         ///     Finds the glyph no fallback using the specified c
         /// </summary>
         /// <param name="c">The </param>
         /// <returns>The im font glyph ptr</returns>
         public ImFontGlyph FindGlyphNoFallback(ushort c) => ImGuiNative.ImFont_FindGlyphNoFallback(NativePtr, c);
-        
+
         /// <summary>
         ///     Gets the char advance using the specified c
         /// </summary>
@@ -229,16 +227,13 @@ namespace Alis.Extension.Graphic.ImGui
             float ret = ImGuiNative.ImFont_GetCharAdvance(NativePtr, c);
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the debug name
         /// </summary>
         /// <returns>The string</returns>
-        public string GetDebugName()
-        {
-            return Encoding.UTF8.GetString(ImGuiNative.ImFont_GetDebugName(NativePtr));
-        }
-        
+        public string GetDebugName() => Encoding.UTF8.GetString(ImGuiNative.ImFont_GetDebugName(NativePtr));
+
         /// <summary>
         ///     Grows the index using the specified new size
         /// </summary>
@@ -247,7 +242,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.ImFont_GrowIndex(NativePtr, newSize);
         }
-        
+
         /// <summary>
         ///     Describes whether this instance is loaded
         /// </summary>
@@ -257,7 +252,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.ImFont_IsLoaded(NativePtr);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Renders the char using the specified draw list
         /// </summary>
@@ -270,7 +265,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.ImFont_RenderChar(NativePtr, drawList.NativePtr, size, pos, col, c);
         }
-        
+
         /// <summary>
         ///     Sets the glyph visible using the specified c
         /// </summary>

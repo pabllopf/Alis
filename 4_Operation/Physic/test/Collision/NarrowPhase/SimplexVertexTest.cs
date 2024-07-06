@@ -47,14 +47,14 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             // Arrange
             SimplexVertex simplexVertex = new SimplexVertex();
             float expectedValue = 1.5f;
-            
+
             // Act
             simplexVertex.A = expectedValue;
-            
+
             // Assert
             Assert.Equal(expectedValue, simplexVertex.A);
         }
-        
+
         /// <summary>
         ///     Tests that test index a property
         /// </summary>
@@ -64,14 +64,14 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             // Arrange
             SimplexVertex simplexVertex = new SimplexVertex();
             int expectedValue = 1;
-            
+
             // Act
             simplexVertex.IndexA = expectedValue;
-            
+
             // Assert
             Assert.Equal(expectedValue, simplexVertex.IndexA);
         }
-        
+
         /// <summary>
         ///     Tests that test index b property
         /// </summary>
@@ -81,14 +81,14 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             // Arrange
             SimplexVertex simplexVertex = new SimplexVertex();
             int expectedValue = 2;
-            
+
             // Act
             simplexVertex.IndexB = expectedValue;
-            
+
             // Assert
             Assert.Equal(expectedValue, simplexVertex.IndexB);
         }
-        
+
         /// <summary>
         ///     Tests that test w property
         /// </summary>
@@ -98,14 +98,14 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             // Arrange
             SimplexVertex simplexVertex = new SimplexVertex();
             Vector2 expectedValue = new Vector2(1, 1);
-            
+
             // Act
             simplexVertex.W = expectedValue;
-            
+
             // Assert
             Assert.Equal(expectedValue, simplexVertex.W);
         }
-        
+
         /// <summary>
         ///     Tests that test wa property
         /// </summary>
@@ -115,14 +115,14 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             // Arrange
             SimplexVertex simplexVertex = new SimplexVertex();
             Vector2 expectedValue = new Vector2(2, 2);
-            
+
             // Act
             simplexVertex.Wa = expectedValue;
-            
+
             // Assert
             Assert.Equal(expectedValue, simplexVertex.Wa);
         }
-        
+
         /// <summary>
         ///     Tests that test wb property
         /// </summary>
@@ -132,10 +132,10 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             // Arrange
             SimplexVertex simplexVertex = new SimplexVertex();
             Vector2 expectedValue = new Vector2(3, 3);
-            
+
             // Act
             simplexVertex.Wb = expectedValue;
-            
+
             // Assert
             Assert.Equal(expectedValue, simplexVertex.Wb);
         }

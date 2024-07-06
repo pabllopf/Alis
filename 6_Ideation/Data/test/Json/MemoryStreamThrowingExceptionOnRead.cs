@@ -30,7 +30,7 @@
 namespace Alis.Core.Aspect.Data.Test.Json
 {
     /// <summary>
-    /// The memory stream throwing exception on read class
+    ///     The memory stream throwing exception on read class
     /// </summary>
     public class MemoryStreamThrowingExceptionOnRead
     {

@@ -32,11 +32,10 @@ using System.Text;
 namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
 {
     /// <summary>
-    /// The im plot class
+    ///     The im plot class
     /// </summary>
     public static partial class ImPlot
     {
-        
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -51,7 +50,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotErrorBars_FloatPtrFloatPtrFloatPtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, err, count, flags, offset, sizeof(float));
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -67,7 +66,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotErrorBars_FloatPtrFloatPtrFloatPtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, err, count, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -80,7 +79,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotErrorBars_doublePtrdoublePtrdoublePtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, err, count, 0, 0, sizeof(double));
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -94,7 +93,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotErrorBars_doublePtrdoublePtrdoublePtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, err, count, flags, 0, sizeof(double));
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -109,7 +108,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotErrorBars_doublePtrdoublePtrdoublePtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, err, count, flags, offset, sizeof(double));
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -125,7 +124,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotErrorBars_doublePtrdoublePtrdoublePtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, err, count, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -138,7 +137,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotErrorBars_S8PtrS8PtrS8PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, err, count, 0, 0, sizeof(sbyte));
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -152,7 +151,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotErrorBars_S8PtrS8PtrS8PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, err, count, flags, 0, sizeof(sbyte));
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -167,7 +166,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotErrorBars_S8PtrS8PtrS8PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, err, count, flags, offset, sizeof(sbyte));
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -183,7 +182,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotErrorBars_S8PtrS8PtrS8PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, err, count, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -196,7 +195,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotErrorBars_U8PtrU8PtrU8PtrInt(Encoding.UTF8.GetBytes(labelId), xs, ys, err, count, 0, 0, sizeof(byte));
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -210,7 +209,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotErrorBars_U8PtrU8PtrU8PtrInt(Encoding.UTF8.GetBytes(labelId), xs, ys, err, count, flags, 0, sizeof(byte));
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -225,7 +224,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotErrorBars_U8PtrU8PtrU8PtrInt(Encoding.UTF8.GetBytes(labelId), xs, ys, err, count, flags, offset, sizeof(byte));
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -241,7 +240,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotErrorBars_U8PtrU8PtrU8PtrInt(Encoding.UTF8.GetBytes(labelId), xs, ys, err, count, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -254,7 +253,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotErrorBars_S16PtrS16PtrS16PtrInt(Encoding.UTF8.GetBytes(labelId), xs, ys, err, count, 0, 0, sizeof(short));
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -268,7 +267,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotErrorBars_S16PtrS16PtrS16PtrInt(Encoding.UTF8.GetBytes(labelId), xs, ys, err, count, flags, 0, sizeof(short));
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -283,7 +282,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotErrorBars_S16PtrS16PtrS16PtrInt(Encoding.UTF8.GetBytes(labelId), xs, ys, err, count, flags, offset, sizeof(short));
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -299,7 +298,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotErrorBars_S16PtrS16PtrS16PtrInt(Encoding.UTF8.GetBytes(labelId), xs, ys, err, count, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -312,7 +311,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotErrorBars_U16PtrU16PtrU16PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, err, count, 0, 0, sizeof(ushort));
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -326,7 +325,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotErrorBars_U16PtrU16PtrU16PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, err, count, flags, 0, sizeof(ushort));
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -341,7 +340,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotErrorBars_U16PtrU16PtrU16PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, err, count, flags, offset, sizeof(ushort));
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -357,7 +356,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotErrorBars_U16PtrU16PtrU16PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, err, count, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -370,7 +369,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotErrorBars_S32PtrS32PtrS32PtrInt(Encoding.UTF8.GetBytes(labelId), xs, ys, err, count, 0, 0, sizeof(int));
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -384,7 +383,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotErrorBars_S32PtrS32PtrS32PtrInt(Encoding.UTF8.GetBytes(labelId), xs, ys, err, count, flags, 0, sizeof(int));
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -399,7 +398,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotErrorBars_S32PtrS32PtrS32PtrInt(Encoding.UTF8.GetBytes(labelId), xs, ys, err, count, flags, offset, sizeof(int));
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -415,7 +414,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotErrorBars_S32PtrS32PtrS32PtrInt(Encoding.UTF8.GetBytes(labelId), xs, ys, err, count, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -428,7 +427,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotErrorBars_U32PtrU32PtrU32PtrInt(Encoding.UTF8.GetBytes(labelId), xs, ys, err, count, 0, 0, sizeof(uint));
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -442,7 +441,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotErrorBars_U32PtrU32PtrU32PtrInt(Encoding.UTF8.GetBytes(labelId), xs, ys, err, count, flags, 0, sizeof(uint));
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -457,7 +456,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotErrorBars_U32PtrU32PtrU32PtrInt(Encoding.UTF8.GetBytes(labelId), xs, ys, err, count, flags, offset, sizeof(uint));
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -473,7 +472,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotErrorBars_U32PtrU32PtrU32PtrInt(Encoding.UTF8.GetBytes(labelId), xs, ys, err, count, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -486,7 +485,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotErrorBars_S64PtrS64PtrS64PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, err, count, 0, 0, sizeof(long));
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -500,7 +499,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotErrorBars_S64PtrS64PtrS64PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, err, count, flags, 0, sizeof(long));
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -515,7 +514,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotErrorBars_S64PtrS64PtrS64PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, err, count, flags, offset, sizeof(long));
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -531,7 +530,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotErrorBars_S64PtrS64PtrS64PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, err, count, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -544,7 +543,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotErrorBars_U64PtrU64PtrU64PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, err, count, 0, 0, sizeof(ulong));
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -558,7 +557,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotErrorBars_U64PtrU64PtrU64PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, err, count, flags, 0, sizeof(ulong));
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -573,7 +572,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotErrorBars_U64PtrU64PtrU64PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, err, count, flags, offset, sizeof(ulong));
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -589,7 +588,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotErrorBars_U64PtrU64PtrU64PtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, err, count, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -601,9 +600,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         public static void PlotErrorBars(string labelId, ref float xs, ref float ys, ref float neg, ref float pos, int count)
         {
-            ImPlotNative.ImPlot_PlotErrorBars_FloatPtrFloatPtrFloatPtrFloatPtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, neg, pos, count,  ImPlotErrorBarsFlags.None ,0, 0);
+            ImPlotNative.ImPlot_PlotErrorBars_FloatPtrFloatPtrFloatPtrFloatPtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, neg, pos, count, ImPlotErrorBarsFlags.None, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -618,7 +617,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotErrorBars_FloatPtrFloatPtrFloatPtrFloatPtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, neg, pos, count, flags, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -634,7 +633,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotErrorBars_FloatPtrFloatPtrFloatPtrFloatPtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, neg, pos, count, flags, offset, 0);
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -651,7 +650,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotErrorBars_FloatPtrFloatPtrFloatPtrFloatPtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, neg, pos, count, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -663,9 +662,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <param name="count">The count</param>
         public static void PlotErrorBars(string labelId, ref double xs, ref double ys, ref double neg, ref double pos, int count)
         {
-            ImPlotNative.ImPlot_PlotErrorBars_doublePtrdoublePtrdoublePtrdoublePtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, neg, pos, count,  ImPlotErrorBarsFlags.None ,0, 0);
+            ImPlotNative.ImPlot_PlotErrorBars_doublePtrdoublePtrdoublePtrdoublePtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, neg, pos, count, ImPlotErrorBarsFlags.None, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -680,7 +679,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotErrorBars_doublePtrdoublePtrdoublePtrdoublePtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, neg, pos, count, flags, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -696,7 +695,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotErrorBars_doublePtrdoublePtrdoublePtrdoublePtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, neg, pos, count, flags, offset, 0);
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -713,7 +712,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotErrorBars_doublePtrdoublePtrdoublePtrdoublePtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, neg, pos, count, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>

@@ -33,24 +33,22 @@ using Xunit;
 namespace Alis.Test.Core.Ecs.System.Manager.Scene
 {
     /// <summary>
-    /// The scene manager test class
+    ///     The scene manager test class
     /// </summary>
     public class SceneManagerTest
     {
         /// <summary>
-        /// Tests that on enable valid input
+        ///     Tests that on enable valid input
         /// </summary>
         [Fact]
         public void OnEnable_ValidInput()
         {
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnEnable();
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that on init valid input
+        ///     Tests that on init valid input
         /// </summary>
         [Fact]
         public void OnInit_ValidInput()
@@ -58,213 +56,179 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnInit();
         }
-        
+
         /// <summary>
-        /// Tests that on awake valid input
+        ///     Tests that on awake valid input
         /// </summary>
         [Fact]
         public void OnAwake_ValidInput()
         {
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnAwake();
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that on start valid input
+        ///     Tests that on start valid input
         /// </summary>
         [Fact]
         public void OnStart_ValidInput()
         {
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnStart();
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that on before update valid input
+        ///     Tests that on before update valid input
         /// </summary>
         [Fact]
         public void OnBeforeUpdate_ValidInput()
         {
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnBeforeUpdate();
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that on update valid input
+        ///     Tests that on update valid input
         /// </summary>
         [Fact]
         public void OnUpdate_ValidInput()
         {
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnUpdate();
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that on after update valid input
+        ///     Tests that on after update valid input
         /// </summary>
         [Fact]
         public void OnAfterUpdate_ValidInput()
         {
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnAfterUpdate();
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that on before fixed update valid input
+        ///     Tests that on before fixed update valid input
         /// </summary>
         [Fact]
         public void OnBeforeFixedUpdate_ValidInput()
         {
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnBeforeFixedUpdate();
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that on fixed update valid input
+        ///     Tests that on fixed update valid input
         /// </summary>
         [Fact]
         public void OnFixedUpdate_ValidInput()
         {
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnFixedUpdate();
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that on after fixed update valid input
+        ///     Tests that on after fixed update valid input
         /// </summary>
         [Fact]
         public void OnAfterFixedUpdate_ValidInput()
         {
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnAfterFixedUpdate();
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that on dispatch events valid input
+        ///     Tests that on dispatch events valid input
         /// </summary>
         [Fact]
         public void OnDispatchEvents_ValidInput()
         {
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnDispatchEvents();
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that on calculate valid input
+        ///     Tests that on calculate valid input
         /// </summary>
         [Fact]
         public void OnCalculate_ValidInput()
         {
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnCalculate();
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that on draw valid input
+        ///     Tests that on draw valid input
         /// </summary>
         [Fact]
         public void OnDraw_ValidInput()
         {
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnDraw();
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that on gui valid input
+        ///     Tests that on gui valid input
         /// </summary>
         [Fact]
         public void OnGui_ValidInput()
         {
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnGui();
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that on disable valid input
+        ///     Tests that on disable valid input
         /// </summary>
         [Fact]
         public void OnDisable_ValidInput()
         {
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnDisable();
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that on reset valid input
+        ///     Tests that on reset valid input
         /// </summary>
         [Fact]
         public void OnReset_ValidInput()
         {
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnReset();
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that on stop valid input
+        ///     Tests that on stop valid input
         /// </summary>
         [Fact]
         public void OnStop_ValidInput()
         {
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnStop();
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that on exit valid input
+        ///     Tests that on exit valid input
         /// </summary>
         [Fact]
         public void OnExit_ValidInput()
         {
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnExit();
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that on destroy valid input
+        ///     Tests that on destroy valid input
         /// </summary>
         [Fact]
         public void OnDestroy_ValidInput()
         {
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnDestroy();
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that remove valid input removes scene
+        ///     Tests that remove valid input removes scene
         /// </summary>
         [Fact]
         public void Remove_ValidInput_RemovesScene()
@@ -275,9 +239,9 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             sceneManager.Remove(scene);
             Assert.DoesNotContain(scene, sceneManager.Scenes);
         }
-        
+
         /// <summary>
-        /// Tests that get valid input returns scene
+        ///     Tests that get valid input returns scene
         /// </summary>
         [Fact]
         public void Get_ValidInput_ReturnsScene()
@@ -288,9 +252,9 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             Alis.Core.Ecs.Entity.Scene result = sceneManager.Get<Alis.Core.Ecs.Entity.Scene>();
             Assert.Equal(scene, result);
         }
-        
+
         /// <summary>
-        /// Tests that contains valid input returns true
+        ///     Tests that contains valid input returns true
         /// </summary>
         [Fact]
         public void Contains_ValidInput_ReturnsTrue()
@@ -301,9 +265,9 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             bool result = sceneManager.Contains<Alis.Core.Ecs.Entity.Scene>();
             Assert.True(result);
         }
-        
+
         /// <summary>
-        /// Tests that clear valid input clears scenes
+        ///     Tests that clear valid input clears scenes
         /// </summary>
         [Fact]
         public void Clear_ValidInput_ClearsScenes()
@@ -314,9 +278,9 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             sceneManager.Clear<Alis.Core.Ecs.Entity.Scene>();
             Assert.Empty(sceneManager.Scenes);
         }
-        
+
         /// <summary>
-        /// Tests that load scene valid scene sets current scene
+        ///     Tests that load scene valid scene sets current scene
         /// </summary>
         [Fact]
         public void LoadScene_ValidScene_SetsCurrentScene()
@@ -326,9 +290,9 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             sceneManager.LoadScene(scene);
             Assert.Equal(scene, sceneManager.CurrentScene);
         }
-        
+
         /// <summary>
-        /// Tests that reload scene valid scene sets current scene
+        ///     Tests that reload scene valid scene sets current scene
         /// </summary>
         [Fact]
         public void ReloadScene_ValidScene_SetsCurrentScene()
@@ -338,9 +302,9 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             sceneManager.ReloadScene(scene);
             Assert.Equal(scene, sceneManager.CurrentScene);
         }
-        
+
         /// <summary>
-        /// Tests that load scene valid name sets current scene
+        ///     Tests that load scene valid name sets current scene
         /// </summary>
         [Fact]
         public void LoadScene_ValidName_SetsCurrentScene()
@@ -352,9 +316,9 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             sceneManager.LoadScene("TestScene");
             Assert.Equal(scene.Name, sceneManager.CurrentScene.Name);
         }
-        
+
         /// <summary>
-        /// Tests that load scene valid index loads correct scene
+        ///     Tests that load scene valid index loads correct scene
         /// </summary>
         [Fact]
         public void LoadScene_ValidIndex_LoadsCorrectScene()
@@ -364,10 +328,10 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             Alis.Core.Ecs.Entity.Scene scene2 = new Alis.Core.Ecs.Entity.Scene {Name = "Scene2"};
             sceneManager.Scenes.Add(scene1);
             sceneManager.Scenes.Add(scene2);
-            
+
             sceneManager.OnStart();
             sceneManager.LoadScene(1);
-            
+
             Assert.Equal(scene2.Name, sceneManager.CurrentScene.Name);
         }
     }

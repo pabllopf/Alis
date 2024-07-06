@@ -34,31 +34,31 @@ using Xunit;
 namespace Alis.Test.Builder.Core.Ecs.Component.Collider
 {
     /// <summary>
-    /// The circle collider builder test class
+    ///     The circle collider builder test class
     /// </summary>
     public class CircleColliderBuilderTest
     {
         /// <summary>
-        /// Tests that circle collider builder default constructor valid input
+        ///     Tests that circle collider builder default constructor valid input
         /// </summary>
         [Fact]
         public void CircleColliderBuilder_DefaultConstructor_ValidInput()
         {
             CircleColliderBuilder circleColliderBuilder = new CircleColliderBuilder();
-            
+
             Assert.NotNull(circleColliderBuilder);
         }
-        
+
         /// <summary>
-        /// Tests that build valid input
+        ///     Tests that build valid input
         /// </summary>
         [Fact]
         public void Build_ValidInput()
         {
             CircleColliderBuilder circleColliderBuilder = new CircleColliderBuilder();
-            
+
             CircleCollider circleCollider = circleColliderBuilder.Build();
-            
+
             Assert.NotNull(circleCollider);
         }
     }

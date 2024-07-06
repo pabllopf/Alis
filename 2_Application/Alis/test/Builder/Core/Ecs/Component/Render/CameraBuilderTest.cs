@@ -36,50 +36,50 @@ using Xunit;
 namespace Alis.Test.Builder.Core.Ecs.Component.Render
 {
     /// <summary>
-    /// The camera builder test class
+    ///     The camera builder test class
     /// </summary>
     public class CameraBuilderTest
     {
         /// <summary>
-        /// Tests that camera builder default constructor valid input
+        ///     Tests that camera builder default constructor valid input
         /// </summary>
         [Fact]
         public void CameraBuilder_DefaultConstructor_ValidInput()
         {
             CameraBuilder cameraBuilder = new CameraBuilder();
-            
+
             Assert.NotNull(cameraBuilder);
         }
-        
+
         /// <summary>
-        /// Tests that build valid input
+        ///     Tests that build valid input
         /// </summary>
         [Fact]
         public void Build_ValidInput()
         {
             CameraBuilder cameraBuilder = new CameraBuilder();
-            
+
             Camera camera = cameraBuilder.Build();
-            
+
             Assert.NotNull(camera);
         }
-        
+
         /// <summary>
-        /// Tests that background color valid input
+        ///     Tests that background color valid input
         /// </summary>
         [Fact]
         public void BackgroundColor_ValidInput()
         {
             CameraBuilder cameraBuilder = new CameraBuilder();
             Color color = new Color(255, 255, 255, 255);
-            
+
             cameraBuilder.BackgroundColor(color);
-            
+
             Assert.Equal(color, cameraBuilder.Build().BackgroundColor);
         }
-        
+
         /// <summary>
-        /// Tests that resolution valid input
+        ///     Tests that resolution valid input
         /// </summary>
         [Fact]
         public void Resolution_ValidInput()
@@ -87,9 +87,9 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Render
             CameraBuilder cameraBuilder = new CameraBuilder();
             int resolutionX = 1920;
             int resolutionY = 1080;
-            
+
             cameraBuilder.Resolution(resolutionX, resolutionY);
-            
+
             Assert.Equal(new Vector2(resolutionX, resolutionY), cameraBuilder.Build().Resolution);
         }
     }

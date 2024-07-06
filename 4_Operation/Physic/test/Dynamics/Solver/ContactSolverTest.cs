@@ -51,12 +51,12 @@ namespace Alis.Core.Physic.Test.Dynamics.Solver
             List<Contact> contactList = new List<Contact>();
             List<Position> positionList = new List<Position>();
             List<Velocity> velocitiesList = new List<Velocity>();
-            
+
             contactSolver.Reset(timeStep, 0, contactList, positionList, velocitiesList);
-            
+
             // Add your Asserts here
         }
-        
+
         /// <summary>
         ///     Tests that initialize velocity constraints test
         /// </summary>
@@ -64,12 +64,12 @@ namespace Alis.Core.Physic.Test.Dynamics.Solver
         public void InitializeVelocityConstraintsTest()
         {
             ContactSolver contactSolver = new ContactSolver();
-            
+
             contactSolver.InitializeVelocityConstraints();
-            
+
             // Add your Asserts here
         }
-        
+
         /// <summary>
         ///     Tests that warm start test
         /// </summary>
@@ -77,12 +77,12 @@ namespace Alis.Core.Physic.Test.Dynamics.Solver
         public void WarmStartTest()
         {
             ContactSolver contactSolver = new ContactSolver();
-            
+
             contactSolver.WarmStart();
-            
+
             // Add your Asserts here
         }
-        
+
         /// <summary>
         ///     Tests that solve velocity constraints test
         /// </summary>
@@ -90,12 +90,12 @@ namespace Alis.Core.Physic.Test.Dynamics.Solver
         public void SolveVelocityConstraintsTest()
         {
             ContactSolver contactSolver = new ContactSolver();
-            
+
             contactSolver.SolveVelocityConstraints();
-            
+
             // Add your Asserts here
         }
-        
+
         /// <summary>
         ///     Tests that store impulses test
         /// </summary>
@@ -103,12 +103,12 @@ namespace Alis.Core.Physic.Test.Dynamics.Solver
         public void StoreImpulsesTest()
         {
             ContactSolver contactSolver = new ContactSolver();
-            
+
             contactSolver.StoreImpulses();
-            
+
             // Add your Asserts here
         }
-        
+
         /// <summary>
         ///     Tests that solve position constraints test
         /// </summary>
@@ -116,12 +116,12 @@ namespace Alis.Core.Physic.Test.Dynamics.Solver
         public void SolvePositionConstraintsTest()
         {
             ContactSolver contactSolver = new ContactSolver();
-            
+
             bool result = contactSolver.SolvePositionConstraints();
-            
+
             // Add your Asserts here
         }
-        
+
         /// <summary>
         ///     Tests that solve toi position constraints test
         /// </summary>
@@ -129,9 +129,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Solver
         public void SolveToiPositionConstraintsTest()
         {
             ContactSolver contactSolver = new ContactSolver();
-            
+
             bool result = contactSolver.SolveToiPositionConstraints(0, 0);
-            
+
             // Add your Asserts here
         }
     }

@@ -50,14 +50,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string input = "123";
             int defaultValue = 0;
             CultureInfo provider = CultureInfo.InvariantCulture;
-            
+
             // Act
             int result = Conversions.ChangeType(input, defaultValue, provider);
-            
+
             // Assert
             Assert.Equal(123, result);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions try change type success
         /// </summary>
@@ -66,15 +66,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             string input = "123";
-            
+
             // Act
             bool result = Conversions.TryChangeType(input, out int value);
-            
+
             // Assert
             Assert.True(result);
             Assert.Equal(123, value);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions try change type failure
         /// </summary>
@@ -83,14 +83,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             string input = "abc";
-            
+
             // Act
             bool result = Conversions.TryChangeType(input, out int _);
-            
+
             // Assert
             Assert.False(result);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions is nullable
         /// </summary>
@@ -99,14 +99,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             Type type = typeof(int?);
-            
+
             // Act
             bool result = Conversions.IsNullable(type);
-            
+
             // Assert
             Assert.True(result);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions is really value type
         /// </summary>
@@ -115,14 +115,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             Type type = typeof(int);
-            
+
             // Act
             bool result = Conversions.IsReallyValueType(type);
-            
+
             // Assert
             Assert.True(result);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions is generic list
         /// </summary>
@@ -131,15 +131,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             Type type = typeof(List<int>);
-            
+
             // Act
             bool result = Conversions.IsGenericList(type, out Type elementType);
-            
+
             // Assert
             Assert.True(result);
             Assert.Equal(typeof(int), elementType);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions enum to u int 64
         /// </summary>
@@ -148,14 +148,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             DayOfWeek value = DayOfWeek.Monday;
-            
+
             // Act
             ulong result = Conversions.EnumToUInt64(value);
-            
+
             // Assert
             Assert.Equal((ulong) DayOfWeek.Monday, result);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions string to enum
         /// </summary>
@@ -167,15 +167,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string[] names = Enum.GetNames(type);
             Array values = Enum.GetValues(type);
             string input = "Monday";
-            
+
             // Act
             bool result = Conversions.TryStringToEnum(type, names, values, input, out object value);
-            
+
             // Assert
             Assert.True(result);
             Assert.Equal(DayOfWeek.Monday, value);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions enum to object
         /// </summary>
@@ -185,14 +185,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             Type enumType = typeof(DayOfWeek);
             string value = "Monday";
-            
+
             // Act
             object result = Conversions.EnumToObject(enumType, value);
-            
+
             // Assert
             Assert.Equal(DayOfWeek.Monday, result);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions to enum
         /// </summary>
@@ -202,14 +202,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             string text = "Monday";
             Type enumType = typeof(DayOfWeek);
-            
+
             // Act
             object result = Conversions.ToEnum(text, enumType);
-            
+
             // Assert
             Assert.Equal(DayOfWeek.Monday, result);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions enum try parse success
         /// </summary>
@@ -219,15 +219,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             Type type = typeof(DayOfWeek);
             string input = "Monday";
-            
+
             // Act
             bool result = Conversions.EnumTryParse(type, input, out object value);
-            
+
             // Assert
             Assert.True(result);
             Assert.Equal(DayOfWeek.Monday, value);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions enum try parse failure
         /// </summary>
@@ -237,14 +237,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             Type type = typeof(DayOfWeek);
             string input = "InvalidDay";
-            
+
             // Act
             bool result = Conversions.EnumTryParse(type, input, out object _);
-            
+
             // Assert
             Assert.False(result);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions is valid
         /// </summary>
@@ -253,14 +253,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             DateTime dt = DateTime.Now;
-            
+
             // Act
             bool result = Conversions.IsValid(dt);
-            
+
             // Assert
             Assert.True(result);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions change type int
         /// </summary>
@@ -271,14 +271,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string input = "123";
             int defaultValue = 0;
             CultureInfo provider = CultureInfo.InvariantCulture;
-            
+
             // Act
             int result = Conversions.ChangeType(input, defaultValue, provider);
-            
+
             // Assert
             Assert.Equal(123, result);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions change type string
         /// </summary>
@@ -289,14 +289,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
             int input = 123;
             string defaultValue = "default";
             CultureInfo provider = CultureInfo.InvariantCulture;
-            
+
             // Act
             string result = Conversions.ChangeType(input, defaultValue, provider);
-            
+
             // Assert
             Assert.Equal("123", result);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions try change type int success
         /// </summary>
@@ -306,15 +306,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             object input = "123";
             Type conversionType = typeof(int);
-            
+
             // Act
             bool result = Conversions.TryChangeType(input, conversionType, out object value);
-            
+
             // Assert
             Assert.True(result);
             Assert.Equal(123, value);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions try change type string success
         /// </summary>
@@ -324,15 +324,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             object input = 123;
             Type conversionType = typeof(string);
-            
+
             // Act
             bool result = Conversions.TryChangeType(input, conversionType, out object value);
-            
+
             // Assert
             Assert.True(result);
             Assert.Equal("123", value);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions v 2 try change type failure
         /// </summary>
@@ -342,14 +342,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             object input = "abc";
             Type conversionType = typeof(int);
-            
+
             // Act
             bool result = Conversions.TryChangeType(input, conversionType, out object _);
-            
+
             // Assert
             Assert.False(result);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions enum try parse success
         /// </summary>
@@ -359,15 +359,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             Type type = typeof(DayOfWeek);
             object input = "Monday";
-            
+
             // Act
             bool result = Conversions.EnumTryParse(type, input, out object value);
-            
+
             // Assert
             Assert.True(result);
             Assert.Equal(DayOfWeek.Monday, value);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions v 2 enum try parse failure
         /// </summary>
@@ -377,14 +377,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             Type type = typeof(DayOfWeek);
             object input = "InvalidDay";
-            
+
             // Act
             bool result = Conversions.EnumTryParse(type, input, out object _);
-            
+
             // Assert
             Assert.False(result);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions is generic list true
         /// </summary>
@@ -393,15 +393,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             Type type = typeof(List<int>);
-            
+
             // Act
             bool result = Conversions.IsGenericList(type, out Type elementType);
-            
+
             // Assert
             Assert.True(result);
             Assert.Equal(typeof(int), elementType);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions is generic list false
         /// </summary>
@@ -410,14 +410,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             Type type = typeof(int);
-            
+
             // Act
             bool result = Conversions.IsGenericList(type, out Type _);
-            
+
             // Assert
             Assert.False(result);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions is really value type true
         /// </summary>
@@ -426,14 +426,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             Type type = typeof(int);
-            
+
             // Act
             bool result = Conversions.IsReallyValueType(type);
-            
+
             // Assert
             Assert.True(result);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions is really value type false
         /// </summary>
@@ -442,14 +442,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             Type type = typeof(int?);
-            
+
             // Act
             bool result = Conversions.IsReallyValueType(type);
-            
+
             // Assert
             Assert.False(result);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions v 2 is generic list true
         /// </summary>
@@ -458,15 +458,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             Type type = typeof(List<int>);
-            
+
             // Act
             bool result = Conversions.IsGenericList(type, out Type elementType);
-            
+
             // Assert
             Assert.True(result);
             Assert.Equal(typeof(int), elementType);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions v 2 is generic list false
         /// </summary>
@@ -475,15 +475,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             Type type = typeof(int);
-            
+
             // Act
             bool result = Conversions.IsGenericList(type, out Type elementType);
-            
+
             // Assert
             Assert.False(result);
             Assert.Null(elementType);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions is generic list null type
         /// </summary>
@@ -492,14 +492,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             Type type = null;
-            
+
             // Act
             void Action() => Conversions.IsGenericList(type, out Type _);
-            
+
             // Assert
             Assert.Throws<ArgumentNullException>(Action);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions to enum success
         /// </summary>
@@ -509,14 +509,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             string input = "Monday";
             Type enumType = typeof(DayOfWeek);
-            
+
             // Act
             object result = Conversions.ToEnum(input, enumType);
-            
+
             // Assert
             Assert.Equal(DayOfWeek.Monday, result);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions to enum failure
         /// </summary>
@@ -526,14 +526,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             string input = "InvalidDay";
             Type enumType = typeof(DayOfWeek);
-            
+
             // Act
             object result = Conversions.ToEnum(input, enumType);
-            
+
             // Assert
             Assert.NotEqual(DayOfWeek.Monday, result);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions to enum null type
         /// </summary>
@@ -543,14 +543,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             string input = "Monday";
             Type enumType = null;
-            
+
             // Act
             void Action() => Conversions.ToEnum(input, enumType);
-            
+
             // Assert
             Assert.Throws<ArgumentNullException>(Action);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions v 2 is really value type true
         /// </summary>
@@ -559,14 +559,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             Type type = typeof(int);
-            
+
             // Act
             bool result = Conversions.IsReallyValueType(type);
-            
+
             // Assert
             Assert.True(result);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions v 2 is really value type false
         /// </summary>
@@ -575,14 +575,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             Type type = typeof(int?);
-            
+
             // Act
             bool result = Conversions.IsReallyValueType(type);
-            
+
             // Assert
             Assert.False(result);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions is really value type null type
         /// </summary>
@@ -591,14 +591,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             Type type = null;
-            
+
             // Act
             void Action() => Conversions.IsReallyValueType(type);
-            
+
             // Assert
             Assert.Throws<ArgumentNullException>(Action);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions is nullable true
         /// </summary>
@@ -607,14 +607,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             Type type = typeof(int?);
-            
+
             // Act
             bool result = Conversions.IsNullable(type);
-            
+
             // Assert
             Assert.True(result);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions is nullable false
         /// </summary>
@@ -623,14 +623,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             Type type = typeof(int);
-            
+
             // Act
             bool result = Conversions.IsNullable(type);
-            
+
             // Assert
             Assert.False(result);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions is nullable null type
         /// </summary>
@@ -639,14 +639,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             Type type = null;
-            
+
             // Act
             void Action() => Conversions.IsNullable(type);
-            
+
             // Assert
             Assert.Throws<ArgumentNullException>(Action);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions enum to u int 64 null value
         /// </summary>
@@ -655,14 +655,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             object value = null;
-            
+
             // Act
             void Action() => Conversions.EnumToUInt64(value);
-            
+
             // Assert
             Assert.Throws<ArgumentNullException>(Action);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions enum to u int 64 s byte
         /// </summary>
@@ -671,14 +671,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             object value = (sbyte) 1;
-            
+
             // Act
             ulong result = Conversions.EnumToUInt64(value);
-            
+
             // Assert
             Assert.Equal(1UL, result);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions enum to u int 64 int 16
         /// </summary>
@@ -687,14 +687,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             object value = (short) 1;
-            
+
             // Act
             ulong result = Conversions.EnumToUInt64(value);
-            
+
             // Assert
             Assert.Equal(1UL, result);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions enum to u int 64 int 32
         /// </summary>
@@ -703,14 +703,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             object value = 1;
-            
+
             // Act
             ulong result = Conversions.EnumToUInt64(value);
-            
+
             // Assert
             Assert.Equal(1UL, result);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions enum to u int 64 int 64
         /// </summary>
@@ -719,14 +719,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             object value = 1L;
-            
+
             // Act
             ulong result = Conversions.EnumToUInt64(value);
-            
+
             // Assert
             Assert.Equal(1UL, result);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions enum to u int 64 byte
         /// </summary>
@@ -735,14 +735,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             object value = (byte) 1;
-            
+
             // Act
             ulong result = Conversions.EnumToUInt64(value);
-            
+
             // Assert
             Assert.Equal(1UL, result);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions enum to u int 64 u int 16
         /// </summary>
@@ -751,14 +751,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             object value = (ushort) 1;
-            
+
             // Act
             ulong result = Conversions.EnumToUInt64(value);
-            
+
             // Assert
             Assert.Equal(1UL, result);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions enum to u int 64 u int 32
         /// </summary>
@@ -767,14 +767,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             object value = (uint) 1;
-            
+
             // Act
             ulong result = Conversions.EnumToUInt64(value);
-            
+
             // Assert
             Assert.Equal(1UL, result);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions enum to u int 64 u int 64
         /// </summary>
@@ -783,14 +783,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             object value = 1UL;
-            
+
             // Act
             ulong result = Conversions.EnumToUInt64(value);
-            
+
             // Assert
             Assert.Equal(1UL, result);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions enum to u int 64 string
         /// </summary>
@@ -799,14 +799,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             object value = "1";
-            
+
             // Act
             ulong result = Conversions.EnumToUInt64(value);
-            
+
             // Assert
             Assert.Equal(1UL, result);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions change type int to double success
         /// </summary>
@@ -816,15 +816,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             object input = 10;
             Type conversionType = typeof(double);
-            
+
             // Act
             object result = Conversions.ChangeType(input, conversionType: conversionType);
-            
+
             // Assert
             Assert.IsType<double>(result);
             Assert.Equal(10.0, result);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions change type string to int success
         /// </summary>
@@ -834,15 +834,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             object input = "10";
             Type conversionType = typeof(int);
-            
+
             // Act
             object result = Conversions.ChangeType(input, conversionType: conversionType);
-            
+
             // Assert
             Assert.IsType<int>(result);
             Assert.Equal(10, result);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions change type string to int failure
         /// </summary>
@@ -852,15 +852,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             object input = "invalid";
             Type conversionType = typeof(int);
-            
+
             // Act
             object result = Conversions.ChangeType(input, conversionType, -1);
-            
+
             // Assert
             Assert.IsType<int>(result);
             Assert.Equal(-1, result);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions change type null to nullable int success
         /// </summary>
@@ -870,14 +870,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             object input = null;
             Type conversionType = typeof(int?);
-            
+
             // Act
             object result = Conversions.ChangeType(input, conversionType: conversionType);
-            
+
             // Assert
             Assert.Null(result);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions change type null to non nullable int failure
         /// </summary>
@@ -887,15 +887,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             object input = null;
             Type conversionType = typeof(int);
-            
+
             // Act
             object result = Conversions.ChangeType(input, conversionType, -1);
-            
+
             // Assert
             Assert.IsType<int>(result);
             Assert.Equal(-1, result);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions change type v 2 int to double success
         /// </summary>
@@ -907,15 +907,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Type conversionType = typeof(double);
             object defaultValue = null;
             IFormatProvider provider = null;
-            
+
             // Act
             object result = Conversions.ChangeType(input, conversionType, defaultValue, provider);
-            
+
             // Assert
             Assert.IsType<double>(result);
             Assert.Equal(10.0, (double) result);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions change type v 2 string to int success
         /// </summary>
@@ -927,15 +927,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Type conversionType = typeof(int);
             object defaultValue = null;
             IFormatProvider provider = null;
-            
+
             // Act
             object result = Conversions.ChangeType(input, conversionType, defaultValue, provider);
-            
+
             // Assert
             Assert.IsType<int>(result);
             Assert.Equal(10, (int) result);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions change type v 2 string to int failure
         /// </summary>
@@ -947,15 +947,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Type conversionType = typeof(int);
             object defaultValue = -1;
             IFormatProvider provider = null;
-            
+
             // Act
             object result = Conversions.ChangeType(input, conversionType, defaultValue, provider);
-            
+
             // Assert
             Assert.IsType<int>(result);
             Assert.Equal(-1, (int) result);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions change type v 2 null to nullable int success
         /// </summary>
@@ -967,14 +967,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Type conversionType = typeof(int?);
             object defaultValue = null;
             IFormatProvider provider = null;
-            
+
             // Act
             object result = Conversions.ChangeType(input, conversionType, defaultValue, provider);
-            
+
             // Assert
             Assert.Null(result);
         }
-        
+
         /// <summary>
         ///     Tests that test conversions change type v 2 null to non nullable int failure
         /// </summary>
@@ -986,15 +986,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Type conversionType = typeof(int);
             object defaultValue = -1;
             IFormatProvider provider = null;
-            
+
             // Act
             object result = Conversions.ChangeType(input, conversionType, defaultValue, provider);
-            
+
             // Assert
             Assert.IsType<int>(result);
             Assert.Equal(-1, (int) result);
         }
-        
+
         /// <summary>
         ///     Tests that try parse token values success
         /// </summary>
@@ -1006,11 +1006,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string[] names = Enum.GetNames(type);
             Array values = Enum.GetValues(type);
             bool result = Conversions.TryParseTokenValues(tokens, type, names, values, out object value);
-            
+
             Assert.True(result);
             Assert.Equal(DayOfWeek.Monday | DayOfWeek.Tuesday, value);
         }
-        
+
         /// <summary>
         ///     Tests that try parse token values failure
         /// </summary>
@@ -1022,10 +1022,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string[] names = Enum.GetNames(type);
             Array values = Enum.GetValues(type);
             bool result = Conversions.TryParseTokenValues(tokens, type, names, values, out object value);
-            
+
             Assert.False(result);
         }
-        
+
         /// <summary>
         ///     Tests that convert token value to ulong int 16
         /// </summary>
@@ -1034,10 +1034,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             object tokenValue = (short) 1;
             ulong result = Conversions.ConvertTokenValueToUlong(tokenValue);
-            
+
             Assert.Equal(1UL, result);
         }
-        
+
         /// <summary>
         ///     Tests that convert token value to ulong int 32
         /// </summary>
@@ -1046,10 +1046,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             object tokenValue = 1;
             ulong result = Conversions.ConvertTokenValueToUlong(tokenValue);
-            
+
             Assert.Equal(1UL, result);
         }
-        
+
         /// <summary>
         ///     Tests that convert token value to ulong int 64
         /// </summary>
@@ -1058,10 +1058,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             object tokenValue = 1L;
             ulong result = Conversions.ConvertTokenValueToUlong(tokenValue);
-            
+
             Assert.Equal(1UL, result);
         }
-        
+
         /// <summary>
         ///     Tests that convert token value to ulong s byte
         /// </summary>
@@ -1070,10 +1070,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             object tokenValue = (sbyte) 1;
             ulong result = Conversions.ConvertTokenValueToUlong(tokenValue);
-            
+
             Assert.Equal(1UL, result);
         }
-        
+
         /// <summary>
         ///     Tests that convert token value to ulong u int 16
         /// </summary>
@@ -1082,10 +1082,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             object tokenValue = (ushort) 1;
             ulong result = Conversions.ConvertTokenValueToUlong(tokenValue);
-            
+
             Assert.Equal(1UL, result);
         }
-        
+
         /// <summary>
         ///     Tests that convert token value to ulong u int 32
         /// </summary>
@@ -1094,10 +1094,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             object tokenValue = (uint) 1;
             ulong result = Conversions.ConvertTokenValueToUlong(tokenValue);
-            
+
             Assert.Equal(1UL, result);
         }
-        
+
         /// <summary>
         ///     Tests that convert token value to ulong u int 64
         /// </summary>
@@ -1106,10 +1106,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             object tokenValue = 1UL;
             ulong result = Conversions.ConvertTokenValueToUlong(tokenValue);
-            
+
             Assert.Equal(1UL, result);
         }
-        
+
         /// <summary>
         ///     Tests that try change with converter success
         /// </summary>
@@ -1121,11 +1121,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
             IFormatProvider provider = CultureInfo.InvariantCulture;
             Type inputType = typeof(string);
             bool result = Conversions.TryConvert(input, conversionType, inputType, out object value);
-            
+
             Assert.True(result);
             Assert.Equal(123, value);
         }
-        
+
         /// <summary>
         ///     Tests that try change with converter failure
         /// </summary>
@@ -1138,7 +1138,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Type inputType = typeof(string);
             Assert.Throws<ArgumentException>(() => Conversions.TryConvert(input, conversionType, inputType, out object value));
         }
-        
+
         /// <summary>
         ///     Tests that try change to date time success
         /// </summary>
@@ -1149,12 +1149,12 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Type conversionType = typeof(DateTime);
             Type inputType = typeof(string);
             bool result = Conversions.TryChangeToDateTime(input, conversionType, inputType, out object value);
-            
+
             Assert.True(result);
             Assert.IsType<DateTime>(value);
             Assert.Equal(new DateTime(2022, 12, 31), value);
         }
-        
+
         /// <summary>
         ///     Tests that try change to date time failure
         /// </summary>
@@ -1165,11 +1165,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Type conversionType = typeof(DateTime);
             Type inputType = typeof(string);
             bool result = Conversions.TryChangeToDateTime(input, conversionType, inputType, out object value);
-            
+
             Assert.False(result);
             Assert.Null(value);
         }
-        
+
         /// <summary>
         ///     Tests that try change to time span success
         /// </summary>
@@ -1179,12 +1179,12 @@ namespace Alis.Core.Aspect.Data.Test.Json
             object input = "01:02:03";
             IFormatProvider provider = CultureInfo.InvariantCulture;
             bool result = Conversions.TryChangeToTimeSpan(input, provider, out object value);
-            
+
             Assert.True(result);
             Assert.IsType<TimeSpan>(value);
             Assert.Equal(new TimeSpan(1, 2, 3), value);
         }
-        
+
         /// <summary>
         ///     Tests that try change to time span failure
         /// </summary>
@@ -1194,11 +1194,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
             object input = "invalid";
             IFormatProvider provider = CultureInfo.InvariantCulture;
             bool result = Conversions.TryChangeToTimeSpan(input, provider, out object value);
-            
+
             Assert.False(result);
             Assert.Null(value);
         }
-        
+
         /// <summary>
         ///     Tests that try change to collection success
         /// </summary>
@@ -1209,12 +1209,12 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Type conversionType = typeof(List<int>);
             Type elementType = typeof(int);
             bool result = Conversions.TryChangeToCollection(input, conversionType, elementType, out object value);
-            
+
             Assert.True(result);
             Assert.IsType<List<int>>(value);
             Assert.Equal(new List<int> {1, 2, 3}, value);
         }
-        
+
         /// <summary>
         ///     Tests that try change to collection failure
         /// </summary>
@@ -1225,11 +1225,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Type conversionType = typeof(List<int>);
             Type elementType = typeof(int);
             bool result = Conversions.TryChangeToCollection(input, conversionType, elementType, out object value);
-            
+
             Assert.False(result);
             Assert.Null(value);
         }
-        
+
         /// <summary>
         ///     Tests that try change to enum success
         /// </summary>
@@ -1239,15 +1239,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             object input = "Monday";
             Type conversionType = typeof(DayOfWeek);
-            
+
             // Act
             bool result = Conversions.TryChangeToEnum(conversionType, input, out object value);
-            
+
             // Assert
             Assert.True(result);
             Assert.Equal(DayOfWeek.Monday, value);
         }
-        
+
         /// <summary>
         ///     Tests that try change to enum failure
         /// </summary>
@@ -1257,15 +1257,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             object input = "InvalidDay";
             Type conversionType = typeof(DayOfWeek);
-            
+
             // Act
             bool result = Conversions.TryChangeToEnum(conversionType, input, out object value);
-            
+
             // Assert
             Assert.False(result);
             Assert.Null(value);
         }
-        
+
         /// <summary>
         ///     Tests that try change from enum success
         /// </summary>
@@ -1275,15 +1275,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             object input = DayOfWeek.Monday;
             Type conversionType = typeof(string);
-            
+
             // Act
             bool result = Conversions.TryChangeFromEnum(conversionType, input, out object value);
-            
+
             // Assert
             Assert.True(result);
             Assert.Equal("Monday", value);
         }
-        
+
         /// <summary>
         ///     Tests that try change from enum failure
         /// </summary>
@@ -1293,15 +1293,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             object input = "Monday";
             Type conversionType = typeof(string);
-            
+
             // Act
             bool result = Conversions.TryChangeFromEnum(conversionType, input, out object value);
-            
+
             // Assert
             Assert.False(result);
             Assert.Null(value);
         }
-        
+
         /// <summary>
         ///     Tests that try change to guid success
         /// </summary>
@@ -1311,16 +1311,16 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             object input = Guid.NewGuid().ToString();
             IFormatProvider provider = CultureInfo.InvariantCulture;
-            
+
             // Act
             bool result = Conversions.TryChangeToGuid(input, provider, out object value);
-            
+
             // Assert
             Assert.True(result);
             Assert.IsType<Guid>(value);
             Assert.Equal(input, value.ToString());
         }
-        
+
         /// <summary>
         ///     Tests that try change to guid failure
         /// </summary>
@@ -1330,15 +1330,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             object input = "InvalidGuid";
             IFormatProvider provider = CultureInfo.InvariantCulture;
-            
+
             // Act
             bool result = Conversions.TryChangeToGuid(input, provider, out object value);
-            
+
             // Assert
             Assert.False(result);
             Assert.Null(value);
         }
-        
+
         /// <summary>
         ///     Tests that try change to uri success
         /// </summary>
@@ -1348,16 +1348,16 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             object input = "http://example.com/";
             IFormatProvider provider = CultureInfo.InvariantCulture;
-            
+
             // Act
             bool result = Conversions.TryConvertToUri(input.ToString(), out object value);
-            
+
             // Assert
             Assert.True(result);
             Assert.IsType<Uri>(value);
             Assert.Equal(input.ToString(), value.ToString());
         }
-        
+
         /// <summary>
         ///     Tests that try change to uri failure
         /// </summary>
@@ -1367,14 +1367,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             object input = "invalid uri";
             IFormatProvider provider = CultureInfo.InvariantCulture;
-            
+
             // Act
             bool result = Conversions.TryConvertToUri(input.ToString(), out object value);
-            
+
             // Assert
             Assert.True(result);
         }
-        
+
         /// <summary>
         ///     Tests that try change to int ptr success
         /// </summary>
@@ -1384,16 +1384,16 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             object input = "123";
             IFormatProvider provider = CultureInfo.InvariantCulture;
-            
+
             // Act
             bool result = Conversions.TryChangeToIntPtr(input, out object value);
-            
+
             // Assert
             Assert.True(result);
             Assert.IsType<IntPtr>(value);
             Assert.Equal(new IntPtr(int.Parse(input.ToString())), value);
         }
-        
+
         /// <summary>
         ///     Tests that try change to int ptr failure
         /// </summary>
@@ -1403,15 +1403,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             object input = "invalid int";
             IFormatProvider provider = CultureInfo.InvariantCulture;
-            
+
             // Act
             bool result = Conversions.TryChangeToIntPtr(input, out object value);
-            
+
             // Assert
             Assert.False(result);
             Assert.Null(value);
         }
-        
+
         /// <summary>
         ///     Tests that try change to culture info valid culture info returns true
         /// </summary>
@@ -1420,12 +1420,12 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             object input = "en-US";
             bool result = Conversions.TryChangeToCultureInfo(input, out object value);
-            
+
             Assert.True(result);
             Assert.IsType<CultureInfo>(value);
             Assert.Equal(input, ((CultureInfo) value).Name);
         }
-        
+
         /// <summary>
         ///     Tests that try change to culture info invalid culture info returns false
         /// </summary>
@@ -1434,11 +1434,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             object input = "invalid-culture";
             bool result = Conversions.TryChangeToCultureInfo(input, out object value);
-            
+
             Assert.False(result);
             Assert.Null(value);
         }
-        
+
         /// <summary>
         ///     Tests that try change to bool valid bool returns true
         /// </summary>
@@ -1448,12 +1448,12 @@ namespace Alis.Core.Aspect.Data.Test.Json
             object input = "true";
             IFormatProvider provider = CultureInfo.InvariantCulture;
             bool result = Conversions.TryChangeToBool(input, provider, out object value);
-            
+
             Assert.True(result);
             Assert.IsType<bool>(value);
             Assert.True((bool) value);
         }
-        
+
         /// <summary>
         ///     Tests that try change to bool invalid bool returns false
         /// </summary>
@@ -1463,11 +1463,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
             object input = "invalid-bool";
             IFormatProvider provider = CultureInfo.InvariantCulture;
             bool result = Conversions.TryChangeToBool(input, provider, out object value);
-            
+
             Assert.False(result);
             Assert.Null(value);
         }
-        
+
         /// <summary>
         ///     Tests that try match values matching value returns true
         /// </summary>
@@ -1477,15 +1477,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             Array values = new[] {1, 2, 3};
             string input = "2";
-            
+
             // Act
             bool result = Conversions.TryMatchValues(values, input, out object value);
-            
+
             // Assert
             Assert.True(result);
             Assert.Equal(2, value);
         }
-        
+
         /// <summary>
         ///     Tests that try match values non matching value returns false
         /// </summary>
@@ -1495,15 +1495,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             Array values = new[] {1, 2, 3};
             string input = "4";
-            
+
             // Act
             bool result = Conversions.TryMatchValues(values, input, out object value);
-            
+
             // Assert
             Assert.False(result);
             Assert.Null(value);
         }
-        
+
         /// <summary>
         ///     Tests that try match values empty input returns false
         /// </summary>
@@ -1513,15 +1513,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             Array values = new[] {1, 2, 3};
             string input = "";
-            
+
             // Act
             bool result = Conversions.TryMatchValues(values, input, out object value);
-            
+
             // Assert
             Assert.False(result);
             Assert.Null(value);
         }
-        
+
         /// <summary>
         ///     Tests that try match values negative input returns true
         /// </summary>
@@ -1531,15 +1531,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             Array values = new[] {-1, -2, -3};
             string input = "-2";
-            
+
             // Act
             bool result = Conversions.TryMatchValues(values, input, out object value);
-            
+
             // Assert
             Assert.True(result);
             Assert.Equal(-2, value);
         }
-        
+
         /// <summary>
         ///     Tests that try match values negative input with positive values returns false
         /// </summary>
@@ -1549,15 +1549,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             Array values = new[] {1, 2, 3};
             string input = "-2";
-            
+
             // Act
             bool result = Conversions.TryMatchValues(values, input, out object value);
-            
+
             // Assert
             Assert.False(result);
             Assert.Null(value);
         }
-        
+
         /// <summary>
         ///     Tests that try change type conversion type is null throws argument null exception
         /// </summary>
@@ -1569,7 +1569,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             IFormatProvider provider = CultureInfo.InvariantCulture;
             Assert.Throws<ArgumentNullException>(() => Conversions.TryChangeType(input, conversionType, provider, out object value));
         }
-        
+
         /// <summary>
         ///     Tests that try change type conversion type is object returns true
         /// </summary>
@@ -1583,7 +1583,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(result);
             Assert.Equal(input, value);
         }
-        
+
         /// <summary>
         ///     Tests that try change type conversion type is nullable returns true
         /// </summary>
@@ -1597,7 +1597,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(result);
             Assert.Equal(int.Parse(input), value);
         }
-        
+
         /// <summary>
         ///     Tests that try change type input is null and conversion type is value type returns false
         /// </summary>
@@ -1610,7 +1610,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             bool result = Conversions.TryChangeType(input, conversionType, provider, out object value);
             Assert.False(result);
         }
-        
+
         /// <summary>
         ///     Tests that try change type input is null and conversion type is not value type returns true
         /// </summary>
@@ -1623,7 +1623,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             bool result = Conversions.TryChangeType(input, conversionType, provider, out object value);
             Assert.True(result);
         }
-        
+
         /// <summary>
         ///     Tests that try change type conversion type is assignable from input type returns true
         /// </summary>
@@ -1637,7 +1637,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(result);
             Assert.Equal(input, value);
         }
-        
+
         /// <summary>
         ///     Tests that try change type conversion type is not assignable from input type returns false
         /// </summary>
@@ -1650,7 +1650,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             bool result = Conversions.TryChangeType(input, conversionType, provider, out object value);
             Assert.True(result);
         }
-        
+
         /// <summary>
         ///     Tests that try handle digit or sign start with digit start returns true
         /// </summary>
@@ -1660,15 +1660,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             Type type = typeof(int);
             string input = "123";
-            
+
             // Act
             bool result = Conversions.TryHandleDigitOrSignStart(type, input, out object value);
-            
+
             // Assert
             Assert.False(result);
             Assert.Equal(0, value);
         }
-        
+
         /// <summary>
         ///     Tests that try handle digit or sign start with negative sign start returns true
         /// </summary>
@@ -1678,15 +1678,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             Type type = typeof(int);
             string input = "-123";
-            
+
             // Act
             bool result = Conversions.TryHandleDigitOrSignStart(type, input, out object value);
-            
+
             // Assert
             Assert.False(result);
             Assert.Equal(0, value);
         }
-        
+
         /// <summary>
         ///     Tests that try handle digit or sign start with positive sign start returns true
         /// </summary>
@@ -1696,15 +1696,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             Type type = typeof(int);
             string input = "+123";
-            
+
             // Act
             bool result = Conversions.TryHandleDigitOrSignStart(type, input, out object value);
-            
+
             // Assert
             Assert.False(result);
             Assert.Equal(0, value);
         }
-        
+
         /// <summary>
         ///     Tests that try handle digit or sign start with non digit or sign start returns false
         /// </summary>
@@ -1714,15 +1714,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             Type type = typeof(int);
             string input = "abc";
-            
+
             // Act
             bool result = Conversions.TryHandleDigitOrSignStart(type, input, out object value);
-            
+
             // Assert
             Assert.False(result);
             Assert.NotNull(value);
         }
-        
+
         /// <summary>
         ///     Tests that try handle digit or sign start with null input returns false
         /// </summary>
@@ -1732,11 +1732,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             Type type = typeof(int);
             string input = null;
-            
+
             // Act
             Assert.Throws<NullReferenceException>(() => Conversions.TryHandleDigitOrSignStart(type, input, out object value));
         }
-        
+
         /// <summary>
         ///     Tests that try change type based on input type enum conversion returns true
         /// </summary>
@@ -1751,7 +1751,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(result);
             Assert.Equal(DayOfWeek.Monday, value);
         }
-        
+
         /// <summary>
         ///     Tests that try change type based on input type from enum conversion returns true
         /// </summary>
@@ -1766,7 +1766,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(result);
             Assert.Equal("Monday", value);
         }
-        
+
         /// <summary>
         ///     Tests that try change type based on input type guid conversion returns true
         /// </summary>
@@ -1782,7 +1782,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(result);
             Assert.Equal(guid, value);
         }
-        
+
         /// <summary>
         ///     Tests that try change type based on input type uri conversion returns true
         /// </summary>
@@ -1797,7 +1797,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(result);
             Assert.Equal(new Uri((string) input), value);
         }
-        
+
         /// <summary>
         ///     Tests that try change type based on input type int ptr conversion returns true
         /// </summary>
@@ -1812,7 +1812,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(result);
             Assert.Equal(new IntPtr(int.Parse((string) input)), value);
         }
-        
+
         /// <summary>
         ///     Tests that try change type based on input type numeric conversion returns true
         /// </summary>
@@ -1827,7 +1827,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(result);
             Assert.Equal(123, value);
         }
-        
+
         /// <summary>
         ///     Tests that try change type based on input type date time conversion returns true
         /// </summary>
@@ -1842,7 +1842,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(result);
             Assert.Equal(new DateTime(2022, 12, 31), value);
         }
-        
+
         /// <summary>
         ///     Tests that try change type based on input type time span conversion returns true
         /// </summary>
@@ -1857,7 +1857,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(result);
             Assert.Equal(new TimeSpan(1, 2, 3), value);
         }
-        
+
         /// <summary>
         ///     Tests that try change type based on input type collection conversion returns true
         /// </summary>
@@ -1872,7 +1872,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.False(result);
             Assert.Null(value);
         }
-        
+
         /// <summary>
         ///     Tests that try change type based on input type culture info conversion returns true
         /// </summary>
@@ -1887,7 +1887,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(result);
             Assert.Equal(new CultureInfo((string) input), value);
         }
-        
+
         /// <summary>
         ///     Tests that try change type based on input type bool conversion returns true
         /// </summary>
@@ -1902,7 +1902,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(result);
             Assert.Equal(true, value);
         }
-        
+
         /// <summary>
         ///     Tests that try change type based on input type i convertible conversion returns true
         /// </summary>
@@ -1917,7 +1917,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(result);
             Assert.Equal(123, value);
         }
-        
+
         /// <summary>
         ///     Tests that try change type based on input type converter conversion returns true
         /// </summary>
@@ -1932,7 +1932,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(result);
             Assert.Equal(123, value);
         }
-        
+
         /// <summary>
         ///     Tests that try parse tokens with flags attribute and no enum separators returns true
         /// </summary>
@@ -1944,15 +1944,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Type type = typeof(DayOfWeek);
             string[] names = Enum.GetNames(type);
             Array values = Enum.GetValues(type);
-            
+
             // Act
             bool result = Conversions.TryParseTokens(input, type, names, values, out object value);
-            
+
             // Assert
             Assert.True(result);
             Assert.Equal(DayOfWeek.Monday, value);
         }
-        
+
         /// <summary>
         ///     Tests that try parse tokens without flags attribute and enum separators returns false
         /// </summary>
@@ -1964,15 +1964,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Type type = typeof(int);
             string[] names = new string[0];
             Array values = Array.CreateInstance(type, 0);
-            
+
             // Act
             bool result = Conversions.TryParseTokens(input, type, names, values, out object value);
-            
+
             // Assert
             Assert.False(result);
             Assert.Equal(0, value);
         }
-        
+
         /// <summary>
         ///     Tests that try parse tokens with empty tokens returns false
         /// </summary>
@@ -1984,15 +1984,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Type type = typeof(int);
             string[] names = new string[0];
             Array values = Array.CreateInstance(type, 0);
-            
+
             // Act
             bool result = Conversions.TryParseTokens(input, type, names, values, out object value);
-            
+
             // Assert
             Assert.False(result);
             Assert.Equal(0, value);
         }
-        
+
         /// <summary>
         ///     Tests that try parse tokens with valid tokens returns true
         /// </summary>
@@ -2004,15 +2004,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Type type = typeof(DayOfWeek);
             string[] names = Enum.GetNames(type);
             Array values = Enum.GetValues(type);
-            
+
             // Act
             bool result = Conversions.TryParseTokens(input, type, names, values, out object value);
-            
+
             // Assert
             Assert.True(result);
             Assert.Equal(DayOfWeek.Monday | DayOfWeek.Tuesday, value);
         }
-        
+
         /// <summary>
         ///     Tests that try parse tokens with invalid tokens returns false
         /// </summary>
@@ -2024,14 +2024,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Type type = typeof(DayOfWeek);
             string[] names = Enum.GetNames(type);
             Array values = Enum.GetValues(type);
-            
+
             // Act
             bool result = Conversions.TryParseTokens(input, type, names, values, out object value);
-            
+
             // Assert
             Assert.False(result);
         }
-        
+
         /// <summary>
         ///     Tests that try parse hexadecimal valid hexadecimal returns true
         /// </summary>
@@ -2041,15 +2041,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             string input = "0x1A";
             Type type = typeof(int);
-            
+
             // Act
             bool result = Conversions.TryParseHexadecimal(input, type, out object value);
-            
+
             // Assert
             Assert.True(result);
             Assert.Null(value);
         }
-        
+
         /// <summary>
         ///     Tests that try parse hexadecimal invalid hexadecimal returns false
         /// </summary>
@@ -2059,15 +2059,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             string input = "0xG";
             Type type = typeof(int);
-            
+
             // Act
             bool result = Conversions.TryParseHexadecimal(input, type, out object value);
-            
+
             // Assert
             Assert.False(result);
             Assert.Null(value);
         }
-        
+
         /// <summary>
         ///     Tests that try parse hexadecimal non hexadecimal returns false
         /// </summary>
@@ -2077,15 +2077,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             string input = "123";
             Type type = typeof(int);
-            
+
             // Act
             bool result = Conversions.TryParseHexadecimal(input, type, out object value);
-            
+
             // Assert
             Assert.False(result);
             Assert.Null(value);
         }
-        
+
         /// <summary>
         ///     Tests that try parse hexadecimal empty string returns false
         /// </summary>
@@ -2095,15 +2095,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             string input = "";
             Type type = typeof(int);
-            
+
             // Act
             bool result = Conversions.TryParseHexadecimal(input, type, out object value);
-            
+
             // Assert
             Assert.False(result);
             Assert.Null(value);
         }
-        
+
         /// <summary>
         ///     Tests that try parse hexadecimal null input returns false
         /// </summary>
@@ -2113,11 +2113,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             string input = null;
             Type type = typeof(int);
-            
+
             // Act
             Assert.Throws<NullReferenceException>(() => Conversions.TryParseHexadecimal(input, type, out object value));
         }
-        
+
         /// <summary>
         ///     Tests that try change with i convertible valid conversion returns true
         /// </summary>
@@ -2128,15 +2128,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             IConvertible input = "123";
             Type conversionType = typeof(int);
             IFormatProvider provider = CultureInfo.InvariantCulture;
-            
+
             // Act
             bool result = Conversions.TryChangeWithIConvertible(input, conversionType, provider, out object value);
-            
+
             // Assert
             Assert.True(result);
             Assert.Equal(123, value);
         }
-        
+
         /// <summary>
         ///     Tests that try change with i convertible invalid conversion returns false
         /// </summary>
@@ -2147,15 +2147,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             IConvertible input = "invalid";
             Type conversionType = typeof(int);
             IFormatProvider provider = CultureInfo.InvariantCulture;
-            
+
             // Act
             bool result = Conversions.TryChangeWithIConvertible(input, conversionType, provider, out object value);
-            
+
             // Assert
             Assert.False(result);
             Assert.Null(value);
         }
-        
+
         /// <summary>
         ///     Tests that try change with i convertible null input returns false
         /// </summary>
@@ -2166,15 +2166,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             IConvertible input = null;
             Type conversionType = typeof(int);
             IFormatProvider provider = CultureInfo.InvariantCulture;
-            
+
             // Act
             bool result = Conversions.TryChangeWithIConvertible(input, conversionType, provider, out object value);
-            
+
             // Assert
             Assert.False(result);
             Assert.Null(value);
         }
-        
+
         /// <summary>
         ///     Tests that try change with i convertible null conversion type throws argument null exception
         /// </summary>
@@ -2185,14 +2185,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
             IConvertible input = "123";
             Type conversionType = null;
             IFormatProvider provider = CultureInfo.InvariantCulture;
-            
+
             // Act & Assert
             Conversions.TryChangeWithIConvertible(input, conversionType, provider, out object value);
-            
+
             // Assert
             Assert.Null(value);
         }
-        
+
         /// <summary>
         ///     Tests that enum try parse valid enum string returns true
         /// </summary>
@@ -2202,15 +2202,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             Type type = typeof(DayOfWeek);
             object input = "Monday";
-            
+
             // Act
             bool result = Conversions.EnumTryParse(type, input, out object value);
-            
+
             // Assert
             Assert.True(result);
             Assert.Equal(DayOfWeek.Monday, value);
         }
-        
+
         /// <summary>
         ///     Tests that enum try parse invalid enum string returns false
         /// </summary>
@@ -2220,14 +2220,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             Type type = typeof(DayOfWeek);
             object input = "InvalidDay";
-            
+
             // Act
             bool result = Conversions.EnumTryParse(type, input, out object value);
-            
+
             // Assert
             Assert.False(result);
         }
-        
+
         /// <summary>
         ///     Tests that enum try parse valid hexadecimal returns true
         /// </summary>
@@ -2237,15 +2237,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             Type type = typeof(int);
             object input = "0x1A";
-            
+
             // Act
             bool result = Conversions.EnumTryParse(type, input, out object value);
-            
+
             // Assert
             Assert.True(result);
             Assert.Null(value);
         }
-        
+
         /// <summary>
         ///     Tests that enum try parse invalid hexadecimal returns false
         /// </summary>
@@ -2255,15 +2255,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             Type type = typeof(int);
             object input = "0xG";
-            
+
             // Act
             bool result = Conversions.EnumTryParse(type, input, out object value);
-            
+
             // Assert
             Assert.False(result);
             Assert.Null(value);
         }
-        
+
         /// <summary>
         ///     Tests that enum try parse null input returns false
         /// </summary>
@@ -2273,15 +2273,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             Type type = typeof(int);
             object input = null;
-            
+
             // Act
             bool result = Conversions.EnumTryParse(type, input, out object value);
-            
+
             // Assert
             Assert.False(result);
             Assert.Null(value);
         }
-        
+
         /// <summary>
         ///     Tests that enum try parse null type throws argument null exception
         /// </summary>
@@ -2291,13 +2291,13 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             Type type = null;
             object input = "123";
-            
+
             // Act & Assert
             Conversions.EnumTryParse(type, input, out object value);
-            
+
             Assert.Null(value);
         }
-        
+
         /// <summary>
         ///     Tests that try change to uri valid uri returns true
         /// </summary>
@@ -2308,16 +2308,16 @@ namespace Alis.Core.Aspect.Data.Test.Json
             object input = "http://example.com/";
             IFormatProvider provider = CultureInfo.InvariantCulture;
             object value;
-            
+
             // Act
             bool result = Conversions.TryConvertToUri(input.ToString(), out value);
-            
+
             // Assert
             Assert.True(result);
             Assert.IsType<Uri>(value);
             Assert.Equal(input.ToString(), value.ToString());
         }
-        
+
         /// <summary>
         ///     Tests that try change to uri invalid uri returns false
         /// </summary>
@@ -2328,15 +2328,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             object input = "invalid uri";
             IFormatProvider provider = CultureInfo.InvariantCulture;
             object value;
-            
+
             // Act
             bool result = Conversions.TryConvertToUri(input.ToString(), out value);
-            
+
             // Assert
             Assert.True(result);
             Assert.NotNull(value);
         }
-        
+
         /// <summary>
         ///     Tests that try change to uri null input returns false
         /// </summary>
@@ -2347,11 +2347,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
             object input = null;
             IFormatProvider provider = CultureInfo.InvariantCulture;
             object value;
-            
+
             // Act
             Assert.Throws<NullReferenceException>(() => Conversions.TryConvertToUri(input.ToString(), out value));
         }
-        
+
         /// <summary>
         ///     Tests that is valid input valid input returns true
         /// </summary>
@@ -2360,7 +2360,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             Assert.True(Conversions.IsValidInput(typeof(DayOfWeek), "Monday"));
         }
-        
+
         /// <summary>
         ///     Tests that is valid input null type returns false
         /// </summary>
@@ -2369,7 +2369,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             Assert.False(Conversions.IsValidInput(null, "Monday"));
         }
-        
+
         /// <summary>
         ///     Tests that is valid input null input returns false
         /// </summary>
@@ -2378,7 +2378,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             Assert.False(Conversions.IsValidInput(typeof(DayOfWeek), null));
         }
-        
+
         /// <summary>
         ///     Tests that format input removes whitespace
         /// </summary>
@@ -2387,7 +2387,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             Assert.Equal("Monday", Conversions.FormatInput("  Monday  "));
         }
-        
+
         /// <summary>
         ///     Tests that is hexadecimal and can be parsed valid hexadecimal returns true
         /// </summary>
@@ -2396,7 +2396,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             Assert.True(Conversions.IsHexadecimalAndCanBeParsed("0x1A", typeof(int), out _));
         }
-        
+
         /// <summary>
         ///     Tests that is hexadecimal and can be parsed invalid hexadecimal returns false
         /// </summary>
@@ -2405,7 +2405,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             Assert.False(Conversions.IsHexadecimalAndCanBeParsed("0xG", typeof(int), out _));
         }
-        
+
         /// <summary>
         ///     Tests that can get enum names and values valid enum type returns true
         /// </summary>
@@ -2414,7 +2414,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             Assert.True(Conversions.CanGetEnumNamesAndValues(typeof(DayOfWeek), out _, out _));
         }
-        
+
         /// <summary>
         ///     Tests that can get enum names and values non enum type returns false
         /// </summary>
@@ -2423,7 +2423,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             Assert.False(Conversions.CanGetEnumNamesAndValues(typeof(int), out _, out _));
         }
-        
+
         /// <summary>
         ///     Tests that can parse tokens valid tokens returns true
         /// </summary>
@@ -2434,7 +2434,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Array values = Enum.GetValues(typeof(DayOfWeek));
             Assert.True(Conversions.CanParseTokens("Monday,Tuesday", typeof(DayOfWeek), names, values, out _));
         }
-        
+
         /// <summary>
         ///     Tests that can parse tokens invalid tokens returns false
         /// </summary>
@@ -2445,7 +2445,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Array values = Enum.GetValues(typeof(DayOfWeek));
             Assert.False(Conversions.CanParseTokens("InvalidDay", typeof(DayOfWeek), names, values, out _));
         }
-        
+
         /// <summary>
         ///     Tests that try convert to uri valid uri returns true
         /// </summary>
@@ -2454,16 +2454,16 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             string input = "http://example.com/";
-            
+
             // Act
             bool result = Conversions.TryConvertToUri(input, out object value);
-            
+
             // Assert
             Assert.True(result);
             Assert.IsType<Uri>(value);
             Assert.Equal(input, value.ToString());
         }
-        
+
         /// <summary>
         ///     Tests that try convert to uri invalid uri returns false
         /// </summary>
@@ -2472,14 +2472,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             string input = "invalid uri";
-            
+
             // Act
             bool result = Conversions.TryConvertToUri(input, out object value);
-            
+
             // Assert
             Assert.True(result);
         }
-        
+
         /// <summary>
         ///     Tests that try convert to uri null input returns false
         /// </summary>
@@ -2488,15 +2488,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             string input = null;
-            
+
             // Act
             bool result = Conversions.TryConvertToUri(input, out object value);
-            
+
             // Assert
             Assert.False(result);
             Assert.Null(value);
         }
-        
+
         /// <summary>
         ///     Tests that try convert to uri empty input returns false
         /// </summary>
@@ -2505,15 +2505,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             string input = "";
-            
+
             // Act
             bool result = Conversions.TryConvertToUri(input, out object value);
-            
+
             // Assert
             Assert.False(result);
             Assert.Null(value);
         }
-        
+
         /// <summary>
         ///     Tests that try convert with appropriate converter successful conversion returns true
         /// </summary>
@@ -2525,15 +2525,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Type targetType = typeof(int);
             Type sourceType = typeof(string);
             object convertedValue;
-            
+
             // Act
             bool result = Conversions.TryConvert(inputValue, targetType, sourceType, out convertedValue);
-            
+
             // Assert
             Assert.True(result);
             Assert.Equal(123, convertedValue);
         }
-        
+
         /// <summary>
         ///     Tests that try convert with appropriate converter failed conversion returns false
         /// </summary>
@@ -2545,11 +2545,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Type targetType = typeof(int);
             Type sourceType = typeof(string);
             object convertedValue;
-            
+
             // Act
             Assert.Throws<ArgumentException>(() => Conversions.TryConvert(inputValue, targetType, sourceType, out convertedValue));
         }
-        
+
         /// <summary>
         ///     Tests that try change to nullable null input returns true
         /// </summary>
@@ -2560,15 +2560,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             object input = null;
             Type conversionType = typeof(int?);
             IFormatProvider provider = CultureInfo.InvariantCulture;
-            
+
             // Act
             bool result = Conversions.TryChangeToNullable(input, conversionType, provider, out object value);
-            
+
             // Assert
             Assert.True(result);
             Assert.Null(value);
         }
-        
+
         /// <summary>
         ///     Tests that try change to nullable valid input returns true
         /// </summary>
@@ -2579,15 +2579,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             object input = "123";
             Type conversionType = typeof(int?);
             IFormatProvider provider = CultureInfo.InvariantCulture;
-            
+
             // Act
             bool result = Conversions.TryChangeToNullable(input, conversionType, provider, out object value);
-            
+
             // Assert
             Assert.True(result);
             Assert.Equal(123, value);
         }
-        
+
         /// <summary>
         ///     Tests that try change to nullable invalid input returns false
         /// </summary>
@@ -2598,11 +2598,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
             object input = "invalid";
             Type conversionType = typeof(int?);
             IFormatProvider provider = CultureInfo.InvariantCulture;
-            
+
             // Act
             Assert.Throws<FormatException>(() => Conversions.TryChangeToNullable(input, conversionType, provider, out object value));
         }
-        
+
         /// <summary>
         ///     Tests that try change to nullable non nullable conversion type returns false
         /// </summary>
@@ -2613,15 +2613,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             object input = "123";
             Type conversionType = typeof(int);
             IFormatProvider provider = CultureInfo.InvariantCulture;
-            
+
             // Act
             bool result = Conversions.TryChangeToNullable(input, conversionType, provider, out object value);
-            
+
             // Assert
             Assert.False(result);
             Assert.Null(value);
         }
-        
+
         /// <summary>
         ///     Tests that try convert valid conversion returns true
         /// </summary>
@@ -2635,7 +2635,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(result);
             Assert.Equal(123, convertedValue);
         }
-        
+
         /// <summary>
         ///     Tests that try convert invalid conversion returns false
         /// </summary>
@@ -2647,7 +2647,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Type source = typeof(string);
             Assert.Throws<ArgumentException>(() => Conversions.TryConvert(value, target, source, out object convertedValue));
         }
-        
+
         /// <summary>
         ///     Tests that try convert no type converter returns false
         /// </summary>
@@ -2661,7 +2661,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.False(result);
             Assert.Null(convertedValue);
         }
-        
+
         /// <summary>
         ///     Tests that try handle digit or sign start with digit start returns true v 2
         /// </summary>
@@ -2671,15 +2671,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             Type type = typeof(int);
             string input = "123";
-            
+
             // Act
             bool result = Conversions.TryHandleDigitOrSignStart(type, input, out object value);
-            
+
             // Assert
             Assert.False(result);
             Assert.Equal(0, value);
         }
-        
+
         /// <summary>
         ///     Tests that try handle digit or sign start with positive sign start returns true v 2
         /// </summary>
@@ -2689,15 +2689,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             Type type = typeof(int);
             string input = "+123";
-            
+
             // Act
             bool result = Conversions.TryHandleDigitOrSignStart(type, input, out object value);
-            
+
             // Assert
             Assert.False(result);
             Assert.Equal(0, value);
         }
-        
+
         /// <summary>
         ///     Tests that try handle digit or sign start with negative sign start returns true v 2
         /// </summary>
@@ -2707,15 +2707,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             Type type = typeof(int);
             string input = "-123";
-            
+
             // Act
             bool result = Conversions.TryHandleDigitOrSignStart(type, input, out object value);
-            
+
             // Assert
             Assert.False(result);
             Assert.Equal(0, value);
         }
-        
+
         /// <summary>
         ///     Tests that try handle digit or sign start with non digit or sign start returns false v 2
         /// </summary>
@@ -2725,15 +2725,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             Type type = typeof(int);
             string input = "abc";
-            
+
             // Act
             bool result = Conversions.TryHandleDigitOrSignStart(type, input, out object value);
-            
+
             // Assert
             Assert.False(result);
             Assert.Equal(0, value);
         }
-        
+
         /// <summary>
         ///     Tests that try handle digit or sign start with null input returns false v 2
         /// </summary>
@@ -2743,11 +2743,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             Type type = typeof(int);
             string input = null;
-            
+
             // Act
             Assert.Throws<NullReferenceException>(() => Conversions.TryHandleDigitOrSignStart(type, input, out object value));
         }
-        
+
         /// <summary>
         ///     Tests that try convert to uri null or empty input returns false
         /// </summary>
@@ -2757,12 +2757,12 @@ namespace Alis.Core.Aspect.Data.Test.Json
             bool result = Conversions.TryConvertToUri(null, out object value);
             Assert.False(result);
             Assert.Null(value);
-            
+
             result = Conversions.TryConvertToUri(string.Empty, out value);
             Assert.False(result);
             Assert.Null(value);
         }
-        
+
         /// <summary>
         ///     Tests that try convert to uri valid uri input returns true
         /// </summary>
@@ -2774,7 +2774,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.IsType<Uri>(value);
             Assert.Equal("http://example.com/", ((Uri) value).AbsoluteUri);
         }
-        
+
         /// <summary>
         ///     Tests that try convert to uri invalid uri input returns false
         /// </summary>
@@ -2785,7 +2785,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(result);
             Assert.NotNull(value);
         }
-        
+
         /// <summary>
         ///     Tests that try handle digit or sign start with digit start returns true v 4
         /// </summary>
@@ -2795,15 +2795,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             Type type = typeof(int);
             string input = "123";
-            
+
             // Act
             bool result = Conversions.TryHandleDigitOrSignStart(type, input, out object value);
-            
+
             // Assert
             Assert.False(result);
             Assert.Equal(0, value);
         }
-        
+
         /// <summary>
         ///     Tests that try handle digit or sign start with positive sign start returns true v 4
         /// </summary>
@@ -2813,15 +2813,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             Type type = typeof(int);
             string input = "+123";
-            
+
             // Act
             bool result = Conversions.TryHandleDigitOrSignStart(type, input, out object value);
-            
+
             // Assert
             Assert.False(result);
             Assert.Equal(0, value);
         }
-        
+
         /// <summary>
         ///     Tests that try handle digit or sign start with negative sign start returns true v 4
         /// </summary>
@@ -2831,15 +2831,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             Type type = typeof(int);
             string input = "-123";
-            
+
             // Act
             bool result = Conversions.TryHandleDigitOrSignStart(type, input, out object value);
-            
+
             // Assert
             Assert.False(result);
             Assert.Equal(0, value);
         }
-        
+
         /// <summary>
         ///     Tests that try handle digit or sign start with non digit or sign start returns false v 4
         /// </summary>
@@ -2849,15 +2849,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             Type type = typeof(int);
             string input = "abc";
-            
+
             // Act
             bool result = Conversions.TryHandleDigitOrSignStart(type, input, out object value);
-            
+
             // Assert
             Assert.False(result);
             Assert.Equal(0, value);
         }
-        
+
         /// <summary>
         ///     Tests that try handle digit or sign start with null input throws exception
         /// </summary>
@@ -2866,11 +2866,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             Type type = typeof(int);
-            
+
             // Act & Assert
             Assert.Throws<NullReferenceException>(() => Conversions.TryHandleDigitOrSignStart(type, null, out object value));
         }
-        
+
         /// <summary>
         ///     Tests that try handle digit or sign start with digit start returns true and converted value
         /// </summary>
@@ -2880,15 +2880,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             string input = "123";
             object value;
-            
+
             // Act
             bool result = Conversions.TryHandleDigitOrSignStart(typeof(int), input, out value);
-            
+
             // Assert
             Assert.False(result);
             Assert.Equal(0, value);
         }
-        
+
         /// <summary>
         ///     Tests that try handle digit or sign start with negative sign start returns true and converted value
         /// </summary>
@@ -2898,15 +2898,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             string input = "-123";
             object value;
-            
+
             // Act
             bool result = Conversions.TryHandleDigitOrSignStart(typeof(int), input, out value);
-            
+
             // Assert
             Assert.False(result);
             Assert.Equal(0, value);
         }
-        
+
         /// <summary>
         ///     Tests that try handle digit or sign start with positive sign start returns true and converted value
         /// </summary>
@@ -2916,15 +2916,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             string input = "+123";
             object value;
-            
+
             // Act
             bool result = Conversions.TryHandleDigitOrSignStart(typeof(int), input, out value);
-            
+
             // Assert
             Assert.False(result);
             Assert.Equal(0, value);
         }
-        
+
         /// <summary>
         ///     Tests that try handle digit or sign start with non digit or sign start returns false and default value
         /// </summary>
@@ -2934,15 +2934,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             string input = "abc";
             object value;
-            
+
             // Act
             bool result = Conversions.TryHandleDigitOrSignStart(typeof(int), input, out value);
-            
+
             // Assert
             Assert.False(result);
             Assert.Equal(0, value);
         }
-        
+
         /// <summary>
         ///     Tests that try handle digit or sign start with empty string returns false and default value
         /// </summary>
@@ -2952,17 +2952,17 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             string input = "0";
             object value;
-            
+
             // Act
             bool result = Conversions.TryHandleDigitOrSignStart(typeof(int), input, out value);
-            
+
             // Assert
             Assert.False(result);
             Assert.Equal(0, value);
         }
-        
+
         /// <summary>
-        /// Tests that test try handle digit or sign start with digit start
+        ///     Tests that test try handle digit or sign start with digit start
         /// </summary>
         [Fact]
         public void TestTryHandleDigitOrSignStart_WithDigitStart()
@@ -2971,17 +2971,17 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Type type = typeof(int);
             string input = "123";
             object value;
-            
+
             // Act
             bool result = Conversions.TryHandleDigitOrSignStart(type, input, out value);
-            
+
             // Assert
             Assert.False(result);
             Assert.Equal(0, value);
         }
-        
+
         /// <summary>
-        /// Tests that test try handle digit or sign start with sign start
+        ///     Tests that test try handle digit or sign start with sign start
         /// </summary>
         [Fact]
         public void TestTryHandleDigitOrSignStart_WithSignStart()
@@ -2990,17 +2990,17 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Type type = typeof(int);
             string input = "-123";
             object value;
-            
+
             // Act
             bool result = Conversions.TryHandleDigitOrSignStart(type, input, out value);
-            
+
             // Assert
             Assert.False(result);
             Assert.Equal(0, value);
         }
-        
+
         /// <summary>
-        /// Tests that test try handle digit or sign start with non digit non sign start
+        ///     Tests that test try handle digit or sign start with non digit non sign start
         /// </summary>
         [Fact]
         public void TestTryHandleDigitOrSignStart_WithNonDigitNonSignStart()
@@ -3009,17 +3009,17 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Type type = typeof(int);
             string input = "abc";
             object value;
-            
+
             // Act
             bool result = Conversions.TryHandleDigitOrSignStart(type, input, out value);
-            
+
             // Assert
             Assert.False(result);
             Assert.Equal(0, value);
         }
-        
+
         /// <summary>
-        /// Tests that convert to enum returns enum when value is int
+        ///     Tests that convert to enum returns enum when value is int
         /// </summary>
         [Fact]
         public void ConvertToEnum_ReturnsEnum_WhenValueIsInt()
@@ -3027,16 +3027,16 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             Type enumType = typeof(DayOfWeek);
             object value = 1;
-            
+
             // Act
             object result = Conversions.ConvertToEnum(enumType, value);
-            
+
             // Assert
             Assert.Equal(DayOfWeek.Monday, result);
         }
-        
+
         /// <summary>
-        /// Tests that convert to enum returns enum when value is string
+        ///     Tests that convert to enum returns enum when value is string
         /// </summary>
         [Fact]
         public void ConvertToEnum_ReturnsEnum_WhenValueIsString()
@@ -3044,16 +3044,16 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             Type enumType = typeof(DayOfWeek);
             object value = "Sunday";
-            
+
             // Act
             object result = Conversions.ConvertToEnum(enumType, value);
-            
+
             // Assert
             Assert.Equal(DayOfWeek.Sunday, result);
         }
-        
+
         /// <summary>
-        /// Tests that convert to enum returns null when value is invalid
+        ///     Tests that convert to enum returns null when value is invalid
         /// </summary>
         [Fact]
         public void ConvertToEnum_ReturnsNull_WhenValueIsInvalid()
@@ -3061,16 +3061,16 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             Type enumType = typeof(DayOfWeek);
             object value = "InvalidDay";
-            
+
             // Act
             object result = Conversions.ConvertToEnum(enumType, value);
-            
+
             // Assert
             Assert.Equal(DayOfWeek.Sunday, result);
         }
-        
+
         /// <summary>
-        /// Tests that convert to enum returns null when enum type is not enum
+        ///     Tests that convert to enum returns null when enum type is not enum
         /// </summary>
         [Fact]
         public void ConvertToEnum_ReturnsNull_WhenEnumTypeIsNotEnum()
@@ -3078,14 +3078,13 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             Type enumType = typeof(string);
             object value = "Monday";
-            
+
             // Act
             Assert.Throws<ArgumentException>(() => Conversions.ConvertToEnum(enumType, value));
-            
         }
-        
+
         /// <summary>
-        /// Tests that convert to enum with int 32 enum returns correct enum
+        ///     Tests that convert to enum with int 32 enum returns correct enum
         /// </summary>
         [Fact]
         public void ConvertToEnum_WithInt32Enum_ReturnsCorrectEnum()
@@ -3095,18 +3094,18 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.IsType<DayOfWeek>(result);
             Assert.Equal(DayOfWeek.Monday, result);
         }
-        
+
         /// <summary>
-        /// Tests that convert to enum with invalid value returns null
+        ///     Tests that convert to enum with invalid value returns null
         /// </summary>
         [Fact]
         public void ConvertToEnum_WithInvalidValue_ReturnsNull()
         {
             Assert.Throws<ArgumentException>(() => Conversions.ConvertToEnum(typeof(DayOfWeek), "InvalidDay"));
         }
-        
+
         /// <summary>
-        /// Tests that convert to enum with int 32 enum returns correct enum v 2
+        ///     Tests that convert to enum with int 32 enum returns correct enum v 2
         /// </summary>
         [Fact]
         public void ConvertToEnum_WithInt32Enum_ReturnsCorrectEnum_v2()
@@ -3116,76 +3115,71 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.IsType<DayOfWeek>(result);
             Assert.Equal(DayOfWeek.Monday, result);
         }
-        
+
         /// <summary>
-        /// Tests that convert to enum with u int 32 enum returns correct enum
+        ///     Tests that convert to enum with u int 32 enum returns correct enum
         /// </summary>
         [Fact]
         public void ConvertToEnum_WithUInt32Enum_ReturnsCorrectEnum()
         {
-            
-            
             object result = Conversions.ConvertToEnum(typeof(TestEnumuint), 1u);
             Assert.NotNull(result);
             Assert.IsType<TestEnumuint>(result);
             Assert.Equal(TestEnumuint.Value1, result);
         }
-        
+
         /// <summary>
-        /// Tests that convert to enum with int 64 enum returns correct enum
+        ///     Tests that convert to enum with int 64 enum returns correct enum
         /// </summary>
         [Fact]
         public void ConvertToEnum_WithInt64Enum_ReturnsCorrectEnum()
         {
             // Define a Int64 enum for testing
-            
+
             object result = Conversions.ConvertToEnum(typeof(TestEnumuint), 1L);
             Assert.NotNull(result);
             Assert.IsType<TestEnumuint>(result);
             Assert.Equal(TestEnumuint.Value1, result);
         }
-        
+
         /// <summary>
-        /// Tests that convert to enum with u int 64 enum returns correct enum
+        ///     Tests that convert to enum with u int 64 enum returns correct enum
         /// </summary>
         [Fact]
         public void ConvertToEnum_WithUInt64Enum_ReturnsCorrectEnum()
         {
-            
             object result = Conversions.ConvertToEnum(typeof(TestEnumuint), 1UL);
             Assert.NotNull(result);
             Assert.IsType<TestEnumuint>(result);
             Assert.Equal(TestEnumuint.Value1, result);
         }
-        
+
         /// <summary>
-        /// Tests that convert to enum with int 16 enum returns correct enum
+        ///     Tests that convert to enum with int 16 enum returns correct enum
         /// </summary>
         [Fact]
         public void ConvertToEnum_WithInt16Enum_ReturnsCorrectEnum()
         {
-            
             object result = Conversions.ConvertToEnum(typeof(TestEnumuint), (short) 1);
             Assert.NotNull(result);
             Assert.IsType<TestEnumuint>(result);
             Assert.Equal(TestEnumuint.Value1, result);
         }
-        
+
         /// <summary>
-        /// Tests that convert to enum with u int 16 enum returns correct enum
+        ///     Tests that convert to enum with u int 16 enum returns correct enum
         /// </summary>
         [Fact]
         public void ConvertToEnum_WithUInt16Enum_ReturnsCorrectEnum()
         {
-            
             object result = Conversions.ConvertToEnum(typeof(TestEnumuint), (ushort) 1);
             Assert.NotNull(result);
             Assert.IsType<TestEnumuint>(result);
             Assert.Equal(TestEnumuint.Value1, result);
         }
-        
+
         /// <summary>
-        /// Tests that convert to enum with byte enum returns correct enum
+        ///     Tests that convert to enum with byte enum returns correct enum
         /// </summary>
         [Fact]
         public void ConvertToEnum_WithByteEnum_ReturnsCorrectEnum()
@@ -3195,9 +3189,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.IsType<TestEnumuint>(result);
             Assert.Equal(TestEnumuint.Value1, result);
         }
-        
+
         /// <summary>
-        /// Tests that convert to enum with s byte enum returns correct enum
+        ///     Tests that convert to enum with s byte enum returns correct enum
         /// </summary>
         [Fact]
         public void ConvertToEnum_WithSByteEnum_ReturnsCorrectEnum()
@@ -3205,9 +3199,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             object result = Conversions.ConvertToEnum(typeof(TestEnumSbyte), (sbyte) 1);
             Assert.Null(result);
         }
-        
+
         /// <summary>
-        /// Tests that convert to enum with invalid value returns null v 1
+        ///     Tests that convert to enum with invalid value returns null v 1
         /// </summary>
         [Fact]
         public void ConvertToEnum_WithInvalidValue_ReturnsNull_v1()
@@ -3215,9 +3209,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             object result = Conversions.ConvertToEnum(typeof(TestEnumbyte), 1);
             Assert.NotNull(result);
         }
-        
+
         /// <summary>
-        /// Tests that convert to enum with invalid value returns null v 3
+        ///     Tests that convert to enum with invalid value returns null v 3
         /// </summary>
         [Fact]
         public void ConvertToEnum_WithInvalidValue_ReturnsNull_v3()
@@ -3225,9 +3219,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             object result = Conversions.ConvertToEnum(typeof(TestEnumushort), 1);
             Assert.NotNull(result);
         }
-        
+
         /// <summary>
-        /// Tests that convert to enum with invalid value returns null v 4
+        ///     Tests that convert to enum with invalid value returns null v 4
         /// </summary>
         [Fact]
         public void ConvertToEnum_WithInvalidValue_ReturnsNull_v4()
@@ -3235,9 +3229,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             object result = Conversions.ConvertToEnum(typeof(TestEnumulong), 1);
             Assert.NotNull(result);
         }
-        
+
         /// <summary>
-        /// Tests that convert to enum with invalid value returns null v 5
+        ///     Tests that convert to enum with invalid value returns null v 5
         /// </summary>
         [Fact]
         public void ConvertToEnum_WithInvalidValue_ReturnsNull_v5()
@@ -3245,9 +3239,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             object result = Conversions.ConvertToEnum(typeof(TestEnumlong), 1);
             Assert.NotNull(result);
         }
-        
+
         /// <summary>
-        /// Tests that convert to enum with invalid value returns null v 6
+        ///     Tests that convert to enum with invalid value returns null v 6
         /// </summary>
         [Fact]
         public void ConvertToEnum_WithInvalidValue_ReturnsNull_v6()
@@ -3255,9 +3249,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             object result = Conversions.ConvertToEnum(typeof(TestEnumshort), 1);
             Assert.NotNull(result);
         }
-        
+
         /// <summary>
-        /// Tests that convert to enum with invalid value returns null v 7
+        ///     Tests that convert to enum with invalid value returns null v 7
         /// </summary>
         [Fact]
         public void ConvertToEnum_WithInvalidValue_ReturnsNull_v7()
@@ -3265,9 +3259,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             object result = Conversions.ConvertToEnum(typeof(TestEnumint), 1);
             Assert.NotNull(result);
         }
-        
+
         /// <summary>
-        /// Tests that convert to enum with invalid value returns null v 2
+        ///     Tests that convert to enum with invalid value returns null v 2
         /// </summary>
         [Fact]
         public void ConvertToEnum_WithInvalidValue_ReturnsNull_v2()
@@ -3275,18 +3269,18 @@ namespace Alis.Core.Aspect.Data.Test.Json
             object result = Conversions.ConvertToEnum(typeof(DayOfWeek), "Monday");
             Assert.NotNull(result);
         }
-        
+
         /// <summary>
-        /// Tests that convert to enum with non enum type throws argument exception v 1
+        ///     Tests that convert to enum with non enum type throws argument exception v 1
         /// </summary>
         [Fact]
         public void ConvertToEnum_WithNonEnumType_ThrowsArgumentException_v1()
         {
             Assert.Throws<ArgumentException>(() => Conversions.ConvertToEnum(typeof(int), 1));
         }
-        
+
         /// <summary>
-        /// Tests that enum to object with valid enum type and string value returns enum
+        ///     Tests that enum to object with valid enum type and string value returns enum
         /// </summary>
         [Fact]
         public void EnumToObject_WithValidEnumTypeAndStringValue_ReturnsEnum()
@@ -3294,18 +3288,18 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             Type enumType = typeof(DayOfWeek);
             object value = "Monday";
-            
+
             // Act
             object result = Conversions.EnumToObject(enumType, value);
-            
+
             // Assert
             Assert.NotNull(result);
             Assert.IsType<DayOfWeek>(result);
             Assert.Equal(DayOfWeek.Monday, result);
         }
-        
+
         /// <summary>
-        /// Tests that enum to object with valid enum type and int value returns enum
+        ///     Tests that enum to object with valid enum type and int value returns enum
         /// </summary>
         [Fact]
         public void EnumToObject_WithValidEnumTypeAndIntValue_ReturnsEnum()
@@ -3313,18 +3307,18 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             Type enumType = typeof(DayOfWeek);
             object value = 1;
-            
+
             // Act
             object result = Conversions.EnumToObject(enumType, value);
-            
+
             // Assert
             Assert.NotNull(result);
             Assert.IsType<DayOfWeek>(result);
             Assert.Equal(DayOfWeek.Monday, result);
         }
-        
+
         /// <summary>
-        /// Tests that enum to object with invalid enum type returns null
+        ///     Tests that enum to object with invalid enum type returns null
         /// </summary>
         [Fact]
         public void EnumToObject_WithInvalidEnumType_ReturnsNull()
@@ -3332,16 +3326,16 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             Type enumType = typeof(int);
             object value = 1;
-            
+
             // Act
             object result = Conversions.EnumToObject(enumType, value);
-            
+
             // Assert
             Assert.Null(result);
         }
-        
+
         /// <summary>
-        /// Tests that enum to object with invalid value returns null
+        ///     Tests that enum to object with invalid value returns null
         /// </summary>
         [Fact]
         public void EnumToObject_WithInvalidValue_ReturnsNull()
@@ -3349,16 +3343,16 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             Type enumType = typeof(DayOfWeek);
             object value = "Sunday";
-            
+
             // Act
             object result = Conversions.EnumToObject(enumType, value);
-            
+
             // Assert
             Assert.NotNull(result);
         }
-        
+
         /// <summary>
-        /// Tests that enum to object with null enum type returns null
+        ///     Tests that enum to object with null enum type returns null
         /// </summary>
         [Fact]
         public void EnumToObject_WithNullEnumType_ReturnsNull()
@@ -3366,16 +3360,16 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             Type enumType = null;
             object value = "Monday";
-            
+
             // Act
             object result = Conversions.EnumToObject(enumType, value);
-            
+
             // Assert
             Assert.Null(result);
         }
-        
+
         /// <summary>
-        /// Tests that enum to object with null value returns null
+        ///     Tests that enum to object with null value returns null
         /// </summary>
         [Fact]
         public void EnumToObject_WithNullValue_ReturnsNull()
@@ -3383,16 +3377,16 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             Type enumType = typeof(DayOfWeek);
             object value = null;
-            
+
             // Act
             object result = Conversions.EnumToObject(enumType, value);
-            
+
             // Assert
             Assert.Null(result);
         }
-        
+
         /// <summary>
-        /// Tests that try change type based on input type with enum conversion type returns true
+        ///     Tests that try change type based on input type with enum conversion type returns true
         /// </summary>
         [Fact]
         public void TryChangeTypeBasedOnInputType_WithEnumConversionType_ReturnsTrue()
@@ -3405,9 +3399,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(result);
             Assert.Equal(DayOfWeek.Monday, value);
         }
-        
+
         /// <summary>
-        /// Tests that try change type based on input type with enum input type returns true
+        ///     Tests that try change type based on input type with enum input type returns true
         /// </summary>
         [Fact]
         public void TryChangeTypeBasedOnInputType_WithEnumInputType_ReturnsTrue()
@@ -3420,9 +3414,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(result);
             Assert.Equal("Monday", value);
         }
-        
+
         /// <summary>
-        /// Tests that try change type based on input type with guid conversion type returns true
+        ///     Tests that try change type based on input type with guid conversion type returns true
         /// </summary>
         [Fact]
         public void TryChangeTypeBasedOnInputType_WithGuidConversionType_ReturnsTrue()
@@ -3435,9 +3429,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(result);
             Assert.Equal(input, value.ToString());
         }
-        
+
         /// <summary>
-        /// Tests that try change type based on input type with uri conversion type returns true
+        ///     Tests that try change type based on input type with uri conversion type returns true
         /// </summary>
         [Fact]
         public void TryChangeTypeBasedOnInputType_WithUriConversionType_ReturnsTrue()
@@ -3450,9 +3444,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(result);
             Assert.Equal(input, value.ToString());
         }
-        
+
         /// <summary>
-        /// Tests that try change type based on input type with int ptr conversion type returns true
+        ///     Tests that try change type based on input type with int ptr conversion type returns true
         /// </summary>
         [Fact]
         public void TryChangeTypeBasedOnInputType_WithIntPtrConversionType_ReturnsTrue()
@@ -3465,9 +3459,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(result);
             Assert.Equal(new IntPtr(123), value);
         }
-        
+
         /// <summary>
-        /// Tests that try change type based on input type with numeric conversion type returns true
+        ///     Tests that try change type based on input type with numeric conversion type returns true
         /// </summary>
         [Fact]
         public void TryChangeTypeBasedOnInputType_WithNumericConversionType_ReturnsTrue()
@@ -3480,9 +3474,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(result);
             Assert.Equal(123, value);
         }
-        
+
         /// <summary>
-        /// Tests that try change type based on input type with date time conversion type returns true
+        ///     Tests that try change type based on input type with date time conversion type returns true
         /// </summary>
         [Fact]
         public void TryChangeTypeBasedOnInputType_WithDateTimeConversionType_ReturnsTrue()
@@ -3495,9 +3489,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(result);
             Assert.Equal(DateTime.Parse(input), value);
         }
-        
+
         /// <summary>
-        /// Tests that try change type based on input type with time span conversion type returns true
+        ///     Tests that try change type based on input type with time span conversion type returns true
         /// </summary>
         [Fact]
         public void TryChangeTypeBasedOnInputType_WithTimeSpanConversionType_ReturnsTrue()
@@ -3510,9 +3504,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(result);
             Assert.Equal(TimeSpan.Parse(input), value);
         }
-        
+
         /// <summary>
-        /// Tests that try change type based on input type with culture info conversion type returns true
+        ///     Tests that try change type based on input type with culture info conversion type returns true
         /// </summary>
         [Fact]
         public void TryChangeTypeBasedOnInputType_WithCultureInfoConversionType_ReturnsTrue()
@@ -3525,9 +3519,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(result);
             Assert.Equal(new CultureInfo(input.ToString()), value);
         }
-        
+
         /// <summary>
-        /// Tests that try change type based on input type with bool conversion type returns true
+        ///     Tests that try change type based on input type with bool conversion type returns true
         /// </summary>
         [Fact]
         public void TryChangeTypeBasedOnInputType_WithBoolConversionType_ReturnsTrue()
@@ -3540,9 +3534,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(result);
             Assert.Equal(true, value);
         }
-        
+
         /// <summary>
-        /// Tests that try change type based on input type with i convertible input returns true
+        ///     Tests that try change type based on input type with i convertible input returns true
         /// </summary>
         [Fact]
         public void TryChangeTypeBasedOnInputType_WithIConvertibleInput_ReturnsTrue()
@@ -3555,9 +3549,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(result);
             Assert.Equal(123, value);
         }
-        
+
         /// <summary>
-        /// Tests that try change type based on input type with other conversion type returns true
+        ///     Tests that try change type based on input type with other conversion type returns true
         /// </summary>
         [Fact]
         public void TryChangeTypeBasedOnInputType_WithOtherConversionType_ReturnsTrue()
@@ -3570,9 +3564,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(result);
             Assert.Equal(123, value);
         }
-        
+
         /// <summary>
-        /// Tests that try change to enum valid enum returns true
+        ///     Tests that try change to enum valid enum returns true
         /// </summary>
         [Fact]
         public void TryChangeToEnum_ValidEnum_ReturnsTrue()
@@ -3583,9 +3577,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(result);
             Assert.Equal(DayOfWeek.Monday, value);
         }
-        
+
         /// <summary>
-        /// Tests that try parse token valid token returns true
+        ///     Tests that try parse token valid token returns true
         /// </summary>
         [Fact]
         public void TryParseToken_ValidToken_ReturnsTrue()
@@ -3598,9 +3592,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(result);
             Assert.Equal(DayOfWeek.Monday, tokenValue);
         }
-        
+
         /// <summary>
-        /// Tests that try parse token invalid token returns false
+        ///     Tests that try parse token invalid token returns false
         /// </summary>
         [Fact]
         public void TryParseToken_InvalidToken_ReturnsFalse()
@@ -3613,9 +3607,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.False(result);
             Assert.NotNull(tokenValue);
         }
-        
+
         /// <summary>
-        /// Tests that sanitize token valid token returns sanitized token
+        ///     Tests that sanitize token valid token returns sanitized token
         /// </summary>
         [Fact]
         public void SanitizeToken_ValidToken_ReturnsSanitizedToken()
@@ -3624,9 +3618,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string result = Conversions.SanitizeToken(token);
             Assert.Equal("Monday", result);
         }
-        
+
         /// <summary>
-        /// Tests that sanitize token null token returns null
+        ///     Tests that sanitize token null token returns null
         /// </summary>
         [Fact]
         public void SanitizeToken_NullToken_ReturnsNull()
@@ -3635,9 +3629,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string result = Conversions.SanitizeToken(token);
             Assert.Null(result);
         }
-        
+
         /// <summary>
-        /// Tests that is token null null token returns true
+        ///     Tests that is token null null token returns true
         /// </summary>
         [Fact]
         public void IsTokenNull_NullToken_ReturnsTrue()
@@ -3646,9 +3640,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             bool result = Conversions.IsTokenNull(token);
             Assert.True(result);
         }
-        
+
         /// <summary>
-        /// Tests that is token null non null token returns false
+        ///     Tests that is token null non null token returns false
         /// </summary>
         [Fact]
         public void IsTokenNull_NonNullToken_ReturnsFalse()
@@ -3657,9 +3651,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             bool result = Conversions.IsTokenNull(token);
             Assert.False(result);
         }
-        
+
         /// <summary>
-        /// Tests that try change based on other types with array conversion type returns true
+        ///     Tests that try change based on other types with array conversion type returns true
         /// </summary>
         [Fact]
         public void TryChangeBasedOnOtherTypes_WithArrayConversionType_ReturnsTrue()
@@ -3672,9 +3666,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.False(result);
             Assert.Null(value);
         }
-        
+
         /// <summary>
-        /// Tests that try change based on other types with culture info conversion type returns true
+        ///     Tests that try change based on other types with culture info conversion type returns true
         /// </summary>
         [Fact]
         public void TryChangeBasedOnOtherTypes_WithCultureInfoConversionType_ReturnsTrue()
@@ -3687,9 +3681,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(result);
             Assert.Equal(new CultureInfo("en-US"), value);
         }
-        
+
         /// <summary>
-        /// Tests that try change based on other types with bool conversion type returns true
+        ///     Tests that try change based on other types with bool conversion type returns true
         /// </summary>
         [Fact]
         public void TryChangeBasedOnOtherTypes_WithBoolConversionType_ReturnsTrue()
@@ -3702,9 +3696,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(result);
             Assert.Equal(true, value);
         }
-        
+
         /// <summary>
-        /// Tests that try change based on other types with convertible input returns true
+        ///     Tests that try change based on other types with convertible input returns true
         /// </summary>
         [Fact]
         public void TryChangeBasedOnOtherTypes_WithConvertibleInput_ReturnsTrue()
@@ -3717,9 +3711,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(result);
             Assert.Equal(123, value);
         }
-        
+
         /// <summary>
-        /// Tests that try change based on other types with other conversion type returns true
+        ///     Tests that try change based on other types with other conversion type returns true
         /// </summary>
         [Fact]
         public void TryChangeBasedOnOtherTypes_WithOtherConversionType_ReturnsTrue()
@@ -3732,9 +3726,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(result);
             Assert.Equal(123, value);
         }
-        
+
         /// <summary>
-        /// Tests that try convert token to enum value valid token returns true
+        ///     Tests that try convert token to enum value valid token returns true
         /// </summary>
         [Fact]
         public void TryConvertTokenToEnumValue_ValidToken_ReturnsTrue()
@@ -3744,17 +3738,17 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string[] names = Enum.GetNames(type);
             Array values = Enum.GetValues(type);
             string token = "Monday";
-            
+
             // Act
             bool result = Conversions.TryConvertTokenToEnumValue(type, names, values, token, out object tokenValue);
-            
+
             // Assert
             Assert.True(result);
             Assert.Equal(DayOfWeek.Monday, tokenValue);
         }
-        
+
         /// <summary>
-        /// Tests that try convert token to enum value invalid token returns false
+        ///     Tests that try convert token to enum value invalid token returns false
         /// </summary>
         [Fact]
         public void TryConvertTokenToEnumValue_InvalidToken_ReturnsFalse()
@@ -3764,62 +3758,62 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string[] names = Enum.GetNames(type);
             Array values = Enum.GetValues(type);
             string token = "InvalidDay";
-            
+
             // Act
             bool result = Conversions.TryConvertTokenToEnumValue(type, names, values, token, out object tokenValue);
-            
+
             // Assert
             Assert.False(result);
             Assert.NotNull(tokenValue);
         }
-        
+
         /// <summary>
-        /// Tests that convert token value to ulong valid token returns ulong
+        ///     Tests that convert token value to ulong valid token returns ulong
         /// </summary>
         [Fact]
         public void ConvertTokenValueToUlong_ValidToken_ReturnsUlong()
         {
             // Arrange
             object tokenValue = 123;
-            
+
             // Act
             ulong result = Conversions.ConvertTokenValueToUlong(tokenValue);
-            
+
             // Assert
             Assert.Equal(123UL, result);
         }
-        
+
         /// <summary>
-        /// Tests that convert token value to ulong negative token returns ulong
+        ///     Tests that convert token value to ulong negative token returns ulong
         /// </summary>
         [Fact]
         public void ConvertTokenValueToUlong_NegativeToken_ReturnsUlong()
         {
             // Arrange
             object tokenValue = -123;
-            
+
             // Act
             ulong result = Conversions.ConvertTokenValueToUlong(tokenValue);
-            
+
             // Assert
             Assert.Equal(18446744073709551493UL, result); // This is the ulong representation of -123
         }
-        
+
         /// <summary>
-        /// Tests that convert token value to ulong non numeric token throws invalid cast exception
+        ///     Tests that convert token value to ulong non numeric token throws invalid cast exception
         /// </summary>
         [Fact]
         public void ConvertTokenValueToUlong_NonNumericToken_ThrowsInvalidCastException()
         {
             // Arrange
             object tokenValue = "InvalidToken";
-            
+
             // Act & Assert
             Assert.Throws<FormatException>(() => Conversions.ConvertTokenValueToUlong(tokenValue));
         }
-        
+
         /// <summary>
-        /// Tests that try parse token valid token returns true v 3
+        ///     Tests that try parse token valid token returns true v 3
         /// </summary>
         [Fact]
         public void TryParseToken_ValidToken_ReturnsTrue_v3()
@@ -3832,9 +3826,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(result);
             Assert.Equal(DayOfWeek.Monday, tokenValue);
         }
-        
+
         /// <summary>
-        /// Tests that try parse token invalid token returns false v 2
+        ///     Tests that try parse token invalid token returns false v 2
         /// </summary>
         [Fact]
         public void TryParseToken_InvalidToken_ReturnsFalse_v2()
@@ -3847,9 +3841,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.False(result);
             Assert.NotNull(tokenValue);
         }
-        
+
         /// <summary>
-        /// Tests that try parse token null token returns false
+        ///     Tests that try parse token null token returns false
         /// </summary>
         [Fact]
         public void TryParseToken_NullToken_ReturnsFalse()
@@ -3862,9 +3856,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.False(result);
             Assert.Null(tokenValue);
         }
-        
+
         /// <summary>
-        /// Tests that try parse token empty token returns false
+        ///     Tests that try parse token empty token returns false
         /// </summary>
         [Fact]
         public void TryParseToken_EmptyToken_ReturnsFalse()
@@ -3877,9 +3871,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.False(result);
             Assert.Null(tokenValue);
         }
-        
+
         /// <summary>
-        /// Tests that try parse token token with spaces returns true
+        ///     Tests that try parse token token with spaces returns true
         /// </summary>
         [Fact]
         public void TryParseToken_TokenWithSpaces_ReturnsTrue()
@@ -3892,9 +3886,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(result);
             Assert.Equal(DayOfWeek.Monday, tokenValue);
         }
-        
+
         /// <summary>
-        /// Tests that try parse token mixed case token returns true
+        ///     Tests that try parse token mixed case token returns true
         /// </summary>
         [Fact]
         public void TryParseToken_MixedCaseToken_ReturnsTrue()
@@ -3907,9 +3901,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(result);
             Assert.Equal(DayOfWeek.Monday, tokenValue);
         }
-        
+
         /// <summary>
-        /// Tests that try parse token invalid enum type returns false
+        ///     Tests that try parse token invalid enum type returns false
         /// </summary>
         [Fact]
         public void TryParseToken_InvalidEnumType_ReturnsFalse()
@@ -3922,9 +3916,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(result);
             Assert.NotNull(tokenValue);
         }
-        
+
         /// <summary>
-        /// Tests that try parse token null enum type returns false
+        ///     Tests that try parse token null enum type returns false
         /// </summary>
         [Fact]
         public void TryParseToken_NullEnumType_ReturnsFalse()
@@ -3937,9 +3931,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(result);
             Assert.NotNull(tokenValue);
         }
-        
+
         /// <summary>
-        /// Tests that try change based on other types collection conversion type try change to collection returns true
+        ///     Tests that try change based on other types collection conversion type try change to collection returns true
         /// </summary>
         [Fact]
         public void TryChangeBasedOnOtherTypes_CollectionConversionType_TryChangeToCollectionReturnsTrue()
@@ -3949,17 +3943,17 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Type conversionType = typeof(int[]);
             IFormatProvider provider = CultureInfo.InvariantCulture;
             Type inputType = typeof(string);
-            
+
             // Act
             bool result = Conversions.TryChangeBasedOnOtherTypes(input, conversionType, provider, inputType, out object value);
-            
+
             // Assert
             Assert.False(result);
             Assert.Null(value);
         }
-        
+
         /// <summary>
-        /// Tests that try change based on other types collection conversion type try change to collection returns false
+        ///     Tests that try change based on other types collection conversion type try change to collection returns false
         /// </summary>
         [Fact]
         public void TryChangeBasedOnOtherTypes_CollectionConversionType_TryChangeToCollectionReturnsFalse()
@@ -3969,17 +3963,17 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Type conversionType = typeof(int[]);
             IFormatProvider provider = CultureInfo.InvariantCulture;
             Type inputType = typeof(string);
-            
+
             // Act
             bool result = Conversions.TryChangeBasedOnOtherTypes(input, conversionType, provider, inputType, out object value);
-            
+
             // Assert
             Assert.False(result);
             Assert.Null(value);
         }
-        
+
         /// <summary>
-        /// Tests that try change based on other types culture info conversion type try change to culture info returns true
+        ///     Tests that try change based on other types culture info conversion type try change to culture info returns true
         /// </summary>
         [Fact]
         public void TryChangeBasedOnOtherTypes_CultureInfoConversionType_TryChangeToCultureInfoReturnsTrue()
@@ -3989,17 +3983,17 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Type conversionType = typeof(CultureInfo);
             IFormatProvider provider = CultureInfo.InvariantCulture;
             Type inputType = typeof(string);
-            
+
             // Act
             bool result = Conversions.TryChangeBasedOnOtherTypes(input, conversionType, provider, inputType, out object value);
-            
+
             // Assert
             Assert.True(result);
             Assert.Equal(new CultureInfo("en-US"), value);
         }
-        
+
         /// <summary>
-        /// Tests that try change based on other types culture info conversion type try change to culture info returns false
+        ///     Tests that try change based on other types culture info conversion type try change to culture info returns false
         /// </summary>
         [Fact]
         public void TryChangeBasedOnOtherTypes_CultureInfoConversionType_TryChangeToCultureInfoReturnsFalse()
@@ -4009,17 +4003,17 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Type conversionType = typeof(CultureInfo);
             IFormatProvider provider = CultureInfo.InvariantCulture;
             Type inputType = typeof(string);
-            
+
             // Act
             bool result = Conversions.TryChangeBasedOnOtherTypes(input, conversionType, provider, inputType, out object value);
-            
+
             // Assert
             Assert.False(result);
             Assert.Null(value);
         }
-        
+
         /// <summary>
-        /// Tests that try change based on other types bool conversion type try change to bool returns true
+        ///     Tests that try change based on other types bool conversion type try change to bool returns true
         /// </summary>
         [Fact]
         public void TryChangeBasedOnOtherTypes_BoolConversionType_TryChangeToBoolReturnsTrue()
@@ -4029,17 +4023,17 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Type conversionType = typeof(bool);
             IFormatProvider provider = CultureInfo.InvariantCulture;
             Type inputType = typeof(string);
-            
+
             // Act
             bool result = Conversions.TryChangeBasedOnOtherTypes(input, conversionType, provider, inputType, out object value);
-            
+
             // Assert
             Assert.True(result);
             Assert.Equal(true, value);
         }
-        
+
         /// <summary>
-        /// Tests that try change based on other types bool conversion type try change to bool returns false
+        ///     Tests that try change based on other types bool conversion type try change to bool returns false
         /// </summary>
         [Fact]
         public void TryChangeBasedOnOtherTypes_BoolConversionType_TryChangeToBoolReturnsFalse()
@@ -4049,17 +4043,17 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Type conversionType = typeof(bool);
             IFormatProvider provider = CultureInfo.InvariantCulture;
             Type inputType = typeof(string);
-            
+
             // Act
             bool result = Conversions.TryChangeBasedOnOtherTypes(input, conversionType, provider, inputType, out object value);
-            
+
             // Assert
             Assert.False(result);
             Assert.Null(value);
         }
-        
+
         /// <summary>
-        /// Tests that try change based on other types convertible input try change with i convertible returns true
+        ///     Tests that try change based on other types convertible input try change with i convertible returns true
         /// </summary>
         [Fact]
         public void TryChangeBasedOnOtherTypes_ConvertibleInput_TryChangeWithIConvertibleReturnsTrue()
@@ -4069,17 +4063,17 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Type conversionType = typeof(int);
             IFormatProvider provider = CultureInfo.InvariantCulture;
             Type inputType = typeof(string);
-            
+
             // Act
             bool result = Conversions.TryChangeBasedOnOtherTypes(input, conversionType, provider, inputType, out object value);
-            
+
             // Assert
             Assert.True(result);
             Assert.Equal(123, value);
         }
-        
+
         /// <summary>
-        /// Tests that try change based on other types convertible input try change with i convertible returns false
+        ///     Tests that try change based on other types convertible input try change with i convertible returns false
         /// </summary>
         [Fact]
         public void TryChangeBasedOnOtherTypes_ConvertibleInput_TryChangeWithIConvertibleReturnsFalse()
@@ -4089,17 +4083,17 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Type conversionType = typeof(int);
             IFormatProvider provider = CultureInfo.InvariantCulture;
             Type inputType = typeof(string);
-            
+
             // Act
             bool result = Conversions.TryChangeBasedOnOtherTypes(input, conversionType, provider, inputType, out object value);
-            
+
             // Assert
             Assert.False(result);
             Assert.Null(value);
         }
-        
+
         /// <summary>
-        /// Tests that try change based on other types other conversion type try convert returns true
+        ///     Tests that try change based on other types other conversion type try convert returns true
         /// </summary>
         [Fact]
         public void TryChangeBasedOnOtherTypes_OtherConversionType_TryConvertReturnsTrue()
@@ -4109,17 +4103,17 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Type conversionType = typeof(int);
             IFormatProvider provider = CultureInfo.InvariantCulture;
             Type inputType = typeof(object);
-            
+
             // Act
             bool result = Conversions.TryChangeBasedOnOtherTypes(input, conversionType, provider, inputType, out object value);
-            
+
             // Assert
             Assert.True(result);
             Assert.Equal(123, value);
         }
-        
+
         /// <summary>
-        /// Tests that try change based on other types other conversion type try convert returns false
+        ///     Tests that try change based on other types other conversion type try convert returns false
         /// </summary>
         [Fact]
         public void TryChangeBasedOnOtherTypes_OtherConversionType_TryConvertReturnsFalse()
@@ -4129,17 +4123,17 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Type conversionType = typeof(int);
             IFormatProvider provider = CultureInfo.InvariantCulture;
             Type inputType = typeof(object);
-            
+
             // Act
             bool result = Conversions.TryChangeBasedOnOtherTypes(input, conversionType, provider, inputType, out object value);
-            
+
             // Assert
             Assert.False(result);
             Assert.Null(value);
         }
-        
+
         /// <summary>
-        /// Tests that try change based on other types null input returns false
+        ///     Tests that try change based on other types null input returns false
         /// </summary>
         [Fact]
         public void TryChangeBasedOnOtherTypes_NullInput_ReturnsFalse()
@@ -4149,13 +4143,13 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Type conversionType = typeof(int);
             IFormatProvider provider = CultureInfo.InvariantCulture;
             Type inputType = typeof(string);
-            
+
             // Act
             Assert.Throws<NotSupportedException>(() => Conversions.TryChangeBasedOnOtherTypes(input, conversionType, provider, inputType, out object value));
         }
-        
+
         /// <summary>
-        /// Tests that try change based on other types null conversion type returns false
+        ///     Tests that try change based on other types null conversion type returns false
         /// </summary>
         [Fact]
         public void TryChangeBasedOnOtherTypes_NullConversionType_ReturnsFalse()
@@ -4165,13 +4159,13 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Type conversionType = null;
             IFormatProvider provider = CultureInfo.InvariantCulture;
             Type inputType = typeof(string);
-            
+
             // Act
             Assert.Throws<NullReferenceException>(() => Conversions.TryChangeBasedOnOtherTypes(input, conversionType, provider, inputType, out object value));
         }
-        
+
         /// <summary>
-        /// Tests that try change based on other types null provider returns false
+        ///     Tests that try change based on other types null provider returns false
         /// </summary>
         [Fact]
         public void TryChangeBasedOnOtherTypes_NullProvider_ReturnsFalse()
@@ -4181,17 +4175,17 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Type conversionType = typeof(int);
             IFormatProvider provider = null;
             Type inputType = typeof(string);
-            
+
             // Act
             bool result = Conversions.TryChangeBasedOnOtherTypes(input, conversionType, provider, inputType, out object value);
-            
+
             // Assert
             Assert.True(result);
             Assert.NotNull(value);
         }
-        
+
         /// <summary>
-        /// Tests that try change based on other types null input type returns false
+        ///     Tests that try change based on other types null input type returns false
         /// </summary>
         [Fact]
         public void TryChangeBasedOnOtherTypes_NullInputType_ReturnsFalse()
@@ -4201,17 +4195,17 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Type conversionType = typeof(int);
             IFormatProvider provider = CultureInfo.InvariantCulture;
             Type inputType = null;
-            
+
             // Act
             bool result = Conversions.TryChangeBasedOnOtherTypes(input, conversionType, provider, inputType, out object value);
-            
+
             // Assert
             Assert.True(result);
             Assert.NotNull(value);
         }
-        
+
         /// <summary>
-        /// Tests that try change based on other types all parameters null returns false
+        ///     Tests that try change based on other types all parameters null returns false
         /// </summary>
         [Fact]
         public void TryChangeBasedOnOtherTypes_AllParametersNull_ReturnsFalse()
@@ -4221,13 +4215,13 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Type conversionType = null;
             IFormatProvider provider = null;
             Type inputType = null;
-            
+
             // Act
             Assert.Throws<NullReferenceException>(() => Conversions.TryChangeBasedOnOtherTypes(input, conversionType, provider, inputType, out object value));
         }
-        
+
         /// <summary>
-        /// Tests that try convert to enum and assign value valid enum value returns true
+        ///     Tests that try convert to enum and assign value valid enum value returns true
         /// </summary>
         [Fact]
         public void TryConvertToEnumAndAssignValue_ValidEnumValue_ReturnsTrue()
@@ -4236,36 +4230,36 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(result);
             Assert.Equal(DayOfWeek.Monday, value);
         }
-        
+
         /// <summary>
-        /// Tests that try convert to enum and assign value invalid enum value returns false
+        ///     Tests that try convert to enum and assign value invalid enum value returns false
         /// </summary>
         [Fact]
         public void TryConvertToEnumAndAssignValue_InvalidEnumValue_ReturnsFalse()
         {
             Assert.Throws<ArgumentException>(() => Conversions.TryConvertToEnumAndAssignValue(typeof(DayOfWeek), "InvalidDay", out object value));
         }
-        
+
         /// <summary>
-        /// Tests that try convert to enum and assign value non enum type returns false
+        ///     Tests that try convert to enum and assign value non enum type returns false
         /// </summary>
         [Fact]
         public void TryConvertToEnumAndAssignValue_NonEnumType_ReturnsFalse()
         {
             Assert.Throws<MissingMethodException>(() => Conversions.TryConvertToEnumAndAssignValue(typeof(string), "Monday", out object value));
         }
-        
+
         /// <summary>
-        /// Tests that try convert to enum and assign value null type throws exception
+        ///     Tests that try convert to enum and assign value null type throws exception
         /// </summary>
         [Fact]
         public void TryConvertToEnumAndAssignValue_NullType_ThrowsException()
         {
             Assert.Throws<ArgumentNullException>(() => Conversions.TryConvertToEnumAndAssignValue(null, "Monday", out object value));
         }
-        
+
         /// <summary>
-        /// Tests that try convert to enum and assign value null input returns false
+        ///     Tests that try convert to enum and assign value null input returns false
         /// </summary>
         [Fact]
         public void TryConvertToEnumAndAssignValue_NullInput_ReturnsFalse()
@@ -4274,27 +4268,27 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.False(result);
             Assert.Equal(default(DayOfWeek), value);
         }
-        
+
         /// <summary>
-        /// Tests that try convert to enum and assign value empty input returns false
+        ///     Tests that try convert to enum and assign value empty input returns false
         /// </summary>
         [Fact]
         public void TryConvertToEnumAndAssignValue_EmptyInput_ReturnsFalse()
         {
             Assert.Throws<ArgumentException>(() => Conversions.TryConvertToEnumAndAssignValue(typeof(DayOfWeek), "", out object value));
         }
-        
+
         /// <summary>
-        /// Tests that try convert to enum and assign value valid enum value different case returns true
+        ///     Tests that try convert to enum and assign value valid enum value different case returns true
         /// </summary>
         [Fact]
         public void TryConvertToEnumAndAssignValue_ValidEnumValueDifferentCase_ReturnsTrue()
         {
             Assert.Throws<ArgumentException>(() => Conversions.TryConvertToEnumAndAssignValue(typeof(DayOfWeek), "monday", out object value));
         }
-        
+
         /// <summary>
-        /// Tests that try convert to enum and assign value string with spaces returns false
+        ///     Tests that try convert to enum and assign value string with spaces returns false
         /// </summary>
         [Fact]
         public void TryConvertToEnumAndAssignValue_StringWithSpaces_ReturnsFalse()

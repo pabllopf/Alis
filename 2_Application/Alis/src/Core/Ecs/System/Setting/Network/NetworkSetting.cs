@@ -38,12 +38,12 @@ namespace Alis.Core.Ecs.System.Setting.Network
     ///     The network setting class
     /// </summary>
     /// <seealso cref="INetworkSetting" />
-    public class NetworkSetting : 
+    public class NetworkSetting :
         INetworkSetting,
         IBuilder<NetworkSettingBuilder>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="NetworkSetting"/> class
+        ///     Initializes a new instance of the <see cref="NetworkSetting" /> class
         /// </summary>
         [ExcludeFromCodeCoverage]
         public NetworkSetting()
@@ -53,9 +53,9 @@ namespace Alis.Core.Ecs.System.Setting.Network
             Host = "localhost";
             Protocol = "http";
         }
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="NetworkSetting"/> class
+        ///     Initializes a new instance of the <see cref="NetworkSetting" /> class
         /// </summary>
         /// <param name="port">The port</param>
         /// <param name="ip">The ip</param>
@@ -70,33 +70,33 @@ namespace Alis.Core.Ecs.System.Setting.Network
             Host = host;
             Protocol = protocol;
         }
-        
+
         /// <summary>
-        /// Gets or sets the value of the port
+        ///     Gets or sets the value of the port
         /// </summary>
         [JsonPropertyName("_Port_")]
         public int Port { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the ip
+        ///     Gets or sets the value of the ip
         /// </summary>
         [JsonPropertyName("_Ip_")]
         public string Ip { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the host
+        ///     Gets or sets the value of the host
         /// </summary>
         [JsonPropertyName("_Host_")]
         public string Host { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the protocol
+        ///     Gets or sets the value of the protocol
         /// </summary>
         [JsonPropertyName("_Protocol_")]
         public string Protocol { get; set; }
-        
+
         /// <summary>
-        /// Builders this instance
+        ///     Builders this instance
         /// </summary>
         /// <returns>The network setting builder</returns>
         public NetworkSettingBuilder Builder() => new NetworkSettingBuilder();

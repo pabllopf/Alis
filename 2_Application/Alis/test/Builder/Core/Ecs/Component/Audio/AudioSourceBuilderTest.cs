@@ -35,73 +35,73 @@ using Xunit;
 namespace Alis.Test.Builder.Core.Ecs.Component.Audio
 {
     /// <summary>
-    /// The audio source builder test class
+    ///     The audio source builder test class
     /// </summary>
     public class AudioSourceBuilderTest
     {
         /// <summary>
-        /// Tests that audio source builder default constructor valid input
+        ///     Tests that audio source builder default constructor valid input
         /// </summary>
         [Fact]
         public void AudioSourceBuilder_DefaultConstructor_ValidInput()
         {
             AudioSourceBuilder audioSourceBuilder = new AudioSourceBuilder();
-            
+
             Assert.NotNull(audioSourceBuilder);
         }
-        
+
         /// <summary>
-        /// Tests that build valid input
+        ///     Tests that build valid input
         /// </summary>
         [Fact]
         public void Build_ValidInput()
         {
             AudioSourceBuilder audioSourceBuilder = new AudioSourceBuilder();
-            
+
             AudioSource audioSource = audioSourceBuilder.Build();
-            
+
             Assert.NotNull(audioSource);
         }
-        
+
         /// <summary>
-        /// Tests that is active valid input
+        ///     Tests that is active valid input
         /// </summary>
         [Fact]
         public void IsActive_ValidInput()
         {
             AudioSourceBuilder audioSourceBuilder = new AudioSourceBuilder();
             bool isActive = true;
-            
+
             audioSourceBuilder.IsActive(isActive);
-            
+
             Assert.Equal(isActive, audioSourceBuilder.Build().IsEnable);
         }
-        
+
         /// <summary>
-        /// Tests that play on awake valid input
+        ///     Tests that play on awake valid input
         /// </summary>
         [Fact]
         public void PlayOnAwake_ValidInput()
         {
             AudioSourceBuilder audioSourceBuilder = new AudioSourceBuilder();
             bool playOnAwake = true;
-            
+
             audioSourceBuilder.PlayOnAwake(playOnAwake);
-            
+
             Assert.Equal(playOnAwake, audioSourceBuilder.Build().PlayOnAwake);
         }
-        
+
         /// <summary>
-        /// Tests that set audio clip valid input
+        ///     Tests that set audio clip valid input
         /// </summary>
         [Fact]
         public void SetAudioClip_ValidInput()
         {
             AudioSourceBuilder audioSourceBuilder = new AudioSourceBuilder();
             Func<AudioClipBuilder, AudioClip> audioClipFunc = acb => acb.Build();
-            
+
             audioSourceBuilder.SetAudioClip(audioClipFunc);
-            
+
             Assert.NotNull(audioSourceBuilder.Build().AudioClip);
         }
     }

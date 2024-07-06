@@ -54,17 +54,17 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Vector2 anchorA = new Vector2(0.5f, 0.5f);
             Vector2 anchorB = new Vector2(1.5f, 1.5f);
             bool useWorldCoordinates = false;
-            
+
             // Act
             DistanceJoint distanceJoint = new DistanceJoint(bodyA, bodyB, anchorA, anchorB, useWorldCoordinates);
-            
+
             // Assert
             Assert.Equal(bodyA, distanceJoint.BodyA);
             Assert.Equal(bodyB, distanceJoint.BodyB);
             Assert.Equal(anchorA, distanceJoint.LocalAnchorA);
             Assert.Equal(anchorB, distanceJoint.LocalAnchorB);
         }
-        
+
         /// <summary>
         ///     Tests that distance joint properties test
         /// </summary>
@@ -85,14 +85,14 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
                 Stiffness = 0.5f,
                 Damping = 0.5f
             };
-            
+
             // Assert
             Assert.Equal(new Vector2(0.6f, 0.6f), distanceJoint.LocalAnchorA);
             Assert.Equal(new Vector2(1.6f, 1.6f), distanceJoint.LocalAnchorB);
             Assert.Equal(0.5f, distanceJoint.Stiffness);
             Assert.Equal(0.5f, distanceJoint.Damping);
         }
-        
+
         /// <summary>
         ///     Tests that distance joint world anchor test
         /// </summary>
@@ -106,11 +106,11 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Vector2 anchorB = new Vector2(1.5f, 1.5f);
             bool useWorldCoordinates = false;
             DistanceJoint distanceJoint = new DistanceJoint(bodyA, bodyB, anchorA, anchorB, useWorldCoordinates);
-            
+
             // Act
             Vector2 worldAnchorA = distanceJoint.WorldAnchorA;
             Vector2 worldAnchorB = distanceJoint.WorldAnchorB;
-            
+
             // Assert
             Assert.Equal(bodyA.GetWorldPoint(anchorA), worldAnchorA);
             Assert.Equal(bodyB.GetWorldPoint(anchorB), worldAnchorB);

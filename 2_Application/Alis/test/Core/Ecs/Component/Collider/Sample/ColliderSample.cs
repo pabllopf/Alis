@@ -32,9 +32,9 @@ using Alis.Core.Ecs.Component.Collider;
 namespace Alis.Test.Core.Ecs.Component.Collider.Sample
 {
     /// <summary>
-    /// The collider sample class
+    ///     The collider sample class
     /// </summary>
-    /// <seealso cref="ACollider"/>
+    /// <seealso cref="ACollider" />
     public class ColliderSample : ACollider
     {
     }

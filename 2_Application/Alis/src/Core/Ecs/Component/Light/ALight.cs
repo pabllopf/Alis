@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Light.cs
+//  File:ALight.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -44,7 +44,7 @@ namespace Alis.Core.Ecs.Component.Light
         {
             Logger.Trace();
         }
-        
+
         /// <summary>
         ///     Updates this instance
         /// </summary>

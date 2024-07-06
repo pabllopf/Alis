@@ -28,17 +28,18 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Threading;
 using Xunit;
 
 namespace Alis.Extension.Profile.Test
 {
     /// <summary>
-    /// The profiler test class
+    ///     The profiler test class
     /// </summary>
     public class ProfilerTest
     {
         /// <summary>
-        /// Tests that start profiling sets start time
+        ///     Tests that start profiling sets start time
         /// </summary>
         [Fact]
         public void StartProfiling_SetsStartTime()
@@ -49,34 +50,34 @@ namespace Alis.Extension.Profile.Test
         }
 
         /// <summary>
-        /// Tests that stop profiling sets elapsed time
+        ///     Tests that stop profiling sets elapsed time
         /// </summary>
         [Fact]
         public void StopProfiling_SetsElapsedTime()
         {
             Profiler profiler = new Profiler();
             profiler.StartProfiling();
-            System.Threading.Thread.Sleep(1000); // Sleep for 1 second to ensure elapsed time is measurable
+            Thread.Sleep(1000); // Sleep for 1 second to ensure elapsed time is measurable
             profiler.StopProfiling();
             Assert.True(profiler.GetElapsedTime().TotalMilliseconds >= 1000);
         }
 
         /// <summary>
-        /// Tests that get elapsed time returns correct duration
+        ///     Tests that get elapsed time returns correct duration
         /// </summary>
         [Fact]
         public void GetElapsedTime_ReturnsCorrectDuration()
         {
             Profiler profiler = new Profiler();
             profiler.StartProfiling();
-            System.Threading.Thread.Sleep(1500); // Sleep for 1.5 seconds
+            Thread.Sleep(1500); // Sleep for 1.5 seconds
             profiler.StopProfiling();
             TimeSpan elapsedTime = profiler.GetElapsedTime();
-            Assert.True(elapsedTime.TotalMilliseconds >= 1500 && elapsedTime.TotalMilliseconds < 1600);
+            Assert.True((elapsedTime.TotalMilliseconds >= 1500) && (elapsedTime.TotalMilliseconds < 1600));
         }
 
         /// <summary>
-        /// Tests that start profiling sets start time to current time
+        ///     Tests that start profiling sets start time to current time
         /// </summary>
         [Fact]
         public void StartProfiling_SetsStartTimeToCurrentTime()
@@ -87,18 +88,18 @@ namespace Alis.Extension.Profile.Test
             profiler.StartProfiling();
 
             DateTime afterStart = DateTime.Now;
-            Assert.True(profiler.GetStartTime() >= beforeStart && profiler.GetStartTime() <= afterStart);
+            Assert.True((profiler.GetStartTime() >= beforeStart) && (profiler.GetStartTime() <= afterStart));
         }
 
         /// <summary>
-        /// Tests that stop profiling sets elapsed time correctly
+        ///     Tests that stop profiling sets elapsed time correctly
         /// </summary>
         [Fact]
         public void StopProfiling_SetsElapsedTimeCorrectly()
         {
             Profiler profiler = new Profiler();
             profiler.StartProfiling();
-            System.Threading.Thread.Sleep(100); // Sleep to ensure a measurable elapsed time
+            Thread.Sleep(100); // Sleep to ensure a measurable elapsed time
 
             profiler.StopProfiling();
 
@@ -106,7 +107,7 @@ namespace Alis.Extension.Profile.Test
         }
 
         /// <summary>
-        /// Tests that get elapsed time returns zero before profiling starts
+        ///     Tests that get elapsed time returns zero before profiling starts
         /// </summary>
         [Fact]
         public void GetElapsedTime_ReturnsZeroBeforeProfilingStarts()
@@ -117,21 +118,21 @@ namespace Alis.Extension.Profile.Test
         }
 
         /// <summary>
-        /// Tests that get elapsed time after stop profiling returns non zero
+        ///     Tests that get elapsed time after stop profiling returns non zero
         /// </summary>
         [Fact]
         public void GetElapsedTime_AfterStopProfiling_ReturnsNonZero()
         {
             Profiler profiler = new Profiler();
             profiler.StartProfiling();
-            System.Threading.Thread.Sleep(100); // Sleep to ensure a measurable elapsed time
+            Thread.Sleep(100); // Sleep to ensure a measurable elapsed time
             profiler.StopProfiling();
 
             Assert.True(profiler.GetElapsedTime().TotalMilliseconds > 0);
         }
 
         /// <summary>
-        /// Tests that get start time before start profiling returns date time min value
+        ///     Tests that get start time before start profiling returns date time min value
         /// </summary>
         [Fact]
         public void GetStartTime_BeforeStartProfiling_ReturnsDateTimeMinValue()
@@ -142,7 +143,7 @@ namespace Alis.Extension.Profile.Test
         }
 
         /// <summary>
-        /// Tests that get start time after start profiling returns start time
+        ///     Tests that get start time after start profiling returns start time
         /// </summary>
         [Fact]
         public void GetStartTime_AfterStartProfiling_ReturnsStartTime()

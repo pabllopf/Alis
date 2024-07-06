@@ -34,31 +34,31 @@ using Xunit;
 namespace Alis.Test.Builder.Core.Ecs.Component.Light
 {
     /// <summary>
-    /// The spot light builder test class
+    ///     The spot light builder test class
     /// </summary>
     public class SpotLightBuilderTest
     {
         /// <summary>
-        /// Tests that spot light builder default constructor valid input
+        ///     Tests that spot light builder default constructor valid input
         /// </summary>
         [Fact]
         public void SpotLightBuilder_DefaultConstructor_ValidInput()
         {
             SpotLightBuilder spotLightBuilder = new SpotLightBuilder();
-            
+
             Assert.NotNull(spotLightBuilder);
         }
-        
+
         /// <summary>
-        /// Tests that build valid input
+        ///     Tests that build valid input
         /// </summary>
         [Fact]
         public void Build_ValidInput()
         {
             SpotLightBuilder spotLightBuilder = new SpotLightBuilder();
-            
+
             SpotLight spotLight = spotLightBuilder.Build();
-            
+
             Assert.NotNull(spotLight);
         }
     }

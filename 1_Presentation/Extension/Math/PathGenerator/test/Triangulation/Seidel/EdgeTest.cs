@@ -30,10 +30,9 @@
 namespace Alis.Extension.Math.PathGenerator.Test.Triangulation.Seidel
 {
     /// <summary>
-    /// The edge test class
+    ///     The edge test class
     /// </summary>
     public class EdgeTest
     {
-        
     }
 }

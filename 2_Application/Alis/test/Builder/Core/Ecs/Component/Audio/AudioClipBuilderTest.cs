@@ -34,73 +34,73 @@ using Xunit;
 namespace Alis.Test.Builder.Core.Ecs.Component.Audio
 {
     /// <summary>
-    /// The audio clip builder test class
+    ///     The audio clip builder test class
     /// </summary>
     public class AudioClipBuilderTest
     {
         /// <summary>
-        /// Tests that audio clip builder default constructor valid input
+        ///     Tests that audio clip builder default constructor valid input
         /// </summary>
         [Fact]
         public void AudioClipBuilder_DefaultConstructor_ValidInput()
         {
             AudioClipBuilder audioClipBuilder = new AudioClipBuilder();
-            
+
             Assert.NotNull(audioClipBuilder);
         }
-        
+
         /// <summary>
-        /// Tests that build valid input
+        ///     Tests that build valid input
         /// </summary>
         [Fact]
         public void Build_ValidInput()
         {
             AudioClipBuilder audioClipBuilder = new AudioClipBuilder();
-            
+
             AudioClip audioClip = audioClipBuilder.Build();
-            
+
             Assert.NotNull(audioClip);
         }
-        
+
         /// <summary>
-        /// Tests that file path valid input
+        ///     Tests that file path valid input
         /// </summary>
         [Fact]
         public void FilePath_ValidInput()
         {
             AudioClipBuilder audioClipBuilder = new AudioClipBuilder();
             string filePath = "testFilePath";
-            
+
             audioClipBuilder.FilePath(filePath);
-            
+
             Assert.Equal(filePath, audioClipBuilder.Build().NameFile);
         }
-        
+
         /// <summary>
-        /// Tests that mute valid input
+        ///     Tests that mute valid input
         /// </summary>
         [Fact]
         public void Mute_ValidInput()
         {
             AudioClipBuilder audioClipBuilder = new AudioClipBuilder();
             bool mute = true;
-            
+
             audioClipBuilder.Mute(mute);
-            
+
             Assert.Equal(mute, audioClipBuilder.Build().IsMute);
         }
-        
+
         /// <summary>
-        /// Tests that volume valid input
+        ///     Tests that volume valid input
         /// </summary>
         [Fact]
         public void Volume_ValidInput()
         {
             AudioClipBuilder audioClipBuilder = new AudioClipBuilder();
             float volume = 0.5f;
-            
+
             audioClipBuilder.Volume(volume);
-            
+
             Assert.Equal(volume, audioClipBuilder.Build().Volume);
         }
     }

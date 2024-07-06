@@ -32,10 +32,10 @@ using Alis.Core.Ecs.System.Manager;
 namespace Alis.Test.Sample
 {
     /// <summary>
-    /// The custom manager class
+    ///     The custom manager class
     /// </summary>
-    /// <seealso cref="AManager"/>
-    public class CustomManager: AManager
+    /// <seealso cref="AManager" />
+    public class CustomManager : AManager
     {
     }
 }

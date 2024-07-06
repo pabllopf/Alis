@@ -30,10 +30,9 @@
 namespace Alis.Extension.Math.PathGenerator.Test.TextureTools
 {
     /// <summary>
-    /// The vertices detection type test class
+    ///     The vertices detection type test class
     /// </summary>
     public class VerticesDetectionTypeTest
     {
-        
     }
 }

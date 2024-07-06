@@ -34,12 +34,10 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Extension.Graphic.ImGui.Native
 {
     /// <summary>
-    /// The im gui class
+    ///     The im gui class
     /// </summary>
     public static partial class ImGui
     {
-        
-        
         /// <summary>
         ///     Describes whether menu item
         /// </summary>
@@ -53,7 +51,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igMenuItem_BoolPtr(Encoding.UTF8.GetBytes(label), Encoding.UTF8.GetBytes(shortcut), pSelected, enabled);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     News the frame
         /// </summary>
@@ -61,7 +59,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igNewFrame();
         }
-        
+
         /// <summary>
         ///     News the line
         /// </summary>
@@ -69,7 +67,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igNewLine();
         }
-        
+
         /// <summary>
         ///     Nexts the column
         /// </summary>
@@ -77,7 +75,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igNextColumn();
         }
-        
+
         /// <summary>
         ///     Opens the popup using the specified str id
         /// </summary>
@@ -86,7 +84,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igOpenPopup_Str(Encoding.UTF8.GetBytes(strId), 0);
         }
-        
+
         /// <summary>
         ///     Opens the popup using the specified str id
         /// </summary>
@@ -96,7 +94,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igOpenPopup_Str(Encoding.UTF8.GetBytes(strId), popupFlags);
         }
-        
+
         /// <summary>
         ///     Opens the popup using the specified id
         /// </summary>
@@ -106,7 +104,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             ImGuiPopupFlags popupFlags = 0;
             ImGuiNative.igOpenPopup_ID(id, popupFlags);
         }
-        
+
         /// <summary>
         ///     Opens the popup using the specified id
         /// </summary>
@@ -116,7 +114,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igOpenPopup_ID(id, popupFlags);
         }
-        
+
         /// <summary>
         ///     Opens the popup on item click
         /// </summary>
@@ -125,7 +123,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             ImGuiPopupFlags popupFlags = (ImGuiPopupFlags) 1;
             ImGuiNative.igOpenPopupOnItemClick(Encoding.UTF8.GetBytes(""), popupFlags);
         }
-        
+
         /// <summary>
         ///     Opens the popup on item click using the specified str id
         /// </summary>
@@ -134,7 +132,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igOpenPopupOnItemClick(Encoding.UTF8.GetBytes(strId), 0);
         }
-        
+
         /// <summary>
         ///     Opens the popup on item click using the specified str id
         /// </summary>
@@ -144,7 +142,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igOpenPopupOnItemClick(Encoding.UTF8.GetBytes(strId), popupFlags);
         }
-        
+
         /// <summary>
         ///     Plots the histogram using the specified label
         /// </summary>
@@ -155,7 +153,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igPlotHistogram_FloatPtr(Encoding.UTF8.GetBytes(label), values, valuesCount, 0, null, float.MaxValue, float.MaxValue, new Vector2(), sizeof(float));
         }
-        
+
         /// <summary>
         ///     Plots the histogram using the specified label
         /// </summary>
@@ -167,7 +165,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igPlotHistogram_FloatPtr(Encoding.UTF8.GetBytes(label), values, valuesCount, valuesOffset, null, float.MaxValue, float.MaxValue, new Vector2(), sizeof(float));
         }
-        
+
         /// <summary>
         ///     Plots the histogram using the specified label
         /// </summary>
@@ -180,7 +178,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igPlotHistogram_FloatPtr(Encoding.UTF8.GetBytes(label), values, valuesCount, valuesOffset, Encoding.UTF8.GetBytes(overlayText), float.MaxValue, float.MaxValue, new Vector2(), sizeof(float));
         }
-        
+
         /// <summary>
         ///     Plots the histogram using the specified label
         /// </summary>
@@ -194,7 +192,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igPlotHistogram_FloatPtr(Encoding.UTF8.GetBytes(label), values, valuesCount, valuesOffset, Encoding.UTF8.GetBytes(overlayText), scaleMin, float.MaxValue, new Vector2(), sizeof(float));
         }
-        
+
         /// <summary>
         ///     Plots the histogram using the specified label
         /// </summary>
@@ -209,7 +207,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igPlotHistogram_FloatPtr(Encoding.UTF8.GetBytes(label), values, valuesCount, valuesOffset, Encoding.UTF8.GetBytes(overlayText), scaleMin, scaleMax, new Vector2(), sizeof(float));
         }
-        
+
         /// <summary>
         ///     Plots the histogram using the specified label
         /// </summary>
@@ -225,7 +223,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igPlotHistogram_FloatPtr(Encoding.UTF8.GetBytes(label), values, valuesCount, valuesOffset, Encoding.UTF8.GetBytes(overlayText), scaleMin, scaleMax, graphSize, sizeof(float));
         }
-        
+
         /// <summary>
         ///     Plots the histogram using the specified label
         /// </summary>
@@ -242,7 +240,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igPlotHistogram_FloatPtr(Encoding.UTF8.GetBytes(label), values, valuesCount, valuesOffset, Encoding.UTF8.GetBytes(overlayText), scaleMin, scaleMax, graphSize, stride);
         }
-        
+
         /// <summary>
         ///     Plots the lines using the specified label
         /// </summary>
@@ -253,7 +251,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igPlotLines_FloatPtr(Encoding.UTF8.GetBytes(label), values, valuesCount, 0, null, float.MaxValue, float.MaxValue, new Vector2(), sizeof(float));
         }
-        
+
         /// <summary>
         ///     Plots the lines using the specified label
         /// </summary>
@@ -265,7 +263,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igPlotLines_FloatPtr(Encoding.UTF8.GetBytes(label), values, valuesCount, valuesOffset, null, float.MaxValue, float.MaxValue, new Vector2(), sizeof(float));
         }
-        
+
         /// <summary>
         ///     Plots the lines using the specified label
         /// </summary>
@@ -278,7 +276,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igPlotLines_FloatPtr(Encoding.UTF8.GetBytes(label), values, valuesCount, valuesOffset, Encoding.UTF8.GetBytes(overlayText), float.MaxValue, float.MaxValue, new Vector2(), sizeof(float));
         }
-        
+
         /// <summary>
         ///     Plots the lines using the specified label
         /// </summary>
@@ -292,7 +290,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igPlotLines_FloatPtr(Encoding.UTF8.GetBytes(label), values, valuesCount, valuesOffset, Encoding.UTF8.GetBytes(overlayText), scaleMin, float.MaxValue, new Vector2(), sizeof(float));
         }
-        
+
         /// <summary>
         ///     Plots the lines using the specified label
         /// </summary>
@@ -307,7 +305,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igPlotLines_FloatPtr(Encoding.UTF8.GetBytes(label), values, valuesCount, valuesOffset, Encoding.UTF8.GetBytes(overlayText), scaleMin, scaleMax, new Vector2(), sizeof(float));
         }
-        
+
         /// <summary>
         ///     Plots the lines using the specified label
         /// </summary>
@@ -323,7 +321,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igPlotLines_FloatPtr(Encoding.UTF8.GetBytes(label), values, valuesCount, valuesOffset, Encoding.UTF8.GetBytes(overlayText), scaleMin, scaleMax, graphSize, sizeof(float));
         }
-        
+
         /// <summary>
         ///     Plots the lines using the specified label
         /// </summary>
@@ -340,7 +338,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igPlotLines_FloatPtr(Encoding.UTF8.GetBytes(label), values, valuesCount, valuesOffset, Encoding.UTF8.GetBytes(overlayText), scaleMin, scaleMax, graphSize, stride);
         }
-        
+
         /// <summary>
         ///     Pops the allow keyboard focus
         /// </summary>
@@ -348,7 +346,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igPopAllowKeyboardFocus();
         }
-        
+
         /// <summary>
         ///     Pops the button repeat
         /// </summary>
@@ -356,7 +354,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igPopButtonRepeat();
         }
-        
+
         /// <summary>
         ///     Pops the clip rect
         /// </summary>
@@ -364,7 +362,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igPopClipRect();
         }
-        
+
         /// <summary>
         ///     Pops the font
         /// </summary>
@@ -372,7 +370,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igPopFont();
         }
-        
+
         /// <summary>
         ///     Pops the id
         /// </summary>
@@ -380,7 +378,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igPopID();
         }
-        
+
         /// <summary>
         ///     Pops the item width
         /// </summary>
@@ -388,7 +386,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igPopItemWidth();
         }
-        
+
         /// <summary>
         ///     Pops the style color
         /// </summary>
@@ -397,7 +395,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             int count = 1;
             ImGuiNative.igPopStyleColor(count);
         }
-        
+
         /// <summary>
         ///     Pops the style color using the specified count
         /// </summary>
@@ -406,7 +404,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igPopStyleColor(count);
         }
-        
+
         /// <summary>
         ///     Pops the style var
         /// </summary>
@@ -415,7 +413,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             int count = 1;
             ImGuiNative.igPopStyleVar(count);
         }
-        
+
         /// <summary>
         ///     Pops the style var using the specified count
         /// </summary>
@@ -424,7 +422,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igPopStyleVar(count);
         }
-        
+
         /// <summary>
         ///     Pops the text wrap pos
         /// </summary>
@@ -432,7 +430,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igPopTextWrapPos();
         }
-        
+
         /// <summary>
         ///     Progresses the bar using the specified fraction
         /// </summary>
@@ -442,7 +440,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             Vector2 sizeArg = new Vector2(-float.MinValue, 0.0f);
             ImGuiNative.igProgressBar(fraction, sizeArg, null);
         }
-        
+
         /// <summary>
         ///     Progresses the bar using the specified fraction
         /// </summary>
@@ -452,7 +450,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igProgressBar(fraction, sizeArg, null);
         }
-        
+
         /// <summary>
         ///     Progresses the bar using the specified fraction
         /// </summary>
@@ -463,7 +461,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igProgressBar(fraction, sizeArg, Encoding.UTF8.GetBytes(overlay));
         }
-        
+
         /// <summary>
         ///     Pushes the allow keyboard focus using the specified allow keyboard focus
         /// </summary>
@@ -473,7 +471,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte nativeAllowKeyboardFocus = allowKeyboardFocus ? (byte) 1 : (byte) 0;
             ImGuiNative.igPushAllowKeyboardFocus(nativeAllowKeyboardFocus);
         }
-        
+
         /// <summary>
         ///     Pushes the button repeat using the specified repeat
         /// </summary>
@@ -483,7 +481,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte nativeRepeat = repeat ? (byte) 1 : (byte) 0;
             ImGuiNative.igPushButtonRepeat(nativeRepeat);
         }
-        
+
         /// <summary>
         ///     Pushes the clip rect using the specified clip rect min
         /// </summary>
@@ -495,7 +493,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte nativeIntersectWithCurrentClipRect = intersectWithCurrentClipRect ? (byte) 1 : (byte) 0;
             ImGuiNative.igPushClipRect(clipRectMin, clipRectMax, nativeIntersectWithCurrentClipRect);
         }
-        
+
         /// <summary>
         ///     Pushes the font using the specified font
         /// </summary>
@@ -504,7 +502,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igPushFont(font.NativePtr);
         }
-        
+
         /// <summary>
         ///     Pushes the id using the specified str id
         /// </summary>
@@ -513,7 +511,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igPushID_Str(Encoding.UTF8.GetBytes(strId));
         }
-        
+
         /// <summary>
         ///     Pushes the id using the specified ptr id
         /// </summary>
@@ -523,7 +521,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             IntPtr nativePtrId = ptrId;
             ImGuiNative.igPushID_Ptr(nativePtrId);
         }
-        
+
         /// <summary>
         ///     Pushes the id using the specified int id
         /// </summary>
@@ -532,7 +530,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igPushID_Int(intId);
         }
-        
+
         /// <summary>
         ///     Pushes the item width using the specified item width
         /// </summary>
@@ -541,7 +539,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igPushItemWidth(itemWidth);
         }
-        
+
         /// <summary>
         ///     Pushes the style color using the specified idx
         /// </summary>
@@ -551,7 +549,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igPushStyleColor_U32(idx, col);
         }
-        
+
         /// <summary>
         ///     Pushes the style color using the specified idx
         /// </summary>
@@ -561,7 +559,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igPushStyleColor_Vec4(idx, col);
         }
-        
+
         /// <summary>
         ///     Pushes the style var using the specified idx
         /// </summary>
@@ -571,7 +569,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igPushStyleVar_Float(idx, val);
         }
-        
+
         /// <summary>
         ///     Pushes the style var using the specified idx
         /// </summary>
@@ -581,7 +579,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igPushStyleVar_Vec2(idx, val);
         }
-        
+
         /// <summary>
         ///     Pushes the text wrap pos
         /// </summary>
@@ -590,7 +588,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             float wrapLocalPosX = 0.0f;
             ImGuiNative.igPushTextWrapPos(wrapLocalPosX);
         }
-        
+
         /// <summary>
         ///     Pushes the text wrap pos using the specified wrap local pos x
         /// </summary>
@@ -599,7 +597,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igPushTextWrapPos(wrapLocalPosX);
         }
-        
+
         /// <summary>
         ///     Describes whether radio button
         /// </summary>
@@ -609,10 +607,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool RadioButton(string label, bool active)
         {
             byte ret = ImGuiNative.igRadioButton_Bool(Encoding.UTF8.GetBytes(label), active);
-                
-                return ret != 0;
+
+            return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether radio button
         /// </summary>
@@ -623,10 +621,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool RadioButton(string label, ref int v, int vButton)
         {
             byte ret = ImGuiNative.igRadioButton_IntPtr(Encoding.UTF8.GetBytes(label), ref v, vButton);
-                
-                return ret != 0;
+
+            return ret != 0;
         }
-        
+
         /// <summary>
         ///     Renders
         /// </summary>
@@ -634,7 +632,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igRender();
         }
-        
+
         /// <summary>
         ///     Renders the platform windows default
         /// </summary>
@@ -644,7 +642,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             IntPtr rendererRenderArg = IntPtr.Zero;
             ImGuiNative.igRenderPlatformWindowsDefault(platformRenderArg, rendererRenderArg);
         }
-        
+
         /// <summary>
         ///     Renders the platform windows default using the specified platform render arg
         /// </summary>
@@ -655,7 +653,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             IntPtr rendererRenderArg = IntPtr.Zero;
             ImGuiNative.igRenderPlatformWindowsDefault(nativePlatformRenderArg, rendererRenderArg);
         }
-        
+
         /// <summary>
         ///     Renders the platform windows default using the specified platform render arg
         /// </summary>
@@ -667,7 +665,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             IntPtr nativeRendererRenderArg = rendererRenderArg;
             ImGuiNative.igRenderPlatformWindowsDefault(nativePlatformRenderArg, nativeRendererRenderArg);
         }
-        
+
         /// <summary>
         ///     Resets the mouse drag delta
         /// </summary>
@@ -676,7 +674,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             ImGuiMouseButton button = 0;
             ImGuiNative.igResetMouseDragDelta(button);
         }
-        
+
         /// <summary>
         ///     Resets the mouse drag delta using the specified button
         /// </summary>
@@ -685,7 +683,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igResetMouseDragDelta(button);
         }
-        
+
         /// <summary>
         ///     Sames the line
         /// </summary>
@@ -695,7 +693,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             float spacing = -1.0f;
             ImGuiNative.igSameLine(offsetFromStartX, spacing);
         }
-        
+
         /// <summary>
         ///     Sames the line using the specified offset from start x
         /// </summary>
@@ -705,7 +703,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             float spacing = -1.0f;
             ImGuiNative.igSameLine(offsetFromStartX, spacing);
         }
-        
+
         /// <summary>
         ///     Sames the line using the specified offset from start x
         /// </summary>
@@ -715,7 +713,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSameLine(offsetFromStartX, spacing);
         }
-        
+
         /// <summary>
         ///     Saves the ini settings to disk using the specified ini filename
         /// </summary>
@@ -724,26 +722,20 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSaveIniSettingsToDisk(Encoding.UTF8.GetBytes(iniFilename));
         }
-        
+
         /// <summary>
         ///     Saves the ini settings to memory
         /// </summary>
         /// <returns>The string</returns>
-        public static string SaveIniSettingsToMemory()
-        {
-            return Encoding.UTF8.GetString(ImGuiNative.igSaveIniSettingsToMemory(out _));
-        }
-        
+        public static string SaveIniSettingsToMemory() => Encoding.UTF8.GetString(ImGuiNative.igSaveIniSettingsToMemory(out _));
+
         /// <summary>
         ///     Saves the ini settings to memory using the specified out ini size
         /// </summary>
         /// <param name="outIniSize">The out ini size</param>
         /// <returns>The string</returns>
-        public static string SaveIniSettingsToMemory(out uint outIniSize)
-        {
-            return Encoding.UTF8.GetString(ImGuiNative.igSaveIniSettingsToMemory(out outIniSize));
-        }
-        
+        public static string SaveIniSettingsToMemory(out uint outIniSize) => Encoding.UTF8.GetString(ImGuiNative.igSaveIniSettingsToMemory(out outIniSize));
+
         /// <summary>
         ///     Describes whether selectable
         /// </summary>
@@ -752,10 +744,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool Selectable(string label)
         {
             byte ret = ImGuiNative.igSelectable_Bool(Encoding.UTF8.GetBytes(label), false, 0, new Vector2());
-            
+
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether selectable
         /// </summary>
@@ -767,7 +759,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igSelectable_Bool(Encoding.UTF8.GetBytes(label), selected, 0, new Vector2());
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether selectable
         /// </summary>
@@ -780,7 +772,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igSelectable_Bool(Encoding.UTF8.GetBytes(label), selected, flags, new Vector2());
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether selectable
         /// </summary>
@@ -794,7 +786,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igSelectable_Bool(Encoding.UTF8.GetBytes(label), selected, flags, size);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether selectable
         /// </summary>
@@ -803,10 +795,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool Selectable(string label, ref bool pSelected)
         {
-            byte ret = ImGuiNative.igSelectable_BoolPtr(Encoding.UTF8.GetBytes(label),  pSelected, 0, new Vector2());
+            byte ret = ImGuiNative.igSelectable_BoolPtr(Encoding.UTF8.GetBytes(label), pSelected, 0, new Vector2());
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether selectable
         /// </summary>
@@ -819,7 +811,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igSelectable_BoolPtr(Encoding.UTF8.GetBytes(label), pSelected, flags, new Vector2());
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether selectable
         /// </summary>
@@ -830,10 +822,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool Selectable(string label, ref bool pSelected, ImGuiSelectableFlags flags, Vector2 size)
         {
-            byte ret = ImGuiNative.igSelectable_BoolPtr(Encoding.UTF8.GetBytes(label),  pSelected, flags, size);
+            byte ret = ImGuiNative.igSelectable_BoolPtr(Encoding.UTF8.GetBytes(label), pSelected, flags, size);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Separators
         /// </summary>
@@ -841,7 +833,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSeparator();
         }
-        
+
         /// <summary>
         ///     Sets the allocator functions using the specified alloc func
         /// </summary>
@@ -852,7 +844,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             IntPtr userData = IntPtr.Zero;
             ImGuiNative.igSetAllocatorFunctions(allocFunc, freeFunc, userData);
         }
-        
+
         /// <summary>
         ///     Sets the allocator functions using the specified alloc func
         /// </summary>
@@ -864,7 +856,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             IntPtr nativeUserData = userData;
             ImGuiNative.igSetAllocatorFunctions(allocFunc, freeFunc, nativeUserData);
         }
-        
+
         /// <summary>
         ///     Sets the clipboard text using the specified text
         /// </summary>
@@ -873,7 +865,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSetClipboardText(Encoding.UTF8.GetBytes(text));
         }
-        
+
         /// <summary>
         ///     Sets the color edit options using the specified flags
         /// </summary>
@@ -882,7 +874,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSetColorEditOptions(flags);
         }
-        
+
         /// <summary>
         ///     Sets the column offset using the specified column index
         /// </summary>
@@ -892,7 +884,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSetColumnOffset(columnIndex, offsetX);
         }
-        
+
         /// <summary>
         ///     Sets the column width using the specified column index
         /// </summary>
@@ -902,7 +894,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSetColumnWidth(columnIndex, width);
         }
-        
+
         /// <summary>
         ///     Sets the current context using the specified ctx
         /// </summary>
@@ -911,7 +903,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSetCurrentContext(ctx);
         }
-        
+
         /// <summary>
         ///     Sets the cursor pos using the specified local pos
         /// </summary>
@@ -920,7 +912,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSetCursorPos(localPos);
         }
-        
+
         /// <summary>
         ///     Sets the cursor pos x using the specified local x
         /// </summary>
@@ -929,7 +921,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSetCursorPosX(localX);
         }
-        
+
         /// <summary>
         ///     Sets the cursor pos y using the specified local y
         /// </summary>
@@ -938,7 +930,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSetCursorPosY(localY);
         }
-        
+
         /// <summary>
         ///     Sets the cursor screen pos using the specified pos
         /// </summary>
@@ -947,7 +939,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSetCursorScreenPos(pos);
         }
-        
+
         /// <summary>
         ///     Describes whether set drag drop payload
         /// </summary>
@@ -958,10 +950,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool SetDragDropPayload(string type, IntPtr data, uint sz)
         {
             byte ret = ImGuiNative.igSetDragDropPayload(Encoding.UTF8.GetBytes(type), data, sz, ImGuiCond.None);
-            
+
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether set drag drop payload
         /// </summary>
@@ -971,11 +963,11 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="cond">The cond</param>
         /// <returns>The bool</returns>
         public static bool SetDragDropPayload(string type, IntPtr data, uint sz, ImGuiCond cond)
-        { 
+        {
             byte ret = ImGuiNative.igSetDragDropPayload(Encoding.UTF8.GetBytes(type), data, sz, cond);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Sets the item allow overlap
         /// </summary>
@@ -983,7 +975,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSetItemAllowOverlap();
         }
-        
+
         /// <summary>
         ///     Sets the item default focus
         /// </summary>
@@ -991,7 +983,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSetItemDefaultFocus();
         }
-        
+
         /// <summary>
         ///     Sets the keyboard focus here
         /// </summary>
@@ -1000,7 +992,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             int offset = 0;
             ImGuiNative.igSetKeyboardFocusHere(offset);
         }
-        
+
         /// <summary>
         ///     Sets the keyboard focus here using the specified offset
         /// </summary>
@@ -1009,7 +1001,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSetKeyboardFocusHere(offset);
         }
-        
+
         /// <summary>
         ///     Sets the mouse cursor using the specified cursor type
         /// </summary>
@@ -1018,7 +1010,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSetMouseCursor(cursorType);
         }
-        
+
         /// <summary>
         ///     Sets the next frame want capture keyboard using the specified want capture keyboard
         /// </summary>
@@ -1028,7 +1020,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte nativeWantCaptureKeyboard = wantCaptureKeyboard ? (byte) 1 : (byte) 0;
             ImGuiNative.igSetNextFrameWantCaptureKeyboard(nativeWantCaptureKeyboard);
         }
-        
+
         /// <summary>
         ///     Sets the next frame want capture mouse using the specified want capture mouse
         /// </summary>
@@ -1038,7 +1030,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte nativeWantCaptureMouse = wantCaptureMouse ? (byte) 1 : (byte) 0;
             ImGuiNative.igSetNextFrameWantCaptureMouse(nativeWantCaptureMouse);
         }
-        
+
         /// <summary>
         ///     Sets the next item open using the specified is open
         /// </summary>
@@ -1049,7 +1041,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             ImGuiCond cond = 0;
             ImGuiNative.igSetNextItemOpen(nativeIsOpen, cond);
         }
-        
+
         /// <summary>
         ///     Sets the next item open using the specified is open
         /// </summary>
@@ -1060,7 +1052,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte nativeIsOpen = isOpen ? (byte) 1 : (byte) 0;
             ImGuiNative.igSetNextItemOpen(nativeIsOpen, cond);
         }
-        
+
         /// <summary>
         ///     Sets the next item width using the specified item width
         /// </summary>
@@ -1069,7 +1061,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSetNextItemWidth(itemWidth);
         }
-        
+
         /// <summary>
         ///     Sets the next window bg alpha using the specified alpha
         /// </summary>
@@ -1078,7 +1070,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSetNextWindowBgAlpha(alpha);
         }
-        
+
         /// <summary>
         ///     Sets the next window using the specified window class
         /// </summary>
@@ -1087,7 +1079,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSetNextWindowClass(windowClass);
         }
-        
+
         /// <summary>
         ///     Sets the next window collapsed using the specified collapsed
         /// </summary>
@@ -1098,7 +1090,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             ImGuiCond cond = 0;
             ImGuiNative.igSetNextWindowCollapsed(nativeCollapsed, cond);
         }
-        
+
         /// <summary>
         ///     Sets the next window collapsed using the specified collapsed
         /// </summary>
@@ -1109,7 +1101,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte nativeCollapsed = collapsed ? (byte) 1 : (byte) 0;
             ImGuiNative.igSetNextWindowCollapsed(nativeCollapsed, cond);
         }
-        
+
         /// <summary>
         ///     Sets the next window content size using the specified size
         /// </summary>
@@ -1118,7 +1110,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSetNextWindowContentSize(size);
         }
-        
+
         /// <summary>
         ///     Sets the next window dock id using the specified dock id
         /// </summary>
@@ -1128,7 +1120,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             ImGuiCond cond = 0;
             ImGuiNative.igSetNextWindowDockID(dockId, cond);
         }
-        
+
         /// <summary>
         ///     Sets the next window dock id using the specified dock id
         /// </summary>
@@ -1138,7 +1130,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSetNextWindowDockID(dockId, cond);
         }
-        
+
         /// <summary>
         ///     Sets the next window focus
         /// </summary>
@@ -1146,7 +1138,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSetNextWindowFocus();
         }
-        
+
         /// <summary>
         ///     Sets the next window pos using the specified pos
         /// </summary>
@@ -1157,7 +1149,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             Vector2 pivot = new Vector2();
             ImGuiNative.igSetNextWindowPos(pos, cond, pivot);
         }
-        
+
         /// <summary>
         ///     Sets the next window pos using the specified pos
         /// </summary>
@@ -1168,7 +1160,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             Vector2 pivot = new Vector2();
             ImGuiNative.igSetNextWindowPos(pos, cond, pivot);
         }
-        
+
         /// <summary>
         ///     Sets the next window pos using the specified pos
         /// </summary>
@@ -1179,7 +1171,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSetNextWindowPos(pos, cond, pivot);
         }
-        
+
         /// <summary>
         ///     Sets the next window scroll using the specified scroll
         /// </summary>
@@ -1188,7 +1180,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSetNextWindowScroll(scroll);
         }
-        
+
         /// <summary>
         ///     Sets the next window size using the specified size
         /// </summary>
@@ -1198,7 +1190,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             ImGuiCond cond = 0;
             ImGuiNative.igSetNextWindowSize(size, cond);
         }
-        
+
         /// <summary>
         ///     Sets the next window size using the specified size
         /// </summary>
@@ -1208,7 +1200,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSetNextWindowSize(size, cond);
         }
-        
+
         /// <summary>
         ///     Sets the next window size constraints using the specified size min
         /// </summary>
@@ -1220,7 +1212,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             IntPtr customCallbackData = IntPtr.Zero;
             ImGuiNative.igSetNextWindowSizeConstraints(sizeMin, sizeMax, customCallback, customCallbackData);
         }
-        
+
         /// <summary>
         ///     Sets the next window size constraints using the specified size min
         /// </summary>
@@ -1232,7 +1224,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             IntPtr customCallbackData = IntPtr.Zero;
             ImGuiNative.igSetNextWindowSizeConstraints(sizeMin, sizeMax, customCallback, customCallbackData);
         }
-        
+
         /// <summary>
         ///     Sets the next window size constraints using the specified size min
         /// </summary>
@@ -1245,7 +1237,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             IntPtr nativeCustomCallbackData = customCallbackData;
             ImGuiNative.igSetNextWindowSizeConstraints(sizeMin, sizeMax, customCallback, nativeCustomCallbackData);
         }
-        
+
         /// <summary>
         ///     Sets the next window viewport using the specified viewport id
         /// </summary>
@@ -1254,7 +1246,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSetNextWindowViewport(viewportId);
         }
-        
+
         /// <summary>
         ///     Sets the scroll from pos x using the specified local x
         /// </summary>
@@ -1264,7 +1256,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             float centerXRatio = 0.5f;
             ImGuiNative.igSetScrollFromPosX_Float(localX, centerXRatio);
         }
-        
+
         /// <summary>
         ///     Sets the scroll from pos x using the specified local x
         /// </summary>
@@ -1274,7 +1266,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSetScrollFromPosX_Float(localX, centerXRatio);
         }
-        
+
         /// <summary>
         ///     Sets the scroll from pos y using the specified local y
         /// </summary>
@@ -1284,7 +1276,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             float centerYRatio = 0.5f;
             ImGuiNative.igSetScrollFromPosY_Float(localY, centerYRatio);
         }
-        
+
         /// <summary>
         ///     Sets the scroll from pos y using the specified local y
         /// </summary>
@@ -1294,7 +1286,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSetScrollFromPosY_Float(localY, centerYRatio);
         }
-        
+
         /// <summary>
         ///     Sets the scroll here x
         /// </summary>
@@ -1303,7 +1295,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             float centerXRatio = 0.5f;
             ImGuiNative.igSetScrollHereX(centerXRatio);
         }
-        
+
         /// <summary>
         ///     Sets the scroll here x using the specified center x ratio
         /// </summary>
@@ -1312,7 +1304,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSetScrollHereX(centerXRatio);
         }
-        
+
         /// <summary>
         ///     Sets the scroll here y
         /// </summary>
@@ -1321,7 +1313,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             float centerYRatio = 0.5f;
             ImGuiNative.igSetScrollHereY(centerYRatio);
         }
-        
+
         /// <summary>
         ///     Sets the scroll here y using the specified center y ratio
         /// </summary>
@@ -1330,7 +1322,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSetScrollHereY(centerYRatio);
         }
-        
+
         /// <summary>
         ///     Sets the scroll x using the specified scroll x
         /// </summary>
@@ -1339,7 +1331,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSetScrollX_Float(scrollX);
         }
-        
+
         /// <summary>
         ///     Sets the scroll y using the specified scroll y
         /// </summary>
@@ -1348,7 +1340,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSetScrollY_Float(scrollY);
         }
-        
+
         /// <summary>
         ///     Sets the state storage using the specified storage
         /// </summary>
@@ -1357,7 +1349,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSetStateStorage(storage);
         }
-        
+
         /// <summary>
         ///     Sets the tab item closed using the specified tab or docked window label
         /// </summary>
@@ -1366,7 +1358,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSetTabItemClosed(Encoding.UTF8.GetBytes(tabOrDockedWindowLabel));
         }
-        
+
         /// <summary>
         ///     Sets the tooltip using the specified fmt
         /// </summary>
@@ -1375,7 +1367,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSetTooltip(Encoding.UTF8.GetBytes(fmt));
         }
-        
+
         /// <summary>
         ///     Sets the window collapsed using the specified collapsed
         /// </summary>
@@ -1386,7 +1378,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             ImGuiCond cond = 0;
             ImGuiNative.igSetWindowCollapsed_Bool(nativeCollapsed, cond);
         }
-        
+
         /// <summary>
         ///     Sets the window collapsed using the specified collapsed
         /// </summary>
@@ -1397,7 +1389,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte nativeCollapsed = collapsed ? (byte) 1 : (byte) 0;
             ImGuiNative.igSetWindowCollapsed_Bool(nativeCollapsed, cond);
         }
-        
+
         /// <summary>
         ///     Sets the window collapsed using the specified name
         /// </summary>
@@ -1407,7 +1399,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSetWindowCollapsed_Str(Encoding.UTF8.GetBytes(name), collapsed, ImGuiCond.None);
         }
-        
+
         /// <summary>
         ///     Sets the window collapsed using the specified name
         /// </summary>
@@ -1418,7 +1410,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSetWindowCollapsed_Str(Encoding.UTF8.GetBytes(name), collapsed, cond);
         }
-        
+
         /// <summary>
         ///     Sets the window focus
         /// </summary>
@@ -1426,7 +1418,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSetWindowFocus_Nil();
         }
-        
+
         /// <summary>
         ///     Sets the window focus using the specified name
         /// </summary>
@@ -1435,7 +1427,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSetWindowFocus_Str(Encoding.UTF8.GetBytes(name));
         }
-        
+
         /// <summary>
         ///     Sets the window font scale using the specified scale
         /// </summary>
@@ -1444,7 +1436,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSetWindowFontScale(scale);
         }
-        
+
         /// <summary>
         ///     Sets the window pos using the specified pos
         /// </summary>
@@ -1454,7 +1446,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             ImGuiCond cond = 0;
             ImGuiNative.igSetWindowPos_Vec2(pos, cond);
         }
-        
+
         /// <summary>
         ///     Sets the window pos using the specified pos
         /// </summary>
@@ -1464,7 +1456,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSetWindowPos_Vec2(pos, cond);
         }
-        
+
         /// <summary>
         ///     Sets the window pos using the specified name
         /// </summary>
@@ -1474,7 +1466,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSetWindowPos_Str(Encoding.UTF8.GetBytes(name), pos, ImGuiCond.None);
         }
-        
+
         /// <summary>
         ///     Sets the window pos using the specified name
         /// </summary>
@@ -1485,7 +1477,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSetWindowPos_Str(Encoding.UTF8.GetBytes(name), pos, cond);
         }
-        
+
         /// <summary>
         ///     Sets the window size using the specified size
         /// </summary>
@@ -1495,7 +1487,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             ImGuiCond cond = 0;
             ImGuiNative.igSetWindowSize_Vec2(size, cond);
         }
-        
+
         /// <summary>
         ///     Sets the window size using the specified size
         /// </summary>
@@ -1505,7 +1497,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSetWindowSize_Vec2(size, cond);
         }
-        
+
         /// <summary>
         ///     Sets the window size using the specified name
         /// </summary>
@@ -1515,7 +1507,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSetWindowSize_Str(Encoding.UTF8.GetBytes(name), size, ImGuiCond.None);
         }
-        
+
         /// <summary>
         ///     Sets the window size using the specified name
         /// </summary>
@@ -1526,6 +1518,5 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igSetWindowSize_Str(Encoding.UTF8.GetBytes(name), size, cond);
         }
-        
     }
 }

@@ -47,17 +47,17 @@ namespace Alis.Core.Physic.Test.Dynamics.Solver
         {
             // Arrange
             SolverData solverData = new SolverData();
-            
+
             // Act
             TimeStep timeStep = new TimeStep();
             solverData.Step = timeStep;
-            
+
             List<Position> positions = new List<Position>();
             solverData.Positions = positions;
-            
+
             List<Velocity> velocities = new List<Velocity>();
             solverData.Velocities = velocities;
-            
+
             // Assert
             Assert.Equal(timeStep, solverData.Step);
             Assert.Equal(positions, solverData.Positions);

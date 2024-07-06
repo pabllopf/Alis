@@ -53,10 +53,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             float maxForce = 1.0f;
             float maxTorque = 1.0f;
             float correctionFactor = 0.3f;
-            
+
             // Act
             MotorJoint motorJoint = new MotorJoint(bodyA, bodyB, JointType.Motor, false, linearOffset, angularOffset, maxForce, maxTorque, correctionFactor);
-            
+
             // Assert
             Assert.Equal(bodyA, motorJoint.BodyA);
             Assert.Equal(bodyB, motorJoint.BodyB);
@@ -66,7 +66,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.Equal(maxTorque, motorJoint.Torque);
             Assert.Equal(correctionFactor, motorJoint.CorrectionFactor);
         }
-        
+
         /// <summary>
         ///     Tests that motor joint world anchor a test
         /// </summary>
@@ -77,14 +77,14 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Body bodyA = new Body(new Vector2(0, 0), new Vector2(0, 0));
             Body bodyB = new Body(new Vector2(1, 1), new Vector2(1, 1));
             MotorJoint motorJoint = new MotorJoint(bodyA, bodyB, true);
-            
+
             // Act
             Vector2 worldAnchorA = motorJoint.WorldAnchorA;
-            
+
             // Assert
             Assert.Equal(bodyA.Position, worldAnchorA);
         }
-        
+
         /// <summary>
         ///     Tests that motor joint world anchor b test
         /// </summary>
@@ -95,14 +95,14 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Body bodyA = new Body(new Vector2(0, 0), new Vector2(0, 0));
             Body bodyB = new Body(new Vector2(1, 1), new Vector2(1, 1));
             MotorJoint motorJoint = new MotorJoint(bodyA, bodyB, true);
-            
+
             // Act
             Vector2 worldAnchorB = motorJoint.WorldAnchorB;
-            
+
             // Assert
             Assert.Equal(bodyB.Position, worldAnchorB);
         }
-        
+
         /// <summary>
         ///     Tests that motor joint force test
         /// </summary>
@@ -114,14 +114,14 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Body bodyB = new Body(new Vector2(1, 1), new Vector2(1, 1));
             float maxForce = 1.0f;
             MotorJoint motorJoint = new MotorJoint(bodyA, bodyB, JointType.Motor, false, new Vector2(0.5f, 0.5f), 0.0f, maxForce);
-            
+
             // Act
             float force = motorJoint.Force;
-            
+
             // Assert
             Assert.Equal(maxForce, force);
         }
-        
+
         /// <summary>
         ///     Tests that motor joint torque test
         /// </summary>
@@ -133,14 +133,14 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Body bodyB = new Body(new Vector2(1, 1), new Vector2(1, 1));
             float maxTorque = 1.0f;
             MotorJoint motorJoint = new MotorJoint(bodyA, bodyB, JointType.Motor, false, new Vector2(0.5f, 0.5f), 0.0f, 1.0f, maxTorque);
-            
+
             // Act
             float torque = motorJoint.Torque;
-            
+
             // Assert
             Assert.Equal(maxTorque, torque);
         }
-        
+
         /// <summary>
         ///     Tests that motor joint correction factor test
         /// </summary>
@@ -152,10 +152,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Body bodyB = new Body(new Vector2(1, 1), new Vector2(1, 1));
             float correctionFactor = 0.3f;
             MotorJoint motorJoint = new MotorJoint(bodyA, bodyB, JointType.Motor, false, new Vector2(0.5f, 0.5f), 0.0f, 1.0f, 1.0f, correctionFactor);
-            
+
             // Act
             float factor = motorJoint.CorrectionFactor;
-            
+
             // Assert
             Assert.Equal(correctionFactor, factor);
         }

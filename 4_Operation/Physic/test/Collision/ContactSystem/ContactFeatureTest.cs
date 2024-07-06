@@ -49,7 +49,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
             ContactManager contactManager = new ContactManager(
                 new BroadPhaseImplementation()
             );
-            
+
             // Arrange
             Vector2 position = new Vector2(1, 2);
             Vector2 linearVelocity = new Vector2(0, 1);
@@ -57,16 +57,16 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
                 position,
                 linearVelocity
             );
-            
+
             float rotation = 1.0f;
-            
+
             // Act
             body.SetTransform(position, rotation);
-            
+
             // Assert
             Assert.NotEqual(new Vector2(0, 0), body.Position);
         }
-        
+
         /// <summary>
         ///     Tests that test apply force
         /// </summary>
@@ -84,14 +84,14 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
             );
             Vector2 force = new Vector2(1, 1);
             Vector2 point = new Vector2(1, 1);
-            
+
             // Act
             body.ApplyForce(force, point);
-            
+
             // Assert
             Assert.Equal(force, body.Force);
         }
-        
+
         /// <summary>
         ///     Tests that test apply torque
         /// </summary>
@@ -108,14 +108,14 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
                 BodyType.Dynamic
             );
             float torque = 1.0f;
-            
+
             // Act
             body.ApplyTorque(torque);
-            
+
             // Assert
             Assert.Equal(torque, body.Torque);
         }
-        
+
         /// <summary>
         ///     Tests that test apply linear impulse
         /// </summary>
@@ -131,14 +131,14 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
                 BodyType.Dynamic
             );
             Vector2 impulse = new Vector2(1, 1);
-            
+
             // Act
             body.ApplyLinearImpulse(impulse);
-            
+
             // Assert
             Assert.Equal(body.InvMass * impulse, body.LinearVelocity);
         }
-        
+
         /// <summary>
         ///     Tests that test apply angular impulse
         /// </summary>
@@ -155,14 +155,14 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
                 BodyType.Dynamic
             );
             float impulse = 1.0f;
-            
+
             // Act
             body.ApplyAngularImpulse(impulse);
-            
+
             // Assert
             Assert.Equal(body.InvI * impulse, body.AngularVelocity);
         }
-        
+
         /// <summary>
         ///     Tests that test index a property
         /// </summary>
@@ -172,14 +172,14 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
             // Arrange
             ContactFeature contactFeature = new ContactFeature();
             byte indexA = 1;
-            
+
             // Act
             contactFeature.IndexA = indexA;
-            
+
             // Assert
             Assert.Equal(indexA, contactFeature.IndexA);
         }
-        
+
         /// <summary>
         ///     Tests that test index b property
         /// </summary>
@@ -189,14 +189,14 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
             // Arrange
             ContactFeature contactFeature = new ContactFeature();
             byte indexB = 1;
-            
+
             // Act
             contactFeature.IndexB = indexB;
-            
+
             // Assert
             Assert.Equal(indexB, contactFeature.IndexB);
         }
-        
+
         /// <summary>
         ///     Tests that test type a property
         /// </summary>
@@ -206,14 +206,14 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
             // Arrange
             ContactFeature contactFeature = new ContactFeature();
             ContactFeatureType typeA = ContactFeatureType.Face;
-            
+
             // Act
             contactFeature.TypeA = typeA;
-            
+
             // Assert
             Assert.Equal(typeA, contactFeature.TypeA);
         }
-        
+
         /// <summary>
         ///     Tests that test type b property
         /// </summary>
@@ -223,10 +223,10 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
             // Arrange
             ContactFeature contactFeature = new ContactFeature();
             ContactFeatureType typeB = ContactFeatureType.Face;
-            
+
             // Act
             contactFeature.TypeB = typeB;
-            
+
             // Assert
             Assert.Equal(typeB, contactFeature.TypeB);
         }

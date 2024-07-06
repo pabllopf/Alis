@@ -55,15 +55,15 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Vector2 localAnchorB = new Vector2(1.5f, 1.5f);
             float maxForce = 0.0f;
             float maxTorque = 0.0f;
-            
+
             // Act
             FrictionJoint frictionJoint = new FrictionJoint(bodyA, bodyB, JointType.Friction, false, localAnchorA, localAnchorB, maxForce, maxTorque);
-            
+
             // Assert
             Assert.Equal(bodyA, frictionJoint.BodyA);
             Assert.Equal(bodyB, frictionJoint.BodyB);
         }
-        
+
         /// <summary>
         ///     Tests that friction joint world anchor a test
         /// </summary>
@@ -78,14 +78,14 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             float maxForce = 0.0f;
             float maxTorque = 0.0f;
             FrictionJoint frictionJoint = new FrictionJoint(bodyA, bodyB, JointType.Friction, false, localAnchorA, localAnchorB, maxForce, maxTorque);
-            
+
             // Act
             Vector2 worldAnchorA = frictionJoint.WorldAnchorA;
-            
+
             // Assert
             Assert.Equal(bodyA.GetWorldPoint(localAnchorA), worldAnchorA);
         }
-        
+
         /// <summary>
         ///     Tests that friction joint world anchor b test
         /// </summary>
@@ -100,10 +100,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             float maxForce = 0.0f;
             float maxTorque = 0.0f;
             FrictionJoint frictionJoint = new FrictionJoint(bodyA, bodyB, JointType.Friction, false, localAnchorA, localAnchorB, maxForce, maxTorque);
-            
+
             // Act
             Vector2 worldAnchorB = frictionJoint.WorldAnchorB;
-            
+
             // Assert
             Assert.Equal(bodyB.GetWorldPoint(localAnchorB), worldAnchorB);
         }

@@ -55,17 +55,17 @@ namespace Alis.Core.Physic.Test.Collision.TOI
                 A0 = 0.5f,
                 A = 1.0f
             };
-            
+
             // Act
             sweep.Advance(0.75f);
-            
+
             // Assert
             Assert.Equal(0.75f, sweep.Alpha0);
             Assert.Equal(1.5f, sweep.C0.X);
             Assert.Equal(1.5f, sweep.C0.Y);
             Assert.Equal(0.75f, sweep.A0);
         }
-        
+
         /// <summary>
         ///     Tests that test get transform
         /// </summary>
@@ -81,16 +81,16 @@ namespace Alis.Core.Physic.Test.Collision.TOI
                 A = 1.0f,
                 LocalCenter = new Vector2(0.5f, 0.5f)
             };
-            
+
             // Act
             sweep.GetTransform(out Transform transform, 0.5f);
-            
+
             // Assert
             Assert.Equal(1.47f, transform.Position.X, 0.1f);
             Assert.Equal(0.79f, transform.Position.Y, 0.1f);
             Assert.Equal(0.75f, transform.Rotation.GetAngle());
         }
-        
+
         /// <summary>
         ///     Tests that test normalize
         /// </summary>
@@ -103,10 +103,10 @@ namespace Alis.Core.Physic.Test.Collision.TOI
                 A0 = 7 * (float) Math.PI, // 3.5 full rotations
                 A = 8 * (float) Math.PI // 4 full rotations
             };
-            
+
             // Act
             sweep.Normalize();
-            
+
             // Assert
             Assert.Equal((float) Math.PI, sweep.A0, 0.1f);
             Assert.Equal(6.28f, sweep.A, 0.1f);

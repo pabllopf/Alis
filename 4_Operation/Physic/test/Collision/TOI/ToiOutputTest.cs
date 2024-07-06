@@ -49,11 +49,11 @@ namespace Alis.Core.Physic.Test.Collision.TOI
                 // Act
                 State = ToiOutputState.Failed
             };
-            
+
             // Assert
             Assert.Equal(ToiOutputState.Failed, toiOutput.State);
         }
-        
+
         /// <summary>
         ///     Tests that test toi output property property
         /// </summary>
@@ -66,7 +66,7 @@ namespace Alis.Core.Physic.Test.Collision.TOI
                 // Act
                 Property = 0.5f
             };
-            
+
             // Assert
             Assert.Equal(0.5f, toiOutput.Property);
         }

@@ -33,12 +33,12 @@ using Xunit;
 namespace Alis.Core.Network.Test
 {
     /// <summary>
-    /// The pong event args test class
+    ///     The pong event args test class
     /// </summary>
     public class PongEventArgsTest
     {
         /// <summary>
-        /// Tests that pong event args constructor
+        ///     Tests that pong event args constructor
         /// </summary>
         [Fact]
         public void PongEventArgs_Constructor()
@@ -47,9 +47,9 @@ namespace Alis.Core.Network.Test
             PongEventArgs pongEventArgs = new PongEventArgs(payload);
             Assert.NotNull(pongEventArgs);
         }
-        
+
         /// <summary>
-        /// Tests that pong event args payload
+        ///     Tests that pong event args payload
         /// </summary>
         [Fact]
         public void PongEventArgs_Payload()

@@ -39,12 +39,12 @@ namespace Alis.Core.Ecs.System.Setting.Audio
     /// </summary>
     /// <seealso cref="IAudioSetting" />
     /// <seealso cref="IBuilder{AudioSettingBuilder}" />
-    public class AudioSetting : 
+    public class AudioSetting :
         IAudioSetting,
         IBuilder<AudioSettingBuilder>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="AudioSetting"/> class
+        ///     Initializes a new instance of the <see cref="AudioSetting" /> class
         /// </summary>
         [ExcludeFromCodeCoverage]
         public AudioSetting()
@@ -52,9 +52,9 @@ namespace Alis.Core.Ecs.System.Setting.Audio
             Volume = 100;
             Mute = false;
         }
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="AudioSetting"/> class
+        ///     Initializes a new instance of the <see cref="AudioSetting" /> class
         /// </summary>
         /// <param name="volume">The volume</param>
         /// <param name="mute">The mute</param>
@@ -65,19 +65,19 @@ namespace Alis.Core.Ecs.System.Setting.Audio
             Volume = volume;
             Mute = mute;
         }
-        
+
         /// <summary>
-        /// Gets or sets the value of the volume
+        ///     Gets or sets the value of the volume
         /// </summary>
         [JsonPropertyName("_Volume_")]
         public int Volume { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the mute
+        ///     Gets or sets the value of the mute
         /// </summary>
         [JsonPropertyName("_Mute_")]
         public bool Mute { get; set; }
-        
+
         /// <summary>
         ///     Builders this instance
         /// </summary>

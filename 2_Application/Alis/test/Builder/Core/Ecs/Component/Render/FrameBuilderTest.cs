@@ -34,45 +34,45 @@ using Xunit;
 namespace Alis.Test.Builder.Core.Ecs.Component.Render
 {
     /// <summary>
-    /// The frame builder test class
+    ///     The frame builder test class
     /// </summary>
     public class FrameBuilderTest
     {
         /// <summary>
-        /// Tests that frame builder default constructor valid input
+        ///     Tests that frame builder default constructor valid input
         /// </summary>
         [Fact]
         public void FrameBuilder_DefaultConstructor_ValidInput()
         {
             FrameBuilder frameBuilder = new FrameBuilder();
-            
+
             Assert.NotNull(frameBuilder);
         }
-        
+
         /// <summary>
-        /// Tests that build valid input
+        ///     Tests that build valid input
         /// </summary>
         [Fact]
         public void Build_ValidInput()
         {
             FrameBuilder frameBuilder = new FrameBuilder();
-            
+
             Frame frame = frameBuilder.Build();
-            
+
             Assert.NotNull(frame);
         }
-        
+
         /// <summary>
-        /// Tests that file path valid input
+        ///     Tests that file path valid input
         /// </summary>
         [Fact]
         public void FilePath_ValidInput()
         {
             FrameBuilder frameBuilder = new FrameBuilder();
             string filePath = "testFilePath";
-            
+
             frameBuilder.FilePath(filePath);
-            
+
             Assert.Equal(filePath, frameBuilder.Build().NameFile);
         }
     }

@@ -34,7 +34,7 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Extension.Graphic.ImGui.Native
 {
     /// <summary>
-    /// The im gui class
+    ///     The im gui class
     /// </summary>
     public static partial class ImGui
     {
@@ -69,10 +69,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         ///     Creates the context
         /// </summary>
         /// <returns>The ret</returns>
-        public static IntPtr CreateContext()
-        {
-            return ImGuiNative.igCreateContext(new IntPtr());
-        }
+        public static IntPtr CreateContext() => ImGuiNative.igCreateContext(new IntPtr());
 
         /// <summary>
         ///     Creates the context using the specified shared font atlas
@@ -211,7 +208,8 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <param name="viewport">The viewport</param>
         /// <returns>The ret</returns>
         public static uint DockSpaceOverViewport(ImGuiViewportPtr viewport)
-        { ;
+        {
+            ;
             ImGuiDockNodeFlags flags = 0;
             ImGuiWindowClass windowClass = new ImGuiWindowClass();
             uint ret = ImGuiNative.igDockSpaceOverViewport(viewport.NativePtr, flags, windowClass);
@@ -617,7 +615,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool DragFloatRange2(string label, ref float vCurrentMin, ref float vCurrentMax, float vSpeed)
         {
             byte[] formatMax = Encoding.UTF8.GetBytes("");
-            byte ret = ImGuiNative.igDragFloatRange2(Encoding.UTF8.GetBytes(label), ref vCurrentMin, ref vCurrentMax, vSpeed, 0.0f, 0, null,  formatMax, ImGuiSliderFlags.None);
+            byte ret = ImGuiNative.igDragFloatRange2(Encoding.UTF8.GetBytes(label), ref vCurrentMin, ref vCurrentMax, vSpeed, 0.0f, 0, null, formatMax, ImGuiSliderFlags.None);
             return ret != 0;
         }
 

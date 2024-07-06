@@ -26,6 +26,8 @@
 //  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
+
+using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Dynamics;
@@ -76,16 +78,16 @@ namespace Alis.Core.Physic.Figure
         {
             ValidateWidth(width);
             ValidateHeight(height);
-            
+
             Vertices rectangleVertices = Polygon.CreateRectangle(width / 2, height / 2);
-            
+
             ValidateVertices(rectangleVertices);
-            
+
             AddFixture(new PolygonShape(rectangleVertices, 1));
         }
-        
+
         /// <summary>
-        /// Validates the width using the specified width
+        ///     Validates the width using the specified width
         /// </summary>
         /// <param name="width">The width</param>
         /// <exception cref="System.ArgumentOutOfRangeException">Width must be more than 0</exception>
@@ -93,12 +95,12 @@ namespace Alis.Core.Physic.Figure
         {
             if (width <= 0)
             {
-                throw new System.ArgumentOutOfRangeException(nameof(width), @"Width must be more than 0");
+                throw new ArgumentOutOfRangeException(nameof(width), @"Width must be more than 0");
             }
         }
-        
+
         /// <summary>
-        /// Validates the height using the specified height
+        ///     Validates the height using the specified height
         /// </summary>
         /// <param name="height">The height</param>
         /// <exception cref="System.ArgumentOutOfRangeException">Height must be more than 0</exception>
@@ -106,12 +108,12 @@ namespace Alis.Core.Physic.Figure
         {
             if (height <= 0)
             {
-                throw new System.ArgumentOutOfRangeException(nameof(height), @"Height must be more than 0");
+                throw new ArgumentOutOfRangeException(nameof(height), @"Height must be more than 0");
             }
         }
-        
+
         /// <summary>
-        /// Validates the vertices using the specified vertices
+        ///     Validates the vertices using the specified vertices
         /// </summary>
         /// <param name="vertices">The vertices</param>
         /// <exception cref="System.ArgumentOutOfRangeException">Too few points to be a polygon</exception>
@@ -119,7 +121,7 @@ namespace Alis.Core.Physic.Figure
         {
             if (vertices.Count <= 1)
             {
-                throw new System.ArgumentOutOfRangeException(nameof(vertices), "Too few points to be a polygon");
+                throw new ArgumentOutOfRangeException(nameof(vertices), "Too few points to be a polygon");
             }
         }
     }

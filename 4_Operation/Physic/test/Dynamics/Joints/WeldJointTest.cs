@@ -53,10 +53,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             float referenceAngle = 0.0f;
             float stiffness = 0.0f;
             float damping = 0.0f;
-            
+
             // Act
             WeldJoint weldJoint = new WeldJoint(bodyA, bodyB, JointType.Weld, false, localAnchorA, localAnchorB, referenceAngle, stiffness, damping);
-            
+
             // Assert
             Assert.Equal(bodyA, weldJoint.BodyA);
             Assert.Equal(bodyB, weldJoint.BodyB);
@@ -66,7 +66,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.Equal(stiffness, weldJoint.Stiffness);
             Assert.Equal(damping, weldJoint.Damping);
         }
-        
+
         /// <summary>
         ///     Tests that weld joint properties test
         /// </summary>
@@ -89,14 +89,14 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
                 Stiffness = 0.8f,
                 Damping = 0.7f
             };
-            
+
             // Assert
             Assert.Equal(new Vector2(0.6f, 0.6f), weldJoint.LocalAnchorA);
             Assert.Equal(new Vector2(1.6f, 1.6f), weldJoint.LocalAnchorB);
             Assert.Equal(0.8f, weldJoint.Stiffness);
             Assert.Equal(0.7f, weldJoint.Damping);
         }
-        
+
         /// <summary>
         ///     Tests that weld joint world anchor test
         /// </summary>
@@ -112,11 +112,11 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             float stiffness = 0.0f;
             float damping = 0.0f;
             WeldJoint weldJoint = new WeldJoint(bodyA, bodyB, JointType.Weld, false, localAnchorA, localAnchorB, referenceAngle, stiffness, damping);
-            
+
             // Act
             Vector2 worldAnchorA = weldJoint.WorldAnchorA;
             Vector2 worldAnchorB = weldJoint.WorldAnchorB;
-            
+
             // Assert
             Assert.Equal(bodyA.GetWorldPoint(localAnchorA), worldAnchorA);
             Assert.Equal(bodyB.GetWorldPoint(localAnchorB), worldAnchorB);

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:LightTest.cs
+//  File:ALightTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -33,45 +33,41 @@ using Xunit;
 namespace Alis.Test.Core.Ecs.Component.Light
 {
     /// <summary>
-    /// The light test class
+    ///     The light test class
     /// </summary>
     public class ALightTest
     {
         /// <summary>
-        /// Tests that light default constructor valid input
+        ///     Tests that light default constructor valid input
         /// </summary>
         [Fact]
         public void Light_DefaultConstructor_ValidInput()
         {
             LightSample light = new LightSample();
-            
+
             Assert.NotNull(light);
         }
-        
+
         /// <summary>
-        /// Tests that on start valid input
+        ///     Tests that on start valid input
         /// </summary>
         [Fact]
         public void OnStart_ValidInput()
         {
             LightSample light = new LightSample();
-            
+
             light.OnStart();
-            
-            
         }
-        
+
         /// <summary>
-        /// Tests that on update valid input
+        ///     Tests that on update valid input
         /// </summary>
         [Fact]
         public void OnUpdate_ValidInput()
         {
             LightSample light = new LightSample();
-            
+
             light.OnUpdate();
-            
-            
         }
     }
 }

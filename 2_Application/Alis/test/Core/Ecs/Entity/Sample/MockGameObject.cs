@@ -32,9 +32,9 @@ using Alis.Core.Ecs.Entity;
 namespace Alis.Test.Core.Ecs.Entity.Sample
 {
     /// <summary>
-    /// The mock game object class
+    ///     The mock game object class
     /// </summary>
-    /// <seealso cref="GameObject"/>
+    /// <seealso cref="GameObject" />
     public class MockGameObject : GameObject
     {
     }

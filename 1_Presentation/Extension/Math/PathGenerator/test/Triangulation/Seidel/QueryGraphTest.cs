@@ -30,10 +30,9 @@
 namespace Alis.Extension.Math.PathGenerator.Test.Triangulation.Seidel
 {
     /// <summary>
-    /// The query graph test class
+    ///     The query graph test class
     /// </summary>
     public class QueryGraphTest
     {
-        
     }
 }

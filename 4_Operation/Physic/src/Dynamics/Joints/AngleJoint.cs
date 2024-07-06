@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
@@ -42,22 +43,22 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The bias
         /// </summary>
         private float bias;
-        
+
         /// <summary>
         ///     The joint error
         /// </summary>
         private float jointError;
-        
+
         /// <summary>
         ///     The mass factor
         /// </summary>
         private float massFactor;
-        
+
         /// <summary>
         ///     The target angle
         /// </summary>
         private float targetAngle;
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="AngleJoint" /> class
         /// </summary>
@@ -69,25 +70,25 @@ namespace Alis.Core.Physic.Dynamics.Joints
             BiasFactor = .2f;
             Impulse = float.MaxValue;
         }
-        
+
         /// <summary>
         ///     Gets or sets the value of the world anchor a
         /// </summary>
         public override Vector2 WorldAnchorA
         {
             get => BodyA.Position;
-            set => throw new System.ArgumentException(value.ToString());
+            set => throw new ArgumentException(value.ToString());
         }
-        
+
         /// <summary>
         ///     Gets or sets the value of the world anchor b
         /// </summary>
         public override Vector2 WorldAnchorB
         {
             get => BodyB.Position;
-            set => throw new System.ArgumentException(value.ToString());
+            set => throw new ArgumentException(value.ToString());
         }
-        
+
         /// <summary>The desired angle between BodyA and BodyB</summary>
         public float TargetAngle
         {
@@ -101,30 +102,30 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 }
             }
         }
-        
+
         /// <summary>Gets or sets the bias factor. Defaults to 0.2</summary>
         private float BiasFactor { get; }
-        
+
         /// <summary>Gets or sets the maximum impulse. Defaults to float.MaxValue</summary>
         private float Impulse { get; }
-        
+
         /// <summary>Gets or sets the softness of the joint. Defaults to 0</summary>
         private float Softness { get; } = 0;
-        
+
         /// <summary>
         ///     Gets the reaction force using the specified inv dt
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The vector</returns>
         protected override Vector2 GetReactionForce(float invDt) => Vector2.Zero;
-        
+
         /// <summary>
         ///     Gets the reaction torque using the specified inv dt
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The float</returns>
         public override float GetReactionTorque(float invDt) => 0;
-        
+
         /// <summary>
         ///     Inits the velocity constraints using the specified data
         /// </summary>
@@ -133,15 +134,15 @@ namespace Alis.Core.Physic.Dynamics.Joints
         {
             int indexA = BodyA.IslandIndex;
             int indexB = BodyB.IslandIndex;
-            
+
             float aW = data.Positions[indexA].A;
             float bW = data.Positions[indexB].A;
-            
+
             jointError = bW - aW - targetAngle;
             bias = -BiasFactor * data.Step.InvertedDeltaTime * jointError;
             massFactor = (1 - Softness) / (BodyA.InvI + BodyB.InvI);
         }
-        
+
         /// <summary>
         ///     Solves the velocity constraints using the specified data
         /// </summary>
@@ -150,15 +151,15 @@ namespace Alis.Core.Physic.Dynamics.Joints
         {
             int indexA = BodyA.IslandIndex;
             int indexB = BodyB.IslandIndex;
-            
+
             float p = (bias - data.Velocities[indexB].W + data.Velocities[indexA].W) * massFactor;
-            
+
             data.Velocities[indexA].W -=
                 BodyA.InvI * MathUtils.Sign(p) * MathUtils.Min(MathUtils.Abs(p), Impulse);
             data.Velocities[indexB].W +=
                 BodyB.InvI * MathUtils.Sign(p) * MathUtils.Min(MathUtils.Abs(p), Impulse);
         }
-        
+
         /// <summary>
         ///     Describes whether this instance solve position constraints
         /// </summary>

@@ -28,14 +28,13 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Runtime.InteropServices;
 using System.Text;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Extension.Graphic.ImGui.Native
 {
     /// <summary>
-    /// The im gui class
+    ///     The im gui class
     /// </summary>
     public static partial class ImGui
     {
@@ -48,7 +47,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igTableSetupColumn(Encoding.UTF8.GetBytes(label), flags, 0.0f, 0);
         }
-        
+
         /// <summary>
         ///     Tables the setup column using the specified label
         /// </summary>
@@ -59,7 +58,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igTableSetupColumn(Encoding.UTF8.GetBytes(label), flags, initWidthOrWeight, 0);
         }
-        
+
         /// <summary>
         ///     Tables the setup column using the specified label
         /// </summary>
@@ -71,7 +70,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igTableSetupColumn(Encoding.UTF8.GetBytes(label), flags, initWidthOrWeight, userId);
         }
-        
+
         /// <summary>
         ///     Tables the setup scroll freeze using the specified cols
         /// </summary>
@@ -81,7 +80,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igTableSetupScrollFreeze(cols, rows);
         }
-        
+
         /// <summary>
         ///     Texts the fmt
         /// </summary>
@@ -90,7 +89,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igText(Encoding.UTF8.GetBytes(fmt));
         }
-        
+
         /// <summary>
         ///     Texts the colored using the specified col
         /// </summary>
@@ -100,7 +99,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igTextColored(col, Encoding.UTF8.GetBytes(fmt));
         }
-        
+
         /// <summary>
         ///     Texts the disabled using the specified fmt
         /// </summary>
@@ -109,7 +108,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igTextDisabled(Encoding.UTF8.GetBytes(fmt));
         }
-        
+
         /// <summary>
         ///     Texts the unformatted using the specified text
         /// </summary>
@@ -117,9 +116,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static void TextUnformatted(string text)
         {
             byte[] nativeText = Encoding.UTF8.GetBytes(text);
-            ImGuiNative.igTextUnformatted(nativeText, (byte)nativeText.Length);
+            ImGuiNative.igTextUnformatted(nativeText, (byte) nativeText.Length);
         }
-        
+
         /// <summary>
         ///     Texts the wrapped using the specified fmt
         /// </summary>
@@ -128,7 +127,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igTextWrapped(Encoding.UTF8.GetBytes(fmt));
         }
-        
+
         /// <summary>
         ///     Describes whether tree node
         /// </summary>
@@ -139,7 +138,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igTreeNode_Str(Encoding.UTF8.GetBytes(label));
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether tree node
         /// </summary>
@@ -151,7 +150,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igTreeNode_StrStr(Encoding.UTF8.GetBytes(strId), Encoding.UTF8.GetBytes(fmt));
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether tree node
         /// </summary>
@@ -160,10 +159,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool TreeNode(IntPtr ptrId, string fmt)
         {
-            byte ret = ImGuiNative.igTreeNode_Ptr( ptrId, Encoding.UTF8.GetBytes(fmt));
+            byte ret = ImGuiNative.igTreeNode_Ptr(ptrId, Encoding.UTF8.GetBytes(fmt));
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether tree node ex
         /// </summary>
@@ -174,7 +173,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igTreeNodeEx_Str(Encoding.UTF8.GetBytes(label), 0);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether tree node ex
         /// </summary>
@@ -186,7 +185,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igTreeNodeEx_Str(Encoding.UTF8.GetBytes(label), flags);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether tree node ex
         /// </summary>
@@ -199,7 +198,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igTreeNodeEx_StrStr(Encoding.UTF8.GetBytes(strId), flags, Encoding.UTF8.GetBytes(fmt));
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether tree node ex
         /// </summary>
@@ -209,10 +208,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool TreeNodeEx(IntPtr ptrId, ImGuiTreeNodeFlags flags, string fmt)
         {
-            byte ret = ImGuiNative.igTreeNodeEx_Ptr( ptrId, flags, Encoding.UTF8.GetBytes(fmt));
+            byte ret = ImGuiNative.igTreeNodeEx_Ptr(ptrId, flags, Encoding.UTF8.GetBytes(fmt));
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Trees the pop
         /// </summary>
@@ -220,7 +219,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igTreePop();
         }
-        
+
         /// <summary>
         ///     Trees the push using the specified str id
         /// </summary>
@@ -229,7 +228,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igTreePush_Str(Encoding.UTF8.GetBytes(strId));
         }
-        
+
         /// <summary>
         ///     Trees the push using the specified ptr id
         /// </summary>
@@ -239,7 +238,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             IntPtr nativePtrId = ptrId;
             ImGuiNative.igTreePush_Ptr(nativePtrId);
         }
-        
+
         /// <summary>
         ///     Unindents
         /// </summary>
@@ -248,7 +247,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             float indentW = 0.0f;
             ImGuiNative.igUnindent(indentW);
         }
-        
+
         /// <summary>
         ///     Unindents the indent w
         /// </summary>
@@ -257,7 +256,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igUnindent(indentW);
         }
-        
+
         /// <summary>
         ///     Updates the platform windows
         /// </summary>
@@ -265,7 +264,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igUpdatePlatformWindows();
         }
-        
+
         /// <summary>
         ///     Values the prefix
         /// </summary>
@@ -275,7 +274,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igValue_Bool(Encoding.UTF8.GetBytes(prefix), b);
         }
-        
+
         /// <summary>
         ///     Values the prefix
         /// </summary>
@@ -285,7 +284,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igValue_Int(Encoding.UTF8.GetBytes(prefix), v);
         }
-        
+
         /// <summary>
         ///     Values the prefix
         /// </summary>
@@ -295,7 +294,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igValue_Uint(Encoding.UTF8.GetBytes(prefix), v);
         }
-        
+
         /// <summary>
         ///     Values the prefix
         /// </summary>
@@ -305,7 +304,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igValue_Float(Encoding.UTF8.GetBytes(prefix), v, null);
         }
-        
+
         /// <summary>
         ///     Values the prefix
         /// </summary>
@@ -316,7 +315,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igValue_Float(Encoding.UTF8.GetBytes(prefix), v, Encoding.UTF8.GetBytes(floatFormat));
         }
-        
+
         /// <summary>
         ///     Describes whether v slider float
         /// </summary>
@@ -329,9 +328,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool VSliderFloat(string label, Vector2 size, ref float v, float vMin, float vMax)
         {
             byte ret = ImGuiNative.igVSliderFloat(Encoding.UTF8.GetBytes(label), size, ref v, vMin, vMax, null, 0);
-                return ret != 0;
+            return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether v slider float
         /// </summary>
@@ -345,10 +344,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool VSliderFloat(string label, Vector2 size, ref float v, float vMin, float vMax, string format)
         {
             byte ret = ImGuiNative.igVSliderFloat(Encoding.UTF8.GetBytes(label), size, ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), 0);
-            
-                return ret != 0;
+
+            return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether v slider float
         /// </summary>
@@ -363,10 +362,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool VSliderFloat(string label, Vector2 size, ref float v, float vMin, float vMax, string format, ImGuiSliderFlags flags)
         {
             byte ret = ImGuiNative.igVSliderFloat(Encoding.UTF8.GetBytes(label), size, ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), flags);
-            
-                return ret != 0;
+
+            return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether v slider int
         /// </summary>
@@ -379,10 +378,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool VSliderInt(string label, Vector2 size, ref int v, int vMin, int vMax)
         {
             byte ret = ImGuiNative.igVSliderInt(Encoding.UTF8.GetBytes(label), size, ref v, vMin, vMax, null, 0);
-                
-                return ret != 0;
+
+            return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether v slider int
         /// </summary>
@@ -396,9 +395,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool VSliderInt(string label, Vector2 size, ref int v, int vMin, int vMax, string format)
         {
             byte ret = ImGuiNative.igVSliderInt(Encoding.UTF8.GetBytes(label), size, ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), 0);
-                return ret != 0;
+            return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether v slider int
         /// </summary>
@@ -413,9 +412,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool VSliderInt(string label, Vector2 size, ref int v, int vMin, int vMax, string format, ImGuiSliderFlags flags)
         {
             byte ret = ImGuiNative.igVSliderInt(Encoding.UTF8.GetBytes(label), size, ref v, vMin, vMax, Encoding.UTF8.GetBytes(format), flags);
-                return ret != 0;
+            return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether v slider scalar
         /// </summary>
@@ -431,7 +430,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igVSliderScalar(Encoding.UTF8.GetBytes(label), size, dataType, pData, pMin, pMax, null, 0);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether v slider scalar
         /// </summary>
@@ -448,7 +447,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igVSliderScalar(Encoding.UTF8.GetBytes(label), size, dataType, pData, pMin, pMax, Encoding.UTF8.GetBytes(format), 0);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether v slider scalar
         /// </summary>
@@ -466,7 +465,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igVSliderScalar(Encoding.UTF8.GetBytes(label), size, dataType, pData, pMin, pMax, Encoding.UTF8.GetBytes(format), flags);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether input text
         /// </summary>
@@ -479,7 +478,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte[] buf,
             uint bufSize)
             => InputText(label, buf, bufSize, 0, null, IntPtr.Zero);
-        
+
         /// <summary>
         ///     Describes whether input text
         /// </summary>
@@ -494,7 +493,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             uint bufSize,
             ImGuiInputTextFlags flags)
             => InputText(label, buf, bufSize, flags, null, IntPtr.Zero);
-        
+
         /// <summary>
         ///     Describes whether input text
         /// </summary>
@@ -511,7 +510,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             ImGuiInputTextFlags flags,
             ImGuiInputTextCallback callback)
             => InputText(label, buf, bufSize, flags, callback, IntPtr.Zero);
-        
+
         /// <summary>
         ///     Describes whether input text
         /// </summary>
@@ -532,15 +531,15 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             bool ret = ImGuiNative.igInputText(
                 Encoding.UTF8.GetBytes(label),
-                IntPtr.Zero, 
+                IntPtr.Zero,
                 bufSize,
                 flags,
                 callback,
                 userData) != 0;
-            
+
             return ret;
         }
-        
+
         /// <summary>
         ///     Describes whether input text
         /// </summary>
@@ -552,7 +551,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             string label,
             ref string input,
             uint maxLength) => InputText(label, ref input, maxLength, 0, null, IntPtr.Zero);
-        
+
         /// <summary>
         ///     Describes whether input text
         /// </summary>
@@ -566,7 +565,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             ref string input,
             uint maxLength,
             ImGuiInputTextFlags flags) => InputText(label, ref input, maxLength, flags, null, IntPtr.Zero);
-        
+
         /// <summary>
         ///     Describes whether input text
         /// </summary>
@@ -582,7 +581,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             uint maxLength,
             ImGuiInputTextFlags flags,
             ImGuiInputTextCallback callback) => InputText(label, ref input, maxLength, flags, callback, IntPtr.Zero);
-        
+
         /// <summary>
         ///     Determines whether the input text.
         /// </summary>
@@ -608,11 +607,11 @@ namespace Alis.Extension.Graphic.ImGui.Native
                 flag,
                 callback,
                 userData);
-            
+
             return result != 0;
         }
-        
-        
+
+
         /// <summary>
         ///     Describes whether input text multiline
         /// </summary>
@@ -626,7 +625,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             ref string input,
             uint maxLength,
             Vector2 size) => InputTextMultiline(label, ref input, maxLength, size, 0, null, IntPtr.Zero);
-        
+
         /// <summary>
         ///     Describes whether input text multiline
         /// </summary>
@@ -642,7 +641,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             uint maxLength,
             Vector2 size,
             ImGuiInputTextFlags flags) => InputTextMultiline(label, ref input, maxLength, size, flags, null, IntPtr.Zero);
-        
+
         /// <summary>
         ///     Describes whether input text multiline
         /// </summary>
@@ -660,7 +659,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             Vector2 size,
             ImGuiInputTextFlags flags,
             ImGuiInputTextCallback callback) => InputTextMultiline(label, ref input, maxLength, size, flags, callback, IntPtr.Zero);
-        
+
         /// <summary>
         ///     Determines whether the input text is multiline.
         /// </summary>
@@ -691,8 +690,8 @@ namespace Alis.Extension.Graphic.ImGui.Native
                 userData);
             return result != 0;
         }
-        
-        
+
+
         /// <summary>
         ///     Describes whether input text with hint
         /// </summary>
@@ -706,7 +705,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             string hint,
             ref string input,
             uint maxLength) => InputTextWithHint(label, hint, ref input, maxLength, 0, null, IntPtr.Zero);
-        
+
         /// <summary>
         ///     Describes whether input text with hint
         /// </summary>
@@ -722,7 +721,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             ref string input,
             uint maxLength,
             ImGuiInputTextFlags flags) => InputTextWithHint(label, hint, ref input, maxLength, flags, null, IntPtr.Zero);
-        
+
         /// <summary>
         ///     Describes whether input text with hint
         /// </summary>
@@ -740,7 +739,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             uint maxLength,
             ImGuiInputTextFlags flags,
             ImGuiInputTextCallback callback) => InputTextWithHint(label, hint, ref input, maxLength, flags, callback, IntPtr.Zero);
-        
+
         /// <summary>
         ///     Describes whether input text with hint
         /// </summary>
@@ -771,7 +770,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
                 userData);
             return result != 0;
         }
-        
+
         /// <summary>
         ///     Calcs the text size using the specified text
         /// </summary>
@@ -779,7 +778,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The vector</returns>
         public static Vector2 CalcTextSize(string text)
             => CalcTextSizeImpl(text);
-        
+
         /// <summary>
         ///     Calcs the text size using the specified text
         /// </summary>
@@ -788,7 +787,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The vector</returns>
         public static Vector2 CalcTextSize(string text, int start)
             => CalcTextSizeImpl(text, start);
-        
+
         /// <summary>
         ///     Calcs the text size using the specified text
         /// </summary>
@@ -797,7 +796,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The vector</returns>
         public static Vector2 CalcTextSize(string text, float wrapWidth)
             => CalcTextSizeImpl(text, wrapWidth: wrapWidth);
-        
+
         /// <summary>
         ///     Calcs the text size using the specified text
         /// </summary>
@@ -806,7 +805,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The vector</returns>
         public static Vector2 CalcTextSize(string text, bool hideTextAfterDoubleHash)
             => CalcTextSizeImpl(text, hideTextAfterDoubleHash: hideTextAfterDoubleHash);
-        
+
         /// <summary>
         ///     Calcs the text size using the specified text
         /// </summary>
@@ -816,7 +815,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The vector</returns>
         public static Vector2 CalcTextSize(string text, int start, int length)
             => CalcTextSizeImpl(text, start, length);
-        
+
         /// <summary>
         ///     Calcs the text size using the specified text
         /// </summary>
@@ -826,7 +825,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The vector</returns>
         public static Vector2 CalcTextSize(string text, int start, bool hideTextAfterDoubleHash)
             => CalcTextSizeImpl(text, start, hideTextAfterDoubleHash: hideTextAfterDoubleHash);
-        
+
         /// <summary>
         ///     Calcs the text size using the specified text
         /// </summary>
@@ -836,7 +835,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The vector</returns>
         public static Vector2 CalcTextSize(string text, int start, float wrapWidth)
             => CalcTextSizeImpl(text, start, wrapWidth: wrapWidth);
-        
+
         /// <summary>
         ///     Calcs the text size using the specified text
         /// </summary>
@@ -846,7 +845,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The vector</returns>
         public static Vector2 CalcTextSize(string text, bool hideTextAfterDoubleHash, float wrapWidth)
             => CalcTextSizeImpl(text, hideTextAfterDoubleHash: hideTextAfterDoubleHash, wrapWidth: wrapWidth);
-        
+
         /// <summary>
         ///     Calcs the text size using the specified text
         /// </summary>
@@ -857,7 +856,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The vector</returns>
         public static Vector2 CalcTextSize(string text, int start, int length, bool hideTextAfterDoubleHash)
             => CalcTextSizeImpl(text, start, length, hideTextAfterDoubleHash);
-        
+
         /// <summary>
         ///     Calcs the text size using the specified text
         /// </summary>
@@ -868,7 +867,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The vector</returns>
         public static Vector2 CalcTextSize(string text, int start, int length, float wrapWidth)
             => CalcTextSizeImpl(text, start, length, wrapWidth: wrapWidth);
-        
+
         /// <summary>
         ///     Calcs the text size using the specified text
         /// </summary>
@@ -880,7 +879,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The vector</returns>
         public static Vector2 CalcTextSize(string text, int start, int length, bool hideTextAfterDoubleHash, float wrapWidth)
             => CalcTextSizeImpl(text, start, length, hideTextAfterDoubleHash, wrapWidth);
-        
+
         /// <summary>
         ///     Calcs the text size impl using the specified text
         /// </summary>
@@ -897,10 +896,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
             bool hideTextAfterDoubleHash = false,
             float wrapWidth = -1.0f)
         {
-            ImGuiNative.igCalcTextSize(out Vector2 ret, Encoding.UTF8.GetBytes(text), (byte)text.Length, hideTextAfterDoubleHash, wrapWidth);
+            ImGuiNative.igCalcTextSize(out Vector2 ret, Encoding.UTF8.GetBytes(text), (byte) text.Length, hideTextAfterDoubleHash, wrapWidth);
             return ret;
         }
-        
+
         /// <summary>
         ///     Describes whether input text
         /// </summary>
@@ -913,7 +912,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             IntPtr buf,
             uint bufSize)
             => InputText(label, buf, bufSize, 0, null, IntPtr.Zero);
-        
+
         /// <summary>
         ///     Describes whether input text
         /// </summary>
@@ -928,7 +927,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             uint bufSize,
             ImGuiInputTextFlags flags)
             => InputText(label, buf, bufSize, flags, null, IntPtr.Zero);
-        
+
         /// <summary>
         ///     Describes whether input text
         /// </summary>
@@ -945,7 +944,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             ImGuiInputTextFlags flags,
             ImGuiInputTextCallback callback)
             => InputText(label, buf, bufSize, flags, callback, IntPtr.Zero);
-        
+
         /// <summary>
         ///     Describes whether input text
         /// </summary>
@@ -971,10 +970,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
                 flags,
                 callback,
                 userData) != 0;
-            
+
             return ret;
         }
-        
+
         /// <summary>
         ///     Describes whether begin
         /// </summary>
@@ -984,10 +983,8 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static bool Begin(string name, ImGuiWindowFlags flags)
         {
             byte ret = ImGuiNative.igBegin(Encoding.UTF8.GetBytes(name), true, flags);
-            
+
             return ret != 0;
         }
-        
-        
-}
+    }
 }

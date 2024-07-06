@@ -32,12 +32,12 @@ using Xunit;
 namespace Alis.Extension.Profile.Test
 {
     /// <summary>
-    /// The profile data test class
+    ///     The profile data test class
     /// </summary>
     public class ProfileDataTest
     {
         /// <summary>
-        /// Tests that memory usage set and get returns correct value
+        ///     Tests that memory usage set and get returns correct value
         /// </summary>
         [Fact]
         public void MemoryUsage_SetAndGet_ReturnsCorrectValue()
@@ -51,7 +51,7 @@ namespace Alis.Extension.Profile.Test
         }
 
         /// <summary>
-        /// Tests that cpu usage set and get returns correct value
+        ///     Tests that cpu usage set and get returns correct value
         /// </summary>
         [Fact]
         public void CpuUsage_SetAndGet_ReturnsCorrectValue()

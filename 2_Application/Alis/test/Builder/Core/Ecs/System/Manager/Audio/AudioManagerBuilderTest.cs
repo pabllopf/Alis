@@ -34,31 +34,31 @@ using Xunit;
 namespace Alis.Test.Builder.Core.Ecs.System.Manager.Audio
 {
     /// <summary>
-    /// The audio manager builder test class
+    ///     The audio manager builder test class
     /// </summary>
     public class AudioManagerBuilderTest
     {
         /// <summary>
-        /// Tests that audio manager builder default constructor valid input
+        ///     Tests that audio manager builder default constructor valid input
         /// </summary>
         [Fact]
         public void AudioManagerBuilder_DefaultConstructor_ValidInput()
         {
             AudioManagerBuilder audioManagerBuilder = new AudioManagerBuilder();
-            
+
             Assert.NotNull(audioManagerBuilder);
         }
-        
+
         /// <summary>
-        /// Tests that build valid input
+        ///     Tests that build valid input
         /// </summary>
         [Fact]
         public void Build_ValidInput()
         {
             AudioManagerBuilder audioManagerBuilder = new AudioManagerBuilder();
-            
+
             AudioManager audioManager = audioManagerBuilder.Build();
-            
+
             Assert.NotNull(audioManager);
         }
     }

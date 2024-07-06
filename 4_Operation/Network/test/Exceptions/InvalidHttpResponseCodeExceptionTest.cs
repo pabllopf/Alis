@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Core.Network.Test.Exceptions
 {
     /// <summary>
-    /// The invalid http response code exception test class
+    ///     The invalid http response code exception test class
     /// </summary>
     public class InvalidHttpResponseCodeExceptionTest
     {
         /// <summary>
-        /// Tests that invalid http response code exception default constructor
+        ///     Tests that invalid http response code exception default constructor
         /// </summary>
         [Fact]
         public void InvalidHttpResponseCodeException_DefaultConstructor()
@@ -47,9 +47,9 @@ namespace Alis.Core.Network.Test.Exceptions
             InvalidHttpResponseCodeException exception = new InvalidHttpResponseCodeException();
             Assert.NotNull(exception);
         }
-        
+
         /// <summary>
-        /// Tests that invalid http response code exception constructor with message
+        ///     Tests that invalid http response code exception constructor with message
         /// </summary>
         [Fact]
         public void InvalidHttpResponseCodeException_ConstructorWithMessage()
@@ -58,9 +58,9 @@ namespace Alis.Core.Network.Test.Exceptions
             Assert.NotNull(exception);
             Assert.Equal("Test message", exception.Message);
         }
-        
+
         /// <summary>
-        /// Tests that invalid http response code exception constructor with response details
+        ///     Tests that invalid http response code exception constructor with response details
         /// </summary>
         [Fact]
         public void InvalidHttpResponseCodeException_ConstructorWithResponseDetails()
@@ -71,9 +71,9 @@ namespace Alis.Core.Network.Test.Exceptions
             Assert.Equal("Not Found", exception.ResponseDetails);
             Assert.Equal("HTTP/1.1 404 Not Found", exception.ResponseHeader);
         }
-        
+
         /// <summary>
-        /// Tests that invalid http response code exception constructor with message and inner exception
+        ///     Tests that invalid http response code exception constructor with message and inner exception
         /// </summary>
         [Fact]
         public void InvalidHttpResponseCodeException_ConstructorWithMessageAndInnerException()

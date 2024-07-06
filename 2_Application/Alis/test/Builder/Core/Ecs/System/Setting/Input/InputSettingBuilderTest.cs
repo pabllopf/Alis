@@ -34,31 +34,31 @@ using Xunit;
 namespace Alis.Test.Builder.Core.Ecs.System.Setting.Input
 {
     /// <summary>
-    /// The input setting builder test class
+    ///     The input setting builder test class
     /// </summary>
     public class InputSettingBuilderTest
     {
         /// <summary>
-        /// Tests that input setting builder default constructor valid input
+        ///     Tests that input setting builder default constructor valid input
         /// </summary>
         [Fact]
         public void InputSettingBuilder_DefaultConstructor_ValidInput()
         {
             InputSettingBuilder inputSettingBuilder = new InputSettingBuilder();
-            
+
             Assert.NotNull(inputSettingBuilder);
         }
-        
+
         /// <summary>
-        /// Tests that build valid input
+        ///     Tests that build valid input
         /// </summary>
         [Fact]
         public void Build_ValidInput()
         {
             InputSettingBuilder inputSettingBuilder = new InputSettingBuilder();
-            
+
             InputSetting inputSetting = inputSettingBuilder.Build();
-            
+
             Assert.NotNull(inputSetting);
         }
     }

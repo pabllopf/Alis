@@ -44,19 +44,18 @@ using Alis.Core.Ecs.System.Setting;
 namespace Alis.Core.Ecs
 {
     /// <summary>
-    /// The video game class
+    ///     The video game class
     /// </summary>
-    /// <seealso cref="IGame"/>
+    /// <seealso cref="IGame" />
     public sealed class VideoGame : IGame
     {
         /// <summary>
-        /// The instancie
+        ///     The instancie
         /// </summary>
-        [JsonIgnore]
-        private static VideoGame _instancie;
-        
+        [JsonIgnore] private static VideoGame _instancie;
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="VideoGame"/> class
+        ///     Initializes a new instance of the <see cref="VideoGame" /> class
         /// </summary>
         [ExcludeFromCodeCoverage]
         public VideoGame()
@@ -64,9 +63,9 @@ namespace Alis.Core.Ecs
             Context = new Context(new Settings());
             _instancie = this;
         }
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="VideoGame"/> class
+        ///     Initializes a new instance of the <see cref="VideoGame" /> class
         /// </summary>
         /// <param name="context">The context</param>
         [JsonConstructor]
@@ -75,9 +74,9 @@ namespace Alis.Core.Ecs
             Context = context;
             _instancie = this;
         }
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="VideoGame"/> class
+        ///     Initializes a new instance of the <see cref="VideoGame" /> class
         /// </summary>
         /// <param name="settings">The settings</param>
         /// <param name="audioManager">The audio manager</param>
@@ -98,16 +97,16 @@ namespace Alis.Core.Ecs
                 PhysicManager = physicManager,
                 SceneManager = sceneManager
             };
-            
+
             _instancie = this;
         }
-        
+
         /// <summary>
         ///     Gets or sets the value of the context
         /// </summary>
         [JsonPropertyName("_Context_")]
         public Context Context { get; set; }
-        
+
         /// <summary>
         ///     Run program
         /// </summary>
@@ -117,127 +116,133 @@ namespace Alis.Core.Ecs
             OnInit();
             OnAwake();
             OnStart();
-            
+
             double currentTime = Context.TimeManager.Clock.Elapsed.TotalSeconds;
             double accumulator = 0;
-            
+
             // Variables for calculating FPS
             double lastTime = Context.TimeManager.Clock.Elapsed.TotalSeconds;
             Context.TimeManager.FrameCount = 0;
             Context.TimeManager.TotalFrames = 0;
             Context.TimeManager.AverageFrames = 0;
-            
+
             // Variables for calculating average FPS
             double totalTime = 0;
-            
+
             // Variables for SmoothDeltaTime
             float lastDeltaTime = 0f;
             float smoothDeltaTimeSum = 0f;
             int smoothDeltaTimeCount = 0;
-            
+
             // Variable for log output
             double lastLogTime = Context.TimeManager.Clock.Elapsed.TotalSeconds;
-            
-            
+
+
             while (Context.TimeManager.IsRunning)
             {
                 double newTime = Context.TimeManager.Clock.Elapsed.TotalSeconds;
                 Context.TimeManager.DeltaTime = (float) (newTime - currentTime);
-                
+
                 // Update Context.TimeManager properties
                 Context.TimeManager.UnscaledDeltaTime = (float) (newTime - currentTime);
                 Context.TimeManager.UnscaledTime += Context.TimeManager.UnscaledDeltaTime;
                 Context.TimeManager.UnscaledTimeAsDouble += Context.TimeManager.UnscaledDeltaTime;
                 Context.TimeManager.Time = Context.TimeManager.UnscaledTime * Context.TimeManager.TimeScale;
                 Context.TimeManager.TimeAsDouble = Context.TimeManager.UnscaledTimeAsDouble * Context.TimeManager.TimeScale;
-                
+
                 // Update MaximumDeltaTime
                 Context.TimeManager.MaximumDeltaTime = Math.Max(Context.TimeManager.MaximumDeltaTime, Context.TimeManager.DeltaTime);
-                
+
                 currentTime = newTime;
                 accumulator += Context.TimeManager.DeltaTime;
-                
+
                 // Increment frame counter
                 Context.TimeManager.FrameCount++;
                 Context.TimeManager.TotalFrames++;
-                
+
                 // If a second has passed since the last FPS calculation
                 if (newTime - lastTime >= 1.0)
                 {
                     // Calculate average FPS
                     totalTime += newTime - lastTime;
                     Context.TimeManager.AverageFrames = (int) (Context.TimeManager.TotalFrames / totalTime);
-                    
+
                     // Reset frame counter and update last time
                     Context.TimeManager.FrameCount = 0;
                     lastTime = newTime;
                 }
-                
+
                 OnDispatchEvents();
                 OnBeforeUpdate();
                 OnUpdate();
                 OnAfterUpdate();
-                
+
                 // Run fixed methods
                 while (accumulator >= Context.TimeManager.Configuration.FixedTimeStep)
                 {
                     Context.TimeManager.InFixedTimeStep = true;
-                    
+
                     Context.TimeManager.FixedTime += Context.TimeManager.Configuration.FixedTimeStep;
                     Context.TimeManager.FixedTimeAsDouble += Context.TimeManager.Configuration.FixedTimeStep;
                     Context.TimeManager.FixedDeltaTime = Context.TimeManager.Configuration.FixedTimeStep;
                     Context.TimeManager.FixedUnscaledDeltaTime = Context.TimeManager.Configuration.FixedTimeStep / Context.TimeManager.TimeScale;
-                    
+
                     // Update FixedUnscaledTime and FixedUnscaledTimeAsDouble
                     Context.TimeManager.FixedUnscaledTime += Context.TimeManager.FixedUnscaledDeltaTime;
                     Context.TimeManager.FixedUnscaledTimeAsDouble += Context.TimeManager.FixedUnscaledDeltaTime;
-                    
+
                     OnBeforeFixedUpdate();
                     OnFixedUpdate();
                     OnAfterFixedUpdate();
-                    
+
                     accumulator -= Context.TimeManager.Configuration.FixedTimeStep;
-                    
+
                     Context.TimeManager.InFixedTimeStep = false;
                 }
-                
+
                 OnCalculate();
                 OnDraw();
                 OnGui();
-                
+
                 // Update SmoothDeltaTime
                 smoothDeltaTimeSum += Context.TimeManager.DeltaTime - lastDeltaTime;
                 smoothDeltaTimeCount++;
                 Context.TimeManager.SmoothDeltaTime = smoothDeltaTimeSum / smoothDeltaTimeCount;
                 lastDeltaTime = Context.TimeManager.DeltaTime;
-                
+
                 lastLogTime = LastLogTime(newTime, lastLogTime);
             }
-            
+
             OnStop();
             OnExit();
         }
-        
+
         /// <summary>
-        /// Ons the exit
+        ///     Exits this instance
+        /// </summary>
+        [ExcludeFromCodeCoverage]
+        public void Exit() => Context.TimeManager.IsRunning = false;
+
+        /// <summary>
+        ///     Ons the exit
         /// </summary>
         [ExcludeFromCodeCoverage]
         private void OnExit()
         {
             Context.OnExit();
         }
-        
+
         /// <summary>
-        /// Ons the stop
+        ///     Ons the stop
         /// </summary>
         [ExcludeFromCodeCoverage]
         private void OnStop()
         {
             Context.OnStop();
         }
-        
+
         /// <summary>
-        /// Lasts the log time using the specified new time
+        ///     Lasts the log time using the specified new time
         /// </summary>
         /// <param name="newTime">The new time</param>
         /// <param name="lastLogTime">The last log time</param>
@@ -272,147 +277,141 @@ namespace Alis.Core.Ecs
                     " UnscaledTimeAsDouble: " + Context.TimeManager.UnscaledTimeAsDouble);
                 lastLogTime = newTime;
             }
-            
+
             return lastLogTime;
         }
-        
+
         /// <summary>
-        /// Ons the gui
+        ///     Ons the gui
         /// </summary>
         [ExcludeFromCodeCoverage]
         private void OnGui()
         {
-           Context.OnGui();
+            Context.OnGui();
         }
-        
+
         /// <summary>
-        /// Ons the draw
+        ///     Ons the draw
         /// </summary>
         [ExcludeFromCodeCoverage]
         private void OnDraw()
         {
             Context.OnDraw();
         }
-        
+
         /// <summary>
-        /// Ons the calculate
+        ///     Ons the calculate
         /// </summary>
         [ExcludeFromCodeCoverage]
         private void OnCalculate()
         {
             Context.OnCalculate();
         }
-        
+
         /// <summary>
-        /// Ons the after fixed update
+        ///     Ons the after fixed update
         /// </summary>
         [ExcludeFromCodeCoverage]
         private void OnAfterFixedUpdate()
         {
             Context.OnAfterFixedUpdate();
         }
-        
+
         /// <summary>
-        /// Ons the fixed update
+        ///     Ons the fixed update
         /// </summary>
         [ExcludeFromCodeCoverage]
         private void OnFixedUpdate()
         {
             Context.OnFixedUpdate();
         }
-        
+
         /// <summary>
-        /// Ons the before fixed update
+        ///     Ons the before fixed update
         /// </summary>
         [ExcludeFromCodeCoverage]
         private void OnBeforeFixedUpdate()
         {
             Context.OnBeforeFixedUpdate();
         }
-        
+
         /// <summary>
-        /// Ons the after update
+        ///     Ons the after update
         /// </summary>
         [ExcludeFromCodeCoverage]
         private void OnAfterUpdate()
         {
             Context.OnAfterUpdate();
         }
-        
+
         /// <summary>
-        /// Ons the update
+        ///     Ons the update
         /// </summary>
         [ExcludeFromCodeCoverage]
         private void OnUpdate()
         {
             Context.OnUpdate();
         }
-        
+
         /// <summary>
-        /// Ons the before update
+        ///     Ons the before update
         /// </summary>
         [ExcludeFromCodeCoverage]
         private void OnBeforeUpdate()
         {
             Context.OnBeforeUpdate();
         }
-        
+
         /// <summary>
-        /// Ons the dispatch events
+        ///     Ons the dispatch events
         /// </summary>
         [ExcludeFromCodeCoverage]
         private void OnDispatchEvents()
         {
             Context.OnDispatchEvents();
         }
-        
+
         /// <summary>
-        /// Ons the start
+        ///     Ons the start
         /// </summary>
         [ExcludeFromCodeCoverage]
         private void OnStart()
         {
             Context.OnStart();
         }
-        
+
         /// <summary>
-        /// Ons the awake
+        ///     Ons the awake
         /// </summary>
         [ExcludeFromCodeCoverage]
         private void OnAwake()
         {
             Context.OnAwake();
         }
-        
+
         /// <summary>
-        /// Ons the init
+        ///     Ons the init
         /// </summary>
         [ExcludeFromCodeCoverage]
         private void OnInit()
         {
-          Context.OnInit();
+            Context.OnInit();
         }
-        
-        /// <summary>
-        ///     Exits this instance
-        /// </summary>
-        [ExcludeFromCodeCoverage]
-        public void Exit() => Context.TimeManager.IsRunning = false;
-        
+
         /// <summary>
         ///     Builders
         /// </summary>
         /// <returns>The video game builder</returns>
         public static VideoGameBuilder Builder() => new VideoGameBuilder();
-        
+
         /// <summary>
-        /// Gets the context
+        ///     Gets the context
         /// </summary>
         /// <returns>The context</returns>
         public static Context GetContext() => _instancie.Context;
-        
+
         /// <summary>
-        /// Sets the context using the specified context
+        ///     Sets the context using the specified context
         /// </summary>
         /// <param name="context">The context</param>
         public static void SetContext(Context context) => _instancie.Context = context;

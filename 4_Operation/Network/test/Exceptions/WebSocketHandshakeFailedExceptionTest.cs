@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Core.Network.Test.Exceptions
 {
     /// <summary>
-    /// The web socket handshake failed exception test class
+    ///     The web socket handshake failed exception test class
     /// </summary>
     public class WebSocketHandshakeFailedExceptionTest
     {
         /// <summary>
-        /// Tests that web socket handshake failed exception default constructor
+        ///     Tests that web socket handshake failed exception default constructor
         /// </summary>
         [Fact]
         public void WebSocketHandshakeFailedException_DefaultConstructor()
@@ -47,9 +47,9 @@ namespace Alis.Core.Network.Test.Exceptions
             WebSocketHandshakeFailedException exception = new WebSocketHandshakeFailedException();
             Assert.NotNull(exception);
         }
-        
+
         /// <summary>
-        /// Tests that web socket handshake failed exception constructor with message
+        ///     Tests that web socket handshake failed exception constructor with message
         /// </summary>
         [Fact]
         public void WebSocketHandshakeFailedException_ConstructorWithMessage()
@@ -58,9 +58,9 @@ namespace Alis.Core.Network.Test.Exceptions
             Assert.NotNull(exception);
             Assert.Equal("Test message", exception.Message);
         }
-        
+
         /// <summary>
-        /// Tests that web socket handshake failed exception constructor with message and inner exception
+        ///     Tests that web socket handshake failed exception constructor with message and inner exception
         /// </summary>
         [Fact]
         public void WebSocketHandshakeFailedException_ConstructorWithMessageAndInnerException()

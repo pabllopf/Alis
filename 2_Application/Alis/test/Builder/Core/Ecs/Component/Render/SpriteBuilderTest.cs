@@ -34,59 +34,59 @@ using Xunit;
 namespace Alis.Test.Builder.Core.Ecs.Component.Render
 {
     /// <summary>
-    /// The sprite builder test class
+    ///     The sprite builder test class
     /// </summary>
     public class SpriteBuilderTest
     {
         /// <summary>
-        /// Tests that sprite builder default constructor valid input
+        ///     Tests that sprite builder default constructor valid input
         /// </summary>
         [Fact]
         public void SpriteBuilder_DefaultConstructor_ValidInput()
         {
             SpriteBuilder spriteBuilder = new SpriteBuilder();
-            
+
             Assert.NotNull(spriteBuilder);
         }
-        
+
         /// <summary>
-        /// Tests that build valid input
+        ///     Tests that build valid input
         /// </summary>
         [Fact]
         public void Build_ValidInput()
         {
             SpriteBuilder spriteBuilder = new SpriteBuilder();
-            
+
             Sprite sprite = spriteBuilder.Build();
-            
+
             Assert.NotNull(sprite);
         }
-        
+
         /// <summary>
-        /// Tests that depth valid input
+        ///     Tests that depth valid input
         /// </summary>
         [Fact]
         public void Depth_ValidInput()
         {
             SpriteBuilder spriteBuilder = new SpriteBuilder();
             int depth = 10;
-            
+
             spriteBuilder.Depth(depth);
-            
+
             Assert.Equal(depth, spriteBuilder.Build().Depth);
         }
-        
+
         /// <summary>
-        /// Tests that set texture valid input
+        ///     Tests that set texture valid input
         /// </summary>
         [Fact]
         public void SetTexture_ValidInput()
         {
             SpriteBuilder spriteBuilder = new SpriteBuilder();
             string texturePath = "testTexturePath";
-            
+
             spriteBuilder.SetTexture(texturePath);
-            
+
             Assert.Equal(texturePath, spriteBuilder.Build().Image.NameFile);
         }
     }

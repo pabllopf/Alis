@@ -60,12 +60,12 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
                 TransformB = xfB,
                 UseRadii = true
             };
-            
+
             DistanceGjk.ComputeDistance(ref input, out DistanceOutput output, out _);
-            
+
             return output.Distance < 10.0f * Constant.Epsilon;
         }
-        
+
         /// <summary>
         ///     Gets the point states using the specified state 1
         /// </summary>
@@ -79,20 +79,20 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         {
             state1 = new PointState[2];
             state2 = new PointState[2];
-            
+
             for (int i = 0; i < Settings.ManifoldPoints; ++i)
             {
                 state1[i] = PointState.Null;
                 state2[i] = PointState.Null;
             }
-            
+
             // Detect persists and removes.
             for (int i = 0; i < manifold1.PointCount; ++i)
             {
                 ContactId id = manifold1.Points[i].Id;
-                
+
                 state1[i] = PointState.Remove;
-                
+
                 for (int j = 0; j < manifold2.PointCount; ++j)
                 {
                     if (manifold2.Points[j].Id.Key == id.Key)
@@ -102,14 +102,14 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
                     }
                 }
             }
-            
+
             // Detect persists and adds.
             for (int i = 0; i < manifold2.PointCount; ++i)
             {
                 ContactId id = manifold2.Points[i].Id;
-                
+
                 state2[i] = PointState.Add;
-                
+
                 for (int j = 0; j < manifold1.PointCount; ++j)
                 {
                     if (manifold1.Points[j].Id.Key == id.Key)
@@ -120,7 +120,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
                 }
             }
         }
-        
+
         /// <summary>Clipping for contact manifolds.</summary>
         /// <param name="vOut">The v out.</param>
         /// <param name="vIn">The v in.</param>
@@ -133,44 +133,44 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
             Vector2 normal, float offset, int vertexIndexA)
         {
             vOut = new ClipVertex[2];
-            
+
             // Start with no output points
             int count = 0;
-            
+
             // Calculate the distance of end points to the line
             float distance0 = Vector2.Dot(normal, vIn[0].V) - offset;
             float distance1 = Vector2.Dot(normal, vIn[1].V) - offset;
-            
+
             // If the points are behind the plane
             if (distance0 <= 0.0f)
             {
                 vOut[count++] = vIn[0];
             }
-            
+
             if (distance1 <= 0.0f)
             {
                 vOut[count++] = vIn[1];
             }
-            
+
             // If the points are on different sides of the plane
             if (distance0 * distance1 < 0.0f)
             {
                 // Find intersection point of edge and plane
                 float interp = distance0 / (distance0 - distance1);
-                
+
                 ClipVertex cv = vOut[count];
                 cv.V = vIn[0].V + interp * (vIn[1].V - vIn[0].V);
-                
+
                 // VertexA is hitting edgeB.
                 cv.Id.ContactFeature.IndexA = (byte) vertexIndexA;
                 cv.Id.ContactFeature.IndexB = vIn[0].Id.ContactFeature.IndexB;
                 cv.Id.ContactFeature.TypeA = ContactFeatureType.Vertex;
                 cv.Id.ContactFeature.TypeB = ContactFeatureType.Face;
                 vOut[count] = cv;
-                
+
                 ++count;
             }
-            
+
             return count;
         }
     }

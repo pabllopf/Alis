@@ -34,94 +34,94 @@ using Xunit;
 namespace Alis.Test.Core.Ecs.System.Setting.Network
 {
     /// <summary>
-    /// The network setting test class
+    ///     The network setting test class
     /// </summary>
     public class NetworkSettingTest
     {
         /// <summary>
-        /// Tests that test network setting port
+        ///     Tests that test network setting port
         /// </summary>
         [Fact]
         public void Test_NetworkSetting_Port()
         {
             // Arrange
             NetworkSetting networkSetting = new NetworkSetting();
-            
+
             // Act
             networkSetting.Port = 8080;
             int result = networkSetting.Port;
-            
+
             // Assert
             Assert.NotNull(networkSetting);
             Assert.Equal(8080, result);
         }
-        
+
         /// <summary>
-        /// Tests that test network setting ip
+        ///     Tests that test network setting ip
         /// </summary>
         [Fact]
         public void Test_NetworkSetting_Ip()
         {
             // Arrange
             NetworkSetting networkSetting = new NetworkSetting();
-            
+
             // Act
             networkSetting.Ip = "192.168.1.1";
             string result = networkSetting.Ip;
-            
+
             // Assert
             Assert.NotNull(networkSetting);
             Assert.Equal("192.168.1.1", result);
         }
-        
+
         /// <summary>
-        /// Tests that test network setting host
+        ///     Tests that test network setting host
         /// </summary>
         [Fact]
         public void Test_NetworkSetting_Host()
         {
             // Arrange
             NetworkSetting networkSetting = new NetworkSetting();
-            
+
             // Act
             networkSetting.Host = "localhost";
             string result = networkSetting.Host;
-            
+
             // Assert
             Assert.NotNull(networkSetting);
             Assert.Equal("localhost", result);
         }
-        
+
         /// <summary>
-        /// Tests that test network setting protocol
+        ///     Tests that test network setting protocol
         /// </summary>
         [Fact]
         public void Test_NetworkSetting_Protocol()
         {
             // Arrange
             NetworkSetting networkSetting = new NetworkSetting();
-            
+
             // Act
             networkSetting.Protocol = "TCP";
             string result = networkSetting.Protocol;
-            
+
             // Assert
             Assert.NotNull(networkSetting);
             Assert.Equal("TCP", result);
         }
-        
+
         /// <summary>
-        /// Tests that test network setting builder
+        ///     Tests that test network setting builder
         /// </summary>
         [Fact]
         public void Test_NetworkSetting_Builder()
         {
             // Arrange
             NetworkSetting networkSetting = new NetworkSetting();
-            
+
             // Act
             NetworkSettingBuilder result = networkSetting.Builder();
-            
+
             // Assert
             Assert.NotNull(result);
             Assert.IsType<NetworkSettingBuilder>(result);

@@ -35,12 +35,12 @@ using Xunit;
 namespace Alis.Test.Core.Ecs.System.Manager.Graphic
 {
     /// <summary>
-    /// The graphic manager test class
+    ///     The graphic manager test class
     /// </summary>
     public class GraphicManagerTest
     {
         /// <summary>
-        /// Tests that on enable valid input
+        ///     Tests that on enable valid input
         /// </summary>
         [Fact]
         public void OnEnable_ValidInput()
@@ -48,24 +48,24 @@ namespace Alis.Test.Core.Ecs.System.Manager.Graphic
             VideoGame videoGame = new VideoGame();
             GraphicManager graphicManager = new GraphicManager();
             graphicManager.OnEnable();
-            
+
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
-        
+
         /// <summary>
-        /// Tests that on init valid input
+        ///     Tests that on init valid input
         /// </summary>
         [Fact]
         public void OnInit_ValidInput()
         {
             //VideoGame videoGame = new VideoGame();
             GraphicManager graphicManager = new GraphicManager();
-            
+
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
-        
+
         /// <summary>
-        /// Tests that on start valid input
+        ///     Tests that on start valid input
         /// </summary>
         [Fact]
         public void OnStart_ValidInput()
@@ -73,12 +73,12 @@ namespace Alis.Test.Core.Ecs.System.Manager.Graphic
             VideoGame videoGame = new VideoGame();
             GraphicManager graphicManager = new GraphicManager();
             graphicManager.OnStart();
-            
+
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
-        
+
         /// <summary>
-        /// Tests that on update valid input
+        ///     Tests that on update valid input
         /// </summary>
         [Fact]
         public void OnUpdate_ValidInput()
@@ -86,12 +86,12 @@ namespace Alis.Test.Core.Ecs.System.Manager.Graphic
             VideoGame videoGame = new VideoGame();
             GraphicManager graphicManager = new GraphicManager();
             graphicManager.OnUpdate();
-            
+
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
-        
+
         /// <summary>
-        /// Tests that on exit valid input
+        ///     Tests that on exit valid input
         /// </summary>
         [Fact]
         public void OnExit_ValidInput()
@@ -99,12 +99,12 @@ namespace Alis.Test.Core.Ecs.System.Manager.Graphic
             VideoGame videoGame = new VideoGame();
             GraphicManager graphicManager = new GraphicManager();
             graphicManager.OnExit();
-            
+
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
-        
+
         /// <summary>
-        /// Tests that attach valid input
+        ///     Tests that attach valid input
         /// </summary>
         [Fact]
         public void Attach_ValidInput()
@@ -113,12 +113,12 @@ namespace Alis.Test.Core.Ecs.System.Manager.Graphic
             GraphicManager graphicManager = new GraphicManager();
             Sprite sprite = new Sprite();
             graphicManager.Attach(sprite);
-            
+
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
-        
+
         /// <summary>
-        /// Tests that un attach valid input
+        ///     Tests that un attach valid input
         /// </summary>
         [Fact]
         public void UnAttach_ValidInput()
@@ -128,7 +128,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Graphic
             Sprite sprite = new Sprite();
             graphicManager.Attach(sprite);
             graphicManager.UnAttach(sprite);
-            
+
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
     }

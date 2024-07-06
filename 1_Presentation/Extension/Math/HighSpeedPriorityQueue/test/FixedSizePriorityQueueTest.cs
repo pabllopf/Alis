@@ -33,12 +33,12 @@ using Xunit;
 namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
 {
     /// <summary>
-    /// The fixed size priority queue test class
+    ///     The fixed size priority queue test class
     /// </summary>
     public class FixedSizePriorityQueueTest
     {
         /// <summary>
-        /// Tests that max size initially set
+        ///     Tests that max size initially set
         /// </summary>
         [Fact]
         public void MaxSize_InitiallySet()
@@ -48,7 +48,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Tests that reset node allows node re enqueue
+        ///     Tests that reset node allows node re enqueue
         /// </summary>
         [Fact]
         public void ResetNode_AllowsNodeReEnqueue()
@@ -61,7 +61,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Tests that enqueue adds items until max size
+        ///     Tests that enqueue adds items until max size
         /// </summary>
         [Fact]
         public void Enqueue_AddsItemsUntilMaxSize()
@@ -73,7 +73,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Tests that enqueue exceeding max size throws exception
+        ///     Tests that enqueue exceeding max size throws exception
         /// </summary>
         [Fact]
         public void Enqueue_ExceedingMaxSize_ThrowsException()
@@ -85,7 +85,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         }
 
         /// <summary>
-        /// Tests that dequeue returns items in priority order
+        ///     Tests that dequeue returns items in priority order
         /// </summary>
         [Fact]
         public void Dequeue_ReturnsItemsInPriorityOrder()
