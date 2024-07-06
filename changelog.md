@@ -6,8 +6,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [v0.3.0] - 2024-07-06
-### :sparkles: New Features
-- [`1fa8f42`](https://github.com/pabllopf/Alis/commit/1fa8f427773e8aaddc971aba00c2dd16fde4b350) - new version 0.3.0 *(commit by [@pabllopf](https://github.com/pabllopf))*
 
 ### :bug: Bug Fixes
 - [`b9fc4a0`](https://github.com/pabllopf/Alis/commit/b9fc4a03bb57087942be4425610598021c816f09) - delete vars and covert 100% transform struct *(commit by [@pabllopf](https://github.com/pabllopf))*
