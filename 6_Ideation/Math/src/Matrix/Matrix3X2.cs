@@ -44,22 +44,22 @@ namespace Alis.Core.Aspect.Math.Matrix
         private readonly int hashCode;
 
         /// <summary>The first element of the first row.</summary>
-        public float M11;
+        public float M11 { get; set; }
 
         /// <summary>The second element of the first row.</summary>
-        public float M12;
+        public float M12 { get; set; }
 
         /// <summary>The first element of the second row.</summary>
-        public float M21;
+        public float M21 { get; set; }
 
         /// <summary>The second element of the second row.</summary>
-        public float M22;
+        public float M22 { get; set; }
 
         /// <summary>The first element of the third row.</summary>
-        public float M31;
+        public float M31 { get; set; }
 
         /// <summary>The second element of the third row.</summary>
-        public float M32;
+        public float M32 { get; set; }
 
         /// <summary>Creates a 3x2 matrix from the specified components.</summary>
         /// <param name="m11">The value to assign to the first element in the first row.</param>

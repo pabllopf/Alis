@@ -40,7 +40,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
         /// <summary>
         ///     The head
         /// </summary>
-        public AdvancingFrontNode Head;
+        public AdvancingFrontNode Head { get; set; }
 
         /// <summary>
         ///     The search
@@ -50,7 +50,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
         /// <summary>
         ///     The tail
         /// </summary>
-        public AdvancingFrontNode Tail;
+        public AdvancingFrontNode Tail { get; set; }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="AdvancingFront" /> class

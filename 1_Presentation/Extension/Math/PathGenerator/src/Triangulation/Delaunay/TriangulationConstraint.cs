@@ -37,11 +37,11 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay
         /// <summary>
         ///     The
         /// </summary>
-        public TriangulationPoint P;
+        public TriangulationPoint P { get; set; }
 
         /// <summary>
         ///     The
         /// </summary>
-        public TriangulationPoint Q;
+        public TriangulationPoint Q { get; set; }
     }
 }

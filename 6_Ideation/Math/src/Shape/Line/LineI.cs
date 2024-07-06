@@ -40,21 +40,21 @@ namespace Alis.Core.Aspect.Math.Shape.Line
         /// <summary>
         ///     The x1
         /// </summary>
-        public int x1;
+        public int x1 { get; set; }
 
         /// <summary>
         ///     The y1
         /// </summary>
-        public int y1;
+        public int y1 { get; set; }
 
         /// <summary>
         ///     The x2
         /// </summary>
-        public int x2;
+        public int x2 { get; set; }
 
         /// <summary>
         ///     The y2
         /// </summary>
-        public int y2;
+        public int y2 { get; set; }
     }
 }

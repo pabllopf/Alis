@@ -58,7 +58,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
         /// <summary>
         ///     The front
         /// </summary>
-        public AdvancingFront AFront;
+        public AdvancingFront AFront { get; set; }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="DtSweepContext" /> class
@@ -275,27 +275,27 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
             /// <summary>
             ///     The bottom node
             /// </summary>
-            public AdvancingFrontNode BottomNode;
+            public AdvancingFrontNode BottomNode { get; set; }
 
             /// <summary>
             ///     The left highest
             /// </summary>
-            public bool LeftHighest;
+            public bool LeftHighest { get; set; }
 
             /// <summary>
             ///     The left node
             /// </summary>
-            public AdvancingFrontNode LeftNode;
+            public AdvancingFrontNode LeftNode { get; set; }
 
             /// <summary>
             ///     The right node
             /// </summary>
-            public AdvancingFrontNode RightNode;
+            public AdvancingFrontNode RightNode { get; set; }
 
             /// <summary>
             ///     The width
             /// </summary>
-            public double Width;
+            public double Width { get; set; }
         }
 
         /// <summary>
@@ -306,12 +306,12 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
             /// <summary>
             ///     The constrained edge
             /// </summary>
-            public DtSweepConstraint ConstrainedEdge;
+            public DtSweepConstraint ConstrainedEdge { get; set; }
 
             /// <summary>
             ///     The right
             /// </summary>
-            public bool Right;
+            public bool Right { get; set; }
         }
     }
 }

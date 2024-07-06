@@ -39,7 +39,7 @@ namespace Alis.Core.Aspect.Memory.Test
         /// <summary>
         ///     The test field
         /// </summary>
-        [IsNotEmpty] public string TestField;
+        [IsNotEmpty] public string TestField { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the test property

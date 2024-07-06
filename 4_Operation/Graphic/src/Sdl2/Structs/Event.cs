@@ -43,145 +43,203 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// </summary>
         [FieldOffset(0)] public EventType type;
 
+
+
         /// <summary>
         ///     The type sharp
         /// </summary>
         [FieldOffset(0)] public EventType typeFSharp;
+
+
 
         /// <summary>
         ///     The display
         /// </summary>
         [FieldOffset(0)] public DisplayEvent display;
 
+
+
         /// <summary>
         ///     The window
         /// </summary>
         [FieldOffset(0)] public WindowEvent window;
+
+
 
         /// <summary>
         ///     The key
         /// </summary>
         [FieldOffset(0)] public KeyboardEvent key;
 
+
+
         /// <summary>
         ///     The edit
         /// </summary>
         [FieldOffset(0)] public TextEditingEvent edit;
+
+
 
         /// <summary>
         ///     The text
         /// </summary>
         [FieldOffset(0)] public TextInputEvent text;
 
+
+
         /// <summary>
         ///     The motion
         /// </summary>
         [FieldOffset(0)] public MouseMotionEvent motion;
+
+
 
         /// <summary>
         ///     The button
         /// </summary>
         [FieldOffset(0)] public MouseButtonEvent button;
 
+
+
         /// <summary>
         ///     The wheel
         /// </summary>
         [FieldOffset(0)] public MouseWheelEvent wheel;
+
+
 
         /// <summary>
         ///     The j axis
         /// </summary>
         [FieldOffset(0)] public JoyAxisEvent jAxis;
 
+
+
         /// <summary>
         ///     The j ball
         /// </summary>
         [FieldOffset(0)] public JoyBallEvent jBall;
+
+
 
         /// <summary>
         ///     The j hat
         /// </summary>
         [FieldOffset(0)] public JoyHatEvent jHat;
 
+
+
         /// <summary>
         ///     The j button
         /// </summary>
         [FieldOffset(0)] public JoyButtonEvent jButton;
+
+
 
         /// <summary>
         ///     The j device
         /// </summary>
         [FieldOffset(0)] public JoyDeviceEvent jDevice;
 
+
+
         /// <summary>
         ///     The c axis
         /// </summary>
         [FieldOffset(0)] public ControllerAxisEvent cAxis;
+
+
 
         /// <summary>
         ///     The c button
         /// </summary>
         [FieldOffset(0)] public ControllerButtonEvent cButton;
 
+
+
         /// <summary>
         ///     The c device
         /// </summary>
         [FieldOffset(0)] public ControllerDeviceEvent cDevice;
+
+
 
         /// <summary>
         ///     The c touchpad
         /// </summary>
         [FieldOffset(0)] public ControllerTouchpadEvent cTouchpad;
 
+
+
         /// <summary>
         ///     The c sensor
         /// </summary>
         [FieldOffset(0)] public ControllerSensorEvent cSensor;
+
+
 
         /// <summary>
         ///     The audio device
         /// </summary>
         [FieldOffset(0)] public AudioDeviceEvent aDevice;
 
+
+
         /// <summary>
         ///     The sensor
         /// </summary>
         [FieldOffset(0)] public SensorEvent sensor;
+
+
 
         /// <summary>
         ///     The quit
         /// </summary>
         [FieldOffset(0)] public QuitEvent quit;
 
+
+
         /// <summary>
         ///     The user
         /// </summary>
         [FieldOffset(0)] public UserEvent user;
+
+
 
         /// <summary>
         ///     The sys wm
         /// </summary>
         [FieldOffset(0)] public SysWmEvent sysWm;
 
+
+
         /// <summary>
         ///     The t finger
         /// </summary>
         [FieldOffset(0)] public TouchFingerEvent tFinger;
+
+
 
         /// <summary>
         ///     The m gesture
         /// </summary>
         [FieldOffset(0)] public MultiGestureEvent mGesture;
 
+
+
         /// <summary>
         ///     The d gesture
         /// </summary>
         [FieldOffset(0)] public DollarGestureEvent dGesture;
 
+
+
         /// <summary>
         ///     The drop
         /// </summary>
         [FieldOffset(0)] public DropEvent drop;
+
+
 
         /// <summary>
         ///     The padding

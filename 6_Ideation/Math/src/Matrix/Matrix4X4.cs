@@ -44,52 +44,52 @@ namespace Alis.Core.Aspect.Math.Matrix
         private readonly int hashCode;
 
         /// <summary>The first element of the first row.</summary>
-        public float M11;
+        public float M11 { get; set; }
 
         /// <summary>The second element of the first row.</summary>
-        public float M12;
+        public float M12 { get; set; }
 
         /// <summary>The third element of the first row.</summary>
-        public float M13;
+        public float M13 { get; set; }
 
         /// <summary>The fourth element of the first row.</summary>
-        public float M14;
+        public float M14 { get; set; }
 
         /// <summary>The first element of the second row.</summary>
-        public float M21;
+        public float M21 { get; set; }
 
         /// <summary>The second element of the second row.</summary>
-        public float M22;
+        public float M22 { get; set; }
 
         /// <summary>The third element of the second row.</summary>
-        public float M23;
+        public float M23 { get; set; }
 
         /// <summary>The fourth element of the second row.</summary>
-        public float M24;
+        public float M24 { get; set; }
 
         /// <summary>The first element of the third row.</summary>
-        public float M31;
+        public float M31 { get; set; }
 
         /// <summary>The second element of the third row.</summary>
-        public float M32;
+        public float M32 { get; set; }
 
         /// <summary>The third element of the third row.</summary>
-        public float M33;
+        public float M33 { get; set; }
 
         /// <summary>The fourth element of the third row.</summary>
-        public float M34;
+        public float M34 { get; set; }
 
         /// <summary>The first element of the fourth row.</summary>
-        public float M41;
+        public float M41 { get; set; }
 
         /// <summary>The second element of the fourth row.</summary>
-        public float M42;
+        public float M42 { get; set; }
 
         /// <summary>The third element of the fourth row.</summary>
-        public float M43;
+        public float M43 { get; set; }
 
         /// <summary>The fourth element of the fourth row.</summary>
-        public float M44;
+        public float M44 { get; set; }
 
         /// <summary>Creates a 4x4 matrix from the specified components.</summary>
         /// <param name="m11">The value to assign to the first element in the first row.</param>

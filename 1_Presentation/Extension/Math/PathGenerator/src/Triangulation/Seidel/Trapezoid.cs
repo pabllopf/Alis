@@ -54,38 +54,38 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
         /// <summary>
         ///     The inside
         /// </summary>
-        public bool Inside;
+        public bool Inside { get; set; }
 
         // Neighbor pointers
         /// <summary>
         ///     The lower left
         /// </summary>
-        public Trapezoid LowerLeft;
+        public Trapezoid LowerLeft { get; set; }
 
         /// <summary>
         ///     The lower right
         /// </summary>
-        public Trapezoid LowerRight;
+        public Trapezoid LowerRight { get; set; }
 
         /// <summary>
         ///     The right point
         /// </summary>
-        public Point RightPoint;
+        public Point RightPoint { get; set; }
 
         /// <summary>
         ///     The sink
         /// </summary>
-        public Sink Sink;
+        public Sink Sink { get; set; }
 
         /// <summary>
         ///     The upper left
         /// </summary>
-        public Trapezoid UpperLeft;
+        public Trapezoid UpperLeft { get; set; }
 
         /// <summary>
         ///     The upper right
         /// </summary>
-        public Trapezoid UpperRight;
+        public Trapezoid UpperRight { get; set; }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Trapezoid" /> class
