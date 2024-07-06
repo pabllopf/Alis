@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.3.0] - 2024-07-06
+
+### :bug: Bug Fixes
+- [`b9fc4a0`](https://github.com/pabllopf/Alis/commit/b9fc4a03bb57087942be4425610598021c816f09) - delete vars and covert 100% transform struct *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`10a01bf`](https://github.com/pabllopf/Alis/commit/10a01bf4cc0933688d8aa846680fe9294e82e368) - format ImFontAtlasPtr *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`14b16c5`](https://github.com/pabllopf/Alis/commit/14b16c540047991ee0fa76ccacd0869607f8fd54) - delete RangeAccessor *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`513cd28`](https://github.com/pabllopf/Alis/commit/513cd28587577951890cfd3660a056e9774fb090) - Use the return value of method 'Add'. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c15abb4`](https://github.com/pabllopf/Alis/commit/c15abb48d694af80ec620dc931ad369a3ee1f862) - 18 issues of float *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`3169f20`](https://github.com/pabllopf/Alis/commit/3169f20a4db5c350eb6afb72144e76eb190ffa0c) - covert 50% HighSpeedPriorityQueue *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d934b1f`](https://github.com/pabllopf/Alis/commit/d934b1fc94d6077d34424cbe7aee33bf223bc027) - create empty tests of PathGenerator *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bb480a5`](https://github.com/pabllopf/Alis/commit/bb480a52f632d6870f6f629defdd42379d3f5f4d) - covert 100% Profile module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c7c40e1`](https://github.com/pabllopf/Alis/commit/c7c40e15dcb237440612ee0c4f778b8158776f87) - create empty test of OpenGL *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`29ad5a2`](https://github.com/pabllopf/Alis/commit/29ad5a2274c6ee5b4ce7863f1bf2e01319622bb0) - check new config sonarcloud *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.2.9] - 2024-07-03
 ### :sparkles: New Features
 - [`174df27`](https://github.com/pabllopf/Alis/commit/174df27880ee69f290ff15e7b2adc0a7e4331c02) - divide in 21 parts the ImPlot *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -2585,3 +2602,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.2.7]: https://github.com/pabllopf/Alis/compare/v0.2.6...v0.2.7
 [v0.2.8]: https://github.com/pabllopf/Alis/compare/v0.2.7...v0.2.8
 [v0.2.9]: https://github.com/pabllopf/Alis/compare/v0.2.8...v0.2.9
+[v0.3.0]: https://github.com/pabllopf/Alis/compare/v0.2.9...v0.3.0
