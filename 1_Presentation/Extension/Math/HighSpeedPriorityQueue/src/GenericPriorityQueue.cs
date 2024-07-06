@@ -130,14 +130,14 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     has been called
         ///     O(log n)
         /// </summary>
-        public void Enqueue(TItem node, TPriority priority)
+        public void Enqueue(TItem item, TPriority priority)
         {
-            node.Priority = priority;
+            item.Priority = priority;
             _numNodes++;
-            _nodes[_numNodes] = node;
-            node.QueueIndex = _numNodes;
-            node.InsertionIndex = _numNodesEverEnqueued++;
-            CascadeUp(node);
+            _nodes[_numNodes] = item;
+            item.QueueIndex = _numNodes;
+            item.InsertionIndex = _numNodesEverEnqueued++;
+            CascadeUp(item);
         }
 
         /// <summary>
@@ -194,10 +194,10 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     Calling this method on a node not in the queue results in undefined behavior
         ///     O(log n)
         /// </summary>
-        public void UpdatePriority(TItem node, TPriority priority)
+        public void UpdatePriority(TItem item, TPriority priority)
         {
-            node.Priority = priority;
-            OnNodeUpdated(node);
+            item.Priority = priority;
+            OnNodeUpdated(item);
         }
 
         /// <summary>
