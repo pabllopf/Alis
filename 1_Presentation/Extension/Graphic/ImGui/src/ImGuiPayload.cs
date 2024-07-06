@@ -41,27 +41,27 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The data
         /// </summary>
-        public IntPtr Data;
+        public IntPtr Data { get; set; }
 
         /// <summary>
         ///     The data size
         /// </summary>
-        public int DataSize;
+        public int DataSize { get; set; }
 
         /// <summary>
         ///     The source id
         /// </summary>
-        public uint SourceId;
+        public uint SourceId { get; set; }
 
         /// <summary>
         ///     The source parent id
         /// </summary>
-        public uint SourceParentId;
+        public uint SourceParentId { get; set; }
 
         /// <summary>
         ///     The data frame count
         /// </summary>
-        public int DataFrameCount;
+        public int DataFrameCount { get; set; }
 
         /// <summary>
         ///     The data type
@@ -72,12 +72,12 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The preview
         /// </summary>
-        public byte Preview;
+        public byte Preview { get; set; }
 
         /// <summary>
         ///     The delivery
         /// </summary>
-        public byte Delivery;
+        public byte Delivery { get; set; }
 
         /// <summary>
         ///     Clears this instance
