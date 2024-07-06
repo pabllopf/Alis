@@ -29,6 +29,9 @@
 
 namespace Alis.Extension.Graphic.OpenGL.Test
 {
+    /// <summary>
+    /// The draw arrays test class
+    /// </summary>
     public class DrawArraysTest
     {
         

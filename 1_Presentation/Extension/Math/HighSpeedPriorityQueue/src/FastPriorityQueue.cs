@@ -45,12 +45,12 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     The nodes
         /// </summary>
         private T[] _nodes;
-        
+
         /// <summary>
         ///     The num nodes
         /// </summary>
         private int _numNodes;
-        
+
         /// <summary>
         ///     Instantiate a new Priority Queue
         /// </summary>
@@ -60,20 +60,20 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
             _numNodes = 0;
             _nodes = new T[maxNodes + 1];
         }
-        
+
         /// <summary>
         ///     Returns the number of nodes in the queue.
         ///     O(1)
         /// </summary>
         public int Count => _numNodes;
-        
+
         /// <summary>
         ///     Returns the maximum number of items that can be enqueued at once in this queue.  Once you hit this number (ie. once
         ///     Count == MaxSize),
         ///     attempting to enqueue another item will cause undefined behavior.  O(1)
         /// </summary>
         public int MaxSize => _nodes.Length - 1;
-        
+
         /// <summary>
         ///     Removes every node from the queue.
         ///     O(n) (So, don't do this often!)
@@ -84,7 +84,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
             Array.Clear(_nodes, 1, _numNodes);
             _numNodes = 0;
         }
-        
+
         /// <summary>
         ///     Returns (in O(1)!) whether the given node is in the queue.
         ///     If node is or has been previously added to another queue, the result is undefined unless oldQueue.ResetNode(node)
@@ -92,7 +92,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     O(1)
         /// </summary>
         public bool Contains(T node) => _nodes[node.QueueIndex] == node;
-        
+
         /// <summary>
         ///     Enqueue a node to the priority queue.  Lower values are placed in front. Ties are broken arbitrarily.
         ///     If the queue is full, the result is undefined.
@@ -109,7 +109,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
             node.QueueIndex = _numNodes;
             CascadeUp(node);
         }
-        
+
         /// <summary>
         ///     Removes the head of the queue and returns it.
         ///     If queue is empty, result is undefined
@@ -126,19 +126,19 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                 _numNodes = 0;
                 return returnMe;
             }
-            
+
             //Swap the node with the last node
             T formerLastNode = _nodes[_numNodes];
             _nodes[1] = formerLastNode;
             formerLastNode.QueueIndex = 1;
             _nodes[_numNodes] = null;
             _numNodes--;
-            
+
             //Now bubble formerLastNode (which is no longer the last node) down
             CascadeDown(formerLastNode);
             return returnMe;
         }
-        
+
         /// <summary>
         ///     Resize the queue so it can accept more nodes.  All currently enqueued nodes are remain.
         ///     Attempting to decrease the queue size to a size too small to hold the existing nodes results in undefined behavior
@@ -151,14 +151,14 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
             Array.Copy(_nodes, newArray, highestIndexToCopy + 1);
             _nodes = newArray;
         }
-        
+
         /// <summary>
         ///     Returns the head of the queue, without removing it (use Dequeue() for that).
         ///     If the queue is empty, behavior is undefined.
         ///     O(1)
         /// </summary>
         public T First => _nodes[1];
-        
+
         /// <summary>
         ///     This method must be called on a node every time its priority changes while it is in the queue.
         ///     <b>Forgetting to call this method will result in a corrupted queue!</b>
@@ -171,7 +171,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
             node.Priority = priority;
             OnNodeUpdated(node);
         }
-        
+
         /// <summary>
         ///     Removes a node from the queue.  The node does not need to be the head of the queue.
         ///     If the node is not in the queue, the result is undefined.  If unsure, check Contains() first
@@ -187,18 +187,18 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                 _numNodes--;
                 return;
             }
-            
+
             //Swap the node with the last node
             T formerLastNode = _nodes[_numNodes];
             _nodes[node.QueueIndex] = formerLastNode;
             formerLastNode.QueueIndex = node.QueueIndex;
             _nodes[_numNodes] = null;
             _numNodes--;
-            
+
             //Now bubble formerLastNode (which is no longer the last node) up or down as appropriate
             OnNodeUpdated(formerLastNode);
         }
-        
+
         /// <summary>
         ///     By default, nodes that have been previously added to one queue cannot be added to another queue.
         ///     If you need to do this, please call originalQueue.ResetNode(node) before attempting to add it in the new queue
@@ -209,7 +209,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         {
             node.QueueIndex = 0;
         }
-        
+
         /// <summary>
         ///     Gets the enumerator
         /// </summary>
@@ -221,14 +221,14 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                 yield return _nodes[i];
             }
         }
-        
+
         /// <summary>
         ///     Gets the enumerator
         /// </summary>
         /// <returns>The enumerator</returns>
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
-        
-        
+
+
         /// <summary>
         ///     Cascades the up using the specified node
         /// </summary>
@@ -246,18 +246,18 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                 {
                     return;
                 }
-                
+
                 //Node has lower priority value, so move parent down the heap to make room
                 _nodes[node.QueueIndex] = parentNode;
                 parentNode.QueueIndex = node.QueueIndex;
-                
+
                 node.QueueIndex = parent;
             }
             else
             {
                 return;
             }
-            
+
             while (parent > 1)
             {
                 parent >>= 1;
@@ -266,175 +266,102 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                 {
                     break;
                 }
-                
+
                 //Node has lower priority value, so move parent down the heap to make room
                 _nodes[node.QueueIndex] = parentNode;
                 parentNode.QueueIndex = node.QueueIndex;
-                
+
                 node.QueueIndex = parent;
             }
-            
+
             _nodes[node.QueueIndex] = node;
         }
-        
-        
+
+
         /// <summary>
-        ///     Cascades the down using the specified node
+        /// Cascades the down using the specified node
         /// </summary>
         /// <param name="node">The node</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void CascadeDown(T node)
         {
-            //aka Heapify-down
             int finalQueueIndex = node.QueueIndex;
-            int childLeftIndex = 2 * finalQueueIndex;
-            
-            // If leaf node, we're done
-            if (childLeftIndex > _numNodes)
-            {
-                return;
-            }
-            
-            // Check if the left-child is higher-priority than the current node
-            int childRightIndex = childLeftIndex + 1;
-            T childLeft = _nodes[childLeftIndex];
-            if (HasHigherPriority(childLeft, node))
-            {
-                // Check if there is a right child. If not, swap and finish.
-                if (childRightIndex > _numNodes)
-                {
-                    node.QueueIndex = childLeftIndex;
-                    childLeft.QueueIndex = finalQueueIndex;
-                    _nodes[finalQueueIndex] = childLeft;
-                    _nodes[childLeftIndex] = node;
-                    return;
-                }
-                
-                // Check if the left-child is higher-priority than the right-child
-                T childRight = _nodes[childRightIndex];
-                if (HasHigherPriority(childLeft, childRight))
-                {
-                    // left is highest, move it up and continue
-                    childLeft.QueueIndex = finalQueueIndex;
-                    _nodes[finalQueueIndex] = childLeft;
-                    finalQueueIndex = childLeftIndex;
-                }
-                else
-                {
-                    // right is even higher, move it up and continue
-                    childRight.QueueIndex = finalQueueIndex;
-                    _nodes[finalQueueIndex] = childRight;
-                    finalQueueIndex = childRightIndex;
-                }
-            }
-            // Not swapping with left-child, does right-child exist?
-            else if (childRightIndex > _numNodes)
-            {
-                return;
-            }
-            else
-            {
-                // Check if the right-child is higher-priority than the current node
-                T childRight = _nodes[childRightIndex];
-                if (HasHigherPriority(childRight, node))
-                {
-                    childRight.QueueIndex = finalQueueIndex;
-                    _nodes[finalQueueIndex] = childRight;
-                    finalQueueIndex = childRightIndex;
-                }
-                // Neither child is higher-priority than current, so finish and stop.
-                else
-                {
-                    return;
-                }
-            }
-            
             while (true)
             {
-                childLeftIndex = 2 * finalQueueIndex;
-                
-                // If leaf node, we're done
-                if (childLeftIndex > _numNodes)
-                {
-                    node.QueueIndex = finalQueueIndex;
-                    _nodes[finalQueueIndex] = node;
-                    break;
-                }
-                
-                // Check if the left-child is higher-priority than the current node
-                childRightIndex = childLeftIndex + 1;
-                childLeft = _nodes[childLeftIndex];
-                if (HasHigherPriority(childLeft, node))
-                {
-                    // Check if there is a right child. If not, swap and finish.
-                    if (childRightIndex > _numNodes)
-                    {
-                        node.QueueIndex = childLeftIndex;
-                        childLeft.QueueIndex = finalQueueIndex;
-                        _nodes[finalQueueIndex] = childLeft;
-                        _nodes[childLeftIndex] = node;
-                        break;
-                    }
-                    
-                    // Check if the left-child is higher-priority than the right-child
-                    T childRight = _nodes[childRightIndex];
-                    if (HasHigherPriority(childLeft, childRight))
-                    {
-                        // left is highest, move it up and continue
-                        childLeft.QueueIndex = finalQueueIndex;
-                        _nodes[finalQueueIndex] = childLeft;
-                        finalQueueIndex = childLeftIndex;
-                    }
-                    else
-                    {
-                        // right is even higher, move it up and continue
-                        childRight.QueueIndex = finalQueueIndex;
-                        _nodes[finalQueueIndex] = childRight;
-                        finalQueueIndex = childRightIndex;
-                    }
-                }
-                // Not swapping with left-child, does right-child exist?
-                else if (childRightIndex > _numNodes)
-                {
-                    node.QueueIndex = finalQueueIndex;
-                    _nodes[finalQueueIndex] = node;
-                    break;
-                }
-                else
-                {
-                    // Check if the right-child is higher-priority than the current node
-                    T childRight = _nodes[childRightIndex];
-                    if (HasHigherPriority(childRight, node))
-                    {
-                        childRight.QueueIndex = finalQueueIndex;
-                        _nodes[finalQueueIndex] = childRight;
-                        finalQueueIndex = childRightIndex;
-                    }
-                    // Neither child is higher-priority than current, so finish and stop.
-                    else
-                    {
-                        node.QueueIndex = finalQueueIndex;
-                        _nodes[finalQueueIndex] = node;
-                        break;
-                    }
-                }
+                int childLeftIndex = 2 * finalQueueIndex;
+                if (childLeftIndex > _numNodes) break; // If leaf node, we're done
+
+                int childRightIndex = childLeftIndex + 1;
+                T childLeft = _nodes[childLeftIndex];
+                T childRight = childRightIndex <= _numNodes ? _nodes[childRightIndex] : null;
+
+                int swapIndex = GetSwapIndex(finalQueueIndex, childLeftIndex, childRightIndex, childLeft, childRight);
+
+                if (swapIndex == finalQueueIndex) break; // If no swap needed, we're done
+
+                Swap(finalQueueIndex, swapIndex);
+                finalQueueIndex = swapIndex; // Update the index for next iteration
             }
+
+            node.QueueIndex = finalQueueIndex;
+            _nodes[finalQueueIndex] = node;
         }
-        
+
+        /// <summary>
+        /// Gets the swap index using the specified final queue index
+        /// </summary>
+        /// <param name="finalQueueIndex">The final queue index</param>
+        /// <param name="childLeftIndex">The child left index</param>
+        /// <param name="childRightIndex">The child right index</param>
+        /// <param name="childLeft">The child left</param>
+        /// <param name="childRight">The child right</param>
+        /// <returns>The final queue index</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private int GetSwapIndex(int finalQueueIndex, int childLeftIndex, int childRightIndex, T childLeft, T childRight)
+        {
+            bool isLeftHigherPriority = HasHigherPriority(childLeft, _nodes[finalQueueIndex]);
+            bool isRightHigherPriority = childRight != null && HasHigherPriority(childRight, _nodes[finalQueueIndex]);
+
+            if (isLeftHigherPriority || isRightHigherPriority)
+            {
+                if (isLeftHigherPriority && isRightHigherPriority)
+                {
+                    return HasHigherPriority(childLeft, childRight) ? childLeftIndex : childRightIndex;
+                }
+
+                return isLeftHigherPriority ? childLeftIndex : childRightIndex;
+            }
+
+            return finalQueueIndex;
+        }
+
+        /// <summary>
+        /// Swaps the index 1
+        /// </summary>
+        /// <param name="index1">The index</param>
+        /// <param name="index2">The index</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private void Swap(int index1, int index2)
+        {
+            (_nodes[index1], _nodes[index2]) = (_nodes[index2], _nodes[index1]);
+            _nodes[index1].QueueIndex = index1;
+            _nodes[index2].QueueIndex = index2;
+        }
+
         /// <summary>
         ///     Returns true if 'higher' has higher priority than 'lower', false otherwise.
         ///     Note that calling HasHigherPriority(node, node) (ie. both arguments the same node) will return false
         /// </summary>
         private bool HasHigherPriority(T higher, T lower) => higher.Priority < lower.Priority;
-        
+
         /// <summary>
         ///     Returns true if 'higher' has higher priority than 'lower', false otherwise.
         ///     Note that calling HasHigherOrEqualPriority(node, node) (ie. both arguments the same node) will return true
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private bool HasHigherOrEqualPriority(T higher, T lower) => higher.Priority <= lower.Priority;
-        
-        
+
+
         /// <summary>
         ///     Ons the node updated using the specified node
         /// </summary>
@@ -444,7 +371,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         {
             //Bubble the updated node up or down as appropriate
             int parentIndex = node.QueueIndex >> 1;
-            
+
             if ((parentIndex > 0) && HasHigherPriority(node, _nodes[parentIndex]))
             {
                 CascadeUp(node);
@@ -455,7 +382,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                 CascadeDown(node);
             }
         }
-        
+
         /// <summary>
         ///     <b>Should not be called in production code.</b>
         ///     Checks to make sure the queue is still in a valid state.  Used for testing/debugging the queue.
@@ -471,7 +398,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                     {
                         return false;
                     }
-                    
+
                     int childRightIndex = childLeftIndex + 1;
                     if ((childRightIndex < _nodes.Length) && (_nodes[childRightIndex] != null) && HasHigherPriority(_nodes[childRightIndex], _nodes[i]))
                     {
@@ -479,7 +406,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                     }
                 }
             }
-            
+
             return true;
         }
     }

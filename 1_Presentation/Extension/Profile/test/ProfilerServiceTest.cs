@@ -37,6 +37,9 @@ namespace Alis.Extension.Profile.Test
     /// </summary>
     public class ProfilerServiceTest
     {
+        /// <summary>
+        /// Tests that start profiling initializes cpu and memory usage
+        /// </summary>
         [Fact]
         public void StartProfiling_InitializesCpuAndMemoryUsage()
         {
@@ -46,6 +49,9 @@ namespace Alis.Extension.Profile.Test
             Assert.True(profilerService.GetProfileData().MemoryUsage > 0);
         }
 
+        /// <summary>
+        /// Tests that stop profiling returns profile data with cpu and memory usage
+        /// </summary>
         [Fact]
         public void StopProfiling_ReturnsProfileDataWithCpuAndMemoryUsage()
         {
@@ -57,6 +63,9 @@ namespace Alis.Extension.Profile.Test
             Assert.True(profileData.MemoryUsage > 0);
         }
 
+        /// <summary>
+        /// Tests that get cpu usage returns positive value
+        /// </summary>
         [Fact]
         public void GetCpuUsage_ReturnsPositiveValue()
         {
@@ -66,6 +75,9 @@ namespace Alis.Extension.Profile.Test
             Assert.True(cpuUsage > 0);
         }
 
+        /// <summary>
+        /// Tests that get memory usage returns positive value
+        /// </summary>
         [Fact]
         public void GetMemoryUsage_ReturnsPositiveValue()
         {

@@ -29,6 +29,9 @@
 
 namespace Alis.Extension.Graphic.OpenGL.Test
 {
+    /// <summary>
+    /// The gl test class
+    /// </summary>
     public class GlTest
     {
         
