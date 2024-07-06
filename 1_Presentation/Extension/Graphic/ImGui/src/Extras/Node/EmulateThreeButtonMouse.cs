@@ -37,6 +37,6 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <summary>
         ///     The modifier
         /// </summary>
-        public byte[] Modifier;
+        public byte[] Modifier { get; }
     }
 }
