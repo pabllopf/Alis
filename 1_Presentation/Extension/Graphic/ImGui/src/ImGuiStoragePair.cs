@@ -37,11 +37,11 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The key
         /// </summary>
-        public uint Key;
+        public uint Key { get; set; }
 
         /// <summary>
         ///     The value
         /// </summary>
-        public UnionValue Value;
+        public UnionValue Value { get; set; }
     }
 }

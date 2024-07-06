@@ -73,7 +73,13 @@ namespace Alis.Extension.Graphic.ImGui
         public IntPtr TexId
         {
             get => Marshal.PtrToStructure<ImFontAtlas>(NativePtr).TexId;
-            set => Marshal.WriteIntPtr(NativePtr, Marshal.OffsetOf<ImFontAtlas>("TexId").ToInt32(), value);
+            set
+            {
+                // Write x and y values to the DisplaySize field
+                ImFontAtlas io = Marshal.PtrToStructure<ImFontAtlas>(NativePtr);
+                io.TexId = value;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
         }
 
         /// <summary>

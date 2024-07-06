@@ -39,16 +39,16 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The want visible
         /// </summary>
-        public byte WantVisible;
+        public byte WantVisible { get; set; }
 
         /// <summary>
         ///     The input pos
         /// </summary>
-        public Vector2 InputPos;
+        public Vector2 InputPos { get; set; }
 
         /// <summary>
         ///     The input line height
         /// </summary>
-        public float InputLineHeight;
+        public float InputLineHeight { get; set; }
     }
 }

@@ -37,21 +37,21 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The down
         /// </summary>
-        public byte Down;
+        public byte Down { get; set; }
 
         /// <summary>
         ///     The down duration
         /// </summary>
-        public float DownDuration;
+        public float DownDuration { get; set; }
 
         /// <summary>
         ///     The down duration prev
         /// </summary>
-        public float DownDurationPrev;
+        public float DownDurationPrev { get; set; }
 
         /// <summary>
         ///     The analog value
         /// </summary>
-        public float AnalogValue;
+        public float AnalogValue { get; set; }
     }
 }

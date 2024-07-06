@@ -40,86 +40,86 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The id
         /// </summary>
-        public uint Id;
+        public uint Id { get; set; }
 
         /// <summary>
         ///     The flags
         /// </summary>
-        public ImGuiViewportFlags Flags;
+        public ImGuiViewportFlags Flags { get; set; }
 
         /// <summary>
         ///     The pos
         /// </summary>
-        public Vector2 Pos;
+        public Vector2 Pos { get; set; }
 
         /// <summary>
         ///     The size
         /// </summary>
-        public Vector2 Size;
+        public Vector2 Size { get; set; }
 
         /// <summary>
         ///     The work pos
         /// </summary>
-        public Vector2 WorkPos;
+        public Vector2 WorkPos { get; set; }
 
         /// <summary>
         ///     The work size
         /// </summary>
-        public Vector2 WorkSize;
+        public Vector2 WorkSize { get; set; }
 
         /// <summary>
         ///     The dpi scale
         /// </summary>
-        public float DpiScale;
+        public float DpiScale { get; set; }
 
         /// <summary>
         ///     The parent viewport id
         /// </summary>
-        public uint ParentViewportId;
+        public uint ParentViewportId { get; set; }
 
         /// <summary>
         ///     The draw data
         /// </summary>
-        public IntPtr DrawData;
+        public IntPtr DrawData { get; set; }
 
         /// <summary>
         ///     The renderer user data
         /// </summary>
-        public IntPtr RendererUserData;
+        public IntPtr RendererUserData { get; set; }
 
         /// <summary>
         ///     The platform user data
         /// </summary>
-        public IntPtr PlatformUserData;
+        public IntPtr PlatformUserData { get; set; }
 
         /// <summary>
         ///     The platform handle
         /// </summary>
-        public IntPtr PlatformHandle;
+        public IntPtr PlatformHandle { get; set; }
 
         /// <summary>
         ///     The platform handle raw
         /// </summary>
-        public IntPtr PlatformHandleRaw;
+        public IntPtr PlatformHandleRaw { get; set; }
 
         /// <summary>
         ///     The platform window created
         /// </summary>
-        public byte PlatformWindowCreated;
+        public byte PlatformWindowCreated { get; set; }
 
         /// <summary>
         ///     The platform request move
         /// </summary>
-        public byte PlatformRequestMove;
+        public byte PlatformRequestMove { get; set; }
 
         /// <summary>
         ///     The platform request resize
         /// </summary>
-        public byte PlatformRequestResize;
+        public byte PlatformRequestResize { get; set; }
 
         /// <summary>
         ///     The platform request close
         /// </summary>
-        public byte PlatformRequestClose;
+        public byte PlatformRequestClose { get; set; }
     }
 }

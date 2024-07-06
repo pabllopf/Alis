@@ -39,26 +39,26 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The main pos
         /// </summary>
-        public Vector2 MainPos;
+        public Vector2 MainPos { get; set; }
 
         /// <summary>
         ///     The main size
         /// </summary>
-        public Vector2 MainSize;
+        public Vector2 MainSize { get; set; }
 
         /// <summary>
         ///     The work pos
         /// </summary>
-        public Vector2 WorkPos;
+        public Vector2 WorkPos { get; set; }
 
         /// <summary>
         ///     The work size
         /// </summary>
-        public Vector2 WorkSize;
+        public Vector2 WorkSize { get; set; }
 
         /// <summary>
         ///     The dpi scale
         /// </summary>
-        public float DpiScale;
+        public float DpiScale { get; set; }
     }
 }

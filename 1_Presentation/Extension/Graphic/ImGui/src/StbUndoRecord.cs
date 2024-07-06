@@ -37,21 +37,21 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The where
         /// </summary>
-        public int Where;
+        public int Where { get; set; }
 
         /// <summary>
         ///     The insert length
         /// </summary>
-        public int InsertLength;
+        public int InsertLength { get; set; }
 
         /// <summary>
         ///     The delete length
         /// </summary>
-        public int DeleteLength;
+        public int DeleteLength { get; set; }
 
         /// <summary>
         ///     The char storage
         /// </summary>
-        public int CharStorage;
+        public int CharStorage { get; set; }
     }
 }

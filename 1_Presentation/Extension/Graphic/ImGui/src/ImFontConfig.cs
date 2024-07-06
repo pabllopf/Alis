@@ -41,87 +41,87 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The font data
         /// </summary>
-        public IntPtr FontData;
+        public IntPtr FontData { get; set; }
 
         /// <summary>
         ///     The font data size
         /// </summary>
-        public int FontDataSize;
+        public int FontDataSize { get; set; }
 
         /// <summary>
         ///     The font data owned by atlas
         /// </summary>
-        public byte FontDataOwnedByAtlas;
+        public byte FontDataOwnedByAtlas { get; set; }
 
         /// <summary>
         ///     The font no
         /// </summary>
-        public int FontNo;
+        public int FontNo { get; set; }
 
         /// <summary>
         ///     The size pixels
         /// </summary>
-        public float SizePixels;
+        public float SizePixels { get; set; }
 
         /// <summary>
         ///     The oversample
         /// </summary>
-        public int OversampleH;
+        public int OversampleH { get; set; }
 
         /// <summary>
         ///     The oversample
         /// </summary>
-        public int OversampleV;
+        public int OversampleV { get; set; }
 
         /// <summary>
         ///     The pixel snap
         /// </summary>
-        public byte SnapH;
+        public byte SnapH { get; set; }
 
         /// <summary>
         ///     The glyph extra spacing
         /// </summary>
-        public Vector2 GlyphExtraSpacing;
+        public Vector2 GlyphExtraSpacing { get; set; }
 
         /// <summary>
         ///     The glyph offset
         /// </summary>
-        public Vector2 GlyphOffset;
+        public Vector2 GlyphOffset { get; set; }
 
         /// <summary>
         ///     The glyph ranges
         /// </summary>
-        public IntPtr GlyphRanges;
+        public IntPtr GlyphRanges { get; set; }
 
         /// <summary>
         ///     The glyph min advance
         /// </summary>
-        public float GlyphMinAdvanceX;
+        public float GlyphMinAdvanceX { get; set; }
 
         /// <summary>
         ///     The glyph max advance
         /// </summary>
-        public float GlyphMaxAdvanceX;
+        public float GlyphMaxAdvanceX { get; set; }
 
         /// <summary>
         ///     The merge mode
         /// </summary>
-        public byte MergeMode;
+        public byte MergeMode { get; set; }
 
         /// <summary>
         ///     The font builder flags
         /// </summary>
-        public uint FontBuilderFlags;
+        public uint FontBuilderFlags { get; set; }
 
         /// <summary>
         ///     The rasterizer multiply
         /// </summary>
-        public float RasterizerMultiply;
+        public float RasterizerMultiply { get; set; }
 
         /// <summary>
         ///     The ellipsis char
         /// </summary>
-        public ushort EllipsisChar;
+        public ushort EllipsisChar { get; set; }
 
         /// <summary>
         ///     The name
@@ -132,6 +132,6 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The dst font
         /// </summary>
-        public IntPtr DstFont;
+        public IntPtr DstFont { get; set; }
     }
 }

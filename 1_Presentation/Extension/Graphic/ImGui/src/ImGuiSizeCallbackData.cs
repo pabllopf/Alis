@@ -40,21 +40,21 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The user data
         /// </summary>
-        public IntPtr UserData;
+        public IntPtr UserData { get; set; }
 
         /// <summary>
         ///     The pos
         /// </summary>
-        public Vector2 Pos;
+        public Vector2 Pos { get; set; }
 
         /// <summary>
         ///     The current size
         /// </summary>
-        public Vector2 CurrentSize;
+        public Vector2 CurrentSize { get; set; }
 
         /// <summary>
         ///     The desired size
         /// </summary>
-        public Vector2 DesiredSize;
+        public Vector2 DesiredSize { get; set; }
     }
 }

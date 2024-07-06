@@ -37,6 +37,6 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The ref frame
         /// </summary>
-        public int RefFrame;
+        public int RefFrame { get; set; }
     }
 }

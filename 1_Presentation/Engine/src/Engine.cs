@@ -737,9 +737,14 @@ namespace Alis.App.Engine
             Gl.EnableVertexAttribArray(_shader["Color"].Location);
 
             int drawVertSize = Marshal.SizeOf<ImDrawVert>();
-            Gl.VertexAttribPointer(_shader["Position"].Location, 2, VertexAttribPointerType.Float, false, drawVertSize, Marshal.OffsetOf<ImDrawVert>("Pos"));
-            Gl.VertexAttribPointer(_shader["UV"].Location, 2, VertexAttribPointerType.Float, false, drawVertSize, Marshal.OffsetOf<ImDrawVert>("Uv"));
-            Gl.VertexAttribPointer(_shader["Color"].Location, 4, VertexAttribPointerType.UnsignedByte, true, drawVertSize, Marshal.OffsetOf<ImDrawVert>("Col"));
+            // Manual offset calculations
+            int posOffset = 0; // Offset of Pos is 0 bytes from the start
+            int uvOffset = 8;  // Offset of Uv is 8 bytes from the start (after Pos)
+            int colOffset = 16; // Offset of Col is 16 bytes from the start (after Pos and Uv)
+
+            Gl.VertexAttribPointer(_shader["Position"].Location, 2, VertexAttribPointerType.Float, false, drawVertSize, (IntPtr)posOffset);
+            Gl.VertexAttribPointer(_shader["UV"].Location, 2, VertexAttribPointerType.Float, false, drawVertSize, (IntPtr)uvOffset);
+            Gl.VertexAttribPointer(_shader["Color"].Location, 4, VertexAttribPointerType.UnsignedByte, true, drawVertSize, (IntPtr)colOffset);
         }
 
 

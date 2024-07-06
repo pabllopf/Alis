@@ -37,11 +37,11 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <summary>
         ///     The
         /// </summary>
-        public double X;
+        public double X { get; set; }
 
         /// <summary>
         ///     The
         /// </summary>
-        public double Y;
+        public double Y { get; set; }
     }
 }

@@ -39,521 +39,521 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The undo rec
         /// </summary>
-        public StbUndoRecord UndoRec0;
+        public StbUndoRecord UndoRec0 { get; set; }
 
         /// <summary>
         ///     The undo rec
         /// </summary>
-        public StbUndoRecord UndoRec1;
+        public StbUndoRecord UndoRec1 { get; set; }
 
         /// <summary>
         ///     The undo rec
         /// </summary>
-        public StbUndoRecord UndoRec2;
+        public StbUndoRecord UndoRec2 { get; set; }
 
         /// <summary>
         ///     The undo rec
         /// </summary>
-        public StbUndoRecord UndoRec3;
+        public StbUndoRecord UndoRec3 { get; set; }
 
         /// <summary>
         ///     The undo rec
         /// </summary>
-        public StbUndoRecord UndoRec4;
+        public StbUndoRecord UndoRec4 { get; set; }
 
         /// <summary>
         ///     The undo rec
         /// </summary>
-        public StbUndoRecord UndoRec5;
+        public StbUndoRecord UndoRec5 { get; set; }
 
         /// <summary>
         ///     The undo rec
         /// </summary>
-        public StbUndoRecord UndoRec6;
+        public StbUndoRecord UndoRec6 { get; set; }
 
         /// <summary>
         ///     The undo rec
         /// </summary>
-        public StbUndoRecord UndoRec7;
+        public StbUndoRecord UndoRec7 { get; set; }
 
         /// <summary>
         ///     The undo rec
         /// </summary>
-        public StbUndoRecord UndoRec8;
+        public StbUndoRecord UndoRec8 { get; set; }
 
         /// <summary>
         ///     The undo rec
         /// </summary>
-        public StbUndoRecord UndoRec9;
+        public StbUndoRecord UndoRec9 { get; set; }
 
         /// <summary>
         ///     The undo rec 10
         /// </summary>
-        public StbUndoRecord UndoRec10;
+        public StbUndoRecord UndoRec10 { get; set; }
 
         /// <summary>
         ///     The undo rec 11
         /// </summary>
-        public StbUndoRecord UndoRec11;
+        public StbUndoRecord UndoRec11 { get; set; }
 
         /// <summary>
         ///     The undo rec 12
         /// </summary>
-        public StbUndoRecord UndoRec12;
+        public StbUndoRecord UndoRec12 { get; set; }
 
         /// <summary>
         ///     The undo rec 13
         /// </summary>
-        public StbUndoRecord UndoRec13;
+        public StbUndoRecord UndoRec13 { get; set; }
 
         /// <summary>
         ///     The undo rec 14
         /// </summary>
-        public StbUndoRecord UndoRec14;
+        public StbUndoRecord UndoRec14 { get; set; }
 
         /// <summary>
         ///     The undo rec 15
         /// </summary>
-        public StbUndoRecord UndoRec15;
+        public StbUndoRecord UndoRec15 { get; set; }
 
         /// <summary>
         ///     The undo rec 16
         /// </summary>
-        public StbUndoRecord UndoRec16;
+        public StbUndoRecord UndoRec16 { get; set; }
 
         /// <summary>
         ///     The undo rec 17
         /// </summary>
-        public StbUndoRecord UndoRec17;
+        public StbUndoRecord UndoRec17 { get; set; }
 
         /// <summary>
         ///     The undo rec 18
         /// </summary>
-        public StbUndoRecord UndoRec18;
+        public StbUndoRecord UndoRec18 { get; set; }
 
         /// <summary>
         ///     The undo rec 19
         /// </summary>
-        public StbUndoRecord UndoRec19;
+        public StbUndoRecord UndoRec19 { get; set; }
 
         /// <summary>
         ///     The undo rec 20
         /// </summary>
-        public StbUndoRecord UndoRec20;
+        public StbUndoRecord UndoRec20 { get; set; }
 
         /// <summary>
         ///     The undo rec 21
         /// </summary>
-        public StbUndoRecord UndoRec21;
+        public StbUndoRecord UndoRec21 { get; set; }
 
         /// <summary>
         ///     The undo rec 22
         /// </summary>
-        public StbUndoRecord UndoRec22;
+        public StbUndoRecord UndoRec22 { get; set; }
 
         /// <summary>
         ///     The undo rec 23
         /// </summary>
-        public StbUndoRecord UndoRec23;
+        public StbUndoRecord UndoRec23 { get; set; }
 
         /// <summary>
         ///     The undo rec 24
         /// </summary>
-        public StbUndoRecord UndoRec24;
+        public StbUndoRecord UndoRec24 { get; set; }
 
         /// <summary>
         ///     The undo rec 25
         /// </summary>
-        public StbUndoRecord UndoRec25;
+        public StbUndoRecord UndoRec25 { get; set; }
 
         /// <summary>
         ///     The undo rec 26
         /// </summary>
-        public StbUndoRecord UndoRec26;
+        public StbUndoRecord UndoRec26 { get; set; }
 
         /// <summary>
         ///     The undo rec 27
         /// </summary>
-        public StbUndoRecord UndoRec27;
+        public StbUndoRecord UndoRec27 { get; set; }
 
         /// <summary>
         ///     The undo rec 28
         /// </summary>
-        public StbUndoRecord UndoRec28;
+        public StbUndoRecord UndoRec28 { get; set; }
 
         /// <summary>
         ///     The undo rec 29
         /// </summary>
-        public StbUndoRecord UndoRec29;
+        public StbUndoRecord UndoRec29 { get; set; }
 
         /// <summary>
         ///     The undo rec 30
         /// </summary>
-        public StbUndoRecord UndoRec30;
+        public StbUndoRecord UndoRec30 { get; set; }
 
         /// <summary>
         ///     The undo rec 31
         /// </summary>
-        public StbUndoRecord UndoRec31;
+        public StbUndoRecord UndoRec31 { get; set; }
 
         /// <summary>
         ///     The undo rec 32
         /// </summary>
-        public StbUndoRecord UndoRec32;
+        public StbUndoRecord UndoRec32 { get; set; }
 
         /// <summary>
         ///     The undo rec 33
         /// </summary>
-        public StbUndoRecord UndoRec33;
+        public StbUndoRecord UndoRec33 { get; set; }
 
         /// <summary>
         ///     The undo rec 34
         /// </summary>
-        public StbUndoRecord UndoRec34;
+        public StbUndoRecord UndoRec34 { get; set; }
 
         /// <summary>
         ///     The undo rec 35
         /// </summary>
-        public StbUndoRecord UndoRec35;
+        public StbUndoRecord UndoRec35 { get; set; }
 
         /// <summary>
         ///     The undo rec 36
         /// </summary>
-        public StbUndoRecord UndoRec36;
+        public StbUndoRecord UndoRec36 { get; set; }
 
         /// <summary>
         ///     The undo rec 37
         /// </summary>
-        public StbUndoRecord UndoRec37;
+        public StbUndoRecord UndoRec37 { get; set; }
 
         /// <summary>
         ///     The undo rec 38
         /// </summary>
-        public StbUndoRecord UndoRec38;
+        public StbUndoRecord UndoRec38 { get; set; }
 
         /// <summary>
         ///     The undo rec 39
         /// </summary>
-        public StbUndoRecord UndoRec39;
+        public StbUndoRecord UndoRec39 { get; set; }
 
         /// <summary>
         ///     The undo rec 40
         /// </summary>
-        public StbUndoRecord UndoRec40;
+        public StbUndoRecord UndoRec40 { get; set; }
 
         /// <summary>
         ///     The undo rec 41
         /// </summary>
-        public StbUndoRecord UndoRec41;
+        public StbUndoRecord UndoRec41 { get; set; }
 
         /// <summary>
         ///     The undo rec 42
         /// </summary>
-        public StbUndoRecord UndoRec42;
+        public StbUndoRecord UndoRec42 { get; set; }
 
         /// <summary>
         ///     The undo rec 43
         /// </summary>
-        public StbUndoRecord UndoRec43;
+        public StbUndoRecord UndoRec43 { get; set; }
 
         /// <summary>
         ///     The undo rec 44
         /// </summary>
-        public StbUndoRecord UndoRec44;
+        public StbUndoRecord UndoRec44 { get; set; }
 
         /// <summary>
         ///     The undo rec 45
         /// </summary>
-        public StbUndoRecord UndoRec45;
+        public StbUndoRecord UndoRec45 { get; set; }
 
         /// <summary>
         ///     The undo rec 46
         /// </summary>
-        public StbUndoRecord UndoRec46;
+        public StbUndoRecord UndoRec46 { get; set; }
 
         /// <summary>
         ///     The undo rec 47
         /// </summary>
-        public StbUndoRecord UndoRec47;
+        public StbUndoRecord UndoRec47 { get; set; }
 
         /// <summary>
         ///     The undo rec 48
         /// </summary>
-        public StbUndoRecord UndoRec48;
+        public StbUndoRecord UndoRec48 { get; set; }
 
         /// <summary>
         ///     The undo rec 49
         /// </summary>
-        public StbUndoRecord UndoRec49;
+        public StbUndoRecord UndoRec49 { get; set; }
 
         /// <summary>
         ///     The undo rec 50
         /// </summary>
-        public StbUndoRecord UndoRec50;
+        public StbUndoRecord UndoRec50 { get; set; }
 
         /// <summary>
         ///     The undo rec 51
         /// </summary>
-        public StbUndoRecord UndoRec51;
+        public StbUndoRecord UndoRec51 { get; set; }
 
         /// <summary>
         ///     The undo rec 52
         /// </summary>
-        public StbUndoRecord UndoRec52;
+        public StbUndoRecord UndoRec52 { get; set; }
 
         /// <summary>
         ///     The undo rec 53
         /// </summary>
-        public StbUndoRecord UndoRec53;
+        public StbUndoRecord UndoRec53 { get; set; }
 
         /// <summary>
         ///     The undo rec 54
         /// </summary>
-        public StbUndoRecord UndoRec54;
+        public StbUndoRecord UndoRec54 { get; set; }
 
         /// <summary>
         ///     The undo rec 55
         /// </summary>
-        public StbUndoRecord UndoRec55;
+        public StbUndoRecord UndoRec55 { get; set; }
 
         /// <summary>
         ///     The undo rec 56
         /// </summary>
-        public StbUndoRecord UndoRec56;
+        public StbUndoRecord UndoRec56 { get; set; }
 
         /// <summary>
         ///     The undo rec 57
         /// </summary>
-        public StbUndoRecord UndoRec57;
+        public StbUndoRecord UndoRec57 { get; set; }
 
         /// <summary>
         ///     The undo rec 58
         /// </summary>
-        public StbUndoRecord UndoRec58;
+        public StbUndoRecord UndoRec58 { get; set; }
 
         /// <summary>
         ///     The undo rec 59
         /// </summary>
-        public StbUndoRecord UndoRec59;
+        public StbUndoRecord UndoRec59 { get; set; }
 
         /// <summary>
         ///     The undo rec 60
         /// </summary>
-        public StbUndoRecord UndoRec60;
+        public StbUndoRecord UndoRec60 { get; set; }
 
         /// <summary>
         ///     The undo rec 61
         /// </summary>
-        public StbUndoRecord UndoRec61;
+        public StbUndoRecord UndoRec61 { get; set; }
 
         /// <summary>
         ///     The undo rec 62
         /// </summary>
-        public StbUndoRecord UndoRec62;
+        public StbUndoRecord UndoRec62 { get; set; }
 
         /// <summary>
         ///     The undo rec 63
         /// </summary>
-        public StbUndoRecord UndoRec63;
+        public StbUndoRecord UndoRec63 { get; set; }
 
         /// <summary>
         ///     The undo rec 64
         /// </summary>
-        public StbUndoRecord UndoRec64;
+        public StbUndoRecord UndoRec64 { get; set; }
 
         /// <summary>
         ///     The undo rec 65
         /// </summary>
-        public StbUndoRecord UndoRec65;
+        public StbUndoRecord UndoRec65 { get; set; }
 
         /// <summary>
         ///     The undo rec 66
         /// </summary>
-        public StbUndoRecord UndoRec66;
+        public StbUndoRecord UndoRec66 { get; set; }
 
         /// <summary>
         ///     The undo rec 67
         /// </summary>
-        public StbUndoRecord UndoRec67;
+        public StbUndoRecord UndoRec67 { get; set; }
 
         /// <summary>
         ///     The undo rec 68
         /// </summary>
-        public StbUndoRecord UndoRec68;
+        public StbUndoRecord UndoRec68 { get; set; }
 
         /// <summary>
         ///     The undo rec 69
         /// </summary>
-        public StbUndoRecord UndoRec69;
+        public StbUndoRecord UndoRec69 { get; set; }
 
         /// <summary>
         ///     The undo rec 70
         /// </summary>
-        public StbUndoRecord UndoRec70;
+        public StbUndoRecord UndoRec70 { get; set; }
 
         /// <summary>
         ///     The undo rec 71
         /// </summary>
-        public StbUndoRecord UndoRec71;
+        public StbUndoRecord UndoRec71 { get; set; }
 
         /// <summary>
         ///     The undo rec 72
         /// </summary>
-        public StbUndoRecord UndoRec72;
+        public StbUndoRecord UndoRec72 { get; set; }
 
         /// <summary>
         ///     The undo rec 73
         /// </summary>
-        public StbUndoRecord UndoRec73;
+        public StbUndoRecord UndoRec73 { get; set; }
 
         /// <summary>
         ///     The undo rec 74
         /// </summary>
-        public StbUndoRecord UndoRec74;
+        public StbUndoRecord UndoRec74 { get; set; }
 
         /// <summary>
         ///     The undo rec 75
         /// </summary>
-        public StbUndoRecord UndoRec75;
+        public StbUndoRecord UndoRec75 { get; set; }
 
         /// <summary>
         ///     The undo rec 76
         /// </summary>
-        public StbUndoRecord UndoRec76;
+        public StbUndoRecord UndoRec76 { get; set; }
 
         /// <summary>
         ///     The undo rec 77
         /// </summary>
-        public StbUndoRecord UndoRec77;
+        public StbUndoRecord UndoRec77 { get; set; }
 
         /// <summary>
         ///     The undo rec 78
         /// </summary>
-        public StbUndoRecord UndoRec78;
+        public StbUndoRecord UndoRec78 { get; set; }
 
         /// <summary>
         ///     The undo rec 79
         /// </summary>
-        public StbUndoRecord UndoRec79;
+        public StbUndoRecord UndoRec79 { get; set; }
 
         /// <summary>
         ///     The undo rec 80
         /// </summary>
-        public StbUndoRecord UndoRec80;
+        public StbUndoRecord UndoRec80 { get; set; }
 
         /// <summary>
         ///     The undo rec 81
         /// </summary>
-        public StbUndoRecord UndoRec81;
+        public StbUndoRecord UndoRec81 { get; set; }
 
         /// <summary>
         ///     The undo rec 82
         /// </summary>
-        public StbUndoRecord UndoRec82;
+        public StbUndoRecord UndoRec82 { get; set; }
 
         /// <summary>
         ///     The undo rec 83
         /// </summary>
-        public StbUndoRecord UndoRec83;
+        public StbUndoRecord UndoRec83 { get; set; }
 
         /// <summary>
         ///     The undo rec 84
         /// </summary>
-        public StbUndoRecord UndoRec84;
+        public StbUndoRecord UndoRec84 { get; set; }
 
         /// <summary>
         ///     The undo rec 85
         /// </summary>
-        public StbUndoRecord UndoRec85;
+        public StbUndoRecord UndoRec85 { get; set; }
 
         /// <summary>
         ///     The undo rec 86
         /// </summary>
-        public StbUndoRecord UndoRec86;
+        public StbUndoRecord UndoRec86 { get; set; }
 
         /// <summary>
         ///     The undo rec 87
         /// </summary>
-        public StbUndoRecord UndoRec87;
+        public StbUndoRecord UndoRec87 { get; set; }
 
         /// <summary>
         ///     The undo rec 88
         /// </summary>
-        public StbUndoRecord UndoRec88;
+        public StbUndoRecord UndoRec88 { get; set; }
 
         /// <summary>
         ///     The undo rec 89
         /// </summary>
-        public StbUndoRecord UndoRec89;
+        public StbUndoRecord UndoRec89 { get; set; }
 
         /// <summary>
         ///     The undo rec 90
         /// </summary>
-        public StbUndoRecord UndoRec90;
+        public StbUndoRecord UndoRec90 { get; set; }
 
         /// <summary>
         ///     The undo rec 91
         /// </summary>
-        public StbUndoRecord UndoRec91;
+        public StbUndoRecord UndoRec91 { get; set; }
 
         /// <summary>
         ///     The undo rec 92
         /// </summary>
-        public StbUndoRecord UndoRec92;
+        public StbUndoRecord UndoRec92 { get; set; }
 
         /// <summary>
         ///     The undo rec 93
         /// </summary>
-        public StbUndoRecord UndoRec93;
+        public StbUndoRecord UndoRec93 { get; set; }
 
         /// <summary>
         ///     The undo rec 94
         /// </summary>
-        public StbUndoRecord UndoRec94;
+        public StbUndoRecord UndoRec94 { get; set; }
 
         /// <summary>
         ///     The undo rec 95
         /// </summary>
-        public StbUndoRecord UndoRec95;
+        public StbUndoRecord UndoRec95 { get; set; }
 
         /// <summary>
         ///     The undo rec 96
         /// </summary>
-        public StbUndoRecord UndoRec96;
+        public StbUndoRecord UndoRec96 { get; set; }
 
         /// <summary>
         ///     The undo rec 97
         /// </summary>
-        public StbUndoRecord UndoRec97;
+        public StbUndoRecord UndoRec97 { get; set; }
 
         /// <summary>
         ///     The undo rec 98
         /// </summary>
-        public StbUndoRecord UndoRec98;
+        public StbUndoRecord UndoRec98 { get; set; }
 
         /// <summary>
         ///     The undo char
         /// </summary>
-        public List<ushort> UndoChar;
+        public List<ushort> UndoChar { get; set; }
 
         /// <summary>
         ///     The undo point
         /// </summary>
-        public short UndoPoint;
+        public short UndoPoint { get; set; }
 
         /// <summary>
         ///     The redo point
         /// </summary>
-        public short RedoPoint;
+        public short RedoPoint { get; set; }
 
         /// <summary>
         ///     The undo char point
         /// </summary>
-        public int UndoCharPoint;
+        public int UndoCharPoint { get; set; }
 
         /// <summary>
         ///     The redo char point
         /// </summary>
-        public int RedoCharPoint;
+        public int RedoCharPoint { get; set; }
     }
 }

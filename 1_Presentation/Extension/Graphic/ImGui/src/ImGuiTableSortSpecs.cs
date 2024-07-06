@@ -39,16 +39,16 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The specs
         /// </summary>
-        public IntPtr Specs;
+        public IntPtr Specs { get; set; }
 
         /// <summary>
         ///     The specs count
         /// </summary>
-        public int SpecsCount;
+        public int SpecsCount { get; set; }
 
         /// <summary>
         ///     The specs dirty
         /// </summary>
-        public byte SpecsDirty;
+        public byte SpecsDirty { get; set; }
     }
 }
