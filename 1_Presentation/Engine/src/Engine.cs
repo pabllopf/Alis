@@ -333,7 +333,7 @@ namespace Alis.App.Engine
             style = ImGui.GetStyle();
             ImGui.StyleColorsDark();
             style.WindowRounding = 0.0f;
-            style.Colors2.W = 1.0f;
+            style.Colors2 = new Vector4(0.00f, 0.00f, 0.00f, 1.00f);
 
             // config input manager 
 
