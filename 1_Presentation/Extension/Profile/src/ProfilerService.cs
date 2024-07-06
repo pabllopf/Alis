@@ -101,6 +101,10 @@ namespace Alis.Extension.Profile
             return memoryUsage;
         }
 
+        /// <summary>
+        /// Gets the profile data
+        /// </summary>
+        /// <returns>The profile data</returns>
         public ProfileData GetProfileData()
         {
           return profileData;

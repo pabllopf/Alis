@@ -29,6 +29,9 @@
 
 namespace Alis.Extension.Graphic.OpenGL.Test.Enums
 {
+    /// <summary>
+    /// The active attrib type test class
+    /// </summary>
     public class ActiveAttribTypeTest
     {
         
