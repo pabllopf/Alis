@@ -39,261 +39,261 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <summary>
         ///     The line weight
         /// </summary>
-        public float LineWeight;
+        public float LineWeight { get; set; }
 
         /// <summary>
         ///     The marker
         /// </summary>
-        public int Marker;
+        public int Marker { get; set; }
 
         /// <summary>
         ///     The marker size
         /// </summary>
-        public float MarkerSize;
+        public float MarkerSize { get; set; }
 
         /// <summary>
         ///     The marker weight
         /// </summary>
-        public float MarkerWeight;
+        public float MarkerWeight { get; set; }
 
         /// <summary>
         ///     The fill alpha
         /// </summary>
-        public float FillAlpha;
+        public float FillAlpha { get; set; }
 
         /// <summary>
         ///     The error bar size
         /// </summary>
-        public float ErrorBarSize;
+        public float ErrorBarSize { get; set; }
 
         /// <summary>
         ///     The error bar weight
         /// </summary>
-        public float ErrorBarWeight;
+        public float ErrorBarWeight { get; set; }
 
         /// <summary>
         ///     The digital bit height
         /// </summary>
-        public float DigitalBitHeight;
+        public float DigitalBitHeight { get; set; }
 
         /// <summary>
         ///     The digital bit gap
         /// </summary>
-        public float DigitalBitGap;
+        public float DigitalBitGap { get; set; }
 
         /// <summary>
         ///     The plot border size
         /// </summary>
-        public float PlotBorderSize;
+        public float PlotBorderSize { get; set; }
 
         /// <summary>
         ///     The minor alpha
         /// </summary>
-        public float MinorAlpha;
+        public float MinorAlpha { get; set; }
 
         /// <summary>
         ///     The major tick len
         /// </summary>
-        public Vector2 MajorTickLen;
+        public Vector2 MajorTickLen { get; set; }
 
         /// <summary>
         ///     The minor tick len
         /// </summary>
-        public Vector2 MinorTickLen;
+        public Vector2 MinorTickLen { get; set; }
 
         /// <summary>
         ///     The major tick size
         /// </summary>
-        public Vector2 MajorTickSize;
+        public Vector2 MajorTickSize { get; set; }
 
         /// <summary>
         ///     The minor tick size
         /// </summary>
-        public Vector2 MinorTickSize;
+        public Vector2 MinorTickSize { get; set; }
 
         /// <summary>
         ///     The major grid size
         /// </summary>
-        public Vector2 MajorGridSize;
+        public Vector2 MajorGridSize { get; set; }
 
         /// <summary>
         ///     The minor grid size
         /// </summary>
-        public Vector2 MinorGridSize;
+        public Vector2 MinorGridSize { get; set; }
 
         /// <summary>
         ///     The plot padding
         /// </summary>
-        public Vector2 PlotPadding;
+        public Vector2 PlotPadding { get; set; }
 
         /// <summary>
         ///     The label padding
         /// </summary>
-        public Vector2 LabelPadding;
+        public Vector2 LabelPadding { get; set; }
 
         /// <summary>
         ///     The legend padding
         /// </summary>
-        public Vector2 LegendPadding;
+        public Vector2 LegendPadding { get; set; }
 
         /// <summary>
         ///     The legend inner padding
         /// </summary>
-        public Vector2 LegendInnerPadding;
+        public Vector2 LegendInnerPadding { get; set; }
 
         /// <summary>
         ///     The legend spacing
         /// </summary>
-        public Vector2 LegendSpacing;
+        public Vector2 LegendSpacing { get; set; }
 
         /// <summary>
         ///     The mouse pos padding
         /// </summary>
-        public Vector2 MousePosPadding;
+        public Vector2 MousePosPadding { get; set; }
 
         /// <summary>
         ///     The annotation padding
         /// </summary>
-        public Vector2 AnnotationPadding;
+        public Vector2 AnnotationPadding { get; set; }
 
         /// <summary>
         ///     The fit padding
         /// </summary>
-        public Vector2 FitPadding;
+        public Vector2 FitPadding { get; set; }
 
         /// <summary>
         ///     The plot default size
         /// </summary>
-        public Vector2 PlotDefaultSize;
+        public Vector2 PlotDefaultSize { get; set; }
 
         /// <summary>
         ///     The plot min size
         /// </summary>
-        public Vector2 PlotMinSize;
+        public Vector2 PlotMinSize { get; set; }
 
         /// <summary>
         ///     The colors
         /// </summary>
-        public Vector4 Colors0;
+        public Vector4 Colors0 { get; set; }
 
         /// <summary>
         ///     The colors
         /// </summary>
-        public Vector4 Colors1;
+        public Vector4 Colors1 { get; set; }
 
         /// <summary>
         ///     The colors
         /// </summary>
-        public Vector4 Colors2;
+        public Vector4 Colors2 { get; set; }
 
         /// <summary>
         ///     The colors
         /// </summary>
-        public Vector4 Colors3;
+        public Vector4 Colors3 { get; set; }
 
         /// <summary>
         ///     The colors
         /// </summary>
-        public Vector4 Colors4;
+        public Vector4 Colors4  { get; set; }
 
         /// <summary>
         ///     The colors
         /// </summary>
-        public Vector4 Colors5;
+        public Vector4 Colors5 { get; set; }
 
         /// <summary>
         ///     The colors
         /// </summary>
-        public Vector4 Colors6;
+        public Vector4 Colors6 { get; set; }
 
         /// <summary>
         ///     The colors
         /// </summary>
-        public Vector4 Colors7;
+        public Vector4 Colors7 { get; set; }
 
         /// <summary>
         ///     The colors
         /// </summary>
-        public Vector4 Colors8;
+        public Vector4 Colors8 { get; set; }
 
         /// <summary>
         ///     The colors
         /// </summary>
-        public Vector4 Colors9;
+        public Vector4 Colors9 { get; set; }
 
         /// <summary>
         ///     The colors 10
         /// </summary>
-        public Vector4 Colors10;
+        public Vector4 Colors10 { get; set; }
 
         /// <summary>
         ///     The colors 11
         /// </summary>
-        public Vector4 Colors11;
+        public Vector4 Colors11 { get; set; }
 
         /// <summary>
         ///     The colors 12
         /// </summary>
-        public Vector4 Colors12;
+        public Vector4 Colors12 { get; set; }
 
         /// <summary>
         ///     The colors 13
         /// </summary>
-        public Vector4 Colors13;
+        public Vector4 Colors13 { get; set; }
 
         /// <summary>
         ///     The colors 14
         /// </summary>
-        public Vector4 Colors14;
+        public Vector4 Colors14 { get; set; }
 
         /// <summary>
         ///     The colors 15
         /// </summary>
-        public Vector4 Colors15;
+        public Vector4 Colors15 { get; set; }
 
         /// <summary>
         ///     The colors 16
         /// </summary>
-        public Vector4 Colors16;
+        public Vector4 Colors16 { get; set; }
 
         /// <summary>
         ///     The colors 17
         /// </summary>
-        public Vector4 Colors17;
+        public Vector4 Colors17 { get; set; }
 
         /// <summary>
         ///     The colors 18
         /// </summary>
-        public Vector4 Colors18;
+        public Vector4 Colors18 { get; set; }
 
         /// <summary>
         ///     The colors 19
         /// </summary>
-        public Vector4 Colors19;
+        public Vector4 Colors19 { get; set; }
 
         /// <summary>
         ///     The colors 20
         /// </summary>
-        public Vector4 Colors20;
+        public Vector4 Colors20 { get; set; }
 
         /// <summary>
         ///     The colormap
         /// </summary>
-        public ImPlotColormap Colormap;
+        public ImPlotColormap Colormap { get; set; }
 
         /// <summary>
         ///     The use local time
         /// </summary>
-        public byte UseLocalTime;
+        public byte UseLocalTime { get; set; }
 
         /// <summary>
         ///     The use iso 8601
         /// </summary>
-        public byte UseIso8601;
+        public byte UseIso8601 { get; set; }
 
         /// <summary>
         ///     The use 24 hour clock
         /// </summary>
-        public byte Use24HourClock;
+        public byte Use24HourClock { get; set; }
     }
 }
