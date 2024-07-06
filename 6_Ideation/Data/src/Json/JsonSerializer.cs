@@ -519,49 +519,17 @@ namespace Alis.Core.Aspect.Data.Json
 
                 if (!type.IsPrimitive && !type.IsInterface && !type.IsAbstract) // Check if type is a struct
                 {
-                    ConstructorInfo specialConstructor = type.GetConstructors()
-                        .FirstOrDefault(c => c.GetCustomAttributesData()
-                            .Any(a => a.AttributeType.Name.Contains("JsonConstructorAttribute")));
-                    if (specialConstructor != null)
+                    object instanceTemp = CreateInstanceWithSpecialConstructor(type, value, elementsCount, options, SerializationTypeToken);
+                    if (instanceTemp != null)
                     {
-                        ParameterInfo[] parameters = specialConstructor.GetParameters();
-                        object[] parameterValues = new object[parameters.Length];
-
-                        if (value is IDictionary dictionary)
-                        {
-                            for (int i = 0; i < parameters.Length; i++)
-                            {
-                                // Iterate over dictionary keys
-                                foreach (object key in dictionary.Keys)
-                                {
-                                    if (!key.ToString().Equals(SerializationTypeToken) && key.ToString().ToLower().Contains(parameters[i].Name.ToLower()))
-                                    {
-                                        parameterValues[i] = CreateInstance(target, parameters[i].ParameterType, elementsCount, options, dictionary[key]);
-                                        break;
-                                    }
-                                }
-                            }
-
-                            return Activator.CreateInstance(type, parameterValues);
-                        }
+                        return instanceTemp;
                     }
                 }
 
-                // If the type is an interface or abstract class, get the __type and create an instance of the type
-                if (type.IsInterface || type.IsAbstract)
+                object anTemp = CreateInstanceForInterfaceOrAbstract(type, target, elementsCount, options, value);
+                if (anTemp != null)
                 {
-                    if (options != null)
-                    {
-                        if (value is IDictionary dictionary)
-                        {
-                            string typeName = dictionary[SerializationTypeToken].ToString();
-                            Type typeFromName = GetTypeFromText(typeName);
-                            if (typeFromName != null)
-                            {
-                                return CreateInstance(target, typeFromName, elementsCount, options, dictionary);
-                            }
-                        }
-                    }
+                    return anTemp;
                 }
 
                 if (type.IsPrimitive || type == typeof(string) || type == typeof(char))
@@ -571,45 +539,14 @@ namespace Alis.Core.Aspect.Data.Json
 
                 if (type.IsSerializable) // Check if type implements ISerializable
                 {
-                    if (value is IDictionary dictionary)
-                    {
-                        // Get all public constructors
-                        ConstructorInfo[] constructors = type.GetConstructors(BindingFlags.Public | BindingFlags.Instance);
-
-                        dictionary.Remove(SerializationTypeToken);
-                        // Find a constructor that has the same number of parameters as the dictionary
-                        foreach (ConstructorInfo constructor in constructors)
-                        {
-                            ParameterInfo[] parameters = constructor.GetParameters();
-                            if (parameters.Length == dictionary.Count)
-                            {
-                                // Create an array to hold the parameter values
-                                object[] parameterValues = new object[parameters.Length];
-
-                                // Try to populate the array with values from the dictionary
-                                for (int i = 0; i < parameters.Length; i++)
-                                {
-                                    if (dictionary.Contains(parameters[i].Name))
-                                    {
-                                        parameterValues[i] = CreateInstance(target, parameters[i].ParameterType, elementsCount, options, dictionary[parameters[i].Name]);
-                                        //parameterValues[i] = Convert.ChangeType(dictionary[parameters[i].Name], parameters[i].ParameterType);
-                                    }
-                                    else
-                                    {
-                                        // If a key in the dictionary does not match a parameter name, this is not the right constructor
-                                        parameterValues = null;
-                                        break;
-                                    }
-                                }
-
-                                // If the parameter values array was successfully populated, use this constructor
-                                if (parameterValues != null)
-                                {
-                                    return Activator.CreateInstance(type, parameterValues);
-                                }
-                            }
-                        }
-                    }
+                   if (value is IDictionary dictionary)
+                   {
+                       object ancienTemp = CreateInstanceFromDictionary(type, target, elementsCount, options, dictionary);
+                       if (ancienTemp != null)
+                       {
+                           return ancienTemp;
+                       }
+                   }
                 }
 
                 return Activator.CreateInstance(type);
@@ -618,6 +555,124 @@ namespace Alis.Core.Aspect.Data.Json
             {
                 return HandleCreationException(type, e, options);
             }
+        }
+        
+        /// <summary>
+        /// Creates the instance from dictionary using the specified type
+        /// </summary>
+        /// <param name="type">The type</param>
+        /// <param name="target">The target</param>
+        /// <param name="elementsCount">The elements count</param>
+        /// <param name="options">The options</param>
+        /// <param name="dictionary">The dictionary</param>
+        /// <returns>The object</returns>
+        internal static object CreateInstanceFromDictionary(Type type, object target, int elementsCount, JsonOptions options, IDictionary dictionary)
+        {
+            // Get all public constructors
+            ConstructorInfo[] constructors = type.GetConstructors(BindingFlags.Public | BindingFlags.Instance);
+
+            dictionary.Remove(SerializationTypeToken);
+            // Find a constructor that has the same number of parameters as the dictionary
+            foreach (ConstructorInfo constructor in constructors)
+            {
+                ParameterInfo[] parameters = constructor.GetParameters();
+                if (parameters.Length == dictionary.Count)
+                {
+                    // Create an array to hold the parameter values
+                    object[] parameterValues = new object[parameters.Length];
+
+                    // Try to populate the array with values from the dictionary
+                    for (int i = 0; i < parameters.Length; i++)
+                    {
+                        if (dictionary.Contains(parameters[i].Name))
+                        {
+                            parameterValues[i] = CreateInstance(target, parameters[i].ParameterType, elementsCount, options, dictionary[parameters[i].Name]);
+                        }
+                        else
+                        {
+                            // If a key in the dictionary does not match a parameter name, this is not the right constructor
+                            parameterValues = null;
+                            break;
+                        }
+                    }
+
+                    // If the parameter values array was successfully populated, use this constructor
+                    if (parameterValues != null)
+                    {
+                        return Activator.CreateInstance(type, parameterValues);
+                    }
+                }
+            }
+            return null;
+        }
+        
+        /// <summary>
+        /// Creates the instance for interface or abstract using the specified type
+        /// </summary>
+        /// <param name="type">The type</param>
+        /// <param name="target">The target</param>
+        /// <param name="elementsCount">The elements count</param>
+        /// <param name="options">The options</param>
+        /// <param name="value">The value</param>
+        /// <returns>The object</returns>
+        internal static object CreateInstanceForInterfaceOrAbstract(Type type, object target, int elementsCount, JsonOptions options, object value)
+        {
+            if (type.IsInterface || type.IsAbstract)
+            {
+                if (options != null)
+                {
+                    if (value is IDictionary dictionary)
+                    {
+                        string typeName = dictionary[SerializationTypeToken].ToString();
+                        Type typeFromName = GetTypeFromText(typeName);
+                        if (typeFromName != null)
+                        {
+                            return CreateInstance(target, typeFromName, elementsCount, options, dictionary);
+                        }
+                    }
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Creates the instance with special constructor using the specified type
+        /// </summary>
+        /// <param name="type">The type</param>
+        /// <param name="value">The value</param>
+        /// <param name="elementsCount">The elements count</param>
+        /// <param name="options">The options</param>
+        /// <param name="serializationTypeToken">The serialization type token</param>
+        /// <returns>The object</returns>
+        private static object CreateInstanceWithSpecialConstructor(Type type, object value, int elementsCount, JsonOptions options, string serializationTypeToken)
+        {
+            ConstructorInfo specialConstructor = type.GetConstructors()
+                .FirstOrDefault(c => c.GetCustomAttributesData()
+                    .Any(a => a.AttributeType.Name.Contains("JsonConstructorAttribute")));
+            if (specialConstructor != null)
+            {
+                ParameterInfo[] parameters = specialConstructor.GetParameters();
+                object[] parameterValues = new object[parameters.Length];
+
+                if (value is IDictionary dictionary)
+                {
+                    for (int i = 0; i < parameters.Length; i++)
+                    {
+                        foreach (object key in dictionary.Keys)
+                        {
+                            if (!key.ToString().Equals(serializationTypeToken) && key.ToString().ToLower().Contains(parameters[i].Name.ToLower()))
+                            {
+                                parameterValues[i] = CreateInstance(null, parameters[i].ParameterType, elementsCount, options, dictionary[key]);
+                                break;
+                            }
+                        }
+                    }
+
+                    return Activator.CreateInstance(type, parameterValues);
+                }
+            }
+
+            return null;
         }
 
         /// <summary>
