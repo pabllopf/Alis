@@ -40,87 +40,87 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The index advance
         /// </summary>
-        public ImVector IndexAdvanceX;
+        public ImVector IndexAdvanceX { get; set; }
 
         /// <summary>
         ///     The fallback advance
         /// </summary>
-        public float FallbackAdvanceX;
+        public float FallbackAdvanceX { get; set; }
 
         /// <summary>
         ///     The font size
         /// </summary>
-        public float FontSize;
+        public float FontSize { get; set; }
 
         /// <summary>
         ///     The index lookup
         /// </summary>
-        public ImVector IndexLookup;
+        public ImVector IndexLookup { get; set; }
 
         /// <summary>
         ///     The glyphs
         /// </summary>
-        public ImVector Glyphs;
+        public ImVector Glyphs { get; set; }
 
         /// <summary>
         ///     The fallback glyph
         /// </summary>
-        public IntPtr FallbackGlyph;
+        public IntPtr FallbackGlyph { get; set; }
 
         /// <summary>
         ///     The container atlas
         /// </summary>
-        public IntPtr ContainerAtlas;
+        public IntPtr ContainerAtlas { get; set; }
 
         /// <summary>
         ///     The config data
         /// </summary>
-        public IntPtr ConfigData;
+        public IntPtr ConfigData { get; set; }
 
         /// <summary>
         ///     The config data count
         /// </summary>
-        public short ConfigDataCount;
+        public short ConfigDataCount { get; set; }
 
         /// <summary>
         ///     The fallback char
         /// </summary>
-        public ushort FallbackChar;
+        public ushort FallbackChar { get; set; }
 
         /// <summary>
         ///     The ellipsis char
         /// </summary>
-        public ushort EllipsisChar;
+        public ushort EllipsisChar { get; set; }
 
         /// <summary>
         ///     The dot char
         /// </summary>
-        public ushort DotChar;
+        public ushort DotChar { get; set; }
 
         /// <summary>
         ///     The dirty lookup tables
         /// </summary>
-        public byte DirtyLookupTables;
+        public byte DirtyLookupTables { get; set; }
 
         /// <summary>
         ///     The scale
         /// </summary>
-        public float Scale;
+        public float Scale { get; set; }
 
         /// <summary>
         ///     The ascent
         /// </summary>
-        public float Ascent;
+        public float Ascent { get; set; }
 
         /// <summary>
         ///     The descent
         /// </summary>
-        public float Descent;
+        public float Descent { get; set; }
 
         /// <summary>
         ///     The metrics total surface
         /// </summary>
-        public int MetricsTotalSurface;
+        public int MetricsTotalSurface { get; set; }
 
         /// <summary>
         ///     The used 4k pages map
