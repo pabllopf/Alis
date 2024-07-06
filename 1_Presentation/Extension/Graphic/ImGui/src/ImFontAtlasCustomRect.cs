@@ -40,41 +40,41 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The width
         /// </summary>
-        public ushort Width;
+        public ushort Width { get; set; }
 
         /// <summary>
         ///     The height
         /// </summary>
-        public ushort Height;
+        public ushort Height { get; set; }
 
         /// <summary>
         ///     The
         /// </summary>
-        public ushort X;
+        public ushort X { get; set; }
 
         /// <summary>
         ///     The
         /// </summary>
-        public ushort Y;
+        public ushort Y { get; set; }
 
         /// <summary>
         ///     The glyph id
         /// </summary>
-        public uint GlyphId;
+        public uint GlyphId { get; set; }
 
         /// <summary>
         ///     The glyph advance
         /// </summary>
-        public float GlyphAdvanceX;
+        public float GlyphAdvanceX { get; set; }
 
         /// <summary>
         ///     The glyph offset
         /// </summary>
-        public Vector2 GlyphOffset;
+        public Vector2 GlyphOffset { get; set; }
 
         /// <summary>
         ///     The font
         /// </summary>
-        public IntPtr Font;
+        public IntPtr Font { get; set; }
     }
 }
