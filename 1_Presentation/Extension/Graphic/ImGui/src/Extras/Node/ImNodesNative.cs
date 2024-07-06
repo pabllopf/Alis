@@ -482,7 +482,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// </summary>
         /// <param name="flag">The flag</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImNodes_PushAttributeFlag")]
-        internal static extern void ImNodes_PushAttributeFlag(ImNodesAttribute flag);
+        internal static extern void ImNodes_PushAttributeFlag(ImNodesConfig flag);
 
         /// <summary>
         ///     Ims the nodes push color style using the specified item

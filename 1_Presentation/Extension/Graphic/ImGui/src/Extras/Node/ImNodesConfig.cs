@@ -35,7 +35,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
     ///     The im nodes attribute flags enum
     /// </summary>
     [Flags]
-    public enum ImNodesAttribute
+    public enum ImNodesConfig
     {
         /// <summary>
         ///     The none im nodes attribute flags
