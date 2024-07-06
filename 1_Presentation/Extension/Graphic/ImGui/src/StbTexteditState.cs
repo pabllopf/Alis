@@ -37,71 +37,71 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The cursor
         /// </summary>
-        public int Cursor;
+        public int Cursor { get; set; }
 
         /// <summary>
         ///     The select start
         /// </summary>
-        public int SelectStart;
+        public int SelectStart { get; set; }
 
         /// <summary>
         ///     The select end
         /// </summary>
-        public int SelectEnd;
+        public int SelectEnd { get; set; }
 
         /// <summary>
         ///     The insert mode
         /// </summary>
-        public byte InsertMode;
+        public byte InsertMode { get; set; }
 
         /// <summary>
         ///     The row count per page
         /// </summary>
-        public int RowCountPerPage;
+        public int RowCountPerPage { get; set; }
 
         /// <summary>
         ///     The cursor at end of line
         /// </summary>
-        public byte CursorAtEndOfLine;
+        public byte CursorAtEndOfLine { get; set; }
 
         /// <summary>
         ///     The initialized
         /// </summary>
-        public byte Initialized;
+        public byte Initialized { get; set; }
 
         /// <summary>
         ///     The has preferred
         /// </summary>
-        public byte HasPreferredX;
+        public byte HasPreferredX { get; set; }
 
         /// <summary>
         ///     The single line
         /// </summary>
-        public byte SingleLine;
+        public byte SingleLine { get; set; }
 
         /// <summary>
         ///     The padding
         /// </summary>
-        public byte Padding1;
+        public byte Padding1 { get; set; }
 
         /// <summary>
         ///     The padding
         /// </summary>
-        public byte Padding2;
+        public byte Padding2 { get; set; }
 
         /// <summary>
         ///     The padding
         /// </summary>
-        public byte Padding3;
+        public byte Padding3 { get; set; }
 
         /// <summary>
         ///     The preferred
         /// </summary>
-        public float PreferredX;
+        public float PreferredX { get; set; }
 
         /// <summary>
         ///     The undo
         /// </summary>
-        public StbUndoState UndoState;
+        public StbUndoState UndoState { get; set; }
     }
 }

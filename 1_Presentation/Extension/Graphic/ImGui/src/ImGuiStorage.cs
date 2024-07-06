@@ -37,6 +37,6 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The data
         /// </summary>
-        public ImVector Data;
+        public ImVector Data { get; set; }
     }
 }

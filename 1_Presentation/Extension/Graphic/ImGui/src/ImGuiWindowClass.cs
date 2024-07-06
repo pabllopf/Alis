@@ -37,41 +37,41 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The class id
         /// </summary>
-        public uint ClassId;
+        public uint ClassId { get; set; }
 
         /// <summary>
         ///     The parent viewport id
         /// </summary>
-        public uint ParentViewportId;
+        public uint ParentViewportId { get; set; }
 
         /// <summary>
         ///     The viewport flags override set
         /// </summary>
-        public ImGuiViewportFlags ViewportFlagsOverrideSet;
+        public ImGuiViewportFlags ViewportFlagsOverrideSet { get; set; }
 
         /// <summary>
         ///     The viewport flags override clear
         /// </summary>
-        public ImGuiViewportFlags ViewportFlagsOverrideClear;
+        public ImGuiViewportFlags ViewportFlagsOverrideClear { get; set; }
 
         /// <summary>
         ///     The tab item flags override set
         /// </summary>
-        public ImGuiTabItemFlags TabItemFlagsOverrideSet;
+        public ImGuiTabItemFlags TabItemFlagsOverrideSet { get; set; }
 
         /// <summary>
         ///     The dock node flags override set
         /// </summary>
-        public ImGuiDockNodeFlags DockNodeFlagsOverrideSet;
+        public ImGuiDockNodeFlags DockNodeFlagsOverrideSet { get; set; }
 
         /// <summary>
         ///     The docking always tab bar
         /// </summary>
-        public byte DockingAlwaysTabBar;
+        public byte DockingAlwaysTabBar { get; set; }
 
         /// <summary>
         ///     The docking allow unclassed
         /// </summary>
-        public byte DockingAllowUnclassed;
+        public byte DockingAllowUnclassed { get; set; }
     }
 }

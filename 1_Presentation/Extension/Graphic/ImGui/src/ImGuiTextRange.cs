@@ -39,11 +39,11 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The
         /// </summary>
-        public IntPtr B;
+        public IntPtr B { get; set; }
 
         /// <summary>
         ///     The
         /// </summary>
-        public IntPtr E;
+        public IntPtr E { get; set; }
     }
 }

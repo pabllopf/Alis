@@ -39,76 +39,76 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The cmd buffer
         /// </summary>
-        public ImVector CmdBuffer;
+        public ImVector CmdBuffer { get; set; }
 
         /// <summary>
         ///     The idx buffer
         /// </summary>
-        public ImVector IdxBuffer;
+        public ImVector IdxBuffer { get; set; }
 
         /// <summary>
         ///     The vtx buffer
         /// </summary>
-        public ImVector VtxBuffer;
+        public ImVector VtxBuffer { get; set; }
 
         /// <summary>
         ///     The flags
         /// </summary>
-        public ImDrawListFlags Flags;
+        public ImDrawListFlags Flags { get; set; }
 
         /// <summary>
         ///     The vtx current idx
         /// </summary>
-        public uint VtxCurrentIdx;
+        public uint VtxCurrentIdx { get; set; }
 
         /// <summary>
         ///     The data
         /// </summary>
-        public IntPtr Data;
+        public IntPtr Data { get; set; }
 
         /// <summary>
         ///     The owner name
         /// </summary>
-        public IntPtr OwnerName;
+        public IntPtr OwnerName { get; set; }
 
         /// <summary>
         ///     The vtx write ptr
         /// </summary>
-        public IntPtr VtxWritePtr;
+        public IntPtr VtxWritePtr { get; set; }
 
         /// <summary>
         ///     The idx write ptr
         /// </summary>
-        public IntPtr IdxWritePtr;
+        public IntPtr IdxWritePtr { get; set; }
 
         /// <summary>
         ///     The clip rect stack
         /// </summary>
-        public ImVector ClipRectStack;
+        public ImVector ClipRectStack { get; set; }
 
         /// <summary>
         ///     The texture id stack
         /// </summary>
-        public ImVector TextureIdStack;
+        public ImVector TextureIdStack { get; set; }
 
         /// <summary>
         ///     The path
         /// </summary>
-        public ImVector Path;
+        public ImVector Path { get; set; }
 
         /// <summary>
         ///     The cmd header
         /// </summary>
-        public ImDrawCmdHeader CmdHeader;
+        public ImDrawCmdHeader CmdHeader { get; set; }
 
         /// <summary>
         ///     The splitter
         /// </summary>
-        public ImDrawListSplitter Splitter;
+        public ImDrawListSplitter Splitter { get; set; }
 
         /// <summary>
         ///     The fringe scale
         /// </summary>
-        public float FringeScale;
+        public float FringeScale { get; set; }
     }
 }

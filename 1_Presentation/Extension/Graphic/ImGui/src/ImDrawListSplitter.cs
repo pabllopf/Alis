@@ -37,16 +37,16 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The current
         /// </summary>
-        public int Current;
+        public int Current { get; set; }
 
         /// <summary>
         ///     The count
         /// </summary>
-        public int Count;
+        public int Count { get; set; }
 
         /// <summary>
         ///     The channels
         /// </summary>
-        public ImVector Channels;
+        public ImVector Channels { get; set; }
     }
 }

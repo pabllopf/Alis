@@ -40,37 +40,37 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The clip rect
         /// </summary>
-        public Vector4 ClipRect;
+        public Vector4 ClipRect { get; set; }
 
         /// <summary>
         ///     The texture id
         /// </summary>
-        public IntPtr TextureId;
+        public IntPtr TextureId { get; set; }
 
         /// <summary>
         ///     The vtx offset
         /// </summary>
-        public uint VtxOffset;
+        public uint VtxOffset { get; set; }
 
         /// <summary>
         ///     The idx offset
         /// </summary>
-        public uint IdxOffset;
+        public uint IdxOffset { get; set; }
 
         /// <summary>
         ///     The elem count
         /// </summary>
-        public uint ElemCount;
+        public uint ElemCount { get; set; }
 
         /// <summary>
         ///     The user callback
         /// </summary>
-        public IntPtr UserCallback;
+        public IntPtr UserCallback { get; set; }
 
         /// <summary>
         ///     The user callback data
         /// </summary>
-        public IntPtr UserCallbackData;
+        public IntPtr UserCallbackData { get; set; }
 
         /// <summary>
         ///     Gets the clip rect

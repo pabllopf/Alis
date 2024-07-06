@@ -40,421 +40,421 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The flags
         /// </summary>
-        public ImFontAtlasFlags Flags;
+        public ImFontAtlasFlags Flags { get; set; }
 
         /// <summary>
         ///     The tex id
         /// </summary>
-        public IntPtr TexId;
+        public IntPtr TexId { get; set; }
 
         /// <summary>
         ///     The tex desired width
         /// </summary>
-        public int TexDesiredWidth;
+        public int TexDesiredWidth { get; set; }
 
         /// <summary>
         ///     The tex glyph padding
         /// </summary>
-        public int TexGlyphPadding;
+        public int TexGlyphPadding { get; set; }
 
         /// <summary>
         ///     The locked
         /// </summary>
-        public byte Locked;
+        public byte Locked { get; set; }
 
         /// <summary>
         ///     The tex ready
         /// </summary>
-        public byte TexReady;
+        public byte TexReady { get; set; }
 
         /// <summary>
         ///     The tex pixels use colors
         /// </summary>
-        public byte TexPixelsUseColors;
+        public byte TexPixelsUseColors { get; set; }
 
         /// <summary>
         ///     The tex pixels alpha
         /// </summary>
-        public IntPtr TexPixelsAlpha8;
+        public IntPtr TexPixelsAlpha8 { get; set; }
 
         /// <summary>
         ///     The tex pixels rgba 32
         /// </summary>
-        public IntPtr TexPixelsRgba32;
+        public IntPtr TexPixelsRgba32 { get; set; }
 
         /// <summary>
         ///     The tex width
         /// </summary>
-        public int TexWidth;
+        public int TexWidth { get; set; }
 
         /// <summary>
         ///     The tex height
         /// </summary>
-        public int TexHeight;
+        public int TexHeight { get; set; }
 
         /// <summary>
         ///     The tex uv scale
         /// </summary>
-        public Vector2 TexUvScale;
+        public Vector2 TexUvScale { get; set; }
 
         /// <summary>
         ///     The tex uv white pixel
         /// </summary>
-        public Vector2 TexUvWhitePixel;
+        public Vector2 TexUvWhitePixel { get; set; }
 
         /// <summary>
         ///     The fonts
         /// </summary>
-        public ImVector Fonts;
+        public ImVector Fonts { get; set; }
 
         /// <summary>
         ///     The custom rects
         /// </summary>
-        public ImVector CustomRects;
+        public ImVector CustomRects { get; set; }
 
         /// <summary>
         ///     The config data
         /// </summary>
-        public ImVector ConfigData;
+        public ImVector ConfigData { get; set; }
 
         /// <summary>
         ///     The texuvlines
         /// </summary>
-        public Vector4 TexUvLines0;
+        public Vector4 TexUvLines0 { get; set; }
 
         /// <summary>
         ///     The texuvlines
         /// </summary>
-        public Vector4 TexUvLines1;
+        public Vector4 TexUvLines1 { get; set; }
 
         /// <summary>
         ///     The texuvlines
         /// </summary>
-        public Vector4 TexUvLines2;
+        public Vector4 TexUvLines2 { get; set; }
 
         /// <summary>
         ///     The texuvlines
         /// </summary>
-        public Vector4 TexUvLines3;
+        public Vector4 TexUvLines3 { get; set; }
 
         /// <summary>
         ///     The texuvlines
         /// </summary>
-        public Vector4 TexUvLines4;
+        public Vector4 TexUvLines4 { get; set; }
 
         /// <summary>
         ///     The texuvlines
         /// </summary>
-        public Vector4 TexUvLines5;
+        public Vector4 TexUvLines5 { get; set; }
 
         /// <summary>
         ///     The texuvlines
         /// </summary>
-        public Vector4 TexUvLines6;
+        public Vector4 TexUvLines6 { get; set; }
 
         /// <summary>
         ///     The texuvlines
         /// </summary>
-        public Vector4 TexUvLines7;
+        public Vector4 TexUvLines7 { get; set; }
 
         /// <summary>
         ///     The texuvlines
         /// </summary>
-        public Vector4 TexUvLines8;
+        public Vector4 TexUvLines8 { get; set; }
 
         /// <summary>
         ///     The texuvlines
         /// </summary>
-        public Vector4 TexUvLines9;
+        public Vector4 TexUvLines9 { get; set; }
 
         /// <summary>
         ///     The texuvlines 10
         /// </summary>
-        public Vector4 TexUvLines10;
+        public Vector4 TexUvLines10 { get; set; }
 
         /// <summary>
         ///     The texuvlines 11
         /// </summary>
-        public Vector4 TexUvLines11;
+        public Vector4 TexUvLines11 { get; set; }
 
         /// <summary>
         ///     The texuvlines 12
         /// </summary>
-        public Vector4 TexUvLines12;
+        public Vector4 TexUvLines12 { get; set; }
 
         /// <summary>
         ///     The texuvlines 13
         /// </summary>
-        public Vector4 TexUvLines13;
+        public Vector4 TexUvLines13 { get; set; }
 
         /// <summary>
         ///     The texuvlines 14
         /// </summary>
-        public Vector4 TexUvLines14;
+        public Vector4 TexUvLines14 { get; set; }
 
         /// <summary>
         ///     The texuvlines 15
         /// </summary>
-        public Vector4 TexUvLines15;
+        public Vector4 TexUvLines15 { get; set; }
 
         /// <summary>
         ///     The texuvlines 16
         /// </summary>
-        public Vector4 TexUvLines16;
+        public Vector4 TexUvLines16 { get; set; }
 
         /// <summary>
         ///     The texuvlines 17
         /// </summary>
-        public Vector4 TexUvLines17;
+        public Vector4 TexUvLines17 { get; set; }
 
         /// <summary>
         ///     The texuvlines 18
         /// </summary>
-        public Vector4 TexUvLines18;
+        public Vector4 TexUvLines18 { get; set; }
 
         /// <summary>
         ///     The texuvlines 19
         /// </summary>
-        public Vector4 TexUvLines19;
+        public Vector4 TexUvLines19 { get; set; }
 
         /// <summary>
         ///     The texuvlines 20
         /// </summary>
-        public Vector4 TexUvLines20;
+        public Vector4 TexUvLines20 { get; set; }
 
         /// <summary>
         ///     The texuvlines 21
         /// </summary>
-        public Vector4 TexUvLines21;
+        public Vector4 TexUvLines21 { get; set; }
 
         /// <summary>
         ///     The texuvlines 22
         /// </summary>
-        public Vector4 TexUvLines22;
+        public Vector4 TexUvLines22 { get; set; }
 
         /// <summary>
         ///     The texuvlines 23
         /// </summary>
-        public Vector4 TexUvLines23;
+        public Vector4 TexUvLines23 { get; set; }
 
         /// <summary>
         ///     The texuvlines 24
         /// </summary>
-        public Vector4 TexUvLines24;
+        public Vector4 TexUvLines24 { get; set; }
 
         /// <summary>
         ///     The texuvlines 25
         /// </summary>
-        public Vector4 TexUvLines25;
+        public Vector4 TexUvLines25 { get; set; }
 
         /// <summary>
         ///     The texuvlines 26
         /// </summary>
-        public Vector4 TexUvLines26;
+        public Vector4 TexUvLines26 { get; set; }
 
         /// <summary>
         ///     The texuvlines 27
         /// </summary>
-        public Vector4 TexUvLines27;
+        public Vector4 TexUvLines27 { get; set; }
 
         /// <summary>
         ///     The texuvlines 28
         /// </summary>
-        public Vector4 TexUvLines28;
+        public Vector4 TexUvLines28 { get; set; }
 
         /// <summary>
         ///     The texuvlines 29
         /// </summary>
-        public Vector4 TexUvLines29;
+        public Vector4 TexUvLines29 { get; set; }
 
         /// <summary>
         ///     The texuvlines 30
         /// </summary>
-        public Vector4 TexUvLines30;
+        public Vector4 TexUvLines30 { get; set; }
 
         /// <summary>
         ///     The texuvlines 31
         /// </summary>
-        public Vector4 TexUvLines31;
+        public Vector4 TexUvLines31 { get; set; }
 
         /// <summary>
         ///     The texuvlines 32
         /// </summary>
-        public Vector4 TexUvLines32;
+        public Vector4 TexUvLines32 { get; set; }
 
         /// <summary>
         ///     The texuvlines 33
         /// </summary>
-        public Vector4 TexUvLines33;
+        public Vector4 TexUvLines33 { get; set; }
 
         /// <summary>
         ///     The texuvlines 34
         /// </summary>
-        public Vector4 TexUvLines34;
+        public Vector4 TexUvLines34 { get; set; }
 
         /// <summary>
         ///     The texuvlines 35
         /// </summary>
-        public Vector4 TexUvLines35;
+        public Vector4 TexUvLines35 { get; set; }
 
         /// <summary>
         ///     The texuvlines 36
         /// </summary>
-        public Vector4 TexUvLines36;
+        public Vector4 TexUvLines36 { get; set; }
 
         /// <summary>
         ///     The texuvlines 37
         /// </summary>
-        public Vector4 TexUvLines37;
+        public Vector4 TexUvLines37 { get; set; }
 
         /// <summary>
         ///     The texuvlines 38
         /// </summary>
-        public Vector4 TexUvLines38;
+        public Vector4 TexUvLines38 { get; set; }
 
         /// <summary>
         ///     The texuvlines 39
         /// </summary>
-        public Vector4 TexUvLines39;
+        public Vector4 TexUvLines39 { get; set; }
 
         /// <summary>
         ///     The texuvlines 40
         /// </summary>
-        public Vector4 TexUvLines40;
+        public Vector4 TexUvLines40 { get; set; }
 
         /// <summary>
         ///     The texuvlines 41
         /// </summary>
-        public Vector4 TexUvLines41;
+        public Vector4 TexUvLines41 { get; set; }
 
         /// <summary>
         ///     The texuvlines 42
         /// </summary>
-        public Vector4 TexUvLines42;
+        public Vector4 TexUvLines42 { get; set; }
 
         /// <summary>
         ///     The texuvlines 43
         /// </summary>
-        public Vector4 TexUvLines43;
+        public Vector4 TexUvLines43 { get; set; }
 
         /// <summary>
         ///     The texuvlines 44
         /// </summary>
-        public Vector4 TexUvLines44;
+        public Vector4 TexUvLines44 { get; set; }
 
         /// <summary>
         ///     The texuvlines 45
         /// </summary>
-        public Vector4 TexUvLines45;
+        public Vector4 TexUvLines45 { get; set; }
 
         /// <summary>
         ///     The texuvlines 46
         /// </summary>
-        public Vector4 TexUvLines46;
+        public Vector4 TexUvLines46 { get; set; }
 
         /// <summary>
         ///     The texuvlines 47
         /// </summary>
-        public Vector4 TexUvLines47;
+        public Vector4 TexUvLines47 { get; set; }
 
         /// <summary>
         ///     The texuvlines 48
         /// </summary>
-        public Vector4 TexUvLines48;
+        public Vector4 TexUvLines48 { get; set; }
 
         /// <summary>
         ///     The texuvlines 49
         /// </summary>
-        public Vector4 TexUvLines49;
+        public Vector4 TexUvLines49 { get; set; }
 
         /// <summary>
         ///     The texuvlines 50
         /// </summary>
-        public Vector4 TexUvLines50;
+        public Vector4 TexUvLines50 { get; set; }
 
         /// <summary>
         ///     The texuvlines 51
         /// </summary>
-        public Vector4 TexUvLines51;
+        public Vector4 TexUvLines51 { get; set; }
 
         /// <summary>
         ///     The texuvlines 52
         /// </summary>
-        public Vector4 TexUvLines52;
+        public Vector4 TexUvLines52 { get; set; }
 
         /// <summary>
         ///     The texuvlines 53
         /// </summary>
-        public Vector4 TexUvLines53;
+        public Vector4 TexUvLines53 { get; set; }
 
         /// <summary>
         ///     The texuvlines 54
         /// </summary>
-        public Vector4 TexUvLines54;
+        public Vector4 TexUvLines54 { get; set; }
 
         /// <summary>
         ///     The texuvlines 55
         /// </summary>
-        public Vector4 TexUvLines55;
+        public Vector4 TexUvLines55 { get; set; }
 
         /// <summary>
         ///     The texuvlines 56
         /// </summary>
-        public Vector4 TexUvLines56;
+        public Vector4 TexUvLines56 { get; set; }
 
         /// <summary>
         ///     The texuvlines 57
         /// </summary>
-        public Vector4 TexUvLines57;
+        public Vector4 TexUvLines57 { get; set; }
 
         /// <summary>
         ///     The texuvlines 58
         /// </summary>
-        public Vector4 TexUvLines58;
+        public Vector4 TexUvLines58 { get; set; }
 
         /// <summary>
         ///     The texuvlines 59
         /// </summary>
-        public Vector4 TexUvLines59;
+        public Vector4 TexUvLines59 { get; set; }
 
         /// <summary>
         ///     The texuvlines 60
         /// </summary>
-        public Vector4 TexUvLines60;
+        public Vector4 TexUvLines60 { get; set; }
 
         /// <summary>
         ///     The texuvlines 61
         /// </summary>
-        public Vector4 TexUvLines61;
+        public Vector4 TexUvLines61 { get; set; }
 
         /// <summary>
         ///     The texuvlines 62
         /// </summary>
-        public Vector4 TexUvLines62;
+        public Vector4 TexUvLines62 { get; set; }
 
         /// <summary>
         ///     The texuvlines 63
         /// </summary>
-        public Vector4 TexUvLines63;
+        public Vector4 TexUvLines63 { get; set; }
 
         /// <summary>
         ///     The font builder io
         /// </summary>
-        public IntPtr FontBuilderIo;
+        public IntPtr FontBuilderIo { get; set; }
 
         /// <summary>
         ///     The font builder flags
         /// </summary>
-        public uint FontBuilderFlags;
+        public uint FontBuilderFlags { get; set; }
 
         /// <summary>
         ///     The pack id mouse cursors
         /// </summary>
-        public int PackIdMouseCursors;
+        public int PackIdMouseCursors { get; set; }
 
         /// <summary>
         ///     The pack id lines
         /// </summary>
-        public int PackIdLines;
+        public int PackIdLines { get; set; }
     }
 }

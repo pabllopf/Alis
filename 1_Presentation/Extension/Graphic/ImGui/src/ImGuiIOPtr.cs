@@ -69,7 +69,13 @@ namespace Alis.Extension.Graphic.ImGui
         public ImGuiConfigFlags ConfigFlags
         {
             get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).ConfigFlags;
-            set => Marshal.WriteIntPtr(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("ConfigFlags"), (IntPtr) value);
+            set
+            {
+                // Write x and y values to the DisplaySize field
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.ConfigFlags = value;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
         }
 
         /// <summary>
@@ -78,7 +84,13 @@ namespace Alis.Extension.Graphic.ImGui
         public ImGuiBackendFlags BackendFlags
         {
             get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).BackendFlags;
-            set => Marshal.WriteIntPtr(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("BackendFlags"), (IntPtr) value);
+            set
+            {
+                // Write x and y values to the DisplaySize field
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.BackendFlags = value;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
         }
 
         /// <summary>
@@ -95,8 +107,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 // Write x and y values to the DisplaySize field
                 ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
-                io.DisplaySize.X = value.X;
-                io.DisplaySize.Y = value.Y;
+                io.DisplaySize = new Vector2(value.X, value.Y);
                 Marshal.StructureToPtr(io, NativePtr, false);
             }
         }
@@ -172,7 +183,13 @@ namespace Alis.Extension.Graphic.ImGui
         public IntPtr UserData
         {
             get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).UserData;
-            set => Marshal.WriteIntPtr(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("UserData"), value);
+            set
+            {
+                // Write x and y values to the DisplaySize field
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.UserData = value;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
         }
 
         /// <summary>
@@ -205,8 +222,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 // Write x and y values to the DisplayFramebufferScale field
                 ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
-                io.DisplayFramebufferScale.X = value.X;
-                io.DisplayFramebufferScale.Y = value.Y;
+                io.DisplayFramebufferScale = new Vector2(value.X, value.Y);
                 Marshal.StructureToPtr(io, NativePtr, false);
             }
         }
@@ -562,8 +578,7 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 // Write x and y values to the MousePos field
                 ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
-                io.MousePos.X = value.X;
-                io.MousePos.Y = value.Y;
+                io.MousePos = new Vector2(value.X, value.Y);
                 Marshal.StructureToPtr(io, NativePtr, false);
             }
         }

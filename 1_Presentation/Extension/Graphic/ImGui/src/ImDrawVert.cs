@@ -39,16 +39,16 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The pos
         /// </summary>
-        public Vector2 Pos;
+        public Vector2 Pos { get; set; }
 
         /// <summary>
         ///     The uv
         /// </summary>
-        public Vector2 Uv;
+        public Vector2 Uv { get; set; }
 
         /// <summary>
         ///     The col
         /// </summary>
-        public uint Col;
+        public uint Col { get; set; }
     }
 }

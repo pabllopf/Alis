@@ -37,12 +37,12 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The cmd buffer
         /// </summary>
-        public ImVector CmdBuffer;
+        public ImVector CmdBuffer { get; set; }
 
         /// <summary>
         ///     The idx buffer
         /// </summary>
-        public ImVector IdxBuffer;
+        public ImVector IdxBuffer { get; set; }
 
         /// <summary>
         ///     Gets the value of the cmd buffer ptr

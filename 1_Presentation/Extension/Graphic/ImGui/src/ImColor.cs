@@ -39,7 +39,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The value
         /// </summary>
-        public Vector4 Value;
+        public Vector4 Value { get; set; }
 
         /// <summary>
         ///     Destroys this instance

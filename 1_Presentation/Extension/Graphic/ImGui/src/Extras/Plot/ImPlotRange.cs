@@ -37,11 +37,11 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <summary>
         ///     The min
         /// </summary>
-        public double Min;
+        public double Min { get; set; }
 
         /// <summary>
         ///     The max
         /// </summary>
-        public double Max;
+        public double Max { get; set; }
     }
 }

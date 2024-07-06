@@ -37,6 +37,6 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The buf
         /// </summary>
-        public ImVector Buf;
+        public ImVector Buf { get; set; }
     }
 }

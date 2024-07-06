@@ -37,11 +37,11 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <summary>
         ///     The
         /// </summary>
-        public ImPlotRange X;
+        public ImPlotRange X { get; set; }
 
         /// <summary>
         ///     The
         /// </summary>
-        public ImPlotRange Y;
+        public ImPlotRange Y { get; set; }
     }
 }

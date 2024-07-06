@@ -39,82 +39,82 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <summary>
         ///     The grid spacing
         /// </summary>
-        public float GridSpacing;
+        public float GridSpacing { get; set; }
 
         /// <summary>
         ///     The node corner rounding
         /// </summary>
-        public float NodeCornerRounding;
+        public float NodeCornerRounding { get; set; }
 
         /// <summary>
         ///     The node padding
         /// </summary>
-        public Vector2 NodePadding;
+        public Vector2 NodePadding { get; set; }
 
         /// <summary>
         ///     The node border thickness
         /// </summary>
-        public float NodeBorderThickness;
+        public float NodeBorderThickness { get; set; }
 
         /// <summary>
         ///     The link thickness
         /// </summary>
-        public float LinkThickness;
+        public float LinkThickness { get; set; }
 
         /// <summary>
         ///     The link line segments per length
         /// </summary>
-        public float LinkLineSegmentsPerLength;
+        public float LinkLineSegmentsPerLength { get; set; }
 
         /// <summary>
         ///     The link hover distance
         /// </summary>
-        public float LinkHoverDistance;
+        public float LinkHoverDistance { get; set; }
 
         /// <summary>
         ///     The pin circle radius
         /// </summary>
-        public float PinCircleRadius;
+        public float PinCircleRadius { get; set; }
 
         /// <summary>
         ///     The pin quad side length
         /// </summary>
-        public float PinQuadSideLength;
+        public float PinQuadSideLength { get; set; }
 
         /// <summary>
         ///     The pin triangle side length
         /// </summary>
-        public float PinTriangleSideLength;
+        public float PinTriangleSideLength { get; set; }
 
         /// <summary>
         ///     The pin line thickness
         /// </summary>
-        public float PinLineThickness;
+        public float PinLineThickness { get; set; }
 
         /// <summary>
         ///     The pin hover radius
         /// </summary>
-        public float PinHoverRadius;
+        public float PinHoverRadius { get; set; }
 
         /// <summary>
         ///     The pin offset
         /// </summary>
-        public float PinOffset;
+        public float PinOffset { get; set; }
 
         /// <summary>
         ///     The mini map padding
         /// </summary>
-        public Vector2 MiniMapPadding;
+        public Vector2 MiniMapPadding { get; set; }
 
         /// <summary>
         ///     The mini map offset
         /// </summary>
-        public Vector2 MiniMapOffset;
+        public Vector2 MiniMapOffset { get; set; }
 
         /// <summary>
         ///     The flags
         /// </summary>
-        public ImNodesStyleFlags Flags;
+        public ImNodesStyleFlags Flags { get; set; }
 
         /// <summary>
         ///     The colors

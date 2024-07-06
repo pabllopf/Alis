@@ -37,7 +37,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The used chars
         /// </summary>
-        public ImVector UsedChars;
+        public ImVector UsedChars { get; set; }
 
 
         /// <summary>

@@ -45,11 +45,11 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The filters
         /// </summary>
-        public ImVector Filters;
+        public ImVector Filters { get; set; }
 
         /// <summary>
         ///     The count grep
         /// </summary>
-        public int CountGrep;
+        public int CountGrep { get; set; }
     }
 }
