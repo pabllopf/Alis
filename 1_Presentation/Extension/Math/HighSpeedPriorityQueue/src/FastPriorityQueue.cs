@@ -101,13 +101,13 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     has been called
         ///     O(log n)
         /// </summary>
-        public void Enqueue(T node, float priority)
+        public void Enqueue(T item, float priority)
         {
-            node.Priority = priority;
+            item.Priority = priority;
             _numNodes++;
-            _nodes[_numNodes] = node;
-            node.QueueIndex = _numNodes;
-            CascadeUp(node);
+            _nodes[_numNodes] = item;
+            item.QueueIndex = _numNodes;
+            CascadeUp(item);
         }
 
         /// <summary>
@@ -166,10 +166,10 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     O(log n)
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void UpdatePriority(T node, float priority)
+        public void UpdatePriority(T item, float priority)
         {
-            node.Priority = priority;
-            OnNodeUpdated(node);
+            item.Priority = priority;
+            OnNodeUpdated(item);
         }
 
         /// <summary>

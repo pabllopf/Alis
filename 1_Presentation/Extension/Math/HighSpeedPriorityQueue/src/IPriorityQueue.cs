@@ -54,7 +54,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     Enqueue a node to the priority queue.  Lower values are placed in front. Ties are broken by first-in-first-out.
         ///     See implementation for how duplicates are handled.
         /// </summary>
-        void Enqueue(TItem node, TPriority priority);
+        void Enqueue(TItem item, TPriority priority);
 
         /// <summary>
         ///     Removes the head of the queue (node with minimum priority; ties are broken by order of insertion), and returns it.
@@ -79,6 +79,6 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         /// <summary>
         ///     Call this method to change the priority of a node.
         /// </summary>
-        void UpdatePriority(TItem node, TPriority priority);
+        void UpdatePriority(TItem item, TPriority priority);
     }
 }
