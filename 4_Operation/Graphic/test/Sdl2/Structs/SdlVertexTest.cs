@@ -45,7 +45,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
         [Fact]
         public void SdlVertex_HasCorrectFieldCount()
         {
-            FieldInfo[] fields = typeof(Vertex).GetFields();
+            PropertyInfo[] fields = typeof(Vertex).GetProperties();
             Assert.Equal(3, fields.Length);
         }
 
@@ -55,9 +55,9 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
         [Fact]
         public void SdlVertex_PositionField_IsOfTypePointF()
         {
-            FieldInfo positionField = typeof(Vertex).GetField("position");
+            PropertyInfo positionField = typeof(Vertex).GetProperty("position");
             Assert.NotNull(positionField);
-            Assert.Equal(typeof(PointF), positionField.FieldType);
+            Assert.Equal(typeof(PointF), positionField.PropertyType);
         }
 
         /// <summary>
@@ -66,9 +66,9 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
         [Fact]
         public void SdlVertex_ColorField_IsOfTypeSdlColor()
         {
-            FieldInfo colorField = typeof(Vertex).GetField("color");
+            PropertyInfo colorField = typeof(Vertex).GetProperty("color");
             Assert.NotNull(colorField);
-            Assert.Equal(typeof(Color), colorField.FieldType);
+            Assert.Equal(typeof(Color), colorField.PropertyType);
         }
 
         /// <summary>
@@ -77,9 +77,9 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
         [Fact]
         public void SdlVertex_TexCoordinateField_IsOfTypePointF()
         {
-            FieldInfo texCoordinateField = typeof(Vertex).GetField("texCoordinate");
+            PropertyInfo texCoordinateField = typeof(Vertex).GetProperty("texCoordinate");
             Assert.NotNull(texCoordinateField);
-            Assert.Equal(typeof(PointF), texCoordinateField.FieldType);
+            Assert.Equal(typeof(PointF), texCoordinateField.PropertyType);
         }
 
         /// <summary>
