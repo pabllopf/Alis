@@ -93,8 +93,6 @@ namespace Alis.App.Engine.Demos
                 matrixScale[1] = scale.Y;
                 matrixScale[2] = scale.Z;
                 
-            
-
                 ImGuizMo.RecomposeMatrixFromComponents(ref matrixTranslation, ref matrixRotation, ref matrixScale, ref matrix);
 
                 ImGui.Text($"Translation: {translation}");
