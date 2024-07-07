@@ -10,6 +10,7 @@
         $(AssemblyName.Contains('Alis.Core.Aspect.Time.Test')) OR
         $(AssemblyName.Contains('Alis.Core.Audio.Test')) OR
         $(AssemblyName.Contains('Alis.Core.Network.Test')) OR
+        $(AssemblyName.Contains('Alis.Extension.Profile.Test')) OR
         $(AssemblyName.Contains('Alis.Core.Physic.Test'))">
         <Content
             Include="$(SolutionDir).config/xunit.runner.json"
