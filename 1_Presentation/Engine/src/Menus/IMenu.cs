@@ -34,7 +34,7 @@ namespace Alis.App.Engine.Menus
     /// <summary>
     ///     The menu interface
     /// </summary>
-    public interface IMenu : IRendereable
+    internal interface IMenu : IRenderable, IHasSpaceWork
     {
     }
 }
