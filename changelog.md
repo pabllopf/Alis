@@ -5,6 +5,32 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.3.1] - 2024-07-07
+### :sparkles: New Features
+- [`190fcd7`](https://github.com/pabllopf/Alis/commit/190fcd7a0a4eb42e72897bdbda13e2e94044e29e) - add simple ImGuizmoDemo *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`afdce39`](https://github.com/pabllopf/Alis/commit/afdce39db20ff7fe2b6a67a4b2b1e7644c6eac1c) - rename parameter 'item' to 'node' to match the interface declaration *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`cbb8fa0`](https://github.com/pabllopf/Alis/commit/cbb8fa020d9ca9343c4f401dffd3df93a99a35b0) - sln csprojs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e49be52`](https://github.com/pabllopf/Alis/commit/e49be520fd2a3c48f7e633f524fee453212f73ab) - names of interfaces *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9a570d7`](https://github.com/pabllopf/Alis/commit/9a570d766484ef22f3411293e29c3f7ae95abb71) - the name ImNodesAttribute *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4f1d0ab`](https://github.com/pabllopf/Alis/commit/4f1d0ab6d7f507f8897b68472ac295f0e7f8fcaa) - the ImGuiStyle vars *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`48e23d9`](https://github.com/pabllopf/Alis/commit/48e23d96fe604bd120dae318b8d87cd98f407abb) - Make this field 'private' and encapsulate it in a 'public' property. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2ebf0e8`](https://github.com/pabllopf/Alis/commit/2ebf0e8569fbf424b44724de4e4efe57866156b3) - Make this field 'private' and encapsulate it in a 'public' property. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fb4ecf4`](https://github.com/pabllopf/Alis/commit/fb4ecf45cb238f4e232489a6418866207b7fd883) - dock focus when click background *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7c49c92`](https://github.com/pabllopf/Alis/commit/7c49c929d8f6f0e8986e8b435df82f0a0909140b) - mouse zoom *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f2aaf8a`](https://github.com/pabllopf/Alis/commit/f2aaf8aff4582f0976501c5da8a4e9c9a66667ec) - ImGuizmo_IsOver_Nil *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`c8a377e`](https://github.com/pabllopf/Alis/commit/c8a377e29ffc3fd33f6087bbeed97f3e5ef7c5b4) - fix the test with properties. *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :memo: Documentation Changes
+- [`5ca62d6`](https://github.com/pabllopf/Alis/commit/5ca62d63dc50ce8a7d5a45eadf9e1f43abb8a0fb) - add descriptions to methods *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :art: Code Style Changes
+- [`286cf6c`](https://github.com/pabllopf/Alis/commit/286cf6c074e7b8eb2945eab2dfca851214fe657c) - refactor the main sln to update spaces, tabs, and comments *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.3.0] - 2024-07-06
 
 ### :bug: Bug Fixes
@@ -2964,3 +2990,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.2.9]: https://github.com/pabllopf/Alis/compare/v0.2.8...v0.2.9
 
 [v0.3.0]: https://github.com/pabllopf/Alis/compare/v0.2.9...v0.3.0
+[v0.3.1]: https://github.com/pabllopf/Alis/compare/v0.3.0...v0.3.1
