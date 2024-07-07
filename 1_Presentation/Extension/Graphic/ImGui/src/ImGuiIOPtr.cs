@@ -625,7 +625,13 @@ namespace Alis.Extension.Graphic.ImGui
         public float MouseWheel
         {
             get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).MouseWheel;
-            set => Marshal.WriteIntPtr(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("MouseWheel"), (IntPtr) value);
+            set
+            {
+                // Write x and y values to the MouseWheel field
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.MouseWheel = value;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
         }
 
         /// <summary>
@@ -634,7 +640,13 @@ namespace Alis.Extension.Graphic.ImGui
         public float MouseWheelH
         {
             get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).MouseWheelH;
-            set => Marshal.WriteIntPtr(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("MouseWheelH"), (IntPtr) value);
+            set
+            {
+                // Write x and y values to the MouseWheelH field
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.MouseWheelH = value;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
         }
 
         /// <summary>
