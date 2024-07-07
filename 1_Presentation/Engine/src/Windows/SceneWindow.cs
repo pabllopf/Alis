@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.App.Engine.Core;
 using Alis.Extension.Graphic.ImGui.Native;
 
 namespace Alis.App.Engine.Windows
@@ -36,6 +37,15 @@ namespace Alis.App.Engine.Windows
     /// </summary>
     public class SceneWindow : IWindow
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SceneWindow"/> class
+        /// </summary>
+        /// <param name="spaceWork">The space work</param>
+        public SceneWindow(SpaceWork spaceWork)
+        {
+            SpaceWork = spaceWork;
+        }
+
         /// <summary>
         ///     The name window
         /// </summary>
@@ -50,5 +60,10 @@ namespace Alis.App.Engine.Windows
 
             ImGui.End();
         }
+
+        /// <summary>
+        /// Gets the value of the space work
+        /// </summary>
+        public SpaceWork SpaceWork { get; }
     }
 }

@@ -34,7 +34,7 @@ namespace Alis.App.Engine.Windows
     /// <summary>
     ///     The window interface
     /// </summary>
-    public interface IWindow : IRendereable
+    internal interface IWindow : IRenderable, IHasSpaceWork
     {
         
     }

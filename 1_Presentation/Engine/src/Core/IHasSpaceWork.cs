@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:TopMenu.cs
+//  File:IHasSpaceWork.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,42 +27,13 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.App.Engine.Core;
-using Alis.Extension.Graphic.ImGui.Native;
-
-namespace Alis.App.Engine.Menus
+namespace Alis.App.Engine.Core
 {
     /// <summary>
-    ///     The top menu class
+    /// The has space work interface
     /// </summary>
-    /// <seealso cref="IMenu" />
-    public class TopMenu : IMenu
+    public interface IHasSpaceWork
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TopMenu"/> class
-        /// </summary>
-        /// <param name="spaceWork">The space work</param>
-        public TopMenu(SpaceWork spaceWork)
-        {
-            SpaceWork = spaceWork;
-        }
-
-        /// <summary>
-        /// Renders this instance
-        /// </summary>
-        public void Render()
-        {
-            ImGui.BeginMainMenuBar();
-            if (ImGui.BeginMenu("Sample main menu"))
-            {
-                ImGui.Separator();
-                ImGui.Text("Sample text");
-                ImGui.EndMenu();
-            }
-
-            ImGui.EndMainMenuBar();
-        }
-
         /// <summary>
         /// Gets the value of the space work
         /// </summary>

@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.App.Engine.Core;
 using Alis.Extension.Graphic.ImGui.Native;
 
 namespace Alis.App.Engine.Windows
@@ -37,6 +38,15 @@ namespace Alis.App.Engine.Windows
     public class ConsoleWindow : IWindow
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="ConsoleWindow"/> class
+        /// </summary>
+        /// <param name="spaceWork">The space work</param>
+        public ConsoleWindow(SpaceWork spaceWork)
+        {
+            SpaceWork = spaceWork;
+        }
+
+        /// <summary>
         ///     The name window
         /// </summary>
         private const string NameWindow = "Console";
@@ -44,11 +54,16 @@ namespace Alis.App.Engine.Windows
         /// <summary>
         ///     Renders this instance
         /// </summary>
-        public void Render()
+         public void Render()
         {
             ImGui.Begin(NameWindow);
 
             ImGui.End();
         }
+
+        /// <summary>
+        /// Gets the value of the space work
+        /// </summary>
+        public SpaceWork SpaceWork { get; }
     }
 }

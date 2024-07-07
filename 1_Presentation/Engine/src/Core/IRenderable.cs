@@ -30,13 +30,13 @@
 namespace Alis.App.Engine.Core
 {
     /// <summary>
-    /// The rendereable interface
+    /// The renderable interface
     /// </summary>
-    public interface IRendereable
+    public interface IRenderable
     {
         /// <summary>
         ///     Renders this instance
         /// </summary>
-        void Render();
+        public void Render();
     }
 }
