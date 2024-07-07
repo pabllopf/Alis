@@ -104,13 +104,8 @@ namespace Alis.App.Engine
         /// <summary>
         ///     The windows
         /// </summary>
-        private SpaceWork spaceWork = new SpaceWork(); 
-
-        /// <summary>
-        ///     The context
-        /// </summary>
-        private IntPtr _context;
-
+        private readonly SpaceWork spaceWork = new SpaceWork(); 
+        
         /// <summary>
         ///     The font texture id
         /// </summary>
@@ -206,7 +201,7 @@ namespace Alis.App.Engine
             // compile the shader program
             _shader = new GlShaderProgram(VertexShader.ShaderCode, FragmentShader.ShaderCode);
 
-            _context = ImGui.CreateContext();
+            spaceWork.ContextGui = ImGui.CreateContext();
 
             spaceWork.Io = ImGui.GetIo();
 
@@ -229,8 +224,8 @@ namespace Alis.App.Engine
 
             ImNodes.CreateContext();
             ImPlot.CreateContext();
-            ImGuizMo.SetImGuiContext(_context);
-            ImGui.SetCurrentContext(_context);
+            ImGuizMo.SetImGuiContext(spaceWork.ContextGui);
+            ImGui.SetCurrentContext(spaceWork.ContextGui);
 
             // REBUILD ATLAS
             ImFontAtlasPtr fonts = ImGui.GetIo().Fonts;
@@ -336,6 +331,7 @@ namespace Alis.App.Engine
                 Gl.GlClearColor(0.05f, 0.05f, 0.05f, 1.00f);
 
                 ImGui.NewFrame();
+                ImGuizMo.BeginFrame();
 
                 // Setup display size (every frame to accommodate for window resizing)
                 Vector2 windowSize = Sdl.GetWindowSize(spaceWork.Window);
@@ -383,8 +379,7 @@ namespace Alis.App.Engine
                 
                 // RENDER SAMPLES AND CODE
                 spaceWork.Update();
-                ShowDemos();
-
+                
                 
                 ImGui.End();
                 ImGui.PopFont();
@@ -422,55 +417,7 @@ namespace Alis.App.Engine
             Sdl.DestroyWindow(spaceWork.Window);
             Sdl.Quit();
         }
-
-        /// <summary>
-        ///     Shows the demos
-        /// </summary>
-        [Conditional("DEBUG")]
-        private void ShowDemos()
-        {
-            ImGui.ShowDemoWindow();
-
-            ImGui.Begin("simple node editor");
-
-            ImNodes.BeginNodeEditor();
-            ImNodes.BeginNode(1);
-
-            ImNodes.BeginNodeTitleBar();
-            ImGui.TextUnformatted("simple node :)");
-            ImNodes.EndNodeTitleBar();
-
-            ImNodes.BeginInputAttribute(2);
-            ImGui.Text("input");
-            ImNodes.EndInputAttribute();
-
-            ImNodes.BeginOutputAttribute(3);
-            ImGui.Indent(40);
-            ImGui.Text("output");
-            ImNodes.EndOutputAttribute();
-
-            ImNodes.EndNode();
-            ImNodes.EndNodeEditor();
-
-            ImGui.End();
-
-            ImPlot.ShowDemoWindow();
-
-            // Show simple plot of bars plot demo
-            ImGui.Begin("Simple plot");
-            ImGui.Text("Demonstrating a basic bar plot with horizontal and vertical bars.");
-            float[] data = new float[10] {3, 2, 4, 4, 5, 6, 6, 8, 9, 10};
-            float[] lineData = new float[10] {3, 2, 4, 4, 5, 6, 6, 8, 9, 10};
-            if (ImPlot.BeginPlot("Bar Plot"))
-            {
-                ImPlot.PlotBars("Horizontal", data, 10, 0.7, 1, ImPlotBarsFlags.None);
-                ImPlot.PlotLine("Vertical", lineData, 10, 1, 1, ImPlotLineFlags.None, 0);
-                ImPlot.EndPlot();
-            }
-
-            ImGui.End();
-        }
-
+        
         /// <summary>
         ///     Processes the event using the specified evt
         /// </summary>
