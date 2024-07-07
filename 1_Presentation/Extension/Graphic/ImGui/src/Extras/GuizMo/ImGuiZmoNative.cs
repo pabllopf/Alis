@@ -97,7 +97,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.GuizMo
         ///     Ims the guizmo is over nil
         /// </summary>
         /// <returns>The byte</returns>
-        [DllImport(NativeLibrary, EntryPoint = "ImGuizmo_IsOverNil", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibrary, EntryPoint = "ImGuizmo_IsOver_Nil", CallingConvention = CallingConvention.Cdecl)]
         internal static extern byte InternalIsOverNil();
 
         /// <summary>

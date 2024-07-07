@@ -1,3 +1,4 @@
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.ImGui;
 using Alis.Extension.Graphic.ImGui.Extras.GuizMo;
@@ -52,8 +53,11 @@ namespace Alis.App.Engine.Demos
         public void Run()
         {
             ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4(0.35f, 0.3f, 0.3f, 1.0f));
-            if (ImGui.Begin("Gizmo", ref isOpen, ImGuiWindowFlags.NoMove))
+            
+            
+            if (ImGui.Begin("Gizmo", ref isOpen))
             {
+                ImGuizMo.Enable(true);
                 ImGuizMo.SetDrawList();
                 
                 ImGui.Text("ImGuizmo is a small library that allows you to manipulate 3D objects in the scene.");
@@ -104,6 +108,8 @@ namespace Alis.App.Engine.Demos
                 ImGuizMo.Manipulate(cameraView, cameraProjection, Operation.Translate | Operation.Rotate | Operation.Scale, Mode.Local, matrix);
                 
                 ImGuizMo.ViewManipulate(ref cameraView, 2.5f, new Vector2(ImGui.GetWindowPos().X, ImGui.GetWindowPos().Y), new Vector2(ImGui.GetWindowWidth(), ImGui.GetWindowHeight()), 0x10101010);
+                
+                
                 
             }
             
