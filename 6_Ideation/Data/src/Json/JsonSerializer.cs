@@ -4759,6 +4759,12 @@ private static object FindParameterValueForConstructor(ParameterInfo parameter, 
         /// <param name="options">The options.</param>
         internal static void WriteSerializableOrValues(TextWriter writer, object value, IDictionary<object, object> objectGraph, JsonOptions options)
         {
+            // Check if the value is a Delegate
+            if (value is Delegate)
+            {
+                return;
+            }
+            
             // Determine if the value should be treated as ISerializable
             bool useISerializable = options.SerializationOptions.HasFlag(JsonSerializationOptions.UseISerializable) || ForceSerializable(value);
 
@@ -4772,12 +4778,6 @@ private static object FindParameterValueForConstructor(ParameterInfo parameter, 
                 // Otherwise, get the type definition and write the values
                 TypeDef typeDefinition = TypeDef.Get(value.GetType(), options);
                 typeDefinition.WriteValues(writer, value, objectGraph, options);
-
-                /*
-                // Write the type of the object
-                writer.Write(',');
-                writer.Write($"\"{SerializationTypeToken}\":");
-                writer.Write("\"" + value.GetType().FullName + "\"");*/
             }
         }
 
