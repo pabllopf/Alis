@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ContextMenu.cs
+//  File:IShader.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,13 +27,16 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.App.Engine.Menus
+namespace Alis.App.Engine.Shaders
 {
     /// <summary>
-    ///     The context menu class
+    /// The shader interface
     /// </summary>
-    /// <seealso cref="IMenu" />
-    public class ContextMenu : IMenu
+    public interface IShader
     {
+        /// <summary>
+        /// Gets the value of the shader code
+        /// </summary>
+        public string ShaderCode { get; }
     }
 }

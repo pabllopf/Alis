@@ -30,10 +30,10 @@
 namespace Alis.App.Engine.Menus
 {
     /// <summary>
-    ///     The top menu class
+    /// The bottom menu class
     /// </summary>
-    /// <seealso cref="IMenu" />
-    public class TopMenu : IMenu
+    /// <seealso cref="IMenu"/>
+    public class BottomMenu : IMenu
     {
         /// <summary>
         /// Renders this instance

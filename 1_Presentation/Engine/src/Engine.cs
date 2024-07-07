@@ -32,6 +32,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
+using Alis.App.Engine.Shaders;
 using Alis.App.Engine.Windows;
 using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Aspect.Logging;
@@ -67,40 +68,12 @@ namespace Alis.App.Engine
         /// <summary>
         ///     The vertex shader
         /// </summary>
-        private static readonly string VertexShader = @"
-			#version 330
-			
-			precision mediump float;
-			layout (location = 0) in vec2 Position;
-			layout (location = 1) in vec2 UV;
-			layout (location = 2) in vec4 Color;
-			uniform mat4 ProjMtx;
-			out vec2 Frag_UV;
-			out vec4 Frag_Color;
-			void main()
-			{
-			    Frag_UV = UV;
-			    Frag_Color = Color;
-			    gl_Position = ProjMtx * vec4(Position.xy, 0, 1);
-			}";
-
-
+        private static readonly VertexShader VertexShader = new VertexShader();
+        
         /// <summary>
-        ///     The fragment shader
+        /// The fragment shader
         /// </summary>
-        private static readonly string FragmentShader = @"
-			#version 330
-			
-			precision mediump float;
-			uniform sampler2D Texture;
-			in vec2 Frag_UV;
-			in vec4 Frag_Color;
-			layout (location = 0) out vec4 Out_Color;
-			
-			void main()
-			{
-			    Out_Color = Frag_Color * texture(Texture, Frag_UV.st);
-			}";
+        private static readonly FragmentShader FragmentShader = new FragmentShader();
 
         /// <summary>
         ///     The mouse pressed
@@ -263,7 +236,7 @@ namespace Alis.App.Engine
             _glContext = CreateGlContext(_window);
 
             // compile the shader program
-            _shader = new GlShaderProgram(VertexShader, FragmentShader);
+            _shader = new GlShaderProgram(VertexShader.ShaderCode, FragmentShader.ShaderCode);
 
             _context = ImGui.CreateContext();
 

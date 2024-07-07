@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:TopMenu.cs
+//  File:FragmentShader.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,20 +27,28 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.App.Engine.Menus
+namespace Alis.App.Engine.Shaders
 {
     /// <summary>
-    ///     The top menu class
+    /// The fragment shader
     /// </summary>
-    /// <seealso cref="IMenu" />
-    public class TopMenu : IMenu
+    public readonly struct FragmentShader : IShader
     {
         /// <summary>
-        /// Renders this instance
+        /// Gets the value of the shader code
         /// </summary>
-        public void Render()
-        {
-            
-        }
+        public string ShaderCode => @"
+			#version 330
+			
+			precision mediump float;
+			uniform sampler2D Texture;
+			in vec2 Frag_UV;
+			in vec4 Frag_Color;
+			layout (location = 0) out vec4 Out_Color;
+			
+			void main()
+			{
+			    Out_Color = Frag_Color * texture(Texture, Frag_UV.st);
+			}";
     }
 }

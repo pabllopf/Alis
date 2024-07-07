@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:TopMenu.cs
+//  File:IRendereable.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,20 +27,16 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.App.Engine.Menus
+namespace Alis.App.Engine.Core
 {
     /// <summary>
-    ///     The top menu class
+    /// The rendereable interface
     /// </summary>
-    /// <seealso cref="IMenu" />
-    public class TopMenu : IMenu
+    public interface IRendereable
     {
         /// <summary>
-        /// Renders this instance
+        ///     Renders this instance
         /// </summary>
-        public void Render()
-        {
-            
-        }
+        void Render();
     }
 }
