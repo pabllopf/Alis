@@ -27,12 +27,14 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.App.Engine.Core;
+
 namespace Alis.App.Engine.Menus
 {
     /// <summary>
     ///     The menu interface
     /// </summary>
-    public interface IMenu
+    public interface IMenu : IRendereable
     {
     }
 }

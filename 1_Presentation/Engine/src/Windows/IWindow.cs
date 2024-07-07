@@ -27,16 +27,15 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.App.Engine.Core;
+
 namespace Alis.App.Engine.Windows
 {
     /// <summary>
     ///     The window interface
     /// </summary>
-    public interface IWindow
+    public interface IWindow : IRendereable
     {
-        /// <summary>
-        ///     Renders this instance
-        /// </summary>
-        void Render();
+        
     }
 }
