@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.App.Engine.Demos;
 using Alis.App.Engine.Menus;
 using Alis.App.Engine.Windows;
 using Alis.Extension.Graphic.ImGui;
@@ -98,6 +99,19 @@ namespace Alis.App.Engine.Core
         ///     The style
         /// </summary>
         public ImGuiStyle Style;
+        
+        /// <summary>
+        ///     The context
+        /// </summary>
+        public IntPtr ContextGui;
+
+        private readonly ImGuiDemo imGuiDemo = new ImGuiDemo();
+
+        private readonly ImPlotDemo imPlotDemo = new ImPlotDemo();
+
+        private readonly ImGuizmoDemo imGuizmoDemo = new ImGuizmoDemo();
+
+        private readonly ImNodeDemo imNodeDemo = new ImNodeDemo();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SpaceWork"/> class
@@ -119,6 +133,11 @@ namespace Alis.App.Engine.Core
         /// </summary>
         public void Update()
         {
+            imGuiDemo.Run();
+            imPlotDemo.Run();
+            imGuizmoDemo.Run();
+            imNodeDemo.Run();
+            
             TopMenu.Render();
             BottomMenu.Render();
             ConsoleWindow.Render();

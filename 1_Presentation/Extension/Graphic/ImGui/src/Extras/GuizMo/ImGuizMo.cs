@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Extension.Graphic.ImGui.Extras.GuizMo
@@ -62,7 +63,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.GuizMo
         /// <param name="translation">The translation</param>
         /// <param name="rotation">The rotation</param>
         /// <param name="scale">The scale</param>
-        public static void DecomposeMatrixToComponents(ref float matrix, ref float translation, ref float rotation, ref float scale)
+        public static void DecomposeMatrixToComponents(ref float[] matrix, ref float[] translation, ref  float[] rotation, ref  float[] scale)
         {
             ImGuiZmoNative.InternalDecomposeMatrixToComponents(matrix, translation, rotation, scale);
         }
@@ -86,7 +87,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.GuizMo
         /// <param name="projection">The projection</param>
         /// <param name="matrix">The matrix</param>
         /// <param name="gridSize">The grid size</param>
-        public static void DrawGrid(ref float view, ref float projection, ref float matrix, float gridSize)
+        public static void DrawGrid(ref float[] view, ref float[] projection, ref float[] matrix, float gridSize)
         {
             ImGuiZmoNative.InternalDrawGrid(view, projection, matrix, gridSize);
         }
@@ -131,102 +132,26 @@ namespace Alis.Extension.Graphic.ImGui.Extras.GuizMo
             byte ret = ImGuiZmoNative.InternalIsUsing();
             return ret != 0;
         }
-
-        /// <summary>
-        ///     Describes whether manipulate
-        /// </summary>
-        /// <param name="view">The view</param>
-        /// <param name="projection">The projection</param>
-        /// <param name="operation">The operation</param>
-        /// <param name="mode">The mode</param>
-        /// <param name="matrix">The matrix</param>
-        /// <returns>The bool</returns>
-        public static bool Manipulate(ref float view, ref float projection, Operation operation, Mode mode, ref float matrix)
+        
+        public static byte Manipulate(float[] view, float[] projection, Operation operation, Mode mode, float[] matrix)
         {
-            float deltaMatrix = 0;
-            float snap = 0;
-            float localBounds = 0;
-            float boundsSnap = 0;
+            GCHandle viewHandle = GCHandle.Alloc(view, GCHandleType.Pinned);
+            GCHandle projectionHandle = GCHandle.Alloc(projection, GCHandleType.Pinned);
+            GCHandle matrixHandle = GCHandle.Alloc(matrix, GCHandleType.Pinned);
+            try
+            {
+                IntPtr viewPtr = viewHandle.AddrOfPinnedObject();
+                IntPtr projectionPtr = projectionHandle.AddrOfPinnedObject();
+                IntPtr matrixPtr = matrixHandle.AddrOfPinnedObject();
 
-            byte ret = ImGuiZmoNative.InternalManipulate(view, projection, operation, mode, matrix, deltaMatrix, snap, localBounds, boundsSnap);
-            return ret != 0;
-        }
-
-        /// <summary>
-        ///     Describes whether manipulate
-        /// </summary>
-        /// <param name="view">The view</param>
-        /// <param name="projection">The projection</param>
-        /// <param name="operation">The operation</param>
-        /// <param name="mode">The mode</param>
-        /// <param name="matrix">The matrix</param>
-        /// <param name="deltaMatrix">The delta matrix</param>
-        /// <returns>The bool</returns>
-        public static bool Manipulate(ref float view, ref float projection, Operation operation, Mode mode, ref float matrix, ref float deltaMatrix)
-        {
-            float snap = 0;
-            float localBounds = 0;
-            float boundsSnap = 0;
-
-            byte ret = ImGuiZmoNative.InternalManipulate(view, projection, operation, mode, matrix, deltaMatrix, snap, localBounds, boundsSnap);
-            return ret != 0;
-        }
-
-        /// <summary>
-        ///     Describes whether manipulate
-        /// </summary>
-        /// <param name="view">The view</param>
-        /// <param name="projection">The projection</param>
-        /// <param name="operation">The operation</param>
-        /// <param name="mode">The mode</param>
-        /// <param name="matrix">The matrix</param>
-        /// <param name="deltaMatrix">The delta matrix</param>
-        /// <param name="snap">The snap</param>
-        /// <returns>The bool</returns>
-        public static bool Manipulate(ref float view, ref float projection, Operation operation, Mode mode, ref float matrix, ref float deltaMatrix, ref float snap)
-        {
-            float localBounds = 0;
-            float boundsSnap = 0;
-            byte ret = ImGuiZmoNative.InternalManipulate(view, projection, operation, mode, matrix, deltaMatrix, snap, localBounds, boundsSnap);
-            return ret != 0;
-        }
-
-        /// <summary>
-        ///     Describes whether manipulate
-        /// </summary>
-        /// <param name="view">The view</param>
-        /// <param name="projection">The projection</param>
-        /// <param name="operation">The operation</param>
-        /// <param name="mode">The mode</param>
-        /// <param name="matrix">The matrix</param>
-        /// <param name="deltaMatrix">The delta matrix</param>
-        /// <param name="snap">The snap</param>
-        /// <param name="localBounds">The local bounds</param>
-        /// <returns>The bool</returns>
-        public static bool Manipulate(ref float view, ref float projection, Operation operation, Mode mode, ref float matrix, ref float deltaMatrix, ref float snap, ref float localBounds)
-        {
-            float boundsSnap = 0;
-            byte ret = ImGuiZmoNative.InternalManipulate(view, projection, operation, mode, matrix, deltaMatrix, snap, localBounds, boundsSnap);
-            return ret != 0;
-        }
-
-        /// <summary>
-        ///     Describes whether manipulate
-        /// </summary>
-        /// <param name="view">The view</param>
-        /// <param name="projection">The projection</param>
-        /// <param name="operation">The operation</param>
-        /// <param name="mode">The mode</param>
-        /// <param name="matrix">The matrix</param>
-        /// <param name="deltaMatrix">The delta matrix</param>
-        /// <param name="snap">The snap</param>
-        /// <param name="localBounds">The local bounds</param>
-        /// <param name="boundsSnap">The bounds snap</param>
-        /// <returns>The bool</returns>
-        public static bool Manipulate(ref float view, ref float projection, Operation operation, Mode mode, ref float matrix, ref float deltaMatrix, ref float snap, ref float localBounds, ref float boundsSnap)
-        {
-            byte ret = ImGuiZmoNative.InternalManipulate(view, projection, operation, mode, matrix, deltaMatrix, snap, localBounds, boundsSnap);
-            return ret != 0;
+                return ImGuiZmoNative.InternalManipulate(viewPtr, projectionPtr, operation, mode, matrixPtr, new IntPtr(), new IntPtr(), new IntPtr(), new IntPtr());
+            }
+            finally
+            {
+                if (viewHandle.IsAllocated) viewHandle.Free();
+                if (projectionHandle.IsAllocated) projectionHandle.Free();
+                if (matrixHandle.IsAllocated) matrixHandle.Free();
+            }
         }
 
         /// <summary>
@@ -236,9 +161,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.GuizMo
         /// <param name="rotation">The rotation</param>
         /// <param name="scale">The scale</param>
         /// <param name="matrix">The matrix</param>
-        public static void RecomposeMatrixFromComponents(ref float translation, ref float rotation, ref float scale, ref float matrix)
+        public static void RecomposeMatrixFromComponents(ref float[] translation, ref float[] rotation, ref float[] scale, ref float[] matrix)
         {
-            ImGuiZmoNative.InternalRecomposeMatrixFromComponents(translation, rotation, scale, matrix);
+            ImGuiZmoNative.InternalRecomposeMatrixFromComponents( translation,  rotation,  scale,  matrix);
         }
 
         /// <summary>
@@ -246,7 +171,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.GuizMo
         /// </summary>
         public static void SetDrawList()
         {
-            ImGuiZmoNative.InternalSetDrawlist(new ImDrawList());
+            ImGuiZmoNative.InternalSetDrawlist(new IntPtr());
         }
 
         /// <summary>
@@ -255,7 +180,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.GuizMo
         /// <param name="drawList">The draw list</param>
         public static void SetDrawList(ImDrawList drawList)
         {
-            ImGuiZmoNative.InternalSetDrawlist(drawList);
+            IntPtr drawListPtr = Marshal.GetIUnknownForObject(drawList);
+            ImGuiZmoNative.InternalSetDrawlist(drawListPtr);
         }
 
         /// <summary>
@@ -315,9 +241,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.GuizMo
         /// <param name="position">The position</param>
         /// <param name="size">The size</param>
         /// <param name="backgroundColor">The background color</param>
-        public static void ViewManipulate(ref float view, float length, Vector2 position, Vector2 size, uint backgroundColor)
+        public static void ViewManipulate(ref float[] view, float length, Vector2 position, Vector2 size, uint backgroundColor)
         {
-            ImGuiZmoNative.InternalViewManipulate(view, length, position, size, backgroundColor);
+            ImGuiZmoNative.ImGuizmo_ViewManipulate(view, length, position, size, backgroundColor);
         }
     }
 }
