@@ -29,7 +29,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -46,7 +46,6 @@ using Alis.Core.Graphic.Sdl2.Structs;
 using Alis.Extension.Graphic.ImGui;
 using Alis.Extension.Graphic.ImGui.Extras.GuizMo;
 using Alis.Extension.Graphic.ImGui.Extras.Node;
-using Alis.Extension.Graphic.ImGui.Extras.Plot;
 using Alis.Extension.Graphic.ImGui.Extras.Plot.Native;
 using Alis.Extension.Graphic.ImGui.Native;
 using Alis.Extension.Graphic.OpenGL;
@@ -235,8 +234,7 @@ namespace Alis.App.Engine
             string fontToLoad = "JetBrainsMono-Bold.ttf";
             
             string dirFontsIcon = Environment.CurrentDirectory + "/Assets/Icons/";
-            string fontIconToLoad = "fontawesome4.ttf";
-
+            
             if (!Directory.Exists(dirFonts))
             {
                 Logger.Info(@$"ERROR, DIR NOT FOUND: {dirFonts}");
@@ -249,40 +247,94 @@ namespace Alis.App.Engine
                 return;
             }
             
-            float baseFontSize = 14.0f; // 13.0f is the size of the default font. Change to the font size you use.
-            float iconFontSize = baseFontSize * 2.0f / 3.0f;
 
-            fonts.AddFontDefault();
-            ImFontPtr fontLoaded = fonts.AddFontFromFileTtf(@$"{dirFonts}{fontToLoad}", baseFontSize);
+            //fonts.AddFontDefault();
             
-            ushort[] IconRanges = new ushort[3];
-            IconRanges[0] = FontAwesome4.IconMin;
-            IconRanges[1] = FontAwesome4.IconMax;
-            IconRanges[2] = 0;
-            
-            ImFontPtr iconfont;
-            
-            // Allocate GCHandle to pin IconRanges in memory
-            GCHandle iconRangesHandle = GCHandle.Alloc(IconRanges, GCHandleType.Pinned);
-
+            float fontSize = 14;
+            float fontSizeIcon = 18;
+           
+            ImFontPtr fontLoaded16Solid = fonts.AddFontFromFileTtf(@$"{dirFonts}{fontToLoad}", fontSize);
             try
             {
-                IntPtr rangePtr = iconRangesHandle.AddrOfPinnedObject();
                 ImFontConfigPtr icons_config = ImGui.ImFontConfig();
                 icons_config.MergeMode = true;
                 icons_config.SnapH = true;
-                icons_config.GlyphMinAdvanceX = iconFontSize;
+                icons_config.GlyphMinAdvanceX = 18;
+                
+                ushort[] IconRanges = new ushort[3];
+                IconRanges[0] = FontAwesome5.IconMin;
+                IconRanges[1] = FontAwesome5.IconMax;
+                IconRanges[2] = 0;
+                
+                // Allocate GCHandle to pin IconRanges in memory
+                GCHandle iconRangesHandle = GCHandle.Alloc(IconRanges, GCHandleType.Pinned);
+                
+                IntPtr rangePtr = iconRangesHandle.AddrOfPinnedObject();
                 
                 // Assuming 'io' is a valid ImGuiIO instance and 'dir' and 'dirIcon' are defined paths
-                iconfont = fonts.AddFontFromFileTtf(@$"{dirFontsIcon}{fontIconToLoad}", iconFontSize, icons_config, rangePtr);
+                fonts.AddFontFromFileTtf(@$"{dirFontsIcon}{FontAwesome5.NameSolid}", fontSizeIcon, icons_config, rangePtr);
             }
-            finally
+            catch (Exception e)
             {
-                // Free the GCHandle when done to avoid memory leaks
-                if (iconRangesHandle.IsAllocated)
-                    iconRangesHandle.Free();
+                Logger.Exception(@$"ERROR, FONT ICONS NOT FOUND: {dirFontsIcon}{FontAwesome5.NameSolid} {e.Message}");
+                return;
+            }
+            
+            
+            ImFontPtr fontLoaded16Regular = fonts.AddFontFromFileTtf(@$"{dirFonts}{fontToLoad}", fontSize);
+            try
+            {
+                ImFontConfigPtr icons_config = ImGui.ImFontConfig();
+                icons_config.MergeMode = true;
+                icons_config.SnapH = true;
+                icons_config.GlyphMinAdvanceX = 20;
+                
+                ushort[] IconRanges = new ushort[3];
+                IconRanges[0] = FontAwesome5.IconMin;
+                IconRanges[1] = FontAwesome5.IconMax;
+                IconRanges[2] = 0;
+                
+                // Allocate GCHandle to pin IconRanges in memory
+                GCHandle iconRangesHandle = GCHandle.Alloc(IconRanges, GCHandleType.Pinned);
+                
+                IntPtr rangePtr = iconRangesHandle.AddrOfPinnedObject();
+                
+                // Assuming 'io' is a valid ImGuiIO instance and 'dir' and 'dirIcon' are defined paths
+                fonts.AddFontFromFileTtf(@$"{dirFontsIcon}{FontAwesome5.NameRegular}", fontSizeIcon, icons_config, rangePtr);
+            }
+            catch (Exception e)
+            {
+                Logger.Exception(@$"ERROR, FONT ICONS NOT FOUND: {dirFontsIcon}{FontAwesome5.NameRegular} {e.Message}");
+                return;
             }
 
+            
+            ImFontPtr fontLoaded16Light = fonts.AddFontFromFileTtf(@$"{dirFonts}{fontToLoad}", fontSize);
+            try
+            {
+                ImFontConfigPtr icons_config = ImGui.ImFontConfig();
+                icons_config.MergeMode = true;
+                icons_config.SnapH = true;
+                icons_config.GlyphMinAdvanceX = 20;
+                
+                ushort[] IconRanges = new ushort[3];
+                IconRanges[0] = FontAwesome5.IconMin;
+                IconRanges[1] = FontAwesome5.IconMax;
+                IconRanges[2] = 0;
+                
+                // Allocate GCHandle to pin IconRanges in memory
+                GCHandle iconRangesHandle = GCHandle.Alloc(IconRanges, GCHandleType.Pinned);
+                
+                IntPtr rangePtr = iconRangesHandle.AddrOfPinnedObject();
+                
+                // Assuming 'io' is a valid ImGuiIO instance and 'dir' and 'dirIcon' are defined paths
+                fonts.AddFontFromFileTtf(@$"{dirFontsIcon}{FontAwesome5.NameLight}", fontSizeIcon, icons_config, rangePtr);
+            }
+            catch (Exception e)
+            {
+                Logger.Exception(@$"ERROR, FONT ICONS NOT FOUND: {dirFontsIcon}{FontAwesome5.NameLight} {e.Message}");
+                return;
+            }
             
             
             fonts.GetTexDataAsRgba32(out IntPtr pixelData, out int width, out int height, out int _);
@@ -290,10 +342,6 @@ namespace Alis.App.Engine
             fonts.TexId = (IntPtr) _fontTextureId;
             fonts.ClearTexData();
             
-            
-            
-           
-
             // CONFIG DOCKSPACE
            spaceWork.Viewport = ImGui.GetMainViewport();
             ImGui.SetNextWindowPos(spaceWork.Viewport .WorkPos);
@@ -395,7 +443,7 @@ namespace Alis.App.Engine
 
                 UpdateMousePosAndButtons();
 
-                ImGui.PushFont(fontLoaded);
+                //ImGui.PushFont(fontLoaded);
                 
                 int sizeMenuDown = 25;
                 Vector2 sizeDock = spaceWork.Viewport .Size - new Vector2(0, sizeMenuDown * 2);
@@ -422,7 +470,7 @@ namespace Alis.App.Engine
                 
                 
                 ImGui.End();
-                ImGui.PopFont();
+                //ImGui.PopFont();
                     
                 Sdl.MakeCurrent(spaceWork.Window, _glContext);
                 ImGui.Render();

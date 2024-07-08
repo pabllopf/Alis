@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics;
-
 namespace Alis.App.Engine.Demos
 {
     /// <summary>
