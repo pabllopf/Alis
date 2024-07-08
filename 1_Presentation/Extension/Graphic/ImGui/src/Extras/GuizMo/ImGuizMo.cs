@@ -133,6 +133,15 @@ namespace Alis.Extension.Graphic.ImGui.Extras.GuizMo
             return ret != 0;
         }
         
+        /// <summary>
+        /// Manipulates the view
+        /// </summary>
+        /// <param name="view">The view</param>
+        /// <param name="projection">The projection</param>
+        /// <param name="operation">The operation</param>
+        /// <param name="mode">The mode</param>
+        /// <param name="matrix">The matrix</param>
+        /// <returns>The byte</returns>
         public static byte Manipulate(float[] view, float[] projection, Operation operation, Mode mode, float[] matrix)
         {
             GCHandle viewHandle = GCHandle.Alloc(view, GCHandleType.Pinned);

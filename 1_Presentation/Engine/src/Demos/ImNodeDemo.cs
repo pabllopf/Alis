@@ -33,14 +33,24 @@ using Alis.Extension.Graphic.ImGui.Native;
 
 namespace Alis.App.Engine.Demos
 {
+    /// <summary>
+    /// The im node demo class
+    /// </summary>
+    /// <seealso cref="IDemo"/>
     public class ImNodeDemo : IDemo
     {
       
+        /// <summary>
+        /// Runs this instance
+        /// </summary>
         public void Run()
         {
               DefaultDemo();
         }
 
+        /// <summary>
+        /// Defaults the demo
+        /// </summary>
         [Conditional("DEBUG")]
         private void DefaultDemo()
         {

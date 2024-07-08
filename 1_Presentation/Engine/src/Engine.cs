@@ -34,6 +34,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 using Alis.App.Engine.Core;
+using Alis.App.Engine.Fonts;
 using Alis.App.Engine.Shaders;
 using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Aspect.Logging;
@@ -232,6 +233,9 @@ namespace Alis.App.Engine
 
             string dirFonts = Environment.CurrentDirectory + "/Assets/Fonts/Jetbrains/";
             string fontToLoad = "JetBrainsMono-Bold.ttf";
+            
+            string dirFontsIcon = Environment.CurrentDirectory + "/Assets/Icons/";
+            string fontIconToLoad = "fontawesome4.ttf";
 
             if (!Directory.Exists(dirFonts))
             {
@@ -244,15 +248,51 @@ namespace Alis.App.Engine
                 Logger.Info(@$"ERROR, FONT NOT FOUND: {dirFonts + fontToLoad}");
                 return;
             }
+            
+            float baseFontSize = 14.0f; // 13.0f is the size of the default font. Change to the font size you use.
+            float iconFontSize = baseFontSize * 2.0f / 3.0f;
 
             fonts.AddFontDefault();
-            ImFontPtr fontLoaded = fonts.AddFontFromFileTtf(@$"{dirFonts}{fontToLoad}", 14);
+            ImFontPtr fontLoaded = fonts.AddFontFromFileTtf(@$"{dirFonts}{fontToLoad}", baseFontSize);
+            
+            ushort[] IconRanges = new ushort[3];
+            IconRanges[0] = FontAwesome4.IconMin;
+            IconRanges[1] = FontAwesome4.IconMax;
+            IconRanges[2] = 0;
+            
+            ImFontPtr iconfont;
+            
+            // Allocate GCHandle to pin IconRanges in memory
+            GCHandle iconRangesHandle = GCHandle.Alloc(IconRanges, GCHandleType.Pinned);
 
+            try
+            {
+                IntPtr rangePtr = iconRangesHandle.AddrOfPinnedObject();
+                ImFontConfigPtr icons_config = ImGui.ImFontConfig();
+                icons_config.MergeMode = true;
+                icons_config.SnapH = true;
+                icons_config.GlyphMinAdvanceX = iconFontSize;
+                
+                // Assuming 'io' is a valid ImGuiIO instance and 'dir' and 'dirIcon' are defined paths
+                iconfont = fonts.AddFontFromFileTtf(@$"{dirFontsIcon}{fontIconToLoad}", iconFontSize, icons_config, rangePtr);
+            }
+            finally
+            {
+                // Free the GCHandle when done to avoid memory leaks
+                if (iconRangesHandle.IsAllocated)
+                    iconRangesHandle.Free();
+            }
+
+            
+            
             fonts.GetTexDataAsRgba32(out IntPtr pixelData, out int width, out int height, out int _);
             _fontTextureId = LoadTexture(pixelData, width, height);
-
             fonts.TexId = (IntPtr) _fontTextureId;
             fonts.ClearTexData();
+            
+            
+            
+           
 
             // CONFIG DOCKSPACE
            spaceWork.Viewport = ImGui.GetMainViewport();

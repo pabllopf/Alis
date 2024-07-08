@@ -105,13 +105,27 @@ namespace Alis.App.Engine.Core
         /// </summary>
         public IntPtr ContextGui;
 
+        /// <summary>
+        /// The im gui demo
+        /// </summary>
         private readonly ImGuiDemo imGuiDemo = new ImGuiDemo();
 
+        /// <summary>
+        /// The im plot demo
+        /// </summary>
         private readonly ImPlotDemo imPlotDemo = new ImPlotDemo();
 
+        /// <summary>
+        /// The im guizmo demo
+        /// </summary>
         private readonly ImGuizmoDemo imGuizmoDemo = new ImGuizmoDemo();
 
+        /// <summary>
+        /// The im node demo
+        /// </summary>
         private readonly ImNodeDemo imNodeDemo = new ImNodeDemo();
+        
+        private readonly IconDemo iconDemo = new IconDemo();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SpaceWork"/> class
@@ -137,6 +151,7 @@ namespace Alis.App.Engine.Core
             imPlotDemo.Run();
             imGuizmoDemo.Run();
             imNodeDemo.Run();
+            iconDemo.Run();
             
             TopMenu.Render();
             BottomMenu.Render();

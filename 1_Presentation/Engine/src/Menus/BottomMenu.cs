@@ -45,6 +45,9 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private bool menuDownState = true;
 
+        /// <summary>
+        /// The size menu down
+        /// </summary>
         private const int SizeMenuDown = 25;
 
         /// <summary>

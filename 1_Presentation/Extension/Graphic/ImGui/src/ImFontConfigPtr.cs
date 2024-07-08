@@ -48,7 +48,13 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
         public ImFontConfigPtr(IntPtr nativePtr) => NativePtr = nativePtr;
-
+        
+        public ImFontConfigPtr(ImFontConfig fontConfig)
+        { 
+            NativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFontConfig>()); 
+            Marshal.StructureToPtr(fontConfig, NativePtr, false);
+        }
+        
         /// <summary>
         /// </summary>
         /// <param name="wrappedPtr"></param>
@@ -60,108 +66,133 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="nativePtr"></param>
         /// <returns></returns>
         public static implicit operator ImFontConfigPtr(IntPtr nativePtr) => new ImFontConfigPtr(nativePtr);
-
+        
         /// <summary>
         ///     Gets or sets the value of the font data
         /// </summary>
-        public IntPtr FontData
-        {
-            get => Marshal.ReadIntPtr(NativePtr);
-            set => Marshal.WriteIntPtr(NativePtr, value);
-        }
+        public IntPtr FontData => Marshal.PtrToStructure<ImFontConfig>(NativePtr).FontData;
 
         /// <summary>
         ///     Gets the value of the font data size
         /// </summary>
-        public int FontDataSize => Marshal.ReadInt32(NativePtr, IntPtr.Size);
+        public int FontDataSize => Marshal.PtrToStructure<ImFontConfig>(NativePtr).FontDataSize;
 
         /// <summary>
         ///     Gets the value of the font data owned by atlas
         /// </summary>
-        public bool FontDataOwnedByAtlas => Convert.ToBoolean(Marshal.ReadByte(NativePtr, IntPtr.Size + sizeof(int)));
+        public bool FontDataOwnedByAtlas => Marshal.PtrToStructure<ImFontConfig>(NativePtr).FontDataOwnedByAtlas != 0; 
 
         /// <summary>
         ///     Gets the value of the font no
         /// </summary>
-        public int FontNo => Marshal.ReadInt32(NativePtr, IntPtr.Size + sizeof(int) + sizeof(byte));
+        public int FontNo => Marshal.PtrToStructure<ImFontConfig>(NativePtr).FontNo;
 
         /// <summary>
         ///     Gets the value of the size pixels
         /// </summary>
-        public float SizePixels => Marshal.PtrToStructure<float>(NativePtr + IntPtr.Size + sizeof(int) + sizeof(byte) + sizeof(int));
+        public float SizePixels => Marshal.PtrToStructure<ImFontConfig>(NativePtr).SizePixels;
 
         /// <summary>
         ///     Gets the value of the oversample h
         /// </summary>
-        public int OversampleH => Marshal.ReadInt32(NativePtr + IntPtr.Size + sizeof(int) + sizeof(byte) + sizeof(int) + sizeof(float));
-
+        public int OversampleH => Marshal.PtrToStructure<ImFontConfig>(NativePtr).OversampleH;
+        
         /// <summary>
         ///     Gets the value of the oversample v
         /// </summary>
-        public int OversampleV => Marshal.ReadInt32(NativePtr + IntPtr.Size + sizeof(int) + sizeof(byte) + sizeof(int) + sizeof(float) + sizeof(int));
+        public int OversampleV => Marshal.PtrToStructure<ImFontConfig>(NativePtr).OversampleV;
 
         /// <summary>
         ///     Gets the value of the pixel snap h
         /// </summary>
-        public bool SnapH => Convert.ToBoolean(Marshal.ReadByte(NativePtr + IntPtr.Size + sizeof(int) + sizeof(byte) + sizeof(int) + sizeof(float) + sizeof(int) + sizeof(int)));
-
+        public bool SnapH
+        {
+            get { return Marshal.PtrToStructure<ImFontConfig>(NativePtr).SnapH != 0; }
+            set
+            {
+                ImFontConfig config = Marshal.PtrToStructure<ImFontConfig>(NativePtr);
+                config.SnapH = (byte)(value ? 1 : 0);
+                Marshal.StructureToPtr(config, NativePtr, false);
+            }
+        }
+        
         /// <summary>
         ///     Gets the value of the glyph extra spacing
         /// </summary>
-        public Vector2 GlyphExtraSpacing => Marshal.PtrToStructure<Vector2>(NativePtr + IntPtr.Size + sizeof(int) + sizeof(byte) + sizeof(int) + sizeof(float) + sizeof(int) + sizeof(int) + sizeof(byte));
+        public Vector2 GlyphExtraSpacing => Marshal.PtrToStructure<ImFontConfig>(NativePtr).GlyphExtraSpacing;
 
         /// <summary>
         ///     Gets the value of the glyph offset
         /// </summary>
-        public Vector2 GlyphOffset => Marshal.PtrToStructure<Vector2>(NativePtr + IntPtr.Size + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<int>() + Marshal.SizeOf<float>() + Marshal.SizeOf<int>() + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<Vector2>());
+        public Vector2 GlyphOffset => Marshal.PtrToStructure<ImFontConfig>(NativePtr).GlyphOffset;
 
         /// <summary>
         ///     Gets or sets the value of the glyph ranges
         /// </summary>
         public IntPtr GlyphRanges
         {
-            get => Marshal.ReadIntPtr(NativePtr + IntPtr.Size + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<int>() + Marshal.SizeOf<float>() + Marshal.SizeOf<int>() + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<Vector2>() + Marshal.SizeOf<Vector2>());
-            set => Marshal.WriteIntPtr(NativePtr + IntPtr.Size + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<int>() + Marshal.SizeOf<float>() + Marshal.SizeOf<int>() + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<Vector2>() + Marshal.SizeOf<Vector2>(), value);
+            get { return Marshal.PtrToStructure<ImFontConfig>(NativePtr).GlyphRanges; }
+            set
+            {
+                ImFontConfig config = Marshal.PtrToStructure<ImFontConfig>(NativePtr);
+                config.GlyphRanges = value;
+                Marshal.StructureToPtr(config, NativePtr, false);
+            }
         }
-
+        
         /// <summary>
         ///     Gets the value of the glyph min advance x
         /// </summary>
-        public float GlyphMinAdvanceX => Marshal.PtrToStructure<float>(NativePtr + IntPtr.Size + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<int>() + Marshal.SizeOf<float>() + Marshal.SizeOf<int>() + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<Vector2>() + Marshal.SizeOf<Vector2>() + IntPtr.Size);
-
+        public float GlyphMinAdvanceX
+        {
+            get { return Marshal.PtrToStructure<ImFontConfig>(NativePtr).GlyphMinAdvanceX; }
+            set
+            {
+                ImFontConfig config = Marshal.PtrToStructure<ImFontConfig>(NativePtr);
+                config.GlyphMinAdvanceX = value;
+                Marshal.StructureToPtr(config, NativePtr, false);
+            }
+        }
+        
         /// <summary>
         ///     Gets the value of the glyph max advance x
         /// </summary>
-        public float GlyphMaxAdvanceX => Marshal.PtrToStructure<float>(NativePtr + IntPtr.Size + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<int>() + Marshal.SizeOf<float>() + Marshal.SizeOf<int>() + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<Vector2>() + Marshal.SizeOf<Vector2>() + IntPtr.Size + sizeof(float));
-
+        public float GlyphMaxAdvanceX => Marshal.PtrToStructure<ImFontConfig>(NativePtr).GlyphMaxAdvanceX;
+        
         /// <summary>
         ///     Gets the value of the merge mode
         /// </summary>
-        public bool MergeMode => Convert.ToBoolean(Marshal.ReadByte(NativePtr + IntPtr.Size + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<int>() + Marshal.SizeOf<float>() + Marshal.SizeOf<int>() + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<Vector2>() + Marshal.SizeOf<Vector2>() + IntPtr.Size + sizeof(float) + sizeof(float)));
-
+        public bool MergeMode
+        {
+            get { return Marshal.PtrToStructure<ImFontConfig>(NativePtr).MergeMode != 0; }
+            set
+            {
+                ImFontConfig config = Marshal.PtrToStructure<ImFontConfig>(NativePtr);
+                config.MergeMode = (byte)(value ? 1 : 0);
+                Marshal.StructureToPtr(config, NativePtr, false);
+            }
+        }
+        
         /// <summary>
         ///     Gets the value of the font builder flags
         /// </summary>
-        public uint FontBuilderFlags => (uint) Marshal.ReadInt32(NativePtr + IntPtr.Size + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<int>() + Marshal.SizeOf<float>() + Marshal.SizeOf<int>() + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<Vector2>() + Marshal.SizeOf<Vector2>() + IntPtr.Size + sizeof(float) + sizeof(float) + sizeof(byte));
-
+        public uint FontBuilderFlags => Marshal.PtrToStructure<ImFontConfig>(NativePtr).FontBuilderFlags;
+        
         /// <summary>
         ///     Gets the value of the rasterizer multiply
         /// </summary>
-        public float RasterizerMultiply => Marshal.PtrToStructure<float>(NativePtr + IntPtr.Size + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<int>() + Marshal.SizeOf<float>() + Marshal.SizeOf<int>() + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<Vector2>() + Marshal.SizeOf<Vector2>() + IntPtr.Size + sizeof(float) + sizeof(float) + sizeof(byte) +
-                                                                         sizeof(uint));
+        public float RasterizerMultiply => Marshal.PtrToStructure<ImFontConfig>(NativePtr).RasterizerMultiply;
 
         /// <summary>
         ///     Gets the value of the ellipsis char
         /// </summary>
-        public ushort EllipsisChar => (ushort) Marshal.ReadInt16(NativePtr + IntPtr.Size + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<int>() + Marshal.SizeOf<float>() + Marshal.SizeOf<int>() + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<Vector2>() + Marshal.SizeOf<Vector2>() + IntPtr.Size + sizeof(float) + sizeof(float) + sizeof(byte) +
-                                                                 sizeof(uint) + sizeof(float));
+        public ushort EllipsisChar => Marshal.PtrToStructure<ImFontConfig>(NativePtr).EllipsisChar;
 
         /// <summary>
         ///     Gets the value of the dst font
         /// </summary>
-        public ImFontPtr DstFont => new ImFontPtr(Marshal.ReadIntPtr(NativePtr + IntPtr.Size + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<int>() + Marshal.SizeOf<float>() + Marshal.SizeOf<int>() + Marshal.SizeOf<int>() + Marshal.SizeOf<byte>() + Marshal.SizeOf<Vector2>() + Marshal.SizeOf<Vector2>() + IntPtr.Size + sizeof(float) + sizeof(float) + sizeof(byte) +
-                                                                     sizeof(uint) + sizeof(float) + sizeof(ushort) + 40));
-
+        public ImFontPtr DstFont => Marshal.PtrToStructure<ImFontConfig>(NativePtr).DstFont;
+        
         /// <summary>
         ///     Destroys this instance
         /// </summary>

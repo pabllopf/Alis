@@ -6,18 +6,46 @@ using Alis.Extension.Graphic.ImGui.Native;
 
 namespace Alis.App.Engine.Demos
 {
+    /// <summary>
+    /// The im guizmo demo class
+    /// </summary>
+    /// <seealso cref="IDemo"/>
     public class ImGuizmoDemo : IDemo
     {
+        /// <summary>
+        /// The matrix translation
+        /// </summary>
         private float[] matrixTranslation = new float[3];
+        /// <summary>
+        /// The matrix rotation
+        /// </summary>
         float[] matrixRotation = new float[3];
+        /// <summary>
+        /// The matrix scale
+        /// </summary>
         float[] matrixScale = new float[3];
 
+        /// <summary>
+        /// The vector
+        /// </summary>
         Vector3 translation = new Vector3();
+        /// <summary>
+        /// The vector
+        /// </summary>
         Vector3 rotation = new Vector3();
+        /// <summary>
+        /// The vector
+        /// </summary>
         Vector3 scale = new Vector3();
 
+        /// <summary>
+        /// The is open
+        /// </summary>
         private bool isOpen = false;
 
+        /// <summary>
+        /// The matrix
+        /// </summary>
         private float[] matrix = new float[16]
         {
             1.0f, 0.0f, 0.0f, 0.0f,
@@ -26,6 +54,9 @@ namespace Alis.App.Engine.Demos
             0.0f, 0.0f, 2.0f, 1.0f
         };
 
+        /// <summary>
+        /// The camera view
+        /// </summary>
         private float[] cameraView = new float[16]
         {
             1.0f, 0.0f, 0.0f, 0.0f,
@@ -34,6 +65,9 @@ namespace Alis.App.Engine.Demos
             0.0f, 0.0f, 0.0f, 1.0f
         };
 
+        /// <summary>
+        /// The camera projection
+        /// </summary>
         private float[] cameraProjection = new float[16]
         {
             2.0f / 800.0f, 0.0f, 0.0f, 0.0f,
@@ -42,6 +76,9 @@ namespace Alis.App.Engine.Demos
             -1.0f, -1.0f, 0.0f, 1.0f
         };
 
+        /// <summary>
+        /// The identity matrix
+        /// </summary>
         private float[] identityMatrix = new float[16]
         {
             1.0f, 0.0f, 0.0f, 0.0f,
@@ -50,6 +87,9 @@ namespace Alis.App.Engine.Demos
             0.0f, 0.0f, 0.0f, 1.0f
         };
 
+        /// <summary>
+        /// Runs this instance
+        /// </summary>
         public void Run()
         {
             ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4(0.35f, 0.3f, 0.3f, 1.0f));

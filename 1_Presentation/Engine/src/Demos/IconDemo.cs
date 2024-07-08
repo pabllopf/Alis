@@ -1,11 +1,11 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IDemo.cs
+//  File:IconDemo.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,18 +27,26 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics;
+using Alis.App.Engine.Fonts;
+using Alis.Extension.Graphic.ImGui.Native;
 
 namespace Alis.App.Engine.Demos
 {
-    /// <summary>
-    /// The demo interface
-    /// </summary>
-    public interface IDemo
+    public class IconDemo : IDemo
     {
-        /// <summary>
-        /// Runs this instance
-        /// </summary>
-        public void Run();
+        public void Run()
+        {
+            if (ImGui.Begin("Icon Demo"))
+            {
+                ImGui.Text("Font Awesome 4");
+                ImGui.Text("Regular");
+                ImGui.Text($"icon: {FontAwesome4.Coffee}");
+                ImGui.Text("Solid");
+                ImGui.Text($"icon: {FontAwesome4.BatteryFull}");
+                ImGui.Text("Brands");
+                ImGui.Text($"icon: {FontAwesome4.Github}");
+            }
+            ImGui.End();
+        }
     }
 }
