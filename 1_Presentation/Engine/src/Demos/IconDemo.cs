@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics;
 using Alis.App.Engine.Fonts;
 using Alis.Extension.Graphic.ImGui.Native;
 
@@ -36,15 +37,17 @@ namespace Alis.App.Engine.Demos
     {
         public void Run()
         {
+            SimpleIcons();
+        }
+
+        [Conditional("DEBUG")]
+        private void SimpleIcons()
+        {
             if (ImGui.Begin("Icon Demo"))
             {
-                ImGui.Text("Font Awesome 4");
-                ImGui.Text("Regular");
-                ImGui.Text($"icon: {FontAwesome4.Coffee}");
-                ImGui.Text("Solid");
-                ImGui.Text($"icon: {FontAwesome4.BatteryFull}");
-                ImGui.Text("Brands");
-                ImGui.Text($"icon: {FontAwesome4.Github}");
+                ImGui.Separator();
+                ImGui.Text("Font Awesome 5");
+                ImGui.Text($" {FontAwesome5.Bug} {FontAwesome5.Bullhorn} {FontAwesome5.Bullseye} {FontAwesome5.Calendar}");
             }
             ImGui.End();
         }
