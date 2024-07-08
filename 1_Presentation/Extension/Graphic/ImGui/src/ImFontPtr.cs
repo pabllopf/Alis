@@ -65,77 +65,86 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the index advance x
         /// </summary>
-        public ImVectorG<float> IndexAdvanceX => Marshal.PtrToStructure<ImVectorG<float>>(NativePtr);
+        public ImVectorG<float> IndexAdvanceX => new ImVectorG<float>(Marshal.PtrToStructure<ImFont>(NativePtr).IndexAdvanceX);
 
         /// <summary>
         ///     Gets the value of the fallback advance x
         /// </summary>
-        public float FallbackAdvanceX => Marshal.PtrToStructure<float>(NativePtr + 16);
+        public float FallbackAdvanceX => Marshal.PtrToStructure<ImFont>(NativePtr).FallbackAdvanceX;
 
         /// <summary>
         ///     Gets the value of the font size
         /// </summary>
-        public float FontSize => Marshal.PtrToStructure<float>(NativePtr + 20);
+        public float FontSize => Marshal.PtrToStructure<ImFont>(NativePtr).FontSize;
 
         /// <summary>
         ///     Gets the value of the index lookup
         /// </summary>
-        public ImVectorG<ushort> IndexLookup => Marshal.PtrToStructure<ImVectorG<ushort>>(NativePtr + 24);
+        public ImVectorG<ushort> IndexLookup => new ImVectorG<ushort>(Marshal.PtrToStructure<ImFont>(NativePtr).IndexLookup);
 
         /// <summary>
         ///     Gets the value of the container atlas
         /// </summary>
-        public ImFontAtlasPtr ContainerAtlas => Marshal.PtrToStructure<ImFontAtlasPtr>(NativePtr + 40);
+        public ImFontAtlasPtr ContainerAtlas => new ImFontAtlasPtr(Marshal.PtrToStructure<ImFont>(NativePtr).ContainerAtlas);
 
         /// <summary>
         ///     Gets the value of the config data
         /// </summary>
-        public ImFontConfigPtr ConfigData => Marshal.PtrToStructure<ImFontConfigPtr>(NativePtr + 48);
-
+        public ImFontConfigPtr ConfigData
+        {
+            get { return new ImFontConfigPtr(Marshal.PtrToStructure<ImFont>(NativePtr).ConfigData); }
+            set
+            {
+                ImFont temp = Marshal.PtrToStructure<ImFont>(NativePtr);
+                temp.ConfigData = value;
+                Marshal.StructureToPtr(temp, NativePtr, false);
+            }
+        }
+        
         /// <summary>
         ///     Gets the value of the config data count
         /// </summary>
-        public short ConfigDataCount => Marshal.PtrToStructure<short>(NativePtr + 56);
+        public short ConfigDataCount => Marshal.PtrToStructure<ImFont>(NativePtr).ConfigDataCount;
 
         /// <summary>
         ///     Gets the value of the fallback char
         /// </summary>
-        public ushort FallbackChar => Marshal.PtrToStructure<ushort>(NativePtr + 58);
+        public ushort FallbackChar => Marshal.PtrToStructure<ImFont>(NativePtr).FallbackChar;
 
         /// <summary>
         ///     Gets the value of the ellipsis char
         /// </summary>
-        public ushort EllipsisChar => Marshal.PtrToStructure<ushort>(NativePtr + 60);
+        public ushort EllipsisChar => Marshal.PtrToStructure<ImFont>(NativePtr).EllipsisChar;
 
         /// <summary>
         ///     Gets the value of the dot char
         /// </summary>
-        public ushort DotChar => Marshal.PtrToStructure<ushort>(NativePtr + 62);
+        public ushort DotChar => Marshal.PtrToStructure<ImFont>(NativePtr).DotChar;
 
         /// <summary>
         ///     Gets the value of the dirty lookup tables
         /// </summary>
-        public bool DirtyLookupTables => Marshal.PtrToStructure<byte>(NativePtr + 64) != 0;
+        public bool DirtyLookupTables => Marshal.PtrToStructure<ImFont>(NativePtr).DirtyLookupTables != 0;
 
         /// <summary>
         ///     Gets the value of the scale
         /// </summary>
-        public float Scale => Marshal.PtrToStructure<float>(NativePtr + 68);
+        public float Scale => Marshal.PtrToStructure<ImFont>(NativePtr).Scale;
 
         /// <summary>
         ///     Gets the value of the ascent
         /// </summary>
-        public float Ascent => Marshal.PtrToStructure<float>(NativePtr + 72);
+        public float Ascent => Marshal.PtrToStructure<ImFont>(NativePtr).Ascent;
 
         /// <summary>
         ///     Gets the value of the descent
         /// </summary>
-        public float Descent => Marshal.PtrToStructure<float>(NativePtr + 76);
+        public float Descent => Marshal.PtrToStructure<ImFont>(NativePtr).Descent;
 
         /// <summary>
         ///     Gets the value of the metrics total surface
         /// </summary>
-        public int MetricsTotalSurface => Marshal.PtrToStructure<int>(NativePtr + 80);
+        public int MetricsTotalSurface => Marshal.PtrToStructure<ImFont>(NativePtr).MetricsTotalSurface;
 
         /// <summary>
         ///     Adds the glyph using the specified src cfg

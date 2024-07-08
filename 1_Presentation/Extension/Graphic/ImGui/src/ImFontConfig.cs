@@ -36,102 +36,103 @@ namespace Alis.Extension.Graphic.ImGui
     /// <summary>
     ///     The im font config
     /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
     public struct ImFontConfig
     {
         /// <summary>
         ///     The font data
         /// </summary>
-        public IntPtr FontData { get; set; }
+        public IntPtr FontData ;
 
         /// <summary>
         ///     The font data size
         /// </summary>
-        public int FontDataSize { get; set; }
+        public int FontDataSize ;
 
         /// <summary>
         ///     The font data owned by atlas
         /// </summary>
-        public byte FontDataOwnedByAtlas { get; set; }
+        public byte FontDataOwnedByAtlas ;
 
         /// <summary>
         ///     The font no
         /// </summary>
-        public int FontNo { get; set; }
+        public int FontNo ;
 
         /// <summary>
         ///     The size pixels
         /// </summary>
-        public float SizePixels { get; set; }
+        public float SizePixels ;
 
         /// <summary>
         ///     The oversample
         /// </summary>
-        public int OversampleH { get; set; }
+        public int OversampleH ;
 
         /// <summary>
         ///     The oversample
         /// </summary>
-        public int OversampleV { get; set; }
+        public int OversampleV ;
 
         /// <summary>
         ///     The pixel snap
         /// </summary>
-        public byte SnapH { get; set; }
+        public byte SnapH ;
 
         /// <summary>
         ///     The glyph extra spacing
         /// </summary>
-        public Vector2 GlyphExtraSpacing { get; set; }
+        public Vector2 GlyphExtraSpacing ;
 
         /// <summary>
         ///     The glyph offset
         /// </summary>
-        public Vector2 GlyphOffset { get; set; }
-
+        public Vector2 GlyphOffset ;
+        
         /// <summary>
         ///     The glyph ranges
         /// </summary>
-        public IntPtr GlyphRanges { get; set; }
+        public IntPtr GlyphRanges;
 
         /// <summary>
         ///     The glyph min advance
         /// </summary>
-        public float GlyphMinAdvanceX { get; set; }
+        public float GlyphMinAdvanceX ;
 
         /// <summary>
         ///     The glyph max advance
         /// </summary>
-        public float GlyphMaxAdvanceX { get; set; }
+        public float GlyphMaxAdvanceX ;
 
         /// <summary>
         ///     The merge mode
         /// </summary>
-        public byte MergeMode { get; set; }
+        public byte MergeMode ;
 
         /// <summary>
         ///     The font builder flags
         /// </summary>
-        public uint FontBuilderFlags { get; set; }
+        public uint FontBuilderFlags ;
 
         /// <summary>
         ///     The rasterizer multiply
         /// </summary>
-        public float RasterizerMultiply { get; set; }
+        public float RasterizerMultiply ;
 
         /// <summary>
         ///     The ellipsis char
         /// </summary>
-        public ushort EllipsisChar { get; set; }
+        public ushort EllipsisChar ;
 
         /// <summary>
         ///     The name
         /// </summary>
-        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 40)]
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 40)]
         public byte[] Name;
 
         /// <summary>
         ///     The dst font
         /// </summary>
-        public IntPtr DstFont { get; set; }
+        public IntPtr DstFont ;
     }
 }
