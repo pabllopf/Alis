@@ -619,6 +619,10 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool MenuItem(string label, bool enabled) => MenuItem(label, string.Empty, false, enabled);
         
+        /// <summary>
+        /// Ims the font config
+        /// </summary>
+        /// <returns>The im font config ptr</returns>
         public static ImFontConfigPtr ImFontConfig() => ImGuiNative.ImFontConfig_ImFontConfig();
     }
 }

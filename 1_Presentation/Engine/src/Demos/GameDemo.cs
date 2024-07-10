@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IconDemo.cs
+//  File:GameDemo.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,37 +27,44 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Diagnostics;
-using Alis.App.Engine.Fonts;
+using Alis.App.Engine.Core;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.ImGui.Native;
 
 namespace Alis.App.Engine.Demos
 {
     /// <summary>
-    /// The icon demo class
+    /// The game demo class
     /// </summary>
     /// <seealso cref="IDemo"/>
-    public class IconDemo : IDemo
+    public class GameDemo : IDemo
     {
+        private SpaceWork SpaceWork { get; }
+        
+        public GameDemo(SpaceWork spaceWork)
+        {
+            SpaceWork = spaceWork;
+        }
+        
         /// <summary>
         /// Runs this instance
         /// </summary>
         public void Run()
         {
-            SimpleIcons();
+            SimpleGameDemo();
         }
-
+        
         /// <summary>
-        /// Simples the icons
+        /// Simples the game demo
         /// </summary>
         [Conditional("DEBUG")]
-        private void SimpleIcons()
+        private void SimpleGameDemo()
         {
-            if (ImGui.Begin("Icon Demo"))
+            if (ImGui.Begin("Game Demo"))
             {
-                ImGui.Separator();
-                ImGui.Text("Font Awesome 5");
-                ImGui.Text($" {FontAwesome5.Bug} {FontAwesome5.Bullhorn} {FontAwesome5.Bullseye} {FontAwesome5.Calendar}");
+                ImGui.Image(IntPtr.Zero, new Vector2(640, 480));
             }
             ImGui.End();
         }

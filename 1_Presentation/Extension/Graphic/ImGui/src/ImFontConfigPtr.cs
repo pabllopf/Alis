@@ -49,6 +49,10 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="nativePtr">The native ptr</param>
         public ImFontConfigPtr(IntPtr nativePtr) => NativePtr = nativePtr;
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ImFontConfigPtr"/> class
+        /// </summary>
+        /// <param name="fontConfig">The font config</param>
         public ImFontConfigPtr(ImFontConfig fontConfig)
         { 
             NativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFontConfig>()); 
