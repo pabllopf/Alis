@@ -39,6 +39,7 @@ using Alis.App.Engine.Shaders;
 using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Matrix;
+using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;
@@ -51,7 +52,7 @@ using Alis.Extension.Graphic.ImGui.Native;
 using Alis.Extension.Graphic.OpenGL;
 using Alis.Extension.Graphic.OpenGL.Constructs;
 using Alis.Extension.Graphic.OpenGL.Enums;
-using Type = Alis.Extension.Graphic.OpenGL.Enums.Type;
+using PixelFormat = Alis.Extension.Graphic.OpenGL.Enums.PixelFormat;
 using Version = Alis.Core.Graphic.Sdl2.Structs.Version;
 
 namespace Alis.App.Engine
@@ -125,6 +126,8 @@ namespace Alis.App.Engine
         ///     The quit
         /// </summary>
         private bool _quit;
+        
+        public bool closeRender = true;
 
         /// <summary>
         ///     The shader
@@ -150,7 +153,13 @@ namespace Alis.App.Engine
         ///     The dockspaceflags
         /// </summary>
         private ImGuiWindowFlags dockspaceflags;
+
+        private byte _red;
         
+        private byte _green;
+        
+        private byte _blue;
+
         /// <summary>
         ///     Starts this instance
         /// </summary>
@@ -158,21 +167,34 @@ namespace Alis.App.Engine
         public void Start()
         {
             // initialize SDL and set a few defaults for the OpenGL context
-            if (Sdl.Init(InitSettings.InitVideo) != 0)
+            if (Sdl.Init(InitSettings.InitEverything) != 0)
             {
                 Logger.Info($@"Error of SDL2: {Sdl.GetError()}");
                 return;
             }
+            
+            WindowSettings flagsGame =
+                WindowSettings.WindowOpengl | 
+                WindowSettings.WindowResizable | 
+                WindowSettings.WindowHidden;
+            
+            IntPtr windowGame = Sdl.CreateWindow("Game (OpenGL)", 
+                (int) WindowPos.WindowPosCentered, (int) WindowPos.WindowPosCentered, 
+                800, 600, flagsGame);
+            
+            IntPtr rendererGame = Sdl.CreateRenderer(windowGame, -1, Renderers.SdlRendererTargetTexture);
 
             // GET VERSION SDL2
             Version version = Sdl.GetVersion();
             Logger.Info(@$"SDL2 VERSION {version.major}.{version.minor}.{version.patch}");
-
+            
+            Sdl.SetHint(Hint.HintRenderDriver, "opengl");
+            
             // CONFIG THE SDL2 AN OPENGL CONFIGURATION
             Sdl.SetAttributeByInt(GlAttr.SdlGlContextFlags, (int) GlContexts.SdlGlContextForwardCompatibleFlag);
             Sdl.SetAttributeByProfile(GlAttr.SdlGlContextProfileMask, GlProfiles.SdlGlContextProfileCore);
-            Sdl.SetAttributeByInt(GlAttr.SdlGlContextMajorVersion, 3);
-            Sdl.SetAttributeByInt(GlAttr.SdlGlContextMinorVersion, 2);
+            Sdl.SetAttributeByInt(GlAttr.SdlGlContextMajorVersion, 4);
+            Sdl.SetAttributeByInt(GlAttr.SdlGlContextMinorVersion, 1);
 
             Sdl.SetAttributeByProfile(GlAttr.SdlGlContextProfileMask, GlProfiles.SdlGlContextProfileCore);
             Sdl.SetAttributeByInt(GlAttr.SdlGlDoubleBuffer, 1);
@@ -197,7 +219,7 @@ namespace Alis.App.Engine
 
             spaceWork.Window = Sdl.CreateWindow(NameEngine, (int) WindowPos.WindowPosCentered, (int) WindowPos.WindowPosCentered, widthWindow, heightWindow, flags);
             _glContext = CreateGlContext(spaceWork.Window);
-
+            
             // compile the shader program
             _shader = new GlShaderProgram(VertexShader.ShaderCode, FragmentShader.ShaderCode);
 
@@ -387,7 +409,29 @@ namespace Alis.App.Engine
             _vboHandle = Gl.GenBuffer();
             _elementsHandle = Gl.GenBuffer();
             _vertexArrayObject = Gl.GenVertexArray();
-
+            
+            IntPtr pixelsPtr = Marshal.AllocHGlobal(800 * 600 * 4);
+            // write into the pixels array:
+            for (int i = 0; i < 800 * 600 * 4; i += 4)
+            {
+                Marshal.WriteByte(pixelsPtr, i, 255);
+                Marshal.WriteByte(pixelsPtr, i + 1, 0);
+                Marshal.WriteByte(pixelsPtr, i + 2, 0);
+                Marshal.WriteByte(pixelsPtr, i + 3, 255);
+            }
+            
+            uint[] textures = new uint[1];
+            Gl.GlGenTextures(1, textures);
+            uint textureopenglId = textures[0];
+            Gl.GlBindTexture(TextureTarget.Texture2D, textureopenglId);
+            Gl.GlTexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba8, 800, 600, 0, PixelFormat.Rgba, PixelType.UnsignedByte, pixelsPtr);
+            Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, TextureParameter.Linear);
+            Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, TextureParameter.Linear);
+            Gl.GlBindTexture(TextureTarget.Texture2D, 0);
+            
+            
+            IntPtr texture = (IntPtr)textureopenglId;
+            
             while (!_quit)
             {
                 while (Sdl.PollEvent(out Event e) != 0)
@@ -415,9 +459,15 @@ namespace Alis.App.Engine
                     }
                 }
 
-
-                Gl.GlClearColor(0.05f, 0.05f, 0.05f, 1.00f);
-
+                RenderColors();
+                Sdl.SetRenderDrawColor(rendererGame, _red, _green, _blue, 255);
+                Sdl.RenderClear(rendererGame);
+                Sdl.RenderPresent(rendererGame);
+                
+                RectangleI rect = new RectangleI( 0, 0, 800, 600);
+                Sdl.RenderReadPixels(rendererGame, ref rect, Sdl.PixelFormatABgr8888, pixelsPtr, 800 * 4);
+                
+                //Gl.GlClearColor(0.05f, 0.05f, 0.05f, 1.00f);
                 ImGui.NewFrame();
                 ImGuizMo.BeginFrame();
 
@@ -468,6 +518,26 @@ namespace Alis.App.Engine
                 // RENDER SAMPLES AND CODE
                 spaceWork.Update();
                 
+                // Update opengl texture 
+                Gl.GlBindTexture(TextureTarget.Texture2D, textureopenglId);
+                Gl.GlTexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba8, 800, 600, 0, PixelFormat.Rgba, PixelType.UnsignedByte, pixelsPtr);
+                Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, TextureParameter.Linear);
+                Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, TextureParameter.Linear);
+                Gl.GlBindTexture(TextureTarget.Texture2D,  0);
+                
+                if (ImGui.Begin("Hello, world!", ref closeRender))
+                {
+                    ImGui.Text("This is some useful text.");
+                    ImGui.Image(
+                        texture,
+                        new Vector2(100, 100),
+                        new Vector2(1, 1),
+                        new Vector2(1, 1),
+                        new Vector4(1, 1, 1, 1),
+                        new Vector4(255, 0, 0, 255));
+                }
+                ImGui.End();
+                
                 
                 ImGui.End();
                 //ImGui.PopFont();
@@ -505,7 +575,29 @@ namespace Alis.App.Engine
             Sdl.DestroyWindow(spaceWork.Window);
             Sdl.Quit();
         }
-        
+
+        private void RenderColors()
+        {
+            if (_red < 255)
+            {
+                _red++;
+            }
+            else if (_green < 255)
+            {
+                _green++;
+            }
+            else if (_blue < 255)
+            {
+                _blue++;
+            }
+            else
+            {
+                _red = 0;
+                _green = 0;
+                _blue = 0;
+            }
+        }
+
         /// <summary>
         ///     Processes the event using the specified evt
         /// </summary>
@@ -707,12 +799,12 @@ namespace Alis.App.Engine
         /// <param name="format">The format</param>
         /// <param name="internalFormat">The internal format</param>
         /// <returns>The texture id</returns>
-        private static uint LoadTexture(IntPtr pixelData, int width, int height, Format format = Format.Rgba, InternalFormat internalFormat = InternalFormat.Rgba)
+        private static uint LoadTexture(IntPtr pixelData, int width, int height, PixelFormat format = PixelFormat.Rgba, PixelInternalFormat internalFormat = PixelInternalFormat.Rgba)
         {
             uint textureId = Gl.GenTexture();
             Gl.GlPixelStorei(StoreParameter.UnpackAlignment, 1);
             Gl.GlBindTexture(TextureTarget.Texture2D, textureId);
-            Gl.GlTexImage2D(TextureTarget.Texture2D, 0, internalFormat, width, height, 0, format, Type.UnsignedByte, pixelData);
+            Gl.GlTexImage2D(TextureTarget.Texture2D, 0, internalFormat, width, height, 0, format, PixelType.UnsignedByte, pixelData);
             Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, TextureParameter.Linear);
             Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, TextureParameter.Linear);
             Gl.GlBindTexture(TextureTarget.Texture2D, 0);

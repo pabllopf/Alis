@@ -290,7 +290,7 @@ namespace Alis.Extension.Graphic.OpenGL
         /// <summary>
         ///     The gen textures
         /// </summary>
-        private static readonly GenTextures GlGenTextures = _<GenTextures>("glGenTextures");
+        public static readonly GenTextures GlGenTextures = _<GenTextures>("glGenTextures");
 
         /// <summary>
         ///     The pixel storei

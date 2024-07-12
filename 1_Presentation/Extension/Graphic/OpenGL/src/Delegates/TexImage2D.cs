@@ -30,7 +30,6 @@
 using System;
 using System.Runtime.InteropServices;
 using Alis.Extension.Graphic.OpenGL.Enums;
-using Type = Alis.Extension.Graphic.OpenGL.Enums.Type;
 
 namespace Alis.Extension.Graphic.OpenGL.Delegates
 {
@@ -38,5 +37,5 @@ namespace Alis.Extension.Graphic.OpenGL.Delegates
     ///     The tex image
     /// </summary>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    public delegate void TexImage2D(TextureTarget target, int level, InternalFormat internalFormat, int width, int height, int border, Format format, Type type, IntPtr data);
+    public delegate void TexImage2D(TextureTarget target, int level, PixelInternalFormat internalFormat, int width, int height, int border, PixelFormat format, PixelType type, IntPtr data);
 }

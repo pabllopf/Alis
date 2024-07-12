@@ -91,7 +91,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBegin")]
-        public static extern byte igBegin(byte[] name, bool pOpen, ImGuiWindowFlags flags);
+        public static extern byte igBegin(byte[] name, byte pOpen, ImGuiWindowFlags flags);
 
         /// <summary>
         ///     Igs the begin child str using the specified str id
