@@ -444,6 +444,16 @@ namespace Alis.App.Engine
                             _quit = true;
                             break;
                         }
+                        
+                        case EventType.WindowEvent:
+                        {
+                            if (e.window.windowEvent == WindowEventId.SdlWindowEventClose)
+                            {
+                                _quit = true;
+                            }
+                            break;
+                        }
+                        
                         case EventType.Keydown:
                         {
                             switch (e.key.keySym.sym)
