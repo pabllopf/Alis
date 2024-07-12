@@ -32,7 +32,7 @@ namespace Alis.Extension.Graphic.OpenGL.Enums
     /// <summary>
     ///     The pixel type enum
     /// </summary>
-    public enum Type
+    public enum PixelType
     {
         /// <summary>
         ///     The byte pixel type

@@ -62,11 +62,6 @@ namespace Alis.App.Engine.Demos
         [Conditional("DEBUG")]
         private void SimpleGameDemo()
         {
-            if (ImGui.Begin("Game Demo"))
-            {
-                ImGui.Image(IntPtr.Zero, new Vector2(640, 480));
-            }
-            ImGui.End();
         }
     }
 }

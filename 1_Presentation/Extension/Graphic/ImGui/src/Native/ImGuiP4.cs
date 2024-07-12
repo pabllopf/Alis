@@ -982,7 +982,8 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool Begin(string name, ImGuiWindowFlags flags)
         {
-            byte ret = ImGuiNative.igBegin(Encoding.UTF8.GetBytes(name), true, flags);
+            
+            byte ret = ImGuiNative.igBegin(Encoding.UTF8.GetBytes(name), 1, flags);
 
             return ret != 0;
         }
