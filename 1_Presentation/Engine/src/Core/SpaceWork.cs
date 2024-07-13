@@ -81,6 +81,8 @@ namespace Alis.App.Engine.Core
         internal BottomMenu BottomMenu { get; }
         
         internal AudioPlayerWindow AudioPlayerWindow { get; }
+        
+        internal AssetsWindow AssetsWindow { get; }
 
         /// <summary>
         ///     The window
@@ -146,6 +148,7 @@ namespace Alis.App.Engine.Core
             SceneWindow = new SceneWindow(this);
             ProjectWindow = new ProjectWindow(this);
             AudioPlayerWindow = new AudioPlayerWindow(this);
+            AssetsWindow = new AssetsWindow(this);
             TopMenu = new TopMenu(this);
             BottomMenu = new BottomMenu(this);
             gameDemo = new GameDemo(this);
@@ -172,6 +175,7 @@ namespace Alis.App.Engine.Core
             SceneWindow.Render();
             ProjectWindow.Render();
             AudioPlayerWindow.Render();
+            AssetsWindow.Render();
         }
     }
 }
