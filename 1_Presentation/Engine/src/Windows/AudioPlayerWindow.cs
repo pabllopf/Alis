@@ -30,6 +30,8 @@
 
 using System;
 using Alis.App.Engine.Core;
+using Alis.App.Engine.Fonts;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.ImGui;
 using Alis.Extension.Graphic.ImGui.Native;
 
@@ -43,11 +45,25 @@ namespace Alis.App.Engine.Windows
 
         private ImGuiWindowFlags flags = ImGuiWindowFlags.NoCollapse;
         
+        private float progress;
+        
+        private bool isPlaying;
+        
+        private TimeSpan currentTime;
+        
+        private TimeSpan totalTime;
+        
         public SpaceWork SpaceWork { get; }
         
         public AudioPlayerWindow(SpaceWork spaceWork)
         {
             SpaceWork = spaceWork;
+            
+            // mock sample:
+            progress = 1f;
+            isPlaying = true;
+            currentTime = new TimeSpan(0);
+            totalTime = new TimeSpan(0, 0, 10);
         }
         
         public void Render()
@@ -60,8 +76,19 @@ namespace Alis.App.Engine.Windows
             
             if (ImGui.Begin(WindowName, ref isOpen, flags))
             {
-                ImGui.Text("Sample");
+                if (ImGui.Button($"{FontAwesome5.Play}", new Vector2(25, 25)))
+                {
+                    isPlaying = true;
+                }
+                
+                ImGui.SameLine();
+                
+                if (isPlaying)
+                {
+                    ImGui.ProgressBar(progress, new Vector2(-1, 0), $"{currentTime} / {totalTime} ");
+                }
             }   
+            
             ImGui.End();
         }
     }
