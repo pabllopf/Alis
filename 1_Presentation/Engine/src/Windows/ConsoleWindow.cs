@@ -27,7 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Runtime.InteropServices;
 using Alis.App.Engine.Core;
+using Alis.App.Engine.Fonts;
+using Alis.Extension.Graphic.ImGui;
 using Alis.Extension.Graphic.ImGui.Native;
 
 namespace Alis.App.Engine.Windows
@@ -37,6 +41,19 @@ namespace Alis.App.Engine.Windows
     /// </summary>
     public class ConsoleWindow : IWindow
     {
+        private bool isOpen = true;
+        
+        private ImGuiWindowFlags flags = ImGuiWindowFlags.NoCollapse;
+        
+        private byte[] command = new byte[256];
+        
+        private IntPtr commandPtr;
+
+        /// <summary>
+        /// Gets the value of the space work
+        /// </summary>
+        public SpaceWork SpaceWork { get; }
+        
         /// <summary>
         /// Initializes a new instance of the <see cref="ConsoleWindow"/> class
         /// </summary>
@@ -44,7 +61,9 @@ namespace Alis.App.Engine.Windows
         public ConsoleWindow(SpaceWork spaceWork)
         {
             SpaceWork = spaceWork;
+            commandPtr  = Marshal.AllocHGlobal(256);
         }
+        
 
         /// <summary>
         ///     The name window
@@ -56,14 +75,31 @@ namespace Alis.App.Engine.Windows
         /// </summary>
          public void Render()
         {
-            ImGui.Begin(NameWindow);
-
+            if (!isOpen) return;
+            
+            if (ImGui.Begin(NameWindow, ref isOpen, flags))
+            {
+                ImGui.Button("Clear");
+                ImGui.SameLine();
+                ImGui.Button($"{FontAwesome5.Search}");
+                ImGui.SameLine();
+                ImGui.InputText("##input", commandPtr, 256, ImGuiInputTextFlags.NoHorizontalScroll);
+                ImGui.SameLine();
+                ImGui.Button($"{FontAwesome5.ExclamationCircle}");
+                ImGui.SameLine();
+                ImGui.Button($"{FontAwesome5.ExclamationTriangle}");
+                ImGui.SameLine();
+                ImGui.Button($"{FontAwesome5.Bug}");
+                //ImGui.SameLine();
+                //ImGui.InputTextWithHint( "##input", "Enter command", ref command, 256);
+            }
+            
             ImGui.End();
         }
-
-        /// <summary>
-        /// Gets the value of the space work
-        /// </summary>
-        public SpaceWork SpaceWork { get; }
+        
+        private string[] GetTerminalOutput()
+        {
+            return new string[0];
+        }
     }
 }
