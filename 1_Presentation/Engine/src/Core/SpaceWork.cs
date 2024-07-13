@@ -79,6 +79,8 @@ namespace Alis.App.Engine.Core
         /// Gets the value of the bottom menu
         /// </summary>
         internal BottomMenu BottomMenu { get; }
+        
+        internal AudioPlayerWindow AudioPlayerWindow { get; }
 
         /// <summary>
         ///     The window
@@ -143,6 +145,7 @@ namespace Alis.App.Engine.Core
             SolutionWindow = new SolutionWindow(this);
             SceneWindow = new SceneWindow(this);
             ProjectWindow = new ProjectWindow(this);
+            AudioPlayerWindow = new AudioPlayerWindow(this);
             TopMenu = new TopMenu(this);
             BottomMenu = new BottomMenu(this);
             gameDemo = new GameDemo(this);
@@ -168,6 +171,7 @@ namespace Alis.App.Engine.Core
             SolutionWindow.Render();
             SceneWindow.Render();
             ProjectWindow.Render();
+            AudioPlayerWindow.Render();
         }
     }
 }
