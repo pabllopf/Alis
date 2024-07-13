@@ -90,8 +90,12 @@ namespace Alis.App.Engine.Windows
                 ImGui.Button($"{FontAwesome5.ExclamationTriangle}");
                 ImGui.SameLine();
                 ImGui.Button($"{FontAwesome5.Bug}");
-                //ImGui.SameLine();
-                //ImGui.InputTextWithHint( "##input", "Enter command", ref command, 256);
+                
+                for (int i = 0; i < 10; i++)
+                {
+                    ImGui.Text($"{FontAwesome5.Bug} [{DateTime.Now}] Line {i}");
+                }
+                
             }
             
             ImGui.End();
