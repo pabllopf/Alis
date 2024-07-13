@@ -439,11 +439,12 @@ namespace Alis.App.Engine
                     ProcessEvent(e);
                     switch (e.type)
                     {
+                        /*
                         case EventType.Quit:
                         {
                             _quit = true;
                             break;
-                        }
+                        }*/
                         
                         case EventType.WindowEvent:
                         {

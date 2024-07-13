@@ -95,7 +95,8 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool Begin(string name)
         {
-            byte ret = ImGuiNative.igBegin(Encoding.UTF8.GetBytes(name), 1, 0);
+            bool isOpen = true;
+            byte ret = ImGuiNative.igBegin(Encoding.UTF8.GetBytes(name), ref isOpen, 0);
 
             return ret != 0;
         }
@@ -108,8 +109,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool Begin(string name, ref bool pOpen)
         {
-            byte isOpen = pOpen ? (byte) 1 : (byte) 0;
-            byte ret = ImGuiNative.igBegin(Encoding.UTF8.GetBytes(name), isOpen, 0);
+            byte ret = ImGuiNative.igBegin(Encoding.UTF8.GetBytes(name), ref pOpen, 0);
             return ret != 0;
         }
 
@@ -122,8 +122,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The bool</returns>
         public static bool Begin(string name, ref bool pOpen, ImGuiWindowFlags flags)
         {
-            byte isOpen = pOpen ? (byte) 1 : (byte) 0;
-            byte ret = ImGuiNative.igBegin(Encoding.UTF8.GetBytes(name), isOpen, flags);
+            byte ret = ImGuiNative.igBegin(Encoding.UTF8.GetBytes(name), ref pOpen, flags);
             return ret != 0;
         }
 
