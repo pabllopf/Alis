@@ -86,6 +86,11 @@ namespace Alis.App.Engine.Demos
             0.0f, 0.0f, 0.0f, 1.0f
         };
 
+        public void Initialize()
+        {
+            
+        }
+        
         /// <summary>
         /// Runs this instance
         /// </summary>

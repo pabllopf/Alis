@@ -83,6 +83,7 @@ namespace Alis.App.Engine.Core
         internal AudioPlayerWindow AudioPlayerWindow { get; }
         
         internal AssetsWindow AssetsWindow { get; }
+        public int Fps { get; set; } = 60;
 
         /// <summary>
         ///     The window
@@ -135,6 +136,8 @@ namespace Alis.App.Engine.Core
         private readonly IconDemo iconDemo = new IconDemo();
         
         private readonly GameDemo gameDemo;
+        
+        public IntPtr rendererGame;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SpaceWork"/> class
@@ -154,6 +157,16 @@ namespace Alis.App.Engine.Core
             gameDemo = new GameDemo(this);
         }
 
+        public void Initialize()
+        {
+            imGuiDemo.Initialize();
+            imPlotDemo.Initialize();
+            imGuizmoDemo.Initialize();
+            imNodeDemo.Initialize();
+            iconDemo.Initialize();
+            gameDemo.Initialize();
+        }
+        
         /// <summary>
         /// Updates this instance
         /// </summary>

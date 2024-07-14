@@ -127,7 +127,7 @@ namespace Alis.App.Engine
         /// </summary>
         private bool _quit;
         
-        public bool closeRender = true;
+
 
         /// <summary>
         ///     The shader
@@ -153,13 +153,7 @@ namespace Alis.App.Engine
         ///     The dockspaceflags
         /// </summary>
         private ImGuiWindowFlags dockspaceflags;
-
-        private byte _red;
         
-        private byte _green;
-        
-        private byte _blue;
-
         /// <summary>
         ///     Starts this instance
         /// </summary>
@@ -182,7 +176,7 @@ namespace Alis.App.Engine
                 (int) WindowPos.WindowPosCentered, (int) WindowPos.WindowPosCentered, 
                 800, 600, flagsGame);
             
-            IntPtr rendererGame = Sdl.CreateRenderer(windowGame, -1, Renderers.SdlRendererTargetTexture);
+            spaceWork.rendererGame = Sdl.CreateRenderer(windowGame, -1, Renderers.SdlRendererTargetTexture);
 
             // GET VERSION SDL2
             Version version = Sdl.GetVersion();
@@ -409,29 +403,9 @@ namespace Alis.App.Engine
             _vboHandle = Gl.GenBuffer();
             _elementsHandle = Gl.GenBuffer();
             _vertexArrayObject = Gl.GenVertexArray();
+           
             
-            IntPtr pixelsPtr = Marshal.AllocHGlobal(800 * 600 * 4);
-            // write into the pixels array:
-            for (int i = 0; i < 800 * 600 * 4; i += 4)
-            {
-                Marshal.WriteByte(pixelsPtr, i, 255);
-                Marshal.WriteByte(pixelsPtr, i + 1, 0);
-                Marshal.WriteByte(pixelsPtr, i + 2, 0);
-                Marshal.WriteByte(pixelsPtr, i + 3, 255);
-            }
-            
-            uint[] textures = new uint[1];
-            Gl.GlGenTextures(1, textures);
-            uint textureopenglId = textures[0];
-            Gl.GlBindTexture(TextureTarget.Texture2D, textureopenglId);
-            Gl.GlTexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba8, 800, 600, 0, PixelFormat.Rgba, PixelType.UnsignedByte, pixelsPtr);
-            Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, TextureParameter.Linear);
-            Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, TextureParameter.Linear);
-            Gl.GlBindTexture(TextureTarget.Texture2D, 0);
-            
-            
-            IntPtr texture = (IntPtr)textureopenglId;
-            
+            spaceWork.Initialize();
             while (!_quit)
             {
                 while (Sdl.PollEvent(out Event e) != 0)
@@ -469,14 +443,6 @@ namespace Alis.App.Engine
                         }
                     }
                 }
-
-                RenderColors();
-                Sdl.SetRenderDrawColor(rendererGame, _red, _green, _blue, 255);
-                Sdl.RenderClear(rendererGame);
-                Sdl.RenderPresent(rendererGame);
-                
-                RectangleI rect = new RectangleI( 0, 0, 800, 600);
-                Sdl.RenderReadPixels(rendererGame, ref rect, Sdl.PixelFormatABgr8888, pixelsPtr, 800 * 4);
                 
                 //Gl.GlClearColor(0.05f, 0.05f, 0.05f, 1.00f);
                 ImGui.NewFrame();
@@ -529,27 +495,6 @@ namespace Alis.App.Engine
                 // RENDER SAMPLES AND CODE
                 spaceWork.Update();
                 
-                // Update opengl texture 
-                Gl.GlBindTexture(TextureTarget.Texture2D, textureopenglId);
-                Gl.GlTexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba8, 800, 600, 0, PixelFormat.Rgba, PixelType.UnsignedByte, pixelsPtr);
-                Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, TextureParameter.Linear);
-                Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, TextureParameter.Linear);
-                Gl.GlBindTexture(TextureTarget.Texture2D,  0);
-                
-                if (ImGui.Begin("Hello, world!", ref closeRender))
-                {
-                    ImGui.Text("This is some useful text.");
-                    ImGui.Image(
-                        texture,
-                        new Vector2(100, 100),
-                        new Vector2(1, 1),
-                        new Vector2(1, 1),
-                        new Vector4(1, 1, 1, 1),
-                        new Vector4(255, 0, 0, 255));
-                }
-                ImGui.End();
-                
-                
                 ImGui.End();
                 //ImGui.PopFont();
                     
@@ -587,27 +532,7 @@ namespace Alis.App.Engine
             Sdl.Quit();
         }
 
-        private void RenderColors()
-        {
-            if (_red < 255)
-            {
-                _red++;
-            }
-            else if (_green < 255)
-            {
-                _green++;
-            }
-            else if (_blue < 255)
-            {
-                _blue++;
-            }
-            else
-            {
-                _red = 0;
-                _green = 0;
-                _blue = 0;
-            }
-        }
+      
 
         /// <summary>
         ///     Processes the event using the specified evt

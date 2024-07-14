@@ -34,6 +34,8 @@ namespace Alis.App.Engine.Demos
     /// </summary>
     public interface IDemo
     {
+        public void Initialize();
+        
         /// <summary>
         /// Runs this instance
         /// </summary>

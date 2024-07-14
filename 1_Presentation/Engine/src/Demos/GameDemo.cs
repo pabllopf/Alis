@@ -29,9 +29,15 @@
 
 using System;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 using Alis.App.Engine.Core;
+using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Graphic.Sdl2;
+using Alis.Extension.Graphic.ImGui;
 using Alis.Extension.Graphic.ImGui.Native;
+using Alis.Extension.Graphic.OpenGL;
+using Alis.Extension.Graphic.OpenGL.Enums;
 
 namespace Alis.App.Engine.Demos
 {
@@ -41,13 +47,61 @@ namespace Alis.App.Engine.Demos
     /// <seealso cref="IDemo"/>
     public class GameDemo : IDemo
     {
+        private const string NameWindow = "Game(sample)";
+        
         private SpaceWork SpaceWork { get; }
+        
+        private byte _red;
+        
+        private byte _green;
+        
+        private byte _blue;
+        
+        private bool closeRender = true;
+
+        private IntPtr pixelsPtr;
+        
+        private uint textureopenglId;
+        
+        private IntPtr texture;
         
         public GameDemo(SpaceWork spaceWork)
         {
             SpaceWork = spaceWork;
         }
         
+        public void Initialize()
+        {
+            InitSimpleGameDemo();
+        }
+
+        [Conditional("DEBUG")]
+        public void InitSimpleGameDemo()
+        {
+            pixelsPtr = Marshal.AllocHGlobal(800 * 600 * 4);
+            // write into the pixels array:
+            for (int i = 0; i < 800 * 600 * 4; i += 4)
+            {
+                Marshal.WriteByte(pixelsPtr, i, 255);
+                Marshal.WriteByte(pixelsPtr, i + 1, 0);
+                Marshal.WriteByte(pixelsPtr, i + 2, 0);
+                Marshal.WriteByte(pixelsPtr, i + 3, 255);
+            }
+            
+            uint[] textures = new uint[1];
+            Gl.GlGenTextures(1, textures);
+            textureopenglId = textures[0];
+            Gl.GlBindTexture(TextureTarget.Texture2D, textureopenglId);
+            Gl.GlTexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba8, 800, 600, 0, PixelFormat.Rgba, PixelType.UnsignedByte, pixelsPtr);
+            Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, TextureParameter.Linear);
+            Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, TextureParameter.Linear);
+            Gl.GlBindTexture(TextureTarget.Texture2D, 0);
+            
+            
+            texture = (IntPtr)textureopenglId;
+        }
+
+
         /// <summary>
         /// Runs this instance
         /// </summary>
@@ -62,6 +116,56 @@ namespace Alis.App.Engine.Demos
         [Conditional("DEBUG")]
         private void SimpleGameDemo()
         {
+            RenderColors();
+            Sdl.SetRenderDrawColor(SpaceWork.rendererGame, _red, _green, _blue, 255);
+            Sdl.RenderClear(SpaceWork.rendererGame);
+            Sdl.RenderPresent(SpaceWork.rendererGame);
+            
+            RectangleI rect = new RectangleI( 0, 0, 800, 600);
+            Sdl.RenderReadPixels(SpaceWork.rendererGame, ref rect, Sdl.PixelFormatABgr8888, pixelsPtr, 800 * 4);
+            
+            // Update opengl texture 
+            Gl.GlBindTexture(TextureTarget.Texture2D, textureopenglId);
+            Gl.GlTexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba8, 800, 600, 0, PixelFormat.Rgba, PixelType.UnsignedByte, pixelsPtr);
+            Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, TextureParameter.Linear);
+            Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, TextureParameter.Linear);
+            Gl.GlBindTexture(TextureTarget.Texture2D,  0);
+                
+            if (ImGui.Begin(NameWindow, ref closeRender, ImGuiWindowFlags.NoCollapse))
+            {
+                ImGui.Text("This is some useful text.");
+                ImGui.Image(
+                    texture,
+                    new Vector2(100, 100),
+                    new Vector2(1, 1),
+                    new Vector2(1, 1),
+                    new Vector4(1, 1, 1, 1),
+                    new Vector4(255, 0, 0, 255));
+            }
+            ImGui.End();
+            
+        }
+        
+        private void RenderColors()
+        {
+            if (_red < 255)
+            {
+                _red++;
+            }
+            else if (_green < 255)
+            {
+                _green++;
+            }
+            else if (_blue < 255)
+            {
+                _blue++;
+            }
+            else
+            {
+                _red = 0;
+                _green = 0;
+                _blue = 0;
+            }
         }
     }
 }

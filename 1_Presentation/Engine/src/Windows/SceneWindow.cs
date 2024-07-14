@@ -27,7 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.App.Engine.Core;
+using Alis.App.Engine.Fonts;
+using Alis.Core.Aspect.Math.Vector;
+using Alis.Extension.Graphic.ImGui;
 using Alis.Extension.Graphic.ImGui.Native;
 
 namespace Alis.App.Engine.Windows
@@ -37,6 +41,12 @@ namespace Alis.App.Engine.Windows
     /// </summary>
     public class SceneWindow : IWindow
     {
+        private const string NameWindow = "Scene";
+        
+        private bool isOpen = true;
+        
+        private ImGuiWindowFlags windowFlags = ImGuiWindowFlags.NoCollapse;
+        
         /// <summary>
         /// Initializes a new instance of the <see cref="SceneWindow"/> class
         /// </summary>
@@ -45,19 +55,34 @@ namespace Alis.App.Engine.Windows
         {
             SpaceWork = spaceWork;
         }
-
-        /// <summary>
-        ///     The name window
-        /// </summary>
-        private const string NameWindow = "Scene";
-
+        
         /// <summary>
         ///     Renders this instance
         /// </summary>
         public void Render()
         {
-            ImGui.Begin(NameWindow);
+            if (!isOpen)return;
 
+            if (ImGui.Begin(NameWindow, ref isOpen, windowFlags))
+            { 
+                ImGui.Text($"FPS: {SpaceWork.Fps}");
+                ImGui.SameLine();
+                ImGui.Button($"{FontAwesome5.Pause}");
+                ImGui.SameLine();
+                ImGui.Button($"{FontAwesome5.Play}");
+                ImGui.SameLine();
+                ImGui.Button($"{FontAwesome5.Stop}");
+                ImGui.NewLine();
+                
+                ImGui.Image(
+                    IntPtr.Zero,
+                    new Vector2(640, 380),
+                    new Vector2(1, 1),
+                    new Vector2(1, 1),
+                    new Vector4(255, 0, 0, 255));
+
+            }
+            
             ImGui.End();
         }
 
