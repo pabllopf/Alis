@@ -46,6 +46,11 @@ namespace Alis.App.Engine.Demos
         {
             SimpleIcons();
         }
+        
+        public void Initialize()
+        {
+            
+        }
 
         /// <summary>
         /// Simples the icons

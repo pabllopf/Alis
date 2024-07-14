@@ -315,7 +315,16 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the backend platform name
         /// </summary>
-        public NullTerminatedString BackendPlatformName => new NullTerminatedString(Marshal.PtrToStructure<ImGuiIo>(NativePtr).BackendPlatformName);
+        public NullTerminatedString BackendPlatformName
+        {
+            get { return new NullTerminatedString(Marshal.PtrToStructure<ImGuiIo>(NativePtr).BackendPlatformName); }
+            set
+            {
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.BackendPlatformName = value.Data;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
+        }
 
         /// <summary>
         ///     Gets the value of the backend renderer name
