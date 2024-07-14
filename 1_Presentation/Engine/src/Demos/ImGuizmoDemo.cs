@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.ImGui;
 using Alis.Extension.Graphic.ImGui.Extras.GuizMo;
@@ -96,7 +97,13 @@ namespace Alis.App.Engine.Demos
         /// </summary>
         public void Run()
         {
-            ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4(0.35f, 0.3f, 0.3f, 1.0f));
+            SimpleSample();
+        }
+
+        [Conditional("DEBUG")]
+        private void SimpleSample()
+        {
+               ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4(0.35f, 0.3f, 0.3f, 1.0f));
             
             
             if (ImGui.Begin("Gizmo", ref isOpen))
@@ -158,7 +165,6 @@ namespace Alis.App.Engine.Demos
            
             ImGui.End();
             ImGui.PopStyleColor();
-           
         }
     }
 }

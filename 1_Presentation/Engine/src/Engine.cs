@@ -41,6 +41,10 @@ using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Ecs;
+using Alis.Core.Ecs.Component.Render;
+using Alis.Core.Ecs.Entity;
+using Alis.Core.Ecs.System.Manager.Scene;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Structs;
@@ -52,6 +56,7 @@ using Alis.Extension.Graphic.ImGui.Native;
 using Alis.Extension.Graphic.OpenGL;
 using Alis.Extension.Graphic.OpenGL.Constructs;
 using Alis.Extension.Graphic.OpenGL.Enums;
+using Color = Alis.Core.Aspect.Math.Definition.Color;
 using PixelFormat = Alis.Extension.Graphic.OpenGL.Enums.PixelFormat;
 using Version = Alis.Core.Graphic.Sdl2.Structs.Version;
 
@@ -167,16 +172,35 @@ namespace Alis.App.Engine
                 return;
             }
             
-            WindowSettings flagsGame =
-                WindowSettings.WindowOpengl | 
-                WindowSettings.WindowResizable | 
-                WindowSettings.WindowHidden;
+            VideoGame game =
+                VideoGame.Builder()
+                    .Settings(setting => setting
+                        .Graphic(graphic => graphic
+                            .Window(window => window
+                                .Resolution(800, 600)
+                                .Build())
+                            .Build())
+                        .Build())
+                    .World(world => world
+                        .Add<SceneManager>(sceneManager => sceneManager
+                            .Add<GameObject>(gameObject => gameObject
+                                .Name("Camera")
+                                .AddComponent<Camera>(camera => camera
+                                    .Builder()
+                                    .Resolution(800,600)
+                                    .BackgroundColor(Color.DarkGreen)
+                                    .Build())
+                                .Build())
+                            .Build())
+                        .Build())
+                    .BuildPreview();
             
-            IntPtr windowGame = Sdl.CreateWindow("Game (OpenGL)", 
-                (int) WindowPos.WindowPosCentered, (int) WindowPos.WindowPosCentered, 
-                800, 600, flagsGame);
+            game.OnInit();
+            game.OnAwake();
+            game.OnStart();
             
-            spaceWork.rendererGame = Sdl.CreateRenderer(windowGame, -1, Renderers.SdlRendererTargetTexture);
+
+            spaceWork.rendererGame = game.Context.GraphicManager.Renderer;
 
             // GET VERSION SDL2
             Version version = Sdl.GetVersion();
@@ -444,6 +468,16 @@ namespace Alis.App.Engine
                     }
                 }
                 
+                //game.OnDispatchEvents();
+                game.OnBeforeUpdate();
+                game.OnUpdate();
+                game.OnAfterUpdate();
+                
+                game.OnCalculate();
+                game.OnDraw();
+                game.OnGui();
+             
+                
                 //Gl.GlClearColor(0.05f, 0.05f, 0.05f, 1.00f);
                 ImGui.NewFrame();
                 ImGuizMo.BeginFrame();
@@ -491,6 +525,8 @@ namespace Alis.App.Engine
 
                 uint dockSpaceId = ImGui.GetId("MyDockSpace");
                 ImGui.DockSpace(dockSpaceId, sizeDock);
+                
+               
                 
                 // RENDER SAMPLES AND CODE
                 spaceWork.Update();

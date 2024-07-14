@@ -70,14 +70,14 @@ namespace Alis.App.Engine.Windows
         public void Initialize()
         {
             pixelsPtr = Marshal.AllocHGlobal(800 * 600 * 4);
-            // write into the pixels array:
+            /*// write into the pixels array:
             for (int i = 0; i < 800 * 600 * 4; i += 4)
             {
                 Marshal.WriteByte(pixelsPtr, i, 255);
                 Marshal.WriteByte(pixelsPtr, i + 1, 0);
                 Marshal.WriteByte(pixelsPtr, i + 2, 0);
                 Marshal.WriteByte(pixelsPtr, i + 3, 255);
-            }
+            }*/
             
             uint[] textures = new uint[1];
             Gl.GlGenTextures(1, textures);
@@ -98,14 +98,18 @@ namespace Alis.App.Engine.Windows
         public void Render()
         {
             if (!isOpen)return;
+            
+            
 
-
-            Sdl.SetRenderDrawColor(SpaceWork.rendererGame, 0, 0, 0, 255);
-            Sdl.RenderClear(SpaceWork.rendererGame);
-            Sdl.RenderPresent(SpaceWork.rendererGame);
+            //Sdl.SetRenderDrawColor(SpaceWork.rendererGame, 0, 0, 0, 255);
+            //Sdl.RenderClear(SpaceWork.rendererGame);
+            //Sdl.RenderPresent(SpaceWork.rendererGame);
             
             RectangleI rect = new RectangleI( 0, 0, 800, 600);
             Sdl.RenderReadPixels(SpaceWork.rendererGame, ref rect, Sdl.PixelFormatABgr8888, pixelsPtr, 800 * 4);
+            
+            byte[] pixels = new byte[800 * 600 * 4];
+            Marshal.Copy(pixelsPtr, pixels, 0, 800 * 600 * 4);
             
             // Update opengl texture 
             Gl.GlBindTexture(TextureTarget.Texture2D, textureopenglId);
