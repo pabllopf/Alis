@@ -116,13 +116,13 @@ namespace Alis.App.Engine.Demos
         [Conditional("DEBUG")]
         private void SimpleGameDemo()
         {
-            RenderColors();
-            Sdl.SetRenderDrawColor(SpaceWork.rendererGame, _red, _green, _blue, 255);
-            Sdl.RenderClear(SpaceWork.rendererGame);
-            Sdl.RenderPresent(SpaceWork.rendererGame);
+            //RenderColors();
+            //Sdl.SetRenderDrawColor(SpaceWork.rendererGame, _red, _green, _blue, 255);
+            //Sdl.RenderClear(SpaceWork.rendererGame);
+            //Sdl.RenderPresent(SpaceWork.rendererGame);
             
-            RectangleI rect = new RectangleI( 0, 0, 800, 600);
-            Sdl.RenderReadPixels(SpaceWork.rendererGame, ref rect, Sdl.PixelFormatABgr8888, pixelsPtr, 800 * 4);
+            //RectangleI rect = new RectangleI( 0, 0, 800, 600);
+            //Sdl.RenderReadPixels(SpaceWork.rendererGame, ref rect, Sdl.PixelFormatABgr8888, pixelsPtr, 800 * 4);
             
             // Update opengl texture 
             Gl.GlBindTexture(TextureTarget.Texture2D, textureopenglId);

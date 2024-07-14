@@ -156,7 +156,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Version version = Sdl.GetVersion();
             Logger.Info(@$"SDL2 VERSION {version.major}.{version.minor}.{version.patch}");
 
-
+/*
             // CONFIG THE SDL2 AN OPENGL CONFIGURATION
             Sdl.SetAttributeByInt(GlAttr.SdlGlContextFlags, (int) GlContexts.SdlGlContextForwardCompatibleFlag);
             Sdl.SetAttributeByProfile(GlAttr.SdlGlContextProfileMask, GlProfiles.SdlGlContextProfileCore);
@@ -174,7 +174,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
 
             if (EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.Windows)
             {
-                Sdl.SetHint(Hint.HintRenderDriver, "direct3d");
+                Sdl.SetHint(Hint.HintRenderDriver, "opengl");
             }
 
             if (EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.OSX)
@@ -185,7 +185,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             if (EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.Linux)
             {
                 Sdl.SetHint(Hint.HintRenderDriver, "opengl");
-            }
+            }*/
 
 
             // Create the window

@@ -48,7 +48,7 @@ namespace Alis.App.Engine.Core
         /// <summary>
         /// Gets the value of the game window
         /// </summary>
-        internal GameWindow GameWindow { get; }
+        //internal GameWindow GameWindow { get; }
         
         /// <summary>
         /// Gets the value of the inspector window
@@ -145,7 +145,7 @@ namespace Alis.App.Engine.Core
         public SpaceWork()
         {
             ConsoleWindow = new ConsoleWindow(this);
-            GameWindow = new GameWindow(this);
+            //GameWindow = new GameWindow(this);
             InspectorWindow = new InspectorWindow(this);
             SolutionWindow = new SolutionWindow(this);
             SceneWindow = new SceneWindow(this);
@@ -169,7 +169,7 @@ namespace Alis.App.Engine.Core
             TopMenu.Initialize();
             BottomMenu.Initialize();
             ConsoleWindow.Initialize();
-            GameWindow.Initialize();
+            //GameWindow.Initialize();
             InspectorWindow.Initialize();
             SolutionWindow.Initialize();
             SceneWindow.Initialize();
@@ -193,7 +193,7 @@ namespace Alis.App.Engine.Core
             TopMenu.Render();
             BottomMenu.Render();
             ConsoleWindow.Render();
-            GameWindow.Render();
+            //GameWindow.Render();
             InspectorWindow.Render();
             SolutionWindow.Render();
             SceneWindow.Render();
