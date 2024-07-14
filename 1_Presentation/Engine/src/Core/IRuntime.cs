@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:GameWindow.cs
+//  File:IRuntime.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,48 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.App.Engine.Core;
-using Alis.Extension.Graphic.ImGui.Native;
-
-namespace Alis.App.Engine.Windows
+namespace Alis.App.Engine.Core
 {
-    /// <summary>
-    ///     The game window class
-    /// </summary>
-    internal class GameWindow : IWindow
+    public interface IRuntime
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="GameWindow"/> class
-        /// </summary>
-        /// <param name="spaceWork">The space work</param>
-        public GameWindow(SpaceWork spaceWork)
-        {
-            SpaceWork = spaceWork;
-        }
-
-        /// <summary>
-        ///     The name window
-        /// </summary>
-        private const string NameWindow = "Game";
-
-        public void Initialize()
-        {
-            
-        }
-        
-        /// <summary>
-        ///     Renders this instance
-        /// </summary>
-        public void Render()
-        {
-            ImGui.Begin(NameWindow);
-
-            ImGui.End();
-        }
-
-        /// <summary>
-        /// Gets the value of the space work
-        /// </summary>
-        public SpaceWork SpaceWork { get; }
+        public void Initialize();
+        public void Update();
+        public void Render();
     }
 }

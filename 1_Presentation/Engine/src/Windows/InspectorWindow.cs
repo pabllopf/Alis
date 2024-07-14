@@ -52,6 +52,11 @@ namespace Alis.App.Engine.Windows
         /// </summary>
         private const string NameWindow = "Inspector";
 
+        public void Initialize()
+        {
+            
+        }
+        
         /// <summary>
         ///     Renders this instance
         /// </summary>

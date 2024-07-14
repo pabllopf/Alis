@@ -56,6 +56,11 @@ namespace Alis.App.Engine.Windows
             SpaceWork = spaceWork;
         }
         
+        public void Initialize()
+        {
+            
+        }
+        
         /// <summary>
         ///     Renders this instance
         /// </summary>

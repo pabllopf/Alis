@@ -51,6 +51,11 @@ namespace Alis.App.Engine.Windows
         /// </summary>
         private const string NameWindow = "Project";
 
+        public void Initialize()
+        {
+            
+        }
+        
         /// <summary>
         ///     Renders this instance
         /// </summary>

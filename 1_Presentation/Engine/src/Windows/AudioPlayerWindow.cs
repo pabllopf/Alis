@@ -66,6 +66,11 @@ namespace Alis.App.Engine.Windows
             totalTime = new TimeSpan(0, 0, 10);
         }
         
+        public void Initialize()
+        {
+            
+        }
+        
         public void Render()
         {
             if (!isOpen)
