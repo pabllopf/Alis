@@ -52,6 +52,11 @@ namespace Alis.App.Engine.Windows
             commandPtr = Marshal.AllocHGlobal(256);
         }
         
+        public void Initialize()
+        {
+            
+        }
+        
         public void Render()
         {
             if (!isOpen)

@@ -36,6 +36,6 @@ namespace Alis.App.Engine.Windows
     /// </summary>
     internal interface IWindow : IRenderable, IHasSpaceWork
     {
-        
+        public void Initialize();
     }
 }

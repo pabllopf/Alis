@@ -47,6 +47,14 @@ namespace Alis.App.Engine.Menus
             SpaceWork = spaceWork;
         }
 
+        public void Initialize()
+        {
+        }
+
+        public void Update()
+        {
+        }
+
         /// <summary>
         /// Renders this instance
         /// </summary>

@@ -63,7 +63,15 @@ namespace Alis.App.Engine.Menus
         /// Gets the value of the space work
         /// </summary>
         public SpaceWork SpaceWork { get; }
-        
+
+        public void Initialize()
+        {
+        }
+
+        public void Update()
+        {
+        }
+
         /// <summary>
         /// Renders this instance
         /// </summary>

@@ -165,6 +165,17 @@ namespace Alis.App.Engine.Core
             imNodeDemo.Initialize();
             iconDemo.Initialize();
             gameDemo.Initialize();
+            
+            TopMenu.Initialize();
+            BottomMenu.Initialize();
+            ConsoleWindow.Initialize();
+            GameWindow.Initialize();
+            InspectorWindow.Initialize();
+            SolutionWindow.Initialize();
+            SceneWindow.Initialize();
+            ProjectWindow.Initialize();
+            AudioPlayerWindow.Initialize();
+            AssetsWindow.Initialize();
         }
         
         /// <summary>

@@ -70,6 +70,11 @@ namespace Alis.App.Engine.Windows
         /// </summary>
         private const string NameWindow = "Console";
 
+        public void Initialize()
+        {
+            
+        }
+        
         /// <summary>
         ///     Renders this instance
         /// </summary>
