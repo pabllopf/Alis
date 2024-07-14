@@ -172,6 +172,14 @@ namespace Alis.App.Engine
                 return;
             }
             
+            IntPtr window = Sdl.CreateWindow("Sample", 
+                (int) WindowPos.WindowPosCentered, (int) WindowPos.WindowPosCentered, 
+                800, 600, WindowSettings.WindowResizable | WindowSettings.WindowHidden);
+            
+            IntPtr renderer = Sdl.CreateRenderer(window, -1, Renderers.SdlRendererAccelerated);
+            
+            spaceWork.gameDemo.rendererGame = renderer;
+            
             VideoGame game =
                 VideoGame.Builder()
                     .Settings(setting => setting

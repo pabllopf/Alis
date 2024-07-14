@@ -47,23 +47,25 @@ namespace Alis.App.Engine.Demos
     /// <seealso cref="IDemo"/>
     public class GameDemo : IDemo
     {
-        private const string NameWindow = "Game(sample)";
+        public const string NameWindow = "Game(sample)";
         
-        private SpaceWork SpaceWork { get; }
+        public SpaceWork SpaceWork { get; }
         
-        private byte _red;
+        public byte _red;
         
-        private byte _green;
+        public byte _green;
         
-        private byte _blue;
+        public byte _blue;
         
-        private bool closeRender = true;
+        public bool closeRender = true;
 
-        private IntPtr pixelsPtr;
+        public IntPtr pixelsPtr;
         
-        private uint textureopenglId;
+        public uint textureopenglId;
         
-        private IntPtr texture;
+        public IntPtr texture;
+        
+        public  IntPtr rendererGame = IntPtr.Zero;
         
         public GameDemo(SpaceWork spaceWork)
         {
@@ -114,15 +116,16 @@ namespace Alis.App.Engine.Demos
         /// Simples the game demo
         /// </summary>
         [Conditional("DEBUG")]
-        private void SimpleGameDemo()
+        public void SimpleGameDemo()
         {
-            //RenderColors();
-            //Sdl.SetRenderDrawColor(SpaceWork.rendererGame, _red, _green, _blue, 255);
-            //Sdl.RenderClear(SpaceWork.rendererGame);
-            //Sdl.RenderPresent(SpaceWork.rendererGame);
+            RenderColors();
+           
+            Sdl.SetRenderDrawColor(rendererGame, _red, _green, _blue, 255);
+            Sdl.RenderClear(rendererGame);
+            Sdl.RenderPresent(rendererGame);
             
-            //RectangleI rect = new RectangleI( 0, 0, 800, 600);
-            //Sdl.RenderReadPixels(SpaceWork.rendererGame, ref rect, Sdl.PixelFormatABgr8888, pixelsPtr, 800 * 4);
+            RectangleI rect = new RectangleI( 0, 0, 800, 600);
+            Sdl.RenderReadPixels(rendererGame, ref rect, Sdl.PixelFormatABgr8888, pixelsPtr, 800 * 4);
             
             // Update opengl texture 
             Gl.GlBindTexture(TextureTarget.Texture2D, textureopenglId);
@@ -146,7 +149,7 @@ namespace Alis.App.Engine.Demos
             
         }
         
-        private void RenderColors()
+        public void RenderColors()
         {
             if (_red < 255)
             {

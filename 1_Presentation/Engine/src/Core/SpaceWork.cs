@@ -48,7 +48,7 @@ namespace Alis.App.Engine.Core
         /// <summary>
         /// Gets the value of the game window
         /// </summary>
-        //internal GameWindow GameWindow { get; }
+        internal GameWindow GameWindow { get; }
         
         /// <summary>
         /// Gets the value of the inspector window
@@ -113,29 +113,29 @@ namespace Alis.App.Engine.Core
         /// <summary>
         /// The im gui demo
         /// </summary>
-        private readonly ImGuiDemo imGuiDemo = new ImGuiDemo();
+        public readonly ImGuiDemo imGuiDemo = new ImGuiDemo();
 
         /// <summary>
         /// The im plot demo
         /// </summary>
-        private readonly ImPlotDemo imPlotDemo = new ImPlotDemo();
+        public readonly ImPlotDemo imPlotDemo = new ImPlotDemo();
 
         /// <summary>
         /// The im guizmo demo
         /// </summary>
-        private readonly ImGuizmoDemo imGuizmoDemo = new ImGuizmoDemo();
+        public readonly ImGuizmoDemo imGuizmoDemo = new ImGuizmoDemo();
 
         /// <summary>
         /// The im node demo
         /// </summary>
-        private readonly ImNodeDemo imNodeDemo = new ImNodeDemo();
+        public readonly ImNodeDemo imNodeDemo = new ImNodeDemo();
         
         /// <summary>
         /// The icon demo
         /// </summary>
-        private readonly IconDemo iconDemo = new IconDemo();
+        public readonly IconDemo iconDemo = new IconDemo();
         
-        private readonly GameDemo gameDemo;
+        public readonly GameDemo gameDemo;
         
         public IntPtr rendererGame;
 
@@ -145,7 +145,7 @@ namespace Alis.App.Engine.Core
         public SpaceWork()
         {
             ConsoleWindow = new ConsoleWindow(this);
-            //GameWindow = new GameWindow(this);
+            GameWindow = new GameWindow(this);
             InspectorWindow = new InspectorWindow(this);
             SolutionWindow = new SolutionWindow(this);
             SceneWindow = new SceneWindow(this);
@@ -169,7 +169,7 @@ namespace Alis.App.Engine.Core
             TopMenu.Initialize();
             BottomMenu.Initialize();
             ConsoleWindow.Initialize();
-            //GameWindow.Initialize();
+            GameWindow.Initialize();
             InspectorWindow.Initialize();
             SolutionWindow.Initialize();
             SceneWindow.Initialize();
@@ -193,7 +193,7 @@ namespace Alis.App.Engine.Core
             TopMenu.Render();
             BottomMenu.Render();
             ConsoleWindow.Render();
-            //GameWindow.Render();
+            GameWindow.Render();
             InspectorWindow.Render();
             SolutionWindow.Render();
             SceneWindow.Render();
