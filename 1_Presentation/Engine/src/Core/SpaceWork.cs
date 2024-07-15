@@ -134,10 +134,6 @@ namespace Alis.App.Engine.Core
         /// The icon demo
         /// </summary>
         public readonly IconDemo iconDemo = new IconDemo();
-        
-        public readonly GameDemo gameDemo;
-        
-        public IntPtr rendererGame;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SpaceWork"/> class
@@ -154,7 +150,6 @@ namespace Alis.App.Engine.Core
             AssetsWindow = new AssetsWindow(this);
             TopMenu = new TopMenu(this);
             BottomMenu = new BottomMenu(this);
-            gameDemo = new GameDemo(this);
         }
 
         public void Initialize()
@@ -164,7 +159,6 @@ namespace Alis.App.Engine.Core
             imGuizmoDemo.Initialize();
             imNodeDemo.Initialize();
             iconDemo.Initialize();
-            gameDemo.Initialize();
             
             TopMenu.Initialize();
             BottomMenu.Initialize();
@@ -188,7 +182,6 @@ namespace Alis.App.Engine.Core
             imGuizmoDemo.Run();
             imNodeDemo.Run();
             iconDemo.Run();
-            gameDemo.Run();
             
             TopMenu.Render();
             BottomMenu.Render();
