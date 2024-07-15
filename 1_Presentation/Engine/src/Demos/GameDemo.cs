@@ -77,6 +77,11 @@ namespace Alis.App.Engine.Demos
             InitSimpleGameDemo();
         }
 
+        public void Start()
+        {
+            
+        }
+
         [Conditional("DEBUG")]
         public void InitSimpleGameDemo()
         {

@@ -71,6 +71,11 @@ namespace Alis.App.Engine.Menus
             ImGui.EndMainMenuBar();
         }
 
+        public void Start()
+        {
+            
+        }
+
         /// <summary>
         /// Gets the value of the space work
         /// </summary>

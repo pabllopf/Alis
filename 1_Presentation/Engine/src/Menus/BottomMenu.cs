@@ -107,5 +107,10 @@ namespace Alis.App.Engine.Menus
                 ImGui.End();
             }
         }
+
+        public void Start()
+        {
+            
+        }
     }
 }

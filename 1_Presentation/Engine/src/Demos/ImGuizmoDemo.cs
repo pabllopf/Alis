@@ -91,7 +91,12 @@ namespace Alis.App.Engine.Demos
         {
             
         }
-        
+
+        public void Start()
+        {
+            
+        }
+
         /// <summary>
         /// Runs this instance
         /// </summary>

@@ -31,13 +31,17 @@ using System;
 using System.Runtime.InteropServices;
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Fonts;
+using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.Sdl2;
+using Alis.Core.Graphic.Sdl2.Enums;
+using Alis.Core.Graphic.Sdl2.Structs;
 using Alis.Extension.Graphic.ImGui;
 using Alis.Extension.Graphic.ImGui.Native;
 using Alis.Extension.Graphic.OpenGL;
 using Alis.Extension.Graphic.OpenGL.Enums;
+using PixelFormat = Alis.Extension.Graphic.OpenGL.Enums.PixelFormat;
 
 namespace Alis.App.Engine.Windows
 {
@@ -46,6 +50,11 @@ namespace Alis.App.Engine.Windows
     /// </summary>
     public class SceneWindow : IWindow
     {
+        private uint textureopenGlId;
+        private IntPtr textureTarget;
+        private IntPtr bmpTex;
+        private IntPtr pixelPtr;
+
         private const string NameWindow = "Scene";
         
         /// <summary>
@@ -64,7 +73,42 @@ namespace Alis.App.Engine.Windows
         
         public void Initialize()
         {
+            SpaceWork.windowGame = Sdl.CreateWindow("Game Preview", 
+                0, 0, 
+                800, 600, 
+                WindowSettings.WindowResizable | WindowSettings.WindowHidden );
+            SpaceWork.rendererGame = Sdl.CreateRenderer(SpaceWork.windowGame, -1, 
+                Renderers.SdlRendererAccelerated | Renderers.SdlRendererTargetTexture);
+        }
 
+        public void Start()
+        {
+            textureTarget = Sdl.CreateTexture(SpaceWork.rendererGame, 
+                Sdl.GetWindowPixelFormat(SpaceWork.windowGame),
+                (int)TextureAccess.SdlTextureAccessTarget, 800, 600);
+
+
+            IntPtr bmpPtr = Sdl.LoadBmp(AssetManager.Find("tile000.bmp"));
+            Surface bmp = Marshal.PtrToStructure<Surface>(bmpPtr);
+            
+            bmpTex = Sdl.CreateTextureFromSurface(SpaceWork.rendererGame, bmpPtr);
+			
+			
+            pixelPtr = Marshal.AllocHGlobal(800 * 600 * 4);
+            uint[] textures = new uint[1];
+            Gl.GlGenTextures(1, textures);
+            textureopenGlId = textures[0];
+            Gl.GlBindTexture(TextureTarget.Texture2D, textureopenGlId);
+            Gl.GlTexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba8, 800, 600, 0, PixelFormat.Rgba, PixelType.UnsignedByte, pixelPtr);
+            Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, TextureParameter.Linear);
+            Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, TextureParameter.Linear);
+			
+            Console.WriteLine($"Gl Version: {Gl.GlGetString(StringName.Version)}");
+            Console.WriteLine($"Vendor: {Gl.GlGetString(StringName.Vendor)}");
+            Console.WriteLine($"Renderer: {Gl.GlGetString(StringName.Renderer)}");
+            Console.WriteLine($"Extensions: {Gl.GlGetString(StringName.Extensions)}");
+            Console.WriteLine($"SDL2 Version: {Sdl.GetVersion().major}.{Sdl.GetVersion().minor}.{Sdl.GetVersion().patch}");
+            Console.WriteLine($"Imgui Version: {ImGui.GetVersion()}");
         }
         
         /// <summary>
@@ -72,9 +116,46 @@ namespace Alis.App.Engine.Windows
         /// </summary>
         public void Render()
         {
-        
+            //Now render to the texture
+            Sdl.SetRenderTarget(SpaceWork.rendererGame, textureTarget);
+            Sdl.SetRenderDrawColor(SpaceWork.rendererGame, 0, 255, 0, 255);
+            Sdl.RenderClear(SpaceWork.rendererGame);
+                
+            Sdl.SetRenderDrawColor(SpaceWork.rendererGame, 255, 0, 0, 255);
+            RectangleI[] rects = new RectangleI[1];
+            rects[0] = new RectangleI(0, 0, 40, 40);
+            Sdl.RenderFillRects(SpaceWork.rendererGame, rects, 1);
+                
+            Sdl.RenderCopy(SpaceWork.rendererGame, bmpTex, new IntPtr(), new IntPtr());
+            //Detach the texture
+            Sdl.SetRenderTarget(SpaceWork.rendererGame, new IntPtr());
+
+            //Now render the texture target to our screen, but upside down
+            Sdl.RenderClear(SpaceWork.rendererGame);
+            Sdl.RenderCopyEx(SpaceWork.rendererGame, textureTarget, new IntPtr(), new IntPtr(), 0, new IntPtr(), RendererFlips.None);
+            Sdl.RenderPresent(SpaceWork.rendererGame);
+				
+            RectangleI rect = new RectangleI(0, 0, 800, 600);
+            Sdl.RenderReadPixels(SpaceWork.rendererGame, ref rect, Sdl.PixelFormatABgr8888, pixelPtr, 800 * 4);
+            
+            
+            Gl.GlBindTexture(TextureTarget.Texture2D, textureopenGlId);
+            Gl.GlTexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba8, 800, 600, 0, PixelFormat.Rgba, PixelType.UnsignedByte, pixelPtr);
+            Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter,TextureParameter.Linear);
+            Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, TextureParameter.Linear);
+            Gl.GlBindTexture(TextureTarget.Texture2D, 0);
+				
+            if(ImGui.Begin("Scene Sample"))
+            {
+                ImGui.Image(
+                    (IntPtr)textureopenGlId,
+                    new Vector2(800, 600),
+                    new Vector2(0, 0),
+                    new Vector2(1, 1),
+                    new Vector4(1, 1, 1, 1),
+                    new Vector4(255, 0, 0, 255));
+            }
+            ImGui.End();
         }
-        
-       
     }
 }

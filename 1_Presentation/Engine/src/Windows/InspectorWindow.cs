@@ -56,7 +56,12 @@ namespace Alis.App.Engine.Windows
         {
             
         }
-        
+
+        public void Start()
+        {
+            
+        }
+
         /// <summary>
         ///     Renders this instance
         /// </summary>
