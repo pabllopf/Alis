@@ -39,6 +39,11 @@ namespace Alis.App.Engine.Demos
     /// <seealso cref="IDemo"/>
     public class IconDemo : IDemo
     {
+        public void Start()
+        {
+            
+        }
+
         /// <summary>
         /// Runs this instance
         /// </summary>

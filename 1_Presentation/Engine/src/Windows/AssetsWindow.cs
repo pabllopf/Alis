@@ -56,7 +56,12 @@ namespace Alis.App.Engine.Windows
         {
             
         }
-        
+
+        public void Start()
+        {
+            
+        }
+
         public void Render()
         {
             if (!isOpen)

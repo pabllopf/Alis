@@ -36,6 +36,8 @@ namespace Alis.App.Engine.Demos
     {
         public void Initialize();
         
+        public void Start();
+        
         /// <summary>
         /// Runs this instance
         /// </summary>

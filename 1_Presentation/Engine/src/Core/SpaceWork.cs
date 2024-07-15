@@ -135,6 +135,10 @@ namespace Alis.App.Engine.Core
         /// </summary>
         public readonly IconDemo iconDemo = new IconDemo();
 
+        public IntPtr windowGame;
+        
+        public IntPtr rendererGame;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="SpaceWork"/> class
         /// </summary>
@@ -172,6 +176,26 @@ namespace Alis.App.Engine.Core
             AssetsWindow.Initialize();
         }
         
+        public void Start()
+        {
+            imGuiDemo.Start();
+            imPlotDemo.Start();
+            imGuizmoDemo.Start();
+            imNodeDemo.Start();
+            iconDemo.Start();
+            
+            TopMenu.Start();
+            BottomMenu.Start();
+            ConsoleWindow.Start();
+            GameWindow.Start();
+            InspectorWindow.Start();
+            SolutionWindow.Start();
+            SceneWindow.Start();
+            ProjectWindow.Start();
+            AudioPlayerWindow.Start();
+            AssetsWindow.Start();
+        }
+        
         /// <summary>
         /// Updates this instance
         /// </summary>
@@ -194,5 +218,7 @@ namespace Alis.App.Engine.Core
             AudioPlayerWindow.Render();
             AssetsWindow.Render();
         }
+
+       
     }
 }
