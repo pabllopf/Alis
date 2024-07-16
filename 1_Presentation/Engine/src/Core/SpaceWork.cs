@@ -31,6 +31,11 @@ using System;
 using Alis.App.Engine.Demos;
 using Alis.App.Engine.Menus;
 using Alis.App.Engine.Windows;
+using Alis.Core.Aspect.Math.Definition;
+using Alis.Core.Ecs;
+using Alis.Core.Ecs.Component.Render;
+using Alis.Core.Ecs.Entity;
+using Alis.Core.Ecs.System.Manager.Scene;
 using Alis.Extension.Graphic.ImGui;
 
 namespace Alis.App.Engine.Core
@@ -138,6 +143,8 @@ namespace Alis.App.Engine.Core
         public IntPtr windowGame;
         
         public IntPtr rendererGame;
+        
+        public VideoGame VideoGame { get; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SpaceWork"/> class
@@ -154,10 +161,126 @@ namespace Alis.App.Engine.Core
             AssetsWindow = new AssetsWindow(this);
             TopMenu = new TopMenu(this);
             BottomMenu = new BottomMenu(this);
+            
+            VideoGame = VideoGame
+                .Builder()
+                .Settings(setting => setting
+                    .General(general => general
+                        .Name("Rogue Legacy")
+                        .Author("Pablo Perdomo Falcón")
+                        .Description("Sample of a rogue legacy game")
+                        .Debug(true)
+                        .License("GNU General Public License v3.0")
+                        .Icon("app.bmp")
+                        .Build())
+                    .Audio(audio => audio
+                        .Build())
+                    .Graphic(graphic => graphic
+                        .Window(window => window
+                            .Resolution(1024, 640)
+                            .Background(Color.Black)
+                            .Build())
+                        .Build())
+                    .Physic(physic => physic
+                        .Gravity(0.0f, -9.8f)
+                        .Debug(true)
+                        .DebugColor(Color.Green)
+                        .Build())
+                    .Build())
+                .World(sceneManager => sceneManager
+                    .Add<Scene>(gameScene => gameScene
+                        .Add<GameObject>(gameObject => gameObject
+                            .Name("Player")
+                            .WithTag("Player")
+                            .Transform(transform => transform
+                                .Position(0, 0)
+                                .Scale(2, 2)
+                                .Rotation(0)
+                                .Build())
+                            .AddComponent<Sprite>(sprite => sprite.Builder()
+                                .SetTexture("tile000.bmp")
+                                .Build())
+                            .AddComponent<Animator>(animator => animator.Builder()
+                                .AddAnimation(animation => animation
+                                    .Name("Idle")
+                                    .Order(0)
+                                    .Speed(0.2f)
+                                    .AddFrame(frame => frame
+                                        .FilePath("tile000.bmp")
+                                        .Build())
+                                    .AddFrame(frame => frame
+                                        .FilePath("tile001.bmp")
+                                        .Build())
+                                    .AddFrame(frame => frame
+                                        .FilePath("tile002.bmp")
+                                        .Build())
+                                    .AddFrame(frame => frame
+                                        .FilePath("tile003.bmp")
+                                        .Build())
+                                    .Build())
+                                .Build())
+                            .AddComponent<Camera>(camera => camera.Builder()
+                                .Resolution(1024, 640)
+                                .BackgroundColor(Color.DarkGreen)
+                                .Build())
+                            .Build())
+
+                        // Decoration tree-001
+                        .Add<GameObject>(gameObject => gameObject
+                            .Name("tree-001")
+                            .Transform(transform => transform
+                                .Position(100, 100)
+                                .Scale(2, 2)
+                                .Rotation(0)
+                                .Build())
+                            .AddComponent<Sprite>(sprite => sprite.Builder()
+                                .SetTexture("tree-001.bmp")
+                                .Build())
+                            .Build())
+
+                        // Decoration tree-001
+                        .Add<GameObject>(gameObject => gameObject
+                            .Name("tree-002")
+                            .Transform(transform => transform
+                                .Position(400, 400)
+                                .Scale(2, 2)
+                                .Rotation(0)
+                                .Build())
+                            .AddComponent<Sprite>(sprite => sprite.Builder()
+                                .SetTexture("tree-001.bmp")
+                                .Build())
+                            .Build())
+                        .Add<GameObject>(gameObject => gameObject
+                            .Name("tree-001")
+                            .Transform(transform => transform
+                                .Position(-100, -100)
+                                .Scale(2, 2)
+                                .Rotation(0)
+                                .Build())
+                            .AddComponent<Sprite>(sprite => sprite.Builder()
+                                .SetTexture("tree-001.bmp")
+                                .Build())
+                            .Build())
+                        .Add<GameObject>(gameObject => gameObject
+                            .Name("tree-001")
+                            .Transform(transform => transform
+                                .Position(-200, -200)
+                                .Scale(2, 2)
+                                .Rotation(0)
+                                .Build())
+                            .AddComponent<Sprite>(sprite => sprite.Builder()
+                                .SetTexture("tree-001.bmp")
+                                .Build())
+                            .Build())
+                        .Build())
+                    .Build())
+                .BuildPreview();
         }
 
         public void Initialize()
         {
+            VideoGame.InitPreview();
+            
             imGuiDemo.Initialize();
             imPlotDemo.Initialize();
             imGuizmoDemo.Initialize();
