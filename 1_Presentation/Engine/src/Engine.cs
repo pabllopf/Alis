@@ -111,7 +111,7 @@ namespace Alis.App.Engine
         /// <summary>
         ///     The windows
         /// </summary>
-        private readonly SpaceWork spaceWork = new SpaceWork(); 
+        private SpaceWork spaceWork = new SpaceWork(); 
         
         /// <summary>
         ///     The font texture id
@@ -170,6 +170,8 @@ namespace Alis.App.Engine
                 Logger.Info($@"Error of SDL2: {Sdl.GetError()}");
                 return;
             }
+            
+            spaceWork = new SpaceWork();
             
             spaceWork.Initialize();
             

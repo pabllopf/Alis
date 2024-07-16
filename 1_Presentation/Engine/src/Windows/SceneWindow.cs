@@ -51,8 +51,6 @@ namespace Alis.App.Engine.Windows
     public class SceneWindow : IWindow
     {
         private uint textureopenGlId;
-        private IntPtr textureTarget;
-        private IntPtr bmpTex;
         private IntPtr pixelPtr;
 
         private const string NameWindow = "Scene";
@@ -73,27 +71,20 @@ namespace Alis.App.Engine.Windows
         
         public void Initialize()
         {
-            SpaceWork.windowGame = Sdl.CreateWindow("Game Preview", 
+            /*SpaceWork.windowGame = Sdl.CreateWindow("Game Preview", 
                 0, 0, 
                 800, 600, 
                 WindowSettings.WindowResizable | WindowSettings.WindowHidden );
             SpaceWork.rendererGame = Sdl.CreateRenderer(SpaceWork.windowGame, -1, 
-                Renderers.SdlRendererAccelerated | Renderers.SdlRendererTargetTexture);
+                Renderers.SdlRendererAccelerated | Renderers.SdlRendererTargetTexture);*/
+            
+            SpaceWork.windowGame = SpaceWork.VideoGame.Context.GraphicManager.Window;
+            SpaceWork.rendererGame = SpaceWork.VideoGame.Context.GraphicManager.Renderer;
         }
 
         public void Start()
         {
-            textureTarget = Sdl.CreateTexture(SpaceWork.rendererGame, 
-                Sdl.GetWindowPixelFormat(SpaceWork.windowGame),
-                (int)TextureAccess.SdlTextureAccessTarget, 800, 600);
 
-
-            IntPtr bmpPtr = Sdl.LoadBmp(AssetManager.Find("tile000.bmp"));
-            Surface bmp = Marshal.PtrToStructure<Surface>(bmpPtr);
-            
-            bmpTex = Sdl.CreateTextureFromSurface(SpaceWork.rendererGame, bmpPtr);
-			
-			
             pixelPtr = Marshal.AllocHGlobal(800 * 600 * 4);
             uint[] textures = new uint[1];
             Gl.GlGenTextures(1, textures);
@@ -116,28 +107,10 @@ namespace Alis.App.Engine.Windows
         /// </summary>
         public void Render()
         {
-            //Now render to the texture
-            Sdl.SetRenderTarget(SpaceWork.rendererGame, textureTarget);
-            Sdl.SetRenderDrawColor(SpaceWork.rendererGame, 0, 255, 0, 255);
-            Sdl.RenderClear(SpaceWork.rendererGame);
-                
-            Sdl.SetRenderDrawColor(SpaceWork.rendererGame, 255, 0, 0, 255);
-            RectangleI[] rects = new RectangleI[1];
-            rects[0] = new RectangleI(0, 0, 40, 40);
-            Sdl.RenderFillRects(SpaceWork.rendererGame, rects, 1);
-                
-            Sdl.RenderCopy(SpaceWork.rendererGame, bmpTex, new IntPtr(), new IntPtr());
-            //Detach the texture
-            Sdl.SetRenderTarget(SpaceWork.rendererGame, new IntPtr());
-
-            //Now render the texture target to our screen, but upside down
-            Sdl.RenderClear(SpaceWork.rendererGame);
-            Sdl.RenderCopyEx(SpaceWork.rendererGame, textureTarget, new IntPtr(), new IntPtr(), 0, new IntPtr(), RendererFlips.None);
-            Sdl.RenderPresent(SpaceWork.rendererGame);
-				
+            SpaceWork.VideoGame.RunPreview();
+            
             RectangleI rect = new RectangleI(0, 0, 800, 600);
             Sdl.RenderReadPixels(SpaceWork.rendererGame, ref rect, Sdl.PixelFormatABgr8888, pixelPtr, 800 * 4);
-            
             
             Gl.GlBindTexture(TextureTarget.Texture2D, textureopenGlId);
             Gl.GlTexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba8, 800, 600, 0, PixelFormat.Rgba, PixelType.UnsignedByte, pixelPtr);

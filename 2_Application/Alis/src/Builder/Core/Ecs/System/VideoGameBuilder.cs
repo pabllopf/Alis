@@ -90,7 +90,7 @@ namespace Alis.Builder.Core.Ecs.System
                 (int) videoGame.Context.GraphicManager.DefaultSize.X, (int) videoGame.Context.GraphicManager.DefaultSize.Y, flags);
             
             // Create the renderer
-            videoGame.Context.GraphicManager.Renderer = Sdl.CreateRenderer(videoGame.Context.GraphicManager.Window, -1, Renderers.SdlRendererAccelerated);
+            videoGame.Context.GraphicManager.Renderer = Sdl.CreateRenderer(videoGame.Context.GraphicManager.Window, -1, Renderers.SdlRendererAccelerated | Renderers.SdlRendererTargetTexture );
 
             return videoGame;
         }
