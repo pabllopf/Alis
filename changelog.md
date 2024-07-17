@@ -5,6 +5,32 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.3.2] - 2024-07-17
+### :sparkles: New Features
+- [`f37f3a8`](https://github.com/pabllopf/Alis/commit/f37f3a8d17b526f94548441e8880eaf1ac794ca0) - icons on engine *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f407519`](https://github.com/pabllopf/Alis/commit/f4075193c8be40b35b2c57add98a8cb51cac2e21) - include the solid, regular and light fonts to custom. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2d4bf95`](https://github.com/pabllopf/Alis/commit/2d4bf95f2d11cd758a1cec1f11cd96d66ee88e13) - add game demo on engine *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2b0a4c4`](https://github.com/pabllopf/Alis/commit/2b0a4c4f952b4f2119fb7834e60356c2d94ddc24) - render basic on engine *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`560350e`](https://github.com/pabllopf/Alis/commit/560350e4852ddae3285181127707649a877d6fad) - close window when click red button *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a8b1313`](https://github.com/pabllopf/Alis/commit/a8b1313fbf3c2f44c3115a7ba14e3d56a5a13e5f) - add new audioPlayerWindow and fix the imgui.begin *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d292c9e`](https://github.com/pabllopf/Alis/commit/d292c9edb6836a770e9d8c3af1cf8fce2d88421e) - add AssetsWindow to engine *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e6edd95`](https://github.com/pabllopf/Alis/commit/e6edd95d6147844ddb3b3d394a5dc3deee47f65b) - add new IRuntime *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`680706c`](https://github.com/pabllopf/Alis/commit/680706c1ccc1e1cfd7d557453c0dc92f36f91cfa) - add preview render *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`82b5de5`](https://github.com/pabllopf/Alis/commit/82b5de51d17f8972003d448736c0665d4a6992c2) - delegate error when is seriacing *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`58324ba`](https://github.com/pabllopf/Alis/commit/58324bae56184a8a97cf4b6eeca5626bd43ebe68) - move sample of game to the custom demo. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`44cea4c`](https://github.com/pabllopf/Alis/commit/44cea4c5f43472163556f934b96a034360f8b111) - independent render context for game sample *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c23ad6a`](https://github.com/pabllopf/Alis/commit/c23ad6a99818234164f988969a22911669795634) - window dll sld2 *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`1956a54`](https://github.com/pabllopf/Alis/commit/1956a544db1896cfa19a29ce84c20d3483906774) - pro check actual state *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1684600`](https://github.com/pabllopf/Alis/commit/1684600cb92125d628c17b9908689e93dffcbdd5) - pro check pro test *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :art: Code Style Changes
+- [`18d1adf`](https://github.com/pabllopf/Alis/commit/18d1adf379cf25a6b99d9a1fad16a37b5e211b25) - move the sample to the scene view *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.3.1] - 2024-07-07
 ### :sparkles: New Features
 - [`190fcd7`](https://github.com/pabllopf/Alis/commit/190fcd7a0a4eb42e72897bdbda13e2e94044e29e) - add simple ImGuizmoDemo *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -2991,3 +3017,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [v0.3.0]: https://github.com/pabllopf/Alis/compare/v0.2.9...v0.3.0
 [v0.3.1]: https://github.com/pabllopf/Alis/compare/v0.3.0...v0.3.1
+[v0.3.2]: https://github.com/pabllopf/Alis/compare/v0.3.1...v0.3.2
