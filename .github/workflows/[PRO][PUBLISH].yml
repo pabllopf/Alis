@@ -207,7 +207,6 @@ jobs:
             ./.build/Alis_Engine_win_arm64.zip
             ./.build/Alis_Engine_win_x86.zip
             ./.build/Alis_Engine_linux_x64.zip
-            ./.build/Alis_Engine_linux_x86.zip
             ./.build/Alis_Engine_linux_arm64.zip
             ./.publish/${{ env.VERSIONFINAL }}/*.nupkg
 
