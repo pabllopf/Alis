@@ -69,7 +69,6 @@ namespace Alis.Core.Physic
         /// </summary>
         internal Vector2 Gravity { get; }
         
-
         /// <summary>
         ///     Gets or sets the value of the bodies
         /// </summary>
