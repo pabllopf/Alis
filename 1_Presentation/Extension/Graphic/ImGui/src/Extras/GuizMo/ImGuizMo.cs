@@ -193,7 +193,6 @@ namespace Alis.Extension.Graphic.ImGui.Extras.GuizMo
             Marshal.StructureToPtr(drawList, drawListPtr, false);
             ImGuiZmoNative.InternalSetDrawlist(drawListPtr);
         }
-
         
         /// <summary>
         ///     Sets the gizmo size clip space using the specified value
