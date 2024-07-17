@@ -189,7 +189,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.GuizMo
         /// <param name="drawList">The draw list</param>
         public static void SetDrawList(ImDrawList drawList)
         {
-            IntPtr drawListPtr = Marshal.GetIUnknownForObject(drawList);
+            IntPtr drawListPtr = Marshal.AllocHGlobal(Marshal.SizeOf(drawList));
+            Marshal.StructureToPtr(drawList, drawListPtr, false);
             ImGuiZmoNative.InternalSetDrawlist(drawListPtr);
         }
 
