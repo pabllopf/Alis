@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.3.4] - 2024-07-17
+### :bug: Bug Fixes
+- [`b06c10f`](https://github.com/pabllopf/Alis/commit/b06c10fa4151a13afc4ab45037168edeca73176b) - target framework, to include more frameworks. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5b372ac`](https://github.com/pabllopf/Alis/commit/5b372acc515fa6dc68aa33ac32343514d1ce1005) - PackageReleaseNotes *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fbdaa6c`](https://github.com/pabllopf/Alis/commit/fbdaa6cd730b043fb8cf1b379bdba7f0ce080082) - add new config to csprojs to include a readme and new targets *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`98a67e6`](https://github.com/pabllopf/Alis/commit/98a67e6bd33013ddb01c81b98fa583c8b5acf9e8) - when compile to test the apps modules *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :art: Code Style Changes
+- [`3440cc4`](https://github.com/pabllopf/Alis/commit/3440cc45e8ee84255cfc38599a408b1cb4491f0f) - move all config of .csproj to custom file in configs files to dont need restar sln every time. *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.3.3] - 2024-07-17
 ### :sparkles: New Features
 - [`8ab5c8f`](https://github.com/pabllopf/Alis/commit/8ab5c8f29fff41b58308bda1a7105c3ce113e6ea) - new publish with all engine builds *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -3024,3 +3035,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.3.1]: https://github.com/pabllopf/Alis/compare/v0.3.0...v0.3.1
 [v0.3.2]: https://github.com/pabllopf/Alis/compare/v0.3.1...v0.3.2
 [v0.3.3]: https://github.com/pabllopf/Alis/compare/v0.3.2...v0.3.3
+[v0.3.4]: https://github.com/pabllopf/Alis/compare/v0.3.3...v0.3.4
