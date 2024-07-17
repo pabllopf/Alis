@@ -23,7 +23,7 @@
         <TargetFrameworks Condition="$(AssemblyName.Contains('Sample')) == true">net6.0;net7.0;net8.0</TargetFrameworks>
 
         <TargetFrameworks Condition="
-        $(AssemblyName.Contains('App')) == true OR 
+        $(AssemblyName.Contains('App')) == true AND
         $(AssemblyName.Contains('Test')) == false">net7.0;net8.0</TargetFrameworks>
 
         <TargetFrameworks Condition="$(AssemblyName.Contains('Test')) == true">netcoreapp3.0;netcoreapp3.1;net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
