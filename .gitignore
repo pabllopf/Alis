@@ -31,6 +31,9 @@
 /**/**/.[Pp]ublish/**
 /**/.[Pp]ublish/**
 
+/**/**/.[Bb]uild/**
+/**/.[Bb]uild/**
+
 /**/_/**
 
 /**/**/_/**
@@ -71,3 +74,4 @@
 
 .config/Config.props
 .config/Config.props
+
