@@ -27,6 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using Alis.Extension.Graphic.OpenGL.Enums;
+using Xunit;
+
 namespace Alis.Extension.Graphic.OpenGL.Test
 {
     /// <summary>
@@ -34,5 +38,117 @@ namespace Alis.Extension.Graphic.OpenGL.Test
     /// </summary>
     public class GlTest
     {
+        /// <summary>
+        /// Tests that get string returns empty string when string name is invalid
+        /// </summary>
+        [Fact]
+        public void GetString_ReturnsEmptyString_WhenStringNameIsInvalid()
+        {
+            string result = Gl.GlGetString((StringName) 999); // Assuming 999 is an invalid StringName
+            Assert.Equal(string.Empty, result);
+        }
+
+        /// <summary>
+        /// Tests that gen buffer returns non zero
+        /// </summary>
+        [Fact]
+        public void GenBuffer_ReturnsNonZero()
+        {
+            uint buffer = Gl.GenBuffer();
+            Assert.NotEqual(0u, buffer);
+        }
+
+        /// <summary>
+        /// Tests that delete buffer does not throw when called with valid buffer
+        /// </summary>
+        [Fact]
+        public void DeleteBuffer_DoesNotThrow_WhenCalledWithValidBuffer()
+        {
+            uint buffer = Gl.GenBuffer();
+            Exception exception = Record.Exception(() => Gl.DeleteBuffer(buffer));
+            Assert.Null(exception);
+        }
+
+        /// <summary>
+        /// Tests that get shader info log returns empty string when shader is invalid
+        /// </summary>
+        [Fact]
+        public void GetShaderInfoLog_ReturnsEmptyString_WhenShaderIsInvalid()
+        {
+            string log = Gl.GetShaderInfoLog(999); // Assuming 999 is an invalid shader ID
+            Assert.Equal(string.Empty, log);
+        }
+
+        /// <summary>
+        /// Tests that get shader compile status returns false when shader is invalid
+        /// </summary>
+        [Fact]
+        public void GetShaderCompileStatus_ReturnsFalse_WhenShaderIsInvalid()
+        {
+            bool status = Gl.GetShaderCompileStatus(999); // Assuming 999 is an invalid shader ID
+            Assert.False(status);
+        }
+
+        /// <summary>
+        /// Tests that get program info log returns empty string when program is invalid
+        /// </summary>
+        [Fact]
+        public void GetProgramInfoLog_ReturnsEmptyString_WhenProgramIsInvalid()
+        {
+            string log = Gl.GetProgramInfoLog(999); // Assuming 999 is an invalid program ID
+            Assert.Equal(string.Empty, log);
+        }
+
+        /// <summary>
+        /// Tests that get program link status returns false when program is invalid
+        /// </summary>
+        [Fact]
+        public void GetProgramLinkStatus_ReturnsFalse_WhenProgramIsInvalid()
+        {
+            bool status = Gl.GetProgramLinkStatus(999); // Assuming 999 is an invalid program ID
+            Assert.False(status);
+        }
+
+        /// <summary>
+        /// Tests that gen vertex array returns non zero
+        /// </summary>
+        [Fact]
+        public void GenVertexArray_ReturnsNonZero()
+        {
+            uint vao = Gl.GenVertexArray();
+            Assert.NotEqual(0u, vao);
+        }
+
+        /// <summary>
+        /// Tests that delete vertex array does not throw when called with valid vao
+        /// </summary>
+        [Fact]
+        public void DeleteVertexArray_DoesNotThrow_WhenCalledWithValidVao()
+        {
+            uint vao = Gl.GenVertexArray();
+            Exception exception = Record.Exception(() => Gl.DeleteVertexArray(vao));
+            Assert.Null(exception);
+        }
+
+        /// <summary>
+        /// Tests that gen texture returns non zero
+        /// </summary>
+        [Fact]
+        public void GenTexture_ReturnsNonZero()
+        {
+            uint texture = Gl.GenTexture();
+            Assert.NotEqual(0u, texture);
+        }
+
+        /// <summary>
+        /// Tests that delete texture does not throw when called with valid texture
+        /// </summary>
+        [Fact]
+        public void DeleteTexture_DoesNotThrow_WhenCalledWithValidTexture()
+        {
+            uint texture = Gl.GenTexture();
+            Exception exception = Record.Exception(() => Gl.DeleteTexture(texture));
+            Assert.Null(exception);
+        }
     }
 }
