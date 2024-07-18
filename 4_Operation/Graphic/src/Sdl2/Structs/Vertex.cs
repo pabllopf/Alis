@@ -52,5 +52,6 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     The text coordinate
         /// </summary>
         public PointF texCoordinate { get; set; }
+        
     }
 }
