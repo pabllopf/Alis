@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:PointF.cs
+//  File:GlShaderProgramTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,24 +27,13 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.InteropServices;
-
-namespace Alis.Core.Aspect.Math.Shape.Point
+namespace Alis.Extension.Graphic.OpenGL.Test.Constructs
 {
     /// <summary>
-    ///     The f point
+    /// The gl shader program test class
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    public struct PointF : IShape
+    public class GlShaderProgramTest
     {
-        /// <summary>
-        ///     The X
-        /// </summary>
-        public float X { get; set; }
-
-        /// <summary>
-        ///     The Y
-        /// </summary>
-        public float Y { get; set; }
+        
     }
 }

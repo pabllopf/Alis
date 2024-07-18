@@ -40,16 +40,16 @@ namespace Alis.Core.Aspect.Math.Shape.Circle
         /// <summary>
         ///     The
         /// </summary>
-        public int x { get; set; }
+        public int X { get; set; }
 
         /// <summary>
         ///     The
         /// </summary>
-        public int y { get; set; }
+        public int Y { get; set; }
 
         /// <summary>
         ///     The
         /// </summary>
-        public int r { get; set; }
+        public int R { get; set; }
     }
 }

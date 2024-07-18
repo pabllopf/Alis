@@ -40,11 +40,11 @@ namespace Alis.Core.Aspect.Math.Shape.Point
         /// <summary>
         ///     The
         /// </summary>
-        public int x { get; set; }
+        public int X { get; set; }
 
         /// <summary>
         ///     The
         /// </summary>
-        public int y { get; set; }
+        public int Y { get; set; }
     }
 }
