@@ -61,11 +61,6 @@ namespace Alis.Extension.Graphic.OpenGL.Constructs
         public readonly GlShader VertexShader;
 
         /// <summary>
-        ///     Specifies the OpenGL shader program ID.
-        /// </summary>
-        public uint ProgramId { get; set; }
-
-        /// <summary>
         ///     The shader params
         /// </summary>
         private Dictionary<string, GlShaderProgramParam> shaderParams;
@@ -104,6 +99,11 @@ namespace Alis.Extension.Graphic.OpenGL.Constructs
         public GlShaderProgram(string vertexShaderSource, string fragmentShaderSource)
             : this(new GlShader(vertexShaderSource, ShaderType.VertexShader), new GlShader(fragmentShaderSource, ShaderType.FragmentShader))
             => DisposeChildren = true;
+
+        /// <summary>
+        ///     Specifies the OpenGL shader program ID.
+        /// </summary>
+        public uint ProgramId { get; set; }
 
         /// <summary>
         ///     Queries the shader parameter hashtable to find a matching attribute/uniform.

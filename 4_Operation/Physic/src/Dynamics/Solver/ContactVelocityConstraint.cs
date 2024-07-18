@@ -49,12 +49,10 @@ namespace Alis.Core.Physic.Dynamics.Solver
         public int ContactIndex;
 
 
-
         /// <summary>
         ///     The friction
         /// </summary>
         public float Friction;
-
 
 
         /// <summary>
@@ -63,12 +61,10 @@ namespace Alis.Core.Physic.Dynamics.Solver
         public int IndexA;
 
 
-
         /// <summary>
         ///     The index
         /// </summary>
         public int IndexB;
-
 
 
         /// <summary>
@@ -87,12 +83,10 @@ namespace Alis.Core.Physic.Dynamics.Solver
         public Matrix2X2 K;
 
 
-
         /// <summary>
         ///     The normal
         /// </summary>
         public Vector2 Normal;
-
 
 
         /// <summary>
@@ -101,12 +95,10 @@ namespace Alis.Core.Physic.Dynamics.Solver
         public Matrix2X2 NormalMass;
 
 
-
         /// <summary>
         ///     The point count
         /// </summary>
         public int PointCount;
-
 
 
         /// <summary>
@@ -115,19 +107,16 @@ namespace Alis.Core.Physic.Dynamics.Solver
         public float Restitution;
 
 
-
         /// <summary>
         ///     The tangent speed
         /// </summary>
         public float TangentSpeed;
 
 
-
         /// <summary>
         ///     The threshold
         /// </summary>
         public float Threshold;
-
 
 
         /// <summary>

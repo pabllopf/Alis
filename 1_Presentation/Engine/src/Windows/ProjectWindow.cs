@@ -38,27 +38,22 @@ namespace Alis.App.Engine.Windows
     public class ProjectWindow : IWindow
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ProjectWindow"/> class
-        /// </summary>
-        /// <param name="spaceWork">The space work</param>
-        public ProjectWindow(SpaceWork spaceWork)
-        {
-            SpaceWork = spaceWork;
-        }
-
-        /// <summary>
         ///     The name window
         /// </summary>
         private const string NameWindow = "Project";
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ProjectWindow" /> class
+        /// </summary>
+        /// <param name="spaceWork">The space work</param>
+        public ProjectWindow(SpaceWork spaceWork) => SpaceWork = spaceWork;
+
         public void Initialize()
         {
-            
         }
 
         public void Start()
         {
-            
         }
 
         /// <summary>
@@ -72,7 +67,7 @@ namespace Alis.App.Engine.Windows
         }
 
         /// <summary>
-        /// Gets the value of the space work
+        ///     Gets the value of the space work
         /// </summary>
         public SpaceWork SpaceWork { get; }
     }

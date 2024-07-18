@@ -35,16 +35,6 @@ namespace Alis.Core.Physic.Dynamics.Solver
     public class Position
     {
         /// <summary>
-        ///     The
-        /// </summary>
-        public float A { get; set; }
-
-        /// <summary>
-        ///     The
-        /// </summary>
-        public Vector2 C { get; set; }
-
-        /// <summary>
         ///     Initializes a new instance of the <see cref="Position" /> class
         /// </summary>
         /// <param name="c">The </param>
@@ -63,5 +53,15 @@ namespace Alis.Core.Physic.Dynamics.Solver
             C = Vector2.Zero;
             A = 0.0f;
         }
+
+        /// <summary>
+        ///     The
+        /// </summary>
+        public float A { get; set; }
+
+        /// <summary>
+        ///     The
+        /// </summary>
+        public Vector2 C { get; set; }
     }
 }

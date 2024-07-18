@@ -46,19 +46,16 @@ namespace Alis.Core.Aspect.Math
         public Vector2 Position;
 
 
-
         /// <summary>
         ///     The scale
         /// </summary>
         public Vector2 Scale;
 
 
-
         /// <summary>
         ///     The
         /// </summary>
         public Rotation Rotation;
-
 
 
         /// <summary>

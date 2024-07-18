@@ -30,16 +30,16 @@
 namespace Alis.App.Engine.Demos
 {
     /// <summary>
-    /// The demo interface
+    ///     The demo interface
     /// </summary>
     public interface IDemo
     {
         public void Initialize();
-        
+
         public void Start();
-        
+
         /// <summary>
-        /// Runs this instance
+        ///     Runs this instance
         /// </summary>
         public void Run();
     }

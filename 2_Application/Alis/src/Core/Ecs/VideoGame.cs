@@ -53,16 +53,17 @@ namespace Alis.Core.Ecs
         ///     The instancie
         /// </summary>
         [JsonIgnore] public static VideoGame _instancie;
-        
-        private double currentTime;
+
         private double accumulator;
-        private double lastTime;
-        private double totalTime;
+
+        private double currentTime;
         private float lastDeltaTime;
-        private float smoothDeltaTimeSum;
-        private int smoothDeltaTimeCount;
         private double lastLogTime;
-        
+        private double lastTime;
+        private int smoothDeltaTimeCount;
+        private float smoothDeltaTimeSum;
+        private double totalTime;
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="VideoGame" /> class
         /// </summary>
@@ -225,121 +226,120 @@ namespace Alis.Core.Ecs
             OnStop();
             OnExit();
         }
-        
-        public void InitPreview()
-        {
-            OnInit();
-            OnAwake();
-            OnStart();
-            
-            currentTime = Context.TimeManager.Clock.Elapsed.TotalSeconds;
-            accumulator = 0;
-            
-            // Variables for calculating FPS
-            lastTime = Context.TimeManager.Clock.Elapsed.TotalSeconds;
-            Context.TimeManager.FrameCount = 0;
-            Context.TimeManager.TotalFrames = 0;
-            Context.TimeManager.AverageFrames = 0;
-            
-            // Variables for calculating average FPS
-            totalTime = 0;
-            
-            // Variables for SmoothDeltaTime
-            lastDeltaTime = 0f;
-            smoothDeltaTimeSum = 0f;
-            smoothDeltaTimeCount = 0;
-            
-            // Variable for log output
-            lastLogTime = Context.TimeManager.Clock.Elapsed.TotalSeconds;
 
-        }
-        
-        public void RunPreview()
-        {
-             double newTime = Context.TimeManager.Clock.Elapsed.TotalSeconds;
-                Context.TimeManager.DeltaTime = (float) (newTime - currentTime);
-
-                // Update Context.TimeManager properties
-                Context.TimeManager.UnscaledDeltaTime = (float) (newTime - currentTime);
-                Context.TimeManager.UnscaledTime += Context.TimeManager.UnscaledDeltaTime;
-                Context.TimeManager.UnscaledTimeAsDouble += Context.TimeManager.UnscaledDeltaTime;
-                Context.TimeManager.Time = Context.TimeManager.UnscaledTime * Context.TimeManager.TimeScale;
-                Context.TimeManager.TimeAsDouble = Context.TimeManager.UnscaledTimeAsDouble * Context.TimeManager.TimeScale;
-
-                // Update MaximumDeltaTime
-                Context.TimeManager.MaximumDeltaTime = Math.Max(Context.TimeManager.MaximumDeltaTime, Context.TimeManager.DeltaTime);
-
-                currentTime = newTime;
-                accumulator += Context.TimeManager.DeltaTime;
-
-                // Increment frame counter
-                Context.TimeManager.FrameCount++;
-                Context.TimeManager.TotalFrames++;
-
-                // If a second has passed since the last FPS calculation
-                if (newTime - lastTime >= 1.0)
-                {
-                    // Calculate average FPS
-                    totalTime += newTime - lastTime;
-                    Context.TimeManager.AverageFrames = (int) (Context.TimeManager.TotalFrames / totalTime);
-
-                    // Reset frame counter and update last time
-                    Context.TimeManager.FrameCount = 0;
-                    lastTime = newTime;
-                }
-
-                OnDispatchEvents();
-                OnBeforeUpdate();
-                OnUpdate();
-                OnAfterUpdate();
-
-                // Run fixed methods
-                while (accumulator >= Context.TimeManager.Configuration.FixedTimeStep)
-                {
-                    Context.TimeManager.InFixedTimeStep = true;
-
-                    Context.TimeManager.FixedTime += Context.TimeManager.Configuration.FixedTimeStep;
-                    Context.TimeManager.FixedTimeAsDouble += Context.TimeManager.Configuration.FixedTimeStep;
-                    Context.TimeManager.FixedDeltaTime = Context.TimeManager.Configuration.FixedTimeStep;
-                    Context.TimeManager.FixedUnscaledDeltaTime = Context.TimeManager.Configuration.FixedTimeStep / Context.TimeManager.TimeScale;
-
-                    // Update FixedUnscaledTime and FixedUnscaledTimeAsDouble
-                    Context.TimeManager.FixedUnscaledTime += Context.TimeManager.FixedUnscaledDeltaTime;
-                    Context.TimeManager.FixedUnscaledTimeAsDouble += Context.TimeManager.FixedUnscaledDeltaTime;
-
-                    OnBeforeFixedUpdate();
-                    OnFixedUpdate();
-                    OnAfterFixedUpdate();
-
-                    accumulator -= Context.TimeManager.Configuration.FixedTimeStep;
-
-                    Context.TimeManager.InFixedTimeStep = false;
-                }
-
-                OnCalculate();
-                OnDraw();
-                OnGui();
-
-                // Update SmoothDeltaTime
-                smoothDeltaTimeSum += Context.TimeManager.DeltaTime - lastDeltaTime;
-                smoothDeltaTimeCount++;
-                Context.TimeManager.SmoothDeltaTime = smoothDeltaTimeSum / smoothDeltaTimeCount;
-                lastDeltaTime = Context.TimeManager.DeltaTime;
-
-                lastLogTime = LastLogTime(newTime, lastLogTime);
-        }
-        
-        public void ExitPreview()
-        {
-            OnStop();
-            OnExit();
-        }
-        
         /// <summary>
         ///     Exits this instance
         /// </summary>
         [ExcludeFromCodeCoverage]
         public void Exit() => Context.TimeManager.IsRunning = false;
+
+        public void InitPreview()
+        {
+            OnInit();
+            OnAwake();
+            OnStart();
+
+            currentTime = Context.TimeManager.Clock.Elapsed.TotalSeconds;
+            accumulator = 0;
+
+            // Variables for calculating FPS
+            lastTime = Context.TimeManager.Clock.Elapsed.TotalSeconds;
+            Context.TimeManager.FrameCount = 0;
+            Context.TimeManager.TotalFrames = 0;
+            Context.TimeManager.AverageFrames = 0;
+
+            // Variables for calculating average FPS
+            totalTime = 0;
+
+            // Variables for SmoothDeltaTime
+            lastDeltaTime = 0f;
+            smoothDeltaTimeSum = 0f;
+            smoothDeltaTimeCount = 0;
+
+            // Variable for log output
+            lastLogTime = Context.TimeManager.Clock.Elapsed.TotalSeconds;
+        }
+
+        public void RunPreview()
+        {
+            double newTime = Context.TimeManager.Clock.Elapsed.TotalSeconds;
+            Context.TimeManager.DeltaTime = (float) (newTime - currentTime);
+
+            // Update Context.TimeManager properties
+            Context.TimeManager.UnscaledDeltaTime = (float) (newTime - currentTime);
+            Context.TimeManager.UnscaledTime += Context.TimeManager.UnscaledDeltaTime;
+            Context.TimeManager.UnscaledTimeAsDouble += Context.TimeManager.UnscaledDeltaTime;
+            Context.TimeManager.Time = Context.TimeManager.UnscaledTime * Context.TimeManager.TimeScale;
+            Context.TimeManager.TimeAsDouble = Context.TimeManager.UnscaledTimeAsDouble * Context.TimeManager.TimeScale;
+
+            // Update MaximumDeltaTime
+            Context.TimeManager.MaximumDeltaTime = Math.Max(Context.TimeManager.MaximumDeltaTime, Context.TimeManager.DeltaTime);
+
+            currentTime = newTime;
+            accumulator += Context.TimeManager.DeltaTime;
+
+            // Increment frame counter
+            Context.TimeManager.FrameCount++;
+            Context.TimeManager.TotalFrames++;
+
+            // If a second has passed since the last FPS calculation
+            if (newTime - lastTime >= 1.0)
+            {
+                // Calculate average FPS
+                totalTime += newTime - lastTime;
+                Context.TimeManager.AverageFrames = (int) (Context.TimeManager.TotalFrames / totalTime);
+
+                // Reset frame counter and update last time
+                Context.TimeManager.FrameCount = 0;
+                lastTime = newTime;
+            }
+
+            OnDispatchEvents();
+            OnBeforeUpdate();
+            OnUpdate();
+            OnAfterUpdate();
+
+            // Run fixed methods
+            while (accumulator >= Context.TimeManager.Configuration.FixedTimeStep)
+            {
+                Context.TimeManager.InFixedTimeStep = true;
+
+                Context.TimeManager.FixedTime += Context.TimeManager.Configuration.FixedTimeStep;
+                Context.TimeManager.FixedTimeAsDouble += Context.TimeManager.Configuration.FixedTimeStep;
+                Context.TimeManager.FixedDeltaTime = Context.TimeManager.Configuration.FixedTimeStep;
+                Context.TimeManager.FixedUnscaledDeltaTime = Context.TimeManager.Configuration.FixedTimeStep / Context.TimeManager.TimeScale;
+
+                // Update FixedUnscaledTime and FixedUnscaledTimeAsDouble
+                Context.TimeManager.FixedUnscaledTime += Context.TimeManager.FixedUnscaledDeltaTime;
+                Context.TimeManager.FixedUnscaledTimeAsDouble += Context.TimeManager.FixedUnscaledDeltaTime;
+
+                OnBeforeFixedUpdate();
+                OnFixedUpdate();
+                OnAfterFixedUpdate();
+
+                accumulator -= Context.TimeManager.Configuration.FixedTimeStep;
+
+                Context.TimeManager.InFixedTimeStep = false;
+            }
+
+            OnCalculate();
+            OnDraw();
+            OnGui();
+
+            // Update SmoothDeltaTime
+            smoothDeltaTimeSum += Context.TimeManager.DeltaTime - lastDeltaTime;
+            smoothDeltaTimeCount++;
+            Context.TimeManager.SmoothDeltaTime = smoothDeltaTimeSum / smoothDeltaTimeCount;
+            lastDeltaTime = Context.TimeManager.DeltaTime;
+
+            lastLogTime = LastLogTime(newTime, lastLogTime);
+        }
+
+        public void ExitPreview()
+        {
+            OnStop();
+            OnExit();
+        }
 
         /// <summary>
         ///     Ons the exit

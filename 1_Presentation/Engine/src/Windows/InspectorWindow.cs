@@ -39,27 +39,22 @@ namespace Alis.App.Engine.Windows
     public class InspectorWindow : IWindow
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="InspectorWindow"/> class
-        /// </summary>
-        /// <param name="spaceWork">The space work</param>
-        public InspectorWindow(SpaceWork spaceWork)
-        {
-            SpaceWork = spaceWork;
-        }
-
-        /// <summary>
         ///     The name window
         /// </summary>
         private const string NameWindow = "Inspector";
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="InspectorWindow" /> class
+        /// </summary>
+        /// <param name="spaceWork">The space work</param>
+        public InspectorWindow(SpaceWork spaceWork) => SpaceWork = spaceWork;
+
         public void Initialize()
         {
-            
         }
 
         public void Start()
         {
-            
         }
 
         /// <summary>
@@ -73,7 +68,7 @@ namespace Alis.App.Engine.Windows
         }
 
         /// <summary>
-        /// Gets the value of the space work
+        ///     Gets the value of the space work
         /// </summary>
         public SpaceWork SpaceWork { get; }
     }

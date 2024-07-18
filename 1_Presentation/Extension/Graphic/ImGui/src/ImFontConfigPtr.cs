@@ -48,17 +48,17 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
         public ImFontConfigPtr(IntPtr nativePtr) => NativePtr = nativePtr;
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="ImFontConfigPtr"/> class
+        ///     Initializes a new instance of the <see cref="ImFontConfigPtr" /> class
         /// </summary>
         /// <param name="fontConfig">The font config</param>
         public ImFontConfigPtr(ImFontConfig fontConfig)
-        { 
-            NativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFontConfig>()); 
+        {
+            NativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFontConfig>());
             Marshal.StructureToPtr(fontConfig, NativePtr, false);
         }
-        
+
         /// <summary>
         /// </summary>
         /// <param name="wrappedPtr"></param>
@@ -70,7 +70,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="nativePtr"></param>
         /// <returns></returns>
         public static implicit operator ImFontConfigPtr(IntPtr nativePtr) => new ImFontConfigPtr(nativePtr);
-        
+
         /// <summary>
         ///     Gets or sets the value of the font data
         /// </summary>
@@ -84,7 +84,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the font data owned by atlas
         /// </summary>
-        public bool FontDataOwnedByAtlas => Marshal.PtrToStructure<ImFontConfig>(NativePtr).FontDataOwnedByAtlas != 0; 
+        public bool FontDataOwnedByAtlas => Marshal.PtrToStructure<ImFontConfig>(NativePtr).FontDataOwnedByAtlas != 0;
 
         /// <summary>
         ///     Gets the value of the font no
@@ -100,7 +100,7 @@ namespace Alis.Extension.Graphic.ImGui
         ///     Gets the value of the oversample h
         /// </summary>
         public int OversampleH => Marshal.PtrToStructure<ImFontConfig>(NativePtr).OversampleH;
-        
+
         /// <summary>
         ///     Gets the value of the oversample v
         /// </summary>
@@ -111,15 +111,15 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         public bool SnapH
         {
-            get { return Marshal.PtrToStructure<ImFontConfig>(NativePtr).SnapH != 0; }
+            get => Marshal.PtrToStructure<ImFontConfig>(NativePtr).SnapH != 0;
             set
             {
                 ImFontConfig config = Marshal.PtrToStructure<ImFontConfig>(NativePtr);
-                config.SnapH = (byte)(value ? 1 : 0);
+                config.SnapH = (byte) (value ? 1 : 0);
                 Marshal.StructureToPtr(config, NativePtr, false);
             }
         }
-        
+
         /// <summary>
         ///     Gets the value of the glyph extra spacing
         /// </summary>
@@ -135,7 +135,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         public IntPtr GlyphRanges
         {
-            get { return Marshal.PtrToStructure<ImFontConfig>(NativePtr).GlyphRanges; }
+            get => Marshal.PtrToStructure<ImFontConfig>(NativePtr).GlyphRanges;
             set
             {
                 ImFontConfig config = Marshal.PtrToStructure<ImFontConfig>(NativePtr);
@@ -143,13 +143,13 @@ namespace Alis.Extension.Graphic.ImGui
                 Marshal.StructureToPtr(config, NativePtr, false);
             }
         }
-        
+
         /// <summary>
         ///     Gets the value of the glyph min advance x
         /// </summary>
         public float GlyphMinAdvanceX
         {
-            get { return Marshal.PtrToStructure<ImFontConfig>(NativePtr).GlyphMinAdvanceX; }
+            get => Marshal.PtrToStructure<ImFontConfig>(NativePtr).GlyphMinAdvanceX;
             set
             {
                 ImFontConfig config = Marshal.PtrToStructure<ImFontConfig>(NativePtr);
@@ -157,31 +157,31 @@ namespace Alis.Extension.Graphic.ImGui
                 Marshal.StructureToPtr(config, NativePtr, false);
             }
         }
-        
+
         /// <summary>
         ///     Gets the value of the glyph max advance x
         /// </summary>
         public float GlyphMaxAdvanceX => Marshal.PtrToStructure<ImFontConfig>(NativePtr).GlyphMaxAdvanceX;
-        
+
         /// <summary>
         ///     Gets the value of the merge mode
         /// </summary>
         public bool MergeMode
         {
-            get { return Marshal.PtrToStructure<ImFontConfig>(NativePtr).MergeMode != 0; }
+            get => Marshal.PtrToStructure<ImFontConfig>(NativePtr).MergeMode != 0;
             set
             {
                 ImFontConfig config = Marshal.PtrToStructure<ImFontConfig>(NativePtr);
-                config.MergeMode = (byte)(value ? 1 : 0);
+                config.MergeMode = (byte) (value ? 1 : 0);
                 Marshal.StructureToPtr(config, NativePtr, false);
             }
         }
-        
+
         /// <summary>
         ///     Gets the value of the font builder flags
         /// </summary>
         public uint FontBuilderFlags => Marshal.PtrToStructure<ImFontConfig>(NativePtr).FontBuilderFlags;
-        
+
         /// <summary>
         ///     Gets the value of the rasterizer multiply
         /// </summary>
@@ -196,7 +196,7 @@ namespace Alis.Extension.Graphic.ImGui
         ///     Gets the value of the dst font
         /// </summary>
         public ImFontPtr DstFont => Marshal.PtrToStructure<ImFontConfig>(NativePtr).DstFont;
-        
+
         /// <summary>
         ///     Destroys this instance
         /// </summary>

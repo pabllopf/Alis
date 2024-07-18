@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IRendereable.cs
+//  File:IRenderable.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,7 +30,7 @@
 namespace Alis.App.Engine.Core
 {
     /// <summary>
-    /// The renderable interface
+    ///     The renderable interface
     /// </summary>
     public interface IRenderable
     {

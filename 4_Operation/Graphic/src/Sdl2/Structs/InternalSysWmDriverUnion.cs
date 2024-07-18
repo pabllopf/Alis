@@ -43,12 +43,10 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         [FieldOffset(0)] public InternalWindowsWmInfo win;
 
 
-
         /// <summary>
         ///     The winrt
         /// </summary>
         [FieldOffset(0)] public InternalWinrtWmInfo winrt;
-
 
 
         /// <summary>
@@ -57,12 +55,10 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         [FieldOffset(0)] public InternalX11WmInfo x11;
 
 
-
         /// <summary>
         ///     The dfb
         /// </summary>
         [FieldOffset(0)] public InternalDirectfbWmInfo dfb;
-
 
 
         /// <summary>
@@ -71,12 +67,10 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         [FieldOffset(0)] public InternalCocoaWmInfo cocoa;
 
 
-
         /// <summary>
         ///     The uikit
         /// </summary>
         [FieldOffset(0)] public InternalUikitWmInfo uikit;
-
 
 
         /// <summary>
@@ -85,12 +79,10 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         [FieldOffset(0)] public InternalWaylandWmInfo wl;
 
 
-
         /// <summary>
         ///     The mir
         /// </summary>
         [FieldOffset(0)] public InternalMirWmInfo mir;
-
 
 
         /// <summary>
@@ -99,12 +91,10 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         [FieldOffset(0)] public InternalAndroidWmInfo android;
 
 
-
         /// <summary>
         ///     The os
         /// </summary>
         [FieldOffset(0)] public InternalOs2WmInfo os2;
-
 
 
         /// <summary>
@@ -113,12 +103,9 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         [FieldOffset(0)] public InternalVivanteWmInfo VivanteWmInfo;
 
 
-
         /// <summary>
         ///     The ksm
         /// </summary>
         [FieldOffset(0)] public InternalKmsWmInfo ksm;
-
-
     }
 }

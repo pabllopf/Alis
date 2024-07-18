@@ -194,7 +194,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         /// <summary>
         ///     The colors
         /// </summary>
-        public Vector4 Colors4  { get; set; }
+        public Vector4 Colors4 { get; set; }
 
         /// <summary>
         ///     The colors

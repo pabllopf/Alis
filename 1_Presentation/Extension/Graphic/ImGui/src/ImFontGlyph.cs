@@ -37,61 +37,61 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The colored
         /// </summary>
-        public uint Colored {get; set;}
+        public uint Colored { get; set; }
 
         /// <summary>
         ///     The visible
         /// </summary>
-        public uint Visible {get; set;}
+        public uint Visible { get; set; }
 
         /// <summary>
         ///     The codepoint
         /// </summary>
-        public uint Codepoint {get; set;}
+        public uint Codepoint { get; set; }
 
         /// <summary>
         ///     The advance
         /// </summary>
-        public float AdvanceX {get; set;}
+        public float AdvanceX { get; set; }
 
         /// <summary>
         ///     The
         /// </summary>
-        public float X0 {get; set;}
+        public float X0 { get; set; }
 
         /// <summary>
         ///     The
         /// </summary>
-        public float Y0 {get; set;}
+        public float Y0 { get; set; }
 
         /// <summary>
         ///     The
         /// </summary>
-        public float X1 {get; set;}
+        public float X1 { get; set; }
 
         /// <summary>
         ///     The
         /// </summary>
-        public float Y1 {get; set;}
+        public float Y1 { get; set; }
 
         /// <summary>
         ///     The
         /// </summary>
-        public float U0 {get; set;}
+        public float U0 { get; set; }
 
         /// <summary>
         ///     The
         /// </summary>
-        public float V0 {get; set;}
+        public float V0 { get; set; }
 
         /// <summary>
         ///     The
         /// </summary>
-        public float U1 {get; set;}
+        public float U1 { get; set; }
 
         /// <summary>
         ///     The
         /// </summary>
-        public float V1 {get; set;}
+        public float V1 { get; set; }
     }
 }

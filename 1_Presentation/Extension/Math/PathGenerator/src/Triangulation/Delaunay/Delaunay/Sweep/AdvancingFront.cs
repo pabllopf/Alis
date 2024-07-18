@@ -38,19 +38,9 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
     internal class AdvancingFront
     {
         /// <summary>
-        ///     The head
-        /// </summary>
-        public AdvancingFrontNode Head { get; set; }
-
-        /// <summary>
         ///     The search
         /// </summary>
         protected AdvancingFrontNode Search;
-
-        /// <summary>
-        ///     The tail
-        /// </summary>
-        public AdvancingFrontNode Tail { get; set; }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="AdvancingFront" /> class
@@ -65,6 +55,16 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
             AddNode(head);
             AddNode(tail);
         }
+
+        /// <summary>
+        ///     The head
+        /// </summary>
+        public AdvancingFrontNode Head { get; set; }
+
+        /// <summary>
+        ///     The tail
+        /// </summary>
+        public AdvancingFrontNode Tail { get; set; }
 
         /// <summary>
         ///     Adds the node using the specified node

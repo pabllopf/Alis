@@ -56,21 +56,6 @@ namespace Alis.Extension.Graphic.OpenGL.Constructs
         public readonly Type Type;
 
         /// <summary>
-        ///     Specifies the location of the parameter in the OpenGL program.
-        /// </summary>
-        public int Location { get; set; }
-
-        /// <summary>
-        ///     Specifies the OpenGL program ID.
-        /// </summary>
-        public uint Program { get; set; }
-
-        /// <summary>
-        ///     The program id
-        /// </summary>
-        public uint ProgramId { get; set; }
-
-        /// <summary>
         ///     Initializes a new instance of the <see cref="GlShaderProgramParam" /> class
         /// </summary>
         /// <param name="type">The type</param>
@@ -96,6 +81,21 @@ namespace Alis.Extension.Graphic.OpenGL.Constructs
             ProgramId = Program;
             Location = location;
         }
+
+        /// <summary>
+        ///     Specifies the location of the parameter in the OpenGL program.
+        /// </summary>
+        public int Location { get; set; }
+
+        /// <summary>
+        ///     Specifies the OpenGL program ID.
+        /// </summary>
+        public uint Program { get; set; }
+
+        /// <summary>
+        ///     The program id
+        /// </summary>
+        public uint ProgramId { get; set; }
 
         /// <summary>
         ///     Gets the location of the parameter in a compiled OpenGL program.

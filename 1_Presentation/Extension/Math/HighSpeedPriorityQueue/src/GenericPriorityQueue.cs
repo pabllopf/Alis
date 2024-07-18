@@ -302,7 +302,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         }
 
         /// <summary>
-        /// Cascades the down using the specified node
+        ///     Cascades the down using the specified node
         /// </summary>
         /// <param name="node">The node</param>
         private void CascadeDown(TItem node)

@@ -34,31 +34,29 @@ using Alis.Extension.Graphic.ImGui.Native;
 namespace Alis.App.Engine.Demos
 {
     /// <summary>
-    /// The icon demo class
+    ///     The icon demo class
     /// </summary>
-    /// <seealso cref="IDemo"/>
+    /// <seealso cref="IDemo" />
     public class IconDemo : IDemo
     {
         public void Start()
         {
-            
         }
 
         /// <summary>
-        /// Runs this instance
+        ///     Runs this instance
         /// </summary>
         public void Run()
         {
             SimpleIcons();
         }
-        
+
         public void Initialize()
         {
-            
         }
 
         /// <summary>
-        /// Simples the icons
+        ///     Simples the icons
         /// </summary>
         [Conditional("DEBUG")]
         private void SimpleIcons()
@@ -69,6 +67,7 @@ namespace Alis.App.Engine.Demos
                 ImGui.Text("Font Awesome 5");
                 ImGui.Text($" {FontAwesome5.Bug} {FontAwesome5.Bullhorn} {FontAwesome5.Bullseye} {FontAwesome5.Calendar}");
             }
+
             ImGui.End();
         }
     }

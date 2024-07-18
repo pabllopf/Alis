@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ImguiDemo.cs
+//  File:ImGuiDemo.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -33,31 +33,29 @@ using Alis.Extension.Graphic.ImGui.Native;
 namespace Alis.App.Engine.Demos
 {
     /// <summary>
-    /// The im gui demo class
+    ///     The im gui demo class
     /// </summary>
-    /// <seealso cref="IDemo"/>
+    /// <seealso cref="IDemo" />
     public class ImGuiDemo : IDemo
     {
         public void Initialize()
         {
-            
         }
 
         public void Start()
         {
-            
         }
 
         /// <summary>
-        /// Runs this instance
+        ///     Runs this instance
         /// </summary>
         public void Run()
         {
             DefaultDemo();
         }
-        
+
         /// <summary>
-        /// Defaults the demo
+        ///     Defaults the demo
         /// </summary>
         [Conditional("DEBUG")]
         private void DefaultDemo()

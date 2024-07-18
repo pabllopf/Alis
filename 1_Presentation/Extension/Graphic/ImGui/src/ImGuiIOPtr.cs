@@ -317,7 +317,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         public NullTerminatedString BackendPlatformName
         {
-            get { return new NullTerminatedString(Marshal.PtrToStructure<ImGuiIo>(NativePtr).BackendPlatformName); }
+            get => new NullTerminatedString(Marshal.PtrToStructure<ImGuiIo>(NativePtr).BackendPlatformName);
             set
             {
                 ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);

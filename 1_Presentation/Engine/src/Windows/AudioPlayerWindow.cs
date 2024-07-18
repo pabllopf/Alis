@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AudioPlayer.cs
+//  File:AudioPlayerWindow.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Fonts;
@@ -40,40 +39,38 @@ namespace Alis.App.Engine.Windows
     public class AudioPlayerWindow : IWindow
     {
         private const string WindowName = "Audio Player";
-        
+
+        private readonly TimeSpan currentTime;
+
+        private readonly ImGuiWindowFlags flags = ImGuiWindowFlags.NoCollapse;
+
         private bool isOpen = true;
 
-        private ImGuiWindowFlags flags = ImGuiWindowFlags.NoCollapse;
-        
-        private float progress;
-        
         private bool isPlaying;
-        
-        private TimeSpan currentTime;
-        
-        private TimeSpan totalTime;
-        
-        public SpaceWork SpaceWork { get; }
-        
+
+        private readonly float progress;
+
+        private readonly TimeSpan totalTime;
+
         public AudioPlayerWindow(SpaceWork spaceWork)
         {
             SpaceWork = spaceWork;
-            
+
             // mock sample:
             progress = 1f;
             isPlaying = true;
             currentTime = new TimeSpan(0);
             totalTime = new TimeSpan(0, 0, 10);
         }
-        
+
+        public SpaceWork SpaceWork { get; }
+
         public void Initialize()
         {
-            
         }
 
         public void Start()
         {
-            
         }
 
         public void Render()
@@ -83,22 +80,22 @@ namespace Alis.App.Engine.Windows
                 Console.WriteLine("Audio Player Window is closed");
                 return;
             }
-            
+
             if (ImGui.Begin(WindowName, ref isOpen, flags))
             {
                 if (ImGui.Button($"{FontAwesome5.Play}", new Vector2(25, 25)))
                 {
                     isPlaying = true;
                 }
-                
+
                 ImGui.SameLine();
-                
+
                 if (isPlaying)
                 {
                     ImGui.ProgressBar(progress, new Vector2(-1, 0), $"{currentTime} / {totalTime} ");
                 }
-            }   
-            
+            }
+
             ImGui.End();
         }
     }

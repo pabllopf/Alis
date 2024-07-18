@@ -41,52 +41,48 @@ namespace Alis.App.Engine.Windows
     /// </summary>
     public class ConsoleWindow : IWindow
     {
-        private bool isOpen = true;
-        
-        private ImGuiWindowFlags flags = ImGuiWindowFlags.NoCollapse;
-        
-        private byte[] command = new byte[256];
-        
-        private IntPtr commandPtr;
-
-        /// <summary>
-        /// Gets the value of the space work
-        /// </summary>
-        public SpaceWork SpaceWork { get; }
-        
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ConsoleWindow"/> class
-        /// </summary>
-        /// <param name="spaceWork">The space work</param>
-        public ConsoleWindow(SpaceWork spaceWork)
-        {
-            SpaceWork = spaceWork;
-            commandPtr  = Marshal.AllocHGlobal(256);
-        }
-        
-
         /// <summary>
         ///     The name window
         /// </summary>
         private const string NameWindow = "Console";
 
+        private byte[] command = new byte[256];
+
+        private readonly IntPtr commandPtr;
+
+        private readonly ImGuiWindowFlags flags = ImGuiWindowFlags.NoCollapse;
+        private bool isOpen = true;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ConsoleWindow" /> class
+        /// </summary>
+        /// <param name="spaceWork">The space work</param>
+        public ConsoleWindow(SpaceWork spaceWork)
+        {
+            SpaceWork = spaceWork;
+            commandPtr = Marshal.AllocHGlobal(256);
+        }
+
+        /// <summary>
+        ///     Gets the value of the space work
+        /// </summary>
+        public SpaceWork SpaceWork { get; }
+
         public void Initialize()
         {
-            
         }
 
         public void Start()
         {
-            
         }
 
         /// <summary>
         ///     Renders this instance
         /// </summary>
-         public void Render()
+        public void Render()
         {
             if (!isOpen) return;
-            
+
             if (ImGui.Begin(NameWindow, ref isOpen, flags))
             {
                 ImGui.Button("Clear");
@@ -100,20 +96,16 @@ namespace Alis.App.Engine.Windows
                 ImGui.Button($"{FontAwesome5.ExclamationTriangle}");
                 ImGui.SameLine();
                 ImGui.Button($"{FontAwesome5.Bug}");
-                
+
                 for (int i = 0; i < 10; i++)
                 {
                     ImGui.Text($"{FontAwesome5.Bug} [{DateTime.Now}] Line {i}");
                 }
-                
             }
-            
+
             ImGui.End();
         }
-        
-        private string[] GetTerminalOutput()
-        {
-            return new string[0];
-        }
+
+        private string[] GetTerminalOutput() => new string[0];
     }
 }

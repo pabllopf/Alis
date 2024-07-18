@@ -39,10 +39,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         [FieldOffset(0)] public ContactFeature ContactFeature;
 
 
-
         /// <summary>Used to quickly compare contact ids.</summary>
         [FieldOffset(0)] public uint Key;
-
-
     }
 }

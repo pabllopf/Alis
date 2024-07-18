@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:TopMenu.cs
+//  File:BottomMenu.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -35,32 +35,29 @@ using Alis.Extension.Graphic.ImGui.Native;
 namespace Alis.App.Engine.Menus
 {
     /// <summary>
-    /// The bottom menu class
+    ///     The bottom menu class
     /// </summary>
-    /// <seealso cref="IMenu"/>
+    /// <seealso cref="IMenu" />
     public class BottomMenu : IMenu
     {
+        /// <summary>
+        ///     The size menu down
+        /// </summary>
+        private const int SizeMenuDown = 25;
+
         /// <summary>
         ///     The menu down state
         /// </summary>
         private bool menuDownState = true;
 
         /// <summary>
-        /// The size menu down
-        /// </summary>
-        private const int SizeMenuDown = 25;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="BottomMenu"/> class
+        ///     Initializes a new instance of the <see cref="BottomMenu" /> class
         /// </summary>
         /// <param name="spaceWork">The space work</param>
-        public BottomMenu(SpaceWork spaceWork)
-        {
-            SpaceWork = spaceWork;
-        }
+        public BottomMenu(SpaceWork spaceWork) => SpaceWork = spaceWork;
 
         /// <summary>
-        /// Gets the value of the space work
+        ///     Gets the value of the space work
         /// </summary>
         public SpaceWork SpaceWork { get; }
 
@@ -73,7 +70,7 @@ namespace Alis.App.Engine.Menus
         }
 
         /// <summary>
-        /// Renders this instance
+        ///     Renders this instance
         /// </summary>
         public void Render()
         {
@@ -110,7 +107,6 @@ namespace Alis.App.Engine.Menus
 
         public void Start()
         {
-            
         }
     }
 }

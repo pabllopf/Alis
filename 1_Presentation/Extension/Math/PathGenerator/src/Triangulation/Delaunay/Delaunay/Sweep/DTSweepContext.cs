@@ -56,17 +56,17 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
         public readonly DtSweepEdgeEvent EdgeEvent = new DtSweepEdgeEvent();
 
         /// <summary>
-        ///     The front
-        /// </summary>
-        public AdvancingFront AFront { get; set; }
-
-        /// <summary>
         ///     Initializes a new instance of the <see cref="DtSweepContext" /> class
         /// </summary>
         public DtSweepContext()
         {
             Clear();
         }
+
+        /// <summary>
+        ///     The front
+        /// </summary>
+        public AdvancingFront AFront { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the head

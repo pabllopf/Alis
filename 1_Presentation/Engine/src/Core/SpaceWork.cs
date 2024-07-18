@@ -35,119 +35,71 @@ using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Entity;
-using Alis.Core.Ecs.System.Manager.Scene;
 using Alis.Extension.Graphic.ImGui;
 
 namespace Alis.App.Engine.Core
 {
     /// <summary>
-    /// The space work class
+    ///     The space work class
     /// </summary>
     public class SpaceWork
     {
         /// <summary>
-        /// Gets the value of the console window
+        ///     The icon demo
         /// </summary>
-        internal ConsoleWindow ConsoleWindow { get; }
-        
-        /// <summary>
-        /// Gets the value of the game window
-        /// </summary>
-        internal GameWindow GameWindow { get; }
-        
-        /// <summary>
-        /// Gets the value of the inspector window
-        /// </summary>
-        internal InspectorWindow InspectorWindow { get; }
-        
-        /// <summary>
-        /// Gets the value of the solution window
-        /// </summary>
-        internal SolutionWindow SolutionWindow { get; }
-        
-        /// <summary>
-        /// Gets the value of the scene window
-        /// </summary>
-        internal SceneWindow SceneWindow { get; }
-        
-        /// <summary>
-        /// Gets the value of the project window
-        /// </summary>
-        internal ProjectWindow ProjectWindow { get; }
-        
-        /// <summary>
-        /// Gets the value of the top menu
-        /// </summary>
-        internal TopMenu TopMenu { get; }
-        
-        /// <summary>
-        /// Gets the value of the bottom menu
-        /// </summary>
-        internal BottomMenu BottomMenu { get; }
-        
-        internal AudioPlayerWindow AudioPlayerWindow { get; }
-        
-        internal AssetsWindow AssetsWindow { get; }
-        public int Fps { get; set; } = 60;
+        public readonly IconDemo iconDemo = new IconDemo();
 
         /// <summary>
-        ///     The window
+        ///     The im gui demo
         /// </summary>
-        public IntPtr Window;
+        public readonly ImGuiDemo imGuiDemo = new ImGuiDemo();
 
         /// <summary>
-        /// Gets or sets the value of the viewport
+        ///     The im guizmo demo
         /// </summary>
-        public ImGuiViewportPtr Viewport;
+        public readonly ImGuizmoDemo imGuizmoDemo = new ImGuizmoDemo();
 
         /// <summary>
-        ///     The io
+        ///     The im node demo
         /// </summary>
-        public ImGuiIoPtr Io;
+        public readonly ImNodeDemo imNodeDemo = new ImNodeDemo();
 
         /// <summary>
-        ///     The style
+        ///     The im plot demo
         /// </summary>
-        public ImGuiStyle Style;
-        
+        public readonly ImPlotDemo imPlotDemo = new ImPlotDemo();
+
         /// <summary>
         ///     The context
         /// </summary>
         public IntPtr ContextGui;
 
         /// <summary>
-        /// The im gui demo
+        ///     The io
         /// </summary>
-        public readonly ImGuiDemo imGuiDemo = new ImGuiDemo();
+        public ImGuiIoPtr Io;
+
+        public IntPtr rendererGame;
 
         /// <summary>
-        /// The im plot demo
+        ///     The style
         /// </summary>
-        public readonly ImPlotDemo imPlotDemo = new ImPlotDemo();
+        public ImGuiStyle Style;
 
         /// <summary>
-        /// The im guizmo demo
+        ///     Gets or sets the value of the viewport
         /// </summary>
-        public readonly ImGuizmoDemo imGuizmoDemo = new ImGuizmoDemo();
+        public ImGuiViewportPtr Viewport;
 
         /// <summary>
-        /// The im node demo
+        ///     The window
         /// </summary>
-        public readonly ImNodeDemo imNodeDemo = new ImNodeDemo();
-        
-        /// <summary>
-        /// The icon demo
-        /// </summary>
-        public readonly IconDemo iconDemo = new IconDemo();
+        public IntPtr Window;
 
         public IntPtr windowGame;
-        
-        public IntPtr rendererGame;
-        
-        public VideoGame VideoGame { get; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SpaceWork"/> class
+        ///     Initializes a new instance of the <see cref="SpaceWork" /> class
         /// </summary>
         public SpaceWork()
         {
@@ -161,7 +113,7 @@ namespace Alis.App.Engine.Core
             AssetsWindow = new AssetsWindow(this);
             TopMenu = new TopMenu(this);
             BottomMenu = new BottomMenu(this);
-            
+
             VideoGame = VideoGame
                 .Builder()
                 .Settings(setting => setting
@@ -277,16 +229,63 @@ namespace Alis.App.Engine.Core
                 .BuildPreview();
         }
 
+        /// <summary>
+        ///     Gets the value of the console window
+        /// </summary>
+        internal ConsoleWindow ConsoleWindow { get; }
+
+        /// <summary>
+        ///     Gets the value of the game window
+        /// </summary>
+        internal GameWindow GameWindow { get; }
+
+        /// <summary>
+        ///     Gets the value of the inspector window
+        /// </summary>
+        internal InspectorWindow InspectorWindow { get; }
+
+        /// <summary>
+        ///     Gets the value of the solution window
+        /// </summary>
+        internal SolutionWindow SolutionWindow { get; }
+
+        /// <summary>
+        ///     Gets the value of the scene window
+        /// </summary>
+        internal SceneWindow SceneWindow { get; }
+
+        /// <summary>
+        ///     Gets the value of the project window
+        /// </summary>
+        internal ProjectWindow ProjectWindow { get; }
+
+        /// <summary>
+        ///     Gets the value of the top menu
+        /// </summary>
+        internal TopMenu TopMenu { get; }
+
+        /// <summary>
+        ///     Gets the value of the bottom menu
+        /// </summary>
+        internal BottomMenu BottomMenu { get; }
+
+        internal AudioPlayerWindow AudioPlayerWindow { get; }
+
+        internal AssetsWindow AssetsWindow { get; }
+        public int Fps { get; set; } = 60;
+
+        public VideoGame VideoGame { get; }
+
         public void Initialize()
         {
             VideoGame.InitPreview();
-            
+
             imGuiDemo.Initialize();
             imPlotDemo.Initialize();
             imGuizmoDemo.Initialize();
             imNodeDemo.Initialize();
             iconDemo.Initialize();
-            
+
             TopMenu.Initialize();
             BottomMenu.Initialize();
             ConsoleWindow.Initialize();
@@ -298,7 +297,7 @@ namespace Alis.App.Engine.Core
             AudioPlayerWindow.Initialize();
             AssetsWindow.Initialize();
         }
-        
+
         public void Start()
         {
             imGuiDemo.Start();
@@ -306,7 +305,7 @@ namespace Alis.App.Engine.Core
             imGuizmoDemo.Start();
             imNodeDemo.Start();
             iconDemo.Start();
-            
+
             TopMenu.Start();
             BottomMenu.Start();
             ConsoleWindow.Start();
@@ -318,9 +317,9 @@ namespace Alis.App.Engine.Core
             AudioPlayerWindow.Start();
             AssetsWindow.Start();
         }
-        
+
         /// <summary>
-        /// Updates this instance
+        ///     Updates this instance
         /// </summary>
         public void Update()
         {
@@ -329,7 +328,7 @@ namespace Alis.App.Engine.Core
             imGuizmoDemo.Run();
             imNodeDemo.Run();
             iconDemo.Run();
-            
+
             TopMenu.Render();
             BottomMenu.Render();
             ConsoleWindow.Render();
@@ -341,7 +340,5 @@ namespace Alis.App.Engine.Core
             AudioPlayerWindow.Render();
             AssetsWindow.Render();
         }
-
-       
     }
 }

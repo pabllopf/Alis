@@ -139,7 +139,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.GuizMo
         /// <param name="scale">The scale</param>
         /// <param name="matrix">The matrix</param>
         [DllImport(NativeLibrary, EntryPoint = "ImGuizmo_RecomposeMatrixFromComponents", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void InternalRecomposeMatrixFromComponents( float[] translation,  float[] rotation,  float[] scale,  float[] matrix);
+        internal static extern void InternalRecomposeMatrixFromComponents(float[] translation, float[] rotation, float[] scale, float[] matrix);
 
         /// <summary>
         ///     Ims the guizmo set drawlist using the specified drawlist

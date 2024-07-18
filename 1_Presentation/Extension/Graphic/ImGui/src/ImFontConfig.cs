@@ -42,53 +42,53 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The font data
         /// </summary>
-        public IntPtr FontData ;
+        public IntPtr FontData;
 
         /// <summary>
         ///     The font data size
         /// </summary>
-        public int FontDataSize ;
+        public int FontDataSize;
 
         /// <summary>
         ///     The font data owned by atlas
         /// </summary>
-        public byte FontDataOwnedByAtlas ;
+        public byte FontDataOwnedByAtlas;
 
         /// <summary>
         ///     The font no
         /// </summary>
-        public int FontNo ;
+        public int FontNo;
 
         /// <summary>
         ///     The size pixels
         /// </summary>
-        public float SizePixels ;
+        public float SizePixels;
 
         /// <summary>
         ///     The oversample
         /// </summary>
-        public int OversampleH ;
+        public int OversampleH;
 
         /// <summary>
         ///     The oversample
         /// </summary>
-        public int OversampleV ;
+        public int OversampleV;
 
         /// <summary>
         ///     The pixel snap
         /// </summary>
-        public byte SnapH ;
+        public byte SnapH;
 
         /// <summary>
         ///     The glyph extra spacing
         /// </summary>
-        public Vector2 GlyphExtraSpacing ;
+        public Vector2 GlyphExtraSpacing;
 
         /// <summary>
         ///     The glyph offset
         /// </summary>
-        public Vector2 GlyphOffset ;
-        
+        public Vector2 GlyphOffset;
+
         /// <summary>
         ///     The glyph ranges
         /// </summary>
@@ -97,32 +97,32 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The glyph min advance
         /// </summary>
-        public float GlyphMinAdvanceX ;
+        public float GlyphMinAdvanceX;
 
         /// <summary>
         ///     The glyph max advance
         /// </summary>
-        public float GlyphMaxAdvanceX ;
+        public float GlyphMaxAdvanceX;
 
         /// <summary>
         ///     The merge mode
         /// </summary>
-        public byte MergeMode ;
+        public byte MergeMode;
 
         /// <summary>
         ///     The font builder flags
         /// </summary>
-        public uint FontBuilderFlags ;
+        public uint FontBuilderFlags;
 
         /// <summary>
         ///     The rasterizer multiply
         /// </summary>
-        public float RasterizerMultiply ;
+        public float RasterizerMultiply;
 
         /// <summary>
         ///     The ellipsis char
         /// </summary>
-        public ushort EllipsisChar ;
+        public ushort EllipsisChar;
 
         /// <summary>
         ///     The name
@@ -133,6 +133,6 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The dst font
         /// </summary>
-        public IntPtr DstFont ;
+        public IntPtr DstFont;
     }
 }

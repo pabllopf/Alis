@@ -29,7 +29,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -37,15 +36,9 @@ using Alis.App.Engine.Core;
 using Alis.App.Engine.Fonts;
 using Alis.App.Engine.Shaders;
 using Alis.Core.Aspect.Data.Mapping;
-using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Matrix;
-using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Ecs;
-using Alis.Core.Ecs.Component.Render;
-using Alis.Core.Ecs.Entity;
-using Alis.Core.Ecs.System.Manager.Scene;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Structs;
@@ -57,7 +50,6 @@ using Alis.Extension.Graphic.ImGui.Native;
 using Alis.Extension.Graphic.OpenGL;
 using Alis.Extension.Graphic.OpenGL.Constructs;
 using Alis.Extension.Graphic.OpenGL.Enums;
-using Color = Alis.Core.Aspect.Math.Definition.Color;
 using PixelFormat = Alis.Extension.Graphic.OpenGL.Enums.PixelFormat;
 using Version = Alis.Core.Graphic.Sdl2.Structs.Version;
 
@@ -77,9 +69,9 @@ namespace Alis.App.Engine
         ///     The vertex shader
         /// </summary>
         private static readonly VertexShader VertexShader = new VertexShader();
-        
+
         /// <summary>
-        /// The fragment shader
+        ///     The fragment shader
         /// </summary>
         private static readonly FragmentShader FragmentShader = new FragmentShader();
 
@@ -109,11 +101,6 @@ namespace Alis.App.Engine
         private readonly int widthWindow = 1080;
 
         /// <summary>
-        ///     The windows
-        /// </summary>
-        private SpaceWork spaceWork = new SpaceWork(); 
-        
-        /// <summary>
         ///     The font texture id
         /// </summary>
         private uint _elementsHandle;
@@ -132,7 +119,7 @@ namespace Alis.App.Engine
         ///     The quit
         /// </summary>
         private bool _quit;
-        
+
         /// <summary>
         ///     The shader
         /// </summary>
@@ -152,12 +139,17 @@ namespace Alis.App.Engine
         ///     The font texture id
         /// </summary>
         private uint _vertexArrayObject;
-        
+
         /// <summary>
         ///     The dockspaceflags
         /// </summary>
         private ImGuiWindowFlags dockspaceflags;
-        
+
+        /// <summary>
+        ///     The windows
+        /// </summary>
+        private SpaceWork spaceWork = new SpaceWork();
+
         /// <summary>
         ///     Starts this instance
         /// </summary>
@@ -170,17 +162,17 @@ namespace Alis.App.Engine
                 Logger.Info($@"Error of SDL2: {Sdl.GetError()}");
                 return;
             }
-            
+
             spaceWork = new SpaceWork();
-            
+
             spaceWork.Initialize();
-            
+
             // GET VERSION SDL2
             Version version = Sdl.GetVersion();
             Logger.Info(@$"SDL2 VERSION {version.major}.{version.minor}.{version.patch}");
-            
+
             Sdl.SetHint(Hint.HintRenderDriver, "opengl");
-            
+
             // CONFIG THE SDL2 AN OPENGL CONFIGURATION
             Sdl.SetAttributeByInt(GlAttr.SdlGlContextFlags, (int) GlContexts.SdlGlContextForwardCompatibleFlag);
             Sdl.SetAttributeByProfile(GlAttr.SdlGlContextProfileMask, GlProfiles.SdlGlContextProfileCore);
@@ -210,7 +202,7 @@ namespace Alis.App.Engine
 
             spaceWork.Window = Sdl.CreateWindow(NameEngine, (int) WindowPos.WindowPosCentered, (int) WindowPos.WindowPosCentered, widthWindow, heightWindow, flags);
             _glContext = CreateGlContext(spaceWork.Window);
-            
+
             // compile the shader program
             _shader = new GlShaderProgram(VertexShader.ShaderCode, FragmentShader.ShaderCode);
 
@@ -245,9 +237,9 @@ namespace Alis.App.Engine
 
             string dirFonts = Environment.CurrentDirectory + "/Assets/Fonts/Jetbrains/";
             string fontToLoad = "JetBrainsMono-Bold.ttf";
-            
+
             string dirFontsIcon = Environment.CurrentDirectory + "/Assets/Icons/";
-            
+
             if (!Directory.Exists(dirFonts))
             {
                 Logger.Info(@$"ERROR, DIR NOT FOUND: {dirFonts}");
@@ -259,13 +251,13 @@ namespace Alis.App.Engine
                 Logger.Info(@$"ERROR, FONT NOT FOUND: {dirFonts + fontToLoad}");
                 return;
             }
-            
+
 
             //fonts.AddFontDefault();
-            
+
             float fontSize = 14;
             float fontSizeIcon = 18;
-           
+
             ImFontPtr fontLoaded16Solid = fonts.AddFontFromFileTtf(@$"{dirFonts}{fontToLoad}", fontSize);
             try
             {
@@ -273,17 +265,17 @@ namespace Alis.App.Engine
                 icons_config.MergeMode = true;
                 icons_config.SnapH = true;
                 icons_config.GlyphMinAdvanceX = 18;
-                
+
                 ushort[] IconRanges = new ushort[3];
                 IconRanges[0] = FontAwesome5.IconMin;
                 IconRanges[1] = FontAwesome5.IconMax;
                 IconRanges[2] = 0;
-                
+
                 // Allocate GCHandle to pin IconRanges in memory
                 GCHandle iconRangesHandle = GCHandle.Alloc(IconRanges, GCHandleType.Pinned);
-                
+
                 IntPtr rangePtr = iconRangesHandle.AddrOfPinnedObject();
-                
+
                 // Assuming 'io' is a valid ImGuiIO instance and 'dir' and 'dirIcon' are defined paths
                 fonts.AddFontFromFileTtf(@$"{dirFontsIcon}{FontAwesome5.NameSolid}", fontSizeIcon, icons_config, rangePtr);
             }
@@ -292,8 +284,8 @@ namespace Alis.App.Engine
                 Logger.Exception(@$"ERROR, FONT ICONS NOT FOUND: {dirFontsIcon}{FontAwesome5.NameSolid} {e.Message}");
                 return;
             }
-            
-            
+
+
             ImFontPtr fontLoaded16Regular = fonts.AddFontFromFileTtf(@$"{dirFonts}{fontToLoad}", fontSize);
             try
             {
@@ -301,17 +293,17 @@ namespace Alis.App.Engine
                 icons_config.MergeMode = true;
                 icons_config.SnapH = true;
                 icons_config.GlyphMinAdvanceX = 20;
-                
+
                 ushort[] IconRanges = new ushort[3];
                 IconRanges[0] = FontAwesome5.IconMin;
                 IconRanges[1] = FontAwesome5.IconMax;
                 IconRanges[2] = 0;
-                
+
                 // Allocate GCHandle to pin IconRanges in memory
                 GCHandle iconRangesHandle = GCHandle.Alloc(IconRanges, GCHandleType.Pinned);
-                
+
                 IntPtr rangePtr = iconRangesHandle.AddrOfPinnedObject();
-                
+
                 // Assuming 'io' is a valid ImGuiIO instance and 'dir' and 'dirIcon' are defined paths
                 fonts.AddFontFromFileTtf(@$"{dirFontsIcon}{FontAwesome5.NameRegular}", fontSizeIcon, icons_config, rangePtr);
             }
@@ -321,7 +313,7 @@ namespace Alis.App.Engine
                 return;
             }
 
-            
+
             ImFontPtr fontLoaded16Light = fonts.AddFontFromFileTtf(@$"{dirFonts}{fontToLoad}", fontSize);
             try
             {
@@ -329,17 +321,17 @@ namespace Alis.App.Engine
                 icons_config.MergeMode = true;
                 icons_config.SnapH = true;
                 icons_config.GlyphMinAdvanceX = 20;
-                
+
                 ushort[] IconRanges = new ushort[3];
                 IconRanges[0] = FontAwesome5.IconMin;
                 IconRanges[1] = FontAwesome5.IconMax;
                 IconRanges[2] = 0;
-                
+
                 // Allocate GCHandle to pin IconRanges in memory
                 GCHandle iconRangesHandle = GCHandle.Alloc(IconRanges, GCHandleType.Pinned);
-                
+
                 IntPtr rangePtr = iconRangesHandle.AddrOfPinnedObject();
-                
+
                 // Assuming 'io' is a valid ImGuiIO instance and 'dir' and 'dirIcon' are defined paths
                 fonts.AddFontFromFileTtf(@$"{dirFontsIcon}{FontAwesome5.NameLight}", fontSizeIcon, icons_config, rangePtr);
             }
@@ -348,18 +340,18 @@ namespace Alis.App.Engine
                 Logger.Exception(@$"ERROR, FONT ICONS NOT FOUND: {dirFontsIcon}{FontAwesome5.NameLight} {e.Message}");
                 return;
             }
-            
-            
+
+
             fonts.GetTexDataAsRgba32(out IntPtr pixelData, out int width, out int height, out int _);
             _fontTextureId = LoadTexture(pixelData, width, height);
             fonts.TexId = (IntPtr) _fontTextureId;
             fonts.ClearTexData();
-            
+
             // CONFIG DOCKSPACE
-           spaceWork.Viewport = ImGui.GetMainViewport();
-            ImGui.SetNextWindowPos(spaceWork.Viewport .WorkPos);
-            ImGui.SetNextWindowSize(spaceWork.Viewport .WorkSize);
-            ImGui.SetNextWindowViewport(spaceWork.Viewport .Id);
+            spaceWork.Viewport = ImGui.GetMainViewport();
+            ImGui.SetNextWindowPos(spaceWork.Viewport.WorkPos);
+            ImGui.SetNextWindowSize(spaceWork.Viewport.WorkSize);
+            ImGui.SetNextWindowViewport(spaceWork.Viewport.Id);
             ImGui.PushStyleVar(ImGuiStyleVar.WindowRounding, 0.0f);
             ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0.0f);
             dockspaceflags |= ImGuiWindowFlags.MenuBar;
@@ -400,9 +392,8 @@ namespace Alis.App.Engine
             _vboHandle = Gl.GenBuffer();
             _elementsHandle = Gl.GenBuffer();
             _vertexArrayObject = Gl.GenVertexArray();
-           
-            
-           
+
+
             spaceWork.Start();
             while (!_quit)
             {
@@ -417,9 +408,10 @@ namespace Alis.App.Engine
                             {
                                 _quit = true;
                             }
+
                             break;
                         }
-                        
+
                         case EventType.Keydown:
                         {
                             switch (e.key.keySym.sym)
@@ -434,7 +426,7 @@ namespace Alis.App.Engine
                         }
                     }
                 }
-                
+
                 //Gl.GlClearColor(0.05f, 0.05f, 0.05f, 1.00f);
                 ImGui.NewFrame();
                 ImGuizMo.BeginFrame();
@@ -462,12 +454,12 @@ namespace Alis.App.Engine
                 UpdateMousePosAndButtons();
 
                 //ImGui.PushFont(fontLoaded);
-                
+
                 int sizeMenuDown = 25;
-                Vector2 sizeDock = spaceWork.Viewport .Size - new Vector2(0, sizeMenuDown * 2);
+                Vector2 sizeDock = spaceWork.Viewport.Size - new Vector2(0, sizeMenuDown * 2);
 
 
-                ImGui.SetNextWindowPos(spaceWork.Viewport .WorkPos);
+                ImGui.SetNextWindowPos(spaceWork.Viewport.WorkPos);
                 ImGui.SetNextWindowSize(sizeDock);
                 //ImGui.SetNextWindowViewport(spaceWork.Viewport .ID);
                 ImGui.PushStyleVar(ImGuiStyleVar.WindowRounding, 0.0f);
@@ -482,14 +474,14 @@ namespace Alis.App.Engine
 
                 uint dockSpaceId = ImGui.GetId("MyDockSpace");
                 ImGui.DockSpace(dockSpaceId, sizeDock);
-                
-                
+
+
                 // RENDER SAMPLES AND CODE
                 spaceWork.Update();
-                
+
                 ImGui.End();
                 //ImGui.PopFont();
-                    
+
                 Sdl.MakeCurrent(spaceWork.Window, _glContext);
                 ImGui.Render();
 
@@ -524,7 +516,6 @@ namespace Alis.App.Engine
             Sdl.Quit();
         }
 
-      
 
         /// <summary>
         ///     Processes the event using the specified evt
@@ -683,12 +674,12 @@ namespace Alis.App.Engine
             int drawVertSize = Marshal.SizeOf<ImDrawVert>();
             // Manual offset calculations
             int posOffset = 0; // Offset of Pos is 0 bytes from the start
-            int uvOffset = 8;  // Offset of Uv is 8 bytes from the start (after Pos)
+            int uvOffset = 8; // Offset of Uv is 8 bytes from the start (after Pos)
             int colOffset = 16; // Offset of Col is 16 bytes from the start (after Pos and Uv)
 
-            Gl.VertexAttribPointer(_shader["Position"].Location, 2, VertexAttribPointerType.Float, false, drawVertSize, (IntPtr)posOffset);
-            Gl.VertexAttribPointer(_shader["UV"].Location, 2, VertexAttribPointerType.Float, false, drawVertSize, (IntPtr)uvOffset);
-            Gl.VertexAttribPointer(_shader["Color"].Location, 4, VertexAttribPointerType.UnsignedByte, true, drawVertSize, (IntPtr)colOffset);
+            Gl.VertexAttribPointer(_shader["Position"].Location, 2, VertexAttribPointerType.Float, false, drawVertSize, (IntPtr) posOffset);
+            Gl.VertexAttribPointer(_shader["UV"].Location, 2, VertexAttribPointerType.Float, false, drawVertSize, (IntPtr) uvOffset);
+            Gl.VertexAttribPointer(_shader["Color"].Location, 4, VertexAttribPointerType.UnsignedByte, true, drawVertSize, (IntPtr) colOffset);
         }
 
 

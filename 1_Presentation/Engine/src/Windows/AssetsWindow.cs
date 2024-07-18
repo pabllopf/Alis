@@ -31,7 +31,6 @@ using System;
 using System.Runtime.InteropServices;
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Fonts;
-using Alis.Extension.Graphic.ImGui;
 using Alis.Extension.Graphic.ImGui.Native;
 
 namespace Alis.App.Engine.Windows
@@ -39,27 +38,25 @@ namespace Alis.App.Engine.Windows
     public class AssetsWindow : IWindow
     {
         private const string WindowName = "Assets";
-        
+
+        private readonly IntPtr commandPtr;
+
         private bool isOpen = true;
-        
-        private IntPtr commandPtr;
-        
-        public SpaceWork SpaceWork { get; }
-        
+
         public AssetsWindow(SpaceWork spaceWork)
         {
             SpaceWork = spaceWork;
             commandPtr = Marshal.AllocHGlobal(256);
         }
-        
+
+        public SpaceWork SpaceWork { get; }
+
         public void Initialize()
         {
-            
         }
 
         public void Start()
         {
-            
         }
 
         public void Render()
@@ -68,8 +65,8 @@ namespace Alis.App.Engine.Windows
             {
                 return;
             }
-            
-            if(ImGui.Begin(WindowName, ref isOpen))
+
+            if (ImGui.Begin(WindowName, ref isOpen))
             {
                 ImGui.Button("Assets");
                 ImGui.SameLine();
@@ -81,16 +78,17 @@ namespace Alis.App.Engine.Windows
                 ImGui.Separator();
                 ImGui.Columns(2);
                 ImGui.Text("Directory");
-                
+
                 if (ImGui.TreeNodeEx("Folder"))
-                { 
+                {
                     for (int i = 0; i < 10; i++)
                     {
                         ImGui.Text($"Folder {i}");
                     }
+
                     ImGui.TreePop();
                 }
-                
+
                 ImGui.NextColumn();
                 ImGui.Text("Files");
                 for (int i = 0; i < 10; i++)
@@ -98,9 +96,8 @@ namespace Alis.App.Engine.Windows
                     ImGui.Text($"Texture {i}");
                 }
             }
-            
-            ImGui.End();   
+
+            ImGui.End();
         }
-        
     }
 }

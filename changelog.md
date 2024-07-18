@@ -6,72 +6,121 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [v0.3.4] - 2024-07-17
+
 ### :bug: Bug Fixes
-- [`b06c10f`](https://github.com/pabllopf/Alis/commit/b06c10fa4151a13afc4ab45037168edeca73176b) - target framework, to include more frameworks. *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`5b372ac`](https://github.com/pabllopf/Alis/commit/5b372acc515fa6dc68aa33ac32343514d1ce1005) - PackageReleaseNotes *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`fbdaa6c`](https://github.com/pabllopf/Alis/commit/fbdaa6cd730b043fb8cf1b379bdba7f0ce080082) - add new config to csprojs to include a readme and new targets *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`98a67e6`](https://github.com/pabllopf/Alis/commit/98a67e6bd33013ddb01c81b98fa583c8b5acf9e8) - when compile to test the apps modules *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+- [`b06c10f`](https://github.com/pabllopf/Alis/commit/b06c10fa4151a13afc4ab45037168edeca73176b) - target framework, to
+  include more frameworks. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5b372ac`](https://github.com/pabllopf/Alis/commit/5b372acc515fa6dc68aa33ac32343514d1ce1005) - PackageReleaseNotes *(
+  commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fbdaa6c`](https://github.com/pabllopf/Alis/commit/fbdaa6cd730b043fb8cf1b379bdba7f0ce080082) - add new config to
+  csprojs to include a readme and new targets *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`98a67e6`](https://github.com/pabllopf/Alis/commit/98a67e6bd33013ddb01c81b98fa583c8b5acf9e8) - when compile to test
+  the apps modules *(commit by [@pabllopf](https://github.com/pabllopf))*
 
 ### :art: Code Style Changes
-- [`3440cc4`](https://github.com/pabllopf/Alis/commit/3440cc45e8ee84255cfc38599a408b1cb4491f0f) - move all config of .csproj to custom file in configs files to dont need restar sln every time. *(commit by [@pabllopf](https://github.com/pabllopf))*
 
+- [`3440cc4`](https://github.com/pabllopf/Alis/commit/3440cc45e8ee84255cfc38599a408b1cb4491f0f) - move all config of
+  .csproj to custom file in configs files to dont need restar sln every time. *(commit
+  by [@pabllopf](https://github.com/pabllopf))*
 
 ## [v0.3.3] - 2024-07-17
-### :sparkles: New Features
-- [`8ab5c8f`](https://github.com/pabllopf/Alis/commit/8ab5c8f29fff41b58308bda1a7105c3ce113e6ea) - new publish with all engine builds *(commit by [@pabllopf](https://github.com/pabllopf))*
 
+### :sparkles: New Features
+
+- [`8ab5c8f`](https://github.com/pabllopf/Alis/commit/8ab5c8f29fff41b58308bda1a7105c3ce113e6ea) - new publish with all
+  engine builds *(commit by [@pabllopf](https://github.com/pabllopf))*
 
 ## [v0.3.2] - 2024-07-17
+
 ### :sparkles: New Features
-- [`f37f3a8`](https://github.com/pabllopf/Alis/commit/f37f3a8d17b526f94548441e8880eaf1ac794ca0) - icons on engine *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`f407519`](https://github.com/pabllopf/Alis/commit/f4075193c8be40b35b2c57add98a8cb51cac2e21) - include the solid, regular and light fonts to custom. *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`2d4bf95`](https://github.com/pabllopf/Alis/commit/2d4bf95f2d11cd758a1cec1f11cd96d66ee88e13) - add game demo on engine *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`2b0a4c4`](https://github.com/pabllopf/Alis/commit/2b0a4c4f952b4f2119fb7834e60356c2d94ddc24) - render basic on engine *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`560350e`](https://github.com/pabllopf/Alis/commit/560350e4852ddae3285181127707649a877d6fad) - close window when click red button *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`a8b1313`](https://github.com/pabllopf/Alis/commit/a8b1313fbf3c2f44c3115a7ba14e3d56a5a13e5f) - add new audioPlayerWindow and fix the imgui.begin *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`d292c9e`](https://github.com/pabllopf/Alis/commit/d292c9edb6836a770e9d8c3af1cf8fce2d88421e) - add AssetsWindow to engine *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`e6edd95`](https://github.com/pabllopf/Alis/commit/e6edd95d6147844ddb3b3d394a5dc3deee47f65b) - add new IRuntime *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`680706c`](https://github.com/pabllopf/Alis/commit/680706c1ccc1e1cfd7d557453c0dc92f36f91cfa) - add preview render *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+- [`f37f3a8`](https://github.com/pabllopf/Alis/commit/f37f3a8d17b526f94548441e8880eaf1ac794ca0) - icons on engine *(
+  commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f407519`](https://github.com/pabllopf/Alis/commit/f4075193c8be40b35b2c57add98a8cb51cac2e21) - include the solid,
+  regular and light fonts to custom. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2d4bf95`](https://github.com/pabllopf/Alis/commit/2d4bf95f2d11cd758a1cec1f11cd96d66ee88e13) - add game demo on
+  engine *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2b0a4c4`](https://github.com/pabllopf/Alis/commit/2b0a4c4f952b4f2119fb7834e60356c2d94ddc24) - render basic on engine
+  *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`560350e`](https://github.com/pabllopf/Alis/commit/560350e4852ddae3285181127707649a877d6fad) - close window when
+  click red button *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a8b1313`](https://github.com/pabllopf/Alis/commit/a8b1313fbf3c2f44c3115a7ba14e3d56a5a13e5f) - add new
+  audioPlayerWindow and fix the imgui.begin *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d292c9e`](https://github.com/pabllopf/Alis/commit/d292c9edb6836a770e9d8c3af1cf8fce2d88421e) - add AssetsWindow to
+  engine *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e6edd95`](https://github.com/pabllopf/Alis/commit/e6edd95d6147844ddb3b3d394a5dc3deee47f65b) - add new IRuntime *(
+  commit by [@pabllopf](https://github.com/pabllopf))*
+- [`680706c`](https://github.com/pabllopf/Alis/commit/680706c1ccc1e1cfd7d557453c0dc92f36f91cfa) - add preview render *(
+  commit by [@pabllopf](https://github.com/pabllopf))*
 
 ### :bug: Bug Fixes
-- [`82b5de5`](https://github.com/pabllopf/Alis/commit/82b5de51d17f8972003d448736c0665d4a6992c2) - delegate error when is seriacing *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`58324ba`](https://github.com/pabllopf/Alis/commit/58324bae56184a8a97cf4b6eeca5626bd43ebe68) - move sample of game to the custom demo. *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`44cea4c`](https://github.com/pabllopf/Alis/commit/44cea4c5f43472163556f934b96a034360f8b111) - independent render context for game sample *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`c23ad6a`](https://github.com/pabllopf/Alis/commit/c23ad6a99818234164f988969a22911669795634) - window dll sld2 *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+- [`82b5de5`](https://github.com/pabllopf/Alis/commit/82b5de51d17f8972003d448736c0665d4a6992c2) - delegate error when is
+  seriacing *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`58324ba`](https://github.com/pabllopf/Alis/commit/58324bae56184a8a97cf4b6eeca5626bd43ebe68) - move sample of game to
+  the custom demo. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`44cea4c`](https://github.com/pabllopf/Alis/commit/44cea4c5f43472163556f934b96a034360f8b111) - independent render
+  context for game sample *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c23ad6a`](https://github.com/pabllopf/Alis/commit/c23ad6a99818234164f988969a22911669795634) - window dll sld2 *(
+  commit by [@pabllopf](https://github.com/pabllopf))*
 
 ### :white_check_mark: Tests
-- [`1956a54`](https://github.com/pabllopf/Alis/commit/1956a544db1896cfa19a29ce84c20d3483906774) - pro check actual state *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`1684600`](https://github.com/pabllopf/Alis/commit/1684600cb92125d628c17b9908689e93dffcbdd5) - pro check pro test *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+- [`1956a54`](https://github.com/pabllopf/Alis/commit/1956a544db1896cfa19a29ce84c20d3483906774) - pro check actual state
+  *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1684600`](https://github.com/pabllopf/Alis/commit/1684600cb92125d628c17b9908689e93dffcbdd5) - pro check pro test *(
+  commit by [@pabllopf](https://github.com/pabllopf))*
 
 ### :art: Code Style Changes
-- [`18d1adf`](https://github.com/pabllopf/Alis/commit/18d1adf379cf25a6b99d9a1fad16a37b5e211b25) - move the sample to the scene view *(commit by [@pabllopf](https://github.com/pabllopf))*
 
+- [`18d1adf`](https://github.com/pabllopf/Alis/commit/18d1adf379cf25a6b99d9a1fad16a37b5e211b25) - move the sample to the
+  scene view *(commit by [@pabllopf](https://github.com/pabllopf))*
 
 ## [v0.3.1] - 2024-07-07
+
 ### :sparkles: New Features
-- [`190fcd7`](https://github.com/pabllopf/Alis/commit/190fcd7a0a4eb42e72897bdbda13e2e94044e29e) - add simple ImGuizmoDemo *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+- [`190fcd7`](https://github.com/pabllopf/Alis/commit/190fcd7a0a4eb42e72897bdbda13e2e94044e29e) - add simple
+  ImGuizmoDemo *(commit by [@pabllopf](https://github.com/pabllopf))*
 
 ### :bug: Bug Fixes
-- [`afdce39`](https://github.com/pabllopf/Alis/commit/afdce39db20ff7fe2b6a67a4b2b1e7644c6eac1c) - rename parameter 'item' to 'node' to match the interface declaration *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`cbb8fa0`](https://github.com/pabllopf/Alis/commit/cbb8fa020d9ca9343c4f401dffd3df93a99a35b0) - sln csprojs *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`e49be52`](https://github.com/pabllopf/Alis/commit/e49be520fd2a3c48f7e633f524fee453212f73ab) - names of interfaces *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`9a570d7`](https://github.com/pabllopf/Alis/commit/9a570d766484ef22f3411293e29c3f7ae95abb71) - the name ImNodesAttribute *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`4f1d0ab`](https://github.com/pabllopf/Alis/commit/4f1d0ab6d7f507f8897b68472ac295f0e7f8fcaa) - the ImGuiStyle vars *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`48e23d9`](https://github.com/pabllopf/Alis/commit/48e23d96fe604bd120dae318b8d87cd98f407abb) - Make this field 'private' and encapsulate it in a 'public' property. *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`2ebf0e8`](https://github.com/pabllopf/Alis/commit/2ebf0e8569fbf424b44724de4e4efe57866156b3) - Make this field 'private' and encapsulate it in a 'public' property. *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`fb4ecf4`](https://github.com/pabllopf/Alis/commit/fb4ecf45cb238f4e232489a6418866207b7fd883) - dock focus when click background *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`7c49c92`](https://github.com/pabllopf/Alis/commit/7c49c929d8f6f0e8986e8b435df82f0a0909140b) - mouse zoom *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`f2aaf8a`](https://github.com/pabllopf/Alis/commit/f2aaf8aff4582f0976501c5da8a4e9c9a66667ec) - ImGuizmo_IsOver_Nil *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+- [`afdce39`](https://github.com/pabllopf/Alis/commit/afdce39db20ff7fe2b6a67a4b2b1e7644c6eac1c) - rename parameter '
+  item' to 'node' to match the interface declaration *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`cbb8fa0`](https://github.com/pabllopf/Alis/commit/cbb8fa020d9ca9343c4f401dffd3df93a99a35b0) - sln csprojs *(commit
+  by [@pabllopf](https://github.com/pabllopf))*
+- [`e49be52`](https://github.com/pabllopf/Alis/commit/e49be520fd2a3c48f7e633f524fee453212f73ab) - names of interfaces *(
+  commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9a570d7`](https://github.com/pabllopf/Alis/commit/9a570d766484ef22f3411293e29c3f7ae95abb71) - the name
+  ImNodesAttribute *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4f1d0ab`](https://github.com/pabllopf/Alis/commit/4f1d0ab6d7f507f8897b68472ac295f0e7f8fcaa) - the ImGuiStyle vars *(
+  commit by [@pabllopf](https://github.com/pabllopf))*
+- [`48e23d9`](https://github.com/pabllopf/Alis/commit/48e23d96fe604bd120dae318b8d87cd98f407abb) - Make this field '
+  private' and encapsulate it in a 'public' property. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2ebf0e8`](https://github.com/pabllopf/Alis/commit/2ebf0e8569fbf424b44724de4e4efe57866156b3) - Make this field '
+  private' and encapsulate it in a 'public' property. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fb4ecf4`](https://github.com/pabllopf/Alis/commit/fb4ecf45cb238f4e232489a6418866207b7fd883) - dock focus when click
+  background *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7c49c92`](https://github.com/pabllopf/Alis/commit/7c49c929d8f6f0e8986e8b435df82f0a0909140b) - mouse zoom *(commit
+  by [@pabllopf](https://github.com/pabllopf))*
+- [`f2aaf8a`](https://github.com/pabllopf/Alis/commit/f2aaf8aff4582f0976501c5da8a4e9c9a66667ec) - ImGuizmo_IsOver_Nil *(
+  commit by [@pabllopf](https://github.com/pabllopf))*
 
 ### :white_check_mark: Tests
-- [`c8a377e`](https://github.com/pabllopf/Alis/commit/c8a377e29ffc3fd33f6087bbeed97f3e5ef7c5b4) - fix the test with properties. *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+- [`c8a377e`](https://github.com/pabllopf/Alis/commit/c8a377e29ffc3fd33f6087bbeed97f3e5ef7c5b4) - fix the test with
+  properties. *(commit by [@pabllopf](https://github.com/pabllopf))*
 
 ### :memo: Documentation Changes
-- [`5ca62d6`](https://github.com/pabllopf/Alis/commit/5ca62d63dc50ce8a7d5a45eadf9e1f43abb8a0fb) - add descriptions to methods *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+- [`5ca62d6`](https://github.com/pabllopf/Alis/commit/5ca62d63dc50ce8a7d5a45eadf9e1f43abb8a0fb) - add descriptions to
+  methods *(commit by [@pabllopf](https://github.com/pabllopf))*
 
 ### :art: Code Style Changes
-- [`286cf6c`](https://github.com/pabllopf/Alis/commit/286cf6c074e7b8eb2945eab2dfca851214fe657c) - refactor the main sln to update spaces, tabs, and comments *(commit by [@pabllopf](https://github.com/pabllopf))*
 
+- [`286cf6c`](https://github.com/pabllopf/Alis/commit/286cf6c074e7b8eb2945eab2dfca851214fe657c) - refactor the main sln
+  to update spaces, tabs, and comments *(commit by [@pabllopf](https://github.com/pabllopf))*
 
 ## [v0.3.0] - 2024-07-06
 
@@ -3032,7 +3081,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.2.9]: https://github.com/pabllopf/Alis/compare/v0.2.8...v0.2.9
 
 [v0.3.0]: https://github.com/pabllopf/Alis/compare/v0.2.9...v0.3.0
+
 [v0.3.1]: https://github.com/pabllopf/Alis/compare/v0.3.0...v0.3.1
+
 [v0.3.2]: https://github.com/pabllopf/Alis/compare/v0.3.1...v0.3.2
+
 [v0.3.3]: https://github.com/pabllopf/Alis/compare/v0.3.2...v0.3.3
+
 [v0.3.4]: https://github.com/pabllopf/Alis/compare/v0.3.3...v0.3.4
