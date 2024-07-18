@@ -53,11 +53,6 @@ namespace Alis.Core.Physic.Dynamics
         private float angularVelocity;
 
         /// <summary>
-        ///     The game object
-        /// </summary>
-        public object GameObject { get; set; }
-
-        /// <summary>
         ///     The inertia
         /// </summary>
         private float inertia;
@@ -71,20 +66,6 @@ namespace Alis.Core.Physic.Dynamics
         ///     The mass
         /// </summary>
         private float mass;
-
-        /// <summary>
-        ///     Fires when two shapes collide and a contact is created between them. Note that the first fixture argument is
-        ///     always the fixture that the delegate is subscribed to.
-        /// </summary>
-        public OnCollisionHandler OnCollision { get; set; }
-
-        /// <summary>
-        ///     Fires when two shapes separate and a contact is removed between them. Note: This can in some cases be called
-        ///     multiple times, as a fixture can have multiple contacts. Note The first fixture argument is always the fixture that
-        ///     the
-        ///     delegate is subscribed to.
-        /// </summary>
-        public OnSeparationHandler OnSeparation { get; set; }
 
         /// <summary>
         ///     The type
@@ -221,6 +202,25 @@ namespace Alis.Core.Physic.Dynamics
             mass = 0.0f;
             InvMass = 0.0f;
         }
+
+        /// <summary>
+        ///     The game object
+        /// </summary>
+        public object GameObject { get; set; }
+
+        /// <summary>
+        ///     Fires when two shapes collide and a contact is created between them. Note that the first fixture argument is
+        ///     always the fixture that the delegate is subscribed to.
+        /// </summary>
+        public OnCollisionHandler OnCollision { get; set; }
+
+        /// <summary>
+        ///     Fires when two shapes separate and a contact is removed between them. Note: This can in some cases be called
+        ///     multiple times, as a fixture can have multiple contacts. Note The first fixture argument is always the fixture that
+        ///     the
+        ///     delegate is subscribed to.
+        /// </summary>
+        public OnSeparationHandler OnSeparation { get; set; }
 
         /// <summary>
         ///     The flags

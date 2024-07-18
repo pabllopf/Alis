@@ -280,7 +280,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         }
 
         /// <summary>
-        /// Cascades the down using the specified node
+        ///     Cascades the down using the specified node
         /// </summary>
         /// <param name="node">The node</param>
         private void CascadeDown(T node)
@@ -310,14 +310,14 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         }
 
         /// <summary>
-        /// Describes whether this instance is leaf node
+        ///     Describes whether this instance is leaf node
         /// </summary>
         /// <param name="childIndex">The child index</param>
         /// <returns>The bool</returns>
         private bool IsLeafNode(int childIndex) => childIndex > _numNodes;
 
         /// <summary>
-        /// Gets the higher priority child index using the specified child left
+        ///     Gets the higher priority child index using the specified child left
         /// </summary>
         /// <param name="childLeft">The child left</param>
         /// <param name="childRight">The child right</param>
@@ -331,7 +331,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         }
 
         /// <summary>
-        /// Swaps the node
+        ///     Swaps the node
         /// </summary>
         /// <param name="node">The node</param>
         /// <param name="child">The child</param>

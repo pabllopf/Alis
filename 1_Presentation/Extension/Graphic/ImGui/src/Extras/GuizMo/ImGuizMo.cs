@@ -63,7 +63,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.GuizMo
         /// <param name="translation">The translation</param>
         /// <param name="rotation">The rotation</param>
         /// <param name="scale">The scale</param>
-        public static void DecomposeMatrixToComponents(ref float[] matrix, ref float[] translation, ref  float[] rotation, ref  float[] scale)
+        public static void DecomposeMatrixToComponents(ref float[] matrix, ref float[] translation, ref float[] rotation, ref float[] scale)
         {
             ImGuiZmoNative.InternalDecomposeMatrixToComponents(matrix, translation, rotation, scale);
         }
@@ -132,9 +132,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.GuizMo
             byte ret = ImGuiZmoNative.InternalIsUsing();
             return ret != 0;
         }
-        
+
         /// <summary>
-        /// Manipulates the view
+        ///     Manipulates the view
         /// </summary>
         /// <param name="view">The view</param>
         /// <param name="projection">The projection</param>
@@ -172,7 +172,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.GuizMo
         /// <param name="matrix">The matrix</param>
         public static void RecomposeMatrixFromComponents(ref float[] translation, ref float[] rotation, ref float[] scale, ref float[] matrix)
         {
-            ImGuiZmoNative.InternalRecomposeMatrixFromComponents( translation,  rotation,  scale,  matrix);
+            ImGuiZmoNative.InternalRecomposeMatrixFromComponents(translation, rotation, scale, matrix);
         }
 
         /// <summary>
@@ -193,7 +193,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.GuizMo
             Marshal.StructureToPtr(drawList, drawListPtr, false);
             ImGuiZmoNative.InternalSetDrawlist(drawListPtr);
         }
-        
+
         /// <summary>
         ///     Sets the gizmo size clip space using the specified value
         /// </summary>

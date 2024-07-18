@@ -40,12 +40,10 @@ namespace Alis.Core.Physic.Collision.Distance
         public DistanceProxy ProxyA;
 
 
-
         /// <summary>
         ///     The proxy
         /// </summary>
         public DistanceProxy ProxyB;
-
 
 
         /// <summary>
@@ -54,19 +52,15 @@ namespace Alis.Core.Physic.Collision.Distance
         public Transform TransformA;
 
 
-
         /// <summary>
         ///     The transform
         /// </summary>
         public Transform TransformB;
 
 
-
         /// <summary>
         ///     The use radii
         /// </summary>
         public bool UseRadii;
-
-
     }
 }

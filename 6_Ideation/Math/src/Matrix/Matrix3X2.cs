@@ -43,24 +43,6 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// </summary>
         private readonly int hashCode;
 
-        /// <summary>The first element of the first row.</summary>
-        public float M11 { get; set; }
-
-        /// <summary>The second element of the first row.</summary>
-        public float M12 { get; set; }
-
-        /// <summary>The first element of the second row.</summary>
-        public float M21 { get; set; }
-
-        /// <summary>The second element of the second row.</summary>
-        public float M22 { get; set; }
-
-        /// <summary>The first element of the third row.</summary>
-        public float M31 { get; set; }
-
-        /// <summary>The second element of the third row.</summary>
-        public float M32 { get; set; }
-
         /// <summary>Creates a 3x2 matrix from the specified components.</summary>
         /// <param name="m11">The value to assign to the first element in the first row.</param>
         /// <param name="m12">The value to assign to the second element in the first row.</param>
@@ -90,6 +72,24 @@ namespace Alis.Core.Aspect.Math.Matrix
             hash.Add(m32);
             hashCode = hash.ToHashCode();
         }
+
+        /// <summary>The first element of the first row.</summary>
+        public float M11 { get; set; }
+
+        /// <summary>The second element of the first row.</summary>
+        public float M12 { get; set; }
+
+        /// <summary>The first element of the second row.</summary>
+        public float M21 { get; set; }
+
+        /// <summary>The second element of the second row.</summary>
+        public float M22 { get; set; }
+
+        /// <summary>The first element of the third row.</summary>
+        public float M31 { get; set; }
+
+        /// <summary>The second element of the third row.</summary>
+        public float M32 { get; set; }
 
         /// <summary>Gets the multiplicative identity matrix.</summary>
         /// <value>The multiplicative identify matrix.</value>

@@ -30,12 +30,12 @@
 namespace Alis.App.Engine.Shaders
 {
     /// <summary>
-    /// The vertex shader
+    ///     The vertex shader
     /// </summary>
     public readonly struct VertexShader : IShader
     {
         /// <summary>
-        /// Gets the value of the shader code
+        ///     Gets the value of the shader code
         /// </summary>
         public string ShaderCode => @"
 			#version 330

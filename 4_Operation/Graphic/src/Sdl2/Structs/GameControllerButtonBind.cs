@@ -41,15 +41,12 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The bind type
         /// </summary>
-        public GameControllerBindType bindType ;
-
+        public GameControllerBindType bindType;
 
 
         /// <summary>
         ///     The value
         /// </summary>
-        public InternalGameControllerButtonBindUnion value ;
-
-
+        public InternalGameControllerButtonBindUnion value;
     }
 }

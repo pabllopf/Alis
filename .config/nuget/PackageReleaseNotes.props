@@ -1,5 +1,5 @@
 <Project>
-        <PropertyGroup>
-            <PackageReadmeFile>readme_nuget.md</PackageReadmeFile>
-        </PropertyGroup>
+    <PropertyGroup>
+        <PackageReadmeFile>readme_nuget.md</PackageReadmeFile>
+    </PropertyGroup>
 </Project>

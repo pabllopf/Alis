@@ -41,12 +41,9 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         public ContactId Id;
 
 
-
         /// <summary>
         ///     The
         /// </summary>
         public Vector2 V;
-
-
     }
 }

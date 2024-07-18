@@ -92,7 +92,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         public ImFontConfigPtr ConfigData
         {
-            get { return new ImFontConfigPtr(Marshal.PtrToStructure<ImFont>(NativePtr).ConfigData); }
+            get => new ImFontConfigPtr(Marshal.PtrToStructure<ImFont>(NativePtr).ConfigData);
             set
             {
                 ImFont temp = Marshal.PtrToStructure<ImFont>(NativePtr);
@@ -100,7 +100,7 @@ namespace Alis.Extension.Graphic.ImGui
                 Marshal.StructureToPtr(temp, NativePtr, false);
             }
         }
-        
+
         /// <summary>
         ///     Gets the value of the config data count
         /// </summary>

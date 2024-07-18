@@ -30,12 +30,12 @@
 namespace Alis.App.Engine.Shaders
 {
     /// <summary>
-    /// The shader interface
+    ///     The shader interface
     /// </summary>
     public interface IShader
     {
         /// <summary>
-        /// Gets the value of the shader code
+        ///     Gets the value of the shader code
         /// </summary>
         public string ShaderCode { get; }
     }

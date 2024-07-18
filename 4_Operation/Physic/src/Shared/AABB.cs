@@ -37,13 +37,11 @@ namespace Alis.Core.Physic.Shared
     public struct Aabb
     {
         /// <summary>The lower vertex</summary>
-        public Vector2 LowerBound ;
-
+        public Vector2 LowerBound;
 
 
         /// <summary>The upper vertex</summary>
-        public Vector2 UpperBound ;
-
+        public Vector2 UpperBound;
 
 
         /// <summary>

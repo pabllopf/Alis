@@ -39,13 +39,10 @@ namespace Alis.App.Engine.Menus
     public class TopMenu : IMenu
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="TopMenu"/> class
+        ///     Initializes a new instance of the <see cref="TopMenu" /> class
         /// </summary>
         /// <param name="spaceWork">The space work</param>
-        public TopMenu(SpaceWork spaceWork)
-        {
-            SpaceWork = spaceWork;
-        }
+        public TopMenu(SpaceWork spaceWork) => SpaceWork = spaceWork;
 
         public void Initialize()
         {
@@ -56,7 +53,7 @@ namespace Alis.App.Engine.Menus
         }
 
         /// <summary>
-        /// Renders this instance
+        ///     Renders this instance
         /// </summary>
         public void Render()
         {
@@ -73,11 +70,10 @@ namespace Alis.App.Engine.Menus
 
         public void Start()
         {
-            
         }
 
         /// <summary>
-        /// Gets the value of the space work
+        ///     Gets the value of the space work
         /// </summary>
         public SpaceWork SpaceWork { get; }
     }

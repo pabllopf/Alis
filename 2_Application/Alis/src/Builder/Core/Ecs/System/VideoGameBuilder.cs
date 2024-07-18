@@ -32,12 +32,9 @@ using Alis.Builder.Core.Ecs.System.Manager.Scene;
 using Alis.Builder.Core.Ecs.System.Setting;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
-using Alis.Core.Aspect.Logging;
 using Alis.Core.Ecs;
-using Alis.Core.Ecs.System;
 using Alis.Core.Ecs.System.Manager.Scene;
 using Alis.Core.Ecs.System.Setting;
-using Alis.Core.Graphic;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;
 
@@ -85,12 +82,12 @@ namespace Alis.Builder.Core.Ecs.System
         public VideoGame BuildPreview()
         {
             WindowSettings flags = WindowSettings.WindowHidden;
-            videoGame.Context.GraphicManager.Window = Sdl.CreateWindow(videoGame.Context.Settings.General.Name, 
-                (int) WindowPos.WindowPosCentered, (int) WindowPos.WindowPosCentered, 
+            videoGame.Context.GraphicManager.Window = Sdl.CreateWindow(videoGame.Context.Settings.General.Name,
+                (int) WindowPos.WindowPosCentered, (int) WindowPos.WindowPosCentered,
                 (int) videoGame.Context.GraphicManager.DefaultSize.X, (int) videoGame.Context.GraphicManager.DefaultSize.Y, flags);
-            
+
             // Create the renderer
-            videoGame.Context.GraphicManager.Renderer = Sdl.CreateRenderer(videoGame.Context.GraphicManager.Window, -1, Renderers.SdlRendererAccelerated | Renderers.SdlRendererTargetTexture );
+            videoGame.Context.GraphicManager.Renderer = Sdl.CreateRenderer(videoGame.Context.GraphicManager.Window, -1, Renderers.SdlRendererAccelerated | Renderers.SdlRendererTargetTexture);
 
             return videoGame;
         }

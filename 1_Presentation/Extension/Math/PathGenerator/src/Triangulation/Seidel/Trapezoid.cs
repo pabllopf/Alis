@@ -52,6 +52,27 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
         public readonly Edge Top;
 
         /// <summary>
+        ///     Initializes a new instance of the <see cref="Trapezoid" /> class
+        /// </summary>
+        /// <param name="leftPoint">The left point</param>
+        /// <param name="rightPoint">The right point</param>
+        /// <param name="top">The top</param>
+        /// <param name="bottom">The bottom</param>
+        public Trapezoid(Point leftPoint, Point rightPoint, Edge top, Edge bottom)
+        {
+            LeftPoint = leftPoint;
+            RightPoint = rightPoint;
+            Top = top;
+            Bottom = bottom;
+            UpperLeft = null;
+            UpperRight = null;
+            LowerLeft = null;
+            LowerRight = null;
+            Inside = true;
+            Sink = null;
+        }
+
+        /// <summary>
         ///     The inside
         /// </summary>
         public bool Inside { get; set; }
@@ -86,27 +107,6 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
         ///     The upper right
         /// </summary>
         public Trapezoid UpperRight { get; set; }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Trapezoid" /> class
-        /// </summary>
-        /// <param name="leftPoint">The left point</param>
-        /// <param name="rightPoint">The right point</param>
-        /// <param name="top">The top</param>
-        /// <param name="bottom">The bottom</param>
-        public Trapezoid(Point leftPoint, Point rightPoint, Edge top, Edge bottom)
-        {
-            LeftPoint = leftPoint;
-            RightPoint = rightPoint;
-            Top = top;
-            Bottom = bottom;
-            UpperLeft = null;
-            UpperRight = null;
-            LowerLeft = null;
-            LowerRight = null;
-            Inside = true;
-            Sink = null;
-        }
 
         // Update neighbors to the left
         /// <summary>

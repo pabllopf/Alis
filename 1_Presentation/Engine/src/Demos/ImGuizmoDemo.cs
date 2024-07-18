@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:ImGuizmoDemo.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.ImGui;
@@ -7,66 +36,13 @@ using Alis.Extension.Graphic.ImGui.Native;
 namespace Alis.App.Engine.Demos
 {
     /// <summary>
-    /// The im guizmo demo class
+    ///     The im guizmo demo class
     /// </summary>
-    /// <seealso cref="IDemo"/>
+    /// <seealso cref="IDemo" />
     public class ImGuizmoDemo : IDemo
     {
         /// <summary>
-        /// The matrix translation
-        /// </summary>
-        private float[] matrixTranslation = new float[3];
-        /// <summary>
-        /// The matrix rotation
-        /// </summary>
-        float[] matrixRotation = new float[3];
-        /// <summary>
-        /// The matrix scale
-        /// </summary>
-        float[] matrixScale = new float[3];
-
-        /// <summary>
-        /// The vector
-        /// </summary>
-        Vector3 translation = new Vector3();
-        /// <summary>
-        /// The vector
-        /// </summary>
-        Vector3 rotation = new Vector3();
-        /// <summary>
-        /// The vector
-        /// </summary>
-        Vector3 scale = new Vector3();
-
-        /// <summary>
-        /// The is open
-        /// </summary>
-        private bool isOpen = false;
-
-        /// <summary>
-        /// The matrix
-        /// </summary>
-        private float[] matrix = new float[16]
-        {
-            1.0f, 0.0f, 0.0f, 0.0f,
-            0.0f, 1.0f, 0.0f, 0.0f,
-            0.0f, 0.0f, 1.0f, 0.0f,
-            0.0f, 0.0f, 2.0f, 1.0f
-        };
-
-        /// <summary>
-        /// The camera view
-        /// </summary>
-        private float[] cameraView = new float[16]
-        {
-            1.0f, 0.0f, 0.0f, 0.0f,
-            0.0f, 1.0f, 0.0f, 0.0f,
-            0.0f, 0.0f, 1.0f, 0.0f,
-            0.0f, 0.0f, 0.0f, 1.0f
-        };
-
-        /// <summary>
-        /// The camera projection
+        ///     The camera projection
         /// </summary>
         private float[] cameraProjection = new float[16]
         {
@@ -77,7 +53,18 @@ namespace Alis.App.Engine.Demos
         };
 
         /// <summary>
-        /// The identity matrix
+        ///     The camera view
+        /// </summary>
+        private float[] cameraView = new float[16]
+        {
+            1.0f, 0.0f, 0.0f, 0.0f,
+            0.0f, 1.0f, 0.0f, 0.0f,
+            0.0f, 0.0f, 1.0f, 0.0f,
+            0.0f, 0.0f, 0.0f, 1.0f
+        };
+
+        /// <summary>
+        ///     The identity matrix
         /// </summary>
         private float[] identityMatrix = new float[16]
         {
@@ -87,18 +74,62 @@ namespace Alis.App.Engine.Demos
             0.0f, 0.0f, 0.0f, 1.0f
         };
 
+        /// <summary>
+        ///     The is open
+        /// </summary>
+        private bool isOpen;
+
+        /// <summary>
+        ///     The matrix
+        /// </summary>
+        private float[] matrix = new float[16]
+        {
+            1.0f, 0.0f, 0.0f, 0.0f,
+            0.0f, 1.0f, 0.0f, 0.0f,
+            0.0f, 0.0f, 1.0f, 0.0f,
+            0.0f, 0.0f, 2.0f, 1.0f
+        };
+
+        /// <summary>
+        ///     The matrix rotation
+        /// </summary>
+        private float[] matrixRotation = new float[3];
+
+        /// <summary>
+        ///     The matrix scale
+        /// </summary>
+        private float[] matrixScale = new float[3];
+
+        /// <summary>
+        ///     The matrix translation
+        /// </summary>
+        private float[] matrixTranslation = new float[3];
+
+        /// <summary>
+        ///     The vector
+        /// </summary>
+        private Vector3 rotation;
+
+        /// <summary>
+        ///     The vector
+        /// </summary>
+        private Vector3 scale;
+
+        /// <summary>
+        ///     The vector
+        /// </summary>
+        private Vector3 translation;
+
         public void Initialize()
         {
-            
         }
 
         public void Start()
         {
-            
         }
 
         /// <summary>
-        /// Runs this instance
+        ///     Runs this instance
         /// </summary>
         public void Run()
         {
@@ -108,14 +139,14 @@ namespace Alis.App.Engine.Demos
         [Conditional("DEBUG")]
         private void SimpleSample()
         {
-               ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4(0.35f, 0.3f, 0.3f, 1.0f));
-            
-            
+            ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4(0.35f, 0.3f, 0.3f, 1.0f));
+
+
             if (ImGui.Begin("Gizmo", ref isOpen))
             {
                 ImGuizMo.Enable(true);
                 ImGuizMo.SetDrawList();
-                
+
                 ImGui.Text("ImGuizmo is a small library that allows you to manipulate 3D objects in the scene.");
                 ImGui.Text("You can use it to move, rotate and scale objects in the scene.");
 
@@ -148,26 +179,23 @@ namespace Alis.App.Engine.Demos
                 matrixScale[0] = scale.X;
                 matrixScale[1] = scale.Y;
                 matrixScale[2] = scale.Z;
-                
+
                 ImGuizMo.RecomposeMatrixFromComponents(ref matrixTranslation, ref matrixRotation, ref matrixScale, ref matrix);
 
                 ImGui.Text($"Translation: {translation}");
                 ImGui.Text($"Rotation: {rotation}");
                 ImGui.Text($"Scale: {scale}");
-                
+
                 ImGuizMo.SetOrthographic(false);
                 ImGuizMo.SetRect(0, 0, ImGui.GetIo().DisplaySize.X, ImGui.GetIo().DisplaySize.Y);
-                
+
                 ImGuizMo.DrawGrid(ref cameraView, ref cameraProjection, ref identityMatrix, 10.0f);
                 ImGuizMo.Manipulate(cameraView, cameraProjection, Operation.Translate | Operation.Rotate | Operation.Scale, Mode.Local, matrix);
-                
+
                 ImGuizMo.ViewManipulate(ref cameraView, 2.5f, new Vector2(ImGui.GetWindowPos().X, ImGui.GetWindowPos().Y), new Vector2(ImGui.GetWindowWidth(), ImGui.GetWindowHeight()), 0x10101010);
-                
-                
-                
             }
-            
-           
+
+
             ImGui.End();
             ImGui.PopStyleColor();
         }

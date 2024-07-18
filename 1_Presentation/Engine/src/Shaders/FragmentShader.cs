@@ -30,12 +30,12 @@
 namespace Alis.App.Engine.Shaders
 {
     /// <summary>
-    /// The fragment shader
+    ///     The fragment shader
     /// </summary>
     public readonly struct FragmentShader : IShader
     {
         /// <summary>
-        /// Gets the value of the shader code
+        ///     Gets the value of the shader code
         /// </summary>
         public string ShaderCode => @"
 			#version 330

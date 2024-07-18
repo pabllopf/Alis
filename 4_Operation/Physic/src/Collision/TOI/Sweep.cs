@@ -43,14 +43,8 @@ namespace Alis.Core.Physic.Collision.TOI
     /// </summary>
     public class Sweep
     {
-        /// <summary>Local center of mass position</summary>
-        public Vector2 LocalCenter;
-
-
-
         /// <summary>World angles</summary>
         public float A;
-
 
 
         /// <summary>
@@ -59,15 +53,12 @@ namespace Alis.Core.Physic.Collision.TOI
         public float A0;
 
 
-
         /// <summary>Fraction of the current time step in the range [0,1] c0 and a0 are the positions at alpha0.</summary>
         public float Alpha0;
 
 
-
         /// <summary>Center world positions</summary>
         public Vector2 C;
-
 
 
         /// <summary>
@@ -75,6 +66,8 @@ namespace Alis.Core.Physic.Collision.TOI
         /// </summary>
         public Vector2 C0;
 
+        /// <summary>Local center of mass position</summary>
+        public Vector2 LocalCenter;
 
 
         /// <summary>Get the interpolated transform at a specific time.</summary>
