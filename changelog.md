@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.3.5] - 2024-07-18
+### :bug: Bug Fixes
+- [`d17075f`](https://github.com/pabllopf/Alis/commit/d17075fab70c4a75dc76cc474aaff4e582fd0877) - readme of nugets *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ad21109`](https://github.com/pabllopf/Alis/commit/ad211093e049fcd49611932d34efc4b3320c879d) - reduce to -400 code smells *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`60b1c69`](https://github.com/pabllopf/Alis/commit/60b1c69f7f791ece4c1398e8150c3a591480dd34) - add GlTest *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0a50e67`](https://github.com/pabllopf/Alis/commit/0a50e674f4486400301b8a17a7dc03b921ef1b9c) - 100% covert of math module *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :memo: Documentation Changes
+- [`0ea78a1`](https://github.com/pabllopf/Alis/commit/0ea78a1b13bb3591d2ffa8761d5515d85831de5f) - add comments to all new classes and structs *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :art: Code Style Changes
+- [`0b34dd3`](https://github.com/pabllopf/Alis/commit/0b34dd33b3111f792a9c7d31a437eed65bc7ebbf) - refactor the code to do more clean. And delete spaces and tabs of empty lines *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`398d5a7`](https://github.com/pabllopf/Alis/commit/398d5a7c85e81b6b4544ff102d7f6710bb2e773d) - rename all names of public properties of math module with the correct format. *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.3.4] - 2024-07-17
 
 ### :bug: Bug Fixes
@@ -3089,3 +3106,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.3.3]: https://github.com/pabllopf/Alis/compare/v0.3.2...v0.3.3
 
 [v0.3.4]: https://github.com/pabllopf/Alis/compare/v0.3.3...v0.3.4
+[v0.3.5]: https://github.com/pabllopf/Alis/compare/v0.3.4...v0.3.5
