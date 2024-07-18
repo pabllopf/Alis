@@ -36,6 +36,9 @@ namespace Alis.App.Engine.Menus
     /// </summary>
     internal interface IMenu : IRenderable, IHasSpaceWork, IRuntime
     {
+        /// <summary>
+        /// Starts this instance
+        /// </summary>
         public void Start();
     }
 }

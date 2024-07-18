@@ -35,30 +35,59 @@ using Alis.Extension.Graphic.ImGui.Native;
 
 namespace Alis.App.Engine.Windows
 {
+    /// <summary>
+    /// The assets window class
+    /// </summary>
+    /// <seealso cref="IWindow"/>
     public class AssetsWindow : IWindow
     {
+        /// <summary>
+        /// The window name
+        /// </summary>
         private const string WindowName = "Assets";
 
+        /// <summary>
+        /// The command ptr
+        /// </summary>
         private readonly IntPtr commandPtr;
 
+        /// <summary>
+        /// The is open
+        /// </summary>
         private bool isOpen = true;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AssetsWindow"/> class
+        /// </summary>
+        /// <param name="spaceWork">The space work</param>
         public AssetsWindow(SpaceWork spaceWork)
         {
             SpaceWork = spaceWork;
             commandPtr = Marshal.AllocHGlobal(256);
         }
 
+        /// <summary>
+        /// Gets the value of the space work
+        /// </summary>
         public SpaceWork SpaceWork { get; }
 
+        /// <summary>
+        /// Initializes this instance
+        /// </summary>
         public void Initialize()
         {
         }
 
+        /// <summary>
+        /// Starts this instance
+        /// </summary>
         public void Start()
         {
         }
 
+        /// <summary>
+        /// Renders this instance
+        /// </summary>
         public void Render()
         {
             if (!isOpen)

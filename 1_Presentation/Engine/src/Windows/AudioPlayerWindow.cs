@@ -36,22 +36,51 @@ using Alis.Extension.Graphic.ImGui.Native;
 
 namespace Alis.App.Engine.Windows
 {
+    /// <summary>
+    /// The audio player window class
+    /// </summary>
+    /// <seealso cref="IWindow"/>
     public class AudioPlayerWindow : IWindow
     {
+        /// <summary>
+        /// The window name
+        /// </summary>
         private const string WindowName = "Audio Player";
 
+        /// <summary>
+        /// The current time
+        /// </summary>
         private readonly TimeSpan currentTime;
 
+        /// <summary>
+        /// The no collapse
+        /// </summary>
         private readonly ImGuiWindowFlags flags = ImGuiWindowFlags.NoCollapse;
 
+        /// <summary>
+        /// The is open
+        /// </summary>
         private bool isOpen = true;
 
+        /// <summary>
+        /// The is playing
+        /// </summary>
         private bool isPlaying;
 
+        /// <summary>
+        /// The progress
+        /// </summary>
         private readonly float progress;
 
+        /// <summary>
+        /// The total time
+        /// </summary>
         private readonly TimeSpan totalTime;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AudioPlayerWindow"/> class
+        /// </summary>
+        /// <param name="spaceWork">The space work</param>
         public AudioPlayerWindow(SpaceWork spaceWork)
         {
             SpaceWork = spaceWork;
@@ -63,16 +92,28 @@ namespace Alis.App.Engine.Windows
             totalTime = new TimeSpan(0, 0, 10);
         }
 
+        /// <summary>
+        /// Gets the value of the space work
+        /// </summary>
         public SpaceWork SpaceWork { get; }
 
+        /// <summary>
+        /// Initializes this instance
+        /// </summary>
         public void Initialize()
         {
         }
 
+        /// <summary>
+        /// Starts this instance
+        /// </summary>
         public void Start()
         {
         }
 
+        /// <summary>
+        /// Renders this instance
+        /// </summary>
         public void Render()
         {
             if (!isOpen)

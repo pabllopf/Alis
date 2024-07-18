@@ -47,33 +47,73 @@ namespace Alis.App.Engine.Demos
     /// <seealso cref="IDemo" />
     public class GameDemo : IDemo
     {
+        /// <summary>
+        /// The name window
+        /// </summary>
         public const string NameWindow = "Game(sample)";
 
+        /// <summary>
+        /// The blue
+        /// </summary>
         public byte _blue;
 
+        /// <summary>
+        /// The green
+        /// </summary>
         public byte _green;
 
+        /// <summary>
+        /// The red
+        /// </summary>
         public byte _red;
 
+        /// <summary>
+        /// The close render
+        /// </summary>
         public bool closeRender = true;
 
+        /// <summary>
+        /// The pixels ptr
+        /// </summary>
         public IntPtr pixelsPtr;
 
+        /// <summary>
+        /// The zero
+        /// </summary>
         public IntPtr rendererGame = IntPtr.Zero;
 
+        /// <summary>
+        /// The texture
+        /// </summary>
         public IntPtr texture;
 
+        /// <summary>
+        /// The textureopengl id
+        /// </summary>
         public uint textureopenglId;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GameDemo"/> class
+        /// </summary>
+        /// <param name="spaceWork">The space work</param>
         public GameDemo(SpaceWork spaceWork) => SpaceWork = spaceWork;
 
+        /// <summary>
+        /// Gets the value of the space work
+        /// </summary>
         public SpaceWork SpaceWork { get; }
 
+        /// <summary>
+        /// Initializes this instance
+        /// </summary>
         public void Initialize()
         {
             InitSimpleGameDemo();
         }
 
+        /// <summary>
+        /// Starts this instance
+        /// </summary>
         public void Start()
         {
         }
@@ -87,6 +127,9 @@ namespace Alis.App.Engine.Demos
             SimpleGameDemo();
         }
 
+        /// <summary>
+        /// Inits the simple game demo
+        /// </summary>
         [Conditional("DEBUG")]
         public void InitSimpleGameDemo()
         {
@@ -150,6 +193,9 @@ namespace Alis.App.Engine.Demos
             ImGui.End();
         }
 
+        /// <summary>
+        /// Renders the colors
+        /// </summary>
         public void RenderColors()
         {
             if (_red < 255)

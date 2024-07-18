@@ -120,10 +120,16 @@ namespace Alis.App.Engine.Demos
         /// </summary>
         private Vector3 translation;
 
+        /// <summary>
+        /// Initializes this instance
+        /// </summary>
         public void Initialize()
         {
         }
 
+        /// <summary>
+        /// Starts this instance
+        /// </summary>
         public void Start()
         {
         }
@@ -136,6 +142,9 @@ namespace Alis.App.Engine.Demos
             SimpleSample();
         }
 
+        /// <summary>
+        /// Simples the sample
+        /// </summary>
         [Conditional("DEBUG")]
         private void SimpleSample()
         {

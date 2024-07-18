@@ -45,8 +45,17 @@ namespace Alis.App.Engine.Windows
     /// </summary>
     public class SceneWindow : IWindow
     {
+        /// <summary>
+        /// The name window
+        /// </summary>
         private const string NameWindow = "Scene";
+        /// <summary>
+        /// The pixel ptr
+        /// </summary>
         private IntPtr pixelPtr;
+        /// <summary>
+        /// The textureopen gl id
+        /// </summary>
         private uint textureopenGlId;
 
         /// <summary>
@@ -60,6 +69,9 @@ namespace Alis.App.Engine.Windows
         /// </summary>
         public SpaceWork SpaceWork { get; }
 
+        /// <summary>
+        /// Initializes this instance
+        /// </summary>
         public void Initialize()
         {
             /*SpaceWork.windowGame = Sdl.CreateWindow("Game Preview",
@@ -73,6 +85,9 @@ namespace Alis.App.Engine.Windows
             SpaceWork.rendererGame = SpaceWork.VideoGame.Context.GraphicManager.Renderer;
         }
 
+        /// <summary>
+        /// Starts this instance
+        /// </summary>
         public void Start()
         {
             pixelPtr = Marshal.AllocHGlobal(800 * 600 * 4);

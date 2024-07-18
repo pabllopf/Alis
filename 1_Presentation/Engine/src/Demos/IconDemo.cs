@@ -39,6 +39,9 @@ namespace Alis.App.Engine.Demos
     /// <seealso cref="IDemo" />
     public class IconDemo : IDemo
     {
+        /// <summary>
+        /// Starts this instance
+        /// </summary>
         public void Start()
         {
         }
@@ -51,6 +54,9 @@ namespace Alis.App.Engine.Demos
             SimpleIcons();
         }
 
+        /// <summary>
+        /// Initializes this instance
+        /// </summary>
         public void Initialize()
         {
         }
