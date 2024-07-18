@@ -410,14 +410,14 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                     if (!Equals(rectangles[i], default(RectangleF)))
                     {
                         rectangles[i] = new RectangleF(
-                            (int) (ColliderBases[i].GameObject.Transform.Position.X - rectangles[i].w * ColliderBases[i].GameObject.Transform.Scale.X / 2 - (camera.Viewport.X - camera.Viewport.W / 2) + camera.CameraBorder),
-                            (int) (ColliderBases[i].GameObject.Transform.Position.Y - rectangles[i].h * ColliderBases[i].GameObject.Transform.Scale.Y / 2 - (camera.Viewport.Y - camera.Viewport.H / 2) + camera.CameraBorder),
-                            (int) rectangles[i].w,
-                            (int) rectangles[i].h);
+                            (int) (ColliderBases[i].GameObject.Transform.Position.X - rectangles[i].W * ColliderBases[i].GameObject.Transform.Scale.X / 2 - (camera.Viewport.X - camera.Viewport.W / 2) + camera.CameraBorder),
+                            (int) (ColliderBases[i].GameObject.Transform.Position.Y - rectangles[i].H * ColliderBases[i].GameObject.Transform.Scale.Y / 2 - (camera.Viewport.Y - camera.Viewport.H / 2) + camera.CameraBorder),
+                            (int) rectangles[i].W,
+                            (int) rectangles[i].H);
                         if (ColliderBases[i].GameObject.Contains<Camera>())
                         {
-                            rectangles[i].x += rectangles[i].w / 2;
-                            rectangles[i].y += rectangles[i].h / 2;
+                            rectangles[i].X += rectangles[i].W / 2;
+                            rectangles[i].Y += rectangles[i].H / 2;
                         }
                     }
                 }

@@ -165,10 +165,10 @@ namespace Alis.Core.Ecs.Component.Collider
         {
             RectangleF = new RectangleF
             {
-                x = GameObject.Transform.Position.X + RelativePosition.X - Width / 2,
-                y = GameObject.Transform.Position.Y + RelativePosition.Y - Height / 2,
-                w = Width,
-                h = Height
+                X = GameObject.Transform.Position.X + RelativePosition.X - Width / 2,
+                Y = GameObject.Transform.Position.Y + RelativePosition.Y - Height / 2,
+                W = Width,
+                H = Height
             };
 
 
@@ -315,8 +315,8 @@ namespace Alis.Core.Ecs.Component.Collider
         [ExcludeFromCodeCoverage]
         public override void OnDraw()
         {
-            RectangleF.x = GameObject.Transform.Position.X + RelativePosition.X - Width / 2;
-            RectangleF.y = GameObject.Transform.Position.Y + RelativePosition.Y - Height / 2;
+            RectangleF.X = GameObject.Transform.Position.X + RelativePosition.X - Width / 2;
+            RectangleF.Y = GameObject.Transform.Position.Y + RelativePosition.Y - Height / 2;
         }
 
         /// <summary>
