@@ -79,6 +79,9 @@ namespace Alis.App.Engine.Core
         /// </summary>
         public ImGuiIoPtr Io;
 
+        /// <summary>
+        /// The renderer game
+        /// </summary>
         public IntPtr rendererGame;
 
         /// <summary>
@@ -96,6 +99,9 @@ namespace Alis.App.Engine.Core
         /// </summary>
         public IntPtr Window;
 
+        /// <summary>
+        /// The window game
+        /// </summary>
         public IntPtr windowGame;
 
         /// <summary>
@@ -269,13 +275,28 @@ namespace Alis.App.Engine.Core
         /// </summary>
         internal BottomMenu BottomMenu { get; }
 
+        /// <summary>
+        /// Gets the value of the audio player window
+        /// </summary>
         internal AudioPlayerWindow AudioPlayerWindow { get; }
 
+        /// <summary>
+        /// Gets the value of the assets window
+        /// </summary>
         internal AssetsWindow AssetsWindow { get; }
+        /// <summary>
+        /// Gets or sets the value of the fps
+        /// </summary>
         public int Fps { get; set; } = 60;
 
+        /// <summary>
+        /// Gets the value of the video game
+        /// </summary>
         public VideoGame VideoGame { get; }
 
+        /// <summary>
+        /// Initializes this instance
+        /// </summary>
         public void Initialize()
         {
             VideoGame.InitPreview();
@@ -298,6 +319,9 @@ namespace Alis.App.Engine.Core
             AssetsWindow.Initialize();
         }
 
+        /// <summary>
+        /// Starts this instance
+        /// </summary>
         public void Start()
         {
             imGuiDemo.Start();

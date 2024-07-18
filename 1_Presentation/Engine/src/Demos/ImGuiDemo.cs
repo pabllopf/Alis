@@ -38,10 +38,16 @@ namespace Alis.App.Engine.Demos
     /// <seealso cref="IDemo" />
     public class ImGuiDemo : IDemo
     {
+        /// <summary>
+        /// Initializes this instance
+        /// </summary>
         public void Initialize()
         {
         }
 
+        /// <summary>
+        /// Starts this instance
+        /// </summary>
         public void Start()
         {
         }

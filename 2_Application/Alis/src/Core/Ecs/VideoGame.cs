@@ -54,14 +54,38 @@ namespace Alis.Core.Ecs
         /// </summary>
         [JsonIgnore] public static VideoGame _instancie;
 
+        /// <summary>
+        /// The accumulator
+        /// </summary>
         private double accumulator;
 
+        /// <summary>
+        /// The current time
+        /// </summary>
         private double currentTime;
+        /// <summary>
+        /// The last delta time
+        /// </summary>
         private float lastDeltaTime;
+        /// <summary>
+        /// The last log time
+        /// </summary>
         private double lastLogTime;
+        /// <summary>
+        /// The last time
+        /// </summary>
         private double lastTime;
+        /// <summary>
+        /// The smooth delta time count
+        /// </summary>
         private int smoothDeltaTimeCount;
+        /// <summary>
+        /// The smooth delta time sum
+        /// </summary>
         private float smoothDeltaTimeSum;
+        /// <summary>
+        /// The total time
+        /// </summary>
         private double totalTime;
 
         /// <summary>
@@ -233,6 +257,9 @@ namespace Alis.Core.Ecs
         [ExcludeFromCodeCoverage]
         public void Exit() => Context.TimeManager.IsRunning = false;
 
+        /// <summary>
+        /// Inits the preview
+        /// </summary>
         public void InitPreview()
         {
             OnInit();
@@ -260,6 +287,9 @@ namespace Alis.Core.Ecs
             lastLogTime = Context.TimeManager.Clock.Elapsed.TotalSeconds;
         }
 
+        /// <summary>
+        /// Runs the preview
+        /// </summary>
         public void RunPreview()
         {
             double newTime = Context.TimeManager.Clock.Elapsed.TotalSeconds;
@@ -335,6 +365,9 @@ namespace Alis.Core.Ecs
             lastLogTime = LastLogTime(newTime, lastLogTime);
         }
 
+        /// <summary>
+        /// Exits the preview
+        /// </summary>
         public void ExitPreview()
         {
             OnStop();

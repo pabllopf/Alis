@@ -46,11 +46,23 @@ namespace Alis.App.Engine.Windows
         /// </summary>
         private const string NameWindow = "Console";
 
+        /// <summary>
+        /// The command
+        /// </summary>
         private byte[] command = new byte[256];
 
+        /// <summary>
+        /// The command ptr
+        /// </summary>
         private readonly IntPtr commandPtr;
 
+        /// <summary>
+        /// The no collapse
+        /// </summary>
         private readonly ImGuiWindowFlags flags = ImGuiWindowFlags.NoCollapse;
+        /// <summary>
+        /// The is open
+        /// </summary>
         private bool isOpen = true;
 
         /// <summary>
@@ -68,10 +80,16 @@ namespace Alis.App.Engine.Windows
         /// </summary>
         public SpaceWork SpaceWork { get; }
 
+        /// <summary>
+        /// Initializes this instance
+        /// </summary>
         public void Initialize()
         {
         }
 
+        /// <summary>
+        /// Starts this instance
+        /// </summary>
         public void Start()
         {
         }
@@ -106,6 +124,10 @@ namespace Alis.App.Engine.Windows
             ImGui.End();
         }
 
+        /// <summary>
+        /// Gets the terminal output
+        /// </summary>
+        /// <returns>The string array</returns>
         private string[] GetTerminalOutput() => new string[0];
     }
 }

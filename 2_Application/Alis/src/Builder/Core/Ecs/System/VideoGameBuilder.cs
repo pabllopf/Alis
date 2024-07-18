@@ -79,6 +79,10 @@ namespace Alis.Builder.Core.Ecs.System
             return this;
         }
 
+        /// <summary>
+        /// Builds the preview
+        /// </summary>
+        /// <returns>The video game</returns>
         public VideoGame BuildPreview()
         {
             WindowSettings flags = WindowSettings.WindowHidden;

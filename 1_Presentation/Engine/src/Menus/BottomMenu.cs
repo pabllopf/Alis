@@ -61,10 +61,16 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         public SpaceWork SpaceWork { get; }
 
+        /// <summary>
+        /// Initializes this instance
+        /// </summary>
         public void Initialize()
         {
         }
 
+        /// <summary>
+        /// Updates this instance
+        /// </summary>
         public void Update()
         {
         }
@@ -105,6 +111,9 @@ namespace Alis.App.Engine.Menus
             }
         }
 
+        /// <summary>
+        /// Starts this instance
+        /// </summary>
         public void Start()
         {
         }

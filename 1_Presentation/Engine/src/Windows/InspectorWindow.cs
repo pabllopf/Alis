@@ -49,10 +49,16 @@ namespace Alis.App.Engine.Windows
         /// <param name="spaceWork">The space work</param>
         public InspectorWindow(SpaceWork spaceWork) => SpaceWork = spaceWork;
 
+        /// <summary>
+        /// Initializes this instance
+        /// </summary>
         public void Initialize()
         {
         }
 
+        /// <summary>
+        /// Starts this instance
+        /// </summary>
         public void Start()
         {
         }
