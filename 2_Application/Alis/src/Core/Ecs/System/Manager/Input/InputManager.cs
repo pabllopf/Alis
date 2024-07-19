@@ -117,7 +117,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         {
             if (sdlEvent.type == EventType.Keyup)
             {
-                KeyCodes indexUp = sdlEvent.key.keySym.sym;
+                KeyCodes indexUp = sdlEvent.key.KeySym.sym;
 
                 if (tempListOfKeys.Contains(indexUp))
                 {
@@ -134,7 +134,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         {
             if (sdlEvent.type == EventType.Keydown)
             {
-                KeyCodes indexDown = sdlEvent.key.keySym.sym;
+                KeyCodes indexDown = sdlEvent.key.KeySym.sym;
                 if (!tempListOfKeys.Contains(indexDown))
                 {
                     tempListOfKeys.Add(indexDown);

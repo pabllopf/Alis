@@ -52,7 +52,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The file
         /// </summary>
-        public IntPtr file { get; set; }
+        public IntPtr File { get; set; }
 
         /// <summary>
         ///     The window id

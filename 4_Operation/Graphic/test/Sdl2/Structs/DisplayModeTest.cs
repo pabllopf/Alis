@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalVivanteWmInfo.cs
+//  File:DisplayModeTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,25 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Runtime.InteropServices;
-
-namespace Alis.Core.Graphic.Sdl2.Structs
+namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
-    /// <summary>
-    ///     The internal vivante wm info
-    /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    public struct InternalVivanteWmInfo
+    public class DisplayModeTest
     {
-        /// <summary>
-        ///     The display
-        /// </summary>
-        public IntPtr Display { get; set; }
-
-        /// <summary>
-        ///     The window
-        /// </summary>
-        public IntPtr Window { get; set; }
+        
     }
 }

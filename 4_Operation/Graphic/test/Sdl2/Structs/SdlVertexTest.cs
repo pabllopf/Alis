@@ -90,7 +90,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
         public void SdlVertex_PositionField_InitializesCorrectly()
         {
             Vertex vertex = new Vertex();
-            Assert.Equal(new PointF(), vertex.position);
+            Assert.Equal(new PointF(), vertex.Position);
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
         public void SdlVertex_ColorField_InitializesCorrectly()
         {
             Vertex vertex = new Vertex();
-            Assert.Equal(new Color(), vertex.color);
+            Assert.Equal(new Color(), vertex.Color);
         }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
         public void SdlVertex_TexCoordinateField_InitializesCorrectly()
         {
             Vertex vertex = new Vertex();
-            Assert.Equal(new PointF(), vertex.texCoordinate);
+            Assert.Equal(new PointF(), vertex.TexCoordinate);
         }
     }
 }

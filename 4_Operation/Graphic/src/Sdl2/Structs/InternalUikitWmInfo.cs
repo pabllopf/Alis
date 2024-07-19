@@ -41,7 +41,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     Refers to a UIWindow*
         /// </summary>
-        public IntPtr window { get; set; }
+        public IntPtr Window { get; set; }
 
         /// <summary>
         ///     The frame buffer

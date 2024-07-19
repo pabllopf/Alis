@@ -1245,7 +1245,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GetAttribute([IsNotNull] GlAttr attr, out int value) => NativeSdl.InternalGlGetAttribute(attr, out value);
+        public static int GetAttribute([IsNotNull] Attr attr, out int value) => NativeSdl.InternalGlGetAttribute(attr, out value);
 
         /// <summary>
         ///     Gls the get swap interval
@@ -1308,7 +1308,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SetAttributeByInt([IsNotNull] GlAttr attr, [IsNotNull] int value) => NativeSdl.InternalGlSetAttribute(attr, value);
+        public static int SetAttributeByInt([IsNotNull] Attr attr, [IsNotNull] int value) => NativeSdl.InternalGlSetAttribute(attr, value);
 
         /// <summary>
         ///     Sdl the gl set attribute using the specified attr
@@ -1318,7 +1318,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SetAttributeByProfile([IsNotNull] GlAttr attr, [IsNotNull] GlProfiles profile)
+        public static int SetAttributeByProfile([IsNotNull] Attr attr, [IsNotNull] Profiles profile)
         {
             Validator.Validate(attr, nameof(attr));
             Validator.Validate(profile, nameof(profile));
@@ -4422,8 +4422,8 @@ namespace Alis.Core.Graphic.Sdl2
             {
                 bindType = (GameControllerBindType) dumb.bindType
             };
-            result.value.hat.hat = dumb.unionVal0;
-            result.value.hat.hat_mask = dumb.unionVal1;
+            result.value.hat.Hat = dumb.unionVal0;
+            result.value.hat.HatMask = dumb.unionVal1;
             return result;
         }
 
@@ -4483,8 +4483,8 @@ namespace Alis.Core.Graphic.Sdl2
             {
                 bindType = (GameControllerBindType) dumb.bindType
             };
-            result.value.hat.hat = dumb.unionVal0;
-            result.value.hat.hat_mask = dumb.unionVal1;
+            result.value.hat.Hat = dumb.unionVal0;
+            result.value.hat.HatMask = dumb.unionVal1;
             return result;
         }
 

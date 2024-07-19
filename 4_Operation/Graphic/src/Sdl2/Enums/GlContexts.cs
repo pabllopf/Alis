@@ -35,7 +35,7 @@ namespace Alis.Core.Graphic.Sdl2.Enums
     ///     The sdl gl context enum
     /// </summary>
     [Flags]
-    public enum GlContexts
+    public enum Contexts
     {
         /// <summary>
         ///     The sdl gl context debug flag sdl gl context

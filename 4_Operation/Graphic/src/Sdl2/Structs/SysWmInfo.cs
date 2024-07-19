@@ -41,7 +41,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The version
         /// </summary>
-        public Version version { get; set; }
+        public Version Version { get; set; }
 
         /// <summary>
         ///     The subsystem
@@ -51,6 +51,6 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The info
         /// </summary>
-        public InternalSysWmDriverUnion info { get; set; }
+        public InternalSysWmDriverUnion Info { get; set; }
     }
 }

@@ -40,11 +40,11 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The hat
         /// </summary>
-        public int hat { get; set; }
+        public int Hat { get; set; }
 
         /// <summary>
         ///     The hat mask
         /// </summary>
-        public int hat_mask { get; set; }
+        public int HatMask { get; set; }
     }
 }

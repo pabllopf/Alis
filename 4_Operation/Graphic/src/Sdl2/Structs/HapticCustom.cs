@@ -47,7 +47,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The direction
         /// </summary>
-        public HapticDirection direction { get; set; }
+        public HapticDirection Direction { get; set; }
 
         // Replay
         /// <summary>
@@ -90,7 +90,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The data
         /// </summary>
-        public IntPtr data { get; set; }
+        public IntPtr Data { get; set; }
 
         // Envelope
         /// <summary>
