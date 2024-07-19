@@ -41,21 +41,21 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The type
         /// </summary>
-        public readonly EventType type;
+        public EventType type;
 
         /// <summary>
         ///     The timestamp
         /// </summary>
-        public readonly uint timestamp;
+        public uint timestamp;
 
         /// <summary>
         ///     The display
         /// </summary>
-        public readonly uint display;
+        public uint display;
 
         /// <summary>
         ///     The display event
         /// </summary>
-        public readonly DisplayEventId displayEvent;
+        public DisplayEventId displayEvent;
     }
 }

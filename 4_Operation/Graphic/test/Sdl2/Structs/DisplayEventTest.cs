@@ -27,13 +27,42 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Graphic.Sdl2.Enums;
+using Alis.Core.Graphic.Sdl2.Structs;
+using Xunit;
+
+
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
+
     /// <summary>
-    /// The display event test class
+    /// The display event tests class
     /// </summary>
-    public class DisplayEventTest
+    public class DisplayEventTests
     {
-        
+        /// <summary>
+        /// Tests that display event initializes properties correctly
+        /// </summary>
+        [Fact]
+        public void DisplayEvent_InitializesPropertiesCorrectly()
+        {
+            EventType expectedType = EventType.DisplayEvent;
+            uint expectedTimestamp = 123456;
+            uint expectedDisplay = 1;
+            DisplayEventId expectedDisplayEvent = DisplayEventId.SdlDisplayEventNone;
+
+            DisplayEvent eventStruct = new DisplayEvent
+            {
+                type = expectedType,
+                timestamp = expectedTimestamp,
+                display = expectedDisplay,
+                displayEvent = expectedDisplayEvent
+            };
+
+            Assert.Equal(expectedType, eventStruct.type);
+            Assert.Equal(expectedTimestamp, eventStruct.timestamp);
+            Assert.Equal(expectedDisplay, eventStruct.display);
+            Assert.Equal(expectedDisplayEvent, eventStruct.displayEvent);
+        }
     }
 }
