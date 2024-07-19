@@ -41,16 +41,16 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The type
         /// </summary>
-        public readonly EventType type;
+        public EventType type;
 
         /// <summary>
         ///     The timestamp
         /// </summary>
-        public readonly uint timestamp;
+        public uint timestamp;
 
         /// <summary>
         ///     The which joystick id
         /// </summary>
-        public readonly int which;
+        public int which;
     }
 }
