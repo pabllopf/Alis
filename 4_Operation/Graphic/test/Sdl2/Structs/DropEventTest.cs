@@ -27,13 +27,32 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Xunit;
+using System;
+using Alis.Core.Graphic.Sdl2.Enums;
+using Alis.Core.Graphic.Sdl2.Structs;
+
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
-    /// <summary>
-    /// The drop event test class
-    /// </summary>
-    public class DropEventTest
+    public class DropEventTests
     {
-        
+        [Fact]
+        public void DropEvent_InitializesPropertiesCorrectly()
+        {
+            EventType expectedType = EventType.FirstEvent;
+            uint expectedTimestamp = 0;
+            uint expectedWindowID = 0;
+            IntPtr expectedFile = new IntPtr(123456);
+
+            DropEvent dropEvent = new DropEvent
+            {
+                File = expectedFile
+            };
+
+            Assert.Equal(expectedType, dropEvent.type);
+            Assert.Equal(expectedTimestamp, dropEvent.timestamp);
+            Assert.Equal(expectedWindowID, dropEvent.windowID);
+            Assert.Equal(expectedFile, dropEvent.File);
+        }
     }
 }
