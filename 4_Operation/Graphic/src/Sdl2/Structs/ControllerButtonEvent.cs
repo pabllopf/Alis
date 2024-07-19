@@ -41,26 +41,26 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The type
         /// </summary>
-        public readonly EventType type;
+        public EventType type;
 
         /// <summary>
         ///     The timestamp
         /// </summary>
-        public readonly uint timestamp;
+        public uint timestamp;
 
         /// <summary>
         ///     The which SDL_JoystickID
         /// </summary>
-        public readonly int which;
+        public int which;
 
         /// <summary>
         ///     The button
         /// </summary>
-        public readonly byte button;
+        public byte button;
 
         /// <summary>
         ///     The state
         /// </summary>
-        public readonly byte state;
+        public byte state;
     }
 }
