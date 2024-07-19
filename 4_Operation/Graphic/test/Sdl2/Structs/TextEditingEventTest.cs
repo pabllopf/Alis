@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Vertex.cs
+//  File:TextEditingEventTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,32 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Math.Definition;
-using Alis.Core.Aspect.Math.Shape.Point;
-
-namespace Alis.Core.Graphic.Sdl2.Structs
+namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
-    /// <summary>
-    ///     The sdl vertex
-    /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    public struct Vertex
+    public class TextEditingEventTest
     {
-        /// <summary>
-        ///     The position
-        /// </summary>
-        public PointF position { get; set; }
-
-        /// <summary>
-        ///     The color
-        /// </summary>
-        public Color color { get; set; }
-
-        /// <summary>
-        ///     The text coordinate
-        /// </summary>
-        public PointF texCoordinate { get; set; }
         
     }
 }
