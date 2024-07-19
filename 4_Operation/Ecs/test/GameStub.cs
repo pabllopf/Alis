@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ControllerTouchpadEventTest.cs
+//  File:GameStub.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,13 +27,37 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Graphic.Test.Sdl2.Structs
+namespace Alis.Core.Ecs.Test
 {
     /// <summary>
-    /// The controller touchpad event test class
+    /// The game stub class
     /// </summary>
-    public class ControllerTouchpadEventTest
+    /// <seealso cref="IGame"/>
+    internal class GameStub : IGame
     {
-        
+        /// <summary>
+        /// Gets or sets the value of the run invoked
+        /// </summary>
+        public bool RunInvoked { get; private set; } = false;
+        /// <summary>
+        /// Gets or sets the value of the exit invoked
+        /// </summary>
+        public bool ExitInvoked { get; private set; } = false;
+
+        /// <summary>
+        /// Runs this instance
+        /// </summary>
+        public void Run()
+        {
+            RunInvoked = true;
+        }
+
+        /// <summary>
+        /// Exits this instance
+        /// </summary>
+        public void Exit()
+        {
+            ExitInvoked = true;
+        }
     }
 }
