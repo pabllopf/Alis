@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:GenericEvent.cs
+//  File:GenericEventTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,25 +27,36 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.InteropServices;
 using Alis.Core.Graphic.Sdl2.Enums;
+using Alis.Core.Graphic.Sdl2.Structs;
+using Xunit;
 
-namespace Alis.Core.Graphic.Sdl2.Structs
+
+namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
+
     /// <summary>
-    ///     The sdl generic event
+    /// The generic event tests class
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    public struct GenericEvent
+    public class GenericEventTests
     {
         /// <summary>
-        ///     The type
+        /// Tests that generic event initializes properties correctly
         /// </summary>
-        public EventType type;
+        [Fact]
+        public void GenericEvent_InitializesPropertiesCorrectly()
+        {
+            EventType expectedType = EventType.Quit;
+            uint expectedTimestamp = 123456789;
 
-        /// <summary>
-        ///     The timestamp
-        /// </summary>
-        public uint timestamp;
+            GenericEvent genericEvent = new GenericEvent
+            {
+                type = expectedType,
+                timestamp = expectedTimestamp
+            };
+
+            Assert.Equal(expectedType, genericEvent.type);
+            Assert.Equal(expectedTimestamp, genericEvent.timestamp);
+        }
     }
 }
