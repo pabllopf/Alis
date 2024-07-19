@@ -49,7 +49,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             EventType expectedType = EventType.TextInput;
             uint expectedTimestamp = 123456789;
             uint expectedWindowID = 987654321;
-            byte[] expectedText = new byte[6] {72, 101, 108, 108, 111, 0}; // "Hello" in ASCII, followed by null bytes
+            byte[] expectedText = new byte[32] {72, 101, 108, 108, 111, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
             TextInputEvent textInputEvent = new TextInputEvent
             {
