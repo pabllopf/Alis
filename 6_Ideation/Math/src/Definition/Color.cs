@@ -29,6 +29,7 @@
 
 using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 
 namespace Alis.Core.Aspect.Math.Definition
@@ -37,6 +38,7 @@ namespace Alis.Core.Aspect.Math.Definition
     ///     The color
     /// </summary>
     [Serializable]
+    [StructLayout(LayoutKind.Sequential)]
     public struct Color : ISerializable
     {
         /// <summary>

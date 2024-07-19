@@ -30,6 +30,7 @@
 using System;
 using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Aspect.Data.Resource;
+using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Shape.Point;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Graphic.Sdl2;

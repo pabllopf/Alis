@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Core.Aspect.Data.Resource;
+using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf;

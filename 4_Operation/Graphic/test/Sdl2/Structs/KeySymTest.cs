@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Color.cs
+//  File:KeySymTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,49 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.InteropServices;
-
-namespace Alis.Core.Graphic.Sdl2.Structs
+namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
-    /// <summary>
-    ///     The sdl color
-    /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    public struct Color
+    public class KeySymTest
     {
-        /// <summary>
-        ///     The
-        /// </summary>
-        public readonly byte r;
-
-        /// <summary>
-        ///     The
-        /// </summary>
-        public readonly byte g;
-
-        /// <summary>
-        ///     The
-        /// </summary>
-        public readonly byte b;
-
-        /// <summary>
-        ///     The
-        /// </summary>
-        public readonly byte a;
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Color" /> class
-        /// </summary>
-        /// <param name="r">The </param>
-        /// <param name="g">The </param>
-        /// <param name="b">The </param>
-        /// <param name="a">The </param>
-        public Color(byte r, byte g, byte b, byte a)
-        {
-            this.r = r;
-            this.g = g;
-            this.b = b;
-            this.a = a;
-        }
+        
     }
 }

@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Reflection;
+using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Shape.Point;
 using Alis.Core.Graphic.Sdl2.Structs;
 using Xunit;

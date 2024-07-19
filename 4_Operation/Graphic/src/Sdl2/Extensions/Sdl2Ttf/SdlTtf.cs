@@ -30,6 +30,7 @@
 using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Memory;
 using Alis.Core.Aspect.Memory.Attributes;
 using Alis.Core.Graphic.Sdl2.Structs;
