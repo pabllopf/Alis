@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ControllerAxisEventTest.cs
+//  File:KeyboardEventTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,41 +27,13 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Xunit;
-using System;
-using Alis.Core.Graphic.Sdl2.Enums;
-using Alis.Core.Graphic.Sdl2.Structs;
-
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
     /// <summary>
-    /// The controller axis event tests class
+    /// The keyboard event test class
     /// </summary>
-    public class ControllerAxisEventTests
+    public class KeyboardEventTest
     {
-        /// <summary>
-        /// Tests that controller axis event initializes properties correctly
-        /// </summary>
-        [Fact]
-        public void ControllerAxisEvent_InitializesPropertiesCorrectly()
-        {
-            EventType eventType = EventType.ControllerAxisMotion;
-            uint timestamp = 1234567890;
-            int which = 1;
-            byte axis = 2;
-
-            ControllerAxisEvent eventStruct = new ControllerAxisEvent
-            {
-                type = eventType,
-                timestamp = timestamp,
-                which = which,
-                axis = axis
-            };
-
-            Assert.Equal(eventType, eventStruct.type);
-            Assert.Equal(timestamp, eventStruct.timestamp);
-            Assert.Equal(which, eventStruct.which);
-            Assert.Equal(axis, eventStruct.axis);
-        }
+        
     }
 }
