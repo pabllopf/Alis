@@ -27,13 +27,51 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Xunit;
+using System;
+using Alis.Core.Aspect.Data.Mapping;
+using Alis.Core.Graphic.Sdl2.Enums;
+using Alis.Core.Graphic.Sdl2.Structs;
+
+
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
+
     /// <summary>
-    /// The keyboard event test class
+    /// The keyboard event tests class
     /// </summary>
-    public class KeyboardEventTest
+    public class KeyboardEventTests
     {
-        
+        /// <summary>
+        /// Tests that keyboard event initializes properties correctly
+        /// </summary>
+        [Fact]
+        public void KeyboardEvent_InitializesPropertiesCorrectly()
+        {
+            EventType expectedType = EventType.Keydown;
+            uint expectedTimestamp = 123456789;
+            uint expectedWindowID = 987654321;
+            byte expectedState = 1;
+            byte expectedRepeat = 0;
+            
+            KeySym expectedKeySym = new KeySym
+            {
+                scancode = SdlScancode.SdlScancodeA,
+                sym = KeyCodes.A,
+                mod =  KeyMods.KModShift,
+                unicode = 'a'
+            };
+
+            KeyboardEvent keyboardEvent = new KeyboardEvent
+            {
+                KeySym = expectedKeySym
+            };
+
+            Assert.Equal(expectedType, keyboardEvent.type);
+            Assert.Equal(expectedTimestamp, keyboardEvent.timestamp);
+            Assert.Equal(expectedWindowID, keyboardEvent.windowID);
+            Assert.Equal(expectedState, keyboardEvent.state);
+            Assert.Equal(expectedRepeat, keyboardEvent.repeat);
+        }
     }
 }
