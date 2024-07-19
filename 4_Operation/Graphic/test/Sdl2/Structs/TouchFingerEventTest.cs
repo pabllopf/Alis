@@ -27,13 +27,59 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Graphic.Sdl2.Structs;
+using Xunit;
+
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
+
+
     /// <summary>
-    /// The touch finger event test class
+    /// The touch finger event tests class
     /// </summary>
-    public class TouchFingerEventTest
+    public class TouchFingerEventTests
     {
-        
+        /// <summary>
+        /// Tests that touch finger event initializes properties correctly
+        /// </summary>
+        [Fact]
+        public void TouchFingerEvent_InitializesPropertiesCorrectly()
+        {
+            uint expectedType = 1;
+            uint expectedTimestamp = 123456789;
+            long expectedTouchId = 123456789012345678;
+            long expectedFingerId = 987654321098765432;
+            float expectedX = 0.5f;
+            float expectedY = 0.75f;
+            float expectedDx = 0.1f;
+            float expectedDy = 0.2f;
+            float expectedPressure = 0.8f;
+            uint expectedWindowID = 2;
+
+            TouchFingerEvent touchFingerEvent = new TouchFingerEvent
+            {
+                type = expectedType,
+                timestamp = expectedTimestamp,
+                touchId = expectedTouchId,
+                fingerId = expectedFingerId,
+                x = expectedX,
+                y = expectedY,
+                dx = expectedDx,
+                dy = expectedDy,
+                pressure = expectedPressure,
+                windowID = expectedWindowID
+            };
+
+            Assert.Equal(expectedType, touchFingerEvent.type);
+            Assert.Equal(expectedTimestamp, touchFingerEvent.timestamp);
+            Assert.Equal(expectedTouchId, touchFingerEvent.touchId);
+            Assert.Equal(expectedFingerId, touchFingerEvent.fingerId);
+            Assert.Equal(expectedX, touchFingerEvent.x);
+            Assert.Equal(expectedY, touchFingerEvent.y);
+            Assert.Equal(expectedDx, touchFingerEvent.dx);
+            Assert.Equal(expectedDy, touchFingerEvent.dy);
+            Assert.Equal(expectedPressure, touchFingerEvent.pressure);
+            Assert.Equal(expectedWindowID, touchFingerEvent.windowID);
+        }
     }
 }
