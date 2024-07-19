@@ -46,102 +46,102 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The flags
         /// </summary>
-        public readonly uint flags;
+        public uint flags;
 
         /// <summary>
         ///     The num texture formats
         /// </summary>
-        public readonly uint num_texture_formats;
+        public uint num_texture_formats;
 
         /// <summary>
         ///     The texture formats
         /// </summary>
-        public readonly int textureFormats0;
+        public int textureFormats0;
 
         /// <summary>
         ///     The texture formats
         /// </summary>
-        public readonly int textureFormats1;
+        public int textureFormats1;
 
         /// <summary>
         ///     The texture formats
         /// </summary>
-        public readonly int textureFormats2;
+        public int textureFormats2;
 
         /// <summary>
         ///     The texture formats
         /// </summary>
-        public readonly int textureFormats3;
+        public int textureFormats3;
 
         /// <summary>
         ///     The texture formats
         /// </summary>
-        public readonly int textureFormats4;
+        public int textureFormats4;
 
         /// <summary>
         ///     The texture formats
         /// </summary>
-        public readonly int textureFormats5;
+        public int textureFormats5;
 
         /// <summary>
         ///     The texture formats
         /// </summary>
-        public readonly int textureFormats6;
+        public int textureFormats6;
 
         /// <summary>
         ///     The texture formats
         /// </summary>
-        public readonly int textureFormats7;
+        public int textureFormats7;
 
         /// <summary>
         ///     The texture formats
         /// </summary>
-        public readonly int textureFormats8;
+        public int textureFormats8;
 
         /// <summary>
         ///     The texture formats
         /// </summary>
-        public readonly int textureFormats9;
+        public int textureFormats9;
 
         /// <summary>
         ///     The texture formats 10
         /// </summary>
-        public readonly int textureFormats10;
+        public int textureFormats10;
 
         /// <summary>
         ///     The texture formats 11
         /// </summary>
-        public readonly int textureFormats11;
+        public int textureFormats11;
 
         /// <summary>
         ///     The texture formats 12
         /// </summary>
-        public readonly int textureFormats12;
+        public int textureFormats12;
 
         /// <summary>
         ///     The texture formats 13
         /// </summary>
-        public readonly int textureFormats13;
+        public int textureFormats13;
 
         /// <summary>
         ///     The texture formats 14
         /// </summary>
-        public readonly int textureFormats14;
+        public int textureFormats14;
 
         /// <summary>
         ///     The texture formats 15
         /// </summary>
-        public readonly int textureFormats15;
+        public int textureFormats15;
 
         /// <summary>
         ///     The max texture width
         /// </summary>
-        public readonly int maxTextureWidth;
+        public int maxTextureWidth;
 
         /// <summary>
         ///     The max texture height
         /// </summary>
-        public readonly int maxTextureHeight;
+        public int maxTextureHeight;
 
         /// <summary>
         ///     Gets the name
