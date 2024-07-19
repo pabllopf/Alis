@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalUikitWmInfo.cs
+//  File:InternalWinrtWmInfoTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,35 +27,33 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Xunit;
 using System;
-using System.Runtime.InteropServices;
+using Alis.Core.Graphic.Sdl2.Structs;
 
-namespace Alis.Core.Graphic.Sdl2.Structs
+
+namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
+
     /// <summary>
-    ///     The internal uikit wm info
+    /// The internal winrt wm info tests class
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    public struct InternalUikitWmInfo
+    public class InternalWinrtWmInfoTests
     {
         /// <summary>
-        ///     Refers to a UIWindow*
+        /// Tests that internal winrt wm info initializes properties correctly
         /// </summary>
-        public IntPtr Window { get; set; }
+        [Fact]
+        public void InternalWinrtWmInfo_InitializesPropertiesCorrectly()
+        {
+            IntPtr expectedWindow = new IntPtr(123);
 
-        /// <summary>
-        ///     The frame buffer
-        /// </summary>
-        public uint framebuffer;
+            InternalWinrtWmInfo info = new InternalWinrtWmInfo
+            {
+                Window = expectedWindow
+            };
 
-        /// <summary>
-        ///     The color buffer
-        /// </summary>
-        public uint colorBuffer;
-
-        /// <summary>
-        ///     The resolve frame buffer
-        /// </summary>
-        public uint resolveFramebuffer;
+            Assert.Equal(expectedWindow, info.Window);
+        }
     }
 }
