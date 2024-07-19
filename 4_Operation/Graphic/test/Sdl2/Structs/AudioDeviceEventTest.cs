@@ -27,10 +27,35 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Graphic.Sdl2.Structs;
+using Xunit;
+
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
+    /// <summary>
+    /// The audio device event test class
+    /// </summary>
     public class AudioDeviceEventTest
     {
-        
+
+        /// <summary>
+        /// Tests that audio device event initializes properties correctly
+        /// </summary>
+        [Fact]
+        public void AudioDeviceEvent_InitializesPropertiesCorrectly()
+        {
+            AudioDeviceEvent audioDeviceEvent = new AudioDeviceEvent
+            {
+                type = 1,
+                timestamp = 100,
+                which = 2,
+                isCapture = 1
+            };
+
+            Assert.Equal(1u, audioDeviceEvent.type);
+            Assert.Equal(100u, audioDeviceEvent.timestamp);
+            Assert.Equal(2u, audioDeviceEvent.which);
+            Assert.Equal(1, audioDeviceEvent.isCapture);
+        }
     }
 }

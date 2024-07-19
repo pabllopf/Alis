@@ -37,6 +37,9 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Line
     /// </summary>
     public class LineFTest
     {
+        /// <summary>
+        /// Tests that constructor initializes properties correctly
+        /// </summary>
         [Fact]
         public void Constructor_InitializesPropertiesCorrectly()
         {
@@ -48,6 +51,13 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Line
             Assert.Equal(4.0f, line.Y2);
         }
 
+        /// <summary>
+        /// Tests that properties set values correctly
+        /// </summary>
+        /// <param name="x1">The </param>
+        /// <param name="y1">The </param>
+        /// <param name="x2">The </param>
+        /// <param name="y2">The </param>
         [Theory]
         [InlineData(0f, 0f, 0f, 0f)]
         [InlineData(-1f, -2f, -3f, -4f)]

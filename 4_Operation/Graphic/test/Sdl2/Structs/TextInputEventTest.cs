@@ -29,6 +29,9 @@
 
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
+    /// <summary>
+    /// The text input event test class
+    /// </summary>
     public class TextInputEventTest
     {
         

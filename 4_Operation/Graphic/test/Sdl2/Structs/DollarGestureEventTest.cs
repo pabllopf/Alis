@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:KeySymTest.cs
+//  File:DollarGestureEventTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,9 +30,9 @@
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
     /// <summary>
-    /// The key sym test class
+    /// The dollar gesture event test class
     /// </summary>
-    public class KeySymTest
+    public class DollarGestureEventTest
     {
         
     }

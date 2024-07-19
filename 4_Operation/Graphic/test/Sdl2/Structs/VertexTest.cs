@@ -29,6 +29,9 @@
 
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
+    /// <summary>
+    /// The vertex test class
+    /// </summary>
     public class VertexTest
     {
         

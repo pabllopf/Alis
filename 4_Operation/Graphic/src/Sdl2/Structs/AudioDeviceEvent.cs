@@ -40,21 +40,21 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The type
         /// </summary>
-        public readonly uint type;
+        public uint type;
 
         /// <summary>
         ///     The timestamp
         /// </summary>
-        public readonly uint timestamp;
+        public uint timestamp;
 
         /// <summary>
         ///     The which
         /// </summary>
-        public readonly uint which;
+        public uint which;
 
         /// <summary>
         ///     The is capture
         /// </summary>
-        public readonly byte isCapture;
+        public byte isCapture;
     }
 }
