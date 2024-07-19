@@ -27,13 +27,39 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Graphic.Sdl2.Enums;
+using Alis.Core.Graphic.Sdl2.Structs;
+using Xunit;
+
+
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
+
     /// <summary>
-    /// The controller device event test class
+    /// The controller device event tests class
     /// </summary>
-    public class ControllerDeviceEventTest
+    public class ControllerDeviceEventTests
     {
-        
+        /// <summary>
+        /// Tests that controller device event initializes properties correctly
+        /// </summary>
+        [Fact]
+        public void ControllerDeviceEvent_InitializesPropertiesCorrectly()
+        {
+            EventType eventType = EventType.ControllerButtonUp;
+            uint timestamp = 123456789;
+            int which = 1;
+
+            ControllerDeviceEvent eventStruct = new ControllerDeviceEvent
+            {
+                type = eventType,
+                timestamp = timestamp,
+                which = which
+            };
+
+            Assert.Equal(eventType, eventStruct.type);
+            Assert.Equal(timestamp, eventStruct.timestamp);
+            Assert.Equal(which, eventStruct.which);
+        }
     }
 }
