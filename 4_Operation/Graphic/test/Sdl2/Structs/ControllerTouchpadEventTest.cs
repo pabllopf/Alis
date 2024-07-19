@@ -27,13 +27,53 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Graphic.Sdl2.Structs;
+using Xunit;
+
+
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
+
     /// <summary>
-    /// The controller touchpad event test class
+    /// The controller touchpad event tests class
     /// </summary>
-    public class ControllerTouchpadEventTest
+    public class ControllerTouchpadEventTests
     {
-        
+        /// <summary>
+        /// Tests that controller touchpad event initializes properties correctly
+        /// </summary>
+        [Fact]
+        public void ControllerTouchpadEvent_InitializesPropertiesCorrectly()
+        {
+            uint expectedType = 123;
+            uint expectedTimestamp = 456789;
+            int expectedWhich = 1;
+            int expectedTouchpad = 2;
+            int expectedFinger = 3;
+            float expectedX = 0.5f;
+            float expectedY = 0.75f;
+            float expectedPressure = 0.25f;
+
+            ControllerTouchpadEvent eventStruct = new ControllerTouchpadEvent
+            {
+                type = expectedType,
+                timestamp = expectedTimestamp,
+                which = expectedWhich,
+                touchpad = expectedTouchpad,
+                finger = expectedFinger,
+                x = expectedX,
+                y = expectedY,
+                pressure = expectedPressure
+            };
+
+            Assert.Equal(expectedType, eventStruct.type);
+            Assert.Equal(expectedTimestamp, eventStruct.timestamp);
+            Assert.Equal(expectedWhich, eventStruct.which);
+            Assert.Equal(expectedTouchpad, eventStruct.touchpad);
+            Assert.Equal(expectedFinger, eventStruct.finger);
+            Assert.Equal(expectedX, eventStruct.x);
+            Assert.Equal(expectedY, eventStruct.y);
+            Assert.Equal(expectedPressure, eventStruct.pressure);
+        }
     }
 }
