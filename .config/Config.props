@@ -111,5 +111,4 @@
     <Import Project="$(SolutionDir).config/test/InternalsVisibleTo.props"/>
     <Import Project="$(SolutionDir).config/test/ParallelExe.props"/>
     <Import Project="$(SolutionDir).config/test/SonarQubeExclude.props"/>
-
 </Project>
