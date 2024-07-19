@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ControllerAxisEvent.cs
+//  File:ControllerAxisEventTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,35 +27,41 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.InteropServices;
+using Xunit;
+using System;
 using Alis.Core.Graphic.Sdl2.Enums;
+using Alis.Core.Graphic.Sdl2.Structs;
 
-namespace Alis.Core.Graphic.Sdl2.Structs
+namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl controller axis event
+    /// The controller axis event tests class
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    public struct ControllerAxisEvent
+    public class ControllerAxisEventTests
     {
         /// <summary>
-        ///     The type
+        /// Tests that controller axis event initializes properties correctly
         /// </summary>
-        public EventType type;
+        [Fact]
+        public void ControllerAxisEvent_InitializesPropertiesCorrectly()
+        {
+            var eventType = EventType.ControllerAxisMotion;
+            uint timestamp = 1234567890;
+            int which = 1;
+            byte axis = 2;
 
-        /// <summary>
-        ///     The timestamp
-        /// </summary>
-        public uint timestamp;
+            var eventStruct = new ControllerAxisEvent
+            {
+                type = eventType,
+                timestamp = timestamp,
+                which = which,
+                axis = axis
+            };
 
-        /// <summary>
-        ///     The which SDL_JoystickID
-        /// </summary>
-        public int which;
-
-        /// <summary>
-        ///     The axis
-        /// </summary>
-        public byte axis;
+            Assert.Equal(eventType, eventStruct.type);
+            Assert.Equal(timestamp, eventStruct.timestamp);
+            Assert.Equal(which, eventStruct.which);
+            Assert.Equal(axis, eventStruct.axis);
+        }
     }
 }
