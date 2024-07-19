@@ -34,8 +34,14 @@ using Xunit;
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
 
+    /// <summary>
+    /// The dollar gesture event tests class
+    /// </summary>
     public class DollarGestureEventTests
     {
+        /// <summary>
+        /// Tests that dollar gesture event initializes properties correctly
+        /// </summary>
         [Fact]
         public void DollarGestureEvent_InitializesPropertiesCorrectly()
         {
