@@ -47,7 +47,6 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     The timestamp
         /// </summary>
         public readonly uint timestamp;
-
         
         /// <summary>
         ///     The window id
