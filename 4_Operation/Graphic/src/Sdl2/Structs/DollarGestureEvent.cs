@@ -40,41 +40,41 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The type
         /// </summary>
-        public readonly uint type;
+        public uint type;
 
         /// <summary>
         ///     The timestamp
         /// </summary>
-        public readonly uint timestamp;
+        public uint timestamp;
 
         /// <summary>
         ///     The touch id
         /// </summary>
-        public readonly long touchId;
+        public long touchId;
 
         /// <summary>
         ///     The gesture id
         /// </summary>
-        public readonly long gestureId;
+        public long gestureId;
 
         /// <summary>
         ///     The num fingers
         /// </summary>
-        public readonly uint numFingers;
+        public uint numFingers;
 
         /// <summary>
         ///     The error
         /// </summary>
-        public readonly float error;
+        public float error;
 
         /// <summary>
         ///     The
         /// </summary>
-        public readonly float x;
+        public float x;
 
         /// <summary>
         ///     The
         /// </summary>
-        public readonly float y;
+        public float y;
     }
 }

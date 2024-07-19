@@ -27,13 +27,47 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Graphic.Sdl2.Structs;
+using Xunit;
+
+
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
-    /// <summary>
-    /// The dollar gesture event test class
-    /// </summary>
-    public class DollarGestureEventTest
+
+    public class DollarGestureEventTests
     {
-        
+        [Fact]
+        public void DollarGestureEvent_InitializesPropertiesCorrectly()
+        {
+            uint expectedType = 123;
+            uint expectedTimestamp = 456789;
+            long expectedTouchId = 1234567890123456789;
+            long expectedGestureId = 6543210987654321;
+            uint expectedNumFingers = 3;
+            float expectedError = 0.1f;
+            float expectedX = 0.5f;
+            float expectedY = 0.75f;
+
+            DollarGestureEvent eventStruct = new DollarGestureEvent
+            {
+                type = expectedType,
+                timestamp = expectedTimestamp,
+                touchId = expectedTouchId,
+                gestureId = expectedGestureId,
+                numFingers = expectedNumFingers,
+                error = expectedError,
+                x = expectedX,
+                y = expectedY
+            };
+
+            Assert.Equal(expectedType, eventStruct.type);
+            Assert.Equal(expectedTimestamp, eventStruct.timestamp);
+            Assert.Equal(expectedTouchId, eventStruct.touchId);
+            Assert.Equal(expectedGestureId, eventStruct.gestureId);
+            Assert.Equal(expectedNumFingers, eventStruct.numFingers);
+            Assert.Equal(expectedError, eventStruct.error);
+            Assert.Equal(expectedX, eventStruct.x);
+            Assert.Equal(expectedY, eventStruct.y);
+        }
     }
 }
