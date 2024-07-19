@@ -45,7 +45,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
         [Fact]
         public void SysWmEvent_InitializesPropertiesCorrectly()
         {
-            EventType expectedType = EventType.SysWmEvent;
+            EventType expectedType = EventType.FirstEvent;
             uint expectedTimestamp = 123456789;
             IntPtr expectedMsg = new IntPtr(123456);
 
