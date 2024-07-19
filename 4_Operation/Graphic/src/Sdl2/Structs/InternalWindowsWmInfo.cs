@@ -41,16 +41,16 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     Refers to an HWND
         /// </summary>
-        public IntPtr window { get; set; }
+        public IntPtr Window { get; set; }
 
         /// <summary>
         ///     Refers to an HDC
         /// </summary>
-        public IntPtr hdc { get; set; }
+        public IntPtr Hdc { get; set; }
 
         /// <summary>
         ///     Refers to an H INSTANCE
         /// </summary>
-        public IntPtr hInstance { get; set; }
+        public IntPtr HInstance { get; set; }
     }
 }

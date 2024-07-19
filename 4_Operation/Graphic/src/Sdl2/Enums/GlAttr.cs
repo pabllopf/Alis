@@ -32,7 +32,7 @@ namespace Alis.Core.Graphic.Sdl2.Enums
     /// <summary>
     ///     The sdl gl attr enum
     /// </summary>
-    public enum GlAttr
+    public enum Attr
     {
         /// <summary>
         ///     The sdl gl red size sdl gl attr

@@ -276,32 +276,32 @@ namespace Alis.Core.Graphic.Sample
                             _running = false;
                             break;
                         case EventType.Keydown:
-                            if (_sdlEvent.key.keySym.sym == KeyCodes.Escape)
+                            if (_sdlEvent.key.KeySym.sym == KeyCodes.Escape)
                             {
                                 _running = false;
                             }
 
-                            if (_sdlEvent.key.keySym.sym == KeyCodes.Up)
+                            if (_sdlEvent.key.KeySym.sym == KeyCodes.Up)
                             {
                                 rectBorder.Y -= 10;
                             }
 
-                            if (_sdlEvent.key.keySym.sym == KeyCodes.Down)
+                            if (_sdlEvent.key.KeySym.sym == KeyCodes.Down)
                             {
                                 rectBorder.Y += 10;
                             }
 
-                            if (_sdlEvent.key.keySym.sym == KeyCodes.Left)
+                            if (_sdlEvent.key.KeySym.sym == KeyCodes.Left)
                             {
                                 rectBorder.X -= 10;
                             }
 
-                            if (_sdlEvent.key.keySym.sym == KeyCodes.Right)
+                            if (_sdlEvent.key.KeySym.sym == KeyCodes.Right)
                             {
                                 rectBorder.X += 10;
                             }
 
-                            Logger.Info(_sdlEvent.key.keySym.sym + " was pressed");
+                            Logger.Info(_sdlEvent.key.KeySym.sym + " was pressed");
                             break;
                     }
 

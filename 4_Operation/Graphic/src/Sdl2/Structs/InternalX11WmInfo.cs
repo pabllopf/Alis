@@ -41,11 +41,11 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     Refers to a Display*
         /// </summary>
-        public IntPtr display { get; set; }
+        public IntPtr Display { get; set; }
 
         /// <summary>
         ///     Refers to a Window (XID, use ToInt64!)
         /// </summary>
-        public IntPtr window { get; set; }
+        public IntPtr Window { get; set; }
     }
 }

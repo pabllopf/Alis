@@ -1013,7 +1013,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Arrange
             int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
-            GlAttr attr = GlAttr.SdlGlContextMajorVersion;
+            Attr attr = Attr.SdlGlContextMajorVersion;
 
             // Act
             int result = Sdl.GetAttribute(attr, out int _);
@@ -1138,7 +1138,7 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Arrange
             int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
-            GlAttr attr = GlAttr.SdlGlContextMajorVersion;
+            Attr attr = Attr.SdlGlContextMajorVersion;
             int value = 3;
 
             // Act
@@ -1160,8 +1160,8 @@ namespace Alis.Core.Graphic.Test.Sdl2
             // Arrange
             int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
-            GlAttr attr = GlAttr.SdlGlContextProfileMask;
-            GlProfiles profile = GlProfiles.SdlGlContextProfileCore;
+            Attr attr = Attr.SdlGlContextProfileMask;
+            Profiles profile = Profiles.SdlGlContextProfileCore;
 
             // Act
             int result = Sdl.SetAttributeByProfile(attr, profile);

@@ -52,6 +52,6 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The msg
         /// </summary>
-        public IntPtr msg { get; set; }
+        public IntPtr Msg { get; set; }
     }
 }

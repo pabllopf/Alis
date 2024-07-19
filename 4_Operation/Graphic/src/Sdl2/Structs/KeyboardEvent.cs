@@ -66,6 +66,6 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The key sym
         /// </summary>
-        public KeySym keySym { get; set; }
+        public KeySym KeySym { get; set; }
     }
 }

@@ -35,7 +35,7 @@ namespace Alis.Core.Graphic.Sdl2.Enums
     ///     The sdl gl profile enum
     /// </summary>
     [Flags]
-    public enum GlProfiles
+    public enum Profiles
     {
         /// <summary>
         ///     The sdl gl context profile core sdl gl profile

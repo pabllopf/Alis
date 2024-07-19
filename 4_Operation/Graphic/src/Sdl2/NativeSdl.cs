@@ -1658,7 +1658,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GL_GetAttribute", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
-        internal static extern int InternalGlGetAttribute([IsNotNull] GlAttr attr, out int value);
+        internal static extern int InternalGlGetAttribute([IsNotNull] Attr attr, out int value);
 
         /// <summary>
         ///     Sdl the gl get swap interval
@@ -2311,7 +2311,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GL_SetAttribute", CallingConvention = CallingConvention.Cdecl), MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: IsNotNull]
-        internal static extern int InternalGlSetAttribute([IsNotNull] GlAttr attr, [IsNotNull] int value);
+        internal static extern int InternalGlSetAttribute([IsNotNull] Attr attr, [IsNotNull] int value);
 
         /// <summary>
         ///     Sdl the gl set swap interval using the specified interval

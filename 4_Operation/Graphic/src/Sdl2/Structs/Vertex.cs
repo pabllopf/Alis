@@ -42,17 +42,17 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The position
         /// </summary>
-        public PointF position { get; set; }
+        public PointF Position { get; set; }
 
         /// <summary>
         ///     The color
         /// </summary>
-        public Color color { get; set; }
+        public Color Color { get; set; }
 
         /// <summary>
         ///     The text coordinate
         /// </summary>
-        public PointF texCoordinate { get; set; }
+        public PointF TexCoordinate { get; set; }
         
     }
 }

@@ -41,11 +41,11 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     Refers to a MirConnection*
         /// </summary>
-        public IntPtr connection { get; set; }
+        public IntPtr Connection { get; set; }
 
         /// <summary>
         ///     Refers to a MirSurface*
         /// </summary>
-        public IntPtr surface { get; set; }
+        public IntPtr Surface { get; set; }
     }
 }

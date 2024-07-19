@@ -47,7 +47,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The format
         /// </summary>
-        public IntPtr format { get; set; }
+        public IntPtr Format { get; set; }
 
         /// <summary>
         ///     The
@@ -67,12 +67,12 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The pixels
         /// </summary>
-        public IntPtr pixels { get; set; }
+        public IntPtr Pixels { get; set; }
 
         /// <summary>
         ///     The userdata
         /// </summary>
-        public IntPtr userdata { get; set; }
+        public IntPtr Userdata { get; set; }
 
         /// <summary>
         ///     The locked
@@ -82,17 +82,17 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The list blit map
         /// </summary>
-        public IntPtr listBlitMap { get; set; }
+        public IntPtr ListBlitMap { get; set; }
 
         /// <summary>
         ///     The clip rect
         /// </summary>
-        public RectangleI clipRect { get; set; }
+        public RectangleI ClipRect { get; set; }
 
         /// <summary>
         ///     The map
         /// </summary>
-        public IntPtr map { get; set; }
+        public IntPtr Map { get; set; }
 
         /// <summary>
         ///     The ref count

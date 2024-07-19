@@ -127,10 +127,10 @@ namespace Alis.Core.Graphic.Test.Sdl2
 
                 //Assert 
                 Assert.NotEqual(0.0, obtained.size);
-                Assert.NotEqual(0.0, obtained.freq);
-                Assert.NotEqual(0.0, obtained.format);
-                Assert.NotEqual(0.0, obtained.channels);
-                Assert.NotEqual(0.0, obtained.samples);
+                Assert.NotEqual(0.0, obtained.Freq);
+                Assert.NotEqual(0.0, obtained.Format);
+                Assert.NotEqual(0.0, obtained.Channels);
+                Assert.NotEqual(0.0, obtained.Samples);
 
                 // Act
                 Sdl.CloseAudioDevice(dev);
@@ -1256,16 +1256,16 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int h = 600;
 
             // CONFIG THE SDL2 AN OPENGL CONFIGURATION
-            Sdl.SetAttributeByInt(GlAttr.SdlGlContextFlags, (int) GlContexts.SdlGlContextForwardCompatibleFlag);
-            Sdl.SetAttributeByProfile(GlAttr.SdlGlContextProfileMask, GlProfiles.SdlGlContextProfileCore);
-            Sdl.SetAttributeByInt(GlAttr.SdlGlContextMajorVersion, 3);
-            Sdl.SetAttributeByInt(GlAttr.SdlGlContextMinorVersion, 2);
+            Sdl.SetAttributeByInt(Attr.SdlGlContextFlags, (int) Contexts.SdlGlContextForwardCompatibleFlag);
+            Sdl.SetAttributeByProfile(Attr.SdlGlContextProfileMask, Profiles.SdlGlContextProfileCore);
+            Sdl.SetAttributeByInt(Attr.SdlGlContextMajorVersion, 3);
+            Sdl.SetAttributeByInt(Attr.SdlGlContextMinorVersion, 2);
 
-            Sdl.SetAttributeByProfile(GlAttr.SdlGlContextProfileMask, GlProfiles.SdlGlContextProfileCore);
-            Sdl.SetAttributeByInt(GlAttr.SdlGlDoubleBuffer, 1);
-            Sdl.SetAttributeByInt(GlAttr.SdlGlDepthSize, 24);
-            Sdl.SetAttributeByInt(GlAttr.SdlGlAlphaSize, 8);
-            Sdl.SetAttributeByInt(GlAttr.SdlGlStencilSize, 8);
+            Sdl.SetAttributeByProfile(Attr.SdlGlContextProfileMask, Profiles.SdlGlContextProfileCore);
+            Sdl.SetAttributeByInt(Attr.SdlGlDoubleBuffer, 1);
+            Sdl.SetAttributeByInt(Attr.SdlGlDepthSize, 24);
+            Sdl.SetAttributeByInt(Attr.SdlGlAlphaSize, 8);
+            Sdl.SetAttributeByInt(Attr.SdlGlStencilSize, 8);
 
             // Enable vsync
             Sdl.SetSwapInterval(1);
@@ -1296,16 +1296,16 @@ namespace Alis.Core.Graphic.Test.Sdl2
             int height = 600;
 
             // CONFIG THE SDL2 AN OPENGL CONFIGURATION
-            Sdl.SetAttributeByInt(GlAttr.SdlGlContextFlags, (int) GlContexts.SdlGlContextForwardCompatibleFlag);
-            Sdl.SetAttributeByProfile(GlAttr.SdlGlContextProfileMask, GlProfiles.SdlGlContextProfileCore);
-            Sdl.SetAttributeByInt(GlAttr.SdlGlContextMajorVersion, 3);
-            Sdl.SetAttributeByInt(GlAttr.SdlGlContextMinorVersion, 2);
+            Sdl.SetAttributeByInt(Attr.SdlGlContextFlags, (int) Contexts.SdlGlContextForwardCompatibleFlag);
+            Sdl.SetAttributeByProfile(Attr.SdlGlContextProfileMask, Profiles.SdlGlContextProfileCore);
+            Sdl.SetAttributeByInt(Attr.SdlGlContextMajorVersion, 3);
+            Sdl.SetAttributeByInt(Attr.SdlGlContextMinorVersion, 2);
 
-            Sdl.SetAttributeByProfile(GlAttr.SdlGlContextProfileMask, GlProfiles.SdlGlContextProfileCore);
-            Sdl.SetAttributeByInt(GlAttr.SdlGlDoubleBuffer, 1);
-            Sdl.SetAttributeByInt(GlAttr.SdlGlDepthSize, 24);
-            Sdl.SetAttributeByInt(GlAttr.SdlGlAlphaSize, 8);
-            Sdl.SetAttributeByInt(GlAttr.SdlGlStencilSize, 8);
+            Sdl.SetAttributeByProfile(Attr.SdlGlContextProfileMask, Profiles.SdlGlContextProfileCore);
+            Sdl.SetAttributeByInt(Attr.SdlGlDoubleBuffer, 1);
+            Sdl.SetAttributeByInt(Attr.SdlGlDepthSize, 24);
+            Sdl.SetAttributeByInt(Attr.SdlGlAlphaSize, 8);
+            Sdl.SetAttributeByInt(Attr.SdlGlStencilSize, 8);
 
             // Enable vsync
             Sdl.SetSwapInterval(1);

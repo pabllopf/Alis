@@ -41,7 +41,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The name
         /// </summary>
-        public IntPtr name { get; set; }
+        public IntPtr Name { get; set; }
 
         /// <summary>
         ///     The flags
@@ -147,6 +147,6 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     Gets the name
         /// </summary>
         /// <returns>The string</returns>
-        public string GetName() => Marshal.PtrToStringAnsi(name);
+        public string GetName() => Marshal.PtrToStringAnsi(Name);
     }
 }

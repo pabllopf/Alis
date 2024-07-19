@@ -47,20 +47,20 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
         {
             AudioSpec audioSpec = new AudioSpec
             {
-                freq = 44100,
-                format = 32784,
-                channels = 2,
-                samples = 512,
-                callback = null,
-                userdata = IntPtr.Zero
+                Freq = 44100,
+                Format = 32784,
+                Channels = 2,
+                Samples = 512,
+                Callback = null,
+                Userdata = IntPtr.Zero
             };
 
-            Assert.Equal(44100, audioSpec.freq);
-            Assert.Equal((ushort) 32784, audioSpec.format);
-            Assert.Equal((byte) 2, audioSpec.channels);
-            Assert.Equal((ushort) 512, audioSpec.samples);
-            Assert.Null(audioSpec.callback);
-            Assert.Equal(IntPtr.Zero, audioSpec.userdata);
+            Assert.Equal(44100, audioSpec.Freq);
+            Assert.Equal((ushort) 32784, audioSpec.Format);
+            Assert.Equal((byte) 2, audioSpec.Channels);
+            Assert.Equal((ushort) 512, audioSpec.Samples);
+            Assert.Null(audioSpec.Callback);
+            Assert.Equal(IntPtr.Zero, audioSpec.Userdata);
         }
 
         /// <summary>
@@ -77,20 +77,20 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
         {
             AudioSpec audioSpec = new AudioSpec
             {
-                freq = freq,
-                format = format,
-                channels = channels,
-                samples = samples,
-                callback = null,
-                userdata = IntPtr.Zero
+                Freq = freq,
+                Format = format,
+                Channels = channels,
+                Samples = samples,
+                Callback = null,
+                Userdata = IntPtr.Zero
             };
 
-            Assert.Equal(freq, audioSpec.freq);
-            Assert.Equal(format, audioSpec.format);
-            Assert.Equal(channels, audioSpec.channels);
-            Assert.Equal(samples, audioSpec.samples);
-            Assert.Null(audioSpec.callback);
-            Assert.Equal(IntPtr.Zero, audioSpec.userdata);
+            Assert.Equal(freq, audioSpec.Freq);
+            Assert.Equal(format, audioSpec.Format);
+            Assert.Equal(channels, audioSpec.Channels);
+            Assert.Equal(samples, audioSpec.Samples);
+            Assert.Null(audioSpec.Callback);
+            Assert.Equal(IntPtr.Zero, audioSpec.Userdata);
         }
     }
 }

@@ -112,16 +112,16 @@ namespace Alis.Extension.Graphic.OpenGL.Sample
             Console.WriteLine(@$"SDL2 VERSION {version.major}.{version.minor}.{version.patch}");
 
             // CONFIG THE SDL2 AN OPENGL CONFIGURATION
-            Sdl.SetAttributeByInt(GlAttr.SdlGlContextFlags, (int) GlContexts.SdlGlContextForwardCompatibleFlag);
-            Sdl.SetAttributeByProfile(GlAttr.SdlGlContextProfileMask, GlProfiles.SdlGlContextProfileCore);
-            Sdl.SetAttributeByInt(GlAttr.SdlGlContextMajorVersion, 3);
-            Sdl.SetAttributeByInt(GlAttr.SdlGlContextMinorVersion, 2);
+            Sdl.SetAttributeByInt(Attr.SdlGlContextFlags, (int) Contexts.SdlGlContextForwardCompatibleFlag);
+            Sdl.SetAttributeByProfile(Attr.SdlGlContextProfileMask, Profiles.SdlGlContextProfileCore);
+            Sdl.SetAttributeByInt(Attr.SdlGlContextMajorVersion, 3);
+            Sdl.SetAttributeByInt(Attr.SdlGlContextMinorVersion, 2);
 
-            Sdl.SetAttributeByProfile(GlAttr.SdlGlContextProfileMask, GlProfiles.SdlGlContextProfileCore);
-            Sdl.SetAttributeByInt(GlAttr.SdlGlDoubleBuffer, 1);
-            Sdl.SetAttributeByInt(GlAttr.SdlGlDepthSize, 24);
-            Sdl.SetAttributeByInt(GlAttr.SdlGlAlphaSize, 8);
-            Sdl.SetAttributeByInt(GlAttr.SdlGlStencilSize, 8);
+            Sdl.SetAttributeByProfile(Attr.SdlGlContextProfileMask, Profiles.SdlGlContextProfileCore);
+            Sdl.SetAttributeByInt(Attr.SdlGlDoubleBuffer, 1);
+            Sdl.SetAttributeByInt(Attr.SdlGlDepthSize, 24);
+            Sdl.SetAttributeByInt(Attr.SdlGlAlphaSize, 8);
+            Sdl.SetAttributeByInt(Attr.SdlGlStencilSize, 8);
 
             window = Sdl.CreateWindow("OpenGL Window", 100, 100, 800, 600, WindowSettings.WindowOpengl | WindowSettings.WindowResizable);
 
