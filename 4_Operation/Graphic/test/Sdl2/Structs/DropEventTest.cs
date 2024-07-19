@@ -34,8 +34,14 @@ using Alis.Core.Graphic.Sdl2.Structs;
 
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
+    /// <summary>
+    /// The drop event tests class
+    /// </summary>
     public class DropEventTests
     {
+        /// <summary>
+        /// Tests that drop event initializes properties correctly
+        /// </summary>
         [Fact]
         public void DropEvent_InitializesPropertiesCorrectly()
         {
