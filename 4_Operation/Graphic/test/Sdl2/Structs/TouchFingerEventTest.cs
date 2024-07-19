@@ -29,6 +29,9 @@
 
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
+    /// <summary>
+    /// The touch finger event test class
+    /// </summary>
     public class TouchFingerEventTest
     {
         

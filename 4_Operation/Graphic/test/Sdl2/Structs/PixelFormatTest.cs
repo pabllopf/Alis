@@ -29,6 +29,9 @@
 
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
+    /// <summary>
+    /// The pixel format test class
+    /// </summary>
     public class PixelFormatTest
     {
         
