@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:PointF.cs
+//  File:HintTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,55 +27,13 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.InteropServices;
-
-namespace Alis.Core.Aspect.Math.Shape.Point
+namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
     /// <summary>
-    ///     The f point
+    /// The hint test class
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    public struct PointF : IShape
+    public class HintTest
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="PointF"/> class
-        /// </summary>
-        /// <param name="value">The value</param>
-        public PointF(float value)
-        {
-            X = value;
-            Y = value;
-        }
         
-        /// <summary>
-        /// Initializes a new instance of the <see cref="PointF"/> class
-        /// </summary>
-        /// <param name="point">The point</param>
-        public PointF(PointF point)
-        {
-            X = point.X;
-            Y = point.Y;
-        }
-        
-        /// <summary>
-        /// Initializes a new instance of the <see cref="PointF"/> class
-        /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        public PointF(float x, float y)
-        {
-            X = x;
-            Y = y;
-        }
-
-        /// <summary>
-        ///     The X
-        /// </summary>
-        public float X { get; set; }
-
-        /// <summary>
-        ///     The Y
-        /// </summary>
-        public float Y { get; set; }
     }
 }
