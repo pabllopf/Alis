@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalUikitWmInfo.cs
+//  File:InternalUikitWmInfoTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,35 +27,42 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Xunit;
 using System;
-using System.Runtime.InteropServices;
+using Alis.Core.Graphic.Sdl2.Structs;
 
-namespace Alis.Core.Graphic.Sdl2.Structs
+
+namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
+
     /// <summary>
-    ///     The internal uikit wm info
+    /// The internal uikit wm info tests class
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    public struct InternalUikitWmInfo
+    public class InternalUikitWmInfoTests
     {
         /// <summary>
-        ///     Refers to a UIWindow*
+        /// Tests that internal uikit wm info initializes properties correctly
         /// </summary>
-        public IntPtr Window { get; set; }
+        [Fact]
+        public void InternalUikitWmInfo_InitializesPropertiesCorrectly()
+        {
+            IntPtr expectedWindow = new IntPtr(123);
+            uint expectedFramebuffer = 456u;
+            uint expectedColorBuffer = 789u;
+            uint expectedResolveFramebuffer = 101112u;
 
-        /// <summary>
-        ///     The frame buffer
-        /// </summary>
-        public uint framebuffer;
+            InternalUikitWmInfo info = new InternalUikitWmInfo
+            {
+                Window = expectedWindow,
+                framebuffer = expectedFramebuffer,
+                colorBuffer = expectedColorBuffer,
+                resolveFramebuffer = expectedResolveFramebuffer
+            };
 
-        /// <summary>
-        ///     The color buffer
-        /// </summary>
-        public uint colorBuffer;
-
-        /// <summary>
-        ///     The resolve frame buffer
-        /// </summary>
-        public uint resolveFramebuffer;
+            Assert.Equal(expectedWindow, info.Window);
+            Assert.Equal(expectedFramebuffer, info.framebuffer);
+            Assert.Equal(expectedColorBuffer, info.colorBuffer);
+            Assert.Equal(expectedResolveFramebuffer, info.resolveFramebuffer);
+        }
     }
 }

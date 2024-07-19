@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalUikitWmInfo.cs
+//  File:InternalVivanteWmInfoTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,35 +27,36 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Xunit;
 using System;
-using System.Runtime.InteropServices;
+using Alis.Core.Graphic.Sdl2.Structs;
 
-namespace Alis.Core.Graphic.Sdl2.Structs
+
+namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
+
     /// <summary>
-    ///     The internal uikit wm info
+    /// The internal vivante wm info tests class
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    public struct InternalUikitWmInfo
+    public class InternalVivanteWmInfoTests
     {
         /// <summary>
-        ///     Refers to a UIWindow*
+        /// Tests that internal vivante wm info initializes properties correctly
         /// </summary>
-        public IntPtr Window { get; set; }
+        [Fact]
+        public void InternalVivanteWmInfo_InitializesPropertiesCorrectly()
+        {
+            IntPtr expectedDisplay = new IntPtr(123);
+            IntPtr expectedWindow = new IntPtr(456);
 
-        /// <summary>
-        ///     The frame buffer
-        /// </summary>
-        public uint framebuffer;
+            InternalVivanteWmInfo info = new InternalVivanteWmInfo
+            {
+                Display = expectedDisplay,
+                Window = expectedWindow
+            };
 
-        /// <summary>
-        ///     The color buffer
-        /// </summary>
-        public uint colorBuffer;
-
-        /// <summary>
-        ///     The resolve frame buffer
-        /// </summary>
-        public uint resolveFramebuffer;
+            Assert.Equal(expectedDisplay, info.Display);
+            Assert.Equal(expectedWindow, info.Window);
+        }
     }
 }

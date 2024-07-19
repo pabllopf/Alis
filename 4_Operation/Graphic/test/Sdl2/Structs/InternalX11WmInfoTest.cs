@@ -37,8 +37,14 @@ namespace Alis.Core.Graphic.Sdl2.Structs
 {
 
 
+    /// <summary>
+    /// The internal 11 wm info tests class
+    /// </summary>
     public class InternalX11WmInfoTests
     {
+        /// <summary>
+        /// Tests that internal x 11 wm info initializes properties correctly
+        /// </summary>
         [Fact]
         public void InternalX11WmInfo_InitializesPropertiesCorrectly()
         {
