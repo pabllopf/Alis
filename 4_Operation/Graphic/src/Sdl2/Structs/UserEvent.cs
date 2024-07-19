@@ -41,22 +41,22 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The type
         /// </summary>
-        public readonly uint type;
+        public uint type;
 
         /// <summary>
         ///     The timestamp
         /// </summary>
-        public readonly uint timestamp;
+        public uint timestamp;
 
         /// <summary>
         ///     The window id
         /// </summary>
-        public readonly uint windowID;
+        public uint windowID;
 
         /// <summary>
         ///     The code
         /// </summary>
-        public readonly int code;
+        public int code;
 
         /// <summary>
         ///     The data
