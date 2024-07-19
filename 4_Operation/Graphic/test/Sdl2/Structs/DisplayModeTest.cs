@@ -27,13 +27,44 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using Alis.Core.Graphic.Sdl2.Structs;
+using Xunit;
+
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
+   
     /// <summary>
-    /// The display mode test class
+    /// The display mode tests class
     /// </summary>
-    public class DisplayModeTest
+    public class DisplayModeTests
     {
-        
+        /// <summary>
+        /// Tests that display mode initializes properties correctly
+        /// </summary>
+        [Fact]
+        public void DisplayMode_InitializesPropertiesCorrectly()
+        {
+            uint expectedFormat = 123;
+            int expectedWidth = 1920;
+            int expectedHeight = 1080;
+            int expectedRefreshRate = 60;
+            IntPtr expectedDriverData = new IntPtr(123456);
+
+            DisplayMode displayMode = new DisplayMode
+            {
+                format = expectedFormat,
+                w = expectedWidth,
+                h = expectedHeight,
+                refresh_rate = expectedRefreshRate,
+                DriverData = expectedDriverData
+            };
+
+            Assert.Equal(expectedFormat, displayMode.format);
+            Assert.Equal(expectedWidth, displayMode.w);
+            Assert.Equal(expectedHeight, displayMode.h);
+            Assert.Equal(expectedRefreshRate, displayMode.refresh_rate);
+            Assert.Equal(expectedDriverData, displayMode.DriverData);
+        }
     }
 }
