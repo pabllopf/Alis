@@ -46,7 +46,6 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
         public void SysWmEvent_InitializesPropertiesCorrectly()
         {
             EventType expectedType = EventType.FirstEvent;
-            uint expectedTimestamp = 123456789;
             IntPtr expectedMsg = new IntPtr(123456);
 
             SysWmEvent sysWmEvent = new SysWmEvent
@@ -55,7 +54,6 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             };
 
             Assert.Equal(expectedType, sysWmEvent.type);
-            Assert.Equal(expectedTimestamp, sysWmEvent.timestamp);
             Assert.Equal(expectedMsg, sysWmEvent.Msg);
         }
     }

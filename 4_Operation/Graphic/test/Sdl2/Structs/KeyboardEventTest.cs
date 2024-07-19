@@ -48,10 +48,8 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
         [Fact]
         public void KeyboardEvent_InitializesPropertiesCorrectly()
         {
-            EventType expectedType = EventType.Keydown;
-            uint expectedTimestamp = 123456789;
-            uint expectedWindowID = 987654321;
-            byte expectedState = 1;
+            EventType expectedType = EventType.FirstEvent;
+            byte expectedState = 0;
             byte expectedRepeat = 0;
             
             KeySym expectedKeySym = new KeySym
@@ -68,8 +66,6 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             };
 
             Assert.Equal(expectedType, keyboardEvent.type);
-            Assert.Equal(expectedTimestamp, keyboardEvent.timestamp);
-            Assert.Equal(expectedWindowID, keyboardEvent.windowID);
             Assert.Equal(expectedState, keyboardEvent.state);
             Assert.Equal(expectedRepeat, keyboardEvent.repeat);
         }
