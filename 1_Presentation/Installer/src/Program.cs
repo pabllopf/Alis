@@ -28,6 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Threading.Tasks;
+using Alis.App.Installer.Updater;
 
 namespace Alis.App.Installer
 {
@@ -40,6 +42,9 @@ namespace Alis.App.Installer
         ///     Main the args
         /// </summary>
         /// <param name="args">The args</param>
-        public static void Main(string[] args) => new Installer().Run(args);
+        public static void Main(string[] args)
+        {
+             new Installer().Run(args);
+        }
     }
 }

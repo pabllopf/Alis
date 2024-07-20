@@ -29,12 +29,16 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using Alis.App.Engine.Fonts;
 using Alis.App.Installer.Core;
 using Alis.App.Installer.Shaders;
+using Alis.App.Installer.Updater;
 using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
@@ -66,6 +70,9 @@ namespace Alis.App.Installer
         /// </summary>
         private const string NameEngine = "Alis - Installer";
         
+        /// <summary>
+        /// The arguments
+        /// </summary>
         private string[] arguments;
 
         /// <summary>
@@ -148,6 +155,9 @@ namespace Alis.App.Installer
         /// </summary>
         private SpaceWork spaceWork = new SpaceWork();
 
+        /// <summary>
+        /// The is open main
+        /// </summary>
         private bool isOpenMain = true;
 
         /// <summary>
@@ -159,7 +169,7 @@ namespace Alis.App.Installer
         {
             arguments = args;
             Logger.Info(@$"Starting {NameEngine} with args: {string.Join(", ", arguments)}");
-            
+
             // initialize SDL and set a few defaults for the OpenGL context
             if (Sdl.Init(InitSettings.InitEverything) != 0)
             {
@@ -353,7 +363,7 @@ namespace Alis.App.Installer
 
             // CONFIG DOCKSPACE
             spaceWork.Viewport = ImGui.GetMainViewport();
-            
+
             // config spaceWork.Style
             spaceWork.Style = ImGui.GetStyle();
             ImGui.StyleColorsDark();
@@ -388,7 +398,7 @@ namespace Alis.App.Installer
             _vboHandle = Gl.GenBuffer();
             _elementsHandle = Gl.GenBuffer();
             _vertexArrayObject = Gl.GenVertexArray();
-            
+
             // Set icon app:
             string iconPath = AssetManager.Find("app.bmp");
             if (!string.IsNullOrEmpty(iconPath) && File.Exists(iconPath))
@@ -396,7 +406,11 @@ namespace Alis.App.Installer
                 IntPtr icon = Sdl.LoadBmp(iconPath);
                 Sdl.SetWindowIcon(spaceWork.Window, icon);
             }
-            
+
+            UpdateManager manager = new UpdateManager();
+            Task<bool> task = manager.UpdateGameAsync();
+            //task.Start();
+
             spaceWork.Start();
             while (!_quit)
             {
@@ -454,28 +468,35 @@ namespace Alis.App.Installer
                 _time = currentTime;
 
                 UpdateMousePosAndButtons();
-                
+
                 // RENDER GUI
-                
+
                 ImGui.PushFont(fontLoaded16Regular);
-                
+
                 ImGui.SetNextWindowSize(new Vector2(displayW, displayH));
                 ImGui.SetNextWindowPos(new Vector2(displayW / windowSize.X, displayH / windowSize.Y));
                 if (ImGui.Begin($"MainWindow", ref isOpenMain, ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse))
                 {
                     ImGui.Separator();
-                    ImGui.ProgressBar(0.5f, new Vector2(-1, 30), "Progress Bar");
+                    ImGui.ProgressBar(manager.Progress, new Vector2(-1, 30), $"{Math.Round(manager.Progress * 100)}%");
                     ImGui.Separator();
-                    ImGui.Text("Resume: ");
+                    ImGui.Text($"{manager.UpdateStatus}");
+                    ImGui.Separator();
                 }
+
                 ImGui.End();
-                
+
                 ImGui.PopFont();
-                
-                
+
+                if (task.IsCompleted)
+                {
+                    _quit = true;
+                }
+
+
                 // END RENDER GUI
 
-                
+
 
                 Sdl.MakeCurrent(spaceWork.Window, _glContext);
                 ImGui.Render();
@@ -496,6 +517,8 @@ namespace Alis.App.Installer
                 Sdl.SwapWindow(spaceWork.Window);
             }
 
+            task.Wait();
+
             if (_shader != null)
             {
                 _shader.Dispose();
@@ -509,6 +532,8 @@ namespace Alis.App.Installer
             Sdl.DeleteContext(_glContext);
             Sdl.DestroyWindow(spaceWork.Window);
             Sdl.Quit();
+
+            Logger.Info(@$"Closing {NameEngine}");
         }
 
 
