@@ -146,8 +146,6 @@ namespace Alis.App.Installer.Updater
                 
                 //Backup the current program:
                 Backup();
-                
-                
                 ExtractAndReplace(zipPath);
 
                 CleanTempFile();
@@ -166,6 +164,15 @@ namespace Alis.App.Installer.Updater
 
         private void Backup()
         {
+            if (!Directory.Exists(_programFolder))
+            {
+                Console.WriteLine("Backup not completed.");
+                UpdateStatus = "Backup not completed.";
+                Progress = 0.6f;
+                Thread.Sleep(1000);
+                return;
+            }
+            
             Console.WriteLine("Backup completed.");
             UpdateStatus = "Backup completed.";
             Progress = 0.7f;
