@@ -46,7 +46,7 @@ namespace Alis.Core.Ecs.Component.Audio
         /// </summary>
         /// <param name="audioClip">The audio clip</param>
         [JsonConstructor]
-        [ExcludeFromCodeCoverage]
+        
         public AudioSource(AudioClip audioClip)
         {
             AudioClip = audioClip;
@@ -56,7 +56,7 @@ namespace Alis.Core.Ecs.Component.Audio
         /// <summary>
         ///     Initializes a new instance of the <see cref="AudioSource" /> class
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public AudioSource()
         {
             AudioClip = new AudioClip();

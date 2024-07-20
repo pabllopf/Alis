@@ -65,7 +65,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <param name="value">The value</param>
         /// <param name="options">The options</param>
-        [ExcludeFromCodeCoverage]
+        
         public override void Add(object value, JsonOptions options = null)
         {
             if ((value == null) && typeof(T).IsValueType)

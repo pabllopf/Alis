@@ -60,7 +60,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         /// <summary>
         ///     Gets or sets the value of the scenes
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         [JsonPropertyName("_Scenes_")]
         public List<Entity.Scene> Scenes { get; set; }
 
@@ -75,7 +75,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         /// <summary>
         ///     Ons the init
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public override void OnInit()
         {
             if (Scenes.Count > 0)

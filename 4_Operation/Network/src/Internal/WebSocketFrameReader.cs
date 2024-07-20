@@ -70,7 +70,7 @@ namespace Alis.Core.Network.Internal
         /// <param name="readCursor">The previous partial websocket frame read plus cursor information</param>
         /// <param name="cancellationToken">the cancellation token</param>
         /// <returns>A websocket frame</returns>
-        [ExcludeFromCodeCoverage]
+        
         public static async Task<WebSocketReadCursor> ReadFromCursorAsync(Stream fromStream,
             ArraySegment<byte> intoBuffer, WebSocketReadCursor readCursor, CancellationToken cancellationToken)
         {
@@ -94,7 +94,7 @@ namespace Alis.Core.Network.Internal
         /// <param name="intoBuffer">The buffer to read into</param>
         /// <param name="cancellationToken">the cancellation token</param>
         /// <returns>A websocket frame</returns>
-        [ExcludeFromCodeCoverage]
+        
         public static async Task<WebSocketReadCursor> ReadAsync(Stream fromStream, ArraySegment<byte> intoBuffer,
             CancellationToken cancellationToken)
         {
@@ -160,7 +160,7 @@ namespace Alis.Core.Network.Internal
         /// <summary>
         ///     Extracts close status and close description information from the web socket frame
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         internal static WebSocketFrame DecodeCloseFrame(bool isFinBitSet, WebSocketOpCode opCode, int count,
             ArraySegment<byte> buffer, ArraySegment<byte> maskKey)
         {

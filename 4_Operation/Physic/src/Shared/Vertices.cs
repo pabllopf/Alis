@@ -232,7 +232,7 @@ namespace Alis.Core.Physic.Shared
 
         /// <summary>Scale the vertices with the specified vector.</summary>
         /// <param name="value">The Value.</param>
-        [ExcludeFromCodeCoverage]
+        
         internal void Scale(ref Vector2 value)
         {
             for (int i = 0; i < Count; i++)
@@ -394,7 +394,7 @@ namespace Alis.Core.Physic.Shared
         ///     orientation, minimum angle, and volume. From Eric Jordan's convex decomposition library
         /// </summary>
         /// <returns>PolygonError.NoError if there were no error.</returns>
-        [ExcludeFromCodeCoverage]
+        
         public PolygonError CheckPolygon()
         {
             if (!IsSimple())
@@ -587,7 +587,7 @@ namespace Alis.Core.Physic.Shared
 
         /// <summary>Transforms the polygon using the defined matrix.</summary>
         /// <param name="transform">The matrix to use as transformation.</param>
-        [ExcludeFromCodeCoverage]
+        
         public void Transform(ref Matrix4X4 transform)
         {
             // Transform main polygon
@@ -672,7 +672,7 @@ namespace Alis.Core.Physic.Shared
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="ArgumentException">Destination array length is lesser than destinationIndex + length</exception>
         /// <exception cref="ArgumentException">Source array length is lesser than sourceIndex + length</exception>
-        [ExcludeFromCodeCoverage]
+        
         internal static void ValidateArrays(
             Vector2[] sourceArray,
             int sourceIndex,

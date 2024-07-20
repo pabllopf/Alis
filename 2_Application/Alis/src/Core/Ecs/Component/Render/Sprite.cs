@@ -61,7 +61,7 @@ namespace Alis.Core.Ecs.Component.Render
         ///     Initializes a new instance of the <see cref="Sprite" /> class
         /// </summary>
         /// <param name="image">The image</param>
-        [ExcludeFromCodeCoverage]
+        
         public Sprite(Image image)
         {
             Image = image;
@@ -76,7 +76,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// <param name="depth">The depth</param>
         /// <param name="flips">The flips</param>
         [JsonConstructor]
-        [ExcludeFromCodeCoverage]
+        
         public Sprite(Image image, int depth, RendererFlips flips)
         {
             Image = image;
@@ -111,7 +111,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// <summary>
         ///     Inits this instance
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public override void OnInit()
         {
             Image.Load();
@@ -120,7 +120,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// <summary>
         ///     Awakes this instance
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public override void OnAwake()
         {
             Context?.GraphicManager.Attach(this);
@@ -129,7 +129,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// <summary>
         ///     Exits this instance
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public override void OnExit()
         {
             Context?.GraphicManager.UnAttach(this);
@@ -140,7 +140,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         /// <param name="renderer">The renderer</param>
         /// <param name="camera"></param>
-        [ExcludeFromCodeCoverage]
+        
         public void Render(IntPtr renderer, Camera camera)
         {
             if (Context is null)
@@ -163,7 +163,7 @@ namespace Alis.Core.Ecs.Component.Render
         ///     Renders the renderer
         /// </summary>
         /// <param name="renderer">The renderer</param>
-        [ExcludeFromCodeCoverage]
+        
         public void Render(IntPtr renderer)
         {
             if (Context is null)

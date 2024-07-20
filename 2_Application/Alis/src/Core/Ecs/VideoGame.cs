@@ -91,7 +91,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Initializes a new instance of the <see cref="VideoGame" /> class
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public VideoGame()
         {
             Context = new Context(new Settings());
@@ -144,7 +144,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Run program
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public void Run()
         {
             OnInit();
@@ -254,7 +254,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Exits this instance
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public void Exit() => Context.TimeManager.IsRunning = false;
 
         /// <summary>
@@ -377,7 +377,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Ons the exit
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public void OnExit()
         {
             Context.OnExit();
@@ -386,7 +386,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Ons the stop
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public void OnStop()
         {
             Context.OnStop();
@@ -398,7 +398,7 @@ namespace Alis.Core.Ecs
         /// <param name="newTime">The new time</param>
         /// <param name="lastLogTime">The last log time</param>
         /// <returns>The last log time</returns>
-        [ExcludeFromCodeCoverage]
+        
         public double LastLogTime(double newTime, double lastLogTime)
         {
             // Log output every 1 second
@@ -435,7 +435,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Ons the gui
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public void OnGui()
         {
             Context.OnGui();
@@ -444,7 +444,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Ons the draw
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public void OnDraw()
         {
             Context.OnDraw();
@@ -453,7 +453,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Ons the calculate
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public void OnCalculate()
         {
             Context.OnCalculate();
@@ -462,7 +462,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Ons the after fixed update
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public void OnAfterFixedUpdate()
         {
             Context.OnAfterFixedUpdate();
@@ -471,7 +471,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Ons the fixed update
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public void OnFixedUpdate()
         {
             Context.OnFixedUpdate();
@@ -480,7 +480,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Ons the before fixed update
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public void OnBeforeFixedUpdate()
         {
             Context.OnBeforeFixedUpdate();
@@ -489,7 +489,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Ons the after update
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public void OnAfterUpdate()
         {
             Context.OnAfterUpdate();
@@ -498,7 +498,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Ons the update
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public void OnUpdate()
         {
             Context.OnUpdate();
@@ -507,7 +507,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Ons the before update
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public void OnBeforeUpdate()
         {
             Context.OnBeforeUpdate();
@@ -516,7 +516,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Ons the dispatch events
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public void OnDispatchEvents()
         {
             Context.OnDispatchEvents();
@@ -525,7 +525,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Ons the start
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public void OnStart()
         {
             Context.OnStart();
@@ -534,7 +534,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Ons the awake
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public void OnAwake()
         {
             Context.OnAwake();
@@ -543,7 +543,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Ons the init
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public void OnInit()
         {
             Context.OnInit();

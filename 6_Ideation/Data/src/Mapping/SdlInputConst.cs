@@ -34,7 +34,7 @@ namespace Alis.Core.Aspect.Data.Mapping
     /// <summary>
     ///     The sdl input const class
     /// </summary>
-    [ExcludeFromCodeCoverage]
+    
     public class SdlInputConst
     {
         /// <summary>

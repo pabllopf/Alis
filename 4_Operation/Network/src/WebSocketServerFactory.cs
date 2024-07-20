@@ -99,7 +99,7 @@ namespace Alis.Core.Network
         /// <param name="options">The web socket options</param>
         /// <param name="token">The optional cancellation token</param>
         /// <returns>A connected web socket</returns>
-        [ExcludeFromCodeCoverage]
+        
         public async Task<WebSocket> AcceptWebSocketAsync(WebSocketHttpContext context, WebSocketServerOptions options,
             CancellationToken token = default(CancellationToken))
         {
@@ -168,7 +168,7 @@ namespace Alis.Core.Network
         /// <param name="stream">The stream</param>
         /// <param name="token">The token</param>
         /// <exception cref="SecWebSocketKeyMissingException">Unable to read "Sec-WebSocket-Key" from http header</exception>
-        [ExcludeFromCodeCoverage]
+        
         internal static async Task PerformHandshakeAsync(Guid guid, string httpHeader, string subProtocol, Stream stream,
             CancellationToken token)
         {

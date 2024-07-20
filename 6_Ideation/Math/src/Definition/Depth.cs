@@ -55,7 +55,7 @@ namespace Alis.Core.Aspect.Math.Definition
         /// </summary>
         /// <param name="info">The info</param>
         /// <param name="context">The context</param>
-        [ExcludeFromCodeCoverage]
+        
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("value", Value);

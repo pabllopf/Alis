@@ -181,7 +181,7 @@ namespace Alis.Core.Physic
         /// <summary>
         ///     Solves the step
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         internal void Solve()
         {
             // Clear all the island flags.
@@ -226,7 +226,7 @@ namespace Alis.Core.Physic
         /// <summary>
         ///     Solves the TOI (Time of Impact) events.
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         internal void SolveToiEvents()
         {
             while (true)

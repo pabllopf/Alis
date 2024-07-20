@@ -43,7 +43,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
     ///     The graphic manager base class
     /// </summary>
     /// <seealso cref="AManager" />
-    [ExcludeFromCodeCoverage]
+    
     public class InputManager : AManager
     {
         /// <summary>

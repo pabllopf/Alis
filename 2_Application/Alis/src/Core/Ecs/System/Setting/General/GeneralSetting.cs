@@ -47,7 +47,7 @@ namespace Alis.Core.Ecs.System.Setting.General
         /// <summary>
         ///     Initializes a new instance of the <see cref="GeneralSetting" /> class
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public GeneralSetting()
         {
             Debug = false;
@@ -70,7 +70,7 @@ namespace Alis.Core.Ecs.System.Setting.General
         /// <param name="license">The license</param>
         /// <param name="icon">The icon</param>
         [JsonConstructor]
-        [ExcludeFromCodeCoverage]
+        
         public GeneralSetting(
             bool debug,
             string name,

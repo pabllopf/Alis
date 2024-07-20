@@ -123,7 +123,7 @@ namespace Alis.Extension.Plugin
         /// </summary>
         /// <exception cref="NotSupportedException">Unsupported platform. Plugins will not be loaded.</exception>
         /// <returns>The string</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal string GetPlatformFolder()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
@@ -232,7 +232,7 @@ namespace Alis.Extension.Plugin
         /// <summary>
         ///     Unloads the plugins
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         internal void UnloadPlugins()
         {
             foreach (IPlugin plugin in LoadedPlugins)
@@ -261,25 +261,25 @@ namespace Alis.Extension.Plugin
         /// <summary>
         ///     Initializes this instance
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public void Initialize() => LoadedPlugins.ForEach(plugin => plugin.Initialize());
 
         /// <summary>
         ///     Updates this instance
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public void Update() => LoadedPlugins.ForEach(plugin => plugin.Update());
 
         /// <summary>
         ///     Renders this instance
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public void Render() => LoadedPlugins.ForEach(plugin => plugin.Render());
 
         /// <summary>
         ///     Shutdowns this instance
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public void Shutdown() => LoadedPlugins.ForEach(plugin => plugin.Shutdown());
     }
 }

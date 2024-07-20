@@ -36,7 +36,7 @@ namespace Alis.Core.Aspect.Logging
     /// <summary>
     ///     The message class
     /// </summary>
-    [ExcludeFromCodeCoverage]
+    
     public class Message
     {
         /// <summary>

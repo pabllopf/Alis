@@ -74,7 +74,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <summary>
         ///     Gets the value of the entry
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public DictionaryEntry Entry
         {
             get
@@ -129,7 +129,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <summary>
         ///     Disposes this instance
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public void Dispose()
         {
             if (enumerator is IDisposable disposable)

@@ -50,7 +50,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="transformA">The transform</param>
         /// <param name="circleB">The circle</param>
         /// <param name="transformB">The transform</param>
-        [ExcludeFromCodeCoverage]
+        
         public static void CollideEdgeAndCircle(ref Manifold manifold, EdgeShape edgeA, ref Transform transformA,
             CircleShape circleB, ref Transform transformB)
         {
@@ -100,7 +100,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="offset">The offset</param>
         /// <param name="circlePosition">The circle position</param>
         /// <param name="edgeNormal">The edge normal</param>
-        [ExcludeFromCodeCoverage]
+        
         internal static void HandleRegionAb(ref Manifold manifold, Vector2 edgeStart, Vector2 edgeEnd, Vector2 q, float radiusSum, float offset, Vector2 circlePosition, Vector2 edgeNormal)
         {
             float den = Vector2.Dot(edgeEnd - edgeStart, edgeEnd - edgeStart);
@@ -142,7 +142,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="q">The </param>
         /// <param name="radiusSum">The radius sum</param>
         /// <param name="circlePosition">The circle position</param>
-        [ExcludeFromCodeCoverage]
+        
         internal static void HandleRegionA(ref Manifold manifold, EdgeShape edgeA, Vector2 edgeStart, Vector2 q, float radiusSum, Vector2 circlePosition)
         {
             Vector2 p1 = edgeStart;
@@ -179,7 +179,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="q">The </param>
         /// <param name="radiusSum">The radius sum</param>
         /// <param name="circlePosition">The circle position</param>
-        [ExcludeFromCodeCoverage]
+        
         internal static void HandleRegionB(ref Manifold manifold, EdgeShape edgeA, Vector2 edgeEnd, Vector2 q, float radiusSum, Vector2 circlePosition)
         {
             Vector2 p2 = edgeEnd;
@@ -213,7 +213,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="manifold">The manifold</param>
         /// <param name="contactPoint">The contact point</param>
         /// <param name="circlePosition">The circle position</param>
-        [ExcludeFromCodeCoverage]
+        
         internal static void SetManifoldForCircle(ref Manifold manifold, Vector2 contactPoint, Vector2 circlePosition)
         {
             ContactFeature cf = default(ContactFeature);
@@ -235,7 +235,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="edgeStart">The edge start</param>
         /// <param name="edgeNormal">The edge normal</param>
         /// <param name="circlePosition">The circle position</param>
-        [ExcludeFromCodeCoverage]
+        
         internal static void SetManifoldForEdge(ref Manifold manifold, Vector2 edgeStart, Vector2 edgeNormal, Vector2 circlePosition)
         {
             ContactFeature cf = new ContactFeature
@@ -262,7 +262,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="xfA">The xf</param>
         /// <param name="polygonB">The polygon</param>
         /// <param name="xfB">The xf</param>
-        [ExcludeFromCodeCoverage]
+        
         public static void CollideEdgeAndPolygon(ref Manifold manifold, EdgeShape edgeA, ref Transform xfA,
             PolygonShape polygonB, ref Transform xfB)
         {
@@ -367,7 +367,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="edgeAxis">The edge axis</param>
         /// <param name="radius">The radius</param>
         /// <returns>The primary axis</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static EpAxis GetPrimaryAxis(EpAxis polygonAxis, EpAxis edgeAxis, float radius)
         {
             // Use hysteresis for jitter reduction.
@@ -387,7 +387,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="edge1">The edge</param>
         /// <param name="edgeA">The edge</param>
         /// <returns>The primary axis</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static EpAxis HandleOneSidedEdge(EpAxis primaryAxis, EpAxis edgeAxis, Vector2 v1, Vector2 v2, Vector2 edge1, EdgeShape edgeA)
         {
             Vector2 edge0 = v1 - edgeA.Vertex0;
@@ -456,7 +456,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="edge1">The edge</param>
         /// <param name="manifold">The manifold</param>
         /// <returns>The ref</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static ReferenceFace GetReferenceFace(EpAxis primaryAxis, TempPolygon tempPolygonB, Vector2 v1, Vector2 v2, Vector2 edge1, ref Manifold manifold)
         {
             ClipVertex[] clipPoints = new ClipVertex[2];
@@ -544,7 +544,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="radius">The radius</param>
         /// <param name="xf">The xf</param>
         /// <param name="polygonB">The polygon</param>
-        [ExcludeFromCodeCoverage]
+        
         internal static void SetManifoldPoints(ref Manifold manifold, EpAxis primaryAxis, ReferenceFace ref1, ClipVertex[] clipPoints2, float radius, Transform xf, PolygonShape polygonB)
         {
             // Now clipPoints2 contains the clipped points.
@@ -597,7 +597,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="v1">The </param>
         /// <param name="normal1">The normal</param>
         /// <returns>The axis</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static EpAxis ComputeEdgeSeparation(ref TempPolygon polygonB, Vector2 v1, Vector2 normal1)
         {
             EpAxis axis = new EpAxis
@@ -643,7 +643,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="v1">The </param>
         /// <param name="v2">The </param>
         /// <returns>The axis</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static EpAxis ComputePolygonSeparation(ref TempPolygon polygonB, Vector2 v1, Vector2 v2)
         {
             EpAxis axis = new EpAxis

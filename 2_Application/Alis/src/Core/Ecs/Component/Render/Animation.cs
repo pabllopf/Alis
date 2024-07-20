@@ -43,14 +43,14 @@ namespace Alis.Core.Ecs.Component.Render
         /// <summary>
         ///     Initializes a new instance of the <see cref="Animation" /> class
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public Animation() => Frames = new List<Frame>();
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Animation" /> class
         /// </summary>
         /// <param name="textures">The textures</param>
-        [ExcludeFromCodeCoverage]
+        
         public Animation(List<Frame> textures) => Frames = textures;
 
         /// <summary>

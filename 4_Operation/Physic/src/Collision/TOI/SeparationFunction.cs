@@ -53,7 +53,7 @@ namespace Alis.Core.Physic.Collision.TOI
         /// <param name="axis">The axis</param>
         /// <param name="localPoint">The local point</param>
         /// <param name="type">The type</param>
-        [ExcludeFromCodeCoverage]
+        
         public static void Initialize(ref SimplexCache cache, DistanceProxy proxyA, ref Sweep sweepA,
             DistanceProxy proxyB, ref Sweep sweepB, float t1, out Vector2 axis, out Vector2 localPoint,
             out SeparationFunctionType type)
@@ -139,7 +139,7 @@ namespace Alis.Core.Physic.Collision.TOI
         /// <param name="localPoint">The local point</param>
         /// <param name="type">The type</param>
         /// <returns>The float</returns>
-        [ExcludeFromCodeCoverage]
+        
         public static float FindMinSeparation(out int indexA, out int indexB, float t, DistanceProxy proxyA,
             ref Sweep sweepA, DistanceProxy proxyB, ref Sweep sweepB, ref Vector2 axis, ref Vector2 localPoint,
             SeparationFunctionType type)
@@ -221,7 +221,7 @@ namespace Alis.Core.Physic.Collision.TOI
         /// <param name="localPoint">The local point</param>
         /// <param name="type">The type</param>
         /// <returns>The float</returns>
-        [ExcludeFromCodeCoverage]
+        
         public static float Evaluate(int indexA, int indexB, float t, DistanceProxy proxyA, ref Sweep sweepA,
             DistanceProxy proxyB, ref Sweep sweepB, ref Vector2 axis, ref Vector2 localPoint,
             SeparationFunctionType type)

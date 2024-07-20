@@ -32,8 +32,7 @@ using System;
 using Alis.Core.Graphic.Sdl2.Structs;
 using Xunit;
 
-
-namespace Alis.Core.Graphic.Sdl2.Structs
+namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
 
 

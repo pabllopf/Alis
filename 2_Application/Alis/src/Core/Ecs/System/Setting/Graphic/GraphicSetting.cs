@@ -45,7 +45,7 @@ namespace Alis.Core.Ecs.System.Setting.Graphic
         /// <summary>
         ///     Initializes a new instance of the <see cref="GraphicSetting" /> class
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public GraphicSetting() => Window = new Window();
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Alis.Core.Ecs.System.Setting.Graphic
         /// </summary>
         /// <param name="window">The window</param>
         [JsonConstructor]
-        [ExcludeFromCodeCoverage]
+        
         public GraphicSetting(Window window) => Window = window;
 
         /// <summary>

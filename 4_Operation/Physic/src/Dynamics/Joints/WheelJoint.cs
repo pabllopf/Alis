@@ -55,7 +55,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
     ///     Cdo = wB - wA
     ///     J = [0 0 -1 0 0 1]
     /// </summary>
-    [ExcludeFromCodeCoverage]
+    
     public class WheelJoint : Joint
     {
         /// <summary>

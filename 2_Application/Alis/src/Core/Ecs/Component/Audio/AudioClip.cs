@@ -85,7 +85,7 @@ namespace Alis.Core.Ecs.Component.Audio
         /// <param name="isLooping">The is looping</param>
         /// <param name="volume">The volume</param>
         [JsonConstructor]
-        [ExcludeFromCodeCoverage]
+        
         public AudioClip(string nameFile, bool isPlaying, bool isMute, bool isLooping, float volume)
         {
             NameFile = nameFile;
@@ -136,7 +136,7 @@ namespace Alis.Core.Ecs.Component.Audio
         /// <summary>
         ///     Plays this instance
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         internal void Play()
         {
             if (string.IsNullOrEmpty(FullPathAudioFile) && !string.IsNullOrEmpty(NameFile))
@@ -153,7 +153,7 @@ namespace Alis.Core.Ecs.Component.Audio
         /// <summary>
         ///     Stops this instance
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         internal void Stop()
         {
             if (player.Playing)

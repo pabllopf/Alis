@@ -44,7 +44,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
     public static class CollidePolygon
     {
         /// <summary>Compute the collision manifold between two polygons.</summary>
-        [ExcludeFromCodeCoverage]
+        
         public static void CollidePolygons(ref Manifold manifold, PolygonShape polyA, ref Transform xfA,
             PolygonShape polyB, ref Transform xfB)
         {

@@ -40,7 +40,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
     ///     A motor joint is used to control the relative motion between two bodies. A typical usage is to control the
     ///     movement of a dynamic body with respect to the ground.
     /// </summary>
-    [ExcludeFromCodeCoverage]
+    
     public class MotorJoint : Joint
     {
         /// <summary>

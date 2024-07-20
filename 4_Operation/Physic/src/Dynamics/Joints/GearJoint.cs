@@ -62,7 +62,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
     ///     J = [ug cross(r, ug)]
     ///     K = J * invM * JT = invMass + invI * cross(r, ug)^2
     /// </summary>
-    [ExcludeFromCodeCoverage]
+    
     public class GearJoint : Joint
     {
         /// <summary>

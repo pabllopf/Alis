@@ -51,7 +51,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// <summary>
         ///     Initializes a new instance of the <see cref="Camera" /> class
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public Camera()
         {
             Viewport = new RectangleI(0, 0, 800, 600);
@@ -73,7 +73,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// <param name="backgroundColor">The background color</param>
         /// <param name="cameraBorder">The camera border</param>
         [JsonConstructor]
-        [ExcludeFromCodeCoverage]
+        
         public Camera(string id, string name, string tag, bool isEnable, RectangleI viewport, Vector2 resolution, Color backgroundColor, float cameraBorder)
         {
             Id = id;
@@ -125,7 +125,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// <summary>
         ///     Starts this instance
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public override void OnStart()
         {
             if (GameObject == null || Context == null)
@@ -146,7 +146,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// <summary>
         ///     Ons the update
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public override void OnUpdate()
         {
             if (GameObject == null || Context == null)

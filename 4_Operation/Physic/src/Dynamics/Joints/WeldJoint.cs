@@ -59,7 +59,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
     ///     body
     ///     instead.
     /// </summary>
-    [ExcludeFromCodeCoverage]
+    
     public class WeldJoint : Joint
     {
         /// <summary>

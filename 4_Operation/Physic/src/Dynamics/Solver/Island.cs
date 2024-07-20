@@ -40,7 +40,7 @@ using Alis.Core.Physic.Dynamics.Joints;
 namespace Alis.Core.Physic.Dynamics.Solver
 {
     /// <summary>This is an internal class.</summary>
-    [ExcludeFromCodeCoverage]
+    
     internal class Island
     {
         /// <summary>

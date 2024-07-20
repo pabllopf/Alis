@@ -49,7 +49,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="xfA">The xf</param>
         /// <param name="circleB">The circle</param>
         /// <param name="xfB">The xf</param>
-        [ExcludeFromCodeCoverage]
+        
         public static void CollideCircles(ref Manifold manifold, CircleShape circleA, ref Transform xfA,
             CircleShape circleB, ref Transform xfB)
         {
@@ -86,7 +86,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="xfA">The xf</param>
         /// <param name="circleB">The circle</param>
         /// <param name="xfB">The xf</param>
-        [ExcludeFromCodeCoverage]
+        
         public static void CollidePolygonAndCircle(ref Manifold manifold, PolygonShape polygonA, ref Transform xfA,
             CircleShape circleB, ref Transform xfB)
         {
@@ -138,7 +138,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="vertices">The vertices</param>
         /// <param name="normals">The normals</param>
         /// <returns>The normal index</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static int FindMinSeparatingEdge(Vector2 cLocal, float radius, int vertexCount, Vertices vertices, Vertices normals)
         {
             int normalIndex = 0;
@@ -175,7 +175,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="circleBPosition">The circle position</param>
         /// <param name="manifold">The manifold</param>
         /// <returns>The bool</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static bool IsCenterInsidePolygon(float separation, Vector2 v1, Vector2 v2, Vertices normals, int normalIndex, Vector2 circleBPosition, ref Manifold manifold)
         {
             if (separation < Constant.Epsilon)
@@ -203,7 +203,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="manifold">The manifold</param>
         /// <param name="normals">The normals</param>
         /// <param name="vertIndex1">The vert index</param>
-        [ExcludeFromCodeCoverage]
+        
         internal static void ComputeBarycentricCoordinates(Vector2 cLocal, Vector2 v1, Vector2 v2, float radius, Vector2 circleBPosition, ref Manifold manifold, Vertices normals, int vertIndex1)
         {
             float u1 = Vector2.Dot(cLocal - v1, v2 - v1);
@@ -252,7 +252,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="cLocal">The local</param>
         /// <param name="vertex">The vertex</param>
         /// <param name="circleBPosition">The circle position</param>
-        [ExcludeFromCodeCoverage]
+        
         internal static void SetManifoldForVertex(ref Manifold manifold, Vector2 cLocal, Vector2 vertex, Vector2 circleBPosition)
         {
             manifold.PointCount = 1;

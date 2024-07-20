@@ -41,7 +41,7 @@ namespace Alis.Core.Audio.Players
     /// </summary>
     /// <seealso cref="UnixPlayerBase" />
     /// <seealso cref="IPlayer" />
-    [ExcludeFromCodeCoverage]
+    
     internal class LinuxPlayer : UnixPlayerBase, IPlayer
     {
         /// <summary>
