@@ -84,8 +84,11 @@ jobs:
       - name: Print the next version
         run: echo $CURRENTVERSION
 
-      - name: publish osx-arm64
-        run: dotnet publish ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -f net8.0 -p:PublishTrimmed=false -r osx-arm64 -o ./.build/osx_arm64/
+      - name: publish osx-arm64 engine
+        run: dotnet publish ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -f net8.0 -p:PublishTrimmed=false -r osx-arm64 -o ./.build/osx_arm64/bin/
+        
+      - name: publish osx-arm64 installer
+        run: dotnet publish ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -f net8.0 -p:PublishTrimmed=false -r osx-arm64 -o ./.build/osx_arm64/
 
       - name: zip osx-arm64
         run: |
@@ -95,7 +98,10 @@ jobs:
           cd $ORIGINAL_DIR
 
       - name: publish osx-x64
-        run: dotnet publish ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -f net8.0 -p:PublishTrimmed=false -r osx-x64 -o ./.build/osx_x64/
+        run: dotnet publish ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -f net8.0 -p:PublishTrimmed=false -r osx-x64 -o ./.build/osx_x64/bin/
+        
+      - name: publish osx-x64 installer
+        run: dotnet publish ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -f net8.0 -p:PublishTrimmed=false -r osx-x64 -o ./.build/osx_x64/
 
       - name: zip osx-x64
         run: |
@@ -105,7 +111,10 @@ jobs:
           cd $ORIGINAL_DIR
 
       - name: publish win-x64
-        run: dotnet publish ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -f net8.0 -p:PublishTrimmed=false -r win-x64 -o ./.build/win_x64/
+        run: dotnet publish ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -f net8.0 -p:PublishTrimmed=false -r win-x64 -o ./.build/win_x64/bin/
+      
+      - name: publish win-x64 installer
+        run: dotnet publish ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -f net8.0 -p:PublishTrimmed=false -r win-x64 -o ./.build/win_x64/
 
       - name: zip win-x64
         run: |
@@ -115,7 +124,10 @@ jobs:
           cd $ORIGINAL_DIR
 
       - name: publish win-arm64
-        run: dotnet publish ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -f net8.0 -p:PublishTrimmed=false -r win-arm64 -o ./.build/win_arm64/
+        run: dotnet publish ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -f net8.0 -p:PublishTrimmed=false -r win-arm64 -o ./.build/win_arm64/bin/
+        
+      - name: publish win-arm64 installer
+        run: dotnet publish ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -f net8.0 -p:PublishTrimmed=false -r win-arm64 -o ./.build/win_arm64/
 
       - name: zip win-arm64
         run: |
@@ -125,7 +137,10 @@ jobs:
           cd $ORIGINAL_DIR
 
       - name: publish win-x86
-        run: dotnet publish ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -f net8.0 -p:PublishTrimmed=false -r win-x86 -o ./.build/win_x86/
+        run: dotnet publish ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -f net8.0 -p:PublishTrimmed=false -r win-x86 -o ./.build/win_x86/bin/
+      
+      - name: publish win-x86 installer
+        run: dotnet publish ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -f net8.0 -p:PublishTrimmed=false -r win-x86 -o ./.build/win_x86/
 
       - name: zip win-x86
         run: |
@@ -135,7 +150,10 @@ jobs:
           cd $ORIGINAL_DIR
 
       - name: publish linux-x64
-        run: dotnet publish ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -f net8.0 -p:PublishTrimmed=false -r linux-x64 -o ./.build/linux_x64/
+        run: dotnet publish ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -f net8.0 -p:PublishTrimmed=false -r linux-x64 -o ./.build/linux_x64/bin/
+      
+      - name: publish linux-x64 installer
+        run: dotnet publish ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -f net8.0 -p:PublishTrimmed=false -r linux-x64 -o ./.build/linux_x64/
 
       - name: zip linux-x64
         run: |
@@ -145,7 +163,10 @@ jobs:
           cd $ORIGINAL_DIR
 
       - name: publish linux-arm64
-        run: dotnet publish ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -f net8.0 -p:PublishTrimmed=false -r linux-arm64 -o ./.build/linux_arm64/
+        run: dotnet publish ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -f net8.0 -p:PublishTrimmed=false -r linux-arm64 -o ./.build/linux_arm64/bin/
+      
+      - name: publish linux-arm64 installer
+        run: dotnet publish ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -f net8.0 -p:PublishTrimmed=false -r linux-arm64 -o ./.build/linux_arm64/
 
       - name: zip linux-arm64
         run: |
