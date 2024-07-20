@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.3.7] - 2024-07-20
+### :sparkles: New Features
+- [`609e694`](https://github.com/pabllopf/Alis/commit/609e6941a009139996cb8ef557043fb2bcddc6d3) - new system of dialogue *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`055fbc2`](https://github.com/pabllopf/Alis/commit/055fbc267fe51e9800b4266d8aca1f89522a501c) - delete unless files of engine *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0c4b5e1`](https://github.com/pabllopf/Alis/commit/0c4b5e1275c2597388033c044ba1648fc06e4ca5) - define defaults target frameworks to build *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`f22855e`](https://github.com/pabllopf/Alis/commit/f22855e1f717a68657fdd9c897f561412b2a22e6) - fix some spaces *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a28a25a`](https://github.com/pabllopf/Alis/commit/a28a25aa782380a79529b40886e1c1e9e7b13637) - check app testing *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8d69e12`](https://github.com/pabllopf/Alis/commit/8d69e126da467fdcb3f693a5957f63286288a125) - pro check of all platforms *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2dca569`](https://github.com/pabllopf/Alis/commit/2dca569d6fed160e5000a12be1dcc06323102565) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2f94df8`](https://github.com/pabllopf/Alis/commit/2f94df87d09cf85fed5167dc730d77c487bfbf97) - pro fix the elapsedTime time *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e8eab55`](https://github.com/pabllopf/Alis/commit/e8eab55e28e5f1efd854d5e89c536f2328e52d76) - covert 100% of plugin module *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :art: Code Style Changes
+- [`589b882`](https://github.com/pabllopf/Alis/commit/589b8822af6763437978c2987ff8496b43195889) - delete all  [ExcludeFromCodeCoverage] to have real covert tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.3.5] - 2024-07-18
 ### :bug: Bug Fixes
 - [`d17075f`](https://github.com/pabllopf/Alis/commit/d17075fab70c4a75dc76cc474aaff4e582fd0877) - readme of nugets *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -3107,3 +3127,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [v0.3.4]: https://github.com/pabllopf/Alis/compare/v0.3.3...v0.3.4
 [v0.3.5]: https://github.com/pabllopf/Alis/compare/v0.3.4...v0.3.5
+[v0.3.7]: https://github.com/pabllopf/Alis/compare/v0.3.6...v0.3.7
