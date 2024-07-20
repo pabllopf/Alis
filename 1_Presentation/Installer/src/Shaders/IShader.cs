@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:IShader.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,19 +27,16 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
-namespace Alis.App.Installer
+namespace Alis.App.Installer.Shaders
 {
     /// <summary>
-    ///     The program class
+    ///     The shader interface
     /// </summary>
-    public static class Program
+    public interface IShader
     {
         /// <summary>
-        ///     Main the args
+        ///     Gets the value of the shader code
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args) => new Installer().Run(args);
+        public string ShaderCode { get; }
     }
 }

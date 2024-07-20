@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:IHasSpaceWork.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,19 +27,16 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
-namespace Alis.App.Installer
+namespace Alis.App.Installer.Core
 {
     /// <summary>
-    ///     The program class
+    ///     The has space work interface
     /// </summary>
-    public static class Program
+    public interface IHasSpaceWork
     {
         /// <summary>
-        ///     Main the args
+        ///     Gets the value of the space work
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args) => new Installer().Run(args);
+        public SpaceWork SpaceWork { get; }
     }
 }

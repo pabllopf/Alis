@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:IRenderable.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,19 +27,16 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
-namespace Alis.App.Installer
+namespace Alis.App.Installer.Core
 {
     /// <summary>
-    ///     The program class
+    ///     The renderable interface
     /// </summary>
-    public static class Program
+    public interface IRenderable
     {
         /// <summary>
-        ///     Main the args
+        ///     Renders this instance
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args) => new Installer().Run(args);
+        public void Render();
     }
 }
