@@ -393,8 +393,7 @@ namespace Alis.App.Engine
             _vboHandle = Gl.GenBuffer();
             _elementsHandle = Gl.GenBuffer();
             _vertexArrayObject = Gl.GenVertexArray();
-
-
+            
             spaceWork.Start();
             while (!_quit)
             {
