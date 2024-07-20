@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:PluginSample.cs
+//  File:TestablePluginManager.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,57 +27,27 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Logging;
-
-namespace Alis.Extension.Plugin.Test
+namespace Alis.Extension.Plugin.Test.Mocks
 {
     /// <summary>
-    ///     The plugin sample class
+    /// The testable plugin manager class
     /// </summary>
-    /// <seealso cref="IPlugin" />
-    public class PluginSample : IPlugin
+    /// <seealso cref="PluginManager"/>
+    class TestablePluginManager : PluginManager
     {
         /// <summary>
-        ///     Disposes this instance
+        /// The load plugin from file call count
         /// </summary>
-        public void Dispose()
-        {
-        }
+        public int LoadPluginFromFileCallCount = 0;
 
         /// <summary>
-        ///     Initializes this instance
+        /// Loads the plugin from file using the specified plugin file
         /// </summary>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public void Initialize()
+        /// <param name="pluginFile">The plugin file</param>
+        internal new void LoadPluginFromFile(string pluginFile)
         {
-            Logger.Info("PluginSample initialized");
-        }
-
-        /// <summary>
-        ///     Updates this instance
-        /// </summary>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public void Update()
-        {
-            Logger.Info("PluginSample updated");
-        }
-
-        /// <summary>
-        ///     Renders this instance
-        /// </summary>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public void Render()
-        {
-            Logger.Info("PluginSample rendered");
-        }
-
-        /// <summary>
-        ///     Shutdowns this instance
-        /// </summary>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public void Shutdown()
-        {
-            Logger.Info("PluginSample shutdown");
+            base.LoadPluginFromFile(pluginFile);
+            LoadPluginFromFileCallCount++;
         }
     }
 }

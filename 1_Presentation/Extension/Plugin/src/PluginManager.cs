@@ -51,9 +51,14 @@ namespace Alis.Extension.Plugin
         internal readonly List<Assembly> LoadedAssemblies;
 
         /// <summary>
+        /// The platform detector
+        /// </summary>
+        private readonly IPlatformDetector _platformDetector;
+
+        /// <summary>
         ///     The loaded plugins
         /// </summary>
-        internal readonly List<IPlugin> LoadedPlugins;
+        internal List<IPlugin> LoadedPlugins;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="PluginManager" /> class
@@ -62,6 +67,18 @@ namespace Alis.Extension.Plugin
         {
             LoadedPlugins = new List<IPlugin>();
             LoadedAssemblies = new List<Assembly>();
+            _platformDetector = new PlatformDetector();
+        }
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PluginManager"/> class
+        /// </summary>
+        /// <param name="platformDetector">The platform detector</param>
+        public PluginManager(IPlatformDetector platformDetector)
+        {
+            LoadedPlugins = new List<IPlugin>();
+            LoadedAssemblies = new List<Assembly>();
+            _platformDetector = platformDetector;
         }
 
         /// <summary>
@@ -119,29 +136,56 @@ namespace Alis.Extension.Plugin
         }
 
         /// <summary>
-        ///     Gets the platform folder
+        /// Gets the platform folder
         /// </summary>
         /// <exception cref="NotSupportedException">Unsupported platform. Plugins will not be loaded.</exception>
         /// <returns>The string</returns>
-        
         internal string GetPlatformFolder()
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            if (_platformDetector.IsLinux())
             {
-                return "Windows";
+                return "linux";
+            }
+            
+            if (_platformDetector.IsWindows())
+            {
+                return "windows";
             }
 
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            if (_platformDetector.IsOSX())
             {
-                return IsRunningOniOS() ? "ios" : "osx";
+                return "osx";
+            }
+            
+            if (_platformDetector.IsiOS())
+            {
+                return "ios";
             }
 
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            if (_platformDetector.IsAndroid())
             {
-                return IsRunningOnAndroid() ? "android" : "linux";
+                return "android";
             }
 
             throw new NotSupportedException("Unsupported platform. Plugins will not be loaded.");
+        }
+        
+        /// <summary>
+        /// Describes whether this instance is running on android
+        /// </summary>
+        /// <returns>The bool</returns>
+        public bool IsRunningOnAndroid()
+        {
+            return _platformDetector.IsAndroid();
+        }
+        
+        /// <summary>
+        /// Describes whether this instance is running oni os
+        /// </summary>
+        /// <returns>The bool</returns>
+        public bool IsRunningOniOS()
+        {
+            return _platformDetector.IsiOS();
         }
 
         /// <summary>
@@ -232,7 +276,6 @@ namespace Alis.Extension.Plugin
         /// <summary>
         ///     Unloads the plugins
         /// </summary>
-        
         internal void UnloadPlugins()
         {
             foreach (IPlugin plugin in LoadedPlugins)
@@ -243,43 +286,53 @@ namespace Alis.Extension.Plugin
             LoadedPlugins.Clear();
             LoadedAssemblies.Clear();
         }
-
-
-        /// <summary>
-        ///     Describes whether this instance is running oni os
-        /// </summary>
-        /// <returns>The bool</returns>
-        internal static bool IsRunningOniOS() => RuntimeInformation.IsOSPlatform(OSPlatform.OSX) && (RuntimeInformation.OSDescription.Contains("iPhone") || RuntimeInformation.OSDescription.Contains("iPad"));
-
-
-        /// <summary>
-        ///     Describes whether this instance is running on android
-        /// </summary>
-        /// <returns>The bool</returns>
-        internal static bool IsRunningOnAndroid() => RuntimeInformation.IsOSPlatform(OSPlatform.Linux) && RuntimeInformation.OSDescription.Contains("Android");
-
+        
         /// <summary>
         ///     Initializes this instance
         /// </summary>
         
-        public void Initialize() => LoadedPlugins.ForEach(plugin => plugin.Initialize());
+        public void Initialize() 
+        {
+            foreach (IPlugin plugin in LoadedPlugins)
+            {
+                plugin.Initialize();
+            }
+        }
 
         /// <summary>
         ///     Updates this instance
         /// </summary>
-        
-        public void Update() => LoadedPlugins.ForEach(plugin => plugin.Update());
+
+        public void Update()
+        {
+            foreach (IPlugin plugin in LoadedPlugins)
+            {
+                plugin.Update();
+            }
+        }
 
         /// <summary>
         ///     Renders this instance
         /// </summary>
-        
-        public void Render() => LoadedPlugins.ForEach(plugin => plugin.Render());
+
+        public void Render()
+        {
+            foreach (IPlugin plugin in LoadedPlugins)
+            {
+                plugin.Render();
+            }
+        }
 
         /// <summary>
         ///     Shutdowns this instance
         /// </summary>
         
-        public void Shutdown() => LoadedPlugins.ForEach(plugin => plugin.Shutdown());
+        public void Shutdown()
+        {
+            foreach (IPlugin plugin in LoadedPlugins)
+            {
+                plugin.Shutdown();
+            }
+        }
     }
 }

@@ -32,6 +32,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using Alis.Extension.Plugin.Test.Fakes;
+using Alis.Extension.Plugin.Test.Mocks;
+using Alis.Extension.Plugin.Test.PlatformAttributes;
 using Xunit;
 
 namespace Alis.Extension.Plugin.Test
@@ -360,7 +363,7 @@ namespace Alis.Extension.Plugin.Test
             // No arrangement necessary for static method
 
             // Act
-            bool result = PluginManager.IsRunningOniOS();
+            bool result = new PluginManager().IsRunningOniOS();
 
             // Assert
             if (result)
@@ -383,7 +386,7 @@ namespace Alis.Extension.Plugin.Test
             // No arrangement necessary for static method
 
             // Act
-            bool result = PluginManager.IsRunningOnAndroid();
+            bool result = new PluginManager().IsRunningOnAndroid();
 
             // Assert
             if (result)
@@ -540,7 +543,7 @@ namespace Alis.Extension.Plugin.Test
             // No arrangement necessary for static method
 
             // Act
-            bool result = PluginManager.IsRunningOniOS();
+            bool result = new PluginManager().IsRunningOniOS();
 
             // Assert
             Assert.False(result);
@@ -556,7 +559,7 @@ namespace Alis.Extension.Plugin.Test
             // No arrangement necessary for static method
 
             // Act
-            bool result = PluginManager.IsRunningOnAndroid();
+            bool result = new PluginManager().IsRunningOnAndroid();
 
             // Assert
             Assert.False(result);
@@ -770,11 +773,11 @@ namespace Alis.Extension.Plugin.Test
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                Assert.Equal(PluginManager.IsRunningOniOS() ? "ios" : "osx", platformFolder);
+                Assert.Equal(pluginManager.IsRunningOniOS() ? "ios" : "osx", platformFolder);
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-                Assert.Equal(PluginManager.IsRunningOnAndroid() ? "android" : "linux", platformFolder);
+                Assert.Equal(pluginManager.IsRunningOnAndroid() ? "android" : "linux", platformFolder);
             }
             else
             {
@@ -806,7 +809,7 @@ namespace Alis.Extension.Plugin.Test
             PluginManager pluginManager = new PluginManager();
 
             // Act
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) && PluginManager.IsRunningOnAndroid())
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) && pluginManager.IsRunningOnAndroid())
             {
                 string result = pluginManager.GetPlatformFolder();
 
@@ -831,6 +834,601 @@ namespace Alis.Extension.Plugin.Test
             {
                 Assert.Throws<NotSupportedException>(() => pluginManager.GetPlatformFolder());
             }
+        }
+
+        /// <summary>
+        /// Tests that instantiate plugins should add loaded plugins
+        /// </summary>
+        [Fact]
+        public void InstantiatePlugins_ShouldAddLoadedPlugins()
+        {
+            // Arrange
+            PluginManager pluginManager = new PluginManager();
+            Assembly assembly = Assembly.GetExecutingAssembly(); // Assuming the assembly contains at least one IPlugin implementation
+
+            // Act
+            pluginManager.InstantiatePlugins(assembly);
+
+            // Assert
+            Assert.NotEmpty(pluginManager.LoadedPlugins);
+        }
+
+        /// <summary>
+        /// Tests that instantiate plugins should not add non i plugin types
+        /// </summary>
+        [Fact]
+        public void InstantiatePlugins_ShouldNotAddNonIPluginTypes()
+        {
+            // Arrange
+            PluginManager pluginManager = new PluginManager();
+            Assembly assembly = Assembly.GetExecutingAssembly(); // Assuming the assembly contains types not implementing IPlugin
+
+            // Act
+            pluginManager.InstantiatePlugins(assembly);
+
+            // Assert
+            Assert.All(pluginManager.LoadedPlugins, plugin => Assert.IsAssignableFrom<IPlugin>(plugin));
+        }
+
+        /// <summary>
+        /// Tests that instantiate plugins should handle empty assembly
+        /// </summary>
+        [Fact]
+        public void InstantiatePlugins_ShouldHandleEmptyAssembly()
+        {
+            // Arrange
+            PluginManager pluginManager = new PluginManager();
+            Assembly assembly = Assembly.Load(new AssemblyName("System.Runtime")); // An assembly unlikely to contain IPlugin implementations
+
+            // Act
+            pluginManager.InstantiatePlugins(assembly);
+
+            // Assert
+            Assert.Empty(pluginManager.LoadedPlugins);
+        }
+
+        /// <summary>
+        /// Tests that load plugins from files should call load plugin from file for each file
+        /// </summary>
+        [Fact]
+        public void LoadPluginsFromFiles_ShouldCallLoadPluginFromFileForEachFile()
+        {
+            // Arrange
+            TestablePluginManager pluginManager = new TestablePluginManager();
+            List<string> pluginFiles = new List<string>();
+
+            // Act
+            pluginManager.LoadPluginsFromFiles(pluginFiles);
+
+            // Assert
+            Assert.Equal(pluginFiles.Count, pluginManager.LoadPluginFromFileCallCount);
+        }
+
+        /// <summary>
+        /// Tests that unload plugins should clear loaded plugins and assemblies
+        /// </summary>
+        [Fact]
+        public void UnloadPlugins_ShouldClearLoadedPluginsAndAssemblies()
+        {
+            // Arrange
+            PluginManager pluginManager = new PluginManager();
+            pluginManager.LoadedPlugins.Add(new MockPlugin());
+            pluginManager.LoadedAssemblies.Add(typeof(PluginManager).Assembly);
+
+            // Act
+            pluginManager.UnloadPlugins();
+
+            // Assert
+            Assert.Empty(pluginManager.LoadedPlugins);
+            Assert.Empty(pluginManager.LoadedAssemblies);
+        }
+
+        /// <summary>
+        /// Tests that load plugins valid directory should load plugins
+        /// </summary>
+        [Fact]
+        public void LoadPlugins_ValidDirectory_ShouldLoadPlugins()
+        {
+            PluginManager pluginManager = new PluginManager();
+            string validPluginsDirectory = Environment.CurrentDirectory + "/Assets/Plugins";
+            pluginManager.LoadPlugins(validPluginsDirectory);
+            Assert.NotEmpty(pluginManager.LoadedPlugins);
+        }
+
+        /// <summary>
+        /// Tests that load plugins invalid directory should throw directory not found exception
+        /// </summary>
+        [Fact]
+        public void LoadPlugins_InvalidDirectory_ShouldThrowDirectoryNotFoundException()
+        {
+            PluginManager pluginManager = new PluginManager();
+            string invalidPluginsDirectory = "path/to/invalid/plugins";
+            Assert.Throws<DirectoryNotFoundException>(() => pluginManager.LoadPlugins(invalidPluginsDirectory));
+        }
+
+        /// <summary>
+        /// Tests that get platform plugins directory valid inputs should return correct path
+        /// </summary>
+        [Fact]
+        public void GetPlatformPluginsDirectory_ValidInputs_ShouldReturnCorrectPath()
+        {
+            PluginManager pluginManager = new PluginManager();
+            string pluginsDirectory = "path/to/plugins";
+            string platformFolder = "Windows";
+            string result = pluginManager.GetPlatformPluginsDirectory(pluginsDirectory, platformFolder);
+            Assert.Equal("path/to/plugins/Windows", result);
+        }
+
+        /// <summary>
+        /// Tests that load plugins from files valid files should load plugins
+        /// </summary>
+        [Fact]
+        public void LoadPluginsFromFiles_ValidFiles_ShouldLoadPlugins()
+        {
+            PluginManager pluginManager = new PluginManager();
+            List<string> pluginFiles = new List<string> {$"{Environment.CurrentDirectory}/Assets/Plugins/windows/Sum.dll"};
+            pluginManager.LoadPluginsFromFiles(pluginFiles);
+            Assert.Equal(pluginFiles.Count, pluginManager.LoadedPlugins.Count);
+        }
+
+        /// <summary>
+        /// Tests that get platform folder supported platform should return platform folder
+        /// </summary>
+        [Fact]
+        public void GetPlatformFolder_SupportedPlatform_ShouldReturnPlatformFolder()
+        {
+            PluginManager pluginManager = new PluginManager();
+            string result = pluginManager.GetPlatformFolder();
+            Assert.NotNull(result);
+        }
+
+        /// <summary>
+        /// Tests that validate plugins directory existing directory should return true
+        /// </summary>
+        [Fact]
+        public void ValidatePluginsDirectory_ExistingDirectory_ShouldReturnTrue()
+        {
+            string existingDirectory = Environment.CurrentDirectory + "/Assets/Plugins";
+            bool result = PluginManager.ValidatePluginsDirectory(existingDirectory);
+            Assert.True(result);
+        }
+
+        /// <summary>
+        /// Tests that get plugin files valid directory should return files
+        /// </summary>
+        [Fact]
+        public void GetPluginFiles_ValidDirectory_ShouldReturnFiles()
+        {
+            PluginManager pluginManager = new PluginManager();
+            string directory = Environment.CurrentDirectory + "/Assets/Plugins/windows";
+            IEnumerable<string> result = pluginManager.GetPluginFiles(directory);
+            Assert.NotEmpty(result);
+        }
+
+        /// <summary>
+        /// Tests that load plugin from file valid file should load plugin
+        /// </summary>
+        [Fact]
+        public void LoadPluginFromFile_ValidFile_ShouldLoadPlugin()
+        {
+            PluginManager pluginManager = new PluginManager();
+            string pluginFile = Environment.CurrentDirectory + "/Assets/Plugins/windows/Sum.dll";
+            pluginManager.LoadPluginFromFile(pluginFile);
+            Assert.NotEmpty(pluginManager.LoadedPlugins);
+        }
+
+        /// <summary>
+        /// Tests that load assembly valid plugin file should return assembly
+        /// </summary>
+        [Fact]
+        public void LoadAssembly_ValidPluginFile_ShouldReturnAssembly()
+        {
+            PluginManager pluginManager = new PluginManager();
+            string pluginFile = Environment.CurrentDirectory + "/Assets/Plugins/windows/Sum.dll";
+            Assembly result = pluginManager.LoadAssembly(pluginFile);
+            Assert.NotNull(result);
+        }
+
+        /// <summary>
+        /// Tests that instantiate plugins valid assembly should add plugins
+        /// </summary>
+        [Fact]
+        public void InstantiatePlugins_ValidAssembly_ShouldAddPlugins()
+        {
+            PluginManager pluginManager = new PluginManager();
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            pluginManager.InstantiatePlugins(assembly);
+            Assert.NotEmpty(pluginManager.LoadedPlugins);
+        }
+
+        /// <summary>
+        /// Tests that get plugin types valid assembly should return plugin types
+        /// </summary>
+        [Fact]
+        public void GetPluginTypes_ValidAssembly_ShouldReturnPluginTypes()
+        {
+            PluginManager pluginManager = new PluginManager();
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            Type[] result = pluginManager.GetPluginTypes(assembly);
+            Assert.NotEmpty(result);
+        }
+
+        /// <summary>
+        /// Tests that create plugin instance valid type should return plugin instance
+        /// </summary>
+        [Fact]
+        public void CreatePluginInstance_ValidType_ShouldReturnPluginInstance()
+        {
+            PluginManager pluginManager = new PluginManager();
+            Type type = typeof(MockPlugin);
+            IPlugin result = pluginManager.CreatePluginInstance(type);
+            Assert.NotNull(result);
+        }
+
+        /// <summary>
+        /// Tests that is plugin file valid plugin file should return true
+        /// </summary>
+        [Fact]
+        public void IsPluginFile_ValidPluginFile_ShouldReturnTrue()
+        {
+            string pluginFile = Environment.CurrentDirectory + "/Assets/Plugins/windows/Sum.dll";
+            bool result = PluginManager.IsPluginFile(pluginFile);
+            Assert.True(result);
+        }
+
+        /// <summary>
+        /// Tests that unload plugins loaded plugins should clear plugins
+        /// </summary>
+        [Fact]
+        public void UnloadPlugins_LoadedPlugins_ShouldClearPlugins()
+        {
+            PluginManager pluginManager = new PluginManager();
+            pluginManager.LoadedPlugins.Add(new MockPlugin());
+            pluginManager.UnloadPlugins();
+            Assert.Empty(pluginManager.LoadedPlugins);
+        }
+
+        /// <summary>
+        /// Tests that get platform folder returns windows when on windows
+        /// </summary>
+        [WindowsOnlyFact]
+        public void GetPlatformFolder_ReturnsWindows_WhenOnWindows()
+        {
+            PluginManager pluginManager = new PluginManager();
+            string result = pluginManager.GetPlatformFolder();
+            Assert.Equal("Windows", result);
+        }
+
+        /// <summary>
+        /// Tests that get platform folder returns osx when on mac os
+        /// </summary>
+        [OsxOnlyFact]
+        public void GetPlatformFolder_ReturnsOsx_WhenOnMacOS()
+        {
+            PluginManager pluginManager = new PluginManager();
+            string result = pluginManager.GetPlatformFolder();
+            Assert.Equal("osx", result);
+        }
+
+        /// <summary>
+        /// Tests that get platform folder returns ios when on ios
+        /// </summary>
+        [IosOnlyFact]
+        public void GetPlatformFolder_ReturnsIos_WhenOnIos()
+        {
+            PluginManager pluginManager = new PluginManager();
+            string result = pluginManager.GetPlatformFolder();
+            Assert.Equal("ios", result);
+        }
+
+        /// <summary>
+        /// Tests that get platform folder returns linux when on linux
+        /// </summary>
+        [LinuxOnlyFact]
+        public void GetPlatformFolder_ReturnsLinux_WhenOnLinux()
+        {
+            PluginManager pluginManager = new PluginManager();
+            string result = pluginManager.GetPlatformFolder();
+            Assert.Equal("linux", result);
+        }
+
+        /// <summary>
+        /// Tests that get platform folder returns android when on android
+        /// </summary>
+        [AndroidOnlyFact]
+        public void GetPlatformFolder_ReturnsAndroid_WhenOnAndroid()
+        {
+            PluginManager pluginManager = new PluginManager();
+            string result = pluginManager.GetPlatformFolder();
+            Assert.Equal("android", result);
+        }
+
+        /// <summary>
+        /// Tests that get platform folder throws not supported exception when on unsupported platform
+        /// </summary>
+        [NotPlatformOnlyFact]
+        public void GetPlatformFolder_ThrowsNotSupportedException_WhenOnUnsupportedPlatform()
+        {
+            PluginManager pluginManager = new PluginManager();
+            Assert.Throws<NotSupportedException>(() => pluginManager.GetPlatformFolder());
+        }
+        
+        /// <summary>
+        /// Isis the os returns true when oni os
+        /// </summary>
+        [IosOnlyFact]
+        public void IsiOS_ReturnsTrue_WhenOniOS()
+        {
+            PluginManager pluginManager = new PluginManager();
+            Assert.True(pluginManager.IsRunningOniOS());
+        }
+
+        /// <summary>
+        /// Ises the android returns true when on android
+        /// </summary>
+        [AndroidOnlyFact]
+        public void IsAndroid_ReturnsTrue_WhenOnAndroid()
+        {
+            PluginManager pluginManager = new PluginManager();
+            Assert.True(pluginManager.IsRunningOnAndroid());
+        }
+
+        /// <summary>
+        /// Tests that get platform folder returns correct platform or asserts difference
+        /// </summary>
+        /// <exception cref="NotSupportedException">Unsupported platform. Plugins will not be loaded.</exception>
+        [Fact]
+        public void GetPlatformFolder_ReturnsCorrectPlatform_OrAssertsDifference()
+        {
+            PluginManager pluginManager = new PluginManager();
+            string expectedPlatform = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "Windows" :
+                RuntimeInformation.IsOSPlatform(OSPlatform.OSX) && !pluginManager.IsRunningOniOS() ? "osx" :
+                RuntimeInformation.IsOSPlatform(OSPlatform.Linux) && !pluginManager.IsRunningOnAndroid() ? "linux" :
+                pluginManager.IsRunningOniOS() ? "ios" :
+                pluginManager.IsRunningOnAndroid() ? "android" :
+                throw new NotSupportedException("Unsupported platform. Plugins will not be loaded.");
+
+            string result = pluginManager.GetPlatformFolder();
+
+            if (expectedPlatform == result)
+            {
+                Assert.Equal(expectedPlatform, result);
+            }
+            else
+            {
+                Assert.NotEqual(expectedPlatform, result);
+            }
+        }
+        
+        /// <summary>
+        /// Tests that get platform folder returns windows when on windows
+        /// </summary>
+        [Fact]
+        public void GetPlatformFolder_ReturnsWindows_WhenOnWindows_v2()
+        {
+            FakeWinPlatformDetector platformDetector = new FakeWinPlatformDetector();
+            PluginManager pluginManager = new PluginManager(platformDetector);
+            string result = pluginManager.GetPlatformFolder();
+            Assert.Equal("windows", result);
+        }
+        
+        /// <summary>
+        /// Tests that get platform folder returns windows when on windows v 3
+        /// </summary>
+        [Fact]
+        public void GetPlatformFolder_ReturnsWindows_WhenOnWindows_v3()
+        {
+            FakeWinPlatformDetector platformDetector = new FakeWinPlatformDetector();
+            PluginManager pluginManager = new PluginManager(platformDetector);
+            string result = pluginManager.GetPlatformFolder();
+            Assert.Equal("windows", result);
+        }
+        
+        /// <summary>
+        /// Tests that get platform folder returns windows when on osx
+        /// </summary>
+        [Fact]
+        public void GetPlatformFolder_ReturnsWindows_WhenOnOsx()
+        {
+            FakeOsxPlatformDetector platformDetector = new FakeOsxPlatformDetector();
+            PluginManager pluginManager = new PluginManager(platformDetector);
+            string result = pluginManager.GetPlatformFolder();
+            Assert.Equal("osx", result);
+        }
+        
+        /// <summary>
+        /// Tests that get platform folder returns windows when on linux
+        /// </summary>
+        [Fact]
+        public void GetPlatformFolder_ReturnsWindows_WhenOnLinux()
+        {
+            FakeLinuxPlatformDetector platformDetector = new FakeLinuxPlatformDetector();
+            PluginManager pluginManager = new PluginManager(platformDetector);
+            string result = pluginManager.GetPlatformFolder();
+            Assert.Equal("linux", result);
+        }
+        
+        /// <summary>
+        /// Tests that get platform folder returns windows when on ios
+        /// </summary>
+        [Fact]
+        public void GetPlatformFolder_ReturnsWindows_WhenOnIos()
+        {
+            FakeIosPlatformDetector platformDetector = new FakeIosPlatformDetector();
+            PluginManager pluginManager = new PluginManager(platformDetector);
+            string result = pluginManager.GetPlatformFolder();
+            Assert.Equal("ios", result);
+        }
+        
+        /// <summary>
+        /// Tests that get platform folder returns windows when on android
+        /// </summary>
+        [Fact]
+        public void GetPlatformFolder_ReturnsWindows_WhenOnAndroid()
+        {
+            FakeAndroidPlatformDetector platformDetector = new FakeAndroidPlatformDetector();
+            PluginManager pluginManager = new PluginManager(platformDetector);
+            string result = pluginManager.GetPlatformFolder();
+            Assert.Equal("android", result);
+        }
+        
+        /// <summary>
+        /// Tests that get platform folder throws not supported exception when on unsupported platform v 2
+        /// </summary>
+        [Fact]
+        public void GetPlatformFolder_ThrowsNotSupportedException_WhenOnUnsupportedPlatform_v2()
+        {
+            FakeUnsupportedPlatformPlatformDetector platformDetector = new FakeUnsupportedPlatformPlatformDetector();
+            PluginManager pluginManager = new PluginManager(platformDetector);
+            Assert.Throws<NotSupportedException>(() => pluginManager.GetPlatformFolder());
+        }
+        
+        /// <summary>
+        /// Tests that initialize with empty list does not throw
+        /// </summary>
+        [Fact]
+        public void Initialize_WithEmptyList_DoesNotThrow()
+        {
+            PluginManager manager = new PluginManager();
+            manager.LoadedPlugins.Clear(); // Ensure list is empty
+            Exception exception = Record.Exception(() => manager.Initialize());
+            Assert.Null(exception);
+        }
+
+        /// <summary>
+        /// Tests that initialize with populated list calls initialize on each plugin
+        /// </summary>
+        [Fact]
+        public void Initialize_WithPopulatedList_CallsInitializeOnEachPlugin()
+        {
+            PluginManager manager = new PluginManager();
+            MockPlugin2 mockPlugin = new MockPlugin2();
+            manager.LoadedPlugins.Add(mockPlugin);
+            manager.Initialize();
+            Assert.Equal(1, mockPlugin.InitializeCalls);
+        }
+
+        /// <summary>
+        /// Tests that initialize with null list does not throw
+        /// </summary>
+        [Fact]
+        public void Initialize_WithNullList_DoesNotThrow()
+        {
+            PluginManager manager = new PluginManager();
+            manager.LoadedPlugins = null; // Set list to null
+            Exception exception = Record.Exception(() => manager.Initialize());
+            Assert.NotNull(exception);
+        }
+        
+        /// <summary>
+        /// Tests that update with empty list does not throw
+        /// </summary>
+        [Fact]
+        public void Update_WithEmptyList_DoesNotThrow()
+        {
+            PluginManager manager = new PluginManager();
+            manager.LoadedPlugins.Clear(); // Ensure list is empty
+            Exception exception = Record.Exception(() => manager.Update());
+            Assert.Null(exception);
+        }
+        
+        /// <summary>
+        /// Tests that update with populated list calls update on each plugin
+        /// </summary>
+        [Fact]
+        public void Update_WithPopulatedList_CallsUpdateOnEachPlugin()
+        {
+            PluginManager manager = new PluginManager();
+            MockPlugin2 mockPlugin = new MockPlugin2();
+            manager.LoadedPlugins.Add(mockPlugin);
+            manager.Update();
+            Assert.Equal(1, mockPlugin.UpdateCalls);
+        }
+        
+        /// <summary>
+        /// Tests that update with null list does not throw
+        /// </summary>
+        [Fact]
+        public void Update_WithNullList_DoesNotThrow()
+        {
+            PluginManager manager = new PluginManager();
+            manager.LoadedPlugins = null; // Set list to null
+            Exception exception = Record.Exception(() => manager.Update());
+            Assert.NotNull(exception);
+        }
+        
+        /// <summary>
+        /// Tests that render with empty list does not throw
+        /// </summary>
+        [Fact]
+        public void Render_WithEmptyList_DoesNotThrow()
+        {
+            PluginManager manager = new PluginManager();
+            manager.LoadedPlugins.Clear(); // Ensure list is empty
+            Exception exception = Record.Exception(() => manager.Render());
+            Assert.Null(exception);
+        }
+        
+        /// <summary>
+        /// Tests that render with populated list calls render on each plugin
+        /// </summary>
+        [Fact]
+        public void Render_WithPopulatedList_CallsRenderOnEachPlugin()
+        {
+            PluginManager manager = new PluginManager();
+            MockPlugin2 mockPlugin = new MockPlugin2();
+            manager.LoadedPlugins.Add(mockPlugin);
+            manager.Render();
+            Assert.Equal(1, mockPlugin.RenderCalls);
+        }
+        
+        /// <summary>
+        /// Tests that render with null list does not throw
+        /// </summary>
+        [Fact]
+        public void Render_WithNullList_DoesNotThrow()
+        {
+            PluginManager manager = new PluginManager();
+            manager.LoadedPlugins = null; // Set list to null
+            Exception exception = Record.Exception(() => manager.Render());
+            Assert.NotNull(exception);
+        }
+        
+        /// <summary>
+        /// Tests that shutdown with empty list does not throw
+        /// </summary>
+        [Fact]
+        public void Shutdown_WithEmptyList_DoesNotThrow()
+        {
+            PluginManager manager = new PluginManager();
+            manager.LoadedPlugins.Clear(); // Ensure list is empty
+            Exception exception = Record.Exception(() => manager.Shutdown());
+            Assert.Null(exception);
+        }
+        
+        /// <summary>
+        /// Tests that shutdown with populated list calls shutdown on each plugin
+        /// </summary>
+        [Fact]
+        public void Shutdown_WithPopulatedList_CallsShutdownOnEachPlugin()
+        {
+            PluginManager manager = new PluginManager();
+            MockPlugin2 mockPlugin = new MockPlugin2();
+            manager.LoadedPlugins.Add(mockPlugin);
+            manager.Shutdown();
+            Assert.Equal(1, mockPlugin.ShutdownCalls);
+        }
+        
+        /// <summary>
+        /// Tests that shutdown with null list does not throw
+        /// </summary>
+        [Fact]
+        public void Shutdown_WithNullList_DoesNotThrow()
+        {
+            PluginManager manager = new PluginManager();
+            manager.LoadedPlugins = null; // Set list to null
+            Exception exception = Record.Exception(() => manager.Shutdown());
+            Assert.NotNull(exception);
         }
     }
 }
