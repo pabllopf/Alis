@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.3.8] - 2024-07-20
+### :sparkles: New Features
+- [`79a4b24`](https://github.com/pabllopf/Alis/commit/79a4b243571774fb9a9e39b1856db6b4312ddce9) - create simple installer *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7b3869e`](https://github.com/pabllopf/Alis/commit/7b3869e3f99bedf147478c6fd29b9ad8857e27a4) - add icon for engine and installer *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c2f4911`](https://github.com/pabllopf/Alis/commit/c2f4911a855cf1984be07fc3e3b8ceada9a85d20) - new installer for update the engine *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`768e5a4`](https://github.com/pabllopf/Alis/commit/768e5a496d69bf039ca41832b4733da7d68544cd) - include in the engine the updater *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`85bb63f`](https://github.com/pabllopf/Alis/commit/85bb63f62fa5ac0d8478b01a2e9ccbd7531bacf8) - delete unseless icons and sprites from installer *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`48c5949`](https://github.com/pabllopf/Alis/commit/48c5949ec4a9ec70da87fd737c1089e844726f73) - the main dir of engine builds. *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.3.7] - 2024-07-20
 ### :sparkles: New Features
 - [`609e694`](https://github.com/pabllopf/Alis/commit/609e6941a009139996cb8ef557043fb2bcddc6d3) - new system of dialogue *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -3128,3 +3140,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.3.4]: https://github.com/pabllopf/Alis/compare/v0.3.3...v0.3.4
 [v0.3.5]: https://github.com/pabllopf/Alis/compare/v0.3.4...v0.3.5
 [v0.3.7]: https://github.com/pabllopf/Alis/compare/v0.3.6...v0.3.7
+[v0.3.8]: https://github.com/pabllopf/Alis/compare/v0.3.7...v0.3.8
