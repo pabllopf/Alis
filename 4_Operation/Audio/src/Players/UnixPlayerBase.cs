@@ -39,7 +39,6 @@ namespace Alis.Core.Audio.Players
     ///     The unix player base class
     /// </summary>
     /// <seealso cref="IPlayer" />
-    
     public abstract class UnixPlayerBase : IPlayer
     {
         /// <summary>
