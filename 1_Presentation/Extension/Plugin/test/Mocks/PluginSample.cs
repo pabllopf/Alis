@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:PluginManagerBuilder.cs
+//  File:PluginSample.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,20 +27,57 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Fluent;
+using Alis.Core.Aspect.Logging;
 
-namespace Alis.Extension.Plugin
+namespace Alis.Extension.Plugin.Test.Mocks
 {
     /// <summary>
-    ///     The scene manager builder class
+    ///     The plugin sample class
     /// </summary>
-    public class PluginManagerBuilder :
-        IBuild<PluginManager>
+    /// <seealso cref="IPlugin" />
+    public class PluginSample : IPlugin
     {
         /// <summary>
-        ///     Builds this instance
+        ///     Disposes this instance
         /// </summary>
-        /// <returns>The plugin manager</returns>
-        public PluginManager Build() => new PluginManager();
+        public void Dispose()
+        {
+        }
+
+        /// <summary>
+        ///     Initializes this instance
+        /// </summary>
+        /// <exception cref="System.NotImplementedException"></exception>
+        public void Initialize()
+        {
+            Logger.Info("PluginSample initialized");
+        }
+
+        /// <summary>
+        ///     Updates this instance
+        /// </summary>
+        /// <exception cref="System.NotImplementedException"></exception>
+        public void Update()
+        {
+            Logger.Info("PluginSample updated");
+        }
+
+        /// <summary>
+        ///     Renders this instance
+        /// </summary>
+        /// <exception cref="System.NotImplementedException"></exception>
+        public void Render()
+        {
+            Logger.Info("PluginSample rendered");
+        }
+
+        /// <summary>
+        ///     Shutdowns this instance
+        /// </summary>
+        /// <exception cref="System.NotImplementedException"></exception>
+        public void Shutdown()
+        {
+            Logger.Info("PluginSample shutdown");
+        }
     }
 }
