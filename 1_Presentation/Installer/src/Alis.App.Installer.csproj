@@ -4,11 +4,4 @@
     <PropertyGroup>
         <OutDir>bin/$(Configuration)/$(RuntimeIdentifier)/lib/$(TargetFramework)/</OutDir>
     </PropertyGroup>
-    <ItemGroup>
-      <None Update="Assets\icon\app.bmp">
-        <LinkBase>Assets/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-    </ItemGroup>
 </Project>
