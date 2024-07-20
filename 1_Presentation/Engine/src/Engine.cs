@@ -36,6 +36,7 @@ using Alis.App.Engine.Core;
 using Alis.App.Engine.Fonts;
 using Alis.App.Engine.Shaders;
 using Alis.Core.Aspect.Data.Mapping;
+using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
@@ -393,6 +394,15 @@ namespace Alis.App.Engine
             _vboHandle = Gl.GenBuffer();
             _elementsHandle = Gl.GenBuffer();
             _vertexArrayObject = Gl.GenVertexArray();
+            
+              
+            // Set icon app:
+            string iconPath = AssetManager.Find("app.bmp");
+            if (!string.IsNullOrEmpty(iconPath) && File.Exists(iconPath))
+            {
+                IntPtr icon = Sdl.LoadBmp(iconPath);
+                Sdl.SetWindowIcon(spaceWork.Window, icon);
+            }
             
             spaceWork.Start();
             while (!_quit)

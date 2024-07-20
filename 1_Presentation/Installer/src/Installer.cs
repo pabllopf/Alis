@@ -36,6 +36,7 @@ using Alis.App.Engine.Fonts;
 using Alis.App.Installer.Core;
 using Alis.App.Installer.Shaders;
 using Alis.Core.Aspect.Data.Mapping;
+using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
@@ -388,6 +389,14 @@ namespace Alis.App.Installer
             _elementsHandle = Gl.GenBuffer();
             _vertexArrayObject = Gl.GenVertexArray();
             
+            // Set icon app:
+            string iconPath = AssetManager.Find("app.bmp");
+            if (!string.IsNullOrEmpty(iconPath) && File.Exists(iconPath))
+            {
+                IntPtr icon = Sdl.LoadBmp(iconPath);
+                Sdl.SetWindowIcon(spaceWork.Window, icon);
+            }
+            
             spaceWork.Start();
             while (!_quit)
             {
@@ -448,6 +457,8 @@ namespace Alis.App.Installer
                 
                 // RENDER GUI
                 
+                ImGui.PushFont(fontLoaded16Regular);
+                
                 ImGui.SetNextWindowSize(new Vector2(displayW, displayH));
                 ImGui.SetNextWindowPos(new Vector2(displayW / windowSize.X, displayH / windowSize.Y));
                 if (ImGui.Begin($"MainWindow", ref isOpenMain, ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse))
@@ -458,6 +469,8 @@ namespace Alis.App.Installer
                     ImGui.Text("Resume: ");
                 }
                 ImGui.End();
+                
+                ImGui.PopFont();
                 
                 
                 // END RENDER GUI
