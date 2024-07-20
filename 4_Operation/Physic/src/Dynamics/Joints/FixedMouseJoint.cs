@@ -49,7 +49,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
     ///     Identity used:
     ///     w k % (rx i + ry j) = w * (-ry i + rx j)
     /// </summary>
-    [ExcludeFromCodeCoverage]
+    
     public class FixedMouseJoint : Joint
     {
         /// <summary>

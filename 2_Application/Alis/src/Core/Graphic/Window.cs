@@ -61,7 +61,7 @@ namespace Alis.Core.Graphic
         /// <param name="resolution">The resolution</param>
         /// <param name="isWindowResizable">The is window resizable</param>
         [JsonConstructor]
-        [ExcludeFromCodeCoverage]
+        
         public Window(Color background, Vector2 resolution, bool isWindowResizable)
         {
             Background = background;

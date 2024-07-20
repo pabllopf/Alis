@@ -135,7 +135,7 @@ namespace Alis.Core.Network.Internal
         /// <param name="isClient">The is client</param>
         /// <param name="subProtocol">The sub protocol</param>
         /// <exception cref="InvalidOperationException">KeepAliveInterval must be Zero or positive</exception>
-        [ExcludeFromCodeCoverage]
+        
         internal WebSocketImplementation(Guid guid, Func<MemoryStream> recycledStreamFactory, Stream stream,
             TimeSpan keepAliveInterval, string secWebSocketExtensions, bool includeExceptionInCloseResponse,
             bool isClient, string subProtocol)
@@ -205,7 +205,7 @@ namespace Alis.Core.Network.Internal
         /// <param name="buffer">The buffer</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns>A task containing the web socket receive result</returns>
-        [ExcludeFromCodeCoverage]
+        
         public override async Task<WebSocketReceiveResult> ReceiveAsync(ArraySegment<byte> buffer,
             CancellationToken cancellationToken)
         {
@@ -231,7 +231,7 @@ namespace Alis.Core.Network.Internal
         /// <param name="buffer">The buffer</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns>A task containing the web socket frame</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal async Task<WebSocketFrame> ReadWebSocketFrame(ArraySegment<byte> buffer, CancellationToken cancellationToken)
         {
             try
@@ -262,7 +262,7 @@ namespace Alis.Core.Network.Internal
         /// <param name="linkedCts">The linked cts</param>
         /// <param name="endOfMessage">The end of message</param>
         /// <returns>A task containing the web socket receive result</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal async Task<WebSocketReceiveResult> HandleWebSocketOpCodes(WebSocketFrame frame, ArraySegment<byte> buffer, CancellationTokenSource linkedCts, bool endOfMessage)
         {
             switch (frame.OpCode)
@@ -291,7 +291,7 @@ namespace Alis.Core.Network.Internal
         /// <param name="buffer">The buffer</param>
         /// <param name="token">The token</param>
         /// <returns>A task containing the web socket receive result</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal async Task<WebSocketReceiveResult> HandleConnectionClose(WebSocketFrame frame, ArraySegment<byte> buffer, CancellationToken token) => await RespondToCloseFrame(frame, buffer, token);
 
         /// <summary>
@@ -301,7 +301,7 @@ namespace Alis.Core.Network.Internal
         /// <param name="buffer">The buffer</param>
         /// <param name="linkedCts">The linked cts</param>
         /// <returns>A task containing the web socket receive result</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal async Task<WebSocketReceiveResult> HandlePing(WebSocketFrame frame, ArraySegment<byte> buffer, CancellationTokenSource linkedCts)
         {
             if (buffer.Array != null)
@@ -336,7 +336,7 @@ namespace Alis.Core.Network.Internal
         /// <param name="frame">The frame</param>
         /// <param name="endOfMessage">The end of message</param>
         /// <returns>The web socket receive result</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal WebSocketReceiveResult HandleTextFrame(WebSocketFrame frame, bool endOfMessage)
         {
             if (!frame.IsFinBitSet)
@@ -353,7 +353,7 @@ namespace Alis.Core.Network.Internal
         /// <param name="frame">The frame</param>
         /// <param name="endOfMessage">The end of message</param>
         /// <returns>The web socket receive result</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal WebSocketReceiveResult HandleBinaryFrame(WebSocketFrame frame, bool endOfMessage)
         {
             if (!frame.IsFinBitSet)
@@ -377,7 +377,7 @@ namespace Alis.Core.Network.Internal
         /// </summary>
         /// <param name="frame">The frame</param>
         /// <returns>A task containing the web socket receive result</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal async Task<WebSocketReceiveResult> HandleDefault(WebSocketFrame frame)
         {
             Exception ex = new NotSupportedException($"Unknown WebSocket opcode {frame.OpCode}");
@@ -390,7 +390,7 @@ namespace Alis.Core.Network.Internal
         /// </summary>
         /// <param name="catchAll">The catch all</param>
         /// <returns>A task containing the web socket receive result</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal async Task<WebSocketReceiveResult> HandleExceptions(Exception catchAll)
         {
             if (_state == WebSocketState.Open)
@@ -411,7 +411,7 @@ namespace Alis.Core.Network.Internal
         ///     If it is a multi-part message then false (and true for the last message)
         /// </param>
         /// <param name="cancellationToken">the cancellation token</param>
-        [ExcludeFromCodeCoverage]
+        
         public override async Task SendAsync(ArraySegment<byte> buffer, WebSocketMessageType messageType,
             bool endOfMessage, CancellationToken cancellationToken)
         {
@@ -451,7 +451,7 @@ namespace Alis.Core.Network.Internal
         ///     Cannot send Ping: Max ping message size {PingPongPayloadLen} exceeded:
         ///     {payload.Count}
         /// </exception>
-        [ExcludeFromCodeCoverage]
+        
         public async Task SendPingAsync(ArraySegment<byte> payload, CancellationToken cancellationToken)
         {
             if (payload.Count > PingPongPayloadLen)
@@ -484,7 +484,7 @@ namespace Alis.Core.Network.Internal
         /// <param name="closeStatus">The close status</param>
         /// <param name="statusDescription">The status description</param>
         /// <param name="cancellationToken">The cancellation token</param>
-        [ExcludeFromCodeCoverage]
+        
         public override async Task CloseAsync(WebSocketCloseStatus closeStatus, string statusDescription,
             CancellationToken cancellationToken)
         {
@@ -511,7 +511,7 @@ namespace Alis.Core.Network.Internal
         /// <param name="closeStatus">The close status</param>
         /// <param name="statusDescription">The status description</param>
         /// <param name="cancellationToken">The cancellation token</param>
-        [ExcludeFromCodeCoverage]
+        
         public override async Task CloseOutputAsync(WebSocketCloseStatus closeStatus, string statusDescription,
             CancellationToken cancellationToken)
         {
@@ -538,7 +538,7 @@ namespace Alis.Core.Network.Internal
         /// <summary>
         ///     Dispose will send a close frame if the connection is still open
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public override void Dispose()
         {
             Events.Log.WebSocketDispose(_guid, _state);
@@ -576,7 +576,7 @@ namespace Alis.Core.Network.Internal
         ///     Called when a Pong frame is received
         /// </summary>
         /// <param name="e"></param>
-        [ExcludeFromCodeCoverage]
+        
         internal void OnPong(PongEventArgs e)
         {
             Pong?.Invoke(this, e);
@@ -588,7 +588,7 @@ namespace Alis.Core.Network.Internal
         /// <param name="closeStatus">The close status</param>
         /// <param name="statusDescription">Optional extra close details</param>
         /// <returns>The payload to sent in the close frame</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal ArraySegment<byte> BuildClosePayload(WebSocketCloseStatus closeStatus, string statusDescription)
         {
             byte[] statusBuffer = BitConverter.GetBytes((ushort) closeStatus);
@@ -611,7 +611,7 @@ namespace Alis.Core.Network.Internal
         /// </summary>
         /// <param name="payload">The payload</param>
         /// <param name="cancellationToken">The cancellation token</param>
-        [ExcludeFromCodeCoverage]
+        
         internal async Task SendPongAsync(ArraySegment<byte> payload, CancellationToken cancellationToken)
         {
             ValidatePayloadSize(payload);
@@ -627,7 +627,7 @@ namespace Alis.Core.Network.Internal
         /// </summary>
         /// <param name="payload">The payload</param>
         /// <exception cref="InvalidOperationException">Max ping message size {PingPongPayloadLen} exceeded: {payload.Count}</exception>
-        [ExcludeFromCodeCoverage]
+        
         internal void ValidatePayloadSize(ArraySegment<byte> payload)
         {
             if (payload.Count > PingPongPayloadLen)
@@ -641,7 +641,7 @@ namespace Alis.Core.Network.Internal
         /// </summary>
         /// <param name="payload">The payload</param>
         /// <param name="cancellationToken">The cancellation token</param>
-        [ExcludeFromCodeCoverage]
+        
         internal async Task SendPongFrame(ArraySegment<byte> payload, CancellationToken cancellationToken)
         {
             try
@@ -662,7 +662,7 @@ namespace Alis.Core.Network.Internal
         ///     Called when a Close frame is received
         ///     Send a response close frame if applicable
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         internal async Task<WebSocketReceiveResult> RespondToCloseFrame(WebSocketFrame frame, ArraySegment<byte> buffer,
             CancellationToken token)
         {
@@ -703,7 +703,7 @@ namespace Alis.Core.Network.Internal
         ///     You want to avoid a call to stream.ToArray to avoid extra memory allocation
         ///     MemoryStream can be configured to have its internal buffer accessible.
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         internal ArraySegment<byte> GetBuffer(MemoryStream stream)
         {
             // Avoid calling ToArray on the MemoryStream because it allocates a new byte array on tha heap
@@ -748,7 +748,7 @@ namespace Alis.Core.Network.Internal
         /// <summary>
         ///     Turns a spec websocket frame opcode into a WebSocketMessageType
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         internal WebSocketOpCode GetOppCode(WebSocketMessageType messageType)
         {
             if (_isContinuationFrame)
@@ -777,7 +777,7 @@ namespace Alis.Core.Network.Internal
         /// <param name="closeStatus">The close status to use</param>
         /// <param name="statusDescription">A description of why we are closing</param>
         /// <param name="ex">The exception (for logging)</param>
-        [ExcludeFromCodeCoverage]
+        
         internal async Task CloseOutputAutoTimeoutAsync(WebSocketCloseStatus closeStatus, string statusDescription,
             Exception ex)
         {

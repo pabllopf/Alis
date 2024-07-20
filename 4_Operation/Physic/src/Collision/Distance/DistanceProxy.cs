@@ -54,7 +54,7 @@ namespace Alis.Core.Physic.Collision.Distance
         /// <param name="shape">The shape</param>
         /// <param name="index">The index</param>
         /// <exception cref="NotSupportedException"></exception>
-        [ExcludeFromCodeCoverage]
+        
         public DistanceProxy(AShape shape, int index) : this()
         {
             switch (shape.ShapeType)
@@ -95,7 +95,7 @@ namespace Alis.Core.Physic.Collision.Distance
         ///     Initializes the polygon shape using the specified polygon
         /// </summary>
         /// <param name="polygon">The polygon</param>
-        [ExcludeFromCodeCoverage]
+        
         internal void InitializePolygonShape(PolygonShape polygon)
         {
             Vertices = new Vector2[polygon.VerticesPrivate.Count];

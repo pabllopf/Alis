@@ -149,7 +149,7 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         ///     Call MoveProxy as many times as you like, then when you are done call UpdatePairs to finalized the proxy pairs
         ///     (for your time step).
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public void MoveProxy(int proxyId, ref Aabb aabb, Vector2 displacement)
         {
             bool buffer = tree.MoveProxy(proxyId, ref aabb, displacement);
@@ -191,7 +191,7 @@ namespace Alis.Core.Physic.Collision.BroadPhase
 
         /// <summary>Update the pairs. This results in pair callbacks. This can only add pairs.</summary>
         /// <param name="callback">The callback.</param>
-        [ExcludeFromCodeCoverage]
+        
         public void UpdatePairs(BroadPhaseHandler callback)
         {
             // Reset pair buffer
@@ -274,7 +274,7 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         ///     Buffers the move using the specified proxy id
         /// </summary>
         /// <param name="proxyId">The proxy id</param>
-        [ExcludeFromCodeCoverage]
+        
         internal void BufferMove(int proxyId)
         {
             if (moveCount == moveCapacity)
@@ -305,7 +305,7 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         }
 
         /// <summary>This is called from DynamicTree.Query when we are gathering pairs.</summary>
-        [ExcludeFromCodeCoverage]
+        
         internal bool QueryCallback(int proxyId)
         {
             // A proxy cannot form a pair with itself.

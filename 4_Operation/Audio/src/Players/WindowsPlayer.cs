@@ -42,7 +42,7 @@ namespace Alis.Core.Audio.Players
     ///     The windows player class
     /// </summary>
     /// <seealso cref="IPlayer" />
-    [ExcludeFromCodeCoverage]
+    
     internal class WindowsPlayer : IPlayer
     {
         /// <summary>

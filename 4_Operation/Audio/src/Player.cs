@@ -40,7 +40,7 @@ namespace Alis.Core.Audio
     ///     The player class
     /// </summary>
     /// <seealso cref="IPlayer" />
-    [ExcludeFromCodeCoverage]
+    
     public class Player : IPlayer
     {
         /// <summary>
@@ -133,7 +133,7 @@ namespace Alis.Core.Audio
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <param name="e">The </param>
-        [ExcludeFromCodeCoverage]
+        
         internal void OnPlaybackFinished(object sender, EventArgs e)
         {
             PlaybackFinished?.Invoke(this, e);

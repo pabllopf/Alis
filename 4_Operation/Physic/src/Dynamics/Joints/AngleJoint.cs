@@ -36,7 +36,7 @@ using Alis.Core.Physic.Dynamics.Solver;
 namespace Alis.Core.Physic.Dynamics.Joints
 {
     /// <summary>Maintains a fixed angle between two bodies</summary>
-    [ExcludeFromCodeCoverage]
+    
     public class AngleJoint : Joint
     {
         /// <summary>

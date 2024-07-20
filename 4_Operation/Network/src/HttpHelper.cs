@@ -90,7 +90,7 @@ namespace Alis.Core.Network
         /// <param name="stream">The stream to read UTF8 text from</param>
         /// <param name="token">The cancellation token</param>
         /// <returns>The HTTP header</returns>
-        [ExcludeFromCodeCoverage]
+        
         public static async Task<string> ReadHttpHeaderAsync(Stream stream, CancellationToken token)
         {
             int length = 1024 * 16; // 16KB buffer more than enough for http header
@@ -124,7 +124,7 @@ namespace Alis.Core.Network
         /// </summary>
         /// <param name="header">The HTTP header</param>
         /// <returns>True if this is an http WebSocket upgrade response</returns>
-        [ExcludeFromCodeCoverage]
+        
         public static bool IsWebSocketUpgradeRequest(string header)
         {
             Regex getRegex = new Regex(HttpGetHeaderRegex, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100));
@@ -146,7 +146,7 @@ namespace Alis.Core.Network
         /// </summary>
         /// <param name="httpHeader">The HTTP header to read</param>
         /// <returns>The path</returns>
-        [ExcludeFromCodeCoverage]
+        
         public static string GetPathFromHeader(string httpHeader)
         {
             Regex getRegex = new Regex(HttpGetHeaderRegex, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100));

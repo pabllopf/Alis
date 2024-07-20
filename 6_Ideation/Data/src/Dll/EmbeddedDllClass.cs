@@ -50,7 +50,7 @@ namespace Alis.Core.Aspect.Data.Dll
         /// <param name="dllType"></param>
         /// <param name="dllBytes">The dll bytes</param>
         /// <param name="assembly">The assembly</param>
-        [ExcludeFromCodeCoverage]
+        
         public static void ExtractEmbeddedDlls(string dllName, DllType dllType, Dictionary<PlatformInfo, string> dllBytes, Assembly assembly)
         {
             string extension = GetDllExtension(dllType);
@@ -77,7 +77,7 @@ namespace Alis.Core.Aspect.Data.Dll
         /// <param name="dllType"></param>
         /// <exception cref="PlatformNotSupportedException">Unsupported platform.</exception>
         /// <returns>The string</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static string GetDllExtension(DllType dllType)
         {
             OSPlatform currentPlatform = GetCurrentPlatform();
@@ -152,7 +152,7 @@ namespace Alis.Core.Aspect.Data.Dll
         /// </summary>
         /// <exception cref="PlatformNotSupportedException">Unsupported platform.</exception>
         /// <returns>The os platform</returns>
-        [ExcludeFromCodeCoverage]
+        
         public static OSPlatform GetCurrentPlatform()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
@@ -214,7 +214,7 @@ namespace Alis.Core.Aspect.Data.Dll
         /// </summary>
         /// <param name="fileDir">The file dir</param>
         /// <param name="entry">The entry</param>
-        [ExcludeFromCodeCoverage]
+        
         internal static void ExtractEntry(string fileDir, ZipArchiveEntry entry)
         {
             string destinationPath = Path.Combine(fileDir, entry.FullName);
@@ -231,7 +231,7 @@ namespace Alis.Core.Aspect.Data.Dll
         /// </summary>
         /// <param name="canonicalDestinationPath">The canonical destination path</param>
         /// <param name="entry">The entry</param>
-        [ExcludeFromCodeCoverage]
+        
         internal static void ExtractFileFromEntry(string canonicalDestinationPath, ZipArchiveEntry entry)
         {
             using Stream entryStream = entry.Open();
@@ -244,7 +244,7 @@ namespace Alis.Core.Aspect.Data.Dll
         ///     Sets the file read permission using the specified file path
         /// </summary>
         /// <param name="filePath">The file path</param>
-        [ExcludeFromCodeCoverage]
+        
         internal static void SetFileReadPermission(string filePath)
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) || RuntimeInformation.IsOSPlatform(OSPlatform.OSX))

@@ -71,7 +71,7 @@ namespace Alis.Core.Physic.Collision.Distance
         /// <param name="input">The input</param>
         /// <param name="output">The output</param>
         /// <param name="cache">The cache</param>
-        [ExcludeFromCodeCoverage]
+        
         public static void ComputeDistance(ref DistanceInput input, out DistanceOutput output, out SimplexCache cache)
         {
             cache = new SimplexCache
@@ -168,7 +168,7 @@ namespace Alis.Core.Physic.Collision.Distance
         /// <param name="cache">The cache</param>
         /// <param name="input">The input</param>
         /// <returns>The simplex</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static Simplex InitializeSimplex(ref SimplexCache cache, ref DistanceInput input)
         {
             Simplex simplex = new Simplex
@@ -186,7 +186,7 @@ namespace Alis.Core.Physic.Collision.Distance
         /// <param name="simplex">The simplex</param>
         /// <param name="input">The input</param>
         /// <returns>The vertex</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static SimplexVertex AddNewVertexToSimplex(ref Simplex simplex, ref DistanceInput input)
         {
             Vector2 d = simplex.GetSearchDirection();
@@ -205,7 +205,7 @@ namespace Alis.Core.Physic.Collision.Distance
         ///     Solves the simplex using the specified simplex
         /// </summary>
         /// <param name="simplex">The simplex</param>
-        [ExcludeFromCodeCoverage]
+        
         internal static void SolveSimplex(ref Simplex simplex)
         {
             switch (simplex.Count)
@@ -252,7 +252,7 @@ namespace Alis.Core.Physic.Collision.Distance
         /// <param name="simplex">The simplex</param>
         /// <param name="cache">The cache</param>
         /// <param name="input">The input</param>
-        [ExcludeFromCodeCoverage]
+        
         internal static void PrepareOutput(out DistanceOutput output, ref Simplex simplex, ref SimplexCache cache, ref DistanceInput input)
         {
             simplex.GetWitnessPoints(out output.PointA, out output.PointB);
@@ -303,7 +303,7 @@ namespace Alis.Core.Physic.Collision.Distance
         ///     translation fraction.
         /// </summary>
         /// <returns>true if hit, false if there is no hit or an initial overlap</returns>
-        [ExcludeFromCodeCoverage]
+        
         public static bool ShapeCast(ref ShapeCastInput input, out ShapeCastOutput output)
         {
             InitializeOutput(out output);
@@ -387,7 +387,7 @@ namespace Alis.Core.Physic.Collision.Distance
         /// <param name="simplex">The simplex</param>
         /// <param name="radius">The radius</param>
         /// <returns>The bool</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static bool IterateUntilConverged(ref DistanceProxy proxyA, ref DistanceProxy proxyB,
             ref Transform xfA, ref Transform xfB, ref Vector2 r, ref Vector2 n, ref float lambda, ref Simplex simplex, float radius)
         {
@@ -415,7 +415,7 @@ namespace Alis.Core.Physic.Collision.Distance
         /// <param name="simplex">The simplex</param>
         /// <param name="radius">The radius</param>
         /// <returns>The </returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static Vector2 ComputeV(ref DistanceProxy proxyA, ref DistanceProxy proxyB,
             ref Transform xfA, ref Transform xfB, ref Vector2 r, ref Vector2 n, ref float lambda, ref Simplex simplex, float radius)
         {
@@ -494,7 +494,7 @@ namespace Alis.Core.Physic.Collision.Distance
         /// <param name="lambda">The lambda</param>
         /// <param name="simplex">The simplex</param>
         /// <param name="radius">The radius</param>
-        [ExcludeFromCodeCoverage]
+        
         internal static void UpdateSimplex(ref DistanceProxy proxyA, ref DistanceProxy proxyB,
             ref Transform xfA, ref Transform xfB, ref Vector2 r, ref Vector2 v, ref Vector2 n, ref float lambda, ref Simplex simplex, float radius)
         {

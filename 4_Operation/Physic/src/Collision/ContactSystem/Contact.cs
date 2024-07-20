@@ -160,7 +160,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         public float RestitutionThreshold { get; set; }
 
         /// <summary>Get or set the desired tangent speed for a conveyor belt behavior. In meters per second.</summary>
-        [ExcludeFromCodeCoverage]
+        
         public float TangentSpeed { get; set; }
 
         /// <summary>
@@ -185,7 +185,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         ///     Enable/disable this contact.The contact is only disabled for the current time step (or sub-step in continuous
         ///     collisions).
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public bool Enabled
         {
             get => (Flags & ContactSetting.EnabledFlag) == ContactSetting.EnabledFlag;
@@ -257,7 +257,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         }
 
         /// <summary>Gets the world manifold.</summary>
-        [ExcludeFromCodeCoverage]
+        
         public void GetWorldManifold(out Vector2 normal, out Vector2[] points)
         {
             Body bodyA = FixtureA.Body;
@@ -320,7 +320,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         ///     Updates the contact manager
         /// </summary>
         /// <param name="contactManager">The contact manager</param>
-        [ExcludeFromCodeCoverage]
+        
         internal void Update(ContactManager contactManager)
         {
             if (FixtureA == null || FixtureB == null)
@@ -374,7 +374,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <param name="xfA">The xf</param>
         /// <param name="xfB">The xf</param>
         /// <returns>The touching</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal bool CheckSensorOverlap(ref Transform xfA, ref Transform xfB)
         {
             AShape shapeA = FixtureA.Shape;
@@ -393,7 +393,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <param name="xfB">The xf</param>
         /// <param name="oldManifold">The old manifold</param>
         /// <returns>The touching</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal bool EvaluateAndCheckManifold(ref Transform xfA, ref Transform xfB, Manifold oldManifold)
         {
             Evaluate(ref manifold, ref xfA, ref xfB);
@@ -428,7 +428,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         ///     Updates the touching flag using the specified touching
         /// </summary>
         /// <param name="touching">The touching</param>
-        [ExcludeFromCodeCoverage]
+        
         internal void UpdateTouchingFlag(bool touching)
         {
             if (touching)
@@ -446,7 +446,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// </summary>
         /// <param name="contactManager">The contact manager</param>
         /// <param name="wasTouching">The was touching</param>
-        [ExcludeFromCodeCoverage]
+        
         internal void InvokeCollisionEvents(ContactManager contactManager, bool wasTouching)
         {
             if (!wasTouching)
@@ -465,7 +465,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         ///     Invokes the separation events using the specified contact manager
         /// </summary>
         /// <param name="contactManager">The contact manager</param>
-        [ExcludeFromCodeCoverage]
+        
         internal void InvokeSeparationEvents(ContactManager contactManager)
         {
             FixtureA.OnSeparation?.Invoke(FixtureA, FixtureB, this);
@@ -481,7 +481,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <param name="maniFold">The manifold.</param>
         /// <param name="transformA">The first transform.</param>
         /// <param name="transformB">The second transform.</param>
-        [ExcludeFromCodeCoverage]
+        
         internal void Evaluate(ref Manifold maniFold, ref Transform transformA, ref Transform transformB)
         {
             switch (type)
@@ -576,7 +576,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <param name="indexB">The index</param>
         /// <param name="pool">The pool</param>
         /// <returns>The </returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static Contact GetContactFromPool(ShapeType type1, ShapeType type2, Fixture fixtureA, int indexA, Fixture fixtureB, int indexB, Queue<Contact> pool)
         {
             Contact c = pool.Dequeue();
@@ -602,7 +602,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <param name="fixtureB">The fixture</param>
         /// <param name="indexB">The index</param>
         /// <returns>The </returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static Contact GetNewContact(ShapeType type1, ShapeType type2, Fixture fixtureA, int indexA, Fixture fixtureB, int indexB)
         {
             Contact c;
@@ -630,7 +630,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <summary>
         ///     Destroys this instance
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         internal void Destroy()
         {
             if ((Manifold.PointCount > 0) && !FixtureA.IsSensor && !FixtureB.IsSensor)

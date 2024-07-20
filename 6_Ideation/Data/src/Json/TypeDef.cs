@@ -42,7 +42,7 @@ namespace Alis.Core.Aspect.Data.Json
     /// <summary>
     ///     The type def class
     /// </summary>
-    [ExcludeFromCodeCoverage]
+    
     internal sealed class TypeDef
     {
         /// <summary>

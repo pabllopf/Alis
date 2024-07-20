@@ -57,7 +57,7 @@ namespace Alis.Core.Physic.Collision
         /// <param name="transform">The transform</param>
         /// <param name="output">The output</param>
         /// <returns>The bool</returns>
-        [ExcludeFromCodeCoverage]
+        
         public static bool RayCastEdge(ref Vector2 start, ref Vector2 end, bool oneSided, ref RayCastInput input,
             ref Transform transform, out RayCastOutput output)
         {
@@ -137,7 +137,7 @@ namespace Alis.Core.Physic.Collision
         /// <param name="transform">The transform</param>
         /// <param name="output">The output</param>
         /// <returns>The bool</returns>
-        [ExcludeFromCodeCoverage]
+        
         public static bool RayCastCircle(ref Vector2 pos, float radius, ref RayCastInput input, ref Transform transform,
             out RayCastOutput output)
         {
@@ -189,7 +189,7 @@ namespace Alis.Core.Physic.Collision
         /// <param name="transform">The transform</param>
         /// <param name="output">The output</param>
         /// <returns>The bool</returns>
-        [ExcludeFromCodeCoverage]
+        
         public static bool RayCastPolygon(Vertices vertices, Vertices normals, ref RayCastInput input,
             ref Transform transform, out RayCastOutput output)
         {
@@ -262,7 +262,7 @@ namespace Alis.Core.Physic.Collision
         /// <param name="numerator">The numerator</param>
         /// <param name="denominator">The denominator</param>
         /// <returns>The bool</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static bool ProcessDenominator(ref float lower, ref float upper, ref int index, int i, float numerator, float denominator)
         {
             if ((CustomMathF.Abs(denominator) < float.Epsilon) && (CustomMathF.Abs(numerator) <= float.Epsilon))

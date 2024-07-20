@@ -66,7 +66,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="sine">The sine</param>
         /// <param name="cosine">The cosine</param>
         /// <param name="angle">The angle</param>
-        [ExcludeFromCodeCoverage]
+        
         public Rotation(float sine, float cosine, float angle)
         {
             Sine = sine;
@@ -113,7 +113,7 @@ namespace Alis.Core.Aspect.Math
         /// </summary>
         /// <param name="info">The info</param>
         /// <param name="context">The context</param>
-        [ExcludeFromCodeCoverage]
+        
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("sine", Sine);

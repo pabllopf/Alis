@@ -80,7 +80,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
     ///     s1 = cross(d + r1, u), s2 = cross(r2, u)
     ///     a1 = cross(d + r1, v), a2 = cross(r2, v)
     /// </summary>
-    [ExcludeFromCodeCoverage]
+    
     public class PrismaticJoint : Joint
     {
         /// <summary>

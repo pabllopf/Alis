@@ -43,7 +43,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
     /// <summary>
     ///     The contact solver class
     /// </summary>
-    [ExcludeFromCodeCoverage]
+    
     internal class ContactSolver
     {
         /// <summary>

@@ -52,7 +52,7 @@ namespace Alis.Core.Network.Internal
         ///     Unable to read {length} bytes into buffer (offset: {buffer.Offset}
         ///     size: {buffer.Count}). Use a larger read buffer
         /// </exception>
-        [ExcludeFromCodeCoverage]
+        
         public static async Task ReadExactly(int length, Stream stream, ArraySegment<byte> buffer,
             CancellationToken cancellationToken)
         {
@@ -189,7 +189,7 @@ namespace Alis.Core.Network.Internal
         /// <param name="value">The value</param>
         /// <param name="isLittleEndian">The is little endian</param>
         /// <returns>The buffer</returns>
-        [ExcludeFromCodeCoverage]
+        
         internal static byte[] GetBytesInCorrectEndianness(int value, bool isLittleEndian)
         {
             byte[] buffer = BitConverter.GetBytes(value);

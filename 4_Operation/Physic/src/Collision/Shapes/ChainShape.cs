@@ -132,7 +132,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="childIndex">The child index</param>
         /// <param name="output">The output</param>
         /// <returns>The bool</returns>
-        [ExcludeFromCodeCoverage]
+        
         public override bool RayCast(ref RayCastInput input, ref Transform transform, int childIndex,
             out RayCastOutput output)
         {

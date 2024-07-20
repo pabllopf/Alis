@@ -52,7 +52,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
     ///     K = J * invM * JT
     ///     = invMass1 + invI1 * cross(r1, u)^2 + invMass2 + invI2 * cross(r2, u)^2
     /// </summary>
-    [ExcludeFromCodeCoverage]
+    
     public class DistanceJoint : Joint
     {
         /// <summary>

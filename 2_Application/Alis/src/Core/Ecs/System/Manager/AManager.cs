@@ -59,7 +59,7 @@ namespace Alis.Core.Ecs.System.Manager
         /// <param name="tag">The tag</param>
         /// <param name="isEnable">The is enable</param>
         [JsonConstructor]
-        [ExcludeFromCodeCoverage]
+        
         protected AManager(string id, string name, string tag, bool isEnable)
         {
             Id = id;

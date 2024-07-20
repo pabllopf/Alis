@@ -51,7 +51,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
     ///     The graphic manager base class
     /// </summary>
     /// <seealso cref="AManager" />
-    [ExcludeFromCodeCoverage]
+    
     public class GraphicManager : AManager
     {
         /// <summary>

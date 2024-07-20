@@ -52,7 +52,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// <summary>
         ///     Initializes a new instance of the <see cref="Animator" /> class
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public Animator()
         {
             Animations = new List<Animation>();
@@ -63,7 +63,7 @@ namespace Alis.Core.Ecs.Component.Render
         ///     Initializes a new instance of the <see cref="Animator" /> class
         /// </summary>
         /// <param name="animations">The animations</param>
-        [ExcludeFromCodeCoverage]
+        
         public Animator(List<Animation> animations)
         {
             Animations = animations;
@@ -132,7 +132,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// <summary>
         ///     Updates this instance
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public override void OnUpdate()
         {
             if (Sprite == null || currentAnimation == null || Animations.Count == 0)
@@ -163,7 +163,7 @@ namespace Alis.Core.Ecs.Component.Render
         ///     Changes the animation to using the specified name animation
         /// </summary>
         /// <param name="nameAnimation">The name animation</param>
-        [ExcludeFromCodeCoverage]
+        
         public void ChangeAnimationTo(string nameAnimation)
         {
             if (currentAnimation.Name.Equals(nameAnimation))
@@ -183,7 +183,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         /// <param name="nameAnimation">The name animation</param>
         /// <param name="flipsTo">The flip to</param>
-        [ExcludeFromCodeCoverage]
+        
         public void ChangeAnimationTo(string nameAnimation, RendererFlips flipsTo)
         {
             if (currentAnimation.Name.Equals(nameAnimation) && (Sprite.Flips == flipsTo))

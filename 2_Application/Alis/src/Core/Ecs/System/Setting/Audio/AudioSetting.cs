@@ -46,7 +46,7 @@ namespace Alis.Core.Ecs.System.Setting.Audio
         /// <summary>
         ///     Initializes a new instance of the <see cref="AudioSetting" /> class
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public AudioSetting()
         {
             Volume = 100;
@@ -59,7 +59,7 @@ namespace Alis.Core.Ecs.System.Setting.Audio
         /// <param name="volume">The volume</param>
         /// <param name="mute">The mute</param>
         [JsonConstructor]
-        [ExcludeFromCodeCoverage]
+        
         public AudioSetting(int volume, bool mute)
         {
             Volume = volume;

@@ -48,7 +48,7 @@ namespace Alis.Core.Ecs.System.Manager.Physic
         /// <summary>
         ///     Ons the update
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public override void OnUpdate()
         {
             if (Context is null)

@@ -56,7 +56,7 @@ namespace Alis.Core.Ecs.Component.Render
         ///     Initializes a new instance of the <see cref="Image" /> class
         /// </summary>
         /// <param name="nameFile">The name file</param>
-        [ExcludeFromCodeCoverage]
+        
         public Image(string nameFile)
         {
             NameFile = nameFile;
@@ -70,7 +70,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// <param name="nameFile">The name file</param>
         /// <param name="size">The size</param>
         [JsonConstructor]
-        [ExcludeFromCodeCoverage]
+        
         public Image(string nameFile, Vector2 size)
         {
             NameFile = nameFile;

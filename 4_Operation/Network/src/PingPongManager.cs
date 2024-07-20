@@ -137,7 +137,7 @@ namespace Alis.Core.Network
         /// <summary>
         ///     Pings the forever
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         internal async Task PingForever()
         {
             LogPingPongManagerStart();
@@ -157,7 +157,7 @@ namespace Alis.Core.Network
         /// <summary>
         ///     Pings the loop
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         internal async Task PingLoop()
         {
             while (!_cancellationToken.IsCancellationRequested)

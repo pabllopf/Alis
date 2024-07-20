@@ -37,7 +37,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
     /// <summary>
     ///     The joint class
     /// </summary>
-    [ExcludeFromCodeCoverage]
+    
     public abstract class Joint
     {
         /// <summary>

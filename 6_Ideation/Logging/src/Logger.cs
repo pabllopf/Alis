@@ -36,7 +36,7 @@ namespace Alis.Core.Aspect.Logging
     /// <summary>
     ///     The logger class
     /// </summary>
-    [ExcludeFromCodeCoverage]
+    
     public static class Logger
     {
         /// <summary>

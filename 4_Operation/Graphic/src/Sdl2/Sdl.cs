@@ -48,7 +48,7 @@ namespace Alis.Core.Graphic.Sdl2
     /// <summary>
     ///     The sdl class
     /// </summary>
-    [ExcludeFromCodeCoverage]
+    
     public static class Sdl
     {
         /// <summary>

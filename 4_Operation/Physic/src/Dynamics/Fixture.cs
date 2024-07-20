@@ -79,7 +79,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="restitution">The restitution</param>
         /// <param name="restitutionThreshold">The restitution threshold</param>
         /// <param name="isSensor">The is sensor</param>
-        [ExcludeFromCodeCoverage]
+        
         public Fixture(
             AShape shape,
             Filter filter,
@@ -147,13 +147,13 @@ namespace Alis.Core.Physic.Dynamics
         public OnSeparationHandler OnSeparation { get; set; }
 
         /// <summary>Contact filtering data.</summary>
-        [ExcludeFromCodeCoverage]
+        
         public Filter Filter { get; set; } = new Filter();
 
         /// <summary>
         ///     Gets or sets the value of the ignore ccd with
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public Category IgnoreCcdWith { get; set; }
 
         /// <summary>
@@ -176,7 +176,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     are in
         ///     the same collision group, they will not collide.
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public short CollisionGroup
         {
             set
@@ -196,7 +196,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Defaults to Category.All The collision mask bits. This states the categories that this fixture would accept
         ///     for collision. Use Settings.UseFPECollisionCategories to change the behavior.
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public Category CollidesWith
         {
             get => CollidesWithprivate;
@@ -217,7 +217,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     The collision categories this fixture is a part of. If Settings.UseFPECollisionCategories is set to false:
         ///     Defaults to Category.Cat1 If Settings.UseFPECollisionCategories is set to true: Defaults to Category.All
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public Category CollisionCategories
         {
             get => CollisionCategoriesprivate;
@@ -243,7 +243,7 @@ namespace Alis.Core.Physic.Dynamics
 
         /// <summary>Gets or sets a value indicating whether this fixture is a sensor.</summary>
         /// <value><c>true</c> if this instance is a sensor; otherwise, <c>false</c>.</value>
-        [ExcludeFromCodeCoverage]
+        
         public bool IsSensor
         {
             get => IsSensorPrivate;
@@ -274,7 +274,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Contacts are persistent and will keep being persistent unless they are flagged for filtering. This methods
         ///     flags all contacts associated with the body for filtering.
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         private void Refilter()
         {
             // Flag associated contacts for filtering.
@@ -325,7 +325,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Destroys this instance
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         internal void Destroy()
         {
             // Free the proxy array.
@@ -366,7 +366,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Destroys the proxies using the specified broad phase
         /// </summary>
         /// <param name="broadPhase">The broad phase</param>
-        [ExcludeFromCodeCoverage]
+        
         internal void DestroyProxies(IBroadPhase broadPhase)
         {
             // Destroy proxies in the broad-phase.
@@ -386,7 +386,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="broadPhase">The broad phase</param>
         /// <param name="transform1">The transform</param>
         /// <param name="transform2">The transform</param>
-        [ExcludeFromCodeCoverage]
+        
         internal void Synchronize(IBroadPhase broadPhase, ref Transform transform1, ref Transform transform2)
         {
             if (ProxyCount == 0)

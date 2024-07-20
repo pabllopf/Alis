@@ -99,7 +99,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// </summary>
         /// <param name="b">The </param>
         /// <returns>The vector</returns>
-        [ExcludeFromCodeCoverage]
+        
         public Vector3 Solve33(Vector3 b)
         {
             float det = Vector3.Dot(Ex, Vector3.Cross(Ey, Ez));
@@ -169,7 +169,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         ///     Gets the sym inverse 33 using the specified m
         /// </summary>
         /// <param name="m">The </param>
-        [ExcludeFromCodeCoverage]
+        
         public void GetSymInverse33(ref Matrix3X3 m)
         {
             float det = Dot(Ex, Cross(Ey, Ez));

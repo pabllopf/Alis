@@ -44,7 +44,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// <summary>
         ///     Initializes a new instance of the <see cref="Frame" /> class
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public Frame()
         {
             NameFile = string.Empty;
@@ -56,7 +56,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         /// <param name="nameFile">The name file</param>
         [JsonConstructor]
-        [ExcludeFromCodeCoverage]
+        
         public Frame(string nameFile)
         {
             NameFile = nameFile;
@@ -73,7 +73,7 @@ namespace Alis.Core.Ecs.Component.Render
         ///     Gets or sets the value of the file path
         /// </summary>
         [JsonIgnore]
-        [ExcludeFromCodeCoverage]
+        
         public string FilePath { get; set; }
 
         /// <summary>

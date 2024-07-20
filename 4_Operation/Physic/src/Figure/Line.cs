@@ -47,7 +47,7 @@ namespace Alis.Core.Physic.Figure
         /// <param name="start">The start</param>
         /// <param name="end">The end</param>
         /// <returns>The float</returns>
-        [ExcludeFromCodeCoverage]
+        
         public static float DistanceBetweenPointAndLineSegment(Vector2 point, Vector2 start, Vector2 end)
         {
             if (ArePointsEqual(start, end))
@@ -153,7 +153,7 @@ namespace Alis.Core.Physic.Figure
         /// <param name="b1">The </param>
         /// <param name="intersectionPoint">The intersection point</param>
         /// <returns>The bool</returns>
-        [ExcludeFromCodeCoverage]
+        
         public static bool LineIntersect2(Vector2 a0, Vector2 a1, Vector2 b0, Vector2 b1, out Vector2 intersectionPoint)
         {
             intersectionPoint = Vector2.Zero;
@@ -318,7 +318,7 @@ namespace Alis.Core.Physic.Figure
         /// <param name="secondIsSegment">The second is segment</param>
         /// <param name="intersectionPoint">The intersection point</param>
         /// <returns>The bool</returns>
-        [ExcludeFromCodeCoverage]
+        
         public static bool LineIntersect(Vector2 point1, Vector2 point2, Vector2 point3, Vector2 point4,
             bool firstIsSegment, bool secondIsSegment, out Vector2 intersectionPoint)
         {
