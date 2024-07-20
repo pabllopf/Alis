@@ -68,7 +68,7 @@ namespace Alis.App.Installer
         /// <summary>
         ///     The name engine
         /// </summary>
-        private const string NameEngine = "Alis - Installer";
+        private const string NameEngine = "Alis Installer by @pabllopf";
         
         /// <summary>
         /// The arguments
