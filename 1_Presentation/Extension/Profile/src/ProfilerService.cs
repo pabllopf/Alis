@@ -61,7 +61,6 @@ namespace Alis.Extension.Profile
         public void StartProfiling()
         {
             profiler.StartProfiling();
-            // Start monitoring resources
             profileData.CpuUsage = GetCpuUsage();
             profileData.MemoryUsage = GetMemoryUsage();
         }
@@ -73,7 +72,6 @@ namespace Alis.Extension.Profile
         public ProfileData StopProfiling()
         {
             profiler.StopProfiling();
-            // Stop monitoring resources and store the data in profileData
             profileData.CpuUsage = GetCpuUsage();
             profileData.MemoryUsage = GetMemoryUsage();
             return profileData;

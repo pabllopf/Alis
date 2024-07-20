@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:SpaceWork.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -28,18 +28,66 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Extension.Graphic.ImGui;
 
-namespace Alis.App.Installer
+namespace Alis.App.Installer.Core
 {
     /// <summary>
-    ///     The program class
+    ///     The space work class
     /// </summary>
-    public static class Program
+    public class SpaceWork
     {
         /// <summary>
-        ///     Main the args
+        ///     The context
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args) => new Installer().Run(args);
+        public IntPtr ContextGui;
+
+        /// <summary>
+        ///     The io
+        /// </summary>
+        public ImGuiIoPtr Io;
+        
+        /// <summary>
+        ///     The style
+        /// </summary>
+        public ImGuiStyle Style;
+
+        /// <summary>
+        ///     Gets or sets the value of the viewport
+        /// </summary>
+        public ImGuiViewportPtr Viewport;
+
+        /// <summary>
+        ///     The window
+        /// </summary>
+        public IntPtr Window;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="SpaceWork" /> class
+        /// </summary>
+        public SpaceWork()
+        {
+        }
+        
+        /// <summary>
+        /// Initializes this instance
+        /// </summary>
+        public void Initialize()
+        {
+        }
+
+        /// <summary>
+        /// Starts this instance
+        /// </summary>
+        public void Start()
+        {
+        }
+
+        /// <summary>
+        ///     Updates this instance
+        /// </summary>
+        public void Update()
+        {
+        }
     }
 }

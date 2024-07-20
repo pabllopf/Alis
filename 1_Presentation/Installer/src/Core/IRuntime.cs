@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:IRuntime.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,19 +27,24 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
-namespace Alis.App.Installer
+namespace Alis.App.Installer.Core
 {
     /// <summary>
-    ///     The program class
+    /// The runtime interface
     /// </summary>
-    public static class Program
+    public interface IRuntime
     {
         /// <summary>
-        ///     Main the args
+        /// Initializes this instance
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args) => new Installer().Run(args);
+        public void Initialize();
+        /// <summary>
+        /// Updates this instance
+        /// </summary>
+        public void Update();
+        /// <summary>
+        /// Renders this instance
+        /// </summary>
+        public void Render();
     }
 }
