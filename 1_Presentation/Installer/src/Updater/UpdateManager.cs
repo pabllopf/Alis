@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -185,14 +186,14 @@ namespace Alis.App.Installer.Updater
             Thread.Sleep(2000);
 
             // Mantener solo los 2 backups más recientes
-            var backupFiles = Directory.GetFiles(Environment.CurrentDirectory, "Backup_*.zip")
+            List<FileInfo> backupFiles = Directory.GetFiles(Environment.CurrentDirectory, "Backup_*.zip")
                 .Select(file => new FileInfo(file))
                 .OrderByDescending(fi => fi.CreationTime)
                 .ToList();
 
             if (backupFiles.Count > 2)
             {
-                foreach (var file in backupFiles.Skip(2))
+                foreach (FileInfo file in backupFiles.Skip(2))
                 {
                     File.Delete(file.FullName);
                     Console.WriteLine($"Deleted old backup: {file.Name}");
