@@ -94,6 +94,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
             CurrentScene.OnAwake();
         }
 
+        
         /// <summary>
         ///     Ons the start
         /// </summary>
