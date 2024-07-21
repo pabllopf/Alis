@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.4.0] - 2024-07-21
+### :bug: Bug Fixes
+- [`971eeb6`](https://github.com/pabllopf/Alis/commit/971eeb6273a7b167d01100016e9bd9ce56b5bd79) - build the macos apps on .dmg *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.3.9] - 2024-07-21
 ### :bug: Bug Fixes
 - [`206fcfb`](https://github.com/pabllopf/Alis/commit/206fcfb5ef398b6fe47f934330423fd70c08bdc6) - names and creation of json files *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -3147,3 +3152,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.3.7]: https://github.com/pabllopf/Alis/compare/v0.3.6...v0.3.7
 [v0.3.8]: https://github.com/pabllopf/Alis/compare/v0.3.7...v0.3.8
 [v0.3.9]: https://github.com/pabllopf/Alis/compare/v0.3.8...v0.3.9
+[v0.4.0]: https://github.com/pabllopf/Alis/compare/v0.3.9...v0.4.0
