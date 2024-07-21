@@ -95,13 +95,12 @@ jobs:
       
       - name: move icon
         run: mkdir -p .build/osx_arm64/Alis.app/Contents/Resources/ &&  mv .build/osx_arm64/Alis.app/Contents/MacOS/logo.png .build/osx_arm64/Alis.app/Contents/Resources/logo.png
-
-      - name: zip osx-arm64
-        run: |
-          ORIGINAL_DIR=$(pwd)
-          cd ./.build/osx_arm64/
-          zip -r ../Alis_Engine_osx_arm64.zip ./*
-          cd $ORIGINAL_DIR
+    
+      - name: create temp dmg
+        run: hdiutil create /tmp/tmp.dmg -ov -volname "Alis_Engine_osx_arm64" -fs HFS+ -srcfolder .build/osx_arm64/
+        
+      - name: create dmg
+        run: hdiutil convert /tmp/tmp.dmg -format UDZO -o .build/osx_arm64/Alis_Engine_osx_arm64.dmg
 
       - name: publish osx-x64
         run: dotnet publish ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -f net8.0 -p:PublishTrimmed=false -r osx-x64 -o ./.build/osx_x64/Alis.app/Contents/MacOS/bin/
@@ -115,12 +114,11 @@ jobs:
       - name: move icon
         run: mkdir -p .build/osx_x64/Alis.app/Contents/Resources/ &&  mv .build/osx_x64/Alis.app/Contents/MacOS/logo.png .build/osx_x64/Alis.app/Contents/Resources/logo.png
 
-      - name: zip osx-x64
-        run: |
-          ORIGINAL_DIR=$(pwd)
-          cd ./.build/osx_x64/
-          zip -r ../Alis_Engine_osx_x64.zip ./*
-          cd $ORIGINAL_DIR
+      - name: create temp dmg
+        run: hdiutil create /tmp/tmp.dmg -ov -volname "Alis_Engine_osx_x64" -fs HFS+ -srcfolder .build/osx_x64/
+        
+      - name: create dmg
+        run: hdiutil convert /tmp/tmp.dmg -format UDZO -o .build/osx_x64/Alis_Engine_osx_x64.dmg
 
       - name: publish win-x64
         run: dotnet publish ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -f net8.0 -p:PublishTrimmed=false -r win-x64 -o ./.build/win_x64/bin/
