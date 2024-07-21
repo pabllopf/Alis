@@ -237,30 +237,13 @@ namespace Alis.App.Engine
             // REBUILD ATLAS
             ImFontAtlasPtr fonts = ImGui.GetIo().Fonts;
 
-            string dirFonts = Environment.CurrentDirectory + "/Assets/Fonts/Jetbrains/";
-            string fontToLoad = "JetBrainsMono-Bold.ttf";
-
-            string dirFontsIcon = Environment.CurrentDirectory + "/Assets/Icons/";
-
-            if (!Directory.Exists(dirFonts))
-            {
-                Logger.Info(@$"ERROR, DIR NOT FOUND: {dirFonts}");
-                return;
-            }
-
-            if (!File.Exists(dirFonts + fontToLoad))
-            {
-                Logger.Info(@$"ERROR, FONT NOT FOUND: {dirFonts + fontToLoad}");
-                return;
-            }
-
-
             //fonts.AddFontDefault();
 
             float fontSize = 14;
             float fontSizeIcon = 18;
 
-            ImFontPtr fontLoaded16Solid = fonts.AddFontFromFileTtf(@$"{dirFonts}{fontToLoad}", fontSize);
+            string fontFileSolid = AssetManager.Find("JetBrainsMono-Bold.ttf");
+            ImFontPtr fontLoaded16Solid = fonts.AddFontFromFileTtf(fontFileSolid, fontSize);
             try
             {
                 ImFontConfigPtr icons_config = ImGui.ImFontConfig();
@@ -279,16 +262,17 @@ namespace Alis.App.Engine
                 IntPtr rangePtr = iconRangesHandle.AddrOfPinnedObject();
 
                 // Assuming 'io' is a valid ImGuiIO instance and 'dir' and 'dirIcon' are defined paths
-                fonts.AddFontFromFileTtf(@$"{dirFontsIcon}{FontAwesome5.NameSolid}", fontSizeIcon, icons_config, rangePtr);
+                string fontAwesome = AssetManager.Find(FontAwesome5.NameSolid);
+                fonts.AddFontFromFileTtf(fontAwesome, fontSizeIcon, icons_config, rangePtr);
             }
             catch (Exception e)
             {
-                Logger.Exception(@$"ERROR, FONT ICONS NOT FOUND: {dirFontsIcon}{FontAwesome5.NameSolid} {e.Message}");
+                Logger.Exception(@$"ERROR, FONT ICONS NOT FOUND: {FontAwesome5.NameSolid} {e.Message}");
                 return;
             }
 
-
-            ImFontPtr fontLoaded16Regular = fonts.AddFontFromFileTtf(@$"{dirFonts}{fontToLoad}", fontSize);
+            string fontAwesomeRegular = AssetManager.Find("JetBrainsMonoNL-Regular.ttf");
+            ImFontPtr fontLoaded16Regular = fonts.AddFontFromFileTtf(fontAwesomeRegular, fontSize);
             try
             {
                 ImFontConfigPtr icons_config = ImGui.ImFontConfig();
@@ -307,16 +291,16 @@ namespace Alis.App.Engine
                 IntPtr rangePtr = iconRangesHandle.AddrOfPinnedObject();
 
                 // Assuming 'io' is a valid ImGuiIO instance and 'dir' and 'dirIcon' are defined paths
-                fonts.AddFontFromFileTtf(@$"{dirFontsIcon}{FontAwesome5.NameRegular}", fontSizeIcon, icons_config, rangePtr);
+                fonts.AddFontFromFileTtf(fontAwesomeRegular, fontSizeIcon, icons_config, rangePtr);
             }
             catch (Exception e)
             {
-                Logger.Exception(@$"ERROR, FONT ICONS NOT FOUND: {dirFontsIcon}{FontAwesome5.NameRegular} {e.Message}");
+                Logger.Exception(@$"ERROR, FONT ICONS NOT FOUND: {FontAwesome5.NameRegular} {e.Message}");
                 return;
             }
 
-
-            ImFontPtr fontLoaded16Light = fonts.AddFontFromFileTtf(@$"{dirFonts}{fontToLoad}", fontSize);
+            string fontAwesomeLight = AssetManager.Find("JetBrainsMonoNL-Regular.ttf");
+            ImFontPtr fontLoaded16Light = fonts.AddFontFromFileTtf(fontAwesomeLight, fontSize);
             try
             {
                 ImFontConfigPtr icons_config = ImGui.ImFontConfig();
@@ -335,11 +319,11 @@ namespace Alis.App.Engine
                 IntPtr rangePtr = iconRangesHandle.AddrOfPinnedObject();
 
                 // Assuming 'io' is a valid ImGuiIO instance and 'dir' and 'dirIcon' are defined paths
-                fonts.AddFontFromFileTtf(@$"{dirFontsIcon}{FontAwesome5.NameLight}", fontSizeIcon, icons_config, rangePtr);
+                fonts.AddFontFromFileTtf(fontAwesomeLight, fontSizeIcon, icons_config, rangePtr);
             }
             catch (Exception e)
             {
-                Logger.Exception(@$"ERROR, FONT ICONS NOT FOUND: {dirFontsIcon}{FontAwesome5.NameLight} {e.Message}");
+                Logger.Exception(@$"ERROR, FONT ICONS NOT FOUND: {FontAwesome5.NameLight} {e.Message}");
                 return;
             }
 
