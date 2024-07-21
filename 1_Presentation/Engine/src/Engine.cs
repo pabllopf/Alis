@@ -326,8 +326,7 @@ namespace Alis.App.Engine
                 Logger.Exception(@$"ERROR, FONT ICONS NOT FOUND: {FontAwesome5.NameLight} {e.Message}");
                 return;
             }
-
-
+            
             fonts.GetTexDataAsRgba32(out IntPtr pixelData, out int width, out int height, out int _);
             _fontTextureId = LoadTexture(pixelData, width, height);
             fonts.TexId = (IntPtr) _fontTextureId;
