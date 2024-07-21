@@ -260,8 +260,8 @@ jobs:
           append_body: true
           files: |
             licence.md
-            ./.build/Alis_Engine_osx_arm64.zip
-            ./.build/Alis_Engine_osx_x64.zip
+            ./.build/Alis_Engine_osx_arm64.dmg
+            ./.build/Alis_Engine_osx_x64.dmg
             ./.build/Alis_Engine_win_x64.zip
             ./.build/Alis_Engine_win_arm64.zip
             ./.build/Alis_Engine_win_x86.zip
