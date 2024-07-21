@@ -31,6 +31,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using System.Reflection;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Data.Resource;
 
@@ -100,7 +101,10 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         {
             CurrentScene.OnStart();
 
-            if (!File.Exists(Environment.CurrentDirectory + "/Assets/Scene_" + CurrentScene.Name + ".json"))
+            string versionCurrent = Assembly.GetExecutingAssembly().GetName().Version.ToString().Replace('.','_');
+            string fileCurrentScene = Path.Combine(Path.GetTempPath(), $"Alis_{versionCurrent}_Scene_{CurrentScene.Name}.json");
+            
+            if (!File.Exists(fileCurrentScene))
             {
                 foreach (Entity.Scene scene in Scenes)
                 {
@@ -109,7 +113,8 @@ namespace Alis.Core.Ecs.System.Manager.Scene
                         DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
                         SerializationOptions = JsonSerializationOptions.Default
                     });
-                    string file = Environment.CurrentDirectory + "/Assets/Scene_" + scene.Name + ".json";
+                    
+                    string file =  Path.Combine(Path.GetTempPath(), $"Alis_{versionCurrent}_Scene_{scene.Name}.json");
 
                     File.WriteAllText(file, gameJson);
                 }
@@ -306,9 +311,13 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         {
             CurrentScene.OnStop();
             CurrentScene.OnExit();
+            
             Entity.Scene selectedScene = Scenes.Find(i => i.Name.Equals(name));
+            string versionCurrent = Assembly.GetExecutingAssembly().GetName().Version.ToString().Replace('.','_');
+            string fileCurrentScene = Path.Combine(Path.GetTempPath(), $"Alis_{versionCurrent}_Scene_{selectedScene.Name}.json");
+            
             CurrentScene = JsonSerializer.Deserialize<Entity.Scene>(
-                File.ReadAllText(AssetManager.Find("Scene_" + selectedScene.Name + ".json"))
+                File.ReadAllText(fileCurrentScene)
                 , new JsonOptions
                 {
                     DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
@@ -328,7 +337,15 @@ namespace Alis.Core.Ecs.System.Manager.Scene
             CurrentScene.OnStop();
             CurrentScene.OnExit();
             Entity.Scene selectedScene = Scenes[index];
-            CurrentScene = JsonSerializer.Deserialize<Entity.Scene>(File.ReadAllText(AssetManager.Find("Scene_" + selectedScene.Name + ".json")));
+            
+            string versionCurrent = Assembly.GetExecutingAssembly().GetName().Version.ToString().Replace('.','_');
+            string fileCurrentScene = Path.Combine(Path.GetTempPath(), $"Alis_{versionCurrent}_Scene_{selectedScene.Name}.json");
+            
+            CurrentScene = JsonSerializer.Deserialize<Entity.Scene>(File.ReadAllText(fileCurrentScene) , new JsonOptions
+            {
+                DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
+                SerializationOptions = JsonSerializationOptions.Default
+            });
             CurrentScene.OnInit();
             CurrentScene.OnAwake();
             CurrentScene.OnStart();
