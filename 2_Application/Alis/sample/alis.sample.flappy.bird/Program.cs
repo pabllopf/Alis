@@ -82,7 +82,7 @@ namespace Alis.Sample.Flappy.Bird
                     // MAIN MENU SCENE:
                     ////////////////////////////////////////
                     .Add<Scene>(gameScene => gameScene
-                        .Name("Main Menu")
+                        .Name("Main_Menu")
                         .Add<GameObject>(mainCamera => mainCamera
                             .Name("Camera")
                             .WithTag("Camera")
@@ -218,7 +218,7 @@ namespace Alis.Sample.Flappy.Bird
                     // GAME SCENE:
                     ////////////////////////////////////////
                     .Add<Scene>(gameScene => gameScene
-                        .Name("Game Scene")
+                        .Name("Game_Scene")
                         .Add<GameObject>(mainCamera => mainCamera
                             .Name("Camera")
                             .WithTag("Camera")

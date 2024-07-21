@@ -73,7 +73,7 @@ namespace Alis.Sample.Flappy.Bird
                 TimeDelta -= 1f * Context.TimeManager.DeltaTime;
                 if (TimeDelta <= 0.0f)
                 {
-                    Context.SceneManager.LoadScene("Main Menu");
+                    Context.SceneManager.LoadScene("Main_Menu");
                     Logger.Info("RESET LEVEL");
                 }
             }
