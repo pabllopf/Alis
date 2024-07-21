@@ -85,10 +85,16 @@ jobs:
         run: echo $CURRENTVERSION
 
       - name: publish osx-arm64 engine
-        run: dotnet publish ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -f net8.0 -p:PublishTrimmed=false -r osx-arm64 -o ./.build/osx_arm64/bin/
+        run: dotnet publish ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -f net8.0 -p:PublishTrimmed=false -r osx-arm64 -o ./.build/osx_arm64/Alis.app/Contents/MacOS/bin/
         
       - name: publish osx-arm64 installer
-        run: dotnet publish ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -f net8.0 -p:PublishTrimmed=false -r osx-arm64 -o ./.build/osx_arm64/
+        run: dotnet publish ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -f net8.0 -p:PublishTrimmed=false -r osx-arm64 -o ./.build/osx_arm64/Alis.app/Contents/MacOS/
+        
+      - name: move info.plist
+        run: mv .build/osx_arm64/Alis.app/Contents/MacOS/Assets/Info.plist .build/osx_arm64/Alis.app/Contents/Info.plist
+      
+      - name: move icon
+        run: mkdir -p .build/osx_arm64/Alis.app/Contents/Resources/ &&  mv .build/osx_arm64/Alis.app/Contents/MacOS/logo.png .build/osx_arm64/Alis.app/Contents/Resources/logo.png
 
       - name: zip osx-arm64
         run: |
@@ -98,10 +104,16 @@ jobs:
           cd $ORIGINAL_DIR
 
       - name: publish osx-x64
-        run: dotnet publish ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -f net8.0 -p:PublishTrimmed=false -r osx-x64 -o ./.build/osx_x64/bin/
+        run: dotnet publish ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -f net8.0 -p:PublishTrimmed=false -r osx-x64 -o ./.build/osx_x64/Alis.app/Contents/MacOS/bin/
         
       - name: publish osx-x64 installer
-        run: dotnet publish ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -f net8.0 -p:PublishTrimmed=false -r osx-x64 -o ./.build/osx_x64/
+        run: dotnet publish ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -f net8.0 -p:PublishTrimmed=false -r osx-x64 -o ./.build/osx_x64/Alis.app/Contents/MacOS/
+        
+      - name: move info.plist
+        run: mv .build/osx_x64/Alis.app/Contents/MacOS/Assets/Info.plist .build/osx_x64/Alis.app/Contents/Info.plist
+        
+      - name: move icon
+        run: mkdir -p .build/osx_x64/Alis.app/Contents/Resources/ &&  mv .build/osx_x64/Alis.app/Contents/MacOS/logo.png .build/osx_x64/Alis.app/Contents/Resources/logo.png
 
       - name: zip osx-x64
         run: |
