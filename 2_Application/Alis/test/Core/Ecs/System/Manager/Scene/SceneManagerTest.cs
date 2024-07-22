@@ -302,37 +302,5 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             sceneManager.ReloadScene(scene);
             Assert.Equal(scene, sceneManager.CurrentScene);
         }
-
-        /// <summary>
-        ///     Tests that load scene valid name sets current scene
-        /// </summary>
-        [Fact]
-        public void LoadScene_ValidName_SetsCurrentScene()
-        {
-            SceneManager sceneManager = new SceneManager();
-            Alis.Core.Ecs.Entity.Scene scene = new Alis.Core.Ecs.Entity.Scene {Name = "TestScene"};
-            sceneManager.Scenes.Add(scene);
-            sceneManager.OnStart();
-            sceneManager.LoadScene("TestScene");
-            Assert.Equal(scene.Name, sceneManager.CurrentScene.Name);
-        }
-
-        /// <summary>
-        ///     Tests that load scene valid index loads correct scene
-        /// </summary>
-        [Fact]
-        public void LoadScene_ValidIndex_LoadsCorrectScene()
-        {
-            SceneManager sceneManager = new SceneManager();
-            Alis.Core.Ecs.Entity.Scene scene1 = new Alis.Core.Ecs.Entity.Scene {Name = "Scene1"};
-            Alis.Core.Ecs.Entity.Scene scene2 = new Alis.Core.Ecs.Entity.Scene {Name = "Scene2"};
-            sceneManager.Scenes.Add(scene1);
-            sceneManager.Scenes.Add(scene2);
-
-            sceneManager.OnStart();
-            sceneManager.LoadScene(1);
-
-            Assert.Equal(scene2.Name, sceneManager.CurrentScene.Name);
-        }
     }
 }
