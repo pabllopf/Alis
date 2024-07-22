@@ -769,7 +769,7 @@ namespace Alis.Extension.Plugin.Test
             // Assert
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                Assert.Equal("Windows", platformFolder);
+                Assert.Equal("windows", platformFolder);
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
@@ -954,9 +954,9 @@ namespace Alis.Extension.Plugin.Test
         {
             PluginManager pluginManager = new PluginManager();
             string pluginsDirectory = "path/to/plugins";
-            string platformFolder = "Windows";
+            string platformFolder = "windows";
             string result = pluginManager.GetPlatformPluginsDirectory(pluginsDirectory, platformFolder);
-            Assert.Equal("path/to/plugins/Windows", result);
+            Assert.Equal("path/to/plugins\\windows", result);
         }
 
         /// <summary>
@@ -1096,7 +1096,7 @@ namespace Alis.Extension.Plugin.Test
         {
             PluginManager pluginManager = new PluginManager();
             string result = pluginManager.GetPlatformFolder();
-            Assert.Equal("Windows", result);
+            Assert.Equal("windows", result);
         }
 
         /// <summary>
