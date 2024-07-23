@@ -38,6 +38,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using Alis.Core.Aspect.Data.Json;
+using Alis.Core.Aspect.Logging;
 
 namespace Alis.Extension.Updater.GitHub
 {
@@ -75,7 +76,7 @@ namespace Alis.Extension.Updater.GitHub
                 string platform = GetPlatform();
                 string architecture = RuntimeInformation.OSArchitecture.ToString().ToLower();
                 
-                Console.WriteLine($"{platform}-{architecture} platform detected");
+                Logger.Info($"{platform}-{architecture} platform detected");
                 Progress = 0.1f;
                 UpdateStatus = $"{platform}-{architecture} platform detected";
                 Thread.Sleep(3000);
@@ -87,19 +88,19 @@ namespace Alis.Extension.Updater.GitHub
                 {
                     UpdateStatus = "No compatible package found.";
                     Progress = 0;
-                    Console.WriteLine("No compatible package found.");
+                    Logger.Info("No compatible package found.");
                     return false;
                 }
 
                 string downloadUrl = selectedAsset["browser_download_url"]?.ToString();
                 string version = latestRelease["tag_name"]?.ToString();
-                Console.WriteLine($"The latest version available is {version}");
+                Logger.Info($"The latest version available is {version}");
                 UpdateStatus = $"The latest version available is {version}";
                 Progress = 0.2f;
                
                 // wait 1 second
                 Thread.Sleep(3000);
-                Console.WriteLine($"Downloading package for {platform}-{architecture}...");
+                Logger.Info($"Downloading package for {platform}-{architecture}...");
                 UpdateStatus = $"Downloading package for {platform}-{architecture}...";
                 Progress = 0.3f;
                 
@@ -123,7 +124,7 @@ namespace Alis.Extension.Updater.GitHub
                         {
                             UpdateStatus = "The latest version is already installed.";
                             Progress = 1;
-                            Console.WriteLine("La última versión ya está descargada.");
+                            Logger.Info("La última versión ya está descargada.");
                             CleanTempFile();
                             Thread.Sleep(3000);
                             return true; 
@@ -133,12 +134,12 @@ namespace Alis.Extension.Updater.GitHub
 
                 UpdateStatus = $"Downloading the latest version '{version}'";
                 Progress = 0.5f;
-                Console.WriteLine($"Downloading the latest version '{version}'");
+                Logger.Info($"Downloading the latest version '{version}'");
                 Thread.Sleep(3000);
                 
                 UpdateStatus = $"Installing the latest version '{version}'";
                 Progress = 0.6f;
-                Console.WriteLine($"Installing the latest version '{version}'");
+                Logger.Info($"Installing the latest version '{version}'");
                 Thread.Sleep(3000);
 
                 string zipPath = await DownloadFileAsync(downloadUrl);
@@ -146,7 +147,7 @@ namespace Alis.Extension.Updater.GitHub
                 {
                     UpdateStatus = "Error downloading package.";
                     Progress = 0;
-                    Console.WriteLine("Error downloading package.");
+                    Logger.Info("Error downloading package.");
                     Thread.Sleep(3000);
                     return false;
                 }
@@ -159,7 +160,7 @@ namespace Alis.Extension.Updater.GitHub
                 CleanTempFile();
                 UpdateStatus = "Update completed successfully.";
                 Progress = 1;
-                Console.WriteLine("Update completed successfully.");
+                Logger.Info("Update completed successfully.");
                 Thread.Sleep(3000);
                 return true;
             }
@@ -174,14 +175,14 @@ namespace Alis.Extension.Updater.GitHub
         {
             if (!Directory.Exists(_programFolder))
             {
-                Console.WriteLine("Backup not completed.");
+                Logger.Info("Backup not completed.");
                 UpdateStatus = "Backup not completed.";
                 Progress = 0.6f;
                 Thread.Sleep(1000);
                 return;
             }
             
-            Console.WriteLine("Backup completed.");
+            Logger.Info("Backup completed.");
             UpdateStatus = "Backup completed.";
             Progress = 0.7f;
 
@@ -194,7 +195,7 @@ namespace Alis.Extension.Updater.GitHub
             string zipBackupPath = Path.Combine(Environment.CurrentDirectory, "Backup_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".zip");
             ZipFile.CreateFromDirectory(backupPath, zipBackupPath);
             Directory.Delete(backupPath, true);
-            Console.WriteLine("Backup compressed.");
+            Logger.Info("Backup compressed.");
             UpdateStatus = "Backup compressed.";
             Progress = 0.75f;
 
@@ -211,7 +212,7 @@ namespace Alis.Extension.Updater.GitHub
                 foreach (FileInfo file in backupFiles.Skip(2))
                 {
                     File.Delete(file.FullName);
-                    Console.WriteLine($"Deleted old backup: {file.Name}");
+                    Logger.Info($"Deleted old backup: {file.Name}");
                     UpdateStatus = $"Deleted old backup: {file.Name}";
                     Progress = 0.77f;
                     Thread.Sleep(2000);
@@ -307,7 +308,7 @@ namespace Alis.Extension.Updater.GitHub
             UpdateStatus = "Temporary files cleaned.";
             Progress = 0.9f;
             Thread.Sleep(3000);
-            Console.WriteLine("Temporary files cleaned.");
+            Logger.Info("Temporary files cleaned.");
             string[] files = Directory.GetFiles(Environment.CurrentDirectory, "*.zip");
             foreach (string file in files)
             {
