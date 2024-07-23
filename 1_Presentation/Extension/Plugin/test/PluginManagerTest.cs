@@ -956,7 +956,7 @@ namespace Alis.Extension.Plugin.Test
             string pluginsDirectory = "path/to/plugins";
             string platformFolder = "windows";
             string result = pluginManager.GetPlatformPluginsDirectory(pluginsDirectory, platformFolder);
-            Assert.Equal("path/to/plugins\\windows", result);
+            Assert.Equal(Path.Combine("path/to/plugins","windows"), result);
         }
 
         /// <summary>
