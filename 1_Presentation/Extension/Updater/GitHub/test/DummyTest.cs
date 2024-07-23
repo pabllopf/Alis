@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:DummyTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,23 +27,22 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Threading.Tasks;
+using Xunit;
 
-namespace Alis.App.Installer
+namespace Alis.Extension.Payment.Stripe.Test
 {
     /// <summary>
-    ///     The program class
+    ///     The dummy test class
     /// </summary>
-    public static class Program
+    public class DummyTest
     {
         /// <summary>
-        ///     Main the args
+        ///     Tests that default test
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
+        [Fact]
+        public void DefaultTest()
         {
-             new Installer().Run(args);
+            Assert.True(true);
         }
     }
 }

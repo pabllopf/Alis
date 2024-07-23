@@ -30,15 +30,16 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Net.Http;
-using System.Threading.Tasks;
 using System.IO.Compression;
 using System.Linq;
+using System.Net.Http;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 using System.Threading;
-using Newtonsoft.Json.Linq;
+using System.Threading.Tasks;
+using Alis.Core.Aspect.Data.Json;
 
-namespace Alis.App.Installer.Updater
+namespace Alis.Extension.Updater.GitHub
 {
     /// <summary>
     /// The update manager class
@@ -68,13 +69,20 @@ namespace Alis.App.Installer.Updater
         {
             try
             {
-                JObject latestRelease = await GetLatestReleaseAsync();
+                Dictionary<string, object> latestRelease = await GetLatestReleaseAsync();
                 if (latestRelease == null) return false;
 
                 string platform = GetPlatform();
                 string architecture = RuntimeInformation.OSArchitecture.ToString().ToLower();
+                
+                Console.WriteLine($"{platform}-{architecture} platform detected");
+                Progress = 0.1f;
+                UpdateStatus = $"{platform}-{architecture} platform detected";
+                Thread.Sleep(3000);
 
-                JToken selectedAsset = SelectAsset(latestRelease["assets"], platform, architecture);
+                object[] assets = (object[])latestRelease["assets"];
+                
+                Dictionary<string, object> selectedAsset = SelectAsset(assets, platform, architecture);
                 if (selectedAsset == null)
                 {
                     UpdateStatus = "No compatible package found.";
@@ -157,8 +165,8 @@ namespace Alis.App.Installer.Updater
             }
             catch (Exception ex)
             {
-                UpdateStatus = $"Error updating game: {ex.Message}";
-                return false;
+                UpdateStatus = $"Error updating program: {ex.Message}";
+                throw new Exception($"Error updating program: {ex.Message}");
             }
         }
 
@@ -218,16 +226,13 @@ namespace Alis.App.Installer.Updater
         /// <returns>The string</returns>
         private string GetPlatform()
         {
-            Console.WriteLine($"{RuntimeInformation.RuntimeIdentifier} platform detected");
-            Progress = 0.1f;
-            UpdateStatus = $"{RuntimeInformation.RuntimeIdentifier} platform detected";
-            Thread.Sleep(3000);
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) return "win";
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux)) return "linux";
             if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX)) return "osx";
             throw new PlatformNotSupportedException("Platform not supported.");
         }
 
+        
         /// <summary>
         /// Selects the asset using the specified assets
         /// </summary>
@@ -235,28 +240,31 @@ namespace Alis.App.Installer.Updater
         /// <param name="platform">The platform</param>
         /// <param name="architecture">The architecture</param>
         /// <returns>The token</returns>
-        private JToken SelectAsset(JToken assets, string platform, string architecture)
+        private Dictionary<string, object> SelectAsset(object[] assets, string platform, string architecture)
         {
-            foreach (JToken asset in assets)
+            foreach (Dictionary<string, object> asset in assets)
             {
-                string name = asset["name"].ToString();
-                if (name.Contains(platform) && name.Contains(architecture))
+                string assetName = asset["name"]?.ToString();
+                if (assetName == null) continue;
+                if (assetName.Contains(platform) && assetName.Contains(architecture))
                 {
                     return asset;
                 }
             }
+
             return null;
         }
+        
         /// <summary>
         /// Gets the latest release
         /// </summary>
         /// <returns>A task containing the object</returns>
-        private async Task<JObject> GetLatestReleaseAsync()
+        private async Task<Dictionary<string, object>> GetLatestReleaseAsync()
         {
             using HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Add("User-Agent", "request");
             string response = await client.GetStringAsync(_apiUrl);
-            return JObject.Parse(response);
+            return JsonSerializer.Deserialize<Dictionary<string, object>>(response);
         }
 
         /// <summary>
@@ -286,7 +294,7 @@ namespace Alis.App.Installer.Updater
         /// <param name="zipPath">The zip path</param>
         private void ExtractAndReplace(string zipPath)
         {
-            ZipFile.ExtractToDirectory(zipPath, _programFolder, true);
+            ZipFile.ExtractToDirectory(zipPath, _programFolder);
             UpdateStatus = "Extracted package.";
             Progress = 0.8f;
         }

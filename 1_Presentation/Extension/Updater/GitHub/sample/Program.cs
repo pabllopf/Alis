@@ -28,9 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Threading.Tasks;
 
-namespace Alis.App.Installer
+namespace Alis.Extension.Payment.Stripe.Sample
 {
     /// <summary>
     ///     The program class
@@ -38,12 +37,11 @@ namespace Alis.App.Installer
     public static class Program
     {
         /// <summary>
-        ///     Main the args
+        ///     Main
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
+        public static void Main()
         {
-             new Installer().Run(args);
+            Console.WriteLine("End Program...");
         }
     }
 }

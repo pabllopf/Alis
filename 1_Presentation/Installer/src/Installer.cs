@@ -38,7 +38,6 @@ using System.Threading.Tasks;
 using Alis.App.Engine.Fonts;
 using Alis.App.Installer.Core;
 using Alis.App.Installer.Shaders;
-using Alis.App.Installer.Updater;
 using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
@@ -55,6 +54,7 @@ using Alis.Extension.Graphic.ImGui.Native;
 using Alis.Extension.Graphic.OpenGL;
 using Alis.Extension.Graphic.OpenGL.Constructs;
 using Alis.Extension.Graphic.OpenGL.Enums;
+using Alis.Extension.Updater.GitHub;
 using PixelFormat = Alis.Extension.Graphic.OpenGL.Enums.PixelFormat;
 using Version = Alis.Core.Graphic.Sdl2.Structs.Version;
 
