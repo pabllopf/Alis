@@ -64,13 +64,7 @@
         <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation')) AND $(ProjectDir.Contains('Extension')) == False"
                           Include="
                           $(SolutionDir)2_Application/**/Alis.csproj;
-                          $(SolutionDir)1_Presentation/**/Extension/**/**/*GoogleAds.csproj;
-                           $(SolutionDir)1_Presentation/**/Extension/**/**/*DropBox.csproj;
-                            $(SolutionDir)1_Presentation/**/Extension/**/**/*GoogleDrive.csproj;
-                            $(SolutionDir)1_Presentation/**/Extension/**/**/*ImGui.csproj;
-                         $(SolutionDir)1_Presentation/**/Extension/**/**/*OpenGL.csproj;
-                         $(SolutionDir)1_Presentation/**/Extension/**/**/*Stripe.csproj;
-                         $(SolutionDir)1_Presentation/**/Extension/**/**/*HighSpeedPriorityQueue.csproj;"
+                          $(SolutionDir)1_Presentation/**/Extension/**/**/*.csproj;"
                           Exclude="
                           $(SolutionDir)**/Extension/**/**/*.Sample.csproj; 
                           $(SolutionDir)**/Extension/**/**/*.Benchmark.csproj; 
