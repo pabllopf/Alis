@@ -17,7 +17,7 @@
 
         <TargetFrameworks Condition="$(AssemblyName.Contains('App')) == true">net7.0;net8.0</TargetFrameworks>
 
-        <TargetFramework Condition="
+        <TargetFrameworks Condition="
         ( 
         $(AssemblyName.Contains('App')) == true OR
         $(AssemblyName.Contains('Template')) == true OR
@@ -25,15 +25,15 @@
         $(AssemblyName.Contains('Benchmark')) == true OR
         $(AssemblyName.Contains('Test')) == true
         ) 
-        AND $(Configuration) == 'Debug'">net6.0</TargetFramework>
+        AND $(Configuration) == 'Debug'">net6.0;</TargetFrameworks>
 
-        <TargetFramework Condition="
+        <TargetFrameworks Condition="
          $(AssemblyName.Contains('Test')) == false AND 
         $(AssemblyName.Contains('App')) == false AND
         $(AssemblyName.Contains('Template')) == false AND
         $(AssemblyName.Contains('Sample')) == false AND
         $(AssemblyName.Contains('Benchmark')) == false AND
-        '$(Configuration)' == 'Debug'">netstandard2.0</TargetFramework>
+        '$(Configuration)' == 'Debug'">netstandard2.0;</TargetFrameworks>
     </PropertyGroup>
 
 
