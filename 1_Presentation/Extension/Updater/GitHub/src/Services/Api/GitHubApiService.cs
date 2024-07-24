@@ -45,6 +45,9 @@ namespace Alis.Extension.Updater.GitHub.Services.Api
         /// </summary>
         private readonly HttpClient _httpClient;
         
+        /// <summary>
+        /// The api url
+        /// </summary>
         private readonly string apiUrl;
         
         /// <summary>

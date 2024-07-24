@@ -64,10 +64,19 @@ namespace Alis.Extension.Updater.GitHub
         /// </summary>
         private readonly string _programFolder;
         
+        /// <summary>
+        /// Event handler for the update progress
+        /// </summary>
         public event UpdateProgressEventHandler UpdateProgressChanged;
         
+        /// <summary>
+        /// Gets or sets the value of the progress
+        /// </summary>
         public float Progress { get; private set; }
         
+        /// <summary>
+        /// Gets or sets the value of the message
+        /// </summary>
         public string Message { get; private set; }
         
         /// <summary>
@@ -84,6 +93,11 @@ namespace Alis.Extension.Updater.GitHub
             _programFolder = programFolder;
         }
         
+        /// <summary>
+        /// Ons the update progress changed using the specified progress
+        /// </summary>
+        /// <param name="progress">The progress</param>
+        /// <param name="message">The message</param>
         private void OnUpdateProgressChanged(float progress, string message)
         {
             UpdateProgressChanged?.Invoke(progress, message);
