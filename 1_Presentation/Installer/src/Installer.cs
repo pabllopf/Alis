@@ -55,6 +55,8 @@ using Alis.Extension.Graphic.OpenGL;
 using Alis.Extension.Graphic.OpenGL.Constructs;
 using Alis.Extension.Graphic.OpenGL.Enums;
 using Alis.Extension.Updater.GitHub;
+using Alis.Extension.Updater.GitHub.Services.Api;
+using Alis.Extension.Updater.GitHub.Services.Files;
 using PixelFormat = Alis.Extension.Graphic.OpenGL.Enums.PixelFormat;
 using Version = Alis.Core.Graphic.Sdl2.Structs.Version;
 
@@ -406,8 +408,10 @@ namespace Alis.App.Installer
                 IntPtr icon = Sdl.LoadBmp(iconPath);
                 Sdl.SetWindowIcon(spaceWork.Window, icon);
             }
-
-            UpdateManager manager = new UpdateManager();
+            
+            string api = "https://api.github.com/repos/pabllopf/alis/releases/latest";
+            string dirProject = Path.Combine(Environment.CurrentDirectory, "bin");
+            UpdateManager manager = new UpdateManager(new GitHubApiService(api), new FileService(), dirProject);
             Task<bool> task = manager.UpdateGameAsync();
             //task.Start();
 
@@ -480,7 +484,7 @@ namespace Alis.App.Installer
                     ImGui.Separator();
                     ImGui.ProgressBar(manager.Progress, new Vector2(-1, 30), $"{Math.Round(manager.Progress * 100)}%");
                     ImGui.Separator();
-                    ImGui.Text($"{manager.UpdateStatus}");
+                    ImGui.Text($"{manager.Message}");
                     ImGui.Separator();
                 }
 
