@@ -48,8 +48,14 @@ namespace Alis.Extension.Updater.GitHub
     public class UpdateManager
     {
         
+        /// <summary>
+        /// The update status
+        /// </summary>
         public  string UpdateStatus = $"Checking for updates...";
         
+        /// <summary>
+        /// The progress
+        /// </summary>
         public float Progress = 0;
         
         /// <summary>
@@ -171,6 +177,9 @@ namespace Alis.Extension.Updater.GitHub
             }
         }
 
+        /// <summary>
+        /// Backups this instance
+        /// </summary>
         private void Backup()
         {
             if (!Directory.Exists(_programFolder))
