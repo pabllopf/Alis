@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -29,5 +29,8 @@
 
 namespace Alis.Extension.Updater.GitHub.Events
 {
+    /// <summary>
+    /// The update progress event handler
+    /// </summary>
     public delegate void UpdateProgressEventHandler(float progress, string message);
 }
