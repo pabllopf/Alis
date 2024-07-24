@@ -34,40 +34,63 @@ using System.IO.Compression;
 using System.Linq;
 using System.Net.Http;
 using System.Runtime.InteropServices;
-using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Logging;
+using Alis.Extension.Updater.GitHub.Events;
+using Alis.Extension.Updater.GitHub.Services.Api;
+using Alis.Extension.Updater.GitHub.Services.Files;
 
 namespace Alis.Extension.Updater.GitHub
 {
     /// <summary>
     /// The update manager class
     /// </summary>
-    public class UpdateManager
+    public sealed class UpdateManager
     {
+        /// <summary>
+        /// The git hub api service
+        /// </summary>
+        private readonly IGitHubApiService _gitHubApiService;
         
         /// <summary>
-        /// The update status
+        /// The file service
         /// </summary>
-        public  string UpdateStatus = $"Checking for updates...";
+        private readonly IFileService _fileService;
         
         /// <summary>
-        /// The progress
+        /// The program folder
         /// </summary>
-        public float Progress = 0;
+        private readonly string _programFolder;
+        
+        public event UpdateProgressEventHandler UpdateProgressChanged;
+        
+        public float Progress { get; private set; }
+        
+        public string Message { get; private set; }
         
         /// <summary>
-        /// The api url
+        /// Initializes a new instance of the <see cref="UpdateManager"/> class
         /// </summary>
-        private readonly string _apiUrl = "https://api.github.com/repos/pabllopf/Alis/releases/latest";
+        /// <param name="gitHubApiService">The git hub api service</param>
+        /// <param name="fileService">The file service</param>
+        /// <param name="apiUrl">The api url</param>
+        /// <param name="programFolder">The program folder</param>
+        public UpdateManager(IGitHubApiService gitHubApiService, IFileService fileService, string programFolder)
+        {
+            _gitHubApiService = gitHubApiService;
+            _fileService = fileService;
+            _programFolder = programFolder;
+        }
         
-        /// <summary>
-        /// The current directory
-        /// </summary>
-        private readonly string _programFolder = Path.Combine(Environment.CurrentDirectory, "bin");
-
+        private void OnUpdateProgressChanged(float progress, string message)
+        {
+            UpdateProgressChanged?.Invoke(progress, message);
+            Progress = progress;
+            Message = message;
+        }
+        
         /// <summary>
         /// Updates the game
         /// </summary>
@@ -78,37 +101,33 @@ namespace Alis.Extension.Updater.GitHub
             {
                 Dictionary<string, object> latestRelease = await GetLatestReleaseAsync();
                 if (latestRelease == null) return false;
-
+                
                 string platform = GetPlatform();
                 string architecture = RuntimeInformation.OSArchitecture.ToString().ToLower();
                 
                 Logger.Info($"{platform}-{architecture} platform detected");
-                Progress = 0.1f;
-                UpdateStatus = $"{platform}-{architecture} platform detected";
+                OnUpdateProgressChanged(0.1f, $"{platform}-{architecture} platform detected");
                 Thread.Sleep(3000);
-
-                object[] assets = (object[])latestRelease["assets"];
+                
+                object[] assets = (object[]) latestRelease["assets"];
                 
                 Dictionary<string, object> selectedAsset = SelectAsset(assets, platform, architecture);
                 if (selectedAsset == null)
                 {
-                    UpdateStatus = "No compatible package found.";
-                    Progress = 0;
+                    OnUpdateProgressChanged(0, "No compatible package found.");
                     Logger.Info("No compatible package found.");
                     return false;
                 }
-
+                
                 string downloadUrl = selectedAsset["browser_download_url"]?.ToString();
                 string version = latestRelease["tag_name"]?.ToString();
                 Logger.Info($"The latest version available is {version}");
-                UpdateStatus = $"The latest version available is {version}";
-                Progress = 0.2f;
-               
+                OnUpdateProgressChanged(0.2f, $"The latest version available is {version}");
+                
                 // wait 1 second
                 Thread.Sleep(3000);
                 Logger.Info($"Downloading package for {platform}-{architecture}...");
-                UpdateStatus = $"Downloading package for {platform}-{architecture}...";
-                Progress = 0.3f;
+                OnUpdateProgressChanged(0.3f, $"Downloading package for {platform}-{architecture}...");
                 
                 // wait 1 second
                 Thread.Sleep(3000);
@@ -117,42 +136,37 @@ namespace Alis.Extension.Updater.GitHub
                     string fileName = Path.GetFileName(new Uri(downloadUrl).AbsolutePath);
                     string filePath = Path.Combine(Environment.CurrentDirectory, fileName);
                     
-                    UpdateStatus = $"Checking if the latest version is already installed...";
-                    Progress = 0.4f;
+                    OnUpdateProgressChanged(0.4f, "Checking if the latest version is already installed...");
                     Thread.Sleep(3000);
-
+                    
                     // Verificar si ya está descargada la última versión
                     if (File.Exists(filePath))
                     {
                         long fileSize = new FileInfo(filePath).Length;
-                        long assetSize = (long)selectedAsset["size"];
+                        long assetSize = (long) selectedAsset["size"];
                         if (fileSize == assetSize)
                         {
-                            UpdateStatus = "The latest version is already installed.";
-                            Progress = 1;
-                            Logger.Info("La última versión ya está descargada.");
+                            OnUpdateProgressChanged(1, "The latest version is already downloaded.");
+                            Logger.Info("The latest version is already downloaded.");
                             CleanTempFile();
                             Thread.Sleep(3000);
-                            return true; 
+                            return true;
                         }
                     }
                 }
-
-                UpdateStatus = $"Downloading the latest version '{version}'";
-                Progress = 0.5f;
+                
+                OnUpdateProgressChanged(0.5f, $"Downloading the latest version '{version}'");
                 Logger.Info($"Downloading the latest version '{version}'");
                 Thread.Sleep(3000);
                 
-                UpdateStatus = $"Installing the latest version '{version}'";
-                Progress = 0.6f;
+                OnUpdateProgressChanged(0.6f, "Installing the latest version...");
                 Logger.Info($"Installing the latest version '{version}'");
                 Thread.Sleep(3000);
-
+                
                 string zipPath = await DownloadFileAsync(downloadUrl);
                 if (string.IsNullOrEmpty(zipPath))
                 {
-                    UpdateStatus = "Error downloading package.";
-                    Progress = 0;
+                    OnUpdateProgressChanged(0, "Error downloading package.");
                     Logger.Info("Error downloading package.");
                     Thread.Sleep(3000);
                     return false;
@@ -162,21 +176,19 @@ namespace Alis.Extension.Updater.GitHub
                 //Backup the current program:
                 Backup();
                 ExtractAndReplace(zipPath);
-
+                
                 CleanTempFile();
-                UpdateStatus = "Update completed successfully.";
-                Progress = 1;
+                OnUpdateProgressChanged(1, "Update completed successfully.");
                 Logger.Info("Update completed successfully.");
                 Thread.Sleep(3000);
                 return true;
             }
             catch (Exception ex)
             {
-                UpdateStatus = $"Error updating program: {ex.Message}";
                 throw new Exception($"Error updating program: {ex.Message}");
             }
         }
-
+        
         /// <summary>
         /// Backups this instance
         /// </summary>
@@ -185,50 +197,46 @@ namespace Alis.Extension.Updater.GitHub
             if (!Directory.Exists(_programFolder))
             {
                 Logger.Info("Backup not completed.");
-                UpdateStatus = "Backup not completed.";
-                Progress = 0.6f;
+                OnUpdateProgressChanged(0, "Backup not completed.");
                 Thread.Sleep(1000);
                 return;
             }
             
             Logger.Info("Backup completed.");
-            UpdateStatus = "Backup completed.";
-            Progress = 0.7f;
-
+            OnUpdateProgressChanged(0.7f, "Backup completed.");
+            
             string backupPath = Path.Combine(Environment.CurrentDirectory, "Backup_" + DateTime.Now.ToString("yyyyMMddHHmmss"));
             Directory.Move(_programFolder, backupPath);
-
+            
             Thread.Sleep(2000);
-
+            
             // Comprimir el backup:
             string zipBackupPath = Path.Combine(Environment.CurrentDirectory, "Backup_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".zip");
             ZipFile.CreateFromDirectory(backupPath, zipBackupPath);
             Directory.Delete(backupPath, true);
             Logger.Info("Backup compressed.");
-            UpdateStatus = "Backup compressed.";
-            Progress = 0.75f;
-
+            OnUpdateProgressChanged(0.75f, "Backup compressed.");
+            
             Thread.Sleep(2000);
-
+            
             // Mantener solo los 2 backups más recientes
             List<FileInfo> backupFiles = Directory.GetFiles(Environment.CurrentDirectory, "Backup_*.zip")
                 .Select(file => new FileInfo(file))
                 .OrderByDescending(fi => fi.CreationTime)
                 .ToList();
-
+            
             if (backupFiles.Count > 2)
             {
                 foreach (FileInfo file in backupFiles.Skip(2))
                 {
                     File.Delete(file.FullName);
                     Logger.Info($"Deleted old backup: {file.Name}");
-                    UpdateStatus = $"Deleted old backup: {file.Name}";
-                    Progress = 0.77f;
+                    OnUpdateProgressChanged(0.8f, $"Deleted old backup: {file.Name}");
                     Thread.Sleep(2000);
                 }
             }
         }
-
+        
         /// <summary>
         /// Gets the platform
         /// </summary>
@@ -241,7 +249,7 @@ namespace Alis.Extension.Updater.GitHub
             if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX)) return "osx";
             throw new PlatformNotSupportedException("Platform not supported.");
         }
-
+        
         
         /// <summary>
         /// Selects the asset using the specified assets
@@ -261,7 +269,7 @@ namespace Alis.Extension.Updater.GitHub
                     return asset;
                 }
             }
-
+            
             return null;
         }
         
@@ -273,10 +281,10 @@ namespace Alis.Extension.Updater.GitHub
         {
             using HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Add("User-Agent", "request");
-            string response = await client.GetStringAsync(_apiUrl);
+            string response = await client.GetStringAsync("https://api.github.com/repos/pabllopf/alis/releases/latest");
             return JsonSerializer.Deserialize<Dictionary<string, object>>(response);
         }
-
+        
         /// <summary>
         /// Downloads the file using the specified url
         /// </summary>
@@ -286,14 +294,13 @@ namespace Alis.Extension.Updater.GitHub
         {
             string fileName = Path.GetFileName(new Uri(url).AbsolutePath);
             string filePath = Path.Combine(Environment.CurrentDirectory, fileName);
-
+            
             using HttpClient client = new HttpClient();
             using HttpResponseMessage response = await client.GetAsync(url);
             using FileStream fs = new FileStream(filePath, FileMode.CreateNew);
             await response.Content.CopyToAsync(fs);
-
-            UpdateStatus = "Download completed.";
-            Progress = 0.5f;
+            
+            OnUpdateProgressChanged(0.5f, "Download completed.");
             
             return filePath;
         }
@@ -305,17 +312,15 @@ namespace Alis.Extension.Updater.GitHub
         private void ExtractAndReplace(string zipPath)
         {
             ZipFile.ExtractToDirectory(zipPath, _programFolder);
-            UpdateStatus = "Extracted package.";
-            Progress = 0.8f;
+            OnUpdateProgressChanged(0.7f, "Extracted and replaced.");
         }
-
+        
         /// <summary>
         /// Cleans the backup
         /// </summary>
         private void CleanTempFile()
         {
-            UpdateStatus = "Temporary files cleaned.";
-            Progress = 0.9f;
+            OnUpdateProgressChanged(0.9f, "Cleaning temporary files...");
             Thread.Sleep(3000);
             Logger.Info("Temporary files cleaned.");
             string[] files = Directory.GetFiles(Environment.CurrentDirectory, "*.zip");
