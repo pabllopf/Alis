@@ -953,7 +953,7 @@ namespace Alis.Extension.Plugin.Test
         public void GetPlatformPluginsDirectory_ValidInputs_ShouldReturnCorrectPath()
         {
             PluginManager pluginManager = new PluginManager();
-            string pluginsDirectory = "path/to/plugins";
+            string pluginsDirectory = Path.Combine("path", "to", "plugins");
             string platformFolder = "windows";
             string result = pluginManager.GetPlatformPluginsDirectory(pluginsDirectory, platformFolder);
             Assert.Equal(Path.Combine("path", "to", "plugins","windows"), result);
