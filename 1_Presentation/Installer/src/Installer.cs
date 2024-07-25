@@ -43,6 +43,7 @@ using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Aspect.Time;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Structs;
@@ -415,6 +416,14 @@ namespace Alis.App.Installer
             UpdateManager manager = new UpdateManager(new GitHubApiService(api), new FileService(), dirProject);
             Task<bool> task = manager.UpdateGameAsync();
             //task.Start();
+            
+            // Definir la variable de estado fuera del bucle principal
+            int animationState = 0;
+            
+            // Inicializar la variable de tiempo fuera del bucle principal
+            double lastUpdateTime = 0;
+            Clock clock = new Clock();
+            clock.Start();
 
             spaceWork.Start();
             while (!_quit)
@@ -473,9 +482,26 @@ namespace Alis.App.Installer
                 _time = currentTime;
 
                 UpdateMousePosAndButtons();
+                
+                if (clock.ElapsedMilliseconds - lastUpdateTime >= 250) // Si ha pasado al menos 1 segundo
+                {
+                    // Actualizar el estado de la animación
+                    animationState++;
+                    if (animationState > 3) animationState = 0;
 
-                // RENDER GUI
+                    // Reiniciar el tiempo de la última actualización
+                    lastUpdateTime = clock.ElapsedMilliseconds;
+                }
 
+                // Determinar qué símbolo mostrar basado en el estado de la animación
+                string animationSymbol = animationState switch
+                {
+                    0 => "[/]",
+                    1 => "[-]",
+                    2 => "[\\]",
+                    _ => "[/]"
+                };
+                
                 ImGui.PushFont(fontLoaded16Regular);
 
                 ImGui.SetNextWindowSize(new Vector2(displayW, displayH));
@@ -485,9 +511,11 @@ namespace Alis.App.Installer
                     ImGui.Separator();
                     ImGui.ProgressBar(manager.Progress, new Vector2(-1, 30), $"{Math.Round(manager.Progress * 100)}%");
                     ImGui.Separator();
-                    ImGui.Text($"{manager.Message}");
+                    ImGui.Text($"{animationSymbol} {manager.Message}");
                     ImGui.Separator();
                 }
+                
+                Sdl.SetWindowTitle(spaceWork.Window, $"{NameEngine} - {Math.Round(clock.ElapsedSeconds)}s");
 
                 ImGui.End();
 

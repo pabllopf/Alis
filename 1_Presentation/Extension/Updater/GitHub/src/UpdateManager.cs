@@ -121,7 +121,7 @@ namespace Alis.Extension.Updater.GitHub
                 
                 Logger.Info($"{platform}-{architecture} platform detected");
                 OnUpdateProgressChanged(0.1f, $"{platform}-{architecture} platform detected");
-                Thread.Sleep(3000);
+                WaitForContinue();
                 
                 object[] assets = (object[]) latestRelease["assets"];
                 
@@ -139,62 +139,57 @@ namespace Alis.Extension.Updater.GitHub
                 OnUpdateProgressChanged(0.2f, $"The latest version available is {version}");
                 
                 // wait 1 second
-                Thread.Sleep(3000);
+                WaitForContinue();
                 Logger.Info($"Downloading package for {platform}-{architecture}...");
                 OnUpdateProgressChanged(0.3f, $"Downloading package for {platform}-{architecture}...");
                 
                 // wait 1 second
-                Thread.Sleep(3000);
+                WaitForContinue();
                 if (downloadUrl != null)
                 {
                     string fileName = Path.GetFileName(new Uri(downloadUrl).AbsolutePath);
                     string filePath = Path.Combine(Environment.CurrentDirectory, fileName);
                     
                     OnUpdateProgressChanged(0.4f, "Checking if the latest version is already installed...");
-                    Thread.Sleep(3000);
+                    WaitForContinue();
                     
                     // Verificar si ya está descargada la última versión
                     if (File.Exists(filePath))
                     {
-                        long fileSize = new FileInfo(filePath).Length;
-                        long assetSize = (long) selectedAsset["size"];
-                        if (fileSize == assetSize)
-                        {
-                            OnUpdateProgressChanged(1, "The latest version is already downloaded.");
-                            Logger.Info("The latest version is already downloaded.");
-                            CleanTempFile();
-                            Thread.Sleep(3000);
-                            return true;
-                        }
+                        OnUpdateProgressChanged(1, "The latest version is already downloaded.");
+                        Logger.Info("The latest version is already downloaded.");
+                        CleanTempFile();
+                        WaitForContinue();
+                        return true;
                     }
                 }
                 
                 OnUpdateProgressChanged(0.5f, $"Downloading the latest version '{version}'");
                 Logger.Info($"Downloading the latest version '{version}'");
-                Thread.Sleep(3000);
+                WaitForContinue();
                 
-                OnUpdateProgressChanged(0.6f, "Installing the latest version...");
-                Logger.Info($"Installing the latest version '{version}'");
-                Thread.Sleep(3000);
-                
-                string zipPath = await DownloadFileAsync(downloadUrl);
-                if (string.IsNullOrEmpty(zipPath))
+                string fileAsync = await DownloadFileAsync(downloadUrl);
+                if (string.IsNullOrEmpty(fileAsync))
                 {
                     OnUpdateProgressChanged(0, "Error downloading package.");
                     Logger.Info("Error downloading package.");
-                    Thread.Sleep(3000);
+                    WaitForContinue();
                     return false;
                 }
                 
-                
                 //Backup the current program:
                 Backup();
-                ExtractAndReplace(zipPath);
+                
+                OnUpdateProgressChanged(0.6f, "Installing the latest version...");
+                Logger.Info($"Installing the latest version '{version}'");
+                WaitForContinue();
+                
+                ExtractAndReplace(fileAsync);
                 
                 CleanTempFile();
                 OnUpdateProgressChanged(1, "Update completed successfully.");
                 Logger.Info("Update completed successfully.");
-                Thread.Sleep(3000);
+                WaitForContinue();
                 return true;
             }
             catch (Exception ex)
@@ -210,19 +205,24 @@ namespace Alis.Extension.Updater.GitHub
         {
             if (!Directory.Exists(_programFolder))
             {
-                Logger.Info("Backup not completed.");
-                OnUpdateProgressChanged(0, "Backup not completed.");
+                Logger.Info("Don't need to do backup.");
+                OnUpdateProgressChanged(0.7f, "Don't need to do backup.");
                 Thread.Sleep(1000);
                 return;
             }
             
-            Logger.Info("Backup completed.");
-            OnUpdateProgressChanged(0.7f, "Backup completed.");
+            Logger.Info("Doing backup...");
+            OnUpdateProgressChanged(0.7f, "Doing backup...");
             
             string backupPath = Path.Combine(Environment.CurrentDirectory, "Backup_" + DateTime.Now.ToString("yyyyMMddHHmmss"));
             Directory.Move(_programFolder, backupPath);
             
-            Thread.Sleep(2000);
+           WaitForContinue();
+           
+           OnUpdateProgressChanged(0.72f, "Folder moved to backup.");
+           Logger.Info("Folder moved to backup.");
+           
+           WaitForContinue();
             
             // Comprimir el backup:
             string zipBackupPath = Path.Combine(Environment.CurrentDirectory, "Backup_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".zip");
@@ -231,7 +231,7 @@ namespace Alis.Extension.Updater.GitHub
             Logger.Info("Backup compressed.");
             OnUpdateProgressChanged(0.75f, "Backup compressed.");
             
-            Thread.Sleep(2000);
+           WaitForContinue();
             
             // Mantener solo los 2 backups más recientes
             List<FileInfo> backupFiles = Directory.GetFiles(Environment.CurrentDirectory, "Backup_*.zip")
@@ -246,7 +246,7 @@ namespace Alis.Extension.Updater.GitHub
                     File.Delete(file.FullName);
                     Logger.Info($"Deleted old backup: {file.Name}");
                     OnUpdateProgressChanged(0.8f, $"Deleted old backup: {file.Name}");
-                    Thread.Sleep(2000);
+                   WaitForContinue();
                 }
             }
         }
@@ -319,23 +319,174 @@ namespace Alis.Extension.Updater.GitHub
             return filePath;
         }
         
-        /// <summary>
-        /// Extracts the and replace using the specified zip path
-        /// </summary>
-        /// <param name="zipPath">The zip path</param>
-        private void ExtractAndReplace(string zipPath)
+       /// <summary>
+       /// Extracts the and replace using the specified file async
+       /// </summary>
+       /// <param name="fileAsync">The file</param>
+       /// <exception cref="InvalidOperationException">The file has an invalid extension.</exception>
+       private void ExtractAndReplace(string fileAsync)
         {
-            ZipFile.ExtractToDirectory(zipPath, _programFolder);
+            
+            if (fileAsync.Contains(".zip"))
+            {
+                ExtractZip(fileAsync);
+                OnUpdateProgressChanged(0.8f, "Extracted and replaced .zip file.");
+                Logger.Info("Extracted and replaced .zip file.");
+                return;
+            }
+            
+            if (fileAsync.Contains(".dmg"))
+            {
+                ExtractDmg(fileAsync);
+                OnUpdateProgressChanged(0.8f, "Extracted and replaced .dmg file.");
+                Logger.Info("Extracted and replaced .dmg file.");
+                return;
+            }
+            
+            throw new InvalidOperationException("The file has an invalid extension.");
+        }
+
+       /// <summary>
+       /// Extracts the dmg using the specified file async
+       /// </summary>
+       /// <param name="fileAsync">The file</param>
+       private void ExtractDmg(string fileAsync)
+        {
+            // Define the path where the .dmg will be mounted
+            string mountPath = Path.Combine("/Volumes", Path.GetFileNameWithoutExtension(fileAsync));
+
+            // Mount the .dmg file
+            ExecuteShellCommand($"hdiutil attach \"{fileAsync}\" -nobrowse -mountpoint \"{mountPath}\"");
+            OnUpdateProgressChanged(0.82f, "Mounted .dmg file.");
+            Logger.Info("Mounted .dmg file.");
+
+            WaitForContinue();
+            
+            // Assuming _programFolder is the destination where you want to copy the contents of the .dmg
+            if (!Directory.Exists(_programFolder))
+            {
+                Directory.CreateDirectory(_programFolder);
+            }
+            
+            WaitForContinue();
+
+            OnUpdateProgressChanged(0.85f, "Copying contents from .dmg to target directory...");
+            Logger.Info("Copying contents from .dmg to target directory...");
+            
+            // Copy the contents from the mounted .dmg to the target directory
+            ExecuteShellCommand($"cp -R \"{mountPath}/.\" \"{_programFolder}\"");
+            
+            
+            WaitForContinue();
+
+            // Unmount the .dmg file
+            OnUpdateProgressChanged(0.88f, "Unmounting .dmg file...");
+            Logger.Info("Unmounting .dmg file...");
+            ExecuteShellCommand($"hdiutil detach \"{mountPath}\"");
+        }
+       
+       /// <summary>
+       /// Waits the for continue
+       /// </summary>
+       private void WaitForContinue()
+        {
+            Thread.Sleep(1000);
+        }
+
+        /// <summary>
+        /// Executes the shell command using the specified command
+        /// </summary>
+        /// <param name="command">The command</param>
+        private void ExecuteShellCommand(string command)
+        {
+            using (var process = new System.Diagnostics.Process())
+            {
+                process.StartInfo.FileName = "/bin/bash";
+                process.StartInfo.Arguments = $"-c \"{command}\"";
+                process.StartInfo.RedirectStandardOutput = true;
+                process.StartInfo.RedirectStandardError = true;
+                process.StartInfo.UseShellExecute = false;
+                process.StartInfo.CreateNoWindow = true;
+                process.Start();
+
+                process.WaitForExit();
+            }
+        }
+
+        /// <summary>
+        /// Extracts the zip using the specified file async
+        /// </summary>
+        /// <param name="fileAsync">The file</param>
+        /// <exception cref="InvalidOperationException">Exceeded the maximum compression ratio threshold.</exception>
+        /// <exception cref="InvalidOperationException">Exceeded the maximum number of entries threshold.</exception>
+        /// <exception cref="InvalidOperationException">Exceeded the maximum uncompressed size threshold.</exception>
+        private void ExtractZip(string fileAsync)
+        {
+            const int THRESHOLD_ENTRIES = 10000;
+            const long THRESHOLD_SIZE = 1_000_000_000; // 1 GB
+            const double THRESHOLD_RATIO = 10;
+            long totalSizeArchive = 0;
+            int totalEntryArchive = 0;
+
+            using var zipToOpen = new FileStream(fileAsync, FileMode.Open);
+            using var archive = new ZipArchive(zipToOpen, ZipArchiveMode.Read);
+            foreach (ZipArchiveEntry entry in archive.Entries)
+            {
+                totalEntryArchive++;
+
+                if (totalEntryArchive > THRESHOLD_ENTRIES)
+                {
+                    throw new InvalidOperationException("Exceeded the maximum number of entries threshold.");
+                }
+
+                long totalSizeEntry = 0;
+                using (Stream entryStream = entry.Open())
+                {
+                    byte[] buffer = new byte[4096];
+                    int bytesRead;
+                    while ((bytesRead = entryStream.Read(buffer, 0, buffer.Length)) > 0)
+                    {
+                        totalSizeEntry += bytesRead;
+                        totalSizeArchive += bytesRead;
+
+                        if (totalSizeArchive > THRESHOLD_SIZE)
+                        {
+                            throw new InvalidOperationException("Exceeded the maximum uncompressed size threshold.");
+                        }
+                    }
+                }
+
+                double compressionRatio = (double)totalSizeEntry / entry.CompressedLength;
+                if (compressionRatio > THRESHOLD_RATIO)
+                {
+                    throw new InvalidOperationException("Exceeded the maximum compression ratio threshold.");
+                }
+
+                // Proceed with extraction if all checks pass
+                string destinationPath = Path.Combine(_programFolder, entry.FullName);
+                string directoryPath = Path.GetDirectoryName(destinationPath);
+
+                if (!Directory.Exists(directoryPath))
+                {
+                    if (directoryPath != null)
+                    {
+                        Directory.CreateDirectory(directoryPath);
+                    }
+                }
+
+                entry.ExtractToFile(destinationPath, true);
+            }
+
             OnUpdateProgressChanged(0.7f, "Extracted and replaced.");
         }
-        
+
         /// <summary>
         /// Cleans the backup
         /// </summary>
         private void CleanTempFile()
         {
             OnUpdateProgressChanged(0.9f, "Cleaning temporary files...");
-            Thread.Sleep(3000);
+            WaitForContinue();
             Logger.Info("Temporary files cleaned.");
             string[] files = Directory.GetFiles(Environment.CurrentDirectory, "*.zip");
             foreach (string file in files)
@@ -343,6 +494,21 @@ namespace Alis.Extension.Updater.GitHub
                 if (!file.Contains("Backup"))
                 {
                     File.Delete(file);
+                    OnUpdateProgressChanged(0.95f, $"Cleaning temporary file '{Path.GetFileName(file)}'...");
+                    Logger.Info($"Cleaning temporary file '{file}'...");
+                    WaitForContinue();
+                }
+            }
+            
+            files = Directory.GetFiles(Environment.CurrentDirectory, "*.dmg");
+            foreach (string file in files)
+            {
+                if (!file.Contains("Backup"))
+                {
+                    File.Delete(file);
+                    OnUpdateProgressChanged(0.95f, $"Cleaning temporary file '{Path.GetFileName(file)}'...");
+                    Logger.Info($"Cleaning temporary file '{file}'...");
+                    WaitForContinue();
                 }
             }
         }
