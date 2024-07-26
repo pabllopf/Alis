@@ -422,61 +422,7 @@ namespace Alis.Extension.Updater.GitHub
         /// <exception cref="InvalidOperationException">Exceeded the maximum uncompressed size threshold.</exception>
         private void ExtractZip(string fileAsync)
         {
-            const int THRESHOLD_ENTRIES = 10000;
-            const long THRESHOLD_SIZE = 1_000_000_000; // 1 GB
-            const double THRESHOLD_RATIO = 10;
-            long totalSizeArchive = 0;
-            int totalEntryArchive = 0;
-
-            using var zipToOpen = new FileStream(fileAsync, FileMode.Open);
-            using var archive = new ZipArchive(zipToOpen, ZipArchiveMode.Read);
-            foreach (ZipArchiveEntry entry in archive.Entries)
-            {
-                totalEntryArchive++;
-
-                if (totalEntryArchive > THRESHOLD_ENTRIES)
-                {
-                    throw new InvalidOperationException("Exceeded the maximum number of entries threshold.");
-                }
-
-                long totalSizeEntry = 0;
-                using (Stream entryStream = entry.Open())
-                {
-                    byte[] buffer = new byte[4096];
-                    int bytesRead;
-                    while ((bytesRead = entryStream.Read(buffer, 0, buffer.Length)) > 0)
-                    {
-                        totalSizeEntry += bytesRead;
-                        totalSizeArchive += bytesRead;
-
-                        if (totalSizeArchive > THRESHOLD_SIZE)
-                        {
-                            throw new InvalidOperationException("Exceeded the maximum uncompressed size threshold.");
-                        }
-                    }
-                }
-
-                double compressionRatio = (double)totalSizeEntry / entry.CompressedLength;
-                if (compressionRatio > THRESHOLD_RATIO)
-                {
-                    throw new InvalidOperationException("Exceeded the maximum compression ratio threshold.");
-                }
-
-                // Proceed with extraction if all checks pass
-                string destinationPath = Path.Combine(_programFolder, entry.FullName);
-                string directoryPath = Path.GetDirectoryName(destinationPath);
-
-                if (!Directory.Exists(directoryPath))
-                {
-                    if (directoryPath != null)
-                    {
-                        Directory.CreateDirectory(directoryPath);
-                    }
-                }
-
-                entry.ExtractToFile(destinationPath, true);
-            }
-
+            ZipFile.ExtractToDirectory(fileAsync, _programFolder);
             OnUpdateProgressChanged(0.7f, "Extracted and replaced.");
         }
 
