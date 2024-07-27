@@ -51,8 +51,20 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         ///     Tests that play valid input
         /// </summary>
-        [UnixOnly]
-        public async Task Play_ValidInput()
+        [MacOsOnly]
+        public async Task Play_ValidInput_MacOs()
+        {
+            TestUnixPlayer player = new TestUnixPlayer();
+            await player.Play("test.mp3");
+
+            Assert.False(player.Playing);
+        }
+        
+        /// <summary>
+        ///     Tests that play valid input
+        /// </summary>
+        [LinuxOnly]
+        public async Task Play_ValidInput_Linux()
         {
             TestUnixPlayer player = new TestUnixPlayer();
             await player.Play("test.mp3");
