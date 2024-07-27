@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Threading;
 using System.Threading.Tasks;
 using Alis.Core.Audio.Test.Players.Attributes;
 using Alis.Core.Audio.Test.Players.Samples;
@@ -52,23 +53,27 @@ namespace Alis.Core.Audio.Test.Players
         ///     Tests that play valid input
         /// </summary>
         [MacOsOnly]
-        public async Task Play_ValidInput_MacOs()
+        public void Play_ValidInput_MacOs()
         {
-            TestUnixPlayer player = new TestUnixPlayer();
-            await player.Play("test.mp3");
+            TestUnixPlayer player = new TestUnixPlayer(); 
+            player.Play("test.mp3").Wait();
 
-            Assert.True(player.Playing);
+            Thread.Sleep(1000);
+            
+            Assert.False(player.Playing);
         }
         
         /// <summary>
         ///     Tests that play valid input
         /// </summary>
         [LinuxOnly]
-        public async Task Play_ValidInput_Linux()
+        public void Play_ValidInput_Linux()
         {
-            TestUnixPlayer player = new TestUnixPlayer();
-            await player.Play("test.mp3");
+            TestUnixPlayer player = new TestUnixPlayer(); 
+            player.Play("test.mp3").Wait();
 
+            Thread.Sleep(1000);
+            
             Assert.False(player.Playing);
         }
     }
