@@ -413,6 +413,7 @@ namespace Alis.Extension.Updater.GitHub
             }
         }
 
+        
         /// <summary>
         /// Extracts the zip using the specified file async
         /// </summary>
