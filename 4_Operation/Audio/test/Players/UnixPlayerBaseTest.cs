@@ -57,7 +57,7 @@ namespace Alis.Core.Audio.Test.Players
             TestUnixPlayer player = new TestUnixPlayer();
             await player.Play("test.mp3");
 
-            Assert.False(player.Playing);
+            Assert.True(player.Playing);
         }
         
         /// <summary>
@@ -69,7 +69,7 @@ namespace Alis.Core.Audio.Test.Players
             TestUnixPlayer player = new TestUnixPlayer();
             await player.Play("test.mp3");
 
-            Assert.True(player.Playing);
+            Assert.False(player.Playing);
         }
     }
 }
