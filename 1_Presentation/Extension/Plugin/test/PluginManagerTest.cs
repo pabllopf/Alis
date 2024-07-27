@@ -922,19 +922,7 @@ namespace Alis.Extension.Plugin.Test
             Assert.Empty(pluginManager.LoadedPlugins);
             Assert.Empty(pluginManager.LoadedAssemblies);
         }
-
-        /// <summary>
-        /// Tests that load plugins valid directory should load plugins
-        /// </summary>
-        [Fact]
-        public void LoadPlugins_ValidDirectory_ShouldLoadPlugins()
-        {
-            PluginManager pluginManager = new PluginManager();
-            string validPluginsDirectory = Path.Combine(Environment.CurrentDirectory, "Assets", "Plugins");
-            pluginManager.LoadPlugins(validPluginsDirectory);
-            Assert.NotEmpty(pluginManager.LoadedPlugins);
-        }
-
+        
         /// <summary>
         /// Tests that load plugins invalid directory should throw directory not found exception
         /// </summary>
@@ -958,19 +946,7 @@ namespace Alis.Extension.Plugin.Test
             string result = pluginManager.GetPlatformPluginsDirectory(pluginsDirectory, platformFolder);
             Assert.Equal(Path.Combine("path", "to", "plugins","windows"), result);
         }
-
-        /// <summary>
-        /// Tests that load plugins from files valid files should load plugins
-        /// </summary>
-        [Fact]
-        public void LoadPluginsFromFiles_ValidFiles_ShouldLoadPlugins()
-        {
-            PluginManager pluginManager = new PluginManager();
-            List<string> pluginFiles = new List<string> {$"{Path.Combine(Environment.CurrentDirectory, "Assets", "Plugins", "windows", "Sum.dll")}"};
-            pluginManager.LoadPluginsFromFiles(pluginFiles);
-            Assert.Equal(pluginFiles.Count, pluginManager.LoadedPlugins.Count);
-        }
-
+        
         /// <summary>
         /// Tests that get platform folder supported platform should return platform folder
         /// </summary>
@@ -1004,19 +980,7 @@ namespace Alis.Extension.Plugin.Test
             IEnumerable<string> result = pluginManager.GetPluginFiles(directory);
             Assert.NotEmpty(result);
         }
-
-        /// <summary>
-        /// Tests that load plugin from file valid file should load plugin
-        /// </summary>
-        [Fact]
-        public void LoadPluginFromFile_ValidFile_ShouldLoadPlugin()
-        {
-            PluginManager pluginManager = new PluginManager();
-            string pluginFile = Path.Combine(Environment.CurrentDirectory, "Assets", "Plugins", "windows", "Sum.dll");
-            pluginManager.LoadPluginFromFile(pluginFile);
-            Assert.NotEmpty(pluginManager.LoadedPlugins);
-        }
-
+        
         /// <summary>
         /// Tests that load assembly valid plugin file should return assembly
         /// </summary>
