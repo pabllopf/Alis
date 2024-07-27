@@ -1,23 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
-    <ItemGroup Condition="
-        $(AssemblyName.Contains('Graphic.Test')) OR
-        $(AssemblyName.Contains('ImGui.Test')) OR
-        $(AssemblyName.Contains('OpenGL.Test')) OR
-        $(AssemblyName.Contains('FFMeg.Test')) OR
-        $(AssemblyName.Contains('Alis.Core.Aspect.Security.Test')) OR
-        $(AssemblyName.Contains('Alis.Core.Aspect.Data.Test')) OR
-        $(AssemblyName.Contains('Alis.Core.Aspect.Time.Test')) OR
-        $(AssemblyName.Contains('Alis.Core.Audio.Test')) OR
-        $(AssemblyName.Contains('Alis.Core.Network.Test')) OR
-        $(AssemblyName.Contains('Alis.Extension.Profile.Test')) OR
-        $(AssemblyName.Contains('Alis.Core.Physic.Test'))">
-        <Content
-            Include="$(SolutionDir).config/xunit.runner.json"
-            LinkBase="."
-            Pack="true"
-            Visible="true"
-            PackagePath=".">
+    <ItemGroup>
+        <Content Include="$(SolutionDir).config/xunit.runner.json" LinkBase="." Pack="true" Visible="true" PackagePath=".">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
             <CopyToPublishDirectory>Always</CopyToPublishDirectory>
         </Content>
