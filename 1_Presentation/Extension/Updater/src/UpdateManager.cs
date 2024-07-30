@@ -38,11 +38,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Logging;
-using Alis.Extension.Updater.GitHub.Events;
-using Alis.Extension.Updater.GitHub.Services.Api;
-using Alis.Extension.Updater.GitHub.Services.Files;
+using Alis.Extension.Updater.Events;
+using Alis.Extension.Updater.Services.Api;
+using Alis.Extension.Updater.Services.Files;
 
-namespace Alis.Extension.Updater.GitHub
+namespace Alis.Extension.Updater
 {
     /// <summary>
     /// The update manager class

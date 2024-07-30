@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Extension.Updater.GitHub.Events
+namespace Alis.Extension.Updater.Events
 {
     /// <summary>
     /// The update progress event handler

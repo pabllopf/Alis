@@ -47,8 +47,7 @@ namespace Alis.Core.Aspect.Memory
         /// <typeparam name="T">The </typeparam>
         /// <param name="value">The value</param>
         /// <param name="name"></param>
-        [Conditional("DEBUG")]
-        
+        [Conditional("DEBUGGER")]
         public static void Validate<T>(T value, string name)
         {
             StackTrace stackTrace = new StackTrace();

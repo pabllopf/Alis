@@ -29,7 +29,7 @@
 
 using Xunit;
 
-namespace Alis.Extension.Updater.GitHub.Test
+namespace Alis.Extension.Updater.Test
 {
     /// <summary>
     ///     The dummy test class

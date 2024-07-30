@@ -32,7 +32,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Alis.Core.Aspect.Data.Json;
 
-namespace Alis.Extension.Updater.GitHub.Services.Api
+namespace Alis.Extension.Updater.Services.Api
 {
     /// <summary>
     /// The git hub api service class
