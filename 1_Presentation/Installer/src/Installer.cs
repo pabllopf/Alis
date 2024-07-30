@@ -414,7 +414,7 @@ namespace Alis.App.Installer
             string api = "https://api.github.com/repos/pabllopf/alis/releases/latest";
             string dirProject = Path.Combine(Environment.CurrentDirectory, "bin");
             UpdateManager manager = new UpdateManager(new GitHubApiService(api), new FileService(), dirProject);
-            Task<bool> task = manager.UpdateGameAsync();
+            Task<bool> task = manager.Start();
             //task.Start();
             
             // Definir la variable de estado fuera del bucle principal
