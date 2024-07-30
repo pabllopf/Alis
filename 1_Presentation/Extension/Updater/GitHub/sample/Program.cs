@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Extension.Payment.Stripe.Sample
+namespace Alis.Extension.Updater.GitHub.Sample
 {
     /// <summary>
     ///     The program class

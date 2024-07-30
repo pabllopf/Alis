@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:DummyTest.cs
+//  File:Program.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,22 +27,21 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Xunit;
+using Alis.Core.Aspect.Logging;
 
-namespace Alis.Extension.Updater.GitHub.Test
+namespace Alis.Extension.Math.DungeonGenerator.Sample
 {
     /// <summary>
-    ///     The dummy test class
+    ///     The program class
     /// </summary>
-    public class DummyTest
+    public static class Program
     {
         /// <summary>
-        ///     Tests that default test
+        ///     Main
         /// </summary>
-        [Fact]
-        public void DefaultTest()
+        public static void Main()
         {
-            Assert.True(true);
+            Logger.Trace("End Program...");
         }
     }
 }
