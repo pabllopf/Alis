@@ -35,6 +35,7 @@ using Alis.Extension.Updater.Services.Files;
 
 namespace Alis.Extension.Updater.Sample
 {
+    
     /// <summary>
     ///     The program class
     /// </summary>
