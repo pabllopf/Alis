@@ -31,7 +31,9 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
+using Alis.Builder.Core.Ecs.Entity.GameObject;
 using Alis.Core.Aspect.Data.Json;
+using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component;
@@ -44,7 +46,7 @@ namespace Alis.Core.Ecs.Entity
     /// </summary>
     /// <seealso cref="IGameObject{AComponent}" />
     /// <seealso cref="ISerializable" />
-    public class GameObject : IGameObject<AComponent>
+    public class GameObject : IGameObject<AComponent>, IBuilder<GameObjectBuilder>
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="GameObject" /> class
@@ -282,5 +284,17 @@ namespace Alis.Core.Ecs.Entity
         ///     Ons the destroy
         /// </summary>
         public void OnDestroy() => Components.ForEach(i => i.OnDestroy());
+
+        /// <summary>
+        /// Builders this instance
+        /// </summary>
+        /// <returns>The game object builder</returns>
+        public GameObjectBuilder Builder() => new GameObjectBuilder();
+        
+        /// <summary>
+        /// Creates
+        /// </summary>
+        /// <returns>The game object builder</returns>
+        public static GameObjectBuilder Create() => new GameObjectBuilder();
     }
 }

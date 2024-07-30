@@ -31,6 +31,7 @@ using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
+using NotImplementedException = System.NotImplementedException;
 
 namespace Alis.Builder.Core.Ecs.Entity.Transform
 {
@@ -64,6 +65,17 @@ namespace Alis.Builder.Core.Ecs.Entity.Transform
         public TransformBuilder Position(float x, float y)
         {
             transform.Position = new Vector2(x, y);
+            return this;
+        }
+        
+        /// <summary>
+        /// Positions the vector
+        /// </summary>
+        /// <param name="vector">The vector</param>
+        /// <returns>The transform builder</returns>
+        public TransformBuilder Position(Vector2 vector)
+        {
+            transform.Position = vector;
             return this;
         }
 
