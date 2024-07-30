@@ -16,58 +16,58 @@ namespace Alis.Extension.Math.DungeonGenerator
     public class Dungeon 
     {
         /// <summary>The board width</summary>
-        private const int BoardWidth = 500;
+        public const int BoardWidth = 100;
 
         /// <summary>The board height</summary>
-        private const int BoardHeight = 500;
+        public const int BoardHeight = 100;
 
         /// <summary>The number of rooms</summary>
-        private const int NumOfRooms = 20;
+        public const int NumOfRooms = 5;
         
         /// <summary>The first room width</summary>
-        private const int FirstRoomWidth = 10;
+        public const int FirstRoomWidth = 10;
 
         /// <summary>The first room height</summary>
-        private const int FirstRoomHeight = 10;
+        public const int FirstRoomHeight = 10;
 
         /// <summary>The room width</summary>
-        private const int RoomWidth = 8;
+        public const int RoomWidth = 8;
 
         /// <summary>The room height</summary>
-        private const int RoomHeight = 8;
+        public const int RoomHeight = 8;
 
         /// <summary>The boss room width</summary>
-        private const int BossRoomWidth = 10;
+        public const int BossRoomWidth = 10;
 
         /// <summary>The boss room height</summary>
-        private const int BossRoomHeight = 10;
+        public const int BossRoomHeight = 10;
         
         /// <summary>The corridor width</summary>
-        private const int CorridorWidth = 4;
+        public const int CorridorWidth = 4;
 
         /// <summary>The corridor height</summary>
-        private const int CorridorHeight = 4;
+        public const int CorridorHeight = 4;
         
         /// <summary>The board</summary>
-        private CellBox[,] board = new CellBox[BoardWidth, BoardHeight];
+        public CellBox[,] board = new CellBox[BoardWidth, BoardHeight];
 
         /// <summary>The rooms</summary>
-        private List<Room> rooms = new List<Room>();
+        public List<Room> rooms = new List<Room>();
 
         /// <summary>The corridors</summary>
-        private List<Corridor> corridors = new List<Corridor>();
+        public List<Corridor> corridors = new List<Corridor>();
 
         /// <summary>The master to</summary>
         [JsonPropertyName("MasterTo:")]
-        private GameObject masterTo = null;
+        public GameObject masterTo = null;
 
         /// <summary>The altar</summary>
         [JsonPropertyName("Altar:")]
-        private GameObject altar = null;
+        public GameObject altar = null;
 
         /// <summary>The portal</summary>
         [JsonPropertyName("Portal:")]
-        private GameObject portal = null;
+        public GameObject portal = null;
         
         /// <summary>Gets or sets the board.</summary>
         /// <value>The board.</value>
@@ -87,7 +87,7 @@ namespace Alis.Extension.Math.DungeonGenerator
 
         /// <summary>Gets the random style.</summary>
         /// <value>The random style.</value>
-        private List<Style> Styles { get;  } = new List<Style>();
+        public Style Style { get; } = new Style();
 
         /// <summary>Gets or sets the portal.</summary>
         /// <value>The portal.</value>
@@ -98,7 +98,7 @@ namespace Alis.Extension.Math.DungeonGenerator
         public GameObject MasterTo { get => masterTo; set => masterTo = value; }
         
         /// <summary>Starts this instance.</summary>
-        private void Start()
+        public void Start()
         {
             SetUpRoomsAndCorridors();
 
@@ -106,14 +106,13 @@ namespace Alis.Extension.Math.DungeonGenerator
             ConfigRoomsAndCorridors();
 
             CreateBoard();
-
-            Style randomStyle = Styles[new Random().Next(0, Styles.Count)];
-            PrintDungeon(randomStyle);
+            
+            PrintDungeon(Style);
             PrintBoss();
         }
 
         /// <summary>Sets up rooms and corridors.</summary>
-        private void SetUpRoomsAndCorridors()
+        public void SetUpRoomsAndCorridors()
         {
             masterTo = GameObject
                 .Create()
@@ -140,7 +139,7 @@ namespace Alis.Extension.Math.DungeonGenerator
         }
 
         /// <summary>Creates the rooms and corridors.</summary>
-        private void ConfigRoomsAndCorridors()
+        public void ConfigRoomsAndCorridors()
         {
             rooms.ForEach(room =>
             {
@@ -166,7 +165,7 @@ namespace Alis.Extension.Math.DungeonGenerator
         }
 
         /// <summary>Creates the board.</summary>
-        private void CreateBoard()
+        public void CreateBoard()
         {
             for (int x = 0; x < BoardWidth; x++)
             {
@@ -191,7 +190,7 @@ namespace Alis.Extension.Math.DungeonGenerator
         }
 
         /// <summary>Configurations the initial room.</summary>
-        private void ConfigInitialRoom()
+        public void ConfigInitialRoom()
         {
             Vector2 center = new Vector2((BoardWidth / 2) + (FirstRoomWidth / 2), (BoardHeight / 2) + (FirstRoomHeight / 2));
 
@@ -226,7 +225,7 @@ namespace Alis.Extension.Math.DungeonGenerator
 
         /// <summary>Prints the dungeon.</summary>
         /// <param name="style">The style.</param>
-        private void PrintDungeon(Style style)
+        public void PrintDungeon(Style style)
         {
             for (int x = 0; x < BoardWidth; x++)
             {
@@ -251,7 +250,7 @@ namespace Alis.Extension.Math.DungeonGenerator
         
         /// <summary>Prints the decoration.</summary>
         /// <param name="style">The style.</param>
-        private void PrintDecoration(Style style)
+        public void PrintDecoration(Style style)
         {
             style.Decorations
                 .FindAll(deco => (deco.MinToSpawn != 0 && deco.MaxToSpawn != 0 && deco.TypeCellBoxToSpawn != CellBox.Empty))
@@ -293,7 +292,7 @@ namespace Alis.Extension.Math.DungeonGenerator
         /// Prints the enemys using the specified style
         /// </summary>
         /// <param name="style">The style</param>
-        private void PrintEnemys(Style style) 
+        public void PrintEnemys(Style style) 
         {
             style.Enemys
                 .FindAll(deco => (deco.MinToSpawn != 0 && deco.MaxToSpawn != 0 && deco.TypeCellBoxToSpawn != CellBox.Empty))
@@ -334,7 +333,7 @@ namespace Alis.Extension.Math.DungeonGenerator
         /// <summary>
         /// Prints the boss
         /// </summary>
-        private void PrintBoss() 
+        public void PrintBoss() 
         {
             Vector2 posToSpawn = new Vector2(rooms[NumOfRooms - 1].XPos + rooms[NumOfRooms - 1].Width/2, rooms[NumOfRooms - 1].YPos + rooms[NumOfRooms - 1].Height/2);
             GameObject master = GameObject.Create()

@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Logging;
 
 namespace Alis.Extension.Math.DungeonGenerator.Sample
@@ -41,7 +42,22 @@ namespace Alis.Extension.Math.DungeonGenerator.Sample
         /// </summary>
         public static void Main()
         {
-            Logger.Trace("End Program...");
+            Logger.Log("Starting dungeon generation");
+            Dungeon dungeon = new Dungeon();
+            dungeon.Start();
+            
+            // print the dungeon into the console
+            var map = dungeon.board;
+            for (int y = 0; y < map.GetLength(1); y++)
+            {
+                for (int x = 0; x < map.GetLength(0); x++)
+                {
+                    Console.Write(map[x, y] == CellBox.Floor ? " " : "#");
+                }
+                Console.WriteLine();
+            }
+            
+            Logger.Log("Dungeon generated");
         }
     }
 }
