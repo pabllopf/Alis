@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Extension.Updater.GitHub.Sample
+namespace Alis.Extension.Updater.Sample
 {
     /// <summary>
     ///     The program class

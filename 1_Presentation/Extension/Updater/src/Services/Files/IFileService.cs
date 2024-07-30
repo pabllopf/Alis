@@ -29,7 +29,7 @@
 
 using System.Threading.Tasks;
 
-namespace Alis.Extension.Updater.GitHub.Services.Files
+namespace Alis.Extension.Updater.Services.Files
 {
     /// <summary>
     /// The file service interface

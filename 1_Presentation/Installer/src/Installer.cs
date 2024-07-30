@@ -55,9 +55,9 @@ using Alis.Extension.Graphic.ImGui.Native;
 using Alis.Extension.Graphic.OpenGL;
 using Alis.Extension.Graphic.OpenGL.Constructs;
 using Alis.Extension.Graphic.OpenGL.Enums;
-using Alis.Extension.Updater.GitHub;
-using Alis.Extension.Updater.GitHub.Services.Api;
-using Alis.Extension.Updater.GitHub.Services.Files;
+using Alis.Extension.Updater;
+using Alis.Extension.Updater.Services.Api;
+using Alis.Extension.Updater.Services.Files;
 using PixelFormat = Alis.Extension.Graphic.OpenGL.Enums.PixelFormat;
 using Version = Alis.Core.Graphic.Sdl2.Structs.Version;
 

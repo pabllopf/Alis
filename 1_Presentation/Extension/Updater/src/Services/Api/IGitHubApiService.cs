@@ -30,7 +30,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Alis.Extension.Updater.GitHub.Services.Api
+namespace Alis.Extension.Updater.Services.Api
 {
     /// <summary>
     /// The git hub api service interface
