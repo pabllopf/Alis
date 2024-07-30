@@ -17,25 +17,10 @@
 
         <TargetFrameworks Condition="$(AssemblyName.Contains('App')) == true">net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
 
-        <TargetFrameworks Condition="$(AssemblyName.Contains('App')) == true AND ($([MSBuild]::IsOSPlatform('osx')) AND '$(RuntimeIdentifier)' == '')  OR $(RuntimeIdentifier.Contains('osx'))">net7.0;net8.0</TargetFrameworks>
+        <TargetFrameworks Condition="$(AssemblyName.Contains('App')) == true AND $(RuntimeIdentifier.Contains('osx')) == true">net7.0;net8.0</TargetFrameworks>
 
-        <TargetFrameworks Condition="
-        ( 
-        $(AssemblyName.Contains('App')) == true OR
-        $(AssemblyName.Contains('Template')) == true OR
-        $(AssemblyName.Contains('Sample')) == true OR
-        $(AssemblyName.Contains('Benchmark')) == true OR
-        $(AssemblyName.Contains('Test')) == true
-        ) 
-        AND $(Configuration) == 'Debug'">net6.0;</TargetFrameworks>
-
-        <TargetFrameworks Condition="
-         $(AssemblyName.Contains('Test')) == false AND 
-        $(AssemblyName.Contains('App')) == false AND
-        $(AssemblyName.Contains('Template')) == false AND
-        $(AssemblyName.Contains('Sample')) == false AND
-        $(AssemblyName.Contains('Benchmark')) == false AND
-        '$(Configuration)' == 'Debug'">netstandard2.0;</TargetFrameworks>
+        <TargetFrameworks Condition="($(AssemblyName.Contains('App')) == true OR $(AssemblyName.Contains('Template')) == true OR $(AssemblyName.Contains('Sample')) == true OR $(AssemblyName.Contains('Benchmark')) == true OR $(AssemblyName.Contains('Test')) == true) AND $(Configuration) == 'Debug'">net6.0;</TargetFrameworks>
+        <TargetFrameworks Condition="$(AssemblyName.Contains('Test')) == false AND $(AssemblyName.Contains('App')) == false AND $(AssemblyName.Contains('Template')) == false AND $(AssemblyName.Contains('Sample')) == false AND $(AssemblyName.Contains('Benchmark')) == false AND '$(Configuration)' == 'Debug'">netstandard2.0;</TargetFrameworks>
     </PropertyGroup>
 
 
