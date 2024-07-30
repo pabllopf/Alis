@@ -49,7 +49,7 @@ namespace Alis.Extension.Math.DungeonGenerator
         private const int CorridorHeight = 4;
         
         /// <summary>The board</summary>
-        private TypeCellBox[,] board = new TypeCellBox[BoardWidth, BoardHeight];
+        private CellBox[,] board = new CellBox[BoardWidth, BoardHeight];
 
         /// <summary>The rooms</summary>
         private List<Room> rooms = new List<Room>();
@@ -71,7 +71,7 @@ namespace Alis.Extension.Math.DungeonGenerator
         
         /// <summary>Gets or sets the board.</summary>
         /// <value>The board.</value>
-        public TypeCellBox[,] Board { get => board; set => board = value; }
+        public CellBox[,] Board { get => board; set => board = value; }
 
         /// <summary>Gets or sets the rooms.</summary>
         /// <value>The rooms.</value>
@@ -148,7 +148,7 @@ namespace Alis.Extension.Math.DungeonGenerator
                 {
                     for (int y = room.YPos; y < room.YPos + room.Height; y++)
                     {
-                        board[x, y] = TypeCellBox.Floor;
+                        board[x, y] = CellBox.Floor;
                     }
                 }
             });
@@ -159,7 +159,7 @@ namespace Alis.Extension.Math.DungeonGenerator
                 {
                     for (int y = corridor.YPos; y < corridor.YPos + corridor.Height; y++)
                     {
-                        board[x, y] = TypeCellBox.Floor;
+                        board[x, y] = CellBox.Floor;
                     }
                 }
             });
@@ -172,20 +172,20 @@ namespace Alis.Extension.Math.DungeonGenerator
             {
                 for (int y = 0; y < BoardHeight; y++)
                 {
-                    board[x, y] = (board[x, y].Equals(TypeCellBox.Floor) && board[x, y - 1].Equals(TypeCellBox.Empty)) ? TypeCellBox.WallDown : board[x, y];
-                    board[x, y] = (board[x, y].Equals(TypeCellBox.Floor) && board[x - 1, y].Equals(TypeCellBox.Empty)) ? TypeCellBox.WallLeft : board[x, y];
-                    board[x, y] = (board[x, y].Equals(TypeCellBox.Floor) && board[x + 1, y].Equals(TypeCellBox.Empty)) ? TypeCellBox.WallRight : board[x, y];
-                    board[x, y] = (board[x, y].Equals(TypeCellBox.Floor) && board[x, y + 1].Equals(TypeCellBox.Empty)) ? TypeCellBox.WallTop : board[x, y];
+                    board[x, y] = (board[x, y].Equals(CellBox.Floor) && board[x, y - 1].Equals(CellBox.Empty)) ? CellBox.WallDown : board[x, y];
+                    board[x, y] = (board[x, y].Equals(CellBox.Floor) && board[x - 1, y].Equals(CellBox.Empty)) ? CellBox.WallLeft : board[x, y];
+                    board[x, y] = (board[x, y].Equals(CellBox.Floor) && board[x + 1, y].Equals(CellBox.Empty)) ? CellBox.WallRight : board[x, y];
+                    board[x, y] = (board[x, y].Equals(CellBox.Floor) && board[x, y + 1].Equals(CellBox.Empty)) ? CellBox.WallTop : board[x, y];
 
-                    board[x, y] = (!board[x, y].Equals(TypeCellBox.Empty) && board[x - 1, y].Equals(TypeCellBox.Empty) && board[x, y - 1].Equals(TypeCellBox.Empty)) ? TypeCellBox.CornerLeftDown : board[x, y];
-                    board[x, y] = (!board[x, y].Equals(TypeCellBox.Empty) && board[x + 1, y].Equals(TypeCellBox.Empty) && board[x, y - 1].Equals(TypeCellBox.Empty)) ? TypeCellBox.CornerRightDown : board[x, y];
-                    board[x, y] = (!board[x, y].Equals(TypeCellBox.Empty) && board[x - 1, y].Equals(TypeCellBox.Empty) && board[x, y + 1].Equals(TypeCellBox.Empty)) ? TypeCellBox.CornerLeftUp : board[x, y];
-                    board[x, y] = (!board[x, y].Equals(TypeCellBox.Empty) && board[x + 1, y].Equals(TypeCellBox.Empty) && board[x, y + 1].Equals(TypeCellBox.Empty)) ? TypeCellBox.CornerRightUp : board[x, y];
+                    board[x, y] = (!board[x, y].Equals(CellBox.Empty) && board[x - 1, y].Equals(CellBox.Empty) && board[x, y - 1].Equals(CellBox.Empty)) ? CellBox.CornerLeftDown : board[x, y];
+                    board[x, y] = (!board[x, y].Equals(CellBox.Empty) && board[x + 1, y].Equals(CellBox.Empty) && board[x, y - 1].Equals(CellBox.Empty)) ? CellBox.CornerRightDown : board[x, y];
+                    board[x, y] = (!board[x, y].Equals(CellBox.Empty) && board[x - 1, y].Equals(CellBox.Empty) && board[x, y + 1].Equals(CellBox.Empty)) ? CellBox.CornerLeftUp : board[x, y];
+                    board[x, y] = (!board[x, y].Equals(CellBox.Empty) && board[x + 1, y].Equals(CellBox.Empty) && board[x, y + 1].Equals(CellBox.Empty)) ? CellBox.CornerRightUp : board[x, y];
 
-                    board[x, y] = (board[x, y].Equals(TypeCellBox.Floor) && board[x - 1, y - 1].Equals(TypeCellBox.Empty)) ? TypeCellBox.CornerInternalLeftDown : board[x, y];
-                    board[x, y] = (board[x, y].Equals(TypeCellBox.Floor) && board[x + 1, y - 1].Equals(TypeCellBox.Empty)) ? TypeCellBox.CornerInternalRightDown : board[x, y];
-                    board[x, y] = (board[x, y].Equals(TypeCellBox.Floor) && board[x - 1, y + 1].Equals(TypeCellBox.Empty)) ? TypeCellBox.CornerInternalLeftUp : board[x, y];
-                    board[x, y] = (board[x, y].Equals(TypeCellBox.Floor) && board[x + 1, y + 1].Equals(TypeCellBox.Empty)) ? TypeCellBox.CornerInternalRightUp : board[x, y];
+                    board[x, y] = (board[x, y].Equals(CellBox.Floor) && board[x - 1, y - 1].Equals(CellBox.Empty)) ? CellBox.CornerInternalLeftDown : board[x, y];
+                    board[x, y] = (board[x, y].Equals(CellBox.Floor) && board[x + 1, y - 1].Equals(CellBox.Empty)) ? CellBox.CornerInternalRightDown : board[x, y];
+                    board[x, y] = (board[x, y].Equals(CellBox.Floor) && board[x - 1, y + 1].Equals(CellBox.Empty)) ? CellBox.CornerInternalLeftUp : board[x, y];
+                    board[x, y] = (board[x, y].Equals(CellBox.Floor) && board[x + 1, y + 1].Equals(CellBox.Empty)) ? CellBox.CornerInternalRightUp : board[x, y];
                 }
             }
         }
@@ -232,7 +232,7 @@ namespace Alis.Extension.Math.DungeonGenerator
             {
                 for (int y = 0; y < BoardHeight; y++)
                 {
-                    if (board[x, y] != TypeCellBox.Empty)
+                    if (board[x, y] != CellBox.Empty)
                     {
                         GameObject obj =  GameObject.Create()
                             .Name(board[x, y].ToString())
@@ -254,7 +254,7 @@ namespace Alis.Extension.Math.DungeonGenerator
         private void PrintDecoration(Style style)
         {
             style.Decorations
-                .FindAll(deco => (deco.MinToSpawn != 0 && deco.MaxToSpawn != 0 && deco.TypeCellBoxToSpawn != TypeCellBox.Empty))
+                .FindAll(deco => (deco.MinToSpawn != 0 && deco.MaxToSpawn != 0 && deco.TypeCellBoxToSpawn != CellBox.Empty))
                 .ForEach(deco =>
                 {
                     int quantity = new Random().Next(deco.MinToSpawn, deco.MaxToSpawn);
@@ -268,11 +268,11 @@ namespace Alis.Extension.Math.DungeonGenerator
                         {
                             for (int y = 0; y < BoardHeight; y++)
                             {
-                                if (board[x, y] != TypeCellBox.Empty)
+                                if (board[x, y] != CellBox.Empty)
                                 {
                                     if (board[x, y] == deco.TypeCellBoxToSpawn && new Random().Next(0, 1000) == 1)
                                     {
-                                        board[x, y] = TypeCellBox.Empty;
+                                        board[x, y] = CellBox.Empty;
                                         quantity--;
                                         
                                         GameObject obj = GameObject.Create()
@@ -296,7 +296,7 @@ namespace Alis.Extension.Math.DungeonGenerator
         private void PrintEnemys(Style style) 
         {
             style.Enemys
-                .FindAll(deco => (deco.MinToSpawn != 0 && deco.MaxToSpawn != 0 && deco.TypeCellBoxToSpawn != TypeCellBox.Empty))
+                .FindAll(deco => (deco.MinToSpawn != 0 && deco.MaxToSpawn != 0 && deco.TypeCellBoxToSpawn != CellBox.Empty))
                 .ForEach(deco =>
                 {
                     int quantity = new Random().Next(deco.MinToSpawn, deco.MaxToSpawn);
@@ -310,11 +310,11 @@ namespace Alis.Extension.Math.DungeonGenerator
                         {
                             for (int y = 0; y < BoardHeight; y++)
                             {
-                                if (board[x, y] != TypeCellBox.Empty)
+                                if (board[x, y] != CellBox.Empty)
                                 {
                                     if (board[x, y] == deco.TypeCellBoxToSpawn && new Random().Next(0, 1000) == 1)
                                     {
-                                        board[x, y] = TypeCellBox.Empty;
+                                        board[x, y] = CellBox.Empty;
                                         quantity--;
                                         
                                         GameObject obj = GameObject.Create()

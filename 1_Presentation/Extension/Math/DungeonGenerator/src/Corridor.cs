@@ -9,7 +9,11 @@ using Alis.Core.Aspect.Math;
 
 namespace Alis.Extension.Math.DungeonGenerator
 {
-    /// <summary>Generate a corridor of the dungeon.</summary>
+    
+    /// <summary>
+    /// The corridor class
+    /// </summary>
+    [Serializable]
     public class Corridor
     {
         /// <summary>
