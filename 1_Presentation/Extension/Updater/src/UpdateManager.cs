@@ -109,7 +109,7 @@ namespace Alis.Extension.Updater
         /// Updates the game
         /// </summary>
         /// <returns>A task containing the bool</returns>
-        public async Task<bool> UpdateGameAsync()
+        public async Task<bool> Start()
         {
             try
             {

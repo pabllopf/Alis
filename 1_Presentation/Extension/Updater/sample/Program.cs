@@ -28,6 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.IO;
+using Alis.Core.Aspect.Logging;
+using Alis.Extension.Updater.Services.Api;
+using Alis.Extension.Updater.Services.Files;
 
 namespace Alis.Extension.Updater.Sample
 {
@@ -41,7 +45,18 @@ namespace Alis.Extension.Updater.Sample
         /// </summary>
         public static void Main()
         {
-            Console.WriteLine("End Program...");
+            Logger.LogLevel = LogLevel.Trace;
+            Logger.Log("Start sample program");
+            
+            string urlReleasesLatest = "https://api.github.com/repos/pabllopf/alis/releases/latest";
+            GitHubApiService gitHubApiService = new GitHubApiService(urlReleasesLatest);
+            FileService fileService = new FileService();
+            string pathProgram = Path.Combine(Environment.CurrentDirectory, "bin");
+            UpdateManager updateManager = new UpdateManager(gitHubApiService, fileService, pathProgram);
+
+            updateManager.Start().Wait();
+            
+            Logger.Log("End sample program");
         }
     }
 }
