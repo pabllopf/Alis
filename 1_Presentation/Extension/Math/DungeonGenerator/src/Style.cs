@@ -168,21 +168,21 @@ namespace Alis.Extension.Math.DungeonGenerator
         /// <summary>Gets the tile.</summary>
         /// <param name="tileTypeCellBox">The tile box.</param>
         /// <returns>Return the texture.</returns>
-        public GameObject GetTile(TypeCellBox tileTypeCellBox)
+        public GameObject GetTile(CellBox tileTypeCellBox)
         {
             return RandomGameObject(
-                tileTypeCellBox.Equals(TypeCellBox.WallDown) ? WallsDown :
-                tileTypeCellBox.Equals(TypeCellBox.WallLeft) ? WallsLeft :
-                tileTypeCellBox.Equals(TypeCellBox.WallRight) ? WallsRight :
-                tileTypeCellBox.Equals(TypeCellBox.WallTop) ? WallsTop :
-                tileTypeCellBox.Equals(TypeCellBox.CornerLeftUp) ? CornersLeftUp :
-                tileTypeCellBox.Equals(TypeCellBox.CornerRightUp) ? CornersRightUp :
-                tileTypeCellBox.Equals(TypeCellBox.CornerLeftDown) ? CornersLeftDown :
-                tileTypeCellBox.Equals(TypeCellBox.CornerRightDown) ? CornersRightDown :
-                tileTypeCellBox.Equals(TypeCellBox.CornerInternalLeftDown) ? CornersInternalLeftDown :
-                tileTypeCellBox.Equals(TypeCellBox.CornerInternalLeftUp) ? CornersInternalLeftUp :
-                tileTypeCellBox.Equals(TypeCellBox.CornerInternalRightDown) ? CornersInternalRightDown :
-                tileTypeCellBox.Equals(TypeCellBox.CornerInternalRightUp) ? CornersInternalRightUp :
+                tileTypeCellBox.Equals(CellBox.WallDown) ? WallsDown :
+                tileTypeCellBox.Equals(CellBox.WallLeft) ? WallsLeft :
+                tileTypeCellBox.Equals(CellBox.WallRight) ? WallsRight :
+                tileTypeCellBox.Equals(CellBox.WallTop) ? WallsTop :
+                tileTypeCellBox.Equals(CellBox.CornerLeftUp) ? CornersLeftUp :
+                tileTypeCellBox.Equals(CellBox.CornerRightUp) ? CornersRightUp :
+                tileTypeCellBox.Equals(CellBox.CornerLeftDown) ? CornersLeftDown :
+                tileTypeCellBox.Equals(CellBox.CornerRightDown) ? CornersRightDown :
+                tileTypeCellBox.Equals(CellBox.CornerInternalLeftDown) ? CornersInternalLeftDown :
+                tileTypeCellBox.Equals(CellBox.CornerInternalLeftUp) ? CornersInternalLeftUp :
+                tileTypeCellBox.Equals(CellBox.CornerInternalRightDown) ? CornersInternalRightDown :
+                tileTypeCellBox.Equals(CellBox.CornerInternalRightUp) ? CornersInternalRightUp :
                 Floors);
         }
 

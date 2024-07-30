@@ -3,12 +3,14 @@
 // <copyright file="Room.cs" company="Pabllopf">GNU General Public License v3.0</copyright>
 //------------------------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Math;
 
 namespace Alis.Extension.Math.DungeonGenerator
 {
     /// <summary>Generate a room of the dungeon.</summary>
+    [Serializable]
     public class Room
     {
         /// <summary>
