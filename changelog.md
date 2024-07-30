@@ -5,6 +5,42 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.4.1] - 2024-07-30
+### :sparkles: New Features
+- [`5b60db8`](https://github.com/pabllopf/Alis/commit/5b60db8491deb1d9288ab17c7ffc02d0079ccb98) - add new extension to create custom updaters of platforms *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5e06606`](https://github.com/pabllopf/Alis/commit/5e06606ba61fa8d94f2b86fda14f6aa2a4f51f51) - implement a new tiny arquitecture on updater module to do more flexible *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ca780d1`](https://github.com/pabllopf/Alis/commit/ca780d11bc324d0ab64d41ceaee60b34d49cad22) - add dungeon generator *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b2a9a3e`](https://github.com/pabllopf/Alis/commit/b2a9a3e2eb9ae1d61772fe356128453c0eafd99b) - create simple sample to console print the dungeon *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d5c0005`](https://github.com/pabllopf/Alis/commit/d5c0005771eaa400c8e51cac76986e6569964265) - include simple sample of updater module *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`3040bd0`](https://github.com/pabllopf/Alis/commit/3040bd0df3e475129fd93f54383cf31ad49d3c19) - test on windows platform *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3dfc512`](https://github.com/pabllopf/Alis/commit/3dfc512f16acb2386fc2b2367f2762a7cc3e54ef) - scene load json test *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`37a4315`](https://github.com/pabllopf/Alis/commit/37a431566d62914e1d544e58dbe095753f51470e) - include only the xunit runner into the test modules *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ce866da`](https://github.com/pabllopf/Alis/commit/ce866daf846216eb5e64ccba145df2a7b508e974) - Set custom var to introduce hight validator al methods *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`2bc174b`](https://github.com/pabllopf/Alis/commit/2bc174bc03134cfe4150e3f0527ad3fd4f15ca93) - pro check all tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3815e03`](https://github.com/pabllopf/Alis/commit/3815e039ec5caca49e6aab463413eccc8c92276a) - pro fix the target frameworks *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`507f64b`](https://github.com/pabllopf/Alis/commit/507f64b5380b4ec76f80d4bd350f80f36a174b61) - pro check the new config *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`028cfcb`](https://github.com/pabllopf/Alis/commit/028cfcba66295279d4ca6e0723e6ceca6d863e81) - pro fix plugins folders *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1537e27`](https://github.com/pabllopf/Alis/commit/1537e279d4f3b3ef1669036f01acd35326382987) - pro test and config *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`79c1f7f`](https://github.com/pabllopf/Alis/commit/79c1f7f0e6ebbaa498a305625e532fc231476801) - pro check the best option to unzzip *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`632bf34`](https://github.com/pabllopf/Alis/commit/632bf34925e674a4b2ad8fcb389d3f9b84451f10) - pro fix test release mode plugins *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0cf6496`](https://github.com/pabllopf/Alis/commit/0cf64969e9457e2edc4f6181ded719e70b17ff91) - pro fix test of unit player *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4a5252c`](https://github.com/pabllopf/Alis/commit/4a5252cbcaa796d60b2b4e1674a57347d1fd0b47) - pro check unix player *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`008f049`](https://github.com/pabllopf/Alis/commit/008f04940dc3977e3fc98387bb960399547659f6) - pro set not parallel all tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d54cf9f`](https://github.com/pabllopf/Alis/commit/d54cf9f5b0dfa1f8ad5ec885f71ec13b0ba3a0b5) - pro fix wuth delay the test play *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3af7aab`](https://github.com/pabllopf/Alis/commit/3af7aab3ea83fda71d16addc0889078b822f2c98) - pro add check playing state *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :memo: Documentation Changes
+- [`edfc659`](https://github.com/pabllopf/Alis/commit/edfc659e371481653505d2fb4195b7d5c3a248af) - add docs to updater module *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :art: Code Style Changes
+- [`9c86137`](https://github.com/pabllopf/Alis/commit/9c86137b53b7a7f387aa9212100452c757712dcf) - refactor the dungeon module to reduce complex and include comments on methods *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4d46158`](https://github.com/pabllopf/Alis/commit/4d461583dbb3cbac2aefe16cb8f0aa9d20449aa0) - move the updater to main dir and delete github of names *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.4.0] - 2024-07-21
 ### :bug: Bug Fixes
 - [`971eeb6`](https://github.com/pabllopf/Alis/commit/971eeb6273a7b167d01100016e9bd9ce56b5bd79) - build the macos apps on .dmg *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -3153,3 +3189,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.3.8]: https://github.com/pabllopf/Alis/compare/v0.3.7...v0.3.8
 [v0.3.9]: https://github.com/pabllopf/Alis/compare/v0.3.8...v0.3.9
 [v0.4.0]: https://github.com/pabllopf/Alis/compare/v0.3.9...v0.4.0
+[v0.4.1]: https://github.com/pabllopf/Alis/compare/v0.4.0...v0.4.1
