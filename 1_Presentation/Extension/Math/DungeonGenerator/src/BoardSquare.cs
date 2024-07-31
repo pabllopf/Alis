@@ -7,7 +7,7 @@ namespace Alis.Extension.Math.DungeonGenerator
     /// <summary>
     /// The type cell box enum
     /// </summary>
-    public enum CellBox
+    public enum BoardSquare
     {
         /// <summary>The empty</summary>
         Empty,
