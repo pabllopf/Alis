@@ -48,117 +48,69 @@ namespace Alis.Extension.Math.DungeonGenerator
         /// <summary>The corridor height</summary>
         public const int CorridorHeight = 4;
         
-        /// <summary>The board</summary>
-        public CellBox[,] board = new CellBox[BoardWidth, BoardHeight];
-
-        /// <summary>The rooms</summary>
-        public List<Room> rooms = new List<Room>();
-
-        /// <summary>The corridors</summary>
-        public List<Corridor> corridors = new List<Corridor>();
-
-        /// <summary>The master to</summary>
-        [JsonPropertyName("MasterTo:")]
-        public GameObject masterTo = null;
-
-        /// <summary>The altar</summary>
-        [JsonPropertyName("Altar:")]
-        public GameObject altar = null;
-
-        /// <summary>The portal</summary>
-        [JsonPropertyName("Portal:")]
-        public GameObject portal = null;
-        
         /// <summary>Gets or sets the board.</summary>
         /// <value>The board.</value>
-        public CellBox[,] Board { get => board; set => board = value; }
+        public BoardSquare[,] Board { get; set; } = new BoardSquare[BoardWidth, BoardHeight];
 
         /// <summary>Gets or sets the rooms.</summary>
         /// <value>The rooms.</value>
-        public List<Room> Rooms { get => rooms; set => rooms = value; }
+        public List<Room> Rooms { get; set; } = new List<Room>();
 
         /// <summary>Gets or sets the corridors.</summary>
         /// <value>The corridors.</value>
-        public List<Corridor> Corridors { get => corridors; set => corridors = value; }
-
-        /// <summary>Gets or sets the altar.</summary>
-        /// <value>The altar.</value>
-        public GameObject Altar { get => altar; set => altar = value; }
-
-        /// <summary>Gets the random style.</summary>
-        /// <value>The random style.</value>
-        public Style Style { get; } = new Style();
-
-        /// <summary>Gets or sets the portal.</summary>
-        /// <value>The portal.</value>
-        public GameObject Portal { get => portal; set => portal = value; }
-        
-        /// <summary>Gets or sets the master to.</summary>
-        /// <value>The master to.</value>
-        public GameObject MasterTo { get => masterTo; set => masterTo = value; }
+        public List<Corridor> Corridors { get; set; } = new List<Corridor>();
         
         /// <summary>Starts this instance.</summary>
         public void Start()
         {
             SetUpRoomsAndCorridors();
-
-            ConfigInitialRoom();
             ConfigRoomsAndCorridors();
-
             CreateBoard();
-            
-            PrintDungeon(Style);
-            PrintBoss();
         }
 
         /// <summary>Sets up rooms and corridors.</summary>
         public void SetUpRoomsAndCorridors()
         {
-            masterTo = GameObject
-                .Create()
-                .Name("Dungeon")
-                .Build();
+            Rooms.AddRange(new Room[NumOfRooms]);
+            Corridors.AddRange(new Corridor[Rooms.Count - 1]);
 
-            rooms.AddRange(new Room[NumOfRooms]);
-            corridors.AddRange(new Corridor[rooms.Count - 1]);
+            Rooms[0] = Room.SetUpFirstRoom(BoardWidth / 2, BoardHeight / 2, FirstRoomWidth, FirstRoomHeight);
+            Corridors[0] = Corridor.SetUpFirstCorridor(CorridorWidth, CorridorHeight, Rooms[0]);
 
-            rooms[0] = Room.SetUpFirstRoom(BoardWidth / 2, BoardHeight / 2, FirstRoomWidth, FirstRoomHeight);
-            corridors[0] = Corridor.SetUpFirstCorridor(CorridorWidth, CorridorHeight, rooms[0]);
-
-            for (int index = 1; index < rooms.Count; index++)
+            for (int index = 1; index < Rooms.Count; index++)
             {
-                rooms[index] = Room.SetUp(RoomWidth, RoomHeight, corridors[index - 1]);
-                if (index < corridors.Count)
+                Rooms[index] = Room.SetUp(RoomWidth, RoomHeight, Corridors[index - 1]);
+                if (index < Corridors.Count)
                 {
-                    corridors[index] = Corridor.SetUp(CorridorWidth, CorridorHeight, rooms[index]);
+                    Corridors[index] = Corridor.SetUp(CorridorWidth, CorridorHeight, Rooms[index]);
                 }
             }
 
-            corridors[NumOfRooms - 2] = Corridor.SetUp(CorridorWidth, CorridorHeight, rooms[NumOfRooms - 2]);
-            rooms[NumOfRooms - 1] = Room.SetUp(BossRoomWidth, BossRoomHeight, corridors[NumOfRooms - 2]);
+            Corridors[NumOfRooms - 2] = Corridor.SetUp(CorridorWidth, CorridorHeight, Rooms[NumOfRooms - 2]);
+            Rooms[NumOfRooms - 1] = Room.SetUp(BossRoomWidth, BossRoomHeight, Corridors[NumOfRooms - 2]);
         }
 
         /// <summary>Creates the rooms and corridors.</summary>
         public void ConfigRoomsAndCorridors()
         {
-            rooms.ForEach(room =>
+            Rooms.ForEach(room =>
             {
                 for (int x = room.XPos; x < room.XPos + room.Width; x++)
                 {
                     for (int y = room.YPos; y < room.YPos + room.Height; y++)
                     {
-                        board[x, y] = CellBox.Floor;
+                        Board[x, y] = BoardSquare.Floor;
                     }
                 }
             });
 
-            corridors.ForEach(corridor =>
+            Corridors.ForEach(corridor =>
             {
                 for (int x = corridor.XPos; x < corridor.XPos + corridor.Width; x++)
                 {
                     for (int y = corridor.YPos; y < corridor.YPos + corridor.Height; y++)
                     {
-                        board[x, y] = CellBox.Floor;
+                        Board[x, y] = BoardSquare.Floor;
                     }
                 }
             });
@@ -171,181 +123,22 @@ namespace Alis.Extension.Math.DungeonGenerator
             {
                 for (int y = 0; y < BoardHeight; y++)
                 {
-                    board[x, y] = (board[x, y].Equals(CellBox.Floor) && board[x, y - 1].Equals(CellBox.Empty)) ? CellBox.WallDown : board[x, y];
-                    board[x, y] = (board[x, y].Equals(CellBox.Floor) && board[x - 1, y].Equals(CellBox.Empty)) ? CellBox.WallLeft : board[x, y];
-                    board[x, y] = (board[x, y].Equals(CellBox.Floor) && board[x + 1, y].Equals(CellBox.Empty)) ? CellBox.WallRight : board[x, y];
-                    board[x, y] = (board[x, y].Equals(CellBox.Floor) && board[x, y + 1].Equals(CellBox.Empty)) ? CellBox.WallTop : board[x, y];
+                    Board[x, y] = (Board[x, y].Equals(BoardSquare.Floor) && Board[x, y - 1].Equals(BoardSquare.Empty)) ? BoardSquare.WallDown : Board[x, y];
+                    Board[x, y] = (Board[x, y].Equals(BoardSquare.Floor) && Board[x - 1, y].Equals(BoardSquare.Empty)) ? BoardSquare.WallLeft : Board[x, y];
+                    Board[x, y] = (Board[x, y].Equals(BoardSquare.Floor) && Board[x + 1, y].Equals(BoardSquare.Empty)) ? BoardSquare.WallRight : Board[x, y];
+                    Board[x, y] = (Board[x, y].Equals(BoardSquare.Floor) && Board[x, y + 1].Equals(BoardSquare.Empty)) ? BoardSquare.WallTop : Board[x, y];
 
-                    board[x, y] = (!board[x, y].Equals(CellBox.Empty) && board[x - 1, y].Equals(CellBox.Empty) && board[x, y - 1].Equals(CellBox.Empty)) ? CellBox.CornerLeftDown : board[x, y];
-                    board[x, y] = (!board[x, y].Equals(CellBox.Empty) && board[x + 1, y].Equals(CellBox.Empty) && board[x, y - 1].Equals(CellBox.Empty)) ? CellBox.CornerRightDown : board[x, y];
-                    board[x, y] = (!board[x, y].Equals(CellBox.Empty) && board[x - 1, y].Equals(CellBox.Empty) && board[x, y + 1].Equals(CellBox.Empty)) ? CellBox.CornerLeftUp : board[x, y];
-                    board[x, y] = (!board[x, y].Equals(CellBox.Empty) && board[x + 1, y].Equals(CellBox.Empty) && board[x, y + 1].Equals(CellBox.Empty)) ? CellBox.CornerRightUp : board[x, y];
+                    Board[x, y] = (!Board[x, y].Equals(BoardSquare.Empty) && Board[x - 1, y].Equals(BoardSquare.Empty) && Board[x, y - 1].Equals(BoardSquare.Empty)) ? BoardSquare.CornerLeftDown : Board[x, y];
+                    Board[x, y] = (!Board[x, y].Equals(BoardSquare.Empty) && Board[x + 1, y].Equals(BoardSquare.Empty) && Board[x, y - 1].Equals(BoardSquare.Empty)) ? BoardSquare.CornerRightDown : Board[x, y];
+                    Board[x, y] = (!Board[x, y].Equals(BoardSquare.Empty) && Board[x - 1, y].Equals(BoardSquare.Empty) && Board[x, y + 1].Equals(BoardSquare.Empty)) ? BoardSquare.CornerLeftUp : Board[x, y];
+                    Board[x, y] = (!Board[x, y].Equals(BoardSquare.Empty) && Board[x + 1, y].Equals(BoardSquare.Empty) && Board[x, y + 1].Equals(BoardSquare.Empty)) ? BoardSquare.CornerRightUp : Board[x, y];
 
-                    board[x, y] = (board[x, y].Equals(CellBox.Floor) && board[x - 1, y - 1].Equals(CellBox.Empty)) ? CellBox.CornerInternalLeftDown : board[x, y];
-                    board[x, y] = (board[x, y].Equals(CellBox.Floor) && board[x + 1, y - 1].Equals(CellBox.Empty)) ? CellBox.CornerInternalRightDown : board[x, y];
-                    board[x, y] = (board[x, y].Equals(CellBox.Floor) && board[x - 1, y + 1].Equals(CellBox.Empty)) ? CellBox.CornerInternalLeftUp : board[x, y];
-                    board[x, y] = (board[x, y].Equals(CellBox.Floor) && board[x + 1, y + 1].Equals(CellBox.Empty)) ? CellBox.CornerInternalRightUp : board[x, y];
+                    Board[x, y] = (Board[x, y].Equals(BoardSquare.Floor) && Board[x - 1, y - 1].Equals(BoardSquare.Empty)) ? BoardSquare.CornerInternalLeftDown : Board[x, y];
+                    Board[x, y] = (Board[x, y].Equals(BoardSquare.Floor) && Board[x + 1, y - 1].Equals(BoardSquare.Empty)) ? BoardSquare.CornerInternalRightDown : Board[x, y];
+                    Board[x, y] = (Board[x, y].Equals(BoardSquare.Floor) && Board[x - 1, y + 1].Equals(BoardSquare.Empty)) ? BoardSquare.CornerInternalLeftUp : Board[x, y];
+                    Board[x, y] = (Board[x, y].Equals(BoardSquare.Floor) && Board[x + 1, y + 1].Equals(BoardSquare.Empty)) ? BoardSquare.CornerInternalRightUp : Board[x, y];
                 }
             }
-        }
-
-        /// <summary>Configurations the initial room.</summary>
-        public void ConfigInitialRoom()
-        {
-            Vector2 center = new Vector2((BoardWidth / 2) + (FirstRoomWidth / 2), (BoardHeight / 2) + (FirstRoomHeight / 2));
-
-            GameObject altarTop = GameObject.Create()
-                .Name("Altar Top")
-                .Transform(transform => transform
-                    .Position(center + new Vector2(1.5f, 1.5f))
-                    .Build())
-                .Build();
-            
-            GameObject altarDown = GameObject.Create()
-                .Name("Altar Down")
-                .Transform(transform => transform
-                    .Position(center + new Vector2(-1.5f, -1.5f))
-                    .Build())
-                .Build();
-            
-            GameObject altarLeft = GameObject.Create()
-                .Name("Altar Left")
-                .Transform(transform => transform
-                    .Position(center + new Vector2(-1.5f, 1.5f))
-                    .Build())
-                .Build();
-            
-            GameObject altarRight = GameObject.Create()
-                .Name("Altar Right")
-                .Transform(transform => transform
-                    .Position(center + new Vector2(1.5f, -1.5f))
-                    .Build())
-                .Build();
-        }
-
-        /// <summary>Prints the dungeon.</summary>
-        /// <param name="style">The style.</param>
-        public void PrintDungeon(Style style)
-        {
-            for (int x = 0; x < BoardWidth; x++)
-            {
-                for (int y = 0; y < BoardHeight; y++)
-                {
-                    if (board[x, y] != CellBox.Empty)
-                    {
-                        GameObject obj =  GameObject.Create()
-                            .Name(board[x, y].ToString())
-                            .Transform(transform => transform
-                                .Position(new Vector2(x, y))
-                                .Build())
-                            .Build();
-                    }
-                }
-            }
-
-            PrintDecoration(style);
-            PrintEnemys(style);
-        }
-
-        
-        /// <summary>Prints the decoration.</summary>
-        /// <param name="style">The style.</param>
-        public void PrintDecoration(Style style)
-        {
-            style.Decorations
-                .FindAll(deco => (deco.MinToSpawn != 0 && deco.MaxToSpawn != 0 && deco.TypeCellBoxToSpawn != CellBox.Empty))
-                .ForEach(deco =>
-                {
-                    int quantity = new Random().Next(deco.MinToSpawn, deco.MaxToSpawn);
-                    GameObject master = GameObject.Create()
-                        .Name(deco.Prefab.Name + " (" + quantity + ")")
-                        .Build();
-
-                    while (quantity > 0)
-                    {
-                        for (int x = 0; x < BoardWidth; x++)
-                        {
-                            for (int y = 0; y < BoardHeight; y++)
-                            {
-                                if (board[x, y] != CellBox.Empty)
-                                {
-                                    if (board[x, y] == deco.TypeCellBoxToSpawn && new Random().Next(0, 1000) == 1)
-                                    {
-                                        board[x, y] = CellBox.Empty;
-                                        quantity--;
-                                        
-                                        GameObject obj = GameObject.Create()
-                                            .Name(deco.Prefab.Name + " (" + quantity + ")")
-                                            .Transform(transform => transform
-                                                .Position(new Vector2(x, y))
-                                                .Build())
-                                            .Build();
-                                    }
-                                }
-                            }
-                        }
-                    }
-                });
-        }
-
-        /// <summary>
-        /// Prints the enemys using the specified style
-        /// </summary>
-        /// <param name="style">The style</param>
-        public void PrintEnemys(Style style) 
-        {
-            style.Enemys
-                .FindAll(deco => (deco.MinToSpawn != 0 && deco.MaxToSpawn != 0 && deco.TypeCellBoxToSpawn != CellBox.Empty))
-                .ForEach(deco =>
-                {
-                    int quantity = new Random().Next(deco.MinToSpawn, deco.MaxToSpawn);
-                    GameObject master = GameObject.Create()
-                        .Name(deco.Prefab.Name + " (" + quantity + ")")
-                        .Build();
-
-                    while (quantity > 0)
-                    {
-                        for (int x = 0; x < BoardWidth; x++)
-                        {
-                            for (int y = 0; y < BoardHeight; y++)
-                            {
-                                if (board[x, y] != CellBox.Empty)
-                                {
-                                    if (board[x, y] == deco.TypeCellBoxToSpawn && new Random().Next(0, 1000) == 1)
-                                    {
-                                        board[x, y] = CellBox.Empty;
-                                        quantity--;
-                                        
-                                        GameObject obj = GameObject.Create()
-                                            .Name(deco.Prefab.Name + " (" + quantity + ")")
-                                            .Transform(transform => transform
-                                                .Position(new Vector2(x, y))
-                                                .Build())
-                                            .Build();
-                                    }
-                                }
-                            }
-                        }
-                    }
-                });
-        }
-
-        /// <summary>
-        /// Prints the boss
-        /// </summary>
-        public void PrintBoss() 
-        {
-            Vector2 posToSpawn = new Vector2(rooms[NumOfRooms - 1].XPos + rooms[NumOfRooms - 1].Width/2, rooms[NumOfRooms - 1].YPos + rooms[NumOfRooms - 1].Height/2);
-            GameObject master = GameObject.Create()
-                .Name("Boss")
-                .Build();
-            
-            GameObject obj = GameObject.Create()
-                .Name("Boss")
-                .Transform(transform => transform
-                    .Position(posToSpawn)
-                    .Build())
-                .Build();
         }
     }
 }
