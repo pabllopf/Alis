@@ -47,7 +47,7 @@ namespace Alis.Extension.Math.DungeonGenerator.Sample
             dungeon.Start();
             
             // print the dungeon into the console
-            var map = dungeon.Board;
+            BoardSquare[,] map = dungeon.Board;
             for (int y = 0; y < map.GetLength(1); y++)
             {
                 for (int x = 0; x < map.GetLength(0); x++)

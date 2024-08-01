@@ -3,12 +3,7 @@
 // <copyright file="Dungeon.cs" company="Pabllopf">GNU General Public License v3.0</copyright>
 //------------------------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
-using Alis.Core.Aspect.Data.Json;
-using Alis.Core.Aspect.Math.Util;
-using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Ecs.Entity;
 
 namespace Alis.Extension.Math.DungeonGenerator
 {
@@ -16,31 +11,31 @@ namespace Alis.Extension.Math.DungeonGenerator
     public class Dungeon 
     {
         /// <summary>The board width</summary>
-        public const int BoardWidth = 100;
+        public const int BoardWidth = 150;
 
         /// <summary>The board height</summary>
-        public const int BoardHeight = 100;
+        public const int BoardHeight = 150;
 
         /// <summary>The number of rooms</summary>
-        public const int NumOfRooms = 5;
+        public const int NumOfRooms = 4;
         
         /// <summary>The first room width</summary>
-        public const int FirstRoomWidth = 10;
+        public const int FirstRoomWidth = 8;
 
         /// <summary>The first room height</summary>
-        public const int FirstRoomHeight = 10;
+        public const int FirstRoomHeight = 8;
 
         /// <summary>The room width</summary>
-        public const int RoomWidth = 8;
+        public const int RoomWidth = 5;
 
         /// <summary>The room height</summary>
-        public const int RoomHeight = 8;
+        public const int RoomHeight = 5;
 
         /// <summary>The boss room width</summary>
-        public const int BossRoomWidth = 10;
+        public const int BossRoomWidth = 7;
 
         /// <summary>The boss room height</summary>
-        public const int BossRoomHeight = 10;
+        public const int BossRoomHeight = 7;
         
         /// <summary>The corridor width</summary>
         public const int CorridorWidth = 4;
@@ -50,15 +45,15 @@ namespace Alis.Extension.Math.DungeonGenerator
         
         /// <summary>Gets or sets the board.</summary>
         /// <value>The board.</value>
-        public BoardSquare[,] Board { get; set; } = new BoardSquare[BoardWidth, BoardHeight];
+        public BoardSquare[,] Board { get; } = new BoardSquare[BoardWidth, BoardHeight];
 
         /// <summary>Gets or sets the rooms.</summary>
         /// <value>The rooms.</value>
-        public List<Room> Rooms { get; set; } = new List<Room>();
+        public List<Room> Rooms { get;  } = new List<Room>();
 
         /// <summary>Gets or sets the corridors.</summary>
         /// <value>The corridors.</value>
-        public List<Corridor> Corridors { get; set; } = new List<Corridor>();
+        public List<Corridor> Corridors { get;  } = new List<Corridor>();
         
         /// <summary>Starts this instance.</summary>
         public void Start()

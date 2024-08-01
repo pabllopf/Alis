@@ -9,7 +9,6 @@ using Alis.Core.Aspect.Math;
 
 namespace Alis.Extension.Math.DungeonGenerator
 {
-    
     /// <summary>
     /// The corridor class
     /// </summary>
@@ -55,7 +54,7 @@ namespace Alis.Extension.Math.DungeonGenerator
         /// <param name="height">The height</param>
         /// <param name="direction">The direction</param>
         [JsonConstructor]
-        private Corridor(int xPos, int yPos, int width, int height, Direction direction)
+        internal Corridor(int xPos, int yPos, int width, int height, Direction direction)
         {
             XPos = xPos;
             YPos = yPos;
@@ -73,7 +72,7 @@ namespace Alis.Extension.Math.DungeonGenerator
         /// <returns>The corridor</returns>
         public static Corridor SetUpFirstCorridor(int width, int height, Room room)
         {
-            Direction direction = (Direction)new Random().Next(0, 4);
+            Direction direction = (Direction)new Random().Next(1, 5);
 
             int xPos = 0;
             int yPos = 0;
@@ -125,7 +124,7 @@ namespace Alis.Extension.Math.DungeonGenerator
         /// <returns>The corridor</returns>
         public static Corridor SetUp(int width, int height, Room room)
         {
-            Direction direction = (Direction)new Random().Next(0, 4);
+            Direction direction = (Direction)new Random().Next(1, 5);
             Direction oppositeDirection = (Direction)(((int)room.Direction + 2) % 4);
 
             direction = (direction == oppositeDirection) ? (Direction)((int)direction++ % 4) : direction;

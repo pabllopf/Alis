@@ -50,7 +50,7 @@ namespace Alis.Extension.Math.DungeonGenerator
         /// <param name="yPos">The pos</param>
         /// <param name="width">The width</param>
         /// <param name="height">The height</param>
-        private Room(int xPos, int yPos, int width, int height)
+        public Room(int xPos, int yPos, int width, int height)
         {
             XPos = xPos;
             YPos = yPos;
@@ -67,7 +67,7 @@ namespace Alis.Extension.Math.DungeonGenerator
         /// <param name="height">The height</param>
         /// <param name="direction">The direction</param>
         [JsonConstructor]
-        private Room(int xPos, int yPos, int width, int height, Direction direction)
+        public Room(int xPos, int yPos, int width, int height, Direction direction)
         {
             XPos = xPos;
             YPos = yPos;
@@ -100,11 +100,11 @@ namespace Alis.Extension.Math.DungeonGenerator
         {
             Direction direction = corridor.Direction;
 
-            int xPos = 0;
-            int yPos = 0;
+            int xPos;
+            int yPos;
 
-            int xWidth = 0;
-            int yHeight = 0;
+            int xWidth;
+            int yHeight;
 
             switch (direction)
             {
@@ -142,6 +142,8 @@ namespace Alis.Extension.Math.DungeonGenerator
                     xWidth = height;
                     yHeight = width;
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
 
             return new Room(xPos, yPos, xWidth, yHeight, direction);
