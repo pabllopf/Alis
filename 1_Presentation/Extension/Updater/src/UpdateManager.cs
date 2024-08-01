@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
@@ -399,7 +400,7 @@ namespace Alis.Extension.Updater
         /// <param name="command">The command</param>
         private void ExecuteShellCommand(string command)
         {
-            using (var process = new System.Diagnostics.Process())
+            using (Process process = new System.Diagnostics.Process())
             {
                 process.StartInfo.FileName = "/bin/bash";
                 process.StartInfo.Arguments = $"-c \"{command}\"";

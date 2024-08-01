@@ -7,6 +7,11 @@ namespace Alis.Core.Aspect.Math
     /// <summary>Indicate the direction.</summary>
     public enum Direction
     {
+        /// <summary>
+        /// The none direction
+        /// </summary>
+        None, 
+        
         /// <summary>The north</summary>
         North,
 
