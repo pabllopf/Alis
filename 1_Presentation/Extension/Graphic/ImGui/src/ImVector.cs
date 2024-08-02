@@ -35,22 +35,22 @@ namespace Alis.Extension.Graphic.ImGui
     /// <summary>
     ///     The im vector
     /// </summary>
-    public readonly struct ImVector
+    public struct ImVector
     {
         /// <summary>
         ///     The size
         /// </summary>
-        public readonly int Size;
+        public int Size;
 
         /// <summary>
         ///     The capacity
         /// </summary>
-        public readonly int Capacity;
+        public int Capacity;
 
         /// <summary>
         ///     The data
         /// </summary>
-        public readonly IntPtr Data;
+        public IntPtr Data;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImVector" /> class

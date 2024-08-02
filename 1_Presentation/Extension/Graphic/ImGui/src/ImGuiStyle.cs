@@ -32,7 +32,7 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Extension.Graphic.ImGui
 {
     /// <summary>
-    ///     The im gui style
+    ///     The imgui style
     /// </summary>
     public struct ImGuiStyle
     {
