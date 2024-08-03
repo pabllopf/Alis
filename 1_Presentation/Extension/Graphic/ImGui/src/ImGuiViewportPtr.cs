@@ -50,6 +50,16 @@ namespace Alis.Extension.Graphic.ImGui
         public ImGuiViewportPtr(IntPtr nativePtr) => NativePtr = nativePtr;
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="ImGuiViewportPtr"/> class
+        /// </summary>
+        /// <param name="viewport">The viewport</param>
+        public ImGuiViewportPtr(ImGuiViewport viewport)
+        {
+            GCHandle handle = GCHandle.Alloc(viewport, GCHandleType.Pinned);
+            NativePtr = handle.AddrOfPinnedObject();
+        }
+
+        /// <summary>
         /// </summary>
         /// <param name="nativePtr"></param>
         /// <returns></returns>

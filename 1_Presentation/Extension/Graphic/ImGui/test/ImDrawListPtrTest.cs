@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Math.Vector;
 using Xunit;
 
 namespace Alis.Extension.Graphic.ImGui.Test
@@ -232,6 +233,555 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontConfig config = new ImFontConfig();
             ImFontConfigPtr ptr = new ImFontConfigPtr(config);
             Assert.Equal(config.EllipsisChar, ptr.EllipsisChar);
+        }
+
+        /// <summary>
+        /// Tests that add image with user texture id and min max adds image
+        /// </summary>
+        [Fact]
+        public void AddImage_WithUserTextureIdAndMinMax_AddsImage()
+        {
+            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
+            IntPtr userTextureId = new IntPtr(1);
+            Vector2 pMin = new Vector2(0, 0);
+            Vector2 pMax = new Vector2(1, 1);
+
+            Assert.Throws<DllNotFoundException>(() => drawList.AddImage(userTextureId, pMin, pMax));
+
+            // Assert logic here
+        }
+
+        /// <summary>
+        /// Tests that add image with user texture id min max and uv min adds image
+        /// </summary>
+        [Fact]
+        public void AddImage_WithUserTextureIdMinMaxAndUvMin_AddsImage()
+        {
+            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
+            IntPtr userTextureId = new IntPtr(1);
+            Vector2 pMin = new Vector2(0, 0);
+            Vector2 pMax = new Vector2(1, 1);
+            Vector2 uvMin = new Vector2(0, 0);
+
+            Assert.Throws<DllNotFoundException>(() => drawList.AddImage(userTextureId, pMin, pMax, uvMin));
+
+            // Assert logic here
+        }
+
+        /// <summary>
+        /// Tests that add image with user texture id min max uv min and uv max adds image
+        /// </summary>
+        [Fact]
+        public void AddImage_WithUserTextureIdMinMaxUvMinAndUvMax_AddsImage()
+        {
+            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
+            IntPtr userTextureId = new IntPtr(1);
+            Vector2 pMin = new Vector2(0, 0);
+            Vector2 pMax = new Vector2(1, 1);
+            Vector2 uvMin = new Vector2(0, 0);
+            Vector2 uvMax = new Vector2(1, 1);
+
+            Assert.Throws<DllNotFoundException>(() =>drawList.AddImage(userTextureId, pMin, pMax, uvMin, uvMax));
+
+            // Assert logic here
+        }
+
+        /// <summary>
+        /// Tests that add image with user texture id min max uv min uv max and col adds image
+        /// </summary>
+        [Fact]
+        public void AddImage_WithUserTextureIdMinMaxUvMinUvMaxAndCol_AddsImage()
+        {
+            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
+            IntPtr userTextureId = new IntPtr(1);
+            Vector2 pMin = new Vector2(0, 0);
+            Vector2 pMax = new Vector2(1, 1);
+            Vector2 uvMin = new Vector2(0, 0);
+            Vector2 uvMax = new Vector2(1, 1);
+            uint col = 4294967295;
+
+            Assert.Throws<DllNotFoundException>(() => drawList.AddImage(userTextureId, pMin, pMax, uvMin, uvMax, col));
+
+            // Assert logic here
+        }
+
+        /// <summary>
+        /// Tests that add image quad with user texture id and points adds image quad
+        /// </summary>
+        [Fact]
+        public void AddImageQuad_WithUserTextureIdAndPoints_AddsImageQuad()
+        {
+            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
+            IntPtr userTextureId = new IntPtr(1);
+            Vector2 p1 = new Vector2(0, 0);
+            Vector2 p2 = new Vector2(1, 0);
+            Vector2 p3 = new Vector2(1, 1);
+            Vector2 p4 = new Vector2(0, 1);
+
+            Assert.Throws<DllNotFoundException>(() => drawList.AddImageQuad(userTextureId, p1, p2, p3, p4));
+
+            // Assert logic here
+        }
+
+        /// <summary>
+        /// Tests that add image quad with user texture id points and uv 1 adds image quad
+        /// </summary>
+        [Fact]
+        public void AddImageQuad_WithUserTextureIdPointsAndUv1_AddsImageQuad()
+        {
+            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
+            IntPtr userTextureId = new IntPtr(1);
+            Vector2 p1 = new Vector2(0, 0);
+            Vector2 p2 = new Vector2(1, 0);
+            Vector2 p3 = new Vector2(1, 1);
+            Vector2 p4 = new Vector2(0, 1);
+            Vector2 uv1 = new Vector2(0, 0);
+
+            Assert.Throws<DllNotFoundException>(() => drawList.AddImageQuad(userTextureId, p1, p2, p3, p4, uv1));
+
+            // Assert logic here
+        }
+
+        /// <summary>
+        /// Tests that add image quad with user texture id points uv 1 and uv 2 adds image quad
+        /// </summary>
+        [Fact]
+        public void AddImageQuad_WithUserTextureIdPointsUv1AndUv2_AddsImageQuad()
+        {
+            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
+            IntPtr userTextureId = new IntPtr(1);
+            Vector2 p1 = new Vector2(0, 0);
+            Vector2 p2 = new Vector2(1, 0);
+            Vector2 p3 = new Vector2(1, 1);
+            Vector2 p4 = new Vector2(0, 1);
+            Vector2 uv1 = new Vector2(0, 0);
+            Vector2 uv2 = new Vector2(1, 0);
+
+            Assert.Throws<DllNotFoundException>(() => drawList.AddImageQuad(userTextureId, p1, p2, p3, p4, uv1, uv2));
+
+            // Assert logic here
+        }
+
+        /// <summary>
+        /// Tests that add image quad with user texture id points uv 1 uv 2 and uv 3 adds image quad
+        /// </summary>
+        [Fact]
+        public void AddImageQuad_WithUserTextureIdPointsUv1Uv2AndUv3_AddsImageQuad()
+        {
+            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
+            IntPtr userTextureId = new IntPtr(1);
+            Vector2 p1 = new Vector2(0, 0);
+            Vector2 p2 = new Vector2(1, 0);
+            Vector2 p3 = new Vector2(1, 1);
+            Vector2 p4 = new Vector2(0, 1);
+            Vector2 uv1 = new Vector2(0, 0);
+            Vector2 uv2 = new Vector2(1, 0);
+            Vector2 uv3 = new Vector2(1, 1);
+
+            Assert.Throws<DllNotFoundException>(() =>drawList.AddImageQuad(userTextureId, p1, p2, p3, p4, uv1, uv2, uv3));
+
+            // Assert logic here
+        }
+
+        /// <summary>
+        /// Tests that add image quad with user texture id points uv 1 uv 2 uv 3 and uv 4 adds image quad
+        /// </summary>
+        [Fact]
+        public void AddImageQuad_WithUserTextureIdPointsUv1Uv2Uv3AndUv4_AddsImageQuad()
+        {
+            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
+            IntPtr userTextureId = new IntPtr(1);
+            Vector2 p1 = new Vector2(0, 0);
+            Vector2 p2 = new Vector2(1, 0);
+            Vector2 p3 = new Vector2(1, 1);
+            Vector2 p4 = new Vector2(0, 1);
+            Vector2 uv1 = new Vector2(0, 0);
+            Vector2 uv2 = new Vector2(1, 0);
+            Vector2 uv3 = new Vector2(1, 1);
+            Vector2 uv4 = new Vector2(0, 1);
+
+            Assert.Throws<DllNotFoundException>(() =>drawList.AddImageQuad(userTextureId, p1, p2, p3, p4, uv1, uv2, uv3, uv4));
+
+            // Assert logic here
+        }
+
+        /// <summary>
+        /// Tests that add image quad with user texture id points uv 1 uv 2 uv 3 uv 4 and col adds image quad
+        /// </summary>
+        [Fact]
+        public void AddImageQuad_WithUserTextureIdPointsUv1Uv2Uv3Uv4AndCol_AddsImageQuad()
+        {
+            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
+            IntPtr userTextureId = new IntPtr(1);
+            Vector2 p1 = new Vector2(0, 0);
+            Vector2 p2 = new Vector2(1, 0);
+            Vector2 p3 = new Vector2(1, 1);
+            Vector2 p4 = new Vector2(0, 1);
+            Vector2 uv1 = new Vector2(0, 0);
+            Vector2 uv2 = new Vector2(1, 0);
+            Vector2 uv3 = new Vector2(1, 1);
+            Vector2 uv4 = new Vector2(0, 1);
+            uint col = 4294967295;
+
+            Assert.Throws<DllNotFoundException>(() =>drawList.AddImageQuad(userTextureId, p1, p2, p3, p4, uv1, uv2, uv3, uv4, col));
+
+            // Assert logic here
+        }
+
+        /// <summary>
+        /// Tests that add image rounded with user texture id min max uv min uv max col and rounding adds image rounded
+        /// </summary>
+        [Fact]
+        public void AddImageRounded_WithUserTextureIdMinMaxUvMinUvMaxColAndRounding_AddsImageRounded()
+        {
+            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
+            IntPtr userTextureId = new IntPtr(1);
+            Vector2 pMin = new Vector2(0, 0);
+            Vector2 pMax = new Vector2(1, 1);
+            Vector2 uvMin = new Vector2(0, 0);
+            Vector2 uvMax = new Vector2(1, 1);
+            uint col = 4294967295;
+            float rounding = 0.5f;
+
+            Assert.Throws<DllNotFoundException>(() => drawList.AddImageRounded(userTextureId, pMin, pMax, uvMin, uvMax, col, rounding));
+
+            // Assert logic here
+        }
+
+        /// <summary>
+        /// Tests that add image rounded with user texture id min max uv min uv max col rounding and flags adds image rounded
+        /// </summary>
+        [Fact]
+        public void AddImageRounded_WithUserTextureIdMinMaxUvMinUvMaxColRoundingAndFlags_AddsImageRounded()
+        {
+            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
+            IntPtr userTextureId = new IntPtr(1);
+            Vector2 pMin = new Vector2(0, 0);
+            Vector2 pMax = new Vector2(1, 1);
+            Vector2 uvMin = new Vector2(0, 0);
+            Vector2 uvMax = new Vector2(1, 1);
+            uint col = 4294967295;
+            float rounding = 0.5f;
+            ImDrawFlags flags = 0;
+
+            Assert.Throws<DllNotFoundException>(() => drawList.AddImageRounded(userTextureId, pMin, pMax, uvMin, uvMax, col, rounding, flags));
+
+            // Assert logic here
+        }
+
+        /// <summary>
+        /// Tests that add line with p 1 p 2 and col adds line
+        /// </summary>
+        [Fact]
+        public void AddLine_WithP1P2AndCol_AddsLine()
+        {
+            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
+            Vector2 p1 = new Vector2(0, 0);
+            Vector2 p2 = new Vector2(1, 1);
+            uint col = 4294967295;
+
+            Assert.Throws<DllNotFoundException>(() =>drawList.AddLine(p1, p2, col));
+
+            // Assert logic here
+        }
+
+        /// <summary>
+        /// Tests that add line with p 1 p 2 col and thickness adds line
+        /// </summary>
+        [Fact]
+        public void AddLine_WithP1P2ColAndThickness_AddsLine()
+        {
+            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
+            Vector2 p1 = new Vector2(0, 0);
+            Vector2 p2 = new Vector2(1, 1);
+            uint col = 4294967295;
+            float thickness = 2.0f;
+
+            Assert.Throws<DllNotFoundException>(() =>drawList.AddLine(p1, p2, col, thickness));
+
+            // Assert logic here
+        }
+
+        /// <summary>
+        /// Tests that add ngon with center radius col and num segments adds ngon
+        /// </summary>
+        [Fact]
+        public void AddNgon_WithCenterRadiusColAndNumSegments_AddsNgon()
+        {
+            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
+            Vector2 center = new Vector2(0, 0);
+            float radius = 1.0f;
+            uint col = 4294967295;
+            int numSegments = 6;
+
+            Assert.Throws<DllNotFoundException>(() => drawList.AddNgon(center, radius, col, numSegments));
+
+            // Assert logic here
+        }
+
+        /// <summary>
+        /// Tests that add ngon with center radius col num segments and thickness adds ngon
+        /// </summary>
+        [Fact]
+        public void AddNgon_WithCenterRadiusColNumSegmentsAndThickness_AddsNgon()
+        {
+            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
+            Vector2 center = new Vector2(0, 0);
+            float radius = 1.0f;
+            uint col = 4294967295;
+            int numSegments = 6;
+            float thickness = 2.0f;
+
+            Assert.Throws<DllNotFoundException>(() =>drawList.AddNgon(center, radius, col, numSegments, thickness));
+
+            // Assert logic here
+        }
+
+        /// <summary>
+        /// Tests that add ngon filled with center radius col and num segments adds ngon filled
+        /// </summary>
+        [Fact]
+        public void AddNgonFilled_WithCenterRadiusColAndNumSegments_AddsNgonFilled()
+        {
+            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
+            Vector2 center = new Vector2(0, 0);
+            float radius = 1.0f;
+            uint col = 4294967295;
+            int numSegments = 6;
+
+            Assert.Throws<DllNotFoundException>(() =>drawList.AddNgonFilled(center, radius, col, numSegments));
+
+            // Assert logic here
+        }
+
+        /// <summary>
+        /// Tests that add polyline with points num points col flags and thickness adds polyline
+        /// </summary>
+        [Fact]
+        public void AddPolyline_WithPointsNumPointsColFlagsAndThickness_AddsPolyline()
+        {
+            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
+            Vector2[] points = new Vector2[3] {new Vector2(0, 0), new Vector2(1, 1), new Vector2(2, 2)};
+            int numPoints = 3;
+            uint col = 4294967295;
+            ImDrawFlags flags = 0;
+            float thickness = 2.0f;
+
+            Assert.Throws<DllNotFoundException>(() => drawList.AddPolyline(ref points[0], numPoints, col, flags, thickness));
+
+            // Assert logic here
+        }
+
+        /// <summary>
+        /// Tests that add quad with p 1 p 2 p 3 p 4 and col adds quad
+        /// </summary>
+        [Fact]
+        public void AddQuad_WithP1P2P3P4AndCol_AddsQuad()
+        {
+            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
+            Vector2 p1 = new Vector2(0, 0);
+            Vector2 p2 = new Vector2(1, 0);
+            Vector2 p3 = new Vector2(1, 1);
+            Vector2 p4 = new Vector2(0, 1);
+            uint col = 4294967295;
+
+            Assert.Throws<DllNotFoundException>(() =>drawList.AddQuad(p1, p2, p3, p4, col));
+
+            // Assert logic here
+        }
+
+        /// <summary>
+        /// Tests that add quad with p 1 p 2 p 3 p 4 col and thickness adds quad
+        /// </summary>
+        [Fact]
+        public void AddQuad_WithP1P2P3P4ColAndThickness_AddsQuad()
+        {
+            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
+            Vector2 p1 = new Vector2(0, 0);
+            Vector2 p2 = new Vector2(1, 0);
+            Vector2 p3 = new Vector2(1, 1);
+            Vector2 p4 = new Vector2(0, 1);
+            uint col = 4294967295;
+            float thickness = 2.0f;
+
+            Assert.Throws<DllNotFoundException>(() =>drawList.AddQuad(p1, p2, p3, p4, col, thickness));
+
+            // Assert logic here
+        }
+
+        /// <summary>
+        /// Tests that add quad filled with p 1 p 2 p 3 p 4 and col adds quad filled
+        /// </summary>
+        [Fact]
+        public void AddQuadFilled_WithP1P2P3P4AndCol_AddsQuadFilled()
+        {
+            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
+            Vector2 p1 = new Vector2(0, 0);
+            Vector2 p2 = new Vector2(1, 0);
+            Vector2 p3 = new Vector2(1, 1);
+            Vector2 p4 = new Vector2(0, 1);
+            uint col = 4294967295;
+
+            Assert.Throws<DllNotFoundException>(() =>drawList.AddQuadFilled(p1, p2, p3, p4, col));
+
+            // Assert logic here
+        }
+
+        /// <summary>
+        /// Tests that add rect with p min p max and col adds rect
+        /// </summary>
+        [Fact]
+        public void AddRect_WithPMinPMaxAndCol_AddsRect()
+        {
+            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
+            Vector2 pMin = new Vector2(0, 0);
+            Vector2 pMax = new Vector2(1, 1);
+            uint col = 4294967295;
+
+            Assert.Throws<DllNotFoundException>(() =>drawList.AddRect(pMin, pMax, col));
+
+            // Assert logic here
+        }
+
+        /// <summary>
+        /// Tests that add rect with p min p max col and rounding adds rect
+        /// </summary>
+        [Fact]
+        public void AddRect_WithPMinPMaxColAndRounding_AddsRect()
+        {
+            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
+            Vector2 pMin = new Vector2(0, 0);
+            Vector2 pMax = new Vector2(1, 1);
+            uint col = 4294967295;
+            float rounding = 0.5f;
+
+            Assert.Throws<DllNotFoundException>(() =>drawList.AddRect(pMin, pMax, col, rounding));
+
+            // Assert logic here
+        }
+
+        /// <summary>
+        /// Tests that add rect with p min p max col rounding and flags adds rect
+        /// </summary>
+        [Fact]
+        public void AddRect_WithPMinPMaxColRoundingAndFlags_AddsRect()
+        {
+            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
+            Vector2 pMin = new Vector2(0, 0);
+            Vector2 pMax = new Vector2(1, 1);
+            uint col = 4294967295;
+            float rounding = 0.5f;
+            ImDrawFlags flags = 0;
+
+            Assert.Throws<DllNotFoundException>(() =>drawList.AddRect(pMin, pMax, col, rounding, flags));
+
+            // Assert logic here
+        }
+
+        /// <summary>
+        /// Tests that add rect with p min p max col rounding flags and thickness adds rect
+        /// </summary>
+        [Fact]
+        public void AddRect_WithPMinPMaxColRoundingFlagsAndThickness_AddsRect()
+        {
+            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
+            Vector2 pMin = new Vector2(0, 0);
+            Vector2 pMax = new Vector2(1, 1);
+            uint col = 4294967295;
+            float rounding = 0.5f;
+            ImDrawFlags flags = 0;
+            float thickness = 2.0f;
+
+            Assert.Throws<DllNotFoundException>(() =>drawList.AddRect(pMin, pMax, col, rounding, flags, thickness));
+
+            // Assert logic here
+        }
+
+        /// <summary>
+        /// Tests that add rect filled with p min p max and col adds rect filled
+        /// </summary>
+        [Fact]
+        public void AddRectFilled_WithPMinPMaxAndCol_AddsRectFilled()
+        {
+            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
+            Vector2 pMin = new Vector2(0, 0);
+            Vector2 pMax = new Vector2(1, 1);
+            uint col = 4294967295;
+
+            Assert.Throws<DllNotFoundException>(() =>drawList.AddRectFilled(pMin, pMax, col));
+
+            // Assert logic here
+        }
+
+        /// <summary>
+        /// Tests that add rect filled with p min p max col and rounding adds rect filled
+        /// </summary>
+        [Fact]
+        public void AddRectFilled_WithPMinPMaxColAndRounding_AddsRectFilled()
+        {
+            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
+            Vector2 pMin = new Vector2(0, 0);
+            Vector2 pMax = new Vector2(1, 1);
+            uint col = 4294967295;
+            float rounding = 0.5f;
+
+            Assert.Throws<DllNotFoundException>(() => drawList.AddRectFilled(pMin, pMax, col, rounding));
+
+            // Assert logic here
+        }
+
+        /// <summary>
+        /// Tests that add rect filled with p min p max col rounding and flags adds rect filled
+        /// </summary>
+        [Fact]
+        public void AddRectFilled_WithPMinPMaxColRoundingAndFlags_AddsRectFilled()
+        {
+            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
+            Vector2 pMin = new Vector2(0, 0);
+            Vector2 pMax = new Vector2(1, 1);
+            uint col = 4294967295;
+            float rounding = 0.5f;
+            ImDrawFlags flags = 0;
+
+            Assert.Throws<DllNotFoundException>(() =>drawList.AddRectFilled(pMin, pMax, col, rounding, flags));
+
+            // Assert logic here
+        }
+
+        /// <summary>
+        /// Tests that add rect filled multi color with p min p max col upr left col upr right col bot right and col bot left adds rect filled multi color
+        /// </summary>
+        [Fact]
+        public void AddRectFilledMultiColor_WithPMinPMaxColUprLeftColUprRightColBotRightAndColBotLeft_AddsRectFilledMultiColor()
+        {
+            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
+            Vector2 pMin = new Vector2(0, 0);
+            Vector2 pMax = new Vector2(1, 1);
+            uint colUprLeft = 4294967295;
+            uint colUprRight = 4294967295;
+            uint colBotRight = 4294967295;
+            uint colBotLeft = 4294967295;
+
+            Assert.Throws<DllNotFoundException>(() =>drawList.AddRectFilledMultiColor(pMin, pMax, colUprLeft, colUprRight, colBotRight, colBotLeft));
+
+            // Assert logic here
+        }
+
+        /// <summary>
+        /// Tests that add triangle with p 1 p 2 p 3 and col adds triangle
+        /// </summary>
+        [Fact]
+        public void AddTriangle_WithP1P2P3AndCol_AddsTriangle()
+        {
+            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
+            Vector2 p1 = new Vector2(0, 0);
+            Vector2 p2 = new Vector2(1, 0);
+            Vector2 p3 = new Vector2(0.5f, 1);
+            uint col = 4294967295;
+
+            Assert.Throws<DllNotFoundException>(() => drawList.AddTriangle(p1, p2, p3, col));
+
+            // Assert logic here
         }
     }
 }
