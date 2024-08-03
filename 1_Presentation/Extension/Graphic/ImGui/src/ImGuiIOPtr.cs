@@ -51,6 +51,12 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="nativePtr">The native ptr</param>
         public ImGuiIoPtr(IntPtr nativePtr) => NativePtr = nativePtr;
 
+        public ImGuiIoPtr(ImGuiIo imGuiIo)
+        {
+            NativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImGuiIo>());
+            Marshal.StructureToPtr(imGuiIo, NativePtr, false);
+        }
+
         /// <summary>
         /// </summary>
         /// <param name="wrappedPtr"></param>
@@ -337,7 +343,12 @@ namespace Alis.Extension.Graphic.ImGui
         public IntPtr BackendPlatformUserData
         {
             get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).BackendPlatformUserData;
-            set => Marshal.WriteIntPtr(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("BackendPlatformUserData"), value);
+            set
+            {
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.BackendPlatformUserData = value;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
         }
 
         /// <summary>
@@ -346,7 +357,12 @@ namespace Alis.Extension.Graphic.ImGui
         public IntPtr BackendRendererUserData
         {
             get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).BackendRendererUserData;
-            set => Marshal.WriteIntPtr(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("BackendRendererUserData"), value);
+            set
+            {
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.BackendRendererUserData = value;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
         }
 
         /// <summary>
@@ -355,7 +371,12 @@ namespace Alis.Extension.Graphic.ImGui
         public IntPtr BackendLanguageUserData
         {
             get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).BackendLanguageUserData;
-            set => Marshal.WriteIntPtr(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("BackendLanguageUserData"), value);
+            set
+            {
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.BackendLanguageUserData = value;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
         }
 
         /// <summary>
@@ -364,7 +385,12 @@ namespace Alis.Extension.Graphic.ImGui
         public IntPtr GetClipboardTextFn
         {
             get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).GetClipboardTextFn;
-            set => Marshal.WriteIntPtr(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("GetClipboardTextFn"), value);
+            set
+            {
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.GetClipboardTextFn = value;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
         }
 
         /// <summary>
@@ -373,7 +399,12 @@ namespace Alis.Extension.Graphic.ImGui
         public IntPtr SetClipboardTextFn
         {
             get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).SetClipboardTextFn;
-            set =>  Marshal.WriteIntPtr(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("SetClipboardTextFn"), value);
+            set
+            {
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.SetClipboardTextFn = value;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
         }
 
         /// <summary>
@@ -382,7 +413,12 @@ namespace Alis.Extension.Graphic.ImGui
         public IntPtr ClipboardUserData
         {
             get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).ClipboardUserData;
-            set => Marshal.WriteIntPtr(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("ClipboardUserData"), value);
+            set
+            {
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.ClipboardUserData = value;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
         }
 
         /// <summary>
@@ -391,7 +427,12 @@ namespace Alis.Extension.Graphic.ImGui
         public IntPtr SetPlatformImeDataFn
         {
             get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).SetPlatformImeDataFn;
-            set => Marshal.WriteIntPtr(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("SetPlatformImeDataFn"), value);
+            set
+            {
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.SetPlatformImeDataFn = value;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
         }
 
         /// <summary>
@@ -400,7 +441,12 @@ namespace Alis.Extension.Graphic.ImGui
         public IntPtr UnusedPadding
         {
             get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).UnusedPadding;
-            set => Marshal.WriteIntPtr(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("UnusedPadding"), value);
+            set
+            {
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.UnusedPadding = value;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
         }
 
         /// <summary>
@@ -409,7 +455,12 @@ namespace Alis.Extension.Graphic.ImGui
         public bool WantCaptureMouse
         {
             get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).WantCaptureMouse != 0;
-            set => Marshal.WriteInt32(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("WantCaptureMouse"), value ? 1 : 0);
+            set
+            {
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.WantCaptureMouse = value ? (byte) 1 : (byte) 0;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
         }
 
         /// <summary>
@@ -418,7 +469,12 @@ namespace Alis.Extension.Graphic.ImGui
         public bool WantCaptureKeyboard
         {
             get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).WantCaptureKeyboard != 0;
-            set => Marshal.WriteInt32(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("WantCaptureKeyboard"), value ? 1 : 0);
+            set
+            {
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.WantCaptureKeyboard = value ? (byte) 1 : (byte) 0;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
         }
 
         /// <summary>
@@ -427,7 +483,12 @@ namespace Alis.Extension.Graphic.ImGui
         public bool WantTextInput
         {
             get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).WantTextInput != 0;
-            set => Marshal.WriteInt32(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("WantTextInput"), value ? 1 : 0);
+            set
+            {
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.WantTextInput = value ? (byte) 1 : (byte) 0;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
         }
 
         /// <summary>
@@ -436,7 +497,12 @@ namespace Alis.Extension.Graphic.ImGui
         public bool WantSetMousePos
         {
             get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).WantSetMousePos != 0;
-            set => Marshal.WriteInt32(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("WantSetMousePos"), value ? 1 : 0);
+            set
+            {
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.WantSetMousePos = value ? (byte) 1 : (byte) 0;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
         }
 
         /// <summary>
@@ -445,7 +511,12 @@ namespace Alis.Extension.Graphic.ImGui
         public bool WantSaveIniSettings
         {
             get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).WantSaveIniSettings != 0;
-            set => Marshal.WriteInt32(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("WantSaveIniSettings"), value ? 1 : 0);
+            set
+            {
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.WantSaveIniSettings = value ? (byte) 1 : (byte) 0;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
     }
 
         /// <summary>
@@ -454,7 +525,12 @@ namespace Alis.Extension.Graphic.ImGui
         public bool NavActive
         {
             get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).NavActive != 0;
-            set => Marshal.WriteInt32(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("NavActive"), value ? 1 : 0);
+            set
+            {
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.NavActive = value ? (byte) 1 : (byte) 0;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
         }
 
         /// <summary>
@@ -463,7 +539,12 @@ namespace Alis.Extension.Graphic.ImGui
         public bool NavVisible
         {
             get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).NavVisible != 0;
-            set => Marshal.WriteInt32(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("NavVisible"), value ? 1 : 0);
+            set
+            {
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.NavVisible = value ? (byte) 1 : (byte) 0;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
         }
 
         /// <summary>
@@ -472,6 +553,12 @@ namespace Alis.Extension.Graphic.ImGui
         public float Framerate
         {
             get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).Framerate;
+            set
+            {
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.Framerate = value;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
         }
 
         /// <summary>
@@ -480,7 +567,12 @@ namespace Alis.Extension.Graphic.ImGui
         public int MetricsRenderVertices
         {
             get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).MetricsRenderVertices;
-            set => Marshal.WriteInt32(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("MetricsRenderVertices"), value);
+            set
+            {
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.MetricsRenderVertices = value;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
         }
 
         /// <summary>
@@ -489,7 +581,12 @@ namespace Alis.Extension.Graphic.ImGui
         public int MetricsRenderIndices
         {
             get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).MetricsRenderIndices;
-            set => Marshal.WriteInt32(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("MetricsRenderIndices"), value);
+            set
+            {
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.MetricsRenderIndices = value;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
         }
 
         /// <summary>
@@ -498,7 +595,12 @@ namespace Alis.Extension.Graphic.ImGui
         public int MetricsRenderWindows
         {
             get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).MetricsRenderWindows;
-            set => Marshal.WriteInt32(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("MetricsRenderWindows"), value);
+            set
+            {
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.MetricsRenderWindows = value;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
         }
 
         /// <summary>
@@ -507,7 +609,12 @@ namespace Alis.Extension.Graphic.ImGui
         public int MetricsActiveWindows
         {
             get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).MetricsActiveWindows;
-            set => Marshal.WriteInt32(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("MetricsActiveWindows"), value);
+            set
+            {
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.MetricsActiveWindows = value;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
         }
 
         /// <summary>
@@ -516,7 +623,12 @@ namespace Alis.Extension.Graphic.ImGui
         public int MetricsActiveAllocations
         {
             get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).MetricsActiveAllocations;
-            set => Marshal.WriteInt32(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("MetricsActiveAllocations"), value);
+            set
+            {
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.MetricsActiveAllocations = value;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
         }
 
         /// <summary>
@@ -525,6 +637,12 @@ namespace Alis.Extension.Graphic.ImGui
         public Vector2 MouseDelta
         {
             get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).MouseDelta;
+            set
+            {
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.MouseDelta = new Vector2(value.X, value.Y);
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
         }
 
         /// <summary>
@@ -552,15 +670,9 @@ namespace Alis.Extension.Graphic.ImGui
             {
                 // Retrieve the existing key map array from the ImGuiIo structure
                 int[] keyMap = Marshal.PtrToStructure<ImGuiIo>(NativePtr).KeyMap;
-
-                // Ensure the value list and keyMap array have the same length
-                if (value.Count != keyMap.Length)
-                {
-                    throw new ArgumentException("The provided list does not match the size of the key map.");
-                }
-
+                
                 // Update the key map array with values from the provided list
-                for (int i = 0; i < keyMap.Length; i++)
+                for (int i = 0; i < value.Count; i++)
                 {
                     keyMap[i] = value[i];
                 }
@@ -615,10 +727,11 @@ namespace Alis.Extension.Graphic.ImGui
         {
             get
             {
-                // Assuming the size of the nav inputs is known to be 21
-                List<float> inputs = new List<float>(21);
-
                 float[] navInputs = Marshal.PtrToStructure<ImGuiIo>(NativePtr).NavInputs;
+                
+                // Assuming the size of the nav inputs is known to be 21
+                List<float> inputs = new List<float>(navInputs.Length);
+                
                 foreach (float f in navInputs)
                 {
                     inputs.Add(f);
@@ -628,18 +741,17 @@ namespace Alis.Extension.Graphic.ImGui
             }
             set
             {
-                int offsetToMouseDown = Marshal.OffsetOf<ImGuiIo>("NavInputs").ToInt32();
-                IntPtr mouseDownPtr = IntPtr.Add(NativePtr, offsetToMouseDown);
-
-                // Assuming NavInputs is the first field in ImGuiIo, adjust the offset accordingly if it's not.
                 float[] navInputs = Marshal.PtrToStructure<ImGuiIo>(NativePtr).NavInputs;
-                for (int i = 0; i < navInputs.Length; i++)
+               
+                float[] navInputs2 = new float[21];
+                for (int i = 0; i < value.Count; i++)
                 {
-                    navInputs[i] = value[i];
+                    navInputs2[i] = value[i];
                 }
 
-                // Copy the array directly to unmanaged memory.
-                Marshal.Copy(navInputs, 0, mouseDownPtr, navInputs.Length);
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.NavInputs = navInputs2;
+                Marshal.StructureToPtr(io, NativePtr, false);
             }
         }
 
@@ -730,7 +842,12 @@ namespace Alis.Extension.Graphic.ImGui
         public uint MouseHoveredViewport
         {
             get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).MouseHoveredViewport;
-            set => Marshal.WriteInt32(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("MouseHoveredViewport"), (int) value);
+            set
+            {
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.MouseHoveredViewport = value;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
         }
 
         /// <summary>
@@ -795,7 +912,12 @@ namespace Alis.Extension.Graphic.ImGui
         public ImGuiKey KeyMods
         {
             get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).KeyMods;
-            set => Marshal.WriteInt32(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("KeyMods"), (int) value);
+            set
+            {
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.KeyMods = value;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
         }
 
         /// <summary>
@@ -818,18 +940,6 @@ namespace Alis.Extension.Graphic.ImGui
 
                 return data;
             }
-            set
-            {
-                // Assuming KeysData is the first field in ImGuiIo, adjust the offset accordingly if it's not.
-                int offsetToKeysData = Marshal.OffsetOf<ImGuiIo>("KeysData").ToInt32();
-                IntPtr keysDataPtr = IntPtr.Add(NativePtr, offsetToKeysData);
-
-                // Assuming the size of the keys data is known to be 512
-                for (int i = 0; i < 512; i++)
-                {
-                    Marshal.StructureToPtr(value[i], IntPtr.Add(keysDataPtr, i * Marshal.SizeOf<ImGuiKeyData>()), false);
-                }
-            }
         }
 
         /// <summary>
@@ -838,13 +948,27 @@ namespace Alis.Extension.Graphic.ImGui
         public bool WantCaptureMouseUnlessPopupClose
         {
             get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).WantCaptureMouseUnlessPopupClose != 0;
-            set => Marshal.WriteInt32(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("WantCaptureMouseUnlessPopupClose"), value ? 1 : 0);
+            set
+            {
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.WantCaptureMouseUnlessPopupClose = value ? (byte) 1 : (byte) 0;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
         }
 
         /// <summary>
         ///     Gets the value of the mouse pos prev
         /// </summary>
-        public Vector2 MousePosPrev => Marshal.PtrToStructure<ImGuiIo>(NativePtr).MousePosPrev;
+        public Vector2 MousePosPrev
+        {
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).MousePosPrev;
+            set
+            {
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.MousePosPrev = new Vector2(value.X, value.Y);
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
+        }
 
         /// <summary>
         ///     Gets the value of the mouse clicked pos
@@ -865,18 +989,6 @@ namespace Alis.Extension.Graphic.ImGui
                 }
 
                 return pos;
-            }
-            set
-            {
-                // Assuming MouseClickedPos is the first field in ImGuiIo, adjust the offset accordingly if it's not.
-                int offsetToMouseClickedPos = Marshal.OffsetOf<ImGuiIo>("MouseClickedPos").ToInt32();
-                IntPtr mouseClickedPosPtr = IntPtr.Add(NativePtr, offsetToMouseClickedPos);
-
-                // Assuming the size of the mouse clicked pos is known to be 5
-                for (int i = 0; i < 5; i++)
-                {
-                    Marshal.StructureToPtr(value[i], IntPtr.Add(mouseClickedPosPtr, i * Marshal.SizeOf<Vector2>()), false);
-                }
             }
         }
 
@@ -1240,18 +1352,6 @@ namespace Alis.Extension.Graphic.ImGui
 
                 return distanceAbs;
             }
-            set
-            {
-                // Assuming MouseDragMaxDistanceAbs is the first field in ImGuiIo, adjust the offset accordingly if it's not.
-                int offsetToMouseDragMaxDistanceAbs = Marshal.OffsetOf<ImGuiIo>("MouseDragMaxDistanceAbs").ToInt32();
-                IntPtr mouseDragMaxDistanceAbsPtr = IntPtr.Add(NativePtr, offsetToMouseDragMaxDistanceAbs);
-
-                // Assuming the size of the mouse drag max distance abs is known to be 5
-                for (int i = 0; i < 5; i++)
-                {
-                    Marshal.StructureToPtr(value[i], IntPtr.Add(mouseDragMaxDistanceAbsPtr, i * Marshal.SizeOf<Vector2>()), false);
-                }
-            }
         }
 
         /// <summary>
@@ -1291,37 +1391,102 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the pen pressure
         /// </summary>
-        public float PenPressure => Marshal.PtrToStructure<ImGuiIo>(NativePtr).PenPressure;
+        public float PenPressure
+        {
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).PenPressure;
+            set
+            {
+                // Write x and y values to the PenPressure field
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.PenPressure = value;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
+        }
 
         /// <summary>
         ///     Gets the value of the app focus lost
         /// </summary>
-        public bool AppFocusLost => Marshal.PtrToStructure<ImGuiIo>(NativePtr).AppFocusLost != 0;
+        public bool AppFocusLost
+        {
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).AppFocusLost != 0;
+            set
+            {
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.AppFocusLost = value ? (byte) 1 : (byte) 0;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
+        }
 
         /// <summary>
         ///     Gets the value of the app accepting events
         /// </summary>
-        public bool AppAcceptingEvents => Marshal.PtrToStructure<ImGuiIo>(NativePtr).AppAcceptingEvents != 0;
+        public bool AppAcceptingEvents
+        {
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).AppAcceptingEvents != 0;
+            set
+            {
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.AppAcceptingEvents = value ? (byte) 1 : (byte) 0;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
+        }
 
         /// <summary>
         ///     Gets the value of the backend using legacy key arrays
         /// </summary>
-        public sbyte BackendUsingLegacyKeyArrays => Marshal.PtrToStructure<ImGuiIo>(NativePtr).BackendUsingLegacyKeyArrays;
+        public sbyte BackendUsingLegacyKeyArrays
+        {
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).BackendUsingLegacyKeyArrays;
+            set
+            {
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.BackendUsingLegacyKeyArrays = value;
+                Marshal.StructureToPtr(io, NativePtr, false);
+                
+            }
+        }
 
         /// <summary>
         ///     Gets the value of the backend using legacy nav input array
         /// </summary>
-        public bool BackendUsingLegacyNavInputArray => Marshal.PtrToStructure<ImGuiIo>(NativePtr).BackendUsingLegacyNavInputArray != 0;
+        public bool BackendUsingLegacyNavInputArray
+        {
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).BackendUsingLegacyNavInputArray != 0;
+            set
+            {
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.BackendUsingLegacyNavInputArray = value ? (byte) 1 : (byte) 0;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
+        }
 
         /// <summary>
         ///     Gets the value of the input queue surrogate
         /// </summary>
-        public ushort InputQueueSurrogate => Marshal.PtrToStructure<ImGuiIo>(NativePtr).InputQueueSurrogate;
+        public ushort InputQueueSurrogate
+        {
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).InputQueueSurrogate;
+            set
+            {
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.InputQueueSurrogate = value;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
+        }
 
         /// <summary>
         ///     Gets the value of the input queue characters
         /// </summary>
-        public ImVectorG<ushort> InputQueueCharacters => new ImVectorG<ushort>(Marshal.PtrToStructure<ImGuiIo>(NativePtr).InputQueueCharacters);
+        public ImVectorG<ushort> InputQueueCharacters
+        {
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).InputQueueCharacters;
+            set
+            {
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.InputQueueCharacters = value;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
+        }
 
         /// <summary>
         ///     Adds the focus event using the specified focused
