@@ -27,6 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.ImGui.Extras.Node;
+using Xunit;
+
 namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
 {
     /// <summary>
@@ -34,6 +37,48 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
     /// </summary>
     public class IoTest
     {
-        
+        /// <summary>
+        /// Tests that emulate three button mouse should be initialized
+        /// </summary>
+        [Fact]
+        public void EmulateThreeButtonMouse_ShouldBeInitialized()
+        {
+            Io io = new Io();
+            Assert.Equal(default(EmulateThreeButtonMouse), io.EmulateThreeButtonMouse);
+        }
+
+        /// <summary>
+        /// Tests that link detach with modifier click should be initialized
+        /// </summary>
+        [Fact]
+        public void LinkDetachWithModifierClick_ShouldBeInitialized()
+        {
+            Io io = new Io();
+            Assert.Equal(default(LinkDetachWithModifierClick), io.LinkDetachWithModifierClick);
+        }
+
+        /// <summary>
+        /// Tests that emulate three button mouse should set and get correctly
+        /// </summary>
+        [Fact]
+        public void EmulateThreeButtonMouse_Should_SetAndGetCorrectly()
+        {
+            Io io = new Io();
+            EmulateThreeButtonMouse value = new EmulateThreeButtonMouse();
+            io.EmulateThreeButtonMouse = value;
+            Assert.Equal(value, io.EmulateThreeButtonMouse);
+        }
+
+        /// <summary>
+        /// Tests that link detach with modifier click should set and get correctly
+        /// </summary>
+        [Fact]
+        public void LinkDetachWithModifierClick_Should_SetAndGetCorrectly()
+        {
+            Io io = new Io();
+            LinkDetachWithModifierClick value = new LinkDetachWithModifierClick();
+            io.LinkDetachWithModifierClick = value;
+            Assert.Equal(value, io.LinkDetachWithModifierClick);
+        }
     }
 }
