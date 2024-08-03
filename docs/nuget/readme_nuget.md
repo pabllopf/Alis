@@ -21,7 +21,7 @@
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/pabllopf)
 
 
-> Develop the video games of your dreams.
+> Develop the video games of your dreams 💯 free!! on Windows, MacOS, Linux, Android(soon), IOS(soon).
 
 ## General Public License v3.0
 
