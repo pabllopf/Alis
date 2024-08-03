@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ImGuiIoPtrTest.cs
+//  File:IoTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,24 +27,13 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using Alis.Core.Aspect.Math.Vector;
-using Xunit;
-
-namespace Alis.Extension.Graphic.ImGui.Test
+namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
 {
     /// <summary>
-    /// The im gui io ptr test class
+    /// The io test class
     /// </summary>
-    public class ImGuiIoPtrTest
+    public class IoTest
     {
-        /// <summary>
-        /// Tests that backend language user data get returns expected value
-        /// </summary>
-        [Fact]
-        public void BackendLanguageUserData_Get_ReturnsExpectedValue()
-        {
-        }
+        
     }
 }

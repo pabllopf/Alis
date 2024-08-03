@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ImGuiIoPtrTest.cs
+//  File:ImPlotRectTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,24 +27,58 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using Alis.Core.Aspect.Math.Vector;
+using Alis.Extension.Graphic.ImGui.Extras.Plot;
 using Xunit;
 
-namespace Alis.Extension.Graphic.ImGui.Test
+namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
 {
     /// <summary>
-    /// The im gui io ptr test class
+    /// The im plot rect test class
     /// </summary>
-    public class ImGuiIoPtrTest
+    public class ImPlotRectTest
     {
         /// <summary>
-        /// Tests that backend language user data get returns expected value
+        /// Tests that x should be initialized
         /// </summary>
         [Fact]
-        public void BackendLanguageUserData_Get_ReturnsExpectedValue()
+        public void X_ShouldBeInitialized()
         {
+            ImPlotRect rect = new ImPlotRect();
+            Assert.Equal(default(ImPlotRange), rect.X);
+        }
+
+        /// <summary>
+        /// Tests that y should be initialized
+        /// </summary>
+        [Fact]
+        public void Y_ShouldBeInitialized()
+        {
+            ImPlotRect rect = new ImPlotRect();
+            Assert.Equal(default(ImPlotRange), rect.Y);
+        }
+
+        /// <summary>
+        /// Tests that x should set and get correctly
+        /// </summary>
+        [Fact]
+        public void X_Should_SetAndGetCorrectly()
+        {
+            ImPlotRect rect = new ImPlotRect();
+            ImPlotRange range = new ImPlotRange();
+            rect.X = range;
+            Assert.Equal(range, rect.X);
+        }
+
+        /// <summary>
+        /// Tests that y should set and get correctly
+        /// </summary>
+        [Fact]
+        public void Y_Should_SetAndGetCorrectly()
+        {
+            ImPlotRect rect = new ImPlotRect();
+            ImPlotRange range = new ImPlotRange();
+            rect.Y = range;
+            Assert.Equal(range, rect.Y);
         }
     }
 }
