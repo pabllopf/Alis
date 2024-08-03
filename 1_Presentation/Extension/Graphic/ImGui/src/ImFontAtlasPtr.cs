@@ -51,6 +51,16 @@ namespace Alis.Extension.Graphic.ImGui
         public ImFontAtlasPtr(IntPtr nativePtr) => NativePtr = nativePtr;
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="ImFontAtlasPtr"/> class
+        /// </summary>
+        /// <param name="nativePtr">The native ptr</param>
+        public ImFontAtlasPtr(ImFontAtlas nativePtr)
+        {
+            NativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFontAtlas>());
+            Marshal.StructureToPtr(nativePtr, NativePtr, false);
+        }
+
+        /// <summary>
         /// </summary>
         /// <param name="wrappedPtr"></param>
         /// <returns></returns>
