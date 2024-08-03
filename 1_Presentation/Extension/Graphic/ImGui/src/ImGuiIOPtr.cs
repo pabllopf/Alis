@@ -51,6 +51,10 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="nativePtr">The native ptr</param>
         public ImGuiIoPtr(IntPtr nativePtr) => NativePtr = nativePtr;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ImGuiIoPtr"/> class
+        /// </summary>
+        /// <param name="imGuiIo">The im gui io</param>
         public ImGuiIoPtr(ImGuiIo imGuiIo)
         {
             NativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImGuiIo>());
