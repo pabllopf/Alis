@@ -361,12 +361,20 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the get clipboard text fn
         /// </summary>
-        public IntPtr GetClipboardTextFn => Marshal.PtrToStructure<ImGuiIo>(NativePtr).GetClipboardTextFn;
+        public IntPtr GetClipboardTextFn
+        {
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).GetClipboardTextFn;
+            set => Marshal.WriteIntPtr(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("GetClipboardTextFn"), value);
+        }
 
         /// <summary>
         ///     Gets the value of the set clipboard text fn
         /// </summary>
-        public IntPtr SetClipboardTextFn => Marshal.PtrToStructure<ImGuiIo>(NativePtr).SetClipboardTextFn;
+        public IntPtr SetClipboardTextFn
+        {
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).SetClipboardTextFn;
+            set =>  Marshal.WriteIntPtr(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("SetClipboardTextFn"), value);
+        }
 
         /// <summary>
         ///     Gets or sets the value of the clipboard user data
@@ -380,7 +388,11 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the set platform ime data fn
         /// </summary>
-        public IntPtr SetPlatformImeDataFn => Marshal.PtrToStructure<ImGuiIo>(NativePtr).SetPlatformImeDataFn;
+        public IntPtr SetPlatformImeDataFn
+        {
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).SetPlatformImeDataFn;
+            set => Marshal.WriteIntPtr(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("SetPlatformImeDataFn"), value);
+        }
 
         /// <summary>
         ///     Gets or sets the value of the  unusedpadding
@@ -394,72 +406,126 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the want capture mouse
         /// </summary>
-        public bool WantCaptureMouse => Marshal.PtrToStructure<ImGuiIo>(NativePtr).WantCaptureMouse != 0;
+        public bool WantCaptureMouse
+        {
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).WantCaptureMouse != 0;
+            set => Marshal.WriteInt32(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("WantCaptureMouse"), value ? 1 : 0);
+        }
 
         /// <summary>
         ///     Gets the value of the want capture keyboard
         /// </summary>
-        public bool WantCaptureKeyboard => Marshal.PtrToStructure<ImGuiIo>(NativePtr).WantCaptureKeyboard != 0;
+        public bool WantCaptureKeyboard
+        {
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).WantCaptureKeyboard != 0;
+            set => Marshal.WriteInt32(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("WantCaptureKeyboard"), value ? 1 : 0);
+        }
 
         /// <summary>
         ///     Gets the value of the want text input
         /// </summary>
-        public bool WantTextInput => Marshal.PtrToStructure<ImGuiIo>(NativePtr).WantTextInput != 0;
+        public bool WantTextInput
+        {
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).WantTextInput != 0;
+            set => Marshal.WriteInt32(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("WantTextInput"), value ? 1 : 0);
+        }
 
         /// <summary>
         ///     Gets the value of the want set mouse pos
         /// </summary>
-        public bool WantSetMousePos => Marshal.PtrToStructure<ImGuiIo>(NativePtr).WantSetMousePos != 0;
+        public bool WantSetMousePos
+        {
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).WantSetMousePos != 0;
+            set => Marshal.WriteInt32(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("WantSetMousePos"), value ? 1 : 0);
+        }
 
         /// <summary>
         ///     Gets the value of the want save ini settings
         /// </summary>
-        public bool WantSaveIniSettings => Marshal.PtrToStructure<ImGuiIo>(NativePtr).WantSaveIniSettings != 0;
+        public bool WantSaveIniSettings
+        {
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).WantSaveIniSettings != 0;
+            set => Marshal.WriteInt32(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("WantSaveIniSettings"), value ? 1 : 0);
+    }
 
         /// <summary>
         ///     Gets the value of the nav active
         /// </summary>
-        public bool NavActive => Marshal.PtrToStructure<ImGuiIo>(NativePtr).NavActive != 0;
+        public bool NavActive
+        {
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).NavActive != 0;
+            set => Marshal.WriteInt32(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("NavActive"), value ? 1 : 0);
+        }
 
         /// <summary>
         ///     Gets the value of the nav visible
         /// </summary>
-        public bool NavVisible => Marshal.PtrToStructure<ImGuiIo>(NativePtr).NavVisible != 0;
+        public bool NavVisible
+        {
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).NavVisible != 0;
+            set => Marshal.WriteInt32(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("NavVisible"), value ? 1 : 0);
+        }
 
         /// <summary>
         ///     Gets the value of the framerate
         /// </summary>
-        public float Framerate => Marshal.PtrToStructure<ImGuiIo>(NativePtr).Framerate;
+        public float Framerate
+        {
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).Framerate;
+        }
 
         /// <summary>
         ///     Gets the value of the metrics render vertices
         /// </summary>
-        public int MetricsRenderVertices => Marshal.PtrToStructure<ImGuiIo>(NativePtr).MetricsRenderVertices;
+        public int MetricsRenderVertices
+        {
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).MetricsRenderVertices;
+            set => Marshal.WriteInt32(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("MetricsRenderVertices"), value);
+        }
 
         /// <summary>
         ///     Gets the value of the metrics render indices
         /// </summary>
-        public int MetricsRenderIndices => Marshal.PtrToStructure<ImGuiIo>(NativePtr).MetricsRenderIndices;
+        public int MetricsRenderIndices
+        {
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).MetricsRenderIndices;
+            set => Marshal.WriteInt32(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("MetricsRenderIndices"), value);
+        }
 
         /// <summary>
         ///     Gets the value of the metrics render windows
         /// </summary>
-        public int MetricsRenderWindows => Marshal.PtrToStructure<ImGuiIo>(NativePtr).MetricsRenderWindows;
+        public int MetricsRenderWindows
+        {
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).MetricsRenderWindows;
+            set => Marshal.WriteInt32(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("MetricsRenderWindows"), value);
+        }
 
         /// <summary>
         ///     Gets the value of the metrics active windows
         /// </summary>
-        public int MetricsActiveWindows => Marshal.PtrToStructure<ImGuiIo>(NativePtr).MetricsActiveWindows;
+        public int MetricsActiveWindows
+        {
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).MetricsActiveWindows;
+            set => Marshal.WriteInt32(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("MetricsActiveWindows"), value);
+        }
 
         /// <summary>
         ///     Gets the value of the metrics active allocations
         /// </summary>
-        public int MetricsActiveAllocations => Marshal.PtrToStructure<ImGuiIo>(NativePtr).MetricsActiveAllocations;
+        public int MetricsActiveAllocations
+        {
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).MetricsActiveAllocations;
+            set => Marshal.WriteInt32(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("MetricsActiveAllocations"), value);
+        }
 
         /// <summary>
         ///     Gets the value of the mouse delta
         /// </summary>
-        public Vector2 MouseDelta => Marshal.PtrToStructure<ImGuiIo>(NativePtr).MouseDelta;
+        public Vector2 MouseDelta
+        {
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).MouseDelta;
+        }
 
         /// <summary>
         ///     Gets or sets the value of the key map
@@ -661,7 +727,11 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the mouse hovered viewport
         /// </summary>
-        public uint MouseHoveredViewport => Marshal.PtrToStructure<ImGuiIo>(NativePtr).MouseHoveredViewport;
+        public uint MouseHoveredViewport
+        {
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).MouseHoveredViewport;
+            set => Marshal.WriteInt32(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("MouseHoveredViewport"), (int) value);
+        }
 
         /// <summary>
         ///     Gets the value of the key ctrl
@@ -722,7 +792,11 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the key mods
         /// </summary>
-        public ImGuiKey KeyMods => Marshal.PtrToStructure<ImGuiIo>(NativePtr).KeyMods;
+        public ImGuiKey KeyMods
+        {
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).KeyMods;
+            set => Marshal.WriteInt32(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("KeyMods"), (int) value);
+        }
 
         /// <summary>
         ///     Gets the value of the keys data
@@ -761,7 +835,11 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the want capture mouse unless popup close
         /// </summary>
-        public bool WantCaptureMouseUnlessPopupClose => Marshal.PtrToStructure<ImGuiIo>(NativePtr).WantCaptureMouseUnlessPopupClose != 0;
+        public bool WantCaptureMouseUnlessPopupClose
+        {
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).WantCaptureMouseUnlessPopupClose != 0;
+            set => Marshal.WriteInt32(NativePtr, (int) Marshal.OffsetOf<ImGuiIo>("WantCaptureMouseUnlessPopupClose"), value ? 1 : 0);
+        }
 
         /// <summary>
         ///     Gets the value of the mouse pos prev
