@@ -3832,6 +3832,6 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The input queue characters
         /// </summary>
-        public ImVector InputQueueCharacters { get; set; }
+        public ImVectorG<ushort> InputQueueCharacters { get; set; }
     }
 }
