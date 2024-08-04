@@ -61,7 +61,7 @@ namespace Alis.Core.Network.Test
             CancellationTokenSource cts = new CancellationTokenSource();
             _webSocketServerFactory = new WebSocketServerFactory();
             StartWebServer(cts.Token);
-            Uri uri = new Uri("ws://localhost:27416");
+            Uri uri = new Uri("ws://localhost:27417");
 
             WebSocketClientFactory factory = new WebSocketClientFactory();
 
@@ -79,7 +79,7 @@ namespace Alis.Core.Network.Test
         {
             try
             {
-                int port = 27416;
+                int port = 27417;
                 IList<string> supportedSubProtocols = new[] {"chatV1", "chatV2", "chatV3"};
                 using WebServer server = new WebServer(_webSocketServerFactory, supportedSubProtocols);
                 Logger.Log($"Listening on port {port}");
@@ -101,7 +101,7 @@ namespace Alis.Core.Network.Test
             CancellationTokenSource cts = new CancellationTokenSource();
             _webSocketServerFactory = new WebSocketServerFactory();
             StartWebServer(cts.Token);
-            Uri uri = new Uri("ws://localhost:27416");
+            Uri uri = new Uri("ws://localhost:27417");
 
             WebSocketClientFactory factory = new WebSocketClientFactory(() => new MemoryStream());
 
