@@ -391,6 +391,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             // Add assertions to verify the behavior
         }
 
+        
         /// <summary>
         /// Tests that IsAnyAttributeActive returns whether any attribute is active with specified attribute id
         /// </summary>
