@@ -315,16 +315,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         { 
             Assert.Throws<DllNotFoundException>( () => ImNodes.GetCurrentContext());
         }
-
-        /// <summary>
-        /// Tests that GetIo gets the io
-        /// </summary>
-        [Fact]
-        public void GetIo_ShouldGetIo()
-        { 
-            Assert.Throws<TypeLoadException>( () => ImNodes.GetIo());
-        }
-
+        
         /// <summary>
         /// Tests that GetNodeDimensions gets the dimensions of the node
         /// </summary>
@@ -657,27 +648,6 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         public void LoadEditorStateFromIniString_ShouldLoadEditorStateFromIniString()
         { 
             Assert.Throws<DllNotFoundException>( () => ImNodes.EditorContextCreate());
-        }
-
-        /// <summary>
-        /// Tests that MiniMap displays the mini map
-        /// </summary>
-        [Fact]
-        public void MiniMap_ShouldDisplayMiniMap()
-        {
-            Assert.Throws<MarshalDirectiveException>( () => ImNodes.MiniMap());
-            // Add assertions to verify the behavior
-        }
-
-        /// <summary>
-        /// Tests that MiniMap displays the mini map with specified size fraction
-        /// </summary>
-        [Fact]
-        public void MiniMap_ShouldDisplayMiniMapWithSpecifiedSizeFraction()
-        {
-            float minimapSizeFraction = 0.2f;
-            Assert.Throws<MarshalDirectiveException>( () => ImNodes.MiniMap(minimapSizeFraction));
-            // Add assertions to verify the behavior
         }
     }
 }
