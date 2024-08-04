@@ -60,7 +60,7 @@ namespace Alis.Core.Network.Test
         {
             CancellationTokenSource cts = new CancellationTokenSource();
             _webSocketServerFactory = new WebSocketServerFactory();
-            StartWebServer(cts.Token);
+            StartWebServer(cts.Token, 8081);
             Uri uri = new Uri("ws://localhost:8081");
 
             WebSocketClientFactory factory = new WebSocketClientFactory();
@@ -75,11 +75,11 @@ namespace Alis.Core.Network.Test
         ///     Starts the web server using the specified cts token
         /// </summary>
         /// <param name="ctsToken">The cts token</param>
-        private async void StartWebServer(CancellationToken ctsToken)
+        /// <param name="port"></param>
+        private async void StartWebServer(CancellationToken ctsToken, int port)
         {
             try
             {
-                int port = 8081;
                 IList<string> supportedSubProtocols = new[] {"chatV1", "chatV2", "chatV3"};
                 using WebServer server = new WebServer(_webSocketServerFactory, supportedSubProtocols);
                 Logger.Log($"Listening on port {port}");
@@ -100,7 +100,7 @@ namespace Alis.Core.Network.Test
         {
             CancellationTokenSource cts = new CancellationTokenSource();
             _webSocketServerFactory = new WebSocketServerFactory();
-            StartWebServer(cts.Token);
+            StartWebServer(cts.Token, 27416);
             Uri uri = new Uri("ws://localhost:8081");
 
             WebSocketClientFactory factory = new WebSocketClientFactory(() => new MemoryStream());
