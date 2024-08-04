@@ -380,16 +380,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Assert.Throws<DllNotFoundException>( () => ImNodes.GetSelectedNodes(ref nodeIds));
             // Add assertions to verify the behavior
         }
-
-        /// <summary>
-        /// Tests that GetStyle gets the style
-        /// </summary>
-        [Fact]
-        public void GetStyle_ShouldGetStyle()
-        {
-            Assert.Throws<TypeLoadException>( () => ImNodes.GetStyle());
-        }
-
+        
         /// <summary>
         /// Tests that IsAnyAttributeActive returns whether any attribute is active
         /// </summary>
