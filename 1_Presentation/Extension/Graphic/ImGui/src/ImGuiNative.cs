@@ -524,14 +524,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="text">The text</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDebugTextEncoding")]
         public static extern void igDebugTextEncoding(byte[] text);
-
-        /// <summary>
-        ///     Igs the destroy context using the specified ctx
-        /// </summary>
-        /// <param name="ctx">The ctx</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDestroyContext")]
-        public static extern void igDestroyContext(IntPtr ctx);
-
+        
         /// <summary>
         ///     Igs the destroy platform windows
         /// </summary>
