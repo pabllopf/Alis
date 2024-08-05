@@ -109,24 +109,6 @@ namespace Alis.Extension.Graphic.ImGui.Native
         }
 
         /// <summary>
-        ///     Destroys the context
-        /// </summary>
-        public static void DestroyContext()
-        {
-            IntPtr ctx = IntPtr.Zero;
-            ImGuiNative.igDestroyContext(ctx);
-        }
-
-        /// <summary>
-        ///     Destroys the context using the specified ctx
-        /// </summary>
-        /// <param name="ctx">The ctx</param>
-        public static void DestroyContext(IntPtr ctx)
-        {
-            ImGuiNative.igDestroyContext(ctx);
-        }
-
-        /// <summary>
         ///     Destroys the platform windows
         /// </summary>
         public static void DestroyPlatformWindows()
