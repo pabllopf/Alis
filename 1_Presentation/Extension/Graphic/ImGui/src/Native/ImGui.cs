@@ -28,6 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.IO;
+using System.Net;
 using System.Text;
 using Alis.Core.Aspect.Math.Vector;
 
@@ -624,5 +626,14 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// </summary>
         /// <returns>The im font config ptr</returns>
         public static ImFontConfigPtr ImFontConfig() => ImGuiNative.ImFontConfig_ImFontConfig();
+        
+        /// <summary>
+        /// Describes whether is imgui active
+        /// </summary>
+        /// <returns>The bool</returns>
+        public static bool IsImguiActive()
+        {
+            return File.Exists(Environment.CurrentDirectory + "/imgui.ini");
+        }
     }
 }

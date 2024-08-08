@@ -526,12 +526,6 @@ namespace Alis.Extension.Graphic.ImGui
         public static extern void igDebugTextEncoding(byte[] text);
         
         /// <summary>
-        ///     Igs the destroy platform windows
-        /// </summary>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDestroyPlatformWindows")]
-        public static extern void igDestroyPlatformWindows();
-
-        /// <summary>
         ///     Igs the dock space using the specified id
         /// </summary>
         /// <param name="id">The id</param>
@@ -3208,14 +3202,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igVSliderScalar")]
         public static extern byte igVSliderScalar(byte[] label, Vector2 size, ImGuiDataType dataType, IntPtr pData, IntPtr pMin, IntPtr pMax, byte[] format, ImGuiSliderFlags flags);
-
-        /// <summary>
-        ///     Ims the color destroy using the specified self
-        /// </summary>
-        /// <param name="self">The self</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImColor_destroy")]
-        public static extern void ImColor_destroy(ref ImColor self);
-
+        
         /// <summary>
         ///     Ims the color hsv using the specified p out
         /// </summary>
@@ -3282,14 +3269,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="a">The </param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImColor_SetHSV")]
         public static extern void ImColor_SetHSV(ref ImColor self, float h, float s, float v, float a);
-
-        /// <summary>
-        ///     Ims the draw cmd destroy using the specified self
-        /// </summary>
-        /// <param name="self">The self</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawCmd_destroy")]
-        public static extern void ImDrawCmd_destroy(ref ImDrawCmd self);
-
+        
         /// <summary>
         ///     Ims the draw cmd get tex id using the specified self
         /// </summary>
@@ -3318,14 +3298,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawData_DeIndexAllBuffers")]
         public static extern void ImDrawData_DeIndexAllBuffers(ref ImDrawData self);
-
-        /// <summary>
-        ///     Ims the draw data destroy using the specified self
-        /// </summary>
-        /// <param name="self">The self</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawData_destroy")]
-        public static extern void ImDrawData_destroy(ref ImDrawData self);
-
+        
         /// <summary>
         ///     Ims the draw data im draw data
         /// </summary>
@@ -3732,14 +3705,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The im draw list</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_CloneOutput")]
         public static extern IntPtr ImDrawList_CloneOutput(IntPtr self);
-
-        /// <summary>
-        ///     Ims the draw list destroy using the specified self
-        /// </summary>
-        /// <param name="self">The self</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_destroy")]
-        public static extern void ImDrawList_destroy(IntPtr self);
-
+        
         /// <summary>
         ///     Ims the draw list get clip rect max using the specified p out
         /// </summary>
@@ -3996,14 +3962,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawListSplitter_ClearFreeMemory")]
         public static extern void ImDrawListSplitter_ClearFreeMemory(IntPtr self);
-
-        /// <summary>
-        ///     Ims the draw list splitter destroy using the specified self
-        /// </summary>
-        /// <param name="self">The self</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawListSplitter_destroy")]
-        public static extern void ImDrawListSplitter_destroy(IntPtr self);
-
+        
         /// <summary>
         ///     Ims the draw list splitter im draw list splitter
         /// </summary>
@@ -4104,14 +4063,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFont_ClearOutputData")]
         public static extern void ImFont_ClearOutputData(IntPtr self);
-
-        /// <summary>
-        ///     Ims the font destroy using the specified self
-        /// </summary>
-        /// <param name="self">The self</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFont_destroy")]
-        public static extern void ImFont_destroy(IntPtr self);
-
+        
         /// <summary>
         ///     Ims the font find glyph using the specified self
         /// </summary>
@@ -4354,14 +4306,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontAtlas_ClearTexData")]
         public static extern void ImFontAtlas_ClearTexData(IntPtr self);
-
-        /// <summary>
-        ///     Ims the font atlas destroy using the specified self
-        /// </summary>
-        /// <param name="self">The self</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontAtlas_destroy")]
-        public static extern void ImFontAtlas_destroy(IntPtr self);
-
+        
         /// <summary>
         ///     Ims the font atlas get custom rect by index using the specified self
         /// </summary>
@@ -4522,14 +4467,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="id">The id</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontAtlas_SetTexID")]
         public static extern void ImFontAtlas_SetTexID(IntPtr self, IntPtr id);
-
-        /// <summary>
-        ///     Ims the font atlas custom rect destroy using the specified self
-        /// </summary>
-        /// <param name="self">The self</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontAtlasCustomRect_destroy")]
-        public static extern void ImFontAtlasCustomRect_destroy(ref ImFontAtlasCustomRect self);
-
+        
         /// <summary>
         ///     Ims the font atlas custom rect im font atlas custom rect
         /// </summary>
@@ -4544,13 +4482,6 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontAtlasCustomRect_IsPacked")]
         public static extern byte ImFontAtlasCustomRect_IsPacked(ref ImFontAtlasCustomRect self);
-
-        /// <summary>
-        ///     Ims the font config destroy using the specified self
-        /// </summary>
-        /// <param name="self">The self</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontConfig_destroy")]
-        public static extern void ImFontConfig_destroy(IntPtr self);
 
         /// <summary>
         ///     Ims the font config im font config
@@ -4598,14 +4529,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontGlyphRangesBuilder_Clear")]
         public static extern void ImFontGlyphRangesBuilder_Clear(ref ImFontGlyphRangesBuilder self);
-
-        /// <summary>
-        ///     Ims the font glyph ranges builder destroy using the specified self
-        /// </summary>
-        /// <param name="self">The self</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontGlyphRangesBuilder_destroy")]
-        public static extern void ImFontGlyphRangesBuilder_destroy(ref ImFontGlyphRangesBuilder self);
-
+        
         /// <summary>
         ///     Ims the font glyph ranges builder get bit using the specified self
         /// </summary>
@@ -4645,14 +4569,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="bytesCount">The bytes count</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiInputTextCallbackData_DeleteChars")]
         public static extern void ImGuiInputTextCallbackData_DeleteChars(IntPtr self, int pos, int bytesCount);
-
-        /// <summary>
-        ///     Ims the gui input text callback data destroy using the specified self
-        /// </summary>
-        /// <param name="self">The self</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiInputTextCallbackData_destroy")]
-        public static extern void ImGuiInputTextCallbackData_destroy(IntPtr self);
-
+        
         /// <summary>
         ///     Ims the gui input text callback data has selection using the specified self
         /// </summary>
@@ -4784,14 +4701,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiIO_ClearInputKeys")]
         public static extern void ImGuiIO_ClearInputKeys(IntPtr self);
-
-        /// <summary>
-        ///     Ims the gui io destroy using the specified self
-        /// </summary>
-        /// <param name="self">The self</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiIO_destroy")]
-        public static extern void ImGuiIO_destroy(IntPtr self);
-
+        
         /// <summary>
         ///     Ims the gui io im gui io
         /// </summary>
@@ -4826,14 +4736,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="itemsHeight">The items height</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiListClipper_Begin")]
         public static extern void ImGuiListClipper_Begin(IntPtr self, int itemsCount, float itemsHeight);
-
-        /// <summary>
-        ///     Ims the gui list clipper destroy using the specified self
-        /// </summary>
-        /// <param name="self">The self</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiListClipper_destroy")]
-        public static extern void ImGuiListClipper_destroy(IntPtr self);
-
+        
         /// <summary>
         ///     Ims the gui list clipper end using the specified self
         /// </summary>
@@ -4864,14 +4767,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiListClipper_Step")]
         public static extern byte ImGuiListClipper_Step(IntPtr self);
-
-        /// <summary>
-        ///     Ims the gui once upon a frame destroy using the specified self
-        /// </summary>
-        /// <param name="self">The self</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiOnceUponAFrame_destroy")]
-        public static extern void ImGuiOnceUponAFrame_destroy(IntPtr self);
-
+        
         /// <summary>
         ///     Ims the gui once upon a frame im gui once upon a frame
         /// </summary>
@@ -4885,14 +4781,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiPayload_Clear")]
         public static extern void ImGuiPayload_Clear(ref ImGuiPayload self);
-
-        /// <summary>
-        ///     Ims the gui payload destroy using the specified self
-        /// </summary>
-        /// <param name="self">The self</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiPayload_destroy")]
-        public static extern void ImGuiPayload_destroy(ref ImGuiPayload self);
-
+        
         /// <summary>
         ///     Ims the gui payload im gui payload
         /// </summary>
@@ -4924,42 +4813,21 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiPayload_IsPreview")]
         public static extern byte ImGuiPayload_IsPreview(ref ImGuiPayload self);
-
-        /// <summary>
-        ///     Ims the gui platform ime data destroy using the specified self
-        /// </summary>
-        /// <param name="self">The self</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiPlatformImeData_destroy")]
-        public static extern void ImGuiPlatformImeData_destroy(IntPtr self);
-
+        
         /// <summary>
         ///     Ims the gui platform ime data im gui platform ime data
         /// </summary>
         /// <returns>The im gui platform ime data</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiPlatformImeData_ImGuiPlatformImeData")]
         public static extern IntPtr ImGuiPlatformImeData_ImGuiPlatformImeData();
-
-        /// <summary>
-        ///     Ims the gui platform io destroy using the specified self
-        /// </summary>
-        /// <param name="self">The self</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiPlatformIO_destroy")]
-        public static extern void ImGuiPlatformIO_destroy(IntPtr self);
-
+        
         /// <summary>
         ///     Ims the gui platform io im gui platform io
         /// </summary>
         /// <returns>The im gui platform io</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiPlatformIO_ImGuiPlatformIO")]
         public static extern IntPtr ImGuiPlatformIO_ImGuiPlatformIO();
-
-        /// <summary>
-        ///     Ims the gui platform monitor destroy using the specified self
-        /// </summary>
-        /// <param name="self">The self</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiPlatformMonitor_destroy")]
-        public static extern void ImGuiPlatformMonitor_destroy(IntPtr self);
-
+        
         /// <summary>
         ///     Ims the gui platform monitor im gui platform monitor
         /// </summary>
@@ -5103,14 +4971,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="val">The val</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiStorage_SetVoidPtr")]
         public static extern void ImGuiStorage_SetVoidPtr(ImGuiStorage self, uint key, IntPtr val);
-
-        /// <summary>
-        ///     Ims the gui storage pair destroy using the specified self
-        /// </summary>
-        /// <param name="self">The self</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiStoragePair_destroy")]
-        public static extern void ImGuiStoragePair_destroy(IntPtr self);
-
+        
         /// <summary>
         ///     Ims the gui storage pair im gui storage pair int using the specified  key
         /// </summary>
@@ -5137,14 +4998,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The im gui storage pair</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiStoragePair_ImGuiStoragePair_Ptr")]
         public static extern IntPtr ImGuiStoragePair_ImGuiStoragePair_Ptr(uint key, IntPtr valP);
-
-        /// <summary>
-        ///     Ims the gui style destroy using the specified self
-        /// </summary>
-        /// <param name="self">The self</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiStyle_destroy")]
-        public static extern void ImGuiStyle_destroy(ImGuiStyle self);
-
+        
         /// <summary>
         ///     Ims the gui style im gui style
         /// </summary>
@@ -5159,28 +5013,14 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="scaleFactor">The scale factor</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiStyle_ScaleAllSizes")]
         public static extern void ImGuiStyle_ScaleAllSizes(ImGuiStyle self, float scaleFactor);
-
-        /// <summary>
-        ///     Ims the gui table column sort specs destroy using the specified self
-        /// </summary>
-        /// <param name="self">The self</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiTableColumnSortSpecs_destroy")]
-        public static extern void ImGuiTableColumnSortSpecs_destroy(IntPtr self);
-
+        
         /// <summary>
         ///     Ims the gui table column sort specs im gui table column sort specs
         /// </summary>
         /// <returns>The im gui table column sort specs</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiTableColumnSortSpecs_ImGuiTableColumnSortSpecs")]
         public static extern IntPtr ImGuiTableColumnSortSpecs_ImGuiTableColumnSortSpecs();
-
-        /// <summary>
-        ///     Ims the gui table sort specs destroy using the specified self
-        /// </summary>
-        /// <param name="self">The self</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiTableSortSpecs_destroy")]
-        public static extern void ImGuiTableSortSpecs_destroy(ref ImGuiTableSortSpecs self);
-
+        
         /// <summary>
         ///     Ims the gui table sort specs im gui table sort specs
         /// </summary>
@@ -5227,14 +5067,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiTextBuffer_clear")]
         public static extern void ImGuiTextBuffer_clear(IntPtr self);
-
-        /// <summary>
-        ///     Ims the gui text buffer destroy using the specified self
-        /// </summary>
-        /// <param name="self">The self</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiTextBuffer_destroy")]
-        public static extern void ImGuiTextBuffer_destroy(IntPtr self);
-
+        
         /// <summary>
         ///     Ims the gui text buffer empty using the specified self
         /// </summary>
@@ -5287,14 +5120,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiTextFilter_Clear")]
         public static extern void ImGuiTextFilter_Clear(IntPtr self);
-
-        /// <summary>
-        ///     Ims the gui text filter destroy using the specified self
-        /// </summary>
-        /// <param name="self">The self</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiTextFilter_destroy")]
-        public static extern void ImGuiTextFilter_destroy(IntPtr self);
-
+        
         /// <summary>
         ///     Ims the gui text filter draw using the specified self
         /// </summary>
@@ -5330,14 +5156,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiTextFilter_PassFilter")]
         public static extern byte ImGuiTextFilter_PassFilter(IntPtr self, byte[] text, byte[] textEnd);
-
-        /// <summary>
-        ///     Ims the gui text range destroy using the specified self
-        /// </summary>
-        /// <param name="self">The self</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiTextRange_destroy")]
-        public static extern void ImGuiTextRange_destroy(IntPtr self);
-
+        
         /// <summary>
         ///     Ims the gui text range empty using the specified self
         /// </summary>
@@ -5370,14 +5189,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="out">The out</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiTextRange_split")]
         public static extern void ImGuiTextRange_split(IntPtr self, byte separator, IntPtr @out);
-
-        /// <summary>
-        ///     Ims the gui viewport destroy using the specified self
-        /// </summary>
-        /// <param name="self">The self</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiViewport_destroy")]
-        public static extern void ImGuiViewport_destroy(IntPtr self);
-
+        
         /// <summary>
         ///     Ims the gui viewport get center using the specified p out
         /// </summary>
@@ -5400,28 +5212,14 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The im gui viewport</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiViewport_ImGuiViewport")]
         public static extern IntPtr ImGuiViewport_ImGuiViewport();
-
-        /// <summary>
-        ///     Ims the gui window class destroy using the specified self
-        /// </summary>
-        /// <param name="self">The self</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiWindowClass_destroy")]
-        public static extern void ImGuiWindowClass_destroy(ImGuiWindowClass self);
-
+        
         /// <summary>
         ///     Ims the gui window class im gui window
         /// </summary>
         /// <returns>The im gui window class</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiWindowClass_ImGuiWindowClass")]
         public static extern ImGuiWindowClass ImGuiWindowClass_ImGuiWindowClass();
-
-        /// <summary>
-        ///     Ims the vec 2 destroy using the specified self
-        /// </summary>
-        /// <param name="self">The self</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImVec2_destroy")]
-        public static extern void ImVec2_destroy(IntPtr self);
-
+        
         /// <summary>
         ///     Ims the vec 2 im vec 2 nil
         /// </summary>
@@ -5437,14 +5235,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The vector</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImVec2_ImVec2_Float")]
         public static extern IntPtr ImVec2_ImVec2_Float(float x, float y);
-
-        /// <summary>
-        ///     Ims the vec 4 destroy using the specified self
-        /// </summary>
-        /// <param name="self">The self</param>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImVec4_destroy")]
-        public static extern void ImVec4_destroy(Vector4 self);
-
+        
         /// <summary>
         ///     Ims the vec 4 im vec 4 nil
         /// </summary>

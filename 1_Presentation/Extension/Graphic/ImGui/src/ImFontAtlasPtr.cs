@@ -478,14 +478,6 @@ namespace Alis.Extension.Graphic.ImGui
         }
 
         /// <summary>
-        ///     Destroys this instance
-        /// </summary>
-        public void Destroy()
-        {
-            ImGuiNative.ImFontAtlas_destroy(NativePtr);
-        }
-
-        /// <summary>
         ///     Gets the custom rect by index using the specified index
         /// </summary>
         /// <param name="index">The index</param>

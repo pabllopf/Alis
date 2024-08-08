@@ -196,13 +196,6 @@ namespace Alis.Extension.Graphic.ImGui
         ///     Gets the value of the dst font
         /// </summary>
         public ImFontPtr DstFont => Marshal.PtrToStructure<ImFontConfig>(NativePtr).DstFont;
-
-        /// <summary>
-        ///     Destroys this instance
-        /// </summary>
-        public void Destroy()
-        {
-            ImGuiNative.ImFontConfig_destroy(NativePtr);
-        }
+        
     }
 }

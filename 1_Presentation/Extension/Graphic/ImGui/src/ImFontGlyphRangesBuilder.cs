@@ -58,14 +58,6 @@ namespace Alis.Extension.Graphic.ImGui
         }
 
         /// <summary>
-        ///     Destroys this instance
-        /// </summary>
-        public void Destroy()
-        {
-            ImGuiNative.ImFontGlyphRangesBuilder_destroy(ref this);
-        }
-
-        /// <summary>
         ///     Describes whether this instance get bit
         /// </summary>
         /// <param name="n">The </param>

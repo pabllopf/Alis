@@ -119,15 +119,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <param name="value">The value</param>
         public void SetUserCallbackData(IntPtr value) => UserCallbackData = value;
-
-        /// <summary>
-        ///     Destroys this instance
-        /// </summary>
-        public void Destroy()
-        {
-            ImGuiNative.ImDrawCmd_destroy(ref this);
-        }
-
+        
         /// <summary>
         ///     Gets the tex id
         /// </summary>

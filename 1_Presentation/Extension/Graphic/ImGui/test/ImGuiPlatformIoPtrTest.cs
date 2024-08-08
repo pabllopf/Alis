@@ -342,17 +342,5 @@ namespace Alis.Extension.Graphic.ImGui.Test
             IntPtr ptr = new IntPtr(123);
             ImGuiPlatformIoPtr platformIoPtr = new ImGuiPlatformIoPtr(ptr);
         }
-
-        /// <summary>
-        /// Tests that destroy should call native destroy
-        /// </summary>
-        [Fact]
-        public void Destroy_Should_CallNativeDestroy()
-        {
-            IntPtr ptr = new IntPtr(123);
-            ImGuiPlatformIoPtr platformIoPtr = new ImGuiPlatformIoPtr(ptr);
-            
-            Assert.Throws<DllNotFoundException>(() => platformIoPtr.Destroy());
-        }
     }
 }

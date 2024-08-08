@@ -40,15 +40,7 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The value
         /// </summary>
         public Vector4 Value { get; set; }
-
-        /// <summary>
-        ///     Destroys this instance
-        /// </summary>
-        public void Destroy()
-        {
-            ImGuiNative.ImColor_destroy(ref this);
-        }
-
+        
         /// <summary>
         ///     Hsv the h
         /// </summary>

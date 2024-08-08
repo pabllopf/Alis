@@ -1609,14 +1609,6 @@ namespace Alis.Extension.Graphic.ImGui
         }
 
         /// <summary>
-        ///     Destroys this instance
-        /// </summary>
-        public void Destroy()
-        {
-            ImGuiNative.ImGuiIO_destroy(NativePtr);
-        }
-
-        /// <summary>
         ///     Sets the app accepting events using the specified accepting events
         /// </summary>
         /// <param name="acceptingEvents">The accepting events</param>

@@ -88,14 +88,6 @@ namespace Alis.Extension.Graphic.ImGui
         }
 
         /// <summary>
-        ///     Destroys this instance
-        /// </summary>
-        public void Destroy()
-        {
-            ImGuiNative.ImGuiPayload_destroy(ref this);
-        }
-
-        /// <summary>
         ///     Describes whether this instance is data type
         /// </summary>
         /// <param name="type">The type</param>

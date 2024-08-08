@@ -877,14 +877,6 @@ namespace Alis.Extension.Graphic.ImGui
         public ImDrawListPtr CloneOutput() => new ImDrawListPtr(ImGuiNative.ImDrawList_CloneOutput(NativePtr));
 
         /// <summary>
-        ///     Destroys this instance
-        /// </summary>
-        public void Destroy()
-        {
-            ImGuiNative.ImDrawList_destroy(NativePtr);
-        }
-
-        /// <summary>
         ///     Gets the clip rect max
         /// </summary>
         /// <returns>The retval</returns>
