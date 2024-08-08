@@ -36,7 +36,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
     /// <summary>
     /// The im gui test class
     /// </summary>
-    public class ImGuiTest
+    public partial class ImGuiTest
     {
         /// <summary>
         /// Tests that test im gui version
@@ -57,15 +57,6 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test im gui is imgui active
-        /// </summary>
-        [Fact]
-        public void Test_ImGui_IsImguiActive()
-        {
-            Assert.False(ImGui.Native.ImGui.IsImguiActive());
-        }
-        
-        /// <summary>
         /// Tests that test combo with label and current item and items separated by zeros
         /// </summary>
         [Fact]
@@ -73,7 +64,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             
             int currentItem = 0;
-           Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.Combo("label", ref currentItem, "item1\0item2\0item3\0"));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.Combo("label", ref currentItem, "item1\0item2\0item3\0"));
         }
         
         /// <summary>
@@ -84,8 +75,8 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             
             int currentItem = 0;
-           Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.Combo("label", ref currentItem, "item1\0item2\0item3\0", 10));
-                
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.Combo("label", ref currentItem, "item1\0item2\0item3\0", 10));
+            
             
         }
         
@@ -117,7 +108,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         public void Test_DebugCheckVersionAndDataLayout()
         {
             
-           Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DebugCheckVersionAndDataLayout("1.0.0", 1, 1, 1, 1, 1, 1));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DebugCheckVersionAndDataLayout("1.0.0", 1, 1, 1, 1, 1, 1));
             
             
         }
@@ -232,7 +223,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             
             float v = 0.0f;
-           Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat("label", ref v));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat("label", ref v));
             
             
         }
@@ -245,7 +236,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             
             float v = 0.0f;
-           Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat("label", ref v, 1.0f));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat("label", ref v, 1.0f));
             
             
         }
@@ -258,7 +249,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             
             float v = 0.0f;
-           Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat("label", ref v, 1.0f, 0.0f));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat("label", ref v, 1.0f, 0.0f));
             
             
         }
@@ -271,7 +262,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             
             float v = 0.0f;
-           Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat("label", ref v, 1.0f, 0.0f, 1.0f));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat("label", ref v, 1.0f, 0.0f, 1.0f));
             
             
         }
@@ -284,7 +275,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             
             float v = 0.0f;
-           Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat("label", ref v, 1.0f, 0.0f, 1.0f, "%.3f"));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat("label", ref v, 1.0f, 0.0f, 1.0f, "%.3f"));
             
         }
         
@@ -297,7 +288,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             
             float v = 0.0f;
-           Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat("label", ref v, 1.0f, 0.0f, 1.0f, "%.3f", 0));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat("label", ref v, 1.0f, 0.0f, 1.0f, "%.3f", 0));
             
             
         }
@@ -310,7 +301,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             
             Vector2 v = new Vector2();
-           Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat2("label", ref v));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat2("label", ref v));
             
             
         }
@@ -323,7 +314,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             
             Vector2 v = new Vector2();
-           Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat2("label", ref v, 1.0f));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat2("label", ref v, 1.0f));
             
             
         }
@@ -336,7 +327,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             
             Vector2 v = new Vector2();
-           Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat2("label", ref v, 1.0f, 0.0f));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat2("label", ref v, 1.0f, 0.0f));
             
             
         }
@@ -349,7 +340,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             
             Vector2 v = new Vector2();
-           Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat2("label", ref v, 1.0f, 0.0f, 1.0f));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat2("label", ref v, 1.0f, 0.0f, 1.0f));
             
             
         }
@@ -362,7 +353,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             
             Vector2 v = new Vector2();
-           Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat2("label", ref v, 1.0f, 0.0f, 1.0f, "%.3f"));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat2("label", ref v, 1.0f, 0.0f, 1.0f, "%.3f"));
             
             
         }
@@ -375,7 +366,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             
             Vector2 v = new Vector2();
-           Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat2("label", ref v, 1.0f, 0.0f, 1.0f, "%.3f", 0));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat2("label", ref v, 1.0f, 0.0f, 1.0f, "%.3f", 0));
             
             
         }
@@ -388,7 +379,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             
             Vector3 v = new Vector3();
-           Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat3("label", ref v));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat3("label", ref v));
             
             
         }
@@ -401,7 +392,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             
             Vector3 v = new Vector3();
-           Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat3("label", ref v, 1.0f));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat3("label", ref v, 1.0f));
             
         }
         
@@ -414,7 +405,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             
             Vector3 v = new Vector3();
-           Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat3("label", ref v, 1.0f, 0.0f));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat3("label", ref v, 1.0f, 0.0f));
             
             
         }
@@ -427,7 +418,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             
             Vector3 v = new Vector3();
-           Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat3("label", ref v, 1.0f, 0.0f, 1.0f));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat3("label", ref v, 1.0f, 0.0f, 1.0f));
             
             
         }
@@ -440,7 +431,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             
             Vector3 v = new Vector3();
-           Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat3("label", ref v, 1.0f, 0.0f, 1.0f, "%.3f"));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat3("label", ref v, 1.0f, 0.0f, 1.0f, "%.3f"));
             
         }
         
@@ -452,7 +443,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             
             Vector3 v = new Vector3();
-           Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat3("label", ref v, 1.0f, 0.0f, 1.0f, "%.3f", 0));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat3("label", ref v, 1.0f, 0.0f, 1.0f, "%.3f", 0));
             
             
         }
@@ -465,7 +456,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             
             Vector4 v = new Vector4();
-           Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat4("label", ref v));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat4("label", ref v));
             
             
         }
@@ -478,7 +469,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             
             Vector4 v = new Vector4();
-           Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat4("label", ref v, 1.0f));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat4("label", ref v, 1.0f));
             
             
         }
@@ -491,7 +482,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             
             Vector4 v = new Vector4();
-           Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat4("label", ref v, 1.0f, 0.0f));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat4("label", ref v, 1.0f, 0.0f));
             
             
         }
@@ -504,7 +495,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             
             Vector4 v = new Vector4();
-           Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat4("label", ref v, 1.0f, 0.0f, 1.0f));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat4("label", ref v, 1.0f, 0.0f, 1.0f));
             
         }
         
@@ -517,7 +508,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             
             Vector4 v = new Vector4();
-           Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat4("label", ref v, 1.0f, 0.0f, 1.0f, "%.3f"));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat4("label", ref v, 1.0f, 0.0f, 1.0f, "%.3f"));
             
             
         }
@@ -530,7 +521,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             
             Vector4 v = new Vector4();
-           Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat4("label", ref v, 1.0f, 0.0f, 1.0f, "%.3f", 0));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat4("label", ref v, 1.0f, 0.0f, 1.0f, "%.3f", 0));
             
             
         }
@@ -544,7 +535,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             
             float vCurrentMin = 0.0f;
             float vCurrentMax = 1.0f;
-           Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloatRange2("label", ref vCurrentMin, ref vCurrentMax));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloatRange2("label", ref vCurrentMin, ref vCurrentMax));
             
             
         }
@@ -558,7 +549,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             
             float vCurrentMin = 0.0f;
             float vCurrentMax = 1.0f;
-           Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloatRange2("label", ref vCurrentMin, ref vCurrentMax, 1.0f));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloatRange2("label", ref vCurrentMin, ref vCurrentMax, 1.0f));
             
             
         }
@@ -572,7 +563,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             
             float vCurrentMin = 0.0f;
             float vCurrentMax = 1.0f;
-           Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloatRange2("label", ref vCurrentMin, ref vCurrentMax, 1.0f, 0.0f));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloatRange2("label", ref vCurrentMin, ref vCurrentMax, 1.0f, 0.0f));
             
             
         }
@@ -586,7 +577,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             
             float vCurrentMin = 0.0f;
             float vCurrentMax = 1.0f;
-           Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloatRange2("label", ref vCurrentMin, ref vCurrentMax, 1.0f, 0.0f, 1.0f));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloatRange2("label", ref vCurrentMin, ref vCurrentMax, 1.0f, 0.0f, 1.0f));
             
             
         }
@@ -600,7 +591,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             
             float vCurrentMin = 0.0f;
             float vCurrentMax = 1.0f;
-           Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloatRange2("label", ref vCurrentMin, ref vCurrentMax, 1.0f, 0.0f, 1.0f, "%.3f"));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloatRange2("label", ref vCurrentMin, ref vCurrentMax, 1.0f, 0.0f, 1.0f, "%.3f"));
             
             
         }
@@ -614,7 +605,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             
             float vCurrentMin = 0.0f;
             float vCurrentMax = 1.0f;
-           Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloatRange2("label", ref vCurrentMin, ref vCurrentMax, 1.0f, 0.0f, 1.0f, "%.3f", "%.3f"));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloatRange2("label", ref vCurrentMin, ref vCurrentMax, 1.0f, 0.0f, 1.0f, "%.3f", "%.3f"));
             
             
         }
@@ -628,7 +619,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             
             float vCurrentMin = 0.0f;
             float vCurrentMax = 1.0f;
-           Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloatRange2("label", ref vCurrentMin, ref vCurrentMax, 1.0f, 0.0f, 1.0f, "%.3f", "%.3f", 0));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloatRange2("label", ref vCurrentMin, ref vCurrentMax, 1.0f, 0.0f, 1.0f, "%.3f", "%.3f", 0));
             
         }
         
@@ -640,8 +631,882 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             
             int v = 0;
-           Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt("label", ref v));
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt("label", ref v));
             
+        }
+        
+        /// <summary>
+        /// Tests that test slider float 4 with label and v and v min and v max and format and flags
+        /// </summary>
+        [Fact]
+        public void Test_SliderFloat4_WithLabelAndVAndVMinAndVMaxAndFormatAndFlags()
+        {
+            Vector4 v = new Vector4();
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderFloat4("label", ref v, 0.0f, 1.0f, "%.3f", 0));
+        }
+        
+        /// <summary>
+        /// Tests that test slider int with label and v and v min and v max
+        /// </summary>
+        [Fact]
+        public void Test_SliderInt_WithLabelAndVAndVMinAndVMax()
+        {
+            int v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderInt("label", ref v, 0, 100));
+        }
+        
+        /// <summary>
+        /// Tests that test slider int with label and v and v min and v max and format
+        /// </summary>
+        [Fact]
+        public void Test_SliderInt_WithLabelAndVAndVMinAndVMaxAndFormat()
+        {
+            int v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderInt("label", ref v, 0, 100, "%d"));
+        }
+        
+        /// <summary>
+        /// Tests that test slider int with label and v and v min and v max and format and flags
+        /// </summary>
+        [Fact]
+        public void Test_SliderInt_WithLabelAndVAndVMinAndVMaxAndFormatAndFlags()
+        {
+            int v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderInt("label", ref v, 0, 100, "%d", 0));
+        }
+        
+        /// <summary>
+        /// Tests that test slider int 2 with label and v and v min and v max
+        /// </summary>
+        [Fact]
+        public void Test_SliderInt2_WithLabelAndVAndVMinAndVMax()
+        {
+            int v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderInt2("label", ref v, 0, 100));
+        }
+        
+        /// <summary>
+        /// Tests that test slider int 2 with label and v and v min and v max and format
+        /// </summary>
+        [Fact]
+        public void Test_SliderInt2_WithLabelAndVAndVMinAndVMaxAndFormat()
+        {
+            int v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderInt2("label", ref v, 0, 100, "%d"));
+        }
+        
+        /// <summary>
+        /// Tests that test slider int 2 with label and v and v min and v max and format and flags
+        /// </summary>
+        [Fact]
+        public void Test_SliderInt2_WithLabelAndVAndVMinAndVMaxAndFormatAndFlags()
+        {
+            int v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderInt2("label", ref v, 0, 100, "%d", 0));
+        }
+        
+        /// <summary>
+        /// Tests that test slider int 3 with label and v and v min and v max
+        /// </summary>
+        [Fact]
+        public void Test_SliderInt3_WithLabelAndVAndVMinAndVMax()
+        {
+            int v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderInt3("label", ref v, 0, 100));
+        }
+        
+        /// <summary>
+        /// Tests that test slider int 3 with label and v and v min and v max and format
+        /// </summary>
+        [Fact]
+        public void Test_SliderInt3_WithLabelAndVAndVMinAndVMaxAndFormat()
+        {
+            int v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderInt3("label", ref v, 0, 100, "%d"));
+        }
+        
+        /// <summary>
+        /// Tests that test slider int 3 with label and v and v min and v max and format and flags
+        /// </summary>
+        [Fact]
+        public void Test_SliderInt3_WithLabelAndVAndVMinAndVMaxAndFormatAndFlags()
+        {
+            int v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderInt3("label", ref v, 0, 100, "%d", 0));
+        }
+        
+        /// <summary>
+        /// Tests that test slider int 4 with label and v and v min and v max
+        /// </summary>
+        [Fact]
+        public void Test_SliderInt4_WithLabelAndVAndVMinAndVMax()
+        {
+            int v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderInt4("label", ref v, 0, 100));
+        }
+        
+        /// <summary>
+        /// Tests that test slider int 4 with label and v and v min and v max and format
+        /// </summary>
+        [Fact]
+        public void Test_SliderInt4_WithLabelAndVAndVMinAndVMaxAndFormat()
+        {
+            int v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderInt4("label", ref v, 0, 100, "%d"));
+        }
+        
+        /// <summary>
+        /// Tests that test slider int 4 with label and v and v min and v max and format and flags
+        /// </summary>
+        [Fact]
+        public void Test_SliderInt4_WithLabelAndVAndVMinAndVMaxAndFormatAndFlags()
+        {
+            int v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderInt4("label", ref v, 0, 100, "%d", 0));
+        }
+        
+        /// <summary>
+        /// Tests that test slider scalar with label and data type and p data and p min and p max
+        /// </summary>
+        [Fact]
+        public void Test_SliderScalar_WithLabelAndDataTypeAndPDataAndPMinAndPMax()
+        {
+            IntPtr pData = IntPtr.Zero;
+            IntPtr pMin = IntPtr.Zero;
+            IntPtr pMax = IntPtr.Zero;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderScalar("label", ImGuiDataType.Float, pData, pMin, pMax));
+        }
+        
+        /// <summary>
+        /// Tests that test slider scalar with label and data type and p data and p min and p max and format
+        /// </summary>
+        [Fact]
+        public void Test_SliderScalar_WithLabelAndDataTypeAndPDataAndPMinAndPMaxAndFormat()
+        {
+            IntPtr pData = IntPtr.Zero;
+            IntPtr pMin = IntPtr.Zero;
+            IntPtr pMax = IntPtr.Zero;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderScalar("label", ImGuiDataType.Float, pData, pMin, pMax, "%.3f"));
+        }
+        
+        /// <summary>
+        /// Tests that test slider scalar with label and data type and p data and p min and p max and format and flags
+        /// </summary>
+        [Fact]
+        public void Test_SliderScalar_WithLabelAndDataTypeAndPDataAndPMinAndPMaxAndFormatAndFlags()
+        {
+            IntPtr pData = IntPtr.Zero;
+            IntPtr pMin = IntPtr.Zero;
+            IntPtr pMax = IntPtr.Zero;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderScalar("label", ImGuiDataType.Float, pData, pMin, pMax, "%.3f", 0));
+        }
+        
+        /// <summary>
+        /// Tests that test slider scalar n with label and data type and p data and components and p min and p max
+        /// </summary>
+        [Fact]
+        public void Test_SliderScalarN_WithLabelAndDataTypeAndPDataAndComponentsAndPMinAndPMax()
+        {
+            IntPtr pData = IntPtr.Zero;
+            IntPtr pMin = IntPtr.Zero;
+            IntPtr pMax = IntPtr.Zero;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderScalarN("label", ImGuiDataType.Float, pData, 4, pMin, pMax));
+        }
+        
+        /// <summary>
+        /// Tests that test slider scalar n with label and data type and p data and components and p min and p max and format
+        /// </summary>
+        [Fact]
+        public void Test_SliderScalarN_WithLabelAndDataTypeAndPDataAndComponentsAndPMinAndPMaxAndFormat()
+        {
+            IntPtr pData = IntPtr.Zero;
+            IntPtr pMin = IntPtr.Zero;
+            IntPtr pMax = IntPtr.Zero;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderScalarN("label", ImGuiDataType.Float, pData, 4, pMin, pMax, "%.3f"));
+        }
+        
+        /// <summary>
+        /// Tests that test slider scalar n with label and data type and p data and components and p min and p max and format and flags
+        /// </summary>
+        [Fact]
+        public void Test_SliderScalarN_WithLabelAndDataTypeAndPDataAndComponentsAndPMinAndPMaxAndFormatAndFlags()
+        {
+            IntPtr pData = IntPtr.Zero;
+            IntPtr pMin = IntPtr.Zero;
+            IntPtr pMax = IntPtr.Zero;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderScalarN("label", ImGuiDataType.Float, pData, 4, pMin, pMax, "%.3f", 0));
+        }
+        
+        /// <summary>
+        /// Tests that test small button with label
+        /// </summary>
+        [Fact]
+        public void Test_SmallButton_WithLabel()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SmallButton("label"));
+        }
+        
+        /// <summary>
+        /// Tests that test spacing
+        /// </summary>
+        [Fact]
+        public void Test_Spacing()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.Spacing());
+        }
+        
+        /// <summary>
+        /// Tests that test style colors classic
+        /// </summary>
+        [Fact]
+        public void Test_StyleColorsClassic()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.StyleColorsClassic());
+        }
+        
+        /// <summary>
+        /// Tests that test style colors classic with dst
+        /// </summary>
+        [Fact]
+        public void Test_StyleColorsClassic_WithDst()
+        {
+            ImGuiStyle dst = new ImGuiStyle();
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.StyleColorsClassic(dst));
+        }
+        
+        /// <summary>
+        /// Tests that test style colors dark
+        /// </summary>
+        [Fact]
+        public void Test_StyleColorsDark()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.StyleColorsDark());
+        }
+        
+        /// <summary>
+        /// Tests that test style colors dark with dst
+        /// </summary>
+        [Fact]
+        public void Test_StyleColorsDark_WithDst()
+        {
+            ImGuiStyle dst = new ImGuiStyle();
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.StyleColorsDark(dst));
+        }
+        
+        /// <summary>
+        /// Tests that test style colors light
+        /// </summary>
+        [Fact]
+        public void Test_StyleColorsLight()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.StyleColorsLight());
+        }
+        
+        /// <summary>
+        /// Tests that test style colors light with dst
+        /// </summary>
+        [Fact]
+        public void Test_StyleColorsLight_WithDst()
+        {
+            ImGuiStyle dst = new ImGuiStyle();
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.StyleColorsLight(dst));
+        }
+        
+        /// <summary>
+        /// Tests that test tab item button with label
+        /// </summary>
+        [Fact]
+        public void Test_TabItemButton_WithLabel()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TabItemButton("label"));
+        }
+        
+        /// <summary>
+        /// Tests that test tab item button with label and flags
+        /// </summary>
+        [Fact]
+        public void Test_TabItemButton_WithLabelAndFlags()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TabItemButton("label", 0));
+        }
+        
+        /// <summary>
+        /// Tests that test table get column count
+        /// </summary>
+        [Fact]
+        public void Test_TableGetColumnCount()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableGetColumnCount());
+        }
+        
+        /// <summary>
+        /// Tests that test table get column flags
+        /// </summary>
+        [Fact]
+        public void Test_TableGetColumnFlags()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableGetColumnFlags());
+        }
+        
+        /// <summary>
+        /// Tests that test table get column flags with column n
+        /// </summary>
+        [Fact]
+        public void Test_TableGetColumnFlags_WithColumnN()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableGetColumnFlags(0));
+        }
+        
+        /// <summary>
+        /// Tests that test table get column index
+        /// </summary>
+        [Fact]
+        public void Test_TableGetColumnIndex()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableGetColumnIndex());
+        }
+        
+        /// <summary>
+        /// Tests that test table get sort specs
+        /// </summary>
+        [Fact]
+        public void Test_TableGetSortSpecs()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableGetSortSpecs());
+        }
+        
+        /// <summary>
+        /// Tests that test table header with label
+        /// </summary>
+        [Fact]
+        public void Test_TableHeader_WithLabel()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableHeader("label"));
+        }
+        
+        /// <summary>
+        /// Tests that test table headers row
+        /// </summary>
+        [Fact]
+        public void Test_TableHeadersRow()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableHeadersRow());
+        }
+        
+        /// <summary>
+        /// Tests that test table next column
+        /// </summary>
+        [Fact]
+        public void Test_TableNextColumn()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableNextColumn());
+        }
+        
+        /// <summary>
+        /// Tests that test table next row
+        /// </summary>
+        [Fact]
+        public void Test_TableNextRow()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableNextRow());
+        }
+        
+        /// <summary>
+        /// Tests that test table next row with row flags
+        /// </summary>
+        [Fact]
+        public void Test_TableNextRow_WithRowFlags()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableNextRow(0));
+        }
+        
+        /// <summary>
+        /// Tests that test table next row with row flags and min row height
+        /// </summary>
+        [Fact]
+        public void Test_TableNextRow_WithRowFlagsAndMinRowHeight()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableNextRow(0, 0.0f));
+        }
+        
+        /// <summary>
+        /// Tests that test table set bg color with target and color
+        /// </summary>
+        [Fact]
+        public void Test_TableSetBgColor_WithTargetAndColor()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableSetBgColor(0, 0));
+        }
+        
+        /// <summary>
+        /// Tests that test table set bg color with target and color and column n
+        /// </summary>
+        [Fact]
+        public void Test_TableSetBgColor_WithTargetAndColorAndColumnN()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableSetBgColor(0, 0, 0));
+        }
+        
+        /// <summary>
+        /// Tests that test table set column enabled with column n and v
+        /// </summary>
+        [Fact]
+        public void Test_TableSetColumnEnabled_WithColumnNAndV()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableSetColumnEnabled(0, true));
+        }
+        
+        /// <summary>
+        /// Tests that test table set column index with column n
+        /// </summary>
+        [Fact]
+        public void Test_TableSetColumnIndex_WithColumnN()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableSetColumnIndex(0));
+        }
+        
+        /// <summary>
+        /// Tests that test table setup column with label
+        /// </summary>
+        [Fact]
+        public void Test_TableSetupColumn_WithLabel()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableSetupColumn("label"));
+        }
+        
+        /// <summary>
+        /// Tests that test menu item with label and enabled
+        /// </summary>
+        [Fact]
+        public void Test_MenuItem_WithLabelAndEnabled()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.MenuItem("label", true));
+        }
+        
+        /// <summary>
+        /// Tests that test im font config
+        /// </summary>
+        [Fact]
+        public void Test_ImFontConfig()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ImFontConfig());
+        }
+        
+        /// <summary>
+        /// Tests that test slider int 2 with label and v and v min and v max v 2
+        /// </summary>
+        [Fact]
+        public void Test_SliderInt2_WithLabelAndVAndVMinAndVMax_v2()
+        {
+            int v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderInt2("label", ref v, 0, 100));
+        }
+        
+        /// <summary>
+        /// Tests that test slider int 2 with label and v and v min and v max and format v 2
+        /// </summary>
+        [Fact]
+        public void Test_SliderInt2_WithLabelAndVAndVMinAndVMaxAndFormat_v2()
+        {
+            int v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderInt2("label", ref v, 0, 100, "%d"));
+        }
+        
+        /// <summary>
+        /// Tests that test slider int 2 with label and v and v min and v max and format and flags v 2
+        /// </summary>
+        [Fact]
+        public void Test_SliderInt2_WithLabelAndVAndVMinAndVMaxAndFormatAndFlags_v2()
+        {
+            int v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderInt2("label", ref v, 0, 100, "%d", 0));
+        }
+        
+        /// <summary>
+        /// Tests that test slider int 3 with label and v and v min and v max v 2
+        /// </summary>
+        [Fact]
+        public void Test_SliderInt3_WithLabelAndVAndVMinAndVMax_v2()
+        {
+            int v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderInt3("label", ref v, 0, 100));
+        }
+        
+        /// <summary>
+        /// Tests that test slider int 3 with label and v and v min and v max and format v 2
+        /// </summary>
+        [Fact]
+        public void Test_SliderInt3_WithLabelAndVAndVMinAndVMaxAndFormat_v2()
+        {
+            int v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderInt3("label", ref v, 0, 100, "%d"));
+        }
+        
+        /// <summary>
+        /// Tests that test slider int 3 with label and v and v min and v max and format and flags v 2
+        /// </summary>
+        [Fact]
+        public void Test_SliderInt3_WithLabelAndVAndVMinAndVMaxAndFormatAndFlags_v2()
+        {
+            int v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderInt3("label", ref v, 0, 100, "%d", 0));
+        }
+        
+        /// <summary>
+        /// Tests that test slider int 4 with label and v and v min and v max v 2
+        /// </summary>
+        [Fact]
+        public void Test_SliderInt4_WithLabelAndVAndVMinAndVMax_v2()
+        {
+            int v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderInt4("label", ref v, 0, 100));
+        }
+        
+        /// <summary>
+        /// Tests that test slider int 4 with label and v and v min and v max and format v 2
+        /// </summary>
+        [Fact]
+        public void Test_SliderInt4_WithLabelAndVAndVMinAndVMaxAndFormat_v2()
+        {
+            int v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderInt4("label", ref v, 0, 100, "%d"));
+        }
+        
+        /// <summary>
+        /// Tests that test slider int 4 with label and v and v min and v max and format and flags v 2
+        /// </summary>
+        [Fact]
+        public void Test_SliderInt4_WithLabelAndVAndVMinAndVMaxAndFormatAndFlags_v2()
+        {
+            int v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderInt4("label", ref v, 0, 100, "%d", 0));
+        }
+        
+        /// <summary>
+        /// Tests that test slider scalar with label and data type and p data and p min and p max v 2
+        /// </summary>
+        [Fact]
+        public void Test_SliderScalar_WithLabelAndDataTypeAndPDataAndPMinAndPMax_v2()
+        {
+            IntPtr pData = IntPtr.Zero;
+            IntPtr pMin = IntPtr.Zero;
+            IntPtr pMax = IntPtr.Zero;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderScalar("label", ImGuiDataType.Float, pData, pMin, pMax));
+        }
+        
+        /// <summary>
+        /// Tests that test slider scalar with label and data type and p data and p min and p max and format v 2
+        /// </summary>
+        [Fact]
+        public void Test_SliderScalar_WithLabelAndDataTypeAndPDataAndPMinAndPMaxAndFormat_v2()
+        {
+            IntPtr pData = IntPtr.Zero;
+            IntPtr pMin = IntPtr.Zero;
+            IntPtr pMax = IntPtr.Zero;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderScalar("label", ImGuiDataType.Float, pData, pMin, pMax, "%.3f"));
+        }
+        
+        /// <summary>
+        /// Tests that test slider scalar with label and data type and p data and p min and p max and format and flags v 2
+        /// </summary>
+        [Fact]
+        public void Test_SliderScalar_WithLabelAndDataTypeAndPDataAndPMinAndPMaxAndFormatAndFlags_v2()
+        {
+            IntPtr pData = IntPtr.Zero;
+            IntPtr pMin = IntPtr.Zero;
+            IntPtr pMax = IntPtr.Zero;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderScalar("label", ImGuiDataType.Float, pData, pMin, pMax, "%.3f", 0));
+        }
+        
+        /// <summary>
+        /// Tests that test slider scalar n with label and data type and p data and components and p min and p max v 2
+        /// </summary>
+        [Fact]
+        public void Test_SliderScalarN_WithLabelAndDataTypeAndPDataAndComponentsAndPMinAndPMax_v2()
+        {
+            IntPtr pData = IntPtr.Zero;
+            IntPtr pMin = IntPtr.Zero;
+            IntPtr pMax = IntPtr.Zero;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderScalarN("label", ImGuiDataType.Float, pData, 4, pMin, pMax));
+        }
+        
+        /// <summary>
+        /// Tests that test slider scalar n with label and data type and p data and components and p min and p max and format v 2
+        /// </summary>
+        [Fact]
+        public void Test_SliderScalarN_WithLabelAndDataTypeAndPDataAndComponentsAndPMinAndPMaxAndFormat_v2()
+        {
+            IntPtr pData = IntPtr.Zero;
+            IntPtr pMin = IntPtr.Zero;
+            IntPtr pMax = IntPtr.Zero;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderScalarN("label", ImGuiDataType.Float, pData, 4, pMin, pMax, "%.3f"));
+        }
+        
+        /// <summary>
+        /// Tests that test slider scalar n with label and data type and p data and components and p min and p max and format and flags v 2
+        /// </summary>
+        [Fact]
+        public void Test_SliderScalarN_WithLabelAndDataTypeAndPDataAndComponentsAndPMinAndPMaxAndFormatAndFlags_v2()
+        {
+            IntPtr pData = IntPtr.Zero;
+            IntPtr pMin = IntPtr.Zero;
+            IntPtr pMax = IntPtr.Zero;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderScalarN("label", ImGuiDataType.Float, pData, 4, pMin, pMax, "%.3f", 0));
+        }
+        
+        /// <summary>
+        /// Tests that test small button with label v 2
+        /// </summary>
+        [Fact]
+        public void Test_SmallButton_WithLabel_v2()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SmallButton("label"));
+        }
+        
+        /// <summary>
+        /// Tests that test spacing v 2
+        /// </summary>
+        [Fact]
+        public void Test_Spacing_v2()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.Spacing());
+        }
+        
+        /// <summary>
+        /// Tests that test style colors classic v 2
+        /// </summary>
+        [Fact]
+        public void Test_StyleColorsClassic_v2()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.StyleColorsClassic());
+        }
+        
+        /// <summary>
+        /// Tests that test style colors classic with dst v 2
+        /// </summary>
+        [Fact]
+        public void Test_StyleColorsClassic_WithDst_v2()
+        {
+            ImGuiStyle dst = new ImGuiStyle();
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.StyleColorsClassic(dst));
+        }
+        
+        /// <summary>
+        /// Tests that test style colors dark v 2
+        /// </summary>
+        [Fact]
+        public void Test_StyleColorsDark_v2()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.StyleColorsDark());
+        }
+        
+        /// <summary>
+        /// Tests that test style colors dark with dst v 2
+        /// </summary>
+        [Fact]
+        public void Test_StyleColorsDark_WithDst_v2()
+        {
+            ImGuiStyle dst = new ImGuiStyle();
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.StyleColorsDark(dst));
+        }
+        
+        /// <summary>
+        /// Tests that test style colors light v 2
+        /// </summary>
+        [Fact]
+        public void Test_StyleColorsLight_v2()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.StyleColorsLight());
+        }
+        
+        /// <summary>
+        /// Tests that test style colors light with dst v 2
+        /// </summary>
+        [Fact]
+        public void Test_StyleColorsLight_WithDst_v2()
+        {
+            ImGuiStyle dst = new ImGuiStyle();
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.StyleColorsLight(dst));
+        }
+        
+        /// <summary>
+        /// Tests that test tab item button with label v 2
+        /// </summary>
+        [Fact]
+        public void Test_TabItemButton_WithLabel_v2()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TabItemButton("label"));
+        }
+        
+        /// <summary>
+        /// Tests that test tab item button with label and flags v 2
+        /// </summary>
+        [Fact]
+        public void Test_TabItemButton_WithLabelAndFlags_v2()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TabItemButton("label", 0));
+        }
+        
+        /// <summary>
+        /// Tests that test table get column count v 2
+        /// </summary>
+        [Fact]
+        public void Test_TableGetColumnCount_v2()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableGetColumnCount());
+        }
+        
+        /// <summary>
+        /// Tests that test table get column flags v 2
+        /// </summary>
+        [Fact]
+        public void Test_TableGetColumnFlags_v2()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableGetColumnFlags());
+        }
+        
+        /// <summary>
+        /// Tests that test table get column flags with column n v 2
+        /// </summary>
+        [Fact]
+        public void Test_TableGetColumnFlags_WithColumnN_v2()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableGetColumnFlags(0));
+        }
+        
+        /// <summary>
+        /// Tests that test table get column index v 2
+        /// </summary>
+        [Fact]
+        public void Test_TableGetColumnIndex_v2()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableGetColumnIndex());
+        }
+        
+        /// <summary>
+        /// Tests that test table get sort specs v 2
+        /// </summary>
+        [Fact]
+        public void Test_TableGetSortSpecs_v2()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableGetSortSpecs());
+        }
+        
+        /// <summary>
+        /// Tests that test table header with label v 2
+        /// </summary>
+        [Fact]
+        public void Test_TableHeader_WithLabel_v2()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableHeader("label"));
+        }
+        
+        /// <summary>
+        /// Tests that test table headers row v 2
+        /// </summary>
+        [Fact]
+        public void Test_TableHeadersRow_v2()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableHeadersRow());
+        }
+        
+        /// <summary>
+        /// Tests that test table next column v 2
+        /// </summary>
+        [Fact]
+        public void Test_TableNextColumn_v2()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableNextColumn());
+        }
+        
+        /// <summary>
+        /// Tests that test table next row v 2
+        /// </summary>
+        [Fact]
+        public void Test_TableNextRow_v2()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableNextRow());
+        }
+        
+        /// <summary>
+        /// Tests that test table next row with row flags v 2
+        /// </summary>
+        [Fact]
+        public void Test_TableNextRow_WithRowFlags_v2()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableNextRow(0));
+        }
+        
+        /// <summary>
+        /// Tests that test table next row with row flags and min row height v 2
+        /// </summary>
+        [Fact]
+        public void Test_TableNextRow_WithRowFlagsAndMinRowHeight_v2()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableNextRow(0, 0.0f));
+        }
+        
+        /// <summary>
+        /// Tests that test table set bg color with target and color v 2
+        /// </summary>
+        [Fact]
+        public void Test_TableSetBgColor_WithTargetAndColor_v2()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableSetBgColor(0, 0));
+        }
+        
+        /// <summary>
+        /// Tests that test table set bg color with target and color and column n v 2
+        /// </summary>
+        [Fact]
+        public void Test_TableSetBgColor_WithTargetAndColorAndColumnN_v2()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableSetBgColor(0, 0, 0));
+        }
+        
+        /// <summary>
+        /// Tests that test table set column enabled with column n and v v 2
+        /// </summary>
+        [Fact]
+        public void Test_TableSetColumnEnabled_WithColumnNAndV_v2()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableSetColumnEnabled(0, true));
+        }
+        
+        /// <summary>
+        /// Tests that test table set column index with column n v 2
+        /// </summary>
+        [Fact]
+        public void Test_TableSetColumnIndex_WithColumnN_v2()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableSetColumnIndex(0));
+        }
+        
+        /// <summary>
+        /// Tests that test table setup column with label v 2
+        /// </summary>
+        [Fact]
+        public void Test_TableSetupColumn_WithLabel_v2()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableSetupColumn("label"));
+        }
+        
+        /// <summary>
+        /// Tests that test menu item with label and enabled v 2
+        /// </summary>
+        [Fact]
+        public void Test_MenuItem_WithLabelAndEnabled_v2()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.MenuItem("label", true));
+        }
+        
+        /// <summary>
+        /// Tests that test im font config v 2
+        /// </summary>
+        [Fact]
+        public void Test_ImFontConfig_v2()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ImFontConfig());
         }
     }
 }

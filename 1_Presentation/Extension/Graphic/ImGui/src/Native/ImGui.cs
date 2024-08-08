@@ -626,14 +626,5 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// </summary>
         /// <returns>The im font config ptr</returns>
         public static ImFontConfigPtr ImFontConfig() => ImGuiNative.ImFontConfig_ImFontConfig();
-        
-        /// <summary>
-        /// Describes whether is imgui active
-        /// </summary>
-        /// <returns>The bool</returns>
-        public static bool IsImguiActive()
-        {
-            return File.Exists(Environment.CurrentDirectory + "/imgui.ini");
-        }
     }
 }

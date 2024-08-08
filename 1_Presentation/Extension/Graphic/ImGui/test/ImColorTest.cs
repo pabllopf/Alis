@@ -63,18 +63,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
             // Arrange
             ImColor color = new ImColor();
             
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                // Act
-                color.Hsv(0.5f, 0.5f, 0.5f);
-                
-                // Assert
-                Assert.Equal(new Vector4(0.5f, 0.5f, 0.5f, 1.0f), color.Value);
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            // Act
+            Assert.Throws<DllNotFoundException>(() =>color.Hsv(0.5f, 0.5f, 0.5f));
         }
         
         /// <summary>
@@ -86,18 +76,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
             // Arrange
             ImColor color = new ImColor();
             
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                // Act
-                color.Hsv(0.5f, 0.5f, 0.5f, 0.8f);
-                
-                // Assert
-                Assert.Equal(new Vector4(0.5f, 0.5f, 0.5f, 0.8f), color.Value);
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            // Act
+            Assert.Throws<DllNotFoundException>(() => color.Hsv(0.5f, 0.5f, 0.5f, 0.8f));
         }
         
         /// <summary>
@@ -109,18 +89,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
             // Arrange
             ImColor color = new ImColor();
             
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                // Act
-                color.SetHsv(0.5f, 0.5f, 0.5f);
-                
-                // Assert
-                Assert.Equal(new Vector4(0.5f, 0.5f, 0.5f, 1.0f), color.Value);
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            // Act
+            Assert.Throws<DllNotFoundException>(() =>color.SetHsv(0.5f, 0.5f, 0.5f));
         }
         
         /// <summary>
@@ -132,18 +102,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
             // Arrange
             ImColor color = new ImColor();
             
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                // Act
-                color.SetHsv(0.5f, 0.5f, 0.5f, 0.8f);
-                
-                // Assert
-                Assert.Equal(new Vector4(0.5f, 0.5f, 0.5f, 0.8f), color.Value);
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            // Act
+            Assert.Throws<DllNotFoundException>(() =>color.SetHsv(0.5f, 0.5f, 0.5f, 0.8f));
         }
     }
 }
