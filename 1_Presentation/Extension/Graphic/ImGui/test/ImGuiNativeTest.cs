@@ -45,15 +45,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void ImGuiInputTextCallbackData_ClearSelection_ShouldInvokeNativeMethod()
         {
             IntPtr self = new IntPtr(1);
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiInputTextCallbackData_ClearSelection(self));
-                // Assert: No exception means the method was invoked successfully
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiInputTextCallbackData_ClearSelection(self));
+            
         }
         
         /// <summary>
@@ -65,15 +58,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
             IntPtr self = new IntPtr(1);
             int pos = 0;
             int bytesCount = 5;
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiInputTextCallbackData_DeleteChars(self, pos, bytesCount));
-                // Assert: No exception means the method was invoked successfully
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiInputTextCallbackData_DeleteChars(self, pos, bytesCount));
+            
         }
         
         /// <summary>
@@ -83,14 +69,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void ImGuiInputTextCallbackData_HasSelection_ShouldReturnByte()
         {
             IntPtr self = new IntPtr(1);
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiInputTextCallbackData_HasSelection(self));
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiInputTextCallbackData_HasSelection(self));
         }
         
         /// <summary>
@@ -99,14 +78,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         [Fact]
         public void ImGuiInputTextCallbackData_ImGuiInputTextCallbackData_ShouldReturnIntPtr()
         {
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiInputTextCallbackData_ImGuiInputTextCallbackData());
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiInputTextCallbackData_ImGuiInputTextCallbackData());
         }
         
         /// <summary>
@@ -119,15 +91,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
             int pos = 0;
             byte[] text = new byte[] {65, 66, 67};
             byte[] textEnd = new byte[] {68, 69, 70};
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiInputTextCallbackData_InsertChars(self, pos, text, textEnd));
-                // Assert: No exception means the method was invoked successfully
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiInputTextCallbackData_InsertChars(self, pos, text, textEnd));
+            
         }
         
         /// <summary>
@@ -137,15 +102,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void ImGuiInputTextCallbackData_SelectAll_ShouldInvokeNativeMethod()
         {
             IntPtr self = new IntPtr(1);
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiInputTextCallbackData_SelectAll(self));
-                // Assert: No exception means the method was invoked successfully
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiInputTextCallbackData_SelectAll(self));
+            
         }
         
         /// <summary>
@@ -156,15 +114,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             IntPtr self = new IntPtr(1);
             byte focused = 1;
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiIO_AddFocusEvent(self, focused));
-                // Assert: No exception means the method was invoked successfully
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiIO_AddFocusEvent(self, focused));
+            
         }
         
         /// <summary>
@@ -175,15 +126,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             IntPtr self = new IntPtr(1);
             uint c = 65;
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiIO_AddInputCharacter(self, c));
-                // Assert: No exception means the method was invoked successfully
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiIO_AddInputCharacter(self, c));
+            
         }
         
         /// <summary>
@@ -194,15 +138,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             IntPtr self = new IntPtr(1);
             byte[] str = new byte[] {65, 66, 67};
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiIO_AddInputCharactersUTF8(self, str));
-                // Assert: No exception means the method was invoked successfully
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiIO_AddInputCharactersUTF8(self, str));
+            
         }
         
         /// <summary>
@@ -213,15 +150,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             IntPtr self = new IntPtr(1);
             ushort c = 65;
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiIO_AddInputCharacterUTF16(self, c));
-                // Assert: No exception means the method was invoked successfully
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiIO_AddInputCharacterUTF16(self, c));
+            
         }
         
         /// <summary>
@@ -234,15 +164,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiKey key = ImGuiKey.Tab;
             byte down = 1;
             float v = 0.5f;
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiIO_AddKeyAnalogEvent(self, key, down, v));
-                // Assert: No exception means the method was invoked successfully
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiIO_AddKeyAnalogEvent(self, key, down, v));
+            
         }
         
         /// <summary>
@@ -254,15 +177,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
             IntPtr self = new IntPtr(1);
             ImGuiKey key = ImGuiKey.Tab;
             byte down = 1;
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiIO_AddKeyEvent(self, key, down));
-                // Assert: No exception means the method was invoked successfully
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiIO_AddKeyEvent(self, key, down));
+            
         }
         
         /// <summary>
@@ -274,15 +190,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
             IntPtr self = new IntPtr(1);
             int button = 0;
             byte down = 1;
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiIO_AddMouseButtonEvent(self, button, down));
-                // Assert: No exception means the method was invoked successfully
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiIO_AddMouseButtonEvent(self, button, down));
+            
         }
         
         /// <summary>
@@ -294,15 +203,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
             IntPtr self = new IntPtr(1);
             float x = 100.0f;
             float y = 200.0f;
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiIO_AddMousePosEvent(self, x, y));
-                // Assert: No exception means the method was invoked successfully
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiIO_AddMousePosEvent(self, x, y));
+            
         }
         
         /// <summary>
@@ -313,15 +215,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             IntPtr self = new IntPtr(1);
             uint id = 1;
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiIO_AddMouseViewportEvent(self, id));
-                // Assert: No exception means the method was invoked successfully
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiIO_AddMouseViewportEvent(self, id));
+            
         }
         
         /// <summary>
@@ -333,15 +228,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
             IntPtr self = new IntPtr(1);
             float whX = 1.0f;
             float whY = 1.0f;
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiIO_AddMouseWheelEvent(self, whX, whY));
-                // Assert: No exception means the method was invoked successfully
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiIO_AddMouseWheelEvent(self, whX, whY));
+            
         }
         
         /// <summary>
@@ -351,15 +239,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void ImGuiIO_ClearInputCharacters_ShouldInvokeNativeMethod()
         {
             IntPtr self = new IntPtr(1);
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiIO_ClearInputCharacters(self));
-                // Assert: No exception means the method was invoked successfully
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiIO_ClearInputCharacters(self));
+            
         }
         
         /// <summary>
@@ -369,31 +250,17 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void ImGuiIO_ClearInputKeys_ShouldInvokeNativeMethod()
         {
             IntPtr self = new IntPtr(1);
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiIO_ClearInputKeys(self));
-                // Assert: No exception means the method was invoked successfully
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiIO_ClearInputKeys(self));
+            
         }
-        
+
         /// <summary>
         /// Tests that im gui io im gui io should return int ptr
         /// </summary>
         [Fact]
         public void ImGuiIO_ImGuiIO_ShouldReturnIntPtr()
-        {
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiIO_ImGuiIO());
-            }
-            else
-            {
-                Assert.True(true);
-            }
+        { 
+            Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiIO_ImGuiIO());
             
         }
         
@@ -405,15 +272,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             IntPtr self = new IntPtr(1);
             byte acceptingEvents = 1;
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiIO_SetAppAcceptingEvents(self, acceptingEvents));
-                // Assert: No exception means the method was invoked successfully
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiIO_SetAppAcceptingEvents(self, acceptingEvents));
+            
         }
         
         /// <summary>
@@ -427,15 +287,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
             int nativeKeycode = 65;
             int nativeScancode = 66;
             int nativeLegacyIndex = 67;
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiIO_SetKeyEventNativeData(self, key, nativeKeycode, nativeScancode, nativeLegacyIndex));
-                // Assert: No exception means the method was invoked successfully
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiIO_SetKeyEventNativeData(self, key, nativeKeycode, nativeScancode, nativeLegacyIndex));
+            
         }
         
         /// <summary>
@@ -447,15 +300,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
             IntPtr self = new IntPtr(1);
             int itemsCount = 10;
             float itemsHeight = 20.0f;
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {   
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiListClipper_Begin(self, itemsCount, itemsHeight));
-                // Assert: No exception means the method was invoked successfully
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiListClipper_Begin(self, itemsCount, itemsHeight));
+            
         }
         
         /// <summary>
@@ -465,15 +311,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void ImGuiListClipper_End_ShouldInvokeNativeMethod()
         {
             IntPtr self = new IntPtr(1);
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiListClipper_End(self));
-                // Assert: No exception means the method was invoked successfully
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiListClipper_End(self));
+            
         }
         
         /// <summary>
@@ -485,15 +324,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
             IntPtr self = new IntPtr(1);
             int itemMin = 0;
             int itemMax = 10;
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiListClipper_ForceDisplayRangeByIndices(self, itemMin, itemMax));
-                // Assert: No exception means the method was invoked successfully
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiListClipper_ForceDisplayRangeByIndices(self, itemMin, itemMax));
+            
         }
         
         /// <summary>
@@ -501,15 +333,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         /// </summary>
         [Fact]
         public void ImGuiListClipper_ImGuiListClipper_ShouldReturnIntPtr()
-        {
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiListClipper_ImGuiListClipper());
-            }
-            else
-            {
-                Assert.True(true);
-            }
+        { 
+            Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiListClipper_ImGuiListClipper());
             
         }
         
@@ -519,15 +344,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         [Fact]
         public void ImGuiListClipper_Step_ShouldReturnByte()
         {
-            IntPtr self = new IntPtr(1);
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiListClipper_Step(self));
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            IntPtr self = new IntPtr(1); 
+            Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiListClipper_Step(self));
         }
         
         /// <summary>
@@ -535,15 +353,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         /// </summary>
         [Fact]
         public void ImGuiOnceUponAFrame_ImGuiOnceUponAFrame_ShouldReturnIntPtr()
-        {
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiOnceUponAFrame_ImGuiOnceUponAFrame());
-            }
-            else
-            {
-                Assert.True(true);
-            }
+        { 
+            Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiOnceUponAFrame_ImGuiOnceUponAFrame());
         }
         
         /// <summary>
@@ -553,15 +364,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void ImGuiPayload_Clear_ShouldInvokeNativeMethod()
         {
             ImGuiPayload self = new ImGuiPayload();
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiPayload_Clear(ref self));
-                // Assert: No exception means the method was invoked successfully
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiPayload_Clear(ref self));
+            
         }
         
         /// <summary>
@@ -569,15 +373,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         /// </summary>
         [Fact]
         public void ImGuiPayload_ImGuiPayload_ShouldReturnImGuiPayload()
-        {
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiPayload_ImGuiPayload());
-            }
-            else
-            {
-                Assert.True(true);
-            }
+        { 
+            Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiPayload_ImGuiPayload());
         }
         
         /// <summary>
@@ -587,15 +384,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void ImGuiPayload_IsDataType_ShouldReturnByte()
         {
             ImGuiPayload self = new ImGuiPayload();
-            byte[] type = new byte[] {65, 66, 67};
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiPayload_IsDataType(ref self, type));
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            byte[] type = new byte[] {65, 66, 67}; 
+            Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiPayload_IsDataType(ref self, type));
         }
         
         /// <summary>
@@ -605,14 +395,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void ImGuiPayload_IsDelivery_ShouldReturnByte()
         {
             ImGuiPayload self = new ImGuiPayload();
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiPayload_IsDelivery(ref self));
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiPayload_IsDelivery(ref self));
         }
         
         /// <summary>
@@ -622,14 +405,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void ImGuiPayload_IsPreview_ShouldReturnByte()
         {
             ImGuiPayload self = new ImGuiPayload();
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiPayload_IsPreview(ref self));
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiPayload_IsPreview(ref self));
         }
         
         /// <summary>
@@ -637,31 +413,18 @@ namespace Alis.Extension.Graphic.ImGui.Test
         /// </summary>
         [Fact]
         public void ImGuiPlatformImeData_ImGuiPlatformImeData_ShouldReturnIntPtr()
-        {
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiPlatformImeData_ImGuiPlatformImeData());
-            }
-            else
-            {
-                Assert.True(true);
-            }
+        { 
+            Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiPlatformImeData_ImGuiPlatformImeData());
         }
+        
         
         /// <summary>
         /// Tests that im gui platform io im gui platform io should return int ptr
         /// </summary>
         [Fact]
         public void ImGuiPlatformIO_ImGuiPlatformIO_ShouldReturnIntPtr()
-        {
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiPlatformIO_ImGuiPlatformIO());
-            }
-            else
-            {
-                Assert.True(true);
-            }
+        { 
+            Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiPlatformIO_ImGuiPlatformIO());
         }
         
         /// <summary>
@@ -670,14 +433,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         [Fact]
         public void ImGuiPlatformMonitor_ImGuiPlatformMonitor_ShouldReturnIntPtr()
         {
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiPlatformMonitor_ImGuiPlatformMonitor());
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiPlatformMonitor_ImGuiPlatformMonitor()); 
         }
         
         /// <summary>
@@ -687,15 +443,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void ImGuiStorage_BuildSortByKey_ShouldInvokeNativeMethod()
         {
             ImGuiStorage self = new ImGuiStorage();
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiStorage_BuildSortByKey(self));
-                // Assert: No exception means the method was invoked successfully
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiStorage_BuildSortByKey(self));
+            
         }
         
         /// <summary>
@@ -705,15 +454,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void ImGuiStorage_Clear_ShouldInvokeNativeMethod()
         {
             ImGuiStorage self = new ImGuiStorage();
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiStorage_Clear(self));
-                // Assert: No exception means the method was invoked successfully
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiStorage_Clear(self));
+            
         }
         
         /// <summary>
@@ -725,14 +467,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiStorage self = new ImGuiStorage();
             uint key = 1;
             byte defaultVal = 0;
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiStorage_GetBool(self, key, defaultVal));
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiStorage_GetBool(self, key, defaultVal));
         }
         
         /// <summary>
@@ -744,14 +479,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiStorage self = new ImGuiStorage();
             uint key = 1;
             byte defaultVal = 0; 
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiStorage_GetBoolRef(self, key, defaultVal));
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            Assert.Throws<MarshalDirectiveException>(() =>ImGuiNative.ImGuiStorage_GetBoolRef(self, key, defaultVal));
         }
         
         /// <summary>
@@ -763,14 +491,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiStorage self = new ImGuiStorage();
             uint key = 1;
             float defaultVal = 0.0f;
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiStorage_GetFloat(self, key, defaultVal));
-            }
-            else
-            {
-                Assert.True(true);
-            }
+           Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiStorage_GetFloat(self, key, defaultVal));
         }
         
         /// <summary>
@@ -782,14 +503,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiStorage self = new ImGuiStorage();
             uint key = 1;
             float defaultVal = 0.0f; 
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiStorage_GetFloatRef(self, key, defaultVal));
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiStorage_GetFloatRef(self, key, defaultVal));
         }
         
         /// <summary>
@@ -801,14 +515,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiStorage self = new ImGuiStorage();
             uint key = 1;
             int defaultVal = 0;
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiStorage_GetInt(self, key, defaultVal));
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiStorage_GetInt(self, key, defaultVal));
         }
         
         /// <summary>
@@ -820,14 +527,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiStorage self = new ImGuiStorage();
             uint key = 1;
             int defaultVal = 0; 
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiStorage_GetIntRef(self, key, defaultVal));
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiStorage_GetIntRef(self, key, defaultVal));
         }
         
         /// <summary>
@@ -837,15 +537,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void ImGuiStorage_GetVoidPtr_ShouldReturnIntPtr()
         {
             ImGuiStorage self = new ImGuiStorage();
-            uint key = 1;
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiStorage_GetVoidPtr(self, key));
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            uint key = 1; 
+            Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiStorage_GetVoidPtr(self, key));
         }
         
         /// <summary>
@@ -857,14 +550,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiStorage self = new ImGuiStorage();
             uint key = 1;
             IntPtr defaultVal = new IntPtr(1);
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiStorage_GetVoidPtrRef(self, key, defaultVal));
-            }
-            else
-            {
-                Assert.True(true);
-            }
+             Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiStorage_GetVoidPtrRef(self, key, defaultVal));
         }
         
         /// <summary>
@@ -875,15 +561,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             ImGuiStorage self = new ImGuiStorage();
             int val = 1;
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiStorage_SetAllInt(self, val));
-                // Assert: No exception means the method was invoked successfully
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiStorage_SetAllInt(self, val));
+            
         }
         
         /// <summary>
@@ -895,15 +574,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiStorage self = new ImGuiStorage();
             uint key = 1;
             byte val = 1;
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiStorage_SetBool(self, key, val));
-                // Assert: No exception means the method was invoked successfully
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiStorage_SetBool(self, key, val));
+            
         }
         
         /// <summary>
@@ -915,15 +587,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiStorage self = new ImGuiStorage();
             uint key = 1;
             float val = 1.0f;
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiStorage_SetFloat(self, key, val));
-                // Assert: No exception means the method was invoked successfully
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiStorage_SetFloat(self, key, val));
+            
         }
         
         /// <summary>
@@ -935,15 +600,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiStorage self = new ImGuiStorage();
             uint key = 1;
             int val = 1;
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiStorage_SetInt(self, key, val));
-                // Assert: No exception means the method was invoked successfully
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiStorage_SetInt(self, key, val));
+            
         }
         
         /// <summary>
@@ -955,15 +613,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiStorage self = new ImGuiStorage();
             uint key = 1;
             IntPtr val = new IntPtr(1);
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiStorage_SetVoidPtr(self, key, val));
-                // Assert: No exception means the method was invoked successfully
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiStorage_SetVoidPtr(self, key, val));
+            
         }
         
         /// <summary>
@@ -974,14 +625,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             uint key = 1;
             int valI = 1;
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiStoragePair_ImGuiStoragePair_Int(key, valI));
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiStoragePair_ImGuiStoragePair_Int(key, valI));
         }
         
         /// <summary>
@@ -992,14 +636,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             uint key = 1;
             float valF = 1.0f;
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiStoragePair_ImGuiStoragePair_Float(key, valF));
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiStoragePair_ImGuiStoragePair_Float(key, valF));
         }
         
         /// <summary>
@@ -1009,15 +646,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void ImGuiStoragePair_ImGuiStoragePair_Ptr_ShouldReturnIntPtr()
         {
             uint key = 1;
-            IntPtr valP = new IntPtr(1);
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiStoragePair_ImGuiStoragePair_Ptr(key, valP));
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            IntPtr valP = new IntPtr(1); 
+            Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiStoragePair_ImGuiStoragePair_Ptr(key, valP));
         }
         
         /// <summary>
@@ -1026,14 +656,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         [Fact]
         public void ImGuiStyle_ImGuiStyle_ShouldReturnIntPtr()
         {
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiStyle_ImGuiStyle());
-            }
-            else
-            {
-                Assert.True(true);
-            }
+           Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiStyle_ImGuiStyle());
         }
         
         /// <summary>
@@ -1044,15 +667,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             ImGuiStyle self = new ImGuiStyle();
             float scaleFactor = 1.5f;
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => ImGuiNative.ImGuiStyle_ScaleAllSizes(self, scaleFactor));
-                // Assert: No exception means the method was invoked successfully
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            Assert.Throws<DllNotFoundException>(() =>ImGuiNative.ImGuiStyle_ScaleAllSizes(self, scaleFactor));
+            
         }
     }
 }

@@ -194,15 +194,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             // Arrange
             ImDrawData drawData = new ImDrawData {Valid = 1, CmdListsCount = 5};
             
-            // Act
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => drawData.Clear());
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            Assert.Throws<DllNotFoundException>(() => drawData.Clear());
         }
         
         /// <summary>
@@ -217,14 +209,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Marshal.StructureToPtr(drawList, drawData.CmdListsPtr, false);
             
             // Act
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => drawData.DeIndexAllBuffers());
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            Assert.Throws<DllNotFoundException>(() => drawData.DeIndexAllBuffers());
             
         }
         
@@ -241,14 +226,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             Vector2 fbScale = new Vector2(2.0f, 2.0f);
             
             // Act
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                Assert.Throws<DllNotFoundException>(() => drawData.ScaleClipRects(fbScale));
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            Assert.Throws<DllNotFoundException>(() => drawData.ScaleClipRects(fbScale));
         }
     }
 }

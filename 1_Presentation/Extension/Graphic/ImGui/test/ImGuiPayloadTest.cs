@@ -175,19 +175,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
             // Arrange
             ImGuiPayload payload = new ImGuiPayload {Data = new IntPtr(123), DataSize = 100};
             
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                // Act
-                payload.Clear();
-                
-                // Assert
-                Assert.Equal(IntPtr.Zero, payload.Data);
-                Assert.Equal(0, payload.DataSize);
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            // Act
+            Assert.Throws<DllNotFoundException>(() =>payload.Clear());
         }
         
         /// <summary>
@@ -199,15 +188,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
             // Arrange
             ImGuiPayload payload = new ImGuiPayload {DataType = Encoding.UTF8.GetBytes("test\0")};
             
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                // Act
-                Assert.Throws<DllNotFoundException>(() => payload.IsDataType("test"));
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            // Act
+            Assert.Throws<DllNotFoundException>(() => payload.IsDataType("test"));
         }
         
         /// <summary>
@@ -219,15 +201,9 @@ namespace Alis.Extension.Graphic.ImGui.Test
             // Arrange
             ImGuiPayload payload = new ImGuiPayload {DataType = Encoding.UTF8.GetBytes("test\0")};
             
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                // Act
-                Assert.Throws<DllNotFoundException>(() => payload.IsDataType("test1"));
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            
+            // Act
+            Assert.Throws<DllNotFoundException>(() => payload.IsDataType("test1"));
         }
         
         /// <summary>
@@ -239,15 +215,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
             // Arrange
             ImGuiPayload payload = new ImGuiPayload {Delivery = 1};
             
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                // Act
-                Assert.Throws<DllNotFoundException>(() => payload.IsDelivery());
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            // Act
+            Assert.Throws<DllNotFoundException>(() => payload.IsDelivery());
         }
         
         /// <summary>
@@ -259,15 +228,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
             // Arrange
             ImGuiPayload payload = new ImGuiPayload {Delivery = 0};
             
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                // Act
-                Assert.Throws<DllNotFoundException>(() => payload.IsDelivery());
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            // Act
+            Assert.Throws<DllNotFoundException>(() => payload.IsDelivery());
         }
         
         /// <summary>
@@ -279,15 +241,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
             // Arrange
             ImGuiPayload payload = new ImGuiPayload {Preview = 1};
             
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                // Act
-                Assert.Throws<DllNotFoundException>(() => payload.IsPreview());
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            // Act
+            Assert.Throws<DllNotFoundException>(() => payload.IsPreview());
         }
         
         /// <summary>
@@ -299,15 +254,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
             // Arrange
             ImGuiPayload payload = new ImGuiPayload {Preview = 0};
             
-            if (ImGui.Native.ImGui.IsImguiActive())
-            {
-                // Act
-                Assert.Throws<DllNotFoundException>(() => payload.IsPreview());
-            }
-            else
-            {
-                Assert.True(true);
-            }
+            // Act
+            Assert.Throws<DllNotFoundException>(() => payload.IsPreview());
         }
     }
 }
