@@ -68,16 +68,6 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
 
         /// <summary>
-        /// Tests that destroy should not throw
-        /// </summary>
-        [Fact]
-        public void Destroy_ShouldNotThrow()
-        {
-            ImFontGlyphRangesBuilder builder = new ImFontGlyphRangesBuilder();
-            Assert.Throws<DllNotFoundException>(() => builder.Destroy());
-        }
-
-        /// <summary>
         /// Tests that get bit should return bool
         /// </summary>
         [Fact]

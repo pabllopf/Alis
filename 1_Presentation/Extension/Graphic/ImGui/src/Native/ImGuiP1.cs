@@ -107,15 +107,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         {
             ImGuiNative.igDebugTextEncoding(Encoding.UTF8.GetBytes(text));
         }
-
-        /// <summary>
-        ///     Destroys the platform windows
-        /// </summary>
-        public static void DestroyPlatformWindows()
-        {
-            ImGuiNative.igDestroyPlatformWindows();
-        }
-
+        
         /// <summary>
         ///     Docks the space using the specified id
         /// </summary>

@@ -252,17 +252,6 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
 
         /// <summary>
-        /// Tests that destroy should not throw
-        /// </summary>
-        [Fact]
-        public void Destroy_ShouldNotThrow()
-        {
-            ImGuiViewport viewport = new ImGuiViewport();
-            ImGuiViewportPtr viewportPtr = new ImGuiViewportPtr(viewport);
-            Assert.Throws<DllNotFoundException>(() => viewportPtr.Destroy());
-        }
-
-        /// <summary>
         /// Tests that get center should return vector 2
         /// </summary>
         [Fact]

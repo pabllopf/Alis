@@ -203,15 +203,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.ImFont_ClearOutputData(NativePtr);
         }
-
-        /// <summary>
-        ///     Destroys this instance
-        /// </summary>
-        public void Destroy()
-        {
-            ImGuiNative.ImFont_destroy(NativePtr);
-        }
-
+        
         /// <summary>
         ///     Finds the glyph using the specified c
         /// </summary>

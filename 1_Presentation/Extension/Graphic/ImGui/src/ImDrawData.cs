@@ -134,14 +134,6 @@ namespace Alis.Extension.Graphic.ImGui
         }
 
         /// <summary>
-        ///     Destroys this instance
-        /// </summary>
-        public void Destroy()
-        {
-            ImGuiNative.ImDrawData_destroy(ref this);
-        }
-
-        /// <summary>
         ///     Scales the clip rects using the specified fb scale
         /// </summary>
         /// <param name="fbScale">The fb scale</param>

@@ -171,15 +171,7 @@ namespace Alis.Extension.Graphic.ImGui
         ///     Gets the value of the platform request close
         /// </summary>
         public bool PlatformRequestClose => Marshal.ReadByte(NativePtr, Marshal.OffsetOf<ImGuiViewportPtr>("PlatformRequestClose").ToInt32()) != 0;
-
-        /// <summary>
-        ///     Destroys this instance
-        /// </summary>
-        public void Destroy()
-        {
-            ImGuiNative.ImGuiViewport_destroy(NativePtr);
-        }
-
+        
         /// <summary>
         ///     Gets the center
         /// </summary>
