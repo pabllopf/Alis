@@ -125,7 +125,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         /// Tests that progress bar with size arg and overlay throws dll not found exception
         /// </summary>
         [Fact]
-        public void ProgressBar_WithSizeArgAndOverlay_ThrowsDllNotFoundException()
+        public void v3_ProgressBar_WithSizeArgAndOverlay_ThrowsDllNotFoundException()
         {
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.igProgressBar(0.5f, new Vector2(100, 50), Encoding.UTF8.GetBytes("Overlay")));
         }
@@ -134,7 +134,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         /// Tests that push allow keyboard focus throws dll not found exception
         /// </summary>
         [Fact]
-        public void PushAllowKeyboardFocus_ThrowsDllNotFoundException()
+        public void v2_v2_PushAllowKeyboardFocus_ThrowsDllNotFoundException()
         {
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.igPushAllowKeyboardFocus(1));
         }
@@ -143,7 +143,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         /// Tests that push button repeat throws dll not found exception
         /// </summary>
         [Fact]
-        public void PushButtonRepeat_ThrowsDllNotFoundException()
+        public void v3_PushButtonRepeat_ThrowsDllNotFoundException()
         {
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.igPushButtonRepeat(1));
         }
@@ -152,7 +152,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         /// Tests that push clip rect throws dll not found exception
         /// </summary>
         [Fact]
-        public void PushClipRect_ThrowsDllNotFoundException()
+        public void v3_PushClipRect_ThrowsDllNotFoundException()
         {
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.igPushClipRect(new Vector2(0, 0), new Vector2(100, 100), 1));
         }
@@ -161,7 +161,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         /// Tests that push font throws dll not found exception
         /// </summary>
         [Fact]
-        public void PushFont_ThrowsDllNotFoundException()
+        public void v3_PushFont_ThrowsDllNotFoundException()
         {
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.igPushFont(IntPtr.Zero));
         }
@@ -170,7 +170,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         /// Tests that push id with string throws dll not found exception
         /// </summary>
         [Fact]
-        public void PushId_WithString_ThrowsDllNotFoundException()
+        public void v3_PushId_WithString_ThrowsDllNotFoundException()
         {
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.igPushID_Str(Encoding.UTF8.GetBytes("test")));
         }
@@ -188,7 +188,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         /// Tests that push id with int throws dll not found exception
         /// </summary>
         [Fact]
-        public void PushId_WithInt_ThrowsDllNotFoundException()
+        public void v3_PushId_WithInt_ThrowsDllNotFoundException()
         {
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.igPushID_Int(1));
         }
@@ -197,7 +197,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         /// Tests that push item width throws dll not found exception
         /// </summary>
         [Fact]
-        public void PushItemWidth_ThrowsDllNotFoundException()
+        public void v2_PushItemWidth_ThrowsDllNotFoundException()
         {
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.igPushItemWidth(100.0f));
         }
@@ -224,7 +224,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         /// Tests that push style var with float throws dll not found exception
         /// </summary>
         [Fact]
-        public void PushStyleVar_WithFloat_ThrowsDllNotFoundException()
+        public void v2_PushStyleVar_WithFloat_ThrowsDllNotFoundException()
         {
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.igPushStyleVar_Float(ImGuiStyleVar.Alpha, 1.0f));
         }
@@ -242,7 +242,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         /// Tests that push text wrap pos throws dll not found exception
         /// </summary>
         [Fact]
-        public void PushTextWrapPos_ThrowsDllNotFoundException()
+        public void v2_PushTextWrapPos_ThrowsDllNotFoundException()
         {
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.igPushTextWrapPos(0.0f));
         }
@@ -570,7 +570,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         /// Tests that set item default focus throws dll not found exception
         /// </summary>
         [Fact]
-        public void SetItemDefaultFocus_ThrowsDllNotFoundException()
+        public void v2_SetItemDefaultFocus_ThrowsDllNotFoundException()
         {
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.igSetItemDefaultFocus());
         }
@@ -588,7 +588,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         /// Tests that set keyboard focus here with offset throws dll not found exception
         /// </summary>
         [Fact]
-        public void SetKeyboardFocusHere_WithOffset_ThrowsDllNotFoundException()
+        public void v2_SetKeyboardFocusHere_WithOffset_ThrowsDllNotFoundException()
         {
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.igSetKeyboardFocusHere(1));
         }
@@ -732,7 +732,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         /// Tests that set next window pos with cond throws dll not found exception
         /// </summary>
         [Fact]
-        public void SetNextWindowPos_WithCond_ThrowsDllNotFoundException()
+        public void v2_SetNextWindowPos_WithCond_ThrowsDllNotFoundException()
         {
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.igSetNextWindowPos(new Vector2(100, 100), ImGuiCond.Always, new Vector2()));
         }
@@ -822,6 +822,884 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         /// <param name="data">The data</param>
         private void CustomCallback(ImGuiSizeCallbackData data)
         {
+        }
+        
+        /// <summary>
+        /// Tests that v 2 pop id throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_PopId_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PopId());
+        }
+        
+        /// <summary>
+        /// Tests that v 2 pop item width throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_PopItemWidth_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PopItemWidth());
+        }
+        
+        /// <summary>
+        /// Tests that v 2 pop style color throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_PopStyleColor_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PopStyleColor());
+        }
+        
+        /// <summary>
+        /// Tests that v 2 pop style color with count throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_PopStyleColor_WithCount_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PopStyleColor(1));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 pop style var throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_PopStyleVar_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PopStyleVar());
+        }
+        
+        /// <summary>
+        /// Tests that v 2 pop style var with count throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_PopStyleVar_WithCount_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PopStyleVar(1));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 pop text wrap pos throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_PopTextWrapPos_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PopTextWrapPos());
+        }
+        
+        /// <summary>
+        /// Tests that v 2 progress bar throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_ProgressBar_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ProgressBar(0.5f));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 progress bar with size arg throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_ProgressBar_WithSizeArg_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ProgressBar(0.5f, new Vector2(100, 20)));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 progress bar with size arg and overlay throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_ProgressBar_WithSizeArgAndOverlay_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ProgressBar(0.5f, new Vector2(100, 20), "Overlay"));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 push allow keyboard focus throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_PushAllowKeyboardFocus_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PushAllowKeyboardFocus(true));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 push button repeat throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_PushButtonRepeat_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PushButtonRepeat(true));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 push clip rect throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_PushClipRect_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PushClipRect(new Vector2(0, 0), new Vector2(100, 100), true));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 push font throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_PushFont_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PushFont(new ImFontPtr(IntPtr.Zero)));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 push id with string throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_PushId_WithString_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PushId("test"));
+        }
+        
+        /// <summary>
+        /// Tests that push id with int ptr throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PushId_WithIntPtr_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PushId(IntPtr.Zero));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 push id with int throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_PushId_WithInt_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PushId(1));
+        }
+        
+        /// <summary>
+        /// Tests that v 3 push item width throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v3_PushItemWidth_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PushItemWidth(100.0f));
+        }
+        
+        /// <summary>
+        /// Tests that push style color with u int throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PushStyleColor_WithUInt_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PushStyleColor(ImGuiCol.Text, 0xFFFFFFFF));
+        }
+        
+        /// <summary>
+        /// Tests that push style color with vector 4 throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PushStyleColor_WithVector4_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PushStyleColor(ImGuiCol.Text, new Vector4(1, 1, 1, 1)));
+        }
+        
+        /// <summary>
+        /// Tests that v 3 push style var with float throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v3_PushStyleVar_WithFloat_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PushStyleVar(ImGuiStyleVar.Alpha, 1.0f));
+        }
+        
+        /// <summary>
+        /// Tests that push style var with vector 2 throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PushStyleVar_WithVector2_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PushStyleVar(ImGuiStyleVar.WindowPadding, new Vector2(1, 1)));
+        }
+        
+        /// <summary>
+        /// Tests that push text wrap pos throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PushTextWrapPos_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PushTextWrapPos());
+        }
+        
+        /// <summary>
+        /// Tests that push text wrap pos with float throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PushTextWrapPos_WithFloat_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PushTextWrapPos(100.0f));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 radio button with bool throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_RadioButton_WithBool_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.RadioButton("label", true));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 radio button with int ptr throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_RadioButton_WithIntPtr_ThrowsDllNotFoundException()
+        {
+            int v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.RadioButton("label", ref v, 1));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 render throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_Render_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.Render());
+        }
+        
+        /// <summary>
+        /// Tests that v 2 render platform windows default throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_RenderPlatformWindowsDefault_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.RenderPlatformWindowsDefault());
+        }
+        
+        /// <summary>
+        /// Tests that v 2 render platform windows default with platform render arg throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_RenderPlatformWindowsDefault_WithPlatformRenderArg_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.RenderPlatformWindowsDefault(IntPtr.Zero));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 render platform windows default with platform render arg and renderer render arg throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_RenderPlatformWindowsDefault_WithPlatformRenderArgAndRendererRenderArg_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.RenderPlatformWindowsDefault(IntPtr.Zero, IntPtr.Zero));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 reset mouse drag delta throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_ResetMouseDragDelta_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ResetMouseDragDelta());
+        }
+        
+        /// <summary>
+        /// Tests that v 2 reset mouse drag delta with button throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_ResetMouseDragDelta_WithButton_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ResetMouseDragDelta(ImGuiMouseButton.Left));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 same line throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_SameLine_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SameLine());
+        }
+        
+        /// <summary>
+        /// Tests that v 2 same line with offset from start x throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_SameLine_WithOffsetFromStartX_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SameLine(100.0f));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 same line with offset from start x and spacing throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_SameLine_WithOffsetFromStartXAndSpacing_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SameLine(100.0f, 10.0f));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 save ini settings to disk throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_SaveIniSettingsToDisk_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SaveIniSettingsToDisk("test.ini"));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 save ini settings to memory throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_SaveIniSettingsToMemory_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<MarshalDirectiveException>(() => ImGui.Native.ImGui.SaveIniSettingsToMemory());
+        }
+        
+        /// <summary>
+        /// Tests that save ini settings to memory with out ini size throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void SaveIniSettingsToMemory_WithOutIniSize_ThrowsDllNotFoundException()
+        {
+            uint size;
+            Assert.Throws<MarshalDirectiveException>(() => ImGui.Native.ImGui.SaveIniSettingsToMemory(out size));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 selectable throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_Selectable_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.Selectable("label"));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 selectable with selected throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_Selectable_WithSelected_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.Selectable("label", true));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 selectable with selected and flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_Selectable_WithSelectedAndFlags_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.Selectable("label", true, ImGuiSelectableFlags.None));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 selectable with selected flags and size throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_Selectable_WithSelectedFlagsAndSize_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.Selectable("label", true, ImGuiSelectableFlags.None, new Vector2(100, 20)));
+        }
+        
+        /// <summary>
+        /// Tests that selectable with ref selected throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void Selectable_WithRefSelected_ThrowsDllNotFoundException()
+        {
+            bool selected = true;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.Selectable("label", ref selected));
+        }
+        
+        /// <summary>
+        /// Tests that selectable with ref selected and flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void Selectable_WithRefSelectedAndFlags_ThrowsDllNotFoundException()
+        {
+            bool selected = true;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.Selectable("label", ref selected, ImGuiSelectableFlags.None));
+        }
+        
+        /// <summary>
+        /// Tests that selectable with ref selected flags and size throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void Selectable_WithRefSelectedFlagsAndSize_ThrowsDllNotFoundException()
+        {
+            bool selected = true;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.Selectable("label", ref selected, ImGuiSelectableFlags.None, new Vector2(100, 20)));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 separator throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_Separator_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.Separator());
+        }
+        
+        /// <summary>
+        /// Tests that v 2 set allocator functions throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_SetAllocatorFunctions_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetAllocatorFunctions(IntPtr.Zero, IntPtr.Zero));
+        }
+        
+        /// <summary>
+        /// Tests that set allocator functions with user data throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void SetAllocatorFunctions_WithUserData_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetAllocatorFunctions(IntPtr.Zero, IntPtr.Zero, IntPtr.Zero));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 set clipboard text throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_SetClipboardText_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetClipboardText("text"));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 set color edit options throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_SetColorEditOptions_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetColorEditOptions(ImGuiColorEditFlags.None));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 set column offset throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_SetColumnOffset_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetColumnOffset(0, 100.0f));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 set column width throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_SetColumnWidth_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetColumnWidth(0, 100.0f));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 set current context throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_SetCurrentContext_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetCurrentContext(IntPtr.Zero));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 set cursor pos throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_SetCursorPos_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetCursorPos(new Vector2(100, 100)));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 set cursor pos x throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_SetCursorPosX_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetCursorPosX(100.0f));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 set cursor pos y throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_SetCursorPosY_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetCursorPosY(100.0f));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 set cursor screen pos throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_SetCursorScreenPos_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetCursorScreenPos(new Vector2(100, 100)));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 set drag drop payload throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_SetDragDropPayload_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetDragDropPayload("type", IntPtr.Zero, 0));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 set drag drop payload with cond throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_SetDragDropPayload_WithCond_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetDragDropPayload("type", IntPtr.Zero, 0, ImGuiCond.None));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 set item allow overlap throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_SetItemAllowOverlap_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetItemAllowOverlap());
+        }
+        
+        /// <summary>
+        /// Tests that set item default focus throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void SetItemDefaultFocus_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetItemDefaultFocus());
+        }
+        
+        /// <summary>
+        /// Tests that v 2 set keyboard focus here throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_SetKeyboardFocusHere_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetKeyboardFocusHere());
+        }
+        
+        /// <summary>
+        /// Tests that set keyboard focus here with offset throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void SetKeyboardFocusHere_WithOffset_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetKeyboardFocusHere(0));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 set mouse cursor throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_SetMouseCursor_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetMouseCursor(ImGuiMouseCursor.Arrow));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 set next frame want capture keyboard throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_SetNextFrameWantCaptureKeyboard_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextFrameWantCaptureKeyboard(true));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 set next frame want capture mouse throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_SetNextFrameWantCaptureMouse_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextFrameWantCaptureMouse(true));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 set next item open throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_SetNextItemOpen_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextItemOpen(true));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 set next item open with cond throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_SetNextItemOpen_WithCond_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextItemOpen(true, ImGuiCond.None));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 set next item width throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_SetNextItemWidth_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextItemWidth(100.0f));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 set next window bg alpha throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_SetNextWindowBgAlpha_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowBgAlpha(1.0f));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 set next window class throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_SetNextWindowClass_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowClass(new ImGuiWindowClass()));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 set next window collapsed throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_SetNextWindowCollapsed_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowCollapsed(true));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 set next window collapsed with cond throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_SetNextWindowCollapsed_WithCond_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowCollapsed(true, ImGuiCond.None));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 set next window content size throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_SetNextWindowContentSize_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowContentSize(new Vector2(100, 100)));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 set next window dock id throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_SetNextWindowDockId_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowDockId(1));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 set next window dock id with cond throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_SetNextWindowDockId_WithCond_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowDockId(1, ImGuiCond.None));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 set next window focus throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_SetNextWindowFocus_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowFocus());
+        }
+        
+        /// <summary>
+        /// Tests that v 2 set next window pos throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_SetNextWindowPos_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowPos(new Vector2(100, 100)));
+        }
+        
+        /// <summary>
+        /// Tests that set next window pos with cond throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void SetNextWindowPos_WithCond_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowPos(new Vector2(100, 100), ImGuiCond.None));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 set next window pos with cond and pivot throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_SetNextWindowPos_WithCondAndPivot_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowPos(new Vector2(100, 100), ImGuiCond.None, new Vector2(0.5f, 0.5f)));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 set next window scroll throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_SetNextWindowScroll_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowScroll(new Vector2(100, 100)));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 set next window size throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_SetNextWindowSize_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowSize(new Vector2(100, 100)));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 set next window size with cond throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_SetNextWindowSize_WithCond_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowSize(new Vector2(100, 100), ImGuiCond.None));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 set next window size constraints throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_SetNextWindowSizeConstraints_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowSizeConstraints(new Vector2(100, 100), new Vector2(200, 200)));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 set next window size constraints with callback throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_SetNextWindowSizeConstraints_WithCallback_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowSizeConstraints(new Vector2(100, 100), new Vector2(200, 200), null));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 set next window size constraints with callback and data throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v2_SetNextWindowSizeConstraints_WithCallbackAndData_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowSizeConstraints(new Vector2(100, 100), new Vector2(200, 200), null, IntPtr.Zero));
+        }
+        
+        /// <summary>
+        /// Tests that set next window viewport throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void SetNextWindowViewport_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetNextWindowViewport(1));
+        }
+        
+        /// <summary>
+        /// Tests that set scroll from pos x throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void SetScrollFromPosX_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetScrollFromPosX(100.0f));
+        }
+        
+        /// <summary>
+        /// Tests that set scroll from pos x with center x ratio throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void SetScrollFromPosX_WithCenterXRatio_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetScrollFromPosX(100.0f, 0.5f));
+        }
+        
+        /// <summary>
+        /// Tests that set scroll from pos y throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void SetScrollFromPosY_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetScrollFromPosY(100.0f));
+        }
+        
+        /// <summary>
+        /// Tests that set scroll from pos y with center y ratio throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void SetScrollFromPosY_WithCenterYRatio_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetScrollFromPosY(100.0f, 0.5f));
+        }
+        
+        /// <summary>
+        /// Tests that set scroll here x throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void SetScrollHereX_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetScrollHereX());
+        }
+        
+        /// <summary>
+        /// Tests that set scroll here x with center x ratio throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void SetScrollHereX_WithCenterXRatio_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetScrollHereX(0.5f));
+        }
+        
+        /// <summary>
+        /// Tests that set scroll here y throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void SetScrollHereY_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetScrollHereY());
+        }
+        
+        /// <summary>
+        /// Tests that set scroll here y with center y ratio throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void SetScrollHereY_WithCenterYRatio_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetScrollHereY(0.5f));
+        }
+        
+        /// <summary>
+        /// Tests that set scroll x throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void SetScrollX_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetScrollX(100.0f));
+        }
+        
+        /// <summary>
+        /// Tests that set scroll y throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void SetScrollY_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SetScrollY(100.0f));
         }
     }
 }

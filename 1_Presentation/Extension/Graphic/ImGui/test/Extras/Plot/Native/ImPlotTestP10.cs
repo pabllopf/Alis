@@ -27,6 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using Alis.Extension.Graphic.ImGui.Extras.Plot;
+using Alis.Extension.Graphic.ImGui.Extras.Plot.Native;
+using Xunit;
+
 namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
 {
     /// <summary>
@@ -34,6 +39,464 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
     /// </summary>
     public partial class ImPlotTest
     {
+        /// <summary>
+        /// Tests that plot shaded short array 5 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_ShortArray_5Params()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new short[] {1, 2, 3}, 3, 0.0, 1.0));
+        }
         
+        /// <summary>
+        /// Tests that plot shaded short array 6 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_ShortArray_6Params()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new short[] {1, 2, 3}, 3, 0.0, 1.0, 0.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded short array 7 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_ShortArray_7Params()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new short[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotShadedFlags.None));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded short array 8 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_ShortArray_8Params()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new short[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotShadedFlags.None, 0));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded short array 9 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_ShortArray_9Params()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new short[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotShadedFlags.None, 0, 2));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded u short array 3 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_UShortArray_3Params()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new ushort[] {1, 2, 3}, 3));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded u short array 4 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_UShortArray_4Params()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new ushort[] {1, 2, 3}, 3, 0.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded u short array 5 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_UShortArray_5Params()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new ushort[] {1, 2, 3}, 3, 0.0, 1.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded u short array 6 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_UShortArray_6Params()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new ushort[] {1, 2, 3}, 3, 0.0, 1.0, 0.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded u short array 7 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_UShortArray_7Params()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new ushort[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotShadedFlags.None));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded u short array 8 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_UShortArray_8Params()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new ushort[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotShadedFlags.None, 0));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded u short array 9 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_UShortArray_9Params()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new ushort[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotShadedFlags.None, 0, 2));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded int array 3 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_IntArray_3Params()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new int[] {1, 2, 3}, 3));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded int array 4 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_IntArray_4Params()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new int[] {1, 2, 3}, 3, 0.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded int array 5 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_IntArray_5Params()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new int[] {1, 2, 3}, 3, 0.0, 1.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded int array 6 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_IntArray_6Params()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new int[] {1, 2, 3}, 3, 0.0, 1.0, 0.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded int array 7 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_IntArray_7Params()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new int[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotShadedFlags.None));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded int array 8 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_IntArray_8Params()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new int[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotShadedFlags.None, 0));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded int array 9 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_IntArray_9Params()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new int[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotShadedFlags.None, 0, 2));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded u int array 3 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_UIntArray_3Params()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new uint[] {1, 2, 3}, 3));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded u int array 4 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_UIntArray_4Params()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new uint[] {1, 2, 3}, 3, 0.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded u int array 5 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_UIntArray_5Params()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new uint[] {1, 2, 3}, 3, 0.0, 1.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded u int array 6 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_UIntArray_6Params()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new uint[] {1, 2, 3}, 3, 0.0, 1.0, 0.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded u int array 7 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_UIntArray_7Params()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new uint[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotShadedFlags.None));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded u int array 8 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_UIntArray_8Params()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new uint[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotShadedFlags.None, 0));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded u int array 9 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_UIntArray_9Params()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new uint[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotShadedFlags.None, 0, 2));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded long array 3 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_LongArray_3Params()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new long[] {1, 2, 3}, 3));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded long array 4 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_LongArray_4Params()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new long[] {1, 2, 3}, 3, 0.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded long array 5 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_LongArray_5Params()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new long[] {1, 2, 3}, 3, 0.0, 1.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded long array 6 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_LongArray_6Params()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new long[] {1, 2, 3}, 3, 0.0, 1.0, 0.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded long array 7 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_LongArray_7Params()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new long[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotShadedFlags.None));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded long array 8 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_LongArray_8Params()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new long[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotShadedFlags.None, 0));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded long array 9 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_LongArray_9Params()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new long[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotShadedFlags.None, 0, 2));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded u long array 3 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_ULongArray_3Params()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new ulong[] {1, 2, 3}, 3));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded u long array 4 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_ULongArray_4Params()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new ulong[] {1, 2, 3}, 3, 0.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded u long array 5 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_ULongArray_5Params()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new ulong[] {1, 2, 3}, 3, 0.0, 1.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded u long array 6 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_ULongArray_6Params()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new ulong[] {1, 2, 3}, 3, 0.0, 1.0, 0.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded u long array 7 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_ULongArray_7Params()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new ulong[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotShadedFlags.None));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded u long array 8 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_ULongArray_8Params()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new ulong[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotShadedFlags.None, 0));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded u long array 9 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_ULongArray_9Params()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new ulong[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotShadedFlags.None, 0, 2));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded float ref 3 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_FloatRef_3Params()
+        {
+            float xs = 1.0f, ys = 2.0f;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", ref xs, ref ys, 3));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded float ref 4 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_FloatRef_4Params()
+        {
+            float xs = 1.0f, ys = 2.0f;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", ref xs, ref ys, 3, 0.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded float ref 5 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_FloatRef_5Params()
+        {
+            float xs = 1.0f, ys = 2.0f;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", ref xs, ref ys, 3, 0.0, ImPlotShadedFlags.None));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded float ref 6 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_FloatRef_6Params()
+        {
+            float xs = 1.0f, ys = 2.0f;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", ref xs, ref ys, 3, 0.0, ImPlotShadedFlags.None, 0));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded float ref 7 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_FloatRef_7Params()
+        {
+            float xs = 1.0f, ys = 2.0f;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", ref xs, ref ys, 3, 0.0, ImPlotShadedFlags.None, 0, 2));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded double ref 3 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_DoubleRef_3Params()
+        {
+            double xs = 1.0, ys = 2.0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", ref xs, ref ys, 3));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded double ref 4 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_DoubleRef_4Params()
+        {
+            double xs = 1.0, ys = 2.0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", ref xs, ref ys, 3, 0.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded double ref 5 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_DoubleRef_5Params()
+        {
+            double xs = 1.0, ys = 2.0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", ref xs, ref ys, 3, 0.0, ImPlotShadedFlags.None));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded double ref 6 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_DoubleRef_6Params()
+        {
+            double xs = 1.0, ys = 2.0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", ref xs, ref ys, 3, 0.0, ImPlotShadedFlags.None, 0));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded double ref 7 params
+        /// </summary>
+        [Fact]
+        public void PlotShaded_DoubleRef_7Params()
+        {
+            double xs = 1.0, ys = 2.0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", ref xs, ref ys, 3, 0.0, ImPlotShadedFlags.None, 0, 2));
+        }
     }
 }
