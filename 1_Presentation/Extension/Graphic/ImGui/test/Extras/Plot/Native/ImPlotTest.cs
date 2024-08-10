@@ -39,7 +39,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
     /// <summary>
     /// The im plot  Fact class
     /// </summary>
-    public class ImPlotTest
+    public partial class ImPlotTest
     {
         /// <summary>
         ///  Facts that plot to pixels with im plot point returns correct vector 2
