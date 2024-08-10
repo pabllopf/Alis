@@ -27,6 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using Alis.Extension.Graphic.ImGui.Extras.Plot;
+using Alis.Extension.Graphic.ImGui.Extras.Plot.Native;
+using Xunit;
+
 namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
 {
     /// <summary>
@@ -34,6 +39,321 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
     /// </summary>
     public partial class ImPlotTest
     {
+        /// <summary>
+        /// Tests that plot scatter byte array throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotScatter_ByteArray_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("label", new byte[] {1, 2, 3}, 3, 1.0, 0.0, ImPlotScatterFlags.None, 0, 1));
+        }
+        
+        /// <summary>
+        /// Tests that plot scatter short array throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotScatter_ShortArray_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("label", new short[] {1, 2, 3}, 3));
+        }
+        
+        /// <summary>
+        /// Tests that plot scatter short array throws dll not found exception v 1
+        /// </summary>
+        [Fact]
+        public void PlotScatter_ShortArray_ThrowsDllNotFoundException_v1()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("label", new short[] {1, 2, 3}, 3, 1.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot scatter short array throws dll not found exception v 2
+        /// </summary>
+        [Fact]
+        public void PlotScatter_ShortArray_ThrowsDllNotFoundException_v2()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("label", new short[] {1, 2, 3}, 3, 1.0, 0.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot scatter short array throws dll not found exception v 3
+        /// </summary>
+        [Fact]
+        public void PlotScatter_ShortArray_ThrowsDllNotFoundException_v3()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("label", new short[] {1, 2, 3}, 3, 1.0, 0.0, ImPlotScatterFlags.None));
+        }
+        
+        /// <summary>
+        /// Tests that plot scatter u short array throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotScatter_UShortArray_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("label", new ushort[] {1, 2, 3}, 3));
+        }
+        
+        /// <summary>
+        /// Tests that plot scatter u short array throws dll not found exception v 1
+        /// </summary>
+        [Fact]
+        public void PlotScatter_UShortArray_ThrowsDllNotFoundException_v1()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("label", new ushort[] {1, 2, 3}, 3, 1.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot scatter u short array throws dll not found exception v 2
+        /// </summary>
+        [Fact]
+        public void PlotScatter_UShortArray_ThrowsDllNotFoundException_v2()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("label", new ushort[] {1, 2, 3}, 3, 1.0, 0.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot scatter u short array throws dll not found exception v 3
+        /// </summary>
+        [Fact]
+        public void PlotScatter_UShortArray_ThrowsDllNotFoundException_v3()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("label", new ushort[] {1, 2, 3}, 3, 1.0, 0.0, ImPlotScatterFlags.None));
+        }
+        
+        /// <summary>
+        /// Tests that plot scatter int array throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotScatter_IntArray_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("label", new int[] {1, 2, 3}, 3));
+        }
+        
+        /// <summary>
+        /// Tests that plot scatter int array throws dll not found exception v 1
+        /// </summary>
+        [Fact]
+        public void PlotScatter_IntArray_ThrowsDllNotFoundException_v1()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("label", new int[] {1, 2, 3}, 3, 1.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot scatter int array throws dll not found exception v 2
+        /// </summary>
+        [Fact]
+        public void PlotScatter_IntArray_ThrowsDllNotFoundException_v2()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("label", new int[] {1, 2, 3}, 3, 1.0, 0.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot scatter int array throws dll not found exception v 3
+        /// </summary>
+        [Fact]
+        public void PlotScatter_IntArray_ThrowsDllNotFoundException_v3()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("label", new int[] {1, 2, 3}, 3, 1.0, 0.0, ImPlotScatterFlags.None));
+        }
+        
+        /// <summary>
+        /// Tests that plot scatter u int array throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotScatter_UIntArray_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("label", new uint[] {1, 2, 3}, 3));
+        }
+        
+        /// <summary>
+        /// Tests that plot scatter u int array throws dll not found exception v 1
+        /// </summary>
+        [Fact]
+        public void PlotScatter_UIntArray_ThrowsDllNotFoundException_v1()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("label", new uint[] {1, 2, 3}, 3, 1.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot scatter u int array throws dll not found exception v 2
+        /// </summary>
+        [Fact]
+        public void PlotScatter_UIntArray_ThrowsDllNotFoundException_v2()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("label", new uint[] {1, 2, 3}, 3, 1.0, 0.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot scatter u int array throws dll not found exception v 3
+        /// </summary>
+        [Fact]
+        public void PlotScatter_UIntArray_ThrowsDllNotFoundException_v3()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("label", new uint[] {1, 2, 3}, 3, 1.0, 0.0, ImPlotScatterFlags.None));
+        }
+        
+        /// <summary>
+        /// Tests that plot scatter long array throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotScatter_LongArray_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("label", new long[] {1, 2, 3}, 3));
+        }
+        
+        /// <summary>
+        /// Tests that plot scatter long array throws dll not found exception v 1
+        /// </summary>
+        [Fact]
+        public void PlotScatter_LongArray_ThrowsDllNotFoundException_v1()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("label", new long[] {1, 2, 3}, 3, 1.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot scatter long array throws dll not found exception v 2
+        /// </summary>
+        [Fact]
+        public void PlotScatter_LongArray_ThrowsDllNotFoundException_v2()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("label", new long[] {1, 2, 3}, 3, 1.0, 0.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot scatter long array throws dll not found exception v 3
+        /// </summary>
+        [Fact]
+        public void PlotScatter_LongArray_ThrowsDllNotFoundException_v3()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("label", new long[] {1, 2, 3}, 3, 1.0, 0.0, ImPlotScatterFlags.None));
+        }
+        
+        /// <summary>
+        /// Tests that plot scatter u long array throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotScatter_ULongArray_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("label", new ulong[] {1, 2, 3}, 3));
+        }
+        
+        /// <summary>
+        /// Tests that plot scatter u long array throws dll not found exception v 1
+        /// </summary>
+        [Fact]
+        public void PlotScatter_ULongArray_ThrowsDllNotFoundException_v1()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("label", new ulong[] {1, 2, 3}, 3, 1.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot scatter u long array throws dll not found exception v 2
+        /// </summary>
+        [Fact]
+        public void PlotScatter_ULongArray_ThrowsDllNotFoundException_v2()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("label", new ulong[] {1, 2, 3}, 3, 1.0, 0.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot scatter u long array throws dll not found exception v 3
+        /// </summary>
+        [Fact]
+        public void PlotScatter_ULongArray_ThrowsDllNotFoundException_v3()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("label", new ulong[] {1, 2, 3}, 3, 1.0, 0.0, ImPlotScatterFlags.None));
+        }
+        
+        /// <summary>
+        /// Tests that plot scatter float ref throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotScatter_FloatRef_ThrowsDllNotFoundException()
+        {
+            float xs = 1.0f, ys = 2.0f;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("label", ref xs, ref ys, 3));
+        }
+        
+        /// <summary>
+        /// Tests that plot scatter float ref throws dll not found exception v 1
+        /// </summary>
+        [Fact]
+        public void PlotScatter_FloatRef_ThrowsDllNotFoundException_v1()
+        {
+            float xs = 1.0f, ys = 2.0f;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("label", ref xs, ref ys, 3, ImPlotScatterFlags.None));
+        }
+        
+        /// <summary>
+        /// Tests that plot scatter double ref throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotScatter_DoubleRef_ThrowsDllNotFoundException()
+        {
+            double xs = 1.0, ys = 2.0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("label", ref xs, ref ys, 3));
+        }
+        
+        /// <summary>
+        /// Tests that plot scatter double ref throws dll not found exception v 1
+        /// </summary>
+        [Fact]
+        public void PlotScatter_DoubleRef_ThrowsDllNotFoundException_v1()
+        {
+            double xs = 1.0, ys = 2.0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("label", ref xs, ref ys, 3, ImPlotScatterFlags.None));
+        }
+        
+        /// <summary>
+        /// Tests that plot scatter s byte ref throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotScatter_SByteRef_ThrowsDllNotFoundException()
+        {
+            sbyte xs = 1, ys = 2;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("label", ref xs, ref ys, 3));
+        }
+        
+        /// <summary>
+        /// Tests that plot scatter s byte ref throws dll not found exception v 1
+        /// </summary>
+        [Fact]
+        public void PlotScatter_SByteRef_ThrowsDllNotFoundException_v1()
+        {
+            sbyte xs = 1, ys = 2;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("label", ref xs, ref ys, 3, ImPlotScatterFlags.None));
+        }
+        
+        /// <summary>
+        /// Tests that plot scatter byte ref throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotScatter_ByteRef_ThrowsDllNotFoundException()
+        {
+            byte xs = 1, ys = 2;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("label", ref xs, ref ys, 3));
+        }
+        
+        /// <summary>
+        /// Tests that plot scatter byte ref throws dll not found exception v 1
+        /// </summary>
+        [Fact]
+        public void PlotScatter_ByteRef_ThrowsDllNotFoundException_v1()
+        {
+            byte xs = 1, ys = 2;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("label", ref xs, ref ys, 3, ImPlotScatterFlags.None));
+        }
+        
+        /// <summary>
+        /// Tests that plot scatter short ref throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotScatter_ShortRef_ThrowsDllNotFoundException()
+        {
+            short xs = 1, ys = 2;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("label", ref xs, ref ys, 3));
+        }
+        
         
     }
 }

@@ -27,6 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Runtime.InteropServices;
+using Alis.Extension.Graphic.ImGui.Extras.Plot;
+using Alis.Extension.Graphic.ImGui.Extras.Plot.Native;
+using Xunit;
+
 namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
 {
     /// <summary>
@@ -34,6 +40,247 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
     /// </summary>
     public partial class ImPlotTest
     {
+        /// <summary>
+        /// Tests that plot pie chart u short throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotPieChart_UShort_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new string[] {"A"}, new ushort[] {1}, 1, 0.0, 0.0, 1.0, "%.1f"));
+        }
         
+        /// <summary>
+        /// Tests that plot pie chart u short throws dll not found exception v 2
+        /// </summary>
+        [Fact]
+        public void PlotPieChart_UShort_ThrowsDllNotFoundException_v2()
+        {
+            Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new string[] {"A"}, new ushort[] {1}, 1, 0.0, 0.0, 1.0, "%.1f", 90.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot pie chart u short throws dll not found exception v 3
+        /// </summary>
+        [Fact]
+        public void PlotPieChart_UShort_ThrowsDllNotFoundException_v3()
+        {
+            Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new string[] {"A"}, new ushort[] {1}, 1, 0.0, 0.0, 1.0, "%.1f", 90.0, ImPlotPieChartFlags.None));
+        }
+        
+        /// <summary>
+        /// Tests that plot pie chart int throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotPieChart_Int_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new string[] {"A"}, new int[] {1}, 1, 0.0, 0.0, 1.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot pie chart int throws dll not found exception v 2
+        /// </summary>
+        [Fact]
+        public void PlotPieChart_Int_ThrowsDllNotFoundException_v2()
+        {
+            Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new string[] {"A"}, new int[] {1}, 1, 0.0, 0.0, 1.0, "%.1f"));
+        }
+        
+        /// <summary>
+        /// Tests that plot pie chart int throws dll not found exception v 3
+        /// </summary>
+        [Fact]
+        public void PlotPieChart_Int_ThrowsDllNotFoundException_v3()
+        {
+            Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new string[] {"A"}, new int[] {1}, 1, 0.0, 0.0, 1.0, "%.1f", 90.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot pie chart u int throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotPieChart_UInt_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new string[] {"A"}, new uint[] {1}, 1, 0.0, 0.0, 1.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot pie chart u int throws dll not found exception v 2
+        /// </summary>
+        [Fact]
+        public void PlotPieChart_UInt_ThrowsDllNotFoundException_v2()
+        {
+            Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new string[] {"A"}, new uint[] {1}, 1, 0.0, 0.0, 1.0, "%.1f"));
+        }
+        
+        /// <summary>
+        /// Tests that plot pie chart u int throws dll not found exception v 3
+        /// </summary>
+        [Fact]
+        public void PlotPieChart_UInt_ThrowsDllNotFoundException_v3()
+        {
+            Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new string[] {"A"}, new uint[] {1}, 1, 0.0, 0.0, 1.0, "%.1f", 90.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot pie chart long throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotPieChart_Long_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new string[] {"A"}, new long[] {1}, 1, 0.0, 0.0, 1.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot pie chart long throws dll not found exception v 2
+        /// </summary>
+        [Fact]
+        public void PlotPieChart_Long_ThrowsDllNotFoundException_v2()
+        {
+            Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new string[] {"A"}, new long[] {1}, 1, 0.0, 0.0, 1.0, "%.1f"));
+        }
+        
+        /// <summary>
+        /// Tests that plot pie chart long throws dll not found exception v 3
+        /// </summary>
+        [Fact]
+        public void PlotPieChart_Long_ThrowsDllNotFoundException_v3()
+        {
+            Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new string[] {"A"}, new long[] {1}, 1, 0.0, 0.0, 1.0, "%.1f", 90.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot pie chart u long throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotPieChart_ULong_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new string[] {"A"}, new ulong[] {1}, 1, 0.0, 0.0, 1.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot pie chart u long throws dll not found exception v 2
+        /// </summary>
+        [Fact]
+        public void PlotPieChart_ULong_ThrowsDllNotFoundException_v2()
+        {
+            Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new string[] {"A"}, new ulong[] {1}, 1, 0.0, 0.0, 1.0, "%.1f"));
+        }
+        
+        /// <summary>
+        /// Tests that plot pie chart u long throws dll not found exception v 3
+        /// </summary>
+        [Fact]
+        public void PlotPieChart_ULong_ThrowsDllNotFoundException_v3()
+        {
+            Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotPieChart(new string[] {"A"}, new ulong[] {1}, 1, 0.0, 0.0, 1.0, "%.1f", 90.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot scatter float throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotScatter_Float_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("A", new float[] {1.0f}, 1));
+        }
+        
+        /// <summary>
+        /// Tests that plot scatter float throws dll not found exception v 2
+        /// </summary>
+        [Fact]
+        public void PlotScatter_Float_ThrowsDllNotFoundException_v2()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("A", new float[] {1.0f}, 1, 1.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot scatter float throws dll not found exception v 3
+        /// </summary>
+        [Fact]
+        public void PlotScatter_Float_ThrowsDllNotFoundException_v3()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("A", new float[] {1.0f}, 1, 1.0, 0.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot scatter double throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotScatter_Double_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("A", new double[] {1.0}, 1));
+        }
+        
+        /// <summary>
+        /// Tests that plot scatter double throws dll not found exception v 2
+        /// </summary>
+        [Fact]
+        public void PlotScatter_Double_ThrowsDllNotFoundException_v2()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("A", new double[] {1.0}, 1, 1.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot scatter double throws dll not found exception v 3
+        /// </summary>
+        [Fact]
+        public void PlotScatter_Double_ThrowsDllNotFoundException_v3()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("A", new double[] {1.0}, 1, 1.0, 0.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot scatter s byte throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotScatter_SByte_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("A", new sbyte[] {1}, 1));
+        }
+        
+        /// <summary>
+        /// Tests that plot scatter s byte throws dll not found exception v 2
+        /// </summary>
+        [Fact]
+        public void PlotScatter_SByte_ThrowsDllNotFoundException_v2()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("A", new sbyte[] {1}, 1, 1.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot scatter s byte throws dll not found exception v 3
+        /// </summary>
+        [Fact]
+        public void PlotScatter_SByte_ThrowsDllNotFoundException_v3()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("A", new sbyte[] {1}, 1, 1.0, 0.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot scatter byte throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotScatter_Byte_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("A", new byte[] {1}, 1));
+        }
+        
+        /// <summary>
+        /// Tests that plot scatter byte throws dll not found exception v 2
+        /// </summary>
+        [Fact]
+        public void PlotScatter_Byte_ThrowsDllNotFoundException_v2()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("A", new byte[] {1}, 1, 1.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot scatter byte throws dll not found exception v 3
+        /// </summary>
+        [Fact]
+        public void PlotScatter_Byte_ThrowsDllNotFoundException_v3()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotScatter("A", new byte[] {1}, 1, 1.0, 0.0));
+        }
     }
 }
