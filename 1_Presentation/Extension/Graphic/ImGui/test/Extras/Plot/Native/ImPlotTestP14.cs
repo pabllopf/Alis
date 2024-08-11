@@ -37,7 +37,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
     /// <summary>
     /// The im plot test class
     /// </summary>
-    public partial class ImPlotTest
+    public class ImPlotTestP14
     {
         /// <summary>
         /// Tests that plot stems int array 5 params v 1

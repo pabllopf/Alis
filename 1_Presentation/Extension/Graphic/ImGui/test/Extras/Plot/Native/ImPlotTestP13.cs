@@ -37,7 +37,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
     /// <summary>
     /// The im plot test class
     /// </summary>
-    public partial class ImPlotTest
+    public class ImPlotTestP13
     {
         /// <summary>
         /// Tests that plot stems should throw dll not found exception v 1

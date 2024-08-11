@@ -37,7 +37,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
     /// <summary>
     /// The im plot test class
     /// </summary>
-    public partial class ImPlotTest
+    public class ImPlotTestP6
     {
         /// <summary>
         /// Tests that plot inf lines byte array throws dll not found exception

@@ -37,7 +37,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
     /// <summary>
     /// The im plot test class
     /// </summary>
-    public partial class ImPlotTest
+    public class ImPlotTestP3
     {
         /// <summary>
         /// Tests that plot error bars double throws dll not found exception

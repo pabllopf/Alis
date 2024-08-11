@@ -37,7 +37,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
     /// <summary>
     /// The im plot test class
     /// </summary>
-    public partial class ImPlotTest
+    public class ImPlotTestP21
     {
         /// <summary>
         /// Tests that plot shaded s 8 ptr s 8 ptr int throws dll not found exception

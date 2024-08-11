@@ -39,7 +39,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
     /// <summary>
     /// The im plot test class
     /// </summary>
-    public partial class ImPlotTest
+    public class ImPlotTestP2
     {
         /// <summary>
         /// Tests that get plot limits throws dll not found exception
