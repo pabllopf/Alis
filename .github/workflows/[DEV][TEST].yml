@@ -42,6 +42,12 @@ jobs:
         with:
           ref: master
           fetch-depth: 0
+      
+      - name: clean_bin_sln
+        run: FOR /d /r . %%d IN (bin) DO @IF EXIST "%%d" rd /s /q "%%d"
+
+      - name: clean_obj_sln
+        run: FOR /d /r . %%d IN (obj) DO @IF EXIST "%%d" rd /s /q "%%d"
 
       - name: setup
         uses: actions/setup-dotnet@v4
