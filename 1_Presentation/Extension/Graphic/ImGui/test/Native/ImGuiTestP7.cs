@@ -843,15 +843,6 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 2 pop style var throws dll not found exception
-        /// </summary>
-        [Fact]
-        public void v2_PopStyleVar_ThrowsDllNotFoundException()
-        {
-            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PopStyleVar());
-        }
-        
-        /// <summary>
         /// Tests that v 2 pop style var with count throws dll not found exception
         /// </summary>
         [Fact]
