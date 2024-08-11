@@ -38,7 +38,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
     /// <summary>
     /// The im plot test class
     /// </summary>
-    public partial class ImPlotTest
+    public class ImPlotTestP15
     {
         /// <summary>
         /// Tests that plot bar groups u int 32 test

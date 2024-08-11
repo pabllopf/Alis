@@ -8,11 +8,14 @@ jobs:
   macos_12_x64:
     if: "contains(github.event.head_commit.message, 'test:')"
     runs-on: macos-12
+    env:
+      GITHUB_ACTIONS_CACHE_DISABLED: true
     steps:
       - name: Check
         uses: actions/checkout@v4
         with:
           ref: master
+          fetch-depth: 0
 
       - name: setup
         uses: actions/setup-dotnet@v4
@@ -31,12 +34,14 @@ jobs:
   windows_2022_x64:
     if: "contains(github.event.head_commit.message, 'test:')"
     runs-on: windows-2022
-
+    env:
+      GITHUB_ACTIONS_CACHE_DISABLED: true
     steps:
       - name: Check
         uses: actions/checkout@v4
         with:
           ref: master
+          fetch-depth: 0
 
       - name: setup
         uses: actions/setup-dotnet@v4
@@ -55,12 +60,14 @@ jobs:
   ubuntu_22_04_x64:
     if: "contains(github.event.head_commit.message, 'test:')"
     runs-on: ubuntu-22.04
-    
+    env:
+      GITHUB_ACTIONS_CACHE_DISABLED: true
     steps:
       - name: Check
         uses: actions/checkout@v4
         with:
           ref: master
+          fetch-depth: 0
 
       - name: setup
         uses: actions/setup-dotnet@v4

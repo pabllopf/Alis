@@ -36,7 +36,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
     /// <summary>
     /// The im gui test class
     /// </summary>
-    public partial class ImGuiTest
+    public class ImGuiTestP8
     {
         /// <summary>
         /// Tests that show about window should throw dll not found exception
