@@ -74,6 +74,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
                 return;
             }
             
+            
             EmbeddedDllClass.ExtractEmbeddedDlls("cimgui", DllType.Lib, ImGuiDlls.ImGuiDllBytes, Assembly.GetExecutingAssembly());
         }
 
