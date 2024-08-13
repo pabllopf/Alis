@@ -43,15 +43,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImGui" /> class
         /// </summary>
-        static ImGui()
+        public static void Init()
         {
-            string assembly = Assembly.GetEntryAssembly()?.FullName;
-            
-            // check if assembly is not test:
-            if (assembly != null && !assembly.Contains("Test"))
-            {
-                EmbeddedDllClass.ExtractEmbeddedDlls("cimgui", DllType.Lib, ImGuiDlls.ImGuiDllBytes, Assembly.GetExecutingAssembly());
-            }
+            EmbeddedDllClass.ExtractEmbeddedDlls("cimgui", DllType.Lib, ImGuiDlls.ImGuiDllBytes, Assembly.GetExecutingAssembly());
         }
 
         /// <summary>
