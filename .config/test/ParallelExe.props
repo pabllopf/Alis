@@ -6,4 +6,7 @@
             <CopyToPublishDirectory>Always</CopyToPublishDirectory>
         </Content>
     </ItemGroup>
+    <PropertyGroup Condition="$(AssemblyName.Contains('Test')) == True">
+        <DefineConstants>$(DefineConstants);TEST</DefineConstants>
+    </PropertyGroup>
 </Project>
