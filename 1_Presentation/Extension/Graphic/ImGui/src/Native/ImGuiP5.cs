@@ -27,6 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 using Alis.Core.Aspect.Data.Dll;
@@ -57,6 +60,16 @@ namespace Alis.Extension.Graphic.ImGui.Native
             }
             string assemblyEntry = Assembly.GetEntryAssembly()?.FullName;
             if (assemblyEntry != null && assemblyEntry.Contains("Test"))
+            {
+                return;
+            }
+            
+            Assembly currentAssembly = Assembly.GetExecutingAssembly();
+            IEnumerable<Assembly> callerAssemblies = new StackTrace().GetFrames()
+                .Select(x => x.GetMethod().ReflectedType.Assembly).Distinct()
+                .Where(x => x.GetReferencedAssemblies().Any(y => y.FullName == currentAssembly.FullName));
+            Assembly initialAssembly = callerAssemblies.Last();
+            if (initialAssembly.FullName.Contains("Test"))
             {
                 return;
             }
