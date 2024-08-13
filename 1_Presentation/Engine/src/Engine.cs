@@ -200,8 +200,6 @@ namespace Alis.App.Engine
             {
                 flags |= WindowSettings.WindowAllowHighDpi;
             }
-
-            ImGui.Init();
             
             spaceWork.Window = Sdl.CreateWindow(NameEngine, (int) WindowPos.WindowPosCentered, (int) WindowPos.WindowPosCentered, widthWindow, heightWindow, flags);
             _glContext = CreateGlContext(spaceWork.Window);
