@@ -137,21 +137,13 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets or sets the value of the platform handle
         /// </summary>
-        public IntPtr PlatformHandle
-        {
-            get => Marshal.ReadIntPtr(NativePtr, Marshal.OffsetOf<ImGuiViewportPtr>("PlatformHandle").ToInt32());
-            set => Marshal.WriteIntPtr(NativePtr, Marshal.OffsetOf<ImGuiViewportPtr>("PlatformHandle").ToInt32(), value);
-        }
-
+        public IntPtr PlatformHandle => Marshal.ReadIntPtr(NativePtr, Marshal.OffsetOf<ImGuiViewportPtr>("PlatformHandle").ToInt32());
+        
         /// <summary>
         ///     Gets or sets the value of the platform handle raw
         /// </summary>
-        public IntPtr PlatformHandleRaw
-        {
-            get => Marshal.ReadIntPtr(NativePtr, Marshal.OffsetOf<ImGuiViewportPtr>("PlatformHandleRaw").ToInt32());
-            set => Marshal.WriteIntPtr(NativePtr, Marshal.OffsetOf<ImGuiViewportPtr>("PlatformHandleRaw").ToInt32(), value);
-        }
-
+        public IntPtr PlatformHandleRaw => Marshal.ReadIntPtr(NativePtr, Marshal.OffsetOf<ImGuiViewportPtr>("PlatformHandleRaw").ToInt32());
+        
         /// <summary>
         ///     Gets the value of the platform window created
         /// </summary>

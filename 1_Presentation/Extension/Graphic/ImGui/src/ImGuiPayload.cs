@@ -82,40 +82,25 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Clears this instance
         /// </summary>
-        public void Clear()
-        {
-            ImGuiNative.ImGuiPayload_Clear(ref this);
-        }
-
+        public void Clear() => ImGuiNative.ImGuiPayload_Clear(ref this);
+        
         /// <summary>
         ///     Describes whether this instance is data type
         /// </summary>
         /// <param name="type">The type</param>
         /// <returns>The bool</returns>
-        public bool IsDataType(string type)
-        {
-            byte ret = ImGuiNative.ImGuiPayload_IsDataType(ref this, Encoding.UTF8.GetBytes(type));
-            return ret != 0;
-        }
-
+        public bool IsDataType(string type) => ImGuiNative.ImGuiPayload_IsDataType(ref this, Encoding.UTF8.GetBytes(type)) != 0;
+        
         /// <summary>
         ///     Describes whether this instance is delivery
         /// </summary>
         /// <returns>The bool</returns>
-        public bool IsDelivery()
-        {
-            byte ret = ImGuiNative.ImGuiPayload_IsDelivery(ref this);
-            return ret != 0;
-        }
-
+        public bool IsDelivery() => ImGuiNative.ImGuiPayload_IsDelivery(ref this) != 0;
+        
         /// <summary>
         ///     Describes whether this instance is preview
         /// </summary>
         /// <returns>The bool</returns>
-        public bool IsPreview()
-        {
-            byte ret = ImGuiNative.ImGuiPayload_IsPreview(ref this);
-            return ret != 0;
-        }
+        public bool IsPreview() => ImGuiNative.ImGuiPayload_IsPreview(ref this) != 0;
     }
 }

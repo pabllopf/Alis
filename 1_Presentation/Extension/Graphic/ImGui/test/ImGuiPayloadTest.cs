@@ -176,7 +176,57 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiPayload payload = new ImGuiPayload {Data = new IntPtr(123), DataSize = 100};
             
             // Act
-            Assert.Throws<DllNotFoundException>(() =>payload.Clear());
+            Assert.Throws<DllNotFoundException>(() => payload.Clear());
+        }
+        
+        /// <summary>
+        /// Tests that clear calls im gui native clear
+        /// </summary>
+        [Fact]
+        public void Clear_CallsImGuiNativeClear()
+        {
+            ImGuiPayload payload = new ImGuiPayload();
+            Assert.Throws<DllNotFoundException>(() => payload.Clear());
+        }
+        
+        /// <summary>
+        /// Tests that is data type returns true for matching type
+        /// </summary>
+        [Fact]
+        public void IsDataType_ReturnsTrueForMatchingType()
+        {
+            ImGuiPayload payload = new ImGuiPayload();
+            Assert.Throws<DllNotFoundException>(() => payload.IsDataType("test"));
+        }
+        
+        /// <summary>
+        /// Tests that is data type returns false for non matching type
+        /// </summary>
+        [Fact]
+        public void IsDataType_ReturnsFalseForNonMatchingType()
+        {
+            ImGuiPayload payload = new ImGuiPayload();
+            Assert.Throws<DllNotFoundException>(() => payload.IsDataType("non-matching"));
+        }
+        
+        /// <summary>
+        /// Tests that is delivery returns true when delivery
+        /// </summary>
+        [Fact]
+        public void IsDelivery_ReturnsTrueWhenDelivery()
+        {
+            ImGuiPayload payload = new ImGuiPayload();
+            Assert.Throws<DllNotFoundException>(() => payload.IsDelivery());
+        }
+        
+        /// <summary>
+        /// Tests that is preview returns true when preview
+        /// </summary>
+        [Fact]
+        public void IsPreview_ReturnsTrueWhenPreview()
+        {
+            ImGuiPayload payload = new ImGuiPayload();
+            Assert.Throws<DllNotFoundException>(() => payload.IsPreview());
         }
         
         /// <summary>

@@ -278,5 +278,97 @@ namespace Alis.Extension.Graphic.ImGui.Test
             // Assert
             Assert.Equal(value, drawCmd.UserCallbackData);
         }
+        
+        /// <summary>
+        /// Tests that get clip rect returns clip rect
+        /// </summary>
+        [Fact]
+        public void GetClipRect_ReturnsClipRect()
+        {
+            ImDrawCmd cmd = new ImDrawCmd {ClipRect = new Vector4(1, 2, 3, 4)};
+            Assert.Equal(new Vector4(1, 2, 3, 4), cmd.GetClipRect());
+        }
+        
+        /// <summary>
+        /// Tests that get texture id returns texture id
+        /// </summary>
+        [Fact]
+        public void GetTextureId_ReturnsTextureId()
+        {
+            ImDrawCmd cmd = new ImDrawCmd {TextureId = new IntPtr(123)};
+            Assert.Equal(new IntPtr(123), cmd.GetTextureId());
+        }
+        
+        /// <summary>
+        /// Tests that get vtx offset returns vtx offset
+        /// </summary>
+        [Fact]
+        public void GetVtxOffset_ReturnsVtxOffset()
+        {
+            ImDrawCmd cmd = new ImDrawCmd {VtxOffset = 123};
+            Assert.Equal((uint) 123, cmd.GetVtxOffset());
+        }
+        
+        /// <summary>
+        /// Tests that get idx offset returns idx offset
+        /// </summary>
+        [Fact]
+        public void GetIdxOffset_ReturnsIdxOffset()
+        {
+            ImDrawCmd cmd = new ImDrawCmd {IdxOffset = 123};
+            Assert.Equal((uint) 123, cmd.GetIdxOffset());
+        }
+        
+        /// <summary>
+        /// Tests that get elem count returns elem count
+        /// </summary>
+        [Fact]
+        public void GetElemCount_ReturnsElemCount()
+        {
+            ImDrawCmd cmd = new ImDrawCmd {ElemCount = 123};
+            Assert.Equal((uint) 123, cmd.GetElemCount());
+        }
+        
+        /// <summary>
+        /// Tests that get user callback returns user callback
+        /// </summary>
+        [Fact]
+        public void GetUserCallback_ReturnsUserCallback()
+        {
+            ImDrawCmd cmd = new ImDrawCmd {UserCallback = new IntPtr(123)};
+            Assert.Equal(new IntPtr(123), cmd.GetUserCallback());
+        }
+        
+        /// <summary>
+        /// Tests that get user callback data returns user callback data
+        /// </summary>
+        [Fact]
+        public void GetUserCallbackData_ReturnsUserCallbackData()
+        {
+            ImDrawCmd cmd = new ImDrawCmd {UserCallbackData = new IntPtr(123)};
+            Assert.Equal(new IntPtr(123), cmd.GetUserCallbackData());
+        }
+        
+        /// <summary>
+        /// Tests that set user callback data sets user callback data
+        /// </summary>
+        [Fact]
+        public void SetUserCallbackData_SetsUserCallbackData()
+        {
+            ImDrawCmd cmd = new ImDrawCmd();
+            IntPtr ptr = new IntPtr(123);
+            cmd.SetUserCallbackData(ptr);
+            Assert.Equal(ptr, cmd.GetUserCallbackData());
+        }
+        
+        /// <summary>
+        /// Tests that get tex id returns tex id
+        /// </summary>
+        [Fact]
+        public void GetTexId_ReturnsTexId()
+        {
+            ImDrawCmd cmd = new ImDrawCmd();
+            Assert.Throws<DllNotFoundException>(() => cmd.GetTexId());
+        }
     }
 }

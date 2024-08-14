@@ -124,10 +124,6 @@ namespace Alis.Extension.Graphic.ImGui
         ///     Gets the tex id
         /// </summary>
         /// <returns>The ret</returns>
-        public IntPtr GetTexId()
-        {
-            IntPtr ret = ImGuiNative.ImDrawCmd_GetTexID(ref this);
-            return ret;
-        }
+        public IntPtr GetTexId() => ImGuiNative.ImDrawCmd_GetTexID(ref this);
     }
 }

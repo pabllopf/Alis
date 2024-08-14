@@ -253,7 +253,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         [Fact]
         public void Test_Constructor_WithNativePtr()
         {
-            var result = new ImFontPtr(IntPtr.Zero);
+            ImFontPtr result = new ImFontPtr(IntPtr.Zero);
             Assert.Equal(IntPtr.Zero, result.NativePtr);
         }
         
