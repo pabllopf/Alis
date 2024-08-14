@@ -66,7 +66,7 @@ namespace Alis.Extension.Graphic.OpenGL.Test
         public void UniformMatrix4Fv_CallsGlUniformMatrix4Fv()
         {
             int location = 1;
-            var matrix = new Matrix4X4();
+            Matrix4X4 matrix = new Matrix4X4();
             Assert.Throws<TypeInitializationException>(() => Gl.UniformMatrix4Fv(location, matrix));
         }
         

@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using Xunit;
 
 namespace Alis.Extension.Graphic.ImGui.Test
@@ -839,6 +840,582 @@ namespace Alis.Extension.Graphic.ImGui.Test
             
             // Act
             StbUndoRecord undoRec55 = undoState.UndoRec55;
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 56 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec56_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            StbUndoRecord value = new StbUndoRecord();
+            obj.UndoRec56 = value;
+            Assert.Equal(value, obj.UndoRec56);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 57 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec57_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            StbUndoRecord value = new StbUndoRecord();
+            obj.UndoRec57 = value;
+            Assert.Equal(value, obj.UndoRec57);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 58 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec58_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            StbUndoRecord value = new StbUndoRecord();
+            obj.UndoRec58 = value;
+            Assert.Equal(value, obj.UndoRec58);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 59 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec59_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            StbUndoRecord value = new StbUndoRecord();
+            obj.UndoRec59 = value;
+            Assert.Equal(value, obj.UndoRec59);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 60 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec60_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            StbUndoRecord value = new StbUndoRecord();
+            obj.UndoRec60 = value;
+            Assert.Equal(value, obj.UndoRec60);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 61 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec61_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            StbUndoRecord value = new StbUndoRecord();
+            obj.UndoRec61 = value;
+            Assert.Equal(value, obj.UndoRec61);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 62 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec62_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            StbUndoRecord value = new StbUndoRecord();
+            obj.UndoRec62 = value;
+            Assert.Equal(value, obj.UndoRec62);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 63 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec63_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            StbUndoRecord value = new StbUndoRecord();
+            obj.UndoRec63 = value;
+            Assert.Equal(value, obj.UndoRec63);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 64 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec64_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            StbUndoRecord value = new StbUndoRecord();
+            obj.UndoRec64 = value;
+            Assert.Equal(value, obj.UndoRec64);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 65 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec65_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            StbUndoRecord value = new StbUndoRecord();
+            obj.UndoRec65 = value;
+            Assert.Equal(value, obj.UndoRec65);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 66 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec66_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            StbUndoRecord value = new StbUndoRecord();
+            obj.UndoRec66 = value;
+            Assert.Equal(value, obj.UndoRec66);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 67 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec67_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            StbUndoRecord value = new StbUndoRecord();
+            obj.UndoRec67 = value;
+            Assert.Equal(value, obj.UndoRec67);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 68 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec68_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            StbUndoRecord value = new StbUndoRecord();
+            obj.UndoRec68 = value;
+            Assert.Equal(value, obj.UndoRec68);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 69 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec69_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            StbUndoRecord value = new StbUndoRecord();
+            obj.UndoRec69 = value;
+            Assert.Equal(value, obj.UndoRec69);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 70 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec70_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            StbUndoRecord value = new StbUndoRecord();
+            obj.UndoRec70 = value;
+            Assert.Equal(value, obj.UndoRec70);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 71 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec71_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            StbUndoRecord value = new StbUndoRecord();
+            obj.UndoRec71 = value;
+            Assert.Equal(value, obj.UndoRec71);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 72 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec72_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            StbUndoRecord value = new StbUndoRecord();
+            obj.UndoRec72 = value;
+            Assert.Equal(value, obj.UndoRec72);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 73 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec73_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            StbUndoRecord value = new StbUndoRecord();
+            obj.UndoRec73 = value;
+            Assert.Equal(value, obj.UndoRec73);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 74 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec74_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            StbUndoRecord value = new StbUndoRecord();
+            obj.UndoRec74 = value;
+            Assert.Equal(value, obj.UndoRec74);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 75 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec75_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            StbUndoRecord value = new StbUndoRecord();
+            obj.UndoRec75 = value;
+            Assert.Equal(value, obj.UndoRec75);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 76 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec76_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            StbUndoRecord value = new StbUndoRecord();
+            obj.UndoRec76 = value;
+            Assert.Equal(value, obj.UndoRec76);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 77 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec77_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            StbUndoRecord value = new StbUndoRecord();
+            obj.UndoRec77 = value;
+            Assert.Equal(value, obj.UndoRec77);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 78 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec78_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            StbUndoRecord value = new StbUndoRecord();
+            obj.UndoRec78 = value;
+            Assert.Equal(value, obj.UndoRec78);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 79 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec79_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            StbUndoRecord value = new StbUndoRecord();
+            obj.UndoRec79 = value;
+            Assert.Equal(value, obj.UndoRec79);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 80 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec80_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            StbUndoRecord value = new StbUndoRecord();
+            obj.UndoRec80 = value;
+            Assert.Equal(value, obj.UndoRec80);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 81 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec81_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            StbUndoRecord value = new StbUndoRecord();
+            obj.UndoRec81 = value;
+            Assert.Equal(value, obj.UndoRec81);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 82 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec82_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            StbUndoRecord value = new StbUndoRecord();
+            obj.UndoRec82 = value;
+            Assert.Equal(value, obj.UndoRec82);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 83 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec83_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            StbUndoRecord value = new StbUndoRecord();
+            obj.UndoRec83 = value;
+            Assert.Equal(value, obj.UndoRec83);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 84 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec84_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            StbUndoRecord value = new StbUndoRecord();
+            obj.UndoRec84 = value;
+            Assert.Equal(value, obj.UndoRec84);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 85 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec85_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            StbUndoRecord value = new StbUndoRecord();
+            obj.UndoRec85 = value;
+            Assert.Equal(value, obj.UndoRec85);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 86 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec86_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            StbUndoRecord value = new StbUndoRecord();
+            obj.UndoRec86 = value;
+            Assert.Equal(value, obj.UndoRec86);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 87 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec87_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            StbUndoRecord value = new StbUndoRecord();
+            obj.UndoRec87 = value;
+            Assert.Equal(value, obj.UndoRec87);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 88 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec88_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            StbUndoRecord value = new StbUndoRecord();
+            obj.UndoRec88 = value;
+            Assert.Equal(value, obj.UndoRec88);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 89 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec89_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            StbUndoRecord value = new StbUndoRecord();
+            obj.UndoRec89 = value;
+            Assert.Equal(value, obj.UndoRec89);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 90 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec90_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            StbUndoRecord value = new StbUndoRecord();
+            obj.UndoRec90 = value;
+            Assert.Equal(value, obj.UndoRec90);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 91 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec91_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            StbUndoRecord value = new StbUndoRecord();
+            obj.UndoRec91 = value;
+            Assert.Equal(value, obj.UndoRec91);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 92 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec92_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            StbUndoRecord value = new StbUndoRecord();
+            obj.UndoRec92 = value;
+            Assert.Equal(value, obj.UndoRec92);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 93 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec93_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            StbUndoRecord value = new StbUndoRecord();
+            obj.UndoRec93 = value;
+            Assert.Equal(value, obj.UndoRec93);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 94 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec94_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            StbUndoRecord value = new StbUndoRecord();
+            obj.UndoRec94 = value;
+            Assert.Equal(value, obj.UndoRec94);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 95 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec95_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            StbUndoRecord value = new StbUndoRecord();
+            obj.UndoRec95 = value;
+            Assert.Equal(value, obj.UndoRec95);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 96 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec96_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            StbUndoRecord value = new StbUndoRecord();
+            obj.UndoRec96 = value;
+            Assert.Equal(value, obj.UndoRec96);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 97 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec97_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            StbUndoRecord value = new StbUndoRecord();
+            obj.UndoRec97 = value;
+            Assert.Equal(value, obj.UndoRec97);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 98 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec98_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            StbUndoRecord value = new StbUndoRecord();
+            obj.UndoRec98 = value;
+            Assert.Equal(value, obj.UndoRec98);
+        }
+        
+        /// <summary>
+        /// Tests that undo char set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoChar_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            List<ushort> value = new List<ushort> {1, 2, 3};
+            obj.UndoChar = value;
+            Assert.Equal(value, obj.UndoChar);
+        }
+        
+        /// <summary>
+        /// Tests that undo point set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoPoint_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            short value = 123;
+            obj.UndoPoint = value;
+            Assert.Equal(value, obj.UndoPoint);
+        }
+        
+        /// <summary>
+        /// Tests that redo point set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void RedoPoint_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            short value = 456;
+            obj.RedoPoint = value;
+            Assert.Equal(value, obj.RedoPoint);
+        }
+        
+        /// <summary>
+        /// Tests that undo char point set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoCharPoint_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            int value = 789;
+            obj.UndoCharPoint = value;
+            Assert.Equal(value, obj.UndoCharPoint);
+        }
+        
+        /// <summary>
+        /// Tests that redo char point set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void RedoCharPoint_SetAndGet_ReturnsCorrectValue()
+        {
+            StbUndoState obj = new StbUndoState();
+            int value = 101112;
+            obj.RedoCharPoint = value;
+            Assert.Equal(value, obj.RedoCharPoint);
         }
     }
 }

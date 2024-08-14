@@ -108,8 +108,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.GuizMo
         /// <returns>The bool</returns>
         public static bool IsOver()
         {
-            byte ret = ImGuiZmoNative.InternalIsOverNil();
-            return ret != 0;
+            return ImGuiZmoNative.InternalIsOverNil() != 0;
         }
 
         /// <summary>
@@ -117,22 +116,14 @@ namespace Alis.Extension.Graphic.ImGui.Extras.GuizMo
         /// </summary>
         /// <param name="op">The op</param>
         /// <returns>The bool</returns>
-        public static bool IsOver(Operation op)
-        {
-            byte ret = ImGuiZmoNative.InternalIsOverOPERATION(op);
-            return ret != 0;
-        }
-
+        public static bool IsOver(Operation op) => ImGuiZmoNative.InternalIsOverOPERATION(op) != 0;
+        
         /// <summary>
         ///     Describes whether is using
         /// </summary>
         /// <returns>The bool</returns>
-        public static bool IsUsing()
-        {
-            byte ret = ImGuiZmoNative.InternalIsUsing();
-            return ret != 0;
-        }
-
+        public static bool IsUsing() => ImGuiZmoNative.InternalIsUsing() != 0;
+        
         /// <summary>
         ///     Manipulates the view
         /// </summary>
