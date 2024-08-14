@@ -412,8 +412,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The retval</returns>
         public static Vector2 GetContentRegionAvail()
         {
-            Vector2 retval;
-            ImGuiNative.igGetContentRegionAvail(out retval);
+            ImGuiNative.igGetContentRegionAvail(out Vector2 retval);
             return retval;
         }
 
@@ -423,8 +422,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The retval</returns>
         public static Vector2 GetContentRegionMax()
         {
-            Vector2 retval;
-            ImGuiNative.igGetContentRegionMax(out retval);
+            ImGuiNative.igGetContentRegionMax(out Vector2 retval);
             return retval;
         }
 
@@ -444,8 +442,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The retval</returns>
         public static Vector2 GetCursorPos()
         {
-            Vector2 retval;
-            ImGuiNative.igGetCursorPos(out retval);
+            ImGuiNative.igGetCursorPos(out Vector2 retval);
             return retval;
         }
 
@@ -475,8 +472,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The retval</returns>
         public static Vector2 GetCursorScreenPos()
         {
-            Vector2 retval;
-            ImGuiNative.igGetCursorScreenPos(out retval);
+            ImGuiNative.igGetCursorScreenPos(out Vector2 retval);
             return retval;
         }
 
@@ -486,8 +482,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The retval</returns>
         public static Vector2 GetCursorStartPos()
         {
-            Vector2 retval;
-            ImGuiNative.igGetCursorStartPos(out retval);
+            ImGuiNative.igGetCursorStartPos(out Vector2 retval);
             return retval;
         }
 
@@ -535,8 +530,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The retval</returns>
         public static Vector2 GetFontTexUvWhitePixel()
         {
-            Vector2 retval;
-            ImGuiNative.igGetFontTexUvWhitePixel(out retval);
+            ImGuiNative.igGetFontTexUvWhitePixel(out Vector2 retval);
             return retval;
         }
 
@@ -626,8 +620,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The retval</returns>
         public static Vector2 GetItemRectMax()
         {
-            Vector2 retval;
-            ImGuiNative.igGetItemRectMax(out retval);
+            ImGuiNative.igGetItemRectMax(out Vector2 retval);
             return retval;
         }
 
@@ -637,8 +630,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The retval</returns>
         public static Vector2 GetItemRectMin()
         {
-            Vector2 retval;
-            ImGuiNative.igGetItemRectMin(out retval);
+            ImGuiNative.igGetItemRectMin(out Vector2 retval);
             return retval;
         }
 
@@ -648,8 +640,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The retval</returns>
         public static Vector2 GetItemRectSize()
         {
-            Vector2 retval;
-            ImGuiNative.igGetItemRectSize(out retval);
+            ImGuiNative.igGetItemRectSize(out Vector2 retval);
             return retval;
         }
 
@@ -717,10 +708,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The retval</returns>
         public static Vector2 GetMouseDragDelta()
         {
-            Vector2 retval;
             ImGuiMouseButton button = 0;
             float lockThreshold = -1.0f;
-            ImGuiNative.igGetMouseDragDelta(out retval, button, lockThreshold);
+            ImGuiNative.igGetMouseDragDelta(out Vector2 retval, button, lockThreshold);
             return retval;
         }
 
@@ -731,9 +721,8 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The retval</returns>
         public static Vector2 GetMouseDragDelta(ImGuiMouseButton button)
         {
-            Vector2 retval;
             float lockThreshold = -1.0f;
-            ImGuiNative.igGetMouseDragDelta(out retval, button, lockThreshold);
+            ImGuiNative.igGetMouseDragDelta(out Vector2 retval, button, lockThreshold);
             return retval;
         }
 
@@ -745,8 +734,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The retval</returns>
         public static Vector2 GetMouseDragDelta(ImGuiMouseButton button, float lockThreshold)
         {
-            Vector2 retval;
-            ImGuiNative.igGetMouseDragDelta(out retval, button, lockThreshold);
+            ImGuiNative.igGetMouseDragDelta(out Vector2 retval, button, lockThreshold);
             return retval;
         }
 
@@ -756,8 +744,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The retval</returns>
         public static Vector2 GetMousePos()
         {
-            Vector2 retval;
-            ImGuiNative.igGetMousePos(out retval);
+            ImGuiNative.igGetMousePos(out Vector2 retval);
             return retval;
         }
 
@@ -767,8 +754,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The retval</returns>
         public static Vector2 GetMousePosOnOpeningCurrentPopup()
         {
-            Vector2 retval;
-            ImGuiNative.igGetMousePosOnOpeningCurrentPopup(out retval);
+            ImGuiNative.igGetMousePosOnOpeningCurrentPopup(out Vector2 retval);
             return retval;
         }
 
@@ -900,8 +886,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The retval</returns>
         public static Vector2 GetWindowContentRegionMax()
         {
-            Vector2 retval;
-            ImGuiNative.igGetWindowContentRegionMax(out retval);
+            ImGuiNative.igGetWindowContentRegionMax(out Vector2 retval);
             return retval;
         }
 
@@ -911,8 +896,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The retval</returns>
         public static Vector2 GetWindowContentRegionMin()
         {
-            Vector2 retval;
-            ImGuiNative.igGetWindowContentRegionMin(out retval);
+            ImGuiNative.igGetWindowContentRegionMin(out Vector2 retval);
             return retval;
         }
 
@@ -958,8 +942,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The retval</returns>
         public static Vector2 GetWindowPos()
         {
-            Vector2 retval;
-            ImGuiNative.igGetWindowPos(out retval);
+            ImGuiNative.igGetWindowPos(out Vector2 retval);
             return retval;
         }
 
@@ -969,8 +952,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The retval</returns>
         public static Vector2 GetWindowSize()
         {
-            Vector2 retval;
-            ImGuiNative.igGetWindowSize(out retval);
+            ImGuiNative.igGetWindowSize(out Vector2 retval);
             return retval;
         }
 

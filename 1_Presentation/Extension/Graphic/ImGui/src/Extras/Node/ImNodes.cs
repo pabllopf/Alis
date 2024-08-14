@@ -191,8 +191,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <returns>The retval</returns>
         public static Vector2 EditorContextGetPanning()
         {
-            Vector2 retval;
-            ImNodesNative.ImNodes_EditorContextGetPanning(out retval);
+            ImNodesNative.ImNodes_EditorContextGetPanning(out Vector2 retval);
             return retval;
         }
 
@@ -290,8 +289,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <returns>The retval</returns>
         public static Vector2 GetNodeDimensions(int id)
         {
-            Vector2 retval;
-            ImNodesNative.ImNodes_GetNodeDimensions(out retval, id);
+            ImNodesNative.ImNodes_GetNodeDimensions(out Vector2 retval, id);
             return retval;
         }
 
@@ -302,8 +300,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <returns>The retval</returns>
         public static Vector2 GetNodeEditorSpacePos(int nodeId)
         {
-            Vector2 retval;
-            ImNodesNative.ImNodes_GetNodeEditorSpacePos(out retval, nodeId);
+            ImNodesNative.ImNodes_GetNodeEditorSpacePos(out Vector2 retval, nodeId);
             return retval;
         }
 
@@ -314,8 +311,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <returns>The retval</returns>
         public static Vector2 GetNodeGridSpacePos(int nodeId)
         {
-            Vector2 retval;
-            ImNodesNative.ImNodes_GetNodeGridSpacePos(out retval, nodeId);
+            ImNodesNative.ImNodes_GetNodeGridSpacePos(out Vector2 retval, nodeId);
             return retval;
         }
 
@@ -326,8 +322,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         /// <returns>The retval</returns>
         public static Vector2 GetNodeScreenSpacePos(int nodeId)
         {
-            Vector2 retval;
-            ImNodesNative.ImNodes_GetNodeScreenSpacePos(out retval, nodeId);
+            ImNodesNative.ImNodes_GetNodeScreenSpacePos(out Vector2 retval, nodeId);
             return retval;
         }
 

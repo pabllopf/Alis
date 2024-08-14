@@ -882,8 +882,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The retval</returns>
         public Vector2 GetClipRectMax()
         {
-            Vector2 retval;
-            ImGuiNative.ImDrawList_GetClipRectMax(out retval, NativePtr);
+            ImGuiNative.ImDrawList_GetClipRectMax(out Vector2 retval, NativePtr);
             return retval;
         }
 
@@ -893,8 +892,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The retval</returns>
         public Vector2 GetClipRectMin()
         {
-            Vector2 retval;
-            ImGuiNative.ImDrawList_GetClipRectMin(out retval, NativePtr);
+            ImGuiNative.ImDrawList_GetClipRectMin(out Vector2 retval, NativePtr);
             return retval;
         }
 
