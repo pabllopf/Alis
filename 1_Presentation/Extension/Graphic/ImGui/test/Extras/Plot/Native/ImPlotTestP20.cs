@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.ImGui.Extras.Plot;
 using Alis.Extension.Graphic.ImGui.Extras.Plot.Native;
 using Xunit;
@@ -245,5 +246,67 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram("A", new byte[] {1}, 1, 1, 1.0));
         }
+        
+        /// <summary>
+        /// Tests that calc circle auto segment count throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void _CalcCircleAutoSegmentCount_ThrowsDllNotFoundException()
+        {
+            ImDrawListPtr drawListPtr = new ImDrawListPtr();
+            Assert.Throws<DllNotFoundException>(() => drawListPtr._CalcCircleAutoSegmentCount(0));
+        }
+        
+        /// <summary>
+        /// Tests that clear free memory throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void _ClearFreeMemory_ThrowsDllNotFoundException()
+        {
+            ImDrawListPtr drawListPtr = new ImDrawListPtr();
+            Assert.Throws<DllNotFoundException>(() => drawListPtr._ClearFreeMemory());
+        }
+        
+        /// <summary>
+        /// Tests that on changed clip rect throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void _OnChangedClipRect_ThrowsDllNotFoundException()
+        {
+            ImDrawListPtr drawListPtr = new ImDrawListPtr();
+            Assert.Throws<DllNotFoundException>(() => drawListPtr._OnChangedClipRect());
+        }
+        
+        /// <summary>
+        /// Tests that on changed texture id throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void _OnChangedTextureID_ThrowsDllNotFoundException()
+        {
+            ImDrawListPtr drawListPtr = new ImDrawListPtr();
+            Assert.Throws<DllNotFoundException>(() => drawListPtr._OnChangedTextureID());
+        }
+        
+        /// <summary>
+        /// Tests that on changed vtx offset throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void _OnChangedVtxOffset_ThrowsDllNotFoundException()
+        {
+            ImDrawListPtr drawListPtr = new ImDrawListPtr();
+            Assert.Throws<DllNotFoundException>(() => drawListPtr._OnChangedVtxOffset());
+        }
+        
+        /// <summary>
+        /// Tests that path arc to fast ex throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void _PathArcToFastEx_ThrowsDllNotFoundException()
+        {
+            ImDrawListPtr drawListPtr = new ImDrawListPtr();
+            Assert.Throws<DllNotFoundException>(() => drawListPtr._PathArcToFastEx(new Vector2(), 0, 0, 0, 0));
+        }
+        
+        
     }
 }

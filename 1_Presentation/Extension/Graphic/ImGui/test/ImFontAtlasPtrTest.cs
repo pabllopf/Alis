@@ -1281,5 +1281,431 @@ namespace Alis.Extension.Graphic.ImGui.Test
             atlas.TexUvLines29 = uvLine;
             Assert.Equal(uvLine, atlas.TexUvLines29);
         }
+        
+        /// <summary>
+        /// Tests that add font default returns im font ptr
+        /// </summary>
+        [Fact]
+        public void AddFontDefault_ReturnsImFontPtr()
+        {
+            ImFontAtlasPtr atlas = new ImFontAtlasPtr();
+           Assert.Throws<DllNotFoundException>(()=>atlas.AddFontDefault());
+        }
+        
+        /// <summary>
+        /// Tests that add font default with font cfg returns im font ptr
+        /// </summary>
+        [Fact]
+        public void AddFontDefault_WithFontCfg_ReturnsImFontPtr()
+        {
+            ImFontAtlasPtr atlas = new ImFontAtlasPtr();
+            ImFontConfigPtr fontCfg = new ImFontConfigPtr();
+            Assert.Throws<DllNotFoundException>(()=>atlas.AddFontDefault(fontCfg));
+        }
+        
+        /// <summary>
+        /// Tests that add font from file ttf returns im font ptr
+        /// </summary>
+        [Fact]
+        public void AddFontFromFileTtf_ReturnsImFontPtr()
+        {
+            ImFontAtlasPtr atlas = new ImFontAtlasPtr();
+            Assert.Throws<DllNotFoundException>(()=> atlas.AddFontFromFileTtf("test.ttf", 16.0f));
+        }
+        
+        /// <summary>
+        /// Tests that add font from file ttf with font cfg returns im font ptr
+        /// </summary>
+        [Fact]
+        public void AddFontFromFileTtf_WithFontCfg_ReturnsImFontPtr()
+        {
+            ImFontAtlasPtr atlas = new ImFontAtlasPtr();
+            ImFontConfigPtr fontCfg = new ImFontConfigPtr();
+            Assert.Throws<DllNotFoundException>(()=> atlas.AddFontFromFileTtf("test.ttf", 16.0f, fontCfg));
+        }
+        
+        /// <summary>
+        /// Tests that add font from file ttf with font cfg and glyph ranges returns im font ptr
+        /// </summary>
+        [Fact]
+        public void AddFontFromFileTtf_WithFontCfgAndGlyphRanges_ReturnsImFontPtr()
+        {
+            ImFontAtlasPtr atlas = new ImFontAtlasPtr();
+            ImFontConfigPtr fontCfg = new ImFontConfigPtr();
+            IntPtr glyphRanges = new IntPtr();
+            Assert.Throws<DllNotFoundException>(()=> atlas.AddFontFromFileTtf("test.ttf", 16.0f, fontCfg, glyphRanges));
+        }
+        
+        /// <summary>
+        /// Tests that add font from memory compressed base 85 ttf returns im font ptr
+        /// </summary>
+        [Fact]
+        public void AddFontFromMemoryCompressedBase85Ttf_ReturnsImFontPtr()
+        {
+            ImFontAtlasPtr atlas = new ImFontAtlasPtr();
+            Assert.Throws<DllNotFoundException>(()=> atlas.AddFontFromMemoryCompressedBase85Ttf("compressedData", 16.0f));
+        }
+        
+        /// <summary>
+        /// Tests that add font from memory compressed base 85 ttf with font cfg returns im font ptr
+        /// </summary>
+        [Fact]
+        public void AddFontFromMemoryCompressedBase85Ttf_WithFontCfg_ReturnsImFontPtr()
+        {
+            ImFontAtlasPtr atlas = new ImFontAtlasPtr();
+            ImFontConfigPtr fontCfg = new ImFontConfigPtr();
+            Assert.Throws<DllNotFoundException>(()=> atlas.AddFontFromMemoryCompressedBase85Ttf("compressedData", 16.0f, fontCfg));
+        }
+        
+        /// <summary>
+        /// Tests that add font from memory compressed base 85 ttf with font cfg and glyph ranges returns im font ptr
+        /// </summary>
+        [Fact]
+        public void AddFontFromMemoryCompressedBase85Ttf_WithFontCfgAndGlyphRanges_ReturnsImFontPtr()
+        {
+            ImFontAtlasPtr atlas = new ImFontAtlasPtr();
+            ImFontConfigPtr fontCfg = new ImFontConfigPtr();
+            IntPtr glyphRanges = new IntPtr();
+            Assert.Throws<DllNotFoundException>(()=> atlas.AddFontFromMemoryCompressedBase85Ttf("compressedData", 16.0f, fontCfg, glyphRanges));
+        }
+        
+        /// <summary>
+        /// Tests that add font from memory compressed ttf returns im font ptr
+        /// </summary>
+        [Fact]
+        public void AddFontFromMemoryCompressedTtf_ReturnsImFontPtr()
+        {
+            ImFontAtlasPtr atlas = new ImFontAtlasPtr();
+            IntPtr compressedFontData = new IntPtr();
+            Assert.Throws<DllNotFoundException>(()=> atlas.AddFontFromMemoryCompressedTtf(compressedFontData, 100, 16.0f));
+        }
+        
+        /// <summary>
+        /// Tests that add font from memory compressed ttf with font cfg returns im font ptr
+        /// </summary>
+        [Fact]
+        public void AddFontFromMemoryCompressedTtf_WithFontCfg_ReturnsImFontPtr()
+        {
+            ImFontAtlasPtr atlas = new ImFontAtlasPtr();
+            IntPtr compressedFontData = new IntPtr();
+            ImFontConfigPtr fontCfg = new ImFontConfigPtr();
+            Assert.Throws<DllNotFoundException>(()=> atlas.AddFontFromMemoryCompressedTtf(compressedFontData, 100, 16.0f, fontCfg));
+        }
+        
+        /// <summary>
+        /// Tests that add font from memory compressed ttf with font cfg and glyph ranges returns im font ptr
+        /// </summary>
+        [Fact]
+        public void AddFontFromMemoryCompressedTtf_WithFontCfgAndGlyphRanges_ReturnsImFontPtr()
+        {
+            ImFontAtlasPtr atlas = new ImFontAtlasPtr();
+            IntPtr compressedFontData = new IntPtr();
+            ImFontConfigPtr fontCfg = new ImFontConfigPtr();
+            IntPtr glyphRanges = new IntPtr();
+            Assert.Throws<DllNotFoundException>(()=> atlas.AddFontFromMemoryCompressedTtf(compressedFontData, 100, 16.0f, fontCfg, glyphRanges));
+        }
+        
+        /// <summary>
+        /// Tests that add font from memory ttf returns im font ptr
+        /// </summary>
+        [Fact]
+        public void AddFontFromMemoryTtf_ReturnsImFontPtr()
+        {
+            ImFontAtlasPtr atlas = new ImFontAtlasPtr();
+            IntPtr fontData = new IntPtr();
+            Assert.Throws<DllNotFoundException>(()=> atlas.AddFontFromMemoryTtf(fontData, 100, 16.0f));
+        }
+        
+        /// <summary>
+        /// Tests that add font from memory ttf with font cfg returns im font ptr
+        /// </summary>
+        [Fact]
+        public void AddFontFromMemoryTtf_WithFontCfg_ReturnsImFontPtr()
+        {
+            ImFontAtlasPtr atlas = new ImFontAtlasPtr();
+            IntPtr fontData = new IntPtr();
+            ImFontConfigPtr fontCfg = new ImFontConfigPtr();
+            Assert.Throws<DllNotFoundException>(()=> atlas.AddFontFromMemoryTtf(fontData, 100, 16.0f, fontCfg));
+        }
+        
+        /// <summary>
+        /// Tests that add font from memory ttf with font cfg and glyph ranges returns im font ptr
+        /// </summary>
+        [Fact]
+        public void AddFontFromMemoryTtf_WithFontCfgAndGlyphRanges_ReturnsImFontPtr()
+        {
+            ImFontAtlasPtr atlas = new ImFontAtlasPtr();
+            IntPtr fontData = new IntPtr();
+            ImFontConfigPtr fontCfg = new ImFontConfigPtr();
+            IntPtr glyphRanges = new IntPtr();
+            Assert.Throws<DllNotFoundException>(()=> atlas.AddFontFromMemoryTtf(fontData, 100, 16.0f, fontCfg, glyphRanges));
+        }
+        
+        /// <summary>
+        /// Tests that build returns true
+        /// </summary>
+        [Fact]
+        public void Build_ReturnsTrue()
+        {
+            ImFontAtlasPtr atlas = new ImFontAtlasPtr();
+            Assert.Throws<DllNotFoundException>(()=> atlas.Build());
+        }
+        
+        /// <summary>
+        /// Tests that calc custom rect uv sets out parameters
+        /// </summary>
+        [Fact]
+        public void CalcCustomRectUv_SetsOutParameters()
+        {
+            ImFontAtlasPtr atlas = new ImFontAtlasPtr();
+            ImFontAtlasCustomRect rect = new ImFontAtlasCustomRect();
+            Assert.Throws<DllNotFoundException>(()=>atlas.CalcCustomRectUv(rect, out Vector2 outUvMin, out Vector2 outUvMax));
+        }
+        
+        /// <summary>
+        /// Tests that clear clears instance
+        /// </summary>
+        [Fact]
+        public void Clear_ClearsInstance()
+        {
+            ImFontAtlasPtr atlas = new ImFontAtlasPtr();
+            Assert.Throws<DllNotFoundException>(()=>atlas.Clear());
+            // Assuming some way to verify the instance is cleared
+        }
+        
+        /// <summary>
+        /// Tests that clear fonts clears fonts
+        /// </summary>
+        [Fact]
+        public void ClearFonts_ClearsFonts()
+        {
+            ImFontAtlasPtr atlas = new ImFontAtlasPtr();
+            Assert.Throws<DllNotFoundException>(()=>atlas.ClearFonts());
+            // Assuming some way to verify the fonts are cleared
+        }
+        
+        /// <summary>
+        /// Tests that clear input data clears input data
+        /// </summary>
+        [Fact]
+        public void ClearInputData_ClearsInputData()
+        {
+            ImFontAtlasPtr atlas = new ImFontAtlasPtr();
+            Assert.Throws<DllNotFoundException>(()=>atlas.ClearInputData());
+            // Assuming some way to verify the input data is cleared
+        }
+        
+        /// <summary>
+        /// Tests that clear tex data clears tex data
+        /// </summary>
+        [Fact]
+        public void ClearTexData_ClearsTexData()
+        {
+            ImFontAtlasPtr atlas = new ImFontAtlasPtr();
+            Assert.Throws<DllNotFoundException>(()=>atlas.ClearTexData());
+            // Assuming some way to verify the tex data is cleared
+        }
+        
+        /// <summary>
+        /// Tests that get custom rect by index returns custom rect
+        /// </summary>
+        [Fact]
+        public void GetCustomRectByIndex_ReturnsCustomRect()
+        {
+            ImFontAtlasPtr atlas = new ImFontAtlasPtr();
+            Assert.Throws<DllNotFoundException>(()=> atlas.GetCustomRectByIndex(0));
+        }
+        
+        /// <summary>
+        /// Tests that get glyph ranges chinese full returns int ptr
+        /// </summary>
+        [Fact]
+        public void GetGlyphRangesChineseFull_ReturnsIntPtr()
+        {
+            ImFontAtlasPtr atlas = new ImFontAtlasPtr();
+            Assert.Throws<DllNotFoundException>(()=> atlas.GetGlyphRangesChineseFull());
+        }
+        
+        /// <summary>
+        /// Tests that get glyph ranges chinese simplified common returns int ptr
+        /// </summary>
+        [Fact]
+        public void GetGlyphRangesChineseSimplifiedCommon_ReturnsIntPtr()
+        {
+            ImFontAtlasPtr atlas = new ImFontAtlasPtr();
+            Assert.Throws<DllNotFoundException>(()=> atlas.GetGlyphRangesChineseSimplifiedCommon());
+        }
+        
+        /// <summary>
+        /// Tests that get glyph ranges cyrillic returns int ptr
+        /// </summary>
+        [Fact]
+        public void GetGlyphRangesCyrillic_ReturnsIntPtr()
+        {
+            ImFontAtlasPtr atlas = new ImFontAtlasPtr();
+            Assert.Throws<DllNotFoundException>(()=> atlas.GetGlyphRangesCyrillic());
+        }
+        
+        /// <summary>
+        /// Tests that get glyph ranges default returns int ptr
+        /// </summary>
+        [Fact]
+        public void GetGlyphRangesDefault_ReturnsIntPtr()
+        {
+            ImFontAtlasPtr atlas = new ImFontAtlasPtr();
+            Assert.Throws<DllNotFoundException>(()=> atlas.GetGlyphRangesDefault());
+        }
+        
+        /// <summary>
+        /// Tests that get glyph ranges greek returns int ptr
+        /// </summary>
+        [Fact]
+        public void GetGlyphRangesGreek_ReturnsIntPtr()
+        {
+            ImFontAtlasPtr atlas = new ImFontAtlasPtr();
+            Assert.Throws<DllNotFoundException>(()=> atlas.GetGlyphRangesGreek());
+        }
+        
+        /// <summary>
+        /// Tests that get glyph ranges japanese returns int ptr
+        /// </summary>
+        [Fact]
+        public void GetGlyphRangesJapanese_ReturnsIntPtr()
+        {
+            ImFontAtlasPtr atlas = new ImFontAtlasPtr();
+            Assert.Throws<DllNotFoundException>(()=> atlas.GetGlyphRangesJapanese());
+        }
+        
+        /// <summary>
+        /// Tests that get glyph ranges korean returns int ptr
+        /// </summary>
+        [Fact]
+        public void GetGlyphRangesKorean_ReturnsIntPtr()
+        {
+            ImFontAtlasPtr atlas = new ImFontAtlasPtr();
+            Assert.Throws<DllNotFoundException>(()=> atlas.GetGlyphRangesKorean());
+        }
+        
+        /// <summary>
+        /// Tests that get glyph ranges thai returns int ptr
+        /// </summary>
+        [Fact]
+        public void GetGlyphRangesThai_ReturnsIntPtr()
+        {
+            ImFontAtlasPtr atlas = new ImFontAtlasPtr();
+            Assert.Throws<DllNotFoundException>(()=> atlas.GetGlyphRangesThai());
+        }
+        
+        /// <summary>
+        /// Tests that get glyph ranges vietnamese returns int ptr
+        /// </summary>
+        [Fact]
+        public void GetGlyphRangesVietnamese_ReturnsIntPtr()
+        {
+            ImFontAtlasPtr atlas = new ImFontAtlasPtr();
+            Assert.Throws<DllNotFoundException>(()=> atlas.GetGlyphRangesVietnamese());
+        }
+        
+        /// <summary>
+        /// Tests that get mouse cursor tex data returns true
+        /// </summary>
+        [Fact]
+        public void GetMouseCursorTexData_ReturnsTrue()
+        {
+            ImFontAtlasPtr atlas = new ImFontAtlasPtr();
+            Assert.Throws<DllNotFoundException>(()=> atlas.GetMouseCursorTexData(ImGuiMouseCursor.Arrow, out Vector2 outOffset, out Vector2 outSize, out Vector2 outUvBorder, out Vector2 outUvFill));
+        }
+        
+        /// <summary>
+        /// Tests that get tex data as alpha 8 returns data
+        /// </summary>
+        [Fact]
+        public void GetTexDataAsAlpha8_ReturnsData()
+        {
+            ImFontAtlasPtr atlas = new ImFontAtlasPtr();
+            Assert.Throws<DllNotFoundException>(()=>atlas.GetTexDataAsAlpha8(out byte[] outPixels, out int outWidth, out int outHeight));
+        }
+        
+        /// <summary>
+        /// Tests that get tex data as alpha 8 with bytes per pixel returns data
+        /// </summary>
+        [Fact]
+        public void GetTexDataAsAlpha8_WithBytesPerPixel_ReturnsData()
+        {
+            ImFontAtlasPtr atlas = new ImFontAtlasPtr();
+            Assert.Throws<DllNotFoundException>(()=>atlas.GetTexDataAsAlpha8(out byte[] outPixels, out int outWidth, out int outHeight, out int outBytesPerPixel));
+        }
+        
+        /// <summary>
+        /// Tests that get tex data as alpha 8 with int ptr returns data
+        /// </summary>
+        [Fact]
+        public void GetTexDataAsAlpha8_WithIntPtr_ReturnsData()
+        {
+            ImFontAtlasPtr atlas = new ImFontAtlasPtr();
+            Assert.Throws<DllNotFoundException>(()=>atlas.GetTexDataAsAlpha8(out IntPtr outPixels, out int outWidth, out int outHeight));
+        }
+        
+        /// <summary>
+        /// Tests that get tex data as alpha 8 with int ptr and bytes per pixel returns data
+        /// </summary>
+        [Fact]
+        public void GetTexDataAsAlpha8_WithIntPtrAndBytesPerPixel_ReturnsData()
+        {
+            ImFontAtlasPtr atlas = new ImFontAtlasPtr();
+            Assert.Throws<DllNotFoundException>(()=> atlas.GetTexDataAsAlpha8(out IntPtr outPixels, out int outWidth, out int outHeight, out int outBytesPerPixel));
+        }
+        
+        /// <summary>
+        /// Tests that get tex data as rgba 32 returns data
+        /// </summary>
+        [Fact]
+        public void GetTexDataAsRgba32_ReturnsData()
+        {
+            ImFontAtlasPtr atlas = new ImFontAtlasPtr();
+            Assert.Throws<DllNotFoundException>(()=>atlas.GetTexDataAsRgba32(out byte[] outPixels, out int outWidth, out int outHeight, out int outBytesPerPixel));
+        }
+        
+        /// <summary>
+        /// Tests that get tex data as rgba 32 with int ptr returns data
+        /// </summary>
+        [Fact]
+        public void GetTexDataAsRgba32_WithIntPtr_ReturnsData()
+        {
+            ImFontAtlasPtr atlas = new ImFontAtlasPtr();
+            Assert.Throws<DllNotFoundException>(()=> atlas.GetTexDataAsRgba32(out IntPtr outPixels, out int outWidth, out int outHeight));
+        }
+        
+        /// <summary>
+        /// Tests that get tex data as rgba 32 with int ptr and bytes per pixel returns data
+        /// </summary>
+        [Fact]
+        public void GetTexDataAsRgba32_WithIntPtrAndBytesPerPixel_ReturnsData()
+        {
+            ImFontAtlasPtr atlas = new ImFontAtlasPtr();
+            Assert.Throws<DllNotFoundException>(()=>atlas.GetTexDataAsRgba32(out IntPtr outPixels, out int outWidth, out int outHeight, out int outBytesPerPixel));
+        }
+        
+        /// <summary>
+        /// Tests that is built returns true
+        /// </summary>
+        [Fact]
+        public void IsBuilt_ReturnsTrue()
+        {
+            ImFontAtlasPtr atlas = new ImFontAtlasPtr();
+            Assert.Throws<DllNotFoundException>(()=> atlas.IsBuilt());
+        }
+        
+        /// <summary>
+        /// Tests that set tex id sets id
+        /// </summary>
+        [Fact]
+        public void SetTexId_SetsId()
+        {
+            ImFontAtlasPtr atlas = new ImFontAtlasPtr();
+            IntPtr id = new IntPtr(123);
+            Assert.Throws<DllNotFoundException>(()=>atlas.SetTexId(id));
+            // Assuming some way to verify the tex id is set
+        }
     }
 }

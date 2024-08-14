@@ -386,5 +386,215 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontPtr ptr = new ImFontPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => ptr.SetGlyphVisible(0, true));
         }
+        
+        /// <summary>
+        /// Tests that implicit conversion to int ptr returns native ptr
+        /// </summary>
+        [Fact]
+        public void ImplicitConversionToIntPtr_ReturnsNativePtr()
+        {
+            IntPtr nativePtr = new IntPtr(123);
+            ImFontPtr fontPtr = new ImFontPtr(nativePtr);
+            IntPtr result = fontPtr;
+            Assert.Equal(nativePtr, result);
+        }
+        
+        /// <summary>
+        /// Tests that implicit conversion from int ptr returns im font ptr
+        /// </summary>
+        [Fact]
+        public void ImplicitConversionFromIntPtr_ReturnsImFontPtr()
+        {
+            IntPtr nativePtr = new IntPtr(123);
+            ImFontPtr fontPtr = nativePtr;
+            Assert.Equal(nativePtr, fontPtr.NativePtr);
+        }
+        
+        
+        /// <summary>
+        /// Tests that fallback advance x returns correct value
+        /// </summary>
+        [Fact]
+        public void FallbackAdvanceX_ReturnsCorrectValue()
+        {
+            IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFont>());
+            ImFont font = new ImFont {FallbackAdvanceX = 1.23f};
+            Marshal.StructureToPtr(font, nativePtr, false);
+            ImFontPtr fontPtr = new ImFontPtr(nativePtr);
+            Assert.Equal(1.23f, fontPtr.FallbackAdvanceX);
+            Marshal.FreeHGlobal(nativePtr);
+        }
+        
+        /// <summary>
+        /// Tests that font size returns correct value
+        /// </summary>
+        [Fact]
+        public void FontSize_ReturnsCorrectValue()
+        {
+            IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFont>());
+            ImFont font = new ImFont {FontSize = 12.34f};
+            Marshal.StructureToPtr(font, nativePtr, false);
+            ImFontPtr fontPtr = new ImFontPtr(nativePtr);
+            Assert.Equal(12.34f, fontPtr.FontSize);
+            Marshal.FreeHGlobal(nativePtr);
+        }
+        
+        /// <summary>
+        /// Tests that container atlas returns correct value
+        /// </summary>
+        [Fact]
+        public void ContainerAtlas_ReturnsCorrectValue()
+        {
+            IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFont>());
+            ImFont font = new ImFont {ContainerAtlas = new IntPtr(101112)};
+            Marshal.StructureToPtr(font, nativePtr, false);
+            ImFontPtr fontPtr = new ImFontPtr(nativePtr);
+            Assert.Equal(new IntPtr(101112), fontPtr.ContainerAtlas.NativePtr);
+            Marshal.FreeHGlobal(nativePtr);
+        }
+        
+        /// <summary>
+        /// Tests that config data get and set returns correct value
+        /// </summary>
+        [Fact]
+        public void ConfigData_GetAndSet_ReturnsCorrectValue()
+        {
+            IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFont>());
+            ImFont font = new ImFont {ConfigData = new IntPtr(131415)};
+            Marshal.StructureToPtr(font, nativePtr, false);
+            ImFontPtr fontPtr = new ImFontPtr(nativePtr);
+            Assert.Equal(new IntPtr(131415), fontPtr.ConfigData.NativePtr);
+            
+            ImFontConfigPtr newConfigData = new IntPtr(161718);
+            fontPtr.ConfigData = newConfigData;
+            Assert.Equal(new IntPtr(161718), fontPtr.ConfigData.NativePtr);
+            Marshal.FreeHGlobal(nativePtr);
+        }
+        
+        /// <summary>
+        /// Tests that config data count returns correct value
+        /// </summary>
+        [Fact]
+        public void ConfigDataCount_ReturnsCorrectValue()
+        {
+            IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFont>());
+            ImFont font = new ImFont {ConfigDataCount = 5};
+            Marshal.StructureToPtr(font, nativePtr, false);
+            ImFontPtr fontPtr = new ImFontPtr(nativePtr);
+            Assert.Equal(5, fontPtr.ConfigDataCount);
+            Marshal.FreeHGlobal(nativePtr);
+        }
+        
+        /// <summary>
+        /// Tests that fallback char returns correct value
+        /// </summary>
+        [Fact]
+        public void FallbackChar_ReturnsCorrectValue()
+        {
+            IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFont>());
+            ImFont font = new ImFont {FallbackChar = 1234};
+            Marshal.StructureToPtr(font, nativePtr, false);
+            ImFontPtr fontPtr = new ImFontPtr(nativePtr);
+            Assert.Equal(1234, fontPtr.FallbackChar);
+            Marshal.FreeHGlobal(nativePtr);
+        }
+        
+        /// <summary>
+        /// Tests that ellipsis char returns correct value
+        /// </summary>
+        [Fact]
+        public void EllipsisChar_ReturnsCorrectValue()
+        {
+            IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFont>());
+            ImFont font = new ImFont {EllipsisChar = 5678};
+            Marshal.StructureToPtr(font, nativePtr, false);
+            ImFontPtr fontPtr = new ImFontPtr(nativePtr);
+            Assert.Equal(5678, fontPtr.EllipsisChar);
+            Marshal.FreeHGlobal(nativePtr);
+        }
+        
+        /// <summary>
+        /// Tests that dot char returns correct value
+        /// </summary>
+        [Fact]
+        public void DotChar_ReturnsCorrectValue()
+        {
+            IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFont>());
+            ImFont font = new ImFont {DotChar = unchecked((ushort)91011)};
+            Marshal.StructureToPtr(font, nativePtr, false);
+            ImFontPtr fontPtr = new ImFontPtr(nativePtr);
+            Assert.Equal(25475, fontPtr.DotChar);
+            Marshal.FreeHGlobal(nativePtr);
+        }
+        
+        /// <summary>
+        /// Tests that dirty lookup tables returns correct value
+        /// </summary>
+        [Fact]
+        public void DirtyLookupTables_ReturnsCorrectValue()
+        {
+            IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFont>());
+            ImFont font = new ImFont {DirtyLookupTables = 1};
+            Marshal.StructureToPtr(font, nativePtr, false);
+            ImFontPtr fontPtr = new ImFontPtr(nativePtr);
+            Assert.True(fontPtr.DirtyLookupTables);
+            Marshal.FreeHGlobal(nativePtr);
+        }
+        
+        /// <summary>
+        /// Tests that scale returns correct value
+        /// </summary>
+        [Fact]
+        public void Scale_ReturnsCorrectValue()
+        {
+            IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFont>());
+            ImFont font = new ImFont {Scale = 2.34f};
+            Marshal.StructureToPtr(font, nativePtr, false);
+            ImFontPtr fontPtr = new ImFontPtr(nativePtr);
+            Assert.Equal(2.34f, fontPtr.Scale);
+            Marshal.FreeHGlobal(nativePtr);
+        }
+        
+        /// <summary>
+        /// Tests that ascent returns correct value
+        /// </summary>
+        [Fact]
+        public void Ascent_ReturnsCorrectValue()
+        {
+            IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFont>());
+            ImFont font = new ImFont {Ascent = 3.45f};
+            Marshal.StructureToPtr(font, nativePtr, false);
+            ImFontPtr fontPtr = new ImFontPtr(nativePtr);
+            Assert.Equal(3.45f, fontPtr.Ascent);
+            Marshal.FreeHGlobal(nativePtr);
+        }
+        
+        /// <summary>
+        /// Tests that descent returns correct value
+        /// </summary>
+        [Fact]
+        public void Descent_ReturnsCorrectValue()
+        {
+            IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFont>());
+            ImFont font = new ImFont {Descent = 4.56f};
+            Marshal.StructureToPtr(font, nativePtr, false);
+            ImFontPtr fontPtr = new ImFontPtr(nativePtr);
+            Assert.Equal(4.56f, fontPtr.Descent);
+            Marshal.FreeHGlobal(nativePtr);
+        }
+        
+        /// <summary>
+        /// Tests that metrics total surface returns correct value
+        /// </summary>
+        [Fact]
+        public void MetricsTotalSurface_ReturnsCorrectValue()
+        {
+            IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFont>());
+            ImFont font = new ImFont {MetricsTotalSurface = 7890};
+            Marshal.StructureToPtr(font, nativePtr, false);
+            ImFontPtr fontPtr = new ImFontPtr(nativePtr);
+            Assert.Equal(7890, fontPtr.MetricsTotalSurface);
+            Marshal.FreeHGlobal(nativePtr);
+        }
     }
 }
