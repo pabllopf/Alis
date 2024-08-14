@@ -49,15 +49,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             object value = new object();
             Dictionary<object, object> objectGraph = new Dictionary<object, object>();
             JsonOptions options = new JsonOptions();
-
+            
             JsonEventArgs eventArgs = new JsonEventArgs(writer, value, objectGraph, options);
-
+            
             Assert.Equal(writer, eventArgs.Writer);
             Assert.Equal(value, eventArgs.Value);
             Assert.Equal(objectGraph, eventArgs.ObjectGraph);
             Assert.Equal(options, eventArgs.Options);
         }
-
+        
         /// <summary>
         ///     Tests that json event args constructor with six parameters sets properties correctly
         /// </summary>
@@ -70,9 +70,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             JsonOptions options = new JsonOptions();
             string name = "TestName";
             object component = new object();
-
+            
             JsonEventArgs eventArgs = new JsonEventArgs(writer, value, objectGraph, options, name, component);
-
+            
             Assert.Equal(writer, eventArgs.Writer);
             Assert.Equal(value, eventArgs.Value);
             Assert.Equal(objectGraph, eventArgs.ObjectGraph);
@@ -80,7 +80,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal(name, eventArgs.Name);
             Assert.Equal(component, eventArgs.Component);
         }
-
+        
         /// <summary>
         ///     Tests that json event args properties can be set
         /// </summary>
@@ -95,7 +95,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
                 Value = new object(),
                 Name = "TestName"
             };
-
+            
             Assert.Equal(JsonEventType.Unspecified, eventArgs.EventType);
             Assert.True(eventArgs.Handled);
             Assert.True(eventArgs.First);

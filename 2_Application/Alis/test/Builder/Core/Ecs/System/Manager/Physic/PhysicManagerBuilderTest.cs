@@ -45,10 +45,10 @@ namespace Alis.Test.Builder.Core.Ecs.System.Manager.Physic
         public void PhysicManagerBuilder_DefaultConstructor_ValidInput()
         {
             PhysicManagerBuilder physicManagerBuilder = new PhysicManagerBuilder();
-
+            
             Assert.NotNull(physicManagerBuilder);
         }
-
+        
         /// <summary>
         ///     Tests that build valid input
         /// </summary>
@@ -56,9 +56,9 @@ namespace Alis.Test.Builder.Core.Ecs.System.Manager.Physic
         public void Build_ValidInput()
         {
             PhysicManagerBuilder physicManagerBuilder = new PhysicManagerBuilder();
-
+            
             PhysicManager physicManager = physicManagerBuilder.Build();
-
+            
             Assert.NotNull(physicManager);
         }
     }

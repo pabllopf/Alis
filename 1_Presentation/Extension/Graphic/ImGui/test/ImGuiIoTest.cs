@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test
 {
     /// <summary>
-    /// The im gui io test class
+    ///     The im gui io test class
     /// </summary>
     public class ImGuiIoTest
     {
         /// <summary>
-        /// Tests that keys data 407 should be initialized
+        ///     Tests that keys data 407 should be initialized
         /// </summary>
         [Fact]
         public void KeysData407_ShouldBeInitialized()
@@ -49,7 +49,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that keys data 408 should be initialized
+        ///     Tests that keys data 408 should be initialized
         /// </summary>
         [Fact]
         public void KeysData408_ShouldBeInitialized()
@@ -59,11 +59,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
 // Repeat similar tests for all KeysData properties
-        
-        /// <summary>
-        /// Tests that want capture mouse unless popup close should be initialized
-        /// </summary>
-        [Fact]
+
+/// <summary>
+///     Tests that want capture mouse unless popup close should be initialized
+/// </summary>
+[Fact]
         public void WantCaptureMouseUnlessPopupClose_ShouldBeInitialized()
         {
             ImGuiIo io = new ImGuiIo();
@@ -71,7 +71,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that mouse pos prev should be initialized
+        ///     Tests that mouse pos prev should be initialized
         /// </summary>
         [Fact]
         public void MousePosPrev_ShouldBeInitialized()
@@ -81,7 +81,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that mouse clicked pos 0 should be initialized
+        ///     Tests that mouse clicked pos 0 should be initialized
         /// </summary>
         [Fact]
         public void MouseClickedPos0_ShouldBeInitialized()
@@ -91,11 +91,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
 // Repeat similar tests for all MouseClickedPos properties
-        
-        /// <summary>
-        /// Tests that mouse clicked time should be initialized
-        /// </summary>
-        [Fact]
+
+/// <summary>
+///     Tests that mouse clicked time should be initialized
+/// </summary>
+[Fact]
         public void MouseClickedTime_ShouldBeInitialized()
         {
             ImGuiIo io = new ImGuiIo();
@@ -103,7 +103,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that mouse clicked should be initialized
+        ///     Tests that mouse clicked should be initialized
         /// </summary>
         [Fact]
         public void MouseClicked_ShouldBeInitialized()
@@ -113,7 +113,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that mouse double clicked should be initialized
+        ///     Tests that mouse double clicked should be initialized
         /// </summary>
         [Fact]
         public void MouseDoubleClicked_ShouldBeInitialized()
@@ -123,7 +123,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that mouse clicked count should be initialized
+        ///     Tests that mouse clicked count should be initialized
         /// </summary>
         [Fact]
         public void MouseClickedCount_ShouldBeInitialized()
@@ -133,7 +133,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that mouse clicked last count should be initialized
+        ///     Tests that mouse clicked last count should be initialized
         /// </summary>
         [Fact]
         public void MouseClickedLastCount_ShouldBeInitialized()
@@ -143,7 +143,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that mouse released should be initialized
+        ///     Tests that mouse released should be initialized
         /// </summary>
         [Fact]
         public void MouseReleased_ShouldBeInitialized()
@@ -153,7 +153,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that mouse down owned should be initialized
+        ///     Tests that mouse down owned should be initialized
         /// </summary>
         [Fact]
         public void MouseDownOwned_ShouldBeInitialized()
@@ -163,7 +163,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that mouse down owned unless popup close should be initialized
+        ///     Tests that mouse down owned unless popup close should be initialized
         /// </summary>
         [Fact]
         public void MouseDownOwnedUnlessPopupClose_ShouldBeInitialized()
@@ -173,7 +173,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that mouse down duration should be initialized
+        ///     Tests that mouse down duration should be initialized
         /// </summary>
         [Fact]
         public void MouseDownDuration_ShouldBeInitialized()
@@ -183,7 +183,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that mouse down duration prev should be initialized
+        ///     Tests that mouse down duration prev should be initialized
         /// </summary>
         [Fact]
         public void MouseDownDurationPrev_ShouldBeInitialized()
@@ -193,7 +193,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that mouse drag max distance abs 0 should be initialized
+        ///     Tests that mouse drag max distance abs 0 should be initialized
         /// </summary>
         [Fact]
         public void MouseDragMaxDistanceAbs0_ShouldBeInitialized()
@@ -203,7 +203,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that mouse drag max distance sqr should be initialized
+        ///     Tests that mouse drag max distance sqr should be initialized
         /// </summary>
         [Fact]
         public void MouseDragMaxDistanceSqr_ShouldBeInitialized()
@@ -213,7 +213,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that pen pressure should be initialized
+        ///     Tests that pen pressure should be initialized
         /// </summary>
         [Fact]
         public void PenPressure_ShouldBeInitialized()
@@ -223,7 +223,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that app focus lost should be initialized
+        ///     Tests that app focus lost should be initialized
         /// </summary>
         [Fact]
         public void AppFocusLost_ShouldBeInitialized()
@@ -233,7 +233,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that app accepting events should be initialized
+        ///     Tests that app accepting events should be initialized
         /// </summary>
         [Fact]
         public void AppAcceptingEvents_ShouldBeInitialized()
@@ -243,7 +243,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that backend using legacy key arrays should be initialized
+        ///     Tests that backend using legacy key arrays should be initialized
         /// </summary>
         [Fact]
         public void BackendUsingLegacyKeyArrays_ShouldBeInitialized()
@@ -253,7 +253,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that backend using legacy nav input array should be initialized
+        ///     Tests that backend using legacy nav input array should be initialized
         /// </summary>
         [Fact]
         public void BackendUsingLegacyNavInputArray_ShouldBeInitialized()
@@ -263,7 +263,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that input queue surrogate should be initialized
+        ///     Tests that input queue surrogate should be initialized
         /// </summary>
         [Fact]
         public void InputQueueSurrogate_ShouldBeInitialized()
@@ -273,7 +273,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that input queue characters should be initialized
+        ///     Tests that input queue characters should be initialized
         /// </summary>
         [Fact]
         public void InputQueueCharacters_ShouldBeInitialized()
@@ -283,7 +283,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that config flags set and get returns correct value
+        ///     Tests that config flags set and get returns correct value
         /// </summary>
         [Fact]
         public void ConfigFlags_SetAndGet_ReturnsCorrectValue()
@@ -295,7 +295,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that backend flags set and get returns correct value
+        ///     Tests that backend flags set and get returns correct value
         /// </summary>
         [Fact]
         public void BackendFlags_SetAndGet_ReturnsCorrectValue()
@@ -307,7 +307,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that display size set and get returns correct value
+        ///     Tests that display size set and get returns correct value
         /// </summary>
         [Fact]
         public void DisplaySize_SetAndGet_ReturnsCorrectValue()
@@ -319,7 +319,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that delta time set and get returns correct value
+        ///     Tests that delta time set and get returns correct value
         /// </summary>
         [Fact]
         public void DeltaTime_SetAndGet_ReturnsCorrectValue()
@@ -331,7 +331,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that ini saving rate set and get returns correct value
+        ///     Tests that ini saving rate set and get returns correct value
         /// </summary>
         [Fact]
         public void IniSavingRate_SetAndGet_ReturnsCorrectValue()
@@ -343,7 +343,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that ini filename set and get returns correct value
+        ///     Tests that ini filename set and get returns correct value
         /// </summary>
         [Fact]
         public void IniFilename_SetAndGet_ReturnsCorrectValue()
@@ -355,7 +355,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that log filename set and get returns correct value
+        ///     Tests that log filename set and get returns correct value
         /// </summary>
         [Fact]
         public void LogFilename_SetAndGet_ReturnsCorrectValue()
@@ -367,7 +367,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that mouse double click time set and get returns correct value
+        ///     Tests that mouse double click time set and get returns correct value
         /// </summary>
         [Fact]
         public void MouseDoubleClickTime_SetAndGet_ReturnsCorrectValue()
@@ -379,7 +379,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that mouse double click max dist set and get returns correct value
+        ///     Tests that mouse double click max dist set and get returns correct value
         /// </summary>
         [Fact]
         public void MouseDoubleClickMaxDist_SetAndGet_ReturnsCorrectValue()
@@ -391,7 +391,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that mouse drag threshold set and get returns correct value
+        ///     Tests that mouse drag threshold set and get returns correct value
         /// </summary>
         [Fact]
         public void MouseDragThreshold_SetAndGet_ReturnsCorrectValue()
@@ -403,7 +403,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that key repeat delay set and get returns correct value
+        ///     Tests that key repeat delay set and get returns correct value
         /// </summary>
         [Fact]
         public void KeyRepeatDelay_SetAndGet_ReturnsCorrectValue()
@@ -415,7 +415,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that key repeat rate set and get returns correct value
+        ///     Tests that key repeat rate set and get returns correct value
         /// </summary>
         [Fact]
         public void KeyRepeatRate_SetAndGet_ReturnsCorrectValue()
@@ -427,7 +427,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that hover delay normal set and get returns correct value
+        ///     Tests that hover delay normal set and get returns correct value
         /// </summary>
         [Fact]
         public void HoverDelayNormal_SetAndGet_ReturnsCorrectValue()
@@ -439,7 +439,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that hover delay short set and get returns correct value
+        ///     Tests that hover delay short set and get returns correct value
         /// </summary>
         [Fact]
         public void HoverDelayShort_SetAndGet_ReturnsCorrectValue()
@@ -451,7 +451,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that user data set and get returns correct value
+        ///     Tests that user data set and get returns correct value
         /// </summary>
         [Fact]
         public void UserData_SetAndGet_ReturnsCorrectValue()
@@ -463,7 +463,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that fonts set and get returns correct value
+        ///     Tests that fonts set and get returns correct value
         /// </summary>
         [Fact]
         public void Fonts_SetAndGet_ReturnsCorrectValue()
@@ -475,7 +475,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that font global scale set and get returns correct value
+        ///     Tests that font global scale set and get returns correct value
         /// </summary>
         [Fact]
         public void FontGlobalScale_SetAndGet_ReturnsCorrectValue()
@@ -487,7 +487,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that font allow user scaling set and get returns correct value
+        ///     Tests that font allow user scaling set and get returns correct value
         /// </summary>
         [Fact]
         public void FontAllowUserScaling_SetAndGet_ReturnsCorrectValue()
@@ -499,7 +499,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that font default set and get returns correct value
+        ///     Tests that font default set and get returns correct value
         /// </summary>
         [Fact]
         public void FontDefault_SetAndGet_ReturnsCorrectValue()
@@ -511,7 +511,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that display framebuffer scale set and get returns correct value
+        ///     Tests that display framebuffer scale set and get returns correct value
         /// </summary>
         [Fact]
         public void DisplayFramebufferScale_SetAndGet_ReturnsCorrectValue()
@@ -523,7 +523,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that config docking no split set and get returns correct value
+        ///     Tests that config docking no split set and get returns correct value
         /// </summary>
         [Fact]
         public void ConfigDockingNoSplit_SetAndGet_ReturnsCorrectValue()
@@ -535,7 +535,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that config docking with shift set and get returns correct value
+        ///     Tests that config docking with shift set and get returns correct value
         /// </summary>
         [Fact]
         public void ConfigDockingWithShift_SetAndGet_ReturnsCorrectValue()
@@ -547,7 +547,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that config docking always tab bar set and get returns correct value
+        ///     Tests that config docking always tab bar set and get returns correct value
         /// </summary>
         [Fact]
         public void ConfigDockingAlwaysTabBar_SetAndGet_ReturnsCorrectValue()
@@ -559,7 +559,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that config docking transparent payload set and get returns correct value
+        ///     Tests that config docking transparent payload set and get returns correct value
         /// </summary>
         [Fact]
         public void ConfigDockingTransparentPayload_SetAndGet_ReturnsCorrectValue()

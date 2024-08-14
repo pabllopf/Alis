@@ -48,14 +48,14 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             // Arrange
             ClipVertex clipVertex = new ClipVertex();
             ContactId expectedId = new ContactId();
-
+            
             // Act
             clipVertex.Id = expectedId;
-
+            
             // Assert
             Assert.Equal(expectedId, clipVertex.Id);
         }
-
+        
         /// <summary>
         ///     Tests that test clip vertex v
         /// </summary>
@@ -65,10 +65,10 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             // Arrange
             ClipVertex clipVertex = new ClipVertex();
             Vector2 expectedVector = new Vector2();
-
+            
             // Act
             clipVertex.V = expectedVector;
-
+            
             // Assert
             Assert.Equal(expectedVector, clipVertex.V);
         }

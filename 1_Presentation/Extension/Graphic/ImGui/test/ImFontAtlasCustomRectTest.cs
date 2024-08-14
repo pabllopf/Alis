@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test
 {
     /// <summary>
-    /// The im font atlas custom rect test class
+    ///     The im font atlas custom rect test class
     /// </summary>
     public class ImFontAtlasCustomRectTest
     {
         /// <summary>
-        /// Tests that width should be initialized
+        ///     Tests that width should be initialized
         /// </summary>
         [Fact]
         public void Width_ShouldBeInitialized()
@@ -47,9 +47,9 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontAtlasCustomRect rect = new ImFontAtlasCustomRect();
             Assert.Equal(default(ushort), rect.Width);
         }
-
+        
         /// <summary>
-        /// Tests that height should be initialized
+        ///     Tests that height should be initialized
         /// </summary>
         [Fact]
         public void Height_ShouldBeInitialized()
@@ -57,9 +57,9 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontAtlasCustomRect rect = new ImFontAtlasCustomRect();
             Assert.Equal(default(ushort), rect.Height);
         }
-
+        
         /// <summary>
-        /// Tests that x should be initialized
+        ///     Tests that x should be initialized
         /// </summary>
         [Fact]
         public void X_ShouldBeInitialized()
@@ -67,9 +67,9 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontAtlasCustomRect rect = new ImFontAtlasCustomRect();
             Assert.Equal(default(ushort), rect.X);
         }
-
+        
         /// <summary>
-        /// Tests that y should be initialized
+        ///     Tests that y should be initialized
         /// </summary>
         [Fact]
         public void Y_ShouldBeInitialized()
@@ -77,9 +77,9 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontAtlasCustomRect rect = new ImFontAtlasCustomRect();
             Assert.Equal(default(ushort), rect.Y);
         }
-
+        
         /// <summary>
-        /// Tests that glyph id should be initialized
+        ///     Tests that glyph id should be initialized
         /// </summary>
         [Fact]
         public void GlyphId_ShouldBeInitialized()
@@ -87,9 +87,9 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontAtlasCustomRect rect = new ImFontAtlasCustomRect();
             Assert.Equal(default(uint), rect.GlyphId);
         }
-
+        
         /// <summary>
-        /// Tests that glyph advance x should be initialized
+        ///     Tests that glyph advance x should be initialized
         /// </summary>
         [Fact]
         public void GlyphAdvanceX_ShouldBeInitialized()
@@ -97,9 +97,9 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontAtlasCustomRect rect = new ImFontAtlasCustomRect();
             Assert.Equal(default(float), rect.GlyphAdvanceX);
         }
-
+        
         /// <summary>
-        /// Tests that glyph offset should be initialized
+        ///     Tests that glyph offset should be initialized
         /// </summary>
         [Fact]
         public void GlyphOffset_ShouldBeInitialized()
@@ -107,9 +107,9 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontAtlasCustomRect rect = new ImFontAtlasCustomRect();
             Assert.Equal(default(Vector2), rect.GlyphOffset);
         }
-
+        
         /// <summary>
-        /// Tests that font should be initialized
+        ///     Tests that font should be initialized
         /// </summary>
         [Fact]
         public void Font_ShouldBeInitialized()
@@ -117,9 +117,9 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontAtlasCustomRect rect = new ImFontAtlasCustomRect();
             Assert.Equal(IntPtr.Zero, rect.Font);
         }
-
+        
         /// <summary>
-        /// Tests that width should set and get correctly
+        ///     Tests that width should set and get correctly
         /// </summary>
         [Fact]
         public void Width_Should_SetAndGetCorrectly()
@@ -128,9 +128,9 @@ namespace Alis.Extension.Graphic.ImGui.Test
             rect.Width = 100;
             Assert.Equal(100, rect.Width);
         }
-
+        
         /// <summary>
-        /// Tests that height should set and get correctly
+        ///     Tests that height should set and get correctly
         /// </summary>
         [Fact]
         public void Height_Should_SetAndGetCorrectly()
@@ -139,9 +139,9 @@ namespace Alis.Extension.Graphic.ImGui.Test
             rect.Height = 200;
             Assert.Equal(200, rect.Height);
         }
-
+        
         /// <summary>
-        /// Tests that x should set and get correctly
+        ///     Tests that x should set and get correctly
         /// </summary>
         [Fact]
         public void X_Should_SetAndGetCorrectly()
@@ -150,9 +150,9 @@ namespace Alis.Extension.Graphic.ImGui.Test
             rect.X = 10;
             Assert.Equal(10, rect.X);
         }
-
+        
         /// <summary>
-        /// Tests that y should set and get correctly
+        ///     Tests that y should set and get correctly
         /// </summary>
         [Fact]
         public void Y_Should_SetAndGetCorrectly()
@@ -161,20 +161,20 @@ namespace Alis.Extension.Graphic.ImGui.Test
             rect.Y = 20;
             Assert.Equal(20, rect.Y);
         }
-
+        
         /// <summary>
-        /// Tests that glyph id should set and get correctly
+        ///     Tests that glyph id should set and get correctly
         /// </summary>
         [Fact]
         public void GlyphId_Should_SetAndGetCorrectly()
         {
             ImFontAtlasCustomRect rect = new ImFontAtlasCustomRect();
             rect.GlyphId = 12345;
-            Assert.Equal((uint)12345, rect.GlyphId);
+            Assert.Equal((uint) 12345, rect.GlyphId);
         }
-
+        
         /// <summary>
-        /// Tests that glyph advance x should set and get correctly
+        ///     Tests that glyph advance x should set and get correctly
         /// </summary>
         [Fact]
         public void GlyphAdvanceX_Should_SetAndGetCorrectly()
@@ -183,9 +183,9 @@ namespace Alis.Extension.Graphic.ImGui.Test
             rect.GlyphAdvanceX = 1.5f;
             Assert.Equal(1.5f, rect.GlyphAdvanceX);
         }
-
+        
         /// <summary>
-        /// Tests that glyph offset should set and get correctly
+        ///     Tests that glyph offset should set and get correctly
         /// </summary>
         [Fact]
         public void GlyphOffset_Should_SetAndGetCorrectly()
@@ -195,9 +195,9 @@ namespace Alis.Extension.Graphic.ImGui.Test
             rect.GlyphOffset = offset;
             Assert.Equal(offset, rect.GlyphOffset);
         }
-
+        
         /// <summary>
-        /// Tests that font should set and get correctly
+        ///     Tests that font should set and get correctly
         /// </summary>
         [Fact]
         public void Font_Should_SetAndGetCorrectly()

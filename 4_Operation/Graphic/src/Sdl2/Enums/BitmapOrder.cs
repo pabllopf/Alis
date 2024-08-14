@@ -38,12 +38,12 @@ namespace Alis.Core.Graphic.Sdl2.Enums
         ///     The sdl bit map order none sdl bit map order
         /// </summary>
         BitMapOrderNone,
-
+        
         /// <summary>
         ///     The sdl bit map order 4321 sdl bit map order
         /// </summary>
         BitMapOrder4321,
-
+        
         /// <summary>
         ///     The sdl bit map order 1234 sdl bit map order
         /// </summary>

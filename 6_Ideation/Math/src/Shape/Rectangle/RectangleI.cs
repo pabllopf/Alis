@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 
@@ -37,30 +36,29 @@ namespace Alis.Core.Aspect.Math.Shape.Rectangle
     /// <summary>
     ///     The sdl rect
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    [Serializable]
+    [StructLayout(LayoutKind.Sequential), Serializable]
     public struct RectangleI : IShape, ISerializable
     {
         /// <summary>
         ///     The
         /// </summary>
         public int X { get; set; }
-
+        
         /// <summary>
         ///     The
         /// </summary>
         public int Y { get; set; }
-
+        
         /// <summary>
         ///     The
         /// </summary>
         public int W { get; set; }
-
+        
         /// <summary>
         ///     The
         /// </summary>
         public int H { get; set; }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="RectangleI" /> class
         /// </summary>
@@ -75,13 +73,12 @@ namespace Alis.Core.Aspect.Math.Shape.Rectangle
             H = h;
             W = w;
         }
-
+        
         /// <summary>
         ///     Gets the object data using the specified info
         /// </summary>
         /// <param name="info">The info</param>
         /// <param name="context">The context</param>
-        
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("x", X);

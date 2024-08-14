@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
@@ -56,19 +55,18 @@ namespace Alis.Core.Ecs.Component.Render
             Depth = 0;
             Flips = RendererFlips.None;
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Sprite" /> class
         /// </summary>
         /// <param name="image">The image</param>
-        
         public Sprite(Image image)
         {
             Image = image;
             Depth = 0;
             Flips = RendererFlips.None;
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Sprite" /> class
         /// </summary>
@@ -76,109 +74,103 @@ namespace Alis.Core.Ecs.Component.Render
         /// <param name="depth">The depth</param>
         /// <param name="flips">The flips</param>
         [JsonConstructor]
-        
         public Sprite(Image image, int depth, RendererFlips flips)
         {
             Image = image;
             Depth = depth;
             Flips = flips;
         }
-
+        
         /// <summary>
         ///     The image
         /// </summary>
         [JsonPropertyName("_Image_")]
         public Image Image { get; set; }
-
+        
         /// <summary>
         ///     The level
         /// </summary>
         [JsonPropertyName("_Depth_")]
         public int Depth { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the flip
         /// </summary>
         [JsonPropertyName("_Flips_")]
         public RendererFlips Flips { get; set; }
-
+        
         /// <summary>
         ///     Builders this instance
         /// </summary>
         /// <returns>The sprite builder</returns>
         public SpriteBuilder Builder() => new SpriteBuilder();
-
+        
         /// <summary>
         ///     Inits this instance
         /// </summary>
-        
         public override void OnInit()
         {
             Image.Load();
         }
-
+        
         /// <summary>
         ///     Awakes this instance
         /// </summary>
-        
         public override void OnAwake()
         {
             Context?.GraphicManager.Attach(this);
         }
-
+        
         /// <summary>
         ///     Exits this instance
         /// </summary>
-        
         public override void OnExit()
         {
             Context?.GraphicManager.UnAttach(this);
         }
-
+        
         /// <summary>
         ///     Renders the renderer
         /// </summary>
         /// <param name="renderer">The renderer</param>
         /// <param name="camera"></param>
-        
         public void Render(IntPtr renderer, Camera camera)
         {
             if (Context is null)
             {
                 return;
             }
-
+            
             Sdl.QueryTexture(Image.Texture, out _, out _, out int w, out int h);
-
+            
             RectangleI dstRect = new RectangleI(
                 (int) (GameObject.Transform.Position.X - w * GameObject.Transform.Scale.X / 2 - (camera.Viewport.X - camera.Viewport.W / 2) + camera.CameraBorder),
                 (int) (GameObject.Transform.Position.Y - h * GameObject.Transform.Scale.Y / 2 - (camera.Viewport.Y - camera.Viewport.H / 2) + camera.CameraBorder),
                 (int) (w * GameObject.Transform.Scale.X),
                 (int) (h * GameObject.Transform.Scale.Y));
-
+            
             Sdl.RenderCopyEx(renderer, Image.Texture, IntPtr.Zero, ref dstRect, GameObject.Transform.Rotation.Angle, IntPtr.Zero, Flips);
         }
-
+        
         /// <summary>
         ///     Renders the renderer
         /// </summary>
         /// <param name="renderer">The renderer</param>
-        
         public void Render(IntPtr renderer)
         {
             if (Context is null)
             {
                 return;
             }
-
+            
             Sdl.QueryTexture(Image.Texture, out _, out _, out int w, out int h);
-
+            
             RectangleI dstRect = new RectangleI(
                 (int) (GameObject.Transform.Position.X - w * GameObject.Transform.Scale.X / 2),
                 (int) (GameObject.Transform.Position.Y - h * GameObject.Transform.Scale.Y / 2),
                 (int) (w * GameObject.Transform.Scale.X),
                 (int) (h * GameObject.Transform.Scale.Y));
-
+            
             Sdl.RenderCopyEx(renderer, Image.Texture, IntPtr.Zero, ref dstRect, GameObject.Transform.Rotation.Angle, IntPtr.Zero, Flips);
         }
     }

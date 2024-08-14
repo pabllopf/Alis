@@ -27,34 +27,32 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Xunit;
 using System;
 using Alis.Core.Graphic.Sdl2.Structs;
-
+using Xunit;
 
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
-
     /// <summary>
-    /// The internal os wm info tests class
+    ///     The internal os wm info tests class
     /// </summary>
     public class InternalOs2WmInfoTests
     {
         /// <summary>
-        /// Tests that internal os 2 wm info initializes properties correctly
+        ///     Tests that internal os 2 wm info initializes properties correctly
         /// </summary>
         [Fact]
         public void InternalOs2WmInfo_InitializesPropertiesCorrectly()
         {
             IntPtr expectedHwnd = new IntPtr(123);
             IntPtr expectedHwndFrame = new IntPtr(456);
-
+            
             InternalOs2WmInfo info = new InternalOs2WmInfo
             {
                 Hwnd = expectedHwnd,
                 HwndFrame = expectedHwndFrame
             };
-
+            
             Assert.Equal(expectedHwnd, info.Hwnd);
             Assert.Equal(expectedHwndFrame, info.HwndFrame);
         }

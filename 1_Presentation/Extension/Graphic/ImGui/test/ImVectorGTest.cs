@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test
 {
     /// <summary>
-    /// The im vector test class
+    ///     The im vector test class
     /// </summary>
     public class ImVectorGTest
     {
         /// <summary>
-        /// Tests that size should be initialized correctly
+        ///     Tests that size should be initialized correctly
         /// </summary>
         [Fact]
         public void Size_ShouldBeInitializedCorrectly()
@@ -56,7 +56,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that capacity should be initialized correctly
+        ///     Tests that capacity should be initialized correctly
         /// </summary>
         [Fact]
         public void Capacity_ShouldBeInitializedCorrectly()
@@ -73,7 +73,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that data should be initialized correctly
+        ///     Tests that data should be initialized correctly
         /// </summary>
         [Fact]
         public void Data_ShouldBeInitializedCorrectly()
@@ -91,13 +91,13 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that indexer should return correct value
+        ///     Tests that indexer should return correct value
         /// </summary>
         [Fact]
         public void Indexer_ShouldReturnCorrectValue()
         {
             // Arrange
-            int[] data = new int[] {1, 2, 3, 4, 5};
+            int[] data = {1, 2, 3, 4, 5};
             IntPtr ptr = Marshal.AllocHGlobal(Marshal.SizeOf<int>() * data.Length);
             Marshal.Copy(data, 0, ptr, data.Length);
             ImVectorG<int> imVectorG = new ImVectorG<int>(data.Length, data.Length, ptr);
@@ -113,7 +113,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that indexer should throw index out of range exception
+        ///     Tests that indexer should throw index out of range exception
         /// </summary>
         [Fact]
         public void Indexer_ShouldThrowIndexOutOfRangeException()

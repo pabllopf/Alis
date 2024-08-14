@@ -47,7 +47,7 @@ namespace Alis.Core.Network.Test.Exceptions
             WebSocketHandshakeFailedException exception = new WebSocketHandshakeFailedException();
             Assert.NotNull(exception);
         }
-
+        
         /// <summary>
         ///     Tests that web socket handshake failed exception constructor with message
         /// </summary>
@@ -58,7 +58,7 @@ namespace Alis.Core.Network.Test.Exceptions
             Assert.NotNull(exception);
             Assert.Equal("Test message", exception.Message);
         }
-
+        
         /// <summary>
         ///     Tests that web socket handshake failed exception constructor with message and inner exception
         /// </summary>

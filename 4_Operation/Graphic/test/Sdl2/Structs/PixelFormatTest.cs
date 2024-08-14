@@ -27,27 +27,25 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Xunit;
 using System;
 using Alis.Core.Graphic.Sdl2.Structs;
-
+using Xunit;
 
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
-
     /// <summary>
-    /// The pixel format tests class
+    ///     The pixel format tests class
     /// </summary>
     public class PixelFormatTests
     {
         /// <summary>
-        /// Tests that pixel format initializes with default values
+        ///     Tests that pixel format initializes with default values
         /// </summary>
         [Fact]
         public void PixelFormat_InitializesWithDefaultValues()
         {
             PixelFormat pixelFormat = new PixelFormat();
-
+            
             Assert.Equal(default(uint), pixelFormat.format);
             Assert.Equal(IntPtr.Zero, pixelFormat.Palette);
             Assert.Equal(default(byte), pixelFormat.BitsPerPixel);
@@ -67,9 +65,9 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             Assert.Equal(default(int), pixelFormat.refCount);
             Assert.Equal(IntPtr.Zero, pixelFormat.Next);
         }
-
+        
         /// <summary>
-        /// Tests that pixel format set palette updates value correctly
+        ///     Tests that pixel format set palette updates value correctly
         /// </summary>
         [Fact]
         public void PixelFormat_SetPalette_UpdatesValueCorrectly()
@@ -79,12 +77,12 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             {
                 Palette = palettePtr
             };
-
+            
             Assert.Equal(palettePtr, pixelFormat.Palette);
         }
-
+        
         /// <summary>
-        /// Tests that pixel format set next updates value correctly
+        ///     Tests that pixel format set next updates value correctly
         /// </summary>
         [Fact]
         public void PixelFormat_SetNext_UpdatesValueCorrectly()
@@ -94,7 +92,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             {
                 Next = nextPtr
             };
-
+            
             Assert.Equal(nextPtr, pixelFormat.Next);
         }
     }

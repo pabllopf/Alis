@@ -41,20 +41,20 @@ namespace Alis.Core.Aspect.Data.Json
         ///     The fi
         /// </summary>
         private readonly FieldInfo _fi;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="FieldInfoAccessor" /> class
         /// </summary>
         /// <param name="fi">The fi</param>
         public FieldInfoAccessor(FieldInfo fi) => _fi = fi;
-
+        
         /// <summary>
         ///     Gets the component
         /// </summary>
         /// <param name="component">The component</param>
         /// <returns>The object</returns>
         public object Get(object component) => _fi.GetValue(component);
-
+        
         /// <summary>
         ///     Sets the component
         /// </summary>

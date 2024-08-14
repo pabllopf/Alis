@@ -47,10 +47,10 @@ namespace Alis.Core.Aspect.Math.Test.Util
             int minValue = 1;
             int maxValue = 10;
             int result = RandomUtils.GetInt32(minValue, maxValue);
-
+            
             Assert.InRange(result, minValue, maxValue);
         }
-
+        
         /// <summary>
         ///     Tests that get int 32 with min and max values should throw argument exception when min value is greater than max
         ///     value
@@ -60,10 +60,10 @@ namespace Alis.Core.Aspect.Math.Test.Util
         {
             int minValue = 10;
             int maxValue = 1;
-
+            
             Assert.Throws<ArgumentException>(() => RandomUtils.GetInt32(minValue, maxValue));
         }
-
+        
         /// <summary>
         ///     Tests that get int 32 with value should return within range
         /// </summary>
@@ -72,10 +72,10 @@ namespace Alis.Core.Aspect.Math.Test.Util
         {
             int value = 10;
             int result = RandomUtils.GetInt32(value);
-
+            
             Assert.InRange(result, 0, value);
         }
-
+        
         /// <summary>
         ///     Tests that get int 32 with value should throw argument exception when value is negative
         /// </summary>
@@ -83,7 +83,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         public void GetInt32_WithValue_ShouldThrowArgumentException_WhenValueIsNegative()
         {
             int value = -1;
-
+            
             Assert.Throws<ArgumentException>(() => RandomUtils.GetInt32(value));
         }
     }

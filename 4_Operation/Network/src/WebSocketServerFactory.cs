@@ -29,7 +29,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Net.WebSockets;
 using System.Text.RegularExpressions;
@@ -49,12 +48,12 @@ namespace Alis.Core.Network
         ///     The buffer factory
         /// </summary>
         internal readonly Func<MemoryStream> _bufferFactory;
-
+        
         /// <summary>
         ///     The buffer pool
         /// </summary>
         internal readonly IBufferPool _bufferPool;
-
+        
         /// <summary>
         ///     Initialises a new instance of the WebSocketServerFactory class without caring about internal buffers
         /// </summary>
@@ -63,7 +62,7 @@ namespace Alis.Core.Network
             _bufferPool = new BufferPool();
             _bufferFactory = _bufferPool.GetBuffer;
         }
-
+        
         /// <summary>
         ///     Reads a http header information from a stream and decodes the parts relating to the WebSocket protocot upgrade
         /// </summary>
@@ -79,7 +78,7 @@ namespace Alis.Core.Network
             IList<string> subProtocols = HttpHelper.GetSubProtocols(header);
             return new WebSocketHttpContext(isWebSocketRequest, subProtocols, header, path, stream);
         }
-
+        
         /// <summary>
         ///     Accept web socket with default options
         ///     Call ReadHttpHeaderFromStreamAsync first to get WebSocketHttpContext
@@ -90,7 +89,7 @@ namespace Alis.Core.Network
         public async Task<WebSocket> AcceptWebSocketAsync(WebSocketHttpContext context,
             CancellationToken token = default(CancellationToken))
             => await AcceptWebSocketAsync(context, new WebSocketServerOptions(), token);
-
+        
         /// <summary>
         ///     Accept web socket with options specified
         ///     Call ReadHttpHeaderFromStreamAsync first to get WebSocketHttpContext
@@ -99,7 +98,6 @@ namespace Alis.Core.Network
         /// <param name="options">The web socket options</param>
         /// <param name="token">The optional cancellation token</param>
         /// <returns>A connected web socket</returns>
-        
         public async Task<WebSocket> AcceptWebSocketAsync(WebSocketHttpContext context, WebSocketServerOptions options,
             CancellationToken token = default(CancellationToken))
         {
@@ -110,7 +108,7 @@ namespace Alis.Core.Network
             return new WebSocketImplementation(guid, _bufferFactory, context.Stream, options.KeepAliveInterval,
                 null, options.IncludeExceptionInCloseResponse, false, options.SubProtocol);
         }
-
+        
         /// <summary>
         ///     Checks the web socket version using the specified http header
         /// </summary>
@@ -122,7 +120,7 @@ namespace Alis.Core.Network
             int webSocketVersion = ExtractWebSocketVersion(httpHeader);
             ValidateWebSocketVersion(webSocketVersion);
         }
-
+        
         /// <summary>
         ///     Extracts the web socket version using the specified http header
         /// </summary>
@@ -133,15 +131,15 @@ namespace Alis.Core.Network
         {
             Regex webSocketVersionRegex = new Regex("Sec-WebSocket-Version: (.*)", RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100));
             Match match = webSocketVersionRegex.Match(httpHeader);
-
+            
             if (!match.Success)
             {
                 throw new WebSocketVersionNotSupportedException("Cannot find \"Sec-WebSocket-Version\" in http header");
             }
-
+            
             return Convert.ToInt32(match.Groups[1].Value.Trim());
         }
-
+        
         /// <summary>
         ///     Validates the web socket version using the specified sec web socket version
         /// </summary>
@@ -150,7 +148,7 @@ namespace Alis.Core.Network
         internal static void ValidateWebSocketVersion(int secWebSocketVersion)
         {
             const int webSocketVersion = 13;
-
+            
             if (secWebSocketVersion < webSocketVersion)
             {
                 throw new WebSocketVersionNotSupportedException(string.Format(
@@ -158,7 +156,7 @@ namespace Alis.Core.Network
                     webSocketVersion));
             }
         }
-
+        
         /// <summary>
         ///     Performs the handshake using the specified guid
         /// </summary>
@@ -168,7 +166,6 @@ namespace Alis.Core.Network
         /// <param name="stream">The stream</param>
         /// <param name="token">The token</param>
         /// <exception cref="SecWebSocketKeyMissingException">Unable to read "Sec-WebSocket-Key" from http header</exception>
-        
         internal static async Task PerformHandshakeAsync(Guid guid, string httpHeader, string subProtocol, Stream stream,
             CancellationToken token)
         {
@@ -187,7 +184,7 @@ namespace Alis.Core.Network
                 throw;
             }
         }
-
+        
         /// <summary>
         ///     Performs the handshake with validations using the specified guid
         /// </summary>
@@ -204,7 +201,7 @@ namespace Alis.Core.Network
             string response = BuildHandshakeResponse(secWebSocketKey, subProtocol);
             await SendHandshakeResponse(guid, response, stream, token);
         }
-
+        
         /// <summary>
         ///     Extracts the web socket key using the specified http header
         /// </summary>
@@ -219,10 +216,10 @@ namespace Alis.Core.Network
             {
                 return match.Groups[1].Value.Trim();
             }
-
+            
             throw new SecWebSocketKeyMissingException("Unable to read \"Sec-WebSocket-Key\" from http header");
         }
-
+        
         /// <summary>
         ///     Builds the handshake response using the specified sec web socket key
         /// </summary>
@@ -238,7 +235,7 @@ namespace Alis.Core.Network
                    + (subProtocol != null ? $"Sec-WebSocket-Protocol: {subProtocol}\r\n" : "")
                    + $"Sec-WebSocket-Accept: {setWebSocketAccept}";
         }
-
+        
         /// <summary>
         ///     Sends the handshake response using the specified guid
         /// </summary>
@@ -251,7 +248,7 @@ namespace Alis.Core.Network
             Events.Log.SendingHandshakeResponse(guid, response);
             await HttpHelper.WriteHttpHeaderAsync(response, stream, token);
         }
-
+        
         /// <summary>
         ///     Handles the web socket version not supported using the specified guid
         /// </summary>
@@ -265,7 +262,7 @@ namespace Alis.Core.Network
             string response = "HTTP/1.1 426 Upgrade Required\r\nSec-WebSocket-Version: 13" + ex.Message;
             await HttpHelper.WriteHttpHeaderAsync(response, stream, token);
         }
-
+        
         /// <summary>
         ///     Handles the bad request using the specified guid
         /// </summary>

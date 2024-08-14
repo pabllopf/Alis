@@ -42,37 +42,37 @@ namespace Alis.App.Engine.Windows
         ///     The name window
         /// </summary>
         private const string NameWindow = "Solution";
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="SolutionWindow" /> class
         /// </summary>
         /// <param name="spaceWork">The space work</param>
         public SolutionWindow(SpaceWork spaceWork) => SpaceWork = spaceWork;
-
+        
         /// <summary>
-        /// Initializes this instance
+        ///     Initializes this instance
         /// </summary>
         public void Initialize()
         {
         }
-
+        
         /// <summary>
-        /// Starts this instance
+        ///     Starts this instance
         /// </summary>
         public void Start()
         {
         }
-
+        
         /// <summary>
         ///     Renders this instance
         /// </summary>
         public void Render()
         {
             ImGui.Begin(NameWindow);
-
+            
             ImGui.End();
         }
-
+        
         /// <summary>
         ///     Gets the value of the space work
         /// </summary>

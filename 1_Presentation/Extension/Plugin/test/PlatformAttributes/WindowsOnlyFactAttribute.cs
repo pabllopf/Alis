@@ -33,13 +33,13 @@ using Xunit;
 namespace Alis.Extension.Plugin.Test.PlatformAttributes
 {
     /// <summary>
-    /// The windows only fact attribute class
+    ///     The windows only fact attribute class
     /// </summary>
-    /// <seealso cref="FactAttribute"/>
+    /// <seealso cref="FactAttribute" />
     public class WindowsOnlyFactAttribute : FactAttribute
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="WindowsOnlyFactAttribute"/> class
+        ///     Initializes a new instance of the <see cref="WindowsOnlyFactAttribute" /> class
         /// </summary>
         public WindowsOnlyFactAttribute()
         {

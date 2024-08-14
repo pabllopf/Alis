@@ -30,20 +30,22 @@
 namespace Alis.App.Engine.Core
 {
     /// <summary>
-    /// The runtime interface
+    ///     The runtime interface
     /// </summary>
     public interface IRuntime
     {
         /// <summary>
-        /// Initializes this instance
+        ///     Initializes this instance
         /// </summary>
         public void Initialize();
+        
         /// <summary>
-        /// Updates this instance
+        ///     Updates this instance
         /// </summary>
         public void Update();
+        
         /// <summary>
-        /// Renders this instance
+        ///     Renders this instance
         /// </summary>
         public void Render();
     }

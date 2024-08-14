@@ -52,11 +52,11 @@ namespace Alis.Core.Physic.Test.Collision.Filtering
             Fixture fixtureA = new Fixture(new CircleShape(1), new Filter());
             Fixture fixtureB = new Fixture(new CircleShape(1), new Filter());
             Contact contact = Contact.Create(fixtureA, 0, fixtureB, 0);
-
+            
             // Act
             contact.Destroy();
         }
-
+        
         /// <summary>
         ///     Tests that clear flags should clear flags
         /// </summary>
@@ -68,14 +68,14 @@ namespace Alis.Core.Physic.Test.Collision.Filtering
             Fixture fixtureB = new Fixture(new CircleShape(1), new Filter());
             Contact contact = Contact.Create(fixtureA, 0, fixtureB, 0);
             contact.Flags = ContactSetting.FilterFlag;
-
+            
             // Act
             contact.ClearFlags();
-
+            
             // Assert
             Assert.True(contact.Flags == 0);
         }
-
+        
         /// <summary>
         ///     Tests that invalidate toi should reset toi values
         /// </summary>
@@ -89,10 +89,10 @@ namespace Alis.Core.Physic.Test.Collision.Filtering
             contact.Flags = ContactSetting.ToiFlag | ContactSetting.IslandFlag;
             contact.ToiCount = 5;
             contact.Toi = 0.5f;
-
+            
             // Act
             contact.InvalidateToi();
-
+            
             // Assert
             Assert.Equal(0, contact.ToiCount);
             Assert.Equal(1.0f, contact.Toi);

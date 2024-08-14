@@ -53,14 +53,14 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
                 V = new SimplexVertex[3]
             };
             int expectedValue = 3;
-
+            
             // Act
             simplex.Count = expectedValue;
-
+            
             // Assert
             Assert.Equal(expectedValue, simplex.Count);
         }
-
+        
         /// <summary>
         ///     Tests that test read cache method
         /// </summary>
@@ -81,14 +81,14 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             Transform transformA = new Transform();
             DistanceProxy proxyB = new DistanceProxy();
             Transform transformB = new Transform();
-
+            
             // Act
             Assert.Throws<NullReferenceException>(() => simplex.ReadCache(ref cache, ref proxyA, ref transformA, ref proxyB, ref transformB));
-
+            
             // Assert
             // Add your assertions here based on what you expect after calling ReadCache
         }
-
+        
         /// <summary>
         ///     Tests that test write cache method
         /// </summary>
@@ -101,14 +101,14 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
                 V = new SimplexVertex[3]
             };
             SimplexCache cache = new SimplexCache();
-
+            
             // Act
             simplex.WriteCache(ref cache);
-
+            
             // Assert
             // Add your assertions here based on what you expect after calling WriteCache
         }
-
+        
         /// <summary>
         ///     Tests that test get search direction method
         /// </summary>
@@ -120,14 +120,14 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             {
                 V = new SimplexVertex[3]
             };
-
+            
             // Act
             Vector2 result = simplex.GetSearchDirection();
-
+            
             // Assert
             // Add your assertions here based on what you expect from GetSearchDirection
         }
-
+        
         /// <summary>
         ///     Tests that test get closest point method
         /// </summary>
@@ -139,14 +139,14 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             {
                 V = new SimplexVertex[3]
             };
-
+            
             // Act
             Vector2 result = simplex.GetClosestPoint();
-
+            
             // Assert
             // Add your assertions here based on what you expect from GetClosestPoint
         }
-
+        
         /// <summary>
         ///     Tests that test get witness points method
         /// </summary>
@@ -159,14 +159,14 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
                 V = new SimplexVertex[3]
             };
             Vector2 pA, pB;
-
+            
             // Act
             simplex.GetWitnessPoints(out pA, out pB);
-
+            
             // Assert
             // Add your assertions here based on what you expect from GetWitnessPoints
         }
-
+        
         /// <summary>
         ///     Tests that test solve 2 method
         /// </summary>
@@ -178,14 +178,14 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             {
                 V = new SimplexVertex[3]
             };
-
+            
             // Act
             simplex.Solve2();
-
+            
             // Assert
             // Add your assertions here based on what you expect after calling Solve2
         }
-
+        
         /// <summary>
         ///     Tests that test solve 3 method
         /// </summary>
@@ -197,10 +197,10 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             {
                 V = new SimplexVertex[3]
             };
-
+            
             // Act
             simplex.Solve3();
-
+            
             // Assert
             // Add your assertions here based on what you expect after calling Solve3
         }

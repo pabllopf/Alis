@@ -34,13 +34,13 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
     {
         /// <summary>Length or area</summary>
         public ushort Count { get; set; }
-
+        
         /// <summary>Vertices on shape A</summary>
         public byte[] IndexA;
-
+        
         /// <summary>Vertices on shape B</summary>
         public byte[] IndexB;
-
+        
         /// <summary>
         ///     The metric
         /// </summary>

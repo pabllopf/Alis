@@ -47,7 +47,7 @@ namespace Alis.Core.Network.Test.Exceptions
             InvalidHttpResponseCodeException exception = new InvalidHttpResponseCodeException();
             Assert.NotNull(exception);
         }
-
+        
         /// <summary>
         ///     Tests that invalid http response code exception constructor with message
         /// </summary>
@@ -58,7 +58,7 @@ namespace Alis.Core.Network.Test.Exceptions
             Assert.NotNull(exception);
             Assert.Equal("Test message", exception.Message);
         }
-
+        
         /// <summary>
         ///     Tests that invalid http response code exception constructor with response details
         /// </summary>
@@ -71,7 +71,7 @@ namespace Alis.Core.Network.Test.Exceptions
             Assert.Equal("Not Found", exception.ResponseDetails);
             Assert.Equal("HTTP/1.1 404 Not Found", exception.ResponseHeader);
         }
-
+        
         /// <summary>
         ///     Tests that invalid http response code exception constructor with message and inner exception
         /// </summary>

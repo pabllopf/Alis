@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Tracing;
 using System.Net.Security;
 using System.Net.WebSockets;
@@ -40,14 +39,13 @@ namespace Alis.Core.Network.Internal
     ///     characters)
     /// </summary>
     [EventSource(Name = "Ninja-WebSockets", Guid = "7DE1A071-4F85-4DBD-8FB1-EE8D3845E087")]
-    
     internal sealed class Events : EventSource
     {
         /// <summary>
         ///     The events
         /// </summary>
         public static readonly Events Log = new Events();
-
+        
         /// <summary>
         ///     Clients the connecting to ip address using the specified guid
         /// </summary>
@@ -62,7 +60,7 @@ namespace Alis.Core.Network.Internal
                 WriteEvent(1, guid, ipAddress, port);
             }
         }
-
+        
         /// <summary>
         ///     Clients the connecting to host using the specified guid
         /// </summary>
@@ -77,7 +75,7 @@ namespace Alis.Core.Network.Internal
                 WriteEvent(2, guid, host, port);
             }
         }
-
+        
         /// <summary>
         ///     Attemtings the to secure ssl connection using the specified guid
         /// </summary>
@@ -90,7 +88,7 @@ namespace Alis.Core.Network.Internal
                 WriteEvent(3, guid);
             }
         }
-
+        
         /// <summary>
         ///     Connections the secured using the specified guid
         /// </summary>
@@ -103,7 +101,7 @@ namespace Alis.Core.Network.Internal
                 WriteEvent(4, guid);
             }
         }
-
+        
         /// <summary>
         ///     Connections the not secure using the specified guid
         /// </summary>
@@ -116,7 +114,7 @@ namespace Alis.Core.Network.Internal
                 WriteEvent(5, guid);
             }
         }
-
+        
         /// <summary>
         ///     Ssls the certificate error using the specified ssl policy errors
         /// </summary>
@@ -129,7 +127,7 @@ namespace Alis.Core.Network.Internal
                 WriteEvent(6, sslPolicyErrors);
             }
         }
-
+        
         /// <summary>
         ///     Handshakes the sent using the specified guid
         /// </summary>
@@ -143,7 +141,7 @@ namespace Alis.Core.Network.Internal
                 WriteEvent(7, guid, httpHeader ?? string.Empty);
             }
         }
-
+        
         /// <summary>
         ///     Readings the http response using the specified guid
         /// </summary>
@@ -156,7 +154,7 @@ namespace Alis.Core.Network.Internal
                 WriteEvent(8, guid);
             }
         }
-
+        
         /// <summary>
         ///     Reads the http response error using the specified guid
         /// </summary>
@@ -170,7 +168,7 @@ namespace Alis.Core.Network.Internal
                 WriteEvent(9, guid, exception ?? string.Empty);
             }
         }
-
+        
         /// <summary>
         ///     Invalids the http response code using the specified guid
         /// </summary>
@@ -184,7 +182,7 @@ namespace Alis.Core.Network.Internal
                 WriteEvent(10, guid, response ?? string.Empty);
             }
         }
-
+        
         /// <summary>
         ///     Handshakes the failure using the specified guid
         /// </summary>
@@ -198,7 +196,7 @@ namespace Alis.Core.Network.Internal
                 WriteEvent(11, guid, message ?? string.Empty);
             }
         }
-
+        
         /// <summary>
         ///     Clients the handshake success using the specified guid
         /// </summary>
@@ -211,7 +209,7 @@ namespace Alis.Core.Network.Internal
                 WriteEvent(12, guid);
             }
         }
-
+        
         /// <summary>
         ///     Servers the handshake success using the specified guid
         /// </summary>
@@ -224,7 +222,7 @@ namespace Alis.Core.Network.Internal
                 WriteEvent(13, guid);
             }
         }
-
+        
         /// <summary>
         ///     Accepts the web socket started using the specified guid
         /// </summary>
@@ -237,7 +235,7 @@ namespace Alis.Core.Network.Internal
                 WriteEvent(14, guid);
             }
         }
-
+        
         /// <summary>
         ///     Sendings the handshake response using the specified guid
         /// </summary>
@@ -251,7 +249,7 @@ namespace Alis.Core.Network.Internal
                 WriteEvent(15, guid, response ?? string.Empty);
             }
         }
-
+        
         /// <summary>
         ///     Webs the socket version not supported using the specified guid
         /// </summary>
@@ -265,7 +263,7 @@ namespace Alis.Core.Network.Internal
                 WriteEvent(16, guid, exception ?? string.Empty);
             }
         }
-
+        
         /// <summary>
         ///     Bads the request using the specified guid
         /// </summary>
@@ -279,7 +277,7 @@ namespace Alis.Core.Network.Internal
                 WriteEvent(17, guid, exception ?? string.Empty);
             }
         }
-
+        
         /// <summary>
         ///     Uses the per message deflate using the specified guid
         /// </summary>
@@ -292,7 +290,7 @@ namespace Alis.Core.Network.Internal
                 WriteEvent(18, guid);
             }
         }
-
+        
         /// <summary>
         ///     Noes the message compression using the specified guid
         /// </summary>
@@ -305,7 +303,7 @@ namespace Alis.Core.Network.Internal
                 WriteEvent(19, guid);
             }
         }
-
+        
         /// <summary>
         ///     Keeps the alive interval zero using the specified guid
         /// </summary>
@@ -318,7 +316,7 @@ namespace Alis.Core.Network.Internal
                 WriteEvent(20, guid);
             }
         }
-
+        
         /// <summary>
         ///     Pings the pong manager started using the specified guid
         /// </summary>
@@ -332,7 +330,7 @@ namespace Alis.Core.Network.Internal
                 WriteEvent(21, guid, keepAliveIntervalSeconds);
             }
         }
-
+        
         /// <summary>
         ///     Pings the pong manager ended using the specified guid
         /// </summary>
@@ -345,7 +343,7 @@ namespace Alis.Core.Network.Internal
                 WriteEvent(22, guid);
             }
         }
-
+        
         /// <summary>
         ///     Keeps the alive interval expired using the specified guid
         /// </summary>
@@ -359,7 +357,7 @@ namespace Alis.Core.Network.Internal
                 WriteEvent(23, guid, keepAliveIntervalSeconds);
             }
         }
-
+        
         /// <summary>
         ///     Closes the output auto timeout using the specified guid
         /// </summary>
@@ -376,7 +374,7 @@ namespace Alis.Core.Network.Internal
                 WriteEvent(24, guid, closeStatus, statusDescription ?? string.Empty, exception ?? string.Empty);
             }
         }
-
+        
         /// <summary>
         ///     Closes the output auto timeout cancelled using the specified guid
         /// </summary>
@@ -394,7 +392,7 @@ namespace Alis.Core.Network.Internal
                 WriteEvent(25, guid, timeoutSeconds, closeStatus, statusDescription ?? string.Empty, exception ?? string.Empty);
             }
         }
-
+        
         /// <summary>
         ///     Closes the output auto timeout error using the specified guid
         /// </summary>
@@ -412,7 +410,7 @@ namespace Alis.Core.Network.Internal
                 WriteEvent(26, guid, closeException ?? string.Empty, closeStatus, statusDescription ?? string.Empty, exception ?? string.Empty);
             }
         }
-
+        
         /// <summary>
         ///     Tries the get buffer not supported using the specified guid
         /// </summary>
@@ -426,7 +424,7 @@ namespace Alis.Core.Network.Internal
                 WriteEvent(27, guid, streamType ?? string.Empty);
             }
         }
-
+        
         /// <summary>
         ///     Sendings the frame using the specified guid
         /// </summary>
@@ -444,7 +442,7 @@ namespace Alis.Core.Network.Internal
                 WriteEvent(28, guid, webSocketOpCode, isFinBitSet, numBytes, isPayloadCompressed);
             }
         }
-
+        
         /// <summary>
         ///     Receiveds the frame using the specified guid
         /// </summary>
@@ -460,7 +458,7 @@ namespace Alis.Core.Network.Internal
                 WriteEvent(29, guid, webSocketOpCode, isFinBitSet, numBytes);
             }
         }
-
+        
         /// <summary>
         ///     Closes the output no handshake using the specified guid
         /// </summary>
@@ -476,7 +474,7 @@ namespace Alis.Core.Network.Internal
                 WriteEvent(30, guid, closeStatusDesc, statusDescription ?? string.Empty);
             }
         }
-
+        
         /// <summary>
         ///     Closes the handshake started using the specified guid
         /// </summary>
@@ -492,7 +490,7 @@ namespace Alis.Core.Network.Internal
                 WriteEvent(31, guid, closeStatusDesc, statusDescription ?? string.Empty);
             }
         }
-
+        
         /// <summary>
         ///     Closes the handshake respond using the specified guid
         /// </summary>
@@ -508,7 +506,7 @@ namespace Alis.Core.Network.Internal
                 WriteEvent(32, guid, closeStatusDesc, statusDescription ?? string.Empty);
             }
         }
-
+        
         /// <summary>
         ///     Closes the handshake complete using the specified guid
         /// </summary>
@@ -521,7 +519,7 @@ namespace Alis.Core.Network.Internal
                 WriteEvent(33, guid);
             }
         }
-
+        
         /// <summary>
         ///     Closes the frame received in unexpected state using the specified guid
         /// </summary>
@@ -539,7 +537,7 @@ namespace Alis.Core.Network.Internal
                 WriteEvent(34, guid, webSocketState, closeStatusDesc, statusDescription ?? string.Empty);
             }
         }
-
+        
         /// <summary>
         ///     Webs the socket dispose using the specified guid
         /// </summary>
@@ -553,7 +551,7 @@ namespace Alis.Core.Network.Internal
                 WriteEvent(35, guid, webSocketState);
             }
         }
-
+        
         /// <summary>
         ///     Webs the socket dispose close timeout using the specified guid
         /// </summary>
@@ -567,7 +565,7 @@ namespace Alis.Core.Network.Internal
                 WriteEvent(36, guid, webSocketState);
             }
         }
-
+        
         /// <summary>
         ///     Webs the socket dispose error using the specified guid
         /// </summary>
@@ -582,7 +580,7 @@ namespace Alis.Core.Network.Internal
                 WriteEvent(37, guid, webSocketState, exception ?? string.Empty);
             }
         }
-
+        
         /// <summary>
         ///     Invalids the state before close using the specified guid
         /// </summary>
@@ -596,7 +594,7 @@ namespace Alis.Core.Network.Internal
                 WriteEvent(38, guid, webSocketState);
             }
         }
-
+        
         /// <summary>
         ///     Invalids the state before close output using the specified guid
         /// </summary>

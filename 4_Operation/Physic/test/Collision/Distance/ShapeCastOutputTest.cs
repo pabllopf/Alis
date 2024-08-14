@@ -47,14 +47,14 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             // Arrange
             ShapeCastOutput shapeCastOutput = new ShapeCastOutput();
             Vector2 point = new Vector2(1, 1);
-
+            
             // Act
             shapeCastOutput.Point = point;
-
+            
             // Assert
             Assert.Equal(point, shapeCastOutput.Point);
         }
-
+        
         /// <summary>
         ///     Tests that normal property test
         /// </summary>
@@ -64,14 +64,14 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             // Arrange
             ShapeCastOutput shapeCastOutput = new ShapeCastOutput();
             Vector2 normal = new Vector2(1, 1);
-
+            
             // Act
             shapeCastOutput.Normal = normal;
-
+            
             // Assert
             Assert.Equal(normal, shapeCastOutput.Normal);
         }
-
+        
         /// <summary>
         ///     Tests that lambda property test
         /// </summary>
@@ -81,14 +81,14 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             // Arrange
             ShapeCastOutput shapeCastOutput = new ShapeCastOutput();
             float lambda = 1.0f;
-
+            
             // Act
             shapeCastOutput.Lambda = lambda;
-
+            
             // Assert
             Assert.Equal(lambda, shapeCastOutput.Lambda);
         }
-
+        
         /// <summary>
         ///     Tests that iterations property test
         /// </summary>
@@ -98,10 +98,10 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             // Arrange
             ShapeCastOutput shapeCastOutput = new ShapeCastOutput();
             int iterations = 1;
-
+            
             // Act
             shapeCastOutput.Iterations = iterations;
-
+            
             // Assert
             Assert.Equal(iterations, shapeCastOutput.Iterations);
         }

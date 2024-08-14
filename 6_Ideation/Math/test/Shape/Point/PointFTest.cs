@@ -33,35 +33,32 @@ using Xunit;
 namespace Alis.Core.Aspect.Math.Test.Shape.Point
 {
     /// <summary>
-    /// The point test class
+    ///     The point test class
     /// </summary>
     public class PointFTest
     {
         /// <summary>
-        /// Tests that constructor initializes properties correctly
+        ///     Tests that constructor initializes properties correctly
         /// </summary>
         [Fact]
         public void Constructor_InitializesPropertiesCorrectly()
         {
             PointF point = new PointF {X = 1.0f, Y = 2.0f};
-
+            
             Assert.Equal(1.0f, point.X);
             Assert.Equal(2.0f, point.Y);
         }
-
+        
         /// <summary>
-        /// Tests that properties set values correctly
+        ///     Tests that properties set values correctly
         /// </summary>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
-        [Theory]
-        [InlineData(0f, 0f)]
-        [InlineData(-1f, -1f)]
-        [InlineData(float.MaxValue, float.MaxValue)]
+        [Theory, InlineData(0f, 0f), InlineData(-1f, -1f), InlineData(float.MaxValue, float.MaxValue)]
         public void Properties_SetValuesCorrectly(float x, float y)
         {
             PointF point = new PointF {X = x, Y = y};
-
+            
             Assert.Equal(x, point.X);
             Assert.Equal(y, point.Y);
         }

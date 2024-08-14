@@ -28,14 +28,12 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Alis.Core.Aspect.Logging.Sample
 {
     /// <summary>
     ///     The program class
     /// </summary>
-    
     public static class Program
     {
         /// <summary>
@@ -47,17 +45,17 @@ namespace Alis.Core.Aspect.Logging.Sample
             Logger.LogLevel = LogLevel.Trace;
             Logger.Trace();
             Logger.Info();
-
+            
             Logger.Trace("Sample");
-
+            
             Logger.Log("Sample");
             Logger.Info("Sample");
-
+            
             Logger.Event("Sample");
-
+            
             Logger.Warning("Sample");
             Logger.Error("Sample");
-
+            
             try
             {
                 throw new NullReferenceException();

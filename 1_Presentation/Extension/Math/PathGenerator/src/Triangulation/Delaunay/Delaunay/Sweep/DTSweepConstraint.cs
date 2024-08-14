@@ -59,7 +59,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
                     Logger.Exception($"Failed to create constraint {p1}={p2}");
                 }
             }
-
+            
             Q.AddEdge(this);
         }
     }

@@ -30,17 +30,15 @@
 using Alis.Core.Graphic.Sdl2.Structs;
 using Xunit;
 
-
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
-
     /// <summary>
-    /// The controller touchpad event tests class
+    ///     The controller touchpad event tests class
     /// </summary>
     public class ControllerTouchpadEventTests
     {
         /// <summary>
-        /// Tests that controller touchpad event initializes properties correctly
+        ///     Tests that controller touchpad event initializes properties correctly
         /// </summary>
         [Fact]
         public void ControllerTouchpadEvent_InitializesPropertiesCorrectly()
@@ -53,7 +51,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             float expectedX = 0.5f;
             float expectedY = 0.75f;
             float expectedPressure = 0.25f;
-
+            
             ControllerTouchpadEvent eventStruct = new ControllerTouchpadEvent
             {
                 type = expectedType,
@@ -65,7 +63,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
                 y = expectedY,
                 pressure = expectedPressure
             };
-
+            
             Assert.Equal(expectedType, eventStruct.type);
             Assert.Equal(expectedTimestamp, eventStruct.timestamp);
             Assert.Equal(expectedWhich, eventStruct.which);

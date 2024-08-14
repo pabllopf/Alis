@@ -49,11 +49,11 @@ namespace Alis.Core.Physic.Test.Collision.Distance
         {
             // Arrange
             DistanceProxy distanceProxy = new DistanceProxy(new Vector2[1] {new Vector2(1, 1)}, 1.0f);
-
+            
             // Assert
             Assert.Equal(1.0f, distanceProxy.Radius);
         }
-
+        
         /// <summary>
         ///     Tests that vertices property test
         /// </summary>
@@ -63,11 +63,11 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             // Arrange
             Vector2[] vertices = new Vector2[1] {new Vector2(1, 1)};
             DistanceProxy distanceProxy = new DistanceProxy(vertices, 1.0f);
-
+            
             // Assert
             Assert.Equal(vertices, distanceProxy.Vertices);
         }
-
+        
         /// <summary>
         ///     Tests that get support test
         /// </summary>
@@ -78,14 +78,14 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             Vector2[] vertices = new Vector2[2] {new Vector2(1, 1), new Vector2(2, 2)};
             DistanceProxy distanceProxy = new DistanceProxy(vertices, 1.0f);
             Vector2 direction = new Vector2(1, 1);
-
+            
             // Act
             int support = distanceProxy.GetSupport(direction);
-
+            
             // Assert
             Assert.Equal(1, support); // The second vertex (index 1) is in the direction of the vector (1,1)
         }
-
+        
         /// <summary>
         ///     Tests that get vertex test
         /// </summary>
@@ -95,14 +95,14 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             // Arrange
             Vector2[] vertices = new Vector2[2] {new Vector2(1, 1), new Vector2(2, 2)};
             DistanceProxy distanceProxy = new DistanceProxy(vertices, 1.0f);
-
+            
             // Act
             Vector2 vertex = distanceProxy.GetVertex(1);
-
+            
             // Assert
             Assert.Equal(new Vector2(2, 2), vertex); // The second vertex (index 1) is (2,2)
         }
-
+        
         /// <summary>
         ///     Tests that distance proxy initialize circle shape sets correct values
         /// </summary>
@@ -114,11 +114,11 @@ namespace Alis.Core.Physic.Test.Collision.Distance
                 1.0f
             );
             DistanceProxy proxy = new DistanceProxy(circle, 0);
-
+            
             Assert.Equal(circle.PositionCircle, proxy.Vertices[0]);
             Assert.Equal(circle.RadiusPrivate, proxy.Radius);
         }
-
+        
         /// <summary>
         ///     Tests that distance proxy initialize chain shape sets correct values
         /// </summary>
@@ -130,12 +130,12 @@ namespace Alis.Core.Physic.Test.Collision.Distance
                     {new Vector2(1, 1), new Vector2(2, 2), new Vector2(3, 3)}
             );
             DistanceProxy proxy = new DistanceProxy(chain, 0);
-
+            
             Assert.Equal(chain.Vertices[0], proxy.Vertices[0]);
             Assert.Equal(chain.Vertices[1], proxy.Vertices[1]);
             Assert.Equal(chain.RadiusPrivate, proxy.Radius);
         }
-
+        
         /// <summary>
         ///     Tests that distance proxy initialize edge shape sets correct values
         /// </summary>
@@ -144,12 +144,12 @@ namespace Alis.Core.Physic.Test.Collision.Distance
         {
             EdgeShape edge = new EdgeShape();
             DistanceProxy proxy = new DistanceProxy(edge, 0);
-
+            
             Assert.Equal(edge.Vertex1, proxy.Vertices[0]);
             Assert.Equal(edge.Vertex2, proxy.Vertices[1]);
             Assert.Equal(edge.RadiusPrivate, proxy.Radius);
         }
-
+        
         /// <summary>
         ///     Tests that distance proxy get support returns correct index
         /// </summary>
@@ -159,12 +159,12 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             Vector2[] vertices = {new Vector2(1, 1), new Vector2(2, 2), new Vector2(3, 3)};
             DistanceProxy proxy = new DistanceProxy(vertices, 1.0f);
             Vector2 direction = new Vector2(1, 1);
-
+            
             int index = proxy.GetSupport(direction);
-
+            
             Assert.Equal(2, index);
         }
-
+        
         /// <summary>
         ///     Tests that distance proxy get vertex returns correct vertex
         /// </summary>
@@ -173,12 +173,12 @@ namespace Alis.Core.Physic.Test.Collision.Distance
         {
             Vector2[] vertices = {new Vector2(1, 1), new Vector2(2, 2), new Vector2(3, 3)};
             DistanceProxy proxy = new DistanceProxy(vertices, 1.0f);
-
+            
             Vector2 vertex = proxy.GetVertex(1);
-
+            
             Assert.Equal(new Vector2(2, 2), vertex);
         }
-
+        
         /// <summary>
         ///     Tests that initialize polygon shape sets correct values
         /// </summary>
@@ -190,11 +190,11 @@ namespace Alis.Core.Physic.Test.Collision.Distance
                 1
             );
             DistanceProxy proxy = new DistanceProxy();
-
+            
             // Act
             Assert.Throws<NullReferenceException>(() => proxy.InitializePolygonShape(polygon));
         }
-
+        
         /// <summary>
         ///     Tests that initialize polygon shape sets correct number of vertices
         /// </summary>
@@ -206,11 +206,11 @@ namespace Alis.Core.Physic.Test.Collision.Distance
                 1
             );
             DistanceProxy proxy = new DistanceProxy();
-
+            
             // Act
             Assert.Throws<NullReferenceException>(() => proxy.InitializePolygonShape(polygon));
         }
-
+        
         /// <summary>
         ///     Tests that initialize polygon shape sets correct vertices
         /// </summary>
@@ -222,7 +222,7 @@ namespace Alis.Core.Physic.Test.Collision.Distance
                 1
             );
             DistanceProxy proxy = new DistanceProxy();
-
+            
             // Act
             Assert.Throws<NullReferenceException>(() => proxy.InitializePolygonShape(polygon));
         }

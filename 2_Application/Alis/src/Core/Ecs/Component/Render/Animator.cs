@@ -29,7 +29,6 @@
 
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
@@ -48,22 +47,20 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         [JsonPropertyName("_CurrentAnimation_")]
         private Animation currentAnimation;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Animator" /> class
         /// </summary>
-        
         public Animator()
         {
             Animations = new List<Animation>();
             Timer = new Stopwatch();
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Animator" /> class
         /// </summary>
         /// <param name="animations">The animations</param>
-        
         public Animator(List<Animation> animations)
         {
             Animations = animations;
@@ -71,37 +68,37 @@ namespace Alis.Core.Ecs.Component.Render
             {
                 currentAnimation = animations[0];
             }
-
+            
             Timer = new Stopwatch();
         }
-
+        
         /// <summary>
         ///     Gets or sets the value of the timer
         /// </summary>
         internal Stopwatch Timer { get; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the sprite
         /// </summary>
         internal Sprite Sprite { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the animations
         /// </summary>
         public List<Animation> Animations { get; }
-
+        
         /// <summary>
         ///     Builders this instance
         /// </summary>
         /// <returns>The animator builder</returns>
         public AnimatorBuilder Builder() => new AnimatorBuilder();
-
+        
         /// <summary>
         ///     Adds the animation using the specified animation
         /// </summary>
         /// <param name="animation">The animation</param>
         public void AddAnimation(Animation animation) => Animations.Add(animation);
-
+        
         /// <summary>
         ///     Inits this instance
         /// </summary>
@@ -112,7 +109,7 @@ namespace Alis.Core.Ecs.Component.Render
                 currentAnimation = Animations[0];
             }
         }
-
+        
         /// <summary>
         ///     Awakes this instance
         /// </summary>
@@ -120,7 +117,7 @@ namespace Alis.Core.Ecs.Component.Render
         {
             Timer.Start();
         }
-
+        
         /// <summary>
         ///     Starts this instance
         /// </summary>
@@ -128,29 +125,28 @@ namespace Alis.Core.Ecs.Component.Render
         {
             Sprite = GameObject.Get<Sprite>();
         }
-
+        
         /// <summary>
         ///     Updates this instance
         /// </summary>
-        
         public override void OnUpdate()
         {
             if (Sprite == null || currentAnimation == null || Animations.Count == 0)
             {
                 return;
             }
-
+            
             if (Timer.ElapsedMilliseconds >= currentAnimation.Speed * 1000)
             {
                 if (currentAnimation.HasNext())
                 {
                     Sprite.Image = new Image(currentAnimation.NextTexture().NameFile);
                 }
-
+                
                 Timer.Restart();
             }
         }
-
+        
         /// <summary>
         ///     Exits this instance
         /// </summary>
@@ -158,39 +154,37 @@ namespace Alis.Core.Ecs.Component.Render
         {
             Logger.Trace();
         }
-
+        
         /// <summary>
         ///     Changes the animation to using the specified name animation
         /// </summary>
         /// <param name="nameAnimation">The name animation</param>
-        
         public void ChangeAnimationTo(string nameAnimation)
         {
             if (currentAnimation.Name.Equals(nameAnimation))
             {
                 return;
             }
-
+            
             Animation tempAnimation = Animations.Find(i => i.Name.Equals(nameAnimation));
             if (tempAnimation != null)
             {
                 currentAnimation = tempAnimation;
             }
         }
-
+        
         /// <summary>
         ///     Changes the animation to using the specified name animation
         /// </summary>
         /// <param name="nameAnimation">The name animation</param>
         /// <param name="flipsTo">The flip to</param>
-        
         public void ChangeAnimationTo(string nameAnimation, RendererFlips flipsTo)
         {
             if (currentAnimation.Name.Equals(nameAnimation) && (Sprite.Flips == flipsTo))
             {
                 return;
             }
-
+            
             Animation tempAnimation = Animations.Find(i => i.Name.Equals(nameAnimation));
             Sprite.Flips = flipsTo;
             if (tempAnimation != null)
@@ -198,7 +192,7 @@ namespace Alis.Core.Ecs.Component.Render
                 currentAnimation = tempAnimation;
             }
         }
-
+        
         /// <summary>
         ///     Gets the current animation
         /// </summary>

@@ -33,13 +33,13 @@ using Xunit;
 namespace Alis.Extension.Plugin.Test.PlatformAttributes
 {
     /// <summary>
-    /// The osx only fact attribute class
+    ///     The osx only fact attribute class
     /// </summary>
-    /// <seealso cref="FactAttribute"/>
+    /// <seealso cref="FactAttribute" />
     public class OsxOnlyFactAttribute : FactAttribute
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="OsxOnlyFactAttribute"/> class
+        ///     Initializes a new instance of the <see cref="OsxOnlyFactAttribute" /> class
         /// </summary>
         public OsxOnlyFactAttribute()
         {

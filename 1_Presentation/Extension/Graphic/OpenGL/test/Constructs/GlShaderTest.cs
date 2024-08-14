@@ -27,13 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using Alis.Core.Graphic.Sdl2;
-using Alis.Core.Graphic.Sdl2.Enums;
-using Alis.Extension.Graphic.OpenGL.Constructs;
-using Alis.Extension.Graphic.OpenGL.Enums;
-using Xunit;
-
 namespace Alis.Extension.Graphic.OpenGL.Test.Constructs
 {
     /// <summary>
@@ -41,6 +34,5 @@ namespace Alis.Extension.Graphic.OpenGL.Test.Constructs
     /// </summary>
     public class GlShaderTest
     {
-     
     }
 }

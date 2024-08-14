@@ -30,47 +30,53 @@
 namespace Alis.Extension.Plugin.Test.Mocks
 {
     /// <summary>
-    /// The mock plugin class
+    ///     The mock plugin class
     /// </summary>
-    /// <seealso cref="IPlugin"/>
+    /// <seealso cref="IPlugin" />
     public class MockPlugin2 : IPlugin
     {
         /// <summary>
-        /// Gets or sets the value of the initialize calls
+        ///     Gets or sets the value of the initialize calls
         /// </summary>
-        public int InitializeCalls { get;  set; } = 0;
+        public int InitializeCalls { get; set; }
+        
         /// <summary>
-        /// Gets or sets the value of the update calls
+        ///     Gets or sets the value of the update calls
         /// </summary>
-        public int UpdateCalls { get;  set; } = 0;
+        public int UpdateCalls { get; set; }
+        
         /// <summary>
-        /// Gets or sets the value of the render calls
+        ///     Gets or sets the value of the render calls
         /// </summary>
-        public int RenderCalls { get;  set; } = 0;
+        public int RenderCalls { get; set; }
+        
         /// <summary>
-        /// Gets or sets the value of the shutdown calls
+        ///     Gets or sets the value of the shutdown calls
         /// </summary>
-        public int ShutdownCalls { get;  set; } = 0;
-
+        public int ShutdownCalls { get; set; }
+        
         /// <summary>
-        /// Initializes this instance
+        ///     Initializes this instance
         /// </summary>
         public void Initialize() => InitializeCalls++;
+        
         /// <summary>
-        /// Updates this instance
+        ///     Updates this instance
         /// </summary>
         public void Update() => UpdateCalls++;
+        
         /// <summary>
-        /// Renders this instance
+        ///     Renders this instance
         /// </summary>
         public void Render() => RenderCalls++;
+        
         /// <summary>
-        /// Shutdowns this instance
+        ///     Shutdowns this instance
         /// </summary>
         public void Shutdown() => ShutdownCalls++;
-
+        
         /// <summary>
-        /// Disposes this instance
+        ///     Disposes this instance
         /// </summary>
         public void Dispose()
         {

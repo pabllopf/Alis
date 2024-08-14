@@ -27,21 +27,19 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Xunit;
 using System;
 using Alis.Core.Graphic.Sdl2.Structs;
-
+using Xunit;
 
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
-
     /// <summary>
-    /// The internal directfb wm info tests class
+    ///     The internal directfb wm info tests class
     /// </summary>
     public class InternalDirectfbWmInfoTests
     {
         /// <summary>
-        /// Tests that internal directfb wm info initializes properties correctly
+        ///     Tests that internal directfb wm info initializes properties correctly
         /// </summary>
         [Fact]
         public void InternalDirectfbWmInfo_InitializesPropertiesCorrectly()
@@ -49,14 +47,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             IntPtr expectedDfb = new IntPtr(123);
             IntPtr expectedWindow = new IntPtr(456);
             IntPtr expectedSurface = new IntPtr(789);
-
+            
             InternalDirectfbWmInfo info = new InternalDirectfbWmInfo
             {
                 Dfb = expectedDfb,
                 Window = expectedWindow,
                 Surface = expectedSurface
             };
-
+            
             Assert.Equal(expectedDfb, info.Dfb);
             Assert.Equal(expectedWindow, info.Window);
             Assert.Equal(expectedSurface, info.Surface);

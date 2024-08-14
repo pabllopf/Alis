@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Extension.Language.Dialogue.Test
 {
     /// <summary>
-    /// The dialog manager test class
+    ///     The dialog manager test class
     /// </summary>
     public class DialogManagerTest
     {
         /// <summary>
-        /// Tests that add dialog should add dialog to dictionary
+        ///     Tests that add dialog should add dialog to dictionary
         /// </summary>
         [Fact]
         public void AddDialog_ShouldAddDialogToDictionary()
@@ -49,9 +49,9 @@ namespace Alis.Extension.Language.Dialogue.Test
             manager.AddDialog(dialog);
             Assert.True(manager.dialogs.ContainsKey("testId"));
         }
-
+        
         /// <summary>
-        /// Tests that get dialog should return dialog if exists
+        ///     Tests that get dialog should return dialog if exists
         /// </summary>
         [Fact]
         public void GetDialog_ShouldReturnDialogIfExists()
@@ -62,9 +62,9 @@ namespace Alis.Extension.Language.Dialogue.Test
             Dialog result = manager.GetDialog("testId");
             Assert.Equal(dialog, result);
         }
-
+        
         /// <summary>
-        /// Tests that get dialog should return null if not exists
+        ///     Tests that get dialog should return null if not exists
         /// </summary>
         [Fact]
         public void GetDialog_ShouldReturnNullIfNotExists()
@@ -73,9 +73,9 @@ namespace Alis.Extension.Language.Dialogue.Test
             Dialog result = manager.GetDialog("nonExistentId");
             Assert.Null(result);
         }
-
+        
         /// <summary>
-        /// Tests that show dialog should not throw exception if dialog does not exist
+        ///     Tests that show dialog should not throw exception if dialog does not exist
         /// </summary>
         [Fact]
         public void ShowDialog_ShouldNotThrowExceptionIfDialogDoesNotExist()
@@ -84,9 +84,9 @@ namespace Alis.Extension.Language.Dialogue.Test
             Exception exception = Record.Exception(() => manager.ShowDialog("nonExistentId"));
             Assert.Null(exception);
         }
-
+        
         /// <summary>
-        /// Tests that show dialog should invoke action on valid option selection
+        ///     Tests that show dialog should invoke action on valid option selection
         /// </summary>
         [Fact]
         public void ShowDialog_ShouldInvokeActionOnValidOptionSelection()
@@ -96,10 +96,10 @@ namespace Alis.Extension.Language.Dialogue.Test
             Dialog dialog = new Dialog("testId", "Test Dialog");
             dialog.AddOption(new DialogOption("Option 1", () => { actionInvoked = true; }));
             manager.AddDialog(dialog);
-
+            
             Console.SetIn(new StringReader("1\n")); // Simulate user input
             manager.ShowDialog("testId");
-
+            
             Assert.True(actionInvoked);
         }
     }

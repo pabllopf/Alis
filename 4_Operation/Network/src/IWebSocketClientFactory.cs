@@ -47,7 +47,7 @@ namespace Alis.Core.Network
         /// <param name="token">The optional cancellation token</param>
         /// <returns>A connected web socket instance</returns>
         Task<WebSocket> ConnectAsync(Uri uri, CancellationToken token = default(CancellationToken));
-
+        
         /// <summary>
         ///     Connect with options specified
         /// </summary>
@@ -57,7 +57,7 @@ namespace Alis.Core.Network
         /// <returns>A connected web socket instance</returns>
         Task<WebSocket> ConnectAsync(Uri uri, WebSocketClientOptions options,
             CancellationToken token = default(CancellationToken));
-
+        
         /// <summary>
         ///     Connect with a stream that has already been opened and HTTP websocket upgrade request sent
         ///     This function will check the handshake response from the server and proceed if successful

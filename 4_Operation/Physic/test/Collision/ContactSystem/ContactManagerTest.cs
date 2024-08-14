@@ -53,19 +53,19 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
             // Arrange
             CircleShape shape = new CircleShape(1.0f);
             Filter filter = new Filter();
-
+            
             Fixture fixtureA = new Fixture(shape, filter);
             Fixture fixtureB = new Fixture(shape, filter);
             Contact contact = new Contact(fixtureA, 0, fixtureB, 0);
-
+            
             // Act
             contact.Reset(fixtureA, 1, fixtureB, 1);
-
+            
             // Assert
             Assert.Equal(1, contact.ChildIndexA);
             Assert.Equal(1, contact.ChildIndexB);
         }
-
+        
         /// <summary>
         ///     Tests that add pair should add pair correctly
         /// </summary>
@@ -76,14 +76,14 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
             ContactManager contactManager = new ContactManager(new BroadPhaseImplementation());
             FixtureProxy proxyA = new FixtureProxy();
             FixtureProxy proxyB = new FixtureProxy();
-
+            
             // Act
             contactManager.AddPair(ref proxyA, ref proxyB);
-
+            
             // Assert
             // Here you would assert that the properties of contactManager have been set correctly.
         }
-
+        
         /// <summary>
         ///     Tests that remove should remove contact correctly
         /// </summary>
@@ -98,14 +98,14 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
                 new Fixture(new CircleShape(1.0f), new Filter()),
                 0
             );
-
+            
             // Act
             Assert.Throws<NullReferenceException>(() => contactManager.Remove(contact));
-
+            
             // Assert
             // Here you would assert that the properties of contactManager have been set correctly.
         }
-
+        
         /// <summary>
         ///     Tests that find new contacts should find new contacts correctly
         /// </summary>
@@ -114,14 +114,14 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
         {
             // Arrange
             ContactManager contactManager = new ContactManager(new BroadPhaseImplementation());
-
+            
             // Act
             contactManager.FindNewContacts();
-
+            
             // Assert
             // Here you would assert that the properties of contactManager have been set correctly.
         }
-
+        
         /// <summary>
         ///     Tests that collide should collide correctly
         /// </summary>
@@ -130,14 +130,14 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
         {
             // Arrange
             ContactManager contactManager = new ContactManager(new BroadPhaseImplementation());
-
+            
             // Act
             contactManager.Collide();
-
+            
             // Assert
             // Here you would assert that the properties of contactManager have been set correctly.
         }
-
+        
         /// <summary>
         ///     Tests that get the min contact should return correct contact
         /// </summary>
@@ -147,14 +147,14 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
             // Arrange
             ContactManager contactManager = new ContactManager(new BroadPhaseImplementation());
             float minAlpha = 0.5f;
-
+            
             // Act
             Contact result = contactManager.GetTheMinContact(minAlpha);
-
+            
             // Assert
             // Here you would assert that the properties of contactManager have been set correctly.
         }
-
+        
         /// <summary>
         ///     Tests that clear flags should clear flags correctly
         /// </summary>
@@ -163,14 +163,14 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
         {
             // Arrange
             ContactManager contactManager = new ContactManager(new BroadPhaseImplementation());
-
+            
             // Act
             contactManager.ClearFlags();
-
+            
             // Assert
             // Here you would assert that the properties of contactManager have been set correctly.
         }
-
+        
         /// <summary>
         ///     Tests that invalidate toi should invalidate toi correctly
         /// </summary>
@@ -179,14 +179,14 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
         {
             // Arrange
             ContactManager contactManager = new ContactManager(new BroadPhaseImplementation());
-
+            
             // Act
             contactManager.InvalidateToi();
-
+            
             // Assert
             // Here you would assert that the properties of contactManager have been set correctly.
         }
-
+        
         /// <summary>
         ///     Tests that calculate min alpha should return correct alpha
         /// </summary>
@@ -195,14 +195,14 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
         {
             // Arrange
             ContactManager contactManager = new ContactManager(new BroadPhaseImplementation());
-
+            
             // Act
             float result = contactManager.CalculateMinAlpha();
-
+            
             // Assert
             // Here you would assert that the properties of contactManager have been set correctly.
         }
-
+        
         /// <summary>
         ///     Tests that is active contact should return correct value
         /// </summary>
@@ -217,11 +217,11 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
                 new Fixture(new CircleShape(1.0f), new Filter()),
                 0
             );
-
+            
             // Act
             Assert.Throws<NullReferenceException>(() => contactManager.IsActiveContact(contact));
         }
-
+        
         /// <summary>
         ///     Tests that is collidable contact should return correct value
         /// </summary>
@@ -236,11 +236,11 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
                 new Fixture(new CircleShape(1.0f), new Filter()),
                 0
             );
-
+            
             // Act
             Assert.Throws<NullReferenceException>(() => contactManager.IsCollidableContact(contact));
         }
-
+        
         /// <summary>
         ///     Tests that adjust sweeps should not throw exception
         /// </summary>
@@ -255,11 +255,11 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
                 new Fixture(new CircleShape(1.0f), new Filter()),
                 0
             );
-
+            
             // Act
             Action act = () => contactManager.AdjustSweeps(contact);
         }
-
+        
         /// <summary>
         ///     Tests that compute time of impact should return correct output
         /// </summary>
@@ -274,11 +274,11 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
                 new Fixture(new CircleShape(1.0f), new Filter()),
                 0
             );
-
+            
             // Act
             Assert.Throws<NullReferenceException>(() => contactManager.ComputeTimeOfImpact(contact));
         }
-
+        
         /// <summary>
         ///     Tests that update contact toi should not throw exception
         /// </summary>
@@ -294,11 +294,11 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
                 0
             );
             ToiOutput output = new ToiOutput();
-
+            
             // Act
             Action act = () => contactManager.UpdateContactToi(contact, output);
         }
-
+        
         /// <summary>
         ///     Tests that should collide should return correct value
         /// </summary>
@@ -314,14 +314,14 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
                 new CircleShape(1.0f),
                 new Filter()
             );
-
+            
             // Act
             bool result = ContactManager.ShouldCollide(fixtureA, fixtureB);
-
+            
             // Assert
             Assert.True(result);
         }
-
+        
         /// <summary>
         ///     Tests that update contact toi should update correctly
         /// </summary>
@@ -341,11 +341,11 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
                 Property = 0.5f,
                 State = ToiOutputState.Touching
             };
-
+            
             // Act
             Assert.Throws<NullReferenceException>(() => contactManager.UpdateContactToi(contact, output));
         }
-
+        
         /// <summary>
         ///     Tests that contact filter property should return correct value
         /// </summary>
@@ -354,7 +354,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
         {
             // Arrange
             ContactManager contactManager = new ContactManager(new BroadPhaseImplementation());
-
+            
             // Act
             CollisionFilterHandler result = contactManager.ContactFilter;
         }

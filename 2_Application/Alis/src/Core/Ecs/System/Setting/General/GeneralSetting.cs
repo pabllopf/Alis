@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.System.Setting.General;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Data.Resource;
@@ -47,7 +46,6 @@ namespace Alis.Core.Ecs.System.Setting.General
         /// <summary>
         ///     Initializes a new instance of the <see cref="GeneralSetting" /> class
         /// </summary>
-        
         public GeneralSetting()
         {
             Debug = false;
@@ -58,7 +56,7 @@ namespace Alis.Core.Ecs.System.Setting.General
             License = "GPL-3.0 license";
             Icon = AssetManager.Find("app.bmp");
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="GeneralSetting" /> class
         /// </summary>
@@ -70,7 +68,6 @@ namespace Alis.Core.Ecs.System.Setting.General
         /// <param name="license">The license</param>
         /// <param name="icon">The icon</param>
         [JsonConstructor]
-        
         public GeneralSetting(
             bool debug,
             string name,
@@ -88,49 +85,49 @@ namespace Alis.Core.Ecs.System.Setting.General
             License = license;
             Icon = icon;
         }
-
+        
         /// <summary>
         ///     Gets or sets the value of the debug
         /// </summary>
         [JsonPropertyName("_Debug_")]
         public bool Debug { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the name
         /// </summary>
         [JsonPropertyName("_Name_")]
         public string Name { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the description
         /// </summary>
         [JsonPropertyName("_Description_")]
         public string Description { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the version
         /// </summary>
         [JsonPropertyName("_Version_")]
         public string Version { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the author
         /// </summary>
         [JsonPropertyName("_Author_")]
         public string Author { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the license
         /// </summary>
         [JsonPropertyName("_License_")]
         public string License { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the icon
         /// </summary>
         [JsonPropertyName("_Icon_")]
         public string Icon { get; set; }
-
+        
         /// <summary>
         ///     Builders this instance
         /// </summary>

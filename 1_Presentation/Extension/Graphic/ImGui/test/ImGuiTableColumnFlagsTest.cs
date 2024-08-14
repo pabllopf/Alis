@@ -32,12 +32,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test
 {
     /// <summary>
-    /// The im gui table column flags test class
+    ///     The im gui table column flags test class
     /// </summary>
     public class ImGuiTableColumnFlagsTest
     {
         /// <summary>
-        /// Tests that is visible should be initialized correctly
+        ///     Tests that is visible should be initialized correctly
         /// </summary>
         [Fact]
         public void IsVisible_ShouldBeInitializedCorrectly()
@@ -50,7 +50,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that is sorted should be initialized correctly
+        ///     Tests that is sorted should be initialized correctly
         /// </summary>
         [Fact]
         public void IsSorted_ShouldBeInitializedCorrectly()
@@ -63,7 +63,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that is hovered should be initialized correctly
+        ///     Tests that is hovered should be initialized correctly
         /// </summary>
         [Fact]
         public void IsHovered_ShouldBeInitializedCorrectly()
@@ -76,7 +76,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that width mask should be initialized correctly
+        ///     Tests that width mask should be initialized correctly
         /// </summary>
         [Fact]
         public void WidthMask_ShouldBeInitializedCorrectly()
@@ -89,7 +89,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that indent mask should be initialized correctly
+        ///     Tests that indent mask should be initialized correctly
         /// </summary>
         [Fact]
         public void IndentMask_ShouldBeInitializedCorrectly()
@@ -102,7 +102,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that status mask should be initialized correctly
+        ///     Tests that status mask should be initialized correctly
         /// </summary>
         [Fact]
         public void StatusMask_ShouldBeInitializedCorrectly()
@@ -115,7 +115,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that no direct resize should be initialized correctly
+        ///     Tests that no direct resize should be initialized correctly
         /// </summary>
         [Fact]
         public void NoDirectResize_ShouldBeInitializedCorrectly()

@@ -33,12 +33,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
 {
     /// <summary>
-    /// The im plot point test class
+    ///     The im plot point test class
     /// </summary>
     public class ImPlotPointTest
     {
         /// <summary>
-        /// Tests that x should be initialized
+        ///     Tests that x should be initialized
         /// </summary>
         [Fact]
         public void X_ShouldBeInitialized()
@@ -46,9 +46,9 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotPoint point = new ImPlotPoint();
             Assert.Equal(default(double), point.X);
         }
-
+        
         /// <summary>
-        /// Tests that y should be initialized
+        ///     Tests that y should be initialized
         /// </summary>
         [Fact]
         public void Y_ShouldBeInitialized()
@@ -56,9 +56,9 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotPoint point = new ImPlotPoint();
             Assert.Equal(default(double), point.Y);
         }
-
+        
         /// <summary>
-        /// Tests that x should set and get correctly
+        ///     Tests that x should set and get correctly
         /// </summary>
         [Fact]
         public void X_Should_SetAndGetCorrectly()
@@ -68,9 +68,9 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             point.X = value;
             Assert.Equal(value, point.X);
         }
-
+        
         /// <summary>
-        /// Tests that y should set and get correctly
+        ///     Tests that y should set and get correctly
         /// </summary>
         [Fact]
         public void Y_Should_SetAndGetCorrectly()

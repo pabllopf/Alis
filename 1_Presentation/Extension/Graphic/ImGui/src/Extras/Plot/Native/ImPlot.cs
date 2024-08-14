@@ -51,7 +51,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_U16PtrU16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, flags, 0, sizeof(ushort));
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -66,7 +66,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_U16PtrU16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, flags, offset, sizeof(ushort));
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -82,7 +82,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_U16PtrU16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, flags, offset, stride);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -94,7 +94,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, 0, 0, 0, sizeof(int));
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -107,7 +107,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, @ref, 0, 0, sizeof(int));
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -121,7 +121,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, @ref, flags, 0, sizeof(int));
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -136,7 +136,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, @ref, flags, offset, sizeof(int));
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -152,7 +152,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_S32PtrS32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, @ref, flags, offset, stride);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -164,7 +164,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, 0, 0, 0, sizeof(uint));
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -177,7 +177,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, @ref, 0, 0, sizeof(uint));
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -191,7 +191,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, @ref, flags, 0, sizeof(uint));
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -206,7 +206,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, @ref, flags, offset, sizeof(uint));
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -222,7 +222,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_U32PtrU32Ptr(Encoding.UTF8.GetBytes(labelId), xs, ys, count, @ref, flags, offset, stride);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -234,7 +234,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_S64PtrS64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, 0, sizeof(long));
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -247,7 +247,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_S64PtrS64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, 0, 0, sizeof(long));
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -261,7 +261,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_S64PtrS64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, flags, 0, sizeof(long));
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -276,7 +276,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_S64PtrS64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, flags, offset, sizeof(long));
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -292,7 +292,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_S64PtrS64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, flags, offset, stride);
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -304,7 +304,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_U64PtrU64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, 0, sizeof(ulong));
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -317,7 +317,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_U64PtrU64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, 0, 0, sizeof(ulong));
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -331,7 +331,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_U64PtrU64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, flags, 0, sizeof(ulong));
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -346,7 +346,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_U64PtrU64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, flags, offset, sizeof(ulong));
         }
-
+        
         /// <summary>
         ///     Plots the stems using the specified label id
         /// </summary>
@@ -362,7 +362,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotStems_U64PtrU64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, flags, offset, stride);
         }
-
+        
         /// <summary>
         ///     Plots the text using the specified text
         /// </summary>
@@ -373,7 +373,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotText(Encoding.UTF8.GetBytes(text), x, y, new Vector2(0, 0), ImPlotTextFlags.None);
         }
-
+        
         /// <summary>
         ///     Plots the text using the specified text
         /// </summary>
@@ -385,7 +385,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotText(Encoding.UTF8.GetBytes(text), x, y, pixOffset, ImPlotTextFlags.None);
         }
-
+        
         /// <summary>
         ///     Plots the text using the specified text
         /// </summary>
@@ -398,7 +398,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotText(Encoding.UTF8.GetBytes(text), x, y, pixOffset, flags);
         }
-
+        
         /// <summary>
         ///     Plots the to pixels using the specified plt
         /// </summary>
@@ -411,7 +411,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             ImPlotNative.ImPlot_PlotToPixels_PlotPoInt(out Vector2 retval, plt, xAxis, yAxis);
             return retval;
         }
-
+        
         /// <summary>
         ///     Plots the to pixels using the specified plt
         /// </summary>
@@ -424,7 +424,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             ImPlotNative.ImPlot_PlotToPixels_PlotPoInt(out Vector2 retval, plt, xAxis, yAxis);
             return retval;
         }
-
+        
         /// <summary>
         ///     Plots the to pixels using the specified plt
         /// </summary>
@@ -437,7 +437,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             ImPlotNative.ImPlot_PlotToPixels_PlotPoInt(out Vector2 retval, plt, xAxis, yAxis);
             return retval;
         }
-
+        
         /// <summary>
         ///     Plots the to pixels using the specified x
         /// </summary>
@@ -451,7 +451,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             ImPlotNative.ImPlot_PlotToPixels_double(out Vector2 retval, x, y, xAxis, yAxis);
             return retval;
         }
-
+        
         /// <summary>
         ///     Plots the to pixels using the specified x
         /// </summary>
@@ -465,7 +465,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             ImPlotNative.ImPlot_PlotToPixels_double(out Vector2 retval, x, y, xAxis, yAxis);
             return retval;
         }
-
+        
         /// <summary>
         ///     Plots the to pixels using the specified x
         /// </summary>
@@ -479,7 +479,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             ImPlotNative.ImPlot_PlotToPixels_double(out Vector2 retval, x, y, xAxis, yAxis);
             return retval;
         }
-
+        
         /// <summary>
         ///     Pops the colormap
         /// </summary>
@@ -488,7 +488,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             int count = 1;
             ImPlotNative.ImPlot_PopColormap(count);
         }
-
+        
         /// <summary>
         ///     Pops the colormap using the specified count
         /// </summary>
@@ -497,7 +497,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PopColormap(count);
         }
-
+        
         /// <summary>
         ///     Pops the plot clip rect
         /// </summary>
@@ -505,7 +505,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PopPlotClipRect();
         }
-
+        
         /// <summary>
         ///     Pops the style color
         /// </summary>
@@ -514,7 +514,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             int count = 1;
             ImPlotNative.ImPlot_PopStyleColor(count);
         }
-
+        
         /// <summary>
         ///     Pops the style color using the specified count
         /// </summary>
@@ -523,7 +523,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PopStyleColor(count);
         }
-
+        
         /// <summary>
         ///     Pops the style var
         /// </summary>
@@ -532,7 +532,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             int count = 1;
             ImPlotNative.ImPlot_PopStyleVar(count);
         }
-
+        
         /// <summary>
         ///     Pops the style var using the specified count
         /// </summary>
@@ -541,7 +541,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PopStyleVar(count);
         }
-
+        
         /// <summary>
         ///     Pushes the colormap using the specified cmap
         /// </summary>
@@ -550,7 +550,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PushColormap_PlotColormap(cmap);
         }
-
+        
         /// <summary>
         ///     Pushes the colormap using the specified name
         /// </summary>
@@ -559,7 +559,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PushColormap_Str(Encoding.UTF8.GetBytes(name));
         }
-
+        
         /// <summary>
         ///     Pushes the plot clip rect
         /// </summary>
@@ -568,7 +568,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             float expand = 0;
             ImPlotNative.ImPlot_PushPlotClipRect(expand);
         }
-
+        
         /// <summary>
         ///     Pushes the plot clip rect using the specified expand
         /// </summary>
@@ -577,7 +577,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PushPlotClipRect(expand);
         }
-
+        
         /// <summary>
         ///     Pushes the style color using the specified idx
         /// </summary>
@@ -587,7 +587,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PushStyleColor_U32(idx, col);
         }
-
+        
         /// <summary>
         ///     Pushes the style color using the specified idx
         /// </summary>
@@ -597,7 +597,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PushStyleColor_Vec4(idx, col);
         }
-
+        
         /// <summary>
         ///     Pushes the style var using the specified idx
         /// </summary>
@@ -607,7 +607,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PushStyleVar_Float(idx, val);
         }
-
+        
         /// <summary>
         ///     Pushes the style var using the specified idx
         /// </summary>
@@ -617,7 +617,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PushStyleVar_Int(idx, val);
         }
-
+        
         /// <summary>
         ///     Pushes the style var using the specified idx
         /// </summary>
@@ -627,7 +627,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PushStyleVar_Vec2(idx, val);
         }
-
+        
         /// <summary>
         ///     Samples the colormap using the specified t
         /// </summary>
@@ -639,7 +639,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             ImPlotNative.ImPlot_SampleColormap(out Vector4 retval, t, cmap);
             return retval;
         }
-
+        
         /// <summary>
         ///     Samples the colormap using the specified t
         /// </summary>
@@ -651,7 +651,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             ImPlotNative.ImPlot_SampleColormap(out Vector4 retval, t, cmap);
             return retval;
         }
-
+        
         /// <summary>
         ///     Sets the axes using the specified x axis
         /// </summary>
@@ -661,7 +661,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_SetAxes(xAxis, yAxis);
         }
-
+        
         /// <summary>
         ///     Sets the axis using the specified axis
         /// </summary>
@@ -670,7 +670,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_SetAxis(axis);
         }
-
+        
         /// <summary>
         ///     Sets the current context using the specified ctx
         /// </summary>
@@ -679,7 +679,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_SetCurrentContext(ctx);
         }
-
+        
         /// <summary>
         ///     Sets the im gui context using the specified ctx
         /// </summary>
@@ -688,7 +688,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_SetImGuiContext(ctx);
         }
-
+        
         /// <summary>
         ///     Sets the next axes limits using the specified x min
         /// </summary>
@@ -701,7 +701,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             ImPlotCond cond = ImPlotCond.Once;
             ImPlotNative.ImPlot_SetNextAxesLimits(xMin, xMax, yMin, yMax, cond);
         }
-
+        
         /// <summary>
         ///     Sets the next axes limits using the specified x min
         /// </summary>
@@ -714,7 +714,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_SetNextAxesLimits(xMin, xMax, yMin, yMax, cond);
         }
-
+        
         /// <summary>
         ///     Sets the next axes to fit
         /// </summary>
@@ -722,7 +722,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_SetNextAxesToFit();
         }
-
+        
         /// <summary>
         ///     Sets the next axis limits using the specified axis
         /// </summary>
@@ -734,7 +734,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             ImPlotCond cond = ImPlotCond.Once;
             ImPlotNative.ImPlot_SetNextAxisLimits(axis, vMin, vMax, cond);
         }
-
+        
         /// <summary>
         ///     Sets the next axis limits using the specified axis
         /// </summary>
@@ -746,7 +746,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_SetNextAxisLimits(axis, vMin, vMax, cond);
         }
-
+        
         /// <summary>
         ///     Sets the next axis links using the specified axis
         /// </summary>
@@ -757,7 +757,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_SetNextAxisLinks(axis, linkMin, linkMax);
         }
-
+        
         /// <summary>
         ///     Sets the next axis to fit using the specified axis
         /// </summary>
@@ -766,7 +766,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_SetNextAxisToFit(axis);
         }
-
+        
         /// <summary>
         ///     Sets the next error bar style
         /// </summary>
@@ -777,7 +777,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             float weight = -1;
             ImPlotNative.ImPlot_SetNextErrorBarStyle(col, size, weight);
         }
-
+        
         /// <summary>
         ///     Sets the next error bar style using the specified col
         /// </summary>
@@ -788,7 +788,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             float weight = -1;
             ImPlotNative.ImPlot_SetNextErrorBarStyle(col, size, weight);
         }
-
+        
         /// <summary>
         ///     Sets the next error bar style using the specified col
         /// </summary>
@@ -799,7 +799,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             float weight = -1;
             ImPlotNative.ImPlot_SetNextErrorBarStyle(col, size, weight);
         }
-
+        
         /// <summary>
         ///     Sets the next error bar style using the specified col
         /// </summary>
@@ -810,7 +810,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_SetNextErrorBarStyle(col, size, weight);
         }
-
+        
         /// <summary>
         ///     Sets the next fill style
         /// </summary>
@@ -820,7 +820,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             float alphaMod = -1;
             ImPlotNative.ImPlot_SetNextFillStyle(col, alphaMod);
         }
-
+        
         /// <summary>
         ///     Sets the next fill style using the specified col
         /// </summary>
@@ -830,7 +830,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             float alphaMod = -1;
             ImPlotNative.ImPlot_SetNextFillStyle(col, alphaMod);
         }
-
+        
         /// <summary>
         ///     Sets the next fill style using the specified col
         /// </summary>
@@ -840,7 +840,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_SetNextFillStyle(col, alphaMod);
         }
-
+        
         /// <summary>
         ///     Sets the next line style
         /// </summary>
@@ -850,7 +850,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             float weight = -1;
             ImPlotNative.ImPlot_SetNextLineStyle(col, weight);
         }
-
+        
         /// <summary>
         ///     Sets the next line style using the specified col
         /// </summary>
@@ -860,7 +860,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             float weight = -1;
             ImPlotNative.ImPlot_SetNextLineStyle(col, weight);
         }
-
+        
         /// <summary>
         ///     Sets the next line style using the specified col
         /// </summary>
@@ -870,7 +870,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_SetNextLineStyle(col, weight);
         }
-
+        
         /// <summary>
         ///     Sets the next marker style
         /// </summary>
@@ -883,7 +883,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             Vector4 outline = new Vector4(0, 0, 0, -1);
             ImPlotNative.ImPlot_SetNextMarkerStyle(marker, size, fill, weight, outline);
         }
-
+        
         /// <summary>
         ///     Sets the next marker style using the specified marker
         /// </summary>
@@ -896,7 +896,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             Vector4 outline = new Vector4(0, 0, 0, -1);
             ImPlotNative.ImPlot_SetNextMarkerStyle(marker, size, fill, weight, outline);
         }
-
+        
         /// <summary>
         ///     Sets the next marker style using the specified marker
         /// </summary>
@@ -909,7 +909,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             Vector4 outline = new Vector4(0, 0, 0, -1);
             ImPlotNative.ImPlot_SetNextMarkerStyle(marker, size, fill, weight, outline);
         }
-
+        
         /// <summary>
         ///     Sets the next marker style using the specified marker
         /// </summary>
@@ -922,7 +922,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             Vector4 outline = new Vector4(0, 0, 0, -1);
             ImPlotNative.ImPlot_SetNextMarkerStyle(marker, size, fill, weight, outline);
         }
-
+        
         /// <summary>
         ///     Sets the next marker style using the specified marker
         /// </summary>
@@ -935,7 +935,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             Vector4 outline = new Vector4(0, 0, 0, -1);
             ImPlotNative.ImPlot_SetNextMarkerStyle(marker, size, fill, weight, outline);
         }
-
+        
         /// <summary>
         ///     Sets the next marker style using the specified marker
         /// </summary>
@@ -948,7 +948,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_SetNextMarkerStyle(marker, size, fill, weight, outline);
         }
-
+        
         /// <summary>
         ///     Setup the axes using the specified x label
         /// </summary>
@@ -958,7 +958,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_SetupAxes(Encoding.UTF8.GetBytes(xLabel), Encoding.UTF8.GetBytes(yLabel), 0, 0);
         }
-
+        
         /// <summary>
         ///     Setup the axes using the specified x label
         /// </summary>
@@ -969,7 +969,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_SetupAxes(Encoding.UTF8.GetBytes(xLabel), Encoding.UTF8.GetBytes(yLabel), xFlags, 0);
         }
-
+        
         /// <summary>
         ///     Setup the axes using the specified x label
         /// </summary>
@@ -981,7 +981,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_SetupAxes(Encoding.UTF8.GetBytes(xLabel), Encoding.UTF8.GetBytes(yLabel), xFlags, yFlags);
         }
-
+        
         /// <summary>
         ///     Setup the axes limits using the specified x min
         /// </summary>
@@ -994,7 +994,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             ImPlotCond cond = ImPlotCond.Once;
             ImPlotNative.ImPlot_SetupAxesLimits(xMin, xMax, yMin, yMax, cond);
         }
-
+        
         /// <summary>
         ///     Setup the axes limits using the specified x min
         /// </summary>
@@ -1007,7 +1007,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_SetupAxesLimits(xMin, xMax, yMin, yMax, cond);
         }
-
+        
         /// <summary>
         ///     Setup the axis using the specified axis
         /// </summary>
@@ -1017,7 +1017,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             ImPlotAxisFlags flags = 0;
             ImPlotNative.ImPlot_SetupAxis(axis, Array.Empty<byte>(), flags);
         }
-
+        
         /// <summary>
         ///     Setup the axis using the specified axis
         /// </summary>
@@ -1027,7 +1027,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_SetupAxis(axis, Encoding.UTF8.GetBytes(label), 0);
         }
-
+        
         /// <summary>
         ///     Setup the axis using the specified axis
         /// </summary>
@@ -1038,7 +1038,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_SetupAxis(axis, Encoding.UTF8.GetBytes(label), flags);
         }
-
+        
         /// <summary>
         ///     Setup the axis format using the specified axis
         /// </summary>
@@ -1048,7 +1048,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_SetupAxisFormat_Str(axis, Encoding.UTF8.GetBytes(fmt));
         }
-
+        
         /// <summary>
         ///     Setup the axis format using the specified axis
         /// </summary>
@@ -1058,7 +1058,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_SetupAxisFormat_PlotFormatter(axis, formatter, IntPtr.Zero);
         }
-
+        
         /// <summary>
         ///     Setup the axis format using the specified axis
         /// </summary>
@@ -1069,7 +1069,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_SetupAxisFormat_PlotFormatter(axis, formatter, data);
         }
-
+        
         /// <summary>
         ///     Setup the axis limits using the specified axis
         /// </summary>
@@ -1081,7 +1081,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             ImPlotCond cond = ImPlotCond.Once;
             ImPlotNative.ImPlot_SetupAxisLimits(axis, vMin, vMax, cond);
         }
-
+        
         /// <summary>
         ///     Setup the axis limits using the specified axis
         /// </summary>
@@ -1093,7 +1093,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_SetupAxisLimits(axis, vMin, vMax, cond);
         }
-
+        
         /// <summary>
         ///     Setup the axis limits constraints using the specified axis
         /// </summary>
@@ -1104,7 +1104,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_SetupAxisLimitsConstraints(axis, vMin, vMax);
         }
-
+        
         /// <summary>
         ///     Setup the axis links using the specified axis
         /// </summary>
@@ -1115,7 +1115,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_SetupAxisLinks(axis, linkMin, linkMax);
         }
-
+        
         /// <summary>
         ///     Setup the axis scale using the specified axis
         /// </summary>
@@ -1125,7 +1125,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_SetupAxisScale_PlotScale(axis, scale);
         }
-
+        
         /// <summary>
         ///     Setup the axis scale using the specified axis
         /// </summary>
@@ -1136,7 +1136,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_SetupAxisScale_PlotTransform(axis, forward, inverse, IntPtr.Zero);
         }
-
+        
         /// <summary>
         ///     Setup the axis scale using the specified axis
         /// </summary>
@@ -1148,7 +1148,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_SetupAxisScale_PlotTransform(axis, forward, inverse, data);
         }
-
+        
         /// <summary>
         ///     Setup the axis ticks using the specified axis
         /// </summary>
@@ -1159,7 +1159,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_SetupAxisTicks_doublePtr(axis, values, nTicks, null, 0);
         }
-
+        
         /// <summary>
         ///     Setup the axis ticks using the specified axis
         /// </summary>
@@ -1171,7 +1171,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_SetupAxisTicks_doublePtr(axis, values, nTicks, null, 0);
         }
-
+        
         /// <summary>
         ///     Setup the axis ticks using the specified axis
         /// </summary>
@@ -1184,7 +1184,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_SetupAxisTicks_doublePtr(axis, values, nTicks, null, 0);
         }
-
+        
         /// <summary>
         ///     Setup the axis ticks using the specified axis
         /// </summary>
@@ -1196,7 +1196,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_SetupAxisTicks_double(axis, vMin, vMax, nTicks, Array.Empty<byte[]>(), 0);
         }
-
+        
         /// <summary>
         ///     Setup the axis ticks using the specified axis
         /// </summary>
@@ -1209,7 +1209,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_SetupAxisTicks_double(axis, vMin, vMax, nTicks, Array.Empty<byte[]>(), 0);
         }
-
+        
         /// <summary>
         ///     Setup the axis ticks using the specified axis
         /// </summary>
@@ -1223,7 +1223,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_SetupAxisTicks_double(axis, vMin, vMax, nTicks, Array.Empty<byte[]>(), 0);
         }
-
+        
         /// <summary>
         ///     Setup the axis zoom constraints using the specified axis
         /// </summary>
@@ -1234,7 +1234,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_SetupAxisZoomConstraints(axis, zMin, zMax);
         }
-
+        
         /// <summary>
         ///     Setup the finish
         /// </summary>
@@ -1242,7 +1242,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_SetupFinish();
         }
-
+        
         /// <summary>
         ///     Setup the legend using the specified location
         /// </summary>
@@ -1252,7 +1252,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             ImPlotLegendFlags flags = 0;
             ImPlotNative.ImPlot_SetupLegend(location, flags);
         }
-
+        
         /// <summary>
         ///     Setup the legend using the specified location
         /// </summary>
@@ -1262,7 +1262,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_SetupLegend(location, flags);
         }
-
+        
         /// <summary>
         ///     Setup the mouse text using the specified location
         /// </summary>
@@ -1272,7 +1272,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             ImPlotMouseTextFlags flags = 0;
             ImPlotNative.ImPlot_SetupMouseText(location, flags);
         }
-
+        
         /// <summary>
         ///     Setup the mouse text using the specified location
         /// </summary>
@@ -1282,7 +1282,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_SetupMouseText(location, flags);
         }
-
+        
         /// <summary>
         ///     Describes whether show colormap selector
         /// </summary>
@@ -1293,7 +1293,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_ShowColormapSelector(Encoding.UTF8.GetBytes(label));
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Shows the demo window
         /// </summary>
@@ -1301,7 +1301,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_ShowDemoWindow(0);
         }
-
+        
         /// <summary>
         ///     Shows the demo window using the specified p open
         /// </summary>
@@ -1312,7 +1312,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             ImPlotNative.ImPlot_ShowDemoWindow(nativePOpenVal);
             pOpen = nativePOpenVal != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether show input map selector
         /// </summary>
@@ -1323,7 +1323,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_ShowInputMapSelector(Encoding.UTF8.GetBytes(label));
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Shows the metrics window
         /// </summary>
@@ -1331,7 +1331,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_ShowMetricsWindow(0);
         }
-
+        
         /// <summary>
         ///     Shows the metrics window using the specified p popen
         /// </summary>
@@ -1342,7 +1342,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             ImPlotNative.ImPlot_ShowMetricsWindow(nativePPopenVal);
             pPopen = nativePPopenVal != 0;
         }
-
+        
         /// <summary>
         ///     Shows the style editor
         /// </summary>
@@ -1350,7 +1350,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_ShowStyleEditor(new ImPlotStyle());
         }
-
+        
         /// <summary>
         ///     Shows the style editor using the specified ref
         /// </summary>
@@ -1358,7 +1358,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_ShowStyleEditor(imPlotStyle);
         }
-
+        
         /// <summary>
         ///     Describes whether show style selector
         /// </summary>
@@ -1369,7 +1369,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_ShowStyleSelector(Encoding.UTF8.GetBytes(label));
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Shows the user guide
         /// </summary>
@@ -1377,7 +1377,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_ShowUserGuide();
         }
-
+        
         /// <summary>
         ///     Styles the colors auto
         /// </summary>
@@ -1385,7 +1385,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_StyleColorsAuto(new ImPlotStyle());
         }
-
+        
         /// <summary>
         ///     Styles the colors auto using the specified dst
         /// </summary>
@@ -1394,7 +1394,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_StyleColorsAuto(dst);
         }
-
+        
         /// <summary>
         ///     Styles the colors classic
         /// </summary>
@@ -1402,7 +1402,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_StyleColorsClassic(new ImPlotStyle());
         }
-
+        
         /// <summary>
         ///     Styles the colors classic using the specified dst
         /// </summary>
@@ -1411,7 +1411,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_StyleColorsClassic(dst);
         }
-
+        
         /// <summary>
         ///     Styles the colors dark
         /// </summary>
@@ -1419,7 +1419,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_StyleColorsDark(new ImPlotStyle());
         }
-
+        
         /// <summary>
         ///     Styles the colors dark using the specified dst
         /// </summary>
@@ -1428,7 +1428,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_StyleColorsDark(dst);
         }
-
+        
         /// <summary>
         ///     Styles the colors light
         /// </summary>
@@ -1436,7 +1436,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_StyleColorsLight(new ImPlotStyle());
         }
-
+        
         /// <summary>
         ///     Styles the colors light using the specified dst
         /// </summary>
@@ -1445,7 +1445,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_StyleColorsLight(dst);
         }
-
+        
         /// <summary>
         ///     Tags the x using the specified x
         /// </summary>
@@ -1456,7 +1456,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte round = 0;
             ImPlotNative.ImPlot_TagX_Bool(x, col, round);
         }
-
+        
         /// <summary>
         ///     Tags the x using the specified x
         /// </summary>
@@ -1468,7 +1468,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte nativeRound = round ? (byte) 1 : (byte) 0;
             ImPlotNative.ImPlot_TagX_Bool(x, col, nativeRound);
         }
-
+        
         /// <summary>
         ///     Tags the x using the specified x
         /// </summary>
@@ -1479,7 +1479,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_TagX_Str(x, col, Encoding.UTF8.GetBytes(fmt));
         }
-
+        
         /// <summary>
         ///     Tags the y using the specified y
         /// </summary>
@@ -1490,7 +1490,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte round = 0;
             ImPlotNative.ImPlot_TagY_Bool(y, col, round);
         }
-
+        
         /// <summary>
         ///     Tags the y using the specified y
         /// </summary>
@@ -1502,7 +1502,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte nativeRound = round ? (byte) 1 : (byte) 0;
             ImPlotNative.ImPlot_TagY_Bool(y, col, nativeRound);
         }
-
+        
         /// <summary>
         ///     Tags the y using the specified y
         /// </summary>

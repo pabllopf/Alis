@@ -64,7 +64,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Solver
                 RadiusB = 1.0f,
                 Type = ManifoldType.Circles
             };
-
+            
             // Assert
             Assert.Equal(1, contactPositionConstraint.IndexA);
             Assert.Equal(2, contactPositionConstraint.IndexB);

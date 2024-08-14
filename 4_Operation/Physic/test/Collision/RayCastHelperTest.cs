@@ -55,14 +55,14 @@ namespace Alis.Core.Physic.Test.Collision
             RayCastInput input = new RayCastInput();
             Transform transform = new Transform();
             RayCastOutput output;
-
+            
             // Call the method under test
             bool result = RayCastHelper.RayCastEdge(ref start, ref end, oneSided, ref input, ref transform, out output);
-
+            
             // Assert the result
             Assert.False(result); // Adjust this based on the expected result
         }
-
+        
         /// <summary>
         ///     Tests that ray cast circle test
         /// </summary>
@@ -75,14 +75,14 @@ namespace Alis.Core.Physic.Test.Collision
             RayCastInput input = new RayCastInput();
             Transform transform = new Transform();
             RayCastOutput output;
-
+            
             // Call the method under test
             bool result = RayCastHelper.RayCastCircle(ref pos, radius, ref input, ref transform, out output);
-
+            
             // Assert the result
             Assert.False(result); // Adjust this based on the expected result
         }
-
+        
         /// <summary>
         ///     Tests that ray cast polygon test
         /// </summary>
@@ -95,14 +95,14 @@ namespace Alis.Core.Physic.Test.Collision
             RayCastInput input = new RayCastInput();
             Transform transform = new Transform();
             RayCastOutput output;
-
+            
             // Call the method under test
             bool result = RayCastHelper.RayCastPolygon(vertices, normals, ref input, ref transform, out output);
-
+            
             // Assert the result
             Assert.False(result); // Adjust this based on the expected result
         }
-
+        
         /// <summary>
         ///     Tests that ray cast edge test v 2
         /// </summary>
@@ -115,12 +115,12 @@ namespace Alis.Core.Physic.Test.Collision
             RayCastInput input = new RayCastInput();
             Transform transform = new Transform();
             RayCastOutput output;
-
+            
             bool result = RayCastHelper.RayCastEdge(ref start, ref end, oneSided, ref input, ref transform, out output);
-
+            
             Assert.False(result);
         }
-
+        
         /// <summary>
         ///     Tests that ray cast circle test v 2
         /// </summary>
@@ -132,12 +132,12 @@ namespace Alis.Core.Physic.Test.Collision
             RayCastInput input = new RayCastInput();
             Transform transform = new Transform();
             RayCastOutput output;
-
+            
             bool result = RayCastHelper.RayCastCircle(ref pos, radius, ref input, ref transform, out output);
-
+            
             Assert.False(result);
         }
-
+        
         /// <summary>
         ///     Tests that ray cast polygon test v 2
         /// </summary>
@@ -149,12 +149,12 @@ namespace Alis.Core.Physic.Test.Collision
             RayCastInput input = new RayCastInput();
             Transform transform = new Transform();
             RayCastOutput output;
-
+            
             bool result = RayCastHelper.RayCastPolygon(vertices, normals, ref input, ref transform, out output);
-
+            
             Assert.False(result);
         }
-
+        
         /// <summary>
         ///     Tests that transform point test
         /// </summary>
@@ -163,12 +163,12 @@ namespace Alis.Core.Physic.Test.Collision
         {
             Vector2 point = new Vector2(0, 0);
             Transform transform = new Transform();
-
+            
             Vector2 result = RayCastHelper.TransformPoint(point, transform);
-
+            
             Assert.Equal(point, result);
         }
-
+        
         /// <summary>
         ///     Tests that calculate numerator test
         /// </summary>
@@ -179,10 +179,10 @@ namespace Alis.Core.Physic.Test.Collision
             Vertices vertices = new Vertices();
             Vertices normals = new Vertices();
             Vector2 p1 = new Vector2(1, 1);
-
+            
             Assert.Throws<ArgumentOutOfRangeException>(() => RayCastHelper.CalculateNumerator(i, vertices, normals, p1));
         }
-
+        
         /// <summary>
         ///     Tests that calculate denominator test
         /// </summary>
@@ -192,10 +192,10 @@ namespace Alis.Core.Physic.Test.Collision
             int i = 0;
             Vertices normals = new Vertices();
             Vector2 d = new Vector2(1, 1);
-
+            
             Assert.Throws<ArgumentOutOfRangeException>(() => RayCastHelper.CalculateDenominator(i, normals, d));
         }
-
+        
         /// <summary>
         ///     Tests that process denominator test
         /// </summary>
@@ -208,9 +208,9 @@ namespace Alis.Core.Physic.Test.Collision
             int i = 0;
             float numerator = 0;
             float denominator = 1;
-
+            
             bool result = RayCastHelper.ProcessDenominator(ref lower, ref upper, ref index, i, numerator, denominator);
-
+            
             Assert.True(result);
         }
     }

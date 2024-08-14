@@ -48,16 +48,16 @@ namespace Alis.Test.Core.Ecs.System.Setting.Physic
         {
             // Arrange
             PhysicSetting physicSetting = new PhysicSetting();
-
+            
             // Act
             physicSetting.DebugMode = true;
             bool result = physicSetting.DebugMode;
-
+            
             // Assert
             Assert.NotNull(physicSetting);
             Assert.True(result);
         }
-
+        
         /// <summary>
         ///     Tests that test physic setting debug color
         /// </summary>
@@ -66,16 +66,16 @@ namespace Alis.Test.Core.Ecs.System.Setting.Physic
         {
             // Arrange
             PhysicSetting physicSetting = new PhysicSetting();
-
+            
             // Act
             physicSetting.DebugColor = Color.Red;
             Color result = physicSetting.DebugColor;
-
+            
             // Assert
             Assert.NotNull(physicSetting);
             Assert.Equal(Color.Red, result);
         }
-
+        
         /// <summary>
         ///     Tests that test physic setting gravity
         /// </summary>
@@ -84,16 +84,16 @@ namespace Alis.Test.Core.Ecs.System.Setting.Physic
         {
             // Arrange
             PhysicSetting physicSetting = new PhysicSetting();
-
+            
             // Act
             physicSetting.Gravity = new Vector2(0.0f, -9.8f);
             Vector2 result = physicSetting.Gravity;
-
+            
             // Assert
             Assert.NotNull(physicSetting);
             Assert.Equal(new Vector2(0.0f, -9.8f), result);
         }
-
+        
         /// <summary>
         ///     Tests that test physic setting builder
         /// </summary>
@@ -102,10 +102,10 @@ namespace Alis.Test.Core.Ecs.System.Setting.Physic
         {
             // Arrange
             PhysicSetting physicSetting = new PhysicSetting();
-
+            
             // Act
             PhysicSettingBuilder result = physicSetting.Builder();
-
+            
             // Assert
             Assert.NotNull(result);
             Assert.IsType<PhysicSettingBuilder>(result);

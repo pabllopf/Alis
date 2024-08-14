@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Extension.Math.DungeonGenerator.Test
 {
     /// <summary>
-    /// The dungeon test class
+    ///     The dungeon test class
     /// </summary>
     public class DungeonTest
     {
         /// <summary>
-        /// Tests that set up first room should initialize room with given parameters
+        ///     Tests that set up first room should initialize room with given parameters
         /// </summary>
         [Fact]
         public void SetUpFirstRoom_ShouldInitializeRoomWithGivenParameters()
@@ -61,7 +61,7 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
         }
         
         /// <summary>
-        /// Tests that set up should initialize room with correct parameters when direction is north
+        ///     Tests that set up should initialize room with correct parameters when direction is north
         /// </summary>
         [Fact]
         public void SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsNorth()
@@ -83,7 +83,7 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
         }
         
         /// <summary>
-        /// Tests that set up should initialize room with correct parameters when direction is south
+        ///     Tests that set up should initialize room with correct parameters when direction is south
         /// </summary>
         [Fact]
         public void SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsSouth()
@@ -105,7 +105,7 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
         }
         
         /// <summary>
-        /// Tests that set up should initialize room with correct parameters when direction is east
+        ///     Tests that set up should initialize room with correct parameters when direction is east
         /// </summary>
         [Fact]
         public void SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsEast()
@@ -127,7 +127,7 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
         }
         
         /// <summary>
-        /// Tests that set up should initialize room with correct parameters when direction is west
+        ///     Tests that set up should initialize room with correct parameters when direction is west
         /// </summary>
         [Fact]
         public void SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsWest()
@@ -149,7 +149,7 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
         }
         
         /// <summary>
-        /// Tests that start should initialize rooms and corridors
+        ///     Tests that start should initialize rooms and corridors
         /// </summary>
         [Fact]
         public void Start_ShouldInitializeRoomsAndCorridors()
@@ -166,7 +166,7 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
         }
         
         /// <summary>
-        /// Tests that set up rooms and corridors should set up rooms and corridors correctly
+        ///     Tests that set up rooms and corridors should set up rooms and corridors correctly
         /// </summary>
         [Fact]
         public void SetUpRoomsAndCorridors_ShouldSetUpRoomsAndCorridorsCorrectly()
@@ -191,7 +191,7 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
         }
         
         /// <summary>
-        /// Tests that config rooms and corridors should configure board correctly
+        ///     Tests that config rooms and corridors should configure board correctly
         /// </summary>
         [Fact]
         public void ConfigRoomsAndCorridors_ShouldConfigureBoardCorrectly()
@@ -228,7 +228,7 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
         }
         
         /// <summary>
-        /// Tests that board should be initialized with correct dimensions
+        ///     Tests that board should be initialized with correct dimensions
         /// </summary>
         [Fact]
         public void Board_ShouldBeInitializedWithCorrectDimensions()
@@ -245,7 +245,7 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
         }
         
         /// <summary>
-        /// Tests that rooms should be initialized as empty list
+        ///     Tests that rooms should be initialized as empty list
         /// </summary>
         [Fact]
         public void Rooms_ShouldBeInitializedAsEmptyList()
@@ -262,7 +262,7 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
         }
         
         /// <summary>
-        /// Tests that corridors should be initialized as empty list
+        ///     Tests that corridors should be initialized as empty list
         /// </summary>
         [Fact]
         public void Corridors_ShouldBeInitializedAsEmptyList()
@@ -279,7 +279,7 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
         }
         
         /// <summary>
-        /// Tests that create board should create board with correct walls and corners
+        ///     Tests that create board should create board with correct walls and corners
         /// </summary>
         [Fact]
         public void CreateBoard_ShouldCreateBoardWithCorrectWallsAndCorners()

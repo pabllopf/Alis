@@ -30,10 +30,9 @@
 namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
 {
     /// <summary>
-    /// The im plot test 18 class
+    ///     The im plot test 18 class
     /// </summary>
     public class ImPlotTestP18
     {
-        
     }
 }

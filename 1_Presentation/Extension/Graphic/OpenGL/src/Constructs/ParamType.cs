@@ -38,7 +38,7 @@ namespace Alis.Extension.Graphic.OpenGL.Constructs
         ///     The uniform param type
         /// </summary>
         Uniform,
-
+        
         /// <summary>
         ///     The attribute param type
         /// </summary>

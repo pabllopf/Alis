@@ -59,10 +59,10 @@ namespace Alis.Core.Physic.Test.Dynamics
             float restitution = 0.1f;
             float restitutionThreshold = 1.5f;
             bool isSensor = true;
-
+            
             // Act
             Fixture fixture = new Fixture(shape, filter, friction, restitution, restitutionThreshold, isSensor);
-
+            
             // Assert
             Assert.Equal(shape.ShapeType, fixture.Shape.ShapeType);
             Assert.Equal(filter.CategoryMask, fixture.Filter.CategoryMask);
@@ -71,7 +71,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(restitutionThreshold, fixture.RestitutionThreshold);
             Assert.Equal(isSensor, fixture.IsSensor);
         }
-
+        
         /// <summary>
         ///     Tests that test point test
         /// </summary>
@@ -83,11 +83,11 @@ namespace Alis.Core.Physic.Test.Dynamics
             Filter filter = new Filter();
             Fixture fixture = new Fixture(shape, filter);
             Vector2 point = new Vector2(0, 0);
-
+            
             // Act
             Assert.Throws<NullReferenceException>(() => fixture.TestPoint(ref point));
         }
-
+        
         /// <summary>
         ///     Tests that ray cast test
         /// </summary>
@@ -101,11 +101,11 @@ namespace Alis.Core.Physic.Test.Dynamics
             RayCastInput input = new RayCastInput();
             RayCastOutput output;
             int childIndex = 0;
-
+            
             // ActA
             Assert.Throws<NullReferenceException>(() => fixture.RayCast(out output, ref input, childIndex));
         }
-
+        
         /// <summary>
         ///     Tests that get aabb test
         /// </summary>
@@ -118,13 +118,13 @@ namespace Alis.Core.Physic.Test.Dynamics
             Fixture fixture = new Fixture(shape, filter);
             int childIndex = 0;
             Aabb aabb;
-
+            
             // Act
             fixture.GetAabb(out aabb, childIndex);
-
+            
             Assert.Equal(new Vector2(0, 0), aabb.LowerBound);
         }
-
+        
         /// <summary>
         ///     Tests that synchronize should synchronize correctly
         /// </summary>
@@ -140,15 +140,15 @@ namespace Alis.Core.Physic.Test.Dynamics
                 new Filter()
             );
             fixture.Proxies[0] = new FixtureProxy(); // Replace with actual proxy
-
-
+            
+            
             // Act
             fixture.Synchronize(broadPhase, ref transform1, ref transform2);
-
+            
             // Assert
             // Here you would assert that the properties of wheelJoint have been set correctly.
         }
-
+        
         /// <summary>
         ///     Tests that fixture constructor test v 2
         /// </summary>
@@ -162,10 +162,10 @@ namespace Alis.Core.Physic.Test.Dynamics
             float restitution = 0.1f;
             float restitutionThreshold = 1.5f;
             bool isSensor = true;
-
+            
             // Act
             Fixture fixture = new Fixture(shape, filter, friction, restitution, restitutionThreshold, isSensor);
-
+            
             // Assert
             Assert.Equal(shape.ShapeType, fixture.Shape.ShapeType);
             Assert.Equal(filter.CategoryMask, fixture.Filter.CategoryMask);
@@ -174,7 +174,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(restitutionThreshold, fixture.RestitutionThreshold);
             Assert.Equal(isSensor, fixture.IsSensor);
         }
-
+        
         /// <summary>
         ///     Tests that test point test v 2
         /// </summary>
@@ -186,11 +186,11 @@ namespace Alis.Core.Physic.Test.Dynamics
             Filter filter = new Filter();
             Fixture fixture = new Fixture(shape, filter);
             Vector2 point = new Vector2(0, 0);
-
+            
             // Act
             Assert.Throws<NullReferenceException>(() => fixture.TestPoint(ref point));
         }
-
+        
         /// <summary>
         ///     Tests that ray cast test v 2
         /// </summary>
@@ -204,11 +204,11 @@ namespace Alis.Core.Physic.Test.Dynamics
             RayCastInput input = new RayCastInput();
             RayCastOutput output;
             int childIndex = 0;
-
+            
             // Act
             Assert.Throws<NullReferenceException>(() => fixture.RayCast(out output, ref input, childIndex));
         }
-
+        
         /// <summary>
         ///     Tests that get aabb test v 2
         /// </summary>
@@ -221,14 +221,14 @@ namespace Alis.Core.Physic.Test.Dynamics
             Fixture fixture = new Fixture(shape, filter);
             int childIndex = 0;
             Aabb aabb;
-
+            
             // Act
             fixture.GetAabb(out aabb, childIndex);
-
+            
             // Assert
             Assert.Equal(new Vector2(0, 0), aabb.LowerBound);
         }
-
+        
         /// <summary>
         ///     Tests that synchronize should synchronize correctly v 2
         /// </summary>
@@ -244,10 +244,10 @@ namespace Alis.Core.Physic.Test.Dynamics
                 new Filter()
             );
             fixture.Proxies[0] = new FixtureProxy();
-
+            
             // Act
             fixture.Synchronize(broadPhase, ref transform1, ref transform2);
-
+            
             // Assert
             // Here you would assert that the properties of wheelJoint have been set correctly.
         }

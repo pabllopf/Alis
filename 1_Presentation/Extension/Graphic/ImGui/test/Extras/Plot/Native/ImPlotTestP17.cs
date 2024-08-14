@@ -35,12 +35,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
 {
     /// <summary>
-    /// The im plot test class
+    ///     The im plot test class
     /// </summary>
     public class ImPlotTestP17
     {
         /// <summary>
-        /// Tests that plot bars throws dll not found exception
+        ///     Tests that plot bars throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotBars_ThrowsDllNotFoundException()
@@ -50,7 +50,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot bars throws dll not found exception v 2
+        ///     Tests that plot bars throws dll not found exception v 2
         /// </summary>
         [Fact]
         public void PlotBars_ThrowsDllNotFoundException_v2()
@@ -60,7 +60,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot bars throws dll not found exception v 3
+        ///     Tests that plot bars throws dll not found exception v 3
         /// </summary>
         [Fact]
         public void PlotBars_ThrowsDllNotFoundException_v3()
@@ -70,7 +70,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot bars throws dll not found exception v 4
+        ///     Tests that plot bars throws dll not found exception v 4
         /// </summary>
         [Fact]
         public void PlotBars_ThrowsDllNotFoundException_v4()
@@ -80,7 +80,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot bars g throws dll not found exception
+        ///     Tests that plot bars g throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotBarsG_ThrowsDllNotFoundException()
@@ -89,7 +89,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot bars g throws dll not found exception v 2
+        ///     Tests that plot bars g throws dll not found exception v 2
         /// </summary>
         [Fact]
         public void PlotBarsG_ThrowsDllNotFoundException_v2()
@@ -98,7 +98,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot digital throws dll not found exception
+        ///     Tests that plot digital throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotDigital_ThrowsDllNotFoundException()
@@ -108,7 +108,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot digital throws dll not found exception v 2
+        ///     Tests that plot digital throws dll not found exception v 2
         /// </summary>
         [Fact]
         public void PlotDigital_ThrowsDllNotFoundException_v2()
@@ -118,7 +118,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot digital throws dll not found exception v 3
+        ///     Tests that plot digital throws dll not found exception v 3
         /// </summary>
         [Fact]
         public void PlotDigital_ThrowsDllNotFoundException_v3()
@@ -128,7 +128,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot digital throws dll not found exception v 4
+        ///     Tests that plot digital throws dll not found exception v 4
         /// </summary>
         [Fact]
         public void PlotDigital_ThrowsDllNotFoundException_v4()
@@ -138,7 +138,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot digital throws dll not found exception v 5
+        ///     Tests that plot digital throws dll not found exception v 5
         /// </summary>
         [Fact]
         public void PlotDigital_ThrowsDllNotFoundException_v5()
@@ -148,7 +148,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot digital throws dll not found exception v 6
+        ///     Tests that plot digital throws dll not found exception v 6
         /// </summary>
         [Fact]
         public void PlotDigital_ThrowsDllNotFoundException_v6()
@@ -158,7 +158,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot digital throws dll not found exception v 7
+        ///     Tests that plot digital throws dll not found exception v 7
         /// </summary>
         [Fact]
         public void PlotDigital_ThrowsDllNotFoundException_v7()
@@ -168,7 +168,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot digital throws dll not found exception v 8
+        ///     Tests that plot digital throws dll not found exception v 8
         /// </summary>
         [Fact]
         public void PlotDigital_ThrowsDllNotFoundException_v8()
@@ -178,7 +178,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot digital throws dll not found exception v 9
+        ///     Tests that plot digital throws dll not found exception v 9
         /// </summary>
         [Fact]
         public void PlotDigital_ThrowsDllNotFoundException_v9()
@@ -188,7 +188,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot digital throws dll not found exception v 10
+        ///     Tests that plot digital throws dll not found exception v 10
         /// </summary>
         [Fact]
         public void PlotDigital_ThrowsDllNotFoundException_v10()
@@ -198,7 +198,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot digital throws dll not found exception v 11
+        ///     Tests that plot digital throws dll not found exception v 11
         /// </summary>
         [Fact]
         public void PlotDigital_ThrowsDllNotFoundException_v11()
@@ -208,7 +208,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot digital throws dll not found exception v 12
+        ///     Tests that plot digital throws dll not found exception v 12
         /// </summary>
         [Fact]
         public void PlotDigital_ThrowsDllNotFoundException_v12()
@@ -218,7 +218,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot digital throws dll not found exception v 13
+        ///     Tests that plot digital throws dll not found exception v 13
         /// </summary>
         [Fact]
         public void PlotDigital_ThrowsDllNotFoundException_v13()
@@ -228,7 +228,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot digital throws dll not found exception v 14
+        ///     Tests that plot digital throws dll not found exception v 14
         /// </summary>
         [Fact]
         public void PlotDigital_ThrowsDllNotFoundException_v14()
@@ -238,7 +238,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot digital throws dll not found exception v 15
+        ///     Tests that plot digital throws dll not found exception v 15
         /// </summary>
         [Fact]
         public void PlotDigital_ThrowsDllNotFoundException_v15()
@@ -248,7 +248,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot digital throws dll not found exception v 16
+        ///     Tests that plot digital throws dll not found exception v 16
         /// </summary>
         [Fact]
         public void PlotDigital_ThrowsDllNotFoundException_v16()
@@ -258,7 +258,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot digital throws dll not found exception v 17
+        ///     Tests that plot digital throws dll not found exception v 17
         /// </summary>
         [Fact]
         public void PlotDigital_ThrowsDllNotFoundException_v17()
@@ -268,7 +268,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot digital throws dll not found exception v 18
+        ///     Tests that plot digital throws dll not found exception v 18
         /// </summary>
         [Fact]
         public void PlotDigital_ThrowsDllNotFoundException_v18()
@@ -278,7 +278,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot digital throws dll not found exception v 19
+        ///     Tests that plot digital throws dll not found exception v 19
         /// </summary>
         [Fact]
         public void PlotDigital_ThrowsDllNotFoundException_v19()
@@ -288,7 +288,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot digital throws dll not found exception v 20
+        ///     Tests that plot digital throws dll not found exception v 20
         /// </summary>
         [Fact]
         public void PlotDigital_ThrowsDllNotFoundException_v20()
@@ -298,7 +298,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot digital throws dll not found exception v 21
+        ///     Tests that plot digital throws dll not found exception v 21
         /// </summary>
         [Fact]
         public void PlotDigital_ThrowsDllNotFoundException_v21()
@@ -308,7 +308,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot digital throws dll not found exception v 22
+        ///     Tests that plot digital throws dll not found exception v 22
         /// </summary>
         [Fact]
         public void PlotDigital_ThrowsDllNotFoundException_v22()
@@ -318,7 +318,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot digital throws dll not found exception v 23
+        ///     Tests that plot digital throws dll not found exception v 23
         /// </summary>
         [Fact]
         public void PlotDigital_ThrowsDllNotFoundException_v23()
@@ -328,7 +328,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot digital throws dll not found exception v 24
+        ///     Tests that plot digital throws dll not found exception v 24
         /// </summary>
         [Fact]
         public void PlotDigital_ThrowsDllNotFoundException_v24()
@@ -338,7 +338,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot digital throws dll not found exception v 25
+        ///     Tests that plot digital throws dll not found exception v 25
         /// </summary>
         [Fact]
         public void PlotDigital_ThrowsDllNotFoundException_v25()
@@ -348,7 +348,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot digital throws dll not found exception v 26
+        ///     Tests that plot digital throws dll not found exception v 26
         /// </summary>
         [Fact]
         public void PlotDigital_ThrowsDllNotFoundException_v26()
@@ -358,7 +358,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot digital throws dll not found exception v 27
+        ///     Tests that plot digital throws dll not found exception v 27
         /// </summary>
         [Fact]
         public void PlotDigital_ThrowsDllNotFoundException_v27()
@@ -368,7 +368,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot digital throws dll not found exception v 28
+        ///     Tests that plot digital throws dll not found exception v 28
         /// </summary>
         [Fact]
         public void PlotDigital_ThrowsDllNotFoundException_v28()
@@ -378,7 +378,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot digital throws dll not found exception v 29
+        ///     Tests that plot digital throws dll not found exception v 29
         /// </summary>
         [Fact]
         public void PlotDigital_ThrowsDllNotFoundException_v29()
@@ -388,7 +388,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot digital throws dll not found exception v 30
+        ///     Tests that plot digital throws dll not found exception v 30
         /// </summary>
         [Fact]
         public void PlotDigital_ThrowsDllNotFoundException_v30()
@@ -398,7 +398,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot digital throws dll not found exception v 31
+        ///     Tests that plot digital throws dll not found exception v 31
         /// </summary>
         [Fact]
         public void PlotDigital_ThrowsDllNotFoundException_v31()
@@ -408,7 +408,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot digital throws dll not found exception v 32
+        ///     Tests that plot digital throws dll not found exception v 32
         /// </summary>
         [Fact]
         public void PlotDigital_ThrowsDllNotFoundException_v32()
@@ -418,7 +418,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot digital throws dll not found exception v 33
+        ///     Tests that plot digital throws dll not found exception v 33
         /// </summary>
         [Fact]
         public void PlotDigital_ThrowsDllNotFoundException_v33()
@@ -428,7 +428,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot digital throws dll not found exception v 34
+        ///     Tests that plot digital throws dll not found exception v 34
         /// </summary>
         [Fact]
         public void PlotDigital_ThrowsDllNotFoundException_v34()
@@ -438,7 +438,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot digital throws dll not found exception v 35
+        ///     Tests that plot digital throws dll not found exception v 35
         /// </summary>
         [Fact]
         public void PlotDigital_ThrowsDllNotFoundException_v35()
@@ -448,7 +448,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot digital throws dll not found exception v 36
+        ///     Tests that plot digital throws dll not found exception v 36
         /// </summary>
         [Fact]
         public void PlotDigital_ThrowsDllNotFoundException_v36()
@@ -458,7 +458,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot digital throws dll not found exception v 37
+        ///     Tests that plot digital throws dll not found exception v 37
         /// </summary>
         [Fact]
         public void PlotDigital_ThrowsDllNotFoundException_v37()
@@ -468,7 +468,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot digital throws dll not found exception v 38
+        ///     Tests that plot digital throws dll not found exception v 38
         /// </summary>
         [Fact]
         public void PlotDigital_ThrowsDllNotFoundException_v38()
@@ -478,7 +478,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot digital throws dll not found exception v 39
+        ///     Tests that plot digital throws dll not found exception v 39
         /// </summary>
         [Fact]
         public void PlotDigital_ThrowsDllNotFoundException_v39()
@@ -488,7 +488,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot digital throws dll not found exception v 40
+        ///     Tests that plot digital throws dll not found exception v 40
         /// </summary>
         [Fact]
         public void PlotDigital_ThrowsDllNotFoundException_v40()
@@ -498,7 +498,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot digital g throws dll not found exception
+        ///     Tests that plot digital g throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotDigitalG_ThrowsDllNotFoundException()
@@ -507,7 +507,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot digital g throws dll not found exception v 2
+        ///     Tests that plot digital g throws dll not found exception v 2
         /// </summary>
         [Fact]
         public void PlotDigitalG_ThrowsDllNotFoundException_v2()
@@ -516,7 +516,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot dummy throws dll not found exception
+        ///     Tests that plot dummy throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotDummy_ThrowsDllNotFoundException()
@@ -525,7 +525,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot dummy throws dll not found exception v 2
+        ///     Tests that plot dummy throws dll not found exception v 2
         /// </summary>
         [Fact]
         public void PlotDummy_ThrowsDllNotFoundException_v2()
@@ -534,7 +534,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot error bars throws dll not found exception
+        ///     Tests that plot error bars throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotErrorBars_ThrowsDllNotFoundException()
@@ -544,7 +544,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot error bars throws dll not found exception v 2
+        ///     Tests that plot error bars throws dll not found exception v 2
         /// </summary>
         [Fact]
         public void PlotErrorBars_ThrowsDllNotFoundException_v2()

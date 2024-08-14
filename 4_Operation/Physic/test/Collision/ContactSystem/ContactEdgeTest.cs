@@ -49,23 +49,23 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
         {
             // Arrange
             ContactEdge contactEdge = new ContactEdge();
-
+            
             // Create necessary objects for Contact constructor
             AShape shape = new CircleShape(1); // Or any other shape
             Filter filter = new Filter();
-
+            
             Fixture fixtureA = new Fixture(shape, filter);
             Fixture fixtureB = new Fixture(shape, filter);
-
+            
             Contact contact = new Contact(fixtureA, 0, fixtureB, 0);
-
+            
             // Act
             contactEdge.Contact = contact;
-
+            
             // Assert
             Assert.Equal(contact, contactEdge.Contact);
         }
-
+        
         /// <summary>
         ///     Tests that test next property
         /// </summary>
@@ -75,14 +75,14 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
             // Arrange
             ContactEdge contactEdge = new ContactEdge();
             ContactEdge nextContactEdge = new ContactEdge();
-
+            
             // Act
             contactEdge.Next = nextContactEdge;
-
+            
             // Assert
             Assert.Equal(nextContactEdge, contactEdge.Next);
         }
-
+        
         /// <summary>
         ///     Tests that test other property
         /// </summary>
@@ -97,14 +97,14 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
                 position,
                 linearVelocity
             );
-
+            
             // Act
             contactEdge.Other = otherBody;
-
+            
             // Assert
             Assert.Equal(otherBody, contactEdge.Other);
         }
-
+        
         /// <summary>
         ///     Tests that test prev property
         /// </summary>
@@ -114,10 +114,10 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
             // Arrange
             ContactEdge contactEdge = new ContactEdge();
             ContactEdge prevContactEdge = new ContactEdge();
-
+            
             // Act
             contactEdge.Prev = prevContactEdge;
-
+            
             // Assert
             Assert.Equal(prevContactEdge, contactEdge.Prev);
         }

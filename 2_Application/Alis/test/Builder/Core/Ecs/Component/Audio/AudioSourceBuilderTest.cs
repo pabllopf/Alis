@@ -46,10 +46,10 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Audio
         public void AudioSourceBuilder_DefaultConstructor_ValidInput()
         {
             AudioSourceBuilder audioSourceBuilder = new AudioSourceBuilder();
-
+            
             Assert.NotNull(audioSourceBuilder);
         }
-
+        
         /// <summary>
         ///     Tests that build valid input
         /// </summary>
@@ -57,12 +57,12 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Audio
         public void Build_ValidInput()
         {
             AudioSourceBuilder audioSourceBuilder = new AudioSourceBuilder();
-
+            
             AudioSource audioSource = audioSourceBuilder.Build();
-
+            
             Assert.NotNull(audioSource);
         }
-
+        
         /// <summary>
         ///     Tests that is active valid input
         /// </summary>
@@ -71,12 +71,12 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Audio
         {
             AudioSourceBuilder audioSourceBuilder = new AudioSourceBuilder();
             bool isActive = true;
-
+            
             audioSourceBuilder.IsActive(isActive);
-
+            
             Assert.Equal(isActive, audioSourceBuilder.Build().IsEnable);
         }
-
+        
         /// <summary>
         ///     Tests that play on awake valid input
         /// </summary>
@@ -85,12 +85,12 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Audio
         {
             AudioSourceBuilder audioSourceBuilder = new AudioSourceBuilder();
             bool playOnAwake = true;
-
+            
             audioSourceBuilder.PlayOnAwake(playOnAwake);
-
+            
             Assert.Equal(playOnAwake, audioSourceBuilder.Build().PlayOnAwake);
         }
-
+        
         /// <summary>
         ///     Tests that set audio clip valid input
         /// </summary>
@@ -99,9 +99,9 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Audio
         {
             AudioSourceBuilder audioSourceBuilder = new AudioSourceBuilder();
             Func<AudioClipBuilder, AudioClip> audioClipFunc = acb => acb.Build();
-
+            
             audioSourceBuilder.SetAudioClip(audioClipFunc);
-
+            
             Assert.NotNull(audioSourceBuilder.Build().AudioClip);
         }
     }

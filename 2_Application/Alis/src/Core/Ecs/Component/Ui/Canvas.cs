@@ -43,12 +43,12 @@ namespace Alis.Core.Ecs.Component.Ui
         ///     Gets or sets the value of the width
         /// </summary>
         public int Width { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the height
         /// </summary>
         public int Height { get; set; }
-
+        
         /// <summary>
         ///     Builders this instance
         /// </summary>

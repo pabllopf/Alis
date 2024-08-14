@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test.Native
 {
     /// <summary>
-    /// The im gui test class
+    ///     The im gui test class
     /// </summary>
     public class ImGuiTest
     {
         /// <summary>
-        /// Tests that test im gui version
+        ///     Tests that test im gui version
         /// </summary>
         [Fact]
         public void Test_ImGui_Version()
@@ -48,7 +48,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test im gui create context
+        ///     Tests that test im gui create context
         /// </summary>
         [Fact]
         public void Test_ImGui_CreateContext()
@@ -57,586 +57,477 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test combo with label and current item and items separated by zeros
+        ///     Tests that test combo with label and current item and items separated by zeros
         /// </summary>
         [Fact]
         public void Test_Combo_WithLabelAndCurrentItemAndItemsSeparatedByZeros()
         {
-            
             int currentItem = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.Combo("label", ref currentItem, "item1\0item2\0item3\0"));
         }
         
         /// <summary>
-        /// Tests that test combo with label and current item and items separated by zeros and popup max height in items
+        ///     Tests that test combo with label and current item and items separated by zeros and popup max height in items
         /// </summary>
         [Fact]
         public void Test_Combo_WithLabelAndCurrentItemAndItemsSeparatedByZerosAndPopupMaxHeightInItems()
         {
-            
             int currentItem = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.Combo("label", ref currentItem, "item1\0item2\0item3\0", 10));
-            
-            
         }
         
         /// <summary>
-        /// Tests that test create context
+        ///     Tests that test create context
         /// </summary>
         [Fact]
         public void Test_CreateContext()
         {
-            
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.CreateContext());
         }
         
         /// <summary>
-        /// Tests that test create context with shared font atlas
+        ///     Tests that test create context with shared font atlas
         /// </summary>
         [Fact]
         public void Test_CreateContext_WithSharedFontAtlas()
         {
-            
             ImFontAtlasPtr sharedFontAtlas = new ImFontAtlasPtr();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.CreateContext(sharedFontAtlas));
         }
         
         /// <summary>
-        /// Tests that test debug check version and data layout
+        ///     Tests that test debug check version and data layout
         /// </summary>
         [Fact]
         public void Test_DebugCheckVersionAndDataLayout()
         {
-            
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DebugCheckVersionAndDataLayout("1.0.0", 1, 1, 1, 1, 1, 1));
-            
-            
         }
         
         /// <summary>
-        /// Tests that test debug text encoding
+        ///     Tests that test debug text encoding
         /// </summary>
         [Fact]
         public void Test_DebugTextEncoding()
         {
-            
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DebugTextEncoding("test"));
-            
         }
         
         /// <summary>
-        /// Tests that test dock space with id
+        ///     Tests that test dock space with id
         /// </summary>
         [Fact]
         public void Test_DockSpace_WithId()
         {
-            
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DockSpace(1));
-            
         }
         
         /// <summary>
-        /// Tests that test dock space with id and size
+        ///     Tests that test dock space with id and size
         /// </summary>
         [Fact]
         public void Test_DockSpace_WithIdAndSize()
         {
-            
             Vector2 size = new Vector2();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DockSpace(1, size));
         }
         
         /// <summary>
-        /// Tests that test dock space with id and size and flags
+        ///     Tests that test dock space with id and size and flags
         /// </summary>
         [Fact]
         public void Test_DockSpace_WithIdAndSizeAndFlags()
         {
-            
             Vector2 size = new Vector2();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DockSpace(1, size, 0));
         }
         
         /// <summary>
-        /// Tests that test dock space with id and size and flags and window
+        ///     Tests that test dock space with id and size and flags and window
         /// </summary>
         [Fact]
         public void Test_DockSpace_WithIdAndSizeAndFlagsAndWindowClass()
         {
-            
             Vector2 size = new Vector2();
             ImGuiWindowClass windowClass = new ImGuiWindowClass();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DockSpace(1, size, 0, windowClass));
         }
         
         /// <summary>
-        /// Tests that test dock space over viewport
+        ///     Tests that test dock space over viewport
         /// </summary>
         [Fact]
         public void Test_DockSpaceOverViewport()
         {
-            
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DockSpaceOverViewport());
-            
         }
         
         /// <summary>
-        /// Tests that test dock space over viewport with viewport
+        ///     Tests that test dock space over viewport with viewport
         /// </summary>
         [Fact]
         public void Test_DockSpaceOverViewport_WithViewport()
         {
-            
             ImGuiViewportPtr viewport = new ImGuiViewportPtr();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DockSpaceOverViewport(viewport));
-            
         }
         
         /// <summary>
-        /// Tests that test dock space over viewport with viewport and flags
+        ///     Tests that test dock space over viewport with viewport and flags
         /// </summary>
         [Fact]
         public void Test_DockSpaceOverViewport_WithViewportAndFlags()
         {
-            
             ImGuiViewportPtr viewport = new ImGuiViewportPtr();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DockSpaceOverViewport(viewport, 0));
         }
         
         /// <summary>
-        /// Tests that test dock space over viewport with viewport and flags and window
+        ///     Tests that test dock space over viewport with viewport and flags and window
         /// </summary>
         [Fact]
         public void Test_DockSpaceOverViewport_WithViewportAndFlagsAndWindowClass()
         {
-            
             ImGuiViewportPtr viewport = new ImGuiViewportPtr();
             ImGuiWindowClass windowClass = new ImGuiWindowClass();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DockSpaceOverViewport(viewport, 0, windowClass));
         }
         
         /// <summary>
-        /// Tests that test drag float with label and v
+        ///     Tests that test drag float with label and v
         /// </summary>
         [Fact]
         public void Test_DragFloat_WithLabelAndV()
         {
-            
             float v = 0.0f;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat("label", ref v));
-            
-            
         }
         
         /// <summary>
-        /// Tests that test drag float with label and v and v speed
+        ///     Tests that test drag float with label and v and v speed
         /// </summary>
         [Fact]
         public void Test_DragFloat_WithLabelAndVAndVSpeed()
         {
-            
             float v = 0.0f;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat("label", ref v, 1.0f));
-            
-            
         }
         
         /// <summary>
-        /// Tests that test drag float with label and v and v speed and v min
+        ///     Tests that test drag float with label and v and v speed and v min
         /// </summary>
         [Fact]
         public void Test_DragFloat_WithLabelAndVAndVSpeedAndVMin()
         {
-            
             float v = 0.0f;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat("label", ref v, 1.0f, 0.0f));
-            
-            
         }
         
         /// <summary>
-        /// Tests that test drag float with label and v and v speed and v min and v max
+        ///     Tests that test drag float with label and v and v speed and v min and v max
         /// </summary>
         [Fact]
         public void Test_DragFloat_WithLabelAndVAndVSpeedAndVMinAndVMax()
         {
-            
             float v = 0.0f;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat("label", ref v, 1.0f, 0.0f, 1.0f));
-            
-            
         }
         
         /// <summary>
-        /// Tests that test drag float with label and v and v speed and v min and v max and format
+        ///     Tests that test drag float with label and v and v speed and v min and v max and format
         /// </summary>
         [Fact]
         public void Test_DragFloat_WithLabelAndVAndVSpeedAndVMinAndVMaxAndFormat()
         {
-            
             float v = 0.0f;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat("label", ref v, 1.0f, 0.0f, 1.0f, "%.3f"));
-            
         }
         
         
         /// <summary>
-        /// Tests that test drag float with label and v and v speed and v min and v max and format and flags
+        ///     Tests that test drag float with label and v and v speed and v min and v max and format and flags
         /// </summary>
         [Fact]
         public void Test_DragFloat_WithLabelAndVAndVSpeedAndVMinAndVMaxAndFormatAndFlags()
         {
-            
             float v = 0.0f;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat("label", ref v, 1.0f, 0.0f, 1.0f, "%.3f", 0));
-            
-            
         }
         
         /// <summary>
-        /// Tests that test drag float 2 with label and v
+        ///     Tests that test drag float 2 with label and v
         /// </summary>
         [Fact]
         public void Test_DragFloat2_WithLabelAndV()
         {
-            
             Vector2 v = new Vector2();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat2("label", ref v));
-            
-            
         }
         
         /// <summary>
-        /// Tests that test drag float 2 with label and v and v speed
+        ///     Tests that test drag float 2 with label and v and v speed
         /// </summary>
         [Fact]
         public void Test_DragFloat2_WithLabelAndVAndVSpeed()
         {
-            
             Vector2 v = new Vector2();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat2("label", ref v, 1.0f));
-            
-            
         }
         
         /// <summary>
-        /// Tests that test drag float 2 with label and v and v speed and v min
+        ///     Tests that test drag float 2 with label and v and v speed and v min
         /// </summary>
         [Fact]
         public void Test_DragFloat2_WithLabelAndVAndVSpeedAndVMin()
         {
-            
             Vector2 v = new Vector2();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat2("label", ref v, 1.0f, 0.0f));
-            
-            
         }
         
         /// <summary>
-        /// Tests that test drag float 2 with label and v and v speed and v min and v max
+        ///     Tests that test drag float 2 with label and v and v speed and v min and v max
         /// </summary>
         [Fact]
         public void Test_DragFloat2_WithLabelAndVAndVSpeedAndVMinAndVMax()
         {
-            
             Vector2 v = new Vector2();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat2("label", ref v, 1.0f, 0.0f, 1.0f));
-            
-            
         }
         
         /// <summary>
-        /// Tests that test drag float 2 with label and v and v speed and v min and v max and format
+        ///     Tests that test drag float 2 with label and v and v speed and v min and v max and format
         /// </summary>
         [Fact]
         public void Test_DragFloat2_WithLabelAndVAndVSpeedAndVMinAndVMaxAndFormat()
         {
-            
             Vector2 v = new Vector2();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat2("label", ref v, 1.0f, 0.0f, 1.0f, "%.3f"));
-            
-            
         }
         
         /// <summary>
-        /// Tests that test drag float 2 with label and v and v speed and v min and v max and format and flags
+        ///     Tests that test drag float 2 with label and v and v speed and v min and v max and format and flags
         /// </summary>
         [Fact]
         public void Test_DragFloat2_WithLabelAndVAndVSpeedAndVMinAndVMaxAndFormatAndFlags()
         {
-            
             Vector2 v = new Vector2();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat2("label", ref v, 1.0f, 0.0f, 1.0f, "%.3f", 0));
-            
-            
         }
         
         /// <summary>
-        /// Tests that test drag float 3 with label and v
+        ///     Tests that test drag float 3 with label and v
         /// </summary>
         [Fact]
         public void Test_DragFloat3_WithLabelAndV()
         {
-            
             Vector3 v = new Vector3();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat3("label", ref v));
-            
-            
         }
         
         /// <summary>
-        /// Tests that test drag float 3 with label and v and v speed
+        ///     Tests that test drag float 3 with label and v and v speed
         /// </summary>
         [Fact]
         public void Test_DragFloat3_WithLabelAndVAndVSpeed()
         {
-            
             Vector3 v = new Vector3();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat3("label", ref v, 1.0f));
-            
         }
         
         
         /// <summary>
-        /// Tests that test drag float 3 with label and v and v speed and v min
+        ///     Tests that test drag float 3 with label and v and v speed and v min
         /// </summary>
         [Fact]
         public void Test_DragFloat3_WithLabelAndVAndVSpeedAndVMin()
         {
-            
             Vector3 v = new Vector3();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat3("label", ref v, 1.0f, 0.0f));
-            
-            
         }
         
         /// <summary>
-        /// Tests that test drag float 3 with label and v and v speed and v min and v max
+        ///     Tests that test drag float 3 with label and v and v speed and v min and v max
         /// </summary>
         [Fact]
         public void Test_DragFloat3_WithLabelAndVAndVSpeedAndVMinAndVMax()
         {
-            
             Vector3 v = new Vector3();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat3("label", ref v, 1.0f, 0.0f, 1.0f));
-            
-            
         }
         
         /// <summary>
-        /// Tests that test drag float 3 with label and v and v speed and v min and v max and format
+        ///     Tests that test drag float 3 with label and v and v speed and v min and v max and format
         /// </summary>
         [Fact]
         public void Test_DragFloat3_WithLabelAndVAndVSpeedAndVMinAndVMaxAndFormat()
         {
-            
             Vector3 v = new Vector3();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat3("label", ref v, 1.0f, 0.0f, 1.0f, "%.3f"));
-            
         }
         
         /// <summary>
-        /// Tests that test drag float 3 with label and v and v speed and v min and v max and format and flags
+        ///     Tests that test drag float 3 with label and v and v speed and v min and v max and format and flags
         /// </summary>
         [Fact]
         public void Test_DragFloat3_WithLabelAndVAndVSpeedAndVMinAndVMaxAndFormatAndFlags()
         {
-            
             Vector3 v = new Vector3();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat3("label", ref v, 1.0f, 0.0f, 1.0f, "%.3f", 0));
-            
-            
         }
         
         /// <summary>
-        /// Tests that test drag float 4 with label and v
+        ///     Tests that test drag float 4 with label and v
         /// </summary>
         [Fact]
         public void Test_DragFloat4_WithLabelAndV()
         {
-            
             Vector4 v = new Vector4();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat4("label", ref v));
-            
-            
         }
         
         /// <summary>
-        /// Tests that test drag float 4 with label and v and v speed
+        ///     Tests that test drag float 4 with label and v and v speed
         /// </summary>
         [Fact]
         public void Test_DragFloat4_WithLabelAndVAndVSpeed()
         {
-            
             Vector4 v = new Vector4();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat4("label", ref v, 1.0f));
-            
-            
         }
         
         /// <summary>
-        /// Tests that test drag float 4 with label and v and v speed and v min
+        ///     Tests that test drag float 4 with label and v and v speed and v min
         /// </summary>
         [Fact]
         public void Test_DragFloat4_WithLabelAndVAndVSpeedAndVMin()
         {
-            
             Vector4 v = new Vector4();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat4("label", ref v, 1.0f, 0.0f));
-            
-            
         }
         
         /// <summary>
-        /// Tests that test drag float 4 with label and v and v speed and v min and v max
+        ///     Tests that test drag float 4 with label and v and v speed and v min and v max
         /// </summary>
         [Fact]
         public void Test_DragFloat4_WithLabelAndVAndVSpeedAndVMinAndVMax()
         {
-            
             Vector4 v = new Vector4();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat4("label", ref v, 1.0f, 0.0f, 1.0f));
-            
         }
         
         
         /// <summary>
-        /// Tests that test drag float 4 with label and v and v speed and v min and v max and format
+        ///     Tests that test drag float 4 with label and v and v speed and v min and v max and format
         /// </summary>
         [Fact]
         public void Test_DragFloat4_WithLabelAndVAndVSpeedAndVMinAndVMaxAndFormat()
         {
-            
             Vector4 v = new Vector4();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat4("label", ref v, 1.0f, 0.0f, 1.0f, "%.3f"));
-            
-            
         }
         
         /// <summary>
-        /// Tests that test drag float 4 with label and v and v speed and v min and v max and format and flags
+        ///     Tests that test drag float 4 with label and v and v speed and v min and v max and format and flags
         /// </summary>
         [Fact]
         public void Test_DragFloat4_WithLabelAndVAndVSpeedAndVMinAndVMaxAndFormatAndFlags()
         {
-            
             Vector4 v = new Vector4();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloat4("label", ref v, 1.0f, 0.0f, 1.0f, "%.3f", 0));
-            
-            
         }
         
         /// <summary>
-        /// Tests that test drag float range 2 with label and v current min and v current max
+        ///     Tests that test drag float range 2 with label and v current min and v current max
         /// </summary>
         [Fact]
         public void Test_DragFloatRange2_WithLabelAndVCurrentMinAndVCurrentMax()
         {
-            
             float vCurrentMin = 0.0f;
             float vCurrentMax = 1.0f;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloatRange2("label", ref vCurrentMin, ref vCurrentMax));
-            
-            
         }
         
         /// <summary>
-        /// Tests that test drag float range 2 with label and v current min and v current max and v speed
+        ///     Tests that test drag float range 2 with label and v current min and v current max and v speed
         /// </summary>
         [Fact]
         public void Test_DragFloatRange2_WithLabelAndVCurrentMinAndVCurrentMaxAndVSpeed()
         {
-            
             float vCurrentMin = 0.0f;
             float vCurrentMax = 1.0f;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloatRange2("label", ref vCurrentMin, ref vCurrentMax, 1.0f));
-            
-            
         }
         
         /// <summary>
-        /// Tests that test drag float range 2 with label and v current min and v current max and v speed and v min
+        ///     Tests that test drag float range 2 with label and v current min and v current max and v speed and v min
         /// </summary>
         [Fact]
         public void Test_DragFloatRange2_WithLabelAndVCurrentMinAndVCurrentMaxAndVSpeedAndVMin()
         {
-            
             float vCurrentMin = 0.0f;
             float vCurrentMax = 1.0f;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloatRange2("label", ref vCurrentMin, ref vCurrentMax, 1.0f, 0.0f));
-            
-            
         }
         
         /// <summary>
-        /// Tests that test drag float range 2 with label and v current min and v current max and v speed and v min and v max
+        ///     Tests that test drag float range 2 with label and v current min and v current max and v speed and v min and v max
         /// </summary>
         [Fact]
         public void Test_DragFloatRange2_WithLabelAndVCurrentMinAndVCurrentMaxAndVSpeedAndVMinAndVMax()
         {
-            
             float vCurrentMin = 0.0f;
             float vCurrentMax = 1.0f;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloatRange2("label", ref vCurrentMin, ref vCurrentMax, 1.0f, 0.0f, 1.0f));
-            
-            
         }
         
         /// <summary>
-        /// Tests that test drag float range 2 with label and v current min and v current max and v speed and v min and v max and format
+        ///     Tests that test drag float range 2 with label and v current min and v current max and v speed and v min and v max
+        ///     and format
         /// </summary>
         [Fact]
         public void Test_DragFloatRange2_WithLabelAndVCurrentMinAndVCurrentMaxAndVSpeedAndVMinAndVMaxAndFormat()
         {
-            
             float vCurrentMin = 0.0f;
             float vCurrentMax = 1.0f;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloatRange2("label", ref vCurrentMin, ref vCurrentMax, 1.0f, 0.0f, 1.0f, "%.3f"));
-            
-            
         }
         
         /// <summary>
-        /// Tests that test drag float range 2 with label and v current min and v current max and v speed and v min and v max and format and format max
+        ///     Tests that test drag float range 2 with label and v current min and v current max and v speed and v min and v max
+        ///     and format and format max
         /// </summary>
         [Fact]
         public void Test_DragFloatRange2_WithLabelAndVCurrentMinAndVCurrentMaxAndVSpeedAndVMinAndVMaxAndFormatAndFormatMax()
         {
-            
             float vCurrentMin = 0.0f;
             float vCurrentMax = 1.0f;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloatRange2("label", ref vCurrentMin, ref vCurrentMax, 1.0f, 0.0f, 1.0f, "%.3f", "%.3f"));
-            
-            
         }
         
         /// <summary>
-        /// Tests that test drag float range 2 with label and v current min and v current max and v speed and v min and v max and format and format max and flags
+        ///     Tests that test drag float range 2 with label and v current min and v current max and v speed and v min and v max
+        ///     and format and format max and flags
         /// </summary>
         [Fact]
         public void Test_DragFloatRange2_WithLabelAndVCurrentMinAndVCurrentMaxAndVSpeedAndVMinAndVMaxAndFormatAndFormatMaxAndFlags()
         {
-            
             float vCurrentMin = 0.0f;
             float vCurrentMax = 1.0f;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragFloatRange2("label", ref vCurrentMin, ref vCurrentMax, 1.0f, 0.0f, 1.0f, "%.3f", "%.3f", 0));
-            
         }
         
         /// <summary>
-        /// Tests that test drag int with label and v
+        ///     Tests that test drag int with label and v
         /// </summary>
         [Fact]
         public void Test_DragInt_WithLabelAndV()
         {
-            
             int v = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt("label", ref v));
-            
         }
         
         /// <summary>
-        /// Tests that test slider float 4 with label and v and v min and v max and format and flags
+        ///     Tests that test slider float 4 with label and v and v min and v max and format and flags
         /// </summary>
         [Fact]
         public void Test_SliderFloat4_WithLabelAndVAndVMinAndVMaxAndFormatAndFlags()
@@ -646,7 +537,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test slider int with label and v and v min and v max
+        ///     Tests that test slider int with label and v and v min and v max
         /// </summary>
         [Fact]
         public void Test_SliderInt_WithLabelAndVAndVMinAndVMax()
@@ -656,7 +547,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test slider int with label and v and v min and v max and format
+        ///     Tests that test slider int with label and v and v min and v max and format
         /// </summary>
         [Fact]
         public void Test_SliderInt_WithLabelAndVAndVMinAndVMaxAndFormat()
@@ -666,7 +557,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test slider int with label and v and v min and v max and format and flags
+        ///     Tests that test slider int with label and v and v min and v max and format and flags
         /// </summary>
         [Fact]
         public void Test_SliderInt_WithLabelAndVAndVMinAndVMaxAndFormatAndFlags()
@@ -676,7 +567,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test slider int 2 with label and v and v min and v max
+        ///     Tests that test slider int 2 with label and v and v min and v max
         /// </summary>
         [Fact]
         public void Test_SliderInt2_WithLabelAndVAndVMinAndVMax()
@@ -686,7 +577,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test slider int 2 with label and v and v min and v max and format
+        ///     Tests that test slider int 2 with label and v and v min and v max and format
         /// </summary>
         [Fact]
         public void Test_SliderInt2_WithLabelAndVAndVMinAndVMaxAndFormat()
@@ -696,7 +587,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test slider int 2 with label and v and v min and v max and format and flags
+        ///     Tests that test slider int 2 with label and v and v min and v max and format and flags
         /// </summary>
         [Fact]
         public void Test_SliderInt2_WithLabelAndVAndVMinAndVMaxAndFormatAndFlags()
@@ -706,7 +597,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test slider int 3 with label and v and v min and v max
+        ///     Tests that test slider int 3 with label and v and v min and v max
         /// </summary>
         [Fact]
         public void Test_SliderInt3_WithLabelAndVAndVMinAndVMax()
@@ -716,7 +607,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test slider int 3 with label and v and v min and v max and format
+        ///     Tests that test slider int 3 with label and v and v min and v max and format
         /// </summary>
         [Fact]
         public void Test_SliderInt3_WithLabelAndVAndVMinAndVMaxAndFormat()
@@ -726,7 +617,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test slider int 3 with label and v and v min and v max and format and flags
+        ///     Tests that test slider int 3 with label and v and v min and v max and format and flags
         /// </summary>
         [Fact]
         public void Test_SliderInt3_WithLabelAndVAndVMinAndVMaxAndFormatAndFlags()
@@ -736,7 +627,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test slider int 4 with label and v and v min and v max
+        ///     Tests that test slider int 4 with label and v and v min and v max
         /// </summary>
         [Fact]
         public void Test_SliderInt4_WithLabelAndVAndVMinAndVMax()
@@ -746,7 +637,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test slider int 4 with label and v and v min and v max and format
+        ///     Tests that test slider int 4 with label and v and v min and v max and format
         /// </summary>
         [Fact]
         public void Test_SliderInt4_WithLabelAndVAndVMinAndVMaxAndFormat()
@@ -756,7 +647,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test slider int 4 with label and v and v min and v max and format and flags
+        ///     Tests that test slider int 4 with label and v and v min and v max and format and flags
         /// </summary>
         [Fact]
         public void Test_SliderInt4_WithLabelAndVAndVMinAndVMaxAndFormatAndFlags()
@@ -766,7 +657,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test slider scalar with label and data type and p data and p min and p max
+        ///     Tests that test slider scalar with label and data type and p data and p min and p max
         /// </summary>
         [Fact]
         public void Test_SliderScalar_WithLabelAndDataTypeAndPDataAndPMinAndPMax()
@@ -778,7 +669,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test slider scalar with label and data type and p data and p min and p max and format
+        ///     Tests that test slider scalar with label and data type and p data and p min and p max and format
         /// </summary>
         [Fact]
         public void Test_SliderScalar_WithLabelAndDataTypeAndPDataAndPMinAndPMaxAndFormat()
@@ -790,7 +681,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test slider scalar with label and data type and p data and p min and p max and format and flags
+        ///     Tests that test slider scalar with label and data type and p data and p min and p max and format and flags
         /// </summary>
         [Fact]
         public void Test_SliderScalar_WithLabelAndDataTypeAndPDataAndPMinAndPMaxAndFormatAndFlags()
@@ -802,7 +693,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test slider scalar n with label and data type and p data and components and p min and p max
+        ///     Tests that test slider scalar n with label and data type and p data and components and p min and p max
         /// </summary>
         [Fact]
         public void Test_SliderScalarN_WithLabelAndDataTypeAndPDataAndComponentsAndPMinAndPMax()
@@ -814,7 +705,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test slider scalar n with label and data type and p data and components and p min and p max and format
+        ///     Tests that test slider scalar n with label and data type and p data and components and p min and p max and format
         /// </summary>
         [Fact]
         public void Test_SliderScalarN_WithLabelAndDataTypeAndPDataAndComponentsAndPMinAndPMaxAndFormat()
@@ -826,7 +717,8 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test slider scalar n with label and data type and p data and components and p min and p max and format and flags
+        ///     Tests that test slider scalar n with label and data type and p data and components and p min and p max and format
+        ///     and flags
         /// </summary>
         [Fact]
         public void Test_SliderScalarN_WithLabelAndDataTypeAndPDataAndComponentsAndPMinAndPMaxAndFormatAndFlags()
@@ -838,7 +730,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test small button with label
+        ///     Tests that test small button with label
         /// </summary>
         [Fact]
         public void Test_SmallButton_WithLabel()
@@ -847,7 +739,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test spacing
+        ///     Tests that test spacing
         /// </summary>
         [Fact]
         public void Test_Spacing()
@@ -856,7 +748,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test style colors classic
+        ///     Tests that test style colors classic
         /// </summary>
         [Fact]
         public void Test_StyleColorsClassic()
@@ -865,7 +757,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test style colors classic with dst
+        ///     Tests that test style colors classic with dst
         /// </summary>
         [Fact]
         public void Test_StyleColorsClassic_WithDst()
@@ -875,7 +767,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test style colors dark
+        ///     Tests that test style colors dark
         /// </summary>
         [Fact]
         public void Test_StyleColorsDark()
@@ -884,7 +776,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test style colors dark with dst
+        ///     Tests that test style colors dark with dst
         /// </summary>
         [Fact]
         public void Test_StyleColorsDark_WithDst()
@@ -894,7 +786,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test style colors light
+        ///     Tests that test style colors light
         /// </summary>
         [Fact]
         public void Test_StyleColorsLight()
@@ -903,7 +795,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test style colors light with dst
+        ///     Tests that test style colors light with dst
         /// </summary>
         [Fact]
         public void Test_StyleColorsLight_WithDst()
@@ -913,7 +805,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test tab item button with label
+        ///     Tests that test tab item button with label
         /// </summary>
         [Fact]
         public void Test_TabItemButton_WithLabel()
@@ -922,7 +814,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test tab item button with label and flags
+        ///     Tests that test tab item button with label and flags
         /// </summary>
         [Fact]
         public void Test_TabItemButton_WithLabelAndFlags()
@@ -931,7 +823,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test table get column count
+        ///     Tests that test table get column count
         /// </summary>
         [Fact]
         public void Test_TableGetColumnCount()
@@ -940,7 +832,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test table get column flags
+        ///     Tests that test table get column flags
         /// </summary>
         [Fact]
         public void Test_TableGetColumnFlags()
@@ -949,7 +841,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test table get column flags with column n
+        ///     Tests that test table get column flags with column n
         /// </summary>
         [Fact]
         public void Test_TableGetColumnFlags_WithColumnN()
@@ -958,7 +850,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test table get column index
+        ///     Tests that test table get column index
         /// </summary>
         [Fact]
         public void Test_TableGetColumnIndex()
@@ -967,7 +859,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test table get sort specs
+        ///     Tests that test table get sort specs
         /// </summary>
         [Fact]
         public void Test_TableGetSortSpecs()
@@ -976,7 +868,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test table header with label
+        ///     Tests that test table header with label
         /// </summary>
         [Fact]
         public void Test_TableHeader_WithLabel()
@@ -985,7 +877,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test table headers row
+        ///     Tests that test table headers row
         /// </summary>
         [Fact]
         public void Test_TableHeadersRow()
@@ -994,7 +886,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test table next column
+        ///     Tests that test table next column
         /// </summary>
         [Fact]
         public void Test_TableNextColumn()
@@ -1003,7 +895,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test table next row
+        ///     Tests that test table next row
         /// </summary>
         [Fact]
         public void Test_TableNextRow()
@@ -1012,7 +904,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test table next row with row flags
+        ///     Tests that test table next row with row flags
         /// </summary>
         [Fact]
         public void Test_TableNextRow_WithRowFlags()
@@ -1021,7 +913,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test table next row with row flags and min row height
+        ///     Tests that test table next row with row flags and min row height
         /// </summary>
         [Fact]
         public void Test_TableNextRow_WithRowFlagsAndMinRowHeight()
@@ -1030,7 +922,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test table set bg color with target and color
+        ///     Tests that test table set bg color with target and color
         /// </summary>
         [Fact]
         public void Test_TableSetBgColor_WithTargetAndColor()
@@ -1039,7 +931,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test table set bg color with target and color and column n
+        ///     Tests that test table set bg color with target and color and column n
         /// </summary>
         [Fact]
         public void Test_TableSetBgColor_WithTargetAndColorAndColumnN()
@@ -1048,7 +940,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test table set column enabled with column n and v
+        ///     Tests that test table set column enabled with column n and v
         /// </summary>
         [Fact]
         public void Test_TableSetColumnEnabled_WithColumnNAndV()
@@ -1057,7 +949,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test table set column index with column n
+        ///     Tests that test table set column index with column n
         /// </summary>
         [Fact]
         public void Test_TableSetColumnIndex_WithColumnN()
@@ -1066,7 +958,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test table setup column with label
+        ///     Tests that test table setup column with label
         /// </summary>
         [Fact]
         public void Test_TableSetupColumn_WithLabel()
@@ -1075,7 +967,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test menu item with label and enabled
+        ///     Tests that test menu item with label and enabled
         /// </summary>
         [Fact]
         public void Test_MenuItem_WithLabelAndEnabled()
@@ -1084,7 +976,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test im font config
+        ///     Tests that test im font config
         /// </summary>
         [Fact]
         public void Test_ImFontConfig()
@@ -1093,7 +985,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test slider int 2 with label and v and v min and v max v 2
+        ///     Tests that test slider int 2 with label and v and v min and v max v 2
         /// </summary>
         [Fact]
         public void Test_SliderInt2_WithLabelAndVAndVMinAndVMax_v2()
@@ -1103,7 +995,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test slider int 2 with label and v and v min and v max and format v 2
+        ///     Tests that test slider int 2 with label and v and v min and v max and format v 2
         /// </summary>
         [Fact]
         public void Test_SliderInt2_WithLabelAndVAndVMinAndVMaxAndFormat_v2()
@@ -1113,7 +1005,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test slider int 2 with label and v and v min and v max and format and flags v 2
+        ///     Tests that test slider int 2 with label and v and v min and v max and format and flags v 2
         /// </summary>
         [Fact]
         public void Test_SliderInt2_WithLabelAndVAndVMinAndVMaxAndFormatAndFlags_v2()
@@ -1123,7 +1015,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test slider int 3 with label and v and v min and v max v 2
+        ///     Tests that test slider int 3 with label and v and v min and v max v 2
         /// </summary>
         [Fact]
         public void Test_SliderInt3_WithLabelAndVAndVMinAndVMax_v2()
@@ -1133,7 +1025,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test slider int 3 with label and v and v min and v max and format v 2
+        ///     Tests that test slider int 3 with label and v and v min and v max and format v 2
         /// </summary>
         [Fact]
         public void Test_SliderInt3_WithLabelAndVAndVMinAndVMaxAndFormat_v2()
@@ -1143,7 +1035,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test slider int 3 with label and v and v min and v max and format and flags v 2
+        ///     Tests that test slider int 3 with label and v and v min and v max and format and flags v 2
         /// </summary>
         [Fact]
         public void Test_SliderInt3_WithLabelAndVAndVMinAndVMaxAndFormatAndFlags_v2()
@@ -1153,7 +1045,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test slider int 4 with label and v and v min and v max v 2
+        ///     Tests that test slider int 4 with label and v and v min and v max v 2
         /// </summary>
         [Fact]
         public void Test_SliderInt4_WithLabelAndVAndVMinAndVMax_v2()
@@ -1163,7 +1055,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test slider int 4 with label and v and v min and v max and format v 2
+        ///     Tests that test slider int 4 with label and v and v min and v max and format v 2
         /// </summary>
         [Fact]
         public void Test_SliderInt4_WithLabelAndVAndVMinAndVMaxAndFormat_v2()
@@ -1173,7 +1065,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test slider int 4 with label and v and v min and v max and format and flags v 2
+        ///     Tests that test slider int 4 with label and v and v min and v max and format and flags v 2
         /// </summary>
         [Fact]
         public void Test_SliderInt4_WithLabelAndVAndVMinAndVMaxAndFormatAndFlags_v2()
@@ -1183,7 +1075,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test slider scalar with label and data type and p data and p min and p max v 2
+        ///     Tests that test slider scalar with label and data type and p data and p min and p max v 2
         /// </summary>
         [Fact]
         public void Test_SliderScalar_WithLabelAndDataTypeAndPDataAndPMinAndPMax_v2()
@@ -1195,7 +1087,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test slider scalar with label and data type and p data and p min and p max and format v 2
+        ///     Tests that test slider scalar with label and data type and p data and p min and p max and format v 2
         /// </summary>
         [Fact]
         public void Test_SliderScalar_WithLabelAndDataTypeAndPDataAndPMinAndPMaxAndFormat_v2()
@@ -1207,7 +1099,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test slider scalar with label and data type and p data and p min and p max and format and flags v 2
+        ///     Tests that test slider scalar with label and data type and p data and p min and p max and format and flags v 2
         /// </summary>
         [Fact]
         public void Test_SliderScalar_WithLabelAndDataTypeAndPDataAndPMinAndPMaxAndFormatAndFlags_v2()
@@ -1219,7 +1111,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test slider scalar n with label and data type and p data and components and p min and p max v 2
+        ///     Tests that test slider scalar n with label and data type and p data and components and p min and p max v 2
         /// </summary>
         [Fact]
         public void Test_SliderScalarN_WithLabelAndDataTypeAndPDataAndComponentsAndPMinAndPMax_v2()
@@ -1231,7 +1123,8 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test slider scalar n with label and data type and p data and components and p min and p max and format v 2
+        ///     Tests that test slider scalar n with label and data type and p data and components and p min and p max and format v
+        ///     2
         /// </summary>
         [Fact]
         public void Test_SliderScalarN_WithLabelAndDataTypeAndPDataAndComponentsAndPMinAndPMaxAndFormat_v2()
@@ -1243,7 +1136,8 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test slider scalar n with label and data type and p data and components and p min and p max and format and flags v 2
+        ///     Tests that test slider scalar n with label and data type and p data and components and p min and p max and format
+        ///     and flags v 2
         /// </summary>
         [Fact]
         public void Test_SliderScalarN_WithLabelAndDataTypeAndPDataAndComponentsAndPMinAndPMaxAndFormatAndFlags_v2()
@@ -1255,7 +1149,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test small button with label v 2
+        ///     Tests that test small button with label v 2
         /// </summary>
         [Fact]
         public void Test_SmallButton_WithLabel_v2()
@@ -1264,7 +1158,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test spacing v 2
+        ///     Tests that test spacing v 2
         /// </summary>
         [Fact]
         public void Test_Spacing_v2()
@@ -1273,7 +1167,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test style colors classic v 2
+        ///     Tests that test style colors classic v 2
         /// </summary>
         [Fact]
         public void Test_StyleColorsClassic_v2()
@@ -1282,7 +1176,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test style colors classic with dst v 2
+        ///     Tests that test style colors classic with dst v 2
         /// </summary>
         [Fact]
         public void Test_StyleColorsClassic_WithDst_v2()
@@ -1292,7 +1186,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test style colors dark v 2
+        ///     Tests that test style colors dark v 2
         /// </summary>
         [Fact]
         public void Test_StyleColorsDark_v2()
@@ -1301,7 +1195,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test style colors dark with dst v 2
+        ///     Tests that test style colors dark with dst v 2
         /// </summary>
         [Fact]
         public void Test_StyleColorsDark_WithDst_v2()
@@ -1311,7 +1205,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test style colors light v 2
+        ///     Tests that test style colors light v 2
         /// </summary>
         [Fact]
         public void Test_StyleColorsLight_v2()
@@ -1320,7 +1214,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test style colors light with dst v 2
+        ///     Tests that test style colors light with dst v 2
         /// </summary>
         [Fact]
         public void Test_StyleColorsLight_WithDst_v2()
@@ -1330,7 +1224,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test tab item button with label v 2
+        ///     Tests that test tab item button with label v 2
         /// </summary>
         [Fact]
         public void Test_TabItemButton_WithLabel_v2()
@@ -1339,7 +1233,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test tab item button with label and flags v 2
+        ///     Tests that test tab item button with label and flags v 2
         /// </summary>
         [Fact]
         public void Test_TabItemButton_WithLabelAndFlags_v2()
@@ -1348,7 +1242,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test table get column count v 2
+        ///     Tests that test table get column count v 2
         /// </summary>
         [Fact]
         public void Test_TableGetColumnCount_v2()
@@ -1357,7 +1251,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test table get column flags v 2
+        ///     Tests that test table get column flags v 2
         /// </summary>
         [Fact]
         public void Test_TableGetColumnFlags_v2()
@@ -1366,7 +1260,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test table get column flags with column n v 2
+        ///     Tests that test table get column flags with column n v 2
         /// </summary>
         [Fact]
         public void Test_TableGetColumnFlags_WithColumnN_v2()
@@ -1375,7 +1269,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test table get column index v 2
+        ///     Tests that test table get column index v 2
         /// </summary>
         [Fact]
         public void Test_TableGetColumnIndex_v2()
@@ -1384,7 +1278,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test table get sort specs v 2
+        ///     Tests that test table get sort specs v 2
         /// </summary>
         [Fact]
         public void Test_TableGetSortSpecs_v2()
@@ -1393,7 +1287,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test table header with label v 2
+        ///     Tests that test table header with label v 2
         /// </summary>
         [Fact]
         public void Test_TableHeader_WithLabel_v2()
@@ -1402,7 +1296,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test table headers row v 2
+        ///     Tests that test table headers row v 2
         /// </summary>
         [Fact]
         public void Test_TableHeadersRow_v2()
@@ -1411,7 +1305,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test table next column v 2
+        ///     Tests that test table next column v 2
         /// </summary>
         [Fact]
         public void Test_TableNextColumn_v2()
@@ -1420,7 +1314,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test table next row v 2
+        ///     Tests that test table next row v 2
         /// </summary>
         [Fact]
         public void Test_TableNextRow_v2()
@@ -1429,7 +1323,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test table next row with row flags v 2
+        ///     Tests that test table next row with row flags v 2
         /// </summary>
         [Fact]
         public void Test_TableNextRow_WithRowFlags_v2()
@@ -1438,7 +1332,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test table next row with row flags and min row height v 2
+        ///     Tests that test table next row with row flags and min row height v 2
         /// </summary>
         [Fact]
         public void Test_TableNextRow_WithRowFlagsAndMinRowHeight_v2()
@@ -1447,7 +1341,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test table set bg color with target and color v 2
+        ///     Tests that test table set bg color with target and color v 2
         /// </summary>
         [Fact]
         public void Test_TableSetBgColor_WithTargetAndColor_v2()
@@ -1456,7 +1350,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test table set bg color with target and color and column n v 2
+        ///     Tests that test table set bg color with target and color and column n v 2
         /// </summary>
         [Fact]
         public void Test_TableSetBgColor_WithTargetAndColorAndColumnN_v2()
@@ -1465,7 +1359,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test table set column enabled with column n and v v 2
+        ///     Tests that test table set column enabled with column n and v v 2
         /// </summary>
         [Fact]
         public void Test_TableSetColumnEnabled_WithColumnNAndV_v2()
@@ -1474,7 +1368,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test table set column index with column n v 2
+        ///     Tests that test table set column index with column n v 2
         /// </summary>
         [Fact]
         public void Test_TableSetColumnIndex_WithColumnN_v2()
@@ -1483,7 +1377,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test table setup column with label v 2
+        ///     Tests that test table setup column with label v 2
         /// </summary>
         [Fact]
         public void Test_TableSetupColumn_WithLabel_v2()
@@ -1492,7 +1386,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test menu item with label and enabled v 2
+        ///     Tests that test menu item with label and enabled v 2
         /// </summary>
         [Fact]
         public void Test_MenuItem_WithLabelAndEnabled_v2()
@@ -1501,7 +1395,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that test im font config v 2
+        ///     Tests that test im font config v 2
         /// </summary>
         [Fact]
         public void Test_ImFontConfig_v2()

@@ -30,10 +30,9 @@
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
     /// <summary>
-    /// The controller sensor event test class
+    ///     The controller sensor event test class
     /// </summary>
     public class ControllerSensorEventTest
     {
-        
     }
 }

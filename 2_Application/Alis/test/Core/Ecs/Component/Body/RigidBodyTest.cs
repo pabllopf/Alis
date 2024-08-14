@@ -45,10 +45,10 @@ namespace Alis.Test.Core.Ecs.Component.Body
         public void RigidBody_DefaultConstructor_ValidInput()
         {
             RigidBody rigidBody = new RigidBody();
-
+            
             Assert.NotNull(rigidBody);
         }
-
+        
         /// <summary>
         ///     Tests that builder valid input
         /// </summary>
@@ -57,7 +57,7 @@ namespace Alis.Test.Core.Ecs.Component.Body
         {
             RigidBody rigidBody = new RigidBody();
             RigidBodyBuilder rigidBodyBuilder = rigidBody.Builder();
-
+            
             Assert.NotNull(rigidBodyBuilder);
         }
     }

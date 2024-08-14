@@ -48,47 +48,47 @@ namespace Alis.Sample.King.Platform
         ///     The jump force
         /// </summary>
         private const float JumpForce = 15f;
-
+        
         /// <summary>
         ///     The velocity player
         /// </summary>
         private const float VelocityPlayer = 5f;
-
+        
         /// <summary>
         ///     The reset cool down jump
         /// </summary>
         private const float ResetCoolDownJump = 0.8f;
-
+        
         /// <summary>
         ///     The animator
         /// </summary>
         private Animator animator;
-
+        
         /// <summary>
         ///     The box collider
         /// </summary>
         private BoxCollider boxCollider;
-
+        
         /// <summary>
         ///     The cool down jump
         /// </summary>
         private float coolDownJump;
-
+        
         /// <summary>
         ///     The vector
         /// </summary>
         private Vector2 directionPlayer = new Vector2(0, 0);
-
+        
         /// <summary>
         ///     The is jumping
         /// </summary>
         private bool isJumping;
-
+        
         /// <summary>
         ///     The sprite
         /// </summary>
         private Sprite sprite;
-
+        
         /// <summary>
         ///     Ons the start
         /// </summary>
@@ -98,14 +98,14 @@ namespace Alis.Sample.King.Platform
             boxCollider = GameObject.Get<BoxCollider>();
             sprite = GameObject.Get<Sprite>();
         }
-
+        
         /// <summary>
         ///     Ons the update
         /// </summary>
         public override void OnUpdate()
         {
             coolDownJump -= 1 * Context.TimeManager.DeltaTime;
-
+            
             if (isJumping)
             {
                 if (coolDownJump <= 0)
@@ -113,10 +113,10 @@ namespace Alis.Sample.King.Platform
                     JumpPlayer();
                 }
             }
-
+            
             boxCollider.Body.LinearVelocity = new Vector2(directionPlayer.X * VelocityPlayer, boxCollider.Body.LinearVelocity.Y);
         }
-
+        
         /// <summary>
         ///     Ons the release key using the specified key
         /// </summary>
@@ -128,14 +128,14 @@ namespace Alis.Sample.King.Platform
                 directionPlayer = new Vector2(0, 0);
                 animator.ChangeAnimationTo("Run", RendererFlips.None);
             }
-
+            
             if (key == KeyCodes.A)
             {
                 directionPlayer = new Vector2(0, 0);
                 animator.ChangeAnimationTo("Run", RendererFlips.FlipHorizontal);
             }
         }
-
+        
         /// <summary>
         ///     Ons the press down key using the specified key
         /// </summary>
@@ -147,14 +147,14 @@ namespace Alis.Sample.King.Platform
                 isJumping = true;
                 Logger.Info("Jump because space key is pressed");
             }
-
+            
             if (key == KeyCodes.D)
             {
                 directionPlayer = new Vector2(1, 0);
                 animator.ChangeAnimationTo("Run", RendererFlips.None);
                 Logger.Info($"Run to right because D key is pressed {directionPlayer}");
             }
-
+            
             if (key == KeyCodes.A)
             {
                 directionPlayer = new Vector2(-1, 0);
@@ -162,7 +162,7 @@ namespace Alis.Sample.King.Platform
                 Logger.Info($"Run to left because A key is pressed {directionPlayer}");
             }
         }
-
+        
         /// <summary>
         ///     Jumps the player
         /// </summary>
@@ -170,9 +170,9 @@ namespace Alis.Sample.King.Platform
         private void JumpPlayer()
         {
             boxCollider.Body.LinearVelocity = new Vector2(boxCollider.Body.LinearVelocity.X, -JumpForce);
-
+            
             isJumping = false;
-
+            
             if (Math.Abs(directionPlayer.X - 1) < 0.1f)
             {
                 animator.ChangeAnimationTo("Jump", RendererFlips.None);
@@ -181,7 +181,7 @@ namespace Alis.Sample.King.Platform
             {
                 animator.ChangeAnimationTo("Jump", RendererFlips.FlipHorizontal);
             }
-
+            
             coolDownJump = ResetCoolDownJump;
         }
     }

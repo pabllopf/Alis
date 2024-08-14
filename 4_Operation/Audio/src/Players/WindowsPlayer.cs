@@ -29,7 +29,6 @@
 
 using System;
 using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,36 +41,35 @@ namespace Alis.Core.Audio.Players
     ///     The windows player class
     /// </summary>
     /// <seealso cref="IPlayer" />
-    
     internal class WindowsPlayer : IPlayer
     {
         /// <summary>
         ///     The file name
         /// </summary>
         private string _fileName;
-
+        
         /// <summary>
         ///     The playback timer
         /// </summary>
         private Timer _playbackTimer;
-
+        
         /// <summary>
         ///     The play stopwatch
         /// </summary>
         private Stopwatch _playStopwatch;
-
+        
         public event EventHandler PlaybackFinished;
-
+        
         /// <summary>
         ///     Gets or sets the value of the playing
         /// </summary>
         public bool Playing { get; private set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the paused
         /// </summary>
         public bool Paused { get; private set; }
-
+        
         /// <summary>
         ///     Plays the file name
         /// </summary>
@@ -92,10 +90,10 @@ namespace Alis.Core.Audio.Players
             _playbackTimer.Elapsed += HandlePlaybackFinished;
             _playbackTimer.Start();
             _playStopwatch.Start();
-
+            
             return Task.CompletedTask;
         }
-
+        
         /// <summary>
         ///     Pauses this instance
         /// </summary>
@@ -109,10 +107,10 @@ namespace Alis.Core.Audio.Players
                 _playStopwatch.Stop();
                 _playbackTimer.Interval -= _playStopwatch.ElapsedMilliseconds;
             }
-
+            
             return Task.CompletedTask;
         }
-
+        
         /// <summary>
         ///     Resumes this instance
         /// </summary>
@@ -126,10 +124,10 @@ namespace Alis.Core.Audio.Players
                 _playStopwatch.Reset();
                 _playStopwatch.Start();
             }
-
+            
             return Task.CompletedTask;
         }
-
+        
         /// <summary>
         ///     Stops this instance
         /// </summary>
@@ -143,10 +141,10 @@ namespace Alis.Core.Audio.Players
                 _playbackTimer.Stop();
                 _playStopwatch.Stop();
             }
-
+            
             return Task.CompletedTask;
         }
-
+        
         /// <summary>
         ///     Sets the volume using the specified percent
         /// </summary>
@@ -159,11 +157,11 @@ namespace Alis.Core.Audio.Players
             uint newVolumeAllChannels = ((uint) newVolume & 0x0000ffff) | ((uint) newVolume << 16);
             // Set the volume
             waveOutSetVolume(IntPtr.Zero, newVolumeAllChannels);
-
+            
             return Task.CompletedTask;
         }
-
-
+        
+        
         /// <summary>
         ///     Mcis the send string using the specified command
         /// </summary>
@@ -174,7 +172,7 @@ namespace Alis.Core.Audio.Players
         /// <returns>The int</returns>
         [DllImport("winmm.dll")]
         private static extern int mciSendString(string command, StringBuilder stringReturn, int returnLength, IntPtr hwndCallback);
-
+        
         /// <summary>
         ///     Mcis the get error string using the specified error code
         /// </summary>
@@ -184,7 +182,7 @@ namespace Alis.Core.Audio.Players
         /// <returns>The int</returns>
         [DllImport("winmm.dll")]
         private static extern int mciGetErrorString(int errorCode, StringBuilder errorText, int errorTextSize);
-
+        
         /// <summary>
         ///     Waves the out set volume using the specified hwo
         /// </summary>
@@ -193,7 +191,7 @@ namespace Alis.Core.Audio.Players
         /// <returns>The int</returns>
         [DllImport("winmm.dll")]
         public static extern int waveOutSetVolume(IntPtr hwo, uint dwVolume);
-
+        
         /// <summary>
         ///     Handles the playback finished using the specified sender
         /// </summary>
@@ -206,7 +204,7 @@ namespace Alis.Core.Audio.Players
             _playbackTimer.Dispose();
             _playbackTimer = null;
         }
-
+        
         /// <summary>
         ///     Executes the msi command using the specified command string
         /// </summary>
@@ -215,25 +213,25 @@ namespace Alis.Core.Audio.Players
         private Task ExecuteMsiCommand(string commandString)
         {
             StringBuilder sb = new StringBuilder();
-
+            
             int result = mciSendString(commandString, sb, 1024 * 1024, IntPtr.Zero);
-
+            
             if (result != 0)
             {
                 StringBuilder errorSb = new StringBuilder($"Error executing MCI command '{commandString}'. Error code: {result}.");
                 StringBuilder sb2 = new StringBuilder(128);
-
+                
                 mciGetErrorString(result, sb2, 128);
                 errorSb.Append($" Message: {sb2}");
-
+                
                 throw new Exception(errorSb.ToString());
             }
-
+            
             if (commandString.ToLower().StartsWith("status") && int.TryParse(sb.ToString(), out int length))
             {
                 _playbackTimer.Interval = length;
             }
-
+            
             return Task.CompletedTask;
         }
     }

@@ -46,7 +46,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
             // Assert
             Assert.Equal(0, (int) ContactSetting.None);
         }
-
+        
         /// <summary>
         ///     Tests that test contact setting island flag
         /// </summary>
@@ -56,7 +56,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
             // Assert
             Assert.Equal(1, (int) ContactSetting.IslandFlag);
         }
-
+        
         /// <summary>
         ///     Tests that test contact setting touching flag
         /// </summary>
@@ -66,7 +66,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
             // Assert
             Assert.Equal(2, (int) ContactSetting.TouchingFlag);
         }
-
+        
         /// <summary>
         ///     Tests that test contact setting enabled flag
         /// </summary>
@@ -76,7 +76,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
             // Assert
             Assert.Equal(4, (int) ContactSetting.EnabledFlag);
         }
-
+        
         /// <summary>
         ///     Tests that test contact setting filter flag
         /// </summary>
@@ -86,7 +86,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
             // Assert
             Assert.Equal(8, (int) ContactSetting.FilterFlag);
         }
-
+        
         /// <summary>
         ///     Tests that test contact setting bullet hit flag
         /// </summary>
@@ -96,7 +96,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
             // Assert
             Assert.Equal(16, (int) ContactSetting.BulletHitFlag);
         }
-
+        
         /// <summary>
         ///     Tests that test contact setting toi flag
         /// </summary>

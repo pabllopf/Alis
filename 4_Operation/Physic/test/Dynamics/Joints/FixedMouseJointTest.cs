@@ -49,15 +49,15 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Body bodyA = new Body(new Vector2(0, 0), new Vector2(0, 0));
             Body bodyB = new Body(new Vector2(1, 1), new Vector2(1, 1));
             Vector2 target = new Vector2(0.5f, 0.5f);
-
+            
             // Act
             FixedMouseJoint fixedMouseJoint = new FixedMouseJoint(bodyA, bodyB, JointType.FixedMouse, false, target);
-
+            
             // Assert
             Assert.Equal(bodyA, fixedMouseJoint.BodyA);
             Assert.Equal(bodyB, fixedMouseJoint.BodyB);
         }
-
+        
         /// <summary>
         ///     Tests that fixed mouse joint world anchor a test
         /// </summary>
@@ -69,14 +69,14 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Body bodyB = new Body(new Vector2(1, 1), new Vector2(1, 1));
             Vector2 target = new Vector2(0.5f, 0.5f);
             FixedMouseJoint fixedMouseJoint = new FixedMouseJoint(bodyA, bodyB, JointType.FixedMouse, false, target);
-
+            
             // Act
             Vector2 worldAnchorA = fixedMouseJoint.WorldAnchorA;
-
+            
             // Assert
             Assert.Equal(bodyA.GetWorldPoint(fixedMouseJoint.LocalAnchorA), worldAnchorA);
         }
-
+        
         /// <summary>
         ///     Tests that fixed mouse joint world anchor b test
         /// </summary>
@@ -88,10 +88,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Body bodyB = new Body(new Vector2(1, 1), new Vector2(1, 1));
             Vector2 target = new Vector2(0.5f, 0.5f);
             FixedMouseJoint fixedMouseJoint = new FixedMouseJoint(bodyA, bodyB, JointType.FixedMouse, false, target);
-
+            
             // Act
             Vector2 worldAnchorB = fixedMouseJoint.WorldAnchorB;
-
+            
             // Assert
             Assert.Equal(target, worldAnchorB);
         }

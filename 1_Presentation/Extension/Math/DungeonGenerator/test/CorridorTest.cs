@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Extension.Math.DungeonGenerator.Test
 {
     /// <summary>
-    /// The corridor test class
+    ///     The corridor test class
     /// </summary>
     public class CorridorTest
     {
         /// <summary>
-        /// Tests that set up first room should initialize room with given parameters
+        ///     Tests that set up first room should initialize room with given parameters
         /// </summary>
         [Fact]
         public void SetUpFirstRoom_ShouldInitializeRoomWithGivenParameters()
@@ -61,7 +61,7 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
         }
         
         /// <summary>
-        /// Tests that set up should initialize room with correct parameters when direction is north
+        ///     Tests that set up should initialize room with correct parameters when direction is north
         /// </summary>
         [Fact]
         public void SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsNorth()
@@ -83,7 +83,7 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
         }
         
         /// <summary>
-        /// Tests that set up should initialize room with correct parameters when direction is south
+        ///     Tests that set up should initialize room with correct parameters when direction is south
         /// </summary>
         [Fact]
         public void SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsSouth()
@@ -105,7 +105,7 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
         }
         
         /// <summary>
-        /// Tests that set up should initialize room with correct parameters when direction is east
+        ///     Tests that set up should initialize room with correct parameters when direction is east
         /// </summary>
         [Fact]
         public void SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsEast()
@@ -127,7 +127,7 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
         }
         
         /// <summary>
-        /// Tests that set up should initialize room with correct parameters when direction is west
+        ///     Tests that set up should initialize room with correct parameters when direction is west
         /// </summary>
         [Fact]
         public void SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsWest()
@@ -149,7 +149,7 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
         }
         
         /// <summary>
-        /// Tests that set up first room should initialize room with given parameters v 2
+        ///     Tests that set up first room should initialize room with given parameters v 2
         /// </summary>
         [Fact]
         public void SetUpFirstRoom_ShouldInitializeRoomWithGivenParameters_v2()
@@ -171,7 +171,7 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
         }
         
         /// <summary>
-        /// Tests that set up should initialize room with correct parameters when direction is north v 2
+        ///     Tests that set up should initialize room with correct parameters when direction is north v 2
         /// </summary>
         [Fact]
         public void SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsNorth_v2()
@@ -193,7 +193,7 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
         }
         
         /// <summary>
-        /// Tests that set up should initialize room with correct parameters when direction is south v 2
+        ///     Tests that set up should initialize room with correct parameters when direction is south v 2
         /// </summary>
         [Fact]
         public void SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsSouth_v2()
@@ -215,7 +215,7 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
         }
         
         /// <summary>
-        /// Tests that set up should initialize room with correct parameters when direction is east v 2
+        ///     Tests that set up should initialize room with correct parameters when direction is east v 2
         /// </summary>
         [Fact]
         public void SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsEast_v2()
@@ -237,7 +237,7 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
         }
         
         /// <summary>
-        /// Tests that set up should initialize room with correct parameters when direction is west v 2
+        ///     Tests that set up should initialize room with correct parameters when direction is west v 2
         /// </summary>
         [Fact]
         public void SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsWest_v2()
@@ -259,7 +259,7 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
         }
         
         /// <summary>
-        /// Tests that set up should initialize room with correct parameters when direction is none
+        ///     Tests that set up should initialize room with correct parameters when direction is none
         /// </summary>
         [Fact]
         public void SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsNone()
@@ -274,7 +274,7 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
         }
         
         /// <summary>
-        /// Tests that set up first corridor should initialize corridor with correct parameters when direction is north
+        ///     Tests that set up first corridor should initialize corridor with correct parameters when direction is north
         /// </summary>
         [Fact]
         public void SetUpFirstCorridor_ShouldInitializeCorridorWithCorrectParameters_WhenDirectionIsNorth()
@@ -290,13 +290,13 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
             // Assert
             Assert.True(room.XPos >= 0);
             Assert.True(room.YPos >= 0);
-            Assert.True(corridor.Width >=5);
-            Assert.True(corridor.Height >=5);
+            Assert.True(corridor.Width >= 5);
+            Assert.True(corridor.Height >= 5);
             Assert.NotEqual(Direction.None, corridor.Direction);
         }
         
         /// <summary>
-        /// Tests that set up first corridor should initialize corridor with correct parameters when direction is south
+        ///     Tests that set up first corridor should initialize corridor with correct parameters when direction is south
         /// </summary>
         [Fact]
         public void SetUpFirstCorridor_ShouldInitializeCorridorWithCorrectParameters_WhenDirectionIsSouth()
@@ -312,13 +312,13 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
             // Assert
             Assert.True(room.XPos >= 0);
             Assert.True(room.YPos >= 0);
-            Assert.True(corridor.Width >=5);
-            Assert.True(corridor.Height >=5);
+            Assert.True(corridor.Width >= 5);
+            Assert.True(corridor.Height >= 5);
             Assert.NotEqual(Direction.None, corridor.Direction);
         }
         
         /// <summary>
-        /// Tests that set up first corridor should initialize corridor with correct parameters when direction is east
+        ///     Tests that set up first corridor should initialize corridor with correct parameters when direction is east
         /// </summary>
         [Fact]
         public void SetUpFirstCorridor_ShouldInitializeCorridorWithCorrectParameters_WhenDirectionIsEast()
@@ -334,13 +334,13 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
             // Assert
             Assert.True(room.XPos >= 0);
             Assert.True(room.YPos >= 0);
-            Assert.True(corridor.Width >=5);
-            Assert.True(corridor.Height >=5);
+            Assert.True(corridor.Width >= 5);
+            Assert.True(corridor.Height >= 5);
             Assert.NotEqual(Direction.None, corridor.Direction);
         }
         
         /// <summary>
-        /// Tests that set up first corridor should initialize corridor with correct parameters when direction is west
+        ///     Tests that set up first corridor should initialize corridor with correct parameters when direction is west
         /// </summary>
         [Fact]
         public void SetUpFirstCorridor_ShouldInitializeCorridorWithCorrectParameters_WhenDirectionIsWest()
@@ -356,8 +356,8 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
             // Assert
             Assert.True(room.XPos >= 0);
             Assert.True(room.YPos >= 0);
-            Assert.True(corridor.Width >=5);
-            Assert.True(corridor.Height >=5);
+            Assert.True(corridor.Width >= 5);
+            Assert.True(corridor.Height >= 5);
             Assert.NotEqual(Direction.None, corridor.Direction);
         }
     }

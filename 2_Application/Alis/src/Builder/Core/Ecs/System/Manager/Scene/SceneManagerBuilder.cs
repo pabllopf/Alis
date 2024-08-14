@@ -46,7 +46,7 @@ namespace Alis.Builder.Core.Ecs.System.Manager.Scene
         ///     Gets the value of the scene manager
         /// </summary>
         private readonly SceneManager sceneManager = new SceneManager();
-
+        
         /// <summary>
         ///     Adds the value
         /// </summary>
@@ -59,7 +59,7 @@ namespace Alis.Builder.Core.Ecs.System.Manager.Scene
             sceneManager.CurrentScene = sceneManager.Scenes[0];
             return this;
         }
-
+        
         /// <summary>
         ///     Builds this instance
         /// </summary>

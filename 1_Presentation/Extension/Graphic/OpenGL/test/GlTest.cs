@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.OpenGL.Test
     public class GlTest
     {
         /// <summary>
-        /// Tests that get program link status returns true when linked
+        ///     Tests that get program link status returns true when linked
         /// </summary>
         [Fact]
         public void GetProgramLinkStatus_ReturnsTrueWhenLinked()
@@ -50,7 +50,7 @@ namespace Alis.Extension.Graphic.OpenGL.Test
         }
         
         /// <summary>
-        /// Tests that get program link status returns false when not linked
+        ///     Tests that get program link status returns false when not linked
         /// </summary>
         [Fact]
         public void GetProgramLinkStatus_ReturnsFalseWhenNotLinked()
@@ -60,7 +60,7 @@ namespace Alis.Extension.Graphic.OpenGL.Test
         }
         
         /// <summary>
-        /// Tests that uniform matrix 4 fv calls gl uniform matrix 4 fv
+        ///     Tests that uniform matrix 4 fv calls gl uniform matrix 4 fv
         /// </summary>
         [Fact]
         public void UniformMatrix4Fv_CallsGlUniformMatrix4Fv()
@@ -71,7 +71,7 @@ namespace Alis.Extension.Graphic.OpenGL.Test
         }
         
         /// <summary>
-        /// Tests that vertex attrib pointer throws argument out of range exception for negative index
+        ///     Tests that vertex attrib pointer throws argument out of range exception for negative index
         /// </summary>
         [Fact]
         public void VertexAttribPointer_ThrowsArgumentOutOfRangeExceptionForNegativeIndex()
@@ -81,7 +81,7 @@ namespace Alis.Extension.Graphic.OpenGL.Test
         }
         
         /// <summary>
-        /// Tests that vertex attrib pointer calls gl vertex attrib pointer
+        ///     Tests that vertex attrib pointer calls gl vertex attrib pointer
         /// </summary>
         [Fact]
         public void VertexAttribPointer_CallsGlVertexAttribPointer()
@@ -91,7 +91,7 @@ namespace Alis.Extension.Graphic.OpenGL.Test
         }
         
         /// <summary>
-        /// Tests that enable vertex attrib array throws argument out of range exception for negative index
+        ///     Tests that enable vertex attrib array throws argument out of range exception for negative index
         /// </summary>
         [Fact]
         public void EnableVertexAttribArray_ThrowsArgumentOutOfRangeExceptionForNegativeIndex()
@@ -101,7 +101,7 @@ namespace Alis.Extension.Graphic.OpenGL.Test
         }
         
         /// <summary>
-        /// Tests that enable vertex attrib array calls gl enable vertex attrib array
+        ///     Tests that enable vertex attrib array calls gl enable vertex attrib array
         /// </summary>
         [Fact]
         public void EnableVertexAttribArray_CallsGlEnableVertexAttribArray()
@@ -111,7 +111,7 @@ namespace Alis.Extension.Graphic.OpenGL.Test
         }
         
         /// <summary>
-        /// Tests that gen vertex array calls gl gen vertex arrays
+        ///     Tests that gen vertex array calls gl gen vertex arrays
         /// </summary>
         [Fact]
         public void GenVertexArray_CallsGlGenVertexArrays()
@@ -120,7 +120,7 @@ namespace Alis.Extension.Graphic.OpenGL.Test
         }
         
         /// <summary>
-        /// Tests that delete vertex array calls gl delete vertex arrays
+        ///     Tests that delete vertex array calls gl delete vertex arrays
         /// </summary>
         [Fact]
         public void DeleteVertexArray_CallsGlDeleteVertexArrays()
@@ -130,7 +130,7 @@ namespace Alis.Extension.Graphic.OpenGL.Test
         }
         
         /// <summary>
-        /// Tests that gen texture calls gl gen textures
+        ///     Tests that gen texture calls gl gen textures
         /// </summary>
         [Fact]
         public void GenTexture_CallsGlGenTextures()
@@ -139,7 +139,7 @@ namespace Alis.Extension.Graphic.OpenGL.Test
         }
         
         /// <summary>
-        /// Tests that delete texture calls gl delete textures
+        ///     Tests that delete texture calls gl delete textures
         /// </summary>
         [Fact]
         public void DeleteTexture_CallsGlDeleteTextures()

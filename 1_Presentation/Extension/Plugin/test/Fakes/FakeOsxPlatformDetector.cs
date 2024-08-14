@@ -30,33 +30,37 @@
 namespace Alis.Extension.Plugin.Test.Fakes
 {
     /// <summary>
-    /// The fake osx platform detector class
+    ///     The fake osx platform detector class
     /// </summary>
-    /// <seealso cref="IPlatformDetector"/>
+    /// <seealso cref="IPlatformDetector" />
     public class FakeOsxPlatformDetector : IPlatformDetector
     {
         /// <summary>
-        /// Describes whether this instance is windows
+        ///     Describes whether this instance is windows
         /// </summary>
         /// <returns>The bool</returns>
         public bool IsWindows() => false;
+        
         /// <summary>
-        /// Describes whether this instance is osx
+        ///     Describes whether this instance is osx
         /// </summary>
         /// <returns>The bool</returns>
         public bool IsOSX() => true;
+        
         /// <summary>
-        /// Describes whether this instance is linux
+        ///     Describes whether this instance is linux
         /// </summary>
         /// <returns>The bool</returns>
         public bool IsLinux() => false;
+        
         /// <summary>
-        /// Describes whether this instance isi os
+        ///     Describes whether this instance isi os
         /// </summary>
         /// <returns>The bool</returns>
         public bool IsiOS() => false;
+        
         /// <summary>
-        /// Describes whether this instance is android
+        ///     Describes whether this instance is android
         /// </summary>
         /// <returns>The bool</returns>
         public bool IsAndroid() => false;

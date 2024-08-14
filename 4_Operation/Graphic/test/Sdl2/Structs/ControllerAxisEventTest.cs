@@ -27,20 +27,19 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Xunit;
-using System;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Structs;
+using Xunit;
 
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
     /// <summary>
-    /// The controller axis event tests class
+    ///     The controller axis event tests class
     /// </summary>
     public class ControllerAxisEventTests
     {
         /// <summary>
-        /// Tests that controller axis event initializes properties correctly
+        ///     Tests that controller axis event initializes properties correctly
         /// </summary>
         [Fact]
         public void ControllerAxisEvent_InitializesPropertiesCorrectly()
@@ -49,7 +48,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             uint timestamp = 1234567890;
             int which = 1;
             byte axis = 2;
-
+            
             ControllerAxisEvent eventStruct = new ControllerAxisEvent
             {
                 type = eventType,
@@ -57,7 +56,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
                 which = which,
                 axis = axis
             };
-
+            
             Assert.Equal(eventType, eventStruct.type);
             Assert.Equal(timestamp, eventStruct.timestamp);
             Assert.Equal(which, eventStruct.which);

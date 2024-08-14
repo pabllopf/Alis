@@ -47,14 +47,14 @@ namespace Alis.Core.Test
         {
             // Arrange
             const string namespaceToCheck = "Alis.Core";
-
+            
             // Act
             bool result = CheckNamespace(namespaceToCheck);
-
+            
             // Assert
             Assert.True(result);
         }
-
+        
         /// <summary>
         ///     Describes whether this instance check namespace
         /// </summary>

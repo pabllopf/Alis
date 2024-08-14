@@ -48,10 +48,10 @@ namespace Alis.Test.Builder.Core.Ecs.System.Setting.Graphic
         public void GraphicSettingBuilder_DefaultConstructor_ValidInput()
         {
             GraphicSettingBuilder graphicSettingBuilder = new GraphicSettingBuilder();
-
+            
             Assert.NotNull(graphicSettingBuilder);
         }
-
+        
         /// <summary>
         ///     Tests that build valid input
         /// </summary>
@@ -59,12 +59,12 @@ namespace Alis.Test.Builder.Core.Ecs.System.Setting.Graphic
         public void Build_ValidInput()
         {
             GraphicSettingBuilder graphicSettingBuilder = new GraphicSettingBuilder();
-
+            
             GraphicSetting graphicSetting = graphicSettingBuilder.Build();
-
+            
             Assert.NotNull(graphicSetting);
         }
-
+        
         /// <summary>
         ///     Tests that window valid input
         /// </summary>
@@ -73,9 +73,9 @@ namespace Alis.Test.Builder.Core.Ecs.System.Setting.Graphic
         {
             GraphicSettingBuilder graphicSettingBuilder = new GraphicSettingBuilder();
             Func<WindowBuilder, Window> windowFunc = wb => wb.Build();
-
+            
             graphicSettingBuilder.Window(windowFunc);
-
+            
             Assert.NotNull(graphicSettingBuilder.Build().Window);
         }
     }

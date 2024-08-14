@@ -38,17 +38,17 @@ namespace Alis.Core.Ecs.System.Setting.Input
         ///     The default update mode
         /// </summary>
         Default,
-
+        
         /// <summary>
         ///     The dynamic update update mode
         /// </summary>
         DynamicUpdate,
-
+        
         /// <summary>
         ///     The fixed update update mode
         /// </summary>
         FixedUpdate,
-
+        
         /// <summary>
         ///     The manual update update mode
         /// </summary>

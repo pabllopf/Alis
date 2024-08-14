@@ -27,21 +27,19 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Xunit;
 using System;
 using Alis.Core.Graphic.Sdl2.Structs;
-
+using Xunit;
 
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
-
     /// <summary>
-    /// The internal wayland wm info tests class
+    ///     The internal wayland wm info tests class
     /// </summary>
     public class InternalWaylandWmInfoTests
     {
         /// <summary>
-        /// Tests that internal wayland wm info initializes properties correctly
+        ///     Tests that internal wayland wm info initializes properties correctly
         /// </summary>
         [Fact]
         public void InternalWaylandWmInfo_InitializesPropertiesCorrectly()
@@ -52,7 +50,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             IntPtr eglWindowPtr = new IntPtr(4);
             IntPtr xdgSurfacePtr = new IntPtr(5);
             IntPtr xdgToplevelPtr = new IntPtr(6);
-
+            
             InternalWaylandWmInfo info = new InternalWaylandWmInfo
             {
                 Display = displayPtr,
@@ -62,7 +60,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
                 XdgSurface = xdgSurfacePtr,
                 XdgToplevel = xdgToplevelPtr
             };
-
+            
             Assert.Equal(displayPtr, info.Display);
             Assert.Equal(surfacePtr, info.Surface);
             Assert.Equal(shellSurfacePtr, info.ShellSurface);

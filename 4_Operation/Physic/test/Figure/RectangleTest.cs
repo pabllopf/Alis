@@ -63,10 +63,10 @@ namespace Alis.Core.Physic.Test.Figure
             bool isBullet = false;
             bool enabled = true;
             float gravityScale = 1;
-
+            
             // Act
             Rectangle rectangle = new Rectangle(width, height, position, linearVelocity, bodyType, angle, angularVelocity, linearDamping, angularDamping, allowSleep, awake, fixedRotation, isBullet, enabled, gravityScale);
-
+            
             // Assert
             Assert.Equal(position, rectangle.Position);
             Assert.Equal(linearVelocity, rectangle.LinearVelocity);
@@ -80,7 +80,7 @@ namespace Alis.Core.Physic.Test.Figure
             Assert.Equal(enabled, rectangle.Enabled);
             Assert.Equal(gravityScale, rectangle.GravityScale);
         }
-
+        
         /// <summary>
         ///     Tests that constructor throws exception when width is zero or negative
         /// </summary>
@@ -92,11 +92,11 @@ namespace Alis.Core.Physic.Test.Figure
             float height = 1;
             Vector2 position = new Vector2(1, 1);
             Vector2 linearVelocity = new Vector2(0, 0);
-
+            
             // Act & Assert
             Assert.Throws<ArgumentOutOfRangeException>(() => new Rectangle(width, height, position, linearVelocity));
         }
-
+        
         /// <summary>
         ///     Tests that constructor throws exception when height is zero or negative
         /// </summary>
@@ -108,11 +108,11 @@ namespace Alis.Core.Physic.Test.Figure
             float height = 0;
             Vector2 position = new Vector2(1, 1);
             Vector2 linearVelocity = new Vector2(0, 0);
-
+            
             // Act & Assert
             Assert.Throws<ArgumentOutOfRangeException>(() => new Rectangle(width, height, position, linearVelocity));
         }
-
+        
         /// <summary>
         ///     Tests that rectangle constructor throws exception for invalid width
         /// </summary>
@@ -121,7 +121,7 @@ namespace Alis.Core.Physic.Test.Figure
         {
             Assert.Throws<ArgumentOutOfRangeException>(() => new Rectangle(0, 1, new Vector2(0, 0), new Vector2(0, 0)));
         }
-
+        
         /// <summary>
         ///     Tests that rectangle constructor throws exception for invalid height
         /// </summary>
@@ -130,7 +130,7 @@ namespace Alis.Core.Physic.Test.Figure
         {
             Assert.Throws<ArgumentOutOfRangeException>(() => new Rectangle(1, 0, new Vector2(0, 0), new Vector2(0, 0)));
         }
-
+        
         /// <summary>
         ///     Tests that rectangle constructor throws exception for invalid vertices
         /// </summary>
@@ -140,7 +140,7 @@ namespace Alis.Core.Physic.Test.Figure
             Rectangle rectangle = new Rectangle(0.5f, 0.5f, new Vector2(0, 0), new Vector2(0, 0));
             Assert.Equal(0.00999999978F, rectangle.FixtureList[0].Shape.Radius, 0.1f);
         }
-
+        
         /// <summary>
         ///     Tests that rectangle constructor creates rectangle with correct properties
         /// </summary>
@@ -148,11 +148,11 @@ namespace Alis.Core.Physic.Test.Figure
         public void Rectangle_Constructor_CreatesRectangleWithCorrectProperties()
         {
             Rectangle rectangle = new Rectangle(1, 1, new Vector2(0, 0), new Vector2(0, 0));
-
+            
             Assert.Equal(new Vector2(0, 0), rectangle.Position);
             Assert.Equal(new Vector2(0, 0), rectangle.LinearVelocity);
         }
-
+        
         /// <summary>
         ///     Tests that validate vertices with empty vertices throws exception
         /// </summary>
@@ -161,10 +161,10 @@ namespace Alis.Core.Physic.Test.Figure
         {
             Rectangle rectangle = new Rectangle(1, 1, new Vector2(0, 0), new Vector2(0, 0));
             Vertices vertices = new Vertices();
-
+            
             Assert.Throws<ArgumentOutOfRangeException>(() => rectangle.ValidateVertices(vertices));
         }
-
+        
         /// <summary>
         ///     Tests that validate vertices with single vertex throws exception
         /// </summary>
@@ -174,10 +174,10 @@ namespace Alis.Core.Physic.Test.Figure
             Rectangle rectangle = new Rectangle(1, 1, new Vector2(0, 0), new Vector2(0, 0));
             Vertices vertices = new Vertices();
             vertices.Add(new Vector2(0, 0));
-
+            
             Assert.Throws<ArgumentOutOfRangeException>(() => rectangle.ValidateVertices(vertices));
         }
-
+        
         /// <summary>
         ///     Tests that validate vertices with multiple vertices no exception thrown
         /// </summary>
@@ -188,7 +188,7 @@ namespace Alis.Core.Physic.Test.Figure
             Vertices vertices = new Vertices();
             vertices.Add(new Vector2(0, 0));
             vertices.Add(new Vector2(1, 0));
-
+            
             Exception exception = Record.Exception(() => rectangle.ValidateVertices(vertices));
             Assert.Null(exception);
         }

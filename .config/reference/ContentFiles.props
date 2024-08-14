@@ -1,6 +1,6 @@
 <Project>
     <ItemGroup Condition="$(ProjectDir.Contains('App')) == false AND $(ProjectDir.Contains('Extension')) == false">
-        
+
         <!-- Include all the .md files in the output -->
         <Content Include="$(ProjectDir)bin/Release/lib/net5.0/*.md" Visible="false" PackagePath="lib/net5.0/"/>
         <Content Include="$(ProjectDir)bin/Release/lib/net6.0/*.md" Visible="false" PackagePath="lib/net6.0/"/>

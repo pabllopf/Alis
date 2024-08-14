@@ -38,7 +38,7 @@ namespace Alis.Core.Ecs
         ///     Runs this instance
         /// </summary>
         public void Run();
-
+        
         /// <summary>
         ///     Exits this instance
         /// </summary>

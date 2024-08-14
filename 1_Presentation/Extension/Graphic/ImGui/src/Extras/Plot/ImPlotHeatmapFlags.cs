@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         ///     The none im plot heatmap flags
         /// </summary>
         None = 0,
-
+        
         /// <summary>
         ///     The col major im plot heatmap flags
         /// </summary>

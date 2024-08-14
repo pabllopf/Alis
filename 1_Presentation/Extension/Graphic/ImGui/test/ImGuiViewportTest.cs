@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test
 {
     /// <summary>
-    /// The im gui viewport test class
+    ///     The im gui viewport test class
     /// </summary>
     public class ImGuiViewportTest
     {
         /// <summary>
-        /// Tests that id should be initialized
+        ///     Tests that id should be initialized
         /// </summary>
         [Fact]
         public void Id_ShouldBeInitialized()
@@ -49,7 +49,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that flags should be initialized
+        ///     Tests that flags should be initialized
         /// </summary>
         [Fact]
         public void Flags_ShouldBeInitialized()
@@ -59,7 +59,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that pos should be initialized
+        ///     Tests that pos should be initialized
         /// </summary>
         [Fact]
         public void Pos_ShouldBeInitialized()
@@ -69,7 +69,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that size should be initialized
+        ///     Tests that size should be initialized
         /// </summary>
         [Fact]
         public void Size_ShouldBeInitialized()
@@ -79,7 +79,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that work pos should be initialized
+        ///     Tests that work pos should be initialized
         /// </summary>
         [Fact]
         public void WorkPos_ShouldBeInitialized()
@@ -89,7 +89,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that work size should be initialized
+        ///     Tests that work size should be initialized
         /// </summary>
         [Fact]
         public void WorkSize_ShouldBeInitialized()
@@ -99,7 +99,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that dpi scale should be initialized
+        ///     Tests that dpi scale should be initialized
         /// </summary>
         [Fact]
         public void DpiScale_ShouldBeInitialized()
@@ -109,7 +109,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that parent viewport id should be initialized
+        ///     Tests that parent viewport id should be initialized
         /// </summary>
         [Fact]
         public void ParentViewportId_ShouldBeInitialized()
@@ -119,7 +119,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that draw data should be initialized
+        ///     Tests that draw data should be initialized
         /// </summary>
         [Fact]
         public void DrawData_ShouldBeInitialized()
@@ -129,7 +129,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that renderer user data should be initialized
+        ///     Tests that renderer user data should be initialized
         /// </summary>
         [Fact]
         public void RendererUserData_ShouldBeInitialized()
@@ -139,7 +139,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform user data should be initialized
+        ///     Tests that platform user data should be initialized
         /// </summary>
         [Fact]
         public void PlatformUserData_ShouldBeInitialized()
@@ -149,7 +149,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform handle should be initialized
+        ///     Tests that platform handle should be initialized
         /// </summary>
         [Fact]
         public void PlatformHandle_ShouldBeInitialized()
@@ -159,7 +159,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform handle raw should be initialized
+        ///     Tests that platform handle raw should be initialized
         /// </summary>
         [Fact]
         public void PlatformHandleRaw_ShouldBeInitialized()
@@ -169,7 +169,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform window created should be initialized
+        ///     Tests that platform window created should be initialized
         /// </summary>
         [Fact]
         public void PlatformWindowCreated_ShouldBeInitialized()
@@ -179,7 +179,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform request move should be initialized
+        ///     Tests that platform request move should be initialized
         /// </summary>
         [Fact]
         public void PlatformRequestMove_ShouldBeInitialized()
@@ -189,7 +189,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform request resize should be initialized
+        ///     Tests that platform request resize should be initialized
         /// </summary>
         [Fact]
         public void PlatformRequestResize_ShouldBeInitialized()
@@ -199,7 +199,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform request close should be initialized
+        ///     Tests that platform request close should be initialized
         /// </summary>
         [Fact]
         public void PlatformRequestClose_ShouldBeInitialized()
@@ -209,7 +209,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that id set and get returns correct value
+        ///     Tests that id set and get returns correct value
         /// </summary>
         [Fact]
         public void Id_SetAndGet_ReturnsCorrectValue()
@@ -221,7 +221,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that flags set and get returns correct value
+        ///     Tests that flags set and get returns correct value
         /// </summary>
         [Fact]
         public void Flags_SetAndGet_ReturnsCorrectValue()
@@ -233,7 +233,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that pos set and get returns correct value
+        ///     Tests that pos set and get returns correct value
         /// </summary>
         [Fact]
         public void Pos_SetAndGet_ReturnsCorrectValue()
@@ -245,7 +245,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that size set and get returns correct value
+        ///     Tests that size set and get returns correct value
         /// </summary>
         [Fact]
         public void Size_SetAndGet_ReturnsCorrectValue()
@@ -257,7 +257,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that work pos set and get returns correct value
+        ///     Tests that work pos set and get returns correct value
         /// </summary>
         [Fact]
         public void WorkPos_SetAndGet_ReturnsCorrectValue()
@@ -269,7 +269,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that work size set and get returns correct value
+        ///     Tests that work size set and get returns correct value
         /// </summary>
         [Fact]
         public void WorkSize_SetAndGet_ReturnsCorrectValue()
@@ -281,7 +281,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that dpi scale set and get returns correct value
+        ///     Tests that dpi scale set and get returns correct value
         /// </summary>
         [Fact]
         public void DpiScale_SetAndGet_ReturnsCorrectValue()
@@ -293,7 +293,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that parent viewport id set and get returns correct value
+        ///     Tests that parent viewport id set and get returns correct value
         /// </summary>
         [Fact]
         public void ParentViewportId_SetAndGet_ReturnsCorrectValue()
@@ -305,7 +305,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that draw data set and get returns correct value
+        ///     Tests that draw data set and get returns correct value
         /// </summary>
         [Fact]
         public void DrawData_SetAndGet_ReturnsCorrectValue()
@@ -317,7 +317,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that renderer user data set and get returns correct value
+        ///     Tests that renderer user data set and get returns correct value
         /// </summary>
         [Fact]
         public void RendererUserData_SetAndGet_ReturnsCorrectValue()
@@ -329,7 +329,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform user data set and get returns correct value
+        ///     Tests that platform user data set and get returns correct value
         /// </summary>
         [Fact]
         public void PlatformUserData_SetAndGet_ReturnsCorrectValue()
@@ -341,7 +341,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform handle set and get returns correct value
+        ///     Tests that platform handle set and get returns correct value
         /// </summary>
         [Fact]
         public void PlatformHandle_SetAndGet_ReturnsCorrectValue()
@@ -353,7 +353,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform handle raw set and get returns correct value
+        ///     Tests that platform handle raw set and get returns correct value
         /// </summary>
         [Fact]
         public void PlatformHandleRaw_SetAndGet_ReturnsCorrectValue()
@@ -365,7 +365,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform window created set and get returns correct value
+        ///     Tests that platform window created set and get returns correct value
         /// </summary>
         [Fact]
         public void PlatformWindowCreated_SetAndGet_ReturnsCorrectValue()
@@ -377,7 +377,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform request move set and get returns correct value
+        ///     Tests that platform request move set and get returns correct value
         /// </summary>
         [Fact]
         public void PlatformRequestMove_SetAndGet_ReturnsCorrectValue()
@@ -389,7 +389,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform request resize set and get returns correct value
+        ///     Tests that platform request resize set and get returns correct value
         /// </summary>
         [Fact]
         public void PlatformRequestResize_SetAndGet_ReturnsCorrectValue()
@@ -401,7 +401,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform request close set and get returns correct value
+        ///     Tests that platform request close set and get returns correct value
         /// </summary>
         [Fact]
         public void PlatformRequestClose_SetAndGet_ReturnsCorrectValue()

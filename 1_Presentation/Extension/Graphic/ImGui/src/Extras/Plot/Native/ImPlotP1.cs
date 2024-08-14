@@ -50,7 +50,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             ImPlotColormap ret = ImPlotNative.ImPlot_AddColormap_Vec4Ptr(Encoding.UTF8.GetBytes(name), cols, size, 0);
             return ret;
         }
-
+        
         /// <summary>
         ///     Adds the colormap using the specified name
         /// </summary>
@@ -64,7 +64,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             ImPlotColormap ret = ImPlotNative.ImPlot_AddColormap_Vec4Ptr(Encoding.UTF8.GetBytes(name), cols, size, qual ? (byte) 1 : (byte) 0);
             return ret;
         }
-
+        
         /// <summary>
         ///     Adds the colormap using the specified name
         /// </summary>
@@ -77,7 +77,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             ImPlotColormap ret = ImPlotNative.ImPlot_AddColormap_U32Ptr(Encoding.UTF8.GetBytes(name), cols, size, 0);
             return ret;
         }
-
+        
         /// <summary>
         ///     Adds the colormap using the specified name
         /// </summary>
@@ -91,7 +91,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             ImPlotColormap ret = ImPlotNative.ImPlot_AddColormap_U32Ptr(Encoding.UTF8.GetBytes(name), cols, size, qual ? (byte) 1 : (byte) 0);
             return ret;
         }
-
+        
         /// <summary>
         ///     Annotations the x
         /// </summary>
@@ -106,7 +106,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte round = 0;
             ImPlotNative.ImPlot_Annotation_Bool(x, y, col, pixOffset, nativeClamp, round);
         }
-
+        
         /// <summary>
         ///     Annotations the x
         /// </summary>
@@ -122,7 +122,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte nativeRound = round ? (byte) 1 : (byte) 0;
             ImPlotNative.ImPlot_Annotation_Bool(x, y, col, pixOffset, nativeClamp, nativeRound);
         }
-
+        
         /// <summary>
         ///     Annotations the x
         /// </summary>
@@ -136,7 +136,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_Annotation_Str(x, y, col, pixOffset, clamp ? (byte) 1 : (byte) 0, Encoding.UTF8.GetBytes(fmt));
         }
-
+        
         /// <summary>
         ///     Describes whether begin aligned plots
         /// </summary>
@@ -147,7 +147,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_BeginAlignedPlots(Encoding.UTF8.GetBytes(groupId), 0);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin aligned plots
         /// </summary>
@@ -159,7 +159,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_BeginAlignedPlots(Encoding.UTF8.GetBytes(groupId), vertical ? (byte) 1 : (byte) 0);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin drag drop source axis
         /// </summary>
@@ -171,7 +171,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_BeginDragDropSourceAxis(axis, flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin drag drop source axis
         /// </summary>
@@ -183,7 +183,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_BeginDragDropSourceAxis(axis, flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin drag drop source item
         /// </summary>
@@ -194,7 +194,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_BeginDragDropSourceItem(Encoding.UTF8.GetBytes(labelId), 0);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin drag drop source item
         /// </summary>
@@ -206,7 +206,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_BeginDragDropSourceItem(Encoding.UTF8.GetBytes(labelId), flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin drag drop source plot
         /// </summary>
@@ -217,7 +217,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_BeginDragDropSourcePlot(flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin drag drop source plot
         /// </summary>
@@ -228,7 +228,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_BeginDragDropSourcePlot(flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin drag drop target axis
         /// </summary>
@@ -239,7 +239,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_BeginDragDropTargetAxis(axis);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin drag drop target legend
         /// </summary>
@@ -249,7 +249,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_BeginDragDropTargetLegend();
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin drag drop target plot
         /// </summary>
@@ -259,7 +259,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_BeginDragDropTargetPlot();
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin legend popup
         /// </summary>
@@ -270,7 +270,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_BeginLegendPopup(Encoding.UTF8.GetBytes(labelId), 0);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin legend popup
         /// </summary>
@@ -282,7 +282,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_BeginLegendPopup(Encoding.UTF8.GetBytes(labelId), mouseButton);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin plot
         /// </summary>
@@ -293,7 +293,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_BeginPlot(Encoding.UTF8.GetBytes(titleId), new Vector2(-1, 0), 0);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin plot
         /// </summary>
@@ -305,7 +305,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_BeginPlot(Encoding.UTF8.GetBytes(titleId), size, 0);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin plot
         /// </summary>
@@ -318,7 +318,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_BeginPlot(Encoding.UTF8.GetBytes(titleId), size, flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin subplots
         /// </summary>
@@ -332,7 +332,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_BeginSubplots(Encoding.UTF8.GetBytes(titleId), rows, cols, size, 0, (float) ImPlotSubplotFlags.None, 0.0f);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin subplots
         /// </summary>
@@ -347,7 +347,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_BeginSubplots(Encoding.UTF8.GetBytes(titleId), rows, cols, size, flags, (float) ImPlotSubplotFlags.None, 0.0f);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin subplots
         /// </summary>
@@ -363,7 +363,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_BeginSubplots(Encoding.UTF8.GetBytes(titleId), rows, cols, size, flags, rowRatios, 0.0f);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether begin subplots
         /// </summary>
@@ -380,7 +380,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_BeginSubplots(Encoding.UTF8.GetBytes(titleId), rows, cols, size, flags, rowRatios, colRatios);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Busts the color cache
         /// </summary>
@@ -388,7 +388,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_BustColorCache(null);
         }
-
+        
         /// <summary>
         ///     Busts the color cache using the specified plot title id
         /// </summary>
@@ -397,7 +397,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_BustColorCache(Encoding.UTF8.GetBytes(plotTitleId));
         }
-
+        
         /// <summary>
         ///     Cancels the plot selection
         /// </summary>
@@ -405,7 +405,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_CancelPlotSelection();
         }
-
+        
         /// <summary>
         ///     Describes whether colormap button
         /// </summary>
@@ -418,7 +418,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_ColormapButton(Encoding.UTF8.GetBytes(label), size, cmap);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether colormap button
         /// </summary>
@@ -431,7 +431,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_ColormapButton(Encoding.UTF8.GetBytes(label), size, cmap);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether colormap button
         /// </summary>
@@ -444,7 +444,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_ColormapButton(Encoding.UTF8.GetBytes(label), size, cmap);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Colormaps the icon using the specified cmap
         /// </summary>
@@ -453,7 +453,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_ColormapIcon(cmap);
         }
-
+        
         /// <summary>
         ///     Colormaps the scale using the specified label
         /// </summary>
@@ -464,7 +464,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_ColormapScale(Encoding.UTF8.GetBytes(label), scaleMin, scaleMax, new Vector2(0, 0), null, 0, (ImPlotColormap) (-1));
         }
-
+        
         /// <summary>
         ///     Colormaps the scale using the specified label
         /// </summary>
@@ -476,7 +476,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_ColormapScale(Encoding.UTF8.GetBytes(label), scaleMin, scaleMax, size, null, 0, (ImPlotColormap) (-1));
         }
-
+        
         /// <summary>
         ///     Colormaps the scale using the specified label
         /// </summary>
@@ -489,7 +489,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_ColormapScale(Encoding.UTF8.GetBytes(label), scaleMin, scaleMax, size, Encoding.UTF8.GetBytes(format), 0, (ImPlotColormap) (-1));
         }
-
+        
         /// <summary>
         ///     Colormaps the scale using the specified label
         /// </summary>
@@ -503,7 +503,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_ColormapScale(Encoding.UTF8.GetBytes(label), scaleMin, scaleMax, size, Encoding.UTF8.GetBytes(format), flags, (ImPlotColormap) (-1));
         }
-
+        
         /// <summary>
         ///     Colormaps the scale using the specified label
         /// </summary>
@@ -518,7 +518,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_ColormapScale(Encoding.UTF8.GetBytes(label), scaleMin, scaleMax, size, Encoding.UTF8.GetBytes(format), flags, cmap);
         }
-
+        
         /// <summary>
         ///     Describes whether colormap slider
         /// </summary>
@@ -530,7 +530,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_ColormapSlider(Encoding.UTF8.GetBytes(label), t, out Vector4 _, Encoding.UTF8.GetBytes(""), (ImPlotColormap) (-1));
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether colormap slider
         /// </summary>
@@ -543,7 +543,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_ColormapSlider(Encoding.UTF8.GetBytes(label), t, out @out, Encoding.UTF8.GetBytes(""), (ImPlotColormap) (-1));
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether colormap slider
         /// </summary>
@@ -557,7 +557,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_ColormapSlider(Encoding.UTF8.GetBytes(label), t, out @out, Encoding.UTF8.GetBytes(format), (ImPlotColormap) (-1));
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether colormap slider
         /// </summary>
@@ -572,7 +572,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_ColormapSlider(Encoding.UTF8.GetBytes(label), t, out @out, Encoding.UTF8.GetBytes(format), cmap);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Creates the context
         /// </summary>
@@ -582,7 +582,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             IntPtr ret = ImPlotNative.ImPlot_CreateContext();
             return ret;
         }
-
+        
         /// <summary>
         ///     Destroys the context
         /// </summary>
@@ -591,7 +591,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             IntPtr ctx = IntPtr.Zero;
             ImPlotNative.ImPlot_DestroyContext(ctx);
         }
-
+        
         /// <summary>
         ///     Destroys the context using the specified ctx
         /// </summary>
@@ -600,7 +600,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_DestroyContext(ctx);
         }
-
+        
         /// <summary>
         ///     Describes whether drag line x
         /// </summary>
@@ -615,7 +615,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_DragLineX(id, x, col, thickness, flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag line x
         /// </summary>
@@ -630,7 +630,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_DragLineX(id, x, col, thickness, flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag line x
         /// </summary>
@@ -645,7 +645,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_DragLineX(id, x, col, thickness, flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag line y
         /// </summary>
@@ -660,7 +660,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_DragLineY(id, y, col, thickness, flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag line y
         /// </summary>
@@ -675,7 +675,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_DragLineY(id, y, col, thickness, flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag line y
         /// </summary>
@@ -690,7 +690,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_DragLineY(id, y, col, thickness, flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag point
         /// </summary>
@@ -706,7 +706,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_DragPoint(id, x, y, col, size, flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag point
         /// </summary>
@@ -722,7 +722,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_DragPoint(id, x, y, col, size, flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag point
         /// </summary>
@@ -738,7 +738,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_DragPoint(id, x, y, col, size, flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag rect
         /// </summary>
@@ -755,7 +755,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_DragRect(id, x1, y1, x2, y2, col, flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag rect
         /// </summary>
@@ -772,7 +772,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_DragRect(id, x1, y1, x2, y2, col, flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Ends the aligned plots
         /// </summary>
@@ -780,7 +780,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_EndAlignedPlots();
         }
-
+        
         /// <summary>
         ///     Ends the drag drop source
         /// </summary>

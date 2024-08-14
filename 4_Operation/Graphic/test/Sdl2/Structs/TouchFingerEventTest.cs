@@ -32,15 +32,13 @@ using Xunit;
 
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
-
-
     /// <summary>
-    /// The touch finger event tests class
+    ///     The touch finger event tests class
     /// </summary>
     public class TouchFingerEventTests
     {
         /// <summary>
-        /// Tests that touch finger event initializes properties correctly
+        ///     Tests that touch finger event initializes properties correctly
         /// </summary>
         [Fact]
         public void TouchFingerEvent_InitializesPropertiesCorrectly()
@@ -55,7 +53,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             float expectedDy = 0.2f;
             float expectedPressure = 0.8f;
             uint expectedWindowID = 2;
-
+            
             TouchFingerEvent touchFingerEvent = new TouchFingerEvent
             {
                 type = expectedType,
@@ -69,7 +67,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
                 pressure = expectedPressure,
                 windowID = expectedWindowID
             };
-
+            
             Assert.Equal(expectedType, touchFingerEvent.type);
             Assert.Equal(expectedTimestamp, touchFingerEvent.timestamp);
             Assert.Equal(expectedTouchId, touchFingerEvent.touchId);

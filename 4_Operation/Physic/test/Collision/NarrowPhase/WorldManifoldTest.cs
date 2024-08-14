@@ -51,10 +51,10 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             float radiusA = 1.0f;
             Transform xfB = new Transform();
             float radiusB = 1.0f;
-
+            
             // Act
             WorldManifold.Initialize(ref manifold, ref xfA, radiusA, ref xfB, radiusB, out Vector2 normal, out Vector2[] points);
-
+            
             // Assert
             Assert.Equal(new Vector2(0, 0), normal);
         }

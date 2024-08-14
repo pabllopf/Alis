@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Physic.Collision.ContactSystem;
 using Alis.Core.Physic.Collision.TOI;
 using Alis.Core.Physic.Dynamics.Solver;
@@ -47,66 +46,63 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="minContact">The min contact</param>
         /// <param name="minAlpha">The min alpha</param>
         /// <returns>The bodies</returns>
-        
         internal static Body[] AdvanceBody(ContactManager contactManager, Island island, Contact minContact, float minAlpha)
         {
             Fixture fA1 = minContact.FixtureA;
             Fixture fB1 = minContact.FixtureB;
             Body bA0 = fA1.Body;
             Body bB0 = fB1.Body;
-
+            
             Sweep backup1 = bA0.Sweep;
             Sweep backup2 = bB0.Sweep;
-
+            
             Body[] bodies = AdvanceBodies(minContact, minAlpha);
             UpdateContact(contactManager, minContact);
-
+            
             if (!CheckContactSolid(minContact, bodies, backup1, backup2))
             {
                 return bodies;
             }
-
+            
             BuildIsland(island, minContact, bodies);
             GetContacts(contactManager, minAlpha, bodies, island, minContact);
-
+            
             return bodies;
         }
-
+        
         /// <summary>
         ///     Advances the bodies using the specified min contact
         /// </summary>
         /// <param name="minContact">The min contact</param>
         /// <param name="minAlpha">The min alpha</param>
         /// <returns>The bodies</returns>
-        
         internal static Body[] AdvanceBodies(Contact minContact, float minAlpha)
         {
             Fixture fA1 = minContact.FixtureA;
             Fixture fB1 = minContact.FixtureB;
             Body bA0 = fA1.Body;
             Body bB0 = fB1.Body;
-
+            
             Body[] bodies = {bA0, bB0};
-
+            
             bA0.Advance(minAlpha);
             bB0.Advance(minAlpha);
-
+            
             return bodies;
         }
-
+        
         /// <summary>
         ///     Updates the contact using the specified contact manager
         /// </summary>
         /// <param name="contactManager">The contact manager</param>
         /// <param name="minContact">The min contact</param>
-        
         internal static void UpdateContact(ContactManager contactManager, Contact minContact)
         {
             minContact.Update(contactManager);
             minContact.Flags &= ~ContactSetting.ToiFlag;
             ++minContact.ToiCount;
         }
-
+        
         /// <summary>
         ///     Describes whether check contact solid
         /// </summary>
@@ -115,7 +111,6 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="backup1">The backup</param>
         /// <param name="backup2">The backup</param>
         /// <returns>The bool</returns>
-        
         internal static bool CheckContactSolid(Contact minContact, Body[] bodies, Sweep backup1, Sweep backup2)
         {
             if (!minContact.Enabled || !minContact.IsTouching)
@@ -127,32 +122,31 @@ namespace Alis.Core.Physic.Dynamics
                 bodies[1].SynchronizeTransform();
                 return false;
             }
-
+            
             bodies[0].Awake = true;
             bodies[1].Awake = true;
-
+            
             return true;
         }
-
+        
         /// <summary>
         ///     Builds the island using the specified island
         /// </summary>
         /// <param name="island">The island</param>
         /// <param name="minContact">The min contact</param>
         /// <param name="bodies">The bodies</param>
-        
         internal static void BuildIsland(Island island, Contact minContact, Body[] bodies)
         {
             island.Clear();
             island.Add(bodies[0]);
             island.Add(bodies[1]);
             island.Add(minContact);
-
+            
             bodies[0].Flags |= BodySettings.IslandFlag;
             bodies[1].Flags |= BodySettings.IslandFlag;
             minContact.Flags &= ~ContactSetting.IslandFlag;
         }
-
+        
         /// <summary>
         ///     Gets the contacts using the specified contact manager
         /// </summary>
@@ -161,7 +155,6 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="bodies">The bodies</param>
         /// <param name="island">The island</param>
         /// <param name="minContact">The min contact</param>
-        
         internal static void GetContacts(ContactManager contactManager, float minAlpha, Body[] bodies, Island island, Contact minContact)
         {
             for (int i = 0; i < 2; ++i)
@@ -173,7 +166,7 @@ namespace Alis.Core.Physic.Dynamics
                 }
             }
         }
-
+        
         /// <summary>
         ///     Processes the body contacts using the specified body
         /// </summary>
@@ -182,7 +175,6 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="minAlpha">The min alpha</param>
         /// <param name="island">The island</param>
         /// <param name="minContact">The min contact</param>
-        
         internal static void ProcessBodyContacts(Body body, ContactManager contactManager, float minAlpha, Island island, Contact minContact)
         {
             for (ContactEdge ce = body.ContactList; ce != null; ce = ce.Next)
@@ -190,7 +182,7 @@ namespace Alis.Core.Physic.Dynamics
                 ProcessContact(body, ce, contactManager, minAlpha, island, minContact);
             }
         }
-
+        
         /// <summary>
         ///     Processes the contact using the specified body
         /// </summary>
@@ -200,67 +192,66 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="minAlpha">The min alpha</param>
         /// <param name="island">The island</param>
         /// <param name="minContact">The min contact</param>
-        
         private static void ProcessContact(Body body, ContactEdge ce, ContactManager contactManager, float minAlpha, Island island, Contact minContact)
         {
             Contact contact = ce.Contact;
-
+            
             if (contact.IslandFlag)
             {
                 return;
             }
-
+            
             Body other = ce.Other;
             if ((other.BodyType == BodyType.Dynamic) &&
                 !body.IsBullet && !other.IsBullet)
             {
                 return;
             }
-
+            
             bool sensorA = contact.FixtureA.IsSensorPrivate;
             bool sensorB = contact.FixtureB.IsSensorPrivate;
             if (sensorA || sensorB)
             {
                 return;
             }
-
+            
             Sweep backup = other.Sweep;
             if (!other.IsIsland)
             {
                 other.Advance(minAlpha);
             }
-
+            
             contact.Update(contactManager);
-
+            
             if (!contact.Enabled)
             {
                 other.Sweep = backup;
                 other.SynchronizeTransform();
                 return;
             }
-
+            
             if (!contact.IsTouching)
             {
                 other.Sweep = backup;
                 other.SynchronizeTransform();
                 return;
             }
-
+            
             minContact.Flags |= ContactSetting.IslandFlag;
             island.Add(contact);
-
+            
             if (other.IsIsland)
             {
                 return;
             }
-
+            
             other.Flags |= BodySettings.IslandFlag;
-
+            
             if (other.BodyType != BodyType.Static)
             {
                 other.Awake = true;
             }
-
+            
             island.Add(other);
         }
     }

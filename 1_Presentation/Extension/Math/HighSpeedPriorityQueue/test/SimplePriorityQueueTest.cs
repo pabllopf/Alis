@@ -47,7 +47,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
             Assert.Equal(0, queue.Count);
         }
-
+        
         /// <summary>
         ///     Tests that enqueue increases count
         /// </summary>
@@ -58,7 +58,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             queue.Enqueue("item1", 1);
             Assert.Equal(1, queue.Count);
         }
-
+        
         /// <summary>
         ///     Tests that dequeue returns correct item and decreases count
         /// </summary>
@@ -71,7 +71,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.Equal("item1", item);
             Assert.Equal(0, queue.Count);
         }
-
+        
         /// <summary>
         ///     Tests that first returns correct item without removing
         /// </summary>
@@ -84,7 +84,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.Equal("item1", item);
             Assert.Equal(1, queue.Count);
         }
-
+        
         /// <summary>
         ///     Tests that clear resets queue
         /// </summary>
@@ -96,7 +96,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             queue.Clear();
             Assert.Equal(0, queue.Count);
         }
-
+        
         /// <summary>
         ///     Tests that contains returns true for enqueued item
         /// </summary>
@@ -107,7 +107,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             queue.Enqueue("item1", 1);
             Assert.True(queue.Contains("item1"));
         }
-
+        
         /// <summary>
         ///     Tests that contains returns false for not enqueued item
         /// </summary>
@@ -117,7 +117,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
             Assert.False(queue.Contains("item1"));
         }
-
+        
         /// <summary>
         ///     Tests that remove removes correct item
         /// </summary>
@@ -129,7 +129,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             queue.Remove("item1");
             Assert.False(queue.Contains("item1"));
         }
-
+        
         /// <summary>
         ///     Tests that update priority changes item priority
         /// </summary>
@@ -141,7 +141,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             queue.UpdatePriority("item1", 2);
             Assert.Equal(2, queue.GetPriority("item1"));
         }
-
+        
         /// <summary>
         ///     Tests that enqueue without duplicates enqueues item only once
         /// </summary>
@@ -155,7 +155,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.False(secondEnqueue);
             Assert.Equal(1, queue.Count);
         }
-
+        
         /// <summary>
         ///     Tests that get priority returns correct priority
         /// </summary>
@@ -167,7 +167,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             int priority = queue.GetPriority("item1");
             Assert.Equal(1, priority);
         }
-
+        
         /// <summary>
         ///     Tests that is valid queue after operations returns true
         /// </summary>
@@ -182,7 +182,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             queue.Dequeue();
             Assert.True(queue.IsValidQueue());
         }
-
+        
         /// <summary>
         ///     Tests that constructor initializes with default comparer and equality
         /// </summary>
@@ -192,7 +192,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
             Assert.Equal(0, queue.Count);
         }
-
+        
         /// <summary>
         ///     Tests that constructor initializes with custom priority comparer
         /// </summary>
@@ -202,7 +202,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>(Comparer<int>.Create((x, y) => y.CompareTo(x)));
             Assert.Equal(0, queue.Count);
         }
-
+        
         /// <summary>
         ///     Tests that constructor initializes with custom priority comparison
         /// </summary>
@@ -212,7 +212,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>((x, y) => y.CompareTo(x));
             Assert.Equal(0, queue.Count);
         }
-
+        
         /// <summary>
         ///     Tests that constructor initializes with custom item equality
         /// </summary>
@@ -222,7 +222,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>(EqualityComparer<string>.Default);
             Assert.Equal(0, queue.Count);
         }
-
+        
         /// <summary>
         ///     Tests that constructor initializes with custom priority comparer and item equality
         /// </summary>
@@ -232,7 +232,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>(Comparer<int>.Default, EqualityComparer<string>.Default);
             Assert.Equal(0, queue.Count);
         }
-
+        
         /// <summary>
         ///     Tests that enqueue increases count v 2
         /// </summary>
@@ -243,7 +243,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             queue.Enqueue("item1", 1);
             Assert.Equal(1, queue.Count);
         }
-
+        
         /// <summary>
         ///     Tests that dequeue decreases count and returns correct item
         /// </summary>
@@ -256,7 +256,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.Equal(0, queue.Count);
             Assert.Equal("item1", item);
         }
-
+        
         /// <summary>
         ///     Tests that first returns correct item without removing v 2
         /// </summary>
@@ -269,7 +269,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.Equal(1, queue.Count);
             Assert.Equal("item1", item);
         }
-
+        
         /// <summary>
         ///     Tests that clear resets queue v 2
         /// </summary>
@@ -281,7 +281,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             queue.Clear();
             Assert.Equal(0, queue.Count);
         }
-
+        
         /// <summary>
         ///     Tests that contains returns true for enqueued item v 2
         /// </summary>
@@ -292,7 +292,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             queue.Enqueue("item1", 1);
             Assert.True(queue.Contains("item1"));
         }
-
+        
         /// <summary>
         ///     Tests that contains returns false for not enqueued item v 2
         /// </summary>
@@ -302,7 +302,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
             Assert.False(queue.Contains("item1"));
         }
-
+        
         /// <summary>
         ///     Tests that remove removes correct item v 2
         /// </summary>
@@ -314,7 +314,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             queue.Remove("item1");
             Assert.Equal(0, queue.Count);
         }
-
+        
         /// <summary>
         ///     Tests that update priority changes item priority v 2
         /// </summary>
@@ -328,7 +328,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.Equal("item1", node);
             // Note: Direct priority check not possible without internal access, verifying via dequeue order
         }
-
+        
         /// <summary>
         ///     Tests that default constructor initializes queue
         /// </summary>
@@ -339,7 +339,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.NotNull(queue);
             Assert.Equal(0, queue.Count);
         }
-
+        
         /// <summary>
         ///     Tests that constructor with comparer initializes queue
         /// </summary>
@@ -351,7 +351,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.NotNull(queue);
             Assert.Equal(0, queue.Count);
         }
-
+        
         /// <summary>
         ///     Tests that constructor with comparison initializes queue
         /// </summary>

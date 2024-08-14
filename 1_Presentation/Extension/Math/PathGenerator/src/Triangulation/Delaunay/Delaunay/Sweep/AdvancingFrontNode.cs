@@ -38,12 +38,12 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
         ///     The point
         /// </summary>
         public readonly TriangulationPoint Point;
-
+        
         /// <summary>
         ///     The value
         /// </summary>
         public readonly double Value;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="AdvancingFrontNode" /> class
         /// </summary>
@@ -53,27 +53,27 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Delaunay.Swee
             Point = point;
             Value = point.X;
         }
-
+        
         /// <summary>
         ///     The next
         /// </summary>
         public AdvancingFrontNode Next { get; set; }
-
+        
         /// <summary>
         ///     The prev
         /// </summary>
         public AdvancingFrontNode Prev { get; set; }
-
+        
         /// <summary>
         ///     The triangle
         /// </summary>
         public DelaunayTriangle Triangle { get; set; }
-
+        
         /// <summary>
         ///     Gets the value of the has next
         /// </summary>
         public bool HasNext => Next != null;
-
+        
         /// <summary>
         ///     Gets the value of the has prev
         /// </summary>

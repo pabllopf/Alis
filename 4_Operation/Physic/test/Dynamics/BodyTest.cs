@@ -60,9 +60,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             bool isBullet = false;
             bool enabled = true;
             float gravityScale = 1.0f;
-
+            
             Body body = new Body(position, linearVelocity, bodyType, angle, angularVelocity, linearDamping, angularDamping, allowSleep, awake, fixedRotation, isBullet, enabled, gravityScale);
-
+            
             Assert.NotNull(body);
             Assert.Equal(position, body.Position);
             Assert.Equal(new Vector2(0, 0), body.LinearVelocity);
@@ -78,7 +78,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(enabled, body.Enabled);
             Assert.Equal(gravityScale, body.GravityScale);
         }
-
+        
         /// <summary>
         ///     Tests that apply force test
         /// </summary>
@@ -87,12 +87,12 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             Body body = new Body(new Vector2(0, 0), new Vector2(0, 0));
             Vector2 initialForce = body.Force;
-
+            
             body.ApplyForce(new Vector2(1, 1));
-
+            
             Assert.Equal(initialForce, body.Force);
         }
-
+        
         /// <summary>
         ///     Tests that apply torque test
         /// </summary>
@@ -101,12 +101,12 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             Body body = new Body(new Vector2(0, 0), new Vector2(0, 0));
             float initialTorque = body.Torque;
-
+            
             body.ApplyTorque(1.0f);
-
+            
             Assert.Equal(initialTorque, body.Torque);
         }
-
+        
         /// <summary>
         ///     Tests that apply linear impulse test
         /// </summary>
@@ -115,12 +115,12 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             Body body = new Body(new Vector2(0, 0), new Vector2(0, 0));
             Vector2 initialVelocity = body.LinearVelocity;
-
+            
             body.ApplyLinearImpulse(new Vector2(1, 1));
-
+            
             Assert.Equal(initialVelocity, body.LinearVelocity);
         }
-
+        
         /// <summary>
         ///     Tests that apply angular impulse test
         /// </summary>
@@ -129,12 +129,12 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             Body body = new Body(new Vector2(0, 0), new Vector2(0, 0));
             float initialAngularVelocity = body.AngularVelocity;
-
+            
             body.ApplyAngularImpulse(1.0f);
-
+            
             Assert.Equal(initialAngularVelocity, body.AngularVelocity);
         }
-
+        
         /// <summary>
         ///     Tests that reset mass data test
         /// </summary>
@@ -144,13 +144,13 @@ namespace Alis.Core.Physic.Test.Dynamics
             Body body = new Body(new Vector2(0, 0), new Vector2(0, 0));
             float initialMass = body.Mass;
             float initialInertia = body.Inertia;
-
+            
             body.ResetMassData();
-
+            
             Assert.Equal(initialMass, body.Mass);
             Assert.Equal(initialInertia, body.Inertia);
         }
-
+        
         /// <summary>
         ///     Tests that inertia should set and get correctly
         /// </summary>
@@ -160,14 +160,14 @@ namespace Alis.Core.Physic.Test.Dynamics
             // Arrange
             Body body = new Body(new Vector2(), new Vector2(), BodyType.Dynamic);
             float expectedInertia = 10.0f;
-
+            
             // Act
             body.Inertia = expectedInertia;
-
+            
             // Assert
             Assert.Equal(expectedInertia, body.Inertia);
         }
-
+        
         /// <summary>
         ///     Tests that restitution should set correctly
         /// </summary>
@@ -177,14 +177,14 @@ namespace Alis.Core.Physic.Test.Dynamics
             // Arrange
             Body body = new Body(new Vector2(), new Vector2(), BodyType.Dynamic);
             float expectedRestitution = 0.5f;
-
+            
             // Act
             body.Restitution = expectedRestitution;
-
+            
             // Assert
             // Here you would assert that the properties of wheelJoint have been set correctly.
         }
-
+        
         /// <summary>
         ///     Tests that friction should set correctly
         /// </summary>
@@ -194,14 +194,14 @@ namespace Alis.Core.Physic.Test.Dynamics
             // Arrange
             Body body = new Body(new Vector2(), new Vector2(), BodyType.Dynamic);
             float expectedFriction = 0.5f;
-
+            
             // Act
             body.Friction = expectedFriction;
-
+            
             // Assert
             // Here you would assert that the properties of wheelJoint have been set correctly.
         }
-
+        
         /// <summary>
         ///     Tests that collision categories should set correctly
         /// </summary>
@@ -211,14 +211,14 @@ namespace Alis.Core.Physic.Test.Dynamics
             // Arrange
             Body body = new Body(new Vector2(), new Vector2(), BodyType.Dynamic);
             Category expectedCategory = Category.Cat1;
-
+            
             // Act
             body.CollisionCategories = expectedCategory;
-
+            
             // Assert
             // Here you would assert that the properties of wheelJoint have been set correctly.
         }
-
+        
         /// <summary>
         ///     Tests that collides with should set correctly
         /// </summary>
@@ -228,14 +228,14 @@ namespace Alis.Core.Physic.Test.Dynamics
             // Arrange
             Body body = new Body(new Vector2(), new Vector2(), BodyType.Dynamic);
             Category expectedCategory = Category.Cat1;
-
+            
             // Act
             body.CollidesWith = expectedCategory;
-
+            
             // Assert
             // Here you would assert that the properties of wheelJoint have been set correctly.
         }
-
+        
         /// <summary>
         ///     Tests that ignore ccd with should set correctly
         /// </summary>
@@ -245,14 +245,14 @@ namespace Alis.Core.Physic.Test.Dynamics
             // Arrange
             Body body = new Body(new Vector2(), new Vector2(), BodyType.Dynamic);
             Category expectedCategory = Category.Cat1;
-
+            
             // Act
             body.IgnoreCcdWith = expectedCategory;
-
+            
             // Assert
             // Here you would assert that the properties of wheelJoint have been set correctly.
         }
-
+        
         /// <summary>
         ///     Tests that collision group should set correctly
         /// </summary>
@@ -262,14 +262,14 @@ namespace Alis.Core.Physic.Test.Dynamics
             // Arrange
             Body body = new Body(new Vector2(), new Vector2(), BodyType.Dynamic);
             short expectedGroup = 1;
-
+            
             // Act
             body.CollisionGroup = expectedGroup;
-
+            
             // Assert
             // Here you would assert that the properties of wheelJoint have been set correctly.
         }
-
+        
         /// <summary>
         ///     Tests that is sensor should set correctly
         /// </summary>
@@ -279,14 +279,14 @@ namespace Alis.Core.Physic.Test.Dynamics
             // Arrange
             Body body = new Body(new Vector2(), new Vector2(), BodyType.Dynamic);
             bool expectedIsSensor = true;
-
+            
             // Act
             body.IsSensor = expectedIsSensor;
-
+            
             // Assert
             // Here you would assert that the properties of wheelJoint have been set correctly.
         }
-
+        
         /// <summary>
         ///     Tests that ignore ccd should set and get correctly
         /// </summary>
@@ -296,14 +296,14 @@ namespace Alis.Core.Physic.Test.Dynamics
             // Arrange
             Body body = new Body(new Vector2(), new Vector2(), BodyType.Dynamic);
             bool expectedIgnoreCcd = true;
-
+            
             // Act
             body.IgnoreCcd = expectedIgnoreCcd;
-
+            
             // Assert
             Assert.Equal(expectedIgnoreCcd, body.IgnoreCcd);
         }
-
+        
         /// <summary>
         ///     Tests that rotation should set and get correctly
         /// </summary>
@@ -313,18 +313,18 @@ namespace Alis.Core.Physic.Test.Dynamics
             ContactManager contactManager = new ContactManager(
                 new BroadPhaseImplementation()
             );
-
+            
             // Arrange
             Body body = new Body(new Vector2(), new Vector2(), BodyType.Dynamic);
             float expectedRotation = 1.0f;
-
+            
             // Act
             body.Rotation = expectedRotation;
-
+            
             // Assert
             Assert.Equal(expectedRotation, body.Rotation);
         }
-
+        
         /// <summary>
         ///     Tests that is static should return correctly
         /// </summary>
@@ -333,11 +333,11 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             // Arrange
             Body body = new Body(new Vector2(), new Vector2());
-
+            
             // Assert
             Assert.True(body.IsStatic);
         }
-
+        
         /// <summary>
         ///     Tests that is kinematic should return correctly
         /// </summary>
@@ -346,11 +346,11 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             // Arrange
             Body body = new Body(new Vector2(), new Vector2(), BodyType.Kinematic);
-
+            
             // Assert
             Assert.True(body.IsKinematic);
         }
-
+        
         /// <summary>
         ///     Tests that is dynamic should return correctly
         /// </summary>
@@ -359,11 +359,11 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             // Arrange
             Body body = new Body(new Vector2(), new Vector2(), BodyType.Dynamic);
-
+            
             // Assert
             Assert.True(body.IsDynamic);
         }
-
+        
         /// <summary>
         ///     Tests that world center should return correctly
         /// </summary>
@@ -373,14 +373,14 @@ namespace Alis.Core.Physic.Test.Dynamics
             // Arrange
             Body body = new Body(new Vector2(), new Vector2(), BodyType.Dynamic);
             Vector2 expectedWorldCenter = new Vector2(1.0f, 1.0f);
-
+            
             // Act
             body.WorldCenter = expectedWorldCenter;
-
+            
             // Assert
             Assert.Equal(expectedWorldCenter, body.WorldCenter);
         }
-
+        
         /// <summary>
         ///     Tests that local center should set and get correctly
         /// </summary>
@@ -390,14 +390,14 @@ namespace Alis.Core.Physic.Test.Dynamics
             // Arrange
             Body body = new Body(new Vector2(), new Vector2(), BodyType.Dynamic);
             Vector2 expectedLocalCenter = new Vector2(1.0f, 1.0f);
-
+            
             // Act
             body.LocalCenter = expectedLocalCenter;
-
+            
             // Assert
             Assert.Equal(expectedLocalCenter, body.LocalCenter);
         }
-
+        
         /// <summary>
         ///     Tests that body constructor test
         /// </summary>
@@ -418,10 +418,10 @@ namespace Alis.Core.Physic.Test.Dynamics
             bool isBullet = false;
             bool enabled = true;
             float gravityScale = 1.0f;
-
+            
             // Act
             Body body = new Body(position, linearVelocity, bodyType, angle, angularVelocity, linearDamping, angularDamping, allowSleep, awake, fixedRotation, isBullet, enabled, gravityScale);
-
+            
             // Assert
             Assert.Equal(position, body.Position);
             Assert.Equal(linearVelocity, body.LinearVelocity);
@@ -437,7 +437,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(enabled, body.Enabled);
             Assert.Equal(gravityScale, body.GravityScale);
         }
-
+        
         /// <summary>
         ///     Tests that body is island test
         /// </summary>
@@ -446,14 +446,14 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             // Arrange
             Body body = new Body(new Vector2(), new Vector2(), BodyType.Dynamic);
-
+            
             // Act
             bool isIsland = body.IsIsland;
-
+            
             // Assert
             Assert.False(isIsland);
         }
-
+        
         /// <summary>
         ///     Tests that body is static test
         /// </summary>
@@ -462,14 +462,14 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             // Arrange
             Body body = new Body(new Vector2(), new Vector2());
-
+            
             // Act
             bool isStatic = body.IsStatic;
-
+            
             // Assert
             Assert.True(isStatic);
         }
-
+        
         /// <summary>
         ///     Tests that body is kinematic test
         /// </summary>
@@ -478,14 +478,14 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             // Arrange
             Body body = new Body(new Vector2(), new Vector2(), BodyType.Kinematic);
-
+            
             // Act
             bool isKinematic = body.IsKinematic;
-
+            
             // Assert
             Assert.True(isKinematic);
         }
-
+        
         /// <summary>
         ///     Tests that body is dynamic test
         /// </summary>
@@ -494,14 +494,14 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             // Arrange
             Body body = new Body(new Vector2(), new Vector2(), BodyType.Dynamic);
-
+            
             // Act
             bool isDynamic = body.IsDynamic;
-
+            
             // Assert
             Assert.True(isDynamic);
         }
-
+        
         /// <summary>
         ///     Tests that body get world point test
         /// </summary>
@@ -511,14 +511,14 @@ namespace Alis.Core.Physic.Test.Dynamics
             // Arrange
             Body body = new Body(new Vector2(), new Vector2(), BodyType.Dynamic);
             Vector2 localPoint = new Vector2(1, 1);
-
+            
             // Act
             Vector2 worldPoint = body.GetWorldPoint(localPoint);
-
+            
             // Assert
             Assert.Equal(localPoint, worldPoint);
         }
-
+        
         /// <summary>
         ///     Tests that body get world vector test
         /// </summary>
@@ -528,14 +528,14 @@ namespace Alis.Core.Physic.Test.Dynamics
             // Arrange
             Body body = new Body(new Vector2(), new Vector2(), BodyType.Dynamic);
             Vector2 localVector = new Vector2(1, 1);
-
+            
             // Act
             Vector2 worldVector = body.GetWorldVector(localVector);
-
+            
             // Assert
             Assert.Equal(localVector, worldVector);
         }
-
+        
         /// <summary>
         ///     Tests that body get local point test
         /// </summary>
@@ -545,14 +545,14 @@ namespace Alis.Core.Physic.Test.Dynamics
             // Arrange
             Body body = new Body(new Vector2(), new Vector2(), BodyType.Dynamic);
             Vector2 worldPoint = new Vector2(1, 1);
-
+            
             // Act
             Vector2 localPoint = body.GetLocalPoint(worldPoint);
-
+            
             // Assert
             Assert.Equal(worldPoint, localPoint);
         }
-
+        
         /// <summary>
         ///     Tests that body get local vector test
         /// </summary>
@@ -562,14 +562,14 @@ namespace Alis.Core.Physic.Test.Dynamics
             // Arrange
             Body body = new Body(new Vector2(), new Vector2(), BodyType.Dynamic);
             Vector2 worldVector = new Vector2(1, 1);
-
+            
             // Act
             Vector2 localVector = body.GetLocalVector(worldVector);
-
+            
             // Assert
             Assert.Equal(worldVector, localVector);
         }
-
+        
         /// <summary>
         ///     Tests that body get linear velocity from world point test
         /// </summary>
@@ -579,14 +579,14 @@ namespace Alis.Core.Physic.Test.Dynamics
             // Arrange
             Body body = new Body(new Vector2(), new Vector2(), BodyType.Dynamic);
             Vector2 worldPoint = new Vector2(1, 1);
-
+            
             // Act
             Vector2 linearVelocity = body.GetLinearVelocityFromWorldPoint(worldPoint);
-
+            
             // Assert
             Assert.Equal(new Vector2(), linearVelocity);
         }
-
+        
         /// <summary>
         ///     Tests that body get linear velocity from local point test
         /// </summary>
@@ -596,10 +596,10 @@ namespace Alis.Core.Physic.Test.Dynamics
             // Arrange
             Body body = new Body(new Vector2(), new Vector2(), BodyType.Dynamic);
             Vector2 localPoint = new Vector2(1, 1);
-
+            
             // Act
             Vector2 linearVelocity = body.GetLinearVelocityFromLocalPoint(localPoint);
-
+            
             // Assert
             Assert.Equal(new Vector2(), linearVelocity);
         }

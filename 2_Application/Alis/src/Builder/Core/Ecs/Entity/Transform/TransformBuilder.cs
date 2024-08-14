@@ -31,7 +31,6 @@ using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
-using NotImplementedException = System.NotImplementedException;
 
 namespace Alis.Builder.Core.Ecs.Entity.Transform
 {
@@ -49,13 +48,13 @@ namespace Alis.Builder.Core.Ecs.Entity.Transform
         ///     The transform
         /// </summary>
         private Alis.Core.Aspect.Math.Transform transform = new Alis.Core.Aspect.Math.Transform(new Vector2(0, 0), new Rotation(0), new Vector2(1, 1));
-
+        
         /// <summary>
         ///     Builds this instance
         /// </summary>
         /// <returns>The transform</returns>
         public Alis.Core.Aspect.Math.Transform Build() => transform;
-
+        
         /// <summary>
         ///     Positions the x
         /// </summary>
@@ -69,17 +68,6 @@ namespace Alis.Builder.Core.Ecs.Entity.Transform
         }
         
         /// <summary>
-        /// Positions the vector
-        /// </summary>
-        /// <param name="vector">The vector</param>
-        /// <returns>The transform builder</returns>
-        public TransformBuilder Position(Vector2 vector)
-        {
-            transform.Position = vector;
-            return this;
-        }
-
-        /// <summary>
         ///     Rotations the angle
         /// </summary>
         /// <param name="angle">The angle</param>
@@ -89,7 +77,7 @@ namespace Alis.Builder.Core.Ecs.Entity.Transform
             transform.Rotation.Set(angle);
             return this;
         }
-
+        
         /// <summary>
         ///     Scales the x
         /// </summary>
@@ -99,6 +87,17 @@ namespace Alis.Builder.Core.Ecs.Entity.Transform
         public TransformBuilder Scale(float x, float y)
         {
             transform.Scale = new Vector2(x, y);
+            return this;
+        }
+        
+        /// <summary>
+        ///     Positions the vector
+        /// </summary>
+        /// <param name="vector">The vector</param>
+        /// <returns>The transform builder</returns>
+        public TransformBuilder Position(Vector2 vector)
+        {
+            transform.Position = vector;
             return this;
         }
     }

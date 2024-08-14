@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:I.cs
+//  File:IGitHubApiService.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -33,12 +33,12 @@ using System.Threading.Tasks;
 namespace Alis.Extension.Updater.Services.Api
 {
     /// <summary>
-    /// The git hub api service interface
+    ///     The git hub api service interface
     /// </summary>
     public interface IGitHubApiService
     {
         /// <summary>
-        /// Gets the latest release using the specified api url
+        ///     Gets the latest release using the specified api url
         /// </summary>
         /// <returns>A task containing a dictionary of string and object</returns>
         Task<Dictionary<string, object>> GetLatestReleaseAsync();

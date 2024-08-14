@@ -39,7 +39,7 @@ namespace Alis.Core.Aspect.Fluent.Words
         /// </summary>
         /// <returns>The builder</returns>
         TBuilder IsDynamic();
-
+        
         /// <summary>
         ///     Ises the dynamic using the specified value
         /// </summary>

@@ -52,12 +52,12 @@ namespace Alis.Core.Physic.Test.Collision.RayCast
             Fixture fixtureA = new Fixture(new CircleShape(1), new Filter());
             Fixture fixtureB = new Fixture(new CircleShape(1), new Filter());
             Contact contact = new Contact(fixtureA, 0, fixtureB, 0);
-
+            
             Assert.NotNull(contact);
             Assert.Equal(fixtureA, contact.FixtureA);
             Assert.Equal(fixtureB, contact.FixtureB);
         }
-
+        
         /// <summary>
         ///     Tests that test contact reset
         /// </summary>
@@ -69,13 +69,13 @@ namespace Alis.Core.Physic.Test.Collision.RayCast
             Contact contact = new Contact(fixtureA, 0, fixtureB, 0);
             Fixture newFixtureA = new Fixture(new CircleShape(2), new Filter());
             Fixture newFixtureB = new Fixture(new CircleShape(2), new Filter());
-
+            
             contact.Reset(newFixtureA, 1, newFixtureB, 1);
-
+            
             Assert.Equal(newFixtureA, contact.FixtureA);
             Assert.Equal(newFixtureB, contact.FixtureB);
         }
-
+        
         /// <summary>
         ///     Tests that test contact is sensor contact
         /// </summary>
@@ -85,13 +85,13 @@ namespace Alis.Core.Physic.Test.Collision.RayCast
             Fixture fixtureA = new Fixture(new CircleShape(1), new Filter());
             Fixture fixtureB = new Fixture(new CircleShape(1), new Filter());
             Contact contact = new Contact(fixtureA, 0, fixtureB, 0);
-
+            
             Assert.False(contact.IsSensorContact());
-
+            
             fixtureA.IsSensor = true;
             Assert.True(contact.IsSensorContact());
         }
-
+        
         /// <summary>
         ///     Tests that test contact enabled
         /// </summary>
@@ -101,13 +101,13 @@ namespace Alis.Core.Physic.Test.Collision.RayCast
             Fixture fixtureA = new Fixture(new CircleShape(1), new Filter());
             Fixture fixtureB = new Fixture(new CircleShape(1), new Filter());
             Contact contact = new Contact(fixtureA, 0, fixtureB, 0);
-
+            
             Assert.True(contact.Enabled);
-
+            
             contact.Enabled = false;
             Assert.False(contact.Enabled);
         }
-
+        
         /// <summary>
         ///     Tests that test contact reset restitution
         /// </summary>
@@ -123,12 +123,12 @@ namespace Alis.Core.Physic.Test.Collision.RayCast
                 Restitution = 0.6f
             };
             Contact contact = new Contact(fixtureA, 0, fixtureB, 0);
-
+            
             contact.ResetRestitution();
-
+            
             Assert.Equal(Settings.MixRestitution(fixtureA.Restitution, fixtureB.Restitution), contact.Restitution);
         }
-
+        
         /// <summary>
         ///     Tests that test contact reset friction
         /// </summary>
@@ -144,12 +144,12 @@ namespace Alis.Core.Physic.Test.Collision.RayCast
                 Friction = 0.6f
             };
             Contact contact = new Contact(fixtureA, 0, fixtureB, 0);
-
+            
             contact.ResetFriction();
-
+            
             Assert.Equal(Settings.MixFriction(fixtureA.Friction, fixtureB.Friction), contact.Friction);
         }
-
+        
         /// <summary>
         ///     Tests that test contact reset restitution threshold
         /// </summary>
@@ -159,12 +159,12 @@ namespace Alis.Core.Physic.Test.Collision.RayCast
             Fixture fixtureA = new Fixture(new CircleShape(1), new Filter());
             Fixture fixtureB = new Fixture(new CircleShape(1), new Filter());
             Contact contact = new Contact(fixtureA, 0, fixtureB, 0);
-
+            
             contact.ResetRestitutionThreshold();
-
+            
             Assert.Equal(0, contact.RestitutionThreshold);
         }
-
+        
         /// <summary>
         ///     Tests that ray cast output fraction property set and get
         /// </summary>
@@ -173,10 +173,10 @@ namespace Alis.Core.Physic.Test.Collision.RayCast
         {
             RayCastOutput output = new RayCastOutput();
             output.Fraction = 0.5f;
-
+            
             Assert.Equal(0.5f, output.Fraction);
         }
-
+        
         /// <summary>
         ///     Tests that ray cast output normal property set and get
         /// </summary>
@@ -185,7 +185,7 @@ namespace Alis.Core.Physic.Test.Collision.RayCast
         {
             RayCastOutput output = new RayCastOutput();
             output.Normal = new Vector2(1, 0);
-
+            
             Assert.Equal(new Vector2(1, 0), output.Normal);
         }
     }

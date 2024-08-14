@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.BroadPhase;
@@ -54,22 +53,22 @@ namespace Alis.Core.Physic.Dynamics
         ///     The collides with
         /// </summary>
         internal Category CollidesWithprivate;
-
+        
         /// <summary>
         ///     The collision categories
         /// </summary>
         internal Category CollisionCategoriesprivate;
-
+        
         /// <summary>
         ///     The collision group
         /// </summary>
         internal short CollisionGroupPrivate;
-
+        
         /// <summary>
         ///     The is sensor
         /// </summary>
         internal bool IsSensorPrivate;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Fixture" /> class
         /// </summary>
@@ -79,7 +78,6 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="restitution">The restitution</param>
         /// <param name="restitutionThreshold">The restitution threshold</param>
         /// <param name="isSensor">The is sensor</param>
-        
         public Fixture(
             AShape shape,
             Filter filter,
@@ -93,25 +91,25 @@ namespace Alis.Core.Physic.Dynamics
             {
                 throw new ArgumentNullException(nameof(shape));
             }
-
+            
             if (filter == null)
             {
                 throw new ArgumentNullException(nameof(filter));
             }
-
+            
             Friction = friction;
             Restitution = restitution;
             RestitutionThreshold = restitutionThreshold;
-
+            
             CollisionGroupPrivate = filter.Group;
             CollisionCategoriesprivate = filter.Category;
             CollidesWithprivate = filter.CategoryMask;
-
+            
             IgnoreCcdWith = Settings.DefaultFixtureIgnoreCcdWith;
-
+            
             IsSensorPrivate = isSensor;
             Shape = shape.Clone();
-
+            
             int childCount = Shape.ChildCount;
             Proxies = new FixtureProxy[childCount];
             for (int i = 0; i < childCount; ++i)
@@ -119,25 +117,25 @@ namespace Alis.Core.Physic.Dynamics
                 Proxies[i].Fixture = null;
                 Proxies[i].ProxyId = DynamicTreeBroadPhase.NullProxy;
             }
-
+            
             ProxyCount = 0;
         }
-
+        
         /// <summary>Fires after two shapes has collided and are solved. This gives you a chance to get the impact force.</summary>
         public AfterCollisionHandler AfterCollision { get; set; }
-
+        
         /// <summary>
         ///     Fires when two fixtures are close to each other. Due to how the broadphase works, this can be quite inaccurate
         ///     as shapes are approximated using AABBs.
         /// </summary>
         public BeforeCollisionHandler BeforeCollision { get; set; }
-
+        
         /// <summary>
         ///     Fires when two shapes collide and a contact is created between them. Note that the first fixture argument is
         ///     always the fixture that the delegate is subscribed to.
         /// </summary>
         public OnCollisionHandler OnCollision { get; set; }
-
+        
         /// <summary>
         ///     Fires when two shapes separate and a contact is removed between them. Note: This can in some cases be called
         ///     multiple times, as a fixture can have multiple contacts. Note The first fixture argument is always the fixture that
@@ -145,30 +143,30 @@ namespace Alis.Core.Physic.Dynamics
         ///     delegate is subscribed to.
         /// </summary>
         public OnSeparationHandler OnSeparation { get; set; }
-
+        
         /// <summary>Contact filtering data.</summary>
         
         public Filter Filter { get; set; } = new Filter();
-
+        
         /// <summary>
         ///     Gets or sets the value of the ignore ccd with
         /// </summary>
         
         public Category IgnoreCcdWith { get; set; }
-
+        
         /// <summary>
         ///     Gets the value of the proxies
         /// </summary>
         public FixtureProxy[] Proxies { get; private set; }
-
+        
         /// <summary>
         ///     Gets the value of the proxy count
         /// </summary>
         public int ProxyCount { get; private set; }
-
+        
         /// <summary>Get or set the restitution threshold. This will _not_ change the restitution threshold of existing contacts.</summary>
         public float RestitutionThreshold { get; }
-
+        
         /// <summary>
         ///     Defaults to 0 If Settings.UseFPECollisionCategories is set to false: Collision groups allow a certain group of
         ///     objects to never collide (negative) or always collide (positive). Zero means no collision group. Non-zero group
@@ -185,13 +183,13 @@ namespace Alis.Core.Physic.Dynamics
                 {
                     return;
                 }
-
+                
                 CollisionGroupPrivate = value;
                 Refilter();
             }
             get => CollisionGroupPrivate;
         }
-
+        
         /// <summary>
         ///     Defaults to Category.All The collision mask bits. This states the categories that this fixture would accept
         ///     for collision. Use Settings.UseFPECollisionCategories to change the behavior.
@@ -200,19 +198,19 @@ namespace Alis.Core.Physic.Dynamics
         public Category CollidesWith
         {
             get => CollidesWithprivate;
-
+            
             set
             {
                 if (CollidesWithprivate == value)
                 {
                     return;
                 }
-
+                
                 CollidesWithprivate = value;
                 Refilter();
             }
         }
-
+        
         /// <summary>
         ///     The collision categories this fixture is a part of. If Settings.UseFPECollisionCategories is set to false:
         ///     Defaults to Category.Cat1 If Settings.UseFPECollisionCategories is set to true: Defaults to Category.All
@@ -221,26 +219,26 @@ namespace Alis.Core.Physic.Dynamics
         public Category CollisionCategories
         {
             get => CollisionCategoriesprivate;
-
+            
             set
             {
                 if (CollisionCategoriesprivate == value)
                 {
                     return;
                 }
-
+                
                 CollisionCategoriesprivate = value;
                 Refilter();
             }
         }
-
+        
         /// <summary>
         ///     Get the child Shape. You can modify the child Shape, however you should not change the number of vertices
         ///     because this will crash some collision caching mechanisms.
         /// </summary>
         /// <value>The shape.</value>
         public AShape Shape { get; internal set; }
-
+        
         /// <summary>Gets or sets a value indicating whether this fixture is a sensor.</summary>
         /// <value><c>true</c> if this instance is a sensor; otherwise, <c>false</c>.</value>
         
@@ -253,28 +251,27 @@ namespace Alis.Core.Physic.Dynamics
                 {
                     Body.Awake = true;
                 }
-
+                
                 IsSensorPrivate = value;
             }
         }
-
+        
         /// <summary>Get the parent body of this fixture. This is null if the fixture is not attached.</summary>
         /// <value>The body.</value>
         public Body Body { get; internal set; }
-
+        
         /// <summary>Set the coefficient of friction. This will _not_ change the friction of existing contacts.</summary>
         /// <value>The friction.</value>
         public float Friction { get; set; }
-
+        
         /// <summary>Set the coefficient of restitution. This will not change the restitution of existing contacts.</summary>
         /// <value>The restitution.</value>
         public float Restitution { get; set; }
-
+        
         /// <summary>
         ///     Contacts are persistent and will keep being persistent unless they are flagged for filtering. This methods
         ///     flags all contacts associated with the body for filtering.
         /// </summary>
-        
         private void Refilter()
         {
             // Flag associated contacts for filtering.
@@ -288,10 +285,10 @@ namespace Alis.Core.Physic.Dynamics
                 {
                     contact.Flags |= ContactSetting.FilterFlag;
                 }
-
+                
                 edge = edge.Next;
             }
-
+            
             // Touch each proxy so that new pairs may be created
             IBroadPhase broadPhase = ContactManager.Current.BroadPhase;
             for (int i = 0; i < ProxyCount; ++i)
@@ -299,18 +296,18 @@ namespace Alis.Core.Physic.Dynamics
                 broadPhase.TouchProxy(Proxies[i].ProxyId);
             }
         }
-
+        
         /// <summary>Test a point for containment in this fixture.</summary>
         /// <param name="point">A point in world coordinates.</param>
         public bool TestPoint(ref Vector2 point) => Shape.TestPoint(ref Body.Xf, ref point);
-
+        
         /// <summary>Cast a ray against this Shape.</summary>
         /// <param name="output">The ray-cast results.</param>
         /// <param name="input">The ray-cast input parameters.</param>
         /// <param name="childIndex">Index of the child.</param>
         public bool RayCast(out RayCastOutput output, ref RayCastInput input, int childIndex) =>
             Shape.RayCast(ref input, ref Body.Xf, childIndex, out output);
-
+        
         /// <summary>
         ///     Get the fixture's AABB. This AABB may be enlarge and/or stale. If you need a more accurate AABB, compute it
         ///     using the Shape and the body transform.
@@ -321,11 +318,10 @@ namespace Alis.Core.Physic.Dynamics
         {
             aabb = Proxies[childIndex].Aabb;
         }
-
+        
         /// <summary>
         ///     Destroys this instance
         /// </summary>
-        
         internal void Destroy()
         {
             // Free the proxy array.
@@ -336,7 +332,7 @@ namespace Alis.Core.Physic.Dynamics
             OnSeparation = null;
             AfterCollision = null;
         }
-
+        
         // These support body activation/deactivation.
         /// <summary>
         ///     Creates the proxies using the specified broad phase
@@ -347,26 +343,25 @@ namespace Alis.Core.Physic.Dynamics
         {
             // Create proxies in the broad-phase.
             ProxyCount = Shape.ChildCount;
-
+            
             for (int i = 0; i < ProxyCount; ++i)
             {
                 FixtureProxy proxy = new FixtureProxy();
                 Shape.ComputeAabb(ref xf, i, out proxy.Aabb);
                 proxy.Fixture = this;
                 proxy.ChildIndex = i;
-
+                
                 //Velcro note: This line needs to be after the previous two because FixtureProxy is a struct
                 proxy.ProxyId = broadPhase.AddProxy(ref proxy);
-
+                
                 Proxies[i] = proxy;
             }
         }
-
+        
         /// <summary>
         ///     Destroys the proxies using the specified broad phase
         /// </summary>
         /// <param name="broadPhase">The broad phase</param>
-        
         internal void DestroyProxies(IBroadPhase broadPhase)
         {
             // Destroy proxies in the broad-phase.
@@ -376,37 +371,36 @@ namespace Alis.Core.Physic.Dynamics
                 broadPhase.RemoveProxy(proxy.ProxyId);
                 proxy.ProxyId = DynamicTreeBroadPhase.NullProxy;
             }
-
+            
             ProxyCount = 0;
         }
-
+        
         /// <summary>
         ///     Synchronizes the broad phase
         /// </summary>
         /// <param name="broadPhase">The broad phase</param>
         /// <param name="transform1">The transform</param>
         /// <param name="transform2">The transform</param>
-        
         internal void Synchronize(IBroadPhase broadPhase, ref Transform transform1, ref Transform transform2)
         {
             if (ProxyCount == 0)
             {
                 return;
             }
-
+            
             for (int i = 0; i < ProxyCount; ++i)
             {
                 FixtureProxy proxy = Proxies[i];
-
+                
                 // Compute an AABB that covers the swept Shape (may miss some rotation effect).
                 Shape.ComputeAabb(ref transform1, proxy.ChildIndex, out Aabb aabb1);
                 Shape.ComputeAabb(ref transform2, proxy.ChildIndex, out Aabb aabb2);
-
+                
                 proxy.Aabb.Combine(ref aabb1, ref aabb2);
-
-
+                
+                
                 Vector2 displacement = aabb2.Center - aabb1.Center;
-
+                
                 broadPhase.MoveProxy(proxy.ProxyId, ref proxy.Aabb, displacement);
             }
         }

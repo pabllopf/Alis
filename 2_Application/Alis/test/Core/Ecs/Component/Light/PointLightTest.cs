@@ -44,10 +44,10 @@ namespace Alis.Test.Core.Ecs.Component.Light
         public void PointLight_DefaultConstructor_ValidInput()
         {
             PointLight pointLight = new PointLight();
-
+            
             Assert.NotNull(pointLight);
         }
-
+        
         /// <summary>
         ///     Tests that on init valid input
         /// </summary>
@@ -55,7 +55,7 @@ namespace Alis.Test.Core.Ecs.Component.Light
         public void OnInit_ValidInput()
         {
             PointLight pointLight = new PointLight();
-
+            
             pointLight.OnInit();
         }
     }

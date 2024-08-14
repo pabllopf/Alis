@@ -55,13 +55,13 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             CircleShape circleB = new CircleShape(
                 1, 1);
             Transform transformB = new Transform();
-
+            
             // Act
             Assert.Throws<NullReferenceException>(() => CollideEdge.CollideEdgeAndCircle(ref manifold, edgeA, ref transformA, circleB, ref transformB));
-
+            
             // Assert
         }
-
+        
         /// <summary>
         ///     Tests that collide edge and polygon should collide correctly
         /// </summary>
@@ -81,13 +81,13 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
                     new Vector2(0, 1)
                 }, 4);
             Transform transformB = new Transform();
-
+            
             // Act
             CollideEdge.CollideEdgeAndPolygon(ref manifold, edgeA, ref transformA, polygonB, ref transformB);
-
+            
             // Assert
         }
-
+        
         /// <summary>
         ///     Tests that collide edge and polygon should collide correctly v 2
         /// </summary>
@@ -107,10 +107,10 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
                     new Vector2(0, 1)
                 }, 4);
             Transform transformB = new Transform();
-
+            
             // Act
             CollideEdge.CollideEdgeAndPolygon(ref manifold, edgeA, ref transformA, polygonB, ref transformB);
-
+            
             // Assert
             // Replace this with actual assertions
         }

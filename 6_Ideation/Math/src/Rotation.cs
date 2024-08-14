@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 using Alis.Core.Aspect.Math.Vector;
 
@@ -42,15 +41,15 @@ namespace Alis.Core.Aspect.Math
     {
         /// Sine and cosine
         public float Sine { get; set; }
-
+        
         /// Sine and cosine
         public float Cosine { get; set; }
-
+        
         /// <summary>
         ///     The angle
         /// </summary>
         public float Angle { get; set; }
-
+        
         /// <summary>Initialize from an angle in radians</summary>
         /// <param name="angle">Angle in radians</param>
         public Rotation(float angle)
@@ -59,21 +58,20 @@ namespace Alis.Core.Aspect.Math
             Sine = (float) System.Math.Sin(angle);
             Cosine = (float) System.Math.Cos(angle);
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Rotation" /> class
         /// </summary>
         /// <param name="sine">The sine</param>
         /// <param name="cosine">The cosine</param>
         /// <param name="angle">The angle</param>
-        
         public Rotation(float sine, float cosine, float angle)
         {
             Sine = sine;
             Cosine = cosine;
             Angle = angle;
         }
-
+        
         /// <summary>Set using an angle in radians.</summary>
         /// <param name="angle"></param>
         public void Set(float angle)
@@ -91,29 +89,28 @@ namespace Alis.Core.Aspect.Math
                 Cosine = (float) System.Math.Cos(angle);
             }
         }
-
+        
         /// <summary>Set to the identity rotation</summary>
         public void SetIdentity()
         {
             Sine = 0.0f;
             Cosine = 1.0f;
         }
-
+        
         /// <summary>Get the angle in radians</summary>
         public float GetAngle() => (float) System.Math.Atan2(Sine, Cosine);
-
+        
         /// <summary>Get the x-axis</summary>
         public Vector2 GetXAxis() => new Vector2(Cosine, Sine);
-
+        
         /// <summary>Get the y-axis</summary>
         public Vector2 GetYAxis() => new Vector2(-Sine, Cosine);
-
+        
         /// <summary>
         ///     Gets the object data using the specified info
         /// </summary>
         /// <param name="info">The info</param>
         /// <param name="context">The context</param>
-        
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("sine", Sine);

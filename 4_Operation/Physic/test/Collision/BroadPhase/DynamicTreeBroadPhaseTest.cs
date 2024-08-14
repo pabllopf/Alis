@@ -52,7 +52,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             int result = dynamicTreeBroadPhase.AddProxy(ref proxy);
             Assert.NotEqual(DynamicTreeBroadPhase.NullProxy, result);
         }
-
+        
         /// <summary>
         ///     Tests that test remove proxy
         /// </summary>
@@ -65,7 +65,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             dynamicTreeBroadPhase.RemoveProxy(proxyId);
             Assert.True(true);
         }
-
+        
         /// <summary>
         ///     Tests that test get proxy
         /// </summary>
@@ -78,7 +78,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             FixtureProxy result = dynamicTreeBroadPhase.GetProxy(proxyId);
             Assert.Equal(proxy, result);
         }
-
+        
         /// <summary>
         ///     Tests that test get fat aabb
         /// </summary>
@@ -92,7 +92,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             Assert.NotEqual(proxy.Aabb.LowerBound, fatAabb.LowerBound);
             Assert.NotEqual(proxy.Aabb.UpperBound, fatAabb.UpperBound);
         }
-
+        
         /// <summary>
         ///     Tests that test query
         /// </summary>
@@ -104,7 +104,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             dynamicTreeBroadPhase.Query(proxyId => true, ref aabb);
             Assert.True(true); // No exception means pass
         }
-
+        
         /// <summary>
         ///     Tests that test ray cast
         /// </summary>
@@ -116,7 +116,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             dynamicTreeBroadPhase.RayCast((rayCastInput, proxyId) => 0, ref input);
             Assert.True(true); // No exception means pass
         }
-
+        
         /// <summary>
         ///     Tests that test shift origin
         /// </summary>
@@ -128,7 +128,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             dynamicTreeBroadPhase.ShiftOrigin(ref newOrigin);
             Assert.True(true); // No exception means pass
         }
-
+        
         /// <summary>
         ///     Tests that tree quality returns correct value
         /// </summary>
@@ -137,12 +137,12 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
         {
             DynamicTreeBroadPhase broadPhase = new DynamicTreeBroadPhase();
             float expectedQuality = 0f; // Replace with the expected quality value
-
+            
             float actualQuality = broadPhase.TreeQuality;
-
+            
             Assert.Equal(expectedQuality, actualQuality);
         }
-
+        
         /// <summary>
         ///     Tests that tree height returns correct value
         /// </summary>
@@ -151,12 +151,12 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
         {
             DynamicTreeBroadPhase broadPhase = new DynamicTreeBroadPhase();
             int expectedHeight = 0; // Replace with the expected height value
-
+            
             int actualHeight = broadPhase.TreeHeight;
-
+            
             Assert.Equal(expectedHeight, actualHeight);
         }
-
+        
         /// <summary>
         ///     Tests that proxy count returns correct value
         /// </summary>
@@ -165,12 +165,12 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
         {
             DynamicTreeBroadPhase broadPhase = new DynamicTreeBroadPhase();
             int expectedCount = 0; // Replace with the expected proxy count
-
+            
             int actualCount = broadPhase.ProxyCount;
-
+            
             Assert.Equal(expectedCount, actualCount);
         }
-
+        
         /// <summary>
         ///     Tests that move proxy changes proxy position
         /// </summary>
@@ -182,13 +182,13 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             Aabb aabb = new Aabb();
             Vector2 displacement = new Vector2(1, 1);
             int proxyId = broadPhase.AddProxy(ref proxy);
-
+            
             broadPhase.MoveProxy(proxyId, ref aabb, displacement);
-
+            
             broadPhase.GetFatAabb(proxyId, out Aabb movedAabb);
             Assert.NotEqual(aabb, movedAabb);
         }
-
+        
         /// <summary>
         ///     Tests that touch proxy marks proxy for update
         /// </summary>
@@ -198,13 +198,13 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             DynamicTreeBroadPhase broadPhase = new DynamicTreeBroadPhase();
             FixtureProxy proxy = new FixtureProxy();
             int proxyId = broadPhase.AddProxy(ref proxy);
-
+            
             broadPhase.TouchProxy(proxyId);
-
+            
             // Here you would assert that the proxy has been marked for update.
             // This depends on the expected behavior of the TouchProxy method.
         }
-
+        
         /// <summary>
         ///     Tests that get fat aabb returns correct aabb
         /// </summary>
@@ -214,12 +214,12 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             DynamicTreeBroadPhase broadPhase = new DynamicTreeBroadPhase();
             FixtureProxy proxy = new FixtureProxy();
             int proxyId = broadPhase.AddProxy(ref proxy);
-
+            
             broadPhase.GetFatAabb(proxyId, out Aabb returnedAabb);
-
+            
             Assert.Equal(new Vector2(-0.1f, -0.1f), returnedAabb.LowerBound);
         }
-
+        
         /// <summary>
         ///     Tests that test overlap returns true when aabbs overlap
         /// </summary>
@@ -231,12 +231,12 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             FixtureProxy proxy2 = new FixtureProxy();
             int proxyId1 = broadPhase.AddProxy(ref proxy1);
             int proxyId2 = broadPhase.AddProxy(ref proxy2);
-
+            
             bool result = broadPhase.TestOverlap(proxyId1, proxyId2);
-
+            
             Assert.True(result);
         }
-
+        
         /// <summary>
         ///     Tests that test overlap returns false when aabbs do not overlap
         /// </summary>
@@ -248,12 +248,12 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             FixtureProxy proxy2 = new FixtureProxy();
             int proxyId1 = broadPhase.AddProxy(ref proxy1);
             int proxyId2 = broadPhase.AddProxy(ref proxy2);
-
+            
             bool result = broadPhase.TestOverlap(proxyId1, proxyId2);
-
+            
             Assert.True(result);
         }
-
+        
         /// <summary>
         ///     Tests that query callback returns true when proxy id equals query proxy id
         /// </summary>
@@ -263,12 +263,12 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             DynamicTreeBroadPhase broadPhase = new DynamicTreeBroadPhase();
             FixtureProxy fixtureProxy = new FixtureProxy();
             int proxyId = broadPhase.AddProxy(ref fixtureProxy);
-
+            
             bool result = broadPhase.QueryCallback(proxyId);
-
+            
             Assert.True(result);
         }
-
+        
         /// <summary>
         ///     Tests that query callback returns true when proxy moved and proxy id greater than query proxy id
         /// </summary>
@@ -280,12 +280,12 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             int proxyId = broadPhase.AddProxy(ref fixtureProxy);
             Aabb aabb = new Aabb();
             broadPhase.MoveProxy(proxyId, ref aabb, new Vector2(1, 1));
-
+            
             bool result = broadPhase.QueryCallback(proxyId + 1);
-
+            
             Assert.True(result);
         }
-
+        
         /// <summary>
         ///     Tests that query callback increases pair count when pair capacity is not exceeded
         /// </summary>
@@ -295,9 +295,9 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             DynamicTreeBroadPhase broadPhase = new DynamicTreeBroadPhase();
             FixtureProxy fixtureProxy = new FixtureProxy();
             int proxyId = broadPhase.AddProxy(ref fixtureProxy);
-
+            
             broadPhase.QueryCallback(proxyId + 1);
-
+            
             Assert.Equal(1, broadPhase.pairCount);
         }
     }

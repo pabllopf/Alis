@@ -41,7 +41,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     The hat
         /// </summary>
         public int Hat { get; set; }
-
+        
         /// <summary>
         ///     The hat mask
         /// </summary>

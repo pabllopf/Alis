@@ -47,15 +47,15 @@ namespace Alis.Core.Physic.Test.Dynamics.Solver
             // Arrange
             Vector2 c = new Vector2(1.0f, 1.0f);
             float a = 0.5f;
-
+            
             // Act
             Position position = new Position(c, a);
-
+            
             // Assert
             Assert.Equal(c, position.C);
             Assert.Equal(a, position.A);
         }
-
+        
         /// <summary>
         ///     Tests that position default constructor test
         /// </summary>
@@ -64,12 +64,12 @@ namespace Alis.Core.Physic.Test.Dynamics.Solver
         {
             // Act
             Position position = new Position();
-
+            
             // Assert
             Assert.Equal(Vector2.Zero, position.C);
             Assert.Equal(0.0f, position.A);
         }
-
+        
         /// <summary>
         ///     Tests that position c property test
         /// </summary>
@@ -79,15 +79,15 @@ namespace Alis.Core.Physic.Test.Dynamics.Solver
             // Arrange
             Vector2 c = new Vector2(1.0f, 1.0f);
             Position position = new Position(c, 0.5f);
-
+            
             // Act
             Vector2 newC = new Vector2(2.0f, 2.0f);
             position.C = newC;
-
+            
             // Assert
             Assert.Equal(newC, position.C);
         }
-
+        
         /// <summary>
         ///     Tests that position a property test
         /// </summary>
@@ -97,11 +97,11 @@ namespace Alis.Core.Physic.Test.Dynamics.Solver
             // Arrange
             float a = 0.5f;
             Position position = new Position(new Vector2(1.0f, 1.0f), a);
-
+            
             // Act
             float newA = 1.0f;
             position.A = newA;
-
+            
             // Assert
             Assert.Equal(newA, position.A);
         }

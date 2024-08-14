@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test
 {
     /// <summary>
-    /// The null terminated string test class
+    ///     The null terminated string test class
     /// </summary>
     public class NullTerminatedStringTest
     {
         /// <summary>
-        /// Tests that data should set and get correctly with int ptr
+        ///     Tests that data should set and get correctly with int ptr
         /// </summary>
         [Fact]
         public void Data_Should_SetAndGetCorrectly_WithIntPtr()
@@ -50,19 +50,19 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that data should set and get correctly with byte array
+        ///     Tests that data should set and get correctly with byte array
         /// </summary>
         [Fact]
         public void Data_Should_SetAndGetCorrectly_WithByteArray()
         {
-            byte[] byteArray = new byte[] {65, 66, 67}; // "ABC"
+            byte[] byteArray = {65, 66, 67}; // "ABC"
             NullTerminatedString nts = new NullTerminatedString(byteArray);
             string expectedString = "ABC";
             Assert.Equal(expectedString, nts.ToString());
         }
         
         /// <summary>
-        /// Tests that to string should return empty string when data is null
+        ///     Tests that to string should return empty string when data is null
         /// </summary>
         [Fact]
         public void ToString_Should_ReturnEmptyString_WhenDataIsNull()
@@ -72,30 +72,30 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that to string should return correct string
+        ///     Tests that to string should return correct string
         /// </summary>
         [Fact]
         public void ToString_Should_ReturnCorrectString()
         {
-            byte[] byteArray = new byte[] {72, 101, 108, 108, 111}; // "Hello"
+            byte[] byteArray = {72, 101, 108, 108, 111}; // "Hello"
             NullTerminatedString nts = new NullTerminatedString(byteArray);
             Assert.Equal("Hello", nts.ToString());
         }
         
         /// <summary>
-        /// Tests that implicit conversion should return correct string
+        ///     Tests that implicit conversion should return correct string
         /// </summary>
         [Fact]
         public void ImplicitConversion_Should_ReturnCorrectString()
         {
-            byte[] byteArray = new byte[] {87, 111, 114, 108, 100}; // "World"
+            byte[] byteArray = {87, 111, 114, 108, 100}; // "World"
             NullTerminatedString nts = new NullTerminatedString(byteArray);
             string result = nts;
             Assert.Equal("World", result);
         }
         
         /// <summary>
-        /// Tests that to string data is null returns empty string
+        ///     Tests that to string data is null returns empty string
         /// </summary>
         [Fact]
         public void ToString_DataIsNull_ReturnsEmptyString()
@@ -105,18 +105,18 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that to string data is empty returns empty string
+        ///     Tests that to string data is empty returns empty string
         /// </summary>
         [Fact]
         public void ToString_DataIsEmpty_ReturnsEmptyString()
         {
-            byte[] data = new byte[] {0};
+            byte[] data = {0};
             NullTerminatedString nts = new NullTerminatedString(data);
             Assert.Equal(string.Empty, nts.ToString());
         }
         
         /// <summary>
-        /// Tests that to string data is not empty returns string
+        ///     Tests that to string data is not empty returns string
         /// </summary>
         [Fact]
         public void ToString_DataIsNotEmpty_ReturnsString()
@@ -127,7 +127,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that to string data has null terminator returns string
+        ///     Tests that to string data has null terminator returns string
         /// </summary>
         [Fact]
         public void ToString_DataHasNullTerminator_ReturnsString()
@@ -138,7 +138,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that to string data has multiple null terminators returns string up to first null
+        ///     Tests that to string data has multiple null terminators returns string up to first null
         /// </summary>
         [Fact]
         public void ToString_DataHasMultipleNullTerminators_ReturnsStringUpToFirstNull()

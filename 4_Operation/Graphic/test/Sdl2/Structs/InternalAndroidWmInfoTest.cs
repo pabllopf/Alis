@@ -27,34 +27,32 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Xunit;
 using System;
 using Alis.Core.Graphic.Sdl2.Structs;
-
+using Xunit;
 
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
-
     /// <summary>
-    /// The internal android wm info tests class
+    ///     The internal android wm info tests class
     /// </summary>
     public class InternalAndroidWmInfoTests
     {
         /// <summary>
-        /// Tests that internal android wm info initializes properties correctly
+        ///     Tests that internal android wm info initializes properties correctly
         /// </summary>
         [Fact]
         public void InternalAndroidWmInfo_InitializesPropertiesCorrectly()
         {
             IntPtr expectedWindow = new IntPtr(123);
             IntPtr expectedSurface = new IntPtr(456);
-
+            
             InternalAndroidWmInfo info = new InternalAndroidWmInfo
             {
                 Window = expectedWindow,
                 Surface = expectedSurface
             };
-
+            
             Assert.Equal(expectedWindow, info.Window);
             Assert.Equal(expectedSurface, info.Surface);
         }

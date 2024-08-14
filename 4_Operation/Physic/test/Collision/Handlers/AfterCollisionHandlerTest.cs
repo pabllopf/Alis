@@ -51,19 +51,19 @@ namespace Alis.Core.Physic.Test.Collision.Handlers
             // Arrange
             bool isHandlerInvoked = false;
             AfterCollisionHandler handler = (fixtureA, fixtureB, contact, impulse) => { isHandlerInvoked = true; };
-
+            
             Fixture fixtureA = new Fixture(new CircleShape(1, 1), new Filter(), 0.3f, 0.1f, 1.5f, true);
             Fixture fixtureB = new Fixture(new CircleShape(1, 1), new Filter(), 0.3f, 0.1f, 1.5f, true);
             Contact contact = new Contact(fixtureA, 1, fixtureB, 1);
             ContactVelocityConstraint impulse = new ContactVelocityConstraint();
-
+            
             // Act
             handler.Invoke(fixtureA, fixtureB, contact, impulse);
-
+            
             // Assert
             Assert.True(isHandlerInvoked);
         }
-
+        
         /// <summary>
         ///     Tests that after collision handler parameters test
         /// </summary>
@@ -75,7 +75,7 @@ namespace Alis.Core.Physic.Test.Collision.Handlers
             Fixture expectedFixtureB = new Fixture(new CircleShape(1, 1), new Filter(), 0.3f, 0.1f, 1.5f, true);
             Contact expectedContact = new Contact(expectedFixtureA, 1, expectedFixtureB, 1);
             ContactVelocityConstraint expectedImpulse = new ContactVelocityConstraint();
-
+            
             AfterCollisionHandler handler = (fixtureA, fixtureB, contact, impulse) =>
             {
                 // Assert
@@ -84,7 +84,7 @@ namespace Alis.Core.Physic.Test.Collision.Handlers
                 Assert.Equal(expectedContact, contact);
                 Assert.Equal(expectedImpulse, impulse);
             };
-
+            
             // Act
             handler.Invoke(expectedFixtureA, expectedFixtureB, expectedContact, expectedImpulse);
         }

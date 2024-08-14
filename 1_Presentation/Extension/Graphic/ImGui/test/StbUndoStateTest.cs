@@ -33,12 +33,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test
 {
     /// <summary>
-    /// The stb undo state test class
+    ///     The stb undo state test class
     /// </summary>
     public class StbUndoStateTest
     {
         /// <summary>
-        /// Tests that undo rec 0 should be initialized correctly
+        ///     Tests that undo rec 0 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec0_ShouldBeInitializedCorrectly()
@@ -51,7 +51,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 1 should be initialized correctly
+        ///     Tests that undo rec 1 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec1_ShouldBeInitializedCorrectly()
@@ -64,7 +64,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 2 should be initialized correctly
+        ///     Tests that undo rec 2 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec2_ShouldBeInitializedCorrectly()
@@ -77,7 +77,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 3 should be initialized correctly
+        ///     Tests that undo rec 3 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec3_ShouldBeInitializedCorrectly()
@@ -90,7 +90,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 4 should be initialized correctly
+        ///     Tests that undo rec 4 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec4_ShouldBeInitializedCorrectly()
@@ -103,7 +103,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 5 should be initialized correctly
+        ///     Tests that undo rec 5 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec5_ShouldBeInitializedCorrectly()
@@ -116,7 +116,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 6 should be initialized correctly
+        ///     Tests that undo rec 6 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec6_ShouldBeInitializedCorrectly()
@@ -129,7 +129,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 7 should be initialized correctly
+        ///     Tests that undo rec 7 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec7_ShouldBeInitializedCorrectly()
@@ -142,7 +142,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 8 should be initialized correctly
+        ///     Tests that undo rec 8 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec8_ShouldBeInitializedCorrectly()
@@ -155,7 +155,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 9 should be initialized correctly
+        ///     Tests that undo rec 9 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec9_ShouldBeInitializedCorrectly()
@@ -168,7 +168,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 10 should be initialized correctly
+        ///     Tests that undo rec 10 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec10_ShouldBeInitializedCorrectly()
@@ -181,7 +181,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 11 should be initialized correctly
+        ///     Tests that undo rec 11 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec11_ShouldBeInitializedCorrectly()
@@ -194,7 +194,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 12 should be initialized correctly
+        ///     Tests that undo rec 12 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec12_ShouldBeInitializedCorrectly()
@@ -204,11 +204,10 @@ namespace Alis.Extension.Graphic.ImGui.Test
             
             // Act
             StbUndoRecord undoRec12 = undoState.UndoRec12;
-            
         }
         
         /// <summary>
-        /// Tests that undo rec 13 should be initialized correctly
+        ///     Tests that undo rec 13 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec13_ShouldBeInitializedCorrectly()
@@ -218,11 +217,10 @@ namespace Alis.Extension.Graphic.ImGui.Test
             
             // Act
             StbUndoRecord undoRec13 = undoState.UndoRec13;
-            
         }
         
         /// <summary>
-        /// Tests that undo rec 14 should be initialized correctly
+        ///     Tests that undo rec 14 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec14_ShouldBeInitializedCorrectly()
@@ -235,7 +233,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 15 should be initialized correctly
+        ///     Tests that undo rec 15 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec15_ShouldBeInitializedCorrectly()
@@ -248,7 +246,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 16 should be initialized correctly
+        ///     Tests that undo rec 16 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec16_ShouldBeInitializedCorrectly()
@@ -261,7 +259,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 17 should be initialized correctly
+        ///     Tests that undo rec 17 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec17_ShouldBeInitializedCorrectly()
@@ -274,7 +272,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 18 should be initialized correctly
+        ///     Tests that undo rec 18 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec18_ShouldBeInitializedCorrectly()
@@ -284,11 +282,10 @@ namespace Alis.Extension.Graphic.ImGui.Test
             
             // Act
             StbUndoRecord undoRec18 = undoState.UndoRec18;
-            
         }
         
         /// <summary>
-        /// Tests that undo rec 19 should be initialized correctly
+        ///     Tests that undo rec 19 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec19_ShouldBeInitializedCorrectly()
@@ -301,7 +298,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 20 should be initialized correctly
+        ///     Tests that undo rec 20 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec20_ShouldBeInitializedCorrectly()
@@ -314,7 +311,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 21 should be initialized correctly
+        ///     Tests that undo rec 21 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec21_ShouldBeInitializedCorrectly()
@@ -327,7 +324,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 22 should be initialized correctly
+        ///     Tests that undo rec 22 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec22_ShouldBeInitializedCorrectly()
@@ -337,11 +334,10 @@ namespace Alis.Extension.Graphic.ImGui.Test
             
             // Act
             StbUndoRecord undoRec22 = undoState.UndoRec22;
-            
         }
         
         /// <summary>
-        /// Tests that undo rec 23 should be initialized correctly
+        ///     Tests that undo rec 23 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec23_ShouldBeInitializedCorrectly()
@@ -351,11 +347,10 @@ namespace Alis.Extension.Graphic.ImGui.Test
             
             // Act
             StbUndoRecord undoRec23 = undoState.UndoRec23;
-            
         }
         
         /// <summary>
-        /// Tests that undo rec 24 should be initialized correctly
+        ///     Tests that undo rec 24 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec24_ShouldBeInitializedCorrectly()
@@ -368,7 +363,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 25 should be initialized correctly
+        ///     Tests that undo rec 25 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec25_ShouldBeInitializedCorrectly()
@@ -378,11 +373,10 @@ namespace Alis.Extension.Graphic.ImGui.Test
             
             // Act
             StbUndoRecord undoRec25 = undoState.UndoRec25;
-            
         }
         
         /// <summary>
-        /// Tests that undo rec 26 should be initialized correctly
+        ///     Tests that undo rec 26 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec26_ShouldBeInitializedCorrectly()
@@ -395,7 +389,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 27 should be initialized correctly
+        ///     Tests that undo rec 27 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec27_ShouldBeInitializedCorrectly()
@@ -409,7 +403,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 28 should be initialized correctly
+        ///     Tests that undo rec 28 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec28_ShouldBeInitializedCorrectly()
@@ -419,11 +413,10 @@ namespace Alis.Extension.Graphic.ImGui.Test
             
             // Act
             StbUndoRecord undoRec28 = undoState.UndoRec28;
-            
         }
         
         /// <summary>
-        /// Tests that undo rec 29 should be initialized correctly
+        ///     Tests that undo rec 29 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec29_ShouldBeInitializedCorrectly()
@@ -433,11 +426,10 @@ namespace Alis.Extension.Graphic.ImGui.Test
             
             // Act
             StbUndoRecord undoRec29 = undoState.UndoRec29;
-            
         }
         
         /// <summary>
-        /// Tests that undo rec 30 should be initialized correctly
+        ///     Tests that undo rec 30 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec30_ShouldBeInitializedCorrectly()
@@ -447,11 +439,10 @@ namespace Alis.Extension.Graphic.ImGui.Test
             
             // Act
             StbUndoRecord undoRec30 = undoState.UndoRec30;
-            
         }
         
         /// <summary>
-        /// Tests that undo rec 31 should be initialized correctly
+        ///     Tests that undo rec 31 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec31_ShouldBeInitializedCorrectly()
@@ -467,7 +458,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 32 should be initialized correctly
+        ///     Tests that undo rec 32 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec32_ShouldBeInitializedCorrectly()
@@ -483,7 +474,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 33 should be initialized correctly
+        ///     Tests that undo rec 33 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec33_ShouldBeInitializedCorrectly()
@@ -499,7 +490,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 34 should be initialized correctly
+        ///     Tests that undo rec 34 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec34_ShouldBeInitializedCorrectly()
@@ -515,7 +506,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 35 should be initialized correctly
+        ///     Tests that undo rec 35 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec35_ShouldBeInitializedCorrectly()
@@ -531,7 +522,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 36 should be initialized correctly
+        ///     Tests that undo rec 36 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec36_ShouldBeInitializedCorrectly()
@@ -547,7 +538,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 37 should be initialized correctly
+        ///     Tests that undo rec 37 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec37_ShouldBeInitializedCorrectly()
@@ -563,7 +554,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 38 should be initialized correctly
+        ///     Tests that undo rec 38 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec38_ShouldBeInitializedCorrectly()
@@ -579,7 +570,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 39 should be initialized correctly
+        ///     Tests that undo rec 39 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec39_ShouldBeInitializedCorrectly()
@@ -595,7 +586,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 40 should be initialized correctly
+        ///     Tests that undo rec 40 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec40_ShouldBeInitializedCorrectly()
@@ -611,7 +602,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 41 should be initialized correctly
+        ///     Tests that undo rec 41 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec41_ShouldBeInitializedCorrectly()
@@ -627,7 +618,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 42 should be initialized correctly
+        ///     Tests that undo rec 42 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec42_ShouldBeInitializedCorrectly()
@@ -643,7 +634,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 43 should be initialized correctly
+        ///     Tests that undo rec 43 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec43_ShouldBeInitializedCorrectly()
@@ -659,7 +650,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 44 should be initialized correctly
+        ///     Tests that undo rec 44 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec44_ShouldBeInitializedCorrectly()
@@ -675,7 +666,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 45 should be initialized correctly
+        ///     Tests that undo rec 45 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec45_ShouldBeInitializedCorrectly()
@@ -691,7 +682,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 46 should be initialized correctly
+        ///     Tests that undo rec 46 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec46_ShouldBeInitializedCorrectly()
@@ -707,7 +698,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 47 should be initialized correctly
+        ///     Tests that undo rec 47 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec47_ShouldBeInitializedCorrectly()
@@ -723,7 +714,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 48 should be initialized correctly
+        ///     Tests that undo rec 48 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec48_ShouldBeInitializedCorrectly()
@@ -739,7 +730,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 49 should be initialized correctly
+        ///     Tests that undo rec 49 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec49_ShouldBeInitializedCorrectly()
@@ -755,7 +746,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 50 should be initialized correctly
+        ///     Tests that undo rec 50 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec50_ShouldBeInitializedCorrectly()
@@ -771,7 +762,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 51 should be initialized correctly
+        ///     Tests that undo rec 51 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec51_ShouldBeInitializedCorrectly()
@@ -787,7 +778,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 52 should be initialized correctly
+        ///     Tests that undo rec 52 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec52_ShouldBeInitializedCorrectly()
@@ -803,7 +794,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 53 should be initialized correctly
+        ///     Tests that undo rec 53 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec53_ShouldBeInitializedCorrectly()
@@ -816,7 +807,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 54 should be initialized correctly
+        ///     Tests that undo rec 54 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec54_ShouldBeInitializedCorrectly()
@@ -826,11 +817,10 @@ namespace Alis.Extension.Graphic.ImGui.Test
             
             // Act
             StbUndoRecord undoRec54 = undoState.UndoRec54;
-            
         }
         
         /// <summary>
-        /// Tests that undo rec 55 should be initialized correctly
+        ///     Tests that undo rec 55 should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoRec55_ShouldBeInitializedCorrectly()
@@ -843,7 +833,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 56 set and get returns correct value
+        ///     Tests that undo rec 56 set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoRec56_SetAndGet_ReturnsCorrectValue()
@@ -855,7 +845,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 57 set and get returns correct value
+        ///     Tests that undo rec 57 set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoRec57_SetAndGet_ReturnsCorrectValue()
@@ -867,7 +857,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 58 set and get returns correct value
+        ///     Tests that undo rec 58 set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoRec58_SetAndGet_ReturnsCorrectValue()
@@ -879,7 +869,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 59 set and get returns correct value
+        ///     Tests that undo rec 59 set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoRec59_SetAndGet_ReturnsCorrectValue()
@@ -891,7 +881,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 60 set and get returns correct value
+        ///     Tests that undo rec 60 set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoRec60_SetAndGet_ReturnsCorrectValue()
@@ -903,7 +893,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 61 set and get returns correct value
+        ///     Tests that undo rec 61 set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoRec61_SetAndGet_ReturnsCorrectValue()
@@ -915,7 +905,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 62 set and get returns correct value
+        ///     Tests that undo rec 62 set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoRec62_SetAndGet_ReturnsCorrectValue()
@@ -927,7 +917,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 63 set and get returns correct value
+        ///     Tests that undo rec 63 set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoRec63_SetAndGet_ReturnsCorrectValue()
@@ -939,7 +929,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 64 set and get returns correct value
+        ///     Tests that undo rec 64 set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoRec64_SetAndGet_ReturnsCorrectValue()
@@ -951,7 +941,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 65 set and get returns correct value
+        ///     Tests that undo rec 65 set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoRec65_SetAndGet_ReturnsCorrectValue()
@@ -963,7 +953,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 66 set and get returns correct value
+        ///     Tests that undo rec 66 set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoRec66_SetAndGet_ReturnsCorrectValue()
@@ -975,7 +965,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 67 set and get returns correct value
+        ///     Tests that undo rec 67 set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoRec67_SetAndGet_ReturnsCorrectValue()
@@ -987,7 +977,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 68 set and get returns correct value
+        ///     Tests that undo rec 68 set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoRec68_SetAndGet_ReturnsCorrectValue()
@@ -999,7 +989,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 69 set and get returns correct value
+        ///     Tests that undo rec 69 set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoRec69_SetAndGet_ReturnsCorrectValue()
@@ -1011,7 +1001,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 70 set and get returns correct value
+        ///     Tests that undo rec 70 set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoRec70_SetAndGet_ReturnsCorrectValue()
@@ -1023,7 +1013,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 71 set and get returns correct value
+        ///     Tests that undo rec 71 set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoRec71_SetAndGet_ReturnsCorrectValue()
@@ -1035,7 +1025,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 72 set and get returns correct value
+        ///     Tests that undo rec 72 set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoRec72_SetAndGet_ReturnsCorrectValue()
@@ -1047,7 +1037,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 73 set and get returns correct value
+        ///     Tests that undo rec 73 set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoRec73_SetAndGet_ReturnsCorrectValue()
@@ -1059,7 +1049,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 74 set and get returns correct value
+        ///     Tests that undo rec 74 set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoRec74_SetAndGet_ReturnsCorrectValue()
@@ -1071,7 +1061,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 75 set and get returns correct value
+        ///     Tests that undo rec 75 set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoRec75_SetAndGet_ReturnsCorrectValue()
@@ -1083,7 +1073,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 76 set and get returns correct value
+        ///     Tests that undo rec 76 set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoRec76_SetAndGet_ReturnsCorrectValue()
@@ -1095,7 +1085,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 77 set and get returns correct value
+        ///     Tests that undo rec 77 set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoRec77_SetAndGet_ReturnsCorrectValue()
@@ -1107,7 +1097,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 78 set and get returns correct value
+        ///     Tests that undo rec 78 set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoRec78_SetAndGet_ReturnsCorrectValue()
@@ -1119,7 +1109,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 79 set and get returns correct value
+        ///     Tests that undo rec 79 set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoRec79_SetAndGet_ReturnsCorrectValue()
@@ -1131,7 +1121,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 80 set and get returns correct value
+        ///     Tests that undo rec 80 set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoRec80_SetAndGet_ReturnsCorrectValue()
@@ -1143,7 +1133,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 81 set and get returns correct value
+        ///     Tests that undo rec 81 set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoRec81_SetAndGet_ReturnsCorrectValue()
@@ -1155,7 +1145,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 82 set and get returns correct value
+        ///     Tests that undo rec 82 set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoRec82_SetAndGet_ReturnsCorrectValue()
@@ -1167,7 +1157,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 83 set and get returns correct value
+        ///     Tests that undo rec 83 set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoRec83_SetAndGet_ReturnsCorrectValue()
@@ -1179,7 +1169,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 84 set and get returns correct value
+        ///     Tests that undo rec 84 set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoRec84_SetAndGet_ReturnsCorrectValue()
@@ -1191,7 +1181,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 85 set and get returns correct value
+        ///     Tests that undo rec 85 set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoRec85_SetAndGet_ReturnsCorrectValue()
@@ -1203,7 +1193,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 86 set and get returns correct value
+        ///     Tests that undo rec 86 set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoRec86_SetAndGet_ReturnsCorrectValue()
@@ -1215,7 +1205,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 87 set and get returns correct value
+        ///     Tests that undo rec 87 set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoRec87_SetAndGet_ReturnsCorrectValue()
@@ -1227,7 +1217,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 88 set and get returns correct value
+        ///     Tests that undo rec 88 set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoRec88_SetAndGet_ReturnsCorrectValue()
@@ -1239,7 +1229,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 89 set and get returns correct value
+        ///     Tests that undo rec 89 set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoRec89_SetAndGet_ReturnsCorrectValue()
@@ -1251,7 +1241,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 90 set and get returns correct value
+        ///     Tests that undo rec 90 set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoRec90_SetAndGet_ReturnsCorrectValue()
@@ -1263,7 +1253,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 91 set and get returns correct value
+        ///     Tests that undo rec 91 set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoRec91_SetAndGet_ReturnsCorrectValue()
@@ -1275,7 +1265,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 92 set and get returns correct value
+        ///     Tests that undo rec 92 set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoRec92_SetAndGet_ReturnsCorrectValue()
@@ -1287,7 +1277,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 93 set and get returns correct value
+        ///     Tests that undo rec 93 set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoRec93_SetAndGet_ReturnsCorrectValue()
@@ -1299,7 +1289,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 94 set and get returns correct value
+        ///     Tests that undo rec 94 set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoRec94_SetAndGet_ReturnsCorrectValue()
@@ -1311,7 +1301,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 95 set and get returns correct value
+        ///     Tests that undo rec 95 set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoRec95_SetAndGet_ReturnsCorrectValue()
@@ -1323,7 +1313,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 96 set and get returns correct value
+        ///     Tests that undo rec 96 set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoRec96_SetAndGet_ReturnsCorrectValue()
@@ -1335,7 +1325,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 97 set and get returns correct value
+        ///     Tests that undo rec 97 set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoRec97_SetAndGet_ReturnsCorrectValue()
@@ -1347,7 +1337,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo rec 98 set and get returns correct value
+        ///     Tests that undo rec 98 set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoRec98_SetAndGet_ReturnsCorrectValue()
@@ -1359,7 +1349,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo char set and get returns correct value
+        ///     Tests that undo char set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoChar_SetAndGet_ReturnsCorrectValue()
@@ -1371,7 +1361,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo point set and get returns correct value
+        ///     Tests that undo point set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoPoint_SetAndGet_ReturnsCorrectValue()
@@ -1383,7 +1373,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that redo point set and get returns correct value
+        ///     Tests that redo point set and get returns correct value
         /// </summary>
         [Fact]
         public void RedoPoint_SetAndGet_ReturnsCorrectValue()
@@ -1395,7 +1385,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo char point set and get returns correct value
+        ///     Tests that undo char point set and get returns correct value
         /// </summary>
         [Fact]
         public void UndoCharPoint_SetAndGet_ReturnsCorrectValue()
@@ -1407,7 +1397,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that redo char point set and get returns correct value
+        ///     Tests that redo char point set and get returns correct value
         /// </summary>
         [Fact]
         public void RedoCharPoint_SetAndGet_ReturnsCorrectValue()

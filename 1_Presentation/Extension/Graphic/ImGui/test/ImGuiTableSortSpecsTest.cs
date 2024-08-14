@@ -33,12 +33,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test
 {
     /// <summary>
-    /// The im gui table sort specs test class
+    ///     The im gui table sort specs test class
     /// </summary>
     public class ImGuiTableSortSpecsTest
     {
         /// <summary>
-        /// Tests that specs should set and get correctly
+        ///     Tests that specs should set and get correctly
         /// </summary>
         [Fact]
         public void Specs_Should_SetAndGetCorrectly()
@@ -48,9 +48,9 @@ namespace Alis.Extension.Graphic.ImGui.Test
             tableSortSpecs.Specs = specs;
             Assert.Equal(specs, tableSortSpecs.Specs);
         }
-
+        
         /// <summary>
-        /// Tests that specs count should set and get correctly
+        ///     Tests that specs count should set and get correctly
         /// </summary>
         [Fact]
         public void SpecsCount_Should_SetAndGetCorrectly()
@@ -59,9 +59,9 @@ namespace Alis.Extension.Graphic.ImGui.Test
             tableSortSpecs.SpecsCount = 3;
             Assert.Equal(3, tableSortSpecs.SpecsCount);
         }
-
+        
         /// <summary>
-        /// Tests that specs dirty should set and get correctly
+        ///     Tests that specs dirty should set and get correctly
         /// </summary>
         [Fact]
         public void SpecsDirty_Should_SetAndGetCorrectly()

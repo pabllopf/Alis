@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test
 {
     /// <summary>
-    /// The im draw cmd test class
+    ///     The im draw cmd test class
     /// </summary>
     public class ImDrawCmdTest
     {
         /// <summary>
-        /// Tests that clip rect should be initialized correctly
+        ///     Tests that clip rect should be initialized correctly
         /// </summary>
         [Fact]
         public void ClipRect_ShouldBeInitializedCorrectly()
@@ -55,7 +55,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that texture id should be initialized correctly
+        ///     Tests that texture id should be initialized correctly
         /// </summary>
         [Fact]
         public void TextureId_ShouldBeInitializedCorrectly()
@@ -71,7 +71,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that vtx offset should be initialized correctly
+        ///     Tests that vtx offset should be initialized correctly
         /// </summary>
         [Fact]
         public void VtxOffset_ShouldBeInitializedCorrectly()
@@ -87,7 +87,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that idx offset should be initialized correctly
+        ///     Tests that idx offset should be initialized correctly
         /// </summary>
         [Fact]
         public void IdxOffset_ShouldBeInitializedCorrectly()
@@ -103,7 +103,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that elem count should be initialized correctly
+        ///     Tests that elem count should be initialized correctly
         /// </summary>
         [Fact]
         public void ElemCount_ShouldBeInitializedCorrectly()
@@ -119,7 +119,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that user callback should be initialized correctly
+        ///     Tests that user callback should be initialized correctly
         /// </summary>
         [Fact]
         public void UserCallback_ShouldBeInitializedCorrectly()
@@ -135,7 +135,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that user callback data should be initialized correctly
+        ///     Tests that user callback data should be initialized correctly
         /// </summary>
         [Fact]
         public void UserCallbackData_ShouldBeInitializedCorrectly()
@@ -151,7 +151,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that get clip rect should return correct value
+        ///     Tests that get clip rect should return correct value
         /// </summary>
         [Fact]
         public void GetClipRect_ShouldReturnCorrectValue()
@@ -167,7 +167,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that get texture id should return correct value
+        ///     Tests that get texture id should return correct value
         /// </summary>
         [Fact]
         public void GetTextureId_ShouldReturnCorrectValue()
@@ -183,7 +183,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that get vtx offset should return correct value
+        ///     Tests that get vtx offset should return correct value
         /// </summary>
         [Fact]
         public void GetVtxOffset_ShouldReturnCorrectValue()
@@ -199,7 +199,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that get idx offset should return correct value
+        ///     Tests that get idx offset should return correct value
         /// </summary>
         [Fact]
         public void GetIdxOffset_ShouldReturnCorrectValue()
@@ -215,7 +215,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that get elem count should return correct value
+        ///     Tests that get elem count should return correct value
         /// </summary>
         [Fact]
         public void GetElemCount_ShouldReturnCorrectValue()
@@ -231,7 +231,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that get user callback should return correct value
+        ///     Tests that get user callback should return correct value
         /// </summary>
         [Fact]
         public void GetUserCallback_ShouldReturnCorrectValue()
@@ -247,7 +247,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that get user callback data should return correct value
+        ///     Tests that get user callback data should return correct value
         /// </summary>
         [Fact]
         public void GetUserCallbackData_ShouldReturnCorrectValue()
@@ -263,7 +263,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that set user callback data should set correct value
+        ///     Tests that set user callback data should set correct value
         /// </summary>
         [Fact]
         public void SetUserCallbackData_ShouldSetCorrectValue()
@@ -280,7 +280,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that get clip rect returns clip rect
+        ///     Tests that get clip rect returns clip rect
         /// </summary>
         [Fact]
         public void GetClipRect_ReturnsClipRect()
@@ -290,7 +290,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that get texture id returns texture id
+        ///     Tests that get texture id returns texture id
         /// </summary>
         [Fact]
         public void GetTextureId_ReturnsTextureId()
@@ -300,7 +300,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that get vtx offset returns vtx offset
+        ///     Tests that get vtx offset returns vtx offset
         /// </summary>
         [Fact]
         public void GetVtxOffset_ReturnsVtxOffset()
@@ -310,7 +310,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that get idx offset returns idx offset
+        ///     Tests that get idx offset returns idx offset
         /// </summary>
         [Fact]
         public void GetIdxOffset_ReturnsIdxOffset()
@@ -320,7 +320,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that get elem count returns elem count
+        ///     Tests that get elem count returns elem count
         /// </summary>
         [Fact]
         public void GetElemCount_ReturnsElemCount()
@@ -330,7 +330,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that get user callback returns user callback
+        ///     Tests that get user callback returns user callback
         /// </summary>
         [Fact]
         public void GetUserCallback_ReturnsUserCallback()
@@ -340,7 +340,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that get user callback data returns user callback data
+        ///     Tests that get user callback data returns user callback data
         /// </summary>
         [Fact]
         public void GetUserCallbackData_ReturnsUserCallbackData()
@@ -350,7 +350,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that set user callback data sets user callback data
+        ///     Tests that set user callback data sets user callback data
         /// </summary>
         [Fact]
         public void SetUserCallbackData_SetsUserCallbackData()
@@ -362,7 +362,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that get tex id returns tex id
+        ///     Tests that get tex id returns tex id
         /// </summary>
         [Fact]
         public void GetTexId_ReturnsTexId()

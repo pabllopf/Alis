@@ -68,14 +68,14 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
                     new Vector2(1, 0)
                 }, 4);
             Transform xfB = new Transform();
-
+            
             // Act
             Assert.Throws<NullReferenceException>(() => CollidePolygon.CollidePolygons(ref manifold, polyA, ref xfA, polyB, ref xfB));
-
+            
             // Assert
             // Here you would assert that the properties of wheelJoint have been set correctly.
         }
-
+        
         /// <summary>
         ///     Tests that find max separation should find correctly
         /// </summary>
@@ -101,14 +101,14 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
                     new Vector2(1, 0)
                 }, 4);
             Transform xf2 = new Transform();
-
+            
             // Act
             float result = CollidePolygon.FindMaxSeparation(out int edgeIndex, poly1, ref xf1, poly2, ref xf2);
-
+            
             // Assert
             // Here you would assert that the properties of wheelJoint have been set correctly.
         }
-
+        
         /// <summary>
         ///     Tests that find incident edge should find correctly
         /// </summary>
@@ -135,10 +135,10 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
                     new Vector2(1, 0)
                 }, 4);
             Transform xf2 = new Transform();
-
+            
             // Act
             CollidePolygon.FindIncidentEdge(out ClipVertex[] c, poly1, ref xf1, edge1, poly2, ref xf2);
-
+            
             // Assert
             // Here you would assert that the properties of wheelJoint have been set correctly.
         }

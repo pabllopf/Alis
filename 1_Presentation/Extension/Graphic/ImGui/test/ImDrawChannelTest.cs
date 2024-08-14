@@ -32,12 +32,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test
 {
     /// <summary>
-    /// The im draw channel test class
+    ///     The im draw channel test class
     /// </summary>
     public class ImDrawChannelTest
     {
         /// <summary>
-        /// Tests that cmd buffer should be initialized correctly
+        ///     Tests that cmd buffer should be initialized correctly
         /// </summary>
         [Fact]
         public void CmdBuffer_ShouldBeInitializedCorrectly()
@@ -53,7 +53,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that idx buffer should be initialized correctly
+        ///     Tests that idx buffer should be initialized correctly
         /// </summary>
         [Fact]
         public void IdxBuffer_ShouldBeInitializedCorrectly()
@@ -69,16 +69,16 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that cmd buffer ptr should return correct value
+        ///     Tests that cmd buffer ptr should return correct value
         /// </summary>
         [Fact]
         public void CmdBufferPtr_ShouldReturnCorrectValue()
         {
             // Arrange
             ImDrawChannel drawChannel = new ImDrawChannel
-                {
-                    CmdBuffer = new ImVector()
-                };
+            {
+                CmdBuffer = new ImVector()
+            };
             
             // Act
             ImVectorG<ImDrawCmd> cmdBufferPtr = drawChannel.CmdBufferPtr;
@@ -88,16 +88,16 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that idx buffer ptr should return correct value
+        ///     Tests that idx buffer ptr should return correct value
         /// </summary>
         [Fact]
         public void IdxBufferPtr_ShouldReturnCorrectValue()
         {
             // Arrange
             ImDrawChannel drawChannel = new ImDrawChannel
-                {
-                    IdxBuffer = new ImVector()
-                };
+            {
+                IdxBuffer = new ImVector()
+            };
             
             // Act
             ImVectorG<ushort> idxBufferPtr = drawChannel.IdxBufferPtr;

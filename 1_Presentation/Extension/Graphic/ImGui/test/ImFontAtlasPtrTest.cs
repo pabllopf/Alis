@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test
 {
     /// <summary>
-    /// The im font atlas ptr test class
+    ///     The im font atlas ptr test class
     /// </summary>
     public class ImFontAtlasPtrTest
     {
         /// <summary>
-        /// Tests that native ptr should be initialized
+        ///     Tests that native ptr should be initialized
         /// </summary>
         [Fact]
         public void NativePtr_ShouldBeInitialized()
@@ -50,7 +50,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that flags should be initialized
+        ///     Tests that flags should be initialized
         /// </summary>
         [Fact]
         public void Flags_ShouldBeInitialized()
@@ -61,7 +61,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex id should be initialized
+        ///     Tests that tex id should be initialized
         /// </summary>
         [Fact]
         public void TexId_ShouldBeInitialized()
@@ -72,7 +72,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex desired width should be initialized
+        ///     Tests that tex desired width should be initialized
         /// </summary>
         [Fact]
         public void TexDesiredWidth_ShouldBeInitialized()
@@ -83,7 +83,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex glyph padding should be initialized
+        ///     Tests that tex glyph padding should be initialized
         /// </summary>
         [Fact]
         public void TexGlyphPadding_ShouldBeInitialized()
@@ -94,7 +94,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that locked should be initialized
+        ///     Tests that locked should be initialized
         /// </summary>
         [Fact]
         public void Locked_ShouldBeInitialized()
@@ -106,7 +106,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex ready should be initialized
+        ///     Tests that tex ready should be initialized
         /// </summary>
         [Fact]
         public void TexReady_ShouldBeInitialized()
@@ -118,7 +118,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex pixels use colors should be initialized
+        ///     Tests that tex pixels use colors should be initialized
         /// </summary>
         [Fact]
         public void TexPixelsUseColors_ShouldBeInitialized()
@@ -130,7 +130,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex pixels alpha 8 should be initialized
+        ///     Tests that tex pixels alpha 8 should be initialized
         /// </summary>
         [Fact]
         public void TexPixelsAlpha8_ShouldBeInitialized()
@@ -142,7 +142,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex pixels rgba 32 should be initialized
+        ///     Tests that tex pixels rgba 32 should be initialized
         /// </summary>
         [Fact]
         public void TexPixelsRgba32_ShouldBeInitialized()
@@ -154,7 +154,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex width should be initialized
+        ///     Tests that tex width should be initialized
         /// </summary>
         [Fact]
         public void TexWidth_ShouldBeInitialized()
@@ -166,7 +166,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex height should be initialized
+        ///     Tests that tex height should be initialized
         /// </summary>
         [Fact]
         public void TexHeight_ShouldBeInitialized()
@@ -178,7 +178,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv scale should be initialized
+        ///     Tests that tex uv scale should be initialized
         /// </summary>
         [Fact]
         public void TexUvScale_ShouldBeInitialized()
@@ -190,7 +190,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv white pixel should be initialized
+        ///     Tests that tex uv white pixel should be initialized
         /// </summary>
         [Fact]
         public void TexUvWhitePixel_ShouldBeInitialized()
@@ -202,7 +202,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that fonts should be initialized
+        ///     Tests that fonts should be initialized
         /// </summary>
         [Fact]
         public void Fonts_ShouldBeInitialized()
@@ -214,7 +214,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that custom rects should be initialized
+        ///     Tests that custom rects should be initialized
         /// </summary>
         [Fact]
         public void CustomRects_ShouldBeInitialized()
@@ -226,7 +226,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that config data should be initialized
+        ///     Tests that config data should be initialized
         /// </summary>
         [Fact]
         public void ConfigData_ShouldBeInitialized()
@@ -238,7 +238,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that font builder io should be initialized
+        ///     Tests that font builder io should be initialized
         /// </summary>
         [Fact]
         public void FontBuilderIo_ShouldBeInitialized()
@@ -250,7 +250,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that font builder flags should be initialized
+        ///     Tests that font builder flags should be initialized
         /// </summary>
         [Fact]
         public void FontBuilderFlags_ShouldBeInitialized()
@@ -262,7 +262,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that pack id mouse cursors should be initialized
+        ///     Tests that pack id mouse cursors should be initialized
         /// </summary>
         [Fact]
         public void PackIdMouseCursors_ShouldBeInitialized()
@@ -274,7 +274,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that pack id lines should be initialized
+        ///     Tests that pack id lines should be initialized
         /// </summary>
         [Fact]
         public void PackIdLines_ShouldBeInitialized()
@@ -286,7 +286,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that flags should set and get correctly
+        ///     Tests that flags should set and get correctly
         /// </summary>
         [Fact]
         public void Flags_Should_SetAndGetCorrectly()
@@ -297,7 +297,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex id should set and get correctly
+        ///     Tests that tex id should set and get correctly
         /// </summary>
         [Fact]
         public void TexId_Should_SetAndGetCorrectly()
@@ -309,7 +309,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex desired width should set and get correctly
+        ///     Tests that tex desired width should set and get correctly
         /// </summary>
         [Fact]
         public void TexDesiredWidth_Should_SetAndGetCorrectly()
@@ -320,7 +320,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex glyph padding should set and get correctly
+        ///     Tests that tex glyph padding should set and get correctly
         /// </summary>
         [Fact]
         public void TexGlyphPadding_Should_SetAndGetCorrectly()
@@ -331,7 +331,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that locked should set and get correctly
+        ///     Tests that locked should set and get correctly
         /// </summary>
         [Fact]
         public void Locked_Should_SetAndGetCorrectly()
@@ -342,7 +342,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex ready should set and get correctly
+        ///     Tests that tex ready should set and get correctly
         /// </summary>
         [Fact]
         public void TexReady_Should_SetAndGetCorrectly()
@@ -353,7 +353,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex pixels use colors should set and get correctly
+        ///     Tests that tex pixels use colors should set and get correctly
         /// </summary>
         [Fact]
         public void TexPixelsUseColors_Should_SetAndGetCorrectly()
@@ -364,7 +364,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex pixels alpha 8 should set and get correctly
+        ///     Tests that tex pixels alpha 8 should set and get correctly
         /// </summary>
         [Fact]
         public void TexPixelsAlpha8_Should_SetAndGetCorrectly()
@@ -376,7 +376,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex pixels rgba 32 should set and get correctly
+        ///     Tests that tex pixels rgba 32 should set and get correctly
         /// </summary>
         [Fact]
         public void TexPixelsRgba32_Should_SetAndGetCorrectly()
@@ -388,7 +388,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex width should set and get correctly
+        ///     Tests that tex width should set and get correctly
         /// </summary>
         [Fact]
         public void TexWidth_Should_SetAndGetCorrectly()
@@ -399,7 +399,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex height should set and get correctly
+        ///     Tests that tex height should set and get correctly
         /// </summary>
         [Fact]
         public void TexHeight_Should_SetAndGetCorrectly()
@@ -410,7 +410,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv scale should set and get correctly
+        ///     Tests that tex uv scale should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvScale_Should_SetAndGetCorrectly()
@@ -422,7 +422,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv white pixel should set and get correctly
+        ///     Tests that tex uv white pixel should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvWhitePixel_Should_SetAndGetCorrectly()
@@ -434,7 +434,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that fonts should set and get correctly
+        ///     Tests that fonts should set and get correctly
         /// </summary>
         [Fact]
         public void Fonts_Should_SetAndGetCorrectly()
@@ -446,7 +446,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that custom rects should set and get correctly
+        ///     Tests that custom rects should set and get correctly
         /// </summary>
         [Fact]
         public void CustomRects_Should_SetAndGetCorrectly()
@@ -458,7 +458,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that config data should set and get correctly
+        ///     Tests that config data should set and get correctly
         /// </summary>
         [Fact]
         public void ConfigData_Should_SetAndGetCorrectly()
@@ -470,7 +470,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines should set and get correctly
+        ///     Tests that tex uv lines should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines_Should_SetAndGetCorrectly()
@@ -482,7 +482,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that font builder io should set and get correctly
+        ///     Tests that font builder io should set and get correctly
         /// </summary>
         [Fact]
         public void FontBuilderIo_Should_SetAndGetCorrectly()
@@ -494,7 +494,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that font builder flags should set and get correctly
+        ///     Tests that font builder flags should set and get correctly
         /// </summary>
         [Fact]
         public void FontBuilderFlags_Should_SetAndGetCorrectly()
@@ -505,7 +505,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that pack id mouse cursors should set and get correctly
+        ///     Tests that pack id mouse cursors should set and get correctly
         /// </summary>
         [Fact]
         public void PackIdMouseCursors_Should_SetAndGetCorrectly()
@@ -516,7 +516,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that pack id lines should set and get correctly
+        ///     Tests that pack id lines should set and get correctly
         /// </summary>
         [Fact]
         public void PackIdLines_Should_SetAndGetCorrectly()
@@ -527,7 +527,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 30 should set and get correctly
+        ///     Tests that tex uv lines 30 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines30_Should_SetAndGetCorrectly()
@@ -539,7 +539,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 31 should set and get correctly
+        ///     Tests that tex uv lines 31 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines31_Should_SetAndGetCorrectly()
@@ -551,7 +551,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 32 should set and get correctly
+        ///     Tests that tex uv lines 32 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines32_Should_SetAndGetCorrectly()
@@ -563,7 +563,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 33 should set and get correctly
+        ///     Tests that tex uv lines 33 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines33_Should_SetAndGetCorrectly()
@@ -575,7 +575,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 34 should set and get correctly
+        ///     Tests that tex uv lines 34 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines34_Should_SetAndGetCorrectly()
@@ -587,7 +587,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 35 should set and get correctly
+        ///     Tests that tex uv lines 35 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines35_Should_SetAndGetCorrectly()
@@ -599,7 +599,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 36 should set and get correctly
+        ///     Tests that tex uv lines 36 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines36_Should_SetAndGetCorrectly()
@@ -611,7 +611,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 37 should set and get correctly
+        ///     Tests that tex uv lines 37 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines37_Should_SetAndGetCorrectly()
@@ -623,7 +623,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 38 should set and get correctly
+        ///     Tests that tex uv lines 38 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines38_Should_SetAndGetCorrectly()
@@ -635,7 +635,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 39 should set and get correctly
+        ///     Tests that tex uv lines 39 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines39_Should_SetAndGetCorrectly()
@@ -647,7 +647,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 40 should set and get correctly
+        ///     Tests that tex uv lines 40 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines40_Should_SetAndGetCorrectly()
@@ -659,7 +659,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 41 should set and get correctly
+        ///     Tests that tex uv lines 41 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines41_Should_SetAndGetCorrectly()
@@ -671,7 +671,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 42 should set and get correctly
+        ///     Tests that tex uv lines 42 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines42_Should_SetAndGetCorrectly()
@@ -683,7 +683,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 43 should set and get correctly
+        ///     Tests that tex uv lines 43 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines43_Should_SetAndGetCorrectly()
@@ -695,7 +695,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 44 should set and get correctly
+        ///     Tests that tex uv lines 44 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines44_Should_SetAndGetCorrectly()
@@ -707,7 +707,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 45 should set and get correctly
+        ///     Tests that tex uv lines 45 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines45_Should_SetAndGetCorrectly()
@@ -719,7 +719,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 46 should set and get correctly
+        ///     Tests that tex uv lines 46 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines46_Should_SetAndGetCorrectly()
@@ -731,7 +731,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 47 should set and get correctly
+        ///     Tests that tex uv lines 47 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines47_Should_SetAndGetCorrectly()
@@ -743,7 +743,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 48 should set and get correctly
+        ///     Tests that tex uv lines 48 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines48_Should_SetAndGetCorrectly()
@@ -755,7 +755,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 49 should set and get correctly
+        ///     Tests that tex uv lines 49 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines49_Should_SetAndGetCorrectly()
@@ -767,7 +767,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 50 should set and get correctly
+        ///     Tests that tex uv lines 50 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines50_Should_SetAndGetCorrectly()
@@ -779,7 +779,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 51 should set and get correctly
+        ///     Tests that tex uv lines 51 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines51_Should_SetAndGetCorrectly()
@@ -791,7 +791,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 52 should set and get correctly
+        ///     Tests that tex uv lines 52 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines52_Should_SetAndGetCorrectly()
@@ -803,7 +803,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 53 should set and get correctly
+        ///     Tests that tex uv lines 53 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines53_Should_SetAndGetCorrectly()
@@ -815,7 +815,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 54 should set and get correctly
+        ///     Tests that tex uv lines 54 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines54_Should_SetAndGetCorrectly()
@@ -827,7 +827,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 55 should set and get correctly
+        ///     Tests that tex uv lines 55 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines55_Should_SetAndGetCorrectly()
@@ -839,7 +839,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 56 should set and get correctly
+        ///     Tests that tex uv lines 56 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines56_Should_SetAndGetCorrectly()
@@ -851,7 +851,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 57 should set and get correctly
+        ///     Tests that tex uv lines 57 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines57_Should_SetAndGetCorrectly()
@@ -863,7 +863,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 58 should set and get correctly
+        ///     Tests that tex uv lines 58 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines58_Should_SetAndGetCorrectly()
@@ -875,7 +875,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 59 should set and get correctly
+        ///     Tests that tex uv lines 59 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines59_Should_SetAndGetCorrectly()
@@ -887,7 +887,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 60 should set and get correctly
+        ///     Tests that tex uv lines 60 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines60_Should_SetAndGetCorrectly()
@@ -899,7 +899,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 61 should set and get correctly
+        ///     Tests that tex uv lines 61 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines61_Should_SetAndGetCorrectly()
@@ -911,7 +911,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 62 should set and get correctly
+        ///     Tests that tex uv lines 62 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines62_Should_SetAndGetCorrectly()
@@ -923,7 +923,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 63 should set and get correctly
+        ///     Tests that tex uv lines 63 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines63_Should_SetAndGetCorrectly()
@@ -935,7 +935,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 1 should set and get correctly
+        ///     Tests that tex uv lines 1 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines1_Should_SetAndGetCorrectly()
@@ -947,7 +947,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 2 should set and get correctly
+        ///     Tests that tex uv lines 2 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines2_Should_SetAndGetCorrectly()
@@ -959,7 +959,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 3 should set and get correctly
+        ///     Tests that tex uv lines 3 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines3_Should_SetAndGetCorrectly()
@@ -971,7 +971,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 4 should set and get correctly
+        ///     Tests that tex uv lines 4 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines4_Should_SetAndGetCorrectly()
@@ -983,7 +983,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 5 should set and get correctly
+        ///     Tests that tex uv lines 5 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines5_Should_SetAndGetCorrectly()
@@ -995,7 +995,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 6 should set and get correctly
+        ///     Tests that tex uv lines 6 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines6_Should_SetAndGetCorrectly()
@@ -1007,7 +1007,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 7 should set and get correctly
+        ///     Tests that tex uv lines 7 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines7_Should_SetAndGetCorrectly()
@@ -1019,7 +1019,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 8 should set and get correctly
+        ///     Tests that tex uv lines 8 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines8_Should_SetAndGetCorrectly()
@@ -1031,7 +1031,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 9 should set and get correctly
+        ///     Tests that tex uv lines 9 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines9_Should_SetAndGetCorrectly()
@@ -1043,7 +1043,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 10 should set and get correctly
+        ///     Tests that tex uv lines 10 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines10_Should_SetAndGetCorrectly()
@@ -1055,7 +1055,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 11 should set and get correctly
+        ///     Tests that tex uv lines 11 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines11_Should_SetAndGetCorrectly()
@@ -1067,7 +1067,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 12 should set and get correctly
+        ///     Tests that tex uv lines 12 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines12_Should_SetAndGetCorrectly()
@@ -1079,7 +1079,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 13 should set and get correctly
+        ///     Tests that tex uv lines 13 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines13_Should_SetAndGetCorrectly()
@@ -1091,7 +1091,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 14 should set and get correctly
+        ///     Tests that tex uv lines 14 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines14_Should_SetAndGetCorrectly()
@@ -1103,7 +1103,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 15 should set and get correctly
+        ///     Tests that tex uv lines 15 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines15_Should_SetAndGetCorrectly()
@@ -1115,7 +1115,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 16 should set and get correctly
+        ///     Tests that tex uv lines 16 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines16_Should_SetAndGetCorrectly()
@@ -1127,7 +1127,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 17 should set and get correctly
+        ///     Tests that tex uv lines 17 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines17_Should_SetAndGetCorrectly()
@@ -1139,7 +1139,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 18 should set and get correctly
+        ///     Tests that tex uv lines 18 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines18_Should_SetAndGetCorrectly()
@@ -1151,7 +1151,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 19 should set and get correctly
+        ///     Tests that tex uv lines 19 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines19_Should_SetAndGetCorrectly()
@@ -1163,7 +1163,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 20 should set and get correctly
+        ///     Tests that tex uv lines 20 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines20_Should_SetAndGetCorrectly()
@@ -1175,7 +1175,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 21 should set and get correctly
+        ///     Tests that tex uv lines 21 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines21_Should_SetAndGetCorrectly()
@@ -1187,7 +1187,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 22 should set and get correctly
+        ///     Tests that tex uv lines 22 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines22_Should_SetAndGetCorrectly()
@@ -1199,7 +1199,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 23 should set and get correctly
+        ///     Tests that tex uv lines 23 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines23_Should_SetAndGetCorrectly()
@@ -1211,7 +1211,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 24 should set and get correctly
+        ///     Tests that tex uv lines 24 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines24_Should_SetAndGetCorrectly()
@@ -1223,7 +1223,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 25 should set and get correctly
+        ///     Tests that tex uv lines 25 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines25_Should_SetAndGetCorrectly()
@@ -1235,7 +1235,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 26 should set and get correctly
+        ///     Tests that tex uv lines 26 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines26_Should_SetAndGetCorrectly()
@@ -1247,7 +1247,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 27 should set and get correctly
+        ///     Tests that tex uv lines 27 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines27_Should_SetAndGetCorrectly()
@@ -1259,7 +1259,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 28 should set and get correctly
+        ///     Tests that tex uv lines 28 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines28_Should_SetAndGetCorrectly()
@@ -1271,7 +1271,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tex uv lines 29 should set and get correctly
+        ///     Tests that tex uv lines 29 should set and get correctly
         /// </summary>
         [Fact]
         public void TexUvLines29_Should_SetAndGetCorrectly()
@@ -1283,49 +1283,49 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add font default returns im font ptr
+        ///     Tests that add font default returns im font ptr
         /// </summary>
         [Fact]
         public void AddFontDefault_ReturnsImFontPtr()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-           Assert.Throws<DllNotFoundException>(()=>atlas.AddFontDefault());
+            Assert.Throws<DllNotFoundException>(() => atlas.AddFontDefault());
         }
         
         /// <summary>
-        /// Tests that add font default with font cfg returns im font ptr
+        ///     Tests that add font default with font cfg returns im font ptr
         /// </summary>
         [Fact]
         public void AddFontDefault_WithFontCfg_ReturnsImFontPtr()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             ImFontConfigPtr fontCfg = new ImFontConfigPtr();
-            Assert.Throws<DllNotFoundException>(()=>atlas.AddFontDefault(fontCfg));
+            Assert.Throws<DllNotFoundException>(() => atlas.AddFontDefault(fontCfg));
         }
         
         /// <summary>
-        /// Tests that add font from file ttf returns im font ptr
+        ///     Tests that add font from file ttf returns im font ptr
         /// </summary>
         [Fact]
         public void AddFontFromFileTtf_ReturnsImFontPtr()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-            Assert.Throws<DllNotFoundException>(()=> atlas.AddFontFromFileTtf("test.ttf", 16.0f));
+            Assert.Throws<DllNotFoundException>(() => atlas.AddFontFromFileTtf("test.ttf", 16.0f));
         }
         
         /// <summary>
-        /// Tests that add font from file ttf with font cfg returns im font ptr
+        ///     Tests that add font from file ttf with font cfg returns im font ptr
         /// </summary>
         [Fact]
         public void AddFontFromFileTtf_WithFontCfg_ReturnsImFontPtr()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             ImFontConfigPtr fontCfg = new ImFontConfigPtr();
-            Assert.Throws<DllNotFoundException>(()=> atlas.AddFontFromFileTtf("test.ttf", 16.0f, fontCfg));
+            Assert.Throws<DllNotFoundException>(() => atlas.AddFontFromFileTtf("test.ttf", 16.0f, fontCfg));
         }
         
         /// <summary>
-        /// Tests that add font from file ttf with font cfg and glyph ranges returns im font ptr
+        ///     Tests that add font from file ttf with font cfg and glyph ranges returns im font ptr
         /// </summary>
         [Fact]
         public void AddFontFromFileTtf_WithFontCfgAndGlyphRanges_ReturnsImFontPtr()
@@ -1333,32 +1333,32 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             ImFontConfigPtr fontCfg = new ImFontConfigPtr();
             IntPtr glyphRanges = new IntPtr();
-            Assert.Throws<DllNotFoundException>(()=> atlas.AddFontFromFileTtf("test.ttf", 16.0f, fontCfg, glyphRanges));
+            Assert.Throws<DllNotFoundException>(() => atlas.AddFontFromFileTtf("test.ttf", 16.0f, fontCfg, glyphRanges));
         }
         
         /// <summary>
-        /// Tests that add font from memory compressed base 85 ttf returns im font ptr
+        ///     Tests that add font from memory compressed base 85 ttf returns im font ptr
         /// </summary>
         [Fact]
         public void AddFontFromMemoryCompressedBase85Ttf_ReturnsImFontPtr()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-            Assert.Throws<DllNotFoundException>(()=> atlas.AddFontFromMemoryCompressedBase85Ttf("compressedData", 16.0f));
+            Assert.Throws<DllNotFoundException>(() => atlas.AddFontFromMemoryCompressedBase85Ttf("compressedData", 16.0f));
         }
         
         /// <summary>
-        /// Tests that add font from memory compressed base 85 ttf with font cfg returns im font ptr
+        ///     Tests that add font from memory compressed base 85 ttf with font cfg returns im font ptr
         /// </summary>
         [Fact]
         public void AddFontFromMemoryCompressedBase85Ttf_WithFontCfg_ReturnsImFontPtr()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             ImFontConfigPtr fontCfg = new ImFontConfigPtr();
-            Assert.Throws<DllNotFoundException>(()=> atlas.AddFontFromMemoryCompressedBase85Ttf("compressedData", 16.0f, fontCfg));
+            Assert.Throws<DllNotFoundException>(() => atlas.AddFontFromMemoryCompressedBase85Ttf("compressedData", 16.0f, fontCfg));
         }
         
         /// <summary>
-        /// Tests that add font from memory compressed base 85 ttf with font cfg and glyph ranges returns im font ptr
+        ///     Tests that add font from memory compressed base 85 ttf with font cfg and glyph ranges returns im font ptr
         /// </summary>
         [Fact]
         public void AddFontFromMemoryCompressedBase85Ttf_WithFontCfgAndGlyphRanges_ReturnsImFontPtr()
@@ -1366,22 +1366,22 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             ImFontConfigPtr fontCfg = new ImFontConfigPtr();
             IntPtr glyphRanges = new IntPtr();
-            Assert.Throws<DllNotFoundException>(()=> atlas.AddFontFromMemoryCompressedBase85Ttf("compressedData", 16.0f, fontCfg, glyphRanges));
+            Assert.Throws<DllNotFoundException>(() => atlas.AddFontFromMemoryCompressedBase85Ttf("compressedData", 16.0f, fontCfg, glyphRanges));
         }
         
         /// <summary>
-        /// Tests that add font from memory compressed ttf returns im font ptr
+        ///     Tests that add font from memory compressed ttf returns im font ptr
         /// </summary>
         [Fact]
         public void AddFontFromMemoryCompressedTtf_ReturnsImFontPtr()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             IntPtr compressedFontData = new IntPtr();
-            Assert.Throws<DllNotFoundException>(()=> atlas.AddFontFromMemoryCompressedTtf(compressedFontData, 100, 16.0f));
+            Assert.Throws<DllNotFoundException>(() => atlas.AddFontFromMemoryCompressedTtf(compressedFontData, 100, 16.0f));
         }
         
         /// <summary>
-        /// Tests that add font from memory compressed ttf with font cfg returns im font ptr
+        ///     Tests that add font from memory compressed ttf with font cfg returns im font ptr
         /// </summary>
         [Fact]
         public void AddFontFromMemoryCompressedTtf_WithFontCfg_ReturnsImFontPtr()
@@ -1389,11 +1389,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             IntPtr compressedFontData = new IntPtr();
             ImFontConfigPtr fontCfg = new ImFontConfigPtr();
-            Assert.Throws<DllNotFoundException>(()=> atlas.AddFontFromMemoryCompressedTtf(compressedFontData, 100, 16.0f, fontCfg));
+            Assert.Throws<DllNotFoundException>(() => atlas.AddFontFromMemoryCompressedTtf(compressedFontData, 100, 16.0f, fontCfg));
         }
         
         /// <summary>
-        /// Tests that add font from memory compressed ttf with font cfg and glyph ranges returns im font ptr
+        ///     Tests that add font from memory compressed ttf with font cfg and glyph ranges returns im font ptr
         /// </summary>
         [Fact]
         public void AddFontFromMemoryCompressedTtf_WithFontCfgAndGlyphRanges_ReturnsImFontPtr()
@@ -1402,22 +1402,22 @@ namespace Alis.Extension.Graphic.ImGui.Test
             IntPtr compressedFontData = new IntPtr();
             ImFontConfigPtr fontCfg = new ImFontConfigPtr();
             IntPtr glyphRanges = new IntPtr();
-            Assert.Throws<DllNotFoundException>(()=> atlas.AddFontFromMemoryCompressedTtf(compressedFontData, 100, 16.0f, fontCfg, glyphRanges));
+            Assert.Throws<DllNotFoundException>(() => atlas.AddFontFromMemoryCompressedTtf(compressedFontData, 100, 16.0f, fontCfg, glyphRanges));
         }
         
         /// <summary>
-        /// Tests that add font from memory ttf returns im font ptr
+        ///     Tests that add font from memory ttf returns im font ptr
         /// </summary>
         [Fact]
         public void AddFontFromMemoryTtf_ReturnsImFontPtr()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             IntPtr fontData = new IntPtr();
-            Assert.Throws<DllNotFoundException>(()=> atlas.AddFontFromMemoryTtf(fontData, 100, 16.0f));
+            Assert.Throws<DllNotFoundException>(() => atlas.AddFontFromMemoryTtf(fontData, 100, 16.0f));
         }
         
         /// <summary>
-        /// Tests that add font from memory ttf with font cfg returns im font ptr
+        ///     Tests that add font from memory ttf with font cfg returns im font ptr
         /// </summary>
         [Fact]
         public void AddFontFromMemoryTtf_WithFontCfg_ReturnsImFontPtr()
@@ -1425,11 +1425,11 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             IntPtr fontData = new IntPtr();
             ImFontConfigPtr fontCfg = new ImFontConfigPtr();
-            Assert.Throws<DllNotFoundException>(()=> atlas.AddFontFromMemoryTtf(fontData, 100, 16.0f, fontCfg));
+            Assert.Throws<DllNotFoundException>(() => atlas.AddFontFromMemoryTtf(fontData, 100, 16.0f, fontCfg));
         }
         
         /// <summary>
-        /// Tests that add font from memory ttf with font cfg and glyph ranges returns im font ptr
+        ///     Tests that add font from memory ttf with font cfg and glyph ranges returns im font ptr
         /// </summary>
         [Fact]
         public void AddFontFromMemoryTtf_WithFontCfgAndGlyphRanges_ReturnsImFontPtr()
@@ -1438,273 +1438,273 @@ namespace Alis.Extension.Graphic.ImGui.Test
             IntPtr fontData = new IntPtr();
             ImFontConfigPtr fontCfg = new ImFontConfigPtr();
             IntPtr glyphRanges = new IntPtr();
-            Assert.Throws<DllNotFoundException>(()=> atlas.AddFontFromMemoryTtf(fontData, 100, 16.0f, fontCfg, glyphRanges));
+            Assert.Throws<DllNotFoundException>(() => atlas.AddFontFromMemoryTtf(fontData, 100, 16.0f, fontCfg, glyphRanges));
         }
         
         /// <summary>
-        /// Tests that build returns true
+        ///     Tests that build returns true
         /// </summary>
         [Fact]
         public void Build_ReturnsTrue()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-            Assert.Throws<DllNotFoundException>(()=> atlas.Build());
+            Assert.Throws<DllNotFoundException>(() => atlas.Build());
         }
         
         /// <summary>
-        /// Tests that calc custom rect uv sets out parameters
+        ///     Tests that calc custom rect uv sets out parameters
         /// </summary>
         [Fact]
         public void CalcCustomRectUv_SetsOutParameters()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             ImFontAtlasCustomRect rect = new ImFontAtlasCustomRect();
-            Assert.Throws<DllNotFoundException>(()=>atlas.CalcCustomRectUv(rect, out Vector2 outUvMin, out Vector2 outUvMax));
+            Assert.Throws<DllNotFoundException>(() => atlas.CalcCustomRectUv(rect, out Vector2 outUvMin, out Vector2 outUvMax));
         }
         
         /// <summary>
-        /// Tests that clear clears instance
+        ///     Tests that clear clears instance
         /// </summary>
         [Fact]
         public void Clear_ClearsInstance()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-            Assert.Throws<DllNotFoundException>(()=>atlas.Clear());
+            Assert.Throws<DllNotFoundException>(() => atlas.Clear());
             // Assuming some way to verify the instance is cleared
         }
         
         /// <summary>
-        /// Tests that clear fonts clears fonts
+        ///     Tests that clear fonts clears fonts
         /// </summary>
         [Fact]
         public void ClearFonts_ClearsFonts()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-            Assert.Throws<DllNotFoundException>(()=>atlas.ClearFonts());
+            Assert.Throws<DllNotFoundException>(() => atlas.ClearFonts());
             // Assuming some way to verify the fonts are cleared
         }
         
         /// <summary>
-        /// Tests that clear input data clears input data
+        ///     Tests that clear input data clears input data
         /// </summary>
         [Fact]
         public void ClearInputData_ClearsInputData()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-            Assert.Throws<DllNotFoundException>(()=>atlas.ClearInputData());
+            Assert.Throws<DllNotFoundException>(() => atlas.ClearInputData());
             // Assuming some way to verify the input data is cleared
         }
         
         /// <summary>
-        /// Tests that clear tex data clears tex data
+        ///     Tests that clear tex data clears tex data
         /// </summary>
         [Fact]
         public void ClearTexData_ClearsTexData()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-            Assert.Throws<DllNotFoundException>(()=>atlas.ClearTexData());
+            Assert.Throws<DllNotFoundException>(() => atlas.ClearTexData());
             // Assuming some way to verify the tex data is cleared
         }
         
         /// <summary>
-        /// Tests that get custom rect by index returns custom rect
+        ///     Tests that get custom rect by index returns custom rect
         /// </summary>
         [Fact]
         public void GetCustomRectByIndex_ReturnsCustomRect()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-            Assert.Throws<DllNotFoundException>(()=> atlas.GetCustomRectByIndex(0));
+            Assert.Throws<DllNotFoundException>(() => atlas.GetCustomRectByIndex(0));
         }
         
         /// <summary>
-        /// Tests that get glyph ranges chinese full returns int ptr
+        ///     Tests that get glyph ranges chinese full returns int ptr
         /// </summary>
         [Fact]
         public void GetGlyphRangesChineseFull_ReturnsIntPtr()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-            Assert.Throws<DllNotFoundException>(()=> atlas.GetGlyphRangesChineseFull());
+            Assert.Throws<DllNotFoundException>(() => atlas.GetGlyphRangesChineseFull());
         }
         
         /// <summary>
-        /// Tests that get glyph ranges chinese simplified common returns int ptr
+        ///     Tests that get glyph ranges chinese simplified common returns int ptr
         /// </summary>
         [Fact]
         public void GetGlyphRangesChineseSimplifiedCommon_ReturnsIntPtr()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-            Assert.Throws<DllNotFoundException>(()=> atlas.GetGlyphRangesChineseSimplifiedCommon());
+            Assert.Throws<DllNotFoundException>(() => atlas.GetGlyphRangesChineseSimplifiedCommon());
         }
         
         /// <summary>
-        /// Tests that get glyph ranges cyrillic returns int ptr
+        ///     Tests that get glyph ranges cyrillic returns int ptr
         /// </summary>
         [Fact]
         public void GetGlyphRangesCyrillic_ReturnsIntPtr()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-            Assert.Throws<DllNotFoundException>(()=> atlas.GetGlyphRangesCyrillic());
+            Assert.Throws<DllNotFoundException>(() => atlas.GetGlyphRangesCyrillic());
         }
         
         /// <summary>
-        /// Tests that get glyph ranges default returns int ptr
+        ///     Tests that get glyph ranges default returns int ptr
         /// </summary>
         [Fact]
         public void GetGlyphRangesDefault_ReturnsIntPtr()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-            Assert.Throws<DllNotFoundException>(()=> atlas.GetGlyphRangesDefault());
+            Assert.Throws<DllNotFoundException>(() => atlas.GetGlyphRangesDefault());
         }
         
         /// <summary>
-        /// Tests that get glyph ranges greek returns int ptr
+        ///     Tests that get glyph ranges greek returns int ptr
         /// </summary>
         [Fact]
         public void GetGlyphRangesGreek_ReturnsIntPtr()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-            Assert.Throws<DllNotFoundException>(()=> atlas.GetGlyphRangesGreek());
+            Assert.Throws<DllNotFoundException>(() => atlas.GetGlyphRangesGreek());
         }
         
         /// <summary>
-        /// Tests that get glyph ranges japanese returns int ptr
+        ///     Tests that get glyph ranges japanese returns int ptr
         /// </summary>
         [Fact]
         public void GetGlyphRangesJapanese_ReturnsIntPtr()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-            Assert.Throws<DllNotFoundException>(()=> atlas.GetGlyphRangesJapanese());
+            Assert.Throws<DllNotFoundException>(() => atlas.GetGlyphRangesJapanese());
         }
         
         /// <summary>
-        /// Tests that get glyph ranges korean returns int ptr
+        ///     Tests that get glyph ranges korean returns int ptr
         /// </summary>
         [Fact]
         public void GetGlyphRangesKorean_ReturnsIntPtr()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-            Assert.Throws<DllNotFoundException>(()=> atlas.GetGlyphRangesKorean());
+            Assert.Throws<DllNotFoundException>(() => atlas.GetGlyphRangesKorean());
         }
         
         /// <summary>
-        /// Tests that get glyph ranges thai returns int ptr
+        ///     Tests that get glyph ranges thai returns int ptr
         /// </summary>
         [Fact]
         public void GetGlyphRangesThai_ReturnsIntPtr()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-            Assert.Throws<DllNotFoundException>(()=> atlas.GetGlyphRangesThai());
+            Assert.Throws<DllNotFoundException>(() => atlas.GetGlyphRangesThai());
         }
         
         /// <summary>
-        /// Tests that get glyph ranges vietnamese returns int ptr
+        ///     Tests that get glyph ranges vietnamese returns int ptr
         /// </summary>
         [Fact]
         public void GetGlyphRangesVietnamese_ReturnsIntPtr()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-            Assert.Throws<DllNotFoundException>(()=> atlas.GetGlyphRangesVietnamese());
+            Assert.Throws<DllNotFoundException>(() => atlas.GetGlyphRangesVietnamese());
         }
         
         /// <summary>
-        /// Tests that get mouse cursor tex data returns true
+        ///     Tests that get mouse cursor tex data returns true
         /// </summary>
         [Fact]
         public void GetMouseCursorTexData_ReturnsTrue()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-            Assert.Throws<DllNotFoundException>(()=> atlas.GetMouseCursorTexData(ImGuiMouseCursor.Arrow, out Vector2 outOffset, out Vector2 outSize, out Vector2 outUvBorder, out Vector2 outUvFill));
+            Assert.Throws<DllNotFoundException>(() => atlas.GetMouseCursorTexData(ImGuiMouseCursor.Arrow, out Vector2 outOffset, out Vector2 outSize, out Vector2 outUvBorder, out Vector2 outUvFill));
         }
         
         /// <summary>
-        /// Tests that get tex data as alpha 8 returns data
+        ///     Tests that get tex data as alpha 8 returns data
         /// </summary>
         [Fact]
         public void GetTexDataAsAlpha8_ReturnsData()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-            Assert.Throws<DllNotFoundException>(()=>atlas.GetTexDataAsAlpha8(out byte[] outPixels, out int outWidth, out int outHeight));
+            Assert.Throws<DllNotFoundException>(() => atlas.GetTexDataAsAlpha8(out byte[] outPixels, out int outWidth, out int outHeight));
         }
         
         /// <summary>
-        /// Tests that get tex data as alpha 8 with bytes per pixel returns data
+        ///     Tests that get tex data as alpha 8 with bytes per pixel returns data
         /// </summary>
         [Fact]
         public void GetTexDataAsAlpha8_WithBytesPerPixel_ReturnsData()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-            Assert.Throws<DllNotFoundException>(()=>atlas.GetTexDataAsAlpha8(out byte[] outPixels, out int outWidth, out int outHeight, out int outBytesPerPixel));
+            Assert.Throws<DllNotFoundException>(() => atlas.GetTexDataAsAlpha8(out byte[] outPixels, out int outWidth, out int outHeight, out int outBytesPerPixel));
         }
         
         /// <summary>
-        /// Tests that get tex data as alpha 8 with int ptr returns data
+        ///     Tests that get tex data as alpha 8 with int ptr returns data
         /// </summary>
         [Fact]
         public void GetTexDataAsAlpha8_WithIntPtr_ReturnsData()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-            Assert.Throws<DllNotFoundException>(()=>atlas.GetTexDataAsAlpha8(out IntPtr outPixels, out int outWidth, out int outHeight));
+            Assert.Throws<DllNotFoundException>(() => atlas.GetTexDataAsAlpha8(out IntPtr outPixels, out int outWidth, out int outHeight));
         }
         
         /// <summary>
-        /// Tests that get tex data as alpha 8 with int ptr and bytes per pixel returns data
+        ///     Tests that get tex data as alpha 8 with int ptr and bytes per pixel returns data
         /// </summary>
         [Fact]
         public void GetTexDataAsAlpha8_WithIntPtrAndBytesPerPixel_ReturnsData()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-            Assert.Throws<DllNotFoundException>(()=> atlas.GetTexDataAsAlpha8(out IntPtr outPixels, out int outWidth, out int outHeight, out int outBytesPerPixel));
+            Assert.Throws<DllNotFoundException>(() => atlas.GetTexDataAsAlpha8(out IntPtr outPixels, out int outWidth, out int outHeight, out int outBytesPerPixel));
         }
         
         /// <summary>
-        /// Tests that get tex data as rgba 32 returns data
+        ///     Tests that get tex data as rgba 32 returns data
         /// </summary>
         [Fact]
         public void GetTexDataAsRgba32_ReturnsData()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-            Assert.Throws<DllNotFoundException>(()=>atlas.GetTexDataAsRgba32(out byte[] outPixels, out int outWidth, out int outHeight, out int outBytesPerPixel));
+            Assert.Throws<DllNotFoundException>(() => atlas.GetTexDataAsRgba32(out byte[] outPixels, out int outWidth, out int outHeight, out int outBytesPerPixel));
         }
         
         /// <summary>
-        /// Tests that get tex data as rgba 32 with int ptr returns data
+        ///     Tests that get tex data as rgba 32 with int ptr returns data
         /// </summary>
         [Fact]
         public void GetTexDataAsRgba32_WithIntPtr_ReturnsData()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-            Assert.Throws<DllNotFoundException>(()=> atlas.GetTexDataAsRgba32(out IntPtr outPixels, out int outWidth, out int outHeight));
+            Assert.Throws<DllNotFoundException>(() => atlas.GetTexDataAsRgba32(out IntPtr outPixels, out int outWidth, out int outHeight));
         }
         
         /// <summary>
-        /// Tests that get tex data as rgba 32 with int ptr and bytes per pixel returns data
+        ///     Tests that get tex data as rgba 32 with int ptr and bytes per pixel returns data
         /// </summary>
         [Fact]
         public void GetTexDataAsRgba32_WithIntPtrAndBytesPerPixel_ReturnsData()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-            Assert.Throws<DllNotFoundException>(()=>atlas.GetTexDataAsRgba32(out IntPtr outPixels, out int outWidth, out int outHeight, out int outBytesPerPixel));
+            Assert.Throws<DllNotFoundException>(() => atlas.GetTexDataAsRgba32(out IntPtr outPixels, out int outWidth, out int outHeight, out int outBytesPerPixel));
         }
         
         /// <summary>
-        /// Tests that is built returns true
+        ///     Tests that is built returns true
         /// </summary>
         [Fact]
         public void IsBuilt_ReturnsTrue()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-            Assert.Throws<DllNotFoundException>(()=> atlas.IsBuilt());
+            Assert.Throws<DllNotFoundException>(() => atlas.IsBuilt());
         }
         
         /// <summary>
-        /// Tests that set tex id sets id
+        ///     Tests that set tex id sets id
         /// </summary>
         [Fact]
         public void SetTexId_SetsId()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             IntPtr id = new IntPtr(123);
-            Assert.Throws<DllNotFoundException>(()=>atlas.SetTexId(id));
+            Assert.Throws<DllNotFoundException>(() => atlas.SetTexId(id));
             // Assuming some way to verify the tex id is set
         }
     }

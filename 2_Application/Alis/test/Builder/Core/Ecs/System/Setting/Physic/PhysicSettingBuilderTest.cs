@@ -47,10 +47,10 @@ namespace Alis.Test.Builder.Core.Ecs.System.Setting.Physic
         public void PhysicSettingBuilder_DefaultConstructor_ValidInput()
         {
             PhysicSettingBuilder physicSettingBuilder = new PhysicSettingBuilder();
-
+            
             Assert.NotNull(physicSettingBuilder);
         }
-
+        
         /// <summary>
         ///     Tests that build valid input
         /// </summary>
@@ -58,12 +58,12 @@ namespace Alis.Test.Builder.Core.Ecs.System.Setting.Physic
         public void Build_ValidInput()
         {
             PhysicSettingBuilder physicSettingBuilder = new PhysicSettingBuilder();
-
+            
             PhysicSetting physicSetting = physicSettingBuilder.Build();
-
+            
             Assert.NotNull(physicSetting);
         }
-
+        
         /// <summary>
         ///     Tests that debug valid input
         /// </summary>
@@ -71,12 +71,12 @@ namespace Alis.Test.Builder.Core.Ecs.System.Setting.Physic
         public void Debug_ValidInput()
         {
             PhysicSettingBuilder physicSettingBuilder = new PhysicSettingBuilder();
-
+            
             physicSettingBuilder.Debug(true);
-
+            
             Assert.True(physicSettingBuilder.Build().DebugMode);
         }
-
+        
         /// <summary>
         ///     Tests that debug color valid input
         /// </summary>
@@ -84,12 +84,12 @@ namespace Alis.Test.Builder.Core.Ecs.System.Setting.Physic
         public void DebugColor_ValidInput()
         {
             PhysicSettingBuilder physicSettingBuilder = new PhysicSettingBuilder();
-
+            
             physicSettingBuilder.DebugColor(new Color(255, 255, 255, 255));
-
+            
             Assert.Equal(new Color(255, 255, 255, 255), physicSettingBuilder.Build().DebugColor);
         }
-
+        
         /// <summary>
         ///     Tests that gravity valid input
         /// </summary>
@@ -97,9 +97,9 @@ namespace Alis.Test.Builder.Core.Ecs.System.Setting.Physic
         public void Gravity_ValidInput()
         {
             PhysicSettingBuilder physicSettingBuilder = new PhysicSettingBuilder();
-
+            
             physicSettingBuilder.Gravity(9.8f, -9.8f);
-
+            
             Assert.Equal(new Vector2(9.8f, -9.8f), physicSettingBuilder.Build().Gravity);
         }
     }

@@ -41,12 +41,12 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         ///     The none im nodes attribute flags
         /// </summary>
         None = 0,
-
+        
         /// <summary>
         ///     The enable link detach with drag click im nodes attribute flags
         /// </summary>
         EnableLinkDetachWithDragClick = 1,
-
+        
         /// <summary>
         ///     The enable link creation on snap im nodes attribute flags
         /// </summary>

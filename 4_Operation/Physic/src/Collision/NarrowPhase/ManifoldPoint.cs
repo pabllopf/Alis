@@ -48,16 +48,16 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
     {
         /// <summary>Uniquely identifies a contact point between two Shapes</summary>
         public ContactId Id;
-
-
+        
+        
         /// <summary>Usage depends on manifold type</summary>
         public Vector2 LocalPoint;
-
-
+        
+        
         /// <summary>The non-penetration impulse</summary>
         public float NormalImpulse;
-
-
+        
+        
         /// <summary>The friction impulse</summary>
         public float TangentImpulse;
     }

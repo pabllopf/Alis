@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 
@@ -37,30 +36,29 @@ namespace Alis.Core.Aspect.Math.Definition
     /// <summary>
     ///     The color
     /// </summary>
-    [Serializable]
-    [StructLayout(LayoutKind.Sequential)]
+    [Serializable, StructLayout(LayoutKind.Sequential)]
     public struct Color : ISerializable
     {
         /// <summary>
         ///     The
         /// </summary>
         public byte R { get; set; }
-
+        
         /// <summary>
         ///     The
         /// </summary>
         public byte G { get; set; }
-
+        
         /// <summary>
         ///     The
         /// </summary>
         public byte B { get; set; }
-
+        
         /// <summary>
         ///     The
         /// </summary>
         public byte A { get; set; }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Color" /> class
         /// </summary>
@@ -75,7 +73,7 @@ namespace Alis.Core.Aspect.Math.Definition
             B = b;
             A = a;
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Color" /> class
         /// </summary>
@@ -90,38 +88,37 @@ namespace Alis.Core.Aspect.Math.Definition
             B = (byte) b;
             A = (byte) a;
         }
-
+        
         /// <summary>
         ///     Gets the value of the black
         /// </summary>
         public static Color Black => new Color(0, 0, 0, 255);
-
+        
         /// <summary>
         ///     Gets the value of the red
         /// </summary>
         public static Color Red => new Color(255, 0, 0, 255);
-
+        
         /// <summary>
         ///     Gets the value of the green
         /// </summary>
         public static Color Green => new Color(0, 255, 0, 255);
-
+        
         /// <summary>
         ///     Gets or sets the value of the brown
         /// </summary>
         public static Color Brown { get; } = new Color(165, 42, 42, 255);
-
+        
         /// <summary>
         ///     Gets or sets the value of the dark green
         /// </summary>
         public static Color DarkGreen { get; } = new Color(0, 100, 0, 255);
-
+        
         /// <summary>
         ///     Gets the object data using the specified info
         /// </summary>
         /// <param name="info">The info</param>
         /// <param name="context">The context</param>
-        
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("r", R);

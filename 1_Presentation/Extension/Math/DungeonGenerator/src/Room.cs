@@ -1,7 +1,31 @@
-//------------------------------------------------------------------------------------------
-// <author>Pablo Perdomo Falcón</author>
-// <copyright file="Room.cs" company="Pabllopf">GNU General Public License v3.0</copyright>
-//------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Room.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
 
 using System;
 using Alis.Core.Aspect.Data.Json;
@@ -14,37 +38,7 @@ namespace Alis.Extension.Math.DungeonGenerator
     public class Room
     {
         /// <summary>
-        /// Gets the value of the x pos
-        /// </summary>
-        [JsonPropertyName("XPos:")]
-        public int XPos { get; }
-        
-        /// <summary>
-        /// Gets the value of the y pos
-        /// </summary>
-        [JsonPropertyName("YPos:")]
-        public int YPos { get; }
-        
-        /// <summary>
-        /// Gets the value of the width
-        /// </summary>
-        [JsonPropertyName("Width:")]
-        public int Width { get; }
-        
-        /// <summary>
-        /// Gets the value of the height
-        /// </summary>
-        [JsonPropertyName("Height:")]
-        public int Height { get; }
-
-        /// <summary>
-        /// Gets the value of the direction
-        /// </summary>
-        [JsonPropertyName("Direction:")]
-        public Direction Direction { get; }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Room"/> class
+        ///     Initializes a new instance of the <see cref="Room" /> class
         /// </summary>
         /// <param name="xPos">The pos</param>
         /// <param name="yPos">The pos</param>
@@ -57,9 +51,9 @@ namespace Alis.Extension.Math.DungeonGenerator
             Width = width;
             Height = height;
         }
-
+        
         /// <summary>
-        /// Initializes a new instance of the <see cref="Room"/> class
+        ///     Initializes a new instance of the <see cref="Room" /> class
         /// </summary>
         /// <param name="xPos">The pos</param>
         /// <param name="yPos">The pos</param>
@@ -75,22 +69,49 @@ namespace Alis.Extension.Math.DungeonGenerator
             Height = height;
             Direction = direction;
         }
-
+        
         /// <summary>
-        /// Sets the up first room using the specified x pos
+        ///     Gets the value of the x pos
+        /// </summary>
+        [JsonPropertyName("XPos:")]
+        public int XPos { get; }
+        
+        /// <summary>
+        ///     Gets the value of the y pos
+        /// </summary>
+        [JsonPropertyName("YPos:")]
+        public int YPos { get; }
+        
+        /// <summary>
+        ///     Gets the value of the width
+        /// </summary>
+        [JsonPropertyName("Width:")]
+        public int Width { get; }
+        
+        /// <summary>
+        ///     Gets the value of the height
+        /// </summary>
+        [JsonPropertyName("Height:")]
+        public int Height { get; }
+        
+        /// <summary>
+        ///     Gets the value of the direction
+        /// </summary>
+        [JsonPropertyName("Direction:")]
+        public Direction Direction { get; }
+        
+        /// <summary>
+        ///     Sets the up first room using the specified x pos
         /// </summary>
         /// <param name="xPos">The pos</param>
         /// <param name="yPos">The pos</param>
         /// <param name="width">The width</param>
         /// <param name="height">The height</param>
         /// <returns>The room</returns>
-        public static Room SetUpFirstRoom(int xPos, int yPos, int width, int height)
-        {
-            return new Room(xPos, yPos, width, height);
-        }
-
+        public static Room SetUpFirstRoom(int xPos, int yPos, int width, int height) => new Room(xPos, yPos, width, height);
+        
         /// <summary>
-        /// Sets the up using the specified width
+        ///     Sets the up using the specified width
         /// </summary>
         /// <param name="width">The width</param>
         /// <param name="height">The height</param>
@@ -99,53 +120,53 @@ namespace Alis.Extension.Math.DungeonGenerator
         public static Room SetUp(int width, int height, Corridor corridor)
         {
             Direction direction = corridor.Direction;
-
+            
             int xPos;
             int yPos;
-
+            
             int xWidth;
             int yHeight;
-
+            
             switch (direction)
             {
                 case Direction.North:
                     xPos = (corridor.XPos + (corridor.Width / 2)) - (width / 2);
                     yPos = corridor.YPos + corridor.Height;
-
+                    
                     xWidth = width;
                     yHeight = height;
-
+                    
                     break;
-
+                
                 case Direction.South:
                     xPos = (corridor.XPos + (corridor.Width / 2)) - (width / 2);
                     yPos = corridor.YPos - height;
-
+                    
                     xWidth = width;
                     yHeight = height;
-
+                    
                     break;
-
+                
                 case Direction.East:
                     xPos = corridor.XPos - height;
                     yPos = (corridor.YPos + (corridor.Height / 2)) - (height / 2);
-
+                    
                     xWidth = height;
                     yHeight = width;
-
+                    
                     break;
-
+                
                 case Direction.West:
                     xPos = corridor.XPos + corridor.Width;
                     yPos = (corridor.YPos + (corridor.Height / 2)) - (height / 2);
-
+                    
                     xWidth = height;
                     yHeight = width;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-
+            
             return new Room(xPos, yPos, xWidth, yHeight, direction);
         }
     }

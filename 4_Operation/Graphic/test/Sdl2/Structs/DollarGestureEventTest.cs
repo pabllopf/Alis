@@ -30,17 +30,15 @@
 using Alis.Core.Graphic.Sdl2.Structs;
 using Xunit;
 
-
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
-
     /// <summary>
-    /// The dollar gesture event tests class
+    ///     The dollar gesture event tests class
     /// </summary>
     public class DollarGestureEventTests
     {
         /// <summary>
-        /// Tests that dollar gesture event initializes properties correctly
+        ///     Tests that dollar gesture event initializes properties correctly
         /// </summary>
         [Fact]
         public void DollarGestureEvent_InitializesPropertiesCorrectly()
@@ -53,7 +51,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             float expectedError = 0.1f;
             float expectedX = 0.5f;
             float expectedY = 0.75f;
-
+            
             DollarGestureEvent eventStruct = new DollarGestureEvent
             {
                 type = expectedType,
@@ -65,7 +63,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
                 x = expectedX,
                 y = expectedY
             };
-
+            
             Assert.Equal(expectedType, eventStruct.type);
             Assert.Equal(expectedTimestamp, eventStruct.timestamp);
             Assert.Equal(expectedTouchId, eventStruct.touchId);

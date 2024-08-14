@@ -33,12 +33,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test
 {
     /// <summary>
-    /// The im gui platform ime data test class
+    ///     The im gui platform ime data test class
     /// </summary>
     public class ImGuiPlatformImeDataTest
     {
         /// <summary>
-        /// Tests that want visible should set and get correctly
+        ///     Tests that want visible should set and get correctly
         /// </summary>
         [Fact]
         public void WantVisible_Should_SetAndGetCorrectly()
@@ -47,9 +47,9 @@ namespace Alis.Extension.Graphic.ImGui.Test
             platformImeData.WantVisible = 1;
             Assert.Equal(1, platformImeData.WantVisible);
         }
-
+        
         /// <summary>
-        /// Tests that input pos should set and get correctly
+        ///     Tests that input pos should set and get correctly
         /// </summary>
         [Fact]
         public void InputPos_Should_SetAndGetCorrectly()
@@ -59,9 +59,9 @@ namespace Alis.Extension.Graphic.ImGui.Test
             platformImeData.InputPos = inputPos;
             Assert.Equal(inputPos, platformImeData.InputPos);
         }
-
+        
         /// <summary>
-        /// Tests that input line height should set and get correctly
+        ///     Tests that input line height should set and get correctly
         /// </summary>
         [Fact]
         public void InputLineHeight_Should_SetAndGetCorrectly()

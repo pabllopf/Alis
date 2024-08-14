@@ -32,12 +32,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test
 {
     /// <summary>
-    /// The im gui window flags test class
+    ///     The im gui window flags test class
     /// </summary>
     public class ImGuiWindowFlagsTest
     {
         /// <summary>
-        /// Tests that none should be initialized correctly
+        ///     Tests that none should be initialized correctly
         /// </summary>
         [Fact]
         public void None_ShouldBeInitializedCorrectly()
@@ -50,7 +50,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that no title bar should be initialized correctly
+        ///     Tests that no title bar should be initialized correctly
         /// </summary>
         [Fact]
         public void NoTitleBar_ShouldBeInitializedCorrectly()
@@ -63,7 +63,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that no resize should be initialized correctly
+        ///     Tests that no resize should be initialized correctly
         /// </summary>
         [Fact]
         public void NoResize_ShouldBeInitializedCorrectly()
@@ -76,7 +76,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that no move should be initialized correctly
+        ///     Tests that no move should be initialized correctly
         /// </summary>
         [Fact]
         public void NoMove_ShouldBeInitializedCorrectly()
@@ -89,7 +89,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that no scrollbar should be initialized correctly
+        ///     Tests that no scrollbar should be initialized correctly
         /// </summary>
         [Fact]
         public void NoScrollbar_ShouldBeInitializedCorrectly()
@@ -102,7 +102,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that no scroll with mouse should be initialized correctly
+        ///     Tests that no scroll with mouse should be initialized correctly
         /// </summary>
         [Fact]
         public void NoScrollWithMouse_ShouldBeInitializedCorrectly()
@@ -115,7 +115,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that no collapse should be initialized correctly
+        ///     Tests that no collapse should be initialized correctly
         /// </summary>
         [Fact]
         public void NoCollapse_ShouldBeInitializedCorrectly()
@@ -128,7 +128,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that always auto resize should be initialized correctly
+        ///     Tests that always auto resize should be initialized correctly
         /// </summary>
         [Fact]
         public void AlwaysAutoResize_ShouldBeInitializedCorrectly()
@@ -141,7 +141,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that no background should be initialized correctly
+        ///     Tests that no background should be initialized correctly
         /// </summary>
         [Fact]
         public void NoBackground_ShouldBeInitializedCorrectly()
@@ -154,7 +154,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that no saved settings should be initialized correctly
+        ///     Tests that no saved settings should be initialized correctly
         /// </summary>
         [Fact]
         public void NoSavedSettings_ShouldBeInitializedCorrectly()
@@ -167,7 +167,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that no mouse inputs should be initialized correctly
+        ///     Tests that no mouse inputs should be initialized correctly
         /// </summary>
         [Fact]
         public void NoMouseInputs_ShouldBeInitializedCorrectly()
@@ -180,7 +180,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that menu bar should be initialized correctly
+        ///     Tests that menu bar should be initialized correctly
         /// </summary>
         [Fact]
         public void MenuBar_ShouldBeInitializedCorrectly()
@@ -193,7 +193,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that horizontal scrollbar should be initialized correctly
+        ///     Tests that horizontal scrollbar should be initialized correctly
         /// </summary>
         [Fact]
         public void HorizontalScrollbar_ShouldBeInitializedCorrectly()
@@ -206,7 +206,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that no focus on appearing should be initialized correctly
+        ///     Tests that no focus on appearing should be initialized correctly
         /// </summary>
         [Fact]
         public void NoFocusOnAppearing_ShouldBeInitializedCorrectly()
@@ -219,7 +219,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that no bring to front on focus should be initialized correctly
+        ///     Tests that no bring to front on focus should be initialized correctly
         /// </summary>
         [Fact]
         public void NoBringToFrontOnFocus_ShouldBeInitializedCorrectly()
@@ -232,7 +232,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that always vertical scrollbar should be initialized correctly
+        ///     Tests that always vertical scrollbar should be initialized correctly
         /// </summary>
         [Fact]
         public void AlwaysVerticalScrollbar_ShouldBeInitializedCorrectly()
@@ -245,7 +245,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that always horizontal scrollbar should be initialized correctly
+        ///     Tests that always horizontal scrollbar should be initialized correctly
         /// </summary>
         [Fact]
         public void AlwaysHorizontalScrollbar_ShouldBeInitializedCorrectly()
@@ -258,7 +258,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that always use window padding should be initialized correctly
+        ///     Tests that always use window padding should be initialized correctly
         /// </summary>
         [Fact]
         public void AlwaysUseWindowPadding_ShouldBeInitializedCorrectly()
@@ -271,7 +271,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that no nav inputs should be initialized correctly
+        ///     Tests that no nav inputs should be initialized correctly
         /// </summary>
         [Fact]
         public void NoNavInputs_ShouldBeInitializedCorrectly()
@@ -284,7 +284,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that no nav focus should be initialized correctly
+        ///     Tests that no nav focus should be initialized correctly
         /// </summary>
         [Fact]
         public void NoNavFocus_ShouldBeInitializedCorrectly()
@@ -297,7 +297,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that unsaved document should be initialized correctly
+        ///     Tests that unsaved document should be initialized correctly
         /// </summary>
         [Fact]
         public void UnsavedDocument_ShouldBeInitializedCorrectly()
@@ -310,7 +310,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that no docking should be initialized correctly
+        ///     Tests that no docking should be initialized correctly
         /// </summary>
         [Fact]
         public void NoDocking_ShouldBeInitializedCorrectly()
@@ -323,7 +323,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that no nav should be initialized correctly
+        ///     Tests that no nav should be initialized correctly
         /// </summary>
         [Fact]
         public void NoNav_ShouldBeInitializedCorrectly()
@@ -336,7 +336,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that no decoration should be initialized correctly
+        ///     Tests that no decoration should be initialized correctly
         /// </summary>
         [Fact]
         public void NoDecoration_ShouldBeInitializedCorrectly()
@@ -349,7 +349,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that no inputs should be initialized correctly
+        ///     Tests that no inputs should be initialized correctly
         /// </summary>
         [Fact]
         public void NoInputs_ShouldBeInitializedCorrectly()
@@ -362,7 +362,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that nav flattened should be initialized correctly
+        ///     Tests that nav flattened should be initialized correctly
         /// </summary>
         [Fact]
         public void NavFlattened_ShouldBeInitializedCorrectly()
@@ -375,7 +375,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that child window should be initialized correctly
+        ///     Tests that child window should be initialized correctly
         /// </summary>
         [Fact]
         public void ChildWindow_ShouldBeInitializedCorrectly()
@@ -388,7 +388,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tooltip should be initialized correctly
+        ///     Tests that tooltip should be initialized correctly
         /// </summary>
         [Fact]
         public void Tooltip_ShouldBeInitializedCorrectly()
@@ -401,7 +401,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that popup should be initialized correctly
+        ///     Tests that popup should be initialized correctly
         /// </summary>
         [Fact]
         public void Popup_ShouldBeInitializedCorrectly()
@@ -414,7 +414,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that modal should be initialized correctly
+        ///     Tests that modal should be initialized correctly
         /// </summary>
         [Fact]
         public void Modal_ShouldBeInitializedCorrectly()
@@ -427,7 +427,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that child menu should be initialized correctly
+        ///     Tests that child menu should be initialized correctly
         /// </summary>
         [Fact]
         public void ChildMenu_ShouldBeInitializedCorrectly()
@@ -440,7 +440,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that dock node host should be initialized correctly
+        ///     Tests that dock node host should be initialized correctly
         /// </summary>
         [Fact]
         public void DockNodeHost_ShouldBeInitializedCorrectly()

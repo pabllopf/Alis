@@ -42,7 +42,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     Refers to window
         /// </summary>
         public IntPtr Hwnd { get; set; }
-
+        
         /// <summary>
         ///     Refers to frame
         /// </summary>

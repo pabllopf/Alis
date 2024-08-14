@@ -31,36 +31,34 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test
 {
-
-
     /// <summary>
-    /// The game tests class
+    ///     The game tests class
     /// </summary>
     public class GameTests
     {
         /// <summary>
-        /// Tests that run invokes run method
+        ///     Tests that run invokes run method
         /// </summary>
         [Fact]
         public void Run_InvokesRunMethod()
         {
             GameStub game = new GameStub();
-
+            
             game.Run();
-
+            
             Assert.True(game.RunInvoked);
         }
-
+        
         /// <summary>
-        /// Tests that exit invokes exit method
+        ///     Tests that exit invokes exit method
         /// </summary>
         [Fact]
         public void Exit_InvokesExitMethod()
         {
             GameStub game = new GameStub();
-
+            
             game.Exit();
-
+            
             Assert.True(game.ExitInvoked);
         }
     }

@@ -46,14 +46,14 @@ namespace Alis.Core.Aspect.Memory.Test.Exceptions
         {
             // Arrange
             const string message = "Test message";
-
+            
             // Act
             NotZeroException exception = new NotZeroException(message);
-
+            
             // Assert
             Assert.Equal(message, exception.Message);
         }
-
+        
         /// <summary>
         ///     Tests that validate with zero double should throw exception
         /// </summary>
@@ -63,11 +63,11 @@ namespace Alis.Core.Aspect.Memory.Test.Exceptions
             // Arrange
             IsNotZeroAttribute attribute = new IsNotZeroAttribute();
             double zeroValue = 0.0;
-
+            
             // Act and Assert
             Assert.Throws<NotZeroException>(() => attribute.Validate(zeroValue, nameof(zeroValue)));
         }
-
+        
         /// <summary>
         ///     Tests that validate with zero decimal should throw exception
         /// </summary>
@@ -77,12 +77,12 @@ namespace Alis.Core.Aspect.Memory.Test.Exceptions
             // Arrange
             IsNotZeroAttribute attribute = new IsNotZeroAttribute();
             decimal zeroValue = 0;
-
+            
             // Act and Assert
             Assert.Throws<NotZeroException>(() => attribute.Validate(zeroValue, nameof(zeroValue)));
         }
-
-
+        
+        
         /// <summary>
         ///     Tests that validate with zero float should throw exception
         /// </summary>
@@ -92,11 +92,11 @@ namespace Alis.Core.Aspect.Memory.Test.Exceptions
             // Arrange
             IsNotZeroAttribute attribute = new IsNotZeroAttribute();
             float zeroValue = 0.0f;
-
+            
             // Act and Assert
             Assert.Throws<NotZeroException>(() => attribute.Validate(zeroValue, nameof(zeroValue)));
         }
-
+        
         /// <summary>
         ///     Tests that validate with zero long should throw exception
         /// </summary>
@@ -106,11 +106,11 @@ namespace Alis.Core.Aspect.Memory.Test.Exceptions
             // Arrange
             IsNotZeroAttribute attribute = new IsNotZeroAttribute();
             long zeroValue = 0L;
-
+            
             // Act and Assert
             Assert.Throws<NotZeroException>(() => attribute.Validate(zeroValue, nameof(zeroValue)));
         }
-
+        
         /// <summary>
         ///     Tests that validate with zero int should throw exception
         /// </summary>
@@ -120,12 +120,12 @@ namespace Alis.Core.Aspect.Memory.Test.Exceptions
             // Arrange
             IsNotZeroAttribute attribute = new IsNotZeroAttribute();
             const int zeroValue = 0;
-
+            
             // Act and Assert
             Assert.Throws<NotZeroException>(() => attribute.Validate(zeroValue, nameof(zeroValue)));
         }
-
-
+        
+        
         /// <summary>
         ///     Tests that validate with zero short should throw exception
         /// </summary>
@@ -135,11 +135,11 @@ namespace Alis.Core.Aspect.Memory.Test.Exceptions
             // Arrange
             IsNotZeroAttribute attribute = new IsNotZeroAttribute();
             const short zeroValue = 0;
-
+            
             // Act and Assert
             Assert.Throws<NotZeroException>(() => attribute.Validate(zeroValue, nameof(zeroValue)));
         }
-
+        
         /// <summary>
         ///     Tests that validate with zero byte should throw exception
         /// </summary>
@@ -149,11 +149,11 @@ namespace Alis.Core.Aspect.Memory.Test.Exceptions
             // Arrange
             IsNotZeroAttribute attribute = new IsNotZeroAttribute();
             const byte zeroValue = 0;
-
+            
             // Act and Assert
             Assert.Throws<NotZeroException>(() => attribute.Validate(zeroValue, nameof(zeroValue)));
         }
-
+        
         /// <summary>
         ///     Tests that validate with zero sbyte should throw exception
         /// </summary>
@@ -163,11 +163,11 @@ namespace Alis.Core.Aspect.Memory.Test.Exceptions
             // Arrange
             IsNotZeroAttribute attribute = new IsNotZeroAttribute();
             const sbyte zeroValue = 0;
-
+            
             // Act and Assert
             Assert.Throws<NotZeroException>(() => attribute.Validate(zeroValue, nameof(zeroValue)));
         }
-
+        
         /// <summary>
         ///     Tests that validate with zero ushort should throw exception
         /// </summary>
@@ -177,11 +177,11 @@ namespace Alis.Core.Aspect.Memory.Test.Exceptions
             // Arrange
             IsNotZeroAttribute attribute = new IsNotZeroAttribute();
             const ushort zeroValue = 0;
-
+            
             // Act and Assert
             Assert.Throws<NotZeroException>(() => attribute.Validate(zeroValue, nameof(zeroValue)));
         }
-
+        
         /// <summary>
         ///     Tests that validate with zero uint should throw exception
         /// </summary>
@@ -191,11 +191,11 @@ namespace Alis.Core.Aspect.Memory.Test.Exceptions
             // Arrange
             IsNotZeroAttribute attribute = new IsNotZeroAttribute();
             const uint zeroValue = 0;
-
+            
             // Act and Assert
             Assert.Throws<NotZeroException>(() => attribute.Validate(zeroValue, nameof(zeroValue)));
         }
-
+        
         /// <summary>
         ///     Tests that validate with zero ulong should throw exception
         /// </summary>
@@ -205,11 +205,11 @@ namespace Alis.Core.Aspect.Memory.Test.Exceptions
             // Arrange
             IsNotZeroAttribute attribute = new IsNotZeroAttribute();
             const ulong zeroValue = 0;
-
+            
             // Act and Assert
             Assert.Throws<NotZeroException>(() => attribute.Validate(zeroValue, nameof(zeroValue)));
         }
-
+        
         /// <summary>
         ///     Tests that validate with non zero int should not throw exception
         /// </summary>
@@ -219,10 +219,10 @@ namespace Alis.Core.Aspect.Memory.Test.Exceptions
             // Arrange
             IsNotZeroAttribute attribute = new IsNotZeroAttribute();
             int nonZeroValue = 1;
-
+            
             // Act
             attribute.Validate(nonZeroValue, nameof(nonZeroValue));
-
+            
             // Assert
             Assert.True(true);
         }

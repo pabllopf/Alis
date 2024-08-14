@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
     /// <summary>
-    /// The user event tests class
+    ///     The user event tests class
     /// </summary>
     public class UserEventTests
     {
         /// <summary>
-        /// Tests that user event initializes properties correctly
+        ///     Tests that user event initializes properties correctly
         /// </summary>
         [Fact]
         public void UserEvent_InitializesPropertiesCorrectly()
@@ -50,7 +50,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             int expectedCode = 3;
             IntPtr expectedData1 = new IntPtr(4);
             IntPtr expectedData2 = new IntPtr(5);
-
+            
             UserEvent userEvent = new UserEvent
             {
                 type = expectedType,
@@ -60,7 +60,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
                 Data1 = expectedData1,
                 Data2 = expectedData2
             };
-
+            
             Assert.Equal(expectedType, userEvent.type);
             Assert.Equal(expectedTimestamp, userEvent.timestamp);
             Assert.Equal(expectedWindowID, userEvent.windowID);

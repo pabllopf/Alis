@@ -33,12 +33,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test
 {
     /// <summary>
-    /// The union value test class
+    ///     The union value test class
     /// </summary>
     public class UnionValueTest
     {
         /// <summary>
-        /// Tests that value i 32 should be initialized correctly
+        ///     Tests that value i 32 should be initialized correctly
         /// </summary>
         [Fact]
         public void ValueI32_ShouldBeInitializedCorrectly()
@@ -54,7 +54,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that value f 32 should be initialized correctly
+        ///     Tests that value f 32 should be initialized correctly
         /// </summary>
         [Fact]
         public void ValueF32_ShouldBeInitializedCorrectly()
@@ -70,7 +70,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that value ptr should be initialized correctly
+        ///     Tests that value ptr should be initialized correctly
         /// </summary>
         [Fact]
         public void ValuePtr_ShouldBeInitializedCorrectly()
@@ -87,7 +87,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that value i 32 should overwrite value f 32
+        ///     Tests that value i 32 should overwrite value f 32
         /// </summary>
         [Fact]
         public void ValueI32_ShouldOverwriteValueF32()
@@ -104,7 +104,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that value f 32 should overwrite value i 32
+        ///     Tests that value f 32 should overwrite value i 32
         /// </summary>
         [Fact]
         public void ValueF32_ShouldOverwriteValueI32()
@@ -121,7 +121,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that value ptr should overwrite value i 32
+        ///     Tests that value ptr should overwrite value i 32
         /// </summary>
         [Fact]
         public void ValuePtr_ShouldOverwriteValueI32()

@@ -44,7 +44,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public override void Clear()
         {
         }
-
+        
         /// <summary>
         ///     Adds the value
         /// </summary>

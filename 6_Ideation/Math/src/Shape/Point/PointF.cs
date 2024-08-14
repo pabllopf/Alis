@@ -38,7 +38,7 @@ namespace Alis.Core.Aspect.Math.Shape.Point
     public struct PointF : IShape
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="PointF"/> class
+        ///     Initializes a new instance of the <see cref="PointF" /> class
         /// </summary>
         /// <param name="value">The value</param>
         public PointF(float value)
@@ -48,7 +48,7 @@ namespace Alis.Core.Aspect.Math.Shape.Point
         }
         
         /// <summary>
-        /// Initializes a new instance of the <see cref="PointF"/> class
+        ///     Initializes a new instance of the <see cref="PointF" /> class
         /// </summary>
         /// <param name="point">The point</param>
         public PointF(PointF point)
@@ -58,7 +58,7 @@ namespace Alis.Core.Aspect.Math.Shape.Point
         }
         
         /// <summary>
-        /// Initializes a new instance of the <see cref="PointF"/> class
+        ///     Initializes a new instance of the <see cref="PointF" /> class
         /// </summary>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
@@ -67,12 +67,12 @@ namespace Alis.Core.Aspect.Math.Shape.Point
             X = x;
             Y = y;
         }
-
+        
         /// <summary>
         ///     The X
         /// </summary>
         public float X { get; set; }
-
+        
         /// <summary>
         ///     The Y
         /// </summary>

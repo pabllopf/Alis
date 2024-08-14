@@ -35,48 +35,48 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
 {
     /// <summary>
-    /// The im plot test class
+    ///     The im plot test class
     /// </summary>
     public class ImPlotTestP4
     {
         /// <summary>
-        /// Tests that plot heatmap double array throws dll not found exception
+        ///     Tests that plot heatmap double array throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_DoubleArray_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new double[] {1.0}, 1, 1, 0.0, 1.0, "%.1f"));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new[] {1.0}, 1, 1, 0.0, 1.0, "%.1f"));
         }
         
         /// <summary>
-        /// Tests that plot heatmap double array throws dll not found exception v 2
+        ///     Tests that plot heatmap double array throws dll not found exception v 2
         /// </summary>
         [Fact]
         public void PlotHeatmap_DoubleArray_ThrowsDllNotFoundException_v2()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new double[] {1.0}, 1, 1, 0.0, 1.0, "%.1f", new ImPlotPoint {X = 0, Y = 0}));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new[] {1.0}, 1, 1, 0.0, 1.0, "%.1f", new ImPlotPoint {X = 0, Y = 0}));
         }
         
         /// <summary>
-        /// Tests that plot heatmap double array throws dll not found exception v 3
+        ///     Tests that plot heatmap double array throws dll not found exception v 3
         /// </summary>
         [Fact]
         public void PlotHeatmap_DoubleArray_ThrowsDllNotFoundException_v3()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new double[] {1.0}, 1, 1, 0.0, 1.0, "%.1f", new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new[] {1.0}, 1, 1, 0.0, 1.0, "%.1f", new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}));
         }
         
         /// <summary>
-        /// Tests that plot heatmap double array throws dll not found exception v 4
+        ///     Tests that plot heatmap double array throws dll not found exception v 4
         /// </summary>
         [Fact]
         public void PlotHeatmap_DoubleArray_ThrowsDllNotFoundException_v4()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new double[] {1.0}, 1, 1, 0.0, 1.0, "%.1f", new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, ImPlotHeatmapFlags.None));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new[] {1.0}, 1, 1, 0.0, 1.0, "%.1f", new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, ImPlotHeatmapFlags.None));
         }
         
         /// <summary>
-        /// Tests that plot heatmap s byte array throws dll not found exception
+        ///     Tests that plot heatmap s byte array throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_SByteArray_ThrowsDllNotFoundException()
@@ -85,7 +85,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap s byte array throws dll not found exception v 2
+        ///     Tests that plot heatmap s byte array throws dll not found exception v 2
         /// </summary>
         [Fact]
         public void PlotHeatmap_SByteArray_ThrowsDllNotFoundException_v2()
@@ -94,7 +94,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap s byte array throws dll not found exception v 3
+        ///     Tests that plot heatmap s byte array throws dll not found exception v 3
         /// </summary>
         [Fact]
         public void PlotHeatmap_SByteArray_ThrowsDllNotFoundException_v3()
@@ -103,7 +103,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap s byte array throws dll not found exception v 4
+        ///     Tests that plot heatmap s byte array throws dll not found exception v 4
         /// </summary>
         [Fact]
         public void PlotHeatmap_SByteArray_ThrowsDllNotFoundException_v4()
@@ -112,7 +112,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap s byte array throws dll not found exception v 5
+        ///     Tests that plot heatmap s byte array throws dll not found exception v 5
         /// </summary>
         [Fact]
         public void PlotHeatmap_SByteArray_ThrowsDllNotFoundException_v5()
@@ -121,7 +121,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap s byte array throws dll not found exception v 6
+        ///     Tests that plot heatmap s byte array throws dll not found exception v 6
         /// </summary>
         [Fact]
         public void PlotHeatmap_SByteArray_ThrowsDllNotFoundException_v6()
@@ -130,7 +130,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap s byte array throws dll not found exception v 7
+        ///     Tests that plot heatmap s byte array throws dll not found exception v 7
         /// </summary>
         [Fact]
         public void PlotHeatmap_SByteArray_ThrowsDllNotFoundException_v7()
@@ -139,7 +139,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap byte array throws dll not found exception
+        ///     Tests that plot heatmap byte array throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_ByteArray_ThrowsDllNotFoundException()
@@ -148,7 +148,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap byte array throws dll not found exception v 2
+        ///     Tests that plot heatmap byte array throws dll not found exception v 2
         /// </summary>
         [Fact]
         public void PlotHeatmap_ByteArray_ThrowsDllNotFoundException_v2()
@@ -157,7 +157,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap byte array throws dll not found exception v 3
+        ///     Tests that plot heatmap byte array throws dll not found exception v 3
         /// </summary>
         [Fact]
         public void PlotHeatmap_ByteArray_ThrowsDllNotFoundException_v3()
@@ -166,7 +166,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap byte array throws dll not found exception v 4
+        ///     Tests that plot heatmap byte array throws dll not found exception v 4
         /// </summary>
         [Fact]
         public void PlotHeatmap_ByteArray_ThrowsDllNotFoundException_v4()
@@ -175,7 +175,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap byte array throws dll not found exception v 5
+        ///     Tests that plot heatmap byte array throws dll not found exception v 5
         /// </summary>
         [Fact]
         public void PlotHeatmap_ByteArray_ThrowsDllNotFoundException_v5()
@@ -184,7 +184,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap byte array throws dll not found exception v 6
+        ///     Tests that plot heatmap byte array throws dll not found exception v 6
         /// </summary>
         [Fact]
         public void PlotHeatmap_ByteArray_ThrowsDllNotFoundException_v6()
@@ -193,7 +193,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap byte array throws dll not found exception v 7
+        ///     Tests that plot heatmap byte array throws dll not found exception v 7
         /// </summary>
         [Fact]
         public void PlotHeatmap_ByteArray_ThrowsDllNotFoundException_v7()
@@ -202,7 +202,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap short array throws dll not found exception
+        ///     Tests that plot heatmap short array throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_ShortArray_ThrowsDllNotFoundException()
@@ -211,7 +211,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap short array throws dll not found exception v 2
+        ///     Tests that plot heatmap short array throws dll not found exception v 2
         /// </summary>
         [Fact]
         public void PlotHeatmap_ShortArray_ThrowsDllNotFoundException_v2()
@@ -220,7 +220,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap short array throws dll not found exception v 3
+        ///     Tests that plot heatmap short array throws dll not found exception v 3
         /// </summary>
         [Fact]
         public void PlotHeatmap_ShortArray_ThrowsDllNotFoundException_v3()
@@ -229,7 +229,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap short array throws dll not found exception v 4
+        ///     Tests that plot heatmap short array throws dll not found exception v 4
         /// </summary>
         [Fact]
         public void PlotHeatmap_ShortArray_ThrowsDllNotFoundException_v4()
@@ -238,7 +238,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap short array throws dll not found exception v 5
+        ///     Tests that plot heatmap short array throws dll not found exception v 5
         /// </summary>
         [Fact]
         public void PlotHeatmap_ShortArray_ThrowsDllNotFoundException_v5()
@@ -247,7 +247,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap short array throws dll not found exception v 6
+        ///     Tests that plot heatmap short array throws dll not found exception v 6
         /// </summary>
         [Fact]
         public void PlotHeatmap_ShortArray_ThrowsDllNotFoundException_v6()
@@ -256,7 +256,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap short array throws dll not found exception v 7
+        ///     Tests that plot heatmap short array throws dll not found exception v 7
         /// </summary>
         [Fact]
         public void PlotHeatmap_ShortArray_ThrowsDllNotFoundException_v7()
@@ -265,7 +265,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap u short array throws dll not found exception
+        ///     Tests that plot heatmap u short array throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_UShortArray_ThrowsDllNotFoundException()
@@ -274,7 +274,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap u short array throws dll not found exception v 2
+        ///     Tests that plot heatmap u short array throws dll not found exception v 2
         /// </summary>
         [Fact]
         public void PlotHeatmap_UShortArray_ThrowsDllNotFoundException_v2()
@@ -283,7 +283,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap u short array throws dll not found exception v 3
+        ///     Tests that plot heatmap u short array throws dll not found exception v 3
         /// </summary>
         [Fact]
         public void PlotHeatmap_UShortArray_ThrowsDllNotFoundException_v3()
@@ -292,7 +292,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap u short array throws dll not found exception v 4
+        ///     Tests that plot heatmap u short array throws dll not found exception v 4
         /// </summary>
         [Fact]
         public void PlotHeatmap_UShortArray_ThrowsDllNotFoundException_v4()
@@ -301,7 +301,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap u short array throws dll not found exception v 5
+        ///     Tests that plot heatmap u short array throws dll not found exception v 5
         /// </summary>
         [Fact]
         public void PlotHeatmap_UShortArray_ThrowsDllNotFoundException_v5()
@@ -310,7 +310,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap u short array throws dll not found exception v 6
+        ///     Tests that plot heatmap u short array throws dll not found exception v 6
         /// </summary>
         [Fact]
         public void PlotHeatmap_UShortArray_ThrowsDllNotFoundException_v6()
@@ -319,7 +319,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap u short array throws dll not found exception v 7
+        ///     Tests that plot heatmap u short array throws dll not found exception v 7
         /// </summary>
         [Fact]
         public void PlotHeatmap_UShortArray_ThrowsDllNotFoundException_v7()
@@ -328,66 +328,66 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap int array throws dll not found exception
+        ///     Tests that plot heatmap int array throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_IntArray_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new int[] {1}, 1, 1));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new[] {1}, 1, 1));
         }
         
         /// <summary>
-        /// Tests that plot heatmap int array throws dll not found exception v 2
+        ///     Tests that plot heatmap int array throws dll not found exception v 2
         /// </summary>
         [Fact]
         public void PlotHeatmap_IntArray_ThrowsDllNotFoundException_v2()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new int[] {1}, 1, 1, 0.0));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new[] {1}, 1, 1, 0.0));
         }
         
         /// <summary>
-        /// Tests that plot heatmap int array throws dll not found exception v 3
+        ///     Tests that plot heatmap int array throws dll not found exception v 3
         /// </summary>
         [Fact]
         public void PlotHeatmap_IntArray_ThrowsDllNotFoundException_v3()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new int[] {1}, 1, 1, 0.0, 1.0));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new[] {1}, 1, 1, 0.0, 1.0));
         }
         
         /// <summary>
-        /// Tests that plot heatmap int array throws dll not found exception v 4
+        ///     Tests that plot heatmap int array throws dll not found exception v 4
         /// </summary>
         [Fact]
         public void PlotHeatmap_IntArray_ThrowsDllNotFoundException_v4()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new int[] {1}, 1, 1, 0.0, 1.0, "%.1f"));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new[] {1}, 1, 1, 0.0, 1.0, "%.1f"));
         }
         
         /// <summary>
-        /// Tests that plot heatmap int array throws dll not found exception v 5
+        ///     Tests that plot heatmap int array throws dll not found exception v 5
         /// </summary>
         [Fact]
         public void PlotHeatmap_IntArray_ThrowsDllNotFoundException_v5()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new int[] {1}, 1, 1, 0.0, 1.0, "%.1f", new ImPlotPoint {X = 0, Y = 0}));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new[] {1}, 1, 1, 0.0, 1.0, "%.1f", new ImPlotPoint {X = 0, Y = 0}));
         }
         
         /// <summary>
-        /// Tests that plot heatmap int array throws dll not found exception v 6
+        ///     Tests that plot heatmap int array throws dll not found exception v 6
         /// </summary>
         [Fact]
         public void PlotHeatmap_IntArray_ThrowsDllNotFoundException_v6()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new int[] {1}, 1, 1, 0.0, 1.0, "%.1f", new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new[] {1}, 1, 1, 0.0, 1.0, "%.1f", new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}));
         }
         
         /// <summary>
-        /// Tests that plot heatmap int array throws dll not found exception v 7
+        ///     Tests that plot heatmap int array throws dll not found exception v 7
         /// </summary>
         [Fact]
         public void PlotHeatmap_IntArray_ThrowsDllNotFoundException_v7()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new int[] {1}, 1, 1, 0.0, 1.0, "%.1f", new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, ImPlotHeatmapFlags.None));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new[] {1}, 1, 1, 0.0, 1.0, "%.1f", new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, ImPlotHeatmapFlags.None));
         }
     }
 }

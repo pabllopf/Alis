@@ -35,12 +35,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
 {
     /// <summary>
-    /// The im plot test class
+    ///     The im plot test class
     /// </summary>
     public class ImPlotTestP10
     {
         /// <summary>
-        /// Tests that plot shaded short array 5 params
+        ///     Tests that plot shaded short array 5 params
         /// </summary>
         [Fact]
         public void PlotShaded_ShortArray_5Params()
@@ -49,7 +49,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded short array 6 params
+        ///     Tests that plot shaded short array 6 params
         /// </summary>
         [Fact]
         public void PlotShaded_ShortArray_6Params()
@@ -58,7 +58,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded short array 7 params
+        ///     Tests that plot shaded short array 7 params
         /// </summary>
         [Fact]
         public void PlotShaded_ShortArray_7Params()
@@ -67,7 +67,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded short array 8 params
+        ///     Tests that plot shaded short array 8 params
         /// </summary>
         [Fact]
         public void PlotShaded_ShortArray_8Params()
@@ -76,7 +76,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded short array 9 params
+        ///     Tests that plot shaded short array 9 params
         /// </summary>
         [Fact]
         public void PlotShaded_ShortArray_9Params()
@@ -85,7 +85,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded u short array 3 params
+        ///     Tests that plot shaded u short array 3 params
         /// </summary>
         [Fact]
         public void PlotShaded_UShortArray_3Params()
@@ -94,7 +94,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded u short array 4 params
+        ///     Tests that plot shaded u short array 4 params
         /// </summary>
         [Fact]
         public void PlotShaded_UShortArray_4Params()
@@ -103,7 +103,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded u short array 5 params
+        ///     Tests that plot shaded u short array 5 params
         /// </summary>
         [Fact]
         public void PlotShaded_UShortArray_5Params()
@@ -112,7 +112,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded u short array 6 params
+        ///     Tests that plot shaded u short array 6 params
         /// </summary>
         [Fact]
         public void PlotShaded_UShortArray_6Params()
@@ -121,7 +121,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded u short array 7 params
+        ///     Tests that plot shaded u short array 7 params
         /// </summary>
         [Fact]
         public void PlotShaded_UShortArray_7Params()
@@ -130,7 +130,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded u short array 8 params
+        ///     Tests that plot shaded u short array 8 params
         /// </summary>
         [Fact]
         public void PlotShaded_UShortArray_8Params()
@@ -139,7 +139,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded u short array 9 params
+        ///     Tests that plot shaded u short array 9 params
         /// </summary>
         [Fact]
         public void PlotShaded_UShortArray_9Params()
@@ -148,70 +148,70 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded int array 3 params
+        ///     Tests that plot shaded int array 3 params
         /// </summary>
         [Fact]
         public void PlotShaded_IntArray_3Params()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new int[] {1, 2, 3}, 3));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new[] {1, 2, 3}, 3));
         }
         
         /// <summary>
-        /// Tests that plot shaded int array 4 params
+        ///     Tests that plot shaded int array 4 params
         /// </summary>
         [Fact]
         public void PlotShaded_IntArray_4Params()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new int[] {1, 2, 3}, 3, 0.0));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new[] {1, 2, 3}, 3, 0.0));
         }
         
         /// <summary>
-        /// Tests that plot shaded int array 5 params
+        ///     Tests that plot shaded int array 5 params
         /// </summary>
         [Fact]
         public void PlotShaded_IntArray_5Params()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new int[] {1, 2, 3}, 3, 0.0, 1.0));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new[] {1, 2, 3}, 3, 0.0, 1.0));
         }
         
         /// <summary>
-        /// Tests that plot shaded int array 6 params
+        ///     Tests that plot shaded int array 6 params
         /// </summary>
         [Fact]
         public void PlotShaded_IntArray_6Params()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new int[] {1, 2, 3}, 3, 0.0, 1.0, 0.0));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new[] {1, 2, 3}, 3, 0.0, 1.0, 0.0));
         }
         
         /// <summary>
-        /// Tests that plot shaded int array 7 params
+        ///     Tests that plot shaded int array 7 params
         /// </summary>
         [Fact]
         public void PlotShaded_IntArray_7Params()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new int[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotShadedFlags.None));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotShadedFlags.None));
         }
         
         /// <summary>
-        /// Tests that plot shaded int array 8 params
+        ///     Tests that plot shaded int array 8 params
         /// </summary>
         [Fact]
         public void PlotShaded_IntArray_8Params()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new int[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotShadedFlags.None, 0));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotShadedFlags.None, 0));
         }
         
         /// <summary>
-        /// Tests that plot shaded int array 9 params
+        ///     Tests that plot shaded int array 9 params
         /// </summary>
         [Fact]
         public void PlotShaded_IntArray_9Params()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new int[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotShadedFlags.None, 0, 2));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new[] {1, 2, 3}, 3, 0.0, 1.0, 0.0, ImPlotShadedFlags.None, 0, 2));
         }
         
         /// <summary>
-        /// Tests that plot shaded u int array 3 params
+        ///     Tests that plot shaded u int array 3 params
         /// </summary>
         [Fact]
         public void PlotShaded_UIntArray_3Params()
@@ -220,7 +220,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded u int array 4 params
+        ///     Tests that plot shaded u int array 4 params
         /// </summary>
         [Fact]
         public void PlotShaded_UIntArray_4Params()
@@ -229,7 +229,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded u int array 5 params
+        ///     Tests that plot shaded u int array 5 params
         /// </summary>
         [Fact]
         public void PlotShaded_UIntArray_5Params()
@@ -238,7 +238,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded u int array 6 params
+        ///     Tests that plot shaded u int array 6 params
         /// </summary>
         [Fact]
         public void PlotShaded_UIntArray_6Params()
@@ -247,7 +247,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded u int array 7 params
+        ///     Tests that plot shaded u int array 7 params
         /// </summary>
         [Fact]
         public void PlotShaded_UIntArray_7Params()
@@ -256,7 +256,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded u int array 8 params
+        ///     Tests that plot shaded u int array 8 params
         /// </summary>
         [Fact]
         public void PlotShaded_UIntArray_8Params()
@@ -265,7 +265,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded u int array 9 params
+        ///     Tests that plot shaded u int array 9 params
         /// </summary>
         [Fact]
         public void PlotShaded_UIntArray_9Params()
@@ -274,7 +274,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded long array 3 params
+        ///     Tests that plot shaded long array 3 params
         /// </summary>
         [Fact]
         public void PlotShaded_LongArray_3Params()
@@ -283,7 +283,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded long array 4 params
+        ///     Tests that plot shaded long array 4 params
         /// </summary>
         [Fact]
         public void PlotShaded_LongArray_4Params()
@@ -292,7 +292,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded long array 5 params
+        ///     Tests that plot shaded long array 5 params
         /// </summary>
         [Fact]
         public void PlotShaded_LongArray_5Params()
@@ -301,7 +301,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded long array 6 params
+        ///     Tests that plot shaded long array 6 params
         /// </summary>
         [Fact]
         public void PlotShaded_LongArray_6Params()
@@ -310,7 +310,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded long array 7 params
+        ///     Tests that plot shaded long array 7 params
         /// </summary>
         [Fact]
         public void PlotShaded_LongArray_7Params()
@@ -319,7 +319,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded long array 8 params
+        ///     Tests that plot shaded long array 8 params
         /// </summary>
         [Fact]
         public void PlotShaded_LongArray_8Params()
@@ -328,7 +328,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded long array 9 params
+        ///     Tests that plot shaded long array 9 params
         /// </summary>
         [Fact]
         public void PlotShaded_LongArray_9Params()
@@ -337,7 +337,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded u long array 3 params
+        ///     Tests that plot shaded u long array 3 params
         /// </summary>
         [Fact]
         public void PlotShaded_ULongArray_3Params()
@@ -346,7 +346,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded u long array 4 params
+        ///     Tests that plot shaded u long array 4 params
         /// </summary>
         [Fact]
         public void PlotShaded_ULongArray_4Params()
@@ -355,7 +355,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded u long array 5 params
+        ///     Tests that plot shaded u long array 5 params
         /// </summary>
         [Fact]
         public void PlotShaded_ULongArray_5Params()
@@ -364,7 +364,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded u long array 6 params
+        ///     Tests that plot shaded u long array 6 params
         /// </summary>
         [Fact]
         public void PlotShaded_ULongArray_6Params()
@@ -373,7 +373,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded u long array 7 params
+        ///     Tests that plot shaded u long array 7 params
         /// </summary>
         [Fact]
         public void PlotShaded_ULongArray_7Params()
@@ -382,7 +382,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded u long array 8 params
+        ///     Tests that plot shaded u long array 8 params
         /// </summary>
         [Fact]
         public void PlotShaded_ULongArray_8Params()
@@ -391,7 +391,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded u long array 9 params
+        ///     Tests that plot shaded u long array 9 params
         /// </summary>
         [Fact]
         public void PlotShaded_ULongArray_9Params()
@@ -400,7 +400,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded float ref 3 params
+        ///     Tests that plot shaded float ref 3 params
         /// </summary>
         [Fact]
         public void PlotShaded_FloatRef_3Params()
@@ -410,7 +410,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded float ref 4 params
+        ///     Tests that plot shaded float ref 4 params
         /// </summary>
         [Fact]
         public void PlotShaded_FloatRef_4Params()
@@ -420,7 +420,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded float ref 5 params
+        ///     Tests that plot shaded float ref 5 params
         /// </summary>
         [Fact]
         public void PlotShaded_FloatRef_5Params()
@@ -430,7 +430,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded float ref 6 params
+        ///     Tests that plot shaded float ref 6 params
         /// </summary>
         [Fact]
         public void PlotShaded_FloatRef_6Params()
@@ -440,7 +440,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded float ref 7 params
+        ///     Tests that plot shaded float ref 7 params
         /// </summary>
         [Fact]
         public void PlotShaded_FloatRef_7Params()
@@ -450,7 +450,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded double ref 3 params
+        ///     Tests that plot shaded double ref 3 params
         /// </summary>
         [Fact]
         public void PlotShaded_DoubleRef_3Params()
@@ -460,7 +460,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded double ref 4 params
+        ///     Tests that plot shaded double ref 4 params
         /// </summary>
         [Fact]
         public void PlotShaded_DoubleRef_4Params()
@@ -470,7 +470,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded double ref 5 params
+        ///     Tests that plot shaded double ref 5 params
         /// </summary>
         [Fact]
         public void PlotShaded_DoubleRef_5Params()
@@ -480,7 +480,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded double ref 6 params
+        ///     Tests that plot shaded double ref 6 params
         /// </summary>
         [Fact]
         public void PlotShaded_DoubleRef_6Params()
@@ -490,7 +490,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded double ref 7 params
+        ///     Tests that plot shaded double ref 7 params
         /// </summary>
         [Fact]
         public void PlotShaded_DoubleRef_7Params()

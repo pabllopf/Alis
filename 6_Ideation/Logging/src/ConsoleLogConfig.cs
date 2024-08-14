@@ -40,37 +40,37 @@ namespace Alis.Core.Aspect.Logging
         ///     Info text color
         /// </summary>
         private const ConsoleColor InfoMessageColor = ConsoleColor.DarkGreen;
-
+        
         /// <summary>
         ///     Log text color
         /// </summary>
         private const ConsoleColor LogMessageColor = ConsoleColor.White;
-
+        
         /// <summary>
         ///     Trace text color
         /// </summary>
         private const ConsoleColor TraceMessageColor = ConsoleColor.White;
-
+        
         /// <summary>
         ///     Warning text color
         /// </summary>
         private const ConsoleColor WarningMessageColor = ConsoleColor.DarkYellow;
-
+        
         /// <summary>
         ///     Error text color
         /// </summary>
         private const ConsoleColor ErrorMessageColor = ConsoleColor.Red;
-
+        
         /// <summary>
         ///     Exception text color
         /// </summary>
         private const ConsoleColor ExceptionMessageColor = ConsoleColor.DarkRed;
-
+        
         /// <summary>
         ///     Event text color
         /// </summary>
         private const ConsoleColor EventMessageColor = ConsoleColor.DarkMagenta;
-
+        
         /// <summary>
         ///     Gets the color message by type using the specified message type
         /// </summary>

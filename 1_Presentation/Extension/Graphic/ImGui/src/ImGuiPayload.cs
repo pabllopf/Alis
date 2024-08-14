@@ -42,43 +42,43 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The data
         /// </summary>
         public IntPtr Data { get; set; }
-
+        
         /// <summary>
         ///     The data size
         /// </summary>
         public int DataSize { get; set; }
-
+        
         /// <summary>
         ///     The source id
         /// </summary>
         public uint SourceId { get; set; }
-
+        
         /// <summary>
         ///     The source parent id
         /// </summary>
         public uint SourceParentId { get; set; }
-
+        
         /// <summary>
         ///     The data frame count
         /// </summary>
         public int DataFrameCount { get; set; }
-
+        
         /// <summary>
         ///     The data type
         /// </summary>
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 33)]
         public byte[] DataType;
-
+        
         /// <summary>
         ///     The preview
         /// </summary>
         public byte Preview { get; set; }
-
+        
         /// <summary>
         ///     The delivery
         /// </summary>
         public byte Delivery { get; set; }
-
+        
         /// <summary>
         ///     Clears this instance
         /// </summary>

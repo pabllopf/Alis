@@ -46,42 +46,27 @@ using Alis.Extension.Updater.Services.Files;
 namespace Alis.Extension.Updater
 {
     /// <summary>
-    /// The update manager class
+    ///     The update manager class
     /// </summary>
     public sealed class UpdateManager
     {
         /// <summary>
-        /// The git hub api service
-        /// </summary>
-        private readonly IGitHubApiService _gitHubApiService;
-        
-        /// <summary>
-        /// The file service
+        ///     The file service
         /// </summary>
         private readonly IFileService _fileService;
         
         /// <summary>
-        /// The program folder
+        ///     The git hub api service
+        /// </summary>
+        private readonly IGitHubApiService _gitHubApiService;
+        
+        /// <summary>
+        ///     The program folder
         /// </summary>
         private readonly string _programFolder;
         
         /// <summary>
-        /// Event handler for the update progress
-        /// </summary>
-        public event UpdateProgressEventHandler UpdateProgressChanged;
-        
-        /// <summary>
-        /// Gets or sets the value of the progress
-        /// </summary>
-        public float Progress { get; private set; }
-        
-        /// <summary>
-        /// Gets or sets the value of the message
-        /// </summary>
-        public string Message { get; private set; }
-        
-        /// <summary>
-        /// Initializes a new instance of the <see cref="UpdateManager"/> class
+        ///     Initializes a new instance of the <see cref="UpdateManager" /> class
         /// </summary>
         /// <param name="gitHubApiService">The git hub api service</param>
         /// <param name="fileService">The file service</param>
@@ -95,7 +80,22 @@ namespace Alis.Extension.Updater
         }
         
         /// <summary>
-        /// Ons the update progress changed using the specified progress
+        ///     Gets or sets the value of the progress
+        /// </summary>
+        public float Progress { get; private set; }
+        
+        /// <summary>
+        ///     Gets or sets the value of the message
+        /// </summary>
+        public string Message { get; private set; }
+        
+        /// <summary>
+        ///     Event handler for the update progress
+        /// </summary>
+        public event UpdateProgressEventHandler UpdateProgressChanged;
+        
+        /// <summary>
+        ///     Ons the update progress changed using the specified progress
         /// </summary>
         /// <param name="progress">The progress</param>
         /// <param name="message">The message</param>
@@ -107,7 +107,7 @@ namespace Alis.Extension.Updater
         }
         
         /// <summary>
-        /// Updates the game
+        ///     Updates the game
         /// </summary>
         /// <returns>A task containing the bool</returns>
         public async Task<bool> Start()
@@ -200,7 +200,7 @@ namespace Alis.Extension.Updater
         }
         
         /// <summary>
-        /// Backups this instance
+        ///     Backups this instance
         /// </summary>
         private void Backup()
         {
@@ -218,12 +218,12 @@ namespace Alis.Extension.Updater
             string backupPath = Path.Combine(Environment.CurrentDirectory, "Backup_" + DateTime.Now.ToString("yyyyMMddHHmmss"));
             Directory.Move(_programFolder, backupPath);
             
-           WaitForContinue();
-           
-           OnUpdateProgressChanged(0.72f, "Folder moved to backup.");
-           Logger.Info("Folder moved to backup.");
-           
-           WaitForContinue();
+            WaitForContinue();
+            
+            OnUpdateProgressChanged(0.72f, "Folder moved to backup.");
+            Logger.Info("Folder moved to backup.");
+            
+            WaitForContinue();
             
             // Comprimir el backup:
             string zipBackupPath = Path.Combine(Environment.CurrentDirectory, "Backup_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".zip");
@@ -232,7 +232,7 @@ namespace Alis.Extension.Updater
             Logger.Info("Backup compressed.");
             OnUpdateProgressChanged(0.75f, "Backup compressed.");
             
-           WaitForContinue();
+            WaitForContinue();
             
             // Mantener solo los 2 backups más recientes
             List<FileInfo> backupFiles = Directory.GetFiles(Environment.CurrentDirectory, "Backup_*.zip")
@@ -247,13 +247,13 @@ namespace Alis.Extension.Updater
                     File.Delete(file.FullName);
                     Logger.Info($"Deleted old backup: {file.Name}");
                     OnUpdateProgressChanged(0.8f, $"Deleted old backup: {file.Name}");
-                   WaitForContinue();
+                    WaitForContinue();
                 }
             }
         }
         
         /// <summary>
-        /// Gets the platform
+        ///     Gets the platform
         /// </summary>
         /// <exception cref="PlatformNotSupportedException">Platform not supported.</exception>
         /// <returns>The string</returns>
@@ -267,7 +267,7 @@ namespace Alis.Extension.Updater
         
         
         /// <summary>
-        /// Selects the asset using the specified assets
+        ///     Selects the asset using the specified assets
         /// </summary>
         /// <param name="assets">The assets</param>
         /// <param name="platform">The platform</param>
@@ -289,7 +289,7 @@ namespace Alis.Extension.Updater
         }
         
         /// <summary>
-        /// Gets the latest release
+        ///     Gets the latest release
         /// </summary>
         /// <returns>A task containing the object</returns>
         private async Task<Dictionary<string, object>> GetLatestReleaseAsync()
@@ -301,7 +301,7 @@ namespace Alis.Extension.Updater
         }
         
         /// <summary>
-        /// Downloads the file using the specified url
+        ///     Downloads the file using the specified url
         /// </summary>
         /// <param name="url">The url</param>
         /// <returns>The file path</returns>
@@ -320,14 +320,13 @@ namespace Alis.Extension.Updater
             return filePath;
         }
         
-       /// <summary>
-       /// Extracts the and replace using the specified file async
-       /// </summary>
-       /// <param name="fileAsync">The file</param>
-       /// <exception cref="InvalidOperationException">The file has an invalid extension.</exception>
-       private void ExtractAndReplace(string fileAsync)
+        /// <summary>
+        ///     Extracts the and replace using the specified file async
+        /// </summary>
+        /// <param name="fileAsync">The file</param>
+        /// <exception cref="InvalidOperationException">The file has an invalid extension.</exception>
+        private void ExtractAndReplace(string fileAsync)
         {
-            
             if (fileAsync.Contains(".zip"))
             {
                 ExtractZip(fileAsync);
@@ -346,21 +345,21 @@ namespace Alis.Extension.Updater
             
             throw new InvalidOperationException("The file has an invalid extension.");
         }
-
-       /// <summary>
-       /// Extracts the dmg using the specified file async
-       /// </summary>
-       /// <param name="fileAsync">The file</param>
-       private void ExtractDmg(string fileAsync)
+        
+        /// <summary>
+        ///     Extracts the dmg using the specified file async
+        /// </summary>
+        /// <param name="fileAsync">The file</param>
+        private void ExtractDmg(string fileAsync)
         {
             // Define the path where the .dmg will be mounted
             string mountPath = Path.Combine("/Volumes", Path.GetFileNameWithoutExtension(fileAsync));
-
+            
             // Mount the .dmg file
             ExecuteShellCommand($"hdiutil attach \"{fileAsync}\" -nobrowse -mountpoint \"{mountPath}\"");
             OnUpdateProgressChanged(0.82f, "Mounted .dmg file.");
             Logger.Info("Mounted .dmg file.");
-
+            
             WaitForContinue();
             
             // Assuming _programFolder is the destination where you want to copy the contents of the .dmg
@@ -370,7 +369,7 @@ namespace Alis.Extension.Updater
             }
             
             WaitForContinue();
-
+            
             OnUpdateProgressChanged(0.85f, "Copying contents from .dmg to target directory...");
             Logger.Info("Copying contents from .dmg to target directory...");
             
@@ -379,28 +378,28 @@ namespace Alis.Extension.Updater
             
             
             WaitForContinue();
-
+            
             // Unmount the .dmg file
             OnUpdateProgressChanged(0.88f, "Unmounting .dmg file...");
             Logger.Info("Unmounting .dmg file...");
             ExecuteShellCommand($"hdiutil detach \"{mountPath}\"");
         }
-       
-       /// <summary>
-       /// Waits the for continue
-       /// </summary>
-       private void WaitForContinue()
+        
+        /// <summary>
+        ///     Waits the for continue
+        /// </summary>
+        private void WaitForContinue()
         {
             Thread.Sleep(1000);
         }
-
+        
         /// <summary>
-        /// Executes the shell command using the specified command
+        ///     Executes the shell command using the specified command
         /// </summary>
         /// <param name="command">The command</param>
         private void ExecuteShellCommand(string command)
         {
-            using (Process process = new System.Diagnostics.Process())
+            using (Process process = new Process())
             {
                 process.StartInfo.FileName = "/bin/bash";
                 process.StartInfo.Arguments = $"-c \"{command}\"";
@@ -409,14 +408,14 @@ namespace Alis.Extension.Updater
                 process.StartInfo.UseShellExecute = false;
                 process.StartInfo.CreateNoWindow = true;
                 process.Start();
-
+                
                 process.WaitForExit();
             }
         }
-
+        
         
         /// <summary>
-        /// Extracts the zip using the specified file async
+        ///     Extracts the zip using the specified file async
         /// </summary>
         /// <param name="fileAsync">The file</param>
         /// <exception cref="InvalidOperationException">Exceeded the maximum compression ratio threshold.</exception>
@@ -427,9 +426,9 @@ namespace Alis.Extension.Updater
             ZipFile.ExtractToDirectory(fileAsync, _programFolder);
             OnUpdateProgressChanged(0.7f, "Extracted and replaced.");
         }
-
+        
         /// <summary>
-        /// Cleans the backup
+        ///     Cleans the backup
         /// </summary>
         private void CleanTempFile()
         {

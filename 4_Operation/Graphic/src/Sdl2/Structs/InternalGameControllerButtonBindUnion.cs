@@ -41,12 +41,12 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     The button
         /// </summary>
         [FieldOffset(0)] public readonly int button;
-
+        
         /// <summary>
         ///     The axis
         /// </summary>
         [FieldOffset(0)] public readonly int axis;
-
+        
         /// <summary>
         ///     The hat
         /// </summary>

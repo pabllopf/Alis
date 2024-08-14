@@ -50,7 +50,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igCombo_Str(Encoding.UTF8.GetBytes(label), ref currentItem, Encoding.UTF8.GetBytes(itemsSeparatedByZeros), 0);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether combo
         /// </summary>
@@ -64,13 +64,13 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igCombo_Str(Encoding.UTF8.GetBytes(label), ref currentItem, Encoding.UTF8.GetBytes(itemsSeparatedByZeros), popupMaxHeightInItems);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Creates the context
         /// </summary>
         /// <returns>The ret</returns>
         public static IntPtr CreateContext() => ImGuiNative.igCreateContext(new IntPtr());
-
+        
         /// <summary>
         ///     Creates the context using the specified shared font atlas
         /// </summary>
@@ -81,7 +81,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             IntPtr ret = ImGuiNative.igCreateContext(sharedFontAtlas.NativePtr);
             return ret;
         }
-
+        
         /// <summary>
         ///     Describes whether debug check version and data layout
         /// </summary>
@@ -98,7 +98,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igDebugCheckVersionAndDataLayout(Encoding.UTF8.GetBytes(versionStr), szIo, szStyle, szVec2, szVec4, szDrawvert, szDrawidx);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Debugs the text encoding using the specified text
         /// </summary>
@@ -121,7 +121,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             uint ret = ImGuiNative.igDockSpace(id, size, flags, windowClass);
             return ret;
         }
-
+        
         /// <summary>
         ///     Docks the space using the specified id
         /// </summary>
@@ -135,7 +135,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             uint ret = ImGuiNative.igDockSpace(id, size, flags, windowClass);
             return ret;
         }
-
+        
         /// <summary>
         ///     Docks the space using the specified id
         /// </summary>
@@ -149,7 +149,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             uint ret = ImGuiNative.igDockSpace(id, size, flags, windowClass);
             return ret;
         }
-
+        
         /// <summary>
         ///     Docks the space using the specified id
         /// </summary>
@@ -163,7 +163,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             uint ret = ImGuiNative.igDockSpace(id, size, flags, windowClass);
             return ret;
         }
-
+        
         /// <summary>
         ///     Docks the space over viewport
         /// </summary>
@@ -175,7 +175,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             uint ret = ImGuiNative.igDockSpaceOverViewport(new IntPtr(), flags, windowClass);
             return ret;
         }
-
+        
         /// <summary>
         ///     Docks the space over viewport using the specified viewport
         /// </summary>
@@ -189,7 +189,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             uint ret = ImGuiNative.igDockSpaceOverViewport(viewport.NativePtr, flags, windowClass);
             return ret;
         }
-
+        
         /// <summary>
         ///     Docks the space over viewport using the specified viewport
         /// </summary>
@@ -202,7 +202,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             uint ret = ImGuiNative.igDockSpaceOverViewport(viewport.NativePtr, flags, windowClass);
             return ret;
         }
-
+        
         /// <summary>
         ///     Docks the space over viewport using the specified viewport
         /// </summary>
@@ -215,7 +215,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             uint ret = ImGuiNative.igDockSpaceOverViewport(viewport.NativePtr, flags, windowClass);
             return ret;
         }
-
+        
         /// <summary>
         ///     Describes whether drag float
         /// </summary>
@@ -227,7 +227,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igDragFloat(Encoding.UTF8.GetBytes(label), ref v, 0.0f, 0.0f, 0.0f, null, 0);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag float
         /// </summary>
@@ -240,7 +240,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igDragFloat(Encoding.UTF8.GetBytes(label), ref v, vSpeed, 0.0f, 0.0f, null, 0);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag float
         /// </summary>
@@ -254,7 +254,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igDragFloat(Encoding.UTF8.GetBytes(label), ref v, vSpeed, vMin, 0.0f, null, 0);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag float
         /// </summary>
@@ -269,7 +269,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igDragFloat(Encoding.UTF8.GetBytes(label), ref v, vSpeed, vMin, vMax, null, 0);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag float
         /// </summary>
@@ -285,7 +285,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igDragFloat(Encoding.UTF8.GetBytes(label), ref v, vSpeed, vMin, vMax, Encoding.UTF8.GetBytes(format), 0);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag float
         /// </summary>
@@ -302,7 +302,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igDragFloat(Encoding.UTF8.GetBytes(label), ref v, vSpeed, vMin, vMax, Encoding.UTF8.GetBytes(format), flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag float 2
         /// </summary>
@@ -314,7 +314,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igDragFloat2(Encoding.UTF8.GetBytes(label), ref v, 0.0f, 0.0f, 0.0f, null, 0);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag float 2
         /// </summary>
@@ -327,7 +327,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igDragFloat2(Encoding.UTF8.GetBytes(label), ref v, vSpeed, 0.0f, 0.0f, null, 0);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag float 2
         /// </summary>
@@ -341,7 +341,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igDragFloat2(Encoding.UTF8.GetBytes(label), ref v, vSpeed, vMin, 0.0f, null, 0);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag float 2
         /// </summary>
@@ -356,7 +356,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igDragFloat2(Encoding.UTF8.GetBytes(label), ref v, vSpeed, vMin, vMax, null, 0);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag float 2
         /// </summary>
@@ -372,7 +372,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igDragFloat2(Encoding.UTF8.GetBytes(label), ref v, vSpeed, vMin, vMax, Encoding.UTF8.GetBytes(format), 0);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag float 2
         /// </summary>
@@ -389,7 +389,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igDragFloat2(Encoding.UTF8.GetBytes(label), ref v, vSpeed, vMin, vMax, Encoding.UTF8.GetBytes(format), flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag float 3
         /// </summary>
@@ -401,7 +401,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igDragFloat3(Encoding.UTF8.GetBytes(label), ref v, 0.0f, 0.0f, 0.0f, null, 0);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag float 3
         /// </summary>
@@ -414,7 +414,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igDragFloat3(Encoding.UTF8.GetBytes(label), ref v, vSpeed, 0.0f, 0.0f, null, 0);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag float 3
         /// </summary>
@@ -428,7 +428,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igDragFloat3(Encoding.UTF8.GetBytes(label), ref v, vSpeed, vMin, 0.0f, null, 0);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag float 3
         /// </summary>
@@ -443,7 +443,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igDragFloat3(Encoding.UTF8.GetBytes(label), ref v, vSpeed, vMin, vMax, null, 0);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag float 3
         /// </summary>
@@ -459,7 +459,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igDragFloat3(Encoding.UTF8.GetBytes(label), ref v, vSpeed, vMin, vMax, Encoding.UTF8.GetBytes(format), 0);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag float 3
         /// </summary>
@@ -476,7 +476,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igDragFloat3(Encoding.UTF8.GetBytes(label), ref v, vSpeed, vMin, vMax, Encoding.UTF8.GetBytes(format), flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag float 4
         /// </summary>
@@ -488,7 +488,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igDragFloat4(Encoding.UTF8.GetBytes(label), v, 0.0f, 0.0f, 0.0f, null, 0);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag float 4
         /// </summary>
@@ -501,7 +501,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igDragFloat4(Encoding.UTF8.GetBytes(label), v, vSpeed, 0.0f, 0.0f, null, 0);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag float 4
         /// </summary>
@@ -515,7 +515,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igDragFloat4(Encoding.UTF8.GetBytes(label), v, vSpeed, vMin, 0.0f, null, 0);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag float 4
         /// </summary>
@@ -530,7 +530,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igDragFloat4(Encoding.UTF8.GetBytes(label), v, vSpeed, vMin, vMax, null, 0);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag float 4
         /// </summary>
@@ -546,7 +546,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igDragFloat4(Encoding.UTF8.GetBytes(label), v, vSpeed, vMin, vMax, Encoding.UTF8.GetBytes(format), 0);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag float 4
         /// </summary>
@@ -563,7 +563,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igDragFloat4(Encoding.UTF8.GetBytes(label), v, vSpeed, vMin, vMax, Encoding.UTF8.GetBytes(format), flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag float range 2
         /// </summary>
@@ -577,7 +577,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igDragFloatRange2(Encoding.UTF8.GetBytes(label), ref vCurrentMin, ref vCurrentMax, 0.0f, 0.0f, 0, null, formatMax, ImGuiSliderFlags.None);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag float range 2
         /// </summary>
@@ -592,7 +592,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igDragFloatRange2(Encoding.UTF8.GetBytes(label), ref vCurrentMin, ref vCurrentMax, vSpeed, 0.0f, 0, null, formatMax, ImGuiSliderFlags.None);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag float range 2
         /// </summary>
@@ -608,7 +608,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igDragFloatRange2(Encoding.UTF8.GetBytes(label), ref vCurrentMin, ref vCurrentMax, vSpeed, vMin, 0, null, uIntPtr, ImGuiSliderFlags.None);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag float range 2
         /// </summary>
@@ -625,7 +625,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igDragFloatRange2(Encoding.UTF8.GetBytes(label), ref vCurrentMin, ref vCurrentMax, vSpeed, vMin, vMax, null, uIntPtr, ImGuiSliderFlags.None);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag float range 2
         /// </summary>
@@ -643,7 +643,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igDragFloatRange2(Encoding.UTF8.GetBytes(label), ref vCurrentMin, ref vCurrentMax, vSpeed, vMin, vMax, Encoding.UTF8.GetBytes(format), uIntPtr, ImGuiSliderFlags.None);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag float range 2
         /// </summary>
@@ -661,7 +661,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igDragFloatRange2(Encoding.UTF8.GetBytes(label), ref vCurrentMin, ref vCurrentMax, vSpeed, vMin, vMax, Encoding.UTF8.GetBytes(format), Encoding.UTF8.GetBytes(formatMax), ImGuiSliderFlags.None);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag float range 2
         /// </summary>
@@ -680,7 +680,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
             byte ret = ImGuiNative.igDragFloatRange2(Encoding.UTF8.GetBytes(label), ref vCurrentMin, ref vCurrentMax, vSpeed, vMin, vMax, Encoding.UTF8.GetBytes(format), Encoding.UTF8.GetBytes(formatMax), flags);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Describes whether drag int
         /// </summary>

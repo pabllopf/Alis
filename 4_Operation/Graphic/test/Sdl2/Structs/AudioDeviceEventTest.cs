@@ -33,13 +33,12 @@ using Xunit;
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
     /// <summary>
-    /// The audio device event test class
+    ///     The audio device event test class
     /// </summary>
     public class AudioDeviceEventTest
     {
-
         /// <summary>
-        /// Tests that audio device event initializes properties correctly
+        ///     Tests that audio device event initializes properties correctly
         /// </summary>
         [Fact]
         public void AudioDeviceEvent_InitializesPropertiesCorrectly()
@@ -51,7 +50,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
                 which = 2,
                 isCapture = 1
             };
-
+            
             Assert.Equal(1u, audioDeviceEvent.type);
             Assert.Equal(100u, audioDeviceEvent.timestamp);
             Assert.Equal(2u, audioDeviceEvent.which);

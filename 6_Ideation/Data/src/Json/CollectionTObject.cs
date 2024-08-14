@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Alis.Core.Aspect.Data.Json
 {
@@ -41,7 +40,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     The coll
         /// </summary>
         internal ICollection<T> Coll;
-
+        
         /// <summary>
         ///     Gets or sets the value of the list
         /// </summary>
@@ -54,25 +53,24 @@ namespace Alis.Core.Aspect.Data.Json
                 Coll = (ICollection<T>) value;
             }
         }
-
+        
         /// <summary>
         ///     Clears this instance
         /// </summary>
         public override void Clear() => Coll.Clear();
-
+        
         /// <summary>
         ///     Adds the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <param name="options">The options</param>
-        
         public override void Add(object value, JsonOptions options = null)
         {
             if ((value == null) && typeof(T).IsValueType)
             {
                 JsonSerializer.HandleException(new JsonException("JSO0014: JSON error detected. Cannot add null to a collection of '" + typeof(T) + "' elements."), options);
             }
-
+            
             Coll.Add((T) value);
         }
     }

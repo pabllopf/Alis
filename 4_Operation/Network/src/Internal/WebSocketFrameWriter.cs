@@ -58,9 +58,9 @@ namespace Alis.Core.Network.Internal
             byte finBitSetAsByte = isLastFrame ? (byte) 0x80 : (byte) 0x00;
             byte byte1 = (byte) (finBitSetAsByte | (byte) opCode);
             toStream.WriteByte(byte1);
-
+            
             WritePayloadLength(fromPayload, toStream, isClient);
-
+            
             if (isClient)
             {
                 WriteMaskedPayload(fromPayload, toStream);
@@ -70,7 +70,7 @@ namespace Alis.Core.Network.Internal
                 toStream.Write(fromPayload.Array, fromPayload.Offset, fromPayload.Count);
             }
         }
-
+        
         /// <summary>
         ///     Writes the payload length using the specified from payload
         /// </summary>
@@ -80,7 +80,7 @@ namespace Alis.Core.Network.Internal
         internal static void WritePayloadLength(ArraySegment<byte> fromPayload, MemoryStream toStream, bool isClient)
         {
             byte maskBitSetAsByte = isClient ? (byte) 0x80 : (byte) 0x00;
-
+            
             if (fromPayload.Count < 126)
             {
                 WriteByteWithPayloadCount(maskBitSetAsByte, fromPayload.Count, toStream);
@@ -91,7 +91,7 @@ namespace Alis.Core.Network.Internal
                 WritePayloadData(fromPayload, toStream);
             }
         }
-
+        
         /// <summary>
         ///     Determines the payload count using the specified from payload
         /// </summary>
@@ -103,10 +103,10 @@ namespace Alis.Core.Network.Internal
             {
                 return 126;
             }
-
+            
             return 127;
         }
-
+        
         /// <summary>
         ///     Writes the payload data using the specified from payload
         /// </summary>
@@ -123,7 +123,7 @@ namespace Alis.Core.Network.Internal
                 BinaryReaderWriter.WriteULong((ulong) fromPayload.Count, toStream, false);
             }
         }
-
+        
         /// <summary>
         ///     Writes the byte with payload count using the specified mask bit set as byte
         /// </summary>
@@ -135,7 +135,7 @@ namespace Alis.Core.Network.Internal
             byte byte2 = (byte) (maskBitSetAsByte | payloadCount);
             toStream.WriteByte(byte2);
         }
-
+        
         /// <summary>
         ///     Writes the masked payload using the specified from payload
         /// </summary>
@@ -147,10 +147,10 @@ namespace Alis.Core.Network.Internal
             RandomNumberGenerator rand = RandomNumberGenerator.Create();
             rand.GetBytes(maskKey);
             toStream.Write(maskKey, 0, maskKey.Length);
-
+            
             ArraySegment<byte> maskKeyArraySegment = new ArraySegment<byte>(maskKey, 0, maskKey.Length);
             WebSocketFrameCommon.ToggleMask(maskKeyArraySegment, fromPayload);
-
+            
             toStream.Write(fromPayload.Array, fromPayload.Offset, fromPayload.Count);
         }
     }

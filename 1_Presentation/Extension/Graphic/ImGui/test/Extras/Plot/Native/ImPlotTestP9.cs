@@ -36,12 +36,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
 {
     /// <summary>
-    /// The im plot test class
+    ///     The im plot test class
     /// </summary>
     public class ImPlotTestP9
     {
         /// <summary>
-        /// Tests that plot line s 32 ptr s 32 ptr int throws dll not found exception
+        ///     Tests that plot line s 32 ptr s 32 ptr int throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotLine_S32PtrS32PtrInt_ThrowsDllNotFoundException()
@@ -54,7 +54,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line s 32 ptr s 32 ptr int flags throws dll not found exception
+        ///     Tests that plot line s 32 ptr s 32 ptr int flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotLine_S32PtrS32PtrIntFlags_ThrowsDllNotFoundException()
@@ -67,7 +67,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line s 32 ptr s 32 ptr int flags offset throws dll not found exception
+        ///     Tests that plot line s 32 ptr s 32 ptr int flags offset throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotLine_S32PtrS32PtrIntFlagsOffset_ThrowsDllNotFoundException()
@@ -80,7 +80,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line s 32 ptr s 32 ptr int flags offset stride throws dll not found exception
+        ///     Tests that plot line s 32 ptr s 32 ptr int flags offset stride throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotLine_S32PtrS32PtrIntFlagsOffsetStride_ThrowsDllNotFoundException()
@@ -93,7 +93,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line u 32 ptr u 32 ptr int throws dll not found exception
+        ///     Tests that plot line u 32 ptr u 32 ptr int throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotLine_U32PtrU32PtrInt_ThrowsDllNotFoundException()
@@ -106,7 +106,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line u 32 ptr u 32 ptr int flags throws dll not found exception
+        ///     Tests that plot line u 32 ptr u 32 ptr int flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotLine_U32PtrU32PtrIntFlags_ThrowsDllNotFoundException()
@@ -119,7 +119,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line u 32 ptr u 32 ptr int flags offset throws dll not found exception
+        ///     Tests that plot line u 32 ptr u 32 ptr int flags offset throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotLine_U32PtrU32PtrIntFlagsOffset_ThrowsDllNotFoundException()
@@ -132,7 +132,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line u 32 ptr u 32 ptr int flags offset stride throws dll not found exception
+        ///     Tests that plot line u 32 ptr u 32 ptr int flags offset stride throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotLine_U32PtrU32PtrIntFlagsOffsetStride_ThrowsDllNotFoundException()
@@ -145,7 +145,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line s 64 ptr s 64 ptr int throws dll not found exception
+        ///     Tests that plot line s 64 ptr s 64 ptr int throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotLine_S64PtrS64PtrInt_ThrowsDllNotFoundException()
@@ -158,7 +158,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line s 64 ptr s 64 ptr int flags throws dll not found exception
+        ///     Tests that plot line s 64 ptr s 64 ptr int flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotLine_S64PtrS64PtrIntFlags_ThrowsDllNotFoundException()
@@ -171,7 +171,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line s 64 ptr s 64 ptr int flags offset throws dll not found exception
+        ///     Tests that plot line s 64 ptr s 64 ptr int flags offset throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotLine_S64PtrS64PtrIntFlagsOffset_ThrowsDllNotFoundException()
@@ -184,7 +184,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line s 64 ptr s 64 ptr int flags offset stride throws dll not found exception
+        ///     Tests that plot line s 64 ptr s 64 ptr int flags offset stride throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotLine_S64PtrS64PtrIntFlagsOffsetStride_ThrowsDllNotFoundException()
@@ -197,7 +197,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line u 64 ptr u 64 ptr int throws dll not found exception
+        ///     Tests that plot line u 64 ptr u 64 ptr int throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotLine_U64PtrU64PtrInt_ThrowsDllNotFoundException()
@@ -210,7 +210,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line u 64 ptr u 64 ptr int flags throws dll not found exception
+        ///     Tests that plot line u 64 ptr u 64 ptr int flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotLine_U64PtrU64PtrIntFlags_ThrowsDllNotFoundException()
@@ -223,7 +223,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line u 64 ptr u 64 ptr int flags offset throws dll not found exception
+        ///     Tests that plot line u 64 ptr u 64 ptr int flags offset throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotLine_U64PtrU64PtrIntFlagsOffset_ThrowsDllNotFoundException()
@@ -236,7 +236,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line u 64 ptr u 64 ptr int flags offset stride throws dll not found exception
+        ///     Tests that plot line u 64 ptr u 64 ptr int flags offset stride throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotLine_U64PtrU64PtrIntFlagsOffsetStride_ThrowsDllNotFoundException()
@@ -249,7 +249,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line g int ptr int ptr int throws dll not found exception
+        ///     Tests that plot line g int ptr int ptr int throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotLineG_IntPtrIntPtrInt_ThrowsDllNotFoundException()
@@ -258,7 +258,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line g int ptr int ptr int flags throws dll not found exception
+        ///     Tests that plot line g int ptr int ptr int flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotLineG_IntPtrIntPtrIntFlags_ThrowsDllNotFoundException()
@@ -267,7 +267,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot pie chart float ptr throws dll not found exception
+        ///     Tests that plot pie chart float ptr throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotPieChart_FloatPtr_ThrowsDllNotFoundException()
@@ -276,7 +276,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot pie chart float ptr label fmt throws dll not found exception
+        ///     Tests that plot pie chart float ptr label fmt throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotPieChart_FloatPtrLabelFmt_ThrowsDllNotFoundException()
@@ -285,7 +285,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot pie chart float ptr label fmt angle 0 throws dll not found exception
+        ///     Tests that plot pie chart float ptr label fmt angle 0 throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotPieChart_FloatPtrLabelFmtAngle0_ThrowsMarshalDirectiveException()
@@ -294,7 +294,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot pie chart float ptr label fmt angle 0 flags throws dll not found exception
+        ///     Tests that plot pie chart float ptr label fmt angle 0 flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotPieChart_FloatPtrLabelFmtAngle0Flags_ThrowsMarshalDirectiveException()
@@ -303,7 +303,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot pie chart double ptr throws dll not found exception
+        ///     Tests that plot pie chart double ptr throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotPieChart_DoublePtr_ThrowsMarshalDirectiveException()
@@ -312,7 +312,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot pie chart double ptr label fmt throws dll not found exception
+        ///     Tests that plot pie chart double ptr label fmt throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotPieChart_DoublePtrLabelFmt_ThrowsMarshalDirectiveException()
@@ -321,7 +321,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot pie chart double ptr label fmt angle 0 throws dll not found exception
+        ///     Tests that plot pie chart double ptr label fmt angle 0 throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotPieChart_DoublePtrLabelFmtAngle0_ThrowsMarshalDirectiveException()
@@ -330,7 +330,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot pie chart double ptr label fmt angle 0 flags throws dll not found exception
+        ///     Tests that plot pie chart double ptr label fmt angle 0 flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotPieChart_DoublePtrLabelFmtAngle0Flags_ThrowsMarshalDirectiveException()
@@ -339,7 +339,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot pie chart s 8 ptr throws dll not found exception
+        ///     Tests that plot pie chart s 8 ptr throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotPieChart_S8Ptr_ThrowsMarshalDirectiveException()
@@ -348,7 +348,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot pie chart s 8 ptr label fmt throws dll not found exception
+        ///     Tests that plot pie chart s 8 ptr label fmt throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotPieChart_S8PtrLabelFmt_ThrowsMarshalDirectiveException()
@@ -357,7 +357,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot pie chart s 8 ptr label fmt angle 0 throws dll not found exception
+        ///     Tests that plot pie chart s 8 ptr label fmt angle 0 throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotPieChart_S8PtrLabelFmtAngle0_ThrowsMarshalDirectiveException()
@@ -366,7 +366,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot pie chart s 8 ptr label fmt angle 0 flags throws dll not found exception
+        ///     Tests that plot pie chart s 8 ptr label fmt angle 0 flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotPieChart_S8PtrLabelFmtAngle0Flags_ThrowsMarshalDirectiveException()
@@ -375,7 +375,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot pie chart u 8 ptr throws dll not found exception
+        ///     Tests that plot pie chart u 8 ptr throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotPieChart_U8Ptr_ThrowsMarshalDirectiveException()
@@ -384,7 +384,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot pie chart u 8 ptr label fmt throws dll not found exception
+        ///     Tests that plot pie chart u 8 ptr label fmt throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotPieChart_U8PtrLabelFmt_ThrowsMarshalDirectiveException()
@@ -393,7 +393,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot pie chart u 8 ptr label fmt angle 0 throws dll not found exception
+        ///     Tests that plot pie chart u 8 ptr label fmt angle 0 throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotPieChart_U8PtrLabelFmtAngle0_ThrowsMarshalDirectiveException()
@@ -402,7 +402,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot pie chart u 8 ptr label fmt angle 0 flags throws dll not found exception
+        ///     Tests that plot pie chart u 8 ptr label fmt angle 0 flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotPieChart_U8PtrLabelFmtAngle0Flags_ThrowsMarshalDirectiveException()
@@ -411,7 +411,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot pie chart s 16 ptr throws dll not found exception
+        ///     Tests that plot pie chart s 16 ptr throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotPieChart_S16Ptr_ThrowsMarshalDirectiveException()
@@ -420,7 +420,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot pie chart s 16 ptr label fmt throws dll not found exception
+        ///     Tests that plot pie chart s 16 ptr label fmt throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotPieChart_S16PtrLabelFmt_ThrowsMarshalDirectiveException()
@@ -429,7 +429,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot pie chart s 16 ptr label fmt angle 0 throws dll not found exception
+        ///     Tests that plot pie chart s 16 ptr label fmt angle 0 throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotPieChart_S16PtrLabelFmtAngle0_ThrowsMarshalDirectiveException()
@@ -438,7 +438,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot pie chart s 16 ptr label fmt angle 0 flags throws dll not found exception
+        ///     Tests that plot pie chart s 16 ptr label fmt angle 0 flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotPieChart_S16PtrLabelFmtAngle0Flags_ThrowsMarshalDirectiveException()
@@ -447,7 +447,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot pie chart u 16 ptr throws dll not found exception
+        ///     Tests that plot pie chart u 16 ptr throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotPieChart_U16Ptr_ThrowsMarshalDirectiveException()

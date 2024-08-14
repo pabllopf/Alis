@@ -38,17 +38,17 @@ namespace Alis.Core.Physic.Collision.Distance
         ///     The point
         /// </summary>
         public Vector2 Point { get; set; }
-
+        
         /// <summary>
         ///     The normal
         /// </summary>
         public Vector2 Normal { get; set; }
-
+        
         /// <summary>
         ///     The lambda
         /// </summary>
         public float Lambda { get; set; }
-
+        
         /// <summary>
         ///     The iterations
         /// </summary>

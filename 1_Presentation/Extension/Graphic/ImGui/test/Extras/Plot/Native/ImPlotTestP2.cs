@@ -37,21 +37,21 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
 {
     /// <summary>
-    /// The im plot test class
+    ///     The im plot test class
     /// </summary>
     public class ImPlotTestP2
     {
         /// <summary>
-        /// Tests that get plot limits throws dll not found exception
+        ///     Tests that get plot limits throws dll not found exception
         /// </summary>
         [Fact]
         public void GetPlotLimits_ThrowsMarshalDirectiveException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.GetPlotLimits((ImAxis) 0, (ImAxis) 0));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.GetPlotLimits(0, 0));
         }
         
         /// <summary>
-        /// Tests that get plot mouse pos throws dll not found exception
+        ///     Tests that get plot mouse pos throws dll not found exception
         /// </summary>
         [Fact]
         public void GetPlotMousePos_ThrowsMarshalDirectiveException()
@@ -60,25 +60,25 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that get plot mouse pos with x axis throws dll not found exception
+        ///     Tests that get plot mouse pos with x axis throws dll not found exception
         /// </summary>
         [Fact]
         public void GetPlotMousePos_WithXAxis_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.GetPlotMousePos((ImAxis) 0));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.GetPlotMousePos(0));
         }
         
         /// <summary>
-        /// Tests that get plot mouse pos with x axis and y axis throws dll not found exception
+        ///     Tests that get plot mouse pos with x axis and y axis throws dll not found exception
         /// </summary>
         [Fact]
         public void GetPlotMousePos_WithXAxisAndYAxis_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.GetPlotMousePos((ImAxis) 0, (ImAxis) 0));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.GetPlotMousePos(0, 0));
         }
         
         /// <summary>
-        /// Tests that get plot pos throws dll not found exception
+        ///     Tests that get plot pos throws dll not found exception
         /// </summary>
         [Fact]
         public void GetPlotPos_ThrowsDllNotFoundException()
@@ -87,7 +87,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that get plot selection throws dll not found exception
+        ///     Tests that get plot selection throws dll not found exception
         /// </summary>
         [Fact]
         public void GetPlotSelection_ThrowsDllNotFoundException()
@@ -96,25 +96,25 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that get plot selection with x axis throws dll not found exception
+        ///     Tests that get plot selection with x axis throws dll not found exception
         /// </summary>
         [Fact]
         public void GetPlotSelection_WithXAxis_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.GetPlotSelection((ImAxis) 0));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.GetPlotSelection(0));
         }
         
         /// <summary>
-        /// Tests that get plot selection with x axis and y axis throws dll not found exception
+        ///     Tests that get plot selection with x axis and y axis throws dll not found exception
         /// </summary>
         [Fact]
         public void GetPlotSelection_WithXAxisAndYAxis_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.GetPlotSelection((ImAxis) 0, (ImAxis) 0));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.GetPlotSelection(0, 0));
         }
         
         /// <summary>
-        /// Tests that get plot size throws dll not found exception
+        ///     Tests that get plot size throws dll not found exception
         /// </summary>
         [Fact]
         public void GetPlotSize_ThrowsDllNotFoundException()
@@ -123,7 +123,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that get style throws dll not found exception
+        ///     Tests that get style throws dll not found exception
         /// </summary>
         [Fact]
         public void GetStyle_ThrowsDllNotFoundException()
@@ -132,16 +132,16 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that get style color name throws dll not found exception
+        ///     Tests that get style color name throws dll not found exception
         /// </summary>
         [Fact]
         public void GetStyleColorName_ThrowsMarshalDirectiveException()
         {
-            Assert.Throws<MarshalDirectiveException>(() => ImPlot.GetStyleColorName((ImPlotCol) 0));
+            Assert.Throws<MarshalDirectiveException>(() => ImPlot.GetStyleColorName(0));
         }
         
         /// <summary>
-        /// Tests that hide next item throws dll not found exception
+        ///     Tests that hide next item throws dll not found exception
         /// </summary>
         [Fact]
         public void HideNextItem_ThrowsDllNotFoundException()
@@ -150,7 +150,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that hide next item with hidden throws dll not found exception
+        ///     Tests that hide next item with hidden throws dll not found exception
         /// </summary>
         [Fact]
         public void HideNextItem_WithHidden_ThrowsDllNotFoundException()
@@ -159,7 +159,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that hide next item with hidden and cond throws dll not found exception
+        ///     Tests that hide next item with hidden and cond throws dll not found exception
         /// </summary>
         [Fact]
         public void HideNextItem_WithHiddenAndCond_ThrowsDllNotFoundException()
@@ -168,16 +168,16 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that is axis hovered throws dll not found exception
+        ///     Tests that is axis hovered throws dll not found exception
         /// </summary>
         [Fact]
         public void IsAxisHovered_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.IsAxisHovered((ImAxis) 0));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.IsAxisHovered(0));
         }
         
         /// <summary>
-        /// Tests that is legend entry hovered throws dll not found exception
+        ///     Tests that is legend entry hovered throws dll not found exception
         /// </summary>
         [Fact]
         public void IsLegendEntryHovered_ThrowsDllNotFoundException()
@@ -186,7 +186,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that is plot hovered throws dll not found exception
+        ///     Tests that is plot hovered throws dll not found exception
         /// </summary>
         [Fact]
         public void IsPlotHovered_ThrowsDllNotFoundException()
@@ -195,7 +195,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that is plot selected throws dll not found exception
+        ///     Tests that is plot selected throws dll not found exception
         /// </summary>
         [Fact]
         public void IsPlotSelected_ThrowsDllNotFoundException()
@@ -204,7 +204,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that is subplots hovered throws dll not found exception
+        ///     Tests that is subplots hovered throws dll not found exception
         /// </summary>
         [Fact]
         public void IsSubplotsHovered_ThrowsDllNotFoundException()
@@ -213,7 +213,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that item icon with vector 4 throws dll not found exception
+        ///     Tests that item icon with vector 4 throws dll not found exception
         /// </summary>
         [Fact]
         public void ItemIcon_WithVector4_ThrowsDllNotFoundException()
@@ -222,7 +222,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that item icon with u int throws dll not found exception
+        ///     Tests that item icon with u int throws dll not found exception
         /// </summary>
         [Fact]
         public void ItemIcon_WithUInt_ThrowsDllNotFoundException()
@@ -231,7 +231,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that map input default throws dll not found exception
+        ///     Tests that map input default throws dll not found exception
         /// </summary>
         [Fact]
         public void MapInputDefault_ThrowsDllNotFoundException()
@@ -240,7 +240,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that map input default with dst throws dll not found exception
+        ///     Tests that map input default with dst throws dll not found exception
         /// </summary>
         [Fact]
         public void MapInputDefault_WithDst_ThrowsDllNotFoundException()
@@ -249,7 +249,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that map input reverse throws dll not found exception
+        ///     Tests that map input reverse throws dll not found exception
         /// </summary>
         [Fact]
         public void MapInputReverse_ThrowsDllNotFoundException()
@@ -258,7 +258,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that map input reverse with dst throws dll not found exception
+        ///     Tests that map input reverse with dst throws dll not found exception
         /// </summary>
         [Fact]
         public void MapInputReverse_WithDst_ThrowsDllNotFoundException()
@@ -267,7 +267,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that next colormap color throws dll not found exception
+        ///     Tests that next colormap color throws dll not found exception
         /// </summary>
         [Fact]
         public void NextColormapColor_ThrowsDllNotFoundException()
@@ -276,7 +276,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that pixels to plot with vector 2 throws dll not found exception
+        ///     Tests that pixels to plot with vector 2 throws dll not found exception
         /// </summary>
         [Fact]
         public void PixelsToPlot_WithVector2_ThrowsDllNotFoundException()
@@ -285,25 +285,25 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that pixels to plot with vector 2 and x axis throws dll not found exception
+        ///     Tests that pixels to plot with vector 2 and x axis throws dll not found exception
         /// </summary>
         [Fact]
         public void PixelsToPlot_WithVector2AndXAxis_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.PixelsToPlot(new Vector2(), (ImAxis) 0));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PixelsToPlot(new Vector2(), 0));
         }
         
         /// <summary>
-        /// Tests that pixels to plot with vector 2 x axis and y axis throws dll not found exception
+        ///     Tests that pixels to plot with vector 2 x axis and y axis throws dll not found exception
         /// </summary>
         [Fact]
         public void PixelsToPlot_WithVector2XAxisAndYAxis_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.PixelsToPlot(new Vector2(), (ImAxis) 0, (ImAxis) 0));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PixelsToPlot(new Vector2(), 0, 0));
         }
         
         /// <summary>
-        /// Tests that pixels to plot with float throws dll not found exception
+        ///     Tests that pixels to plot with float throws dll not found exception
         /// </summary>
         [Fact]
         public void PixelsToPlot_WithFloat_ThrowsDllNotFoundException()
@@ -312,25 +312,25 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that pixels to plot with float and x axis throws dll not found exception
+        ///     Tests that pixels to plot with float and x axis throws dll not found exception
         /// </summary>
         [Fact]
         public void PixelsToPlot_WithFloatAndXAxis_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.PixelsToPlot(0f, 0f, (ImAxis) 0));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PixelsToPlot(0f, 0f, 0));
         }
         
         /// <summary>
-        /// Tests that pixels to plot with float x axis and y axis throws dll not found exception
+        ///     Tests that pixels to plot with float x axis and y axis throws dll not found exception
         /// </summary>
         [Fact]
         public void PixelsToPlot_WithFloatXAxisAndYAxis_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.PixelsToPlot(0f, 0f, (ImAxis) 0, (ImAxis) 0));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PixelsToPlot(0f, 0f, 0, 0));
         }
         
         /// <summary>
-        /// Tests that plot bar groups with float throws dll not found exception
+        ///     Tests that plot bar groups with float throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotBarGroups_WithFloat_ThrowsMarshalDirectiveException()
@@ -339,7 +339,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot bar groups with float and group size throws dll not found exception
+        ///     Tests that plot bar groups with float and group size throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotBarGroups_WithFloatAndGroupSize_ThrowsMarshalDirectiveException()
@@ -348,7 +348,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot bar groups with float group size and shift throws dll not found exception
+        ///     Tests that plot bar groups with float group size and shift throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotBarGroups_WithFloatGroupSizeAndShift_ThrowsMarshalDirectiveException()
@@ -357,7 +357,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot bar groups with float group size shift and flags throws dll not found exception
+        ///     Tests that plot bar groups with float group size shift and flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotBarGroups_WithFloatGroupSizeShiftAndFlags_ThrowsMarshalDirectiveException()
@@ -366,7 +366,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot bar groups with double throws dll not found exception
+        ///     Tests that plot bar groups with double throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotBarGroups_WithDouble_ThrowsMarshalDirectiveException()
@@ -375,7 +375,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot bar groups with double and group size throws dll not found exception
+        ///     Tests that plot bar groups with double and group size throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotBarGroups_WithDoubleAndGroupSize_ThrowsMarshalDirectiveException()
@@ -384,7 +384,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot bar groups with double group size and shift throws dll not found exception
+        ///     Tests that plot bar groups with double group size and shift throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotBarGroups_WithDoubleGroupSizeAndShift_ThrowsMarshalDirectiveException()
@@ -393,7 +393,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot bar groups with double group size shift and flags throws dll not found exception
+        ///     Tests that plot bar groups with double group size shift and flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotBarGroups_WithDoubleGroupSizeShiftAndFlags_ThrowsMarshalDirectiveException()
@@ -402,7 +402,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot bar groups with s byte throws dll not found exception
+        ///     Tests that plot bar groups with s byte throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotBarGroups_WithSByte_ThrowsMarshalDirectiveException()
@@ -411,7 +411,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot bar groups with s byte and group size throws dll not found exception
+        ///     Tests that plot bar groups with s byte and group size throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotBarGroups_WithSByteAndGroupSize_ThrowsMarshalDirectiveException()
@@ -420,7 +420,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot bar groups with s byte group size and shift throws dll not found exception
+        ///     Tests that plot bar groups with s byte group size and shift throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotBarGroups_WithSByteGroupSizeAndShift_ThrowsMarshalDirectiveException()
@@ -429,7 +429,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot bar groups with s byte group size shift and flags throws dll not found exception
+        ///     Tests that plot bar groups with s byte group size shift and flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotBarGroups_WithSByteGroupSizeShiftAndFlags_ThrowsMarshalDirectiveException()
@@ -438,7 +438,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot bar groups with byte throws dll not found exception
+        ///     Tests that plot bar groups with byte throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotBarGroups_WithByte_ThrowsMarshalDirectiveException()
@@ -447,7 +447,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot bar groups with byte and group size throws dll not found exception
+        ///     Tests that plot bar groups with byte and group size throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotBarGroups_WithByteAndGroupSize_ThrowsMarshalDirectiveException()
@@ -456,7 +456,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot bar groups with byte group size and shift throws dll not found exception
+        ///     Tests that plot bar groups with byte group size and shift throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotBarGroups_WithByteGroupSizeAndShift_ThrowsMarshalDirectiveException()
@@ -465,7 +465,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot bar groups with byte group size shift and flags throws dll not found exception
+        ///     Tests that plot bar groups with byte group size shift and flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotBarGroups_WithByteGroupSizeShiftAndFlags_ThrowsMarshalDirectiveException()
@@ -474,7 +474,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot bar groups with short throws dll not found exception
+        ///     Tests that plot bar groups with short throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotBarGroups_WithShort_ThrowsMarshalDirectiveException()
@@ -483,7 +483,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot bar groups with short and group size throws dll not found exception
+        ///     Tests that plot bar groups with short and group size throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotBarGroups_WithShortAndGroupSize_ThrowsMarshalDirectiveException()
@@ -492,7 +492,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot bar groups with short group size and shift throws dll not found exception
+        ///     Tests that plot bar groups with short group size and shift throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotBarGroups_WithShortGroupSizeAndShift_ThrowsMarshalDirectiveException()
@@ -501,7 +501,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot bar groups with short group size shift and flags throws dll not found exception
+        ///     Tests that plot bar groups with short group size shift and flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotBarGroups_WithShortGroupSizeShiftAndFlags_ThrowsMarshalDirectiveException()
@@ -510,7 +510,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot bar groups with u short throws dll not found exception
+        ///     Tests that plot bar groups with u short throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotBarGroups_WithUShort_ThrowsMarshalDirectiveException()
@@ -519,7 +519,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot bar groups with u short and group size throws dll not found exception
+        ///     Tests that plot bar groups with u short and group size throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotBarGroups_WithUShortAndGroupSize_ThrowsMarshalDirectiveException()
@@ -528,7 +528,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot bar groups with u short group size and shift throws dll not found exception
+        ///     Tests that plot bar groups with u short group size and shift throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotBarGroups_WithUShortGroupSizeAndShift_ThrowsMarshalDirectiveException()
@@ -537,7 +537,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot bar groups with u short group size shift and flags throws dll not found exception
+        ///     Tests that plot bar groups with u short group size shift and flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotBarGroups_WithUShortGroupSizeShiftAndFlags_ThrowsMarshalDirectiveException()
@@ -546,7 +546,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot bar groups with int throws dll not found exception
+        ///     Tests that plot bar groups with int throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotBarGroups_WithInt_ThrowsMarshalDirectiveException()
@@ -555,7 +555,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot bar groups with int and group size throws dll not found exception
+        ///     Tests that plot bar groups with int and group size throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotBarGroups_WithIntAndGroupSize_ThrowsMarshalDirectiveException()
@@ -564,7 +564,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot bar groups with int group size and shift throws dll not found exception
+        ///     Tests that plot bar groups with int group size and shift throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotBarGroups_WithIntGroupSizeAndShift_ThrowsMarshalDirectiveException()
@@ -573,7 +573,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot bar groups with int group size shift and flags throws dll not found exception
+        ///     Tests that plot bar groups with int group size shift and flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotBarGroups_WithIntGroupSizeShiftAndFlags_ThrowsMarshalDirectiveException()
@@ -582,7 +582,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot bar groups with u int throws dll not found exception
+        ///     Tests that plot bar groups with u int throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotBarGroups_WithUInt_ThrowsMarshalDirectiveException()

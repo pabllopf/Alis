@@ -41,7 +41,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         ///     The items
         /// </summary>
         private readonly List<(TItem item, TPriority priority)> _items;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="FixedSizePriorityQueue" /> class
         /// </summary>
@@ -51,12 +51,12 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             MaxSize = maxSize;
             _items = new List<(TItem, TPriority)>(maxSize);
         }
-
+        
         /// <summary>
         ///     Gets or sets the value of the max size
         /// </summary>
         public int MaxSize { get; }
-
+        
         /// <summary>
         ///     Enqueues the item
         /// </summary>
@@ -67,11 +67,11 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         {
             if (_items.Count == MaxSize)
                 throw new InvalidOperationException("Queue has reached its maximum size.");
-
+            
             _items.Add((item, priority));
             _items.Sort((x, y) => x.priority.CompareTo(y.priority));
         }
-
+        
         /// <summary>
         ///     Dequeues this instance
         /// </summary>
@@ -81,7 +81,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         {
             if (_items.Count == 0)
                 throw new InvalidOperationException("Queue is empty.");
-
+            
             TItem item = _items[0].item;
             _items.RemoveAt(0);
             return item;

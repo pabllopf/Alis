@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Data.Resource;
@@ -44,38 +43,35 @@ namespace Alis.Core.Ecs.Component.Render
         /// <summary>
         ///     Initializes a new instance of the <see cref="Frame" /> class
         /// </summary>
-        
         public Frame()
         {
             NameFile = string.Empty;
             FilePath = string.Empty;
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Frame" /> class
         /// </summary>
         /// <param name="nameFile">The name file</param>
         [JsonConstructor]
-        
         public Frame(string nameFile)
         {
             NameFile = nameFile;
             FilePath = AssetManager.Find(nameFile);
         }
-
+        
         /// <summary>
         ///     Gets or sets the value of the name file
         /// </summary>
         [JsonPropertyName("_NameFile_")]
         public string NameFile { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the file path
         /// </summary>
         [JsonIgnore]
-        
         public string FilePath { get; set; }
-
+        
         /// <summary>
         ///     Builders this instance
         /// </summary>

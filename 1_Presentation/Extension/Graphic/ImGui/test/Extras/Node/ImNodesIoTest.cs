@@ -33,12 +33,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
 {
     /// <summary>
-    /// The im nodes io test class
+    ///     The im nodes io test class
     /// </summary>
     public class ImNodesIoTest
     {
         /// <summary>
-        /// Tests that three button mouse should be initialized
+        ///     Tests that three button mouse should be initialized
         /// </summary>
         [Fact]
         public void ThreeButtonMouse_ShouldBeInitialized()
@@ -46,9 +46,9 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             ImNodesIo io = new ImNodesIo();
             Assert.Equal(default(EmulateThreeButtonMouse), io.ThreeButtonMouse);
         }
-
+        
         /// <summary>
-        /// Tests that detach with modifier click should be initialized
+        ///     Tests that detach with modifier click should be initialized
         /// </summary>
         [Fact]
         public void DetachWithModifierClick_ShouldBeInitialized()
@@ -56,9 +56,9 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             ImNodesIo io = new ImNodesIo();
             Assert.Equal(default(LinkDetachWithModifierClick), io.DetachWithModifierClick);
         }
-
+        
         /// <summary>
-        /// Tests that select modifier should be initialized
+        ///     Tests that select modifier should be initialized
         /// </summary>
         [Fact]
         public void SelectModifier_ShouldBeInitialized()
@@ -66,9 +66,9 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             ImNodesIo io = new ImNodesIo();
             Assert.Equal(default(MultipleSelectModifier), io.SelectModifier);
         }
-
+        
         /// <summary>
-        /// Tests that alt mouse button should be initialized
+        ///     Tests that alt mouse button should be initialized
         /// </summary>
         [Fact]
         public void AltMouseButton_ShouldBeInitialized()
@@ -76,9 +76,9 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             ImNodesIo io = new ImNodesIo();
             Assert.Equal(default(int), io.AltMouseButton);
         }
-
+        
         /// <summary>
-        /// Tests that auto panning speed should be initialized
+        ///     Tests that auto panning speed should be initialized
         /// </summary>
         [Fact]
         public void AutoPanningSpeed_ShouldBeInitialized()
@@ -86,9 +86,9 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             ImNodesIo io = new ImNodesIo();
             Assert.Equal(default(float), io.AutoPanningSpeed);
         }
-
+        
         /// <summary>
-        /// Tests that three button mouse should set and get correctly
+        ///     Tests that three button mouse should set and get correctly
         /// </summary>
         [Fact]
         public void ThreeButtonMouse_Should_SetAndGetCorrectly()
@@ -98,9 +98,9 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             io.ThreeButtonMouse = value;
             Assert.Equal(value, io.ThreeButtonMouse);
         }
-
+        
         /// <summary>
-        /// Tests that detach with modifier click should set and get correctly
+        ///     Tests that detach with modifier click should set and get correctly
         /// </summary>
         [Fact]
         public void DetachWithModifierClick_Should_SetAndGetCorrectly()
@@ -110,9 +110,9 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             io.DetachWithModifierClick = value;
             Assert.Equal(value, io.DetachWithModifierClick);
         }
-
+        
         /// <summary>
-        /// Tests that select modifier should set and get correctly
+        ///     Tests that select modifier should set and get correctly
         /// </summary>
         [Fact]
         public void SelectModifier_Should_SetAndGetCorrectly()
@@ -122,9 +122,9 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             io.SelectModifier = value;
             Assert.Equal(value, io.SelectModifier);
         }
-
+        
         /// <summary>
-        /// Tests that alt mouse button should set and get correctly
+        ///     Tests that alt mouse button should set and get correctly
         /// </summary>
         [Fact]
         public void AltMouseButton_Should_SetAndGetCorrectly()
@@ -134,9 +134,9 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             io.AltMouseButton = value;
             Assert.Equal(value, io.AltMouseButton);
         }
-
+        
         /// <summary>
-        /// Tests that auto panning speed should set and get correctly
+        ///     Tests that auto panning speed should set and get correctly
         /// </summary>
         [Fact]
         public void AutoPanningSpeed_Should_SetAndGetCorrectly()

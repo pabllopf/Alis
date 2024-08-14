@@ -49,7 +49,7 @@ namespace Alis.Core.Aspect.Data.Json
             : this(writer, value, objectGraph, options, null, null)
         {
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="JsonEventArgs" /> class.
         /// </summary>
@@ -68,31 +68,31 @@ namespace Alis.Core.Aspect.Data.Json
             Name = name;
             Component = component;
         }
-
+        
         /// <summary>
         ///     Gets the options currently in use.
         /// </summary>
         /// <value>The options.</value>
         public JsonOptions Options { get; }
-
+        
         /// <summary>
         ///     Gets the writer currently in use.
         /// </summary>
         /// <value>The writer.</value>
         public TextWriter Writer { get; }
-
+        
         /// <summary>
         ///     Gets the current serialization object graph.
         /// </summary>
         /// <value>The object graph.</value>
         public IDictionary<object, object> ObjectGraph { get; }
-
+        
         /// <summary>
         ///     Gets the component holding the value. May be null.
         /// </summary>
         /// <value>The component.</value>
         public object Component { get; }
-
+        
         /// <summary>
         ///     Gets or sets the type of the event.
         /// </summary>
@@ -100,7 +100,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     The type of the event.
         /// </value>
         public JsonEventType EventType { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets a value indicating whether this <see cref="JsonEventArgs" /> is handled.
         ///     An handled object can be skipped, not written to the stream. If the object is written, First must be set to false,
@@ -108,7 +108,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <value><c>true</c> if handled; otherwise, <c>false</c>.</value>
         public bool Handled { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets a value indicating whether the object being handled is first in the list.
         ///     If the object is handled and written to the stream, this must be set to false after the stream is written.
@@ -116,13 +116,13 @@ namespace Alis.Core.Aspect.Data.Json
         /// </summary>
         /// <value><c>true</c> if this is the first object; otherwise, <c>false</c>.</value>
         public bool First { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value on the stack.
         /// </summary>
         /// <value>The value.</value>
         public object Value { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the name on the stack. The Name can be a property or field name when serializing objects. May be null.
         /// </summary>

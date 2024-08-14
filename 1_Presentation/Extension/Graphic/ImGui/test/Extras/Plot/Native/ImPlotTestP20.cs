@@ -36,30 +36,30 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
 {
     /// <summary>
-    /// The im plot test class
+    ///     The im plot test class
     /// </summary>
     public class ImPlotTestP20
     {
         /// <summary>
-        /// Tests that plot heatmap int array throws dll not found exception v 22
+        ///     Tests that plot heatmap int array throws dll not found exception v 22
         /// </summary>
         [Fact]
         public void PlotHeatmap_IntArray_ThrowsDllNotFoundException_v22()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("A", new int[] {1}, 1, 1, 0.0, 1.0, "%.1f", new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("A", new[] {1}, 1, 1, 0.0, 1.0, "%.1f", new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}));
         }
         
         /// <summary>
-        /// Tests that plot heatmap int array throws dll not found exception v 24
+        ///     Tests that plot heatmap int array throws dll not found exception v 24
         /// </summary>
         [Fact]
         public void PlotHeatmap_IntArray_ThrowsDllNotFoundException_v24()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("A", new int[] {1}, 1, 1, 0.0, 1.0, "%.1f", new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("A", new[] {1}, 1, 1, 0.0, 1.0, "%.1f", new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, 0));
         }
         
         /// <summary>
-        /// Tests that plot heatmap u int array throws dll not found exception
+        ///     Tests that plot heatmap u int array throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_UIntArray_ThrowsDllNotFoundException()
@@ -68,7 +68,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap u int array throws dll not found exception v 2
+        ///     Tests that plot heatmap u int array throws dll not found exception v 2
         /// </summary>
         [Fact]
         public void PlotHeatmap_UIntArray_ThrowsDllNotFoundException_v2()
@@ -77,7 +77,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap u int array throws dll not found exception v 3
+        ///     Tests that plot heatmap u int array throws dll not found exception v 3
         /// </summary>
         [Fact]
         public void PlotHeatmap_UIntArray_ThrowsDllNotFoundException_v3()
@@ -86,7 +86,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap long array throws dll not found exception
+        ///     Tests that plot heatmap long array throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_LongArray_ThrowsDllNotFoundException()
@@ -95,7 +95,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap long array throws dll not found exception v 2
+        ///     Tests that plot heatmap long array throws dll not found exception v 2
         /// </summary>
         [Fact]
         public void PlotHeatmap_LongArray_ThrowsDllNotFoundException_v2()
@@ -104,7 +104,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap long array throws dll not found exception v 3
+        ///     Tests that plot heatmap long array throws dll not found exception v 3
         /// </summary>
         [Fact]
         public void PlotHeatmap_LongArray_ThrowsDllNotFoundException_v3()
@@ -113,7 +113,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap u long array throws dll not found exception
+        ///     Tests that plot heatmap u long array throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_ULongArray_ThrowsDllNotFoundException()
@@ -122,7 +122,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap u long array throws dll not found exception v 2
+        ///     Tests that plot heatmap u long array throws dll not found exception v 2
         /// </summary>
         [Fact]
         public void PlotHeatmap_ULongArray_ThrowsDllNotFoundException_v2()
@@ -131,7 +131,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap u long array throws dll not found exception v 3
+        ///     Tests that plot heatmap u long array throws dll not found exception v 3
         /// </summary>
         [Fact]
         public void PlotHeatmap_ULongArray_ThrowsDllNotFoundException_v3()
@@ -140,61 +140,61 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot histogram float array throws dll not found exception
+        ///     Tests that plot histogram float array throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHistogram_FloatArray_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram("A", new float[] {1.0f}, 1));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram("A", new[] {1.0f}, 1));
         }
         
         /// <summary>
-        /// Tests that plot histogram float array throws dll not found exception v 2
+        ///     Tests that plot histogram float array throws dll not found exception v 2
         /// </summary>
         [Fact]
         public void PlotHistogram_FloatArray_ThrowsDllNotFoundException_v2()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram("A", new float[] {1.0f}, 1, 1));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram("A", new[] {1.0f}, 1, 1));
         }
         
         /// <summary>
-        /// Tests that plot histogram float array throws dll not found exception v 3
+        ///     Tests that plot histogram float array throws dll not found exception v 3
         /// </summary>
         [Fact]
         public void PlotHistogram_FloatArray_ThrowsDllNotFoundException_v3()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram("A", new float[] {1.0f}, 1, 1, 1.0));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram("A", new[] {1.0f}, 1, 1, 1.0));
         }
         
         /// <summary>
-        /// Tests that plot histogram double array throws dll not found exception
+        ///     Tests that plot histogram double array throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHistogram_DoubleArray_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram("A", new double[] {1.0}, 1));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram("A", new[] {1.0}, 1));
         }
         
         /// <summary>
-        /// Tests that plot histogram double array throws dll not found exception v 2
+        ///     Tests that plot histogram double array throws dll not found exception v 2
         /// </summary>
         [Fact]
         public void PlotHistogram_DoubleArray_ThrowsDllNotFoundException_v2()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram("A", new double[] {1.0}, 1, 1));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram("A", new[] {1.0}, 1, 1));
         }
         
         /// <summary>
-        /// Tests that plot histogram double array throws dll not found exception v 3
+        ///     Tests that plot histogram double array throws dll not found exception v 3
         /// </summary>
         [Fact]
         public void PlotHistogram_DoubleArray_ThrowsDllNotFoundException_v3()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram("A", new double[] {1.0}, 1, 1, 1.0));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram("A", new[] {1.0}, 1, 1, 1.0));
         }
         
         /// <summary>
-        /// Tests that plot histogram s byte array throws dll not found exception
+        ///     Tests that plot histogram s byte array throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHistogram_SByteArray_ThrowsDllNotFoundException()
@@ -203,7 +203,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot histogram s byte array throws dll not found exception v 2
+        ///     Tests that plot histogram s byte array throws dll not found exception v 2
         /// </summary>
         [Fact]
         public void PlotHistogram_SByteArray_ThrowsDllNotFoundException_v2()
@@ -212,7 +212,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot histogram s byte array throws dll not found exception v 3
+        ///     Tests that plot histogram s byte array throws dll not found exception v 3
         /// </summary>
         [Fact]
         public void PlotHistogram_SByteArray_ThrowsDllNotFoundException_v3()
@@ -221,7 +221,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot histogram byte array throws dll not found exception v 44
+        ///     Tests that plot histogram byte array throws dll not found exception v 44
         /// </summary>
         [Fact]
         public void PlotHistogram_ByteArray_ThrowsDllNotFoundException_v44()
@@ -230,7 +230,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot histogram byte array throws dll not found exception v 2
+        ///     Tests that plot histogram byte array throws dll not found exception v 2
         /// </summary>
         [Fact]
         public void PlotHistogram_ByteArray_ThrowsDllNotFoundException_v2()
@@ -239,7 +239,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot histogram byte array throws dll not found exception v 3
+        ///     Tests that plot histogram byte array throws dll not found exception v 3
         /// </summary>
         [Fact]
         public void PlotHistogram_ByteArray_ThrowsDllNotFoundException_v3()
@@ -248,7 +248,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that calc circle auto segment count throws dll not found exception
+        ///     Tests that calc circle auto segment count throws dll not found exception
         /// </summary>
         [Fact]
         public void _CalcCircleAutoSegmentCount_ThrowsDllNotFoundException()
@@ -258,7 +258,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that clear free memory throws dll not found exception
+        ///     Tests that clear free memory throws dll not found exception
         /// </summary>
         [Fact]
         public void _ClearFreeMemory_ThrowsDllNotFoundException()
@@ -268,7 +268,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that on changed clip rect throws dll not found exception
+        ///     Tests that on changed clip rect throws dll not found exception
         /// </summary>
         [Fact]
         public void _OnChangedClipRect_ThrowsDllNotFoundException()
@@ -278,7 +278,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that on changed texture id throws dll not found exception
+        ///     Tests that on changed texture id throws dll not found exception
         /// </summary>
         [Fact]
         public void _OnChangedTextureID_ThrowsDllNotFoundException()
@@ -288,7 +288,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that on changed vtx offset throws dll not found exception
+        ///     Tests that on changed vtx offset throws dll not found exception
         /// </summary>
         [Fact]
         public void _OnChangedVtxOffset_ThrowsDllNotFoundException()
@@ -298,7 +298,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that path arc to fast ex throws dll not found exception
+        ///     Tests that path arc to fast ex throws dll not found exception
         /// </summary>
         [Fact]
         public void _PathArcToFastEx_ThrowsDllNotFoundException()
@@ -306,7 +306,5 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr._PathArcToFastEx(new Vector2(), 0, 0, 0, 0));
         }
-        
-        
     }
 }

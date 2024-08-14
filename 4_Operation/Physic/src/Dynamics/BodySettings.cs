@@ -41,37 +41,37 @@ namespace Alis.Core.Physic.Dynamics
         ///     The unknown body flags
         /// </summary>
         None = 0,
-
+        
         /// <summary>
         ///     The island flag body flags
         /// </summary>
         IslandFlag = 1,
-
+        
         /// <summary>
         ///     The awake flag body flags
         /// </summary>
         AwakeFlag = 2,
-
+        
         /// <summary>
         ///     The auto sleep flag body flags
         /// </summary>
         AutoSleepFlag = 4,
-
+        
         /// <summary>
         ///     The bullet flag body flags
         /// </summary>
         BulletFlag = 8,
-
+        
         /// <summary>
         ///     The fixed rotation flag body flags
         /// </summary>
         FixedRotationFlag = 16,
-
+        
         /// <summary>
         ///     The enabled body flags
         /// </summary>
         Enabled = 32,
-
+        
         /// <summary>
         ///     The ignore ccd body flags
         /// </summary>

@@ -29,7 +29,6 @@
 
 using System;
 using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Threading.Tasks;
 using Alis.Core.Audio.Interfaces;
@@ -41,7 +40,6 @@ namespace Alis.Core.Audio.Players
     /// </summary>
     /// <seealso cref="UnixPlayerBase" />
     /// <seealso cref="IPlayer" />
-    
     internal class LinuxPlayer : UnixPlayerBase, IPlayer
     {
         /// <summary>
@@ -55,13 +53,13 @@ namespace Alis.Core.Audio.Players
             {
                 throw new ArgumentOutOfRangeException(nameof(percent), "Percent can't exceed 100");
             }
-
+            
             Process tempProcess = StartBashProcess($"amixer -M set 'Master' {percent}%");
             tempProcess.WaitForExit();
-
+            
             return Task.CompletedTask;
         }
-
+        
         /// <summary>
         ///     Gets the bash command using the specified file name
         /// </summary>
@@ -73,7 +71,7 @@ namespace Alis.Core.Audio.Players
             {
                 return "mpg123 -q";
             }
-
+            
             return "aplay -q";
         }
     }

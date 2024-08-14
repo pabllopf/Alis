@@ -37,12 +37,12 @@ namespace Alis.App.Engine.Windows
     internal interface IWindow : IRenderable, IHasSpaceWork
     {
         /// <summary>
-        /// Initializes this instance
+        ///     Initializes this instance
         /// </summary>
         public void Initialize();
-
+        
         /// <summary>
-        /// Starts this instance
+        ///     Starts this instance
         /// </summary>
         public void Start();
     }

@@ -45,7 +45,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Solver
         {
             // Arrange & Act
             Island island = new Island();
-
+            
             // Assert
             Assert.NotNull(island);
         }

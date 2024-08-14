@@ -49,7 +49,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase
             };
             Assert.Equal(1, pair.ProxyIdA);
         }
-
+        
         /// <summary>
         ///     Tests that test proxy id b
         /// </summary>

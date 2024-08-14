@@ -28,14 +28,12 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Alis.Core.Aspect.Logging
 {
     /// <summary>
     ///     The console controller class
     /// </summary>
-    
     public static class ConsoleController
     {
         /// <summary>
@@ -58,7 +56,7 @@ namespace Alis.Core.Aspect.Logging
                                   $"   file:   '{message.File}' \n" +
                                   $"   {message.StackTrace} \n");
             }
-
+            
             Console.ResetColor();
         }
     }

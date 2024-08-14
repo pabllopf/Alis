@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 
@@ -37,8 +36,7 @@ namespace Alis.Core.Aspect.Math.Vector
     /// <summary>
     ///     The vector
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    [Serializable]
+    [StructLayout(LayoutKind.Sequential), Serializable]
     public struct Vector4 : ISerializable
     {
         /// <summary>
@@ -55,7 +53,7 @@ namespace Alis.Core.Aspect.Math.Vector
             Z = z;
             W = w;
         }
-
+        
         /// <summary>
         ///     Gets the v
         /// </summary>
@@ -73,25 +71,24 @@ namespace Alis.Core.Aspect.Math.Vector
                 default: return 0; // error case
             }
         }
-
+        
         /// <summary>Horizontal component of the vector</summary>
         public float X { get; set; }
-
+        
         /// <summary>Vertical component of the vector</summary>
         public float Y { get; set; }
-
+        
         /// <summary>Depth component of the vector</summary>
         public float Z { get; set; }
-
+        
         /// <summary>Projective/Homogenous component of the vector</summary>
         public float W { get; set; }
-
+        
         /// <summary>
         ///     Gets the object data using the specified info
         /// </summary>
         /// <param name="info">The info</param>
         /// <param name="context">The context</param>
-        
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("x", X);

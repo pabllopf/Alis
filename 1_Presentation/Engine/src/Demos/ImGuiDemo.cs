@@ -39,19 +39,19 @@ namespace Alis.App.Engine.Demos
     public class ImGuiDemo : IDemo
     {
         /// <summary>
-        /// Initializes this instance
+        ///     Initializes this instance
         /// </summary>
         public void Initialize()
         {
         }
-
+        
         /// <summary>
-        /// Starts this instance
+        ///     Starts this instance
         /// </summary>
         public void Start()
         {
         }
-
+        
         /// <summary>
         ///     Runs this instance
         /// </summary>
@@ -59,7 +59,7 @@ namespace Alis.App.Engine.Demos
         {
             DefaultDemo();
         }
-
+        
         /// <summary>
         ///     Defaults the demo
         /// </summary>

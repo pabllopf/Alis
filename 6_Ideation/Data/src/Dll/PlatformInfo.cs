@@ -46,17 +46,17 @@ namespace Alis.Core.Aspect.Data.Dll
             Platform = platform;
             Arch = arch;
         }
-
+        
         /// <summary>
         ///     Gets the value of the platform
         /// </summary>
         public OSPlatform Platform { get; }
-
+        
         /// <summary>
         ///     Gets the value of the arch
         /// </summary>
         public Architecture Arch { get; }
-
+        
         /// <summary>
         ///     Describes whether this instance equals
         /// </summary>
@@ -68,10 +68,10 @@ namespace Alis.Core.Aspect.Data.Dll
             {
                 return (Platform == other.Platform) && (Arch == other.Arch);
             }
-
+            
             return false;
         }
-
+        
         /// <summary>
         ///     Gets the hash code
         /// </summary>

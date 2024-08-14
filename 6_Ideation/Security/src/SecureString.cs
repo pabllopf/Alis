@@ -38,12 +38,12 @@ namespace Alis.Core.Aspect.Security
         ///     The key
         /// </summary>
         private readonly char secret;
-
+        
         /// <summary>
         ///     The encrypted value
         /// </summary>
         private string encryptedValue;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="SecureString" /> class
         /// </summary>
@@ -53,7 +53,7 @@ namespace Alis.Core.Aspect.Security
             secret = GenerateKey();
             SetValue(value);
         }
-
+        
         /// <summary>
         ///     Sets the value using the specified value
         /// </summary>
@@ -62,13 +62,13 @@ namespace Alis.Core.Aspect.Security
         {
             encryptedValue = EncryptDecrypt(value, secret);
         }
-
+        
         /// <summary>
         ///     Gets the value
         /// </summary>
         /// <returns>The string</returns>
         public string GetValue() => EncryptDecrypt(encryptedValue, secret);
-
+        
         /// <summary>
         ///     Encrypts the decrypt using the specified text to encrypt
         /// </summary>
@@ -82,10 +82,10 @@ namespace Alis.Core.Aspect.Security
             {
                 buffer[i] ^= key;
             }
-
+            
             return new string(buffer);
         }
-
+        
         /// <summary>
         ///     Generates the key
         /// </summary>

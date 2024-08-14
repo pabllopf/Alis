@@ -39,7 +39,7 @@ namespace Alis.Core.Physic.Collision.RayCast
         ///     fraction of the ray where it has the intersection point.
         /// </summary>
         public float Fraction { get; set; }
-
+        
         /// <summary>The normal of the face of the shape the ray has hit.</summary>
         public Vector2 Normal { get; set; }
     }

@@ -48,19 +48,19 @@ namespace Alis.Core.Physic.Collision.Shapes
             Mass = mass;
             Centroid = new Vector2(0.0f, 0.0f);
         }
-
+        
         /// <summary>The area of the shape</summary>
         public float Area { get; set; }
-
+        
         /// <summary>The position of the shape's centroid relative to the shape's origin.</summary>
         public Vector2 Centroid { get; set; }
-
+        
         /// <summary>The rotational inertia of the shape about the local origin.</summary>
         public float Inertia { get; set; }
-
+        
         /// <summary>The mass of the shape, usually in kilograms.</summary>
         public float Mass { get; set; }
-
+        
         /// <summary>The equal operator</summary>
         /// <param name="left"></param>
         /// <param name="right"></param>
@@ -69,19 +69,19 @@ namespace Alis.Core.Physic.Collision.Shapes
             (Math.Abs(left.Mass - right.Mass) < 0.1f) &&
             (left.Centroid == right.Centroid) &&
             (Math.Abs(left.Inertia - right.Inertia) < 0.1f);
-
+        
         /// <summary>The not equal operator</summary>
         /// <param name="left"></param>
         /// <param name="right"></param>
         public static bool operator !=(MassData left, MassData right) => !(left == right);
-
+        
         /// <summary>
         ///     Describes whether this instance equals
         /// </summary>
         /// <param name="other">The other</param>
         /// <returns>The bool</returns>
         public bool Equals(MassData other) => this == other;
-
+        
         /// <summary>
         ///     Describes whether this instance equals
         /// </summary>
@@ -93,10 +93,10 @@ namespace Alis.Core.Physic.Collision.Shapes
             {
                 return false;
             }
-
+            
             return obj is MassData data && Equals(data);
         }
-
+        
         /// <summary>
         ///     Gets the hash code
         /// </summary>

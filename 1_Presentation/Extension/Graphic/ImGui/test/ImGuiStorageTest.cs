@@ -32,12 +32,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test
 {
     /// <summary>
-    /// The im gui storage test class
+    ///     The im gui storage test class
     /// </summary>
     public class ImGuiStorageTest
     {
         /// <summary>
-        /// Tests that data should set and get correctly
+        ///     Tests that data should set and get correctly
         /// </summary>
         [Fact]
         public void Data_Should_SetAndGetCorrectly()

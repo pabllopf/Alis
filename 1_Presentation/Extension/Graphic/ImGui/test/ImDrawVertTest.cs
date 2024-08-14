@@ -33,12 +33,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test
 {
     /// <summary>
-    /// The im draw vert test class
+    ///     The im draw vert test class
     /// </summary>
     public class ImDrawVertTest
     {
         /// <summary>
-        /// Tests that pos should be initialized correctly
+        ///     Tests that pos should be initialized correctly
         /// </summary>
         [Fact]
         public void Pos_ShouldBeInitializedCorrectly()
@@ -54,7 +54,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that uv should be initialized correctly
+        ///     Tests that uv should be initialized correctly
         /// </summary>
         [Fact]
         public void Uv_ShouldBeInitializedCorrectly()
@@ -70,7 +70,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that col should be initialized correctly
+        ///     Tests that col should be initialized correctly
         /// </summary>
         [Fact]
         public void Col_ShouldBeInitializedCorrectly()

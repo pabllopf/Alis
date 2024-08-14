@@ -34,13 +34,12 @@ using Xunit;
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
     /// <summary>
-    /// The audio spec test class
+    ///     The audio spec test class
     /// </summary>
     public class AudioSpecTest
     {
-
         /// <summary>
-        /// Tests that constructor initializes properties correctly
+        ///     Tests that constructor initializes properties correctly
         /// </summary>
         [Fact]
         public void Constructor_InitializesPropertiesCorrectly()
@@ -54,7 +53,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
                 Callback = null,
                 Userdata = IntPtr.Zero
             };
-
+            
             Assert.Equal(44100, audioSpec.Freq);
             Assert.Equal((ushort) 32784, audioSpec.Format);
             Assert.Equal((byte) 2, audioSpec.Channels);
@@ -62,17 +61,15 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             Assert.Null(audioSpec.Callback);
             Assert.Equal(IntPtr.Zero, audioSpec.Userdata);
         }
-
+        
         /// <summary>
-        /// Tests that properties set values correctly
+        ///     Tests that properties set values correctly
         /// </summary>
         /// <param name="freq">The freq</param>
         /// <param name="format">The format</param>
         /// <param name="channels">The channels</param>
         /// <param name="samples">The samples</param>
-        [Theory]
-        [InlineData(22050, 32779, 1, 256)]
-        [InlineData(88200, 32785, 2, 1024)]
+        [Theory, InlineData(22050, 32779, 1, 256), InlineData(88200, 32785, 2, 1024)]
         public void Properties_SetValuesCorrectly(int freq, ushort format, byte channels, ushort samples)
         {
             AudioSpec audioSpec = new AudioSpec
@@ -84,7 +81,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
                 Callback = null,
                 Userdata = IntPtr.Zero
             };
-
+            
             Assert.Equal(freq, audioSpec.Freq);
             Assert.Equal(format, audioSpec.Format);
             Assert.Equal(channels, audioSpec.Channels);

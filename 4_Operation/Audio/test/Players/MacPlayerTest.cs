@@ -48,7 +48,7 @@ namespace Alis.Core.Audio.Test.Players
         {
             Assert.True(true);
         }
-
+        
         /// <summary>
         ///     Sets the volume valid input
         /// </summary>
@@ -57,10 +57,10 @@ namespace Alis.Core.Audio.Test.Players
         {
             MacPlayer player = new MacPlayer();
             await player.SetVolume(50);
-
+            
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
-
+        
         /// <summary>
         ///     Sets the volume invalid input
         /// </summary>
@@ -70,7 +70,7 @@ namespace Alis.Core.Audio.Test.Players
             MacPlayer player = new MacPlayer();
             await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() => player.SetVolume(101));
         }
-
+        
         /// <summary>
         ///     Gets the bash command valid input
         /// </summary>
@@ -79,7 +79,7 @@ namespace Alis.Core.Audio.Test.Players
         {
             MacPlayer player = new MacPlayer();
             string command = player.GetBashCommand("test.mp3");
-
+            
             Assert.Equal("afplay", command);
         }
     }
