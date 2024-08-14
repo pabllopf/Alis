@@ -45,7 +45,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             GenericPriorityQueue<TestNode, int> queue = new GenericPriorityQueue<TestNode, int>(10);
             Assert.Equal(10, queue.MaxSize);
         }
-
+        
         /// <summary>
         ///     Tests that enqueue increases count
         /// </summary>
@@ -57,7 +57,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             queue.Enqueue(node, 1);
             Assert.Equal(1, queue.Count);
         }
-
+        
         /// <summary>
         ///     Tests that dequeue decreases count
         /// </summary>
@@ -70,7 +70,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             queue.Dequeue();
             Assert.Equal(0, queue.Count);
         }
-
+        
         /// <summary>
         ///     Tests that first returns correct node
         /// </summary>
@@ -84,7 +84,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             queue.Enqueue(node2, 2);
             Assert.Same(node1, queue.First);
         }
-
+        
         /// <summary>
         ///     Tests that clear resets queue
         /// </summary>
@@ -97,7 +97,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             queue.Clear();
             Assert.Equal(0, queue.Count);
         }
-
+        
         /// <summary>
         ///     Tests that contains returns true for enqueued node
         /// </summary>
@@ -109,7 +109,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             queue.Enqueue(node, 1);
             Assert.True(queue.Contains(node));
         }
-
+        
         /// <summary>
         ///     Tests that contains returns false for not enqueued node
         /// </summary>
@@ -120,7 +120,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             TestNode node = new TestNode();
             Assert.False(queue.Contains(node));
         }
-
+        
         /// <summary>
         ///     Tests that update priority changes node priority
         /// </summary>
@@ -133,7 +133,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             queue.UpdatePriority(node, 2);
             Assert.Equal(2, node.Priority);
         }
-
+        
         /// <summary>
         ///     Tests that remove removes node from queue
         /// </summary>
@@ -146,7 +146,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             queue.Remove(node);
             Assert.False(queue.Contains(node));
         }
-
+        
         /// <summary>
         ///     Tests that resize increases max size
         /// </summary>
@@ -157,7 +157,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             queue.Resize(20);
             Assert.Equal(20, queue.MaxSize);
         }
-
+        
         /// <summary>
         ///     Tests that is valid queue after operations returns true
         /// </summary>

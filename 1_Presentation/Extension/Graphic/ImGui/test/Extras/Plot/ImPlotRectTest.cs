@@ -33,12 +33,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
 {
     /// <summary>
-    /// The im plot rect test class
+    ///     The im plot rect test class
     /// </summary>
     public class ImPlotRectTest
     {
         /// <summary>
-        /// Tests that x should be initialized
+        ///     Tests that x should be initialized
         /// </summary>
         [Fact]
         public void X_ShouldBeInitialized()
@@ -46,9 +46,9 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotRect rect = new ImPlotRect();
             Assert.Equal(default(ImPlotRange), rect.X);
         }
-
+        
         /// <summary>
-        /// Tests that y should be initialized
+        ///     Tests that y should be initialized
         /// </summary>
         [Fact]
         public void Y_ShouldBeInitialized()
@@ -56,9 +56,9 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotRect rect = new ImPlotRect();
             Assert.Equal(default(ImPlotRange), rect.Y);
         }
-
+        
         /// <summary>
-        /// Tests that x should set and get correctly
+        ///     Tests that x should set and get correctly
         /// </summary>
         [Fact]
         public void X_Should_SetAndGetCorrectly()
@@ -68,9 +68,9 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             rect.X = range;
             Assert.Equal(range, rect.X);
         }
-
+        
         /// <summary>
-        /// Tests that y should set and get correctly
+        ///     Tests that y should set and get correctly
         /// </summary>
         [Fact]
         public void Y_Should_SetAndGetCorrectly()

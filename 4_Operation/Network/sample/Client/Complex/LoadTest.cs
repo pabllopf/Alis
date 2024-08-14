@@ -47,7 +47,7 @@ namespace Alis.Core.Network.Sample.Client.Complex
         ///     The buffer size
         /// </summary>
         private const int BufferSize = 1 * 1024 * 1024 * 1024; // 1GB
-
+        
         /// <summary>
         ///     Runs this instance
         /// </summary>
@@ -60,17 +60,17 @@ namespace Alis.Core.Network.Sample.Client.Complex
             using WebSocket webSocket = await factory.ConnectAsync(uri, options);
             // receive loop
             Task readTask = Receive(webSocket);
-
+            
             // send a message
             await Send(webSocket);
-
+            
             // initiate the close handshake
             await webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, null, CancellationToken.None);
-
+            
             // wait for server to respond with a close frame
             await readTask;
         }
-
+        
         /// <summary>
         ///     Sends the web socket
         /// </summary>
@@ -81,7 +81,7 @@ namespace Alis.Core.Network.Sample.Client.Complex
             ArraySegment<byte> buffer = new ArraySegment<byte>(array);
             await webSocket.SendAsync(buffer, WebSocketMessageType.Text, true, CancellationToken.None);
         }
-
+        
         /// <summary>
         ///     Reads the all using the specified web socket
         /// </summary>
@@ -94,7 +94,7 @@ namespace Alis.Core.Network.Sample.Client.Complex
             while (true)
             {
                 WebSocketReceiveResult result = await webSocket.ReceiveAsync(buffer, CancellationToken.None);
-
+                
                 switch (result.MessageType)
                 {
                     case WebSocketMessageType.Close:
@@ -106,7 +106,7 @@ namespace Alis.Core.Network.Sample.Client.Complex
                 }
             }
         }
-
+        
         /// <summary>
         ///     Receives the web socket
         /// </summary>

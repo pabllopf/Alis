@@ -42,7 +42,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation
         ///     - Running time is O(n^2), n = number of vertices.
         /// </summary>
         EarClip,
-
+        
         /// <summary>
         ///     Properties:
         ///     - Tries to decompose using polygons instead of triangles.
@@ -51,7 +51,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation
         ///     - Does not support holes.
         /// </summary>
         BayaZit,
-
+        
         /// <summary>
         ///     Convex decomposition algorithm created by unknown
         ///     Properties:
@@ -61,7 +61,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation
         ///     - Only works on counter clockwise polygons
         /// </summary>
         FlipCode,
-
+        
         /// <summary>
         ///     Convex decomposition algorithm created by Raimund Seidel
         ///     Properties:
@@ -73,12 +73,12 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation
         ///     - Does not care about winding order.
         /// </summary>
         Seidel,
-
+        
         /// <summary>
         ///     The seidel trapezoids triangulation algorithm
         /// </summary>
         SeidelTrapezoids,
-
+        
         /// <summary>
         ///     2D constrained Delaunay triangulation algorithm.
         ///     Based on the paper "Sweep-line algorithm for constrained Delaunay triangulation" by V.

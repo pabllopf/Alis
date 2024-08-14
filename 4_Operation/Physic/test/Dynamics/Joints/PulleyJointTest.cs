@@ -57,10 +57,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Vector2 worldAnchorB = new Vector2(1.0f, 1.0f);
             float ratio = 1.0f;
             bool useWorldCoordinates = false;
-
+            
             // Act
             PulleyJoint pulleyJoint = new PulleyJoint(bodyA, bodyB, anchorA, anchorB, worldAnchorA, worldAnchorB, ratio, useWorldCoordinates);
-
+            
             // Assert
             Assert.Equal(bodyA, pulleyJoint.BodyA);
             Assert.Equal(bodyB, pulleyJoint.BodyB);
@@ -70,7 +70,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.Equal(worldAnchorB, pulleyJoint.WorldAnchorB);
             Assert.Equal(ratio, pulleyJoint.Ratio);
         }
-
+        
         /// <summary>
         ///     Tests that pulley joint properties test
         /// </summary>
@@ -93,13 +93,13 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
                 LocalAnchorB = new Vector2(1.6f, 1.6f),
                 Ratio = 0.8f
             };
-
+            
             // Assert
             Assert.Equal(new Vector2(0.6f, 0.6f), pulleyJoint.LocalAnchorA);
             Assert.Equal(new Vector2(1.6f, 1.6f), pulleyJoint.LocalAnchorB);
             Assert.Equal(0.8f, pulleyJoint.Ratio);
         }
-
+        
         /// <summary>
         ///     Tests that pulley joint world anchor test
         /// </summary>
@@ -116,11 +116,11 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             float ratio = 1.0f;
             bool useWorldCoordinates = false;
             PulleyJoint pulleyJoint = new PulleyJoint(bodyA, bodyB, anchorA, anchorB, worldAnchorA, worldAnchorB, ratio, useWorldCoordinates);
-
+            
             // Act
             Vector2 resultWorldAnchorA = pulleyJoint.WorldAnchorA;
             Vector2 resultWorldAnchorB = pulleyJoint.WorldAnchorB;
-
+            
             // Assert
             Assert.Equal(worldAnchorA, resultWorldAnchorA);
             Assert.Equal(worldAnchorB, resultWorldAnchorB);

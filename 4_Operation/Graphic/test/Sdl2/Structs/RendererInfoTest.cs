@@ -27,22 +27,20 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Xunit;
 using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Graphic.Sdl2.Structs;
-
+using Xunit;
 
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
-
     /// <summary>
-    /// The renderer info tests class
+    ///     The renderer info tests class
     /// </summary>
     public class RendererInfoTests
     {
         /// <summary>
-        /// Tests that renderer info initializes properties correctly
+        ///     Tests that renderer info initializes properties correctly
         /// </summary>
         [Fact]
         public void RendererInfo_InitializesPropertiesCorrectly()
@@ -72,7 +70,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
                 maxTextureWidth = 1920,
                 maxTextureHeight = 1080
             };
-
+            
             Assert.Equal("TestRenderer", rendererInfo.GetName());
             Assert.Equal(1u, rendererInfo.flags);
             Assert.Equal(2u, rendererInfo.num_texture_formats);
@@ -94,7 +92,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             Assert.Equal(18, rendererInfo.textureFormats15);
             Assert.Equal(1920, rendererInfo.maxTextureWidth);
             Assert.Equal(1080, rendererInfo.maxTextureHeight);
-
+            
             Marshal.FreeHGlobal(namePtr);
         }
     }

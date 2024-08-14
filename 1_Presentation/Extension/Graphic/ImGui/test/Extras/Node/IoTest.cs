@@ -33,12 +33,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
 {
     /// <summary>
-    /// The io test class
+    ///     The io test class
     /// </summary>
     public class IoTest
     {
         /// <summary>
-        /// Tests that emulate three button mouse should be initialized
+        ///     Tests that emulate three button mouse should be initialized
         /// </summary>
         [Fact]
         public void EmulateThreeButtonMouse_ShouldBeInitialized()
@@ -46,9 +46,9 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Io io = new Io();
             Assert.Equal(default(EmulateThreeButtonMouse), io.EmulateThreeButtonMouse);
         }
-
+        
         /// <summary>
-        /// Tests that link detach with modifier click should be initialized
+        ///     Tests that link detach with modifier click should be initialized
         /// </summary>
         [Fact]
         public void LinkDetachWithModifierClick_ShouldBeInitialized()
@@ -56,9 +56,9 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Io io = new Io();
             Assert.Equal(default(LinkDetachWithModifierClick), io.LinkDetachWithModifierClick);
         }
-
+        
         /// <summary>
-        /// Tests that emulate three button mouse should set and get correctly
+        ///     Tests that emulate three button mouse should set and get correctly
         /// </summary>
         [Fact]
         public void EmulateThreeButtonMouse_Should_SetAndGetCorrectly()
@@ -68,9 +68,9 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             io.EmulateThreeButtonMouse = value;
             Assert.Equal(value, io.EmulateThreeButtonMouse);
         }
-
+        
         /// <summary>
-        /// Tests that link detach with modifier click should set and get correctly
+        ///     Tests that link detach with modifier click should set and get correctly
         /// </summary>
         [Fact]
         public void LinkDetachWithModifierClick_Should_SetAndGetCorrectly()

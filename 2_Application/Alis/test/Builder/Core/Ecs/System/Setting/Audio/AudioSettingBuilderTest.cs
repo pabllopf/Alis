@@ -45,10 +45,10 @@ namespace Alis.Test.Builder.Core.Ecs.System.Setting.Audio
         public void AudioSettingBuilder_DefaultConstructor_ValidInput()
         {
             AudioSettingBuilder audioSettingBuilder = new AudioSettingBuilder();
-
+            
             Assert.NotNull(audioSettingBuilder);
         }
-
+        
         /// <summary>
         ///     Tests that build valid input
         /// </summary>
@@ -56,9 +56,9 @@ namespace Alis.Test.Builder.Core.Ecs.System.Setting.Audio
         public void Build_ValidInput()
         {
             AudioSettingBuilder audioSettingBuilder = new AudioSettingBuilder();
-
+            
             AudioSetting audioSetting = audioSettingBuilder.Build();
-
+            
             Assert.NotNull(audioSetting);
         }
     }

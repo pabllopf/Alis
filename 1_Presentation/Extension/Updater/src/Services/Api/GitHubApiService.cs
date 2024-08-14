@@ -35,23 +35,23 @@ using Alis.Core.Aspect.Data.Json;
 namespace Alis.Extension.Updater.Services.Api
 {
     /// <summary>
-    /// The git hub api service class
+    ///     The git hub api service class
     /// </summary>
-    /// <seealso cref="IGitHubApiService"/>
+    /// <seealso cref="IGitHubApiService" />
     public class GitHubApiService : IGitHubApiService
     {
         /// <summary>
-        /// The http client
+        ///     The http client
         /// </summary>
         private readonly HttpClient _httpClient;
         
         /// <summary>
-        /// The api url
+        ///     The api url
         /// </summary>
         private readonly string apiUrl;
         
         /// <summary>
-        /// Initializes a new instance of the <see cref="GitHubApiService"/> class
+        ///     Initializes a new instance of the <see cref="GitHubApiService" /> class
         /// </summary>
         /// <param name="apiUrl"></param>
         public GitHubApiService(string apiUrl)
@@ -61,7 +61,7 @@ namespace Alis.Extension.Updater.Services.Api
         }
         
         /// <summary>
-        /// Gets the latest release using the specified api url
+        ///     Gets the latest release using the specified api url
         /// </summary>
         /// <param name="apiUrl">The api url</param>
         /// <returns>A task containing a dictionary of string and object</returns>

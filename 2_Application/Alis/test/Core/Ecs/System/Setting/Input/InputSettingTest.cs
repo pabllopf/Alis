@@ -46,16 +46,16 @@ namespace Alis.Test.Core.Ecs.System.Setting.Input
         {
             // Arrange
             InputSetting inputSetting = new InputSetting();
-
+            
             // Act
             inputSetting.UpdateMode = UpdateMode.DynamicUpdate;
             UpdateMode result = inputSetting.UpdateMode;
-
+            
             // Assert
             Assert.NotNull(inputSetting);
             Assert.Equal(UpdateMode.DynamicUpdate, result);
         }
-
+        
         /// <summary>
         ///     Tests that test input setting builder
         /// </summary>
@@ -64,10 +64,10 @@ namespace Alis.Test.Core.Ecs.System.Setting.Input
         {
             // Arrange
             InputSetting inputSetting = new InputSetting();
-
+            
             // Act
             InputSettingBuilder result = inputSetting.Builder();
-
+            
             // Assert
             Assert.NotNull(result);
             Assert.IsType<InputSettingBuilder>(result);

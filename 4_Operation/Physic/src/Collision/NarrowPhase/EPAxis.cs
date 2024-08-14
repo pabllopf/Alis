@@ -38,17 +38,17 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         ///     The normal
         /// </summary>
         public Vector2 Normal { get; set; }
-
+        
         /// <summary>
         ///     The index
         /// </summary>
         public int Index { get; set; }
-
+        
         /// <summary>
         ///     The separation
         /// </summary>
         public float Separation { get; set; }
-
+        
         /// <summary>
         ///     The type
         /// </summary>

@@ -43,18 +43,18 @@ namespace Alis.Extension.Language.Translator.Sample
         public static void Main(string[] args)
         {
             TranslationManager manager = new TranslationManager();
-
+            
             manager.AddLanguage(new Language {Name = "English", Code = "en"});
             manager.AddLanguage(new Language {Name = "Spanish", Code = "es"});
-
+            
             manager.AddTranslation("en", "hello", "Hello");
             manager.AddTranslation("es", "hello", "Hola");
             manager.AddTranslation("en", "world", "World");
             manager.AddTranslation("es", "world", "Mundo");
-
+            
             manager.SetLanguage("Spanish", "es");
             Logger.Info($"Current language: {manager.Language.Name} - Language.Code:{manager.Language.Code} Translate result: {manager.Translate("hello")}");
-
+            
             manager.SetLanguage("English", "en");
             Logger.Info($"Current language: {manager.Language.Name} - Language.Code:{manager.Language.Code} Translate result: {manager.Translate("hello")}");
         }

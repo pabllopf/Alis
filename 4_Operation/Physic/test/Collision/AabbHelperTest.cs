@@ -51,15 +51,15 @@ namespace Alis.Core.Physic.Test.Collision
             Vector2 end = new Vector2(1, 1);
             Transform transform = new Transform();
             Aabb aabb;
-
+            
             // Act
             AabbHelper.ComputeEdgeAabb(ref start, ref end, ref transform, out aabb);
-
+            
             // Assert
             Assert.Equal(new Vector2(-0.01F, -0.01F), aabb.LowerBound);
             Assert.Equal(new Vector2(0.01F, 0.01F), aabb.UpperBound);
         }
-
+        
         /// <summary>
         ///     Tests that test compute circle aabb
         /// </summary>
@@ -71,15 +71,15 @@ namespace Alis.Core.Physic.Test.Collision
             float radius = 1.0f;
             Transform transform = new Transform();
             Aabb aabb;
-
+            
             // Act
             AabbHelper.ComputeCircleAabb(ref pos, radius, ref transform, out aabb);
-
+            
             // Assert
             Assert.Equal(new Vector2(-1, -1), aabb.LowerBound);
             Assert.Equal(new Vector2(1, 1), aabb.UpperBound);
         }
-
+        
         /// <summary>
         ///     Tests that test compute polygon aabb
         /// </summary>
@@ -94,10 +94,10 @@ namespace Alis.Core.Physic.Test.Collision
             };
             Transform transform = new Transform();
             Aabb aabb;
-
+            
             // Act
             AabbHelper.ComputePolygonAabb(vertices, ref transform, out aabb);
-
+            
             // Assert
             Assert.Equal(new Vector2(-0.01F, -0.01F), aabb.LowerBound);
             Assert.Equal(new Vector2(0.01F, 0.01F), aabb.UpperBound);

@@ -51,9 +51,9 @@ namespace Alis.Core.Network.Test.Internal
             WebSocketFrame frame = new WebSocketFrame(isFinBitSet, webSocketOpCode, count, maskKey);
             int numBytesRead = 5;
             int numBytesLeftToRead = 5;
-
+            
             WebSocketReadCursor cursor = new WebSocketReadCursor(frame, numBytesRead, numBytesLeftToRead);
-
+            
             Assert.Equal(frame, cursor.WebSocketFrame);
             Assert.Equal(numBytesRead, cursor.NumBytesRead);
             Assert.Equal(numBytesLeftToRead, cursor.NumBytesLeftToRead);

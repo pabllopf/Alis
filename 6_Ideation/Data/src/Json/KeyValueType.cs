@@ -40,7 +40,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     The key type
         /// </summary>
         public Type KeyType;
-
+        
         /// <summary>
         ///     The value type
         /// </summary>

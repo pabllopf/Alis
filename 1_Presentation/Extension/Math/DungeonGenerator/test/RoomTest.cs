@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Extension.Math.DungeonGenerator.Test
 {
     /// <summary>
-    /// The room test class
+    ///     The room test class
     /// </summary>
     public class RoomTest
     {
         /// <summary>
-        /// Tests that set up first room should initialize room with given parameters
+        ///     Tests that set up first room should initialize room with given parameters
         /// </summary>
         [Fact]
         public void SetUpFirstRoom_ShouldInitializeRoomWithGivenParameters()
@@ -61,7 +61,7 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
         }
         
         /// <summary>
-        /// Tests that set up should initialize room with correct parameters when direction is north
+        ///     Tests that set up should initialize room with correct parameters when direction is north
         /// </summary>
         [Fact]
         public void SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsNorth()
@@ -83,7 +83,7 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
         }
         
         /// <summary>
-        /// Tests that set up should initialize room with correct parameters when direction is south
+        ///     Tests that set up should initialize room with correct parameters when direction is south
         /// </summary>
         [Fact]
         public void SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsSouth()
@@ -105,7 +105,7 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
         }
         
         /// <summary>
-        /// Tests that set up should initialize room with correct parameters when direction is east
+        ///     Tests that set up should initialize room with correct parameters when direction is east
         /// </summary>
         [Fact]
         public void SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsEast()
@@ -127,7 +127,7 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
         }
         
         /// <summary>
-        /// Tests that set up should initialize room with correct parameters when direction is west
+        ///     Tests that set up should initialize room with correct parameters when direction is west
         /// </summary>
         [Fact]
         public void SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsWest()
@@ -149,7 +149,7 @@ namespace Alis.Extension.Math.DungeonGenerator.Test
         }
         
         /// <summary>
-        /// Tests that set up should initialize room with correct parameters when direction is west
+        ///     Tests that set up should initialize room with correct parameters when direction is west
         /// </summary>
         [Fact]
         public void SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsNone()

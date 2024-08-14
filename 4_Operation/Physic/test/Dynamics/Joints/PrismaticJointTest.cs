@@ -52,16 +52,16 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Vector2 anchorB = new Vector2(0.5f, 0.5f);
             Vector2 axis = new Vector2(1, 0);
             bool useWorldCoordinates = false;
-
+            
             // Act
             PrismaticJoint prismaticJoint = new PrismaticJoint(bodyA, bodyB, anchorA, anchorB, axis, useWorldCoordinates);
-
+            
             // Assert
             Assert.Equal(bodyA, prismaticJoint.BodyA);
             Assert.Equal(bodyB, prismaticJoint.BodyB);
             Assert.Equal(axis, prismaticJoint.LocalXAxisA);
         }
-
+        
         /// <summary>
         ///     Tests that prismatic joint world anchor a test
         /// </summary>
@@ -76,14 +76,14 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Vector2 axis = new Vector2(1, 0);
             bool useWorldCoordinates = false;
             PrismaticJoint prismaticJoint = new PrismaticJoint(bodyA, bodyB, anchorA, anchorB, axis, useWorldCoordinates);
-
+            
             // Act
             Vector2 worldAnchorA = prismaticJoint.WorldAnchorA;
-
+            
             // Assert
             Assert.Equal(bodyA.GetWorldPoint(anchorA), worldAnchorA);
         }
-
+        
         /// <summary>
         ///     Tests that prismatic joint world anchor b test
         /// </summary>
@@ -98,14 +98,14 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Vector2 axis = new Vector2(1, 0);
             bool useWorldCoordinates = false;
             PrismaticJoint prismaticJoint = new PrismaticJoint(bodyA, bodyB, anchorA, anchorB, axis, useWorldCoordinates);
-
+            
             // Act
             Vector2 worldAnchorB = prismaticJoint.WorldAnchorB;
-
+            
             // Assert
             Assert.Equal(bodyB.GetWorldPoint(anchorB), worldAnchorB);
         }
-
+        
         /// <summary>
         ///     Tests that prismatic joint joint translation test
         /// </summary>
@@ -120,10 +120,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Vector2 axis = new Vector2(1, 0);
             bool useWorldCoordinates = false;
             PrismaticJoint prismaticJoint = new PrismaticJoint(bodyA, bodyB, anchorA, anchorB, axis, useWorldCoordinates);
-
+            
             // Act
             float jointTranslation = prismaticJoint.JointTranslation;
-
+            
             // Assert
             Assert.Equal(Vector2.Dot(axis, bodyB.GetWorldPoint(anchorB) - bodyA.GetWorldPoint(anchorA)), jointTranslation);
         }

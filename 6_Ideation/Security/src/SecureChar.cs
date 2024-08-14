@@ -38,18 +38,18 @@ namespace Alis.Core.Aspect.Security
         ///     The random value
         /// </summary>
         private char _randomValue;
-
+        
         /// <summary>
         ///     The value
         /// </summary>
         private char _value;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="SecureChar" /> class
         /// </summary>
         /// <param name="value">The value</param>
         public SecureChar(char value = '\x0000') => Value = value;
-
+        
         /// <summary>
         ///     Gets or sets the value of the value
         /// </summary>
@@ -62,7 +62,7 @@ namespace Alis.Core.Aspect.Security
                     return (char) (_value - _randomValue);
                 }
             }
-
+            
             set
             {
                 unchecked
@@ -72,73 +72,73 @@ namespace Alis.Core.Aspect.Security
                 }
             }
         }
-
+        
         /// <summary>
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
         public static implicit operator SecureChar(char value) => new SecureChar(value);
-
+        
         /// <summary>
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
         public static implicit operator char(SecureChar value) => value.Value;
-
+        
         /// <summary>
         /// </summary>
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
         public static bool operator ==(SecureChar a, SecureChar b) => a.Value == b.Value;
-
+        
         /// <summary>
         /// </summary>
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
         public static bool operator !=(SecureChar a, SecureChar b) => a.Value != b.Value;
-
+        
         /// <summary>
         /// </summary>
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
         public static SecureChar operator +(SecureChar a, SecureChar b) => new SecureChar((char) (a.Value + b.Value));
-
+        
         /// <summary>
         /// </summary>
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
         public static SecureChar operator -(SecureChar a, SecureChar b) => new SecureChar((char) (a.Value - b.Value));
-
+        
         /// <summary>
         /// </summary>
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
         public static SecureChar operator *(SecureChar a, SecureChar b) => new SecureChar((char) (a.Value * b.Value));
-
+        
         /// <summary>
         /// </summary>
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
         public static SecureChar operator /(SecureChar a, SecureChar b) => new SecureChar((char) (a.Value / b.Value));
-
+        
         /// <summary>
         ///     Returns the string
         /// </summary>
         /// <returns>The string</returns>
         public override string ToString() => Value.ToString();
-
+        
         /// <summary>
         ///     Gets the hash code
         /// </summary>
         /// <returns>The int</returns>
         public override int GetHashCode() => Value.GetHashCode();
-
+        
         /// <summary>
         ///     Describes whether this instance equals
         /// </summary>

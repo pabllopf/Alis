@@ -47,14 +47,14 @@ namespace Alis.Core.Physic.Test.Collision.TOI
             // Arrange
             ToiInput toiInput = new ToiInput();
             DistanceProxy expectedValue = new DistanceProxy();
-
+            
             // Act
             toiInput.ProxyA = expectedValue;
-
+            
             // Assert
             Assert.Equal(expectedValue, toiInput.ProxyA);
         }
-
+        
         /// <summary>
         ///     Tests that test toi input proxy b property
         /// </summary>
@@ -64,14 +64,14 @@ namespace Alis.Core.Physic.Test.Collision.TOI
             // Arrange
             ToiInput toiInput = new ToiInput();
             DistanceProxy expectedValue = new DistanceProxy();
-
+            
             // Act
             toiInput.ProxyB = expectedValue;
-
+            
             // Assert
             Assert.Equal(expectedValue, toiInput.ProxyB);
         }
-
+        
         /// <summary>
         ///     Tests that test toi input sweep a property
         /// </summary>
@@ -81,14 +81,14 @@ namespace Alis.Core.Physic.Test.Collision.TOI
             // Arrange
             ToiInput toiInput = new ToiInput();
             Sweep expectedValue = new Sweep();
-
+            
             // Act
             toiInput.SweepA = expectedValue;
-
+            
             // Assert
             Assert.Equal(expectedValue, toiInput.SweepA);
         }
-
+        
         /// <summary>
         ///     Tests that test toi input sweep b property
         /// </summary>
@@ -98,14 +98,14 @@ namespace Alis.Core.Physic.Test.Collision.TOI
             // Arrange
             ToiInput toiInput = new ToiInput();
             Sweep expectedValue = new Sweep();
-
+            
             // Act
             toiInput.SweepB = expectedValue;
-
+            
             // Assert
             Assert.Equal(expectedValue, toiInput.SweepB);
         }
-
+        
         /// <summary>
         ///     Tests that test toi input max property
         /// </summary>
@@ -115,10 +115,10 @@ namespace Alis.Core.Physic.Test.Collision.TOI
             // Arrange
             ToiInput toiInput = new ToiInput();
             float expectedValue = 0.5f;
-
+            
             // Act
             toiInput.Max = expectedValue;
-
+            
             // Assert
             Assert.Equal(expectedValue, toiInput.Max);
         }

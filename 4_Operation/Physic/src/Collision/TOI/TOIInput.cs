@@ -38,22 +38,22 @@ namespace Alis.Core.Physic.Collision.TOI
         ///     The proxy
         /// </summary>
         public DistanceProxy ProxyA { get; set; }
-
+        
         /// <summary>
         ///     The proxy
         /// </summary>
         public DistanceProxy ProxyB { get; set; }
-
+        
         /// <summary>
         ///     The sweep
         /// </summary>
         public Sweep SweepA { get; set; }
-
+        
         /// <summary>
         ///     The sweep
         /// </summary>
         public Sweep SweepB { get; set; }
-
+        
         /// <summary>
         ///     The max
         /// </summary>

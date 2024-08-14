@@ -47,14 +47,14 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             // Arrange
             ReferenceFace referenceFace = new ReferenceFace();
             int expectedValue = 1;
-
+            
             // Act
             referenceFace.I1 = expectedValue;
-
+            
             // Assert
             Assert.Equal(expectedValue, referenceFace.I1);
         }
-
+        
         /// <summary>
         ///     Tests that test i 2 property
         /// </summary>
@@ -64,14 +64,14 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             // Arrange
             ReferenceFace referenceFace = new ReferenceFace();
             int expectedValue = 2;
-
+            
             // Act
             referenceFace.I2 = expectedValue;
-
+            
             // Assert
             Assert.Equal(expectedValue, referenceFace.I2);
         }
-
+        
         /// <summary>
         ///     Tests that test v 1 property
         /// </summary>
@@ -81,14 +81,14 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             // Arrange
             ReferenceFace referenceFace = new ReferenceFace();
             Vector2 expectedValue = new Vector2(1, 1);
-
+            
             // Act
             referenceFace.V1 = expectedValue;
-
+            
             // Assert
             Assert.Equal(expectedValue, referenceFace.V1);
         }
-
+        
         /// <summary>
         ///     Tests that test v 2 property
         /// </summary>
@@ -98,14 +98,14 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             // Arrange
             ReferenceFace referenceFace = new ReferenceFace();
             Vector2 expectedValue = new Vector2(2, 2);
-
+            
             // Act
             referenceFace.V2 = expectedValue;
-
+            
             // Assert
             Assert.Equal(expectedValue, referenceFace.V2);
         }
-
+        
         /// <summary>
         ///     Tests that test normal property
         /// </summary>
@@ -115,14 +115,14 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             // Arrange
             ReferenceFace referenceFace = new ReferenceFace();
             Vector2 expectedValue = new Vector2(1, 0);
-
+            
             // Act
             referenceFace.Normal = expectedValue;
-
+            
             // Assert
             Assert.Equal(expectedValue, referenceFace.Normal);
         }
-
+        
         /// <summary>
         ///     Tests that test side normal 1 property
         /// </summary>
@@ -132,14 +132,14 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             // Arrange
             ReferenceFace referenceFace = new ReferenceFace();
             Vector2 expectedValue = new Vector2(0, 1);
-
+            
             // Act
             referenceFace.SideNormal1 = expectedValue;
-
+            
             // Assert
             Assert.Equal(expectedValue, referenceFace.SideNormal1);
         }
-
+        
         /// <summary>
         ///     Tests that test side offset 1 property
         /// </summary>
@@ -149,14 +149,14 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             // Arrange
             ReferenceFace referenceFace = new ReferenceFace();
             float expectedValue = 1.5f;
-
+            
             // Act
             referenceFace.SideOffset1 = expectedValue;
-
+            
             // Assert
             Assert.Equal(expectedValue, referenceFace.SideOffset1);
         }
-
+        
         /// <summary>
         ///     Tests that test side normal 2 property
         /// </summary>
@@ -166,14 +166,14 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             // Arrange
             ReferenceFace referenceFace = new ReferenceFace();
             Vector2 expectedValue = new Vector2(1, 0);
-
+            
             // Act
             referenceFace.SideNormal2 = expectedValue;
-
+            
             // Assert
             Assert.Equal(expectedValue, referenceFace.SideNormal2);
         }
-
+        
         /// <summary>
         ///     Tests that test side offset 2 property
         /// </summary>
@@ -183,10 +183,10 @@ namespace Alis.Core.Physic.Test.Collision.NarrowPhase
             // Arrange
             ReferenceFace referenceFace = new ReferenceFace();
             float expectedValue = 2.5f;
-
+            
             // Act
             referenceFace.SideOffset2 = expectedValue;
-
+            
             // Assert
             Assert.Equal(expectedValue, referenceFace.SideOffset2);
         }

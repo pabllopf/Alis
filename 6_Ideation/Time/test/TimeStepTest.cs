@@ -48,11 +48,11 @@ namespace Alis.Core.Aspect.Time.Test
                 // Act
                 DeltaTime = 0.5f
             };
-
+            
             // Assert
             Assert.Equal(0.5f, timeStep.DeltaTime);
         }
-
+        
         /// <summary>
         ///     Tests that delta time ratio get set should get and set correctly
         /// </summary>
@@ -65,11 +65,11 @@ namespace Alis.Core.Aspect.Time.Test
                 // Act
                 DeltaTimeRatio = 2.0f
             };
-
+            
             // Assert
             Assert.Equal(2.0f, timeStep.DeltaTimeRatio);
         }
-
+        
         /// <summary>
         ///     Tests that inverted delta time get set should get and set correctly
         /// </summary>
@@ -82,11 +82,11 @@ namespace Alis.Core.Aspect.Time.Test
                 // Act
                 InvertedDeltaTime = 0.1f
             };
-
+            
             // Assert
             Assert.Equal(0.1f, timeStep.InvertedDeltaTime);
         }
-
+        
         /// <summary>
         ///     Tests that inverted delta time zero get set should get and set correctly
         /// </summary>
@@ -99,11 +99,11 @@ namespace Alis.Core.Aspect.Time.Test
                 // Act
                 InvertedDeltaTimeZero = 0.05f
             };
-
+            
             // Assert
             Assert.Equal(0.05f, timeStep.InvertedDeltaTimeZero);
         }
-
+        
         /// <summary>
         ///     Tests that position iterations get set should get and set correctly
         /// </summary>
@@ -116,11 +116,11 @@ namespace Alis.Core.Aspect.Time.Test
                 // Act
                 PositionIterations = 3
             };
-
+            
             // Assert
             Assert.Equal(3, timeStep.PositionIterations);
         }
-
+        
         /// <summary>
         ///     Tests that velocity iterations get set should get and set correctly
         /// </summary>
@@ -133,11 +133,11 @@ namespace Alis.Core.Aspect.Time.Test
                 // Act
                 VelocityIterations = 5
             };
-
+            
             // Assert
             Assert.Equal(5, timeStep.VelocityIterations);
         }
-
+        
         /// <summary>
         ///     Tests that warm starting get set should get and set correctly
         /// </summary>
@@ -150,11 +150,11 @@ namespace Alis.Core.Aspect.Time.Test
                 // Act
                 WarmStarting = true
             };
-
+            
             // Assert
             Assert.True(timeStep.WarmStarting);
         }
-
+        
         /// <summary>
         ///     Tests that reset default values should reset to default
         /// </summary>
@@ -172,10 +172,10 @@ namespace Alis.Core.Aspect.Time.Test
                 VelocityIterations = 5,
                 WarmStarting = true
             };
-
+            
             // Act
             timeStep.Reset();
-
+            
             // Assert
             Assert.Equal(0f, timeStep.DeltaTime);
             Assert.Equal(0f, timeStep.DeltaTimeRatio);

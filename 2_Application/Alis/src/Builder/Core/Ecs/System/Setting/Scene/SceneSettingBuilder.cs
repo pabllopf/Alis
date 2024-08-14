@@ -42,7 +42,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Scene
         ///     The audio setting
         /// </summary>
         private readonly SceneSetting sceneSetting = new SceneSetting();
-
+        
         /// <summary>
         ///     Builds this instance
         /// </summary>

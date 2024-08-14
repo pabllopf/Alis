@@ -44,14 +44,14 @@ namespace Alis.Core.Aspect.Fluent.Test
         {
             // Arrange
             TestBuild testBuild = new TestBuild();
-
+            
             // Act
             string result = testBuild.Build();
-
+            
             // Assert
             Assert.Equal("Test", result);
         }
-
+        
         /// <summary>
         ///     Tests that build does not return null
         /// </summary>
@@ -60,14 +60,14 @@ namespace Alis.Core.Aspect.Fluent.Test
         {
             // Arrange
             TestBuild testBuild = new TestBuild();
-
+            
             // Act
             string result = testBuild.Build();
-
+            
             // Assert
             Assert.NotNull(result);
         }
-
+        
         /// <summary>
         ///     Tests that build returns correct type
         /// </summary>
@@ -76,10 +76,10 @@ namespace Alis.Core.Aspect.Fluent.Test
         {
             // Arrange
             TestBuild testBuild = new TestBuild();
-
+            
             // Act
             string result = testBuild.Build();
-
+            
             // Assert
             Assert.IsType<string>(result);
         }

@@ -49,17 +49,14 @@ namespace Alis.Core.Physic.Test.Collision.Filtering
             Assert.Equal(Settings.DefaultFixtureCollisionCategories, filter.Category);
             Assert.Equal(Settings.DefaultFixtureCollidesWith, filter.CategoryMask);
         }
-
+        
         /// <summary>
         ///     Tests that parameterized constructor test
         /// </summary>
         /// <param name="group">The group</param>
         /// <param name="category">The category</param>
         /// <param name="mask">The mask</param>
-        [Theory]
-        [InlineData(1, Category.Cat1, Category.Cat2)]
-        [InlineData(2, Category.Cat2, Category.Cat3)]
-        [InlineData(3, Category.Cat3, Category.Cat4)]
+        [Theory, InlineData(1, Category.Cat1, Category.Cat2), InlineData(2, Category.Cat2, Category.Cat3), InlineData(3, Category.Cat3, Category.Cat4)]
         public void ParameterizedConstructorTest(short group, Category category, Category mask)
         {
             Filter filter = new Filter(group, category, mask);

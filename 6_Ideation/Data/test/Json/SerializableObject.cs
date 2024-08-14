@@ -43,7 +43,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         ///     Gets or sets the value of the property
         /// </summary>
         public string Property { get; set; } = "Value";
-
+        
         /// <summary>
         ///     Gets the object data using the specified info
         /// </summary>

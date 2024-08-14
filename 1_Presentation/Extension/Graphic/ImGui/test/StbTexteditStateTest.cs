@@ -32,12 +32,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test
 {
     /// <summary>
-    /// The stb textedit state test class
+    ///     The stb textedit state test class
     /// </summary>
     public class StbTexteditStateTest
     {
         /// <summary>
-        /// Tests that cursor should be initialized correctly
+        ///     Tests that cursor should be initialized correctly
         /// </summary>
         [Fact]
         public void Cursor_ShouldBeInitializedCorrectly()
@@ -53,7 +53,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that select start should be initialized correctly
+        ///     Tests that select start should be initialized correctly
         /// </summary>
         [Fact]
         public void SelectStart_ShouldBeInitializedCorrectly()
@@ -69,7 +69,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that select end should be initialized correctly
+        ///     Tests that select end should be initialized correctly
         /// </summary>
         [Fact]
         public void SelectEnd_ShouldBeInitializedCorrectly()
@@ -85,7 +85,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that insert mode should be initialized correctly
+        ///     Tests that insert mode should be initialized correctly
         /// </summary>
         [Fact]
         public void InsertMode_ShouldBeInitializedCorrectly()
@@ -101,7 +101,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that row count per page should be initialized correctly
+        ///     Tests that row count per page should be initialized correctly
         /// </summary>
         [Fact]
         public void RowCountPerPage_ShouldBeInitializedCorrectly()
@@ -117,7 +117,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that cursor at end of line should be initialized correctly
+        ///     Tests that cursor at end of line should be initialized correctly
         /// </summary>
         [Fact]
         public void CursorAtEndOfLine_ShouldBeInitializedCorrectly()
@@ -133,7 +133,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that initialized should be initialized correctly
+        ///     Tests that initialized should be initialized correctly
         /// </summary>
         [Fact]
         public void Initialized_ShouldBeInitializedCorrectly()
@@ -149,7 +149,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that has preferred x should be initialized correctly
+        ///     Tests that has preferred x should be initialized correctly
         /// </summary>
         [Fact]
         public void HasPreferredX_ShouldBeInitializedCorrectly()
@@ -165,7 +165,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that single line should be initialized correctly
+        ///     Tests that single line should be initialized correctly
         /// </summary>
         [Fact]
         public void SingleLine_ShouldBeInitializedCorrectly()
@@ -181,7 +181,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that padding 1 should be initialized correctly
+        ///     Tests that padding 1 should be initialized correctly
         /// </summary>
         [Fact]
         public void Padding1_ShouldBeInitializedCorrectly()
@@ -197,7 +197,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that padding 2 should be initialized correctly
+        ///     Tests that padding 2 should be initialized correctly
         /// </summary>
         [Fact]
         public void Padding2_ShouldBeInitializedCorrectly()
@@ -213,7 +213,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that padding 3 should be initialized correctly
+        ///     Tests that padding 3 should be initialized correctly
         /// </summary>
         [Fact]
         public void Padding3_ShouldBeInitializedCorrectly()
@@ -229,7 +229,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that preferred x should be initialized correctly
+        ///     Tests that preferred x should be initialized correctly
         /// </summary>
         [Fact]
         public void PreferredX_ShouldBeInitializedCorrectly()
@@ -245,7 +245,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that undo state should be initialized correctly
+        ///     Tests that undo state should be initialized correctly
         /// </summary>
         [Fact]
         public void UndoState_ShouldBeInitializedCorrectly()

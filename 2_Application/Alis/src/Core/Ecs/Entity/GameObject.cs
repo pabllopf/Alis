@@ -29,7 +29,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 using Alis.Builder.Core.Ecs.Entity.GameObject;
 using Alis.Core.Aspect.Data.Json;
@@ -60,7 +59,7 @@ namespace Alis.Core.Ecs.Entity
             Transform = new Transform(new Vector2(0, 0), new Rotation(0), new Vector2(1, 1));
             Components = new List<AComponent>();
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="GameObject" /> class
         /// </summary>
@@ -70,7 +69,6 @@ namespace Alis.Core.Ecs.Entity
         /// <param name="tag">The tag</param>
         /// <param name="transform">The transform</param>
         [JsonConstructor]
-        
         public GameObject(bool isEnable, string name, string id, string tag, Transform transform)
         {
             IsEnable = isEnable;
@@ -80,7 +78,7 @@ namespace Alis.Core.Ecs.Entity
             Transform = transform;
             Components = new List<AComponent>();
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="GameObject" /> class
         /// </summary>
@@ -90,7 +88,6 @@ namespace Alis.Core.Ecs.Entity
         /// <param name="tag">The tag</param>
         /// <param name="transform">The transform</param>
         /// <param name="components">The components</param>
-        
         public GameObject(bool isEnable, string name, string id, string tag, Transform transform, List<AComponent> components) : this()
         {
             IsEnable = isEnable;
@@ -100,93 +97,98 @@ namespace Alis.Core.Ecs.Entity
             Transform = transform;
             Components = components;
         }
-
+        
         /// <summary>
         ///     Gets or sets the value of the context
         /// </summary>
         [JsonIgnore]
         public Context Context => VideoGame.GetContext();
-
+        
         /// <summary>
         ///     Gets or sets the value of the transform
         /// </summary>
         [JsonPropertyName("_Transform_")]
         public Transform Transform { get; set; }
-
+        
+        /// <summary>
+        ///     Builders this instance
+        /// </summary>
+        /// <returns>The game object builder</returns>
+        public GameObjectBuilder Builder() => new GameObjectBuilder();
+        
         /// <summary>
         ///     Gets or sets the value of the is enable
         /// </summary>
         [JsonPropertyName("_IsEnable_")]
         public bool IsEnable { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the name
         /// </summary>
         [JsonPropertyName("_Name_")]
         public string Name { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the id
         /// </summary>
         [JsonPropertyName("_Id_")]
         public string Id { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the tag
         /// </summary>
         [JsonPropertyName("_Tag_")]
         public string Tag { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the components
         /// </summary>
         [JsonPropertyName("_Components_")]
         public List<AComponent> Components { get; set; }
-
+        
         /// <summary>
         ///     Adds the component
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="component">The component</param>
         public void Add<T>(T component) where T : AComponent => Components.Add(component);
-
+        
         /// <summary>
         ///     Removes the component
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="component">The component</param>
         public void Remove<T>(T component) where T : AComponent => Components.Remove(component);
-
+        
         /// <summary>
         ///     Gets this instance
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The</returns>
         public T Get<T>() where T : AComponent => Components.Find(i => i is T) as T;
-
+        
         /// <summary>
         ///     Describes whether this instance contains
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The bool</returns>
         public bool Contains<T>() where T : AComponent => Components.Exists(i => i is T);
-
+        
         /// <summary>
         ///     Clears this instance
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         public void Clear<T>() where T : AComponent => Components.Clear();
-
+        
         /// <summary>
         ///     Ons the enable
         /// </summary>
-        
         public void OnEnable()
         {
             IsEnable = true;
             Components.ForEach(i => i.OnEnable());
         }
-
+        
         /// <summary>
         ///     Ons the init
         /// </summary>
@@ -195,67 +197,67 @@ namespace Alis.Core.Ecs.Entity
             Components.ForEach(i => i.Attach(this));
             Components.ForEach(i => i.OnInit());
         }
-
+        
         /// <summary>
         ///     Ons the awake
         /// </summary>
         public void OnAwake() => Components.ForEach(i => i.OnAwake());
-
+        
         /// <summary>
         ///     Ons the start
         /// </summary>
         public void OnStart() => Components.ForEach(i => i.OnStart());
-
+        
         /// <summary>
         ///     Ons the before update
         /// </summary>
         public void OnBeforeUpdate() => Components.ForEach(i => i.OnBeforeUpdate());
-
+        
         /// <summary>
         ///     Ons the update
         /// </summary>
         public void OnUpdate() => Components.ForEach(i => i.OnUpdate());
-
+        
         /// <summary>
         ///     Ons the after update
         /// </summary>
         public void OnAfterUpdate() => Components.ForEach(i => i.OnAfterUpdate());
-
+        
         /// <summary>
         ///     Ons the before fixed update
         /// </summary>
         public void OnBeforeFixedUpdate() => Components.ForEach(i => i.OnBeforeFixedUpdate());
-
+        
         /// <summary>
         ///     Ons the fixed update
         /// </summary>
         public void OnFixedUpdate() => Components.ForEach(i => i.OnFixedUpdate());
-
+        
         /// <summary>
         ///     Ons the after fixed update
         /// </summary>
         public void OnAfterFixedUpdate() => Components.ForEach(i => i.OnAfterFixedUpdate());
-
+        
         /// <summary>
         ///     Ons the dispatch events
         /// </summary>
         public void OnDispatchEvents() => Components.ForEach(i => i.OnDispatchEvents());
-
+        
         /// <summary>
         ///     Ons the calculate
         /// </summary>
         public void OnCalculate() => Components.ForEach(i => i.OnCalculate());
-
+        
         /// <summary>
         ///     Ons the draw
         /// </summary>
         public void OnDraw() => Components.ForEach(i => i.OnDraw());
-
+        
         /// <summary>
         ///     Ons the gui
         /// </summary>
         public void OnGui() => Components.ForEach(i => i.OnGui());
-
+        
         /// <summary>
         ///     Ons the disable
         /// </summary>
@@ -264,35 +266,29 @@ namespace Alis.Core.Ecs.Entity
             IsEnable = false;
             Components.ForEach(i => i.OnDisable());
         }
-
+        
         /// <summary>
         ///     Ons the reset
         /// </summary>
         public void OnReset() => Components.ForEach(i => i.OnReset());
-
+        
         /// <summary>
         ///     Ons the stop
         /// </summary>
         public void OnStop() => Components.ForEach(i => i.OnStop());
-
+        
         /// <summary>
         ///     Ons the exit
         /// </summary>
         public void OnExit() => Components.ForEach(i => i.OnExit());
-
+        
         /// <summary>
         ///     Ons the destroy
         /// </summary>
         public void OnDestroy() => Components.ForEach(i => i.OnDestroy());
-
-        /// <summary>
-        /// Builders this instance
-        /// </summary>
-        /// <returns>The game object builder</returns>
-        public GameObjectBuilder Builder() => new GameObjectBuilder();
         
         /// <summary>
-        /// Creates
+        ///     Creates
         /// </summary>
         /// <returns>The game object builder</returns>
         public static GameObjectBuilder Create() => new GameObjectBuilder();

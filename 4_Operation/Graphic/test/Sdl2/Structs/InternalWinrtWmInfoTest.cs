@@ -27,32 +27,30 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Xunit;
 using System;
 using Alis.Core.Graphic.Sdl2.Structs;
-
+using Xunit;
 
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
-
     /// <summary>
-    /// The internal winrt wm info tests class
+    ///     The internal winrt wm info tests class
     /// </summary>
     public class InternalWinrtWmInfoTests
     {
         /// <summary>
-        /// Tests that internal winrt wm info initializes properties correctly
+        ///     Tests that internal winrt wm info initializes properties correctly
         /// </summary>
         [Fact]
         public void InternalWinrtWmInfo_InitializesPropertiesCorrectly()
         {
             IntPtr expectedWindow = new IntPtr(123);
-
+            
             InternalWinrtWmInfo info = new InternalWinrtWmInfo
             {
                 Window = expectedWindow
             };
-
+            
             Assert.Equal(expectedWindow, info.Window);
         }
     }

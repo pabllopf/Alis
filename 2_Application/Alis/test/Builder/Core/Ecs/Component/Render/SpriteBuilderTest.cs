@@ -45,10 +45,10 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Render
         public void SpriteBuilder_DefaultConstructor_ValidInput()
         {
             SpriteBuilder spriteBuilder = new SpriteBuilder();
-
+            
             Assert.NotNull(spriteBuilder);
         }
-
+        
         /// <summary>
         ///     Tests that build valid input
         /// </summary>
@@ -56,12 +56,12 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Render
         public void Build_ValidInput()
         {
             SpriteBuilder spriteBuilder = new SpriteBuilder();
-
+            
             Sprite sprite = spriteBuilder.Build();
-
+            
             Assert.NotNull(sprite);
         }
-
+        
         /// <summary>
         ///     Tests that depth valid input
         /// </summary>
@@ -70,12 +70,12 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Render
         {
             SpriteBuilder spriteBuilder = new SpriteBuilder();
             int depth = 10;
-
+            
             spriteBuilder.Depth(depth);
-
+            
             Assert.Equal(depth, spriteBuilder.Build().Depth);
         }
-
+        
         /// <summary>
         ///     Tests that set texture valid input
         /// </summary>
@@ -84,9 +84,9 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Render
         {
             SpriteBuilder spriteBuilder = new SpriteBuilder();
             string texturePath = "testTexturePath";
-
+            
             spriteBuilder.SetTexture(texturePath);
-
+            
             Assert.Equal(texturePath, spriteBuilder.Build().Image.NameFile);
         }
     }

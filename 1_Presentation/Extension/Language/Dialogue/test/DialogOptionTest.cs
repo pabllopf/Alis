@@ -33,12 +33,12 @@ using Xunit;
 namespace Alis.Extension.Language.Dialogue.Test
 {
     /// <summary>
-    /// The dialog option test class
+    ///     The dialog option test class
     /// </summary>
     public class DialogOptionTest
     {
         /// <summary>
-        /// Tests that dialog option constructor sets properties correctly
+        ///     Tests that dialog option constructor sets properties correctly
         /// </summary>
         [Fact]
         public void DialogOption_Constructor_SetsPropertiesCorrectly()
@@ -46,17 +46,17 @@ namespace Alis.Extension.Language.Dialogue.Test
             // Arrange
             string expectedText = "Option Text";
             Action expectedAction = () => Console.WriteLine("Action executed");
-
+            
             // Act
             DialogOption option = new DialogOption(expectedText, expectedAction);
-
+            
             // Assert
             Assert.Equal(expectedText, option.Text);
             Assert.Equal(expectedAction, option.Action);
         }
-
+        
         /// <summary>
-        /// Tests that dialog add option adds option to list
+        ///     Tests that dialog add option adds option to list
         /// </summary>
         [Fact]
         public void Dialog_AddOption_AddsOptionToList()
@@ -65,16 +65,16 @@ namespace Alis.Extension.Language.Dialogue.Test
             Dialog dialog = new Dialog("dialogId", "Dialog Text");
             DialogOption option = new DialogOption("Option Text", () => Console.WriteLine("Action executed"));
             int expectedCount = 1;
-
+            
             // Act
             dialog.AddOption(option);
-
+            
             // Assert
             Assert.Equal(expectedCount, dialog.Options.Count);
         }
-
+        
         /// <summary>
-        /// Tests that dialog manager add dialog adds dialog to dictionary
+        ///     Tests that dialog manager add dialog adds dialog to dictionary
         /// </summary>
         [Fact]
         public void DialogManager_AddDialog_AddsDialogToDictionary()
@@ -83,16 +83,16 @@ namespace Alis.Extension.Language.Dialogue.Test
             DialogManager manager = new DialogManager();
             Dialog dialog = new Dialog("dialogId", "Dialog Text");
             int expectedCount = 1;
-
+            
             // Act
             manager.AddDialog(dialog);
-
+            
             // Assert
             Assert.Equal(expectedCount, manager.dialogs.Count);
         }
-
+        
         /// <summary>
-        /// Tests that dialog manager get dialog returns correct dialog
+        ///     Tests that dialog manager get dialog returns correct dialog
         /// </summary>
         [Fact]
         public void DialogManager_GetDialog_ReturnsCorrectDialog()
@@ -101,26 +101,26 @@ namespace Alis.Extension.Language.Dialogue.Test
             DialogManager manager = new DialogManager();
             Dialog expectedDialog = new Dialog("dialogId", "Dialog Text");
             manager.AddDialog(expectedDialog);
-
+            
             // Act
             Dialog actualDialog = manager.GetDialog("dialogId");
-
+            
             // Assert
             Assert.Equal(expectedDialog, actualDialog);
         }
-
+        
         /// <summary>
-        /// Tests that dialog manager get dialog returns null for non existent id
+        ///     Tests that dialog manager get dialog returns null for non existent id
         /// </summary>
         [Fact]
         public void DialogManager_GetDialog_ReturnsNullForNonExistentId()
         {
             // Arrange
             DialogManager manager = new DialogManager();
-
+            
             // Act
             Dialog result = manager.GetDialog("nonExistentId");
-
+            
             // Assert
             Assert.Null(result);
         }

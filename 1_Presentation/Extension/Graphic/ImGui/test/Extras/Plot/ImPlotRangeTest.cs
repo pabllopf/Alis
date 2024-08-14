@@ -33,12 +33,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
 {
     /// <summary>
-    /// The im plot range test class
+    ///     The im plot range test class
     /// </summary>
     public class ImPlotRangeTest
     {
         /// <summary>
-        /// Tests that min should be initialized
+        ///     Tests that min should be initialized
         /// </summary>
         [Fact]
         public void Min_ShouldBeInitialized()
@@ -46,9 +46,9 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotRange range = new ImPlotRange();
             Assert.Equal(default(double), range.Min);
         }
-
+        
         /// <summary>
-        /// Tests that max should be initialized
+        ///     Tests that max should be initialized
         /// </summary>
         [Fact]
         public void Max_ShouldBeInitialized()
@@ -56,9 +56,9 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             ImPlotRange range = new ImPlotRange();
             Assert.Equal(default(double), range.Max);
         }
-
+        
         /// <summary>
-        /// Tests that min should set and get correctly
+        ///     Tests that min should set and get correctly
         /// </summary>
         [Fact]
         public void Min_Should_SetAndGetCorrectly()
@@ -68,9 +68,9 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot
             range.Min = value;
             Assert.Equal(value, range.Min);
         }
-
+        
         /// <summary>
-        /// Tests that max should set and get correctly
+        ///     Tests that max should set and get correctly
         /// </summary>
         [Fact]
         public void Max_Should_SetAndGetCorrectly()

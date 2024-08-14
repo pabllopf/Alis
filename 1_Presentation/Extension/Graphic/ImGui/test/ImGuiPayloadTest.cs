@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test
 {
     /// <summary>
-    /// The im gui payload test class
+    ///     The im gui payload test class
     /// </summary>
     public class ImGuiPayloadTest
     {
         /// <summary>
-        /// Tests that data should be initialized correctly
+        ///     Tests that data should be initialized correctly
         /// </summary>
         [Fact]
         public void Data_ShouldBeInitializedCorrectly()
@@ -55,7 +55,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that data size should be initialized correctly
+        ///     Tests that data size should be initialized correctly
         /// </summary>
         [Fact]
         public void DataSize_ShouldBeInitializedCorrectly()
@@ -71,7 +71,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that source id should be initialized correctly
+        ///     Tests that source id should be initialized correctly
         /// </summary>
         [Fact]
         public void SourceId_ShouldBeInitializedCorrectly()
@@ -87,7 +87,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that source parent id should be initialized correctly
+        ///     Tests that source parent id should be initialized correctly
         /// </summary>
         [Fact]
         public void SourceParentId_ShouldBeInitializedCorrectly()
@@ -103,7 +103,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that data frame count should be initialized correctly
+        ///     Tests that data frame count should be initialized correctly
         /// </summary>
         [Fact]
         public void DataFrameCount_ShouldBeInitializedCorrectly()
@@ -119,7 +119,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that data type should be initialized correctly
+        ///     Tests that data type should be initialized correctly
         /// </summary>
         [Fact]
         public void DataType_ShouldBeInitializedCorrectly()
@@ -135,7 +135,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that preview should be initialized correctly
+        ///     Tests that preview should be initialized correctly
         /// </summary>
         [Fact]
         public void Preview_ShouldBeInitializedCorrectly()
@@ -151,7 +151,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that delivery should be initialized correctly
+        ///     Tests that delivery should be initialized correctly
         /// </summary>
         [Fact]
         public void Delivery_ShouldBeInitializedCorrectly()
@@ -167,7 +167,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that clear should clear payload
+        ///     Tests that clear should clear payload
         /// </summary>
         [Fact]
         public void Clear_ShouldClearPayload()
@@ -180,7 +180,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that clear calls im gui native clear
+        ///     Tests that clear calls im gui native clear
         /// </summary>
         [Fact]
         public void Clear_CallsImGuiNativeClear()
@@ -190,7 +190,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that is data type returns true for matching type
+        ///     Tests that is data type returns true for matching type
         /// </summary>
         [Fact]
         public void IsDataType_ReturnsTrueForMatchingType()
@@ -200,7 +200,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that is data type returns false for non matching type
+        ///     Tests that is data type returns false for non matching type
         /// </summary>
         [Fact]
         public void IsDataType_ReturnsFalseForNonMatchingType()
@@ -210,7 +210,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that is delivery returns true when delivery
+        ///     Tests that is delivery returns true when delivery
         /// </summary>
         [Fact]
         public void IsDelivery_ReturnsTrueWhenDelivery()
@@ -220,7 +220,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that is preview returns true when preview
+        ///     Tests that is preview returns true when preview
         /// </summary>
         [Fact]
         public void IsPreview_ReturnsTrueWhenPreview()
@@ -230,7 +230,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that is data type should return true for matching type
+        ///     Tests that is data type should return true for matching type
         /// </summary>
         [Fact]
         public void IsDataType_ShouldReturnTrueForMatchingType()
@@ -243,7 +243,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that is data type should return false for non matching type
+        ///     Tests that is data type should return false for non matching type
         /// </summary>
         [Fact]
         public void IsDataType_ShouldReturnFalseForNonMatchingType()
@@ -257,7 +257,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that is delivery should return true when delivery is set
+        ///     Tests that is delivery should return true when delivery is set
         /// </summary>
         [Fact]
         public void IsDelivery_ShouldReturnTrueWhenDeliveryIsSet()
@@ -270,7 +270,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that is delivery should return false when delivery is not set
+        ///     Tests that is delivery should return false when delivery is not set
         /// </summary>
         [Fact]
         public void IsDelivery_ShouldReturnFalseWhenDeliveryIsNotSet()
@@ -283,7 +283,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that is preview should return true when preview is set
+        ///     Tests that is preview should return true when preview is set
         /// </summary>
         [Fact]
         public void IsPreview_ShouldReturnTrueWhenPreviewIsSet()
@@ -296,7 +296,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that is preview should return false when preview is not set
+        ///     Tests that is preview should return false when preview is not set
         /// </summary>
         [Fact]
         public void IsPreview_ShouldReturnFalseWhenPreviewIsNotSet()

@@ -42,7 +42,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     The error prefix.
         /// </summary>
         public const string Prefix = "JSO";
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="JsonException" /> class.
         /// </summary>
@@ -50,7 +50,7 @@ namespace Alis.Core.Aspect.Data.Json
             : base(Prefix + "0001: JSON exception.")
         {
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="JsonException" /> class.
         /// </summary>
@@ -59,7 +59,7 @@ namespace Alis.Core.Aspect.Data.Json
             : base(message)
         {
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="JsonException" /> class.
         /// </summary>
@@ -72,7 +72,7 @@ namespace Alis.Core.Aspect.Data.Json
             : base(message, innerException)
         {
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="JsonException" /> class.
         /// </summary>
@@ -81,7 +81,7 @@ namespace Alis.Core.Aspect.Data.Json
             : base(null, innerException)
         {
         }
-
+        
         /// <summary>
         ///     Gets the error code.
         /// </summary>
@@ -89,7 +89,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     The error code.
         /// </value>
         public int Code => GetCode(Message);
-
+        
         /// <summary>
         ///     Gets the error code.
         /// </summary>
@@ -101,18 +101,18 @@ namespace Alis.Core.Aspect.Data.Json
             {
                 return -1;
             }
-
+            
             if (!message.StartsWith(Prefix, StringComparison.Ordinal))
             {
                 return -1;
             }
-
+            
             int pos = message.IndexOf(':', Prefix.Length);
             if (pos < 0)
             {
                 return -1;
             }
-
+            
             return int.TryParse(message.Substring(Prefix.Length, pos - Prefix.Length), NumberStyles.None, CultureInfo.InvariantCulture, out int i) ? i : -1;
         }
     }

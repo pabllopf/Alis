@@ -35,12 +35,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
 {
     /// <summary>
-    /// The im plot test class
+    ///     The im plot test class
     /// </summary>
     public class ImPlotTestP21
     {
         /// <summary>
-        /// Tests that plot shaded s 8 ptr s 8 ptr int throws dll not found exception
+        ///     Tests that plot shaded s 8 ptr s 8 ptr int throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_S8PtrS8PtrInt_ThrowsDllNotFoundException()
@@ -53,7 +53,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded s 8 ptr s 8 ptr int double throws dll not found exception
+        ///     Tests that plot shaded s 8 ptr s 8 ptr int double throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_S8PtrS8PtrInt_Double_ThrowsDllNotFoundException()
@@ -66,20 +66,17 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded s 8 ptr s 8 ptr int double flags throws dll not found exception
+        ///     Tests that plot shaded s 8 ptr s 8 ptr int double flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_S8PtrS8PtrInt_Double_Flags_ThrowsDllNotFoundException()
         {
             sbyte xs = default(sbyte);
-            Assert.Throws<DllNotFoundException>(() =>
-            {
-                ImPlot.PlotShaded("label", ref xs, ref xs, 0, 0.0, default(ImPlotShadedFlags));
-            });
+            Assert.Throws<DllNotFoundException>(() => { ImPlot.PlotShaded("label", ref xs, ref xs, 0, 0.0, default(ImPlotShadedFlags)); });
         }
         
         /// <summary>
-        /// Tests that plot shaded s 8 ptr s 8 ptr int double flags int throws dll not found exception
+        ///     Tests that plot shaded s 8 ptr s 8 ptr int double flags int throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_S8PtrS8PtrInt_Double_Flags_Int_ThrowsDllNotFoundException()
@@ -92,7 +89,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded s 8 ptr s 8 ptr int double flags int int throws dll not found exception
+        ///     Tests that plot shaded s 8 ptr s 8 ptr int double flags int int throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_S8PtrS8PtrInt_Double_Flags_Int_Int_ThrowsDllNotFoundException()
@@ -105,7 +102,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded u 8 ptr u 8 ptr int throws dll not found exception
+        ///     Tests that plot shaded u 8 ptr u 8 ptr int throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_U8PtrU8PtrInt_ThrowsDllNotFoundException()
@@ -120,7 +117,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded u 8 ptr u 8 ptr int double throws dll not found exception
+        ///     Tests that plot shaded u 8 ptr u 8 ptr int double throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_U8PtrU8PtrInt_Double_ThrowsDllNotFoundException()
@@ -133,7 +130,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded u 8 ptr u 8 ptr int double flags throws dll not found exception
+        ///     Tests that plot shaded u 8 ptr u 8 ptr int double flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_U8PtrU8PtrInt_Double_Flags_ThrowsDllNotFoundException()
@@ -146,7 +143,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded u 8 ptr u 8 ptr int double flags int throws dll not found exception
+        ///     Tests that plot shaded u 8 ptr u 8 ptr int double flags int throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_U8PtrU8PtrInt_Double_Flags_Int_ThrowsDllNotFoundException()
@@ -159,7 +156,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded u 8 ptr u 8 ptr int double flags int int throws dll not found exception
+        ///     Tests that plot shaded u 8 ptr u 8 ptr int double flags int int throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_U8PtrU8PtrInt_Double_Flags_Int_Int_ThrowsDllNotFoundException()
@@ -173,7 +170,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded s 16 ptr s 16 ptr int throws dll not found exception
+        ///     Tests that plot shaded s 16 ptr s 16 ptr int throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_S16PtrS16PtrInt_ThrowsDllNotFoundException()
@@ -186,20 +183,17 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded s 16 ptr s 16 ptr int double throws dll not found exception
+        ///     Tests that plot shaded s 16 ptr s 16 ptr int double throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_S16PtrS16PtrInt_Double_ThrowsDllNotFoundException()
         {
             short xs = default(short);
-            Assert.Throws<DllNotFoundException>(() =>
-            {
-                ImPlot.PlotShaded("label", ref xs, ref xs, 0, 0.0);
-            });
+            Assert.Throws<DllNotFoundException>(() => { ImPlot.PlotShaded("label", ref xs, ref xs, 0, 0.0); });
         }
         
         /// <summary>
-        /// Tests that plot shaded s 16 ptr s 16 ptr int double flags throws dll not found exception
+        ///     Tests that plot shaded s 16 ptr s 16 ptr int double flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_S16PtrS16PtrInt_Double_Flags_ThrowsDllNotFoundException()
@@ -212,7 +206,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded s 16 ptr s 16 ptr int double flags int throws dll not found exception
+        ///     Tests that plot shaded s 16 ptr s 16 ptr int double flags int throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_S16PtrS16PtrInt_Double_Flags_Int_ThrowsDllNotFoundException()
@@ -225,7 +219,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded s 16 ptr s 16 ptr int double flags int int throws dll not found exception
+        ///     Tests that plot shaded s 16 ptr s 16 ptr int double flags int int throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_S16PtrS16PtrInt_Double_Flags_Int_Int_ThrowsDllNotFoundException()
@@ -238,7 +232,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded u 16 ptr u 16 ptr int throws dll not found exception
+        ///     Tests that plot shaded u 16 ptr u 16 ptr int throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_U16PtrU16PtrInt_ThrowsDllNotFoundException()
@@ -251,33 +245,27 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded u 16 ptr u 16 ptr int double throws dll not found exception
+        ///     Tests that plot shaded u 16 ptr u 16 ptr int double throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_U16PtrU16PtrInt_Double_ThrowsDllNotFoundException()
         {
             ushort xs = default(ushort);
-            Assert.Throws<DllNotFoundException>(() =>
-            {
-                ImPlot.PlotShaded("label", ref xs, ref xs, 0, 0.0);
-            });
+            Assert.Throws<DllNotFoundException>(() => { ImPlot.PlotShaded("label", ref xs, ref xs, 0, 0.0); });
         }
         
         /// <summary>
-        /// Tests that plot shaded u 16 ptr u 16 ptr int double flags throws dll not found exception
+        ///     Tests that plot shaded u 16 ptr u 16 ptr int double flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_U16PtrU16PtrInt_Double_Flags_ThrowsDllNotFoundException()
         {
             ushort xs = default(ushort);
-            Assert.Throws<DllNotFoundException>(() =>
-            {
-                ImPlot.PlotShaded("label", ref xs, ref xs, 0, 0.0, default(ImPlotShadedFlags));
-            });
+            Assert.Throws<DllNotFoundException>(() => { ImPlot.PlotShaded("label", ref xs, ref xs, 0, 0.0, default(ImPlotShadedFlags)); });
         }
         
         /// <summary>
-        /// Tests that plot shaded u 16 ptr u 16 ptr int double flags int throws dll not found exception
+        ///     Tests that plot shaded u 16 ptr u 16 ptr int double flags int throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_U16PtrU16PtrInt_Double_Flags_Int_ThrowsDllNotFoundException()
@@ -290,7 +278,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded u 16 ptr u 16 ptr int double flags int int throws dll not found exception
+        ///     Tests that plot shaded u 16 ptr u 16 ptr int double flags int int throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_U16PtrU16PtrInt_Double_Flags_Int_Int_ThrowsDllNotFoundException()
@@ -303,7 +291,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded s 32 ptr s 32 ptr int throws dll not found exception
+        ///     Tests that plot shaded s 32 ptr s 32 ptr int throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_S32PtrS32PtrInt_ThrowsDllNotFoundException()
@@ -316,7 +304,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded s 32 ptr s 32 ptr int double throws dll not found exception
+        ///     Tests that plot shaded s 32 ptr s 32 ptr int double throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_S32PtrS32PtrInt_Double_ThrowsDllNotFoundException()
@@ -329,7 +317,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded s 32 ptr s 32 ptr int double flags throws dll not found exception
+        ///     Tests that plot shaded s 32 ptr s 32 ptr int double flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_S32PtrS32PtrInt_Double_Flags_ThrowsDllNotFoundException()
@@ -342,7 +330,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded s 32 ptr s 32 ptr int double flags int throws dll not found exception
+        ///     Tests that plot shaded s 32 ptr s 32 ptr int double flags int throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_S32PtrS32PtrInt_Double_Flags_Int_ThrowsDllNotFoundException()
@@ -355,7 +343,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded s 32 ptr s 32 ptr int double flags int int throws dll not found exception
+        ///     Tests that plot shaded s 32 ptr s 32 ptr int double flags int int throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_S32PtrS32PtrInt_Double_Flags_Int_Int_ThrowsDllNotFoundException()
@@ -368,7 +356,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded u 32 ptr u 32 ptr int throws dll not found exception
+        ///     Tests that plot shaded u 32 ptr u 32 ptr int throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_U32PtrU32PtrInt_ThrowsDllNotFoundException()
@@ -381,7 +369,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded u 32 ptr u 32 ptr int double throws dll not found exception
+        ///     Tests that plot shaded u 32 ptr u 32 ptr int double throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_U32PtrU32PtrInt_Double_ThrowsDllNotFoundException()
@@ -394,7 +382,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded u 32 ptr u 32 ptr int double flags throws dll not found exception
+        ///     Tests that plot shaded u 32 ptr u 32 ptr int double flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_U32PtrU32PtrInt_Double_Flags_ThrowsDllNotFoundException()
@@ -407,7 +395,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded u 32 ptr u 32 ptr int double flags int throws dll not found exception
+        ///     Tests that plot shaded u 32 ptr u 32 ptr int double flags int throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_U32PtrU32PtrInt_Double_Flags_Int_ThrowsDllNotFoundException()
@@ -420,7 +408,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded u 32 ptr u 32 ptr int double flags int int throws dll not found exception
+        ///     Tests that plot shaded u 32 ptr u 32 ptr int double flags int int throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_U32PtrU32PtrInt_Double_Flags_Int_Int_ThrowsDllNotFoundException()
@@ -433,7 +421,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded s 64 ptr s 64 ptr int throws dll not found exception
+        ///     Tests that plot shaded s 64 ptr s 64 ptr int throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_S64PtrS64PtrInt_ThrowsDllNotFoundException()
@@ -446,7 +434,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded s 64 ptr s 64 ptr int double throws dll not found exception
+        ///     Tests that plot shaded s 64 ptr s 64 ptr int double throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_S64PtrS64PtrInt_Double_ThrowsDllNotFoundException()
@@ -459,7 +447,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded s 64 ptr s 64 ptr int double flags throws dll not found exception
+        ///     Tests that plot shaded s 64 ptr s 64 ptr int double flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_S64PtrS64PtrInt_Double_Flags_ThrowsDllNotFoundException()
@@ -472,7 +460,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded s 64 ptr s 64 ptr int double flags int throws dll not found exception
+        ///     Tests that plot shaded s 64 ptr s 64 ptr int double flags int throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_S64PtrS64PtrInt_Double_Flags_Int_ThrowsDllNotFoundException()
@@ -485,7 +473,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded s 64 ptr s 64 ptr int double flags int int throws dll not found exception
+        ///     Tests that plot shaded s 64 ptr s 64 ptr int double flags int int throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_S64PtrS64PtrInt_Double_Flags_Int_Int_ThrowsDllNotFoundException()
@@ -498,7 +486,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded u 64 ptr u 64 ptr int throws dll not found exception
+        ///     Tests that plot shaded u 64 ptr u 64 ptr int throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_U64PtrU64PtrInt_ThrowsDllNotFoundException()
@@ -511,7 +499,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded u 64 ptr u 64 ptr int double throws dll not found exception
+        ///     Tests that plot shaded u 64 ptr u 64 ptr int double throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_U64PtrU64PtrInt_Double_ThrowsDllNotFoundException()
@@ -524,7 +512,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded u 64 ptr u 64 ptr int double flags throws dll not found exception
+        ///     Tests that plot shaded u 64 ptr u 64 ptr int double flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_U64PtrU64PtrInt_Double_Flags_ThrowsDllNotFoundException()
@@ -537,7 +525,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded u 64 ptr u 64 ptr int double flags int throws dll not found exception
+        ///     Tests that plot shaded u 64 ptr u 64 ptr int double flags int throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_U64PtrU64PtrInt_Double_Flags_Int_ThrowsDllNotFoundException()
@@ -550,7 +538,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded u 64 ptr u 64 ptr int double flags int int throws dll not found exception
+        ///     Tests that plot shaded u 64 ptr u 64 ptr int double flags int int throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_U64PtrU64PtrInt_Double_Flags_Int_Int_ThrowsDllNotFoundException()
@@ -563,7 +551,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded float ptr float ptr float ptr throws dll not found exception
+        ///     Tests that plot shaded float ptr float ptr float ptr throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_FloatPtrFloatPtrFloatPtr_ThrowsDllNotFoundException()
@@ -576,7 +564,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded float ptr float ptr float ptr flags throws dll not found exception
+        ///     Tests that plot shaded float ptr float ptr float ptr flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_FloatPtrFloatPtrFloatPtr_Flags_ThrowsDllNotFoundException()
@@ -589,7 +577,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded float ptr float ptr float ptr flags int throws dll not found exception
+        ///     Tests that plot shaded float ptr float ptr float ptr flags int throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_FloatPtrFloatPtrFloatPtr_Flags_Int_ThrowsDllNotFoundException()
@@ -602,7 +590,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded float ptr float ptr float ptr flags int int throws dll not found exception
+        ///     Tests that plot shaded float ptr float ptr float ptr flags int int throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_FloatPtrFloatPtrFloatPtr_Flags_Int_Int_ThrowsDllNotFoundException()
@@ -615,7 +603,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded double ptrdouble ptrdouble ptr throws dll not found exception
+        ///     Tests that plot shaded double ptrdouble ptrdouble ptr throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_doublePtrdoublePtrdoublePtr_ThrowsDllNotFoundException()
@@ -628,7 +616,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded double ptrdouble ptrdouble ptr flags throws dll not found exception
+        ///     Tests that plot shaded double ptrdouble ptrdouble ptr flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_doublePtrdoublePtrdoublePtr_Flags_ThrowsDllNotFoundException()
@@ -641,7 +629,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded double ptrdouble ptrdouble ptr flags int throws dll not found exception
+        ///     Tests that plot shaded double ptrdouble ptrdouble ptr flags int throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_doublePtrdoublePtrdoublePtr_Flags_Int_ThrowsDllNotFoundException()
@@ -654,7 +642,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded double ptrdouble ptrdouble ptr flags int int throws dll not found exception
+        ///     Tests that plot shaded double ptrdouble ptrdouble ptr flags int int throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_doublePtrdoublePtrdoublePtr_Flags_Int_Int_ThrowsDllNotFoundException()
@@ -667,7 +655,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded s 8 ptr s 8 ptr s 8 ptr throws dll not found exception
+        ///     Tests that plot shaded s 8 ptr s 8 ptr s 8 ptr throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_S8PtrS8PtrS8Ptr_ThrowsDllNotFoundException()
@@ -680,7 +668,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded s 8 ptr s 8 ptr s 8 ptr flags throws dll not found exception
+        ///     Tests that plot shaded s 8 ptr s 8 ptr s 8 ptr flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_S8PtrS8PtrS8Ptr_Flags_ThrowsDllNotFoundException()

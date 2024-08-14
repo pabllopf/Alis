@@ -58,7 +58,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
             Assert.Equal(fixtureA, contact.FixtureA);
             Assert.Equal(fixtureB, contact.FixtureB);
         }
-
+        
         /// <summary>
         ///     Tests that test update
         /// </summary>
@@ -74,7 +74,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
             Contact contact = Contact.Create(fixtureA, 1, fixtureB, 2);
             Assert.Throws<NullReferenceException>(() => contact.Update(contactManager));
         }
-
+        
         /// <summary>
         ///     Tests that test destroy
         /// </summary>
@@ -89,7 +89,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
             Assert.NotNull(contact.FixtureA);
             Assert.NotNull(contact.FixtureB);
         }
-
+        
         /// <summary>
         ///     Tests that test clear flags
         /// </summary>
@@ -104,7 +104,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
             contact.ClearFlags();
             Assert.False(contact.FilterFlag);
         }
-
+        
         /// <summary>
         ///     Tests that test invalidate toi
         /// </summary>
@@ -122,7 +122,7 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
             Assert.Equal(0, contact.ToiCount);
             Assert.Equal(1.0f, contact.Toi);
         }
-
+        
         /// <summary>
         ///     Tests that next property should return correct value
         /// </summary>
@@ -142,16 +142,16 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
                 new Fixture(new CircleShape(1.0f), new Filter()),
                 2
             );
-
+            
             contact.Next = nextContact;
-
+            
             // Act
             Contact result = contact.Next;
-
+            
             // Assert
             Assert.Equal(nextContact, result);
         }
-
+        
         /// <summary>
         ///     Tests that previous property should return correct value
         /// </summary>
@@ -172,14 +172,14 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
                 2
             );
             contact.Previous = previousContact;
-
+            
             // Act
             Contact result = contact.Previous;
-
+            
             // Assert
             Assert.Equal(previousContact, result);
         }
-
+        
         /// <summary>
         ///     Tests that is touching property should return correct value
         /// </summary>
@@ -194,14 +194,14 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
                 2
             );
             // Set the Flags property in a way that makes IsTouching return true
-
+            
             // Act
             bool result = contact.IsTouching;
-
+            
             // Assert
             Assert.False(result);
         }
-
+        
         /// <summary>
         ///     Tests that island flag property should return correct value
         /// </summary>
@@ -216,14 +216,14 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
                 2
             );
             // Set the Flags property in a way that makes IslandFlag return true
-
+            
             // Act
             bool result = contact.IslandFlag;
-
+            
             // Assert
             Assert.False(result);
         }
-
+        
         /// <summary>
         ///     Tests that toi flag property should return correct value
         /// </summary>
@@ -238,14 +238,14 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
                 2
             );
             // Set the Flags property in a way that makes ToiFlag return true
-
+            
             // Act
             bool result = contact.ToiFlag;
-
+            
             // Assert
             Assert.False(result);
         }
-
+        
         /// <summary>
         ///     Tests that filter flag property should return correct value
         /// </summary>
@@ -260,14 +260,14 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
                 2
             );
             // Set the Flags property in a way that makes FilterFlag return true
-
+            
             // Act
             bool result = contact.FilterFlag;
-
+            
             // Assert
             Assert.False(result);
         }
-
+        
         /// <summary>
         ///     Tests that manifold property should get and set correctly
         /// </summary>
@@ -285,11 +285,11 @@ namespace Alis.Core.Physic.Test.Collision.ContactSystem
             {
                 Points = new ManifoldPoint[2]
             };
-
+            
             // Act
             contact.Manifold = expectedManifold;
             Manifold result = contact.Manifold;
-
+            
             // Assert
             Assert.Equal(expectedManifold, result);
         }

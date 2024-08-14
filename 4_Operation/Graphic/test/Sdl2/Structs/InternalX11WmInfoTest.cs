@@ -27,35 +27,32 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using Alis.Core.Graphic.Sdl2.Structs;
 using Xunit;
 
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
-
-
     /// <summary>
-    /// The internal 11 wm info tests class
+    ///     The internal 11 wm info tests class
     /// </summary>
     public class InternalX11WmInfoTests
     {
         /// <summary>
-        /// Tests that internal x 11 wm info initializes properties correctly
+        ///     Tests that internal x 11 wm info initializes properties correctly
         /// </summary>
         [Fact]
         public void InternalX11WmInfo_InitializesPropertiesCorrectly()
         {
             IntPtr expectedDisplay = new IntPtr(123);
             IntPtr expectedWindow = new IntPtr(456);
-
+            
             InternalX11WmInfo info = new InternalX11WmInfo
             {
                 Display = expectedDisplay,
                 Window = expectedWindow
             };
-
+            
             Assert.Equal(expectedDisplay, info.Display);
             Assert.Equal(expectedWindow, info.Window);
         }

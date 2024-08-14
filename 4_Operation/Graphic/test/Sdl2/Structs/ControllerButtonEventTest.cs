@@ -31,17 +31,15 @@ using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Structs;
 using Xunit;
 
-
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
-
     /// <summary>
-    /// The controller button event tests class
+    ///     The controller button event tests class
     /// </summary>
     public class ControllerButtonEventTests
     {
         /// <summary>
-        /// Tests that controller button event initializes properties correctly
+        ///     Tests that controller button event initializes properties correctly
         /// </summary>
         [Fact]
         public void ControllerButtonEvent_InitializesPropertiesCorrectly()
@@ -51,7 +49,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             int which = 1;
             byte button = 2;
             byte state = 1;
-
+            
             ControllerButtonEvent eventStruct = new ControllerButtonEvent
             {
                 type = eventType,
@@ -60,7 +58,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
                 button = button,
                 state = state
             };
-
+            
             Assert.Equal(eventType, eventStruct.type);
             Assert.Equal(timestamp, eventStruct.timestamp);
             Assert.Equal(which, eventStruct.which);

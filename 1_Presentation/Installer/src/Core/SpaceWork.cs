@@ -41,7 +41,7 @@ namespace Alis.App.Installer.Core
         ///     The context
         /// </summary>
         public IntPtr ContextGui;
-
+        
         /// <summary>
         ///     The io
         /// </summary>
@@ -51,17 +51,17 @@ namespace Alis.App.Installer.Core
         ///     The style
         /// </summary>
         public ImGuiStyle Style;
-
+        
         /// <summary>
         ///     Gets or sets the value of the viewport
         /// </summary>
         public ImGuiViewportPtr Viewport;
-
+        
         /// <summary>
         ///     The window
         /// </summary>
         public IntPtr Window;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="SpaceWork" /> class
         /// </summary>
@@ -70,19 +70,19 @@ namespace Alis.App.Installer.Core
         }
         
         /// <summary>
-        /// Initializes this instance
+        ///     Initializes this instance
         /// </summary>
         public void Initialize()
         {
         }
-
+        
         /// <summary>
-        /// Starts this instance
+        ///     Starts this instance
         /// </summary>
         public void Start()
         {
         }
-
+        
         /// <summary>
         ///     Updates this instance
         /// </summary>

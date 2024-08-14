@@ -30,30 +30,31 @@
 namespace Alis.Core.Ecs.Test
 {
     /// <summary>
-    /// The game stub class
+    ///     The game stub class
     /// </summary>
-    /// <seealso cref="IGame"/>
+    /// <seealso cref="IGame" />
     internal class GameStub : IGame
     {
         /// <summary>
-        /// Gets or sets the value of the run invoked
+        ///     Gets or sets the value of the run invoked
         /// </summary>
-        public bool RunInvoked { get; private set; } = false;
+        public bool RunInvoked { get; private set; }
+        
         /// <summary>
-        /// Gets or sets the value of the exit invoked
+        ///     Gets or sets the value of the exit invoked
         /// </summary>
-        public bool ExitInvoked { get; private set; } = false;
-
+        public bool ExitInvoked { get; private set; }
+        
         /// <summary>
-        /// Runs this instance
+        ///     Runs this instance
         /// </summary>
         public void Run()
         {
             RunInvoked = true;
         }
-
+        
         /// <summary>
-        /// Exits this instance
+        ///     Exits this instance
         /// </summary>
         public void Exit()
         {

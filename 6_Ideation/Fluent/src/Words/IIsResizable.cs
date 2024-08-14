@@ -39,8 +39,8 @@ namespace Alis.Core.Aspect.Fluent.Words
         /// </summary>
         /// <returns>The builder</returns>
         TBuilder IsResizable();
-
-
+        
+        
         /// <summary>
         ///     Ises the resizable using the specified value
         /// </summary>

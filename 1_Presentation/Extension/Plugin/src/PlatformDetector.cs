@@ -32,54 +32,39 @@ using System.Runtime.InteropServices;
 namespace Alis.Extension.Plugin
 {
     /// <summary>
-    /// The platform detector class
+    ///     The platform detector class
     /// </summary>
-    /// <seealso cref="IPlatformDetector"/>
+    /// <seealso cref="IPlatformDetector" />
     public class PlatformDetector : IPlatformDetector
     {
         /// <summary>
-        /// Describes whether this instance is windows
+        ///     Describes whether this instance is windows
         /// </summary>
         /// <returns>The bool</returns>
-        public bool IsWindows()
-        {
-            return RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
-        }
-
+        public bool IsWindows() => RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
+        
         /// <summary>
-        /// Describes whether this instance is osx
+        ///     Describes whether this instance is osx
         /// </summary>
         /// <returns>The bool</returns>
-        public bool IsOSX()
-        {
-            return RuntimeInformation.IsOSPlatform(OSPlatform.OSX);
-        }
-
+        public bool IsOSX() => RuntimeInformation.IsOSPlatform(OSPlatform.OSX);
+        
         /// <summary>
-        /// Describes whether this instance is linux
+        ///     Describes whether this instance is linux
         /// </summary>
         /// <returns>The bool</returns>
-        public bool IsLinux()
-        {
-            return RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
-        }
-
+        public bool IsLinux() => RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
+        
         /// <summary>
-        /// Describes whether this instance isi os
+        ///     Describes whether this instance isi os
         /// </summary>
         /// <returns>The bool</returns>
-        public bool IsiOS()
-        {
-            return RuntimeInformation.IsOSPlatform(OSPlatform.OSX) && (RuntimeInformation.OSDescription.Contains("iPhone") || RuntimeInformation.OSDescription.Contains("iPad"));
-        }
-
+        public bool IsiOS() => RuntimeInformation.IsOSPlatform(OSPlatform.OSX) && (RuntimeInformation.OSDescription.Contains("iPhone") || RuntimeInformation.OSDescription.Contains("iPad"));
+        
         /// <summary>
-        /// Describes whether this instance is android
+        ///     Describes whether this instance is android
         /// </summary>
         /// <returns>The bool</returns>
-        public bool IsAndroid()
-        {
-           return RuntimeInformation.IsOSPlatform(OSPlatform.Linux) && RuntimeInformation.OSDescription.Contains("Android");
-        }
+        public bool IsAndroid() => RuntimeInformation.IsOSPlatform(OSPlatform.Linux) && RuntimeInformation.OSDescription.Contains("Android");
     }
 }

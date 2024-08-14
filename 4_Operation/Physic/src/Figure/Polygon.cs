@@ -54,8 +54,8 @@ namespace Alis.Core.Physic.Figure
                 new Vector2(hx, hy),
                 new Vector2(-hx, hy)
             };
-
-
+        
+        
         /// <summary>
         ///     Creates the rectangle using the specified hx
         /// </summary>
@@ -70,7 +70,7 @@ namespace Alis.Core.Physic.Figure
             TransformVertices(vertices, center, angle);
             return vertices;
         }
-
+        
         /// <summary>
         ///     Transforms the vertices using the specified vertices
         /// </summary>
@@ -84,14 +84,14 @@ namespace Alis.Core.Physic.Figure
                 Position = center
             };
             xf.Rotation.Set(angle);
-
+            
             for (int i = 0; i < vertices.Count; ++i)
             {
                 vertices[i] = MathUtils.Mul(ref xf, vertices[i]);
             }
         }
-
-
+        
+        
         /// <summary>
         ///     Creates the rounded rectangle using the specified width
         /// </summary>
@@ -106,7 +106,7 @@ namespace Alis.Core.Physic.Figure
         public static Vertices CreateRoundedRectangle(float width, float height, float xRadius, float yRadius, int segments)
         {
             ValidateRoundedRectangleParameters(width, height, xRadius, yRadius, segments);
-
+            
             Vertices vertices = new Vertices();
             if (segments == 0)
             {
@@ -116,10 +116,10 @@ namespace Alis.Core.Physic.Figure
             {
                 CreateRectangleWithSegments(vertices, width, height, xRadius, yRadius, segments);
             }
-
+            
             return vertices;
         }
-
+        
         /// <summary>
         ///     Validates the rounded rectangle parameters using the specified width
         /// </summary>
@@ -136,13 +136,13 @@ namespace Alis.Core.Physic.Figure
             {
                 throw new Exception("Rounding amount can't be more than half the height and width respectively.");
             }
-
+            
             if (segments < 0)
             {
                 throw new Exception("Segments must be zero or more.");
             }
         }
-
+        
         /// <summary>
         ///     Creates the rectangle without segments using the specified vertices
         /// </summary>
@@ -155,17 +155,17 @@ namespace Alis.Core.Physic.Figure
         {
             vertices.Add(new Vector2(width * .5f - xRadius, -height * .5f));
             vertices.Add(new Vector2(width * .5f, -height * .5f + yRadius));
-
+            
             vertices.Add(new Vector2(width * .5f, height * .5f - yRadius));
             vertices.Add(new Vector2(width * .5f - xRadius, height * .5f));
-
+            
             vertices.Add(new Vector2(-width * .5f + xRadius, height * .5f));
             vertices.Add(new Vector2(-width * .5f, height * .5f - yRadius));
-
+            
             vertices.Add(new Vector2(-width * .5f, -height * .5f + yRadius));
             vertices.Add(new Vector2(-width * .5f + xRadius, -height * .5f));
         }
-
+        
         /// <summary>
         ///     Creates the rectangle with segments using the specified vertices
         /// </summary>
@@ -178,10 +178,10 @@ namespace Alis.Core.Physic.Figure
         internal static void CreateRectangleWithSegments(Vertices vertices, float width, float height, float xRadius, float yRadius, int segments)
         {
             int numberOfEdges = segments * 4 + 8;
-
+            
             float stepSize = Constant.TwoPi / (numberOfEdges - 4);
             int perPhase = numberOfEdges / 4;
-
+            
             Vector2 posOffset = new Vector2(width / 2 - xRadius, height / 2 - yRadius);
             vertices.Add(posOffset + new Vector2(xRadius, -yRadius + yRadius));
             short phase = 0;
@@ -192,12 +192,12 @@ namespace Alis.Core.Physic.Figure
                     posOffset = new Vector2(posOffset.X * -1, posOffset.Y);
                     phase--;
                 }
-
+                
                 vertices.Add(posOffset + new Vector2(xRadius * CustomMathF.Cos(stepSize * -(i + phase)),
                     -yRadius * CustomMathF.Sin(stepSize * -(i + phase))));
             }
         }
-
+        
         /// <summary>
         ///     Creates the line using the specified start
         /// </summary>
@@ -211,11 +211,11 @@ namespace Alis.Core.Physic.Figure
                 start,
                 end
             };
-
+            
             return vertices;
         }
-
-
+        
+        
         /// <summary>
         ///     Creates the circle using the specified radius
         /// </summary>
@@ -224,8 +224,8 @@ namespace Alis.Core.Physic.Figure
         /// <returns>The vertices</returns>
         public static Vertices CreateCircle(float radius, int numberOfEdges) =>
             CreateEllipse(radius, radius, numberOfEdges);
-
-
+        
+        
         /// <summary>
         ///     Creates the ellipse using the specified x radius
         /// </summary>
@@ -236,20 +236,20 @@ namespace Alis.Core.Physic.Figure
         public static Vertices CreateEllipse(float xRadius, float yRadius, int numberOfEdges)
         {
             Vertices vertices = new Vertices();
-
+            
             float stepSize = Constant.TwoPi / numberOfEdges;
-
+            
             vertices.Add(new Vector2(xRadius, 0));
             for (int i = numberOfEdges - 1; i > 0; --i)
             {
                 vertices.Add(new Vector2(xRadius * CustomMathF.Cos(stepSize * i),
                     -yRadius * CustomMathF.Sin(stepSize * i)));
             }
-
+            
             return vertices;
         }
-
-
+        
+        
         /// <summary>
         ///     Creates the arc using the specified radians
         /// </summary>
@@ -260,18 +260,18 @@ namespace Alis.Core.Physic.Figure
         public static Vertices CreateArc(float radians, int sides, float radius)
         {
             Vertices vertices = new Vertices();
-
+            
             float stepSize = radians / sides;
             for (int i = sides - 1; i > 0; i--)
             {
                 vertices.Add(new Vector2(radius * CustomMathF.Cos(stepSize * i),
                     radius * CustomMathF.Sin(stepSize * i)));
             }
-
+            
             return vertices;
         }
-
-
+        
+        
         /// <summary>
         ///     Creates the capsule using the specified height
         /// </summary>
@@ -291,11 +291,11 @@ namespace Alis.Core.Physic.Figure
                     "The radius must be lower than height / 2. Higher values of radius would create a circle, and not a half circle.",
                     nameof(endRadius));
             }
-
+            
             return CreateCapsule(height, endRadius, edges, endRadius, edges);
         }
-
-
+        
+        
         /// <summary>
         ///     Creates the capsule using the specified height
         /// </summary>
@@ -321,16 +321,16 @@ namespace Alis.Core.Physic.Figure
         public static Vertices CreateCapsule(float height, float topRadius, int topEdges, float bottomRadius, int bottomEdges)
         {
             ValidateCapsuleParameters(height, topRadius, topEdges, bottomRadius, bottomEdges);
-
+            
             Vertices vertices = new Vertices();
             float newHeight = (height - topRadius - bottomRadius) * 0.5f;
-
+            
             CreateCapsuleTop(vertices, topRadius, newHeight, topEdges);
             CreateCapsuleBottom(vertices, bottomRadius, newHeight, bottomEdges);
-
+            
             return vertices;
         }
-
+        
         /// <summary>
         ///     Validates the capsule parameters using the specified height
         /// </summary>
@@ -360,7 +360,7 @@ namespace Alis.Core.Physic.Figure
             ValidateRadius(bottomRadius, height, "bottom");
             ValidateEdges(bottomEdges, "bottom");
         }
-
+        
         /// <summary>
         ///     Validates the height using the specified height
         /// </summary>
@@ -373,7 +373,7 @@ namespace Alis.Core.Physic.Figure
                 throw new ArgumentException("Height must be longer than 0", nameof(height));
             }
         }
-
+        
         /// <summary>
         ///     Validates the radius using the specified radius
         /// </summary>
@@ -390,7 +390,7 @@ namespace Alis.Core.Physic.Figure
             ValidateRadiusIsPositive(radius, position);
             ValidateRadiusIsLessThanHalfHeight(radius, height, position);
         }
-
+        
         /// <summary>
         ///     Validates the radius is positive using the specified radius
         /// </summary>
@@ -404,7 +404,7 @@ namespace Alis.Core.Physic.Figure
                 throw new ArgumentException($"The {position} radius must be more than 0", $"{position}Radius");
             }
         }
-
+        
         /// <summary>
         ///     Validates the radius is less than half height using the specified radius
         /// </summary>
@@ -424,7 +424,7 @@ namespace Alis.Core.Physic.Figure
                     $"{position}Radius");
             }
         }
-
+        
         /// <summary>
         ///     Validates the edges using the specified edges
         /// </summary>
@@ -438,7 +438,7 @@ namespace Alis.Core.Physic.Figure
                 throw new ArgumentException($"{position} edges must be more than 0", $"{position}Edges");
             }
         }
-
+        
         /// <summary>
         ///     Creates the capsule top using the specified vertices
         /// </summary>
@@ -449,17 +449,17 @@ namespace Alis.Core.Physic.Figure
         internal static void CreateCapsuleTop(Vertices vertices, float topRadius, float newHeight, int topEdges)
         {
             vertices.Add(new Vector2(topRadius, newHeight));
-
+            
             float stepSize = Constant.Pi / topEdges;
             for (int i = 1; i < topEdges; i++)
             {
                 vertices.Add(new Vector2(topRadius * CustomMathF.Cos(stepSize * i),
                     topRadius * CustomMathF.Sin(stepSize * i) + newHeight));
             }
-
+            
             vertices.Add(new Vector2(-topRadius, newHeight));
         }
-
+        
         /// <summary>
         ///     Creates the capsule bottom using the specified vertices
         /// </summary>
@@ -470,18 +470,18 @@ namespace Alis.Core.Physic.Figure
         internal static void CreateCapsuleBottom(Vertices vertices, float bottomRadius, float newHeight, int bottomEdges)
         {
             vertices.Add(new Vector2(-bottomRadius, -newHeight));
-
+            
             float stepSize = Constant.Pi / bottomEdges;
             for (int i = 1; i < bottomEdges; i++)
             {
                 vertices.Add(new Vector2(-bottomRadius * CustomMathF.Cos(stepSize * i),
                     -bottomRadius * CustomMathF.Sin(stepSize * i) - newHeight));
             }
-
+            
             vertices.Add(new Vector2(bottomRadius, -newHeight));
         }
-
-
+        
+        
         /// <summary>
         ///     Creates the gear using the specified radius
         /// </summary>
@@ -493,14 +493,14 @@ namespace Alis.Core.Physic.Figure
         public static Vertices CreateGear(float radius, int numberOfTeeth, float tipPercentage, float toothHeight)
         {
             Vertices vertices = new Vertices();
-
+            
             float stepSize = Constant.TwoPi / numberOfTeeth;
             tipPercentage /= 100f;
             Helper.Clamp(tipPercentage, 0f, 1f);
             float toothTipStepSize = stepSize / 2f * tipPercentage;
-
+            
             float toothAngleStepSize = (stepSize - toothTipStepSize * 2f) / 2f;
-
+            
             for (int i = numberOfTeeth - 1; i >= 0; --i)
             {
                 if (toothTipStepSize > 0f)
@@ -510,23 +510,23 @@ namespace Alis.Core.Physic.Figure
                                     CustomMathF.Cos(stepSize * i + toothAngleStepSize * 2f + toothTipStepSize),
                             -radius *
                             CustomMathF.Sin(stepSize * i + toothAngleStepSize * 2f + toothTipStepSize)));
-
+                    
                     vertices.Add(
                         new Vector2((radius + toothHeight) *
                                     CustomMathF.Cos(stepSize * i + toothAngleStepSize + toothTipStepSize),
                             -(radius + toothHeight) *
                             CustomMathF.Sin(stepSize * i + toothAngleStepSize + toothTipStepSize)));
                 }
-
+                
                 vertices.Add(new Vector2((radius + toothHeight) *
                                          CustomMathF.Cos(stepSize * i + toothAngleStepSize),
                     -(radius + toothHeight) *
                     CustomMathF.Sin(stepSize * i + toothAngleStepSize)));
-
+                
                 vertices.Add(new Vector2(radius * CustomMathF.Cos(stepSize * i),
                     -radius * CustomMathF.Sin(stepSize * i)));
             }
-
+            
             return vertices;
         }
     }

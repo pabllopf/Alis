@@ -47,7 +47,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase.Sample
         ///     Gets or sets the value of the proxy count
         /// </summary>
         public int ProxyCount { get; private set; }
-
+        
         /// <summary>
         ///     Updates the pairs using the specified callback
         /// </summary>
@@ -56,7 +56,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase.Sample
         {
             // Implement your logic here
         }
-
+        
         /// <summary>
         ///     Describes whether this instance test overlap
         /// </summary>
@@ -66,7 +66,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase.Sample
         public bool TestOverlap(int proxyIdA, int proxyIdB) =>
             // Implement your logic here
             false;
-
+        
         /// <summary>
         ///     Adds the proxy using the specified proxy
         /// </summary>
@@ -78,7 +78,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase.Sample
             ProxyCount++;
             return ProxyCount - 1;
         }
-
+        
         /// <summary>
         ///     Removes the proxy using the specified proxy id
         /// </summary>
@@ -88,7 +88,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase.Sample
             // Implement your logic here
             ProxyCount--;
         }
-
+        
         /// <summary>
         ///     Moves the proxy using the specified proxy id
         /// </summary>
@@ -99,7 +99,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase.Sample
         {
             // Implement your logic here
         }
-
+        
         /// <summary>
         ///     Gets the proxy using the specified proxy id
         /// </summary>
@@ -108,7 +108,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase.Sample
         public FixtureProxy GetProxy(int proxyId) =>
             // Implement your logic here
             new FixtureProxy();
-
+        
         /// <summary>
         ///     Touches the proxy using the specified proxy id
         /// </summary>
@@ -117,7 +117,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase.Sample
         {
             // Implement your logic here
         }
-
+        
         /// <summary>
         ///     Gets the fat aabb using the specified proxy id
         /// </summary>
@@ -128,7 +128,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase.Sample
             // Implement your logic here
             aabb = new Aabb();
         }
-
+        
         /// <summary>
         ///     Queries the callback
         /// </summary>
@@ -138,7 +138,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase.Sample
         {
             // Implement your logic here
         }
-
+        
         /// <summary>
         ///     Rays the cast using the specified callback
         /// </summary>
@@ -148,7 +148,7 @@ namespace Alis.Core.Physic.Test.Collision.BroadPhase.Sample
         {
             // Implement your logic here
         }
-
+        
         /// <summary>
         ///     Shifts the origin using the specified new origin
         /// </summary>

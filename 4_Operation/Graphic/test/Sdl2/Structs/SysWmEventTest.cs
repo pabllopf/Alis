@@ -27,32 +27,32 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Xunit;
 using System;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Structs;
+using Xunit;
 
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
     /// <summary>
-    /// The sys wm event tests class
+    ///     The sys wm event tests class
     /// </summary>
     public class SysWmEventTests
     {
         /// <summary>
-        /// Tests that sys wm event initializes properties correctly
+        ///     Tests that sys wm event initializes properties correctly
         /// </summary>
         [Fact]
         public void SysWmEvent_InitializesPropertiesCorrectly()
         {
             EventType expectedType = EventType.FirstEvent;
             IntPtr expectedMsg = new IntPtr(123456);
-
+            
             SysWmEvent sysWmEvent = new SysWmEvent
             {
                 Msg = expectedMsg
             };
-
+            
             Assert.Equal(expectedType, sysWmEvent.type);
             Assert.Equal(expectedMsg, sysWmEvent.Msg);
         }

@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Logging;
 
@@ -50,7 +49,7 @@ namespace Alis.Core.Ecs.System.Manager
             Tag = GetType().Name;
             IsEnable = true;
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="AManager" /> class
         /// </summary>
@@ -59,7 +58,6 @@ namespace Alis.Core.Ecs.System.Manager
         /// <param name="tag">The tag</param>
         /// <param name="isEnable">The is enable</param>
         [JsonConstructor]
-        
         protected AManager(string id, string name, string tag, bool isEnable)
         {
             Id = id;
@@ -67,127 +65,127 @@ namespace Alis.Core.Ecs.System.Manager
             Tag = tag;
             IsEnable = isEnable;
         }
-
+        
         /// <summary>
         ///     Gets or sets the value of the context
         /// </summary>
         [JsonPropertyName("_Context_", true, true)]
         protected Context Context => VideoGame.GetContext();
-
+        
         /// <summary>
         ///     Gets or sets the value of the is enable
         /// </summary>
         [JsonPropertyName("_IsEnable_")]
         public bool IsEnable { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the name
         /// </summary>
         [JsonPropertyName("_Name_")]
         public string Name { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the id
         /// </summary>
         [JsonPropertyName("_Id_")]
         public string Id { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the tag
         /// </summary>
         [JsonPropertyName("_Tag_")]
         public string Tag { get; set; }
-
+        
         /// <summary>
         ///     Ons the enable
         /// </summary>
         public virtual void OnEnable() => Logger.Trace("Manager enabled.");
-
+        
         /// <summary>
         ///     Ons the init
         /// </summary>
         public virtual void OnInit() => Logger.Trace("Manager initialized.");
-
+        
         /// <summary>
         ///     Ons the awake
         /// </summary>
         public virtual void OnAwake() => Logger.Trace("Manager awake.");
-
+        
         /// <summary>
         ///     Ons the start
         /// </summary>
         public virtual void OnStart() => Logger.Trace("Manager started.");
-
+        
         /// <summary>
         ///     Ons the before update
         /// </summary>
         public virtual void OnBeforeUpdate() => Logger.Trace("Manager before update.");
-
+        
         /// <summary>
         ///     Ons the update
         /// </summary>
         public virtual void OnUpdate() => Logger.Trace("Manager update.");
-
+        
         /// <summary>
         ///     Ons the after update
         /// </summary>
         public virtual void OnAfterUpdate() => Logger.Trace("Manager after update.");
-
+        
         /// <summary>
         ///     Ons the before fixed update
         /// </summary>
         public virtual void OnBeforeFixedUpdate() => Logger.Trace("Manager before fixed update.");
-
+        
         /// <summary>
         ///     Ons the fixed update
         /// </summary>
         public virtual void OnFixedUpdate() => Logger.Trace("Manager fixed update.");
-
+        
         /// <summary>
         ///     Ons the after fixed update
         /// </summary>
         public virtual void OnAfterFixedUpdate() => Logger.Trace("Manager after fixed update.");
-
+        
         /// <summary>
         ///     Ons the dispatch events
         /// </summary>
         public virtual void OnDispatchEvents() => Logger.Trace("Manager dispatch events.");
-
+        
         /// <summary>
         ///     Ons the calculate
         /// </summary>
         public virtual void OnCalculate() => Logger.Trace("Manager calculate.");
-
+        
         /// <summary>
         ///     Ons the draw
         /// </summary>
         public virtual void OnDraw() => Logger.Trace("Manager draw.");
-
+        
         /// <summary>
         ///     Ons the gui
         /// </summary>
         public virtual void OnGui() => Logger.Trace("Manager GUI.");
-
+        
         /// <summary>
         ///     Ons the disable
         /// </summary>
         public virtual void OnDisable() => Logger.Trace("Manager disabled.");
-
+        
         /// <summary>
         ///     Ons the reset
         /// </summary>
         public virtual void OnReset() => Logger.Trace("Manager reset.");
-
+        
         /// <summary>
         ///     Ons the stop
         /// </summary>
         public virtual void OnStop() => Logger.Trace("Manager stopped.");
-
+        
         /// <summary>
         ///     Ons the exit
         /// </summary>
         public virtual void OnExit() => Logger.Trace("Manager exited.");
-
+        
         /// <summary>
         ///     Ons the destroy
         /// </summary>

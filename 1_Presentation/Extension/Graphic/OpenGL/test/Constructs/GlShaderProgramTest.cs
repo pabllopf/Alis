@@ -30,10 +30,9 @@
 namespace Alis.Extension.Graphic.OpenGL.Test.Constructs
 {
     /// <summary>
-    /// The gl shader program test class
+    ///     The gl shader program test class
     /// </summary>
     public class GlShaderProgramTest
     {
-        
     }
 }

@@ -41,12 +41,12 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 256)]
         public byte[] InputBuf;
-
+        
         /// <summary>
         ///     The filters
         /// </summary>
         public ImVector Filters { get; set; }
-
+        
         /// <summary>
         ///     The count grep
         /// </summary>

@@ -51,7 +51,7 @@ namespace Alis.Core.Network.Test
             Assert.False(options.IncludeExceptionInCloseResponse);
             Assert.Null(options.SecWebSocketProtocol);
         }
-
+        
         /// <summary>
         ///     Tests that web socket client options keep alive interval
         /// </summary>
@@ -62,7 +62,7 @@ namespace Alis.Core.Network.Test
             options.KeepAliveInterval = TimeSpan.FromSeconds(30);
             Assert.Equal(TimeSpan.FromSeconds(30), options.KeepAliveInterval);
         }
-
+        
         /// <summary>
         ///     Tests that web socket client options no delay
         /// </summary>
@@ -73,7 +73,7 @@ namespace Alis.Core.Network.Test
             options.NoDelay = false;
             Assert.False(options.NoDelay);
         }
-
+        
         /// <summary>
         ///     Tests that web socket client options additional http headers
         /// </summary>
@@ -85,7 +85,7 @@ namespace Alis.Core.Network.Test
             Assert.True(options.AdditionalHttpHeaders.ContainsKey("TestHeader"));
             Assert.Equal("TestValue", options.AdditionalHttpHeaders["TestHeader"]);
         }
-
+        
         /// <summary>
         ///     Tests that web socket client options sec web socket protocol
         /// </summary>
@@ -96,7 +96,7 @@ namespace Alis.Core.Network.Test
             options.SecWebSocketProtocol = "test";
             Assert.Equal("test", options.SecWebSocketProtocol);
         }
-
+        
         /// <summary>
         ///     Tests that sec web socket extensions get returns expected value
         /// </summary>

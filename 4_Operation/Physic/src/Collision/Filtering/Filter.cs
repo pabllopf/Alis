@@ -45,7 +45,7 @@ namespace Alis.Core.Physic.Collision.Filtering
             Category = Settings.DefaultFixtureCollisionCategories;
             CategoryMask = Settings.DefaultFixtureCollidesWith;
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Filter" /> class
         /// </summary>
@@ -58,16 +58,16 @@ namespace Alis.Core.Physic.Collision.Filtering
             Category = category;
             CategoryMask = mask;
         }
-
+        
         /// <summary>
         ///     Collision groups allow a certain group of objects to never collide(negative) or always collide (positive).
         ///     Zero means no collision group. Non-zero group filtering always wins against the mask bits.
         /// </summary>
         public short Group { get; }
-
+        
         /// <summary>The collision category bits. Normally you would just set one bit.</summary>
         public Category Category { get; }
-
+        
         /// <summary>The collision mask bits. This states the categories that this shape would accept for collision.</summary>
         public Category CategoryMask { get; }
     }

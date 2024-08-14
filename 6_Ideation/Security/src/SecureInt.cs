@@ -38,19 +38,19 @@ namespace Alis.Core.Aspect.Security
         ///     The random value
         /// </summary>
         private int _randomValue;
-
+        
         /// <summary>
         ///     The value
         /// </summary>
         private int _value;
-
-
+        
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="SecureInt" /> class
         /// </summary>
         /// <param name="value">The value</param>
         public SecureInt(int value = 0) => Value = value;
-
+        
         /// <summary>
         ///     Gets or sets the value of the value
         /// </summary>
@@ -63,7 +63,7 @@ namespace Alis.Core.Aspect.Security
                     return _value - _randomValue;
                 }
             }
-
+            
             set
             {
                 unchecked
@@ -73,33 +73,33 @@ namespace Alis.Core.Aspect.Security
                 }
             }
         }
-
+        
         /// <summary>
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
         public static implicit operator SecureInt(int value) => new SecureInt(value);
-
+        
         /// <summary>
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
         public static implicit operator int(SecureInt value) => value.Value;
-
+        
         /// <summary>
         /// </summary>
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
         public static bool operator ==(SecureInt a, SecureInt b) => a.Value == b.Value;
-
+        
         /// <summary>
         /// </summary>
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
         public static bool operator !=(SecureInt a, SecureInt b) => a.Value != b.Value;
-
+        
         /// <summary>
         /// </summary>
         /// <param name="a"></param>
@@ -109,7 +109,7 @@ namespace Alis.Core.Aspect.Security
             a.Value++;
             return a;
         }
-
+        
         /// <summary>
         /// </summary>
         /// <param name="a"></param>
@@ -119,47 +119,47 @@ namespace Alis.Core.Aspect.Security
             a.Value--;
             return a;
         }
-
+        
         /// <summary>
         /// </summary>
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
         public static SecureInt operator +(SecureInt a, SecureInt b) => new SecureInt(a.Value + b.Value);
-
+        
         /// <summary>
         /// </summary>
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
         public static SecureInt operator -(SecureInt a, SecureInt b) => new SecureInt(a.Value - b.Value);
-
+        
         /// <summary>
         /// </summary>
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
         public static SecureInt operator *(SecureInt a, SecureInt b) => new SecureInt(a.Value * b.Value);
-
+        
         /// <summary>
         /// </summary>
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
         public static SecureInt operator /(SecureInt a, SecureInt b) => new SecureInt(a.Value / b.Value);
-
+        
         /// <summary>
         ///     Returns the string
         /// </summary>
         /// <returns>The string</returns>
         public override string ToString() => Value.ToString();
-
+        
         /// <summary>
         ///     Gets the hash code
         /// </summary>
         /// <returns>The int</returns>
         public override int GetHashCode() => Value.GetHashCode();
-
+        
         /// <summary>
         ///     Describes whether this instance equals
         /// </summary>

@@ -39,7 +39,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
         ///     The edge
         /// </summary>
         private readonly Edge edge;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="YNode" /> class
         /// </summary>
@@ -49,7 +49,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
         public YNode(Edge edge, Node lChild, Node rChild)
             : base(lChild, rChild) =>
             this.edge = edge;
-
+        
         /// <summary>
         ///     Locates the edge
         /// </summary>
@@ -61,18 +61,18 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
             {
                 return RightChild.Locate(edge); // Move down the graph
             }
-
+            
             if (this.edge.IsBelow(edge.P))
             {
                 return LeftChild.Locate(edge); // Move up the graph
             }
-
+            
             // s and segment share the same endpoint, p
             if (edge.Slope < this.edge.Slope)
             {
                 return RightChild.Locate(edge); // Move down the graph
             }
-
+            
             // Move up the graph
             return LeftChild.Locate(edge);
         }

@@ -36,12 +36,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
 {
     /// <summary>
-    /// The im plot test class
+    ///     The im plot test class
     /// </summary>
     public class ImPlotTestP1
     {
         /// <summary>
-        /// Tests that add colormap vec 4 ptr should throw dll not found exception v 1
+        ///     Tests that add colormap vec 4 ptr should throw dll not found exception v 1
         /// </summary>
         [Fact]
         public void AddColormap_Vec4Ptr_ShouldThrowDllNotFoundException_v1()
@@ -51,7 +51,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that add colormap vec 4 ptr should throw dll not found exception v 2
+        ///     Tests that add colormap vec 4 ptr should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void AddColormap_Vec4Ptr_ShouldThrowDllNotFoundException_v2()
@@ -61,7 +61,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that add colormap u 32 ptr should throw dll not found exception v 1
+        ///     Tests that add colormap u 32 ptr should throw dll not found exception v 1
         /// </summary>
         [Fact]
         public void AddColormap_U32Ptr_ShouldThrowDllNotFoundException_v1()
@@ -71,7 +71,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that add colormap u 32 ptr should throw dll not found exception v 2
+        ///     Tests that add colormap u 32 ptr should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void AddColormap_U32Ptr_ShouldThrowDllNotFoundException_v2()
@@ -81,7 +81,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that annotation should throw dll not found exception v 1
+        ///     Tests that annotation should throw dll not found exception v 1
         /// </summary>
         [Fact]
         public void Annotation_ShouldThrowDllNotFoundException_v1()
@@ -92,7 +92,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that annotation should throw dll not found exception v 2
+        ///     Tests that annotation should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void Annotation_ShouldThrowDllNotFoundException_v2()
@@ -103,7 +103,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that annotation should throw dll not found exception v 3
+        ///     Tests that annotation should throw dll not found exception v 3
         /// </summary>
         [Fact]
         public void Annotation_ShouldThrowDllNotFoundException_v3()
@@ -114,7 +114,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that begin aligned plots should throw dll not found exception v 1
+        ///     Tests that begin aligned plots should throw dll not found exception v 1
         /// </summary>
         [Fact]
         public void BeginAlignedPlots_ShouldThrowDllNotFoundException_v1()
@@ -123,7 +123,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that begin aligned plots should throw dll not found exception v 2
+        ///     Tests that begin aligned plots should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void BeginAlignedPlots_ShouldThrowDllNotFoundException_v2()
@@ -132,7 +132,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that begin drag drop source axis should throw dll not found exception v 1
+        ///     Tests that begin drag drop source axis should throw dll not found exception v 1
         /// </summary>
         [Fact]
         public void BeginDragDropSourceAxis_ShouldThrowDllNotFoundException_v1()
@@ -141,16 +141,16 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that begin drag drop source axis should throw dll not found exception v 2
+        ///     Tests that begin drag drop source axis should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void BeginDragDropSourceAxis_ShouldThrowDllNotFoundException_v2()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.BeginDragDropSourceAxis(ImAxis.X1, Alis.Extension.Graphic.ImGui.Extras.Plot.ImGuiDragDropFlags.None));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.BeginDragDropSourceAxis(ImAxis.X1, ImGui.Extras.Plot.ImGuiDragDropFlags.None));
         }
         
         /// <summary>
-        /// Tests that begin drag drop source item should throw dll not found exception v 1
+        ///     Tests that begin drag drop source item should throw dll not found exception v 1
         /// </summary>
         [Fact]
         public void BeginDragDropSourceItem_ShouldThrowDllNotFoundException_v1()
@@ -159,16 +159,16 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that begin drag drop source item should throw dll not found exception v 2
+        ///     Tests that begin drag drop source item should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void BeginDragDropSourceItem_ShouldThrowDllNotFoundException_v2()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.BeginDragDropSourceItem("labelId", Alis.Extension.Graphic.ImGui.Extras.Plot.ImGuiDragDropFlags.None));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.BeginDragDropSourceItem("labelId", ImGui.Extras.Plot.ImGuiDragDropFlags.None));
         }
         
         /// <summary>
-        /// Tests that begin drag drop source plot should throw dll not found exception v 1
+        ///     Tests that begin drag drop source plot should throw dll not found exception v 1
         /// </summary>
         [Fact]
         public void BeginDragDropSourcePlot_ShouldThrowDllNotFoundException_v1()
@@ -177,16 +177,16 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that begin drag drop source plot should throw dll not found exception v 2
+        ///     Tests that begin drag drop source plot should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void BeginDragDropSourcePlot_ShouldThrowDllNotFoundException_v2()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.BeginDragDropSourcePlot(Alis.Extension.Graphic.ImGui.Extras.Plot.ImGuiDragDropFlags.None));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.BeginDragDropSourcePlot(ImGui.Extras.Plot.ImGuiDragDropFlags.None));
         }
         
         /// <summary>
-        /// Tests that begin drag drop target axis should throw dll not found exception
+        ///     Tests that begin drag drop target axis should throw dll not found exception
         /// </summary>
         [Fact]
         public void BeginDragDropTargetAxis_ShouldThrowDllNotFoundException()
@@ -195,7 +195,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that begin drag drop target legend should throw dll not found exception
+        ///     Tests that begin drag drop target legend should throw dll not found exception
         /// </summary>
         [Fact]
         public void BeginDragDropTargetLegend_ShouldThrowDllNotFoundException()
@@ -204,7 +204,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that begin drag drop target plot should throw dll not found exception
+        ///     Tests that begin drag drop target plot should throw dll not found exception
         /// </summary>
         [Fact]
         public void BeginDragDropTargetPlot_ShouldThrowDllNotFoundException()
@@ -213,7 +213,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that begin legend popup should throw dll not found exception v 1
+        ///     Tests that begin legend popup should throw dll not found exception v 1
         /// </summary>
         [Fact]
         public void BeginLegendPopup_ShouldThrowDllNotFoundException_v1()
@@ -222,7 +222,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that begin legend popup should throw dll not found exception v 2
+        ///     Tests that begin legend popup should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void BeginLegendPopup_ShouldThrowDllNotFoundException_v2()
@@ -231,7 +231,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that begin plot should throw dll not found exception v 1
+        ///     Tests that begin plot should throw dll not found exception v 1
         /// </summary>
         [Fact]
         public void BeginPlot_ShouldThrowDllNotFoundException_v1()
@@ -240,7 +240,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that begin plot should throw dll not found exception v 2
+        ///     Tests that begin plot should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void BeginPlot_ShouldThrowDllNotFoundException_v2()
@@ -250,7 +250,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that begin plot should throw dll not found exception v 3
+        ///     Tests that begin plot should throw dll not found exception v 3
         /// </summary>
         [Fact]
         public void BeginPlot_ShouldThrowDllNotFoundException_v3()
@@ -260,7 +260,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that begin subplots should throw dll not found exception v 1
+        ///     Tests that begin subplots should throw dll not found exception v 1
         /// </summary>
         [Fact]
         public void BeginSubplots_ShouldThrowDllNotFoundException_v1()
@@ -270,7 +270,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that begin subplots should throw dll not found exception v 2
+        ///     Tests that begin subplots should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void BeginSubplots_ShouldThrowDllNotFoundException_v2()
@@ -280,7 +280,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that begin subplots should throw dll not found exception v 3
+        ///     Tests that begin subplots should throw dll not found exception v 3
         /// </summary>
         [Fact]
         public void BeginSubplots_ShouldThrowDllNotFoundException_v3()
@@ -291,7 +291,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that begin subplots should throw dll not found exception v 4
+        ///     Tests that begin subplots should throw dll not found exception v 4
         /// </summary>
         [Fact]
         public void BeginSubplots_ShouldThrowDllNotFoundException_v4()
@@ -303,7 +303,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that bust color cache should throw dll not found exception v 1
+        ///     Tests that bust color cache should throw dll not found exception v 1
         /// </summary>
         [Fact]
         public void BustColorCache_ShouldThrowDllNotFoundException_v1()
@@ -312,7 +312,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that bust color cache should throw dll not found exception v 2
+        ///     Tests that bust color cache should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void BustColorCache_ShouldThrowDllNotFoundException_v2()
@@ -321,7 +321,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that cancel plot selection should throw dll not found exception
+        ///     Tests that cancel plot selection should throw dll not found exception
         /// </summary>
         [Fact]
         public void CancelPlotSelection_ShouldThrowDllNotFoundException()
@@ -330,7 +330,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that colormap button should throw dll not found exception v 1
+        ///     Tests that colormap button should throw dll not found exception v 1
         /// </summary>
         [Fact]
         public void ColormapButton_ShouldThrowDllNotFoundException_v1()
@@ -339,7 +339,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that colormap button should throw dll not found exception v 2
+        ///     Tests that colormap button should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void ColormapButton_ShouldThrowDllNotFoundException_v2()
@@ -349,7 +349,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that colormap button should throw dll not found exception v 3
+        ///     Tests that colormap button should throw dll not found exception v 3
         /// </summary>
         [Fact]
         public void ColormapButton_ShouldThrowDllNotFoundException_v3()
@@ -359,7 +359,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that colormap icon should throw dll not found exception
+        ///     Tests that colormap icon should throw dll not found exception
         /// </summary>
         [Fact]
         public void ColormapIcon_ShouldThrowDllNotFoundException()
@@ -368,7 +368,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that colormap scale should throw dll not found exception v 1
+        ///     Tests that colormap scale should throw dll not found exception v 1
         /// </summary>
         [Fact]
         public void ColormapScale_ShouldThrowDllNotFoundException_v1()
@@ -377,7 +377,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that colormap scale should throw dll not found exception v 2
+        ///     Tests that colormap scale should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void ColormapScale_ShouldThrowDllNotFoundException_v2()
@@ -387,7 +387,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that colormap scale should throw dll not found exception v 3
+        ///     Tests that colormap scale should throw dll not found exception v 3
         /// </summary>
         [Fact]
         public void ColormapScale_ShouldThrowDllNotFoundException_v3()
@@ -397,7 +397,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that colormap scale should throw dll not found exception v 4
+        ///     Tests that colormap scale should throw dll not found exception v 4
         /// </summary>
         [Fact]
         public void ColormapScale_ShouldThrowDllNotFoundException_v4()
@@ -407,7 +407,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that colormap scale should throw dll not found exception v 5
+        ///     Tests that colormap scale should throw dll not found exception v 5
         /// </summary>
         [Fact]
         public void ColormapScale_ShouldThrowDllNotFoundException_v5()
@@ -417,7 +417,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that colormap slider should throw dll not found exception v 1
+        ///     Tests that colormap slider should throw dll not found exception v 1
         /// </summary>
         [Fact]
         public void ColormapSlider_ShouldThrowDllNotFoundException_v1()
@@ -427,7 +427,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that colormap slider should throw dll not found exception v 2
+        ///     Tests that colormap slider should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void ColormapSlider_ShouldThrowDllNotFoundException_v2()
@@ -437,7 +437,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that colormap slider should throw dll not found exception v 3
+        ///     Tests that colormap slider should throw dll not found exception v 3
         /// </summary>
         [Fact]
         public void ColormapSlider_ShouldThrowDllNotFoundException_v3()
@@ -447,7 +447,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that colormap slider should throw dll not found exception v 4
+        ///     Tests that colormap slider should throw dll not found exception v 4
         /// </summary>
         [Fact]
         public void ColormapSlider_ShouldThrowDllNotFoundException_v4()
@@ -457,7 +457,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that create context should throw dll not found exception
+        ///     Tests that create context should throw dll not found exception
         /// </summary>
         [Fact]
         public void CreateContext_ShouldThrowDllNotFoundException()
@@ -466,7 +466,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that destroy context should throw dll not found exception v 1
+        ///     Tests that destroy context should throw dll not found exception v 1
         /// </summary>
         [Fact]
         public void DestroyContext_ShouldThrowDllNotFoundException_v1()
@@ -475,7 +475,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that destroy context should throw dll not found exception v 2
+        ///     Tests that destroy context should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void DestroyContext_ShouldThrowDllNotFoundException_v2()
@@ -484,7 +484,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that drag line x should throw dll not found exception v 1
+        ///     Tests that drag line x should throw dll not found exception v 1
         /// </summary>
         [Fact]
         public void DragLineX_ShouldThrowDllNotFoundException_v1()
@@ -495,7 +495,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that drag line x should throw dll not found exception v 2
+        ///     Tests that drag line x should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void DragLineX_ShouldThrowDllNotFoundException_v2()
@@ -506,7 +506,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that drag line x should throw dll not found exception v 3
+        ///     Tests that drag line x should throw dll not found exception v 3
         /// </summary>
         [Fact]
         public void DragLineX_ShouldThrowDllNotFoundException_v3()
@@ -517,7 +517,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that drag line y should throw dll not found exception v 1
+        ///     Tests that drag line y should throw dll not found exception v 1
         /// </summary>
         [Fact]
         public void DragLineY_ShouldThrowDllNotFoundException_v1()
@@ -528,7 +528,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that drag line y should throw dll not found exception v 2
+        ///     Tests that drag line y should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void DragLineY_ShouldThrowDllNotFoundException_v2()
@@ -539,7 +539,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that drag line y should throw dll not found exception v 3
+        ///     Tests that drag line y should throw dll not found exception v 3
         /// </summary>
         [Fact]
         public void DragLineY_ShouldThrowDllNotFoundException_v3()
@@ -550,7 +550,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that drag point should throw dll not found exception v 1
+        ///     Tests that drag point should throw dll not found exception v 1
         /// </summary>
         [Fact]
         public void DragPoint_ShouldThrowDllNotFoundException_v1()
@@ -562,7 +562,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that drag point should throw dll not found exception v 2
+        ///     Tests that drag point should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void DragPoint_ShouldThrowDllNotFoundException_v2()
@@ -574,7 +574,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that drag point should throw dll not found exception v 3
+        ///     Tests that drag point should throw dll not found exception v 3
         /// </summary>
         [Fact]
         public void DragPoint_ShouldThrowDllNotFoundException_v3()
@@ -586,7 +586,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that drag rect should throw dll not found exception v 1
+        ///     Tests that drag rect should throw dll not found exception v 1
         /// </summary>
         [Fact]
         public void DragRect_ShouldThrowDllNotFoundException_v1()
@@ -600,7 +600,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that drag rect should throw dll not found exception v 2
+        ///     Tests that drag rect should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void DragRect_ShouldThrowDllNotFoundException_v2()
@@ -614,7 +614,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that end aligned plots should throw dll not found exception
+        ///     Tests that end aligned plots should throw dll not found exception
         /// </summary>
         [Fact]
         public void EndAlignedPlots_ShouldThrowDllNotFoundException()
@@ -623,7 +623,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that end drag drop source should throw dll not found exception
+        ///     Tests that end drag drop source should throw dll not found exception
         /// </summary>
         [Fact]
         public void EndDragDropSource_ShouldThrowDllNotFoundException()

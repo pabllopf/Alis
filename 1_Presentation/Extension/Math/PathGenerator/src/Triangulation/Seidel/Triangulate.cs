@@ -42,38 +42,38 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
         ///     The bounding box
         /// </summary>
         private readonly Trapezoid boundingBox;
-
+        
         /// <summary>
         ///     The edge list
         /// </summary>
         private readonly List<Edge> edgeList;
-
+        
         /// <summary>
         ///     The query graph
         /// </summary>
         private readonly QueryGraph queryGraph;
-
+        
         /// <summary>
         ///     The sheer
         /// </summary>
         private readonly float sheer;
-
+        
         /// <summary>
         ///     The trapezoidal map
         /// </summary>
         private readonly TrapezoidalMap trapezoidalMap;
-
+        
         // Trapezoid decomposition list
         /// <summary>
         ///     The trapezoids
         /// </summary>
         public readonly List<Trapezoid> Trapezoids;
-
+        
         /// <summary>
         ///     The triangles
         /// </summary>
         public readonly List<List<Point>> Triangles;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Triangulate" /> class
         /// </summary>
@@ -88,10 +88,10 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
             trapezoidalMap = new TrapezoidalMap();
             boundingBox = trapezoidalMap.BoundingBox(edgeList);
             queryGraph = new QueryGraph(Sink.IsInk(boundingBox));
-
+            
             Process();
         }
-
+        
         /// <summary>
         ///     Processes this instance
         /// </summary>
@@ -102,7 +102,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
             CollectInteriorTrapezoids();
             CreateMountains();
         }
-
+        
         /// <summary>
         ///     Processes the edges
         /// </summary>
@@ -111,15 +111,15 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
             foreach (Edge edge in edgeList)
             {
                 List<Trapezoid> trapezoids = queryGraph.FollowEdge(edge);
-
+                
                 foreach (Trapezoid trapezoid in trapezoids)
                 {
                     RemoveTrapezoidFromMap(trapezoid);
-
+                    
                     bool containsP = trapezoid.Contains(edge.P);
                     bool containsQ = trapezoid.Contains(edge.Q);
                     Trapezoid[] newTrapezoids;
-
+                    
                     if (containsP && containsQ)
                     {
                         newTrapezoids = trapezoidalMap.Case1(trapezoid, edge);
@@ -140,14 +140,14 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
                         newTrapezoids = trapezoidalMap.Case4(trapezoid, edge);
                         queryGraph.Case4(trapezoid.Sink, edge, newTrapezoids);
                     }
-
+                    
                     AddNewTrapezoidsToMap(newTrapezoids);
                 }
-
+                
                 trapezoidalMap.Clear();
             }
         }
-
+        
         /// <summary>
         ///     Removes the trapezoid from map using the specified trapezoid
         /// </summary>
@@ -156,7 +156,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
         {
             trapezoidalMap.Map.Remove(trapezoid);
         }
-
+        
         /// <summary>
         ///     Adds the new trapezoids to map using the specified new trapezoids
         /// </summary>
@@ -168,7 +168,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
                 trapezoidalMap.Map.Add(trapezoid);
             }
         }
-
+        
         /// <summary>
         ///     Marks the outside trapezoids
         /// </summary>
@@ -179,7 +179,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
                 MarkOutside(trapezoid);
             }
         }
-
+        
         /// <summary>
         ///     Collects the interior trapezoids
         /// </summary>
@@ -194,8 +194,8 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
                 }
             }
         }
-
-
+        
+        
         // Build a list of x-monotone mountains
         /// <summary>
         ///     Creates the mountains
@@ -209,15 +209,15 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
                     MonotoneMountain mountain = new MonotoneMountain();
                     List<Point> points = new List<Point>(edge.MPoints);
                     points.Sort((p1, p2) => p1.X.CompareTo(p2.X));
-
+                    
                     foreach (Point p in points)
                     {
                         mountain.Add(p);
                     }
-
+                    
                     // Triangulate monotone mountain
                     mountain.Process();
-
+                    
                     // Extract the triangles into a single list
                     foreach (List<Point> t in mountain.Triangles)
                     {
@@ -226,7 +226,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
                 }
             }
         }
-
+        
         // Mark the outside trapezoids surrounding the polygon
         /// <summary>
         ///     Marks the outside using the specified t
@@ -239,7 +239,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
                 t.TrimNeighbors();
             }
         }
-
+        
         // Create segments and connect end points; update edge event pointer
         /// <summary>
         ///     Inits the edges using the specified points
@@ -249,16 +249,16 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
         private List<Edge> InitEdges(List<Point> points)
         {
             List<Edge> edges = new List<Edge>();
-
+            
             for (int i = 0; i < points.Count - 1; i++)
             {
                 edges.Add(new Edge(points[i], points[i + 1]));
             }
-
+            
             edges.Add(new Edge(points[0], points[points.Count - 1]));
             return OrderSegments(edges);
         }
-
+        
         /// <summary>
         ///     Orders the segments using the specified edge input
         /// </summary>
@@ -268,12 +268,12 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
         {
             // Ignore vertical segments!
             List<Edge> edges = new List<Edge>();
-
+            
             foreach (Edge e in edgeInput)
             {
                 Point p = ShearTransform(e.P);
                 Point q = ShearTransform(e.Q);
-
+                
                 // Point p must be to the left of point q
                 if (p.X > q.X)
                 {
@@ -284,13 +284,13 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
                     edges.Add(new Edge(p, q));
                 }
             }
-
+            
             // Randomized triangulation improves performance
             // See Seidel's paper, or O'Rourke's book, p. 57 
             Shuffle(edges);
             return edges;
         }
-
+        
         /// <summary>
         ///     Shuffles the list
         /// </summary>
@@ -306,7 +306,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
                 (list[k], list[n]) = (list[n], list[k]);
             }
         }
-
+        
         // Prevents any two distinct endpoints from lying on a common vertical line, and avoiding
         // the degenerate case. See Mark de Berg et al, Chapter 6.3
         /// <summary>

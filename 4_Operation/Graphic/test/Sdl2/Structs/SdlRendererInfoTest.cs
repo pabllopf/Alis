@@ -48,15 +48,15 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             // Arrange
             int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
-
+            
             RendererInfo rendererInfo = new RendererInfo(); // Replace with the actual SdlRendererInfo
-
+            
             // Act
             string result = rendererInfo.GetName();
-
+            
             // Assert
             Assert.NotEqual("", result);
-
+            
             Sdl.Quit();
         }
     }

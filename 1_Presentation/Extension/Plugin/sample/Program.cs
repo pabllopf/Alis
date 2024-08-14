@@ -42,7 +42,7 @@ namespace Alis.Extension.Plugin.Sample
         {
             PluginManager pluginManager = new PluginManager();
             pluginManager.LoadPlugins("Assets/Plugins");
-
+            
             pluginManager.Initialize();
         }
     }

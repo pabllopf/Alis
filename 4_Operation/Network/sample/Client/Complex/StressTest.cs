@@ -44,42 +44,42 @@ namespace Alis.Core.Network.Sample.Client.Complex
         ///     The client factory
         /// </summary>
         private readonly IWebSocketClientFactory _clientFactory;
-
+        
         /// <summary>
         ///     The max num bytes per message
         /// </summary>
         private readonly int _maxNumBytesPerMessage;
-
+        
         /// <summary>
         ///     The min num bytes per message
         /// </summary>
         private readonly int _minNumBytesPerMessage;
-
+        
         /// <summary>
         ///     The num items
         /// </summary>
         private readonly int _numItems;
-
+        
         /// <summary>
         ///     The uri
         /// </summary>
         private readonly Uri _uri;
-
+        
         /// <summary>
         ///     The expected values
         /// </summary>
         private byte[][] _expectedValues;
-
+        
         /// <summary>
         ///     The token
         /// </summary>
         private CancellationToken _token;
-
+        
         /// <summary>
         ///     The web socket
         /// </summary>
         private WebSocket _webSocket;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="StressTest" /> class
         /// </summary>
@@ -96,7 +96,7 @@ namespace Alis.Core.Network.Sample.Client.Complex
             _maxNumBytesPerMessage = maxNumBytesPerMessage;
             _clientFactory = new WebSocketClientFactory();
         }
-
+        
         /// <summary>
         ///     Runs this instance
         /// </summary>
@@ -113,9 +113,9 @@ namespace Alis.Core.Network.Sample.Client.Complex
                 using (CancellationTokenSource source = new CancellationTokenSource())
                 {
                     _token = source.Token;
-
+                    
                     RandomNumberGenerator rand = RandomNumberGenerator.Create();
-
+                    
                     _expectedValues = new byte[50][];
                     for (int i = 0; i < _expectedValues.Length; i++)
                     {
@@ -124,7 +124,7 @@ namespace Alis.Core.Network.Sample.Client.Complex
                         rand.GetBytes(bytes);
                         _expectedValues[i] = bytes;
                     }
-
+                    
                     Task recTask = Task.Run(ReceiveLoop);
                     byte[] sendBuffer = new byte[_maxNumBytesPerMessage];
                     for (int i = 0; i < _numItems; i++)
@@ -135,13 +135,13 @@ namespace Alis.Core.Network.Sample.Client.Complex
                         ArraySegment<byte> buffer = new ArraySegment<byte>(sendBuffer, 0, bytes.Length);
                         await _webSocket.SendAsync(buffer, WebSocketMessageType.Binary, true, source.Token);
                     }
-
+                    
                     await _webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, null, source.Token);
                     recTask.Wait();
                 }
             }
         }
-
+        
         /// <summary>
         ///     Describes whether are equal
         /// </summary>
@@ -155,7 +155,7 @@ namespace Alis.Core.Network.Sample.Client.Complex
             {
                 return false;
             }
-
+            
             for (int i = 0; i < countActual; i++)
             {
                 if (actual[i] != expected[i])
@@ -163,10 +163,10 @@ namespace Alis.Core.Network.Sample.Client.Complex
                     return false;
                 }
             }
-
+            
             return true;
         }
-
+        
         /// <summary>
         ///     Receives the loop
         /// </summary>
@@ -179,34 +179,34 @@ namespace Alis.Core.Network.Sample.Client.Complex
             int size = _maxNumBytesPerMessage < minBufferSize ? minBufferSize : _maxNumBytesPerMessage;
             byte[] recArray = new byte[size];
             ArraySegment<byte> recBuffer = new ArraySegment<byte>(recArray);
-
+            
             int i = 0;
             while (true)
             {
                 WebSocketReceiveResult result = await _webSocket.ReceiveAsync(recBuffer, _token);
-
+                
                 if (!result.EndOfMessage)
                 {
                     throw new Exception("Multi frame messages not supported");
                 }
-
+                
                 if (result.MessageType == WebSocketMessageType.Close || _token.IsCancellationRequested)
                 {
                     return;
                 }
-
+                
                 if (result.Count == 0)
                 {
                     await _webSocket.CloseOutputAsync(WebSocketCloseStatus.InvalidPayloadData, "Zero bytes in payload",
                         _token);
                     return;
                 }
-
+                
                 byte[] valueActual = recBuffer.Array;
                 int index = i % _expectedValues.Length;
                 i++;
                 byte[] valueExpected = _expectedValues[index];
-
+                
                 if (!AreEqual(valueActual, valueExpected, result.Count))
                 {
                     await _webSocket.CloseOutputAsync(WebSocketCloseStatus.InvalidPayloadData,

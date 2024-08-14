@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.ContactSystem;
@@ -50,31 +49,30 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="transformA">The transform</param>
         /// <param name="circleB">The circle</param>
         /// <param name="transformB">The transform</param>
-        
         public static void CollideEdgeAndCircle(ref Manifold manifold, EdgeShape edgeA, ref Transform transformA,
             CircleShape circleB, ref Transform transformB)
         {
             manifold.PointCount = 0;
-
+            
             Vector2 circleBPosition = circleB.Position;
             Vector2 q = ComputeCirclePositionInEdgeFrame(ref transformA, ref transformB, ref circleBPosition);
-
+            
             Vector2 edgeStart = edgeA.Vertex1;
             Vector2 edgeEnd = edgeA.Vertex2;
             Vector2 edgeDirection = edgeEnd - edgeStart;
             Vector2 edgeNormal = new Vector2(edgeDirection.Y, -edgeDirection.X);
             float offset = MathUtils.Dot(edgeNormal, q - edgeStart);
-
+            
             if (edgeA.OneSided && (offset < 0.0f))
             {
                 return;
             }
-
+            
             float u = Vector2.Dot(edgeDirection, edgeEnd - q);
             float v = Vector2.Dot(edgeDirection, q - edgeStart);
-
+            
             float radiusSum = edgeA.RadiusPrivate + circleB.RadiusPrivate;
-
+            
             if (v <= 0.0f)
             {
                 HandleRegionA(ref manifold, edgeA, edgeStart, q, radiusSum, circleBPosition);
@@ -88,7 +86,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
                 HandleRegionAb(ref manifold, edgeStart, edgeEnd, q, radiusSum, offset, circleBPosition, edgeNormal);
             }
         }
-
+        
         /// <summary>
         ///     Handles the region ab using the specified manifold
         /// </summary>
@@ -100,30 +98,29 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="offset">The offset</param>
         /// <param name="circlePosition">The circle position</param>
         /// <param name="edgeNormal">The edge normal</param>
-        
         internal static void HandleRegionAb(ref Manifold manifold, Vector2 edgeStart, Vector2 edgeEnd, Vector2 q, float radiusSum, float offset, Vector2 circlePosition, Vector2 edgeNormal)
         {
             float den = Vector2.Dot(edgeEnd - edgeStart, edgeEnd - edgeStart);
             Debug.Assert(den > 0.0f);
-
+            
             Vector2 p = 1.0f / den * (Vector2.Dot(q - edgeStart, edgeEnd - edgeStart) * edgeStart + Vector2.Dot(q - edgeEnd, edgeStart - edgeEnd) * edgeEnd);
             Vector2 d = q - p;
             float dd = Vector2.Dot(d, d);
-
+            
             if (dd > radiusSum * radiusSum)
             {
                 return;
             }
-
+            
             if (offset < 0.0f)
             {
                 edgeNormal = new Vector2(-edgeNormal.X, -edgeNormal.Y);
             }
-
+            
             edgeNormal = Vector2.Normalize(edgeNormal);
             SetManifoldForEdge(ref manifold, edgeStart, edgeNormal, circlePosition);
         }
-
+        
         /// <summary>
         ///     Computes the circle position in edge frame using the specified transform a
         /// </summary>
@@ -132,7 +129,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="circlePosition">The circle position</param>
         /// <returns>The vector</returns>
         internal static Vector2 ComputeCirclePositionInEdgeFrame(ref Transform transformA, ref Transform transformB, ref Vector2 circlePosition) => MathUtils.MulT(ref transformA, MathUtils.Mul(ref transformB, ref circlePosition));
-
+        
         /// <summary>
         ///     Handles the region a using the specified manifold
         /// </summary>
@@ -142,34 +139,33 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="q">The </param>
         /// <param name="radiusSum">The radius sum</param>
         /// <param name="circlePosition">The circle position</param>
-        
         internal static void HandleRegionA(ref Manifold manifold, EdgeShape edgeA, Vector2 edgeStart, Vector2 q, float radiusSum, Vector2 circlePosition)
         {
             Vector2 p1 = edgeStart;
             Vector2 d1 = q - p1;
             float dd1 = Vector2.Dot(d1, d1);
-
+            
             if (dd1 > radiusSum * radiusSum)
             {
                 return;
             }
-
+            
             if (edgeA.OneSided)
             {
                 Vector2 a1 = edgeA.Vertex0;
                 Vector2 b1 = edgeStart;
                 Vector2 e1 = b1 - a1;
                 float u1 = Vector2.Dot(e1, b1 - q);
-
+                
                 if (u1 > 0.0f)
                 {
                     return;
                 }
             }
-
+            
             SetManifoldForCircle(ref manifold, p1, circlePosition);
         }
-
+        
         /// <summary>
         ///     Handles the region b using the specified manifold
         /// </summary>
@@ -179,41 +175,39 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="q">The </param>
         /// <param name="radiusSum">The radius sum</param>
         /// <param name="circlePosition">The circle position</param>
-        
         internal static void HandleRegionB(ref Manifold manifold, EdgeShape edgeA, Vector2 edgeEnd, Vector2 q, float radiusSum, Vector2 circlePosition)
         {
             Vector2 p2 = edgeEnd;
             Vector2 d2 = q - p2;
             float dd2 = Vector2.Dot(d2, d2);
-
+            
             if (dd2 > radiusSum * radiusSum)
             {
                 return;
             }
-
+            
             if (edgeA.OneSided)
             {
                 Vector2 b2 = edgeA.Vertex3;
                 Vector2 a2 = edgeEnd;
                 Vector2 e2 = b2 - a2;
                 float v2 = Vector2.Dot(e2, q - a2);
-
+                
                 if (v2 > 0.0f)
                 {
                     return;
                 }
             }
-
+            
             SetManifoldForCircle(ref manifold, p2, circlePosition);
         }
-
+        
         /// <summary>
         ///     Sets the manifold for circle using the specified manifold
         /// </summary>
         /// <param name="manifold">The manifold</param>
         /// <param name="contactPoint">The contact point</param>
         /// <param name="circlePosition">The circle position</param>
-        
         internal static void SetManifoldForCircle(ref Manifold manifold, Vector2 contactPoint, Vector2 circlePosition)
         {
             ContactFeature cf = default(ContactFeature);
@@ -227,7 +221,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
             manifold.Points[0].Id.ContactFeature = cf;
             manifold.Points[0].LocalPoint = circlePosition;
         }
-
+        
         /// <summary>
         ///     Sets the manifold for edge using the specified manifold
         /// </summary>
@@ -235,7 +229,6 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="edgeStart">The edge start</param>
         /// <param name="edgeNormal">The edge normal</param>
         /// <param name="circlePosition">The circle position</param>
-        
         internal static void SetManifoldForEdge(ref Manifold manifold, Vector2 edgeStart, Vector2 edgeNormal, Vector2 circlePosition)
         {
             ContactFeature cf = new ContactFeature
@@ -253,7 +246,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
             manifold.Points[0].Id.ContactFeature = cf;
             manifold.Points[0].LocalPoint = circlePosition;
         }
-
+        
         /// <summary>
         ///     Collides the edge and polygon using the specified manifold
         /// </summary>
@@ -262,86 +255,85 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="xfA">The xf</param>
         /// <param name="polygonB">The polygon</param>
         /// <param name="xfB">The xf</param>
-        
         public static void CollideEdgeAndPolygon(ref Manifold manifold, EdgeShape edgeA, ref Transform xfA,
             PolygonShape polygonB, ref Transform xfB)
         {
             manifold.PointCount = 0;
-
+            
             Transform xf = MathUtils.MulT(xfA, xfB);
-
+            
             Vector2 centroidB = MathUtils.Mul(ref xf, polygonB.MassDataPrivate.Centroid);
-
+            
             Vector2 v1 = edgeA.Vertex1;
             Vector2 v2 = edgeA.Vertex2;
-
+            
             Vector2 edge1 = v2 - v1;
             edge1 = Vector2.Normalize(edge1);
-
+            
             // Normal points to the right for a CCW winding
             Vector2 normal1 = new Vector2(edge1.Y, -edge1.X);
             float offset1 = MathUtils.Dot(normal1, centroidB - v1);
-
+            
             bool oneSided = edgeA.OneSided;
             if (oneSided && (offset1 < 0.0f))
             {
                 return;
             }
-
+            
             TempPolygon tempPolygonB = GetPolygonInFrameA(polygonB, xf);
-
+            
             float radius = polygonB.RadiusPrivate + edgeA.RadiusPrivate;
-
+            
             EpAxis edgeAxis = ComputeEdgeSeparation(ref tempPolygonB, v1, normal1);
             if (edgeAxis.Separation > radius)
             {
                 return;
             }
-
+            
             EpAxis polygonAxis = ComputePolygonSeparation(ref tempPolygonB, v1, v2);
             if (polygonAxis.Separation > radius)
             {
                 return;
             }
-
+            
             EpAxis primaryAxis = GetPrimaryAxis(polygonAxis, edgeAxis, radius);
-
+            
             if (oneSided)
             {
                 primaryAxis = HandleOneSidedEdge(primaryAxis, edgeAxis, v1, v2, edge1, edgeA);
             }
-
+            
             if (primaryAxis.Type == EpAxisType.Unknown)
             {
                 return;
             }
-
+            
             ReferenceFace ref1 = GetReferenceFace(primaryAxis, tempPolygonB, v1, v2, edge1, ref manifold);
-
+            
             // Define clipPoints before using it
             ClipVertex[] clipPoints = new ClipVertex[2];
-
+            
             // Clip to side 1
             int np = Collision.ClipSegmentToLine(out ClipVertex[] clipPoints1, ref clipPoints, ref1.SideNormal1, ref1.SideOffset1,
                 ref1.I1);
-
+            
             if (np < Settings.ManifoldPoints)
             {
                 return;
             }
-
+            
             // Clip to side 2
             np = Collision.ClipSegmentToLine(out ClipVertex[] clipPoints2, ref clipPoints1, ref1.SideNormal2, ref1.SideOffset2,
                 ref1.I2);
-
+            
             if (np < Settings.ManifoldPoints)
             {
                 return;
             }
-
+            
             SetManifoldPoints(ref manifold, primaryAxis, ref1, clipPoints2, radius, xf, polygonB);
         }
-
+        
         /// <summary>
         ///     Gets the polygon in frame a using the specified polygon b
         /// </summary>
@@ -356,10 +348,10 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
                 tempPolygonB.Vertices[i] = MathUtils.Mul(ref xf, polygonB.VerticesPrivate[i]);
                 tempPolygonB.Normals[i] = MathUtils.Mul(xf.Rotation, polygonB.NormalsPrivate[i]);
             }
-
+            
             return tempPolygonB;
         }
-
+        
         /// <summary>
         ///     Gets the primary axis using the specified polygon axis
         /// </summary>
@@ -367,16 +359,15 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="edgeAxis">The edge axis</param>
         /// <param name="radius">The radius</param>
         /// <returns>The primary axis</returns>
-        
         internal static EpAxis GetPrimaryAxis(EpAxis polygonAxis, EpAxis edgeAxis, float radius)
         {
             // Use hysteresis for jitter reduction.
             const float kRelativeTol = 0.98f;
             const float kAbsoluteTol = 0.001f;
-
+            
             return polygonAxis.Separation - radius > kRelativeTol * (edgeAxis.Separation - radius) + kAbsoluteTol ? polygonAxis : edgeAxis;
         }
-
+        
         /// <summary>
         ///     Handles the one sided edge using the specified primary axis
         /// </summary>
@@ -387,22 +378,21 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="edge1">The edge</param>
         /// <param name="edgeA">The edge</param>
         /// <returns>The primary axis</returns>
-        
         internal static EpAxis HandleOneSidedEdge(EpAxis primaryAxis, EpAxis edgeAxis, Vector2 v1, Vector2 v2, Vector2 edge1, EdgeShape edgeA)
         {
             Vector2 edge0 = v1 - edgeA.Vertex0;
             edge0 = Vector2.Normalize(edge0);
             Vector2 normal0 = new Vector2(edge0.Y, -edge0.X);
             bool convex1 = MathUtils.Cross(edge0, edge1) >= 0.0f;
-
+            
             Vector2 edge2 = edgeA.Vertex3 - v2;
             edge2 = Vector2.Normalize(edge2);
             Vector2 normal2 = new Vector2(edge2.Y, -edge2.X);
             bool convex2 = MathUtils.Cross(edge1, edge2) >= 0.0f;
-
+            
             const float sinTol = 0.1f;
             bool side1 = MathUtils.Dot(primaryAxis.Normal, edge1) <= 0.0f;
-
+            
             // Check Gauss Map
             if (side1)
             {
@@ -414,7 +404,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
                         primaryAxis.Type = EpAxisType.Unknown;
                         return primaryAxis;
                     }
-
+                    
                     // Admit region
                 }
                 else
@@ -433,7 +423,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
                         primaryAxis.Type = EpAxisType.Unknown;
                         return primaryAxis;
                     }
-
+                    
                     // Admit region
                 }
                 else
@@ -442,10 +432,10 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
                     primaryAxis = edgeAxis;
                 }
             }
-
+            
             return primaryAxis;
         }
-
+        
         /// <summary>
         ///     Gets the reference face using the specified primary axis
         /// </summary>
@@ -456,7 +446,6 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="edge1">The edge</param>
         /// <param name="manifold">The manifold</param>
         /// <returns>The ref</returns>
-        
         internal static ReferenceFace GetReferenceFace(EpAxis primaryAxis, TempPolygon tempPolygonB, Vector2 v1, Vector2 v2, Vector2 edge1, ref Manifold manifold)
         {
             ClipVertex[] clipPoints = new ClipVertex[2];
@@ -464,7 +453,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
             if (primaryAxis.Type == EpAxisType.EdgeA)
             {
                 manifold.Type = ManifoldType.FaceA;
-
+                
                 // Search for the polygon normal that is most anti-parallel to the edge normal.
                 int bestIndex = 0;
                 float bestValue = MathUtils.Dot(primaryAxis.Normal, tempPolygonB.Normals[0]);
@@ -477,22 +466,22 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
                         bestIndex = i;
                     }
                 }
-
+                
                 int i1 = bestIndex;
                 int i2 = i1 + 1 < tempPolygonB.Count ? i1 + 1 : 0;
-
+                
                 clipPoints[0].V = tempPolygonB.Vertices[i1];
                 clipPoints[0].Id.ContactFeature.IndexA = 0;
                 clipPoints[0].Id.ContactFeature.IndexB = (byte) i1;
                 clipPoints[0].Id.ContactFeature.TypeA = ContactFeatureType.Face;
                 clipPoints[0].Id.ContactFeature.TypeB = ContactFeatureType.Vertex;
-
+                
                 clipPoints[1].V = tempPolygonB.Vertices[i2];
                 clipPoints[1].Id.ContactFeature.IndexA = 0;
                 clipPoints[1].Id.ContactFeature.IndexB = (byte) i2;
                 clipPoints[1].Id.ContactFeature.TypeA = ContactFeatureType.Face;
                 clipPoints[1].Id.ContactFeature.TypeB = ContactFeatureType.Vertex;
-
+                
                 ref1.I1 = 0;
                 ref1.I2 = 1;
                 ref1.V1 = v1;
@@ -504,36 +493,36 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
             else
             {
                 manifold.Type = ManifoldType.FaceB;
-
+                
                 clipPoints[0].V = v2;
                 clipPoints[0].Id.ContactFeature.IndexA = 1;
                 clipPoints[0].Id.ContactFeature.IndexB = (byte) primaryAxis.Index;
                 clipPoints[0].Id.ContactFeature.TypeA = ContactFeatureType.Vertex;
                 clipPoints[0].Id.ContactFeature.TypeB = ContactFeatureType.Face;
-
+                
                 clipPoints[1].V = v1;
                 clipPoints[1].Id.ContactFeature.IndexA = 0;
                 clipPoints[1].Id.ContactFeature.IndexB = (byte) primaryAxis.Index;
                 clipPoints[1].Id.ContactFeature.TypeA = ContactFeatureType.Vertex;
                 clipPoints[1].Id.ContactFeature.TypeB = ContactFeatureType.Face;
-
+                
                 ref1.I1 = primaryAxis.Index;
                 ref1.I2 = ref1.I1 + 1 < tempPolygonB.Count ? ref1.I1 + 1 : 0;
                 ref1.V1 = tempPolygonB.Vertices[ref1.I1];
                 ref1.V2 = tempPolygonB.Vertices[ref1.I2];
                 ref1.Normal = tempPolygonB.Normals[ref1.I1];
-
+                
                 // CCW winding
                 ref1.SideNormal1 = new Vector2(ref1.Normal.Y, -ref1.Normal.X);
                 ref1.SideNormal2 = -ref1.SideNormal1;
             }
-
+            
             ref1.SideOffset1 = MathUtils.Dot(ref1.SideNormal1, ref1.V1);
             ref1.SideOffset2 = MathUtils.Dot(ref1.SideNormal2, ref1.V2);
-
+            
             return ref1;
         }
-
+        
         /// <summary>
         ///     Sets the manifold points using the specified manifold
         /// </summary>
@@ -544,7 +533,6 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="radius">The radius</param>
         /// <param name="xf">The xf</param>
         /// <param name="polygonB">The polygon</param>
-        
         internal static void SetManifoldPoints(ref Manifold manifold, EpAxis primaryAxis, ReferenceFace ref1, ClipVertex[] clipPoints2, float radius, Transform xf, PolygonShape polygonB)
         {
             // Now clipPoints2 contains the clipped points.
@@ -558,16 +546,16 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
                 manifold.LocalNormal = polygonB.NormalsPrivate[ref1.I1];
                 manifold.LocalPoint = polygonB.VerticesPrivate[ref1.I1];
             }
-
+            
             int pointCount = 0;
             for (int i = 0; i < Settings.ManifoldPoints; ++i)
             {
                 float separation = MathUtils.Dot(ref1.Normal, clipPoints2[i].V - ref1.V1);
-
+                
                 if (separation <= radius)
                 {
                     ManifoldPoint cp = manifold.Points[pointCount];
-
+                    
                     if (primaryAxis.Type == EpAxisType.EdgeA)
                     {
                         cp.LocalPoint = MathUtils.MulT(xf, clipPoints2[i].V);
@@ -581,15 +569,15 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
                         cp.Id.ContactFeature.IndexA = clipPoints2[i].Id.ContactFeature.IndexB;
                         cp.Id.ContactFeature.IndexB = clipPoints2[i].Id.ContactFeature.IndexA;
                     }
-
+                    
                     manifold.Points[pointCount] = cp;
                     ++pointCount;
                 }
             }
-
+            
             manifold.PointCount = pointCount;
         }
-
+        
         /// <summary>
         ///     Computes the edge separation using the specified polygon b
         /// </summary>
@@ -597,7 +585,6 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="v1">The </param>
         /// <param name="normal1">The normal</param>
         /// <returns>The axis</returns>
-        
         internal static EpAxis ComputeEdgeSeparation(ref TempPolygon polygonB, Vector2 v1, Vector2 normal1)
         {
             EpAxis axis = new EpAxis
@@ -607,14 +594,14 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
                 Separation = -float.MaxValue,
                 Normal = Vector2.Zero
             };
-
+            
             Vector2[] axes = {normal1, -normal1};
-
+            
             // Find axis with least overlap (min-max problem)
             for (int j = 0; j < 2; ++j)
             {
                 float sj = float.MaxValue;
-
+                
                 // Find deepest polygon vertex along axis j
                 for (int i = 0; i < polygonB.Count; ++i)
                 {
@@ -624,7 +611,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
                         sj = si;
                     }
                 }
-
+                
                 if (sj > axis.Separation)
                 {
                     axis.Index = j;
@@ -632,10 +619,10 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
                     axis.Normal = axes[j];
                 }
             }
-
+            
             return axis;
         }
-
+        
         /// <summary>
         ///     Computes the polygon separation using the specified polygon b
         /// </summary>
@@ -643,7 +630,6 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="v1">The </param>
         /// <param name="v2">The </param>
         /// <returns>The axis</returns>
-        
         internal static EpAxis ComputePolygonSeparation(ref TempPolygon polygonB, Vector2 v1, Vector2 v2)
         {
             EpAxis axis = new EpAxis
@@ -653,15 +639,15 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
                 Separation = -float.MaxValue,
                 Normal = Vector2.Zero
             };
-
+            
             for (int i = 0; i < polygonB.Count; ++i)
             {
                 Vector2 n = -polygonB.Normals[i];
-
+                
                 float s1 = MathUtils.Dot(n, polygonB.Vertices[i] - v1);
                 float s2 = MathUtils.Dot(n, polygonB.Vertices[i] - v2);
                 float s = MathUtils.Min(s1, s2);
-
+                
                 if (s > axis.Separation)
                 {
                     axis.Type = EpAxisType.EdgeB;
@@ -670,10 +656,10 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
                     axis.Normal = n;
                 }
             }
-
+            
             return axis;
         }
-
+        
         /// <summary>
         ///     The temp polygon
         /// </summary>
@@ -689,17 +675,17 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
                 Vertices = new Vector2[count];
                 Normals = new Vector2[count];
             }
-
+            
             /// <summary>
             ///     The vertices
             /// </summary>
             public readonly Vector2[] Vertices;
-
+            
             /// <summary>
             ///     The normals
             /// </summary>
             public readonly Vector2[] Normals;
-
+            
             /// <summary>
             ///     The count
             /// </summary>

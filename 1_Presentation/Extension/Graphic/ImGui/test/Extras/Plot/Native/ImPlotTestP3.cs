@@ -35,12 +35,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
 {
     /// <summary>
-    /// The im plot test class
+    ///     The im plot test class
     /// </summary>
     public class ImPlotTestP3
     {
         /// <summary>
-        /// Tests that plot error bars double throws dll not found exception
+        ///     Tests that plot error bars double throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotErrorBars_Double_ThrowsDllNotFoundException()
@@ -53,7 +53,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot error bars double with flags throws dll not found exception
+        ///     Tests that plot error bars double with flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotErrorBars_Double_WithFlags_ThrowsDllNotFoundException()
@@ -66,59 +66,59 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot error bars s byte throws dll not found exception
+        ///     Tests that plot error bars s byte throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotErrorBars_SByte_ThrowsDllNotFoundException()
         {
             Assert.Throws<DllNotFoundException>(() =>
             {
-                sbyte @sbyte = (sbyte) 0;
+                sbyte @sbyte = 0;
                 ImPlot.PlotErrorBars("label", ref @sbyte, ref @sbyte, ref @sbyte, 1);
             });
         }
         
         /// <summary>
-        /// Tests that plot error bars byte throws dll not found exception
+        ///     Tests that plot error bars byte throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotErrorBars_Byte_ThrowsDllNotFoundException()
         {
             Assert.Throws<DllNotFoundException>(() =>
             {
-                byte b = (byte) 0;
+                byte b = 0;
                 ImPlot.PlotErrorBars("label", ref b, ref b, ref b, 1);
             });
         }
         
         /// <summary>
-        /// Tests that plot error bars short throws dll not found exception
+        ///     Tests that plot error bars short throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotErrorBars_Short_ThrowsDllNotFoundException()
         {
             Assert.Throws<DllNotFoundException>(() =>
             {
-                short s = (short) 0;
+                short s = 0;
                 ImPlot.PlotErrorBars("label", ref s, ref s, ref s, 1);
             });
         }
         
         /// <summary>
-        /// Tests that plot error bars u short throws dll not found exception
+        ///     Tests that plot error bars u short throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotErrorBars_UShort_ThrowsDllNotFoundException()
         {
             Assert.Throws<DllNotFoundException>(() =>
             {
-                ushort @ushort = (ushort) 0;
+                ushort @ushort = 0;
                 ImPlot.PlotErrorBars("label", ref @ushort, ref @ushort, ref @ushort, 1);
             });
         }
         
         /// <summary>
-        /// Tests that plot error bars int throws dll not found exception
+        ///     Tests that plot error bars int throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotErrorBars_Int_ThrowsDllNotFoundException()
@@ -131,7 +131,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot error bars u int throws dll not found exception
+        ///     Tests that plot error bars u int throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotErrorBars_UInt_ThrowsDllNotFoundException()
@@ -144,7 +144,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot error bars long throws dll not found exception
+        ///     Tests that plot error bars long throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotErrorBars_Long_ThrowsDllNotFoundException()
@@ -157,7 +157,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot error bars u long throws dll not found exception
+        ///     Tests that plot error bars u long throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotErrorBars_ULong_ThrowsDllNotFoundException()
@@ -170,7 +170,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot error bars float neg pos throws dll not found exception
+        ///     Tests that plot error bars float neg pos throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotErrorBars_Float_NegPos_ThrowsDllNotFoundException()
@@ -183,7 +183,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot error bars double neg pos throws dll not found exception
+        ///     Tests that plot error bars double neg pos throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotErrorBars_Double_NegPos_ThrowsDllNotFoundException()
@@ -196,14 +196,14 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot error bars s byte neg pos throws dll not found exception
+        ///     Tests that plot error bars s byte neg pos throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotErrorBars_SByte_NegPos_ThrowsDllNotFoundException()
         {
             Assert.Throws<DllNotFoundException>(() =>
             {
-                sbyte @sbyte = (sbyte) 0;
+                sbyte @sbyte = 0;
                 ImPlot.PlotErrorBars("label", ref @sbyte, ref @sbyte, ref @sbyte, ref @sbyte, 1);
             });
         }

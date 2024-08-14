@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The none im gui table row flags
         /// </summary>
         None = 0,
-
+        
         /// <summary>
         ///     The headers im gui table row flags
         /// </summary>

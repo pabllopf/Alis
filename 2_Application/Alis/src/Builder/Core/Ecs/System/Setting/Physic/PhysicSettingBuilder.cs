@@ -49,13 +49,13 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Physic
         ///     The physic setting
         /// </summary>
         private readonly PhysicSetting physicSetting = new PhysicSetting();
-
+        
         /// <summary>
         ///     Builds this instance
         /// </summary>
         /// <returns>The physic setting</returns>
         public PhysicSetting Build() => physicSetting;
-
+        
         /// <summary>
         ///     Debugs the value
         /// </summary>
@@ -66,7 +66,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Physic
             physicSetting.DebugMode = value;
             return this;
         }
-
+        
         /// <summary>
         ///     Debugs the color using the specified value
         /// </summary>
@@ -77,7 +77,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Physic
             physicSetting.DebugColor = value;
             return this;
         }
-
+        
         /// <summary>
         ///     Gravities the x
         /// </summary>

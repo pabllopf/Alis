@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.System.Setting.Network;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
@@ -45,7 +44,6 @@ namespace Alis.Core.Ecs.System.Setting.Network
         /// <summary>
         ///     Initializes a new instance of the <see cref="NetworkSetting" /> class
         /// </summary>
-        
         public NetworkSetting()
         {
             Port = 8080;
@@ -53,7 +51,7 @@ namespace Alis.Core.Ecs.System.Setting.Network
             Host = "localhost";
             Protocol = "http";
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="NetworkSetting" /> class
         /// </summary>
@@ -62,7 +60,6 @@ namespace Alis.Core.Ecs.System.Setting.Network
         /// <param name="host">The host</param>
         /// <param name="protocol">The protocol</param>
         [JsonConstructor]
-        
         public NetworkSetting(int port, string ip, string host, string protocol)
         {
             Port = port;
@@ -70,31 +67,31 @@ namespace Alis.Core.Ecs.System.Setting.Network
             Host = host;
             Protocol = protocol;
         }
-
+        
         /// <summary>
         ///     Gets or sets the value of the port
         /// </summary>
         [JsonPropertyName("_Port_")]
         public int Port { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the ip
         /// </summary>
         [JsonPropertyName("_Ip_")]
         public string Ip { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the host
         /// </summary>
         [JsonPropertyName("_Host_")]
         public string Host { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the protocol
         /// </summary>
         [JsonPropertyName("_Protocol_")]
         public string Protocol { get; set; }
-
+        
         /// <summary>
         ///     Builders this instance
         /// </summary>

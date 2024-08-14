@@ -48,13 +48,13 @@ namespace Alis.Core.Physic.Test.Dynamics.Solver
         {
             // Arrange
             ContactVelocityConstraint contactVelocityConstraint = new ContactVelocityConstraint();
-
+            
             // Assert
             Assert.NotNull(contactVelocityConstraint);
             Assert.NotNull(contactVelocityConstraint.Points);
             Assert.Equal(Settings.ManifoldPoints, contactVelocityConstraint.Points.Length);
         }
-
+        
         /// <summary>
         ///     Tests that contact velocity constraint properties test
         /// </summary>
@@ -81,7 +81,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Solver
                 TangentSpeed = 0.5f,
                 Threshold = 0.5f
             };
-
+            
             // Assert
             Assert.Equal(1, contactVelocityConstraint.ContactIndex);
             Assert.Equal(0.5f, contactVelocityConstraint.Friction);

@@ -31,17 +31,15 @@ using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Structs;
 using Xunit;
 
-
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
-
     /// <summary>
-    /// The display event tests class
+    ///     The display event tests class
     /// </summary>
     public class DisplayEventTests
     {
         /// <summary>
-        /// Tests that display event initializes properties correctly
+        ///     Tests that display event initializes properties correctly
         /// </summary>
         [Fact]
         public void DisplayEvent_InitializesPropertiesCorrectly()
@@ -50,7 +48,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             uint expectedTimestamp = 123456;
             uint expectedDisplay = 1;
             DisplayEventId expectedDisplayEvent = DisplayEventId.SdlDisplayEventNone;
-
+            
             DisplayEvent eventStruct = new DisplayEvent
             {
                 type = expectedType,
@@ -58,7 +56,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
                 display = expectedDisplay,
                 displayEvent = expectedDisplayEvent
             };
-
+            
             Assert.Equal(expectedType, eventStruct.type);
             Assert.Equal(expectedTimestamp, eventStruct.timestamp);
             Assert.Equal(expectedDisplay, eventStruct.display);

@@ -49,14 +49,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             Dictionary<string, int> dictionary = new Dictionary<string, int> {{"test", 1}};
             KeyValueTypeEnumerator enumerator = new KeyValueTypeEnumerator(dictionary);
-
+            
             // Act
             bool result = enumerator.MoveNext();
-
+            
             // Assert
             Assert.True(result);
         }
-
+        
         /// <summary>
         ///     Tests that test key value type enumerator reset
         /// </summary>
@@ -67,15 +67,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Dictionary<string, int> dictionary = new Dictionary<string, int> {{"test", 1}};
             KeyValueTypeEnumerator enumerator = new KeyValueTypeEnumerator(dictionary);
             enumerator.MoveNext();
-
+            
             // Act
             enumerator.Reset();
             bool result = enumerator.MoveNext();
-
+            
             // Assert
             Assert.True(result);
         }
-
+        
         /// <summary>
         ///     Tests that test key value type enumerator entry
         /// </summary>
@@ -86,14 +86,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Dictionary<string, int> dictionary = new Dictionary<string, int> {{"test", 1}};
             KeyValueTypeEnumerator enumerator = new KeyValueTypeEnumerator(dictionary);
             enumerator.MoveNext();
-
+            
             // Act
             DictionaryEntry result = enumerator.Entry;
-
+            
             // Assert
             Assert.Equal(new DictionaryEntry("test", 1), result);
         }
-
+        
         /// <summary>
         ///     Tests that test key value type enumerator key
         /// </summary>
@@ -104,14 +104,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Dictionary<string, int> dictionary = new Dictionary<string, int> {{"test", 1}};
             KeyValueTypeEnumerator enumerator = new KeyValueTypeEnumerator(dictionary);
             enumerator.MoveNext();
-
+            
             // Act
             string result = enumerator.Key as string;
-
+            
             // Assert
             Assert.Equal("test", result);
         }
-
+        
         /// <summary>
         ///     Tests that test key value type enumerator value
         /// </summary>
@@ -122,7 +122,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Dictionary<string, int> dictionary = new Dictionary<string, int> {{"test", 1}};
             KeyValueTypeEnumerator enumerator = new KeyValueTypeEnumerator(dictionary);
             enumerator.MoveNext();
-
+            
             // Act
             if (enumerator.Value is int result)
             {
@@ -130,7 +130,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
                 Assert.Equal(1, result);
             }
         }
-
+        
         /// <summary>
         ///     Tests that test key value type enumerator current
         /// </summary>
@@ -141,17 +141,17 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Dictionary<string, int> dictionary = new Dictionary<string, int> {{"test", 1}};
             KeyValueTypeEnumerator enumerator = new KeyValueTypeEnumerator(dictionary);
             enumerator.MoveNext();
-
+            
             // Act
             if (enumerator.Current != null)
             {
                 DictionaryEntry result = (DictionaryEntry) enumerator.Current;
-
+                
                 // Assert
                 Assert.Equal(new DictionaryEntry("test", 1), result);
             }
         }
-
+        
         /// <summary>
         ///     Tests that entry key prop is null and enumerator current is null throws invalid operation exception
         /// </summary>
@@ -161,7 +161,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             KeyValueTypeEnumerator enumerator = new KeyValueTypeEnumerator(new Dictionary<string, int>());
             Assert.Throws<InvalidOperationException>(() => enumerator.Entry);
         }
-
+        
         /// <summary>
         ///     Tests that entry key prop is null and enumerator current is not null sets key prop and value prop
         /// </summary>
@@ -174,7 +174,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             DictionaryEntry entry = enumerator.Entry;
             Assert.Equal(new DictionaryEntry("test", 1), entry);
         }
-
+        
         /// <summary>
         ///     Tests that entry value prop is null throws invalid operation exception
         /// </summary>
@@ -185,7 +185,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             KeyValueTypeEnumerator enumerator = new KeyValueTypeEnumerator(dictionary);
             Assert.Throws<InvalidOperationException>(() => enumerator.Entry);
         }
-
+        
         /// <summary>
         ///     Tests that entry key prop is not null and value prop is not null returns dictionary entry
         /// </summary>
@@ -198,7 +198,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             DictionaryEntry entry = enumerator.Entry;
             Assert.Equal(new DictionaryEntry("test", 1), entry);
         }
-
+        
         /// <summary>
         ///     Tests that indexer set throws not supported exception
         /// </summary>
@@ -208,8 +208,8 @@ namespace Alis.Core.Aspect.Data.Test.Json
             KeyValueTypeDictionary dictionary = new KeyValueTypeDictionary(new List<int>());
             Assert.Throws<NotSupportedException>(() => { dictionary["test"] = "value"; });
         }
-
-
+        
+        
         /// <summary>
         ///     Tests that test move next with empty collection returns false
         /// </summary>
@@ -219,14 +219,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             List<KeyValuePair<string, string>> emptyCollection = new List<KeyValuePair<string, string>>();
             KeyValueTypeEnumerator enumerator = new KeyValueTypeEnumerator(emptyCollection);
-
+            
             // Act
             bool result = enumerator.MoveNext();
-
+            
             // Assert
             Assert.False(result);
         }
-
+        
         /// <summary>
         ///     Tests that test move next with non empty collection returns true
         /// </summary>
@@ -236,15 +236,15 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             List<KeyValuePair<string, string>> collection = new List<KeyValuePair<string, string>> {new KeyValuePair<string, string>("key", "value")};
             KeyValueTypeEnumerator enumerator = new KeyValueTypeEnumerator(collection);
-
+            
             // Act
             bool result = enumerator.MoveNext();
-
+            
             // Assert
             Assert.True(result);
         }
-
-
+        
+        
         /// <summary>
         ///     Tests that dispose when called disposes enumerator and value if disposable
         /// </summary>
@@ -258,12 +258,12 @@ namespace Alis.Core.Aspect.Data.Test.Json
             {
                 dictionary.Add(Guid.NewGuid().ToString(), tracker);
             }
-
+            
             KeyValueTypeEnumerator enumerator = new KeyValueTypeEnumerator(dictionary);
-
+            
             // Act
             enumerator.Dispose();
-
+            
             // Assert
             foreach (DisposableTracker tracker in disposableTrackers)
             {

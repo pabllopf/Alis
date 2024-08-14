@@ -48,17 +48,17 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             float y = 2;
             float z = 3;
             float w = 4;
-
+            
             // Act
             Vector4 vector = new Vector4(x, y, z, w);
-
+            
             // Assert
             Assert.Equal(x, vector.X);
             Assert.Equal(y, vector.Y);
             Assert.Equal(z, vector.Z);
             Assert.Equal(w, vector.W);
         }
-
+        
         /// <summary>
         ///     Tests that get should return correct value
         /// </summary>
@@ -67,14 +67,14 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             // Arrange
             Vector4 vector = new Vector4(1, 2, 3, 4);
-
+            
             // Act & Assert
             Assert.Equal(1, Vector4.Get(vector, 0));
             Assert.Equal(2, Vector4.Get(vector, 1));
             Assert.Equal(3, Vector4.Get(vector, 2));
             Assert.Equal(4, Vector4.Get(vector, 3));
         }
-
+        
         /// <summary>
         ///     Tests that get with invalid index should return zero
         /// </summary>
@@ -83,7 +83,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             // Arrange
             Vector4 vector = new Vector4(1, 2, 3, 4);
-
+            
             // Act & Assert
             Assert.Equal(0, Vector4.Get(vector, 4));
         }

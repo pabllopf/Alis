@@ -36,12 +36,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
 {
     /// <summary>
-    /// The im plot test class
+    ///     The im plot test class
     /// </summary>
     public class ImPlotTestP15
     {
         /// <summary>
-        /// Tests that plot bar groups u int 32 test
+        ///     Tests that plot bar groups u int 32 test
         /// </summary>
         [Fact]
         public void PlotBarGroups_UInt32_Test()
@@ -58,7 +58,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot bar groups int 64 test
+        ///     Tests that plot bar groups int 64 test
         /// </summary>
         [Fact]
         public void PlotBarGroups_Int64_Test()
@@ -75,7 +75,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot bar groups u int 64 test
+        ///     Tests that plot bar groups u int 64 test
         /// </summary>
         [Fact]
         public void PlotBarGroups_UInt64_Test()
@@ -92,7 +92,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot bars float test
+        ///     Tests that plot bars float test
         /// </summary>
         [Fact]
         public void PlotBars_Float_Test()
@@ -110,7 +110,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot bars double test
+        ///     Tests that plot bars double test
         /// </summary>
         [Fact]
         public void PlotBars_Double_Test()
@@ -128,7 +128,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot bars s byte test
+        ///     Tests that plot bars s byte test
         /// </summary>
         [Fact]
         public void PlotBars_SByte_Test()
@@ -146,7 +146,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot bars byte test
+        ///     Tests that plot bars byte test
         /// </summary>
         [Fact]
         public void PlotBars_Byte_Test()
@@ -164,7 +164,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot bars int 16 test
+        ///     Tests that plot bars int 16 test
         /// </summary>
         [Fact]
         public void PlotBars_Int16_Test()
@@ -182,7 +182,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot bars u int 16 test
+        ///     Tests that plot bars u int 16 test
         /// </summary>
         [Fact]
         public void PlotBars_UInt16_Test()
@@ -200,7 +200,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot bars int 32 test
+        ///     Tests that plot bars int 32 test
         /// </summary>
         [Fact]
         public void PlotBars_Int32_Test()
@@ -218,7 +218,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot bars u int 32 test
+        ///     Tests that plot bars u int 32 test
         /// </summary>
         [Fact]
         public void PlotBars_UInt32_Test()

@@ -41,7 +41,7 @@ namespace Alis.Extension.Language.Dialogue
         ///     The dialog
         /// </summary>
         internal readonly Dictionary<string, Dialog> dialogs = new Dictionary<string, Dialog>();
-
+        
         /// <summary>
         ///     Adds the dialog using the specified dialog
         /// </summary>
@@ -50,14 +50,14 @@ namespace Alis.Extension.Language.Dialogue
         {
             dialogs[dialog.Id] = dialog;
         }
-
+        
         /// <summary>
         ///     Gets the dialog using the specified id
         /// </summary>
         /// <param name="id">The id</param>
         /// <returns>The dialog</returns>
         public Dialog GetDialog(string id) => dialogs.TryGetValue(id, out Dialog dialog) ? dialog : null;
-
+        
         // Example usage: ShowDialog("greeting");
         /// <summary>
         ///     Shows the dialog using the specified id
@@ -67,13 +67,13 @@ namespace Alis.Extension.Language.Dialogue
         {
             Dialog dialog = GetDialog(id);
             if (dialog == null) return;
-
+            
             Console.WriteLine(dialog.Text);
             for (int i = 0; i < dialog.Options.Count; i++)
             {
                 Console.WriteLine($"{i + 1}. {dialog.Options[i].Text}");
             }
-
+            
             // Assuming user input for example purposes
             int choice = Convert.ToInt32(Console.ReadLine()) - 1;
             if ((choice >= 0) && (choice < dialog.Options.Count))

@@ -44,10 +44,10 @@ namespace Alis.Test.Core.Ecs.Component.Light
         public void AreaLight_DefaultConstructor_ValidInput()
         {
             AreaLight areaLight = new AreaLight();
-
+            
             Assert.NotNull(areaLight);
         }
-
+        
         /// <summary>
         ///     Tests that on init valid input
         /// </summary>
@@ -55,7 +55,7 @@ namespace Alis.Test.Core.Ecs.Component.Light
         public void OnInit_ValidInput()
         {
             AreaLight areaLight = new AreaLight();
-
+            
             areaLight.OnInit();
         }
     }

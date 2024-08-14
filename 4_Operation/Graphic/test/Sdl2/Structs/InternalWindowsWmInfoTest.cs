@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
     /// <summary>
-    /// The internal windows wm info tests class
+    ///     The internal windows wm info tests class
     /// </summary>
     public class InternalWindowsWmInfoTests
     {
         /// <summary>
-        /// Tests that internal windows wm info initializes properties correctly
+        ///     Tests that internal windows wm info initializes properties correctly
         /// </summary>
         [Fact]
         public void InternalWindowsWmInfo_InitializesPropertiesCorrectly()
@@ -47,14 +47,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             IntPtr expectedWindow = new IntPtr(123);
             IntPtr expectedHdc = new IntPtr(456);
             IntPtr expectedHInstance = new IntPtr(789);
-
+            
             InternalWindowsWmInfo info = new InternalWindowsWmInfo
             {
                 Window = expectedWindow,
                 Hdc = expectedHdc,
                 HInstance = expectedHInstance
             };
-
+            
             Assert.Equal(expectedWindow, info.Window);
             Assert.Equal(expectedHdc, info.Hdc);
             Assert.Equal(expectedHInstance, info.HInstance);

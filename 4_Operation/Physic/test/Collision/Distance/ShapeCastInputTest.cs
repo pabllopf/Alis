@@ -48,14 +48,14 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             // Arrange
             ShapeCastInput shapeCastInput = new ShapeCastInput();
             DistanceProxy proxyA = new DistanceProxy();
-
+            
             // Act
             shapeCastInput.ProxyA = proxyA;
-
+            
             // Assert
             Assert.Equal(proxyA, shapeCastInput.ProxyA);
         }
-
+        
         /// <summary>
         ///     Tests that proxy b property test
         /// </summary>
@@ -65,14 +65,14 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             // Arrange
             ShapeCastInput shapeCastInput = new ShapeCastInput();
             DistanceProxy proxyB = new DistanceProxy();
-
+            
             // Act
             shapeCastInput.ProxyB = proxyB;
-
+            
             // Assert
             Assert.Equal(proxyB, shapeCastInput.ProxyB);
         }
-
+        
         /// <summary>
         ///     Tests that transform a property test
         /// </summary>
@@ -82,14 +82,14 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             // Arrange
             ShapeCastInput shapeCastInput = new ShapeCastInput();
             Transform transformA = new Transform();
-
+            
             // Act
             shapeCastInput.TransformA = transformA;
-
+            
             // Assert
             Assert.Equal(transformA, shapeCastInput.TransformA);
         }
-
+        
         /// <summary>
         ///     Tests that transform b property test
         /// </summary>
@@ -99,14 +99,14 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             // Arrange
             ShapeCastInput shapeCastInput = new ShapeCastInput();
             Transform transformB = new Transform();
-
+            
             // Act
             shapeCastInput.TransformB = transformB;
-
+            
             // Assert
             Assert.Equal(transformB, shapeCastInput.TransformB);
         }
-
+        
         /// <summary>
         ///     Tests that translation b property test
         /// </summary>
@@ -116,10 +116,10 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             // Arrange
             ShapeCastInput shapeCastInput = new ShapeCastInput();
             Vector2 translationB = new Vector2(1, 1);
-
+            
             // Act
             shapeCastInput.TranslationB = translationB;
-
+            
             // Assert
             Assert.Equal(translationB, shapeCastInput.TranslationB);
         }

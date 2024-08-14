@@ -30,7 +30,6 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.IO.Compression;
 using System.Reflection;
@@ -50,51 +49,49 @@ namespace Alis.Core.Aspect.Data.Dll
         /// <param name="dllType"></param>
         /// <param name="dllBytes">The dll bytes</param>
         /// <param name="assembly">The assembly</param>
-        
         public static void ExtractEmbeddedDlls(string dllName, DllType dllType, Dictionary<PlatformInfo, string> dllBytes, Assembly assembly)
         {
             string extension = GetDllExtension(dllType);
             string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
             string dllPath = Path.Combine(currentDirectory);
-
+            
             if (!File.Exists(dllPath + "/" + dllName + extension))
             {
                 OSPlatform currentPlatform = GetCurrentPlatform();
                 Architecture currentArchitecture = RuntimeInformation.ProcessArchitecture;
-
+                
                 PlatformInfo platformInfo = new PlatformInfo(currentPlatform, currentArchitecture);
-
+                
                 if (dllBytes.TryGetValue(platformInfo, out string resourceName))
                 {
                     ExtractZipFile(dllPath, LoadResource(resourceName, assembly));
                 }
             }
         }
-
+        
         /// <summary>
         ///     Gets the dll extension
         /// </summary>
         /// <param name="dllType"></param>
         /// <exception cref="PlatformNotSupportedException">Unsupported platform.</exception>
         /// <returns>The string</returns>
-        
         internal static string GetDllExtension(DllType dllType)
         {
             OSPlatform currentPlatform = GetCurrentPlatform();
-
+            
             if (dllType == DllType.Exe)
             {
                 return GetExeExtension(currentPlatform);
             }
-
+            
             if (dllType == DllType.Lib)
             {
                 return GetLibExtension(currentPlatform);
             }
-
+            
             throw new PlatformNotSupportedException("Unsupported platform.");
         }
-
+        
         /// <summary>
         ///     Gets the exe extension using the specified current platform
         /// </summary>
@@ -107,20 +104,20 @@ namespace Alis.Core.Aspect.Data.Dll
             {
                 return ".exe";
             }
-
+            
             if (currentPlatform == OSPlatform.OSX || currentPlatform == OSPlatform.Create("IOS"))
             {
                 return "";
             }
-
+            
             if (currentPlatform == OSPlatform.Linux || currentPlatform == OSPlatform.Create("Android"))
             {
                 return "";
             }
-
+            
             throw new PlatformNotSupportedException("Unsupported platform.");
         }
-
+        
         /// <summary>
         ///     Gets the lib extension using the specified current platform
         /// </summary>
@@ -133,57 +130,56 @@ namespace Alis.Core.Aspect.Data.Dll
             {
                 return ".dll";
             }
-
+            
             if (currentPlatform == OSPlatform.OSX || currentPlatform == OSPlatform.Create("IOS"))
             {
                 return ".dylib";
             }
-
+            
             if (currentPlatform == OSPlatform.Linux || currentPlatform == OSPlatform.Create("Android"))
             {
                 return ".so";
             }
-
+            
             throw new PlatformNotSupportedException("Unsupported platform.");
         }
-
+        
         /// <summary>
         ///     Gets the platform
         /// </summary>
         /// <exception cref="PlatformNotSupportedException">Unsupported platform.</exception>
         /// <returns>The os platform</returns>
-        
         public static OSPlatform GetCurrentPlatform()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 return OSPlatform.Windows;
             }
-
+            
             if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
                 return OSPlatform.OSX;
             }
-
+            
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
                 return OSPlatform.Linux;
             }
-
+            
             if (IsRunningOniOS())
             {
                 return OSPlatform.Create("IOS");
             }
-
+            
             if (IsRunningOnAndroid())
             {
                 return OSPlatform.Create("Android");
             }
-
+            
             throw new PlatformNotSupportedException("Unsupported platform.");
         }
-
-
+        
+        
         /// <summary>
         ///     Extracts the zip file using the specified file dir
         /// </summary>
@@ -201,37 +197,35 @@ namespace Alis.Core.Aspect.Data.Dll
                 }
             }
         }
-
+        
         /// <summary>
         ///     Describes whether is valid entry
         /// </summary>
         /// <param name="entry">The entry</param>
         /// <returns>The bool</returns>
         internal static bool IsValidEntry(ZipArchiveEntry entry) => !string.IsNullOrEmpty(entry.Name) && !entry.FullName.Contains("__MACOSX");
-
+        
         /// <summary>
         ///     Extracts the entry using the specified file dir
         /// </summary>
         /// <param name="fileDir">The file dir</param>
         /// <param name="entry">The entry</param>
-        
         internal static void ExtractEntry(string fileDir, ZipArchiveEntry entry)
         {
             string destinationPath = Path.Combine(fileDir, entry.FullName);
             string canonicalDestinationPath = Path.GetFullPath(destinationPath);
-
+            
             if (canonicalDestinationPath.StartsWith(fileDir, StringComparison.Ordinal))
             {
                 ExtractFileFromEntry(canonicalDestinationPath, entry);
             }
         }
-
+        
         /// <summary>
         ///     Extracts the file from entry using the specified canonical destination path
         /// </summary>
         /// <param name="canonicalDestinationPath">The canonical destination path</param>
         /// <param name="entry">The entry</param>
-        
         internal static void ExtractFileFromEntry(string canonicalDestinationPath, ZipArchiveEntry entry)
         {
             using Stream entryStream = entry.Open();
@@ -239,12 +233,11 @@ namespace Alis.Core.Aspect.Data.Dll
             entryStream.CopyTo(fs);
             SetFileReadPermission(canonicalDestinationPath);
         }
-
+        
         /// <summary>
         ///     Sets the file read permission using the specified file path
         /// </summary>
         /// <param name="filePath">The file path</param>
-        
         internal static void SetFileReadPermission(string filePath)
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) || RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
@@ -253,7 +246,7 @@ namespace Alis.Core.Aspect.Data.Dll
                 {
                     throw new FileNotFoundException("File not found", filePath);
                 }
-
+                
                 using Process process = new Process();
                 process.StartInfo.FileName = "/bin/chmod";
                 process.StartInfo.Arguments = $"+x {filePath}";
@@ -263,7 +256,7 @@ namespace Alis.Core.Aspect.Data.Dll
                 process.WaitForExit();
             }
         }
-
+        
         /// <summary>
         ///     Loads the resource using the specified resource name
         /// </summary>
@@ -278,19 +271,19 @@ namespace Alis.Core.Aspect.Data.Dll
             memoryStream.Position = 0;
             return memoryStream;
         }
-
+        
         /// <summary>
         ///     Describes whether is running oni os
         /// </summary>
         /// <returns>The bool</returns>
         internal static bool IsRunningOniOS() => RuntimeInformation.IsOSPlatform(OSPlatform.OSX) && IsiOsSpecificConditionMet();
-
+        
         /// <summary>
         ///     Describes whether is running on android
         /// </summary>
         /// <returns>The bool</returns>
         internal static bool IsRunningOnAndroid() => IsAndroidSpecificConditionMet();
-
+        
         /// <summary>
         ///     Describes whether isi os specific condition met
         /// </summary>
@@ -306,7 +299,7 @@ namespace Alis.Core.Aspect.Data.Dll
                 return false;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether is android specific condition met
         /// </summary>

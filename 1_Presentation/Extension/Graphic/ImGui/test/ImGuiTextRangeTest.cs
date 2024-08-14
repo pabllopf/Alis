@@ -33,12 +33,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test
 {
     /// <summary>
-    /// The im gui text range test class
+    ///     The im gui text range test class
     /// </summary>
     public class ImGuiTextRangeTest
     {
         /// <summary>
-        /// Tests that b should set and get correctly
+        ///     Tests that b should set and get correctly
         /// </summary>
         [Fact]
         public void B_Should_SetAndGetCorrectly()
@@ -48,9 +48,9 @@ namespace Alis.Extension.Graphic.ImGui.Test
             textRange.B = ptr;
             Assert.Equal(ptr, textRange.B);
         }
-
+        
         /// <summary>
-        /// Tests that e should set and get correctly
+        ///     Tests that e should set and get correctly
         /// </summary>
         [Fact]
         public void E_Should_SetAndGetCorrectly()

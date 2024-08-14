@@ -33,12 +33,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test
 {
     /// <summary>
-    /// The im gui platform io test class
+    ///     The im gui platform io test class
     /// </summary>
     public class ImGuiPlatformIoTest
     {
         /// <summary>
-        /// Tests that platform create window should be initialized
+        ///     Tests that platform create window should be initialized
         /// </summary>
         [Fact]
         public void PlatformCreateWindow_ShouldBeInitialized()
@@ -48,7 +48,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform destroy window should be initialized
+        ///     Tests that platform destroy window should be initialized
         /// </summary>
         [Fact]
         public void PlatformDestroyWindow_ShouldBeInitialized()
@@ -58,7 +58,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform show window should be initialized
+        ///     Tests that platform show window should be initialized
         /// </summary>
         [Fact]
         public void PlatformShowWindow_ShouldBeInitialized()
@@ -68,7 +68,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform set window pos should be initialized
+        ///     Tests that platform set window pos should be initialized
         /// </summary>
         [Fact]
         public void PlatformSetWindowPos_ShouldBeInitialized()
@@ -78,7 +78,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform get window pos should be initialized
+        ///     Tests that platform get window pos should be initialized
         /// </summary>
         [Fact]
         public void PlatformGetWindowPos_ShouldBeInitialized()
@@ -88,7 +88,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform set window size should be initialized
+        ///     Tests that platform set window size should be initialized
         /// </summary>
         [Fact]
         public void PlatformSetWindowSize_ShouldBeInitialized()
@@ -98,7 +98,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform get window size should be initialized
+        ///     Tests that platform get window size should be initialized
         /// </summary>
         [Fact]
         public void PlatformGetWindowSize_ShouldBeInitialized()
@@ -108,7 +108,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform set window focus should be initialized
+        ///     Tests that platform set window focus should be initialized
         /// </summary>
         [Fact]
         public void PlatformSetWindowFocus_ShouldBeInitialized()
@@ -118,7 +118,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform get window focus should be initialized
+        ///     Tests that platform get window focus should be initialized
         /// </summary>
         [Fact]
         public void PlatformGetWindowFocus_ShouldBeInitialized()
@@ -128,7 +128,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform get window minimized should be initialized
+        ///     Tests that platform get window minimized should be initialized
         /// </summary>
         [Fact]
         public void PlatformGetWindowMinimized_ShouldBeInitialized()
@@ -138,7 +138,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform set window title should be initialized
+        ///     Tests that platform set window title should be initialized
         /// </summary>
         [Fact]
         public void PlatformSetWindowTitle_ShouldBeInitialized()
@@ -148,7 +148,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform set window alpha should be initialized
+        ///     Tests that platform set window alpha should be initialized
         /// </summary>
         [Fact]
         public void PlatformSetWindowAlpha_ShouldBeInitialized()
@@ -158,7 +158,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform update window should be initialized
+        ///     Tests that platform update window should be initialized
         /// </summary>
         [Fact]
         public void PlatformUpdateWindow_ShouldBeInitialized()
@@ -168,7 +168,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform render window should be initialized
+        ///     Tests that platform render window should be initialized
         /// </summary>
         [Fact]
         public void PlatformRenderWindow_ShouldBeInitialized()
@@ -178,7 +178,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform swap buffers should be initialized
+        ///     Tests that platform swap buffers should be initialized
         /// </summary>
         [Fact]
         public void PlatformSwapBuffers_ShouldBeInitialized()
@@ -188,7 +188,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform get window dpi scale should be initialized
+        ///     Tests that platform get window dpi scale should be initialized
         /// </summary>
         [Fact]
         public void PlatformGetWindowDpiScale_ShouldBeInitialized()
@@ -198,7 +198,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform on changed viewport should be initialized
+        ///     Tests that platform on changed viewport should be initialized
         /// </summary>
         [Fact]
         public void PlatformOnChangedViewport_ShouldBeInitialized()
@@ -208,7 +208,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform create vk surface should be initialized
+        ///     Tests that platform create vk surface should be initialized
         /// </summary>
         [Fact]
         public void PlatformCreateVkSurface_ShouldBeInitialized()
@@ -218,7 +218,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that renderer create window should be initialized
+        ///     Tests that renderer create window should be initialized
         /// </summary>
         [Fact]
         public void RendererCreateWindow_ShouldBeInitialized()
@@ -228,7 +228,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that renderer destroy window should be initialized
+        ///     Tests that renderer destroy window should be initialized
         /// </summary>
         [Fact]
         public void RendererDestroyWindow_ShouldBeInitialized()
@@ -238,7 +238,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that renderer set window size should be initialized
+        ///     Tests that renderer set window size should be initialized
         /// </summary>
         [Fact]
         public void RendererSetWindowSize_ShouldBeInitialized()
@@ -248,7 +248,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that renderer render window should be initialized
+        ///     Tests that renderer render window should be initialized
         /// </summary>
         [Fact]
         public void RendererRenderWindow_ShouldBeInitialized()
@@ -258,7 +258,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that renderer swap buffers should be initialized
+        ///     Tests that renderer swap buffers should be initialized
         /// </summary>
         [Fact]
         public void RendererSwapBuffers_ShouldBeInitialized()
@@ -268,7 +268,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that monitors should be initialized
+        ///     Tests that monitors should be initialized
         /// </summary>
         [Fact]
         public void Monitors_ShouldBeInitialized()
@@ -278,7 +278,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that viewports should be initialized
+        ///     Tests that viewports should be initialized
         /// </summary>
         [Fact]
         public void Viewports_ShouldBeInitialized()
@@ -288,7 +288,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform create window set and get returns correct value
+        ///     Tests that platform create window set and get returns correct value
         /// </summary>
         [Fact]
         public void PlatformCreateWindow_SetAndGet_ReturnsCorrectValue()
@@ -300,7 +300,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform destroy window set and get returns correct value
+        ///     Tests that platform destroy window set and get returns correct value
         /// </summary>
         [Fact]
         public void PlatformDestroyWindow_SetAndGet_ReturnsCorrectValue()
@@ -312,7 +312,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform show window set and get returns correct value
+        ///     Tests that platform show window set and get returns correct value
         /// </summary>
         [Fact]
         public void PlatformShowWindow_SetAndGet_ReturnsCorrectValue()
@@ -324,7 +324,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform set window pos set and get returns correct value
+        ///     Tests that platform set window pos set and get returns correct value
         /// </summary>
         [Fact]
         public void PlatformSetWindowPos_SetAndGet_ReturnsCorrectValue()
@@ -336,7 +336,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform get window pos set and get returns correct value
+        ///     Tests that platform get window pos set and get returns correct value
         /// </summary>
         [Fact]
         public void PlatformGetWindowPos_SetAndGet_ReturnsCorrectValue()
@@ -348,7 +348,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform set window size set and get returns correct value
+        ///     Tests that platform set window size set and get returns correct value
         /// </summary>
         [Fact]
         public void PlatformSetWindowSize_SetAndGet_ReturnsCorrectValue()
@@ -360,7 +360,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform get window size set and get returns correct value
+        ///     Tests that platform get window size set and get returns correct value
         /// </summary>
         [Fact]
         public void PlatformGetWindowSize_SetAndGet_ReturnsCorrectValue()
@@ -372,7 +372,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform set window focus set and get returns correct value
+        ///     Tests that platform set window focus set and get returns correct value
         /// </summary>
         [Fact]
         public void PlatformSetWindowFocus_SetAndGet_ReturnsCorrectValue()
@@ -384,7 +384,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform get window focus set and get returns correct value
+        ///     Tests that platform get window focus set and get returns correct value
         /// </summary>
         [Fact]
         public void PlatformGetWindowFocus_SetAndGet_ReturnsCorrectValue()
@@ -396,7 +396,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform get window minimized set and get returns correct value
+        ///     Tests that platform get window minimized set and get returns correct value
         /// </summary>
         [Fact]
         public void PlatformGetWindowMinimized_SetAndGet_ReturnsCorrectValue()
@@ -408,7 +408,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform set window title set and get returns correct value
+        ///     Tests that platform set window title set and get returns correct value
         /// </summary>
         [Fact]
         public void PlatformSetWindowTitle_SetAndGet_ReturnsCorrectValue()
@@ -420,7 +420,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform set window alpha set and get returns correct value
+        ///     Tests that platform set window alpha set and get returns correct value
         /// </summary>
         [Fact]
         public void PlatformSetWindowAlpha_SetAndGet_ReturnsCorrectValue()
@@ -432,7 +432,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform update window set and get returns correct value
+        ///     Tests that platform update window set and get returns correct value
         /// </summary>
         [Fact]
         public void PlatformUpdateWindow_SetAndGet_ReturnsCorrectValue()
@@ -444,7 +444,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform render window set and get returns correct value
+        ///     Tests that platform render window set and get returns correct value
         /// </summary>
         [Fact]
         public void PlatformRenderWindow_SetAndGet_ReturnsCorrectValue()
@@ -456,7 +456,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform swap buffers set and get returns correct value
+        ///     Tests that platform swap buffers set and get returns correct value
         /// </summary>
         [Fact]
         public void PlatformSwapBuffers_SetAndGet_ReturnsCorrectValue()
@@ -468,7 +468,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform get window dpi scale set and get returns correct value
+        ///     Tests that platform get window dpi scale set and get returns correct value
         /// </summary>
         [Fact]
         public void PlatformGetWindowDpiScale_SetAndGet_ReturnsCorrectValue()
@@ -480,7 +480,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform on changed viewport set and get returns correct value
+        ///     Tests that platform on changed viewport set and get returns correct value
         /// </summary>
         [Fact]
         public void PlatformOnChangedViewport_SetAndGet_ReturnsCorrectValue()
@@ -492,7 +492,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform create vk surface set and get returns correct value
+        ///     Tests that platform create vk surface set and get returns correct value
         /// </summary>
         [Fact]
         public void PlatformCreateVkSurface_SetAndGet_ReturnsCorrectValue()
@@ -504,7 +504,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that renderer create window set and get returns correct value
+        ///     Tests that renderer create window set and get returns correct value
         /// </summary>
         [Fact]
         public void RendererCreateWindow_SetAndGet_ReturnsCorrectValue()
@@ -516,7 +516,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that renderer destroy window set and get returns correct value
+        ///     Tests that renderer destroy window set and get returns correct value
         /// </summary>
         [Fact]
         public void RendererDestroyWindow_SetAndGet_ReturnsCorrectValue()
@@ -528,7 +528,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that renderer set window size set and get returns correct value
+        ///     Tests that renderer set window size set and get returns correct value
         /// </summary>
         [Fact]
         public void RendererSetWindowSize_SetAndGet_ReturnsCorrectValue()
@@ -540,7 +540,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that renderer render window set and get returns correct value
+        ///     Tests that renderer render window set and get returns correct value
         /// </summary>
         [Fact]
         public void RendererRenderWindow_SetAndGet_ReturnsCorrectValue()
@@ -552,7 +552,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that renderer swap buffers set and get returns correct value
+        ///     Tests that renderer swap buffers set and get returns correct value
         /// </summary>
         [Fact]
         public void RendererSwapBuffers_SetAndGet_ReturnsCorrectValue()
@@ -564,7 +564,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that monitors set and get returns correct value
+        ///     Tests that monitors set and get returns correct value
         /// </summary>
         [Fact]
         public void Monitors_SetAndGet_ReturnsCorrectValue()
@@ -576,7 +576,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that viewports set and get returns correct value
+        ///     Tests that viewports set and get returns correct value
         /// </summary>
         [Fact]
         public void Viewports_SetAndGet_ReturnsCorrectValue()

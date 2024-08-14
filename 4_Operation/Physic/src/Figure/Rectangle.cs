@@ -78,14 +78,14 @@ namespace Alis.Core.Physic.Figure
         {
             ValidateWidth(width);
             ValidateHeight(height);
-
+            
             Vertices rectangleVertices = Polygon.CreateRectangle(width / 2, height / 2);
-
+            
             ValidateVertices(rectangleVertices);
-
+            
             AddFixture(new PolygonShape(rectangleVertices, 1));
         }
-
+        
         /// <summary>
         ///     Validates the width using the specified width
         /// </summary>
@@ -98,7 +98,7 @@ namespace Alis.Core.Physic.Figure
                 throw new ArgumentOutOfRangeException(nameof(width), @"Width must be more than 0");
             }
         }
-
+        
         /// <summary>
         ///     Validates the height using the specified height
         /// </summary>
@@ -111,7 +111,7 @@ namespace Alis.Core.Physic.Figure
                 throw new ArgumentOutOfRangeException(nameof(height), @"Height must be more than 0");
             }
         }
-
+        
         /// <summary>
         ///     Validates the vertices using the specified vertices
         /// </summary>

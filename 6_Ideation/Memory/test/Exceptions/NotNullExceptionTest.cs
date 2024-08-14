@@ -45,10 +45,10 @@ namespace Alis.Core.Aspect.Memory.Test.Exceptions
         {
             // Arrange
             const string message = "Test message";
-
+            
             // Act
             NotNullException exception = new NotNullException(message);
-
+            
             // Assert
             Assert.Equal(message, exception.Message);
         }

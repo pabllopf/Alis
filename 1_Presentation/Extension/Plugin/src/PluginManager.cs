@@ -29,11 +29,9 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Ecs.System.Manager;
 
@@ -46,20 +44,20 @@ namespace Alis.Extension.Plugin
     public class PluginManager : AManager, IDisposable, IPluginManager
     {
         /// <summary>
+        ///     The platform detector
+        /// </summary>
+        private readonly IPlatformDetector _platformDetector;
+        
+        /// <summary>
         ///     The loaded assemblies
         /// </summary>
         internal readonly List<Assembly> LoadedAssemblies;
-
-        /// <summary>
-        /// The platform detector
-        /// </summary>
-        private readonly IPlatformDetector _platformDetector;
-
+        
         /// <summary>
         ///     The loaded plugins
         /// </summary>
         internal List<IPlugin> LoadedPlugins;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="PluginManager" /> class
         /// </summary>
@@ -71,7 +69,7 @@ namespace Alis.Extension.Plugin
         }
         
         /// <summary>
-        /// Initializes a new instance of the <see cref="PluginManager"/> class
+        ///     Initializes a new instance of the <see cref="PluginManager" /> class
         /// </summary>
         /// <param name="platformDetector">The platform detector</param>
         public PluginManager(IPlatformDetector platformDetector)
@@ -80,7 +78,7 @@ namespace Alis.Extension.Plugin
             LoadedAssemblies = new List<Assembly>();
             _platformDetector = platformDetector;
         }
-
+        
         /// <summary>
         ///     Disposes this instance
         /// </summary>
@@ -88,7 +86,7 @@ namespace Alis.Extension.Plugin
         {
             UnloadPlugins();
         }
-
+        
         /// <summary>
         ///     Loads the plugins using the specified plugins directory
         /// </summary>
@@ -97,7 +95,7 @@ namespace Alis.Extension.Plugin
         {
             string platformFolder = GetPlatformFolder();
             string platformPluginsDirectory = GetPlatformPluginsDirectory(pluginsDirectory, platformFolder);
-
+            
             if (ValidatePluginsDirectory(platformPluginsDirectory))
             {
                 IEnumerable<string> pluginFiles = GetPluginFiles(platformPluginsDirectory);
@@ -108,7 +106,7 @@ namespace Alis.Extension.Plugin
                 throw new DirectoryNotFoundException("Plugins directory not found.");
             }
         }
-
+        
         /// <summary>
         ///     Gets the platform plugins directory
         /// </summary>
@@ -122,7 +120,7 @@ namespace Alis.Extension.Plugin
             Logger.Info("directory: " + platformPluginsDirectory);
             return platformPluginsDirectory;
         }
-
+        
         /// <summary>
         ///     Loads the plugins from the specified files
         /// </summary>
@@ -134,9 +132,9 @@ namespace Alis.Extension.Plugin
                 LoadPluginFromFile(pluginFile);
             }
         }
-
+        
         /// <summary>
-        /// Gets the platform folder
+        ///     Gets the platform folder
         /// </summary>
         /// <exception cref="NotSupportedException">Unsupported platform. Plugins will not be loaded.</exception>
         /// <returns>The string</returns>
@@ -151,7 +149,7 @@ namespace Alis.Extension.Plugin
             {
                 return "windows";
             }
-
+            
             if (_platformDetector.IsOSX())
             {
                 return "osx";
@@ -161,40 +159,34 @@ namespace Alis.Extension.Plugin
             {
                 return "ios";
             }
-
+            
             if (_platformDetector.IsAndroid())
             {
                 return "android";
             }
-
+            
             throw new NotSupportedException("Unsupported platform. Plugins will not be loaded.");
         }
         
         /// <summary>
-        /// Describes whether this instance is running on android
+        ///     Describes whether this instance is running on android
         /// </summary>
         /// <returns>The bool</returns>
-        public bool IsRunningOnAndroid()
-        {
-            return _platformDetector.IsAndroid();
-        }
+        public bool IsRunningOnAndroid() => _platformDetector.IsAndroid();
         
         /// <summary>
-        /// Describes whether this instance is running oni os
+        ///     Describes whether this instance is running oni os
         /// </summary>
         /// <returns>The bool</returns>
-        public bool IsRunningOniOS()
-        {
-            return _platformDetector.IsiOS();
-        }
-
+        public bool IsRunningOniOS() => _platformDetector.IsiOS();
+        
         /// <summary>
         ///     Validates the plugins directory using the specified directory
         /// </summary>
         /// <param name="directory">The directory</param>
         /// <returns>True if the directory exists, false otherwise</returns>
         internal static bool ValidatePluginsDirectory(string directory) => Directory.Exists(directory);
-
+        
         /// <summary>
         ///     Gets the plugin files using the specified directory
         /// </summary>
@@ -203,7 +195,7 @@ namespace Alis.Extension.Plugin
         internal IEnumerable<string> GetPluginFiles(string directory) => Directory.GetFiles(directory)
             .Where(IsPluginFile)
             .ToArray();
-
+        
         /// <summary>
         ///     Loads the plugin from file using the specified plugin file
         /// </summary>
@@ -213,7 +205,7 @@ namespace Alis.Extension.Plugin
             Assembly assembly = LoadAssembly(pluginFile);
             InstantiatePlugins(assembly);
         }
-
+        
         /// <summary>
         ///     Loads the assembly from the specified file
         /// </summary>
@@ -226,7 +218,7 @@ namespace Alis.Extension.Plugin
             LoadedAssemblies.Add(assembly);
             return assembly;
         }
-
+        
         /// <summary>
         ///     Instantiates the plugins from the specified assembly
         /// </summary>
@@ -234,14 +226,14 @@ namespace Alis.Extension.Plugin
         internal void InstantiatePlugins(Assembly assembly)
         {
             Type[] pluginTypes = GetPluginTypes(assembly);
-
+            
             foreach (Type type in pluginTypes)
             {
                 IPlugin plugin = CreatePluginInstance(type);
                 LoadedPlugins.Add(plugin);
             }
         }
-
+        
         /// <summary>
         ///     Gets the plugin types from the specified assembly
         /// </summary>
@@ -253,15 +245,15 @@ namespace Alis.Extension.Plugin
                 .Where(type => typeof(IPlugin).IsAssignableFrom(type))
                 .ToArray();
         }
-
+        
         /// <summary>
         ///     Creates a plugin instance from the specified type
         /// </summary>
         /// <param name="type">The type</param>
         /// <returns>A plugin instance</returns>
         internal IPlugin CreatePluginInstance(Type type) => (IPlugin) Activator.CreateInstance(type);
-
-
+        
+        
         /// <summary>
         ///     Describes whether this instance is plugin file
         /// </summary>
@@ -272,7 +264,7 @@ namespace Alis.Extension.Plugin
             string extension = Path.GetExtension(filePath);
             return extension == ".dll" || extension == ".so" || extension == ".dylib";
         }
-
+        
         /// <summary>
         ///     Unloads the plugins
         /// </summary>
@@ -282,7 +274,7 @@ namespace Alis.Extension.Plugin
             {
                 plugin.Dispose();
             }
-
+            
             LoadedPlugins.Clear();
             LoadedAssemblies.Clear();
         }
@@ -290,19 +282,17 @@ namespace Alis.Extension.Plugin
         /// <summary>
         ///     Initializes this instance
         /// </summary>
-        
-        public void Initialize() 
+        public void Initialize()
         {
             foreach (IPlugin plugin in LoadedPlugins)
             {
                 plugin.Initialize();
             }
         }
-
+        
         /// <summary>
         ///     Updates this instance
         /// </summary>
-
         public void Update()
         {
             foreach (IPlugin plugin in LoadedPlugins)
@@ -310,11 +300,10 @@ namespace Alis.Extension.Plugin
                 plugin.Update();
             }
         }
-
+        
         /// <summary>
         ///     Renders this instance
         /// </summary>
-
         public void Render()
         {
             foreach (IPlugin plugin in LoadedPlugins)
@@ -322,11 +311,10 @@ namespace Alis.Extension.Plugin
                 plugin.Render();
             }
         }
-
+        
         /// <summary>
         ///     Shutdowns this instance
         /// </summary>
-        
         public void Shutdown()
         {
             foreach (IPlugin plugin in LoadedPlugins)

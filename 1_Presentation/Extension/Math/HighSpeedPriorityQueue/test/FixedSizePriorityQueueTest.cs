@@ -46,7 +46,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             FixedSizePriorityQueue<string, int> queue = new FixedSizePriorityQueue<string, int>(5);
             Assert.Equal(5, queue.MaxSize);
         }
-
+        
         /// <summary>
         ///     Tests that reset node allows node re enqueue
         /// </summary>
@@ -59,7 +59,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             queue.Enqueue(node, 2);
             Assert.Equal(5, queue.MaxSize);
         }
-
+        
         /// <summary>
         ///     Tests that enqueue adds items until max size
         /// </summary>
@@ -71,7 +71,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             queue.Enqueue("Item2", 2);
             Assert.Equal(2, queue.MaxSize);
         }
-
+        
         /// <summary>
         ///     Tests that enqueue exceeding max size throws exception
         /// </summary>
@@ -83,7 +83,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             queue.Enqueue("Item2", 2);
             Assert.Throws<InvalidOperationException>(() => queue.Enqueue("Item3", 3));
         }
-
+        
         /// <summary>
         ///     Tests that dequeue returns items in priority order
         /// </summary>

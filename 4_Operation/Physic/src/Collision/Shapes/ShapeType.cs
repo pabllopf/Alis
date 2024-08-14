@@ -38,27 +38,27 @@ namespace Alis.Core.Physic.Collision.Shapes
         ///     The unknown shape type
         /// </summary>
         Unknown = -1,
-
+        
         /// <summary>
         ///     The circle shape type
         /// </summary>
         Circle = 0,
-
+        
         /// <summary>
         ///     The edge shape type
         /// </summary>
         Edge = 1,
-
+        
         /// <summary>
         ///     The polygon shape type
         /// </summary>
         Polygon = 2,
-
+        
         /// <summary>
         ///     The chain shape type
         /// </summary>
         Chain = 3,
-
+        
         /// <summary>
         ///     The type count shape type
         /// </summary>

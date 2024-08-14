@@ -42,12 +42,12 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     The dev index
         /// </summary>
         public readonly int dev_index;
-
+        
         /// <summary>
         ///     The drm fd
         /// </summary>
         public readonly int drm_fd;
-
+        
         /// <summary>
         ///     Refers to a gbm_device*
         /// </summary>

@@ -51,10 +51,10 @@ namespace Alis.Test.Core.Ecs.Component.Render
             Settings settings = new Settings();
             Context context = new Context(new Settings());
             Image image = new Image();
-
+            
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
-
+        
         /// <summary>
         ///     Tests that image constructor with parameters valid input
         /// </summary>
@@ -66,10 +66,10 @@ namespace Alis.Test.Core.Ecs.Component.Render
             Context context = new Context(new Settings());
             string path = "dino_assets.png";
             Image image = new Image(path);
-
+            
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
-
+        
         /// <summary>
         ///     Tests that image path property valid input
         /// </summary>
@@ -81,10 +81,10 @@ namespace Alis.Test.Core.Ecs.Component.Render
             string path = "dino_assets.png";
             Image image = new Image();
             image.Path = path;
-
+            
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
-
+        
         /// <summary>
         ///     Tests that image texture property valid input
         /// </summary>
@@ -97,10 +97,10 @@ namespace Alis.Test.Core.Ecs.Component.Render
             string path = "dino_assets.png";
             Image image = new Image(path);
             IntPtr texture = image.Texture;
-
+            
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
-
+        
         /// <summary>
         ///     Tests that image size property valid input
         /// </summary>
@@ -113,10 +113,10 @@ namespace Alis.Test.Core.Ecs.Component.Render
             string path = "dino_assets.png";
             Image image = new Image(path);
             Vector2 size = image.Size;
-
+            
             // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
-
+        
         /// <summary>
         ///     Tests that path set value should change value
         /// </summary>
@@ -126,7 +126,7 @@ namespace Alis.Test.Core.Ecs.Component.Render
             VideoGame videoGame = new VideoGame();
             Image image = new Image("dino_assets.png");
             Assert.Equal("dino_assets.png", image.NameFile);
-
+            
             image.Path = "dino_assets.png";
             Assert.Equal("dino_assets.png", image.NameFile);
         }

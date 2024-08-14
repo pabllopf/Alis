@@ -46,31 +46,33 @@ namespace Alis.App.Engine.Windows
     public class SceneWindow : IWindow
     {
         /// <summary>
-        /// The name window
+        ///     The name window
         /// </summary>
         private const string NameWindow = "Scene";
+        
         /// <summary>
-        /// The pixel ptr
+        ///     The pixel ptr
         /// </summary>
         private IntPtr pixelPtr;
+        
         /// <summary>
-        /// The textureopen gl id
+        ///     The textureopen gl id
         /// </summary>
         private uint textureopenGlId;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="SceneWindow" /> class
         /// </summary>
         /// <param name="spaceWork">The space work</param>
         public SceneWindow(SpaceWork spaceWork) => SpaceWork = spaceWork;
-
+        
         /// <summary>
         ///     Gets the value of the space work
         /// </summary>
         public SpaceWork SpaceWork { get; }
-
+        
         /// <summary>
-        /// Initializes this instance
+        ///     Initializes this instance
         /// </summary>
         public void Initialize()
         {
@@ -80,13 +82,13 @@ namespace Alis.App.Engine.Windows
                 WindowSettings.WindowResizable | WindowSettings.WindowHidden );
             SpaceWork.rendererGame = Sdl.CreateRenderer(SpaceWork.windowGame, -1,
                 Renderers.SdlRendererAccelerated | Renderers.SdlRendererTargetTexture);*/
-
+            
             SpaceWork.windowGame = SpaceWork.VideoGame.Context.GraphicManager.Window;
             SpaceWork.rendererGame = SpaceWork.VideoGame.Context.GraphicManager.Renderer;
         }
-
+        
         /// <summary>
-        /// Starts this instance
+        ///     Starts this instance
         /// </summary>
         public void Start()
         {
@@ -98,7 +100,7 @@ namespace Alis.App.Engine.Windows
             Gl.GlTexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba8, 800, 600, 0, PixelFormat.Rgba, PixelType.UnsignedByte, pixelPtr);
             Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, TextureParameter.Linear);
             Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, TextureParameter.Linear);
-
+            
             Console.WriteLine($"Gl Version: {Gl.GlGetString(StringName.Version)}");
             Console.WriteLine($"Vendor: {Gl.GlGetString(StringName.Vendor)}");
             Console.WriteLine($"Renderer: {Gl.GlGetString(StringName.Renderer)}");
@@ -106,23 +108,23 @@ namespace Alis.App.Engine.Windows
             Console.WriteLine($"SDL2 Version: {Sdl.GetVersion().major}.{Sdl.GetVersion().minor}.{Sdl.GetVersion().patch}");
             Console.WriteLine($"Imgui Version: {ImGui.GetVersion()}");
         }
-
+        
         /// <summary>
         ///     Renders this instance
         /// </summary>
         public void Render()
         {
             SpaceWork.VideoGame.RunPreview();
-
+            
             RectangleI rect = new RectangleI(0, 0, 800, 600);
             Sdl.RenderReadPixels(SpaceWork.rendererGame, ref rect, Sdl.PixelFormatABgr8888, pixelPtr, 800 * 4);
-
+            
             Gl.GlBindTexture(TextureTarget.Texture2D, textureopenGlId);
             Gl.GlTexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba8, 800, 600, 0, PixelFormat.Rgba, PixelType.UnsignedByte, pixelPtr);
             Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, TextureParameter.Linear);
             Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, TextureParameter.Linear);
             Gl.GlBindTexture(TextureTarget.Texture2D, 0);
-
+            
             if (ImGui.Begin("Scene Sample"))
             {
                 ImGui.Image(
@@ -133,7 +135,7 @@ namespace Alis.App.Engine.Windows
                     new Vector4(1, 1, 1, 1),
                     new Vector4(255, 0, 0, 255));
             }
-
+            
             ImGui.End();
         }
     }

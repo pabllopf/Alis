@@ -45,7 +45,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         public void Matrix3X3_Constructor_ShouldSetValuesCorrectly()
         {
             Matrix3X3 matrix = new Matrix3X3(new Vector3(1.0f, 2.0f, 3.0f), new Vector3(4.0f, 5.0f, 6.0f), new Vector3(7.0f, 8.0f, 9.0f));
-
+            
             Assert.Equal(1.0f, matrix.Ex.X);
             Assert.Equal(2.0f, matrix.Ex.Y);
             Assert.Equal(3.0f, matrix.Ex.Z);
@@ -56,7 +56,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Assert.Equal(8.0f, matrix.Ez.Y);
             Assert.Equal(9.0f, matrix.Ez.Z);
         }
-
+        
         /// <summary>
         ///     Tests that matrix 3 x 3 solve 33 should return correct result
         /// </summary>
@@ -65,12 +65,12 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         {
             Matrix3X3 matrix = new Matrix3X3(new Vector3(1.0f, 2.0f, 3.0f), new Vector3(4.0f, 5.0f, 6.0f), new Vector3(7.0f, 8.0f, 9.0f));
             Vector3 result = matrix.Solve33(new Vector3(1.0f, 2.0f, 3.0f));
-
+            
             Assert.Equal(0f, result.X);
             Assert.Equal(0.0f, result.Y);
             Assert.Equal(0.0f, result.Z);
         }
-
+        
         /// <summary>
         ///     Tests that matrix 3 x 3 solve 22 should return correct result
         /// </summary>
@@ -79,11 +79,11 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         {
             Matrix3X3 matrix = new Matrix3X3(new Vector3(1.0f, 2.0f, 3.0f), new Vector3(4.0f, 5.0f, 6.0f), new Vector3(7.0f, 8.0f, 9.0f));
             Vector2 result = matrix.Solve22(new Vector2(1.0f, 2.0f));
-
+            
             Assert.Equal(1.0f, result.X);
             Assert.Equal(0.0f, result.Y);
         }
-
+        
         /// <summary>
         ///     Tests that matrix 3 x 3 get inverse 22 should return correct result
         /// </summary>
@@ -93,7 +93,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Matrix3X3 matrix = new Matrix3X3(new Vector3(1.0f, 2.0f, 3.0f), new Vector3(4.0f, 5.0f, 6.0f), new Vector3(7.0f, 8.0f, 9.0f));
             Matrix3X3 result = new Matrix3X3();
             matrix.GetInverse22(ref result);
-
+            
             Assert.Equal(-1.66, result.Ex.X, 0.1f);
             Assert.Equal(1.3f, result.Ex.Y, 0.2f);
             Assert.Equal(0.0f, result.Ex.Z, 0.1f);
@@ -101,7 +101,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Assert.Equal(-0.33f, result.Ey.Y, 0.1f);
             Assert.Equal(0.0f, result.Ey.Z, 0.1f);
         }
-
+        
         /// <summary>
         ///     Tests that matrix 3 x 3 get sym inverse 33 should return correct result
         /// </summary>
@@ -111,7 +111,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Matrix3X3 matrix = new Matrix3X3(new Vector3(1.0f, 2.0f, 3.0f), new Vector3(4.0f, 5.0f, 6.0f), new Vector3(7.0f, 8.0f, 9.0f));
             Matrix3X3 result = new Matrix3X3();
             matrix.GetSymInverse33(ref result);
-
+            
             Assert.Equal(0.0f, result.Ex.X);
             Assert.Equal(0.0f, result.Ex.Y);
             Assert.Equal(0.0f, result.Ex.Z);
@@ -122,7 +122,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Assert.Equal(0f, result.Ez.Y);
             Assert.Equal(0f, result.Ez.Z);
         }
-
+        
         /// <summary>
         ///     Tests that matrix 3 x 3 v 2 constructor should set values correctly
         /// </summary>
@@ -130,7 +130,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         public void Matrix3X3_v2_Constructor_ShouldSetValuesCorrectly()
         {
             Matrix3X3 matrix = new Matrix3X3(1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f, 7.0f, 8.0f, 9.0f);
-
+            
             Assert.Equal(1.0f, matrix.Ex.X);
             Assert.Equal(2.0f, matrix.Ex.Y);
             Assert.Equal(3.0f, matrix.Ex.Z);
@@ -141,7 +141,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Assert.Equal(8.0f, matrix.Ez.Y);
             Assert.Equal(9.0f, matrix.Ez.Z);
         }
-
+        
         /// <summary>
         ///     Tests that matrix 3 x 3 v 2 get sym inverse 33 should return correct result
         /// </summary>
@@ -151,7 +151,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Matrix3X3 matrix = new Matrix3X3(new Vector3(1.0f, 2.0f, 3.0f), new Vector3(4.0f, 5.0f, 6.0f), new Vector3(7.0f, 8.0f, 9.0f));
             Matrix3X3 result = new Matrix3X3();
             matrix.GetSymInverse33(ref result);
-
+            
             Assert.Equal(0f, result.Ex.X);
             Assert.Equal(0.0f, result.Ex.Y);
             Assert.Equal(0f, result.Ex.Z);
@@ -162,7 +162,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Assert.Equal(0f, result.Ez.Y);
             Assert.Equal(0f, result.Ez.Z);
         }
-
+        
         /// <summary>
         ///     Tests that matrix 3 x 3 get sym inverse 33 should handle zero determinant
         /// </summary>
@@ -175,7 +175,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             matrix.Ey = new Vector3(4, 5, 6);
             matrix.Ez = new Vector3(7, 8, 9);
             matrix.GetSymInverse33(ref result);
-
+            
             Assert.Equal(0.0f, result.Ex.X);
             Assert.Equal(0.0f, result.Ex.Y);
             Assert.Equal(0.0f, result.Ex.Z);
@@ -186,7 +186,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Assert.Equal(0.0f, result.Ez.Y);
             Assert.Equal(0.0f, result.Ez.Z);
         }
-
+        
         /// <summary>
         ///     Tests that matrix 3 x 3 solve 33 should return correct result when determinant is not zero
         /// </summary>
@@ -196,12 +196,12 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Matrix3X3 matrix = new Matrix3X3(new Vector3(1.0f, 2.0f, 3.0f), new Vector3(4.0f, 5.0f, 6.0f), new Vector3(7.0f, 8.0f, 9.0f));
             Vector3 b = new Vector3(1.0f, 2.0f, 3.0f);
             Vector3 result = matrix.Solve33(b);
-
+            
             Assert.Equal(0f, result.X);
             Assert.Equal(0.0f, result.Y);
             Assert.Equal(0.0f, result.Z);
         }
-
+        
         /// <summary>
         ///     Tests that matrix 3 x 3 solve 33 should return zero vector when determinant is zero
         /// </summary>
@@ -216,12 +216,12 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             };
             Vector3 b = new Vector3(1.0f, 2.0f, 3.0f);
             Vector3 result = matrix.Solve33(b);
-
+            
             Assert.Equal(0.0f, result.X);
             Assert.Equal(0.0f, result.Y);
             Assert.Equal(0.0f, result.Z);
         }
-
+        
         /// <summary>
         ///     Tests that matrix 3 x 3 solve 33 should return correct result with negative one
         /// </summary>
@@ -230,12 +230,12 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         {
             Vector3 b = new Vector3(-1.0f, -1.0f, -1.0f);
             Matrix3X3 matrix = new Matrix3X3(new Vector3(1, 2, 3), new Vector3(4, 5, 6), new Vector3(7, 8, 9));
-
+            
             Vector3 result = matrix.Solve33(b);
-
+            
             Assert.Equal(0f, result.X);
         }
-
+        
         /// <summary>
         ///     Tests that matrix 3 x 3 solve 33 should return na n with infinity
         /// </summary>
@@ -244,14 +244,14 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         {
             Vector3 b = new Vector3(float.PositiveInfinity, 0.0f, 0.0f);
             Matrix3X3 matrix = new Matrix3X3(new Vector3(1, 2, 3), new Vector3(4, 5, 6), new Vector3(7, 8, 9));
-
+            
             Vector3 result = matrix.Solve33(b);
-
+            
             Assert.True(float.IsNaN(result.X));
             Assert.True(float.IsNaN(result.Y));
             Assert.True(float.IsNaN(result.Z));
         }
-
+        
         /// <summary>
         ///     Tests that matrix 3 x 3 solve 33 should return na n with na n
         /// </summary>
@@ -260,14 +260,14 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         {
             Vector3 b = new Vector3(float.NaN, 0.0f, 0.0f);
             Matrix3X3 matrix = new Matrix3X3(new Vector3(1, 2, 3), new Vector3(4, 5, 6), new Vector3(7, 8, 9));
-
+            
             Vector3 result = matrix.Solve33(b);
-
+            
             Assert.True(float.IsNaN(result.X));
             Assert.True(float.IsNaN(result.Y));
             Assert.True(float.IsNaN(result.Z));
         }
-
+        
         /// <summary>
         ///     Tests that matrix 3 x 3 solve 33 should return correct result with max value
         /// </summary>
@@ -276,13 +276,13 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         {
             Vector3 b = new Vector3(float.MaxValue, 0.0f, 0.0f);
             Matrix3X3 matrix = new Matrix3X3(new Vector3(1, 2, 3), new Vector3(4, 5, 6), new Vector3(7, 8, 9));
-
+            
             Vector3 result = matrix.Solve33(b);
-
+            
             // Assert with your expected result
             Assert.Equal(float.NaN, result.X);
         }
-
+        
         /// <summary>
         ///     Tests that matrix 3 x 3 solve 33 should return correct result with negative max value
         /// </summary>
@@ -291,13 +291,13 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         {
             Vector3 b = new Vector3(-float.MaxValue, 0.0f, 0.0f);
             Matrix3X3 matrix = new Matrix3X3(new Vector3(1, 2, 3), new Vector3(4, 5, 6), new Vector3(7, 8, 9));
-
+            
             Vector3 result = matrix.Solve33(b);
-
+            
             // Assert with your expected result
             Assert.Equal(float.NaN, result.X);
         }
-
+        
         /// <summary>
         ///     Tests that matrix 3 x 3 solve 33 should return correct result with min value
         /// </summary>
@@ -306,13 +306,13 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         {
             Vector3 b = new Vector3(float.MinValue, 0.0f, 0.0f);
             Matrix3X3 matrix = new Matrix3X3(new Vector3(1, 2, 3), new Vector3(4, 5, 6), new Vector3(7, 8, 9));
-
+            
             Vector3 result = matrix.Solve33(b);
-
+            
             // Assert with your expected result
             Assert.Equal(float.NaN, result.X);
         }
-
+        
         /// <summary>
         ///     Tests that test solve 33
         /// </summary>
@@ -324,15 +324,15 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
                 new Vector3(4, 5, 6),
                 new Vector3(7, 8, 9)
             );
-
+            
             Vector3 b = new Vector3(1, 2, 3);
             Vector3 result = matrix.Solve33(b);
-
+            
             Assert.Equal(0, result.X);
             Assert.Equal(0, result.Y);
             Assert.Equal(0, result.Z);
         }
-
+        
         /// <summary>
         ///     Tests that test get sym inverse 33
         /// </summary>
@@ -344,15 +344,15 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
                 new Vector3(4, 5, 6),
                 new Vector3(7, 8, 9)
             );
-
+            
             Matrix3X3 result = new Matrix3X3();
             matrix.GetSymInverse33(ref result);
-
+            
             Assert.Equal(new Vector3(0, 0, 0), result.Ex);
             Assert.Equal(new Vector3(0, 0, 0), result.Ey);
             Assert.Equal(new Vector3(0, 0, 0), result.Ez);
         }
-
+        
         /// <summary>
         ///     Tests that test get sym inverse 33 with zero determinant
         /// </summary>
@@ -364,15 +364,15 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
                 new Vector3(0, 0, 0),
                 new Vector3(0, 0, 1)
             );
-
+            
             Matrix3X3 result = new Matrix3X3();
             matrix.GetSymInverse33(ref result);
-
+            
             Assert.Equal(new Vector3(0, 0, 0), result.Ex);
             Assert.Equal(new Vector3(0, 0, 0), result.Ey);
             Assert.Equal(new Vector3(0, 0, 0), result.Ez);
         }
-
+        
         /// <summary>
         ///     Tests that test get sym inverse 33 with non zero determinant
         /// </summary>
@@ -384,16 +384,16 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
                 new Vector3(4, 5, 6),
                 new Vector3(7, 8, 9)
             );
-
+            
             Matrix3X3 result = new Matrix3X3();
             matrix.GetSymInverse33(ref result);
-
-
+            
+            
             Assert.Equal(new Vector3(0, 0, 0), result.Ex);
             Assert.Equal(new Vector3(0, 0, 0), result.Ey);
             Assert.Equal(new Vector3(0, 0, 0), result.Ez);
         }
-
+        
         /// <summary>
         ///     Tests that test get sym inverse 33 with negative values
         /// </summary>
@@ -405,16 +405,16 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
                 new Vector3(-4, -5, -6),
                 new Vector3(-7, -8, -9)
             );
-
+            
             Matrix3X3 result = new Matrix3X3();
             matrix.GetSymInverse33(ref result);
-
-
+            
+            
             Assert.Equal(new Vector3(0, 0, 0), result.Ex);
             Assert.Equal(new Vector3(0, 0, 0), result.Ey);
             Assert.Equal(new Vector3(0, 0, 0), result.Ez);
         }
-
+        
         /// <summary>
         ///     Tests that test solve 33 with zero determinant
         /// </summary>
@@ -426,13 +426,13 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
                 new Vector3(0, 0, 0),
                 new Vector3(0, 0, 1)
             );
-
+            
             Vector3 b = new Vector3(1, 2, 3);
             Vector3 result = matrix.Solve33(b);
-
+            
             Assert.Equal(new Vector3(0, 0, 0), result);
         }
-
+        
         /// <summary>
         ///     Tests that test solve 33 with negative values
         /// </summary>
@@ -444,14 +444,14 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
                 new Vector3(-4, -5, -6),
                 new Vector3(-7, -8, -9)
             );
-
+            
             Vector3 b = new Vector3(1, 2, 3);
             Vector3 result = matrix.Solve33(b);
-
-
+            
+            
             Assert.Equal(new Vector3(0, 0, 0), result);
         }
-
+        
         /// <summary>
         ///     Tests that test solve 33 with non zero determinant
         /// </summary>
@@ -463,14 +463,14 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
                 new Vector3(4, 5, 6),
                 new Vector3(7, 8, 9)
             );
-
+            
             Vector3 b = new Vector3(1, 2, 3);
             Vector3 result = matrix.Solve33(b);
-
-
+            
+            
             Assert.Equal(new Vector3(0, 0, 0), result);
         }
-
+        
         /// <summary>
         ///     Tests that test get sym inverse 33 v 3 with zero determinant
         /// </summary>
@@ -482,15 +482,15 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
                 new Vector3(0, 0, 0),
                 new Vector3(0, 0, 1)
             );
-
+            
             Matrix3X3 result = new Matrix3X3();
             matrix.GetSymInverse33(ref result);
-
+            
             Assert.Equal(new Vector3(0, 0, 0), result.Ex);
             Assert.Equal(new Vector3(0, 0, 0), result.Ey);
             Assert.Equal(new Vector3(0, 0, 0), result.Ez);
         }
-
+        
         /// <summary>
         ///     Tests that test get sym inverse 33 v 3 with non zero determinant
         /// </summary>
@@ -502,16 +502,16 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
                 new Vector3(4, 5, 6),
                 new Vector3(7, 8, 9)
             );
-
+            
             Matrix3X3 result = new Matrix3X3();
             matrix.GetSymInverse33(ref result);
-
+            
             // Aquí debes reemplazar los valores esperados con los valores correctos.
             Assert.Equal(new Vector3(0, 0, 0), result.Ex);
             Assert.Equal(new Vector3(0, 0, 0), result.Ey);
             Assert.Equal(new Vector3(0, 0, 0), result.Ez);
         }
-
+        
         /// <summary>
         ///     Tests that test get sym inverse 33 v 3 with negative values
         /// </summary>
@@ -523,10 +523,10 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
                 new Vector3(-4, -5, -6),
                 new Vector3(-7, -8, -9)
             );
-
+            
             Matrix3X3 result = new Matrix3X3();
             matrix.GetSymInverse33(ref result);
-
+            
             // Aquí debes reemplazar los valores esperados con los valores correctos.
             Assert.Equal(new Vector3(0, 0, 0), result.Ex);
             Assert.Equal(new Vector3(0, 0, 0), result.Ey);

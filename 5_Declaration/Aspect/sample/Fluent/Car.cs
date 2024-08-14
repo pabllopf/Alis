@@ -49,28 +49,28 @@ namespace Alis.Core.Aspect.Sample.Fluent
             Model = model;
             Color = color;
         }
-
+        
         /// <summary>
         ///     Gets or sets the value of the name
         /// </summary>
         public string Name { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the model
         /// </summary>
         public string Model { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the color
         /// </summary>
         public string Color { get; set; }
-
+        
         /// <summary>
         ///     Builders this instance
         /// </summary>
         /// <returns>The car builder</returns>
         public CarBuilder Builder() => new CarBuilder();
-
+        
         /// <summary>
         ///     Creates
         /// </summary>

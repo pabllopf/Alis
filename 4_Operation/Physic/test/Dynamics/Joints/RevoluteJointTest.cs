@@ -48,24 +48,24 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void RevoluteJointConstructorTest()
         {
             ContactManager contactManager = new ContactManager(new BroadPhaseImplementation());
-
+            
             // Arrange
             Body bodyA = new Body(new Vector2(0, 0), new Vector2(0, 0));
             Body bodyB = new Body(new Vector2(1, 1), new Vector2(1, 1));
             Vector2 anchorA = new Vector2(0.5f, 0.5f);
             Vector2 anchorB = new Vector2(1.5f, 1.5f);
             bool useWorldCoordinates = false;
-
+            
             // Act
             RevoluteJoint revoluteJoint = new RevoluteJoint(bodyA, bodyB, anchorA, anchorB, useWorldCoordinates);
-
+            
             // Assert
             Assert.Equal(bodyA, revoluteJoint.BodyA);
             Assert.Equal(bodyB, revoluteJoint.BodyB);
             Assert.Equal(anchorA, revoluteJoint.LocalAnchorA);
             Assert.Equal(anchorB, revoluteJoint.LocalAnchorB);
         }
-
+        
         /// <summary>
         ///     Tests that revolute joint properties test
         /// </summary>
@@ -90,7 +90,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
                 EnableLimit = true,
                 EnableMotor = true
             };
-
+            
             // Assert
             Assert.Equal(new Vector2(0.6f, 0.6f), revoluteJoint.LocalAnchorA);
             Assert.Equal(new Vector2(1.6f, 1.6f), revoluteJoint.LocalAnchorB);
@@ -101,7 +101,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.True(revoluteJoint.EnableLimit);
             Assert.True(revoluteJoint.EnableMotor);
         }
-
+        
         /// <summary>
         ///     Tests that revolute joint world anchor test
         /// </summary>
@@ -115,11 +115,11 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Vector2 anchorB = new Vector2(1.5f, 1.5f);
             bool useWorldCoordinates = false;
             RevoluteJoint revoluteJoint = new RevoluteJoint(bodyA, bodyB, anchorA, anchorB, useWorldCoordinates);
-
+            
             // Act
             Vector2 worldAnchorA = revoluteJoint.WorldAnchorA;
             Vector2 worldAnchorB = revoluteJoint.WorldAnchorB;
-
+            
             // Assert
             Assert.Equal(bodyA.GetWorldPoint(anchorA), worldAnchorA);
             Assert.Equal(bodyB.GetWorldPoint(anchorB), worldAnchorB);

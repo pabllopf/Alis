@@ -59,19 +59,19 @@ namespace Alis.Core.Physic.Test.Dynamics.Solver
             Vector2 position = new Vector2(1.0f, 1.0f); // Replace with the actual position
             Rotation rotation = new Rotation(0.0f); // Replace with the actual rotation
             Vector2 scale = new Vector2(1.0f, 1.0f); // Replace with the actual scale
-
+            
             Transform xfA = new Transform(position, rotation, scale);
             Transform xfB = new Transform(position, rotation, scale);
-
+            
             // Act
             PositionSolverManifold.Initialize(pc, ref xfA, ref xfB, 0, out Vector2 normal, out Vector2 point, out float separation);
-
+            
             // Assert
             Assert.Equal(new Vector2(0.70710677f, 0.70710677f), normal);
             Assert.Equal(new Vector2(2.5f, 2.5f), point);
             Assert.Equal(-0.585786462f, separation);
         }
-
+        
         /// <summary>
         ///     Tests that initialize face a test
         /// </summary>
@@ -92,19 +92,19 @@ namespace Alis.Core.Physic.Test.Dynamics.Solver
             Vector2 position = new Vector2(1.0f, 1.0f); // Replace with the actual position
             Rotation rotation = new Rotation(0.0f); // Replace with the actual rotation
             Vector2 scale = new Vector2(1.0f, 1.0f); // Replace with the actual scale
-
+            
             Transform xfA = new Transform(position, rotation, scale);
             Transform xfB = new Transform(position, rotation, scale);
-
+            
             // Act
             PositionSolverManifold.Initialize(pc, ref xfA, ref xfB, 0, out Vector2 normal, out Vector2 point, out float separation);
-
+            
             // Assert
             Assert.Equal(new Vector2(1.0f, 0.0f), normal);
             Assert.Equal(new Vector2(3.0f, 3.0f), point);
             Assert.Equal(-1.0f, separation);
         }
-
+        
         /// <summary>
         ///     Tests that initialize face b test
         /// </summary>
@@ -122,17 +122,17 @@ namespace Alis.Core.Physic.Test.Dynamics.Solver
                 RadiusA = 1.0f,
                 RadiusB = 1.0f
             };
-
+            
             Vector2 position = new Vector2(1.0f, 1.0f); // Replace with the actual position
             Rotation rotation = new Rotation(0.0f); // Replace with the actual rotation
             Vector2 scale = new Vector2(1.0f, 1.0f); // Replace with the actual scale
-
+            
             Transform xfA = new Transform(position, rotation, scale);
             Transform xfB = new Transform(position, rotation, scale);
-
+            
             // Act
             PositionSolverManifold.Initialize(pc, ref xfA, ref xfB, 0, out Vector2 normal, out Vector2 point, out float separation);
-
+            
             // Assert
             Assert.Equal(new Vector2(-1.0f, 0.0f), normal);
             Assert.Equal(new Vector2(3.0f, 3.0f), point);

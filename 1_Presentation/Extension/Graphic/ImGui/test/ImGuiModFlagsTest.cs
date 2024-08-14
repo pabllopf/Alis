@@ -32,12 +32,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test
 {
     /// <summary>
-    /// The im gui mod flags test class
+    ///     The im gui mod flags test class
     /// </summary>
     public class ImGuiModFlagsTest
     {
         /// <summary>
-        /// Tests that none should be initialized correctly
+        ///     Tests that none should be initialized correctly
         /// </summary>
         [Fact]
         public void None_ShouldBeInitializedCorrectly()
@@ -50,7 +50,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that ctrl should be initialized correctly
+        ///     Tests that ctrl should be initialized correctly
         /// </summary>
         [Fact]
         public void Ctrl_ShouldBeInitializedCorrectly()
@@ -63,7 +63,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that shift should be initialized correctly
+        ///     Tests that shift should be initialized correctly
         /// </summary>
         [Fact]
         public void Shift_ShouldBeInitializedCorrectly()
@@ -76,7 +76,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that alt should be initialized correctly
+        ///     Tests that alt should be initialized correctly
         /// </summary>
         [Fact]
         public void Alt_ShouldBeInitializedCorrectly()
@@ -89,7 +89,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that super should be initialized correctly
+        ///     Tests that super should be initialized correctly
         /// </summary>
         [Fact]
         public void Super_ShouldBeInitializedCorrectly()

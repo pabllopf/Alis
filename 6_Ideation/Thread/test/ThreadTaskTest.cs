@@ -47,16 +47,16 @@ namespace Alis.Core.Aspect.Thread.Test
             bool actionExecuted = false;
             CancellationTokenSource cts = new CancellationTokenSource();
             ThreadTask threadTask = new ThreadTask(token => { actionExecuted = true; }, cts.Token);
-
+            
             // Act
             threadTask.Execute(cts.Token);
-
+            
             //wait 1s
             System.Threading.Thread.Sleep(1000);
-
+            
             // stop the thread
             cts.Cancel();
-
+            
             // Assert
             Assert.True(actionExecuted);
         }

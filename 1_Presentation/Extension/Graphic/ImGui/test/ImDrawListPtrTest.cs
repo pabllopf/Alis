@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test
 {
     /// <summary>
-    /// The im draw list ptr test class
+    ///     The im draw list ptr test class
     /// </summary>
     public class ImDrawListPtrTest
     {
         /// <summary>
-        /// Tests that native ptr should be initialized
+        ///     Tests that native ptr should be initialized
         /// </summary>
         [Fact]
         public void NativePtr_ShouldBeInitialized()
@@ -49,7 +49,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that font data should be initialized
+        ///     Tests that font data should be initialized
         /// </summary>
         [Fact]
         public void FontData_ShouldBeInitialized()
@@ -60,7 +60,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that font data size should be initialized
+        ///     Tests that font data size should be initialized
         /// </summary>
         [Fact]
         public void FontDataSize_ShouldBeInitialized()
@@ -71,7 +71,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that font data owned by atlas should be initialized
+        ///     Tests that font data owned by atlas should be initialized
         /// </summary>
         [Fact]
         public void FontDataOwnedByAtlas_ShouldBeInitialized()
@@ -82,7 +82,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that font no should be initialized
+        ///     Tests that font no should be initialized
         /// </summary>
         [Fact]
         public void FontNo_ShouldBeInitialized()
@@ -93,7 +93,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that size pixels should be initialized
+        ///     Tests that size pixels should be initialized
         /// </summary>
         [Fact]
         public void SizePixels_ShouldBeInitialized()
@@ -104,7 +104,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that oversample h should be initialized
+        ///     Tests that oversample h should be initialized
         /// </summary>
         [Fact]
         public void OversampleH_ShouldBeInitialized()
@@ -115,7 +115,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that oversample v should be initialized
+        ///     Tests that oversample v should be initialized
         /// </summary>
         [Fact]
         public void OversampleV_ShouldBeInitialized()
@@ -126,7 +126,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that snap h should be initialized
+        ///     Tests that snap h should be initialized
         /// </summary>
         [Fact]
         public void SnapH_ShouldBeInitialized()
@@ -137,7 +137,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that glyph extra spacing should be initialized
+        ///     Tests that glyph extra spacing should be initialized
         /// </summary>
         [Fact]
         public void GlyphExtraSpacing_ShouldBeInitialized()
@@ -148,7 +148,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that glyph offset should be initialized
+        ///     Tests that glyph offset should be initialized
         /// </summary>
         [Fact]
         public void GlyphOffset_ShouldBeInitialized()
@@ -159,7 +159,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that glyph ranges should be initialized
+        ///     Tests that glyph ranges should be initialized
         /// </summary>
         [Fact]
         public void GlyphRanges_ShouldBeInitialized()
@@ -170,7 +170,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that glyph min advance x should be initialized
+        ///     Tests that glyph min advance x should be initialized
         /// </summary>
         [Fact]
         public void GlyphMinAdvanceX_ShouldBeInitialized()
@@ -181,7 +181,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that glyph max advance x should be initialized
+        ///     Tests that glyph max advance x should be initialized
         /// </summary>
         [Fact]
         public void GlyphMaxAdvanceX_ShouldBeInitialized()
@@ -192,7 +192,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that merge mode should be initialized
+        ///     Tests that merge mode should be initialized
         /// </summary>
         [Fact]
         public void MergeMode_ShouldBeInitialized()
@@ -203,7 +203,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that font builder flags should be initialized
+        ///     Tests that font builder flags should be initialized
         /// </summary>
         [Fact]
         public void FontBuilderFlags_ShouldBeInitialized()
@@ -214,7 +214,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that rasterizer multiply should be initialized
+        ///     Tests that rasterizer multiply should be initialized
         /// </summary>
         [Fact]
         public void RasterizerMultiply_ShouldBeInitialized()
@@ -225,7 +225,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that ellipsis char should be initialized
+        ///     Tests that ellipsis char should be initialized
         /// </summary>
         [Fact]
         public void EllipsisChar_ShouldBeInitialized()
@@ -236,7 +236,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add image with user texture id and min max adds image
+        ///     Tests that add image with user texture id and min max adds image
         /// </summary>
         [Fact]
         public void AddImage_WithUserTextureIdAndMinMax_AddsImage()
@@ -252,7 +252,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add image with user texture id min max and uv min adds image
+        ///     Tests that add image with user texture id min max and uv min adds image
         /// </summary>
         [Fact]
         public void AddImage_WithUserTextureIdMinMaxAndUvMin_AddsImage()
@@ -269,7 +269,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add image with user texture id min max uv min and uv max adds image
+        ///     Tests that add image with user texture id min max uv min and uv max adds image
         /// </summary>
         [Fact]
         public void AddImage_WithUserTextureIdMinMaxUvMinAndUvMax_AddsImage()
@@ -287,7 +287,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add image with user texture id min max uv min uv max and col adds image
+        ///     Tests that add image with user texture id min max uv min uv max and col adds image
         /// </summary>
         [Fact]
         public void AddImage_WithUserTextureIdMinMaxUvMinUvMaxAndCol_AddsImage()
@@ -306,7 +306,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add image quad with user texture id and points adds image quad
+        ///     Tests that add image quad with user texture id and points adds image quad
         /// </summary>
         [Fact]
         public void AddImageQuad_WithUserTextureIdAndPoints_AddsImageQuad()
@@ -324,7 +324,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add image quad with user texture id points and uv 1 adds image quad
+        ///     Tests that add image quad with user texture id points and uv 1 adds image quad
         /// </summary>
         [Fact]
         public void AddImageQuad_WithUserTextureIdPointsAndUv1_AddsImageQuad()
@@ -343,7 +343,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add image quad with user texture id points uv 1 and uv 2 adds image quad
+        ///     Tests that add image quad with user texture id points uv 1 and uv 2 adds image quad
         /// </summary>
         [Fact]
         public void AddImageQuad_WithUserTextureIdPointsUv1AndUv2_AddsImageQuad()
@@ -363,7 +363,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add image quad with user texture id points uv 1 uv 2 and uv 3 adds image quad
+        ///     Tests that add image quad with user texture id points uv 1 uv 2 and uv 3 adds image quad
         /// </summary>
         [Fact]
         public void AddImageQuad_WithUserTextureIdPointsUv1Uv2AndUv3_AddsImageQuad()
@@ -384,7 +384,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add image quad with user texture id points uv 1 uv 2 uv 3 and uv 4 adds image quad
+        ///     Tests that add image quad with user texture id points uv 1 uv 2 uv 3 and uv 4 adds image quad
         /// </summary>
         [Fact]
         public void AddImageQuad_WithUserTextureIdPointsUv1Uv2Uv3AndUv4_AddsImageQuad()
@@ -406,7 +406,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add image quad with user texture id points uv 1 uv 2 uv 3 uv 4 and col adds image quad
+        ///     Tests that add image quad with user texture id points uv 1 uv 2 uv 3 uv 4 and col adds image quad
         /// </summary>
         [Fact]
         public void AddImageQuad_WithUserTextureIdPointsUv1Uv2Uv3Uv4AndCol_AddsImageQuad()
@@ -429,7 +429,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add image rounded with user texture id min max uv min uv max col and rounding adds image rounded
+        ///     Tests that add image rounded with user texture id min max uv min uv max col and rounding adds image rounded
         /// </summary>
         [Fact]
         public void AddImageRounded_WithUserTextureIdMinMaxUvMinUvMaxColAndRounding_AddsImageRounded()
@@ -449,7 +449,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add image rounded with user texture id min max uv min uv max col rounding and flags adds image rounded
+        ///     Tests that add image rounded with user texture id min max uv min uv max col rounding and flags adds image rounded
         /// </summary>
         [Fact]
         public void AddImageRounded_WithUserTextureIdMinMaxUvMinUvMaxColRoundingAndFlags_AddsImageRounded()
@@ -470,7 +470,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add line with p 1 p 2 and col adds line
+        ///     Tests that add line with p 1 p 2 and col adds line
         /// </summary>
         [Fact]
         public void AddLine_WithP1P2AndCol_AddsLine()
@@ -486,7 +486,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add line with p 1 p 2 col and thickness adds line
+        ///     Tests that add line with p 1 p 2 col and thickness adds line
         /// </summary>
         [Fact]
         public void AddLine_WithP1P2ColAndThickness_AddsLine()
@@ -503,7 +503,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add ngon with center radius col and num segments adds ngon
+        ///     Tests that add ngon with center radius col and num segments adds ngon
         /// </summary>
         [Fact]
         public void AddNgon_WithCenterRadiusColAndNumSegments_AddsNgon()
@@ -520,7 +520,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add ngon with center radius col num segments and thickness adds ngon
+        ///     Tests that add ngon with center radius col num segments and thickness adds ngon
         /// </summary>
         [Fact]
         public void AddNgon_WithCenterRadiusColNumSegmentsAndThickness_AddsNgon()
@@ -538,7 +538,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add ngon filled with center radius col and num segments adds ngon filled
+        ///     Tests that add ngon filled with center radius col and num segments adds ngon filled
         /// </summary>
         [Fact]
         public void AddNgonFilled_WithCenterRadiusColAndNumSegments_AddsNgonFilled()
@@ -555,7 +555,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add polyline with points num points col flags and thickness adds polyline
+        ///     Tests that add polyline with points num points col flags and thickness adds polyline
         /// </summary>
         [Fact]
         public void AddPolyline_WithPointsNumPointsColFlagsAndThickness_AddsPolyline()
@@ -573,7 +573,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add quad with p 1 p 2 p 3 p 4 and col adds quad
+        ///     Tests that add quad with p 1 p 2 p 3 p 4 and col adds quad
         /// </summary>
         [Fact]
         public void AddQuad_WithP1P2P3P4AndCol_AddsQuad()
@@ -591,7 +591,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add quad with p 1 p 2 p 3 p 4 col and thickness adds quad
+        ///     Tests that add quad with p 1 p 2 p 3 p 4 col and thickness adds quad
         /// </summary>
         [Fact]
         public void AddQuad_WithP1P2P3P4ColAndThickness_AddsQuad()
@@ -610,7 +610,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add quad filled with p 1 p 2 p 3 p 4 and col adds quad filled
+        ///     Tests that add quad filled with p 1 p 2 p 3 p 4 and col adds quad filled
         /// </summary>
         [Fact]
         public void AddQuadFilled_WithP1P2P3P4AndCol_AddsQuadFilled()
@@ -628,7 +628,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add rect with p min p max and col adds rect
+        ///     Tests that add rect with p min p max and col adds rect
         /// </summary>
         [Fact]
         public void AddRect_WithPMinPMaxAndCol_AddsRect()
@@ -644,7 +644,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add rect with p min p max col and rounding adds rect
+        ///     Tests that add rect with p min p max col and rounding adds rect
         /// </summary>
         [Fact]
         public void AddRect_WithPMinPMaxColAndRounding_AddsRect()
@@ -661,7 +661,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add rect with p min p max col rounding and flags adds rect
+        ///     Tests that add rect with p min p max col rounding and flags adds rect
         /// </summary>
         [Fact]
         public void AddRect_WithPMinPMaxColRoundingAndFlags_AddsRect()
@@ -679,7 +679,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add rect with p min p max col rounding flags and thickness adds rect
+        ///     Tests that add rect with p min p max col rounding flags and thickness adds rect
         /// </summary>
         [Fact]
         public void AddRect_WithPMinPMaxColRoundingFlagsAndThickness_AddsRect()
@@ -698,7 +698,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add rect filled with p min p max and col adds rect filled
+        ///     Tests that add rect filled with p min p max and col adds rect filled
         /// </summary>
         [Fact]
         public void AddRectFilled_WithPMinPMaxAndCol_AddsRectFilled()
@@ -714,7 +714,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add rect filled with p min p max col and rounding adds rect filled
+        ///     Tests that add rect filled with p min p max col and rounding adds rect filled
         /// </summary>
         [Fact]
         public void AddRectFilled_WithPMinPMaxColAndRounding_AddsRectFilled()
@@ -731,7 +731,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add rect filled with p min p max col rounding and flags adds rect filled
+        ///     Tests that add rect filled with p min p max col rounding and flags adds rect filled
         /// </summary>
         [Fact]
         public void AddRectFilled_WithPMinPMaxColRoundingAndFlags_AddsRectFilled()
@@ -749,7 +749,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add rect filled multi color with p min p max col upr left col upr right col bot right and col bot left adds rect filled multi color
+        ///     Tests that add rect filled multi color with p min p max col upr left col upr right col bot right and col bot left
+        ///     adds rect filled multi color
         /// </summary>
         [Fact]
         public void AddRectFilledMultiColor_WithPMinPMaxColUprLeftColUprRightColBotRightAndColBotLeft_AddsRectFilledMultiColor()
@@ -768,7 +769,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add triangle with p 1 p 2 p 3 and col adds triangle
+        ///     Tests that add triangle with p 1 p 2 p 3 and col adds triangle
         /// </summary>
         [Fact]
         public void AddTriangle_WithP1P2P3AndCol_AddsTriangle()
@@ -785,7 +786,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add draw cmd throws dll not found exception
+        ///     Tests that add draw cmd throws dll not found exception
         /// </summary>
         [Fact]
         public void AddDrawCmd_ThrowsDllNotFoundException()
@@ -795,7 +796,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add image throws dll not found exception
+        ///     Tests that add image throws dll not found exception
         /// </summary>
         [Fact]
         public void AddImage_ThrowsDllNotFoundException()
@@ -805,7 +806,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add image with uv min throws dll not found exception
+        ///     Tests that add image with uv min throws dll not found exception
         /// </summary>
         [Fact]
         public void AddImage_WithUvMin_ThrowsDllNotFoundException()
@@ -815,7 +816,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add image with uv min uv max throws dll not found exception
+        ///     Tests that add image with uv min uv max throws dll not found exception
         /// </summary>
         [Fact]
         public void AddImage_WithUvMinUvMax_ThrowsDllNotFoundException()
@@ -825,7 +826,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add image with uv min uv max col throws dll not found exception
+        ///     Tests that add image with uv min uv max col throws dll not found exception
         /// </summary>
         [Fact]
         public void AddImage_WithUvMinUvMaxCol_ThrowsDllNotFoundException()
@@ -835,7 +836,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add image quad throws dll not found exception
+        ///     Tests that add image quad throws dll not found exception
         /// </summary>
         [Fact]
         public void AddImageQuad_ThrowsDllNotFoundException()
@@ -845,7 +846,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add image quad with uv 1 throws dll not found exception
+        ///     Tests that add image quad with uv 1 throws dll not found exception
         /// </summary>
         [Fact]
         public void AddImageQuad_WithUv1_ThrowsDllNotFoundException()
@@ -855,7 +856,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add image quad with uv 1 uv 2 throws dll not found exception
+        ///     Tests that add image quad with uv 1 uv 2 throws dll not found exception
         /// </summary>
         [Fact]
         public void AddImageQuad_WithUv1Uv2_ThrowsDllNotFoundException()
@@ -865,7 +866,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add image quad with uv 1 uv 2 uv 3 throws dll not found exception
+        ///     Tests that add image quad with uv 1 uv 2 uv 3 throws dll not found exception
         /// </summary>
         [Fact]
         public void AddImageQuad_WithUv1Uv2Uv3_ThrowsDllNotFoundException()
@@ -875,7 +876,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add image quad with uv 1 uv 2 uv 3 uv 4 throws dll not found exception
+        ///     Tests that add image quad with uv 1 uv 2 uv 3 uv 4 throws dll not found exception
         /// </summary>
         [Fact]
         public void AddImageQuad_WithUv1Uv2Uv3Uv4_ThrowsDllNotFoundException()
@@ -885,7 +886,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add image rounded throws dll not found exception
+        ///     Tests that add image rounded throws dll not found exception
         /// </summary>
         [Fact]
         public void AddImageRounded_ThrowsDllNotFoundException()
@@ -895,7 +896,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add image rounded with flags throws dll not found exception
+        ///     Tests that add image rounded with flags throws dll not found exception
         /// </summary>
         [Fact]
         public void AddImageRounded_WithFlags_ThrowsDllNotFoundException()
@@ -905,7 +906,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add line throws dll not found exception
+        ///     Tests that add line throws dll not found exception
         /// </summary>
         [Fact]
         public void AddLine_ThrowsDllNotFoundException()
@@ -915,7 +916,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add line with thickness throws dll not found exception
+        ///     Tests that add line with thickness throws dll not found exception
         /// </summary>
         [Fact]
         public void AddLine_WithThickness_ThrowsDllNotFoundException()
@@ -925,7 +926,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add ngon throws dll not found exception
+        ///     Tests that add ngon throws dll not found exception
         /// </summary>
         [Fact]
         public void AddNgon_ThrowsDllNotFoundException()
@@ -935,7 +936,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add ngon with thickness throws dll not found exception
+        ///     Tests that add ngon with thickness throws dll not found exception
         /// </summary>
         [Fact]
         public void AddNgon_WithThickness_ThrowsDllNotFoundException()
@@ -945,7 +946,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add ngon filled throws dll not found exception
+        ///     Tests that add ngon filled throws dll not found exception
         /// </summary>
         [Fact]
         public void AddNgonFilled_ThrowsDllNotFoundException()
@@ -955,7 +956,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add polyline throws dll not found exception
+        ///     Tests that add polyline throws dll not found exception
         /// </summary>
         [Fact]
         public void AddPolyline_ThrowsDllNotFoundException()
@@ -966,7 +967,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add quad throws dll not found exception
+        ///     Tests that add quad throws dll not found exception
         /// </summary>
         [Fact]
         public void AddQuad_ThrowsDllNotFoundException()
@@ -976,7 +977,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add quad with thickness throws dll not found exception
+        ///     Tests that add quad with thickness throws dll not found exception
         /// </summary>
         [Fact]
         public void AddQuad_WithThickness_ThrowsDllNotFoundException()
@@ -986,7 +987,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add quad filled throws dll not found exception
+        ///     Tests that add quad filled throws dll not found exception
         /// </summary>
         [Fact]
         public void AddQuadFilled_ThrowsDllNotFoundException()
@@ -996,7 +997,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add rect throws dll not found exception
+        ///     Tests that add rect throws dll not found exception
         /// </summary>
         [Fact]
         public void AddRect_ThrowsDllNotFoundException()
@@ -1006,7 +1007,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add rect with rounding throws dll not found exception
+        ///     Tests that add rect with rounding throws dll not found exception
         /// </summary>
         [Fact]
         public void AddRect_WithRounding_ThrowsDllNotFoundException()
@@ -1016,7 +1017,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add rect with rounding flags throws dll not found exception
+        ///     Tests that add rect with rounding flags throws dll not found exception
         /// </summary>
         [Fact]
         public void AddRect_WithRoundingFlags_ThrowsDllNotFoundException()
@@ -1026,7 +1027,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add rect with rounding flags thickness throws dll not found exception
+        ///     Tests that add rect with rounding flags thickness throws dll not found exception
         /// </summary>
         [Fact]
         public void AddRect_WithRoundingFlagsThickness_ThrowsDllNotFoundException()
@@ -1036,7 +1037,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add rect filled throws dll not found exception
+        ///     Tests that add rect filled throws dll not found exception
         /// </summary>
         [Fact]
         public void AddRectFilled_ThrowsDllNotFoundException()
@@ -1046,7 +1047,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add rect filled with rounding throws dll not found exception
+        ///     Tests that add rect filled with rounding throws dll not found exception
         /// </summary>
         [Fact]
         public void AddRectFilled_WithRounding_ThrowsDllNotFoundException()
@@ -1056,7 +1057,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add rect filled with rounding flags throws dll not found exception
+        ///     Tests that add rect filled with rounding flags throws dll not found exception
         /// </summary>
         [Fact]
         public void AddRectFilled_WithRoundingFlags_ThrowsDllNotFoundException()
@@ -1066,7 +1067,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add rect filled multi color throws dll not found exception
+        ///     Tests that add rect filled multi color throws dll not found exception
         /// </summary>
         [Fact]
         public void AddRectFilledMultiColor_ThrowsDllNotFoundException()
@@ -1076,7 +1077,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add triangle throws dll not found exception
+        ///     Tests that add triangle throws dll not found exception
         /// </summary>
         [Fact]
         public void AddTriangle_ThrowsDllNotFoundException()
@@ -1086,7 +1087,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add triangle with thickness throws dll not found exception
+        ///     Tests that add triangle with thickness throws dll not found exception
         /// </summary>
         [Fact]
         public void AddTriangle_WithThickness_ThrowsDllNotFoundException()
@@ -1096,7 +1097,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add triangle filled throws dll not found exception
+        ///     Tests that add triangle filled throws dll not found exception
         /// </summary>
         [Fact]
         public void AddTriangleFilled_ThrowsDllNotFoundException()
@@ -1106,7 +1107,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that channels merge throws dll not found exception
+        ///     Tests that channels merge throws dll not found exception
         /// </summary>
         [Fact]
         public void ChannelsMerge_ThrowsDllNotFoundException()
@@ -1116,7 +1117,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that channels set current throws dll not found exception
+        ///     Tests that channels set current throws dll not found exception
         /// </summary>
         [Fact]
         public void ChannelsSetCurrent_ThrowsDllNotFoundException()
@@ -1126,7 +1127,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that channels split throws dll not found exception
+        ///     Tests that channels split throws dll not found exception
         /// </summary>
         [Fact]
         public void ChannelsSplit_ThrowsDllNotFoundException()
@@ -1136,7 +1137,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that clone output throws dll not found exception
+        ///     Tests that clone output throws dll not found exception
         /// </summary>
         [Fact]
         public void CloneOutput_ThrowsDllNotFoundException()
@@ -1146,7 +1147,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that get clip rect max throws dll not found exception
+        ///     Tests that get clip rect max throws dll not found exception
         /// </summary>
         [Fact]
         public void GetClipRectMax_ThrowsDllNotFoundException()
@@ -1156,7 +1157,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that get clip rect min throws dll not found exception
+        ///     Tests that get clip rect min throws dll not found exception
         /// </summary>
         [Fact]
         public void GetClipRectMin_ThrowsDllNotFoundException()
@@ -1166,7 +1167,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that path arc to throws dll not found exception
+        ///     Tests that path arc to throws dll not found exception
         /// </summary>
         [Fact]
         public void PathArcTo_ThrowsDllNotFoundException()
@@ -1176,7 +1177,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that path arc to with num segments throws dll not found exception
+        ///     Tests that path arc to with num segments throws dll not found exception
         /// </summary>
         [Fact]
         public void PathArcTo_WithNumSegments_ThrowsDllNotFoundException()
@@ -1186,7 +1187,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that path arc to fast throws dll not found exception
+        ///     Tests that path arc to fast throws dll not found exception
         /// </summary>
         [Fact]
         public void PathArcToFast_ThrowsDllNotFoundException()
@@ -1196,7 +1197,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that path bezier cubic curve to throws dll not found exception
+        ///     Tests that path bezier cubic curve to throws dll not found exception
         /// </summary>
         [Fact]
         public void PathBezierCubicCurveTo_ThrowsDllNotFoundException()
@@ -1206,7 +1207,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that path bezier cubic curve to with num segments throws dll not found exception
+        ///     Tests that path bezier cubic curve to with num segments throws dll not found exception
         /// </summary>
         [Fact]
         public void PathBezierCubicCurveTo_WithNumSegments_ThrowsDllNotFoundException()
@@ -1216,7 +1217,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that path bezier quadratic curve to throws dll not found exception
+        ///     Tests that path bezier quadratic curve to throws dll not found exception
         /// </summary>
         [Fact]
         public void PathBezierQuadraticCurveTo_ThrowsDllNotFoundException()
@@ -1226,7 +1227,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that path bezier quadratic curve to with num segments throws dll not found exception
+        ///     Tests that path bezier quadratic curve to with num segments throws dll not found exception
         /// </summary>
         [Fact]
         public void PathBezierQuadraticCurveTo_WithNumSegments_ThrowsDllNotFoundException()
@@ -1236,7 +1237,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that path clear throws dll not found exception
+        ///     Tests that path clear throws dll not found exception
         /// </summary>
         [Fact]
         public void PathClear_ThrowsDllNotFoundException()
@@ -1246,7 +1247,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that path fill convex throws dll not found exception
+        ///     Tests that path fill convex throws dll not found exception
         /// </summary>
         [Fact]
         public void PathFillConvex_ThrowsDllNotFoundException()
@@ -1256,7 +1257,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that path line to throws dll not found exception
+        ///     Tests that path line to throws dll not found exception
         /// </summary>
         [Fact]
         public void PathLineTo_ThrowsDllNotFoundException()
@@ -1266,7 +1267,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that path line to merge duplicate throws dll not found exception
+        ///     Tests that path line to merge duplicate throws dll not found exception
         /// </summary>
         [Fact]
         public void PathLineToMergeDuplicate_ThrowsDllNotFoundException()
@@ -1276,7 +1277,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that path rect throws dll not found exception
+        ///     Tests that path rect throws dll not found exception
         /// </summary>
         [Fact]
         public void PathRect_ThrowsDllNotFoundException()
@@ -1286,7 +1287,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that path rect with rounding throws dll not found exception
+        ///     Tests that path rect with rounding throws dll not found exception
         /// </summary>
         [Fact]
         public void PathRect_WithRounding_ThrowsDllNotFoundException()
@@ -1296,7 +1297,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that path rect with rounding flags throws dll not found exception
+        ///     Tests that path rect with rounding flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PathRect_WithRoundingFlags_ThrowsDllNotFoundException()
@@ -1306,7 +1307,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that path stroke throws dll not found exception
+        ///     Tests that path stroke throws dll not found exception
         /// </summary>
         [Fact]
         public void PathStroke_ThrowsDllNotFoundException()
@@ -1316,7 +1317,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that path stroke with flags throws dll not found exception
+        ///     Tests that path stroke with flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PathStroke_WithFlags_ThrowsDllNotFoundException()
@@ -1326,7 +1327,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that path stroke with flags thickness throws dll not found exception
+        ///     Tests that path stroke with flags thickness throws dll not found exception
         /// </summary>
         [Fact]
         public void PathStroke_WithFlagsThickness_ThrowsDllNotFoundException()
@@ -1336,7 +1337,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that pop clip rect throws dll not found exception
+        ///     Tests that pop clip rect throws dll not found exception
         /// </summary>
         [Fact]
         public void PopClipRect_ThrowsDllNotFoundException()
@@ -1346,7 +1347,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that pop texture id throws dll not found exception
+        ///     Tests that pop texture id throws dll not found exception
         /// </summary>
         [Fact]
         public void PopTextureId_ThrowsDllNotFoundException()
@@ -1356,7 +1357,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that prim quad uv throws dll not found exception
+        ///     Tests that prim quad uv throws dll not found exception
         /// </summary>
         [Fact]
         public void PrimQuadUv_ThrowsDllNotFoundException()
@@ -1366,7 +1367,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that prim rect throws dll not found exception
+        ///     Tests that prim rect throws dll not found exception
         /// </summary>
         [Fact]
         public void PrimRect_ThrowsDllNotFoundException()
@@ -1376,7 +1377,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that prim rect uv throws dll not found exception
+        ///     Tests that prim rect uv throws dll not found exception
         /// </summary>
         [Fact]
         public void PrimRectUv_ThrowsDllNotFoundException()
@@ -1386,7 +1387,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that prim reserve throws dll not found exception
+        ///     Tests that prim reserve throws dll not found exception
         /// </summary>
         [Fact]
         public void PrimReserve_ThrowsDllNotFoundException()
@@ -1396,7 +1397,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that prim unreserve throws dll not found exception
+        ///     Tests that prim unreserve throws dll not found exception
         /// </summary>
         [Fact]
         public void PrimUnreserve_ThrowsDllNotFoundException()
@@ -1406,7 +1407,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that prim vtx throws dll not found exception
+        ///     Tests that prim vtx throws dll not found exception
         /// </summary>
         [Fact]
         public void PrimVtx_ThrowsDllNotFoundException()
@@ -1416,7 +1417,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that prim write idx throws dll not found exception
+        ///     Tests that prim write idx throws dll not found exception
         /// </summary>
         [Fact]
         public void PrimWriteIdx_ThrowsDllNotFoundException()
@@ -1426,7 +1427,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that prim write vtx throws dll not found exception
+        ///     Tests that prim write vtx throws dll not found exception
         /// </summary>
         [Fact]
         public void PrimWriteVtx_ThrowsDllNotFoundException()
@@ -1436,7 +1437,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that push clip rect throws dll not found exception
+        ///     Tests that push clip rect throws dll not found exception
         /// </summary>
         [Fact]
         public void PushClipRect_ThrowsDllNotFoundException()
@@ -1446,7 +1447,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that push clip rect with intersect throws dll not found exception
+        ///     Tests that push clip rect with intersect throws dll not found exception
         /// </summary>
         [Fact]
         public void PushClipRect_WithIntersect_ThrowsDllNotFoundException()
@@ -1456,7 +1457,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that v 2 add rect filled throws dll not found exception
+        ///     Tests that v 2 add rect filled throws dll not found exception
         /// </summary>
         [Fact]
         public void v2_AddRectFilled_ThrowsDllNotFoundException()
@@ -1466,7 +1467,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that v 2 add rect filled multi color throws dll not found exception
+        ///     Tests that v 2 add rect filled multi color throws dll not found exception
         /// </summary>
         [Fact]
         public void v2_AddRectFilledMultiColor_ThrowsDllNotFoundException()
@@ -1476,7 +1477,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that v 2 add triangle throws dll not found exception
+        ///     Tests that v 2 add triangle throws dll not found exception
         /// </summary>
         [Fact]
         public void v2_AddTriangle_ThrowsDllNotFoundException()
@@ -1486,7 +1487,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that v 2 add triangle with thickness throws dll not found exception
+        ///     Tests that v 2 add triangle with thickness throws dll not found exception
         /// </summary>
         [Fact]
         public void v2_AddTriangle_WithThickness_ThrowsDllNotFoundException()
@@ -1496,7 +1497,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that v 2 add triangle filled throws dll not found exception
+        ///     Tests that v 2 add triangle filled throws dll not found exception
         /// </summary>
         [Fact]
         public void v2_AddTriangleFilled_ThrowsDllNotFoundException()
@@ -1506,7 +1507,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that v 2 channels merge throws dll not found exception
+        ///     Tests that v 2 channels merge throws dll not found exception
         /// </summary>
         [Fact]
         public void v2_ChannelsMerge_ThrowsDllNotFoundException()
@@ -1516,7 +1517,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that v 2 channels set current throws dll not found exception
+        ///     Tests that v 2 channels set current throws dll not found exception
         /// </summary>
         [Fact]
         public void v2_ChannelsSetCurrent_ThrowsDllNotFoundException()
@@ -1526,7 +1527,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that v 2 channels split throws dll not found exception
+        ///     Tests that v 2 channels split throws dll not found exception
         /// </summary>
         [Fact]
         public void v2_ChannelsSplit_ThrowsDllNotFoundException()
@@ -1536,7 +1537,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that v 2 clone output throws dll not found exception
+        ///     Tests that v 2 clone output throws dll not found exception
         /// </summary>
         [Fact]
         public void v2_CloneOutput_ThrowsDllNotFoundException()
@@ -1546,7 +1547,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that v 2 get clip rect max throws dll not found exception
+        ///     Tests that v 2 get clip rect max throws dll not found exception
         /// </summary>
         [Fact]
         public void v2_GetClipRectMax_ThrowsDllNotFoundException()
@@ -1556,7 +1557,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that v 2 get clip rect min throws dll not found exception
+        ///     Tests that v 2 get clip rect min throws dll not found exception
         /// </summary>
         [Fact]
         public void v2_GetClipRectMin_ThrowsDllNotFoundException()
@@ -1566,7 +1567,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that v 2 path arc to throws dll not found exception
+        ///     Tests that v 2 path arc to throws dll not found exception
         /// </summary>
         [Fact]
         public void v2_PathArcTo_ThrowsDllNotFoundException()
@@ -1576,7 +1577,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that path arc to with segments throws dll not found exception
+        ///     Tests that path arc to with segments throws dll not found exception
         /// </summary>
         [Fact]
         public void PathArcTo_WithSegments_ThrowsDllNotFoundException()
@@ -1586,7 +1587,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that v 2 path arc to fast throws dll not found exception
+        ///     Tests that v 2 path arc to fast throws dll not found exception
         /// </summary>
         [Fact]
         public void v2_PathArcToFast_ThrowsDllNotFoundException()
@@ -1596,7 +1597,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that v 2 path bezier cubic curve to throws dll not found exception
+        ///     Tests that v 2 path bezier cubic curve to throws dll not found exception
         /// </summary>
         [Fact]
         public void v2_PathBezierCubicCurveTo_ThrowsDllNotFoundException()
@@ -1606,7 +1607,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that path bezier cubic curve to with segments throws dll not found exception
+        ///     Tests that path bezier cubic curve to with segments throws dll not found exception
         /// </summary>
         [Fact]
         public void PathBezierCubicCurveTo_WithSegments_ThrowsDllNotFoundException()
@@ -1616,7 +1617,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that v 2 path bezier quadratic curve to throws dll not found exception
+        ///     Tests that v 2 path bezier quadratic curve to throws dll not found exception
         /// </summary>
         [Fact]
         public void v2_PathBezierQuadraticCurveTo_ThrowsDllNotFoundException()
@@ -1626,7 +1627,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that path bezier quadratic curve to with segments throws dll not found exception
+        ///     Tests that path bezier quadratic curve to with segments throws dll not found exception
         /// </summary>
         [Fact]
         public void PathBezierQuadraticCurveTo_WithSegments_ThrowsDllNotFoundException()
@@ -1636,7 +1637,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that v 2 path clear throws dll not found exception
+        ///     Tests that v 2 path clear throws dll not found exception
         /// </summary>
         [Fact]
         public void v2_PathClear_ThrowsDllNotFoundException()
@@ -1646,7 +1647,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that v 2 path fill convex throws dll not found exception
+        ///     Tests that v 2 path fill convex throws dll not found exception
         /// </summary>
         [Fact]
         public void v2_PathFillConvex_ThrowsDllNotFoundException()
@@ -1656,7 +1657,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that v 2 path line to throws dll not found exception
+        ///     Tests that v 2 path line to throws dll not found exception
         /// </summary>
         [Fact]
         public void v2_PathLineTo_ThrowsDllNotFoundException()
@@ -1666,7 +1667,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that v 2 path line to merge duplicate throws dll not found exception
+        ///     Tests that v 2 path line to merge duplicate throws dll not found exception
         /// </summary>
         [Fact]
         public void v2_PathLineToMergeDuplicate_ThrowsDllNotFoundException()
@@ -1676,7 +1677,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that v 2 path rect throws dll not found exception
+        ///     Tests that v 2 path rect throws dll not found exception
         /// </summary>
         [Fact]
         public void v2_PathRect_ThrowsDllNotFoundException()
@@ -1686,7 +1687,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that v 2 path rect with rounding throws dll not found exception
+        ///     Tests that v 2 path rect with rounding throws dll not found exception
         /// </summary>
         [Fact]
         public void v2_PathRect_WithRounding_ThrowsDllNotFoundException()
@@ -1696,7 +1697,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that path rect with rounding and flags throws dll not found exception
+        ///     Tests that path rect with rounding and flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PathRect_WithRoundingAndFlags_ThrowsDllNotFoundException()
@@ -1706,7 +1707,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that v 2 path stroke throws dll not found exception
+        ///     Tests that v 2 path stroke throws dll not found exception
         /// </summary>
         [Fact]
         public void v2_PathStroke_ThrowsDllNotFoundException()
@@ -1716,7 +1717,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that v 2 path stroke with flags throws dll not found exception
+        ///     Tests that v 2 path stroke with flags throws dll not found exception
         /// </summary>
         [Fact]
         public void v2_PathStroke_WithFlags_ThrowsDllNotFoundException()
@@ -1726,7 +1727,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that path stroke with flags and thickness throws dll not found exception
+        ///     Tests that path stroke with flags and thickness throws dll not found exception
         /// </summary>
         [Fact]
         public void PathStroke_WithFlagsAndThickness_ThrowsDllNotFoundException()
@@ -1736,7 +1737,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that v 2 pop clip rect throws dll not found exception
+        ///     Tests that v 2 pop clip rect throws dll not found exception
         /// </summary>
         [Fact]
         public void v2_PopClipRect_ThrowsDllNotFoundException()
@@ -1746,7 +1747,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that v 2 pop texture id throws dll not found exception
+        ///     Tests that v 2 pop texture id throws dll not found exception
         /// </summary>
         [Fact]
         public void v2_PopTextureId_ThrowsDllNotFoundException()
@@ -1756,7 +1757,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that v 2 prim quad uv throws dll not found exception
+        ///     Tests that v 2 prim quad uv throws dll not found exception
         /// </summary>
         [Fact]
         public void v2_PrimQuadUv_ThrowsDllNotFoundException()
@@ -1766,7 +1767,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that v 2 prim rect throws dll not found exception
+        ///     Tests that v 2 prim rect throws dll not found exception
         /// </summary>
         [Fact]
         public void v2_PrimRect_ThrowsDllNotFoundException()
@@ -1776,7 +1777,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that v 2 prim rect uv throws dll not found exception
+        ///     Tests that v 2 prim rect uv throws dll not found exception
         /// </summary>
         [Fact]
         public void v2_PrimRectUv_ThrowsDllNotFoundException()
@@ -1786,7 +1787,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that v 2 prim reserve throws dll not found exception
+        ///     Tests that v 2 prim reserve throws dll not found exception
         /// </summary>
         [Fact]
         public void v2_PrimReserve_ThrowsDllNotFoundException()
@@ -1796,7 +1797,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that v 2 prim unreserve throws dll not found exception
+        ///     Tests that v 2 prim unreserve throws dll not found exception
         /// </summary>
         [Fact]
         public void v2_PrimUnreserve_ThrowsDllNotFoundException()
@@ -1806,7 +1807,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that v 2 prim vtx throws dll not found exception
+        ///     Tests that v 2 prim vtx throws dll not found exception
         /// </summary>
         [Fact]
         public void v2_PrimVtx_ThrowsDllNotFoundException()
@@ -1816,7 +1817,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that v 2 prim write idx throws dll not found exception
+        ///     Tests that v 2 prim write idx throws dll not found exception
         /// </summary>
         [Fact]
         public void v2_PrimWriteIdx_ThrowsDllNotFoundException()
@@ -1826,7 +1827,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that v 2 prim write vtx throws dll not found exception
+        ///     Tests that v 2 prim write vtx throws dll not found exception
         /// </summary>
         [Fact]
         public void v2_PrimWriteVtx_ThrowsDllNotFoundException()
@@ -1836,7 +1837,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that v 2 push clip rect throws dll not found exception
+        ///     Tests that v 2 push clip rect throws dll not found exception
         /// </summary>
         [Fact]
         public void v2_PushClipRect_ThrowsDllNotFoundException()
@@ -1846,7 +1847,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that v 2 push clip rect with intersect throws dll not found exception
+        ///     Tests that v 2 push clip rect with intersect throws dll not found exception
         /// </summary>
         [Fact]
         public void v2_PushClipRect_WithIntersect_ThrowsDllNotFoundException()
@@ -1856,7 +1857,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that push clip rect full screen throws dll not found exception
+        ///     Tests that push clip rect full screen throws dll not found exception
         /// </summary>
         [Fact]
         public void PushClipRectFullScreen_ThrowsDllNotFoundException()
@@ -1866,7 +1867,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that push texture id throws dll not found exception
+        ///     Tests that push texture id throws dll not found exception
         /// </summary>
         [Fact]
         public void PushTextureId_ThrowsDllNotFoundException()
@@ -1876,7 +1877,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add text throws dll not found exception
+        ///     Tests that add text throws dll not found exception
         /// </summary>
         [Fact]
         public void AddText_ThrowsDllNotFoundException()
@@ -1886,7 +1887,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add text with font throws dll not found exception
+        ///     Tests that add text with font throws dll not found exception
         /// </summary>
         [Fact]
         public void AddText_WithFont_ThrowsDllNotFoundException()
@@ -1896,7 +1897,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that path arc to n throws dll not found exception
+        ///     Tests that path arc to n throws dll not found exception
         /// </summary>
         [Fact]
         public void _PathArcToN_ThrowsDllNotFoundException()
@@ -1906,7 +1907,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that pop unused draw cmd throws dll not found exception
+        ///     Tests that pop unused draw cmd throws dll not found exception
         /// </summary>
         [Fact]
         public void _PopUnusedDrawCmd_ThrowsDllNotFoundException()
@@ -1916,7 +1917,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that reset for new frame throws dll not found exception
+        ///     Tests that reset for new frame throws dll not found exception
         /// </summary>
         [Fact]
         public void _ResetForNewFrame_ThrowsDllNotFoundException()
@@ -1926,7 +1927,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that try merge draw cmds throws dll not found exception
+        ///     Tests that try merge draw cmds throws dll not found exception
         /// </summary>
         [Fact]
         public void _TryMergeDrawCmds_ThrowsDllNotFoundException()
@@ -1936,7 +1937,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add bezier cubic throws dll not found exception
+        ///     Tests that add bezier cubic throws dll not found exception
         /// </summary>
         [Fact]
         public void AddBezierCubic_ThrowsDllNotFoundException()
@@ -1946,7 +1947,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add bezier cubic with segments throws dll not found exception
+        ///     Tests that add bezier cubic with segments throws dll not found exception
         /// </summary>
         [Fact]
         public void AddBezierCubic_WithSegments_ThrowsDllNotFoundException()
@@ -1956,7 +1957,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add bezier quadratic throws dll not found exception
+        ///     Tests that add bezier quadratic throws dll not found exception
         /// </summary>
         [Fact]
         public void AddBezierQuadratic_ThrowsDllNotFoundException()
@@ -1966,7 +1967,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add bezier quadratic with segments throws dll not found exception
+        ///     Tests that add bezier quadratic with segments throws dll not found exception
         /// </summary>
         [Fact]
         public void AddBezierQuadratic_WithSegments_ThrowsDllNotFoundException()
@@ -1976,7 +1977,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add callback throws dll not found exception
+        ///     Tests that add callback throws dll not found exception
         /// </summary>
         [Fact]
         public void AddCallback_ThrowsDllNotFoundException()
@@ -1986,7 +1987,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add circle throws dll not found exception
+        ///     Tests that add circle throws dll not found exception
         /// </summary>
         [Fact]
         public void AddCircle_ThrowsDllNotFoundException()
@@ -1996,7 +1997,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add circle with segments throws dll not found exception
+        ///     Tests that add circle with segments throws dll not found exception
         /// </summary>
         [Fact]
         public void AddCircle_WithSegments_ThrowsDllNotFoundException()
@@ -2006,7 +2007,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add circle with segments and thickness throws dll not found exception
+        ///     Tests that add circle with segments and thickness throws dll not found exception
         /// </summary>
         [Fact]
         public void AddCircle_WithSegmentsAndThickness_ThrowsDllNotFoundException()
@@ -2016,7 +2017,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add circle filled throws dll not found exception
+        ///     Tests that add circle filled throws dll not found exception
         /// </summary>
         [Fact]
         public void AddCircleFilled_ThrowsDllNotFoundException()
@@ -2026,7 +2027,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add circle filled with segments throws dll not found exception
+        ///     Tests that add circle filled with segments throws dll not found exception
         /// </summary>
         [Fact]
         public void AddCircleFilled_WithSegments_ThrowsDllNotFoundException()
@@ -2036,7 +2037,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that add convex poly filled throws dll not found exception
+        ///     Tests that add convex poly filled throws dll not found exception
         /// </summary>
         [Fact]
         public void AddConvexPolyFilled_ThrowsDllNotFoundException()
@@ -2050,7 +2051,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that clip rect stack throws dll not found exception
+        ///     Tests that clip rect stack throws dll not found exception
         /// </summary>
         [Fact]
         public void ClipRectStack_ThrowsDllNotFoundException()
@@ -2063,7 +2064,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that texture id stack throws null reference exception
+        ///     Tests that texture id stack throws null reference exception
         /// </summary>
         [Fact]
         public void TextureIdStack_ThrowsNullReferenceException()
@@ -2076,7 +2077,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that path throws null reference exception
+        ///     Tests that path throws null reference exception
         /// </summary>
         [Fact]
         public void Path_ThrowsNullReferenceException()
@@ -2089,7 +2090,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that cmd header throws null reference exception
+        ///     Tests that cmd header throws null reference exception
         /// </summary>
         [Fact]
         public void CmdHeader_ThrowsNullReferenceException()
@@ -2102,7 +2103,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that splitter throws null reference exception
+        ///     Tests that splitter throws null reference exception
         /// </summary>
         [Fact]
         public void Splitter_ThrowsNullReferenceException()
@@ -2115,7 +2116,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that fringe scale throws null reference exception
+        ///     Tests that fringe scale throws null reference exception
         /// </summary>
         [Fact]
         public void FringeScale_ThrowsNullReferenceException()
@@ -2128,7 +2129,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that calc circle auto segment count throws dll not found exception
+        ///     Tests that calc circle auto segment count throws dll not found exception
         /// </summary>
         [Fact]
         public void _CalcCircleAutoSegmentCount_ThrowsDllNotFoundException()
@@ -2138,7 +2139,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that clear free memory throws dll not found exception
+        ///     Tests that clear free memory throws dll not found exception
         /// </summary>
         [Fact]
         public void _ClearFreeMemory_ThrowsDllNotFoundException()
@@ -2148,7 +2149,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that on changed clip rect throws dll not found exception
+        ///     Tests that on changed clip rect throws dll not found exception
         /// </summary>
         [Fact]
         public void _OnChangedClipRect_ThrowsDllNotFoundException()
@@ -2158,7 +2159,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that on changed texture id throws dll not found exception
+        ///     Tests that on changed texture id throws dll not found exception
         /// </summary>
         [Fact]
         public void _OnChangedTextureID_ThrowsDllNotFoundException()
@@ -2168,7 +2169,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that on changed vtx offset throws dll not found exception
+        ///     Tests that on changed vtx offset throws dll not found exception
         /// </summary>
         [Fact]
         public void _OnChangedVtxOffset_ThrowsDllNotFoundException()
@@ -2178,7 +2179,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that path arc to fast ex throws dll not found exception
+        ///     Tests that path arc to fast ex throws dll not found exception
         /// </summary>
         [Fact]
         public void _PathArcToFastEx_ThrowsDllNotFoundException()

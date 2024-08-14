@@ -38,12 +38,12 @@ namespace Alis.Core.Graphic.Sdl2.Enums
         ///     The sdl audio stopped sdl audio status
         /// </summary>
         SdlAudioStopped,
-
+        
         /// <summary>
         ///     The sdl audio playing sdl audio status
         /// </summary>
         SdlAudioPlaying,
-
+        
         /// <summary>
         ///     The sdl audio paused sdl audio status
         /// </summary>

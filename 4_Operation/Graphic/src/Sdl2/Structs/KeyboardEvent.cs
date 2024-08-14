@@ -42,7 +42,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     The type
         /// </summary>
         public readonly EventType type;
-
+        
         /// <summary>
         ///     The timestamp
         /// </summary>
@@ -52,17 +52,17 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     The window id
         /// </summary>
         public readonly uint windowID;
-
+        
         /// <summary>
         ///     The state
         /// </summary>
         public readonly byte state;
-
+        
         /// <summary>
         ///     The repeat
         /// </summary>
         public readonly byte repeat;
-
+        
         /// <summary>
         ///     The key sym
         /// </summary>

@@ -27,28 +27,26 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Xunit;
 using System;
-using Alis.Core.Graphic.Sdl2.Structs;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
-
+using Alis.Core.Graphic.Sdl2.Structs;
+using Xunit;
 
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
-
     /// <summary>
-    /// The surface tests class
+    ///     The surface tests class
     /// </summary>
     public class SurfaceTests
     {
         /// <summary>
-        /// Tests that surface initializes with default values
+        ///     Tests that surface initializes with default values
         /// </summary>
         [Fact]
         public void Surface_InitializesWithDefaultValues()
         {
             Surface surface = new Surface();
-
+            
             Assert.Equal(0u, surface.flags);
             Assert.Equal(IntPtr.Zero, surface.Format);
             Assert.Equal(0, surface.w);
@@ -62,9 +60,9 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             Assert.Equal(IntPtr.Zero, surface.Map);
             Assert.Equal(0, surface.refCount);
         }
-
+        
         /// <summary>
-        /// Tests that surface set properties updates values correctly
+        ///     Tests that surface set properties updates values correctly
         /// </summary>
         [Fact]
         public void Surface_SetProperties_UpdatesValuesCorrectly()
@@ -75,7 +73,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             IntPtr listBlitMapPtr = new IntPtr(101112);
             IntPtr mapPtr = new IntPtr(131415);
             RectangleI clipRect = new RectangleI {X = 1, Y = 2, W = 3, H = 4};
-
+            
             Surface surface = new Surface
             {
                 Format = formatPtr,
@@ -85,7 +83,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
                 ClipRect = clipRect,
                 Map = mapPtr
             };
-
+            
             Assert.Equal(formatPtr, surface.Format);
             Assert.Equal(pixelsPtr, surface.Pixels);
             Assert.Equal(userdataPtr, surface.Userdata);

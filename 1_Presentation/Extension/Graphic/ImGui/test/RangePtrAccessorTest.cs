@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test
 {
     /// <summary>
-    /// The range ptr accessor test class
+    ///     The range ptr accessor test class
     /// </summary>
     public class RangePtrAccessorTest
     {
         /// <summary>
-        /// Tests that data should be initialized correctly
+        ///     Tests that data should be initialized correctly
         /// </summary>
         [Fact]
         public void Data_ShouldBeInitializedCorrectly()
@@ -56,7 +56,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that count should be initialized correctly
+        ///     Tests that count should be initialized correctly
         /// </summary>
         [Fact]
         public void Count_ShouldBeInitializedCorrectly()
@@ -72,13 +72,13 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that indexer should return correct value
+        ///     Tests that indexer should return correct value
         /// </summary>
         [Fact]
         public void Indexer_ShouldReturnCorrectValue()
         {
             // Arrange
-            int[] data = new int[] {1, 2, 3, 4, 5};
+            int[] data = {1, 2, 3, 4, 5};
             IntPtr ptr = Marshal.AllocHGlobal(Marshal.SizeOf<int>() * data.Length);
             Marshal.Copy(data, 0, ptr, data.Length);
             RangePtrAccessor<int> accessor = new RangePtrAccessor<int>(ptr, data.Length);
@@ -94,7 +94,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that indexer should throw index out of range exception
+        ///     Tests that indexer should throw index out of range exception
         /// </summary>
         [Fact]
         public void Indexer_ShouldThrowIndexOutOfRangeException()

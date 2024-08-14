@@ -41,12 +41,12 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Node
         ///     The none style flags
         /// </summary>
         None = 0,
-
+        
         /// <summary>
         ///     The node outline style flags
         /// </summary>
         NodeOutline = 1,
-
+        
         /// <summary>
         ///     The grid lines style flags
         /// </summary>

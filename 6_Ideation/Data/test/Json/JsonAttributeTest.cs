@@ -46,7 +46,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             JsonPropertyNameAttribute attribute = new JsonPropertyNameAttribute();
             Assert.NotNull(attribute);
         }
-
+        
         /// <summary>
         ///     Tests that test constructor with name
         /// </summary>
@@ -57,7 +57,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             JsonPropertyNameAttribute attribute = new JsonPropertyNameAttribute(name);
             Assert.Equal(name, attribute.Name);
         }
-
+        
         /// <summary>
         ///     Tests that test name property
         /// </summary>
@@ -68,7 +68,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             JsonPropertyNameAttribute attribute = new JsonPropertyNameAttribute {Name = name};
             Assert.Equal(name, attribute.Name);
         }
-
+        
         /// <summary>
         ///     Tests that test ignore when serializing property
         /// </summary>
@@ -78,7 +78,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             JsonPropertyNameAttribute attribute = new JsonPropertyNameAttribute {IgnoreWhenSerializing = true};
             Assert.True(attribute.IgnoreWhenSerializing);
         }
-
+        
         /// <summary>
         ///     Tests that test ignore when deserializing property
         /// </summary>
@@ -88,7 +88,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             JsonPropertyNameAttribute attribute = new JsonPropertyNameAttribute {IgnoreWhenDeserializing = true};
             Assert.True(attribute.IgnoreWhenDeserializing);
         }
-
+        
         /// <summary>
         ///     Tests that test default value property
         /// </summary>
@@ -99,7 +99,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             JsonPropertyNameAttribute attribute = new JsonPropertyNameAttribute {DefaultValue = defaultValue};
             Assert.Equal(defaultValue, attribute.DefaultValue);
         }
-
+        
         /// <summary>
         ///     Tests that test has default value property
         /// </summary>

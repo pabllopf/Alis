@@ -33,12 +33,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test
 {
     /// <summary>
-    /// The im gui platform monitor test class
+    ///     The im gui platform monitor test class
     /// </summary>
     public class ImGuiPlatformMonitorTest
     {
         /// <summary>
-        /// Tests that main pos should be initialized correctly
+        ///     Tests that main pos should be initialized correctly
         /// </summary>
         [Fact]
         public void MainPos_ShouldBeInitializedCorrectly()
@@ -54,7 +54,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that main size should be initialized correctly
+        ///     Tests that main size should be initialized correctly
         /// </summary>
         [Fact]
         public void MainSize_ShouldBeInitializedCorrectly()
@@ -70,7 +70,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that work pos should be initialized correctly
+        ///     Tests that work pos should be initialized correctly
         /// </summary>
         [Fact]
         public void WorkPos_ShouldBeInitializedCorrectly()
@@ -86,7 +86,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that work size should be initialized correctly
+        ///     Tests that work size should be initialized correctly
         /// </summary>
         [Fact]
         public void WorkSize_ShouldBeInitializedCorrectly()
@@ -102,7 +102,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that dpi scale should be initialized correctly
+        ///     Tests that dpi scale should be initialized correctly
         /// </summary>
         [Fact]
         public void DpiScale_ShouldBeInitializedCorrectly()

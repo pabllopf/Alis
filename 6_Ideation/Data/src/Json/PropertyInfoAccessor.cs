@@ -42,12 +42,12 @@ namespace Alis.Core.Aspect.Data.Json
         ///     The get
         /// </summary>
         private readonly JFunc<TComponent, TMember> _get;
-
+        
         /// <summary>
         ///     The set
         /// </summary>
         private readonly JAction<TComponent, TMember> _set;
-
+        
         /// <summary>
         ///     Initializes a new instance
         /// </summary>
@@ -59,21 +59,21 @@ namespace Alis.Core.Aspect.Data.Json
             {
                 _get = (JFunc<TComponent, TMember>) Delegate.CreateDelegate(typeof(JFunc<TComponent, TMember>), get);
             }
-
+            
             MethodInfo set = pi.GetSetMethod();
             if (set != null)
             {
                 _set = (JAction<TComponent, TMember>) Delegate.CreateDelegate(typeof(JAction<TComponent, TMember>), set);
             }
         }
-
+        
         /// <summary>
         ///     Gets the component
         /// </summary>
         /// <param name="component">The component</param>
         /// <returns>The object</returns>
         public object Get(object component) => _get((TComponent) component);
-
+        
         /// <summary>
         ///     Sets the component
         /// </summary>

@@ -47,7 +47,7 @@ namespace Alis.Core.Network.Sample
         ///     The web socket server factory
         /// </summary>
         private static IWebSocketServerFactory _webSocketServerFactory;
-
+        
         /// <summary>
         ///     Main the args
         /// </summary>
@@ -56,21 +56,21 @@ namespace Alis.Core.Network.Sample
         {
             Logger.LogLevel = LogLevel.Trace;
             Logger.SetDetailLevel(DetailLevel.Minimal);
-
+            
             CancellationTokenSource cts = new CancellationTokenSource();
             _webSocketServerFactory = new WebSocketServerFactory();
             StartWebServer(cts.Token);
-
+            
             Logger.Info("Server is running");
-
+            
             if (args.Length == 0)
             {
                 Logger.Log("Running test 'RunLoadTest'");
                 RunLoadTest().Wait(cts.Token);
-
+                
                 Logger.Log("Running test 'RunSimpleTest'");
                 RunSimpleTest().Wait(cts.Token);
-
+                
                 Logger.Log("Running test 'RunComplexTest'");
                 RunComplexTest(args);
             }
@@ -81,16 +81,16 @@ namespace Alis.Core.Network.Sample
                     "Complex Test: uri numThreads numItemsPerThread minNumBytesPerMessage maxNumBytesPerMessage");
                 Logger.Log("e.g: ws://localhost:27416/chat/echo 5 100 4 4");
             }
-
+            
             Logger.Warning("Press any key to quit...");
             Console.ReadKey();
-
+            
             // Stop the server
             cts.Cancel();
-
+            
             return Task.CompletedTask;
         }
-
+        
         /// <summary>
         ///     Runs the load test
         /// </summary>
@@ -99,7 +99,7 @@ namespace Alis.Core.Network.Sample
             LoadTest client = new LoadTest();
             await client.Run();
         }
-
+        
         /// <summary>
         ///     Runs the complex test using the specified args
         /// </summary>
@@ -111,15 +111,15 @@ namespace Alis.Core.Network.Sample
             int.TryParse("4", out int numItemsPerThread);
             int.TryParse("256", out int minNumBytesPerMessage);
             int.TryParse("1024", out int maxNumBytesPerMessage);
-
+            
             Logger.Log(
                 $"Started DemoClient with Uri '{uri}' numThreads '{numThreads}' numItemsPerThread '{numItemsPerThread}' minNumBytesPerMessage '{minNumBytesPerMessage}' maxNumBytesPerMessage '{maxNumBytesPerMessage}'");
-
+            
             TestRunner runner = new TestRunner(uri, numThreads, numItemsPerThread, minNumBytesPerMessage,
                 maxNumBytesPerMessage);
             runner.Run();
         }
-
+        
         /// <summary>
         ///     Runs the simple test
         /// </summary>
@@ -128,8 +128,8 @@ namespace Alis.Core.Network.Sample
             SimpleClient client = new SimpleClient();
             await client.Run();
         }
-
-
+        
+        
         /// <summary>
         ///     Starts the web server
         /// </summary>

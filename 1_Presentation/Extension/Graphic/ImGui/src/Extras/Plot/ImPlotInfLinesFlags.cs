@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         ///     The none im plot inf lines flags
         /// </summary>
         None = 0,
-
+        
         /// <summary>
         ///     The horizontal im plot inf lines flags
         /// </summary>

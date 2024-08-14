@@ -52,14 +52,14 @@ namespace Alis.Core.Physic.Test.Collision
             float radius = 1.0f;
             Vector2 point = new Vector2(1, 1);
             Transform transform = new Transform();
-
+            
             // Call the method under test
             bool result = TestPointHelper.TestPointCircle(ref pos, radius, ref point, ref transform);
-
+            
             // Assert the result
             Assert.False(result); // Adjust this based on the expected result
         }
-
+        
         /// <summary>
         ///     Tests that test point polygon test
         /// </summary>
@@ -71,14 +71,14 @@ namespace Alis.Core.Physic.Test.Collision
             Vertices normals = new Vertices();
             Vector2 point = new Vector2(1, 1);
             Transform transform = new Transform();
-
+            
             // Call the method under test
             bool result = TestPointHelper.TestPointPolygon(vertices, normals, ref point, ref transform);
-
+            
             // Assert the result
             Assert.True(result); // Adjust this based on the expected result
         }
-
+        
         /// <summary>
         ///     Tests that test point polygon returns true when point is inside polygon
         /// </summary>
@@ -89,12 +89,12 @@ namespace Alis.Core.Physic.Test.Collision
             Vertices normals = new Vertices(new List<Vector2> {new Vector2(0, 1), new Vector2(-1, 0), new Vector2(0, -1)});
             Vector2 point = new Vector2(0.5f, 0.5f);
             Transform transform = new Transform();
-
+            
             bool result = TestPointHelper.TestPointPolygon(vertices, normals, ref point, ref transform);
-
+            
             Assert.False(result);
         }
-
+        
         /// <summary>
         ///     Tests that test point polygon returns false when point is outside polygon
         /// </summary>
@@ -105,9 +105,9 @@ namespace Alis.Core.Physic.Test.Collision
             Vertices normals = new Vertices(new List<Vector2> {new Vector2(0, 1), new Vector2(-1, 0), new Vector2(0, -1)});
             Vector2 point = new Vector2(1.5f, 1.5f);
             Transform transform = new Transform();
-
+            
             bool result = TestPointHelper.TestPointPolygon(vertices, normals, ref point, ref transform);
-
+            
             Assert.False(result);
         }
     }

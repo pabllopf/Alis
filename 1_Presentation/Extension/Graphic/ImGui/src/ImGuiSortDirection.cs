@@ -38,12 +38,12 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The none im gui sort direction
         /// </summary>
         None = 0,
-
+        
         /// <summary>
         ///     The ascending im gui sort direction
         /// </summary>
         Ascending = 1,
-
+        
         /// <summary>
         ///     The descending im gui sort direction
         /// </summary>

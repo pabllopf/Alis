@@ -40,13 +40,13 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     attempting to enqueue another item will cause undefined behavior.
         /// </summary>
         int MaxSize { get; }
-
+        
         /// <summary>
         ///     Resize the queue so it can accept more nodes.  All currently enqueued nodes are remain.
         ///     Attempting to decrease the queue size to a size too small to hold the existing nodes results in undefined behavior
         /// </summary>
         void Resize(int maxNodes);
-
+        
         /// <summary>
         ///     By default, nodes that have been previously added to one queue cannot be added to another queue.
         ///     If you need to do this, please call originalQueue.ResetNode(node) before attempting to add it in the new queue

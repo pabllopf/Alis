@@ -44,7 +44,7 @@ namespace Alis.Core.Ecs.Component.Light
         {
             Logger.Trace();
         }
-
+        
         /// <summary>
         ///     Updates this instance
         /// </summary>

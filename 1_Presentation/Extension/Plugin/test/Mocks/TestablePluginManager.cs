@@ -30,18 +30,18 @@
 namespace Alis.Extension.Plugin.Test.Mocks
 {
     /// <summary>
-    /// The testable plugin manager class
+    ///     The testable plugin manager class
     /// </summary>
-    /// <seealso cref="PluginManager"/>
-    class TestablePluginManager : PluginManager
+    /// <seealso cref="PluginManager" />
+    internal class TestablePluginManager : PluginManager
     {
         /// <summary>
-        /// The load plugin from file call count
+        ///     The load plugin from file call count
         /// </summary>
-        public int LoadPluginFromFileCallCount = 0;
-
+        public int LoadPluginFromFileCallCount;
+        
         /// <summary>
-        /// Loads the plugin from file using the specified plugin file
+        ///     Loads the plugin from file using the specified plugin file
         /// </summary>
         /// <param name="pluginFile">The plugin file</param>
         internal new void LoadPluginFromFile(string pluginFile)

@@ -47,14 +47,14 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             // Arrange
             DistanceOutput distanceOutput = new DistanceOutput();
             float distance = 1.0f;
-
+            
             // Act
             distanceOutput.Distance = distance;
-
+            
             // Assert
             Assert.Equal(distance, distanceOutput.Distance);
         }
-
+        
         /// <summary>
         ///     Tests that iterations property test
         /// </summary>
@@ -64,14 +64,14 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             // Arrange
             DistanceOutput distanceOutput = new DistanceOutput();
             int iterations = 1;
-
+            
             // Act
             distanceOutput.Iterations = iterations;
-
+            
             // Assert
             Assert.Equal(iterations, distanceOutput.Iterations);
         }
-
+        
         /// <summary>
         ///     Tests that point a property test
         /// </summary>
@@ -81,14 +81,14 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             // Arrange
             DistanceOutput distanceOutput = new DistanceOutput();
             Vector2 pointA = new Vector2(1, 1);
-
+            
             // Act
             distanceOutput.PointA = pointA;
-
+            
             // Assert
             Assert.Equal(pointA, distanceOutput.PointA);
         }
-
+        
         /// <summary>
         ///     Tests that point b property test
         /// </summary>
@@ -98,10 +98,10 @@ namespace Alis.Core.Physic.Test.Collision.Distance
             // Arrange
             DistanceOutput distanceOutput = new DistanceOutput();
             Vector2 pointB = new Vector2(1, 1);
-
+            
             // Act
             distanceOutput.PointB = pointB;
-
+            
             // Assert
             Assert.Equal(pointB, distanceOutput.PointB);
         }

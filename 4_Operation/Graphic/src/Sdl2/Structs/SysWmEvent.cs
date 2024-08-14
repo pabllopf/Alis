@@ -43,12 +43,12 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     The type
         /// </summary>
         public readonly EventType type;
-
+        
         /// <summary>
         ///     The timestamp
         /// </summary>
         public readonly uint timestamp;
-
+        
         /// <summary>
         ///     The msg
         /// </summary>

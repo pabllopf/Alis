@@ -46,13 +46,13 @@ namespace Alis.Core.Aspect.Data.Test.Dll
         {
             OSPlatform platform = OSPlatform.Windows;
             Architecture arch = Architecture.X64;
-
+            
             PlatformInfo platformInfo = new PlatformInfo(platform, arch);
-
+            
             Assert.Equal(platform, platformInfo.Platform);
             Assert.Equal(arch, platformInfo.Arch);
         }
-
+        
         /// <summary>
         ///     Tests that test platform info equals
         /// </summary>
@@ -61,13 +61,13 @@ namespace Alis.Core.Aspect.Data.Test.Dll
         {
             OSPlatform platform = OSPlatform.Windows;
             Architecture arch = Architecture.X64;
-
+            
             PlatformInfo platformInfo1 = new PlatformInfo(platform, arch);
             PlatformInfo platformInfo2 = new PlatformInfo(platform, arch);
-
+            
             Assert.True(platformInfo1.Equals(platformInfo2));
         }
-
+        
         /// <summary>
         ///     Tests that test platform info not equals
         /// </summary>
@@ -76,16 +76,16 @@ namespace Alis.Core.Aspect.Data.Test.Dll
         {
             OSPlatform platform1 = OSPlatform.Windows;
             Architecture arch1 = Architecture.X64;
-
+            
             OSPlatform platform2 = OSPlatform.Linux;
             Architecture arch2 = Architecture.X86;
-
+            
             PlatformInfo platformInfo1 = new PlatformInfo(platform1, arch1);
             PlatformInfo platformInfo2 = new PlatformInfo(platform2, arch2);
-
+            
             Assert.False(platformInfo1.Equals(platformInfo2));
         }
-
+        
         /// <summary>
         ///     Tests that test platform info get hash code
         /// </summary>
@@ -94,13 +94,13 @@ namespace Alis.Core.Aspect.Data.Test.Dll
         {
             OSPlatform platform = OSPlatform.Windows;
             Architecture arch = Architecture.X64;
-
+            
             PlatformInfo platformInfo = new PlatformInfo(platform, arch);
             int expectedHashCode = platform.GetHashCode() ^ arch.GetHashCode();
-
+            
             Assert.Equal(expectedHashCode, platformInfo.GetHashCode());
         }
-
+        
         /// <summary>
         ///     Tests that test equals with equal platform info
         /// </summary>
@@ -109,13 +109,13 @@ namespace Alis.Core.Aspect.Data.Test.Dll
         {
             OSPlatform platform = OSPlatform.Windows;
             Architecture arch = Architecture.X64;
-
+            
             PlatformInfo platformInfo1 = new PlatformInfo(platform, arch);
             PlatformInfo platformInfo2 = new PlatformInfo(platform, arch);
-
+            
             Assert.True(platformInfo1.Equals(platformInfo2));
         }
-
+        
         /// <summary>
         ///     Tests that test equals with different platform info
         /// </summary>
@@ -124,16 +124,16 @@ namespace Alis.Core.Aspect.Data.Test.Dll
         {
             OSPlatform platform1 = OSPlatform.Windows;
             Architecture arch1 = Architecture.X64;
-
+            
             OSPlatform platform2 = OSPlatform.Linux;
             Architecture arch2 = Architecture.X86;
-
+            
             PlatformInfo platformInfo1 = new PlatformInfo(platform1, arch1);
             PlatformInfo platformInfo2 = new PlatformInfo(platform2, arch2);
-
+            
             Assert.False(platformInfo1.Equals(platformInfo2));
         }
-
+        
         /// <summary>
         ///     Tests that test equals with non platform info object
         /// </summary>
@@ -142,10 +142,10 @@ namespace Alis.Core.Aspect.Data.Test.Dll
         {
             OSPlatform platform = OSPlatform.Windows;
             Architecture arch = Architecture.X64;
-
+            
             PlatformInfo platformInfo = new PlatformInfo(platform, arch);
             object nonPlatformInfoObject = new object();
-
+            
             Assert.False(platformInfo.Equals(nonPlatformInfoObject));
         }
     }

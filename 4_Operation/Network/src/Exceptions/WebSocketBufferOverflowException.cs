@@ -44,7 +44,7 @@ namespace Alis.Core.Network.Exceptions
         public WebSocketBufferOverflowException()
         {
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="WebSocketBufferOverflowException" /> class
         /// </summary>
@@ -52,7 +52,7 @@ namespace Alis.Core.Network.Exceptions
         public WebSocketBufferOverflowException(string message) : base(message)
         {
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="WebSocketBufferOverflowException" /> class
         /// </summary>

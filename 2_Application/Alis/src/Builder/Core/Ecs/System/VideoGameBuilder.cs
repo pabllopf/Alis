@@ -52,11 +52,11 @@ namespace Alis.Builder.Core.Ecs.System
         /// <summary>Gets or sets the video game.</summary>
         /// <value>The video game.</value>
         private readonly VideoGame videoGame = new VideoGame();
-
+        
         /// <summary>Builds this instance.</summary>
         /// <returns></returns>
         public VideoGame Build() => videoGame;
-
+        
         /// <summary>
         ///     Setting the value
         /// </summary>
@@ -67,7 +67,7 @@ namespace Alis.Builder.Core.Ecs.System
             VideoGame.GetContext().Settings = value.Invoke(new SettingsBuilder());
             return this;
         }
-
+        
         /// <summary>
         ///     Worlds the value
         /// </summary>
@@ -78,9 +78,9 @@ namespace Alis.Builder.Core.Ecs.System
             VideoGame.GetContext().SetSceneManager(value.Invoke(new SceneManagerBuilder()));
             return this;
         }
-
+        
         /// <summary>
-        /// Builds the preview
+        ///     Builds the preview
         /// </summary>
         /// <returns>The video game</returns>
         public VideoGame BuildPreview()
@@ -89,10 +89,10 @@ namespace Alis.Builder.Core.Ecs.System
             videoGame.Context.GraphicManager.Window = Sdl.CreateWindow(videoGame.Context.Settings.General.Name,
                 (int) WindowPos.WindowPosCentered, (int) WindowPos.WindowPosCentered,
                 (int) videoGame.Context.GraphicManager.DefaultSize.X, (int) videoGame.Context.GraphicManager.DefaultSize.Y, flags);
-
+            
             // Create the renderer
             videoGame.Context.GraphicManager.Renderer = Sdl.CreateRenderer(videoGame.Context.GraphicManager.Window, -1, Renderers.SdlRendererAccelerated | Renderers.SdlRendererTargetTexture);
-
+            
             return videoGame;
         }
     }

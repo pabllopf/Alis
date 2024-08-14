@@ -44,10 +44,10 @@ namespace Alis.Test.Core.Ecs.Component.Light
         public void DirectionalLight_DefaultConstructor_ValidInput()
         {
             DirectionalLight directionalLight = new DirectionalLight();
-
+            
             Assert.NotNull(directionalLight);
         }
-
+        
         /// <summary>
         ///     Tests that on init valid input
         /// </summary>
@@ -55,7 +55,7 @@ namespace Alis.Test.Core.Ecs.Component.Light
         public void OnInit_ValidInput()
         {
             DirectionalLight directionalLight = new DirectionalLight();
-
+            
             directionalLight.OnInit();
         }
     }

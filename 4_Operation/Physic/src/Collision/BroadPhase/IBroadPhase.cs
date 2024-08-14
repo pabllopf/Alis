@@ -45,13 +45,13 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         ///     Gets the value of the proxy count
         /// </summary>
         int ProxyCount { get; }
-
+        
         /// <summary>
         ///     Updates the pairs using the specified callback
         /// </summary>
         /// <param name="callback">The callback</param>
         void UpdatePairs(BroadPhaseHandler callback);
-
+        
         /// <summary>
         ///     Describes whether this instance test overlap
         /// </summary>
@@ -59,20 +59,20 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         /// <param name="proxyIdB">The proxy id</param>
         /// <returns>The bool</returns>
         bool TestOverlap(int proxyIdA, int proxyIdB);
-
+        
         /// <summary>
         ///     Adds the proxy using the specified proxy
         /// </summary>
         /// <param name="proxy">The proxy</param>
         /// <returns>The int</returns>
         int AddProxy(ref FixtureProxy proxy);
-
+        
         /// <summary>
         ///     Removes the proxy using the specified proxy id
         /// </summary>
         /// <param name="proxyId">The proxy id</param>
         void RemoveProxy(int proxyId);
-
+        
         /// <summary>
         ///     Moves the proxy using the specified proxy id
         /// </summary>
@@ -80,41 +80,41 @@ namespace Alis.Core.Physic.Collision.BroadPhase
         /// <param name="aabb">The aabb</param>
         /// <param name="displacement">The displacement</param>
         void MoveProxy(int proxyId, ref Aabb aabb, Vector2 displacement);
-
+        
         /// <summary>
         ///     Gets the proxy using the specified proxy id
         /// </summary>
         /// <param name="proxyId">The proxy id</param>
         /// <returns>The fixture proxy</returns>
         FixtureProxy GetProxy(int proxyId);
-
+        
         /// <summary>
         ///     Touches the proxy using the specified proxy id
         /// </summary>
         /// <param name="proxyId">The proxy id</param>
         void TouchProxy(int proxyId);
-
+        
         /// <summary>
         ///     Gets the fat aabb using the specified proxy id
         /// </summary>
         /// <param name="proxyId">The proxy id</param>
         /// <param name="aabb">The aabb</param>
         void GetFatAabb(int proxyId, out Aabb aabb);
-
+        
         /// <summary>
         ///     Queries the callback
         /// </summary>
         /// <param name="callback">The callback</param>
         /// <param name="aabb">The aabb</param>
         void Query(Func<int, bool> callback, ref Aabb aabb);
-
+        
         /// <summary>
         ///     Rays the cast using the specified callback
         /// </summary>
         /// <param name="callback">The callback</param>
         /// <param name="input">The input</param>
         void RayCast(Func<RayCastInput, int, float> callback, ref RayCastInput input);
-
+        
         /// <summary>
         ///     Shifts the origin using the specified new origin
         /// </summary>

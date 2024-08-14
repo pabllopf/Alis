@@ -30,30 +30,44 @@
 namespace Alis.Extension.Plugin.Test.Mocks
 {
     /// <summary>
-    /// The mock plugin class
+    ///     The mock plugin class
     /// </summary>
-    /// <seealso cref="IPlugin"/>
-    class MockPlugin : IPlugin
+    /// <seealso cref="IPlugin" />
+    internal class MockPlugin : IPlugin
     {
         /// <summary>
-        /// Disposes this instance
+        ///     Disposes this instance
         /// </summary>
-        public void Dispose() { }
+        public void Dispose()
+        {
+        }
+        
         /// <summary>
-        /// Initializes this instance
+        ///     Initializes this instance
         /// </summary>
-        public void Initialize() { }
+        public void Initialize()
+        {
+        }
+        
         /// <summary>
-        /// Updates this instance
+        ///     Updates this instance
         /// </summary>
-        public void Update() { }
+        public void Update()
+        {
+        }
+        
         /// <summary>
-        /// Renders this instance
+        ///     Renders this instance
         /// </summary>
-        public void Render() { }
+        public void Render()
+        {
+        }
+        
         /// <summary>
-        /// Shutdowns this instance
+        ///     Shutdowns this instance
         /// </summary>
-        public void Shutdown() { }
+        public void Shutdown()
+        {
+        }
     }
 }

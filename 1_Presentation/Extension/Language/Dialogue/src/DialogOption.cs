@@ -46,12 +46,12 @@ namespace Alis.Extension.Language.Dialogue
             Text = text;
             Action = action;
         }
-
+        
         /// <summary>
         ///     Gets or sets the value of the text
         /// </summary>
         public string Text { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the action
         /// </summary>

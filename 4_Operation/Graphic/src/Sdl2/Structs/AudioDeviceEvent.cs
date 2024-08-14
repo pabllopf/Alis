@@ -41,17 +41,17 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     The type
         /// </summary>
         public uint type;
-
+        
         /// <summary>
         ///     The timestamp
         /// </summary>
         public uint timestamp;
-
+        
         /// <summary>
         ///     The which
         /// </summary>
         public uint which;
-
+        
         /// <summary>
         ///     The is capture
         /// </summary>

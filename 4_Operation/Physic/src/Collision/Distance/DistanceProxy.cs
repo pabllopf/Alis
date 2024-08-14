@@ -29,7 +29,6 @@
 
 using System;
 using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.Shapes;
 
@@ -42,19 +41,18 @@ namespace Alis.Core.Physic.Collision.Distance
         ///     The radius
         /// </summary>
         internal float Radius;
-
+        
         /// <summary>
         ///     The vertices
         /// </summary>
         internal Vector2[] Vertices;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="DistanceProxy" /> class
         /// </summary>
         /// <param name="shape">The shape</param>
         /// <param name="index">The index</param>
         /// <exception cref="NotSupportedException"></exception>
-        
         public DistanceProxy(AShape shape, int index) : this()
         {
             switch (shape.ShapeType)
@@ -62,24 +60,24 @@ namespace Alis.Core.Physic.Collision.Distance
                 case ShapeType.Circle:
                     InitializeCircleShape((CircleShape) shape);
                     break;
-
+                
                 case ShapeType.Polygon:
                     InitializePolygonShape((PolygonShape) shape);
                     break;
-
+                
                 case ShapeType.Chain:
                     InitializeChainShape((ChainShape) shape, index);
                     break;
-
+                
                 case ShapeType.Edge:
                     InitializeEdgeShape((EdgeShape) shape);
                     break;
-
+                
                 default:
                     throw new NotSupportedException();
             }
         }
-
+        
         /// <summary>
         ///     Initializes the circle shape using the specified circle
         /// </summary>
@@ -90,24 +88,23 @@ namespace Alis.Core.Physic.Collision.Distance
             Vertices[0] = circle.PositionCircle;
             Radius = circle.RadiusPrivate;
         }
-
+        
         /// <summary>
         ///     Initializes the polygon shape using the specified polygon
         /// </summary>
         /// <param name="polygon">The polygon</param>
-        
         internal void InitializePolygonShape(PolygonShape polygon)
         {
             Vertices = new Vector2[polygon.VerticesPrivate.Count];
-
+            
             for (int i = 0; i < polygon.VerticesPrivate.Count; i++)
             {
                 Vertices[i] = polygon.VerticesPrivate[i];
             }
-
+            
             Radius = polygon.RadiusPrivate;
         }
-
+        
         /// <summary>
         ///     Initializes the chain shape using the specified chain
         /// </summary>
@@ -116,14 +113,14 @@ namespace Alis.Core.Physic.Collision.Distance
         internal void InitializeChainShape(ChainShape chain, int index)
         {
             Debug.Assert((0 <= index) && (index < chain.Vertices.Count));
-
+            
             Vertices = new Vector2[2];
             Vertices[0] = chain.Vertices[index];
             Vertices[1] = index + 1 < chain.Vertices.Count ? chain.Vertices[index + 1] : chain.Vertices[0];
-
+            
             Radius = chain.RadiusPrivate;
         }
-
+        
         /// <summary>
         ///     Initializes the edge shape using the specified edge
         /// </summary>
@@ -135,7 +132,7 @@ namespace Alis.Core.Physic.Collision.Distance
             Vertices[1] = edge.Vertex2;
             Radius = edge.RadiusPrivate;
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="DistanceProxy" /> class
         /// </summary>
@@ -146,7 +143,7 @@ namespace Alis.Core.Physic.Collision.Distance
             Vertices = vertices;
             Radius = radius;
         }
-
+        
         /// <summary>Get the supporting vertex index in the given direction.</summary>
         /// <param name="direction">The direction.</param>
         public int GetSupport(Vector2 direction)
@@ -162,10 +159,10 @@ namespace Alis.Core.Physic.Collision.Distance
                     bestValue = value;
                 }
             }
-
+            
             return bestIndex;
         }
-
+        
         /// <summary>
         ///     Gets the vertex using the specified index
         /// </summary>

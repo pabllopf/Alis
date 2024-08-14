@@ -32,12 +32,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test
 {
     /// <summary>
-    /// The im gui text filter test class
+    ///     The im gui text filter test class
     /// </summary>
     public class ImGuiTextFilterTest
     {
         /// <summary>
-        /// Tests that input buf should set and get correctly
+        ///     Tests that input buf should set and get correctly
         /// </summary>
         [Fact]
         public void InputBuf_Should_SetAndGetCorrectly()
@@ -47,9 +47,9 @@ namespace Alis.Extension.Graphic.ImGui.Test
             textFilter.InputBuf = inputBuf;
             Assert.Equal(inputBuf, textFilter.InputBuf);
         }
-
+        
         /// <summary>
-        /// Tests that filters should set and get correctly
+        ///     Tests that filters should set and get correctly
         /// </summary>
         [Fact]
         public void Filters_Should_SetAndGetCorrectly()
@@ -59,9 +59,9 @@ namespace Alis.Extension.Graphic.ImGui.Test
             textFilter.Filters = filters;
             Assert.Equal(filters, textFilter.Filters);
         }
-
+        
         /// <summary>
-        /// Tests that count grep should set and get correctly
+        ///     Tests that count grep should set and get correctly
         /// </summary>
         [Fact]
         public void CountGrep_Should_SetAndGetCorrectly()

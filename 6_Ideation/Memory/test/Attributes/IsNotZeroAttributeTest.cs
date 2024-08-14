@@ -47,7 +47,7 @@ namespace Alis.Core.Aspect.Memory.Test.Attributes
             // Arrange
             IsNotZeroAttribute attribute = new IsNotZeroAttribute();
             const int zeroValue = 0;
-
+            
             // Act and Assert
             Assert.Throws<NotZeroException>(() => attribute.Validate(zeroValue, nameof(zeroValue)));
         }

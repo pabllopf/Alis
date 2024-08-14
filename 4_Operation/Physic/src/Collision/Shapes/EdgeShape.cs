@@ -45,12 +45,12 @@ namespace Alis.Core.Physic.Collision.Shapes
         ///     The vertex
         /// </summary>
         private Vector2 vertex1;
-
+        
         /// <summary>
         ///     The vertex
         /// </summary>
         private Vector2 vertex2;
-
+        
         /// <summary>Create a new EdgeShape with the specified start and end. This edge supports two-sided collision.</summary>
         /// <param name="start">The start of the edge.</param>
         /// <param name="end">The end of the edge.</param>
@@ -58,34 +58,34 @@ namespace Alis.Core.Physic.Collision.Shapes
         {
             SetTwoSided(start, end);
         }
-
+        
         /// <summary>Create a new EdgeShape with ghost vertices for smooth collision. This edge only supports one-sided collision.</summary>
         public EdgeShape(Vector2 v0, Vector2 v1, Vector2 v2, Vector2 v3) : base(ShapeType.Edge, Settings.PolygonRadius)
         {
             SetOneSided(v0, v1, v2, v3);
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="EdgeShape" /> class
         /// </summary>
         public EdgeShape() : base(ShapeType.Edge, Settings.PolygonRadius)
         {
         }
-
+        
         /// <summary>
         ///     Gets the value of the child count
         /// </summary>
         public override int ChildCount => 1;
-
+        
         /// <summary>Is true if the edge is connected to an adjacent vertex before vertex 1.</summary>
         public bool OneSided { get; set; }
-
+        
         /// <summary>Optional adjacent vertices. These are used for smooth collision.</summary>
         public Vector2 Vertex0 { get; set; }
-
+        
         /// <summary>Optional adjacent vertices. These are used for smooth collision.</summary>
         public Vector2 Vertex3 { get; set; }
-
+        
         /// <summary>These are the edge vertices</summary>
         public Vector2 Vertex1
         {
@@ -96,7 +96,7 @@ namespace Alis.Core.Physic.Collision.Shapes
                 ComputeProperties();
             }
         }
-
+        
         /// <summary>These are the edge vertices</summary>
         public Vector2 Vertex2
         {
@@ -107,7 +107,7 @@ namespace Alis.Core.Physic.Collision.Shapes
                 ComputeProperties();
             }
         }
-
+        
         /// <summary>
         ///     Sets the one sided using the specified v 0
         /// </summary>
@@ -122,10 +122,10 @@ namespace Alis.Core.Physic.Collision.Shapes
             Vertex2 = v2;
             Vertex3 = v3;
             OneSided = true;
-
+            
             ComputeProperties();
         }
-
+        
         /// <summary>
         ///     Sets the two sided using the specified start
         /// </summary>
@@ -136,10 +136,10 @@ namespace Alis.Core.Physic.Collision.Shapes
             Vertex1 = start;
             Vertex2 = end;
             OneSided = false;
-
+            
             ComputeProperties();
         }
-
+        
         /// <summary>
         ///     Describes whether this instance test point
         /// </summary>
@@ -147,7 +147,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="point">The point</param>
         /// <returns>The bool</returns>
         public override bool TestPoint(ref Transform transform, ref Vector2 point) => false;
-
+        
         /// <summary>
         ///     Describes whether this instance ray cast
         /// </summary>
@@ -160,7 +160,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             out RayCastOutput output) =>
             RayCastHelper.RayCastEdge(ref vertex1, ref vertex2, OneSided, ref input,
                 ref transform, out output);
-
+        
         /// <summary>
         ///     Computes the aabb using the specified transform
         /// </summary>
@@ -171,7 +171,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         {
             AabbHelper.ComputeEdgeAabb(ref vertex1, ref vertex2, ref transform, out aabb);
         }
-
+        
         /// <summary>
         ///     Computes the properties
         /// </summary>
@@ -179,7 +179,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         {
             MassDataPrivate.Centroid = 0.5f * (Vertex1 + Vertex2);
         }
-
+        
         /// <summary>
         ///     Clones this instance
         /// </summary>

@@ -47,14 +47,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             CollectionTObject<int> collection = new CollectionTObject<int> {List = new List<int> {1, 2, 3}};
-
+            
             // Act
             collection.Clear();
-
+            
             // Assert
             Assert.Empty((ICollection<int>) collection.List);
         }
-
+        
         /// <summary>
         ///     Tests that test collection t object add
         /// </summary>
@@ -64,14 +64,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             CollectionTObject<int> collection = new CollectionTObject<int> {List = new List<int>()};
             int value = 1;
-
+            
             // Act
             collection.Add(value);
-
+            
             // Assert
             Assert.Contains(value, (ICollection<int>) collection.List);
         }
-
+        
         /// <summary>
         ///     Tests that test collection t object add null value
         /// </summary>
@@ -80,11 +80,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             CollectionTObject<int?> collection = new CollectionTObject<int?> {List = new List<int?>()};
-
+            
             // Act
             Assert.Throws<JsonException>(() => collection.Add(null));
         }
-
+        
         /// <summary>
         ///     Tests that test collection t object add null value throws exception
         /// </summary>
@@ -93,11 +93,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             CollectionTObject<int> collection = new CollectionTObject<int> {List = new List<int>()};
-
+            
             // Act & Assert
             Assert.Throws<JsonException>(() => collection.Add(null));
         }
-
+        
         /// <summary>
         ///     Tests that test collection t object add value type success
         /// </summary>
@@ -107,11 +107,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             CollectionTObject<int> collection = new CollectionTObject<int>();
             int value = 10;
-
+            
             // Act
             Assert.Throws<NullReferenceException>(() => collection.Add(value));
         }
-
+        
         /// <summary>
         ///     Tests that test collection t object add reference type success
         /// </summary>
@@ -121,11 +121,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             CollectionTObject<string> collection = new CollectionTObject<string>();
             string value = "test";
-
+            
             // Act
             Assert.Throws<NullReferenceException>(() => collection.Add(value));
         }
-
+        
         /// <summary>
         ///     Tests that test collection t object add null value reference type success
         /// </summary>
@@ -135,11 +135,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             CollectionTObject<string> collection = new CollectionTObject<string>();
             string value = null;
-
+            
             // Act
             Assert.Throws<NullReferenceException>(() => collection.Add(value));
         }
-
+        
         /// <summary>
         ///     Tests that test collection t object add null value value type throws exception
         /// </summary>
@@ -149,14 +149,14 @@ namespace Alis.Core.Aspect.Data.Test.Json
             // Arrange
             CollectionTObject<int> collection = new CollectionTObject<int>();
             object value = null;
-
+            
             // Act
             void Action() => collection.Add(value);
-
+            
             // Assert
             Assert.Throws<JsonException>(Action);
         }
-
+        
         /// <summary>
         ///     Tests that add value is null and type is value type throws json exception
         /// </summary>
@@ -166,7 +166,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             CollectionTObject<int> collection = new CollectionTObject<int>();
             Assert.Throws<JsonException>(() => collection.Add(null));
         }
-
+        
         /// <summary>
         ///     Tests that add value is null and type is reference type adds null to collection
         /// </summary>
@@ -176,7 +176,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             CollectionTObject<string> collection = new CollectionTObject<string>();
             Assert.Throws<NullReferenceException>(() => collection.Add(null));
         }
-
+        
         /// <summary>
         ///     Tests that add value is not null adds value to collection
         /// </summary>
@@ -186,7 +186,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             CollectionTObject<int> collection = new CollectionTObject<int>();
             Assert.Throws<NullReferenceException>(() => collection.Add(1));
         }
-
+        
         /// <summary>
         ///     Tests that clear collection is not empty clears collection
         /// </summary>
@@ -196,7 +196,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             CollectionTObject<int> collection = new CollectionTObject<int>();
             Assert.Throws<NullReferenceException>(() => collection.Clear());
         }
-
+        
         /// <summary>
         ///     Tests that list get returns base list
         /// </summary>
@@ -206,7 +206,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             CollectionTObject<int> collection = new CollectionTObject<int>();
             Assert.Equal(collection.Coll, collection.List);
         }
-
+        
         /// <summary>
         ///     Tests that list set sets base list and collection
         /// </summary>
@@ -218,7 +218,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             collection.List = newList;
             Assert.Equal(newList, collection.Coll);
         }
-
+        
         /// <summary>
         ///     Tests that add v 2 value is null and type is value type throws json exception
         /// </summary>
@@ -228,7 +228,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             CollectionTObject<int> collection = new CollectionTObject<int>();
             Assert.Throws<JsonException>(() => collection.Add(null));
         }
-
+        
         /// <summary>
         ///     Tests that add v 2 value is null and type is reference type adds null to collection
         /// </summary>
@@ -238,7 +238,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             CollectionTObject<string> collection = new CollectionTObject<string>();
             Assert.Throws<NullReferenceException>(() => collection.Add(null));
         }
-
+        
         /// <summary>
         ///     Tests that add v 2 value is not null adds value to collection
         /// </summary>
@@ -248,7 +248,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             CollectionTObject<int> collection = new CollectionTObject<int>();
             Assert.Throws<NullReferenceException>(() => collection.Add(1));
         }
-
+        
         /// <summary>
         ///     Tests that clear v 2 collection is not empty clears collection
         /// </summary>
@@ -258,7 +258,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             CollectionTObject<int> collection = new CollectionTObject<int>();
             Assert.Throws<NullReferenceException>(() => collection.Clear());
         }
-
+        
         /// <summary>
         ///     Tests that list get v 2 returns base list
         /// </summary>
@@ -268,7 +268,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             CollectionTObject<int> collection = new CollectionTObject<int>();
             Assert.Equal(collection.Coll, collection.List);
         }
-
+        
         /// <summary>
         ///     Tests that list set v 2 sets base list and collection
         /// </summary>
@@ -280,7 +280,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             collection.List = newList;
             Assert.Equal(newList, collection.Coll);
         }
-
+        
         /// <summary>
         ///     Tests that add value is null and type is value type v 3 throws json exception
         /// </summary>
@@ -291,7 +291,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             JsonOptions options = new JsonOptions();
             Assert.Throws<JsonException>(() => collection.Add(null, options));
         }
-
+        
         /// <summary>
         ///     Tests that add value is null and type is reference type v 3 adds null to collection
         /// </summary>
@@ -302,7 +302,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             JsonOptions options = new JsonOptions();
             Assert.Throws<NullReferenceException>(() => collection.Add(null, options));
         }
-
+        
         /// <summary>
         ///     Tests that add value is not null v 3 adds value to collection
         /// </summary>

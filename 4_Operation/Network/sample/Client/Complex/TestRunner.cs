@@ -42,27 +42,27 @@ namespace Alis.Core.Network.Sample.Client.Complex
         ///     The max num bytes per message
         /// </summary>
         private readonly int _maxNumBytesPerMessage;
-
+        
         /// <summary>
         ///     The min num bytes per message
         /// </summary>
         private readonly int _minNumBytesPerMessage;
-
+        
         /// <summary>
         ///     The num items per thread
         /// </summary>
         private readonly int _numItemsPerThread;
-
+        
         /// <summary>
         ///     The num threads
         /// </summary>
         private readonly int _numThreads;
-
+        
         /// <summary>
         ///     The uri
         /// </summary>
         private readonly Uri _uri;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="TestRunner" /> class
         /// </summary>
@@ -80,7 +80,7 @@ namespace Alis.Core.Network.Sample.Client.Complex
             _minNumBytesPerMessage = minNumBytesPerMessage;
             _maxNumBytesPerMessage = maxNumBytesPerMessage;
         }
-
+        
         /// <summary>
         ///     Runs this instance
         /// </summary>
@@ -90,7 +90,7 @@ namespace Alis.Core.Network.Sample.Client.Complex
             Parallel.For(0, _numThreads, Run);
             Console.WriteLine($"Completed in {stopwatch.Elapsed.TotalMilliseconds:#,##0.00} ms");
         }
-
+        
         /// <summary>
         ///     Runs the index
         /// </summary>

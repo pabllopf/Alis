@@ -48,15 +48,15 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             // Arrange
             int initResult = Sdl.Init(InitSettings.InitEverything);
             Assert.Equal(0, initResult);
-
+            
             TextInputEvent textInputEvent = new TextInputEvent();
-
+            
             // Act
             byte[] result = textInputEvent.Text;
-
+            
             // Assert
             Assert.NotEqual(new byte[] {0}, result);
-
+            
             Sdl.Quit();
         }
     }

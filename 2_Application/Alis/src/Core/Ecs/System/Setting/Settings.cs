@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Ecs.System.Setting.Audio;
 using Alis.Core.Ecs.System.Setting.General;
@@ -58,7 +57,7 @@ namespace Alis.Core.Ecs.System.Setting
             Physic = new PhysicSetting();
             Scene = new SceneSetting();
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Settings" /> class
         /// </summary>
@@ -70,7 +69,6 @@ namespace Alis.Core.Ecs.System.Setting
         /// <param name="physic">The physic</param>
         /// <param name="scene">The scene</param>
         [JsonConstructor]
-        
         public Settings(GeneralSetting general, AudioSetting audio, GraphicSetting graphic, InputSetting input, NetworkSetting network, PhysicSetting physic, SceneSetting scene)
         {
             General = general;
@@ -81,43 +79,43 @@ namespace Alis.Core.Ecs.System.Setting
             Physic = physic;
             Scene = scene;
         }
-
+        
         /// <summary>
         ///     Gets or sets the value of the general
         /// </summary>
         [JsonPropertyName("_General_")]
         public GeneralSetting General { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the audio
         /// </summary>
         [JsonPropertyName("_Audio_")]
         public AudioSetting Audio { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the graphic
         /// </summary>
         [JsonPropertyName("_Graphic_")]
         public GraphicSetting Graphic { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the input
         /// </summary>
         [JsonPropertyName("_Input_")]
         public InputSetting Input { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the network
         /// </summary>
         [JsonPropertyName("_Network_")]
         public NetworkSetting Network { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the physic
         /// </summary>
         [JsonPropertyName("_Physic_")]
         public PhysicSetting Physic { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the scene
         /// </summary>

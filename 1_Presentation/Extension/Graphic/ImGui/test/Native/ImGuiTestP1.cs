@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test.Native
 {
     /// <summary>
-    /// The im gui test class
+    ///     The im gui test class
     /// </summary>
     public class ImGuiTestP1
     {
         /// <summary>
-        /// Tests that combo should throw dll not found exception v 1
+        ///     Tests that combo should throw dll not found exception v 1
         /// </summary>
         [Fact]
         public void Combo_ShouldThrowDllNotFoundException_v1()
@@ -49,7 +49,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that combo should throw dll not found exception v 2
+        ///     Tests that combo should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void Combo_ShouldThrowDllNotFoundException_v2()
@@ -59,7 +59,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that create context should throw dll not found exception v 1
+        ///     Tests that create context should throw dll not found exception v 1
         /// </summary>
         [Fact]
         public void CreateContext_ShouldThrowDllNotFoundException_v1()
@@ -68,7 +68,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that create context should throw dll not found exception v 2
+        ///     Tests that create context should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void CreateContext_ShouldThrowDllNotFoundException_v2()
@@ -78,7 +78,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that debug check version and data layout should throw dll not found exception
+        ///     Tests that debug check version and data layout should throw dll not found exception
         /// </summary>
         [Fact]
         public void DebugCheckVersionAndDataLayout_ShouldThrowDllNotFoundException()
@@ -87,7 +87,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that debug text encoding should throw dll not found exception
+        ///     Tests that debug text encoding should throw dll not found exception
         /// </summary>
         [Fact]
         public void DebugTextEncoding_ShouldThrowDllNotFoundException()
@@ -96,7 +96,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that dock space should throw dll not found exception v 1
+        ///     Tests that dock space should throw dll not found exception v 1
         /// </summary>
         [Fact]
         public void DockSpace_ShouldThrowDllNotFoundException_v1()
@@ -105,7 +105,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that dock space should throw dll not found exception v 2
+        ///     Tests that dock space should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void DockSpace_ShouldThrowDllNotFoundException_v2()
@@ -115,7 +115,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that dock space should throw dll not found exception v 3
+        ///     Tests that dock space should throw dll not found exception v 3
         /// </summary>
         [Fact]
         public void DockSpace_ShouldThrowDllNotFoundException_v3()
@@ -125,7 +125,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that dock space should throw dll not found exception v 4
+        ///     Tests that dock space should throw dll not found exception v 4
         /// </summary>
         [Fact]
         public void DockSpace_ShouldThrowDllNotFoundException_v4()
@@ -136,7 +136,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that dock space over viewport should throw dll not found exception v 1
+        ///     Tests that dock space over viewport should throw dll not found exception v 1
         /// </summary>
         [Fact]
         public void DockSpaceOverViewport_ShouldThrowDllNotFoundException_v1()
@@ -145,7 +145,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that dock space over viewport should throw dll not found exception v 2
+        ///     Tests that dock space over viewport should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void DockSpaceOverViewport_ShouldThrowDllNotFoundException_v2()
@@ -155,7 +155,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that dock space over viewport should throw dll not found exception v 3
+        ///     Tests that dock space over viewport should throw dll not found exception v 3
         /// </summary>
         [Fact]
         public void DockSpaceOverViewport_ShouldThrowDllNotFoundException_v3()
@@ -165,7 +165,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that dock space over viewport should throw dll not found exception v 4
+        ///     Tests that dock space over viewport should throw dll not found exception v 4
         /// </summary>
         [Fact]
         public void DockSpaceOverViewport_ShouldThrowDllNotFoundException_v4()
@@ -176,7 +176,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag float should throw dll not found exception v 1
+        ///     Tests that drag float should throw dll not found exception v 1
         /// </summary>
         [Fact]
         public void DragFloat_ShouldThrowDllNotFoundException_v1()
@@ -186,7 +186,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag float should throw dll not found exception v 2
+        ///     Tests that drag float should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void DragFloat_ShouldThrowDllNotFoundException_v2()
@@ -196,7 +196,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag float should throw dll not found exception v 3
+        ///     Tests that drag float should throw dll not found exception v 3
         /// </summary>
         [Fact]
         public void DragFloat_ShouldThrowDllNotFoundException_v3()
@@ -206,7 +206,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag float should throw dll not found exception v 4
+        ///     Tests that drag float should throw dll not found exception v 4
         /// </summary>
         [Fact]
         public void DragFloat_ShouldThrowDllNotFoundException_v4()
@@ -216,7 +216,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag float should throw dll not found exception v 5
+        ///     Tests that drag float should throw dll not found exception v 5
         /// </summary>
         [Fact]
         public void DragFloat_ShouldThrowDllNotFoundException_v5()
@@ -226,7 +226,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag float should throw dll not found exception v 6
+        ///     Tests that drag float should throw dll not found exception v 6
         /// </summary>
         [Fact]
         public void DragFloat_ShouldThrowDllNotFoundException_v6()
@@ -236,7 +236,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag float 2 should throw dll not found exception v 1
+        ///     Tests that drag float 2 should throw dll not found exception v 1
         /// </summary>
         [Fact]
         public void DragFloat2_ShouldThrowDllNotFoundException_v1()
@@ -246,7 +246,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag float 2 should throw dll not found exception v 2
+        ///     Tests that drag float 2 should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void DragFloat2_ShouldThrowDllNotFoundException_v2()
@@ -256,7 +256,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag float 2 should throw dll not found exception v 3
+        ///     Tests that drag float 2 should throw dll not found exception v 3
         /// </summary>
         [Fact]
         public void DragFloat2_ShouldThrowDllNotFoundException_v3()
@@ -266,7 +266,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag float 2 should throw dll not found exception v 4
+        ///     Tests that drag float 2 should throw dll not found exception v 4
         /// </summary>
         [Fact]
         public void DragFloat2_ShouldThrowDllNotFoundException_v4()
@@ -276,7 +276,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag float 2 should throw dll not found exception v 5
+        ///     Tests that drag float 2 should throw dll not found exception v 5
         /// </summary>
         [Fact]
         public void DragFloat2_ShouldThrowDllNotFoundException_v5()
@@ -286,7 +286,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag float 2 should throw dll not found exception v 6
+        ///     Tests that drag float 2 should throw dll not found exception v 6
         /// </summary>
         [Fact]
         public void DragFloat2_ShouldThrowDllNotFoundException_v6()
@@ -296,7 +296,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag float 3 should throw dll not found exception v 1
+        ///     Tests that drag float 3 should throw dll not found exception v 1
         /// </summary>
         [Fact]
         public void DragFloat3_ShouldThrowDllNotFoundException_v1()
@@ -306,7 +306,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag float 3 should throw dll not found exception v 2
+        ///     Tests that drag float 3 should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void DragFloat3_ShouldThrowDllNotFoundException_v2()
@@ -316,7 +316,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag float 3 should throw dll not found exception v 3
+        ///     Tests that drag float 3 should throw dll not found exception v 3
         /// </summary>
         [Fact]
         public void DragFloat3_ShouldThrowDllNotFoundException_v3()
@@ -326,7 +326,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag float 3 should throw dll not found exception v 4
+        ///     Tests that drag float 3 should throw dll not found exception v 4
         /// </summary>
         [Fact]
         public void DragFloat3_ShouldThrowDllNotFoundException_v4()
@@ -336,7 +336,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag float 3 should throw dll not found exception v 5
+        ///     Tests that drag float 3 should throw dll not found exception v 5
         /// </summary>
         [Fact]
         public void DragFloat3_ShouldThrowDllNotFoundException_v5()
@@ -346,7 +346,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag float 3 should throw dll not found exception v 6
+        ///     Tests that drag float 3 should throw dll not found exception v 6
         /// </summary>
         [Fact]
         public void DragFloat3_ShouldThrowDllNotFoundException_v6()
@@ -356,7 +356,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag float 4 should throw dll not found exception v 1
+        ///     Tests that drag float 4 should throw dll not found exception v 1
         /// </summary>
         [Fact]
         public void DragFloat4_ShouldThrowDllNotFoundException_v1()
@@ -366,7 +366,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag float 4 should throw dll not found exception v 2
+        ///     Tests that drag float 4 should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void DragFloat4_ShouldThrowDllNotFoundException_v2()
@@ -376,7 +376,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag float 4 should throw dll not found exception v 3
+        ///     Tests that drag float 4 should throw dll not found exception v 3
         /// </summary>
         [Fact]
         public void DragFloat4_ShouldThrowDllNotFoundException_v3()
@@ -386,7 +386,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag float 4 should throw dll not found exception v 4
+        ///     Tests that drag float 4 should throw dll not found exception v 4
         /// </summary>
         [Fact]
         public void DragFloat4_ShouldThrowDllNotFoundException_v4()
@@ -396,7 +396,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag float 4 should throw dll not found exception v 5
+        ///     Tests that drag float 4 should throw dll not found exception v 5
         /// </summary>
         [Fact]
         public void DragFloat4_ShouldThrowDllNotFoundException_v5()
@@ -406,7 +406,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag float 4 should throw dll not found exception v 6
+        ///     Tests that drag float 4 should throw dll not found exception v 6
         /// </summary>
         [Fact]
         public void DragFloat4_ShouldThrowDllNotFoundException_v6()
@@ -416,7 +416,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag float range 2 should throw dll not found exception v 1
+        ///     Tests that drag float range 2 should throw dll not found exception v 1
         /// </summary>
         [Fact]
         public void DragFloatRange2_ShouldThrowDllNotFoundException_v1()
@@ -427,7 +427,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag float range 2 should throw dll not found exception v 2
+        ///     Tests that drag float range 2 should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void DragFloatRange2_ShouldThrowDllNotFoundException_v2()
@@ -438,7 +438,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag float range 2 should throw dll not found exception v 3
+        ///     Tests that drag float range 2 should throw dll not found exception v 3
         /// </summary>
         [Fact]
         public void DragFloatRange2_ShouldThrowDllNotFoundException_v3()
@@ -449,7 +449,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag float range 2 should throw dll not found exception v 4
+        ///     Tests that drag float range 2 should throw dll not found exception v 4
         /// </summary>
         [Fact]
         public void DragFloatRange2_ShouldThrowDllNotFoundException_v4()
@@ -460,7 +460,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag float range 2 should throw dll not found exception v 5
+        ///     Tests that drag float range 2 should throw dll not found exception v 5
         /// </summary>
         [Fact]
         public void DragFloatRange2_ShouldThrowDllNotFoundException_v5()
@@ -471,7 +471,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag float range 2 should throw dll not found exception v 6
+        ///     Tests that drag float range 2 should throw dll not found exception v 6
         /// </summary>
         [Fact]
         public void DragFloatRange2_ShouldThrowDllNotFoundException_v6()
@@ -482,7 +482,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag int should throw dll not found exception
+        ///     Tests that drag int should throw dll not found exception
         /// </summary>
         [Fact]
         public void DragInt_ShouldThrowDllNotFoundException()

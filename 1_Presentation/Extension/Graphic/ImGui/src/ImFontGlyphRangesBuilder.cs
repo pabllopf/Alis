@@ -38,8 +38,8 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The used chars
         /// </summary>
         public ImVector UsedChars { get; set; }
-
-
+        
+        
         /// <summary>
         ///     Adds the char using the specified c
         /// </summary>
@@ -48,7 +48,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.ImFontGlyphRangesBuilder_AddChar(ref this, c);
         }
-
+        
         /// <summary>
         ///     Clears this instance
         /// </summary>
@@ -56,7 +56,7 @@ namespace Alis.Extension.Graphic.ImGui
         {
             ImGuiNative.ImFontGlyphRangesBuilder_Clear(ref this);
         }
-
+        
         /// <summary>
         ///     Describes whether this instance get bit
         /// </summary>
@@ -67,7 +67,7 @@ namespace Alis.Extension.Graphic.ImGui
             byte ret = ImGuiNative.ImFontGlyphRangesBuilder_GetBit(ref this, n);
             return ret != 0;
         }
-
+        
         /// <summary>
         ///     Sets the bit using the specified n
         /// </summary>

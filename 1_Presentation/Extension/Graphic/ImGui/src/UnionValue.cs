@@ -41,19 +41,16 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The value 32
         /// </summary>
-        [FieldOffset(0)] 
-        public int ValueI32;
-
+        [FieldOffset(0)] public int ValueI32;
+        
         /// <summary>
         ///     The value 32
         /// </summary>
-        [FieldOffset(0)] 
-        public float ValueF32;
-
+        [FieldOffset(0)] public float ValueF32;
+        
         /// <summary>
         ///     The value ptr
         /// </summary>
-        [FieldOffset(0)] 
-        public IntPtr ValuePtr;
+        [FieldOffset(0)] public IntPtr ValuePtr;
     }
 }

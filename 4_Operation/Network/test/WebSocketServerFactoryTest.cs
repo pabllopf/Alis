@@ -55,7 +55,7 @@ namespace Alis.Core.Network.Test
             Assert.NotNull(context);
             Assert.True(context.IsWebSocketRequest);
         }
-
+        
         /// <summary>
         ///     Tests that perform handshake async valid input
         /// </summary>
@@ -68,12 +68,12 @@ namespace Alis.Core.Network.Test
             string subProtocol = "chat";
             MemoryStream stream = new MemoryStream();
             CancellationToken token = new CancellationToken();
-
+            
             await WebSocketServerFactory.PerformHandshakeAsync(guid, httpHeader, subProtocol, stream, token);
-
+            
             Assert.Equal(219, stream.Position);
         }
-
+        
         /// <summary>
         ///     Tests that perform handshake async invalid input
         /// </summary>
@@ -86,10 +86,10 @@ namespace Alis.Core.Network.Test
             string subProtocol = "chat";
             MemoryStream stream = new MemoryStream();
             CancellationToken token = new CancellationToken();
-
+            
             await Assert.ThrowsAsync<WebSocketVersionNotSupportedException>(() => WebSocketServerFactory.PerformHandshakeAsync(guid, httpHeader, subProtocol, stream, token));
         }
-
+        
         /// <summary>
         ///     Tests that accept web socket async default options
         /// </summary>
@@ -99,10 +99,10 @@ namespace Alis.Core.Network.Test
             MemoryStream stream = new MemoryStream();
             WebSocketHttpContext context = new WebSocketHttpContext(true, new List<string>(), "header", "path", stream);
             WebSocketServerFactory factory = new WebSocketServerFactory();
-
+            
             await Assert.ThrowsAsync<SecWebSocketKeyMissingException>(() => factory.AcceptWebSocketAsync(context));
         }
-
+        
         /// <summary>
         ///     Tests that accept web socket async valid input
         /// </summary>
@@ -112,10 +112,10 @@ namespace Alis.Core.Network.Test
             WebSocketHttpContext context = new WebSocketHttpContext(true, new List<string>(), "header", "path", new MemoryStream());
             WebSocketServerOptions options = new WebSocketServerOptions();
             WebSocketServerFactory factory = new WebSocketServerFactory();
-
+            
             await Assert.ThrowsAsync<SecWebSocketKeyMissingException>(() => factory.AcceptWebSocketAsync(context, options));
         }
-
+        
         /// <summary>
         ///     Tests that accept web socket async invalid input
         /// </summary>
@@ -125,10 +125,10 @@ namespace Alis.Core.Network.Test
             WebSocketHttpContext context = new WebSocketHttpContext(false, new List<string>(), "header", "path", new MemoryStream());
             WebSocketServerOptions options = new WebSocketServerOptions();
             WebSocketServerFactory factory = new WebSocketServerFactory();
-
+            
             await Assert.ThrowsAsync<SecWebSocketKeyMissingException>(() => factory.AcceptWebSocketAsync(context, options));
         }
-
+        
         /// <summary>
         ///     Tests that extract web socket version valid input
         /// </summary>
@@ -137,12 +137,12 @@ namespace Alis.Core.Network.Test
         {
             string httpHeader = "GET /chat HTTP/1.1\r\nHost: server.example.com\r\nUpgrade: websocket\r\nConnection: Upgrade\r\nSec-WebSocket-Key: x3JJHMbDL1EzLkh9GBhXDw==\r\nSec-WebSocket-Protocol: chat, superchat\r\nSec-WebSocket-Version: 13\r\nOrigin: http://example.com\r\n\r\n";
             int expectedVersion = 13;
-
+            
             int actualVersion = WebSocketServerFactory.ExtractWebSocketVersion(httpHeader);
-
+            
             Assert.Equal(expectedVersion, actualVersion);
         }
-
+        
         /// <summary>
         ///     Tests that extract web socket version invalid input
         /// </summary>
@@ -150,10 +150,10 @@ namespace Alis.Core.Network.Test
         public void ExtractWebSocketVersion_InvalidInput()
         {
             const string httpHeader = "GET /chat HTTP/1.1\r\nHost: server.example.com\r\nUpgrade: websocket\r\nConnection: Upgrade\r\nSec-WebSocket-Key: x3JJHMbDL1EzLkh9GBhXDw==\r\nSec-WebSocket-Protocol: chat, superchat\r\nOrigin: http://example.com\r\n\r\n";
-
+            
             Assert.Throws<WebSocketVersionNotSupportedException>(() => WebSocketServerFactory.ExtractWebSocketVersion(httpHeader));
         }
-
+        
         /// <summary>
         ///     Tests that perform handshake async valid input v 2
         /// </summary>
@@ -165,12 +165,12 @@ namespace Alis.Core.Network.Test
             string subProtocol = "chat";
             MemoryStream stream = new MemoryStream();
             CancellationToken token = new CancellationToken();
-
+            
             await WebSocketServerFactory.PerformHandshakeAsync(guid, httpHeader, subProtocol, stream, token);
-
+            
             Assert.Equal(219, stream.Position);
         }
-
+        
         /// <summary>
         ///     Tests that perform handshake async invalid input 2
         /// </summary>
@@ -182,7 +182,7 @@ namespace Alis.Core.Network.Test
             string subProtocol = "chat";
             MemoryStream stream = new MemoryStream();
             CancellationToken token = new CancellationToken();
-
+            
             await Assert.ThrowsAsync<WebSocketVersionNotSupportedException>(() => WebSocketServerFactory.PerformHandshakeAsync(guid, httpHeader, subProtocol, stream, token));
         }
     }

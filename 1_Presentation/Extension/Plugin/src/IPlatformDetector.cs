@@ -30,32 +30,36 @@
 namespace Alis.Extension.Plugin
 {
     /// <summary>
-    /// The platform detector interface
+    ///     The platform detector interface
     /// </summary>
     public interface IPlatformDetector
     {
         /// <summary>
-        /// Describes whether this instance is windows
+        ///     Describes whether this instance is windows
         /// </summary>
         /// <returns>The bool</returns>
         public bool IsWindows();
+        
         /// <summary>
-        /// Describes whether this instance is osx
+        ///     Describes whether this instance is osx
         /// </summary>
         /// <returns>The bool</returns>
         public bool IsOSX();
+        
         /// <summary>
-        /// Describes whether this instance is linux
+        ///     Describes whether this instance is linux
         /// </summary>
         /// <returns>The bool</returns>
         public bool IsLinux();
+        
         /// <summary>
-        /// Describes whether this instance isi os
+        ///     Describes whether this instance isi os
         /// </summary>
         /// <returns>The bool</returns>
         public bool IsiOS();
+        
         /// <summary>
-        /// Describes whether this instance is android
+        ///     Describes whether this instance is android
         /// </summary>
         /// <returns>The bool</returns>
         public bool IsAndroid();

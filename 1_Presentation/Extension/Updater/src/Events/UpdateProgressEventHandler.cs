@@ -30,7 +30,7 @@
 namespace Alis.Extension.Updater.Events
 {
     /// <summary>
-    /// The update progress event handler
+    ///     The update progress event handler
     /// </summary>
     public delegate void UpdateProgressEventHandler(float progress, string message);
 }

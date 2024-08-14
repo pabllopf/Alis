@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.IO;
 
 namespace Alis.Core.Aspect.Data.Resource
@@ -36,7 +35,6 @@ namespace Alis.Core.Aspect.Data.Resource
     /// <summary>
     ///     The example class
     /// </summary>
-    
     public static class AssetManager
     {
         /// <summary>
@@ -52,7 +50,7 @@ namespace Alis.Core.Aspect.Data.Resource
             ValidateFileCount(files, assetName);
             return GetFilePath(files);
         }
-
+        
         /// <summary>
         ///     Validates the asset name using the specified asset name
         /// </summary>
@@ -64,13 +62,12 @@ namespace Alis.Core.Aspect.Data.Resource
             ValidateAssetNameHasNoInvalidChars(assetName);
             ValidateAssetNameHasExtension(assetName);
         }
-
+        
         /// <summary>
         ///     Validates the asset name is not null using the specified asset name
         /// </summary>
         /// <param name="assetName">The asset name</param>
         /// <exception cref="ArgumentNullException"></exception>
-        
         internal static void ValidateAssetNameIsNotNull(string assetName)
         {
             if (assetName == null)
@@ -78,7 +75,7 @@ namespace Alis.Core.Aspect.Data.Resource
                 throw new ArgumentNullException(nameof(assetName));
             }
         }
-
+        
         /// <summary>
         ///     Validates the asset name is not empty using the specified asset name
         /// </summary>
@@ -91,7 +88,7 @@ namespace Alis.Core.Aspect.Data.Resource
                 throw new ArgumentException("The asset name cannot be empty.", nameof(assetName));
             }
         }
-
+        
         /// <summary>
         ///     Validates the asset name has no invalid chars using the specified asset name
         /// </summary>
@@ -104,20 +101,19 @@ namespace Alis.Core.Aspect.Data.Resource
                 throw new ArgumentException("The asset name contains invalid characters.", nameof(assetName));
             }
         }
-
+        
         /// <summary>
         ///     Checks if the asset name has any invalid characters
         /// </summary>
         /// <param name="assetName">The asset name</param>
         /// <returns>True if the asset name is invalid, false otherwise</returns>
         internal static bool IsInvalidAssetName(string assetName) => assetName.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0;
-
+        
         /// <summary>
         ///     Validates the asset name has extension using the specified asset name
         /// </summary>
         /// <param name="assetName">The asset name</param>
         /// <exception cref="ArgumentException">The asset name must have extension. </exception>
-        
         internal static void ValidateAssetNameHasExtension(string assetName)
         {
             if (!assetName.Contains("."))
@@ -125,7 +121,7 @@ namespace Alis.Core.Aspect.Data.Resource
                 throw new ArgumentException("The asset name must have extension.", nameof(assetName));
             }
         }
-
+        
         /// <summary>
         ///     Gets the assets directory
         /// </summary>
@@ -135,7 +131,7 @@ namespace Alis.Core.Aspect.Data.Resource
             string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
             return Path.Combine(baseDirectory, "Assets");
         }
-
+        
         /// <summary>
         ///     Gets the files in assets directory using the specified assets directory
         /// </summary>
@@ -143,7 +139,7 @@ namespace Alis.Core.Aspect.Data.Resource
         /// <param name="assetName">The asset name</param>
         /// <returns>The string array</returns>
         internal static string[] GetFilesInAssetsDirectory(string assetsDirectory, string assetName) => Directory.GetFiles(assetsDirectory, assetName, SearchOption.AllDirectories);
-
+        
         /// <summary>
         ///     Validates the file count using the specified files
         /// </summary>
@@ -160,7 +156,7 @@ namespace Alis.Core.Aspect.Data.Resource
                 throw new InvalidOperationException($"Multiple files with the name '{assetName}' were found. Unable to determine the correct file.");
             }
         }
-
+        
         /// <summary>
         ///     Gets the file path using the specified files
         /// </summary>

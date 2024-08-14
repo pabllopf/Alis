@@ -41,12 +41,12 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The data
         /// </summary>
         public readonly IntPtr Data;
-
+        
         /// <summary>
         ///     The count
         /// </summary>
         public readonly int Count;
-
+        
         /// <summary>
         ///     Initializes a new instance of the  class
         /// </summary>
@@ -57,7 +57,7 @@ namespace Alis.Extension.Graphic.ImGui
             Data = data;
             Count = count;
         }
-
+        
         /// <summary>
         ///     The free
         /// </summary>
@@ -69,7 +69,7 @@ namespace Alis.Extension.Graphic.ImGui
                 {
                     throw new IndexOutOfRangeException();
                 }
-
+                
                 byte[] bytes = new byte[Marshal.SizeOf<T>()];
                 Marshal.Copy(Data + index * Marshal.SizeOf<T>(), bytes, 0, bytes.Length);
                 GCHandle handle = GCHandle.Alloc(bytes, GCHandleType.Pinned);

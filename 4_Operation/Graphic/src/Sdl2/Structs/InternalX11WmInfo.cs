@@ -42,7 +42,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     Refers to a Display*
         /// </summary>
         public IntPtr Display { get; set; }
-
+        
         /// <summary>
         ///     Refers to a Window (XID, use ToInt64!)
         /// </summary>

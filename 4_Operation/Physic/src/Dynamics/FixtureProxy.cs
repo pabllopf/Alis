@@ -38,17 +38,17 @@ namespace Alis.Core.Physic.Dynamics
         ///     The aabb
         /// </summary>
         public Aabb Aabb;
-
+        
         /// <summary>
         ///     The child index
         /// </summary>
         public int ChildIndex { get; set; }
-
+        
         /// <summary>
         ///     The fixture
         /// </summary>
         public Fixture Fixture { get; set; }
-
+        
         /// <summary>
         ///     The proxy id
         /// </summary>

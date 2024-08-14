@@ -38,22 +38,22 @@ namespace Alis.Core.Graphic.Sdl2.Enums
         ///     The sdl power state unknown sdl power state
         /// </summary>
         SdlPowerStateUnknown = 0,
-
+        
         /// <summary>
         ///     The sdl power state on battery sdl power state
         /// </summary>
         SdlPowerStateOnBattery,
-
+        
         /// <summary>
         ///     The sdl power state no battery sdl power state
         /// </summary>
         SdlPowerStateNoBattery,
-
+        
         /// <summary>
         ///     The sdl power state charging sdl power state
         /// </summary>
         SdlPowerStateCharging,
-
+        
         /// <summary>
         ///     The sdl power state charged sdl power state
         /// </summary>

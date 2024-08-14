@@ -46,86 +46,86 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
         ///     The close pixels length
         /// </summary>
         private const int ClosePixelsLength = 8;
-
-
+        
+        
         /// <summary>
         ///     The close pixels
         /// </summary>
         private static readonly int[,] ClosePixels = {{-1, -1}, {0, -1}, {1, -1}, {1, 0}, {1, 1}, {0, 1}, {-1, 1}, {-1, 0}};
-
-
+        
+        
         /// <summary>
         ///     The alpha tolerance
         /// </summary>
         private uint alphaTolerance;
-
-
+        
+        
         /// <summary>
         ///     The data
         /// </summary>
         private uint[] data;
-
-
+        
+        
         /// <summary>
         ///     The data length
         /// </summary>
         private int dataLength;
-
-
+        
+        
         /// <summary>
         ///     The height
         /// </summary>
         private int height;
-
-
+        
+        
         /// <summary>
         ///     The hole detection
         /// </summary>
         private bool holeDetection;
-
-
+        
+        
         /// <summary>
         ///     The hull tolerance
         /// </summary>
         private float hullTolerance;
-
-
+        
+        
         /// <summary>
         ///     The multipart detection
         /// </summary>
         private bool multipartDetection;
-
-
+        
+        
         /// <summary>
         ///     The polygon detection type
         /// </summary>
         private VerticesDetectionType polygonDetectionType;
-
-
+        
+        
         /// <summary>
         ///     The temp is solid
         /// </summary>
         private int tempIsSolidX;
-
-
+        
+        
         /// <summary>
         ///     The temp is solid
         /// </summary>
         private int tempIsSolidY;
-
-
+        
+        
         /// <summary>
         ///     The identity
         /// </summary>
         private Matrix4X4 transform = Matrix4X4.Identity;
-
-
+        
+        
         /// <summary>
         ///     The width
         /// </summary>
         private int width;
-
-
+        
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="TextureConverter" /> class
         /// </summary>
@@ -133,8 +133,8 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
         {
             Initialize(null, null, null, null, null, null, null);
         }
-
-
+        
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="TextureConverter" /> class
         /// </summary>
@@ -149,8 +149,8 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
             Initialize(null, null, alphaTolerance, hullTolerance, holeDetection,
                 multipartDetection, transform);
         }
-
-
+        
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="TextureConverter" /> class
         /// </summary>
@@ -160,8 +160,8 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
         {
             Initialize(data, width, null, null, null, null, null);
         }
-
-
+        
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="TextureConverter" /> class
         /// </summary>
@@ -178,8 +178,8 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
             Initialize(data, width, alphaTolerance, hullTolerance, holeDetection,
                 multipartDetection, transform);
         }
-
-
+        
+        
         /// <summary>
         ///     Gets or sets the value of the polygon detection type
         /// </summary>
@@ -188,8 +188,8 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
             get => polygonDetectionType;
             set => polygonDetectionType = value;
         }
-
-
+        
+        
         /// <summary>
         ///     Gets or sets the value of the hole detection
         /// </summary>
@@ -198,8 +198,8 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
             get => holeDetection;
             set => holeDetection = value;
         }
-
-
+        
+        
         /// <summary>
         ///     Gets or sets the value of the multipart detection
         /// </summary>
@@ -208,8 +208,8 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
             get => multipartDetection;
             set => multipartDetection = value;
         }
-
-
+        
+        
         /// <summary>
         ///     Gets or sets the value of the transform
         /// </summary>
@@ -218,8 +218,8 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
             get => transform;
             set => transform = value;
         }
-
-
+        
+        
         /// <summary>
         ///     Gets or sets the value of the alpha tolerance
         /// </summary>
@@ -228,8 +228,8 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
             get => (byte) (alphaTolerance >> 24);
             set => alphaTolerance = (uint) value << 24;
         }
-
-
+        
+        
         /// <summary>
         ///     Gets or sets the value of the hull tolerance
         /// </summary>
@@ -252,8 +252,8 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
                 }
             }
         }
-
-
+        
+        
         /// <summary>
         ///     Initializes the data local
         /// </summary>
@@ -272,29 +272,29 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
             {
                 throw new ArgumentNullException(nameof(widthLocal), "'width' can't be null if 'data' is set.");
             }
-
+            
             if ((dataLocal == null) && widthLocal.HasValue)
             {
                 throw new ArgumentNullException(nameof(dataLocal), "'data' can't be null if 'width' is set.");
             }
-
+            
             if (dataLocal != null)
             {
                 SetTextureData(dataLocal, widthLocal.Value);
             }
-
+            
             AlphaTolerance = alphaToleranceLocal ?? 20;
-
+            
             HullTolerance = hullToleranceLocal ?? 1.5f;
-
+            
             HoleDetection = holeDetectionLocal.HasValue && holeDetectionLocal.Value;
-
+            
             MultipartDetection = multipartDetectionLocal.HasValue && multipartDetectionLocal.Value;
-
+            
             Transform = transformLocal ?? Matrix4X4.Identity;
         }
-
-
+        
+        
         /// <summary>
         ///     Sets the texture data using the specified data local
         /// </summary>
@@ -316,31 +316,31 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
             {
                 throw new ArgumentNullException(nameof(dataLocal), "'data' can't be null.");
             }
-
+            
             if (dataLocal.Length < 4)
             {
                 throw new ArgumentOutOfRangeException(nameof(dataLocal),
                     "'data' length can't be less then 4. Your texture must be at least 2 x 2 pixels in size.");
             }
-
+            
             if (widthLocal < 2)
             {
                 throw new ArgumentOutOfRangeException(nameof(widthLocal),
                     "'width' can't be less then 2. Your texture must be at least 2 x 2 pixels in size.");
             }
-
+            
             if (dataLocal.Length % widthLocal != 0)
             {
                 throw new ArgumentException("'width' has an invalid value.");
             }
-
+            
             data = dataLocal;
             dataLength = data.Length;
             width = widthLocal;
             height = dataLength / widthLocal;
         }
-
-
+        
+        
         /// <summary>
         ///     Detects the vertices using the specified data
         /// </summary>
@@ -350,13 +350,13 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
         public static Vertices DetectVertices(uint[] data, int width)
         {
             TextureConverter tc = new TextureConverter(data, width);
-
+            
             List<Vertices> detectedVerticesList = tc.DetectVertices();
-
+            
             return detectedVerticesList[0];
         }
-
-
+        
+        
         /// <summary>
         ///     Detects the vertices using the specified data
         /// </summary>
@@ -370,13 +370,13 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
             {
                 HoleDetection = holeDetection
             };
-
+            
             List<Vertices> detectedVerticesList = tc.DetectVertices();
-
+            
             return detectedVerticesList[0];
         }
-
-
+        
+        
         /// <summary>
         ///     Detects the vertices using the specified data
         /// </summary>
@@ -398,19 +398,19 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
                     MultipartDetection = multiPartDetection,
                     HoleDetection = holeDetection
                 };
-
+            
             List<Vertices> detectedVerticesList = tc.DetectVertices();
             List<Vertices> result = new List<Vertices>();
-
+            
             for (int i = 0; i < detectedVerticesList.Count; i++)
             {
                 result.Add(detectedVerticesList[i]);
             }
-
+            
             return result;
         }
-
-
+        
+        
         /// <summary>
         ///     Detects the vertices
         /// </summary>
@@ -419,26 +419,26 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
         private List<Vertices> DetectVertices()
         {
             ValidateInput();
-
+            
             List<Vertices> detectedPolygons = new List<Vertices>();
             Vector2? holeEntrance = null;
             Vector2? polygonEntrance = null;
             List<Vector2> blackList = new List<Vector2>();
-
+            
             bool searchOn;
-
+            
             do
             {
                 Vertices polygon = CreatePolygon(detectedPolygons, ref polygonEntrance);
-
+                
                 searchOn = false;
-
+                
                 if (polygon.Count > 2)
                 {
                     ProcessHoleDetection(polygon, ref holeEntrance, blackList);
                     AddPolygonToList(detectedPolygons, polygon);
                 }
-
+                
                 if (multipartDetection || polygon.Count <= 2)
                 {
                     if ((polygonEntrance != null) && SearchNextHullEntrance(detectedPolygons, polygonEntrance.Value, out polygonEntrance))
@@ -447,18 +447,18 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
                     }
                 }
             } while (searchOn);
-
+            
             if (detectedPolygons.Count == 0)
             {
                 throw new Exception("Couldn't detect any vertices.");
             }
-
+            
             PostProcessPolygons(ref detectedPolygons);
-
+            
             return detectedPolygons;
         }
-
-
+        
+        
         /// <summary>
         ///     Creates the polygon using the specified detected polygons
         /// </summary>
@@ -472,17 +472,17 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
                 // First pass / single polygon
                 return CreateInitialPolygon(ref polygonEntrance);
             }
-
+            
             if (polygonEntrance.HasValue)
             {
                 // Multi pass / multiple polygons
                 return CreateNextPolygon(polygonEntrance.Value);
             }
-
+            
             return new Vertices();
         }
-
-
+        
+        
         /// <summary>
         ///     Processes the hole detection using the specified polygon
         /// </summary>
@@ -496,13 +496,13 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
                 do
                 {
                     holeEntrance = SearchHoleEntrance(polygon, holeEntrance);
-
+                    
                     if (holeEntrance.HasValue && !blackList.Contains(holeEntrance.Value))
                     {
                         blackList.Add(holeEntrance.Value);
                         Vertices holePolygon = CreateSimplePolygon(holeEntrance.Value,
                             new Vector2(holeEntrance.Value.X + 1, holeEntrance.Value.Y));
-
+                        
                         if ((holePolygon != null) && (holePolygon.Count > 2))
                         {
                             ProcessHolePolygon(polygon, holeEntrance.Value, holePolygon);
@@ -515,8 +515,8 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
                 } while (true);
             }
         }
-
-
+        
+        
         /// <summary>
         ///     Adds the polygon to list using the specified detected polygons
         /// </summary>
@@ -526,8 +526,8 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
         {
             detectedPolygons.Add(polygon);
         }
-
-
+        
+        
         /// <summary>
         ///     Creates the initial polygon using the specified polygon entrance
         /// </summary>
@@ -536,24 +536,24 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
         private Vertices CreateInitialPolygon(ref Vector2? polygonEntrance)
         {
             Vertices polygon = new Vertices(CreateSimplePolygon(Vector2.Zero, Vector2.Zero));
-
+            
             if (polygon.Count > 2)
             {
                 polygonEntrance = GetTopMostVertex(polygon);
             }
-
+            
             return polygon;
         }
-
-
+        
+        
         /// <summary>
         ///     Creates the next polygon using the specified entrance
         /// </summary>
         /// <param name="entrance">The entrance</param>
         /// <returns>The vertices</returns>
         private Vertices CreateNextPolygon(Vector2 entrance) => new Vertices(CreateSimplePolygon(entrance, new Vector2(entrance.X - 1f, entrance.Y)));
-
-
+        
+        
         /// <summary>
         ///     Processes the hole polygon using the specified polygon
         /// </summary>
@@ -565,7 +565,7 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
             if (polygonDetectionType == VerticesDetectionType.Integrated)
             {
                 holePolygon.Add(holePolygon[0]);
-
+                
                 if (SplitPolygonEdge(polygon, holeEntrance, out int vertex2Index))
                 {
                     polygon.InsertRange(vertex2Index, holePolygon);
@@ -577,8 +577,8 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
                 polygon.Holes.Add(holePolygon);
             }
         }
-
-
+        
+        
         /// <summary>
         ///     Posts the process polygons using the specified detected polygons
         /// </summary>
@@ -589,14 +589,14 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
             {
                 ApplyTriangulationCompatibleWinding(ref detectedPolygons);
             }
-
+            
             if (transform != Matrix4X4.Identity)
             {
                 ApplyTransform(ref detectedPolygons);
             }
         }
-
-
+        
+        
         /// <summary>
         ///     Validates the input
         /// </summary>
@@ -622,24 +622,24 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
             {
                 throw new DataSizeException("'data' can't be null. You have to use SetTextureData(uint[] data, int width) before calling this method.");
             }
-
+            
             if (data.Length < 4)
             {
                 throw new DataSizeException("'data' length can't be less than 4. Your texture must be at least 2 x 2 pixels in size. You have to use SetTextureData(uint[] data, int width) before calling this method.");
             }
-
+            
             if (width < 2)
             {
                 throw new DataSizeException("'width' can't be less than 2. Your texture must be at least 2 x 2 pixels in size. You have to use SetTextureData(uint[] data, int width) before calling this method.");
             }
-
+            
             if (data.Length % width != 0)
             {
                 throw new DataSizeException("'width' has an invalid value. You have to use SetTextureData(uint[] data, int width) before calling this method.");
             }
         }
-
-
+        
+        
         /// <summary>
         ///     Applies the triangulation compatible winding using the specified detected polygons
         /// </summary>
@@ -649,7 +649,7 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
             for (int i = 0; i < detectedPolygons.Count; i++)
             {
                 detectedPolygons[i].Reverse();
-
+                
                 if ((detectedPolygons[i].Holes != null) && (detectedPolygons[i].Holes.Count > 0))
                 {
                     for (int j = 0; j < detectedPolygons[i].Holes.Count; j++)
@@ -659,8 +659,8 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
                 }
             }
         }
-
-
+        
+        
         /// <summary>
         ///     Applies the transform using the specified detected polygons
         /// </summary>
@@ -672,8 +672,8 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
                 detectedPolygons[i].Transform(ref transform);
             }
         }
-
-
+        
+        
         /// <summary>
         ///     Searches the hole entrance using the specified polygon
         /// </summary>
@@ -688,14 +688,14 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
             {
                 throw new ArgumentNullException(nameof(polygon));
             }
-
+            
             if (polygon.Count < 3)
             {
                 throw new ArgumentException("'polygon.MainPolygon.Count' can't be less then 3.");
             }
-
+            
             DetermineStartAndEndY(polygon, lastHoleEntrance, out int startY, out int endY);
-
+            
             if ((startY > 0) && (startY < height) && (endY > 0) && (endY < height))
             {
                 for (int y = startY; y <= endY; y++)
@@ -704,11 +704,11 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
                     ProcessXCoordinates(xCoords, y);
                 }
             }
-
+            
             return null;
         }
-
-
+        
+        
         /// <summary>
         ///     Determines the start and end y using the specified polygon
         /// </summary>
@@ -726,11 +726,11 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
             {
                 startY = (int) GetTopMostCoordinate(polygon);
             }
-
+            
             endY = (int) GetBottomMostCoordinate(polygon);
         }
-
-
+        
+        
         /// <summary>
         ///     Processes the x coordinates using the specified x coords
         /// </summary>
@@ -756,8 +756,8 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
                 Debug.WriteLine("SearchCrossingEdges() % 2 != 0");
             }
         }
-
-
+        
+        
         /// <summary>
         ///     Describes whether this instance distance to hull acceptable holes
         /// </summary>
@@ -773,12 +773,12 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
             {
                 throw new ArgumentNullException(nameof(polygon), "'polygon' can't be null.");
             }
-
+            
             if (polygon.Count < 3)
             {
                 throw new ArgumentException("'polygon.MainPolygon.Count' can't be less then 3.");
             }
-
+            
             // Check the distance to main polygon.
             if (DistanceToHullAcceptable(polygon, point, higherDetail))
             {
@@ -793,16 +793,16 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
                         }
                     }
                 }
-
+                
                 // All distances are larger then _hullTolerance.
                 return true;
             }
-
+            
             // Default to false.
             return false;
         }
-
-
+        
+        
         /// <summary>
         ///     Describes whether this instance distance to hull acceptable
         /// </summary>
@@ -818,50 +818,50 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
             {
                 throw new ArgumentNullException(nameof(polygon), "'polygon' can't be null.");
             }
-
+            
             if (polygon.Count < 3)
             {
                 throw new ArgumentException("'polygon.Count' can't be less then 3.");
             }
-
+            
             Vector2 edgeVertex2 = polygon[polygon.Count - 1];
             Vector2 edgeVertex1;
-
+            
             if (higherDetail)
             {
                 for (int i = 0; i < polygon.Count; i++)
                 {
                     edgeVertex1 = polygon[i];
-
+                    
                     if (Line.DistanceBetweenPointAndLineSegment(point, edgeVertex1, edgeVertex2) <=
                         hullTolerance || Vector2.Distance(point, edgeVertex1) <= hullTolerance)
                     {
                         return false;
                     }
-
+                    
                     edgeVertex2 = polygon[i];
                 }
-
+                
                 return true;
             }
-
+            
             for (int i = 0; i < polygon.Count; i++)
             {
                 edgeVertex1 = polygon[i];
-
+                
                 if (Line.DistanceBetweenPointAndLineSegment(point, edgeVertex1, edgeVertex2) <=
                     hullTolerance)
                 {
                     return false;
                 }
-
+                
                 edgeVertex2 = polygon[i];
             }
-
+            
             return true;
         }
-
-
+        
+        
         /// <summary>
         ///     Describes whether this instance in polygon
         /// </summary>
@@ -871,11 +871,11 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
         private bool InPolygon(Vertices polygon, Vector2 point)
         {
             bool inPolygon = !DistanceToHullAcceptableHoles(polygon, point, true);
-
+            
             if (!inPolygon)
             {
                 List<float> xCoords = SearchCrossingEdgesHoles(polygon, (int) point.Y);
-
+                
                 if ((xCoords.Count > 0) && (xCoords.Count % 2 == 0))
                 {
                     for (int i = 0; i < xCoords.Count; i += 2)
@@ -886,14 +886,14 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
                         }
                     }
                 }
-
+                
                 return false;
             }
-
+            
             return true;
         }
-
-
+        
+        
         /// <summary>
         ///     Gets the top most vertex using the specified vertices
         /// </summary>
@@ -903,7 +903,7 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
         {
             float topMostValue = float.MaxValue;
             Vector2? topMost = null;
-
+            
             for (int i = 0; i < vertices.Count; i++)
             {
                 if (topMostValue > vertices[i].Y)
@@ -912,11 +912,11 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
                     topMost = vertices[i];
                 }
             }
-
+            
             return topMost;
         }
-
-
+        
+        
         /// <summary>
         ///     Gets the top most coordinate using the specified vertices
         /// </summary>
@@ -925,7 +925,7 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
         private float GetTopMostCoordinate(Vertices vertices)
         {
             float returnValue = float.MaxValue;
-
+            
             for (int i = 0; i < vertices.Count; i++)
             {
                 if (returnValue > vertices[i].Y)
@@ -933,10 +933,10 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
                     returnValue = vertices[i].Y;
                 }
             }
-
+            
             return returnValue;
         }
-
+        
         /// <summary>
         ///     Gets the bottom most coordinate using the specified vertices
         /// </summary>
@@ -945,7 +945,7 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
         private float GetBottomMostCoordinate(Vertices vertices)
         {
             float returnValue = float.MinValue;
-
+            
             for (int i = 0; i < vertices.Count; i++)
             {
                 if (returnValue < vertices[i].Y)
@@ -953,10 +953,10 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
                     returnValue = vertices[i].Y;
                 }
             }
-
+            
             return returnValue;
         }
-
+        
         /// <summary>
         ///     Searches the crossing edges holes using the specified polygon
         /// </summary>
@@ -971,14 +971,14 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
             {
                 throw new ArgumentNullException(nameof(polygon), "'polygon' can't be null.");
             }
-
+            
             if (polygon.Count < 3)
             {
                 throw new ArgumentException("'polygon.MainPolygon.Count' can't be less then 3.");
             }
-
+            
             List<float> result = SearchEdges(polygon, y);
-
+            
             if (polygon.Holes != null)
             {
                 for (int i = 0; i < polygon.Holes.Count; i++)
@@ -986,12 +986,12 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
                     result.AddRange(SearchEdges(polygon.Holes[i], y));
                 }
             }
-
+            
             result.Sort();
             return result;
         }
-
-
+        
+        
         /// <summary>
         ///     Searches the edges using the specified polygon
         /// </summary>
@@ -1001,18 +1001,18 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
         private List<float> SearchEdges(Vertices polygon, int y)
         {
             List<float> edges = new List<float>();
-
+            
             if (polygon.Count <= 2)
             {
                 return edges;
             }
-
+            
             IterateSearchEdges(polygon, y, edges);
-
+            
             edges.Sort();
             return edges;
         }
-
+        
         /// <summary>
         ///     Iterates the search edges using the specified polygon
         /// </summary>
@@ -1022,34 +1022,34 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
         private void IterateSearchEdges(Vertices polygon, int y, List<float> edges)
         {
             Vector2 vertex2 = polygon[polygon.Count - 1];
-
+            
             for (int i = 0; i < polygon.Count; i++)
             {
                 Vector2 vertex1 = polygon[i];
-
+                
                 if (!(((vertex1.Y >= y) && (vertex2.Y <= y)) || ((vertex1.Y <= y) && (vertex2.Y >= y))))
                 {
                     continue;
                 }
-
+                
                 if (!(System.Math.Abs(vertex1.Y - vertex2.Y) > 0.0001f))
                 {
                     continue;
                 }
-
+                
                 Vector2 slope = vertex2 - vertex1;
                 bool addFind = Find(vertex1, vertex2, polygon, i, y);
-
+                
                 if (addFind)
                 {
                     edges.Add((y - vertex1.Y) / slope.Y * slope.X + vertex1.X);
                 }
-
-
+                
+                
                 vertex2 = vertex1;
             }
         }
-
+        
         /// <summary>
         ///     Describes whether this instance find
         /// </summary>
@@ -1063,12 +1063,12 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
         {
             bool addFind = true;
             Vector2 slope = vertex2 - vertex1;
-
+            
             if (System.Math.Abs(vertex1.Y - y) < 0.0001f)
             {
                 Vector2 nextVertex = polygon[(index + 1) % polygon.Count];
                 Vector2 nextSlope = vertex1 - nextVertex;
-
+                
                 if (slope.Y > 0)
                 {
                     addFind = nextSlope.Y <= 0;
@@ -1078,11 +1078,11 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
                     addFind = nextSlope.Y >= 0;
                 }
             }
-
+            
             return addFind;
         }
-
-
+        
+        
         /// <summary>
         ///     Describes whether this instance split polygon edge
         /// </summary>
@@ -1094,23 +1094,23 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
         {
             List<float> xCoords = SearchEdges(polygon, (int) coordinateInsideThePolygon.Y);
             Vector2 foundEdgeCoordinate = FindEdgeCoordinate(xCoords, coordinateInsideThePolygon);
-
+            
             if (foundEdgeCoordinate != Vector2.Zero)
             {
                 int[] nearestEdgeVertices = FindNearestEdgeVertices(polygon, foundEdgeCoordinate);
-
+                
                 if ((nearestEdgeVertices[0] != -1) && (nearestEdgeVertices[1] != -1))
                 {
                     vertex2Index = InsertNewVertices(polygon, nearestEdgeVertices, foundEdgeCoordinate);
                     return true;
                 }
             }
-
+            
             vertex2Index = 0;
             return false;
         }
-
-
+        
+        
         /// <summary>
         ///     Finds the edge coordinate using the specified x coords
         /// </summary>
@@ -1121,7 +1121,7 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
         {
             float shortestDistance = float.MaxValue;
             Vector2 foundEdgeCoordinate = Vector2.Zero;
-
+            
             if ((xCoords != null) && (xCoords.Count > 1) && (xCoords.Count % 2 == 0))
             {
                 for (int i = 0; i < xCoords.Count; i++)
@@ -1129,7 +1129,7 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
                     if (xCoords[i] < coordinateInsideThePolygon.X)
                     {
                         float distance = coordinateInsideThePolygon.X - xCoords[i];
-
+                        
                         if (distance < shortestDistance)
                         {
                             shortestDistance = distance;
@@ -1138,10 +1138,10 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
                     }
                 }
             }
-
+            
             return foundEdgeCoordinate;
         }
-
+        
         /// <summary>
         ///     Finds the nearest edge vertices using the specified polygon
         /// </summary>
@@ -1153,28 +1153,28 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
             int nearestEdgeVertex1Index = -1;
             int nearestEdgeVertex2Index = -1;
             float shortestDistance = float.MaxValue;
-
+            
             int edgeVertex2Index = polygon.Count - 1;
-
+            
             for (int edgeVertex1Index = 0; edgeVertex1Index < polygon.Count; edgeVertex1Index++)
             {
                 Vector2 tempVector1 = polygon[edgeVertex1Index];
                 Vector2 tempVector2 = polygon[edgeVertex2Index];
                 float distance = Line.DistanceBetweenPointAndLineSegment(foundEdgeCoordinate, tempVector1, tempVector2);
-
+                
                 if (distance < shortestDistance)
                 {
                     shortestDistance = distance;
                     nearestEdgeVertex1Index = edgeVertex1Index;
                     nearestEdgeVertex2Index = edgeVertex2Index;
                 }
-
+                
                 edgeVertex2Index = edgeVertex1Index;
             }
-
+            
             return new[] {nearestEdgeVertex1Index, nearestEdgeVertex2Index};
         }
-
+        
         /// <summary>
         ///     Inserts the new vertices using the specified polygon
         /// </summary>
@@ -1186,18 +1186,18 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
         {
             Vector2 slope = polygon[nearestEdgeVertices[1]] - polygon[nearestEdgeVertices[0]];
             slope = Vector2.Normalize(slope);
-
+            
             Vector2 tempVector = polygon[nearestEdgeVertices[0]];
             float distance = Vector2.Distance(tempVector, foundEdgeCoordinate);
-
+            
             int vertex2Index = nearestEdgeVertices[0] + 1;
-
+            
             polygon.Insert(nearestEdgeVertices[0], distance * slope + polygon[nearestEdgeVertices[0]]);
             polygon.Insert(nearestEdgeVertices[0], distance * slope + polygon[vertex2Index]);
-
+            
             return vertex2Index;
         }
-
+        
         /// <summary>
         ///     Creates the simple polygon using the specified entrance
         /// </summary>
@@ -1207,39 +1207,39 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
         private Vertices CreateSimplePolygon(Vector2 entrance, Vector2 last)
         {
             bool endOfHull = false;
-
+            
             Vertices polygon = new Vertices(32);
             Vertices hullArea = new Vertices(32);
             Vertices endOfHullArea = new Vertices(32);
-
+            
             Vector2 current = Vector2.Zero;
-
+            
             bool entranceFound = GetEntrancePoint(ref entrance, ref last, ref current);
-
+            
             if (entranceFound)
             {
                 polygon.Add(entrance);
                 hullArea.Add(entrance);
-
+                
                 Vector2 next = entrance;
-
+                
                 do
                 {
                     ProcessOutstandingVertex(ref endOfHull, hullArea, endOfHullArea, polygon);
-
+                    
                     last = current;
                     current = next;
-
+                    
                     if (!GetNextHullPoint(ref last, ref current, out next))
                     {
                         break;
                     }
-
+                    
                     if ((next == entrance) && !endOfHull)
                     {
                         endOfHull = true;
                         endOfHullArea.AddRange(hullArea);
-
+                        
                         if (endOfHullArea.Contains(entrance))
                         {
                             endOfHullArea.Remove(entrance);
@@ -1247,10 +1247,10 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
                     }
                 } while (true);
             }
-
+            
             return polygon;
         }
-
+        
         /// <summary>
         ///     Describes whether this instance get entrance point
         /// </summary>
@@ -1264,7 +1264,7 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
             if (entrance == Vector2.Zero || !InBounds(ref entrance))
             {
                 entranceFound = SearchHullEntrance(out entrance);
-
+                
                 if (entranceFound)
                 {
                     current = new Vector2(entrance.X - 1f, entrance.Y);
@@ -1289,10 +1289,10 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
                     }
                 }
             }
-
+            
             return entranceFound;
         }
-
+        
         /// <summary>
         ///     Processes the outstanding vertex using the specified end of hull
         /// </summary>
@@ -1310,18 +1310,18 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
                     {
                         endOfHull = false;
                     }
-
+                    
                     if (endOfHull)
                     {
                         return;
                     }
                 }
-
+                
                 polygon.Add(outstanding);
                 hullArea.RemoveRange(0, hullArea.IndexOf(outstanding));
             }
         }
-
+        
         /// <summary>
         ///     Describes whether this instance search near pixels
         /// </summary>
@@ -1335,19 +1335,19 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
             {
                 int x = (int) current.X + ClosePixels[i, 0];
                 int y = (int) current.Y + ClosePixels[i, 1];
-
+                
                 if (!searchingForSolidPixel ^ IsSolid(ref x, ref y))
                 {
                     foundPixel = new Vector2(x, y);
                     return true;
                 }
             }
-
+            
             // Nothing found.
             foundPixel = Vector2.Zero;
             return false;
         }
-
+        
         /// <summary>
         ///     Describes whether this instance is near pixel
         /// </summary>
@@ -1360,7 +1360,7 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
             {
                 int x = (int) current.X + ClosePixels[i, 0];
                 int y = (int) current.Y + ClosePixels[i, 1];
-
+                
                 if ((x >= 0) && (x <= width) && (y >= 0) && (y <= height))
                 {
                     if ((x == (int) near.X) && (y == (int) near.Y))
@@ -1369,10 +1369,10 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
                     }
                 }
             }
-
+            
             return false;
         }
-
+        
         /// <summary>
         ///     Describes whether this instance search hull entrance
         /// </summary>
@@ -1392,12 +1392,12 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
                     }
                 }
             }
-
+            
             // If there are no solid pixels.
             entrance = Vector2.Zero;
             return false;
         }
-
+        
         /// <summary>
         ///     Describes whether this instance search next hull entrance
         /// </summary>
@@ -1408,7 +1408,7 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
         private bool SearchNextHullEntrance(List<Vertices> detectedPolygons, Vector2 start, out Vector2? entrance)
         {
             bool foundTransparent = false;
-
+            
             for (int i = CalculateStartIndex(start); i <= dataLength; i++)
             {
                 if (IsSolid(ref i))
@@ -1416,7 +1416,7 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
                     if (foundTransparent)
                     {
                         entrance = CalculateEntrance(i);
-
+                        
                         if (IsInPolygon(detectedPolygons, entrance.Value))
                         {
                             foundTransparent = false;
@@ -1432,18 +1432,18 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
                     foundTransparent = true;
                 }
             }
-
+            
             entrance = null;
             return false;
         }
-
+        
         /// <summary>
         ///     Calculates the start index using the specified start
         /// </summary>
         /// <param name="start">The start</param>
         /// <returns>The int</returns>
         private int CalculateStartIndex(Vector2 start) => (int) start.X + (int) start.Y * width;
-
+        
         /// <summary>
         ///     Calculates the entrance using the specified i
         /// </summary>
@@ -1454,7 +1454,7 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
             int x = i % width;
             return new Vector2(x, (i - x) / (float) width);
         }
-
+        
         /// <summary>
         ///     Describes whether this instance is in polygon
         /// </summary>
@@ -1470,10 +1470,10 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
                     return true;
                 }
             }
-
+            
             return false;
         }
-
+        
         /// <summary>
         ///     Describes whether this instance get next hull point
         /// </summary>
@@ -1484,14 +1484,14 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
         private bool GetNextHullPoint(ref Vector2 last, ref Vector2 current, out Vector2 next)
         {
             int indexOfFirstPixelToCheck = GetIndexOfFirstPixelToCheck(ref last, ref current);
-
+            
             for (int i = 0; i < ClosePixelsLength; i++)
             {
                 int indexOfPixelToCheck = (indexOfFirstPixelToCheck + i) % ClosePixelsLength;
-
+                
                 int x = (int) current.X + ClosePixels[indexOfPixelToCheck, 0];
                 int y = (int) current.Y + ClosePixels[indexOfPixelToCheck, 1];
-
+                
                 if ((x >= 0) && (x < width) && (y >= 0) && (y <= height))
                 {
                     if (IsSolid(ref x, ref y))
@@ -1501,11 +1501,11 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
                     }
                 }
             }
-
+            
             next = Vector2.Zero;
             return false;
         }
-
+        
         /// <summary>
         ///     Describes whether this instance search for outstanding vertex
         /// </summary>
@@ -1516,19 +1516,19 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
         {
             Vector2 outstandingResult = Vector2.Zero;
             bool found = false;
-
+            
             if (hullArea.Count > 2)
             {
                 int hullAreaLastPoint = hullArea.Count - 1;
-
+                
                 Vector2 tempVector2 = hullArea[0];
                 Vector2 tempVector3 = hullArea[hullAreaLastPoint];
-
+                
                 // Search between the first and last hull point.
                 for (int i = 1; i < hullAreaLastPoint; i++)
                 {
                     Vector2 tempVector1 = hullArea[i];
-
+                    
                     // Check if the distance is over the one that's tolerable.
                     if (Line.DistanceBetweenPointAndLineSegment(tempVector1, tempVector2,
                             tempVector3) >= hullTolerance)
@@ -1539,11 +1539,11 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
                     }
                 }
             }
-
+            
             outstanding = outstandingResult;
             return found;
         }
-
+        
         /// <summary>
         ///     Gets the index of first pixel to check using the specified last
         /// </summary>
@@ -1559,47 +1559,47 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
                     {
                         case 1:
                             return 1;
-
+                        
                         case 0:
                             return 0;
-
+                        
                         case -1:
                             return 7;
                     }
-
+                    
                     break;
-
+                
                 case 0:
                     switch ((int) (current.Y - last.Y))
                     {
                         case 1:
                             return 2;
-
+                        
                         case -1:
                             return 6;
                     }
-
+                    
                     break;
-
+                
                 case -1:
                     switch ((int) (current.Y - last.Y))
                     {
                         case 1:
                             return 3;
-
+                        
                         case 0:
                             return 4;
-
+                        
                         case -1:
                             return 5;
                     }
-
+                    
                     break;
             }
-
+            
             return 0;
         }
-
+        
         /// <summary>
         ///     Describes whether this instance is solid
         /// </summary>
@@ -1609,15 +1609,15 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
         {
             tempIsSolidX = (int) v.X;
             tempIsSolidY = (int) v.Y;
-
+            
             if ((tempIsSolidX >= 0) && (tempIsSolidX < width) && (tempIsSolidY >= 0) && (tempIsSolidY < height))
             {
                 return data[tempIsSolidX + tempIsSolidY * width] >= alphaTolerance;
             }
-
+            
             return false;
         }
-
+        
         /// <summary>
         ///     Describes whether this instance is solid
         /// </summary>
@@ -1630,10 +1630,10 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
             {
                 return data[x + y * width] >= alphaTolerance;
             }
-
+            
             return false;
         }
-
+        
         /// <summary>
         ///     Describes whether this instance is solid
         /// </summary>
@@ -1645,10 +1645,10 @@ namespace Alis.Extension.Math.PathGenerator.TextureTools
             {
                 return data[index] >= alphaTolerance;
             }
-
+            
             return false;
         }
-
+        
         /// <summary>
         ///     Describes whether this instance in bounds
         /// </summary>

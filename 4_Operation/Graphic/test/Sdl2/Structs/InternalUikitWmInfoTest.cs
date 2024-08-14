@@ -27,21 +27,19 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Xunit;
 using System;
 using Alis.Core.Graphic.Sdl2.Structs;
-
+using Xunit;
 
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
-
     /// <summary>
-    /// The internal uikit wm info tests class
+    ///     The internal uikit wm info tests class
     /// </summary>
     public class InternalUikitWmInfoTests
     {
         /// <summary>
-        /// Tests that internal uikit wm info initializes properties correctly
+        ///     Tests that internal uikit wm info initializes properties correctly
         /// </summary>
         [Fact]
         public void InternalUikitWmInfo_InitializesPropertiesCorrectly()
@@ -50,7 +48,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             uint expectedFramebuffer = 456u;
             uint expectedColorBuffer = 789u;
             uint expectedResolveFramebuffer = 101112u;
-
+            
             InternalUikitWmInfo info = new InternalUikitWmInfo
             {
                 Window = expectedWindow,
@@ -58,7 +56,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
                 colorBuffer = expectedColorBuffer,
                 resolveFramebuffer = expectedResolveFramebuffer
             };
-
+            
             Assert.Equal(expectedWindow, info.Window);
             Assert.Equal(expectedFramebuffer, info.framebuffer);
             Assert.Equal(expectedColorBuffer, info.colorBuffer);

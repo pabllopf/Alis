@@ -33,12 +33,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test
 {
     /// <summary>
-    /// The im font glyph ranges builder test class
+    ///     The im font glyph ranges builder test class
     /// </summary>
     public class ImFontGlyphRangesBuilderTest
     {
         /// <summary>
-        /// Tests that used chars should be initialized
+        ///     Tests that used chars should be initialized
         /// </summary>
         [Fact]
         public void UsedChars_ShouldBeInitialized()
@@ -46,9 +46,9 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontGlyphRangesBuilder builder = new ImFontGlyphRangesBuilder();
             Assert.Equal(default(ImVector), builder.UsedChars);
         }
-
+        
         /// <summary>
-        /// Tests that add char should not throw
+        ///     Tests that add char should not throw
         /// </summary>
         [Fact]
         public void AddChar_ShouldNotThrow()
@@ -56,9 +56,9 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontGlyphRangesBuilder builder = new ImFontGlyphRangesBuilder();
             Assert.Throws<DllNotFoundException>(() => builder.AddChar(65));
         }
-
+        
         /// <summary>
-        /// Tests that clear should not throw
+        ///     Tests that clear should not throw
         /// </summary>
         [Fact]
         public void Clear_ShouldNotThrow()
@@ -66,9 +66,9 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontGlyphRangesBuilder builder = new ImFontGlyphRangesBuilder();
             Assert.Throws<DllNotFoundException>(() => builder.Clear());
         }
-
+        
         /// <summary>
-        /// Tests that get bit should return bool
+        ///     Tests that get bit should return bool
         /// </summary>
         [Fact]
         public void GetBit_ShouldReturnBool()
@@ -76,9 +76,9 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontGlyphRangesBuilder builder = new ImFontGlyphRangesBuilder();
             Assert.Throws<DllNotFoundException>(() => builder.GetBit(1));
         }
-
+        
         /// <summary>
-        /// Tests that set bit should not throw
+        ///     Tests that set bit should not throw
         /// </summary>
         [Fact]
         public void SetBit_ShouldNotThrow()

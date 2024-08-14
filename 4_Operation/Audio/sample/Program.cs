@@ -44,7 +44,7 @@ namespace Alis.Core.Audio.Sample
         private static void Main(string[] args)
         {
             Player player = new Player();
-
+            
             while (true)
             {
                 Console.WriteLine("Write command 'play' | 'stop' | 'resume' | exit ");
@@ -63,7 +63,7 @@ namespace Alis.Core.Audio.Sample
                             _ = player.Resume();
                             break;
                     }
-
+                    
                     if (command == "exit")
                     {
                         break;

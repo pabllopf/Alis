@@ -32,12 +32,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test
 {
     /// <summary>
-    /// The im draw flags test class
+    ///     The im draw flags test class
     /// </summary>
     public class ImDrawFlagsTest
     {
         /// <summary>
-        /// Tests that none should have correct value
+        ///     Tests that none should have correct value
         /// </summary>
         [Fact]
         public void None_ShouldHaveCorrectValue()
@@ -50,7 +50,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that closed should have correct value
+        ///     Tests that closed should have correct value
         /// </summary>
         [Fact]
         public void Closed_ShouldHaveCorrectValue()
@@ -63,7 +63,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that round corners top left should have correct value
+        ///     Tests that round corners top left should have correct value
         /// </summary>
         [Fact]
         public void RoundCornersTopLeft_ShouldHaveCorrectValue()
@@ -76,7 +76,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that round corners top right should have correct value
+        ///     Tests that round corners top right should have correct value
         /// </summary>
         [Fact]
         public void RoundCornersTopRight_ShouldHaveCorrectValue()
@@ -89,7 +89,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that round corners bottom left should have correct value
+        ///     Tests that round corners bottom left should have correct value
         /// </summary>
         [Fact]
         public void RoundCornersBottomLeft_ShouldHaveCorrectValue()
@@ -102,7 +102,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that round corners bottom right should have correct value
+        ///     Tests that round corners bottom right should have correct value
         /// </summary>
         [Fact]
         public void RoundCornersBottomRight_ShouldHaveCorrectValue()
@@ -115,7 +115,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that round corners none should have correct value
+        ///     Tests that round corners none should have correct value
         /// </summary>
         [Fact]
         public void RoundCornersNone_ShouldHaveCorrectValue()
@@ -128,7 +128,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that round corners top should have correct value
+        ///     Tests that round corners top should have correct value
         /// </summary>
         [Fact]
         public void RoundCornersTop_ShouldHaveCorrectValue()
@@ -141,7 +141,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that round corners bottom should have correct value
+        ///     Tests that round corners bottom should have correct value
         /// </summary>
         [Fact]
         public void RoundCornersBottom_ShouldHaveCorrectValue()
@@ -154,7 +154,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that round corners left should have correct value
+        ///     Tests that round corners left should have correct value
         /// </summary>
         [Fact]
         public void RoundCornersLeft_ShouldHaveCorrectValue()
@@ -167,7 +167,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that round corners right should have correct value
+        ///     Tests that round corners right should have correct value
         /// </summary>
         [Fact]
         public void RoundCornersRight_ShouldHaveCorrectValue()
@@ -180,7 +180,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that round corners all should have correct value
+        ///     Tests that round corners all should have correct value
         /// </summary>
         [Fact]
         public void RoundCornersAll_ShouldHaveCorrectValue()
@@ -193,7 +193,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that round corners default should have correct value
+        ///     Tests that round corners default should have correct value
         /// </summary>
         [Fact]
         public void RoundCornersDefault_ShouldHaveCorrectValue()
@@ -206,7 +206,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that round corners mask should have correct value
+        ///     Tests that round corners mask should have correct value
         /// </summary>
         [Fact]
         public void RoundCornersMask_ShouldHaveCorrectValue()

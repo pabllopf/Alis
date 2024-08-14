@@ -41,17 +41,17 @@ namespace Alis.Extension.Language.Translator
         ///     The language
         /// </summary>
         private readonly List<Language> languages = new List<Language>();
-
+        
         /// <summary>
         ///     The dictionary
         /// </summary>
         private readonly Dictionary<Language, Dictionary<string, string>> translations = new Dictionary<Language, Dictionary<string, string>>();
-
+        
         /// <summary>
         ///     The current language
         /// </summary>
         public Language Language { get; private set; }
-
+        
         /// <summary>
         ///     Sets the language using the specified language
         /// </summary>
@@ -64,7 +64,7 @@ namespace Alis.Extension.Language.Translator
                 languages.Add(language);
             }
         }
-
+        
         /// <summary>
         ///     Sets the language using the specified name
         /// </summary>
@@ -76,12 +76,12 @@ namespace Alis.Extension.Language.Translator
             {
                 throw new ArgumentNullException("[Name cannot be null or empty]");
             }
-
+            
             if (string.IsNullOrEmpty(localCode))
             {
                 throw new ArgumentNullException("[Local code cannot be null or empty]");
             }
-
+            
             Language language = languages.Find(l => l.Code == localCode);
             if (language is null)
             {
@@ -98,7 +98,7 @@ namespace Alis.Extension.Language.Translator
                 Language = language;
             }
         }
-
+        
         /// <summary>
         ///     Adds the language using the specified language
         /// </summary>
@@ -109,10 +109,10 @@ namespace Alis.Extension.Language.Translator
             {
                 languages.Add(language);
             }
-
+            
             Language ??= language;
         }
-
+        
         /// <summary>
         ///     Translates the key
         /// </summary>
@@ -124,11 +124,11 @@ namespace Alis.Extension.Language.Translator
             {
                 return translations[Language][key];
             }
-
+            
             throw new TranslationNotFound($"[Translation not found for key: {key}]");
         }
-
-
+        
+        
         /// <summary>
         ///     Adds the translation using the specified language
         /// </summary>
@@ -141,10 +141,10 @@ namespace Alis.Extension.Language.Translator
             {
                 translations[language] = new Dictionary<string, string>();
             }
-
+            
             translations[language][key] = value;
         }
-
+        
         /// <summary>
         ///     Adds the translation using the specified local code
         /// </summary>
@@ -158,34 +158,34 @@ namespace Alis.Extension.Language.Translator
             {
                 throw new ArgumentNullException("[localCode cannot be null or empty]");
             }
-
+            
             if (string.IsNullOrEmpty(key))
             {
                 throw new ArgumentNullException("[key cannot be null or empty]");
             }
-
+            
             if (string.IsNullOrEmpty(value))
             {
                 throw new ArgumentNullException("[value code cannot be null or empty]");
             }
-
-
+            
+            
             Language language = languages.Find(l => l.Code == localCode);
-
+            
             if (language is null)
             {
                 throw new LanguageNotFound($"[Language not found for code: {localCode}]");
             }
-
+            
             if (!translations.ContainsKey(language))
             {
                 translations[language] = new Dictionary<string, string>();
             }
-
+            
             translations[language][key] = value;
         }
-
-
+        
+        
         /// <summary>
         ///     Gets the available languages
         /// </summary>

@@ -41,7 +41,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         ///     Gets or sets the value of the is disposed
         /// </summary>
         public bool IsDisposed { get; private set; }
-
+        
         /// <summary>
         ///     Disposes this instance
         /// </summary>

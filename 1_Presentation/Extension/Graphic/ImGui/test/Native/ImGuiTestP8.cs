@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test.Native
 {
     /// <summary>
-    /// The im gui test class
+    ///     The im gui test class
     /// </summary>
     public class ImGuiTestP8
     {
         /// <summary>
-        /// Tests that show about window should throw dll not found exception
+        ///     Tests that show about window should throw dll not found exception
         /// </summary>
         [Fact]
         public void ShowAboutWindow_ShouldThrowDllNotFoundException()
@@ -48,7 +48,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that show about window should throw dll not found exception v 2
+        ///     Tests that show about window should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void ShowAboutWindow_ShouldThrowDllNotFoundException_v2()
@@ -58,7 +58,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that show debug log window should throw dll not found exception
+        ///     Tests that show debug log window should throw dll not found exception
         /// </summary>
         [Fact]
         public void ShowDebugLogWindow_ShouldThrowDllNotFoundException()
@@ -67,7 +67,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that show debug log window should throw dll not found exception v 2
+        ///     Tests that show debug log window should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void ShowDebugLogWindow_ShouldThrowDllNotFoundException_v2()
@@ -77,7 +77,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that show demo window should throw dll not found exception
+        ///     Tests that show demo window should throw dll not found exception
         /// </summary>
         [Fact]
         public void ShowDemoWindow_ShouldThrowDllNotFoundException()
@@ -86,7 +86,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that show demo window should throw dll not found exception v 2
+        ///     Tests that show demo window should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void ShowDemoWindow_ShouldThrowDllNotFoundException_v2()
@@ -96,7 +96,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that show font selector should throw dll not found exception
+        ///     Tests that show font selector should throw dll not found exception
         /// </summary>
         [Fact]
         public void ShowFontSelector_ShouldThrowDllNotFoundException()
@@ -105,7 +105,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that show metrics window should throw dll not found exception
+        ///     Tests that show metrics window should throw dll not found exception
         /// </summary>
         [Fact]
         public void ShowMetricsWindow_ShouldThrowDllNotFoundException()
@@ -114,7 +114,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that show metrics window should throw dll not found exception v 2
+        ///     Tests that show metrics window should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void ShowMetricsWindow_ShouldThrowDllNotFoundException_v2()
@@ -124,7 +124,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that show stack tool window should throw dll not found exception
+        ///     Tests that show stack tool window should throw dll not found exception
         /// </summary>
         [Fact]
         public void ShowStackToolWindow_ShouldThrowDllNotFoundException()
@@ -133,7 +133,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that show stack tool window should throw dll not found exception v 2
+        ///     Tests that show stack tool window should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void ShowStackToolWindow_ShouldThrowDllNotFoundException_v2()
@@ -143,7 +143,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that show style editor should throw dll not found exception
+        ///     Tests that show style editor should throw dll not found exception
         /// </summary>
         [Fact]
         public void ShowStyleEditor_ShouldThrowDllNotFoundException()
@@ -152,7 +152,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that show style editor should throw dll not found exception v 2
+        ///     Tests that show style editor should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void ShowStyleEditor_ShouldThrowDllNotFoundException_v2()
@@ -162,7 +162,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that show style selector should throw dll not found exception
+        ///     Tests that show style selector should throw dll not found exception
         /// </summary>
         [Fact]
         public void ShowStyleSelector_ShouldThrowDllNotFoundException()
@@ -171,7 +171,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that show user guide should throw dll not found exception
+        ///     Tests that show user guide should throw dll not found exception
         /// </summary>
         [Fact]
         public void ShowUserGuide_ShouldThrowDllNotFoundException()
@@ -180,7 +180,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that slider angle should throw dll not found exception v 1
+        ///     Tests that slider angle should throw dll not found exception v 1
         /// </summary>
         [Fact]
         public void SliderAngle_ShouldThrowDllNotFoundException_v1()
@@ -190,7 +190,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that slider angle should throw dll not found exception v 2
+        ///     Tests that slider angle should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void SliderAngle_ShouldThrowDllNotFoundException_v2()
@@ -200,7 +200,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that slider angle should throw dll not found exception v 3
+        ///     Tests that slider angle should throw dll not found exception v 3
         /// </summary>
         [Fact]
         public void SliderAngle_ShouldThrowDllNotFoundException_v3()
@@ -210,7 +210,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that slider angle should throw dll not found exception v 4
+        ///     Tests that slider angle should throw dll not found exception v 4
         /// </summary>
         [Fact]
         public void SliderAngle_ShouldThrowDllNotFoundException_v4()
@@ -220,7 +220,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that slider angle should throw dll not found exception v 5
+        ///     Tests that slider angle should throw dll not found exception v 5
         /// </summary>
         [Fact]
         public void SliderAngle_ShouldThrowDllNotFoundException_v5()
@@ -230,7 +230,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that slider float should throw dll not found exception v 1
+        ///     Tests that slider float should throw dll not found exception v 1
         /// </summary>
         [Fact]
         public void SliderFloat_ShouldThrowDllNotFoundException_v1()
@@ -240,7 +240,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that slider float should throw dll not found exception v 2
+        ///     Tests that slider float should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void SliderFloat_ShouldThrowDllNotFoundException_v2()
@@ -250,7 +250,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that slider float should throw dll not found exception v 3
+        ///     Tests that slider float should throw dll not found exception v 3
         /// </summary>
         [Fact]
         public void SliderFloat_ShouldThrowDllNotFoundException_v3()
@@ -260,7 +260,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that slider float 2 should throw dll not found exception v 1
+        ///     Tests that slider float 2 should throw dll not found exception v 1
         /// </summary>
         [Fact]
         public void SliderFloat2_ShouldThrowDllNotFoundException_v1()
@@ -270,7 +270,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that slider float 2 should throw dll not found exception v 2
+        ///     Tests that slider float 2 should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void SliderFloat2_ShouldThrowDllNotFoundException_v2()
@@ -280,7 +280,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that slider float 2 should throw dll not found exception v 3
+        ///     Tests that slider float 2 should throw dll not found exception v 3
         /// </summary>
         [Fact]
         public void SliderFloat2_ShouldThrowDllNotFoundException_v3()
@@ -290,7 +290,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that slider float 3 should throw dll not found exception v 1
+        ///     Tests that slider float 3 should throw dll not found exception v 1
         /// </summary>
         [Fact]
         public void SliderFloat3_ShouldThrowDllNotFoundException_v1()
@@ -300,7 +300,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that slider float 3 should throw dll not found exception v 2
+        ///     Tests that slider float 3 should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void SliderFloat3_ShouldThrowDllNotFoundException_v2()
@@ -310,7 +310,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that slider float 3 should throw dll not found exception v 3
+        ///     Tests that slider float 3 should throw dll not found exception v 3
         /// </summary>
         [Fact]
         public void SliderFloat3_ShouldThrowDllNotFoundException_v3()
@@ -320,7 +320,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that slider float 4 should throw dll not found exception v 1
+        ///     Tests that slider float 4 should throw dll not found exception v 1
         /// </summary>
         [Fact]
         public void SliderFloat4_ShouldThrowDllNotFoundException_v1()
@@ -330,7 +330,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that slider float 4 should throw dll not found exception v 2
+        ///     Tests that slider float 4 should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void SliderFloat4_ShouldThrowDllNotFoundException_v2()

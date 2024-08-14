@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test
 {
     /// <summary>
-    /// The im color test class
+    ///     The im color test class
     /// </summary>
     public class ImColorTest
     {
         /// <summary>
-        /// Tests that value should be initialized correctly
+        ///     Tests that value should be initialized correctly
         /// </summary>
         [Fact]
         public void Value_ShouldBeInitializedCorrectly()
@@ -55,7 +55,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that set hsv should set correct values
+        ///     Tests that set hsv should set correct values
         /// </summary>
         [Fact]
         public void SetHsv_ShouldSetCorrectValues()
@@ -68,7 +68,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that set hsv with alpha should set correct values
+        ///     Tests that set hsv with alpha should set correct values
         /// </summary>
         [Fact]
         public void SetHsv_WithAlpha_ShouldSetCorrectValues()
@@ -81,7 +81,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that value should set and get correctly
+        ///     Tests that value should set and get correctly
         /// </summary>
         [Fact]
         public void Value_Should_SetAndGetCorrectly()
@@ -93,7 +93,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that set hsv should set correct values
+        ///     Tests that set hsv should set correct values
         /// </summary>
         [Fact]
         public void SetHsv_Should_SetCorrectValues()
@@ -103,7 +103,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that set hsv with alpha should set correct values
+        ///     Tests that set hsv with alpha should set correct values
         /// </summary>
         [Fact]
         public void SetHsv_WithAlpha_Should_SetCorrectValues()
@@ -113,23 +113,23 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that v 3 set hsv should set correct values
+        ///     Tests that v 3 set hsv should set correct values
         /// </summary>
         [Fact]
         public void V3_SetHsv_Should_SetCorrectValues()
         {
             ImColor color = new ImColor();
-            Assert.Throws<DllNotFoundException>(() =>color.SetHsv(0.5f, 0.5f, 0.5f));
+            Assert.Throws<DllNotFoundException>(() => color.SetHsv(0.5f, 0.5f, 0.5f));
         }
         
         /// <summary>
-        /// Tests that v 3 set hsv with alpha should set correct values
+        ///     Tests that v 3 set hsv with alpha should set correct values
         /// </summary>
         [Fact]
         public void V3_SetHsv_WithAlpha_Should_SetCorrectValues()
         {
             ImColor color = new ImColor();
-            Assert.Throws<DllNotFoundException>(() =>color.SetHsv(0.5f, 0.5f, 0.5f, 0.5f));
+            Assert.Throws<DllNotFoundException>(() => color.SetHsv(0.5f, 0.5f, 0.5f, 0.5f));
         }
     }
 }

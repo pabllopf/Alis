@@ -38,12 +38,12 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot
         ///     The none im plot cond
         /// </summary>
         None = 0,
-
+        
         /// <summary>
         ///     The always im plot cond
         /// </summary>
         Always = 1,
-
+        
         /// <summary>
         ///     The once im plot cond
         /// </summary>

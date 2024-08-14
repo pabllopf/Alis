@@ -27,20 +27,17 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Runtime.InteropServices;
 using Xunit;
 
 namespace Alis.Extension.Graphic.ImGui.Test
 {
     /// <summary>
-    /// The stb textedit row test class
+    ///     The stb textedit row test class
     /// </summary>
     public class StbTexteditRowTest
     {
-        
         /// <summary>
-        /// Tests that x 0 should be initialized
+        ///     Tests that x 0 should be initialized
         /// </summary>
         [Fact]
         public void X0_ShouldBeInitialized()
@@ -50,7 +47,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that x 1 should be initialized
+        ///     Tests that x 1 should be initialized
         /// </summary>
         [Fact]
         public void X1_ShouldBeInitialized()
@@ -60,7 +57,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that baseline y delta should be initialized
+        ///     Tests that baseline y delta should be initialized
         /// </summary>
         [Fact]
         public void BaselineYDelta_ShouldBeInitialized()
@@ -70,7 +67,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that ymin should be initialized
+        ///     Tests that ymin should be initialized
         /// </summary>
         [Fact]
         public void Ymin_ShouldBeInitialized()
@@ -80,7 +77,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that ymax should be initialized
+        ///     Tests that ymax should be initialized
         /// </summary>
         [Fact]
         public void Ymax_ShouldBeInitialized()
@@ -90,7 +87,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that num chars should be initialized
+        ///     Tests that num chars should be initialized
         /// </summary>
         [Fact]
         public void NumChars_ShouldBeInitialized()
@@ -100,7 +97,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that x 0 should set and get correctly
+        ///     Tests that x 0 should set and get correctly
         /// </summary>
         [Fact]
         public void X0_Should_SetAndGetCorrectly()
@@ -111,7 +108,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that x 1 should set and get correctly
+        ///     Tests that x 1 should set and get correctly
         /// </summary>
         [Fact]
         public void X1_Should_SetAndGetCorrectly()
@@ -122,7 +119,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that baseline y delta should set and get correctly
+        ///     Tests that baseline y delta should set and get correctly
         /// </summary>
         [Fact]
         public void BaselineYDelta_Should_SetAndGetCorrectly()
@@ -133,7 +130,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that ymin should set and get correctly
+        ///     Tests that ymin should set and get correctly
         /// </summary>
         [Fact]
         public void Ymin_Should_SetAndGetCorrectly()
@@ -144,7 +141,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that ymax should set and get correctly
+        ///     Tests that ymax should set and get correctly
         /// </summary>
         [Fact]
         public void Ymax_Should_SetAndGetCorrectly()
@@ -155,7 +152,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that num chars should set and get correctly
+        ///     Tests that num chars should set and get correctly
         /// </summary>
         [Fact]
         public void NumChars_Should_SetAndGetCorrectly()

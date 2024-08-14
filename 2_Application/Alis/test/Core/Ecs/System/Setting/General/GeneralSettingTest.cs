@@ -46,16 +46,16 @@ namespace Alis.Test.Core.Ecs.System.Setting.General
         {
             // Arrange
             GeneralSetting generalSetting = new GeneralSetting();
-
+            
             // Act
             generalSetting.Debug = true;
             bool result = generalSetting.Debug;
-
+            
             // Assert
             Assert.NotNull(generalSetting);
             Assert.True(result);
         }
-
+        
         /// <summary>
         ///     Tests that test general setting name
         /// </summary>
@@ -64,16 +64,16 @@ namespace Alis.Test.Core.Ecs.System.Setting.General
         {
             // Arrange
             GeneralSetting generalSetting = new GeneralSetting();
-
+            
             // Act
             generalSetting.Name = "Test Name";
             string result = generalSetting.Name;
-
+            
             // Assert
             Assert.NotNull(generalSetting);
             Assert.Equal("Test Name", result);
         }
-
+        
         /// <summary>
         ///     Tests that test general setting description
         /// </summary>
@@ -82,16 +82,16 @@ namespace Alis.Test.Core.Ecs.System.Setting.General
         {
             // Arrange
             GeneralSetting generalSetting = new GeneralSetting();
-
+            
             // Act
             generalSetting.Description = "Test Description";
             string result = generalSetting.Description;
-
+            
             // Assert
             Assert.NotNull(generalSetting);
             Assert.Equal("Test Description", result);
         }
-
+        
         /// <summary>
         ///     Tests that test general setting version
         /// </summary>
@@ -100,16 +100,16 @@ namespace Alis.Test.Core.Ecs.System.Setting.General
         {
             // Arrange
             GeneralSetting generalSetting = new GeneralSetting();
-
+            
             // Act
             generalSetting.Version = "1.0.0";
             string result = generalSetting.Version;
-
+            
             // Assert
             Assert.NotNull(generalSetting);
             Assert.Equal("1.0.0", result);
         }
-
+        
         /// <summary>
         ///     Tests that test general setting author
         /// </summary>
@@ -118,16 +118,16 @@ namespace Alis.Test.Core.Ecs.System.Setting.General
         {
             // Arrange
             GeneralSetting generalSetting = new GeneralSetting();
-
+            
             // Act
             generalSetting.Author = "Test Author";
             string result = generalSetting.Author;
-
+            
             // Assert
             Assert.NotNull(generalSetting);
             Assert.Equal("Test Author", result);
         }
-
+        
         /// <summary>
         ///     Tests that test general setting license
         /// </summary>
@@ -136,16 +136,16 @@ namespace Alis.Test.Core.Ecs.System.Setting.General
         {
             // Arrange
             GeneralSetting generalSetting = new GeneralSetting();
-
+            
             // Act
             generalSetting.License = "Test License";
             string result = generalSetting.License;
-
+            
             // Assert
             Assert.NotNull(generalSetting);
             Assert.Equal("Test License", result);
         }
-
+        
         /// <summary>
         ///     Tests that test general setting icon
         /// </summary>
@@ -154,16 +154,16 @@ namespace Alis.Test.Core.Ecs.System.Setting.General
         {
             // Arrange
             GeneralSetting generalSetting = new GeneralSetting();
-
+            
             // Act
             generalSetting.Icon = "Test Icon";
             string result = generalSetting.Icon;
-
+            
             // Assert
             Assert.NotNull(generalSetting);
             Assert.Equal("Test Icon", result);
         }
-
+        
         /// <summary>
         ///     Tests that test general setting builder
         /// </summary>
@@ -172,10 +172,10 @@ namespace Alis.Test.Core.Ecs.System.Setting.General
         {
             // Arrange
             GeneralSetting generalSetting = new GeneralSetting();
-
+            
             // Act
             GeneralSettingBuilder result = generalSetting.Builder();
-
+            
             // Assert
             Assert.NotNull(result);
             Assert.IsType<GeneralSettingBuilder>(result);

@@ -45,7 +45,7 @@ namespace Alis.Core.Audio.Test.Players.Samples
         public override Task SetVolume(byte percent) =>
             // Implement the method for testing purposes
             Task.CompletedTask;
-
+        
         /// <summary>
         ///     Gets the bash command using the specified file name
         /// </summary>

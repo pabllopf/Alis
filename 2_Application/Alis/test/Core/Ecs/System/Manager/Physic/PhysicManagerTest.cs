@@ -51,7 +51,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Physic
             manager.OnUpdate();
             // Asserts would go here
         }
-
+        
         /// <summary>
         ///     Tests that test attach
         /// </summary>
@@ -67,7 +67,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Physic
             manager.Attach(body);
             // Asserts would go here
         }
-
+        
         /// <summary>
         ///     Tests that test un attach
         /// </summary>

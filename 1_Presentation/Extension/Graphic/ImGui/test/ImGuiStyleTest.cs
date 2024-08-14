@@ -33,12 +33,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test
 {
     /// <summary>
-    /// The im gui style test class
+    ///     The im gui style test class
     /// </summary>
     public class ImGuiStyleTest
     {
         /// <summary>
-        /// Tests that alpha should set and get correctly
+        ///     Tests that alpha should set and get correctly
         /// </summary>
         [Fact]
         public void Alpha_Should_SetAndGetCorrectly()
@@ -49,7 +49,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that disabled alpha should set and get correctly
+        ///     Tests that disabled alpha should set and get correctly
         /// </summary>
         [Fact]
         public void DisabledAlpha_Should_SetAndGetCorrectly()
@@ -60,7 +60,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that window padding should set and get correctly
+        ///     Tests that window padding should set and get correctly
         /// </summary>
         [Fact]
         public void WindowPadding_Should_SetAndGetCorrectly()
@@ -72,7 +72,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that window rounding should set and get correctly
+        ///     Tests that window rounding should set and get correctly
         /// </summary>
         [Fact]
         public void WindowRounding_Should_SetAndGetCorrectly()
@@ -83,7 +83,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that window border size should set and get correctly
+        ///     Tests that window border size should set and get correctly
         /// </summary>
         [Fact]
         public void WindowBorderSize_Should_SetAndGetCorrectly()
@@ -94,7 +94,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that window min size should set and get correctly
+        ///     Tests that window min size should set and get correctly
         /// </summary>
         [Fact]
         public void WindowMinSize_Should_SetAndGetCorrectly()
@@ -106,7 +106,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that window title align should set and get correctly
+        ///     Tests that window title align should set and get correctly
         /// </summary>
         [Fact]
         public void WindowTitleAlign_Should_SetAndGetCorrectly()
@@ -118,7 +118,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that window menu button position should set and get correctly
+        ///     Tests that window menu button position should set and get correctly
         /// </summary>
         [Fact]
         public void WindowMenuButtonPosition_Should_SetAndGetCorrectly()
@@ -129,7 +129,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that child rounding should set and get correctly
+        ///     Tests that child rounding should set and get correctly
         /// </summary>
         [Fact]
         public void ChildRounding_Should_SetAndGetCorrectly()
@@ -140,7 +140,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that child border size should set and get correctly
+        ///     Tests that child border size should set and get correctly
         /// </summary>
         [Fact]
         public void ChildBorderSize_Should_SetAndGetCorrectly()
@@ -151,7 +151,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that popup rounding should set and get correctly
+        ///     Tests that popup rounding should set and get correctly
         /// </summary>
         [Fact]
         public void PopupRounding_Should_SetAndGetCorrectly()
@@ -162,7 +162,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that popup border size should set and get correctly
+        ///     Tests that popup border size should set and get correctly
         /// </summary>
         [Fact]
         public void PopupBorderSize_Should_SetAndGetCorrectly()
@@ -173,7 +173,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that frame padding should set and get correctly
+        ///     Tests that frame padding should set and get correctly
         /// </summary>
         [Fact]
         public void FramePadding_Should_SetAndGetCorrectly()
@@ -185,7 +185,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that frame rounding should set and get correctly
+        ///     Tests that frame rounding should set and get correctly
         /// </summary>
         [Fact]
         public void FrameRounding_Should_SetAndGetCorrectly()
@@ -196,7 +196,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that frame border size should set and get correctly
+        ///     Tests that frame border size should set and get correctly
         /// </summary>
         [Fact]
         public void FrameBorderSize_Should_SetAndGetCorrectly()
@@ -207,7 +207,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that item spacing should set and get correctly
+        ///     Tests that item spacing should set and get correctly
         /// </summary>
         [Fact]
         public void ItemSpacing_Should_SetAndGetCorrectly()
@@ -219,7 +219,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that item inner spacing should set and get correctly
+        ///     Tests that item inner spacing should set and get correctly
         /// </summary>
         [Fact]
         public void ItemInnerSpacing_Should_SetAndGetCorrectly()
@@ -231,7 +231,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that cell padding should set and get correctly
+        ///     Tests that cell padding should set and get correctly
         /// </summary>
         [Fact]
         public void CellPadding_Should_SetAndGetCorrectly()
@@ -243,7 +243,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that touch extra padding should set and get correctly
+        ///     Tests that touch extra padding should set and get correctly
         /// </summary>
         [Fact]
         public void TouchExtraPadding_Should_SetAndGetCorrectly()
@@ -255,7 +255,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that indent spacing should set and get correctly
+        ///     Tests that indent spacing should set and get correctly
         /// </summary>
         [Fact]
         public void IndentSpacing_Should_SetAndGetCorrectly()
@@ -266,7 +266,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that columns min spacing should set and get correctly
+        ///     Tests that columns min spacing should set and get correctly
         /// </summary>
         [Fact]
         public void ColumnsMinSpacing_Should_SetAndGetCorrectly()
@@ -277,7 +277,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that scrollbar size should set and get correctly
+        ///     Tests that scrollbar size should set and get correctly
         /// </summary>
         [Fact]
         public void ScrollbarSize_Should_SetAndGetCorrectly()
@@ -288,7 +288,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that scrollbar rounding should set and get correctly
+        ///     Tests that scrollbar rounding should set and get correctly
         /// </summary>
         [Fact]
         public void ScrollbarRounding_Should_SetAndGetCorrectly()
@@ -299,7 +299,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that grab min size should set and get correctly
+        ///     Tests that grab min size should set and get correctly
         /// </summary>
         [Fact]
         public void GrabMinSize_Should_SetAndGetCorrectly()
@@ -310,7 +310,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that grab rounding should set and get correctly
+        ///     Tests that grab rounding should set and get correctly
         /// </summary>
         [Fact]
         public void GrabRounding_Should_SetAndGetCorrectly()
@@ -321,7 +321,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that log slider deadzone should set and get correctly
+        ///     Tests that log slider deadzone should set and get correctly
         /// </summary>
         [Fact]
         public void LogSliderDeadzone_Should_SetAndGetCorrectly()
@@ -332,7 +332,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tab rounding should set and get correctly
+        ///     Tests that tab rounding should set and get correctly
         /// </summary>
         [Fact]
         public void TabRounding_Should_SetAndGetCorrectly()
@@ -343,7 +343,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tab border size should set and get correctly
+        ///     Tests that tab border size should set and get correctly
         /// </summary>
         [Fact]
         public void TabBorderSize_Should_SetAndGetCorrectly()
@@ -354,7 +354,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that tab min width for close button should set and get correctly
+        ///     Tests that tab min width for close button should set and get correctly
         /// </summary>
         [Fact]
         public void TabMinWidthForCloseButton_Should_SetAndGetCorrectly()
@@ -365,7 +365,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that color button position should set and get correctly
+        ///     Tests that color button position should set and get correctly
         /// </summary>
         [Fact]
         public void ColorButtonPosition_Should_SetAndGetCorrectly()
@@ -376,7 +376,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that button text align should set and get correctly
+        ///     Tests that button text align should set and get correctly
         /// </summary>
         [Fact]
         public void ButtonTextAlign_Should_SetAndGetCorrectly()
@@ -388,7 +388,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that selectable text align should set and get correctly
+        ///     Tests that selectable text align should set and get correctly
         /// </summary>
         [Fact]
         public void SelectableTextAlign_Should_SetAndGetCorrectly()
@@ -400,7 +400,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that display window padding should set and get correctly
+        ///     Tests that display window padding should set and get correctly
         /// </summary>
         [Fact]
         public void DisplayWindowPadding_Should_SetAndGetCorrectly()
@@ -412,7 +412,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that display safe area padding should set and get correctly
+        ///     Tests that display safe area padding should set and get correctly
         /// </summary>
         [Fact]
         public void DisplaySafeAreaPadding_Should_SetAndGetCorrectly()
@@ -424,7 +424,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that mouse cursor scale should set and get correctly
+        ///     Tests that mouse cursor scale should set and get correctly
         /// </summary>
         [Fact]
         public void MouseCursorScale_Should_SetAndGetCorrectly()
@@ -435,7 +435,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that anti aliased lines should set and get correctly
+        ///     Tests that anti aliased lines should set and get correctly
         /// </summary>
         [Fact]
         public void AntiAliasedLines_Should_SetAndGetCorrectly()
@@ -446,7 +446,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that anti aliased lines use tex should set and get correctly
+        ///     Tests that anti aliased lines use tex should set and get correctly
         /// </summary>
         [Fact]
         public void AntiAliasedLinesUseTex_Should_SetAndGetCorrectly()
@@ -457,7 +457,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that anti aliased fill should set and get correctly
+        ///     Tests that anti aliased fill should set and get correctly
         /// </summary>
         [Fact]
         public void AntiAliasedFill_Should_SetAndGetCorrectly()
@@ -468,7 +468,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that curve tessellation tol should set and get correctly
+        ///     Tests that curve tessellation tol should set and get correctly
         /// </summary>
         [Fact]
         public void CurveTessellationTol_Should_SetAndGetCorrectly()
@@ -479,7 +479,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that circle tessellation max error should set and get correctly
+        ///     Tests that circle tessellation max error should set and get correctly
         /// </summary>
         [Fact]
         public void CircleTessellationMaxError_Should_SetAndGetCorrectly()
@@ -490,7 +490,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 0 should set and get correctly
+        ///     Tests that colors 0 should set and get correctly
         /// </summary>
         [Fact]
         public void Colors0_Should_SetAndGetCorrectly()
@@ -502,7 +502,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 1 should set and get correctly
+        ///     Tests that colors 1 should set and get correctly
         /// </summary>
         [Fact]
         public void Colors1_Should_SetAndGetCorrectly()
@@ -514,7 +514,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 2 should set and get correctly
+        ///     Tests that colors 2 should set and get correctly
         /// </summary>
         [Fact]
         public void Colors2_Should_SetAndGetCorrectly()
@@ -526,7 +526,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 3 should set and get correctly
+        ///     Tests that colors 3 should set and get correctly
         /// </summary>
         [Fact]
         public void Colors3_Should_SetAndGetCorrectly()
@@ -538,7 +538,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 4 should set and get correctly
+        ///     Tests that colors 4 should set and get correctly
         /// </summary>
         [Fact]
         public void Colors4_Should_SetAndGetCorrectly()
@@ -550,7 +550,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 5 should set and get correctly
+        ///     Tests that colors 5 should set and get correctly
         /// </summary>
         [Fact]
         public void Colors5_Should_SetAndGetCorrectly()
@@ -562,7 +562,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 6 should set and get correctly
+        ///     Tests that colors 6 should set and get correctly
         /// </summary>
         [Fact]
         public void Colors6_Should_SetAndGetCorrectly()
@@ -574,7 +574,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 7 should set and get correctly
+        ///     Tests that colors 7 should set and get correctly
         /// </summary>
         [Fact]
         public void Colors7_Should_SetAndGetCorrectly()
@@ -586,7 +586,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 8 should set and get correctly
+        ///     Tests that colors 8 should set and get correctly
         /// </summary>
         [Fact]
         public void Colors8_Should_SetAndGetCorrectly()
@@ -598,7 +598,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 9 should set and get correctly
+        ///     Tests that colors 9 should set and get correctly
         /// </summary>
         [Fact]
         public void Colors9_Should_SetAndGetCorrectly()
@@ -610,7 +610,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 10 should set and get correctly
+        ///     Tests that colors 10 should set and get correctly
         /// </summary>
         [Fact]
         public void Colors10_Should_SetAndGetCorrectly()
@@ -622,7 +622,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 11 should set and get correctly
+        ///     Tests that colors 11 should set and get correctly
         /// </summary>
         [Fact]
         public void Colors11_Should_SetAndGetCorrectly()
@@ -634,7 +634,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 12 should set and get correctly
+        ///     Tests that colors 12 should set and get correctly
         /// </summary>
         [Fact]
         public void Colors12_Should_SetAndGetCorrectly()
@@ -646,7 +646,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 13 should set and get correctly
+        ///     Tests that colors 13 should set and get correctly
         /// </summary>
         [Fact]
         public void Colors13_Should_SetAndGetCorrectly()
@@ -658,7 +658,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 14 should set and get correctly
+        ///     Tests that colors 14 should set and get correctly
         /// </summary>
         [Fact]
         public void Colors14_Should_SetAndGetCorrectly()
@@ -670,7 +670,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 15 should set and get correctly
+        ///     Tests that colors 15 should set and get correctly
         /// </summary>
         [Fact]
         public void Colors15_Should_SetAndGetCorrectly()
@@ -682,7 +682,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 16 should set and get correctly
+        ///     Tests that colors 16 should set and get correctly
         /// </summary>
         [Fact]
         public void Colors16_Should_SetAndGetCorrectly()
@@ -694,7 +694,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 17 should set and get correctly
+        ///     Tests that colors 17 should set and get correctly
         /// </summary>
         [Fact]
         public void Colors17_Should_SetAndGetCorrectly()
@@ -706,7 +706,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 18 should set and get correctly
+        ///     Tests that colors 18 should set and get correctly
         /// </summary>
         [Fact]
         public void Colors18_Should_SetAndGetCorrectly()
@@ -718,7 +718,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 19 should set and get correctly
+        ///     Tests that colors 19 should set and get correctly
         /// </summary>
         [Fact]
         public void Colors19_Should_SetAndGetCorrectly()
@@ -730,7 +730,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 20 should set and get correctly
+        ///     Tests that colors 20 should set and get correctly
         /// </summary>
         [Fact]
         public void Colors20_Should_SetAndGetCorrectly()
@@ -742,7 +742,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 21 should set and get correctly
+        ///     Tests that colors 21 should set and get correctly
         /// </summary>
         [Fact]
         public void Colors21_Should_SetAndGetCorrectly()
@@ -754,7 +754,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 22 should set and get correctly
+        ///     Tests that colors 22 should set and get correctly
         /// </summary>
         [Fact]
         public void Colors22_Should_SetAndGetCorrectly()
@@ -766,7 +766,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 23 should set and get correctly
+        ///     Tests that colors 23 should set and get correctly
         /// </summary>
         [Fact]
         public void Colors23_Should_SetAndGetCorrectly()
@@ -778,7 +778,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 24 should set and get correctly
+        ///     Tests that colors 24 should set and get correctly
         /// </summary>
         [Fact]
         public void Colors24_Should_SetAndGetCorrectly()
@@ -790,7 +790,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 25 should set and get correctly
+        ///     Tests that colors 25 should set and get correctly
         /// </summary>
         [Fact]
         public void Colors25_Should_SetAndGetCorrectly()
@@ -802,7 +802,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 26 set and get returns correct value
+        ///     Tests that colors 26 set and get returns correct value
         /// </summary>
         [Fact]
         public void Colors26_SetAndGet_ReturnsCorrectValue()
@@ -814,7 +814,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 27 set and get returns correct value
+        ///     Tests that colors 27 set and get returns correct value
         /// </summary>
         [Fact]
         public void Colors27_SetAndGet_ReturnsCorrectValue()
@@ -826,7 +826,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 28 set and get returns correct value
+        ///     Tests that colors 28 set and get returns correct value
         /// </summary>
         [Fact]
         public void Colors28_SetAndGet_ReturnsCorrectValue()
@@ -838,7 +838,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 29 set and get returns correct value
+        ///     Tests that colors 29 set and get returns correct value
         /// </summary>
         [Fact]
         public void Colors29_SetAndGet_ReturnsCorrectValue()
@@ -850,7 +850,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 30 set and get returns correct value
+        ///     Tests that colors 30 set and get returns correct value
         /// </summary>
         [Fact]
         public void Colors30_SetAndGet_ReturnsCorrectValue()
@@ -862,7 +862,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 31 set and get returns correct value
+        ///     Tests that colors 31 set and get returns correct value
         /// </summary>
         [Fact]
         public void Colors31_SetAndGet_ReturnsCorrectValue()
@@ -874,7 +874,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 32 set and get returns correct value
+        ///     Tests that colors 32 set and get returns correct value
         /// </summary>
         [Fact]
         public void Colors32_SetAndGet_ReturnsCorrectValue()
@@ -886,7 +886,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 33 set and get returns correct value
+        ///     Tests that colors 33 set and get returns correct value
         /// </summary>
         [Fact]
         public void Colors33_SetAndGet_ReturnsCorrectValue()
@@ -898,7 +898,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 34 set and get returns correct value
+        ///     Tests that colors 34 set and get returns correct value
         /// </summary>
         [Fact]
         public void Colors34_SetAndGet_ReturnsCorrectValue()
@@ -910,7 +910,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 35 set and get returns correct value
+        ///     Tests that colors 35 set and get returns correct value
         /// </summary>
         [Fact]
         public void Colors35_SetAndGet_ReturnsCorrectValue()
@@ -922,7 +922,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 36 set and get returns correct value
+        ///     Tests that colors 36 set and get returns correct value
         /// </summary>
         [Fact]
         public void Colors36_SetAndGet_ReturnsCorrectValue()
@@ -934,7 +934,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 37 set and get returns correct value
+        ///     Tests that colors 37 set and get returns correct value
         /// </summary>
         [Fact]
         public void Colors37_SetAndGet_ReturnsCorrectValue()
@@ -946,7 +946,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 38 set and get returns correct value
+        ///     Tests that colors 38 set and get returns correct value
         /// </summary>
         [Fact]
         public void Colors38_SetAndGet_ReturnsCorrectValue()
@@ -958,7 +958,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 39 set and get returns correct value
+        ///     Tests that colors 39 set and get returns correct value
         /// </summary>
         [Fact]
         public void Colors39_SetAndGet_ReturnsCorrectValue()
@@ -970,7 +970,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 40 set and get returns correct value
+        ///     Tests that colors 40 set and get returns correct value
         /// </summary>
         [Fact]
         public void Colors40_SetAndGet_ReturnsCorrectValue()
@@ -982,7 +982,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 41 set and get returns correct value
+        ///     Tests that colors 41 set and get returns correct value
         /// </summary>
         [Fact]
         public void Colors41_SetAndGet_ReturnsCorrectValue()
@@ -994,7 +994,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 42 set and get returns correct value
+        ///     Tests that colors 42 set and get returns correct value
         /// </summary>
         [Fact]
         public void Colors42_SetAndGet_ReturnsCorrectValue()
@@ -1006,7 +1006,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 43 set and get returns correct value
+        ///     Tests that colors 43 set and get returns correct value
         /// </summary>
         [Fact]
         public void Colors43_SetAndGet_ReturnsCorrectValue()
@@ -1018,7 +1018,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 44 set and get returns correct value
+        ///     Tests that colors 44 set and get returns correct value
         /// </summary>
         [Fact]
         public void Colors44_SetAndGet_ReturnsCorrectValue()
@@ -1030,7 +1030,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 45 set and get returns correct value
+        ///     Tests that colors 45 set and get returns correct value
         /// </summary>
         [Fact]
         public void Colors45_SetAndGet_ReturnsCorrectValue()
@@ -1042,7 +1042,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 46 set and get returns correct value
+        ///     Tests that colors 46 set and get returns correct value
         /// </summary>
         [Fact]
         public void Colors46_SetAndGet_ReturnsCorrectValue()
@@ -1054,7 +1054,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 47 set and get returns correct value
+        ///     Tests that colors 47 set and get returns correct value
         /// </summary>
         [Fact]
         public void Colors47_SetAndGet_ReturnsCorrectValue()
@@ -1066,7 +1066,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 48 set and get returns correct value
+        ///     Tests that colors 48 set and get returns correct value
         /// </summary>
         [Fact]
         public void Colors48_SetAndGet_ReturnsCorrectValue()
@@ -1078,7 +1078,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 49 set and get returns correct value
+        ///     Tests that colors 49 set and get returns correct value
         /// </summary>
         [Fact]
         public void Colors49_SetAndGet_ReturnsCorrectValue()
@@ -1090,7 +1090,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 50 set and get returns correct value
+        ///     Tests that colors 50 set and get returns correct value
         /// </summary>
         [Fact]
         public void Colors50_SetAndGet_ReturnsCorrectValue()
@@ -1102,7 +1102,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 51 set and get returns correct value
+        ///     Tests that colors 51 set and get returns correct value
         /// </summary>
         [Fact]
         public void Colors51_SetAndGet_ReturnsCorrectValue()
@@ -1114,7 +1114,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 52 set and get returns correct value
+        ///     Tests that colors 52 set and get returns correct value
         /// </summary>
         [Fact]
         public void Colors52_SetAndGet_ReturnsCorrectValue()
@@ -1126,7 +1126,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 53 set and get returns correct value
+        ///     Tests that colors 53 set and get returns correct value
         /// </summary>
         [Fact]
         public void Colors53_SetAndGet_ReturnsCorrectValue()
@@ -1138,7 +1138,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that colors 54 set and get returns correct value
+        ///     Tests that colors 54 set and get returns correct value
         /// </summary>
         [Fact]
         public void Colors54_SetAndGet_ReturnsCorrectValue()

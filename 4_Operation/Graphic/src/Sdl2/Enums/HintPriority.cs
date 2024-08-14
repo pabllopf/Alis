@@ -38,12 +38,12 @@ namespace Alis.Core.Graphic.Sdl2.Enums
         ///     The sdl hint default sdl hint priority
         /// </summary>
         SdlHintDefault,
-
+        
         /// <summary>
         ///     The sdl hint normal sdl hint priority
         /// </summary>
         SdlHintNormal,
-
+        
         /// <summary>
         ///     The sdl hint override sdl hint priority
         /// </summary>

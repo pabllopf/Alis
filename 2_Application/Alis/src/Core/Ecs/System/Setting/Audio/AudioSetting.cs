@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Builder.Core.Ecs.System.Setting.Audio;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
@@ -46,38 +45,36 @@ namespace Alis.Core.Ecs.System.Setting.Audio
         /// <summary>
         ///     Initializes a new instance of the <see cref="AudioSetting" /> class
         /// </summary>
-        
         public AudioSetting()
         {
             Volume = 100;
             Mute = false;
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="AudioSetting" /> class
         /// </summary>
         /// <param name="volume">The volume</param>
         /// <param name="mute">The mute</param>
         [JsonConstructor]
-        
         public AudioSetting(int volume, bool mute)
         {
             Volume = volume;
             Mute = mute;
         }
-
+        
         /// <summary>
         ///     Gets or sets the value of the volume
         /// </summary>
         [JsonPropertyName("_Volume_")]
         public int Volume { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the mute
         /// </summary>
         [JsonPropertyName("_Mute_")]
         public bool Mute { get; set; }
-
+        
         /// <summary>
         ///     Builders this instance
         /// </summary>

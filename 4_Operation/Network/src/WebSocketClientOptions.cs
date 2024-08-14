@@ -48,7 +48,7 @@ namespace Alis.Core.Network
             IncludeExceptionInCloseResponse = false;
             SecWebSocketProtocol = null;
         }
-
+        
         /// <summary>
         ///     How often to send ping requests to the Server
         ///     This is done to prevent proxy servers from closing your connection
@@ -59,7 +59,7 @@ namespace Alis.Core.Network
         ///     If you do that it is advisible to set this KeepAliveInterval to zero for the WebSocketClientFactory
         /// </summary>
         public TimeSpan KeepAliveInterval { get; set; }
-
+        
         /// <summary>
         ///     Set to true to send a message immediately with the least amount of latency (typical usage for chat)
         ///     This will disable Nagle's algorithm which can cause high tcp latency for small packets sent infrequently
@@ -68,24 +68,24 @@ namespace Alis.Core.Network
         ///     This way data will be bundled into larger packets for better throughput
         /// </summary>
         public bool NoDelay { get; set; }
-
+        
         /// <summary>
         ///     Add any additional http headers to this dictionary
         /// </summary>
         public Dictionary<string, string> AdditionalHttpHeaders { get; }
-
+        
         /// <summary>
         ///     Include the full exception (with stack trace) in the close response
         ///     when an exception is encountered and the WebSocket connection is closed
         ///     The default is false
         /// </summary>
         public bool IncludeExceptionInCloseResponse { get; }
-
+        
         /// <summary>
         ///     WebSocket Extensions as an HTTP header value
         /// </summary>
         public string SecWebSocketExtensions { get; }
-
+        
         /// <summary>
         ///     A comma separated list of sub protocols in preference order (first one being the most preferred)
         ///     The server will return the first supported sub protocol (or none if none are supported)

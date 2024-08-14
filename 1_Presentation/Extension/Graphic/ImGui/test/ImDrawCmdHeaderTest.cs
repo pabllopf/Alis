@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test
 {
     /// <summary>
-    /// The im draw cmd header test class
+    ///     The im draw cmd header test class
     /// </summary>
     public class ImDrawCmdHeaderTest
     {
         /// <summary>
-        /// Tests that clip rect should be initialized correctly
+        ///     Tests that clip rect should be initialized correctly
         /// </summary>
         [Fact]
         public void ClipRect_ShouldBeInitializedCorrectly()
@@ -55,7 +55,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that texture id should be initialized correctly
+        ///     Tests that texture id should be initialized correctly
         /// </summary>
         [Fact]
         public void TextureId_ShouldBeInitializedCorrectly()
@@ -71,7 +71,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that vtx offset should be initialized correctly
+        ///     Tests that vtx offset should be initialized correctly
         /// </summary>
         [Fact]
         public void VtxOffset_ShouldBeInitializedCorrectly()

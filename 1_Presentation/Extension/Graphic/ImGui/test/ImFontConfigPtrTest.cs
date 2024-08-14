@@ -35,12 +35,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test
 {
     /// <summary>
-    /// The im font config ptr test class
+    ///     The im font config ptr test class
     /// </summary>
     public class ImFontConfigPtrTest
     {
         /// <summary>
-        /// Tests that native ptr should be initialized
+        ///     Tests that native ptr should be initialized
         /// </summary>
         [Fact]
         public void NativePtr_ShouldBeInitialized()
@@ -50,7 +50,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that font data should be initialized
+        ///     Tests that font data should be initialized
         /// </summary>
         [Fact]
         public void FontData_ShouldBeInitialized()
@@ -61,7 +61,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that font data size should be initialized
+        ///     Tests that font data size should be initialized
         /// </summary>
         [Fact]
         public void FontDataSize_ShouldBeInitialized()
@@ -72,7 +72,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that font data owned by atlas should be initialized
+        ///     Tests that font data owned by atlas should be initialized
         /// </summary>
         [Fact]
         public void FontDataOwnedByAtlas_ShouldBeInitialized()
@@ -83,7 +83,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that font no should be initialized
+        ///     Tests that font no should be initialized
         /// </summary>
         [Fact]
         public void FontNo_ShouldBeInitialized()
@@ -94,7 +94,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that size pixels should be initialized
+        ///     Tests that size pixels should be initialized
         /// </summary>
         [Fact]
         public void SizePixels_ShouldBeInitialized()
@@ -105,7 +105,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that oversample h should be initialized
+        ///     Tests that oversample h should be initialized
         /// </summary>
         [Fact]
         public void OversampleH_ShouldBeInitialized()
@@ -116,7 +116,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that oversample v should be initialized
+        ///     Tests that oversample v should be initialized
         /// </summary>
         [Fact]
         public void OversampleV_ShouldBeInitialized()
@@ -127,7 +127,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that snap h should be initialized
+        ///     Tests that snap h should be initialized
         /// </summary>
         [Fact]
         public void SnapH_ShouldBeInitialized()
@@ -138,7 +138,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that glyph extra spacing should be initialized
+        ///     Tests that glyph extra spacing should be initialized
         /// </summary>
         [Fact]
         public void GlyphExtraSpacing_ShouldBeInitialized()
@@ -149,7 +149,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that glyph offset should be initialized
+        ///     Tests that glyph offset should be initialized
         /// </summary>
         [Fact]
         public void GlyphOffset_ShouldBeInitialized()
@@ -160,7 +160,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that glyph ranges should be initialized
+        ///     Tests that glyph ranges should be initialized
         /// </summary>
         [Fact]
         public void GlyphRanges_ShouldBeInitialized()
@@ -171,7 +171,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that glyph min advance x should be initialized
+        ///     Tests that glyph min advance x should be initialized
         /// </summary>
         [Fact]
         public void GlyphMinAdvanceX_ShouldBeInitialized()
@@ -182,7 +182,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that glyph max advance x should be initialized
+        ///     Tests that glyph max advance x should be initialized
         /// </summary>
         [Fact]
         public void GlyphMaxAdvanceX_ShouldBeInitialized()
@@ -193,7 +193,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that merge mode should be initialized
+        ///     Tests that merge mode should be initialized
         /// </summary>
         [Fact]
         public void MergeMode_ShouldBeInitialized()
@@ -204,7 +204,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that font builder flags should be initialized
+        ///     Tests that font builder flags should be initialized
         /// </summary>
         [Fact]
         public void FontBuilderFlags_ShouldBeInitialized()
@@ -215,7 +215,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that rasterizer multiply should be initialized
+        ///     Tests that rasterizer multiply should be initialized
         /// </summary>
         [Fact]
         public void RasterizerMultiply_ShouldBeInitialized()
@@ -226,7 +226,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that ellipsis char should be initialized
+        ///     Tests that ellipsis char should be initialized
         /// </summary>
         [Fact]
         public void EllipsisChar_ShouldBeInitialized()
@@ -237,7 +237,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that dst font should be initialized
+        ///     Tests that dst font should be initialized
         /// </summary>
         [Fact]
         public void DstFont_ShouldBeInitialized()
@@ -248,7 +248,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that test constructor with native ptr
+        ///     Tests that test constructor with native ptr
         /// </summary>
         [Fact]
         public void Test_Constructor_WithNativePtr()
@@ -258,7 +258,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that test add glyph v 1
+        ///     Tests that test add glyph v 1
         /// </summary>
         [Fact]
         public void Test_AddGlyph_v1()
@@ -268,7 +268,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that test add remap char v 1
+        ///     Tests that test add remap char v 1
         /// </summary>
         [Fact]
         public void Test_AddRemapChar_v1()
@@ -278,7 +278,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that test add remap char v 2
+        ///     Tests that test add remap char v 2
         /// </summary>
         [Fact]
         public void Test_AddRemapChar_v2()
@@ -288,7 +288,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that test build lookup table
+        ///     Tests that test build lookup table
         /// </summary>
         [Fact]
         public void Test_BuildLookupTable()
@@ -298,7 +298,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that test clear output data
+        ///     Tests that test clear output data
         /// </summary>
         [Fact]
         public void Test_ClearOutputData()
@@ -308,7 +308,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that test find glyph
+        ///     Tests that test find glyph
         /// </summary>
         [Fact]
         public void Test_FindGlyph()
@@ -318,7 +318,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that test find glyph no fallback
+        ///     Tests that test find glyph no fallback
         /// </summary>
         [Fact]
         public void Test_FindGlyphNoFallback()
@@ -328,7 +328,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that test get char advance
+        ///     Tests that test get char advance
         /// </summary>
         [Fact]
         public void Test_GetCharAdvance()
@@ -338,7 +338,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that test get debug name
+        ///     Tests that test get debug name
         /// </summary>
         [Fact]
         public void Test_GetDebugName()
@@ -348,7 +348,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that test grow index
+        ///     Tests that test grow index
         /// </summary>
         [Fact]
         public void Test_GrowIndex()
@@ -358,7 +358,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that test is loaded
+        ///     Tests that test is loaded
         /// </summary>
         [Fact]
         public void Test_IsLoaded()
@@ -368,7 +368,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that test render char
+        ///     Tests that test render char
         /// </summary>
         [Fact]
         public void Test_RenderChar()
@@ -378,7 +378,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that test set glyph visible
+        ///     Tests that test set glyph visible
         /// </summary>
         [Fact]
         public void Test_SetGlyphVisible()
@@ -388,7 +388,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that implicit conversion to int ptr returns native ptr
+        ///     Tests that implicit conversion to int ptr returns native ptr
         /// </summary>
         [Fact]
         public void ImplicitConversionToIntPtr_ReturnsNativePtr()
@@ -400,7 +400,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that implicit conversion from int ptr returns im font ptr
+        ///     Tests that implicit conversion from int ptr returns im font ptr
         /// </summary>
         [Fact]
         public void ImplicitConversionFromIntPtr_ReturnsImFontPtr()
@@ -412,7 +412,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         
         
         /// <summary>
-        /// Tests that fallback advance x returns correct value
+        ///     Tests that fallback advance x returns correct value
         /// </summary>
         [Fact]
         public void FallbackAdvanceX_ReturnsCorrectValue()
@@ -426,7 +426,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that font size returns correct value
+        ///     Tests that font size returns correct value
         /// </summary>
         [Fact]
         public void FontSize_ReturnsCorrectValue()
@@ -440,7 +440,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that container atlas returns correct value
+        ///     Tests that container atlas returns correct value
         /// </summary>
         [Fact]
         public void ContainerAtlas_ReturnsCorrectValue()
@@ -454,7 +454,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that config data get and set returns correct value
+        ///     Tests that config data get and set returns correct value
         /// </summary>
         [Fact]
         public void ConfigData_GetAndSet_ReturnsCorrectValue()
@@ -472,7 +472,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that config data count returns correct value
+        ///     Tests that config data count returns correct value
         /// </summary>
         [Fact]
         public void ConfigDataCount_ReturnsCorrectValue()
@@ -486,7 +486,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that fallback char returns correct value
+        ///     Tests that fallback char returns correct value
         /// </summary>
         [Fact]
         public void FallbackChar_ReturnsCorrectValue()
@@ -500,7 +500,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that ellipsis char returns correct value
+        ///     Tests that ellipsis char returns correct value
         /// </summary>
         [Fact]
         public void EllipsisChar_ReturnsCorrectValue()
@@ -514,13 +514,13 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that dot char returns correct value
+        ///     Tests that dot char returns correct value
         /// </summary>
         [Fact]
         public void DotChar_ReturnsCorrectValue()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFont>());
-            ImFont font = new ImFont {DotChar = unchecked((ushort)91011)};
+            ImFont font = new ImFont {DotChar = unchecked((ushort) 91011)};
             Marshal.StructureToPtr(font, nativePtr, false);
             ImFontPtr fontPtr = new ImFontPtr(nativePtr);
             Assert.Equal(25475, fontPtr.DotChar);
@@ -528,7 +528,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that dirty lookup tables returns correct value
+        ///     Tests that dirty lookup tables returns correct value
         /// </summary>
         [Fact]
         public void DirtyLookupTables_ReturnsCorrectValue()
@@ -542,7 +542,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that scale returns correct value
+        ///     Tests that scale returns correct value
         /// </summary>
         [Fact]
         public void Scale_ReturnsCorrectValue()
@@ -556,7 +556,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that ascent returns correct value
+        ///     Tests that ascent returns correct value
         /// </summary>
         [Fact]
         public void Ascent_ReturnsCorrectValue()
@@ -570,7 +570,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that descent returns correct value
+        ///     Tests that descent returns correct value
         /// </summary>
         [Fact]
         public void Descent_ReturnsCorrectValue()
@@ -584,7 +584,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that metrics total surface returns correct value
+        ///     Tests that metrics total surface returns correct value
         /// </summary>
         [Fact]
         public void MetricsTotalSurface_ReturnsCorrectValue()

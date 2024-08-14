@@ -57,72 +57,82 @@ namespace Alis.Extension.Math.DungeonGenerator.Sample
                         Console.Write(" ");
                         continue;
                     }
+                    
                     if (map[x, y] == BoardSquare.WallTop)
                     {
                         Console.Write("─");
                         continue;
                     }
+                    
                     if (map[x, y] == BoardSquare.WallDown)
                     {
                         Console.Write("─");
                         continue;
                     }
+                    
                     if (map[x, y] == BoardSquare.WallLeft)
                     {
                         Console.Write("│");
                         continue;
                     }
+                    
                     if (map[x, y] == BoardSquare.WallRight)
                     {
                         Console.Write("│");
                         continue;
                     }
+                    
                     if (map[x, y] == BoardSquare.CornerLeftUp)
                     {
                         Console.Write("└");
                         continue;
                     }
+                    
                     if (map[x, y] == BoardSquare.CornerRightUp)
                     {
-                        
                         Console.Write("┘");
                         continue;
                     }
+                    
                     if (map[x, y] == BoardSquare.CornerLeftDown)
                     {
                         Console.Write("┌");
                         continue;
                     }
+                    
                     if (map[x, y] == BoardSquare.CornerRightDown)
                     {
-                       
                         Console.Write("┐");
                         continue;
                     }
+                    
                     if (map[x, y] == BoardSquare.CornerInternalLeftDown)
                     {
                         Console.Write("┘");
                         continue;
                     }
+                    
                     if (map[x, y] == BoardSquare.CornerInternalLeftUp)
                     {
                         Console.Write("┐");
                         continue;
                     }
+                    
                     if (map[x, y] == BoardSquare.CornerInternalRightDown)
                     {
                         Console.Write("└");
                         continue;
                     }
+                    
                     if (map[x, y] == BoardSquare.CornerInternalRightUp)
                     {
-                       
                         Console.Write("┌");
                         continue;
                     }
                     
                     Console.Write("█");
                 }
+                
                 Console.WriteLine();
             }
             

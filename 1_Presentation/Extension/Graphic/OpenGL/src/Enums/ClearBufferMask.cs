@@ -41,17 +41,17 @@ namespace Alis.Extension.Graphic.OpenGL.Enums
         ///     The depth buffer bit clear buffer mask
         /// </summary>
         DepthBufferBit = 0x00000100,
-
+        
         /// <summary>
         ///     The accum buffer bit clear buffer mask
         /// </summary>
         AccumBufferBit = 0x00000200,
-
+        
         /// <summary>
         ///     The stencil buffer bit clear buffer mask
         /// </summary>
         StencilBufferBit = 0x00000400,
-
+        
         /// <summary>
         ///     The color buffer bit clear buffer mask
         /// </summary>

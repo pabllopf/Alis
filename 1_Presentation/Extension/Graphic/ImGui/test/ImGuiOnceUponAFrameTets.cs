@@ -32,12 +32,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test
 {
     /// <summary>
-    /// The im gui once upon frame tets class
+    ///     The im gui once upon frame tets class
     /// </summary>
     public class ImGuiOnceUponAFrameTets
     {
         /// <summary>
-        /// Tests that ref frame should set and get correctly
+        ///     Tests that ref frame should set and get correctly
         /// </summary>
         [Fact]
         public void RefFrame_Should_SetAndGetCorrectly()

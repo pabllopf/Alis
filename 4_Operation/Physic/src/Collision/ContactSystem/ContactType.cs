@@ -38,37 +38,37 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         ///     The not supported contact type
         /// </summary>
         NotSupported,
-
+        
         /// <summary>
         ///     The polygon contact type
         /// </summary>
         Polygon,
-
+        
         /// <summary>
         ///     The polygon and circle contact type
         /// </summary>
         PolygonAndCircle,
-
+        
         /// <summary>
         ///     The circle contact type
         /// </summary>
         Circle,
-
+        
         /// <summary>
         ///     The edge and polygon contact type
         /// </summary>
         EdgeAndPolygon,
-
+        
         /// <summary>
         ///     The edge and circle contact type
         /// </summary>
         EdgeAndCircle,
-
+        
         /// <summary>
         ///     The chain and polygon contact type
         /// </summary>
         ChainAndPolygon,
-
+        
         /// <summary>
         ///     The chain and circle contact type
         /// </summary>

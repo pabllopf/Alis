@@ -27,23 +27,20 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Xunit;
-using System;
 using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Structs;
-
+using Xunit;
 
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
-
     /// <summary>
-    /// The keyboard event tests class
+    ///     The keyboard event tests class
     /// </summary>
     public class KeyboardEventTests
     {
         /// <summary>
-        /// Tests that keyboard event initializes properties correctly
+        ///     Tests that keyboard event initializes properties correctly
         /// </summary>
         [Fact]
         public void KeyboardEvent_InitializesPropertiesCorrectly()
@@ -56,15 +53,15 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             {
                 scancode = SdlScancode.SdlScancodeA,
                 sym = KeyCodes.A,
-                mod =  KeyMods.KModShift,
+                mod = KeyMods.KModShift,
                 unicode = 'a'
             };
-
+            
             KeyboardEvent keyboardEvent = new KeyboardEvent
             {
                 KeySym = expectedKeySym
             };
-
+            
             Assert.Equal(expectedType, keyboardEvent.type);
             Assert.Equal(expectedState, keyboardEvent.state);
             Assert.Equal(expectedRepeat, keyboardEvent.repeat);

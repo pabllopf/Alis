@@ -32,14 +32,13 @@ using Xunit;
 
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
-
     /// <summary>
-    /// The version tests class
+    ///     The version tests class
     /// </summary>
     public class VersionTests
     {
         /// <summary>
-        /// Tests that version initializes properties correctly
+        ///     Tests that version initializes properties correctly
         /// </summary>
         [Fact]
         public void Version_InitializesPropertiesCorrectly()
@@ -47,9 +46,9 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             byte expectedMajor = 2;
             byte expectedMinor = 5;
             byte expectedPatch = 1;
-
+            
             Version version = new Version(2, 5, 1);
-
+            
             Assert.Equal(expectedMajor, version.major);
             Assert.Equal(expectedMinor, version.minor);
             Assert.Equal(expectedPatch, version.patch);

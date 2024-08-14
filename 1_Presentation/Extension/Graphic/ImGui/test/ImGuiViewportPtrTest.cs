@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test
 {
     /// <summary>
-    /// The im gui viewport ptr test class
+    ///     The im gui viewport ptr test class
     /// </summary>
     public class ImGuiViewportPtrTest
     {
         /// <summary>
-        /// Tests that native ptr should be initialized
+        ///     Tests that native ptr should be initialized
         /// </summary>
         [Fact]
         public void NativePtr_ShouldBeInitialized()
@@ -50,7 +50,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that id should be initialized
+        ///     Tests that id should be initialized
         /// </summary>
         [Fact]
         public void Id_ShouldBeInitialized()
@@ -61,7 +61,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that flags should be initialized
+        ///     Tests that flags should be initialized
         /// </summary>
         [Fact]
         public void Flags_ShouldBeInitialized()
@@ -72,7 +72,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that pos should be initialized
+        ///     Tests that pos should be initialized
         /// </summary>
         [Fact]
         public void Pos_ShouldBeInitialized()
@@ -83,7 +83,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that size should be initialized
+        ///     Tests that size should be initialized
         /// </summary>
         [Fact]
         public void Size_ShouldBeInitialized()
@@ -94,7 +94,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that work pos should be initialized
+        ///     Tests that work pos should be initialized
         /// </summary>
         [Fact]
         public void WorkPos_ShouldBeInitialized()
@@ -105,7 +105,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that work size should be initialized
+        ///     Tests that work size should be initialized
         /// </summary>
         [Fact]
         public void WorkSize_ShouldBeInitialized()
@@ -116,7 +116,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that dpi scale should be initialized
+        ///     Tests that dpi scale should be initialized
         /// </summary>
         [Fact]
         public void DpiScale_ShouldBeInitialized()
@@ -127,7 +127,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that parent viewport id should be initialized
+        ///     Tests that parent viewport id should be initialized
         /// </summary>
         [Fact]
         public void ParentViewportId_ShouldBeInitialized()
@@ -138,7 +138,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that renderer user data should be initialized
+        ///     Tests that renderer user data should be initialized
         /// </summary>
         [Fact]
         public void RendererUserData_ShouldBeInitialized()
@@ -149,7 +149,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform user data should be initialized
+        ///     Tests that platform user data should be initialized
         /// </summary>
         [Fact]
         public void PlatformUserData_ShouldBeInitialized()
@@ -160,7 +160,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform handle should be initialized
+        ///     Tests that platform handle should be initialized
         /// </summary>
         [Fact]
         public void PlatformHandle_ShouldBeInitialized()
@@ -171,7 +171,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform handle raw should be initialized
+        ///     Tests that platform handle raw should be initialized
         /// </summary>
         [Fact]
         public void PlatformHandleRaw_ShouldBeInitialized()
@@ -182,7 +182,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform window created should be initialized
+        ///     Tests that platform window created should be initialized
         /// </summary>
         [Fact]
         public void PlatformWindowCreated_ShouldBeInitialized()
@@ -193,7 +193,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform request move should be initialized
+        ///     Tests that platform request move should be initialized
         /// </summary>
         [Fact]
         public void PlatformRequestMove_ShouldBeInitialized()
@@ -204,7 +204,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform request resize should be initialized
+        ///     Tests that platform request resize should be initialized
         /// </summary>
         [Fact]
         public void PlatformRequestResize_ShouldBeInitialized()
@@ -215,7 +215,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform request close should be initialized
+        ///     Tests that platform request close should be initialized
         /// </summary>
         [Fact]
         public void PlatformRequestClose_ShouldBeInitialized()
@@ -226,7 +226,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that renderer user data should set and get correctly
+        ///     Tests that renderer user data should set and get correctly
         /// </summary>
         [Fact]
         public void RendererUserData_Should_SetAndGetCorrectly()
@@ -239,7 +239,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that platform user data should set and get correctly
+        ///     Tests that platform user data should set and get correctly
         /// </summary>
         [Fact]
         public void PlatformUserData_Should_SetAndGetCorrectly()
@@ -252,7 +252,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that get center should return vector 2
+        ///     Tests that get center should return vector 2
         /// </summary>
         [Fact]
         public void GetCenter_ShouldReturnVector2()
@@ -267,7 +267,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that get work center should return vector 2
+        ///     Tests that get work center should return vector 2
         /// </summary>
         [Fact]
         public void GetWorkCenter_ShouldReturnVector2()
@@ -278,18 +278,18 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that implicit operator from int ptr should return correct instance
+        ///     Tests that implicit operator from int ptr should return correct instance
         /// </summary>
         [Fact]
         public void ImplicitOperator_FromIntPtr_ShouldReturnCorrectInstance()
         {
             IntPtr nativePtr = new IntPtr(123);
-            ImGuiViewportPtr viewportPtr = (ImGuiViewportPtr) nativePtr;
+            ImGuiViewportPtr viewportPtr = nativePtr;
             Assert.Equal(nativePtr, viewportPtr.NativePtr);
         }
         
         /// <summary>
-        /// Tests that implicit operator from im gui viewport ptr should return correct int ptr
+        ///     Tests that implicit operator from im gui viewport ptr should return correct int ptr
         /// </summary>
         [Fact]
         public void ImplicitOperator_FromImGuiViewportPtr_ShouldReturnCorrectIntPtr()
@@ -301,7 +301,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that v 2 get center should return vector 2
+        ///     Tests that v 2 get center should return vector 2
         /// </summary>
         [Fact]
         public void V2_GetCenter_ShouldReturnVector2()
@@ -316,7 +316,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that v 2 get work center should return vector 2
+        ///     Tests that v 2 get work center should return vector 2
         /// </summary>
         [Fact]
         public void V2_GetWorkCenter_ShouldReturnVector2()

@@ -41,7 +41,7 @@ namespace Alis.Core.Network.Internal
         ///     The mask key length
         /// </summary>
         public const int MaskKeyLength = 4;
-
+        
         /// <summary>
         ///     Mutate payload with the mask key
         ///     This is a reversible process
@@ -52,16 +52,16 @@ namespace Alis.Core.Network.Internal
         public static void ToggleMask(ArraySegment<byte> maskKey, ArraySegment<byte> payload)
         {
             ValidateMaskKey(maskKey);
-
+            
             byte[] buffer = payload.Array;
             byte[] maskKeyArray = maskKey.Array;
             int payloadOffset = payload.Offset;
             int payloadCountPlusOffset = payload.Count + payloadOffset;
             int maskKeyOffset = maskKey.Offset;
-
+            
             ApplyMaskKey(buffer, maskKeyArray, payloadOffset, payloadCountPlusOffset, maskKeyOffset);
         }
-
+        
         /// <summary>
         ///     Validates the mask key using the specified mask key
         /// </summary>
@@ -74,7 +74,7 @@ namespace Alis.Core.Network.Internal
                 throw new MaskKeyLengthException($"MaskKey key must be {MaskKeyLength} bytes");
             }
         }
-
+        
         /// <summary>
         ///     Applies the mask key using the specified buffer
         /// </summary>
@@ -90,7 +90,7 @@ namespace Alis.Core.Network.Internal
                 ApplyMaskKeyAtIndex(buffer, maskKeyArray, i, payloadOffset, maskKeyOffset);
             }
         }
-
+        
         /// <summary>
         ///     Applies the mask key at index using the specified buffer
         /// </summary>

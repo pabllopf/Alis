@@ -48,12 +48,12 @@ namespace Alis.Test.Core.Graphic
         {
             Window window = new Window();
             Color color = new Color(255, 255, 255, 255);
-
+            
             window.Background = color;
-
+            
             Assert.Equal(color, window.Background);
         }
-
+        
         /// <summary>
         ///     Tests that resolution set value should change resolution
         /// </summary>
@@ -62,12 +62,12 @@ namespace Alis.Test.Core.Graphic
         {
             Window window = new Window();
             Vector2 resolution = new Vector2(1920, 1080);
-
+            
             window.Resolution = resolution;
-
+            
             Assert.Equal(resolution, window.Resolution);
         }
-
+        
         /// <summary>
         ///     Tests that is window resizable set value should change is window resizable
         /// </summary>
@@ -75,12 +75,12 @@ namespace Alis.Test.Core.Graphic
         public void IsWindowResizable_SetValue_ShouldChangeIsWindowResizable()
         {
             Window window = new Window();
-
+            
             window.IsWindowResizable = false;
-
+            
             Assert.False(window.IsWindowResizable);
         }
-
+        
         /// <summary>
         ///     Tests that builder call method should return window builder
         /// </summary>
@@ -88,9 +88,9 @@ namespace Alis.Test.Core.Graphic
         public void Builder_CallMethod_ShouldReturnWindowBuilder()
         {
             Window window = new Window();
-
+            
             WindowBuilder result = window.Builder();
-
+            
             Assert.IsType<WindowBuilder>(result);
         }
     }

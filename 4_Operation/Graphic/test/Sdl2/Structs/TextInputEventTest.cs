@@ -31,17 +31,15 @@ using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Structs;
 using Xunit;
 
-
 namespace Alis.Core.Graphic.Test.Sdl2.Structs
 {
-
     /// <summary>
-    /// The text input event tests class
+    ///     The text input event tests class
     /// </summary>
     public class TextInputEventTests
     {
         /// <summary>
-        /// Tests that text input event initializes properties correctly
+        ///     Tests that text input event initializes properties correctly
         /// </summary>
         [Fact]
         public void TextInputEvent_InitializesPropertiesCorrectly()
@@ -50,7 +48,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             uint expectedTimestamp = 123456789;
             uint expectedWindowID = 987654321;
             byte[] expectedText = new byte[32] {72, 101, 108, 108, 111, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-
+            
             TextInputEvent textInputEvent = new TextInputEvent
             {
                 type = expectedType,
@@ -89,7 +87,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
                 byte30 = 0,
                 byte31 = 0
             };
-
+            
             Assert.Equal(expectedType, textInputEvent.type);
             Assert.Equal(expectedTimestamp, textInputEvent.timestamp);
             Assert.Equal(expectedWindowID, textInputEvent.windowID);

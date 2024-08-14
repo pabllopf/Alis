@@ -53,7 +53,7 @@ namespace Alis.Test.Core.Ecs.Component.Render
             CameraBuilder result = camera.Builder();
             Assert.IsType<CameraBuilder>(result);
         }
-
+        
         /// <summary>
         ///     Tests that on start initializes correctly
         /// </summary>
@@ -63,7 +63,7 @@ namespace Alis.Test.Core.Ecs.Component.Render
             Camera camera = new Camera();
             camera.OnStart();
         }
-
+        
         /// <summary>
         ///     Tests that on update updates viewport position
         /// </summary>
@@ -77,7 +77,7 @@ namespace Alis.Test.Core.Ecs.Component.Render
             Assert.Equal(0, camera.Viewport.X);
             Assert.Equal(0, camera.Viewport.Y);
         }
-
+        
         /// <summary>
         ///     Tests that on exit detaches from graphic manager
         /// </summary>
@@ -89,7 +89,7 @@ namespace Alis.Test.Core.Ecs.Component.Render
             camera.OnStart();
             camera.OnExit();
         }
-
+        
         /// <summary>
         ///     Tests that resolution property set get returns correct value
         /// </summary>
@@ -100,7 +100,7 @@ namespace Alis.Test.Core.Ecs.Component.Render
             camera.Resolution = new Vector2(800, 600);
             Assert.Equal(new Vector2(800, 600), camera.Resolution);
         }
-
+        
         /// <summary>
         ///     Tests that background color property set get returns correct value
         /// </summary>
@@ -111,7 +111,7 @@ namespace Alis.Test.Core.Ecs.Component.Render
             camera.BackgroundColor = Color.Black;
             Assert.Equal(Color.Black, camera.BackgroundColor);
         }
-
+        
         /// <summary>
         ///     Tests that camera border property set get returns correct value
         /// </summary>
@@ -122,7 +122,7 @@ namespace Alis.Test.Core.Ecs.Component.Render
             camera.CameraBorder = 1f;
             Assert.Equal(1f, camera.CameraBorder);
         }
-
+        
         /// <summary>
         ///     Tests that texture target property set get returns correct value
         /// </summary>

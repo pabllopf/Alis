@@ -40,17 +40,17 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
         ///     The parent list
         /// </summary>
         public readonly List<Node> ParentList;
-
+        
         /// <summary>
         ///     The left child
         /// </summary>
         protected Node LeftChild;
-
+        
         /// <summary>
         ///     The right child
         /// </summary>
         protected Node RightChild;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Node" /> class
         /// </summary>
@@ -61,25 +61,25 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
             ParentList = new List<Node>();
             LeftChild = left;
             RightChild = right;
-
+            
             if (left != null)
             {
                 left.ParentList.Add(this);
             }
-
+            
             if (right != null)
             {
                 right.ParentList.Add(this);
             }
         }
-
+        
         /// <summary>
         ///     Locates the s
         /// </summary>
         /// <param name="edge">The </param>
         /// <returns>The sink</returns>
         public abstract Sink Locate(Edge edge);
-
+        
         /// <summary>
         ///     Replaces the node
         /// </summary>
@@ -97,7 +97,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
                     parent.RightChild = this;
                 }
             }
-
+            
             ParentList.AddRange(node.ParentList);
         }
     }

@@ -47,15 +47,15 @@ namespace Alis.Core.Physic.Test.Dynamics.Solver
             // Arrange
             Vector2 v = new Vector2(1.0f, 1.0f);
             float w = 0.5f;
-
+            
             // Act
             Velocity velocity = new Velocity(v, w);
-
+            
             // Assert
             Assert.Equal(v, velocity.V);
             Assert.Equal(w, velocity.W);
         }
-
+        
         /// <summary>
         ///     Tests that velocity v property test
         /// </summary>
@@ -65,15 +65,15 @@ namespace Alis.Core.Physic.Test.Dynamics.Solver
             // Arrange
             Vector2 v = new Vector2(1.0f, 1.0f);
             Velocity velocity = new Velocity(v, 0.5f);
-
+            
             // Act
             Vector2 newV = new Vector2(2.0f, 2.0f);
             velocity.V = newV;
-
+            
             // Assert
             Assert.Equal(newV, velocity.V);
         }
-
+        
         /// <summary>
         ///     Tests that velocity w property test
         /// </summary>
@@ -83,11 +83,11 @@ namespace Alis.Core.Physic.Test.Dynamics.Solver
             // Arrange
             float w = 0.5f;
             Velocity velocity = new Velocity(new Vector2(1.0f, 1.0f), w);
-
+            
             // Act
             float newW = 1.0f;
             velocity.W = newW;
-
+            
             // Assert
             Assert.Equal(newW, velocity.W);
         }

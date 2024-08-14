@@ -46,7 +46,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Util
         public static Polygon.Polygon RandomCircleSweep(double scale, int vertexCount)
         {
             double radius = scale / 4;
-
+            
             PolygonPoint[] points = new PolygonPoint[vertexCount];
             for (int i = 0; i < vertexCount; i++)
             {
@@ -64,18 +64,18 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Util
                     {
                         radius += 25 * scale / vertexCount * (0.5 - RandomUtils.GetInt32(1));
                     }
-
+                    
                     radius = radius > scale / 2 ? scale / 2 : radius;
                     radius = radius < scale / 10 ? scale / 10 : radius;
                 } while (radius < scale / 10 || radius > scale / 2);
-
+                
                 points[i] = new PolygonPoint(radius * System.Math.Cos(Constant.TwoPi * i / vertexCount),
                     radius * System.Math.Sin(Constant.TwoPi * i / vertexCount));
             }
-
+            
             return new Polygon.Polygon(points);
         }
-
+        
         /// <summary>
         ///     Randoms the circle sweep 2 using the specified scale
         /// </summary>
@@ -86,7 +86,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Util
         {
             double radius = scale / 4;
             PolygonPoint[] points = new PolygonPoint[vertexCount];
-
+            
             for (int i = 0; i < vertexCount; i++)
             {
                 do
@@ -95,11 +95,11 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay.Util
                     radius = radius > scale / 2 ? scale / 2 : radius;
                     radius = radius < scale / 10 ? scale / 10 : radius;
                 } while (radius < scale / 10 || radius > scale / 2);
-
+                
                 points[i] = new PolygonPoint(radius * System.Math.Cos(Constant.TwoPi * i / vertexCount),
                     radius * System.Math.Sin(Constant.TwoPi * i / vertexCount));
             }
-
+            
             return new Polygon.Polygon(points);
         }
     }

@@ -38,32 +38,32 @@ namespace Alis.Core.Aspect.Logging
         ///     The trace log level
         /// </summary>
         Trace = 0,
-
+        
         /// <summary>
         ///     The info log level
         /// </summary>
         Info = 1,
-
+        
         /// <summary>
         ///     The event log level
         /// </summary>
         Event = 2,
-
+        
         /// <summary>
         ///     The log log level
         /// </summary>
         Log = 3,
-
+        
         /// <summary>
         ///     The normal log level
         /// </summary>
         Normal = 4,
-
+        
         /// <summary>
         ///     The warning log level
         /// </summary>
         Warning = 5,
-
+        
         /// <summary>
         ///     The critical log level
         /// </summary>

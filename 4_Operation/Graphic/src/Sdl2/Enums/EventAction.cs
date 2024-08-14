@@ -38,12 +38,12 @@ namespace Alis.Core.Graphic.Sdl2.Enums
         ///     The sdl add event sdl event action
         /// </summary>
         SdlAddEvent,
-
+        
         /// <summary>
         ///     The sdl peek event sdl event action
         /// </summary>
         SdlPeekEvent,
-
+        
         /// <summary>
         ///     The sdl get event sdl event action
         /// </summary>

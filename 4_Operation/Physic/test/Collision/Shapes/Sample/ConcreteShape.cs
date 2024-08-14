@@ -51,18 +51,18 @@ namespace Alis.Core.Physic.Test.Collision.Shapes.Sample
         public ConcreteShape(ShapeType type, float radius = 0, float density = 0) : base(type, radius, density)
         {
         }
-
+        
         /// <summary>
         ///     Gets the value of the child count
         /// </summary>
         public override int ChildCount { get; }
-
+        
         /// <summary>
         ///     Clones this instance
         /// </summary>
         /// <returns>The shape</returns>
         public override AShape Clone() => throw new NotImplementedException();
-
+        
         /// <summary>
         ///     Describes whether this instance test point
         /// </summary>
@@ -70,7 +70,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes.Sample
         /// <param name="point">The point</param>
         /// <returns>The bool</returns>
         public override bool TestPoint(ref Transform transform, ref Vector2 point) => throw new NotImplementedException();
-
+        
         /// <summary>
         ///     Describes whether this instance ray cast
         /// </summary>
@@ -80,7 +80,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes.Sample
         /// <param name="output">The output</param>
         /// <returns>The bool</returns>
         public override bool RayCast(ref RayCastInput input, ref Transform transform, int childIndex, out RayCastOutput output) => throw new NotImplementedException();
-
+        
         /// <summary>
         ///     Computes the aabb using the specified transform
         /// </summary>

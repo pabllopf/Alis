@@ -32,12 +32,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test
 {
     /// <summary>
-    /// The im gui text buffer test class
+    ///     The im gui text buffer test class
     /// </summary>
     public class ImGuiTextBufferTest
     {
         /// <summary>
-        /// Tests that buf should set and get correctly
+        ///     Tests that buf should set and get correctly
         /// </summary>
         [Fact]
         public void Buf_Should_SetAndGetCorrectly()

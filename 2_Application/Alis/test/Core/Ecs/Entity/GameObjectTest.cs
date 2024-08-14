@@ -58,14 +58,14 @@ namespace Alis.Test.Core.Ecs.Entity
         {
             // Arrange
             GameObject gameObject = new GameObject();
-
+            
             // Act
             gameObject.OnEnable();
-
+            
             // Assert
             Assert.True(gameObject.IsEnable);
         }
-
+        
         /// <summary>
         ///     Tests that test game object on disable
         /// </summary>
@@ -75,14 +75,14 @@ namespace Alis.Test.Core.Ecs.Entity
             // Arrange
             GameObject gameObject = new GameObject();
             gameObject.OnEnable();
-
+            
             // Act
             gameObject.OnDisable();
-
+            
             // Assert
             Assert.False(gameObject.IsEnable);
         }
-
+        
         /// <summary>
         ///     Tests that test game object add remove component
         /// </summary>
@@ -92,18 +92,18 @@ namespace Alis.Test.Core.Ecs.Entity
             // Arrange
             GameObject gameObject = new GameObject();
             Sprite component = new Sprite();
-
+            
             // Act
             gameObject.Add(component);
             bool containsAfterAdd = gameObject.Contains<AComponent>();
             gameObject.Remove(component);
             bool containsAfterRemove = gameObject.Contains<AComponent>();
-
+            
             // Assert
             Assert.True(containsAfterAdd);
             Assert.False(containsAfterRemove);
         }
-
+        
         /// <summary>
         ///     Tests that test game object set context
         /// </summary>
@@ -112,12 +112,12 @@ namespace Alis.Test.Core.Ecs.Entity
         {
             // Arrange
             GameObject gameObject = new GameObject();
-
+            
             // Assert
             Assert.NotNull(gameObject.Context);
             Assert.IsType<Context>(gameObject.Context);
         }
-
+        
         /// <summary>
         ///     Tests that on init should call on init of components
         /// </summary>
@@ -127,10 +127,10 @@ namespace Alis.Test.Core.Ecs.Entity
             GameObject gameObject = new GameObject();
             Sample2Component sample2Component = new Sample2Component();
             gameObject.Add(sample2Component);
-
+            
             gameObject.OnInit();
         }
-
+        
         /// <summary>
         ///     Tests that on awake should call on awake of components
         /// </summary>
@@ -140,10 +140,10 @@ namespace Alis.Test.Core.Ecs.Entity
             GameObject gameObject = new GameObject();
             Sample2Component sample2Component = new Sample2Component();
             gameObject.Add(sample2Component);
-
+            
             gameObject.OnAwake();
         }
-
+        
         /// <summary>
         ///     Tests that on start should call on start of components
         /// </summary>
@@ -153,10 +153,10 @@ namespace Alis.Test.Core.Ecs.Entity
             GameObject gameObject = new GameObject();
             Sample2Component sample2Component = new Sample2Component();
             gameObject.Add(sample2Component);
-
+            
             gameObject.OnStart();
         }
-
+        
         /// <summary>
         ///     Tests that on update should call on update of components
         /// </summary>
@@ -166,10 +166,10 @@ namespace Alis.Test.Core.Ecs.Entity
             GameObject gameObject = new GameObject();
             Sample2Component sample2Component = new Sample2Component();
             gameObject.Add(sample2Component);
-
+            
             gameObject.OnUpdate();
         }
-
+        
         /// <summary>
         ///     Tests that on disable should call on disable of components
         /// </summary>
@@ -179,10 +179,10 @@ namespace Alis.Test.Core.Ecs.Entity
             GameObject gameObject = new GameObject();
             Sample2Component sample2Component = new Sample2Component();
             gameObject.Add(sample2Component);
-
+            
             gameObject.OnDisable();
         }
-
+        
         /// <summary>
         ///     Tests that on reset should call on reset of components
         /// </summary>
@@ -192,10 +192,10 @@ namespace Alis.Test.Core.Ecs.Entity
             GameObject gameObject = new GameObject();
             Sample2Component sample2Component = new Sample2Component();
             gameObject.Add(sample2Component);
-
+            
             gameObject.OnReset();
         }
-
+        
         /// <summary>
         ///     Tests that on stop should call on stop of components
         /// </summary>
@@ -205,10 +205,10 @@ namespace Alis.Test.Core.Ecs.Entity
             GameObject gameObject = new GameObject();
             Sample2Component sample2Component = new Sample2Component();
             gameObject.Add(sample2Component);
-
+            
             gameObject.OnStop();
         }
-
+        
         /// <summary>
         ///     Tests that on exit should call on exit of components
         /// </summary>
@@ -218,10 +218,10 @@ namespace Alis.Test.Core.Ecs.Entity
             GameObject gameObject = new GameObject();
             Sample2Component sample2Component = new Sample2Component();
             gameObject.Add(sample2Component);
-
+            
             gameObject.OnExit();
         }
-
+        
         /// <summary>
         ///     Tests that on destroy should call on destroy of components
         /// </summary>
@@ -231,10 +231,10 @@ namespace Alis.Test.Core.Ecs.Entity
             GameObject gameObject = new GameObject();
             Sample2Component sample2Component = new Sample2Component();
             gameObject.Add(sample2Component);
-
+            
             gameObject.OnDestroy();
         }
-
+        
         /// <summary>
         ///     Tests that set context should set context
         /// </summary>
@@ -252,10 +252,10 @@ namespace Alis.Test.Core.Ecs.Entity
                 new SceneManager()
             );
             VideoGame game = new VideoGame(context);
-
+            
             Assert.NotNull(gameObject.Context);
         }
-
+        
         /// <summary>
         ///     Tests that on after update should call on after update of components
         /// </summary>
@@ -265,10 +265,10 @@ namespace Alis.Test.Core.Ecs.Entity
             GameObject gameObject = new GameObject();
             Sample2Component sample2Component = new Sample2Component();
             gameObject.Add(sample2Component);
-
+            
             gameObject.OnAfterUpdate();
         }
-
+        
         /// <summary>
         ///     Tests that on before fixed update should call on before fixed update of components
         /// </summary>
@@ -278,10 +278,10 @@ namespace Alis.Test.Core.Ecs.Entity
             GameObject gameObject = new GameObject();
             Sample2Component sample2Component = new Sample2Component();
             gameObject.Add(sample2Component);
-
+            
             gameObject.OnBeforeFixedUpdate();
         }
-
+        
         /// <summary>
         ///     Tests that on fixed update should call on fixed update of components
         /// </summary>
@@ -291,10 +291,10 @@ namespace Alis.Test.Core.Ecs.Entity
             GameObject gameObject = new GameObject();
             Sample2Component sample2Component = new Sample2Component();
             gameObject.Add(sample2Component);
-
+            
             gameObject.OnFixedUpdate();
         }
-
+        
         /// <summary>
         ///     Tests that on after fixed update should call on after fixed update of components
         /// </summary>
@@ -304,10 +304,10 @@ namespace Alis.Test.Core.Ecs.Entity
             GameObject gameObject = new GameObject();
             Sample2Component sample2Component = new Sample2Component();
             gameObject.Add(sample2Component);
-
+            
             gameObject.OnAfterFixedUpdate();
         }
-
+        
         /// <summary>
         ///     Tests that on dispatch events should call on dispatch events of components
         /// </summary>
@@ -317,10 +317,10 @@ namespace Alis.Test.Core.Ecs.Entity
             GameObject gameObject = new GameObject();
             Sample2Component sample2Component = new Sample2Component();
             gameObject.Add(sample2Component);
-
+            
             gameObject.OnDispatchEvents();
         }
-
+        
         /// <summary>
         ///     Tests that on calculate should call on calculate of components
         /// </summary>
@@ -330,10 +330,10 @@ namespace Alis.Test.Core.Ecs.Entity
             GameObject gameObject = new GameObject();
             Sample2Component sample2Component = new Sample2Component();
             gameObject.Add(sample2Component);
-
+            
             gameObject.OnCalculate();
         }
-
+        
         /// <summary>
         ///     Tests that on draw should call on draw of components
         /// </summary>
@@ -343,10 +343,10 @@ namespace Alis.Test.Core.Ecs.Entity
             GameObject gameObject = new GameObject();
             Sample2Component sample2Component = new Sample2Component();
             gameObject.Add(sample2Component);
-
+            
             gameObject.OnDraw();
         }
-
+        
         /// <summary>
         ///     Tests that on gui should call on gui of components
         /// </summary>
@@ -356,10 +356,10 @@ namespace Alis.Test.Core.Ecs.Entity
             GameObject gameObject = new GameObject();
             Sample2Component sample2Component = new Sample2Component();
             gameObject.Add(sample2Component);
-
+            
             gameObject.OnGui();
         }
-
+        
         /// <summary>
         ///     Tests that clear should clear components
         /// </summary>
@@ -371,12 +371,12 @@ namespace Alis.Test.Core.Ecs.Entity
             Sample2Component sample2Component2 = new Sample2Component();
             gameObject.Add(sample2Component1);
             gameObject.Add(sample2Component2);
-
+            
             gameObject.Clear<Sample2Component>();
-
+            
             Assert.False(gameObject.Contains<Sample2Component>());
         }
-
+        
         /// <summary>
         ///     Tests that get should return correct component
         /// </summary>
@@ -386,14 +386,14 @@ namespace Alis.Test.Core.Ecs.Entity
             GameObject gameObject = new GameObject();
             Sample2Component sample2Component = new Sample2Component();
             gameObject.Add(sample2Component);
-
+            
             Sample2Component result = gameObject.Get<Sample2Component>();
-
+            
             Assert.NotNull(result);
             Assert.IsType<Sample2Component>(result);
             Assert.Equal(sample2Component, result);
         }
-
+        
         /// <summary>
         ///     Tests that on before update should call on before update of components
         /// </summary>
@@ -403,10 +403,10 @@ namespace Alis.Test.Core.Ecs.Entity
             GameObject gameObject = new GameObject();
             Sample2Component sample2Component = new Sample2Component();
             gameObject.Add(sample2Component);
-
+            
             gameObject.OnBeforeUpdate();
         }
-
+        
         /// <summary>
         ///     Tests that id set value should change value
         /// </summary>
@@ -415,11 +415,11 @@ namespace Alis.Test.Core.Ecs.Entity
         {
             GameObject gameObject = new GameObject();
             Assert.NotEqual("0", gameObject.Id);
-
+            
             gameObject.Id = "1";
             Assert.Equal("1", gameObject.Id);
         }
-
+        
         /// <summary>
         ///     Tests that components set value should change value
         /// </summary>
@@ -428,7 +428,7 @@ namespace Alis.Test.Core.Ecs.Entity
         {
             GameObject gameObject = new GameObject();
             Assert.Empty(gameObject.Components);
-
+            
             List<AComponent> componentList = new List<AComponent> {new Sample2Component()};
             gameObject.Components = componentList;
             Assert.Equal(componentList, gameObject.Components);

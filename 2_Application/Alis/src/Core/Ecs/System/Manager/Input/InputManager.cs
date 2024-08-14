@@ -29,7 +29,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Ecs.Entity;
@@ -43,29 +42,28 @@ namespace Alis.Core.Ecs.System.Manager.Input
     ///     The graphic manager base class
     /// </summary>
     /// <seealso cref="AManager" />
-    
     public class InputManager : AManager
     {
         /// <summary>
         ///     The sdl game controller axis
         /// </summary>
         internal readonly List<GameControllerAxis> axis = new List<GameControllerAxis>((GameControllerAxis[]) Enum.GetValues(typeof(GameControllerAxis)));
-
+        
         /// <summary>
         ///     The sdl game controller button
         /// </summary>
         internal readonly List<GameControllerButton> buttons = new List<GameControllerButton>((GameControllerButton[]) Enum.GetValues(typeof(GameControllerButton)));
-
+        
         /// <summary>
         ///     The sdl event
         /// </summary>
         internal Event sdlEvent;
-
+        
         /// <summary>
         ///     Temp list of keys
         /// </summary>
         internal List<KeyCodes> tempListOfKeys = new List<KeyCodes>();
-
+        
         /// <summary>
         ///     Ons the init
         /// </summary>
@@ -74,7 +72,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
             Logger.Trace();
             tempListOfKeys = new List<KeyCodes>();
         }
-
+        
         /// <summary>
         ///     Ons the dispatch events
         /// </summary>
@@ -84,9 +82,9 @@ namespace Alis.Core.Ecs.System.Manager.Input
             {
                 return;
             }
-
+            
             Sdl.JoystickUpdate();
-
+            
             while (Sdl.PollEvent(out sdlEvent) != 0)
             {
                 HandleSdlQuitEvent();
@@ -95,10 +93,10 @@ namespace Alis.Core.Ecs.System.Manager.Input
                 HandleSdlJoyButtonDownEvent();
                 HandleSdlJoyAxisMotionEvent();
             }
-
+            
             NotifyKeyHold();
         }
-
+        
         /// <summary>
         ///     Handles the sdl quit event
         /// </summary>
@@ -109,7 +107,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
                 Context.Exit();
             }
         }
-
+        
         /// <summary>
         ///     Handles the sdl keyup event
         /// </summary>
@@ -118,7 +116,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
             if (sdlEvent.type == EventType.Keyup)
             {
                 KeyCodes indexUp = sdlEvent.key.KeySym.sym;
-
+                
                 if (tempListOfKeys.Contains(indexUp))
                 {
                     tempListOfKeys.Remove(indexUp);
@@ -126,7 +124,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
                 }
             }
         }
-
+        
         /// <summary>
         ///     Handles the sdl keydown event
         /// </summary>
@@ -142,7 +140,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
                 }
             }
         }
-
+        
         /// <summary>
         ///     Handles the sdl joy button down event
         /// </summary>
@@ -158,7 +156,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
                 }
             }
         }
-
+        
         /// <summary>
         ///     Handles the sdl joy axis motion event
         /// </summary>
@@ -174,7 +172,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
                 }
             }
         }
-
+        
         /// <summary>
         ///     Notifies the key hold
         /// </summary>
@@ -185,7 +183,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
                 NotifyKeyHold(key);
             }
         }
-
+        
         /// <summary>
         ///     Notifies the key press using the specified key
         /// </summary>
@@ -196,13 +194,13 @@ namespace Alis.Core.Ecs.System.Manager.Input
             {
                 return;
             }
-
+            
             foreach (GameObject currentSceneGameObject in Context.SceneManager.CurrentScene.GameObjects)
             {
                 currentSceneGameObject.Components.ForEach(i => i.OnPressKey(key));
             }
         }
-
+        
         /// <summary>
         ///     Notifies the key release using the specified key
         /// </summary>
@@ -213,13 +211,13 @@ namespace Alis.Core.Ecs.System.Manager.Input
             {
                 return;
             }
-
+            
             foreach (GameObject currentSceneGameObject in Context.SceneManager.CurrentScene.GameObjects)
             {
                 currentSceneGameObject.Components.ForEach(i => i.OnReleaseKey(key));
             }
         }
-
+        
         /// <summary>
         ///     Notifies the key hold using the specified key
         /// </summary>
@@ -230,7 +228,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
             {
                 return;
             }
-
+            
             foreach (GameObject currentSceneGameObject in Context.SceneManager.CurrentScene.GameObjects)
             {
                 currentSceneGameObject.Components.ForEach(i => i.OnPressDownKey(key));

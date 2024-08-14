@@ -39,7 +39,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
         ///     The point
         /// </summary>
         private readonly Point point;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="XNode" /> class
         /// </summary>
@@ -49,7 +49,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
         public XNode(Point point, Node lChild, Node rChild)
             : base(lChild, rChild) =>
             this.point = point;
-
+        
         /// <summary>
         ///     Locates the edge
         /// </summary>
@@ -61,7 +61,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
             {
                 return RightChild.Locate(edge); // Move to the right in the graph
             }
-
+            
             return LeftChild.Locate(edge); // Move to the left in the graph
         }
     }

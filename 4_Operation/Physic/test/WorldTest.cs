@@ -63,13 +63,13 @@ namespace Alis.Core.Physic.Test
             bool isBullet = false;
             bool enabled = true;
             float gravityScale = 1.0f;
-
+            
             Body body = new Body(position, linearVelocity, bodyType, angle,
                 angularVelocity, linearDamping, angularDamping, allowSleep, awake, fixedRotation, isBullet, enabled, gravityScale);
             world.AddBody(body);
             Assert.Contains(body, world.Bodies);
         }
-
+        
         /// <summary>
         ///     Tests that test remove body
         /// </summary>
@@ -90,14 +90,14 @@ namespace Alis.Core.Physic.Test
             bool isBullet = false;
             bool enabled = true;
             float gravityScale = 1.0f;
-
+            
             Body body = new Body(position, linearVelocity, bodyType, angle,
                 angularVelocity, linearDamping, angularDamping, allowSleep, awake, fixedRotation, isBullet, enabled, gravityScale);
             world.AddBody(body);
             world.RemoveBody(body);
             Assert.DoesNotContain(body, world.Bodies);
         }
-
+        
         /// <summary>
         ///     Tests that test add breakable body
         /// </summary>
@@ -109,12 +109,12 @@ namespace Alis.Core.Physic.Test
             float density = 1.0f;
             Vector2 position = new Vector2();
             float rotation = 0.0f;
-
+            
             MyBreakableBody breakableBody = new MyBreakableBody(world, parts, density, position, rotation);
             world.AddBreakableBody(breakableBody);
             Assert.Contains(breakableBody, world.BreakableBodies);
         }
-
+        
         /// <summary>
         ///     Tests that test remove breakable body
         /// </summary>
@@ -126,13 +126,13 @@ namespace Alis.Core.Physic.Test
             float density = 1.0f;
             Vector2 position = new Vector2();
             float rotation = 0.0f;
-
+            
             MyBreakableBody breakableBody = new MyBreakableBody(world, parts, density, position, rotation);
             world.AddBreakableBody(breakableBody);
             world.RemoveBreakableBody(breakableBody);
             Assert.DoesNotContain(breakableBody, world.BreakableBodies);
         }
-
+        
         /// <summary>
         ///     Tests that test add joint
         /// </summary>
@@ -144,7 +144,7 @@ namespace Alis.Core.Physic.Test
             world.AddJoint(joint);
             Assert.Contains(joint, world.Joints);
         }
-
+        
         /// <summary>
         ///     Tests that test remove joint
         /// </summary>
@@ -157,7 +157,7 @@ namespace Alis.Core.Physic.Test
             world.RemoveJoint(joint);
             Assert.DoesNotContain(joint, world.Joints);
         }
-
+        
         /// <summary>
         ///     Tests that test add joint v 2
         /// </summary>
@@ -169,7 +169,7 @@ namespace Alis.Core.Physic.Test
             world.AddJoint(joint);
             Assert.Contains(joint, world.Joints);
         }
-
+        
         /// <summary>
         ///     Tests that test remove joint v 2
         /// </summary>
@@ -182,7 +182,7 @@ namespace Alis.Core.Physic.Test
             world.RemoveJoint(joint);
             Assert.DoesNotContain(joint, world.Joints);
         }
-
+        
         /// <summary>
         ///     Tests that test add body
         /// </summary>
@@ -194,7 +194,7 @@ namespace Alis.Core.Physic.Test
             world.AddBody(body);
             Assert.Contains(body, world.Bodies);
         }
-
+        
         /// <summary>
         ///     Tests that test remove body
         /// </summary>
@@ -207,7 +207,7 @@ namespace Alis.Core.Physic.Test
             world.RemoveBody(body);
             Assert.DoesNotContain(body, world.Bodies);
         }
-
+        
         /// <summary>
         ///     Tests that test add joint
         /// </summary>
@@ -219,7 +219,7 @@ namespace Alis.Core.Physic.Test
             world.AddJoint(joint);
             Assert.Contains(joint, world.Joints);
         }
-
+        
         /// <summary>
         ///     Tests that test remove joint
         /// </summary>
@@ -232,7 +232,7 @@ namespace Alis.Core.Physic.Test
             world.RemoveJoint(joint);
             Assert.DoesNotContain(joint, world.Joints);
         }
-
+        
         /// <summary>
         ///     Tests that step updates delta time correctly
         /// </summary>
@@ -243,15 +243,15 @@ namespace Alis.Core.Physic.Test
             World world = new World(new Vector2(0, -9.8f));
             float initialDeltaTime = world.TimeStepGlobal.DeltaTime;
             float dt = 0.02f; // This would be the time step for your simulation
-
+            
             // Act
             world.Step(dt);
-
+            
             // Assert
             Assert.NotEqual(initialDeltaTime, world.TimeStepGlobal.DeltaTime);
             Assert.Equal(dt, world.TimeStepGlobal.DeltaTime);
         }
-
+        
         /// <summary>
         ///     Tests that test update inverted delta time
         /// </summary>
@@ -267,14 +267,14 @@ namespace Alis.Core.Physic.Test
                     InvertedDeltaTime = 2.0f
                 }
             };
-
+            
             // Act
             world.UpdateInvertedDeltaTime();
-
+            
             // Assert
             Assert.Equal(2.0f, world.TimeStepGlobal.InvertedDeltaTimeZero);
         }
-
+        
         /// <summary>
         ///     Tests that test is min alpha greater than epsilon
         /// </summary>
@@ -284,12 +284,12 @@ namespace Alis.Core.Physic.Test
             float minAlpha = 0.5f;
             bool result = World.IsMinAlphaGreaterThanEpsilon(minAlpha);
             Assert.False(result); // Assert that the result is false when minAlpha is less than 1.0f - Constant.Epsilon * 10.0f
-
+            
             minAlpha = 1.0f;
             result = World.IsMinAlphaGreaterThanEpsilon(minAlpha);
             Assert.True(result); // Assert that the result is true when minAlpha is equal to 1.0f - Constant.Epsilon * 10.0f
         }
-
+        
         /// <summary>
         ///     Tests that test synchronize island bodies
         /// </summary>
@@ -297,14 +297,14 @@ namespace Alis.Core.Physic.Test
         public void TestSynchronizeIslandBodies()
         {
             World world = new World(new Vector2(0, -9.8f));
-
+            
             // Act
             Exception exception = Record.Exception(() => world.SynchronizeIslandBodies());
-
+            
             // Assert
             Assert.Null(exception);
         }
-
+        
         /// <summary>
         ///     Tests that test clear forces
         /// </summary>
@@ -312,14 +312,14 @@ namespace Alis.Core.Physic.Test
         public void TestClearForces()
         {
             World world = new World(new Vector2(0, -9.8f));
-
+            
             // Act
             Exception exception = Record.Exception(() => world.ClearForces());
-
+            
             // Assert
             Assert.Null(exception);
         }
-
+        
         /// <summary>
         ///     Tests that test solve toi
         /// </summary>
@@ -328,14 +328,14 @@ namespace Alis.Core.Physic.Test
         {
             // Arrange
             World world = new World(new Vector2(0, -9.8f));
-
+            
             // Act
             Exception exception = Record.Exception(() => world.SolveToi());
-
+            
             // Assert
             Assert.Null(exception);
         }
-
+        
         /// <summary>
         ///     Tests that test set alpha to zero for fast moving bodies
         /// </summary>
@@ -344,14 +344,14 @@ namespace Alis.Core.Physic.Test
         {
             // Arrange
             World world = new World(new Vector2(0, -9.8f));
-
+            
             // Act
             Exception exception = Record.Exception(() => world.SetAlphaToZeroForFastMovingBodies());
-
+            
             // Assert
             Assert.Null(exception);
         }
-
+        
         /// <summary>
         ///     Tests that test invalidate contact toi
         /// </summary>
@@ -360,14 +360,14 @@ namespace Alis.Core.Physic.Test
         {
             // Arrange
             World world = new World(new Vector2(0, -9.8f));
-
+            
             // Act
             Exception exception = Record.Exception(() => world.InvalidateContactToi());
-
+            
             // Assert
             Assert.Null(exception);
         }
-
+        
         /// <summary>
         ///     Tests that test solve toi events
         /// </summary>
@@ -376,14 +376,14 @@ namespace Alis.Core.Physic.Test
         {
             // Arrange
             World world = new World(new Vector2(0, -9.8f));
-
+            
             // Act
             Exception exception = Record.Exception(() => world.SolveToiEvents());
-
+            
             // Assert
             Assert.Null(exception);
         }
-
+        
         /// <summary>
         ///     Tests that set alpha to zero for fast moving bodies empty list no exception thrown
         /// </summary>
@@ -392,14 +392,14 @@ namespace Alis.Core.Physic.Test
         {
             // Arrange
             World world = new World(new Vector2(0, -9.8f));
-
+            
             // Act
             Exception exception = Record.Exception(() => world.SetAlphaToZeroForFastMovingBodies());
-
+            
             // Assert
             Assert.Null(exception);
         }
-
+        
         /// <summary>
         ///     Tests that set alpha to zero for fast moving bodies non empty list all bodies alpha set to zero
         /// </summary>
@@ -408,14 +408,14 @@ namespace Alis.Core.Physic.Test
         {
             // Arrange
             World world = new World(new Vector2(0, -9.8f));
-
+            
             // Act
             Exception exception = Record.Exception(() => world.SetAlphaToZeroForFastMovingBodies());
-
+            
             // Assert
             Assert.Null(exception);
         }
-
+        
         /// <summary>
         ///     Tests that test solve toi island
         /// </summary>
@@ -427,14 +427,14 @@ namespace Alis.Core.Physic.Test
             float minAlpha = 0.5f;
             int islandIndexA = 1;
             int islandIndexB = 2;
-
+            
             // Act
             Exception exception = Record.Exception(() => world.SolveToiIsland(minAlpha, islandIndexA, islandIndexB));
-
+            
             // Assert
             Assert.NotNull(exception);
         }
-
+        
         /// <summary>
         ///     Tests that update breakable bodies with empty list no exception thrown
         /// </summary>
@@ -444,7 +444,7 @@ namespace Alis.Core.Physic.Test
             World world = new World(new Vector2(0, -9.8f));
             world.UpdateBreakableBodies(); // No exception should be thrown
         }
-
+        
         /// <summary>
         ///     Tests that update breakable bodies with non empty list calls update on each body
         /// </summary>
@@ -453,15 +453,15 @@ namespace Alis.Core.Physic.Test
         {
             World world = new World(new Vector2(0, -9.8f));
             MyBreakableBody breakableBodyMock1 = new MyBreakableBody(world, new List<Vertices>(), 1.0f, new Vector2(), 0.0f);
-
+            
             MyBreakableBody breakableBodyMock2 = new MyBreakableBody(world, new List<Vertices>(), 1.0f, new Vector2(), 0.0f);
-
+            
             world.AddBreakableBody(breakableBodyMock1);
             world.AddBreakableBody(breakableBodyMock2);
-
+            
             world.UpdateBreakableBodies();
         }
-
+        
         /// <summary>
         ///     Tests that set alpha to zero for fast moving bodies with empty list no change
         /// </summary>
@@ -472,7 +472,7 @@ namespace Alis.Core.Physic.Test
             world.SetAlphaToZeroForFastMovingBodies();
             Assert.All(world.Bodies, body => Assert.Equal(-9.8f, body.GravityScale));
         }
-
+        
         /// <summary>
         ///     Tests that set alpha to zero for fast moving bodies with non empty list all bodies alpha set to zero
         /// </summary>
@@ -492,12 +492,12 @@ namespace Alis.Core.Physic.Test
             );
             world.Bodies.Add(body1);
             world.Bodies.Add(body2);
-
+            
             world.SetAlphaToZeroForFastMovingBodies();
-
+            
             Assert.All(world.Bodies, body => Assert.Equal(1, body.GravityScale));
         }
-
+        
         /// <summary>
         ///     Tests that clear forces all bodies forces set to zero
         /// </summary>
@@ -517,9 +517,9 @@ namespace Alis.Core.Physic.Test
             );
             world.Bodies.Add(body1);
             world.Bodies.Add(body2);
-
+            
             world.ClearForces();
-
+            
             Assert.All(world.Bodies, body => Assert.Equal(new Vector2(0, 0), body.Force));
         }
     }

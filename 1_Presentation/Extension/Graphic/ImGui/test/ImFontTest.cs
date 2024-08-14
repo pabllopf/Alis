@@ -33,12 +33,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test
 {
     /// <summary>
-    /// The im font test class
+    ///     The im font test class
     /// </summary>
     public class ImFontTest
     {
         /// <summary>
-        /// Tests that index advance x should be initialized correctly
+        ///     Tests that index advance x should be initialized correctly
         /// </summary>
         [Fact]
         public void IndexAdvanceX_ShouldBeInitializedCorrectly()
@@ -54,7 +54,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that fallback advance x should be initialized correctly
+        ///     Tests that fallback advance x should be initialized correctly
         /// </summary>
         [Fact]
         public void FallbackAdvanceX_ShouldBeInitializedCorrectly()
@@ -70,7 +70,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that font size should be initialized correctly
+        ///     Tests that font size should be initialized correctly
         /// </summary>
         [Fact]
         public void FontSize_ShouldBeInitializedCorrectly()
@@ -86,7 +86,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that index lookup should be initialized correctly
+        ///     Tests that index lookup should be initialized correctly
         /// </summary>
         [Fact]
         public void IndexLookup_ShouldBeInitializedCorrectly()
@@ -102,7 +102,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that glyphs should be initialized correctly
+        ///     Tests that glyphs should be initialized correctly
         /// </summary>
         [Fact]
         public void Glyphs_ShouldBeInitializedCorrectly()
@@ -118,7 +118,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that fallback glyph should be initialized correctly
+        ///     Tests that fallback glyph should be initialized correctly
         /// </summary>
         [Fact]
         public void FallbackGlyph_ShouldBeInitializedCorrectly()
@@ -134,7 +134,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that container atlas should be initialized correctly
+        ///     Tests that container atlas should be initialized correctly
         /// </summary>
         [Fact]
         public void ContainerAtlas_ShouldBeInitializedCorrectly()
@@ -150,7 +150,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that config data should be initialized correctly
+        ///     Tests that config data should be initialized correctly
         /// </summary>
         [Fact]
         public void ConfigData_ShouldBeInitializedCorrectly()
@@ -166,7 +166,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that config data count should be initialized correctly
+        ///     Tests that config data count should be initialized correctly
         /// </summary>
         [Fact]
         public void ConfigDataCount_ShouldBeInitializedCorrectly()
@@ -182,7 +182,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that fallback char should be initialized correctly
+        ///     Tests that fallback char should be initialized correctly
         /// </summary>
         [Fact]
         public void FallbackChar_ShouldBeInitializedCorrectly()
@@ -198,7 +198,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that ellipsis char should be initialized correctly
+        ///     Tests that ellipsis char should be initialized correctly
         /// </summary>
         [Fact]
         public void EllipsisChar_ShouldBeInitializedCorrectly()
@@ -214,7 +214,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that dot char should be initialized correctly
+        ///     Tests that dot char should be initialized correctly
         /// </summary>
         [Fact]
         public void DotChar_ShouldBeInitializedCorrectly()
@@ -230,7 +230,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that dirty lookup tables should be initialized correctly
+        ///     Tests that dirty lookup tables should be initialized correctly
         /// </summary>
         [Fact]
         public void DirtyLookupTables_ShouldBeInitializedCorrectly()
@@ -246,7 +246,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that scale should be initialized correctly
+        ///     Tests that scale should be initialized correctly
         /// </summary>
         [Fact]
         public void Scale_ShouldBeInitializedCorrectly()
@@ -262,7 +262,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that ascent should be initialized correctly
+        ///     Tests that ascent should be initialized correctly
         /// </summary>
         [Fact]
         public void Ascent_ShouldBeInitializedCorrectly()
@@ -278,7 +278,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that descent should be initialized correctly
+        ///     Tests that descent should be initialized correctly
         /// </summary>
         [Fact]
         public void Descent_ShouldBeInitializedCorrectly()
@@ -294,7 +294,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that metrics total surface should be initialized correctly
+        ///     Tests that metrics total surface should be initialized correctly
         /// </summary>
         [Fact]
         public void MetricsTotalSurface_ShouldBeInitializedCorrectly()
@@ -310,7 +310,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that used 4 k pages map should be initialized correctly
+        ///     Tests that used 4 k pages map should be initialized correctly
         /// </summary>
         [Fact]
         public void Used4KPagesMap_ShouldBeInitializedCorrectly()

@@ -46,10 +46,10 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Render
         public void AnimatorBuilder_DefaultConstructor_ValidInput()
         {
             AnimatorBuilder animatorBuilder = new AnimatorBuilder();
-
+            
             Assert.NotNull(animatorBuilder);
         }
-
+        
         /// <summary>
         ///     Tests that build valid input
         /// </summary>
@@ -57,12 +57,12 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Render
         public void Build_ValidInput()
         {
             AnimatorBuilder animatorBuilder = new AnimatorBuilder();
-
+            
             Animator animator = animatorBuilder.Build();
-
+            
             Assert.NotNull(animator);
         }
-
+        
         /// <summary>
         ///     Tests that add animation valid input
         /// </summary>
@@ -71,11 +71,11 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Render
         {
             AnimatorBuilder animatorBuilder = new AnimatorBuilder();
             Func<AnimationBuilder, Animation> animationFunc = ab => ab.Build();
-
+            
             animatorBuilder.AddAnimation(animationFunc);
-
+            
             Animator animator = animatorBuilder.Build();
-
+            
             Assert.Single(animator.Animations);
         }
     }

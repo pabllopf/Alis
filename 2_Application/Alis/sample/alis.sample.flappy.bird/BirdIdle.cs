@@ -43,27 +43,27 @@ namespace Alis.Sample.Flappy.Bird
         ///     The range movement
         /// </summary>
         private const float RangeMovement = 10.0f;
-
+        
         /// <summary>
         ///     The velocity
         /// </summary>
         private const float Velocity = 55f;
-
+        
         /// <summary>
         ///     The default position
         /// </summary>
         private Vector2 defaultPosition;
-
+        
         /// <summary>
         ///     The go down
         /// </summary>
         private bool goDown;
-
+        
         /// <summary>
         ///     The go up
         /// </summary>
         private bool goUp = true;
-
+        
         /// <summary>
         ///     Ons the init
         /// </summary>
@@ -71,7 +71,7 @@ namespace Alis.Sample.Flappy.Bird
         {
             defaultPosition = GameObject.Transform.Position;
         }
-
+        
         /// <summary>
         ///     Ons the update
         /// </summary>
@@ -79,17 +79,17 @@ namespace Alis.Sample.Flappy.Bird
         {
             // get the x position of game object:
             float x = GameObject.Transform.Position.X;
-
+            
             // get the y position of game object:
             float y = GameObject.Transform.Position.Y;
-
+            
             Vector2 scale = GameObject.Transform.Scale;
-
+            
             Rotation rotation = GameObject.Transform.Rotation;
-
+            
             // create a new position:
             Vector2 newPosition;
-
+            
             if (goUp && !goDown)
             {
                 float displace = Velocity * Context.TimeManager.DeltaTime;
@@ -100,7 +100,7 @@ namespace Alis.Sample.Flappy.Bird
                     Rotation = rotation,
                     Scale = scale
                 };
-
+                
                 GameObject.Transform = transform;
             }
             else if (goDown && !goUp)
@@ -113,16 +113,16 @@ namespace Alis.Sample.Flappy.Bird
                     Rotation = rotation,
                     Scale = scale
                 };
-
+                
                 GameObject.Transform = transform;
             }
-
+            
             if (y < defaultPosition.Y - RangeMovement)
             {
                 goUp = false;
                 goDown = true;
             }
-
+            
             if (y > defaultPosition.Y + RangeMovement)
             {
                 goUp = true;

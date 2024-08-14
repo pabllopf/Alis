@@ -32,12 +32,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test
 {
     /// <summary>
-    /// The stb undo record test class
+    ///     The stb undo record test class
     /// </summary>
     public class StbUndoRecordTest
     {
         /// <summary>
-        /// Tests that where should be initialized correctly
+        ///     Tests that where should be initialized correctly
         /// </summary>
         [Fact]
         public void Where_ShouldBeInitializedCorrectly()
@@ -53,7 +53,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that insert length should be initialized correctly
+        ///     Tests that insert length should be initialized correctly
         /// </summary>
         [Fact]
         public void InsertLength_ShouldBeInitializedCorrectly()
@@ -69,7 +69,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that delete length should be initialized correctly
+        ///     Tests that delete length should be initialized correctly
         /// </summary>
         [Fact]
         public void DeleteLength_ShouldBeInitializedCorrectly()
@@ -85,7 +85,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that char storage should be initialized correctly
+        ///     Tests that char storage should be initialized correctly
         /// </summary>
         [Fact]
         public void CharStorage_ShouldBeInitializedCorrectly()

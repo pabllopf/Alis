@@ -42,48 +42,48 @@ namespace Alis.Core.Aspect.Data.Json
         ///     The enumerator
         /// </summary>
         private readonly KeyValueTypeEnumerator _enumerator;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="KeyValueTypeDictionary" /> class
         /// </summary>
         /// <param name="value">The value</param>
         public KeyValueTypeDictionary(object value) => _enumerator = new KeyValueTypeEnumerator(value);
-
+        
         /// <summary>
         ///     Gets the value of the count
         /// </summary>
         public int Count => throw new NotSupportedException();
-
+        
         /// <summary>
         ///     Gets the value of the is synchronized
         /// </summary>
         public bool IsSynchronized => throw new NotSupportedException();
-
+        
         /// <summary>
         ///     Gets the value of the sync root
         /// </summary>
         public object SyncRoot => throw new NotSupportedException();
-
+        
         /// <summary>
         ///     Gets the value of the is fixed size
         /// </summary>
         public bool IsFixedSize => throw new NotSupportedException();
-
+        
         /// <summary>
         ///     Gets the value of the is read only
         /// </summary>
         public bool IsReadOnly => throw new NotSupportedException();
-
+        
         /// <summary>
         ///     Gets the value of the keys
         /// </summary>
         public ICollection Keys => throw new NotSupportedException();
-
+        
         /// <summary>
         ///     Gets the value of the values
         /// </summary>
         public ICollection Values => throw new NotSupportedException();
-
+        
         /// <summary>
         ///     The not supported exception
         /// </summary>
@@ -92,45 +92,45 @@ namespace Alis.Core.Aspect.Data.Json
             get => throw new NotSupportedException();
             set => throw new NotSupportedException();
         }
-
+        
         /// <summary>
         ///     Adds the key
         /// </summary>
         /// <param name="key">The key</param>
         /// <param name="value">The value</param>
         public void Add(object key, object value) => throw new NotSupportedException();
-
+        
         /// <summary>
         ///     Clears this instance
         /// </summary>
         public void Clear() => throw new NotSupportedException();
-
+        
         /// <summary>
         ///     Describes whether this instance contains
         /// </summary>
         /// <param name="key">The key</param>
         /// <returns>The bool</returns>
         public bool Contains(object key) => throw new NotSupportedException();
-
+        
         /// <summary>
         ///     Gets the enumerator
         /// </summary>
         /// <returns>The dictionary enumerator</returns>
         public IDictionaryEnumerator GetEnumerator() => _enumerator;
-
+        
         /// <summary>
         ///     Removes the key
         /// </summary>
         /// <param name="key">The key</param>
         public void Remove(object key) => throw new NotSupportedException();
-
+        
         /// <summary>
         ///     Copies the to using the specified array
         /// </summary>
         /// <param name="array">The array</param>
         /// <param name="index">The index</param>
         public void CopyTo(Array array, int index) => throw new NotSupportedException();
-
+        
         /// <summary>
         ///     Gets the enumerator
         /// </summary>

@@ -45,31 +45,31 @@ namespace Alis.Core.Physic.Collision.TOI
     {
         /// <summary>World angles</summary>
         public float A;
-
-
+        
+        
         /// <summary>
         ///     The
         /// </summary>
         public float A0;
-
-
+        
+        
         /// <summary>Fraction of the current time step in the range [0,1] c0 and a0 are the positions at alpha0.</summary>
         public float Alpha0;
-
-
+        
+        
         /// <summary>Center world positions</summary>
         public Vector2 C;
-
-
+        
+        
         /// <summary>
         ///     The
         /// </summary>
         public Vector2 C0;
-
+        
         /// <summary>Local center of mass position</summary>
         public Vector2 LocalCenter;
-
-
+        
+        
         /// <summary>Get the interpolated transform at a specific time.</summary>
         /// <param name="xfb">The transform.</param>
         /// <param name="beta">beta is a factor in [0,1], where 0 indicates alpha0.</param>
@@ -84,11 +84,11 @@ namespace Alis.Core.Physic.Collision.TOI
             };
             float angle = (1.0f - beta) * A0 + beta * A;
             xfb.Rotation.Set(angle);
-
+            
             // Shift to origin
             xfb.Position -= MathUtils.Mul(xfb.Rotation, LocalCenter);
         }
-
+        
         /// <summary>Advance the sweep forward, yielding a new initial state.</summary>
         /// <param name="alpha">new initial time</param>
         public void Advance(float alpha)
@@ -99,7 +99,7 @@ namespace Alis.Core.Physic.Collision.TOI
             A0 += beta * (A - A0);
             Alpha0 = alpha;
         }
-
+        
         /// <summary>Normalize the angles.</summary>
         public void Normalize()
         {

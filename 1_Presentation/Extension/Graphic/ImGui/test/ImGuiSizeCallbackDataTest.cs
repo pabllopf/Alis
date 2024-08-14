@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test
 {
     /// <summary>
-    /// The im gui size callback data test class
+    ///     The im gui size callback data test class
     /// </summary>
     public class ImGuiSizeCallbackDataTest
     {
         /// <summary>
-        /// Tests that user data should be initialized
+        ///     Tests that user data should be initialized
         /// </summary>
         [Fact]
         public void UserData_ShouldBeInitialized()
@@ -47,9 +47,9 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiSizeCallbackData data = new ImGuiSizeCallbackData();
             Assert.Equal(IntPtr.Zero, data.UserData);
         }
-
+        
         /// <summary>
-        /// Tests that pos should be initialized
+        ///     Tests that pos should be initialized
         /// </summary>
         [Fact]
         public void Pos_ShouldBeInitialized()
@@ -57,9 +57,9 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiSizeCallbackData data = new ImGuiSizeCallbackData();
             Assert.Equal(default(Vector2), data.Pos);
         }
-
+        
         /// <summary>
-        /// Tests that current size should be initialized
+        ///     Tests that current size should be initialized
         /// </summary>
         [Fact]
         public void CurrentSize_ShouldBeInitialized()
@@ -67,9 +67,9 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiSizeCallbackData data = new ImGuiSizeCallbackData();
             Assert.Equal(default(Vector2), data.CurrentSize);
         }
-
+        
         /// <summary>
-        /// Tests that desired size should be initialized
+        ///     Tests that desired size should be initialized
         /// </summary>
         [Fact]
         public void DesiredSize_ShouldBeInitialized()
@@ -77,9 +77,9 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiSizeCallbackData data = new ImGuiSizeCallbackData();
             Assert.Equal(default(Vector2), data.DesiredSize);
         }
-
+        
         /// <summary>
-        /// Tests that user data should set and get correctly
+        ///     Tests that user data should set and get correctly
         /// </summary>
         [Fact]
         public void UserData_Should_SetAndGetCorrectly()
@@ -89,9 +89,9 @@ namespace Alis.Extension.Graphic.ImGui.Test
             data.UserData = userData;
             Assert.Equal(userData, data.UserData);
         }
-
+        
         /// <summary>
-        /// Tests that pos should set and get correctly
+        ///     Tests that pos should set and get correctly
         /// </summary>
         [Fact]
         public void Pos_Should_SetAndGetCorrectly()
@@ -101,9 +101,9 @@ namespace Alis.Extension.Graphic.ImGui.Test
             data.Pos = pos;
             Assert.Equal(pos, data.Pos);
         }
-
+        
         /// <summary>
-        /// Tests that current size should set and get correctly
+        ///     Tests that current size should set and get correctly
         /// </summary>
         [Fact]
         public void CurrentSize_Should_SetAndGetCorrectly()
@@ -113,9 +113,9 @@ namespace Alis.Extension.Graphic.ImGui.Test
             data.CurrentSize = currentSize;
             Assert.Equal(currentSize, data.CurrentSize);
         }
-
+        
         /// <summary>
-        /// Tests that desired size should set and get correctly
+        ///     Tests that desired size should set and get correctly
         /// </summary>
         [Fact]
         public void DesiredSize_Should_SetAndGetCorrectly()

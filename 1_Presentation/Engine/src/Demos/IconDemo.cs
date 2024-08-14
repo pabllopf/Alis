@@ -40,12 +40,12 @@ namespace Alis.App.Engine.Demos
     public class IconDemo : IDemo
     {
         /// <summary>
-        /// Starts this instance
+        ///     Starts this instance
         /// </summary>
         public void Start()
         {
         }
-
+        
         /// <summary>
         ///     Runs this instance
         /// </summary>
@@ -53,14 +53,14 @@ namespace Alis.App.Engine.Demos
         {
             SimpleIcons();
         }
-
+        
         /// <summary>
-        /// Initializes this instance
+        ///     Initializes this instance
         /// </summary>
         public void Initialize()
         {
         }
-
+        
         /// <summary>
         ///     Simples the icons
         /// </summary>
@@ -73,7 +73,7 @@ namespace Alis.App.Engine.Demos
                 ImGui.Text("Font Awesome 5");
                 ImGui.Text($" {FontAwesome5.Bug} {FontAwesome5.Bullhorn} {FontAwesome5.Bullseye} {FontAwesome5.Calendar}");
             }
-
+            
             ImGui.End();
         }
     }

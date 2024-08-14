@@ -35,12 +35,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test
 {
     /// <summary>
-    /// The im draw data test class
+    ///     The im draw data test class
     /// </summary>
     public class ImDrawDataTest
     {
         /// <summary>
-        /// Tests that valid should be initialized correctly
+        ///     Tests that valid should be initialized correctly
         /// </summary>
         [Fact]
         public void Valid_ShouldBeInitializedCorrectly()
@@ -56,7 +56,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that cmd lists count should be initialized correctly
+        ///     Tests that cmd lists count should be initialized correctly
         /// </summary>
         [Fact]
         public void CmdListsCount_ShouldBeInitializedCorrectly()
@@ -72,7 +72,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that total idx count should be initialized correctly
+        ///     Tests that total idx count should be initialized correctly
         /// </summary>
         [Fact]
         public void TotalIdxCount_ShouldBeInitializedCorrectly()
@@ -88,7 +88,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that total vtx count should be initialized correctly
+        ///     Tests that total vtx count should be initialized correctly
         /// </summary>
         [Fact]
         public void TotalVtxCount_ShouldBeInitializedCorrectly()
@@ -104,7 +104,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that cmd lists ptr should be initialized correctly
+        ///     Tests that cmd lists ptr should be initialized correctly
         /// </summary>
         [Fact]
         public void CmdListsPtr_ShouldBeInitializedCorrectly()
@@ -121,7 +121,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that display pos should be initialized correctly
+        ///     Tests that display pos should be initialized correctly
         /// </summary>
         [Fact]
         public void DisplayPos_ShouldBeInitializedCorrectly()
@@ -137,7 +137,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that display size should be initialized correctly
+        ///     Tests that display size should be initialized correctly
         /// </summary>
         [Fact]
         public void DisplaySize_ShouldBeInitializedCorrectly()
@@ -153,7 +153,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that framebuffer scale should be initialized correctly
+        ///     Tests that framebuffer scale should be initialized correctly
         /// </summary>
         [Fact]
         public void FramebufferScale_ShouldBeInitializedCorrectly()
@@ -169,7 +169,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that owner viewport ptr should be initialized correctly
+        ///     Tests that owner viewport ptr should be initialized correctly
         /// </summary>
         [Fact]
         public void OwnerViewportPtr_ShouldBeInitializedCorrectly()
@@ -186,7 +186,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that clear should clear data
+        ///     Tests that clear should clear data
         /// </summary>
         [Fact]
         public void Clear_ShouldClearData()
@@ -198,7 +198,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that de index all buffers should de index buffers
+        ///     Tests that de index all buffers should de index buffers
         /// </summary>
         [Fact]
         public void DeIndexAllBuffers_ShouldDeIndexBuffers()
@@ -210,11 +210,10 @@ namespace Alis.Extension.Graphic.ImGui.Test
             
             // Act
             Assert.Throws<DllNotFoundException>(() => drawData.DeIndexAllBuffers());
-            
         }
         
         /// <summary>
-        /// Tests that scale clip rects should scale clip rects
+        ///     Tests that scale clip rects should scale clip rects
         /// </summary>
         [Fact]
         public void ScaleClipRects_ShouldScaleClipRects()

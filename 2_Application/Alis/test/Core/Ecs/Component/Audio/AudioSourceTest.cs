@@ -46,11 +46,11 @@ namespace Alis.Test.Core.Ecs.Component.Audio
         public void AudioSource_DefaultConstructor_ValidInput()
         {
             AudioSource audioSource = new AudioSource();
-
+            
             Assert.NotNull(audioSource);
             Assert.NotNull(audioSource.AudioClip);
         }
-
+        
         /// <summary>
         ///     Tests that audio source constructor with audio clip valid input
         /// </summary>
@@ -59,11 +59,11 @@ namespace Alis.Test.Core.Ecs.Component.Audio
         {
             AudioClip audioClip = new AudioClip();
             AudioSource audioSource = new AudioSource(audioClip);
-
+            
             Assert.NotNull(audioSource);
             Assert.Equal(audioClip, audioSource.AudioClip);
         }
-
+        
         /// <summary>
         ///     Tests that play valid input
         /// </summary>
@@ -71,12 +71,12 @@ namespace Alis.Test.Core.Ecs.Component.Audio
         public void Play_ValidInput()
         {
             AudioSource audioSource = new AudioSource();
-
+            
             audioSource.Play();
-
+            
             Assert.False(audioSource.IsPlaying);
         }
-
+        
         /// <summary>
         ///     Tests that stop valid input
         /// </summary>
@@ -84,13 +84,13 @@ namespace Alis.Test.Core.Ecs.Component.Audio
         public void Stop_ValidInput()
         {
             AudioSource audioSource = new AudioSource();
-
+            
             audioSource.Play();
             audioSource.Stop();
-
+            
             Assert.False(audioSource.IsPlaying);
         }
-
+        
         /// <summary>
         ///     Tests that resume valid input
         /// </summary>
@@ -98,14 +98,14 @@ namespace Alis.Test.Core.Ecs.Component.Audio
         public void Resume_ValidInput()
         {
             AudioSource audioSource = new AudioSource();
-
+            
             audioSource.Play();
             audioSource.Stop();
             audioSource.Resume();
-
+            
             Assert.False(audioSource.IsPlaying);
         }
-
+        
         /// <summary>
         ///     Tests that builder valid input
         /// </summary>
@@ -113,10 +113,10 @@ namespace Alis.Test.Core.Ecs.Component.Audio
         public void Builder_ValidInput()
         {
             AudioSourceBuilder audioSourceBuilder = new AudioSource().Builder();
-
+            
             Assert.NotNull(audioSourceBuilder);
         }
-
+        
         /// <summary>
         ///     Tests that on init should set thread pool min threads
         /// </summary>
@@ -129,7 +129,7 @@ namespace Alis.Test.Core.Ecs.Component.Audio
             Assert.Equal(200, workerThreads);
             Assert.Equal(200, completionPortThreads);
         }
-
+        
         /// <summary>
         ///     Tests that on start should play if play on awake is true
         /// </summary>
@@ -140,7 +140,7 @@ namespace Alis.Test.Core.Ecs.Component.Audio
             audioSource.OnStart();
             Assert.False(audioSource.IsPlaying);
         }
-
+        
         /// <summary>
         ///     Tests that on start should not play if play on awake is false
         /// </summary>
@@ -151,7 +151,7 @@ namespace Alis.Test.Core.Ecs.Component.Audio
             audioSource.OnStart();
             Assert.False(audioSource.IsPlaying);
         }
-
+        
         /// <summary>
         ///     Tests that on stop should stop playing
         /// </summary>
@@ -163,7 +163,7 @@ namespace Alis.Test.Core.Ecs.Component.Audio
             audioSource.OnStop();
             Assert.False(audioSource.IsPlaying);
         }
-
+        
         /// <summary>
         ///     Tests that on exit should stop playing
         /// </summary>
@@ -175,7 +175,7 @@ namespace Alis.Test.Core.Ecs.Component.Audio
             audioSource.OnExit();
             Assert.False(audioSource.IsPlaying);
         }
-
+        
         /// <summary>
         ///     Tests that set mute should change value
         /// </summary>
@@ -188,7 +188,7 @@ namespace Alis.Test.Core.Ecs.Component.Audio
             audioSource.Mute = false;
             Assert.False(audioSource.Mute);
         }
-
+        
         /// <summary>
         ///     Tests that set loop should change value
         /// </summary>
@@ -201,7 +201,7 @@ namespace Alis.Test.Core.Ecs.Component.Audio
             audioSource.Loop = false;
             Assert.False(audioSource.Loop);
         }
-
+        
         /// <summary>
         ///     Tests that set volume should change value
         /// </summary>

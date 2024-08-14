@@ -44,10 +44,10 @@ namespace Alis.Test.Core.Ecs.Component.Collider
         public void Collider_DefaultConstructor_ValidInput()
         {
             ColliderSample collider = new ColliderSample();
-
+            
             Assert.NotNull(collider);
         }
-
+        
         /// <summary>
         ///     Tests that on start valid input
         /// </summary>
@@ -55,10 +55,10 @@ namespace Alis.Test.Core.Ecs.Component.Collider
         public void OnStart_ValidInput()
         {
             ColliderSample collider = new ColliderSample();
-
+            
             collider.OnStart();
         }
-
+        
         /// <summary>
         ///     Tests that on update valid input
         /// </summary>
@@ -66,7 +66,7 @@ namespace Alis.Test.Core.Ecs.Component.Collider
         public void OnUpdate_ValidInput()
         {
             ColliderSample collider = new ColliderSample();
-
+            
             collider.OnUpdate();
         }
     }

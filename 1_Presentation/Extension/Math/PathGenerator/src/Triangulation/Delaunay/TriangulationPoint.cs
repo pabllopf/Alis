@@ -41,7 +41,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay
         ///     The
         /// </summary>
         public double X, Y;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="TriangulationPoint" /> class
         /// </summary>
@@ -52,12 +52,12 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay
             X = x;
             Y = y;
         }
-
+        
         /// <summary>
         ///     Gets or sets the value of the edges
         /// </summary>
         public List<DtSweepConstraint> Edges { get; private set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the xf
         /// </summary>
@@ -66,7 +66,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay
             get => (float) X;
             set => X = value;
         }
-
+        
         /// <summary>
         ///     Gets or sets the value of the yf
         /// </summary>
@@ -75,18 +75,18 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay
             get => (float) Y;
             set => Y = value;
         }
-
+        
         /// <summary>
         ///     Gets the value of the has edges
         /// </summary>
         public bool HasEdges => Edges != null;
-
+        
         /// <summary>
         ///     Returns the string
         /// </summary>
         /// <returns>The string</returns>
         public override string ToString() => "[" + X + "," + Y + "]";
-
+        
         /// <summary>
         ///     Adds the edge using the specified e
         /// </summary>
@@ -94,7 +94,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Delaunay
         public void AddEdge(DtSweepConstraint e)
         {
             Edges ??= new List<DtSweepConstraint>();
-
+            
             Edges.Add(e);
         }
     }

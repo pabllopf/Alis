@@ -35,7 +35,6 @@ using Alis.Extension.Updater.Services.Files;
 
 namespace Alis.Extension.Updater.Sample
 {
-    
     /// <summary>
     ///     The program class
     /// </summary>
@@ -54,7 +53,7 @@ namespace Alis.Extension.Updater.Sample
             FileService fileService = new FileService();
             string pathProgram = Path.Combine(Environment.CurrentDirectory, "bin");
             UpdateManager updateManager = new UpdateManager(gitHubApiService, fileService, pathProgram);
-
+            
             updateManager.Start().Wait();
             
             Logger.Log("End sample program");

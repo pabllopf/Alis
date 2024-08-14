@@ -42,20 +42,20 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
         ///     The head
         /// </summary>
         private Node head;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="QueryGraph" /> class
         /// </summary>
         /// <param name="head">The head</param>
         public QueryGraph(Node head) => this.head = head;
-
+        
         /// <summary>
         ///     Locates the edge
         /// </summary>
         /// <param name="edge">The edge</param>
         /// <returns>The trapezoid</returns>
         private Trapezoid Locate(Edge edge) => head.Locate(edge).Trapezoid;
-
+        
         /// <summary>
         ///     Follows the edge using the specified edge
         /// </summary>
@@ -68,17 +68,17 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
                 Locate(edge)
             };
             int j = 0;
-
+            
             while (edge.Q.X > trapezoids[j].RightPoint.X)
             {
                 trapezoids.Add(edge.IsAbove(trapezoids[j].RightPoint) ? trapezoids[j].UpperRight : trapezoids[j].LowerRight);
-
+                
                 j += 1;
             }
-
+            
             return trapezoids;
         }
-
+        
         /// <summary>
         ///     Replaces the sink
         /// </summary>
@@ -95,7 +95,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
                 node.Replace(sink);
             }
         }
-
+        
         /// <summary>
         ///     Cases the 1 using the specified sink
         /// </summary>
@@ -109,7 +109,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
             XNode pNode = new XNode(edge.P, Sink.IsInk(tList[0]), qNode);
             Replace(sink, pNode);
         }
-
+        
         /// <summary>
         ///     Cases the 2 using the specified sink
         /// </summary>
@@ -122,7 +122,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
             XNode pNode = new XNode(edge.P, Sink.IsInk(tList[0]), yNode);
             Replace(sink, pNode);
         }
-
+        
         /// <summary>
         ///     Cases the 3 using the specified sink
         /// </summary>
@@ -134,7 +134,7 @@ namespace Alis.Extension.Math.PathGenerator.Triangulation.Seidel
             YNode yNode = new YNode(edge, Sink.IsInk(tList[0]), Sink.IsInk(tList[1]));
             Replace(sink, yNode);
         }
-
+        
         /// <summary>
         ///     Cases the 4 using the specified sink
         /// </summary>

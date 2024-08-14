@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ImPlotP13.cs
+//  File:ImPlotTestP13.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -35,12 +35,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
 {
     /// <summary>
-    /// The im plot test class
+    ///     The im plot test class
     /// </summary>
     public class ImPlotTestP13
     {
         /// <summary>
-        /// Tests that plot stems should throw dll not found exception v 1
+        ///     Tests that plot stems should throw dll not found exception v 1
         /// </summary>
         [Fact]
         public void PlotStems_ShouldThrowDllNotFoundException_v1()
@@ -49,7 +49,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot stems should throw dll not found exception v 2
+        ///     Tests that plot stems should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void PlotStems_ShouldThrowDllNotFoundException_v2()
@@ -58,7 +58,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot stems should throw dll not found exception v 3
+        ///     Tests that plot stems should throw dll not found exception v 3
         /// </summary>
         [Fact]
         public void PlotStems_ShouldThrowDllNotFoundException_v3()
@@ -67,61 +67,61 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line int array should throw dll not found exception v 1
+        ///     Tests that plot line int array should throw dll not found exception v 1
         /// </summary>
         [Fact]
         public void PlotLine_IntArray_ShouldThrowDllNotFoundException_v1()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotLine("label", new int[] {1, 2, 3}, 3));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotLine("label", new[] {1, 2, 3}, 3));
         }
         
         /// <summary>
-        /// Tests that plot line int array should throw dll not found exception v 2
+        ///     Tests that plot line int array should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void PlotLine_IntArray_ShouldThrowDllNotFoundException_v2()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotLine("label", new int[] {1, 2, 3}, 3, 1.0));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotLine("label", new[] {1, 2, 3}, 3, 1.0));
         }
         
         /// <summary>
-        /// Tests that plot line int array should throw dll not found exception v 3
+        ///     Tests that plot line int array should throw dll not found exception v 3
         /// </summary>
         [Fact]
         public void PlotLine_IntArray_ShouldThrowDllNotFoundException_v3()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotLine("label", new int[] {1, 2, 3}, 3, 1.0, 0.0));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotLine("label", new[] {1, 2, 3}, 3, 1.0, 0.0));
         }
         
         /// <summary>
-        /// Tests that plot line int array should throw dll not found exception v 4
+        ///     Tests that plot line int array should throw dll not found exception v 4
         /// </summary>
         [Fact]
         public void PlotLine_IntArray_ShouldThrowDllNotFoundException_v4()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotLine("label", new int[] {1, 2, 3}, 3, 1.0, 0.0, ImPlotLineFlags.None));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotLine("label", new[] {1, 2, 3}, 3, 1.0, 0.0, ImPlotLineFlags.None));
         }
         
         /// <summary>
-        /// Tests that plot line int array should throw dll not found exception v 5
+        ///     Tests that plot line int array should throw dll not found exception v 5
         /// </summary>
         [Fact]
         public void PlotLine_IntArray_ShouldThrowDllNotFoundException_v5()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotLine("label", new int[] {1, 2, 3}, 3, 1.0, 0.0, ImPlotLineFlags.None, 0));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotLine("label", new[] {1, 2, 3}, 3, 1.0, 0.0, ImPlotLineFlags.None, 0));
         }
         
         /// <summary>
-        /// Tests that plot line int array should throw dll not found exception v 6
+        ///     Tests that plot line int array should throw dll not found exception v 6
         /// </summary>
         [Fact]
         public void PlotLine_IntArray_ShouldThrowDllNotFoundException_v6()
         {
-            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotLine("label", new int[] {1, 2, 3}, 3, 1.0, 0.0, ImPlotLineFlags.None, 0, 0));
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotLine("label", new[] {1, 2, 3}, 3, 1.0, 0.0, ImPlotLineFlags.None, 0, 0));
         }
         
         /// <summary>
-        /// Tests that plot line u int array should throw dll not found exception v 1
+        ///     Tests that plot line u int array should throw dll not found exception v 1
         /// </summary>
         [Fact]
         public void PlotLine_UIntArray_ShouldThrowDllNotFoundException_v1()
@@ -130,7 +130,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line u int array should throw dll not found exception v 2
+        ///     Tests that plot line u int array should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void PlotLine_UIntArray_ShouldThrowDllNotFoundException_v2()
@@ -139,7 +139,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line u int array should throw dll not found exception v 3
+        ///     Tests that plot line u int array should throw dll not found exception v 3
         /// </summary>
         [Fact]
         public void PlotLine_UIntArray_ShouldThrowDllNotFoundException_v3()
@@ -148,7 +148,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line u int array should throw dll not found exception v 4
+        ///     Tests that plot line u int array should throw dll not found exception v 4
         /// </summary>
         [Fact]
         public void PlotLine_UIntArray_ShouldThrowDllNotFoundException_v4()
@@ -157,7 +157,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line u int array should throw dll not found exception v 5
+        ///     Tests that plot line u int array should throw dll not found exception v 5
         /// </summary>
         [Fact]
         public void PlotLine_UIntArray_ShouldThrowDllNotFoundException_v5()
@@ -166,7 +166,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line u int array should throw dll not found exception v 6
+        ///     Tests that plot line u int array should throw dll not found exception v 6
         /// </summary>
         [Fact]
         public void PlotLine_UIntArray_ShouldThrowDllNotFoundException_v6()
@@ -175,7 +175,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line long array should throw dll not found exception v 1
+        ///     Tests that plot line long array should throw dll not found exception v 1
         /// </summary>
         [Fact]
         public void PlotLine_LongArray_ShouldThrowDllNotFoundException_v1()
@@ -184,7 +184,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line long array should throw dll not found exception v 2
+        ///     Tests that plot line long array should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void PlotLine_LongArray_ShouldThrowDllNotFoundException_v2()
@@ -193,7 +193,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line long array should throw dll not found exception v 3
+        ///     Tests that plot line long array should throw dll not found exception v 3
         /// </summary>
         [Fact]
         public void PlotLine_LongArray_ShouldThrowDllNotFoundException_v3()
@@ -202,7 +202,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line long array should throw dll not found exception v 4
+        ///     Tests that plot line long array should throw dll not found exception v 4
         /// </summary>
         [Fact]
         public void PlotLine_LongArray_ShouldThrowDllNotFoundException_v4()
@@ -211,7 +211,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line long array should throw dll not found exception v 5
+        ///     Tests that plot line long array should throw dll not found exception v 5
         /// </summary>
         [Fact]
         public void PlotLine_LongArray_ShouldThrowDllNotFoundException_v5()
@@ -220,7 +220,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line long array should throw dll not found exception v 6
+        ///     Tests that plot line long array should throw dll not found exception v 6
         /// </summary>
         [Fact]
         public void PlotLine_LongArray_ShouldThrowDllNotFoundException_v6()
@@ -229,7 +229,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line u long array should throw dll not found exception v 1
+        ///     Tests that plot line u long array should throw dll not found exception v 1
         /// </summary>
         [Fact]
         public void PlotLine_ULongArray_ShouldThrowDllNotFoundException_v1()
@@ -238,7 +238,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line u long array should throw dll not found exception v 2
+        ///     Tests that plot line u long array should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void PlotLine_ULongArray_ShouldThrowDllNotFoundException_v2()
@@ -247,7 +247,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line u long array should throw dll not found exception v 3
+        ///     Tests that plot line u long array should throw dll not found exception v 3
         /// </summary>
         [Fact]
         public void PlotLine_ULongArray_ShouldThrowDllNotFoundException_v3()
@@ -256,7 +256,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line u long array should throw dll not found exception v 4
+        ///     Tests that plot line u long array should throw dll not found exception v 4
         /// </summary>
         [Fact]
         public void PlotLine_ULongArray_ShouldThrowDllNotFoundException_v4()
@@ -265,7 +265,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line u long array should throw dll not found exception v 5
+        ///     Tests that plot line u long array should throw dll not found exception v 5
         /// </summary>
         [Fact]
         public void PlotLine_ULongArray_ShouldThrowDllNotFoundException_v5()
@@ -274,7 +274,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line u long array should throw dll not found exception v 6
+        ///     Tests that plot line u long array should throw dll not found exception v 6
         /// </summary>
         [Fact]
         public void PlotLine_ULongArray_ShouldThrowDllNotFoundException_v6()
@@ -283,7 +283,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line float ref should throw dll not found exception v 1
+        ///     Tests that plot line float ref should throw dll not found exception v 1
         /// </summary>
         [Fact]
         public void PlotLine_FloatRef_ShouldThrowDllNotFoundException_v1()
@@ -293,7 +293,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line float ref should throw dll not found exception v 2
+        ///     Tests that plot line float ref should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void PlotLine_FloatRef_ShouldThrowDllNotFoundException_v2()
@@ -303,7 +303,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line float ref should throw dll not found exception v 3
+        ///     Tests that plot line float ref should throw dll not found exception v 3
         /// </summary>
         [Fact]
         public void PlotLine_FloatRef_ShouldThrowDllNotFoundException_v3()
@@ -313,7 +313,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line float ref should throw dll not found exception v 4
+        ///     Tests that plot line float ref should throw dll not found exception v 4
         /// </summary>
         [Fact]
         public void PlotLine_FloatRef_ShouldThrowDllNotFoundException_v4()
@@ -323,7 +323,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line double ref should throw dll not found exception v 1
+        ///     Tests that plot line double ref should throw dll not found exception v 1
         /// </summary>
         [Fact]
         public void PlotLine_DoubleRef_ShouldThrowDllNotFoundException_v1()
@@ -333,7 +333,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line double ref should throw dll not found exception v 2
+        ///     Tests that plot line double ref should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void PlotLine_DoubleRef_ShouldThrowDllNotFoundException_v2()
@@ -343,7 +343,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line double ref should throw dll not found exception v 3
+        ///     Tests that plot line double ref should throw dll not found exception v 3
         /// </summary>
         [Fact]
         public void PlotLine_DoubleRef_ShouldThrowDllNotFoundException_v3()
@@ -353,7 +353,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line double ref should throw dll not found exception v 4
+        ///     Tests that plot line double ref should throw dll not found exception v 4
         /// </summary>
         [Fact]
         public void PlotLine_DoubleRef_ShouldThrowDllNotFoundException_v4()
@@ -363,7 +363,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line s byte ref should throw dll not found exception v 1
+        ///     Tests that plot line s byte ref should throw dll not found exception v 1
         /// </summary>
         [Fact]
         public void PlotLine_SByteRef_ShouldThrowDllNotFoundException_v1()
@@ -373,7 +373,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line s byte ref should throw dll not found exception v 2
+        ///     Tests that plot line s byte ref should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void PlotLine_SByteRef_ShouldThrowDllNotFoundException_v2()
@@ -383,7 +383,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line s byte ref should throw dll not found exception v 3
+        ///     Tests that plot line s byte ref should throw dll not found exception v 3
         /// </summary>
         [Fact]
         public void PlotLine_SByteRef_ShouldThrowDllNotFoundException_v3()
@@ -393,7 +393,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line s byte ref should throw dll not found exception v 4
+        ///     Tests that plot line s byte ref should throw dll not found exception v 4
         /// </summary>
         [Fact]
         public void PlotLine_SByteRef_ShouldThrowDllNotFoundException_v4()
@@ -403,7 +403,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line byte ref should throw dll not found exception v 1
+        ///     Tests that plot line byte ref should throw dll not found exception v 1
         /// </summary>
         [Fact]
         public void PlotLine_ByteRef_ShouldThrowDllNotFoundException_v1()
@@ -413,7 +413,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line byte ref should throw dll not found exception v 2
+        ///     Tests that plot line byte ref should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void PlotLine_ByteRef_ShouldThrowDllNotFoundException_v2()
@@ -423,7 +423,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line byte ref should throw dll not found exception v 3
+        ///     Tests that plot line byte ref should throw dll not found exception v 3
         /// </summary>
         [Fact]
         public void PlotLine_ByteRef_ShouldThrowDllNotFoundException_v3()
@@ -433,7 +433,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line byte ref should throw dll not found exception v 4
+        ///     Tests that plot line byte ref should throw dll not found exception v 4
         /// </summary>
         [Fact]
         public void PlotLine_ByteRef_ShouldThrowDllNotFoundException_v4()
@@ -443,7 +443,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line short ref should throw dll not found exception v 1
+        ///     Tests that plot line short ref should throw dll not found exception v 1
         /// </summary>
         [Fact]
         public void PlotLine_ShortRef_ShouldThrowDllNotFoundException_v1()
@@ -453,7 +453,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line short ref should throw dll not found exception v 2
+        ///     Tests that plot line short ref should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void PlotLine_ShortRef_ShouldThrowDllNotFoundException_v2()
@@ -463,7 +463,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line short ref should throw dll not found exception v 3
+        ///     Tests that plot line short ref should throw dll not found exception v 3
         /// </summary>
         [Fact]
         public void PlotLine_ShortRef_ShouldThrowDllNotFoundException_v3()
@@ -473,7 +473,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line short ref should throw dll not found exception v 4
+        ///     Tests that plot line short ref should throw dll not found exception v 4
         /// </summary>
         [Fact]
         public void PlotLine_ShortRef_ShouldThrowDllNotFoundException_v4()
@@ -483,7 +483,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line u short ref should throw dll not found exception v 1
+        ///     Tests that plot line u short ref should throw dll not found exception v 1
         /// </summary>
         [Fact]
         public void PlotLine_UShortRef_ShouldThrowDllNotFoundException_v1()
@@ -493,7 +493,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line u short ref should throw dll not found exception v 2
+        ///     Tests that plot line u short ref should throw dll not found exception v 2
         /// </summary>
         [Fact]
         public void PlotLine_UShortRef_ShouldThrowDllNotFoundException_v2()
@@ -503,7 +503,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line u short ref should throw dll not found exception v 3
+        ///     Tests that plot line u short ref should throw dll not found exception v 3
         /// </summary>
         [Fact]
         public void PlotLine_UShortRef_ShouldThrowDllNotFoundException_v3()
@@ -513,7 +513,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot line u short ref should throw dll not found exception v 4
+        ///     Tests that plot line u short ref should throw dll not found exception v 4
         /// </summary>
         [Fact]
         public void PlotLine_UShortRef_ShouldThrowDllNotFoundException_v4()
