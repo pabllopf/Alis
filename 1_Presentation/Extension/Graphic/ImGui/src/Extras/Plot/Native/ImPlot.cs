@@ -406,10 +406,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The retval</returns>
         public static Vector2 PlotToPixels(ImPlotPoint plt)
         {
-            Vector2 retval;
             ImAxis xAxis = (ImAxis) (-1);
             ImAxis yAxis = (ImAxis) (-1);
-            ImPlotNative.ImPlot_PlotToPixels_PlotPoInt(out retval, plt, xAxis, yAxis);
+            ImPlotNative.ImPlot_PlotToPixels_PlotPoInt(out Vector2 retval, plt, xAxis, yAxis);
             return retval;
         }
 
@@ -421,9 +420,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The retval</returns>
         public static Vector2 PlotToPixels(ImPlotPoint plt, ImAxis xAxis)
         {
-            Vector2 retval;
             ImAxis yAxis = (ImAxis) (-1);
-            ImPlotNative.ImPlot_PlotToPixels_PlotPoInt(out retval, plt, xAxis, yAxis);
+            ImPlotNative.ImPlot_PlotToPixels_PlotPoInt(out Vector2 retval, plt, xAxis, yAxis);
             return retval;
         }
 
@@ -436,8 +434,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The retval</returns>
         public static Vector2 PlotToPixels(ImPlotPoint plt, ImAxis xAxis, ImAxis yAxis)
         {
-            Vector2 retval;
-            ImPlotNative.ImPlot_PlotToPixels_PlotPoInt(out retval, plt, xAxis, yAxis);
+            ImPlotNative.ImPlot_PlotToPixels_PlotPoInt(out Vector2 retval, plt, xAxis, yAxis);
             return retval;
         }
 
@@ -449,10 +446,9 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The retval</returns>
         public static Vector2 PlotToPixels(double x, double y)
         {
-            Vector2 retval;
             ImAxis xAxis = (ImAxis) (-1);
             ImAxis yAxis = (ImAxis) (-1);
-            ImPlotNative.ImPlot_PlotToPixels_double(out retval, x, y, xAxis, yAxis);
+            ImPlotNative.ImPlot_PlotToPixels_double(out Vector2 retval, x, y, xAxis, yAxis);
             return retval;
         }
 
@@ -465,9 +461,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The retval</returns>
         public static Vector2 PlotToPixels(double x, double y, ImAxis xAxis)
         {
-            Vector2 retval;
             ImAxis yAxis = (ImAxis) (-1);
-            ImPlotNative.ImPlot_PlotToPixels_double(out retval, x, y, xAxis, yAxis);
+            ImPlotNative.ImPlot_PlotToPixels_double(out Vector2 retval, x, y, xAxis, yAxis);
             return retval;
         }
 
@@ -481,8 +476,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The retval</returns>
         public static Vector2 PlotToPixels(double x, double y, ImAxis xAxis, ImAxis yAxis)
         {
-            Vector2 retval;
-            ImPlotNative.ImPlot_PlotToPixels_double(out retval, x, y, xAxis, yAxis);
+            ImPlotNative.ImPlot_PlotToPixels_double(out Vector2 retval, x, y, xAxis, yAxis);
             return retval;
         }
 
@@ -641,9 +635,8 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The retval</returns>
         public static Vector4 SampleColormap(float t)
         {
-            Vector4 retval;
             ImPlotColormap cmap = (ImPlotColormap) (-1);
-            ImPlotNative.ImPlot_SampleColormap(out retval, t, cmap);
+            ImPlotNative.ImPlot_SampleColormap(out Vector4 retval, t, cmap);
             return retval;
         }
 
@@ -655,8 +648,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         /// <returns>The retval</returns>
         public static Vector4 SampleColormap(float t, ImPlotColormap cmap)
         {
-            Vector4 retval;
-            ImPlotNative.ImPlot_SampleColormap(out retval, t, cmap);
+            ImPlotNative.ImPlot_SampleColormap(out Vector4 retval, t, cmap);
             return retval;
         }
 

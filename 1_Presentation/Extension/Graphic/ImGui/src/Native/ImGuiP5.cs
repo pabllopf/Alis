@@ -966,8 +966,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         /// <returns>The retval</returns>
         public static Vector4 ColorConvertU32ToFloat4(uint @in)
         {
-            Vector4 retval = new Vector4();
-            ImGuiNative.igColorConvertU32ToFloat4(out retval, @in);
+            ImGuiNative.igColorConvertU32ToFloat4(out Vector4 retval, @in);
             return retval;
         }
 
