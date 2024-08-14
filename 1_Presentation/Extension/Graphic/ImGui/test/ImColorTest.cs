@@ -55,32 +55,6 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that hsv should return correct color
-        /// </summary>
-        [Fact]
-        public void Hsv_ShouldReturnCorrectColor()
-        {
-            // Arrange
-            ImColor color = new ImColor();
-            
-            // Act
-            Assert.Throws<DllNotFoundException>(() =>color.Hsv(0.5f, 0.5f, 0.5f));
-        }
-        
-        /// <summary>
-        /// Tests that hsv with alpha should return correct color
-        /// </summary>
-        [Fact]
-        public void Hsv_WithAlpha_ShouldReturnCorrectColor()
-        {
-            // Arrange
-            ImColor color = new ImColor();
-            
-            // Act
-            Assert.Throws<DllNotFoundException>(() => color.Hsv(0.5f, 0.5f, 0.5f, 0.8f));
-        }
-        
-        /// <summary>
         /// Tests that set hsv should set correct values
         /// </summary>
         [Fact]
@@ -90,7 +64,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImColor color = new ImColor();
             
             // Act
-            Assert.Throws<DllNotFoundException>(() =>color.SetHsv(0.5f, 0.5f, 0.5f));
+            Assert.Throws<DllNotFoundException>(() => color.SetHsv(0.5f, 0.5f, 0.5f));
         }
         
         /// <summary>
@@ -103,7 +77,59 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImColor color = new ImColor();
             
             // Act
-            Assert.Throws<DllNotFoundException>(() =>color.SetHsv(0.5f, 0.5f, 0.5f, 0.8f));
+            Assert.Throws<DllNotFoundException>(() => color.SetHsv(0.5f, 0.5f, 0.5f, 0.8f));
+        }
+        
+        /// <summary>
+        /// Tests that value should set and get correctly
+        /// </summary>
+        [Fact]
+        public void Value_Should_SetAndGetCorrectly()
+        {
+            ImColor color = new ImColor();
+            Vector4 value = new Vector4(1, 2, 3, 4);
+            color.Value = value;
+            Assert.Equal(value, color.Value);
+        }
+        
+        /// <summary>
+        /// Tests that set hsv should set correct values
+        /// </summary>
+        [Fact]
+        public void SetHsv_Should_SetCorrectValues()
+        {
+            ImColor color = new ImColor();
+            Assert.Throws<DllNotFoundException>(() => color.SetHsv(0.5f, 0.5f, 0.5f));
+        }
+        
+        /// <summary>
+        /// Tests that set hsv with alpha should set correct values
+        /// </summary>
+        [Fact]
+        public void SetHsv_WithAlpha_Should_SetCorrectValues()
+        {
+            ImColor color = new ImColor();
+            Assert.Throws<DllNotFoundException>(() => color.SetHsv(0.5f, 0.5f, 0.5f, 0.5f));
+        }
+        
+        /// <summary>
+        /// Tests that v 3 set hsv should set correct values
+        /// </summary>
+        [Fact]
+        public void V3_SetHsv_Should_SetCorrectValues()
+        {
+            ImColor color = new ImColor();
+            Assert.Throws<DllNotFoundException>(() =>color.SetHsv(0.5f, 0.5f, 0.5f));
+        }
+        
+        /// <summary>
+        /// Tests that v 3 set hsv with alpha should set correct values
+        /// </summary>
+        [Fact]
+        public void V3_SetHsv_WithAlpha_Should_SetCorrectValues()
+        {
+            ImColor color = new ImColor();
+            Assert.Throws<DllNotFoundException>(() =>color.SetHsv(0.5f, 0.5f, 0.5f, 0.5f));
         }
     }
 }

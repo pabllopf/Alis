@@ -3686,7 +3686,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     The mouseclickedpos
         /// </summary>
-        public Vector2 MouseClickedPos0 { get; set; }
+        public Vector2 MouseClickedPos0 { get;  }
 
         /// <summary>
         ///     The mouseclickedpos

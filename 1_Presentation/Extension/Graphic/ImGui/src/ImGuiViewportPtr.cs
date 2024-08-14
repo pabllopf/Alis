@@ -110,12 +110,7 @@ namespace Alis.Extension.Graphic.ImGui
         ///     Gets the value of the parent viewport id
         /// </summary>
         public uint ParentViewportId => (uint) Marshal.ReadInt32(NativePtr + 2 * sizeof(uint) + 4 * Marshal.SizeOf<Vector2>() + sizeof(float));
-
-        /// <summary>
-        ///     Gets the value of the draw data
-        /// </summary>
-        public ImDrawData DrawData => new ImDrawData();
-
+        
         /// <summary>
         ///     Gets or sets the value of the renderer user data
         /// </summary>
@@ -170,8 +165,8 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The retval</returns>
         public Vector2 GetCenter()
         {
-            ImGuiNative.ImGuiViewport_GetCenter(out Vector2 retval, NativePtr);
-            return retval;
+            ImGuiNative.ImGuiViewport_GetCenter(out Vector2 retrieval, NativePtr);
+            return retrieval;
         }
 
         /// <summary>
@@ -180,8 +175,8 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The retval</returns>
         public Vector2 GetWorkCenter()
         {
-            ImGuiNative.ImGuiViewport_GetWorkCenter(out Vector2 retval, NativePtr);
-            return retval;
+            ImGuiNative.ImGuiViewport_GetWorkCenter(out Vector2 retrieval, NativePtr);
+            return retrieval;
         }
     }
 }

@@ -42,45 +42,13 @@ namespace Alis.Extension.Graphic.ImGui
         public Vector4 Value { get; set; }
         
         /// <summary>
-        ///     Hsv the h
-        /// </summary>
-        /// <param name="h">The </param>
-        /// <param name="s">The </param>
-        /// <param name="v">The </param>
-        /// <returns>The Hsv</returns>
-        public ImColor Hsv(float h, float s, float v)
-        {
-            const float a = 1.0f;
-            ImGuiNative.ImColor_HSV(out ImColor pOut, h, s, v, a);
-            return pOut;
-        }
-
-        /// <summary>
-        ///     Hsv the h
-        /// </summary>
-        /// <param name="h">The </param>
-        /// <param name="s">The </param>
-        /// <param name="v">The </param>
-        /// <param name="a">The </param>
-        /// <returns>The Hsv</returns>
-        public ImColor Hsv(float h, float s, float v, float a)
-        {
-            ImGuiNative.ImColor_HSV(out ImColor pOut, h, s, v, a);
-            return pOut;
-        }
-
-        /// <summary>
         ///     Sets the hsv using the specified h
         /// </summary>
         /// <param name="h">The </param>
         /// <param name="s">The </param>
         /// <param name="v">The </param>
-        public void SetHsv(float h, float s, float v)
-        {
-            float a = 1.0f;
-            ImGuiNative.ImColor_SetHSV(ref this, h, s, v, a);
-        }
-
+        public void SetHsv(float h, float s, float v) => ImGuiNative.ImColor_SetHSV(ref this, h, s, v, 1.0f);
+        
         /// <summary>
         ///     Sets the hsv using the specified h
         /// </summary>
@@ -88,9 +56,6 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="s">The </param>
         /// <param name="v">The </param>
         /// <param name="a">The </param>
-        public void SetHsv(float h, float s, float v, float a)
-        {
-            ImGuiNative.ImColor_SetHSV(ref this, h, s, v, a);
-        }
+        public void SetHsv(float h, float s, float v, float a) => ImGuiNative.ImColor_SetHSV(ref this, h, s, v, a);
     }
 }

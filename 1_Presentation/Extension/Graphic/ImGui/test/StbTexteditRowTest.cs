@@ -48,7 +48,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             StbTexteditRow row = new StbTexteditRow();
             Assert.Equal(0f, row.X0);
         }
-
+        
         /// <summary>
         /// Tests that x 1 should be initialized
         /// </summary>
@@ -58,7 +58,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             StbTexteditRow row = new StbTexteditRow();
             Assert.Equal(0f, row.X1);
         }
-
+        
         /// <summary>
         /// Tests that baseline y delta should be initialized
         /// </summary>
@@ -68,7 +68,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             StbTexteditRow row = new StbTexteditRow();
             Assert.Equal(0f, row.BaselineYDelta);
         }
-
+        
         /// <summary>
         /// Tests that ymin should be initialized
         /// </summary>
@@ -78,7 +78,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             StbTexteditRow row = new StbTexteditRow();
             Assert.Equal(0f, row.Ymin);
         }
-
+        
         /// <summary>
         /// Tests that ymax should be initialized
         /// </summary>
@@ -88,7 +88,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             StbTexteditRow row = new StbTexteditRow();
             Assert.Equal(0f, row.Ymax);
         }
-
+        
         /// <summary>
         /// Tests that num chars should be initialized
         /// </summary>
@@ -97,6 +97,72 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             StbTexteditRow row = new StbTexteditRow();
             Assert.Equal(0, row.NumChars);
+        }
+        
+        /// <summary>
+        /// Tests that x 0 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void X0_Should_SetAndGetCorrectly()
+        {
+            StbTexteditRow row = new StbTexteditRow();
+            row.X0 = 1.0f;
+            Assert.Equal(1.0f, row.X0);
+        }
+        
+        /// <summary>
+        /// Tests that x 1 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void X1_Should_SetAndGetCorrectly()
+        {
+            StbTexteditRow row = new StbTexteditRow();
+            row.X1 = 2.0f;
+            Assert.Equal(2.0f, row.X1);
+        }
+        
+        /// <summary>
+        /// Tests that baseline y delta should set and get correctly
+        /// </summary>
+        [Fact]
+        public void BaselineYDelta_Should_SetAndGetCorrectly()
+        {
+            StbTexteditRow row = new StbTexteditRow();
+            row.BaselineYDelta = 3.0f;
+            Assert.Equal(3.0f, row.BaselineYDelta);
+        }
+        
+        /// <summary>
+        /// Tests that ymin should set and get correctly
+        /// </summary>
+        [Fact]
+        public void Ymin_Should_SetAndGetCorrectly()
+        {
+            StbTexteditRow row = new StbTexteditRow();
+            row.Ymin = 4.0f;
+            Assert.Equal(4.0f, row.Ymin);
+        }
+        
+        /// <summary>
+        /// Tests that ymax should set and get correctly
+        /// </summary>
+        [Fact]
+        public void Ymax_Should_SetAndGetCorrectly()
+        {
+            StbTexteditRow row = new StbTexteditRow();
+            row.Ymax = 5.0f;
+            Assert.Equal(5.0f, row.Ymax);
+        }
+        
+        /// <summary>
+        /// Tests that num chars should set and get correctly
+        /// </summary>
+        [Fact]
+        public void NumChars_Should_SetAndGetCorrectly()
+        {
+            StbTexteditRow row = new StbTexteditRow();
+            row.NumChars = 6;
+            Assert.Equal(6, row.NumChars);
         }
     }
 }
