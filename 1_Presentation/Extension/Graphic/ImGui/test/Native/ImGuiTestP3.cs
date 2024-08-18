@@ -944,5 +944,155 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             double v = 0.0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputDouble("test", ref v, 1.0));
         }
+        
+        /// <summary>
+        /// Tests that input double throws dll not found exception v 5
+        /// </summary>
+        [Fact]
+        public void InputDouble_ThrowsDllNotFoundException_v5()
+        {
+            double v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputDouble("label", ref v, 1.0, 1.0));
+        }
+        
+        /// <summary>
+        /// Tests that input double with format throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void InputDouble_WithFormat_ThrowsDllNotFoundException()
+        {
+            double v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputDouble("label", ref v, 1.0, 1.0, "%f"));
+        }
+        
+        /// <summary>
+        /// Tests that input double with format and flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void InputDouble_WithFormatAndFlags_ThrowsDllNotFoundException()
+        {
+            double v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputDouble("label", ref v, 1.0, 1.0, "%f", ImGuiInputTextFlags.None));
+        }
+        
+        /// <summary>
+        /// Tests that input float throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void InputFloat_ThrowsDllNotFoundException()
+        {
+            float v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputFloat("label", ref v));
+        }
+        
+        /// <summary>
+        /// Tests that input float with step throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void InputFloat_WithStep_ThrowsDllNotFoundException()
+        {
+            float v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputFloat("label", ref v, 1.0f));
+        }
+        
+        /// <summary>
+        /// Tests that input float with step and step fast throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void InputFloat_WithStepAndStepFast_ThrowsDllNotFoundException()
+        {
+            float v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputFloat("label", ref v, 1.0f, 1.0f));
+        }
+        
+        /// <summary>
+        /// Tests that input float with format throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void InputFloat_WithFormat_ThrowsDllNotFoundException()
+        {
+            float v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputFloat("label", ref v, 1.0f, 1.0f, "%f"));
+        }
+        
+        /// <summary>
+        /// Tests that input float with format and flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void InputFloat_WithFormatAndFlags_ThrowsDllNotFoundException()
+        {
+            float v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputFloat("label", ref v, 1.0f, 1.0f, "%f", ImGuiInputTextFlags.None));
+        }
+        
+        /// <summary>
+        /// Tests that input float 2 throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void InputFloat2_ThrowsDllNotFoundException()
+        {
+            Vector2 v = new Vector2();
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputFloat2("label", ref v));
+        }
+        
+        /// <summary>
+        /// Tests that input float 2 with format throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void InputFloat2_WithFormat_ThrowsDllNotFoundException()
+        {
+            Vector2 v = new Vector2();
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputFloat2("label", ref v, "%f"));
+        }
+        
+        /// <summary>
+        /// Tests that input float 2 with format and flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void InputFloat2_WithFormatAndFlags_ThrowsDllNotFoundException()
+        {
+            Vector2 v = new Vector2();
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputFloat2("label", ref v, "%f", ImGuiInputTextFlags.None));
+        }
+        
+        /// <summary>
+        /// Tests that input float 3 throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void InputFloat3_ThrowsDllNotFoundException()
+        {
+            Vector3 v = new Vector3();
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputFloat3("label", ref v));
+        }
+        
+        /// <summary>
+        /// Tests that input float 3 with format throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void InputFloat3_WithFormat_ThrowsDllNotFoundException()
+        {
+            Vector3 v = new Vector3();
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputFloat3("label", ref v, "%f"));
+        }
+        
+        /// <summary>
+        /// Tests that input float 3 with format and flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void InputFloat3_WithFormatAndFlags_ThrowsDllNotFoundException()
+        {
+            Vector3 v = new Vector3();
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputFloat3("label", ref v, "%f", ImGuiInputTextFlags.None));
+        }
+        
+        /// <summary>
+        /// Tests that input float 4 throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void InputFloat4_ThrowsDllNotFoundException()
+        {
+            Vector4 v = new Vector4();
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputFloat4("label", ref v));
+        }
     }
 }

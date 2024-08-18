@@ -1846,5 +1846,167 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             IntPtr ptr = new IntPtr(10);
             Assert.Throws<DllNotFoundException>(() => ImGuiNative.igMemFree(ptr));
         }
+        
+        /// <summary>
+        /// Tests that table get column index throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void TableGetColumnIndex_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableGetColumnIndex());
+        }
+        
+        /// <summary>
+        /// Tests that table get column name throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void TableGetColumnName_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<MarshalDirectiveException>(() => ImGui.Native.ImGui.TableGetColumnName());
+        }
+        
+        /// <summary>
+        /// Tests that table get column name with column n throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void TableGetColumnName_WithColumnN_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<MarshalDirectiveException>(() => ImGui.Native.ImGui.TableGetColumnName(0));
+        }
+        
+        /// <summary>
+        /// Tests that table get row index throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void TableGetRowIndex_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableGetRowIndex());
+        }
+        
+        /// <summary>
+        /// Tests that table get sort specs throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void TableGetSortSpecs_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableGetSortSpecs());
+        }
+        
+        /// <summary>
+        /// Tests that table header throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void TableHeader_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableHeader("label"));
+        }
+        
+        /// <summary>
+        /// Tests that table headers row throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void TableHeadersRow_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableHeadersRow());
+        }
+        
+        /// <summary>
+        /// Tests that table next column throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void TableNextColumn_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableNextColumn());
+        }
+        
+        /// <summary>
+        /// Tests that table next row throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void TableNextRow_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableNextRow());
+        }
+        
+        /// <summary>
+        /// Tests that table next row with row flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void TableNextRow_WithRowFlags_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableNextRow(ImGuiTableRowFlags.None));
+        }
+        
+        /// <summary>
+        /// Tests that table next row with row flags and min row height throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void TableNextRow_WithRowFlagsAndMinRowHeight_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableNextRow(ImGuiTableRowFlags.None, 0.0f));
+        }
+        
+        /// <summary>
+        /// Tests that table set bg color throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void TableSetBgColor_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableSetBgColor(ImGuiTableBgTarget.RowBg0, 0));
+        }
+        
+        /// <summary>
+        /// Tests that table set bg color with column n throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void TableSetBgColor_WithColumnN_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableSetBgColor(ImGuiTableBgTarget.RowBg0, 0, 0));
+        }
+        
+        /// <summary>
+        /// Tests that table set column enabled throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void TableSetColumnEnabled_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableSetColumnEnabled(0, true));
+        }
+        
+        /// <summary>
+        /// Tests that table set column index throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void TableSetColumnIndex_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableSetColumnIndex(0));
+        }
+        
+        /// <summary>
+        /// Tests that table setup column throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void TableSetupColumn_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.TableSetupColumn("label"));
+        }
+        
+        /// <summary>
+        /// Tests that menu item throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void MenuItem_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.MenuItem("label", true));
+        }
+        
+        /// <summary>
+        /// Tests that im font config throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void ImFontConfig_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ImFontConfig());
+        }
     }
 }
