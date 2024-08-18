@@ -202,8 +202,7 @@ namespace Alis.Extension.Plugin
         /// <param name="pluginFile">The plugin file</param>
         internal void LoadPluginFromFile(string pluginFile)
         {
-            Assembly assembly = LoadAssembly(pluginFile);
-            InstantiatePlugins(assembly);
+            InstantiatePlugins(LoadAssembly(pluginFile));
         }
         
         /// <summary>

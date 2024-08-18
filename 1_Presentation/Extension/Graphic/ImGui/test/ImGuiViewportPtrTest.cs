@@ -252,32 +252,6 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        ///     Tests that get center should return vector 2
-        /// </summary>
-        [Fact]
-        public void GetCenter_ShouldReturnVector2()
-        {
-            ImGuiViewport viewport = new ImGuiViewport();
-            ImGuiViewportPtr viewportPtr = new ImGuiViewportPtr(viewport);
-            Assert.Throws<DllNotFoundException>(() =>
-            {
-                Vector2 result = viewportPtr.GetCenter();
-                Assert.IsType<Vector2>(result);
-            });
-        }
-        
-        /// <summary>
-        ///     Tests that get work center should return vector 2
-        /// </summary>
-        [Fact]
-        public void GetWorkCenter_ShouldReturnVector2()
-        {
-            ImGuiViewport viewport = new ImGuiViewport();
-            ImGuiViewportPtr viewportPtr = new ImGuiViewportPtr(viewport);
-            Assert.Throws<DllNotFoundException>(() => viewportPtr.GetWorkCenter());
-        }
-        
-        /// <summary>
         ///     Tests that implicit operator from int ptr should return correct instance
         /// </summary>
         [Fact]
@@ -298,32 +272,6 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiViewportPtr viewportPtr = new ImGuiViewportPtr(nativePtr);
             IntPtr result = viewportPtr;
             Assert.Equal(nativePtr, result);
-        }
-        
-        /// <summary>
-        ///     Tests that v 2 get center should return vector 2
-        /// </summary>
-        [Fact]
-        public void V2_GetCenter_ShouldReturnVector2()
-        {
-            ImGuiViewport viewport = new ImGuiViewport();
-            ImGuiViewportPtr viewportPtr = new ImGuiViewportPtr(viewport);
-            Assert.Throws<DllNotFoundException>(() =>
-            {
-                Vector2 result = viewportPtr.GetCenter();
-                Assert.IsType<Vector2>(result);
-            });
-        }
-        
-        /// <summary>
-        ///     Tests that v 2 get work center should return vector 2
-        /// </summary>
-        [Fact]
-        public void V2_GetWorkCenter_ShouldReturnVector2()
-        {
-            ImGuiViewport viewport = new ImGuiViewport();
-            ImGuiViewportPtr viewportPtr = new ImGuiViewportPtr(viewport);
-            Assert.Throws<DllNotFoundException>(() => viewportPtr.GetWorkCenter());
         }
     }
 }

@@ -51,6 +51,16 @@ namespace Alis.Extension.Graphic.ImGui
         public ImFontPtr(IntPtr nativePtr) => NativePtr = nativePtr;
         
         /// <summary>
+        /// Initializes a new instance of the <see cref="ImFontPtr"/> class
+        /// </summary>
+        /// <param name="font">The font</param>
+        public ImFontPtr(ImFont font)
+        {
+            NativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFont>());
+            Marshal.StructureToPtr(font, NativePtr, false);
+        }
+        
+        /// <summary>
         /// </summary>
         /// <param name="wrappedPtr"></param>
         /// <returns></returns>
@@ -223,11 +233,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// </summary>
         /// <param name="c">The </param>
         /// <returns>The ret</returns>
-        public float GetCharAdvance(ushort c)
-        {
-            float ret = ImGuiNative.ImFont_GetCharAdvance(NativePtr, c);
-            return ret;
-        }
+        public float GetCharAdvance(ushort c) => ImGuiNative.ImFont_GetCharAdvance(NativePtr, c);
         
         /// <summary>
         ///     Gets the debug name
@@ -250,8 +256,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <returns>The bool</returns>
         public bool IsLoaded()
         {
-            byte ret = ImGuiNative.ImFont_IsLoaded(NativePtr);
-            return ret != 0;
+            return ImGuiNative.ImFont_IsLoaded(NativePtr) != 0;
         }
         
         /// <summary>

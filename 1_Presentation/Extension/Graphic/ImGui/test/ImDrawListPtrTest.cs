@@ -1903,7 +1903,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void _PathArcToN_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-            Assert.Throws<DllNotFoundException>(() => drawListPtr._PathArcToN(new Vector2(), 0, 0, 0, 0));
+            Assert.Throws<DllNotFoundException>(() => drawListPtr.PathArcToN(new Vector2(), 0, 0, 0, 0));
         }
         
         /// <summary>
@@ -1913,7 +1913,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void _PopUnusedDrawCmd_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-            Assert.Throws<DllNotFoundException>(() => drawListPtr._PopUnusedDrawCmd());
+            Assert.Throws<DllNotFoundException>(() => drawListPtr.PopUnusedDrawCmd());
         }
         
         /// <summary>
@@ -1923,7 +1923,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void _ResetForNewFrame_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-            Assert.Throws<DllNotFoundException>(() => drawListPtr._ResetForNewFrame());
+            Assert.Throws<DllNotFoundException>(() => drawListPtr.ResetForNewFrame());
         }
         
         /// <summary>
@@ -1933,7 +1933,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void _TryMergeDrawCmds_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-            Assert.Throws<DllNotFoundException>(() => drawListPtr._TryMergeDrawCmds());
+            Assert.Throws<DllNotFoundException>(() => drawListPtr.TryMergeDrawCmd());
         }
         
         /// <summary>
@@ -2145,7 +2145,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void _ClearFreeMemory_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-            Assert.Throws<DllNotFoundException>(() => drawListPtr._ClearFreeMemory());
+            Assert.Throws<DllNotFoundException>(() => drawListPtr.ClearFreeMemory());
         }
         
         /// <summary>
@@ -2155,7 +2155,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void _OnChangedClipRect_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-            Assert.Throws<DllNotFoundException>(() => drawListPtr._OnChangedClipRect());
+            Assert.Throws<DllNotFoundException>(() => drawListPtr.OnChangedClipRect());
         }
         
         /// <summary>
@@ -2165,7 +2165,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void _OnChangedTextureID_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-            Assert.Throws<DllNotFoundException>(() => drawListPtr._OnChangedTextureID());
+            Assert.Throws<DllNotFoundException>(() => drawListPtr.OnChangedTextureID());
         }
         
         /// <summary>
@@ -2175,7 +2175,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void _OnChangedVtxOffset_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-            Assert.Throws<DllNotFoundException>(() => drawListPtr._OnChangedVtxOffset());
+            Assert.Throws<DllNotFoundException>(() => drawListPtr.OnChangedVtxOffset());
         }
         
         /// <summary>
@@ -2185,7 +2185,266 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void _PathArcToFastEx_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-            Assert.Throws<DllNotFoundException>(() => drawListPtr._PathArcToFastEx(new Vector2(), 0, 0, 0, 0));
+            Assert.Throws<DllNotFoundException>(() => drawListPtr.PathArcToFastEx(new Vector2(), 0, 0, 0, 0));
+        }
+        
+        /// <summary>
+        /// Tests that implicit conversion to int ptr returns native ptr
+        /// </summary>
+        [Fact]
+        public void ImplicitConversionToIntPtr_ReturnsNativePtr()
+        {
+            ImDrawListPtr drawListPtr = new ImDrawListPtr(new ImDrawList());
+            IntPtr result = drawListPtr;
+            Assert.NotEqual(IntPtr.Zero, result);
+        }
+        
+        /// <summary>
+        /// Tests that implicit conversion from int ptr returns im draw list ptr
+        /// </summary>
+        [Fact]
+        public void ImplicitConversionFromIntPtr_ReturnsImDrawListPtr()
+        {
+            IntPtr nativePtr = new IntPtr(123);
+            ImDrawListPtr drawListPtr = nativePtr;
+            Assert.Equal(nativePtr, drawListPtr.NativePtr);
+        }
+        
+        /// <summary>
+        /// Tests that cmd buffer returns correct value
+        /// </summary>
+        [Fact]
+        public void CmdBuffer_ReturnsCorrectValue()
+        {
+        }
+        
+        /// <summary>
+        /// Tests that idx buffer returns correct value
+        /// </summary>
+        [Fact]
+        public void IdxBuffer_ReturnsCorrectValue()
+        {
+        }
+        
+        /// <summary>
+        /// Tests that vtx buffer returns correct value
+        /// </summary>
+        [Fact]
+        public void VtxBuffer_ReturnsCorrectValue()
+        {
+        }
+        
+        /// <summary>
+        /// Tests that flags returns correct value
+        /// </summary>
+        [Fact]
+        public void Flags_ReturnsCorrectValue()
+        {
+        }
+        
+        /// <summary>
+        /// Tests that vtx current idx returns correct value
+        /// </summary>
+        [Fact]
+        public void VtxCurrentIdx_ReturnsCorrectValue()
+        {
+            ImDrawListPtr drawListPtr = new ImDrawListPtr(new ImDrawList());
+            uint vtxCurrentIdx = drawListPtr.VtxCurrentIdx;
+            Assert.Equal(0u, vtxCurrentIdx);
+        }
+        
+        /// <summary>
+        /// Tests that data returns correct value
+        /// </summary>
+        [Fact]
+        public void Data_ReturnsCorrectValue()
+        {
+            ImDrawListPtr drawListPtr = new ImDrawListPtr(new ImDrawList());
+            IntPtr data = drawListPtr.Data;
+            Assert.Equal(IntPtr.Zero, data);
+        }
+        
+        /// <summary>
+        /// Tests that owner name returns correct value
+        /// </summary>
+        [Fact]
+        public void OwnerName_ReturnsCorrectValue()
+        {
+        }
+        
+        /// <summary>
+        /// Tests that idx write ptr get returns correct value
+        /// </summary>
+        [Fact]
+        public void IdxWritePtr_Get_ReturnsCorrectValue()
+        {
+            ImDrawListPtr drawListPtr = new ImDrawListPtr(new ImDrawList());
+            IntPtr idxWritePtr = drawListPtr.IdxWritePtr;
+            Assert.Equal(IntPtr.Zero, idxWritePtr);
+        }
+        
+        /// <summary>
+        /// Tests that cmd buffer returns correct value v 3
+        /// </summary>
+        [Fact]
+        public void CmdBuffer_ReturnsCorrectValue_v3()
+        {
+            ImDrawListPtr drawListPtr = new ImDrawListPtr(new ImDrawList());
+            ImVectorG<ImDrawCmd> cmdBuffer = drawListPtr.CmdBuffer;
+            Assert.Equal(0, cmdBuffer.Size);
+        }
+        
+        /// <summary>
+        /// Tests that idx buffer returns correct value v 3
+        /// </summary>
+        [Fact]
+        public void IdxBuffer_ReturnsCorrectValue_v3()
+        {
+            ImDrawListPtr drawListPtr = new ImDrawListPtr(new ImDrawList());
+            ImVectorG<ushort> idxBuffer = drawListPtr.IdxBuffer;
+            Assert.Equal(0, idxBuffer.Size);
+        }
+        
+        /// <summary>
+        /// Tests that vtx buffer returns correct value v 3
+        /// </summary>
+        [Fact]
+        public void VtxBuffer_ReturnsCorrectValue_v3()
+        {
+            ImDrawListPtr drawListPtr = new ImDrawListPtr(new ImDrawList());
+            ImVectorG<ImDrawVert> vtxBuffer = drawListPtr.VtxBuffer;
+            Assert.Equal(0, vtxBuffer.Size);
+        }
+        
+        /// <summary>
+        /// Tests that flags returns correct value v 3
+        /// </summary>
+        [Fact]
+        public void Flags_ReturnsCorrectValue_v3()
+        {
+            ImDrawListPtr drawListPtr = new ImDrawListPtr(new ImDrawList());
+            ImDrawListFlags flags = drawListPtr.Flags;
+            Assert.Equal(ImDrawListFlags.None, flags);
+        }
+        
+        /// <summary>
+        /// Tests that implicit conversion to int ptr returns native ptr v 4
+        /// </summary>
+        [Fact]
+        public void ImplicitConversionToIntPtr_ReturnsNativePtr_v4()
+        {
+            ImDrawListPtr drawListPtr = new ImDrawListPtr(new ImDrawList());
+            IntPtr result = drawListPtr;
+            Assert.NotEqual(IntPtr.Zero, result);
+        }
+        
+        /// <summary>
+        /// Tests that implicit conversion from int ptr returns im draw list ptr v 4
+        /// </summary>
+        [Fact]
+        public void ImplicitConversionFromIntPtr_ReturnsImDrawListPtr_v4()
+        {
+            IntPtr nativePtr = new IntPtr(123);
+            ImDrawListPtr drawListPtr = nativePtr;
+            Assert.Equal(nativePtr, drawListPtr.NativePtr);
+        }
+        
+        /// <summary>
+        /// Tests that cmd buffer returns correct value v 4
+        /// </summary>
+        [Fact]
+        public void CmdBuffer_ReturnsCorrectValue_v4()
+        {
+            ImDrawListPtr drawListPtr = new ImDrawListPtr(new ImDrawList());
+            ImVectorG<ImDrawCmd> cmdBuffer = drawListPtr.CmdBuffer;
+            Assert.Equal(0, cmdBuffer.Size);
+        }
+        
+        /// <summary>
+        /// Tests that idx buffer returns correct value v 4
+        /// </summary>
+        [Fact]
+        public void IdxBuffer_ReturnsCorrectValue_v4()
+        {
+            ImDrawListPtr drawListPtr = new ImDrawListPtr(new ImDrawList());
+            ImVectorG<ushort> idxBuffer = drawListPtr.IdxBuffer;
+            Assert.Equal(0, idxBuffer.Size);
+        }
+        
+        /// <summary>
+        /// Tests that vtx buffer returns correct value v 4
+        /// </summary>
+        [Fact]
+        public void VtxBuffer_ReturnsCorrectValue_v4()
+        {
+            ImDrawListPtr drawListPtr = new ImDrawListPtr(new ImDrawList());
+            ImVectorG<ImDrawVert> vtxBuffer = drawListPtr.VtxBuffer;
+            Assert.Equal(0, vtxBuffer.Size);
+        }
+        
+        /// <summary>
+        /// Tests that flags returns correct value v 4
+        /// </summary>
+        [Fact]
+        public void Flags_ReturnsCorrectValue_v4()
+        {
+            ImDrawListPtr drawListPtr = new ImDrawListPtr(new ImDrawList());
+            ImDrawListFlags flags = drawListPtr.Flags;
+            Assert.Equal(ImDrawListFlags.None, flags);
+        }
+        
+        /// <summary>
+        /// Tests that vtx current idx returns correct value v 4
+        /// </summary>
+        [Fact]
+        public void VtxCurrentIdx_ReturnsCorrectValue_v4()
+        {
+            ImDrawListPtr drawListPtr = new ImDrawListPtr(new ImDrawList());
+            uint vtxCurrentIdx = drawListPtr.VtxCurrentIdx;
+            Assert.Equal(0u, vtxCurrentIdx);
+        }
+        
+        /// <summary>
+        /// Tests that data returns correct value v 4
+        /// </summary>
+        [Fact]
+        public void Data_ReturnsCorrectValue_v4()
+        {
+            ImDrawListPtr drawListPtr = new ImDrawListPtr(new ImDrawList());
+            IntPtr data = drawListPtr.Data;
+            Assert.Equal(IntPtr.Zero, data);
+        }
+        
+        /// <summary>
+        /// Tests that owner name returns correct value v 4
+        /// </summary>
+        [Fact]
+        public void OwnerName_ReturnsCorrectValue_v4()
+        {
+            ImDrawListPtr drawListPtr = new ImDrawListPtr(new ImDrawList());
+            NullTerminatedString ownerName = drawListPtr.OwnerName;
+            Assert.Equal("", ownerName.ToString());
+        }
+        
+        /// <summary>
+        /// Tests that vtx write ptr returns correct value
+        /// </summary>
+        [Fact]
+        public void VtxWritePtr_ReturnsCorrectValue()
+        {
+            ImDrawListPtr drawListPtr = new ImDrawListPtr(new ImDrawList());
+            Assert.Throws<NullReferenceException>(()=> drawListPtr.VtxWritePtr);
+        }
+        
+        /// <summary>
+        /// Tests that idx write ptr get returns correct value v 4
+        /// </summary>
+        [Fact]
+        public void IdxWritePtr_Get_ReturnsCorrectValue_v4()
+        {
+            ImDrawListPtr drawListPtr = new ImDrawListPtr(new ImDrawList());
+            IntPtr idxWritePtr = drawListPtr.IdxWritePtr;
+            Assert.Equal(IntPtr.Zero, idxWritePtr);
         }
     }
 }

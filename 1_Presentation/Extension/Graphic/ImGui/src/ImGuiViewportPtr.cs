@@ -158,25 +158,5 @@ namespace Alis.Extension.Graphic.ImGui
         ///     Gets the value of the platform request close
         /// </summary>
         public bool PlatformRequestClose => Marshal.ReadByte(NativePtr, Marshal.OffsetOf<ImGuiViewportPtr>("PlatformRequestClose").ToInt32()) != 0;
-        
-        /// <summary>
-        ///     Gets the center
-        /// </summary>
-        /// <returns>The retval</returns>
-        public Vector2 GetCenter()
-        {
-            ImGuiNative.ImGuiViewport_GetCenter(out Vector2 retrieval, NativePtr);
-            return retrieval;
-        }
-        
-        /// <summary>
-        ///     Gets the work center
-        /// </summary>
-        /// <returns>The retval</returns>
-        public Vector2 GetWorkCenter()
-        {
-            ImGuiNative.ImGuiViewport_GetWorkCenter(out Vector2 retrieval, NativePtr);
-            return retrieval;
-        }
     }
 }

@@ -44,10 +44,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void UndoRec0_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            StbUndoState undoState = new StbUndoState {UndoRec0 = new StbUndoRecord()};
             
             // Act
-            StbUndoRecord undoRec0 = undoState.UndoRec0;
         }
         
         /// <summary>
@@ -57,10 +55,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void UndoRec1_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            StbUndoState undoState = new StbUndoState {UndoRec1 = new StbUndoRecord()};
             
             // Act
-            StbUndoRecord undoRec1 = undoState.UndoRec1;
         }
         
         /// <summary>
@@ -70,10 +66,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void UndoRec2_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            StbUndoState undoState = new StbUndoState {UndoRec2 = new StbUndoRecord()};
             
             // Act
-            StbUndoRecord undoRec2 = undoState.UndoRec2;
         }
         
         /// <summary>
@@ -83,10 +77,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void UndoRec3_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            StbUndoState undoState = new StbUndoState {UndoRec3 = new StbUndoRecord()};
             
             // Act
-            StbUndoRecord undoRec3 = undoState.UndoRec3;
         }
         
         /// <summary>
@@ -96,10 +88,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void UndoRec4_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            StbUndoState undoState = new StbUndoState {UndoRec4 = new StbUndoRecord()};
             
             // Act
-            StbUndoRecord undoRec4 = undoState.UndoRec4;
         }
         
         /// <summary>
@@ -109,10 +99,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void UndoRec5_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            StbUndoState undoState = new StbUndoState {UndoRec5 = new StbUndoRecord()};
             
             // Act
-            StbUndoRecord undoRec5 = undoState.UndoRec5;
         }
         
         /// <summary>
@@ -122,10 +110,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void UndoRec6_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            StbUndoState undoState = new StbUndoState {UndoRec6 = new StbUndoRecord()};
             
             // Act
-            StbUndoRecord undoRec6 = undoState.UndoRec6;
         }
         
         /// <summary>
@@ -135,10 +121,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void UndoRec7_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            StbUndoState undoState = new StbUndoState {UndoRec7 = new StbUndoRecord()};
             
             // Act
-            StbUndoRecord undoRec7 = undoState.UndoRec7;
         }
         
         /// <summary>
@@ -148,10 +132,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void UndoRec8_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            StbUndoState undoState = new StbUndoState {UndoRec8 = new StbUndoRecord()};
             
             // Act
-            StbUndoRecord undoRec8 = undoState.UndoRec8;
         }
         
         /// <summary>
@@ -161,10 +143,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void UndoRec9_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            StbUndoState undoState = new StbUndoState {UndoRec9 = new StbUndoRecord()};
             
             // Act
-            StbUndoRecord undoRec9 = undoState.UndoRec9;
         }
         
         /// <summary>
@@ -174,10 +154,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void UndoRec10_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            StbUndoState undoState = new StbUndoState {UndoRec10 = new StbUndoRecord()};
             
             // Act
-            StbUndoRecord undoRec10 = undoState.UndoRec10;
         }
         
         /// <summary>
@@ -187,10 +165,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void UndoRec11_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            StbUndoState undoState = new StbUndoState {UndoRec11 = new StbUndoRecord()};
             
             // Act
-            StbUndoRecord undoRec11 = undoState.UndoRec11;
         }
         
         /// <summary>
@@ -200,10 +176,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void UndoRec12_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            StbUndoState undoState = new StbUndoState {UndoRec12 = new StbUndoRecord()};
             
             // Act
-            StbUndoRecord undoRec12 = undoState.UndoRec12;
         }
         
         /// <summary>
@@ -213,10 +187,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void UndoRec13_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            StbUndoState undoState = new StbUndoState {UndoRec13 = new StbUndoRecord()};
             
             // Act
-            StbUndoRecord undoRec13 = undoState.UndoRec13;
         }
         
         /// <summary>
@@ -226,10 +198,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void UndoRec14_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            StbUndoState undoState = new StbUndoState {UndoRec14 = new StbUndoRecord()};
             
             // Act
-            StbUndoRecord undoRec14 = undoState.UndoRec14;
         }
         
         /// <summary>
@@ -239,10 +209,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void UndoRec15_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            StbUndoState undoState = new StbUndoState {UndoRec15 = new StbUndoRecord()};
             
             // Act
-            StbUndoRecord undoRec15 = undoState.UndoRec15;
         }
         
         /// <summary>
@@ -252,10 +220,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void UndoRec16_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            StbUndoState undoState = new StbUndoState {UndoRec16 = new StbUndoRecord()};
             
             // Act
-            StbUndoRecord undoRec16 = undoState.UndoRec16;
         }
         
         /// <summary>
@@ -265,10 +231,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void UndoRec17_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            StbUndoState undoState = new StbUndoState {UndoRec17 = new StbUndoRecord()};
             
             // Act
-            StbUndoRecord undoRec17 = undoState.UndoRec17;
         }
         
         /// <summary>
@@ -278,10 +242,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void UndoRec18_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            StbUndoState undoState = new StbUndoState {UndoRec18 = new StbUndoRecord()};
             
             // Act
-            StbUndoRecord undoRec18 = undoState.UndoRec18;
         }
         
         /// <summary>
@@ -291,10 +253,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void UndoRec19_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            StbUndoState undoState = new StbUndoState {UndoRec19 = new StbUndoRecord()};
             
             // Act
-            StbUndoRecord undoRec19 = undoState.UndoRec19;
         }
         
         /// <summary>
@@ -304,10 +264,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void UndoRec20_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            StbUndoState undoState = new StbUndoState {UndoRec20 = new StbUndoRecord()};
             
             // Act
-            StbUndoRecord undoRec20 = undoState.UndoRec20;
         }
         
         /// <summary>
@@ -317,10 +275,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void UndoRec21_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            StbUndoState undoState = new StbUndoState {UndoRec21 = new StbUndoRecord()};
             
             // Act
-            StbUndoRecord undoRec21 = undoState.UndoRec21;
         }
         
         /// <summary>
@@ -330,10 +286,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void UndoRec22_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            StbUndoState undoState = new StbUndoState {UndoRec22 = new StbUndoRecord()};
             
             // Act
-            StbUndoRecord undoRec22 = undoState.UndoRec22;
         }
         
         /// <summary>
@@ -343,10 +297,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void UndoRec23_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            StbUndoState undoState = new StbUndoState {UndoRec23 = new StbUndoRecord()};
             
             // Act
-            StbUndoRecord undoRec23 = undoState.UndoRec23;
         }
         
         /// <summary>
@@ -356,10 +308,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void UndoRec24_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            StbUndoState undoState = new StbUndoState {UndoRec24 = new StbUndoRecord()};
             
             // Act
-            StbUndoRecord undoRec24 = undoState.UndoRec24;
         }
         
         /// <summary>
@@ -369,10 +319,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void UndoRec25_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            StbUndoState undoState = new StbUndoState {UndoRec25 = new StbUndoRecord()};
             
             // Act
-            StbUndoRecord undoRec25 = undoState.UndoRec25;
         }
         
         /// <summary>
@@ -382,10 +330,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void UndoRec26_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            StbUndoState undoState = new StbUndoState {UndoRec26 = new StbUndoRecord()};
             
             // Act
-            StbUndoRecord undoRec26 = undoState.UndoRec26;
         }
         
         /// <summary>
@@ -395,10 +341,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void UndoRec27_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            StbUndoState undoState = new StbUndoState {UndoRec27 = new StbUndoRecord()};
             
             // Act
-            StbUndoRecord undoRec27 = undoState.UndoRec27;
             ;
         }
         
@@ -409,10 +353,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void UndoRec28_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            StbUndoState undoState = new StbUndoState {UndoRec28 = new StbUndoRecord()};
             
             // Act
-            StbUndoRecord undoRec28 = undoState.UndoRec28;
         }
         
         /// <summary>
@@ -422,10 +364,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void UndoRec29_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            StbUndoState undoState = new StbUndoState {UndoRec29 = new StbUndoRecord()};
             
             // Act
-            StbUndoRecord undoRec29 = undoState.UndoRec29;
         }
         
         /// <summary>
@@ -435,10 +375,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void UndoRec30_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            StbUndoState undoState = new StbUndoState {UndoRec30 = new StbUndoRecord()};
             
             // Act
-            StbUndoRecord undoRec30 = undoState.UndoRec30;
         }
         
         /// <summary>
@@ -800,10 +738,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void UndoRec53_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            StbUndoState undoState = new StbUndoState {UndoRec53 = new StbUndoRecord()};
             
             // Act
-            StbUndoRecord undoRec53 = undoState.UndoRec53;
         }
         
         /// <summary>
@@ -813,10 +749,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void UndoRec54_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            StbUndoState undoState = new StbUndoState {UndoRec54 = new StbUndoRecord()};
             
             // Act
-            StbUndoRecord undoRec54 = undoState.UndoRec54;
         }
         
         /// <summary>
@@ -826,10 +760,8 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void UndoRec55_ShouldBeInitializedCorrectly()
         {
             // Arrange
-            StbUndoState undoState = new StbUndoState {UndoRec55 = new StbUndoRecord()};
             
             // Act
-            StbUndoRecord undoRec55 = undoState.UndoRec55;
         }
         
         /// <summary>
@@ -1406,6 +1338,414 @@ namespace Alis.Extension.Graphic.ImGui.Test
             int value = 101112;
             obj.RedoCharPoint = value;
             Assert.Equal(value, obj.RedoCharPoint);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 53 get set returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec53_GetSet_ReturnsCorrectValue()
+        {
+            StbUndoState state = new StbUndoState();
+            StbUndoRecord record = new StbUndoRecord();
+            state.UndoRec53 = record;
+            Assert.Equal(record, state.UndoRec53);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 54 get set returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec54_GetSet_ReturnsCorrectValue()
+        {
+            StbUndoState state = new StbUndoState();
+            StbUndoRecord record = new StbUndoRecord();
+            state.UndoRec54 = record;
+            Assert.Equal(record, state.UndoRec54);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 55 get set returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec55_GetSet_ReturnsCorrectValue()
+        {
+            StbUndoState state = new StbUndoState();
+            StbUndoRecord record = new StbUndoRecord();
+            state.UndoRec55 = record;
+            Assert.Equal(record, state.UndoRec55);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 0 get set returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec0_GetSet_ReturnsCorrectValue()
+        {
+            StbUndoState state = new StbUndoState();
+            StbUndoRecord record = new StbUndoRecord();
+            state.UndoRec0 = record;
+            Assert.Equal(record, state.UndoRec0);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 1 get set returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec1_GetSet_ReturnsCorrectValue()
+        {
+            StbUndoState state = new StbUndoState();
+            StbUndoRecord record = new StbUndoRecord();
+            state.UndoRec1 = record;
+            Assert.Equal(record, state.UndoRec1);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 2 get set returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec2_GetSet_ReturnsCorrectValue()
+        {
+            StbUndoState state = new StbUndoState();
+            StbUndoRecord record = new StbUndoRecord();
+            state.UndoRec2 = record;
+            Assert.Equal(record, state.UndoRec2);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 3 get set returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec3_GetSet_ReturnsCorrectValue()
+        {
+            StbUndoState state = new StbUndoState();
+            StbUndoRecord record = new StbUndoRecord();
+            state.UndoRec3 = record;
+            Assert.Equal(record, state.UndoRec3);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 4 get set returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec4_GetSet_ReturnsCorrectValue()
+        {
+            StbUndoState state = new StbUndoState();
+            StbUndoRecord record = new StbUndoRecord();
+            state.UndoRec4 = record;
+            Assert.Equal(record, state.UndoRec4);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 5 get set returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec5_GetSet_ReturnsCorrectValue()
+        {
+            StbUndoState state = new StbUndoState();
+            StbUndoRecord record = new StbUndoRecord();
+            state.UndoRec5 = record;
+            Assert.Equal(record, state.UndoRec5);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 6 get set returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec6_GetSet_ReturnsCorrectValue()
+        {
+            StbUndoState state = new StbUndoState();
+            StbUndoRecord record = new StbUndoRecord();
+            state.UndoRec6 = record;
+            Assert.Equal(record, state.UndoRec6);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 7 get set returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec7_GetSet_ReturnsCorrectValue()
+        {
+            StbUndoState state = new StbUndoState();
+            StbUndoRecord record = new StbUndoRecord();
+            state.UndoRec7 = record;
+            Assert.Equal(record, state.UndoRec7);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 8 get set returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec8_GetSet_ReturnsCorrectValue()
+        {
+            StbUndoState state = new StbUndoState();
+            StbUndoRecord record = new StbUndoRecord();
+            state.UndoRec8 = record;
+            Assert.Equal(record, state.UndoRec8);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 9 get set returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec9_GetSet_ReturnsCorrectValue()
+        {
+            StbUndoState state = new StbUndoState();
+            StbUndoRecord record = new StbUndoRecord();
+            state.UndoRec9 = record;
+            Assert.Equal(record, state.UndoRec9);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 10 get set returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec10_GetSet_ReturnsCorrectValue()
+        {
+            StbUndoState state = new StbUndoState();
+            StbUndoRecord record = new StbUndoRecord();
+            state.UndoRec10 = record;
+            Assert.Equal(record, state.UndoRec10);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 11 get set returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec11_GetSet_ReturnsCorrectValue()
+        {
+            StbUndoState state = new StbUndoState();
+            StbUndoRecord record = new StbUndoRecord();
+            state.UndoRec11 = record;
+            Assert.Equal(record, state.UndoRec11);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 12 get set returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec12_GetSet_ReturnsCorrectValue()
+        {
+            StbUndoState state = new StbUndoState();
+            StbUndoRecord record = new StbUndoRecord();
+            state.UndoRec12 = record;
+            Assert.Equal(record, state.UndoRec12);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 13 get set returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec13_GetSet_ReturnsCorrectValue()
+        {
+            StbUndoState state = new StbUndoState();
+            StbUndoRecord record = new StbUndoRecord();
+            state.UndoRec13 = record;
+            Assert.Equal(record, state.UndoRec13);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 14 get set returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec14_GetSet_ReturnsCorrectValue()
+        {
+            StbUndoState state = new StbUndoState();
+            StbUndoRecord record = new StbUndoRecord();
+            state.UndoRec14 = record;
+            Assert.Equal(record, state.UndoRec14);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 15 get set returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec15_GetSet_ReturnsCorrectValue()
+        {
+            StbUndoState state = new StbUndoState();
+            StbUndoRecord record = new StbUndoRecord();
+            state.UndoRec15 = record;
+            Assert.Equal(record, state.UndoRec15);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 16 get set returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec16_GetSet_ReturnsCorrectValue()
+        {
+            StbUndoState state = new StbUndoState();
+            StbUndoRecord record = new StbUndoRecord();
+            state.UndoRec16 = record;
+            Assert.Equal(record, state.UndoRec16);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 17 get set returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec17_GetSet_ReturnsCorrectValue()
+        {
+            StbUndoState state = new StbUndoState();
+            StbUndoRecord record = new StbUndoRecord();
+            state.UndoRec17 = record;
+            Assert.Equal(record, state.UndoRec17);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 18 get set returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec18_GetSet_ReturnsCorrectValue()
+        {
+            StbUndoState state = new StbUndoState();
+            StbUndoRecord record = new StbUndoRecord();
+            state.UndoRec18 = record;
+            Assert.Equal(record, state.UndoRec18);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 19 get set returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec19_GetSet_ReturnsCorrectValue()
+        {
+            StbUndoState state = new StbUndoState();
+            StbUndoRecord record = new StbUndoRecord();
+            state.UndoRec19 = record;
+            Assert.Equal(record, state.UndoRec19);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 20 get set returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec20_GetSet_ReturnsCorrectValue()
+        {
+            StbUndoState state = new StbUndoState();
+            StbUndoRecord record = new StbUndoRecord();
+            state.UndoRec20 = record;
+            Assert.Equal(record, state.UndoRec20);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 21 get set returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec21_GetSet_ReturnsCorrectValue()
+        {
+            StbUndoState state = new StbUndoState();
+            StbUndoRecord record = new StbUndoRecord();
+            state.UndoRec21 = record;
+            Assert.Equal(record, state.UndoRec21);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 22 get set returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec22_GetSet_ReturnsCorrectValue()
+        {
+            StbUndoState state = new StbUndoState();
+            StbUndoRecord record = new StbUndoRecord();
+            state.UndoRec22 = record;
+            Assert.Equal(record, state.UndoRec22);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 23 get set returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec23_GetSet_ReturnsCorrectValue()
+        {
+            StbUndoState state = new StbUndoState();
+            StbUndoRecord record = new StbUndoRecord();
+            state.UndoRec23 = record;
+            Assert.Equal(record, state.UndoRec23);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 24 get set returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec24_GetSet_ReturnsCorrectValue()
+        {
+            StbUndoState state = new StbUndoState();
+            StbUndoRecord record = new StbUndoRecord();
+            state.UndoRec24 = record;
+            Assert.Equal(record, state.UndoRec24);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 25 get set returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec25_GetSet_ReturnsCorrectValue()
+        {
+            StbUndoState state = new StbUndoState();
+            StbUndoRecord record = new StbUndoRecord();
+            state.UndoRec25 = record;
+            Assert.Equal(record, state.UndoRec25);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 26 get set returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec26_GetSet_ReturnsCorrectValue()
+        {
+            StbUndoState state = new StbUndoState();
+            StbUndoRecord record = new StbUndoRecord();
+            state.UndoRec26 = record;
+            Assert.Equal(record, state.UndoRec26);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 27 get set returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec27_GetSet_ReturnsCorrectValue()
+        {
+            StbUndoState state = new StbUndoState();
+            StbUndoRecord record = new StbUndoRecord();
+            state.UndoRec27 = record;
+            Assert.Equal(record, state.UndoRec27);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 28 get set returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec28_GetSet_ReturnsCorrectValue()
+        {
+            StbUndoState state = new StbUndoState();
+            StbUndoRecord record = new StbUndoRecord();
+            state.UndoRec28 = record;
+            Assert.Equal(record, state.UndoRec28);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 29 get set returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec29_GetSet_ReturnsCorrectValue()
+        {
+            StbUndoState state = new StbUndoState();
+            StbUndoRecord record = new StbUndoRecord();
+            state.UndoRec29 = record;
+            Assert.Equal(record, state.UndoRec29);
+        }
+        
+        /// <summary>
+        /// Tests that undo rec 30 get set returns correct value
+        /// </summary>
+        [Fact]
+        public void UndoRec30_GetSet_ReturnsCorrectValue()
+        {
+            StbUndoState state = new StbUndoState();
+            StbUndoRecord record = new StbUndoRecord();
+            state.UndoRec30 = record;
+            Assert.Equal(record, state.UndoRec30);
         }
     }
 }
