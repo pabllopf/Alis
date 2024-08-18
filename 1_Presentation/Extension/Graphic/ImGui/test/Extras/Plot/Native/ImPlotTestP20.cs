@@ -264,7 +264,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         public void _ClearFreeMemory_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-            Assert.Throws<DllNotFoundException>(() => drawListPtr._ClearFreeMemory());
+            Assert.Throws<DllNotFoundException>(() => drawListPtr.ClearFreeMemory());
         }
         
         /// <summary>
@@ -274,7 +274,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         public void _OnChangedClipRect_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-            Assert.Throws<DllNotFoundException>(() => drawListPtr._OnChangedClipRect());
+            Assert.Throws<DllNotFoundException>(() => drawListPtr.OnChangedClipRect());
         }
         
         /// <summary>
@@ -284,7 +284,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         public void _OnChangedTextureID_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-            Assert.Throws<DllNotFoundException>(() => drawListPtr._OnChangedTextureID());
+            Assert.Throws<DllNotFoundException>(() => drawListPtr.OnChangedTextureID());
         }
         
         /// <summary>
@@ -294,7 +294,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         public void _OnChangedVtxOffset_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-            Assert.Throws<DllNotFoundException>(() => drawListPtr._OnChangedVtxOffset());
+            Assert.Throws<DllNotFoundException>(() => drawListPtr.OnChangedVtxOffset());
         }
         
         /// <summary>
@@ -304,7 +304,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         public void _PathArcToFastEx_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-            Assert.Throws<DllNotFoundException>(() => drawListPtr._PathArcToFastEx(new Vector2(), 0, 0, 0, 0));
+            Assert.Throws<DllNotFoundException>(() => drawListPtr.PathArcToFastEx(new Vector2(), 0, 0, 0, 0));
         }
     }
 }

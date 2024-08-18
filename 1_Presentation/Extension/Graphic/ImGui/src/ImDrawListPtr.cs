@@ -51,6 +51,16 @@ namespace Alis.Extension.Graphic.ImGui
         public ImDrawListPtr(IntPtr nativePtr) => NativePtr = nativePtr;
         
         /// <summary>
+        /// Initializes a new instance of the <see cref="ImDrawListPtr"/> class
+        /// </summary>
+        /// <param name="nativePtr">The native ptr</param>
+        public ImDrawListPtr(ImDrawList nativePtr)
+        {
+            NativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImDrawList>());
+            Marshal.StructureToPtr(nativePtr, NativePtr, false);
+        }
+        
+        /// <summary>
         /// </summary>
         /// <param name="wrappedPtr"></param>
         /// <returns></returns>
@@ -105,11 +115,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Gets or sets the value of the  idxwriteptr
         /// </summary>
-        public IntPtr IdxWritePtr
-        {
-            get => Marshal.PtrToStructure<ImDrawList>(NativePtr).IdxWritePtr;
-            set => Marshal.StructureToPtr(value, Marshal.PtrToStructure<ImDrawList>(NativePtr).IdxWritePtr, false);
-        }
+        public IntPtr IdxWritePtr => Marshal.PtrToStructure<ImDrawList>(NativePtr).IdxWritePtr;
         
         /// <summary>
         ///     Gets the value of the  cliprectstack
@@ -155,34 +161,22 @@ namespace Alis.Extension.Graphic.ImGui
         /// <summary>
         ///     Clears the free memory
         /// </summary>
-        public void _ClearFreeMemory()
-        {
-            ImGuiNative.ImDrawList__ClearFreeMemory(NativePtr);
-        }
+        public void ClearFreeMemory() => ImGuiNative.ImDrawList__ClearFreeMemory(NativePtr);
         
         /// <summary>
         ///     Ons the changed clip rect
         /// </summary>
-        public void _OnChangedClipRect()
-        {
-            ImGuiNative.ImDrawList__OnChangedClipRect(NativePtr);
-        }
+        public void OnChangedClipRect() => ImGuiNative.ImDrawList__OnChangedClipRect(NativePtr);
         
         /// <summary>
         ///     Ons the changed texture id
         /// </summary>
-        public void _OnChangedTextureID()
-        {
-            ImGuiNative.ImDrawList__OnChangedTextureID(NativePtr);
-        }
+        public void OnChangedTextureID() => ImGuiNative.ImDrawList__OnChangedTextureID(NativePtr);
         
         /// <summary>
         ///     Ons the changed vtx offset
         /// </summary>
-        public void _OnChangedVtxOffset()
-        {
-            ImGuiNative.ImDrawList__OnChangedVtxOffset(NativePtr);
-        }
+        public void OnChangedVtxOffset() => ImGuiNative.ImDrawList__OnChangedVtxOffset(NativePtr);
         
         /// <summary>
         ///     Paths the arc to fast ex using the specified center
@@ -192,10 +186,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="aMinSample">The min sample</param>
         /// <param name="aMaxSample">The max sample</param>
         /// <param name="aStep">The step</param>
-        public void _PathArcToFastEx(Vector2 center, float radius, int aMinSample, int aMaxSample, int aStep)
-        {
-            ImGuiNative.ImDrawList__PathArcToFastEx(NativePtr, center, radius, aMinSample, aMaxSample, aStep);
-        }
+        public void PathArcToFastEx(Vector2 center, float radius, int aMinSample, int aMaxSample, int aStep) => ImGuiNative.ImDrawList__PathArcToFastEx(NativePtr, center, radius, aMinSample, aMaxSample, aStep);
         
         /// <summary>
         ///     Paths the arc to n using the specified center
@@ -205,34 +196,22 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="aMin">The min</param>
         /// <param name="aMax">The max</param>
         /// <param name="numSegments">The num segments</param>
-        public void _PathArcToN(Vector2 center, float radius, float aMin, float aMax, int numSegments)
-        {
-            ImGuiNative.ImDrawList__PathArcToN(NativePtr, center, radius, aMin, aMax, numSegments);
-        }
+        public void PathArcToN(Vector2 center, float radius, float aMin, float aMax, int numSegments) => ImGuiNative.ImDrawList__PathArcToN(NativePtr, center, radius, aMin, aMax, numSegments);
         
         /// <summary>
         ///     Pops the unused draw cmd
         /// </summary>
-        public void _PopUnusedDrawCmd()
-        {
-            ImGuiNative.ImDrawList__PopUnusedDrawCmd(NativePtr);
-        }
+        public void PopUnusedDrawCmd() => ImGuiNative.ImDrawList__PopUnusedDrawCmd(NativePtr);
         
         /// <summary>
         ///     Resets the for new frame
         /// </summary>
-        public void _ResetForNewFrame()
-        {
-            ImGuiNative.ImDrawList__ResetForNewFrame(NativePtr);
-        }
+        public void ResetForNewFrame() => ImGuiNative.ImDrawList__ResetForNewFrame(NativePtr);
         
         /// <summary>
         ///     Tries the merge draw cmds
         /// </summary>
-        public void _TryMergeDrawCmds()
-        {
-            ImGuiNative.ImDrawList__TryMergeDrawCmds(NativePtr);
-        }
+        public void TryMergeDrawCmd() => ImGuiNative.ImDrawList__TryMergeDrawCmds(NativePtr);
         
         /// <summary>
         ///     Adds the bezier cubic using the specified p 1
@@ -243,11 +222,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="p4">The </param>
         /// <param name="col">The col</param>
         /// <param name="thickness">The thickness</param>
-        public void AddBezierCubic(Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, uint col, float thickness)
-        {
-            int numSegments = 0;
-            ImGuiNative.ImDrawList_AddBezierCubic(NativePtr, p1, p2, p3, p4, col, thickness, numSegments);
-        }
+        public void AddBezierCubic(Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, uint col, float thickness) => ImGuiNative.ImDrawList_AddBezierCubic(NativePtr, p1, p2, p3, p4, col, thickness, 0);
         
         /// <summary>
         ///     Adds the bezier cubic using the specified p 1
@@ -259,10 +234,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="col">The col</param>
         /// <param name="thickness">The thickness</param>
         /// <param name="numSegments">The num segments</param>
-        public void AddBezierCubic(Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, uint col, float thickness, int numSegments)
-        {
-            ImGuiNative.ImDrawList_AddBezierCubic(NativePtr, p1, p2, p3, p4, col, thickness, numSegments);
-        }
+        public void AddBezierCubic(Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, uint col, float thickness, int numSegments) => ImGuiNative.ImDrawList_AddBezierCubic(NativePtr, p1, p2, p3, p4, col, thickness, numSegments);
         
         /// <summary>
         ///     Adds the bezier quadratic using the specified p 1
@@ -272,11 +244,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="p3">The </param>
         /// <param name="col">The col</param>
         /// <param name="thickness">The thickness</param>
-        public void AddBezierQuadratic(Vector2 p1, Vector2 p2, Vector2 p3, uint col, float thickness)
-        {
-            int numSegments = 0;
-            ImGuiNative.ImDrawList_AddBezierQuadratic(NativePtr, p1, p2, p3, col, thickness, numSegments);
-        }
+        public void AddBezierQuadratic(Vector2 p1, Vector2 p2, Vector2 p3, uint col, float thickness) => ImGuiNative.ImDrawList_AddBezierQuadratic(NativePtr, p1, p2, p3, col, thickness, 0);
         
         /// <summary>
         ///     Adds the bezier quadratic using the specified p 1
@@ -287,10 +255,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="col">The col</param>
         /// <param name="thickness">The thickness</param>
         /// <param name="numSegments">The num segments</param>
-        public void AddBezierQuadratic(Vector2 p1, Vector2 p2, Vector2 p3, uint col, float thickness, int numSegments)
-        {
-            ImGuiNative.ImDrawList_AddBezierQuadratic(NativePtr, p1, p2, p3, col, thickness, numSegments);
-        }
+        public void AddBezierQuadratic(Vector2 p1, Vector2 p2, Vector2 p3, uint col, float thickness, int numSegments) => ImGuiNative.ImDrawList_AddBezierQuadratic(NativePtr, p1, p2, p3, col, thickness, numSegments);
         
         /// <summary>
         ///     Adds the callback using the specified callback

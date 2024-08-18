@@ -28,6 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Text;
 using Alis.Core.Aspect.Math.Vector;
 using Xunit;
 
@@ -1401,6 +1404,447 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         public void Test_ImFontConfig_v2()
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ImFontConfig());
+        }
+        
+        /// <summary>
+        /// Tests that is item hovered no flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void IsItemHovered_NoFlags_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igIsItemHovered(0));
+        }
+        
+        /// <summary>
+        /// Tests that is item hovered with flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void IsItemHovered_WithFlags_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igIsItemHovered(ImGuiHoveredFlags.None));
+        }
+        
+        /// <summary>
+        /// Tests that is item toggled open throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void IsItemToggledOpen_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igIsItemToggledOpen());
+        }
+        
+        /// <summary>
+        /// Tests that is item visible throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void IsItemVisible_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igIsItemVisible());
+        }
+        
+        /// <summary>
+        /// Tests that is key down throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void IsKeyDown_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igIsKeyDown_Nil(ImGuiKey.None));
+        }
+        
+        /// <summary>
+        /// Tests that is key pressed no repeat throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void IsKeyPressed_NoRepeat_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igIsKeyPressed_Bool(ImGuiKey.None, 1));
+        }
+        
+        /// <summary>
+        /// Tests that is key pressed with repeat throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void IsKeyPressed_WithRepeat_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igIsKeyPressed_Bool(ImGuiKey.None, 0));
+        }
+        
+        /// <summary>
+        /// Tests that is key released throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void IsKeyReleased_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igIsKeyReleased_Nil(ImGuiKey.None));
+        }
+        
+        /// <summary>
+        /// Tests that is mouse clicked no repeat throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void IsMouseClicked_NoRepeat_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igIsMouseClicked_Bool(ImGuiMouseButton.Left, 0));
+        }
+        
+        /// <summary>
+        /// Tests that is mouse clicked with repeat throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void IsMouseClicked_WithRepeat_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igIsMouseClicked_Bool(ImGuiMouseButton.Left, 1));
+        }
+        
+        /// <summary>
+        /// Tests that is mouse double clicked throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void IsMouseDoubleClicked_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igIsMouseDoubleClicked(ImGuiMouseButton.Left));
+        }
+        
+        /// <summary>
+        /// Tests that is mouse down throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void IsMouseDown_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igIsMouseDown_Nil(ImGuiMouseButton.Left));
+        }
+        
+        /// <summary>
+        /// Tests that is mouse dragging no threshold throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void IsMouseDragging_NoThreshold_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igIsMouseDragging(ImGuiMouseButton.Left, -1.0f));
+        }
+        
+        /// <summary>
+        /// Tests that is mouse dragging with threshold throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void IsMouseDragging_WithThreshold_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igIsMouseDragging(ImGuiMouseButton.Left, 0.0f));
+        }
+        
+        /// <summary>
+        /// Tests that is mouse hovering rect no clip throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void IsMouseHoveringRect_NoClip_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igIsMouseHoveringRect(new Vector2(), new Vector2(), 1));
+        }
+        
+        /// <summary>
+        /// Tests that is mouse hovering rect with clip throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void IsMouseHoveringRect_WithClip_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igIsMouseHoveringRect(new Vector2(), new Vector2(), 0));
+        }
+        
+        /// <summary>
+        /// Tests that is mouse pos valid no pos throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void IsMousePosValid_NoPos_ThrowsDllNotFoundException()
+        {
+            Vector2 mousePos = Vector2.Zero;
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igIsMousePosValid(ref mousePos));
+        }
+        
+        /// <summary>
+        /// Tests that is mouse pos valid with pos throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void IsMousePosValid_WithPos_ThrowsDllNotFoundException()
+        {
+            Vector2 mousePos = new Vector2(1, 1);
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igIsMousePosValid(ref mousePos));
+        }
+        
+        /// <summary>
+        /// Tests that is mouse released throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void IsMouseReleased_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igIsMouseReleased_Nil(ImGuiMouseButton.Left));
+        }
+        
+        /// <summary>
+        /// Tests that is popup open no flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void IsPopupOpen_NoFlags_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igIsPopupOpen_Str(Encoding.UTF8.GetBytes("test"), ImGuiPopupFlags.None));
+        }
+        
+        /// <summary>
+        /// Tests that is popup open with flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void IsPopupOpen_WithFlags_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igIsPopupOpen_Str(Encoding.UTF8.GetBytes("test"), ImGuiPopupFlags.AnyPopup));
+        }
+        
+        /// <summary>
+        /// Tests that is rect visible no min max throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void IsRectVisible_NoMinMax_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igIsRectVisible_Nil(new Vector2()));
+        }
+        
+        /// <summary>
+        /// Tests that is rect visible with min max throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void IsRectVisible_WithMinMax_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igIsRectVisible_Vec2(new Vector2(), new Vector2()));
+        }
+        
+        /// <summary>
+        /// Tests that is window appearing throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void IsWindowAppearing_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igIsWindowAppearing());
+        }
+        
+        /// <summary>
+        /// Tests that is window collapsed throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void IsWindowCollapsed_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igIsWindowCollapsed());
+        }
+        
+        /// <summary>
+        /// Tests that is window docked throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void IsWindowDocked_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igIsWindowDocked());
+        }
+        
+        /// <summary>
+        /// Tests that is window focused no flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void IsWindowFocused_NoFlags_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igIsWindowFocused(0));
+        }
+        
+        /// <summary>
+        /// Tests that is window focused with flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void IsWindowFocused_WithFlags_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igIsWindowFocused(ImGuiFocusedFlags.None));
+        }
+        
+        /// <summary>
+        /// Tests that is window hovered no flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void IsWindowHovered_NoFlags_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igIsWindowHovered(0));
+        }
+        
+        /// <summary>
+        /// Tests that is window hovered with flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void IsWindowHovered_WithFlags_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igIsWindowHovered(ImGuiHoveredFlags.None));
+        }
+        
+        /// <summary>
+        /// Tests that label text throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void LabelText_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igLabelText(Encoding.UTF8.GetBytes("label"), Encoding.UTF8.GetBytes("fmt")));
+        }
+        
+        /// <summary>
+        /// Tests that list box no height throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void ListBox_NoHeight_ThrowsDllNotFoundException()
+        {
+            int currentItem = 0;
+            string[] items = {"item1", "item2"};
+            byte[][] itemsNative = items.Select(item => Encoding.UTF8.GetBytes(item)).ToArray();
+            Assert.Throws<MarshalDirectiveException>(() => ImGuiNative.igListBox_Str_arr(Encoding.UTF8.GetBytes("label"), ref currentItem, itemsNative, items.Length, -1));
+        }
+        
+        /// <summary>
+        /// Tests that list box with height throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void ListBox_WithHeight_ThrowsDllNotFoundException()
+        {
+            int currentItem = 0;
+            string[] items = {"item1", "item2"};
+            byte[][] itemsNative = items.Select(item => Encoding.UTF8.GetBytes(item)).ToArray();
+            Assert.Throws<MarshalDirectiveException>(() => ImGuiNative.igListBox_Str_arr(Encoding.UTF8.GetBytes("label"), ref currentItem, itemsNative, items.Length, 2));
+        }
+        
+        /// <summary>
+        /// Tests that load ini settings from disk throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void LoadIniSettingsFromDisk_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igLoadIniSettingsFromDisk(Encoding.UTF8.GetBytes("filename")));
+        }
+        
+        /// <summary>
+        /// Tests that load ini settings from memory no size throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void LoadIniSettingsFromMemory_NoSize_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igLoadIniSettingsFromMemory(Encoding.UTF8.GetBytes("data"), 0));
+        }
+        
+        /// <summary>
+        /// Tests that load ini settings from memory with size throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void LoadIniSettingsFromMemory_WithSize_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igLoadIniSettingsFromMemory(Encoding.UTF8.GetBytes("data"), 10));
+        }
+        
+        /// <summary>
+        /// Tests that log buttons throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void LogButtons_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igLogButtons());
+        }
+        
+        /// <summary>
+        /// Tests that log finish throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void LogFinish_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igLogFinish());
+        }
+        
+        /// <summary>
+        /// Tests that log text throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void LogText_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igLogText(Encoding.UTF8.GetBytes("fmt")));
+        }
+        
+        /// <summary>
+        /// Tests that log to clipboard no depth throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void LogToClipboard_NoDepth_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igLogToClipboard(-1));
+        }
+        
+        /// <summary>
+        /// Tests that log to clipboard with depth throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void LogToClipboard_WithDepth_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igLogToClipboard(1));
+        }
+        
+        /// <summary>
+        /// Tests that log to file no depth throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void LogToFile_NoDepth_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igLogToFile(-1, null));
+        }
+        
+        /// <summary>
+        /// Tests that log to file with depth throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void LogToFile_WithDepth_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igLogToFile(1, null));
+        }
+        
+        /// <summary>
+        /// Tests that log to file with filename throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void LogToFile_WithFilename_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igLogToFile(1, Encoding.UTF8.GetBytes("filename")));
+        }
+        
+        /// <summary>
+        /// Tests that log to tty no depth throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void LogToTty_NoDepth_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igLogToTTY(-1));
+        }
+        
+        /// <summary>
+        /// Tests that log to tty with depth throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void LogToTty_WithDepth_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igLogToTTY(1));
+        }
+        
+        /// <summary>
+        /// Tests that mem alloc throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void MemAlloc_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igMemAlloc(10));
+        }
+        
+        /// <summary>
+        /// Tests that mem free throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void MemFree_ThrowsDllNotFoundException()
+        {
+            IntPtr ptr = new IntPtr(10);
+            Assert.Throws<DllNotFoundException>(() => ImGuiNative.igMemFree(ptr));
         }
     }
 }

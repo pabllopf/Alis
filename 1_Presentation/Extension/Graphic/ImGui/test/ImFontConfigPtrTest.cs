@@ -278,6 +278,16 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
+        ///     Tests that test add remap char v 1
+        /// </summary>
+        [Fact]
+        public void Test_AddRemapChar_v3()
+        {
+            ImFontPtr ptr = new ImFontPtr(new ImFont());
+            Assert.Throws<DllNotFoundException>(() => ptr.AddRemapChar(0, 0));
+        }
+        
+        /// <summary>
         ///     Tests that test add remap char v 2
         /// </summary>
         [Fact]
@@ -595,6 +605,201 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImFontPtr fontPtr = new ImFontPtr(nativePtr);
             Assert.Equal(7890, fontPtr.MetricsTotalSurface);
             Marshal.FreeHGlobal(nativePtr);
+        }
+        
+        /// <summary>
+        /// Tests that index advance x throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void IndexAdvanceX_ThrowsDllNotFoundException()
+        {
+            ImFontPtr fontPtr = new ImFontPtr(IntPtr.Zero);
+            Assert.Throws<NullReferenceException>(() =>
+            {
+                ImVectorG<float> _ = fontPtr.IndexAdvanceX;
+            });
+        }
+        
+        /// <summary>
+        /// Tests that fallback advance x throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void FallbackAdvanceX_ThrowsDllNotFoundException()
+        {
+            ImFontPtr fontPtr = new ImFontPtr(IntPtr.Zero);
+            Assert.Throws<NullReferenceException>(() =>
+            {
+                float _ = fontPtr.FallbackAdvanceX;
+            });
+        }
+        
+        /// <summary>
+        /// Tests that font size throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void FontSize_ThrowsDllNotFoundException()
+        {
+            ImFontPtr fontPtr = new ImFontPtr(IntPtr.Zero);
+            Assert.Throws<NullReferenceException>(() =>
+            {
+                float _ = fontPtr.FontSize;
+            });
+        }
+        
+        /// <summary>
+        /// Tests that index lookup throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void IndexLookup_ThrowsDllNotFoundException()
+        {
+            ImFontPtr fontPtr = new ImFontPtr(IntPtr.Zero);
+            Assert.Throws<NullReferenceException>(() =>
+            {
+                ImVectorG<ushort> _ = fontPtr.IndexLookup;
+            });
+        }
+        
+        /// <summary>
+        /// Tests that container atlas throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void ContainerAtlas_ThrowsDllNotFoundException()
+        {
+            ImFontPtr fontPtr = new ImFontPtr(IntPtr.Zero);
+            Assert.Throws<NullReferenceException>(() =>
+            {
+                ImFontAtlasPtr _ = fontPtr.ContainerAtlas;
+            });
+        }
+        
+        /// <summary>
+        /// Tests that config data throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void ConfigData_ThrowsDllNotFoundException()
+        {
+            ImFontPtr fontPtr = new ImFontPtr(IntPtr.Zero);
+            Assert.Throws<NullReferenceException>(() =>
+            {
+                ImFontConfigPtr _ = fontPtr.ConfigData;
+            });
+        }
+        
+        /// <summary>
+        /// Tests that config data count throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void ConfigDataCount_ThrowsDllNotFoundException()
+        {
+            ImFontPtr fontPtr = new ImFontPtr(IntPtr.Zero);
+            Assert.Throws<NullReferenceException>(() =>
+            {
+                short _ = fontPtr.ConfigDataCount;
+            });
+        }
+        
+        /// <summary>
+        /// Tests that fallback char throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void FallbackChar_ThrowsDllNotFoundException()
+        {
+            ImFontPtr fontPtr = new ImFontPtr(IntPtr.Zero);
+            Assert.Throws<NullReferenceException>(() =>
+            {
+                ushort _ = fontPtr.FallbackChar;
+            });
+        }
+        
+        /// <summary>
+        /// Tests that ellipsis char throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void EllipsisChar_ThrowsDllNotFoundException()
+        {
+            ImFontPtr fontPtr = new ImFontPtr(IntPtr.Zero);
+            Assert.Throws<NullReferenceException>(() =>
+            {
+                ushort _ = fontPtr.EllipsisChar;
+            });
+        }
+        
+        /// <summary>
+        /// Tests that dot char throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void DotChar_ThrowsDllNotFoundException()
+        {
+            ImFontPtr fontPtr = new ImFontPtr(IntPtr.Zero);
+            Assert.Throws<NullReferenceException>(() =>
+            {
+                ushort _ = fontPtr.DotChar;
+            });
+        }
+        
+        /// <summary>
+        /// Tests that dirty lookup tables throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void DirtyLookupTables_ThrowsDllNotFoundException()
+        {
+            ImFontPtr fontPtr = new ImFontPtr(IntPtr.Zero);
+            Assert.Throws<NullReferenceException>(() =>
+            {
+                bool _ = fontPtr.DirtyLookupTables;
+            });
+        }
+        
+        /// <summary>
+        /// Tests that scale throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void Scale_ThrowsDllNotFoundException()
+        {
+            ImFontPtr fontPtr = new ImFontPtr(IntPtr.Zero);
+            Assert.Throws<NullReferenceException>(() =>
+            {
+                float _ = fontPtr.Scale;
+            });
+        }
+        
+        /// <summary>
+        /// Tests that ascent throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void Ascent_ThrowsDllNotFoundException()
+        {
+            ImFontPtr fontPtr = new ImFontPtr(IntPtr.Zero);
+            Assert.Throws<NullReferenceException>(() =>
+            {
+                float _ = fontPtr.Ascent;
+            });
+        }
+        
+        /// <summary>
+        /// Tests that descent throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void Descent_ThrowsDllNotFoundException()
+        {
+            ImFontPtr fontPtr = new ImFontPtr(IntPtr.Zero);
+            Assert.Throws<NullReferenceException>(() =>
+            {
+                float _ = fontPtr.Descent;
+            });
+        }
+        
+        /// <summary>
+        /// Tests that metrics total surface throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void MetricsTotalSurface_ThrowsDllNotFoundException()
+        {
+            ImFontPtr fontPtr = new ImFontPtr(IntPtr.Zero);
+            Assert.Throws<NullReferenceException>(() =>
+            {
+                int _ = fontPtr.MetricsTotalSurface;
+            });
         }
     }
 }

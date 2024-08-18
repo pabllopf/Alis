@@ -1459,7 +1459,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             ImFontAtlasCustomRect rect = new ImFontAtlasCustomRect();
-            Assert.Throws<DllNotFoundException>(() => atlas.CalcCustomRectUv(rect, out Vector2 outUvMin, out Vector2 outUvMax));
+            Assert.Throws<DllNotFoundException>(() => atlas.CalcCustomRectUv(rect, out Vector2 _, out Vector2 _));
         }
         
         /// <summary>
@@ -1613,7 +1613,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void GetMouseCursorTexData_ReturnsTrue()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-            Assert.Throws<DllNotFoundException>(() => atlas.GetMouseCursorTexData(ImGuiMouseCursor.Arrow, out Vector2 outOffset, out Vector2 outSize, out Vector2 outUvBorder, out Vector2 outUvFill));
+            Assert.Throws<DllNotFoundException>(() => atlas.GetMouseCursorTexData(ImGuiMouseCursor.Arrow, out Vector2 _, out Vector2 _, out Vector2 _, out Vector2 _));
         }
         
         /// <summary>
@@ -1623,7 +1623,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void GetTexDataAsAlpha8_ReturnsData()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-            Assert.Throws<DllNotFoundException>(() => atlas.GetTexDataAsAlpha8(out byte[] outPixels, out int outWidth, out int outHeight));
+            Assert.Throws<DllNotFoundException>(() => atlas.GetTexDataAsAlpha8(out byte[] _, out int _, out int _));
         }
         
         /// <summary>
@@ -1633,7 +1633,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void GetTexDataAsAlpha8_WithBytesPerPixel_ReturnsData()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-            Assert.Throws<DllNotFoundException>(() => atlas.GetTexDataAsAlpha8(out byte[] outPixels, out int outWidth, out int outHeight, out int outBytesPerPixel));
+            Assert.Throws<DllNotFoundException>(() => atlas.GetTexDataAsAlpha8(out byte[] _, out int _, out int _, out int _));
         }
         
         /// <summary>
@@ -1643,7 +1643,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void GetTexDataAsAlpha8_WithIntPtr_ReturnsData()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-            Assert.Throws<DllNotFoundException>(() => atlas.GetTexDataAsAlpha8(out IntPtr outPixels, out int outWidth, out int outHeight));
+            Assert.Throws<DllNotFoundException>(() => atlas.GetTexDataAsAlpha8(out IntPtr _, out int _, out int _));
         }
         
         /// <summary>
@@ -1653,7 +1653,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void GetTexDataAsAlpha8_WithIntPtrAndBytesPerPixel_ReturnsData()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-            Assert.Throws<DllNotFoundException>(() => atlas.GetTexDataAsAlpha8(out IntPtr outPixels, out int outWidth, out int outHeight, out int outBytesPerPixel));
+            Assert.Throws<DllNotFoundException>(() => atlas.GetTexDataAsAlpha8(out IntPtr _, out int _, out int _, out int _));
         }
         
         /// <summary>
@@ -1663,7 +1663,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void GetTexDataAsRgba32_ReturnsData()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-            Assert.Throws<DllNotFoundException>(() => atlas.GetTexDataAsRgba32(out byte[] outPixels, out int outWidth, out int outHeight, out int outBytesPerPixel));
+            Assert.Throws<DllNotFoundException>(() => atlas.GetTexDataAsRgba32(out byte[] _, out int _, out int _, out int _));
         }
         
         /// <summary>
@@ -1673,7 +1673,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void GetTexDataAsRgba32_WithIntPtr_ReturnsData()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-            Assert.Throws<DllNotFoundException>(() => atlas.GetTexDataAsRgba32(out IntPtr outPixels, out int outWidth, out int outHeight));
+            Assert.Throws<DllNotFoundException>(() => atlas.GetTexDataAsRgba32(out IntPtr _, out int _, out int _));
         }
         
         /// <summary>
@@ -1683,7 +1683,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         public void GetTexDataAsRgba32_WithIntPtrAndBytesPerPixel_ReturnsData()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-            Assert.Throws<DllNotFoundException>(() => atlas.GetTexDataAsRgba32(out IntPtr outPixels, out int outWidth, out int outHeight, out int outBytesPerPixel));
+            Assert.Throws<DllNotFoundException>(() => atlas.GetTexDataAsRgba32(out IntPtr _, out int _, out int _, out int _));
         }
         
         /// <summary>

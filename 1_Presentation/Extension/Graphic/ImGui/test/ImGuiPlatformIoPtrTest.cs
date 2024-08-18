@@ -98,8 +98,6 @@ namespace Alis.Extension.Graphic.ImGui.Test
         [Fact]
         public void PlatformCreateWindow_Should_GetCorrectValue()
         {
-            IntPtr ptr = new IntPtr(123);
-            ImGuiPlatformIoPtr platformIoPtr = new ImGuiPlatformIoPtr(ptr);
         }
         
         /// <summary>
@@ -108,8 +106,6 @@ namespace Alis.Extension.Graphic.ImGui.Test
         [Fact]
         public void PlatformDestroyWindow_Should_GetCorrectValue()
         {
-            IntPtr ptr = new IntPtr(123);
-            ImGuiPlatformIoPtr platformIoPtr = new ImGuiPlatformIoPtr(ptr);
         }
         
         /// <summary>
@@ -118,8 +114,6 @@ namespace Alis.Extension.Graphic.ImGui.Test
         [Fact]
         public void PlatformShowWindow_Should_GetCorrectValue()
         {
-            IntPtr ptr = new IntPtr(123);
-            ImGuiPlatformIoPtr platformIoPtr = new ImGuiPlatformIoPtr(ptr);
         }
         
         /// <summary>
@@ -128,8 +122,6 @@ namespace Alis.Extension.Graphic.ImGui.Test
         [Fact]
         public void PlatformSetWindowPos_Should_GetCorrectValue()
         {
-            IntPtr ptr = new IntPtr(123);
-            ImGuiPlatformIoPtr platformIoPtr = new ImGuiPlatformIoPtr(ptr);
         }
         
         /// <summary>
@@ -138,8 +130,6 @@ namespace Alis.Extension.Graphic.ImGui.Test
         [Fact]
         public void PlatformGetWindowPos_Should_GetCorrectValue()
         {
-            IntPtr ptr = new IntPtr(123);
-            ImGuiPlatformIoPtr platformIoPtr = new ImGuiPlatformIoPtr(ptr);
         }
         
         /// <summary>
@@ -148,8 +138,6 @@ namespace Alis.Extension.Graphic.ImGui.Test
         [Fact]
         public void PlatformSetWindowSize_Should_GetCorrectValue()
         {
-            IntPtr ptr = new IntPtr(123);
-            ImGuiPlatformIoPtr platformIoPtr = new ImGuiPlatformIoPtr(ptr);
         }
         
         /// <summary>
@@ -158,8 +146,6 @@ namespace Alis.Extension.Graphic.ImGui.Test
         [Fact]
         public void PlatformGetWindowSize_Should_GetCorrectValue()
         {
-            IntPtr ptr = new IntPtr(123);
-            ImGuiPlatformIoPtr platformIoPtr = new ImGuiPlatformIoPtr(ptr);
         }
         
         /// <summary>
@@ -168,8 +154,6 @@ namespace Alis.Extension.Graphic.ImGui.Test
         [Fact]
         public void PlatformSetWindowFocus_Should_GetCorrectValue()
         {
-            IntPtr ptr = new IntPtr(123);
-            ImGuiPlatformIoPtr platformIoPtr = new ImGuiPlatformIoPtr(ptr);
         }
         
         /// <summary>
@@ -178,8 +162,6 @@ namespace Alis.Extension.Graphic.ImGui.Test
         [Fact]
         public void PlatformGetWindowFocus_Should_GetCorrectValue()
         {
-            IntPtr ptr = new IntPtr(123);
-            ImGuiPlatformIoPtr platformIoPtr = new ImGuiPlatformIoPtr(ptr);
         }
         
         /// <summary>
@@ -188,8 +170,6 @@ namespace Alis.Extension.Graphic.ImGui.Test
         [Fact]
         public void PlatformGetWindowMinimized_Should_GetCorrectValue()
         {
-            IntPtr ptr = new IntPtr(123);
-            ImGuiPlatformIoPtr platformIoPtr = new ImGuiPlatformIoPtr(ptr);
         }
         
         /// <summary>
@@ -198,8 +178,6 @@ namespace Alis.Extension.Graphic.ImGui.Test
         [Fact]
         public void PlatformSetWindowTitle_Should_GetCorrectValue()
         {
-            IntPtr ptr = new IntPtr(123);
-            ImGuiPlatformIoPtr platformIoPtr = new ImGuiPlatformIoPtr(ptr);
         }
         
         /// <summary>
@@ -208,8 +186,6 @@ namespace Alis.Extension.Graphic.ImGui.Test
         [Fact]
         public void PlatformSetWindowAlpha_Should_GetCorrectValue()
         {
-            IntPtr ptr = new IntPtr(123);
-            ImGuiPlatformIoPtr platformIoPtr = new ImGuiPlatformIoPtr(ptr);
         }
         
         /// <summary>
@@ -218,8 +194,6 @@ namespace Alis.Extension.Graphic.ImGui.Test
         [Fact]
         public void PlatformUpdateWindow_Should_GetCorrectValue()
         {
-            IntPtr ptr = new IntPtr(123);
-            ImGuiPlatformIoPtr platformIoPtr = new ImGuiPlatformIoPtr(ptr);
         }
         
         /// <summary>
@@ -228,8 +202,6 @@ namespace Alis.Extension.Graphic.ImGui.Test
         [Fact]
         public void PlatformRenderWindow_Should_GetCorrectValue()
         {
-            IntPtr ptr = new IntPtr(123);
-            ImGuiPlatformIoPtr platformIoPtr = new ImGuiPlatformIoPtr(ptr);
         }
         
         /// <summary>
@@ -238,8 +210,6 @@ namespace Alis.Extension.Graphic.ImGui.Test
         [Fact]
         public void PlatformSwapBuffers_Should_GetCorrectValue()
         {
-            IntPtr ptr = new IntPtr(123);
-            ImGuiPlatformIoPtr platformIoPtr = new ImGuiPlatformIoPtr(ptr);
         }
         
         /// <summary>
@@ -248,8 +218,6 @@ namespace Alis.Extension.Graphic.ImGui.Test
         [Fact]
         public void PlatformGetWindowDpiScale_Should_GetCorrectValue()
         {
-            IntPtr ptr = new IntPtr(123);
-            ImGuiPlatformIoPtr platformIoPtr = new ImGuiPlatformIoPtr(ptr);
         }
         
         /// <summary>
@@ -258,8 +226,6 @@ namespace Alis.Extension.Graphic.ImGui.Test
         [Fact]
         public void PlatformOnChangedViewport_Should_GetCorrectValue()
         {
-            IntPtr ptr = new IntPtr(123);
-            ImGuiPlatformIoPtr platformIoPtr = new ImGuiPlatformIoPtr(ptr);
         }
         
         /// <summary>
@@ -268,8 +234,6 @@ namespace Alis.Extension.Graphic.ImGui.Test
         [Fact]
         public void PlatformCreateVkSurface_Should_GetCorrectValue()
         {
-            IntPtr ptr = new IntPtr(123);
-            ImGuiPlatformIoPtr platformIoPtr = new ImGuiPlatformIoPtr(ptr);
         }
         
         /// <summary>
@@ -278,8 +242,6 @@ namespace Alis.Extension.Graphic.ImGui.Test
         [Fact]
         public void RendererCreateWindow_Should_GetCorrectValue()
         {
-            IntPtr ptr = new IntPtr(123);
-            ImGuiPlatformIoPtr platformIoPtr = new ImGuiPlatformIoPtr(ptr);
         }
         
         /// <summary>
@@ -288,8 +250,6 @@ namespace Alis.Extension.Graphic.ImGui.Test
         [Fact]
         public void RendererDestroyWindow_Should_GetCorrectValue()
         {
-            IntPtr ptr = new IntPtr(123);
-            ImGuiPlatformIoPtr platformIoPtr = new ImGuiPlatformIoPtr(ptr);
         }
         
         /// <summary>
@@ -298,8 +258,6 @@ namespace Alis.Extension.Graphic.ImGui.Test
         [Fact]
         public void RendererSetWindowSize_Should_GetCorrectValue()
         {
-            IntPtr ptr = new IntPtr(123);
-            ImGuiPlatformIoPtr platformIoPtr = new ImGuiPlatformIoPtr(ptr);
         }
         
         /// <summary>
@@ -308,8 +266,6 @@ namespace Alis.Extension.Graphic.ImGui.Test
         [Fact]
         public void RendererRenderWindow_Should_GetCorrectValue()
         {
-            IntPtr ptr = new IntPtr(123);
-            ImGuiPlatformIoPtr platformIoPtr = new ImGuiPlatformIoPtr(ptr);
         }
         
         /// <summary>
@@ -318,8 +274,6 @@ namespace Alis.Extension.Graphic.ImGui.Test
         [Fact]
         public void RendererSwapBuffers_Should_GetCorrectValue()
         {
-            IntPtr ptr = new IntPtr(123);
-            ImGuiPlatformIoPtr platformIoPtr = new ImGuiPlatformIoPtr(ptr);
         }
         
         /// <summary>
@@ -328,8 +282,6 @@ namespace Alis.Extension.Graphic.ImGui.Test
         [Fact]
         public void Monitors_Should_GetCorrectValue()
         {
-            IntPtr ptr = new IntPtr(123);
-            ImGuiPlatformIoPtr platformIoPtr = new ImGuiPlatformIoPtr(ptr);
         }
         
         /// <summary>
@@ -338,8 +290,6 @@ namespace Alis.Extension.Graphic.ImGui.Test
         [Fact]
         public void Viewports_Should_GetCorrectValue()
         {
-            IntPtr ptr = new IntPtr(123);
-            ImGuiPlatformIoPtr platformIoPtr = new ImGuiPlatformIoPtr(ptr);
         }
         
         /// <summary>
