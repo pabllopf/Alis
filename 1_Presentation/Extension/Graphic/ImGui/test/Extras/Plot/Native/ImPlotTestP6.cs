@@ -524,5 +524,113 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotLine("label", new short[] {1, 2, 3}, 3, 1.0, 0.0, ImPlotLineFlags.None, 0));
         }
+        
+        /// <summary>
+        /// Tests that plot inf lines byte array throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotInfLines_ByteArray_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotInfLines("label", new byte[0], 0));
+        }
+        
+        /// <summary>
+        /// Tests that plot inf lines short array throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotInfLines_ShortArray_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotInfLines("label", new short[0], 0));
+        }
+        
+        /// <summary>
+        /// Tests that plot inf lines u short array throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotInfLines_UShortArray_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotInfLines("label", new ushort[0], 0));
+        }
+        
+        /// <summary>
+        /// Tests that plot inf lines int array throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotInfLines_IntArray_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotInfLines("label", new int[0], 0));
+        }
+        
+        /// <summary>
+        /// Tests that plot inf lines u int array throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotInfLines_UIntArray_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotInfLines("label", new uint[0], 0));
+        }
+        
+        /// <summary>
+        /// Tests that plot inf lines long array throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotInfLines_LongArray_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotInfLines("label", new long[0], 0));
+        }
+        
+        /// <summary>
+        /// Tests that plot inf lines u long array throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotInfLines_ULongArray_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotInfLines("label", new ulong[0], 0));
+        }
+        
+        /// <summary>
+        /// Tests that plot line float array throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotLine_FloatArray_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotLine("label", new float[0], 0));
+        }
+        
+        /// <summary>
+        /// Tests that plot line double array throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotLine_DoubleArray_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotLine("label", new double[0], 0));
+        }
+        
+        /// <summary>
+        /// Tests that plot line s byte array throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotLine_SByteArray_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotLine("label", new sbyte[0], 0));
+        }
+        
+        /// <summary>
+        /// Tests that plot line byte array throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotLine_ByteArray_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotLine("label", new byte[0], 0));
+        }
+        
+        /// <summary>
+        /// Tests that plot line short array throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotLine_ShortArray_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotLine("label", new short[0], 0));
+        }
     }
 }
