@@ -121,7 +121,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         ///     Tests that plot error bars int throws dll not found exception
         /// </summary>
         [Fact]
-        public void PlotErrorBars_Int_ThrowsDllNotFoundException()
+        public void V2_PlotErrorBars_Int_ThrowsDllNotFoundException()
         {
             Assert.Throws<DllNotFoundException>(() =>
             {
@@ -206,6 +206,142 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
                 sbyte @sbyte = 0;
                 ImPlot.PlotErrorBars("label", ref @sbyte, ref @sbyte, ref @sbyte, ref @sbyte, 1);
             });
+        }
+        /// <summary>
+        /// Tests that plot error bars float throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotErrorBars_Float_ThrowsDllNotFoundException()
+        {
+            float xs = 0, ys = 0, err = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref err, 1, ImPlotErrorBarsFlags.None, 0));
+        }
+        
+        /// <summary>
+        /// Tests that plot error bars float with stride throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotErrorBars_Float_WithStride_ThrowsDllNotFoundException()
+        {
+            float xs = 0, ys = 0, err = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref err, 1, ImPlotErrorBarsFlags.None, 0, 4));
+        }
+        /// <summary>
+        /// Tests that v 2 plot error bars double throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void V2_PlotErrorBars_Double_ThrowsDllNotFoundException()
+        {
+            double xs = 0, ys = 0, err = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref err, 1));
+        }
+        /// <summary>
+        /// Tests that v 2 plot error bars double with flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void V2_PlotErrorBars_Double_WithFlags_ThrowsDllNotFoundException()
+        {
+            double xs = 0, ys = 0, err = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref err, 1, ImPlotErrorBarsFlags.None));
+        }
+        /// <summary>
+        /// Tests that v 2 plot error bars s byte throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void V2_PlotErrorBars_SByte_ThrowsDllNotFoundException()
+        {
+            sbyte xs = 0, ys = 0, err = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref err, 1));
+        }
+        /// <summary>
+        /// Tests that v 2 plot error bars byte throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void V2_PlotErrorBars_Byte_ThrowsDllNotFoundException()
+        {
+            byte xs = 0, ys = 0, err = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref err, 1));
+        }
+        /// <summary>
+        /// Tests that v 2 plot error bars short throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void V2_PlotErrorBars_Short_ThrowsDllNotFoundException()
+        {
+            short xs = 0, ys = 0, err = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref err, 1));
+        }
+        /// <summary>
+        /// Tests that v 2 plot error bars u short throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void V2_PlotErrorBars_UShort_ThrowsDllNotFoundException()
+        {
+            ushort xs = 0, ys = 0, err = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref err, 1));
+        }
+        /// <summary>
+        /// Tests that plot error bars int throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotErrorBars_Int_ThrowsDllNotFoundException()
+        {
+            int xs = 0, ys = 0, err = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref err, 1));
+        }
+        /// <summary>
+        /// Tests that v 2 plot error bars u int throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void V2_PlotErrorBars_UInt_ThrowsDllNotFoundException()
+        {
+            uint xs = 0, ys = 0, err = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref err, 1));
+        }
+        /// <summary>
+        /// Tests that v 2 plot error bars long throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void V2_PlotErrorBars_Long_ThrowsDllNotFoundException()
+        {
+            long xs = 0, ys = 0, err = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref err, 1));
+        }
+        /// <summary>
+        /// Tests that v 2 plot error bars u long throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void V2_PlotErrorBars_ULong_ThrowsDllNotFoundException()
+        {
+            ulong xs = 0, ys = 0, err = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref err, 1));
+        }
+        /// <summary>
+        /// Tests that v 2 plot error bars float neg pos throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void V2_PlotErrorBars_Float_NegPos_ThrowsDllNotFoundException()
+        {
+            float xs = 0, ys = 0, neg = 0, pos = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, 1));
+        }
+        /// <summary>
+        /// Tests that v 2 plot error bars double neg pos throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void V2_PlotErrorBars_Double_NegPos_ThrowsDllNotFoundException()
+        {
+            double xs = 0, ys = 0, neg = 0, pos = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, 1));
+        }
+        /// <summary>
+        /// Tests that v 2 plot error bars s byte neg pos throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void V2_PlotErrorBars_SByte_NegPos_ThrowsDllNotFoundException()
+        {
+            sbyte xs = 0, ys = 0, neg = 0, pos = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, 1));
         }
     }
 }

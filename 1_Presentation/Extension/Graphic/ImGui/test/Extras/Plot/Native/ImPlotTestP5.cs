@@ -526,5 +526,526 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new double[0], 0, 0, 0.0, 1.0));
         }
+        
+        /// <summary>
+        /// Tests that v 2 plot error bars sbyte throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void V2_PlotErrorBars_Sbyte_ThrowsDllNotFoundException()
+        {
+            sbyte xs = 0, ys = 0, neg = 0, pos = 0;
+            int count = 1;
+            ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
+            
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags));
+        }
+        
+        /// <summary>
+        /// Tests that plot error bars sbyte with offset throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotErrorBars_Sbyte_WithOffset_ThrowsDllNotFoundException()
+        {
+            sbyte xs = 0, ys = 0, neg = 0, pos = 0;
+            int count = 1, offset = 0;
+            ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
+            
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset));
+        }
+        
+        /// <summary>
+        /// Tests that plot error bars sbyte with offset and stride throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotErrorBars_Sbyte_WithOffsetAndStride_ThrowsDllNotFoundException()
+        {
+            sbyte xs = 0, ys = 0, neg = 0, pos = 0;
+            int count = 1, offset = 0, stride = 1;
+            ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
+            
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset, stride));
+        }
+        
+        /// <summary>
+        /// Tests that plot error bars byte throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotErrorBars_Byte_ThrowsDllNotFoundException()
+        {
+            byte xs = 0, ys = 0, neg = 0, pos = 0;
+            int count = 1;
+            
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count));
+        }
+        
+        /// <summary>
+        /// Tests that plot error bars byte with flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotErrorBars_Byte_WithFlags_ThrowsDllNotFoundException()
+        {
+            byte xs = 0, ys = 0, neg = 0, pos = 0;
+            int count = 1;
+            ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
+            
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags));
+        }
+        
+        /// <summary>
+        /// Tests that plot error bars byte with offset throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotErrorBars_Byte_WithOffset_ThrowsDllNotFoundException()
+        {
+            byte xs = 0, ys = 0, neg = 0, pos = 0;
+            int count = 1, offset = 0;
+            ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
+            
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset));
+        }
+        
+        /// <summary>
+        /// Tests that plot error bars byte with offset and stride throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotErrorBars_Byte_WithOffsetAndStride_ThrowsDllNotFoundException()
+        {
+            byte xs = 0, ys = 0, neg = 0, pos = 0;
+            int count = 1, offset = 0, stride = 1;
+            ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
+            
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset, stride));
+        }
+        
+        /// <summary>
+        /// Tests that plot error bars short throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotErrorBars_Short_ThrowsDllNotFoundException()
+        {
+            short xs = 0, ys = 0, neg = 0, pos = 0;
+            int count = 1;
+            
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count));
+        }
+        
+        /// <summary>
+        /// Tests that plot error bars short with flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotErrorBars_Short_WithFlags_ThrowsDllNotFoundException()
+        {
+            short xs = 0, ys = 0, neg = 0, pos = 0;
+            int count = 1;
+            ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
+            
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags));
+        }
+        
+        /// <summary>
+        /// Tests that plot error bars short with offset throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotErrorBars_Short_WithOffset_ThrowsDllNotFoundException()
+        {
+            short xs = 0, ys = 0, neg = 0, pos = 0;
+            int count = 1, offset = 0;
+            ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
+            
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset));
+        }
+        
+        /// <summary>
+        /// Tests that plot error bars short with offset and stride throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotErrorBars_Short_WithOffsetAndStride_ThrowsDllNotFoundException()
+        {
+            short xs = 0, ys = 0, neg = 0, pos = 0;
+            int count = 1, offset = 0, stride = 1;
+            ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
+            
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset, stride));
+        }
+        
+        /// <summary>
+        /// Tests that plot error bars u short throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotErrorBars_UShort_ThrowsDllNotFoundException()
+        {
+            ushort xs = 0, ys = 0, neg = 0, pos = 0;
+            int count = 1;
+            
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count));
+        }
+        
+        /// <summary>
+        /// Tests that plot error bars u short with flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotErrorBars_UShort_WithFlags_ThrowsDllNotFoundException()
+        {
+            ushort xs = 0, ys = 0, neg = 0, pos = 0;
+            int count = 1;
+            ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
+            
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags));
+        }
+        
+        /// <summary>
+        /// Tests that plot error bars u short with offset throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotErrorBars_UShort_WithOffset_ThrowsDllNotFoundException()
+        {
+            ushort xs = 0, ys = 0, neg = 0, pos = 0;
+            int count = 1, offset = 0;
+            ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
+            
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset));
+        }
+        
+        /// <summary>
+        /// Tests that plot error bars u short with offset and stride throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotErrorBars_UShort_WithOffsetAndStride_ThrowsDllNotFoundException()
+        {
+            ushort xs = 0, ys = 0, neg = 0, pos = 0;
+            int count = 1, offset = 0, stride = 1;
+            ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
+            
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset, stride));
+        }
+        
+        /// <summary>
+        /// Tests that plot error bars int throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotErrorBars_Int_ThrowsDllNotFoundException()
+        {
+            int xs = 0, ys = 0, neg = 0, pos = 0;
+            int count = 1;
+            
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count));
+        }
+        
+        /// <summary>
+        /// Tests that plot error bars int with flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotErrorBars_Int_WithFlags_ThrowsDllNotFoundException()
+        {
+            int xs = 0, ys = 0, neg = 0, pos = 0;
+            int count = 1;
+            ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
+            
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags));
+        }
+        
+        /// <summary>
+        /// Tests that plot error bars int with offset throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotErrorBars_Int_WithOffset_ThrowsDllNotFoundException()
+        {
+            int xs = 0, ys = 0, neg = 0, pos = 0;
+            int count = 1, offset = 0;
+            ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
+            
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset));
+        }
+        
+        /// <summary>
+        /// Tests that plot error bars int with offset and stride throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotErrorBars_Int_WithOffsetAndStride_ThrowsDllNotFoundException()
+        {
+            int xs = 0, ys = 0, neg = 0, pos = 0;
+            int count = 1, offset = 0, stride = 1;
+            ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
+            
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset, stride));
+        }
+        
+        /// <summary>
+        /// Tests that plot error bars u int throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotErrorBars_UInt_ThrowsDllNotFoundException()
+        {
+            uint xs = 0, ys = 0, neg = 0, pos = 0;
+            int count = 1;
+            
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count));
+        }
+        
+        /// <summary>
+        /// Tests that plot error bars u int with flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotErrorBars_UInt_WithFlags_ThrowsDllNotFoundException()
+        {
+            uint xs = 0, ys = 0, neg = 0, pos = 0;
+            int count = 1;
+            ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
+            
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags));
+        }
+        
+        /// <summary>
+        /// Tests that plot error bars u int with offset throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotErrorBars_UInt_WithOffset_ThrowsDllNotFoundException()
+        {
+            uint xs = 0, ys = 0, neg = 0, pos = 0;
+            int count = 1, offset = 0;
+            ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
+            
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset));
+        }
+        
+        /// <summary>
+        /// Tests that plot error bars u int with offset and stride throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotErrorBars_UInt_WithOffsetAndStride_ThrowsDllNotFoundException()
+        {
+            uint xs = 0, ys = 0, neg = 0, pos = 0;
+            int count = 1, offset = 0, stride = 1;
+            ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
+            
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset, stride));
+        }
+        
+        /// <summary>
+        /// Tests that plot error bars long throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotErrorBars_Long_ThrowsDllNotFoundException()
+        {
+            long xs = 0, ys = 0, neg = 0, pos = 0;
+            int count = 1;
+            
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count));
+        }
+        
+        /// <summary>
+        /// Tests that plot error bars long with flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotErrorBars_Long_WithFlags_ThrowsDllNotFoundException()
+        {
+            long xs = 0, ys = 0, neg = 0, pos = 0;
+            int count = 1;
+            ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
+            
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags));
+        }
+        
+        /// <summary>
+        /// Tests that plot error bars long with offset throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotErrorBars_Long_WithOffset_ThrowsDllNotFoundException()
+        {
+            long xs = 0, ys = 0, neg = 0, pos = 0;
+            int count = 1, offset = 0;
+            ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
+            
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset));
+        }
+        
+        /// <summary>
+        /// Tests that plot error bars long with offset and stride throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotErrorBars_Long_WithOffsetAndStride_ThrowsDllNotFoundException()
+        {
+            long xs = 0, ys = 0, neg = 0, pos = 0;
+            int count = 1, offset = 0, stride = 1;
+            ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
+            
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset, stride));
+        }
+        
+        /// <summary>
+        /// Tests that plot error bars u long throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotErrorBars_ULong_ThrowsDllNotFoundException()
+        {
+            ulong xs = 0, ys = 0, neg = 0, pos = 0;
+            int count = 1;
+            
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count));
+        }
+        
+        /// <summary>
+        /// Tests that plot error bars u long with flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotErrorBars_ULong_WithFlags_ThrowsDllNotFoundException()
+        {
+            ulong xs = 0, ys = 0, neg = 0, pos = 0;
+            int count = 1;
+            ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
+            
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags));
+        }
+        
+        /// <summary>
+        /// Tests that plot error bars u long with offset throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotErrorBars_ULong_WithOffset_ThrowsDllNotFoundException()
+        {
+            ulong xs = 0, ys = 0, neg = 0, pos = 0;
+            int count = 1, offset = 0;
+            ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
+            
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset));
+        }
+        
+        /// <summary>
+        /// Tests that plot error bars u long with offset and stride throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotErrorBars_ULong_WithOffsetAndStride_ThrowsDllNotFoundException()
+        {
+            ulong xs = 0, ys = 0, neg = 0, pos = 0;
+            int count = 1, offset = 0, stride = 1;
+            ImPlotErrorBarsFlags flags = ImPlotErrorBarsFlags.None;
+            
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotErrorBars("label", ref xs, ref ys, ref neg, ref pos, count, flags, offset, stride));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 plot heatmap float throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void V2_PlotHeatmap_Float_ThrowsDllNotFoundException()
+        {
+            float[] values = new float[1];
+            int rows = 1, cols = 1;
+            
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", values, rows, cols));
+        }
+        
+        /// <summary>
+        /// Tests that plot heatmap float with scale min throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_Float_WithScaleMin_ThrowsDllNotFoundException()
+        {
+            float[] values = new float[1];
+            int rows = 1, cols = 1;
+            double scaleMin = 0;
+            
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", values, rows, cols, scaleMin));
+        }
+        
+        /// <summary>
+        /// Tests that plot heatmap float with scale min and max throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_Float_WithScaleMinAndMax_ThrowsDllNotFoundException()
+        {
+            float[] values = new float[1];
+            int rows = 1, cols = 1;
+            double scaleMin = 0, scaleMax = 1;
+            
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", values, rows, cols, scaleMin, scaleMax));
+        }
+        
+        /// <summary>
+        /// Tests that plot heatmap float with label fmt throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_Float_WithLabelFmt_ThrowsDllNotFoundException()
+        {
+            float[] values = new float[1];
+            int rows = 1, cols = 1;
+            double scaleMin = 0, scaleMax = 1;
+            string labelFmt = "%.1f";
+            
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", values, rows, cols, scaleMin, scaleMax, labelFmt));
+        }
+        
+        /// <summary>
+        /// Tests that plot heatmap float with bounds min throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_Float_WithBoundsMin_ThrowsDllNotFoundException()
+        {
+            float[] values = new float[1];
+            int rows = 1, cols = 1;
+            double scaleMin = 0, scaleMax = 1;
+            string labelFmt = "%.1f";
+            ImPlotPoint boundsMin = new ImPlotPoint {X = 0, Y = 0};
+            
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", values, rows, cols, scaleMin, scaleMax, labelFmt, boundsMin));
+        }
+        
+        /// <summary>
+        /// Tests that plot heatmap float with bounds max throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_Float_WithBoundsMax_ThrowsDllNotFoundException()
+        {
+            float[] values = new float[1];
+            int rows = 1, cols = 1;
+            double scaleMin = 0, scaleMax = 1;
+            string labelFmt = "%.1f";
+            ImPlotPoint boundsMin = new ImPlotPoint {X = 0, Y = 0};
+            ImPlotPoint boundsMax = new ImPlotPoint {X = 1, Y = 1};
+            
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", values, rows, cols, scaleMin, scaleMax, labelFmt, boundsMin, boundsMax));
+        }
+        
+        /// <summary>
+        /// Tests that plot heatmap float with flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_Float_WithFlags_ThrowsDllNotFoundException()
+        {
+            float[] values = new float[1];
+            int rows = 1, cols = 1;
+            double scaleMin = 0, scaleMax = 1;
+            string labelFmt = "%.1f";
+            ImPlotPoint boundsMin = new ImPlotPoint {X = 0, Y = 0};
+            ImPlotPoint boundsMax = new ImPlotPoint {X = 1, Y = 1};
+            ImPlotHeatmapFlags flags = ImPlotHeatmapFlags.None;
+            
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", values, rows, cols, scaleMin, scaleMax, labelFmt, boundsMin, boundsMax, flags));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 plot heatmap double throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void V2_PlotHeatmap_Double_ThrowsDllNotFoundException()
+        {
+            double[] values = new double[1];
+            int rows = 1, cols = 1;
+            
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", values, rows, cols));
+        }
+        
+        /// <summary>
+        /// Tests that plot heatmap double with scale min throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_Double_WithScaleMin_ThrowsDllNotFoundException()
+        {
+            double[] values = new double[1];
+            int rows = 1, cols = 1;
+            double scaleMin = 0;
+            
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", values, rows, cols, scaleMin));
+        }
     }
 }

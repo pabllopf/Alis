@@ -90,7 +90,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         ///     Tests that get plot selection throws dll not found exception
         /// </summary>
         [Fact]
-        public void GetPlotSelection_ThrowsDllNotFoundException()
+        public void V2_GetPlotSelection_ThrowsDllNotFoundException()
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.GetPlotSelection());
         }
@@ -99,7 +99,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         ///     Tests that get plot selection with x axis throws dll not found exception
         /// </summary>
         [Fact]
-        public void GetPlotSelection_WithXAxis_ThrowsDllNotFoundException()
+        public void V2_GetPlotSelection_WithXAxis_ThrowsDllNotFoundException()
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.GetPlotSelection(0));
         }
@@ -171,7 +171,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         ///     Tests that is axis hovered throws dll not found exception
         /// </summary>
         [Fact]
-        public void IsAxisHovered_ThrowsDllNotFoundException()
+        public void V2_IsAxisHovered_ThrowsDllNotFoundException()
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.IsAxisHovered(0));
         }
@@ -733,5 +733,177 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.GetPlotDrawList());
         }
+        
+        /// <summary>
+        /// Tests that get plot limits throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void GetPlotLimits_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.GetPlotLimits((ImAxis) (-1)));
+        }
+        
+        /// <summary>
+        /// Tests that get plot limits with y axis throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void GetPlotLimits_WithYAxis_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.GetPlotLimits((ImAxis) (-1), (ImAxis) (-1)));
+        }
+        
+        /// <summary>
+        /// Tests that get plot mouse pos throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void GetPlotMousePos_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.GetPlotMousePos());
+        }
+        
+        /// <summary>
+        /// Tests that v 2 get plot mouse pos with x axis throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void V2_GetPlotMousePos_WithXAxis_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.GetPlotMousePos((ImAxis) (-1)));
+        }
+        
+        /// <summary>
+        /// Tests that get plot mouse pos with axes throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void GetPlotMousePos_WithAxes_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.GetPlotMousePos((ImAxis) (-1), (ImAxis) (-1)));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 get plot pos throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void V2_GetPlotPos_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.GetPlotPos());
+        }
+        
+        /// <summary>
+        /// Tests that v 3 get plot selection throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void V3_GetPlotSelection_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.GetPlotSelection());
+        }
+        
+        /// <summary>
+        /// Tests that v 2 v 2 get plot selection with x axis throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void V2_V2_GetPlotSelection_WithXAxis_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.GetPlotSelection((ImAxis) (-1)));
+        }
+        
+        /// <summary>
+        /// Tests that get plot selection with axes throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void GetPlotSelection_WithAxes_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.GetPlotSelection((ImAxis) (-1), (ImAxis) (-1)));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 get plot size throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void V2_GetPlotSize_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.GetPlotSize());
+        }
+        
+        /// <summary>
+        /// Tests that v 2 get style throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void V2_GetStyle_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.GetStyle());
+        }
+        
+        /// <summary>
+        /// Tests that get style color name throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void GetStyleColorName_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<MarshalDirectiveException>(() => ImPlot.GetStyleColorName((ImPlotCol) (-1)));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 hide next item throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void V2_HideNextItem_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.HideNextItem());
+        }
+        
+        /// <summary>
+        /// Tests that v 2 hide next item with hidden throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void V2_HideNextItem_WithHidden_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.HideNextItem(true));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 hide next item with hidden and cond throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void V2_HideNextItem_WithHiddenAndCond_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.HideNextItem(true, ImPlotCond.Once));
+        }
+        
+        /// <summary>
+        /// Tests that is axis hovered throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void IsAxisHovered_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.IsAxisHovered((ImAxis) (-1)));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 is legend entry hovered throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void V2_IsLegendEntryHovered_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.IsLegendEntryHovered("label"));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 is plot hovered throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void V2_IsPlotHovered_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.IsPlotHovered());
+        }
+        
+        /// <summary>
+        /// Tests that v 2 is plot selected throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void V2_IsPlotSelected_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.IsPlotSelected());
+        }
+        
     }
 }

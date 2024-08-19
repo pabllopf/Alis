@@ -2841,5 +2841,115 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PopColormap(1));
         }
+        
+        /// <summary>
+        /// Tests that plot stems u int with flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotStems_UInt_WithFlags_ThrowsDllNotFoundException()
+        {
+            uint xs = 0, ys = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 10, 0.0, ImPlotStemsFlags.None));
+        }
+        
+        /// <summary>
+        /// Tests that plot stems u int with offset throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotStems_UInt_WithOffset_ThrowsDllNotFoundException()
+        {
+            uint xs = 0, ys = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 10, 0.0, ImPlotStemsFlags.None, 0));
+        }
+        
+        /// <summary>
+        /// Tests that plot stems u int with stride throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotStems_UInt_WithStride_ThrowsDllNotFoundException()
+        {
+            uint xs = 0, ys = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 10, 0.0, ImPlotStemsFlags.None, 0, 0));
+        }
+        
+        /// <summary>
+        /// Tests that plot stems long throws dll not found exception v 2
+        /// </summary>
+        [Fact]
+        public void PlotStems_Long_ThrowsDllNotFoundException_v2()
+        {
+            long xs = 0, ys = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 10));
+        }
+        
+        /// <summary>
+        /// Tests that plot stems long with ref throws dll not found exception v 2
+        /// </summary>
+        [Fact]
+        public void PlotStems_Long_WithRef_ThrowsDllNotFoundException_v2()
+        {
+            long xs = 0, ys = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 10, 0.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot stems long with flags throws dll not found exception v 2
+        /// </summary>
+        [Fact]
+        public void PlotStems_Long_WithFlags_ThrowsDllNotFoundException_v2()
+        {
+            long xs = 0, ys = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 10, 0.0, ImPlotStemsFlags.None));
+        }
+        
+        /// <summary>
+        /// Tests that plot stems long with offset throws dll not found exception v 2
+        /// </summary>
+        [Fact]
+        public void PlotStems_Long_WithOffset_ThrowsDllNotFoundException_v2()
+        {
+            long xs = 0, ys = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 10, 0.0, ImPlotStemsFlags.None, 0));
+        }
+        
+        /// <summary>
+        /// Tests that plot stems long with stride throws dll not found exception v 2
+        /// </summary>
+        [Fact]
+        public void PlotStems_Long_WithStride_ThrowsDllNotFoundException_v2()
+        {
+            long xs = 0, ys = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 10, 0.0, ImPlotStemsFlags.None, 0, 0));
+        }
+        
+        /// <summary>
+        /// Tests that plot stems u long throws dll not found exception v 2
+        /// </summary>
+        [Fact]
+        public void PlotStems_ULong_ThrowsDllNotFoundException_v2()
+        {
+            ulong xs = 0, ys = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 10));
+        }
+        
+        /// <summary>
+        /// Tests that plot stems u long with ref throws dll not found exception v 2
+        /// </summary>
+        [Fact]
+        public void PlotStems_ULong_WithRef_ThrowsDllNotFoundException_v2()
+        {
+            ulong xs = 0, ys = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 10, 0.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot stems u long with flags throws dll not found exception v 2
+        /// </summary>
+        [Fact]
+        public void PlotStems_ULong_WithFlags_ThrowsDllNotFoundException_v2()
+        {
+            ulong xs = 0, ys = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 10, 0.0, ImPlotStemsFlags.None));
+        }
     }
 }

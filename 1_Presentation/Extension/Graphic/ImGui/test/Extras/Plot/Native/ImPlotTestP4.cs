@@ -389,5 +389,347 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new[] {1}, 1, 1, 0.0, 1.0, "%.1f", new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, ImPlotHeatmapFlags.None));
         }
+        
+        /// <summary>
+        /// Tests that v 2 plot heatmap double array throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void V2_PlotHeatmap_DoubleArray_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new double[0], 0, 0, 0.0, 0.0, "fmt", new ImPlotPoint()));
+        }
+        
+        /// <summary>
+        /// Tests that plot heatmap double array with bounds max throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_DoubleArray_WithBoundsMax_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new double[0], 0, 0, 0.0, 0.0, "fmt", new ImPlotPoint(), new ImPlotPoint()));
+        }
+        
+        /// <summary>
+        /// Tests that plot heatmap double array with flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_DoubleArray_WithFlags_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new double[0], 0, 0, 0.0, 0.0, "fmt", new ImPlotPoint(), new ImPlotPoint(), ImPlotHeatmapFlags.None));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 plot heatmap s byte array throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void V2_PlotHeatmap_SByteArray_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new sbyte[0], 0, 0));
+        }
+        
+        /// <summary>
+        /// Tests that plot heatmap s byte array with scale min throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_SByteArray_WithScaleMin_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new sbyte[0], 0, 0, 0.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot heatmap s byte array with scale max throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_SByteArray_WithScaleMax_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new sbyte[0], 0, 0, 0.0, 0.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot heatmap s byte array with label fmt throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_SByteArray_WithLabelFmt_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new sbyte[0], 0, 0, 0.0, 0.0, "fmt"));
+        }
+        
+        /// <summary>
+        /// Tests that plot heatmap s byte array with bounds min throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_SByteArray_WithBoundsMin_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new sbyte[0], 0, 0, 0.0, 0.0, "fmt", new ImPlotPoint()));
+        }
+        
+        /// <summary>
+        /// Tests that plot heatmap s byte array with bounds max throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_SByteArray_WithBoundsMax_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new sbyte[0], 0, 0, 0.0, 0.0, "fmt", new ImPlotPoint(), new ImPlotPoint()));
+        }
+        
+        /// <summary>
+        /// Tests that plot heatmap s byte array with flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_SByteArray_WithFlags_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new sbyte[0], 0, 0, 0.0, 0.0, "fmt", new ImPlotPoint(), new ImPlotPoint(), ImPlotHeatmapFlags.None));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 plot heatmap byte array throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void V2_PlotHeatmap_ByteArray_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new byte[0], 0, 0));
+        }
+        
+        /// <summary>
+        /// Tests that plot heatmap byte array with scale min throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_ByteArray_WithScaleMin_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new byte[0], 0, 0, 0.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot heatmap byte array with scale max throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_ByteArray_WithScaleMax_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new byte[0], 0, 0, 0.0, 0.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot heatmap byte array with label fmt throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_ByteArray_WithLabelFmt_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new byte[0], 0, 0, 0.0, 0.0, "fmt"));
+        }
+        
+        /// <summary>
+        /// Tests that plot heatmap byte array with bounds min throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_ByteArray_WithBoundsMin_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new byte[0], 0, 0, 0.0, 0.0, "fmt", new ImPlotPoint()));
+        }
+        
+        /// <summary>
+        /// Tests that plot heatmap byte array with bounds max throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_ByteArray_WithBoundsMax_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new byte[0], 0, 0, 0.0, 0.0, "fmt", new ImPlotPoint(), new ImPlotPoint()));
+        }
+        
+        /// <summary>
+        /// Tests that plot heatmap byte array with flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_ByteArray_WithFlags_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new byte[0], 0, 0, 0.0, 0.0, "fmt", new ImPlotPoint(), new ImPlotPoint(), ImPlotHeatmapFlags.None));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 plot heatmap short array throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void V2_PlotHeatmap_ShortArray_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new short[0], 0, 0));
+        }
+        
+        /// <summary>
+        /// Tests that plot heatmap short array with scale min throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_ShortArray_WithScaleMin_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new short[0], 0, 0, 0.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot heatmap short array with scale max throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_ShortArray_WithScaleMax_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new short[0], 0, 0, 0.0, 0.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot heatmap short array with label fmt throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_ShortArray_WithLabelFmt_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new short[0], 0, 0, 0.0, 0.0, "fmt"));
+        }
+        
+        /// <summary>
+        /// Tests that plot heatmap short array with bounds min throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_ShortArray_WithBoundsMin_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new short[0], 0, 0, 0.0, 0.0, "fmt", new ImPlotPoint()));
+        }
+        
+        /// <summary>
+        /// Tests that plot heatmap short array with bounds max throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_ShortArray_WithBoundsMax_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new short[0], 0, 0, 0.0, 0.0, "fmt", new ImPlotPoint(), new ImPlotPoint()));
+        }
+        
+        /// <summary>
+        /// Tests that plot heatmap short array with flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_ShortArray_WithFlags_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new short[0], 0, 0, 0.0, 0.0, "fmt", new ImPlotPoint(), new ImPlotPoint(), ImPlotHeatmapFlags.None));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 plot heatmap u short array throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void V2_PlotHeatmap_UShortArray_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new ushort[0], 0, 0));
+        }
+        
+        /// <summary>
+        /// Tests that plot heatmap u short array with scale min throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_UShortArray_WithScaleMin_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new ushort[0], 0, 0, 0.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot heatmap u short array with scale max throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_UShortArray_WithScaleMax_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new ushort[0], 0, 0, 0.0, 0.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot heatmap u short array with label fmt throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_UShortArray_WithLabelFmt_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new ushort[0], 0, 0, 0.0, 0.0, "fmt"));
+        }
+        
+        /// <summary>
+        /// Tests that plot heatmap u short array with bounds min throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_UShortArray_WithBoundsMin_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new ushort[0], 0, 0, 0.0, 0.0, "fmt", new ImPlotPoint()));
+        }
+        
+        /// <summary>
+        /// Tests that plot heatmap u short array with bounds max throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_UShortArray_WithBoundsMax_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new ushort[0], 0, 0, 0.0, 0.0, "fmt", new ImPlotPoint(), new ImPlotPoint()));
+        }
+        
+        /// <summary>
+        /// Tests that plot heatmap u short array with flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_UShortArray_WithFlags_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new ushort[0], 0, 0, 0.0, 0.0, "fmt", new ImPlotPoint(), new ImPlotPoint(), ImPlotHeatmapFlags.None));
+        }
+        
+        /// <summary>
+        /// Tests that v 2 plot heatmap int array throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void V2_PlotHeatmap_IntArray_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new int[0], 0, 0));
+        }
+        
+        /// <summary>
+        /// Tests that plot heatmap int array with scale min throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_IntArray_WithScaleMin_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new int[0], 0, 0, 0.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot heatmap int array with scale max throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_IntArray_WithScaleMax_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new int[0], 0, 0, 0.0, 0.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot heatmap int array with label fmt throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_IntArray_WithLabelFmt_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new int[0], 0, 0, 0.0, 0.0, "fmt"));
+        }
+        
+        /// <summary>
+        /// Tests that plot heatmap int array with bounds min throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_IntArray_WithBoundsMin_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new int[0], 0, 0, 0.0, 0.0, "fmt", new ImPlotPoint()));
+        }
+        
+        /// <summary>
+        /// Tests that plot heatmap int array with bounds max throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_IntArray_WithBoundsMax_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new int[0], 0, 0, 0.0, 0.0, "fmt", new ImPlotPoint(), new ImPlotPoint()));
+        }
+        
+        /// <summary>
+        /// Tests that plot heatmap int array with flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_IntArray_WithFlags_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new int[0], 0, 0, 0.0, 0.0, "fmt", new ImPlotPoint(), new ImPlotPoint(), ImPlotHeatmapFlags.None));
+        }
     }
 }
