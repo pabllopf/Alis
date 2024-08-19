@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.ImGui.Extras.Node;
 using Xunit;
@@ -639,6 +640,332 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         public void LoadEditorStateFromIniString_ShouldLoadEditorStateFromIniString()
         {
             Assert.Throws<DllNotFoundException>(() => ImNodes.EditorContextCreate());
+        }
+        
+        /// <summary>
+        /// Tests that mini map throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void MiniMap_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImNodes.MiniMap());
+        }
+        
+        /// <summary>
+        /// Tests that mini map with minimap size fraction throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void MiniMap_WithMinimapSizeFraction_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImNodes.MiniMap(0.2f));
+        }
+        
+        /// <summary>
+        /// Tests that mini map with minimap size fraction and location throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void MiniMap_WithMinimapSizeFractionAndLocation_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImNodes.MiniMap(0.2f, ImNodesMiniMapLocation.TopLeft));
+        }
+        
+        /// <summary>
+        /// Tests that mini map with minimap size fraction location and callback throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void MiniMap_WithMinimapSizeFractionLocationAndCallback_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImNodes.MiniMap(0.2f, ImNodesMiniMapLocation.TopLeft, null));
+        }
+        
+        /// <summary>
+        /// Tests that mini map with all params throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void MiniMap_WithAllParams_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImNodes.MiniMap(0.2f, ImNodesMiniMapLocation.TopLeft, null, null));
+        }
+        
+        /// <summary>
+        /// Tests that num selected links throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void NumSelectedLinks_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImNodes.NumSelectedLinks());
+        }
+        
+        /// <summary>
+        /// Tests that num selected nodes throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void NumSelectedNodes_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImNodes.NumSelectedNodes());
+        }
+        
+        /// <summary>
+        /// Tests that pop attribute flag throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PopAttributeFlag_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImNodes.PopAttributeFlag());
+        }
+        
+        /// <summary>
+        /// Tests that pop color style throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PopColorStyle_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImNodes.PopColorStyle());
+        }
+        
+        /// <summary>
+        /// Tests that pop style var throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PopStyleVar_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImNodes.PopStyleVar());
+        }
+        
+        /// <summary>
+        /// Tests that pop style var with count throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PopStyleVar_WithCount_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImNodes.PopStyleVar(1));
+        }
+        
+        /// <summary>
+        /// Tests that push attribute flag throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PushAttributeFlag_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImNodes.PushAttributeFlag(ImNodesConfig.None));
+        }
+        
+        /// <summary>
+        /// Tests that push color style throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PushColorStyle_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImNodes.PushColorStyle(ImNodesCol.NodeBackground, 0));
+        }
+        
+        /// <summary>
+        /// Tests that push style var float throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PushStyleVar_Float_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImNodes.PushStyleVar(ImNodesStyleVar.NodePadding, 0.0f));
+        }
+        
+        /// <summary>
+        /// Tests that push style var vector 2 throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PushStyleVar_Vector2_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImNodes.PushStyleVar(ImNodesStyleVar.NodePadding, new Vector2(0, 0)));
+        }
+        
+        /// <summary>
+        /// Tests that save current editor state to ini file throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void SaveCurrentEditorStateToIniFile_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImNodes.SaveCurrentEditorStateToIniFile("fileName"));
+        }
+        
+        /// <summary>
+        /// Tests that save current editor state to ini string throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void SaveCurrentEditorStateToIniString_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<MarshalDirectiveException>(() => ImNodes.SaveCurrentEditorStateToIniString());
+        }
+        
+        /// <summary>
+        /// Tests that save current editor state to ini string with data size throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void SaveCurrentEditorStateToIniString_WithDataSize_ThrowsDllNotFoundException()
+        {
+            uint dataSize = 0;
+            Assert.Throws<MarshalDirectiveException>(() => ImNodes.SaveCurrentEditorStateToIniString(ref dataSize));
+        }
+        
+        /// <summary>
+        /// Tests that save editor state to ini file throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void SaveEditorStateToIniFile_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImNodes.SaveEditorStateToIniFile(new ImNodesEditorContext(), "fileName"));
+        }
+        
+        /// <summary>
+        /// Tests that save editor state to ini string throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void SaveEditorStateToIniString_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<MarshalDirectiveException>(() => ImNodes.SaveEditorStateToIniString(new ImNodesEditorContext()));
+        }
+        
+        /// <summary>
+        /// Tests that save editor state to ini string with data size throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void SaveEditorStateToIniString_WithDataSize_ThrowsDllNotFoundException()
+        {
+            uint dataSize = 0;
+            Assert.Throws<MarshalDirectiveException>(() => ImNodes.SaveEditorStateToIniString(new ImNodesEditorContext(), ref dataSize));
+        }
+        
+        /// <summary>
+        /// Tests that select link throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void SelectLink_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImNodes.SelectLink(0));
+        }
+        
+        /// <summary>
+        /// Tests that select node throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void SelectNode_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImNodes.SelectNode(0));
+        }
+        
+        /// <summary>
+        /// Tests that set current context throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void SetCurrentContext_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImNodes.SetCurrentContext(new ImNodesContext()));
+        }
+        
+        /// <summary>
+        /// Tests that set im gui context throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void SetImGuiContext_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImNodes.SetImGuiContext(IntPtr.Zero));
+        }
+        
+        /// <summary>
+        /// Tests that set node draggable throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void SetNodeDraggable_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImNodes.SetNodeDraggable(0, true));
+        }
+        
+        /// <summary>
+        /// Tests that set node editor space pos throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void SetNodeEditorSpacePos_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImNodes.SetNodeEditorSpacePos(0, new Vector2(0, 0)));
+        }
+        
+        /// <summary>
+        /// Tests that set node grid space pos throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void SetNodeGridSpacePos_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImNodes.SetNodeGridSpacePos(0, new Vector2(0, 0)));
+        }
+        
+        /// <summary>
+        /// Tests that set node screen space pos throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void SetNodeScreenSpacePos_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImNodes.SetNodeScreenSpacePos(0, new Vector2(0, 0)));
+        }
+        
+        /// <summary>
+        /// Tests that snap node to grid throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void SnapNodeToGrid_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImNodes.SnapNodeToGrid(0));
+        }
+        
+        /// <summary>
+        /// Tests that style colors classic throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void StyleColorsClassic_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImNodes.StyleColorsClassic());
+        }
+        
+        /// <summary>
+        /// Tests that style colors classic with dest throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void StyleColorsClassic_WithDest_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImNodes.StyleColorsClassic(new ImNodesStyle()));
+        }
+        
+        /// <summary>
+        /// Tests that style colors dark throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void StyleColorsDark_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImNodes.StyleColorsDark());
+        }
+        
+        /// <summary>
+        /// Tests that style colors dark with dest throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void StyleColorsDark_WithDest_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImNodes.StyleColorsDark(new ImNodesStyle()));
+        }
+        
+        /// <summary>
+        /// Tests that style colors light throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void StyleColorsLight_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImNodes.StyleColorsLight());
+        }
+        
+        /// <summary>
+        /// Tests that style colors light with dest throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void StyleColorsLight_WithDest_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImNodes.StyleColorsLight(new ImNodesStyle()));
         }
     }
 }

@@ -498,5 +498,68 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             double xs = 1.0, ys = 2.0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", ref xs, ref ys, 3, 0.0, ImPlotShadedFlags.None, 0, 2));
         }
+        
+        /// <summary>
+        /// Tests that plot shaded byte throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotShaded_Byte_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new byte[0], 0, 0.0, 0.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded byte with x start throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotShaded_Byte_WithXStart_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new byte[0], 0, 0.0, 0.0, 0.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded byte with flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotShaded_Byte_WithFlags_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new byte[0], 0, 0.0, 0.0, 0.0, ImPlotShadedFlags.None));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded byte with offset throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotShaded_Byte_WithOffset_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new byte[0], 0, 0.0, 0.0, 0.0, ImPlotShadedFlags.None, 0));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded byte with stride throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotShaded_Byte_WithStride_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new byte[0], 0, 0.0, 0.0, 0.0, ImPlotShadedFlags.None, 0, 0));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded short throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotShaded_Short_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new short[0], 0));
+        }
+        
+        /// <summary>
+        /// Tests that plot shaded short with y ref throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotShaded_Short_WithYRef_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotShaded("label", new short[0], 0, 0.0));
+        }
     }
 }

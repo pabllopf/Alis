@@ -173,7 +173,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void GetBackgroundDrawList_WithViewport_ThrowsDllNotFoundException()
         {
-            var viewport = new ImGuiViewportPtr(IntPtr.Zero);
+            ImGuiViewportPtr viewport = new ImGuiViewportPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.GetBackgroundDrawList(viewport));
         }
         
@@ -417,7 +417,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         [Fact]
         public void GetForegroundDrawList_WithViewport_ThrowsDllNotFoundException()
         {
-            var viewport = new ImGuiViewportPtr(IntPtr.Zero);
+            ImGuiViewportPtr viewport = new ImGuiViewportPtr(IntPtr.Zero);
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.GetForegroundDrawList(viewport));
         }
         
@@ -1093,6 +1093,467 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Vector4 v = new Vector4();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.InputFloat4("label", ref v));
+        }
+        
+        /// <summary>
+        /// Tests that drag scalar n throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void DragScalarN_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragScalarN("label", ImGuiDataType.Float, IntPtr.Zero, 1, 1.0f, IntPtr.Zero, IntPtr.Zero));
+        }
+        
+        /// <summary>
+        /// Tests that drag scalar n with format throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void DragScalarN_WithFormat_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragScalarN("label", ImGuiDataType.Float, IntPtr.Zero, 1, 1.0f, IntPtr.Zero, IntPtr.Zero, "format"));
+        }
+        
+        /// <summary>
+        /// Tests that drag scalar n with format and flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void DragScalarN_WithFormatAndFlags_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragScalarN("label", ImGuiDataType.Float, IntPtr.Zero, 1, 1.0f, IntPtr.Zero, IntPtr.Zero, "format", ImGuiSliderFlags.None));
+        }
+        
+        /// <summary>
+        /// Tests that dummy throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void Dummy_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.Dummy(new Vector2(1.0f, 1.0f)));
+        }
+        
+        /// <summary>
+        /// Tests that end throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void End_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.End());
+        }
+        
+        /// <summary>
+        /// Tests that end child throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void EndChild_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.EndChild());
+        }
+        
+        /// <summary>
+        /// Tests that end child frame throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void EndChildFrame_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.EndChildFrame());
+        }
+        
+        /// <summary>
+        /// Tests that end combo throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void EndCombo_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.EndCombo());
+        }
+        
+        /// <summary>
+        /// Tests that end disabled throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void EndDisabled_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.EndDisabled());
+        }
+        
+        /// <summary>
+        /// Tests that end drag drop source throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void EndDragDropSource_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.EndDragDropSource());
+        }
+        
+        /// <summary>
+        /// Tests that end drag drop target throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void EndDragDropTarget_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.EndDragDropTarget());
+        }
+        
+        /// <summary>
+        /// Tests that end frame throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void EndFrame_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.EndFrame());
+        }
+        
+        /// <summary>
+        /// Tests that end group throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void EndGroup_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.EndGroup());
+        }
+        
+        /// <summary>
+        /// Tests that end list box throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void EndListBox_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.EndListBox());
+        }
+        
+        /// <summary>
+        /// Tests that end main menu bar throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void EndMainMenuBar_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.EndMainMenuBar());
+        }
+        
+        /// <summary>
+        /// Tests that end menu throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void EndMenu_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.EndMenu());
+        }
+        
+        /// <summary>
+        /// Tests that end menu bar throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void EndMenuBar_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.EndMenuBar());
+        }
+        
+        /// <summary>
+        /// Tests that end popup throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void EndPopup_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.EndPopup());
+        }
+        
+        /// <summary>
+        /// Tests that end tab bar throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void EndTabBar_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.EndTabBar());
+        }
+        
+        /// <summary>
+        /// Tests that drag int throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void DragInt_ThrowsDllNotFoundException()
+        {
+            int v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt("label", ref v, 1.0f));
+        }
+        
+        /// <summary>
+        /// Tests that drag int with min throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void DragInt_WithMin_ThrowsDllNotFoundException()
+        {
+            int v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt("label", ref v, 1.0f, 0));
+        }
+        
+        /// <summary>
+        /// Tests that drag int with min max throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void DragInt_WithMinMax_ThrowsDllNotFoundException()
+        {
+            int v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt("label", ref v, 1.0f, 0, 100));
+        }
+        
+        /// <summary>
+        /// Tests that drag int with min max format throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void DragInt_WithMinMaxFormat_ThrowsDllNotFoundException()
+        {
+            int v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt("label", ref v, 1.0f, 0, 100, "%d"));
+        }
+        
+        /// <summary>
+        /// Tests that drag int with min max format flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void DragInt_WithMinMaxFormatFlags_ThrowsDllNotFoundException()
+        {
+            int v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt("label", ref v, 1.0f, 0, 100, "%d", ImGuiSliderFlags.None));
+        }
+        
+        /// <summary>
+        /// Tests that drag int 2 throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void DragInt2_ThrowsDllNotFoundException()
+        {
+            int v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt2("label", ref v));
+        }
+        
+        /// <summary>
+        /// Tests that drag int 2 with speed throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void DragInt2_WithSpeed_ThrowsDllNotFoundException()
+        {
+            int v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt2("label", ref v, 1.0f));
+        }
+        
+        /// <summary>
+        /// Tests that drag int 2 with speed min throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void DragInt2_WithSpeedMin_ThrowsDllNotFoundException()
+        {
+            int v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt2("label", ref v, 1.0f, 0));
+        }
+        
+        /// <summary>
+        /// Tests that drag int 2 with speed min max throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void DragInt2_WithSpeedMinMax_ThrowsDllNotFoundException()
+        {
+            int v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt2("label", ref v, 1.0f, 0, 100));
+        }
+        
+        /// <summary>
+        /// Tests that drag int 2 with speed min max format throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void DragInt2_WithSpeedMinMaxFormat_ThrowsDllNotFoundException()
+        {
+            int v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt2("label", ref v, 1.0f, 0, 100, "%d"));
+        }
+        
+        /// <summary>
+        /// Tests that drag int 2 with speed min max format flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void DragInt2_WithSpeedMinMaxFormatFlags_ThrowsDllNotFoundException()
+        {
+            int v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt2("label", ref v, 1.0f, 0, 100, "%d", ImGuiSliderFlags.None));
+        }
+        
+        /// <summary>
+        /// Tests that drag int 3 throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void DragInt3_ThrowsDllNotFoundException()
+        {
+            int v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt3("label", ref v));
+        }
+        
+        /// <summary>
+        /// Tests that drag int 3 with speed throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void DragInt3_WithSpeed_ThrowsDllNotFoundException()
+        {
+            int v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt3("label", ref v, 1.0f));
+        }
+        
+        /// <summary>
+        /// Tests that drag int 3 with speed min throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void DragInt3_WithSpeedMin_ThrowsDllNotFoundException()
+        {
+            int v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt3("label", ref v, 1.0f, 0));
+        }
+        
+        /// <summary>
+        /// Tests that drag int 3 with speed min max throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void DragInt3_WithSpeedMinMax_ThrowsDllNotFoundException()
+        {
+            int v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt3("label", ref v, 1.0f, 0, 100));
+        }
+        
+        /// <summary>
+        /// Tests that drag int 3 with speed min max format throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void DragInt3_WithSpeedMinMaxFormat_ThrowsDllNotFoundException()
+        {
+            int v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt3("label", ref v, 1.0f, 0, 100, "%d"));
+        }
+        
+        /// <summary>
+        /// Tests that drag int 3 with speed min max format flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void DragInt3_WithSpeedMinMaxFormatFlags_ThrowsDllNotFoundException()
+        {
+            int v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt3("label", ref v, 1.0f, 0, 100, "%d", ImGuiSliderFlags.None));
+        }
+        
+        /// <summary>
+        /// Tests that drag int 4 throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void DragInt4_ThrowsDllNotFoundException()
+        {
+            int v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt4("label", ref v));
+        }
+        
+        /// <summary>
+        /// Tests that drag int 4 with speed throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void DragInt4_WithSpeed_ThrowsDllNotFoundException()
+        {
+            int v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt4("label", ref v, 1.0f));
+        }
+        
+        /// <summary>
+        /// Tests that drag int 4 with speed min throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void DragInt4_WithSpeedMin_ThrowsDllNotFoundException()
+        {
+            int v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt4("label", ref v, 1.0f, 0));
+        }
+        
+        /// <summary>
+        /// Tests that drag int 4 with speed min max throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void DragInt4_WithSpeedMinMax_ThrowsDllNotFoundException()
+        {
+            int v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt4("label", ref v, 1.0f, 0, 100));
+        }
+        
+        /// <summary>
+        /// Tests that drag int 4 with speed min max format throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void DragInt4_WithSpeedMinMaxFormat_ThrowsDllNotFoundException()
+        {
+            int v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt4("label", ref v, 1.0f, 0, 100, "%d"));
+        }
+        
+        /// <summary>
+        /// Tests that drag int 4 with speed min max format flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void DragInt4_WithSpeedMinMaxFormatFlags_ThrowsDllNotFoundException()
+        {
+            int v = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragInt4("label", ref v, 1.0f, 0, 100, "%d", ImGuiSliderFlags.None));
+        }
+        
+        /// <summary>
+        /// Tests that drag int range 2 throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void DragIntRange2_ThrowsDllNotFoundException()
+        {
+            int vMin = 0, vMax = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragIntRange2("label", ref vMin, ref vMax));
+        }
+        
+        /// <summary>
+        /// Tests that drag int range 2 with speed throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void DragIntRange2_WithSpeed_ThrowsDllNotFoundException()
+        {
+            int vMin = 0, vMax = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragIntRange2("label", ref vMin, ref vMax, 1.0f));
+        }
+        
+        /// <summary>
+        /// Tests that drag int range 2 with speed min throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void DragIntRange2_WithSpeedMin_ThrowsDllNotFoundException()
+        {
+            int vMin = 0, vMax = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragIntRange2("label", ref vMin, ref vMax, 1.0f, 0));
+        }
+        
+        /// <summary>
+        /// Tests that drag int range 2 with speed min max throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void DragIntRange2_WithSpeedMinMax_ThrowsDllNotFoundException()
+        {
+            int vMin = 0, vMax = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragIntRange2("label", ref vMin, ref vMax, 1.0f, 0, 100));
+        }
+        
+        /// <summary>
+        /// Tests that drag int range 2 with speed min max format throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void DragIntRange2_WithSpeedMinMaxFormat_ThrowsDllNotFoundException()
+        {
+            int vMin = 0, vMax = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragIntRange2("label", ref vMin, ref vMax, 1.0f, 0, 100, "%d"));
+        }
+        
+        /// <summary>
+        /// Tests that drag int range 2 with all params throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void DragIntRange2_WithAllParams_ThrowsDllNotFoundException()
+        {
+            int vMin = 0, vMax = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.DragIntRange2("label", ref vMin, ref vMax, 1.0f, 0, 100, "%d", "%d", ImGuiSliderFlags.None));
         }
     }
 }
