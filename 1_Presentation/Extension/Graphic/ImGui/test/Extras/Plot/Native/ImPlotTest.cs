@@ -2633,6 +2633,9 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 10, 0.0));
         }
         
+        /// <summary>
+        /// Tests that plot stems u int throws dll not found exception
+        /// </summary>
         [Fact]
         public void PlotStems_UInt_ThrowsDllNotFoundException()
         {
@@ -2640,6 +2643,9 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 10, 0.0, ImPlotStemsFlags.None, 0, 0));
         }
         
+        /// <summary>
+        /// Tests that plot stems long throws dll not found exception
+        /// </summary>
         [Fact]
         public void PlotStems_Long_ThrowsDllNotFoundException()
         {
@@ -2647,6 +2653,9 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 10));
         }
         
+        /// <summary>
+        /// Tests that plot stems long with ref throws dll not found exception
+        /// </summary>
         [Fact]
         public void PlotStems_Long_WithRef_ThrowsDllNotFoundException()
         {
@@ -2654,6 +2663,9 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 10, 0.0));
         }
         
+        /// <summary>
+        /// Tests that plot stems long with flags throws dll not found exception
+        /// </summary>
         [Fact]
         public void PlotStems_Long_WithFlags_ThrowsDllNotFoundException()
         {
@@ -2661,6 +2673,9 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 10, 0.0, ImPlotStemsFlags.None));
         }
         
+        /// <summary>
+        /// Tests that plot stems long with offset throws dll not found exception
+        /// </summary>
         [Fact]
         public void PlotStems_Long_WithOffset_ThrowsDllNotFoundException()
         {
@@ -2668,6 +2683,9 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 10, 0.0, ImPlotStemsFlags.None, 0));
         }
         
+        /// <summary>
+        /// Tests that plot stems long with stride throws dll not found exception
+        /// </summary>
         [Fact]
         public void PlotStems_Long_WithStride_ThrowsDllNotFoundException()
         {
@@ -2675,6 +2693,9 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 10, 0.0, ImPlotStemsFlags.None, 0, 0));
         }
         
+        /// <summary>
+        /// Tests that plot stems u long throws dll not found exception
+        /// </summary>
         [Fact]
         public void PlotStems_ULong_ThrowsDllNotFoundException()
         {
@@ -2682,6 +2703,9 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 10));
         }
         
+        /// <summary>
+        /// Tests that plot stems u long with ref throws dll not found exception
+        /// </summary>
         [Fact]
         public void PlotStems_ULong_WithRef_ThrowsDllNotFoundException()
         {
@@ -2689,6 +2713,9 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 10, 0.0));
         }
         
+        /// <summary>
+        /// Tests that plot stems u long with flags throws dll not found exception
+        /// </summary>
         [Fact]
         public void PlotStems_ULong_WithFlags_ThrowsDllNotFoundException()
         {
@@ -2696,6 +2723,9 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 10, 0.0, ImPlotStemsFlags.None));
         }
         
+        /// <summary>
+        /// Tests that plot stems u long with offset throws dll not found exception
+        /// </summary>
         [Fact]
         public void PlotStems_ULong_WithOffset_ThrowsDllNotFoundException()
         {
@@ -2703,6 +2733,9 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 10, 0.0, ImPlotStemsFlags.None, 0));
         }
         
+        /// <summary>
+        /// Tests that plot stems u long with stride throws dll not found exception
+        /// </summary>
         [Fact]
         public void PlotStems_ULong_WithStride_ThrowsDllNotFoundException()
         {
@@ -2710,66 +2743,99 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 10, 0.0, ImPlotStemsFlags.None, 0, 0));
         }
         
+        /// <summary>
+        /// Tests that plot text throws dll not found exception
+        /// </summary>
         [Fact]
         public void PlotText_ThrowsDllNotFoundException()
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotText("text", 0.0, 0.0));
         }
         
+        /// <summary>
+        /// Tests that plot text with offset throws dll not found exception
+        /// </summary>
         [Fact]
         public void PlotText_WithOffset_ThrowsDllNotFoundException()
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotText("text", 0.0, 0.0, new Vector2(0, 0)));
         }
         
+        /// <summary>
+        /// Tests that plot text with flags throws dll not found exception
+        /// </summary>
         [Fact]
         public void PlotText_WithFlags_ThrowsDllNotFoundException()
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotText("text", 0.0, 0.0, new Vector2(0, 0), ImPlotTextFlags.None));
         }
         
+        /// <summary>
+        /// Tests that plot to pixels plot point throws dll not found exception
+        /// </summary>
         [Fact]
         public void PlotToPixels_PlotPoint_ThrowsDllNotFoundException()
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotToPixels(new ImPlotPoint()));
         }
         
+        /// <summary>
+        /// Tests that plot to pixels plot point with x axis throws dll not found exception
+        /// </summary>
         [Fact]
         public void PlotToPixels_PlotPoint_WithXAxis_ThrowsDllNotFoundException()
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotToPixels(new ImPlotPoint(), ImAxis.X1));
         }
         
+        /// <summary>
+        /// Tests that plot to pixels plot point with axes throws dll not found exception
+        /// </summary>
         [Fact]
         public void PlotToPixels_PlotPoint_WithAxes_ThrowsDllNotFoundException()
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotToPixels(new ImPlotPoint(), ImAxis.X1, ImAxis.Y1));
         }
         
+        /// <summary>
+        /// Tests that plot to pixels double throws dll not found exception
+        /// </summary>
         [Fact]
         public void PlotToPixels_Double_ThrowsDllNotFoundException()
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotToPixels(0.0, 0.0));
         }
         
+        /// <summary>
+        /// Tests that plot to pixels double with x axis throws dll not found exception
+        /// </summary>
         [Fact]
         public void PlotToPixels_Double_WithXAxis_ThrowsDllNotFoundException()
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotToPixels(0.0, 0.0, ImAxis.X1));
         }
         
+        /// <summary>
+        /// Tests that plot to pixels double with axes throws dll not found exception
+        /// </summary>
         [Fact]
         public void PlotToPixels_Double_WithAxes_ThrowsDllNotFoundException()
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotToPixels(0.0, 0.0, ImAxis.X1, ImAxis.Y1));
         }
         
+        /// <summary>
+        /// Tests that pop colormap throws dll not found exception
+        /// </summary>
         [Fact]
         public void PopColormap_ThrowsDllNotFoundException()
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PopColormap());
         }
         
+        /// <summary>
+        /// Tests that pop colormap with count throws dll not found exception
+        /// </summary>
         [Fact]
         public void PopColormap_WithCount_ThrowsDllNotFoundException()
         {
