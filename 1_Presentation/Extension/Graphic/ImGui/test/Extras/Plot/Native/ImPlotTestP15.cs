@@ -234,5 +234,219 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars(labelId, values, count, barSize, shift, flags, offset, stride));
         }
+        /// <summary>
+        /// Tests that plot bar groups u int without shift throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotBarGroups_UInt_WithoutShift_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<MarshalDirectiveException>(() => ImPlot. PlotBarGroups(new string[] {"label1"}, new uint[] {1}, 1, 1, 0.67));
+        }
+        /// <summary>
+        /// Tests that plot bar groups u int with shift throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotBarGroups_UInt_WithShift_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<MarshalDirectiveException>(() => ImPlot. PlotBarGroups(new string[] {"label1"}, new uint[] {1}, 1, 1, 0.67, 0.5));
+        }
+        /// <summary>
+        /// Tests that plot bar groups u int with shift and flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotBarGroups_UInt_WithShiftAndFlags_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<MarshalDirectiveException>(() => ImPlot. PlotBarGroups(new string[] {"label1"}, new uint[] {1}, 1, 1, 0.67, 0.5, ImPlotBarGroupsFlags.None));
+        }
+        /// <summary>
+        /// Tests that plot bar groups long without shift throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotBarGroups_Long_WithoutShift_ThrowsMarshalDirectiveException()
+        {
+            Assert.Throws<MarshalDirectiveException>(() => ImPlot. PlotBarGroups(new string[] {"label1"}, new long[] {1}, 1, 1));
+        }
+        /// <summary>
+        /// Tests that plot bar groups long with group size throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotBarGroups_Long_WithGroupSize_ThrowsMarshalDirectiveException()
+        {
+            Assert.Throws<MarshalDirectiveException>(() => ImPlot. PlotBarGroups(new string[] {"label1"}, new long[] {1}, 1, 1, 0.67));
+        }
+        /// <summary>
+        /// Tests that plot bar groups long with shift throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotBarGroups_Long_WithShift_ThrowsMarshalDirectiveException()
+        {
+            Assert.Throws<MarshalDirectiveException>(() => ImPlot. PlotBarGroups(new string[] {"label1"}, new long[] {1}, 1, 1, 0.67, 0.5));
+        }
+        /// <summary>
+        /// Tests that plot bar groups long with shift and flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotBarGroups_Long_WithShiftAndFlags_ThrowsMarshalDirectiveException()
+        {
+            Assert.Throws<MarshalDirectiveException>(() => ImPlot. PlotBarGroups(new string[] {"label1"}, new long[] {1}, 1, 1, 0.67, 0.5, ImPlotBarGroupsFlags.None));
+        }
+        /// <summary>
+        /// Tests that plot bar groups u long without shift throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotBarGroups_ULong_WithoutShift_ThrowsMarshalDirectiveException()
+        {
+            Assert.Throws<MarshalDirectiveException>(() => ImPlot. PlotBarGroups(new string[] {"label1"}, new ulong[] {1}, 1, 1));
+        }
+        /// <summary>
+        /// Tests that plot bar groups u long with group size throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotBarGroups_ULong_WithGroupSize_ThrowsMarshalDirectiveException()
+        {
+            Assert.Throws<MarshalDirectiveException>(() => ImPlot. PlotBarGroups(new string[] {"label1"}, new ulong[] {1}, 1, 1, 0.67));
+        }
+        /// <summary>
+        /// Tests that v 4 plot bar groups u long with shift throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v4_PlotBarGroups_ULong_WithShift_ThrowsMarshalDirectiveException()
+        {
+            Assert.Throws<MarshalDirectiveException>(() => ImPlot. PlotBarGroups(new string[] {"label1"}, new ulong[] {1}, 1, 1, 0.67, 0.5));
+        }
+        /// <summary>
+        /// Tests that v 4 plot bar groups u long with shift and flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v4_PlotBarGroups_ULong_WithShiftAndFlags_ThrowsMarshalDirectiveException()
+        {
+            Assert.Throws<MarshalDirectiveException>(() => ImPlot. PlotBarGroups(new string[] {"label1"}, new ulong[] {1}, 1, 1, 0.67, 0.5, ImPlotBarGroupsFlags.None));
+        }
+        /// <summary>
+        /// Tests that v 4 plot bars float without shift throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v4_PlotBars_Float_WithoutShift_ThrowsDllNotFoundException()
+        {
+            float[] values = new float[] {1.0f};
+            Assert.Throws<DllNotFoundException>(() => ImPlot. PlotBars("label1", ref values, 1));
+        }
+        /// <summary>
+        /// Tests that v 4 plot bars float with bar size throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v4_PlotBars_Float_WithBarSize_ThrowsDllNotFoundException()
+        {
+            float[] values = new float[] {1.0f};
+            Assert.Throws<DllNotFoundException>(() => ImPlot. PlotBars("label1", ref values, 1, 0.67));
+        }
+        /// <summary>
+        /// Tests that v 4 plot bars float with shift throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v4_PlotBars_Float_WithShift_ThrowsDllNotFoundException()
+        {
+            float[] values = new float[] {1.0f};
+            Assert.Throws<DllNotFoundException>(() => ImPlot. PlotBars("label1", ref values, 1, 0.67, 0.5));
+        }
+        /// <summary>
+        /// Tests that v 4 plot bars float with shift and flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v4_PlotBars_Float_WithShiftAndFlags_ThrowsDllNotFoundException()
+        {
+            float[] values = new float[] {1.0f};
+            Assert.Throws<DllNotFoundException>(() => ImPlot. PlotBars("label1", values, 1, 0.67, 0.5, ImPlotBarsFlags.None));
+        }
+        /// <summary>
+        /// Tests that v 4 plot bars float with shift flags and offset throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v4_PlotBars_Float_WithShiftFlagsAndOffset_ThrowsDllNotFoundException()
+        {
+            float[] values = new float[] {1.0f};
+            Assert.Throws<DllNotFoundException>(() => ImPlot. PlotBars("label1", ref values, 1, 0.67, 0.5, ImPlotBarsFlags.None, 0));
+        }
+        /// <summary>
+        /// Tests that v 4 plot bars float with shift flags offset and stride throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v4_PlotBars_Float_WithShiftFlagsOffsetAndStride_ThrowsDllNotFoundException()
+        {
+            float[] values = new float[] {1.0f};
+            Assert.Throws<DllNotFoundException>(() => ImPlot. PlotBars("label1", ref values, 1, 0.67, 0.5, ImPlotBarsFlags.None, 0, sizeof(float)));
+        }
+        /// <summary>
+        /// Tests that v 4 plot bars double without shift throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void v4_PlotBars_Double_WithoutShift_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label1", new double[] {1.0}, 1));
+        }
+        /// <summary>
+        /// Tests that plot bars double with bar size throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotBars_Double_WithBarSize_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label1", new double[] {1.0}, 1, 0.67));
+        }
+        /// <summary>
+        /// Tests that plot bars double with shift throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotBars_Double_WithShift_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label1", new double[] {1.0}, 1, 0.67, 0.5));
+        }
+        /// <summary>
+        /// Tests that plot bars double with shift and flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotBars_Double_WithShiftAndFlags_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label1", new double[] {1.0}, 1, 0.67, 0.5, ImPlotBarsFlags.None));
+        }
+        /// <summary>
+        /// Tests that plot bars double with shift flags and offset throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotBars_Double_WithShiftFlagsAndOffset_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label1", new double[] {1.0}, 1, 0.67, 0.5, ImPlotBarsFlags.None, 0));
+        }
+        /// <summary>
+        /// Tests that plot bars double with shift flags offset and stride throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotBars_Double_WithShiftFlagsOffsetAndStride_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label1", new double[] {1.0}, 1, 0.67, 0.5, ImPlotBarsFlags.None, 0, 0));
+        }
+        /// <summary>
+        /// Tests that plot bars s byte without shift throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotBars_SByte_WithoutShift_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label1", new sbyte[] {1}, 1));
+        }
+        /// <summary>
+        /// Tests that plot bars s byte with bar size throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotBars_SByte_WithBarSize_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label1", new sbyte[] {1}, 1, 0.67));
+        }
+        /// <summary>
+        /// Tests that plot bars s byte with shift throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotBars_SByte_WithShift_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotBars("label1", new sbyte[] {1}, 1, 0.67, 0.5));
+        }
     }
 }

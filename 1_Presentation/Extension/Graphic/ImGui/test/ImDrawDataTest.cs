@@ -227,5 +227,47 @@ namespace Alis.Extension.Graphic.ImGui.Test
             // Act
             Assert.Throws<DllNotFoundException>(() => drawData.ScaleClipRects(fbScale));
         }
+        
+        /// <summary>
+        /// Tests that clear throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void Clear_ThrowsDllNotFoundException()
+        {
+            ImDrawData drawData = new ImDrawData();
+            Assert.Throws<DllNotFoundException>(() => drawData.Clear());
+        }
+        
+        /// <summary>
+        /// Tests that de index all buffers throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void DeIndexAllBuffers_ThrowsDllNotFoundException()
+        {
+            ImDrawData drawData = new ImDrawData();
+            Assert.Throws<DllNotFoundException>(() => drawData.DeIndexAllBuffers());
+        }
+        
+        /// <summary>
+        /// Tests that scale clip rects throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void ScaleClipRects_ThrowsDllNotFoundException()
+        {
+            ImDrawData drawData = new ImDrawData();
+            Vector2 fbScale = new Vector2(1.0f, 1.0f);
+            Assert.Throws<DllNotFoundException>(() => drawData.ScaleClipRects(fbScale));
+        }
+        
+        /// <summary>
+        /// Tests that cmd lists range throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void CmdListsRange_ThrowsDllNotFoundException()
+        {
+            ImDrawData drawData = new ImDrawData();
+            RangePtrAccessor<ImDrawListPtr> range = drawData.CmdListsRange;
+            Assert.Equal(IntPtr.Zero, range.Data);
+        }
     }
 }

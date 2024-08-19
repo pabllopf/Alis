@@ -2505,5 +2505,275 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ushort xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotLine("label", ref xs, ref ys, 3, ImPlotLineFlags.None, 0, sizeof(ushort)));
         }
+        
+        /// <summary>
+        /// Tests that plot stems u int 16 throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotStems_UInt16_ThrowsDllNotFoundException()
+        {
+            ushort xs = 0, ys = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 10, 0.0, ImPlotStemsFlags.None));
+        }
+        
+        /// <summary>
+        
+        /// Tests that plot stems u int 16 with offset throws dll not found exception
+        
+        /// </summary>
+        
+        [Fact]
+        public void PlotStems_UInt16_WithOffset_ThrowsDllNotFoundException()
+        {
+            ushort xs = 0, ys = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 10, 0.0, ImPlotStemsFlags.None, 0));
+        }
+        
+        /// <summary>
+        
+        /// Tests that plot stems u int 16 with stride throws dll not found exception
+        
+        /// </summary>
+        
+        [Fact]
+        public void PlotStems_UInt16_WithStride_ThrowsDllNotFoundException()
+        {
+            ushort xs = 0, ys = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 10, 0.0, ImPlotStemsFlags.None, 0, 0));
+        }
+        
+        /// <summary>
+        
+        /// Tests that plot stems int 32 throws dll not found exception
+        
+        /// </summary>
+        
+        [Fact]
+        public void PlotStems_Int32_ThrowsDllNotFoundException()
+        {
+            int xs = 0, ys = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 10));
+        }
+        
+        /// <summary>
+        
+        /// Tests that plot stems int 32 with ref throws dll not found exception
+        
+        /// </summary>
+        
+        [Fact]
+        public void PlotStems_Int32_WithRef_ThrowsDllNotFoundException()
+        {
+            int xs = 0, ys = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 10, 0.0));
+        }
+        
+        /// <summary>
+        
+        /// Tests that plot stems int 32 with flags throws dll not found exception
+        
+        /// </summary>
+        
+        [Fact]
+        public void PlotStems_Int32_WithFlags_ThrowsDllNotFoundException()
+        {
+            int xs = 0, ys = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 10, 0.0, ImPlotStemsFlags.None));
+        }
+        
+        /// <summary>
+        
+        /// Tests that plot stems int 32 with offset throws dll not found exception
+        
+        /// </summary>
+        
+        [Fact]
+        public void PlotStems_Int32_WithOffset_ThrowsDllNotFoundException()
+        {
+            int xs = 0, ys = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 10, 0.0, ImPlotStemsFlags.None, 0));
+        }
+        
+        /// <summary>
+        
+        /// Tests that plot stems int 32 with stride throws dll not found exception
+        
+        /// </summary>
+        
+        [Fact]
+        public void PlotStems_Int32_WithStride_ThrowsDllNotFoundException()
+        {
+            int xs = 0, ys = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 10, 0.0, ImPlotStemsFlags.None, 0, 0));
+        }
+        
+        /// <summary>
+        
+        /// Tests that plot stems u int 32 throws dll not found exception
+        
+        /// </summary>
+        
+        [Fact]
+        public void PlotStems_UInt32_ThrowsDllNotFoundException()
+        {
+            uint xs = 0, ys = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 10));
+        }
+        
+        /// <summary>
+        
+        /// Tests that plot stems u int 32 with ref throws dll not found exception
+        
+        /// </summary>
+        
+        [Fact]
+        public void PlotStems_UInt32_WithRef_ThrowsDllNotFoundException()
+        {
+            uint xs = 0, ys = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 10, 0.0));
+        }
+        
+        [Fact]
+        public void PlotStems_UInt_ThrowsDllNotFoundException()
+        {
+            uint xs = 0, ys = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 10, 0.0, ImPlotStemsFlags.None, 0, 0));
+        }
+        
+        [Fact]
+        public void PlotStems_Long_ThrowsDllNotFoundException()
+        {
+            long xs = 0, ys = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 10));
+        }
+        
+        [Fact]
+        public void PlotStems_Long_WithRef_ThrowsDllNotFoundException()
+        {
+            long xs = 0, ys = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 10, 0.0));
+        }
+        
+        [Fact]
+        public void PlotStems_Long_WithFlags_ThrowsDllNotFoundException()
+        {
+            long xs = 0, ys = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 10, 0.0, ImPlotStemsFlags.None));
+        }
+        
+        [Fact]
+        public void PlotStems_Long_WithOffset_ThrowsDllNotFoundException()
+        {
+            long xs = 0, ys = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 10, 0.0, ImPlotStemsFlags.None, 0));
+        }
+        
+        [Fact]
+        public void PlotStems_Long_WithStride_ThrowsDllNotFoundException()
+        {
+            long xs = 0, ys = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 10, 0.0, ImPlotStemsFlags.None, 0, 0));
+        }
+        
+        [Fact]
+        public void PlotStems_ULong_ThrowsDllNotFoundException()
+        {
+            ulong xs = 0, ys = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 10));
+        }
+        
+        [Fact]
+        public void PlotStems_ULong_WithRef_ThrowsDllNotFoundException()
+        {
+            ulong xs = 0, ys = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 10, 0.0));
+        }
+        
+        [Fact]
+        public void PlotStems_ULong_WithFlags_ThrowsDllNotFoundException()
+        {
+            ulong xs = 0, ys = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 10, 0.0, ImPlotStemsFlags.None));
+        }
+        
+        [Fact]
+        public void PlotStems_ULong_WithOffset_ThrowsDllNotFoundException()
+        {
+            ulong xs = 0, ys = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 10, 0.0, ImPlotStemsFlags.None, 0));
+        }
+        
+        [Fact]
+        public void PlotStems_ULong_WithStride_ThrowsDllNotFoundException()
+        {
+            ulong xs = 0, ys = 0;
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", ref xs, ref ys, 10, 0.0, ImPlotStemsFlags.None, 0, 0));
+        }
+        
+        [Fact]
+        public void PlotText_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotText("text", 0.0, 0.0));
+        }
+        
+        [Fact]
+        public void PlotText_WithOffset_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotText("text", 0.0, 0.0, new Vector2(0, 0)));
+        }
+        
+        [Fact]
+        public void PlotText_WithFlags_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotText("text", 0.0, 0.0, new Vector2(0, 0), ImPlotTextFlags.None));
+        }
+        
+        [Fact]
+        public void PlotToPixels_PlotPoint_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotToPixels(new ImPlotPoint()));
+        }
+        
+        [Fact]
+        public void PlotToPixels_PlotPoint_WithXAxis_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotToPixels(new ImPlotPoint(), ImAxis.X1));
+        }
+        
+        [Fact]
+        public void PlotToPixels_PlotPoint_WithAxes_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotToPixels(new ImPlotPoint(), ImAxis.X1, ImAxis.Y1));
+        }
+        
+        [Fact]
+        public void PlotToPixels_Double_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotToPixels(0.0, 0.0));
+        }
+        
+        [Fact]
+        public void PlotToPixels_Double_WithXAxis_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotToPixels(0.0, 0.0, ImAxis.X1));
+        }
+        
+        [Fact]
+        public void PlotToPixels_Double_WithAxes_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotToPixels(0.0, 0.0, ImAxis.X1, ImAxis.Y1));
+        }
+        
+        [Fact]
+        public void PopColormap_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PopColormap());
+        }
+        
+        [Fact]
+        public void PopColormap_WithCount_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PopColormap(1));
+        }
     }
 }

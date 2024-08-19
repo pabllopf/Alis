@@ -306,5 +306,59 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
             Assert.Throws<DllNotFoundException>(() => drawListPtr.PathArcToFastEx(new Vector2(), 0, 0, 0, 0));
         }
+        
+        /// <summary>
+        /// Tests that plot heatmap with scale min throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_WithScaleMin_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new ulong[0], 0, 0, 0.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot heatmap with scale min max throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_WithScaleMinMax_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new ulong[0], 0, 0, 0.0, 1.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot heatmap with scale min max label fmt throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_WithScaleMinMaxLabelFmt_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new ulong[0], 0, 0, 0.0, 1.0, "%.1f"));
+        }
+        
+        /// <summary>
+        /// Tests that plot heatmap with scale min max label fmt bounds min throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_WithScaleMinMaxLabelFmtBoundsMin_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new ulong[0], 0, 0, 0.0, 1.0, "%.1f", new ImPlotPoint {X = 0, Y = 0}));
+        }
+        
+        /// <summary>
+        /// Tests that plot heatmap with scale min max label fmt bounds min bounds max throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_WithScaleMinMaxLabelFmtBoundsMinBoundsMax_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new ulong[0], 0, 0, 0.0, 1.0, "%.1f", new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}));
+        }
+        
+        /// <summary>
+        /// Tests that plot heatmap with scale min max label fmt bounds min bounds max flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_WithScaleMinMaxLabelFmtBoundsMinBoundsMaxFlags_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new ulong[0], 0, 0, 0.0, 1.0, "%.1f", new ImPlotPoint {X = 0, Y = 0}, new ImPlotPoint {X = 1, Y = 1}, ImPlotHeatmapFlags.None));
+        }
     }
 }

@@ -62,32 +62,7 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The cmd lists
         /// </summary>
         public IntPtr CmdListsPtr { get; set; }
-        
-        /// <summary>
-        ///     The cmd lists
-        /// </summary>
-        public ImDrawList[] CmdLists
-        {
-            get
-            {
-                ImDrawList[] cmdLists = new ImDrawList[CmdListsCount];
-                for (int i = 0; i < CmdListsCount; i++)
-                {
-                    cmdLists[i] = Marshal.PtrToStructure<ImDrawList>(Marshal.ReadIntPtr(CmdListsPtr, i * IntPtr.Size));
-                }
-                
-                return cmdLists;
-            }
-            set
-            {
-                for (int i = 0; i < value.Length; i++)
-                {
-                    Marshal.WriteIntPtr(CmdListsPtr, i * IntPtr.Size, Marshal.AllocHGlobal(Marshal.SizeOf(value[i])));
-                    Marshal.StructureToPtr(value[i], Marshal.ReadIntPtr(CmdListsPtr, i * IntPtr.Size), false);
-                }
-            }
-        }
-        
+
         /// <summary>
         ///     The display pos
         /// </summary>
@@ -107,15 +82,6 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The owner viewport
         /// </summary>
         public IntPtr OwnerViewportPtr { get; set; }
-        
-        /// <summary>
-        ///     The owner viewport
-        /// </summary>
-        public ImGuiViewport OwnerViewport
-        {
-            get => Marshal.PtrToStructure<ImGuiViewport>(OwnerViewportPtr);
-            set => Marshal.StructureToPtr(value, OwnerViewportPtr, false);
-        }
         
         /// <summary>
         ///     Clears this instance

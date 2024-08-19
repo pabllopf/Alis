@@ -589,5 +589,149 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<MarshalDirectiveException>(() => ImPlot.PlotBarGroups(new string[0], new uint[0], 0, 0));
         }
+        
+        /// <summary>
+        /// Tests that end drag drop target throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void EndDragDropTarget_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.EndDragDropTarget());
+        }
+        
+        /// <summary>
+        /// Tests that end legend popup throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void EndLegendPopup_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.EndLegendPopup());
+        }
+        
+        /// <summary>
+        /// Tests that end plot throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void EndPlot_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.EndPlot());
+        }
+        
+        /// <summary>
+        /// Tests that end subplots throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void EndSubplots_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.EndSubplots());
+        }
+        
+        /// <summary>
+        /// Tests that get colormap color throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void GetColormapColor_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.GetColormapColor(0));
+        }
+        
+        /// <summary>
+        /// Tests that get colormap color with cmap throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void GetColormapColor_WithCmap_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.GetColormapColor(0, ImPlotColormap.Dark));
+        }
+        
+        /// <summary>
+        /// Tests that get colormap count throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void GetColormapCount_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.GetColormapCount());
+        }
+        
+        /// <summary>
+        /// Tests that get colormap index throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void GetColormapIndex_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.GetColormapIndex("name"));
+        }
+        
+        /// <summary>
+        /// Tests that get colormap name throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void GetColormapName_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<MarshalDirectiveException>(() => ImPlot.GetColormapName(ImPlotColormap.Dark));
+        }
+        
+        /// <summary>
+        /// Tests that get colormap size throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void GetColormapSize_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.GetColormapSize());
+        }
+        
+        /// <summary>
+        /// Tests that get colormap size with cmap throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void GetColormapSize_WithCmap_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.GetColormapSize(ImPlotColormap.Dark));
+        }
+        
+        /// <summary>
+        /// Tests that get current context throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void GetCurrentContext_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.GetCurrentContext());
+        }
+        
+        /// <summary>
+        /// Tests that get input map throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void GetInputMap_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.GetInputMap());
+        }
+        
+        /// <summary>
+        /// Tests that get last item color throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void GetLastItemColor_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.GetLastItemColor());
+        }
+        
+        /// <summary>
+        /// Tests that get marker name throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void GetMarkerName_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<MarshalDirectiveException>(() => ImPlot.GetMarkerName(ImPlotMarker.Circle));
+        }
+        
+        /// <summary>
+        /// Tests that get plot draw list throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void GetPlotDrawList_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.GetPlotDrawList());
+        }
     }
 }

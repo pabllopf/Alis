@@ -508,5 +508,23 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             int rows = 1, cols = 1;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", values, rows, cols));
         }
+        
+        /// <summary>
+        /// Tests that plot heatmap with scale min throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_WithScaleMin_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new double[0], 0, 0, 0.0));
+        }
+        
+        /// <summary>
+        /// Tests that plot heatmap with scale min max throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHeatmap_WithScaleMinMax_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHeatmap("label", new double[0], 0, 0, 0.0, 1.0));
+        }
     }
 }
