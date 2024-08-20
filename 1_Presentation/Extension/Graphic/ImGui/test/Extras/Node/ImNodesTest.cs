@@ -643,7 +643,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         }
         
         /// <summary>
-        /// Tests that mini map throws dll not found exception
+        ///     Tests that mini map throws dll not found exception
         /// </summary>
         [Fact]
         public void MiniMap_ThrowsDllNotFoundException()
@@ -652,7 +652,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         }
         
         /// <summary>
-        /// Tests that mini map with minimap size fraction throws dll not found exception
+        ///     Tests that mini map with minimap size fraction throws dll not found exception
         /// </summary>
         [Fact]
         public void MiniMap_WithMinimapSizeFraction_ThrowsDllNotFoundException()
@@ -661,7 +661,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         }
         
         /// <summary>
-        /// Tests that mini map with minimap size fraction and location throws dll not found exception
+        ///     Tests that mini map with minimap size fraction and location throws dll not found exception
         /// </summary>
         [Fact]
         public void MiniMap_WithMinimapSizeFractionAndLocation_ThrowsDllNotFoundException()
@@ -670,7 +670,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         }
         
         /// <summary>
-        /// Tests that mini map with minimap size fraction location and callback throws dll not found exception
+        ///     Tests that mini map with minimap size fraction location and callback throws dll not found exception
         /// </summary>
         [Fact]
         public void MiniMap_WithMinimapSizeFractionLocationAndCallback_ThrowsDllNotFoundException()
@@ -679,7 +679,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         }
         
         /// <summary>
-        /// Tests that mini map with all params throws dll not found exception
+        ///     Tests that mini map with all params throws dll not found exception
         /// </summary>
         [Fact]
         public void MiniMap_WithAllParams_ThrowsDllNotFoundException()
@@ -688,7 +688,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         }
         
         /// <summary>
-        /// Tests that num selected links throws dll not found exception
+        ///     Tests that num selected links throws dll not found exception
         /// </summary>
         [Fact]
         public void NumSelectedLinks_ThrowsDllNotFoundException()
@@ -697,7 +697,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         }
         
         /// <summary>
-        /// Tests that num selected nodes throws dll not found exception
+        ///     Tests that num selected nodes throws dll not found exception
         /// </summary>
         [Fact]
         public void NumSelectedNodes_ThrowsDllNotFoundException()
@@ -706,7 +706,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         }
         
         /// <summary>
-        /// Tests that pop attribute flag throws dll not found exception
+        ///     Tests that pop attribute flag throws dll not found exception
         /// </summary>
         [Fact]
         public void PopAttributeFlag_ThrowsDllNotFoundException()
@@ -715,7 +715,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         }
         
         /// <summary>
-        /// Tests that pop color style throws dll not found exception
+        ///     Tests that pop color style throws dll not found exception
         /// </summary>
         [Fact]
         public void PopColorStyle_ThrowsDllNotFoundException()
@@ -724,7 +724,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         }
         
         /// <summary>
-        /// Tests that pop style var throws dll not found exception
+        ///     Tests that pop style var throws dll not found exception
         /// </summary>
         [Fact]
         public void PopStyleVar_ThrowsDllNotFoundException()
@@ -733,7 +733,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         }
         
         /// <summary>
-        /// Tests that pop style var with count throws dll not found exception
+        ///     Tests that pop style var with count throws dll not found exception
         /// </summary>
         [Fact]
         public void PopStyleVar_WithCount_ThrowsDllNotFoundException()
@@ -742,7 +742,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         }
         
         /// <summary>
-        /// Tests that push attribute flag throws dll not found exception
+        ///     Tests that push attribute flag throws dll not found exception
         /// </summary>
         [Fact]
         public void PushAttributeFlag_ThrowsDllNotFoundException()
@@ -751,7 +751,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         }
         
         /// <summary>
-        /// Tests that push color style throws dll not found exception
+        ///     Tests that push color style throws dll not found exception
         /// </summary>
         [Fact]
         public void PushColorStyle_ThrowsDllNotFoundException()
@@ -760,7 +760,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         }
         
         /// <summary>
-        /// Tests that push style var float throws dll not found exception
+        ///     Tests that push style var float throws dll not found exception
         /// </summary>
         [Fact]
         public void PushStyleVar_Float_ThrowsDllNotFoundException()
@@ -769,7 +769,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         }
         
         /// <summary>
-        /// Tests that push style var vector 2 throws dll not found exception
+        ///     Tests that push style var vector 2 throws dll not found exception
         /// </summary>
         [Fact]
         public void PushStyleVar_Vector2_ThrowsDllNotFoundException()
@@ -778,7 +778,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         }
         
         /// <summary>
-        /// Tests that save current editor state to ini file throws dll not found exception
+        ///     Tests that save current editor state to ini file throws dll not found exception
         /// </summary>
         [Fact]
         public void SaveCurrentEditorStateToIniFile_ThrowsDllNotFoundException()
@@ -787,7 +787,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         }
         
         /// <summary>
-        /// Tests that save current editor state to ini string throws dll not found exception
+        ///     Tests that save current editor state to ini string throws dll not found exception
         /// </summary>
         [Fact]
         public void SaveCurrentEditorStateToIniString_ThrowsDllNotFoundException()
@@ -796,7 +796,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         }
         
         /// <summary>
-        /// Tests that save current editor state to ini string with data size throws dll not found exception
+        ///     Tests that save current editor state to ini string with data size throws dll not found exception
         /// </summary>
         [Fact]
         public void SaveCurrentEditorStateToIniString_WithDataSize_ThrowsDllNotFoundException()
@@ -806,7 +806,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         }
         
         /// <summary>
-        /// Tests that save editor state to ini file throws dll not found exception
+        ///     Tests that save editor state to ini file throws dll not found exception
         /// </summary>
         [Fact]
         public void SaveEditorStateToIniFile_ThrowsDllNotFoundException()
@@ -815,7 +815,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         }
         
         /// <summary>
-        /// Tests that save editor state to ini string throws dll not found exception
+        ///     Tests that save editor state to ini string throws dll not found exception
         /// </summary>
         [Fact]
         public void SaveEditorStateToIniString_ThrowsDllNotFoundException()
@@ -824,7 +824,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         }
         
         /// <summary>
-        /// Tests that save editor state to ini string with data size throws dll not found exception
+        ///     Tests that save editor state to ini string with data size throws dll not found exception
         /// </summary>
         [Fact]
         public void SaveEditorStateToIniString_WithDataSize_ThrowsDllNotFoundException()
@@ -834,7 +834,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         }
         
         /// <summary>
-        /// Tests that select link throws dll not found exception
+        ///     Tests that select link throws dll not found exception
         /// </summary>
         [Fact]
         public void SelectLink_ThrowsDllNotFoundException()
@@ -843,7 +843,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         }
         
         /// <summary>
-        /// Tests that select node throws dll not found exception
+        ///     Tests that select node throws dll not found exception
         /// </summary>
         [Fact]
         public void SelectNode_ThrowsDllNotFoundException()
@@ -852,7 +852,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         }
         
         /// <summary>
-        /// Tests that set current context throws dll not found exception
+        ///     Tests that set current context throws dll not found exception
         /// </summary>
         [Fact]
         public void SetCurrentContext_ThrowsDllNotFoundException()
@@ -861,7 +861,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         }
         
         /// <summary>
-        /// Tests that set im gui context throws dll not found exception
+        ///     Tests that set im gui context throws dll not found exception
         /// </summary>
         [Fact]
         public void SetImGuiContext_ThrowsDllNotFoundException()
@@ -870,7 +870,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         }
         
         /// <summary>
-        /// Tests that set node draggable throws dll not found exception
+        ///     Tests that set node draggable throws dll not found exception
         /// </summary>
         [Fact]
         public void SetNodeDraggable_ThrowsDllNotFoundException()
@@ -879,7 +879,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         }
         
         /// <summary>
-        /// Tests that set node editor space pos throws dll not found exception
+        ///     Tests that set node editor space pos throws dll not found exception
         /// </summary>
         [Fact]
         public void SetNodeEditorSpacePos_ThrowsDllNotFoundException()
@@ -888,7 +888,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         }
         
         /// <summary>
-        /// Tests that set node grid space pos throws dll not found exception
+        ///     Tests that set node grid space pos throws dll not found exception
         /// </summary>
         [Fact]
         public void SetNodeGridSpacePos_ThrowsDllNotFoundException()
@@ -897,7 +897,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         }
         
         /// <summary>
-        /// Tests that set node screen space pos throws dll not found exception
+        ///     Tests that set node screen space pos throws dll not found exception
         /// </summary>
         [Fact]
         public void SetNodeScreenSpacePos_ThrowsDllNotFoundException()
@@ -906,7 +906,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         }
         
         /// <summary>
-        /// Tests that snap node to grid throws dll not found exception
+        ///     Tests that snap node to grid throws dll not found exception
         /// </summary>
         [Fact]
         public void SnapNodeToGrid_ThrowsDllNotFoundException()
@@ -915,7 +915,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         }
         
         /// <summary>
-        /// Tests that style colors classic throws dll not found exception
+        ///     Tests that style colors classic throws dll not found exception
         /// </summary>
         [Fact]
         public void StyleColorsClassic_ThrowsDllNotFoundException()
@@ -924,7 +924,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         }
         
         /// <summary>
-        /// Tests that style colors classic with dest throws dll not found exception
+        ///     Tests that style colors classic with dest throws dll not found exception
         /// </summary>
         [Fact]
         public void StyleColorsClassic_WithDest_ThrowsDllNotFoundException()
@@ -933,7 +933,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         }
         
         /// <summary>
-        /// Tests that style colors dark throws dll not found exception
+        ///     Tests that style colors dark throws dll not found exception
         /// </summary>
         [Fact]
         public void StyleColorsDark_ThrowsDllNotFoundException()
@@ -942,7 +942,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         }
         
         /// <summary>
-        /// Tests that style colors dark with dest throws dll not found exception
+        ///     Tests that style colors dark with dest throws dll not found exception
         /// </summary>
         [Fact]
         public void StyleColorsDark_WithDest_ThrowsDllNotFoundException()
@@ -951,7 +951,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         }
         
         /// <summary>
-        /// Tests that style colors light throws dll not found exception
+        ///     Tests that style colors light throws dll not found exception
         /// </summary>
         [Fact]
         public void StyleColorsLight_ThrowsDllNotFoundException()
@@ -960,7 +960,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         }
         
         /// <summary>
-        /// Tests that style colors light with dest throws dll not found exception
+        ///     Tests that style colors light with dest throws dll not found exception
         /// </summary>
         [Fact]
         public void StyleColorsLight_WithDest_ThrowsDllNotFoundException()

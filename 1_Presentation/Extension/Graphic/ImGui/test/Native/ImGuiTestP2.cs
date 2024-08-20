@@ -33,12 +33,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test.Native
 {
     /// <summary>
-    /// The im gui test class
+    ///     The im gui test class
     /// </summary>
     public class ImGuiTestP2
     {
         /// <summary>
-        /// Tests that drag int throws dll not found exception
+        ///     Tests that drag int throws dll not found exception
         /// </summary>
         [Fact]
         public void DragInt_ThrowsDllNotFoundException()
@@ -48,7 +48,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag int with min throws dll not found exception
+        ///     Tests that drag int with min throws dll not found exception
         /// </summary>
         [Fact]
         public void DragInt_WithMin_ThrowsDllNotFoundException()
@@ -58,7 +58,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag int with min max throws dll not found exception
+        ///     Tests that drag int with min max throws dll not found exception
         /// </summary>
         [Fact]
         public void DragInt_WithMinMax_ThrowsDllNotFoundException()
@@ -68,7 +68,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag int with format throws dll not found exception
+        ///     Tests that drag int with format throws dll not found exception
         /// </summary>
         [Fact]
         public void DragInt_WithFormat_ThrowsDllNotFoundException()
@@ -78,7 +78,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag int with format and flags throws dll not found exception
+        ///     Tests that drag int with format and flags throws dll not found exception
         /// </summary>
         [Fact]
         public void DragInt_WithFormatAndFlags_ThrowsDllNotFoundException()
@@ -88,7 +88,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag int 2 throws dll not found exception
+        ///     Tests that drag int 2 throws dll not found exception
         /// </summary>
         [Fact]
         public void DragInt2_ThrowsDllNotFoundException()
@@ -98,7 +98,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag int 2 with speed throws dll not found exception
+        ///     Tests that drag int 2 with speed throws dll not found exception
         /// </summary>
         [Fact]
         public void DragInt2_WithSpeed_ThrowsDllNotFoundException()
@@ -108,7 +108,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag int 2 with min throws dll not found exception
+        ///     Tests that drag int 2 with min throws dll not found exception
         /// </summary>
         [Fact]
         public void DragInt2_WithMin_ThrowsDllNotFoundException()
@@ -118,7 +118,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag int 2 with min max throws dll not found exception
+        ///     Tests that drag int 2 with min max throws dll not found exception
         /// </summary>
         [Fact]
         public void DragInt2_WithMinMax_ThrowsDllNotFoundException()
@@ -128,7 +128,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag int 2 with format throws dll not found exception
+        ///     Tests that drag int 2 with format throws dll not found exception
         /// </summary>
         [Fact]
         public void DragInt2_WithFormat_ThrowsDllNotFoundException()
@@ -138,7 +138,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag int 2 with format and flags throws dll not found exception
+        ///     Tests that drag int 2 with format and flags throws dll not found exception
         /// </summary>
         [Fact]
         public void DragInt2_WithFormatAndFlags_ThrowsDllNotFoundException()
@@ -148,7 +148,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag int 3 throws dll not found exception
+        ///     Tests that drag int 3 throws dll not found exception
         /// </summary>
         [Fact]
         public void DragInt3_ThrowsDllNotFoundException()
@@ -158,7 +158,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag int 3 with speed throws dll not found exception
+        ///     Tests that drag int 3 with speed throws dll not found exception
         /// </summary>
         [Fact]
         public void DragInt3_WithSpeed_ThrowsDllNotFoundException()
@@ -168,7 +168,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag int 3 with min throws dll not found exception
+        ///     Tests that drag int 3 with min throws dll not found exception
         /// </summary>
         [Fact]
         public void DragInt3_WithMin_ThrowsDllNotFoundException()
@@ -178,7 +178,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag int 3 with min max throws dll not found exception
+        ///     Tests that drag int 3 with min max throws dll not found exception
         /// </summary>
         [Fact]
         public void DragInt3_WithMinMax_ThrowsDllNotFoundException()
@@ -188,7 +188,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag int 3 with format throws dll not found exception
+        ///     Tests that drag int 3 with format throws dll not found exception
         /// </summary>
         [Fact]
         public void DragInt3_WithFormat_ThrowsDllNotFoundException()
@@ -198,7 +198,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag int 3 with format and flags throws dll not found exception
+        ///     Tests that drag int 3 with format and flags throws dll not found exception
         /// </summary>
         [Fact]
         public void DragInt3_WithFormatAndFlags_ThrowsDllNotFoundException()
@@ -208,7 +208,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag int 4 throws dll not found exception
+        ///     Tests that drag int 4 throws dll not found exception
         /// </summary>
         [Fact]
         public void DragInt4_ThrowsDllNotFoundException()
@@ -218,7 +218,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag int 4 with speed throws dll not found exception
+        ///     Tests that drag int 4 with speed throws dll not found exception
         /// </summary>
         [Fact]
         public void DragInt4_WithSpeed_ThrowsDllNotFoundException()
@@ -228,7 +228,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag int 4 with min throws dll not found exception
+        ///     Tests that drag int 4 with min throws dll not found exception
         /// </summary>
         [Fact]
         public void DragInt4_WithMin_ThrowsDllNotFoundException()
@@ -238,7 +238,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag int 4 with min max throws dll not found exception
+        ///     Tests that drag int 4 with min max throws dll not found exception
         /// </summary>
         [Fact]
         public void DragInt4_WithMinMax_ThrowsDllNotFoundException()
@@ -248,7 +248,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag int 4 with format throws dll not found exception
+        ///     Tests that drag int 4 with format throws dll not found exception
         /// </summary>
         [Fact]
         public void DragInt4_WithFormat_ThrowsDllNotFoundException()
@@ -258,7 +258,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag int 4 with format and flags throws dll not found exception
+        ///     Tests that drag int 4 with format and flags throws dll not found exception
         /// </summary>
         [Fact]
         public void DragInt4_WithFormatAndFlags_ThrowsDllNotFoundException()
@@ -268,7 +268,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag int range 2 throws dll not found exception
+        ///     Tests that drag int range 2 throws dll not found exception
         /// </summary>
         [Fact]
         public void DragIntRange2_ThrowsDllNotFoundException()
@@ -278,7 +278,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag int range 2 with speed throws dll not found exception
+        ///     Tests that drag int range 2 with speed throws dll not found exception
         /// </summary>
         [Fact]
         public void DragIntRange2_WithSpeed_ThrowsDllNotFoundException()
@@ -288,7 +288,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag int range 2 with min throws dll not found exception
+        ///     Tests that drag int range 2 with min throws dll not found exception
         /// </summary>
         [Fact]
         public void DragIntRange2_WithMin_ThrowsDllNotFoundException()
@@ -298,7 +298,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag int range 2 with min max throws dll not found exception
+        ///     Tests that drag int range 2 with min max throws dll not found exception
         /// </summary>
         [Fact]
         public void DragIntRange2_WithMinMax_ThrowsDllNotFoundException()
@@ -308,7 +308,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag int range 2 with format throws dll not found exception
+        ///     Tests that drag int range 2 with format throws dll not found exception
         /// </summary>
         [Fact]
         public void DragIntRange2_WithFormat_ThrowsDllNotFoundException()
@@ -318,7 +318,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag int range 2 with format and flags throws dll not found exception
+        ///     Tests that drag int range 2 with format and flags throws dll not found exception
         /// </summary>
         [Fact]
         public void DragIntRange2_WithFormatAndFlags_ThrowsDllNotFoundException()
@@ -328,7 +328,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag scalar throws dll not found exception
+        ///     Tests that drag scalar throws dll not found exception
         /// </summary>
         [Fact]
         public void DragScalar_ThrowsDllNotFoundException()
@@ -338,7 +338,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag scalar with speed throws dll not found exception
+        ///     Tests that drag scalar with speed throws dll not found exception
         /// </summary>
         [Fact]
         public void DragScalar_WithSpeed_ThrowsDllNotFoundException()
@@ -348,7 +348,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag scalar with min throws dll not found exception
+        ///     Tests that drag scalar with min throws dll not found exception
         /// </summary>
         [Fact]
         public void DragScalar_WithMin_ThrowsDllNotFoundException()
@@ -358,7 +358,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag scalar with min max throws dll not found exception
+        ///     Tests that drag scalar with min max throws dll not found exception
         /// </summary>
         [Fact]
         public void DragScalar_WithMinMax_ThrowsDllNotFoundException()
@@ -368,7 +368,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag scalar with format throws dll not found exception
+        ///     Tests that drag scalar with format throws dll not found exception
         /// </summary>
         [Fact]
         public void DragScalar_WithFormat_ThrowsDllNotFoundException()
@@ -378,7 +378,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag scalar with format and flags throws dll not found exception
+        ///     Tests that drag scalar with format and flags throws dll not found exception
         /// </summary>
         [Fact]
         public void DragScalar_WithFormatAndFlags_ThrowsDllNotFoundException()
@@ -388,7 +388,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag scalar n throws dll not found exception
+        ///     Tests that drag scalar n throws dll not found exception
         /// </summary>
         [Fact]
         public void DragScalarN_ThrowsDllNotFoundException()
@@ -398,7 +398,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag scalar n with speed throws dll not found exception
+        ///     Tests that drag scalar n with speed throws dll not found exception
         /// </summary>
         [Fact]
         public void DragScalarN_WithSpeed_ThrowsDllNotFoundException()
@@ -408,7 +408,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that drag scalar n with min throws dll not found exception
+        ///     Tests that drag scalar n with min throws dll not found exception
         /// </summary>
         [Fact]
         public void DragScalarN_WithMin_ThrowsDllNotFoundException()

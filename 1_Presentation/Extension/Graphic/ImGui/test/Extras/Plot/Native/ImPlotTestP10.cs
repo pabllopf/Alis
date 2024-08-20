@@ -500,7 +500,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded byte throws dll not found exception
+        ///     Tests that plot shaded byte throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_Byte_ThrowsDllNotFoundException()
@@ -509,7 +509,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded byte with x start throws dll not found exception
+        ///     Tests that plot shaded byte with x start throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_Byte_WithXStart_ThrowsDllNotFoundException()
@@ -518,7 +518,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded byte with flags throws dll not found exception
+        ///     Tests that plot shaded byte with flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_Byte_WithFlags_ThrowsDllNotFoundException()
@@ -527,7 +527,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded byte with offset throws dll not found exception
+        ///     Tests that plot shaded byte with offset throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_Byte_WithOffset_ThrowsDllNotFoundException()
@@ -536,7 +536,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded byte with stride throws dll not found exception
+        ///     Tests that plot shaded byte with stride throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_Byte_WithStride_ThrowsDllNotFoundException()
@@ -545,7 +545,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded short throws dll not found exception
+        ///     Tests that plot shaded short throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_Short_ThrowsDllNotFoundException()
@@ -554,7 +554,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot shaded short with y ref throws dll not found exception
+        ///     Tests that plot shaded short with y ref throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotShaded_Short_WithYRef_ThrowsDllNotFoundException()

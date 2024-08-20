@@ -2189,7 +2189,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that implicit conversion to int ptr returns native ptr
+        ///     Tests that implicit conversion to int ptr returns native ptr
         /// </summary>
         [Fact]
         public void ImplicitConversionToIntPtr_ReturnsNativePtr()
@@ -2200,7 +2200,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that implicit conversion from int ptr returns im draw list ptr
+        ///     Tests that implicit conversion from int ptr returns im draw list ptr
         /// </summary>
         [Fact]
         public void ImplicitConversionFromIntPtr_ReturnsImDrawListPtr()
@@ -2211,7 +2211,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that cmd buffer returns correct value
+        ///     Tests that cmd buffer returns correct value
         /// </summary>
         [Fact]
         public void CmdBuffer_ReturnsCorrectValue()
@@ -2219,7 +2219,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that idx buffer returns correct value
+        ///     Tests that idx buffer returns correct value
         /// </summary>
         [Fact]
         public void IdxBuffer_ReturnsCorrectValue()
@@ -2227,7 +2227,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that vtx buffer returns correct value
+        ///     Tests that vtx buffer returns correct value
         /// </summary>
         [Fact]
         public void VtxBuffer_ReturnsCorrectValue()
@@ -2235,7 +2235,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that flags returns correct value
+        ///     Tests that flags returns correct value
         /// </summary>
         [Fact]
         public void Flags_ReturnsCorrectValue()
@@ -2243,7 +2243,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that vtx current idx returns correct value
+        ///     Tests that vtx current idx returns correct value
         /// </summary>
         [Fact]
         public void VtxCurrentIdx_ReturnsCorrectValue()
@@ -2254,7 +2254,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that data returns correct value
+        ///     Tests that data returns correct value
         /// </summary>
         [Fact]
         public void Data_ReturnsCorrectValue()
@@ -2265,7 +2265,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that owner name returns correct value
+        ///     Tests that owner name returns correct value
         /// </summary>
         [Fact]
         public void OwnerName_ReturnsCorrectValue()
@@ -2273,7 +2273,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that idx write ptr get returns correct value
+        ///     Tests that idx write ptr get returns correct value
         /// </summary>
         [Fact]
         public void IdxWritePtr_Get_ReturnsCorrectValue()
@@ -2284,7 +2284,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that cmd buffer returns correct value v 3
+        ///     Tests that cmd buffer returns correct value v 3
         /// </summary>
         [Fact]
         public void CmdBuffer_ReturnsCorrectValue_v3()
@@ -2295,7 +2295,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that idx buffer returns correct value v 3
+        ///     Tests that idx buffer returns correct value v 3
         /// </summary>
         [Fact]
         public void IdxBuffer_ReturnsCorrectValue_v3()
@@ -2306,7 +2306,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that vtx buffer returns correct value v 3
+        ///     Tests that vtx buffer returns correct value v 3
         /// </summary>
         [Fact]
         public void VtxBuffer_ReturnsCorrectValue_v3()
@@ -2317,7 +2317,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that flags returns correct value v 3
+        ///     Tests that flags returns correct value v 3
         /// </summary>
         [Fact]
         public void Flags_ReturnsCorrectValue_v3()
@@ -2328,7 +2328,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that implicit conversion to int ptr returns native ptr v 4
+        ///     Tests that implicit conversion to int ptr returns native ptr v 4
         /// </summary>
         [Fact]
         public void ImplicitConversionToIntPtr_ReturnsNativePtr_v4()
@@ -2339,7 +2339,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that implicit conversion from int ptr returns im draw list ptr v 4
+        ///     Tests that implicit conversion from int ptr returns im draw list ptr v 4
         /// </summary>
         [Fact]
         public void ImplicitConversionFromIntPtr_ReturnsImDrawListPtr_v4()
@@ -2350,7 +2350,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that cmd buffer returns correct value v 4
+        ///     Tests that cmd buffer returns correct value v 4
         /// </summary>
         [Fact]
         public void CmdBuffer_ReturnsCorrectValue_v4()
@@ -2361,7 +2361,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that idx buffer returns correct value v 4
+        ///     Tests that idx buffer returns correct value v 4
         /// </summary>
         [Fact]
         public void IdxBuffer_ReturnsCorrectValue_v4()
@@ -2372,7 +2372,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that vtx buffer returns correct value v 4
+        ///     Tests that vtx buffer returns correct value v 4
         /// </summary>
         [Fact]
         public void VtxBuffer_ReturnsCorrectValue_v4()
@@ -2383,7 +2383,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that flags returns correct value v 4
+        ///     Tests that flags returns correct value v 4
         /// </summary>
         [Fact]
         public void Flags_ReturnsCorrectValue_v4()
@@ -2394,7 +2394,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that vtx current idx returns correct value v 4
+        ///     Tests that vtx current idx returns correct value v 4
         /// </summary>
         [Fact]
         public void VtxCurrentIdx_ReturnsCorrectValue_v4()
@@ -2405,7 +2405,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that data returns correct value v 4
+        ///     Tests that data returns correct value v 4
         /// </summary>
         [Fact]
         public void Data_ReturnsCorrectValue_v4()
@@ -2416,7 +2416,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that owner name returns correct value v 4
+        ///     Tests that owner name returns correct value v 4
         /// </summary>
         [Fact]
         public void OwnerName_ReturnsCorrectValue_v4()
@@ -2427,17 +2427,17 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that vtx write ptr returns correct value
+        ///     Tests that vtx write ptr returns correct value
         /// </summary>
         [Fact]
         public void VtxWritePtr_ReturnsCorrectValue()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr(new ImDrawList());
-            Assert.Throws<NullReferenceException>(()=> drawListPtr.VtxWritePtr);
+            Assert.Throws<NullReferenceException>(() => drawListPtr.VtxWritePtr);
         }
         
         /// <summary>
-        /// Tests that idx write ptr get returns correct value v 4
+        ///     Tests that idx write ptr get returns correct value v 4
         /// </summary>
         [Fact]
         public void IdxWritePtr_Get_ReturnsCorrectValue_v4()

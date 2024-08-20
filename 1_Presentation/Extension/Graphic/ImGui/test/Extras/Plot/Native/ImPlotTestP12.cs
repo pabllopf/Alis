@@ -526,7 +526,5 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             byte xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram2D("label", ref xs, ref ys, 3, 10, 10, new ImPlotRect(), ImPlotHistogramFlags.None));
         }
-        
-        
     }
 }

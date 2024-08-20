@@ -1678,7 +1678,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that pop clip rect throws dll not found exception
+        ///     Tests that pop clip rect throws dll not found exception
         /// </summary>
         [Fact]
         public void PopClipRect_ThrowsDllNotFoundException()
@@ -1687,7 +1687,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that pop font throws dll not found exception
+        ///     Tests that pop font throws dll not found exception
         /// </summary>
         [Fact]
         public void PopFont_ThrowsDllNotFoundException()
@@ -1696,7 +1696,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 pop id throws dll not found exception
+        ///     Tests that v 3 pop id throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_PopId_ThrowsDllNotFoundException()
@@ -1705,7 +1705,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 pop item width throws dll not found exception
+        ///     Tests that v 3 pop item width throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_PopItemWidth_ThrowsDllNotFoundException()
@@ -1714,7 +1714,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 v 3 pop style color throws dll not found exception
+        ///     Tests that v 3 v 3 pop style color throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_V3_PopStyleColor_ThrowsDllNotFoundException()
@@ -1723,7 +1723,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 pop style color with count throws dll not found exception
+        ///     Tests that v 3 pop style color with count throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_PopStyleColor_WithCount_ThrowsDllNotFoundException()
@@ -1732,7 +1732,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that pop style var throws dll not found exception
+        ///     Tests that pop style var throws dll not found exception
         /// </summary>
         [Fact]
         public void PopStyleVar_ThrowsDllNotFoundException()
@@ -1741,7 +1741,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that pop style var with count throws dll not found exception
+        ///     Tests that pop style var with count throws dll not found exception
         /// </summary>
         [Fact]
         public void PopStyleVar_WithCount_ThrowsDllNotFoundException()
@@ -1750,7 +1750,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 pop text wrap pos throws dll not found exception
+        ///     Tests that v 3 pop text wrap pos throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_PopTextWrapPos_ThrowsDllNotFoundException()
@@ -1759,7 +1759,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 progress bar throws dll not found exception
+        ///     Tests that v 3 progress bar throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_ProgressBar_ThrowsDllNotFoundException()
@@ -1768,7 +1768,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 progress bar with size arg throws dll not found exception
+        ///     Tests that v 3 progress bar with size arg throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_ProgressBar_WithSizeArg_ThrowsDllNotFoundException()
@@ -1777,7 +1777,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that progress bar with size arg and overlay throws dll not found exception
+        ///     Tests that progress bar with size arg and overlay throws dll not found exception
         /// </summary>
         [Fact]
         public void ProgressBar_WithSizeArgAndOverlay_ThrowsDllNotFoundException()
@@ -1786,7 +1786,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that push allow keyboard focus throws dll not found exception
+        ///     Tests that push allow keyboard focus throws dll not found exception
         /// </summary>
         [Fact]
         public void PushAllowKeyboardFocus_ThrowsDllNotFoundException()
@@ -1795,7 +1795,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that push button repeat throws dll not found exception
+        ///     Tests that push button repeat throws dll not found exception
         /// </summary>
         [Fact]
         public void PushButtonRepeat_ThrowsDllNotFoundException()
@@ -1804,7 +1804,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that push clip rect throws dll not found exception
+        ///     Tests that push clip rect throws dll not found exception
         /// </summary>
         [Fact]
         public void PushClipRect_ThrowsDllNotFoundException()
@@ -1813,7 +1813,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that push font throws dll not found exception
+        ///     Tests that push font throws dll not found exception
         /// </summary>
         [Fact]
         public void PushFont_ThrowsDllNotFoundException()
@@ -1822,7 +1822,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that push id with string throws dll not found exception
+        ///     Tests that push id with string throws dll not found exception
         /// </summary>
         [Fact]
         public void PushId_WithString_ThrowsDllNotFoundException()
@@ -1831,7 +1831,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 push id with int ptr throws dll not found exception
+        ///     Tests that v 3 push id with int ptr throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_PushId_WithIntPtr_ThrowsDllNotFoundException()
@@ -1840,7 +1840,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that push id with int throws dll not found exception
+        ///     Tests that push id with int throws dll not found exception
         /// </summary>
         [Fact]
         public void PushId_WithInt_ThrowsDllNotFoundException()
@@ -1849,7 +1849,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that push item width throws dll not found exception
+        ///     Tests that push item width throws dll not found exception
         /// </summary>
         [Fact]
         public void PushItemWidth_ThrowsDllNotFoundException()
@@ -1858,7 +1858,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 push style color with u 32 throws dll not found exception
+        ///     Tests that v 3 push style color with u 32 throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_PushStyleColor_WithU32_ThrowsDllNotFoundException()
@@ -1867,7 +1867,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 push style color with vec 4 throws dll not found exception
+        ///     Tests that v 3 push style color with vec 4 throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_PushStyleColor_WithVec4_ThrowsDllNotFoundException()
@@ -1876,7 +1876,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that push style var with float throws dll not found exception
+        ///     Tests that push style var with float throws dll not found exception
         /// </summary>
         [Fact]
         public void PushStyleVar_WithFloat_ThrowsDllNotFoundException()
@@ -1885,7 +1885,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 v 3 push style var with vec 2 throws dll not found exception
+        ///     Tests that v 3 v 3 push style var with vec 2 throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_V3_PushStyleVar_WithVec2_ThrowsDllNotFoundException()
@@ -1894,7 +1894,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 push text wrap pos throws dll not found exception
+        ///     Tests that v 3 push text wrap pos throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_PushTextWrapPos_ThrowsDllNotFoundException()
@@ -1903,7 +1903,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 push text wrap pos with float throws dll not found exception
+        ///     Tests that v 3 push text wrap pos with float throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_PushTextWrapPos_WithFloat_ThrowsDllNotFoundException()
@@ -1912,7 +1912,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 radio button with bool throws dll not found exception
+        ///     Tests that v 3 radio button with bool throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_RadioButton_WithBool_ThrowsDllNotFoundException()
@@ -1921,7 +1921,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 radio button with int ptr throws dll not found exception
+        ///     Tests that v 3 radio button with int ptr throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_RadioButton_WithIntPtr_ThrowsDllNotFoundException()
@@ -1931,7 +1931,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 render throws dll not found exception
+        ///     Tests that v 3 render throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_Render_ThrowsDllNotFoundException()
@@ -1940,7 +1940,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 render platform windows default throws dll not found exception
+        ///     Tests that v 3 render platform windows default throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_RenderPlatformWindowsDefault_ThrowsDllNotFoundException()
@@ -1949,7 +1949,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 render platform windows default with platform render arg throws dll not found exception
+        ///     Tests that v 3 render platform windows default with platform render arg throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_RenderPlatformWindowsDefault_WithPlatformRenderArg_ThrowsDllNotFoundException()
@@ -1958,7 +1958,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that render platform windows default with platform and renderer render arg throws dll not found exception
+        ///     Tests that render platform windows default with platform and renderer render arg throws dll not found exception
         /// </summary>
         [Fact]
         public void RenderPlatformWindowsDefault_WithPlatformAndRendererRenderArg_ThrowsDllNotFoundException()
@@ -1967,7 +1967,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 reset mouse drag delta throws dll not found exception
+        ///     Tests that v 3 reset mouse drag delta throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_ResetMouseDragDelta_ThrowsDllNotFoundException()
@@ -1976,7 +1976,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 reset mouse drag delta with button throws dll not found exception
+        ///     Tests that v 3 reset mouse drag delta with button throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_ResetMouseDragDelta_WithButton_ThrowsDllNotFoundException()
@@ -1985,7 +1985,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 same line throws dll not found exception
+        ///     Tests that v 3 same line throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SameLine_ThrowsDllNotFoundException()
@@ -1994,7 +1994,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 same line with offset from start x throws dll not found exception
+        ///     Tests that v 3 same line with offset from start x throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SameLine_WithOffsetFromStartX_ThrowsDllNotFoundException()
@@ -2003,7 +2003,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 same line with offset from start x and spacing throws dll not found exception
+        ///     Tests that v 3 same line with offset from start x and spacing throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SameLine_WithOffsetFromStartXAndSpacing_ThrowsDllNotFoundException()
@@ -2012,7 +2012,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 save ini settings to disk throws dll not found exception
+        ///     Tests that v 3 save ini settings to disk throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SaveIniSettingsToDisk_ThrowsDllNotFoundException()
@@ -2021,7 +2021,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 save ini settings to memory throws dll not found exception
+        ///     Tests that v 3 save ini settings to memory throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SaveIniSettingsToMemory_ThrowsDllNotFoundException()
@@ -2030,7 +2030,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 save ini settings to memory with out ini size throws dll not found exception
+        ///     Tests that v 3 save ini settings to memory with out ini size throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SaveIniSettingsToMemory_WithOutIniSize_ThrowsDllNotFoundException()
@@ -2040,7 +2040,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 selectable throws dll not found exception
+        ///     Tests that v 3 selectable throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_Selectable_ThrowsDllNotFoundException()
@@ -2049,7 +2049,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 selectable with selected throws dll not found exception
+        ///     Tests that v 3 selectable with selected throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_Selectable_WithSelected_ThrowsDllNotFoundException()
@@ -2058,7 +2058,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 selectable with selected and flags throws dll not found exception
+        ///     Tests that v 3 selectable with selected and flags throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_Selectable_WithSelectedAndFlags_ThrowsDllNotFoundException()
@@ -2067,7 +2067,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 selectable with selected flags and size throws dll not found exception
+        ///     Tests that v 3 selectable with selected flags and size throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_Selectable_WithSelectedFlagsAndSize_ThrowsDllNotFoundException()
@@ -2076,7 +2076,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 selectable with ref selected throws dll not found exception
+        ///     Tests that v 3 selectable with ref selected throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_Selectable_WithRefSelected_ThrowsDllNotFoundException()
@@ -2086,7 +2086,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 selectable with ref selected and flags throws dll not found exception
+        ///     Tests that v 3 selectable with ref selected and flags throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_Selectable_WithRefSelectedAndFlags_ThrowsDllNotFoundException()
@@ -2096,7 +2096,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 selectable with ref selected flags and size throws dll not found exception
+        ///     Tests that v 3 selectable with ref selected flags and size throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_Selectable_WithRefSelectedFlagsAndSize_ThrowsDllNotFoundException()
@@ -2106,7 +2106,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 separator throws dll not found exception
+        ///     Tests that v 3 separator throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_Separator_ThrowsDllNotFoundException()
@@ -2115,7 +2115,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set allocator functions throws dll not found exception
+        ///     Tests that v 3 set allocator functions throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetAllocatorFunctions_ThrowsDllNotFoundException()
@@ -2124,7 +2124,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set allocator functions with user data throws dll not found exception
+        ///     Tests that v 3 set allocator functions with user data throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetAllocatorFunctions_WithUserData_ThrowsDllNotFoundException()
@@ -2133,7 +2133,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set clipboard text throws dll not found exception
+        ///     Tests that v 3 set clipboard text throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetClipboardText_ThrowsDllNotFoundException()
@@ -2142,7 +2142,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set color edit options throws dll not found exception
+        ///     Tests that v 3 set color edit options throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetColorEditOptions_ThrowsDllNotFoundException()
@@ -2151,7 +2151,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set column offset throws dll not found exception
+        ///     Tests that v 3 set column offset throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetColumnOffset_ThrowsDllNotFoundException()
@@ -2160,7 +2160,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set column width throws dll not found exception
+        ///     Tests that v 3 set column width throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetColumnWidth_ThrowsDllNotFoundException()
@@ -2169,7 +2169,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that set current context throws dll not found exception
+        ///     Tests that set current context throws dll not found exception
         /// </summary>
         [Fact]
         public void SetCurrentContext_ThrowsDllNotFoundException()
@@ -2178,7 +2178,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set cursor pos throws dll not found exception
+        ///     Tests that v 3 set cursor pos throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetCursorPos_ThrowsDllNotFoundException()
@@ -2187,7 +2187,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set cursor pos x throws dll not found exception
+        ///     Tests that v 3 set cursor pos x throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetCursorPosX_ThrowsDllNotFoundException()
@@ -2196,7 +2196,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set cursor pos y throws dll not found exception
+        ///     Tests that v 3 set cursor pos y throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetCursorPosY_ThrowsDllNotFoundException()
@@ -2205,7 +2205,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set cursor screen pos throws dll not found exception
+        ///     Tests that v 3 set cursor screen pos throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetCursorScreenPos_ThrowsDllNotFoundException()
@@ -2214,7 +2214,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set drag drop payload throws dll not found exception
+        ///     Tests that v 3 set drag drop payload throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetDragDropPayload_ThrowsDllNotFoundException()
@@ -2223,7 +2223,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set drag drop payload with cond throws dll not found exception
+        ///     Tests that v 3 set drag drop payload with cond throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetDragDropPayload_WithCond_ThrowsDllNotFoundException()
@@ -2232,7 +2232,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set item allow overlap throws dll not found exception
+        ///     Tests that v 3 set item allow overlap throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetItemAllowOverlap_ThrowsDllNotFoundException()
@@ -2241,7 +2241,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set item default focus throws dll not found exception
+        ///     Tests that v 3 set item default focus throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetItemDefaultFocus_ThrowsDllNotFoundException()
@@ -2250,7 +2250,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set keyboard focus here throws dll not found exception
+        ///     Tests that v 3 set keyboard focus here throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetKeyboardFocusHere_ThrowsDllNotFoundException()
@@ -2259,7 +2259,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set keyboard focus here with offset throws dll not found exception
+        ///     Tests that v 3 set keyboard focus here with offset throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetKeyboardFocusHere_WithOffset_ThrowsDllNotFoundException()
@@ -2268,7 +2268,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set mouse cursor throws dll not found exception
+        ///     Tests that v 3 set mouse cursor throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetMouseCursor_ThrowsDllNotFoundException()
@@ -2277,7 +2277,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set next frame want capture keyboard throws dll not found exception
+        ///     Tests that v 3 set next frame want capture keyboard throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetNextFrameWantCaptureKeyboard_ThrowsDllNotFoundException()
@@ -2286,7 +2286,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set next frame want capture mouse throws dll not found exception
+        ///     Tests that v 3 set next frame want capture mouse throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetNextFrameWantCaptureMouse_ThrowsDllNotFoundException()
@@ -2295,7 +2295,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set next item open throws dll not found exception
+        ///     Tests that v 3 set next item open throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetNextItemOpen_ThrowsDllNotFoundException()
@@ -2304,7 +2304,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set next item open with cond throws dll not found exception
+        ///     Tests that v 3 set next item open with cond throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetNextItemOpen_WithCond_ThrowsDllNotFoundException()
@@ -2313,7 +2313,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set next item width throws dll not found exception
+        ///     Tests that v 3 set next item width throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetNextItemWidth_ThrowsDllNotFoundException()
@@ -2322,7 +2322,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set next window bg alpha throws dll not found exception
+        ///     Tests that v 3 set next window bg alpha throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetNextWindowBgAlpha_ThrowsDllNotFoundException()
@@ -2331,7 +2331,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set next window class throws dll not found exception
+        ///     Tests that v 3 set next window class throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetNextWindowClass_ThrowsDllNotFoundException()
@@ -2340,7 +2340,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set next window collapsed throws dll not found exception
+        ///     Tests that v 3 set next window collapsed throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetNextWindowCollapsed_ThrowsDllNotFoundException()
@@ -2349,7 +2349,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set next window collapsed with cond throws dll not found exception
+        ///     Tests that v 3 set next window collapsed with cond throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetNextWindowCollapsed_WithCond_ThrowsDllNotFoundException()
@@ -2358,7 +2358,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set next window content size throws dll not found exception
+        ///     Tests that v 3 set next window content size throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetNextWindowContentSize_ThrowsDllNotFoundException()
@@ -2367,7 +2367,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set next window dock id throws dll not found exception
+        ///     Tests that v 3 set next window dock id throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetNextWindowDockId_ThrowsDllNotFoundException()
@@ -2376,7 +2376,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set next window dock id with cond throws dll not found exception
+        ///     Tests that v 3 set next window dock id with cond throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetNextWindowDockId_WithCond_ThrowsDllNotFoundException()
@@ -2385,7 +2385,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set next window focus throws dll not found exception
+        ///     Tests that v 3 set next window focus throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetNextWindowFocus_ThrowsDllNotFoundException()
@@ -2394,7 +2394,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set next window pos throws dll not found exception
+        ///     Tests that v 3 set next window pos throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetNextWindowPos_ThrowsDllNotFoundException()
@@ -2403,7 +2403,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set next window pos with cond throws dll not found exception
+        ///     Tests that v 3 set next window pos with cond throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetNextWindowPos_WithCond_ThrowsDllNotFoundException()
@@ -2412,7 +2412,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set next window pos with cond and pivot throws dll not found exception
+        ///     Tests that v 3 set next window pos with cond and pivot throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetNextWindowPos_WithCondAndPivot_ThrowsDllNotFoundException()
@@ -2421,7 +2421,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set next window scroll throws dll not found exception
+        ///     Tests that v 3 set next window scroll throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetNextWindowScroll_ThrowsDllNotFoundException()
@@ -2430,7 +2430,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set next window size throws dll not found exception
+        ///     Tests that v 3 set next window size throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetNextWindowSize_ThrowsDllNotFoundException()
@@ -2439,7 +2439,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set next window size with cond throws dll not found exception
+        ///     Tests that v 3 set next window size with cond throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetNextWindowSize_WithCond_ThrowsDllNotFoundException()
@@ -2448,7 +2448,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set next window size constraints throws dll not found exception
+        ///     Tests that v 3 set next window size constraints throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetNextWindowSizeConstraints_ThrowsDllNotFoundException()
@@ -2457,7 +2457,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set next window size constraints with callback throws dll not found exception
+        ///     Tests that v 3 set next window size constraints with callback throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetNextWindowSizeConstraints_WithCallback_ThrowsDllNotFoundException()
@@ -2466,7 +2466,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set next window size constraints with callback and data throws dll not found exception
+        ///     Tests that v 3 set next window size constraints with callback and data throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetNextWindowSizeConstraints_WithCallbackAndData_ThrowsDllNotFoundException()
@@ -2475,7 +2475,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set next window viewport throws dll not found exception
+        ///     Tests that v 3 set next window viewport throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetNextWindowViewport_ThrowsDllNotFoundException()
@@ -2484,7 +2484,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set scroll from pos x throws dll not found exception
+        ///     Tests that v 3 set scroll from pos x throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetScrollFromPosX_ThrowsDllNotFoundException()
@@ -2493,7 +2493,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set scroll from pos x with center x ratio throws dll not found exception
+        ///     Tests that v 3 set scroll from pos x with center x ratio throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetScrollFromPosX_WithCenterXRatio_ThrowsDllNotFoundException()
@@ -2502,7 +2502,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set scroll from pos y throws dll not found exception
+        ///     Tests that v 3 set scroll from pos y throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetScrollFromPosY_ThrowsDllNotFoundException()
@@ -2511,7 +2511,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set scroll from pos y with center y ratio throws dll not found exception
+        ///     Tests that v 3 set scroll from pos y with center y ratio throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetScrollFromPosY_WithCenterYRatio_ThrowsDllNotFoundException()
@@ -2520,7 +2520,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set scroll here x throws dll not found exception
+        ///     Tests that v 3 set scroll here x throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetScrollHereX_ThrowsDllNotFoundException()
@@ -2529,7 +2529,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set scroll here x with center x ratio throws dll not found exception
+        ///     Tests that v 3 set scroll here x with center x ratio throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetScrollHereX_WithCenterXRatio_ThrowsDllNotFoundException()
@@ -2538,7 +2538,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set scroll here y throws dll not found exception
+        ///     Tests that v 3 set scroll here y throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetScrollHereY_ThrowsDllNotFoundException()
@@ -2547,7 +2547,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set scroll here y with center y ratio throws dll not found exception
+        ///     Tests that v 3 set scroll here y with center y ratio throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetScrollHereY_WithCenterYRatio_ThrowsDllNotFoundException()
@@ -2556,7 +2556,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that v 3 set scroll x throws dll not found exception
+        ///     Tests that v 3 set scroll x throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_SetScrollX_ThrowsDllNotFoundException()
@@ -2565,7 +2565,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that set state storage throws dll not found exception
+        ///     Tests that set state storage throws dll not found exception
         /// </summary>
         [Fact]
         public void SetStateStorage_ThrowsDllNotFoundException()
@@ -2574,7 +2574,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that set tab item closed throws dll not found exception
+        ///     Tests that set tab item closed throws dll not found exception
         /// </summary>
         [Fact]
         public void SetTabItemClosed_ThrowsDllNotFoundException()
@@ -2583,7 +2583,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that set tooltip throws dll not found exception
+        ///     Tests that set tooltip throws dll not found exception
         /// </summary>
         [Fact]
         public void SetTooltip_ThrowsDllNotFoundException()
@@ -2592,7 +2592,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that set window collapsed throws dll not found exception
+        ///     Tests that set window collapsed throws dll not found exception
         /// </summary>
         [Fact]
         public void SetWindowCollapsed_ThrowsDllNotFoundException()
@@ -2601,7 +2601,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that set window collapsed with cond throws dll not found exception
+        ///     Tests that set window collapsed with cond throws dll not found exception
         /// </summary>
         [Fact]
         public void SetWindowCollapsed_WithCond_ThrowsDllNotFoundException()
@@ -2610,7 +2610,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that set window collapsed with name throws dll not found exception
+        ///     Tests that set window collapsed with name throws dll not found exception
         /// </summary>
         [Fact]
         public void SetWindowCollapsed_WithName_ThrowsDllNotFoundException()
@@ -2619,7 +2619,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that set window collapsed with name and cond throws dll not found exception
+        ///     Tests that set window collapsed with name and cond throws dll not found exception
         /// </summary>
         [Fact]
         public void SetWindowCollapsed_WithNameAndCond_ThrowsDllNotFoundException()
@@ -2628,7 +2628,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that set window focus throws dll not found exception
+        ///     Tests that set window focus throws dll not found exception
         /// </summary>
         [Fact]
         public void SetWindowFocus_ThrowsDllNotFoundException()
@@ -2637,7 +2637,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that set window focus with name throws dll not found exception
+        ///     Tests that set window focus with name throws dll not found exception
         /// </summary>
         [Fact]
         public void SetWindowFocus_WithName_ThrowsDllNotFoundException()
@@ -2646,7 +2646,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that set window font scale throws dll not found exception
+        ///     Tests that set window font scale throws dll not found exception
         /// </summary>
         [Fact]
         public void SetWindowFontScale_ThrowsDllNotFoundException()
@@ -2655,7 +2655,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that set window pos throws dll not found exception
+        ///     Tests that set window pos throws dll not found exception
         /// </summary>
         [Fact]
         public void SetWindowPos_ThrowsDllNotFoundException()
@@ -2664,7 +2664,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that set window pos with cond throws dll not found exception
+        ///     Tests that set window pos with cond throws dll not found exception
         /// </summary>
         [Fact]
         public void SetWindowPos_WithCond_ThrowsDllNotFoundException()
@@ -2673,7 +2673,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that set window pos with name throws dll not found exception
+        ///     Tests that set window pos with name throws dll not found exception
         /// </summary>
         [Fact]
         public void SetWindowPos_WithName_ThrowsDllNotFoundException()
@@ -2682,7 +2682,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that set window pos with name and cond throws dll not found exception
+        ///     Tests that set window pos with name and cond throws dll not found exception
         /// </summary>
         [Fact]
         public void SetWindowPos_WithNameAndCond_ThrowsDllNotFoundException()
@@ -2691,7 +2691,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that set window size throws dll not found exception
+        ///     Tests that set window size throws dll not found exception
         /// </summary>
         [Fact]
         public void SetWindowSize_ThrowsDllNotFoundException()
@@ -2700,7 +2700,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that set window size with cond throws dll not found exception
+        ///     Tests that set window size with cond throws dll not found exception
         /// </summary>
         [Fact]
         public void SetWindowSize_WithCond_ThrowsDllNotFoundException()
@@ -2709,7 +2709,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that set window size with name throws dll not found exception
+        ///     Tests that set window size with name throws dll not found exception
         /// </summary>
         [Fact]
         public void SetWindowSize_WithName_ThrowsDllNotFoundException()
@@ -2718,7 +2718,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that set window size with name and cond throws dll not found exception
+        ///     Tests that set window size with name and cond throws dll not found exception
         /// </summary>
         [Fact]
         public void SetWindowSize_WithNameAndCond_ThrowsDllNotFoundException()
@@ -2727,339 +2727,261 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that menu item throws dll not found exception
+        ///     Tests that menu item throws dll not found exception
         /// </summary>
         [Fact]
-public void MenuItem_ThrowsDllNotFoundException()
-{
-    bool selected = false;
-    Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.MenuItem("label", "shortcut", ref selected, true));
-}
-
-/// <summary>
-
-/// Tests that new frame throws dll not found exception
-
-/// </summary>
-
-[Fact]
-public void NewFrame_ThrowsDllNotFoundException()
-{
-    Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.NewFrame());
-}
-
-/// <summary>
-
-/// Tests that new line throws dll not found exception
-
-/// </summary>
-
-[Fact]
-public void NewLine_ThrowsDllNotFoundException()
-{
-    Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.NewLine());
-}
-
-/// <summary>
-
-/// Tests that next column throws dll not found exception
-
-/// </summary>
-
-[Fact]
-public void NextColumn_ThrowsDllNotFoundException()
-{
-    Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.NextColumn());
-}
-
-/// <summary>
-
-/// Tests that open popup str throws dll not found exception
-
-/// </summary>
-
-[Fact]
-public void OpenPopup_Str_ThrowsDllNotFoundException()
-{
-    Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.OpenPopup("strId"));
-}
-
-/// <summary>
-
-/// Tests that open popup str with flags throws dll not found exception
-
-/// </summary>
-
-[Fact]
-public void OpenPopup_StrWithFlags_ThrowsDllNotFoundException()
-{
-    Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.OpenPopup("strId", ImGuiPopupFlags.None));
-}
-
-/// <summary>
-
-/// Tests that open popup id throws dll not found exception
-
-/// </summary>
-
-[Fact]
-public void OpenPopup_ID_ThrowsDllNotFoundException()
-{
-    Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.OpenPopup(1u));
-}
-
-/// <summary>
-
-/// Tests that open popup id with flags throws dll not found exception
-
-/// </summary>
-
-[Fact]
-public void OpenPopup_IDWithFlags_ThrowsDllNotFoundException()
-{
-    Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.OpenPopup(1u, ImGuiPopupFlags.None));
-}
-
-/// <summary>
-
-/// Tests that open popup on item click throws dll not found exception
-
-/// </summary>
-
-[Fact]
-public void OpenPopupOnItemClick_ThrowsDllNotFoundException()
-{
-    Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.OpenPopupOnItemClick());
-}
-
-/// <summary>
-
-/// Tests that open popup on item click str throws dll not found exception
-
-/// </summary>
-
-[Fact]
-public void OpenPopupOnItemClick_Str_ThrowsDllNotFoundException()
-{
-    Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.OpenPopupOnItemClick("strId"));
-}
-
-/// <summary>
-
-/// Tests that open popup on item click str with flags throws dll not found exception
-
-/// </summary>
-
-[Fact]
-public void OpenPopupOnItemClick_StrWithFlags_ThrowsDllNotFoundException()
-{
-    Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.OpenPopupOnItemClick("strId", ImGuiPopupFlags.None));
-}
-
-/// <summary>
-
-/// Tests that plot histogram label throws dll not found exception
-
-/// </summary>
-
-[Fact]
-public void PlotHistogram_Label_ThrowsDllNotFoundException()
-{
-    float values = 0;
-    Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PlotHistogram("label", ref values, 1));
-}
-
-/// <summary>
-
-/// Tests that plot histogram label with offset throws dll not found exception
-
-/// </summary>
-
-[Fact]
-public void PlotHistogram_LabelWithOffset_ThrowsDllNotFoundException()
-{
-    float values = 0;
-    Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PlotHistogram("label", ref values, 1, 0));
-}
-
-/// <summary>
-
-/// Tests that plot histogram label with overlay throws dll not found exception
-
-/// </summary>
-
-[Fact]
-public void PlotHistogram_LabelWithOverlay_ThrowsDllNotFoundException()
-{
-    float values = 0;
-    Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PlotHistogram("label", ref values, 1, 0, "overlay"));
-}
-
-/// <summary>
-
-/// Tests that plot histogram label with scale min throws dll not found exception
-
-/// </summary>
-
-[Fact]
-public void PlotHistogram_LabelWithScaleMin_ThrowsDllNotFoundException()
-{
-    float values = 0;
-    Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PlotHistogram("label", ref values, 1, 0, "overlay", 0.0f));
-}
-
-/// <summary>
-
-/// Tests that plot histogram label with scale max throws dll not found exception
-
-/// </summary>
-
-[Fact]
-public void PlotHistogram_LabelWithScaleMax_ThrowsDllNotFoundException()
-{
-    float values = 0;
-    Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PlotHistogram("label", ref values, 1, 0, "overlay", 0.0f, 1.0f));
-}
-
-/// <summary>
-
-/// Tests that plot histogram label with graph size throws dll not found exception
-
-/// </summary>
-
-[Fact]
-public void PlotHistogram_LabelWithGraphSize_ThrowsDllNotFoundException()
-{
-    float values = 0;
-    Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PlotHistogram("label", ref values, 1, 0, "overlay", 0.0f, 1.0f, new Vector2()));
-}
-
-/// <summary>
-
-/// Tests that plot histogram label with stride throws dll not found exception
-
-/// </summary>
-
-[Fact]
-public void PlotHistogram_LabelWithStride_ThrowsDllNotFoundException()
-{
-    float values = 0;
-    Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PlotHistogram("label", ref values, 1, 0, "overlay", 0.0f, 1.0f, new Vector2(), 4));
-}
-
-/// <summary>
-
-/// Tests that plot lines label throws dll not found exception
-
-/// </summary>
-
-[Fact]
-public void PlotLines_Label_ThrowsDllNotFoundException()
-{
-    float values = 0;
-    Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PlotLines("label", ref values, 1));
-}
-
-/// <summary>
-
-/// Tests that plot lines label with offset throws dll not found exception
-
-/// </summary>
-
-[Fact]
-public void PlotLines_LabelWithOffset_ThrowsDllNotFoundException()
-{
-    float values = 0;
-    Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PlotLines("label", ref values, 1, 0));
-}
-
-/// <summary>
-
-/// Tests that plot lines label with overlay throws dll not found exception
-
-/// </summary>
-
-[Fact]
-public void PlotLines_LabelWithOverlay_ThrowsDllNotFoundException()
-{
-    float values = 0;
-    Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PlotLines("label", ref values, 1, 0, "overlay"));
-}
-
-/// <summary>
-
-/// Tests that plot lines label with scale min throws dll not found exception
-
-/// </summary>
-
-[Fact]
-public void PlotLines_LabelWithScaleMin_ThrowsDllNotFoundException()
-{
-    float values = 0;
-    Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PlotLines("label", ref values, 1, 0, "overlay", 0.0f));
-}
-
-/// <summary>
-
-/// Tests that plot lines label with scale max throws dll not found exception
-
-/// </summary>
-
-[Fact]
-public void PlotLines_LabelWithScaleMax_ThrowsDllNotFoundException()
-{
-    float values = 0;
-    Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PlotLines("label", ref values, 1, 0, "overlay", 0.0f, 1.0f));
-}
-
-/// <summary>
-
-/// Tests that plot lines label with graph size throws dll not found exception
-
-/// </summary>
-
-[Fact]
-public void PlotLines_LabelWithGraphSize_ThrowsDllNotFoundException()
-{
-    float values = 0;
-    Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PlotLines("label", ref values, 1, 0, "overlay", 0.0f, 1.0f, new Vector2()));
-}
-
-/// <summary>
-
-/// Tests that plot lines label with stride throws dll not found exception
-
-/// </summary>
-
-[Fact]
-public void PlotLines_LabelWithStride_ThrowsDllNotFoundException()
-{
-    float values = 0;
-    Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PlotLines("label", ref values, 1, 0, "overlay", 0.0f, 1.0f, new Vector2(), 4));
-}
-
-/// <summary>
-
-/// Tests that pop allow keyboard focus throws dll not found exception
-
-/// </summary>
-
-[Fact]
-public void PopAllowKeyboardFocus_ThrowsDllNotFoundException()
-{
-    Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PopAllowKeyboardFocus());
-}
-
-/// <summary>
-
-/// Tests that pop button repeat throws dll not found exception
-
-/// </summary>
-
-[Fact]
-public void PopButtonRepeat_ThrowsDllNotFoundException()
-{
-    Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PopButtonRepeat());
-}
+        public void MenuItem_ThrowsDllNotFoundException()
+        {
+            bool selected = false;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.MenuItem("label", "shortcut", ref selected, true));
+        }
+        
+        /// <summary>
+        ///     Tests that new frame throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void NewFrame_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.NewFrame());
+        }
+        
+        /// <summary>
+        ///     Tests that new line throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void NewLine_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.NewLine());
+        }
+        
+        /// <summary>
+        ///     Tests that next column throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void NextColumn_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.NextColumn());
+        }
+        
+        /// <summary>
+        ///     Tests that open popup str throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void OpenPopup_Str_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.OpenPopup("strId"));
+        }
+        
+        /// <summary>
+        ///     Tests that open popup str with flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void OpenPopup_StrWithFlags_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.OpenPopup("strId", ImGuiPopupFlags.None));
+        }
+        
+        /// <summary>
+        ///     Tests that open popup id throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void OpenPopup_ID_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.OpenPopup(1u));
+        }
+        
+        /// <summary>
+        ///     Tests that open popup id with flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void OpenPopup_IDWithFlags_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.OpenPopup(1u, ImGuiPopupFlags.None));
+        }
+        
+        /// <summary>
+        ///     Tests that open popup on item click throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void OpenPopupOnItemClick_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.OpenPopupOnItemClick());
+        }
+        
+        /// <summary>
+        ///     Tests that open popup on item click str throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void OpenPopupOnItemClick_Str_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.OpenPopupOnItemClick("strId"));
+        }
+        
+        /// <summary>
+        ///     Tests that open popup on item click str with flags throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void OpenPopupOnItemClick_StrWithFlags_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.OpenPopupOnItemClick("strId", ImGuiPopupFlags.None));
+        }
+        
+        /// <summary>
+        ///     Tests that plot histogram label throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHistogram_Label_ThrowsDllNotFoundException()
+        {
+            float values = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PlotHistogram("label", ref values, 1));
+        }
+        
+        /// <summary>
+        ///     Tests that plot histogram label with offset throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHistogram_LabelWithOffset_ThrowsDllNotFoundException()
+        {
+            float values = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PlotHistogram("label", ref values, 1, 0));
+        }
+        
+        /// <summary>
+        ///     Tests that plot histogram label with overlay throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHistogram_LabelWithOverlay_ThrowsDllNotFoundException()
+        {
+            float values = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PlotHistogram("label", ref values, 1, 0, "overlay"));
+        }
+        
+        /// <summary>
+        ///     Tests that plot histogram label with scale min throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHistogram_LabelWithScaleMin_ThrowsDllNotFoundException()
+        {
+            float values = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PlotHistogram("label", ref values, 1, 0, "overlay", 0.0f));
+        }
+        
+        /// <summary>
+        ///     Tests that plot histogram label with scale max throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHistogram_LabelWithScaleMax_ThrowsDllNotFoundException()
+        {
+            float values = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PlotHistogram("label", ref values, 1, 0, "overlay", 0.0f, 1.0f));
+        }
+        
+        /// <summary>
+        ///     Tests that plot histogram label with graph size throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHistogram_LabelWithGraphSize_ThrowsDllNotFoundException()
+        {
+            float values = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PlotHistogram("label", ref values, 1, 0, "overlay", 0.0f, 1.0f, new Vector2()));
+        }
+        
+        /// <summary>
+        ///     Tests that plot histogram label with stride throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotHistogram_LabelWithStride_ThrowsDllNotFoundException()
+        {
+            float values = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PlotHistogram("label", ref values, 1, 0, "overlay", 0.0f, 1.0f, new Vector2(), 4));
+        }
+        
+        /// <summary>
+        ///     Tests that plot lines label throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotLines_Label_ThrowsDllNotFoundException()
+        {
+            float values = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PlotLines("label", ref values, 1));
+        }
+        
+        /// <summary>
+        ///     Tests that plot lines label with offset throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotLines_LabelWithOffset_ThrowsDllNotFoundException()
+        {
+            float values = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PlotLines("label", ref values, 1, 0));
+        }
+        
+        /// <summary>
+        ///     Tests that plot lines label with overlay throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotLines_LabelWithOverlay_ThrowsDllNotFoundException()
+        {
+            float values = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PlotLines("label", ref values, 1, 0, "overlay"));
+        }
+        
+        /// <summary>
+        ///     Tests that plot lines label with scale min throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotLines_LabelWithScaleMin_ThrowsDllNotFoundException()
+        {
+            float values = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PlotLines("label", ref values, 1, 0, "overlay", 0.0f));
+        }
+        
+        /// <summary>
+        ///     Tests that plot lines label with scale max throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotLines_LabelWithScaleMax_ThrowsDllNotFoundException()
+        {
+            float values = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PlotLines("label", ref values, 1, 0, "overlay", 0.0f, 1.0f));
+        }
+        
+        /// <summary>
+        ///     Tests that plot lines label with graph size throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotLines_LabelWithGraphSize_ThrowsDllNotFoundException()
+        {
+            float values = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PlotLines("label", ref values, 1, 0, "overlay", 0.0f, 1.0f, new Vector2()));
+        }
+        
+        /// <summary>
+        ///     Tests that plot lines label with stride throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PlotLines_LabelWithStride_ThrowsDllNotFoundException()
+        {
+            float values = 0;
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PlotLines("label", ref values, 1, 0, "overlay", 0.0f, 1.0f, new Vector2(), 4));
+        }
+        
+        /// <summary>
+        ///     Tests that pop allow keyboard focus throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PopAllowKeyboardFocus_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PopAllowKeyboardFocus());
+        }
+        
+        /// <summary>
+        ///     Tests that pop button repeat throws dll not found exception
+        /// </summary>
+        [Fact]
+        public void PopButtonRepeat_ThrowsDllNotFoundException()
+        {
+            Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.PopButtonRepeat());
+        }
     }
 }

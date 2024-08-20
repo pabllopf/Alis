@@ -51,7 +51,7 @@ namespace Alis.Extension.Graphic.ImGui
         public ImDrawListPtr(IntPtr nativePtr) => NativePtr = nativePtr;
         
         /// <summary>
-        /// Initializes a new instance of the <see cref="ImDrawListPtr"/> class
+        ///     Initializes a new instance of the <see cref="ImDrawListPtr" /> class
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
         public ImDrawListPtr(ImDrawList nativePtr)

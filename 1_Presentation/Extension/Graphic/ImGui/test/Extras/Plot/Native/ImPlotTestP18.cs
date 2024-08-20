@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
     public class ImPlotTestP18
     {
         /// <summary>
-        /// Tests that plot histogram 2 d u int 32 throws dll not found exception
+        ///     Tests that plot histogram 2 d u int 32 throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHistogram2D_UInt32_ThrowsDllNotFoundException()
@@ -51,7 +51,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot histogram 2 d u int 32 with flags throws dll not found exception
+        ///     Tests that plot histogram 2 d u int 32 with flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHistogram2D_UInt32_WithFlags_ThrowsDllNotFoundException()
@@ -61,7 +61,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot histogram 2 d int 64 throws dll not found exception
+        ///     Tests that plot histogram 2 d int 64 throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHistogram2D_Int64_ThrowsDllNotFoundException()
@@ -71,7 +71,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot histogram 2 d int 64 with x bins throws dll not found exception
+        ///     Tests that plot histogram 2 d int 64 with x bins throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHistogram2D_Int64_WithXBins_ThrowsDllNotFoundException()
@@ -81,7 +81,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot histogram 2 d int 64 with x bins y bins throws dll not found exception
+        ///     Tests that plot histogram 2 d int 64 with x bins y bins throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHistogram2D_Int64_WithXBinsYBins_ThrowsDllNotFoundException()
@@ -91,7 +91,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot histogram 2 d int 64 with range throws dll not found exception
+        ///     Tests that plot histogram 2 d int 64 with range throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHistogram2D_Int64_WithRange_ThrowsDllNotFoundException()
@@ -101,7 +101,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot histogram 2 d int 64 with flags throws dll not found exception
+        ///     Tests that plot histogram 2 d int 64 with flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHistogram2D_Int64_WithFlags_ThrowsDllNotFoundException()
@@ -111,7 +111,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot histogram 2 d u int 64 throws dll not found exception
+        ///     Tests that plot histogram 2 d u int 64 throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHistogram2D_UInt64_ThrowsDllNotFoundException()
@@ -121,7 +121,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot histogram 2 d u int 64 with x bins throws dll not found exception
+        ///     Tests that plot histogram 2 d u int 64 with x bins throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHistogram2D_UInt64_WithXBins_ThrowsDllNotFoundException()
@@ -131,7 +131,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot histogram 2 d u int 64 with x bins y bins throws dll not found exception
+        ///     Tests that plot histogram 2 d u int 64 with x bins y bins throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHistogram2D_UInt64_WithXBinsYBins_ThrowsDllNotFoundException()
@@ -141,7 +141,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot histogram 2 d u int 64 with range throws dll not found exception
+        ///     Tests that plot histogram 2 d u int 64 with range throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHistogram2D_UInt64_WithRange_ThrowsDllNotFoundException()
@@ -151,7 +151,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot histogram 2 d u int 64 with flags throws dll not found exception
+        ///     Tests that plot histogram 2 d u int 64 with flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHistogram2D_UInt64_WithFlags_ThrowsDllNotFoundException()
@@ -161,7 +161,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot image throws dll not found exception
+        ///     Tests that plot image throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotImage_ThrowsDllNotFoundException()
@@ -170,7 +170,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot image with uv 0 throws dll not found exception
+        ///     Tests that plot image with uv 0 throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotImage_WithUV0_ThrowsDllNotFoundException()
@@ -179,7 +179,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot image with uv 0 uv 1 throws dll not found exception
+        ///     Tests that plot image with uv 0 uv 1 throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotImage_WithUV0UV1_ThrowsDllNotFoundException()
@@ -188,7 +188,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot image throws dll not found exception v 2
+        ///     Tests that plot image throws dll not found exception v 2
         /// </summary>
         [Fact]
         public void PlotImage_ThrowsDllNotFoundException_v2()
@@ -197,7 +197,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot image with flags throws dll not found exception
+        ///     Tests that plot image with flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotImage_WithFlags_ThrowsDllNotFoundException()
@@ -206,7 +206,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot inf lines float throws dll not found exception
+        ///     Tests that plot inf lines float throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotInfLines_Float_ThrowsDllNotFoundException()
@@ -215,7 +215,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot inf lines float with flags throws dll not found exception
+        ///     Tests that plot inf lines float with flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotInfLines_Float_WithFlags_ThrowsDllNotFoundException()
@@ -224,7 +224,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot inf lines float with offset throws dll not found exception
+        ///     Tests that plot inf lines float with offset throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotInfLines_Float_WithOffset_ThrowsDllNotFoundException()
@@ -233,7 +233,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot inf lines float with stride throws dll not found exception
+        ///     Tests that plot inf lines float with stride throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotInfLines_Float_WithStride_ThrowsDllNotFoundException()
@@ -242,7 +242,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot inf lines double throws dll not found exception
+        ///     Tests that plot inf lines double throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotInfLines_Double_ThrowsDllNotFoundException()
@@ -251,7 +251,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot inf lines double with flags throws dll not found exception
+        ///     Tests that plot inf lines double with flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotInfLines_Double_WithFlags_ThrowsDllNotFoundException()
@@ -260,7 +260,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot inf lines double with offset throws dll not found exception
+        ///     Tests that plot inf lines double with offset throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotInfLines_Double_WithOffset_ThrowsDllNotFoundException()
@@ -269,7 +269,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot inf lines double with stride throws dll not found exception
+        ///     Tests that plot inf lines double with stride throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotInfLines_Double_WithStride_ThrowsDllNotFoundException()
@@ -278,7 +278,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot inf lines s byte throws dll not found exception
+        ///     Tests that plot inf lines s byte throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotInfLines_SByte_ThrowsDllNotFoundException()
@@ -287,7 +287,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot inf lines s byte with flags throws dll not found exception
+        ///     Tests that plot inf lines s byte with flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotInfLines_SByte_WithFlags_ThrowsDllNotFoundException()
@@ -296,7 +296,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot inf lines s byte with offset throws dll not found exception
+        ///     Tests that plot inf lines s byte with offset throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotInfLines_SByte_WithOffset_ThrowsDllNotFoundException()
@@ -305,7 +305,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot inf lines s byte with stride throws dll not found exception
+        ///     Tests that plot inf lines s byte with stride throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotInfLines_SByte_WithStride_ThrowsDllNotFoundException()
@@ -314,7 +314,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot inf lines byte throws dll not found exception
+        ///     Tests that plot inf lines byte throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotInfLines_Byte_ThrowsDllNotFoundException()
@@ -323,7 +323,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot inf lines byte with flags throws dll not found exception
+        ///     Tests that plot inf lines byte with flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotInfLines_Byte_WithFlags_ThrowsDllNotFoundException()
@@ -332,7 +332,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot inf lines byte with offset throws dll not found exception
+        ///     Tests that plot inf lines byte with offset throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotInfLines_Byte_WithOffset_ThrowsDllNotFoundException()
@@ -341,7 +341,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot inf lines byte with stride throws dll not found exception
+        ///     Tests that plot inf lines byte with stride throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotInfLines_Byte_WithStride_ThrowsDllNotFoundException()

@@ -308,7 +308,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap with scale min throws dll not found exception
+        ///     Tests that plot heatmap with scale min throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_WithScaleMin_ThrowsDllNotFoundException()
@@ -317,7 +317,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap with scale min max throws dll not found exception
+        ///     Tests that plot heatmap with scale min max throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_WithScaleMinMax_ThrowsDllNotFoundException()
@@ -326,7 +326,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap with scale min max label fmt throws dll not found exception
+        ///     Tests that plot heatmap with scale min max label fmt throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_WithScaleMinMaxLabelFmt_ThrowsDllNotFoundException()
@@ -335,7 +335,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap with scale min max label fmt bounds min throws dll not found exception
+        ///     Tests that plot heatmap with scale min max label fmt bounds min throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_WithScaleMinMaxLabelFmtBoundsMin_ThrowsDllNotFoundException()
@@ -344,7 +344,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap with scale min max label fmt bounds min bounds max throws dll not found exception
+        ///     Tests that plot heatmap with scale min max label fmt bounds min bounds max throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_WithScaleMinMaxLabelFmtBoundsMinBoundsMax_ThrowsDllNotFoundException()
@@ -353,7 +353,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap with scale min max label fmt bounds min bounds max flags throws dll not found exception
+        ///     Tests that plot heatmap with scale min max label fmt bounds min bounds max flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_WithScaleMinMaxLabelFmtBoundsMinBoundsMaxFlags_ThrowsDllNotFoundException()

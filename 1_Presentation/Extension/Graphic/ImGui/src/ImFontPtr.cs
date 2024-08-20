@@ -51,7 +51,7 @@ namespace Alis.Extension.Graphic.ImGui
         public ImFontPtr(IntPtr nativePtr) => NativePtr = nativePtr;
         
         /// <summary>
-        /// Initializes a new instance of the <see cref="ImFontPtr"/> class
+        ///     Initializes a new instance of the <see cref="ImFontPtr" /> class
         /// </summary>
         /// <param name="font">The font</param>
         public ImFontPtr(ImFont font)
@@ -254,10 +254,7 @@ namespace Alis.Extension.Graphic.ImGui
         ///     Describes whether this instance is loaded
         /// </summary>
         /// <returns>The bool</returns>
-        public bool IsLoaded()
-        {
-            return ImGuiNative.ImFont_IsLoaded(NativePtr) != 0;
-        }
+        public bool IsLoaded() => ImGuiNative.ImFont_IsLoaded(NativePtr) != 0;
         
         /// <summary>
         ///     Renders the char using the specified draw list
