@@ -391,7 +391,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that v 2 plot heatmap double array throws dll not found exception
+        ///     Tests that v 2 plot heatmap double array throws dll not found exception
         /// </summary>
         [Fact]
         public void V2_PlotHeatmap_DoubleArray_ThrowsDllNotFoundException()
@@ -400,7 +400,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap double array with bounds max throws dll not found exception
+        ///     Tests that plot heatmap double array with bounds max throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_DoubleArray_WithBoundsMax_ThrowsDllNotFoundException()
@@ -409,7 +409,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap double array with flags throws dll not found exception
+        ///     Tests that plot heatmap double array with flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_DoubleArray_WithFlags_ThrowsDllNotFoundException()
@@ -418,7 +418,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that v 2 plot heatmap s byte array throws dll not found exception
+        ///     Tests that v 2 plot heatmap s byte array throws dll not found exception
         /// </summary>
         [Fact]
         public void V2_PlotHeatmap_SByteArray_ThrowsDllNotFoundException()
@@ -427,7 +427,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap s byte array with scale min throws dll not found exception
+        ///     Tests that plot heatmap s byte array with scale min throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_SByteArray_WithScaleMin_ThrowsDllNotFoundException()
@@ -436,7 +436,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap s byte array with scale max throws dll not found exception
+        ///     Tests that plot heatmap s byte array with scale max throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_SByteArray_WithScaleMax_ThrowsDllNotFoundException()
@@ -445,7 +445,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap s byte array with label fmt throws dll not found exception
+        ///     Tests that plot heatmap s byte array with label fmt throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_SByteArray_WithLabelFmt_ThrowsDllNotFoundException()
@@ -454,7 +454,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap s byte array with bounds min throws dll not found exception
+        ///     Tests that plot heatmap s byte array with bounds min throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_SByteArray_WithBoundsMin_ThrowsDllNotFoundException()
@@ -463,7 +463,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap s byte array with bounds max throws dll not found exception
+        ///     Tests that plot heatmap s byte array with bounds max throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_SByteArray_WithBoundsMax_ThrowsDllNotFoundException()
@@ -472,7 +472,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap s byte array with flags throws dll not found exception
+        ///     Tests that plot heatmap s byte array with flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_SByteArray_WithFlags_ThrowsDllNotFoundException()
@@ -481,7 +481,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that v 2 plot heatmap byte array throws dll not found exception
+        ///     Tests that v 2 plot heatmap byte array throws dll not found exception
         /// </summary>
         [Fact]
         public void V2_PlotHeatmap_ByteArray_ThrowsDllNotFoundException()
@@ -490,7 +490,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap byte array with scale min throws dll not found exception
+        ///     Tests that plot heatmap byte array with scale min throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_ByteArray_WithScaleMin_ThrowsDllNotFoundException()
@@ -499,7 +499,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap byte array with scale max throws dll not found exception
+        ///     Tests that plot heatmap byte array with scale max throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_ByteArray_WithScaleMax_ThrowsDllNotFoundException()
@@ -508,7 +508,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap byte array with label fmt throws dll not found exception
+        ///     Tests that plot heatmap byte array with label fmt throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_ByteArray_WithLabelFmt_ThrowsDllNotFoundException()
@@ -517,7 +517,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap byte array with bounds min throws dll not found exception
+        ///     Tests that plot heatmap byte array with bounds min throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_ByteArray_WithBoundsMin_ThrowsDllNotFoundException()
@@ -526,7 +526,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap byte array with bounds max throws dll not found exception
+        ///     Tests that plot heatmap byte array with bounds max throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_ByteArray_WithBoundsMax_ThrowsDllNotFoundException()
@@ -535,7 +535,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap byte array with flags throws dll not found exception
+        ///     Tests that plot heatmap byte array with flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_ByteArray_WithFlags_ThrowsDllNotFoundException()
@@ -544,7 +544,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that v 2 plot heatmap short array throws dll not found exception
+        ///     Tests that v 2 plot heatmap short array throws dll not found exception
         /// </summary>
         [Fact]
         public void V2_PlotHeatmap_ShortArray_ThrowsDllNotFoundException()
@@ -553,7 +553,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap short array with scale min throws dll not found exception
+        ///     Tests that plot heatmap short array with scale min throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_ShortArray_WithScaleMin_ThrowsDllNotFoundException()
@@ -562,7 +562,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap short array with scale max throws dll not found exception
+        ///     Tests that plot heatmap short array with scale max throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_ShortArray_WithScaleMax_ThrowsDllNotFoundException()
@@ -571,7 +571,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap short array with label fmt throws dll not found exception
+        ///     Tests that plot heatmap short array with label fmt throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_ShortArray_WithLabelFmt_ThrowsDllNotFoundException()
@@ -580,7 +580,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap short array with bounds min throws dll not found exception
+        ///     Tests that plot heatmap short array with bounds min throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_ShortArray_WithBoundsMin_ThrowsDllNotFoundException()
@@ -589,7 +589,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap short array with bounds max throws dll not found exception
+        ///     Tests that plot heatmap short array with bounds max throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_ShortArray_WithBoundsMax_ThrowsDllNotFoundException()
@@ -598,7 +598,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap short array with flags throws dll not found exception
+        ///     Tests that plot heatmap short array with flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_ShortArray_WithFlags_ThrowsDllNotFoundException()
@@ -607,7 +607,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that v 2 plot heatmap u short array throws dll not found exception
+        ///     Tests that v 2 plot heatmap u short array throws dll not found exception
         /// </summary>
         [Fact]
         public void V2_PlotHeatmap_UShortArray_ThrowsDllNotFoundException()
@@ -616,7 +616,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap u short array with scale min throws dll not found exception
+        ///     Tests that plot heatmap u short array with scale min throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_UShortArray_WithScaleMin_ThrowsDllNotFoundException()
@@ -625,7 +625,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap u short array with scale max throws dll not found exception
+        ///     Tests that plot heatmap u short array with scale max throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_UShortArray_WithScaleMax_ThrowsDllNotFoundException()
@@ -634,7 +634,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap u short array with label fmt throws dll not found exception
+        ///     Tests that plot heatmap u short array with label fmt throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_UShortArray_WithLabelFmt_ThrowsDllNotFoundException()
@@ -643,7 +643,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap u short array with bounds min throws dll not found exception
+        ///     Tests that plot heatmap u short array with bounds min throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_UShortArray_WithBoundsMin_ThrowsDllNotFoundException()
@@ -652,7 +652,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap u short array with bounds max throws dll not found exception
+        ///     Tests that plot heatmap u short array with bounds max throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_UShortArray_WithBoundsMax_ThrowsDllNotFoundException()
@@ -661,7 +661,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap u short array with flags throws dll not found exception
+        ///     Tests that plot heatmap u short array with flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_UShortArray_WithFlags_ThrowsDllNotFoundException()
@@ -670,7 +670,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that v 2 plot heatmap int array throws dll not found exception
+        ///     Tests that v 2 plot heatmap int array throws dll not found exception
         /// </summary>
         [Fact]
         public void V2_PlotHeatmap_IntArray_ThrowsDllNotFoundException()
@@ -679,7 +679,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap int array with scale min throws dll not found exception
+        ///     Tests that plot heatmap int array with scale min throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_IntArray_WithScaleMin_ThrowsDllNotFoundException()
@@ -688,7 +688,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap int array with scale max throws dll not found exception
+        ///     Tests that plot heatmap int array with scale max throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_IntArray_WithScaleMax_ThrowsDllNotFoundException()
@@ -697,7 +697,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap int array with label fmt throws dll not found exception
+        ///     Tests that plot heatmap int array with label fmt throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_IntArray_WithLabelFmt_ThrowsDllNotFoundException()
@@ -706,7 +706,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap int array with bounds min throws dll not found exception
+        ///     Tests that plot heatmap int array with bounds min throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_IntArray_WithBoundsMin_ThrowsDllNotFoundException()
@@ -715,7 +715,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap int array with bounds max throws dll not found exception
+        ///     Tests that plot heatmap int array with bounds max throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_IntArray_WithBoundsMax_ThrowsDllNotFoundException()
@@ -724,7 +724,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap int array with flags throws dll not found exception
+        ///     Tests that plot heatmap int array with flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_IntArray_WithFlags_ThrowsDllNotFoundException()

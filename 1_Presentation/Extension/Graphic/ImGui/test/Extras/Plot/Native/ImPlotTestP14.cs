@@ -534,7 +534,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot stems byte array throws dll not found exception
+        ///     Tests that plot stems byte array throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotStems_ByteArray_ThrowsDllNotFoundException()
@@ -543,7 +543,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot stems byte array with stride throws dll not found exception
+        ///     Tests that plot stems byte array with stride throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotStems_ByteArray_WithStride_ThrowsDllNotFoundException()
@@ -552,7 +552,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot stems short array throws dll not found exception
+        ///     Tests that plot stems short array throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotStems_ShortArray_ThrowsDllNotFoundException()
@@ -561,7 +561,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot stems short array with ref throws dll not found exception
+        ///     Tests that plot stems short array with ref throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotStems_ShortArray_WithRef_ThrowsDllNotFoundException()
@@ -570,7 +570,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot stems short array with scale throws dll not found exception
+        ///     Tests that plot stems short array with scale throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotStems_ShortArray_WithScale_ThrowsDllNotFoundException()
@@ -579,7 +579,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot stems short array with start throws dll not found exception
+        ///     Tests that plot stems short array with start throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotStems_ShortArray_WithStart_ThrowsDllNotFoundException()
@@ -588,7 +588,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot stems short array with flags throws dll not found exception
+        ///     Tests that plot stems short array with flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotStems_ShortArray_WithFlags_ThrowsDllNotFoundException()
@@ -597,7 +597,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot stems short array with offset throws dll not found exception
+        ///     Tests that plot stems short array with offset throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotStems_ShortArray_WithOffset_ThrowsDllNotFoundException()
@@ -606,7 +606,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot stems short array with stride throws dll not found exception
+        ///     Tests that plot stems short array with stride throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotStems_ShortArray_WithStride_ThrowsDllNotFoundException()
@@ -615,7 +615,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot stems u short array throws dll not found exception
+        ///     Tests that plot stems u short array throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotStems_UShortArray_ThrowsDllNotFoundException()
@@ -624,14 +624,12 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot stems u short array with ref throws dll not found exception
+        ///     Tests that plot stems u short array with ref throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotStems_UShortArray_WithRef_ThrowsDllNotFoundException()
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotStems("label", new ushort[0], 0, 0.0));
         }
-        
-        
     }
 }

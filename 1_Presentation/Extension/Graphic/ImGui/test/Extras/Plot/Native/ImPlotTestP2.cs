@@ -591,7 +591,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that end drag drop target throws dll not found exception
+        ///     Tests that end drag drop target throws dll not found exception
         /// </summary>
         [Fact]
         public void EndDragDropTarget_ThrowsDllNotFoundException()
@@ -600,7 +600,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that end legend popup throws dll not found exception
+        ///     Tests that end legend popup throws dll not found exception
         /// </summary>
         [Fact]
         public void EndLegendPopup_ThrowsDllNotFoundException()
@@ -609,7 +609,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that end plot throws dll not found exception
+        ///     Tests that end plot throws dll not found exception
         /// </summary>
         [Fact]
         public void EndPlot_ThrowsDllNotFoundException()
@@ -618,7 +618,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that end subplots throws dll not found exception
+        ///     Tests that end subplots throws dll not found exception
         /// </summary>
         [Fact]
         public void EndSubplots_ThrowsDllNotFoundException()
@@ -627,7 +627,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that get colormap color throws dll not found exception
+        ///     Tests that get colormap color throws dll not found exception
         /// </summary>
         [Fact]
         public void GetColormapColor_ThrowsDllNotFoundException()
@@ -636,7 +636,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that get colormap color with cmap throws dll not found exception
+        ///     Tests that get colormap color with cmap throws dll not found exception
         /// </summary>
         [Fact]
         public void GetColormapColor_WithCmap_ThrowsDllNotFoundException()
@@ -645,7 +645,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that get colormap count throws dll not found exception
+        ///     Tests that get colormap count throws dll not found exception
         /// </summary>
         [Fact]
         public void GetColormapCount_ThrowsDllNotFoundException()
@@ -654,7 +654,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that get colormap index throws dll not found exception
+        ///     Tests that get colormap index throws dll not found exception
         /// </summary>
         [Fact]
         public void GetColormapIndex_ThrowsDllNotFoundException()
@@ -663,7 +663,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that get colormap name throws dll not found exception
+        ///     Tests that get colormap name throws dll not found exception
         /// </summary>
         [Fact]
         public void GetColormapName_ThrowsDllNotFoundException()
@@ -672,7 +672,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that get colormap size throws dll not found exception
+        ///     Tests that get colormap size throws dll not found exception
         /// </summary>
         [Fact]
         public void GetColormapSize_ThrowsDllNotFoundException()
@@ -681,7 +681,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that get colormap size with cmap throws dll not found exception
+        ///     Tests that get colormap size with cmap throws dll not found exception
         /// </summary>
         [Fact]
         public void GetColormapSize_WithCmap_ThrowsDllNotFoundException()
@@ -690,7 +690,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that get current context throws dll not found exception
+        ///     Tests that get current context throws dll not found exception
         /// </summary>
         [Fact]
         public void GetCurrentContext_ThrowsDllNotFoundException()
@@ -699,7 +699,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that get input map throws dll not found exception
+        ///     Tests that get input map throws dll not found exception
         /// </summary>
         [Fact]
         public void GetInputMap_ThrowsDllNotFoundException()
@@ -708,7 +708,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that get last item color throws dll not found exception
+        ///     Tests that get last item color throws dll not found exception
         /// </summary>
         [Fact]
         public void GetLastItemColor_ThrowsDllNotFoundException()
@@ -717,7 +717,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that get marker name throws dll not found exception
+        ///     Tests that get marker name throws dll not found exception
         /// </summary>
         [Fact]
         public void GetMarkerName_ThrowsDllNotFoundException()
@@ -726,7 +726,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that get plot draw list throws dll not found exception
+        ///     Tests that get plot draw list throws dll not found exception
         /// </summary>
         [Fact]
         public void GetPlotDrawList_ThrowsDllNotFoundException()
@@ -735,7 +735,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that get plot limits throws dll not found exception
+        ///     Tests that get plot limits throws dll not found exception
         /// </summary>
         [Fact]
         public void GetPlotLimits_ThrowsDllNotFoundException()
@@ -744,7 +744,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that get plot limits with y axis throws dll not found exception
+        ///     Tests that get plot limits with y axis throws dll not found exception
         /// </summary>
         [Fact]
         public void GetPlotLimits_WithYAxis_ThrowsDllNotFoundException()
@@ -753,7 +753,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that get plot mouse pos throws dll not found exception
+        ///     Tests that get plot mouse pos throws dll not found exception
         /// </summary>
         [Fact]
         public void GetPlotMousePos_ThrowsDllNotFoundException()
@@ -762,7 +762,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that v 2 get plot mouse pos with x axis throws dll not found exception
+        ///     Tests that v 2 get plot mouse pos with x axis throws dll not found exception
         /// </summary>
         [Fact]
         public void V2_GetPlotMousePos_WithXAxis_ThrowsDllNotFoundException()
@@ -771,7 +771,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that get plot mouse pos with axes throws dll not found exception
+        ///     Tests that get plot mouse pos with axes throws dll not found exception
         /// </summary>
         [Fact]
         public void GetPlotMousePos_WithAxes_ThrowsDllNotFoundException()
@@ -780,7 +780,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that v 2 get plot pos throws dll not found exception
+        ///     Tests that v 2 get plot pos throws dll not found exception
         /// </summary>
         [Fact]
         public void V2_GetPlotPos_ThrowsDllNotFoundException()
@@ -789,7 +789,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that v 3 get plot selection throws dll not found exception
+        ///     Tests that v 3 get plot selection throws dll not found exception
         /// </summary>
         [Fact]
         public void V3_GetPlotSelection_ThrowsDllNotFoundException()
@@ -798,7 +798,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that v 2 v 2 get plot selection with x axis throws dll not found exception
+        ///     Tests that v 2 v 2 get plot selection with x axis throws dll not found exception
         /// </summary>
         [Fact]
         public void V2_V2_GetPlotSelection_WithXAxis_ThrowsDllNotFoundException()
@@ -807,7 +807,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that get plot selection with axes throws dll not found exception
+        ///     Tests that get plot selection with axes throws dll not found exception
         /// </summary>
         [Fact]
         public void GetPlotSelection_WithAxes_ThrowsDllNotFoundException()
@@ -816,7 +816,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that v 2 get plot size throws dll not found exception
+        ///     Tests that v 2 get plot size throws dll not found exception
         /// </summary>
         [Fact]
         public void V2_GetPlotSize_ThrowsDllNotFoundException()
@@ -825,7 +825,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that v 2 get style throws dll not found exception
+        ///     Tests that v 2 get style throws dll not found exception
         /// </summary>
         [Fact]
         public void V2_GetStyle_ThrowsDllNotFoundException()
@@ -834,7 +834,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that get style color name throws dll not found exception
+        ///     Tests that get style color name throws dll not found exception
         /// </summary>
         [Fact]
         public void GetStyleColorName_ThrowsDllNotFoundException()
@@ -843,7 +843,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that v 2 hide next item throws dll not found exception
+        ///     Tests that v 2 hide next item throws dll not found exception
         /// </summary>
         [Fact]
         public void V2_HideNextItem_ThrowsDllNotFoundException()
@@ -852,7 +852,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that v 2 hide next item with hidden throws dll not found exception
+        ///     Tests that v 2 hide next item with hidden throws dll not found exception
         /// </summary>
         [Fact]
         public void V2_HideNextItem_WithHidden_ThrowsDllNotFoundException()
@@ -861,7 +861,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that v 2 hide next item with hidden and cond throws dll not found exception
+        ///     Tests that v 2 hide next item with hidden and cond throws dll not found exception
         /// </summary>
         [Fact]
         public void V2_HideNextItem_WithHiddenAndCond_ThrowsDllNotFoundException()
@@ -870,7 +870,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that is axis hovered throws dll not found exception
+        ///     Tests that is axis hovered throws dll not found exception
         /// </summary>
         [Fact]
         public void IsAxisHovered_ThrowsDllNotFoundException()
@@ -879,7 +879,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that v 2 is legend entry hovered throws dll not found exception
+        ///     Tests that v 2 is legend entry hovered throws dll not found exception
         /// </summary>
         [Fact]
         public void V2_IsLegendEntryHovered_ThrowsDllNotFoundException()
@@ -888,7 +888,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that v 2 is plot hovered throws dll not found exception
+        ///     Tests that v 2 is plot hovered throws dll not found exception
         /// </summary>
         [Fact]
         public void V2_IsPlotHovered_ThrowsDllNotFoundException()
@@ -897,13 +897,12 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that v 2 is plot selected throws dll not found exception
+        ///     Tests that v 2 is plot selected throws dll not found exception
         /// </summary>
         [Fact]
         public void V2_IsPlotSelected_ThrowsDllNotFoundException()
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.IsPlotSelected());
         }
-        
     }
 }

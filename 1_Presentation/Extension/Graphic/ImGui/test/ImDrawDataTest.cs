@@ -229,7 +229,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that clear throws dll not found exception
+        ///     Tests that clear throws dll not found exception
         /// </summary>
         [Fact]
         public void Clear_ThrowsDllNotFoundException()
@@ -239,7 +239,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that de index all buffers throws dll not found exception
+        ///     Tests that de index all buffers throws dll not found exception
         /// </summary>
         [Fact]
         public void DeIndexAllBuffers_ThrowsDllNotFoundException()
@@ -249,7 +249,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that scale clip rects throws dll not found exception
+        ///     Tests that scale clip rects throws dll not found exception
         /// </summary>
         [Fact]
         public void ScaleClipRects_ThrowsDllNotFoundException()
@@ -260,7 +260,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that cmd lists range throws dll not found exception
+        ///     Tests that cmd lists range throws dll not found exception
         /// </summary>
         [Fact]
         public void CmdListsRange_ThrowsDllNotFoundException()

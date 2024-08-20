@@ -510,7 +510,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap with scale min throws dll not found exception
+        ///     Tests that plot heatmap with scale min throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_WithScaleMin_ThrowsDllNotFoundException()
@@ -519,7 +519,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap with scale min max throws dll not found exception
+        ///     Tests that plot heatmap with scale min max throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_WithScaleMinMax_ThrowsDllNotFoundException()
@@ -528,7 +528,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that v 2 plot error bars sbyte throws dll not found exception
+        ///     Tests that v 2 plot error bars sbyte throws dll not found exception
         /// </summary>
         [Fact]
         public void V2_PlotErrorBars_Sbyte_ThrowsDllNotFoundException()
@@ -541,7 +541,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot error bars sbyte with offset throws dll not found exception
+        ///     Tests that plot error bars sbyte with offset throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotErrorBars_Sbyte_WithOffset_ThrowsDllNotFoundException()
@@ -554,7 +554,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot error bars sbyte with offset and stride throws dll not found exception
+        ///     Tests that plot error bars sbyte with offset and stride throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotErrorBars_Sbyte_WithOffsetAndStride_ThrowsDllNotFoundException()
@@ -567,7 +567,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot error bars byte throws dll not found exception
+        ///     Tests that plot error bars byte throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotErrorBars_Byte_ThrowsDllNotFoundException()
@@ -579,7 +579,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot error bars byte with flags throws dll not found exception
+        ///     Tests that plot error bars byte with flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotErrorBars_Byte_WithFlags_ThrowsDllNotFoundException()
@@ -592,7 +592,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot error bars byte with offset throws dll not found exception
+        ///     Tests that plot error bars byte with offset throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotErrorBars_Byte_WithOffset_ThrowsDllNotFoundException()
@@ -605,7 +605,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot error bars byte with offset and stride throws dll not found exception
+        ///     Tests that plot error bars byte with offset and stride throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotErrorBars_Byte_WithOffsetAndStride_ThrowsDllNotFoundException()
@@ -618,7 +618,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot error bars short throws dll not found exception
+        ///     Tests that plot error bars short throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotErrorBars_Short_ThrowsDllNotFoundException()
@@ -630,7 +630,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot error bars short with flags throws dll not found exception
+        ///     Tests that plot error bars short with flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotErrorBars_Short_WithFlags_ThrowsDllNotFoundException()
@@ -643,7 +643,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot error bars short with offset throws dll not found exception
+        ///     Tests that plot error bars short with offset throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotErrorBars_Short_WithOffset_ThrowsDllNotFoundException()
@@ -656,7 +656,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot error bars short with offset and stride throws dll not found exception
+        ///     Tests that plot error bars short with offset and stride throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotErrorBars_Short_WithOffsetAndStride_ThrowsDllNotFoundException()
@@ -669,7 +669,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot error bars u short throws dll not found exception
+        ///     Tests that plot error bars u short throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotErrorBars_UShort_ThrowsDllNotFoundException()
@@ -681,7 +681,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot error bars u short with flags throws dll not found exception
+        ///     Tests that plot error bars u short with flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotErrorBars_UShort_WithFlags_ThrowsDllNotFoundException()
@@ -694,7 +694,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot error bars u short with offset throws dll not found exception
+        ///     Tests that plot error bars u short with offset throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotErrorBars_UShort_WithOffset_ThrowsDllNotFoundException()
@@ -707,7 +707,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot error bars u short with offset and stride throws dll not found exception
+        ///     Tests that plot error bars u short with offset and stride throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotErrorBars_UShort_WithOffsetAndStride_ThrowsDllNotFoundException()
@@ -720,7 +720,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot error bars int throws dll not found exception
+        ///     Tests that plot error bars int throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotErrorBars_Int_ThrowsDllNotFoundException()
@@ -732,7 +732,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot error bars int with flags throws dll not found exception
+        ///     Tests that plot error bars int with flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotErrorBars_Int_WithFlags_ThrowsDllNotFoundException()
@@ -745,7 +745,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot error bars int with offset throws dll not found exception
+        ///     Tests that plot error bars int with offset throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotErrorBars_Int_WithOffset_ThrowsDllNotFoundException()
@@ -758,7 +758,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot error bars int with offset and stride throws dll not found exception
+        ///     Tests that plot error bars int with offset and stride throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotErrorBars_Int_WithOffsetAndStride_ThrowsDllNotFoundException()
@@ -771,7 +771,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot error bars u int throws dll not found exception
+        ///     Tests that plot error bars u int throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotErrorBars_UInt_ThrowsDllNotFoundException()
@@ -783,7 +783,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot error bars u int with flags throws dll not found exception
+        ///     Tests that plot error bars u int with flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotErrorBars_UInt_WithFlags_ThrowsDllNotFoundException()
@@ -796,7 +796,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot error bars u int with offset throws dll not found exception
+        ///     Tests that plot error bars u int with offset throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotErrorBars_UInt_WithOffset_ThrowsDllNotFoundException()
@@ -809,7 +809,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot error bars u int with offset and stride throws dll not found exception
+        ///     Tests that plot error bars u int with offset and stride throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotErrorBars_UInt_WithOffsetAndStride_ThrowsDllNotFoundException()
@@ -822,7 +822,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot error bars long throws dll not found exception
+        ///     Tests that plot error bars long throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotErrorBars_Long_ThrowsDllNotFoundException()
@@ -834,7 +834,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot error bars long with flags throws dll not found exception
+        ///     Tests that plot error bars long with flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotErrorBars_Long_WithFlags_ThrowsDllNotFoundException()
@@ -847,7 +847,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot error bars long with offset throws dll not found exception
+        ///     Tests that plot error bars long with offset throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotErrorBars_Long_WithOffset_ThrowsDllNotFoundException()
@@ -860,7 +860,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot error bars long with offset and stride throws dll not found exception
+        ///     Tests that plot error bars long with offset and stride throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotErrorBars_Long_WithOffsetAndStride_ThrowsDllNotFoundException()
@@ -873,7 +873,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot error bars u long throws dll not found exception
+        ///     Tests that plot error bars u long throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotErrorBars_ULong_ThrowsDllNotFoundException()
@@ -885,7 +885,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot error bars u long with flags throws dll not found exception
+        ///     Tests that plot error bars u long with flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotErrorBars_ULong_WithFlags_ThrowsDllNotFoundException()
@@ -898,7 +898,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot error bars u long with offset throws dll not found exception
+        ///     Tests that plot error bars u long with offset throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotErrorBars_ULong_WithOffset_ThrowsDllNotFoundException()
@@ -911,7 +911,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot error bars u long with offset and stride throws dll not found exception
+        ///     Tests that plot error bars u long with offset and stride throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotErrorBars_ULong_WithOffsetAndStride_ThrowsDllNotFoundException()
@@ -924,7 +924,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that v 2 plot heatmap float throws dll not found exception
+        ///     Tests that v 2 plot heatmap float throws dll not found exception
         /// </summary>
         [Fact]
         public void V2_PlotHeatmap_Float_ThrowsDllNotFoundException()
@@ -936,7 +936,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap float with scale min throws dll not found exception
+        ///     Tests that plot heatmap float with scale min throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_Float_WithScaleMin_ThrowsDllNotFoundException()
@@ -949,7 +949,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap float with scale min and max throws dll not found exception
+        ///     Tests that plot heatmap float with scale min and max throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_Float_WithScaleMinAndMax_ThrowsDllNotFoundException()
@@ -962,7 +962,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap float with label fmt throws dll not found exception
+        ///     Tests that plot heatmap float with label fmt throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_Float_WithLabelFmt_ThrowsDllNotFoundException()
@@ -976,7 +976,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap float with bounds min throws dll not found exception
+        ///     Tests that plot heatmap float with bounds min throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_Float_WithBoundsMin_ThrowsDllNotFoundException()
@@ -991,7 +991,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap float with bounds max throws dll not found exception
+        ///     Tests that plot heatmap float with bounds max throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_Float_WithBoundsMax_ThrowsDllNotFoundException()
@@ -1007,7 +1007,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap float with flags throws dll not found exception
+        ///     Tests that plot heatmap float with flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_Float_WithFlags_ThrowsDllNotFoundException()
@@ -1024,7 +1024,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that v 2 plot heatmap double throws dll not found exception
+        ///     Tests that v 2 plot heatmap double throws dll not found exception
         /// </summary>
         [Fact]
         public void V2_PlotHeatmap_Double_ThrowsDllNotFoundException()
@@ -1036,7 +1036,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot heatmap double with scale min throws dll not found exception
+        ///     Tests that plot heatmap double with scale min throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotHeatmap_Double_WithScaleMin_ThrowsDllNotFoundException()

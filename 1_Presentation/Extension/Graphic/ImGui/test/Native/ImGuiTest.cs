@@ -1407,7 +1407,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that is item hovered no flags throws dll not found exception
+        ///     Tests that is item hovered no flags throws dll not found exception
         /// </summary>
         [Fact]
         public void IsItemHovered_NoFlags_ThrowsDllNotFoundException()
@@ -1416,7 +1416,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that is item hovered with flags throws dll not found exception
+        ///     Tests that is item hovered with flags throws dll not found exception
         /// </summary>
         [Fact]
         public void IsItemHovered_WithFlags_ThrowsDllNotFoundException()
@@ -1425,7 +1425,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that is item toggled open throws dll not found exception
+        ///     Tests that is item toggled open throws dll not found exception
         /// </summary>
         [Fact]
         public void IsItemToggledOpen_ThrowsDllNotFoundException()
@@ -1434,7 +1434,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that is item visible throws dll not found exception
+        ///     Tests that is item visible throws dll not found exception
         /// </summary>
         [Fact]
         public void IsItemVisible_ThrowsDllNotFoundException()
@@ -1443,7 +1443,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that is key down throws dll not found exception
+        ///     Tests that is key down throws dll not found exception
         /// </summary>
         [Fact]
         public void IsKeyDown_ThrowsDllNotFoundException()
@@ -1452,7 +1452,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that is key pressed no repeat throws dll not found exception
+        ///     Tests that is key pressed no repeat throws dll not found exception
         /// </summary>
         [Fact]
         public void IsKeyPressed_NoRepeat_ThrowsDllNotFoundException()
@@ -1461,7 +1461,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that is key pressed with repeat throws dll not found exception
+        ///     Tests that is key pressed with repeat throws dll not found exception
         /// </summary>
         [Fact]
         public void IsKeyPressed_WithRepeat_ThrowsDllNotFoundException()
@@ -1470,7 +1470,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that is key released throws dll not found exception
+        ///     Tests that is key released throws dll not found exception
         /// </summary>
         [Fact]
         public void IsKeyReleased_ThrowsDllNotFoundException()
@@ -1479,7 +1479,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that is mouse clicked no repeat throws dll not found exception
+        ///     Tests that is mouse clicked no repeat throws dll not found exception
         /// </summary>
         [Fact]
         public void IsMouseClicked_NoRepeat_ThrowsDllNotFoundException()
@@ -1488,7 +1488,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that is mouse clicked with repeat throws dll not found exception
+        ///     Tests that is mouse clicked with repeat throws dll not found exception
         /// </summary>
         [Fact]
         public void IsMouseClicked_WithRepeat_ThrowsDllNotFoundException()
@@ -1497,7 +1497,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that is mouse double clicked throws dll not found exception
+        ///     Tests that is mouse double clicked throws dll not found exception
         /// </summary>
         [Fact]
         public void IsMouseDoubleClicked_ThrowsDllNotFoundException()
@@ -1506,7 +1506,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that is mouse down throws dll not found exception
+        ///     Tests that is mouse down throws dll not found exception
         /// </summary>
         [Fact]
         public void IsMouseDown_ThrowsDllNotFoundException()
@@ -1515,7 +1515,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that is mouse dragging no threshold throws dll not found exception
+        ///     Tests that is mouse dragging no threshold throws dll not found exception
         /// </summary>
         [Fact]
         public void IsMouseDragging_NoThreshold_ThrowsDllNotFoundException()
@@ -1524,7 +1524,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that is mouse dragging with threshold throws dll not found exception
+        ///     Tests that is mouse dragging with threshold throws dll not found exception
         /// </summary>
         [Fact]
         public void IsMouseDragging_WithThreshold_ThrowsDllNotFoundException()
@@ -1533,7 +1533,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that is mouse hovering rect no clip throws dll not found exception
+        ///     Tests that is mouse hovering rect no clip throws dll not found exception
         /// </summary>
         [Fact]
         public void IsMouseHoveringRect_NoClip_ThrowsDllNotFoundException()
@@ -1542,7 +1542,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that is mouse hovering rect with clip throws dll not found exception
+        ///     Tests that is mouse hovering rect with clip throws dll not found exception
         /// </summary>
         [Fact]
         public void IsMouseHoveringRect_WithClip_ThrowsDllNotFoundException()
@@ -1551,7 +1551,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that is mouse pos valid no pos throws dll not found exception
+        ///     Tests that is mouse pos valid no pos throws dll not found exception
         /// </summary>
         [Fact]
         public void IsMousePosValid_NoPos_ThrowsDllNotFoundException()
@@ -1561,7 +1561,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that is mouse pos valid with pos throws dll not found exception
+        ///     Tests that is mouse pos valid with pos throws dll not found exception
         /// </summary>
         [Fact]
         public void IsMousePosValid_WithPos_ThrowsDllNotFoundException()
@@ -1571,7 +1571,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that is mouse released throws dll not found exception
+        ///     Tests that is mouse released throws dll not found exception
         /// </summary>
         [Fact]
         public void IsMouseReleased_ThrowsDllNotFoundException()
@@ -1580,7 +1580,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that is popup open no flags throws dll not found exception
+        ///     Tests that is popup open no flags throws dll not found exception
         /// </summary>
         [Fact]
         public void IsPopupOpen_NoFlags_ThrowsDllNotFoundException()
@@ -1589,7 +1589,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that is popup open with flags throws dll not found exception
+        ///     Tests that is popup open with flags throws dll not found exception
         /// </summary>
         [Fact]
         public void IsPopupOpen_WithFlags_ThrowsDllNotFoundException()
@@ -1598,7 +1598,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that is rect visible no min max throws dll not found exception
+        ///     Tests that is rect visible no min max throws dll not found exception
         /// </summary>
         [Fact]
         public void IsRectVisible_NoMinMax_ThrowsDllNotFoundException()
@@ -1607,7 +1607,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that is rect visible with min max throws dll not found exception
+        ///     Tests that is rect visible with min max throws dll not found exception
         /// </summary>
         [Fact]
         public void IsRectVisible_WithMinMax_ThrowsDllNotFoundException()
@@ -1616,7 +1616,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that is window appearing throws dll not found exception
+        ///     Tests that is window appearing throws dll not found exception
         /// </summary>
         [Fact]
         public void IsWindowAppearing_ThrowsDllNotFoundException()
@@ -1625,7 +1625,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that is window collapsed throws dll not found exception
+        ///     Tests that is window collapsed throws dll not found exception
         /// </summary>
         [Fact]
         public void IsWindowCollapsed_ThrowsDllNotFoundException()
@@ -1634,7 +1634,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that is window docked throws dll not found exception
+        ///     Tests that is window docked throws dll not found exception
         /// </summary>
         [Fact]
         public void IsWindowDocked_ThrowsDllNotFoundException()
@@ -1643,7 +1643,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that is window focused no flags throws dll not found exception
+        ///     Tests that is window focused no flags throws dll not found exception
         /// </summary>
         [Fact]
         public void IsWindowFocused_NoFlags_ThrowsDllNotFoundException()
@@ -1652,7 +1652,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that is window focused with flags throws dll not found exception
+        ///     Tests that is window focused with flags throws dll not found exception
         /// </summary>
         [Fact]
         public void IsWindowFocused_WithFlags_ThrowsDllNotFoundException()
@@ -1661,7 +1661,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that is window hovered no flags throws dll not found exception
+        ///     Tests that is window hovered no flags throws dll not found exception
         /// </summary>
         [Fact]
         public void IsWindowHovered_NoFlags_ThrowsDllNotFoundException()
@@ -1670,7 +1670,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that is window hovered with flags throws dll not found exception
+        ///     Tests that is window hovered with flags throws dll not found exception
         /// </summary>
         [Fact]
         public void IsWindowHovered_WithFlags_ThrowsDllNotFoundException()
@@ -1679,7 +1679,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that label text throws dll not found exception
+        ///     Tests that label text throws dll not found exception
         /// </summary>
         [Fact]
         public void LabelText_ThrowsDllNotFoundException()
@@ -1688,7 +1688,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that list box no height throws dll not found exception
+        ///     Tests that list box no height throws dll not found exception
         /// </summary>
         [Fact]
         public void ListBox_NoHeight_ThrowsDllNotFoundException()
@@ -1700,7 +1700,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that list box with height throws dll not found exception
+        ///     Tests that list box with height throws dll not found exception
         /// </summary>
         [Fact]
         public void ListBox_WithHeight_ThrowsDllNotFoundException()
@@ -1712,7 +1712,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that load ini settings from disk throws dll not found exception
+        ///     Tests that load ini settings from disk throws dll not found exception
         /// </summary>
         [Fact]
         public void LoadIniSettingsFromDisk_ThrowsDllNotFoundException()
@@ -1721,7 +1721,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that load ini settings from memory no size throws dll not found exception
+        ///     Tests that load ini settings from memory no size throws dll not found exception
         /// </summary>
         [Fact]
         public void LoadIniSettingsFromMemory_NoSize_ThrowsDllNotFoundException()
@@ -1730,7 +1730,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that load ini settings from memory with size throws dll not found exception
+        ///     Tests that load ini settings from memory with size throws dll not found exception
         /// </summary>
         [Fact]
         public void LoadIniSettingsFromMemory_WithSize_ThrowsDllNotFoundException()
@@ -1739,7 +1739,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that log buttons throws dll not found exception
+        ///     Tests that log buttons throws dll not found exception
         /// </summary>
         [Fact]
         public void LogButtons_ThrowsDllNotFoundException()
@@ -1748,7 +1748,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that log finish throws dll not found exception
+        ///     Tests that log finish throws dll not found exception
         /// </summary>
         [Fact]
         public void LogFinish_ThrowsDllNotFoundException()
@@ -1757,7 +1757,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that log text throws dll not found exception
+        ///     Tests that log text throws dll not found exception
         /// </summary>
         [Fact]
         public void LogText_ThrowsDllNotFoundException()
@@ -1766,7 +1766,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that log to clipboard no depth throws dll not found exception
+        ///     Tests that log to clipboard no depth throws dll not found exception
         /// </summary>
         [Fact]
         public void LogToClipboard_NoDepth_ThrowsDllNotFoundException()
@@ -1775,7 +1775,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that log to clipboard with depth throws dll not found exception
+        ///     Tests that log to clipboard with depth throws dll not found exception
         /// </summary>
         [Fact]
         public void LogToClipboard_WithDepth_ThrowsDllNotFoundException()
@@ -1784,7 +1784,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that log to file no depth throws dll not found exception
+        ///     Tests that log to file no depth throws dll not found exception
         /// </summary>
         [Fact]
         public void LogToFile_NoDepth_ThrowsDllNotFoundException()
@@ -1793,7 +1793,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that log to file with depth throws dll not found exception
+        ///     Tests that log to file with depth throws dll not found exception
         /// </summary>
         [Fact]
         public void LogToFile_WithDepth_ThrowsDllNotFoundException()
@@ -1802,7 +1802,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that log to file with filename throws dll not found exception
+        ///     Tests that log to file with filename throws dll not found exception
         /// </summary>
         [Fact]
         public void LogToFile_WithFilename_ThrowsDllNotFoundException()
@@ -1811,7 +1811,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that log to tty no depth throws dll not found exception
+        ///     Tests that log to tty no depth throws dll not found exception
         /// </summary>
         [Fact]
         public void LogToTty_NoDepth_ThrowsDllNotFoundException()
@@ -1820,7 +1820,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that log to tty with depth throws dll not found exception
+        ///     Tests that log to tty with depth throws dll not found exception
         /// </summary>
         [Fact]
         public void LogToTty_WithDepth_ThrowsDllNotFoundException()
@@ -1829,7 +1829,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that mem alloc throws dll not found exception
+        ///     Tests that mem alloc throws dll not found exception
         /// </summary>
         [Fact]
         public void MemAlloc_ThrowsDllNotFoundException()
@@ -1838,7 +1838,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that mem free throws dll not found exception
+        ///     Tests that mem free throws dll not found exception
         /// </summary>
         [Fact]
         public void MemFree_ThrowsDllNotFoundException()
@@ -1848,7 +1848,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that table get column index throws dll not found exception
+        ///     Tests that table get column index throws dll not found exception
         /// </summary>
         [Fact]
         public void TableGetColumnIndex_ThrowsDllNotFoundException()
@@ -1857,7 +1857,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that table get column name throws dll not found exception
+        ///     Tests that table get column name throws dll not found exception
         /// </summary>
         [Fact]
         public void TableGetColumnName_ThrowsDllNotFoundException()
@@ -1866,7 +1866,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that table get column name with column n throws dll not found exception
+        ///     Tests that table get column name with column n throws dll not found exception
         /// </summary>
         [Fact]
         public void TableGetColumnName_WithColumnN_ThrowsDllNotFoundException()
@@ -1875,7 +1875,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that table get row index throws dll not found exception
+        ///     Tests that table get row index throws dll not found exception
         /// </summary>
         [Fact]
         public void TableGetRowIndex_ThrowsDllNotFoundException()
@@ -1884,7 +1884,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that table get sort specs throws dll not found exception
+        ///     Tests that table get sort specs throws dll not found exception
         /// </summary>
         [Fact]
         public void TableGetSortSpecs_ThrowsDllNotFoundException()
@@ -1893,7 +1893,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that table header throws dll not found exception
+        ///     Tests that table header throws dll not found exception
         /// </summary>
         [Fact]
         public void TableHeader_ThrowsDllNotFoundException()
@@ -1902,7 +1902,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that table headers row throws dll not found exception
+        ///     Tests that table headers row throws dll not found exception
         /// </summary>
         [Fact]
         public void TableHeadersRow_ThrowsDllNotFoundException()
@@ -1911,7 +1911,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that table next column throws dll not found exception
+        ///     Tests that table next column throws dll not found exception
         /// </summary>
         [Fact]
         public void TableNextColumn_ThrowsDllNotFoundException()
@@ -1920,7 +1920,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that table next row throws dll not found exception
+        ///     Tests that table next row throws dll not found exception
         /// </summary>
         [Fact]
         public void TableNextRow_ThrowsDllNotFoundException()
@@ -1929,7 +1929,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that table next row with row flags throws dll not found exception
+        ///     Tests that table next row with row flags throws dll not found exception
         /// </summary>
         [Fact]
         public void TableNextRow_WithRowFlags_ThrowsDllNotFoundException()
@@ -1938,7 +1938,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that table next row with row flags and min row height throws dll not found exception
+        ///     Tests that table next row with row flags and min row height throws dll not found exception
         /// </summary>
         [Fact]
         public void TableNextRow_WithRowFlagsAndMinRowHeight_ThrowsDllNotFoundException()
@@ -1947,7 +1947,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that table set bg color throws dll not found exception
+        ///     Tests that table set bg color throws dll not found exception
         /// </summary>
         [Fact]
         public void TableSetBgColor_ThrowsDllNotFoundException()
@@ -1956,7 +1956,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that table set bg color with column n throws dll not found exception
+        ///     Tests that table set bg color with column n throws dll not found exception
         /// </summary>
         [Fact]
         public void TableSetBgColor_WithColumnN_ThrowsDllNotFoundException()
@@ -1965,7 +1965,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that table set column enabled throws dll not found exception
+        ///     Tests that table set column enabled throws dll not found exception
         /// </summary>
         [Fact]
         public void TableSetColumnEnabled_ThrowsDllNotFoundException()
@@ -1974,7 +1974,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that table set column index throws dll not found exception
+        ///     Tests that table set column index throws dll not found exception
         /// </summary>
         [Fact]
         public void TableSetColumnIndex_ThrowsDllNotFoundException()
@@ -1983,7 +1983,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that table setup column throws dll not found exception
+        ///     Tests that table setup column throws dll not found exception
         /// </summary>
         [Fact]
         public void TableSetupColumn_ThrowsDllNotFoundException()
@@ -1992,7 +1992,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that menu item throws dll not found exception
+        ///     Tests that menu item throws dll not found exception
         /// </summary>
         [Fact]
         public void MenuItem_ThrowsDllNotFoundException()
@@ -2001,7 +2001,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that im font config throws dll not found exception
+        ///     Tests that im font config throws dll not found exception
         /// </summary>
         [Fact]
         public void ImFontConfig_ThrowsDllNotFoundException()

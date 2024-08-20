@@ -35,12 +35,12 @@ using Xunit;
 namespace Alis.Extension.Graphic.ImGui.Test.Native
 {
     /// <summary>
-    /// The im gui test class
+    ///     The im gui test class
     /// </summary>
     public class ImGuiTestP5
     {
         /// <summary>
-        /// Tests that accept drag drop payload with type throws dll not found exception
+        ///     Tests that accept drag drop payload with type throws dll not found exception
         /// </summary>
         [Fact]
         public void AcceptDragDropPayload_WithType_ThrowsDllNotFoundException()
@@ -49,7 +49,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that accept drag drop payload with type and flags throws dll not found exception
+        ///     Tests that accept drag drop payload with type and flags throws dll not found exception
         /// </summary>
         [Fact]
         public void AcceptDragDropPayload_WithTypeAndFlags_ThrowsDllNotFoundException()
@@ -58,7 +58,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that align text to frame padding throws dll not found exception
+        ///     Tests that align text to frame padding throws dll not found exception
         /// </summary>
         [Fact]
         public void AlignTextToFramePadding_ThrowsDllNotFoundException()
@@ -67,7 +67,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that arrow button throws dll not found exception
+        ///     Tests that arrow button throws dll not found exception
         /// </summary>
         [Fact]
         public void ArrowButton_ThrowsDllNotFoundException()
@@ -76,7 +76,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin with name throws dll not found exception
+        ///     Tests that begin with name throws dll not found exception
         /// </summary>
         [Fact]
         public void Begin_WithName_ThrowsDllNotFoundException()
@@ -85,7 +85,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin with name and ref bool throws dll not found exception
+        ///     Tests that begin with name and ref bool throws dll not found exception
         /// </summary>
         [Fact]
         public void Begin_WithNameAndRefBool_ThrowsDllNotFoundException()
@@ -95,7 +95,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin with name ref bool and flags throws dll not found exception
+        ///     Tests that begin with name ref bool and flags throws dll not found exception
         /// </summary>
         [Fact]
         public void Begin_WithNameRefBoolAndFlags_ThrowsDllNotFoundException()
@@ -105,7 +105,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin child with str id throws dll not found exception
+        ///     Tests that begin child with str id throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginChild_WithStrId_ThrowsDllNotFoundException()
@@ -114,7 +114,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin child with str id and size throws dll not found exception
+        ///     Tests that begin child with str id and size throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginChild_WithStrIdAndSize_ThrowsDllNotFoundException()
@@ -123,7 +123,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin child with str id size and border throws dll not found exception
+        ///     Tests that begin child with str id size and border throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginChild_WithStrIdSizeAndBorder_ThrowsDllNotFoundException()
@@ -132,7 +132,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin child with str id size border and flags throws dll not found exception
+        ///     Tests that begin child with str id size border and flags throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginChild_WithStrIdSizeBorderAndFlags_ThrowsDllNotFoundException()
@@ -141,7 +141,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin child with id throws dll not found exception
+        ///     Tests that begin child with id throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginChild_WithId_ThrowsDllNotFoundException()
@@ -150,7 +150,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin child with id and size throws dll not found exception
+        ///     Tests that begin child with id and size throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginChild_WithIdAndSize_ThrowsDllNotFoundException()
@@ -159,7 +159,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin child with id size and border throws dll not found exception
+        ///     Tests that begin child with id size and border throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginChild_WithIdSizeAndBorder_ThrowsDllNotFoundException()
@@ -168,7 +168,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin child with id size border and flags throws dll not found exception
+        ///     Tests that begin child with id size border and flags throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginChild_WithIdSizeBorderAndFlags_ThrowsDllNotFoundException()
@@ -177,7 +177,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin child frame with id and size throws dll not found exception
+        ///     Tests that begin child frame with id and size throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginChildFrame_WithIdAndSize_ThrowsDllNotFoundException()
@@ -186,7 +186,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin child frame with id size and flags throws dll not found exception
+        ///     Tests that begin child frame with id size and flags throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginChildFrame_WithIdSizeAndFlags_ThrowsDllNotFoundException()
@@ -195,7 +195,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin combo with label and preview value throws dll not found exception
+        ///     Tests that begin combo with label and preview value throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginCombo_WithLabelAndPreviewValue_ThrowsDllNotFoundException()
@@ -204,7 +204,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin combo with label preview value and flags throws dll not found exception
+        ///     Tests that begin combo with label preview value and flags throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginCombo_WithLabelPreviewValueAndFlags_ThrowsDllNotFoundException()
@@ -213,7 +213,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin disabled throws dll not found exception
+        ///     Tests that begin disabled throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginDisabled_ThrowsDllNotFoundException()
@@ -222,7 +222,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin disabled with bool throws dll not found exception
+        ///     Tests that begin disabled with bool throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginDisabled_WithBool_ThrowsDllNotFoundException()
@@ -231,7 +231,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin drag drop source throws dll not found exception
+        ///     Tests that begin drag drop source throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginDragDropSource_ThrowsDllNotFoundException()
@@ -240,7 +240,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin drag drop source with flags throws dll not found exception
+        ///     Tests that begin drag drop source with flags throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginDragDropSource_WithFlags_ThrowsDllNotFoundException()
@@ -249,7 +249,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin drag drop target throws dll not found exception
+        ///     Tests that begin drag drop target throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginDragDropTarget_ThrowsDllNotFoundException()
@@ -258,7 +258,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin group throws dll not found exception
+        ///     Tests that begin group throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginGroup_ThrowsDllNotFoundException()
@@ -267,7 +267,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin list box with label throws dll not found exception
+        ///     Tests that begin list box with label throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginListBox_WithLabel_ThrowsDllNotFoundException()
@@ -276,7 +276,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin list box with label and size throws dll not found exception
+        ///     Tests that begin list box with label and size throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginListBox_WithLabelAndSize_ThrowsDllNotFoundException()
@@ -285,7 +285,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin main menu bar throws dll not found exception
+        ///     Tests that begin main menu bar throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginMainMenuBar_ThrowsDllNotFoundException()
@@ -294,7 +294,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin menu with label throws dll not found exception
+        ///     Tests that begin menu with label throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginMenu_WithLabel_ThrowsDllNotFoundException()
@@ -303,7 +303,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin menu with label and enabled throws dll not found exception
+        ///     Tests that begin menu with label and enabled throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginMenu_WithLabelAndEnabled_ThrowsDllNotFoundException()
@@ -312,7 +312,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin menu bar throws dll not found exception
+        ///     Tests that begin menu bar throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginMenuBar_ThrowsDllNotFoundException()
@@ -321,7 +321,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin popup with str id throws dll not found exception
+        ///     Tests that begin popup with str id throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginPopup_WithStrId_ThrowsDllNotFoundException()
@@ -330,7 +330,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin popup with str id and flags throws dll not found exception
+        ///     Tests that begin popup with str id and flags throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginPopup_WithStrIdAndFlags_ThrowsDllNotFoundException()
@@ -339,7 +339,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin popup context item throws dll not found exception
+        ///     Tests that begin popup context item throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginPopupContextItem_ThrowsDllNotFoundException()
@@ -348,7 +348,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin popup context item with str id throws dll not found exception
+        ///     Tests that begin popup context item with str id throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginPopupContextItem_WithStrId_ThrowsDllNotFoundException()
@@ -357,7 +357,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin popup context item with str id and popup flags throws dll not found exception
+        ///     Tests that begin popup context item with str id and popup flags throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginPopupContextItem_WithStrIdAndPopupFlags_ThrowsDllNotFoundException()
@@ -366,7 +366,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin popup context void throws dll not found exception
+        ///     Tests that begin popup context void throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginPopupContextVoid_ThrowsDllNotFoundException()
@@ -375,7 +375,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin popup context void with str id throws dll not found exception
+        ///     Tests that begin popup context void with str id throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginPopupContextVoid_WithStrId_ThrowsDllNotFoundException()
@@ -384,7 +384,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin popup context void with str id and popup flags throws dll not found exception
+        ///     Tests that begin popup context void with str id and popup flags throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginPopupContextVoid_WithStrIdAndPopupFlags_ThrowsDllNotFoundException()
@@ -393,7 +393,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin popup context window throws dll not found exception
+        ///     Tests that begin popup context window throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginPopupContextWindow_ThrowsDllNotFoundException()
@@ -402,7 +402,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin popup context window with str id throws dll not found exception
+        ///     Tests that begin popup context window with str id throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginPopupContextWindow_WithStrId_ThrowsDllNotFoundException()
@@ -411,7 +411,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin popup context window with str id and popup flags throws dll not found exception
+        ///     Tests that begin popup context window with str id and popup flags throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginPopupContextWindow_WithStrIdAndPopupFlags_ThrowsDllNotFoundException()
@@ -420,7 +420,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin popup modal with name throws dll not found exception
+        ///     Tests that begin popup modal with name throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginPopupModal_WithName_ThrowsDllNotFoundException()
@@ -429,7 +429,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin popup modal with name and ref bool throws dll not found exception
+        ///     Tests that begin popup modal with name and ref bool throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginPopupModal_WithNameAndRefBool_ThrowsDllNotFoundException()
@@ -439,7 +439,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin popup modal with name ref bool and flags throws dll not found exception
+        ///     Tests that begin popup modal with name ref bool and flags throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginPopupModal_WithNameRefBoolAndFlags_ThrowsDllNotFoundException()
@@ -449,7 +449,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin tab bar with str id throws dll not found exception
+        ///     Tests that begin tab bar with str id throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginTabBar_WithStrId_ThrowsDllNotFoundException()
@@ -458,7 +458,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin tab bar with str id and flags throws dll not found exception
+        ///     Tests that begin tab bar with str id and flags throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginTabBar_WithStrIdAndFlags_ThrowsDllNotFoundException()
@@ -467,7 +467,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin tab item with label throws dll not found exception
+        ///     Tests that begin tab item with label throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginTabItem_WithLabel_ThrowsDllNotFoundException()
@@ -476,7 +476,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin tab item with label and ref bool throws dll not found exception
+        ///     Tests that begin tab item with label and ref bool throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginTabItem_WithLabelAndRefBool_ThrowsDllNotFoundException()
@@ -486,7 +486,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin tab item with label ref bool and flags throws dll not found exception
+        ///     Tests that begin tab item with label ref bool and flags throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginTabItem_WithLabelRefBoolAndFlags_ThrowsDllNotFoundException()
@@ -496,7 +496,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin table with str id and column throws dll not found exception
+        ///     Tests that begin table with str id and column throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginTable_WithStrIdAndColumn_ThrowsDllNotFoundException()
@@ -505,7 +505,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin table with str id column and flags throws dll not found exception
+        ///     Tests that begin table with str id column and flags throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginTable_WithStrIdColumnAndFlags_ThrowsDllNotFoundException()
@@ -514,7 +514,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin table with str id column flags and outer size throws dll not found exception
+        ///     Tests that begin table with str id column flags and outer size throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginTable_WithStrIdColumnFlagsAndOuterSize_ThrowsDllNotFoundException()
@@ -523,7 +523,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin table with str id column flags outer size and inner width throws dll not found exception
+        ///     Tests that begin table with str id column flags outer size and inner width throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginTable_WithStrIdColumnFlagsOuterSizeAndInnerWidth_ThrowsDllNotFoundException()
@@ -532,7 +532,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that begin tooltip throws dll not found exception
+        ///     Tests that begin tooltip throws dll not found exception
         /// </summary>
         [Fact]
         public void BeginTooltip_ThrowsDllNotFoundException()
@@ -541,7 +541,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that bullet throws dll not found exception
+        ///     Tests that bullet throws dll not found exception
         /// </summary>
         [Fact]
         public void Bullet_ThrowsDllNotFoundException()
@@ -550,7 +550,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that bullet text throws dll not found exception
+        ///     Tests that bullet text throws dll not found exception
         /// </summary>
         [Fact]
         public void BulletText_ThrowsDllNotFoundException()
@@ -559,7 +559,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that button with label throws dll not found exception
+        ///     Tests that button with label throws dll not found exception
         /// </summary>
         [Fact]
         public void Button_WithLabel_ThrowsDllNotFoundException()
@@ -568,7 +568,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that button with label and size throws dll not found exception
+        ///     Tests that button with label and size throws dll not found exception
         /// </summary>
         [Fact]
         public void Button_WithLabelAndSize_ThrowsDllNotFoundException()
@@ -577,7 +577,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that calc item width throws dll not found exception
+        ///     Tests that calc item width throws dll not found exception
         /// </summary>
         [Fact]
         public void CalcItemWidth_ThrowsDllNotFoundException()
@@ -586,7 +586,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that checkbox with label and ref bool throws dll not found exception
+        ///     Tests that checkbox with label and ref bool throws dll not found exception
         /// </summary>
         [Fact]
         public void Checkbox_WithLabelAndRefBool_ThrowsDllNotFoundException()
@@ -596,7 +596,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that checkbox flags with label ref int and flags value throws dll not found exception
+        ///     Tests that checkbox flags with label ref int and flags value throws dll not found exception
         /// </summary>
         [Fact]
         public void CheckboxFlags_WithLabelRefIntAndFlagsValue_ThrowsDllNotFoundException()
@@ -606,7 +606,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that checkbox flags with label ref uint and flags value throws dll not found exception
+        ///     Tests that checkbox flags with label ref uint and flags value throws dll not found exception
         /// </summary>
         [Fact]
         public void CheckboxFlags_WithLabelRefUintAndFlagsValue_ThrowsDllNotFoundException()
@@ -616,7 +616,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that close current popup throws dll not found exception
+        ///     Tests that close current popup throws dll not found exception
         /// </summary>
         [Fact]
         public void CloseCurrentPopup_ThrowsDllNotFoundException()
@@ -625,7 +625,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that collapsing header with label throws dll not found exception
+        ///     Tests that collapsing header with label throws dll not found exception
         /// </summary>
         [Fact]
         public void CollapsingHeader_WithLabel_ThrowsDllNotFoundException()
@@ -634,7 +634,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that collapsing header with label and flags throws dll not found exception
+        ///     Tests that collapsing header with label and flags throws dll not found exception
         /// </summary>
         [Fact]
         public void CollapsingHeader_WithLabelAndFlags_ThrowsDllNotFoundException()
@@ -643,7 +643,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that collapsing header with label and ref bool throws dll not found exception
+        ///     Tests that collapsing header with label and ref bool throws dll not found exception
         /// </summary>
         [Fact]
         public void CollapsingHeader_WithLabelAndRefBool_ThrowsDllNotFoundException()
@@ -653,7 +653,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that collapsing header with label ref bool and flags throws dll not found exception
+        ///     Tests that collapsing header with label ref bool and flags throws dll not found exception
         /// </summary>
         [Fact]
         public void CollapsingHeader_WithLabelRefBoolAndFlags_ThrowsDllNotFoundException()
@@ -663,7 +663,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that color button with desc id and col throws dll not found exception
+        ///     Tests that color button with desc id and col throws dll not found exception
         /// </summary>
         [Fact]
         public void ColorButton_WithDescIdAndCol_ThrowsDllNotFoundException()
@@ -672,7 +672,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that color button with desc id col and flags throws dll not found exception
+        ///     Tests that color button with desc id col and flags throws dll not found exception
         /// </summary>
         [Fact]
         public void ColorButton_WithDescIdColAndFlags_ThrowsDllNotFoundException()
@@ -681,7 +681,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that color button with desc id col flags and size throws dll not found exception
+        ///     Tests that color button with desc id col flags and size throws dll not found exception
         /// </summary>
         [Fact]
         public void ColorButton_WithDescIdColFlagsAndSize_ThrowsDllNotFoundException()
@@ -690,7 +690,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that color convert float 4 to u 32 throws dll not found exception
+        ///     Tests that color convert float 4 to u 32 throws dll not found exception
         /// </summary>
         [Fact]
         public void ColorConvertFloat4ToU32_ThrowsDllNotFoundException()
@@ -699,7 +699,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that color convert hs vto rgb throws dll not found exception
+        ///     Tests that color convert hs vto rgb throws dll not found exception
         /// </summary>
         [Fact]
         public void ColorConvertHsVtoRgb_ThrowsDllNotFoundException()
@@ -708,7 +708,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that color convert rg bto hsv throws dll not found exception
+        ///     Tests that color convert rg bto hsv throws dll not found exception
         /// </summary>
         [Fact]
         public void ColorConvertRgBtoHsv_ThrowsDllNotFoundException()
@@ -717,7 +717,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that color convert u 32 to float 4 throws dll not found exception
+        ///     Tests that color convert u 32 to float 4 throws dll not found exception
         /// </summary>
         [Fact]
         public void ColorConvertU32ToFloat4_ThrowsDllNotFoundException()
@@ -726,7 +726,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that color edit 3 with label and ref vector 3 throws dll not found exception
+        ///     Tests that color edit 3 with label and ref vector 3 throws dll not found exception
         /// </summary>
         [Fact]
         public void ColorEdit3_WithLabelAndRefVector3_ThrowsDllNotFoundException()
@@ -736,7 +736,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that color edit 3 with label ref vector 3 and flags throws dll not found exception
+        ///     Tests that color edit 3 with label ref vector 3 and flags throws dll not found exception
         /// </summary>
         [Fact]
         public void ColorEdit3_WithLabelRefVector3AndFlags_ThrowsDllNotFoundException()
@@ -746,7 +746,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that color edit 4 with label and ref vector 4 throws dll not found exception
+        ///     Tests that color edit 4 with label and ref vector 4 throws dll not found exception
         /// </summary>
         [Fact]
         public void ColorEdit4_WithLabelAndRefVector4_ThrowsDllNotFoundException()
@@ -756,7 +756,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that color edit 4 with label ref vector 4 and flags throws dll not found exception
+        ///     Tests that color edit 4 with label ref vector 4 and flags throws dll not found exception
         /// </summary>
         [Fact]
         public void ColorEdit4_WithLabelRefVector4AndFlags_ThrowsDllNotFoundException()
@@ -766,7 +766,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that color picker 3 with label and ref vector 3 throws dll not found exception
+        ///     Tests that color picker 3 with label and ref vector 3 throws dll not found exception
         /// </summary>
         [Fact]
         public void ColorPicker3_WithLabelAndRefVector3_ThrowsDllNotFoundException()
@@ -776,7 +776,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that color picker 3 with label ref vector 3 and flags throws dll not found exception
+        ///     Tests that color picker 3 with label ref vector 3 and flags throws dll not found exception
         /// </summary>
         [Fact]
         public void ColorPicker3_WithLabelRefVector3AndFlags_ThrowsDllNotFoundException()
@@ -786,7 +786,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that color picker 4 with label and ref vector 4 throws dll not found exception
+        ///     Tests that color picker 4 with label and ref vector 4 throws dll not found exception
         /// </summary>
         [Fact]
         public void ColorPicker4_WithLabelAndRefVector4_ThrowsDllNotFoundException()
@@ -796,7 +796,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that color picker 4 with label ref vector 4 and flags throws dll not found exception
+        ///     Tests that color picker 4 with label ref vector 4 and flags throws dll not found exception
         /// </summary>
         [Fact]
         public void ColorPicker4_WithLabelRefVector4AndFlags_ThrowsDllNotFoundException()
@@ -806,7 +806,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that color picker 4 with label ref vector 4 flags and ref col throws dll not found exception
+        ///     Tests that color picker 4 with label ref vector 4 flags and ref col throws dll not found exception
         /// </summary>
         [Fact]
         public void ColorPicker4_WithLabelRefVector4FlagsAndRefCol_ThrowsDllNotFoundException()
@@ -817,7 +817,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that columns throws dll not found exception
+        ///     Tests that columns throws dll not found exception
         /// </summary>
         [Fact]
         public void Columns_ThrowsDllNotFoundException()
@@ -826,7 +826,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that columns with count throws dll not found exception
+        ///     Tests that columns with count throws dll not found exception
         /// </summary>
         [Fact]
         public void Columns_WithCount_ThrowsDllNotFoundException()
@@ -835,7 +835,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that columns with count and id throws dll not found exception
+        ///     Tests that columns with count and id throws dll not found exception
         /// </summary>
         [Fact]
         public void Columns_WithCountAndId_ThrowsDllNotFoundException()
@@ -844,7 +844,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that columns with count id and border throws dll not found exception
+        ///     Tests that columns with count id and border throws dll not found exception
         /// </summary>
         [Fact]
         public void Columns_WithCountIdAndBorder_ThrowsDllNotFoundException()
@@ -853,7 +853,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         }
         
         /// <summary>
-        /// Tests that combo throws dll not found exception
+        ///     Tests that combo throws dll not found exception
         /// </summary>
         [Fact]
         public void Combo_ThrowsDllNotFoundException()
@@ -861,12 +861,12 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             Assert.Throws<MarshalDirectiveException>(() =>
             {
                 int currentItem = int.MinValue;
-                return ImGui.Native.ImGui.Combo("label", ref currentItem, new string[] {"item1", "item2"}, 2);
+                return ImGui.Native.ImGui.Combo("label", ref currentItem, new[] {"item1", "item2"}, 2);
             });
         }
         
         /// <summary>
-        /// Tests that combo with popup max height in items throws dll not found exception
+        ///     Tests that combo with popup max height in items throws dll not found exception
         /// </summary>
         [Fact]
         public void Combo_WithPopupMaxHeightInItems_ThrowsDllNotFoundException()
@@ -874,7 +874,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             Assert.Throws<MarshalDirectiveException>(() =>
             {
                 int currentItem = int.MinValue;
-                return ImGui.Native.ImGui.Combo("label", ref currentItem, new string[] {"item1", "item2"}, 2, 10);
+                return ImGui.Native.ImGui.Combo("label", ref currentItem, new[] {"item1", "item2"}, 2, 10);
             });
         }
     }

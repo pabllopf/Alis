@@ -608,7 +608,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that index advance x throws dll not found exception
+        ///     Tests that index advance x throws dll not found exception
         /// </summary>
         [Fact]
         public void IndexAdvanceX_ThrowsDllNotFoundException()
@@ -621,7 +621,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that fallback advance x throws dll not found exception
+        ///     Tests that fallback advance x throws dll not found exception
         /// </summary>
         [Fact]
         public void FallbackAdvanceX_ThrowsDllNotFoundException()
@@ -634,7 +634,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that font size throws dll not found exception
+        ///     Tests that font size throws dll not found exception
         /// </summary>
         [Fact]
         public void FontSize_ThrowsDllNotFoundException()
@@ -647,7 +647,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that index lookup throws dll not found exception
+        ///     Tests that index lookup throws dll not found exception
         /// </summary>
         [Fact]
         public void IndexLookup_ThrowsDllNotFoundException()
@@ -660,7 +660,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that container atlas throws dll not found exception
+        ///     Tests that container atlas throws dll not found exception
         /// </summary>
         [Fact]
         public void ContainerAtlas_ThrowsDllNotFoundException()
@@ -673,7 +673,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that config data throws dll not found exception
+        ///     Tests that config data throws dll not found exception
         /// </summary>
         [Fact]
         public void ConfigData_ThrowsDllNotFoundException()
@@ -686,7 +686,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that config data count throws dll not found exception
+        ///     Tests that config data count throws dll not found exception
         /// </summary>
         [Fact]
         public void ConfigDataCount_ThrowsDllNotFoundException()
@@ -699,7 +699,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that fallback char throws dll not found exception
+        ///     Tests that fallback char throws dll not found exception
         /// </summary>
         [Fact]
         public void FallbackChar_ThrowsDllNotFoundException()
@@ -712,7 +712,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that ellipsis char throws dll not found exception
+        ///     Tests that ellipsis char throws dll not found exception
         /// </summary>
         [Fact]
         public void EllipsisChar_ThrowsDllNotFoundException()
@@ -725,7 +725,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that dot char throws dll not found exception
+        ///     Tests that dot char throws dll not found exception
         /// </summary>
         [Fact]
         public void DotChar_ThrowsDllNotFoundException()
@@ -738,7 +738,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that dirty lookup tables throws dll not found exception
+        ///     Tests that dirty lookup tables throws dll not found exception
         /// </summary>
         [Fact]
         public void DirtyLookupTables_ThrowsDllNotFoundException()
@@ -751,7 +751,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that scale throws dll not found exception
+        ///     Tests that scale throws dll not found exception
         /// </summary>
         [Fact]
         public void Scale_ThrowsDllNotFoundException()
@@ -764,7 +764,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that ascent throws dll not found exception
+        ///     Tests that ascent throws dll not found exception
         /// </summary>
         [Fact]
         public void Ascent_ThrowsDllNotFoundException()
@@ -777,7 +777,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that descent throws dll not found exception
+        ///     Tests that descent throws dll not found exception
         /// </summary>
         [Fact]
         public void Descent_ThrowsDllNotFoundException()
@@ -790,7 +790,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         }
         
         /// <summary>
-        /// Tests that metrics total surface throws dll not found exception
+        ///     Tests that metrics total surface throws dll not found exception
         /// </summary>
         [Fact]
         public void MetricsTotalSurface_ThrowsDllNotFoundException()

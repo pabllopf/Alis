@@ -2507,7 +2507,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot stems u int 16 throws dll not found exception
+        ///     Tests that plot stems u int 16 throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotStems_UInt16_ThrowsDllNotFoundException()
@@ -2517,11 +2517,8 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        
-        /// Tests that plot stems u int 16 with offset throws dll not found exception
-        
+        ///     Tests that plot stems u int 16 with offset throws dll not found exception
         /// </summary>
-        
         [Fact]
         public void PlotStems_UInt16_WithOffset_ThrowsDllNotFoundException()
         {
@@ -2530,11 +2527,8 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        
-        /// Tests that plot stems u int 16 with stride throws dll not found exception
-        
+        ///     Tests that plot stems u int 16 with stride throws dll not found exception
         /// </summary>
-        
         [Fact]
         public void PlotStems_UInt16_WithStride_ThrowsDllNotFoundException()
         {
@@ -2543,11 +2537,8 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        
-        /// Tests that plot stems int 32 throws dll not found exception
-        
+        ///     Tests that plot stems int 32 throws dll not found exception
         /// </summary>
-        
         [Fact]
         public void PlotStems_Int32_ThrowsDllNotFoundException()
         {
@@ -2556,11 +2547,8 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        
-        /// Tests that plot stems int 32 with ref throws dll not found exception
-        
+        ///     Tests that plot stems int 32 with ref throws dll not found exception
         /// </summary>
-        
         [Fact]
         public void PlotStems_Int32_WithRef_ThrowsDllNotFoundException()
         {
@@ -2569,11 +2557,8 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        
-        /// Tests that plot stems int 32 with flags throws dll not found exception
-        
+        ///     Tests that plot stems int 32 with flags throws dll not found exception
         /// </summary>
-        
         [Fact]
         public void PlotStems_Int32_WithFlags_ThrowsDllNotFoundException()
         {
@@ -2582,11 +2567,8 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        
-        /// Tests that plot stems int 32 with offset throws dll not found exception
-        
+        ///     Tests that plot stems int 32 with offset throws dll not found exception
         /// </summary>
-        
         [Fact]
         public void PlotStems_Int32_WithOffset_ThrowsDllNotFoundException()
         {
@@ -2595,11 +2577,8 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        
-        /// Tests that plot stems int 32 with stride throws dll not found exception
-        
+        ///     Tests that plot stems int 32 with stride throws dll not found exception
         /// </summary>
-        
         [Fact]
         public void PlotStems_Int32_WithStride_ThrowsDllNotFoundException()
         {
@@ -2608,11 +2587,8 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        
-        /// Tests that plot stems u int 32 throws dll not found exception
-        
+        ///     Tests that plot stems u int 32 throws dll not found exception
         /// </summary>
-        
         [Fact]
         public void PlotStems_UInt32_ThrowsDllNotFoundException()
         {
@@ -2621,11 +2597,8 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        
-        /// Tests that plot stems u int 32 with ref throws dll not found exception
-        
+        ///     Tests that plot stems u int 32 with ref throws dll not found exception
         /// </summary>
-        
         [Fact]
         public void PlotStems_UInt32_WithRef_ThrowsDllNotFoundException()
         {
@@ -2634,7 +2607,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot stems u int throws dll not found exception
+        ///     Tests that plot stems u int throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotStems_UInt_ThrowsDllNotFoundException()
@@ -2644,7 +2617,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot stems long throws dll not found exception
+        ///     Tests that plot stems long throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotStems_Long_ThrowsDllNotFoundException()
@@ -2654,7 +2627,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot stems long with ref throws dll not found exception
+        ///     Tests that plot stems long with ref throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotStems_Long_WithRef_ThrowsDllNotFoundException()
@@ -2664,7 +2637,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot stems long with flags throws dll not found exception
+        ///     Tests that plot stems long with flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotStems_Long_WithFlags_ThrowsDllNotFoundException()
@@ -2674,7 +2647,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot stems long with offset throws dll not found exception
+        ///     Tests that plot stems long with offset throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotStems_Long_WithOffset_ThrowsDllNotFoundException()
@@ -2684,7 +2657,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot stems long with stride throws dll not found exception
+        ///     Tests that plot stems long with stride throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotStems_Long_WithStride_ThrowsDllNotFoundException()
@@ -2694,7 +2667,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot stems u long throws dll not found exception
+        ///     Tests that plot stems u long throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotStems_ULong_ThrowsDllNotFoundException()
@@ -2704,7 +2677,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot stems u long with ref throws dll not found exception
+        ///     Tests that plot stems u long with ref throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotStems_ULong_WithRef_ThrowsDllNotFoundException()
@@ -2714,7 +2687,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot stems u long with flags throws dll not found exception
+        ///     Tests that plot stems u long with flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotStems_ULong_WithFlags_ThrowsDllNotFoundException()
@@ -2724,7 +2697,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot stems u long with offset throws dll not found exception
+        ///     Tests that plot stems u long with offset throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotStems_ULong_WithOffset_ThrowsDllNotFoundException()
@@ -2734,7 +2707,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot stems u long with stride throws dll not found exception
+        ///     Tests that plot stems u long with stride throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotStems_ULong_WithStride_ThrowsDllNotFoundException()
@@ -2744,7 +2717,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot text throws dll not found exception
+        ///     Tests that plot text throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotText_ThrowsDllNotFoundException()
@@ -2753,7 +2726,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot text with offset throws dll not found exception
+        ///     Tests that plot text with offset throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotText_WithOffset_ThrowsDllNotFoundException()
@@ -2762,7 +2735,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot text with flags throws dll not found exception
+        ///     Tests that plot text with flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotText_WithFlags_ThrowsDllNotFoundException()
@@ -2771,7 +2744,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot to pixels plot point throws dll not found exception
+        ///     Tests that plot to pixels plot point throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotToPixels_PlotPoint_ThrowsDllNotFoundException()
@@ -2780,7 +2753,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot to pixels plot point with x axis throws dll not found exception
+        ///     Tests that plot to pixels plot point with x axis throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotToPixels_PlotPoint_WithXAxis_ThrowsDllNotFoundException()
@@ -2789,7 +2762,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot to pixels plot point with axes throws dll not found exception
+        ///     Tests that plot to pixels plot point with axes throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotToPixels_PlotPoint_WithAxes_ThrowsDllNotFoundException()
@@ -2798,7 +2771,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot to pixels double throws dll not found exception
+        ///     Tests that plot to pixels double throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotToPixels_Double_ThrowsDllNotFoundException()
@@ -2807,7 +2780,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot to pixels double with x axis throws dll not found exception
+        ///     Tests that plot to pixels double with x axis throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotToPixels_Double_WithXAxis_ThrowsDllNotFoundException()
@@ -2816,7 +2789,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot to pixels double with axes throws dll not found exception
+        ///     Tests that plot to pixels double with axes throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotToPixels_Double_WithAxes_ThrowsDllNotFoundException()
@@ -2825,7 +2798,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that pop colormap throws dll not found exception
+        ///     Tests that pop colormap throws dll not found exception
         /// </summary>
         [Fact]
         public void PopColormap_ThrowsDllNotFoundException()
@@ -2834,7 +2807,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that pop colormap with count throws dll not found exception
+        ///     Tests that pop colormap with count throws dll not found exception
         /// </summary>
         [Fact]
         public void PopColormap_WithCount_ThrowsDllNotFoundException()
@@ -2843,7 +2816,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot stems u int with flags throws dll not found exception
+        ///     Tests that plot stems u int with flags throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotStems_UInt_WithFlags_ThrowsDllNotFoundException()
@@ -2853,7 +2826,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot stems u int with offset throws dll not found exception
+        ///     Tests that plot stems u int with offset throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotStems_UInt_WithOffset_ThrowsDllNotFoundException()
@@ -2863,7 +2836,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot stems u int with stride throws dll not found exception
+        ///     Tests that plot stems u int with stride throws dll not found exception
         /// </summary>
         [Fact]
         public void PlotStems_UInt_WithStride_ThrowsDllNotFoundException()
@@ -2873,7 +2846,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot stems long throws dll not found exception v 2
+        ///     Tests that plot stems long throws dll not found exception v 2
         /// </summary>
         [Fact]
         public void PlotStems_Long_ThrowsDllNotFoundException_v2()
@@ -2883,7 +2856,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot stems long with ref throws dll not found exception v 2
+        ///     Tests that plot stems long with ref throws dll not found exception v 2
         /// </summary>
         [Fact]
         public void PlotStems_Long_WithRef_ThrowsDllNotFoundException_v2()
@@ -2893,7 +2866,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot stems long with flags throws dll not found exception v 2
+        ///     Tests that plot stems long with flags throws dll not found exception v 2
         /// </summary>
         [Fact]
         public void PlotStems_Long_WithFlags_ThrowsDllNotFoundException_v2()
@@ -2903,7 +2876,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot stems long with offset throws dll not found exception v 2
+        ///     Tests that plot stems long with offset throws dll not found exception v 2
         /// </summary>
         [Fact]
         public void PlotStems_Long_WithOffset_ThrowsDllNotFoundException_v2()
@@ -2913,7 +2886,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot stems long with stride throws dll not found exception v 2
+        ///     Tests that plot stems long with stride throws dll not found exception v 2
         /// </summary>
         [Fact]
         public void PlotStems_Long_WithStride_ThrowsDllNotFoundException_v2()
@@ -2923,7 +2896,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot stems u long throws dll not found exception v 2
+        ///     Tests that plot stems u long throws dll not found exception v 2
         /// </summary>
         [Fact]
         public void PlotStems_ULong_ThrowsDllNotFoundException_v2()
@@ -2933,7 +2906,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot stems u long with ref throws dll not found exception v 2
+        ///     Tests that plot stems u long with ref throws dll not found exception v 2
         /// </summary>
         [Fact]
         public void PlotStems_ULong_WithRef_ThrowsDllNotFoundException_v2()
@@ -2943,7 +2916,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         }
         
         /// <summary>
-        /// Tests that plot stems u long with flags throws dll not found exception v 2
+        ///     Tests that plot stems u long with flags throws dll not found exception v 2
         /// </summary>
         [Fact]
         public void PlotStems_ULong_WithFlags_ThrowsDllNotFoundException_v2()

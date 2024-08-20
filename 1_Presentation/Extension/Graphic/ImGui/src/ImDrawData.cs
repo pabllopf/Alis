@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Extension.Graphic.ImGui
@@ -62,7 +61,7 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The cmd lists
         /// </summary>
         public IntPtr CmdListsPtr { get; set; }
-
+        
         /// <summary>
         ///     The display pos
         /// </summary>
