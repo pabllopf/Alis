@@ -50,16 +50,13 @@ namespace Alis.Test.Benchmarks
         /// The test output helper
         /// </summary>
         private readonly ITestOutputHelper testOutputHelper;
-
-        /// <summary>
-        /// The limit elapsed milliseconds
-        /// </summary>
-        private const int LimitElapsedMilliseconds = 0;
         
         /// <summary>
-        /// The limit elapsed nanoseconds
+        /// The default
         /// </summary>
-        private const int LimitElapsedNanoseconds = 10000;
+        private ManualConfig config = ManualConfig
+            .Create(new DebugInProcessConfig())
+            .WithOptions(ConfigOptions.Default);
         
         /// <summary>
         /// Initializes a new instance of the <see cref="GameObjectTest"/> class
@@ -71,218 +68,62 @@ namespace Alis.Test.Benchmarks
         }
         
         /// <summary>
-        /// Tests that game object benchmark test contains
+        /// Tests that game object benchmark test clear v 2
         /// </summary>
-        /// <param name="n">The </param>
-        [Theory]
-        [InlineData(0)]
-        [InlineData(1)]
-        [InlineData(100)]
-        [InlineData(1_000)]
-        [InlineData(10_000)]
-        [InlineData(100_000)]
-        [InlineData(1_000_000)]
-        [InlineData(10_000_000)]
-        public void GameObject_BenchmarkTest_Contains(int n)
+        [Fact]
+        public void GameObject_BenchmarkTest_Clear()
         {
-            GameObject gameObject = new GameObject();
-            for (int i = 0; i < n - 1; i++)
-            {
-                gameObject.Add(new AudioSource());
-            }
-            
-            if (n > 0)
-            {
-                gameObject.Add(new Sprite());
-            }
-            
-            BenchmarkResult result = BenchmarkHelper.Measure(() =>
-            {
-                gameObject.Contains<Sprite>();
-            });
-            
-            string resultMessageMilliseconds= $"N:'{n}', ElapsedTime: {result.ElapsedMilliseconds}/{LimitElapsedMilliseconds} ms";
-            string resultMessageNanoseconds = $"N:'{n}', ElapsedTime: {result.ElapsedNanoseconds}/{LimitElapsedNanoseconds} ns";
-            
-            testOutputHelper.WriteLine(resultMessageMilliseconds);
-            testOutputHelper.WriteLine(resultMessageNanoseconds);
-            
-            Assert.True(result.ElapsedMilliseconds <= LimitElapsedMilliseconds, $"Elapsed milliseconds should be less than {LimitElapsedMilliseconds}/{result.ElapsedMilliseconds} ms for {n} components.");
-            Assert.True(result.ElapsedNanoseconds <= LimitElapsedNanoseconds, $"Elapsed nanoseconds should be less than {LimitElapsedNanoseconds}/{result.ElapsedNanoseconds} ns for {n} components.");
+            Summary summary = BenchmarkRunner.Run<ClearComponentOfGameObjectBenchmark>(config);
+            PrintSummary(summary);
         }
         
         /// <summary>
-        /// Tests that game object benchmark test contains
+        /// Tests that game object benchmark test get
         /// </summary>
-        /// <param name="n">The </param>
-        [Theory]
-        [InlineData(0)]
-        [InlineData(1)]
-        [InlineData(100)]
-        [InlineData(1_000)]
-        [InlineData(10_000)]
-        [InlineData(100_000)]
-        [InlineData(1_000_000)]
-        [InlineData(10_000_000)]
-        public void GameObject_BenchmarkTest_Get(int n)
+        [Fact]
+        public void GameObject_BenchmarkTest_Get()
         {
-            GameObject gameObject = new GameObject();
-            for (int i = 0; i < n - 1; i++)
-            {
-                gameObject.Add(new AudioSource());
-            }
-            
-            if (n > 0)
-            {
-                gameObject.Add(new Sprite());
-            }
-            
-            BenchmarkResult result = BenchmarkHelper.Measure(() =>
-            {
-                _ = gameObject.Get<Sprite>();
-            });
-            
-            string resultMessageMilliseconds= $"N:'{n}', ElapsedTime: {result.ElapsedMilliseconds}/{LimitElapsedMilliseconds} ms";
-            string resultMessageNanoseconds = $"N:'{n}', ElapsedTime: {result.ElapsedNanoseconds}/{LimitElapsedNanoseconds} ns";
-            
-            testOutputHelper.WriteLine(resultMessageMilliseconds);
-            testOutputHelper.WriteLine(resultMessageNanoseconds);
-            
-            Assert.True(result.ElapsedMilliseconds <= LimitElapsedMilliseconds, $"Elapsed milliseconds should be less than {LimitElapsedMilliseconds}/{result.ElapsedMilliseconds} ms for {n} components.");
-            Assert.True(result.ElapsedNanoseconds <= LimitElapsedNanoseconds, $"Elapsed nanoseconds should be less than {LimitElapsedNanoseconds}/{result.ElapsedNanoseconds} ns for {n} components.");
-        }
-        
-        /// <summary>
-        /// Tests that game object benchmark test remove
-        /// </summary>
-        /// <param name="n">The </param>
-        [Theory]
-        [InlineData(0)]
-        [InlineData(1)]
-        [InlineData(100)]
-        [InlineData(1_000)]
-        [InlineData(10_000)]
-        [InlineData(100_000)]
-        [InlineData(1_000_000)]
-        [InlineData(10_000_000)]
-        public void GameObject_BenchmarkTest_Remove(int n)
-        {
-            GameObject gameObject = new GameObject();
-            for (int i = 0; i < n - 1; i++)
-            {
-                gameObject.Add(new AudioSource());
-            }
-            
-            Sprite sprite = new Sprite();
-            
-            if (n > 0)
-            {
-                gameObject.Add(sprite);
-            }
-            
-            BenchmarkResult result = BenchmarkHelper.Measure(() =>
-            {
-                gameObject.Remove(sprite);
-            });
-            
-            string resultMessageMilliseconds= $"N:'{n}', ElapsedTime: {result.ElapsedMilliseconds}/{LimitElapsedMilliseconds} ms";
-            string resultMessageNanoseconds = $"N:'{n}', ElapsedTime: {result.ElapsedNanoseconds}/{LimitElapsedNanoseconds} ns";
-            
-            testOutputHelper.WriteLine(resultMessageMilliseconds);
-            testOutputHelper.WriteLine(resultMessageNanoseconds);
-            
-            Assert.True(result.ElapsedMilliseconds <= LimitElapsedMilliseconds, $"Elapsed milliseconds should be less than {LimitElapsedMilliseconds}/{result.ElapsedMilliseconds} ms for {n} components.");
-            Assert.True(result.ElapsedNanoseconds <= LimitElapsedNanoseconds, $"Elapsed nanoseconds should be less than {LimitElapsedNanoseconds}/{result.ElapsedNanoseconds} ns for {n} components.");
+            Summary summary = BenchmarkRunner.Run<GetComponentOfGameObjectBenchmark>(config);
+            PrintSummary(summary);
         }
         
         /// <summary>
         /// Tests that game object benchmark test add
         /// </summary>
-        /// <param name="n">The </param>
-        [Theory]
-        [InlineData(0)]
-        [InlineData(1)]
-        [InlineData(100)]
-        [InlineData(1_000)]
-        [InlineData(10_000)]
-        [InlineData(100_000)]
-        [InlineData(1_000_000)]
-        [InlineData(10_000_000)]
-        public void GameObject_BenchmarkTest_Add(int n)
+        [Fact]
+        public void GameObject_BenchmarkTest_Add()
         {
-            GameObject gameObject = new GameObject();
-            for (int i = 0; i < n - 1; i++)
-            {
-                gameObject.Add(new AudioSource());
-            }
-            
-            Sprite sprite = new Sprite();
-            
-            BenchmarkResult result = BenchmarkHelper.Measure(() =>
-            {
-                gameObject.Add(sprite);
-            });
-            
-            string resultMessageMilliseconds= $"N:'{n}', ElapsedTime: {result.ElapsedMilliseconds}/{LimitElapsedMilliseconds} ms";
-            string resultMessageNanoseconds = $"N:'{n}', ElapsedTime: {result.ElapsedNanoseconds}/{LimitElapsedNanoseconds} ns";
-            
-            testOutputHelper.WriteLine(resultMessageMilliseconds);
-            testOutputHelper.WriteLine(resultMessageNanoseconds);
-            
-            Assert.True(result.ElapsedMilliseconds <= LimitElapsedMilliseconds, $"Elapsed milliseconds should be less than {LimitElapsedMilliseconds}/{result.ElapsedMilliseconds} ms for {n} components.");
-            Assert.True(result.ElapsedNanoseconds <= LimitElapsedNanoseconds, $"Elapsed nanoseconds should be less than {LimitElapsedNanoseconds}/{result.ElapsedNanoseconds} ns for {n} components.");
+            Summary summary = BenchmarkRunner.Run<AddComponentOfGameObjectBenchmark>(config);
+            PrintSummary(summary);
         }
         
         /// <summary>
-        /// Tests that game object benchmark test clear
-        /// </summary>
-        /// <param name="n">The </param>
-        [Theory]
-        [InlineData(0)]
-        [InlineData(1)]
-        [InlineData(100)]
-        [InlineData(1_000)]
-        [InlineData(10_000)]
-        [InlineData(100_000)]
-        [InlineData(1_000_000)]
-        [InlineData(10_000_000)]
-        public void GameObject_BenchmarkTest_Clear(int n)
-        {
-            GameObject gameObject = new GameObject();
-            for (int i = 0; i < n - 1; i++)
-            {
-                gameObject.Add(new AudioSource());
-            }
-            
-            Sprite sprite = new Sprite();
-            
-            BenchmarkResult result = BenchmarkHelper.Measure(() =>
-            {
-                gameObject.Clear();
-            });
-            
-            string resultMessageMilliseconds= $"N:'{n}', ElapsedTime: {result.ElapsedMilliseconds}/{LimitElapsedMilliseconds} ms";
-            string resultMessageNanoseconds = $"N:'{n}', ElapsedTime: {result.ElapsedNanoseconds}/{LimitElapsedNanoseconds} ns";
-            
-            testOutputHelper.WriteLine(resultMessageMilliseconds);
-            testOutputHelper.WriteLine(resultMessageNanoseconds);
-            
-            Assert.True(result.ElapsedMilliseconds <= LimitElapsedMilliseconds, $"Elapsed milliseconds should be less than {LimitElapsedMilliseconds}/{result.ElapsedMilliseconds} ms for {n} components.");
-            Assert.True(result.ElapsedNanoseconds <= LimitElapsedNanoseconds, $"Elapsed nanoseconds should be less than {LimitElapsedNanoseconds}/{result.ElapsedNanoseconds} ns for {n} components.");
-        }
-        
-        /// <summary>
-        /// Tests that game object benchmark test clear v 2
+        /// Tests that game object benchmark test remove
         /// </summary>
         [Fact]
-        public void GameObject_BenchmarkTest_Clear_V2()
+        public void GameObject_BenchmarkTest_Remove()
         {
-            ManualConfig config = ManualConfig.Create(new DebugInProcessConfig())
-                .WithOptions(ConfigOptions.Default);
-            
-            Summary summary = BenchmarkRunner.Run<ClearComponentOfGameObjectBenchmark>(config);
-            
-            int numOfChars = 15;
+            Summary summary = BenchmarkRunner.Run<RemoveComponentOfGameObjectBenchmark>(config);
+            PrintSummary(summary);
+        }
+        
+        /// <summary>
+        /// Tests that game object benchmark test contains
+        /// </summary>
+        [Fact]
+        public void GameObject_BenchmarkTest_Contains()
+        {
+            Summary summary = BenchmarkRunner.Run<ContainsComponentOfGameObjectBenchmark>(config);
+            PrintSummary(summary);
+        }
+
+        /// <summary>
+        /// Prints the summary using the specified summary
+        /// </summary>
+        /// <param name="summary">The summary</param>
+        internal void PrintSummary(Summary summary)
+        {
+             int numOfChars = 14;
             
             string header = " | ";
             foreach (SummaryTable.SummaryTableColumn variable in summary.Table.Columns)

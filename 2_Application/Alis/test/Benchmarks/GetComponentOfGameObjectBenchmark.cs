@@ -10,7 +10,7 @@ namespace Alis.Test.Benchmarks
     /// The clear component of game object benchmark class
     /// </summary>
     [MinColumn, MaxColumn, MedianColumn, MemoryDiagnoser]
-    public class ClearComponentOfGameObjectBenchmark
+    public class GetComponentOfGameObjectBenchmark
     {
         /// <summary>
         /// The game object
@@ -40,9 +40,9 @@ namespace Alis.Test.Benchmarks
         /// Clears the component
         /// </summary>
         [Benchmark]
-        public void Clear_Component()
+        public void Get_Component()
         {
-            gameObject.Clear();
+            _ = gameObject.Get<AudioSource>();
         }
     }
 }
