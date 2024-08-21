@@ -124,7 +124,7 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.GameObject
             
             builder.AddComponent<Sample2Component>(_ => component);
             
-            Assert.Contains(component, builder.Build().Components);
+            Assert.Contains(component, builder.Build().Components.Values);
         }
         
         /// <summary>
@@ -138,7 +138,7 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.GameObject
             
             builder.AddComponent(component);
             
-            Assert.Contains(component, builder.Build().Components);
+            Assert.Contains(component, builder.Build().Components.Values);
         }
         
         /// <summary>

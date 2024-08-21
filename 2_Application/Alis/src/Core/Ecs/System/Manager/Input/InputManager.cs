@@ -31,6 +31,7 @@ using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Aspect.Logging;
+using Alis.Core.Ecs.Component;
 using Alis.Core.Ecs.Entity;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Structs;
@@ -197,7 +198,10 @@ namespace Alis.Core.Ecs.System.Manager.Input
             
             foreach (GameObject currentSceneGameObject in Context.SceneManager.CurrentScene.GameObjects)
             {
-                currentSceneGameObject.Components.ForEach(i => i.OnPressKey(key));
+                foreach (AComponent currentSceneGameObjectComponent in currentSceneGameObject.Components.Values)
+                {
+                    currentSceneGameObjectComponent.OnPressKey(key);
+                }
             }
         }
         
@@ -214,7 +218,10 @@ namespace Alis.Core.Ecs.System.Manager.Input
             
             foreach (GameObject currentSceneGameObject in Context.SceneManager.CurrentScene.GameObjects)
             {
-                currentSceneGameObject.Components.ForEach(i => i.OnReleaseKey(key));
+                foreach (AComponent currentSceneGameObjectComponent in currentSceneGameObject.Components.Values)
+                {
+                    currentSceneGameObjectComponent.OnReleaseKey(key);
+                }
             }
         }
         
@@ -231,7 +238,10 @@ namespace Alis.Core.Ecs.System.Manager.Input
             
             foreach (GameObject currentSceneGameObject in Context.SceneManager.CurrentScene.GameObjects)
             {
-                currentSceneGameObject.Components.ForEach(i => i.OnPressDownKey(key));
+                foreach (AComponent currentSceneGameObjectComponent in currentSceneGameObject.Components.Values)
+                {
+                    currentSceneGameObjectComponent.OnPressDownKey(key);
+                }
             }
         }
     }
