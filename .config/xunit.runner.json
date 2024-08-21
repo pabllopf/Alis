@@ -1,4 +1,8 @@
 {
   "parallelizeTestCollections": false,
-  "appDomain": "denied"
+  "appDomain": "denied",
+  "$schema": "https://xunit.net/schema/current/xunit.runner.schema.json",
+  "shadowCopy": false,
+  "methodDisplay": "classAndMethod",
+  "diagnosticMessages": true
 }

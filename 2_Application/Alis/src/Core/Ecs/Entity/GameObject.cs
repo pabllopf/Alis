@@ -57,7 +57,7 @@ namespace Alis.Core.Ecs.Entity
             Id = Guid.NewGuid().ToString();
             Tag = GetType().Name;
             Transform = new Transform(new Vector2(0, 0), new Rotation(0), new Vector2(1, 1));
-            Components = new List<AComponent>();
+            Components = new Dictionary<Type, AComponent>();
         }
         
         /// <summary>
@@ -76,7 +76,7 @@ namespace Alis.Core.Ecs.Entity
             Id = id;
             Tag = tag;
             Transform = transform;
-            Components = new List<AComponent>();
+            Components = new Dictionary<Type, AComponent>();
         }
         
         /// <summary>
@@ -88,7 +88,7 @@ namespace Alis.Core.Ecs.Entity
         /// <param name="tag">The tag</param>
         /// <param name="transform">The transform</param>
         /// <param name="components">The components</param>
-        public GameObject(bool isEnable, string name, string id, string tag, Transform transform, List<AComponent> components) : this()
+        public GameObject(bool isEnable, string name, string id, string tag, Transform transform, Dictionary<Type, AComponent> components) : this()
         {
             IsEnable = isEnable;
             Name = name;
@@ -144,41 +144,69 @@ namespace Alis.Core.Ecs.Entity
         ///     Gets or sets the value of the components
         /// </summary>
         [JsonPropertyName("_Components_")]
-        public List<AComponent> Components { get; set; }
+        public Dictionary<Type, AComponent> Components { get; set; }
         
         /// <summary>
         ///     Adds the component
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="component">The component</param>
-        public void Add<T>(T component) where T : AComponent => Components.Add(component);
+        public void Add<T>(T component) where T : AComponent
+        {
+            if (Components.ContainsKey(typeof(T)))
+            {
+                Components[typeof(T)] = component;
+            }
+            else
+            {
+                Components.Add(typeof(T), component);
+            }
+        }
         
         /// <summary>
         ///     Removes the component
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="component">The component</param>
-        public void Remove<T>(T component) where T : AComponent => Components.Remove(component);
+        public void Remove<T>(T component) where T : AComponent
+        {
+            if (component != null && Components.Count > 0)
+            {
+                // Use the type of the component to remove it from the dictionary
+                Components.Remove(typeof(T));
+            }
+        }
         
         /// <summary>
         ///     Gets this instance
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The</returns>
-        public T Get<T>() where T : AComponent => Components.Find(i => i is T) as T;
+        public T Get<T>() where T : AComponent
+        {
+            if (Components.TryGetValue(typeof(T), out AComponent component))
+            {
+                return (T)component;
+            }
+            
+            return null;
+        }
         
         /// <summary>
         ///     Describes whether this instance contains
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The bool</returns>
-        public bool Contains<T>() where T : AComponent => Components.Exists(i => i is T);
+        public bool Contains<T>() where T : AComponent
+        {
+            return Components.ContainsKey(typeof(T));
+        }
         
         /// <summary>
         ///     Clears this instance
         /// </summary>
         /// <typeparam name="T">The </typeparam>
-        public void Clear<T>() where T : AComponent => Components.Clear();
+        public void Clear() => Components.Clear();
         
         /// <summary>
         ///     Ons the enable
@@ -186,7 +214,10 @@ namespace Alis.Core.Ecs.Entity
         public void OnEnable()
         {
             IsEnable = true;
-            Components.ForEach(i => i.OnEnable());
+            foreach (AComponent component in Components.Values)
+            {
+                component.OnEnable();
+            }
         }
         
         /// <summary>
@@ -194,69 +225,144 @@ namespace Alis.Core.Ecs.Entity
         /// </summary>
         public void OnInit()
         {
-            Components.ForEach(i => i.Attach(this));
-            Components.ForEach(i => i.OnInit());
+            foreach (AComponent component in Components.Values)
+            {
+                component.Attach(this);
+                component.OnInit();
+            }
         }
         
         /// <summary>
         ///     Ons the awake
         /// </summary>
-        public void OnAwake() => Components.ForEach(i => i.OnAwake());
+        public void OnAwake()
+        {
+            foreach (AComponent component in Components.Values)
+            {
+                component.OnAwake();
+            }
+        }
         
         /// <summary>
         ///     Ons the start
         /// </summary>
-        public void OnStart() => Components.ForEach(i => i.OnStart());
+        public void OnStart()
+        {
+            foreach (AComponent component in Components.Values)
+            {
+                component.OnStart();
+            }
+        }
         
         /// <summary>
         ///     Ons the before update
         /// </summary>
-        public void OnBeforeUpdate() => Components.ForEach(i => i.OnBeforeUpdate());
+        public void OnBeforeUpdate()
+        {
+            foreach (AComponent component in Components.Values)
+            {
+                component.OnBeforeUpdate();
+            }
+        }
         
         /// <summary>
         ///     Ons the update
         /// </summary>
-        public void OnUpdate() => Components.ForEach(i => i.OnUpdate());
+        public void OnUpdate()
+        {
+            foreach (AComponent component in Components.Values)
+            {
+                component.OnUpdate();
+            }
+        }
         
         /// <summary>
         ///     Ons the after update
         /// </summary>
-        public void OnAfterUpdate() => Components.ForEach(i => i.OnAfterUpdate());
+        public void OnAfterUpdate()
+        {
+            foreach (AComponent component in Components.Values)
+            {
+                component.OnAfterUpdate();
+            }
+        }
         
         /// <summary>
         ///     Ons the before fixed update
         /// </summary>
-        public void OnBeforeFixedUpdate() => Components.ForEach(i => i.OnBeforeFixedUpdate());
+        public void OnBeforeFixedUpdate()
+        {
+            foreach (AComponent component in Components.Values)
+            {
+                component.OnBeforeFixedUpdate();
+            }
+        }
         
         /// <summary>
         ///     Ons the fixed update
         /// </summary>
-        public void OnFixedUpdate() => Components.ForEach(i => i.OnFixedUpdate());
+        public void OnFixedUpdate()
+        {
+            foreach (AComponent component in Components.Values)
+            {
+                component.OnFixedUpdate();
+            }
+        }
         
         /// <summary>
         ///     Ons the after fixed update
         /// </summary>
-        public void OnAfterFixedUpdate() => Components.ForEach(i => i.OnAfterFixedUpdate());
+        public void OnAfterFixedUpdate()
+        {
+            foreach (AComponent component in Components.Values)
+            {
+                component.OnAfterFixedUpdate();
+            }
+        }
         
         /// <summary>
         ///     Ons the dispatch events
         /// </summary>
-        public void OnDispatchEvents() => Components.ForEach(i => i.OnDispatchEvents());
+        public void OnDispatchEvents()
+        {
+            foreach (AComponent component in Components.Values)
+            {
+                component.OnDispatchEvents();
+            }
+        }
         
         /// <summary>
         ///     Ons the calculate
         /// </summary>
-        public void OnCalculate() => Components.ForEach(i => i.OnCalculate());
+        public void OnCalculate()
+        {
+            foreach (AComponent component in Components.Values)
+            {
+                component.OnCalculate();
+            }
+        }
         
         /// <summary>
         ///     Ons the draw
         /// </summary>
-        public void OnDraw() => Components.ForEach(i => i.OnDraw());
+        public void OnDraw()
+        {
+            foreach (AComponent component in Components.Values)
+            {
+                component.OnDraw();
+            }
+        }
         
         /// <summary>
         ///     Ons the gui
         /// </summary>
-        public void OnGui() => Components.ForEach(i => i.OnGui());
+        public void OnGui()
+        {
+            foreach (AComponent component in Components.Values)
+            {
+                component.OnGui();
+            }
+        }
         
         /// <summary>
         ///     Ons the disable
@@ -264,28 +370,55 @@ namespace Alis.Core.Ecs.Entity
         public void OnDisable()
         {
             IsEnable = false;
-            Components.ForEach(i => i.OnDisable());
+            foreach (AComponent component in Components.Values)
+            {
+                component.OnDisable();
+            }
         }
         
         /// <summary>
         ///     Ons the reset
         /// </summary>
-        public void OnReset() => Components.ForEach(i => i.OnReset());
+        public void OnReset()
+        {
+            foreach (AComponent component in Components.Values)
+            {
+                component.OnReset();
+            }
+        }
         
         /// <summary>
         ///     Ons the stop
         /// </summary>
-        public void OnStop() => Components.ForEach(i => i.OnStop());
+        public void OnStop()
+        {
+            foreach (AComponent component in Components.Values)
+            {
+                component.OnStop();
+            }
+        }
         
         /// <summary>
         ///     Ons the exit
         /// </summary>
-        public void OnExit() => Components.ForEach(i => i.OnExit());
+        public void OnExit()
+        {
+            foreach (AComponent component in Components.Values)
+            {
+                component.OnExit();
+            }
+        }
         
         /// <summary>
         ///     Ons the destroy
         /// </summary>
-        public void OnDestroy() => Components.ForEach(i => i.OnDestroy());
+        public void OnDestroy()
+        {
+            foreach (AComponent component in Components.Values)
+            {
+                component.OnDestroy();
+            }
+        }
         
         /// <summary>
         ///     Creates

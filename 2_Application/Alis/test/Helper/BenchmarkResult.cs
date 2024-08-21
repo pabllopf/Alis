@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ICrud.cs
+//  File:BenchmarkResult.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,45 +27,26 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Ecs.Entity.Property
+namespace Alis.Test.Helper
 {
     /// <summary>
-    ///     The crud interface
+    /// The benchmark result class
     /// </summary>
-    public interface ICrud<in TItem>
+    public class BenchmarkResult
     {
         /// <summary>
-        ///     Adds the component
+        /// Gets or sets the value of the elapsed milliseconds
         /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="component">The component</param>
-        public void Add<T>(T component) where T : TItem;
+        public long ElapsedMilliseconds { get; set; }
         
         /// <summary>
-        ///     Removes the component
+        /// Gets or sets the value of the memory used
         /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="component">The component</param>
-        public void Remove<T>(T component) where T : TItem;
+        public long MemoryUsed { get; set; }
         
         /// <summary>
-        ///     Gets this instance
+        /// Gets or sets the value of the elapsed nanoseconds
         /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <returns>The</returns>
-        public T Get<T>() where T : TItem;
-        
-        /// <summary>
-        ///     Describes whether this instance contains
-        /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <returns>The bool</returns>
-        public bool Contains<T>() where T : TItem;
-        
-        /// <summary>
-        ///     Cleans this instance
-        /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        public void Clear();
+        public double ElapsedNanoseconds { get; set; }
     }
 }

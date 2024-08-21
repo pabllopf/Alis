@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Component;
@@ -95,9 +96,9 @@ namespace Alis.Test.Core.Ecs.Entity
             
             // Act
             gameObject.Add(component);
-            bool containsAfterAdd = gameObject.Contains<AComponent>();
+            bool containsAfterAdd = gameObject.Contains<Sprite>();
             gameObject.Remove(component);
-            bool containsAfterRemove = gameObject.Contains<AComponent>();
+            bool containsAfterRemove = gameObject.Contains<Sprite>();
             
             // Assert
             Assert.True(containsAfterAdd);
@@ -372,7 +373,7 @@ namespace Alis.Test.Core.Ecs.Entity
             gameObject.Add(sample2Component1);
             gameObject.Add(sample2Component2);
             
-            gameObject.Clear<Sample2Component>();
+            gameObject.Clear();
             
             Assert.False(gameObject.Contains<Sample2Component>());
         }
@@ -430,8 +431,11 @@ namespace Alis.Test.Core.Ecs.Entity
             Assert.Empty(gameObject.Components);
             
             List<AComponent> componentList = new List<AComponent> {new Sample2Component()};
-            gameObject.Components = componentList;
-            Assert.Equal(componentList, gameObject.Components);
+            gameObject.Components = new Dictionary<Type, AComponent>
+            {
+                {typeof(Sample2Component), componentList[0]}
+            };
+            Assert.Equal(componentList, gameObject.Components.Values);
         }
     }
 }

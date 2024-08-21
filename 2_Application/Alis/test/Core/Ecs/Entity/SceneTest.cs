@@ -244,7 +244,7 @@ namespace Alis.Test.Core.Ecs.Entity
             scene.Add(gameObject1);
             scene.Add(gameObject2);
             
-            scene.Clear<GameObject>();
+            scene.Clear();
             
             Assert.False(scene.Contains<GameObject>());
         }

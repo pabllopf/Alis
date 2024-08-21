@@ -222,11 +222,17 @@ namespace Alis.Core.Ecs.Component.Collider
             
             if (fixtureGameObject.Equals(GameObject) && fixtureBGameObject.Contains<BoxCollider>())
             {
-                fixtureBGameObject.Components.ForEach(i => i.OnCollisionExit(GameObject));
+                foreach (AComponent component in  fixtureBGameObject.Components.Values)
+                {
+                    component.OnCollisionExit(GameObject);
+                }
             }
             else if (fixtureBGameObject.Equals(GameObject) && fixtureGameObject.Contains<BoxCollider>())
             {
-                fixtureGameObject.Components.ForEach(i => i.OnCollisionExit(GameObject));
+                foreach (AComponent component in  fixtureGameObject.Components.Values)
+                {
+                    component.OnCollisionExit(GameObject);
+                }
             }
         }
         
@@ -243,11 +249,17 @@ namespace Alis.Core.Ecs.Component.Collider
             
             if (fixtureGameObject.Equals(GameObject) && fixtureBGameObject.Contains<BoxCollider>())
             {
-                fixtureBGameObject.Components.ForEach(i => i.OnCollisionEnter(GameObject));
+                foreach (AComponent component in  fixtureBGameObject.Components.Values)
+                {
+                    component.OnCollisionEnter(GameObject);
+                }
             }
             else if (fixtureBGameObject.Equals(GameObject) && fixtureGameObject.Contains<BoxCollider>())
             {
-                fixtureGameObject.Components.ForEach(i => i.OnCollisionEnter(GameObject));
+                foreach (AComponent component in  fixtureGameObject.Components.Values)
+                {
+                    component.OnCollisionEnter(GameObject);
+                }
             }
         }
         

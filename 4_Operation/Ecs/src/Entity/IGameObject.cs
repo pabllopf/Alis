@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using Alis.Core.Ecs.Entity.Property;
 
@@ -40,6 +41,6 @@ namespace Alis.Core.Ecs.Entity
         /// <summary>
         ///     Gets or sets the value of the components
         /// </summary>
-        public List<T> Components { get; set; }
+        public Dictionary<Type, T> Components { get; set; }
     }
 }
