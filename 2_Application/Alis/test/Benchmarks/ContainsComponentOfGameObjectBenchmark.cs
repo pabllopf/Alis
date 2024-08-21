@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Alis.Core.Ecs.Component.Audio;
+using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Entity;
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Jobs;
@@ -10,7 +11,7 @@ namespace Alis.Test.Benchmarks
     /// The clear component of game object benchmark class
     /// </summary>
     [MinColumn, MaxColumn, MedianColumn, MemoryDiagnoser]
-    public class ClearComponentOfGameObjectBenchmark
+    public class ContainsComponentOfGameObjectBenchmark
     {
         /// <summary>
         /// The game object
@@ -40,9 +41,9 @@ namespace Alis.Test.Benchmarks
         /// Clears the component
         /// </summary>
         [Benchmark]
-        public void Clear_Component()
+        public void Contains_Component()
         {
-            gameObject.Clear();
+            _ = gameObject.Contains<Sprite>();
         }
     }
 }
