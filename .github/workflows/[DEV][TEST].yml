@@ -30,6 +30,12 @@ jobs:
 
       - name: Dotnet test Debug
         run: dotnet test alis.sln -c Debug
+
+      - uses: dorny/test-reporter@v1
+        with:
+          name: MacOs 12 x64 Test Report                  # Name of the check run which will be created
+          path: '.test/**/**/*.trx'                     # Path to test results (inside artifact .zip)
+          reporter: dotnet-trx              # Format of test results
   
   windows_2022_x64:
     if: "contains(github.event.head_commit.message, 'test:')"
@@ -65,6 +71,12 @@ jobs:
       - name: Dotnet test Debug
         shell: cmd
         run: dotnet test alis.sln -c Debug
+
+      - uses: dorny/test-reporter@v1
+        with:
+          name: MacOs 12 x64 Test Report                  # Name of the check run which will be created
+          path: '.test/**/**/*.trx'                     # Path to test results (inside artifact .zip)
+          reporter: dotnet-trx              # Format of test results
   
   ubuntu_22_04_x64:
     if: "contains(github.event.head_commit.message, 'test:')"
@@ -91,3 +103,9 @@ jobs:
 
       - name: Dotnet test Debug
         run: dotnet test alis.sln -c Debug
+
+      - uses: dorny/test-reporter@v1
+        with:
+          name: MacOs 12 x64 Test Report                  # Name of the check run which will be created
+          path: '.test/**/**/*.trx'                     # Path to test results (inside artifact .zip)
+          reporter: dotnet-trx              # Format of test results
