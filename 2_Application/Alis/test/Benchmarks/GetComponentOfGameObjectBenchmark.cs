@@ -10,6 +10,7 @@ namespace Alis.Test.Benchmarks
     /// The clear component of game object benchmark class
     /// </summary>
     [MinColumn, MaxColumn, MedianColumn, MemoryDiagnoser]
+    [MarkdownExporter, HtmlExporter, RPlotExporter]
     public class GetComponentOfGameObjectBenchmark
     {
         /// <summary>

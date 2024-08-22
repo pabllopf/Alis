@@ -27,15 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Linq;
-using Alis.Core.Ecs.Component.Audio;
-using Alis.Core.Ecs.Component.Render;
-using Alis.Core.Ecs.Entity;
-using Alis.Test.Helper;
 using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Reports;
 using BenchmarkDotNet.Running;
-using BenchmarkDotNet.Toolchains.Results;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -74,7 +70,8 @@ namespace Alis.Test.Benchmarks
         public void GameObject_BenchmarkTest_Clear()
         {
             Summary summary = BenchmarkRunner.Run<ClearComponentOfGameObjectBenchmark>(config);
-            PrintSummary(summary);
+            List<float> results = PrintSummary(summary);
+            Assert.True(results.All(r => r <= 1000));
         }
         
         /// <summary>
@@ -84,7 +81,8 @@ namespace Alis.Test.Benchmarks
         public void GameObject_BenchmarkTest_Get()
         {
             Summary summary = BenchmarkRunner.Run<GetComponentOfGameObjectBenchmark>(config);
-            PrintSummary(summary);
+            List<float> results = PrintSummary(summary);
+            Assert.True(results.All(r => r <= 1000));
         }
         
         /// <summary>
@@ -94,7 +92,8 @@ namespace Alis.Test.Benchmarks
         public void GameObject_BenchmarkTest_Add()
         {
             Summary summary = BenchmarkRunner.Run<AddComponentOfGameObjectBenchmark>(config);
-            PrintSummary(summary);
+            List<float> results = PrintSummary(summary);
+            Assert.True(results.All(r => r <= 1000));
         }
         
         /// <summary>
@@ -104,7 +103,8 @@ namespace Alis.Test.Benchmarks
         public void GameObject_BenchmarkTest_Remove()
         {
             Summary summary = BenchmarkRunner.Run<RemoveComponentOfGameObjectBenchmark>(config);
-            PrintSummary(summary);
+            List<float> results = PrintSummary(summary);
+            Assert.True(results.All(r => r <= 1000));
         }
         
         /// <summary>
@@ -114,21 +114,23 @@ namespace Alis.Test.Benchmarks
         public void GameObject_BenchmarkTest_Contains()
         {
             Summary summary = BenchmarkRunner.Run<ContainsComponentOfGameObjectBenchmark>(config);
-            PrintSummary(summary);
+            List<float> results = PrintSummary(summary);
+            Assert.True(results.All(r => r <= 1000));
         }
 
         /// <summary>
         /// Prints the summary using the specified summary
         /// </summary>
         /// <param name="summary">The summary</param>
-        internal void PrintSummary(Summary summary)
+        internal List<float> PrintSummary(Summary summary)
         {
-             int numOfChars = 14;
+            int numOfChars = 14;
+            List<float> results = new List<float>();
             
             string header = " | ";
             foreach (SummaryTable.SummaryTableColumn variable in summary.Table.Columns)
             {
-                if (variable.Header.Equals("Method") || variable.Header.Equals("N") || variable.Header.Equals("Mean") || variable.Header.Equals("Error") || variable.Header.Equals("StdDev") || variable.Header.Equals("Allocated"))
+                if (variable.Header.Equals("Method") || variable.Header.Equals("N") || variable.Header.Equals("Mean") || variable.Header.Equals("StdDev") || variable.Header.Equals("Allocated"))
                 {
                     header += variable.Header;
                     
@@ -159,7 +161,7 @@ namespace Alis.Test.Benchmarks
                     
                 foreach (SummaryTable.SummaryTableColumn column in summary.Table.Columns)
                 {
-                    if (column.Header.Equals("Method") || column.Header.Equals("N") || column.Header.Equals("Mean") || column.Header.Equals("Error") || column.Header.Equals("StdDev") || column.Header.Equals("Allocated"))
+                    if (column.Header.Equals("Method") || column.Header.Equals("N") || column.Header.Equals("Mean") || column.Header.Equals("Error") || column.Header.Equals("Allocated"))
                     {
                         row += column.Content[i];
                         
@@ -168,13 +170,20 @@ namespace Alis.Test.Benchmarks
                         for (int k = 0; k < rest; k++)
                         {
                             row += " ";
-                        }
+                        }   
                         
                         row += " | ";
+                        
+                        if (column.Header.Equals("Mean") || column.Header.Equals("Error"))
+                        {
+                            results.Add(float.Parse(column.Content[i].Replace("ns", "").Replace(".", ",")));
+                        }
                     }
                 }
                 testOutputHelper.WriteLine(row);
             }
+            
+            return results;
         }
     }
 }
