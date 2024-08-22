@@ -88,6 +88,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".docs", ".docs", "{18D887C5
 		licence.md = licence.md
 		readme.md = readme.md
 		docs\nuget\readme_nuget.md = docs\nuget\readme_nuget.md
+		docs\documentation\donate.md = docs\documentation\donate.md
+		docs\documentation\features.md = docs\documentation\features.md
+		docs\documentation\privacy_policy.md = docs\documentation\privacy_policy.md
+		docs\documentation\purpose.md = docs\documentation\purpose.md
+		docs\documentation\quick_start.md = docs\documentation\quick_start.md
+		docs\documentation\showcases.md = docs\documentation\showcases.md
+		docs\documentation\support.md = docs\documentation\support.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{6E102FFE-9727-458C-9361-4588C4157572}"
@@ -146,6 +153,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "windows", "windows", "{015E
 		docs\scripts\windows\restart_nuget.bat = docs\scripts\windows\restart_nuget.bat
 		docs\scripts\windows\install_env.bat = docs\scripts\windows\install_env.bat
 		docs\scripts\windows\generate_comments.bat = docs\scripts\windows\generate_comments.bat
+		docs\scripts\windows\create_dashboard.bat = docs\scripts\windows\create_dashboard.bat
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".sln", ".sln", "{2D95A184-CC32-4BFE-838E-4A2E1764DAF4}"
