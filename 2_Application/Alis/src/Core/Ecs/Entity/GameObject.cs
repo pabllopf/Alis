@@ -202,10 +202,10 @@ namespace Alis.Core.Ecs.Entity
             return Components.ContainsKey(typeof(T));
         }
         
+
         /// <summary>
-        ///     Clears this instance
+        /// Clears this instance
         /// </summary>
-        /// <typeparam name="T">The </typeparam>
         public void Clear() => Components.Clear();
         
         /// <summary>

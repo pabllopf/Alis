@@ -540,13 +540,13 @@ namespace Alis.Core.Aspect.Data.Json
         
         
         /// <summary>
-        ///     Creates the instance from dictionary using the specified type
+        /// Creates the instance from dictionary using the specified type
         /// </summary>
         /// <param name="type">The type</param>
         /// <param name="target">The target</param>
         /// <param name="elementsCount">The elements count</param>
         /// <param name="options">The options</param>
-        /// <param name="dictionary">The dictionary</param>
+        /// <param name="value">The value</param>
         /// <returns>The object</returns>
         internal static object CreateInstanceFromDictionary(Type type, object target, int elementsCount, JsonOptions options, object value)
         {
@@ -1854,7 +1854,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>The json exception</returns>
         internal static JsonException GetEofException(char c) => new JsonException("JSO0012: JSON deserialization error detected at end of text. Expecting '" + c + "' character.");
         
-        //// <summary>
+        /// <summary>
         /// Gets the position using the specified reader
         /// </summary>
         /// <param name="reader">The reader</param>
@@ -1870,7 +1870,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
         
         /// <summary>
-        ///     Gets the position based on reader type using the specified reader
+        /// Gets the position based on reader type using the specified reader
         /// </summary>
         /// <param name="reader">The reader</param>
         /// <returns>The long</returns>
@@ -2576,13 +2576,12 @@ namespace Alis.Core.Aspect.Data.Json
         ///     Describes whether is text date time
         /// </summary>
         /// <param name="text">The text</param>
-        /// <param name="ticks">The ticks</param>
+        /// <param>The ticks</param>
+        /// <param name="ticks"></param>
         /// <returns>The bool</returns>
         /// <summary>
         ///     Determines whether the provided text represents a DateTime.
         /// </summary>
-        /// <param name="text">The text to check.</param>
-        /// <param name="ticks">The parsed ticks from the DateTime if it is valid.</param>
         /// <returns>True if the text represents a DateTime, otherwise false.</returns>
         internal static bool IsTextDateTime(string text, out long ticks)
         {
@@ -4958,7 +4957,7 @@ namespace Alis.Core.Aspect.Data.Json
             writer.Indent--;
         }
         
-        //// <summary>
+        /// <summary>
         /// Writes the dictionary using the specified writer
         /// </summary>
         /// <param name="writer">The writer</param>

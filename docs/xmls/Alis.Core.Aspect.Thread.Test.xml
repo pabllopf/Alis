@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Core.Aspect.Thread.Test</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Core.Aspect.Thread.Test.ThreadManagerTest">
+            <summary>
+                The thread manager test class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Thread.Test.ThreadManagerTest.StartThread_ShouldStartNewThread">
+            <summary>
+                Tests that start thread should start new thread
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Thread.Test.ThreadManagerTest.StopAllThreads_ShouldStopAllThreads">
+            <summary>
+                Tests that stop all threads should stop all threads
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Thread.Test.ThreadManagerTest.GetThreadCount_ShouldReturnCorrectCount">
+            <summary>
+                Tests that get thread count should return correct count
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Thread.Test.ThreadManagerTest.StartThread_v2_ShouldStartNewThread">
+            <summary>
+                Tests that start thread v 2 should start new thread
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Thread.Test.ThreadManagerTest.StopThread_ShouldStopSpecificThread">
+            <summary>
+                Tests that stop thread should stop specific thread
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Thread.Test.ThreadManagerTest.StopAllThreads_v2_ShouldStopAllThreads">
+            <summary>
+                Tests that stop all threads v 2 should stop all threads
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Thread.Test.ThreadManagerTest.GetThreadCount_ShouldReturnCorrectThreadCount">
+            <summary>
+                Tests that get thread count should return correct thread count
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Aspect.Thread.Test.ThreadTaskTest">
+            <summary>
+                The thread task test class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Thread.Test.ThreadTaskTest.Execute_ShouldExecuteAction">
+            <summary>
+                Tests that execute should execute action
+            </summary>
+        </member>
+    </members>
+</doc>

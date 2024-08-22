@@ -34,7 +34,7 @@ namespace Alis.Extension.Payment.Stripe
     /// <summary>
     ///     The store manager class
     /// </summary>
-    /// <seealso cref="IStoreManager" />
+    /// <seealso />
     public class StoreManager : AManager
     {
     }

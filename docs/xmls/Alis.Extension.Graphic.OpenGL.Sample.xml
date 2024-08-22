@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Extension.Graphic.OpenGL.Sample</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Extension.Graphic.OpenGL.Sample.CubeSample">
+            <summary>
+                The cube sample class
+            </summary>
+        </member>
+        <member name="F:Alis.Extension.Graphic.OpenGL.Sample.CubeSample.context">
+            <summary>
+                The context
+            </summary>
+        </member>
+        <member name="F:Alis.Extension.Graphic.OpenGL.Sample.CubeSample.ebo">
+            <summary>
+                The ebo
+            </summary>
+        </member>
+        <member name="F:Alis.Extension.Graphic.OpenGL.Sample.CubeSample.running">
+            <summary>
+                The running
+            </summary>
+        </member>
+        <member name="F:Alis.Extension.Graphic.OpenGL.Sample.CubeSample.shaderProgram">
+            <summary>
+                The shader program
+            </summary>
+        </member>
+        <member name="F:Alis.Extension.Graphic.OpenGL.Sample.CubeSample.vao">
+            <summary>
+                The vao
+            </summary>
+        </member>
+        <member name="F:Alis.Extension.Graphic.OpenGL.Sample.CubeSample.vbo">
+            <summary>
+                The vbo
+            </summary>
+        </member>
+        <member name="F:Alis.Extension.Graphic.OpenGL.Sample.CubeSample.window">
+            <summary>
+                The window
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Graphic.OpenGL.Sample.CubeSample.Draw">
+            <summary>
+                Draws this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Graphic.OpenGL.Sample.CubeSample.Run">
+            <summary>
+                Runs this instance
+            </summary>
+        </member>
+        <member name="T:Alis.Extension.Graphic.OpenGL.Sample.Program">
+            <summary>
+                The program class
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Graphic.OpenGL.Sample.Program.Main">
+            <summary>
+                Main
+            </summary>
+        </member>
+        <member name="T:Alis.Extension.Graphic.OpenGL.Sample.TriangleSample">
+            <summary>
+                The triangle sample class
+            </summary>
+        </member>
+        <member name="F:Alis.Extension.Graphic.OpenGL.Sample.TriangleSample.context">
+            <summary>
+                The context
+            </summary>
+        </member>
+        <member name="F:Alis.Extension.Graphic.OpenGL.Sample.TriangleSample.running">
+            <summary>
+                The running
+            </summary>
+        </member>
+        <member name="F:Alis.Extension.Graphic.OpenGL.Sample.TriangleSample.shaderProgram">
+            <summary>
+                The shader program
+            </summary>
+        </member>
+        <member name="F:Alis.Extension.Graphic.OpenGL.Sample.TriangleSample.vao">
+            <summary>
+                The vao
+            </summary>
+        </member>
+        <member name="F:Alis.Extension.Graphic.OpenGL.Sample.TriangleSample.vbo">
+            <summary>
+                The vbo
+            </summary>
+        </member>
+        <member name="F:Alis.Extension.Graphic.OpenGL.Sample.TriangleSample.window">
+            <summary>
+                The window
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Graphic.OpenGL.Sample.TriangleSample.Draw">
+            <summary>
+                Draws this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Graphic.OpenGL.Sample.TriangleSample.Run">
+            <summary>
+                Runs this instance
+            </summary>
+        </member>
+    </members>
+</doc>

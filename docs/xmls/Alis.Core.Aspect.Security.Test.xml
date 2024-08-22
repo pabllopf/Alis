@@ -1,0 +1,748 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Core.Aspect.Security.Test</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Core.Aspect.Security.Test.SecureByteTests">
+            <summary>
+                The secure byte tests class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureByteTests.Test_SecureByte_Constructor">
+            <summary>
+                Tests that test secure byte constructor
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureByteTests.Test_SecureByte_ImplicitConversion">
+            <summary>
+                Tests that test secure byte implicit conversion
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureByteTests.Test_SecureByte_EqualityOperator">
+            <summary>
+                Tests that test secure byte equality operator
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureByteTests.Test_SecureByte_InequalityOperator">
+            <summary>
+                Tests that test secure byte inequality operator
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureByteTests.Test_SecureByte_AdditionOperator">
+            <summary>
+                Tests that test secure byte addition operator
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureByteTests.Test_SecureByte_SubtractionOperator">
+            <summary>
+                Tests that test secure byte subtraction operator
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureByteTests.Test_SecureByte_MultiplicationOperator">
+            <summary>
+                Tests that test secure byte multiplication operator
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureByteTests.Test_SecureByte_DivisionOperator">
+            <summary>
+                Tests that test secure byte division operator
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureByteTests.Test_SecureByte_EqualsMethod">
+            <summary>
+                Tests that test secure byte equals method
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureByteTests.Test_SecureByte_GetHashCodeMethod">
+            <summary>
+                Tests that test secure byte get hash code method
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureByteTests.Test_SecureByte_ToStringMethod">
+            <summary>
+                Tests that test secure byte to string method
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureByteTests.TestValueSetGet">
+            <summary>
+                Tests that test value set get
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureByteTests.TestEquality">
+            <summary>
+                Tests that test equality
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureByteTests.TestInequality">
+            <summary>
+                Tests that test inequality
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureByteTests.TestIncrement">
+            <summary>
+                Tests that test increment
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureByteTests.TestDecrement">
+            <summary>
+                Tests that test decrement
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureByteTests.TestAddition">
+            <summary>
+                Tests that test addition
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureByteTests.TestSubtraction">
+            <summary>
+                Tests that test subtraction
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureByteTests.TestMultiplication">
+            <summary>
+                Tests that test multiplication
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureByteTests.TestDivision">
+            <summary>
+                Tests that test division
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Aspect.Security.Test.SecureCharTests">
+            <summary>
+                The secure char tests class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureCharTests.Test_SecureChar_Constructor">
+            <summary>
+                Tests that test secure char constructor
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureCharTests.Test_SecureChar_ImplicitConversion">
+            <summary>
+                Tests that test secure char implicit conversion
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureCharTests.Test_SecureChar_EqualityOperator">
+            <summary>
+                Tests that test secure char equality operator
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureCharTests.Test_SecureChar_InequalityOperator">
+            <summary>
+                Tests that test secure char inequality operator
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureCharTests.Test_SecureChar_AdditionOperator">
+            <summary>
+                Tests that test secure char addition operator
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureCharTests.Test_SecureChar_SubtractionOperator">
+            <summary>
+                Tests that test secure char subtraction operator
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureCharTests.Test_SecureChar_EqualsMethod">
+            <summary>
+                Tests that test secure char equals method
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureCharTests.Test_SecureChar_GetHashCodeMethod">
+            <summary>
+                Tests that test secure char get hash code method
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureCharTests.Test_SecureChar_ToStringMethod">
+            <summary>
+                Tests that test secure char to string method
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureCharTests.TestValueSetGet">
+            <summary>
+                Tests that test value set get
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureCharTests.TestEquality">
+            <summary>
+                Tests that test equality
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureCharTests.TestInequality">
+            <summary>
+                Tests that test inequality
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureCharTests.TestAddition">
+            <summary>
+                Tests that test addition
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureCharTests.TestSubtraction">
+            <summary>
+                Tests that test subtraction
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureCharTests.TestMultiplication">
+            <summary>
+                Tests that test multiplication
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureCharTests.TestDivision">
+            <summary>
+                Tests that test division
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Aspect.Security.Test.SecureDecimalTests">
+            <summary>
+                The secure decimal tests class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureDecimalTests.Test_SecureDecimal_Constructor">
+            <summary>
+                Tests that test secure decimal constructor
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureDecimalTests.Test_SecureDecimal_ImplicitConversion">
+            <summary>
+                Tests that test secure decimal implicit conversion
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureDecimalTests.Test_SecureDecimal_EqualityOperator">
+            <summary>
+                Tests that test secure decimal equality operator
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureDecimalTests.Test_SecureDecimal_InequalityOperator">
+            <summary>
+                Tests that test secure decimal inequality operator
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureDecimalTests.Test_SecureDecimal_AdditionOperator">
+            <summary>
+                Tests that test secure decimal addition operator
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureDecimalTests.Test_SecureDecimal_SubtractionOperator">
+            <summary>
+                Tests that test secure decimal subtraction operator
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureDecimalTests.Test_SecureDecimal_MultiplicationOperator">
+            <summary>
+                Tests that test secure decimal multiplication operator
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureDecimalTests.Test_SecureDecimal_DivisionOperator">
+            <summary>
+                Tests that test secure decimal division operator
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureDecimalTests.Test_SecureDecimal_EqualsMethod">
+            <summary>
+                Tests that test secure decimal equals method
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureDecimalTests.Test_SecureDecimal_GetHashCodeMethod">
+            <summary>
+                Tests that test secure decimal get hash code method
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureDecimalTests.Test_SecureDecimal_ToStringMethod">
+            <summary>
+                Tests that test secure decimal to string method
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureDecimalTests.TestValueSetGet">
+            <summary>
+                Tests that test value set get
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureDecimalTests.TestEquality">
+            <summary>
+                Tests that test equality
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureDecimalTests.TestInequality">
+            <summary>
+                Tests that test inequality
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureDecimalTests.TestIncrement">
+            <summary>
+                Tests that test increment
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureDecimalTests.TestDecrement">
+            <summary>
+                Tests that test decrement
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureDecimalTests.TestAddition">
+            <summary>
+                Tests that test addition
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureDecimalTests.TestSubtraction">
+            <summary>
+                Tests that test subtraction
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureDecimalTests.TestMultiplication">
+            <summary>
+                Tests that test multiplication
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureDecimalTests.TestDivision">
+            <summary>
+                Tests that test division
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Aspect.Security.Test.SecureDoubleTests">
+            <summary>
+                The secure double tests class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureDoubleTests.Test_SecureDouble_Constructor">
+            <summary>
+                Tests that test secure double constructor
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureDoubleTests.Test_SecureDouble_ImplicitConversion">
+            <summary>
+                Tests that test secure double implicit conversion
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureDoubleTests.Test_SecureDouble_EqualityOperator">
+            <summary>
+                Tests that test secure double equality operator
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureDoubleTests.Test_SecureDouble_InequalityOperator">
+            <summary>
+                Tests that test secure double inequality operator
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureDoubleTests.Test_SecureDouble_AdditionOperator">
+            <summary>
+                Tests that test secure double addition operator
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureDoubleTests.Test_SecureDouble_SubtractionOperator">
+            <summary>
+                Tests that test secure double subtraction operator
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureDoubleTests.Test_SecureDouble_MultiplicationOperator">
+            <summary>
+                Tests that test secure double multiplication operator
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureDoubleTests.Test_SecureDouble_DivisionOperator">
+            <summary>
+                Tests that test secure double division operator
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureDoubleTests.Test_SecureDouble_EqualsMethod">
+            <summary>
+                Tests that test secure double equals method
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureDoubleTests.Test_SecureDouble_GetHashCodeMethod">
+            <summary>
+                Tests that test secure double get hash code method
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureDoubleTests.Test_SecureDouble_ToStringMethod">
+            <summary>
+                Tests that test secure double to string method
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureDoubleTests.TestValueSetGet">
+            <summary>
+                Tests that test value set get
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureDoubleTests.TestEquality">
+            <summary>
+                Tests that test equality
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureDoubleTests.TestInequality">
+            <summary>
+                Tests that test inequality
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureDoubleTests.TestIncrement">
+            <summary>
+                Tests that test increment
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureDoubleTests.TestDecrement">
+            <summary>
+                Tests that test decrement
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureDoubleTests.TestAddition">
+            <summary>
+                Tests that test addition
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureDoubleTests.TestSubtraction">
+            <summary>
+                Tests that test subtraction
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureDoubleTests.TestMultiplication">
+            <summary>
+                Tests that test multiplication
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureDoubleTests.TestDivision">
+            <summary>
+                Tests that test division
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Aspect.Security.Test.SecureFloatTests">
+            <summary>
+                The secure float tests class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureFloatTests.Test_SecureFloat_Constructor">
+            <summary>
+                Tests that test secure float constructor
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureFloatTests.Test_SecureFloat_ImplicitConversion">
+            <summary>
+                Tests that test secure float implicit conversion
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureFloatTests.Test_SecureFloat_EqualityOperator">
+            <summary>
+                Tests that test secure float equality operator
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureFloatTests.Test_SecureFloat_InequalityOperator">
+            <summary>
+                Tests that test secure float inequality operator
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureFloatTests.Test_SecureFloat_AdditionOperator">
+            <summary>
+                Tests that test secure float addition operator
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureFloatTests.Test_SecureFloat_SubtractionOperator">
+            <summary>
+                Tests that test secure float subtraction operator
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureFloatTests.Test_SecureFloat_MultiplicationOperator">
+            <summary>
+                Tests that test secure float multiplication operator
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureFloatTests.Test_SecureFloat_DivisionOperator">
+            <summary>
+                Tests that test secure float division operator
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureFloatTests.Test_SecureFloat_EqualsMethod">
+            <summary>
+                Tests that test secure float equals method
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureFloatTests.Test_SecureFloat_GetHashCodeMethod">
+            <summary>
+                Tests that test secure float get hash code method
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureFloatTests.Test_SecureFloat_ToStringMethod">
+            <summary>
+                Tests that test secure float to string method
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureFloatTests.TestValueSetGet">
+            <summary>
+                Tests that test value set get
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureFloatTests.TestEquality">
+            <summary>
+                Tests that test equality
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureFloatTests.TestInequality">
+            <summary>
+                Tests that test inequality
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureFloatTests.TestIncrement">
+            <summary>
+                Tests that test increment
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureFloatTests.TestDecrement">
+            <summary>
+                Tests that test decrement
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureFloatTests.TestAddition">
+            <summary>
+                Tests that test addition
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureFloatTests.TestSubtraction">
+            <summary>
+                Tests that test subtraction
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureFloatTests.TestMultiplication">
+            <summary>
+                Tests that test multiplication
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureFloatTests.TestDivision">
+            <summary>
+                Tests that test division
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Aspect.Security.Test.SecureIntTests">
+            <summary>
+                The secure int tests class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureIntTests.Test_SecureInt_Constructor">
+            <summary>
+                Tests that test secure int constructor
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureIntTests.Test_SecureInt_ImplicitConversion">
+            <summary>
+                Tests that test secure int implicit conversion
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureIntTests.Test_SecureInt_EqualityOperator">
+            <summary>
+                Tests that test secure int equality operator
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureIntTests.Test_SecureInt_InequalityOperator">
+            <summary>
+                Tests that test secure int inequality operator
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureIntTests.Test_SecureInt_AdditionOperator">
+            <summary>
+                Tests that test secure int addition operator
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureIntTests.Test_SecureInt_SubtractionOperator">
+            <summary>
+                Tests that test secure int subtraction operator
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureIntTests.Test_SecureInt_MultiplicationOperator">
+            <summary>
+                Tests that test secure int multiplication operator
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureIntTests.Test_SecureInt_DivisionOperator">
+            <summary>
+                Tests that test secure int division operator
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureIntTests.Test_SecureInt_EqualsMethod">
+            <summary>
+                Tests that test secure int equals method
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureIntTests.Test_SecureInt_GetHashCodeMethod">
+            <summary>
+                Tests that test secure int get hash code method
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureIntTests.Test_SecureInt_ToStringMethod">
+            <summary>
+                Tests that test secure int to string method
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureIntTests.TestValueSetGet">
+            <summary>
+                Tests that test value set get
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureIntTests.TestEquality">
+            <summary>
+                Tests that test equality
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureIntTests.TestInequality">
+            <summary>
+                Tests that test inequality
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureIntTests.TestIncrement">
+            <summary>
+                Tests that test increment
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureIntTests.TestDecrement">
+            <summary>
+                Tests that test decrement
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureIntTests.TestAddition">
+            <summary>
+                Tests that test addition
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureIntTests.TestSubtraction">
+            <summary>
+                Tests that test subtraction
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureIntTests.TestMultiplication">
+            <summary>
+                Tests that test multiplication
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureIntTests.TestDivision">
+            <summary>
+                Tests that test division
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Aspect.Security.Test.SecureLongTests">
+            <summary>
+                The secure long tests class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureLongTests.Test_SecureLong_Constructor">
+            <summary>
+                Tests that test secure long constructor
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureLongTests.Test_SecureLong_ImplicitConversion">
+            <summary>
+                Tests that test secure long implicit conversion
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureLongTests.Test_SecureLong_EqualityOperator">
+            <summary>
+                Tests that test secure long equality operator
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureLongTests.Test_SecureLong_InequalityOperator">
+            <summary>
+                Tests that test secure long inequality operator
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureLongTests.Test_SecureLong_AdditionOperator">
+            <summary>
+                Tests that test secure long addition operator
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureLongTests.Test_SecureLong_SubtractionOperator">
+            <summary>
+                Tests that test secure long subtraction operator
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureLongTests.Test_SecureLong_MultiplicationOperator">
+            <summary>
+                Tests that test secure long multiplication operator
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureLongTests.Test_SecureLong_DivisionOperator">
+            <summary>
+                Tests that test secure long division operator
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureLongTests.Test_SecureLong_EqualsMethod">
+            <summary>
+                Tests that test secure long equals method
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureLongTests.Test_SecureLong_GetHashCodeMethod">
+            <summary>
+                Tests that test secure long get hash code method
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureLongTests.Test_SecureLong_ToStringMethod">
+            <summary>
+                Tests that test secure long to string method
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureLongTests.TestValueSetGet">
+            <summary>
+                Tests that test value set get
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureLongTests.TestEquality">
+            <summary>
+                Tests that test equality
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureLongTests.TestInequality">
+            <summary>
+                Tests that test inequality
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureLongTests.TestIncrement">
+            <summary>
+                Tests that test increment
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureLongTests.TestDecrement">
+            <summary>
+                Tests that test decrement
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureLongTests.TestAddition">
+            <summary>
+                Tests that test addition
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureLongTests.TestSubtraction">
+            <summary>
+                Tests that test subtraction
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureLongTests.TestMultiplication">
+            <summary>
+                Tests that test multiplication
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureLongTests.TestDivision">
+            <summary>
+                Tests that test division
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Aspect.Security.Test.SecureRandomTests">
+            <summary>
+                The secure random tests class
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Aspect.Security.Test.SecureStringTests">
+            <summary>
+                The secure string tests class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureStringTests.TestSetValueGetValue">
+            <summary>
+                Tests that test set value get value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureStringTests.TestEncryptionDecryption">
+            <summary>
+                Tests that test encryption decryption
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.Test.SecureStringTests.TestDifferentInstances">
+            <summary>
+                Tests that test different instances
+            </summary>
+        </member>
+    </members>
+</doc>

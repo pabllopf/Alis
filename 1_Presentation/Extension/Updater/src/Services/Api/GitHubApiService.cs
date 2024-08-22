@@ -61,9 +61,8 @@ namespace Alis.Extension.Updater.Services.Api
         }
         
         /// <summary>
-        ///     Gets the latest release using the specified api url
+        /// Gets the latest release
         /// </summary>
-        /// <param name="apiUrl">The api url</param>
         /// <returns>A task containing a dictionary of string and object</returns>
         public async Task<Dictionary<string, object>> GetLatestReleaseAsync()
         {

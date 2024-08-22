@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.App.Installer.Test</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.App.Installer.Test.DefaultTest">
+            <summary>
+                The default test class
+            </summary>
+        </member>
+        <member name="M:Alis.App.Installer.Test.DefaultTest.Test">
+            <summary>
+                Tests that test
+            </summary>
+        </member>
+    </members>
+</doc>

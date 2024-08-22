@@ -43,7 +43,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         private readonly List<(TItem item, TPriority priority)> _items;
         
         /// <summary>
-        ///     Initializes a new instance of the <see cref="FixedSizePriorityQueue" /> class
+        /// Initializes a new instance
         /// </summary>
         /// <param name="maxSize">The max size</param>
         public FixedSizePriorityQueue(int maxSize)

@@ -65,7 +65,6 @@ namespace Alis.Core.Ecs.Entity.Property
         /// <summary>
         ///     Cleans this instance
         /// </summary>
-        /// <typeparam name="T">The </typeparam>
         public void Clear();
     }
 }

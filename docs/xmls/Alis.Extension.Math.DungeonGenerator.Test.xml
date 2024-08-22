@@ -1,0 +1,218 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Extension.Math.DungeonGenerator.Test</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Extension.Math.DungeonGenerator.Test.BoardSquareTest">
+            <summary>
+                The board square test class
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Test.BoardSquareTest.SetUpFirstRoom_ShouldInitializeRoomWithGivenParameters">
+            <summary>
+                Tests that set up first room should initialize room with given parameters
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Test.BoardSquareTest.SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsNorth">
+            <summary>
+                Tests that set up should initialize room with correct parameters when direction is north
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Test.BoardSquareTest.SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsSouth">
+            <summary>
+                Tests that set up should initialize room with correct parameters when direction is south
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Test.BoardSquareTest.SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsEast">
+            <summary>
+                Tests that set up should initialize room with correct parameters when direction is east
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Test.BoardSquareTest.SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsWest">
+            <summary>
+                Tests that set up should initialize room with correct parameters when direction is west
+            </summary>
+        </member>
+        <member name="T:Alis.Extension.Math.DungeonGenerator.Test.CorridorTest">
+            <summary>
+                The corridor test class
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Test.CorridorTest.SetUpFirstRoom_ShouldInitializeRoomWithGivenParameters">
+            <summary>
+                Tests that set up first room should initialize room with given parameters
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Test.CorridorTest.SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsNorth">
+            <summary>
+                Tests that set up should initialize room with correct parameters when direction is north
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Test.CorridorTest.SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsSouth">
+            <summary>
+                Tests that set up should initialize room with correct parameters when direction is south
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Test.CorridorTest.SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsEast">
+            <summary>
+                Tests that set up should initialize room with correct parameters when direction is east
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Test.CorridorTest.SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsWest">
+            <summary>
+                Tests that set up should initialize room with correct parameters when direction is west
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Test.CorridorTest.SetUpFirstRoom_ShouldInitializeRoomWithGivenParameters_v2">
+            <summary>
+                Tests that set up first room should initialize room with given parameters v 2
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Test.CorridorTest.SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsNorth_v2">
+            <summary>
+                Tests that set up should initialize room with correct parameters when direction is north v 2
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Test.CorridorTest.SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsSouth_v2">
+            <summary>
+                Tests that set up should initialize room with correct parameters when direction is south v 2
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Test.CorridorTest.SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsEast_v2">
+            <summary>
+                Tests that set up should initialize room with correct parameters when direction is east v 2
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Test.CorridorTest.SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsWest_v2">
+            <summary>
+                Tests that set up should initialize room with correct parameters when direction is west v 2
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Test.CorridorTest.SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsNone">
+            <summary>
+                Tests that set up should initialize room with correct parameters when direction is none
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Test.CorridorTest.SetUpFirstCorridor_ShouldInitializeCorridorWithCorrectParameters_WhenDirectionIsNorth">
+            <summary>
+                Tests that set up first corridor should initialize corridor with correct parameters when direction is north
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Test.CorridorTest.SetUpFirstCorridor_ShouldInitializeCorridorWithCorrectParameters_WhenDirectionIsSouth">
+            <summary>
+                Tests that set up first corridor should initialize corridor with correct parameters when direction is south
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Test.CorridorTest.SetUpFirstCorridor_ShouldInitializeCorridorWithCorrectParameters_WhenDirectionIsEast">
+            <summary>
+                Tests that set up first corridor should initialize corridor with correct parameters when direction is east
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Test.CorridorTest.SetUpFirstCorridor_ShouldInitializeCorridorWithCorrectParameters_WhenDirectionIsWest">
+            <summary>
+                Tests that set up first corridor should initialize corridor with correct parameters when direction is west
+            </summary>
+        </member>
+        <member name="T:Alis.Extension.Math.DungeonGenerator.Test.DungeonTest">
+            <summary>
+                The dungeon test class
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Test.DungeonTest.SetUpFirstRoom_ShouldInitializeRoomWithGivenParameters">
+            <summary>
+                Tests that set up first room should initialize room with given parameters
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Test.DungeonTest.SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsNorth">
+            <summary>
+                Tests that set up should initialize room with correct parameters when direction is north
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Test.DungeonTest.SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsSouth">
+            <summary>
+                Tests that set up should initialize room with correct parameters when direction is south
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Test.DungeonTest.SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsEast">
+            <summary>
+                Tests that set up should initialize room with correct parameters when direction is east
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Test.DungeonTest.SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsWest">
+            <summary>
+                Tests that set up should initialize room with correct parameters when direction is west
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Test.DungeonTest.Start_ShouldInitializeRoomsAndCorridors">
+            <summary>
+                Tests that start should initialize rooms and corridors
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Test.DungeonTest.SetUpRoomsAndCorridors_ShouldSetUpRoomsAndCorridorsCorrectly">
+            <summary>
+                Tests that set up rooms and corridors should set up rooms and corridors correctly
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Test.DungeonTest.ConfigRoomsAndCorridors_ShouldConfigureBoardCorrectly">
+            <summary>
+                Tests that config rooms and corridors should configure board correctly
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Test.DungeonTest.Board_ShouldBeInitializedWithCorrectDimensions">
+            <summary>
+                Tests that board should be initialized with correct dimensions
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Test.DungeonTest.Rooms_ShouldBeInitializedAsEmptyList">
+            <summary>
+                Tests that rooms should be initialized as empty list
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Test.DungeonTest.Corridors_ShouldBeInitializedAsEmptyList">
+            <summary>
+                Tests that corridors should be initialized as empty list
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Test.DungeonTest.CreateBoard_ShouldCreateBoardWithCorrectWallsAndCorners">
+            <summary>
+                Tests that create board should create board with correct walls and corners
+            </summary>
+        </member>
+        <member name="T:Alis.Extension.Math.DungeonGenerator.Test.RoomTest">
+            <summary>
+                The room test class
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Test.RoomTest.SetUpFirstRoom_ShouldInitializeRoomWithGivenParameters">
+            <summary>
+                Tests that set up first room should initialize room with given parameters
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Test.RoomTest.SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsNorth">
+            <summary>
+                Tests that set up should initialize room with correct parameters when direction is north
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Test.RoomTest.SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsSouth">
+            <summary>
+                Tests that set up should initialize room with correct parameters when direction is south
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Test.RoomTest.SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsEast">
+            <summary>
+                Tests that set up should initialize room with correct parameters when direction is east
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Test.RoomTest.SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsWest">
+            <summary>
+                Tests that set up should initialize room with correct parameters when direction is west
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Test.RoomTest.SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsNone">
+            <summary>
+                Tests that set up should initialize room with correct parameters when direction is west
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Core.Aspect.Data.Sample</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Core.Aspect.Data.Sample.Music">
+            <summary>
+                The music class
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Data.Sample.Music.Name">
+            <summary>
+                Gets or sets the value of the name
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Data.Sample.Music.Artist">
+            <summary>
+                Gets or sets the value of the artist
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Data.Sample.Music.Genre">
+            <summary>
+                Gets or sets the value of the genre
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Data.Sample.Music.Album">
+            <summary>
+                Gets or sets the value of the album
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Data.Sample.Music.AlbumImage">
+            <summary>
+                Gets or sets the value of the album image
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Data.Sample.Music.Link">
+            <summary>
+                Gets or sets the value of the link
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Data.Sample.Music.Other">
+            <summary>
+                Gets or sets the value of the other
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Aspect.Data.Sample.Program">
+            <summary>
+                The program class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Data.Sample.Program.Main(System.String[])">
+            <summary>
+                Main the args
+            </summary>
+            <param name="args">The args</param>
+        </member>
+    </members>
+</doc>

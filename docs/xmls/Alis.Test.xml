@@ -1,0 +1,3056 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Test</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Test.Benchmarks.AddComponentOfGameObjectBenchmark">
+            <summary>
+            The clear component of game object benchmark class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Benchmarks.AddComponentOfGameObjectBenchmark.gameObject">
+            <summary>
+            The game object
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Benchmarks.AddComponentOfGameObjectBenchmark.N">
+            <summary>
+            The 
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Benchmarks.AddComponentOfGameObjectBenchmark.Setup">
+            <summary>
+            Setup this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Benchmarks.AddComponentOfGameObjectBenchmark.Add_Component">
+            <summary>
+            Clears the component
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Benchmarks.ClearComponentOfGameObjectBenchmark">
+            <summary>
+            The clear component of game object benchmark class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Benchmarks.ClearComponentOfGameObjectBenchmark.gameObject">
+            <summary>
+            The game object
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Benchmarks.ClearComponentOfGameObjectBenchmark.N">
+            <summary>
+            The 
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Benchmarks.ClearComponentOfGameObjectBenchmark.Setup">
+            <summary>
+            Setup this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Benchmarks.ClearComponentOfGameObjectBenchmark.Clear_Component">
+            <summary>
+            Clears the component
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Benchmarks.ContainsComponentOfGameObjectBenchmark">
+            <summary>
+            The clear component of game object benchmark class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Benchmarks.ContainsComponentOfGameObjectBenchmark.gameObject">
+            <summary>
+            The game object
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Benchmarks.ContainsComponentOfGameObjectBenchmark.N">
+            <summary>
+            The 
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Benchmarks.ContainsComponentOfGameObjectBenchmark.Setup">
+            <summary>
+            Setup this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Benchmarks.ContainsComponentOfGameObjectBenchmark.Contains_Component">
+            <summary>
+            Clears the component
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Benchmarks.GameObjectTest">
+            <summary>
+            The game object benchmark test class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Benchmarks.GameObjectTest.testOutputHelper">
+            <summary>
+            The test output helper
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Benchmarks.GameObjectTest.config">
+            <summary>
+            The default
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Benchmarks.GameObjectTest.#ctor(Xunit.Abstractions.ITestOutputHelper)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Benchmarks.GameObjectTest"/> class
+            </summary>
+            <param name="testOutputHelper">The test output helper</param>
+        </member>
+        <member name="M:Alis.Test.Benchmarks.GameObjectTest.GameObject_BenchmarkTest_Clear">
+            <summary>
+            Tests that game object benchmark test clear v 2
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Benchmarks.GameObjectTest.GameObject_BenchmarkTest_Get">
+            <summary>
+            Tests that game object benchmark test get
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Benchmarks.GameObjectTest.GameObject_BenchmarkTest_Add">
+            <summary>
+            Tests that game object benchmark test add
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Benchmarks.GameObjectTest.GameObject_BenchmarkTest_Remove">
+            <summary>
+            Tests that game object benchmark test remove
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Benchmarks.GameObjectTest.GameObject_BenchmarkTest_Contains">
+            <summary>
+            Tests that game object benchmark test contains
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Benchmarks.GameObjectTest.PrintSummary(BenchmarkDotNet.Reports.Summary)">
+            <summary>
+            Prints the summary using the specified summary
+            </summary>
+            <param name="summary">The summary</param>
+        </member>
+        <member name="T:Alis.Test.Benchmarks.GetComponentOfGameObjectBenchmark">
+            <summary>
+            The clear component of game object benchmark class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Benchmarks.GetComponentOfGameObjectBenchmark.gameObject">
+            <summary>
+            The game object
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Benchmarks.GetComponentOfGameObjectBenchmark.N">
+            <summary>
+            The 
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Benchmarks.GetComponentOfGameObjectBenchmark.Setup">
+            <summary>
+            Setup this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Benchmarks.GetComponentOfGameObjectBenchmark.Get_Component">
+            <summary>
+            Clears the component
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Benchmarks.RemoveComponentOfGameObjectBenchmark">
+            <summary>
+            The clear component of game object benchmark class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Benchmarks.RemoveComponentOfGameObjectBenchmark.gameObject">
+            <summary>
+            The game object
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Benchmarks.RemoveComponentOfGameObjectBenchmark.N">
+            <summary>
+            The 
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Benchmarks.RemoveComponentOfGameObjectBenchmark.Setup">
+            <summary>
+            Setup this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Benchmarks.RemoveComponentOfGameObjectBenchmark.Remove_Component">
+            <summary>
+            Clears the component
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Ecs.Component.Audio.AudioClipBuilderTest">
+            <summary>
+                The audio clip builder test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Audio.AudioClipBuilderTest.AudioClipBuilder_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that audio clip builder default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Audio.AudioClipBuilderTest.Build_ValidInput">
+            <summary>
+                Tests that build valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Audio.AudioClipBuilderTest.FilePath_ValidInput">
+            <summary>
+                Tests that file path valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Audio.AudioClipBuilderTest.Mute_ValidInput">
+            <summary>
+                Tests that mute valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Audio.AudioClipBuilderTest.Volume_ValidInput">
+            <summary>
+                Tests that volume valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Ecs.Component.Audio.AudioRecorderBuilderTest">
+            <summary>
+                The audio recorder builder test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Audio.AudioRecorderBuilderTest.AudioRecorderBuilder_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that audio recorder builder default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Audio.AudioRecorderBuilderTest.Build_ValidInput">
+            <summary>
+                Tests that build valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Ecs.Component.Audio.AudioSourceBuilderTest">
+            <summary>
+                The audio source builder test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Audio.AudioSourceBuilderTest.AudioSourceBuilder_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that audio source builder default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Audio.AudioSourceBuilderTest.Build_ValidInput">
+            <summary>
+                Tests that build valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Audio.AudioSourceBuilderTest.IsActive_ValidInput">
+            <summary>
+                Tests that is active valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Audio.AudioSourceBuilderTest.PlayOnAwake_ValidInput">
+            <summary>
+                Tests that play on awake valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Audio.AudioSourceBuilderTest.SetAudioClip_ValidInput">
+            <summary>
+                Tests that set audio clip valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Ecs.Component.Body.RigidBodyBuilderTest">
+            <summary>
+                The rigid body builder test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Body.RigidBodyBuilderTest.RigidBodyBuilder_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that rigid body builder default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Body.RigidBodyBuilderTest.Build_ValidInput">
+            <summary>
+                Tests that build valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Ecs.Component.Collider.BoxColliderBuilderTest">
+            <summary>
+                The box collider builder test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Collider.BoxColliderBuilderTest.BoxColliderBuilder_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that box collider builder default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Collider.BoxColliderBuilderTest.Build_ValidInput">
+            <summary>
+                Tests that build valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Collider.BoxColliderBuilderTest.AngularVelocity_ValidInput">
+            <summary>
+                Tests that angular velocity valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Collider.BoxColliderBuilderTest.AutoTilling_ValidInput">
+            <summary>
+                Tests that auto tilling valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Collider.BoxColliderBuilderTest.BodyType_ValidInput">
+            <summary>
+                Tests that body type valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Collider.BoxColliderBuilderTest.FixedRotation_ValidInput">
+            <summary>
+                Tests that fixed rotation valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Collider.BoxColliderBuilderTest.Friction_ValidInput">
+            <summary>
+                Tests that friction valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Collider.BoxColliderBuilderTest.GravityScale_ValidInput">
+            <summary>
+                Tests that gravity scale valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Collider.BoxColliderBuilderTest.IsActive_ValidInput">
+            <summary>
+                Tests that is active valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Collider.BoxColliderBuilderTest.IsTrigger_ValidInput">
+            <summary>
+                Tests that is trigger valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Collider.BoxColliderBuilderTest.LinearVelocity_ValidInput">
+            <summary>
+                Tests that linear velocity valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Collider.BoxColliderBuilderTest.Mass_ValidInput">
+            <summary>
+                Tests that mass valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Collider.BoxColliderBuilderTest.RelativePosition_ValidInput">
+            <summary>
+                Tests that relative position valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Collider.BoxColliderBuilderTest.Restitution_ValidInput">
+            <summary>
+                Tests that restitution valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Collider.BoxColliderBuilderTest.Rotation_ValidInput">
+            <summary>
+                Tests that rotation valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Collider.BoxColliderBuilderTest.Size_ValidInput">
+            <summary>
+                Tests that size valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Collider.BoxColliderBuilderTest.BoxColliderBuilder_DefaultConstructor_ValidInput_v2">
+            <summary>
+                Tests that box collider builder default constructor valid input v 2
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Collider.BoxColliderBuilderTest.Build_ValidInput_v2">
+            <summary>
+                Tests that build valid input v 2
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Collider.BoxColliderBuilderTest.IsActive_ValidInput_v2">
+            <summary>
+                Tests that is active valid input v 2
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Collider.BoxColliderBuilderTest.IsTrigger_ValidInput_v2">
+            <summary>
+                Tests that is trigger valid input v 2
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Collider.BoxColliderBuilderTest.Size_ValidInput_v2">
+            <summary>
+                Tests that size valid input v 2
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Ecs.Component.Collider.CircleColliderBuilderTest">
+            <summary>
+                The circle collider builder test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Collider.CircleColliderBuilderTest.CircleColliderBuilder_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that circle collider builder default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Collider.CircleColliderBuilderTest.Build_ValidInput">
+            <summary>
+                Tests that build valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Ecs.Component.Light.AreaLightBuilderTest">
+            <summary>
+                The area light builder test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Light.AreaLightBuilderTest.AreaLightBuilder_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that area light builder default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Light.AreaLightBuilderTest.Build_ValidInput">
+            <summary>
+                Tests that build valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Ecs.Component.Light.DirectionalLightBuilderTest">
+            <summary>
+                The directional light builder test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Light.DirectionalLightBuilderTest.DirectionalLightBuilder_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that directional light builder default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Light.DirectionalLightBuilderTest.Build_ValidInput">
+            <summary>
+                Tests that build valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Ecs.Component.Light.PointLightBuilderTest">
+            <summary>
+                The point light builder test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Light.PointLightBuilderTest.PointLightBuilder_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that point light builder default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Light.PointLightBuilderTest.Build_ValidInput">
+            <summary>
+                Tests that build valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Ecs.Component.Light.SpotLightBuilderTest">
+            <summary>
+                The spot light builder test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Light.SpotLightBuilderTest.SpotLightBuilder_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that spot light builder default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Light.SpotLightBuilderTest.Build_ValidInput">
+            <summary>
+                Tests that build valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Ecs.Component.Render.AnimationBuilderTest">
+            <summary>
+                The animation builder test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Render.AnimationBuilderTest.AnimationBuilder_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that animation builder default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Render.AnimationBuilderTest.Build_ValidInput">
+            <summary>
+                Tests that build valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Render.AnimationBuilderTest.Name_ValidInput">
+            <summary>
+                Tests that name valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Render.AnimationBuilderTest.Order_ValidInput">
+            <summary>
+                Tests that order valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Render.AnimationBuilderTest.Speed_ValidInput">
+            <summary>
+                Tests that speed valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Render.AnimationBuilderTest.AddFrame_ValidInput">
+            <summary>
+                Tests that add frame valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Ecs.Component.Render.AnimatorBuilderTest">
+            <summary>
+                The animator builder test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Render.AnimatorBuilderTest.AnimatorBuilder_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that animator builder default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Render.AnimatorBuilderTest.Build_ValidInput">
+            <summary>
+                Tests that build valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Render.AnimatorBuilderTest.AddAnimation_ValidInput">
+            <summary>
+                Tests that add animation valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Ecs.Component.Render.CameraBuilderTest">
+            <summary>
+                The camera builder test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Render.CameraBuilderTest.CameraBuilder_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that camera builder default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Render.CameraBuilderTest.Build_ValidInput">
+            <summary>
+                Tests that build valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Render.CameraBuilderTest.BackgroundColor_ValidInput">
+            <summary>
+                Tests that background color valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Render.CameraBuilderTest.Resolution_ValidInput">
+            <summary>
+                Tests that resolution valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Ecs.Component.Render.FrameBuilderTest">
+            <summary>
+                The frame builder test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Render.FrameBuilderTest.FrameBuilder_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that frame builder default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Render.FrameBuilderTest.Build_ValidInput">
+            <summary>
+                Tests that build valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Render.FrameBuilderTest.FilePath_ValidInput">
+            <summary>
+                Tests that file path valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Ecs.Component.Render.SpriteBuilderTest">
+            <summary>
+                The sprite builder test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Render.SpriteBuilderTest.SpriteBuilder_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that sprite builder default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Render.SpriteBuilderTest.Build_ValidInput">
+            <summary>
+                Tests that build valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Render.SpriteBuilderTest.Depth_ValidInput">
+            <summary>
+                Tests that depth valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Render.SpriteBuilderTest.SetTexture_ValidInput">
+            <summary>
+                Tests that set texture valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Ecs.Component.Ui.CanvasBuilderTest">
+            <summary>
+                The canvas builder test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Ui.CanvasBuilderTest.CanvasBuilder_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that canvas builder default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Component.Ui.CanvasBuilderTest.Build_ValidInput">
+            <summary>
+                Tests that build valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Ecs.Entity.GameObject.GameObjectBuilderTest">
+            <summary>
+                The game object builder test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Entity.GameObject.GameObjectBuilderTest.GameObjectBuilder_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that game object builder default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Entity.GameObject.GameObjectBuilderTest.Build_ValidInput">
+            <summary>
+                Tests that build valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Entity.GameObject.GameObjectBuilderTest.Name_ValidInput">
+            <summary>
+                Tests that name valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Entity.GameObject.GameObjectBuilderTest.Transform_ValidInput">
+            <summary>
+                Tests that transform valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Entity.GameObject.GameObjectBuilderTest.WithTag_ValidInput">
+            <summary>
+                Tests that with tag valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Entity.GameObject.GameObjectBuilderTest.AddComponent_ValidInput">
+            <summary>
+                Tests that add component valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Entity.GameObject.GameObjectBuilderTest.AddComponent_WithFunc_ShouldAddComponentToGameObject">
+            <summary>
+                Tests that add component with func should add component to game object
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Entity.GameObject.GameObjectBuilderTest.AddComponent_WithValue_ShouldAddComponentToGameObject">
+            <summary>
+                Tests that add component with value should add component to game object
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Entity.GameObject.GameObjectBuilderTest.Name_ShouldSetNameOfGameObject">
+            <summary>
+                Tests that name should set name of game object
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Entity.GameObject.GameObjectBuilderTest.Transform_ShouldSetTransformOfGameObject">
+            <summary>
+                Tests that transform should set transform of game object
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Entity.GameObject.GameObjectBuilderTest.WithTag_ShouldSetTagOfGameObject">
+            <summary>
+                Tests that with tag should set tag of game object
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Ecs.Entity.GameObject.Sample.Sample2Component">
+            <summary>
+                The mock component class
+            </summary>
+            <seealso cref="T:Alis.Core.Ecs.Component.AComponent" />
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Ecs.Entity.GameObject.Sample.TestComponent">
+            <summary>
+                The test component class
+            </summary>
+            <seealso cref="T:Alis.Core.Ecs.Component.AComponent" />
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Ecs.Entity.Scene.SceneBuilderTest">
+            <summary>
+                The scene builder test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Entity.Scene.SceneBuilderTest.SceneBuilder_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that scene builder default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Entity.Scene.SceneBuilderTest.Build_ValidInput">
+            <summary>
+                Tests that build valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Entity.Scene.SceneBuilderTest.Name_ValidInput">
+            <summary>
+                Tests that name valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Entity.Scene.SceneBuilderTest.Add_ValidInput">
+            <summary>
+                Tests that add valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Ecs.Entity.Transform.TransformBuilderTest">
+            <summary>
+                The transform builder test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Entity.Transform.TransformBuilderTest.TransformBuilder_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that transform builder default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Entity.Transform.TransformBuilderTest.Build_ValidInput">
+            <summary>
+                Tests that build valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Entity.Transform.TransformBuilderTest.Position_ValidInput">
+            <summary>
+                Tests that position valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Entity.Transform.TransformBuilderTest.Rotation_ValidInput">
+            <summary>
+                Tests that rotation valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.Entity.Transform.TransformBuilderTest.Scale_ValidInput">
+            <summary>
+                Tests that scale valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Ecs.System.Manager.Audio.AudioManagerBuilderTest">
+            <summary>
+                The audio manager builder test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Manager.Audio.AudioManagerBuilderTest.AudioManagerBuilder_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that audio manager builder default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Manager.Audio.AudioManagerBuilderTest.Build_ValidInput">
+            <summary>
+                Tests that build valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Ecs.System.Manager.Graphic.GraphicManagerBuilderTest">
+            <summary>
+                The graphic manager builder test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Manager.Graphic.GraphicManagerBuilderTest.GraphicManagerBuilder_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that graphic manager builder default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Manager.Graphic.GraphicManagerBuilderTest.Build_ValidInput">
+            <summary>
+                Tests that build valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Ecs.System.Manager.Input.InputManagerBuilderTest">
+            <summary>
+                The input manager builder test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Manager.Input.InputManagerBuilderTest.InputManagerBuilder_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that input manager builder default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Manager.Input.InputManagerBuilderTest.Build_ValidInput">
+            <summary>
+                Tests that build valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Ecs.System.Manager.Network.NetworkManagerBuilderTest">
+            <summary>
+                The network manager builder test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Manager.Network.NetworkManagerBuilderTest.NetworkManagerBuilder_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that network manager builder default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Manager.Network.NetworkManagerBuilderTest.Build_ValidInput">
+            <summary>
+                Tests that build valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Ecs.System.Manager.Physic.PhysicManagerBuilderTest">
+            <summary>
+                The physic manager builder test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Manager.Physic.PhysicManagerBuilderTest.PhysicManagerBuilder_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that physic manager builder default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Manager.Physic.PhysicManagerBuilderTest.Build_ValidInput">
+            <summary>
+                Tests that build valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Ecs.System.Manager.Scene.SceneManagerBuilderTest">
+            <summary>
+                The scene manager builder test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Manager.Scene.SceneManagerBuilderTest.SceneManagerBuilder_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that scene manager builder default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Manager.Scene.SceneManagerBuilderTest.Add_ValidInput">
+            <summary>
+                Tests that add valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Manager.Scene.SceneManagerBuilderTest.Build_ValidInput">
+            <summary>
+                Tests that build valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Ecs.System.Setting.Audio.AudioSettingBuilderTest">
+            <summary>
+                The audio setting builder test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Setting.Audio.AudioSettingBuilderTest.AudioSettingBuilder_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that audio setting builder default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Setting.Audio.AudioSettingBuilderTest.Build_ValidInput">
+            <summary>
+                Tests that build valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Ecs.System.Setting.General.GeneralSettingBuilderTest">
+            <summary>
+                The general setting builder test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Setting.General.GeneralSettingBuilderTest.GeneralSettingBuilder_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that general setting builder default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Setting.General.GeneralSettingBuilderTest.Build_ValidInput">
+            <summary>
+                Tests that build valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Setting.General.GeneralSettingBuilderTest.Author_ValidInput">
+            <summary>
+                Tests that author valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Setting.General.GeneralSettingBuilderTest.Debug_ValidInput">
+            <summary>
+                Tests that debug valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Setting.General.GeneralSettingBuilderTest.Description_ValidInput">
+            <summary>
+                Tests that description valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Setting.General.GeneralSettingBuilderTest.Icon_ValidInput">
+            <summary>
+                Tests that icon valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Setting.General.GeneralSettingBuilderTest.License_ValidInput">
+            <summary>
+                Tests that license valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Setting.General.GeneralSettingBuilderTest.Name_ValidInput">
+            <summary>
+                Tests that name valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Setting.General.GeneralSettingBuilderTest.Version_ValidInput">
+            <summary>
+                Tests that version valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Ecs.System.Setting.Graphic.GraphicSettingBuilderTest">
+            <summary>
+                The graphic setting builder test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Setting.Graphic.GraphicSettingBuilderTest.GraphicSettingBuilder_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that graphic setting builder default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Setting.Graphic.GraphicSettingBuilderTest.Build_ValidInput">
+            <summary>
+                Tests that build valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Setting.Graphic.GraphicSettingBuilderTest.Window_ValidInput">
+            <summary>
+                Tests that window valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Ecs.System.Setting.Input.InputSettingBuilderTest">
+            <summary>
+                The input setting builder test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Setting.Input.InputSettingBuilderTest.InputSettingBuilder_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that input setting builder default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Setting.Input.InputSettingBuilderTest.Build_ValidInput">
+            <summary>
+                Tests that build valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Ecs.System.Setting.Network.NetworkSettingBuilderTest">
+            <summary>
+                The network setting builder test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Setting.Network.NetworkSettingBuilderTest.NetworkSettingBuilder_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that network setting builder default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Setting.Network.NetworkSettingBuilderTest.Build_ValidInput">
+            <summary>
+                Tests that build valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Ecs.System.Setting.Physic.PhysicSettingBuilderTest">
+            <summary>
+                The physic setting builder test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Setting.Physic.PhysicSettingBuilderTest.PhysicSettingBuilder_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that physic setting builder default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Setting.Physic.PhysicSettingBuilderTest.Build_ValidInput">
+            <summary>
+                Tests that build valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Setting.Physic.PhysicSettingBuilderTest.Debug_ValidInput">
+            <summary>
+                Tests that debug valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Setting.Physic.PhysicSettingBuilderTest.DebugColor_ValidInput">
+            <summary>
+                Tests that debug color valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Setting.Physic.PhysicSettingBuilderTest.Gravity_ValidInput">
+            <summary>
+                Tests that gravity valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Ecs.System.Setting.Scene.SceneSettingBuilderTest">
+            <summary>
+                The scene setting builder test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Setting.Scene.SceneSettingBuilderTest.SceneSettingBuilder_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that scene setting builder default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Setting.Scene.SceneSettingBuilderTest.Build_ValidInput">
+            <summary>
+                Tests that build valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Ecs.System.Setting.SettingsBuilderTest">
+            <summary>
+                The settings builder test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Setting.SettingsBuilderTest.SettingsBuilder_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that settings builder default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Setting.SettingsBuilderTest.Build_ValidInput">
+            <summary>
+                Tests that build valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Setting.SettingsBuilderTest.Audio_ValidInput">
+            <summary>
+                Tests that audio valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Setting.SettingsBuilderTest.General_ValidInput">
+            <summary>
+                Tests that general valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Setting.SettingsBuilderTest.Graphic_ValidInput">
+            <summary>
+                Tests that graphic valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Setting.SettingsBuilderTest.Input_ValidInput">
+            <summary>
+                Tests that input valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Setting.SettingsBuilderTest.Network_ValidInput">
+            <summary>
+                Tests that network valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Setting.SettingsBuilderTest.Physic_ValidInput">
+            <summary>
+                Tests that physic valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.Setting.SettingsBuilderTest.Scene_ValidInput">
+            <summary>
+                Tests that scene valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Ecs.System.VideoGameBuilderTest">
+            <summary>
+                The video game builder test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.VideoGameBuilderTest.VideoGameBuilder_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that video game builder default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.VideoGameBuilderTest.Settings_ValidInput">
+            <summary>
+                Tests that settings valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.VideoGameBuilderTest.World_ValidInput">
+            <summary>
+                Tests that world valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.VideoGameBuilderTest.Build_ValidInput_v2">
+            <summary>
+                Tests that build valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.VideoGameBuilderTest.VideoGameBuilder_DefaultConstructor_ValidInput_v2">
+            <summary>
+                Tests that video game builder default constructor valid input v 2
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.VideoGameBuilderTest.Build_ValidInput">
+            <summary>
+                Tests that build valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.VideoGameBuilderTest.Settings_ValidInput_v2">
+            <summary>
+                Tests that settings valid input v 2
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Ecs.System.VideoGameBuilderTest.World_ValidInput_v2">
+            <summary>
+                Tests that world valid input v 2
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Graphic.WindowBuilderTest">
+            <summary>
+                The window builder test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Graphic.WindowBuilderTest.WindowBuilder_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that window builder default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Graphic.WindowBuilderTest.Background_ValidInput">
+            <summary>
+                Tests that background valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Graphic.WindowBuilderTest.Build_ValidInput">
+            <summary>
+                Tests that build valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Graphic.WindowBuilderTest.IsResizable_ValidInput">
+            <summary>
+                Tests that is resizable valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Graphic.WindowBuilderTest.Resolution_ValidInput">
+            <summary>
+                Tests that resolution valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Graphic.WindowBuilderTest.WindowBuilder_DefaultConstructor_ValidInput_v2">
+            <summary>
+                Tests that window builder default constructor valid input v 2
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Graphic.WindowBuilderTest.Build_ValidInput_v2">
+            <summary>
+                Tests that build valid input v 2
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Graphic.WindowBuilderTest.Background_ValidInput_v2">
+            <summary>
+                Tests that background valid input v 2
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Graphic.WindowBuilderTest.IsResizable_ValidInput_v2">
+            <summary>
+                Tests that is resizable valid input v 2
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Graphic.WindowBuilderTest.Resolution_ValidInput_v2">
+            <summary>
+                Tests that resolution valid input v 2
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Graphic.WindowBuilderTest.IsResizable_NoArgument_SetsIsWindowResizableToTrue">
+            <summary>
+                Tests that is resizable no argument sets is window resizable to true
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Graphic.WindowBuilderTest.IsResizable_WithArgument_SetsIsWindowResizableToGivenValue">
+            <summary>
+                Tests that is resizable with argument sets is window resizable to given value
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Graphic.WindowBuilderTest.Background_SetsBackgroundToGivenValue">
+            <summary>
+                Tests that background sets background to given value
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Graphic.WindowBuilderTest.Resolution_SetsResolutionToGivenValue">
+            <summary>
+                Tests that resolution sets resolution to given value
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Ecs.Component.AComponentTest">
+            <summary>
+                The component test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.AComponentTest.OnEnable_ValidInput">
+            <summary>
+                Tests that on enable valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.AComponentTest.OnInit_ValidInput">
+            <summary>
+                Tests that on init valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.AComponentTest.OnAwake_ValidInput">
+            <summary>
+                Tests that on awake valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.AComponentTest.OnStart_ValidInput">
+            <summary>
+                Tests that on start valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.AComponentTest.OnBeforeUpdate_ValidInput">
+            <summary>
+                Tests that on before update valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.AComponentTest.OnUpdate_ValidInput">
+            <summary>
+                Tests that on update valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.AComponentTest.OnAfterUpdate_ValidInput">
+            <summary>
+                Tests that on after update valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.AComponentTest.OnBeforeFixedUpdate_ValidInput">
+            <summary>
+                Tests that on before fixed update valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.AComponentTest.OnFixedUpdate_ValidInput">
+            <summary>
+                Tests that on fixed update valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.AComponentTest.OnAfterFixedUpdate_ValidInput">
+            <summary>
+                Tests that on after fixed update valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.AComponentTest.OnDispatchEvents_ValidInput">
+            <summary>
+                Tests that on dispatch events valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.AComponentTest.OnCalculate_ValidInput">
+            <summary>
+                Tests that on calculate valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.AComponentTest.OnDraw_ValidInput">
+            <summary>
+                Tests that on draw valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.AComponentTest.OnGui_ValidInput">
+            <summary>
+                Tests that on gui valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.AComponentTest.OnDisable_ValidInput">
+            <summary>
+                Tests that on disable valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.AComponentTest.OnReset_ValidInput">
+            <summary>
+                Tests that on reset valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.AComponentTest.OnStop_ValidInput">
+            <summary>
+                Tests that on stop valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.AComponentTest.OnExit_ValidInput">
+            <summary>
+                Tests that on exit valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.AComponentTest.OnDestroy_ValidInput">
+            <summary>
+                Tests that on destroy valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.AComponentTest.OnPressDownKey_CallsLoggerTrace">
+            <summary>
+                Tests that on press down key calls logger trace
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.AComponentTest.OnReleaseKey_CallsLoggerTrace">
+            <summary>
+                Tests that on release key calls logger trace
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.AComponentTest.OnPressKey_CallsLoggerTrace">
+            <summary>
+                Tests that on press key calls logger trace
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.AComponentTest.OnCollisionEnter_CallsLoggerTrace">
+            <summary>
+                Tests that on collision enter calls logger trace
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.AComponentTest.OnCollisionExit_CallsLoggerTrace">
+            <summary>
+                Tests that on collision exit calls logger trace
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.AComponentTest.SetContext_SetsContext">
+            <summary>
+                Tests that set context sets context
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.AComponentTest.OnCollisionStay_CallsLoggerTrace">
+            <summary>
+                Tests that on collision stay calls logger trace
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.AComponentTest.OnTriggerEnter_CallsLoggerTrace">
+            <summary>
+                Tests that on trigger enter calls logger trace
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.AComponentTest.OnTriggerExit_CallsLoggerTrace">
+            <summary>
+                Tests that on trigger exit calls logger trace
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.AComponentTest.OnTriggerStay_CallsLoggerTrace">
+            <summary>
+                Tests that on trigger stay calls logger trace
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.AComponentTest.Name_PropertySet_GetReturnsCorrectValue">
+            <summary>
+                Tests that name property set get returns correct value
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.AComponentTest.Id_PropertySet_GetReturnsCorrectValue">
+            <summary>
+                Tests that id property set get returns correct value
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.AComponentTest.Tag_PropertySet_GetReturnsCorrectValue">
+            <summary>
+                Tests that tag property set get returns correct value
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Ecs.Component.Audio.AudioClipTest">
+            <summary>
+                The audio clip test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Audio.AudioClipTest.AudioClip_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that audio clip default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Audio.AudioClipTest.AudioClip_ConstructorWithFullPath_ValidInput">
+            <summary>
+                Tests that audio clip constructor with full path valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Audio.AudioClipTest.Play_ValidInput">
+            <summary>
+                Tests that play valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Audio.AudioClipTest.Stop_ValidInput">
+            <summary>
+                Tests that stop valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Audio.AudioClipTest.Resume_ValidInput">
+            <summary>
+                Tests that resume valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Audio.AudioClipTest.Builder_ValidInput">
+            <summary>
+                Tests that builder valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Audio.AudioClipTest.SetIsPlaying_ShouldChangeValue">
+            <summary>
+                Tests that set is playing should change value
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Audio.AudioClipTest.SetIsMute_ShouldChangeValue">
+            <summary>
+                Tests that set is mute should change value
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Audio.AudioClipTest.SetIsLooping_ShouldChangeValue">
+            <summary>
+                Tests that set is looping should change value
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Ecs.Component.Audio.AudioRecorderTest">
+            <summary>
+                The audio recorder test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Audio.AudioRecorderTest.Builder_ShouldReturnAudioRecorderBuilder">
+            <summary>
+                Tests that builder should return audio recorder builder
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Ecs.Component.Audio.AudioSourceTest">
+            <summary>
+                The audio source test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Audio.AudioSourceTest.AudioSource_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that audio source default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Audio.AudioSourceTest.AudioSource_ConstructorWithAudioClip_ValidInput">
+            <summary>
+                Tests that audio source constructor with audio clip valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Audio.AudioSourceTest.Play_ValidInput">
+            <summary>
+                Tests that play valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Audio.AudioSourceTest.Stop_ValidInput">
+            <summary>
+                Tests that stop valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Audio.AudioSourceTest.Resume_ValidInput">
+            <summary>
+                Tests that resume valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Audio.AudioSourceTest.Builder_ValidInput">
+            <summary>
+                Tests that builder valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Audio.AudioSourceTest.OnInit_ShouldSetThreadPoolMinThreads">
+            <summary>
+                Tests that on init should set thread pool min threads
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Audio.AudioSourceTest.OnStart_ShouldPlayIfPlayOnAwakeIsTrue">
+            <summary>
+                Tests that on start should play if play on awake is true
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Audio.AudioSourceTest.OnStart_ShouldNotPlayIfPlayOnAwakeIsFalse">
+            <summary>
+                Tests that on start should not play if play on awake is false
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Audio.AudioSourceTest.OnStop_ShouldStopPlaying">
+            <summary>
+                Tests that on stop should stop playing
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Audio.AudioSourceTest.OnExit_ShouldStopPlaying">
+            <summary>
+                Tests that on exit should stop playing
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Audio.AudioSourceTest.SetMute_ShouldChangeValue">
+            <summary>
+                Tests that set mute should change value
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Audio.AudioSourceTest.SetLoop_ShouldChangeValue">
+            <summary>
+                Tests that set loop should change value
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Audio.AudioSourceTest.SetVolume_ShouldChangeValue">
+            <summary>
+                Tests that set volume should change value
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Ecs.Component.Body.RigidBodyTest">
+            <summary>
+                The rigid body test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Body.RigidBodyTest.RigidBody_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that rigid body default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Body.RigidBodyTest.Builder_ValidInput">
+            <summary>
+                Tests that builder valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Ecs.Component.Collider.BoxColliderTest">
+            <summary>
+                The box collider test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Collider.BoxColliderTest.BoxCollider_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that box collider default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Collider.BoxColliderTest.BoxCollider_Builder_ValidInput">
+            <summary>
+                Tests that box collider builder valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Collider.BoxColliderTest.OnInit_ValidInput">
+            <summary>
+                Tests that on init valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Collider.BoxColliderTest.OnAwake_ValidInput">
+            <summary>
+                Tests that on awake valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Collider.BoxColliderTest.OnStart_ValidInput">
+            <summary>
+                Tests that on start valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Collider.BoxColliderTest.OnUpdate_ValidInput">
+            <summary>
+                Tests that on update valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Collider.BoxColliderTest.OnDraw_ValidInput">
+            <summary>
+                Tests that on draw valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Collider.BoxColliderTest.IsTrigger_PropertySet_GetReturnsCorrectValue">
+            <summary>
+                Tests that is trigger property set get returns correct value
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Collider.BoxColliderTest.Width_PropertySet_GetReturnsCorrectValue">
+            <summary>
+                Tests that width property set get returns correct value
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Collider.BoxColliderTest.Height_PropertySet_GetReturnsCorrectValue">
+            <summary>
+                Tests that height property set get returns correct value
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Collider.BoxColliderTest.Rotation_PropertySet_GetReturnsCorrectValue">
+            <summary>
+                Tests that rotation property set get returns correct value
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Collider.BoxColliderTest.RelativePosition_PropertySet_GetReturnsCorrectValue">
+            <summary>
+                Tests that relative position property set get returns correct value
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Collider.BoxColliderTest.AutoTilling_PropertySet_GetReturnsCorrectValue">
+            <summary>
+                Tests that auto tilling property set get returns correct value
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Collider.BoxColliderTest.BodyType_PropertySet_GetReturnsCorrectValue">
+            <summary>
+                Tests that body type property set get returns correct value
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Collider.BoxColliderTest.Restitution_PropertySet_GetReturnsCorrectValue">
+            <summary>
+                Tests that restitution property set get returns correct value
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Collider.BoxColliderTest.Friction_PropertySet_GetReturnsCorrectValue">
+            <summary>
+                Tests that friction property set get returns correct value
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Collider.BoxColliderTest.FixedRotation_PropertySet_GetReturnsCorrectValue">
+            <summary>
+                Tests that fixed rotation property set get returns correct value
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Collider.BoxColliderTest.Mass_PropertySet_GetReturnsCorrectValue">
+            <summary>
+                Tests that mass property set get returns correct value
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Collider.BoxColliderTest.GravityScale_PropertySet_GetReturnsCorrectValue">
+            <summary>
+                Tests that gravity scale property set get returns correct value
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Collider.BoxColliderTest.LinearVelocity_PropertySet_GetReturnsCorrectValue">
+            <summary>
+                Tests that linear velocity property set get returns correct value
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Collider.BoxColliderTest.AngularVelocity_PropertySet_GetReturnsCorrectValue">
+            <summary>
+                Tests that angular velocity property set get returns correct value
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Ecs.Component.Collider.CircleColliderTest">
+            <summary>
+                The circle collider test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Collider.CircleColliderTest.CircleCollider_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that circle collider default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Collider.CircleColliderTest.OnStart_ValidInput">
+            <summary>
+                Tests that on start valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Collider.CircleColliderTest.OnUpdate_ValidInput">
+            <summary>
+                Tests that on update valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Ecs.Component.Collider.ColliderTest">
+            <summary>
+                The collider test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Collider.ColliderTest.Collider_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that collider default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Collider.ColliderTest.OnStart_ValidInput">
+            <summary>
+                Tests that on start valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Collider.ColliderTest.OnUpdate_ValidInput">
+            <summary>
+                Tests that on update valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Ecs.Component.Collider.Sample.ColliderSample">
+            <summary>
+                The collider sample class
+            </summary>
+            <seealso cref="T:Alis.Core.Ecs.Component.Collider.ACollider" />
+        </member>
+        <member name="T:Alis.Test.Core.Ecs.Component.Light.ALightTest">
+            <summary>
+                The light test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Light.ALightTest.Light_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that light default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Light.ALightTest.OnStart_ValidInput">
+            <summary>
+                Tests that on start valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Light.ALightTest.OnUpdate_ValidInput">
+            <summary>
+                Tests that on update valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Ecs.Component.Light.AreaLightTest">
+            <summary>
+                The area light test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Light.AreaLightTest.AreaLight_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that area light default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Light.AreaLightTest.OnInit_ValidInput">
+            <summary>
+                Tests that on init valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Ecs.Component.Light.DirectionalLightTest">
+            <summary>
+                The directional light test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Light.DirectionalLightTest.DirectionalLight_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that directional light default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Light.DirectionalLightTest.OnInit_ValidInput">
+            <summary>
+                Tests that on init valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Ecs.Component.Light.PointLightTest">
+            <summary>
+                The point light test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Light.PointLightTest.PointLight_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that point light default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Light.PointLightTest.OnInit_ValidInput">
+            <summary>
+                Tests that on init valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Ecs.Component.Light.Sample.LightSample">
+            <summary>
+                The light sample class
+            </summary>
+            <seealso cref="T:Alis.Core.Ecs.Component.Light.ALight" />
+        </member>
+        <member name="T:Alis.Test.Core.Ecs.Component.Light.SpotLightTest">
+            <summary>
+                The spot light test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Light.SpotLightTest.SpotLight_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that spot light default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Light.SpotLightTest.OnInit_ValidInput">
+            <summary>
+                Tests that on init valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Ecs.Component.Render.AnimationTest">
+            <summary>
+                The animation test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.AnimationTest.Animator_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that animator default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.AnimationTest.Animator_ConstructorWithParameters_ValidInput">
+            <summary>
+                Tests that animator constructor with parameters valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.AnimationTest.AddAnimation_ValidInput">
+            <summary>
+                Tests that add animation valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.AnimationTest.OnInit_ValidInput">
+            <summary>
+                Tests that on init valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.AnimationTest.OnAwake_ValidInput">
+            <summary>
+                Tests that on awake valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.AnimationTest.ChangeAnimationTo_ValidInput">
+            <summary>
+                Tests that change animation to valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.AnimationTest.GetCurrentAnimation_ValidInput">
+            <summary>
+                Tests that get current animation valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.AnimationTest.Name_PropertySet_GetReturnsCorrectValue">
+            <summary>
+                Tests that name property set get returns correct value
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.AnimationTest.Order_PropertySet_GetReturnsCorrectValue">
+            <summary>
+                Tests that order property set get returns correct value
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.AnimationTest.Speed_PropertySet_GetReturnsCorrectValue">
+            <summary>
+                Tests that speed property set get returns correct value
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.AnimationTest.HasNext_WhenFramesNotEmpty_ReturnsTrue">
+            <summary>
+                Tests that has next when frames not empty returns true
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.AnimationTest.HasNext_WhenFramesEmpty_ReturnsFalse">
+            <summary>
+                Tests that has next when frames empty returns false
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.AnimationTest.NextTexture_WhenCalled_ChangesIndex">
+            <summary>
+                Tests that next texture when called changes index
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.AnimationTest.AddFrame_WhenCalled_AddsFrameToFrames">
+            <summary>
+                Tests that add frame when called adds frame to frames
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.AnimationTest.Builder_WhenCalled_ReturnsAnimatorBuilder">
+            <summary>
+                Tests that builder when called returns animator builder
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Ecs.Component.Render.AnimatorTest">
+            <summary>
+                The animator test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.AnimatorTest.Builder_ShouldReturnAnimatorBuilder">
+            <summary>
+                Tests that builder should return animator builder
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.AnimatorTest.OnInit_ShouldSetCurrentAnimation">
+            <summary>
+                Tests that on init should set current animation
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.AnimatorTest.OnAwake_ShouldStartTimer">
+            <summary>
+                Tests that on awake should start timer
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.AnimatorTest.OnStart_ShouldSetSprite">
+            <summary>
+                Tests that on start should set sprite
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.AnimatorTest.OnUpdate_ShouldChangeSpriteImage">
+            <summary>
+                Tests that on update should change sprite image
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.AnimatorTest.OnExit_ShouldStopTimer">
+            <summary>
+                Tests that on exit should stop timer
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.AnimatorTest.AddAnimation_ShouldAddAnimationToList">
+            <summary>
+                Tests that add animation should add animation to list
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.AnimatorTest.ChangeAnimationTo_ShouldChangeCurrentAnimation">
+            <summary>
+                Tests that change animation to should change current animation
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.AnimatorTest.Animations_GetValue_ShouldReturnValue">
+            <summary>
+                Tests that animations get value should return value
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.AnimatorTest.ChangeAnimationTo_WithNewAnimation_ShouldChangeCurrentAnimation">
+            <summary>
+                Tests that change animation to with new animation should change current animation
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.AnimatorTest.ChangeAnimationTo_WithSameAnimationAndFlips_ShouldNotChangeCurrentAnimation">
+            <summary>
+                Tests that change animation to with same animation and flips should not change current animation
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.AnimatorTest.ChangeAnimationTo_WithSameAnimationAndDifferentFlips_ShouldChangeFlips">
+            <summary>
+                Tests that change animation to with same animation and different flips should change flips
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.AnimatorTest.ChangeAnimationTo_WithNonexistentAnimation_ShouldNotChangeCurrentAnimation">
+            <summary>
+                Tests that change animation to with nonexistent animation should not change current animation
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Ecs.Component.Render.CameraTest">
+            <summary>
+                The camera test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.CameraTest.Builder_WhenCalled_ReturnsCameraBuilder">
+            <summary>
+                Tests that builder when called returns camera builder
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.CameraTest.OnStart_InitializesCorrectly">
+            <summary>
+                Tests that on start initializes correctly
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.CameraTest.OnUpdate_UpdatesViewportPosition">
+            <summary>
+                Tests that on update updates viewport position
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.CameraTest.OnExit_DetachesFromGraphicManager">
+            <summary>
+                Tests that on exit detaches from graphic manager
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.CameraTest.Resolution_PropertySet_GetReturnsCorrectValue">
+            <summary>
+                Tests that resolution property set get returns correct value
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.CameraTest.BackgroundColor_PropertySet_GetReturnsCorrectValue">
+            <summary>
+                Tests that background color property set get returns correct value
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.CameraTest.CameraBorder_PropertySet_GetReturnsCorrectValue">
+            <summary>
+                Tests that camera border property set get returns correct value
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.CameraTest.TextureTarget_PropertySet_GetReturnsCorrectValue">
+            <summary>
+                Tests that texture target property set get returns correct value
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Ecs.Component.Render.FrameTest">
+            <summary>
+                The frame test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.FrameTest.Frame_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that frame default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.FrameTest.Frame_ConstructorWithParameters_ValidInput">
+            <summary>
+                Tests that frame constructor with parameters valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.FrameTest.Frame_FilePathProperty_ValidInput">
+            <summary>
+                Tests that frame file path property valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.FrameTest.Frame_Builder_ValidInput">
+            <summary>
+                Tests that frame builder valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Ecs.Component.Render.ImageTest">
+            <summary>
+                The image test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.ImageTest.Image_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that image default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.ImageTest.Image_ConstructorWithParameters_ValidInput">
+            <summary>
+                Tests that image constructor with parameters valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.ImageTest.Image_PathProperty_ValidInput">
+            <summary>
+                Tests that image path property valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.ImageTest.Image_TextureProperty_ValidInput">
+            <summary>
+                Tests that image texture property valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.ImageTest.Image_SizeProperty_ValidInput">
+            <summary>
+                Tests that image size property valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.ImageTest.Path_SetValue_ShouldChangeValue">
+            <summary>
+                Tests that path set value should change value
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Ecs.Component.Render.SpriteTest">
+            <summary>
+                The sprite test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.SpriteTest.OnInit_ValidInput">
+            <summary>
+                Tests that on init valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.SpriteTest.OnAwake_ValidInput">
+            <summary>
+                Tests that on awake valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.SpriteTest.OnExit_ValidInput">
+            <summary>
+                Tests that on exit valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.SpriteTest.Render_ValidInput">
+            <summary>
+                Tests that render valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.SpriteTest.RenderWithoutCamera_ValidInput">
+            <summary>
+                Tests that render without camera valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.SpriteTest.Builder_ShouldReturnSpriteBuilder">
+            <summary>
+                Tests that builder should return sprite builder
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.SpriteTest.Render_WithRendererAndCamera_ShouldNotThrowException">
+            <summary>
+                Tests that render with renderer and camera should not throw exception
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.SpriteTest.Render_WithRenderer_ShouldNotThrowException">
+            <summary>
+                Tests that render with renderer should not throw exception
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Render.SpriteTest.Flips_SetValue_ShouldChangeValue">
+            <summary>
+                Tests that flips set value should change value
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Ecs.Component.Sample.ComponentSample">
+            <summary>
+                The component sample class
+            </summary>
+            <seealso cref="T:Alis.Core.Ecs.Component.AComponent" />
+        </member>
+        <member name="T:Alis.Test.Core.Ecs.Component.Ui.CanvasTest">
+            <summary>
+                The canvas test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Ui.CanvasTest.Canvas_DefaultConstructor_ValidInput">
+            <summary>
+                Tests that canvas default constructor valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Ui.CanvasTest.Canvas_WidthProperty_ValidInput">
+            <summary>
+                Tests that canvas width property valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Ui.CanvasTest.Canvas_HeightProperty_ValidInput">
+            <summary>
+                Tests that canvas height property valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Component.Ui.CanvasTest.Canvas_Builder_ValidInput">
+            <summary>
+                Tests that canvas builder valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Ecs.Entity.GameObjectTest">
+            <summary>
+                The game object test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.GameObjectTest.Test_GameObject_OnEnable">
+            <summary>
+                Tests that test game object on enable
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.GameObjectTest.Test_GameObject_OnDisable">
+            <summary>
+                Tests that test game object on disable
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.GameObjectTest.Test_GameObject_Add_Remove_Component">
+            <summary>
+                Tests that test game object add remove component
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.GameObjectTest.Test_GameObject_SetContext">
+            <summary>
+                Tests that test game object set context
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.GameObjectTest.OnInit_ShouldCallOnInitOfComponents">
+            <summary>
+                Tests that on init should call on init of components
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.GameObjectTest.OnAwake_ShouldCallOnAwakeOfComponents">
+            <summary>
+                Tests that on awake should call on awake of components
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.GameObjectTest.OnStart_ShouldCallOnStartOfComponents">
+            <summary>
+                Tests that on start should call on start of components
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.GameObjectTest.OnUpdate_ShouldCallOnUpdateOfComponents">
+            <summary>
+                Tests that on update should call on update of components
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.GameObjectTest.OnDisable_ShouldCallOnDisableOfComponents">
+            <summary>
+                Tests that on disable should call on disable of components
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.GameObjectTest.OnReset_ShouldCallOnResetOfComponents">
+            <summary>
+                Tests that on reset should call on reset of components
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.GameObjectTest.OnStop_ShouldCallOnStopOfComponents">
+            <summary>
+                Tests that on stop should call on stop of components
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.GameObjectTest.OnExit_ShouldCallOnExitOfComponents">
+            <summary>
+                Tests that on exit should call on exit of components
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.GameObjectTest.OnDestroy_ShouldCallOnDestroyOfComponents">
+            <summary>
+                Tests that on destroy should call on destroy of components
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.GameObjectTest.SetContext_ShouldSetContext">
+            <summary>
+                Tests that set context should set context
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.GameObjectTest.OnAfterUpdate_ShouldCallOnAfterUpdateOfComponents">
+            <summary>
+                Tests that on after update should call on after update of components
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.GameObjectTest.OnBeforeFixedUpdate_ShouldCallOnBeforeFixedUpdateOfComponents">
+            <summary>
+                Tests that on before fixed update should call on before fixed update of components
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.GameObjectTest.OnFixedUpdate_ShouldCallOnFixedUpdateOfComponents">
+            <summary>
+                Tests that on fixed update should call on fixed update of components
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.GameObjectTest.OnAfterFixedUpdate_ShouldCallOnAfterFixedUpdateOfComponents">
+            <summary>
+                Tests that on after fixed update should call on after fixed update of components
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.GameObjectTest.OnDispatchEvents_ShouldCallOnDispatchEventsOfComponents">
+            <summary>
+                Tests that on dispatch events should call on dispatch events of components
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.GameObjectTest.OnCalculate_ShouldCallOnCalculateOfComponents">
+            <summary>
+                Tests that on calculate should call on calculate of components
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.GameObjectTest.OnDraw_ShouldCallOnDrawOfComponents">
+            <summary>
+                Tests that on draw should call on draw of components
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.GameObjectTest.OnGui_ShouldCallOnGuiOfComponents">
+            <summary>
+                Tests that on gui should call on gui of components
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.GameObjectTest.Clear_ShouldClearComponents">
+            <summary>
+                Tests that clear should clear components
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.GameObjectTest.Get_ShouldReturnCorrectComponent">
+            <summary>
+                Tests that get should return correct component
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.GameObjectTest.OnBeforeUpdate_ShouldCallOnBeforeUpdateOfComponents">
+            <summary>
+                Tests that on before update should call on before update of components
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.GameObjectTest.Id_SetValue_ShouldChangeValue">
+            <summary>
+                Tests that id set value should change value
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.GameObjectTest.Components_SetValue_ShouldChangeValue">
+            <summary>
+                Tests that components set value should change value
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Ecs.Entity.Sample.MockGameObject">
+            <summary>
+                The mock game object class
+            </summary>
+            <seealso cref="T:Alis.Core.Ecs.Entity.GameObject" />
+        </member>
+        <member name="T:Alis.Test.Core.Ecs.Entity.SceneTest">
+            <summary>
+                The scene test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.SceneTest.Test_Scene_OnEnable">
+            <summary>
+                Tests that test scene on enable
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.SceneTest.Test_Scene_OnDisable">
+            <summary>
+                Tests that test scene on disable
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.SceneTest.Test_Context_Constructor">
+            <summary>
+                Tests that test context constructor
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.SceneTest.Test_Context_AudioManager">
+            <summary>
+                Tests that test context audio manager
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.SceneTest.Test_Scene_OnEnable_v2">
+            <summary>
+                Tests that test scene on enable v 2
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.SceneTest.Test_Scene_OnDisable_v2">
+            <summary>
+                Tests that test scene on disable v 2
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.SceneTest.Test_Scene_Add_Remove">
+            <summary>
+                Tests that test scene add remove
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.SceneTest.SetContext_ShouldSetContext">
+            <summary>
+                Tests that set context should set context
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.SceneTest.SetContext_ShouldSetContextInGameObjects">
+            <summary>
+                Tests that set context should set context in game objects
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.SceneTest.Context_SetValue_ShouldChangeContext">
+            <summary>
+                Tests that context set value should change context
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.SceneTest.Id_GetSet_ShouldGetAndSetId">
+            <summary>
+                Tests that id get set should get and set id
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.SceneTest.Tag_GetSet_ShouldGetAndSetTag">
+            <summary>
+                Tests that tag get set should get and set tag
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.SceneTest.Clear_ShouldClearGameObjects">
+            <summary>
+                Tests that clear should clear game objects
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.SceneTest.OnInit_CallsOnInitOnAllGameObjects">
+            <summary>
+                Tests that on init calls on init on all game objects
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.SceneTest.OnAwake_CallsOnAwakeOnAllGameObjects">
+            <summary>
+                Tests that on awake calls on awake on all game objects
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.SceneTest.OnReset_CallsOnResetOnAllGameObjects">
+            <summary>
+                Tests that on reset calls on reset on all game objects
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.SceneTest.OnStop_CallsOnStopOnAllGameObjects">
+            <summary>
+                Tests that on stop calls on stop on all game objects
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.SceneTest.OnExit_CallsOnExitOnAllGameObjects">
+            <summary>
+                Tests that on exit calls on exit on all game objects
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.Entity.SceneTest.OnDestroy_CallsOnDestroyOnAllGameObjects">
+            <summary>
+                Tests that on destroy calls on destroy on all game objects
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Ecs.System.ContextTest">
+            <summary>
+                The context test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.ContextTest.Test_Context_Constructor">
+            <summary>
+                Tests that test context constructor
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.ContextTest.Test_Context_AudioManager">
+            <summary>
+                Tests that test context audio manager
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.ContextTest.Test_Context_Exit">
+            <summary>
+                Tests that test context exit
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.ContextTest.Test_Context_GraphicManager">
+            <summary>
+                Tests that test context graphic manager
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.ContextTest.Test_Context_InputManager">
+            <summary>
+                Tests that test context input manager
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.ContextTest.Test_Context_NetworkManager">
+            <summary>
+                Tests that test context network manager
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.ContextTest.Test_Context_PhysicManager">
+            <summary>
+                Tests that test context physic manager
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.ContextTest.Test_Context_TimeManager">
+            <summary>
+                Tests that test context time manager
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.ContextTest.Test_Context_SceneManager">
+            <summary>
+                Tests that test context scene manager
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Ecs.System.Manager.AManagerTest">
+            <summary>
+                The manager test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.AManagerTest.Test_OnEnable">
+            <summary>
+                Tests that test on enable
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.AManagerTest.Test_OnInit">
+            <summary>
+                Tests that test on init
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.AManagerTest.Test_OnAwake">
+            <summary>
+                Tests that test on awake
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.AManagerTest.Test_OnStart">
+            <summary>
+                Tests that test on start
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.AManagerTest.Test_OnBeforeUpdate">
+            <summary>
+                Tests that test on before update
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.AManagerTest.Test_OnUpdate">
+            <summary>
+                Tests that test on update
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.AManagerTest.Test_OnAfterUpdate">
+            <summary>
+                Tests that test on after update
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.AManagerTest.Test_OnBeforeFixedUpdate">
+            <summary>
+                Tests that test on before fixed update
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.AManagerTest.Test_OnFixedUpdate">
+            <summary>
+                Tests that test on fixed update
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.AManagerTest.Test_OnAfterFixedUpdate">
+            <summary>
+                Tests that test on after fixed update
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.AManagerTest.Test_OnDispatchEvents">
+            <summary>
+                Tests that test on dispatch events
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.AManagerTest.Test_OnCalculate">
+            <summary>
+                Tests that test on calculate
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.AManagerTest.Test_OnDraw">
+            <summary>
+                Tests that test on draw
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.AManagerTest.Test_OnGui">
+            <summary>
+                Tests that test on gui
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.AManagerTest.Test_OnDisable">
+            <summary>
+                Tests that test on disable
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.AManagerTest.Test_OnReset">
+            <summary>
+                Tests that test on reset
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.AManagerTest.Test_OnStop">
+            <summary>
+                Tests that test on stop
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.AManagerTest.Test_OnExit">
+            <summary>
+                Tests that test on exit
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.AManagerTest.Test_OnDestroy">
+            <summary>
+                Tests that test on destroy
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.AManagerTest.IsEnable_PropertySet_GetReturnsCorrectValue">
+            <summary>
+                Tests that is enable property set get returns correct value
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.AManagerTest.Name_PropertySet_GetReturnsCorrectValue">
+            <summary>
+                Tests that name property set get returns correct value
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.AManagerTest.Id_PropertySet_GetReturnsCorrectValue">
+            <summary>
+                Tests that id property set get returns correct value
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.AManagerTest.Tag_PropertySet_GetReturnsCorrectValue">
+            <summary>
+                Tests that tag property set get returns correct value
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Ecs.System.Manager.Graphic.GraphicManagerTest">
+            <summary>
+                The graphic manager test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Graphic.GraphicManagerTest.OnEnable_ValidInput">
+            <summary>
+                Tests that on enable valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Graphic.GraphicManagerTest.OnInit_ValidInput">
+            <summary>
+                Tests that on init valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Graphic.GraphicManagerTest.OnStart_ValidInput">
+            <summary>
+                Tests that on start valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Graphic.GraphicManagerTest.OnUpdate_ValidInput">
+            <summary>
+                Tests that on update valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Graphic.GraphicManagerTest.OnExit_ValidInput">
+            <summary>
+                Tests that on exit valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Graphic.GraphicManagerTest.Attach_ValidInput">
+            <summary>
+                Tests that attach valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Graphic.GraphicManagerTest.UnAttach_ValidInput">
+            <summary>
+                Tests that un attach valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Ecs.System.Manager.Input.InputManagerTest">
+            <summary>
+                The input manager test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Input.InputManagerTest.OnInit_ValidInput">
+            <summary>
+                Tests that on init valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Input.InputManagerTest.OnDispatchEvents_ValidInput">
+            <summary>
+                Tests that on dispatch events valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Input.InputManagerTest.HandleSdlQuitEvent_ValidInput">
+            <summary>
+                Tests that handle sdl quit event valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Input.InputManagerTest.HandleSdlKeyupEvent_ValidInput">
+            <summary>
+                Tests that handle sdl keyup event valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Input.InputManagerTest.HandleSdlKeydownEvent_ValidInput">
+            <summary>
+                Tests that handle sdl keydown event valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Input.InputManagerTest.HandleSdlJoyButtonDownEvent_ValidInput">
+            <summary>
+                Tests that handle sdl joy button down event valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Input.InputManagerTest.HandleSdlJoyAxisMotionEvent_ValidInput">
+            <summary>
+                Tests that handle sdl joy axis motion event valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Input.InputManagerTest.NotifyKeyHold_ValidInput">
+            <summary>
+                Tests that notify key hold valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Input.InputManagerTest.NotifyKeyPress_ValidInput">
+            <summary>
+                Tests that notify key press valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Input.InputManagerTest.NotifyKeyRelease_ValidInput">
+            <summary>
+                Tests that notify key release valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Input.InputManagerTest.NotifyKeyHold_ValidInput_v2">
+            <summary>
+                Tests that notify key hold valid input v 2
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Input.InputManagerTest.NotifyKeyPress_ValidInput_v2">
+            <summary>
+                Tests that notify key press valid input v 2
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Input.InputManagerTest.NotifyKeyRelease_ValidInput_v2">
+            <summary>
+                Tests that notify key release valid input v 2
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Input.InputManagerTest.NotifyKeyHoldWithKey_ValidInput">
+            <summary>
+                Tests that notify key hold with key valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Ecs.System.Manager.Physic.PhysicManagerTest">
+            <summary>
+                The physic manager test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Physic.PhysicManagerTest.Test_OnUpdate">
+            <summary>
+                Tests that test on update
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Physic.PhysicManagerTest.Test_Attach">
+            <summary>
+                Tests that test attach
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Physic.PhysicManagerTest.Test_UnAttach">
+            <summary>
+                Tests that test un attach
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Ecs.System.Manager.Samples.MockManager">
+            <summary>
+                The mock manager class
+            </summary>
+            <seealso cref="T:Alis.Core.Ecs.System.Manager.AManager" />
+        </member>
+        <member name="T:Alis.Test.Core.Ecs.System.Manager.Scene.SceneManagerTest">
+            <summary>
+                The scene manager test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Scene.SceneManagerTest.OnEnable_ValidInput">
+            <summary>
+                Tests that on enable valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Scene.SceneManagerTest.OnInit_ValidInput">
+            <summary>
+                Tests that on init valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Scene.SceneManagerTest.OnAwake_ValidInput">
+            <summary>
+                Tests that on awake valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Scene.SceneManagerTest.OnStart_ValidInput">
+            <summary>
+                Tests that on start valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Scene.SceneManagerTest.OnBeforeUpdate_ValidInput">
+            <summary>
+                Tests that on before update valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Scene.SceneManagerTest.OnUpdate_ValidInput">
+            <summary>
+                Tests that on update valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Scene.SceneManagerTest.OnAfterUpdate_ValidInput">
+            <summary>
+                Tests that on after update valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Scene.SceneManagerTest.OnBeforeFixedUpdate_ValidInput">
+            <summary>
+                Tests that on before fixed update valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Scene.SceneManagerTest.OnFixedUpdate_ValidInput">
+            <summary>
+                Tests that on fixed update valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Scene.SceneManagerTest.OnAfterFixedUpdate_ValidInput">
+            <summary>
+                Tests that on after fixed update valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Scene.SceneManagerTest.OnDispatchEvents_ValidInput">
+            <summary>
+                Tests that on dispatch events valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Scene.SceneManagerTest.OnCalculate_ValidInput">
+            <summary>
+                Tests that on calculate valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Scene.SceneManagerTest.OnDraw_ValidInput">
+            <summary>
+                Tests that on draw valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Scene.SceneManagerTest.OnGui_ValidInput">
+            <summary>
+                Tests that on gui valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Scene.SceneManagerTest.OnDisable_ValidInput">
+            <summary>
+                Tests that on disable valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Scene.SceneManagerTest.OnReset_ValidInput">
+            <summary>
+                Tests that on reset valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Scene.SceneManagerTest.OnStop_ValidInput">
+            <summary>
+                Tests that on stop valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Scene.SceneManagerTest.OnExit_ValidInput">
+            <summary>
+                Tests that on exit valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Scene.SceneManagerTest.OnDestroy_ValidInput">
+            <summary>
+                Tests that on destroy valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Scene.SceneManagerTest.Remove_ValidInput_RemovesScene">
+            <summary>
+                Tests that remove valid input removes scene
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Scene.SceneManagerTest.Get_ValidInput_ReturnsScene">
+            <summary>
+                Tests that get valid input returns scene
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Scene.SceneManagerTest.Contains_ValidInput_ReturnsTrue">
+            <summary>
+                Tests that contains valid input returns true
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Scene.SceneManagerTest.Clear_ValidInput_ClearsScenes">
+            <summary>
+                Tests that clear valid input clears scenes
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Scene.SceneManagerTest.LoadScene_ValidScene_SetsCurrentScene">
+            <summary>
+                Tests that load scene valid scene sets current scene
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Manager.Scene.SceneManagerTest.ReloadScene_ValidScene_SetsCurrentScene">
+            <summary>
+                Tests that reload scene valid scene sets current scene
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Ecs.System.Setting.Audio.AudioSettingTest">
+            <summary>
+                The audio setting test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Setting.Audio.AudioSettingTest.Test_AudioSetting_Volume">
+            <summary>
+                Tests that test audio setting volume
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Setting.Audio.AudioSettingTest.Test_AudioSetting_Mute">
+            <summary>
+                Tests that test audio setting mute
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Setting.Audio.AudioSettingTest.Test_AudioSetting_Builder">
+            <summary>
+                Tests that test audio setting builder
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Ecs.System.Setting.General.GeneralSettingTest">
+            <summary>
+                The general setting test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Setting.General.GeneralSettingTest.Test_GeneralSetting_Debug">
+            <summary>
+                Tests that test general setting debug
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Setting.General.GeneralSettingTest.Test_GeneralSetting_Name">
+            <summary>
+                Tests that test general setting name
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Setting.General.GeneralSettingTest.Test_GeneralSetting_Description">
+            <summary>
+                Tests that test general setting description
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Setting.General.GeneralSettingTest.Test_GeneralSetting_Version">
+            <summary>
+                Tests that test general setting version
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Setting.General.GeneralSettingTest.Test_GeneralSetting_Author">
+            <summary>
+                Tests that test general setting author
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Setting.General.GeneralSettingTest.Test_GeneralSetting_License">
+            <summary>
+                Tests that test general setting license
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Setting.General.GeneralSettingTest.Test_GeneralSetting_Icon">
+            <summary>
+                Tests that test general setting icon
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Setting.General.GeneralSettingTest.Test_GeneralSetting_Builder">
+            <summary>
+                Tests that test general setting builder
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Ecs.System.Setting.Graphic.GraphicSettingTest">
+            <summary>
+                The graphic setting test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Setting.Graphic.GraphicSettingTest.Test_GraphicSetting_Window">
+            <summary>
+                Tests that test graphic setting window
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Setting.Graphic.GraphicSettingTest.Test_GraphicSetting_Builder">
+            <summary>
+                Tests that test graphic setting builder
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Ecs.System.Setting.Input.InputSettingTest">
+            <summary>
+                The input setting test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Setting.Input.InputSettingTest.Test_InputSetting_UpdateMode">
+            <summary>
+                Tests that test input setting update mode
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Setting.Input.InputSettingTest.Test_InputSetting_Builder">
+            <summary>
+                Tests that test input setting builder
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Ecs.System.Setting.Network.NetworkSettingTest">
+            <summary>
+                The network setting test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Setting.Network.NetworkSettingTest.Test_NetworkSetting_Port">
+            <summary>
+                Tests that test network setting port
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Setting.Network.NetworkSettingTest.Test_NetworkSetting_Ip">
+            <summary>
+                Tests that test network setting ip
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Setting.Network.NetworkSettingTest.Test_NetworkSetting_Host">
+            <summary>
+                Tests that test network setting host
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Setting.Network.NetworkSettingTest.Test_NetworkSetting_Protocol">
+            <summary>
+                Tests that test network setting protocol
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Setting.Network.NetworkSettingTest.Test_NetworkSetting_Builder">
+            <summary>
+                Tests that test network setting builder
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Ecs.System.Setting.Physic.PhysicSettingTest">
+            <summary>
+                The physic setting test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Setting.Physic.PhysicSettingTest.Test_PhysicSetting_DebugMode">
+            <summary>
+                Tests that test physic setting debug mode
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Setting.Physic.PhysicSettingTest.Test_PhysicSetting_DebugColor">
+            <summary>
+                Tests that test physic setting debug color
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Setting.Physic.PhysicSettingTest.Test_PhysicSetting_Gravity">
+            <summary>
+                Tests that test physic setting gravity
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Setting.Physic.PhysicSettingTest.Test_PhysicSetting_Builder">
+            <summary>
+                Tests that test physic setting builder
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Ecs.System.Setting.Scene.SceneSettingTest">
+            <summary>
+                The scene setting test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Setting.Scene.SceneSettingTest.Test_SceneSetting_MaxNumberOfScenes">
+            <summary>
+                Tests that test scene setting max number of scenes
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Setting.Scene.SceneSettingTest.Test_SceneSetting_Builder">
+            <summary>
+                Tests that test scene setting builder
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Ecs.System.Setting.SettingsTest">
+            <summary>
+                The settings test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Setting.SettingsTest.Test_Settings_General">
+            <summary>
+                Tests that test settings general
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Setting.SettingsTest.Test_Settings_Audio">
+            <summary>
+                Tests that test settings audio
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Setting.SettingsTest.Test_Settings_Graphic">
+            <summary>
+                Tests that test settings graphic
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Setting.SettingsTest.Test_Settings_Input">
+            <summary>
+                Tests that test settings input
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Setting.SettingsTest.Test_Settings_Network">
+            <summary>
+                Tests that test settings network
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Setting.SettingsTest.Test_Settings_Physic">
+            <summary>
+                Tests that test settings physic
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Setting.SettingsTest.Test_Settings_Scene">
+            <summary>
+                Tests that test settings scene
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Setting.SettingsTest.Test_Settings_General_v2">
+            <summary>
+                Tests that test settings general v 2
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Setting.SettingsTest.Test_Settings_Audio_v2">
+            <summary>
+                Tests that test settings audio v 2
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Setting.SettingsTest.Test_Settings_Graphic_v2">
+            <summary>
+                Tests that test settings graphic v 2
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Setting.SettingsTest.Test_Settings_Input_v2">
+            <summary>
+                Tests that test settings input v 2
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Setting.SettingsTest.Test_Settings_Network_v2">
+            <summary>
+                Tests that test settings network v 2
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Setting.SettingsTest.Test_Settings_Physic_v2">
+            <summary>
+                Tests that test settings physic v 2
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.System.Setting.SettingsTest.Test_Settings_Scene_v2">
+            <summary>
+                Tests that test settings scene v 2
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Ecs.VideoGameTest">
+            <summary>
+                The video game test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.VideoGameTest.IsRunning_SetValue_ShouldChangeIsRunning">
+            <summary>
+                Tests that is running set value should change is running
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.VideoGameTest.Builder_ShouldReturnVideoGameBuilder">
+            <summary>
+                Tests that builder should return video game builder
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Ecs.VideoGameTest.SetContext_ShouldSetContext">
+            <summary>
+                Tests that set context should set context
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Graphic.WindowTest">
+            <summary>
+                The window test class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Graphic.WindowTest.Background_SetValue_ShouldChangeBackground">
+            <summary>
+                Tests that background set value should change background
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Graphic.WindowTest.Resolution_SetValue_ShouldChangeResolution">
+            <summary>
+                Tests that resolution set value should change resolution
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Graphic.WindowTest.IsWindowResizable_SetValue_ShouldChangeIsWindowResizable">
+            <summary>
+                Tests that is window resizable set value should change is window resizable
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Graphic.WindowTest.Builder_CallMethod_ShouldReturnWindowBuilder">
+            <summary>
+                Tests that builder call method should return window builder
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Helper.BenchmarkHelper">
+            <summary>
+            The benchmark helper class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Helper.BenchmarkHelper.Measure(System.Action)">
+            <summary>
+            Measures the action
+            </summary>
+            <param name="action">The action</param>
+            <exception cref="T:System.Exception">The method took {elapsedMilliseconds} ms, which exceeds the limit of {maxMilliseconds} ms.</exception>
+            <exception cref="T:System.Exception">The method used {memoryUsed} bytes of memory, which exceeds the limit of {maxMemoryBytes} bytes.</exception>
+        </member>
+        <member name="T:Alis.Test.Helper.BenchmarkResult">
+            <summary>
+            The benchmark result class
+            </summary>
+        </member>
+        <member name="P:Alis.Test.Helper.BenchmarkResult.ElapsedMilliseconds">
+            <summary>
+            Gets or sets the value of the elapsed milliseconds
+            </summary>
+        </member>
+        <member name="P:Alis.Test.Helper.BenchmarkResult.MemoryUsed">
+            <summary>
+            Gets or sets the value of the memory used
+            </summary>
+        </member>
+        <member name="P:Alis.Test.Helper.BenchmarkResult.ElapsedNanoseconds">
+            <summary>
+            Gets or sets the value of the elapsed nanoseconds
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Sample.CustomManager">
+            <summary>
+                The custom manager class
+            </summary>
+            <seealso cref="T:Alis.Core.Ecs.System.Manager.AManager" />
+        </member>
+    </members>
+</doc>

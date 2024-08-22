@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Extension.Profile</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Extension.Profile.ProfileData">
+            <summary>
+                The profile data class
+            </summary>
+        </member>
+        <member name="P:Alis.Extension.Profile.ProfileData.MemoryUsage">
+            <summary>
+                Gets or sets the value of the memory usage
+            </summary>
+        </member>
+        <member name="P:Alis.Extension.Profile.ProfileData.CpuUsage">
+            <summary>
+                Gets or sets the value of the cpu usage
+            </summary>
+        </member>
+        <member name="T:Alis.Extension.Profile.Profiler">
+            <summary>
+                The profiler class
+            </summary>
+        </member>
+        <member name="F:Alis.Extension.Profile.Profiler.elapsedTime">
+            <summary>
+                The elapsed time
+            </summary>
+        </member>
+        <member name="F:Alis.Extension.Profile.Profiler.startTime">
+            <summary>
+                The start time
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Profile.Profiler.StartProfiling">
+            <summary>
+                Starts the profiling
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Profile.Profiler.StopProfiling">
+            <summary>
+                Stops the profiling
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Profile.Profiler.GetElapsedTime">
+            <summary>
+                Gets the elapsed time
+            </summary>
+            <returns>The elapsed time</returns>
+        </member>
+        <member name="M:Alis.Extension.Profile.Profiler.GetStartTime">
+            <summary>
+                Gets the start time
+            </summary>
+            <returns>The start time</returns>
+        </member>
+        <member name="T:Alis.Extension.Profile.ProfilerService">
+            <summary>
+                The profiler service class
+            </summary>
+        </member>
+        <member name="F:Alis.Extension.Profile.ProfilerService.profileData">
+            <summary>
+                The profile data
+            </summary>
+        </member>
+        <member name="F:Alis.Extension.Profile.ProfilerService.profiler">
+            <summary>
+                The profiler
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Profile.ProfilerService.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Extension.Profile.ProfilerService" /> class
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Profile.ProfilerService.StartProfiling">
+            <summary>
+                Starts the profiling
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Profile.ProfilerService.StopProfiling">
+            <summary>
+                Stops the profiling
+            </summary>
+            <returns>The profile data</returns>
+        </member>
+        <member name="M:Alis.Extension.Profile.ProfilerService.GetCpuUsage">
+            <summary>
+                Gets the cpu usage
+            </summary>
+            <returns>The cpu usage</returns>
+        </member>
+        <member name="M:Alis.Extension.Profile.ProfilerService.GetMemoryUsage">
+            <summary>
+                Gets the memory usage
+            </summary>
+            <returns>The memory usage</returns>
+        </member>
+        <member name="M:Alis.Extension.Profile.ProfilerService.GetProfileData">
+            <summary>
+                Gets the profile data
+            </summary>
+            <returns>The profile data</returns>
+        </member>
+    </members>
+</doc>

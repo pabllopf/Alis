@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Extension.Profile.Sample</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Extension.Profile.Sample.Program">
+            <summary>
+                The program class
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Profile.Sample.Program.Main(System.String[])">
+            <summary>
+                Main the args
+            </summary>
+            <param name="args">The args</param>
+        </member>
+        <member name="M:Alis.Extension.Profile.Sample.Program.SampleMethod">
+            <summary>
+                Samples the method
+            </summary>
+        </member>
+    </members>
+</doc>

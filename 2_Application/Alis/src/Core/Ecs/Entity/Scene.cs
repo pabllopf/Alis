@@ -260,7 +260,6 @@ namespace Alis.Core.Ecs.Entity
         /// <summary>
         ///     Clears this instance
         /// </summary>
-        /// <typeparam name="T">The </typeparam>
         public virtual void Clear() => GameObjects.Clear();
     }
 }

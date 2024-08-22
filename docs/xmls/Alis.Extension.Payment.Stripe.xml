@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Extension.Payment.Stripe</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Extension.Payment.Stripe.StoreManager">
+            <summary>
+                The store manager class
+            </summary>
+            <seealso />
+        </member>
+    </members>
+</doc>
