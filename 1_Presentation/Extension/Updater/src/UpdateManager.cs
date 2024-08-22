@@ -66,11 +66,10 @@ namespace Alis.Extension.Updater
         private readonly string _programFolder;
         
         /// <summary>
-        ///     Initializes a new instance of the <see cref="UpdateManager" /> class
+        /// Initializes a new instance of the <see cref="UpdateManager"/> class
         /// </summary>
         /// <param name="gitHubApiService">The git hub api service</param>
         /// <param name="fileService">The file service</param>
-        /// <param name="apiUrl">The api url</param>
         /// <param name="programFolder">The program folder</param>
         public UpdateManager(IGitHubApiService gitHubApiService, IFileService fileService, string programFolder)
         {

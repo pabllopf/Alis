@@ -1,0 +1,3167 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Core.Graphic.Test</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest">
+            <summary>
+                The sdl ttf test class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.ByteSwappedUnicodeTest">
+            <summary>
+                Tests that byte swapped unicode test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.OpenFontIndex_NoExceptionThrown">
+            <summary>
+                Tests that open font index no exception thrown
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.GetFontStyle_Test">
+            <summary>
+                Tests that get font style test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.SetFontStyle_Test">
+            <summary>
+                Tests that set font style test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.GetFontOutline_Test">
+            <summary>
+                Tests that get font outline test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.SetFontOutline_Test">
+            <summary>
+                Tests that set font outline test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.GetFontHinting_Test">
+            <summary>
+                Tests that get font hinting test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.SetFontHinting_Test">
+            <summary>
+                Tests that set font hinting test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.FontHeight_Test">
+            <summary>
+                Tests that font height test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.FontAscent_Test">
+            <summary>
+                Tests that font ascent test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.FontLineSkip_Test">
+            <summary>
+                Tests that font line skip test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.GetFontKerning_Test">
+            <summary>
+                Tests that get font kerning test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.SetFontKerning_Test">
+            <summary>
+                Tests that set font kerning test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.FontFaces_Test">
+            <summary>
+                Tests that font faces test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.FontDescent_Test">
+            <summary>
+                Tests that font descent test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.FontFaceIsFixedWidth_Test">
+            <summary>
+                Tests that font face is fixed width test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.FontFaceStyleName_Test">
+            <summary>
+                Tests that font face style name test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.GlyphIsProvided_Test">
+            <summary>
+                Tests that glyph is provided test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.GlyphMetrics_Test">
+            <summary>
+                Tests that glyph metrics test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.SizeText_Test">
+            <summary>
+                Tests that size text test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.SizeUtf8_Test">
+            <summary>
+                Tests that size utf 8 test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.SizeUnicode_Test">
+            <summary>
+                Tests that size unicode test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.RenderTextSolid_Test">
+            <summary>
+                Tests that render text solid test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.RenderUtf8Solid_Test">
+            <summary>
+                Tests that render utf 8 solid test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.RenderUnicodeSolid_Test">
+            <summary>
+                Tests that render unicode solid test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.RenderGlyphSolid_Test">
+            <summary>
+                Tests that render glyph solid test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.RenderTextShaded_Test">
+            <summary>
+                Tests that render text shaded test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.RenderUtf8Shaded_Test">
+            <summary>
+                Tests that render utf 8 shaded test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.RenderUnicodeShaded_Test">
+            <summary>
+                Tests that render unicode shaded test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.RenderGlyphShaded_Test">
+            <summary>
+                Tests that render glyph shaded test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.RenderTextBlended_Test">
+            <summary>
+                Tests that render text blended test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.RenderUnicodeBlended_Test">
+            <summary>
+                Tests that render unicode blended test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.RenderTextBlendedWrapped_Test">
+            <summary>
+                Tests that render text blended wrapped test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.RenderUtf8BlendedWrapped_Test">
+            <summary>
+                Tests that render utf 8 blended wrapped test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.RenderUnicodeBlendedWrapped_Test">
+            <summary>
+                Tests that render unicode blended wrapped test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.RenderGlyphBlended_Test">
+            <summary>
+                Tests that render glyph blended test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.RenderUtf8Blended_Test">
+            <summary>
+                Tests that render utf 8 blended test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.GetTtfVersion_Test">
+            <summary>
+                Tests that get ttf version test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.OpenFont_Test">
+            <summary>
+                Tests that open font test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.GetFontKerningSizeGlyphs_Test">
+            <summary>
+                Tests that get font kerning size glyphs test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.GetFontKerningSize_Test">
+            <summary>
+                Tests that get font kerning size test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.SetError_Test">
+            <summary>
+                Tests that set error test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.GetError_Test">
+            <summary>
+                Tests that get error test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.WasInit_Test">
+            <summary>
+                Tests that was init test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.Quit_Test">
+            <summary>
+                Tests that quit test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.SdlTtfTest.CloseFont_Test">
+            <summary>
+                Tests that close font test
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.NativeSdlTest">
+            <summary>
+                The native sdl test class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.NativeSdlTest.Test">
+            <summary>
+                Tests that test
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.SdlTestP1">
+            <summary>
+                The sdl test class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestInit">
+            <summary>
+                Tests that test init
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGetGlCompiledVersion">
+            <summary>
+                Tests that test get gl compiled version
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGameControllerClose">
+            <summary>
+                Tests that test game controller close
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestCloseAudioDevice">
+            <summary>
+                Tests that test close audio device
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGetAudioDeviceName">
+            <summary>
+                Tests that test get audio device name
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGetAudioDeviceStatus">
+            <summary>
+                Tests that test get audio device status
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGetAudioDriver">
+            <summary>
+                Tests that test get audio driver
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGetCurrentAudioDriver">
+            <summary>
+                Tests that test get current audio driver
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGetNumAudioDevices">
+            <summary>
+                Tests that test get num audio devices
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGetNumAudioDrivers">
+            <summary>
+                Tests that test get num audio drivers
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestLoadWav">
+            <summary>
+                Tests that test load wav
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestLockAudioDevice">
+            <summary>
+                Tests that test lock audio device
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestMixAudio">
+            <summary>
+                Tests that test mix audio
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestMixAudioFormat">
+            <summary>
+                Tests that test mix audio format
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestOpenAudioDevice">
+            <summary>
+                Tests that test open audio device
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestPauseAudio">
+            <summary>
+                Tests that test pause audio
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestPauseAudioDevice">
+            <summary>
+                Tests that test pause audio device
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestUnlockAudioDevice">
+            <summary>
+                Tests that test unlock audio device
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestFourcc">
+            <summary>
+                Tests that test fourcc
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGetVersion">
+            <summary>
+                Tests that test get version
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGetPerformanceFrequency">
+            <summary>
+                Tests that test get performance frequency
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGetPerformanceCounter">
+            <summary>
+                Tests that test get performance counter
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestClearHints">
+            <summary>
+                Tests that test clear hints
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestSetHint">
+            <summary>
+                Tests that test set hint
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGetHint">
+            <summary>
+                Tests that test get hint
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestNumHaptics">
+            <summary>
+                Tests that test num haptics
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestSetHint_ShouldReturnTrue_WhenValidHintIsPassed">
+            <summary>
+                Tests that test set hint should return true when valid hint is passed
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGetHint_ShouldReturnCorrectValue_WhenValidHintIsPassed">
+            <summary>
+                Tests that test get hint should return correct value when valid hint is passed
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestNumHaptics_ShouldReturnNonNegativeValue">
+            <summary>
+                Tests that test num haptics should return non negative value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestClearHints_ShouldNotThrowException">
+            <summary>
+                Tests that test clear hints should not throw exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGetPerformanceCounter_ShouldReturnNonZeroValue">
+            <summary>
+                Tests that test get performance counter should return non zero value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGetPerformanceFrequency_ShouldReturnNonZeroValue">
+            <summary>
+                Tests that test get performance frequency should return non zero value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestInternalSetWindowPosition_ShouldNotThrowException">
+            <summary>
+                Tests that test internal set window position should not throw exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestInternalGlGetCurrentContext_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test internal gl get current context should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestInternalGetPerformanceFrequency_ShouldReturnNonZeroValue">
+            <summary>
+                Tests that test internal get performance frequency should return non zero value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestInternalGetPerformanceCounter_ShouldReturnNonZeroValue">
+            <summary>
+                Tests that test internal get performance counter should return non zero value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestSdlInit_ShouldReturnZero_WhenInitEverythingIsPassed">
+            <summary>
+                Tests that test sdl init should return zero when init everything is passed
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestSdlGetVersion_ShouldReturnExpectedVersion">
+            <summary>
+                Tests that test sdl get version should return expected version
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestSdlGetPerformanceCounter_ShouldReturnNonZeroValue">
+            <summary>
+                Tests that test sdl get performance counter should return non zero value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestSdlGetPerformanceFrequency_ShouldReturnNonZeroValue">
+            <summary>
+                Tests that test sdl get performance frequency should return non zero value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestSdlNumHaptics_ShouldReturnNonNegativeValue">
+            <summary>
+                Tests that test sdl num haptics should return non negative value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestSdlClearHints_ShouldNotThrowException">
+            <summary>
+                Tests that test sdl clear hints should not throw exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestSdlSetHint_ShouldReturnTrue_WhenValidHintIsPassed">
+            <summary>
+                Tests that test sdl set hint should return true when valid hint is passed
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestSdlGetHint_ShouldReturnCorrectValue_WhenValidHintIsPassed">
+            <summary>
+                Tests that test sdl get hint should return correct value when valid hint is passed
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestLoadFile_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test load file should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGetError_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test get error should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestSetError_ShouldNotThrowException">
+            <summary>
+                Tests that test set error should not throw exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestWasInit_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test was init should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGetHint_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test get hint should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestSetHint_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test set hint should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestSetHintWithPriority_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test set hint with priority should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGetHintBoolean_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test get hint boolean should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGetVersion_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test get version should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestWindowPosUndefinedDisplay_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test window pos undefined display should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestWindowPosIsUndefined_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test window pos is undefined should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestWindowPosCenteredDisplay_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test window pos centered display should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestWindowPosIsCentered_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test window pos is centered should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestCreateWindow_ShouldReturnNonNullPointer">
+            <summary>
+                Tests that test create window should return non null pointer
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestCreateWindowAndRenderer_ShouldReturnNonNullPointers">
+            <summary>
+                Tests that test create window and renderer should return non null pointers
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestDestroyWindow_ShouldNotThrowException">
+            <summary>
+                Tests that test destroy window should not throw exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGetClosestDisplayMode_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test get closest display mode should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGetCurrentDisplayMode_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test get current display mode should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGetCurrentVideoDriver_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test get current video driver should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGetDesktopDisplayMode_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test get desktop display mode should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGetDisplayName_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test get display name should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGetDisplayBounds_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test get display bounds should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGetDisplayDpi_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test get display dpi should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGetDisplayMode_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test get display mode should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGetDisplayUsableBounds_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test get display usable bounds should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGetNumDisplayModes_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test get num display modes should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGetNumVideoDisplays_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test get num video displays should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGetNumVideoDrivers_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test get num video drivers should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGetVideoDriver_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test get video driver should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGetWindowBrightness_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test get window brightness should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestSetWindowOpacity_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test set window opacity should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGetWindowOpacity_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test get window opacity should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestSetWindowModalFor_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test set window modal for should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestSetWindowInputFocus_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test set window input focus should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGetWindowData_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test get window data should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGetWindowDisplayIndex_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test get window display index should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestSdlAudioStreamClear_ShouldNotThrowException">
+            <summary>
+                Tests that test sdl audio stream clear should not throw exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestSdlFreeAudioStream_ShouldNotThrowException">
+            <summary>
+                Tests that test sdl free audio stream should not throw exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestSdlOpenAudioDevice_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test sdl open audio device should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestSdlPauseAudio_ShouldNotThrowException">
+            <summary>
+                Tests that test sdl pause audio should not throw exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestSdlPauseAudioDevice_ShouldNotThrowException">
+            <summary>
+                Tests that test sdl pause audio device should not throw exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestSdlUnlockAudioDevice_ShouldNotThrowException">
+            <summary>
+                Tests that test sdl unlock audio device should not throw exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestSdlNewAudioStream_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test sdl new audio stream should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestSdlAudioStreamPut_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test sdl audio stream put should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestSdlAudioStreamGet_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test sdl audio stream get should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestSdlAudioStreamAvailable_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test sdl audio stream available should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestMixAudioFormat_ShouldNotThrowException">
+            <summary>
+                Tests that test mix audio format should not throw exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestSdlAudioBitSize_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test sdl audio bit size should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestSdlAudioIsFloat_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test sdl audio is float should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestSdlAudioIsBigEndian_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test sdl audio is big endian should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestSdlAudioIsSigned_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test sdl audio is signed should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestSdlAudioIsInt_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test sdl audio is int should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestSdlAudioIsLittleEndian_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test sdl audio is little endian should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestSdlAudioIsUnsigned_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test sdl audio is unsigned should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestSdlMixAudioFormat_ShouldNotThrowException">
+            <summary>
+                Tests that test sdl mix audio format should not throw exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestOpenAudioDevice_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test open audio device should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGetWindowDisplayMode_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test get window display mode should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGetWindowFlags_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test get window flags should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGetWindowFromId_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test get window from id should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGetWindowGammaRamp_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test get window gamma ramp should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGetWindowGrab_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test get window grab should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGetWindowId_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test get window id should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGetWindowPixelFormat_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test get window pixel format should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestStartTextInput_ShouldNotThrowException">
+            <summary>
+                Tests that test start text input should not throw exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestIsTextInputActive_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test is text input active should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestStopTextInput_ShouldNotThrowException">
+            <summary>
+                Tests that test stop text input should not throw exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestSetTextInputRect_ShouldNotThrowException">
+            <summary>
+                Tests that test set text input rect should not throw exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestHasScreenKeyboardSupport_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test has screen keyboard support should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestIsScreenKeyboardShown_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test is screen keyboard shown should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGetMouseFocus_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test get mouse focus should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGetMouseStateOutXAndY_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test get mouse state out x and y should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.TestGetGlobalMouseStateOutXAndOutY_ShouldReturnExpectedValue">
+            <summary>
+                Tests that test get global mouse state out x and out y should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.CalculateGammaRampTest">
+            <summary>
+                Tests that calculate gamma ramp test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.GetPixelFormatNameTest">
+            <summary>
+                Tests that get pixel format name test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.RenderCopyExTest">
+            <summary>
+                Tests that render copy ex test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.GetWindowMaximumSizeTest">
+            <summary>
+                Tests that get window maximum size test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.GetWindowMinimumSizeTest">
+            <summary>
+                Tests that get window minimum size test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.SetWindowOpacityTest">
+            <summary>
+                Tests that set window opacity test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.GetWindowOpacityTest">
+            <summary>
+                Tests that get window opacity test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.SetWindowModalForTest">
+            <summary>
+                Tests that set window modal for test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.SetWindowInputFocusTest">
+            <summary>
+                Tests that set window input focus test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.GetWindowDataTest">
+            <summary>
+                Tests that get window data test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.GetWindowDisplayIndexTest">
+            <summary>
+                Tests that get window display index test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.GetWindowFlagsTest">
+            <summary>
+                Tests that get window flags test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.GetWindowFromIdTest">
+            <summary>
+                Tests that get window from id test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.GetWindowPixelFormatTest">
+            <summary>
+                Tests that get window pixel format test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.StartTextInputTest">
+            <summary>
+                Tests that start text input test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.IsTextInputActiveTest">
+            <summary>
+                Tests that is text input active test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.StopTextInputTest">
+            <summary>
+                Tests that stop text input test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.SetTextInputRectTest">
+            <summary>
+                Tests that set text input rect test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.HasScreenKeyboardSupportTest">
+            <summary>
+                Tests that has screen keyboard support test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.IsScreenKeyboardShownTest">
+            <summary>
+                Tests that is screen keyboard shown test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.GetMouseFocusTest">
+            <summary>
+                Tests that get mouse focus test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.GetMouseStateOutXAndYTest">
+            <summary>
+                Tests that get mouse state out x and y test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.GetGlobalMouseStateOutXAndOutYTest">
+            <summary>
+                Tests that get global mouse state out x and out y test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.GetWindowPositionTest">
+            <summary>
+                Tests that get window position test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.GetWindowSizeTest">
+            <summary>
+                Tests that get window size test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.GetWindowTitleTest">
+            <summary>
+                Tests that get window title test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.GetWindowBrightnessTest">
+            <summary>
+                Tests that get window brightness test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.GetWindowDisplayModeTest">
+            <summary>
+                Tests that get window display mode test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.GetWindowSurfaceTest">
+            <summary>
+                Tests that get window surface test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.GetWindowGrabTest">
+            <summary>
+                Tests that get window grab test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.UpdateTexture_ValidParams_ReturnsExpectedInt">
+            <summary>
+                Tests that update texture valid params returns expected int
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.RenderDrawLine_ValidParams_ReturnsExpectedInt">
+            <summary>
+                Tests that render draw line valid params returns expected int
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.RenderCopyExF_ValidParams_ReturnsExpectedInt">
+            <summary>
+                Tests that render copy ex f valid params returns expected int
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.RenderCopyExF_V2_ValidParams_ReturnsExpectedInt">
+            <summary>
+                Tests that render copy ex f v 2 valid params returns expected int
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP1.RenderCopyEx_ValidParams_ReturnsExpectedInt">
+            <summary>
+                Tests that render copy ex valid params returns expected int
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.SdlTestP2">
+            <summary>
+                The sdl test class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.RenderPresent_ShouldNotThrowException">
+            <summary>
+                Tests that render present should not throw exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.RenderReadPixels_ShouldReturnExpectedValue">
+            <summary>
+                Tests that render read pixels should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.RenderSetClipRect_ShouldReturnExpectedValue">
+            <summary>
+                Tests that render set clip rect should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.RenderSetLogicalSize_ShouldReturnExpectedValue">
+            <summary>
+                Tests that render set logical size should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.RenderSetScale_ShouldReturnExpectedValue">
+            <summary>
+                Tests that render set scale should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.SetRenderDrawBlendMode_ShouldReturnExpectedValue">
+            <summary>
+                Tests that set render draw blend mode should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.SetRenderDrawColor_ShouldReturnExpectedValue">
+            <summary>
+                Tests that set render draw color should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.SetRenderTarget_ShouldReturnExpectedValue">
+            <summary>
+                Tests that set render target should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.SetTextureAlphaMod_ShouldReturnExpectedValue">
+            <summary>
+                Tests that set texture alpha mod should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.UpdateTexture_ShouldReturnExpectedValue">
+            <summary>
+                Tests that update texture should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.RenderTargetSupported_ShouldReturnExpectedValue">
+            <summary>
+                Tests that render target supported should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.RenderIsClipEnabled_ShouldReturnExpectedValue">
+            <summary>
+                Tests that render is clip enabled should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.CalculateGammaRamp_ShouldNotThrowException">
+            <summary>
+                Tests that calculate gamma ramp should not throw exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.BlitSurface_ShouldReturnExpectedValue">
+            <summary>
+                Tests that blit surface should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.ConvertSurface_ShouldReturnExpectedValue">
+            <summary>
+                Tests that convert surface should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.CreateRgbSurfaceWithFormat_ShouldReturnExpectedValue">
+            <summary>
+                Tests that create rgb surface with format should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.FillRect_ShouldReturnExpectedValue">
+            <summary>
+                Tests that fill rect should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.GetClipRect_ShouldReturnExpectedValue">
+            <summary>
+                Tests that get clip rect should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.HasColorKey_ShouldReturnExpectedValue">
+            <summary>
+                Tests that has color key should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.GetColorKey_ShouldReturnExpectedValue">
+            <summary>
+                Tests that get color key should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.GetSurfaceAlphaMod_ShouldReturnExpectedValue">
+            <summary>
+                Tests that get surface alpha mod should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.GetSurfaceBlendMode_ShouldReturnExpectedValue">
+            <summary>
+                Tests that get surface blend mode should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.GetSurfaceColorMod_ShouldReturnExpectedValue">
+            <summary>
+                Tests that get surface color mod should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.LoadBmp_ShouldReturnExpectedValue">
+            <summary>
+                Tests that load bmp should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.SetClipRect_ShouldReturnExpectedValue">
+            <summary>
+                Tests that set clip rect should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.SetColorKey_ShouldReturnExpectedValue">
+            <summary>
+                Tests that set color key should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.SetSurfaceAlphaMod_ShouldReturnExpectedValue">
+            <summary>
+                Tests that set surface alpha mod should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.SetSurfaceBlendMode_ShouldReturnExpectedValue">
+            <summary>
+                Tests that set surface blend mode should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.SetSurfaceColorMod_ShouldReturnExpectedValue">
+            <summary>
+                Tests that set surface color mod should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.SetSurfacePalette_ShouldReturnExpectedValue">
+            <summary>
+                Tests that set surface palette should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.UpperBlit_ShouldReturnExpectedValue">
+            <summary>
+                Tests that upper blit should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.UpperBlitScaled_ShouldReturnExpectedValue">
+            <summary>
+                Tests that upper blit scaled should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.HasClipboardText_ShouldReturnExpectedValue">
+            <summary>
+                Tests that has clipboard text should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.GetClipboardText_ShouldReturnExpectedValue">
+            <summary>
+                Tests that get clipboard text should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.SetClipboardText_ShouldReturnExpectedValue">
+            <summary>
+                Tests that set clipboard text should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.PeepEvents_ShouldReturnExpectedValue">
+            <summary>
+                Tests that peep events should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.HasEvent_ShouldReturnExpectedValue">
+            <summary>
+                Tests that has event should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.HasEvents_ShouldReturnExpectedValue">
+            <summary>
+                Tests that has events should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.FlushEvent_ShouldNotThrowException">
+            <summary>
+                Tests that flush event should not throw exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.JoystickIsHaptic_ShouldReturnExpectedValue">
+            <summary>
+                Tests that joystick is haptic should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.MouseIsHaptic_ShouldReturnExpectedValue">
+            <summary>
+                Tests that mouse is haptic should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.NumHaptics_ShouldReturnExpectedValue">
+            <summary>
+                Tests that num haptics should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.GameControllerFromInstanceId_ShouldReturnExpectedValue">
+            <summary>
+                Tests that game controller from instance id should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.GetWindowSurface_ShouldReturnExpectedValue">
+            <summary>
+                Tests that get window surface should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.GetWindowGrab_ShouldReturnExpectedValue">
+            <summary>
+                Tests that get window grab should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.WarpMouseInWindow_ShouldExecuteWithoutException">
+            <summary>
+                Tests that warp mouse in window should execute without exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.WarpMouseGlobal_ShouldReturnExpectedValue">
+            <summary>
+                Tests that warp mouse global should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.SetRelativeMouseMode_ShouldReturnExpectedValue">
+            <summary>
+                Tests that set relative mouse mode should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.CaptureMouse_ShouldReturnExpectedValue">
+            <summary>
+                Tests that capture mouse should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.GetRelativeMouseMode_ShouldReturnExpectedValue">
+            <summary>
+                Tests that get relative mouse mode should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.CreateCursor_ShouldReturnExpectedValue">
+            <summary>
+                Tests that create cursor should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.CreateColorCursor_ShouldReturnExpectedValue">
+            <summary>
+                Tests that create color cursor should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.CreateSystemCursor_ShouldReturnExpectedValue">
+            <summary>
+                Tests that create system cursor should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.SetCursor_ShouldExecuteWithoutException">
+            <summary>
+                Tests that set cursor should execute without exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.GetCursor_ShouldReturnExpectedValue">
+            <summary>
+                Tests that get cursor should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.FreeCursor_ShouldExecuteWithoutException">
+            <summary>
+                Tests that free cursor should execute without exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.ShowCursor_ShouldReturnExpectedValue">
+            <summary>
+                Tests that show cursor should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.DelEventWatch_ShouldExecuteWithoutException">
+            <summary>
+                Tests that del event watch should execute without exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.GetEventState_ShouldReturnExpectedValue">
+            <summary>
+                Tests that get event state should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.RegisterEvents_ShouldReturnExpectedValue">
+            <summary>
+                Tests that register events should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.ScanCodeToKeyCode_ShouldReturnExpectedValue">
+            <summary>
+                Tests that scan code to key code should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.GetKeyboardFocus_ShouldReturnExpectedValue">
+            <summary>
+                Tests that get keyboard focus should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.GetKeyboardState_ShouldReturnExpectedValue">
+            <summary>
+                Tests that get keyboard state should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.GetModState_ShouldReturnExpectedValue">
+            <summary>
+                Tests that get mod state should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.SetModState_ShouldExecuteWithoutException">
+            <summary>
+                Tests that set mod state should execute without exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.GetKeyFromScancode_ShouldReturnExpectedValue">
+            <summary>
+                Tests that get key from scancode should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.GetScancodeFromKey_ShouldReturnExpectedValue">
+            <summary>
+                Tests that get scancode from key should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.GetScancodeName_ShouldReturnExpectedValue">
+            <summary>
+                Tests that get scancode name should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.GetScancodeFromName_ShouldReturnExpectedValue">
+            <summary>
+                Tests that get scancode from name should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.GetKeyName_ShouldReturnExpectedValue">
+            <summary>
+                Tests that get key name should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.GetKeyFromName_ShouldReturnExpectedValue">
+            <summary>
+                Tests that get key from name should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.RenderCopy_WithRectangleI_ReturnsExpectedResult">
+            <summary>
+                Tests that render copy with rectangle i returns expected result
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.RenderCopy_WithIntPtr_ReturnsExpectedResult">
+            <summary>
+                Tests that render copy with int ptr returns expected result
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.JoystickClose_WithValidJoystick_ClosesWithoutError">
+            <summary>
+                Tests that joystick close with valid joystick closes without error
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.JoystickClose_WithInvalidJoystick_ThrowsException">
+            <summary>
+                Tests that joystick close with invalid joystick throws exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.JoystickGetGuidString_ValidGuid_ReturnsExpectedString">
+            <summary>
+                Tests that joystick get guid string valid guid returns expected string
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.JoystickGetGuidString_InvalidGuid_ThrowsException">
+            <summary>
+                Tests that joystick get guid string invalid guid throws exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.GetRelativeMouseState_ValidParams_ReturnsExpectedUint">
+            <summary>
+                Tests that get relative mouse state valid params returns expected uint
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.GetRelativeMouseState_InvalidParams_ThrowsException">
+            <summary>
+                Tests that get relative mouse state invalid params throws exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.PushEvent_ValidEvent_ReturnsExpectedInt">
+            <summary>
+                Tests that push event valid event returns expected int
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.SetEventFilter_ValidFilter_SetsFilterWithoutError">
+            <summary>
+                Tests that set event filter valid filter sets filter without error
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.AddEventWatch_ValidFilter_AddsWatchWithoutError">
+            <summary>
+                Tests that add event watch valid filter adds watch without error
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.GetMouseStateXAndYOut_ValidParams_ReturnsExpectedUint">
+            <summary>
+                Tests that get mouse state x and y out valid params returns expected uint
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.GetMouseStateXOutAndY_ValidParams_ReturnsExpectedUint">
+            <summary>
+                Tests that get mouse state x out and y valid params returns expected uint
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.GetMouseStateToXAndY_ValidParams_ReturnsExpectedUint">
+            <summary>
+                Tests that get mouse state to x and y valid params returns expected uint
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.BlitSurface_ValidParams_ReturnsExpectedInt">
+            <summary>
+                Tests that blit surface valid params returns expected int
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.BlitSurface_RefSrcRect_ValidParams_ReturnsExpectedInt">
+            <summary>
+                Tests that blit surface ref src rect valid params returns expected int
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.BlitSurface_NoRefSrcRect_ValidParams_ReturnsExpectedInt">
+            <summary>
+                Tests that blit surface no ref src rect valid params returns expected int
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.FormatEnumToMasks_ValidParams_ReturnsExpectedBool">
+            <summary>
+                Tests that format enum to masks valid params returns expected bool
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.SetPaletteColors_ValidParams_ReturnsExpectedInt">
+            <summary>
+                Tests that set palette colors valid params returns expected int
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.SetPixelFormatPalette_ValidParams_ReturnsExpectedInt">
+            <summary>
+                Tests that set pixel format palette valid params returns expected int
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.FillRect_ValidParams_ReturnsExpectedInt">
+            <summary>
+                Tests that fill rect valid params returns expected int
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.FillRects_ValidParams_ReturnsExpectedInt">
+            <summary>
+                Tests that fill rects valid params returns expected int
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.RenderCopyEx_ValidParams_ReturnsExpectedInt">
+            <summary>
+                Tests that render copy ex valid params returns expected int
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.RenderCopyEx_WithIntPtrSrcRect_ValidParams_ReturnsExpectedInt">
+            <summary>
+                Tests that render copy ex with int ptr src rect valid params returns expected int
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.RenderCopyEx_WithIntPtrDstRect_ValidParams_ReturnsExpectedInt">
+            <summary>
+                Tests that render copy ex with int ptr dst rect valid params returns expected int
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.RenderCopyEx_WithIntPtrCenter_ValidParams_ReturnsExpectedInt">
+            <summary>
+                Tests that render copy ex with int ptr center valid params returns expected int
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.RenderCopyF_ValidParams_ReturnsExpectedInt">
+            <summary>
+                Tests that render copy f valid params returns expected int
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.RenderCopyEx_v2_ValidParams_ReturnsExpectedInt">
+            <summary>
+                Tests that render copy ex v 2 valid params returns expected int
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.RenderSetClipRect_ValidParams_ReturnsExpectedInt">
+            <summary>
+                Tests that render set clip rect valid params returns expected int
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.RenderCopyExF_ValidParams_ReturnsExpectedInt">
+            <summary>
+                Tests that render copy ex f valid params returns expected int
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.GlButtonLMask_ValidCall_ReturnsExpectedUint">
+            <summary>
+                Tests that gl button l mask valid call returns expected uint
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.GlButtonMMask_ValidCall_ReturnsExpectedUint">
+            <summary>
+                Tests that gl button m mask valid call returns expected uint
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.GlButtonRMask_ValidCall_ReturnsExpectedUint">
+            <summary>
+                Tests that gl button r mask valid call returns expected uint
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.GlButtonX1Mask_ValidCall_ReturnsExpectedUint">
+            <summary>
+                Tests that gl button x 1 mask valid call returns expected uint
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP2.GlButtonX2Mask_ValidCall_ReturnsExpectedUint">
+            <summary>
+                Tests that gl button x 2 mask valid call returns expected uint
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.SdlTestP3">
+            <summary>
+                The sdl test class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.GameControllerGetJoystick_ShouldReturnExpectedValue">
+            <summary>
+                Tests that game controller get joystick should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.GameControllerEventState_ShouldReturnExpectedValue">
+            <summary>
+                Tests that game controller event state should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.GameControllerUpdate_ShouldNotThrowException">
+            <summary>
+                Tests that game controller update should not throw exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.GameControllerGetAxisFromString_ShouldReturnExpectedValue">
+            <summary>
+                Tests that game controller get axis from string should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.GameControllerGetStringForAxis_ShouldReturnExpectedValue">
+            <summary>
+                Tests that game controller get string for axis should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.GameControllerGetBindForAxis_ShouldReturnExpectedValue">
+            <summary>
+                Tests that game controller get bind for axis should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.GameControllerGetAxis_ShouldReturnExpectedValue">
+            <summary>
+                Tests that game controller get axis should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.GameControllerGetButtonFromString_ShouldReturnExpectedValue">
+            <summary>
+                Tests that game controller get button from string should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.GameControllerGetStringForButton_ShouldReturnExpectedValue">
+            <summary>
+                Tests that game controller get string for button should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.GameControllerGetBindForButton_ShouldReturnExpectedValue">
+            <summary>
+                Tests that game controller get bind for button should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.GameControllerGetButton_ShouldReturnExpectedValue">
+            <summary>
+                Tests that game controller get button should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.GameControllerRumble_ShouldReturnExpectedValue">
+            <summary>
+                Tests that game controller rumble should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.GameControllerClose_ShouldNotThrowException">
+            <summary>
+                Tests that game controller close should not throw exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.GameControllerAddMapping_ShouldReturnExpectedValue">
+            <summary>
+                Tests that game controller add mapping should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.GameControllerNumMappings_ShouldReturnExpectedValue">
+            <summary>
+                Tests that game controller num mappings should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.GameControllerMappingForIndex_ShouldReturnExpectedValue">
+            <summary>
+                Tests that game controller mapping for index should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.GameControllerAddMappingsFromFile_ShouldReturnExpectedValue">
+            <summary>
+                Tests that game controller add mappings from file should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.GameControllerMappingForGuid_ShouldReturnExpectedValue">
+            <summary>
+                Tests that game controller mapping for guid should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.GameControllerMapping_ShouldReturnExpectedValue">
+            <summary>
+                Tests that game controller mapping should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.IsGameController_ShouldReturnExpectedValue">
+            <summary>
+                Tests that is game controller should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.GameControllerNameForIndex_ShouldReturnExpectedValue">
+            <summary>
+                Tests that game controller name for index should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.GameControllerMappingForDeviceIndex_ShouldReturnExpectedValue">
+            <summary>
+                Tests that game controller mapping for device index should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.GameControllerOpen_ShouldReturnExpectedValue">
+            <summary>
+                Tests that game controller open should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.GameControllerName_ShouldReturnExpectedValue">
+            <summary>
+                Tests that game controller name should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.GameControllerGetVendor_ShouldReturnExpectedValue">
+            <summary>
+                Tests that game controller get vendor should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.GameControllerGetProduct_ShouldReturnExpectedValue">
+            <summary>
+                Tests that game controller get product should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.GameControllerGetProductVersion_ShouldReturnExpectedValue">
+            <summary>
+                Tests that game controller get product version should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.GameControllerGetAttached_ShouldReturnExpectedValue">
+            <summary>
+                Tests that game controller get attached should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.JoystickGetVendor_ShouldReturnExpectedValue">
+            <summary>
+                Tests that joystick get vendor should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.JoystickGetProduct_ShouldReturnExpectedValue">
+            <summary>
+                Tests that joystick get product should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.JoystickGetProductVersion_ShouldReturnExpectedValue">
+            <summary>
+                Tests that joystick get product version should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.JoystickGetType_ShouldReturnExpectedValue">
+            <summary>
+                Tests that joystick get type should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.JoystickGetAttached_ShouldReturnExpectedValue">
+            <summary>
+                Tests that joystick get attached should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.JoystickInstanceId_ShouldReturnExpectedValue">
+            <summary>
+                Tests that joystick instance id should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.JoystickCurrentPowerLevel_ShouldReturnExpectedValue">
+            <summary>
+                Tests that joystick current power level should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.JoystickFromInstanceId_ShouldReturnExpectedValue">
+            <summary>
+                Tests that joystick from instance id should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.LockJoysticks_ShouldNotThrowException">
+            <summary>
+                Tests that lock joysticks should not throw exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.UnlockJoysticks_ShouldNotThrowException">
+            <summary>
+                Tests that unlock joysticks should not throw exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.SetWindowDisplayMode_v2_ShouldReturnExpectedValue">
+            <summary>
+                Tests that set window display mode v 2 should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.CreateSoftwareRenderer_ShouldReturnExpectedValue">
+            <summary>
+                Tests that create software renderer should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.CreateTextureFromSurface_ShouldReturnExpectedValue">
+            <summary>
+                Tests that create texture from surface should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.DestroyRenderer_ShouldExecuteWithoutException">
+            <summary>
+                Tests that destroy renderer should execute without exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.SdlAudioBitSize_ShouldReturnExpectedValue">
+            <summary>
+                Tests that sdl audio bit size should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.JoystickGetProduct_V3_ShouldReturnExpectedValue">
+            <summary>
+                Tests that joystick get product v 3 should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.JoystickGetProductVersion_V3_ShouldReturnExpectedValue">
+            <summary>
+                Tests that joystick get product version v 3 should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.JoystickGetType_V3_ShouldReturnExpectedValue">
+            <summary>
+                Tests that joystick get type v 3 should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.JoystickGetAttached_V3_ShouldReturnExpectedValue">
+            <summary>
+                Tests that joystick get attached v 3 should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.JoystickInstanceId_V3_ShouldReturnExpectedValue">
+            <summary>
+                Tests that joystick instance id v 3 should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.JoystickCurrentPowerLevel_V3_ShouldReturnExpectedValue">
+            <summary>
+                Tests that joystick current power level v 3 should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.JoystickFromInstanceId_V3_ShouldReturnExpectedValue">
+            <summary>
+                Tests that joystick from instance id v 3 should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.RenderCopy_V2_ShouldReturnExpectedValue">
+            <summary>
+                Tests that render copy v 2 should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.RenderCopyEx_V2_ShouldReturnExpectedValue">
+            <summary>
+                Tests that render copy ex v 2 should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.RenderDrawLine_V2_ShouldReturnExpectedValue">
+            <summary>
+                Tests that render draw line v 2 should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.RenderDrawPoints_V2_ShouldReturnExpectedValue">
+            <summary>
+                Tests that render draw points v 2 should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.RenderDrawRect_V2_ShouldReturnExpectedValue">
+            <summary>
+                Tests that render draw rect v 2 should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.RenderDrawRects_ShouldReturnExpectedValue">
+            <summary>
+                Tests that render draw rects should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.RenderFillRect_V2_ShouldReturnExpectedValue">
+            <summary>
+                Tests that render fill rect v 2 should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.RenderFillRects_ShouldReturnExpectedValue">
+            <summary>
+                Tests that render fill rects should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.RenderCopyF_ShouldReturnExpectedValue">
+            <summary>
+                Tests that render copy f should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.RenderFillRectsF_ShouldReturnExpectedValue">
+            <summary>
+                Tests that render fill rects f should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.RenderGetClipRect_V2_ShouldReturnExpectedValue">
+            <summary>
+                Tests that render get clip rect v 2 should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.RenderGetLogicalSize_V2_ShouldReturnExpectedValue">
+            <summary>
+                Tests that render get logical size v 2 should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.RenderGetScale_ShouldReturnExpectedValue">
+            <summary>
+                Tests that render get scale should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.JoystickGetHat_ShouldReturnExpectedValue">
+            <summary>
+                Tests that joystick get hat should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.JoystickName_ShouldReturnExpectedValue">
+            <summary>
+                Tests that joystick name should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.JoystickNameForIndex_ShouldReturnExpectedValue">
+            <summary>
+                Tests that joystick name for index should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.JoystickNumAxes_ShouldReturnExpectedValue">
+            <summary>
+                Tests that joystick num axes should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.JoystickNumBalls_ShouldReturnExpectedValue">
+            <summary>
+                Tests that joystick num balls should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.JoystickNumButtons_ShouldReturnExpectedValue">
+            <summary>
+                Tests that joystick num buttons should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.JoystickNumHats_ShouldReturnExpectedValue">
+            <summary>
+                Tests that joystick num hats should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.JoystickOpen_ShouldReturnExpectedValue">
+            <summary>
+                Tests that joystick open should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.JoystickUpdate_ShouldNotThrowException">
+            <summary>
+                Tests that joystick update should not throw exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.NumJoysticks_ShouldReturnExpectedValue">
+            <summary>
+                Tests that num joysticks should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.JoystickGetDeviceGuid_ShouldReturnExpectedValue">
+            <summary>
+                Tests that joystick get device guid should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.JoystickGetGuid_ShouldReturnExpectedValue">
+            <summary>
+                Tests that joystick get guid should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.JoystickGetGuidFromString_ShouldReturnExpectedValue">
+            <summary>
+                Tests that joystick get guid from string should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.GetCursor_ShouldReturnExpectedValue">
+            <summary>
+                Tests that get cursor should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.ShowCursor_ShouldReturnExpectedValue">
+            <summary>
+                Tests that show cursor should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.Button_ShouldReturnExpectedValue">
+            <summary>
+                Tests that button should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.GetTouchDevice_ShouldReturnExpectedValue">
+            <summary>
+                Tests that get touch device should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.GetNumTouchFingers_ShouldReturnExpectedValue">
+            <summary>
+                Tests that get num touch fingers should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.GetTouchFinger_ShouldReturnExpectedValue">
+            <summary>
+                Tests that get touch finger should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.GetTouchDeviceType_ShouldReturnExpectedValue">
+            <summary>
+                Tests that get touch device type should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.JoystickRumble_ShouldReturnExpectedValue">
+            <summary>
+                Tests that joystick rumble should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.JoystickEventState_ShouldReturnExpectedValue">
+            <summary>
+                Tests that joystick event state should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.JoystickGetAxis_ShouldReturnExpectedValue">
+            <summary>
+                Tests that joystick get axis should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.JoystickGetAxisInitialState_ShouldReturnExpectedValue">
+            <summary>
+                Tests that joystick get axis initial state should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.JoystickGetBall_ShouldReturnExpectedValue">
+            <summary>
+                Tests that joystick get ball should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.JoystickGetButton_ShouldReturnExpectedValue">
+            <summary>
+                Tests that joystick get button should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.RenderCopyEx_ValidParams_ReturnsExpectedInt">
+            <summary>
+                Tests that render copy ex valid params returns expected int
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.RenderCopyExWithRectangle_ValidParams_ReturnsExpectedInt">
+            <summary>
+                Tests that render copy ex with rectangle valid params returns expected int
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.RenderSetIntegerScale_ValidParams_ReturnsExpectedInt">
+            <summary>
+                Tests that render set integer scale valid params returns expected int
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.RenderSetViewport_ValidParams_ReturnsExpectedInt">
+            <summary>
+                Tests that render set viewport valid params returns expected int
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.RenderCopyEx_V2_ValidParams_ReturnsExpectedInt">
+            <summary>
+                Tests that render copy ex v 2 valid params returns expected int
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.PushEvent_ValidParams_ReturnsExpectedInt">
+            <summary>
+                Tests that push event valid params returns expected int
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.RenderDrawRect_ValidParams_ReturnsExpectedInt">
+            <summary>
+                Tests that render draw rect valid params returns expected int
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.GlAudioU16Sys_ValidCall_ReturnsExpectedUshort">
+            <summary>
+                Tests that gl audio u 16 sys valid call returns expected ushort
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.GlAudioS16Sys_ValidCall_ReturnsExpectedUshort">
+            <summary>
+                Tests that gl audio s 16 sys valid call returns expected ushort
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.GlAudioS32Sys_ValidCall_ReturnsExpectedUshort">
+            <summary>
+                Tests that gl audio s 32 sys valid call returns expected ushort
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP3.GlAudioF32Sys_ValidCall_ReturnsExpectedUshort">
+            <summary>
+                Tests that gl audio f 32 sys valid call returns expected ushort
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.SdlTestP4">
+            <summary>
+                The sdl test class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.GetWindowSurfaceTest_NotInSdlTest">
+            <summary>
+                Tests that get window surface test not in sdl test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.GetWindowGrabTest_NotInSdlTest">
+            <summary>
+                Tests that get window grab test not in sdl test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.GetWindowBrightnessTest_NotInSdlTest">
+            <summary>
+                Tests that get window brightness test not in sdl test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.GetWindowDisplayModeTest_NotInSdlTest">
+            <summary>
+                Tests that get window display mode test not in sdl test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.GetWindowFlagsTest_NotInSdlTest">
+            <summary>
+                Tests that get window flags test not in sdl test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.GetWindowSurfaceTest_NotInSdlTest2">
+            <summary>
+                Tests that get window surface test not in sdl test 2
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.GetWindowGrabTest_NotInSdlTest2">
+            <summary>
+                Tests that get window grab test not in sdl test 2
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.GetWindowBrightnessTest_NotInSdlTest2">
+            <summary>
+                Tests that get window brightness test not in sdl test 2
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.GetWindowDisplayModeTest_NotInSdlTest2">
+            <summary>
+                Tests that get window display mode test not in sdl test 2
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.GetWindowFlagsTest_NotInSdlTest2">
+            <summary>
+                Tests that get window flags test not in sdl test 2
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.GetWindowGrabTest_NotInSdlTest3">
+            <summary>
+                Tests that get window grab test not in sdl test 3
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.GetWindowBrightnessTest_NotInSdlTest3">
+            <summary>
+                Tests that get window brightness test not in sdl test 3
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.GetWindowDisplayModeTest_NotInSdlTest3">
+            <summary>
+                Tests that get window display mode test not in sdl test 3
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.GetWindowFlagsTest_NotInSdlTest3">
+            <summary>
+                Tests that get window flags test not in sdl test 3
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.GetWindowGrabTest_NotInSdlTest4">
+            <summary>
+                Tests that get window grab test not in sdl test 4
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.GetWindowBrightnessTest_NotInSdlTest4">
+            <summary>
+                Tests that get window brightness test not in sdl test 4
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.GetWindowDisplayModeTest_NotInSdlTest4">
+            <summary>
+                Tests that get window display mode test not in sdl test 4
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.GetWindowFlagsTest_NotInSdlTest4">
+            <summary>
+                Tests that get window flags test not in sdl test 4
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.TestSdlGetError_ShouldReturnEmpty_AfterInit">
+            <summary>
+                Tests that test sdl get error should return empty after init
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.TestSdlWasInit_ShouldReturnNonZero_AfterInit">
+            <summary>
+                Tests that test sdl was init should return non zero after init
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.TestJoystickNameForIndex_ShouldReturnValidName_AfterInit">
+            <summary>
+                Tests that test joystick name for index should return valid name after init
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.TestJoystickNumAxes_ShouldReturnNonNegative_AfterInit">
+            <summary>
+                Tests that test joystick num axes should return non negative after init
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.TestJoystickNumBalls_ShouldReturnNonNegative_AfterInit">
+            <summary>
+                Tests that test joystick num balls should return non negative after init
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.TestJoystickNumButtons_ShouldReturnNonNegative_AfterInit">
+            <summary>
+                Tests that test joystick num buttons should return non negative after init
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.TestJoystickNumHats_ShouldReturnNonNegative_AfterInit">
+            <summary>
+                Tests that test joystick num hats should return non negative after init
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.TestJoystickOpen_ShouldReturnValidPointer_AfterInit">
+            <summary>
+                Tests that test joystick open should return valid pointer after init
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.TestNumJoysticks_ShouldReturnNonNegative_AfterInit">
+            <summary>
+                Tests that test num joysticks should return non negative after init
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.TestJoystickGetDeviceGuid_ShouldReturnValidGuid_AfterInit">
+            <summary>
+                Tests that test joystick get device guid should return valid guid after init
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.TestJoystickGetGuid_ShouldReturnValidGuid_AfterInit">
+            <summary>
+                Tests that test joystick get guid should return valid guid after init
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.TestJoystickGetDeviceVendor_ShouldReturnValidVendor_AfterInit">
+            <summary>
+                Tests that test joystick get device vendor should return valid vendor after init
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.TestJoystickGetDeviceProduct_ShouldReturnValidProduct_AfterInit">
+            <summary>
+                Tests that test joystick get device product should return valid product after init
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.TestJoystickGetDeviceProductVersion_ShouldReturnValidProductVersion_AfterInit">
+            <summary>
+                Tests that test joystick get device product version should return valid product version after init
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.TestJoystickGetDeviceType_ShouldReturnValidType_AfterInit">
+            <summary>
+                Tests that test joystick get device type should return valid type after init
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.TestJoystickGetDeviceInstanceId_ShouldReturnValidInstanceId_AfterInit">
+            <summary>
+                Tests that test joystick get device instance id should return valid instance id after init
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.TestJoystickGetVendor_ShouldReturnValidVendor_AfterInit">
+            <summary>
+                Tests that test joystick get vendor should return valid vendor after init
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.TestJoystickGetProduct_ShouldReturnValidProduct_AfterInit">
+            <summary>
+                Tests that test joystick get product should return valid product after init
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.TestJoystickGetProductVersion_ShouldReturnValidProductVersion_AfterInit">
+            <summary>
+                Tests that test joystick get product version should return valid product version after init
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.TestJoystickGetType_ShouldReturnValidType_AfterInit">
+            <summary>
+                Tests that test joystick get type should return valid type after init
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.TestJoystickGetAttached_ShouldReturnTrue_AfterInit">
+            <summary>
+                Tests that test joystick get attached should return true after init
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.TestJoystickInstanceId_ShouldReturnValidInstanceId_AfterInit">
+            <summary>
+                Tests that test joystick instance id should return valid instance id after init
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.TestJoystickCurrentPowerLevel_ShouldReturnValidPowerLevel_AfterInit">
+            <summary>
+                Tests that test joystick current power level should return valid power level after init
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.BindTexture_ShouldReturnExpectedValue">
+            <summary>
+                Tests that bind texture should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.CreateContext_ShouldReturnExpectedValue">
+            <summary>
+                Tests that create context should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.DeleteContext_ShouldNotThrowException">
+            <summary>
+                Tests that delete context should not throw exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.GetProcAddress_ShouldReturnExpectedValue">
+            <summary>
+                Tests that get proc address should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.ExtensionSupported_ShouldReturnExpectedValue">
+            <summary>
+                Tests that extension supported should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.ResetAttributes_ShouldNotThrowException">
+            <summary>
+                Tests that reset attributes should not throw exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.GetAttribute_ShouldReturnExpectedValue">
+            <summary>
+                Tests that get attribute should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.GetSwapInterval_ShouldReturnExpectedValue">
+            <summary>
+                Tests that get swap interval should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.MakeCurrent_ShouldReturnExpectedValue">
+            <summary>
+                Tests that make current should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.GetCurrentWindow_ShouldReturnExpectedValue">
+            <summary>
+                Tests that get current window should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.GetCurrentContext_ShouldReturnExpectedValue">
+            <summary>
+                Tests that get current context should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.GetDrawableSize_ShouldReturnExpectedValue">
+            <summary>
+                Tests that get drawable size should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.SetAttributeByInt_ShouldReturnExpectedValue">
+            <summary>
+                Tests that set attribute by int should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.SetAttributeByProfile_ShouldReturnExpectedValue">
+            <summary>
+                Tests that set attribute by profile should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.SetSwapInterval_ShouldReturnExpectedValue">
+            <summary>
+                Tests that set swap interval should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.SwapWindow_ShouldNotThrowException">
+            <summary>
+                Tests that swap window should not throw exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.UnbindTexture_ShouldReturnExpectedValue">
+            <summary>
+                Tests that unbind texture should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.HideWindow_ShouldNotThrowException">
+            <summary>
+                Tests that hide window should not throw exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.MaximizeWindow_ShouldNotThrowException">
+            <summary>
+                Tests that maximize window should not throw exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.MinimizeWindow_ShouldNotThrowException">
+            <summary>
+                Tests that minimize window should not throw exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.RaiseWindow_ShouldNotThrowException">
+            <summary>
+                Tests that raise window should not throw exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.RestoreWindow_ShouldNotThrowException">
+            <summary>
+                Tests that restore window should not throw exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.SetWindowBrightness_ShouldReturnExpectedValue">
+            <summary>
+                Tests that set window brightness should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.SetWindowData_ShouldReturnExpectedValue">
+            <summary>
+                Tests that set window data should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.SetWindowDisplayMode_ShouldReturnExpectedValue">
+            <summary>
+                Tests that set window display mode should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.SetWindowFullscreen_ShouldReturnExpectedValue">
+            <summary>
+                Tests that set window fullscreen should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.SetWindowGammaRamp_ShouldReturnExpectedValue">
+            <summary>
+                Tests that set window gamma ramp should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.SetWindowGrab_ShouldNotThrowException">
+            <summary>
+                Tests that set window grab should not throw exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.SetWindowIcon_ShouldNotThrowException">
+            <summary>
+                Tests that set window icon should not throw exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.SetWindowMaximumSize_ShouldNotThrowException">
+            <summary>
+                Tests that set window maximum size should not throw exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.SetWindowMinimumSize_ShouldNotThrowException">
+            <summary>
+                Tests that set window minimum size should not throw exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.SetWindowPosition_ShouldNotThrowException">
+            <summary>
+                Tests that set window position should not throw exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.SetWindowSize_ShouldNotThrowException">
+            <summary>
+                Tests that set window size should not throw exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.SetWindowBordered_ShouldNotThrowException">
+            <summary>
+                Tests that set window bordered should not throw exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.GetWindowBordersSize_ShouldReturnExpectedValue">
+            <summary>
+                Tests that get window borders size should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.SetWindowResizable_ShouldNotThrowException">
+            <summary>
+                Tests that set window resizable should not throw exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.SetWindowTitle_ShouldNotThrowException">
+            <summary>
+                Tests that set window title should not throw exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.ShowWindow_ShouldNotThrowException">
+            <summary>
+                Tests that show window should not throw exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.UpdateWindowSurface_ShouldReturnExpectedValue">
+            <summary>
+                Tests that update window surface should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.UpdateWindowSurfaceRects_ShouldReturnExpectedValue">
+            <summary>
+                Tests that update window surface rects should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.SetWindowHitTest_ShouldReturnExpectedValue">
+            <summary>
+                Tests that set window hit test should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.GetGrabbedWindow_ShouldReturnExpectedValue">
+            <summary>
+                Tests that get grabbed window should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.ComposeCustomBlendMode_ShouldReturnExpectedValue">
+            <summary>
+                Tests that compose custom blend mode should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.CreateRenderer_ShouldReturnExpectedValue">
+            <summary>
+                Tests that create renderer should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.CreateTexture_ShouldReturnExpectedValue">
+            <summary>
+                Tests that create texture should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.DestroyTexture_ShouldNotThrowException">
+            <summary>
+                Tests that destroy texture should not throw exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.GetNumRenderDrivers_ShouldReturnExpectedValue">
+            <summary>
+                Tests that get num render drivers should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.GetRenderDrawBlendMode_ShouldReturnExpectedValue">
+            <summary>
+                Tests that get render draw blend mode should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.GetRenderDrawColor_ShouldReturnExpectedValue">
+            <summary>
+                Tests that get render draw color should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.GetRenderDriverInfo_ShouldReturnExpectedValue">
+            <summary>
+                Tests that get render driver info should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.GetRenderer_ShouldReturnExpectedValue">
+            <summary>
+                Tests that get renderer should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.GetRendererInfo_ShouldReturnExpectedValue">
+            <summary>
+                Tests that get renderer info should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.GetRendererOutputSize_ShouldReturnExpectedValue">
+            <summary>
+                Tests that get renderer output size should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.GetTextureAlphaMod_ShouldReturnExpectedValue">
+            <summary>
+                Tests that get texture alpha mod should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.GetTextureBlendMode_ShouldReturnExpectedValue">
+            <summary>
+                Tests that get texture blend mode should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.GetTextureColorMod_ShouldReturnExpectedValue">
+            <summary>
+                Tests that get texture color mod should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.LockTexture_ShouldReturnExpectedValue">
+            <summary>
+                Tests that lock texture should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.QueryTexture_ShouldReturnExpectedValue">
+            <summary>
+                Tests that query texture should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.RenderClear_ShouldReturnExpectedValue">
+            <summary>
+                Tests that render clear should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.RenderCopy_ShouldReturnExpectedValue">
+            <summary>
+                Tests that render copy should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.RenderCopyEx_ShouldReturnExpectedValue">
+            <summary>
+                Tests that render copy ex should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.RenderDrawLine_ShouldReturnExpectedValue">
+            <summary>
+                Tests that render draw line should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.RenderDrawPoints_ShouldReturnExpectedValue">
+            <summary>
+                Tests that render draw points should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.RenderDrawRect_ShouldReturnExpectedValue">
+            <summary>
+                Tests that render draw rect should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.RenderFillRect_ShouldReturnExpectedValue">
+            <summary>
+                Tests that render fill rect should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.RenderCopyExF_ShouldReturnExpectedValue">
+            <summary>
+                Tests that render copy ex f should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.RenderDrawPointF_ShouldReturnExpectedValue">
+            <summary>
+                Tests that render draw point f should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.RenderDrawPointsF_ShouldReturnExpectedValue">
+            <summary>
+                Tests that render draw points f should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.RenderDrawLineF_ShouldReturnExpectedValue">
+            <summary>
+                Tests that render draw line f should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.RenderDrawLinesF_ShouldReturnExpectedValue">
+            <summary>
+                Tests that render draw lines f should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.RenderDrawRectF_ShouldReturnExpectedValue">
+            <summary>
+                Tests that render draw rect f should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.RenderFillRectF_ShouldReturnExpectedValue">
+            <summary>
+                Tests that render fill rect f should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.RenderGetClipRect_ShouldReturnExpectedValue">
+            <summary>
+                Tests that render get clip rect should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.RenderGetLogicalSize_ShouldReturnExpectedValue">
+            <summary>
+                Tests that render get logical size should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.RenderGetViewport_ShouldReturnExpectedValue">
+            <summary>
+                Tests that render get viewport should return expected value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.SetTextureAlphaMod_ValidParams_ReturnsExpectedInt">
+            <summary>
+                Tests that set texture alpha mod valid params returns expected int
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.SetTextureBlendMode_ValidParams_ReturnsExpectedInt">
+            <summary>
+                Tests that set texture blend mode valid params returns expected int
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.SetTextureColorMod_ValidParams_ReturnsExpectedInt">
+            <summary>
+                Tests that set texture color mod valid params returns expected int
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.RenderDrawLines_ValidParams_ReturnsExpectedInt">
+            <summary>
+                Tests that render draw lines valid params returns expected int
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.RenderDrawPoint_ValidParams_ReturnsExpectedInt">
+            <summary>
+                Tests that render draw point valid params returns expected int
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.RenderDrawRectF_ValidParams_ReturnsExpectedInt">
+            <summary>
+                Tests that render draw rect f valid params returns expected int
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.RenderDrawRectsF_ValidParams_ReturnsExpectedInt">
+            <summary>
+                Tests that render draw rects f valid params returns expected int
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.UpdateTexture_ValidParams_ReturnsExpectedInt">
+            <summary>
+                Tests that update texture valid params returns expected int
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.RenderFillRectF_ValidParams_ReturnsExpectedInt">
+            <summary>
+                Tests that render fill rect f valid params returns expected int
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.RenderFillRectF_V2_ValidParams_ReturnsExpectedInt">
+            <summary>
+                Tests that render fill rect f v 2 valid params returns expected int
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.RenderCopyF_ValidParams_ReturnsExpectedInt">
+            <summary>
+                Tests that render copy f valid params returns expected int
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.RenderCopyEx_ValidParams_ReturnsExpectedInt">
+            <summary>
+                Tests that render copy ex valid params returns expected int
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.RenderCopyExF_ValidParams_ReturnsExpectedInt">
+            <summary>
+                Tests that render copy ex f valid params returns expected int
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.RenderCopyExF_v3_ValidParams_ReturnsExpectedInt">
+            <summary>
+                Tests that render copy ex f v 3 valid params returns expected int
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.RenderCopyF_v3_ValidParams_ReturnsExpectedInt">
+            <summary>
+                Tests that render copy f v 3 valid params returns expected int
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.QueueAudio_ValidInput_CallsInternalQueueAudio">
+            <summary>
+                Tests that queue audio valid input calls internal queue audio
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.SdlTestP4.UpdateTexture_ShouldReturnExpectedValue_WhenCalledWithValidParameters">
+            <summary>
+                Tests that update texture should return expected value when called with valid parameters
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.Structs.AudioDeviceEventTest">
+            <summary>
+                The audio device event test class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.AudioDeviceEventTest.AudioDeviceEvent_InitializesPropertiesCorrectly">
+            <summary>
+                Tests that audio device event initializes properties correctly
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.Structs.AudioSpecTest">
+            <summary>
+                The audio spec test class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.AudioSpecTest.Constructor_InitializesPropertiesCorrectly">
+            <summary>
+                Tests that constructor initializes properties correctly
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.AudioSpecTest.Properties_SetValuesCorrectly(System.Int32,System.UInt16,System.Byte,System.UInt16)">
+            <summary>
+                Tests that properties set values correctly
+            </summary>
+            <param name="freq">The freq</param>
+            <param name="format">The format</param>
+            <param name="channels">The channels</param>
+            <param name="samples">The samples</param>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.Structs.ControllerAxisEventTests">
+            <summary>
+                The controller axis event tests class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.ControllerAxisEventTests.ControllerAxisEvent_InitializesPropertiesCorrectly">
+            <summary>
+                Tests that controller axis event initializes properties correctly
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.Structs.ControllerButtonEventTests">
+            <summary>
+                The controller button event tests class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.ControllerButtonEventTests.ControllerButtonEvent_InitializesPropertiesCorrectly">
+            <summary>
+                Tests that controller button event initializes properties correctly
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.Structs.ControllerDeviceEventTests">
+            <summary>
+                The controller device event tests class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.ControllerDeviceEventTests.ControllerDeviceEvent_InitializesPropertiesCorrectly">
+            <summary>
+                Tests that controller device event initializes properties correctly
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.Structs.ControllerSensorEventTest">
+            <summary>
+                The controller sensor event test class
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.Structs.ControllerTouchpadEventTests">
+            <summary>
+                The controller touchpad event tests class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.ControllerTouchpadEventTests.ControllerTouchpadEvent_InitializesPropertiesCorrectly">
+            <summary>
+                Tests that controller touchpad event initializes properties correctly
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.Structs.DisplayEventTests">
+            <summary>
+                The display event tests class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.DisplayEventTests.DisplayEvent_InitializesPropertiesCorrectly">
+            <summary>
+                Tests that display event initializes properties correctly
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.Structs.DisplayModeTests">
+            <summary>
+                The display mode tests class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.DisplayModeTests.DisplayMode_InitializesPropertiesCorrectly">
+            <summary>
+                Tests that display mode initializes properties correctly
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.Structs.DollarGestureEventTests">
+            <summary>
+                The dollar gesture event tests class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.DollarGestureEventTests.DollarGestureEvent_InitializesPropertiesCorrectly">
+            <summary>
+                Tests that dollar gesture event initializes properties correctly
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.Structs.DropEventTests">
+            <summary>
+                The drop event tests class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.DropEventTests.DropEvent_InitializesPropertiesCorrectly">
+            <summary>
+                Tests that drop event initializes properties correctly
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.Structs.GameControllerButtonBindTest">
+            <summary>
+                The game controller button bind test class
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.Structs.GenericEventTests">
+            <summary>
+                The generic event tests class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.GenericEventTests.GenericEvent_InitializesPropertiesCorrectly">
+            <summary>
+                Tests that generic event initializes properties correctly
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.Structs.HintTest">
+            <summary>
+                The hint test class
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.Structs.InternalAndroidWmInfoTests">
+            <summary>
+                The internal android wm info tests class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.InternalAndroidWmInfoTests.InternalAndroidWmInfo_InitializesPropertiesCorrectly">
+            <summary>
+                Tests that internal android wm info initializes properties correctly
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.Structs.InternalCocoaWmInfoTests">
+            <summary>
+                The internal cocoa wm info tests class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.InternalCocoaWmInfoTests.InternalCocoaWmInfo_InitializesPropertiesCorrectly">
+            <summary>
+                Tests that internal cocoa wm info initializes properties correctly
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.Structs.InternalDirectfbWmInfoTests">
+            <summary>
+                The internal directfb wm info tests class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.InternalDirectfbWmInfoTests.InternalDirectfbWmInfo_InitializesPropertiesCorrectly">
+            <summary>
+                Tests that internal directfb wm info initializes properties correctly
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.Structs.InternalOs2WmInfoTests">
+            <summary>
+                The internal os wm info tests class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.InternalOs2WmInfoTests.InternalOs2WmInfo_InitializesPropertiesCorrectly">
+            <summary>
+                Tests that internal os 2 wm info initializes properties correctly
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.Structs.InternalUikitWmInfoTests">
+            <summary>
+                The internal uikit wm info tests class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.InternalUikitWmInfoTests.InternalUikitWmInfo_InitializesPropertiesCorrectly">
+            <summary>
+                Tests that internal uikit wm info initializes properties correctly
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.Structs.InternalVivanteWmInfoTests">
+            <summary>
+                The internal vivante wm info tests class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.InternalVivanteWmInfoTests.InternalVivanteWmInfo_InitializesPropertiesCorrectly">
+            <summary>
+                Tests that internal vivante wm info initializes properties correctly
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.Structs.InternalWaylandWmInfoTests">
+            <summary>
+                The internal wayland wm info tests class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.InternalWaylandWmInfoTests.InternalWaylandWmInfo_InitializesPropertiesCorrectly">
+            <summary>
+                Tests that internal wayland wm info initializes properties correctly
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.Structs.InternalWindowsWmInfoTests">
+            <summary>
+                The internal windows wm info tests class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.InternalWindowsWmInfoTests.InternalWindowsWmInfo_InitializesPropertiesCorrectly">
+            <summary>
+                Tests that internal windows wm info initializes properties correctly
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.Structs.InternalWinrtWmInfoTests">
+            <summary>
+                The internal winrt wm info tests class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.InternalWinrtWmInfoTests.InternalWinrtWmInfo_InitializesPropertiesCorrectly">
+            <summary>
+                Tests that internal winrt wm info initializes properties correctly
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.Structs.InternalX11WmInfoTests">
+            <summary>
+                The internal 11 wm info tests class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.InternalX11WmInfoTests.InternalX11WmInfo_InitializesPropertiesCorrectly">
+            <summary>
+                Tests that internal x 11 wm info initializes properties correctly
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.Structs.KeyboardEventTests">
+            <summary>
+                The keyboard event tests class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.KeyboardEventTests.KeyboardEvent_InitializesPropertiesCorrectly">
+            <summary>
+                Tests that keyboard event initializes properties correctly
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.Structs.KeySymTest">
+            <summary>
+                The key sym test class
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.Structs.PixelFormatTests">
+            <summary>
+                The pixel format tests class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.PixelFormatTests.PixelFormat_InitializesWithDefaultValues">
+            <summary>
+                Tests that pixel format initializes with default values
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.PixelFormatTests.PixelFormat_SetPalette_UpdatesValueCorrectly">
+            <summary>
+                Tests that pixel format set palette updates value correctly
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.PixelFormatTests.PixelFormat_SetNext_UpdatesValueCorrectly">
+            <summary>
+                Tests that pixel format set next updates value correctly
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.Structs.QuitEventTest">
+            <summary>
+                The quit event test class
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.Structs.RendererInfoTests">
+            <summary>
+                The renderer info tests class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.RendererInfoTests.RendererInfo_InitializesPropertiesCorrectly">
+            <summary>
+                Tests that renderer info initializes properties correctly
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.Structs.SdlRendererInfoTest">
+            <summary>
+                The sdl renderer info test class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.SdlRendererInfoTest.GetName_ValidCall_ReturnsExpectedString">
+            <summary>
+                Tests that get name valid call returns expected string
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.Structs.SdlTextEditingEventTest">
+            <summary>
+                The sdl text editing event test class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.SdlTextEditingEventTest.Text_ValidCall_ReturnsExpectedString">
+            <summary>
+                Tests that text valid call returns expected string
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.Structs.SdlTextInputEventTest">
+            <summary>
+                The sdl text input event test class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.SdlTextInputEventTest.Text_ValidCall_ReturnsExpectedByteArray">
+            <summary>
+                Tests that text valid call returns expected byte array
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.Structs.SdlVertexTest">
+            <summary>
+                The sdl vertex test class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.SdlVertexTest.SdlVertex_HasCorrectFieldCount">
+            <summary>
+                Tests that sdl vertex has correct field count
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.SdlVertexTest.SdlVertex_PositionField_IsOfTypePointF">
+            <summary>
+                Tests that sdl vertex position field is of type point f
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.SdlVertexTest.SdlVertex_ColorField_IsOfTypeSdlColor">
+            <summary>
+                Tests that sdl vertex color field is of type sdl color
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.SdlVertexTest.SdlVertex_TexCoordinateField_IsOfTypePointF">
+            <summary>
+                Tests that sdl vertex tex coordinate field is of type point f
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.SdlVertexTest.SdlVertex_PositionField_InitializesCorrectly">
+            <summary>
+                Tests that sdl vertex position field initializes correctly
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.SdlVertexTest.SdlVertex_ColorField_InitializesCorrectly">
+            <summary>
+                Tests that sdl vertex color field initializes correctly
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.SdlVertexTest.SdlVertex_TexCoordinateField_InitializesCorrectly">
+            <summary>
+                Tests that sdl vertex tex coordinate field initializes correctly
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.Structs.SurfaceTests">
+            <summary>
+                The surface tests class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.SurfaceTests.Surface_InitializesWithDefaultValues">
+            <summary>
+                Tests that surface initializes with default values
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.SurfaceTests.Surface_SetProperties_UpdatesValuesCorrectly">
+            <summary>
+                Tests that surface set properties updates values correctly
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.Structs.SysWmEventTests">
+            <summary>
+                The sys wm event tests class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.SysWmEventTests.SysWmEvent_InitializesPropertiesCorrectly">
+            <summary>
+                Tests that sys wm event initializes properties correctly
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.Structs.TextEditingEventTest">
+            <summary>
+                The text editing event test class
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.Structs.TextInputEventTests">
+            <summary>
+                The text input event tests class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.TextInputEventTests.TextInputEvent_InitializesPropertiesCorrectly">
+            <summary>
+                Tests that text input event initializes properties correctly
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.Structs.TouchFingerEventTests">
+            <summary>
+                The touch finger event tests class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.TouchFingerEventTests.TouchFingerEvent_InitializesPropertiesCorrectly">
+            <summary>
+                Tests that touch finger event initializes properties correctly
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.Structs.UserEventTests">
+            <summary>
+                The user event tests class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.UserEventTests.UserEvent_InitializesPropertiesCorrectly">
+            <summary>
+                Tests that user event initializes properties correctly
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.Structs.VersionTests">
+            <summary>
+                The version tests class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.VersionTests.Version_InitializesPropertiesCorrectly">
+            <summary>
+                Tests that version initializes properties correctly
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Test.Sdl2.Structs.VertexTests">
+            <summary>
+                The vertex tests class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.VertexTests.Vertex_InitializesPositionCorrectly">
+            <summary>
+                Tests that vertex initializes position correctly
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.VertexTests.Vertex_InitializesColorCorrectly">
+            <summary>
+                Tests that vertex initializes color correctly
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Test.Sdl2.Structs.VertexTests.Vertex_InitializesTexCoordinateCorrectly">
+            <summary>
+                Tests that vertex initializes tex coordinate correctly
+            </summary>
+        </member>
+    </members>
+</doc>

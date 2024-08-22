@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Extension.Updater.Test</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Extension.Updater.Test.DummyTest">
+            <summary>
+                The dummy test class
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Updater.Test.DummyTest.DefaultTest">
+            <summary>
+                Tests that default test
+            </summary>
+        </member>
+    </members>
+</doc>

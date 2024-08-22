@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Extension.Math.HighSpeedPriorityQueue.Sample</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Extension.Math.HighSpeedPriorityQueue.Sample.FastPriorityQueueExample">
+            <summary>
+                The fast priority queue example class
+            </summary>
+        </member>
+        <member name="F:Alis.Extension.Math.HighSpeedPriorityQueue.Sample.FastPriorityQueueExample.MAX_USERS_IN_QUEUE">
+            <summary>
+                The max users in queue
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Math.HighSpeedPriorityQueue.Sample.FastPriorityQueueExample.RunExample">
+            <summary>
+                Runs the example
+            </summary>
+        </member>
+        <member name="T:Alis.Extension.Math.HighSpeedPriorityQueue.Sample.FastPriorityQueueExample.User">
+            <summary>
+                The user class
+            </summary>
+            <seealso cref="T:Alis.Extension.Math.HighSpeedPriorityQueue.FastPriorityQueueNode" />
+        </member>
+        <member name="M:Alis.Extension.Math.HighSpeedPriorityQueue.Sample.FastPriorityQueueExample.User.#ctor(System.String)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Extension.Math.HighSpeedPriorityQueue.Sample.FastPriorityQueueExample.User" /> class
+            </summary>
+            <param name="name">The name</param>
+        </member>
+        <member name="P:Alis.Extension.Math.HighSpeedPriorityQueue.Sample.FastPriorityQueueExample.User.Name">
+            <summary>
+                Gets or sets the value of the name
+            </summary>
+        </member>
+        <member name="T:Alis.Extension.Math.HighSpeedPriorityQueue.Sample.Program">
+            <summary>
+                The program class
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Math.HighSpeedPriorityQueue.Sample.Program.Main">
+            <summary>
+                Main
+            </summary>
+        </member>
+        <member name="T:Alis.Extension.Math.HighSpeedPriorityQueue.Sample.SimplePriorityQueueExample">
+            <summary>
+                The simple priority queue example class
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Math.HighSpeedPriorityQueue.Sample.SimplePriorityQueueExample.RunExample">
+            <summary>
+                Runs the example
+            </summary>
+        </member>
+    </members>
+</doc>

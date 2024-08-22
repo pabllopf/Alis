@@ -152,9 +152,9 @@ namespace Alis.Extension.Graphic.ImGui.Native
         }
         
         /// <summary>
-        ///     Shows the style editor using the specified ref
+        /// Shows the style editor using the specified im gui style
         /// </summary>
-        /// <param name="ref">The ref</param>
+        /// <param name="imGuiStyle">The im gui style</param>
         public static void ShowStyleEditor(ImGuiStyle imGuiStyle)
         {
             ImGuiNative.igShowStyleEditor(imGuiStyle);

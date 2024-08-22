@@ -32,7 +32,6 @@ namespace Alis.Core.Aspect.Fluent.Test
     /// <summary>
     ///     The test builder class
     /// </summary>
-    /// <seealso cref="IBuilder{string}" />
     internal class TestBuilder : IBuilder<string>
     {
         /// <summary>

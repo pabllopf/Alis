@@ -1,0 +1,882 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Extension.Plugin.Test</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Extension.Plugin.Test.Fakes.FakeAndroidPlatformDetector">
+            <summary>
+                The fake android platform detector class
+            </summary>
+            <seealso cref="T:Alis.Extension.Plugin.IPlatformDetector" />
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Fakes.FakeAndroidPlatformDetector.IsWindows">
+            <summary>
+                Describes whether this instance is windows
+            </summary>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Fakes.FakeAndroidPlatformDetector.IsOSX">
+            <summary>
+                Describes whether this instance is osx
+            </summary>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Fakes.FakeAndroidPlatformDetector.IsLinux">
+            <summary>
+                Describes whether this instance is linux
+            </summary>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Fakes.FakeAndroidPlatformDetector.IsiOS">
+            <summary>
+                Describes whether this instance isi os
+            </summary>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Fakes.FakeAndroidPlatformDetector.IsAndroid">
+            <summary>
+                Describes whether this instance is android
+            </summary>
+            <returns>The bool</returns>
+        </member>
+        <member name="T:Alis.Extension.Plugin.Test.Fakes.FakeIosPlatformDetector">
+            <summary>
+                The fake ios platform detector class
+            </summary>
+            <seealso cref="T:Alis.Extension.Plugin.IPlatformDetector" />
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Fakes.FakeIosPlatformDetector.IsWindows">
+            <summary>
+                Describes whether this instance is windows
+            </summary>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Fakes.FakeIosPlatformDetector.IsOSX">
+            <summary>
+                Describes whether this instance is osx
+            </summary>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Fakes.FakeIosPlatformDetector.IsLinux">
+            <summary>
+                Describes whether this instance is linux
+            </summary>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Fakes.FakeIosPlatformDetector.IsiOS">
+            <summary>
+                Describes whether this instance isi os
+            </summary>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Fakes.FakeIosPlatformDetector.IsAndroid">
+            <summary>
+                Describes whether this instance is android
+            </summary>
+            <returns>The bool</returns>
+        </member>
+        <member name="T:Alis.Extension.Plugin.Test.Fakes.FakeLinuxPlatformDetector">
+            <summary>
+                The fake linux platform detector class
+            </summary>
+            <seealso cref="T:Alis.Extension.Plugin.IPlatformDetector" />
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Fakes.FakeLinuxPlatformDetector.IsWindows">
+            <summary>
+                Describes whether this instance is windows
+            </summary>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Fakes.FakeLinuxPlatformDetector.IsOSX">
+            <summary>
+                Describes whether this instance is osx
+            </summary>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Fakes.FakeLinuxPlatformDetector.IsLinux">
+            <summary>
+                Describes whether this instance is linux
+            </summary>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Fakes.FakeLinuxPlatformDetector.IsiOS">
+            <summary>
+                Describes whether this instance isi os
+            </summary>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Fakes.FakeLinuxPlatformDetector.IsAndroid">
+            <summary>
+                Describes whether this instance is android
+            </summary>
+            <returns>The bool</returns>
+        </member>
+        <member name="T:Alis.Extension.Plugin.Test.Fakes.FakeOsxPlatformDetector">
+            <summary>
+                The fake osx platform detector class
+            </summary>
+            <seealso cref="T:Alis.Extension.Plugin.IPlatformDetector" />
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Fakes.FakeOsxPlatformDetector.IsWindows">
+            <summary>
+                Describes whether this instance is windows
+            </summary>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Fakes.FakeOsxPlatformDetector.IsOSX">
+            <summary>
+                Describes whether this instance is osx
+            </summary>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Fakes.FakeOsxPlatformDetector.IsLinux">
+            <summary>
+                Describes whether this instance is linux
+            </summary>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Fakes.FakeOsxPlatformDetector.IsiOS">
+            <summary>
+                Describes whether this instance isi os
+            </summary>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Fakes.FakeOsxPlatformDetector.IsAndroid">
+            <summary>
+                Describes whether this instance is android
+            </summary>
+            <returns>The bool</returns>
+        </member>
+        <member name="T:Alis.Extension.Plugin.Test.Fakes.FakeUnsupportedPlatformPlatformDetector">
+            <summary>
+                The fake unsupported platform platform detector class
+            </summary>
+            <seealso cref="T:Alis.Extension.Plugin.IPlatformDetector" />
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Fakes.FakeUnsupportedPlatformPlatformDetector.IsWindows">
+            <summary>
+                Describes whether this instance is windows
+            </summary>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Fakes.FakeUnsupportedPlatformPlatformDetector.IsOSX">
+            <summary>
+                Describes whether this instance is osx
+            </summary>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Fakes.FakeUnsupportedPlatformPlatformDetector.IsLinux">
+            <summary>
+                Describes whether this instance is linux
+            </summary>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Fakes.FakeUnsupportedPlatformPlatformDetector.IsiOS">
+            <summary>
+                Describes whether this instance isi os
+            </summary>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Fakes.FakeUnsupportedPlatformPlatformDetector.IsAndroid">
+            <summary>
+                Describes whether this instance is android
+            </summary>
+            <returns>The bool</returns>
+        </member>
+        <member name="T:Alis.Extension.Plugin.Test.Fakes.FakeWinPlatformDetector">
+            <summary>
+                The fake platform detector class
+            </summary>
+            <seealso cref="T:Alis.Extension.Plugin.IPlatformDetector" />
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Fakes.FakeWinPlatformDetector.IsWindows">
+            <summary>
+                Describes whether this instance is windows
+            </summary>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Fakes.FakeWinPlatformDetector.IsOSX">
+            <summary>
+                Describes whether this instance is osx
+            </summary>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Fakes.FakeWinPlatformDetector.IsLinux">
+            <summary>
+                Describes whether this instance is linux
+            </summary>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Fakes.FakeWinPlatformDetector.IsiOS">
+            <summary>
+                Describes whether this instance isi os
+            </summary>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Fakes.FakeWinPlatformDetector.IsAndroid">
+            <summary>
+                Describes whether this instance is android
+            </summary>
+            <returns>The bool</returns>
+        </member>
+        <member name="T:Alis.Extension.Plugin.Test.Mocks.MockPlugin">
+            <summary>
+                The mock plugin class
+            </summary>
+            <seealso cref="T:Alis.Extension.Plugin.IPlugin" />
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Mocks.MockPlugin.Dispose">
+            <summary>
+                Disposes this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Mocks.MockPlugin.Initialize">
+            <summary>
+                Initializes this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Mocks.MockPlugin.Update">
+            <summary>
+                Updates this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Mocks.MockPlugin.Render">
+            <summary>
+                Renders this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Mocks.MockPlugin.Shutdown">
+            <summary>
+                Shutdowns this instance
+            </summary>
+        </member>
+        <member name="T:Alis.Extension.Plugin.Test.Mocks.MockPlugin2">
+            <summary>
+                The mock plugin class
+            </summary>
+            <seealso cref="T:Alis.Extension.Plugin.IPlugin" />
+        </member>
+        <member name="P:Alis.Extension.Plugin.Test.Mocks.MockPlugin2.InitializeCalls">
+            <summary>
+                Gets or sets the value of the initialize calls
+            </summary>
+        </member>
+        <member name="P:Alis.Extension.Plugin.Test.Mocks.MockPlugin2.UpdateCalls">
+            <summary>
+                Gets or sets the value of the update calls
+            </summary>
+        </member>
+        <member name="P:Alis.Extension.Plugin.Test.Mocks.MockPlugin2.RenderCalls">
+            <summary>
+                Gets or sets the value of the render calls
+            </summary>
+        </member>
+        <member name="P:Alis.Extension.Plugin.Test.Mocks.MockPlugin2.ShutdownCalls">
+            <summary>
+                Gets or sets the value of the shutdown calls
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Mocks.MockPlugin2.Initialize">
+            <summary>
+                Initializes this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Mocks.MockPlugin2.Update">
+            <summary>
+                Updates this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Mocks.MockPlugin2.Render">
+            <summary>
+                Renders this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Mocks.MockPlugin2.Shutdown">
+            <summary>
+                Shutdowns this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Mocks.MockPlugin2.Dispose">
+            <summary>
+                Disposes this instance
+            </summary>
+        </member>
+        <member name="T:Alis.Extension.Plugin.Test.Mocks.PluginSample">
+            <summary>
+                The plugin sample class
+            </summary>
+            <seealso cref="T:Alis.Extension.Plugin.IPlugin" />
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Mocks.PluginSample.Dispose">
+            <summary>
+                Disposes this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Mocks.PluginSample.Initialize">
+            <summary>
+                Initializes this instance
+            </summary>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Mocks.PluginSample.Update">
+            <summary>
+                Updates this instance
+            </summary>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Mocks.PluginSample.Render">
+            <summary>
+                Renders this instance
+            </summary>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Mocks.PluginSample.Shutdown">
+            <summary>
+                Shutdowns this instance
+            </summary>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:Alis.Extension.Plugin.Test.Mocks.TestablePluginManager">
+            <summary>
+                The testable plugin manager class
+            </summary>
+            <seealso cref="T:Alis.Extension.Plugin.PluginManager" />
+        </member>
+        <member name="F:Alis.Extension.Plugin.Test.Mocks.TestablePluginManager.LoadPluginFromFileCallCount">
+            <summary>
+                The load plugin from file call count
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.Mocks.TestablePluginManager.LoadPluginFromFile(System.String)">
+            <summary>
+                Loads the plugin from file using the specified plugin file
+            </summary>
+            <param name="pluginFile">The plugin file</param>
+        </member>
+        <member name="T:Alis.Extension.Plugin.Test.PlatformAttributes.AndroidOnlyFactAttribute">
+            <summary>
+                The android only fact attribute class
+            </summary>
+            <seealso cref="T:Xunit.FactAttribute" />
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PlatformAttributes.AndroidOnlyFactAttribute.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Extension.Plugin.Test.PlatformAttributes.AndroidOnlyFactAttribute" /> class
+            </summary>
+        </member>
+        <member name="T:Alis.Extension.Plugin.Test.PlatformAttributes.IosOnlyFactAttribute">
+            <summary>
+                The ios only fact attribute class
+            </summary>
+            <seealso cref="T:Xunit.FactAttribute" />
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PlatformAttributes.IosOnlyFactAttribute.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Extension.Plugin.Test.PlatformAttributes.IosOnlyFactAttribute" /> class
+            </summary>
+        </member>
+        <member name="T:Alis.Extension.Plugin.Test.PlatformAttributes.LinuxOnlyFactAttribute">
+            <summary>
+                The linux only fact attribute class
+            </summary>
+            <seealso cref="T:Xunit.FactAttribute" />
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PlatformAttributes.LinuxOnlyFactAttribute.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Extension.Plugin.Test.PlatformAttributes.LinuxOnlyFactAttribute" /> class
+            </summary>
+        </member>
+        <member name="T:Alis.Extension.Plugin.Test.PlatformAttributes.NotPlatformOnlyFactAttribute">
+            <summary>
+                The not platform only fact attribute class
+            </summary>
+            <seealso cref="T:Xunit.FactAttribute" />
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PlatformAttributes.NotPlatformOnlyFactAttribute.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Extension.Plugin.Test.PlatformAttributes.NotPlatformOnlyFactAttribute" /> class
+            </summary>
+        </member>
+        <member name="T:Alis.Extension.Plugin.Test.PlatformAttributes.OsxOnlyFactAttribute">
+            <summary>
+                The osx only fact attribute class
+            </summary>
+            <seealso cref="T:Xunit.FactAttribute" />
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PlatformAttributes.OsxOnlyFactAttribute.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Extension.Plugin.Test.PlatformAttributes.OsxOnlyFactAttribute" /> class
+            </summary>
+        </member>
+        <member name="T:Alis.Extension.Plugin.Test.PlatformAttributes.WindowsOnlyFactAttribute">
+            <summary>
+                The windows only fact attribute class
+            </summary>
+            <seealso cref="T:Xunit.FactAttribute" />
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PlatformAttributes.WindowsOnlyFactAttribute.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Extension.Plugin.Test.PlatformAttributes.WindowsOnlyFactAttribute" /> class
+            </summary>
+        </member>
+        <member name="T:Alis.Extension.Plugin.Test.PluginManagerTest">
+            <summary>
+                The plugin manager test class
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.LoadPlugins_LoadsPluginsFromDirectory">
+            <summary>
+                Tests that load plugins loads plugins from directory
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.Dispose_UnloadsPlugins">
+            <summary>
+                Tests that dispose unloads plugins
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.Initialize_CallsInitializeOnEachPlugin">
+            <summary>
+                Tests that initialize calls initialize on each plugin
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.Update_v2_CallsUpdateOnEachPlugin">
+            <summary>
+                Tests that update calls update on each plugin
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.Render_v2_CallsRenderOnEachPlugin">
+            <summary>
+                Tests that render calls render on each plugin
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.Shutdown_v3_CallsShutdownOnEachPlugin">
+            <summary>
+                Tests that shutdown calls shutdown on each plugin
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.UnloadPlugins_UnloadsPlugins">
+            <summary>
+                Tests that unload plugins unloads plugins
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.Initialize_v2CallsInitializeOnEachPlugin">
+            <summary>
+                Tests that initialize v 2 calls initialize on each plugin
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.Update_CallsUpdateOnEachPlugin">
+            <summary>
+                Tests that update calls update on each plugin
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.Render_CallsRenderOnEachPlugin">
+            <summary>
+                Tests that render calls render on each plugin
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.Shutdown_CallsShutdownOnEachPlugin">
+            <summary>
+                Tests that shutdown calls shutdown on each plugin
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.LoadPlugins_v3_LoadsPluginsFromDirectory">
+            <summary>
+                Tests that load plugins v 3 loads plugins from directory
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.Dispose_v3_UnloadsPlugins">
+            <summary>
+                Tests that dispose v 3 unloads plugins
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.Initialize_v3_CallsInitializeOnEachPlugin">
+            <summary>
+                Tests that initialize v 3 calls initialize on each plugin
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.Update_v3_CallsUpdateOnEachPlugin">
+            <summary>
+                Tests that update v 3 calls update on each plugin
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.Render_v3_CallsRenderOnEachPlugin">
+            <summary>
+                Tests that render v 3 calls render on each plugin
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.Shutdown_v2_CallsShutdownOnEachPlugin">
+            <summary>
+                Tests that shutdown v 2 calls shutdown on each plugin
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.LoadPluginFromFile_LoadsPluginCorrectly">
+            <summary>
+                Tests that load plugin from file loads plugin correctly
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.IsRunningOniOS_ReturnsCorrectValue">
+            <summary>
+                Tests that is running oni os returns correct value
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.IsRunningOnAndroid_ReturnsCorrectValue">
+            <summary>
+                Tests that is running on android returns correct value
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.GetPluginFiles_ReturnsCorrectFiles">
+            <summary>
+                Tests that get plugin files returns correct files
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.IsPluginFile_ReturnsCorrectValue(System.String,System.Boolean)">
+            <summary>
+                Tests that is plugin file returns correct value
+            </summary>
+            <param name="filePath">The file path</param>
+            <param name="expected">The expected</param>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.ValidatePluginsDirectory_ThrowsExceptionForInvalidDirectory">
+            <summary>
+                Tests that validate plugins directory throws exception for invalid directory
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.ValidatePluginsDirectory_DoesNotThrowExceptionForValidDirectory">
+            <summary>
+                Tests that validate plugins directory does not throw exception for valid directory
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.LoadAssembly_LoadsCorrectAssembly">
+            <summary>
+                Tests that load assembly loads correct assembly
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.CreatePluginInstance_CreatesCorrectPluginInstance">
+            <summary>
+                Tests that create plugin instance creates correct plugin instance
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.IsPluginFile_ReturnsCorrectValueForNonPluginFile">
+            <summary>
+                Tests that is plugin file returns correct value for non plugin file
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.UnloadPlugins_UnloadsAllPlugins">
+            <summary>
+                Tests that unload plugins unloads all plugins
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.IsRunningOniOS_ReturnsFalseWhenNotRunningOniOS">
+            <summary>
+                Tests that is running oni os returns false when not running oni os
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.IsRunningOnAndroid_ReturnsFalseWhenNotRunningOnAndroid">
+            <summary>
+                Tests that is running on android returns false when not running on android
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.LoadPluginsFromFiles_LoadsCorrectNumberOfPlugins">
+            <summary>
+                Tests that load plugins from files loads correct number of plugins
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.LoadPluginsFromFiles_LoadsCorrectPluginInstances">
+            <summary>
+                Tests that load plugins from files loads correct plugin instances
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.LoadPluginsFromFiles_AddsPluginsToLoadedPlugins">
+            <summary>
+                Tests that load plugins from files adds plugins to loaded plugins
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.LoadPlugins_v1_LoadsPluginsFromDirectory">
+            <summary>
+                Tests that load plugins v 1 loads plugins from directory
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.Dispose_v1_UnloadsPlugins">
+            <summary>
+                Tests that dispose v 1 unloads plugins
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.LoadPluginFromFile__v1LoadsPluginCorrectly">
+            <summary>
+                Tests that load plugin from file v 1 loads plugin correctly
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.LoadAssembly_vq_LoadsCorrectAssembly">
+            <summary>
+                Tests that load assembly vq loads correct assembly
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.CreatePluginInstance_v1_CreatesCorrectPluginInstance">
+            <summary>
+                Tests that create plugin instance v 1 creates correct plugin instance
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.LoadPluginsFromFiles_v1_LoadsCorrectNumberOfPlugins">
+            <summary>
+                Tests that load plugins from files v 1 loads correct number of plugins
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.LoadPluginsFromFiles_v1_AddsPluginsToLoadedPlugins">
+            <summary>
+                Tests that load plugins from files v 1 adds plugins to loaded plugins
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.LoadPluginFromFile_v1_LoadsPluginCorrectly">
+            <summary>
+                Tests that load plugin from file v 1 loads plugin correctly
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.UnloadPlugins_v1_UnloadsAllPlugins">
+            <summary>
+                Tests that unload plugins v 1 unloads all plugins
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.GetPlatformFolder_ReturnsCorrectFolder">
+            <summary>
+                Tests that get platform folder returns correct folder
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.LoadPlugins_ThrowsExceptionWhenDirectoryIsInvalid">
+            <summary>
+                Tests that load plugins throws exception when directory is invalid
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.GetPlatformFolder_ReturnsAndroid_WhenRunningOnAndroid">
+            <summary>
+                Tests that get platform folder returns android when running on android
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.GetPlatformFolder_ThrowsException_WhenPlatformIsUnsupported">
+            <summary>
+                Tests that get platform folder throws exception when platform is unsupported
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.InstantiatePlugins_ShouldAddLoadedPlugins">
+            <summary>
+                Tests that instantiate plugins should add loaded plugins
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.InstantiatePlugins_ShouldNotAddNonIPluginTypes">
+            <summary>
+                Tests that instantiate plugins should not add non i plugin types
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.InstantiatePlugins_ShouldHandleEmptyAssembly">
+            <summary>
+                Tests that instantiate plugins should handle empty assembly
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.LoadPluginsFromFiles_ShouldCallLoadPluginFromFileForEachFile">
+            <summary>
+                Tests that load plugins from files should call load plugin from file for each file
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.UnloadPlugins_ShouldClearLoadedPluginsAndAssemblies">
+            <summary>
+                Tests that unload plugins should clear loaded plugins and assemblies
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.LoadPlugins_InvalidDirectory_ShouldThrowDirectoryNotFoundException">
+            <summary>
+                Tests that load plugins invalid directory should throw directory not found exception
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.GetPlatformPluginsDirectory_ValidInputs_ShouldReturnCorrectPath">
+            <summary>
+                Tests that get platform plugins directory valid inputs should return correct path
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.GetPlatformFolder_SupportedPlatform_ShouldReturnPlatformFolder">
+            <summary>
+                Tests that get platform folder supported platform should return platform folder
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.ValidatePluginsDirectory_ExistingDirectory_ShouldReturnTrue">
+            <summary>
+                Tests that validate plugins directory existing directory should return true
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.GetPluginFiles_ValidDirectory_ShouldReturnFiles">
+            <summary>
+                Tests that get plugin files valid directory should return files
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.LoadAssembly_ValidPluginFile_ShouldReturnAssembly">
+            <summary>
+                Tests that load assembly valid plugin file should return assembly
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.InstantiatePlugins_ValidAssembly_ShouldAddPlugins">
+            <summary>
+                Tests that instantiate plugins valid assembly should add plugins
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.GetPluginTypes_ValidAssembly_ShouldReturnPluginTypes">
+            <summary>
+                Tests that get plugin types valid assembly should return plugin types
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.CreatePluginInstance_ValidType_ShouldReturnPluginInstance">
+            <summary>
+                Tests that create plugin instance valid type should return plugin instance
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.IsPluginFile_ValidPluginFile_ShouldReturnTrue">
+            <summary>
+                Tests that is plugin file valid plugin file should return true
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.UnloadPlugins_LoadedPlugins_ShouldClearPlugins">
+            <summary>
+                Tests that unload plugins loaded plugins should clear plugins
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.GetPlatformFolder_ReturnsWindows_WhenOnWindows">
+            <summary>
+                Tests that get platform folder returns windows when on windows
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.GetPlatformFolder_ReturnsOsx_WhenOnMacOS">
+            <summary>
+                Tests that get platform folder returns osx when on mac os
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.GetPlatformFolder_ReturnsIos_WhenOnIos">
+            <summary>
+                Tests that get platform folder returns ios when on ios
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.GetPlatformFolder_ReturnsLinux_WhenOnLinux">
+            <summary>
+                Tests that get platform folder returns linux when on linux
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.GetPlatformFolder_ReturnsAndroid_WhenOnAndroid">
+            <summary>
+                Tests that get platform folder returns android when on android
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.GetPlatformFolder_ThrowsNotSupportedException_WhenOnUnsupportedPlatform">
+            <summary>
+                Tests that get platform folder throws not supported exception when on unsupported platform
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.IsiOS_ReturnsTrue_WhenOniOS">
+            <summary>
+                Isis the os returns true when oni os
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.IsAndroid_ReturnsTrue_WhenOnAndroid">
+            <summary>
+                Ises the android returns true when on android
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.GetPlatformFolder_ReturnsCorrectPlatform_OrAssertsDifference">
+            <summary>
+                Tests that get platform folder returns correct platform or asserts difference
+            </summary>
+            <exception cref="T:System.NotSupportedException">Unsupported platform. Plugins will not be loaded.</exception>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.GetPlatformFolder_ReturnsWindows_WhenOnWindows_v2">
+            <summary>
+                Tests that get platform folder returns windows when on windows
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.GetPlatformFolder_ReturnsWindows_WhenOnWindows_v3">
+            <summary>
+                Tests that get platform folder returns windows when on windows v 3
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.GetPlatformFolder_ReturnsWindows_WhenOnOsx">
+            <summary>
+                Tests that get platform folder returns windows when on osx
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.GetPlatformFolder_ReturnsWindows_WhenOnLinux">
+            <summary>
+                Tests that get platform folder returns windows when on linux
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.GetPlatformFolder_ReturnsWindows_WhenOnIos">
+            <summary>
+                Tests that get platform folder returns windows when on ios
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.GetPlatformFolder_ReturnsWindows_WhenOnAndroid">
+            <summary>
+                Tests that get platform folder returns windows when on android
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.GetPlatformFolder_ThrowsNotSupportedException_WhenOnUnsupportedPlatform_v2">
+            <summary>
+                Tests that get platform folder throws not supported exception when on unsupported platform v 2
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.Initialize_WithEmptyList_DoesNotThrow">
+            <summary>
+                Tests that initialize with empty list does not throw
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.Initialize_WithPopulatedList_CallsInitializeOnEachPlugin">
+            <summary>
+                Tests that initialize with populated list calls initialize on each plugin
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.Initialize_WithNullList_DoesNotThrow">
+            <summary>
+                Tests that initialize with null list does not throw
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.Update_WithEmptyList_DoesNotThrow">
+            <summary>
+                Tests that update with empty list does not throw
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.Update_WithPopulatedList_CallsUpdateOnEachPlugin">
+            <summary>
+                Tests that update with populated list calls update on each plugin
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.Update_WithNullList_DoesNotThrow">
+            <summary>
+                Tests that update with null list does not throw
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.Render_WithEmptyList_DoesNotThrow">
+            <summary>
+                Tests that render with empty list does not throw
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.Render_WithPopulatedList_CallsRenderOnEachPlugin">
+            <summary>
+                Tests that render with populated list calls render on each plugin
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.Render_WithNullList_DoesNotThrow">
+            <summary>
+                Tests that render with null list does not throw
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.Shutdown_WithEmptyList_DoesNotThrow">
+            <summary>
+                Tests that shutdown with empty list does not throw
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.Shutdown_WithPopulatedList_CallsShutdownOnEachPlugin">
+            <summary>
+                Tests that shutdown with populated list calls shutdown on each plugin
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Plugin.Test.PluginManagerTest.Shutdown_WithNullList_DoesNotThrow">
+            <summary>
+                Tests that shutdown with null list does not throw
+            </summary>
+        </member>
+    </members>
+</doc>

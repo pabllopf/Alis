@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Extension.Graphic.OpenGL.Test</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Extension.Graphic.OpenGL.Test.Constructs.GlShaderProgramTest">
+            <summary>
+                The gl shader program test class
+            </summary>
+        </member>
+        <member name="T:Alis.Extension.Graphic.OpenGL.Test.Constructs.GlShaderTest">
+            <summary>
+                The gl shader test class
+            </summary>
+        </member>
+        <member name="T:Alis.Extension.Graphic.OpenGL.Test.Delegates.AttachShaderTest">
+            <summary>
+                The attach shader test class
+            </summary>
+        </member>
+        <member name="T:Alis.Extension.Graphic.OpenGL.Test.DrawArraysTest">
+            <summary>
+                The draw arrays test class
+            </summary>
+        </member>
+        <member name="T:Alis.Extension.Graphic.OpenGL.Test.DrawElementsTest">
+            <summary>
+                The draw elements test class
+            </summary>
+        </member>
+        <member name="T:Alis.Extension.Graphic.OpenGL.Test.Enums.ActiveAttribTypeTest">
+            <summary>
+                The active attrib type test class
+            </summary>
+        </member>
+        <member name="T:Alis.Extension.Graphic.OpenGL.Test.GlTest">
+            <summary>
+                The gl test class
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Graphic.OpenGL.Test.GlTest.GetProgramLinkStatus_ReturnsTrueWhenLinked">
+            <summary>
+                Tests that get program link status returns true when linked
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Graphic.OpenGL.Test.GlTest.GetProgramLinkStatus_ReturnsFalseWhenNotLinked">
+            <summary>
+                Tests that get program link status returns false when not linked
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Graphic.OpenGL.Test.GlTest.UniformMatrix4Fv_CallsGlUniformMatrix4Fv">
+            <summary>
+                Tests that uniform matrix 4 fv calls gl uniform matrix 4 fv
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Graphic.OpenGL.Test.GlTest.VertexAttribPointer_ThrowsArgumentOutOfRangeExceptionForNegativeIndex">
+            <summary>
+                Tests that vertex attrib pointer throws argument out of range exception for negative index
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Graphic.OpenGL.Test.GlTest.VertexAttribPointer_CallsGlVertexAttribPointer">
+            <summary>
+                Tests that vertex attrib pointer calls gl vertex attrib pointer
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Graphic.OpenGL.Test.GlTest.EnableVertexAttribArray_ThrowsArgumentOutOfRangeExceptionForNegativeIndex">
+            <summary>
+                Tests that enable vertex attrib array throws argument out of range exception for negative index
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Graphic.OpenGL.Test.GlTest.EnableVertexAttribArray_CallsGlEnableVertexAttribArray">
+            <summary>
+                Tests that enable vertex attrib array calls gl enable vertex attrib array
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Graphic.OpenGL.Test.GlTest.GenVertexArray_CallsGlGenVertexArrays">
+            <summary>
+                Tests that gen vertex array calls gl gen vertex arrays
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Graphic.OpenGL.Test.GlTest.DeleteVertexArray_CallsGlDeleteVertexArrays">
+            <summary>
+                Tests that delete vertex array calls gl delete vertex arrays
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Graphic.OpenGL.Test.GlTest.GenTexture_CallsGlGenTextures">
+            <summary>
+                Tests that gen texture calls gl gen textures
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Graphic.OpenGL.Test.GlTest.DeleteTexture_CallsGlDeleteTextures">
+            <summary>
+                Tests that delete texture calls gl delete textures
+            </summary>
+        </member>
+        <member name="T:Alis.Extension.Graphic.OpenGL.Test.PrimitiveTypeTests">
+            <summary>
+                The primitive type tests class
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Graphic.OpenGL.Test.PrimitiveTypeTests.Points_HasValue0x0000">
+            <summary>
+                Tests that points has value 0x 0000
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Graphic.OpenGL.Test.PrimitiveTypeTests.Lines_HasValue0x0001">
+            <summary>
+                Tests that lines has value 0x 0001
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Graphic.OpenGL.Test.PrimitiveTypeTests.LineLoop_HasValue0x0002">
+            <summary>
+                Tests that line loop has value 0x 0002
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Graphic.OpenGL.Test.PrimitiveTypeTests.LineStrip_HasValue0x0003">
+            <summary>
+                Tests that line strip has value 0x 0003
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Graphic.OpenGL.Test.PrimitiveTypeTests.Triangles_HasValue0x0004">
+            <summary>
+                Tests that triangles has value 0x 0004
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Graphic.OpenGL.Test.PrimitiveTypeTests.TriangleStrip_HasValue0x0005">
+            <summary>
+                Tests that triangle strip has value 0x 0005
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Graphic.OpenGL.Test.PrimitiveTypeTests.TriangleFan_HasValue0x0006">
+            <summary>
+                Tests that triangle fan has value 0x 0006
+            </summary>
+        </member>
+    </members>
+</doc>

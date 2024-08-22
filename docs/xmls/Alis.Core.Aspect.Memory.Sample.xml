@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Core.Aspect.Memory.Sample</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Core.Aspect.Memory.Sample.Program">
+            <summary>
+                The program class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Memory.Sample.Program._nonZeroValue">
+            <summary>
+                Gets or sets the value of the non zero value
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Memory.Sample.Program._nonZeroValuev2">
+            <summary>
+                Gets or sets the value of the non zero value
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Memory.Sample.Program.Sample">
+            <summary>
+                Gets or sets the value of the sample
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Memory.Sample.Program.SampleMethod(System.Int32)">
+            <summary>
+                Samples the method using the specified value
+            </summary>
+            <param name="value">The value</param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Memory.Sample.Program.Main(System.String[])">
+            <summary>
+                Main the args
+            </summary>
+            <param name="args">The args</param>
+        </member>
+    </members>
+</doc>

@@ -55,6 +55,9 @@ namespace Alis.Core.Audio.Players
         /// </summary>
         private Process _process;
         
+        /// <summary>
+        /// Event 
+        /// </summary>
         public event EventHandler PlaybackFinished;
         
         /// <summary>

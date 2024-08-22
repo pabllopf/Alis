@@ -35,9 +35,8 @@ using System.Runtime.CompilerServices;
 namespace Alis.Extension.Math.HighSpeedPriorityQueue
 {
     /// <summary>
-    ///     The fast priority queue class
+    /// The fast priority queue class
     /// </summary>
-    /// <seealso cref="IFixedSizePriorityQueue{T, float}" />
     public sealed class FastPriorityQueue<T> : IFixedSizePriorityQueue<T, float>
         where T : FastPriorityQueueNode
     {

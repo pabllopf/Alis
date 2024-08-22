@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Extension.Math.PathGenerator.Sample</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Extension.Math.PathGenerator.Sample.Program">
+            <summary>
+                The program class
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Math.PathGenerator.Sample.Program.Main">
+            <summary>
+                Main
+            </summary>
+        </member>
+    </members>
+</doc>

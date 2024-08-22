@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Sample.King.Platform</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Sample.King.Platform.PlayerMovement">
+            <summary>
+                The player movement class
+            </summary>
+            <seealso cref="T:Alis.Core.Ecs.Component.AComponent" />
+        </member>
+        <member name="F:Alis.Sample.King.Platform.PlayerMovement.JumpForce">
+            <summary>
+                The jump force
+            </summary>
+        </member>
+        <member name="F:Alis.Sample.King.Platform.PlayerMovement.VelocityPlayer">
+            <summary>
+                The velocity player
+            </summary>
+        </member>
+        <member name="F:Alis.Sample.King.Platform.PlayerMovement.ResetCoolDownJump">
+            <summary>
+                The reset cool down jump
+            </summary>
+        </member>
+        <member name="F:Alis.Sample.King.Platform.PlayerMovement.animator">
+            <summary>
+                The animator
+            </summary>
+        </member>
+        <member name="F:Alis.Sample.King.Platform.PlayerMovement.boxCollider">
+            <summary>
+                The box collider
+            </summary>
+        </member>
+        <member name="F:Alis.Sample.King.Platform.PlayerMovement.coolDownJump">
+            <summary>
+                The cool down jump
+            </summary>
+        </member>
+        <member name="F:Alis.Sample.King.Platform.PlayerMovement.directionPlayer">
+            <summary>
+                The vector
+            </summary>
+        </member>
+        <member name="F:Alis.Sample.King.Platform.PlayerMovement.isJumping">
+            <summary>
+                The is jumping
+            </summary>
+        </member>
+        <member name="F:Alis.Sample.King.Platform.PlayerMovement.sprite">
+            <summary>
+                The sprite
+            </summary>
+        </member>
+        <member name="M:Alis.Sample.King.Platform.PlayerMovement.OnStart">
+            <summary>
+                Ons the start
+            </summary>
+        </member>
+        <member name="M:Alis.Sample.King.Platform.PlayerMovement.OnUpdate">
+            <summary>
+                Ons the update
+            </summary>
+        </member>
+        <member name="M:Alis.Sample.King.Platform.PlayerMovement.OnReleaseKey(Alis.Core.Aspect.Data.Mapping.KeyCodes)">
+            <summary>
+                Ons the release key using the specified key
+            </summary>
+            <param name="key">The key</param>
+        </member>
+        <member name="M:Alis.Sample.King.Platform.PlayerMovement.OnPressDownKey(Alis.Core.Aspect.Data.Mapping.KeyCodes)">
+            <summary>
+                Ons the press down key using the specified key
+            </summary>
+            <param name="key">The key</param>
+        </member>
+        <member name="M:Alis.Sample.King.Platform.PlayerMovement.JumpPlayer">
+            <summary>
+                Jumps the player
+            </summary>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="T:Alis.Sample.King.Platform.Program">
+            <summary>
+                The program class
+            </summary>
+        </member>
+        <member name="M:Alis.Sample.King.Platform.Program.Main(System.String[])">
+            <summary>
+                Main the args
+            </summary>
+            <param name="args">The args</param>
+        </member>
+    </members>
+</doc>

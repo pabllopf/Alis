@@ -1,0 +1,266 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Core.Aspect.Time</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Core.Aspect.Time.Clock">
+            <summary>
+                The clock class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Time.Clock.stopwatch">
+            <summary>
+                The stopwatch
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Time.Clock.Elapsed">
+            <summary>
+                Gets the value of the elapsed
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Time.Clock.ElapsedMilliseconds">
+            <summary>
+                Gets the value of the elapsed milliseconds
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Time.Clock.ElapsedTicks">
+            <summary>
+                Gets the value of the elapsed ticks
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Time.Clock.ElapsedSeconds">
+            <summary>
+                Gets the value of the elapsed seconds
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Time.Clock.Start">
+            <summary>
+                Starts this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Time.Clock.Stop">
+            <summary>
+                Stops this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Time.Clock.Reset">
+            <summary>
+                Resets this instance
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Aspect.Time.TimeConfiguration">
+            <summary>
+                The time class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Time.TimeConfiguration.#ctor(System.Single,System.Single,System.Single)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Aspect.Time.TimeConfiguration" /> class
+            </summary>
+            <param name="fixedTimeStep">The fixed time step</param>
+            <param name="maximumAllowedTimeStep">The maximum allowed time step</param>
+            <param name="timeScale">The time scale</param>
+        </member>
+        <member name="P:Alis.Core.Aspect.Time.TimeConfiguration.FixedTimeStep">
+            <summary>
+                A framerate-independent interval that dictates when physics calculations and FixedUpdate() events are performed.
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Time.TimeConfiguration.MaximumAllowedTimeStep">
+            <summary>
+                A framerate-independent interval that caps the worst case scenario when frame-rate is low.
+                Physics calculations and FixedUpdate() events will not be performed for longer time than specified.
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Time.TimeConfiguration.TimeScale">
+            <summary>
+                The speed at which time progresses.
+                Change this value to simulate bullet-time effects.
+                A value of 1 means real-time. A value of .5 means half speed; a value of 2 is double speed.
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Time.TimeConfiguration.LogOutput">
+            <summary>
+                Gets or sets the value of the log output
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Aspect.Time.TimeManager">
+            <summary>
+                Provides an interface to get time information.
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Time.TimeManager.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Aspect.Time.TimeManager" /> class
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Time.TimeManager.Configuration">
+            <summary>
+                Gets or sets the value of the configuration
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Time.TimeManager.Clock">
+            <summary>
+                Gets the value of the clock
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Time.TimeManager.DeltaTime">
+            <summary>
+                The interval in seconds from the last frame to the current one (Read Only).
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Time.TimeManager.FixedDeltaTime">
+            <summary>
+                The interval in seconds at which physics and other fixed frame rate updateS.
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Time.TimeManager.FixedTime">
+            <summary>
+                The time since the last FixedUpdate started (Read Only).
+                This is the time in seconds since the start of the game.
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Time.TimeManager.FixedTimeAsDouble">
+            <summary>
+                The double precision time since the last FixedUpdate started (Read Only).
+                This is the time in seconds since the start of the game.
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Time.TimeManager.FixedUnscaledDeltaTime">
+            <summary>
+                The timeScale-independent interval in seconds from the last Runtime.FixedUpdate() phase to the current one (Read
+                Only).
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Time.TimeManager.FixedUnscaledTime">
+            <summary>
+                The timeScale-independent time at the beginning of the last Runtime.FixedUpdate() phase (Read Only).
+                This is the time in seconds since the start of the game.
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Time.TimeManager.FixedUnscaledTimeAsDouble">
+            <summary>
+                The double precision timeScale-independent time at the beginning of the last FixedUpdate (Read Only).
+                This is the time in seconds since the start of the game.
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Time.TimeManager.FrameCount">
+            <summary>
+                The total number of frames since the start of the game (Read Only).
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Time.TimeManager.TotalFrames">
+            <summary>
+                Gets or sets the value of the total frames
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Time.TimeManager.AverageFrames">
+            <summary>
+                Gets or sets the value of the average frames
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Time.TimeManager.InFixedTimeStep">
+            <summary>
+                Returns true if called inside a fixed time step callback (like Runtime FixedUpdate), otherwise returns false.
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Time.TimeManager.MaximumDeltaTime">
+            <summary>
+                The maximum value of TimeManager.DeltaTime in any given frame.
+                This is a time in seconds that limits the increase of TimeManager.time between two frames.
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Time.TimeManager.RealtimeSinceStartup">
+            <summary>
+                The real time in seconds since the game started (Read Only).
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Time.TimeManager.RealtimeSinceStartupAsDouble">
+            <summary>
+                The real time in seconds since the game started (Read Only).
+                Double precision version of realtimeSinceStartup.
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Time.TimeManager.SmoothDeltaTime">
+            <summary>
+                A smoothed out TimeManager.DeltaTime (Read Only).
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Time.TimeManager.Time">
+            <summary>
+                The time at the beginning of this frame (Read Only).
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Time.TimeManager.TimeAsDouble">
+            <summary>
+                The double precision time at the beginning of this frame (Read Only).
+                This is the time in seconds since the start of the game.
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Time.TimeManager.TimeScale">
+            <summary>
+                The scale at which time passes.
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Time.TimeManager.UnscaledDeltaTime">
+            <summary>
+                The timeScale-independent interval in seconds from the last frame to the current one (Read Only).
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Time.TimeManager.UnscaledTime">
+            <summary>
+                The timeScale-independent time for this frame (Read Only).
+                This is the time in seconds since the start of the game.
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Time.TimeManager.UnscaledTimeAsDouble">
+            <summary>
+                The double precision timeScale-independent time for this frame (Read Only).
+                This is the time in seconds since the start of the game.
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Time.TimeManager.IsRunning">
+            <summary>
+                Gets or sets the value of the is running
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Aspect.Time.TimeStep">
+            <summary>This is an internal class.</summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Time.TimeStep.DeltaTime">
+            <summary>Time step (Delta time)</summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Time.TimeStep.DeltaTimeRatio">
+            <summary>dt * inv_dt0</summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Time.TimeStep.InvertedDeltaTime">
+            <summary>Inverse time step (0 if dt == 0).</summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Time.TimeStep.InvertedDeltaTimeZero">
+            <summary>
+                The inverted delta time
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Time.TimeStep.PositionIterations">
+            <summary>
+                The position iterations
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Time.TimeStep.VelocityIterations">
+            <summary>
+                The velocity iterations
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Time.TimeStep.WarmStarting">
+            <summary>
+                The warm starting
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Time.TimeStep.Reset">
+            <summary>
+                Resets this instance
+            </summary>
+        </member>
+    </members>
+</doc>

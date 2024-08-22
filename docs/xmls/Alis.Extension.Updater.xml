@@ -1,0 +1,248 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Extension.Updater</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Extension.Updater.Events.UpdateProgressEventHandler">
+            <summary>
+                The update progress event handler
+            </summary>
+        </member>
+        <member name="T:Alis.Extension.Updater.Services.Api.GitHubApiService">
+            <summary>
+                The git hub api service class
+            </summary>
+            <seealso cref="T:Alis.Extension.Updater.Services.Api.IGitHubApiService" />
+        </member>
+        <member name="F:Alis.Extension.Updater.Services.Api.GitHubApiService._httpClient">
+            <summary>
+                The http client
+            </summary>
+        </member>
+        <member name="F:Alis.Extension.Updater.Services.Api.GitHubApiService.apiUrl">
+            <summary>
+                The api url
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Updater.Services.Api.GitHubApiService.#ctor(System.String)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Extension.Updater.Services.Api.GitHubApiService" /> class
+            </summary>
+            <param name="apiUrl"></param>
+        </member>
+        <member name="M:Alis.Extension.Updater.Services.Api.GitHubApiService.GetLatestReleaseAsync">
+            <summary>
+            Gets the latest release
+            </summary>
+            <returns>A task containing a dictionary of string and object</returns>
+        </member>
+        <member name="T:Alis.Extension.Updater.Services.Api.IGitHubApiService">
+            <summary>
+                The git hub api service interface
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Updater.Services.Api.IGitHubApiService.GetLatestReleaseAsync">
+            <summary>
+                Gets the latest release using the specified api url
+            </summary>
+            <returns>A task containing a dictionary of string and object</returns>
+        </member>
+        <member name="T:Alis.Extension.Updater.Services.Files.FileService">
+            <summary>
+                The file service class
+            </summary>
+            <seealso cref="T:Alis.Extension.Updater.Services.Files.IFileService" />
+        </member>
+        <member name="M:Alis.Extension.Updater.Services.Files.FileService.DownloadFileAsync(System.String,System.String)">
+            <summary>
+                Downloads the file using the specified url
+            </summary>
+            <param name="url">The url</param>
+            <param name="directory">The directory</param>
+            <returns>A task containing the string</returns>
+        </member>
+        <member name="M:Alis.Extension.Updater.Services.Files.FileService.ExtractAndReplace(System.String,System.String)">
+            <summary>
+                Extracts the and replace using the specified zip path
+            </summary>
+            <param name="zipPath">The zip path</param>
+            <param name="directory">The directory</param>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:Alis.Extension.Updater.Services.Files.FileService.CleanTempFiles(System.String)">
+            <summary>
+                Cleans the temp files using the specified directory
+            </summary>
+            <param name="directory">The directory</param>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:Alis.Extension.Updater.Services.Files.FileService.Backup(System.String)">
+            <summary>
+                Backups the directory
+            </summary>
+            <param name="directory">The directory</param>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:Alis.Extension.Updater.Services.Files.IFileService">
+            <summary>
+                The file service interface
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Updater.Services.Files.IFileService.DownloadFileAsync(System.String,System.String)">
+            <summary>
+                Downloads the file using the specified url
+            </summary>
+            <param name="url">The url</param>
+            <param name="directory">The directory</param>
+            <returns>A task containing the string</returns>
+        </member>
+        <member name="M:Alis.Extension.Updater.Services.Files.IFileService.ExtractAndReplace(System.String,System.String)">
+            <summary>
+                Extracts the and replace using the specified zip path
+            </summary>
+            <param name="zipPath">The zip path</param>
+            <param name="directory">The directory</param>
+        </member>
+        <member name="M:Alis.Extension.Updater.Services.Files.IFileService.CleanTempFiles(System.String)">
+            <summary>
+                Cleans the temp files using the specified directory
+            </summary>
+            <param name="directory">The directory</param>
+        </member>
+        <member name="M:Alis.Extension.Updater.Services.Files.IFileService.Backup(System.String)">
+            <summary>
+                Backups the directory
+            </summary>
+            <param name="directory">The directory</param>
+        </member>
+        <member name="T:Alis.Extension.Updater.UpdateManager">
+            <summary>
+                The update manager class
+            </summary>
+        </member>
+        <member name="F:Alis.Extension.Updater.UpdateManager._fileService">
+            <summary>
+                The file service
+            </summary>
+        </member>
+        <member name="F:Alis.Extension.Updater.UpdateManager._gitHubApiService">
+            <summary>
+                The git hub api service
+            </summary>
+        </member>
+        <member name="F:Alis.Extension.Updater.UpdateManager._programFolder">
+            <summary>
+                The program folder
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Updater.UpdateManager.#ctor(Alis.Extension.Updater.Services.Api.IGitHubApiService,Alis.Extension.Updater.Services.Files.IFileService,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Extension.Updater.UpdateManager"/> class
+            </summary>
+            <param name="gitHubApiService">The git hub api service</param>
+            <param name="fileService">The file service</param>
+            <param name="programFolder">The program folder</param>
+        </member>
+        <member name="P:Alis.Extension.Updater.UpdateManager.Progress">
+            <summary>
+                Gets or sets the value of the progress
+            </summary>
+        </member>
+        <member name="P:Alis.Extension.Updater.UpdateManager.Message">
+            <summary>
+                Gets or sets the value of the message
+            </summary>
+        </member>
+        <member name="E:Alis.Extension.Updater.UpdateManager.UpdateProgressChanged">
+            <summary>
+                Event handler for the update progress
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Updater.UpdateManager.OnUpdateProgressChanged(System.Single,System.String)">
+            <summary>
+                Ons the update progress changed using the specified progress
+            </summary>
+            <param name="progress">The progress</param>
+            <param name="message">The message</param>
+        </member>
+        <member name="M:Alis.Extension.Updater.UpdateManager.Start">
+            <summary>
+                Updates the game
+            </summary>
+            <returns>A task containing the bool</returns>
+        </member>
+        <member name="M:Alis.Extension.Updater.UpdateManager.Backup">
+            <summary>
+                Backups this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Updater.UpdateManager.GetPlatform">
+            <summary>
+                Gets the platform
+            </summary>
+            <exception cref="T:System.PlatformNotSupportedException">Platform not supported.</exception>
+            <returns>The string</returns>
+        </member>
+        <member name="M:Alis.Extension.Updater.UpdateManager.SelectAsset(System.Object[],System.String,System.String)">
+            <summary>
+                Selects the asset using the specified assets
+            </summary>
+            <param name="assets">The assets</param>
+            <param name="platform">The platform</param>
+            <param name="architecture">The architecture</param>
+            <returns>The token</returns>
+        </member>
+        <member name="M:Alis.Extension.Updater.UpdateManager.GetLatestReleaseAsync">
+            <summary>
+                Gets the latest release
+            </summary>
+            <returns>A task containing the object</returns>
+        </member>
+        <member name="M:Alis.Extension.Updater.UpdateManager.DownloadFileAsync(System.String)">
+            <summary>
+                Downloads the file using the specified url
+            </summary>
+            <param name="url">The url</param>
+            <returns>The file path</returns>
+        </member>
+        <member name="M:Alis.Extension.Updater.UpdateManager.ExtractAndReplace(System.String)">
+            <summary>
+                Extracts the and replace using the specified file async
+            </summary>
+            <param name="fileAsync">The file</param>
+            <exception cref="T:System.InvalidOperationException">The file has an invalid extension.</exception>
+        </member>
+        <member name="M:Alis.Extension.Updater.UpdateManager.ExtractDmg(System.String)">
+            <summary>
+                Extracts the dmg using the specified file async
+            </summary>
+            <param name="fileAsync">The file</param>
+        </member>
+        <member name="M:Alis.Extension.Updater.UpdateManager.WaitForContinue">
+            <summary>
+                Waits the for continue
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Updater.UpdateManager.ExecuteShellCommand(System.String)">
+            <summary>
+                Executes the shell command using the specified command
+            </summary>
+            <param name="command">The command</param>
+        </member>
+        <member name="M:Alis.Extension.Updater.UpdateManager.ExtractZip(System.String)">
+            <summary>
+                Extracts the zip using the specified file async
+            </summary>
+            <param name="fileAsync">The file</param>
+            <exception cref="T:System.InvalidOperationException">Exceeded the maximum compression ratio threshold.</exception>
+            <exception cref="T:System.InvalidOperationException">Exceeded the maximum number of entries threshold.</exception>
+            <exception cref="T:System.InvalidOperationException">Exceeded the maximum uncompressed size threshold.</exception>
+        </member>
+        <member name="M:Alis.Extension.Updater.UpdateManager.CleanTempFile">
+            <summary>
+                Cleans the backup
+            </summary>
+        </member>
+    </members>
+</doc>

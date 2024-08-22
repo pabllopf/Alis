@@ -1,0 +1,880 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Core.Aspect.Security</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Core.Aspect.Security.SecureByte">
+            <summary>
+                The secure byte class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Security.SecureByte._randomValue">
+            <summary>
+                The random value
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Security.SecureByte._value">
+            <summary>
+                The value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureByte.#ctor(System.Byte)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Aspect.Security.SecureByte" /> class
+            </summary>
+            <param name="value">The value</param>
+        </member>
+        <member name="P:Alis.Core.Aspect.Security.SecureByte.Value">
+            <summary>
+                Gets or sets the value of the value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureByte.op_Implicit(System.Byte)~Alis.Core.Aspect.Security.SecureByte">
+            <summary>
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureByte.op_Implicit(Alis.Core.Aspect.Security.SecureByte)~System.Byte">
+            <summary>
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureByte.op_Equality(Alis.Core.Aspect.Security.SecureByte,Alis.Core.Aspect.Security.SecureByte)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureByte.op_Inequality(Alis.Core.Aspect.Security.SecureByte,Alis.Core.Aspect.Security.SecureByte)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureByte.op_Increment(Alis.Core.Aspect.Security.SecureByte)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureByte.op_Decrement(Alis.Core.Aspect.Security.SecureByte)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureByte.op_Addition(Alis.Core.Aspect.Security.SecureByte,Alis.Core.Aspect.Security.SecureByte)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureByte.op_Subtraction(Alis.Core.Aspect.Security.SecureByte,Alis.Core.Aspect.Security.SecureByte)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureByte.op_Multiply(Alis.Core.Aspect.Security.SecureByte,Alis.Core.Aspect.Security.SecureByte)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureByte.op_Division(Alis.Core.Aspect.Security.SecureByte,Alis.Core.Aspect.Security.SecureByte)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureByte.ToString">
+            <summary>
+                Returns the string
+            </summary>
+            <returns>The string</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureByte.GetHashCode">
+            <summary>
+                Gets the hash code
+            </summary>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureByte.Equals(System.Object)">
+            <summary>
+                Describes whether this instance equals
+            </summary>
+            <param name="obj">The obj</param>
+            <returns>The bool</returns>
+        </member>
+        <member name="T:Alis.Core.Aspect.Security.SecureChar">
+            <summary>
+                The secure char class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Security.SecureChar._randomValue">
+            <summary>
+                The random value
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Security.SecureChar._value">
+            <summary>
+                The value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureChar.#ctor(System.Char)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Aspect.Security.SecureChar" /> class
+            </summary>
+            <param name="value">The value</param>
+        </member>
+        <member name="P:Alis.Core.Aspect.Security.SecureChar.Value">
+            <summary>
+                Gets or sets the value of the value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureChar.op_Implicit(System.Char)~Alis.Core.Aspect.Security.SecureChar">
+            <summary>
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureChar.op_Implicit(Alis.Core.Aspect.Security.SecureChar)~System.Char">
+            <summary>
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureChar.op_Equality(Alis.Core.Aspect.Security.SecureChar,Alis.Core.Aspect.Security.SecureChar)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureChar.op_Inequality(Alis.Core.Aspect.Security.SecureChar,Alis.Core.Aspect.Security.SecureChar)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureChar.op_Addition(Alis.Core.Aspect.Security.SecureChar,Alis.Core.Aspect.Security.SecureChar)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureChar.op_Subtraction(Alis.Core.Aspect.Security.SecureChar,Alis.Core.Aspect.Security.SecureChar)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureChar.op_Multiply(Alis.Core.Aspect.Security.SecureChar,Alis.Core.Aspect.Security.SecureChar)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureChar.op_Division(Alis.Core.Aspect.Security.SecureChar,Alis.Core.Aspect.Security.SecureChar)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureChar.ToString">
+            <summary>
+                Returns the string
+            </summary>
+            <returns>The string</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureChar.GetHashCode">
+            <summary>
+                Gets the hash code
+            </summary>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureChar.Equals(System.Object)">
+            <summary>
+                Describes whether this instance equals
+            </summary>
+            <param name="obj">The obj</param>
+            <returns>The bool</returns>
+        </member>
+        <member name="T:Alis.Core.Aspect.Security.SecureDecimal">
+            <summary>
+                The secure decimal class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Security.SecureDecimal._randomValue">
+            <summary>
+                The random value
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Security.SecureDecimal._value">
+            <summary>
+                The value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureDecimal.#ctor(System.Decimal)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Aspect.Security.SecureDecimal" /> class
+            </summary>
+            <param name="value">The value</param>
+        </member>
+        <member name="P:Alis.Core.Aspect.Security.SecureDecimal.Value">
+            <summary>
+                Gets or sets the value of the value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureDecimal.op_Implicit(System.Decimal)~Alis.Core.Aspect.Security.SecureDecimal">
+            <summary>
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureDecimal.op_Implicit(Alis.Core.Aspect.Security.SecureDecimal)~System.Decimal">
+            <summary>
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureDecimal.op_Equality(Alis.Core.Aspect.Security.SecureDecimal,Alis.Core.Aspect.Security.SecureDecimal)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureDecimal.op_Inequality(Alis.Core.Aspect.Security.SecureDecimal,Alis.Core.Aspect.Security.SecureDecimal)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureDecimal.op_Increment(Alis.Core.Aspect.Security.SecureDecimal)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureDecimal.op_Decrement(Alis.Core.Aspect.Security.SecureDecimal)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureDecimal.op_Addition(Alis.Core.Aspect.Security.SecureDecimal,Alis.Core.Aspect.Security.SecureDecimal)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureDecimal.op_Subtraction(Alis.Core.Aspect.Security.SecureDecimal,Alis.Core.Aspect.Security.SecureDecimal)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureDecimal.op_Multiply(Alis.Core.Aspect.Security.SecureDecimal,Alis.Core.Aspect.Security.SecureDecimal)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureDecimal.op_Division(Alis.Core.Aspect.Security.SecureDecimal,Alis.Core.Aspect.Security.SecureDecimal)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureDecimal.ToString">
+            <summary>
+                Returns the string
+            </summary>
+            <returns>The string</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureDecimal.GetHashCode">
+            <summary>
+                Gets the hash code
+            </summary>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureDecimal.Equals(System.Object)">
+            <summary>
+                Describes whether this instance equals
+            </summary>
+            <param name="obj">The obj</param>
+            <returns>The bool</returns>
+        </member>
+        <member name="T:Alis.Core.Aspect.Security.SecureDouble">
+            <summary>
+                The secure double class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Security.SecureDouble._randomValue">
+            <summary>
+                The random value
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Security.SecureDouble._value">
+            <summary>
+                The value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureDouble.#ctor(System.Double)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Aspect.Security.SecureDouble" /> class
+            </summary>
+            <param name="value">The value</param>
+        </member>
+        <member name="P:Alis.Core.Aspect.Security.SecureDouble.Value">
+            <summary>
+                Gets or sets the value of the value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureDouble.op_Implicit(System.Double)~Alis.Core.Aspect.Security.SecureDouble">
+            <summary>
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureDouble.op_Implicit(Alis.Core.Aspect.Security.SecureDouble)~System.Double">
+            <summary>
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureDouble.op_Equality(Alis.Core.Aspect.Security.SecureDouble,Alis.Core.Aspect.Security.SecureDouble)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureDouble.op_Inequality(Alis.Core.Aspect.Security.SecureDouble,Alis.Core.Aspect.Security.SecureDouble)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureDouble.op_Increment(Alis.Core.Aspect.Security.SecureDouble)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureDouble.op_Decrement(Alis.Core.Aspect.Security.SecureDouble)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureDouble.op_Addition(Alis.Core.Aspect.Security.SecureDouble,Alis.Core.Aspect.Security.SecureDouble)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureDouble.op_Subtraction(Alis.Core.Aspect.Security.SecureDouble,Alis.Core.Aspect.Security.SecureDouble)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureDouble.op_Multiply(Alis.Core.Aspect.Security.SecureDouble,Alis.Core.Aspect.Security.SecureDouble)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureDouble.op_Division(Alis.Core.Aspect.Security.SecureDouble,Alis.Core.Aspect.Security.SecureDouble)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureDouble.ToString">
+            <summary>
+                Returns the string
+            </summary>
+            <returns>The string</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureDouble.GetHashCode">
+            <summary>
+                Gets the hash code
+            </summary>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureDouble.Equals(System.Object)">
+            <summary>
+                Describes whether this instance equals
+            </summary>
+            <param name="obj">The obj</param>
+            <returns>The bool</returns>
+        </member>
+        <member name="T:Alis.Core.Aspect.Security.SecureFloat">
+            <summary>
+                The secure float class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Security.SecureFloat._randomValue">
+            <summary>
+                The random value
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Security.SecureFloat._value">
+            <summary>
+                The value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureFloat.#ctor(System.Single)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Aspect.Security.SecureFloat" /> class
+            </summary>
+            <param name="value">The value</param>
+        </member>
+        <member name="P:Alis.Core.Aspect.Security.SecureFloat.Value">
+            <summary>
+                Gets or sets the value of the value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureFloat.op_Implicit(System.Single)~Alis.Core.Aspect.Security.SecureFloat">
+            <summary>
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureFloat.op_Implicit(Alis.Core.Aspect.Security.SecureFloat)~System.Single">
+            <summary>
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureFloat.op_Equality(Alis.Core.Aspect.Security.SecureFloat,Alis.Core.Aspect.Security.SecureFloat)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureFloat.op_Inequality(Alis.Core.Aspect.Security.SecureFloat,Alis.Core.Aspect.Security.SecureFloat)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureFloat.op_Increment(Alis.Core.Aspect.Security.SecureFloat)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureFloat.op_Decrement(Alis.Core.Aspect.Security.SecureFloat)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureFloat.op_Addition(Alis.Core.Aspect.Security.SecureFloat,Alis.Core.Aspect.Security.SecureFloat)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureFloat.op_Subtraction(Alis.Core.Aspect.Security.SecureFloat,Alis.Core.Aspect.Security.SecureFloat)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureFloat.op_Multiply(Alis.Core.Aspect.Security.SecureFloat,Alis.Core.Aspect.Security.SecureFloat)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureFloat.op_Division(Alis.Core.Aspect.Security.SecureFloat,Alis.Core.Aspect.Security.SecureFloat)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureFloat.ToString">
+            <summary>
+                Returns the string
+            </summary>
+            <returns>The string</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureFloat.GetHashCode">
+            <summary>
+                Gets the hash code
+            </summary>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureFloat.Equals(System.Object)">
+            <summary>
+                Describes whether this instance equals
+            </summary>
+            <param name="obj">The obj</param>
+            <returns>The bool</returns>
+        </member>
+        <member name="T:Alis.Core.Aspect.Security.SecureInt">
+            <summary>
+                The secure int class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Security.SecureInt._randomValue">
+            <summary>
+                The random value
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Security.SecureInt._value">
+            <summary>
+                The value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureInt.#ctor(System.Int32)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Aspect.Security.SecureInt" /> class
+            </summary>
+            <param name="value">The value</param>
+        </member>
+        <member name="P:Alis.Core.Aspect.Security.SecureInt.Value">
+            <summary>
+                Gets or sets the value of the value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureInt.op_Implicit(System.Int32)~Alis.Core.Aspect.Security.SecureInt">
+            <summary>
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureInt.op_Implicit(Alis.Core.Aspect.Security.SecureInt)~System.Int32">
+            <summary>
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureInt.op_Equality(Alis.Core.Aspect.Security.SecureInt,Alis.Core.Aspect.Security.SecureInt)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureInt.op_Inequality(Alis.Core.Aspect.Security.SecureInt,Alis.Core.Aspect.Security.SecureInt)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureInt.op_Increment(Alis.Core.Aspect.Security.SecureInt)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureInt.op_Decrement(Alis.Core.Aspect.Security.SecureInt)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureInt.op_Addition(Alis.Core.Aspect.Security.SecureInt,Alis.Core.Aspect.Security.SecureInt)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureInt.op_Subtraction(Alis.Core.Aspect.Security.SecureInt,Alis.Core.Aspect.Security.SecureInt)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureInt.op_Multiply(Alis.Core.Aspect.Security.SecureInt,Alis.Core.Aspect.Security.SecureInt)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureInt.op_Division(Alis.Core.Aspect.Security.SecureInt,Alis.Core.Aspect.Security.SecureInt)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureInt.ToString">
+            <summary>
+                Returns the string
+            </summary>
+            <returns>The string</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureInt.GetHashCode">
+            <summary>
+                Gets the hash code
+            </summary>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureInt.Equals(System.Object)">
+            <summary>
+                Describes whether this instance equals
+            </summary>
+            <param name="obj">The obj</param>
+            <returns>The bool</returns>
+        </member>
+        <member name="T:Alis.Core.Aspect.Security.SecureLong">
+            <summary>
+                The secure long class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Security.SecureLong._randomValue">
+            <summary>
+                The random value
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Security.SecureLong._value">
+            <summary>
+                The value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureLong.#ctor(System.Int64)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Aspect.Security.SecureLong" /> class
+            </summary>
+            <param name="value">The value</param>
+        </member>
+        <member name="P:Alis.Core.Aspect.Security.SecureLong.Value">
+            <summary>
+                Gets or sets the value of the value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureLong.op_Implicit(System.Int64)~Alis.Core.Aspect.Security.SecureLong">
+            <summary>
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureLong.op_Implicit(Alis.Core.Aspect.Security.SecureLong)~System.Int64">
+            <summary>
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureLong.op_Equality(Alis.Core.Aspect.Security.SecureLong,Alis.Core.Aspect.Security.SecureLong)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureLong.op_Inequality(Alis.Core.Aspect.Security.SecureLong,Alis.Core.Aspect.Security.SecureLong)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureLong.op_Increment(Alis.Core.Aspect.Security.SecureLong)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureLong.op_Decrement(Alis.Core.Aspect.Security.SecureLong)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureLong.op_Addition(Alis.Core.Aspect.Security.SecureLong,Alis.Core.Aspect.Security.SecureLong)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureLong.op_Subtraction(Alis.Core.Aspect.Security.SecureLong,Alis.Core.Aspect.Security.SecureLong)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureLong.op_Multiply(Alis.Core.Aspect.Security.SecureLong,Alis.Core.Aspect.Security.SecureLong)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureLong.op_Division(Alis.Core.Aspect.Security.SecureLong,Alis.Core.Aspect.Security.SecureLong)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureLong.ToString">
+            <summary>
+                Returns the string
+            </summary>
+            <returns>The string</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureLong.GetHashCode">
+            <summary>
+                Gets the hash code
+            </summary>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureLong.Equals(System.Object)">
+            <summary>
+                Describes whether this instance equals
+            </summary>
+            <param name="obj">The obj</param>
+            <returns>The bool</returns>
+        </member>
+        <member name="T:Alis.Core.Aspect.Security.SecureRandom">
+            <summary>
+                The secure random class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureRandom.NextInt">
+            <summary>
+                Nexts the int
+            </summary>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureRandom.NextChar">
+            <summary>
+                Nexts the char
+            </summary>
+            <returns>The char</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureRandom.NextLong">
+            <summary>
+                Nexts the long
+            </summary>
+            <returns>The long</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureRandom.NextDouble(System.Int32,System.Int32)">
+            <summary>
+                Nexts the double using the specified i
+            </summary>
+            <param name="i">The </param>
+            <param name="i1">The </param>
+            <returns>The random double</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureRandom.Abs(System.Single)">
+            <summary>
+                Abs the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The float</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureRandom.NextDecimal(System.Int32,System.Int32)">
+            <summary>
+                Nexts the decimal using the specified i
+            </summary>
+            <param name="i">The </param>
+            <param name="i1">The </param>
+            <returns>The random decimal</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureRandom.NextByte">
+            <summary>
+                Nexts the byte
+            </summary>
+            <returns>The byte</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureRandom.NextFloat(System.Int32,System.Int32)">
+            <summary>
+                Nexts the float using the specified i
+            </summary>
+            <param name="i">The </param>
+            <param name="i1">The </param>
+            <returns>The random float</returns>
+        </member>
+        <member name="T:Alis.Core.Aspect.Security.SecureString">
+            <summary>
+                The secure string class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Security.SecureString.secret">
+            <summary>
+                The key
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Security.SecureString.encryptedValue">
+            <summary>
+                The encrypted value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureString.#ctor(System.String)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Aspect.Security.SecureString" /> class
+            </summary>
+            <param name="value">The value</param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureString.SetValue(System.String)">
+            <summary>
+                Sets the value using the specified value
+            </summary>
+            <param name="value">The value</param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureString.GetValue">
+            <summary>
+                Gets the value
+            </summary>
+            <returns>The string</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureString.EncryptDecrypt(System.String,System.Char)">
+            <summary>
+                Encrypts the decrypt using the specified text to encrypt
+            </summary>
+            <param name="textToEncrypt">The text to encrypt</param>
+            <param name="key">The key</param>
+            <returns>The string</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Security.SecureString.GenerateKey">
+            <summary>
+                Generates the key
+            </summary>
+            <returns>The char</returns>
+        </member>
+    </members>
+</doc>

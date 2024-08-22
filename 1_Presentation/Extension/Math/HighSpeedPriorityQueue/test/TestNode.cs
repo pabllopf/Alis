@@ -32,7 +32,6 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
     /// <summary>
     ///     The test node class
     /// </summary>
-    /// <seealso cref="GenericPriorityQueueNode{int}" />
     public class TestNode : GenericPriorityQueueNode<int>
     {
     }

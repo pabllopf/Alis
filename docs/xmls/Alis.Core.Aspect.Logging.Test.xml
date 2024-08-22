@@ -1,0 +1,209 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Core.Aspect.Logging.Test</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Core.Aspect.Logging.Test.ConsoleLogConfigTest">
+            <summary>
+                The console log config test class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Test.ConsoleLogConfigTest.GetColorMessageByType_ShouldReturnTraceColor">
+            <summary>
+                Tests that get color message by type should return trace color
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Test.ConsoleLogConfigTest.GetColorMessageByType_ShouldReturnInfoColor">
+            <summary>
+                Tests that get color message by type should return info color
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Test.ConsoleLogConfigTest.GetColorMessageByType_ShouldReturnLogColor">
+            <summary>
+                Tests that get color message by type should return log color
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Test.ConsoleLogConfigTest.GetColorMessageByType_ShouldReturnEventColor">
+            <summary>
+                Tests that get color message by type should return event color
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Test.ConsoleLogConfigTest.GetColorMessageByType_ShouldReturnWarningColor">
+            <summary>
+                Tests that get color message by type should return warning color
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Test.ConsoleLogConfigTest.GetColorMessageByType_ShouldReturnErrorColor">
+            <summary>
+                Tests that get color message by type should return error color
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Test.ConsoleLogConfigTest.GetColorMessageByType_ShouldReturnExceptionColor">
+            <summary>
+                Tests that get color message by type should return exception color
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Test.ConsoleLogConfigTest.GetColorMessageByType_ShouldThrowException_WhenInvalidMessageType">
+            <summary>
+                Tests that get color message by type should throw exception when invalid message type
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Aspect.Logging.Test.LoggerTest">
+            <summary>
+                The logger test class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Test.LoggerTest.Trace_ShouldPrintTraceMessage">
+            <summary>
+                Tests that trace should print trace message
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Test.LoggerTest.SetLogLevel_ShouldChangeLogLevel">
+            <summary>
+                Tests that set log level should change log level
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Test.LoggerTest.SetDetailLevel_ShouldChangeDetailLevel">
+            <summary>
+                Tests that set detail level should change detail level
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Test.LoggerTest.SetLogLevel_ShouldPrintLogMessage_WhenLogLevelIsSetToLog">
+            <summary>
+                Tests that set log level should print log message when log level is set to log
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Test.LoggerTest.Exception_ShouldPrintExceptionMessage_WhenLogLevelIsCritical">
+            <summary>
+                Tests that exception should print exception message when log level is critical
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Test.LoggerTest.Trace_WithLogLevelTrace_ShouldPrintTraceMessage">
+            <summary>
+                Tests that trace with log level trace should print trace message
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Test.LoggerTest.Trace_WithLogLevelInfo_ShouldNotPrintTraceMessage">
+            <summary>
+                Tests that trace with log level info should not print trace message
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Test.LoggerTest.Info_WithLogLevelInfo_ShouldPrintInfoMessage">
+            <summary>
+                Tests that info with log level info should print info message
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Test.LoggerTest.Info_WithLogLevelEvent_ShouldNotPrintInfoMessage">
+            <summary>
+                Tests that info with log level event should not print info message
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Test.LoggerTest.Warning_ShouldPrintWarningMessage">
+            <summary>
+                Tests that warning should print warning message
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Test.LoggerTest.Error_ShouldPrintErrorMessage">
+            <summary>
+                Tests that error should print error message
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Test.LoggerTest.Exception_WithException_ShouldPrintExceptionMessage">
+            <summary>
+                Tests that exception with exception should print exception message
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Test.LoggerTest.SetDetailLevel_ShouldChangeDetailLevel_WhenCallingDifferentMethods">
+            <summary>
+                Tests that set detail level should change detail level when calling different methods
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Test.LoggerTest.Exception_ShouldNotPrintExceptionMessage_WhenLogLevelIsInfo">
+            <summary>
+                Tests that exception should not print exception message when log level is info
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Test.LoggerTest.Exception_ShouldNotPrintExceptionMessage_WhenLogLevelIsTrace">
+            <summary>
+                Tests that exception should not print exception message when log level is trace
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Test.LoggerTest.Trace_ShouldPrintTraceMessage_WhenLogLevelIsTrace">
+            <summary>
+                Tests that trace should print trace message when log level is trace
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Test.LoggerTest.Trace_ShouldNotPrintTraceMessage_WhenLogLevelIsInfo">
+            <summary>
+                Tests that trace should not print trace message when log level is info
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Test.LoggerTest.Trace_ShouldNotPrintTraceMessage_WhenLogLevelIsEvent">
+            <summary>
+                Tests that trace should not print trace message when log level is event
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Test.LoggerTest.Info_ShouldPrintInfoMessage_WhenLogLevelIsInfo">
+            <summary>
+                Tests that info should print info message when log level is info
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Test.LoggerTest.Info_ShouldNotPrintInfoMessage_WhenLogLevelIsEvent">
+            <summary>
+                Tests that info should not print info message when log level is event
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Test.LoggerTest.Info_ShouldNotPrintInfoMessage_WhenLogLevelIsTrace">
+            <summary>
+                Tests that info should not print info message when log level is trace
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Test.LoggerTest.Event_ShouldPrintEventMessage_WhenLogLevelIsEvent">
+            <summary>
+                Tests that event should print event message when log level is event
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Test.LoggerTest.Event_ShouldNotPrintEventMessage_WhenLogLevelIsInfo">
+            <summary>
+                Tests that event should not print event message when log level is info
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Test.LoggerTest.Event_ShouldNotPrintEventMessage_WhenLogLevelIsTrace">
+            <summary>
+                Tests that event should not print event message when log level is trace
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Test.LoggerTest.Event_NoMessage_ShouldPrintEventMessage_WhenLogLevelIsEvent">
+            <summary>
+                Tests that event no message should print event message when log level is event
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Test.LoggerTest.Event_NoMessage_ShouldNotPrintEventMessage_WhenLogLevelIsInfo">
+            <summary>
+                Tests that event no message should not print event message when log level is info
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Test.LoggerTest.Event_NoMessage_ShouldNotPrintEventMessage_WhenLogLevelIsTrace">
+            <summary>
+                Tests that event no message should not print event message when log level is trace
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Test.LoggerTest.Event_NoMessage_SetLogLevel_WhenLogLevelIsTrace">
+            <summary>
+                Tests that event no message should not print event message when log level is trace
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Aspect.Logging.Test.RunnableInDebugOnlyAttribute">
+            <summary>
+                The runnable in debug only attribute class
+            </summary>
+            <seealso cref="T:Xunit.FactAttribute" />
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Test.RunnableInDebugOnlyAttribute.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Aspect.Logging.Test.RunnableInDebugOnlyAttribute" /> class
+            </summary>
+        </member>
+    </members>
+</doc>

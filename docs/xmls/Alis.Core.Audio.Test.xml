@@ -1,0 +1,156 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Core.Audio.Test</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Core.Audio.Test.Players.Attributes.LinuxOnlyAttribute">
+            <summary>
+                The linux only attribute class
+            </summary>
+            <seealso cref="T:Xunit.FactAttribute" />
+        </member>
+        <member name="M:Alis.Core.Audio.Test.Players.Attributes.LinuxOnlyAttribute.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Audio.Test.Players.Attributes.LinuxOnlyAttribute" /> class
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Audio.Test.Players.Attributes.MacOsOnlyAttribute">
+            <summary>
+                The mac os only attribute class
+            </summary>
+            <seealso cref="T:Xunit.FactAttribute" />
+        </member>
+        <member name="M:Alis.Core.Audio.Test.Players.Attributes.MacOsOnlyAttribute.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Audio.Test.Players.Attributes.MacOsOnlyAttribute" /> class
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Audio.Test.Players.Attributes.UnixOnlyAttribute">
+            <summary>
+                The unix only attribute class
+            </summary>
+            <seealso cref="T:Xunit.FactAttribute" />
+        </member>
+        <member name="M:Alis.Core.Audio.Test.Players.Attributes.UnixOnlyAttribute.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Audio.Test.Players.Attributes.UnixOnlyAttribute" /> class
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Audio.Test.Players.Attributes.WindowsOnlyAttribute">
+            <summary>
+                The runnable in debug only attribute class
+            </summary>
+            <seealso cref="T:Xunit.FactAttribute" />
+        </member>
+        <member name="M:Alis.Core.Audio.Test.Players.Attributes.WindowsOnlyAttribute.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Audio.Test.Players.Attributes.WindowsOnlyAttribute" /> class
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Audio.Test.Players.LinuxPlayerTest">
+            <summary>
+                The linux player test class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.Test.Players.LinuxPlayerTest.TestMethod">
+            <summary>
+                Tests that test method
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.Test.Players.LinuxPlayerTest.SetVolume_ValidInput">
+            <summary>
+                Tests that set volume valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.Test.Players.LinuxPlayerTest.SetVolume_InvalidInput">
+            <summary>
+                Tests that set volume invalid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.Test.Players.LinuxPlayerTest.GetBashCommand_ValidInput">
+            <summary>
+                Tests that get bash command valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.Test.Players.LinuxPlayerTest.GetBashCommand_InvalidInput">
+            <summary>
+                Tests that get bash command invalid input
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Audio.Test.Players.MacPlayerTest">
+            <summary>
+                The mac player test class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.Test.Players.MacPlayerTest.TestMethod">
+            <summary>
+                Tests that test method
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.Test.Players.MacPlayerTest.SetVolume_ValidInput">
+            <summary>
+                Sets the volume valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.Test.Players.MacPlayerTest.SetVolume_InvalidInput">
+            <summary>
+                Sets the volume invalid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.Test.Players.MacPlayerTest.GetBashCommand_ValidInput">
+            <summary>
+                Gets the bash command valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Audio.Test.Players.Samples.TestUnixPlayer">
+            <summary>
+                The test unix player class
+            </summary>
+            <seealso cref="T:Alis.Core.Audio.Players.UnixPlayerBase" />
+        </member>
+        <member name="M:Alis.Core.Audio.Test.Players.Samples.TestUnixPlayer.SetVolume(System.Byte)">
+            <summary>
+                Sets the volume using the specified percent
+            </summary>
+            <param name="percent">The percent</param>
+        </member>
+        <member name="M:Alis.Core.Audio.Test.Players.Samples.TestUnixPlayer.GetBashCommand(System.String)">
+            <summary>
+                Gets the bash command using the specified file name
+            </summary>
+            <param name="fileName">The file name</param>
+            <returns>The string</returns>
+        </member>
+        <member name="T:Alis.Core.Audio.Test.Players.UnixPlayerBaseTest">
+            <summary>
+                The unix player base test class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.Test.Players.UnixPlayerBaseTest.TestMethod">
+            <summary>
+                Tests that test method
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.Test.Players.UnixPlayerBaseTest.Play_ValidInput_MacOs">
+            <summary>
+                Tests that play valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.Test.Players.UnixPlayerBaseTest.Play_ValidInput_Linux">
+            <summary>
+                Tests that play valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Audio.Test.Players.WindowsPlayerTest">
+            <summary>
+                The windows player test class
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Audio.Test.PlayerTest">
+            <summary>
+                The player test class
+            </summary>
+        </member>
+    </members>
+</doc>

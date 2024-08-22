@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Core.Graphic.Sample</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Core.Graphic.Sample.Program">
+            <summary>
+                The program class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Sample.Program.Main(System.String[])">
+            <summary>
+                Main the args
+            </summary>
+            <param name="args">The args</param>
+        </member>
+        <member name="T:Alis.Core.Graphic.Sample.SdlController">
+            <summary>
+                The sdl controller class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Sample.SdlController.Width">
+            <summary>
+                The width
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Sample.SdlController.Height">
+            <summary>
+                The height
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Sample.SdlController.Axis">
+            <summary>
+                The sdl game controller axis
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Sample.SdlController.Buttons">
+            <summary>
+                The sdl game controller button
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Sample.SdlController._blue">
+            <summary>
+                The blue
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Sample.SdlController._green">
+            <summary>
+                The blue
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Sample.SdlController._keys">
+            <summary>
+                The sdl keycode
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Sample.SdlController._red">
+            <summary>
+                The blue
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Sample.SdlController._running">
+            <summary>
+                The running
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Sample.SdlController._sdlEvent">
+            <summary>
+                The sdl event
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Sample.SdlController._textureFont1">
+            <summary>
+                The texture font
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Sample.SdlController._dstRectFont1">
+            <summary>
+                The dst rect font
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Sample.SdlController.Run">
+            <summary>
+                Runs
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Sample.SdlController.RenderColors">
+            <summary>
+                Renders the colors
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Sample.SdlController.Sdlinput">
+            <summary>
+                Sdlinputs
+            </summary>
+        </member>
+    </members>
+</doc>

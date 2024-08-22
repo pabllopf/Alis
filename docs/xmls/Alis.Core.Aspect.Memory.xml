@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Core.Aspect.Memory</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Core.Aspect.Memory.Attributes.IsNotEmptyAttribute">
+            <summary>
+                The not empty attribute class
+            </summary>
+            <seealso cref="T:Alis.Core.Aspect.Memory.Attributes.IsValidationAttribute" />
+        </member>
+        <member name="M:Alis.Core.Aspect.Memory.Attributes.IsNotEmptyAttribute.Validate(System.Object,System.String)">
+            <summary>
+                Validates the value
+            </summary>
+            <param name="value">The value</param>
+            <param name="name">The name</param>
+        </member>
+        <member name="T:Alis.Core.Aspect.Memory.Attributes.IsNotNullAttribute">
+            <summary>
+                The not null attribute class
+            </summary>
+            <seealso cref="T:Alis.Core.Aspect.Memory.Attributes.IsValidationAttribute" />
+        </member>
+        <member name="M:Alis.Core.Aspect.Memory.Attributes.IsNotNullAttribute.Validate(System.Object,System.String)">
+            <summary>
+                Validates the value
+            </summary>
+            <param name="value">The value</param>
+            <param name="name">The name</param>
+        </member>
+        <member name="T:Alis.Core.Aspect.Memory.Attributes.IsNotZeroAttribute">
+            <summary>
+                The not null attribute class
+            </summary>
+            <seealso cref="T:Alis.Core.Aspect.Memory.Attributes.IsValidationAttribute" />
+        </member>
+        <member name="M:Alis.Core.Aspect.Memory.Attributes.IsNotZeroAttribute.Validate(System.Object,System.String)">
+            <summary>
+                Validates the value
+            </summary>
+            <param name="value">The value</param>
+            <param name="name">The name</param>
+        </member>
+        <member name="T:Alis.Core.Aspect.Memory.Attributes.IsValidationAttribute">
+            <summary>
+                The validation attribute class
+            </summary>
+            <seealso cref="T:System.Attribute" />
+        </member>
+        <member name="M:Alis.Core.Aspect.Memory.Attributes.IsValidationAttribute.Validate(System.Object,System.String)">
+            <summary>
+                Validates the value
+            </summary>
+            <param name="value">The value</param>
+            <param name="name"></param>
+        </member>
+        <member name="T:Alis.Core.Aspect.Memory.Exceptions.NotEmptyException">
+            <summary>
+                The not empty exception class
+            </summary>
+            <seealso cref="T:System.Exception" />
+        </member>
+        <member name="M:Alis.Core.Aspect.Memory.Exceptions.NotEmptyException.#ctor(System.String)">
+            <summary>
+                The constructor
+            </summary>
+            <param name="message">The message</param>
+        </member>
+        <member name="T:Alis.Core.Aspect.Memory.Exceptions.NotNullException">
+            <summary>
+                The my exception class
+            </summary>
+            <seealso cref="T:System.Exception" />
+        </member>
+        <member name="M:Alis.Core.Aspect.Memory.Exceptions.NotNullException.#ctor(System.String)">
+            <summary>
+                The constructor
+            </summary>
+            <param name="message">The message</param>
+        </member>
+        <member name="T:Alis.Core.Aspect.Memory.Exceptions.NotZeroException">
+            <summary>
+                The not zero exception class
+            </summary>
+            <seealso cref="T:System.Exception" />
+        </member>
+        <member name="M:Alis.Core.Aspect.Memory.Exceptions.NotZeroException.#ctor(System.String)">
+            <summary>
+                The constructor
+            </summary>
+            <param name="message">The message</param>
+        </member>
+        <member name="T:Alis.Core.Aspect.Memory.Validator">
+            <summary>
+                The validator class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Memory.Validator.Validate``1(``0,System.String)">
+            <summary>
+                Validates the input using the specified value
+            </summary>
+            <typeparam name="T">The </typeparam>
+            <param name="value">The value</param>
+            <param name="name"></param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Memory.Validator.ValidateProperty``1(``0,System.String,System.Type)">
+            <summary>
+                Validates the property using the specified value
+            </summary>
+            <typeparam name="T">The </typeparam>
+            <param name="value">The value</param>
+            <param name="name">The name</param>
+            <param name="callingType">The calling type</param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Memory.Validator.ValidateField``1(``0,System.String,System.Type)">
+            <summary>
+                Validates the field using the specified value
+            </summary>
+            <typeparam name="T">The </typeparam>
+            <param name="value">The value</param>
+            <param name="name">The name</param>
+            <param name="callingType">The calling type</param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Memory.Validator.ValidateParameter``1(``0,System.String,System.Type,System.Reflection.MethodBase)">
+            <summary>
+                Validates the parameter using the specified value
+            </summary>
+            <typeparam name="T">The </typeparam>
+            <param name="value">The value</param>
+            <param name="name">The name</param>
+            <param name="callingType">The calling type</param>
+            <param name="methodBase">The method base</param>
+        </member>
+    </members>
+</doc>

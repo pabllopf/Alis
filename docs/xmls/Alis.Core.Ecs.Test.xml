@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Core.Ecs.Test</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Core.Ecs.Test.GameStub">
+            <summary>
+                The game stub class
+            </summary>
+            <seealso cref="T:Alis.Core.Ecs.IGame" />
+        </member>
+        <member name="P:Alis.Core.Ecs.Test.GameStub.RunInvoked">
+            <summary>
+                Gets or sets the value of the run invoked
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Ecs.Test.GameStub.ExitInvoked">
+            <summary>
+                Gets or sets the value of the exit invoked
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Ecs.Test.GameStub.Run">
+            <summary>
+                Runs this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Ecs.Test.GameStub.Exit">
+            <summary>
+                Exits this instance
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Ecs.Test.GameTests">
+            <summary>
+                The game tests class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Ecs.Test.GameTests.Run_InvokesRunMethod">
+            <summary>
+                Tests that run invokes run method
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Ecs.Test.GameTests.Exit_InvokesExitMethod">
+            <summary>
+                Tests that exit invokes exit method
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,272 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Core.Ecs</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Core.Ecs.Component.IComponent`1">
+            <summary>
+                The component interface
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Ecs.Component.IComponent`1.GameObject">
+            <summary>
+                Gets or sets the value of the game object
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Ecs.Component.IComponent`1.Attach(`0)">
+            <summary>
+                Attaches the game object
+            </summary>
+            <param name="gameObject">The game object</param>
+        </member>
+        <member name="M:Alis.Core.Ecs.Component.IComponent`1.OnPressDownKey(Alis.Core.Aspect.Data.Mapping.KeyCodes)">
+            <summary>
+                Ons the press down key using the specified key
+            </summary>
+            <param name="key">The key</param>
+        </member>
+        <member name="M:Alis.Core.Ecs.Component.IComponent`1.OnReleaseKey(Alis.Core.Aspect.Data.Mapping.KeyCodes)">
+            <summary>
+                Ons the release key using the specified key
+            </summary>
+            <param name="key">The key</param>
+        </member>
+        <member name="M:Alis.Core.Ecs.Component.IComponent`1.OnPressKey(Alis.Core.Aspect.Data.Mapping.KeyCodes)">
+            <summary>
+                Ons the press key using the specified key
+            </summary>
+            <param name="key">The key</param>
+        </member>
+        <member name="M:Alis.Core.Ecs.Component.IComponent`1.OnCollisionEnter(`0)">
+            <summary>
+                Ons the collision enter using the specified game object
+            </summary>
+            <param name="gameObject">The game object</param>
+        </member>
+        <member name="M:Alis.Core.Ecs.Component.IComponent`1.OnCollisionExit(`0)">
+            <summary>
+                Ons the collision exit using the specified game object
+            </summary>
+            <param name="gameObject">The game object</param>
+        </member>
+        <member name="T:Alis.Core.Ecs.Entity.IGameObject`1">
+            <summary>
+                The game object interface
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Ecs.Entity.IGameObject`1.Components">
+            <summary>
+                Gets or sets the value of the components
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Ecs.Entity.IScene`1">
+            <summary>
+                The scene interface
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Ecs.Entity.IScene`1.GameObjects">
+            <summary>
+                Gets or sets the value of the game objects
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Ecs.Entity.Property.ICrud`1">
+            <summary>
+                The crud interface
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Ecs.Entity.Property.ICrud`1.Add``1(``0)">
+            <summary>
+                Adds the component
+            </summary>
+            <typeparam name="T">The </typeparam>
+            <param name="component">The component</param>
+        </member>
+        <member name="M:Alis.Core.Ecs.Entity.Property.ICrud`1.Remove``1(``0)">
+            <summary>
+                Removes the component
+            </summary>
+            <typeparam name="T">The </typeparam>
+            <param name="component">The component</param>
+        </member>
+        <member name="M:Alis.Core.Ecs.Entity.Property.ICrud`1.Get``1">
+            <summary>
+                Gets this instance
+            </summary>
+            <typeparam name="T">The </typeparam>
+            <returns>The</returns>
+        </member>
+        <member name="M:Alis.Core.Ecs.Entity.Property.ICrud`1.Contains``1">
+            <summary>
+                Describes whether this instance contains
+            </summary>
+            <typeparam name="T">The </typeparam>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Core.Ecs.Entity.Property.ICrud`1.Clear">
+            <summary>
+                Cleans this instance
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Ecs.Entity.Property.IEnabled">
+            <summary>
+                The enabled interface
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Ecs.Entity.Property.IEnabled.IsEnable">
+            <summary>
+                Gets or sets the value of the is enable
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Ecs.Entity.Property.IIdentifier">
+            <summary>
+                The identifier interface
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Ecs.Entity.Property.IIdentifier.Name">
+            <summary>
+                Gets or sets the value of the name
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Ecs.Entity.Property.IIdentifier.Id">
+            <summary>
+                Gets or sets the value of the id
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Ecs.Entity.Property.IIdentifier.Tag">
+            <summary>
+                Gets or sets the value of the tag
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Ecs.Entity.Property.IRuntime">
+            <summary>
+                The runtime interface
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Ecs.Entity.Property.IRuntime.OnEnable">
+            <summary>
+                Ons the enable
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Ecs.Entity.Property.IRuntime.OnInit">
+            <summary>
+                Inits this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Ecs.Entity.Property.IRuntime.OnAwake">
+            <summary>
+                Awakes this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Ecs.Entity.Property.IRuntime.OnStart">
+            <summary>
+                Starts this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Ecs.Entity.Property.IRuntime.OnBeforeUpdate">
+            <summary>
+                Before run the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Ecs.Entity.Property.IRuntime.OnUpdate">
+            <summary>
+                Updates this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Ecs.Entity.Property.IRuntime.OnAfterUpdate">
+            <summary>
+                Afters the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Ecs.Entity.Property.IRuntime.OnBeforeFixedUpdate">
+            <summary>
+                Ons the before fixed update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Ecs.Entity.Property.IRuntime.OnFixedUpdate">
+            <summary>
+                Update every frame.
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Ecs.Entity.Property.IRuntime.OnAfterFixedUpdate">
+            <summary>
+                Ons the after fixed update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Ecs.Entity.Property.IRuntime.OnDispatchEvents">
+            <summary>
+                Dispatches the events
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Ecs.Entity.Property.IRuntime.OnCalculate">
+            <summary>
+                Ons the calculate
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Ecs.Entity.Property.IRuntime.OnDraw">
+            <summary>
+                Draws this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Ecs.Entity.Property.IRuntime.OnGui">
+            <summary>
+                Ons the gui
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Ecs.Entity.Property.IRuntime.OnDisable">
+            <summary>
+                Ons the disable
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Ecs.Entity.Property.IRuntime.OnReset">
+            <summary>
+                Resets this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Ecs.Entity.Property.IRuntime.OnStop">
+            <summary>
+                Stops this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Ecs.Entity.Property.IRuntime.OnExit">
+            <summary>
+                Exits this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Ecs.Entity.Property.IRuntime.OnDestroy">
+            <summary>
+                Ons the destroy
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Ecs.IGame">
+            <summary>
+                The game interface
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Ecs.IGame.Run">
+            <summary>
+                Runs this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Ecs.IGame.Exit">
+            <summary>
+                Exits this instance
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Ecs.System.IContext">
+            <summary>
+                The context interface
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Ecs.System.Manager.IManager">
+            <summary>
+                The manager interface
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Ecs.System.Setting.ISetting">
+            <summary>
+                The setting interface
+            </summary>
+        </member>
+    </members>
+</doc>

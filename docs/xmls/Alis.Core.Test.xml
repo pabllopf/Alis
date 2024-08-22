@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Core.Test</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Core.Test.NamespaceCheckerTests">
+            <summary>
+                The namespace checker tests class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Test.NamespaceCheckerTests.CheckNamespace_NoTypesInNamespace_ReturnsTrue">
+            <summary>
+                Tests that check namespace no types in namespace returns true
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Test.NamespaceCheckerTests.CheckNamespace(System.String)">
+            <summary>
+                Describes whether this instance check namespace
+            </summary>
+            <param name="namespaceToCheck">The namespace to check</param>
+            <returns>The bool</returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,239 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Extension.Math.DungeonGenerator</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Extension.Math.DungeonGenerator.BoardSquare">
+            <summary>
+                The type cell box enum
+            </summary>
+        </member>
+        <member name="F:Alis.Extension.Math.DungeonGenerator.BoardSquare.Empty">
+            <summary>The empty</summary>
+        </member>
+        <member name="F:Alis.Extension.Math.DungeonGenerator.BoardSquare.Floor">
+            <summary>The floor</summary>
+        </member>
+        <member name="F:Alis.Extension.Math.DungeonGenerator.BoardSquare.WallDown">
+            <summary>The wall down</summary>
+        </member>
+        <member name="F:Alis.Extension.Math.DungeonGenerator.BoardSquare.WallLeft">
+            <summary>The wall left</summary>
+        </member>
+        <member name="F:Alis.Extension.Math.DungeonGenerator.BoardSquare.WallRight">
+            <summary>The wall right</summary>
+        </member>
+        <member name="F:Alis.Extension.Math.DungeonGenerator.BoardSquare.WallTop">
+            <summary>The wall top</summary>
+        </member>
+        <member name="F:Alis.Extension.Math.DungeonGenerator.BoardSquare.CornerLeftUp">
+            <summary>The corner left up</summary>
+        </member>
+        <member name="F:Alis.Extension.Math.DungeonGenerator.BoardSquare.CornerRightUp">
+            <summary>The corner right up</summary>
+        </member>
+        <member name="F:Alis.Extension.Math.DungeonGenerator.BoardSquare.CornerLeftDown">
+            <summary>The corner left down</summary>
+        </member>
+        <member name="F:Alis.Extension.Math.DungeonGenerator.BoardSquare.CornerRightDown">
+            <summary>The corner right down</summary>
+        </member>
+        <member name="F:Alis.Extension.Math.DungeonGenerator.BoardSquare.CornerInternalLeftDown">
+            <summary>The corner internal left down</summary>
+        </member>
+        <member name="F:Alis.Extension.Math.DungeonGenerator.BoardSquare.CornerInternalLeftUp">
+            <summary>The corner internal left up</summary>
+        </member>
+        <member name="F:Alis.Extension.Math.DungeonGenerator.BoardSquare.CornerInternalRightDown">
+            <summary>The corner internal right down</summary>
+        </member>
+        <member name="F:Alis.Extension.Math.DungeonGenerator.BoardSquare.CornerInternalRightUp">
+            <summary>The corner internal right up</summary>
+        </member>
+        <member name="T:Alis.Extension.Math.DungeonGenerator.Corridor">
+            <summary>
+                The corridor class
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Corridor.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,Alis.Core.Aspect.Math.Direction)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Extension.Math.DungeonGenerator.Corridor" /> class
+            </summary>
+            <param name="xPos">The pos</param>
+            <param name="yPos">The pos</param>
+            <param name="width">The width</param>
+            <param name="height">The height</param>
+            <param name="direction">The direction</param>
+        </member>
+        <member name="P:Alis.Extension.Math.DungeonGenerator.Corridor.XPos">
+            <summary>
+                Gets the value of the x pos
+            </summary>
+        </member>
+        <member name="P:Alis.Extension.Math.DungeonGenerator.Corridor.YPos">
+            <summary>
+                Gets the value of the y pos
+            </summary>
+        </member>
+        <member name="P:Alis.Extension.Math.DungeonGenerator.Corridor.Width">
+            <summary>
+                Gets the value of the width
+            </summary>
+        </member>
+        <member name="P:Alis.Extension.Math.DungeonGenerator.Corridor.Height">
+            <summary>
+                Gets the value of the height
+            </summary>
+        </member>
+        <member name="P:Alis.Extension.Math.DungeonGenerator.Corridor.Direction">
+            <summary>
+                Gets the value of the direction
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Corridor.SetUpFirstCorridor(System.Int32,System.Int32,Alis.Extension.Math.DungeonGenerator.Room)">
+            <summary>
+                Sets the up first corridor using the specified width
+            </summary>
+            <param name="width">The width</param>
+            <param name="height">The height</param>
+            <param name="room">The room</param>
+            <returns>The corridor</returns>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Corridor.SetUp(System.Int32,System.Int32,Alis.Extension.Math.DungeonGenerator.Room)">
+            <summary>
+                Sets the up using the specified width
+            </summary>
+            <param name="width">The width</param>
+            <param name="height">The height</param>
+            <param name="room">The room</param>
+            <returns>The corridor</returns>
+        </member>
+        <member name="T:Alis.Extension.Math.DungeonGenerator.Dungeon">
+            <summary>Random dungeon generator.</summary>
+        </member>
+        <member name="F:Alis.Extension.Math.DungeonGenerator.Dungeon.BoardWidth">
+            <summary>The board width</summary>
+        </member>
+        <member name="F:Alis.Extension.Math.DungeonGenerator.Dungeon.BoardHeight">
+            <summary>The board height</summary>
+        </member>
+        <member name="F:Alis.Extension.Math.DungeonGenerator.Dungeon.NumOfRooms">
+            <summary>The number of rooms</summary>
+        </member>
+        <member name="F:Alis.Extension.Math.DungeonGenerator.Dungeon.FirstRoomWidth">
+            <summary>The first room width</summary>
+        </member>
+        <member name="F:Alis.Extension.Math.DungeonGenerator.Dungeon.FirstRoomHeight">
+            <summary>The first room height</summary>
+        </member>
+        <member name="F:Alis.Extension.Math.DungeonGenerator.Dungeon.RoomWidth">
+            <summary>The room width</summary>
+        </member>
+        <member name="F:Alis.Extension.Math.DungeonGenerator.Dungeon.RoomHeight">
+            <summary>The room height</summary>
+        </member>
+        <member name="F:Alis.Extension.Math.DungeonGenerator.Dungeon.BossRoomWidth">
+            <summary>The boss room width</summary>
+        </member>
+        <member name="F:Alis.Extension.Math.DungeonGenerator.Dungeon.BossRoomHeight">
+            <summary>The boss room height</summary>
+        </member>
+        <member name="F:Alis.Extension.Math.DungeonGenerator.Dungeon.CorridorWidth">
+            <summary>The corridor width</summary>
+        </member>
+        <member name="F:Alis.Extension.Math.DungeonGenerator.Dungeon.CorridorHeight">
+            <summary>The corridor height</summary>
+        </member>
+        <member name="P:Alis.Extension.Math.DungeonGenerator.Dungeon.Board">
+            <summary>Gets or sets the board.</summary>
+            <value>The board.</value>
+        </member>
+        <member name="P:Alis.Extension.Math.DungeonGenerator.Dungeon.Rooms">
+            <summary>Gets or sets the rooms.</summary>
+            <value>The rooms.</value>
+        </member>
+        <member name="P:Alis.Extension.Math.DungeonGenerator.Dungeon.Corridors">
+            <summary>Gets or sets the corridors.</summary>
+            <value>The corridors.</value>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Dungeon.Start">
+            <summary>Starts this instance.</summary>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Dungeon.SetUpRoomsAndCorridors">
+            <summary>Sets up rooms and corridors.</summary>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Dungeon.ConfigRoomsAndCorridors">
+            <summary>Creates the rooms and corridors.</summary>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Dungeon.CreateBoard">
+            <summary>Creates the board.</summary>
+        </member>
+        <member name="T:Alis.Extension.Math.DungeonGenerator.Room">
+            <summary>Generate a room of the dungeon.</summary>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Room.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Extension.Math.DungeonGenerator.Room" /> class
+            </summary>
+            <param name="xPos">The pos</param>
+            <param name="yPos">The pos</param>
+            <param name="width">The width</param>
+            <param name="height">The height</param>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Room.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,Alis.Core.Aspect.Math.Direction)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Extension.Math.DungeonGenerator.Room" /> class
+            </summary>
+            <param name="xPos">The pos</param>
+            <param name="yPos">The pos</param>
+            <param name="width">The width</param>
+            <param name="height">The height</param>
+            <param name="direction">The direction</param>
+        </member>
+        <member name="P:Alis.Extension.Math.DungeonGenerator.Room.XPos">
+            <summary>
+                Gets the value of the x pos
+            </summary>
+        </member>
+        <member name="P:Alis.Extension.Math.DungeonGenerator.Room.YPos">
+            <summary>
+                Gets the value of the y pos
+            </summary>
+        </member>
+        <member name="P:Alis.Extension.Math.DungeonGenerator.Room.Width">
+            <summary>
+                Gets the value of the width
+            </summary>
+        </member>
+        <member name="P:Alis.Extension.Math.DungeonGenerator.Room.Height">
+            <summary>
+                Gets the value of the height
+            </summary>
+        </member>
+        <member name="P:Alis.Extension.Math.DungeonGenerator.Room.Direction">
+            <summary>
+                Gets the value of the direction
+            </summary>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Room.SetUpFirstRoom(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+                Sets the up first room using the specified x pos
+            </summary>
+            <param name="xPos">The pos</param>
+            <param name="yPos">The pos</param>
+            <param name="width">The width</param>
+            <param name="height">The height</param>
+            <returns>The room</returns>
+        </member>
+        <member name="M:Alis.Extension.Math.DungeonGenerator.Room.SetUp(System.Int32,System.Int32,Alis.Extension.Math.DungeonGenerator.Corridor)">
+            <summary>
+                Sets the up using the specified width
+            </summary>
+            <param name="width">The width</param>
+            <param name="height">The height</param>
+            <param name="corridor">The corridor</param>
+            <returns>The room</returns>
+        </member>
+    </members>
+</doc>

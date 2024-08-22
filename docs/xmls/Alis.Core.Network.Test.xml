@@ -1,0 +1,1692 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Core.Network.Test</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Core.Network.Test.BufferPoolTest">
+            <summary>
+                The buffer pool test class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.BufferPoolTest.BufferPool_Constructor_DefaultSize">
+            <summary>
+                Tests that buffer pool constructor default size
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.BufferPoolTest.BufferPool_Constructor_CustomSize">
+            <summary>
+                Tests that buffer pool constructor custom size
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.BufferPoolTest.BufferPool_GetBuffer">
+            <summary>
+                Tests that buffer pool get buffer
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.BufferPoolTest.PublicBufferMemoryStream_Constructor">
+            <summary>
+                Tests that public buffer memory stream constructor
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.BufferPoolTest.PublicBufferMemoryStream_WriteByte">
+            <summary>
+                Tests that public buffer memory stream write byte
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.BufferPoolTest.PublicBufferMemoryStream_Write">
+            <summary>
+                Tests that public buffer memory stream write
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.BufferPoolTest.PublicBufferMemoryStream_ReadByte">
+            <summary>
+                Tests that public buffer memory stream read byte
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.BufferPoolTest.PublicBufferMemoryStream_Read">
+            <summary>
+                Tests that public buffer memory stream read
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.BufferPoolTest.PublicBufferMemoryStream_Close">
+            <summary>
+                Tests that public buffer memory stream close
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Network.Test.Exceptions.EntityTooLargeExceptionTest">
+            <summary>
+                The entitytoolargeexceptiontest class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Exceptions.EntityTooLargeExceptionTest.EntityTooLargeException_DefaultConstructor">
+            <summary>
+                Tests that entity too large exception default constructor
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Exceptions.EntityTooLargeExceptionTest.EntityTooLargeException_ConstructorWithMessage">
+            <summary>
+                Tests that entity too large exception constructor with message
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Exceptions.EntityTooLargeExceptionTest.EntityTooLargeException_ConstructorWithMessageAndInnerException">
+            <summary>
+                Tests that entity too large exception constructor with message and inner exception
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Network.Test.Exceptions.InvalidHttpResponseCodeExceptionTest">
+            <summary>
+                The invalid http response code exception test class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Exceptions.InvalidHttpResponseCodeExceptionTest.InvalidHttpResponseCodeException_DefaultConstructor">
+            <summary>
+                Tests that invalid http response code exception default constructor
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Exceptions.InvalidHttpResponseCodeExceptionTest.InvalidHttpResponseCodeException_ConstructorWithMessage">
+            <summary>
+                Tests that invalid http response code exception constructor with message
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Exceptions.InvalidHttpResponseCodeExceptionTest.InvalidHttpResponseCodeException_ConstructorWithResponseDetails">
+            <summary>
+                Tests that invalid http response code exception constructor with response details
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Exceptions.InvalidHttpResponseCodeExceptionTest.InvalidHttpResponseCodeException_ConstructorWithMessageAndInnerException">
+            <summary>
+                Tests that invalid http response code exception constructor with message and inner exception
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Network.Test.Exceptions.MaskKeyLengthExceptionTest">
+            <summary>
+                The mask key length exception test class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Exceptions.MaskKeyLengthExceptionTest.MaskKeyLengthException_DefaultConstructor">
+            <summary>
+                Tests that mask key length exception default constructor
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Network.Test.Exceptions.SecWebSocketKeyMissingExceptionTest">
+            <summary>
+                The sec web socket key missing exception test class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Exceptions.SecWebSocketKeyMissingExceptionTest.SecWebSocketKeyMissingException_DefaultConstructor">
+            <summary>
+                Tests that sec web socket key missing exception default constructor
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Exceptions.SecWebSocketKeyMissingExceptionTest.SecWebSocketKeyMissingException_ConstructorWithMessage">
+            <summary>
+                Tests that sec web socket key missing exception constructor with message
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Exceptions.SecWebSocketKeyMissingExceptionTest.SecWebSocketKeyMissingException_ConstructorWithMessageAndInnerException">
+            <summary>
+                Tests that sec web socket key missing exception constructor with message and inner exception
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Network.Test.Exceptions.ServerListenerSocketExceptionTest">
+            <summary>
+                The server listener socket exception test class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Exceptions.ServerListenerSocketExceptionTest.ServerListenerSocketException_DefaultConstructor">
+            <summary>
+                Tests that server listener socket exception default constructor
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Exceptions.ServerListenerSocketExceptionTest.ServerListenerSocketException_ConstructorWithMessage">
+            <summary>
+                Tests that server listener socket exception constructor with message
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Exceptions.ServerListenerSocketExceptionTest.ServerListenerSocketException_ConstructorWithMessageAndInnerException">
+            <summary>
+                Tests that server listener socket exception constructor with message and inner exception
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Network.Test.Exceptions.WebSocketBufferOverflowExceptionTest">
+            <summary>
+                The web socket buffer overflow exception test class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Exceptions.WebSocketBufferOverflowExceptionTest.WebSocketBufferOverflowException_DefaultConstructor">
+            <summary>
+                Tests that web socket buffer overflow exception default constructor
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Exceptions.WebSocketBufferOverflowExceptionTest.WebSocketBufferOverflowException_ConstructorWithMessage">
+            <summary>
+                Tests that web socket buffer overflow exception constructor with message
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Exceptions.WebSocketBufferOverflowExceptionTest.WebSocketBufferOverflowException_ConstructorWithMessageAndInnerException">
+            <summary>
+                Tests that web socket buffer overflow exception constructor with message and inner exception
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Network.Test.Exceptions.WebSocketHandshakeFailedExceptionTest">
+            <summary>
+                The web socket handshake failed exception test class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Exceptions.WebSocketHandshakeFailedExceptionTest.WebSocketHandshakeFailedException_DefaultConstructor">
+            <summary>
+                Tests that web socket handshake failed exception default constructor
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Exceptions.WebSocketHandshakeFailedExceptionTest.WebSocketHandshakeFailedException_ConstructorWithMessage">
+            <summary>
+                Tests that web socket handshake failed exception constructor with message
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Exceptions.WebSocketHandshakeFailedExceptionTest.WebSocketHandshakeFailedException_ConstructorWithMessageAndInnerException">
+            <summary>
+                Tests that web socket handshake failed exception constructor with message and inner exception
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Network.Test.Exceptions.WebSocketVersionNotSupportedExceptionTest">
+            <summary>
+                The web socket version not supported exception test class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Exceptions.WebSocketVersionNotSupportedExceptionTest.WebSocketVersionNotSupportedException_DefaultConstructor">
+            <summary>
+                Tests that web socket version not supported exception default constructor
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Exceptions.WebSocketVersionNotSupportedExceptionTest.WebSocketVersionNotSupportedException_ConstructorWithMessage">
+            <summary>
+                Tests that web socket version not supported exception constructor with message
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Exceptions.WebSocketVersionNotSupportedExceptionTest.WebSocketVersionNotSupportedException_ConstructorWithMessageAndInnerException">
+            <summary>
+                Tests that web socket version not supported exception constructor with message and inner exception
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Network.Test.HttpHelperTest">
+            <summary>
+                The http helper test class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.HttpHelperTest.CalculateWebSocketKey_ShouldReturnValidKey">
+            <summary>
+                Tests that calculate web socket key should return valid key
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.HttpHelperTest.ComputeSocketAcceptString_ShouldReturnValidAcceptString">
+            <summary>
+                Tests that compute socket accept string should return valid accept string
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.HttpHelperTest.ReadHttpHeaderAsync_ShouldReturnValidHeader">
+            <summary>
+                Tests that read http header async should return valid header
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.HttpHelperTest.IsWebSocketUpgradeRequest_ShouldReturnTrueForValidRequest">
+            <summary>
+                Tests that is web socket upgrade request should return true for valid request
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.HttpHelperTest.GetPathFromHeader_ShouldReturnCorrectPath">
+            <summary>
+                Tests that get path from header should return correct path
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.HttpHelperTest.GetSubProtocols_ShouldReturnCorrectProtocols">
+            <summary>
+                Tests that get sub protocols should return correct protocols
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.HttpHelperTest.ReadHttpResponseCode_ShouldReturnCorrectResponseCode">
+            <summary>
+                Tests that read http response code should return correct response code
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.HttpHelperTest.WriteHttpHeaderAsync_ShouldWriteCorrectHeader">
+            <summary>
+                Tests that write http header async should write correct header
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.HttpHelperTest.IsWebSocketUpgradeRequest_ShouldReturnTrue_WhenWebSocketUpgradeRequest">
+            <summary>
+                Tests that is web socket upgrade request should return true when web socket upgrade request
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.HttpHelperTest.IsWebSocketUpgradeRequest_ShouldReturnFalse_WhenNotWebSocketUpgradeRequest">
+            <summary>
+                Tests that is web socket upgrade request should return false when not web socket upgrade request
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.HttpHelperTest.GetSubProtocols_ShouldReturnCorrectProtocols_v2">
+            <summary>
+                Tests that get sub protocols should return correct protocols v 2
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.HttpHelperTest.GetSubProtocols_ShouldReturnEmptyList_WhenNoProtocols">
+            <summary>
+                Tests that get sub protocols should return empty list when no protocols
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.HttpHelperTest.GetSubProtocols_ShouldThrowException_WhenHeaderTooLarge">
+            <summary>
+                Tests that get sub protocols should throw exception when header too large
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Network.Test.IBufferPoolTest">
+            <summary>
+                The buffer pool test class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.IBufferPoolTest.GetBuffer_ShouldReturnMemoryStream">
+            <summary>
+                Tests that get buffer should return memory stream
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.IBufferPoolTest.GetBuffer_ShouldReturnDifferentInstances">
+            <summary>
+                Tests that get buffer should return different instances
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.IBufferPoolTest.GetBuffer_ShouldReturnPooledMemoryStream">
+            <summary>
+                Tests that get buffer should return pooled memory stream
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Network.Test.Internal.BinaryReaderWriterTest">
+            <summary>
+                The binary reader writer test class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.BinaryReaderWriterTest.ReadExactly_ValidInput">
+            <summary>
+                Tests that read exactly valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.BinaryReaderWriterTest.ReadUShortExactly_ValidInput">
+            <summary>
+                Tests that read u short exactly valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.BinaryReaderWriterTest.ReadULongExactly_ValidInput">
+            <summary>
+                Tests that read u long exactly valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.BinaryReaderWriterTest.ReadLongExactly_ValidInput">
+            <summary>
+                Tests that read long exactly valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.BinaryReaderWriterTest.WriteInt_ValidInput">
+            <summary>
+                Tests that write int valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.BinaryReaderWriterTest.WriteULong_ValidInput">
+            <summary>
+                Tests that write u long valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.BinaryReaderWriterTest.WriteLong_ValidInput">
+            <summary>
+                Tests that write long valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.BinaryReaderWriterTest.WriteUShort_ValidInput">
+            <summary>
+                Tests that write u short valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.BinaryReaderWriterTest.WriteInt_ShouldWriteCorrectly">
+            <summary>
+                Tests that write int should write correctly
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.BinaryReaderWriterTest.WriteULong_ShouldWriteCorrectly">
+            <summary>
+                Tests that write u long should write correctly
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.BinaryReaderWriterTest.WriteLong_ShouldWriteCorrectly">
+            <summary>
+                Tests that write long should write correctly
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.BinaryReaderWriterTest.WriteLong_ShouldWriteCorrectly_WhenLittleEndian">
+            <summary>
+                Tests that write long should write correctly when little endian
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.BinaryReaderWriterTest.WriteLong_ShouldWriteCorrectly_WhenBigEndian">
+            <summary>
+                Tests that write long should write correctly when big endian
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.BinaryReaderWriterTest.ReverseBuffer_Test">
+            <summary>
+                Tests that reverse buffer test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.BinaryReaderWriterTest.HandleEndianness_Test">
+            <summary>
+                Tests that handle endianness test
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Network.Test.Internal.EventsTest">
+            <summary>
+                The events test class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.ClientConnectingToIpAddress_ValidInput">
+            <summary>
+                Tests that client connecting to ip address valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.ClientConnectingToHost_ValidInput">
+            <summary>
+                Tests that client connecting to host valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.AttemtingToSecureSslConnection_ValidInput">
+            <summary>
+                Tests that attemting to secure ssl connection valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.ConnectionSecured_ValidInput">
+            <summary>
+                Tests that connection secured valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.ConnectionNotSecure_ValidInput">
+            <summary>
+                Tests that connection not secure valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.CloseHandshakeComplete_ValidInput">
+            <summary>
+                Tests that close handshake complete valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.CloseFrameReceivedInUnexpectedState_ValidInput">
+            <summary>
+                Tests that close frame received in unexpected state valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.WebSocketDispose_ValidInput">
+            <summary>
+                Tests that web socket dispose valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.WebSocketDisposeCloseTimeout_ValidInput">
+            <summary>
+                Tests that web socket dispose close timeout valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.WebSocketDisposeError_ValidInput">
+            <summary>
+                Tests that web socket dispose error valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.InvalidStateBeforeClose_ValidInput">
+            <summary>
+                Tests that invalid state before close valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.InvalidStateBeforeCloseOutput_ValidInput">
+            <summary>
+                Tests that invalid state before close output valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.TryGetBufferNotSupported_ValidInput">
+            <summary>
+                Tests that try get buffer not supported valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.SendingFrame_ValidInput">
+            <summary>
+                Tests that sending frame valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.ReceivedFrame_ValidInput">
+            <summary>
+                Tests that received frame valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.CloseOutputNoHandshake_ValidInput">
+            <summary>
+                Tests that close output no handshake valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.CloseHandshakeStarted_ValidInput">
+            <summary>
+                Tests that close handshake started valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.CloseHandshakeRespond_ValidInput">
+            <summary>
+                Tests that close handshake respond valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.KeepAliveIntervalZero_ValidInput">
+            <summary>
+                Tests that keep alive interval zero valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.PingPongManagerStarted_ValidInput">
+            <summary>
+                Tests that ping pong manager started valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.PingPongManagerEnded_ValidInput">
+            <summary>
+                Tests that ping pong manager ended valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.KeepAliveIntervalExpired_ValidInput">
+            <summary>
+                Tests that keep alive interval expired valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.CloseOutputAutoTimeout_ValidInput">
+            <summary>
+                Tests that close output auto timeout valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.CloseOutputAutoTimeoutCancelled_ValidInput">
+            <summary>
+                Tests that close output auto timeout cancelled valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.CloseOutputAutoTimeoutError_ValidInput">
+            <summary>
+                Tests that close output auto timeout error valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.ServerHandshakeSuccess_ValidInput">
+            <summary>
+                Tests that server handshake success valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.AcceptWebSocketStarted_ValidInput">
+            <summary>
+                Tests that accept web socket started valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.SendingHandshakeResponse_ValidInput">
+            <summary>
+                Tests that sending handshake response valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.WebSocketVersionNotSupported_ValidInput">
+            <summary>
+                Tests that web socket version not supported valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.BadRequest_ValidInput">
+            <summary>
+                Tests that bad request valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.UsePerMessageDeflate_ValidInput">
+            <summary>
+                Tests that use per message deflate valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.NoMessageCompression_ValidInput">
+            <summary>
+                Tests that no message compression valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.SslCertificateError_ValidInput">
+            <summary>
+                Tests that ssl certificate error valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.HandshakeSent_ValidInput">
+            <summary>
+                Tests that handshake sent valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.ReadingHttpResponse_ValidInput">
+            <summary>
+                Tests that reading http response valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.ReadHttpResponseError_ValidInput">
+            <summary>
+                Tests that read http response error valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.InvalidHttpResponseCode_ValidInput">
+            <summary>
+                Tests that invalid http response code valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.HandshakeFailure_ValidInput">
+            <summary>
+                Tests that handshake failure valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.ClientHandshakeSuccess_ValidInput">
+            <summary>
+                Tests that client handshake success valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.ClientConnectingToIpAddress_Test">
+            <summary>
+                Tests that client connecting to ip address test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.WebSocketDisposeError_Test">
+            <summary>
+                Tests that web socket dispose error test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.InvalidStateBeforeClose_Test">
+            <summary>
+                Tests that invalid state before close test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.InvalidStateBeforeCloseOutput_Test">
+            <summary>
+                Tests that invalid state before close output test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.PingPongManagerStarted_Test">
+            <summary>
+                Tests that ping pong manager started test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.PingPongManagerEnded_Test">
+            <summary>
+                Tests that ping pong manager ended test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.KeepAliveIntervalExpired_Test">
+            <summary>
+                Tests that keep alive interval expired test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.CloseOutputAutoTimeout_Test">
+            <summary>
+                Tests that close output auto timeout test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.CloseOutputAutoTimeoutCancelled_Test">
+            <summary>
+                Tests that close output auto timeout cancelled test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.CloseOutputAutoTimeoutError_Test">
+            <summary>
+                Tests that close output auto timeout error test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.Test_ClientConnectingToIpAddress">
+            <summary>
+                Tests that test client connecting to ip address
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.Test_ClientConnectingToHost">
+            <summary>
+                Tests that test client connecting to host
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.Test_AttemtingToSecureSslConnection">
+            <summary>
+                Tests that test attemting to secure ssl connection
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.Test_ConnectionSecured">
+            <summary>
+                Tests that test connection secured
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.Test_ConnectionNotSecure">
+            <summary>
+                Tests that test connection not secure
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.Test_SslCertificateError">
+            <summary>
+                Tests that test ssl certificate error
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.Test_HandshakeSent">
+            <summary>
+                Tests that test handshake sent
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.Test_ReadingHttpResponse">
+            <summary>
+                Tests that test reading http response
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.Test_ReadHttpResponseError">
+            <summary>
+                Tests that test read http response error
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.Test_InvalidHttpResponseCode">
+            <summary>
+                Tests that test invalid http response code
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.Test_HandshakeFailure">
+            <summary>
+                Tests that test handshake failure
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.Test_ClientHandshakeSuccess">
+            <summary>
+                Tests that test client handshake success
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.Test_ServerHandshakeSuccess">
+            <summary>
+                Tests that test server handshake success
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.Test_AcceptWebSocketStarted">
+            <summary>
+                Tests that test accept web socket started
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.Test_SendingHandshakeResponse">
+            <summary>
+                Tests that test sending handshake response
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.Test_WebSocketVersionNotSupported">
+            <summary>
+                Tests that test web socket version not supported
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.Test_BadRequest">
+            <summary>
+                Tests that test bad request
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.Test_UsePerMessageDeflate">
+            <summary>
+                Tests that test use per message deflate
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.Test_NoMessageCompression">
+            <summary>
+                Tests that test no message compression
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.Test_KeepAliveIntervalZero">
+            <summary>
+                Tests that test keep alive interval zero
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.Test_PingPongManagerStarted">
+            <summary>
+                Tests that test ping pong manager started
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.Test_PingPongManagerEnded">
+            <summary>
+                Tests that test ping pong manager ended
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.Test_KeepAliveIntervalExpired">
+            <summary>
+                Tests that test keep alive interval expired
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.Test_CloseOutputAutoTimeout">
+            <summary>
+                Tests that test close output auto timeout
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.Test_CloseOutputAutoTimeoutCancelled">
+            <summary>
+                Tests that test close output auto timeout cancelled
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.Test_CloseOutputAutoTimeoutError">
+            <summary>
+                Tests that test close output auto timeout error
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.Test_TryGetBufferNotSupported">
+            <summary>
+                Tests that test try get buffer not supported
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.Test_SendingFrame">
+            <summary>
+                Tests that test sending frame
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.Test_ReceivedFrame">
+            <summary>
+                Tests that test received frame
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.Test_CloseOutputNoHandshake">
+            <summary>
+                Tests that test close output no handshake
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.Test_CloseHandshakeStarted">
+            <summary>
+                Tests that test close handshake started
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.Test_CloseHandshakeRespond">
+            <summary>
+                Tests that test close handshake respond
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.Test_CloseHandshakeComplete">
+            <summary>
+                Tests that test close handshake complete
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.Test_CloseFrameReceivedInUnexpectedState">
+            <summary>
+                Tests that test close frame received in unexpected state
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.Test_WebSocketDispose">
+            <summary>
+                Tests that test web socket dispose
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.Test_WebSocketDisposeCloseTimeout">
+            <summary>
+                Tests that test web socket dispose close timeout
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.Test_WebSocketDisposeError">
+            <summary>
+                Tests that test web socket dispose error
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.Test_InvalidStateBeforeClose">
+            <summary>
+                Tests that test invalid state before close
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.EventsTest.Test_InvalidStateBeforeCloseOutput">
+            <summary>
+                Tests that test invalid state before close output
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Network.Test.Internal.WebSocketFrameCommonTest">
+            <summary>
+                The web socket frame common test class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.WebSocketFrameCommonTest.ToggleMask_ShouldNotThrowException_WhenMaskKeyIsValid">
+            <summary>
+                Tests that toggle mask should not throw exception when mask key is valid
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.WebSocketFrameCommonTest.ToggleMask_ShouldThrowException_WhenMaskKeyIsInvalid">
+            <summary>
+                Tests that toggle mask should throw exception when mask key is invalid
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.WebSocketFrameCommonTest.ToggleMask_ShouldChangePayload_WhenCalled">
+            <summary>
+                Tests that toggle mask should change payload when called
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Network.Test.Internal.WebSocketFrameReaderTest">
+            <summary>
+                The web socket frame reader test class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.WebSocketFrameReaderTest.ReadAsync_ValidInput">
+            <summary>
+                Tests that read async valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.WebSocketFrameReaderTest.ReadAsync_InvalidInput_ThrowsException">
+            <summary>
+                Tests that read async invalid input throws exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.WebSocketFrameReaderTest.ReadFromCursorAsync_ValidInput">
+            <summary>
+                Tests that read from cursor async valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.WebSocketFrameReaderTest.ReadFromCursorAsync_InvalidInput_ThrowsException">
+            <summary>
+                Tests that read from cursor async invalid input throws exception
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.WebSocketFrameReaderTest.ReadAsync_ShouldReadCorrectly">
+            <summary>
+                Tests that read async should read correctly
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.WebSocketFrameReaderTest.DecodeCloseFrame_ShouldDecodeCorrectly_WhenCountIsGreaterThanOrEqualToTwo">
+            <summary>
+                Tests that decode close frame should decode correctly when count is greater than or equal to two
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.WebSocketFrameReaderTest.DecodeCloseFrame_ShouldDecodeCorrectly_WhenCountIsLessThanTwo">
+            <summary>
+                Tests that decode close frame should decode correctly when count is less than two
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.WebSocketFrameReaderTest.ReadShortLength_ValidInput">
+            <summary>
+                Tests that read short length valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.WebSocketFrameReaderTest.ReadLongLength_ValidInput">
+            <summary>
+                Tests that read long length valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.WebSocketFrameReaderTest.ReadLength_InitialLength_Test">
+            <summary>
+                Tests that read length initial length test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.WebSocketFrameReaderTest.ReadLength_ShortLength_Test">
+            <summary>
+                Tests that read length short length test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.WebSocketFrameReaderTest.ReadLength_LongLength_Test">
+            <summary>
+                Tests that read length long length test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.WebSocketFrameReaderTest.ReadLength_InvalidLength_Test">
+            <summary>
+                Tests that read length invalid length test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.WebSocketFrameReaderTest.ValidateLength_ValidLength_Test">
+            <summary>
+                Tests that validate length valid length test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.WebSocketFrameReaderTest.ValidateLength_InvalidLength_Test">
+            <summary>
+                Tests that validate length invalid length test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.WebSocketFrameReaderTest.CalculateNumBytesToRead_Test">
+            <summary>
+                Tests that calculate num bytes to read test
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Network.Test.Internal.WebSocketFrameTest">
+            <summary>
+                The web socket frame test class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.WebSocketFrameTest.WebSocketFrame_Constructor1_ValidInput">
+            <summary>
+                Tests that web socket frame constructor 1 valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.WebSocketFrameTest.WebSocketFrame_Constructor2_ValidInput">
+            <summary>
+                Tests that web socket frame constructor 2 valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Network.Test.Internal.WebSocketFrameWriterTest">
+            <summary>
+                The web socket frame writer test class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.WebSocketFrameWriterTest.Write_ValidInput">
+            <summary>
+                Tests that write valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.WebSocketFrameWriterTest.Write_ShouldWriteCorrectly_WhenIsLastFrameAndIsClientAreTrue">
+            <summary>
+                Tests that write should write correctly when is last frame and is client are true
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.WebSocketFrameWriterTest.Write_ShouldWriteCorrectly_WhenIsLastFrameAndIsClientAreFalse">
+            <summary>
+                Tests that write should write correctly when is last frame and is client are false
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.WebSocketFrameWriterTest.DeterminePayloadCount_ShouldReturnCorrectValue">
+            <summary>
+                Tests that determine payload count should return correct value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.WebSocketFrameWriterTest.WritePayloadData_ShouldWriteCorrectly_WhenPayloadCountIsLessThanOrEqualToUShortMaxValue">
+            <summary>
+                Tests that write payload data should write correctly when payload count is less than or equal to u short max value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.WebSocketFrameWriterTest.WritePayloadData_ShouldWriteCorrectly_WhenPayloadCountIsGreaterThanUShortMaxValue">
+            <summary>
+                Tests that write payload data should write correctly when payload count is greater than u short max value
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Network.Test.Internal.WebSocketImplementationTest">
+            <summary>
+                The web socket implementation test class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.WebSocketImplementationTest.SendAsync_ValidInput">
+            <summary>
+                Tests that send async valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.WebSocketImplementationTest.ReceiveAsync_ValidInput">
+            <summary>
+                Tests that receive async valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.WebSocketImplementationTest.CloseAsync_ValidInput">
+            <summary>
+                Tests that close async valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.WebSocketImplementationTest.SendAsync_ValidInput_7">
+            <summary>
+                Tests that send async valid input 7
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.WebSocketImplementationTest.ReceiveAsync_ValidInput_6">
+            <summary>
+                Tests that receive async valid input 6
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.WebSocketImplementationTest.CloseAsync_ValidInput_v5">
+            <summary>
+                Tests that close async valid input v 5
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.WebSocketImplementationTest.Abort_ValidInput">
+            <summary>
+                Tests that abort valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.WebSocketImplementationTest.CloseOutputAsync_ValidInput">
+            <summary>
+                Tests that close output async valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.WebSocketImplementationTest.SubProtocol_Test">
+            <summary>
+                Tests that sub protocol test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.WebSocketImplementationTest.KeepAliveInterval_Test">
+            <summary>
+                Tests that keep alive interval test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.WebSocketImplementationTest.Pong_Test">
+            <summary>
+                Tests that pong test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.WebSocketImplementationTest.CloseStatus_Test">
+            <summary>
+                Tests that close status test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.WebSocketImplementationTest.CloseStatusDescription_Test">
+            <summary>
+                Tests that close status description test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.WebSocketImplementationTest.HandleBinaryFrame_Test">
+            <summary>
+                Tests that handle binary frame test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.WebSocketImplementationTest.HandlePong_Test">
+            <summary>
+                Tests that handle pong test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.WebSocketImplementationTest.HandleContinuationFrame_Test">
+            <summary>
+                Tests that handle continuation frame test
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Network.Test.Internal.WebSocketOpCodeTest">
+            <summary>
+                The web socket op code test class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.WebSocketOpCodeTest.WebSocketOpCode_Values">
+            <summary>
+                Tests that web socket op code values
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Network.Test.Internal.WebSocketReadCursorTest">
+            <summary>
+                The web socket read cursor test class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Internal.WebSocketReadCursorTest.WebSocketReadCursor_Constructor_ValidInput">
+            <summary>
+                Tests that web socket read cursor constructor valid input
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Network.Test.PingPongManagerTest">
+            <summary>
+                The ping pong manager test class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PingPongManagerTest.SendPing_ValidInput">
+            <summary>
+                Tests that send ping valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PingPongManagerTest.Pong_ValidInput">
+            <summary>
+                Tests that pong valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PingPongManagerTest.WebSocketImplPong_ValidInput">
+            <summary>
+                Tests that web socket impl pong valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PingPongManagerTest.WebSocketImplPong_NullEventArgs">
+            <summary>
+                Tests that web socket impl pong null event args
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PingPongManagerTest.LogPingPongManagerStart_End_Test">
+            <summary>
+                Tests that log ping pong manager start end test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PingPongManagerTest.PingSentTicksExist_Test">
+            <summary>
+                Tests that ping sent ticks exist test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PingPongManagerTest.HandleExpiredKeepAliveInterval_Test">
+            <summary>
+                Tests that handle expired keep alive interval test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PingPongManagerTest.SendPing_Test">
+            <summary>
+                Tests that send ping test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PingPongManagerTest.SendPing_Test_V2">
+            <summary>
+                Tests that send ping test v 2
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PingPongManagerTest.LogPingPongManagerEnd_Test">
+            <summary>
+                Tests that log ping pong manager end test
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Network.Test.PongEventArgsTest">
+            <summary>
+                The pong event args test class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PongEventArgsTest.PongEventArgs_Constructor">
+            <summary>
+                Tests that pong event args constructor
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PongEventArgsTest.PongEventArgs_Payload">
+            <summary>
+                Tests that pong event args payload
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Network.Test.PublicBufferMemoryStreamTest">
+            <summary>
+                The public buffer memory stream test class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PublicBufferMemoryStreamTest.PublicBufferMemoryStream_Constructor">
+            <summary>
+                Tests that public buffer memory stream constructor
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PublicBufferMemoryStreamTest.PublicBufferMemoryStream_WriteByte">
+            <summary>
+                Tests that public buffer memory stream write byte
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PublicBufferMemoryStreamTest.PublicBufferMemoryStream_Write">
+            <summary>
+                Tests that public buffer memory stream write
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PublicBufferMemoryStreamTest.PublicBufferMemoryStream_ReadByte">
+            <summary>
+                Tests that public buffer memory stream read byte
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PublicBufferMemoryStreamTest.PublicBufferMemoryStream_Read">
+            <summary>
+                Tests that public buffer memory stream read
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PublicBufferMemoryStreamTest.PublicBufferMemoryStream_Close">
+            <summary>
+                Tests that public buffer memory stream close
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PublicBufferMemoryStreamTest.Write_Read_ShouldWorkCorrectly">
+            <summary>
+                Tests that write read should work correctly
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PublicBufferMemoryStreamTest.Write_WhenBufferIsFull_ShouldEnlargeBuffer">
+            <summary>
+                Tests that write when buffer is full should enlarge buffer
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PublicBufferMemoryStreamTest.ReadAsync_ValidInput">
+            <summary>
+                Tests that read async valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PublicBufferMemoryStreamTest.ReadAsync_InvalidInput">
+            <summary>
+                Tests that read async invalid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PublicBufferMemoryStreamTest.ReadTimeout_GetSet">
+            <summary>
+                Tests that read timeout get set
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PublicBufferMemoryStreamTest.WriteTimeout_GetSet">
+            <summary>
+                Tests that write timeout get set
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PublicBufferMemoryStreamTest.BeginRead_ValidInput">
+            <summary>
+                Tests that begin read valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PublicBufferMemoryStreamTest.BeginWrite_ValidInput">
+            <summary>
+                Tests that begin write valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PublicBufferMemoryStreamTest.CanRead_ShouldReturnTrue">
+            <summary>
+                Tests that can read should return true
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PublicBufferMemoryStreamTest.CanSeek_ShouldReturnTrue">
+            <summary>
+                Tests that can seek should return true
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PublicBufferMemoryStreamTest.CanTimeout_ShouldReturnTrue">
+            <summary>
+                Tests that can timeout should return true
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PublicBufferMemoryStreamTest.CanWrite_ShouldReturnTrue">
+            <summary>
+                Tests that can write should return true
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PublicBufferMemoryStreamTest.Capacity_GetSet">
+            <summary>
+                Tests that capacity get set
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PublicBufferMemoryStreamTest.Position_GetSet">
+            <summary>
+                Tests that position get set
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PublicBufferMemoryStreamTest.ReadTimeout_GetSet_v3">
+            <summary>
+                Tests that read timeout get set v 3
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PublicBufferMemoryStreamTest.WriteTimeout_GetSet_v2">
+            <summary>
+                Tests that write timeout get set v 2
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PublicBufferMemoryStreamTest.Seek_ValidInput">
+            <summary>
+                Tests that seek valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PublicBufferMemoryStreamTest.SetLength_ValidInput">
+            <summary>
+                Tests that set length valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PublicBufferMemoryStreamTest.ToArray_ValidInput">
+            <summary>
+                Tests that to array valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PublicBufferMemoryStreamTest.WriteTo_ValidInput">
+            <summary>
+                Tests that write to valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PublicBufferMemoryStreamTest.CopyToAsync_ValidInput">
+            <summary>
+                Tests that copy to async valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PublicBufferMemoryStreamTest.Flush_ValidInput">
+            <summary>
+                Tests that flush valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PublicBufferMemoryStreamTest.FlushAsync_ValidInput">
+            <summary>
+                Tests that flush async valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PublicBufferMemoryStreamTest.WriteAsync_ValidInput">
+            <summary>
+                Tests that write async valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PublicBufferMemoryStreamTest.GetCapacity_ValidInput">
+            <summary>
+                Tests that get capacity valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PublicBufferMemoryStreamTest.GetPosition_ValidInput">
+            <summary>
+                Tests that get position valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PublicBufferMemoryStreamTest.GetReadTimeout_ValidInput">
+            <summary>
+                Tests that get read timeout valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PublicBufferMemoryStreamTest.GetWriteTimeout_ValidInput">
+            <summary>
+                Tests that get write timeout valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PublicBufferMemoryStreamTest.ValidateRequiredSize_ValidInput">
+            <summary>
+                Tests that validate required size valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.PublicBufferMemoryStreamTest.ValidateRequiredSize_InvalidInput">
+            <summary>
+                Tests that validate required size invalid input
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Network.Test.Samples.WebServer">
+            <summary>
+                The web server class
+            </summary>
+            <seealso cref="T:System.IDisposable" />
+        </member>
+        <member name="F:Alis.Core.Network.Test.Samples.WebServer.BufferSize">
+            <summary>
+                The buffer size
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.Test.Samples.WebServer._supportedSubProtocols">
+            <summary>
+                The supported sub protocols
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.Test.Samples.WebServer._webSocketServerFactory">
+            <summary>
+                The web socket server factory
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.Test.Samples.WebServer._isDisposed">
+            <summary>
+                The is disposed
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.Test.Samples.WebServer._listener">
+            <summary>
+                The listener
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Samples.WebServer.#ctor(Alis.Core.Network.IWebSocketServerFactory,System.Collections.Generic.IList{System.String})">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Network.Test.Samples.WebServer" /> class
+            </summary>
+            <param name="webSocketServerFactory">The web socket server factory</param>
+            <param name="supportedSubProtocols">The supported sub protocols</param>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Samples.WebServer.Dispose">
+            <summary>
+                Disposes this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Samples.WebServer.ProcessTcpClient(System.Net.Sockets.TcpClient)">
+            <summary>
+                Processes the tcp client using the specified tcp client
+            </summary>
+            <param name="tcpClient">The tcp client</param>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Samples.WebServer.GetSubProtocol(System.Collections.Generic.IList{System.String})">
+            <summary>
+                Gets the sub protocol using the specified requested sub protocols
+            </summary>
+            <param name="requestedSubProtocols">The requested sub protocols</param>
+            <returns>The string</returns>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Samples.WebServer.ProcessTcpClientAsync(System.Net.Sockets.TcpClient)">
+            <summary>
+                Processes the tcp client using the specified tcp client
+            </summary>
+            <param name="tcpClient">The tcp client</param>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Samples.WebServer.RespondToWebSocketRequestAsync(System.Net.WebSockets.WebSocket,System.Threading.CancellationToken)">
+            <summary>
+                Responds the to web socket request using the specified web socket
+            </summary>
+            <param name="webSocket">The web socket</param>
+            <param name="token">The token</param>
+        </member>
+        <member name="M:Alis.Core.Network.Test.Samples.WebServer.Listen(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+                Listens the port
+            </summary>
+            <param name="port">The port</param>
+            <param name="ctsToken"></param>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="T:Alis.Core.Network.Test.WebSocketClientFactoryTest">
+            <summary>
+                The web socket client factory test class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.Test.WebSocketClientFactoryTest._webSocketServerFactory">
+            <summary>
+                The web socket server factory
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketClientFactoryTest.ConnectAsync_ValidInput">
+            <summary>
+                Tests that connect async valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketClientFactoryTest.StartWebServer(System.Threading.CancellationToken,System.Int32)">
+            <summary>
+                Starts the web server using the specified cts token
+            </summary>
+            <param name="ctsToken">The cts token</param>
+            <param name="port"></param>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketClientFactoryTest.ConnectAsync_WithCustomBufferFactory">
+            <summary>
+                Tests that connect async with custom buffer factory
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketClientFactoryTest.Dispose_ClosesWebSocket">
+            <summary>
+                Tests that dispose closes web socket
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketClientFactoryTest.ValidateServerCertificate_ShouldReturnTrue_WhenSslPolicyErrorsNone">
+            <summary>
+                Tests that validate server certificate should return true when ssl policy errors none
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketClientFactoryTest.ValidateServerCertificate_ShouldReturnFalse_WhenSslPolicyErrorsNotNone">
+            <summary>
+                Tests that validate server certificate should return false when ssl policy errors not none
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketClientFactoryTest.GetAdditionalHeaders_ShouldReturnEmptyString_WhenAdditionalHeadersIsNull">
+            <summary>
+                Tests that get additional headers should return empty string when additional headers is null
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketClientFactoryTest.GetAdditionalHeaders_ShouldReturnCorrectString_WhenAdditionalHeadersIsNotNull">
+            <summary>
+                Tests that get additional headers should return correct string when additional headers is not null
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketClientFactoryTest.ValidateServerCertificate_ShouldReturnTrue_WhenSslPolicyErrorsNone_v2">
+            <summary>
+                Tests that validate server certificate should return true when ssl policy errors none v 2
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketClientFactoryTest.ValidateServerCertificate_ShouldReturnFalse_WhenSslPolicyErrorsNotNone_v2">
+            <summary>
+                Tests that validate server certificate should return false when ssl policy errors not none v 2
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketClientFactoryTest.GetAdditionalHeaders_ShouldReturnEmptyString_WhenAdditionalHeadersIsNull_v2">
+            <summary>
+                Tests that get additional headers should return empty string when additional headers is null v 2
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketClientFactoryTest.GetAdditionalHeaders_ShouldReturnCorrectString_WhenAdditionalHeadersIsNotNull_v2">
+            <summary>
+                Tests that get additional headers should return correct string when additional headers is not null v 2
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketClientFactoryTest.ConnectAsync_ShouldReturnWebSocket_WhenStreamIsOpen">
+            <summary>
+                Tests that connect async should return web socket when stream is open
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketClientFactoryTest.ConnectAsync_ShouldThrowException_WhenStreamIsClosed">
+            <summary>
+                Tests that connect async should throw exception when stream is closed
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketClientFactoryTest.GetSubProtocolFromHeader_ShouldReturnCorrectSubProtocol_WhenResponseContainsSubProtocol">
+            <summary>
+                Tests that get sub protocol from header should return correct sub protocol when response contains sub protocol
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketClientFactoryTest.GetSubProtocolFromHeader_ShouldReturnNull_WhenResponseDoesNotContainSubProtocol">
+            <summary>
+                Tests that get sub protocol from header should return null when response does not contain sub protocol
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketClientFactoryTest.ThrowIfInvalidAcceptString_ShouldThrowException_WhenAcceptStringIsInvalid">
+            <summary>
+                Tests that throw if invalid accept string should throw exception when accept string is invalid
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketClientFactoryTest.ThrowIfInvalidAcceptString_ShouldNotThrowException_WhenAcceptStringIsValid">
+            <summary>
+                Tests that throw if invalid accept string should not throw exception when accept string is valid
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketClientFactoryTest.GenerateSecWebSocketKey_ShouldReturnValidBase64String">
+            <summary>
+                Tests that generate sec web socket key should return valid base 64 string
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketClientFactoryTest.TlsAuthenticateAsClient_Test">
+            <summary>
+                Tests that tls authenticate as client test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketClientFactoryTest.SendHandshakeRequest_Test">
+            <summary>
+                Tests that send handshake request test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketClientFactoryTest.BuildHandshakeRequest_Test">
+            <summary>
+                Tests that build handshake request test
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketClientFactoryTest.PerformHandshake_Test">
+            <summary>
+                Tests that perform handshake test
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Network.Test.WebSocketClientOptionsTest">
+            <summary>
+                The web socket client options test class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketClientOptionsTest.WebSocketClientOptions_DefaultConstructor">
+            <summary>
+                Tests that web socket client options default constructor
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketClientOptionsTest.WebSocketClientOptions_KeepAliveInterval">
+            <summary>
+                Tests that web socket client options keep alive interval
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketClientOptionsTest.WebSocketClientOptions_NoDelay">
+            <summary>
+                Tests that web socket client options no delay
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketClientOptionsTest.WebSocketClientOptions_AdditionalHttpHeaders">
+            <summary>
+                Tests that web socket client options additional http headers
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketClientOptionsTest.WebSocketClientOptions_SecWebSocketProtocol">
+            <summary>
+                Tests that web socket client options sec web socket protocol
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketClientOptionsTest.SecWebSocketExtensions_Get_ReturnsExpectedValue">
+            <summary>
+                Tests that sec web socket extensions get returns expected value
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Network.Test.WebSocketHttpContextTest">
+            <summary>
+                The web socket http context test class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketHttpContextTest.WebSocketHttpContext_Constructor">
+            <summary>
+                Tests that web socket http context constructor
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketHttpContextTest.WebSocketHttpContext_IsWebSocketRequest">
+            <summary>
+                Tests that web socket http context is web socket request
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketHttpContextTest.WebSocketHttpContext_WebSocketRequestedProtocols">
+            <summary>
+                Tests that web socket http context web socket requested protocols
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketHttpContextTest.WebSocketHttpContext_HttpHeader">
+            <summary>
+                Tests that web socket http context http header
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketHttpContextTest.WebSocketHttpContext_Path">
+            <summary>
+                Tests that web socket http context path
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketHttpContextTest.WebSocketHttpContext_Stream">
+            <summary>
+                Tests that web socket http context stream
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Network.Test.WebSocketServerFactoryTest">
+            <summary>
+                The web socket server factory test class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketServerFactoryTest.WebSocketServerFactory_ReadHttpHeaderFromStreamAsync">
+            <summary>
+                Tests that web socket server factory read http header from stream
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketServerFactoryTest.PerformHandshakeAsync_ValidInput">
+            <summary>
+                Tests that perform handshake async valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketServerFactoryTest.PerformHandshakeAsync_InvalidInput">
+            <summary>
+                Tests that perform handshake async invalid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketServerFactoryTest.AcceptWebSocketAsync_DefaultOptions">
+            <summary>
+                Tests that accept web socket async default options
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketServerFactoryTest.AcceptWebSocketAsync_ValidInput">
+            <summary>
+                Tests that accept web socket async valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketServerFactoryTest.AcceptWebSocketAsync_InvalidInput">
+            <summary>
+                Tests that accept web socket async invalid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketServerFactoryTest.ExtractWebSocketVersion_ValidInput">
+            <summary>
+                Tests that extract web socket version valid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketServerFactoryTest.ExtractWebSocketVersion_InvalidInput">
+            <summary>
+                Tests that extract web socket version invalid input
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketServerFactoryTest.PerformHandshakeAsync_ValidInput_v2">
+            <summary>
+                Tests that perform handshake async valid input v 2
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketServerFactoryTest.PerformHandshakeAsync_InvalidInput_2">
+            <summary>
+                Tests that perform handshake async invalid input 2
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Network.Test.WebSocketServerOptionsTest">
+            <summary>
+                The web socket server options test class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketServerOptionsTest.WebSocketServerOptions_DefaultConstructor">
+            <summary>
+                Tests that web socket server options default constructor
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketServerOptionsTest.WebSocketServerOptions_ConstructorWithParameters">
+            <summary>
+                Tests that web socket server options constructor with parameters
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Test.WebSocketServerOptionsTest.WebSocketServerOptions_ConstructorWithTimeSpanAndSubProtocol">
+            <summary>
+                Tests that web socket server options constructor with time span and sub protocol
+            </summary>
+        </member>
+    </members>
+</doc>

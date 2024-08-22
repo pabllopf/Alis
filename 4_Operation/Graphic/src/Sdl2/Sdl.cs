@@ -1133,13 +1133,11 @@ namespace Alis.Core.Graphic.Sdl2
             NativeSdl.InternalGetWindowPosition(window, out x, out y);
         }
         
-        
         /// <summary>
-        ///     Gets the window size using the specified window
+        /// simple
         /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="w">The </param>
-        /// <param name="h">The </param>
+        /// <param name="window"></param>
+        /// <returns></returns>
         [return: IsNotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector2 GetWindowSize([IsNotNull] IntPtr window)
