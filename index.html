@@ -1,0 +1,143 @@
+<DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benchmark Results</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 1000px; margin: auto; }
+        h1, h2 { text-align: center; }
+        ul { list-style-type: none; padding: 0; }
+        li { margin: 10px 0; }
+        a { text-decoration: none; color: #007bff; }
+ table { border-collapse: collapse; display: block; width: 100 auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+        a:hover { text-decoration: underline; }
+        .benchmark { margin-bottom: 50px; }
+        .benchmark h2 { margin-bottom: 20px; }
+        .benchmark ul { padding-left: 20px; }
+        .benchmark li { margin: 5px 0; }
+        .benchmark a { color: #007bff; }
+        .benchmark a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <h1>Benchmark Results</h1>
+    <div class="benchmark"> 
+        <h2>Alis.Test.Benchmarks.AddComponentOfGameObjectBenchmark-report</h2> 
+<body> 
+<pre><code> 
+BenchmarkDotNet v0.14.0, Windows 11 (10.0.22631.3880/23H2/2023Update/SunValley3) 
+13th Gen Intel Core i7-13800H, 1 CPU, 20 logical and 14 physical cores 
+.NET SDK 8.0.206 
+  [Host] : .NET 6.0.32 (6.0.3224.31407), X64 RyuJIT AVX2 
+</code></pre> 
+<pre><code>Toolchain=InProcessEmitToolchain   
+</code></pre> 
+<table> 
+<thead><tr><th>Method </th><th>N</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Min</th><th>Max</th><th>Median</th><th>Gen0</th><th>Allocated</th> 
+</tr> 
+</thead><tbody><tr><td>Add_Component</td><td>0</td><td>332.0 ns</td><td>4.74 ns</td><td>4.43 ns</td><td>323.9 ns</td><td>339.4 ns</td><td>334.1 ns</td><td>0.0286</td><td>360 B</td> 
+</tr><tr><td>Add_Component</td><td>1</td><td>325.1 ns</td><td>6.08 ns</td><td>6.76 ns</td><td>307.9 ns</td><td>333.4 ns</td><td>326.5 ns</td><td>0.0286</td><td>360 B</td> 
+</tr><tr><td>Add_Component</td><td>10</td><td>326.7 ns</td><td>6.52 ns</td><td>7.25 ns</td><td>309.6 ns</td><td>336.9 ns</td><td>329.6 ns</td><td>0.0286</td><td>360 B</td> 
+</tr><tr><td>Add_Component</td><td>100</td><td>324.5 ns</td><td>6.49 ns</td><td>9.52 ns</td><td>293.8 ns</td><td>336.5 ns</td><td>326.4 ns</td><td>0.0286</td><td>360 B</td> 
+</tr><tr><td>Add_Component</td><td>1000</td><td>327.1 ns</td><td>6.36 ns</td><td>5.95 ns</td><td>315.8 ns</td><td>331.9 ns</td><td>329.5 ns</td><td>0.0286</td><td>360 B</td> 
+</tr><tr><td>Add_Component</td><td>10000</td><td>329.2 ns</td><td>6.37 ns</td><td>6.55 ns</td><td>308.6 ns</td><td>333.8 ns</td><td>331.9 ns</td><td>0.0286</td><td>360 B</td> 
+</tr><tr><td>Add_Component</td><td>1000000</td><td>329.1 ns</td><td>5.64 ns</td><td>5.00 ns</td><td>313.5 ns</td><td>334.6 ns</td><td>329.8 ns</td><td>0.0286</td><td>360 B</td> 
+</tr></tbody></table> 
+    </div> 
+    <div class="benchmark"> 
+        <h2>Alis.Test.Benchmarks.ClearComponentOfGameObjectBenchmark-report</h2> 
+<body> 
+<pre><code> 
+BenchmarkDotNet v0.14.0, Windows 11 (10.0.22631.3880/23H2/2023Update/SunValley3) 
+13th Gen Intel Core i7-13800H, 1 CPU, 20 logical and 14 physical cores 
+.NET SDK 8.0.206 
+  [Host] : .NET 6.0.32 (6.0.3224.31407), X64 RyuJIT AVX2 
+</code></pre> 
+<pre><code>Toolchain=InProcessEmitToolchain   
+</code></pre> 
+<table> 
+<thead><tr><th>Method   </th><th>N</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Min</th><th>Max</th><th>Median</th><th>Allocated</th> 
+</tr> 
+</thead><tbody><tr><td>Clear_Component</td><td>0</td><td>4.024 ns</td><td>0.0837 ns</td><td>0.0783 ns</td><td>3.915 ns</td><td>4.186 ns</td><td>4.016 ns</td><td>-</td> 
+</tr><tr><td>Clear_Component</td><td>1</td><td>3.710 ns</td><td>0.0602 ns</td><td>0.0563 ns</td><td>3.603 ns</td><td>3.760 ns</td><td>3.735 ns</td><td>-</td> 
+</tr><tr><td>Clear_Component</td><td>10</td><td>3.777 ns</td><td>0.0345 ns</td><td>0.0288 ns</td><td>3.742 ns</td><td>3.824 ns</td><td>3.780 ns</td><td>-</td> 
+</tr><tr><td>Clear_Component</td><td>100</td><td>3.639 ns</td><td>0.0448 ns</td><td>0.0397 ns</td><td>3.572 ns</td><td>3.702 ns</td><td>3.639 ns</td><td>-</td> 
+</tr><tr><td>Clear_Component</td><td>1000</td><td>3.622 ns</td><td>0.0493 ns</td><td>0.0412 ns</td><td>3.508 ns</td><td>3.681 ns</td><td>3.630 ns</td><td>-</td> 
+</tr><tr><td>Clear_Component</td><td>10000</td><td>3.666 ns</td><td>0.0824 ns</td><td>0.0771 ns</td><td>3.575 ns</td><td>3.830 ns</td><td>3.666 ns</td><td>-</td> 
+</tr><tr><td>Clear_Component</td><td>1000000</td><td>3.458 ns</td><td>0.0544 ns</td><td>0.0509 ns</td><td>3.380 ns</td><td>3.558 ns</td><td>3.458 ns</td><td>-</td> 
+</tr></tbody></table> 
+    </div> 
+    <div class="benchmark"> 
+        <h2>Alis.Test.Benchmarks.ContainsComponentOfGameObjectBenchmark-report</h2> 
+<body> 
+<pre><code> 
+BenchmarkDotNet v0.14.0, Windows 11 (10.0.22631.3880/23H2/2023Update/SunValley3) 
+13th Gen Intel Core i7-13800H, 1 CPU, 20 logical and 14 physical cores 
+.NET SDK 8.0.206 
+  [Host] : .NET 6.0.32 (6.0.3224.31407), X64 RyuJIT AVX2 
+</code></pre> 
+<pre><code>Toolchain=InProcessEmitToolchain   
+</code></pre> 
+<table> 
+<thead><tr><th>Method      </th><th>N</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Median</th><th>Min</th><th>Max</th><th>Allocated</th> 
+</tr> 
+</thead><tbody><tr><td>Contains_Component</td><td>0</td><td>7.704 ns</td><td>0.1360 ns</td><td>0.1272 ns</td><td>7.718 ns</td><td>7.525 ns</td><td>7.969 ns</td><td>-</td> 
+</tr><tr><td>Contains_Component</td><td>1</td><td>13.922 ns</td><td>0.2789 ns</td><td>0.6004 ns</td><td>13.834 ns</td><td>12.654 ns</td><td>15.453 ns</td><td>-</td> 
+</tr><tr><td>Contains_Component</td><td>10</td><td>13.008 ns</td><td>0.2834 ns</td><td>0.2911 ns</td><td>12.976 ns</td><td>12.474 ns</td><td>13.545 ns</td><td>-</td> 
+</tr><tr><td>Contains_Component</td><td>100</td><td>13.165 ns</td><td>0.2861 ns</td><td>0.4369 ns</td><td>13.105 ns</td><td>12.398 ns</td><td>14.085 ns</td><td>-</td> 
+</tr><tr><td>Contains_Component</td><td>1000</td><td>14.715 ns</td><td>0.8339 ns</td><td>2.4192 ns</td><td>13.408 ns</td><td>12.263 ns</td><td>21.691 ns</td><td>-</td> 
+</tr><tr><td>Contains_Component</td><td>10000</td><td>12.539 ns</td><td>0.2744 ns</td><td>0.7830 ns</td><td>12.261 ns</td><td>11.584 ns</td><td>14.616 ns</td><td>-</td> 
+</tr><tr><td>Contains_Component</td><td>1000000</td><td>12.956 ns</td><td>0.2858 ns</td><td>0.6028 ns</td><td>12.886 ns</td><td>11.637 ns</td><td>14.749 ns</td><td>-</td> 
+</tr></tbody></table> 
+    </div> 
+    <div class="benchmark"> 
+        <h2>Alis.Test.Benchmarks.GetComponentOfGameObjectBenchmark-report</h2> 
+<body> 
+<pre><code> 
+BenchmarkDotNet v0.14.0, Windows 11 (10.0.22631.3880/23H2/2023Update/SunValley3) 
+13th Gen Intel Core i7-13800H, 1 CPU, 20 logical and 14 physical cores 
+.NET SDK 8.0.206 
+  [Host] : .NET 6.0.32 (6.0.3224.31407), X64 RyuJIT AVX2 
+</code></pre> 
+<pre><code>Toolchain=InProcessEmitToolchain   
+</code></pre> 
+<table> 
+<thead><tr><th>Method </th><th>N</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Min</th><th>Max</th><th>Median</th><th>Allocated</th> 
+</tr> 
+</thead><tbody><tr><td>Get_Component</td><td>0</td><td>7.824 ns</td><td>0.1742 ns</td><td>0.2139 ns</td><td>7.442 ns</td><td>8.220 ns</td><td>7.780 ns</td><td>-</td> 
+</tr><tr><td>Get_Component</td><td>1</td><td>13.724 ns</td><td>0.1917 ns</td><td>0.1793 ns</td><td>13.312 ns</td><td>14.018 ns</td><td>13.745 ns</td><td>-</td> 
+</tr><tr><td>Get_Component</td><td>10</td><td>14.377 ns</td><td>0.2270 ns</td><td>0.2012 ns</td><td>14.040 ns</td><td>14.666 ns</td><td>14.395 ns</td><td>-</td> 
+</tr><tr><td>Get_Component</td><td>100</td><td>14.765 ns</td><td>0.3162 ns</td><td>0.4111 ns</td><td>14.145 ns</td><td>15.639 ns</td><td>14.744 ns</td><td>-</td> 
+</tr><tr><td>Get_Component</td><td>1000</td><td>14.191 ns</td><td>0.1892 ns</td><td>0.1677 ns</td><td>13.967 ns</td><td>14.503 ns</td><td>14.196 ns</td><td>-</td> 
+</tr><tr><td>Get_Component</td><td>10000</td><td>14.070 ns</td><td>0.2954 ns</td><td>0.2902 ns</td><td>13.660 ns</td><td>14.750 ns</td><td>14.053 ns</td><td>-</td> 
+</tr><tr><td>Get_Component</td><td>1000000</td><td>13.979 ns</td><td>0.2265 ns</td><td>0.1891 ns</td><td>13.638 ns</td><td>14.309 ns</td><td>14.062 ns</td><td>-</td> 
+</tr></tbody></table> 
+    </div> 
+    <div class="benchmark"> 
+        <h2>Alis.Test.Benchmarks.RemoveComponentOfGameObjectBenchmark-report</h2> 
+<body> 
+<pre><code> 
+BenchmarkDotNet v0.14.0, Windows 11 (10.0.22631.3880/23H2/2023Update/SunValley3) 
+13th Gen Intel Core i7-13800H, 1 CPU, 20 logical and 14 physical cores 
+.NET SDK 8.0.206 
+  [Host] : .NET 6.0.32 (6.0.3224.31407), X64 RyuJIT AVX2 
+</code></pre> 
+<pre><code>Toolchain=InProcessEmitToolchain   
+</code></pre> 
+<table> 
+<thead><tr><th>Method    </th><th>N</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Min</th><th>Max</th><th>Median</th><th>Gen0</th><th>Allocated</th> 
+</tr> 
+</thead><tbody><tr><td>Remove_Component</td><td>0</td><td>299.6 ns</td><td>8.01 ns</td><td>23.62 ns</td><td>231.9 ns</td><td>344.1 ns</td><td>301.2 ns</td><td>0.0286</td><td>360 B</td> 
+</tr><tr><td>Remove_Component</td><td>1</td><td>308.2 ns</td><td>5.93 ns</td><td>6.59 ns</td><td>292.6 ns</td><td>319.7 ns</td><td>307.3 ns</td><td>0.0286</td><td>360 B</td> 
+</tr><tr><td>Remove_Component</td><td>10</td><td>321.0 ns</td><td>6.43 ns</td><td>10.92 ns</td><td>300.5 ns</td><td>348.5 ns</td><td>318.9 ns</td><td>0.0286</td><td>360 B</td> 
+</tr><tr><td>Remove_Component</td><td>100</td><td>302.6 ns</td><td>5.92 ns</td><td>10.06 ns</td><td>288.0 ns</td><td>329.0 ns</td><td>304.1 ns</td><td>0.0286</td><td>360 B</td> 
+</tr><tr><td>Remove_Component</td><td>1000</td><td>298.7 ns</td><td>5.87 ns</td><td>8.79 ns</td><td>279.0 ns</td><td>317.6 ns</td><td>297.2 ns</td><td>0.0286</td><td>360 B</td> 
+</tr><tr><td>Remove_Component</td><td>10000</td><td>293.3 ns</td><td>5.45 ns</td><td>5.10 ns</td><td>287.6 ns</td><td>304.1 ns</td><td>292.1 ns</td><td>0.0286</td><td>360 B</td> 
+</tr><tr><td>Remove_Component</td><td>1000000</td><td>286.7 ns</td><td>5.45 ns</td><td>5.10 ns</td><td>274.5 ns</td><td>292.8 ns</td><td>288.6 ns</td><td>0.0286</td><td>360 B</td> 
+</tr></tbody></table> 
+    </div> 
+</body>
+</html>

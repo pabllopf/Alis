@@ -1,3 +1,4 @@
+#!/bin/bash
 
 :choice
 set /P c=Are you sure you want to continue[Y/N]?
