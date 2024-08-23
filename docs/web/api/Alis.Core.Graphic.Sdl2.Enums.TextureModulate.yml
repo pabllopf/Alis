@@ -1,0 +1,41 @@
+### YamlMime:ApiPage
+title: Enum TextureModulate
+body:
+- api1: Enum TextureModulate
+  id: Alis_Core_Graphic_Sdl2_Enums_TextureModulate
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Enums/TextureModulate.cs#L37
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Enums.TextureModulate
+    commentId: T:Alis.Core.Graphic.Sdl2.Enums.TextureModulate
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Enums
+      url: Alis.Core.Graphic.Sdl2.Enums.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The sdl texture modulate enum
+- code: >-
+    [Flags]
+
+    public enum TextureModulate
+- h2: Fields
+- parameters:
+  - name: None
+    default: "0"
+    description: >+
+      The sdl texture modulate none sdl texture modulate
+
+  - name: SdlTextureModulateHorizontal
+    default: "1"
+    description: >+
+      The sdl texture modulate horizontal sdl texture modulate
+
+  - name: SdlTextureModulateVertical
+    default: "2"
+    description: >+
+      The sdl texture modulate vertical sdl texture modulate
+
+languageId: csharp
+metadata:
+  description: The sdl texture modulate enum

@@ -1,0 +1,246 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+      <title>Struct Matrix2X2 | Alis - Develop the video games of your dreams &#128175; free!! </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Struct Matrix2X2 | Alis - Develop the video games of your dreams &#128175; free!! ">
+      
+      <meta name="description" content="A 2-by-2 matrix. Stored in column-major order.">
+      <link rel="icon" href="../resources/logo.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ApiPage">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../resources/logo.png" alt="Alis">
+            Alis
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 class='section api' data-uid='Alis.Core.Aspect.Math.Matrix.Matrix2X2' data-commentid='T:Alis.Core.Aspect.Math.Matrix.Matrix2X2' id='Alis_Core_Aspect_Math_Matrix_Matrix2X2'>Struct Matrix2X2    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Matrix/Matrix2X2.cs#L37'><i class='bi bi-code-slash'></i></a></h1>
+ <div class="facts text-secondary">
+<dl><dt>Namespace</dt><dd><a href='Alis.Core.Aspect.Math.Matrix.html'>Alis.Core.Aspect.Math.Matrix</a></dd></dl><dl><dt>Assembly</dt><dd>Alis.dll</dd></dl>
+</div><p>A 2-by-2 matrix. Stored in column-major order.</p>
+<pre><code class='lang-csharp'>public struct Matrix2X2</code></pre><h4 class='section'>Inherited Members</h4><dl class="typelist"><dd>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)'>object.Equals(object?)</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)'>object.Equals(object?, object?)</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.gethashcode'>object.GetHashCode()</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.gettype'>object.GetType()</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.referenceequals'>object.ReferenceEquals(object?, object?)</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.tostring'>object.ToString()</a>
+</div>
+
+</dd></dl><h2 class='section'>Constructors</h2><h3 class='section api' data-uid='Alis.Core.Aspect.Math.Matrix.Matrix2X2.#ctor(System.Single,System.Single,System.Single,System.Single)' data-commentid='M:Alis.Core.Aspect.Math.Matrix.Matrix2X2.#ctor(System.Single,System.Single,System.Single,System.Single)' id='Alis_Core_Aspect_Math_Matrix_Matrix2X2__ctor_System_Single_System_Single_System_Single_System_Single_'>Matrix2X2(float, float, float, float)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Matrix/Matrix2X2.cs#L52'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Construct this matrix using scalars.</p>
+<pre><code class='lang-csharp'>public Matrix2X2(float a11, float a12, float a21, float a22)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>a11</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+
+</dd><dt><code>a12</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+
+</dd><dt><code>a21</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+
+</dd><dt><code>a22</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.Matrix.Matrix2X2.#ctor(System.Single)' data-commentid='M:Alis.Core.Aspect.Math.Matrix.Matrix2X2.#ctor(System.Single)' id='Alis_Core_Aspect_Math_Matrix_Matrix2X2__ctor_System_Single_'>Matrix2X2(float)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Matrix/Matrix2X2.cs#L62'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Construct this matrix using an angle.
+This matrix becomes an orthonormal rotation matrix.</p>
+<pre><code class='lang-csharp'>public Matrix2X2(float angle)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>angle</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h2 class='section'>Properties</h2><h3 class='section api' data-uid='Alis.Core.Aspect.Math.Matrix.Matrix2X2.Ex' data-commentid='P:Alis.Core.Aspect.Math.Matrix.Matrix2X2.Ex' id='Alis_Core_Aspect_Math_Matrix_Matrix2X2_Ex'>Ex    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Matrix/Matrix2X2.cs#L42'><i class='bi bi-code-slash'></i></a></h3>
+ <p>The col</p>
+<pre><code class='lang-csharp'>public Vector2 Ex { readonly get; set; }</code></pre><h4 class='section'>Property Value</h4><dl class='parameters'><dt> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.Matrix.Matrix2X2.Ey' data-commentid='P:Alis.Core.Aspect.Math.Matrix.Matrix2X2.Ey' id='Alis_Core_Aspect_Math_Matrix_Matrix2X2_Ey'>Ey    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Matrix/Matrix2X2.cs#L47'><i class='bi bi-code-slash'></i></a></h3>
+ <p>The col</p>
+<pre><code class='lang-csharp'>public Vector2 Ey { readonly get; set; }</code></pre><h4 class='section'>Property Value</h4><dl class='parameters'><dt> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.Matrix.Matrix2X2.Inverse' data-commentid='P:Alis.Core.Aspect.Math.Matrix.Matrix2X2.Inverse' id='Alis_Core_Aspect_Math_Matrix_Matrix2X2_Inverse'>Inverse    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Matrix/Matrix2X2.cs#L159'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Gets the value of the inverse</p>
+<pre><code class='lang-csharp'>public Matrix2X2 Inverse { get; }</code></pre><h4 class='section'>Property Value</h4><dl class='parameters'><dt> <a href='Alis.Core.Aspect.Math.Matrix.Matrix2X2.html'>Matrix2X2</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h2 class='section'>Methods</h2><h3 class='section api' data-uid='Alis.Core.Aspect.Math.Matrix.Matrix2X2.GetAngle' data-commentid='M:Alis.Core.Aspect.Math.Matrix.Matrix2X2.GetAngle' id='Alis_Core_Aspect_Math_Matrix_Matrix2X2_GetAngle'>GetAngle()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Matrix/Matrix2X2.cs#L99'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Extract the angle from this matrix (assumed to be a rotation matrix).</p>
+<pre><code class='lang-csharp'>public float GetAngle()</code></pre><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.Matrix.Matrix2X2.GetInverse' data-commentid='M:Alis.Core.Aspect.Math.Matrix.Matrix2X2.GetInverse' id='Alis_Core_Aspect_Math_Matrix_Matrix2X2_GetInverse'>GetInverse()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Matrix/Matrix2X2.cs#L104'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Compute the inverse of this matrix, such that inv(A) * A = identity.</p>
+<pre><code class='lang-csharp'>public Matrix2X2 GetInverse()</code></pre><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='Alis.Core.Aspect.Math.Matrix.Matrix2X2.html'>Matrix2X2</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.Matrix.Matrix2X2.Set(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)' data-commentid='M:Alis.Core.Aspect.Math.Matrix.Matrix2X2.Set(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)' id='Alis_Core_Aspect_Math_Matrix_Matrix2X2_Set_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_'>Set(Vector2, Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Matrix/Matrix2X2.cs#L72'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Initialize this matrix using columns.</p>
+<pre><code class='lang-csharp'>public void Set(Vector2 c1, Vector2 c2)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>c1</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+
+</dd><dt><code>c2</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.Matrix.Matrix2X2.SetIdentity' data-commentid='M:Alis.Core.Aspect.Math.Matrix.Matrix2X2.SetIdentity' id='Alis_Core_Aspect_Math_Matrix_Matrix2X2_SetIdentity'>SetIdentity()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Matrix/Matrix2X2.cs#L81'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Set this to the identity matrix.</p>
+<pre><code class='lang-csharp'>public void SetIdentity()</code></pre><h3 class='section api' data-uid='Alis.Core.Aspect.Math.Matrix.Matrix2X2.SetZero' data-commentid='M:Alis.Core.Aspect.Math.Matrix.Matrix2X2.SetZero' id='Alis_Core_Aspect_Math_Matrix_Matrix2X2_SetZero'>SetZero()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Matrix/Matrix2X2.cs#L90'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Set this matrix to all zeros.</p>
+<pre><code class='lang-csharp'>public void SetZero()</code></pre><h3 class='section api' data-uid='Alis.Core.Aspect.Math.Matrix.Matrix2X2.Solve(Alis.Core.Aspect.Math.Vector.Vector2)' data-commentid='M:Alis.Core.Aspect.Math.Matrix.Matrix2X2.Solve(Alis.Core.Aspect.Math.Vector.Vector2)' id='Alis_Core_Aspect_Math_Matrix_Matrix2X2_Solve_Alis_Core_Aspect_Math_Vector_Vector2_'>Solve(Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Matrix/Matrix2X2.cs#L128'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Solve A * x = b, where b is a column vector. This is more efficient
+than computing the inverse in one-shot cases.</p>
+<pre><code class='lang-csharp'>public Vector2 Solve(Vector2 b)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>b</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h2 class='section'>Operators</h2><h3 class='section api' data-uid='Alis.Core.Aspect.Math.Matrix.Matrix2X2.op_Addition(Alis.Core.Aspect.Math.Matrix.Matrix2X2,Alis.Core.Aspect.Math.Matrix.Matrix2X2)' data-commentid='M:Alis.Core.Aspect.Math.Matrix.Matrix2X2.op_Addition(Alis.Core.Aspect.Math.Matrix.Matrix2X2,Alis.Core.Aspect.Math.Matrix.Matrix2X2)' id='Alis_Core_Aspect_Math_Matrix_Matrix2X2_op_Addition_Alis_Core_Aspect_Math_Matrix_Matrix2X2_Alis_Core_Aspect_Math_Matrix_Matrix2X2_'>operator +(Matrix2X2, Matrix2X2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Matrix/Matrix2X2.cs#L149'><i class='bi bi-code-slash'></i></a></h3>
+ <pre><code class='lang-csharp'>public static Matrix2X2 operator +(Matrix2X2 a, Matrix2X2 b)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>a</code> <a href='Alis.Core.Aspect.Math.Matrix.Matrix2X2.html'>Matrix2X2</a>  </dt>
+<dd>
+
+
+
+</dd><dt><code>b</code> <a href='Alis.Core.Aspect.Math.Matrix.Matrix2X2.html'>Matrix2X2</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='Alis.Core.Aspect.Math.Matrix.Matrix2X2.html'>Matrix2X2</a>  </dt>
+<dd>
+
+
+
+</dd></dl>
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Alis - Develop the video games of your dreams 💯 free!! on Windows, MacOS, Linux, Android(soon), IOS(soon).
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,344 @@
+### YamlMime:ApiPage
+title: Class AManager
+body:
+- api1: Class AManager
+  id: Alis_Core_Ecs_System_Manager_AManager
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/AManager.cs#L40
+  metadata:
+    uid: Alis.Core.Ecs.System.Manager.AManager
+    commentId: T:Alis.Core.Ecs.System.Manager.AManager
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Ecs.System.Manager
+      url: Alis.Core.Ecs.System.Manager.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The manager class
+- code: 'public abstract class AManager : IManager, IEnabled, IIdentifier, IRuntime'
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: AManager
+    url: Alis.Core.Ecs.System.Manager.AManager.html
+- h4: Derived
+- list:
+  - text: AudioManager
+    url: Alis.Core.Ecs.System.Manager.Audio.AudioManager.html
+  - text: GraphicManager
+    url: Alis.Core.Ecs.System.Manager.Graphic.GraphicManager.html
+  - text: InputManager
+    url: Alis.Core.Ecs.System.Manager.Input.InputManager.html
+  - text: NetworkManager
+    url: Alis.Core.Ecs.System.Manager.Network.NetworkManager.html
+  - text: PhysicManager
+    url: Alis.Core.Ecs.System.Manager.Physic.PhysicManager.html
+  - text: SceneManager
+    url: Alis.Core.Ecs.System.Manager.Scene.SceneManager.html
+- h4: Implements
+- list:
+  - text: IManager
+    url: Alis.Core.Ecs.System.Manager.IManager.html
+  - text: IEnabled
+    url: Alis.Core.Ecs.Entity.Property.IEnabled.html
+  - text: IIdentifier
+    url: Alis.Core.Ecs.Entity.Property.IIdentifier.html
+  - text: IRuntime
+    url: Alis.Core.Ecs.Entity.Property.IRuntime.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Constructors
+- api3: AManager()
+  id: Alis_Core_Ecs_System_Manager_AManager__ctor
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/AManager.cs#L45
+  metadata:
+    uid: Alis.Core.Ecs.System.Manager.AManager.#ctor
+    commentId: M:Alis.Core.Ecs.System.Manager.AManager.#ctor
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Ecs.System.Manager.AManager" data-throw-if-not-resolved="false"></xref> class
+- code: protected AManager()
+- api3: AManager(string, string, string, bool)
+  id: Alis_Core_Ecs_System_Manager_AManager__ctor_System_String_System_String_System_String_System_Boolean_
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/AManager.cs#L60
+  metadata:
+    uid: Alis.Core.Ecs.System.Manager.AManager.#ctor(System.String,System.String,System.String,System.Boolean)
+    commentId: M:Alis.Core.Ecs.System.Manager.AManager.#ctor(System.String,System.String,System.String,System.Boolean)
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Ecs.System.Manager.AManager" data-throw-if-not-resolved="false"></xref> class
+- code: protected AManager(string id, string name, string tag, bool isEnable)
+- h4: Parameters
+- parameters:
+  - name: id
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The id
+  - name: name
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The name
+  - name: tag
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The tag
+  - name: isEnable
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The is enable
+- h2: Properties
+- api3: Context
+  id: Alis_Core_Ecs_System_Manager_AManager_Context
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/AManager.cs#L72
+  metadata:
+    uid: Alis.Core.Ecs.System.Manager.AManager.Context
+    commentId: P:Alis.Core.Ecs.System.Manager.AManager.Context
+- markdown: Gets or sets the value of the context
+- code: >-
+    [JsonPropertyName("_Context_", true, true)]
+
+    protected Context Context { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Context
+      url: Alis.Core.Ecs.System.Context.html
+- api3: Id
+  id: Alis_Core_Ecs_System_Manager_AManager_Id
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/AManager.cs#L90
+  metadata:
+    uid: Alis.Core.Ecs.System.Manager.AManager.Id
+    commentId: P:Alis.Core.Ecs.System.Manager.AManager.Id
+- markdown: Gets or sets the value of the id
+- code: >-
+    [JsonPropertyName("_Id_")]
+
+    public string Id { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: IsEnable
+  id: Alis_Core_Ecs_System_Manager_AManager_IsEnable
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/AManager.cs#L78
+  metadata:
+    uid: Alis.Core.Ecs.System.Manager.AManager.IsEnable
+    commentId: P:Alis.Core.Ecs.System.Manager.AManager.IsEnable
+- markdown: Gets or sets the value of the is enable
+- code: >-
+    [JsonPropertyName("_IsEnable_")]
+
+    public bool IsEnable { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+- api3: Name
+  id: Alis_Core_Ecs_System_Manager_AManager_Name
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/AManager.cs#L84
+  metadata:
+    uid: Alis.Core.Ecs.System.Manager.AManager.Name
+    commentId: P:Alis.Core.Ecs.System.Manager.AManager.Name
+- markdown: Gets or sets the value of the name
+- code: >-
+    [JsonPropertyName("_Name_")]
+
+    public string Name { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: Tag
+  id: Alis_Core_Ecs_System_Manager_AManager_Tag
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/AManager.cs#L96
+  metadata:
+    uid: Alis.Core.Ecs.System.Manager.AManager.Tag
+    commentId: P:Alis.Core.Ecs.System.Manager.AManager.Tag
+- markdown: Gets or sets the value of the tag
+- code: >-
+    [JsonPropertyName("_Tag_")]
+
+    public string Tag { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- h2: Methods
+- api3: OnAfterFixedUpdate()
+  id: Alis_Core_Ecs_System_Manager_AManager_OnAfterFixedUpdate
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/AManager.cs#L147
+  metadata:
+    uid: Alis.Core.Ecs.System.Manager.AManager.OnAfterFixedUpdate
+    commentId: M:Alis.Core.Ecs.System.Manager.AManager.OnAfterFixedUpdate
+- markdown: Ons the after fixed update
+- code: public virtual void OnAfterFixedUpdate()
+- api3: OnAfterUpdate()
+  id: Alis_Core_Ecs_System_Manager_AManager_OnAfterUpdate
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/AManager.cs#L132
+  metadata:
+    uid: Alis.Core.Ecs.System.Manager.AManager.OnAfterUpdate
+    commentId: M:Alis.Core.Ecs.System.Manager.AManager.OnAfterUpdate
+- markdown: Ons the after update
+- code: public virtual void OnAfterUpdate()
+- api3: OnAwake()
+  id: Alis_Core_Ecs_System_Manager_AManager_OnAwake
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/AManager.cs#L112
+  metadata:
+    uid: Alis.Core.Ecs.System.Manager.AManager.OnAwake
+    commentId: M:Alis.Core.Ecs.System.Manager.AManager.OnAwake
+- markdown: Ons the awake
+- code: public virtual void OnAwake()
+- api3: OnBeforeFixedUpdate()
+  id: Alis_Core_Ecs_System_Manager_AManager_OnBeforeFixedUpdate
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/AManager.cs#L137
+  metadata:
+    uid: Alis.Core.Ecs.System.Manager.AManager.OnBeforeFixedUpdate
+    commentId: M:Alis.Core.Ecs.System.Manager.AManager.OnBeforeFixedUpdate
+- markdown: Ons the before fixed update
+- code: public virtual void OnBeforeFixedUpdate()
+- api3: OnBeforeUpdate()
+  id: Alis_Core_Ecs_System_Manager_AManager_OnBeforeUpdate
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/AManager.cs#L122
+  metadata:
+    uid: Alis.Core.Ecs.System.Manager.AManager.OnBeforeUpdate
+    commentId: M:Alis.Core.Ecs.System.Manager.AManager.OnBeforeUpdate
+- markdown: Ons the before update
+- code: public virtual void OnBeforeUpdate()
+- api3: OnCalculate()
+  id: Alis_Core_Ecs_System_Manager_AManager_OnCalculate
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/AManager.cs#L157
+  metadata:
+    uid: Alis.Core.Ecs.System.Manager.AManager.OnCalculate
+    commentId: M:Alis.Core.Ecs.System.Manager.AManager.OnCalculate
+- markdown: Ons the calculate
+- code: public virtual void OnCalculate()
+- api3: OnDestroy()
+  id: Alis_Core_Ecs_System_Manager_AManager_OnDestroy
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/AManager.cs#L192
+  metadata:
+    uid: Alis.Core.Ecs.System.Manager.AManager.OnDestroy
+    commentId: M:Alis.Core.Ecs.System.Manager.AManager.OnDestroy
+- markdown: Ons the destroy
+- code: public virtual void OnDestroy()
+- api3: OnDisable()
+  id: Alis_Core_Ecs_System_Manager_AManager_OnDisable
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/AManager.cs#L172
+  metadata:
+    uid: Alis.Core.Ecs.System.Manager.AManager.OnDisable
+    commentId: M:Alis.Core.Ecs.System.Manager.AManager.OnDisable
+- markdown: Ons the disable
+- code: public virtual void OnDisable()
+- api3: OnDispatchEvents()
+  id: Alis_Core_Ecs_System_Manager_AManager_OnDispatchEvents
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/AManager.cs#L152
+  metadata:
+    uid: Alis.Core.Ecs.System.Manager.AManager.OnDispatchEvents
+    commentId: M:Alis.Core.Ecs.System.Manager.AManager.OnDispatchEvents
+- markdown: Ons the dispatch events
+- code: public virtual void OnDispatchEvents()
+- api3: OnDraw()
+  id: Alis_Core_Ecs_System_Manager_AManager_OnDraw
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/AManager.cs#L162
+  metadata:
+    uid: Alis.Core.Ecs.System.Manager.AManager.OnDraw
+    commentId: M:Alis.Core.Ecs.System.Manager.AManager.OnDraw
+- markdown: Ons the draw
+- code: public virtual void OnDraw()
+- api3: OnEnable()
+  id: Alis_Core_Ecs_System_Manager_AManager_OnEnable
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/AManager.cs#L102
+  metadata:
+    uid: Alis.Core.Ecs.System.Manager.AManager.OnEnable
+    commentId: M:Alis.Core.Ecs.System.Manager.AManager.OnEnable
+- markdown: Ons the enable
+- code: public virtual void OnEnable()
+- api3: OnExit()
+  id: Alis_Core_Ecs_System_Manager_AManager_OnExit
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/AManager.cs#L187
+  metadata:
+    uid: Alis.Core.Ecs.System.Manager.AManager.OnExit
+    commentId: M:Alis.Core.Ecs.System.Manager.AManager.OnExit
+- markdown: Ons the exit
+- code: public virtual void OnExit()
+- api3: OnFixedUpdate()
+  id: Alis_Core_Ecs_System_Manager_AManager_OnFixedUpdate
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/AManager.cs#L142
+  metadata:
+    uid: Alis.Core.Ecs.System.Manager.AManager.OnFixedUpdate
+    commentId: M:Alis.Core.Ecs.System.Manager.AManager.OnFixedUpdate
+- markdown: Ons the fixed update
+- code: public virtual void OnFixedUpdate()
+- api3: OnGui()
+  id: Alis_Core_Ecs_System_Manager_AManager_OnGui
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/AManager.cs#L167
+  metadata:
+    uid: Alis.Core.Ecs.System.Manager.AManager.OnGui
+    commentId: M:Alis.Core.Ecs.System.Manager.AManager.OnGui
+- markdown: Ons the gui
+- code: public virtual void OnGui()
+- api3: OnInit()
+  id: Alis_Core_Ecs_System_Manager_AManager_OnInit
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/AManager.cs#L107
+  metadata:
+    uid: Alis.Core.Ecs.System.Manager.AManager.OnInit
+    commentId: M:Alis.Core.Ecs.System.Manager.AManager.OnInit
+- markdown: Ons the init
+- code: public virtual void OnInit()
+- api3: OnReset()
+  id: Alis_Core_Ecs_System_Manager_AManager_OnReset
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/AManager.cs#L177
+  metadata:
+    uid: Alis.Core.Ecs.System.Manager.AManager.OnReset
+    commentId: M:Alis.Core.Ecs.System.Manager.AManager.OnReset
+- markdown: Ons the reset
+- code: public virtual void OnReset()
+- api3: OnStart()
+  id: Alis_Core_Ecs_System_Manager_AManager_OnStart
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/AManager.cs#L117
+  metadata:
+    uid: Alis.Core.Ecs.System.Manager.AManager.OnStart
+    commentId: M:Alis.Core.Ecs.System.Manager.AManager.OnStart
+- markdown: Ons the start
+- code: public virtual void OnStart()
+- api3: OnStop()
+  id: Alis_Core_Ecs_System_Manager_AManager_OnStop
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/AManager.cs#L182
+  metadata:
+    uid: Alis.Core.Ecs.System.Manager.AManager.OnStop
+    commentId: M:Alis.Core.Ecs.System.Manager.AManager.OnStop
+- markdown: Ons the stop
+- code: public virtual void OnStop()
+- api3: OnUpdate()
+  id: Alis_Core_Ecs_System_Manager_AManager_OnUpdate
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/AManager.cs#L127
+  metadata:
+    uid: Alis.Core.Ecs.System.Manager.AManager.OnUpdate
+    commentId: M:Alis.Core.Ecs.System.Manager.AManager.OnUpdate
+- markdown: Ons the update
+- code: public virtual void OnUpdate()
+- h2: See Also
+- list:
+  - - text: IManager
+      url: Alis.Core.Ecs.System.Manager.IManager.html
+languageId: csharp
+metadata:
+  description: The manager class

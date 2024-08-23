@@ -1,0 +1,38 @@
+### YamlMime:ApiPage
+title: Interface IDelete<TBuilder>
+body:
+- api1: Interface IDelete<TBuilder>
+  id: Alis_Core_Aspect_Fluent_Words_IDelete_1
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Fluent/src/Words/IDelete.cs#L35
+  metadata:
+    uid: Alis.Core.Aspect.Fluent.Words.IDelete`1
+    commentId: T:Alis.Core.Aspect.Fluent.Words.IDelete`1
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Aspect.Fluent.Words
+      url: Alis.Core.Aspect.Fluent.Words.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The delete interface
+- code: public interface IDelete<out TBuilder>
+- h4: Type Parameters
+- parameters:
+  - name: TBuilder
+- h2: Methods
+- api3: Delete()
+  id: Alis_Core_Aspect_Fluent_Words_IDelete_1_Delete
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Fluent/src/Words/IDelete.cs#L41
+  metadata:
+    uid: Alis.Core.Aspect.Fluent.Words.IDelete`1.Delete
+    commentId: M:Alis.Core.Aspect.Fluent.Words.IDelete`1.Delete
+- markdown: Deletes this instance
+- code: TBuilder Delete()
+- h4: Returns
+- parameters:
+  - type:
+    - TBuilder
+    description: The
+languageId: csharp
+metadata:
+  description: The delete interface

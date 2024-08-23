@@ -1,0 +1,1556 @@
+### YamlMime:ApiPage
+title: Class MathUtils
+body:
+- api1: Class MathUtils
+  id: Alis_Core_Aspect_Math_MathUtils
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L39
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils
+    commentId: T:Alis.Core.Aspect.Math.MathUtils
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Aspect.Math
+      url: Alis.Core.Aspect.Math.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The math utils class
+- code: public static class MathUtils
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: MathUtils
+    url: Alis.Core.Aspect.Math.MathUtils.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Methods
+- api3: Abs(Vector2)
+  id: Alis_Core_Aspect_Math_MathUtils_Abs_Alis_Core_Aspect_Math_Vector_Vector2_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L62
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.Abs(Alis.Core.Aspect.Math.Vector.Vector2)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.Abs(Alis.Core.Aspect.Math.Vector.Vector2)
+- markdown: Abses the v
+- code: public static Vector2 Abs(Vector2 v)
+- h4: Parameters
+- parameters:
+  - name: v
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The vector
+- api3: Abs(float)
+  id: Alis_Core_Aspect_Math_MathUtils_Abs_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L69
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.Abs(System.Single)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.Abs(System.Single)
+- markdown: Abses the value
+- code: public static float Abs(float value)
+- h4: Parameters
+- parameters:
+  - name: value
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The float
+- api3: Area(Vector2, Vector2, Vector2)
+  id: Alis_Core_Aspect_Math_MathUtils_Area_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L381
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.Area(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.Area(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)
+- markdown: Returns a positive number if c is to the left of the line going from a to b.
+- code: public static float Area(Vector2 a, Vector2 b, Vector2 c)
+- h4: Parameters
+- parameters:
+  - name: a
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+  - name: b
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+  - name: c
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: Positive number if point is left, negative if point is right, and 0 if points are collinear.
+- api3: Area(ref Vector2, ref Vector2, ref Vector2)
+  id: Alis_Core_Aspect_Math_MathUtils_Area_Alis_Core_Aspect_Math_Vector_Vector2__Alis_Core_Aspect_Math_Vector_Vector2__Alis_Core_Aspect_Math_Vector_Vector2__
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L385
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.Area(Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.Area(Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@)
+- markdown: Returns a positive number if c is to the left of the line going from a to b.
+- code: public static float Area(ref Vector2 a, ref Vector2 b, ref Vector2 c)
+- h4: Parameters
+- parameters:
+  - name: a
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+  - name: b
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+  - name: c
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: Positive number if point is left, negative if point is right, and 0 if points are collinear.
+- api3: Ceil(float)
+  id: Alis_Core_Aspect_Math_MathUtils_Ceil_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L559
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.Ceil(System.Single)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.Ceil(System.Single)
+- markdown: Ceils the log
+- code: public static float Ceil(float log)
+- h4: Parameters
+- parameters:
+  - name: log
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The log
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The float
+- api3: Clamp(int, int, int)
+  id: Alis_Core_Aspect_Math_MathUtils_Clamp_System_Int32_System_Int32_System_Int32_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L317
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.Clamp(System.Int32,System.Int32,System.Int32)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.Clamp(System.Int32,System.Int32,System.Int32)
+- markdown: Clamps the a
+- code: public static int Clamp(int a, int low, int high)
+- h4: Parameters
+- parameters:
+  - name: a
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The
+  - name: low
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The low
+  - name: high
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The high
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The int
+- api3: Clamp(float, float, float)
+  id: Alis_Core_Aspect_Math_MathUtils_Clamp_System_Single_System_Single_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L326
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.Clamp(System.Single,System.Single,System.Single)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.Clamp(System.Single,System.Single,System.Single)
+- markdown: Clamps the a
+- code: public static float Clamp(float a, float low, float high)
+- h4: Parameters
+- parameters:
+  - name: a
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The
+  - name: low
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The low
+  - name: high
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The high
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The float
+- api3: Clamp(Vector2, Vector2, Vector2)
+  id: Alis_Core_Aspect_Math_MathUtils_Clamp_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L335
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.Clamp(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.Clamp(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)
+- markdown: Clamps the a
+- code: public static Vector2 Clamp(Vector2 a, Vector2 low, Vector2 high)
+- h4: Parameters
+- parameters:
+  - name: a
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+  - name: low
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The low
+  - name: high
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The high
+- h4: Returns
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The vector
+- api3: Cosf(float)
+  id: Alis_Core_Aspect_Math_MathUtils_Cosf_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L545
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.Cosf(System.Single)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.Cosf(System.Single)
+- markdown: Cosfs the value
+- code: public static float Cosf(float value)
+- h4: Parameters
+- parameters:
+  - name: value
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The float
+- api3: Cross(ref Vector2, ref Vector2)
+  id: Alis_Core_Aspect_Math_MathUtils_Cross_Alis_Core_Aspect_Math_Vector_Vector2__Alis_Core_Aspect_Math_Vector_Vector2__
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L42
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.Cross(Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.Cross(Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@)
+- markdown: Perform the cross product on two vectors.
+- code: public static float Cross(ref Vector2 a, ref Vector2 b)
+- h4: Parameters
+- parameters:
+  - name: a
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+  - name: b
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: Cross(Vector2, Vector2)
+  id: Alis_Core_Aspect_Math_MathUtils_Cross_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L45
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.Cross(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.Cross(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)
+- markdown: Perform the cross product on two vectors.
+- code: public static float Cross(Vector2 a, Vector2 b)
+- h4: Parameters
+- parameters:
+  - name: a
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+  - name: b
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: Cross(Vector3, Vector3)
+  id: Alis_Core_Aspect_Math_MathUtils_Cross_Alis_Core_Aspect_Math_Vector_Vector3_Alis_Core_Aspect_Math_Vector_Vector3_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L48
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.Cross(Alis.Core.Aspect.Math.Vector.Vector3,Alis.Core.Aspect.Math.Vector.Vector3)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.Cross(Alis.Core.Aspect.Math.Vector.Vector3,Alis.Core.Aspect.Math.Vector.Vector3)
+- markdown: Perform the cross product on two vectors.
+- code: public static Vector3 Cross(Vector3 a, Vector3 b)
+- h4: Parameters
+- parameters:
+  - name: a
+    type:
+    - text: Vector3
+      url: Alis.Core.Aspect.Math.Vector.Vector3.html
+  - name: b
+    type:
+    - text: Vector3
+      url: Alis.Core.Aspect.Math.Vector.Vector3.html
+- h4: Returns
+- parameters:
+  - type:
+    - text: Vector3
+      url: Alis.Core.Aspect.Math.Vector.Vector3.html
+- api3: Cross(Vector2, float)
+  id: Alis_Core_Aspect_Math_MathUtils_Cross_Alis_Core_Aspect_Math_Vector_Vector2_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L52
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.Cross(Alis.Core.Aspect.Math.Vector.Vector2,System.Single)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.Cross(Alis.Core.Aspect.Math.Vector.Vector2,System.Single)
+- markdown: Perform the cross product on two vectors.
+- code: public static Vector2 Cross(Vector2 a, float s)
+- h4: Parameters
+- parameters:
+  - name: a
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+  - name: s
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- h4: Returns
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: Cross(float, Vector2)
+  id: Alis_Core_Aspect_Math_MathUtils_Cross_System_Single_Alis_Core_Aspect_Math_Vector_Vector2_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L55
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.Cross(System.Single,Alis.Core.Aspect.Math.Vector.Vector2)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.Cross(System.Single,Alis.Core.Aspect.Math.Vector.Vector2)
+- markdown: Perform the cross product on two vectors.
+- code: public static Vector2 Cross(float s, Vector2 a)
+- h4: Parameters
+- parameters:
+  - name: s
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+  - name: a
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- h4: Returns
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: Cross(ref Vector2, ref Vector2, out float)
+  id: Alis_Core_Aspect_Math_MathUtils_Cross_Alis_Core_Aspect_Math_Vector_Vector2__Alis_Core_Aspect_Math_Vector_Vector2__System_Single__
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L343
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.Cross(Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@,System.Single@)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.Cross(Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@,System.Single@)
+- markdown: Crosses the a
+- code: public static void Cross(ref Vector2 a, ref Vector2 b, out float c)
+- h4: Parameters
+- parameters:
+  - name: a
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+  - name: b
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+  - name: c
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The
+- api3: Cross(float, ref Vector2, out Vector2)
+  id: Alis_Core_Aspect_Math_MathUtils_Cross_System_Single_Alis_Core_Aspect_Math_Vector_Vector2__Alis_Core_Aspect_Math_Vector_Vector2__
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L398
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.Cross(System.Single,Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.Cross(System.Single,Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@)
+- markdown: Crosses the s
+- code: public static void Cross(float s, ref Vector2 a, out Vector2 b)
+- h4: Parameters
+- parameters:
+  - name: s
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The
+  - name: a
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+  - name: b
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+- api3: Distance(Vector2, Vector2)
+  id: Alis_Core_Aspect_Math_MathUtils_Distance_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L446
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.Distance(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.Distance(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)
+- markdown: Distances the a
+- code: public static float Distance(Vector2 a, Vector2 b)
+- h4: Parameters
+- parameters:
+  - name: a
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+  - name: b
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The float
+- api3: Distance(ref Vector2, ref Vector2)
+  id: Alis_Core_Aspect_Math_MathUtils_Distance_Alis_Core_Aspect_Math_Vector_Vector2__Alis_Core_Aspect_Math_Vector_Vector2__
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L458
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.Distance(Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.Distance(Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@)
+- markdown: Distances the a
+- code: public static float Distance(ref Vector2 a, ref Vector2 b)
+- h4: Parameters
+- parameters:
+  - name: a
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+  - name: b
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The float
+- api3: DistanceSquared(ref Vector2, ref Vector2)
+  id: Alis_Core_Aspect_Math_MathUtils_DistanceSquared_Alis_Core_Aspect_Math_Vector_Vector2__Alis_Core_Aspect_Math_Vector_Vector2__
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L470
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.DistanceSquared(Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.DistanceSquared(Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@)
+- markdown: Distances the squared using the specified a
+- code: public static float DistanceSquared(ref Vector2 a, ref Vector2 b)
+- h4: Parameters
+- parameters:
+  - name: a
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+  - name: b
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The float
+- api3: Dot(Vector3, Vector3)
+  id: Alis_Core_Aspect_Math_MathUtils_Dot_Alis_Core_Aspect_Math_Vector_Vector3_Alis_Core_Aspect_Math_Vector_Vector3_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L363
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.Dot(Alis.Core.Aspect.Math.Vector.Vector3,Alis.Core.Aspect.Math.Vector.Vector3)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.Dot(Alis.Core.Aspect.Math.Vector.Vector3,Alis.Core.Aspect.Math.Vector.Vector3)
+- markdown: Perform the dot product on two vectors.
+- code: public static float Dot(Vector3 a, Vector3 b)
+- h4: Parameters
+- parameters:
+  - name: a
+    type:
+    - text: Vector3
+      url: Alis.Core.Aspect.Math.Vector.Vector3.html
+  - name: b
+    type:
+    - text: Vector3
+      url: Alis.Core.Aspect.Math.Vector.Vector3.html
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: Dot(ref Vector2, ref Vector2)
+  id: Alis_Core_Aspect_Math_MathUtils_Dot_Alis_Core_Aspect_Math_Vector_Vector2__Alis_Core_Aspect_Math_Vector_Vector2__
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L366
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.Dot(Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.Dot(Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@)
+- markdown: Perform the dot product on two vectors.
+- code: public static float Dot(ref Vector2 a, ref Vector2 b)
+- h4: Parameters
+- parameters:
+  - name: a
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+  - name: b
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: Dot(Vector2, Vector2)
+  id: Alis_Core_Aspect_Math_MathUtils_Dot_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L369
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.Dot(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.Dot(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)
+- markdown: Perform the dot product on two vectors.
+- code: public static float Dot(Vector2 a, Vector2 b)
+- h4: Parameters
+- parameters:
+  - name: a
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+  - name: b
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: FloatEquals(float, float)
+  id: Alis_Core_Aspect_Math_MathUtils_FloatEquals_System_Single_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L409
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.FloatEquals(System.Single,System.Single)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.FloatEquals(System.Single,System.Single)
+- markdown: Describes whether float equals
+- code: public static bool FloatEquals(float value1, float value2)
+- h4: Parameters
+- parameters:
+  - name: value1
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The value
+  - name: value2
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: FloatEquals(float, float, float)
+  id: Alis_Core_Aspect_Math_MathUtils_FloatEquals_System_Single_System_Single_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L414
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.FloatEquals(System.Single,System.Single,System.Single)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.FloatEquals(System.Single,System.Single,System.Single)
+- markdown: Checks if a floating point Value is equal to another, within a certain tolerance.
+- code: public static bool FloatEquals(float value1, float value2, float delta)
+- h4: Parameters
+- parameters:
+  - name: value1
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+  - name: value2
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+  - name: delta
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: True if the values are "equal", false otherwise.
+- api3: FloatInRange(float, float, float)
+  id: Alis_Core_Aspect_Math_MathUtils_FloatInRange_System_Single_System_Single_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L422
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.FloatInRange(System.Single,System.Single,System.Single)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.FloatInRange(System.Single,System.Single,System.Single)
+- markdown: Checks if a floating point Value is within a specified range of values (inclusive).
+- code: public static bool FloatInRange(float value, float min, float max)
+- h4: Parameters
+- parameters:
+  - name: value
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The Value to check.
+  - name: min
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The minimum Value.
+  - name: max
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The maximum Value.
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: True if the Value is within the range specified, false otherwise.
+- api3: IsCollinear(ref Vector2, ref Vector2, ref Vector2, float)
+  id: Alis_Core_Aspect_Math_MathUtils_IsCollinear_Alis_Core_Aspect_Math_Vector_Vector2__Alis_Core_Aspect_Math_Vector_Vector2__Alis_Core_Aspect_Math_Vector_Vector2__System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L389
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.IsCollinear(Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@,System.Single)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.IsCollinear(Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@,System.Single)
+- markdown: Determines if three vertices are collinear (ie. on a straight line)
+- code: public static bool IsCollinear(ref Vector2 a, ref Vector2 b, ref Vector2 c, float tolerance = 0)
+- h4: Parameters
+- parameters:
+  - name: a
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+  - name: b
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+  - name: c
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+  - name: tolerance
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    optional: true
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+- api3: IsValid(float)
+  id: Alis_Core_Aspect_Math_MathUtils_IsValid_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L293
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.IsValid(System.Single)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.IsValid(System.Single)
+- markdown: This function is used to ensure that a floating point number is not a NaN or infinity.
+- code: public static bool IsValid(float x)
+- h4: Parameters
+- parameters:
+  - name: x
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The x.
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: <code>true</code> if the specified x is valid; otherwise, <code>false</code>.
+- api3: IsValid(Vector2)
+  id: Alis_Core_Aspect_Math_MathUtils_IsValid_Alis_Core_Aspect_Math_Vector_Vector2_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L308
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.IsValid(Alis.Core.Aspect.Math.Vector.Vector2)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.IsValid(Alis.Core.Aspect.Math.Vector.Vector2)
+- markdown: Describes whether is valid
+- code: public static bool IsValid(this Vector2 x)
+- h4: Parameters
+- parameters:
+  - name: x
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: Log(float)
+  id: Alis_Core_Aspect_Math_MathUtils_Log_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L566
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.Log(System.Single)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.Log(System.Single)
+- markdown: Logs the log
+- code: public static float Log(float log)
+- h4: Parameters
+- parameters:
+  - name: log
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The log
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The float
+- api3: Max(float, float)
+  id: Alis_Core_Aspect_Math_MathUtils_Max_System_Single_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L482
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.Max(System.Single,System.Single)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.Max(System.Single,System.Single)
+- markdown: Maxes the value a
+- code: public static float Max(float valueA, float valueB)
+- h4: Parameters
+- parameters:
+  - name: valueA
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The value
+  - name: valueB
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The float
+- api3: Max(int, int)
+  id: Alis_Core_Aspect_Math_MathUtils_Max_System_Int32_System_Int32_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L490
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.Max(System.Int32,System.Int32)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.Max(System.Int32,System.Int32)
+- markdown: Maxes the value a
+- code: public static int Max(int valueA, int valueB)
+- h4: Parameters
+- parameters:
+  - name: valueA
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The value
+  - name: valueB
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The int
+- api3: Min(float, float)
+  id: Alis_Core_Aspect_Math_MathUtils_Min_System_Single_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L498
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.Min(System.Single,System.Single)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.Min(System.Single,System.Single)
+- markdown: Mins the value a
+- code: public static float Min(float valueA, float valueB)
+- h4: Parameters
+- parameters:
+  - name: valueA
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The value
+  - name: valueB
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The float
+- api3: Min(int, int)
+  id: Alis_Core_Aspect_Math_MathUtils_Min_System_Int32_System_Int32_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L506
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.Min(System.Int32,System.Int32)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.Min(System.Int32,System.Int32)
+- markdown: Mins the value a
+- code: public static int Min(int valueA, int valueB)
+- h4: Parameters
+- parameters:
+  - name: valueA
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The value
+  - name: valueB
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The int
+- api3: Mul(ref Matrix2X2, Vector2)
+  id: Alis_Core_Aspect_Math_MathUtils_Mul_Alis_Core_Aspect_Math_Matrix_Matrix2X2__Alis_Core_Aspect_Math_Vector_Vector2_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L77
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.Mul(Alis.Core.Aspect.Math.Matrix.Matrix2X2@,Alis.Core.Aspect.Math.Vector.Vector2)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.Mul(Alis.Core.Aspect.Math.Matrix.Matrix2X2@,Alis.Core.Aspect.Math.Vector.Vector2)
+- markdown: Muls the a
+- code: public static Vector2 Mul(ref Matrix2X2 a, Vector2 v)
+- h4: Parameters
+- parameters:
+  - name: a
+    type:
+    - text: Matrix2X2
+      url: Alis.Core.Aspect.Math.Matrix.Matrix2X2.html
+    description: The
+  - name: v
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The vector
+- api3: Mul(ref Matrix2X2, ref Vector2)
+  id: Alis_Core_Aspect_Math_MathUtils_Mul_Alis_Core_Aspect_Math_Matrix_Matrix2X2__Alis_Core_Aspect_Math_Vector_Vector2__
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L85
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.Mul(Alis.Core.Aspect.Math.Matrix.Matrix2X2@,Alis.Core.Aspect.Math.Vector.Vector2@)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.Mul(Alis.Core.Aspect.Math.Matrix.Matrix2X2@,Alis.Core.Aspect.Math.Vector.Vector2@)
+- markdown: Muls the a
+- code: public static Vector2 Mul(ref Matrix2X2 a, ref Vector2 v)
+- h4: Parameters
+- parameters:
+  - name: a
+    type:
+    - text: Matrix2X2
+      url: Alis.Core.Aspect.Math.Matrix.Matrix2X2.html
+    description: The
+  - name: v
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The vector
+- api3: Mul(ref Transform, Vector2)
+  id: Alis_Core_Aspect_Math_MathUtils_Mul_Alis_Core_Aspect_Math_Transform__Alis_Core_Aspect_Math_Vector_Vector2_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L94
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.Mul(Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Vector.Vector2)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.Mul(Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Vector.Vector2)
+- markdown: Muls the t
+- code: public static Vector2 Mul(ref Transform T, Vector2 v)
+- h4: Parameters
+- parameters:
+  - name: T
+    type:
+    - text: Transform
+      url: Alis.Core.Aspect.Math.Transform.html
+    description: The
+  - name: v
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The vector
+- api3: Mul(ref Transform, ref Vector2)
+  id: Alis_Core_Aspect_Math_MathUtils_Mul_Alis_Core_Aspect_Math_Transform__Alis_Core_Aspect_Math_Vector_Vector2__
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L102
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.Mul(Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Vector.Vector2@)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.Mul(Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Vector.Vector2@)
+- markdown: Muls the t
+- code: public static Vector2 Mul(ref Transform T, ref Vector2 v)
+- h4: Parameters
+- parameters:
+  - name: T
+    type:
+    - text: Transform
+      url: Alis.Core.Aspect.Math.Transform.html
+    description: The
+  - name: v
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The vector
+- api3: Mul(Matrix3X3, Vector3)
+  id: Alis_Core_Aspect_Math_MathUtils_Mul_Alis_Core_Aspect_Math_Matrix_Matrix3X3_Alis_Core_Aspect_Math_Vector_Vector3_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L169
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.Mul(Alis.Core.Aspect.Math.Matrix.Matrix3X3,Alis.Core.Aspect.Math.Vector.Vector3)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.Mul(Alis.Core.Aspect.Math.Matrix.Matrix3X3,Alis.Core.Aspect.Math.Vector.Vector3)
+- markdown: Multiply a matrix times a vector.
+- code: public static Vector3 Mul(Matrix3X3 a, Vector3 v)
+- h4: Parameters
+- parameters:
+  - name: a
+    type:
+    - text: Matrix3X3
+      url: Alis.Core.Aspect.Math.Matrix.Matrix3X3.html
+  - name: v
+    type:
+    - text: Vector3
+      url: Alis.Core.Aspect.Math.Vector.Vector3.html
+- h4: Returns
+- parameters:
+  - type:
+    - text: Vector3
+      url: Alis.Core.Aspect.Math.Vector.Vector3.html
+- api3: Mul(Transform, Transform)
+  id: Alis_Core_Aspect_Math_MathUtils_Mul_Alis_Core_Aspect_Math_Transform_Alis_Core_Aspect_Math_Transform_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L177
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.Mul(Alis.Core.Aspect.Math.Transform,Alis.Core.Aspect.Math.Transform)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.Mul(Alis.Core.Aspect.Math.Transform,Alis.Core.Aspect.Math.Transform)
+- markdown: Muls the a
+- code: public static Transform Mul(Transform a, Transform b)
+- h4: Parameters
+- parameters:
+  - name: a
+    type:
+    - text: Transform
+      url: Alis.Core.Aspect.Math.Transform.html
+    description: The
+  - name: b
+    type:
+    - text: Transform
+      url: Alis.Core.Aspect.Math.Transform.html
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: Transform
+      url: Alis.Core.Aspect.Math.Transform.html
+    description: The
+- api3: Mul(Rotation, Rotation)
+  id: Alis_Core_Aspect_Math_MathUtils_Mul_Alis_Core_Aspect_Math_Rotation_Alis_Core_Aspect_Math_Rotation_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L213
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.Mul(Alis.Core.Aspect.Math.Rotation,Alis.Core.Aspect.Math.Rotation)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.Mul(Alis.Core.Aspect.Math.Rotation,Alis.Core.Aspect.Math.Rotation)
+- markdown: 'Multiply two rotations: q * r'
+- code: public static Rotation Mul(Rotation q, Rotation r)
+- h4: Parameters
+- parameters:
+  - name: q
+    type:
+    - text: Rotation
+      url: Alis.Core.Aspect.Math.Rotation.html
+  - name: r
+    type:
+    - text: Rotation
+      url: Alis.Core.Aspect.Math.Rotation.html
+- h4: Returns
+- parameters:
+  - type:
+    - text: Rotation
+      url: Alis.Core.Aspect.Math.Rotation.html
+- api3: Mul(Rotation, Vector2)
+  id: Alis_Core_Aspect_Math_MathUtils_Mul_Alis_Core_Aspect_Math_Rotation_Alis_Core_Aspect_Math_Vector_Vector2_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L280
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.Mul(Alis.Core.Aspect.Math.Rotation,Alis.Core.Aspect.Math.Vector.Vector2)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.Mul(Alis.Core.Aspect.Math.Rotation,Alis.Core.Aspect.Math.Vector.Vector2)
+- markdown: Rotate a vector
+- code: public static Vector2 Mul(Rotation q, Vector2 v)
+- h4: Parameters
+- parameters:
+  - name: q
+    type:
+    - text: Rotation
+      url: Alis.Core.Aspect.Math.Rotation.html
+    description: The rotation matrix
+  - name: v
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: Mul(ref Rotation, Vector2)
+  id: Alis_Core_Aspect_Math_MathUtils_Mul_Alis_Core_Aspect_Math_Rotation__Alis_Core_Aspect_Math_Vector_Vector2_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L430
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.Mul(Alis.Core.Aspect.Math.Rotation@,Alis.Core.Aspect.Math.Vector.Vector2)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.Mul(Alis.Core.Aspect.Math.Rotation@,Alis.Core.Aspect.Math.Vector.Vector2)
+- markdown: Muls the rot
+- code: public static Vector2 Mul(ref Rotation rotation, Vector2 axis)
+- h4: Parameters
+- parameters:
+  - name: rotation
+    type:
+    - text: Rotation
+      url: Alis.Core.Aspect.Math.Rotation.html
+    description: The rot
+  - name: axis
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The axis
+- h4: Returns
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The vector
+- api3: Mul22(Matrix3X3, Vector2)
+  id: Alis_Core_Aspect_Math_MathUtils_Mul22_Alis_Core_Aspect_Math_Matrix_Matrix3X3_Alis_Core_Aspect_Math_Vector_Vector2_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L209
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.Mul22(Alis.Core.Aspect.Math.Matrix.Matrix3X3,Alis.Core.Aspect.Math.Vector.Vector2)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.Mul22(Alis.Core.Aspect.Math.Matrix.Matrix3X3,Alis.Core.Aspect.Math.Vector.Vector2)
+- markdown: Multiply a matrix times a vector.
+- code: public static Vector2 Mul22(Matrix3X3 a, Vector2 v)
+- h4: Parameters
+- parameters:
+  - name: a
+    type:
+    - text: Matrix3X3
+      url: Alis.Core.Aspect.Math.Matrix.Matrix3X3.html
+  - name: v
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- h4: Returns
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: MulT(ref Matrix2X2, Vector2)
+  id: Alis_Core_Aspect_Math_MathUtils_MulT_Alis_Core_Aspect_Math_Matrix_Matrix2X2__Alis_Core_Aspect_Math_Vector_Vector2_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L116
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.MulT(Alis.Core.Aspect.Math.Matrix.Matrix2X2@,Alis.Core.Aspect.Math.Vector.Vector2)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.MulT(Alis.Core.Aspect.Math.Matrix.Matrix2X2@,Alis.Core.Aspect.Math.Vector.Vector2)
+- markdown: Muls the t using the specified a
+- code: public static Vector2 MulT(ref Matrix2X2 a, Vector2 v)
+- h4: Parameters
+- parameters:
+  - name: a
+    type:
+    - text: Matrix2X2
+      url: Alis.Core.Aspect.Math.Matrix.Matrix2X2.html
+    description: The
+  - name: v
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The vector
+- api3: MulT(ref Matrix2X2, ref Vector2)
+  id: Alis_Core_Aspect_Math_MathUtils_MulT_Alis_Core_Aspect_Math_Matrix_Matrix2X2__Alis_Core_Aspect_Math_Vector_Vector2__
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L124
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.MulT(Alis.Core.Aspect.Math.Matrix.Matrix2X2@,Alis.Core.Aspect.Math.Vector.Vector2@)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.MulT(Alis.Core.Aspect.Math.Matrix.Matrix2X2@,Alis.Core.Aspect.Math.Vector.Vector2@)
+- markdown: Muls the t using the specified a
+- code: public static Vector2 MulT(ref Matrix2X2 a, ref Vector2 v)
+- h4: Parameters
+- parameters:
+  - name: a
+    type:
+    - text: Matrix2X2
+      url: Alis.Core.Aspect.Math.Matrix.Matrix2X2.html
+    description: The
+  - name: v
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The vector
+- api3: MulT(ref Transform, Vector2)
+  id: Alis_Core_Aspect_Math_MathUtils_MulT_Alis_Core_Aspect_Math_Transform__Alis_Core_Aspect_Math_Vector_Vector2_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L133
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.MulT(Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Vector.Vector2)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.MulT(Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Vector.Vector2)
+- markdown: Muls the t using the specified t
+- code: public static Vector2 MulT(ref Transform T, Vector2 v)
+- h4: Parameters
+- parameters:
+  - name: T
+    type:
+    - text: Transform
+      url: Alis.Core.Aspect.Math.Transform.html
+    description: The
+  - name: v
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The vector
+- api3: MulT(ref Transform, ref Vector2)
+  id: Alis_Core_Aspect_Math_MathUtils_MulT_Alis_Core_Aspect_Math_Transform__Alis_Core_Aspect_Math_Vector_Vector2__
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L141
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.MulT(Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Vector.Vector2@)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.MulT(Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Vector.Vector2@)
+- markdown: Muls the t using the specified t
+- code: public static Vector2 MulT(ref Transform T, ref Vector2 v)
+- h4: Parameters
+- parameters:
+  - name: T
+    type:
+    - text: Transform
+      url: Alis.Core.Aspect.Math.Transform.html
+    description: The
+  - name: v
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The vector
+- api3: MulT(ref Matrix2X2, ref Matrix2X2, out Matrix2X2)
+  id: Alis_Core_Aspect_Math_MathUtils_MulT_Alis_Core_Aspect_Math_Matrix_Matrix2X2__Alis_Core_Aspect_Math_Matrix_Matrix2X2__Alis_Core_Aspect_Math_Matrix_Matrix2X2__
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L158
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.MulT(Alis.Core.Aspect.Math.Matrix.Matrix2X2@,Alis.Core.Aspect.Math.Matrix.Matrix2X2@,Alis.Core.Aspect.Math.Matrix.Matrix2X2@)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.MulT(Alis.Core.Aspect.Math.Matrix.Matrix2X2@,Alis.Core.Aspect.Math.Matrix.Matrix2X2@,Alis.Core.Aspect.Math.Matrix.Matrix2X2@)
+- markdown: Muls the t using the specified a
+- code: public static void MulT(ref Matrix2X2 a, ref Matrix2X2 b, out Matrix2X2 c)
+- h4: Parameters
+- parameters:
+  - name: a
+    type:
+    - text: Matrix2X2
+      url: Alis.Core.Aspect.Math.Matrix.Matrix2X2.html
+    description: The
+  - name: b
+    type:
+    - text: Matrix2X2
+      url: Alis.Core.Aspect.Math.Matrix.Matrix2X2.html
+    description: The
+  - name: c
+    type:
+    - text: Matrix2X2
+      url: Alis.Core.Aspect.Math.Matrix.Matrix2X2.html
+    description: The
+- api3: MulT(ref Transform, ref Transform, out Transform)
+  id: Alis_Core_Aspect_Math_MathUtils_MulT_Alis_Core_Aspect_Math_Transform__Alis_Core_Aspect_Math_Transform__Alis_Core_Aspect_Math_Transform__
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L196
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.MulT(Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Transform@)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.MulT(Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Transform@)
+- markdown: Muls the t using the specified a
+- code: public static void MulT(ref Transform a, ref Transform b, out Transform c)
+- h4: Parameters
+- parameters:
+  - name: a
+    type:
+    - text: Transform
+      url: Alis.Core.Aspect.Math.Transform.html
+    description: The
+  - name: b
+    type:
+    - text: Transform
+      url: Alis.Core.Aspect.Math.Transform.html
+    description: The
+  - name: c
+    type:
+    - text: Transform
+      url: Alis.Core.Aspect.Math.Transform.html
+    description: The
+- api3: MulT(Transform, Vector2)
+  id: Alis_Core_Aspect_Math_MathUtils_MulT_Alis_Core_Aspect_Math_Transform_Alis_Core_Aspect_Math_Vector_Vector2_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L233
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.MulT(Alis.Core.Aspect.Math.Transform,Alis.Core.Aspect.Math.Vector.Vector2)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.MulT(Alis.Core.Aspect.Math.Transform,Alis.Core.Aspect.Math.Vector.Vector2)
+- markdown: Muls the t using the specified t
+- code: public static Vector2 MulT(Transform T, Vector2 v)
+- h4: Parameters
+- parameters:
+  - name: T
+    type:
+    - text: Transform
+      url: Alis.Core.Aspect.Math.Transform.html
+    description: The
+  - name: v
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The vector
+- api3: MulT(Rotation, Rotation)
+  id: Alis_Core_Aspect_Math_MathUtils_MulT_Alis_Core_Aspect_Math_Rotation_Alis_Core_Aspect_Math_Rotation_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L244
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.MulT(Alis.Core.Aspect.Math.Rotation,Alis.Core.Aspect.Math.Rotation)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.MulT(Alis.Core.Aspect.Math.Rotation,Alis.Core.Aspect.Math.Rotation)
+- markdown: 'Transpose multiply two rotations: qT * r'
+- code: public static Rotation MulT(Rotation q, Rotation r)
+- h4: Parameters
+- parameters:
+  - name: q
+    type:
+    - text: Rotation
+      url: Alis.Core.Aspect.Math.Rotation.html
+  - name: r
+    type:
+    - text: Rotation
+      url: Alis.Core.Aspect.Math.Rotation.html
+- h4: Returns
+- parameters:
+  - type:
+    - text: Rotation
+      url: Alis.Core.Aspect.Math.Rotation.html
+- api3: MulT(Transform, Transform)
+  id: Alis_Core_Aspect_Math_MathUtils_MulT_Alis_Core_Aspect_Math_Transform_Alis_Core_Aspect_Math_Transform_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L264
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.MulT(Alis.Core.Aspect.Math.Transform,Alis.Core.Aspect.Math.Transform)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.MulT(Alis.Core.Aspect.Math.Transform,Alis.Core.Aspect.Math.Transform)
+- markdown: Muls the t using the specified a
+- code: public static Transform MulT(Transform a, Transform b)
+- h4: Parameters
+- parameters:
+  - name: a
+    type:
+    - text: Transform
+      url: Alis.Core.Aspect.Math.Transform.html
+    description: The
+  - name: b
+    type:
+    - text: Transform
+      url: Alis.Core.Aspect.Math.Transform.html
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: Transform
+      url: Alis.Core.Aspect.Math.Transform.html
+    description: The
+- api3: MulT(Rotation, Vector2)
+  id: Alis_Core_Aspect_Math_MathUtils_MulT_Alis_Core_Aspect_Math_Rotation_Alis_Core_Aspect_Math_Vector_Vector2_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L285
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.MulT(Alis.Core.Aspect.Math.Rotation,Alis.Core.Aspect.Math.Vector.Vector2)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.MulT(Alis.Core.Aspect.Math.Rotation,Alis.Core.Aspect.Math.Vector.Vector2)
+- markdown: Inverse rotate a vector
+- code: public static Vector2 MulT(Rotation q, Vector2 v)
+- h4: Parameters
+- parameters:
+  - name: q
+    type:
+    - text: Rotation
+      url: Alis.Core.Aspect.Math.Rotation.html
+    description: The rotation matrix
+  - name: v
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: MulT(ref Rotation, Vector2)
+  id: Alis_Core_Aspect_Math_MathUtils_MulT_Alis_Core_Aspect_Math_Rotation__Alis_Core_Aspect_Math_Vector_Vector2_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L438
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.MulT(Alis.Core.Aspect.Math.Rotation@,Alis.Core.Aspect.Math.Vector.Vector2)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.MulT(Alis.Core.Aspect.Math.Rotation@,Alis.Core.Aspect.Math.Vector.Vector2)
+- markdown: Muls the t using the specified rot
+- code: public static Vector2 MulT(ref Rotation rotation, Vector2 axis)
+- h4: Parameters
+- parameters:
+  - name: rotation
+    type:
+    - text: Rotation
+      url: Alis.Core.Aspect.Math.Rotation.html
+    description: The rot
+  - name: axis
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The axis
+- h4: Returns
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The vector
+- api3: Normalize(ref Vector2)
+  id: Alis_Core_Aspect_Math_MathUtils_Normalize_Alis_Core_Aspect_Math_Vector_Vector2__
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L518
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.Normalize(Alis.Core.Aspect.Math.Vector.Vector2@)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.Normalize(Alis.Core.Aspect.Math.Vector.Vector2@)
+- markdown: Convert this vector into a unit vector. Returns the length.
+- code: public static float Normalize(ref Vector2 v)
+- h4: Parameters
+- parameters:
+  - name: v
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: Sign(float)
+  id: Alis_Core_Aspect_Math_MathUtils_Sign_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L513
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.Sign(System.Single)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.Sign(System.Single)
+- markdown: Signs the value
+- code: public static int Sign(float value)
+- h4: Parameters
+- parameters:
+  - name: value
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The int
+- api3: Sinf(float)
+  id: Alis_Core_Aspect_Math_MathUtils_Sinf_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L552
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.Sinf(System.Single)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.Sinf(System.Single)
+- markdown: Sinfs the value
+- code: public static float Sinf(float value)
+- h4: Parameters
+- parameters:
+  - name: value
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The float
+- api3: Skew(Vector2)
+  id: Alis_Core_Aspect_Math_MathUtils_Skew_Alis_Core_Aspect_Math_Vector_Vector2_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L288
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.Skew(Alis.Core.Aspect.Math.Vector.Vector2)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.Skew(Alis.Core.Aspect.Math.Vector.Vector2)
+- markdown: Get the skew vector such that dot(skew_vec, other) == cross(vec, other)
+- code: public static Vector2 Skew(Vector2 input)
+- h4: Parameters
+- parameters:
+  - name: input
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- h4: Returns
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: Sqrt(float)
+  id: Alis_Core_Aspect_Math_MathUtils_Sqrt_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L538
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.Sqrt(System.Single)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.Sqrt(System.Single)
+- markdown: Sqrts the value
+- code: public static float Sqrt(float value)
+- h4: Parameters
+- parameters:
+  - name: value
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The float
+- api3: VectorAngle(ref Vector2, ref Vector2)
+  id: Alis_Core_Aspect_Math_MathUtils_VectorAngle_Alis_Core_Aspect_Math_Vector_Vector2__Alis_Core_Aspect_Math_Vector_Vector2__
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L354
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.VectorAngle(Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.VectorAngle(Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@)
+- markdown: Vectors the angle using the specified p 1
+- code: public static double VectorAngle(ref Vector2 p1, ref Vector2 p2)
+- h4: Parameters
+- parameters:
+  - name: p1
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+  - name: p2
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: double
+      url: https://learn.microsoft.com/dotnet/api/system.double
+    description: The vector angle
+- api3: VectorAngle(Vector2, Vector2)
+  id: Alis_Core_Aspect_Math_MathUtils_VectorAngle_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L377
+  metadata:
+    uid: Alis.Core.Aspect.Math.MathUtils.VectorAngle(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)
+    commentId: M:Alis.Core.Aspect.Math.MathUtils.VectorAngle(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)
+- markdown: Vectors the angle using the specified p 1
+- code: public static double VectorAngle(Vector2 p1, Vector2 p2)
+- h4: Parameters
+- parameters:
+  - name: p1
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+  - name: p2
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: double
+      url: https://learn.microsoft.com/dotnet/api/system.double
+    description: The double
+languageId: csharp
+metadata:
+  description: The math utils class

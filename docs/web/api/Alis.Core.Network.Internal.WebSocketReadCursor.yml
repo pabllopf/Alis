@@ -1,0 +1,109 @@
+### YamlMime:ApiPage
+title: Class WebSocketReadCursor
+body:
+- api1: Class WebSocketReadCursor
+  id: Alis_Core_Network_Internal_WebSocketReadCursor
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/WebSocketReadCursor.cs#L35
+  metadata:
+    uid: Alis.Core.Network.Internal.WebSocketReadCursor
+    commentId: T:Alis.Core.Network.Internal.WebSocketReadCursor
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Network.Internal
+      url: Alis.Core.Network.Internal.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The web socket read cursor class
+- code: internal class WebSocketReadCursor
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: WebSocketReadCursor
+    url: Alis.Core.Network.Internal.WebSocketReadCursor.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Constructors
+- api3: WebSocketReadCursor(WebSocketFrame, int, int)
+  id: Alis_Core_Network_Internal_WebSocketReadCursor__ctor_Alis_Core_Network_Internal_WebSocketFrame_System_Int32_System_Int32_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/WebSocketReadCursor.cs#L43
+  metadata:
+    uid: Alis.Core.Network.Internal.WebSocketReadCursor.#ctor(Alis.Core.Network.Internal.WebSocketFrame,System.Int32,System.Int32)
+    commentId: M:Alis.Core.Network.Internal.WebSocketReadCursor.#ctor(Alis.Core.Network.Internal.WebSocketFrame,System.Int32,System.Int32)
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Network.Internal.WebSocketReadCursor" data-throw-if-not-resolved="false"></xref> class
+- code: public WebSocketReadCursor(WebSocketFrame frame, int numBytesRead, int numBytesLeftToRead)
+- h4: Parameters
+- parameters:
+  - name: frame
+    type:
+    - text: WebSocketFrame
+      url: Alis.Core.Network.Internal.WebSocketFrame.html
+    description: The frame
+  - name: numBytesRead
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The num bytes read
+  - name: numBytesLeftToRead
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The num bytes left to read
+- h2: Properties
+- api3: NumBytesLeftToRead
+  id: Alis_Core_Network_Internal_WebSocketReadCursor_NumBytesLeftToRead
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/WebSocketReadCursor.cs#L65
+  metadata:
+    uid: Alis.Core.Network.Internal.WebSocketReadCursor.NumBytesLeftToRead
+    commentId: P:Alis.Core.Network.Internal.WebSocketReadCursor.NumBytesLeftToRead
+- markdown: Gets the value of the num bytes left to read
+- code: public int NumBytesLeftToRead { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: NumBytesRead
+  id: Alis_Core_Network_Internal_WebSocketReadCursor_NumBytesRead
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/WebSocketReadCursor.cs#L59
+  metadata:
+    uid: Alis.Core.Network.Internal.WebSocketReadCursor.NumBytesRead
+    commentId: P:Alis.Core.Network.Internal.WebSocketReadCursor.NumBytesRead
+- markdown: Gets the value of the num bytes read
+- code: public int NumBytesRead { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: WebSocketFrame
+  id: Alis_Core_Network_Internal_WebSocketReadCursor_WebSocketFrame
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/WebSocketReadCursor.cs#L53
+  metadata:
+    uid: Alis.Core.Network.Internal.WebSocketReadCursor.WebSocketFrame
+    commentId: P:Alis.Core.Network.Internal.WebSocketReadCursor.WebSocketFrame
+- markdown: Gets the value of the web socket frame
+- code: public WebSocketFrame WebSocketFrame { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: WebSocketFrame
+      url: Alis.Core.Network.Internal.WebSocketFrame.html
+languageId: csharp
+metadata:
+  description: The web socket read cursor class

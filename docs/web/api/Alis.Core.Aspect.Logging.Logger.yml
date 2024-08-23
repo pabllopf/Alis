@@ -1,0 +1,284 @@
+### YamlMime:ApiPage
+title: Class Logger
+body:
+- api1: Class Logger
+  id: Alis_Core_Aspect_Logging_Logger
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Logging/src/Logger.cs#L38
+  metadata:
+    uid: Alis.Core.Aspect.Logging.Logger
+    commentId: T:Alis.Core.Aspect.Logging.Logger
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Aspect.Logging
+      url: Alis.Core.Aspect.Logging.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The logger class
+- code: public static class Logger
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: Logger
+    url: Alis.Core.Aspect.Logging.Logger.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Properties
+- api3: DetailLevel
+  id: Alis_Core_Aspect_Logging_Logger_DetailLevel
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Logging/src/Logger.cs#L48
+  metadata:
+    uid: Alis.Core.Aspect.Logging.Logger.DetailLevel
+    commentId: P:Alis.Core.Aspect.Logging.Logger.DetailLevel
+- markdown: Gets or sets the value of the detail level
+- code: public static DetailLevel DetailLevel { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: DetailLevel
+      url: Alis.Core.Aspect.Logging.DetailLevel.html
+- api3: LogLevel
+  id: Alis_Core_Aspect_Logging_Logger_LogLevel
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Logging/src/Logger.cs#L43
+  metadata:
+    uid: Alis.Core.Aspect.Logging.Logger.LogLevel
+    commentId: P:Alis.Core.Aspect.Logging.Logger.LogLevel
+- markdown: The normal
+- code: public static LogLevel LogLevel { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: LogLevel
+      url: Alis.Core.Aspect.Logging.LogLevel.html
+- h2: Methods
+- api3: Error(string)
+  id: Alis_Core_Aspect_Logging_Logger_Error_System_String_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Logging/src/Logger.cs#L155
+  metadata:
+    uid: Alis.Core.Aspect.Logging.Logger.Error(System.String)
+    commentId: M:Alis.Core.Aspect.Logging.Logger.Error(System.String)
+- markdown: Errors the message
+- code: >-
+    [Conditional("DEBUG")]
+
+    public static void Error(string message)
+- h4: Parameters
+- parameters:
+  - name: message
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The message
+- api3: Event(string)
+  id: Alis_Core_Aspect_Logging_Logger_Event_System_String_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Logging/src/Logger.cs#L117
+  metadata:
+    uid: Alis.Core.Aspect.Logging.Logger.Event(System.String)
+    commentId: M:Alis.Core.Aspect.Logging.Logger.Event(System.String)
+- markdown: Events the message
+- code: >-
+    [Conditional("DEBUG")]
+
+    public static void Event(string message)
+- h4: Parameters
+- parameters:
+  - name: message
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The message
+- api3: Event()
+  id: Alis_Core_Aspect_Logging_Logger_Event
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Logging/src/Logger.cs#L129
+  metadata:
+    uid: Alis.Core.Aspect.Logging.Logger.Event
+    commentId: M:Alis.Core.Aspect.Logging.Logger.Event
+- markdown: Events
+- code: >-
+    [Conditional("DEBUG")]
+
+    public static void Event()
+- api3: Exception(string)
+  id: Alis_Core_Aspect_Logging_Logger_Exception_System_String_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Logging/src/Logger.cs#L168
+  metadata:
+    uid: Alis.Core.Aspect.Logging.Logger.Exception(System.String)
+    commentId: M:Alis.Core.Aspect.Logging.Logger.Exception(System.String)
+- markdown: Exceptions the message
+- code: >-
+    [Conditional("DEBUG")]
+
+    public static void Exception(string message)
+- h4: Parameters
+- parameters:
+  - name: message
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The message
+- api3: Exception(Exception)
+  id: Alis_Core_Aspect_Logging_Logger_Exception_System_Exception_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Logging/src/Logger.cs#L181
+  metadata:
+    uid: Alis.Core.Aspect.Logging.Logger.Exception(System.Exception)
+    commentId: M:Alis.Core.Aspect.Logging.Logger.Exception(System.Exception)
+- markdown: Exceptions the exception
+- code: >-
+    [Conditional("DEBUG")]
+
+    public static void Exception(Exception exception)
+- h4: Parameters
+- parameters:
+  - name: exception
+    type:
+    - text: Exception
+      url: https://learn.microsoft.com/dotnet/api/system.exception
+    description: The exception
+- api3: Info()
+  id: Alis_Core_Aspect_Logging_Logger_Info
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Logging/src/Logger.cs#L78
+  metadata:
+    uid: Alis.Core.Aspect.Logging.Logger.Info
+    commentId: M:Alis.Core.Aspect.Logging.Logger.Info
+- markdown: Info
+- code: >-
+    [Conditional("DEBUG")]
+
+    public static void Info()
+- api3: Info(string)
+  id: Alis_Core_Aspect_Logging_Logger_Info_System_String_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Logging/src/Logger.cs#L91
+  metadata:
+    uid: Alis.Core.Aspect.Logging.Logger.Info(System.String)
+    commentId: M:Alis.Core.Aspect.Logging.Logger.Info(System.String)
+- markdown: Info the message
+- code: >-
+    [Conditional("DEBUG")]
+
+    public static void Info(string message)
+- h4: Parameters
+- parameters:
+  - name: message
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The message
+- api3: Log(string)
+  id: Alis_Core_Aspect_Logging_Logger_Log_System_String_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Logging/src/Logger.cs#L104
+  metadata:
+    uid: Alis.Core.Aspect.Logging.Logger.Log(System.String)
+    commentId: M:Alis.Core.Aspect.Logging.Logger.Log(System.String)
+- markdown: Logs the message
+- code: >-
+    [Conditional("DEBUG")]
+
+    public static void Log(string message)
+- h4: Parameters
+- parameters:
+  - name: message
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The message
+- api3: SetDetailLevel(DetailLevel)
+  id: Alis_Core_Aspect_Logging_Logger_SetDetailLevel_Alis_Core_Aspect_Logging_DetailLevel_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Logging/src/Logger.cs#L194
+  metadata:
+    uid: Alis.Core.Aspect.Logging.Logger.SetDetailLevel(Alis.Core.Aspect.Logging.DetailLevel)
+    commentId: M:Alis.Core.Aspect.Logging.Logger.SetDetailLevel(Alis.Core.Aspect.Logging.DetailLevel)
+- markdown: Sets the detail level using the specified detail level
+- code: >-
+    [Conditional("DEBUG")]
+
+    public static void SetDetailLevel(DetailLevel detailLevel)
+- h4: Parameters
+- parameters:
+  - name: detailLevel
+    type:
+    - text: DetailLevel
+      url: Alis.Core.Aspect.Logging.DetailLevel.html
+    description: The detail level
+- api3: SetLogLevel(LogLevel)
+  id: Alis_Core_Aspect_Logging_Logger_SetLogLevel_Alis_Core_Aspect_Logging_LogLevel_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Logging/src/Logger.cs#L201
+  metadata:
+    uid: Alis.Core.Aspect.Logging.Logger.SetLogLevel(Alis.Core.Aspect.Logging.LogLevel)
+    commentId: M:Alis.Core.Aspect.Logging.Logger.SetLogLevel(Alis.Core.Aspect.Logging.LogLevel)
+- markdown: Sets the log level using the specified trace
+- code: >-
+    [Conditional("DEBUG")]
+
+    public static void SetLogLevel(LogLevel trace)
+- h4: Parameters
+- parameters:
+  - name: trace
+    type:
+    - text: LogLevel
+      url: Alis.Core.Aspect.Logging.LogLevel.html
+    description: The trace
+- api3: Trace()
+  id: Alis_Core_Aspect_Logging_Logger_Trace
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Logging/src/Logger.cs#L53
+  metadata:
+    uid: Alis.Core.Aspect.Logging.Logger.Trace
+    commentId: M:Alis.Core.Aspect.Logging.Logger.Trace
+- markdown: Traces the message
+- code: >-
+    [Conditional("DEBUG")]
+
+    public static void Trace()
+- api3: Trace(string)
+  id: Alis_Core_Aspect_Logging_Logger_Trace_System_String_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Logging/src/Logger.cs#L66
+  metadata:
+    uid: Alis.Core.Aspect.Logging.Logger.Trace(System.String)
+    commentId: M:Alis.Core.Aspect.Logging.Logger.Trace(System.String)
+- markdown: Traces the message
+- code: >-
+    [Conditional("DEBUG")]
+
+    public static void Trace(string message)
+- h4: Parameters
+- parameters:
+  - name: message
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The message
+- api3: Warning(string)
+  id: Alis_Core_Aspect_Logging_Logger_Warning_System_String_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Logging/src/Logger.cs#L142
+  metadata:
+    uid: Alis.Core.Aspect.Logging.Logger.Warning(System.String)
+    commentId: M:Alis.Core.Aspect.Logging.Logger.Warning(System.String)
+- markdown: Warnings the message
+- code: >-
+    [Conditional("DEBUG")]
+
+    public static void Warning(string message)
+- h4: Parameters
+- parameters:
+  - name: message
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The message
+languageId: csharp
+metadata:
+  description: The logger class

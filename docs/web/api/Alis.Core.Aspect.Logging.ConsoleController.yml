@@ -1,0 +1,64 @@
+### YamlMime:ApiPage
+title: Class ConsoleController
+body:
+- api1: Class ConsoleController
+  id: Alis_Core_Aspect_Logging_ConsoleController
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Logging/src/ConsoleController.cs#L37
+  metadata:
+    uid: Alis.Core.Aspect.Logging.ConsoleController
+    commentId: T:Alis.Core.Aspect.Logging.ConsoleController
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Aspect.Logging
+      url: Alis.Core.Aspect.Logging.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The console controller class
+- code: public static class ConsoleController
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: ConsoleController
+    url: Alis.Core.Aspect.Logging.ConsoleController.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Methods
+- api3: Print(Message, DetailLevel)
+  id: Alis_Core_Aspect_Logging_ConsoleController_Print_Alis_Core_Aspect_Logging_Message_Alis_Core_Aspect_Logging_DetailLevel_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Logging/src/ConsoleController.cs#L44
+  metadata:
+    uid: Alis.Core.Aspect.Logging.ConsoleController.Print(Alis.Core.Aspect.Logging.Message,Alis.Core.Aspect.Logging.DetailLevel)
+    commentId: M:Alis.Core.Aspect.Logging.ConsoleController.Print(Alis.Core.Aspect.Logging.Message,Alis.Core.Aspect.Logging.DetailLevel)
+- markdown: Prints the message
+- code: public static void Print(Message message, DetailLevel detailLevel)
+- h4: Parameters
+- parameters:
+  - name: message
+    type:
+    - text: Message
+      url: Alis.Core.Aspect.Logging.Message.html
+    description: The message
+  - name: detailLevel
+    type:
+    - text: DetailLevel
+      url: Alis.Core.Aspect.Logging.DetailLevel.html
+    description: The detail level
+languageId: csharp
+metadata:
+  description: The console controller class

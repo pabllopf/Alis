@@ -1,0 +1,101 @@
+### YamlMime:ApiPage
+title: Struct Version
+body:
+- api1: Struct Version
+  id: Alis_Core_Graphic_Sdl2_Structs_Version
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Version.cs#L37
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Version
+    commentId: T:Alis.Core.Graphic.Sdl2.Structs.Version
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Structs
+      url: Alis.Core.Graphic.Sdl2.Structs.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The sdl version
+- code: public struct Version
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Constructors
+- api3: Version(int, int, int)
+  id: Alis_Core_Graphic_Sdl2_Structs_Version__ctor_System_Int32_System_Int32_System_Int32_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Version.cs#L64
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Version.#ctor(System.Int32,System.Int32,System.Int32)
+    commentId: M:Alis.Core.Graphic.Sdl2.Structs.Version.#ctor(System.Int32,System.Int32,System.Int32)
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Graphic.Sdl2.Structs.Version" data-throw-if-not-resolved="false"></xref> class
+- code: public Version(int sdlTtfMajorVersion, int sdlTtfMinorVersion, int sdlTtfPatchLevel)
+- h4: Parameters
+- parameters:
+  - name: sdlTtfMajorVersion
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The sdl ttf major version
+  - name: sdlTtfMinorVersion
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The sdl ttf minor version
+  - name: sdlTtfPatchLevel
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The sdl ttf patch level
+- h2: Fields
+- api3: major
+  id: Alis_Core_Graphic_Sdl2_Structs_Version_major
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Version.cs#L43
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Version.major
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Version.major
+- markdown: The major
+- code: public byte major
+- h4: Field Value
+- parameters:
+  - type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+- api3: minor
+  id: Alis_Core_Graphic_Sdl2_Structs_Version_minor
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Version.cs#L49
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Version.minor
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Version.minor
+- markdown: The minor
+- code: public byte minor
+- h4: Field Value
+- parameters:
+  - type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+- api3: patch
+  id: Alis_Core_Graphic_Sdl2_Structs_Version_patch
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Version.cs#L55
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Version.patch
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Version.patch
+- markdown: The patch
+- code: public byte patch
+- h4: Field Value
+- parameters:
+  - type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+languageId: csharp
+metadata:
+  description: The sdl version

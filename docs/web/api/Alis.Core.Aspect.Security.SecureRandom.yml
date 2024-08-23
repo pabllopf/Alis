@@ -1,0 +1,199 @@
+### YamlMime:ApiPage
+title: Class SecureRandom
+body:
+- api1: Class SecureRandom
+  id: Alis_Core_Aspect_Security_SecureRandom
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Security/src/SecureRandom.cs#L38
+  metadata:
+    uid: Alis.Core.Aspect.Security.SecureRandom
+    commentId: T:Alis.Core.Aspect.Security.SecureRandom
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Aspect.Security
+      url: Alis.Core.Aspect.Security.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The secure random class
+- code: internal static class SecureRandom
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: SecureRandom
+    url: Alis.Core.Aspect.Security.SecureRandom.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Methods
+- api3: Abs(float)
+  id: Alis_Core_Aspect_Security_SecureRandom_Abs_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Security/src/SecureRandom.cs#L98
+  metadata:
+    uid: Alis.Core.Aspect.Security.SecureRandom.Abs(System.Single)
+    commentId: M:Alis.Core.Aspect.Security.SecureRandom.Abs(System.Single)
+- markdown: Abs the value
+- code: public static float Abs(float value)
+- h4: Parameters
+- parameters:
+  - name: value
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The float
+- api3: NextByte()
+  id: Alis_Core_Aspect_Security_SecureRandom_NextByte
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Security/src/SecureRandom.cs#L122
+  metadata:
+    uid: Alis.Core.Aspect.Security.SecureRandom.NextByte
+    commentId: M:Alis.Core.Aspect.Security.SecureRandom.NextByte
+- markdown: Nexts the byte
+- code: public static byte NextByte()
+- h4: Returns
+- parameters:
+  - type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+    description: The byte
+- api3: NextChar()
+  id: Alis_Core_Aspect_Security_SecureRandom_NextChar
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Security/src/SecureRandom.cs#L56
+  metadata:
+    uid: Alis.Core.Aspect.Security.SecureRandom.NextChar
+    commentId: M:Alis.Core.Aspect.Security.SecureRandom.NextChar
+- markdown: Nexts the char
+- code: public static char NextChar()
+- h4: Returns
+- parameters:
+  - type:
+    - text: char
+      url: https://learn.microsoft.com/dotnet/api/system.char
+    description: The char
+- api3: NextDecimal(int, int)
+  id: Alis_Core_Aspect_Security_SecureRandom_NextDecimal_System_Int32_System_Int32_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Security/src/SecureRandom.cs#L107
+  metadata:
+    uid: Alis.Core.Aspect.Security.SecureRandom.NextDecimal(System.Int32,System.Int32)
+    commentId: M:Alis.Core.Aspect.Security.SecureRandom.NextDecimal(System.Int32,System.Int32)
+- markdown: Nexts the decimal using the specified i
+- code: public static decimal NextDecimal(int i, int i1)
+- h4: Parameters
+- parameters:
+  - name: i
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The
+  - name: i1
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: decimal
+      url: https://learn.microsoft.com/dotnet/api/system.decimal
+    description: The random decimal
+- api3: NextDouble(int, int)
+  id: Alis_Core_Aspect_Security_SecureRandom_NextDouble_System_Int32_System_Int32_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Security/src/SecureRandom.cs#L82
+  metadata:
+    uid: Alis.Core.Aspect.Security.SecureRandom.NextDouble(System.Int32,System.Int32)
+    commentId: M:Alis.Core.Aspect.Security.SecureRandom.NextDouble(System.Int32,System.Int32)
+- markdown: Nexts the double using the specified i
+- code: public static double NextDouble(int i, int i1)
+- h4: Parameters
+- parameters:
+  - name: i
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The
+  - name: i1
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: double
+      url: https://learn.microsoft.com/dotnet/api/system.double
+    description: The random double
+- api3: NextFloat(int, int)
+  id: Alis_Core_Aspect_Security_SecureRandom_NextFloat_System_Int32_System_Int32_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Security/src/SecureRandom.cs#L136
+  metadata:
+    uid: Alis.Core.Aspect.Security.SecureRandom.NextFloat(System.Int32,System.Int32)
+    commentId: M:Alis.Core.Aspect.Security.SecureRandom.NextFloat(System.Int32,System.Int32)
+- markdown: Nexts the float using the specified i
+- code: public static float NextFloat(int i, int i1)
+- h4: Parameters
+- parameters:
+  - name: i
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The
+  - name: i1
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The random float
+- api3: NextInt()
+  id: Alis_Core_Aspect_Security_SecureRandom_NextInt
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Security/src/SecureRandom.cs#L44
+  metadata:
+    uid: Alis.Core.Aspect.Security.SecureRandom.NextInt
+    commentId: M:Alis.Core.Aspect.Security.SecureRandom.NextInt
+- markdown: Nexts the int
+- code: public static int NextInt()
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The int
+- api3: NextLong()
+  id: Alis_Core_Aspect_Security_SecureRandom_NextLong
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Security/src/SecureRandom.cs#L68
+  metadata:
+    uid: Alis.Core.Aspect.Security.SecureRandom.NextLong
+    commentId: M:Alis.Core.Aspect.Security.SecureRandom.NextLong
+- markdown: Nexts the long
+- code: public static long NextLong()
+- h4: Returns
+- parameters:
+  - type:
+    - text: long
+      url: https://learn.microsoft.com/dotnet/api/system.int64
+    description: The long
+languageId: csharp
+metadata:
+  description: The secure random class

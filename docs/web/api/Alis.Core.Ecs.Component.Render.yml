@@ -1,0 +1,35 @@
+### YamlMime:ApiPage
+title: Namespace Alis.Core.Ecs.Component.Render
+body:
+- api1: Namespace Alis.Core.Ecs.Component.Render
+  id: Alis_Core_Ecs_Component_Render
+  metadata:
+    uid: Alis.Core.Ecs.Component.Render
+    commentId: N:Alis.Core.Ecs.Component.Render
+- h3: Classes
+- parameters:
+  - type:
+      text: Animation
+      url: Alis.Core.Ecs.Component.Render.Animation.html
+    description: The animation class
+  - type:
+      text: Animator
+      url: Alis.Core.Ecs.Component.Render.Animator.html
+    description: The animator class
+  - type:
+      text: Camera
+      url: Alis.Core.Ecs.Component.Render.Camera.html
+    description: The camera class
+  - type:
+      text: Frame
+      url: Alis.Core.Ecs.Component.Render.Frame.html
+    description: The frame class
+  - type:
+      text: Image
+      url: Alis.Core.Ecs.Component.Render.Image.html
+    description: The image class
+  - type:
+      text: Sprite
+      url: Alis.Core.Ecs.Component.Render.Sprite.html
+    description: The sprite class
+languageId: csharp

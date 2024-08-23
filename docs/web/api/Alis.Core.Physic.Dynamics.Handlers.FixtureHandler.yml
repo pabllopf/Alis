@@ -1,0 +1,27 @@
+### YamlMime:ApiPage
+title: Delegate FixtureHandler
+body:
+- api1: Delegate FixtureHandler
+  id: Alis_Core_Physic_Dynamics_Handlers_FixtureHandler
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Handlers/FixtureHandler.cs#L35
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Handlers.FixtureHandler
+    commentId: T:Alis.Core.Physic.Dynamics.Handlers.FixtureHandler
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Physic.Dynamics.Handlers
+      url: Alis.Core.Physic.Dynamics.Handlers.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The fixture handler
+- code: public delegate void FixtureHandler(Fixture fixture)
+- h4: Parameters
+- parameters:
+  - name: fixture
+    type:
+    - text: Fixture
+      url: Alis.Core.Physic.Dynamics.Fixture.html
+languageId: csharp
+metadata:
+  description: The fixture handler

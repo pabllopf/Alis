@@ -1,0 +1,41 @@
+### YamlMime:ApiPage
+title: Enum TextureAccess
+body:
+- api1: Enum TextureAccess
+  id: Alis_Core_Graphic_Sdl2_Enums_TextureAccess
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Enums/TextureAccess.cs#L37
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Enums.TextureAccess
+    commentId: T:Alis.Core.Graphic.Sdl2.Enums.TextureAccess
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Enums
+      url: Alis.Core.Graphic.Sdl2.Enums.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The sdl texture access enum
+- code: >-
+    [Flags]
+
+    public enum TextureAccess
+- h2: Fields
+- parameters:
+  - name: None
+    default: "0"
+    description: >+
+      The sdl texture access static sdl texture access
+
+  - name: SdlTextureAccessStreaming
+    default: "1"
+    description: >+
+      The sdl texture access streaming sdl texture access
+
+  - name: SdlTextureAccessTarget
+    default: "2"
+    description: >+
+      The sdl texture access target sdl texture access
+
+languageId: csharp
+metadata:
+  description: The sdl texture access enum

@@ -1,0 +1,75 @@
+### YamlMime:ApiPage
+title: Struct InternalKmsWmInfo
+body:
+- api1: Struct InternalKmsWmInfo
+  id: Alis_Core_Graphic_Sdl2_Structs_InternalKmsWmInfo
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/InternalKmsWmInfo.cs#L38
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.InternalKmsWmInfo
+    commentId: T:Alis.Core.Graphic.Sdl2.Structs.InternalKmsWmInfo
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Structs
+      url: Alis.Core.Graphic.Sdl2.Structs.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The internal kms wm info
+- code: public struct InternalKmsWmInfo
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Fields
+- api3: dev_index
+  id: Alis_Core_Graphic_Sdl2_Structs_InternalKmsWmInfo_dev_index
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/InternalKmsWmInfo.cs#L44
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.InternalKmsWmInfo.dev_index
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.InternalKmsWmInfo.dev_index
+- markdown: The dev index
+- code: public readonly int dev_index
+- h4: Field Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: drm_fd
+  id: Alis_Core_Graphic_Sdl2_Structs_InternalKmsWmInfo_drm_fd
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/InternalKmsWmInfo.cs#L49
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.InternalKmsWmInfo.drm_fd
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.InternalKmsWmInfo.drm_fd
+- markdown: The drm fd
+- code: public readonly int drm_fd
+- h4: Field Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: gbm_dev
+  id: Alis_Core_Graphic_Sdl2_Structs_InternalKmsWmInfo_gbm_dev
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/InternalKmsWmInfo.cs#L54
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.InternalKmsWmInfo.gbm_dev
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.InternalKmsWmInfo.gbm_dev
+- markdown: Refers to a gbm_device*
+- code: public readonly IntPtr gbm_dev
+- h4: Field Value
+- parameters:
+  - type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+languageId: csharp
+metadata:
+  description: The internal kms wm info

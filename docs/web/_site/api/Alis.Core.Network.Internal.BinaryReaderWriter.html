@@ -1,0 +1,436 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+      <title>Class BinaryReaderWriter | Alis - Develop the video games of your dreams &#128175; free!! </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class BinaryReaderWriter | Alis - Develop the video games of your dreams &#128175; free!! ">
+      
+      <meta name="description" content="The binary reader writer class">
+      <link rel="icon" href="../resources/logo.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ApiPage">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../resources/logo.png" alt="Alis">
+            Alis
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 class='section api' data-uid='Alis.Core.Network.Internal.BinaryReaderWriter' data-commentid='T:Alis.Core.Network.Internal.BinaryReaderWriter' id='Alis_Core_Network_Internal_BinaryReaderWriter'>Class BinaryReaderWriter    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/BinaryReaderWriter.cs#L40'><i class='bi bi-code-slash'></i></a></h1>
+ <div class="facts text-secondary">
+<dl><dt>Namespace</dt><dd><a href='Alis.Core.Network.Internal.html'>Alis.Core.Network.Internal</a></dd></dl><dl><dt>Assembly</dt><dd>Alis.dll</dd></dl>
+</div><p>The binary reader writer class</p>
+<pre><code class='lang-csharp'>internal class BinaryReaderWriter</code></pre><h4 class='section'>Inheritance</h4><dl class="typelist inheritance"><dd>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object'>object</a>
+</div>
+<div>
+<a href='Alis.Core.Network.Internal.BinaryReaderWriter.html'>BinaryReaderWriter</a>
+</div>
+
+</dd></dl><h4 class='section'>Inherited Members</h4><dl class="typelist"><dd>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)'>object.Equals(object?)</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)'>object.Equals(object?, object?)</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.gethashcode'>object.GetHashCode()</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.gettype'>object.GetType()</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone'>object.MemberwiseClone()</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.referenceequals'>object.ReferenceEquals(object?, object?)</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.tostring'>object.ToString()</a>
+</div>
+
+</dd></dl><h2 class='section'>Methods</h2><h3 class='section api' data-uid='Alis.Core.Network.Internal.BinaryReaderWriter.ConvertToLong(System.ArraySegment{System.Byte})' data-commentid='M:Alis.Core.Network.Internal.BinaryReaderWriter.ConvertToLong(System.ArraySegment{System.Byte})' id='Alis_Core_Network_Internal_BinaryReaderWriter_ConvertToLong_System_ArraySegment_System_Byte__'>ConvertToLong(ArraySegment&lt;byte&gt;)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/BinaryReaderWriter.cs#L170'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Converts the to long using the specified buffer</p>
+<pre><code class='lang-csharp'>internal static long ConvertToLong(ArraySegment&lt;byte&gt; buffer)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>buffer</code> <a href='https://learn.microsoft.com/dotnet/api/system.arraysegment-1'>ArraySegment</a>&lt;<a href='https://learn.microsoft.com/dotnet/api/system.byte'>byte</a>&gt;  </dt>
+<dd>
+
+
+<p>The buffer</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.int64'>long</a>  </dt>
+<dd>
+
+
+<p>The long</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Network.Internal.BinaryReaderWriter.GetBytesInCorrectEndianness(System.Int32,System.Boolean)' data-commentid='M:Alis.Core.Network.Internal.BinaryReaderWriter.GetBytesInCorrectEndianness(System.Int32,System.Boolean)' id='Alis_Core_Network_Internal_BinaryReaderWriter_GetBytesInCorrectEndianness_System_Int32_System_Boolean_'>GetBytesInCorrectEndianness(int, bool)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/BinaryReaderWriter.cs#L190'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Gets the bytes in correct endianness using the specified value</p>
+<pre><code class='lang-csharp'>internal static byte[] GetBytesInCorrectEndianness(int value, bool isLittleEndian)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>value</code> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+<p>The value</p>
+
+</dd><dt><code>isLittleEndian</code> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+<p>The is little endian</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.byte'>byte</a>[]  </dt>
+<dd>
+
+
+<p>The buffer</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Network.Internal.BinaryReaderWriter.HandleEndianness(System.Boolean,System.ArraySegment{System.Byte})' data-commentid='M:Alis.Core.Network.Internal.BinaryReaderWriter.HandleEndianness(System.Boolean,System.ArraySegment{System.Byte})' id='Alis_Core_Network_Internal_BinaryReaderWriter_HandleEndianness_System_Boolean_System_ArraySegment_System_Byte__'>HandleEndianness(bool, ArraySegment&lt;byte&gt;)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/BinaryReaderWriter.cs#L148'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Handles the endianness using the specified is little endian</p>
+<pre><code class='lang-csharp'>internal static void HandleEndianness(bool isLittleEndian, ArraySegment&lt;byte&gt; buffer)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>isLittleEndian</code> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+<p>The is little endian</p>
+
+</dd><dt><code>buffer</code> <a href='https://learn.microsoft.com/dotnet/api/system.arraysegment-1'>ArraySegment</a>&lt;<a href='https://learn.microsoft.com/dotnet/api/system.byte'>byte</a>&gt;  </dt>
+<dd>
+
+
+<p>The buffer</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Network.Internal.BinaryReaderWriter.ReadExactly(System.Int32,System.IO.Stream,System.ArraySegment{System.Byte},System.Threading.CancellationToken)' data-commentid='M:Alis.Core.Network.Internal.BinaryReaderWriter.ReadExactly(System.Int32,System.IO.Stream,System.ArraySegment{System.Byte},System.Threading.CancellationToken)' id='Alis_Core_Network_Internal_BinaryReaderWriter_ReadExactly_System_Int32_System_IO_Stream_System_ArraySegment_System_Byte__System_Threading_CancellationToken_'>ReadExactly(int, Stream, ArraySegment&lt;byte&gt;, CancellationToken)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/BinaryReaderWriter.cs#L54'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Reads the exactly using the specified length</p>
+<pre><code class='lang-csharp'>public static Task ReadExactly(int length, Stream stream, ArraySegment&lt;byte&gt; buffer, CancellationToken cancellationToken)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>length</code> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+<p>The length</p>
+
+</dd><dt><code>stream</code> <a href='https://learn.microsoft.com/dotnet/api/system.io.stream'>Stream</a>  </dt>
+<dd>
+
+
+<p>The stream</p>
+
+</dd><dt><code>buffer</code> <a href='https://learn.microsoft.com/dotnet/api/system.arraysegment-1'>ArraySegment</a>&lt;<a href='https://learn.microsoft.com/dotnet/api/system.byte'>byte</a>&gt;  </dt>
+<dd>
+
+
+<p>The buffer</p>
+
+</dd><dt><code>cancellationToken</code> <a href='https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken'>CancellationToken</a>  </dt>
+<dd>
+
+
+<p>The cancellation token</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.threading.tasks.task'>Task</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h4 class='section'>Exceptions</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.io.endofstreamexception'>EndOfStreamException</a>  </dt>
+<dd>
+
+
+
+</dd><dt> <a href='https://learn.microsoft.com/dotnet/api/system.io.internalbufferoverflowexception'>InternalBufferOverflowException</a>  </dt>
+<dd>
+
+
+<p>Unable to read {length} bytes into buffer (offset: {buffer.Offset}
+size: {buffer.Count}). Use a larger read buffer</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Network.Internal.BinaryReaderWriter.ReadLongExactly(System.IO.Stream,System.Boolean,System.ArraySegment{System.Byte},System.Threading.CancellationToken)' data-commentid='M:Alis.Core.Network.Internal.BinaryReaderWriter.ReadLongExactly(System.IO.Stream,System.Boolean,System.ArraySegment{System.Byte},System.Threading.CancellationToken)' id='Alis_Core_Network_Internal_BinaryReaderWriter_ReadLongExactly_System_IO_Stream_System_Boolean_System_ArraySegment_System_Byte__System_Threading_CancellationToken_'>ReadLongExactly(Stream, bool, ArraySegment&lt;byte&gt;, CancellationToken)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/BinaryReaderWriter.cs#L135'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Reads the long exactly using the specified stream</p>
+<pre><code class='lang-csharp'>public static Task&lt;long&gt; ReadLongExactly(Stream stream, bool isLittleEndian, ArraySegment&lt;byte&gt; buffer, CancellationToken cancellationToken)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>stream</code> <a href='https://learn.microsoft.com/dotnet/api/system.io.stream'>Stream</a>  </dt>
+<dd>
+
+
+<p>The stream</p>
+
+</dd><dt><code>isLittleEndian</code> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+<p>The is little endian</p>
+
+</dd><dt><code>buffer</code> <a href='https://learn.microsoft.com/dotnet/api/system.arraysegment-1'>ArraySegment</a>&lt;<a href='https://learn.microsoft.com/dotnet/api/system.byte'>byte</a>&gt;  </dt>
+<dd>
+
+
+<p>The buffer</p>
+
+</dd><dt><code>cancellationToken</code> <a href='https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken'>CancellationToken</a>  </dt>
+<dd>
+
+
+<p>The cancellation token</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1'>Task</a>&lt;<a href='https://learn.microsoft.com/dotnet/api/system.int64'>long</a>&gt;  </dt>
+<dd>
+
+
+<p>A task containing the long</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Network.Internal.BinaryReaderWriter.ReadULongExactly(System.IO.Stream,System.Boolean,System.ArraySegment{System.Byte},System.Threading.CancellationToken)' data-commentid='M:Alis.Core.Network.Internal.BinaryReaderWriter.ReadULongExactly(System.IO.Stream,System.Boolean,System.ArraySegment{System.Byte},System.Threading.CancellationToken)' id='Alis_Core_Network_Internal_BinaryReaderWriter_ReadULongExactly_System_IO_Stream_System_Boolean_System_ArraySegment_System_Byte__System_Threading_CancellationToken_'>ReadULongExactly(Stream, bool, ArraySegment&lt;byte&gt;, CancellationToken)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/BinaryReaderWriter.cs#L114'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Reads the u long exactly using the specified stream</p>
+<pre><code class='lang-csharp'>public static Task&lt;ulong&gt; ReadULongExactly(Stream stream, bool isLittleEndian, ArraySegment&lt;byte&gt; buffer, CancellationToken cancellationToken)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>stream</code> <a href='https://learn.microsoft.com/dotnet/api/system.io.stream'>Stream</a>  </dt>
+<dd>
+
+
+<p>The stream</p>
+
+</dd><dt><code>isLittleEndian</code> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+<p>The is little endian</p>
+
+</dd><dt><code>buffer</code> <a href='https://learn.microsoft.com/dotnet/api/system.arraysegment-1'>ArraySegment</a>&lt;<a href='https://learn.microsoft.com/dotnet/api/system.byte'>byte</a>&gt;  </dt>
+<dd>
+
+
+<p>The buffer</p>
+
+</dd><dt><code>cancellationToken</code> <a href='https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken'>CancellationToken</a>  </dt>
+<dd>
+
+
+<p>The cancellation token</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1'>Task</a>&lt;<a href='https://learn.microsoft.com/dotnet/api/system.uint64'>ulong</a>&gt;  </dt>
+<dd>
+
+
+<p>A task containing the ulong</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Network.Internal.BinaryReaderWriter.ReadUShortExactly(System.IO.Stream,System.Boolean,System.ArraySegment{System.Byte},System.Threading.CancellationToken)' data-commentid='M:Alis.Core.Network.Internal.BinaryReaderWriter.ReadUShortExactly(System.IO.Stream,System.Boolean,System.ArraySegment{System.Byte},System.Threading.CancellationToken)' id='Alis_Core_Network_Internal_BinaryReaderWriter_ReadUShortExactly_System_IO_Stream_System_Boolean_System_ArraySegment_System_Byte__System_Threading_CancellationToken_'>ReadUShortExactly(Stream, bool, ArraySegment&lt;byte&gt;, CancellationToken)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/BinaryReaderWriter.cs#L93'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Reads the u short exactly using the specified stream</p>
+<pre><code class='lang-csharp'>public static Task&lt;ushort&gt; ReadUShortExactly(Stream stream, bool isLittleEndian, ArraySegment&lt;byte&gt; buffer, CancellationToken cancellationToken)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>stream</code> <a href='https://learn.microsoft.com/dotnet/api/system.io.stream'>Stream</a>  </dt>
+<dd>
+
+
+<p>The stream</p>
+
+</dd><dt><code>isLittleEndian</code> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+<p>The is little endian</p>
+
+</dd><dt><code>buffer</code> <a href='https://learn.microsoft.com/dotnet/api/system.arraysegment-1'>ArraySegment</a>&lt;<a href='https://learn.microsoft.com/dotnet/api/system.byte'>byte</a>&gt;  </dt>
+<dd>
+
+
+<p>The buffer</p>
+
+</dd><dt><code>cancellationToken</code> <a href='https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken'>CancellationToken</a>  </dt>
+<dd>
+
+
+<p>The cancellation token</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1'>Task</a>&lt;<a href='https://learn.microsoft.com/dotnet/api/system.uint16'>ushort</a>&gt;  </dt>
+<dd>
+
+
+<p>A task containing the ushort</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Network.Internal.BinaryReaderWriter.ReverseBuffer(System.ArraySegment{System.Byte})' data-commentid='M:Alis.Core.Network.Internal.BinaryReaderWriter.ReverseBuffer(System.ArraySegment{System.Byte})' id='Alis_Core_Network_Internal_BinaryReaderWriter_ReverseBuffer_System_ArraySegment_System_Byte__'>ReverseBuffer(ArraySegment&lt;byte&gt;)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/BinaryReaderWriter.cs#L160'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Reverses the buffer using the specified buffer</p>
+<pre><code class='lang-csharp'>internal static void ReverseBuffer(ArraySegment&lt;byte&gt; buffer)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>buffer</code> <a href='https://learn.microsoft.com/dotnet/api/system.arraysegment-1'>ArraySegment</a>&lt;<a href='https://learn.microsoft.com/dotnet/api/system.byte'>byte</a>&gt;  </dt>
+<dd>
+
+
+<p>The buffer</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Network.Internal.BinaryReaderWriter.WriteInt(System.Int32,System.IO.Stream,System.Boolean)' data-commentid='M:Alis.Core.Network.Internal.BinaryReaderWriter.WriteInt(System.Int32,System.IO.Stream,System.Boolean)' id='Alis_Core_Network_Internal_BinaryReaderWriter_WriteInt_System_Int32_System_IO_Stream_System_Boolean_'>WriteInt(int, Stream, bool)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/BinaryReaderWriter.cs#L178'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Writes the int using the specified value</p>
+<pre><code class='lang-csharp'>public static void WriteInt(int value, Stream stream, bool isLittleEndian)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>value</code> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+<p>The value</p>
+
+</dd><dt><code>stream</code> <a href='https://learn.microsoft.com/dotnet/api/system.io.stream'>Stream</a>  </dt>
+<dd>
+
+
+<p>The stream</p>
+
+</dd><dt><code>isLittleEndian</code> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+<p>The is little endian</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Network.Internal.BinaryReaderWriter.WriteLong(System.Int64,System.IO.Stream,System.Boolean)' data-commentid='M:Alis.Core.Network.Internal.BinaryReaderWriter.WriteLong(System.Int64,System.IO.Stream,System.Boolean)' id='Alis_Core_Network_Internal_BinaryReaderWriter_WriteLong_System_Int64_System_IO_Stream_System_Boolean_'>WriteLong(long, Stream, bool)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/BinaryReaderWriter.cs#L234'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Writes the long using the specified value</p>
+<pre><code class='lang-csharp'>public static void WriteLong(long value, Stream stream, bool isLittleEndian)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>value</code> <a href='https://learn.microsoft.com/dotnet/api/system.int64'>long</a>  </dt>
+<dd>
+
+
+<p>The value</p>
+
+</dd><dt><code>stream</code> <a href='https://learn.microsoft.com/dotnet/api/system.io.stream'>Stream</a>  </dt>
+<dd>
+
+
+<p>The stream</p>
+
+</dd><dt><code>isLittleEndian</code> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+<p>The is little endian</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Network.Internal.BinaryReaderWriter.WriteToStream(System.Byte[],System.IO.Stream)' data-commentid='M:Alis.Core.Network.Internal.BinaryReaderWriter.WriteToStream(System.Byte[],System.IO.Stream)' id='Alis_Core_Network_Internal_BinaryReaderWriter_WriteToStream_System_Byte___System_IO_Stream_'>WriteToStream(byte[], Stream)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/BinaryReaderWriter.cs#L206'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Writes the to stream using the specified buffer</p>
+<pre><code class='lang-csharp'>internal static void WriteToStream(byte[] buffer, Stream stream)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>buffer</code> <a href='https://learn.microsoft.com/dotnet/api/system.byte'>byte</a>[]  </dt>
+<dd>
+
+
+<p>The buffer</p>
+
+</dd><dt><code>stream</code> <a href='https://learn.microsoft.com/dotnet/api/system.io.stream'>Stream</a>  </dt>
+<dd>
+
+
+<p>The stream</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Network.Internal.BinaryReaderWriter.WriteULong(System.UInt64,System.IO.Stream,System.Boolean)' data-commentid='M:Alis.Core.Network.Internal.BinaryReaderWriter.WriteULong(System.UInt64,System.IO.Stream,System.Boolean)' id='Alis_Core_Network_Internal_BinaryReaderWriter_WriteULong_System_UInt64_System_IO_Stream_System_Boolean_'>WriteULong(ulong, Stream, bool)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/BinaryReaderWriter.cs#L217'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Writes the u long using the specified value</p>
+<pre><code class='lang-csharp'>public static void WriteULong(ulong value, Stream stream, bool isLittleEndian)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>value</code> <a href='https://learn.microsoft.com/dotnet/api/system.uint64'>ulong</a>  </dt>
+<dd>
+
+
+<p>The value</p>
+
+</dd><dt><code>stream</code> <a href='https://learn.microsoft.com/dotnet/api/system.io.stream'>Stream</a>  </dt>
+<dd>
+
+
+<p>The stream</p>
+
+</dd><dt><code>isLittleEndian</code> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+<p>The is little endian</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Network.Internal.BinaryReaderWriter.WriteUShort(System.UInt16,System.IO.Stream,System.Boolean)' data-commentid='M:Alis.Core.Network.Internal.BinaryReaderWriter.WriteUShort(System.UInt16,System.IO.Stream,System.Boolean)' id='Alis_Core_Network_Internal_BinaryReaderWriter_WriteUShort_System_UInt16_System_IO_Stream_System_Boolean_'>WriteUShort(ushort, Stream, bool)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/BinaryReaderWriter.cs#L251'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Writes the u short using the specified value</p>
+<pre><code class='lang-csharp'>public static void WriteUShort(ushort value, Stream stream, bool isLittleEndian)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>value</code> <a href='https://learn.microsoft.com/dotnet/api/system.uint16'>ushort</a>  </dt>
+<dd>
+
+
+<p>The value</p>
+
+</dd><dt><code>stream</code> <a href='https://learn.microsoft.com/dotnet/api/system.io.stream'>Stream</a>  </dt>
+<dd>
+
+
+<p>The stream</p>
+
+</dd><dt><code>isLittleEndian</code> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+<p>The is little endian</p>
+
+</dd></dl>
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Alis - Develop the video games of your dreams 💯 free!! on Windows, MacOS, Linux, Android(soon), IOS(soon).
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

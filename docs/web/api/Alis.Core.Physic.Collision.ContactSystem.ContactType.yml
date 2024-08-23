@@ -1,0 +1,63 @@
+### YamlMime:ApiPage
+title: Enum ContactType
+body:
+- api1: Enum ContactType
+  id: Alis_Core_Physic_Collision_ContactSystem_ContactType
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactType.cs#L35
+  metadata:
+    uid: Alis.Core.Physic.Collision.ContactSystem.ContactType
+    commentId: T:Alis.Core.Physic.Collision.ContactSystem.ContactType
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Physic.Collision.ContactSystem
+      url: Alis.Core.Physic.Collision.ContactSystem.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The contact type enum
+- code: 'public enum ContactType : byte'
+- h2: Fields
+- parameters:
+  - name: NotSupported
+    default: "0"
+    description: >+
+      The not supported contact type
+
+  - name: Polygon
+    default: "1"
+    description: >+
+      The polygon contact type
+
+  - name: PolygonAndCircle
+    default: "2"
+    description: >+
+      The polygon and circle contact type
+
+  - name: Circle
+    default: "3"
+    description: >+
+      The circle contact type
+
+  - name: EdgeAndPolygon
+    default: "4"
+    description: >+
+      The edge and polygon contact type
+
+  - name: EdgeAndCircle
+    default: "5"
+    description: >+
+      The edge and circle contact type
+
+  - name: ChainAndPolygon
+    default: "6"
+    description: >+
+      The chain and polygon contact type
+
+  - name: ChainAndCircle
+    default: "7"
+    description: >+
+      The chain and circle contact type
+
+languageId: csharp
+metadata:
+  description: The contact type enum

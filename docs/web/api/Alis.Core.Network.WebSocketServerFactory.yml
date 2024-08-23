@@ -1,0 +1,509 @@
+### YamlMime:ApiPage
+title: Class WebSocketServerFactory
+body:
+- api1: Class WebSocketServerFactory
+  id: Alis_Core_Network_WebSocketServerFactory
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/WebSocketServerFactory.cs#L45
+  metadata:
+    uid: Alis.Core.Network.WebSocketServerFactory
+    commentId: T:Alis.Core.Network.WebSocketServerFactory
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Network
+      url: Alis.Core.Network.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: Web socket server factory used to open web socket server connections
+- code: 'public class WebSocketServerFactory : IWebSocketServerFactory'
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: WebSocketServerFactory
+    url: Alis.Core.Network.WebSocketServerFactory.html
+- h4: Implements
+- list:
+  - text: IWebSocketServerFactory
+    url: Alis.Core.Network.IWebSocketServerFactory.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Constructors
+- api3: WebSocketServerFactory()
+  id: Alis_Core_Network_WebSocketServerFactory__ctor
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/WebSocketServerFactory.cs#L60
+  metadata:
+    uid: Alis.Core.Network.WebSocketServerFactory.#ctor
+    commentId: M:Alis.Core.Network.WebSocketServerFactory.#ctor
+- markdown: Initialises a new instance of the WebSocketServerFactory class without caring about internal buffers
+- code: public WebSocketServerFactory()
+- h2: Fields
+- api3: _bufferFactory
+  id: Alis_Core_Network_WebSocketServerFactory__bufferFactory
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/WebSocketServerFactory.cs#L50
+  metadata:
+    uid: Alis.Core.Network.WebSocketServerFactory._bufferFactory
+    commentId: F:Alis.Core.Network.WebSocketServerFactory._bufferFactory
+- markdown: The buffer factory
+- code: internal readonly Func<MemoryStream> _bufferFactory
+- h4: Field Value
+- parameters:
+  - type:
+    - text: Func
+      url: https://learn.microsoft.com/dotnet/api/system.func-1
+    - <
+    - text: MemoryStream
+      url: https://learn.microsoft.com/dotnet/api/system.io.memorystream
+    - '>'
+- api3: _bufferPool
+  id: Alis_Core_Network_WebSocketServerFactory__bufferPool
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/WebSocketServerFactory.cs#L55
+  metadata:
+    uid: Alis.Core.Network.WebSocketServerFactory._bufferPool
+    commentId: F:Alis.Core.Network.WebSocketServerFactory._bufferPool
+- markdown: The buffer pool
+- code: internal readonly IBufferPool _bufferPool
+- h4: Field Value
+- parameters:
+  - type:
+    - text: IBufferPool
+      url: Alis.Core.Network.IBufferPool.html
+- h2: Methods
+- api3: AcceptWebSocketAsync(WebSocketHttpContext, CancellationToken)
+  id: Alis_Core_Network_WebSocketServerFactory_AcceptWebSocketAsync_Alis_Core_Network_WebSocketHttpContext_System_Threading_CancellationToken_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/WebSocketServerFactory.cs#L89
+  metadata:
+    uid: Alis.Core.Network.WebSocketServerFactory.AcceptWebSocketAsync(Alis.Core.Network.WebSocketHttpContext,System.Threading.CancellationToken)
+    commentId: M:Alis.Core.Network.WebSocketServerFactory.AcceptWebSocketAsync(Alis.Core.Network.WebSocketHttpContext,System.Threading.CancellationToken)
+- markdown: >-
+    Accept web socket with default options
+
+    Call ReadHttpHeaderFromStreamAsync first to get WebSocketHttpContext
+- code: public Task<WebSocket> AcceptWebSocketAsync(WebSocketHttpContext context, CancellationToken token = default)
+- h4: Parameters
+- parameters:
+  - name: context
+    type:
+    - text: WebSocketHttpContext
+      url: Alis.Core.Network.WebSocketHttpContext.html
+    description: The http context used to initiate this web socket request
+  - name: token
+    type:
+    - text: CancellationToken
+      url: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+    description: The optional cancellation token
+    optional: true
+- h4: Returns
+- parameters:
+  - type:
+    - text: Task
+      url: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+    - <
+    - text: WebSocket
+      url: https://learn.microsoft.com/dotnet/api/system.net.websockets.websocket
+    - '>'
+    description: A connected web socket
+- api3: AcceptWebSocketAsync(WebSocketHttpContext, WebSocketServerOptions, CancellationToken)
+  id: Alis_Core_Network_WebSocketServerFactory_AcceptWebSocketAsync_Alis_Core_Network_WebSocketHttpContext_Alis_Core_Network_WebSocketServerOptions_System_Threading_CancellationToken_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/WebSocketServerFactory.cs#L101
+  metadata:
+    uid: Alis.Core.Network.WebSocketServerFactory.AcceptWebSocketAsync(Alis.Core.Network.WebSocketHttpContext,Alis.Core.Network.WebSocketServerOptions,System.Threading.CancellationToken)
+    commentId: M:Alis.Core.Network.WebSocketServerFactory.AcceptWebSocketAsync(Alis.Core.Network.WebSocketHttpContext,Alis.Core.Network.WebSocketServerOptions,System.Threading.CancellationToken)
+- markdown: >-
+    Accept web socket with options specified
+
+    Call ReadHttpHeaderFromStreamAsync first to get WebSocketHttpContext
+- code: public Task<WebSocket> AcceptWebSocketAsync(WebSocketHttpContext context, WebSocketServerOptions options, CancellationToken token = default)
+- h4: Parameters
+- parameters:
+  - name: context
+    type:
+    - text: WebSocketHttpContext
+      url: Alis.Core.Network.WebSocketHttpContext.html
+    description: The http context used to initiate this web socket request
+  - name: options
+    type:
+    - text: WebSocketServerOptions
+      url: Alis.Core.Network.WebSocketServerOptions.html
+    description: The web socket options
+  - name: token
+    type:
+    - text: CancellationToken
+      url: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+    description: The optional cancellation token
+    optional: true
+- h4: Returns
+- parameters:
+  - type:
+    - text: Task
+      url: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+    - <
+    - text: WebSocket
+      url: https://learn.microsoft.com/dotnet/api/system.net.websockets.websocket
+    - '>'
+    description: A connected web socket
+- api3: BuildHandshakeResponse(string, string)
+  id: Alis_Core_Network_WebSocketServerFactory_BuildHandshakeResponse_System_String_System_String_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/WebSocketServerFactory.cs#L229
+  metadata:
+    uid: Alis.Core.Network.WebSocketServerFactory.BuildHandshakeResponse(System.String,System.String)
+    commentId: M:Alis.Core.Network.WebSocketServerFactory.BuildHandshakeResponse(System.String,System.String)
+- markdown: Builds the handshake response using the specified sec web socket key
+- code: internal static string BuildHandshakeResponse(string secWebSocketKey, string subProtocol)
+- h4: Parameters
+- parameters:
+  - name: secWebSocketKey
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The sec web socket key
+  - name: subProtocol
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The sub protocol
+- h4: Returns
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The string
+- api3: CheckWebSocketVersion(string)
+  id: Alis_Core_Network_WebSocketServerFactory_CheckWebSocketVersion_System_String_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/WebSocketServerFactory.cs#L118
+  metadata:
+    uid: Alis.Core.Network.WebSocketServerFactory.CheckWebSocketVersion(System.String)
+    commentId: M:Alis.Core.Network.WebSocketServerFactory.CheckWebSocketVersion(System.String)
+- markdown: Checks the web socket version using the specified http header
+- code: internal static void CheckWebSocketVersion(string httpHeader)
+- h4: Parameters
+- parameters:
+  - name: httpHeader
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The http header
+- h4: Exceptions
+- parameters:
+  - type:
+    - text: WebSocketVersionNotSupportedException
+      url: Alis.Core.Network.Exceptions.WebSocketVersionNotSupportedException.html
+    description: ''
+  - type:
+    - text: WebSocketVersionNotSupportedException
+      url: Alis.Core.Network.Exceptions.WebSocketVersionNotSupportedException.html
+    description: Cannot find "Sec-WebSocket-Version" in http header
+- api3: ExtractWebSocketKey(string)
+  id: Alis_Core_Network_WebSocketServerFactory_ExtractWebSocketKey_System_String_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/WebSocketServerFactory.cs#L211
+  metadata:
+    uid: Alis.Core.Network.WebSocketServerFactory.ExtractWebSocketKey(System.String)
+    commentId: M:Alis.Core.Network.WebSocketServerFactory.ExtractWebSocketKey(System.String)
+- markdown: Extracts the web socket key using the specified http header
+- code: internal static string ExtractWebSocketKey(string httpHeader)
+- h4: Parameters
+- parameters:
+  - name: httpHeader
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The http header
+- h4: Returns
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The string
+- h4: Exceptions
+- parameters:
+  - type:
+    - text: SecWebSocketKeyMissingException
+      url: Alis.Core.Network.Exceptions.SecWebSocketKeyMissingException.html
+    description: Unable to read "Sec-WebSocket-Key" from http header
+- api3: ExtractWebSocketVersion(string)
+  id: Alis_Core_Network_WebSocketServerFactory_ExtractWebSocketVersion_System_String_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/WebSocketServerFactory.cs#L130
+  metadata:
+    uid: Alis.Core.Network.WebSocketServerFactory.ExtractWebSocketVersion(System.String)
+    commentId: M:Alis.Core.Network.WebSocketServerFactory.ExtractWebSocketVersion(System.String)
+- markdown: Extracts the web socket version using the specified http header
+- code: internal static int ExtractWebSocketVersion(string httpHeader)
+- h4: Parameters
+- parameters:
+  - name: httpHeader
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The http header
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The int
+- h4: Exceptions
+- parameters:
+  - type:
+    - text: WebSocketVersionNotSupportedException
+      url: Alis.Core.Network.Exceptions.WebSocketVersionNotSupportedException.html
+    description: Cannot find "Sec-WebSocket-Version" in http header
+- api3: HandleBadRequest(Guid, Exception, Stream, CancellationToken)
+  id: Alis_Core_Network_WebSocketServerFactory_HandleBadRequest_System_Guid_System_Exception_System_IO_Stream_System_Threading_CancellationToken_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/WebSocketServerFactory.cs#L273
+  metadata:
+    uid: Alis.Core.Network.WebSocketServerFactory.HandleBadRequest(System.Guid,System.Exception,System.IO.Stream,System.Threading.CancellationToken)
+    commentId: M:Alis.Core.Network.WebSocketServerFactory.HandleBadRequest(System.Guid,System.Exception,System.IO.Stream,System.Threading.CancellationToken)
+- markdown: Handles the bad request using the specified guid
+- code: internal static Task HandleBadRequest(Guid guid, Exception ex, Stream stream, CancellationToken token)
+- h4: Parameters
+- parameters:
+  - name: guid
+    type:
+    - text: Guid
+      url: https://learn.microsoft.com/dotnet/api/system.guid
+    description: The guid
+  - name: ex
+    type:
+    - text: Exception
+      url: https://learn.microsoft.com/dotnet/api/system.exception
+    description: The ex
+  - name: stream
+    type:
+    - text: Stream
+      url: https://learn.microsoft.com/dotnet/api/system.io.stream
+    description: The stream
+  - name: token
+    type:
+    - text: CancellationToken
+      url: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+    description: The token
+- h4: Returns
+- parameters:
+  - type:
+    - text: Task
+      url: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+- api3: HandleWebSocketVersionNotSupported(Guid, WebSocketVersionNotSupportedException, Stream, CancellationToken)
+  id: Alis_Core_Network_WebSocketServerFactory_HandleWebSocketVersionNotSupported_System_Guid_Alis_Core_Network_Exceptions_WebSocketVersionNotSupportedException_System_IO_Stream_System_Threading_CancellationToken_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/WebSocketServerFactory.cs#L259
+  metadata:
+    uid: Alis.Core.Network.WebSocketServerFactory.HandleWebSocketVersionNotSupported(System.Guid,Alis.Core.Network.Exceptions.WebSocketVersionNotSupportedException,System.IO.Stream,System.Threading.CancellationToken)
+    commentId: M:Alis.Core.Network.WebSocketServerFactory.HandleWebSocketVersionNotSupported(System.Guid,Alis.Core.Network.Exceptions.WebSocketVersionNotSupportedException,System.IO.Stream,System.Threading.CancellationToken)
+- markdown: Handles the web socket version not supported using the specified guid
+- code: internal static Task HandleWebSocketVersionNotSupported(Guid guid, WebSocketVersionNotSupportedException ex, Stream stream, CancellationToken token)
+- h4: Parameters
+- parameters:
+  - name: guid
+    type:
+    - text: Guid
+      url: https://learn.microsoft.com/dotnet/api/system.guid
+    description: The guid
+  - name: ex
+    type:
+    - text: WebSocketVersionNotSupportedException
+      url: Alis.Core.Network.Exceptions.WebSocketVersionNotSupportedException.html
+    description: The ex
+  - name: stream
+    type:
+    - text: Stream
+      url: https://learn.microsoft.com/dotnet/api/system.io.stream
+    description: The stream
+  - name: token
+    type:
+    - text: CancellationToken
+      url: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+    description: The token
+- h4: Returns
+- parameters:
+  - type:
+    - text: Task
+      url: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+- api3: PerformHandshakeAsync(Guid, string, string, Stream, CancellationToken)
+  id: Alis_Core_Network_WebSocketServerFactory_PerformHandshakeAsync_System_Guid_System_String_System_String_System_IO_Stream_System_Threading_CancellationToken_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/WebSocketServerFactory.cs#L169
+  metadata:
+    uid: Alis.Core.Network.WebSocketServerFactory.PerformHandshakeAsync(System.Guid,System.String,System.String,System.IO.Stream,System.Threading.CancellationToken)
+    commentId: M:Alis.Core.Network.WebSocketServerFactory.PerformHandshakeAsync(System.Guid,System.String,System.String,System.IO.Stream,System.Threading.CancellationToken)
+- markdown: Performs the handshake using the specified guid
+- code: internal static Task PerformHandshakeAsync(Guid guid, string httpHeader, string subProtocol, Stream stream, CancellationToken token)
+- h4: Parameters
+- parameters:
+  - name: guid
+    type:
+    - text: Guid
+      url: https://learn.microsoft.com/dotnet/api/system.guid
+    description: The guid
+  - name: httpHeader
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The http header
+  - name: subProtocol
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The sub protocol
+  - name: stream
+    type:
+    - text: Stream
+      url: https://learn.microsoft.com/dotnet/api/system.io.stream
+    description: The stream
+  - name: token
+    type:
+    - text: CancellationToken
+      url: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+    description: The token
+- h4: Returns
+- parameters:
+  - type:
+    - text: Task
+      url: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+- h4: Exceptions
+- parameters:
+  - type:
+    - text: SecWebSocketKeyMissingException
+      url: Alis.Core.Network.Exceptions.SecWebSocketKeyMissingException.html
+    description: Unable to read "Sec-WebSocket-Key" from http header
+- api3: PerformHandshakeWithValidations(Guid, string, string, Stream, CancellationToken)
+  id: Alis_Core_Network_WebSocketServerFactory_PerformHandshakeWithValidations_System_Guid_System_String_System_String_System_IO_Stream_System_Threading_CancellationToken_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/WebSocketServerFactory.cs#L196
+  metadata:
+    uid: Alis.Core.Network.WebSocketServerFactory.PerformHandshakeWithValidations(System.Guid,System.String,System.String,System.IO.Stream,System.Threading.CancellationToken)
+    commentId: M:Alis.Core.Network.WebSocketServerFactory.PerformHandshakeWithValidations(System.Guid,System.String,System.String,System.IO.Stream,System.Threading.CancellationToken)
+- markdown: Performs the handshake with validations using the specified guid
+- code: internal static Task PerformHandshakeWithValidations(Guid guid, string httpHeader, string subProtocol, Stream stream, CancellationToken token)
+- h4: Parameters
+- parameters:
+  - name: guid
+    type:
+    - text: Guid
+      url: https://learn.microsoft.com/dotnet/api/system.guid
+    description: The guid
+  - name: httpHeader
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The http header
+  - name: subProtocol
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The sub protocol
+  - name: stream
+    type:
+    - text: Stream
+      url: https://learn.microsoft.com/dotnet/api/system.io.stream
+    description: The stream
+  - name: token
+    type:
+    - text: CancellationToken
+      url: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+    description: The token
+- h4: Returns
+- parameters:
+  - type:
+    - text: Task
+      url: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+- api3: ReadHttpHeaderFromStreamAsync(Stream, CancellationToken)
+  id: Alis_Core_Network_WebSocketServerFactory_ReadHttpHeaderFromStreamAsync_System_IO_Stream_System_Threading_CancellationToken_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/WebSocketServerFactory.cs#L72
+  metadata:
+    uid: Alis.Core.Network.WebSocketServerFactory.ReadHttpHeaderFromStreamAsync(System.IO.Stream,System.Threading.CancellationToken)
+    commentId: M:Alis.Core.Network.WebSocketServerFactory.ReadHttpHeaderFromStreamAsync(System.IO.Stream,System.Threading.CancellationToken)
+- markdown: Reads a http header information from a stream and decodes the parts relating to the WebSocket protocot upgrade
+- code: public Task<WebSocketHttpContext> ReadHttpHeaderFromStreamAsync(Stream stream, CancellationToken token = default)
+- h4: Parameters
+- parameters:
+  - name: stream
+    type:
+    - text: Stream
+      url: https://learn.microsoft.com/dotnet/api/system.io.stream
+    description: The network stream
+  - name: token
+    type:
+    - text: CancellationToken
+      url: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+    description: The optional cancellation token
+    optional: true
+- h4: Returns
+- parameters:
+  - type:
+    - text: Task
+      url: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+    - <
+    - text: WebSocketHttpContext
+      url: Alis.Core.Network.WebSocketHttpContext.html
+    - '>'
+    description: Http data read from the stream
+- api3: SendHandshakeResponse(Guid, string, Stream, CancellationToken)
+  id: Alis_Core_Network_WebSocketServerFactory_SendHandshakeResponse_System_Guid_System_String_System_IO_Stream_System_Threading_CancellationToken_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/WebSocketServerFactory.cs#L246
+  metadata:
+    uid: Alis.Core.Network.WebSocketServerFactory.SendHandshakeResponse(System.Guid,System.String,System.IO.Stream,System.Threading.CancellationToken)
+    commentId: M:Alis.Core.Network.WebSocketServerFactory.SendHandshakeResponse(System.Guid,System.String,System.IO.Stream,System.Threading.CancellationToken)
+- markdown: Sends the handshake response using the specified guid
+- code: internal static Task SendHandshakeResponse(Guid guid, string response, Stream stream, CancellationToken token)
+- h4: Parameters
+- parameters:
+  - name: guid
+    type:
+    - text: Guid
+      url: https://learn.microsoft.com/dotnet/api/system.guid
+    description: The guid
+  - name: response
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The response
+  - name: stream
+    type:
+    - text: Stream
+      url: https://learn.microsoft.com/dotnet/api/system.io.stream
+    description: The stream
+  - name: token
+    type:
+    - text: CancellationToken
+      url: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+    description: The token
+- h4: Returns
+- parameters:
+  - type:
+    - text: Task
+      url: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+- api3: ValidateWebSocketVersion(int)
+  id: Alis_Core_Network_WebSocketServerFactory_ValidateWebSocketVersion_System_Int32_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/WebSocketServerFactory.cs#L148
+  metadata:
+    uid: Alis.Core.Network.WebSocketServerFactory.ValidateWebSocketVersion(System.Int32)
+    commentId: M:Alis.Core.Network.WebSocketServerFactory.ValidateWebSocketVersion(System.Int32)
+- markdown: Validates the web socket version using the specified sec web socket version
+- code: internal static void ValidateWebSocketVersion(int secWebSocketVersion)
+- h4: Parameters
+- parameters:
+  - name: secWebSocketVersion
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The sec web socket version
+- h4: Exceptions
+- parameters:
+  - type:
+    - text: WebSocketVersionNotSupportedException
+      url: Alis.Core.Network.Exceptions.WebSocketVersionNotSupportedException.html
+    description: ''
+languageId: csharp
+metadata:
+  description: Web socket server factory used to open web socket server connections

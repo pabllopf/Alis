@@ -1,0 +1,36 @@
+### YamlMime:ApiPage
+title: Delegate CollisionFilterHandler
+body:
+- api1: Delegate CollisionFilterHandler
+  id: Alis_Core_Physic_Collision_Handlers_CollisionFilterHandler
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/Handlers/CollisionFilterHandler.cs#L37
+  metadata:
+    uid: Alis.Core.Physic.Collision.Handlers.CollisionFilterHandler
+    commentId: T:Alis.Core.Physic.Collision.Handlers.CollisionFilterHandler
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Physic.Collision.Handlers
+      url: Alis.Core.Physic.Collision.Handlers.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The collision filter handler
+- code: public delegate bool CollisionFilterHandler(Fixture fixtureA, Fixture fixtureB)
+- h4: Parameters
+- parameters:
+  - name: fixtureA
+    type:
+    - text: Fixture
+      url: Alis.Core.Physic.Dynamics.Fixture.html
+  - name: fixtureB
+    type:
+    - text: Fixture
+      url: Alis.Core.Physic.Dynamics.Fixture.html
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+languageId: csharp
+metadata:
+  description: The collision filter handler

@@ -1,0 +1,116 @@
+### YamlMime:ApiPage
+title: Class TestPointHelper
+body:
+- api1: Class TestPointHelper
+  id: Alis_Core_Physic_Collision_TestPointHelper
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/TestPointHelper.cs#L39
+  metadata:
+    uid: Alis.Core.Physic.Collision.TestPointHelper
+    commentId: T:Alis.Core.Physic.Collision.TestPointHelper
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Physic.Collision
+      url: Alis.Core.Physic.Collision.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The test point helper class
+- code: public static class TestPointHelper
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: TestPointHelper
+    url: Alis.Core.Physic.Collision.TestPointHelper.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Methods
+- api3: TestPointCircle(ref Vector2, float, ref Vector2, ref Transform)
+  id: Alis_Core_Physic_Collision_TestPointHelper_TestPointCircle_Alis_Core_Aspect_Math_Vector_Vector2__System_Single_Alis_Core_Aspect_Math_Vector_Vector2__Alis_Core_Aspect_Math_Transform__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/TestPointHelper.cs#L49
+  metadata:
+    uid: Alis.Core.Physic.Collision.TestPointHelper.TestPointCircle(Alis.Core.Aspect.Math.Vector.Vector2@,System.Single,Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Transform@)
+    commentId: M:Alis.Core.Physic.Collision.TestPointHelper.TestPointCircle(Alis.Core.Aspect.Math.Vector.Vector2@,System.Single,Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Transform@)
+- markdown: Describes whether test point circle
+- code: public static bool TestPointCircle(ref Vector2 pos, float radius, ref Vector2 point, ref Transform transform)
+- h4: Parameters
+- parameters:
+  - name: pos
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The pos
+  - name: radius
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The radius
+  - name: point
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The point
+  - name: transform
+    type:
+    - text: Transform
+      url: Alis.Core.Aspect.Math.Transform.html
+    description: The transform
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: TestPointPolygon(Vertices, Vertices, ref Vector2, ref Transform)
+  id: Alis_Core_Physic_Collision_TestPointHelper_TestPointPolygon_Alis_Core_Physic_Shared_Vertices_Alis_Core_Physic_Shared_Vertices_Alis_Core_Aspect_Math_Vector_Vector2__Alis_Core_Aspect_Math_Transform__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/TestPointHelper.cs#L64
+  metadata:
+    uid: Alis.Core.Physic.Collision.TestPointHelper.TestPointPolygon(Alis.Core.Physic.Shared.Vertices,Alis.Core.Physic.Shared.Vertices,Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Transform@)
+    commentId: M:Alis.Core.Physic.Collision.TestPointHelper.TestPointPolygon(Alis.Core.Physic.Shared.Vertices,Alis.Core.Physic.Shared.Vertices,Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Transform@)
+- markdown: Describes whether test point polygon
+- code: public static bool TestPointPolygon(Vertices vertices, Vertices normals, ref Vector2 point, ref Transform transform)
+- h4: Parameters
+- parameters:
+  - name: vertices
+    type:
+    - text: Vertices
+      url: Alis.Core.Physic.Shared.Vertices.html
+    description: The vertices
+  - name: normals
+    type:
+    - text: Vertices
+      url: Alis.Core.Physic.Shared.Vertices.html
+    description: The normals
+  - name: point
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The point
+  - name: transform
+    type:
+    - text: Transform
+      url: Alis.Core.Aspect.Math.Transform.html
+    description: The transform
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+languageId: csharp
+metadata:
+  description: The test point helper class

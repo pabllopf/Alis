@@ -1,0 +1,213 @@
+### YamlMime:ApiPage
+title: Namespace Alis.Core.Graphic.Sdl2.Enums
+body:
+- api1: Namespace Alis.Core.Graphic.Sdl2.Enums
+  id: Alis_Core_Graphic_Sdl2_Enums
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Enums
+    commentId: N:Alis.Core.Graphic.Sdl2.Enums
+- h3: Structs
+- parameters:
+  - type:
+      text: WindowEvent
+      url: Alis.Core.Graphic.Sdl2.Enums.WindowEvent.html
+    description: The sdl window event
+- h3: Enums
+- parameters:
+  - type:
+      text: ArrayOrder
+      url: Alis.Core.Graphic.Sdl2.Enums.ArrayOrder.html
+    description: The sdl array order enum
+  - type:
+      text: Attr
+      url: Alis.Core.Graphic.Sdl2.Enums.Attr.html
+    description: The sdl gl attr enum
+  - type:
+      text: AudioAllow
+      url: Alis.Core.Graphic.Sdl2.Enums.AudioAllow.html
+    description: The audio allow enum
+  - type:
+      text: AudioStatus
+      url: Alis.Core.Graphic.Sdl2.Enums.AudioStatus.html
+    description: The sdl audio status enum
+  - type:
+      text: BitmapOrder
+      url: Alis.Core.Graphic.Sdl2.Enums.BitmapOrder.html
+    description: The sdl bit map order enum
+  - type:
+      text: BlendFactor
+      url: Alis.Core.Graphic.Sdl2.Enums.BlendFactor.html
+    description: The sdl blend factor enum
+  - type:
+      text: BlendModes
+      url: Alis.Core.Graphic.Sdl2.Enums.BlendModes.html
+    description: The sdl blend mode enum
+  - type:
+      text: BlendOperation
+      url: Alis.Core.Graphic.Sdl2.Enums.BlendOperation.html
+    description: The sdl blend operation enum
+  - type:
+      text: Contexts
+      url: Alis.Core.Graphic.Sdl2.Enums.Contexts.html
+    description: The sdl gl context enum
+  - type:
+      text: DisplayEventId
+      url: Alis.Core.Graphic.Sdl2.Enums.DisplayEventId.html
+    description: The sdl display event id enum
+  - type:
+      text: DisplayOrientation
+      url: Alis.Core.Graphic.Sdl2.Enums.DisplayOrientation.html
+    description: The sdl display orientation enum
+  - type:
+      text: EventAction
+      url: Alis.Core.Graphic.Sdl2.Enums.EventAction.html
+    description: The sdl event action enum
+  - type:
+      text: EventType
+      url: Alis.Core.Graphic.Sdl2.Enums.EventType.html
+    description: The sdl event type enum
+  - type:
+      text: FlashOperation
+      url: Alis.Core.Graphic.Sdl2.Enums.FlashOperation.html
+    description: The sdl flash operation enum
+  - type:
+      text: GameControllerAxis
+      url: Alis.Core.Graphic.Sdl2.Enums.GameControllerAxis.html
+    description: The sdl game controller axis enum
+  - type:
+      text: GameControllerBindType
+      url: Alis.Core.Graphic.Sdl2.Enums.GameControllerBindType.html
+    description: The sdl game controller bind type enum
+  - type:
+      text: GameControllerButton
+      url: Alis.Core.Graphic.Sdl2.Enums.GameControllerButton.html
+    description: The sdl game controller button enum
+  - type:
+      text: Haptic
+      url: Alis.Core.Graphic.Sdl2.Enums.Haptic.html
+    description: The haptic enum
+  - type:
+      text: HapticConstant
+      url: Alis.Core.Graphic.Sdl2.Enums.HapticConstant.html
+    description: The haptic constant enum
+  - type:
+      text: Hat
+      url: Alis.Core.Graphic.Sdl2.Enums.Hat.html
+    description: The hat enum
+  - type:
+      text: HintPriority
+      url: Alis.Core.Graphic.Sdl2.Enums.HintPriority.html
+    description: The sdl hint priority enum
+  - type:
+      text: HitTestResult
+      url: Alis.Core.Graphic.Sdl2.Enums.HitTestResult.html
+    description: The sdl hit test result enum
+  - type:
+      text: InitSettings
+      url: Alis.Core.Graphic.Sdl2.Enums.InitSettings.html
+    description: The sdl init enum
+  - type:
+      text: JoystickPowerLevel
+      url: Alis.Core.Graphic.Sdl2.Enums.JoystickPowerLevel.html
+    description: The sdl joystick power level enum
+  - type:
+      text: JoystickType
+      url: Alis.Core.Graphic.Sdl2.Enums.JoystickType.html
+    description: The sdl joystick type enum
+  - type:
+      text: KeyMods
+      url: Alis.Core.Graphic.Sdl2.Enums.KeyMods.html
+    description: The sdl key mod enum
+  - type:
+      text: LogCategory
+      url: Alis.Core.Graphic.Sdl2.Enums.LogCategory.html
+    description: The sdl log category enum
+  - type:
+      text: LogPriority
+      url: Alis.Core.Graphic.Sdl2.Enums.LogPriority.html
+    description: The sdl log priority enum
+  - type:
+      text: MouseWheelDirection
+      url: Alis.Core.Graphic.Sdl2.Enums.MouseWheelDirection.html
+    description: The sdl mouse wheel direction enum
+  - type:
+      text: PackedLayout
+      url: Alis.Core.Graphic.Sdl2.Enums.PackedLayout.html
+    description: The sdl packed layout enum
+  - type:
+      text: PackedOrder
+      url: Alis.Core.Graphic.Sdl2.Enums.PackedOrder.html
+    description: The sdl packed order enum
+  - type:
+      text: PowerState
+      url: Alis.Core.Graphic.Sdl2.Enums.PowerState.html
+    description: The sdl power state enum
+  - type:
+      text: Profiles
+      url: Alis.Core.Graphic.Sdl2.Enums.Profiles.html
+    description: The sdl gl profile enum
+  - type:
+      text: RendererFlips
+      url: Alis.Core.Graphic.Sdl2.Enums.RendererFlips.html
+    description: The sdl renderer flip enum
+  - type:
+      text: Renderers
+      url: Alis.Core.Graphic.Sdl2.Enums.Renderers.html
+    description: The sdl renderer flags enum
+  - type:
+      text: RwOps
+      url: Alis.Core.Graphic.Sdl2.Enums.RwOps.html
+    description: The rw ops enum
+  - type:
+      text: RwSeek
+      url: Alis.Core.Graphic.Sdl2.Enums.RwSeek.html
+    description: The rw seek enum
+  - type:
+      text: ScaleMode
+      url: Alis.Core.Graphic.Sdl2.Enums.ScaleMode.html
+    description: The sdl scale mode enum
+  - type:
+      text: SensorType
+      url: Alis.Core.Graphic.Sdl2.Enums.SensorType.html
+    description: The sdl sensor type enum
+  - type:
+      text: SysWmType
+      url: Alis.Core.Graphic.Sdl2.Enums.SysWmType.html
+    description: The sdl sys wm type enum
+  - type:
+      text: SystemCursor
+      url: Alis.Core.Graphic.Sdl2.Enums.SystemCursor.html
+    description: The sdl system cursor enum
+  - type:
+      text: TextureAccess
+      url: Alis.Core.Graphic.Sdl2.Enums.TextureAccess.html
+    description: The sdl texture access enum
+  - type:
+      text: TextureModulate
+      url: Alis.Core.Graphic.Sdl2.Enums.TextureModulate.html
+    description: The sdl texture modulate enum
+  - type:
+      text: TouchDeviceType
+      url: Alis.Core.Graphic.Sdl2.Enums.TouchDeviceType.html
+    description: The sdl touch device type enum
+  - type:
+      text: TypePixel
+      url: Alis.Core.Graphic.Sdl2.Enums.TypePixel.html
+    description: The sdl pixel type enum
+  - type:
+      text: WinRtDeviceFamily
+      url: Alis.Core.Graphic.Sdl2.Enums.WinRtDeviceFamily.html
+    description: The sdl winrt device family enum
+  - type:
+      text: WindowEventId
+      url: Alis.Core.Graphic.Sdl2.Enums.WindowEventId.html
+    description: The sdl window event id enum
+  - type:
+      text: WindowPos
+      url: Alis.Core.Graphic.Sdl2.Enums.WindowPos.html
+    description: The window pos enum
+  - type:
+      text: WindowSettings
+      url: Alis.Core.Graphic.Sdl2.Enums.WindowSettings.html
+    description: The sdl window flags enum
+languageId: csharp

@@ -1,0 +1,62 @@
+### YamlMime:ApiPage
+title: Struct ToiOutput
+body:
+- api1: Struct ToiOutput
+  id: Alis_Core_Physic_Collision_TOI_ToiOutput
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/TOI/TOIOutput.cs#L35
+  metadata:
+    uid: Alis.Core.Physic.Collision.TOI.ToiOutput
+    commentId: T:Alis.Core.Physic.Collision.TOI.ToiOutput
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Physic.Collision.TOI
+      url: Alis.Core.Physic.Collision.TOI.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The toi output
+- code: public struct ToiOutput
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Properties
+- api3: Property
+  id: Alis_Core_Physic_Collision_TOI_ToiOutput_Property
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/TOI/TOIOutput.cs#L45
+  metadata:
+    uid: Alis.Core.Physic.Collision.TOI.ToiOutput.Property
+    commentId: P:Alis.Core.Physic.Collision.TOI.ToiOutput.Property
+- markdown: The
+- code: public float Property { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: State
+  id: Alis_Core_Physic_Collision_TOI_ToiOutput_State
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/TOI/TOIOutput.cs#L40
+  metadata:
+    uid: Alis.Core.Physic.Collision.TOI.ToiOutput.State
+    commentId: P:Alis.Core.Physic.Collision.TOI.ToiOutput.State
+- markdown: The state
+- code: public ToiOutputState State { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: ToiOutputState
+      url: Alis.Core.Physic.Collision.TOI.ToiOutputState.html
+languageId: csharp
+metadata:
+  description: The toi output

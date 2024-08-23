@@ -1,0 +1,15 @@
+### YamlMime:ApiPage
+title: Namespace Alis.Core.Graphic.Properties
+body:
+- api1: Namespace Alis.Core.Graphic.Properties
+  id: Alis_Core_Graphic_Properties
+  metadata:
+    uid: Alis.Core.Graphic.Properties
+    commentId: N:Alis.Core.Graphic.Properties
+- h3: Classes
+- parameters:
+  - type:
+      text: Sdl2Dlls
+      url: Alis.Core.Graphic.Properties.Sdl2Dlls.html
+    description: The im gui dlls class
+languageId: csharp

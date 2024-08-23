@@ -1,0 +1,101 @@
+### YamlMime:ApiPage
+title: Struct ToiInput
+body:
+- api1: Struct ToiInput
+  id: Alis_Core_Physic_Collision_TOI_ToiInput
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/TOI/TOIInput.cs#L35
+  metadata:
+    uid: Alis.Core.Physic.Collision.TOI.ToiInput
+    commentId: T:Alis.Core.Physic.Collision.TOI.ToiInput
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Physic.Collision.TOI
+      url: Alis.Core.Physic.Collision.TOI.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: Input parameters for CalculateTimeOfImpact
+- code: public struct ToiInput
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Properties
+- api3: Max
+  id: Alis_Core_Physic_Collision_TOI_ToiInput_Max
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/TOI/TOIInput.cs#L60
+  metadata:
+    uid: Alis.Core.Physic.Collision.TOI.ToiInput.Max
+    commentId: P:Alis.Core.Physic.Collision.TOI.ToiInput.Max
+- markdown: The max
+- code: public float Max { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: ProxyA
+  id: Alis_Core_Physic_Collision_TOI_ToiInput_ProxyA
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/TOI/TOIInput.cs#L40
+  metadata:
+    uid: Alis.Core.Physic.Collision.TOI.ToiInput.ProxyA
+    commentId: P:Alis.Core.Physic.Collision.TOI.ToiInput.ProxyA
+- markdown: The proxy
+- code: public DistanceProxy ProxyA { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: DistanceProxy
+      url: Alis.Core.Physic.Collision.Distance.DistanceProxy.html
+- api3: ProxyB
+  id: Alis_Core_Physic_Collision_TOI_ToiInput_ProxyB
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/TOI/TOIInput.cs#L45
+  metadata:
+    uid: Alis.Core.Physic.Collision.TOI.ToiInput.ProxyB
+    commentId: P:Alis.Core.Physic.Collision.TOI.ToiInput.ProxyB
+- markdown: The proxy
+- code: public DistanceProxy ProxyB { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: DistanceProxy
+      url: Alis.Core.Physic.Collision.Distance.DistanceProxy.html
+- api3: SweepA
+  id: Alis_Core_Physic_Collision_TOI_ToiInput_SweepA
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/TOI/TOIInput.cs#L50
+  metadata:
+    uid: Alis.Core.Physic.Collision.TOI.ToiInput.SweepA
+    commentId: P:Alis.Core.Physic.Collision.TOI.ToiInput.SweepA
+- markdown: The sweep
+- code: public Sweep SweepA { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Sweep
+      url: Alis.Core.Physic.Collision.TOI.Sweep.html
+- api3: SweepB
+  id: Alis_Core_Physic_Collision_TOI_ToiInput_SweepB
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/TOI/TOIInput.cs#L55
+  metadata:
+    uid: Alis.Core.Physic.Collision.TOI.ToiInput.SweepB
+    commentId: P:Alis.Core.Physic.Collision.TOI.ToiInput.SweepB
+- markdown: The sweep
+- code: public Sweep SweepB { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Sweep
+      url: Alis.Core.Physic.Collision.TOI.Sweep.html
+languageId: csharp
+metadata:
+  description: Input parameters for CalculateTimeOfImpact

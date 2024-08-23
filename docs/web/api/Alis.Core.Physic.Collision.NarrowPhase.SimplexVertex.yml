@@ -1,0 +1,114 @@
+### YamlMime:ApiPage
+title: Struct SimplexVertex
+body:
+- api1: Struct SimplexVertex
+  id: Alis_Core_Physic_Collision_NarrowPhase_SimplexVertex
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/SimplexVertex.cs#L37
+  metadata:
+    uid: Alis.Core.Physic.Collision.NarrowPhase.SimplexVertex
+    commentId: T:Alis.Core.Physic.Collision.NarrowPhase.SimplexVertex
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Physic.Collision.NarrowPhase
+      url: Alis.Core.Physic.Collision.NarrowPhase.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The simplex vertex
+- code: internal struct SimplexVertex
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Properties
+- api3: A
+  id: Alis_Core_Physic_Collision_NarrowPhase_SimplexVertex_A
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/SimplexVertex.cs#L40
+  metadata:
+    uid: Alis.Core.Physic.Collision.NarrowPhase.SimplexVertex.A
+    commentId: P:Alis.Core.Physic.Collision.NarrowPhase.SimplexVertex.A
+- markdown: Barycentric coordinate for closest point
+- code: public float A { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: IndexA
+  id: Alis_Core_Physic_Collision_NarrowPhase_SimplexVertex_IndexA
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/SimplexVertex.cs#L43
+  metadata:
+    uid: Alis.Core.Physic.Collision.NarrowPhase.SimplexVertex.IndexA
+    commentId: P:Alis.Core.Physic.Collision.NarrowPhase.SimplexVertex.IndexA
+- markdown: wA index
+- code: public int IndexA { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: IndexB
+  id: Alis_Core_Physic_Collision_NarrowPhase_SimplexVertex_IndexB
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/SimplexVertex.cs#L46
+  metadata:
+    uid: Alis.Core.Physic.Collision.NarrowPhase.SimplexVertex.IndexB
+    commentId: P:Alis.Core.Physic.Collision.NarrowPhase.SimplexVertex.IndexB
+- markdown: wB index
+- code: public int IndexB { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: W
+  id: Alis_Core_Physic_Collision_NarrowPhase_SimplexVertex_W
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/SimplexVertex.cs#L49
+  metadata:
+    uid: Alis.Core.Physic.Collision.NarrowPhase.SimplexVertex.W
+    commentId: P:Alis.Core.Physic.Collision.NarrowPhase.SimplexVertex.W
+- markdown: wB - wA
+- code: public Vector2 W { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: Wa
+  id: Alis_Core_Physic_Collision_NarrowPhase_SimplexVertex_Wa
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/SimplexVertex.cs#L52
+  metadata:
+    uid: Alis.Core.Physic.Collision.NarrowPhase.SimplexVertex.Wa
+    commentId: P:Alis.Core.Physic.Collision.NarrowPhase.SimplexVertex.Wa
+- markdown: Support point in proxyA
+- code: public Vector2 Wa { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: Wb
+  id: Alis_Core_Physic_Collision_NarrowPhase_SimplexVertex_Wb
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/SimplexVertex.cs#L55
+  metadata:
+    uid: Alis.Core.Physic.Collision.NarrowPhase.SimplexVertex.Wb
+    commentId: P:Alis.Core.Physic.Collision.NarrowPhase.SimplexVertex.Wb
+- markdown: Support point in proxyB
+- code: public Vector2 Wb { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+languageId: csharp
+metadata:
+  description: The simplex vertex

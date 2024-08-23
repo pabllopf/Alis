@@ -1,0 +1,21 @@
+### YamlMime:ApiPage
+title: Interface IInputSetting
+body:
+- api1: Interface IInputSetting
+  id: Alis_Core_Ecs_System_Setting_Input_IInputSetting
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Setting/Input/IInputSetting.cs#L35
+  metadata:
+    uid: Alis.Core.Ecs.System.Setting.Input.IInputSetting
+    commentId: T:Alis.Core.Ecs.System.Setting.Input.IInputSetting
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Ecs.System.Setting.Input
+      url: Alis.Core.Ecs.System.Setting.Input.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The input setting interface
+- code: public interface IInputSetting
+languageId: csharp
+metadata:
+  description: The input setting interface

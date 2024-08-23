@@ -1,0 +1,23 @@
+### YamlMime:ApiPage
+title: Namespace Alis.Core.Aspect.Memory
+body:
+- api1: Namespace Alis.Core.Aspect.Memory
+  id: Alis_Core_Aspect_Memory
+  metadata:
+    uid: Alis.Core.Aspect.Memory
+    commentId: N:Alis.Core.Aspect.Memory
+- h3: Namespaces
+- parameters:
+  - type:
+      text: Alis.Core.Aspect.Memory.Attributes
+      url: Alis.Core.Aspect.Memory.Attributes.html
+  - type:
+      text: Alis.Core.Aspect.Memory.Exceptions
+      url: Alis.Core.Aspect.Memory.Exceptions.html
+- h3: Classes
+- parameters:
+  - type:
+      text: Validator
+      url: Alis.Core.Aspect.Memory.Validator.html
+    description: The validator class
+languageId: csharp

@@ -1,0 +1,355 @@
+### YamlMime:ApiPage
+title: Namespace Alis.Core.Aspect.Fluent.Words
+body:
+- api1: Namespace Alis.Core.Aspect.Fluent.Words
+  id: Alis_Core_Aspect_Fluent_Words
+  metadata:
+    uid: Alis.Core.Aspect.Fluent.Words
+    commentId: N:Alis.Core.Aspect.Fluent.Words
+- h3: Interfaces
+- parameters:
+  - type:
+      text: IAdd<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IAdd-2.html
+    description: The add interface
+  - type:
+      text: IAddAnimation<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IAddAnimation-2.html
+    description: The add animation interface
+  - type:
+      text: IAddComponent<TBuilder, TType>
+      url: Alis.Core.Aspect.Fluent.Words.IAddComponent-2.html
+    description: The add component class
+  - type:
+      text: IAddFrame<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IAddFrame-2.html
+    description: The add frame interface
+  - type:
+      text: IAds<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IAds-2.html
+    description: The ads interface
+  - type:
+      text: IAi<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IAi-2.html
+    description: The ai interface
+  - type:
+      text: IAngularVelocity<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IAngularVelocity-2.html
+    description: The angular velocity interface
+  - type:
+      text: IAudio<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IAudio-2.html
+    description: The audio interface
+  - type:
+      text: IAuthor<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IAuthor-2.html
+    description: The author interface
+  - type:
+      text: IAutoTilling<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IAutoTilling-2.html
+    description: The auto tilling interface
+  - type:
+      text: IBackground<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IBackground-2.html
+    description: The background interface
+  - type:
+      text: IBackgroundColor<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IBackgroundColor-2.html
+    description: The background color interface
+  - type:
+      text: IBodyType<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IBodyType-2.html
+    description: The body type interface
+  - type:
+      text: ICloud<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.ICloud-2.html
+    description: The cloud interface
+  - type:
+      text: IConfiguration<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IConfiguration-2.html
+    description: The configuration interface
+  - type:
+      text: ICreate<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.ICreate-2.html
+    description: The create interface
+  - type:
+      text: IDebug<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IDebug-2.html
+    description: The debug interface
+  - type:
+      text: IDebugColor<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IDebugColor-2.html
+    description: The debug color interface
+  - type:
+      text: IDelete<TBuilder>
+      url: Alis.Core.Aspect.Fluent.Words.IDelete-1.html
+    description: The delete interface
+  - type:
+      text: IDensity<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IDensity-2.html
+    description: The density interface
+  - type:
+      text: IDepth<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IDepth-2.html
+    description: The depth interface
+  - type:
+      text: IDescription<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IDescription-2.html
+    description: The description interface
+  - type:
+      text: IFile<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IFile-2.html
+    description: The file interface
+  - type:
+      text: IFilePath<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IFilePath-2.html
+    description: The file path interface
+  - type:
+      text: IFixedRotation<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IFixedRotation-2.html
+    description: The fixed rotation interface
+  - type:
+      text: IFriction<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IFriction-2.html
+    description: The friction interface
+  - type:
+      text: IGeneral<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IGeneral-2.html
+    description: The general interface
+  - type:
+      text: IGraphic<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IGraphic-2.html
+    description: The graphic interface
+  - type:
+      text: IGravity<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IGravity-2.html
+    description: The gravity interface
+  - type:
+      text: IGravityScale<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IGravityScale-2.html
+    description: The gravity scale interface
+  - type:
+      text: IHas<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IHas-2.html
+    description: The has interface
+  - type:
+      text: IIcon<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IIcon-2.html
+    description: The icon interface
+  - type:
+      text: IInput<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IInput-2.html
+    description: The input interface
+  - type:
+      text: IIs<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IIs-2.html
+    description: The is interface
+  - type:
+      text: IIsActive<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IIsActive-2.html
+    description: The is active interface
+  - type:
+      text: IIsDynamic<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IIsDynamic-2.html
+    description: The is dynamic interface
+  - type:
+      text: IIsResizable<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IIsResizable-2.html
+    description: The is resizable interface
+  - type:
+      text: IIsStatic<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IIsStatic-2.html
+    description: The is static interface
+  - type:
+      text: IIsTrigger<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IIsTrigger-2.html
+    description: The is trigger interface
+  - type:
+      text: ILicense<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.ILicense-2.html
+    description: The license interface
+  - type:
+      text: ILinearVelocity<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.ILinearVelocity-2.html
+    description: The linear velocity interface
+  - type:
+      text: ILogLevel<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.ILogLevel-2.html
+    description: The log level interface
+  - type:
+      text: IManager<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IManager-2.html
+    description: The manager interface
+  - type:
+      text: IManagerOf<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IManagerOf-2.html
+    description: The manager of interface
+  - type:
+      text: IMass<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IMass-2.html
+    description: The mass interface
+  - type:
+      text: IMute<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IMute-2.html
+    description: The mute interface
+  - type:
+      text: IName<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IName-2.html
+    description: The name interface
+  - type:
+      text: INetwork<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.INetwork-2.html
+    description: The network interface
+  - type:
+      text: IOrder<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IOrder-2.html
+    description: The order interface
+  - type:
+      text: IPhysic<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IPhysic-2.html
+    description: The physic interface
+  - type:
+      text: IPlayOnAwake<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IPlayOnAwake-2.html
+    description: The play on awake interface
+  - type:
+      text: IPlugin<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IPlugin-2.html
+    description: The plugin interface
+  - type:
+      text: IPosition2D<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IPosition2D-2.html
+    description: The position interface
+  - type:
+      text: IProfile<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IProfile-2.html
+    description: The profile interface
+  - type:
+      text: IRelativePosition<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IRelativePosition-2.html
+    description: The relative position interface
+  - type:
+      text: IResolution<TBuilder, TArgument1, TArgument2>
+      url: Alis.Core.Aspect.Fluent.Words.IResolution-3.html
+    description: The resolution interface
+  - type:
+      text: IRestitution<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IRestitution-2.html
+    description: The restitution interface
+  - type:
+      text: IRotation<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IRotation-2.html
+    description: The rotation interface
+  - type:
+      text: IRun
+      url: Alis.Core.Aspect.Fluent.Words.IRun.html
+    description: The run interface
+  - type:
+      text: IScale2D<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IScale2D-2.html
+    description: The scale interface
+  - type:
+      text: IScene<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IScene-2.html
+    description: The scene interface
+  - type:
+      text: IScreenMode<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IScreenMode-2.html
+    description: The screen mode interface
+  - type:
+      text: IScript<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IScript-2.html
+    description: The script interface
+  - type:
+      text: ISet<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.ISet-2.html
+    description: The set interface
+  - type:
+      text: ISetAudioClip<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.ISetAudioClip-2.html
+    description: The set audio clip interface
+  - type:
+      text: ISetMax<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.ISetMax-2.html
+    description: The set max interface
+  - type:
+      text: ISetTexture<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.ISetTexture-2.html
+    description: The texture interface
+  - type:
+      text: ISettings<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.ISettings-2.html
+    description: The settings interface
+  - type:
+      text: ISize<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.ISize-2.html
+    description: The size interface
+  - type:
+      text: ISpeed<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.ISpeed-2.html
+    description: The speed interface
+  - type:
+      text: ISplashScreen<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.ISplashScreen-2.html
+    description: The splash screen interface
+  - type:
+      text: IStore<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IStore-2.html
+    description: The store interface
+  - type:
+      text: IStyle<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IStyle-2.html
+    description: The style interface
+  - type:
+      text: ITime<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.ITime-2.html
+    description: The time interface
+  - type:
+      text: ITransform<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.ITransform-2.html
+    description: The transform interface
+  - type:
+      text: IUpdate<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IUpdate-2.html
+    description: The update interface
+  - type:
+      text: IVersion<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IVersion-2.html
+    description: The version interface
+  - type:
+      text: IVolume<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IVolume-2.html
+    description: The volume interface
+  - type:
+      text: IWhere<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IWhere-2.html
+    description: The where interface
+  - type:
+      text: IWindow<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IWindow-2.html
+    description: The window interface
+  - type:
+      text: IWith<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IWith-2.html
+    description: Simple comment
+  - type:
+      text: IWithColor<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IWithColor-2.html
+    description: The with color interface
+  - type:
+      text: IWithModel<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IWithModel-2.html
+    description: The with model interface
+  - type:
+      text: IWithName<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IWithName-2.html
+    description: Define the word "Name"
+  - type:
+      text: IWithTag<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IWithTag-2.html
+    description: Define the word "Tag"
+  - type:
+      text: IWorld<TBuilder, TArgument>
+      url: Alis.Core.Aspect.Fluent.Words.IWorld-2.html
+    description: The world interface
+languageId: csharp

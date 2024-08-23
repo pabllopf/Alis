@@ -1,0 +1,15 @@
+### YamlMime:ApiPage
+title: Namespace Alis.Builder.Core.Ecs.System.Setting.Network
+body:
+- api1: Namespace Alis.Builder.Core.Ecs.System.Setting.Network
+  id: Alis_Builder_Core_Ecs_System_Setting_Network
+  metadata:
+    uid: Alis.Builder.Core.Ecs.System.Setting.Network
+    commentId: N:Alis.Builder.Core.Ecs.System.Setting.Network
+- h3: Classes
+- parameters:
+  - type:
+      text: NetworkSettingBuilder
+      url: Alis.Builder.Core.Ecs.System.Setting.Network.NetworkSettingBuilder.html
+    description: The audio setting builder class
+languageId: csharp

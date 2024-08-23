@@ -1,0 +1,21 @@
+### YamlMime:ApiPage
+title: Interface IPhysicSetting
+body:
+- api1: Interface IPhysicSetting
+  id: Alis_Core_Ecs_System_Setting_Physic_IPhysicSetting
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Setting/Physic/IPhysicSetting.cs#L35
+  metadata:
+    uid: Alis.Core.Ecs.System.Setting.Physic.IPhysicSetting
+    commentId: T:Alis.Core.Ecs.System.Setting.Physic.IPhysicSetting
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Ecs.System.Setting.Physic
+      url: Alis.Core.Ecs.System.Setting.Physic.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The physic setting interface
+- code: public interface IPhysicSetting
+languageId: csharp
+metadata:
+  description: The physic setting interface

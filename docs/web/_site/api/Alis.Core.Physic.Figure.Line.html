@@ -1,0 +1,987 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+      <title>Class Line | Alis - Develop the video games of your dreams &#128175; free!! </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class Line | Alis - Develop the video games of your dreams &#128175; free!! ">
+      
+      <meta name="description" content="The line class">
+      <link rel="icon" href="../resources/logo.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ApiPage">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../resources/logo.png" alt="Alis">
+            Alis
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 class='section api' data-uid='Alis.Core.Physic.Figure.Line' data-commentid='T:Alis.Core.Physic.Figure.Line' id='Alis_Core_Physic_Figure_Line'>Class Line    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L40'><i class='bi bi-code-slash'></i></a></h1>
+ <div class="facts text-secondary">
+<dl><dt>Namespace</dt><dd><a href='Alis.Core.Physic.Figure.html'>Alis.Core.Physic.Figure</a></dd></dl><dl><dt>Assembly</dt><dd>Alis.dll</dd></dl>
+</div><p>The line class</p>
+<pre><code class='lang-csharp'>public static class Line</code></pre><h4 class='section'>Inheritance</h4><dl class="typelist inheritance"><dd>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object'>object</a>
+</div>
+<div>
+<a href='Alis.Core.Physic.Figure.Line.html'>Line</a>
+</div>
+
+</dd></dl><h4 class='section'>Inherited Members</h4><dl class="typelist"><dd>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)'>object.Equals(object?)</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)'>object.Equals(object?, object?)</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.gethashcode'>object.GetHashCode()</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.gettype'>object.GetType()</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone'>object.MemberwiseClone()</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.referenceequals'>object.ReferenceEquals(object?, object?)</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.tostring'>object.ToString()</a>
+</div>
+
+</dd></dl><h2 class='section'>Methods</h2><h3 class='section api' data-uid='Alis.Core.Physic.Figure.Line.AddVectors(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)' data-commentid='M:Alis.Core.Physic.Figure.Line.AddVectors(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)' id='Alis_Core_Physic_Figure_Line_AddVectors_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_'>AddVectors(Vector2, Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L135'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Adds the vectors using the specified vector 1</p>
+<pre><code class='lang-csharp'>private static Vector2 AddVectors(Vector2 vector1, Vector2 vector2)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>vector1</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The vector</p>
+
+</dd><dt><code>vector2</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The vector</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The vector</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Figure.Line.ArePointsEqual(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)' data-commentid='M:Alis.Core.Physic.Figure.Line.ArePointsEqual(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)' id='Alis_Core_Physic_Figure_Line_ArePointsEqual_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_'>ArePointsEqual(Vector2, Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L201'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Describes whether are points equal</p>
+<pre><code class='lang-csharp'>private static bool ArePointsEqual(Vector2 point1, Vector2 point2)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>point1</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The point</p>
+
+</dd><dt><code>point2</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The point</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+<p>The bool</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Figure.Line.CalculateDenominator(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)' data-commentid='M:Alis.Core.Physic.Figure.Line.CalculateDenominator(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)' id='Alis_Core_Physic_Figure_Line_CalculateDenominator_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_'>CalculateDenominator(float, float, float, float, float, float, float, float)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L225'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Calculates the denominator using the specified val 1</p>
+<pre><code class='lang-csharp'>private static float CalculateDenominator(float val1, float val2, float val3, float val4, float val5, float val6, float val7, float val8)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>val1</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The val</p>
+
+</dd><dt><code>val2</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The val</p>
+
+</dd><dt><code>val3</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The val</p>
+
+</dd><dt><code>val4</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The val</p>
+
+</dd><dt><code>val5</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The val</p>
+
+</dd><dt><code>val6</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The val</p>
+
+</dd><dt><code>val7</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The val</p>
+
+</dd><dt><code>val8</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The val</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The float</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Figure.Line.CalculateDistance(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)' data-commentid='M:Alis.Core.Physic.Figure.Line.CalculateDistance(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)' id='Alis_Core_Physic_Figure_Line_CalculateDistance_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_'>CalculateDistance(Vector2, Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L96'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Calculates the distance using the specified point 1</p>
+<pre><code class='lang-csharp'>private static float CalculateDistance(Vector2 point1, Vector2 point2)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>point1</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The point</p>
+
+</dd><dt><code>point2</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The point</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The float</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Figure.Line.CalculateDistanceFromPointToLine(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,System.Single,System.Single)' data-commentid='M:Alis.Core.Physic.Figure.Line.CalculateDistanceFromPointToLine(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,System.Single,System.Single)' id='Alis_Core_Physic_Figure_Line_CalculateDistanceFromPointToLine_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_System_Single_System_Single_'>CalculateDistanceFromPointToLine(Vector2, Vector2, Vector2, float, float)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L83'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Calculates the distance from point to line using the specified point</p>
+<pre><code class='lang-csharp'>private static float CalculateDistanceFromPointToLine(Vector2 point, Vector2 start, Vector2 v, float c1, float c2)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>point</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The point</p>
+
+</dd><dt><code>start</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The start</p>
+
+</dd><dt><code>v</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>c1</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>c2</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The float</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Figure.Line.CalculateIntersectionPoint(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)' data-commentid='M:Alis.Core.Physic.Figure.Line.CalculateIntersectionPoint(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)' id='Alis_Core_Physic_Figure_Line_CalculateIntersectionPoint_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_'>CalculateIntersectionPoint(float, float, float, float, float, float)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L275'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Calculates the intersection point using the specified x 1</p>
+<pre><code class='lang-csharp'>private static Vector2 CalculateIntersectionPoint(float x1, float ua, float x2, float x3, float y1, float y2)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>x1</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>ua</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The ua</p>
+
+</dd><dt><code>x2</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>x3</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>y1</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>y2</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The vector</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Figure.Line.CalculateIntersectionPoint(Alis.Core.Aspect.Math.Vector.Vector2,System.Single,System.Single,System.Single)' data-commentid='M:Alis.Core.Physic.Figure.Line.CalculateIntersectionPoint(Alis.Core.Aspect.Math.Vector.Vector2,System.Single,System.Single,System.Single)' id='Alis_Core_Physic_Figure_Line_CalculateIntersectionPoint_Alis_Core_Aspect_Math_Vector_Vector2_System_Single_System_Single_System_Single_'>CalculateIntersectionPoint(Vector2, float, float, float)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L421'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Calculates the intersection point using the specified point 1</p>
+<pre><code class='lang-csharp'>private static Vector2 CalculateIntersectionPoint(Vector2 point1, float ua, float b, float d)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>point1</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The point</p>
+
+</dd><dt><code>ua</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The ua</p>
+
+</dd><dt><code>b</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>d</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The vector</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Figure.Line.CalculateUa(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)' data-commentid='M:Alis.Core.Physic.Figure.Line.CalculateUa(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)' id='Alis_Core_Physic_Figure_Line_CalculateUa_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_'>CalculateUa(float, float, float, float, float, float, float, float, float)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L240'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Calculates the ua using the specified val 1</p>
+<pre><code class='lang-csharp'>private static float CalculateUa(float val1, float val2, float val3, float val4, float val5, float val6, float val7, float val8, float denom)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>val1</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The val</p>
+
+</dd><dt><code>val2</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The val</p>
+
+</dd><dt><code>val3</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The val</p>
+
+</dd><dt><code>val4</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The val</p>
+
+</dd><dt><code>val5</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The val</p>
+
+</dd><dt><code>val6</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The val</p>
+
+</dd><dt><code>val7</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The val</p>
+
+</dd><dt><code>val8</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The val</p>
+
+</dd><dt><code>denom</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The denom</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The float</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Figure.Line.CalculateUa(System.Single,System.Single,System.Single,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,System.Single)' data-commentid='M:Alis.Core.Physic.Figure.Line.CalculateUa(System.Single,System.Single,System.Single,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,System.Single)' id='Alis_Core_Physic_Figure_Line_CalculateUa_System_Single_System_Single_System_Single_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_System_Single_'>CalculateUa(float, float, float, Vector2, Vector2, float)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L377'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Calculates the ua using the specified a</p>
+<pre><code class='lang-csharp'>private static float CalculateUa(float a, float c, float d, Vector2 point1, Vector2 point3, float denom)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>a</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>c</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>d</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>point1</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The point</p>
+
+</dd><dt><code>point3</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The point</p>
+
+</dd><dt><code>denom</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The denom</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The float</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Figure.Line.CalculateUb(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)' data-commentid='M:Alis.Core.Physic.Figure.Line.CalculateUb(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)' id='Alis_Core_Physic_Figure_Line_CalculateUb_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_'>CalculateUb(float, float, float, float, float, float, float, float, float)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L255'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Calculates the ub using the specified val 1</p>
+<pre><code class='lang-csharp'>private static float CalculateUb(float val1, float val2, float val3, float val4, float val5, float val6, float val7, float val8, float denom)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>val1</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The val</p>
+
+</dd><dt><code>val2</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The val</p>
+
+</dd><dt><code>val3</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The val</p>
+
+</dd><dt><code>val4</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The val</p>
+
+</dd><dt><code>val5</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The val</p>
+
+</dd><dt><code>val6</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The val</p>
+
+</dd><dt><code>val7</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The val</p>
+
+</dd><dt><code>val8</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The val</p>
+
+</dd><dt><code>denom</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The denom</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The float</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Figure.Line.CalculateUb(System.Single,System.Single,System.Single,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,System.Single)' data-commentid='M:Alis.Core.Physic.Figure.Line.CalculateUb(System.Single,System.Single,System.Single,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,System.Single)' id='Alis_Core_Physic_Figure_Line_CalculateUb_System_Single_System_Single_System_Single_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_System_Single_'>CalculateUb(float, float, float, Vector2, Vector2, float)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L396'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Calculates the ub using the specified b</p>
+<pre><code class='lang-csharp'>private static float CalculateUb(float b, float d, float a, Vector2 point1, Vector2 point3, float denom)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>b</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>d</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>a</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>point1</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The point</p>
+
+</dd><dt><code>point3</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The point</p>
+
+</dd><dt><code>denom</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The denom</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The float</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Figure.Line.DistanceBetweenPointAndLineSegment(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)' data-commentid='M:Alis.Core.Physic.Figure.Line.DistanceBetweenPointAndLineSegment(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)' id='Alis_Core_Physic_Figure_Line_DistanceBetweenPointAndLineSegment_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_'>DistanceBetweenPointAndLineSegment(Vector2, Vector2, Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L49'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Distances the between point and line segment using the specified point</p>
+<pre><code class='lang-csharp'>public static float DistanceBetweenPointAndLineSegment(Vector2 point, Vector2 start, Vector2 end)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>point</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The point</p>
+
+</dd><dt><code>start</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The start</p>
+
+</dd><dt><code>end</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The end</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The float</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Figure.Line.DotProduct(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)' data-commentid='M:Alis.Core.Physic.Figure.Line.DotProduct(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)' id='Alis_Core_Physic_Figure_Line_DotProduct_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_'>DotProduct(Vector2, Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L112'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Dots the product using the specified vector 1</p>
+<pre><code class='lang-csharp'>private static float DotProduct(Vector2 vector1, Vector2 vector2)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>vector1</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The vector</p>
+
+</dd><dt><code>vector2</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The vector</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The float</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Figure.Line.HasIntersection(System.Single,System.Single)' data-commentid='M:Alis.Core.Physic.Figure.Line.HasIntersection(System.Single,System.Single)' id='Alis_Core_Physic_Figure_Line_HasIntersection_System_Single_System_Single_'>HasIntersection(float, float)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L358'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Describes whether has intersection</p>
+<pre><code class='lang-csharp'>private static bool HasIntersection(float ua, float ub)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>ua</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The ua</p>
+
+</dd><dt><code>ub</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The ub</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+<p>The bool</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Figure.Line.IsC1LessThanOrEqualToZero(System.Single)' data-commentid='M:Alis.Core.Physic.Figure.Line.IsC1LessThanOrEqualToZero(System.Single)' id='Alis_Core_Physic_Figure_Line_IsC1LessThanOrEqualToZero_System_Single_'>IsC1LessThanOrEqualToZero(float)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L119'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Describes whether is c 1 less than or equal to zero</p>
+<pre><code class='lang-csharp'>private static bool IsC1LessThanOrEqualToZero(float c1)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>c1</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+<p>The bool</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Figure.Line.IsC2LessThanOrEqualToC1(System.Single,System.Single)' data-commentid='M:Alis.Core.Physic.Figure.Line.IsC2LessThanOrEqualToC1(System.Single,System.Single)' id='Alis_Core_Physic_Figure_Line_IsC2LessThanOrEqualToC1_System_Single_System_Single_'>IsC2LessThanOrEqualToC1(float, float)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L127'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Describes whether is c 2 less than or equal to c 1</p>
+<pre><code class='lang-csharp'>private static bool IsC2LessThanOrEqualToC1(float c2, float c1)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>c2</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>c1</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+<p>The bool</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Figure.Line.IsDenominatorZero(System.Single)' data-commentid='M:Alis.Core.Physic.Figure.Line.IsDenominatorZero(System.Single)' id='Alis_Core_Physic_Figure_Line_IsDenominatorZero_System_Single_'>IsDenominatorZero(float)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L365'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Describes whether is denominator zero</p>
+<pre><code class='lang-csharp'>private static bool IsDenominatorZero(float denom)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>denom</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The denom</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+<p>The bool</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Figure.Line.IsInRange(System.Single,System.Boolean)' data-commentid='M:Alis.Core.Physic.Figure.Line.IsInRange(System.Single,System.Boolean)' id='Alis_Core_Physic_Figure_Line_IsInRange_System_Single_System_Boolean_'>IsInRange(float, bool)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L411'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Describes whether is in range</p>
+<pre><code class='lang-csharp'>private static bool IsInRange(float value, bool isSegment)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>value</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The value</p>
+
+</dd><dt><code>isSegment</code> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+<p>The is segment</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+<p>The bool</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Figure.Line.IsIntersectionValid(System.Single,System.Single)' data-commentid='M:Alis.Core.Physic.Figure.Line.IsIntersectionValid(System.Single,System.Single)' id='Alis_Core_Physic_Figure_Line_IsIntersectionValid_System_Single_System_Single_'>IsIntersectionValid(float, float)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L263'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Describes whether is intersection valid</p>
+<pre><code class='lang-csharp'>private static bool IsIntersectionValid(float ua, float ub)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>ua</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The ua</p>
+
+</dd><dt><code>ub</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The ub</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+<p>The bool</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Figure.Line.IsOutOfRange(System.Single,System.Single,System.Single,System.Single)' data-commentid='M:Alis.Core.Physic.Figure.Line.IsOutOfRange(System.Single,System.Single,System.Single,System.Single)' id='Alis_Core_Physic_Figure_Line_IsOutOfRange_System_Single_System_Single_System_Single_System_Single_'>IsOutOfRange(float, float, float, float)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L211'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Describes whether is out of range</p>
+<pre><code class='lang-csharp'>private static bool IsOutOfRange(float val1, float val2, float val3, float val4)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>val1</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The val</p>
+
+</dd><dt><code>val2</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The val</p>
+
+</dd><dt><code>val3</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The val</p>
+
+</dd><dt><code>val4</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The val</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+<p>The bool</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Figure.Line.LineIntersect(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)' data-commentid='M:Alis.Core.Physic.Figure.Line.LineIntersect(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)' id='Alis_Core_Physic_Figure_Line_LineIntersect_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_'>LineIntersect(Vector2, Vector2, Vector2, Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L285'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Lines the intersect using the specified p 1</p>
+<pre><code class='lang-csharp'>public static Vector2 LineIntersect(Vector2 p1, Vector2 p2, Vector2 q1, Vector2 q2)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>p1</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>p2</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>q1</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>q2</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Figure.Line.LineIntersect(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,System.Boolean,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2@)' data-commentid='M:Alis.Core.Physic.Figure.Line.LineIntersect(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,System.Boolean,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2@)' id='Alis_Core_Physic_Figure_Line_LineIntersect_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_System_Boolean_System_Boolean_Alis_Core_Aspect_Math_Vector_Vector2__'>LineIntersect(Vector2, Vector2, Vector2, Vector2, bool, bool, out Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L318'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Describes whether line intersect</p>
+<pre><code class='lang-csharp'>public static bool LineIntersect(Vector2 point1, Vector2 point2, Vector2 point3, Vector2 point4, bool firstIsSegment, bool secondIsSegment, out Vector2 intersectionPoint)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>point1</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The point</p>
+
+</dd><dt><code>point2</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The point</p>
+
+</dd><dt><code>point3</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The point</p>
+
+</dd><dt><code>point4</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The point</p>
+
+</dd><dt><code>firstIsSegment</code> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+<p>The first is segment</p>
+
+</dd><dt><code>secondIsSegment</code> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+<p>The second is segment</p>
+
+</dd><dt><code>intersectionPoint</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The intersection point</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+<p>The bool</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Figure.Line.LineIntersect2(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2@)' data-commentid='M:Alis.Core.Physic.Figure.Line.LineIntersect2(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2@)' id='Alis_Core_Physic_Figure_Line_LineIntersect2_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2__'>LineIntersect2(Vector2, Vector2, Vector2, Vector2, out Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L154'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Describes whether line intersect 2</p>
+<pre><code class='lang-csharp'>public static bool LineIntersect2(Vector2 a0, Vector2 a1, Vector2 b0, Vector2 b1, out Vector2 intersectionPoint)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>a0</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>a1</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>b0</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>b1</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>intersectionPoint</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The intersection point</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+<p>The bool</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Figure.Line.LineSegmentAabbIntersect(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Physic.Shared.Aabb)' data-commentid='M:Alis.Core.Physic.Figure.Line.LineSegmentAabbIntersect(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Physic.Shared.Aabb)' id='Alis_Core_Physic_Figure_Line_LineSegmentAabbIntersect_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Physic_Shared_Aabb_'>LineSegmentAabbIntersect(Vector2, Vector2, Aabb)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L453'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Lines the segment aabb intersect using the specified point 1</p>
+<pre><code class='lang-csharp'>public static List&lt;Vector2&gt; LineSegmentAabbIntersect(Vector2 point1, Vector2 point2, Aabb aabb)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>point1</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The point</p>
+
+</dd><dt><code>point2</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The point</p>
+
+</dd><dt><code>aabb</code> <a href='Alis.Core.Physic.Shared.Aabb.html'>Aabb</a>  </dt>
+<dd>
+
+
+<p>The aabb</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1'>List</a>&lt;<a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>&gt;  </dt>
+<dd>
+
+
+<p>A list of vector 2</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Figure.Line.LineSegmentVerticesIntersect(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,System.Collections.Generic.List{Alis.Core.Aspect.Math.Vector.Vector2})' data-commentid='M:Alis.Core.Physic.Figure.Line.LineSegmentVerticesIntersect(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,System.Collections.Generic.List{Alis.Core.Aspect.Math.Vector.Vector2})' id='Alis_Core_Physic_Figure_Line_LineSegmentVerticesIntersect_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_System_Collections_Generic_List_Alis_Core_Aspect_Math_Vector_Vector2__'>LineSegmentVerticesIntersect(Vector2, Vector2, List&lt;Vector2&gt;)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L431'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Lines the segment vertices intersect using the specified point 1</p>
+<pre><code class='lang-csharp'>public static List&lt;Vector2&gt; LineSegmentVerticesIntersect(Vector2 point1, Vector2 point2, List&lt;Vector2&gt; vertices)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>point1</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The point</p>
+
+</dd><dt><code>point2</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The point</p>
+
+</dd><dt><code>vertices</code> <a href='https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1'>List</a>&lt;<a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>&gt;  </dt>
+<dd>
+
+
+<p>The vertices</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1'>List</a>&lt;<a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>&gt;  </dt>
+<dd>
+
+
+<p>The intersection points</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Figure.Line.MultiplyVectorByScalar(Alis.Core.Aspect.Math.Vector.Vector2,System.Single)' data-commentid='M:Alis.Core.Physic.Figure.Line.MultiplyVectorByScalar(Alis.Core.Aspect.Math.Vector.Vector2,System.Single)' id='Alis_Core_Physic_Figure_Line_MultiplyVectorByScalar_Alis_Core_Aspect_Math_Vector_Vector2_System_Single_'>MultiplyVectorByScalar(Vector2, float)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L143'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Multiplies the vector by scalar using the specified vector</p>
+<pre><code class='lang-csharp'>private static Vector2 MultiplyVectorByScalar(Vector2 vector, float scalar)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>vector</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The vector</p>
+
+</dd><dt><code>scalar</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The scalar</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The vector</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Figure.Line.SubtractVectors(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)' data-commentid='M:Alis.Core.Physic.Figure.Line.SubtractVectors(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)' id='Alis_Core_Physic_Figure_Line_SubtractVectors_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_'>SubtractVectors(Vector2, Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L104'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Subtracts the vectors using the specified vector 1</p>
+<pre><code class='lang-csharp'>private static Vector2 SubtractVectors(Vector2 vector1, Vector2 vector2)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>vector1</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The vector</p>
+
+</dd><dt><code>vector2</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The vector</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The vector</p>
+
+</dd></dl>
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Alis - Develop the video games of your dreams 💯 free!! on Windows, MacOS, Linux, Android(soon), IOS(soon).
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

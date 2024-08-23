@@ -1,0 +1,95 @@
+### YamlMime:ApiPage
+title: Class NotEmptyException
+body:
+- api1: Class NotEmptyException
+  id: Alis_Core_Aspect_Memory_Exceptions_NotEmptyException
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Memory/src/Exceptions/NotEmptyException.cs#L38
+  metadata:
+    uid: Alis.Core.Aspect.Memory.Exceptions.NotEmptyException
+    commentId: T:Alis.Core.Aspect.Memory.Exceptions.NotEmptyException
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Aspect.Memory.Exceptions
+      url: Alis.Core.Aspect.Memory.Exceptions.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The not empty exception class
+- code: 'public class NotEmptyException : Exception, ISerializable'
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: Exception
+    url: https://learn.microsoft.com/dotnet/api/system.exception
+  - text: NotEmptyException
+    url: Alis.Core.Aspect.Memory.Exceptions.NotEmptyException.html
+- h4: Implements
+- list:
+  - text: ISerializable
+    url: https://learn.microsoft.com/dotnet/api/system.runtime.serialization.iserializable
+- h4: Inherited Members
+- list:
+  - text: Exception.GetBaseException()
+    url: https://learn.microsoft.com/dotnet/api/system.exception.getbaseexception
+  - text: Exception.GetObjectData(SerializationInfo, StreamingContext)
+    url: https://learn.microsoft.com/dotnet/api/system.exception.getobjectdata
+  - text: Exception.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.exception.gettype
+  - text: Exception.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.exception.tostring
+  - text: Exception.Data
+    url: https://learn.microsoft.com/dotnet/api/system.exception.data
+  - text: Exception.HelpLink
+    url: https://learn.microsoft.com/dotnet/api/system.exception.helplink
+  - text: Exception.HResult
+    url: https://learn.microsoft.com/dotnet/api/system.exception.hresult
+  - text: Exception.InnerException
+    url: https://learn.microsoft.com/dotnet/api/system.exception.innerexception
+  - text: Exception.Message
+    url: https://learn.microsoft.com/dotnet/api/system.exception.message
+  - text: Exception.Source
+    url: https://learn.microsoft.com/dotnet/api/system.exception.source
+  - text: Exception.StackTrace
+    url: https://learn.microsoft.com/dotnet/api/system.exception.stacktrace
+  - text: Exception.TargetSite
+    url: https://learn.microsoft.com/dotnet/api/system.exception.targetsite
+  - text: Exception.SerializeObjectState
+    url: https://learn.microsoft.com/dotnet/api/system.exception.serializeobjectstate
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Constructors
+- api3: NotEmptyException(string)
+  id: Alis_Core_Aspect_Memory_Exceptions_NotEmptyException__ctor_System_String_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Memory/src/Exceptions/NotEmptyException.cs#L44
+  metadata:
+    uid: Alis.Core.Aspect.Memory.Exceptions.NotEmptyException.#ctor(System.String)
+    commentId: M:Alis.Core.Aspect.Memory.Exceptions.NotEmptyException.#ctor(System.String)
+- markdown: The constructor
+- code: public NotEmptyException(string message)
+- h4: Parameters
+- parameters:
+  - name: message
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The message
+- h2: See Also
+- list:
+  - - text: Exception
+      url: https://learn.microsoft.com/dotnet/api/system.exception
+languageId: csharp
+metadata:
+  description: The not empty exception class

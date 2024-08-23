@@ -1,0 +1,29 @@
+### YamlMime:ApiPage
+title: Namespace Alis.Core.Aspect.Math.Matrix
+body:
+- api1: Namespace Alis.Core.Aspect.Math.Matrix
+  id: Alis_Core_Aspect_Math_Matrix
+  metadata:
+    uid: Alis.Core.Aspect.Math.Matrix
+    commentId: N:Alis.Core.Aspect.Math.Matrix
+- h3: Classes
+- parameters:
+  - type:
+      text: Matrix3X2
+      url: Alis.Core.Aspect.Math.Matrix.Matrix3X2.html
+    description: The matrix 3x class
+- h3: Structs
+- parameters:
+  - type:
+      text: Matrix2X2
+      url: Alis.Core.Aspect.Math.Matrix.Matrix2X2.html
+    description: A 2-by-2 matrix. Stored in column-major order.
+  - type:
+      text: Matrix3X3
+      url: Alis.Core.Aspect.Math.Matrix.Matrix3X3.html
+    description: The matrix
+  - type:
+      text: Matrix4X4
+      url: Alis.Core.Aspect.Math.Matrix.Matrix4X4.html
+    description: The matrix
+languageId: csharp

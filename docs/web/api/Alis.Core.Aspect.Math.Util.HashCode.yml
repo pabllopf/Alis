@@ -1,0 +1,819 @@
+### YamlMime:ApiPage
+title: Struct HashCode
+body:
+- api1: Struct HashCode
+  id: Alis_Core_Aspect_Math_Util_HashCode
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/HashCode.cs#L39
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.HashCode
+    commentId: T:Alis.Core.Aspect.Math.Util.HashCode
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Aspect.Math.Util
+      url: Alis.Core.Aspect.Math.Util.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The hash code
+- code: public struct HashCode
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Fields
+- api3: Prime1
+  id: Alis_Core_Aspect_Math_Util_HashCode_Prime1
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/HashCode.cs#L49
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.HashCode.Prime1
+    commentId: F:Alis.Core.Aspect.Math.Util.HashCode.Prime1
+- markdown: The prime
+- code: private const uint Prime1 = 2654435761
+- h4: Field Value
+- parameters:
+  - type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+- api3: Prime2
+  id: Alis_Core_Aspect_Math_Util_HashCode_Prime2
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/HashCode.cs#L54
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.HashCode.Prime2
+    commentId: F:Alis.Core.Aspect.Math.Util.HashCode.Prime2
+- markdown: The prime
+- code: private const uint Prime2 = 2246822519
+- h4: Field Value
+- parameters:
+  - type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+- api3: Prime3
+  id: Alis_Core_Aspect_Math_Util_HashCode_Prime3
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/HashCode.cs#L59
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.HashCode.Prime3
+    commentId: F:Alis.Core.Aspect.Math.Util.HashCode.Prime3
+- markdown: The prime
+- code: private const uint Prime3 = 3266489917
+- h4: Field Value
+- parameters:
+  - type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+- api3: Prime4
+  id: Alis_Core_Aspect_Math_Util_HashCode_Prime4
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/HashCode.cs#L64
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.HashCode.Prime4
+    commentId: F:Alis.Core.Aspect.Math.Util.HashCode.Prime4
+- markdown: The prime
+- code: private const uint Prime4 = 668265263
+- h4: Field Value
+- parameters:
+  - type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+- api3: Prime5
+  id: Alis_Core_Aspect_Math_Util_HashCode_Prime5
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/HashCode.cs#L69
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.HashCode.Prime5
+    commentId: F:Alis.Core.Aspect.Math.Util.HashCode.Prime5
+- markdown: The prime
+- code: private const uint Prime5 = 374761393
+- h4: Field Value
+- parameters:
+  - type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+- api3: SSeed
+  id: Alis_Core_Aspect_Math_Util_HashCode_SSeed
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/HashCode.cs#L44
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.HashCode.SSeed
+    commentId: F:Alis.Core.Aspect.Math.Util.HashCode.SSeed
+- markdown: The generate global seed
+- code: private static readonly uint SSeed
+- h4: Field Value
+- parameters:
+  - type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+- api3: _length
+  id: Alis_Core_Aspect_Math_Util_HashCode__length
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/HashCode.cs#L84
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.HashCode._length
+    commentId: F:Alis.Core.Aspect.Math.Util.HashCode._length
+- markdown: The length
+- code: private uint _length
+- h4: Field Value
+- parameters:
+  - type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+- api3: _queue1
+  id: Alis_Core_Aspect_Math_Util_HashCode__queue1
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/HashCode.cs#L79
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.HashCode._queue1
+    commentId: F:Alis.Core.Aspect.Math.Util.HashCode._queue1
+- markdown: The queue
+- code: private uint _queue1
+- h4: Field Value
+- parameters:
+  - type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+- api3: _queue2
+  id: Alis_Core_Aspect_Math_Util_HashCode__queue2
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/HashCode.cs#L79
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.HashCode._queue2
+    commentId: F:Alis.Core.Aspect.Math.Util.HashCode._queue2
+- markdown: The queue
+- code: private uint _queue2
+- h4: Field Value
+- parameters:
+  - type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+- api3: _queue3
+  id: Alis_Core_Aspect_Math_Util_HashCode__queue3
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/HashCode.cs#L79
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.HashCode._queue3
+    commentId: F:Alis.Core.Aspect.Math.Util.HashCode._queue3
+- markdown: The queue
+- code: private uint _queue3
+- h4: Field Value
+- parameters:
+  - type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+- api3: _v1
+  id: Alis_Core_Aspect_Math_Util_HashCode__v1
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/HashCode.cs#L74
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.HashCode._v1
+    commentId: F:Alis.Core.Aspect.Math.Util.HashCode._v1
+- markdown: The
+- code: private uint _v1
+- h4: Field Value
+- parameters:
+  - type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+- api3: _v2
+  id: Alis_Core_Aspect_Math_Util_HashCode__v2
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/HashCode.cs#L74
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.HashCode._v2
+    commentId: F:Alis.Core.Aspect.Math.Util.HashCode._v2
+- markdown: The
+- code: private uint _v2
+- h4: Field Value
+- parameters:
+  - type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+- api3: _v3
+  id: Alis_Core_Aspect_Math_Util_HashCode__v3
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/HashCode.cs#L74
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.HashCode._v3
+    commentId: F:Alis.Core.Aspect.Math.Util.HashCode._v3
+- markdown: The
+- code: private uint _v3
+- h4: Field Value
+- parameters:
+  - type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+- api3: _v4
+  id: Alis_Core_Aspect_Math_Util_HashCode__v4
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/HashCode.cs#L74
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.HashCode._v4
+    commentId: F:Alis.Core.Aspect.Math.Util.HashCode._v4
+- markdown: The
+- code: private uint _v4
+- h4: Field Value
+- parameters:
+  - type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+- h2: Methods
+- api3: Add<T>(T)
+  id: Alis_Core_Aspect_Math_Util_HashCode_Add__1___0_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/HashCode.cs#L464
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.HashCode.Add``1(``0)
+    commentId: M:Alis.Core.Aspect.Math.Util.HashCode.Add``1(``0)
+- markdown: Adds the value
+- code: public void Add<T>(T value)
+- h4: Parameters
+- parameters:
+  - name: value
+    type:
+    - T
+    description: The value
+- h4: Type Parameters
+- parameters:
+  - name: T
+    description: The
+- api3: Add(int)
+  id: Alis_Core_Aspect_Math_Util_HashCode_Add_System_Int32_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/HashCode.cs#L473
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.HashCode.Add(System.Int32)
+    commentId: M:Alis.Core.Aspect.Math.Util.HashCode.Add(System.Int32)
+- markdown: Adds the value
+- code: private void Add(int value)
+- h4: Parameters
+- parameters:
+  - name: value
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The value
+- api3: Combine<T1>(T1)
+  id: Alis_Core_Aspect_Math_Util_HashCode_Combine__1___0_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/HashCode.cs#L104
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.HashCode.Combine``1(``0)
+    commentId: M:Alis.Core.Aspect.Math.Util.HashCode.Combine``1(``0)
+- markdown: Combines the value 1
+- code: public static int Combine<T1>(T1 value1)
+- h4: Parameters
+- parameters:
+  - name: value1
+    type:
+    - T1
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The int
+- h4: Type Parameters
+- parameters:
+  - name: T1
+    description: The
+- api3: Combine<T1, T2>(T1, T2)
+  id: Alis_Core_Aspect_Math_Util_HashCode_Combine__2___0___1_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/HashCode.cs#L132
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.HashCode.Combine``2(``0,``1)
+    commentId: M:Alis.Core.Aspect.Math.Util.HashCode.Combine``2(``0,``1)
+- markdown: Combines the value 1
+- code: public static int Combine<T1, T2>(T1 value1, T2 value2)
+- h4: Parameters
+- parameters:
+  - name: value1
+    type:
+    - T1
+    description: The value
+  - name: value2
+    type:
+    - T2
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The int
+- h4: Type Parameters
+- parameters:
+  - name: T1
+    description: The
+  - name: T2
+    description: The
+- api3: Combine<T1, T2, T3>(T1, T2, T3)
+  id: Alis_Core_Aspect_Math_Util_HashCode_Combine__3___0___1___2_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/HashCode.cs#L157
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.HashCode.Combine``3(``0,``1,``2)
+    commentId: M:Alis.Core.Aspect.Math.Util.HashCode.Combine``3(``0,``1,``2)
+- markdown: Combines the value 1
+- code: public static int Combine<T1, T2, T3>(T1 value1, T2 value2, T3 value3)
+- h4: Parameters
+- parameters:
+  - name: value1
+    type:
+    - T1
+    description: The value
+  - name: value2
+    type:
+    - T2
+    description: The value
+  - name: value3
+    type:
+    - T3
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The int
+- h4: Type Parameters
+- parameters:
+  - name: T1
+    description: The
+  - name: T2
+    description: The
+  - name: T3
+    description: The
+- api3: Combine<T1, T2, T3, T4>(T1, T2, T3, T4)
+  id: Alis_Core_Aspect_Math_Util_HashCode_Combine__4___0___1___2___3_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/HashCode.cs#L186
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.HashCode.Combine``4(``0,``1,``2,``3)
+    commentId: M:Alis.Core.Aspect.Math.Util.HashCode.Combine``4(``0,``1,``2,``3)
+- markdown: Combines the value 1
+- code: public static int Combine<T1, T2, T3, T4>(T1 value1, T2 value2, T3 value3, T4 value4)
+- h4: Parameters
+- parameters:
+  - name: value1
+    type:
+    - T1
+    description: The value
+  - name: value2
+    type:
+    - T2
+    description: The value
+  - name: value3
+    type:
+    - T3
+    description: The value
+  - name: value4
+    type:
+    - T4
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The int
+- h4: Type Parameters
+- parameters:
+  - name: T1
+    description: The
+  - name: T2
+    description: The
+  - name: T3
+    description: The
+  - name: T4
+    description: The
+- api3: Combine<T1, T2, T3, T4, T5>(T1, T2, T3, T4, T5)
+  id: Alis_Core_Aspect_Math_Util_HashCode_Combine__5___0___1___2___3___4_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/HashCode.cs#L221
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.HashCode.Combine``5(``0,``1,``2,``3,``4)
+    commentId: M:Alis.Core.Aspect.Math.Util.HashCode.Combine``5(``0,``1,``2,``3,``4)
+- markdown: Combines the value 1
+- code: public static int Combine<T1, T2, T3, T4, T5>(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5)
+- h4: Parameters
+- parameters:
+  - name: value1
+    type:
+    - T1
+    description: The value
+  - name: value2
+    type:
+    - T2
+    description: The value
+  - name: value3
+    type:
+    - T3
+    description: The value
+  - name: value4
+    type:
+    - T4
+    description: The value
+  - name: value5
+    type:
+    - T5
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The int
+- h4: Type Parameters
+- parameters:
+  - name: T1
+    description: The
+  - name: T2
+    description: The
+  - name: T3
+    description: The
+  - name: T4
+    description: The
+  - name: T5
+    description: The
+- api3: Combine<T1, T2, T3, T4, T5, T6>(T1, T2, T3, T4, T5, T6)
+  id: Alis_Core_Aspect_Math_Util_HashCode_Combine__6___0___1___2___3___4___5_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/HashCode.cs#L261
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.HashCode.Combine``6(``0,``1,``2,``3,``4,``5)
+    commentId: M:Alis.Core.Aspect.Math.Util.HashCode.Combine``6(``0,``1,``2,``3,``4,``5)
+- markdown: Combines the value 1
+- code: public static int Combine<T1, T2, T3, T4, T5, T6>(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6)
+- h4: Parameters
+- parameters:
+  - name: value1
+    type:
+    - T1
+    description: The value
+  - name: value2
+    type:
+    - T2
+    description: The value
+  - name: value3
+    type:
+    - T3
+    description: The value
+  - name: value4
+    type:
+    - T4
+    description: The value
+  - name: value5
+    type:
+    - T5
+    description: The value
+  - name: value6
+    type:
+    - T6
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The int
+- h4: Type Parameters
+- parameters:
+  - name: T1
+    description: The
+  - name: T2
+    description: The
+  - name: T3
+    description: The
+  - name: T4
+    description: The
+  - name: T5
+    description: The
+  - name: T6
+    description: The
+- api3: Combine<T1, T2, T3, T4, T5, T6, T7>(T1, T2, T3, T4, T5, T6, T7)
+  id: Alis_Core_Aspect_Math_Util_HashCode_Combine__7___0___1___2___3___4___5___6_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/HashCode.cs#L305
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.HashCode.Combine``7(``0,``1,``2,``3,``4,``5,``6)
+    commentId: M:Alis.Core.Aspect.Math.Util.HashCode.Combine``7(``0,``1,``2,``3,``4,``5,``6)
+- markdown: Combines the value 1
+- code: public static int Combine<T1, T2, T3, T4, T5, T6, T7>(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7)
+- h4: Parameters
+- parameters:
+  - name: value1
+    type:
+    - T1
+    description: The value
+  - name: value2
+    type:
+    - T2
+    description: The value
+  - name: value3
+    type:
+    - T3
+    description: The value
+  - name: value4
+    type:
+    - T4
+    description: The value
+  - name: value5
+    type:
+    - T5
+    description: The value
+  - name: value6
+    type:
+    - T6
+    description: The value
+  - name: value7
+    type:
+    - T7
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The int
+- h4: Type Parameters
+- parameters:
+  - name: T1
+    description: The
+  - name: T2
+    description: The
+  - name: T3
+    description: The
+  - name: T4
+    description: The
+  - name: T5
+    description: The
+  - name: T6
+    description: The
+  - name: T7
+    description: The
+- api3: Combine<T1, T2, T3, T4, T5, T6, T7, T8>(T1, T2, T3, T4, T5, T6, T7, T8)
+  id: Alis_Core_Aspect_Math_Util_HashCode_Combine__8___0___1___2___3___4___5___6___7_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/HashCode.cs#L353
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.HashCode.Combine``8(``0,``1,``2,``3,``4,``5,``6,``7)
+    commentId: M:Alis.Core.Aspect.Math.Util.HashCode.Combine``8(``0,``1,``2,``3,``4,``5,``6,``7)
+- markdown: Combines the value 1
+- code: public static int Combine<T1, T2, T3, T4, T5, T6, T7, T8>(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8)
+- h4: Parameters
+- parameters:
+  - name: value1
+    type:
+    - T1
+    description: The value
+  - name: value2
+    type:
+    - T2
+    description: The value
+  - name: value3
+    type:
+    - T3
+    description: The value
+  - name: value4
+    type:
+    - T4
+    description: The value
+  - name: value5
+    type:
+    - T5
+    description: The value
+  - name: value6
+    type:
+    - T6
+    description: The value
+  - name: value7
+    type:
+    - T7
+    description: The value
+  - name: value8
+    type:
+    - T8
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The int
+- h4: Type Parameters
+- parameters:
+  - name: T1
+    description: The
+  - name: T2
+    description: The
+  - name: T3
+    description: The
+  - name: T4
+    description: The
+  - name: T5
+    description: The
+  - name: T6
+    description: The
+  - name: T7
+    description: The
+  - name: T8
+    description: The
+- api3: GenerateGlobalSeed()
+  id: Alis_Core_Aspect_Math_Util_HashCode_GenerateGlobalSeed
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/HashCode.cs#L90
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.HashCode.GenerateGlobalSeed
+    commentId: M:Alis.Core.Aspect.Math.Util.HashCode.GenerateGlobalSeed
+- markdown: Generates the global seed
+- code: private static uint GenerateGlobalSeed()
+- h4: Returns
+- parameters:
+  - type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+    description: The uint
+- api3: Initialize(out uint, out uint, out uint, out uint)
+  id: Alis_Core_Aspect_Math_Util_HashCode_Initialize_System_UInt32__System_UInt32__System_UInt32__System_UInt32__
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/HashCode.cs#L390
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.HashCode.Initialize(System.UInt32@,System.UInt32@,System.UInt32@,System.UInt32@)
+    commentId: M:Alis.Core.Aspect.Math.Util.HashCode.Initialize(System.UInt32@,System.UInt32@,System.UInt32@,System.UInt32@)
+- markdown: Initializes the v 1
+- code: private static void Initialize(out uint v1, out uint v2, out uint v3, out uint v4)
+- h4: Parameters
+- parameters:
+  - name: v1
+    type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+    description: The
+  - name: v2
+    type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+    description: The
+  - name: v3
+    type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+    description: The
+  - name: v4
+    type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+    description: The
+- api3: MixEmptyState()
+  id: Alis_Core_Aspect_Math_Util_HashCode_MixEmptyState
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/HashCode.cs#L441
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.HashCode.MixEmptyState
+    commentId: M:Alis.Core.Aspect.Math.Util.HashCode.MixEmptyState
+- markdown: Mixes the empty state
+- code: private static uint MixEmptyState()
+- h4: Returns
+- parameters:
+  - type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+    description: The uint
+- api3: MixFinal(uint)
+  id: Alis_Core_Aspect_Math_Util_HashCode_MixFinal_System_UInt32_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/HashCode.cs#L448
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.HashCode.MixFinal(System.UInt32)
+    commentId: M:Alis.Core.Aspect.Math.Util.HashCode.MixFinal(System.UInt32)
+- markdown: Mixes the final using the specified hash
+- code: private static uint MixFinal(uint hash)
+- h4: Parameters
+- parameters:
+  - name: hash
+    type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+    description: The hash
+- h4: Returns
+- parameters:
+  - type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+    description: The hash
+- api3: MixState(uint, uint, uint, uint)
+  id: Alis_Core_Aspect_Math_Util_HashCode_MixState_System_UInt32_System_UInt32_System_UInt32_System_UInt32_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/HashCode.cs#L425
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.HashCode.MixState(System.UInt32,System.UInt32,System.UInt32,System.UInt32)
+    commentId: M:Alis.Core.Aspect.Math.Util.HashCode.MixState(System.UInt32,System.UInt32,System.UInt32,System.UInt32)
+- markdown: Mixes the state using the specified v 1
+- code: private static uint MixState(uint v1, uint v2, uint v3, uint v4)
+- h4: Parameters
+- parameters:
+  - name: v1
+    type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+    description: The
+  - name: v2
+    type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+    description: The
+  - name: v3
+    type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+    description: The
+  - name: v4
+    type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+    description: The uint
+- api3: QueueRound(uint, uint)
+  id: Alis_Core_Aspect_Math_Util_HashCode_QueueRound_System_UInt32_System_UInt32_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/HashCode.cs#L414
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.HashCode.QueueRound(System.UInt32,System.UInt32)
+    commentId: M:Alis.Core.Aspect.Math.Util.HashCode.QueueRound(System.UInt32,System.UInt32)
+- markdown: Queues the round using the specified hash
+- code: private static uint QueueRound(uint hash, uint queuedValue)
+- h4: Parameters
+- parameters:
+  - name: hash
+    type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+    description: The hash
+  - name: queuedValue
+    type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+    description: The queued value
+- h4: Returns
+- parameters:
+  - type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+    description: The uint
+- api3: RotateLeft(uint, int)
+  id: Alis_Core_Aspect_Math_Util_HashCode_RotateLeft_System_UInt32_System_Int32_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/HashCode.cs#L434
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.HashCode.RotateLeft(System.UInt32,System.Int32)
+    commentId: M:Alis.Core.Aspect.Math.Util.HashCode.RotateLeft(System.UInt32,System.Int32)
+- markdown: Rotates the left using the specified value
+- code: public static uint RotateLeft(uint value, int offset)
+- h4: Parameters
+- parameters:
+  - name: value
+    type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+    description: The value
+  - name: offset
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The offset
+- h4: Returns
+- parameters:
+  - type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+    description: The uint
+- api3: Round(uint, uint)
+  id: Alis_Core_Aspect_Math_Util_HashCode_Round_System_UInt32_System_UInt32_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/HashCode.cs#L405
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.HashCode.Round(System.UInt32,System.UInt32)
+    commentId: M:Alis.Core.Aspect.Math.Util.HashCode.Round(System.UInt32,System.UInt32)
+- markdown: Rounds the hash
+- code: private static uint Round(uint hash, uint input)
+- h4: Parameters
+- parameters:
+  - name: hash
+    type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+    description: The hash
+  - name: input
+    type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+    description: The input
+- h4: Returns
+- parameters:
+  - type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+    description: The uint
+- api3: ToHashCode()
+  id: Alis_Core_Aspect_Math_Util_HashCode_ToHashCode
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/HashCode.cs#L535
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.HashCode.ToHashCode
+    commentId: M:Alis.Core.Aspect.Math.Util.HashCode.ToHashCode
+- markdown: Returns the hash code
+- code: public int ToHashCode()
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The int
+languageId: csharp
+metadata:
+  description: The hash code

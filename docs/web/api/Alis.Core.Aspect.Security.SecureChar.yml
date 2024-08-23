@@ -1,0 +1,342 @@
+### YamlMime:ApiPage
+title: Class SecureChar
+body:
+- api1: Class SecureChar
+  id: Alis_Core_Aspect_Security_SecureChar
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Security/src/SecureChar.cs#L35
+  metadata:
+    uid: Alis.Core.Aspect.Security.SecureChar
+    commentId: T:Alis.Core.Aspect.Security.SecureChar
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Aspect.Security
+      url: Alis.Core.Aspect.Security.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The secure char class
+- code: public class SecureChar
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: SecureChar
+    url: Alis.Core.Aspect.Security.SecureChar.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Constructors
+- api3: SecureChar(char)
+  id: Alis_Core_Aspect_Security_SecureChar__ctor_System_Char_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Security/src/SecureChar.cs#L51
+  metadata:
+    uid: Alis.Core.Aspect.Security.SecureChar.#ctor(System.Char)
+    commentId: M:Alis.Core.Aspect.Security.SecureChar.#ctor(System.Char)
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Aspect.Security.SecureChar" data-throw-if-not-resolved="false"></xref> class
+- code: public SecureChar(char value = '\0')
+- h4: Parameters
+- parameters:
+  - name: value
+    type:
+    - text: char
+      url: https://learn.microsoft.com/dotnet/api/system.char
+    description: The value
+    optional: true
+- h2: Fields
+- api3: _randomValue
+  id: Alis_Core_Aspect_Security_SecureChar__randomValue
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Security/src/SecureChar.cs#L40
+  metadata:
+    uid: Alis.Core.Aspect.Security.SecureChar._randomValue
+    commentId: F:Alis.Core.Aspect.Security.SecureChar._randomValue
+- markdown: The random value
+- code: private char _randomValue
+- h4: Field Value
+- parameters:
+  - type:
+    - text: char
+      url: https://learn.microsoft.com/dotnet/api/system.char
+- api3: _value
+  id: Alis_Core_Aspect_Security_SecureChar__value
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Security/src/SecureChar.cs#L45
+  metadata:
+    uid: Alis.Core.Aspect.Security.SecureChar._value
+    commentId: F:Alis.Core.Aspect.Security.SecureChar._value
+- markdown: The value
+- code: private char _value
+- h4: Field Value
+- parameters:
+  - type:
+    - text: char
+      url: https://learn.microsoft.com/dotnet/api/system.char
+- h2: Properties
+- api3: Value
+  id: Alis_Core_Aspect_Security_SecureChar_Value
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Security/src/SecureChar.cs#L56
+  metadata:
+    uid: Alis.Core.Aspect.Security.SecureChar.Value
+    commentId: P:Alis.Core.Aspect.Security.SecureChar.Value
+- markdown: Gets or sets the value of the value
+- code: private char Value { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: char
+      url: https://learn.microsoft.com/dotnet/api/system.char
+- h2: Methods
+- api3: Equals(object)
+  id: Alis_Core_Aspect_Security_SecureChar_Equals_System_Object_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Security/src/SecureChar.cs#L147
+  metadata:
+    uid: Alis.Core.Aspect.Security.SecureChar.Equals(System.Object)
+    commentId: M:Alis.Core.Aspect.Security.SecureChar.Equals(System.Object)
+- markdown: Describes whether this instance equals
+- code: public override bool Equals(object obj)
+- h4: Parameters
+- parameters:
+  - name: obj
+    type:
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    description: The obj
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: GetHashCode()
+  id: Alis_Core_Aspect_Security_SecureChar_GetHashCode
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Security/src/SecureChar.cs#L140
+  metadata:
+    uid: Alis.Core.Aspect.Security.SecureChar.GetHashCode
+    commentId: M:Alis.Core.Aspect.Security.SecureChar.GetHashCode
+- markdown: Gets the hash code
+- code: public override int GetHashCode()
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The int
+- api3: ToString()
+  id: Alis_Core_Aspect_Security_SecureChar_ToString
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Security/src/SecureChar.cs#L134
+  metadata:
+    uid: Alis.Core.Aspect.Security.SecureChar.ToString
+    commentId: M:Alis.Core.Aspect.Security.SecureChar.ToString
+- markdown: Returns the string
+- code: public override string ToString()
+- h4: Returns
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The string
+- h2: Operators
+- api3: operator +(SecureChar, SecureChar)
+  id: Alis_Core_Aspect_Security_SecureChar_op_Addition_Alis_Core_Aspect_Security_SecureChar_Alis_Core_Aspect_Security_SecureChar_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Security/src/SecureChar.cs#L107
+  metadata:
+    uid: Alis.Core.Aspect.Security.SecureChar.op_Addition(Alis.Core.Aspect.Security.SecureChar,Alis.Core.Aspect.Security.SecureChar)
+    commentId: M:Alis.Core.Aspect.Security.SecureChar.op_Addition(Alis.Core.Aspect.Security.SecureChar,Alis.Core.Aspect.Security.SecureChar)
+- code: public static SecureChar operator +(SecureChar a, SecureChar b)
+- h4: Parameters
+- parameters:
+  - name: a
+    type:
+    - text: SecureChar
+      url: Alis.Core.Aspect.Security.SecureChar.html
+    description: ''
+  - name: b
+    type:
+    - text: SecureChar
+      url: Alis.Core.Aspect.Security.SecureChar.html
+    description: ''
+- h4: Returns
+- parameters:
+  - type:
+    - text: SecureChar
+      url: Alis.Core.Aspect.Security.SecureChar.html
+    description: ''
+- api3: operator /(SecureChar, SecureChar)
+  id: Alis_Core_Aspect_Security_SecureChar_op_Division_Alis_Core_Aspect_Security_SecureChar_Alis_Core_Aspect_Security_SecureChar_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Security/src/SecureChar.cs#L128
+  metadata:
+    uid: Alis.Core.Aspect.Security.SecureChar.op_Division(Alis.Core.Aspect.Security.SecureChar,Alis.Core.Aspect.Security.SecureChar)
+    commentId: M:Alis.Core.Aspect.Security.SecureChar.op_Division(Alis.Core.Aspect.Security.SecureChar,Alis.Core.Aspect.Security.SecureChar)
+- code: public static SecureChar operator /(SecureChar a, SecureChar b)
+- h4: Parameters
+- parameters:
+  - name: a
+    type:
+    - text: SecureChar
+      url: Alis.Core.Aspect.Security.SecureChar.html
+    description: ''
+  - name: b
+    type:
+    - text: SecureChar
+      url: Alis.Core.Aspect.Security.SecureChar.html
+    description: ''
+- h4: Returns
+- parameters:
+  - type:
+    - text: SecureChar
+      url: Alis.Core.Aspect.Security.SecureChar.html
+    description: ''
+- api3: operator ==(SecureChar, SecureChar)
+  id: Alis_Core_Aspect_Security_SecureChar_op_Equality_Alis_Core_Aspect_Security_SecureChar_Alis_Core_Aspect_Security_SecureChar_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Security/src/SecureChar.cs#L93
+  metadata:
+    uid: Alis.Core.Aspect.Security.SecureChar.op_Equality(Alis.Core.Aspect.Security.SecureChar,Alis.Core.Aspect.Security.SecureChar)
+    commentId: M:Alis.Core.Aspect.Security.SecureChar.op_Equality(Alis.Core.Aspect.Security.SecureChar,Alis.Core.Aspect.Security.SecureChar)
+- code: public static bool operator ==(SecureChar a, SecureChar b)
+- h4: Parameters
+- parameters:
+  - name: a
+    type:
+    - text: SecureChar
+      url: Alis.Core.Aspect.Security.SecureChar.html
+    description: ''
+  - name: b
+    type:
+    - text: SecureChar
+      url: Alis.Core.Aspect.Security.SecureChar.html
+    description: ''
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: ''
+- api3: implicit operator SecureChar(char)
+  id: Alis_Core_Aspect_Security_SecureChar_op_Implicit_System_Char__Alis_Core_Aspect_Security_SecureChar
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Security/src/SecureChar.cs#L80
+  metadata:
+    uid: Alis.Core.Aspect.Security.SecureChar.op_Implicit(System.Char)~Alis.Core.Aspect.Security.SecureChar
+    commentId: M:Alis.Core.Aspect.Security.SecureChar.op_Implicit(System.Char)~Alis.Core.Aspect.Security.SecureChar
+- code: public static implicit operator SecureChar(char value)
+- h4: Parameters
+- parameters:
+  - name: value
+    type:
+    - text: char
+      url: https://learn.microsoft.com/dotnet/api/system.char
+    description: ''
+- h4: Returns
+- parameters:
+  - type:
+    - text: SecureChar
+      url: Alis.Core.Aspect.Security.SecureChar.html
+    description: ''
+- api3: implicit operator char(SecureChar)
+  id: Alis_Core_Aspect_Security_SecureChar_op_Implicit_Alis_Core_Aspect_Security_SecureChar__System_Char
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Security/src/SecureChar.cs#L86
+  metadata:
+    uid: Alis.Core.Aspect.Security.SecureChar.op_Implicit(Alis.Core.Aspect.Security.SecureChar)~System.Char
+    commentId: M:Alis.Core.Aspect.Security.SecureChar.op_Implicit(Alis.Core.Aspect.Security.SecureChar)~System.Char
+- code: public static implicit operator char(SecureChar value)
+- h4: Parameters
+- parameters:
+  - name: value
+    type:
+    - text: SecureChar
+      url: Alis.Core.Aspect.Security.SecureChar.html
+    description: ''
+- h4: Returns
+- parameters:
+  - type:
+    - text: char
+      url: https://learn.microsoft.com/dotnet/api/system.char
+    description: ''
+- api3: operator !=(SecureChar, SecureChar)
+  id: Alis_Core_Aspect_Security_SecureChar_op_Inequality_Alis_Core_Aspect_Security_SecureChar_Alis_Core_Aspect_Security_SecureChar_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Security/src/SecureChar.cs#L100
+  metadata:
+    uid: Alis.Core.Aspect.Security.SecureChar.op_Inequality(Alis.Core.Aspect.Security.SecureChar,Alis.Core.Aspect.Security.SecureChar)
+    commentId: M:Alis.Core.Aspect.Security.SecureChar.op_Inequality(Alis.Core.Aspect.Security.SecureChar,Alis.Core.Aspect.Security.SecureChar)
+- code: public static bool operator !=(SecureChar a, SecureChar b)
+- h4: Parameters
+- parameters:
+  - name: a
+    type:
+    - text: SecureChar
+      url: Alis.Core.Aspect.Security.SecureChar.html
+    description: ''
+  - name: b
+    type:
+    - text: SecureChar
+      url: Alis.Core.Aspect.Security.SecureChar.html
+    description: ''
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: ''
+- api3: operator *(SecureChar, SecureChar)
+  id: Alis_Core_Aspect_Security_SecureChar_op_Multiply_Alis_Core_Aspect_Security_SecureChar_Alis_Core_Aspect_Security_SecureChar_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Security/src/SecureChar.cs#L121
+  metadata:
+    uid: Alis.Core.Aspect.Security.SecureChar.op_Multiply(Alis.Core.Aspect.Security.SecureChar,Alis.Core.Aspect.Security.SecureChar)
+    commentId: M:Alis.Core.Aspect.Security.SecureChar.op_Multiply(Alis.Core.Aspect.Security.SecureChar,Alis.Core.Aspect.Security.SecureChar)
+- code: public static SecureChar operator *(SecureChar a, SecureChar b)
+- h4: Parameters
+- parameters:
+  - name: a
+    type:
+    - text: SecureChar
+      url: Alis.Core.Aspect.Security.SecureChar.html
+    description: ''
+  - name: b
+    type:
+    - text: SecureChar
+      url: Alis.Core.Aspect.Security.SecureChar.html
+    description: ''
+- h4: Returns
+- parameters:
+  - type:
+    - text: SecureChar
+      url: Alis.Core.Aspect.Security.SecureChar.html
+    description: ''
+- api3: operator -(SecureChar, SecureChar)
+  id: Alis_Core_Aspect_Security_SecureChar_op_Subtraction_Alis_Core_Aspect_Security_SecureChar_Alis_Core_Aspect_Security_SecureChar_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Security/src/SecureChar.cs#L114
+  metadata:
+    uid: Alis.Core.Aspect.Security.SecureChar.op_Subtraction(Alis.Core.Aspect.Security.SecureChar,Alis.Core.Aspect.Security.SecureChar)
+    commentId: M:Alis.Core.Aspect.Security.SecureChar.op_Subtraction(Alis.Core.Aspect.Security.SecureChar,Alis.Core.Aspect.Security.SecureChar)
+- code: public static SecureChar operator -(SecureChar a, SecureChar b)
+- h4: Parameters
+- parameters:
+  - name: a
+    type:
+    - text: SecureChar
+      url: Alis.Core.Aspect.Security.SecureChar.html
+    description: ''
+  - name: b
+    type:
+    - text: SecureChar
+      url: Alis.Core.Aspect.Security.SecureChar.html
+    description: ''
+- h4: Returns
+- parameters:
+  - type:
+    - text: SecureChar
+      url: Alis.Core.Aspect.Security.SecureChar.html
+    description: ''
+languageId: csharp
+metadata:
+  description: The secure char class

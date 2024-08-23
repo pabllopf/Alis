@@ -1,0 +1,49 @@
+### YamlMime:ApiPage
+title: Interface IPosition2D<TBuilder, TArgument>
+body:
+- api1: Interface IPosition2D<TBuilder, TArgument>
+  id: Alis_Core_Aspect_Fluent_Words_IPosition2D_2
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Fluent/src/Words/IPosition2D.cs#L35
+  metadata:
+    uid: Alis.Core.Aspect.Fluent.Words.IPosition2D`2
+    commentId: T:Alis.Core.Aspect.Fluent.Words.IPosition2D`2
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Aspect.Fluent.Words
+      url: Alis.Core.Aspect.Fluent.Words.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The position interface
+- code: public interface IPosition2D<out TBuilder, in TArgument>
+- h4: Type Parameters
+- parameters:
+  - name: TBuilder
+  - name: TArgument
+- h2: Methods
+- api3: Position(TArgument, TArgument)
+  id: Alis_Core_Aspect_Fluent_Words_IPosition2D_2_Position__1__1_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Fluent/src/Words/IPosition2D.cs#L43
+  metadata:
+    uid: Alis.Core.Aspect.Fluent.Words.IPosition2D`2.Position(`1,`1)
+    commentId: M:Alis.Core.Aspect.Fluent.Words.IPosition2D`2.Position(`1,`1)
+- markdown: Positions the x
+- code: TBuilder Position(TArgument x, TArgument y)
+- h4: Parameters
+- parameters:
+  - name: x
+    type:
+    - TArgument
+    description: The
+  - name: y
+    type:
+    - TArgument
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - TBuilder
+    description: The builder
+languageId: csharp
+metadata:
+  description: The position interface

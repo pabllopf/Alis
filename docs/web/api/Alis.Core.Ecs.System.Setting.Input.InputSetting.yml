@@ -1,0 +1,109 @@
+### YamlMime:ApiPage
+title: Class InputSetting
+body:
+- api1: Class InputSetting
+  id: Alis_Core_Ecs_System_Setting_Input_InputSetting
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Setting/Input/InputSetting.cs#L40
+  metadata:
+    uid: Alis.Core.Ecs.System.Setting.Input.InputSetting
+    commentId: T:Alis.Core.Ecs.System.Setting.Input.InputSetting
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Ecs.System.Setting.Input
+      url: Alis.Core.Ecs.System.Setting.Input.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The input setting class
+- code: 'public class InputSetting : IInputSetting, IBuilder<InputSettingBuilder>'
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: InputSetting
+    url: Alis.Core.Ecs.System.Setting.Input.InputSetting.html
+- h4: Implements
+- list:
+  - text: IInputSetting
+    url: Alis.Core.Ecs.System.Setting.Input.IInputSetting.html
+  - text: IBuilder<InputSettingBuilder>
+    url: Alis.Core.Aspect.Fluent.IBuilder-1.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Constructors
+- api3: InputSetting()
+  id: Alis_Core_Ecs_System_Setting_Input_InputSetting__ctor
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Setting/Input/InputSetting.cs#L47
+  metadata:
+    uid: Alis.Core.Ecs.System.Setting.Input.InputSetting.#ctor
+    commentId: M:Alis.Core.Ecs.System.Setting.Input.InputSetting.#ctor
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Ecs.System.Setting.Input.InputSetting" data-throw-if-not-resolved="false"></xref> class
+- code: public InputSetting()
+- api3: InputSetting(UpdateMode)
+  id: Alis_Core_Ecs_System_Setting_Input_InputSetting__ctor_Alis_Core_Ecs_System_Setting_Input_UpdateMode_
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Setting/Input/InputSetting.cs#L53
+  metadata:
+    uid: Alis.Core.Ecs.System.Setting.Input.InputSetting.#ctor(Alis.Core.Ecs.System.Setting.Input.UpdateMode)
+    commentId: M:Alis.Core.Ecs.System.Setting.Input.InputSetting.#ctor(Alis.Core.Ecs.System.Setting.Input.UpdateMode)
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Ecs.System.Setting.Input.InputSetting" data-throw-if-not-resolved="false"></xref> class
+- code: public InputSetting(UpdateMode updateMode)
+- h4: Parameters
+- parameters:
+  - name: updateMode
+    type:
+    - text: UpdateMode
+      url: Alis.Core.Ecs.System.Setting.Input.UpdateMode.html
+    description: The update mode
+- h2: Properties
+- api3: UpdateMode
+  id: Alis_Core_Ecs_System_Setting_Input_InputSetting_UpdateMode
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Setting/Input/InputSetting.cs#L59
+  metadata:
+    uid: Alis.Core.Ecs.System.Setting.Input.InputSetting.UpdateMode
+    commentId: P:Alis.Core.Ecs.System.Setting.Input.InputSetting.UpdateMode
+- markdown: Gets or sets the value of the update mode
+- code: >-
+    [JsonPropertyName("_UpdateMode_")]
+
+    public UpdateMode UpdateMode { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: UpdateMode
+      url: Alis.Core.Ecs.System.Setting.Input.UpdateMode.html
+- h2: Methods
+- api3: Builder()
+  id: Alis_Core_Ecs_System_Setting_Input_InputSetting_Builder
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Setting/Input/InputSetting.cs#L66
+  metadata:
+    uid: Alis.Core.Ecs.System.Setting.Input.InputSetting.Builder
+    commentId: M:Alis.Core.Ecs.System.Setting.Input.InputSetting.Builder
+- markdown: Builders this instance
+- code: public InputSettingBuilder Builder()
+- h4: Returns
+- parameters:
+  - type:
+    - text: InputSettingBuilder
+      url: Alis.Builder.Core.Ecs.System.Setting.Input.InputSettingBuilder.html
+    description: The input setting builder
+- h2: See Also
+- list:
+  - - text: IInputSetting
+      url: Alis.Core.Ecs.System.Setting.Input.IInputSetting.html
+languageId: csharp
+metadata:
+  description: The input setting class

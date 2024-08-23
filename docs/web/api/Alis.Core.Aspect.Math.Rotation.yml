@@ -1,0 +1,204 @@
+### YamlMime:ApiPage
+title: Struct Rotation
+body:
+- api1: Struct Rotation
+  id: Alis_Core_Aspect_Math_Rotation
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Rotation.cs#L39
+  metadata:
+    uid: Alis.Core.Aspect.Math.Rotation
+    commentId: T:Alis.Core.Aspect.Math.Rotation
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Aspect.Math
+      url: Alis.Core.Aspect.Math.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The rotation
+- code: >-
+    [Serializable]
+
+    public struct Rotation : ISerializable
+- h4: Implements
+- list:
+  - text: ISerializable
+    url: https://learn.microsoft.com/dotnet/api/system.runtime.serialization.iserializable
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Constructors
+- api3: Rotation(float)
+  id: Alis_Core_Aspect_Math_Rotation__ctor_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Rotation.cs#L55
+  metadata:
+    uid: Alis.Core.Aspect.Math.Rotation.#ctor(System.Single)
+    commentId: M:Alis.Core.Aspect.Math.Rotation.#ctor(System.Single)
+- markdown: Initialize from an angle in radians
+- code: public Rotation(float angle)
+- h4: Parameters
+- parameters:
+  - name: angle
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: Angle in radians
+- api3: Rotation(float, float, float)
+  id: Alis_Core_Aspect_Math_Rotation__ctor_System_Single_System_Single_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Rotation.cs#L68
+  metadata:
+    uid: Alis.Core.Aspect.Math.Rotation.#ctor(System.Single,System.Single,System.Single)
+    commentId: M:Alis.Core.Aspect.Math.Rotation.#ctor(System.Single,System.Single,System.Single)
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Aspect.Math.Rotation" data-throw-if-not-resolved="false"></xref> class
+- code: public Rotation(float sine, float cosine, float angle)
+- h4: Parameters
+- parameters:
+  - name: sine
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The sine
+  - name: cosine
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The cosine
+  - name: angle
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The angle
+- h2: Properties
+- api3: Angle
+  id: Alis_Core_Aspect_Math_Rotation_Angle
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Rotation.cs#L51
+  metadata:
+    uid: Alis.Core.Aspect.Math.Rotation.Angle
+    commentId: P:Alis.Core.Aspect.Math.Rotation.Angle
+- markdown: The angle
+- code: public float Angle { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: Cosine
+  id: Alis_Core_Aspect_Math_Rotation_Cosine
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Rotation.cs#L46
+  metadata:
+    uid: Alis.Core.Aspect.Math.Rotation.Cosine
+    commentId: P:Alis.Core.Aspect.Math.Rotation.Cosine
+- code: public float Cosine { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: Sine
+  id: Alis_Core_Aspect_Math_Rotation_Sine
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Rotation.cs#L43
+  metadata:
+    uid: Alis.Core.Aspect.Math.Rotation.Sine
+    commentId: P:Alis.Core.Aspect.Math.Rotation.Sine
+- code: public float Sine { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- h2: Methods
+- api3: GetAngle()
+  id: Alis_Core_Aspect_Math_Rotation_GetAngle
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Rotation.cs#L101
+  metadata:
+    uid: Alis.Core.Aspect.Math.Rotation.GetAngle
+    commentId: M:Alis.Core.Aspect.Math.Rotation.GetAngle
+- markdown: Get the angle in radians
+- code: public float GetAngle()
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: GetObjectData(SerializationInfo, StreamingContext)
+  id: Alis_Core_Aspect_Math_Rotation_GetObjectData_System_Runtime_Serialization_SerializationInfo_System_Runtime_Serialization_StreamingContext_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Rotation.cs#L114
+  metadata:
+    uid: Alis.Core.Aspect.Math.Rotation.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+    commentId: M:Alis.Core.Aspect.Math.Rotation.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+- markdown: Gets the object data using the specified info
+- code: public void GetObjectData(SerializationInfo info, StreamingContext context)
+- h4: Parameters
+- parameters:
+  - name: info
+    type:
+    - text: SerializationInfo
+      url: https://learn.microsoft.com/dotnet/api/system.runtime.serialization.serializationinfo
+    description: The info
+  - name: context
+    type:
+    - text: StreamingContext
+      url: https://learn.microsoft.com/dotnet/api/system.runtime.serialization.streamingcontext
+    description: The context
+- api3: GetXAxis()
+  id: Alis_Core_Aspect_Math_Rotation_GetXAxis
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Rotation.cs#L104
+  metadata:
+    uid: Alis.Core.Aspect.Math.Rotation.GetXAxis
+    commentId: M:Alis.Core.Aspect.Math.Rotation.GetXAxis
+- markdown: Get the x-axis
+- code: public Vector2 GetXAxis()
+- h4: Returns
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: GetYAxis()
+  id: Alis_Core_Aspect_Math_Rotation_GetYAxis
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Rotation.cs#L107
+  metadata:
+    uid: Alis.Core.Aspect.Math.Rotation.GetYAxis
+    commentId: M:Alis.Core.Aspect.Math.Rotation.GetYAxis
+- markdown: Get the y-axis
+- code: public Vector2 GetYAxis()
+- h4: Returns
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: Set(float)
+  id: Alis_Core_Aspect_Math_Rotation_Set_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Rotation.cs#L77
+  metadata:
+    uid: Alis.Core.Aspect.Math.Rotation.Set(System.Single)
+    commentId: M:Alis.Core.Aspect.Math.Rotation.Set(System.Single)
+- markdown: Set using an angle in radians.
+- code: public void Set(float angle)
+- h4: Parameters
+- parameters:
+  - name: angle
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: ''
+- api3: SetIdentity()
+  id: Alis_Core_Aspect_Math_Rotation_SetIdentity
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Rotation.cs#L94
+  metadata:
+    uid: Alis.Core.Aspect.Math.Rotation.SetIdentity
+    commentId: M:Alis.Core.Aspect.Math.Rotation.SetIdentity
+- markdown: Set to the identity rotation
+- code: public void SetIdentity()
+languageId: csharp
+metadata:
+  description: The rotation

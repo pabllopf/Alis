@@ -1,0 +1,118 @@
+### YamlMime:ApiPage
+title: Enum WindowEventId
+body:
+- api1: Enum WindowEventId
+  id: Alis_Core_Graphic_Sdl2_Enums_WindowEventId
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Enums/WindowEventId.cs#L35
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Enums.WindowEventId
+    commentId: T:Alis.Core.Graphic.Sdl2.Enums.WindowEventId
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Enums
+      url: Alis.Core.Graphic.Sdl2.Enums.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The sdl window event id enum
+- code: 'public enum WindowEventId : byte'
+- h2: Fields
+- parameters:
+  - name: SdlWindowEventNone
+    default: "0"
+    description: >+
+      The sdl window event none sdl window event id
+
+  - name: SdlWindowEventShown
+    default: "1"
+    description: >+
+      The sdl window event shown sdl window event id
+
+  - name: SdlWindowEventHidden
+    default: "2"
+    description: >+
+      The sdl window event hidden sdl window event id
+
+  - name: SdlWindowEventExposed
+    default: "3"
+    description: >+
+      The sdl window event exposed sdl window event id
+
+  - name: SdlWindowEventMoved
+    default: "4"
+    description: >+
+      The sdl window event moved sdl window event id
+
+  - name: SdlWindowEventResized
+    default: "5"
+    description: >+
+      The sdl window event resized sdl window event id
+
+  - name: SdlWindowEventSizeChanged
+    default: "6"
+    description: >+
+      The sdl window event size changed sdl window event id
+
+  - name: SdlWindowEventMinimized
+    default: "7"
+    description: >+
+      The sdl window event minimized sdl window event id
+
+  - name: SdlWindowEventMaximized
+    default: "8"
+    description: >+
+      The sdl window event maximized sdl window event id
+
+  - name: SdlWindowEventRestored
+    default: "9"
+    description: >+
+      The sdl window event restored sdl window event id
+
+  - name: SdlWindowEventEnter
+    default: "10"
+    description: >+
+      The sdl window event enter sdl window event id
+
+  - name: SdlWindowEventLeave
+    default: "11"
+    description: >+
+      The sdl window event leave sdl window event id
+
+  - name: SdlWindowEventFocusGained
+    default: "12"
+    description: >+
+      The sdl window event focus gained sdl window event id
+
+  - name: SdlWindowEventFocusLost
+    default: "13"
+    description: >+
+      The sdl window event focus lost sdl window event id
+
+  - name: SdlWindowEventClose
+    default: "14"
+    description: >+
+      The sdl window event close sdl window event id
+
+  - name: SdlWindowEventTakeFocus
+    default: "15"
+    description: >+
+      The sdl window event take focus sdl window event id
+
+  - name: SdlWindowEventHitTest
+    default: "16"
+    description: >+
+      The sdl window event hit test sdl window event id
+
+  - name: SdlWindowEventIccProfChanged
+    default: "17"
+    description: >+
+      The sdl window event icc prof changed sdl window event id
+
+  - name: SdlWindowEventDisplayChanged
+    default: "18"
+    description: >+
+      The sdl window event display changed sdl window event id
+
+languageId: csharp
+metadata:
+  description: The sdl window event id enum

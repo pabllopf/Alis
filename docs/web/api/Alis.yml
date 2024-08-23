@@ -1,0 +1,17 @@
+### YamlMime:ApiPage
+title: Namespace Alis
+body:
+- api1: Namespace Alis
+  id: Alis
+  metadata:
+    uid: Alis
+    commentId: N:Alis
+- h3: Namespaces
+- parameters:
+  - type:
+      text: Alis.Builder
+      url: Alis.Builder.html
+  - type:
+      text: Alis.Core
+      url: Alis.Core.html
+languageId: csharp

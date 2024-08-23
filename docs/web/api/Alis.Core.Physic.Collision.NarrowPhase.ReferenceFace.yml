@@ -1,0 +1,153 @@
+### YamlMime:ApiPage
+title: Struct ReferenceFace
+body:
+- api1: Struct ReferenceFace
+  id: Alis_Core_Physic_Collision_NarrowPhase_ReferenceFace
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/ReferenceFace.cs#L35
+  metadata:
+    uid: Alis.Core.Physic.Collision.NarrowPhase.ReferenceFace
+    commentId: T:Alis.Core.Physic.Collision.NarrowPhase.ReferenceFace
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Physic.Collision.NarrowPhase
+      url: Alis.Core.Physic.Collision.NarrowPhase.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: Reference face used for clipping
+- code: public struct ReferenceFace
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Properties
+- api3: I1
+  id: Alis_Core_Physic_Collision_NarrowPhase_ReferenceFace_I1
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/ReferenceFace.cs#L40
+  metadata:
+    uid: Alis.Core.Physic.Collision.NarrowPhase.ReferenceFace.I1
+    commentId: P:Alis.Core.Physic.Collision.NarrowPhase.ReferenceFace.I1
+- markdown: The
+- code: public int I1 { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: I2
+  id: Alis_Core_Physic_Collision_NarrowPhase_ReferenceFace_I2
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/ReferenceFace.cs#L45
+  metadata:
+    uid: Alis.Core.Physic.Collision.NarrowPhase.ReferenceFace.I2
+    commentId: P:Alis.Core.Physic.Collision.NarrowPhase.ReferenceFace.I2
+- markdown: The
+- code: public int I2 { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: Normal
+  id: Alis_Core_Physic_Collision_NarrowPhase_ReferenceFace_Normal
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/ReferenceFace.cs#L60
+  metadata:
+    uid: Alis.Core.Physic.Collision.NarrowPhase.ReferenceFace.Normal
+    commentId: P:Alis.Core.Physic.Collision.NarrowPhase.ReferenceFace.Normal
+- markdown: The normal
+- code: public Vector2 Normal { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: SideNormal1
+  id: Alis_Core_Physic_Collision_NarrowPhase_ReferenceFace_SideNormal1
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/ReferenceFace.cs#L65
+  metadata:
+    uid: Alis.Core.Physic.Collision.NarrowPhase.ReferenceFace.SideNormal1
+    commentId: P:Alis.Core.Physic.Collision.NarrowPhase.ReferenceFace.SideNormal1
+- markdown: The side normal
+- code: public Vector2 SideNormal1 { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: SideNormal2
+  id: Alis_Core_Physic_Collision_NarrowPhase_ReferenceFace_SideNormal2
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/ReferenceFace.cs#L75
+  metadata:
+    uid: Alis.Core.Physic.Collision.NarrowPhase.ReferenceFace.SideNormal2
+    commentId: P:Alis.Core.Physic.Collision.NarrowPhase.ReferenceFace.SideNormal2
+- markdown: The side normal
+- code: public Vector2 SideNormal2 { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: SideOffset1
+  id: Alis_Core_Physic_Collision_NarrowPhase_ReferenceFace_SideOffset1
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/ReferenceFace.cs#L70
+  metadata:
+    uid: Alis.Core.Physic.Collision.NarrowPhase.ReferenceFace.SideOffset1
+    commentId: P:Alis.Core.Physic.Collision.NarrowPhase.ReferenceFace.SideOffset1
+- markdown: The side offset
+- code: public float SideOffset1 { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: SideOffset2
+  id: Alis_Core_Physic_Collision_NarrowPhase_ReferenceFace_SideOffset2
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/ReferenceFace.cs#L80
+  metadata:
+    uid: Alis.Core.Physic.Collision.NarrowPhase.ReferenceFace.SideOffset2
+    commentId: P:Alis.Core.Physic.Collision.NarrowPhase.ReferenceFace.SideOffset2
+- markdown: The side offset
+- code: public float SideOffset2 { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: V1
+  id: Alis_Core_Physic_Collision_NarrowPhase_ReferenceFace_V1
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/ReferenceFace.cs#L50
+  metadata:
+    uid: Alis.Core.Physic.Collision.NarrowPhase.ReferenceFace.V1
+    commentId: P:Alis.Core.Physic.Collision.NarrowPhase.ReferenceFace.V1
+- markdown: The
+- code: public Vector2 V1 { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: V2
+  id: Alis_Core_Physic_Collision_NarrowPhase_ReferenceFace_V2
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/ReferenceFace.cs#L55
+  metadata:
+    uid: Alis.Core.Physic.Collision.NarrowPhase.ReferenceFace.V2
+    commentId: P:Alis.Core.Physic.Collision.NarrowPhase.ReferenceFace.V2
+- markdown: The
+- code: public Vector2 V2 { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+languageId: csharp
+metadata:
+  description: Reference face used for clipping

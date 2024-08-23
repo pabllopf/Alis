@@ -1,0 +1,38 @@
+### YamlMime:ApiPage
+title: Enum RwSeek
+body:
+- api1: Enum RwSeek
+  id: Alis_Core_Graphic_Sdl2_Enums_RwSeek
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Enums/RwSeek.cs#L35
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Enums.RwSeek
+    commentId: T:Alis.Core.Graphic.Sdl2.Enums.RwSeek
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Enums
+      url: Alis.Core.Graphic.Sdl2.Enums.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The rw seek enum
+- code: public enum RwSeek
+- h2: Fields
+- parameters:
+  - name: RwSeekSet
+    default: "0"
+    description: >+
+      The rw seek set
+
+  - name: RwSeekCur
+    default: "1"
+    description: >+
+      The rw seek cur
+
+  - name: RwSeekEnd
+    default: "2"
+    description: >+
+      The rw seek end
+
+languageId: csharp
+metadata:
+  description: The rw seek enum

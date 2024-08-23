@@ -1,0 +1,111 @@
+### YamlMime:ApiPage
+title: Class SceneManagerBuilder
+body:
+- api1: Class SceneManagerBuilder
+  id: Alis_Builder_Core_Ecs_System_Manager_Scene_SceneManagerBuilder
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Builder/Core/Ecs/System/Manager/Scene/SceneManagerBuilder.cs#L41
+  metadata:
+    uid: Alis.Builder.Core.Ecs.System.Manager.Scene.SceneManagerBuilder
+    commentId: T:Alis.Builder.Core.Ecs.System.Manager.Scene.SceneManagerBuilder
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Builder.Core.Ecs.System.Manager.Scene
+      url: Alis.Builder.Core.Ecs.System.Manager.Scene.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The scene manager builder class
+- code: 'public class SceneManagerBuilder : IBuild<SceneManager>, IAdd<SceneManagerBuilder, Func<SceneBuilder, Scene>>'
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: SceneManagerBuilder
+    url: Alis.Builder.Core.Ecs.System.Manager.Scene.SceneManagerBuilder.html
+- h4: Implements
+- list:
+  - text: IBuild<SceneManager>
+    url: Alis.Core.Aspect.Fluent.IBuild-1.html
+  - text: IAdd<SceneManagerBuilder, Func<SceneBuilder, Scene>>
+    url: Alis.Core.Aspect.Fluent.Words.IAdd-2.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Fields
+- api3: sceneManager
+  id: Alis_Builder_Core_Ecs_System_Manager_Scene_SceneManagerBuilder_sceneManager
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Builder/Core/Ecs/System/Manager/Scene/SceneManagerBuilder.cs#L48
+  metadata:
+    uid: Alis.Builder.Core.Ecs.System.Manager.Scene.SceneManagerBuilder.sceneManager
+    commentId: F:Alis.Builder.Core.Ecs.System.Manager.Scene.SceneManagerBuilder.sceneManager
+- markdown: Gets the value of the scene manager
+- code: private readonly SceneManager sceneManager
+- h4: Field Value
+- parameters:
+  - type:
+    - text: SceneManager
+      url: Alis.Core.Ecs.System.Manager.Scene.SceneManager.html
+- h2: Methods
+- api3: Add<T>(Func<SceneBuilder, Scene>)
+  id: Alis_Builder_Core_Ecs_System_Manager_Scene_SceneManagerBuilder_Add__1_System_Func_Alis_Builder_Core_Ecs_Entity_Scene_SceneBuilder_Alis_Core_Ecs_Entity_Scene__
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Builder/Core/Ecs/System/Manager/Scene/SceneManagerBuilder.cs#L56
+  metadata:
+    uid: Alis.Builder.Core.Ecs.System.Manager.Scene.SceneManagerBuilder.Add``1(System.Func{Alis.Builder.Core.Ecs.Entity.Scene.SceneBuilder,Alis.Core.Ecs.Entity.Scene})
+    commentId: M:Alis.Builder.Core.Ecs.System.Manager.Scene.SceneManagerBuilder.Add``1(System.Func{Alis.Builder.Core.Ecs.Entity.Scene.SceneBuilder,Alis.Core.Ecs.Entity.Scene})
+- markdown: Adds the value
+- code: public SceneManagerBuilder Add<T>(Func<SceneBuilder, Scene> value)
+- h4: Parameters
+- parameters:
+  - name: value
+    type:
+    - text: Func
+      url: https://learn.microsoft.com/dotnet/api/system.func-2
+    - <
+    - text: SceneBuilder
+      url: Alis.Builder.Core.Ecs.Entity.Scene.SceneBuilder.html
+    - ','
+    - " "
+    - text: Scene
+      url: Alis.Core.Ecs.Entity.Scene.html
+    - '>'
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - text: SceneManagerBuilder
+      url: Alis.Builder.Core.Ecs.System.Manager.Scene.SceneManagerBuilder.html
+    description: The scene builder
+- h4: Type Parameters
+- parameters:
+  - name: T
+    description: The
+- api3: Build()
+  id: Alis_Builder_Core_Ecs_System_Manager_Scene_SceneManagerBuilder_Build
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Builder/Core/Ecs/System/Manager/Scene/SceneManagerBuilder.cs#L67
+  metadata:
+    uid: Alis.Builder.Core.Ecs.System.Manager.Scene.SceneManagerBuilder.Build
+    commentId: M:Alis.Builder.Core.Ecs.System.Manager.Scene.SceneManagerBuilder.Build
+- markdown: Builds this instance
+- code: public SceneManager Build()
+- h4: Returns
+- parameters:
+  - type:
+    - text: SceneManager
+      url: Alis.Core.Ecs.System.Manager.Scene.SceneManager.html
+    description: The scene manager
+languageId: csharp
+metadata:
+  description: The scene manager builder class

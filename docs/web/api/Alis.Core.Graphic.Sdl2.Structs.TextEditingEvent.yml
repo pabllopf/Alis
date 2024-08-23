@@ -1,0 +1,128 @@
+### YamlMime:ApiPage
+title: Struct TextEditingEvent
+body:
+- api1: Struct TextEditingEvent
+  id: Alis_Core_Graphic_Sdl2_Structs_TextEditingEvent
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TextEditingEvent.cs#L39
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TextEditingEvent
+    commentId: T:Alis.Core.Graphic.Sdl2.Structs.TextEditingEvent
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Structs
+      url: Alis.Core.Graphic.Sdl2.Structs.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The sdl text editing event
+- code: public readonly struct TextEditingEvent
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Fields
+- api3: length
+  id: Alis_Core_Graphic_Sdl2_Structs_TextEditingEvent_length
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TextEditingEvent.cs#L70
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TextEditingEvent.length
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TextEditingEvent.length
+- markdown: The length
+- code: public readonly int length
+- h4: Field Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: start
+  id: Alis_Core_Graphic_Sdl2_Structs_TextEditingEvent_start
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TextEditingEvent.cs#L65
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TextEditingEvent.start
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TextEditingEvent.start
+- markdown: The start
+- code: public readonly int start
+- h4: Field Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: textPtr
+  id: Alis_Core_Graphic_Sdl2_Structs_TextEditingEvent_textPtr
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TextEditingEvent.cs#L60
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TextEditingEvent.textPtr
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TextEditingEvent.textPtr
+- markdown: The sdl text editing event text size
+- code: private readonly IntPtr textPtr
+- h4: Field Value
+- parameters:
+  - type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+- api3: timestamp
+  id: Alis_Core_Graphic_Sdl2_Structs_TextEditingEvent_timestamp
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TextEditingEvent.cs#L50
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TextEditingEvent.timestamp
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TextEditingEvent.timestamp
+- markdown: The timestamp
+- code: public readonly uint timestamp
+- h4: Field Value
+- parameters:
+  - type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+- api3: type
+  id: Alis_Core_Graphic_Sdl2_Structs_TextEditingEvent_type
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TextEditingEvent.cs#L45
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TextEditingEvent.type
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TextEditingEvent.type
+- markdown: The type
+- code: public readonly EventType type
+- h4: Field Value
+- parameters:
+  - type:
+    - text: EventType
+      url: Alis.Core.Graphic.Sdl2.Enums.EventType.html
+- api3: windowID
+  id: Alis_Core_Graphic_Sdl2_Structs_TextEditingEvent_windowID
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TextEditingEvent.cs#L55
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TextEditingEvent.windowID
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TextEditingEvent.windowID
+- markdown: The window id
+- code: public readonly uint windowID
+- h4: Field Value
+- parameters:
+  - type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+- h2: Properties
+- api3: Text
+  id: Alis_Core_Graphic_Sdl2_Structs_TextEditingEvent_Text
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TextEditingEvent.cs#L75
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TextEditingEvent.Text
+    commentId: P:Alis.Core.Graphic.Sdl2.Structs.TextEditingEvent.Text
+- markdown: Gets the value of the text
+- code: public string Text { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+languageId: csharp
+metadata:
+  description: The sdl text editing event

@@ -1,0 +1,58 @@
+### YamlMime:ApiPage
+title: Enum LogPriority
+body:
+- api1: Enum LogPriority
+  id: Alis_Core_Graphic_Sdl2_Enums_LogPriority
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Enums/LogPriority.cs#L35
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Enums.LogPriority
+    commentId: T:Alis.Core.Graphic.Sdl2.Enums.LogPriority
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Enums
+      url: Alis.Core.Graphic.Sdl2.Enums.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The sdl log priority enum
+- code: public enum LogPriority
+- h2: Fields
+- parameters:
+  - name: SdlLogPriorityVerbose
+    default: "1"
+    description: >+
+      The sdl log priority verbose sdl log priority
+
+  - name: SdlLogPriorityDebug
+    default: "2"
+    description: >+
+      The sdl log priority debug sdl log priority
+
+  - name: SdlLogPriorityInfo
+    default: "3"
+    description: >+
+      The sdl log priority info sdl log priority
+
+  - name: SdlLogPriorityWarn
+    default: "4"
+    description: >+
+      The sdl log priority warn sdl log priority
+
+  - name: SdlLogPriorityError
+    default: "5"
+    description: >+
+      The sdl log priority error sdl log priority
+
+  - name: SdlLogPriorityCritical
+    default: "6"
+    description: >+
+      The sdl log priority critical sdl log priority
+
+  - name: SdlNumLogPriorities
+    default: "7"
+    description: >+
+      The sdl num log priorities sdl log priority
+
+languageId: csharp
+metadata:
+  description: The sdl log priority enum

@@ -1,0 +1,75 @@
+### YamlMime:ApiPage
+title: Struct Vertex
+body:
+- api1: Struct Vertex
+  id: Alis_Core_Graphic_Sdl2_Structs_Vertex
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Vertex.cs#L39
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Vertex
+    commentId: T:Alis.Core.Graphic.Sdl2.Structs.Vertex
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Structs
+      url: Alis.Core.Graphic.Sdl2.Structs.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The sdl vertex
+- code: public struct Vertex
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Properties
+- api3: Color
+  id: Alis_Core_Graphic_Sdl2_Structs_Vertex_Color
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Vertex.cs#L50
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Vertex.Color
+    commentId: P:Alis.Core.Graphic.Sdl2.Structs.Vertex.Color
+- markdown: The color
+- code: public Color Color { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Color
+      url: Alis.Core.Aspect.Math.Definition.Color.html
+- api3: Position
+  id: Alis_Core_Graphic_Sdl2_Structs_Vertex_Position
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Vertex.cs#L45
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Vertex.Position
+    commentId: P:Alis.Core.Graphic.Sdl2.Structs.Vertex.Position
+- markdown: The position
+- code: public PointF Position { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: PointF
+      url: Alis.Core.Aspect.Math.Shape.Point.PointF.html
+- api3: TexCoordinate
+  id: Alis_Core_Graphic_Sdl2_Structs_Vertex_TexCoordinate
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Vertex.cs#L55
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Vertex.TexCoordinate
+    commentId: P:Alis.Core.Graphic.Sdl2.Structs.Vertex.TexCoordinate
+- markdown: The text coordinate
+- code: public PointF TexCoordinate { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: PointF
+      url: Alis.Core.Aspect.Math.Shape.Point.PointF.html
+languageId: csharp
+metadata:
+  description: The sdl vertex

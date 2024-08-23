@@ -1,0 +1,395 @@
+### YamlMime:ApiPage
+title: Class TimeManager
+body:
+- api1: Class TimeManager
+  id: Alis_Core_Aspect_Time_TimeManager
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Time/src/TimeManager.cs#L35
+  metadata:
+    uid: Alis.Core.Aspect.Time.TimeManager
+    commentId: T:Alis.Core.Aspect.Time.TimeManager
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Aspect.Time
+      url: Alis.Core.Aspect.Time.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: Provides an interface to get time information.
+- code: public class TimeManager
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: TimeManager
+    url: Alis.Core.Aspect.Time.TimeManager.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Constructors
+- api3: TimeManager()
+  id: Alis_Core_Aspect_Time_TimeManager__ctor
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Time/src/TimeManager.cs#L40
+  metadata:
+    uid: Alis.Core.Aspect.Time.TimeManager.#ctor
+    commentId: M:Alis.Core.Aspect.Time.TimeManager.#ctor
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Aspect.Time.TimeManager" data-throw-if-not-resolved="false"></xref> class
+- code: public TimeManager()
+- h2: Properties
+- api3: AverageFrames
+  id: Alis_Core_Aspect_Time_TimeManager_AverageFrames
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Time/src/TimeManager.cs#L109
+  metadata:
+    uid: Alis.Core.Aspect.Time.TimeManager.AverageFrames
+    commentId: P:Alis.Core.Aspect.Time.TimeManager.AverageFrames
+- markdown: Gets or sets the value of the average frames
+- code: public int AverageFrames { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: Clock
+  id: Alis_Core_Aspect_Time_TimeManager_Clock
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Time/src/TimeManager.cs#L54
+  metadata:
+    uid: Alis.Core.Aspect.Time.TimeManager.Clock
+    commentId: P:Alis.Core.Aspect.Time.TimeManager.Clock
+- markdown: Gets the value of the clock
+- code: public Clock Clock { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Clock
+      url: Alis.Core.Aspect.Time.Clock.html
+- api3: Configuration
+  id: Alis_Core_Aspect_Time_TimeManager_Configuration
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Time/src/TimeManager.cs#L49
+  metadata:
+    uid: Alis.Core.Aspect.Time.TimeManager.Configuration
+    commentId: P:Alis.Core.Aspect.Time.TimeManager.Configuration
+- markdown: Gets or sets the value of the configuration
+- code: public TimeConfiguration Configuration { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: TimeConfiguration
+      url: Alis.Core.Aspect.Time.TimeConfiguration.html
+- api3: DeltaTime
+  id: Alis_Core_Aspect_Time_TimeManager_DeltaTime
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Time/src/TimeManager.cs#L59
+  metadata:
+    uid: Alis.Core.Aspect.Time.TimeManager.DeltaTime
+    commentId: P:Alis.Core.Aspect.Time.TimeManager.DeltaTime
+- markdown: The interval in seconds from the last frame to the current one (Read Only).
+- code: public float DeltaTime { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: FixedDeltaTime
+  id: Alis_Core_Aspect_Time_TimeManager_FixedDeltaTime
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Time/src/TimeManager.cs#L64
+  metadata:
+    uid: Alis.Core.Aspect.Time.TimeManager.FixedDeltaTime
+    commentId: P:Alis.Core.Aspect.Time.TimeManager.FixedDeltaTime
+- markdown: The interval in seconds at which physics and other fixed frame rate updateS.
+- code: public float FixedDeltaTime { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: FixedTime
+  id: Alis_Core_Aspect_Time_TimeManager_FixedTime
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Time/src/TimeManager.cs#L70
+  metadata:
+    uid: Alis.Core.Aspect.Time.TimeManager.FixedTime
+    commentId: P:Alis.Core.Aspect.Time.TimeManager.FixedTime
+- markdown: >-
+    The time since the last FixedUpdate started (Read Only).
+
+    This is the time in seconds since the start of the game.
+- code: public float FixedTime { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: FixedTimeAsDouble
+  id: Alis_Core_Aspect_Time_TimeManager_FixedTimeAsDouble
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Time/src/TimeManager.cs#L76
+  metadata:
+    uid: Alis.Core.Aspect.Time.TimeManager.FixedTimeAsDouble
+    commentId: P:Alis.Core.Aspect.Time.TimeManager.FixedTimeAsDouble
+- markdown: >-
+    The double precision time since the last FixedUpdate started (Read Only).
+
+    This is the time in seconds since the start of the game.
+- code: public double FixedTimeAsDouble { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: double
+      url: https://learn.microsoft.com/dotnet/api/system.double
+- api3: FixedUnscaledDeltaTime
+  id: Alis_Core_Aspect_Time_TimeManager_FixedUnscaledDeltaTime
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Time/src/TimeManager.cs#L82
+  metadata:
+    uid: Alis.Core.Aspect.Time.TimeManager.FixedUnscaledDeltaTime
+    commentId: P:Alis.Core.Aspect.Time.TimeManager.FixedUnscaledDeltaTime
+- markdown: >-
+    The timeScale-independent interval in seconds from the last Runtime.FixedUpdate() phase to the current one (Read
+
+    Only).
+- code: public float FixedUnscaledDeltaTime { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: FixedUnscaledTime
+  id: Alis_Core_Aspect_Time_TimeManager_FixedUnscaledTime
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Time/src/TimeManager.cs#L88
+  metadata:
+    uid: Alis.Core.Aspect.Time.TimeManager.FixedUnscaledTime
+    commentId: P:Alis.Core.Aspect.Time.TimeManager.FixedUnscaledTime
+- markdown: >-
+    The timeScale-independent time at the beginning of the last Runtime.FixedUpdate() phase (Read Only).
+
+    This is the time in seconds since the start of the game.
+- code: public float FixedUnscaledTime { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: FixedUnscaledTimeAsDouble
+  id: Alis_Core_Aspect_Time_TimeManager_FixedUnscaledTimeAsDouble
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Time/src/TimeManager.cs#L94
+  metadata:
+    uid: Alis.Core.Aspect.Time.TimeManager.FixedUnscaledTimeAsDouble
+    commentId: P:Alis.Core.Aspect.Time.TimeManager.FixedUnscaledTimeAsDouble
+- markdown: >-
+    The double precision timeScale-independent time at the beginning of the last FixedUpdate (Read Only).
+
+    This is the time in seconds since the start of the game.
+- code: public double FixedUnscaledTimeAsDouble { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: double
+      url: https://learn.microsoft.com/dotnet/api/system.double
+- api3: FrameCount
+  id: Alis_Core_Aspect_Time_TimeManager_FrameCount
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Time/src/TimeManager.cs#L99
+  metadata:
+    uid: Alis.Core.Aspect.Time.TimeManager.FrameCount
+    commentId: P:Alis.Core.Aspect.Time.TimeManager.FrameCount
+- markdown: The total number of frames since the start of the game (Read Only).
+- code: public float FrameCount { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: InFixedTimeStep
+  id: Alis_Core_Aspect_Time_TimeManager_InFixedTimeStep
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Time/src/TimeManager.cs#L114
+  metadata:
+    uid: Alis.Core.Aspect.Time.TimeManager.InFixedTimeStep
+    commentId: P:Alis.Core.Aspect.Time.TimeManager.InFixedTimeStep
+- markdown: Returns true if called inside a fixed time step callback (like Runtime FixedUpdate), otherwise returns false.
+- code: public bool InFixedTimeStep { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+- api3: IsRunning
+  id: Alis_Core_Aspect_Time_TimeManager_IsRunning
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Time/src/TimeManager.cs#L174
+  metadata:
+    uid: Alis.Core.Aspect.Time.TimeManager.IsRunning
+    commentId: P:Alis.Core.Aspect.Time.TimeManager.IsRunning
+- markdown: Gets or sets the value of the is running
+- code: public bool IsRunning { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+- api3: MaximumDeltaTime
+  id: Alis_Core_Aspect_Time_TimeManager_MaximumDeltaTime
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Time/src/TimeManager.cs#L120
+  metadata:
+    uid: Alis.Core.Aspect.Time.TimeManager.MaximumDeltaTime
+    commentId: P:Alis.Core.Aspect.Time.TimeManager.MaximumDeltaTime
+- markdown: >-
+    The maximum value of TimeManager.DeltaTime in any given frame.
+
+    This is a time in seconds that limits the increase of TimeManager.time between two frames.
+- code: public float MaximumDeltaTime { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: RealtimeSinceStartup
+  id: Alis_Core_Aspect_Time_TimeManager_RealtimeSinceStartup
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Time/src/TimeManager.cs#L125
+  metadata:
+    uid: Alis.Core.Aspect.Time.TimeManager.RealtimeSinceStartup
+    commentId: P:Alis.Core.Aspect.Time.TimeManager.RealtimeSinceStartup
+- markdown: The real time in seconds since the game started (Read Only).
+- code: public float RealtimeSinceStartup { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: RealtimeSinceStartupAsDouble
+  id: Alis_Core_Aspect_Time_TimeManager_RealtimeSinceStartupAsDouble
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Time/src/TimeManager.cs#L131
+  metadata:
+    uid: Alis.Core.Aspect.Time.TimeManager.RealtimeSinceStartupAsDouble
+    commentId: P:Alis.Core.Aspect.Time.TimeManager.RealtimeSinceStartupAsDouble
+- markdown: >-
+    The real time in seconds since the game started (Read Only).
+
+    Double precision version of realtimeSinceStartup.
+- code: public double RealtimeSinceStartupAsDouble { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: double
+      url: https://learn.microsoft.com/dotnet/api/system.double
+- api3: SmoothDeltaTime
+  id: Alis_Core_Aspect_Time_TimeManager_SmoothDeltaTime
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Time/src/TimeManager.cs#L136
+  metadata:
+    uid: Alis.Core.Aspect.Time.TimeManager.SmoothDeltaTime
+    commentId: P:Alis.Core.Aspect.Time.TimeManager.SmoothDeltaTime
+- markdown: A smoothed out TimeManager.DeltaTime (Read Only).
+- code: public float SmoothDeltaTime { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: Time
+  id: Alis_Core_Aspect_Time_TimeManager_Time
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Time/src/TimeManager.cs#L141
+  metadata:
+    uid: Alis.Core.Aspect.Time.TimeManager.Time
+    commentId: P:Alis.Core.Aspect.Time.TimeManager.Time
+- markdown: The time at the beginning of this frame (Read Only).
+- code: public float Time { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: TimeAsDouble
+  id: Alis_Core_Aspect_Time_TimeManager_TimeAsDouble
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Time/src/TimeManager.cs#L147
+  metadata:
+    uid: Alis.Core.Aspect.Time.TimeManager.TimeAsDouble
+    commentId: P:Alis.Core.Aspect.Time.TimeManager.TimeAsDouble
+- markdown: >-
+    The double precision time at the beginning of this frame (Read Only).
+
+    This is the time in seconds since the start of the game.
+- code: public double TimeAsDouble { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: double
+      url: https://learn.microsoft.com/dotnet/api/system.double
+- api3: TimeScale
+  id: Alis_Core_Aspect_Time_TimeManager_TimeScale
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Time/src/TimeManager.cs#L152
+  metadata:
+    uid: Alis.Core.Aspect.Time.TimeManager.TimeScale
+    commentId: P:Alis.Core.Aspect.Time.TimeManager.TimeScale
+- markdown: The scale at which time passes.
+- code: public float TimeScale { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: TotalFrames
+  id: Alis_Core_Aspect_Time_TimeManager_TotalFrames
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Time/src/TimeManager.cs#L104
+  metadata:
+    uid: Alis.Core.Aspect.Time.TimeManager.TotalFrames
+    commentId: P:Alis.Core.Aspect.Time.TimeManager.TotalFrames
+- markdown: Gets or sets the value of the total frames
+- code: public int TotalFrames { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: UnscaledDeltaTime
+  id: Alis_Core_Aspect_Time_TimeManager_UnscaledDeltaTime
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Time/src/TimeManager.cs#L157
+  metadata:
+    uid: Alis.Core.Aspect.Time.TimeManager.UnscaledDeltaTime
+    commentId: P:Alis.Core.Aspect.Time.TimeManager.UnscaledDeltaTime
+- markdown: The timeScale-independent interval in seconds from the last frame to the current one (Read Only).
+- code: public float UnscaledDeltaTime { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: UnscaledTime
+  id: Alis_Core_Aspect_Time_TimeManager_UnscaledTime
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Time/src/TimeManager.cs#L163
+  metadata:
+    uid: Alis.Core.Aspect.Time.TimeManager.UnscaledTime
+    commentId: P:Alis.Core.Aspect.Time.TimeManager.UnscaledTime
+- markdown: >-
+    The timeScale-independent time for this frame (Read Only).
+
+    This is the time in seconds since the start of the game.
+- code: public float UnscaledTime { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: UnscaledTimeAsDouble
+  id: Alis_Core_Aspect_Time_TimeManager_UnscaledTimeAsDouble
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Time/src/TimeManager.cs#L169
+  metadata:
+    uid: Alis.Core.Aspect.Time.TimeManager.UnscaledTimeAsDouble
+    commentId: P:Alis.Core.Aspect.Time.TimeManager.UnscaledTimeAsDouble
+- markdown: >-
+    The double precision timeScale-independent time for this frame (Read Only).
+
+    This is the time in seconds since the start of the game.
+- code: public double UnscaledTimeAsDouble { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: double
+      url: https://learn.microsoft.com/dotnet/api/system.double
+languageId: csharp
+metadata:
+  description: Provides an interface to get time information.

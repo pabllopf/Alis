@@ -1,0 +1,21 @@
+### YamlMime:ApiPage
+title: Interface INetworkSetting
+body:
+- api1: Interface INetworkSetting
+  id: Alis_Core_Ecs_System_Setting_Network_INetworkSetting
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Setting/Network/INetworkSetting.cs#L35
+  metadata:
+    uid: Alis.Core.Ecs.System.Setting.Network.INetworkSetting
+    commentId: T:Alis.Core.Ecs.System.Setting.Network.INetworkSetting
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Ecs.System.Setting.Network
+      url: Alis.Core.Ecs.System.Setting.Network.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The network setting interface
+- code: public interface INetworkSetting
+languageId: csharp
+metadata:
+  description: The network setting interface

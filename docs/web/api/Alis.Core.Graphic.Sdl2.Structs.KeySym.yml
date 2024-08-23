@@ -1,0 +1,88 @@
+### YamlMime:ApiPage
+title: Struct KeySym
+body:
+- api1: Struct KeySym
+  id: Alis_Core_Graphic_Sdl2_Structs_KeySym
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/KeySym.cs#L39
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.KeySym
+    commentId: T:Alis.Core.Graphic.Sdl2.Structs.KeySym
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Structs
+      url: Alis.Core.Graphic.Sdl2.Structs.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The sdl key sym
+- code: public struct KeySym
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Fields
+- api3: mod
+  id: Alis_Core_Graphic_Sdl2_Structs_KeySym_mod
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/KeySym.cs#L55
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.KeySym.mod
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.KeySym.mod
+- markdown: The mod
+- code: public KeyMods mod
+- h4: Field Value
+- parameters:
+  - type:
+    - text: KeyMods
+      url: Alis.Core.Graphic.Sdl2.Enums.KeyMods.html
+- api3: scancode
+  id: Alis_Core_Graphic_Sdl2_Structs_KeySym_scancode
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/KeySym.cs#L45
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.KeySym.scancode
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.KeySym.scancode
+- markdown: The scancode
+- code: public SdlScancode scancode
+- h4: Field Value
+- parameters:
+  - type:
+    - text: SdlScancode
+      url: Alis.Core.Aspect.Data.Mapping.SdlScancode.html
+- api3: sym
+  id: Alis_Core_Graphic_Sdl2_Structs_KeySym_sym
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/KeySym.cs#L50
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.KeySym.sym
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.KeySym.sym
+- markdown: The sym
+- code: public KeyCodes sym
+- h4: Field Value
+- parameters:
+  - type:
+    - text: KeyCodes
+      url: Alis.Core.Aspect.Data.Mapping.KeyCodes.html
+- api3: unicode
+  id: Alis_Core_Graphic_Sdl2_Structs_KeySym_unicode
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/KeySym.cs#L60
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.KeySym.unicode
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.KeySym.unicode
+- markdown: The unicode
+- code: public uint unicode
+- h4: Field Value
+- parameters:
+  - type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+languageId: csharp
+metadata:
+  description: The sdl key sym

@@ -1,0 +1,240 @@
+### YamlMime:ApiPage
+title: Class GeneralSetting
+body:
+- api1: Class GeneralSetting
+  id: Alis_Core_Ecs_System_Setting_General_GeneralSetting
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Setting/General/GeneralSetting.cs#L42
+  metadata:
+    uid: Alis.Core.Ecs.System.Setting.General.GeneralSetting
+    commentId: T:Alis.Core.Ecs.System.Setting.General.GeneralSetting
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Ecs.System.Setting.General
+      url: Alis.Core.Ecs.System.Setting.General.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The general setting class
+- code: 'public class GeneralSetting : IGeneralSetting, IBuilder<GeneralSettingBuilder>'
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: GeneralSetting
+    url: Alis.Core.Ecs.System.Setting.General.GeneralSetting.html
+- h4: Implements
+- list:
+  - text: IGeneralSetting
+    url: Alis.Core.Ecs.System.Setting.General.IGeneralSetting.html
+  - text: IBuilder<GeneralSettingBuilder>
+    url: Alis.Core.Aspect.Fluent.IBuilder-1.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Constructors
+- api3: GeneralSetting()
+  id: Alis_Core_Ecs_System_Setting_General_GeneralSetting__ctor
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Setting/General/GeneralSetting.cs#L49
+  metadata:
+    uid: Alis.Core.Ecs.System.Setting.General.GeneralSetting.#ctor
+    commentId: M:Alis.Core.Ecs.System.Setting.General.GeneralSetting.#ctor
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Ecs.System.Setting.General.GeneralSetting" data-throw-if-not-resolved="false"></xref> class
+- code: public GeneralSetting()
+- api3: GeneralSetting(bool, string, string, string, string, string, string)
+  id: Alis_Core_Ecs_System_Setting_General_GeneralSetting__ctor_System_Boolean_System_String_System_String_System_String_System_String_System_String_System_String_
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Setting/General/GeneralSetting.cs#L70
+  metadata:
+    uid: Alis.Core.Ecs.System.Setting.General.GeneralSetting.#ctor(System.Boolean,System.String,System.String,System.String,System.String,System.String,System.String)
+    commentId: M:Alis.Core.Ecs.System.Setting.General.GeneralSetting.#ctor(System.Boolean,System.String,System.String,System.String,System.String,System.String,System.String)
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Ecs.System.Setting.General.GeneralSetting" data-throw-if-not-resolved="false"></xref> class
+- code: public GeneralSetting(bool debug, string name, string description, string version, string author, string license, string icon)
+- h4: Parameters
+- parameters:
+  - name: debug
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The debug
+  - name: name
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The name
+  - name: description
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The description
+  - name: version
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The version
+  - name: author
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The author
+  - name: license
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The license
+  - name: icon
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The icon
+- h2: Properties
+- api3: Author
+  id: Alis_Core_Ecs_System_Setting_General_GeneralSetting_Author
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Setting/General/GeneralSetting.cs#L116
+  metadata:
+    uid: Alis.Core.Ecs.System.Setting.General.GeneralSetting.Author
+    commentId: P:Alis.Core.Ecs.System.Setting.General.GeneralSetting.Author
+- markdown: Gets or sets the value of the author
+- code: >-
+    [JsonPropertyName("_Author_")]
+
+    public string Author { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: Debug
+  id: Alis_Core_Ecs_System_Setting_General_GeneralSetting_Debug
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Setting/General/GeneralSetting.cs#L92
+  metadata:
+    uid: Alis.Core.Ecs.System.Setting.General.GeneralSetting.Debug
+    commentId: P:Alis.Core.Ecs.System.Setting.General.GeneralSetting.Debug
+- markdown: Gets or sets the value of the debug
+- code: >-
+    [JsonPropertyName("_Debug_")]
+
+    public bool Debug { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+- api3: Description
+  id: Alis_Core_Ecs_System_Setting_General_GeneralSetting_Description
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Setting/General/GeneralSetting.cs#L104
+  metadata:
+    uid: Alis.Core.Ecs.System.Setting.General.GeneralSetting.Description
+    commentId: P:Alis.Core.Ecs.System.Setting.General.GeneralSetting.Description
+- markdown: Gets or sets the value of the description
+- code: >-
+    [JsonPropertyName("_Description_")]
+
+    public string Description { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: Icon
+  id: Alis_Core_Ecs_System_Setting_General_GeneralSetting_Icon
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Setting/General/GeneralSetting.cs#L128
+  metadata:
+    uid: Alis.Core.Ecs.System.Setting.General.GeneralSetting.Icon
+    commentId: P:Alis.Core.Ecs.System.Setting.General.GeneralSetting.Icon
+- markdown: Gets or sets the value of the icon
+- code: >-
+    [JsonPropertyName("_Icon_")]
+
+    public string Icon { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: License
+  id: Alis_Core_Ecs_System_Setting_General_GeneralSetting_License
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Setting/General/GeneralSetting.cs#L122
+  metadata:
+    uid: Alis.Core.Ecs.System.Setting.General.GeneralSetting.License
+    commentId: P:Alis.Core.Ecs.System.Setting.General.GeneralSetting.License
+- markdown: Gets or sets the value of the license
+- code: >-
+    [JsonPropertyName("_License_")]
+
+    public string License { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: Name
+  id: Alis_Core_Ecs_System_Setting_General_GeneralSetting_Name
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Setting/General/GeneralSetting.cs#L98
+  metadata:
+    uid: Alis.Core.Ecs.System.Setting.General.GeneralSetting.Name
+    commentId: P:Alis.Core.Ecs.System.Setting.General.GeneralSetting.Name
+- markdown: Gets or sets the value of the name
+- code: >-
+    [JsonPropertyName("_Name_")]
+
+    public string Name { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: Version
+  id: Alis_Core_Ecs_System_Setting_General_GeneralSetting_Version
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Setting/General/GeneralSetting.cs#L110
+  metadata:
+    uid: Alis.Core.Ecs.System.Setting.General.GeneralSetting.Version
+    commentId: P:Alis.Core.Ecs.System.Setting.General.GeneralSetting.Version
+- markdown: Gets or sets the value of the version
+- code: >-
+    [JsonPropertyName("_Version_")]
+
+    public string Version { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- h2: Methods
+- api3: Builder()
+  id: Alis_Core_Ecs_System_Setting_General_GeneralSetting_Builder
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Setting/General/GeneralSetting.cs#L135
+  metadata:
+    uid: Alis.Core.Ecs.System.Setting.General.GeneralSetting.Builder
+    commentId: M:Alis.Core.Ecs.System.Setting.General.GeneralSetting.Builder
+- markdown: Builders this instance
+- code: public GeneralSettingBuilder Builder()
+- h4: Returns
+- parameters:
+  - type:
+    - text: GeneralSettingBuilder
+      url: Alis.Builder.Core.Ecs.System.Setting.General.GeneralSettingBuilder.html
+    description: The graphic setting builder
+- h2: See Also
+- list:
+  - - text: IGeneralSetting
+      url: Alis.Core.Ecs.System.Setting.General.IGeneralSetting.html
+  - - text: IBuilder
+      url: Alis.Core.Aspect.Fluent.IBuilder-1.html
+    - <
+    - TOut
+    - '>'
+languageId: csharp
+metadata:
+  description: The general setting class

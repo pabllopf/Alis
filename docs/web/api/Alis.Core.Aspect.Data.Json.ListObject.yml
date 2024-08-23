@@ -1,0 +1,114 @@
+### YamlMime:ApiPage
+title: Class ListObject
+body:
+- api1: Class ListObject
+  id: Alis_Core_Aspect_Data_Json_ListObject
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/ListObject.cs#L37
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.ListObject
+    commentId: T:Alis.Core.Aspect.Data.Json.ListObject
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Aspect.Data.Json
+      url: Alis.Core.Aspect.Data.Json.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: Defines an object that handles list deserialization.
+- code: public abstract class ListObject
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: ListObject
+    url: Alis.Core.Aspect.Data.Json.ListObject.html
+- h4: Derived
+- list:
+  - text: CollectionTObject<T>
+    url: Alis.Core.Aspect.Data.Json.CollectionTObject-1.html
+  - text: CustomListObject
+    url: Alis.Core.Aspect.Data.Json.CustomListObject.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Properties
+- api3: Context
+  id: Alis_Core_Aspect_Data_Json_ListObject_Context
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/ListObject.cs#L53
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.ListObject.Context
+    commentId: P:Alis.Core.Aspect.Data.Json.ListObject.Context
+- markdown: Gets the current context.
+- code: public IDictionary<string, object> Context { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: IDictionary
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+    - <
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    - ','
+    - " "
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    - '>'
+- api3: List
+  id: Alis_Core_Aspect_Data_Json_ListObject_List
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/ListObject.cs#L45
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.ListObject.List
+    commentId: P:Alis.Core.Aspect.Data.Json.ListObject.List
+- markdown: Gets or sets the list object.
+- code: public virtual object List { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+- h2: Methods
+- api3: Add(object, JsonOptions)
+  id: Alis_Core_Aspect_Data_Json_ListObject_Add_System_Object_Alis_Core_Aspect_Data_Json_JsonOptions_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/ListObject.cs#L65
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.ListObject.Add(System.Object,Alis.Core.Aspect.Data.Json.JsonOptions)
+    commentId: M:Alis.Core.Aspect.Data.Json.ListObject.Add(System.Object,Alis.Core.Aspect.Data.Json.JsonOptions)
+- markdown: Adds a value to the list object.
+- code: public abstract void Add(object value, JsonOptions options = null)
+- h4: Parameters
+- parameters:
+  - name: value
+    type:
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    description: The value.
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options.
+    optional: true
+- api3: Clear()
+  id: Alis_Core_Aspect_Data_Json_ListObject_Clear
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/ListObject.cs#L58
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.ListObject.Clear
+    commentId: M:Alis.Core.Aspect.Data.Json.ListObject.Clear
+- markdown: Clears the list object.
+- code: public abstract void Clear()
+languageId: csharp
+metadata:
+  description: Defines an object that handles list deserialization.

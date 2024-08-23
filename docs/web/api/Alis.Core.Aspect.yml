@@ -1,0 +1,35 @@
+### YamlMime:ApiPage
+title: Namespace Alis.Core.Aspect
+body:
+- api1: Namespace Alis.Core.Aspect
+  id: Alis_Core_Aspect
+  metadata:
+    uid: Alis.Core.Aspect
+    commentId: N:Alis.Core.Aspect
+- h3: Namespaces
+- parameters:
+  - type:
+      text: Alis.Core.Aspect.Data
+      url: Alis.Core.Aspect.Data.html
+  - type:
+      text: Alis.Core.Aspect.Fluent
+      url: Alis.Core.Aspect.Fluent.html
+  - type:
+      text: Alis.Core.Aspect.Logging
+      url: Alis.Core.Aspect.Logging.html
+  - type:
+      text: Alis.Core.Aspect.Math
+      url: Alis.Core.Aspect.Math.html
+  - type:
+      text: Alis.Core.Aspect.Memory
+      url: Alis.Core.Aspect.Memory.html
+  - type:
+      text: Alis.Core.Aspect.Security
+      url: Alis.Core.Aspect.Security.html
+  - type:
+      text: Alis.Core.Aspect.Thread
+      url: Alis.Core.Aspect.Thread.html
+  - type:
+      text: Alis.Core.Aspect.Time
+      url: Alis.Core.Aspect.Time.html
+languageId: csharp

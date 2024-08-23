@@ -1,0 +1,62 @@
+### YamlMime:ApiPage
+title: Struct InternalX11WmInfo
+body:
+- api1: Struct InternalX11WmInfo
+  id: Alis_Core_Graphic_Sdl2_Structs_InternalX11WmInfo
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/InternalX11WmInfo.cs#L38
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.InternalX11WmInfo
+    commentId: T:Alis.Core.Graphic.Sdl2.Structs.InternalX11WmInfo
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Structs
+      url: Alis.Core.Graphic.Sdl2.Structs.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The internal x11 wm info
+- code: public struct InternalX11WmInfo
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Properties
+- api3: Display
+  id: Alis_Core_Graphic_Sdl2_Structs_InternalX11WmInfo_Display
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/InternalX11WmInfo.cs#L44
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.InternalX11WmInfo.Display
+    commentId: P:Alis.Core.Graphic.Sdl2.Structs.InternalX11WmInfo.Display
+- markdown: Refers to a Display*
+- code: public IntPtr Display { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+- api3: Window
+  id: Alis_Core_Graphic_Sdl2_Structs_InternalX11WmInfo_Window
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/InternalX11WmInfo.cs#L49
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.InternalX11WmInfo.Window
+    commentId: P:Alis.Core.Graphic.Sdl2.Structs.InternalX11WmInfo.Window
+- markdown: Refers to a Window (XID, use ToInt64!)
+- code: public IntPtr Window { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+languageId: csharp
+metadata:
+  description: The internal x11 wm info

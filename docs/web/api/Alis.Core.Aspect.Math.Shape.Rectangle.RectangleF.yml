@@ -1,0 +1,123 @@
+### YamlMime:ApiPage
+title: Struct RectangleF
+body:
+- api1: Struct RectangleF
+  id: Alis_Core_Aspect_Math_Shape_Rectangle_RectangleF
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Shape/Rectangle/RectangleF.cs#L37
+  metadata:
+    uid: Alis.Core.Aspect.Math.Shape.Rectangle.RectangleF
+    commentId: T:Alis.Core.Aspect.Math.Shape.Rectangle.RectangleF
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Aspect.Math.Shape.Rectangle
+      url: Alis.Core.Aspect.Math.Shape.Rectangle.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The sdl f rect
+- code: 'public struct RectangleF : IShape'
+- h4: Implements
+- list:
+  - text: IShape
+    url: Alis.Core.Aspect.Math.Shape.IShape.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Constructors
+- api3: RectangleF(float, float, float, float)
+  id: Alis_Core_Aspect_Math_Shape_Rectangle_RectangleF__ctor_System_Single_System_Single_System_Single_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Shape/Rectangle/RectangleF.cs#L67
+  metadata:
+    uid: Alis.Core.Aspect.Math.Shape.Rectangle.RectangleF.#ctor(System.Single,System.Single,System.Single,System.Single)
+    commentId: M:Alis.Core.Aspect.Math.Shape.Rectangle.RectangleF.#ctor(System.Single,System.Single,System.Single,System.Single)
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Aspect.Math.Shape.Rectangle.RectangleF" data-throw-if-not-resolved="false"></xref> class
+- code: public RectangleF(float x, float y, float w, float h)
+- h4: Parameters
+- parameters:
+  - name: x
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The
+  - name: y
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The
+  - name: w
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The
+  - name: h
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The
+- h2: Properties
+- api3: H
+  id: Alis_Core_Aspect_Math_Shape_Rectangle_RectangleF_H
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Shape/Rectangle/RectangleF.cs#L58
+  metadata:
+    uid: Alis.Core.Aspect.Math.Shape.Rectangle.RectangleF.H
+    commentId: P:Alis.Core.Aspect.Math.Shape.Rectangle.RectangleF.H
+- markdown: The
+- code: public float H { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: W
+  id: Alis_Core_Aspect_Math_Shape_Rectangle_RectangleF_W
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Shape/Rectangle/RectangleF.cs#L53
+  metadata:
+    uid: Alis.Core.Aspect.Math.Shape.Rectangle.RectangleF.W
+    commentId: P:Alis.Core.Aspect.Math.Shape.Rectangle.RectangleF.W
+- markdown: The
+- code: public float W { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: X
+  id: Alis_Core_Aspect_Math_Shape_Rectangle_RectangleF_X
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Shape/Rectangle/RectangleF.cs#L43
+  metadata:
+    uid: Alis.Core.Aspect.Math.Shape.Rectangle.RectangleF.X
+    commentId: P:Alis.Core.Aspect.Math.Shape.Rectangle.RectangleF.X
+- markdown: The
+- code: public float X { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: Y
+  id: Alis_Core_Aspect_Math_Shape_Rectangle_RectangleF_Y
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Shape/Rectangle/RectangleF.cs#L48
+  metadata:
+    uid: Alis.Core.Aspect.Math.Shape.Rectangle.RectangleF.Y
+    commentId: P:Alis.Core.Aspect.Math.Shape.Rectangle.RectangleF.Y
+- markdown: The
+- code: public float Y { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+languageId: csharp
+metadata:
+  description: The sdl f rect

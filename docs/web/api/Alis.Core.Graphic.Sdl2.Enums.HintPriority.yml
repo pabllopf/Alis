@@ -1,0 +1,38 @@
+### YamlMime:ApiPage
+title: Enum HintPriority
+body:
+- api1: Enum HintPriority
+  id: Alis_Core_Graphic_Sdl2_Enums_HintPriority
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Enums/HintPriority.cs#L35
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Enums.HintPriority
+    commentId: T:Alis.Core.Graphic.Sdl2.Enums.HintPriority
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Enums
+      url: Alis.Core.Graphic.Sdl2.Enums.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The sdl hint priority enum
+- code: public enum HintPriority
+- h2: Fields
+- parameters:
+  - name: SdlHintDefault
+    default: "0"
+    description: >+
+      The sdl hint default sdl hint priority
+
+  - name: SdlHintNormal
+    default: "1"
+    description: >+
+      The sdl hint normal sdl hint priority
+
+  - name: SdlHintOverride
+    default: "2"
+    description: >+
+      The sdl hint override sdl hint priority
+
+languageId: csharp
+metadata:
+  description: The sdl hint priority enum

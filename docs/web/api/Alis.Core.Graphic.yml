@@ -1,0 +1,29 @@
+### YamlMime:ApiPage
+title: Namespace Alis.Core.Graphic
+body:
+- api1: Namespace Alis.Core.Graphic
+  id: Alis_Core_Graphic
+  metadata:
+    uid: Alis.Core.Graphic
+    commentId: N:Alis.Core.Graphic
+- h3: Namespaces
+- parameters:
+  - type:
+      text: Alis.Core.Graphic.Properties
+      url: Alis.Core.Graphic.Properties.html
+  - type:
+      text: Alis.Core.Graphic.Sdl2
+      url: Alis.Core.Graphic.Sdl2.html
+- h3: Classes
+- parameters:
+  - type:
+      text: Window
+      url: Alis.Core.Graphic.Window.html
+    description: The window class
+- h3: Interfaces
+- parameters:
+  - type:
+      text: IWindow
+      url: Alis.Core.Graphic.IWindow.html
+    description: The window interface
+languageId: csharp

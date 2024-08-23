@@ -1,0 +1,19 @@
+### YamlMime:ApiPage
+title: Namespace Alis.Core.Physic.Collision.RayCast
+body:
+- api1: Namespace Alis.Core.Physic.Collision.RayCast
+  id: Alis_Core_Physic_Collision_RayCast
+  metadata:
+    uid: Alis.Core.Physic.Collision.RayCast
+    commentId: N:Alis.Core.Physic.Collision.RayCast
+- h3: Structs
+- parameters:
+  - type:
+      text: RayCastInput
+      url: Alis.Core.Physic.Collision.RayCast.RayCastInput.html
+    description: Ray-cast input data.
+  - type:
+      text: RayCastOutput
+      url: Alis.Core.Physic.Collision.RayCast.RayCastOutput.html
+    description: Ray-cast output data.
+languageId: csharp

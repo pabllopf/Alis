@@ -1,0 +1,114 @@
+### YamlMime:ApiPage
+title: Class ThreadTask
+body:
+- api1: Class ThreadTask
+  id: Alis_Core_Aspect_Thread_ThreadTask
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Thread/src/ThreadTask.cs#L38
+  metadata:
+    uid: Alis.Core.Aspect.Thread.ThreadTask
+    commentId: T:Alis.Core.Aspect.Thread.ThreadTask
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Aspect.Thread
+      url: Alis.Core.Aspect.Thread.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The thread task class
+- code: public class ThreadTask
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: ThreadTask
+    url: Alis.Core.Aspect.Thread.ThreadTask.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Constructors
+- api3: ThreadTask(Action<CancellationToken>, CancellationToken)
+  id: Alis_Core_Aspect_Thread_ThreadTask__ctor_System_Action_System_Threading_CancellationToken__System_Threading_CancellationToken_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Thread/src/ThreadTask.cs#L45
+  metadata:
+    uid: Alis.Core.Aspect.Thread.ThreadTask.#ctor(System.Action{System.Threading.CancellationToken},System.Threading.CancellationToken)
+    commentId: M:Alis.Core.Aspect.Thread.ThreadTask.#ctor(System.Action{System.Threading.CancellationToken},System.Threading.CancellationToken)
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Aspect.Thread.ThreadTask" data-throw-if-not-resolved="false"></xref> class
+- code: public ThreadTask(Action<CancellationToken> action, CancellationToken token)
+- h4: Parameters
+- parameters:
+  - name: action
+    type:
+    - text: Action
+      url: https://learn.microsoft.com/dotnet/api/system.action-1
+    - <
+    - text: CancellationToken
+      url: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+    - '>'
+    description: The action
+  - name: token
+    type:
+    - text: CancellationToken
+      url: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+    description: ''
+- h2: Properties
+- api3: Action
+  id: Alis_Core_Aspect_Thread_ThreadTask_Action
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Thread/src/ThreadTask.cs#L54
+  metadata:
+    uid: Alis.Core.Aspect.Thread.ThreadTask.Action
+    commentId: P:Alis.Core.Aspect.Thread.ThreadTask.Action
+- markdown: Gets or sets the value of the action
+- code: private Action<CancellationToken> Action { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Action
+      url: https://learn.microsoft.com/dotnet/api/system.action-1
+    - <
+    - text: CancellationToken
+      url: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+    - '>'
+- api3: Token
+  id: Alis_Core_Aspect_Thread_ThreadTask_Token
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Thread/src/ThreadTask.cs#L59
+  metadata:
+    uid: Alis.Core.Aspect.Thread.ThreadTask.Token
+    commentId: P:Alis.Core.Aspect.Thread.ThreadTask.Token
+- markdown: Gets or sets the value of the token
+- code: private CancellationToken Token { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: CancellationToken
+      url: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+- h2: Methods
+- api3: Execute(CancellationToken)
+  id: Alis_Core_Aspect_Thread_ThreadTask_Execute_System_Threading_CancellationToken_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Thread/src/ThreadTask.cs#L64
+  metadata:
+    uid: Alis.Core.Aspect.Thread.ThreadTask.Execute(System.Threading.CancellationToken)
+    commentId: M:Alis.Core.Aspect.Thread.ThreadTask.Execute(System.Threading.CancellationToken)
+- markdown: Executes this instance
+- code: public void Execute(CancellationToken token)
+- h4: Parameters
+- parameters:
+  - name: token
+    type:
+    - text: CancellationToken
+      url: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+languageId: csharp
+metadata:
+  description: The thread task class

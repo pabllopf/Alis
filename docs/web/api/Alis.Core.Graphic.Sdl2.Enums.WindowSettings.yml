@@ -1,0 +1,151 @@
+### YamlMime:ApiPage
+title: Enum WindowSettings
+body:
+- api1: Enum WindowSettings
+  id: Alis_Core_Graphic_Sdl2_Enums_WindowSettings
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Enums/WindowSettings.cs#L37
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Enums.WindowSettings
+    commentId: T:Alis.Core.Graphic.Sdl2.Enums.WindowSettings
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Enums
+      url: Alis.Core.Graphic.Sdl2.Enums.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The sdl window flags enum
+- code: >-
+    [Flags]
+
+    public enum WindowSettings : uint
+- h2: Fields
+- parameters:
+  - name: None
+    default: "0"
+    description: >+
+      The none window
+
+  - name: WindowFullscreen
+    default: "1"
+    description: >+
+      The sdl window fullscreen sdl window flags
+
+  - name: WindowOpengl
+    default: "2"
+    description: >+
+      The sdl window opengl sdl window flags
+
+  - name: WindowShown
+    default: "4"
+    description: >+
+      The sdl window shown sdl window flags
+
+  - name: WindowHidden
+    default: "8"
+    description: >+
+      The sdl window hidden sdl window flags
+
+  - name: WindowBorderless
+    default: "16"
+    description: >+
+      The sdl window borderless sdl window flags
+
+  - name: WindowResizable
+    default: "32"
+    description: >+
+      The sdl window resizable sdl window flags
+
+  - name: WindowMinimized
+    default: "64"
+    description: >+
+      The sdl window minimized sdl window flags
+
+  - name: WindowMaximized
+    default: "128"
+    description: >+
+      The sdl window maximized sdl window flags
+
+  - name: WindowMouseGrabbed
+    default: "256"
+    description: >+
+      The sdl window mouse grabbed sdl window flags
+
+  - name: WindowInputFocus
+    default: "512"
+    description: >+
+      The sdl window input focus sdl window flags
+
+  - name: WindowMouseFocus
+    default: "1024"
+    description: >+
+      The sdl window mouse focus sdl window flags
+
+  - name: WindowFullscreenDesktop
+    default: "4097"
+    description: >+
+      The sdl window fullscreen desktop sdl window flags
+
+  - name: WindowForeign
+    default: "2048"
+    description: >+
+      The sdl window foreign sdl window flags
+
+  - name: WindowAllowHighDpi
+    default: "8192"
+    description: >+
+      The sdl window allow high dpi sdl window flags
+
+  - name: WindowMouseCapture
+    default: "16384"
+    description: >+
+      The sdl window mouse capture sdl window flags
+
+  - name: WindowAlwaysOnTop
+    default: "32768"
+    description: >+
+      The sdl window always on top sdl window flags
+
+  - name: WindowSkipTaskbar
+    default: "65536"
+    description: >+
+      The sdl window skip taskbar sdl window flags
+
+  - name: WindowUtility
+    default: "131072"
+    description: >+
+      The sdl window utility sdl window flags
+
+  - name: WindowTooltip
+    default: "262144"
+    description: >+
+      The sdl window tooltip sdl window flags
+
+  - name: WindowPopupMenu
+    default: "524288"
+    description: >+
+      The sdl window popup menu sdl window flags
+
+  - name: WindowKeyboardGrabbed
+    default: "1048576"
+    description: >+
+      The sdl window keyboard grabbed sdl window flags
+
+  - name: WindowVulkan
+    default: "268435456"
+    description: >+
+      The sdl window vulkan sdl window flags
+
+  - name: WindowMetal
+    default: "33554432"
+    description: >+
+      The sdl window metal sdl window flags
+
+  - name: WindowInputGrabbed
+    default: "256"
+    description: >+
+      The sdl window input grabbed sdl window flags
+
+languageId: csharp
+metadata:
+  description: The sdl window flags enum

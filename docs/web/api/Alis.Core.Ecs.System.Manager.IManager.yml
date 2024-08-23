@@ -1,0 +1,29 @@
+### YamlMime:ApiPage
+title: Interface IManager
+body:
+- api1: Interface IManager
+  id: Alis_Core_Ecs_System_Manager_IManager
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Ecs/src/System/Manager/IManager.cs#L37
+  metadata:
+    uid: Alis.Core.Ecs.System.Manager.IManager
+    commentId: T:Alis.Core.Ecs.System.Manager.IManager
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Ecs.System.Manager
+      url: Alis.Core.Ecs.System.Manager.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The manager interface
+- code: 'public interface IManager : IEnabled, IIdentifier, IRuntime'
+- h4: Implements
+- list:
+  - text: IEnabled
+    url: Alis.Core.Ecs.Entity.Property.IEnabled.html
+  - text: IIdentifier
+    url: Alis.Core.Ecs.Entity.Property.IIdentifier.html
+  - text: IRuntime
+    url: Alis.Core.Ecs.Entity.Property.IRuntime.html
+languageId: csharp
+metadata:
+  description: The manager interface

@@ -1,0 +1,43 @@
+### YamlMime:ApiPage
+title: Enum SensorType
+body:
+- api1: Enum SensorType
+  id: Alis_Core_Graphic_Sdl2_Enums_SensorType
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Enums/SensorType.cs#L35
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Enums.SensorType
+    commentId: T:Alis.Core.Graphic.Sdl2.Enums.SensorType
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Enums
+      url: Alis.Core.Graphic.Sdl2.Enums.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The sdl sensor type enum
+- code: public enum SensorType
+- h2: Fields
+- parameters:
+  - name: SdlSensorInvalid
+    default: "-1"
+    description: >+
+      The sdl sensor invalid sdl sensor type
+
+  - name: SdlSensorUnknown
+    default: "0"
+    description: >+
+      The sdl sensor unknown sdl sensor type
+
+  - name: SdlSensorAccel
+    default: "1"
+    description: >+
+      The sdl sensor accel sdl sensor type
+
+  - name: SdlSensorGyro
+    default: "2"
+    description: >+
+      The sdl sensor gyro sdl sensor type
+
+languageId: csharp
+metadata:
+  description: The sdl sensor type enum

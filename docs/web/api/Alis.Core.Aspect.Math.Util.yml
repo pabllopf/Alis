@@ -1,0 +1,33 @@
+### YamlMime:ApiPage
+title: Namespace Alis.Core.Aspect.Math.Util
+body:
+- api1: Namespace Alis.Core.Aspect.Math.Util
+  id: Alis_Core_Aspect_Math_Util
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util
+    commentId: N:Alis.Core.Aspect.Math.Util
+- h3: Classes
+- parameters:
+  - type:
+      text: Constant
+      url: Alis.Core.Aspect.Math.Util.Constant.html
+    description: The math constants class
+  - type:
+      text: Helper
+      url: Alis.Core.Aspect.Math.Util.Helper.html
+    description: Contains commonly used precalculated values and mathematical operations.
+  - type:
+      text: RandomUtils
+      url: Alis.Core.Aspect.Math.Util.RandomUtils.html
+    description: The random utils class
+- h3: Structs
+- parameters:
+  - type:
+      text: HashCode
+      url: Alis.Core.Aspect.Math.Util.HashCode.html
+    description: The hash code
+  - type:
+      text: Quaternion
+      url: Alis.Core.Aspect.Math.Util.Quaternion.html
+    description: The quaternion
+languageId: csharp

@@ -1,0 +1,152 @@
+### YamlMime:ApiPage
+title: Class AudioClipBuilder
+body:
+- api1: Class AudioClipBuilder
+  id: Alis_Builder_Core_Ecs_Component_Audio_AudioClipBuilder
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Builder/Core/Ecs/Component/Audio/AudioClipBuilder.cs#L40
+  metadata:
+    uid: Alis.Builder.Core.Ecs.Component.Audio.AudioClipBuilder
+    commentId: T:Alis.Builder.Core.Ecs.Component.Audio.AudioClipBuilder
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Builder.Core.Ecs.Component.Audio
+      url: Alis.Builder.Core.Ecs.Component.Audio.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The audio clip builder class
+- code: 'public class AudioClipBuilder : IBuild<AudioClip>, IFilePath<AudioClipBuilder, string>, IVolume<AudioClipBuilder, float>, IMute<AudioClipBuilder, bool>'
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: AudioClipBuilder
+    url: Alis.Builder.Core.Ecs.Component.Audio.AudioClipBuilder.html
+- h4: Implements
+- list:
+  - text: IBuild<AudioClip>
+    url: Alis.Core.Aspect.Fluent.IBuild-1.html
+  - text: IFilePath<AudioClipBuilder, string>
+    url: Alis.Core.Aspect.Fluent.Words.IFilePath-2.html
+  - text: IVolume<AudioClipBuilder, float>
+    url: Alis.Core.Aspect.Fluent.Words.IVolume-2.html
+  - text: IMute<AudioClipBuilder, bool>
+    url: Alis.Core.Aspect.Fluent.Words.IMute-2.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Fields
+- api3: audioClip
+  id: Alis_Builder_Core_Ecs_Component_Audio_AudioClipBuilder_audioClip
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Builder/Core/Ecs/Component/Audio/AudioClipBuilder.cs#L49
+  metadata:
+    uid: Alis.Builder.Core.Ecs.Component.Audio.AudioClipBuilder.audioClip
+    commentId: F:Alis.Builder.Core.Ecs.Component.Audio.AudioClipBuilder.audioClip
+- markdown: The audio clip
+- code: private readonly AudioClip audioClip
+- h4: Field Value
+- parameters:
+  - type:
+    - text: AudioClip
+      url: Alis.Core.Ecs.Component.Audio.AudioClip.html
+- h2: Methods
+- api3: Build()
+  id: Alis_Builder_Core_Ecs_Component_Audio_AudioClipBuilder_Build
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Builder/Core/Ecs/Component/Audio/AudioClipBuilder.cs#L55
+  metadata:
+    uid: Alis.Builder.Core.Ecs.Component.Audio.AudioClipBuilder.Build
+    commentId: M:Alis.Builder.Core.Ecs.Component.Audio.AudioClipBuilder.Build
+- markdown: Builds this instance
+- code: public AudioClip Build()
+- h4: Returns
+- parameters:
+  - type:
+    - text: AudioClip
+      url: Alis.Core.Ecs.Component.Audio.AudioClip.html
+    description: The audio clip
+- api3: FilePath(string)
+  id: Alis_Builder_Core_Ecs_Component_Audio_AudioClipBuilder_FilePath_System_String_
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Builder/Core/Ecs/Component/Audio/AudioClipBuilder.cs#L62
+  metadata:
+    uid: Alis.Builder.Core.Ecs.Component.Audio.AudioClipBuilder.FilePath(System.String)
+    commentId: M:Alis.Builder.Core.Ecs.Component.Audio.AudioClipBuilder.FilePath(System.String)
+- markdown: Files the path using the specified value
+- code: public AudioClipBuilder FilePath(string value)
+- h4: Parameters
+- parameters:
+  - name: value
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - text: AudioClipBuilder
+      url: Alis.Builder.Core.Ecs.Component.Audio.AudioClipBuilder.html
+    description: The audio clip builder
+- api3: Mute(bool)
+  id: Alis_Builder_Core_Ecs_Component_Audio_AudioClipBuilder_Mute_System_Boolean_
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Builder/Core/Ecs/Component/Audio/AudioClipBuilder.cs#L73
+  metadata:
+    uid: Alis.Builder.Core.Ecs.Component.Audio.AudioClipBuilder.Mute(System.Boolean)
+    commentId: M:Alis.Builder.Core.Ecs.Component.Audio.AudioClipBuilder.Mute(System.Boolean)
+- markdown: Mutes the value
+- code: public AudioClipBuilder Mute(bool value)
+- h4: Parameters
+- parameters:
+  - name: value
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - text: AudioClipBuilder
+      url: Alis.Builder.Core.Ecs.Component.Audio.AudioClipBuilder.html
+    description: The audio clip builder
+- api3: Volume(float)
+  id: Alis_Builder_Core_Ecs_Component_Audio_AudioClipBuilder_Volume_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Builder/Core/Ecs/Component/Audio/AudioClipBuilder.cs#L84
+  metadata:
+    uid: Alis.Builder.Core.Ecs.Component.Audio.AudioClipBuilder.Volume(System.Single)
+    commentId: M:Alis.Builder.Core.Ecs.Component.Audio.AudioClipBuilder.Volume(System.Single)
+- markdown: Volumes the value
+- code: public AudioClipBuilder Volume(float value)
+- h4: Parameters
+- parameters:
+  - name: value
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - text: AudioClipBuilder
+      url: Alis.Builder.Core.Ecs.Component.Audio.AudioClipBuilder.html
+    description: The audio clip builder
+- h2: See Also
+- list:
+  - - text: IBuild
+      url: Alis.Core.Aspect.Fluent.IBuild-1.html
+    - <
+    - TOrigin
+    - '>'
+languageId: csharp
+metadata:
+  description: The audio clip builder class

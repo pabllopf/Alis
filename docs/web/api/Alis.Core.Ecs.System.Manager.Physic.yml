@@ -1,0 +1,15 @@
+### YamlMime:ApiPage
+title: Namespace Alis.Core.Ecs.System.Manager.Physic
+body:
+- api1: Namespace Alis.Core.Ecs.System.Manager.Physic
+  id: Alis_Core_Ecs_System_Manager_Physic
+  metadata:
+    uid: Alis.Core.Ecs.System.Manager.Physic
+    commentId: N:Alis.Core.Ecs.System.Manager.Physic
+- h3: Classes
+- parameters:
+  - type:
+      text: PhysicManager
+      url: Alis.Core.Ecs.System.Manager.Physic.PhysicManager.html
+    description: The physic manager base class
+languageId: csharp

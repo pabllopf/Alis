@@ -1,0 +1,36 @@
+### YamlMime:ApiPage
+title: Delegate SdlEventFilter
+body:
+- api1: Delegate SdlEventFilter
+  id: Alis_Core_Graphic_Sdl2_Delegates_SdlEventFilter
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Delegates/SdlEventFilter.cs#L38
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Delegates.SdlEventFilter
+    commentId: T:Alis.Core.Graphic.Sdl2.Delegates.SdlEventFilter
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Delegates
+      url: Alis.Core.Graphic.Sdl2.Delegates.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The sdl event filter
+- code: public delegate int SdlEventFilter(IntPtr userdata, IntPtr sdlEvent)
+- h4: Parameters
+- parameters:
+  - name: userdata
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+  - name: sdlEvent
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+languageId: csharp
+metadata:
+  description: The sdl event filter

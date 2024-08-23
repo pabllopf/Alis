@@ -1,0 +1,261 @@
+### YamlMime:ApiPage
+title: Class ContactVelocityConstraint
+body:
+- api1: Class ContactVelocityConstraint
+  id: Alis_Core_Physic_Dynamics_Solver_ContactVelocityConstraint
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactVelocityConstraint.cs#L39
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint
+    commentId: T:Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Physic.Dynamics.Solver
+      url: Alis.Core.Physic.Dynamics.Solver.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The contact velocity constraint class
+- code: public sealed class ContactVelocityConstraint
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: ContactVelocityConstraint
+    url: Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Constructors
+- api3: ContactVelocityConstraint()
+  id: Alis_Core_Physic_Dynamics_Solver_ContactVelocityConstraint__ctor
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactVelocityConstraint.cs#L125
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.#ctor
+    commentId: M:Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.#ctor
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint" data-throw-if-not-resolved="false"></xref> class
+- code: public ContactVelocityConstraint()
+- h2: Fields
+- api3: ContactIndex
+  id: Alis_Core_Physic_Dynamics_Solver_ContactVelocityConstraint_ContactIndex
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactVelocityConstraint.cs#L49
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.ContactIndex
+    commentId: F:Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.ContactIndex
+- markdown: The contact index
+- code: public int ContactIndex
+- h4: Field Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: Friction
+  id: Alis_Core_Physic_Dynamics_Solver_ContactVelocityConstraint_Friction
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactVelocityConstraint.cs#L55
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.Friction
+    commentId: F:Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.Friction
+- markdown: The friction
+- code: public float Friction
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: IndexA
+  id: Alis_Core_Physic_Dynamics_Solver_ContactVelocityConstraint_IndexA
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactVelocityConstraint.cs#L61
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.IndexA
+    commentId: F:Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.IndexA
+- markdown: The index
+- code: public int IndexA
+- h4: Field Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: IndexB
+  id: Alis_Core_Physic_Dynamics_Solver_ContactVelocityConstraint_IndexB
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactVelocityConstraint.cs#L67
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.IndexB
+    commentId: F:Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.IndexB
+- markdown: The index
+- code: public int IndexB
+- h4: Field Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: InvIa
+  id: Alis_Core_Physic_Dynamics_Solver_ContactVelocityConstraint_InvIa
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactVelocityConstraint.cs#L73
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.InvIa
+    commentId: F:Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.InvIa
+- markdown: The inv ib
+- code: public float InvIa
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: InvIb
+  id: Alis_Core_Physic_Dynamics_Solver_ContactVelocityConstraint_InvIb
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactVelocityConstraint.cs#L73
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.InvIb
+    commentId: F:Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.InvIb
+- markdown: The inv ib
+- code: public float InvIb
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: InvMassA
+  id: Alis_Core_Physic_Dynamics_Solver_ContactVelocityConstraint_InvMassA
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactVelocityConstraint.cs#L78
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.InvMassA
+    commentId: F:Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.InvMassA
+- markdown: The inv mass
+- code: public float InvMassA
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: InvMassB
+  id: Alis_Core_Physic_Dynamics_Solver_ContactVelocityConstraint_InvMassB
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactVelocityConstraint.cs#L78
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.InvMassB
+    commentId: F:Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.InvMassB
+- markdown: The inv mass
+- code: public float InvMassB
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: K
+  id: Alis_Core_Physic_Dynamics_Solver_ContactVelocityConstraint_K
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactVelocityConstraint.cs#L83
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.K
+    commentId: F:Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.K
+- markdown: The
+- code: public Matrix2X2 K
+- h4: Field Value
+- parameters:
+  - type:
+    - text: Matrix2X2
+      url: Alis.Core.Aspect.Math.Matrix.Matrix2X2.html
+- api3: Normal
+  id: Alis_Core_Physic_Dynamics_Solver_ContactVelocityConstraint_Normal
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactVelocityConstraint.cs#L89
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.Normal
+    commentId: F:Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.Normal
+- markdown: The normal
+- code: public Vector2 Normal
+- h4: Field Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: NormalMass
+  id: Alis_Core_Physic_Dynamics_Solver_ContactVelocityConstraint_NormalMass
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactVelocityConstraint.cs#L95
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.NormalMass
+    commentId: F:Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.NormalMass
+- markdown: The normal mass
+- code: public Matrix2X2 NormalMass
+- h4: Field Value
+- parameters:
+  - type:
+    - text: Matrix2X2
+      url: Alis.Core.Aspect.Math.Matrix.Matrix2X2.html
+- api3: PointCount
+  id: Alis_Core_Physic_Dynamics_Solver_ContactVelocityConstraint_PointCount
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactVelocityConstraint.cs#L101
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.PointCount
+    commentId: F:Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.PointCount
+- markdown: The point count
+- code: public int PointCount
+- h4: Field Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: Points
+  id: Alis_Core_Physic_Dynamics_Solver_ContactVelocityConstraint_Points
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactVelocityConstraint.cs#L44
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.Points
+    commentId: F:Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.Points
+- markdown: The max manifold points
+- code: public readonly VelocityConstraintPoint[] Points
+- h4: Field Value
+- parameters:
+  - type:
+    - text: VelocityConstraintPoint
+      url: Alis.Core.Physic.Dynamics.Solver.VelocityConstraintPoint.html
+    - '['
+    - ']'
+- api3: Restitution
+  id: Alis_Core_Physic_Dynamics_Solver_ContactVelocityConstraint_Restitution
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactVelocityConstraint.cs#L107
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.Restitution
+    commentId: F:Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.Restitution
+- markdown: The restitution
+- code: public float Restitution
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: TangentSpeed
+  id: Alis_Core_Physic_Dynamics_Solver_ContactVelocityConstraint_TangentSpeed
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactVelocityConstraint.cs#L113
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.TangentSpeed
+    commentId: F:Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.TangentSpeed
+- markdown: The tangent speed
+- code: public float TangentSpeed
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: Threshold
+  id: Alis_Core_Physic_Dynamics_Solver_ContactVelocityConstraint_Threshold
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactVelocityConstraint.cs#L119
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.Threshold
+    commentId: F:Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.Threshold
+- markdown: The threshold
+- code: public float Threshold
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+languageId: csharp
+metadata:
+  description: The contact velocity constraint class

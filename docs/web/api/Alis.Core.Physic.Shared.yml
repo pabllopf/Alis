@@ -1,0 +1,27 @@
+### YamlMime:ApiPage
+title: Namespace Alis.Core.Physic.Shared
+body:
+- api1: Namespace Alis.Core.Physic.Shared
+  id: Alis_Core_Physic_Shared
+  metadata:
+    uid: Alis.Core.Physic.Shared
+    commentId: N:Alis.Core.Physic.Shared
+- h3: Classes
+- parameters:
+  - type:
+      text: Vertices
+      url: Alis.Core.Physic.Shared.Vertices.html
+    description: The vertices class
+- h3: Structs
+- parameters:
+  - type:
+      text: Aabb
+      url: Alis.Core.Physic.Shared.Aabb.html
+    description: An axis aligned bounding box.
+- h3: Enums
+- parameters:
+  - type:
+      text: PolygonError
+      url: Alis.Core.Physic.Shared.PolygonError.html
+    description: The polygon error enum
+languageId: csharp

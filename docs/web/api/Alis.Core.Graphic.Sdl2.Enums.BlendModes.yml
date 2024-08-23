@@ -1,0 +1,61 @@
+### YamlMime:ApiPage
+title: Enum BlendModes
+body:
+- api1: Enum BlendModes
+  id: Alis_Core_Graphic_Sdl2_Enums_BlendModes
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Enums/BlendModes.cs#L37
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Enums.BlendModes
+    commentId: T:Alis.Core.Graphic.Sdl2.Enums.BlendModes
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Enums
+      url: Alis.Core.Graphic.Sdl2.Enums.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The sdl blend mode enum
+- code: >-
+    [Flags]
+
+    public enum BlendModes
+- h2: Fields
+- parameters:
+  - name: None
+    default: "0"
+    description: >+
+      The sdl blend factor none sdl blend factor
+
+  - name: BlendModeBlend
+    default: "1"
+    description: >+
+      The sdl blend factor blend sdl blend factor
+
+  - name: BlendModeAdd
+    default: "2"
+    description: >+
+      The sdl blend factor add sdl blend factor
+
+  - name: BlendModeMod
+    default: "4"
+    description: >+
+      The sdl blend factor mod sdl blend factor
+
+  - name: BlendModeMul
+    default: "8"
+    description: >+
+      The sdl blend factor mul sdl blend factor
+
+  - name: BlendModeInvalid
+    default: "2147483647"
+    description: >+
+      The sdl blend factor invalid sdl blend factor
+
+  - name: BlendAll
+    default: "2147483647"
+    description: >+
+      The blend all blend mode
+
+languageId: csharp
+metadata:
+  description: The sdl blend mode enum

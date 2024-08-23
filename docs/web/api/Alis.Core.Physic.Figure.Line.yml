@@ -1,0 +1,1008 @@
+### YamlMime:ApiPage
+title: Class Line
+body:
+- api1: Class Line
+  id: Alis_Core_Physic_Figure_Line
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L40
+  metadata:
+    uid: Alis.Core.Physic.Figure.Line
+    commentId: T:Alis.Core.Physic.Figure.Line
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Physic.Figure
+      url: Alis.Core.Physic.Figure.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The line class
+- code: public static class Line
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: Line
+    url: Alis.Core.Physic.Figure.Line.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Methods
+- api3: AddVectors(Vector2, Vector2)
+  id: Alis_Core_Physic_Figure_Line_AddVectors_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L135
+  metadata:
+    uid: Alis.Core.Physic.Figure.Line.AddVectors(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)
+    commentId: M:Alis.Core.Physic.Figure.Line.AddVectors(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)
+- markdown: Adds the vectors using the specified vector 1
+- code: private static Vector2 AddVectors(Vector2 vector1, Vector2 vector2)
+- h4: Parameters
+- parameters:
+  - name: vector1
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The vector
+  - name: vector2
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The vector
+- h4: Returns
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The vector
+- api3: ArePointsEqual(Vector2, Vector2)
+  id: Alis_Core_Physic_Figure_Line_ArePointsEqual_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L201
+  metadata:
+    uid: Alis.Core.Physic.Figure.Line.ArePointsEqual(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)
+    commentId: M:Alis.Core.Physic.Figure.Line.ArePointsEqual(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)
+- markdown: Describes whether are points equal
+- code: private static bool ArePointsEqual(Vector2 point1, Vector2 point2)
+- h4: Parameters
+- parameters:
+  - name: point1
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The point
+  - name: point2
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The point
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: CalculateDenominator(float, float, float, float, float, float, float, float)
+  id: Alis_Core_Physic_Figure_Line_CalculateDenominator_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L225
+  metadata:
+    uid: Alis.Core.Physic.Figure.Line.CalculateDenominator(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)
+    commentId: M:Alis.Core.Physic.Figure.Line.CalculateDenominator(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)
+- markdown: Calculates the denominator using the specified val 1
+- code: private static float CalculateDenominator(float val1, float val2, float val3, float val4, float val5, float val6, float val7, float val8)
+- h4: Parameters
+- parameters:
+  - name: val1
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The val
+  - name: val2
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The val
+  - name: val3
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The val
+  - name: val4
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The val
+  - name: val5
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The val
+  - name: val6
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The val
+  - name: val7
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The val
+  - name: val8
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The val
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The float
+- api3: CalculateDistance(Vector2, Vector2)
+  id: Alis_Core_Physic_Figure_Line_CalculateDistance_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L96
+  metadata:
+    uid: Alis.Core.Physic.Figure.Line.CalculateDistance(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)
+    commentId: M:Alis.Core.Physic.Figure.Line.CalculateDistance(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)
+- markdown: Calculates the distance using the specified point 1
+- code: private static float CalculateDistance(Vector2 point1, Vector2 point2)
+- h4: Parameters
+- parameters:
+  - name: point1
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The point
+  - name: point2
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The point
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The float
+- api3: CalculateDistanceFromPointToLine(Vector2, Vector2, Vector2, float, float)
+  id: Alis_Core_Physic_Figure_Line_CalculateDistanceFromPointToLine_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_System_Single_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L83
+  metadata:
+    uid: Alis.Core.Physic.Figure.Line.CalculateDistanceFromPointToLine(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,System.Single,System.Single)
+    commentId: M:Alis.Core.Physic.Figure.Line.CalculateDistanceFromPointToLine(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,System.Single,System.Single)
+- markdown: Calculates the distance from point to line using the specified point
+- code: private static float CalculateDistanceFromPointToLine(Vector2 point, Vector2 start, Vector2 v, float c1, float c2)
+- h4: Parameters
+- parameters:
+  - name: point
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The point
+  - name: start
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The start
+  - name: v
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+  - name: c1
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The
+  - name: c2
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The float
+- api3: CalculateIntersectionPoint(float, float, float, float, float, float)
+  id: Alis_Core_Physic_Figure_Line_CalculateIntersectionPoint_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L275
+  metadata:
+    uid: Alis.Core.Physic.Figure.Line.CalculateIntersectionPoint(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)
+    commentId: M:Alis.Core.Physic.Figure.Line.CalculateIntersectionPoint(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)
+- markdown: Calculates the intersection point using the specified x 1
+- code: private static Vector2 CalculateIntersectionPoint(float x1, float ua, float x2, float x3, float y1, float y2)
+- h4: Parameters
+- parameters:
+  - name: x1
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The
+  - name: ua
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The ua
+  - name: x2
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The
+  - name: x3
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The
+  - name: y1
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The
+  - name: y2
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The vector
+- api3: CalculateIntersectionPoint(Vector2, float, float, float)
+  id: Alis_Core_Physic_Figure_Line_CalculateIntersectionPoint_Alis_Core_Aspect_Math_Vector_Vector2_System_Single_System_Single_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L421
+  metadata:
+    uid: Alis.Core.Physic.Figure.Line.CalculateIntersectionPoint(Alis.Core.Aspect.Math.Vector.Vector2,System.Single,System.Single,System.Single)
+    commentId: M:Alis.Core.Physic.Figure.Line.CalculateIntersectionPoint(Alis.Core.Aspect.Math.Vector.Vector2,System.Single,System.Single,System.Single)
+- markdown: Calculates the intersection point using the specified point 1
+- code: private static Vector2 CalculateIntersectionPoint(Vector2 point1, float ua, float b, float d)
+- h4: Parameters
+- parameters:
+  - name: point1
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The point
+  - name: ua
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The ua
+  - name: b
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The
+  - name: d
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The vector
+- api3: CalculateUa(float, float, float, float, float, float, float, float, float)
+  id: Alis_Core_Physic_Figure_Line_CalculateUa_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L240
+  metadata:
+    uid: Alis.Core.Physic.Figure.Line.CalculateUa(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)
+    commentId: M:Alis.Core.Physic.Figure.Line.CalculateUa(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)
+- markdown: Calculates the ua using the specified val 1
+- code: private static float CalculateUa(float val1, float val2, float val3, float val4, float val5, float val6, float val7, float val8, float denom)
+- h4: Parameters
+- parameters:
+  - name: val1
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The val
+  - name: val2
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The val
+  - name: val3
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The val
+  - name: val4
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The val
+  - name: val5
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The val
+  - name: val6
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The val
+  - name: val7
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The val
+  - name: val8
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The val
+  - name: denom
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The denom
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The float
+- api3: CalculateUa(float, float, float, Vector2, Vector2, float)
+  id: Alis_Core_Physic_Figure_Line_CalculateUa_System_Single_System_Single_System_Single_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L377
+  metadata:
+    uid: Alis.Core.Physic.Figure.Line.CalculateUa(System.Single,System.Single,System.Single,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,System.Single)
+    commentId: M:Alis.Core.Physic.Figure.Line.CalculateUa(System.Single,System.Single,System.Single,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,System.Single)
+- markdown: Calculates the ua using the specified a
+- code: private static float CalculateUa(float a, float c, float d, Vector2 point1, Vector2 point3, float denom)
+- h4: Parameters
+- parameters:
+  - name: a
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The
+  - name: c
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The
+  - name: d
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The
+  - name: point1
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The point
+  - name: point3
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The point
+  - name: denom
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The denom
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The float
+- api3: CalculateUb(float, float, float, float, float, float, float, float, float)
+  id: Alis_Core_Physic_Figure_Line_CalculateUb_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L255
+  metadata:
+    uid: Alis.Core.Physic.Figure.Line.CalculateUb(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)
+    commentId: M:Alis.Core.Physic.Figure.Line.CalculateUb(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)
+- markdown: Calculates the ub using the specified val 1
+- code: private static float CalculateUb(float val1, float val2, float val3, float val4, float val5, float val6, float val7, float val8, float denom)
+- h4: Parameters
+- parameters:
+  - name: val1
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The val
+  - name: val2
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The val
+  - name: val3
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The val
+  - name: val4
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The val
+  - name: val5
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The val
+  - name: val6
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The val
+  - name: val7
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The val
+  - name: val8
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The val
+  - name: denom
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The denom
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The float
+- api3: CalculateUb(float, float, float, Vector2, Vector2, float)
+  id: Alis_Core_Physic_Figure_Line_CalculateUb_System_Single_System_Single_System_Single_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L396
+  metadata:
+    uid: Alis.Core.Physic.Figure.Line.CalculateUb(System.Single,System.Single,System.Single,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,System.Single)
+    commentId: M:Alis.Core.Physic.Figure.Line.CalculateUb(System.Single,System.Single,System.Single,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,System.Single)
+- markdown: Calculates the ub using the specified b
+- code: private static float CalculateUb(float b, float d, float a, Vector2 point1, Vector2 point3, float denom)
+- h4: Parameters
+- parameters:
+  - name: b
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The
+  - name: d
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The
+  - name: a
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The
+  - name: point1
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The point
+  - name: point3
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The point
+  - name: denom
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The denom
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The float
+- api3: DistanceBetweenPointAndLineSegment(Vector2, Vector2, Vector2)
+  id: Alis_Core_Physic_Figure_Line_DistanceBetweenPointAndLineSegment_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L49
+  metadata:
+    uid: Alis.Core.Physic.Figure.Line.DistanceBetweenPointAndLineSegment(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)
+    commentId: M:Alis.Core.Physic.Figure.Line.DistanceBetweenPointAndLineSegment(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)
+- markdown: Distances the between point and line segment using the specified point
+- code: public static float DistanceBetweenPointAndLineSegment(Vector2 point, Vector2 start, Vector2 end)
+- h4: Parameters
+- parameters:
+  - name: point
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The point
+  - name: start
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The start
+  - name: end
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The end
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The float
+- api3: DotProduct(Vector2, Vector2)
+  id: Alis_Core_Physic_Figure_Line_DotProduct_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L112
+  metadata:
+    uid: Alis.Core.Physic.Figure.Line.DotProduct(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)
+    commentId: M:Alis.Core.Physic.Figure.Line.DotProduct(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)
+- markdown: Dots the product using the specified vector 1
+- code: private static float DotProduct(Vector2 vector1, Vector2 vector2)
+- h4: Parameters
+- parameters:
+  - name: vector1
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The vector
+  - name: vector2
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The vector
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The float
+- api3: HasIntersection(float, float)
+  id: Alis_Core_Physic_Figure_Line_HasIntersection_System_Single_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L358
+  metadata:
+    uid: Alis.Core.Physic.Figure.Line.HasIntersection(System.Single,System.Single)
+    commentId: M:Alis.Core.Physic.Figure.Line.HasIntersection(System.Single,System.Single)
+- markdown: Describes whether has intersection
+- code: private static bool HasIntersection(float ua, float ub)
+- h4: Parameters
+- parameters:
+  - name: ua
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The ua
+  - name: ub
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The ub
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: IsC1LessThanOrEqualToZero(float)
+  id: Alis_Core_Physic_Figure_Line_IsC1LessThanOrEqualToZero_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L119
+  metadata:
+    uid: Alis.Core.Physic.Figure.Line.IsC1LessThanOrEqualToZero(System.Single)
+    commentId: M:Alis.Core.Physic.Figure.Line.IsC1LessThanOrEqualToZero(System.Single)
+- markdown: Describes whether is c 1 less than or equal to zero
+- code: private static bool IsC1LessThanOrEqualToZero(float c1)
+- h4: Parameters
+- parameters:
+  - name: c1
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: IsC2LessThanOrEqualToC1(float, float)
+  id: Alis_Core_Physic_Figure_Line_IsC2LessThanOrEqualToC1_System_Single_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L127
+  metadata:
+    uid: Alis.Core.Physic.Figure.Line.IsC2LessThanOrEqualToC1(System.Single,System.Single)
+    commentId: M:Alis.Core.Physic.Figure.Line.IsC2LessThanOrEqualToC1(System.Single,System.Single)
+- markdown: Describes whether is c 2 less than or equal to c 1
+- code: private static bool IsC2LessThanOrEqualToC1(float c2, float c1)
+- h4: Parameters
+- parameters:
+  - name: c2
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The
+  - name: c1
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: IsDenominatorZero(float)
+  id: Alis_Core_Physic_Figure_Line_IsDenominatorZero_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L365
+  metadata:
+    uid: Alis.Core.Physic.Figure.Line.IsDenominatorZero(System.Single)
+    commentId: M:Alis.Core.Physic.Figure.Line.IsDenominatorZero(System.Single)
+- markdown: Describes whether is denominator zero
+- code: private static bool IsDenominatorZero(float denom)
+- h4: Parameters
+- parameters:
+  - name: denom
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The denom
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: IsInRange(float, bool)
+  id: Alis_Core_Physic_Figure_Line_IsInRange_System_Single_System_Boolean_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L411
+  metadata:
+    uid: Alis.Core.Physic.Figure.Line.IsInRange(System.Single,System.Boolean)
+    commentId: M:Alis.Core.Physic.Figure.Line.IsInRange(System.Single,System.Boolean)
+- markdown: Describes whether is in range
+- code: private static bool IsInRange(float value, bool isSegment)
+- h4: Parameters
+- parameters:
+  - name: value
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The value
+  - name: isSegment
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The is segment
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: IsIntersectionValid(float, float)
+  id: Alis_Core_Physic_Figure_Line_IsIntersectionValid_System_Single_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L263
+  metadata:
+    uid: Alis.Core.Physic.Figure.Line.IsIntersectionValid(System.Single,System.Single)
+    commentId: M:Alis.Core.Physic.Figure.Line.IsIntersectionValid(System.Single,System.Single)
+- markdown: Describes whether is intersection valid
+- code: private static bool IsIntersectionValid(float ua, float ub)
+- h4: Parameters
+- parameters:
+  - name: ua
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The ua
+  - name: ub
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The ub
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: IsOutOfRange(float, float, float, float)
+  id: Alis_Core_Physic_Figure_Line_IsOutOfRange_System_Single_System_Single_System_Single_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L211
+  metadata:
+    uid: Alis.Core.Physic.Figure.Line.IsOutOfRange(System.Single,System.Single,System.Single,System.Single)
+    commentId: M:Alis.Core.Physic.Figure.Line.IsOutOfRange(System.Single,System.Single,System.Single,System.Single)
+- markdown: Describes whether is out of range
+- code: private static bool IsOutOfRange(float val1, float val2, float val3, float val4)
+- h4: Parameters
+- parameters:
+  - name: val1
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The val
+  - name: val2
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The val
+  - name: val3
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The val
+  - name: val4
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The val
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: LineIntersect(Vector2, Vector2, Vector2, Vector2)
+  id: Alis_Core_Physic_Figure_Line_LineIntersect_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L285
+  metadata:
+    uid: Alis.Core.Physic.Figure.Line.LineIntersect(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)
+    commentId: M:Alis.Core.Physic.Figure.Line.LineIntersect(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)
+- markdown: Lines the intersect using the specified p 1
+- code: public static Vector2 LineIntersect(Vector2 p1, Vector2 p2, Vector2 q1, Vector2 q2)
+- h4: Parameters
+- parameters:
+  - name: p1
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+  - name: p2
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+  - name: q1
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+  - name: q2
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+- api3: LineIntersect(Vector2, Vector2, Vector2, Vector2, bool, bool, out Vector2)
+  id: Alis_Core_Physic_Figure_Line_LineIntersect_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_System_Boolean_System_Boolean_Alis_Core_Aspect_Math_Vector_Vector2__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L318
+  metadata:
+    uid: Alis.Core.Physic.Figure.Line.LineIntersect(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,System.Boolean,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2@)
+    commentId: M:Alis.Core.Physic.Figure.Line.LineIntersect(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,System.Boolean,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2@)
+- markdown: Describes whether line intersect
+- code: public static bool LineIntersect(Vector2 point1, Vector2 point2, Vector2 point3, Vector2 point4, bool firstIsSegment, bool secondIsSegment, out Vector2 intersectionPoint)
+- h4: Parameters
+- parameters:
+  - name: point1
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The point
+  - name: point2
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The point
+  - name: point3
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The point
+  - name: point4
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The point
+  - name: firstIsSegment
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The first is segment
+  - name: secondIsSegment
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The second is segment
+  - name: intersectionPoint
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The intersection point
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: LineIntersect2(Vector2, Vector2, Vector2, Vector2, out Vector2)
+  id: Alis_Core_Physic_Figure_Line_LineIntersect2_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L154
+  metadata:
+    uid: Alis.Core.Physic.Figure.Line.LineIntersect2(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2@)
+    commentId: M:Alis.Core.Physic.Figure.Line.LineIntersect2(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2@)
+- markdown: Describes whether line intersect 2
+- code: public static bool LineIntersect2(Vector2 a0, Vector2 a1, Vector2 b0, Vector2 b1, out Vector2 intersectionPoint)
+- h4: Parameters
+- parameters:
+  - name: a0
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+  - name: a1
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+  - name: b0
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+  - name: b1
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+  - name: intersectionPoint
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The intersection point
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: LineSegmentAabbIntersect(Vector2, Vector2, Aabb)
+  id: Alis_Core_Physic_Figure_Line_LineSegmentAabbIntersect_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Physic_Shared_Aabb_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L453
+  metadata:
+    uid: Alis.Core.Physic.Figure.Line.LineSegmentAabbIntersect(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Physic.Shared.Aabb)
+    commentId: M:Alis.Core.Physic.Figure.Line.LineSegmentAabbIntersect(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Physic.Shared.Aabb)
+- markdown: Lines the segment aabb intersect using the specified point 1
+- code: public static List<Vector2> LineSegmentAabbIntersect(Vector2 point1, Vector2 point2, Aabb aabb)
+- h4: Parameters
+- parameters:
+  - name: point1
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The point
+  - name: point2
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The point
+  - name: aabb
+    type:
+    - text: Aabb
+      url: Alis.Core.Physic.Shared.Aabb.html
+    description: The aabb
+- h4: Returns
+- parameters:
+  - type:
+    - text: List
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+    - <
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    - '>'
+    description: A list of vector 2
+- api3: LineSegmentVerticesIntersect(Vector2, Vector2, List<Vector2>)
+  id: Alis_Core_Physic_Figure_Line_LineSegmentVerticesIntersect_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_System_Collections_Generic_List_Alis_Core_Aspect_Math_Vector_Vector2__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L431
+  metadata:
+    uid: Alis.Core.Physic.Figure.Line.LineSegmentVerticesIntersect(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,System.Collections.Generic.List{Alis.Core.Aspect.Math.Vector.Vector2})
+    commentId: M:Alis.Core.Physic.Figure.Line.LineSegmentVerticesIntersect(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,System.Collections.Generic.List{Alis.Core.Aspect.Math.Vector.Vector2})
+- markdown: Lines the segment vertices intersect using the specified point 1
+- code: public static List<Vector2> LineSegmentVerticesIntersect(Vector2 point1, Vector2 point2, List<Vector2> vertices)
+- h4: Parameters
+- parameters:
+  - name: point1
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The point
+  - name: point2
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The point
+  - name: vertices
+    type:
+    - text: List
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+    - <
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    - '>'
+    description: The vertices
+- h4: Returns
+- parameters:
+  - type:
+    - text: List
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+    - <
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    - '>'
+    description: The intersection points
+- api3: MultiplyVectorByScalar(Vector2, float)
+  id: Alis_Core_Physic_Figure_Line_MultiplyVectorByScalar_Alis_Core_Aspect_Math_Vector_Vector2_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L143
+  metadata:
+    uid: Alis.Core.Physic.Figure.Line.MultiplyVectorByScalar(Alis.Core.Aspect.Math.Vector.Vector2,System.Single)
+    commentId: M:Alis.Core.Physic.Figure.Line.MultiplyVectorByScalar(Alis.Core.Aspect.Math.Vector.Vector2,System.Single)
+- markdown: Multiplies the vector by scalar using the specified vector
+- code: private static Vector2 MultiplyVectorByScalar(Vector2 vector, float scalar)
+- h4: Parameters
+- parameters:
+  - name: vector
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The vector
+  - name: scalar
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The scalar
+- h4: Returns
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The vector
+- api3: SubtractVectors(Vector2, Vector2)
+  id: Alis_Core_Physic_Figure_Line_SubtractVectors_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Figure/Line.cs#L104
+  metadata:
+    uid: Alis.Core.Physic.Figure.Line.SubtractVectors(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)
+    commentId: M:Alis.Core.Physic.Figure.Line.SubtractVectors(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)
+- markdown: Subtracts the vectors using the specified vector 1
+- code: private static Vector2 SubtractVectors(Vector2 vector1, Vector2 vector2)
+- h4: Parameters
+- parameters:
+  - name: vector1
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The vector
+  - name: vector2
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The vector
+- h4: Returns
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The vector
+languageId: csharp
+metadata:
+  description: The line class

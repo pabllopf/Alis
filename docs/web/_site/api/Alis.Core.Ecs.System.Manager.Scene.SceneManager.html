@@ -1,0 +1,393 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+      <title>Class SceneManager | Alis - Develop the video games of your dreams &#128175; free!! </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class SceneManager | Alis - Develop the video games of your dreams &#128175; free!! ">
+      
+      <meta name="description" content="The scene manager base class">
+      <link rel="icon" href="../resources/logo.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ApiPage">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../resources/logo.png" alt="Alis">
+            Alis
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 class='section api' data-uid='Alis.Core.Ecs.System.Manager.Scene.SceneManager' data-commentid='T:Alis.Core.Ecs.System.Manager.Scene.SceneManager' id='Alis_Core_Ecs_System_Manager_Scene_SceneManager'>Class SceneManager    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/Scene/SceneManager.cs#L41'><i class='bi bi-code-slash'></i></a></h1>
+ <div class="facts text-secondary">
+<dl><dt>Namespace</dt><dd><a href='Alis.Core.Ecs.System.Manager.Scene.html'>Alis.Core.Ecs.System.Manager.Scene</a></dd></dl><dl><dt>Assembly</dt><dd>Alis.dll</dd></dl>
+</div><p>The scene manager base class</p>
+<pre><code class='lang-csharp'>public class SceneManager : AManager, IManager, IEnabled, IIdentifier, IRuntime</code></pre><h4 class='section'>Inheritance</h4><dl class="typelist inheritance"><dd>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object'>object</a>
+</div>
+<div>
+<a href='Alis.Core.Ecs.System.Manager.AManager.html'>AManager</a>
+</div>
+<div>
+<a href='Alis.Core.Ecs.System.Manager.Scene.SceneManager.html'>SceneManager</a>
+</div>
+
+</dd></dl><h4 class='section'>Implements</h4><dl class="typelist"><dd>
+<div>
+<a href='Alis.Core.Ecs.System.Manager.IManager.html'>IManager</a>
+</div>
+<div>
+<a href='Alis.Core.Ecs.Entity.Property.IEnabled.html'>IEnabled</a>
+</div>
+<div>
+<a href='Alis.Core.Ecs.Entity.Property.IIdentifier.html'>IIdentifier</a>
+</div>
+<div>
+<a href='Alis.Core.Ecs.Entity.Property.IRuntime.html'>IRuntime</a>
+</div>
+
+</dd></dl><h4 class='section'>Inherited Members</h4><dl class="typelist"><dd>
+<div>
+<a href='Alis.Core.Ecs.System.Manager.AManager.html#Alis_Core_Ecs_System_Manager_AManager_Context'>AManager.Context</a>
+</div>
+<div>
+<a href='Alis.Core.Ecs.System.Manager.AManager.html#Alis_Core_Ecs_System_Manager_AManager_IsEnable'>AManager.IsEnable</a>
+</div>
+<div>
+<a href='Alis.Core.Ecs.System.Manager.AManager.html#Alis_Core_Ecs_System_Manager_AManager_Name'>AManager.Name</a>
+</div>
+<div>
+<a href='Alis.Core.Ecs.System.Manager.AManager.html#Alis_Core_Ecs_System_Manager_AManager_Id'>AManager.Id</a>
+</div>
+<div>
+<a href='Alis.Core.Ecs.System.Manager.AManager.html#Alis_Core_Ecs_System_Manager_AManager_Tag'>AManager.Tag</a>
+</div>
+<div>
+<a href='Alis.Core.Ecs.System.Manager.AManager.html#Alis_Core_Ecs_System_Manager_AManager_OnEnable'>AManager.OnEnable()</a>
+</div>
+<div>
+<a href='Alis.Core.Ecs.System.Manager.AManager.html#Alis_Core_Ecs_System_Manager_AManager_OnInit'>AManager.OnInit()</a>
+</div>
+<div>
+<a href='Alis.Core.Ecs.System.Manager.AManager.html#Alis_Core_Ecs_System_Manager_AManager_OnAwake'>AManager.OnAwake()</a>
+</div>
+<div>
+<a href='Alis.Core.Ecs.System.Manager.AManager.html#Alis_Core_Ecs_System_Manager_AManager_OnStart'>AManager.OnStart()</a>
+</div>
+<div>
+<a href='Alis.Core.Ecs.System.Manager.AManager.html#Alis_Core_Ecs_System_Manager_AManager_OnBeforeUpdate'>AManager.OnBeforeUpdate()</a>
+</div>
+<div>
+<a href='Alis.Core.Ecs.System.Manager.AManager.html#Alis_Core_Ecs_System_Manager_AManager_OnUpdate'>AManager.OnUpdate()</a>
+</div>
+<div>
+<a href='Alis.Core.Ecs.System.Manager.AManager.html#Alis_Core_Ecs_System_Manager_AManager_OnAfterUpdate'>AManager.OnAfterUpdate()</a>
+</div>
+<div>
+<a href='Alis.Core.Ecs.System.Manager.AManager.html#Alis_Core_Ecs_System_Manager_AManager_OnBeforeFixedUpdate'>AManager.OnBeforeFixedUpdate()</a>
+</div>
+<div>
+<a href='Alis.Core.Ecs.System.Manager.AManager.html#Alis_Core_Ecs_System_Manager_AManager_OnFixedUpdate'>AManager.OnFixedUpdate()</a>
+</div>
+<div>
+<a href='Alis.Core.Ecs.System.Manager.AManager.html#Alis_Core_Ecs_System_Manager_AManager_OnAfterFixedUpdate'>AManager.OnAfterFixedUpdate()</a>
+</div>
+<div>
+<a href='Alis.Core.Ecs.System.Manager.AManager.html#Alis_Core_Ecs_System_Manager_AManager_OnDispatchEvents'>AManager.OnDispatchEvents()</a>
+</div>
+<div>
+<a href='Alis.Core.Ecs.System.Manager.AManager.html#Alis_Core_Ecs_System_Manager_AManager_OnCalculate'>AManager.OnCalculate()</a>
+</div>
+<div>
+<a href='Alis.Core.Ecs.System.Manager.AManager.html#Alis_Core_Ecs_System_Manager_AManager_OnDraw'>AManager.OnDraw()</a>
+</div>
+<div>
+<a href='Alis.Core.Ecs.System.Manager.AManager.html#Alis_Core_Ecs_System_Manager_AManager_OnGui'>AManager.OnGui()</a>
+</div>
+<div>
+<a href='Alis.Core.Ecs.System.Manager.AManager.html#Alis_Core_Ecs_System_Manager_AManager_OnDisable'>AManager.OnDisable()</a>
+</div>
+<div>
+<a href='Alis.Core.Ecs.System.Manager.AManager.html#Alis_Core_Ecs_System_Manager_AManager_OnReset'>AManager.OnReset()</a>
+</div>
+<div>
+<a href='Alis.Core.Ecs.System.Manager.AManager.html#Alis_Core_Ecs_System_Manager_AManager_OnStop'>AManager.OnStop()</a>
+</div>
+<div>
+<a href='Alis.Core.Ecs.System.Manager.AManager.html#Alis_Core_Ecs_System_Manager_AManager_OnExit'>AManager.OnExit()</a>
+</div>
+<div>
+<a href='Alis.Core.Ecs.System.Manager.AManager.html#Alis_Core_Ecs_System_Manager_AManager_OnDestroy'>AManager.OnDestroy()</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)'>object.Equals(object?)</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)'>object.Equals(object?, object?)</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.gethashcode'>object.GetHashCode()</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.gettype'>object.GetType()</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone'>object.MemberwiseClone()</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.referenceequals'>object.ReferenceEquals(object?, object?)</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.tostring'>object.ToString()</a>
+</div>
+
+</dd></dl><h2 class='section'>Constructors</h2><h3 class='section api' data-uid='Alis.Core.Ecs.System.Manager.Scene.SceneManager.#ctor' data-commentid='M:Alis.Core.Ecs.System.Manager.Scene.SceneManager.#ctor' id='Alis_Core_Ecs_System_Manager_Scene_SceneManager__ctor'>SceneManager()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/Scene/SceneManager.cs#L46'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Initializes a new instance of the <span class="xref">Alis.Core.Ecs.System.Manager.Scene.SceneManager</span> class</p>
+<pre><code class='lang-csharp'>public SceneManager()</code></pre><h2 class='section'>Properties</h2><h3 class='section api' data-uid='Alis.Core.Ecs.System.Manager.Scene.SceneManager.CurrentScene' data-commentid='P:Alis.Core.Ecs.System.Manager.Scene.SceneManager.CurrentScene' id='Alis_Core_Ecs_System_Manager_Scene_SceneManager_CurrentScene'>CurrentScene    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/Scene/SceneManager.cs#L55'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Gets or sets the value of the current scene</p>
+<pre><code class='lang-csharp'>[JsonPropertyName(&quot;_CurrentScene_&quot;, true, true)]
+public Scene CurrentScene { get; set; }</code></pre><h4 class='section'>Property Value</h4><dl class='parameters'><dt> <a href='Alis.Core.Ecs.Entity.Scene.html'>Scene</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Ecs.System.Manager.Scene.SceneManager.Scenes' data-commentid='P:Alis.Core.Ecs.System.Manager.Scene.SceneManager.Scenes' id='Alis_Core_Ecs_System_Manager_Scene_SceneManager_Scenes'>Scenes    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/Scene/SceneManager.cs#L62'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Gets or sets the value of the scenes</p>
+<pre><code class='lang-csharp'>[JsonPropertyName(&quot;_Scenes_&quot;)]
+public List&lt;Scene&gt; Scenes { get; set; }</code></pre><h4 class='section'>Property Value</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1'>List</a>&lt;<a href='Alis.Core.Ecs.Entity.Scene.html'>Scene</a>&gt;  </dt>
+<dd>
+
+
+
+</dd></dl><h2 class='section'>Methods</h2><h3 class='section api' data-uid='Alis.Core.Ecs.System.Manager.Scene.SceneManager.Add``1(``0)' data-commentid='M:Alis.Core.Ecs.System.Manager.Scene.SceneManager.Add``1(``0)' id='Alis_Core_Ecs_System_Manager_Scene_SceneManager_Add__1___0_'>Add&lt;T&gt;(T)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/Scene/SceneManager.cs#L246'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Adds the component</p>
+<pre><code class='lang-csharp'>public void Add&lt;T&gt;(T component) where T : Scene</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>component</code> T  </dt>
+<dd>
+
+
+<p>The component</p>
+
+</dd></dl><h4 class='section'>Type Parameters</h4><dl class='parameters'><dt><code>T</code>   </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Ecs.System.Manager.Scene.SceneManager.Clear``1' data-commentid='M:Alis.Core.Ecs.System.Manager.Scene.SceneManager.Clear``1' id='Alis_Core_Ecs_System_Manager_Scene_SceneManager_Clear__1'>Clear&lt;T&gt;()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/Scene/SceneManager.cs#L280'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Clears this instance</p>
+<pre><code class='lang-csharp'>public void Clear&lt;T&gt;() where T : Scene</code></pre><h4 class='section'>Type Parameters</h4><dl class='parameters'><dt><code>T</code>   </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Ecs.System.Manager.Scene.SceneManager.Contains``1' data-commentid='M:Alis.Core.Ecs.System.Manager.Scene.SceneManager.Contains``1' id='Alis_Core_Ecs_System_Manager_Scene_SceneManager_Contains__1'>Contains&lt;T&gt;()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/Scene/SceneManager.cs#L274'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Describes whether this instance contains</p>
+<pre><code class='lang-csharp'>public bool Contains&lt;T&gt;() where T : Scene</code></pre><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+<p>The bool</p>
+
+</dd></dl><h4 class='section'>Type Parameters</h4><dl class='parameters'><dt><code>T</code>   </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Ecs.System.Manager.Scene.SceneManager.Get``1' data-commentid='M:Alis.Core.Ecs.System.Manager.Scene.SceneManager.Get``1' id='Alis_Core_Ecs_System_Manager_Scene_SceneManager_Get__1'>Get&lt;T&gt;()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/Scene/SceneManager.cs#L267'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Gets this instance</p>
+<pre><code class='lang-csharp'>public T Get&lt;T&gt;() where T : Scene</code></pre><h4 class='section'>Returns</h4><dl class='parameters'><dt> T  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h4 class='section'>Type Parameters</h4><dl class='parameters'><dt><code>T</code>   </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Ecs.System.Manager.Scene.SceneManager.LoadScene(Alis.Core.Ecs.Entity.Scene)' data-commentid='M:Alis.Core.Ecs.System.Manager.Scene.SceneManager.LoadScene(Alis.Core.Ecs.Entity.Scene)' id='Alis_Core_Ecs_System_Manager_Scene_SceneManager_LoadScene_Alis_Core_Ecs_Entity_Scene_'>LoadScene(Scene)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/Scene/SceneManager.cs#L289'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Loads the scene using the specified scene</p>
+<pre><code class='lang-csharp'>public void LoadScene(Scene scene)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>scene</code> <a href='Alis.Core.Ecs.Entity.Scene.html'>Scene</a>  </dt>
+<dd>
+
+
+<p>The scene</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Ecs.System.Manager.Scene.SceneManager.LoadScene(System.String)' data-commentid='M:Alis.Core.Ecs.System.Manager.Scene.SceneManager.LoadScene(System.String)' id='Alis_Core_Ecs_System_Manager_Scene_SceneManager_LoadScene_System_String_'>LoadScene(string)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/Scene/SceneManager.cs#L307'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Loads the scene using the specified name</p>
+<pre><code class='lang-csharp'>public void LoadScene(string name)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>name</code> <a href='https://learn.microsoft.com/dotnet/api/system.string'>string</a>  </dt>
+<dd>
+
+
+<p>The name</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Ecs.System.Manager.Scene.SceneManager.LoadScene(System.Int32)' data-commentid='M:Alis.Core.Ecs.System.Manager.Scene.SceneManager.LoadScene(System.Int32)' id='Alis_Core_Ecs_System_Manager_Scene_SceneManager_LoadScene_System_Int32_'>LoadScene(int)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/Scene/SceneManager.cs#L332'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Loads the scene using the specified index</p>
+<pre><code class='lang-csharp'>public void LoadScene(int index)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>index</code> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+<p>The index</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Ecs.System.Manager.Scene.SceneManager.OnAfterFixedUpdate' data-commentid='M:Alis.Core.Ecs.System.Manager.Scene.SceneManager.OnAfterFixedUpdate' id='Alis_Core_Ecs_System_Manager_Scene_SceneManager_OnAfterFixedUpdate'>OnAfterFixedUpdate()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/Scene/SceneManager.cs#L164'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Ons the after fixed update</p>
+<pre><code class='lang-csharp'>public override void OnAfterFixedUpdate()</code></pre><h3 class='section api' data-uid='Alis.Core.Ecs.System.Manager.Scene.SceneManager.OnAfterUpdate' data-commentid='M:Alis.Core.Ecs.System.Manager.Scene.SceneManager.OnAfterUpdate' id='Alis_Core_Ecs_System_Manager_Scene_SceneManager_OnAfterUpdate'>OnAfterUpdate()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/Scene/SceneManager.cs#L140'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Ons the after update</p>
+<pre><code class='lang-csharp'>public override void OnAfterUpdate()</code></pre><h3 class='section api' data-uid='Alis.Core.Ecs.System.Manager.Scene.SceneManager.OnAwake' data-commentid='M:Alis.Core.Ecs.System.Manager.Scene.SceneManager.OnAwake' id='Alis_Core_Ecs_System_Manager_Scene_SceneManager_OnAwake'>OnAwake()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/Scene/SceneManager.cs#L88'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Ons the awake</p>
+<pre><code class='lang-csharp'>public override void OnAwake()</code></pre><h3 class='section api' data-uid='Alis.Core.Ecs.System.Manager.Scene.SceneManager.OnBeforeFixedUpdate' data-commentid='M:Alis.Core.Ecs.System.Manager.Scene.SceneManager.OnBeforeFixedUpdate' id='Alis_Core_Ecs_System_Manager_Scene_SceneManager_OnBeforeFixedUpdate'>OnBeforeFixedUpdate()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/Scene/SceneManager.cs#L148'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Ons the before fixed update</p>
+<pre><code class='lang-csharp'>public override void OnBeforeFixedUpdate()</code></pre><h3 class='section api' data-uid='Alis.Core.Ecs.System.Manager.Scene.SceneManager.OnBeforeUpdate' data-commentid='M:Alis.Core.Ecs.System.Manager.Scene.SceneManager.OnBeforeUpdate' id='Alis_Core_Ecs_System_Manager_Scene_SceneManager_OnBeforeUpdate'>OnBeforeUpdate()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/Scene/SceneManager.cs#L124'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Ons the before update</p>
+<pre><code class='lang-csharp'>public override void OnBeforeUpdate()</code></pre><h3 class='section api' data-uid='Alis.Core.Ecs.System.Manager.Scene.SceneManager.OnCalculate' data-commentid='M:Alis.Core.Ecs.System.Manager.Scene.SceneManager.OnCalculate' id='Alis_Core_Ecs_System_Manager_Scene_SceneManager_OnCalculate'>OnCalculate()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/Scene/SceneManager.cs#L180'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Ons the calculate</p>
+<pre><code class='lang-csharp'>public override void OnCalculate()</code></pre><h3 class='section api' data-uid='Alis.Core.Ecs.System.Manager.Scene.SceneManager.OnDestroy' data-commentid='M:Alis.Core.Ecs.System.Manager.Scene.SceneManager.OnDestroy' id='Alis_Core_Ecs_System_Manager_Scene_SceneManager_OnDestroy'>OnDestroy()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/Scene/SceneManager.cs#L236'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Ons the destroy</p>
+<pre><code class='lang-csharp'>public override void OnDestroy()</code></pre><h3 class='section api' data-uid='Alis.Core.Ecs.System.Manager.Scene.SceneManager.OnDisable' data-commentid='M:Alis.Core.Ecs.System.Manager.Scene.SceneManager.OnDisable' id='Alis_Core_Ecs_System_Manager_Scene_SceneManager_OnDisable'>OnDisable()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/Scene/SceneManager.cs#L204'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Ons the disable</p>
+<pre><code class='lang-csharp'>public override void OnDisable()</code></pre><h3 class='section api' data-uid='Alis.Core.Ecs.System.Manager.Scene.SceneManager.OnDispatchEvents' data-commentid='M:Alis.Core.Ecs.System.Manager.Scene.SceneManager.OnDispatchEvents' id='Alis_Core_Ecs_System_Manager_Scene_SceneManager_OnDispatchEvents'>OnDispatchEvents()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/Scene/SceneManager.cs#L172'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Ons the dispatch events</p>
+<pre><code class='lang-csharp'>public override void OnDispatchEvents()</code></pre><h3 class='section api' data-uid='Alis.Core.Ecs.System.Manager.Scene.SceneManager.OnDraw' data-commentid='M:Alis.Core.Ecs.System.Manager.Scene.SceneManager.OnDraw' id='Alis_Core_Ecs_System_Manager_Scene_SceneManager_OnDraw'>OnDraw()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/Scene/SceneManager.cs#L188'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Ons the draw</p>
+<pre><code class='lang-csharp'>public override void OnDraw()</code></pre><h3 class='section api' data-uid='Alis.Core.Ecs.System.Manager.Scene.SceneManager.OnEnable' data-commentid='M:Alis.Core.Ecs.System.Manager.Scene.SceneManager.OnEnable' id='Alis_Core_Ecs_System_Manager_Scene_SceneManager_OnEnable'>OnEnable()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/Scene/SceneManager.cs#L68'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Ons the enable</p>
+<pre><code class='lang-csharp'>public override void OnEnable()</code></pre><h3 class='section api' data-uid='Alis.Core.Ecs.System.Manager.Scene.SceneManager.OnExit' data-commentid='M:Alis.Core.Ecs.System.Manager.Scene.SceneManager.OnExit' id='Alis_Core_Ecs_System_Manager_Scene_SceneManager_OnExit'>OnExit()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/Scene/SceneManager.cs#L228'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Ons the exit</p>
+<pre><code class='lang-csharp'>public override void OnExit()</code></pre><h3 class='section api' data-uid='Alis.Core.Ecs.System.Manager.Scene.SceneManager.OnFixedUpdate' data-commentid='M:Alis.Core.Ecs.System.Manager.Scene.SceneManager.OnFixedUpdate' id='Alis_Core_Ecs_System_Manager_Scene_SceneManager_OnFixedUpdate'>OnFixedUpdate()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/Scene/SceneManager.cs#L156'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Ons the fixed update</p>
+<pre><code class='lang-csharp'>public override void OnFixedUpdate()</code></pre><h3 class='section api' data-uid='Alis.Core.Ecs.System.Manager.Scene.SceneManager.OnGui' data-commentid='M:Alis.Core.Ecs.System.Manager.Scene.SceneManager.OnGui' id='Alis_Core_Ecs_System_Manager_Scene_SceneManager_OnGui'>OnGui()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/Scene/SceneManager.cs#L196'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Ons the gui</p>
+<pre><code class='lang-csharp'>public override void OnGui()</code></pre><h3 class='section api' data-uid='Alis.Core.Ecs.System.Manager.Scene.SceneManager.OnInit' data-commentid='M:Alis.Core.Ecs.System.Manager.Scene.SceneManager.OnInit' id='Alis_Core_Ecs_System_Manager_Scene_SceneManager_OnInit'>OnInit()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/Scene/SceneManager.cs#L76'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Ons the init</p>
+<pre><code class='lang-csharp'>public override void OnInit()</code></pre><h3 class='section api' data-uid='Alis.Core.Ecs.System.Manager.Scene.SceneManager.OnReset' data-commentid='M:Alis.Core.Ecs.System.Manager.Scene.SceneManager.OnReset' id='Alis_Core_Ecs_System_Manager_Scene_SceneManager_OnReset'>OnReset()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/Scene/SceneManager.cs#L212'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Ons the reset</p>
+<pre><code class='lang-csharp'>public override void OnReset()</code></pre><h3 class='section api' data-uid='Alis.Core.Ecs.System.Manager.Scene.SceneManager.OnStart' data-commentid='M:Alis.Core.Ecs.System.Manager.Scene.SceneManager.OnStart' id='Alis_Core_Ecs_System_Manager_Scene_SceneManager_OnStart'>OnStart()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/Scene/SceneManager.cs#L97'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Ons the start</p>
+<pre><code class='lang-csharp'>public override void OnStart()</code></pre><h3 class='section api' data-uid='Alis.Core.Ecs.System.Manager.Scene.SceneManager.OnStop' data-commentid='M:Alis.Core.Ecs.System.Manager.Scene.SceneManager.OnStop' id='Alis_Core_Ecs_System_Manager_Scene_SceneManager_OnStop'>OnStop()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/Scene/SceneManager.cs#L220'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Ons the stop</p>
+<pre><code class='lang-csharp'>public override void OnStop()</code></pre><h3 class='section api' data-uid='Alis.Core.Ecs.System.Manager.Scene.SceneManager.OnUpdate' data-commentid='M:Alis.Core.Ecs.System.Manager.Scene.SceneManager.OnUpdate' id='Alis_Core_Ecs_System_Manager_Scene_SceneManager_OnUpdate'>OnUpdate()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/Scene/SceneManager.cs#L132'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Ons the update</p>
+<pre><code class='lang-csharp'>public override void OnUpdate()</code></pre><h3 class='section api' data-uid='Alis.Core.Ecs.System.Manager.Scene.SceneManager.ReloadScene(Alis.Core.Ecs.Entity.Scene)' data-commentid='M:Alis.Core.Ecs.System.Manager.Scene.SceneManager.ReloadScene(Alis.Core.Ecs.Entity.Scene)' id='Alis_Core_Ecs_System_Manager_Scene_SceneManager_ReloadScene_Alis_Core_Ecs_Entity_Scene_'>ReloadScene(Scene)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/Scene/SceneManager.cs#L298'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Reloads the scene using the specified scene</p>
+<pre><code class='lang-csharp'>public void ReloadScene(Scene scene)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>scene</code> <a href='Alis.Core.Ecs.Entity.Scene.html'>Scene</a>  </dt>
+<dd>
+
+
+<p>The scene</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Ecs.System.Manager.Scene.SceneManager.Remove``1(``0)' data-commentid='M:Alis.Core.Ecs.System.Manager.Scene.SceneManager.Remove``1(``0)' id='Alis_Core_Ecs_System_Manager_Scene_SceneManager_Remove__1___0_'>Remove&lt;T&gt;(T)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Manager/Scene/SceneManager.cs#L257'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Removes the component</p>
+<pre><code class='lang-csharp'>public void Remove&lt;T&gt;(T component) where T : Scene</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>component</code> T  </dt>
+<dd>
+
+
+<p>The component</p>
+
+</dd></dl><h4 class='section'>Type Parameters</h4><dl class='parameters'><dt><code>T</code>   </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h2 class='section'>See Also</h2><dl class="typelist"><dd>
+<div>
+<a href='Alis.Core.Ecs.System.Manager.AManager.html'>AManager</a>
+</div>
+
+</dd></dl>
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Alis - Develop the video games of your dreams 💯 free!! on Windows, MacOS, Linux, Android(soon), IOS(soon).
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

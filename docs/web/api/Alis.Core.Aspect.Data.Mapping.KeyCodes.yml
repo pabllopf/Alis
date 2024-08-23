@@ -1,0 +1,1223 @@
+### YamlMime:ApiPage
+title: Enum KeyCodes
+body:
+- api1: Enum KeyCodes
+  id: Alis_Core_Aspect_Data_Mapping_KeyCodes
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Mapping/KeyCodes.cs#L35
+  metadata:
+    uid: Alis.Core.Aspect.Data.Mapping.KeyCodes
+    commentId: T:Alis.Core.Aspect.Data.Mapping.KeyCodes
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Aspect.Data.Mapping
+      url: Alis.Core.Aspect.Data.Mapping.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The sdl keycode enum
+- code: public enum KeyCodes
+- h2: Fields
+- parameters:
+  - name: Unknown
+    default: "0"
+    description: >+
+      The  unknown sdl keycode
+
+  - name: Return
+    default: "13"
+    description: >+
+      The  return sdl keycode
+
+  - name: Escape
+    default: "27"
+    description: >+
+      The  escape sdl keycode
+
+  - name: Backspace
+    default: "8"
+    description: >+
+      The  backspace sdl keycode
+
+  - name: Tab
+    default: "9"
+    description: >+
+      The  tab sdl keycode
+
+  - name: Space
+    default: "32"
+    description: >+
+      The  space sdl keycode
+
+  - name: Exclaim
+    default: "33"
+    description: >+
+      The  exclaim sdl keycode
+
+  - name: Quotedbl
+    default: "34"
+    description: >+
+      The  quotedbl sdl keycode
+
+  - name: Hash
+    default: "35"
+    description: >+
+      The  hash sdl keycode
+
+  - name: Percent
+    default: "37"
+    description: >+
+      The  percent sdl keycode
+
+  - name: Dollar
+    default: "36"
+    description: >+
+      The  dollar sdl keycode
+
+  - name: Ampersand
+    default: "38"
+    description: >+
+      The  ampersand sdl keycode
+
+  - name: Quote
+    default: "39"
+    description: >+
+      The  quote sdl keycode
+
+  - name: Leftparen
+    default: "40"
+    description: >+
+      The  left paren sdl keycode
+
+  - name: RightParen
+    default: "41"
+    description: >+
+      The  right paren sdl keycode
+
+  - name: Asterisk
+    default: "42"
+    description: >+
+      The  asterisk sdl keycode
+
+  - name: Plus
+    default: "43"
+    description: >+
+      The  plus sdl keycode
+
+  - name: Comma
+    default: "44"
+    description: >+
+      The  comma sdl keycode
+
+  - name: Minus
+    default: "45"
+    description: >+
+      The  minus sdl keycode
+
+  - name: Period
+    default: "46"
+    description: >+
+      The  period sdl keycode
+
+  - name: Slash
+    default: "47"
+    description: >+
+      The  slash sdl keycode
+
+  - name: Num0
+    default: "48"
+    description: >+
+      The  sdl keycode
+
+  - name: Num1
+    default: "49"
+    description: >+
+      The  sdl keycode
+
+  - name: Num2
+    default: "50"
+    description: >+
+      The  sdl keycode
+
+  - name: Num3
+    default: "51"
+    description: >+
+      The  sdl keycode
+
+  - name: Num4
+    default: "52"
+    description: >+
+      The  sdl keycode
+
+  - name: Num5
+    default: "53"
+    description: >+
+      The  sdl keycode
+
+  - name: Num6
+    default: "54"
+    description: >+
+      The  sdl keycode
+
+  - name: Num7
+    default: "55"
+    description: >+
+      The  sdl keycode
+
+  - name: Num8
+    default: "56"
+    description: >+
+      The  sdl keycode
+
+  - name: Num9
+    default: "57"
+    description: >+
+      The  sdl keycode
+
+  - name: Colon
+    default: "58"
+    description: >+
+      The  colon sdl keycode
+
+  - name: Semicolon
+    default: "59"
+    description: >+
+      The  semicolon sdl keycode
+
+  - name: Less
+    default: "60"
+    description: >+
+      The  less sdl keycode
+
+  - name: Equals
+    default: "61"
+    description: >+
+      The  equals sdl keycode
+
+  - name: Greater
+    default: "62"
+    description: >+
+      The  greater sdl keycode
+
+  - name: Question
+    default: "63"
+    description: >+
+      The  question sdl keycode
+
+  - name: At
+    default: "64"
+    description: >+
+      The  at sdl keycode
+
+  - name: Leftbracket
+    default: "91"
+    description: >+
+      The  leftbracket sdl keycode
+
+  - name: Backslash
+    default: "92"
+    description: >+
+      The  backslash sdl keycode
+
+  - name: Rightbracket
+    default: "93"
+    description: >+
+      The  rightbracket sdl keycode
+
+  - name: Caret
+    default: "94"
+    description: >+
+      The  caret sdl keycode
+
+  - name: Underscore
+    default: "95"
+    description: >+
+      The  underscore sdl keycode
+
+  - name: Backquote
+    default: "96"
+    description: >+
+      The  backquote sdl keycode
+
+  - name: A
+    default: "97"
+    description: >+
+      The  sdl keycode
+
+  - name: B
+    default: "98"
+    description: >+
+      The  sdl keycode
+
+  - name: C
+    default: "99"
+    description: >+
+      The  sdl keycode
+
+  - name: D
+    default: "100"
+    description: >+
+      The  sdl keycode
+
+  - name: E
+    default: "101"
+    description: >+
+      The  sdl keycode
+
+  - name: F
+    default: "102"
+    description: >+
+      The  sdl keycode
+
+  - name: G
+    default: "103"
+    description: >+
+      The  sdl keycode
+
+  - name: H
+    default: "104"
+    description: >+
+      The  sdl keycode
+
+  - name: I
+    default: "105"
+    description: >+
+      The  sdl keycode
+
+  - name: J
+    default: "106"
+    description: >+
+      The  sdl keycode
+
+  - name: K
+    default: "107"
+    description: >+
+      The  sdl keycode
+
+  - name: L
+    default: "108"
+    description: >+
+      The  sdl keycode
+
+  - name: M
+    default: "109"
+    description: >+
+      The  sdl keycode
+
+  - name: N
+    default: "110"
+    description: >+
+      The  sdl keycode
+
+  - name: O
+    default: "111"
+    description: >+
+      The  sdl keycode
+
+  - name: P
+    default: "112"
+    description: >+
+      The  sdl keycode
+
+  - name: Q
+    default: "113"
+    description: >+
+      The  sdl keycode
+
+  - name: R
+    default: "114"
+    description: >+
+      The  sdl keycode
+
+  - name: S
+    default: "115"
+    description: >+
+      The  sdl keycode
+
+  - name: T
+    default: "116"
+    description: >+
+      The  sdl keycode
+
+  - name: U
+    default: "117"
+    description: >+
+      The  sdl keycode
+
+  - name: V
+    default: "118"
+    description: >+
+      The  sdl keycode
+
+  - name: W
+    default: "119"
+    description: >+
+      The  sdl keycode
+
+  - name: X
+    default: "120"
+    description: >+
+      The  sdl keycode
+
+  - name: Y
+    default: "121"
+    description: >+
+      The  sdl keycode
+
+  - name: Z
+    default: "122"
+    description: >+
+      The  sdl keycode
+
+  - name: Capslock
+    default: "1073741881"
+    description: >+
+      The  capslock sdl keycode
+
+  - name: F1
+    default: "1073741882"
+    description: >+
+      The  f1 sdl keycode
+
+  - name: F2
+    default: "1073741883"
+    description: >+
+      The  f2 sdl keycode
+
+  - name: F3
+    default: "1073741884"
+    description: >+
+      The  f3 sdl keycode
+
+  - name: F4
+    default: "1073741885"
+    description: >+
+      The  f4 sdl keycode
+
+  - name: F5
+    default: "1073741886"
+    description: >+
+      The  f5 sdl keycode
+
+  - name: F6
+    default: "1073741887"
+    description: >+
+      The  f6 sdl keycode
+
+  - name: F7
+    default: "1073741888"
+    description: >+
+      The  f7 sdl keycode
+
+  - name: F8
+    default: "1073741889"
+    description: >+
+      The  f8 sdl keycode
+
+  - name: F9
+    default: "1073741890"
+    description: >+
+      The  f9 sdl keycode
+
+  - name: F10
+    default: "1073741891"
+    description: >+
+      The  f10 sdl keycode
+
+  - name: F11
+    default: "1073741892"
+    description: >+
+      The  f11 sdl keycode
+
+  - name: F12
+    default: "1073741893"
+    description: >+
+      The  f12 sdl keycode
+
+  - name: Printscreen
+    default: "1073741894"
+    description: >+
+      The  printscreen sdl keycode
+
+  - name: Scrolllock
+    default: "1073741895"
+    description: >+
+      The  scrolllock sdl keycode
+
+  - name: Pause
+    default: "1073741896"
+    description: >+
+      The  pause sdl keycode
+
+  - name: Insert
+    default: "1073741897"
+    description: >+
+      The  insert sdl keycode
+
+  - name: Home
+    default: "1073741898"
+    description: >+
+      The  home sdl keycode
+
+  - name: Pageup
+    default: "1073741899"
+    description: >+
+      The  pageup sdl keycode
+
+  - name: Delete
+    default: "127"
+    description: >+
+      The  delete sdl keycode
+
+  - name: End
+    default: "1073741901"
+    description: >+
+      The  end sdl keycode
+
+  - name: Pagedown
+    default: "1073741902"
+    description: >+
+      The  pagedown sdl keycode
+
+  - name: Right
+    default: "1073741903"
+    description: >+
+      The  right sdl keycode
+
+  - name: Left
+    default: "1073741904"
+    description: >+
+      The  left sdl keycode
+
+  - name: Down
+    default: "1073741905"
+    description: >+
+      The  down sdl keycode
+
+  - name: Up
+    default: "1073741906"
+    description: >+
+      The  up sdl keycode
+
+  - name: Numlockclear
+    default: "1073741907"
+    description: >+
+      The  numlockclear sdl keycode
+
+  - name: KpDivide
+    default: "1073741908"
+    description: >+
+      The  kp divide sdl keycode
+
+  - name: KpMultiply
+    default: "1073741909"
+    description: >+
+      The  kp multiply sdl keycode
+
+  - name: KpMinus
+    default: "1073741910"
+    description: >+
+      The  kp minus sdl keycode
+
+  - name: KpPlus
+    default: "1073741911"
+    description: >+
+      The  kp plus sdl keycode
+
+  - name: KpEnter
+    default: "1073741912"
+    description: >+
+      The  kp enter sdl keycode
+
+  - name: Kp1
+    default: "1073741913"
+    description: >+
+      The  kp sdl keycode
+
+  - name: Kp2
+    default: "1073741914"
+    description: >+
+      The  kp sdl keycode
+
+  - name: Kp3
+    default: "1073741915"
+    description: >+
+      The  kp sdl keycode
+
+  - name: Kp4
+    default: "1073741916"
+    description: >+
+      The  kp sdl keycode
+
+  - name: Kp5
+    default: "1073741917"
+    description: >+
+      The  kp sdl keycode
+
+  - name: Kp6
+    default: "1073741918"
+    description: >+
+      The  kp sdl keycode
+
+  - name: Kp7
+    default: "1073741919"
+    description: >+
+      The  kp sdl keycode
+
+  - name: Kp8
+    default: "1073741920"
+    description: >+
+      The  kp sdl keycode
+
+  - name: Kp9
+    default: "1073741921"
+    description: >+
+      The  kp sdl keycode
+
+  - name: Kp0
+    default: "1073741922"
+    description: >+
+      The  kp sdl keycode
+
+  - name: KpPeriod
+    default: "1073741923"
+    description: >+
+      The  kp period sdl keycode
+
+  - name: Application
+    default: "1073741925"
+    description: >+
+      The  application sdl keycode
+
+  - name: Power
+    default: "1073741926"
+    description: >+
+      The  power sdl keycode
+
+  - name: KpEquals
+    default: "1073741927"
+    description: >+
+      The  kp equals sdl keycode
+
+  - name: F13
+    default: "1073741928"
+    description: >+
+      The  f13 sdl keycode
+
+  - name: F14
+    default: "1073741929"
+    description: >+
+      The  f14 sdl keycode
+
+  - name: F15
+    default: "1073741930"
+    description: >+
+      The  f15 sdl keycode
+
+  - name: F16
+    default: "1073741931"
+    description: >+
+      The  f16 sdl keycode
+
+  - name: F17
+    default: "1073741932"
+    description: >+
+      The  f17 sdl keycode
+
+  - name: F18
+    default: "1073741933"
+    description: >+
+      The  f18 sdl keycode
+
+  - name: F19
+    default: "1073741934"
+    description: >+
+      The  f19 sdl keycode
+
+  - name: F20
+    default: "1073741935"
+    description: >+
+      The  f20 sdl keycode
+
+  - name: F21
+    default: "1073741936"
+    description: >+
+      The  f21 sdl keycode
+
+  - name: F22
+    default: "1073741937"
+    description: >+
+      The  f22 sdl keycode
+
+  - name: F23
+    default: "1073741938"
+    description: >+
+      The  f23 sdl keycode
+
+  - name: F24
+    default: "1073741939"
+    description: >+
+      The  f24 sdl keycode
+
+  - name: Execute
+    default: "1073741940"
+    description: >+
+      The  execute sdl keycode
+
+  - name: Help
+    default: "1073741941"
+    description: >+
+      The  help sdl keycode
+
+  - name: Menu
+    default: "1073741942"
+    description: >+
+      The  menu sdl keycode
+
+  - name: Select
+    default: "1073741943"
+    description: >+
+      The  select sdl keycode
+
+  - name: Stop
+    default: "1073741944"
+    description: >+
+      The  stop sdl keycode
+
+  - name: Again
+    default: "1073741945"
+    description: >+
+      The  again sdl keycode
+
+  - name: Undo
+    default: "1073741946"
+    description: >+
+      The  undo sdl keycode
+
+  - name: Cut
+    default: "1073741947"
+    description: >+
+      The  cut sdl keycode
+
+  - name: Copy
+    default: "1073741948"
+    description: >+
+      The  copy sdl keycode
+
+  - name: Paste
+    default: "1073741949"
+    description: >+
+      The  paste sdl keycode
+
+  - name: Find
+    default: "1073741950"
+    description: >+
+      The  find sdl keycode
+
+  - name: Mute
+    default: "1073741951"
+    description: >+
+      The  mute sdl keycode
+
+  - name: Volumeup
+    default: "1073741952"
+    description: >+
+      The  volumeup sdl keycode
+
+  - name: Volumedown
+    default: "1073741953"
+    description: >+
+      The  volumedown sdl keycode
+
+  - name: KpComma
+    default: "1073741957"
+    description: >+
+      The  kp comma sdl keycode
+
+  - name: KpEqualsas400
+    default: "1073741958"
+    description: >+
+      The  kp equalsas400 sdl keycode
+
+  - name: Alterase
+    default: "1073741977"
+    description: >+
+      The  alterase sdl keycode
+
+  - name: Syzsreq
+    default: "1073741978"
+    description: >+
+      The  sysreq sdl keycode
+
+  - name: Cancel
+    default: "1073741979"
+    description: >+
+      The  cancel sdl keycode
+
+  - name: Clear
+    default: "1073741980"
+    description: >+
+      The  clear sdl keycode
+
+  - name: Prior
+    default: "1073741981"
+    description: >+
+      The  prior sdl keycode
+
+  - name: Return2
+    default: "1073741982"
+    description: >+
+      The  return2 sdl keycode
+
+  - name: Separator
+    default: "1073741983"
+    description: >+
+      The  separator sdl keycode
+
+  - name: Out
+    default: "1073741984"
+    description: >+
+      The  out sdl keycode
+
+  - name: Oper
+    default: "1073741985"
+    description: >+
+      The  oper sdl keycode
+
+  - name: Clearagain
+    default: "1073741986"
+    description: >+
+      The  clearagain sdl keycode
+
+  - name: Crsel
+    default: "1073741987"
+    description: >+
+      The  crsel sdl keycode
+
+  - name: Exsel
+    default: "1073741988"
+    description: >+
+      The  exsel sdl keycode
+
+  - name: Kp00
+    default: "1073742000"
+    description: >+
+      The  kp 00 sdl keycode
+
+  - name: Kp000
+    default: "1073742001"
+    description: >+
+      The  kp 000 sdl keycode
+
+  - name: Thousandsseparator
+    default: "1073742002"
+    description: >+
+      The  thousandsseparator sdl keycode
+
+  - name: Decimalseparator
+    default: "1073742003"
+    description: >+
+      The  decimalseparator sdl keycode
+
+  - name: Currencyunit
+    default: "1073742004"
+    description: >+
+      The  currencyunit sdl keycode
+
+  - name: Currencysubunit
+    default: "1073742005"
+    description: >+
+      The  currencysubunit sdl keycode
+
+  - name: KpLeftparen
+    default: "1073742006"
+    description: >+
+      The  kp leftparen sdl keycode
+
+  - name: KpRightparen
+    default: "1073742007"
+    description: >+
+      The  kp rightparen sdl keycode
+
+  - name: KpLeftbrace
+    default: "1073742008"
+    description: >+
+      The  kp leftbrace sdl keycode
+
+  - name: KpRightbrace
+    default: "1073742009"
+    description: >+
+      The  kp rightbrace sdl keycode
+
+  - name: KpTab
+    default: "1073742010"
+    description: >+
+      The  kp tab sdl keycode
+
+  - name: KpBackspace
+    default: "1073742011"
+    description: >+
+      The  kp backspace sdl keycode
+
+  - name: KpA
+    default: "1073742012"
+    description: >+
+      The  kp sdl keycode
+
+  - name: KpB
+    default: "1073742013"
+    description: >+
+      The  kp sdl keycode
+
+  - name: KpC
+    default: "1073742014"
+    description: >+
+      The  kp sdl keycode
+
+  - name: KpD
+    default: "1073742015"
+    description: >+
+      The  kp sdl keycode
+
+  - name: KpE
+    default: "1073742016"
+    description: >+
+      The  kp sdl keycode
+
+  - name: KpF
+    default: "1073742017"
+    description: >+
+      The  kp sdl keycode
+
+  - name: KpXor
+    default: "1073742018"
+    description: >+
+      The  kp xor sdl keycode
+
+  - name: KpPower
+    default: "1073742019"
+    description: >+
+      The  kp power sdl keycode
+
+  - name: KpPercent
+    default: "1073742020"
+    description: >+
+      The  kp percent sdl keycode
+
+  - name: KpLess
+    default: "1073742021"
+    description: >+
+      The  kp less sdl keycode
+
+  - name: KpGreater
+    default: "1073742022"
+    description: >+
+      The  kp greater sdl keycode
+
+  - name: KpAmpersand
+    default: "1073742023"
+    description: >+
+      The  kp ampersand sdl keycode
+
+  - name: KpDblampersand
+    default: "1073742024"
+    description: >+
+      The  kp dblampersand sdl keycode
+
+  - name: KpVerticalbar
+    default: "1073742025"
+    description: >+
+      The  kp verticalbar sdl keycode
+
+  - name: KpDblverticalbar
+    default: "1073742026"
+    description: >+
+      The  kp dblverticalbar sdl keycode
+
+  - name: KpColon
+    default: "1073742027"
+    description: >+
+      The  kp colon sdl keycode
+
+  - name: KpHash
+    default: "1073742028"
+    description: >+
+      The  kp hash sdl keycode
+
+  - name: KpSpace
+    default: "1073742029"
+    description: >+
+      The  kp space sdl keycode
+
+  - name: KpAt
+    default: "1073742030"
+    description: >+
+      The  kp at sdl keycode
+
+  - name: KpExclam
+    default: "1073742031"
+    description: >+
+      The  kp exclam sdl keycode
+
+  - name: KpMemstore
+    default: "1073742032"
+    description: >+
+      The  kp memstore sdl keycode
+
+  - name: KpMemrecall
+    default: "1073742033"
+    description: >+
+      The  kp memrecall sdl keycode
+
+  - name: KpMemclear
+    default: "1073742034"
+    description: >+
+      The  kp memclear sdl keycode
+
+  - name: KpMemadd
+    default: "1073742035"
+    description: >+
+      The  kp memadd sdl keycode
+
+  - name: KpMemsubtract
+    default: "1073742036"
+    description: >+
+      The  kp memsubtract sdl keycode
+
+  - name: KpMemmultiply
+    default: "1073742037"
+    description: >+
+      The  kp memmultiply sdl keycode
+
+  - name: KpMemdivide
+    default: "1073742038"
+    description: >+
+      The  kp memdivide sdl keycode
+
+  - name: KpPlusminus
+    default: "1073742039"
+    description: >+
+      The  kp plusminus sdl keycode
+
+  - name: KpClear
+    default: "1073742040"
+    description: >+
+      The  kp clear sdl keycode
+
+  - name: KpClearentry
+    default: "1073742041"
+    description: >+
+      The  kp clearentry sdl keycode
+
+  - name: KpBinary
+    default: "1073742042"
+    description: >+
+      The  kp binary sdl keycode
+
+  - name: KpOctal
+    default: "1073742043"
+    description: >+
+      The  kp octal sdl keycode
+
+  - name: KpDecimal
+    default: "1073742044"
+    description: >+
+      The  kp decimal sdl keycode
+
+  - name: KpHexadecimal
+    default: "1073742045"
+    description: >+
+      The  kp hexadecimal sdl keycode
+
+  - name: Lctrl
+    default: "1073742048"
+    description: >+
+      The  lctrl sdl keycode
+
+  - name: Lshift
+    default: "1073742049"
+    description: >+
+      The  lshift sdl keycode
+
+  - name: Lalt
+    default: "1073742050"
+    description: >+
+      The  lalt sdl keycode
+
+  - name: Lgui
+    default: "1073742051"
+    description: >+
+      The  lgui sdl keycode
+
+  - name: Rctrl
+    default: "1073742052"
+    description: >+
+      The  rctrl sdl keycode
+
+  - name: Rshift
+    default: "1073742053"
+    description: >+
+      The  rshift sdl keycode
+
+  - name: Ralt
+    default: "1073742054"
+    description: >+
+      The  ralt sdl keycode
+
+  - name: Rgui
+    default: "1073742055"
+    description: >+
+      The  rgui sdl keycode
+
+  - name: Mode
+    default: "1073742081"
+    description: >+
+      The  mode sdl keycode
+
+  - name: Audionext
+    default: "1073742082"
+    description: >+
+      The  audionext sdl keycode
+
+  - name: Audioprev
+    default: "1073742083"
+    description: >+
+      The  audioprev sdl keycode
+
+  - name: Audiostop
+    default: "1073742084"
+    description: >+
+      The  audiostop sdl keycode
+
+  - name: Audioplay
+    default: "1073742085"
+    description: >+
+      The  audioplay sdl keycode
+
+  - name: Audiomute
+    default: "1073742086"
+    description: >+
+      The  audiomute sdl keycode
+
+  - name: Mediaselect
+    default: "1073742087"
+    description: >+
+      The  mediaselect sdl keycode
+
+  - name: Www
+    default: "1073742088"
+    description: >+
+      The  www sdl keycode
+
+  - name: Mail
+    default: "1073742089"
+    description: >+
+      The  mail sdl keycode
+
+  - name: Calculator
+    default: "1073742090"
+    description: >+
+      The  calculator sdl keycode
+
+  - name: Computer
+    default: "1073742091"
+    description: >+
+      The  computer sdl keycode
+
+  - name: AcSearch
+    default: "1073742092"
+    description: >+
+      The  ac search sdl keycode
+
+  - name: AcHome
+    default: "1073742093"
+    description: >+
+      The  ac home sdl keycode
+
+  - name: AcBack
+    default: "1073742094"
+    description: >+
+      The  ac back sdl keycode
+
+  - name: AcForward
+    default: "1073742095"
+    description: >+
+      The  ac forward sdl keycode
+
+  - name: AcStop
+    default: "1073742096"
+    description: >+
+      The  ac stop sdl keycode
+
+  - name: AcRefresh
+    default: "1073742097"
+    description: >+
+      The  ac refresh sdl keycode
+
+  - name: AcBookmarks
+    default: "1073742098"
+    description: >+
+      The  ac bookmarks sdl keycode
+
+  - name: Brightnessdown
+    default: "1073742099"
+    description: >+
+      The  brightnessdown sdl keycode
+
+  - name: Brightnessup
+    default: "1073742100"
+    description: >+
+      The  brightnessup sdl keycode
+
+  - name: Displayswitch
+    default: "1073742101"
+    description: >+
+      The  displayswitch sdl keycode
+
+  - name: Kbdillumtoggle
+    default: "1073742102"
+    description: >+
+      The  kbdillumtoggle sdl keycode
+
+  - name: Kbdillumdown
+    default: "1073742103"
+    description: >+
+      The  kbdillumdown sdl keycode
+
+  - name: Kbdillumup
+    default: "1073742104"
+    description: >+
+      The  kbdillumup sdl keycode
+
+  - name: Eject
+    default: "1073742105"
+    description: >+
+      The  eject sdl keycode
+
+  - name: Sleep
+    default: "1073742106"
+    description: >+
+      The  sleep sdl keycode
+
+  - name: App1
+    default: "1073742107"
+    description: >+
+      The  app1 sdl keycode
+
+  - name: App2
+    default: "1073742108"
+    description: >+
+      The  app2 sdl keycode
+
+  - name: Audiorewind
+    default: "1073742109"
+    description: >+
+      The  audiorewind sdl keycode
+
+  - name: Audiofastforward
+    default: "1073742110"
+    description: >+
+      The  audiofastforward sdl keycode
+
+languageId: csharp
+metadata:
+  description: The sdl keycode enum

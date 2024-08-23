@@ -1,0 +1,1238 @@
+### YamlMime:ApiPage
+title: Class NativeSdlTtf
+body:
+- api1: Class NativeSdlTtf
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Extensions/Sdl2Ttf/NativeSdlTtf.cs#L45
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf
+    commentId: T:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
+      url: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The native sdl ttf class
+- code: internal static class NativeSdlTtf
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: NativeSdlTtf
+    url: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Constructors
+- api3: NativeSdlTtf()
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf__cctor
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Extensions/Sdl2Ttf/NativeSdlTtf.cs#L55
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.#cctor
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.#cctor
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.SdlTtf" data-throw-if-not-resolved="false"></xref> class
+- code: private static NativeSdlTtf()
+- h2: Fields
+- api3: NativeLibName
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_NativeLibName
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Extensions/Sdl2Ttf/NativeSdlTtf.cs#L50
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.NativeLibName
+    commentId: F:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.NativeLibName
+- markdown: The native lib name
+- code: private const string NativeLibName = "sdl2_ttf"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- h2: Methods
+- api3: InternalByteSwappedUnicode(int)
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalByteSwappedUnicode_System_Int32_
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalByteSwappedUnicode(System.Int32)
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalByteSwappedUnicode(System.Int32)
+- markdown: Ttf the byte swapped unicode using the specified swapped
+- code: internal static extern void InternalByteSwappedUnicode(int swapped)
+- h4: Parameters
+- parameters:
+  - name: swapped
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The swapped
+- api3: InternalCloseFont(IntPtr)
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalCloseFont_System_IntPtr_
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalCloseFont(System.IntPtr)
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalCloseFont(System.IntPtr)
+- markdown: Ttf the close font using the specified font
+- code: internal static extern void InternalCloseFont(IntPtr font)
+- h4: Parameters
+- parameters:
+  - name: font
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The font
+- api3: InternalFontAscent(IntPtr)
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalFontAscent_System_IntPtr_
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalFontAscent(System.IntPtr)
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalFontAscent(System.IntPtr)
+- markdown: Ttf the font ascent using the specified font
+- code: internal static extern int InternalFontAscent(IntPtr font)
+- h4: Parameters
+- parameters:
+  - name: font
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The font
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The int
+- api3: InternalFontDescent(IntPtr)
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalFontDescent_System_IntPtr_
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalFontDescent(System.IntPtr)
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalFontDescent(System.IntPtr)
+- markdown: Ttf the font descent using the specified font
+- code: internal static extern int InternalFontDescent(IntPtr font)
+- h4: Parameters
+- parameters:
+  - name: font
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The font
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The int
+- api3: InternalFontFaceIsFixedWidth(IntPtr)
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalFontFaceIsFixedWidth_System_IntPtr_
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalFontFaceIsFixedWidth(System.IntPtr)
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalFontFaceIsFixedWidth(System.IntPtr)
+- markdown: Ttf the font face is fixed width using the specified font
+- code: internal static extern int InternalFontFaceIsFixedWidth(IntPtr font)
+- h4: Parameters
+- parameters:
+  - name: font
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The font
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The int
+- api3: InternalFontFaceStyleName(IntPtr)
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalFontFaceStyleName_System_IntPtr_
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalFontFaceStyleName(System.IntPtr)
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalFontFaceStyleName(System.IntPtr)
+- markdown: Internals the ttf font face style name using the specified font
+- code: internal static extern IntPtr InternalFontFaceStyleName(IntPtr font)
+- h4: Parameters
+- parameters:
+  - name: font
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The font
+- h4: Returns
+- parameters:
+  - type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The int ptr
+- api3: InternalFontFaces(IntPtr)
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalFontFaces_System_IntPtr_
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalFontFaces(System.IntPtr)
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalFontFaces(System.IntPtr)
+- markdown: Ttf the font faces using the specified font
+- code: internal static extern IntPtr InternalFontFaces(IntPtr font)
+- h4: Parameters
+- parameters:
+  - name: font
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The font
+- h4: Returns
+- parameters:
+  - type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The int ptr
+- api3: InternalFontHeight(IntPtr)
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalFontHeight_System_IntPtr_
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalFontHeight(System.IntPtr)
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalFontHeight(System.IntPtr)
+- markdown: Ttf the font height using the specified font
+- code: internal static extern int InternalFontHeight(IntPtr font)
+- h4: Parameters
+- parameters:
+  - name: font
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The font
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The int
+- api3: InternalFontLineSkip(IntPtr)
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalFontLineSkip_System_IntPtr_
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalFontLineSkip(System.IntPtr)
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalFontLineSkip(System.IntPtr)
+- markdown: Ttf the font line skip using the specified font
+- code: internal static extern int InternalFontLineSkip(IntPtr font)
+- h4: Parameters
+- parameters:
+  - name: font
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The font
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The int
+- api3: InternalGetFontHinting(IntPtr)
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalGetFontHinting_System_IntPtr_
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalGetFontHinting(System.IntPtr)
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalGetFontHinting(System.IntPtr)
+- markdown: Ttf the get font hinting using the specified font
+- code: internal static extern int InternalGetFontHinting(IntPtr font)
+- h4: Parameters
+- parameters:
+  - name: font
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The font
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The int
+- api3: InternalGetFontKerning(IntPtr)
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalGetFontKerning_System_IntPtr_
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalGetFontKerning(System.IntPtr)
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalGetFontKerning(System.IntPtr)
+- markdown: Ttf the get font kerning using the specified font
+- code: internal static extern int InternalGetFontKerning(IntPtr font)
+- h4: Parameters
+- parameters:
+  - name: font
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The font
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The int
+- api3: InternalGetFontKerningSize(IntPtr, int, int)
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalGetFontKerningSize_System_IntPtr_System_Int32_System_Int32_
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalGetFontKerningSize(System.IntPtr,System.Int32,System.Int32)
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalGetFontKerningSize(System.IntPtr,System.Int32,System.Int32)
+- markdown: Sdl the get font kerning size using the specified font
+- code: internal static extern int InternalGetFontKerningSize(IntPtr font, int prevIndex, int index)
+- h4: Parameters
+- parameters:
+  - name: font
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The font
+  - name: prevIndex
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The prev index
+  - name: index
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The index
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The int
+- api3: InternalGetFontKerningSizeGlyphs(IntPtr, ushort, ushort)
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalGetFontKerningSizeGlyphs_System_IntPtr_System_UInt16_System_UInt16_
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalGetFontKerningSizeGlyphs(System.IntPtr,System.UInt16,System.UInt16)
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalGetFontKerningSizeGlyphs(System.IntPtr,System.UInt16,System.UInt16)
+- markdown: Ttf the get font kerning size glyphs using the specified font
+- code: internal static extern int InternalGetFontKerningSizeGlyphs(IntPtr font, ushort previousCh, ushort ch)
+- h4: Parameters
+- parameters:
+  - name: font
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The font
+  - name: previousCh
+    type:
+    - text: ushort
+      url: https://learn.microsoft.com/dotnet/api/system.uint16
+    description: The previous ch
+  - name: ch
+    type:
+    - text: ushort
+      url: https://learn.microsoft.com/dotnet/api/system.uint16
+    description: The ch
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The int
+- api3: InternalGetFontOutline(IntPtr)
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalGetFontOutline_System_IntPtr_
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalGetFontOutline(System.IntPtr)
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalGetFontOutline(System.IntPtr)
+- markdown: Ttf the get font outline using the specified font
+- code: internal static extern int InternalGetFontOutline(IntPtr font)
+- h4: Parameters
+- parameters:
+  - name: font
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The font
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The int
+- api3: InternalGetFontStyle(IntPtr)
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalGetFontStyle_System_IntPtr_
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalGetFontStyle(System.IntPtr)
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalGetFontStyle(System.IntPtr)
+- markdown: Ttf the get font style using the specified font
+- code: internal static extern int InternalGetFontStyle(IntPtr font)
+- h4: Parameters
+- parameters:
+  - name: font
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The font
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The int
+- api3: InternalGetTtfVersion()
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalGetTtfVersion
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Extensions/Sdl2Ttf/NativeSdlTtf.cs#L517
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalGetTtfVersion
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalGetTtfVersion
+- markdown: Internals the get ttf version
+- code: public static Version InternalGetTtfVersion()
+- h4: Returns
+- parameters:
+  - type:
+    - text: Version
+      url: Alis.Core.Graphic.Sdl2.Structs.Version.html
+    description: The sdl version
+- api3: InternalGlyphIsProvided(IntPtr, ushort)
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalGlyphIsProvided_System_IntPtr_System_UInt16_
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalGlyphIsProvided(System.IntPtr,System.UInt16)
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalGlyphIsProvided(System.IntPtr,System.UInt16)
+- markdown: Ttf the glyph is provided using the specified font
+- code: internal static extern int InternalGlyphIsProvided(IntPtr font, ushort ch)
+- h4: Parameters
+- parameters:
+  - name: font
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The font
+  - name: ch
+    type:
+    - text: ushort
+      url: https://learn.microsoft.com/dotnet/api/system.uint16
+    description: The ch
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The int
+- api3: InternalGlyphMetrics(IntPtr, ushort, out int, out int, out int, out int, out int)
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalGlyphMetrics_System_IntPtr_System_UInt16_System_Int32__System_Int32__System_Int32__System_Int32__System_Int32__
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalGlyphMetrics(System.IntPtr,System.UInt16,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@)
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalGlyphMetrics(System.IntPtr,System.UInt16,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@)
+- markdown: Ttf the glyph metrics using the specified font
+- code: internal static extern int InternalGlyphMetrics(IntPtr font, ushort ch, out int minx, out int max, out int miny, out int maxy, out int advance)
+- h4: Parameters
+- parameters:
+  - name: font
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The font
+  - name: ch
+    type:
+    - text: ushort
+      url: https://learn.microsoft.com/dotnet/api/system.uint16
+    description: The ch
+  - name: minx
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The minx
+  - name: max
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The max
+  - name: miny
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The miny
+  - name: maxy
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The maxy
+  - name: advance
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The advance
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The int
+- api3: InternalInit()
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalInit
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalInit
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalInit
+- markdown: Ttf the init
+- code: internal static extern int InternalInit()
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The int
+- api3: InternalOpenFont(string, int)
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalOpenFont_System_String_System_Int32_
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalOpenFont(System.String,System.Int32)
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalOpenFont(System.String,System.Int32)
+- markdown: Internals the ttf open font using the specified file
+- code: internal static extern IntPtr InternalOpenFont(string file, int ptSize)
+- h4: Parameters
+- parameters:
+  - name: file
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The file
+  - name: ptSize
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The ptSize
+- h4: Returns
+- parameters:
+  - type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The int ptr
+- api3: InternalOpenFontIndex(string, int, long)
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalOpenFontIndex_System_String_System_Int32_System_Int64_
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalOpenFontIndex(System.String,System.Int32,System.Int64)
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalOpenFontIndex(System.String,System.Int32,System.Int64)
+- markdown: Internals the ttf open font index using the specified file
+- code: internal static extern IntPtr InternalOpenFontIndex(string file, int ptSize, long index)
+- h4: Parameters
+- parameters:
+  - name: file
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The file
+  - name: ptSize
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: the size
+  - name: index
+    type:
+    - text: long
+      url: https://learn.microsoft.com/dotnet/api/system.int64
+    description: The index
+- h4: Returns
+- parameters:
+  - type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The int ptr
+- api3: InternalQuit()
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalQuit
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalQuit
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalQuit
+- markdown: Ttf the quit
+- code: internal static extern void InternalQuit()
+- api3: InternalRenderGlyphBlended(IntPtr, ushort, Color)
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalRenderGlyphBlended_System_IntPtr_System_UInt16_Alis_Core_Aspect_Math_Definition_Color_
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalRenderGlyphBlended(System.IntPtr,System.UInt16,Alis.Core.Aspect.Math.Definition.Color)
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalRenderGlyphBlended(System.IntPtr,System.UInt16,Alis.Core.Aspect.Math.Definition.Color)
+- markdown: Ttf the render glyph blended using the specified font
+- code: internal static extern IntPtr InternalRenderGlyphBlended(IntPtr font, ushort ch, Color fg)
+- h4: Parameters
+- parameters:
+  - name: font
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The font
+  - name: ch
+    type:
+    - text: ushort
+      url: https://learn.microsoft.com/dotnet/api/system.uint16
+    description: The ch
+  - name: fg
+    type:
+    - text: Color
+      url: Alis.Core.Aspect.Math.Definition.Color.html
+    description: The fg
+- h4: Returns
+- parameters:
+  - type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The int ptr
+- api3: InternalRenderGlyphShaded(IntPtr, ushort, Color, Color)
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalRenderGlyphShaded_System_IntPtr_System_UInt16_Alis_Core_Aspect_Math_Definition_Color_Alis_Core_Aspect_Math_Definition_Color_
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalRenderGlyphShaded(System.IntPtr,System.UInt16,Alis.Core.Aspect.Math.Definition.Color,Alis.Core.Aspect.Math.Definition.Color)
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalRenderGlyphShaded(System.IntPtr,System.UInt16,Alis.Core.Aspect.Math.Definition.Color,Alis.Core.Aspect.Math.Definition.Color)
+- markdown: Ttf the render glyph shaded using the specified font
+- code: internal static extern IntPtr InternalRenderGlyphShaded(IntPtr font, ushort ch, Color fg, Color bg)
+- h4: Parameters
+- parameters:
+  - name: font
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The font
+  - name: ch
+    type:
+    - text: ushort
+      url: https://learn.microsoft.com/dotnet/api/system.uint16
+    description: The ch
+  - name: fg
+    type:
+    - text: Color
+      url: Alis.Core.Aspect.Math.Definition.Color.html
+    description: The fg
+  - name: bg
+    type:
+    - text: Color
+      url: Alis.Core.Aspect.Math.Definition.Color.html
+    description: The bg
+- h4: Returns
+- parameters:
+  - type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The int ptr
+- api3: InternalRenderGlyphSolid(IntPtr, ushort, Color)
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalRenderGlyphSolid_System_IntPtr_System_UInt16_Alis_Core_Aspect_Math_Definition_Color_
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalRenderGlyphSolid(System.IntPtr,System.UInt16,Alis.Core.Aspect.Math.Definition.Color)
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalRenderGlyphSolid(System.IntPtr,System.UInt16,Alis.Core.Aspect.Math.Definition.Color)
+- markdown: Ttf the render glyph solid using the specified font
+- code: internal static extern IntPtr InternalRenderGlyphSolid(IntPtr font, ushort ch, Color fg)
+- h4: Parameters
+- parameters:
+  - name: font
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The font
+  - name: ch
+    type:
+    - text: ushort
+      url: https://learn.microsoft.com/dotnet/api/system.uint16
+    description: The ch
+  - name: fg
+    type:
+    - text: Color
+      url: Alis.Core.Aspect.Math.Definition.Color.html
+    description: The fg
+- h4: Returns
+- parameters:
+  - type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The int ptr
+- api3: InternalRenderTextBlended(IntPtr, string, Color)
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalRenderTextBlended_System_IntPtr_System_String_Alis_Core_Aspect_Math_Definition_Color_
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalRenderTextBlended(System.IntPtr,System.String,Alis.Core.Aspect.Math.Definition.Color)
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalRenderTextBlended(System.IntPtr,System.String,Alis.Core.Aspect.Math.Definition.Color)
+- markdown: Ttf the render text blended using the specified font
+- code: internal static extern IntPtr InternalRenderTextBlended(IntPtr font, string text, Color fg)
+- h4: Parameters
+- parameters:
+  - name: font
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The font
+  - name: text
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The text
+  - name: fg
+    type:
+    - text: Color
+      url: Alis.Core.Aspect.Math.Definition.Color.html
+    description: The fg
+- h4: Returns
+- parameters:
+  - type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The int ptr
+- api3: InternalRenderTextBlendedWrapped(IntPtr, string, Color, uint)
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalRenderTextBlendedWrapped_System_IntPtr_System_String_Alis_Core_Aspect_Math_Definition_Color_System_UInt32_
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalRenderTextBlendedWrapped(System.IntPtr,System.String,Alis.Core.Aspect.Math.Definition.Color,System.UInt32)
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalRenderTextBlendedWrapped(System.IntPtr,System.String,Alis.Core.Aspect.Math.Definition.Color,System.UInt32)
+- markdown: Ttf the render text blended wrapped using the specified font
+- code: internal static extern IntPtr InternalRenderTextBlendedWrapped(IntPtr font, string text, Color fg, uint wrapped)
+- h4: Parameters
+- parameters:
+  - name: font
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The font
+  - name: text
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The text
+  - name: fg
+    type:
+    - text: Color
+      url: Alis.Core.Aspect.Math.Definition.Color.html
+    description: The fg
+  - name: wrapped
+    type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+    description: The wrapped
+- h4: Returns
+- parameters:
+  - type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The int ptr
+- api3: InternalRenderTextShaded(IntPtr, string, Color, Color)
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalRenderTextShaded_System_IntPtr_System_String_Alis_Core_Aspect_Math_Definition_Color_Alis_Core_Aspect_Math_Definition_Color_
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalRenderTextShaded(System.IntPtr,System.String,Alis.Core.Aspect.Math.Definition.Color,Alis.Core.Aspect.Math.Definition.Color)
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalRenderTextShaded(System.IntPtr,System.String,Alis.Core.Aspect.Math.Definition.Color,Alis.Core.Aspect.Math.Definition.Color)
+- markdown: Ttf the render text shaded using the specified font
+- code: internal static extern IntPtr InternalRenderTextShaded(IntPtr font, string text, Color fg, Color bg)
+- h4: Parameters
+- parameters:
+  - name: font
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The font
+  - name: text
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The text
+  - name: fg
+    type:
+    - text: Color
+      url: Alis.Core.Aspect.Math.Definition.Color.html
+    description: The fg
+  - name: bg
+    type:
+    - text: Color
+      url: Alis.Core.Aspect.Math.Definition.Color.html
+    description: The bg
+- h4: Returns
+- parameters:
+  - type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The int ptr
+- api3: InternalRenderTextSolid(IntPtr, string, Color)
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalRenderTextSolid_System_IntPtr_System_String_Alis_Core_Aspect_Math_Definition_Color_
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalRenderTextSolid(System.IntPtr,System.String,Alis.Core.Aspect.Math.Definition.Color)
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalRenderTextSolid(System.IntPtr,System.String,Alis.Core.Aspect.Math.Definition.Color)
+- markdown: Ttf the render text solid using the specified font
+- code: internal static extern IntPtr InternalRenderTextSolid(IntPtr font, string text, Color fg)
+- h4: Parameters
+- parameters:
+  - name: font
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The font
+  - name: text
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The text
+  - name: fg
+    type:
+    - text: Color
+      url: Alis.Core.Aspect.Math.Definition.Color.html
+    description: The fg
+- h4: Returns
+- parameters:
+  - type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The int ptr
+- api3: InternalRenderUTF8Solid(IntPtr, string, Color)
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalRenderUTF8Solid_System_IntPtr_System_String_Alis_Core_Aspect_Math_Definition_Color_
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalRenderUTF8Solid(System.IntPtr,System.String,Alis.Core.Aspect.Math.Definition.Color)
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalRenderUTF8Solid(System.IntPtr,System.String,Alis.Core.Aspect.Math.Definition.Color)
+- markdown: Internals the ttf render utf 8 solid using the specified font
+- code: internal static extern IntPtr InternalRenderUTF8Solid(IntPtr font, string text, Color fg)
+- h4: Parameters
+- parameters:
+  - name: font
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The font
+  - name: text
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The text
+  - name: fg
+    type:
+    - text: Color
+      url: Alis.Core.Aspect.Math.Definition.Color.html
+    description: The fg
+- h4: Returns
+- parameters:
+  - type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The int ptr
+- api3: InternalRenderUnicodeBlended(IntPtr, string, Color)
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalRenderUnicodeBlended_System_IntPtr_System_String_Alis_Core_Aspect_Math_Definition_Color_
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalRenderUnicodeBlended(System.IntPtr,System.String,Alis.Core.Aspect.Math.Definition.Color)
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalRenderUnicodeBlended(System.IntPtr,System.String,Alis.Core.Aspect.Math.Definition.Color)
+- markdown: Ttf the render unicode blended using the specified font
+- code: internal static extern IntPtr InternalRenderUnicodeBlended(IntPtr font, string text, Color fg)
+- h4: Parameters
+- parameters:
+  - name: font
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The font
+  - name: text
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The text
+  - name: fg
+    type:
+    - text: Color
+      url: Alis.Core.Aspect.Math.Definition.Color.html
+    description: The fg
+- h4: Returns
+- parameters:
+  - type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The int ptr
+- api3: InternalRenderUnicodeBlendedWrapped(IntPtr, string, Color, uint)
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalRenderUnicodeBlendedWrapped_System_IntPtr_System_String_Alis_Core_Aspect_Math_Definition_Color_System_UInt32_
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalRenderUnicodeBlendedWrapped(System.IntPtr,System.String,Alis.Core.Aspect.Math.Definition.Color,System.UInt32)
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalRenderUnicodeBlendedWrapped(System.IntPtr,System.String,Alis.Core.Aspect.Math.Definition.Color,System.UInt32)
+- markdown: Ttf the render unicode blended wrapped using the specified font
+- code: internal static extern IntPtr InternalRenderUnicodeBlendedWrapped(IntPtr font, string text, Color fg, uint wrapped)
+- h4: Parameters
+- parameters:
+  - name: font
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The font
+  - name: text
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The text
+  - name: fg
+    type:
+    - text: Color
+      url: Alis.Core.Aspect.Math.Definition.Color.html
+    description: The fg
+  - name: wrapped
+    type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+    description: The wrapped
+- h4: Returns
+- parameters:
+  - type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The int ptr
+- api3: InternalRenderUnicodeShaded(IntPtr, string, Color, Color)
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalRenderUnicodeShaded_System_IntPtr_System_String_Alis_Core_Aspect_Math_Definition_Color_Alis_Core_Aspect_Math_Definition_Color_
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalRenderUnicodeShaded(System.IntPtr,System.String,Alis.Core.Aspect.Math.Definition.Color,Alis.Core.Aspect.Math.Definition.Color)
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalRenderUnicodeShaded(System.IntPtr,System.String,Alis.Core.Aspect.Math.Definition.Color,Alis.Core.Aspect.Math.Definition.Color)
+- markdown: Ttf the render unicode shaded using the specified font
+- code: internal static extern IntPtr InternalRenderUnicodeShaded(IntPtr font, string text, Color fg, Color bg)
+- h4: Parameters
+- parameters:
+  - name: font
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The font
+  - name: text
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The text
+  - name: fg
+    type:
+    - text: Color
+      url: Alis.Core.Aspect.Math.Definition.Color.html
+    description: The fg
+  - name: bg
+    type:
+    - text: Color
+      url: Alis.Core.Aspect.Math.Definition.Color.html
+    description: The bg
+- h4: Returns
+- parameters:
+  - type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The int ptr
+- api3: InternalRenderUnicodeSolid(IntPtr, string, Color)
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalRenderUnicodeSolid_System_IntPtr_System_String_Alis_Core_Aspect_Math_Definition_Color_
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalRenderUnicodeSolid(System.IntPtr,System.String,Alis.Core.Aspect.Math.Definition.Color)
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalRenderUnicodeSolid(System.IntPtr,System.String,Alis.Core.Aspect.Math.Definition.Color)
+- markdown: Ttf the render unicode solid using the specified font
+- code: internal static extern IntPtr InternalRenderUnicodeSolid(IntPtr font, string text, Color fg)
+- h4: Parameters
+- parameters:
+  - name: font
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The font
+  - name: text
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The text
+  - name: fg
+    type:
+    - text: Color
+      url: Alis.Core.Aspect.Math.Definition.Color.html
+    description: The fg
+- h4: Returns
+- parameters:
+  - type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The int ptr
+- api3: InternalRenderUtf8Blended(IntPtr, string, Color)
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalRenderUtf8Blended_System_IntPtr_System_String_Alis_Core_Aspect_Math_Definition_Color_
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalRenderUtf8Blended(System.IntPtr,System.String,Alis.Core.Aspect.Math.Definition.Color)
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalRenderUtf8Blended(System.IntPtr,System.String,Alis.Core.Aspect.Math.Definition.Color)
+- markdown: Internals the ttf render utf 8 blended using the specified font
+- code: internal static extern IntPtr InternalRenderUtf8Blended(IntPtr font, string text, Color fg)
+- h4: Parameters
+- parameters:
+  - name: font
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The font
+  - name: text
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The text
+  - name: fg
+    type:
+    - text: Color
+      url: Alis.Core.Aspect.Math.Definition.Color.html
+    description: The fg
+- h4: Returns
+- parameters:
+  - type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The int ptr
+- api3: InternalRenderUtf8BlendedWrapped(IntPtr, string, Color, uint)
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalRenderUtf8BlendedWrapped_System_IntPtr_System_String_Alis_Core_Aspect_Math_Definition_Color_System_UInt32_
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalRenderUtf8BlendedWrapped(System.IntPtr,System.String,Alis.Core.Aspect.Math.Definition.Color,System.UInt32)
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalRenderUtf8BlendedWrapped(System.IntPtr,System.String,Alis.Core.Aspect.Math.Definition.Color,System.UInt32)
+- markdown: Internals the ttf render utf 8 blended wrapped using the specified font
+- code: internal static extern IntPtr InternalRenderUtf8BlendedWrapped(IntPtr font, string text, Color fg, uint wrapped)
+- h4: Parameters
+- parameters:
+  - name: font
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The font
+  - name: text
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The text
+  - name: fg
+    type:
+    - text: Color
+      url: Alis.Core.Aspect.Math.Definition.Color.html
+    description: The fg
+  - name: wrapped
+    type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+    description: The wrapped
+- h4: Returns
+- parameters:
+  - type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The int ptr
+- api3: InternalRenderUtf8Shaded(IntPtr, string, Color, Color)
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalRenderUtf8Shaded_System_IntPtr_System_String_Alis_Core_Aspect_Math_Definition_Color_Alis_Core_Aspect_Math_Definition_Color_
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalRenderUtf8Shaded(System.IntPtr,System.String,Alis.Core.Aspect.Math.Definition.Color,Alis.Core.Aspect.Math.Definition.Color)
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalRenderUtf8Shaded(System.IntPtr,System.String,Alis.Core.Aspect.Math.Definition.Color,Alis.Core.Aspect.Math.Definition.Color)
+- markdown: Internals the ttf render utf 8 shaded using the specified font
+- code: internal static extern IntPtr InternalRenderUtf8Shaded(IntPtr font, string text, Color fg, Color bg)
+- h4: Parameters
+- parameters:
+  - name: font
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The font
+  - name: text
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The text
+  - name: fg
+    type:
+    - text: Color
+      url: Alis.Core.Aspect.Math.Definition.Color.html
+    description: The fg
+  - name: bg
+    type:
+    - text: Color
+      url: Alis.Core.Aspect.Math.Definition.Color.html
+    description: The bg
+- h4: Returns
+- parameters:
+  - type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The int ptr
+- api3: InternalSetFontHinting(IntPtr, int)
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalSetFontHinting_System_IntPtr_System_Int32_
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalSetFontHinting(System.IntPtr,System.Int32)
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalSetFontHinting(System.IntPtr,System.Int32)
+- markdown: Ttf the set font hinting using the specified font
+- code: internal static extern void InternalSetFontHinting(IntPtr font, int hinting)
+- h4: Parameters
+- parameters:
+  - name: font
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The font
+  - name: hinting
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The hinting
+- api3: InternalSetFontKerning(IntPtr, int)
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalSetFontKerning_System_IntPtr_System_Int32_
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalSetFontKerning(System.IntPtr,System.Int32)
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalSetFontKerning(System.IntPtr,System.Int32)
+- markdown: Ttf the set font kerning using the specified font
+- code: internal static extern void InternalSetFontKerning(IntPtr font, int allowed)
+- h4: Parameters
+- parameters:
+  - name: font
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The font
+  - name: allowed
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The allowed
+- api3: InternalSetFontOutline(IntPtr, int)
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalSetFontOutline_System_IntPtr_System_Int32_
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalSetFontOutline(System.IntPtr,System.Int32)
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalSetFontOutline(System.IntPtr,System.Int32)
+- markdown: Ttf the set font outline using the specified font
+- code: internal static extern void InternalSetFontOutline(IntPtr font, int outline)
+- h4: Parameters
+- parameters:
+  - name: font
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The font
+  - name: outline
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The outline
+- api3: InternalSetFontStyle(IntPtr, int)
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalSetFontStyle_System_IntPtr_System_Int32_
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalSetFontStyle(System.IntPtr,System.Int32)
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalSetFontStyle(System.IntPtr,System.Int32)
+- markdown: Ttf the set font style using the specified font
+- code: internal static extern void InternalSetFontStyle(IntPtr font, int style)
+- h4: Parameters
+- parameters:
+  - name: font
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The font
+  - name: style
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The style
+- api3: InternalSetScript(int)
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalSetScript_System_Int32_
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalSetScript(System.Int32)
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalSetScript(System.Int32)
+- markdown: Ttf the set script using the specified script
+- code: internal static extern int InternalSetScript(int script)
+- h4: Parameters
+- parameters:
+  - name: script
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The script
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The int
+- api3: InternalSizeText(IntPtr, string, out int, out int)
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalSizeText_System_IntPtr_System_String_System_Int32__System_Int32__
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalSizeText(System.IntPtr,System.String,System.Int32@,System.Int32@)
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalSizeText(System.IntPtr,System.String,System.Int32@,System.Int32@)
+- markdown: Ttf the size text using the specified font
+- code: internal static extern int InternalSizeText(IntPtr font, string text, out int w, out int h)
+- h4: Parameters
+- parameters:
+  - name: font
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The font
+  - name: text
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The text
+  - name: w
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The
+  - name: h
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The int
+- api3: InternalSizeUTF8(IntPtr, string, out int, out int)
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalSizeUTF8_System_IntPtr_System_String_System_Int32__System_Int32__
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalSizeUTF8(System.IntPtr,System.String,System.Int32@,System.Int32@)
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalSizeUTF8(System.IntPtr,System.String,System.Int32@,System.Int32@)
+- markdown: Internals the ttf size utf 8 using the specified font
+- code: internal static extern int InternalSizeUTF8(IntPtr font, string text, out int w, out int h)
+- h4: Parameters
+- parameters:
+  - name: font
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The font
+  - name: text
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The text
+  - name: w
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The
+  - name: h
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The int
+- api3: InternalSizeUnicode(IntPtr, string, out int, out int)
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalSizeUnicode_System_IntPtr_System_String_System_Int32__System_Int32__
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalSizeUnicode(System.IntPtr,System.String,System.Int32@,System.Int32@)
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalSizeUnicode(System.IntPtr,System.String,System.Int32@,System.Int32@)
+- markdown: Ttf the size unicode using the specified font
+- code: internal static extern int InternalSizeUnicode(IntPtr font, string text, out int w, out int h)
+- h4: Parameters
+- parameters:
+  - name: font
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The font
+  - name: text
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The text
+  - name: w
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The
+  - name: h
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The int
+- api3: InternalWasInit()
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf_NativeSdlTtf_InternalWasInit
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalWasInit
+    commentId: M:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.InternalWasInit
+- markdown: Ttf the was init
+- code: internal static extern int InternalWasInit()
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The int
+languageId: csharp
+metadata:
+  description: The native sdl ttf class

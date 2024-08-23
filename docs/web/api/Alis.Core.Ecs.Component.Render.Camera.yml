@@ -1,0 +1,310 @@
+### YamlMime:ApiPage
+title: Class Camera
+body:
+- api1: Class Camera
+  id: Alis_Core_Ecs_Component_Render_Camera
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Render/Camera.cs#L46
+  metadata:
+    uid: Alis.Core.Ecs.Component.Render.Camera
+    commentId: T:Alis.Core.Ecs.Component.Render.Camera
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Ecs.Component.Render
+      url: Alis.Core.Ecs.Component.Render.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The camera class
+- code: 'public class Camera : AComponent, IComponent<GameObject>, IEnabled, IIdentifier, IRuntime, IBuilder<CameraBuilder>'
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: AComponent
+    url: Alis.Core.Ecs.Component.AComponent.html
+  - text: Camera
+    url: Alis.Core.Ecs.Component.Render.Camera.html
+- h4: Implements
+- list:
+  - text: IComponent<GameObject>
+    url: Alis.Core.Ecs.Component.IComponent-1.html
+  - text: IEnabled
+    url: Alis.Core.Ecs.Entity.Property.IEnabled.html
+  - text: IIdentifier
+    url: Alis.Core.Ecs.Entity.Property.IIdentifier.html
+  - text: IRuntime
+    url: Alis.Core.Ecs.Entity.Property.IRuntime.html
+  - text: IBuilder<CameraBuilder>
+    url: Alis.Core.Aspect.Fluent.IBuilder-1.html
+- h4: Inherited Members
+- list:
+  - text: AComponent.Context
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_Context
+  - text: AComponent.IsEnable
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_IsEnable
+  - text: AComponent.Name
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_Name
+  - text: AComponent.Id
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_Id
+  - text: AComponent.Tag
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_Tag
+  - text: AComponent.GameObject
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_GameObject
+  - text: AComponent.OnEnable()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnEnable
+  - text: AComponent.OnInit()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnInit
+  - text: AComponent.OnAwake()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnAwake
+  - text: AComponent.OnStart()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnStart
+  - text: AComponent.OnBeforeUpdate()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnBeforeUpdate
+  - text: AComponent.OnUpdate()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnUpdate
+  - text: AComponent.OnAfterUpdate()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnAfterUpdate
+  - text: AComponent.OnBeforeFixedUpdate()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnBeforeFixedUpdate
+  - text: AComponent.OnFixedUpdate()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnFixedUpdate
+  - text: AComponent.OnAfterFixedUpdate()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnAfterFixedUpdate
+  - text: AComponent.OnDispatchEvents()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnDispatchEvents
+  - text: AComponent.OnCalculate()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnCalculate
+  - text: AComponent.OnDraw()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnDraw
+  - text: AComponent.OnGui()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnGui
+  - text: AComponent.OnDisable()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnDisable
+  - text: AComponent.OnReset()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnReset
+  - text: AComponent.OnStop()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnStop
+  - text: AComponent.OnExit()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnExit
+  - text: AComponent.OnDestroy()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnDestroy
+  - text: AComponent.Attach(GameObject)
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_Attach_Alis_Core_Ecs_Entity_GameObject_
+  - text: AComponent.OnPressDownKey(KeyCodes)
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnPressDownKey_Alis_Core_Aspect_Data_Mapping_KeyCodes_
+  - text: AComponent.OnReleaseKey(KeyCodes)
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnReleaseKey_Alis_Core_Aspect_Data_Mapping_KeyCodes_
+  - text: AComponent.OnPressKey(KeyCodes)
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnPressKey_Alis_Core_Aspect_Data_Mapping_KeyCodes_
+  - text: AComponent.OnCollisionEnter(GameObject)
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnCollisionEnter_Alis_Core_Ecs_Entity_GameObject_
+  - text: AComponent.OnCollisionExit(GameObject)
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnCollisionExit_Alis_Core_Ecs_Entity_GameObject_
+  - text: AComponent.OnCollisionStay(GameObject)
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnCollisionStay_Alis_Core_Ecs_Entity_GameObject_
+  - text: AComponent.OnTriggerEnter(GameObject)
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnTriggerEnter_Alis_Core_Ecs_Entity_GameObject_
+  - text: AComponent.OnTriggerExit(GameObject)
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnTriggerExit_Alis_Core_Ecs_Entity_GameObject_
+  - text: AComponent.OnTriggerStay(GameObject)
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnTriggerStay_Alis_Core_Ecs_Entity_GameObject_
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Constructors
+- api3: Camera()
+  id: Alis_Core_Ecs_Component_Render_Camera__ctor
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Render/Camera.cs#L53
+  metadata:
+    uid: Alis.Core.Ecs.Component.Render.Camera.#ctor
+    commentId: M:Alis.Core.Ecs.Component.Render.Camera.#ctor
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Ecs.Component.Render.Camera" data-throw-if-not-resolved="false"></xref> class
+- code: public Camera()
+- api3: Camera(string, string, string, bool, RectangleI, Vector2, Color, float)
+  id: Alis_Core_Ecs_Component_Render_Camera__ctor_System_String_System_String_System_String_System_Boolean_Alis_Core_Aspect_Math_Shape_Rectangle_RectangleI_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Definition_Color_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Render/Camera.cs#L73
+  metadata:
+    uid: Alis.Core.Ecs.Component.Render.Camera.#ctor(System.String,System.String,System.String,System.Boolean,Alis.Core.Aspect.Math.Shape.Rectangle.RectangleI,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Definition.Color,System.Single)
+    commentId: M:Alis.Core.Ecs.Component.Render.Camera.#ctor(System.String,System.String,System.String,System.Boolean,Alis.Core.Aspect.Math.Shape.Rectangle.RectangleI,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Definition.Color,System.Single)
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Ecs.Component.Render.Camera" data-throw-if-not-resolved="false"></xref> class
+- code: public Camera(string id, string name, string tag, bool isEnable, RectangleI viewport, Vector2 resolution, Color backgroundColor, float cameraBorder)
+- h4: Parameters
+- parameters:
+  - name: id
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The id
+  - name: name
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The name
+  - name: tag
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The tag
+  - name: isEnable
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The is enable
+  - name: viewport
+    type:
+    - text: RectangleI
+      url: Alis.Core.Aspect.Math.Shape.Rectangle.RectangleI.html
+    description: The viewport
+  - name: resolution
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The resolution
+  - name: backgroundColor
+    type:
+    - text: Color
+      url: Alis.Core.Aspect.Math.Definition.Color.html
+    description: The background color
+  - name: cameraBorder
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The camera border
+- h2: Properties
+- api3: BackgroundColor
+  id: Alis_Core_Ecs_Component_Render_Camera_BackgroundColor
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Render/Camera.cs#L107
+  metadata:
+    uid: Alis.Core.Ecs.Component.Render.Camera.BackgroundColor
+    commentId: P:Alis.Core.Ecs.Component.Render.Camera.BackgroundColor
+- markdown: Gets or sets the value of the background color
+- code: >-
+    [JsonPropertyName("_BackgroundColor_")]
+
+    public Color BackgroundColor { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Color
+      url: Alis.Core.Aspect.Math.Definition.Color.html
+- api3: CameraBorder
+  id: Alis_Core_Ecs_Component_Render_Camera_CameraBorder
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Render/Camera.cs#L113
+  metadata:
+    uid: Alis.Core.Ecs.Component.Render.Camera.CameraBorder
+    commentId: P:Alis.Core.Ecs.Component.Render.Camera.CameraBorder
+- markdown: Gets or sets the value of the camera border
+- code: >-
+    [JsonPropertyName("_CameraBorder_")]
+
+    public float CameraBorder { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: Resolution
+  id: Alis_Core_Ecs_Component_Render_Camera_Resolution
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Render/Camera.cs#L101
+  metadata:
+    uid: Alis.Core.Ecs.Component.Render.Camera.Resolution
+    commentId: P:Alis.Core.Ecs.Component.Render.Camera.Resolution
+- markdown: Gets or sets the value of the resolution
+- code: >-
+    [JsonPropertyName("_Resolution_")]
+
+    public Vector2 Resolution { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: TextureTarget
+  id: Alis_Core_Ecs_Component_Render_Camera_TextureTarget
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Render/Camera.cs#L95
+  metadata:
+    uid: Alis.Core.Ecs.Component.Render.Camera.TextureTarget
+    commentId: P:Alis.Core.Ecs.Component.Render.Camera.TextureTarget
+- markdown: Gets or sets the value of the texture target
+- code: >-
+    [JsonPropertyName("_TextureTarget_", true, true)]
+
+    public IntPtr TextureTarget { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+- api3: Viewport
+  id: Alis_Core_Ecs_Component_Render_Camera_Viewport
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Render/Camera.cs#L89
+  metadata:
+    uid: Alis.Core.Ecs.Component.Render.Camera.Viewport
+    commentId: P:Alis.Core.Ecs.Component.Render.Camera.Viewport
+- markdown: The viewport
+- code: >-
+    [JsonPropertyName("_Viewport_")]
+
+    public RectangleI Viewport { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: RectangleI
+      url: Alis.Core.Aspect.Math.Shape.Rectangle.RectangleI.html
+- h2: Methods
+- api3: Builder()
+  id: Alis_Core_Ecs_Component_Render_Camera_Builder
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Render/Camera.cs#L120
+  metadata:
+    uid: Alis.Core.Ecs.Component.Render.Camera.Builder
+    commentId: M:Alis.Core.Ecs.Component.Render.Camera.Builder
+- markdown: Builders this instance
+- code: public CameraBuilder Builder()
+- h4: Returns
+- parameters:
+  - type:
+    - text: CameraBuilder
+      url: Alis.Builder.Core.Ecs.Component.Render.CameraBuilder.html
+    description: The camera builder
+- api3: OnExit()
+  id: Alis_Core_Ecs_Component_Render_Camera_OnExit
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Render/Camera.cs#L158
+  metadata:
+    uid: Alis.Core.Ecs.Component.Render.Camera.OnExit
+    commentId: M:Alis.Core.Ecs.Component.Render.Camera.OnExit
+- markdown: Ons the exit
+- code: public override void OnExit()
+- api3: OnStart()
+  id: Alis_Core_Ecs_Component_Render_Camera_OnStart
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Render/Camera.cs#L125
+  metadata:
+    uid: Alis.Core.Ecs.Component.Render.Camera.OnStart
+    commentId: M:Alis.Core.Ecs.Component.Render.Camera.OnStart
+- markdown: Starts this instance
+- code: public override void OnStart()
+- api3: OnUpdate()
+  id: Alis_Core_Ecs_Component_Render_Camera_OnUpdate
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Render/Camera.cs#L145
+  metadata:
+    uid: Alis.Core.Ecs.Component.Render.Camera.OnUpdate
+    commentId: M:Alis.Core.Ecs.Component.Render.Camera.OnUpdate
+- markdown: Ons the update
+- code: public override void OnUpdate()
+- h2: See Also
+- list:
+  - - text: AComponent
+      url: Alis.Core.Ecs.Component.AComponent.html
+languageId: csharp
+metadata:
+  description: The camera class

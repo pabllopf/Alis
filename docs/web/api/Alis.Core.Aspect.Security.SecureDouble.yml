@@ -1,0 +1,382 @@
+### YamlMime:ApiPage
+title: Class SecureDouble
+body:
+- api1: Class SecureDouble
+  id: Alis_Core_Aspect_Security_SecureDouble
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Security/src/SecureDouble.cs#L35
+  metadata:
+    uid: Alis.Core.Aspect.Security.SecureDouble
+    commentId: T:Alis.Core.Aspect.Security.SecureDouble
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Aspect.Security
+      url: Alis.Core.Aspect.Security.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The secure double class
+- code: public class SecureDouble
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: SecureDouble
+    url: Alis.Core.Aspect.Security.SecureDouble.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Constructors
+- api3: SecureDouble(double)
+  id: Alis_Core_Aspect_Security_SecureDouble__ctor_System_Double_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Security/src/SecureDouble.cs#L51
+  metadata:
+    uid: Alis.Core.Aspect.Security.SecureDouble.#ctor(System.Double)
+    commentId: M:Alis.Core.Aspect.Security.SecureDouble.#ctor(System.Double)
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Aspect.Security.SecureDouble" data-throw-if-not-resolved="false"></xref> class
+- code: public SecureDouble(double value = 0)
+- h4: Parameters
+- parameters:
+  - name: value
+    type:
+    - text: double
+      url: https://learn.microsoft.com/dotnet/api/system.double
+    description: The value
+    optional: true
+- h2: Fields
+- api3: _randomValue
+  id: Alis_Core_Aspect_Security_SecureDouble__randomValue
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Security/src/SecureDouble.cs#L40
+  metadata:
+    uid: Alis.Core.Aspect.Security.SecureDouble._randomValue
+    commentId: F:Alis.Core.Aspect.Security.SecureDouble._randomValue
+- markdown: The random value
+- code: private double _randomValue
+- h4: Field Value
+- parameters:
+  - type:
+    - text: double
+      url: https://learn.microsoft.com/dotnet/api/system.double
+- api3: _value
+  id: Alis_Core_Aspect_Security_SecureDouble__value
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Security/src/SecureDouble.cs#L45
+  metadata:
+    uid: Alis.Core.Aspect.Security.SecureDouble._value
+    commentId: F:Alis.Core.Aspect.Security.SecureDouble._value
+- markdown: The value
+- code: private double _value
+- h4: Field Value
+- parameters:
+  - type:
+    - text: double
+      url: https://learn.microsoft.com/dotnet/api/system.double
+- h2: Properties
+- api3: Value
+  id: Alis_Core_Aspect_Security_SecureDouble_Value
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Security/src/SecureDouble.cs#L56
+  metadata:
+    uid: Alis.Core.Aspect.Security.SecureDouble.Value
+    commentId: P:Alis.Core.Aspect.Security.SecureDouble.Value
+- markdown: Gets or sets the value of the value
+- code: private double Value { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: double
+      url: https://learn.microsoft.com/dotnet/api/system.double
+- h2: Methods
+- api3: Equals(object)
+  id: Alis_Core_Aspect_Security_SecureDouble_Equals_System_Object_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Security/src/SecureDouble.cs#L161
+  metadata:
+    uid: Alis.Core.Aspect.Security.SecureDouble.Equals(System.Object)
+    commentId: M:Alis.Core.Aspect.Security.SecureDouble.Equals(System.Object)
+- markdown: Describes whether this instance equals
+- code: public override bool Equals(object obj)
+- h4: Parameters
+- parameters:
+  - name: obj
+    type:
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    description: The obj
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: GetHashCode()
+  id: Alis_Core_Aspect_Security_SecureDouble_GetHashCode
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Security/src/SecureDouble.cs#L154
+  metadata:
+    uid: Alis.Core.Aspect.Security.SecureDouble.GetHashCode
+    commentId: M:Alis.Core.Aspect.Security.SecureDouble.GetHashCode
+- markdown: Gets the hash code
+- code: public override int GetHashCode()
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The int
+- api3: ToString()
+  id: Alis_Core_Aspect_Security_SecureDouble_ToString
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Security/src/SecureDouble.cs#L148
+  metadata:
+    uid: Alis.Core.Aspect.Security.SecureDouble.ToString
+    commentId: M:Alis.Core.Aspect.Security.SecureDouble.ToString
+- markdown: Returns the string
+- code: public override string ToString()
+- h4: Returns
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The string
+- h2: Operators
+- api3: operator +(SecureDouble, SecureDouble)
+  id: Alis_Core_Aspect_Security_SecureDouble_op_Addition_Alis_Core_Aspect_Security_SecureDouble_Alis_Core_Aspect_Security_SecureDouble_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Security/src/SecureDouble.cs#L121
+  metadata:
+    uid: Alis.Core.Aspect.Security.SecureDouble.op_Addition(Alis.Core.Aspect.Security.SecureDouble,Alis.Core.Aspect.Security.SecureDouble)
+    commentId: M:Alis.Core.Aspect.Security.SecureDouble.op_Addition(Alis.Core.Aspect.Security.SecureDouble,Alis.Core.Aspect.Security.SecureDouble)
+- code: public static SecureDouble operator +(SecureDouble a, SecureDouble b)
+- h4: Parameters
+- parameters:
+  - name: a
+    type:
+    - text: SecureDouble
+      url: Alis.Core.Aspect.Security.SecureDouble.html
+    description: ''
+  - name: b
+    type:
+    - text: SecureDouble
+      url: Alis.Core.Aspect.Security.SecureDouble.html
+    description: ''
+- h4: Returns
+- parameters:
+  - type:
+    - text: SecureDouble
+      url: Alis.Core.Aspect.Security.SecureDouble.html
+    description: ''
+- api3: operator --(SecureDouble)
+  id: Alis_Core_Aspect_Security_SecureDouble_op_Decrement_Alis_Core_Aspect_Security_SecureDouble_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Security/src/SecureDouble.cs#L110
+  metadata:
+    uid: Alis.Core.Aspect.Security.SecureDouble.op_Decrement(Alis.Core.Aspect.Security.SecureDouble)
+    commentId: M:Alis.Core.Aspect.Security.SecureDouble.op_Decrement(Alis.Core.Aspect.Security.SecureDouble)
+- code: public static SecureDouble operator --(SecureDouble a)
+- h4: Parameters
+- parameters:
+  - name: a
+    type:
+    - text: SecureDouble
+      url: Alis.Core.Aspect.Security.SecureDouble.html
+    description: ''
+- h4: Returns
+- parameters:
+  - type:
+    - text: SecureDouble
+      url: Alis.Core.Aspect.Security.SecureDouble.html
+    description: ''
+- api3: operator /(SecureDouble, SecureDouble)
+  id: Alis_Core_Aspect_Security_SecureDouble_op_Division_Alis_Core_Aspect_Security_SecureDouble_Alis_Core_Aspect_Security_SecureDouble_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Security/src/SecureDouble.cs#L142
+  metadata:
+    uid: Alis.Core.Aspect.Security.SecureDouble.op_Division(Alis.Core.Aspect.Security.SecureDouble,Alis.Core.Aspect.Security.SecureDouble)
+    commentId: M:Alis.Core.Aspect.Security.SecureDouble.op_Division(Alis.Core.Aspect.Security.SecureDouble,Alis.Core.Aspect.Security.SecureDouble)
+- code: public static SecureDouble operator /(SecureDouble a, SecureDouble b)
+- h4: Parameters
+- parameters:
+  - name: a
+    type:
+    - text: SecureDouble
+      url: Alis.Core.Aspect.Security.SecureDouble.html
+    description: ''
+  - name: b
+    type:
+    - text: SecureDouble
+      url: Alis.Core.Aspect.Security.SecureDouble.html
+    description: ''
+- h4: Returns
+- parameters:
+  - type:
+    - text: SecureDouble
+      url: Alis.Core.Aspect.Security.SecureDouble.html
+    description: ''
+- api3: operator ==(SecureDouble, SecureDouble)
+  id: Alis_Core_Aspect_Security_SecureDouble_op_Equality_Alis_Core_Aspect_Security_SecureDouble_Alis_Core_Aspect_Security_SecureDouble_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Security/src/SecureDouble.cs#L87
+  metadata:
+    uid: Alis.Core.Aspect.Security.SecureDouble.op_Equality(Alis.Core.Aspect.Security.SecureDouble,Alis.Core.Aspect.Security.SecureDouble)
+    commentId: M:Alis.Core.Aspect.Security.SecureDouble.op_Equality(Alis.Core.Aspect.Security.SecureDouble,Alis.Core.Aspect.Security.SecureDouble)
+- code: public static bool operator ==(SecureDouble a, SecureDouble b)
+- h4: Parameters
+- parameters:
+  - name: a
+    type:
+    - text: SecureDouble
+      url: Alis.Core.Aspect.Security.SecureDouble.html
+    description: ''
+  - name: b
+    type:
+    - text: SecureDouble
+      url: Alis.Core.Aspect.Security.SecureDouble.html
+    description: ''
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: ''
+- api3: implicit operator SecureDouble(double)
+  id: Alis_Core_Aspect_Security_SecureDouble_op_Implicit_System_Double__Alis_Core_Aspect_Security_SecureDouble
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Security/src/SecureDouble.cs#L74
+  metadata:
+    uid: Alis.Core.Aspect.Security.SecureDouble.op_Implicit(System.Double)~Alis.Core.Aspect.Security.SecureDouble
+    commentId: M:Alis.Core.Aspect.Security.SecureDouble.op_Implicit(System.Double)~Alis.Core.Aspect.Security.SecureDouble
+- code: public static implicit operator SecureDouble(double value)
+- h4: Parameters
+- parameters:
+  - name: value
+    type:
+    - text: double
+      url: https://learn.microsoft.com/dotnet/api/system.double
+    description: ''
+- h4: Returns
+- parameters:
+  - type:
+    - text: SecureDouble
+      url: Alis.Core.Aspect.Security.SecureDouble.html
+    description: ''
+- api3: implicit operator double(SecureDouble)
+  id: Alis_Core_Aspect_Security_SecureDouble_op_Implicit_Alis_Core_Aspect_Security_SecureDouble__System_Double
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Security/src/SecureDouble.cs#L80
+  metadata:
+    uid: Alis.Core.Aspect.Security.SecureDouble.op_Implicit(Alis.Core.Aspect.Security.SecureDouble)~System.Double
+    commentId: M:Alis.Core.Aspect.Security.SecureDouble.op_Implicit(Alis.Core.Aspect.Security.SecureDouble)~System.Double
+- code: public static implicit operator double(SecureDouble value)
+- h4: Parameters
+- parameters:
+  - name: value
+    type:
+    - text: SecureDouble
+      url: Alis.Core.Aspect.Security.SecureDouble.html
+    description: ''
+- h4: Returns
+- parameters:
+  - type:
+    - text: double
+      url: https://learn.microsoft.com/dotnet/api/system.double
+    description: ''
+- api3: operator ++(SecureDouble)
+  id: Alis_Core_Aspect_Security_SecureDouble_op_Increment_Alis_Core_Aspect_Security_SecureDouble_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Security/src/SecureDouble.cs#L100
+  metadata:
+    uid: Alis.Core.Aspect.Security.SecureDouble.op_Increment(Alis.Core.Aspect.Security.SecureDouble)
+    commentId: M:Alis.Core.Aspect.Security.SecureDouble.op_Increment(Alis.Core.Aspect.Security.SecureDouble)
+- code: public static SecureDouble operator ++(SecureDouble a)
+- h4: Parameters
+- parameters:
+  - name: a
+    type:
+    - text: SecureDouble
+      url: Alis.Core.Aspect.Security.SecureDouble.html
+    description: ''
+- h4: Returns
+- parameters:
+  - type:
+    - text: SecureDouble
+      url: Alis.Core.Aspect.Security.SecureDouble.html
+    description: ''
+- api3: operator !=(SecureDouble, SecureDouble)
+  id: Alis_Core_Aspect_Security_SecureDouble_op_Inequality_Alis_Core_Aspect_Security_SecureDouble_Alis_Core_Aspect_Security_SecureDouble_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Security/src/SecureDouble.cs#L94
+  metadata:
+    uid: Alis.Core.Aspect.Security.SecureDouble.op_Inequality(Alis.Core.Aspect.Security.SecureDouble,Alis.Core.Aspect.Security.SecureDouble)
+    commentId: M:Alis.Core.Aspect.Security.SecureDouble.op_Inequality(Alis.Core.Aspect.Security.SecureDouble,Alis.Core.Aspect.Security.SecureDouble)
+- code: public static bool operator !=(SecureDouble a, SecureDouble b)
+- h4: Parameters
+- parameters:
+  - name: a
+    type:
+    - text: SecureDouble
+      url: Alis.Core.Aspect.Security.SecureDouble.html
+    description: ''
+  - name: b
+    type:
+    - text: SecureDouble
+      url: Alis.Core.Aspect.Security.SecureDouble.html
+    description: ''
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: ''
+- api3: operator *(SecureDouble, SecureDouble)
+  id: Alis_Core_Aspect_Security_SecureDouble_op_Multiply_Alis_Core_Aspect_Security_SecureDouble_Alis_Core_Aspect_Security_SecureDouble_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Security/src/SecureDouble.cs#L135
+  metadata:
+    uid: Alis.Core.Aspect.Security.SecureDouble.op_Multiply(Alis.Core.Aspect.Security.SecureDouble,Alis.Core.Aspect.Security.SecureDouble)
+    commentId: M:Alis.Core.Aspect.Security.SecureDouble.op_Multiply(Alis.Core.Aspect.Security.SecureDouble,Alis.Core.Aspect.Security.SecureDouble)
+- code: public static SecureDouble operator *(SecureDouble a, SecureDouble b)
+- h4: Parameters
+- parameters:
+  - name: a
+    type:
+    - text: SecureDouble
+      url: Alis.Core.Aspect.Security.SecureDouble.html
+    description: ''
+  - name: b
+    type:
+    - text: SecureDouble
+      url: Alis.Core.Aspect.Security.SecureDouble.html
+    description: ''
+- h4: Returns
+- parameters:
+  - type:
+    - text: SecureDouble
+      url: Alis.Core.Aspect.Security.SecureDouble.html
+    description: ''
+- api3: operator -(SecureDouble, SecureDouble)
+  id: Alis_Core_Aspect_Security_SecureDouble_op_Subtraction_Alis_Core_Aspect_Security_SecureDouble_Alis_Core_Aspect_Security_SecureDouble_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Security/src/SecureDouble.cs#L128
+  metadata:
+    uid: Alis.Core.Aspect.Security.SecureDouble.op_Subtraction(Alis.Core.Aspect.Security.SecureDouble,Alis.Core.Aspect.Security.SecureDouble)
+    commentId: M:Alis.Core.Aspect.Security.SecureDouble.op_Subtraction(Alis.Core.Aspect.Security.SecureDouble,Alis.Core.Aspect.Security.SecureDouble)
+- code: public static SecureDouble operator -(SecureDouble a, SecureDouble b)
+- h4: Parameters
+- parameters:
+  - name: a
+    type:
+    - text: SecureDouble
+      url: Alis.Core.Aspect.Security.SecureDouble.html
+    description: ''
+  - name: b
+    type:
+    - text: SecureDouble
+      url: Alis.Core.Aspect.Security.SecureDouble.html
+    description: ''
+- h4: Returns
+- parameters:
+  - type:
+    - text: SecureDouble
+      url: Alis.Core.Aspect.Security.SecureDouble.html
+    description: ''
+languageId: csharp
+metadata:
+  description: The secure double class

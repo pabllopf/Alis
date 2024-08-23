@@ -1,0 +1,88 @@
+### YamlMime:ApiPage
+title: Struct DistanceOutput
+body:
+- api1: Struct DistanceOutput
+  id: Alis_Core_Physic_Collision_Distance_DistanceOutput
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/Distance/DistanceOutput.cs#L35
+  metadata:
+    uid: Alis.Core.Physic.Collision.Distance.DistanceOutput
+    commentId: T:Alis.Core.Physic.Collision.Distance.DistanceOutput
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Physic.Collision.Distance
+      url: Alis.Core.Physic.Collision.Distance.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: Output for Distance.ComputeDistance().
+- code: public struct DistanceOutput
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Fields
+- api3: Distance
+  id: Alis_Core_Physic_Collision_Distance_DistanceOutput_Distance
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/Distance/DistanceOutput.cs#L40
+  metadata:
+    uid: Alis.Core.Physic.Collision.Distance.DistanceOutput.Distance
+    commentId: F:Alis.Core.Physic.Collision.Distance.DistanceOutput.Distance
+- markdown: The distance
+- code: public float Distance
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: Iterations
+  id: Alis_Core_Physic_Collision_Distance_DistanceOutput_Iterations
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/Distance/DistanceOutput.cs#L44
+  metadata:
+    uid: Alis.Core.Physic.Collision.Distance.DistanceOutput.Iterations
+    commentId: F:Alis.Core.Physic.Collision.Distance.DistanceOutput.Iterations
+- markdown: Number of GJK iterations used
+- code: public int Iterations
+- h4: Field Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: PointA
+  id: Alis_Core_Physic_Collision_Distance_DistanceOutput_PointA
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/Distance/DistanceOutput.cs#L48
+  metadata:
+    uid: Alis.Core.Physic.Collision.Distance.DistanceOutput.PointA
+    commentId: F:Alis.Core.Physic.Collision.Distance.DistanceOutput.PointA
+- markdown: Closest point on shapeA
+- code: public Vector2 PointA
+- h4: Field Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: PointB
+  id: Alis_Core_Physic_Collision_Distance_DistanceOutput_PointB
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/Distance/DistanceOutput.cs#L52
+  metadata:
+    uid: Alis.Core.Physic.Collision.Distance.DistanceOutput.PointB
+    commentId: F:Alis.Core.Physic.Collision.Distance.DistanceOutput.PointB
+- markdown: Closest point on shapeB
+- code: public Vector2 PointB
+- h4: Field Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+languageId: csharp
+metadata:
+  description: Output for Distance.ComputeDistance().

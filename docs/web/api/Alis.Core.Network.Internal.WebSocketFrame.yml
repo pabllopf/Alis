@@ -1,0 +1,206 @@
+### YamlMime:ApiPage
+title: Class WebSocketFrame
+body:
+- api1: Class WebSocketFrame
+  id: Alis_Core_Network_Internal_WebSocketFrame
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/WebSocketFrame.cs#L38
+  metadata:
+    uid: Alis.Core.Network.Internal.WebSocketFrame
+    commentId: T:Alis.Core.Network.Internal.WebSocketFrame
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Network.Internal
+      url: Alis.Core.Network.Internal.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The web socket frame class
+- code: internal class WebSocketFrame
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: WebSocketFrame
+    url: Alis.Core.Network.Internal.WebSocketFrame.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Constructors
+- api3: WebSocketFrame(bool, WebSocketOpCode, int, ArraySegment<byte>)
+  id: Alis_Core_Network_Internal_WebSocketFrame__ctor_System_Boolean_Alis_Core_Network_Internal_WebSocketOpCode_System_Int32_System_ArraySegment_System_Byte__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/WebSocketFrame.cs#L47
+  metadata:
+    uid: Alis.Core.Network.Internal.WebSocketFrame.#ctor(System.Boolean,Alis.Core.Network.Internal.WebSocketOpCode,System.Int32,System.ArraySegment{System.Byte})
+    commentId: M:Alis.Core.Network.Internal.WebSocketFrame.#ctor(System.Boolean,Alis.Core.Network.Internal.WebSocketOpCode,System.Int32,System.ArraySegment{System.Byte})
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Network.Internal.WebSocketFrame" data-throw-if-not-resolved="false"></xref> class
+- code: public WebSocketFrame(bool isFinBitSet, WebSocketOpCode webSocketOpCode, int count, ArraySegment<byte> maskKey)
+- h4: Parameters
+- parameters:
+  - name: isFinBitSet
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The is fin bit set
+  - name: webSocketOpCode
+    type:
+    - text: WebSocketOpCode
+      url: Alis.Core.Network.Internal.WebSocketOpCode.html
+    description: The web socket op code
+  - name: count
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The count
+  - name: maskKey
+    type:
+    - text: ArraySegment
+      url: https://learn.microsoft.com/dotnet/api/system.arraysegment-1
+    - <
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+    - '>'
+    description: The mask key
+- api3: WebSocketFrame(bool, WebSocketOpCode, int, WebSocketCloseStatus, string, ArraySegment<byte>)
+  id: Alis_Core_Network_Internal_WebSocketFrame__ctor_System_Boolean_Alis_Core_Network_Internal_WebSocketOpCode_System_Int32_System_Net_WebSockets_WebSocketCloseStatus_System_String_System_ArraySegment_System_Byte__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/WebSocketFrame.cs#L64
+  metadata:
+    uid: Alis.Core.Network.Internal.WebSocketFrame.#ctor(System.Boolean,Alis.Core.Network.Internal.WebSocketOpCode,System.Int32,System.Net.WebSockets.WebSocketCloseStatus,System.String,System.ArraySegment{System.Byte})
+    commentId: M:Alis.Core.Network.Internal.WebSocketFrame.#ctor(System.Boolean,Alis.Core.Network.Internal.WebSocketOpCode,System.Int32,System.Net.WebSockets.WebSocketCloseStatus,System.String,System.ArraySegment{System.Byte})
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Network.Internal.WebSocketFrame" data-throw-if-not-resolved="false"></xref> class
+- code: public WebSocketFrame(bool isFinBitSet, WebSocketOpCode webSocketOpCode, int count, WebSocketCloseStatus closeStatus, string closeStatusDescription, ArraySegment<byte> maskKey)
+- h4: Parameters
+- parameters:
+  - name: isFinBitSet
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The is fin bit set
+  - name: webSocketOpCode
+    type:
+    - text: WebSocketOpCode
+      url: Alis.Core.Network.Internal.WebSocketOpCode.html
+    description: The web socket op code
+  - name: count
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The count
+  - name: closeStatus
+    type:
+    - text: WebSocketCloseStatus
+      url: https://learn.microsoft.com/dotnet/api/system.net.websockets.websocketclosestatus
+    description: The close status
+  - name: closeStatusDescription
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The close status description
+  - name: maskKey
+    type:
+    - text: ArraySegment
+      url: https://learn.microsoft.com/dotnet/api/system.arraysegment-1
+    - <
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+    - '>'
+    description: The mask key
+- h2: Properties
+- api3: CloseStatus
+  id: Alis_Core_Network_Internal_WebSocketFrame_CloseStatus
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/WebSocketFrame.cs#L90
+  metadata:
+    uid: Alis.Core.Network.Internal.WebSocketFrame.CloseStatus
+    commentId: P:Alis.Core.Network.Internal.WebSocketFrame.CloseStatus
+- markdown: Gets the value of the close status
+- code: public WebSocketCloseStatus? CloseStatus { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: WebSocketCloseStatus
+      url: https://learn.microsoft.com/dotnet/api/system.net.websockets.websocketclosestatus
+    - '?'
+- api3: CloseStatusDescription
+  id: Alis_Core_Network_Internal_WebSocketFrame_CloseStatusDescription
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/WebSocketFrame.cs#L95
+  metadata:
+    uid: Alis.Core.Network.Internal.WebSocketFrame.CloseStatusDescription
+    commentId: P:Alis.Core.Network.Internal.WebSocketFrame.CloseStatusDescription
+- markdown: Gets the value of the close status description
+- code: public string CloseStatusDescription { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: Count
+  id: Alis_Core_Network_Internal_WebSocketFrame_Count
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/WebSocketFrame.cs#L85
+  metadata:
+    uid: Alis.Core.Network.Internal.WebSocketFrame.Count
+    commentId: P:Alis.Core.Network.Internal.WebSocketFrame.Count
+- markdown: Gets the value of the count
+- code: public int Count { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: IsFinBitSet
+  id: Alis_Core_Network_Internal_WebSocketFrame_IsFinBitSet
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/WebSocketFrame.cs#L75
+  metadata:
+    uid: Alis.Core.Network.Internal.WebSocketFrame.IsFinBitSet
+    commentId: P:Alis.Core.Network.Internal.WebSocketFrame.IsFinBitSet
+- markdown: Gets the value of the is fin bit set
+- code: public bool IsFinBitSet { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+- api3: MaskKey
+  id: Alis_Core_Network_Internal_WebSocketFrame_MaskKey
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/WebSocketFrame.cs#L100
+  metadata:
+    uid: Alis.Core.Network.Internal.WebSocketFrame.MaskKey
+    commentId: P:Alis.Core.Network.Internal.WebSocketFrame.MaskKey
+- markdown: Gets the value of the mask key
+- code: public ArraySegment<byte> MaskKey { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: ArraySegment
+      url: https://learn.microsoft.com/dotnet/api/system.arraysegment-1
+    - <
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+    - '>'
+- api3: OpCode
+  id: Alis_Core_Network_Internal_WebSocketFrame_OpCode
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/WebSocketFrame.cs#L80
+  metadata:
+    uid: Alis.Core.Network.Internal.WebSocketFrame.OpCode
+    commentId: P:Alis.Core.Network.Internal.WebSocketFrame.OpCode
+- markdown: Gets the value of the op code
+- code: public WebSocketOpCode OpCode { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: WebSocketOpCode
+      url: Alis.Core.Network.Internal.WebSocketOpCode.html
+languageId: csharp
+metadata:
+  description: The web socket frame class

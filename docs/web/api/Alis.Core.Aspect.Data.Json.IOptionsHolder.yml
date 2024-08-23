@@ -1,0 +1,35 @@
+### YamlMime:ApiPage
+title: Interface IOptionsHolder
+body:
+- api1: Interface IOptionsHolder
+  id: Alis_Core_Aspect_Data_Json_IOptionsHolder
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/IOptionsHolder.cs#L35
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.IOptionsHolder
+    commentId: T:Alis.Core.Aspect.Data.Json.IOptionsHolder
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Aspect.Data.Json
+      url: Alis.Core.Aspect.Data.Json.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: Defines an interface for setting or getting options.
+- code: public interface IOptionsHolder
+- h2: Properties
+- api3: Options
+  id: Alis_Core_Aspect_Data_Json_IOptionsHolder_Options
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/IOptionsHolder.cs#L41
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.IOptionsHolder.Options
+    commentId: P:Alis.Core.Aspect.Data.Json.IOptionsHolder.Options
+- markdown: Gets or sets the options.
+- code: JsonOptions Options { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+languageId: csharp
+metadata:
+  description: Defines an interface for setting or getting options.

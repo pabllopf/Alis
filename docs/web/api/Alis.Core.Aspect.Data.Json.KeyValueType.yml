@@ -1,0 +1,68 @@
+### YamlMime:ApiPage
+title: Class KeyValueType
+body:
+- api1: Class KeyValueType
+  id: Alis_Core_Aspect_Data_Json_KeyValueType
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/KeyValueType.cs#L37
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.KeyValueType
+    commentId: T:Alis.Core.Aspect.Data.Json.KeyValueType
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Aspect.Data.Json
+      url: Alis.Core.Aspect.Data.Json.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The key value type class
+- code: internal sealed class KeyValueType
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: KeyValueType
+    url: Alis.Core.Aspect.Data.Json.KeyValueType.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Fields
+- api3: KeyType
+  id: Alis_Core_Aspect_Data_Json_KeyValueType_KeyType
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/KeyValueType.cs#L42
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.KeyValueType.KeyType
+    commentId: F:Alis.Core.Aspect.Data.Json.KeyValueType.KeyType
+- markdown: The key type
+- code: public Type KeyType
+- h4: Field Value
+- parameters:
+  - type:
+    - text: Type
+      url: https://learn.microsoft.com/dotnet/api/system.type
+- api3: ValueType
+  id: Alis_Core_Aspect_Data_Json_KeyValueType_ValueType
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/KeyValueType.cs#L47
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.KeyValueType.ValueType
+    commentId: F:Alis.Core.Aspect.Data.Json.KeyValueType.ValueType
+- markdown: The value type
+- code: public Type ValueType
+- h4: Field Value
+- parameters:
+  - type:
+    - text: Type
+      url: https://learn.microsoft.com/dotnet/api/system.type
+languageId: csharp
+metadata:
+  description: The key value type class

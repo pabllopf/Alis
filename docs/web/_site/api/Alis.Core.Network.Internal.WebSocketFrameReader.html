@@ -1,0 +1,368 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+      <title>Class WebSocketFrameReader | Alis - Develop the video games of your dreams &#128175; free!! </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class WebSocketFrameReader | Alis - Develop the video games of your dreams &#128175; free!! ">
+      
+      <meta name="description" content="Reads a WebSocket frame
+see http://tools.ietf.org/html/rfc6455 for specification">
+      <link rel="icon" href="../resources/logo.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ApiPage">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../resources/logo.png" alt="Alis">
+            Alis
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 class='section api' data-uid='Alis.Core.Network.Internal.WebSocketFrameReader' data-commentid='T:Alis.Core.Network.Internal.WebSocketFrameReader' id='Alis_Core_Network_Internal_WebSocketFrameReader'>Class WebSocketFrameReader    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/WebSocketFrameReader.cs#L43'><i class='bi bi-code-slash'></i></a></h1>
+ <div class="facts text-secondary">
+<dl><dt>Namespace</dt><dd><a href='Alis.Core.Network.Internal.html'>Alis.Core.Network.Internal</a></dd></dl><dl><dt>Assembly</dt><dd>Alis.dll</dd></dl>
+</div><p>Reads a WebSocket frame
+see <a href="http://tools.ietf.org/html/rfc6455">http://tools.ietf.org/html/rfc6455</a> for specification</p>
+<pre><code class='lang-csharp'>internal static class WebSocketFrameReader</code></pre><h4 class='section'>Inheritance</h4><dl class="typelist inheritance"><dd>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object'>object</a>
+</div>
+<div>
+<a href='Alis.Core.Network.Internal.WebSocketFrameReader.html'>WebSocketFrameReader</a>
+</div>
+
+</dd></dl><h4 class='section'>Inherited Members</h4><dl class="typelist"><dd>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)'>object.Equals(object?)</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)'>object.Equals(object?, object?)</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.gethashcode'>object.GetHashCode()</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.gettype'>object.GetType()</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone'>object.MemberwiseClone()</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.referenceequals'>object.ReferenceEquals(object?, object?)</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.tostring'>object.ToString()</a>
+</div>
+
+</dd></dl><h2 class='section'>Methods</h2><h3 class='section api' data-uid='Alis.Core.Network.Internal.WebSocketFrameReader.CalculateNumBytesToRead(System.Int32,System.Int32)' data-commentid='M:Alis.Core.Network.Internal.WebSocketFrameReader.CalculateNumBytesToRead(System.Int32,System.Int32)' id='Alis_Core_Network_Internal_WebSocketFrameReader_CalculateNumBytesToRead_System_Int32_System_Int32_'>CalculateNumBytesToRead(int, int)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/WebSocketFrameReader.cs#L51'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Calculates the num bytes to read using the specified num bytes letf to read</p>
+<pre><code class='lang-csharp'>internal static int CalculateNumBytesToRead(int numBytesLetfToRead, int bufferSize)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>numBytesLetfToRead</code> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+<p>The num bytes letf to read</p>
+
+</dd><dt><code>bufferSize</code> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+<p>The buffer size</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+<p>The num bytes letf to read</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Network.Internal.WebSocketFrameReader.DecodeCloseFrame(System.Boolean,Alis.Core.Network.Internal.WebSocketOpCode,System.Int32,System.ArraySegment{System.Byte},System.ArraySegment{System.Byte})' data-commentid='M:Alis.Core.Network.Internal.WebSocketFrameReader.DecodeCloseFrame(System.Boolean,Alis.Core.Network.Internal.WebSocketOpCode,System.Int32,System.ArraySegment{System.Byte},System.ArraySegment{System.Byte})' id='Alis_Core_Network_Internal_WebSocketFrameReader_DecodeCloseFrame_System_Boolean_Alis_Core_Network_Internal_WebSocketOpCode_System_Int32_System_ArraySegment_System_Byte__System_ArraySegment_System_Byte__'>DecodeCloseFrame(bool, WebSocketOpCode, int, ArraySegment&lt;byte&gt;, ArraySegment&lt;byte&gt;)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/WebSocketFrameReader.cs#L160'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Extracts close status and close description information from the web socket frame</p>
+<pre><code class='lang-csharp'>internal static WebSocketFrame DecodeCloseFrame(bool isFinBitSet, WebSocketOpCode opCode, int count, ArraySegment&lt;byte&gt; buffer, ArraySegment&lt;byte&gt; maskKey)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>isFinBitSet</code> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+
+</dd><dt><code>opCode</code> <a href='Alis.Core.Network.Internal.WebSocketOpCode.html'>WebSocketOpCode</a>  </dt>
+<dd>
+
+
+
+</dd><dt><code>count</code> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+
+</dd><dt><code>buffer</code> <a href='https://learn.microsoft.com/dotnet/api/system.arraysegment-1'>ArraySegment</a>&lt;<a href='https://learn.microsoft.com/dotnet/api/system.byte'>byte</a>&gt;  </dt>
+<dd>
+
+
+
+</dd><dt><code>maskKey</code> <a href='https://learn.microsoft.com/dotnet/api/system.arraysegment-1'>ArraySegment</a>&lt;<a href='https://learn.microsoft.com/dotnet/api/system.byte'>byte</a>&gt;  </dt>
+<dd>
+
+
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='Alis.Core.Network.Internal.WebSocketFrame.html'>WebSocketFrame</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Network.Internal.WebSocketFrameReader.GetInitialLength(System.Byte)' data-commentid='M:Alis.Core.Network.Internal.WebSocketFrameReader.GetInitialLength(System.Byte)' id='Alis_Core_Network_Internal_WebSocketFrameReader_GetInitialLength_System_Byte_'>GetInitialLength(byte)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/WebSocketFrameReader.cs#L227'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Gets the initial length using the specified byte 2</p>
+<pre><code class='lang-csharp'>internal static uint GetInitialLength(byte byte2)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>byte2</code> <a href='https://learn.microsoft.com/dotnet/api/system.byte'>byte</a>  </dt>
+<dd>
+
+
+<p>The byte</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.uint32'>uint</a>  </dt>
+<dd>
+
+
+<p>The uint</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Network.Internal.WebSocketFrameReader.ReadAsync(System.IO.Stream,System.ArraySegment{System.Byte},System.Threading.CancellationToken)' data-commentid='M:Alis.Core.Network.Internal.WebSocketFrameReader.ReadAsync(System.IO.Stream,System.ArraySegment{System.Byte},System.Threading.CancellationToken)' id='Alis_Core_Network_Internal_WebSocketFrameReader_ReadAsync_System_IO_Stream_System_ArraySegment_System_Byte__System_Threading_CancellationToken_'>ReadAsync(Stream, ArraySegment&lt;byte&gt;, CancellationToken)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/WebSocketFrameReader.cs#L95'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Read a WebSocket frame from the stream</p>
+<pre><code class='lang-csharp'>public static Task&lt;WebSocketReadCursor&gt; ReadAsync(Stream fromStream, ArraySegment&lt;byte&gt; intoBuffer, CancellationToken cancellationToken)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>fromStream</code> <a href='https://learn.microsoft.com/dotnet/api/system.io.stream'>Stream</a>  </dt>
+<dd>
+
+
+<p>The stream to read from</p>
+
+</dd><dt><code>intoBuffer</code> <a href='https://learn.microsoft.com/dotnet/api/system.arraysegment-1'>ArraySegment</a>&lt;<a href='https://learn.microsoft.com/dotnet/api/system.byte'>byte</a>&gt;  </dt>
+<dd>
+
+
+<p>The buffer to read into</p>
+
+</dd><dt><code>cancellationToken</code> <a href='https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken'>CancellationToken</a>  </dt>
+<dd>
+
+
+<p>the cancellation token</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1'>Task</a>&lt;<a href='Alis.Core.Network.Internal.WebSocketReadCursor.html'>WebSocketReadCursor</a>&gt;  </dt>
+<dd>
+
+
+<p>A websocket frame</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Network.Internal.WebSocketFrameReader.ReadFromCursorAsync(System.IO.Stream,System.ArraySegment{System.Byte},Alis.Core.Network.Internal.WebSocketReadCursor,System.Threading.CancellationToken)' data-commentid='M:Alis.Core.Network.Internal.WebSocketFrameReader.ReadFromCursorAsync(System.IO.Stream,System.ArraySegment{System.Byte},Alis.Core.Network.Internal.WebSocketReadCursor,System.Threading.CancellationToken)' id='Alis_Core_Network_Internal_WebSocketFrameReader_ReadFromCursorAsync_System_IO_Stream_System_ArraySegment_System_Byte__Alis_Core_Network_Internal_WebSocketReadCursor_System_Threading_CancellationToken_'>ReadFromCursorAsync(Stream, ArraySegment&lt;byte&gt;, WebSocketReadCursor, CancellationToken)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/WebSocketFrameReader.cs#L72'><i class='bi bi-code-slash'></i></a></h3>
+ <p>The last read could not be completed because the read buffer was too small.
+We need to continue reading bytes off the stream.
+Not to be confused with a continuation frame</p>
+<pre><code class='lang-csharp'>public static Task&lt;WebSocketReadCursor&gt; ReadFromCursorAsync(Stream fromStream, ArraySegment&lt;byte&gt; intoBuffer, WebSocketReadCursor readCursor, CancellationToken cancellationToken)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>fromStream</code> <a href='https://learn.microsoft.com/dotnet/api/system.io.stream'>Stream</a>  </dt>
+<dd>
+
+
+<p>The stream to read from</p>
+
+</dd><dt><code>intoBuffer</code> <a href='https://learn.microsoft.com/dotnet/api/system.arraysegment-1'>ArraySegment</a>&lt;<a href='https://learn.microsoft.com/dotnet/api/system.byte'>byte</a>&gt;  </dt>
+<dd>
+
+
+<p>The buffer to read into</p>
+
+</dd><dt><code>readCursor</code> <a href='Alis.Core.Network.Internal.WebSocketReadCursor.html'>WebSocketReadCursor</a>  </dt>
+<dd>
+
+
+<p>The previous partial websocket frame read plus cursor information</p>
+
+</dd><dt><code>cancellationToken</code> <a href='https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken'>CancellationToken</a>  </dt>
+<dd>
+
+
+<p>the cancellation token</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1'>Task</a>&lt;<a href='Alis.Core.Network.Internal.WebSocketReadCursor.html'>WebSocketReadCursor</a>&gt;  </dt>
+<dd>
+
+
+<p>A websocket frame</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Network.Internal.WebSocketFrameReader.ReadLength(System.Byte,System.ArraySegment{System.Byte},System.IO.Stream,System.Threading.CancellationToken)' data-commentid='M:Alis.Core.Network.Internal.WebSocketFrameReader.ReadLength(System.Byte,System.ArraySegment{System.Byte},System.IO.Stream,System.Threading.CancellationToken)' id='Alis_Core_Network_Internal_WebSocketFrameReader_ReadLength_System_Byte_System_ArraySegment_System_Byte__System_IO_Stream_System_Threading_CancellationToken_'>ReadLength(byte, ArraySegment&lt;byte&gt;, Stream, CancellationToken)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/WebSocketFrameReader.cs#L203'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Reads the length of the payload according to the contents of byte2</p>
+<pre><code class='lang-csharp'>internal static Task&lt;uint&gt; ReadLength(byte byte2, ArraySegment&lt;byte&gt; smallBuffer, Stream fromStream, CancellationToken cancellationToken)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>byte2</code> <a href='https://learn.microsoft.com/dotnet/api/system.byte'>byte</a>  </dt>
+<dd>
+
+
+
+</dd><dt><code>smallBuffer</code> <a href='https://learn.microsoft.com/dotnet/api/system.arraysegment-1'>ArraySegment</a>&lt;<a href='https://learn.microsoft.com/dotnet/api/system.byte'>byte</a>&gt;  </dt>
+<dd>
+
+
+
+</dd><dt><code>fromStream</code> <a href='https://learn.microsoft.com/dotnet/api/system.io.stream'>Stream</a>  </dt>
+<dd>
+
+
+
+</dd><dt><code>cancellationToken</code> <a href='https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken'>CancellationToken</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1'>Task</a>&lt;<a href='https://learn.microsoft.com/dotnet/api/system.uint32'>uint</a>&gt;  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Network.Internal.WebSocketFrameReader.ReadLongLength(System.IO.Stream,System.ArraySegment{System.Byte},System.Threading.CancellationToken)' data-commentid='M:Alis.Core.Network.Internal.WebSocketFrameReader.ReadLongLength(System.IO.Stream,System.ArraySegment{System.Byte},System.Threading.CancellationToken)' id='Alis_Core_Network_Internal_WebSocketFrameReader_ReadLongLength_System_IO_Stream_System_ArraySegment_System_Byte__System_Threading_CancellationToken_'>ReadLongLength(Stream, ArraySegment&lt;byte&gt;, CancellationToken)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/WebSocketFrameReader.cs#L249'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Reads the long length using the specified from stream</p>
+<pre><code class='lang-csharp'>internal static Task&lt;uint&gt; ReadLongLength(Stream fromStream, ArraySegment&lt;byte&gt; smallBuffer, CancellationToken cancellationToken)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>fromStream</code> <a href='https://learn.microsoft.com/dotnet/api/system.io.stream'>Stream</a>  </dt>
+<dd>
+
+
+<p>The from stream</p>
+
+</dd><dt><code>smallBuffer</code> <a href='https://learn.microsoft.com/dotnet/api/system.arraysegment-1'>ArraySegment</a>&lt;<a href='https://learn.microsoft.com/dotnet/api/system.byte'>byte</a>&gt;  </dt>
+<dd>
+
+
+<p>The small buffer</p>
+
+</dd><dt><code>cancellationToken</code> <a href='https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken'>CancellationToken</a>  </dt>
+<dd>
+
+
+<p>The cancellation token</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1'>Task</a>&lt;<a href='https://learn.microsoft.com/dotnet/api/system.uint32'>uint</a>&gt;  </dt>
+<dd>
+
+
+<p>A task containing the uint</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Network.Internal.WebSocketFrameReader.ReadShortLength(System.IO.Stream,System.ArraySegment{System.Byte},System.Threading.CancellationToken)' data-commentid='M:Alis.Core.Network.Internal.WebSocketFrameReader.ReadShortLength(System.IO.Stream,System.ArraySegment{System.Byte},System.Threading.CancellationToken)' id='Alis_Core_Network_Internal_WebSocketFrameReader_ReadShortLength_System_IO_Stream_System_ArraySegment_System_Byte__System_Threading_CancellationToken_'>ReadShortLength(Stream, ArraySegment&lt;byte&gt;, CancellationToken)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/WebSocketFrameReader.cs#L240'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Reads the short length using the specified from stream</p>
+<pre><code class='lang-csharp'>internal static Task&lt;uint&gt; ReadShortLength(Stream fromStream, ArraySegment&lt;byte&gt; smallBuffer, CancellationToken cancellationToken)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>fromStream</code> <a href='https://learn.microsoft.com/dotnet/api/system.io.stream'>Stream</a>  </dt>
+<dd>
+
+
+<p>The from stream</p>
+
+</dd><dt><code>smallBuffer</code> <a href='https://learn.microsoft.com/dotnet/api/system.arraysegment-1'>ArraySegment</a>&lt;<a href='https://learn.microsoft.com/dotnet/api/system.byte'>byte</a>&gt;  </dt>
+<dd>
+
+
+<p>The small buffer</p>
+
+</dd><dt><code>cancellationToken</code> <a href='https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken'>CancellationToken</a>  </dt>
+<dd>
+
+
+<p>The cancellation token</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1'>Task</a>&lt;<a href='https://learn.microsoft.com/dotnet/api/system.uint32'>uint</a>&gt;  </dt>
+<dd>
+
+
+<p>A task containing the uint</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Network.Internal.WebSocketFrameReader.ValidateLength(System.UInt32)' data-commentid='M:Alis.Core.Network.Internal.WebSocketFrameReader.ValidateLength(System.UInt32)' id='Alis_Core_Network_Internal_WebSocketFrameReader_ValidateLength_System_UInt32_'>ValidateLength(uint)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/WebSocketFrameReader.cs#L256'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Validates the length using the specified len</p>
+<pre><code class='lang-csharp'>internal static void ValidateLength(uint len)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>len</code> <a href='https://learn.microsoft.com/dotnet/api/system.uint32'>uint</a>  </dt>
+<dd>
+
+
+<p>The len</p>
+
+</dd></dl><h4 class='section'>Exceptions</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception'>ArgumentOutOfRangeException</a>  </dt>
+<dd>
+
+
+<p>Payload length out of range. Min 0 max 2GB. Actual {len:#,##0} bytes.</p>
+
+</dd></dl>
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Alis - Develop the video games of your dreams 💯 free!! on Windows, MacOS, Linux, Android(soon), IOS(soon).
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

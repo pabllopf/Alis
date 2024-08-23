@@ -1,0 +1,43 @@
+### YamlMime:ApiPage
+title: Enum LimitState
+body:
+- api1: Enum LimitState
+  id: Alis_Core_Physic_Dynamics_Joints_LimitState
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/LimitState.cs#L35
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.LimitState
+    commentId: T:Alis.Core.Physic.Dynamics.Joints.LimitState
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Physic.Dynamics.Joints
+      url: Alis.Core.Physic.Dynamics.Joints.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The limit state enum
+- code: public enum LimitState
+- h2: Fields
+- parameters:
+  - name: Inactive
+    default: "0"
+    description: >+
+      The inactive limit state
+
+  - name: AtLower
+    default: "1"
+    description: >+
+      The at lower limit state
+
+  - name: AtUpper
+    default: "2"
+    description: >+
+      The at upper limit state
+
+  - name: Equal
+    default: "3"
+    description: >+
+      The equal limit state
+
+languageId: csharp
+metadata:
+  description: The limit state enum

@@ -1,0 +1,151 @@
+### YamlMime:ApiPage
+title: Class CollidePolygon
+body:
+- api1: Class CollidePolygon
+  id: Alis_Core_Physic_Collision_NarrowPhase_CollidePolygon
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/CollidePolygon.cs#L43
+  metadata:
+    uid: Alis.Core.Physic.Collision.NarrowPhase.CollidePolygon
+    commentId: T:Alis.Core.Physic.Collision.NarrowPhase.CollidePolygon
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Physic.Collision.NarrowPhase
+      url: Alis.Core.Physic.Collision.NarrowPhase.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The collide polygon class
+- code: public static class CollidePolygon
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: CollidePolygon
+    url: Alis.Core.Physic.Collision.NarrowPhase.CollidePolygon.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Methods
+- api3: CollidePolygons(ref Manifold, PolygonShape, ref Transform, PolygonShape, ref Transform)
+  id: Alis_Core_Physic_Collision_NarrowPhase_CollidePolygon_CollidePolygons_Alis_Core_Physic_Collision_NarrowPhase_Manifold__Alis_Core_Physic_Collision_Shapes_PolygonShape_Alis_Core_Aspect_Math_Transform__Alis_Core_Physic_Collision_Shapes_PolygonShape_Alis_Core_Aspect_Math_Transform__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/CollidePolygon.cs#L46
+  metadata:
+    uid: Alis.Core.Physic.Collision.NarrowPhase.CollidePolygon.CollidePolygons(Alis.Core.Physic.Collision.NarrowPhase.Manifold@,Alis.Core.Physic.Collision.Shapes.PolygonShape,Alis.Core.Aspect.Math.Transform@,Alis.Core.Physic.Collision.Shapes.PolygonShape,Alis.Core.Aspect.Math.Transform@)
+    commentId: M:Alis.Core.Physic.Collision.NarrowPhase.CollidePolygon.CollidePolygons(Alis.Core.Physic.Collision.NarrowPhase.Manifold@,Alis.Core.Physic.Collision.Shapes.PolygonShape,Alis.Core.Aspect.Math.Transform@,Alis.Core.Physic.Collision.Shapes.PolygonShape,Alis.Core.Aspect.Math.Transform@)
+- markdown: Compute the collision manifold between two polygons.
+- code: public static void CollidePolygons(ref Manifold manifold, PolygonShape polyA, ref Transform xfA, PolygonShape polyB, ref Transform xfB)
+- h4: Parameters
+- parameters:
+  - name: manifold
+    type:
+    - text: Manifold
+      url: Alis.Core.Physic.Collision.NarrowPhase.Manifold.html
+  - name: polyA
+    type:
+    - text: PolygonShape
+      url: Alis.Core.Physic.Collision.Shapes.PolygonShape.html
+  - name: xfA
+    type:
+    - text: Transform
+      url: Alis.Core.Aspect.Math.Transform.html
+  - name: polyB
+    type:
+    - text: PolygonShape
+      url: Alis.Core.Physic.Collision.Shapes.PolygonShape.html
+  - name: xfB
+    type:
+    - text: Transform
+      url: Alis.Core.Aspect.Math.Transform.html
+- api3: FindIncidentEdge(out ClipVertex[], PolygonShape, ref Transform, int, PolygonShape, ref Transform)
+  id: Alis_Core_Physic_Collision_NarrowPhase_CollidePolygon_FindIncidentEdge_Alis_Core_Physic_Collision_NarrowPhase_ClipVertex____Alis_Core_Physic_Collision_Shapes_PolygonShape_Alis_Core_Aspect_Math_Transform__System_Int32_Alis_Core_Physic_Collision_Shapes_PolygonShape_Alis_Core_Aspect_Math_Transform__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/CollidePolygon.cs#L225
+  metadata:
+    uid: Alis.Core.Physic.Collision.NarrowPhase.CollidePolygon.FindIncidentEdge(Alis.Core.Physic.Collision.NarrowPhase.ClipVertex[]@,Alis.Core.Physic.Collision.Shapes.PolygonShape,Alis.Core.Aspect.Math.Transform@,System.Int32,Alis.Core.Physic.Collision.Shapes.PolygonShape,Alis.Core.Aspect.Math.Transform@)
+    commentId: M:Alis.Core.Physic.Collision.NarrowPhase.CollidePolygon.FindIncidentEdge(Alis.Core.Physic.Collision.NarrowPhase.ClipVertex[]@,Alis.Core.Physic.Collision.Shapes.PolygonShape,Alis.Core.Aspect.Math.Transform@,System.Int32,Alis.Core.Physic.Collision.Shapes.PolygonShape,Alis.Core.Aspect.Math.Transform@)
+- markdown: Finds the incident edge using the specified c
+- code: internal static void FindIncidentEdge(out ClipVertex[] c, PolygonShape poly1, ref Transform xf1, int edge1, PolygonShape poly2, ref Transform xf2)
+- h4: Parameters
+- parameters:
+  - name: c
+    type:
+    - text: ClipVertex
+      url: Alis.Core.Physic.Collision.NarrowPhase.ClipVertex.html
+    - '['
+    - ']'
+    description: The
+  - name: poly1
+    type:
+    - text: PolygonShape
+      url: Alis.Core.Physic.Collision.Shapes.PolygonShape.html
+    description: The poly
+  - name: xf1
+    type:
+    - text: Transform
+      url: Alis.Core.Aspect.Math.Transform.html
+    description: The xf
+  - name: edge1
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The edge
+  - name: poly2
+    type:
+    - text: PolygonShape
+      url: Alis.Core.Physic.Collision.Shapes.PolygonShape.html
+    description: The poly
+  - name: xf2
+    type:
+    - text: Transform
+      url: Alis.Core.Aspect.Math.Transform.html
+    description: The xf
+- api3: FindMaxSeparation(out int, PolygonShape, ref Transform, PolygonShape, ref Transform)
+  id: Alis_Core_Physic_Collision_NarrowPhase_CollidePolygon_FindMaxSeparation_System_Int32__Alis_Core_Physic_Collision_Shapes_PolygonShape_Alis_Core_Aspect_Math_Transform__Alis_Core_Physic_Collision_Shapes_PolygonShape_Alis_Core_Aspect_Math_Transform__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/CollidePolygon.cs#L176
+  metadata:
+    uid: Alis.Core.Physic.Collision.NarrowPhase.CollidePolygon.FindMaxSeparation(System.Int32@,Alis.Core.Physic.Collision.Shapes.PolygonShape,Alis.Core.Aspect.Math.Transform@,Alis.Core.Physic.Collision.Shapes.PolygonShape,Alis.Core.Aspect.Math.Transform@)
+    commentId: M:Alis.Core.Physic.Collision.NarrowPhase.CollidePolygon.FindMaxSeparation(System.Int32@,Alis.Core.Physic.Collision.Shapes.PolygonShape,Alis.Core.Aspect.Math.Transform@,Alis.Core.Physic.Collision.Shapes.PolygonShape,Alis.Core.Aspect.Math.Transform@)
+- markdown: Find the max separation between poly1 and poly2 using edge normals from poly1.
+- code: internal static float FindMaxSeparation(out int edgeIndex, PolygonShape poly1, ref Transform xf1, PolygonShape poly2, ref Transform xf2)
+- h4: Parameters
+- parameters:
+  - name: edgeIndex
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: poly1
+    type:
+    - text: PolygonShape
+      url: Alis.Core.Physic.Collision.Shapes.PolygonShape.html
+  - name: xf1
+    type:
+    - text: Transform
+      url: Alis.Core.Aspect.Math.Transform.html
+  - name: poly2
+    type:
+    - text: PolygonShape
+      url: Alis.Core.Physic.Collision.Shapes.PolygonShape.html
+  - name: xf2
+    type:
+    - text: Transform
+      url: Alis.Core.Aspect.Math.Transform.html
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+languageId: csharp
+metadata:
+  description: The collide polygon class

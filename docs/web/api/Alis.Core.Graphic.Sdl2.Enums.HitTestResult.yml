@@ -1,0 +1,73 @@
+### YamlMime:ApiPage
+title: Enum HitTestResult
+body:
+- api1: Enum HitTestResult
+  id: Alis_Core_Graphic_Sdl2_Enums_HitTestResult
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Enums/HitTestResult.cs#L35
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Enums.HitTestResult
+    commentId: T:Alis.Core.Graphic.Sdl2.Enums.HitTestResult
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Enums
+      url: Alis.Core.Graphic.Sdl2.Enums.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The sdl hit test result enum
+- code: public enum HitTestResult
+- h2: Fields
+- parameters:
+  - name: SdlHitTestNormal
+    default: "0"
+    description: >+
+      The sdl hit test normal sdl hit test result
+
+  - name: SdlHitTestDraggable
+    default: "1"
+    description: >+
+      The sdl hit test draggable sdl hit test result
+
+  - name: SdlHitTestResizeTopLeft
+    default: "2"
+    description: >+
+      The sdl hit test resize top left sdl hit test result
+
+  - name: SdlHitTestResizeTop
+    default: "3"
+    description: >+
+      The sdl hit test resize top sdl hit test result
+
+  - name: SdlHitTestResizeTopRight
+    default: "4"
+    description: >+
+      The sdl hit test resize top right sdl hit test result
+
+  - name: SdlHitTestResizeRight
+    default: "5"
+    description: >+
+      The sdl hit test resize right sdl hit test result
+
+  - name: SdlHitTestResizeBottomRight
+    default: "6"
+    description: >+
+      The sdl hit test resize bottom right sdl hit test result
+
+  - name: SdlHitTestResizeBottom
+    default: "7"
+    description: >+
+      The sdl hit test resize bottom sdl hit test result
+
+  - name: SdlHitTestResizeBottomLeft
+    default: "8"
+    description: >+
+      The sdl hit test resize bottom left sdl hit test result
+
+  - name: SdlHitTestResizeLeft
+    default: "9"
+    description: >+
+      The sdl hit test resize left sdl hit test result
+
+languageId: csharp
+metadata:
+  description: The sdl hit test result enum

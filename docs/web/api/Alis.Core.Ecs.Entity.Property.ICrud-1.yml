@@ -1,0 +1,104 @@
+### YamlMime:ApiPage
+title: Interface ICrud<TItem>
+body:
+- api1: Interface ICrud<TItem>
+  id: Alis_Core_Ecs_Entity_Property_ICrud_1
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Ecs/src/Entity/Property/ICrud.cs#L35
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Property.ICrud`1
+    commentId: T:Alis.Core.Ecs.Entity.Property.ICrud`1
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Ecs.Entity.Property
+      url: Alis.Core.Ecs.Entity.Property.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The crud interface
+- code: public interface ICrud<in TItem>
+- h4: Type Parameters
+- parameters:
+  - name: TItem
+- h2: Methods
+- api3: Add<T>(T)
+  id: Alis_Core_Ecs_Entity_Property_ICrud_1_Add__1___0_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Ecs/src/Entity/Property/ICrud.cs#L42
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Property.ICrud`1.Add``1(``0)
+    commentId: M:Alis.Core.Ecs.Entity.Property.ICrud`1.Add``1(``0)
+- markdown: Adds the component
+- code: 'void Add<T>(T component) where T : TItem'
+- h4: Parameters
+- parameters:
+  - name: component
+    type:
+    - T
+    description: The component
+- h4: Type Parameters
+- parameters:
+  - name: T
+    description: The
+- api3: Clear()
+  id: Alis_Core_Ecs_Entity_Property_ICrud_1_Clear
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Ecs/src/Entity/Property/ICrud.cs#L68
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Property.ICrud`1.Clear
+    commentId: M:Alis.Core.Ecs.Entity.Property.ICrud`1.Clear
+- markdown: Cleans this instance
+- code: void Clear()
+- api3: Contains<T>()
+  id: Alis_Core_Ecs_Entity_Property_ICrud_1_Contains__1
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Ecs/src/Entity/Property/ICrud.cs#L63
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Property.ICrud`1.Contains``1
+    commentId: M:Alis.Core.Ecs.Entity.Property.ICrud`1.Contains``1
+- markdown: Describes whether this instance contains
+- code: 'bool Contains<T>() where T : TItem'
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- h4: Type Parameters
+- parameters:
+  - name: T
+    description: The
+- api3: Get<T>()
+  id: Alis_Core_Ecs_Entity_Property_ICrud_1_Get__1
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Ecs/src/Entity/Property/ICrud.cs#L56
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Property.ICrud`1.Get``1
+    commentId: M:Alis.Core.Ecs.Entity.Property.ICrud`1.Get``1
+- markdown: Gets this instance
+- code: 'T Get<T>() where T : TItem'
+- h4: Returns
+- parameters:
+  - type:
+    - T
+    description: The
+- h4: Type Parameters
+- parameters:
+  - name: T
+    description: The
+- api3: Remove<T>(T)
+  id: Alis_Core_Ecs_Entity_Property_ICrud_1_Remove__1___0_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Ecs/src/Entity/Property/ICrud.cs#L49
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Property.ICrud`1.Remove``1(``0)
+    commentId: M:Alis.Core.Ecs.Entity.Property.ICrud`1.Remove``1(``0)
+- markdown: Removes the component
+- code: 'void Remove<T>(T component) where T : TItem'
+- h4: Parameters
+- parameters:
+  - name: component
+    type:
+    - T
+    description: The component
+- h4: Type Parameters
+- parameters:
+  - name: T
+    description: The
+languageId: csharp
+metadata:
+  description: The crud interface

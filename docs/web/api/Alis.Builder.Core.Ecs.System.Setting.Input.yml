@@ -1,0 +1,15 @@
+### YamlMime:ApiPage
+title: Namespace Alis.Builder.Core.Ecs.System.Setting.Input
+body:
+- api1: Namespace Alis.Builder.Core.Ecs.System.Setting.Input
+  id: Alis_Builder_Core_Ecs_System_Setting_Input
+  metadata:
+    uid: Alis.Builder.Core.Ecs.System.Setting.Input
+    commentId: N:Alis.Builder.Core.Ecs.System.Setting.Input
+- h3: Classes
+- parameters:
+  - type:
+      text: InputSettingBuilder
+      url: Alis.Builder.Core.Ecs.System.Setting.Input.InputSettingBuilder.html
+    description: The audio setting builder class
+languageId: csharp

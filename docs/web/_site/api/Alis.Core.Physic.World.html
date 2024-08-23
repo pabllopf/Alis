@@ -1,0 +1,348 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+      <title>Class World | Alis - Develop the video games of your dreams &#128175; free!! </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class World | Alis - Develop the video games of your dreams &#128175; free!! ">
+      
+      <meta name="description" content="The world class manages all physics entities, dynamic simulation, and asynchronous queries.">
+      <link rel="icon" href="../resources/logo.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ApiPage">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../resources/logo.png" alt="Alis">
+            Alis
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 class='section api' data-uid='Alis.Core.Physic.World' data-commentid='T:Alis.Core.Physic.World' id='Alis_Core_Physic_World'>Class World    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L43'><i class='bi bi-code-slash'></i></a></h1>
+ <div class="facts text-secondary">
+<dl><dt>Namespace</dt><dd><a href='Alis.Core.Physic.html'>Alis.Core.Physic</a></dd></dl><dl><dt>Assembly</dt><dd>Alis.dll</dd></dl>
+</div><p>The world class manages all physics entities, dynamic simulation, and asynchronous queries.</p>
+<pre><code class='lang-csharp'>public class World</code></pre><h4 class='section'>Inheritance</h4><dl class="typelist inheritance"><dd>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object'>object</a>
+</div>
+<div>
+<a href='Alis.Core.Physic.World.html'>World</a>
+</div>
+
+</dd></dl><h4 class='section'>Inherited Members</h4><dl class="typelist"><dd>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)'>object.Equals(object?)</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)'>object.Equals(object?, object?)</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.gethashcode'>object.GetHashCode()</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.gettype'>object.GetType()</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone'>object.MemberwiseClone()</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.referenceequals'>object.ReferenceEquals(object?, object?)</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.tostring'>object.ToString()</a>
+</div>
+
+</dd></dl><h2 class='section'>Constructors</h2><h3 class='section api' data-uid='Alis.Core.Physic.World.#ctor(Alis.Core.Aspect.Math.Vector.Vector2)' data-commentid='M:Alis.Core.Physic.World.#ctor(Alis.Core.Aspect.Math.Vector.Vector2)' id='Alis_Core_Physic_World__ctor_Alis_Core_Aspect_Math_Vector_Vector2_'>World(Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L54'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Initializes a new instance of the <span class="xref">Alis.Core.Physic.World</span> class</p>
+<pre><code class='lang-csharp'>public World(Vector2 gravity)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>gravity</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The gravity</p>
+
+</dd></dl><h2 class='section'>Fields</h2><h3 class='section api' data-uid='Alis.Core.Physic.World.Island' data-commentid='F:Alis.Core.Physic.World.Island' id='Alis_Core_Physic_World_Island'>Island    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L48'><i class='bi bi-code-slash'></i></a></h3>
+ <p>The island</p>
+<pre><code class='lang-csharp'>internal readonly Island Island</code></pre><h4 class='section'>Field Value</h4><dl class='parameters'><dt> <a href='Alis.Core.Physic.Dynamics.Solver.Island.html'>Island</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h2 class='section'>Properties</h2><h3 class='section api' data-uid='Alis.Core.Physic.World.Bodies' data-commentid='P:Alis.Core.Physic.World.Bodies' id='Alis_Core_Physic_World_Bodies'>Bodies    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L74'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Gets or sets the value of the bodies</p>
+<pre><code class='lang-csharp'>public List&lt;Body&gt; Bodies { get; }</code></pre><h4 class='section'>Property Value</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1'>List</a>&lt;<a href='Alis.Core.Physic.Dynamics.Body.html'>Body</a>&gt;  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.World.BreakableBodies' data-commentid='P:Alis.Core.Physic.World.BreakableBodies' id='Alis_Core_Physic_World_BreakableBodies'>BreakableBodies    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L64'><i class='bi bi-code-slash'></i></a></h3>
+ <p>The breakable body</p>
+<pre><code class='lang-csharp'>internal List&lt;BreakableBody&gt; BreakableBodies { get; }</code></pre><h4 class='section'>Property Value</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1'>List</a>&lt;<a href='Alis.Core.Physic.Dynamics.BreakableBody.html'>BreakableBody</a>&gt;  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.World.ContactManager' data-commentid='P:Alis.Core.Physic.World.ContactManager' id='Alis_Core_Physic_World_ContactManager'>ContactManager    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L84'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Gets or sets the value of the contact manager</p>
+<pre><code class='lang-csharp'>internal ContactManager ContactManager { get; }</code></pre><h4 class='section'>Property Value</h4><dl class='parameters'><dt> <a href='Alis.Core.Physic.Collision.ContactSystem.ContactManager.html'>ContactManager</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.World.Gravity' data-commentid='P:Alis.Core.Physic.World.Gravity' id='Alis_Core_Physic_World_Gravity'>Gravity    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L69'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Gets the value of the gravity</p>
+<pre><code class='lang-csharp'>internal Vector2 Gravity { get; }</code></pre><h4 class='section'>Property Value</h4><dl class='parameters'><dt> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.World.Joints' data-commentid='P:Alis.Core.Physic.World.Joints' id='Alis_Core_Physic_World_Joints'>Joints    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L79'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Gets or sets the value of the joints</p>
+<pre><code class='lang-csharp'>internal List&lt;Joint&gt; Joints { get; }</code></pre><h4 class='section'>Property Value</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1'>List</a>&lt;<a href='Alis.Core.Physic.Dynamics.Joints.Joint.html'>Joint</a>&gt;  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.World.TimeStepGlobal' data-commentid='P:Alis.Core.Physic.World.TimeStepGlobal' id='Alis_Core_Physic_World_TimeStepGlobal'>TimeStepGlobal    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L89'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Gets or sets the value of the step</p>
+<pre><code class='lang-csharp'>internal TimeStep TimeStepGlobal { get; }</code></pre><h4 class='section'>Property Value</h4><dl class='parameters'><dt> <a href='Alis.Core.Aspect.Time.TimeStep.html'>TimeStep</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h2 class='section'>Methods</h2><h3 class='section api' data-uid='Alis.Core.Physic.World.AddBody(Alis.Core.Physic.Dynamics.Body)' data-commentid='M:Alis.Core.Physic.World.AddBody(Alis.Core.Physic.Dynamics.Body)' id='Alis_Core_Physic_World_AddBody_Alis_Core_Physic_Dynamics_Body_'>AddBody(Body)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L95'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Adds the body using the specified body</p>
+<pre><code class='lang-csharp'>public void AddBody(Body body)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>body</code> <a href='Alis.Core.Physic.Dynamics.Body.html'>Body</a>  </dt>
+<dd>
+
+
+<p>The body</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.World.AddBreakableBody(Alis.Core.Physic.Dynamics.BreakableBody)' data-commentid='M:Alis.Core.Physic.World.AddBreakableBody(Alis.Core.Physic.Dynamics.BreakableBody)' id='Alis_Core_Physic_World_AddBreakableBody_Alis_Core_Physic_Dynamics_BreakableBody_'>AddBreakableBody(BreakableBody)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L107'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Adds the breakable body using the specified breakable body</p>
+<pre><code class='lang-csharp'>public void AddBreakableBody(BreakableBody breakableBody)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>breakableBody</code> <a href='Alis.Core.Physic.Dynamics.BreakableBody.html'>BreakableBody</a>  </dt>
+<dd>
+
+
+<p>The breakable body</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.World.AddJoint(Alis.Core.Physic.Dynamics.Joints.Joint)' data-commentid='M:Alis.Core.Physic.World.AddJoint(Alis.Core.Physic.Dynamics.Joints.Joint)' id='Alis_Core_Physic_World_AddJoint_Alis_Core_Physic_Dynamics_Joints_Joint_'>AddJoint(Joint)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L119'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Adds the joint using the specified joint</p>
+<pre><code class='lang-csharp'>public void AddJoint(Joint joint)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>joint</code> <a href='Alis.Core.Physic.Dynamics.Joints.Joint.html'>Joint</a>  </dt>
+<dd>
+
+
+<p>The joint</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.World.ClearForces' data-commentid='M:Alis.Core.Physic.World.ClearForces' id='Alis_Core_Physic_World_ClearForces'>ClearForces()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L283'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Clear all forces</p>
+<pre><code class='lang-csharp'>internal void ClearForces()</code></pre><h3 class='section api' data-uid='Alis.Core.Physic.World.CollideContacts' data-commentid='M:Alis.Core.Physic.World.CollideContacts' id='Alis_Core_Physic_World_CollideContacts'>CollideContacts()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L168'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Collides the contacts</p>
+<pre><code class='lang-csharp'>internal void CollideContacts()</code></pre><h3 class='section api' data-uid='Alis.Core.Physic.World.FindNewContacts' data-commentid='M:Alis.Core.Physic.World.FindNewContacts' id='Alis_Core_Physic_World_FindNewContacts'>FindNewContacts()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L148'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Finds the new contacts</p>
+<pre><code class='lang-csharp'>internal void FindNewContacts()</code></pre><h3 class='section api' data-uid='Alis.Core.Physic.World.InvalidateContactToi' data-commentid='M:Alis.Core.Physic.World.InvalidateContactToi' id='Alis_Core_Physic_World_InvalidateContactToi'>InvalidateContactToi()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L222'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Invalidates the contact to is</p>
+<pre><code class='lang-csharp'>internal void InvalidateContactToi()</code></pre><h3 class='section api' data-uid='Alis.Core.Physic.World.IsMinAlphaGreaterThanEpsilon(System.Single)' data-commentid='M:Alis.Core.Physic.World.IsMinAlphaGreaterThanEpsilon(System.Single)' id='Alis_Core_Physic_World_IsMinAlphaGreaterThanEpsilon_System_Single_'>IsMinAlphaGreaterThanEpsilon(float)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L265'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Describes whether this instance is min alpha greater than epsilon</p>
+<pre><code class='lang-csharp'>internal static bool IsMinAlphaGreaterThanEpsilon(float minAlpha)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>minAlpha</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The min alpha</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+<p>The bool</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.World.RemoveBody(Alis.Core.Physic.Dynamics.Body)' data-commentid='M:Alis.Core.Physic.World.RemoveBody(Alis.Core.Physic.Dynamics.Body)' id='Alis_Core_Physic_World_RemoveBody_Alis_Core_Physic_Dynamics_Body_'>RemoveBody(Body)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L101'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Removes the body using the specified body</p>
+<pre><code class='lang-csharp'>public void RemoveBody(Body body)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>body</code> <a href='Alis.Core.Physic.Dynamics.Body.html'>Body</a>  </dt>
+<dd>
+
+
+<p>The body</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.World.RemoveBreakableBody(Alis.Core.Physic.Dynamics.BreakableBody)' data-commentid='M:Alis.Core.Physic.World.RemoveBreakableBody(Alis.Core.Physic.Dynamics.BreakableBody)' id='Alis_Core_Physic_World_RemoveBreakableBody_Alis_Core_Physic_Dynamics_BreakableBody_'>RemoveBreakableBody(BreakableBody)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L113'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Removes the breakable body using the specified breakable body</p>
+<pre><code class='lang-csharp'>public void RemoveBreakableBody(BreakableBody breakableBody)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>breakableBody</code> <a href='Alis.Core.Physic.Dynamics.BreakableBody.html'>BreakableBody</a>  </dt>
+<dd>
+
+
+<p>The breakable body</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.World.RemoveJoint(Alis.Core.Physic.Dynamics.Joints.Joint)' data-commentid='M:Alis.Core.Physic.World.RemoveJoint(Alis.Core.Physic.Dynamics.Joints.Joint)' id='Alis_Core_Physic_World_RemoveJoint_Alis_Core_Physic_Dynamics_Joints_Joint_'>RemoveJoint(Joint)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L125'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Removes the joint using the specified joint</p>
+<pre><code class='lang-csharp'>public void RemoveJoint(Joint joint)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>joint</code> <a href='Alis.Core.Physic.Dynamics.Joints.Joint.html'>Joint</a>  </dt>
+<dd>
+
+
+<p>The joint</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.World.SetAlphaToZeroForFastMovingBodies' data-commentid='M:Alis.Core.Physic.World.SetAlphaToZeroForFastMovingBodies' id='Alis_Core_Physic_World_SetAlphaToZeroForFastMovingBodies'>SetAlphaToZeroForFastMovingBodies()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L217'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Sets the alpha to zero for fast moving bodies</p>
+<pre><code class='lang-csharp'>internal void SetAlphaToZeroForFastMovingBodies()</code></pre><h3 class='section api' data-uid='Alis.Core.Physic.World.Solve' data-commentid='M:Alis.Core.Physic.World.Solve' id='Alis_Core_Physic_World_Solve'>Solve()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L183'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Solves the step</p>
+<pre><code class='lang-csharp'>internal void Solve()</code></pre><h3 class='section api' data-uid='Alis.Core.Physic.World.SolveToi' data-commentid='M:Alis.Core.Physic.World.SolveToi' id='Alis_Core_Physic_World_SolveToi'>SolveToi()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L207'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Solves the toi</p>
+<pre><code class='lang-csharp'>internal void SolveToi()</code></pre><h3 class='section api' data-uid='Alis.Core.Physic.World.SolveToiEvents' data-commentid='M:Alis.Core.Physic.World.SolveToiEvents' id='Alis_Core_Physic_World_SolveToiEvents'>SolveToiEvents()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L227'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Solves the TOI (Time of Impact) events.</p>
+<pre><code class='lang-csharp'>internal void SolveToiEvents()</code></pre><h3 class='section api' data-uid='Alis.Core.Physic.World.SolveToiIsland(System.Single,System.Int32,System.Int32)' data-commentid='M:Alis.Core.Physic.World.SolveToiIsland(System.Single,System.Int32,System.Int32)' id='Alis_Core_Physic_World_SolveToiIsland_System_Single_System_Int32_System_Int32_'>SolveToiIsland(float, int, int)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L273'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Solves the toi island using the specified min alpha</p>
+<pre><code class='lang-csharp'>internal void SolveToiIsland(float minAlpha, int islandIndexA, int islandIndexB)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>minAlpha</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The min alpha</p>
+
+</dd><dt><code>islandIndexA</code> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+<p>The island index</p>
+
+</dd><dt><code>islandIndexB</code> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+<p>The island index</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.World.Step(System.Single,System.Int32,System.Int32)' data-commentid='M:Alis.Core.Physic.World.Step(System.Single,System.Int32,System.Int32)' id='Alis_Core_Physic_World_Step_System_Single_System_Int32_System_Int32_'>Step(float, int, int)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L133'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Steps the dt</p>
+<pre><code class='lang-csharp'>public void Step(float dt, int velocityIterations = 8, int positionIterations = 3)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>dt</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The dt</p>
+
+</dd><dt><code>velocityIterations</code> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+<p>The velocity iterations</p>
+
+</dd><dt><code>positionIterations</code> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+<p>The position iterations</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.World.SynchronizeIslandBodies' data-commentid='M:Alis.Core.Physic.World.SynchronizeIslandBodies' id='Alis_Core_Physic_World_SynchronizeIslandBodies'>SynchronizeIslandBodies()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L278'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Synchronizes the island bodies</p>
+<pre><code class='lang-csharp'>internal void SynchronizeIslandBodies()</code></pre><h3 class='section api' data-uid='Alis.Core.Physic.World.UpdateBreakableBodies' data-commentid='M:Alis.Core.Physic.World.UpdateBreakableBodies' id='Alis_Core_Physic_World_UpdateBreakableBodies'>UpdateBreakableBodies()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L178'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Updates the breakable bodies</p>
+<pre><code class='lang-csharp'>internal void UpdateBreakableBodies()</code></pre><h3 class='section api' data-uid='Alis.Core.Physic.World.UpdateInvertedDeltaTime' data-commentid='M:Alis.Core.Physic.World.UpdateInvertedDeltaTime' id='Alis_Core_Physic_World_UpdateInvertedDeltaTime'>UpdateInvertedDeltaTime()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L173'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Updates the inverted delta time using the specified dt</p>
+<pre><code class='lang-csharp'>internal void UpdateInvertedDeltaTime()</code></pre><h3 class='section api' data-uid='Alis.Core.Physic.World.UpdateTimeStep(System.Single,System.Int32,System.Int32)' data-commentid='M:Alis.Core.Physic.World.UpdateTimeStep(System.Single,System.Int32,System.Int32)' id='Alis_Core_Physic_World_UpdateTimeStep_System_Single_System_Int32_System_Int32_'>UpdateTimeStep(float, int, int)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L156'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Updates the time step using the specified dt</p>
+<pre><code class='lang-csharp'>internal void UpdateTimeStep(float dt, int velocityIterations, int positionIterations)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>dt</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The dt</p>
+
+</dd><dt><code>velocityIterations</code> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+<p>The velocity iterations</p>
+
+</dd><dt><code>positionIterations</code> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+<p>The position iterations</p>
+
+</dd></dl>
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Alis - Develop the video games of your dreams 💯 free!! on Windows, MacOS, Linux, Android(soon), IOS(soon).
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

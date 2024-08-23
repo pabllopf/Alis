@@ -1,0 +1,962 @@
+### YamlMime:ApiPage
+title: Class Vertices
+body:
+- api1: Class Vertices
+  id: Alis_Core_Physic_Shared_Vertices
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/Vertices.cs#L45
+  metadata:
+    uid: Alis.Core.Physic.Shared.Vertices
+    commentId: T:Alis.Core.Physic.Shared.Vertices
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Physic.Shared
+      url: Alis.Core.Physic.Shared.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The vertices class
+- code: 'public class Vertices : List<Vector2>, IList<Vector2>, ICollection<Vector2>, IReadOnlyList<Vector2>, IReadOnlyCollection<Vector2>, IEnumerable<Vector2>, IList, ICollection, IEnumerable'
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: List<Vector2>
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - text: Vertices
+    url: Alis.Core.Physic.Shared.Vertices.html
+- h4: Implements
+- list:
+  - text: IList<Vector2>
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - text: ICollection<Vector2>
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - text: IReadOnlyList<Vector2>
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - text: IReadOnlyCollection<Vector2>
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - text: IEnumerable<Vector2>
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - text: IList
+    url: https://learn.microsoft.com/dotnet/api/system.collections.ilist
+  - text: ICollection
+    url: https://learn.microsoft.com/dotnet/api/system.collections.icollection
+  - text: IEnumerable
+    url: https://learn.microsoft.com/dotnet/api/system.collections.ienumerable
+- h4: Inherited Members
+- list:
+  - text: List<Vector2>.IList.get_Item(int)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.system-collections-ilist-get_item
+  - text: List<Vector2>.IList.set_Item(int, object)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.system-collections-ilist-set_item
+  - text: List<Vector2>.Add(Vector2)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.add
+  - text: List<Vector2>.AddRange(IEnumerable<Vector2>)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.addrange
+  - text: List<Vector2>.AsReadOnly()
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.asreadonly
+  - text: List<Vector2>.BinarySearch(int, int, Vector2, IComparer<Vector2>?)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.binarysearch#system-collections-generic-list-1-binarysearch(system-int32-system-int32-0-system-collections-generic-icomparer((-0)))
+  - text: List<Vector2>.BinarySearch(Vector2)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.binarysearch#system-collections-generic-list-1-binarysearch(-0)
+  - text: List<Vector2>.BinarySearch(Vector2, IComparer<Vector2>?)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.binarysearch#system-collections-generic-list-1-binarysearch(-0-system-collections-generic-icomparer((-0)))
+  - text: List<Vector2>.Clear()
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.clear
+  - text: List<Vector2>.Contains(Vector2)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.contains
+  - text: List<Vector2>.ConvertAll<TOutput>(Converter<Vector2, TOutput>)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.convertall
+  - text: List<Vector2>.CopyTo(int, Vector2[], int, int)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.copyto#system-collections-generic-list-1-copyto(system-int32-0()-system-int32-system-int32)
+  - text: List<Vector2>.CopyTo(Vector2[])
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.copyto#system-collections-generic-list-1-copyto(-0())
+  - text: List<Vector2>.CopyTo(Vector2[], int)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.copyto#system-collections-generic-list-1-copyto(-0()-system-int32)
+  - text: List<Vector2>.Exists(Predicate<Vector2>)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.exists
+  - text: List<Vector2>.Find(Predicate<Vector2>)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.find
+  - text: List<Vector2>.FindAll(Predicate<Vector2>)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.findall
+  - text: List<Vector2>.FindIndex(int, int, Predicate<Vector2>)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.findindex#system-collections-generic-list-1-findindex(system-int32-system-int32-system-predicate((-0)))
+  - text: List<Vector2>.FindIndex(int, Predicate<Vector2>)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.findindex#system-collections-generic-list-1-findindex(system-int32-system-predicate((-0)))
+  - text: List<Vector2>.FindIndex(Predicate<Vector2>)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.findindex#system-collections-generic-list-1-findindex(system-predicate((-0)))
+  - text: List<Vector2>.FindLast(Predicate<Vector2>)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.findlast
+  - text: List<Vector2>.FindLastIndex(int, int, Predicate<Vector2>)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.findlastindex#system-collections-generic-list-1-findlastindex(system-int32-system-int32-system-predicate((-0)))
+  - text: List<Vector2>.FindLastIndex(int, Predicate<Vector2>)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.findlastindex#system-collections-generic-list-1-findlastindex(system-int32-system-predicate((-0)))
+  - text: List<Vector2>.FindLastIndex(Predicate<Vector2>)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.findlastindex#system-collections-generic-list-1-findlastindex(system-predicate((-0)))
+  - text: List<Vector2>.ForEach(Action<Vector2>)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.foreach
+  - text: List<Vector2>.GetEnumerator()
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.getenumerator
+  - text: List<Vector2>.GetRange(int, int)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.getrange
+  - text: List<Vector2>.IndexOf(Vector2)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof#system-collections-generic-list-1-indexof(-0)
+  - text: List<Vector2>.IndexOf(Vector2, int)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof#system-collections-generic-list-1-indexof(-0-system-int32)
+  - text: List<Vector2>.IndexOf(Vector2, int, int)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof#system-collections-generic-list-1-indexof(-0-system-int32-system-int32)
+  - text: List<Vector2>.Insert(int, Vector2)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.insert
+  - text: List<Vector2>.InsertRange(int, IEnumerable<Vector2>)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.insertrange
+  - text: List<Vector2>.LastIndexOf(Vector2)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof#system-collections-generic-list-1-lastindexof(-0)
+  - text: List<Vector2>.LastIndexOf(Vector2, int)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof#system-collections-generic-list-1-lastindexof(-0-system-int32)
+  - text: List<Vector2>.LastIndexOf(Vector2, int, int)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof#system-collections-generic-list-1-lastindexof(-0-system-int32-system-int32)
+  - text: List<Vector2>.Remove(Vector2)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.remove
+  - text: List<Vector2>.RemoveAll(Predicate<Vector2>)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.removeall
+  - text: List<Vector2>.RemoveAt(int)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.removeat
+  - text: List<Vector2>.RemoveRange(int, int)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.removerange
+  - text: List<Vector2>.Reverse()
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.reverse#system-collections-generic-list-1-reverse
+  - text: List<Vector2>.Reverse(int, int)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.reverse#system-collections-generic-list-1-reverse(system-int32-system-int32)
+  - text: List<Vector2>.Sort()
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.sort#system-collections-generic-list-1-sort
+  - text: List<Vector2>.Sort(IComparer<Vector2>?)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.sort#system-collections-generic-list-1-sort(system-collections-generic-icomparer((-0)))
+  - text: List<Vector2>.Sort(Comparison<Vector2>)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.sort#system-collections-generic-list-1-sort(system-comparison((-0)))
+  - text: List<Vector2>.Sort(int, int, IComparer<Vector2>?)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.sort#system-collections-generic-list-1-sort(system-int32-system-int32-system-collections-generic-icomparer((-0)))
+  - text: List<Vector2>.IEnumerable<Vector2>.GetEnumerator()
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.system-collections-generic-ienumerable-t--getenumerator
+  - text: List<Vector2>.ICollection.CopyTo(Array, int)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.system-collections-icollection-copyto
+  - text: List<Vector2>.IEnumerable.GetEnumerator()
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.system-collections-ienumerable-getenumerator
+  - text: List<Vector2>.IList.Add(object)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.system-collections-ilist-add
+  - text: List<Vector2>.IList.Contains(object)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.system-collections-ilist-contains
+  - text: List<Vector2>.IList.IndexOf(object)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.system-collections-ilist-indexof
+  - text: List<Vector2>.IList.Insert(int, object)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.system-collections-ilist-insert
+  - text: List<Vector2>.IList.Remove(object)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.system-collections-ilist-remove
+  - text: List<Vector2>.ToArray()
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.toarray
+  - text: List<Vector2>.TrimExcess()
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.trimexcess
+  - text: List<Vector2>.TrueForAll(Predicate<Vector2>)
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.trueforall
+  - text: List<Vector2>.Capacity
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.capacity
+  - text: List<Vector2>.Count
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.count
+  - text: List<Vector2>.this[int]
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.item
+  - text: List<Vector2>.ICollection<Vector2>.IsReadOnly
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.system-collections-generic-icollection-t--isreadonly
+  - text: List<Vector2>.ICollection.IsSynchronized
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.system-collections-icollection-issynchronized
+  - text: List<Vector2>.ICollection.SyncRoot
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.system-collections-icollection-syncroot
+  - text: List<Vector2>.IList.IsFixedSize
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.system-collections-ilist-isfixedsize
+  - text: List<Vector2>.IList.IsReadOnly
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.system-collections-ilist-isreadonly
+  - text: List<Vector2>.IList.Item[int]
+    url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.system-collections-ilist-item
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Constructors
+- api3: Vertices()
+  id: Alis_Core_Physic_Shared_Vertices__ctor
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/Vertices.cs#L51
+  metadata:
+    uid: Alis.Core.Physic.Shared.Vertices.#ctor
+    commentId: M:Alis.Core.Physic.Shared.Vertices.#ctor
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Physic.Shared.Vertices" data-throw-if-not-resolved="false"></xref> class
+- code: public Vertices()
+- api3: Vertices(int)
+  id: Alis_Core_Physic_Shared_Vertices__ctor_System_Int32_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/Vertices.cs#L59
+  metadata:
+    uid: Alis.Core.Physic.Shared.Vertices.#ctor(System.Int32)
+    commentId: M:Alis.Core.Physic.Shared.Vertices.#ctor(System.Int32)
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Physic.Shared.Vertices" data-throw-if-not-resolved="false"></xref> class
+- code: public Vertices(int capacity)
+- h4: Parameters
+- parameters:
+  - name: capacity
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The capacity
+- api3: Vertices(IEnumerable<Vector2>)
+  id: Alis_Core_Physic_Shared_Vertices__ctor_System_Collections_Generic_IEnumerable_Alis_Core_Aspect_Math_Vector_Vector2__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/Vertices.cs#L67
+  metadata:
+    uid: Alis.Core.Physic.Shared.Vertices.#ctor(System.Collections.Generic.IEnumerable{Alis.Core.Aspect.Math.Vector.Vector2})
+    commentId: M:Alis.Core.Physic.Shared.Vertices.#ctor(System.Collections.Generic.IEnumerable{Alis.Core.Aspect.Math.Vector.Vector2})
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Physic.Shared.Vertices" data-throw-if-not-resolved="false"></xref> class
+- code: public Vertices(IEnumerable<Vector2> vertices)
+- h4: Parameters
+- parameters:
+  - name: vertices
+    type:
+    - text: IEnumerable
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+    - <
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    - '>'
+    description: The vertices
+- h2: Properties
+- api3: AttachedToBody
+  id: Alis_Core_Physic_Shared_Vertices_AttachedToBody
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/Vertices.cs#L75
+  metadata:
+    uid: Alis.Core.Physic.Shared.Vertices.AttachedToBody
+    commentId: P:Alis.Core.Physic.Shared.Vertices.AttachedToBody
+- markdown: Gets or sets the value of the attached to body
+- code: internal bool AttachedToBody { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+- api3: Holes
+  id: Alis_Core_Physic_Shared_Vertices_Holes
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/Vertices.cs#L81
+  metadata:
+    uid: Alis.Core.Physic.Shared.Vertices.Holes
+    commentId: P:Alis.Core.Physic.Shared.Vertices.Holes
+- markdown: >-
+    You can add holes to this collection. It will get respected by some of the triangulation algorithm, but
+
+    otherwise not used.
+- code: public List<Vertices> Holes { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: List
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+    - <
+    - text: Vertices
+      url: Alis.Core.Physic.Shared.Vertices.html
+    - '>'
+- h2: Methods
+- api3: CalculateWindingNumber(Vector2)
+  id: Alis_Core_Physic_Shared_Vertices_CalculateWindingNumber_Alis_Core_Aspect_Math_Vector_Vector2_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/Vertices.cs#L487
+  metadata:
+    uid: Alis.Core.Physic.Shared.Vertices.CalculateWindingNumber(Alis.Core.Aspect.Math.Vector.Vector2)
+    commentId: M:Alis.Core.Physic.Shared.Vertices.CalculateWindingNumber(Alis.Core.Aspect.Math.Vector.Vector2)
+- markdown: Calculates the winding number using the specified point
+- code: internal int CalculateWindingNumber(Vector2 point)
+- h4: Parameters
+- parameters:
+  - name: point
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The point
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The winding number
+- api3: CheckPolygon()
+  id: Alis_Core_Physic_Shared_Vertices_CheckPolygon
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/Vertices.cs#L395
+  metadata:
+    uid: Alis.Core.Physic.Shared.Vertices.CheckPolygon
+    commentId: M:Alis.Core.Physic.Shared.Vertices.CheckPolygon
+- markdown: >-
+    Checks if the polygon is valid for use in the engine. Performs a full check, for simplicity, convexity,
+
+    orientation, minimum angle, and volume. From Eric Jordan's convex decomposition library
+- code: public PolygonError CheckPolygon()
+- h4: Returns
+- parameters:
+  - type:
+    - text: PolygonError
+      url: Alis.Core.Physic.Shared.PolygonError.html
+    description: PolygonError.NoError if there were no error.
+- api3: DetermineWindingDirection(Vector2, Vector2, Vector2)
+  id: Alis_Core_Physic_Shared_Vertices_DetermineWindingDirection_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/Vertices.cs#L548
+  metadata:
+    uid: Alis.Core.Physic.Shared.Vertices.DetermineWindingDirection(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)
+    commentId: M:Alis.Core.Physic.Shared.Vertices.DetermineWindingDirection(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)
+- markdown: Determines the winding direction using the specified point
+- code: internal int DetermineWindingDirection(Vector2 point, Vector2 p1, Vector2 p2)
+- h4: Parameters
+- parameters:
+  - name: point
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The point
+  - name: p1
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+  - name: p2
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The int
+- api3: FlipHorizontally()
+  id: Alis_Core_Physic_Shared_Vertices_FlipHorizontally
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/Vertices.cs#L703
+  metadata:
+    uid: Alis.Core.Physic.Shared.Vertices.FlipHorizontally
+    commentId: M:Alis.Core.Physic.Shared.Vertices.FlipHorizontally
+- markdown: Flips the horizontally
+- code: public void FlipHorizontally()
+- api3: FlipVertically()
+  id: Alis_Core_Physic_Shared_Vertices_FlipVertically
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/Vertices.cs#L714
+  metadata:
+    uid: Alis.Core.Physic.Shared.Vertices.FlipVertically
+    commentId: M:Alis.Core.Physic.Shared.Vertices.FlipVertically
+- markdown: Flips the vertically
+- code: public void FlipVertically()
+- api3: ForceCounterClockWise()
+  id: Alis_Core_Physic_Shared_Vertices_ForceCounterClockWise
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/Vertices.cs#L348
+  metadata:
+    uid: Alis.Core.Physic.Shared.Vertices.ForceCounterClockWise
+    commentId: M:Alis.Core.Physic.Shared.Vertices.ForceCounterClockWise
+- markdown: Forces the vertices to be counter clock wise order.
+- code: public void ForceCounterClockWise()
+- api3: GetAabb()
+  id: Alis_Core_Physic_Shared_Vertices_GetAabb
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/Vertices.cs#L172
+  metadata:
+    uid: Alis.Core.Physic.Shared.Vertices.GetAabb
+    commentId: M:Alis.Core.Physic.Shared.Vertices.GetAabb
+- markdown: Returns an AABB that fully contains this polygon.
+- code: public Aabb GetAabb()
+- h4: Returns
+- parameters:
+  - type:
+    - text: Aabb
+      url: Alis.Core.Physic.Shared.Aabb.html
+- api3: GetArea()
+  id: Alis_Core_Physic_Shared_Vertices_GetArea
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/Vertices.cs#L129
+  metadata:
+    uid: Alis.Core.Physic.Shared.Vertices.GetArea
+    commentId: M:Alis.Core.Physic.Shared.Vertices.GetArea
+- markdown: Gets the area.
+- code: internal float GetArea()
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: ''
+- api3: GetCentroid()
+  id: Alis_Core_Physic_Shared_Vertices_GetCentroid
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/Vertices.cs#L140
+  metadata:
+    uid: Alis.Core.Physic.Shared.Vertices.GetCentroid
+    commentId: M:Alis.Core.Physic.Shared.Vertices.GetCentroid
+- markdown: Gets the centroid
+- code: public Vector2 GetCentroid()
+- h4: Returns
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+- api3: GetSignedArea()
+  id: Alis_Core_Physic_Shared_Vertices_GetSignedArea
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/Vertices.cs#L101
+  metadata:
+    uid: Alis.Core.Physic.Shared.Vertices.GetSignedArea
+    commentId: M:Alis.Core.Physic.Shared.Vertices.GetSignedArea
+- markdown: Gets the signed area. If the area is less than 0, it indicates that the polygon is clockwise winded.
+- code: internal float GetSignedArea()
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The signed area
+- api3: HasSideTooSmall()
+  id: Alis_Core_Physic_Shared_Vertices_HasSideTooSmall
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/Vertices.cs#L425
+  metadata:
+    uid: Alis.Core.Physic.Shared.Vertices.HasSideTooSmall
+    commentId: M:Alis.Core.Physic.Shared.Vertices.HasSideTooSmall
+- markdown: Describes whether this instance has side too small
+- code: internal bool HasSideTooSmall()
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: IsAnyEdgeIntersecting(int)
+  id: Alis_Core_Physic_Shared_Vertices_IsAnyEdgeIntersecting_System_Int32_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/Vertices.cs#L308
+  metadata:
+    uid: Alis.Core.Physic.Shared.Vertices.IsAnyEdgeIntersecting(System.Int32)
+    commentId: M:Alis.Core.Physic.Shared.Vertices.IsAnyEdgeIntersecting(System.Int32)
+- markdown: Describes whether this instance is any edge intersecting
+- code: internal bool IsAnyEdgeIntersecting(int i)
+- h4: Parameters
+- parameters:
+  - name: i
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: IsAreaTooSmall()
+  id: Alis_Core_Physic_Shared_Vertices_IsAreaTooSmall
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/Vertices.cs#L419
+  metadata:
+    uid: Alis.Core.Physic.Shared.Vertices.IsAreaTooSmall
+    commentId: M:Alis.Core.Physic.Shared.Vertices.IsAreaTooSmall
+- markdown: Describes whether this instance is area too small
+- code: internal bool IsAreaTooSmall()
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: IsConvex()
+  id: Alis_Core_Physic_Shared_Vertices_IsConvex
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/Vertices.cs#L280
+  metadata:
+    uid: Alis.Core.Physic.Shared.Vertices.IsConvex
+    commentId: M:Alis.Core.Physic.Shared.Vertices.IsConvex
+- markdown: >-
+    Determines whether the polygon is convex. O(n^2) running time. Assumptions: - The polygon is in counter
+
+    clockwise order - The polygon has no overlapping edges
+- code: public bool IsConvex()
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: <code>true</code> if it is convex; otherwise, <code>false</code>.
+- api3: IsCounterClockWise()
+  id: Alis_Core_Physic_Shared_Vertices_IsCounterClockWise
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/Vertices.cs#L336
+  metadata:
+    uid: Alis.Core.Physic.Shared.Vertices.IsCounterClockWise
+    commentId: M:Alis.Core.Physic.Shared.Vertices.IsCounterClockWise
+- markdown: >-
+    Indicates if the vertices are in counter clockwise order. Warning: If the area of the polygon is 0, it is
+
+    unable to determine the winding.
+- code: public bool IsCounterClockWise()
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+- api3: IsEdgeIntersectingRay(Vector2, Vector2, Vector2)
+  id: Alis_Core_Physic_Shared_Vertices_IsEdgeIntersectingRay_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/Vertices.cs#L531
+  metadata:
+    uid: Alis.Core.Physic.Shared.Vertices.IsEdgeIntersectingRay(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)
+    commentId: M:Alis.Core.Physic.Shared.Vertices.IsEdgeIntersectingRay(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)
+- markdown: Describes whether this instance is edge intersecting ray
+- code: internal bool IsEdgeIntersectingRay(Vector2 point, Vector2 p1, Vector2 p2)
+- h4: Parameters
+- parameters:
+  - name: point
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The point
+  - name: p1
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+  - name: p2
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: IsPointOnEdge(Vector2, Vector2, Vector2)
+  id: Alis_Core_Physic_Shared_Vertices_IsPointOnEdge_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/Vertices.cs#L517
+  metadata:
+    uid: Alis.Core.Physic.Shared.Vertices.IsPointOnEdge(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)
+    commentId: M:Alis.Core.Physic.Shared.Vertices.IsPointOnEdge(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)
+- markdown: Describes whether this instance is point on edge
+- code: internal bool IsPointOnEdge(Vector2 point, Vector2 p1, Vector2 p2)
+- h4: Parameters
+- parameters:
+  - name: point
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The point
+  - name: p1
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+  - name: p2
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: IsSimple()
+  id: Alis_Core_Physic_Shared_Vertices_IsSimple
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/Vertices.cs#L363
+  metadata:
+    uid: Alis.Core.Physic.Shared.Vertices.IsSimple
+    commentId: M:Alis.Core.Physic.Shared.Vertices.IsSimple
+- markdown: Checks if the vertices forms an simple polygon by checking for edge crossings.
+- code: public bool IsSimple()
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+- api3: NextIndex(int)
+  id: Alis_Core_Physic_Shared_Vertices_NextIndex_System_Int32_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/Vertices.cs#L85
+  metadata:
+    uid: Alis.Core.Physic.Shared.Vertices.NextIndex(System.Int32)
+    commentId: M:Alis.Core.Physic.Shared.Vertices.NextIndex(System.Int32)
+- markdown: Gets the next index. Used for iterating all the edges with wrap-around.
+- code: public int NextIndex(int index)
+- h4: Parameters
+- parameters:
+  - name: index
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The current index
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: NextVertex(int)
+  id: Alis_Core_Physic_Shared_Vertices_NextVertex_System_Int32_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/Vertices.cs#L89
+  metadata:
+    uid: Alis.Core.Physic.Shared.Vertices.NextVertex(System.Int32)
+    commentId: M:Alis.Core.Physic.Shared.Vertices.NextVertex(System.Int32)
+- markdown: Gets the next vertex. Used for iterating all the edges with wrap-around.
+- code: public Vector2 NextVertex(int index)
+- h4: Parameters
+- parameters:
+  - name: index
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The current index
+- h4: Returns
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: PointInPolygon(ref Vector2)
+  id: Alis_Core_Physic_Shared_Vertices_PointInPolygon_Alis_Core_Aspect_Math_Vector_Vector2__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/Vertices.cs#L475
+  metadata:
+    uid: Alis.Core.Physic.Shared.Vertices.PointInPolygon(Alis.Core.Aspect.Math.Vector.Vector2@)
+    commentId: M:Alis.Core.Physic.Shared.Vertices.PointInPolygon(Alis.Core.Aspect.Math.Vector.Vector2@)
+- markdown: Winding number test for a point in a polygon.
+- code: public int PointInPolygon(ref Vector2 point)
+- h4: Parameters
+- parameters:
+  - name: point
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The point to be tested.
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: >-
+      -1 if the winding number is zero and the point is outside the polygon, 1 if the point is inside the polygon,
+
+      and 0 if the point is on the polygons edge.
+- api3: PointInPolygonAngle(ref Vector2)
+  id: Alis_Core_Physic_Shared_Vertices_PointInPolygonAngle_Alis_Core_Aspect_Math_Vector_Vector2__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/Vertices.cs#L563
+  metadata:
+    uid: Alis.Core.Physic.Shared.Vertices.PointInPolygonAngle(Alis.Core.Aspect.Math.Vector.Vector2@)
+    commentId: M:Alis.Core.Physic.Shared.Vertices.PointInPolygonAngle(Alis.Core.Aspect.Math.Vector.Vector2@)
+- markdown: >-
+    Compute the sum of the angles made between the test point and each pair of points making up the polygon. If
+
+    this sum is 2pi then the point is an interior point, if 0 then the point is an exterior point. ref:
+
+    http://ozviz.wasp.uwa.edu.au/~pbourke/geometry/insidepoly/  - Solution 2
+- code: public bool PointInPolygonAngle(ref Vector2 point)
+- h4: Parameters
+- parameters:
+  - name: point
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+- api3: PreviousIndex(int)
+  id: Alis_Core_Physic_Shared_Vertices_PreviousIndex_System_Int32_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/Vertices.cs#L93
+  metadata:
+    uid: Alis.Core.Physic.Shared.Vertices.PreviousIndex(System.Int32)
+    commentId: M:Alis.Core.Physic.Shared.Vertices.PreviousIndex(System.Int32)
+- markdown: Gets the previous index. Used for iterating all the edges with wrap-around.
+- code: internal int PreviousIndex(int index)
+- h4: Parameters
+- parameters:
+  - name: index
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The current index
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: PreviousVertex(int)
+  id: Alis_Core_Physic_Shared_Vertices_PreviousVertex_System_Int32_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/Vertices.cs#L97
+  metadata:
+    uid: Alis.Core.Physic.Shared.Vertices.PreviousVertex(System.Int32)
+    commentId: M:Alis.Core.Physic.Shared.Vertices.PreviousVertex(System.Int32)
+- markdown: Gets the previous vertex. Used for iterating all the edges with wrap-around.
+- code: public Vector2 PreviousVertex(int index)
+- h4: Parameters
+- parameters:
+  - name: index
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The current index
+- h4: Returns
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: ProjectToAxis(ref Vector2, out float, out float)
+  id: Alis_Core_Physic_Shared_Vertices_ProjectToAxis_Alis_Core_Aspect_Math_Vector_Vector2__System_Single__System_Single__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/Vertices.cs#L444
+  metadata:
+    uid: Alis.Core.Physic.Shared.Vertices.ProjectToAxis(Alis.Core.Aspect.Math.Vector.Vector2@,System.Single@,System.Single@)
+    commentId: M:Alis.Core.Physic.Shared.Vertices.ProjectToAxis(Alis.Core.Aspect.Math.Vector.Vector2@,System.Single@,System.Single@)
+- markdown: Projects to axis.
+- code: public void ProjectToAxis(ref Vector2 axis, out float min, out float max)
+- h4: Parameters
+- parameters:
+  - name: axis
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The axis.
+  - name: min
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The min.
+  - name: max
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The max.
+- api3: Rotate(float)
+  id: Alis_Core_Physic_Shared_Vertices_Rotate_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/Vertices.cs#L255
+  metadata:
+    uid: Alis.Core.Physic.Shared.Vertices.Rotate(System.Single)
+    commentId: M:Alis.Core.Physic.Shared.Vertices.Rotate(System.Single)
+- markdown: >-
+    Rotate the vertices with the defined value in radians. Warning: Using this method on an active set of vertices
+
+    of a Body, will cause problems with collisions. Use Body.Rotation instead.
+- code: public void Rotate(float value)
+- h4: Parameters
+- parameters:
+  - name: value
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The amount to rotate by in radians.
+- api3: Scale(Vector2)
+  id: Alis_Core_Physic_Shared_Vertices_Scale_Alis_Core_Aspect_Math_Vector_Vector2_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/Vertices.cs#L227
+  metadata:
+    uid: Alis.Core.Physic.Shared.Vertices.Scale(Alis.Core.Aspect.Math.Vector.Vector2)
+    commentId: M:Alis.Core.Physic.Shared.Vertices.Scale(Alis.Core.Aspect.Math.Vector.Vector2)
+- markdown: Scales the vertices with the specified vector.
+- code: public void Scale(Vector2 value)
+- h4: Parameters
+- parameters:
+  - name: value
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The Value.
+- api3: Scale(ref Vector2)
+  id: Alis_Core_Physic_Shared_Vertices_Scale_Alis_Core_Aspect_Math_Vector_Vector2__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/Vertices.cs#L234
+  metadata:
+    uid: Alis.Core.Physic.Shared.Vertices.Scale(Alis.Core.Aspect.Math.Vector.Vector2@)
+    commentId: M:Alis.Core.Physic.Shared.Vertices.Scale(Alis.Core.Aspect.Math.Vector.Vector2@)
+- markdown: Scale the vertices with the specified vector.
+- code: internal void Scale(ref Vector2 value)
+- h4: Parameters
+- parameters:
+  - name: value
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The Value.
+- api3: Transform(ref Matrix4X4)
+  id: Alis_Core_Physic_Shared_Vertices_Transform_Alis_Core_Aspect_Math_Matrix_Matrix4X4__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/Vertices.cs#L587
+  metadata:
+    uid: Alis.Core.Physic.Shared.Vertices.Transform(Alis.Core.Aspect.Math.Matrix.Matrix4X4@)
+    commentId: M:Alis.Core.Physic.Shared.Vertices.Transform(Alis.Core.Aspect.Math.Matrix.Matrix4X4@)
+- markdown: Transforms the polygon using the defined matrix.
+- code: public void Transform(ref Matrix4X4 transform)
+- h4: Parameters
+- parameters:
+  - name: transform
+    type:
+    - text: Matrix4X4
+      url: Alis.Core.Aspect.Math.Matrix.Matrix4X4.html
+    description: The matrix to use as transformation.
+- api3: Transform(Vector2[], ref Matrix4X4, Vector2[])
+  id: Alis_Core_Physic_Shared_Vertices_Transform_Alis_Core_Aspect_Math_Vector_Vector2___Alis_Core_Aspect_Math_Matrix_Matrix4X4__Alis_Core_Aspect_Math_Vector_Vector2___
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/Vertices.cs#L616
+  metadata:
+    uid: Alis.Core.Physic.Shared.Vertices.Transform(Alis.Core.Aspect.Math.Vector.Vector2[],Alis.Core.Aspect.Math.Matrix.Matrix4X4@,Alis.Core.Aspect.Math.Vector.Vector2[])
+    commentId: M:Alis.Core.Physic.Shared.Vertices.Transform(Alis.Core.Aspect.Math.Vector.Vector2[],Alis.Core.Aspect.Math.Matrix.Matrix4X4@,Alis.Core.Aspect.Math.Vector.Vector2[])
+- markdown: Transforms the source array
+- code: internal static void Transform(Vector2[] sourceArray, ref Matrix4X4 matrix, Vector2[] destinationArray)
+- h4: Parameters
+- parameters:
+  - name: sourceArray
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    - '['
+    - ']'
+    description: The source array
+  - name: matrix
+    type:
+    - text: Matrix4X4
+      url: Alis.Core.Aspect.Math.Matrix.Matrix4X4.html
+    description: The matrix
+  - name: destinationArray
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    - '['
+    - ']'
+    description: The destination array
+- api3: Transform(Vector2[], int, ref Matrix4X4, Vector2[], int, int)
+  id: Alis_Core_Physic_Shared_Vertices_Transform_Alis_Core_Aspect_Math_Vector_Vector2___System_Int32_Alis_Core_Aspect_Math_Matrix_Matrix4X4__Alis_Core_Aspect_Math_Vector_Vector2___System_Int32_System_Int32_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/Vertices.cs#L637
+  metadata:
+    uid: Alis.Core.Physic.Shared.Vertices.Transform(Alis.Core.Aspect.Math.Vector.Vector2[],System.Int32,Alis.Core.Aspect.Math.Matrix.Matrix4X4@,Alis.Core.Aspect.Math.Vector.Vector2[],System.Int32,System.Int32)
+    commentId: M:Alis.Core.Physic.Shared.Vertices.Transform(Alis.Core.Aspect.Math.Vector.Vector2[],System.Int32,Alis.Core.Aspect.Math.Matrix.Matrix4X4@,Alis.Core.Aspect.Math.Vector.Vector2[],System.Int32,System.Int32)
+- markdown: Transforms the source array
+- code: internal static void Transform(Vector2[] sourceArray, int sourceIndex, ref Matrix4X4 matrix, Vector2[] destinationArray, int destinationIndex, int length)
+- h4: Parameters
+- parameters:
+  - name: sourceArray
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    - '['
+    - ']'
+    description: The source array
+  - name: sourceIndex
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The source index
+  - name: matrix
+    type:
+    - text: Matrix4X4
+      url: Alis.Core.Aspect.Math.Matrix.Matrix4X4.html
+    description: The matrix
+  - name: destinationArray
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    - '['
+    - ']'
+    description: The destination array
+  - name: destinationIndex
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The destination index
+  - name: length
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The length
+- h4: Exceptions
+- parameters:
+  - type:
+    - text: ArgumentNullException
+      url: https://learn.microsoft.com/dotnet/api/system.argumentnullexception
+    description: ''
+  - type:
+    - text: ArgumentNullException
+      url: https://learn.microsoft.com/dotnet/api/system.argumentnullexception
+    description: ''
+  - type:
+    - text: ArgumentException
+      url: https://learn.microsoft.com/dotnet/api/system.argumentexception
+    description: Destination array length is lesser than destinationIndex + length
+  - type:
+    - text: ArgumentException
+      url: https://learn.microsoft.com/dotnet/api/system.argumentexception
+    description: Source array length is lesser than sourceIndex + length
+- api3: Translate(ref Vector2)
+  id: Alis_Core_Physic_Shared_Vertices_Translate_Alis_Core_Aspect_Math_Vector_Vector2__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/Vertices.cs#L209
+  metadata:
+    uid: Alis.Core.Physic.Shared.Vertices.Translate(Alis.Core.Aspect.Math.Vector.Vector2@)
+    commentId: M:Alis.Core.Physic.Shared.Vertices.Translate(Alis.Core.Aspect.Math.Vector.Vector2@)
+- markdown: Translates the vertices with the specified vector.
+- code: public void Translate(ref Vector2 value)
+- h4: Parameters
+- parameters:
+  - name: value
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The vector.
+- api3: ValidateArrays(Vector2[], int, Vector2[], int, int)
+  id: Alis_Core_Physic_Shared_Vertices_ValidateArrays_Alis_Core_Aspect_Math_Vector_Vector2___System_Int32_Alis_Core_Aspect_Math_Vector_Vector2___System_Int32_System_Int32_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/Vertices.cs#L671
+  metadata:
+    uid: Alis.Core.Physic.Shared.Vertices.ValidateArrays(Alis.Core.Aspect.Math.Vector.Vector2[],System.Int32,Alis.Core.Aspect.Math.Vector.Vector2[],System.Int32,System.Int32)
+    commentId: M:Alis.Core.Physic.Shared.Vertices.ValidateArrays(Alis.Core.Aspect.Math.Vector.Vector2[],System.Int32,Alis.Core.Aspect.Math.Vector.Vector2[],System.Int32,System.Int32)
+- markdown: Validates the arrays using the specified source array
+- code: internal static void ValidateArrays(Vector2[] sourceArray, int sourceIndex, Vector2[] destinationArray, int destinationIndex, int length)
+- h4: Parameters
+- parameters:
+  - name: sourceArray
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    - '['
+    - ']'
+    description: The source array
+  - name: sourceIndex
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The source index
+  - name: destinationArray
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    - '['
+    - ']'
+    description: The destination array
+  - name: destinationIndex
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The destination index
+  - name: length
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The length
+- h4: Exceptions
+- parameters:
+  - type:
+    - text: ArgumentNullException
+      url: https://learn.microsoft.com/dotnet/api/system.argumentnullexception
+    description: ''
+  - type:
+    - text: ArgumentNullException
+      url: https://learn.microsoft.com/dotnet/api/system.argumentnullexception
+    description: ''
+  - type:
+    - text: ArgumentException
+      url: https://learn.microsoft.com/dotnet/api/system.argumentexception
+    description: Destination array length is lesser than destinationIndex + length
+  - type:
+    - text: ArgumentException
+      url: https://learn.microsoft.com/dotnet/api/system.argumentexception
+    description: Source array length is lesser than sourceIndex + length
+- h2: See Also
+- list:
+  - - text: List
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+    - <
+    - T
+    - '>'
+languageId: csharp
+metadata:
+  description: The vertices class

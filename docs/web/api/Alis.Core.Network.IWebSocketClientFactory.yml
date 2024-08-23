@@ -1,0 +1,141 @@
+### YamlMime:ApiPage
+title: Interface IWebSocketClientFactory
+body:
+- api1: Interface IWebSocketClientFactory
+  id: Alis_Core_Network_IWebSocketClientFactory
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/IWebSocketClientFactory.cs#L41
+  metadata:
+    uid: Alis.Core.Network.IWebSocketClientFactory
+    commentId: T:Alis.Core.Network.IWebSocketClientFactory
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Network
+      url: Alis.Core.Network.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: Web socket client factory used to open web socket client connections
+- code: public interface IWebSocketClientFactory
+- h2: Methods
+- api3: ConnectAsync(Uri, CancellationToken)
+  id: Alis_Core_Network_IWebSocketClientFactory_ConnectAsync_System_Uri_System_Threading_CancellationToken_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/IWebSocketClientFactory.cs#L49
+  metadata:
+    uid: Alis.Core.Network.IWebSocketClientFactory.ConnectAsync(System.Uri,System.Threading.CancellationToken)
+    commentId: M:Alis.Core.Network.IWebSocketClientFactory.ConnectAsync(System.Uri,System.Threading.CancellationToken)
+- markdown: Connect with default options
+- code: Task<WebSocket> ConnectAsync(Uri uri, CancellationToken token = default)
+- h4: Parameters
+- parameters:
+  - name: uri
+    type:
+    - text: Uri
+      url: https://learn.microsoft.com/dotnet/api/system.uri
+    description: The WebSocket uri to connect to (e.g. ws://example.com or wss://example.com for SSL)
+  - name: token
+    type:
+    - text: CancellationToken
+      url: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+    description: The optional cancellation token
+    optional: true
+- h4: Returns
+- parameters:
+  - type:
+    - text: Task
+      url: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+    - <
+    - text: WebSocket
+      url: https://learn.microsoft.com/dotnet/api/system.net.websockets.websocket
+    - '>'
+    description: A connected web socket instance
+- api3: ConnectAsync(Uri, WebSocketClientOptions, CancellationToken)
+  id: Alis_Core_Network_IWebSocketClientFactory_ConnectAsync_System_Uri_Alis_Core_Network_WebSocketClientOptions_System_Threading_CancellationToken_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/IWebSocketClientFactory.cs#L58
+  metadata:
+    uid: Alis.Core.Network.IWebSocketClientFactory.ConnectAsync(System.Uri,Alis.Core.Network.WebSocketClientOptions,System.Threading.CancellationToken)
+    commentId: M:Alis.Core.Network.IWebSocketClientFactory.ConnectAsync(System.Uri,Alis.Core.Network.WebSocketClientOptions,System.Threading.CancellationToken)
+- markdown: Connect with options specified
+- code: Task<WebSocket> ConnectAsync(Uri uri, WebSocketClientOptions options, CancellationToken token = default)
+- h4: Parameters
+- parameters:
+  - name: uri
+    type:
+    - text: Uri
+      url: https://learn.microsoft.com/dotnet/api/system.uri
+    description: The WebSocket uri to connect to (e.g. ws://example.com or wss://example.com for SSL)
+  - name: options
+    type:
+    - text: WebSocketClientOptions
+      url: Alis.Core.Network.WebSocketClientOptions.html
+    description: The WebSocket client options
+  - name: token
+    type:
+    - text: CancellationToken
+      url: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+    description: The optional cancellation token
+    optional: true
+- h4: Returns
+- parameters:
+  - type:
+    - text: Task
+      url: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+    - <
+    - text: WebSocket
+      url: https://learn.microsoft.com/dotnet/api/system.net.websockets.websocket
+    - '>'
+    description: A connected web socket instance
+- api3: ConnectAsync(Stream, string, WebSocketClientOptions, CancellationToken)
+  id: Alis_Core_Network_IWebSocketClientFactory_ConnectAsync_System_IO_Stream_System_String_Alis_Core_Network_WebSocketClientOptions_System_Threading_CancellationToken_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/IWebSocketClientFactory.cs#L74
+  metadata:
+    uid: Alis.Core.Network.IWebSocketClientFactory.ConnectAsync(System.IO.Stream,System.String,Alis.Core.Network.WebSocketClientOptions,System.Threading.CancellationToken)
+    commentId: M:Alis.Core.Network.IWebSocketClientFactory.ConnectAsync(System.IO.Stream,System.String,Alis.Core.Network.WebSocketClientOptions,System.Threading.CancellationToken)
+- markdown: >-
+    Connect with a stream that has already been opened and HTTP websocket upgrade request sent
+
+    This function will check the handshake response from the server and proceed if successful
+
+    Use this function if you have specific requirements to open a conenction like using special http headers and
+
+    cookies
+
+    You will have to build your own HTTP websocket upgrade request
+
+    You may not even choose to use TCP/IP and this function will allow you to do that
+- code: Task<WebSocket> ConnectAsync(Stream responseStream, string secWebSocketKey, WebSocketClientOptions options, CancellationToken token = default)
+- h4: Parameters
+- parameters:
+  - name: responseStream
+    type:
+    - text: Stream
+      url: https://learn.microsoft.com/dotnet/api/system.io.stream
+    description: The full duplex response stream from the server
+  - name: secWebSocketKey
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The secWebSocketKey you used in the handshake request
+  - name: options
+    type:
+    - text: WebSocketClientOptions
+      url: Alis.Core.Network.WebSocketClientOptions.html
+    description: The WebSocket client options
+  - name: token
+    type:
+    - text: CancellationToken
+      url: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+    description: The optional cancellation token
+    optional: true
+- h4: Returns
+- parameters:
+  - type:
+    - text: Task
+      url: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+    - <
+    - text: WebSocket
+      url: https://learn.microsoft.com/dotnet/api/system.net.websockets.websocket
+    - '>'
+    description: ''
+languageId: csharp
+metadata:
+  description: Web socket client factory used to open web socket client connections

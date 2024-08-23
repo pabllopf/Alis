@@ -1,0 +1,193 @@
+### YamlMime:ApiPage
+title: Struct Surface
+body:
+- api1: Struct Surface
+  id: Alis_Core_Graphic_Sdl2_Structs_Surface
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Surface.cs#L39
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Surface
+    commentId: T:Alis.Core.Graphic.Sdl2.Structs.Surface
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Structs
+      url: Alis.Core.Graphic.Sdl2.Structs.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The sdl surface
+- code: public struct Surface
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Fields
+- api3: flags
+  id: Alis_Core_Graphic_Sdl2_Structs_Surface_flags
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Surface.cs#L45
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Surface.flags
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Surface.flags
+- markdown: The flags
+- code: public readonly uint flags
+- h4: Field Value
+- parameters:
+  - type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+- api3: h
+  id: Alis_Core_Graphic_Sdl2_Structs_Surface_h
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Surface.cs#L60
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Surface.h
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Surface.h
+- markdown: The
+- code: public readonly int h
+- h4: Field Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: locked
+  id: Alis_Core_Graphic_Sdl2_Structs_Surface_locked
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Surface.cs#L80
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Surface.locked
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Surface.locked
+- markdown: The locked
+- code: public readonly int locked
+- h4: Field Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: pitch
+  id: Alis_Core_Graphic_Sdl2_Structs_Surface_pitch
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Surface.cs#L65
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Surface.pitch
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Surface.pitch
+- markdown: The pitch
+- code: public readonly int pitch
+- h4: Field Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: refCount
+  id: Alis_Core_Graphic_Sdl2_Structs_Surface_refCount
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Surface.cs#L100
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Surface.refCount
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Surface.refCount
+- markdown: The ref count
+- code: public readonly int refCount
+- h4: Field Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: w
+  id: Alis_Core_Graphic_Sdl2_Structs_Surface_w
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Surface.cs#L55
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Surface.w
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Surface.w
+- markdown: The
+- code: public readonly int w
+- h4: Field Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- h2: Properties
+- api3: ClipRect
+  id: Alis_Core_Graphic_Sdl2_Structs_Surface_ClipRect
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Surface.cs#L90
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Surface.ClipRect
+    commentId: P:Alis.Core.Graphic.Sdl2.Structs.Surface.ClipRect
+- markdown: The clip rect
+- code: public RectangleI ClipRect { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: RectangleI
+      url: Alis.Core.Aspect.Math.Shape.Rectangle.RectangleI.html
+- api3: Format
+  id: Alis_Core_Graphic_Sdl2_Structs_Surface_Format
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Surface.cs#L50
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Surface.Format
+    commentId: P:Alis.Core.Graphic.Sdl2.Structs.Surface.Format
+- markdown: The format
+- code: public IntPtr Format { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+- api3: ListBlitMap
+  id: Alis_Core_Graphic_Sdl2_Structs_Surface_ListBlitMap
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Surface.cs#L85
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Surface.ListBlitMap
+    commentId: P:Alis.Core.Graphic.Sdl2.Structs.Surface.ListBlitMap
+- markdown: The list blit map
+- code: public IntPtr ListBlitMap { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+- api3: Map
+  id: Alis_Core_Graphic_Sdl2_Structs_Surface_Map
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Surface.cs#L95
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Surface.Map
+    commentId: P:Alis.Core.Graphic.Sdl2.Structs.Surface.Map
+- markdown: The map
+- code: public IntPtr Map { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+- api3: Pixels
+  id: Alis_Core_Graphic_Sdl2_Structs_Surface_Pixels
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Surface.cs#L70
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Surface.Pixels
+    commentId: P:Alis.Core.Graphic.Sdl2.Structs.Surface.Pixels
+- markdown: The pixels
+- code: public IntPtr Pixels { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+- api3: Userdata
+  id: Alis_Core_Graphic_Sdl2_Structs_Surface_Userdata
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Surface.cs#L75
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Surface.Userdata
+    commentId: P:Alis.Core.Graphic.Sdl2.Structs.Surface.Userdata
+- markdown: The userdata
+- code: public IntPtr Userdata { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+languageId: csharp
+metadata:
+  description: The sdl surface

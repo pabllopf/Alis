@@ -1,0 +1,15 @@
+### YamlMime:ApiPage
+title: Namespace Alis.Core.Ecs.Component.Ui
+body:
+- api1: Namespace Alis.Core.Ecs.Component.Ui
+  id: Alis_Core_Ecs_Component_Ui
+  metadata:
+    uid: Alis.Core.Ecs.Component.Ui
+    commentId: N:Alis.Core.Ecs.Component.Ui
+- h3: Classes
+- parameters:
+  - type:
+      text: Canvas
+      url: Alis.Core.Ecs.Component.Ui.Canvas.html
+    description: The canvas class
+languageId: csharp

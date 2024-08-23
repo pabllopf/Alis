@@ -1,0 +1,33 @@
+### YamlMime:ApiPage
+title: Delegate JAction<T1, T2>
+body:
+- api1: Delegate JAction<T1, T2>
+  id: Alis_Core_Aspect_Data_Json_JAction_2
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/JAction.cs#L35
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.JAction`2
+    commentId: T:Alis.Core.Aspect.Data.Json.JAction`2
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Aspect.Data.Json
+      url: Alis.Core.Aspect.Data.Json.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The action
+- code: internal delegate void JAction<in T1, in T2>(T1 arg1, T2 arg2)
+- h4: Parameters
+- parameters:
+  - name: arg1
+    type:
+    - T1
+  - name: arg2
+    type:
+    - T2
+- h4: Type Parameters
+- parameters:
+  - name: T1
+  - name: T2
+languageId: csharp
+metadata:
+  description: The action
