@@ -1,0 +1,117 @@
+### YamlMime:ApiPage
+title: Class RandomUtils
+body:
+- api1: Class RandomUtils
+  id: Alis_Core_Aspect_Math_Util_RandomUtils
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/RandomUtils.cs#L38
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.RandomUtils
+    commentId: T:Alis.Core.Aspect.Math.Util.RandomUtils
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Aspect.Math.Util
+      url: Alis.Core.Aspect.Math.Util.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The random utils class
+- code: public static class RandomUtils
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: RandomUtils
+    url: Alis.Core.Aspect.Math.Util.RandomUtils.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Fields
+- api3: Rng
+  id: Alis_Core_Aspect_Math_Util_RandomUtils_Rng
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/RandomUtils.cs#L43
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.RandomUtils.Rng
+    commentId: F:Alis.Core.Aspect.Math.Util.RandomUtils.Rng
+- markdown: The create
+- code: private static readonly RandomNumberGenerator Rng
+- h4: Field Value
+- parameters:
+  - type:
+    - text: RandomNumberGenerator
+      url: https://learn.microsoft.com/dotnet/api/system.security.cryptography.randomnumbergenerator
+- h2: Methods
+- api3: GetInt32(int, int)
+  id: Alis_Core_Aspect_Math_Util_RandomUtils_GetInt32_System_Int32_System_Int32_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/RandomUtils.cs#L52
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.RandomUtils.GetInt32(System.Int32,System.Int32)
+    commentId: M:Alis.Core.Aspect.Math.Util.RandomUtils.GetInt32(System.Int32,System.Int32)
+- markdown: Gets the int 32 using the specified min value
+- code: public static int GetInt32(int minValue, int maxValue)
+- h4: Parameters
+- parameters:
+  - name: minValue
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The min value
+  - name: maxValue
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The max value
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The int
+- h4: Exceptions
+- parameters:
+  - type:
+    - text: ArgumentException
+      url: https://learn.microsoft.com/dotnet/api/system.argumentexception
+    description: minValue must be less than or equal to maxValue.
+- api3: GetInt32(int)
+  id: Alis_Core_Aspect_Math_Util_RandomUtils_GetInt32_System_Int32_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/RandomUtils.cs#L72
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.RandomUtils.GetInt32(System.Int32)
+    commentId: M:Alis.Core.Aspect.Math.Util.RandomUtils.GetInt32(System.Int32)
+- markdown: Gets the int 32 using the specified value
+- code: public static int GetInt32(int value)
+- h4: Parameters
+- parameters:
+  - name: value
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The int
+- h4: Exceptions
+- parameters:
+  - type:
+    - text: ArgumentException
+      url: https://learn.microsoft.com/dotnet/api/system.argumentexception
+    description: value must be greater than or equal to 0.
+languageId: csharp
+metadata:
+  description: The random utils class

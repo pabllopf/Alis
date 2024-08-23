@@ -1,0 +1,154 @@
+### YamlMime:ApiPage
+title: Class Window
+body:
+- api1: Class Window
+  id: Alis_Core_Graphic_Window
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Graphic/Window.cs#L42
+  metadata:
+    uid: Alis.Core.Graphic.Window
+    commentId: T:Alis.Core.Graphic.Window
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic
+      url: Alis.Core.Graphic.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The window class
+- code: 'public class Window : IWindow, IBuilder<WindowBuilder>'
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: Window
+    url: Alis.Core.Graphic.Window.html
+- h4: Implements
+- list:
+  - text: IWindow
+    url: Alis.Core.Graphic.IWindow.html
+  - text: IBuilder<WindowBuilder>
+    url: Alis.Core.Aspect.Fluent.IBuilder-1.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Constructors
+- api3: Window()
+  id: Alis_Core_Graphic_Window__ctor
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Graphic/Window.cs#L49
+  metadata:
+    uid: Alis.Core.Graphic.Window.#ctor
+    commentId: M:Alis.Core.Graphic.Window.#ctor
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Graphic.Window" data-throw-if-not-resolved="false"></xref> class
+- code: public Window()
+- api3: Window(Color, Vector2, bool)
+  id: Alis_Core_Graphic_Window__ctor_Alis_Core_Aspect_Math_Definition_Color_Alis_Core_Aspect_Math_Vector_Vector2_System_Boolean_
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Graphic/Window.cs#L62
+  metadata:
+    uid: Alis.Core.Graphic.Window.#ctor(Alis.Core.Aspect.Math.Definition.Color,Alis.Core.Aspect.Math.Vector.Vector2,System.Boolean)
+    commentId: M:Alis.Core.Graphic.Window.#ctor(Alis.Core.Aspect.Math.Definition.Color,Alis.Core.Aspect.Math.Vector.Vector2,System.Boolean)
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Graphic.Window" data-throw-if-not-resolved="false"></xref> class
+- code: public Window(Color background, Vector2 resolution, bool isWindowResizable)
+- h4: Parameters
+- parameters:
+  - name: background
+    type:
+    - text: Color
+      url: Alis.Core.Aspect.Math.Definition.Color.html
+    description: The background
+  - name: resolution
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The resolution
+  - name: isWindowResizable
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The is window resizable
+- h2: Properties
+- api3: Background
+  id: Alis_Core_Graphic_Window_Background
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Graphic/Window.cs#L79
+  metadata:
+    uid: Alis.Core.Graphic.Window.Background
+    commentId: P:Alis.Core.Graphic.Window.Background
+- markdown: Gets or sets the value of the background
+- code: >-
+    [JsonPropertyName("_Background_")]
+
+    public Color Background { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Color
+      url: Alis.Core.Aspect.Math.Definition.Color.html
+- api3: IsWindowResizable
+  id: Alis_Core_Graphic_Window_IsWindowResizable
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Graphic/Window.cs#L91
+  metadata:
+    uid: Alis.Core.Graphic.Window.IsWindowResizable
+    commentId: P:Alis.Core.Graphic.Window.IsWindowResizable
+- markdown: Gets or sets the value of the is window resizable
+- code: >-
+    [JsonPropertyName("_IsWindowResizable_")]
+
+    public bool IsWindowResizable { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+- api3: Resolution
+  id: Alis_Core_Graphic_Window_Resolution
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Graphic/Window.cs#L85
+  metadata:
+    uid: Alis.Core.Graphic.Window.Resolution
+    commentId: P:Alis.Core.Graphic.Window.Resolution
+- markdown: Gets or sets the value of the resolution
+- code: >-
+    [JsonPropertyName("_Resolution_")]
+
+    public Vector2 Resolution { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- h2: Methods
+- api3: Builder()
+  id: Alis_Core_Graphic_Window_Builder
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Graphic/Window.cs#L74
+  metadata:
+    uid: Alis.Core.Graphic.Window.Builder
+    commentId: M:Alis.Core.Graphic.Window.Builder
+- markdown: Builders this instance
+- code: public WindowBuilder Builder()
+- h4: Returns
+- parameters:
+  - type:
+    - text: WindowBuilder
+      url: Alis.Builder.Core.Graphic.WindowBuilder.html
+    description: The window builder
+- h2: See Also
+- list:
+  - - text: IBuilder
+      url: Alis.Core.Aspect.Fluent.IBuilder-1.html
+    - <
+    - TOut
+    - '>'
+languageId: csharp
+metadata:
+  description: The window class

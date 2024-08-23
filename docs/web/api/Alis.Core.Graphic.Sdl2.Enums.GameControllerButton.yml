@@ -1,0 +1,138 @@
+### YamlMime:ApiPage
+title: Enum GameControllerButton
+body:
+- api1: Enum GameControllerButton
+  id: Alis_Core_Graphic_Sdl2_Enums_GameControllerButton
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Enums/GameControllerButton.cs#L35
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Enums.GameControllerButton
+    commentId: T:Alis.Core.Graphic.Sdl2.Enums.GameControllerButton
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Enums
+      url: Alis.Core.Graphic.Sdl2.Enums.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The sdl game controller button enum
+- code: public enum GameControllerButton
+- h2: Fields
+- parameters:
+  - name: SdlControllerButtonInvalid
+    default: "-1"
+    description: >+
+      The sdl controller button invalid sdl game controller button
+
+  - name: SdlControllerButtonA
+    default: "0"
+    description: >+
+      The sdl controller button sdl game controller button
+
+  - name: SdlControllerButtonB
+    default: "1"
+    description: >+
+      The sdl controller button sdl game controller button
+
+  - name: SdlControllerButtonX
+    default: "2"
+    description: >+
+      The sdl controller button sdl game controller button
+
+  - name: SdlControllerButtonY
+    default: "3"
+    description: >+
+      The sdl controller button sdl game controller button
+
+  - name: SdlControllerButtonBack
+    default: "4"
+    description: >+
+      The sdl controller button back sdl game controller button
+
+  - name: SdlControllerButtonGuide
+    default: "5"
+    description: >+
+      The sdl controller button guide sdl game controller button
+
+  - name: SdlControllerButtonStart
+    default: "6"
+    description: >+
+      The sdl controller button start sdl game controller button
+
+  - name: SdlControllerButtonLeftStick
+    default: "7"
+    description: >+
+      The sdl controller button left stick sdl game controller button
+
+  - name: SdlControllerButtonRightStick
+    default: "8"
+    description: >+
+      The sdl controller button right stick sdl game controller button
+
+  - name: SdlControllerButtonLeftShoulder
+    default: "9"
+    description: >+
+      The sdl controller button left shoulder sdl game controller button
+
+  - name: SdlControllerButtonRightShoulder
+    default: "10"
+    description: >+
+      The sdl controller button right shoulder sdl game controller button
+
+  - name: SdlControllerButtonDpadUp
+    default: "11"
+    description: >+
+      The sdl controller button dpad up sdl game controller button
+
+  - name: SdlControllerButtonDpadDown
+    default: "12"
+    description: >+
+      The sdl controller button dpad down sdl game controller button
+
+  - name: SdlControllerButtonDpadLeft
+    default: "13"
+    description: >+
+      The sdl controller button dpad left sdl game controller button
+
+  - name: SdlControllerButtonDpadRight
+    default: "14"
+    description: >+
+      The sdl controller button dpad right sdl game controller button
+
+  - name: SdlControllerButtonMisc1
+    default: "15"
+    description: >+
+      The sdl controller button misc1 sdl game controller button
+
+  - name: SdlControllerButtonPaddle1
+    default: "16"
+    description: >+
+      The sdl controller button paddle1 sdl game controller button
+
+  - name: SdlControllerButtonPaddle2
+    default: "17"
+    description: >+
+      The sdl controller button paddle2 sdl game controller button
+
+  - name: SdlControllerButtonPaddle3
+    default: "18"
+    description: >+
+      The sdl controller button paddle3 sdl game controller button
+
+  - name: SdlControllerButtonPaddle4
+    default: "19"
+    description: >+
+      The sdl controller button paddle4 sdl game controller button
+
+  - name: SdlControllerButtonTouchpad
+    default: "20"
+    description: >+
+      The sdl controller button touchpad sdl game controller button
+
+  - name: SdlControllerButtonMax
+    default: "21"
+    description: >+
+      The sdl controller button max sdl game controller button
+
+languageId: csharp
+metadata:
+  description: The sdl game controller button enum

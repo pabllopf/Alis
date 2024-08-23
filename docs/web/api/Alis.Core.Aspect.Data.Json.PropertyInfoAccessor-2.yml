@@ -1,0 +1,150 @@
+### YamlMime:ApiPage
+title: Class PropertyInfoAccessor<TComponent, TMember>
+body:
+- api1: Class PropertyInfoAccessor<TComponent, TMember>
+  id: Alis_Core_Aspect_Data_Json_PropertyInfoAccessor_2
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/PropertyInfoAccessor.cs#L39
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.PropertyInfoAccessor`2
+    commentId: T:Alis.Core.Aspect.Data.Json.PropertyInfoAccessor`2
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Aspect.Data.Json
+      url: Alis.Core.Aspect.Data.Json.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The property info accessor class
+- code: 'internal sealed class PropertyInfoAccessor<TComponent, TMember> : IMemberAccessor'
+- h4: Type Parameters
+- parameters:
+  - name: TComponent
+  - name: TMember
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: PropertyInfoAccessor<TComponent, TMember>
+    url: Alis.Core.Aspect.Data.Json.PropertyInfoAccessor-2.html
+- h4: Implements
+- list:
+  - text: IMemberAccessor
+    url: Alis.Core.Aspect.Data.Json.IMemberAccessor.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Constructors
+- api3: PropertyInfoAccessor(PropertyInfo)
+  id: Alis_Core_Aspect_Data_Json_PropertyInfoAccessor_2__ctor_System_Reflection_PropertyInfo_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/PropertyInfoAccessor.cs#L55
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.PropertyInfoAccessor`2.#ctor(System.Reflection.PropertyInfo)
+    commentId: M:Alis.Core.Aspect.Data.Json.PropertyInfoAccessor`2.#ctor(System.Reflection.PropertyInfo)
+- markdown: Initializes a new instance
+- code: public PropertyInfoAccessor(PropertyInfo pi)
+- h4: Parameters
+- parameters:
+  - name: pi
+    type:
+    - text: PropertyInfo
+      url: https://learn.microsoft.com/dotnet/api/system.reflection.propertyinfo
+    description: The pi
+- h2: Fields
+- api3: _get
+  id: Alis_Core_Aspect_Data_Json_PropertyInfoAccessor_2__get
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/PropertyInfoAccessor.cs#L44
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.PropertyInfoAccessor`2._get
+    commentId: F:Alis.Core.Aspect.Data.Json.PropertyInfoAccessor`2._get
+- markdown: The get
+- code: private readonly JFunc<TComponent, TMember> _get
+- h4: Field Value
+- parameters:
+  - type:
+    - text: JFunc
+      url: Alis.Core.Aspect.Data.Json.JFunc-2.html
+    - <
+    - TComponent
+    - ','
+    - " "
+    - TMember
+    - '>'
+- api3: _set
+  id: Alis_Core_Aspect_Data_Json_PropertyInfoAccessor_2__set
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/PropertyInfoAccessor.cs#L49
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.PropertyInfoAccessor`2._set
+    commentId: F:Alis.Core.Aspect.Data.Json.PropertyInfoAccessor`2._set
+- markdown: The set
+- code: private readonly JAction<TComponent, TMember> _set
+- h4: Field Value
+- parameters:
+  - type:
+    - text: JAction
+      url: Alis.Core.Aspect.Data.Json.JAction-2.html
+    - <
+    - TComponent
+    - ','
+    - " "
+    - TMember
+    - '>'
+- h2: Methods
+- api3: Get(object)
+  id: Alis_Core_Aspect_Data_Json_PropertyInfoAccessor_2_Get_System_Object_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/PropertyInfoAccessor.cs#L75
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.PropertyInfoAccessor`2.Get(System.Object)
+    commentId: M:Alis.Core.Aspect.Data.Json.PropertyInfoAccessor`2.Get(System.Object)
+- markdown: Gets the component
+- code: public object Get(object component)
+- h4: Parameters
+- parameters:
+  - name: component
+    type:
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    description: The component
+- h4: Returns
+- parameters:
+  - type:
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    description: The object
+- api3: Set(object, object)
+  id: Alis_Core_Aspect_Data_Json_PropertyInfoAccessor_2_Set_System_Object_System_Object_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/PropertyInfoAccessor.cs#L82
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.PropertyInfoAccessor`2.Set(System.Object,System.Object)
+    commentId: M:Alis.Core.Aspect.Data.Json.PropertyInfoAccessor`2.Set(System.Object,System.Object)
+- markdown: Sets the component
+- code: public void Set(object component, object value)
+- h4: Parameters
+- parameters:
+  - name: component
+    type:
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    description: The component
+  - name: value
+    type:
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    description: The value
+- h2: See Also
+- list:
+  - - text: IMemberAccessor
+      url: Alis.Core.Aspect.Data.Json.IMemberAccessor.html
+languageId: csharp
+metadata:
+  description: The property info accessor class

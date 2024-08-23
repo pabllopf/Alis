@@ -1,0 +1,484 @@
+### YamlMime:ApiPage
+title: Struct Quaternion
+body:
+- api1: Struct Quaternion
+  id: Alis_Core_Aspect_Math_Util_Quaternion
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/Quaternion.cs#L37
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.Quaternion
+    commentId: T:Alis.Core.Aspect.Math.Util.Quaternion
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Aspect.Math.Util
+      url: Alis.Core.Aspect.Math.Util.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The quaternion
+- code: public struct Quaternion
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Constructors
+- api3: Quaternion(float, float, float, float)
+  id: Alis_Core_Aspect_Math_Util_Quaternion__ctor_System_Single_System_Single_System_Single_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/Quaternion.cs#L66
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.Quaternion.#ctor(System.Single,System.Single,System.Single,System.Single)
+    commentId: M:Alis.Core.Aspect.Math.Util.Quaternion.#ctor(System.Single,System.Single,System.Single,System.Single)
+- markdown: Constructs a quaternion from the specified components.
+- code: public Quaternion(float x, float y, float z, float w)
+- h4: Parameters
+- parameters:
+  - name: x
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The value to assign to the X component of the quaternion.
+  - name: y
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The value to assign to the Y component of the quaternion.
+  - name: z
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The value to assign to the Z component of the quaternion.
+  - name: w
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The value to assign to the W component of the quaternion.
+- h2: Fields
+- api3: Count
+  id: Alis_Core_Aspect_Math_Util_Quaternion_Count
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/Quaternion.cs#L59
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.Quaternion.Count
+    commentId: F:Alis.Core.Aspect.Math.Util.Quaternion.Count
+- markdown: The count
+- code: internal const int Count = 4
+- h4: Field Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: hashCode
+  id: Alis_Core_Aspect_Math_Util_Quaternion_hashCode
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/Quaternion.cs#L42
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.Quaternion.hashCode
+    commentId: F:Alis.Core.Aspect.Math.Util.Quaternion.hashCode
+- markdown: The hash code
+- code: private readonly int hashCode
+- h4: Field Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- h2: Properties
+- api3: W
+  id: Alis_Core_Aspect_Math_Util_Quaternion_W
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/Quaternion.cs#L54
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.Quaternion.W
+    commentId: P:Alis.Core.Aspect.Math.Util.Quaternion.W
+- markdown: The rotation component of the quaternion.
+- code: public float W { readonly get; private set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: X
+  id: Alis_Core_Aspect_Math_Util_Quaternion_X
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/Quaternion.cs#L45
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.Quaternion.X
+    commentId: P:Alis.Core.Aspect.Math.Util.Quaternion.X
+- markdown: The X value of the vector component of the quaternion.
+- code: public float X { readonly get; private set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: Y
+  id: Alis_Core_Aspect_Math_Util_Quaternion_Y
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/Quaternion.cs#L48
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.Quaternion.Y
+    commentId: P:Alis.Core.Aspect.Math.Util.Quaternion.Y
+- markdown: The Y value of the vector component of the quaternion.
+- code: public float Y { readonly get; private set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: Z
+  id: Alis_Core_Aspect_Math_Util_Quaternion_Z
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/Quaternion.cs#L51
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.Quaternion.Z
+    commentId: P:Alis.Core.Aspect.Math.Util.Quaternion.Z
+- markdown: The Z value of the vector component of the quaternion.
+- code: public float Z { readonly get; private set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: Zero
+  id: Alis_Core_Aspect_Math_Util_Quaternion_Zero
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/Quaternion.cs#L84
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.Quaternion.Zero
+    commentId: P:Alis.Core.Aspect.Math.Util.Quaternion.Zero
+- markdown: Gets a quaternion that represents a zero.
+- code: private static Quaternion Zero { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Quaternion
+      url: Alis.Core.Aspect.Math.Util.Quaternion.html
+- h2: Methods
+- api3: Equals(object)
+  id: Alis_Core_Aspect_Math_Util_Quaternion_Equals_System_Object_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/Quaternion.cs#L280
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.Quaternion.Equals(System.Object)
+    commentId: M:Alis.Core.Aspect.Math.Util.Quaternion.Equals(System.Object)
+- markdown: Returns a value that indicates whether this instance and a specified object are equal.
+- code: public override readonly bool Equals(object obj)
+- h4: Parameters
+- parameters:
+  - name: obj
+    type:
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    description: The object to compare with the current instance.
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: >-
+      <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the current instance and <code class="paramref">obj</code> are equal; otherwise,
+          <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>. If <code class="paramref">obj</code> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>, the method returns
+          <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
+- h4: Remarks
+- markdown: >-
+    The current instance and <code class="paramref">obj</code> are equal if <code class="paramref">obj</code> is a
+
+    <xref href="Alis.Core.Aspect.Math.Util.Quaternion" data-throw-if-not-resolved="false"></xref> object and the corresponding components of each matrix are equal.
+- api3: Equals(Quaternion)
+  id: Alis_Core_Aspect_Math_Util_Quaternion_Equals_Alis_Core_Aspect_Math_Util_Quaternion_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/Quaternion.cs#L286
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.Quaternion.Equals(Alis.Core.Aspect.Math.Util.Quaternion)
+    commentId: M:Alis.Core.Aspect.Math.Util.Quaternion.Equals(Alis.Core.Aspect.Math.Util.Quaternion)
+- markdown: Returns a value that indicates whether this instance and another quaternion are equal.
+- code: private readonly bool Equals(Quaternion other)
+- h4: Parameters
+- parameters:
+  - name: other
+    type:
+    - text: Quaternion
+      url: Alis.Core.Aspect.Math.Util.Quaternion.html
+    description: The other quaternion.
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the two quaternions are equal; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
+- h4: Remarks
+- markdown: Two quaternions are equal if each of their corresponding components is equal.
+- api3: GetHashCode()
+  id: Alis_Core_Aspect_Math_Util_Quaternion_GetHashCode
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/Quaternion.cs#L299
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.Quaternion.GetHashCode
+    commentId: M:Alis.Core.Aspect.Math.Util.Quaternion.GetHashCode
+- markdown: Returns the hash code for this instance.
+- code: public override readonly int GetHashCode()
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The hash code.
+- api3: ToString()
+  id: Alis_Core_Aspect_Math_Util_Quaternion_ToString
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/Quaternion.cs#L307
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.Quaternion.ToString
+    commentId: M:Alis.Core.Aspect.Math.Util.Quaternion.ToString
+- markdown: Returns a string that represents this quaternion.
+- code: public override readonly string ToString()
+- h4: Returns
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The string representation of this quaternion.
+- h4: Remarks
+- markdown: >-
+    The numeric values in the returned string are formatted by using the conventions of the current culture. For
+
+    example, for the en-US culture, the returned string might appear as <code>{X:1.1 Y:2.2 Z:3.3 W:4.4}</code>.
+- h2: Operators
+- api3: operator +(Quaternion, Quaternion)
+  id: Alis_Core_Aspect_Math_Util_Quaternion_op_Addition_Alis_Core_Aspect_Math_Util_Quaternion_Alis_Core_Aspect_Math_Util_Quaternion_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/Quaternion.cs#L94
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.Quaternion.op_Addition(Alis.Core.Aspect.Math.Util.Quaternion,Alis.Core.Aspect.Math.Util.Quaternion)
+    commentId: M:Alis.Core.Aspect.Math.Util.Quaternion.op_Addition(Alis.Core.Aspect.Math.Util.Quaternion,Alis.Core.Aspect.Math.Util.Quaternion)
+- markdown: Adds each element in one quaternion with its corresponding element in a second quaternion.
+- code: public static Quaternion operator +(Quaternion value1, Quaternion value2)
+- h4: Parameters
+- parameters:
+  - name: value1
+    type:
+    - text: Quaternion
+      url: Alis.Core.Aspect.Math.Util.Quaternion.html
+    description: The first quaternion.
+  - name: value2
+    type:
+    - text: Quaternion
+      url: Alis.Core.Aspect.Math.Util.Quaternion.html
+    description: The second quaternion.
+- h4: Returns
+- parameters:
+  - type:
+    - text: Quaternion
+      url: Alis.Core.Aspect.Math.Util.Quaternion.html
+    description: The quaternion that contains the summed values of <code class="paramref">value1</code> and <code class="paramref">value2</code>.
+- h4: Remarks
+- markdown: >-
+    The <xref href="Alis.Core.Aspect.Math.Util.Quaternion.op_Addition(Alis.Core.Aspect.Math.Util.Quaternion%2cAlis.Core.Aspect.Math.Util.Quaternion)" data-throw-if-not-resolved="false"></xref> method defines the operation of the addition operator for
+
+    <xref href="Alis.Core.Aspect.Math.Util.Quaternion" data-throw-if-not-resolved="false"></xref> objects.
+- api3: operator /(Quaternion, Quaternion)
+  id: Alis_Core_Aspect_Math_Util_Quaternion_op_Division_Alis_Core_Aspect_Math_Util_Quaternion_Alis_Core_Aspect_Math_Util_Quaternion_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/Quaternion.cs#L114
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.Quaternion.op_Division(Alis.Core.Aspect.Math.Util.Quaternion,Alis.Core.Aspect.Math.Util.Quaternion)
+    commentId: M:Alis.Core.Aspect.Math.Util.Quaternion.op_Division(Alis.Core.Aspect.Math.Util.Quaternion,Alis.Core.Aspect.Math.Util.Quaternion)
+- markdown: Divides one quaternion by a second quaternion.
+- code: public static Quaternion operator /(Quaternion value1, Quaternion value2)
+- h4: Parameters
+- parameters:
+  - name: value1
+    type:
+    - text: Quaternion
+      url: Alis.Core.Aspect.Math.Util.Quaternion.html
+    description: The dividend.
+  - name: value2
+    type:
+    - text: Quaternion
+      url: Alis.Core.Aspect.Math.Util.Quaternion.html
+    description: The divisor.
+- h4: Returns
+- parameters:
+  - type:
+    - text: Quaternion
+      url: Alis.Core.Aspect.Math.Util.Quaternion.html
+    description: The quaternion that results from dividing <code class="paramref">value1</code> by <code class="paramref">value2</code>.
+- h4: Remarks
+- markdown: >-
+    The <xref href="Alis.Core.Aspect.Math.Util.Quaternion.op_Division(Alis.Core.Aspect.Math.Util.Quaternion%2cAlis.Core.Aspect.Math.Util.Quaternion)" data-throw-if-not-resolved="false"></xref> method defines the division operation for <xref href="Alis.Core.Aspect.Math.Util.Quaternion" data-throw-if-not-resolved="false"></xref>
+
+    objects.
+- api3: operator ==(Quaternion, Quaternion)
+  id: Alis_Core_Aspect_Math_Util_Quaternion_op_Equality_Alis_Core_Aspect_Math_Util_Quaternion_Alis_Core_Aspect_Math_Util_Quaternion_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/Quaternion.cs#L161
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.Quaternion.op_Equality(Alis.Core.Aspect.Math.Util.Quaternion,Alis.Core.Aspect.Math.Util.Quaternion)
+    commentId: M:Alis.Core.Aspect.Math.Util.Quaternion.op_Equality(Alis.Core.Aspect.Math.Util.Quaternion,Alis.Core.Aspect.Math.Util.Quaternion)
+- markdown: Returns a value that indicates whether two quaternions are equal.
+- code: public static bool operator ==(Quaternion value1, Quaternion value2)
+- h4: Parameters
+- parameters:
+  - name: value1
+    type:
+    - text: Quaternion
+      url: Alis.Core.Aspect.Math.Util.Quaternion.html
+    description: The first quaternion to compare.
+  - name: value2
+    type:
+    - text: Quaternion
+      url: Alis.Core.Aspect.Math.Util.Quaternion.html
+    description: The second quaternion to compare.
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the two quaternions are equal; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
+- h4: Remarks
+- markdown: >-
+    Two quaternions are equal if each of their corresponding components is equal.
+
+    The <xref href="Alis.Core.Aspect.Math.Util.Quaternion.op_Equality(Alis.Core.Aspect.Math.Util.Quaternion%2cAlis.Core.Aspect.Math.Util.Quaternion)" data-throw-if-not-resolved="false"></xref> method defines the operation of the equality operator for
+
+    <xref href="Alis.Core.Aspect.Math.Util.Quaternion" data-throw-if-not-resolved="false"></xref> objects.
+- api3: operator !=(Quaternion, Quaternion)
+  id: Alis_Core_Aspect_Math_Util_Quaternion_op_Inequality_Alis_Core_Aspect_Math_Util_Quaternion_Alis_Core_Aspect_Math_Util_Quaternion_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/Quaternion.cs#L173
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.Quaternion.op_Inequality(Alis.Core.Aspect.Math.Util.Quaternion,Alis.Core.Aspect.Math.Util.Quaternion)
+    commentId: M:Alis.Core.Aspect.Math.Util.Quaternion.op_Inequality(Alis.Core.Aspect.Math.Util.Quaternion,Alis.Core.Aspect.Math.Util.Quaternion)
+- markdown: Returns a value that indicates whether two quaternions are not equal.
+- code: public static bool operator !=(Quaternion value1, Quaternion value2)
+- h4: Parameters
+- parameters:
+  - name: value1
+    type:
+    - text: Quaternion
+      url: Alis.Core.Aspect.Math.Util.Quaternion.html
+    description: The first quaternion to compare.
+  - name: value2
+    type:
+    - text: Quaternion
+      url: Alis.Core.Aspect.Math.Util.Quaternion.html
+    description: The second quaternion to compare.
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: >-
+      <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if <code class="paramref">value1</code> and <code class="paramref">value2</code> are not equal; otherwise,
+          <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
+- api3: operator *(Quaternion, Quaternion)
+  id: Alis_Core_Aspect_Math_Util_Quaternion_op_Multiply_Alis_Core_Aspect_Math_Util_Quaternion_Alis_Core_Aspect_Math_Util_Quaternion_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/Quaternion.cs#L179
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.Quaternion.op_Multiply(Alis.Core.Aspect.Math.Util.Quaternion,Alis.Core.Aspect.Math.Util.Quaternion)
+    commentId: M:Alis.Core.Aspect.Math.Util.Quaternion.op_Multiply(Alis.Core.Aspect.Math.Util.Quaternion,Alis.Core.Aspect.Math.Util.Quaternion)
+- markdown: Returns the quaternion that results from multiplying two quaternions together.
+- code: public static Quaternion operator *(Quaternion value1, Quaternion value2)
+- h4: Parameters
+- parameters:
+  - name: value1
+    type:
+    - text: Quaternion
+      url: Alis.Core.Aspect.Math.Util.Quaternion.html
+    description: The first quaternion.
+  - name: value2
+    type:
+    - text: Quaternion
+      url: Alis.Core.Aspect.Math.Util.Quaternion.html
+    description: The second quaternion.
+- h4: Returns
+- parameters:
+  - type:
+    - text: Quaternion
+      url: Alis.Core.Aspect.Math.Util.Quaternion.html
+    description: The product quaternion.
+- api3: operator *(Quaternion, float)
+  id: Alis_Core_Aspect_Math_Util_Quaternion_op_Multiply_Alis_Core_Aspect_Math_Util_Quaternion_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/Quaternion.cs#L215
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.Quaternion.op_Multiply(Alis.Core.Aspect.Math.Util.Quaternion,System.Single)
+    commentId: M:Alis.Core.Aspect.Math.Util.Quaternion.op_Multiply(Alis.Core.Aspect.Math.Util.Quaternion,System.Single)
+- markdown: >-
+    Returns the quaternion that results from scaling all the components of a specified quaternion by a scalar
+
+    factor.
+- code: public static Quaternion operator *(Quaternion value1, float value2)
+- h4: Parameters
+- parameters:
+  - name: value1
+    type:
+    - text: Quaternion
+      url: Alis.Core.Aspect.Math.Util.Quaternion.html
+    description: The source quaternion.
+  - name: value2
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The scalar value.
+- h4: Returns
+- parameters:
+  - type:
+    - text: Quaternion
+      url: Alis.Core.Aspect.Math.Util.Quaternion.html
+    description: The scaled quaternion.
+- api3: operator -(Quaternion, Quaternion)
+  id: Alis_Core_Aspect_Math_Util_Quaternion_op_Subtraction_Alis_Core_Aspect_Math_Util_Quaternion_Alis_Core_Aspect_Math_Util_Quaternion_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/Quaternion.cs#L238
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.Quaternion.op_Subtraction(Alis.Core.Aspect.Math.Util.Quaternion,Alis.Core.Aspect.Math.Util.Quaternion)
+    commentId: M:Alis.Core.Aspect.Math.Util.Quaternion.op_Subtraction(Alis.Core.Aspect.Math.Util.Quaternion,Alis.Core.Aspect.Math.Util.Quaternion)
+- markdown: Subtracts each element in a second quaternion from its corresponding element in a first quaternion.
+- code: public static Quaternion operator -(Quaternion value1, Quaternion value2)
+- h4: Parameters
+- parameters:
+  - name: value1
+    type:
+    - text: Quaternion
+      url: Alis.Core.Aspect.Math.Util.Quaternion.html
+    description: The first quaternion.
+  - name: value2
+    type:
+    - text: Quaternion
+      url: Alis.Core.Aspect.Math.Util.Quaternion.html
+    description: The second quaternion.
+- h4: Returns
+- parameters:
+  - type:
+    - text: Quaternion
+      url: Alis.Core.Aspect.Math.Util.Quaternion.html
+    description: >-
+      The quaternion containing the values that result from subtracting each element in <code class="paramref">value2</code>
+
+      from its corresponding element in <code class="paramref">value1</code>.
+- h4: Remarks
+- markdown: >-
+    The <xref href="Alis.Core.Aspect.Math.Util.Quaternion.op_Subtraction(Alis.Core.Aspect.Math.Util.Quaternion%2cAlis.Core.Aspect.Math.Util.Quaternion)" data-throw-if-not-resolved="false"></xref> method defines the operation of the subtraction operator for
+
+    <xref href="Alis.Core.Aspect.Math.Util.Quaternion" data-throw-if-not-resolved="false"></xref> objects.
+- api3: operator -(Quaternion)
+  id: Alis_Core_Aspect_Math_Util_Quaternion_op_UnaryNegation_Alis_Core_Aspect_Math_Util_Quaternion_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/Quaternion.cs#L257
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.Quaternion.op_UnaryNegation(Alis.Core.Aspect.Math.Util.Quaternion)
+    commentId: M:Alis.Core.Aspect.Math.Util.Quaternion.op_UnaryNegation(Alis.Core.Aspect.Math.Util.Quaternion)
+- markdown: Reverses the sign of each component of the quaternion.
+- code: public static Quaternion operator -(Quaternion value)
+- h4: Parameters
+- parameters:
+  - name: value
+    type:
+    - text: Quaternion
+      url: Alis.Core.Aspect.Math.Util.Quaternion.html
+    description: The quaternion to negate.
+- h4: Returns
+- parameters:
+  - type:
+    - text: Quaternion
+      url: Alis.Core.Aspect.Math.Util.Quaternion.html
+    description: The negated quaternion.
+- h4: Remarks
+- markdown: >-
+    The <xref href="Alis.Core.Aspect.Math.Util.Quaternion.op_UnaryNegation(Alis.Core.Aspect.Math.Util.Quaternion)" data-throw-if-not-resolved="false"></xref> method defines the operation of the unary negation operator for
+
+    <xref href="Alis.Core.Aspect.Math.Util.Quaternion" data-throw-if-not-resolved="false"></xref> objects.
+languageId: csharp
+metadata:
+  description: The quaternion

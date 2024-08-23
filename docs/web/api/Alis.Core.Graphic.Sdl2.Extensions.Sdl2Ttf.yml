@@ -1,0 +1,19 @@
+### YamlMime:ApiPage
+title: Namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
+body:
+- api1: Namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
+  id: Alis_Core_Graphic_Sdl2_Extensions_Sdl2Ttf
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
+    commentId: N:Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
+- h3: Classes
+- parameters:
+  - type:
+      text: NativeSdlTtf
+      url: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.html
+    description: The native sdl ttf class
+  - type:
+      text: SdlTtf
+      url: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.SdlTtf.html
+    description: The sdl ttf extern class
+languageId: csharp

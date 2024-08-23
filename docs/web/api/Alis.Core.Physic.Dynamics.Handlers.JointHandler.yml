@@ -1,0 +1,27 @@
+### YamlMime:ApiPage
+title: Delegate JointHandler
+body:
+- api1: Delegate JointHandler
+  id: Alis_Core_Physic_Dynamics_Handlers_JointHandler
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Handlers/JointHandler.cs#L37
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Handlers.JointHandler
+    commentId: T:Alis.Core.Physic.Dynamics.Handlers.JointHandler
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Physic.Dynamics.Handlers
+      url: Alis.Core.Physic.Dynamics.Handlers.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The joint handler
+- code: public delegate void JointHandler(Joint joint)
+- h4: Parameters
+- parameters:
+  - name: joint
+    type:
+    - text: Joint
+      url: Alis.Core.Physic.Dynamics.Joints.Joint.html
+languageId: csharp
+metadata:
+  description: The joint handler

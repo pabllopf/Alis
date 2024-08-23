@@ -1,0 +1,255 @@
+### YamlMime:ApiPage
+title: Class Sdl2Dlls
+body:
+- api1: Class Sdl2Dlls
+  id: Alis_Core_Graphic_Properties_Sdl2Dlls
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Properties/Sdl2Dlls.cs#L39
+  metadata:
+    uid: Alis.Core.Graphic.Properties.Sdl2Dlls
+    commentId: T:Alis.Core.Graphic.Properties.Sdl2Dlls
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Properties
+      url: Alis.Core.Graphic.Properties.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The im gui dlls class
+- code: public static class Sdl2Dlls
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: Sdl2Dlls
+    url: Alis.Core.Graphic.Properties.Sdl2Dlls.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Fields
+- api3: GlSdlDllBytes
+  id: Alis_Core_Graphic_Properties_Sdl2Dlls_GlSdlDllBytes
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Properties/Sdl2Dlls.cs#L109
+  metadata:
+    uid: Alis.Core.Graphic.Properties.Sdl2Dlls.GlSdlDllBytes
+    commentId: F:Alis.Core.Graphic.Properties.Sdl2Dlls.GlSdlDllBytes
+- markdown: The osx arm64 sdl2
+- code: internal static readonly Dictionary<PlatformInfo, string> GlSdlDllBytes
+- h4: Field Value
+- parameters:
+  - type:
+    - text: Dictionary
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+    - <
+    - text: PlatformInfo
+      url: Alis.Core.Aspect.Data.Dll.PlatformInfo.html
+    - ','
+    - " "
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    - '>'
+- api3: GlSdlTtfDllBytes
+  id: Alis_Core_Graphic_Properties_Sdl2Dlls_GlSdlTtfDllBytes
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Properties/Sdl2Dlls.cs#L130
+  metadata:
+    uid: Alis.Core.Graphic.Properties.Sdl2Dlls.GlSdlTtfDllBytes
+    commentId: F:Alis.Core.Graphic.Properties.Sdl2Dlls.GlSdlTtfDllBytes
+- markdown: The sdl2 ttf
+- code: internal static readonly Dictionary<PlatformInfo, string> GlSdlTtfDllBytes
+- h4: Field Value
+- parameters:
+  - type:
+    - text: Dictionary
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+    - <
+    - text: PlatformInfo
+      url: Alis.Core.Aspect.Data.Dll.PlatformInfo.html
+    - ','
+    - " "
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    - '>'
+- api3: LinuxArm
+  id: Alis_Core_Graphic_Properties_Sdl2Dlls_LinuxArm
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Properties/Sdl2Dlls.cs#L79
+  metadata:
+    uid: Alis.Core.Graphic.Properties.Sdl2Dlls.LinuxArm
+    commentId: F:Alis.Core.Graphic.Properties.Sdl2Dlls.LinuxArm
+- markdown: The arm
+- code: private static readonly PlatformInfo LinuxArm
+- h4: Field Value
+- parameters:
+  - type:
+    - text: PlatformInfo
+      url: Alis.Core.Aspect.Data.Dll.PlatformInfo.html
+- api3: LinuxArm64
+  id: Alis_Core_Graphic_Properties_Sdl2Dlls_LinuxArm64
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Properties/Sdl2Dlls.cs#L84
+  metadata:
+    uid: Alis.Core.Graphic.Properties.Sdl2Dlls.LinuxArm64
+    commentId: F:Alis.Core.Graphic.Properties.Sdl2Dlls.LinuxArm64
+- markdown: The arm 64
+- code: private static readonly PlatformInfo LinuxArm64
+- h4: Field Value
+- parameters:
+  - type:
+    - text: PlatformInfo
+      url: Alis.Core.Aspect.Data.Dll.PlatformInfo.html
+- api3: LinuxX64
+  id: Alis_Core_Graphic_Properties_Sdl2Dlls_LinuxX64
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Properties/Sdl2Dlls.cs#L74
+  metadata:
+    uid: Alis.Core.Graphic.Properties.Sdl2Dlls.LinuxX64
+    commentId: F:Alis.Core.Graphic.Properties.Sdl2Dlls.LinuxX64
+- markdown: The 64
+- code: private static readonly PlatformInfo LinuxX64
+- h4: Field Value
+- parameters:
+  - type:
+    - text: PlatformInfo
+      url: Alis.Core.Aspect.Data.Dll.PlatformInfo.html
+- api3: LinuxX86
+  id: Alis_Core_Graphic_Properties_Sdl2Dlls_LinuxX86
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Properties/Sdl2Dlls.cs#L69
+  metadata:
+    uid: Alis.Core.Graphic.Properties.Sdl2Dlls.LinuxX86
+    commentId: F:Alis.Core.Graphic.Properties.Sdl2Dlls.LinuxX86
+- markdown: The 86
+- code: private static readonly PlatformInfo LinuxX86
+- h4: Field Value
+- parameters:
+  - type:
+    - text: PlatformInfo
+      url: Alis.Core.Aspect.Data.Dll.PlatformInfo.html
+- api3: OsxArm
+  id: Alis_Core_Graphic_Properties_Sdl2Dlls_OsxArm
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Properties/Sdl2Dlls.cs#L99
+  metadata:
+    uid: Alis.Core.Graphic.Properties.Sdl2Dlls.OsxArm
+    commentId: F:Alis.Core.Graphic.Properties.Sdl2Dlls.OsxArm
+- markdown: The arm
+- code: private static readonly PlatformInfo OsxArm
+- h4: Field Value
+- parameters:
+  - type:
+    - text: PlatformInfo
+      url: Alis.Core.Aspect.Data.Dll.PlatformInfo.html
+- api3: OsxArm64
+  id: Alis_Core_Graphic_Properties_Sdl2Dlls_OsxArm64
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Properties/Sdl2Dlls.cs#L104
+  metadata:
+    uid: Alis.Core.Graphic.Properties.Sdl2Dlls.OsxArm64
+    commentId: F:Alis.Core.Graphic.Properties.Sdl2Dlls.OsxArm64
+- markdown: The arm 64
+- code: private static readonly PlatformInfo OsxArm64
+- h4: Field Value
+- parameters:
+  - type:
+    - text: PlatformInfo
+      url: Alis.Core.Aspect.Data.Dll.PlatformInfo.html
+- api3: OsxX64
+  id: Alis_Core_Graphic_Properties_Sdl2Dlls_OsxX64
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Properties/Sdl2Dlls.cs#L94
+  metadata:
+    uid: Alis.Core.Graphic.Properties.Sdl2Dlls.OsxX64
+    commentId: F:Alis.Core.Graphic.Properties.Sdl2Dlls.OsxX64
+- markdown: The 64
+- code: private static readonly PlatformInfo OsxX64
+- h4: Field Value
+- parameters:
+  - type:
+    - text: PlatformInfo
+      url: Alis.Core.Aspect.Data.Dll.PlatformInfo.html
+- api3: OsxX86
+  id: Alis_Core_Graphic_Properties_Sdl2Dlls_OsxX86
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Properties/Sdl2Dlls.cs#L89
+  metadata:
+    uid: Alis.Core.Graphic.Properties.Sdl2Dlls.OsxX86
+    commentId: F:Alis.Core.Graphic.Properties.Sdl2Dlls.OsxX86
+- markdown: The 86
+- code: private static readonly PlatformInfo OsxX86
+- h4: Field Value
+- parameters:
+  - type:
+    - text: PlatformInfo
+      url: Alis.Core.Aspect.Data.Dll.PlatformInfo.html
+- api3: ResourcePath
+  id: Alis_Core_Graphic_Properties_Sdl2Dlls_ResourcePath
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Properties/Sdl2Dlls.cs#L44
+  metadata:
+    uid: Alis.Core.Graphic.Properties.Sdl2Dlls.ResourcePath
+    commentId: F:Alis.Core.Graphic.Properties.Sdl2Dlls.ResourcePath
+- markdown: The resource path
+- code: private static readonly string ResourcePath
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: WinArm
+  id: Alis_Core_Graphic_Properties_Sdl2Dlls_WinArm
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Properties/Sdl2Dlls.cs#L59
+  metadata:
+    uid: Alis.Core.Graphic.Properties.Sdl2Dlls.WinArm
+    commentId: F:Alis.Core.Graphic.Properties.Sdl2Dlls.WinArm
+- markdown: The arm
+- code: private static readonly PlatformInfo WinArm
+- h4: Field Value
+- parameters:
+  - type:
+    - text: PlatformInfo
+      url: Alis.Core.Aspect.Data.Dll.PlatformInfo.html
+- api3: WinArm64
+  id: Alis_Core_Graphic_Properties_Sdl2Dlls_WinArm64
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Properties/Sdl2Dlls.cs#L64
+  metadata:
+    uid: Alis.Core.Graphic.Properties.Sdl2Dlls.WinArm64
+    commentId: F:Alis.Core.Graphic.Properties.Sdl2Dlls.WinArm64
+- markdown: The arm 64
+- code: private static readonly PlatformInfo WinArm64
+- h4: Field Value
+- parameters:
+  - type:
+    - text: PlatformInfo
+      url: Alis.Core.Aspect.Data.Dll.PlatformInfo.html
+- api3: WinX64
+  id: Alis_Core_Graphic_Properties_Sdl2Dlls_WinX64
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Properties/Sdl2Dlls.cs#L54
+  metadata:
+    uid: Alis.Core.Graphic.Properties.Sdl2Dlls.WinX64
+    commentId: F:Alis.Core.Graphic.Properties.Sdl2Dlls.WinX64
+- markdown: The 64
+- code: private static readonly PlatformInfo WinX64
+- h4: Field Value
+- parameters:
+  - type:
+    - text: PlatformInfo
+      url: Alis.Core.Aspect.Data.Dll.PlatformInfo.html
+- api3: WinX86
+  id: Alis_Core_Graphic_Properties_Sdl2Dlls_WinX86
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Properties/Sdl2Dlls.cs#L49
+  metadata:
+    uid: Alis.Core.Graphic.Properties.Sdl2Dlls.WinX86
+    commentId: F:Alis.Core.Graphic.Properties.Sdl2Dlls.WinX86
+- markdown: The 86
+- code: private static readonly PlatformInfo WinX86
+- h4: Field Value
+- parameters:
+  - type:
+    - text: PlatformInfo
+      url: Alis.Core.Aspect.Data.Dll.PlatformInfo.html
+languageId: csharp
+metadata:
+  description: The im gui dlls class

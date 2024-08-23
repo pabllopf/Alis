@@ -1,0 +1,1243 @@
+### YamlMime:ApiPage
+title: Enum SdlScancode
+body:
+- api1: Enum SdlScancode
+  id: Alis_Core_Aspect_Data_Mapping_SdlScancode
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Mapping/SdlScancode.cs#L35
+  metadata:
+    uid: Alis.Core.Aspect.Data.Mapping.SdlScancode
+    commentId: T:Alis.Core.Aspect.Data.Mapping.SdlScancode
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Aspect.Data.Mapping
+      url: Alis.Core.Aspect.Data.Mapping.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The sdl scancode enum
+- code: public enum SdlScancode
+- h2: Fields
+- parameters:
+  - name: SdlScancodeUnknown
+    default: "0"
+    description: >+
+      The sdl scancode unknown sdl scancode
+
+  - name: SdlScancodeA
+    default: "4"
+    description: >+
+      The sdl scancode sdl scancode
+
+  - name: SdlScancodeB
+    default: "5"
+    description: >+
+      The sdl scancode sdl scancode
+
+  - name: SdlScancodeC
+    default: "6"
+    description: >+
+      The sdl scancode sdl scancode
+
+  - name: SdlScancodeD
+    default: "7"
+    description: >+
+      The sdl scancode sdl scancode
+
+  - name: SdlScancodeE
+    default: "8"
+    description: >+
+      The sdl scancode sdl scancode
+
+  - name: SdlScancodeF
+    default: "9"
+    description: >+
+      The sdl scancode sdl scancode
+
+  - name: SdlScancodeG
+    default: "10"
+    description: >+
+      The sdl scancode sdl scancode
+
+  - name: SdlScancodeH
+    default: "11"
+    description: >+
+      The sdl scancode sdl scancode
+
+  - name: SdlScancodeI
+    default: "12"
+    description: >+
+      The sdl scancode sdl scancode
+
+  - name: SdlScancodeJ
+    default: "13"
+    description: >+
+      The sdl scancode sdl scancode
+
+  - name: SdlScancodeK
+    default: "14"
+    description: >+
+      The sdl scancode sdl scancode
+
+  - name: SdlScancodeL
+    default: "15"
+    description: >+
+      The sdl scancode sdl scancode
+
+  - name: SdlScancodeM
+    default: "16"
+    description: >+
+      The sdl scancode sdl scancode
+
+  - name: SdlScancodeN
+    default: "17"
+    description: >+
+      The sdl scancode sdl scancode
+
+  - name: SdlScancodeO
+    default: "18"
+    description: >+
+      The sdl scancode sdl scancode
+
+  - name: SdlScancodeP
+    default: "19"
+    description: >+
+      The sdl scancode sdl scancode
+
+  - name: SdlScancodeQ
+    default: "20"
+    description: >+
+      The sdl scancode sdl scancode
+
+  - name: SdlScancodeR
+    default: "21"
+    description: >+
+      The sdl scancode sdl scancode
+
+  - name: SdlScancodeS
+    default: "22"
+    description: >+
+      The sdl scancode sdl scancode
+
+  - name: SdlScancodeT
+    default: "23"
+    description: >+
+      The sdl scancode sdl scancode
+
+  - name: SdlScancodeU
+    default: "24"
+    description: >+
+      The sdl scancode sdl scancode
+
+  - name: SdlScancodeV
+    default: "25"
+    description: >+
+      The sdl scancode sdl scancode
+
+  - name: SdlScancodeW
+    default: "26"
+    description: >+
+      The sdl scancode sdl scancode
+
+  - name: SdlScancodeX
+    default: "27"
+    description: >+
+      The sdl scancode sdl scancode
+
+  - name: SdlScancodeY
+    default: "28"
+    description: >+
+      The sdl scancode sdl scancode
+
+  - name: SdlScancodeZ
+    default: "29"
+    description: >+
+      The sdl scancode sdl scancode
+
+  - name: SdlScancode1
+    default: "30"
+    description: >+
+      The sdl scancode sdl scancode
+
+  - name: SdlScancode2
+    default: "31"
+    description: >+
+      The sdl scancode sdl scancode
+
+  - name: SdlScancode3
+    default: "32"
+    description: >+
+      The sdl scancode sdl scancode
+
+  - name: SdlScancode4
+    default: "33"
+    description: >+
+      The sdl scancode sdl scancode
+
+  - name: SdlScancode5
+    default: "34"
+    description: >+
+      The sdl scancode sdl scancode
+
+  - name: SdlScancode6
+    default: "35"
+    description: >+
+      The sdl scancode sdl scancode
+
+  - name: SdlScancode7
+    default: "36"
+    description: >+
+      The sdl scancode sdl scancode
+
+  - name: SdlScancode8
+    default: "37"
+    description: >+
+      The sdl scancode sdl scancode
+
+  - name: SdlScancode9
+    default: "38"
+    description: >+
+      The sdl scancode sdl scancode
+
+  - name: SdlScancode0
+    default: "39"
+    description: >+
+      The sdl scancode sdl scancode
+
+  - name: SdlScancodeReturn
+    default: "40"
+    description: >+
+      The sdl scancode return sdl scancode
+
+  - name: SdlScancodeEscape
+    default: "41"
+    description: >+
+      The sdl scancode escape sdl scancode
+
+  - name: SdlScancodeBackspace
+    default: "42"
+    description: >+
+      The sdl scancode backspace sdl scancode
+
+  - name: SdlScancodeTab
+    default: "43"
+    description: >+
+      The sdl scancode tab sdl scancode
+
+  - name: SdlScancodeSpace
+    default: "44"
+    description: >+
+      The sdl scancode space sdl scancode
+
+  - name: SdlScancodeMinus
+    default: "45"
+    description: >+
+      The sdl scancode minus sdl scancode
+
+  - name: SdlScancodeEquals
+    default: "46"
+    description: >+
+      The sdl scancode equals sdl scancode
+
+  - name: SdlScancodeLeftbracket
+    default: "47"
+    description: >+
+      The sdl scancode leftbracket sdl scancode
+
+  - name: SdlScancodeRightbracket
+    default: "48"
+    description: >+
+      The sdl scancode rightbracket sdl scancode
+
+  - name: SdlScancodeBackslash
+    default: "49"
+    description: >+
+      The sdl scancode backslash sdl scancode
+
+  - name: SdlScancodeNonushash
+    default: "50"
+    description: >+
+      The sdl scancode nonushash sdl scancode
+
+  - name: SdlScancodeSemicolon
+    default: "51"
+    description: >+
+      The sdl scancode semicolon sdl scancode
+
+  - name: SdlScancodeApostrophe
+    default: "52"
+    description: >+
+      The sdl scancode apostrophe sdl scancode
+
+  - name: SdlScancodeGrave
+    default: "53"
+    description: >+
+      The sdl scancode grave sdl scancode
+
+  - name: SdlScancodeComma
+    default: "54"
+    description: >+
+      The sdl scancode comma sdl scancode
+
+  - name: SdlScancodePeriod
+    default: "55"
+    description: >+
+      The sdl scancode period sdl scancode
+
+  - name: SdlScancodeSlash
+    default: "56"
+    description: >+
+      The sdl scancode slash sdl scancode
+
+  - name: SdlScancodeCapslock
+    default: "57"
+    description: >+
+      The sdl scancode capslock sdl scancode
+
+  - name: SdlScancodeF1
+    default: "58"
+    description: >+
+      The sdl scancode f1 sdl scancode
+
+  - name: SdlScancodeF2
+    default: "59"
+    description: >+
+      The sdl scancode f2 sdl scancode
+
+  - name: SdlScancodeF3
+    default: "60"
+    description: >+
+      The sdl scancode f3 sdl scancode
+
+  - name: SdlScancodeF4
+    default: "61"
+    description: >+
+      The sdl scancode f4 sdl scancode
+
+  - name: SdlScancodeF5
+    default: "62"
+    description: >+
+      The sdl scancode f5 sdl scancode
+
+  - name: SdlScancodeF6
+    default: "63"
+    description: >+
+      The sdl scancode f6 sdl scancode
+
+  - name: SdlScancodeF7
+    default: "64"
+    description: >+
+      The sdl scancode f7 sdl scancode
+
+  - name: SdlScancodeF8
+    default: "65"
+    description: >+
+      The sdl scancode f8 sdl scancode
+
+  - name: SdlScancodeF9
+    default: "66"
+    description: >+
+      The sdl scancode f9 sdl scancode
+
+  - name: SdlScancodeF10
+    default: "67"
+    description: >+
+      The sdl scancode f10 sdl scancode
+
+  - name: SdlScancodeF11
+    default: "68"
+    description: >+
+      The sdl scancode f11 sdl scancode
+
+  - name: SdlScancodeF12
+    default: "69"
+    description: >+
+      The sdl scancode f12 sdl scancode
+
+  - name: SdlScancodePrintscreen
+    default: "70"
+    description: >+
+      The sdl scancode printscreen sdl scancode
+
+  - name: SdlScancodeScrolllock
+    default: "71"
+    description: >+
+      The sdl scancode scrolllock sdl scancode
+
+  - name: SdlScancodePause
+    default: "72"
+    description: >+
+      The sdl scancode pause sdl scancode
+
+  - name: SdlScancodeInsert
+    default: "73"
+    description: >+
+      The sdl scancode insert sdl scancode
+
+  - name: SdlScancodeHome
+    default: "74"
+    description: >+
+      The sdl scancode home sdl scancode
+
+  - name: SdlScancodePageup
+    default: "75"
+    description: >+
+      The sdl scancode pageup sdl scancode
+
+  - name: SdlScancodeDelete
+    default: "76"
+    description: >+
+      The sdl scancode delete sdl scancode
+
+  - name: SdlScancodeEnd
+    default: "77"
+    description: >+
+      The sdl scancode end sdl scancode
+
+  - name: SdlScancodePagedown
+    default: "78"
+    description: >+
+      The sdl scancode pagedown sdl scancode
+
+  - name: SdlScancodeRight
+    default: "79"
+    description: >+
+      The sdl scancode right sdl scancode
+
+  - name: SdlScancodeLeft
+    default: "80"
+    description: >+
+      The sdl scancode left sdl scancode
+
+  - name: SdlScancodeDown
+    default: "81"
+    description: >+
+      The sdl scancode down sdl scancode
+
+  - name: SdlScancodeUp
+    default: "82"
+    description: >+
+      The sdl scancode up sdl scancode
+
+  - name: SdlScancodeNumlockclear
+    default: "83"
+    description: >+
+      The sdl scancode numlockclear sdl scancode
+
+  - name: SdlScancodeKpDivide
+    default: "84"
+    description: >+
+      The sdl scancode kp divide sdl scancode
+
+  - name: SdlScancodeKpMultiply
+    default: "85"
+    description: >+
+      The sdl scancode kp multiply sdl scancode
+
+  - name: SdlScancodeKpMinus
+    default: "86"
+    description: >+
+      The sdl scancode kp minus sdl scancode
+
+  - name: SdlScancodeKpPlus
+    default: "87"
+    description: >+
+      The sdl scancode kp plus sdl scancode
+
+  - name: SdlScancodeKpEnter
+    default: "88"
+    description: >+
+      The sdl scancode kp enter sdl scancode
+
+  - name: SdlScancodeKp1
+    default: "89"
+    description: >+
+      The sdl scancode kp sdl scancode
+
+  - name: SdlScancodeKp2
+    default: "90"
+    description: >+
+      The sdl scancode kp sdl scancode
+
+  - name: SdlScancodeKp3
+    default: "91"
+    description: >+
+      The sdl scancode kp sdl scancode
+
+  - name: SdlScancodeKp4
+    default: "92"
+    description: >+
+      The sdl scancode kp sdl scancode
+
+  - name: SdlScancodeKp5
+    default: "93"
+    description: >+
+      The sdl scancode kp sdl scancode
+
+  - name: SdlScancodeKp6
+    default: "94"
+    description: >+
+      The sdl scancode kp sdl scancode
+
+  - name: SdlScancodeKp7
+    default: "95"
+    description: >+
+      The sdl scancode kp sdl scancode
+
+  - name: SdlScancodeKp8
+    default: "96"
+    description: >+
+      The sdl scancode kp sdl scancode
+
+  - name: SdlScancodeKp9
+    default: "97"
+    description: >+
+      The sdl scancode kp sdl scancode
+
+  - name: SdlScancodeKp0
+    default: "98"
+    description: >+
+      The sdl scancode kp sdl scancode
+
+  - name: SdlScancodeKpPeriod
+    default: "99"
+    description: >+
+      The sdl scancode kp period sdl scancode
+
+  - name: SdlScancodeNonusbackslash
+    default: "100"
+    description: >+
+      The sdl scancode nonusbackslash sdl scancode
+
+  - name: SdlScancodeApplication
+    default: "101"
+    description: >+
+      The sdl scancode application sdl scancode
+
+  - name: SdlScancodePower
+    default: "102"
+    description: >+
+      The sdl scancode power sdl scancode
+
+  - name: SdlScancodeKpEquals
+    default: "103"
+    description: >+
+      The sdl scancode kp equals sdl scancode
+
+  - name: SdlScancodeF13
+    default: "104"
+    description: >+
+      The sdl scancode f13 sdl scancode
+
+  - name: SdlScancodeF14
+    default: "105"
+    description: >+
+      The sdl scancode f14 sdl scancode
+
+  - name: SdlScancodeF15
+    default: "106"
+    description: >+
+      The sdl scancode f15 sdl scancode
+
+  - name: SdlScancodeF16
+    default: "107"
+    description: >+
+      The sdl scancode f16 sdl scancode
+
+  - name: SdlScancodeF17
+    default: "108"
+    description: >+
+      The sdl scancode f17 sdl scancode
+
+  - name: SdlScancodeF18
+    default: "109"
+    description: >+
+      The sdl scancode f18 sdl scancode
+
+  - name: SdlScancodeF19
+    default: "110"
+    description: >+
+      The sdl scancode f19 sdl scancode
+
+  - name: SdlScancodeF20
+    default: "111"
+    description: >+
+      The sdl scancode f20 sdl scancode
+
+  - name: SdlScancodeF21
+    default: "112"
+    description: >+
+      The sdl scancode f21 sdl scancode
+
+  - name: SdlScancodeF22
+    default: "113"
+    description: >+
+      The sdl scancode f22 sdl scancode
+
+  - name: SdlScancodeF23
+    default: "114"
+    description: >+
+      The sdl scancode f23 sdl scancode
+
+  - name: SdlScancodeF24
+    default: "115"
+    description: >+
+      The sdl scancode f24 sdl scancode
+
+  - name: SdlScancodeExecute
+    default: "116"
+    description: >+
+      The sdl scancode execute sdl scancode
+
+  - name: SdlScancodeHelp
+    default: "117"
+    description: >+
+      The sdl scancode help sdl scancode
+
+  - name: SdlScancodeMenu
+    default: "118"
+    description: >+
+      The sdl scancode menu sdl scancode
+
+  - name: SdlScancodeSelect
+    default: "119"
+    description: >+
+      The sdl scancode select sdl scancode
+
+  - name: SdlScancodeStop
+    default: "120"
+    description: >+
+      The sdl scancode stop sdl scancode
+
+  - name: SdlScancodeAgain
+    default: "121"
+    description: >+
+      The sdl scancode again sdl scancode
+
+  - name: SdlScancodeUndo
+    default: "122"
+    description: >+
+      The sdl scancode undo sdl scancode
+
+  - name: SdlScancodeCut
+    default: "123"
+    description: >+
+      The sdl scancode cut sdl scancode
+
+  - name: SdlScancodeCopy
+    default: "124"
+    description: >+
+      The sdl scancode copy sdl scancode
+
+  - name: SdlScancodePaste
+    default: "125"
+    description: >+
+      The sdl scancode paste sdl scancode
+
+  - name: SdlScancodeFind
+    default: "126"
+    description: >+
+      The sdl scancode find sdl scancode
+
+  - name: SdlScancodeMute
+    default: "127"
+    description: >+
+      The sdl scancode mute sdl scancode
+
+  - name: SdlScancodeVolumeup
+    default: "128"
+    description: >+
+      The sdl scancode volumeup sdl scancode
+
+  - name: SdlScancodeVolumedown
+    default: "129"
+    description: >+
+      The sdl scancode volumedown sdl scancode
+
+  - name: SdlScancodeKpComma
+    default: "133"
+    description: >+
+      The sdl scancode kp comma sdl scancode
+
+  - name: SdlScancodeKpEqualsas400
+    default: "134"
+    description: >+
+      The sdl scancode kp equalsas400 sdl scancode
+
+  - name: SdlScancodeInternational1
+    default: "135"
+    description: >+
+      The sdl scancode international1 sdl scancode
+
+  - name: SdlScancodeInternational2
+    default: "136"
+    description: >+
+      The sdl scancode international2 sdl scancode
+
+  - name: SdlScancodeInternational3
+    default: "137"
+    description: >+
+      The sdl scancode international3 sdl scancode
+
+  - name: SdlScancodeInternational4
+    default: "138"
+    description: >+
+      The sdl scancode international4 sdl scancode
+
+  - name: SdlScancodeInternational5
+    default: "139"
+    description: >+
+      The sdl scancode international5 sdl scancode
+
+  - name: SdlScancodeInternational6
+    default: "140"
+    description: >+
+      The sdl scancode international6 sdl scancode
+
+  - name: SdlScancodeInternational7
+    default: "141"
+    description: >+
+      The sdl scancode international7 sdl scancode
+
+  - name: SdlScancodeInternational8
+    default: "142"
+    description: >+
+      The sdl scancode international8 sdl scancode
+
+  - name: SdlScancodeInternational9
+    default: "143"
+    description: >+
+      The sdl scancode international9 sdl scancode
+
+  - name: SdlScancodeLang1
+    default: "144"
+    description: >+
+      The sdl scancode lang1 sdl scancode
+
+  - name: SdlScancodeLang2
+    default: "145"
+    description: >+
+      The sdl scancode lang2 sdl scancode
+
+  - name: SdlScancodeLang3
+    default: "146"
+    description: >+
+      The sdl scancode lang3 sdl scancode
+
+  - name: SdlScancodeLang4
+    default: "147"
+    description: >+
+      The sdl scancode lang4 sdl scancode
+
+  - name: SdlScancodeLang5
+    default: "148"
+    description: >+
+      The sdl scancode lang5 sdl scancode
+
+  - name: SdlScancodeLang6
+    default: "149"
+    description: >+
+      The sdl scancode lang6 sdl scancode
+
+  - name: SdlScancodeLang7
+    default: "150"
+    description: >+
+      The sdl scancode lang7 sdl scancode
+
+  - name: SdlScancodeLang8
+    default: "151"
+    description: >+
+      The sdl scancode lang8 sdl scancode
+
+  - name: SdlScancodeLang9
+    default: "152"
+    description: >+
+      The sdl scancode lang9 sdl scancode
+
+  - name: SdlScancodeAlterase
+    default: "153"
+    description: >+
+      The sdl scancode alterase sdl scancode
+
+  - name: SdlScancodeSysreq
+    default: "154"
+    description: >+
+      The sdl scancode sysreq sdl scancode
+
+  - name: SdlScancodeCancel
+    default: "155"
+    description: >+
+      The sdl scancode cancel sdl scancode
+
+  - name: SdlScancodeClear
+    default: "156"
+    description: >+
+      The sdl scancode clear sdl scancode
+
+  - name: SdlScancodePrior
+    default: "157"
+    description: >+
+      The sdl scancode prior sdl scancode
+
+  - name: SdlScancodeReturn2
+    default: "158"
+    description: >+
+      The sdl scancode return2 sdl scancode
+
+  - name: SdlScancodeSeparator
+    default: "159"
+    description: >+
+      The sdl scancode separator sdl scancode
+
+  - name: SdlScancodeOut
+    default: "160"
+    description: >+
+      The sdl scancode out sdl scancode
+
+  - name: SdlScancodeOper
+    default: "161"
+    description: >+
+      The sdl scancode oper sdl scancode
+
+  - name: SdlScancodeClearagain
+    default: "162"
+    description: >+
+      The sdl scancode clearagain sdl scancode
+
+  - name: SdlScancodeCrsel
+    default: "163"
+    description: >+
+      The sdl scancode crsel sdl scancode
+
+  - name: SdlScancodeExsel
+    default: "164"
+    description: >+
+      The sdl scancode exsel sdl scancode
+
+  - name: SdlScancodeKp00
+    default: "176"
+    description: >+
+      The sdl scancode kp 00 sdl scancode
+
+  - name: SdlScancodeKp000
+    default: "177"
+    description: >+
+      The sdl scancode kp 000 sdl scancode
+
+  - name: SdlScancodeThousandsseparator
+    default: "178"
+    description: >+
+      The sdl scancode thousandsseparator sdl scancode
+
+  - name: SdlScancodeDecimalseparator
+    default: "179"
+    description: >+
+      The sdl scancode decimalseparator sdl scancode
+
+  - name: SdlScancodeCurrencyunit
+    default: "180"
+    description: >+
+      The sdl scancode currencyunit sdl scancode
+
+  - name: SdlScancodeCurrencysubunit
+    default: "181"
+    description: >+
+      The sdl scancode currencysubunit sdl scancode
+
+  - name: SdlScancodeKpLeftparen
+    default: "182"
+    description: >+
+      The sdl scancode kp leftparen sdl scancode
+
+  - name: SdlScancodeKpRightparen
+    default: "183"
+    description: >+
+      The sdl scancode kp rightparen sdl scancode
+
+  - name: SdlScancodeKpLeftbrace
+    default: "184"
+    description: >+
+      The sdl scancode kp leftbrace sdl scancode
+
+  - name: SdlScancodeKpRightbrace
+    default: "185"
+    description: >+
+      The sdl scancode kp rightbrace sdl scancode
+
+  - name: SdlScancodeKpTab
+    default: "186"
+    description: >+
+      The sdl scancode kp tab sdl scancode
+
+  - name: SdlScancodeKpBackspace
+    default: "187"
+    description: >+
+      The sdl scancode kp backspace sdl scancode
+
+  - name: SdlScancodeKpA
+    default: "188"
+    description: >+
+      The sdl scancode kp sdl scancode
+
+  - name: SdlScancodeKpB
+    default: "189"
+    description: >+
+      The sdl scancode kp sdl scancode
+
+  - name: SdlScancodeKpC
+    default: "190"
+    description: >+
+      The sdl scancode kp sdl scancode
+
+  - name: SdlScancodeKpD
+    default: "191"
+    description: >+
+      The sdl scancode kp sdl scancode
+
+  - name: SdlScancodeKpE
+    default: "192"
+    description: >+
+      The sdl scancode kp sdl scancode
+
+  - name: SdlScancodeKpF
+    default: "193"
+    description: >+
+      The sdl scancode kp sdl scancode
+
+  - name: SdlScancodeKpXor
+    default: "194"
+    description: >+
+      The sdl scancode kp xor sdl scancode
+
+  - name: SdlScancodeKpPower
+    default: "195"
+    description: >+
+      The sdl scancode kp power sdl scancode
+
+  - name: SdlScancodeKpPercent
+    default: "196"
+    description: >+
+      The sdl scancode kp percent sdl scancode
+
+  - name: SdlScancodeKpLess
+    default: "197"
+    description: >+
+      The sdl scancode kp less sdl scancode
+
+  - name: SdlScancodeKpGreater
+    default: "198"
+    description: >+
+      The sdl scancode kp greater sdl scancode
+
+  - name: SdlScancodeKpAmpersand
+    default: "199"
+    description: >+
+      The sdl scancode kp ampersand sdl scancode
+
+  - name: SdlScancodeKpDblampersand
+    default: "200"
+    description: >+
+      The sdl scancode kp dblampersand sdl scancode
+
+  - name: SdlScancodeKpVerticalbar
+    default: "201"
+    description: >+
+      The sdl scancode kp verticalbar sdl scancode
+
+  - name: SdlScancodeKpDblverticalbar
+    default: "202"
+    description: >+
+      The sdl scancode kp dblverticalbar sdl scancode
+
+  - name: SdlScancodeKpColon
+    default: "203"
+    description: >+
+      The sdl scancode kp colon sdl scancode
+
+  - name: SdlScancodeKpHash
+    default: "204"
+    description: >+
+      The sdl scancode kp hash sdl scancode
+
+  - name: SdlScancodeKpSpace
+    default: "205"
+    description: >+
+      The sdl scancode kp space sdl scancode
+
+  - name: SdlScancodeKpAt
+    default: "206"
+    description: >+
+      The sdl scancode kp at sdl scancode
+
+  - name: SdlScancodeKpExclam
+    default: "207"
+    description: >+
+      The sdl scancode kp exclam sdl scancode
+
+  - name: SdlScancodeKpMemstore
+    default: "208"
+    description: >+
+      The sdl scancode kp memstore sdl scancode
+
+  - name: SdlScancodeKpMemrecall
+    default: "209"
+    description: >+
+      The sdl scancode kp memrecall sdl scancode
+
+  - name: SdlScancodeKpMemclear
+    default: "210"
+    description: >+
+      The sdl scancode kp memclear sdl scancode
+
+  - name: SdlScancodeKpMemadd
+    default: "211"
+    description: >+
+      The sdl scancode kp memadd sdl scancode
+
+  - name: SdlScancodeKpMemsubtract
+    default: "212"
+    description: >+
+      The sdl scancode kp memsubtract sdl scancode
+
+  - name: SdlScancodeKpMemmultiply
+    default: "213"
+    description: >+
+      The sdl scancode kp memmultiply sdl scancode
+
+  - name: SdlScancodeKpMemdivide
+    default: "214"
+    description: >+
+      The sdl scancode kp memdivide sdl scancode
+
+  - name: SdlScancodeKpPlusminus
+    default: "215"
+    description: >+
+      The sdl scancode kp plusminus sdl scancode
+
+  - name: SdlScancodeKpClear
+    default: "216"
+    description: >+
+      The sdl scancode kp clear sdl scancode
+
+  - name: SdlScancodeKpClearentry
+    default: "217"
+    description: >+
+      The sdl scancode kp clearentry sdl scancode
+
+  - name: SdlScancodeKpBinary
+    default: "218"
+    description: >+
+      The sdl scancode kp binary sdl scancode
+
+  - name: SdlScancodeKpOctal
+    default: "219"
+    description: >+
+      The sdl scancode kp octal sdl scancode
+
+  - name: SdlScancodeKpDecimal
+    default: "220"
+    description: >+
+      The sdl scancode kp decimal sdl scancode
+
+  - name: SdlScancodeKpHexadecimal
+    default: "221"
+    description: >+
+      The sdl scancode kp hexadecimal sdl scancode
+
+  - name: SdlScancodeLctrl
+    default: "224"
+    description: >+
+      The sdl scancode lctrl sdl scancode
+
+  - name: SdlScancodeLshift
+    default: "225"
+    description: >+
+      The sdl scancode lshift sdl scancode
+
+  - name: SdlScancodeLalt
+    default: "226"
+    description: >+
+      The sdl scancode lalt sdl scancode
+
+  - name: SdlScancodeLgui
+    default: "227"
+    description: >+
+      The sdl scancode lgui sdl scancode
+
+  - name: SdlScancodeRctrl
+    default: "228"
+    description: >+
+      The sdl scancode rctrl sdl scancode
+
+  - name: SdlScancodeRshift
+    default: "229"
+    description: >+
+      The sdl scancode rshift sdl scancode
+
+  - name: SdlScancodeRalt
+    default: "230"
+    description: >+
+      The sdl scancode ralt sdl scancode
+
+  - name: SdlScancodeRgui
+    default: "231"
+    description: >+
+      The sdl scancode rgui sdl scancode
+
+  - name: SdlScancodeMode
+    default: "257"
+    description: >+
+      The sdl scancode mode sdl scancode
+
+  - name: SdlScancodeAudionext
+    default: "258"
+    description: >+
+      The sdl scancode audionext sdl scancode
+
+  - name: SdlScancodeAudioprev
+    default: "259"
+    description: >+
+      The sdl scancode audioprev sdl scancode
+
+  - name: SdlScancodeAudiostop
+    default: "260"
+    description: >+
+      The sdl scancode audiostop sdl scancode
+
+  - name: SdlScancodeAudioplay
+    default: "261"
+    description: >+
+      The sdl scancode audioplay sdl scancode
+
+  - name: SdlScancodeAudiomute
+    default: "262"
+    description: >+
+      The sdl scancode audiomute sdl scancode
+
+  - name: SdlScancodeMediaselect
+    default: "263"
+    description: >+
+      The sdl scancode mediaselect sdl scancode
+
+  - name: SdlScancodeWww
+    default: "264"
+    description: >+
+      The sdl scancode www sdl scancode
+
+  - name: SdlScancodeMail
+    default: "265"
+    description: >+
+      The sdl scancode mail sdl scancode
+
+  - name: SdlScancodeCalculator
+    default: "266"
+    description: >+
+      The sdl scancode calculator sdl scancode
+
+  - name: SdlScancodeComputer
+    default: "267"
+    description: >+
+      The sdl scancode computer sdl scancode
+
+  - name: SdlScancodeAcSearch
+    default: "268"
+    description: >+
+      The sdl scancode ac search sdl scancode
+
+  - name: SdlScancodeAcHome
+    default: "269"
+    description: >+
+      The sdl scancode ac home sdl scancode
+
+  - name: SdlScancodeAcBack
+    default: "270"
+    description: >+
+      The sdl scancode ac back sdl scancode
+
+  - name: SdlScancodeAcForward
+    default: "271"
+    description: >+
+      The sdl scancode ac forward sdl scancode
+
+  - name: SdlScancodeAcStop
+    default: "272"
+    description: >+
+      The sdl scancode ac stop sdl scancode
+
+  - name: SdlScancodeAcRefresh
+    default: "273"
+    description: >+
+      The sdl scancode ac refresh sdl scancode
+
+  - name: SdlScancodeAcBookmarks
+    default: "274"
+    description: >+
+      The sdl scancode ac bookmarks sdl scancode
+
+  - name: SdlScancodeBrightnessdown
+    default: "275"
+    description: >+
+      The sdl scancode brightnessdown sdl scancode
+
+  - name: SdlScancodeBrightnessup
+    default: "276"
+    description: >+
+      The sdl scancode brightnessup sdl scancode
+
+  - name: SdlScancodeDisplayswitch
+    default: "277"
+    description: >+
+      The sdl scancode displayswitch sdl scancode
+
+  - name: SdlScancodeKbdillumtoggle
+    default: "278"
+    description: >+
+      The sdl scancode kbdillumtoggle sdl scancode
+
+  - name: SdlScancodeKbdillumdown
+    default: "279"
+    description: >+
+      The sdl scancode kbdillumdown sdl scancode
+
+  - name: SdlScancodeKbdillumup
+    default: "280"
+    description: >+
+      The sdl scancode kbdillumup sdl scancode
+
+  - name: SdlScancodeEject
+    default: "281"
+    description: >+
+      The sdl scancode eject sdl scancode
+
+  - name: SdlScancodeSleep
+    default: "282"
+    description: >+
+      The sdl scancode sleep sdl scancode
+
+  - name: SdlScancodeApp1
+    default: "283"
+    description: >+
+      The sdl scancode app1 sdl scancode
+
+  - name: SdlScancodeApp2
+    default: "284"
+    description: >+
+      The sdl scancode app2 sdl scancode
+
+  - name: SdlScancodeAudiorewind
+    default: "285"
+    description: >+
+      The sdl scancode audiorewind sdl scancode
+
+  - name: SdlScancodeAudiofastforward
+    default: "286"
+    description: >+
+      The sdl scancode audiofastforward sdl scancode
+
+  - name: SdlNumScancodes
+    default: "512"
+    description: >+
+      The sdl num scancodes sdl scancode
+
+languageId: csharp
+metadata:
+  description: The sdl scancode enum

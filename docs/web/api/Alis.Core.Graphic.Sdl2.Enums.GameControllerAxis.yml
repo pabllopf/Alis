@@ -1,0 +1,63 @@
+### YamlMime:ApiPage
+title: Enum GameControllerAxis
+body:
+- api1: Enum GameControllerAxis
+  id: Alis_Core_Graphic_Sdl2_Enums_GameControllerAxis
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Enums/GameControllerAxis.cs#L35
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Enums.GameControllerAxis
+    commentId: T:Alis.Core.Graphic.Sdl2.Enums.GameControllerAxis
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Enums
+      url: Alis.Core.Graphic.Sdl2.Enums.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The sdl game controller axis enum
+- code: public enum GameControllerAxis
+- h2: Fields
+- parameters:
+  - name: SdlControllerAxisInvalid
+    default: "-1"
+    description: >+
+      The sdl controller axis invalid sdl game controller axis
+
+  - name: SdlControllerAxisLeftX
+    default: "0"
+    description: >+
+      The sdl controller axis left x sdl game controller axis
+
+  - name: SdlControllerAxisLeftY
+    default: "1"
+    description: >+
+      The sdl controller axis lefty sdl game controller axis
+
+  - name: SdlControllerAxisRightX
+    default: "2"
+    description: >+
+      The sdl controller axis right X sdl game controller axis
+
+  - name: SdlControllerAxisRightY
+    default: "3"
+    description: >+
+      The sdl controller axis right Y sdl game controller axis
+
+  - name: SdlControllerAxisTriggerLeft
+    default: "4"
+    description: >+
+      The sdl controller axis trigger left sdl game controller axis
+
+  - name: SdlControllerAxisTriggerRight
+    default: "5"
+    description: >+
+      The sdl controller axis trigger right sdl game controller axis
+
+  - name: SdlControllerAxisMax
+    default: "6"
+    description: >+
+      The sdl controller axis max sdl game controller axis
+
+languageId: csharp
+metadata:
+  description: The sdl game controller axis enum

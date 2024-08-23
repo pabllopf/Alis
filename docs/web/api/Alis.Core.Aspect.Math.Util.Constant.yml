@@ -1,0 +1,174 @@
+### YamlMime:ApiPage
+title: Class Constant
+body:
+- api1: Class Constant
+  id: Alis_Core_Aspect_Math_Util_Constant
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/Constant.cs#L35
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.Constant
+    commentId: T:Alis.Core.Aspect.Math.Util.Constant
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Aspect.Math.Util
+      url: Alis.Core.Aspect.Math.Util.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The math constants class
+- code: public static class Constant
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: Constant
+    url: Alis.Core.Aspect.Math.Util.Constant.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Fields
+- api3: E
+  id: Alis_Core_Aspect_Math_Util_Constant_E
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/Constant.cs#L48
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.Constant.E
+    commentId: F:Alis.Core.Aspect.Math.Util.Constant.E
+- markdown: Represents the mathematical constant e(2.71828175).
+- code: public const float E = 2.7182817
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: Epsilon
+  id: Alis_Core_Aspect_Math_Util_Constant_Epsilon
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/Constant.cs#L40
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.Constant.Epsilon
+    commentId: F:Alis.Core.Aspect.Math.Util.Constant.Epsilon
+- markdown: The epsilon
+- code: public const float Epsilon = 1.1920929E-07
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: Euler
+  id: Alis_Core_Aspect_Math_Util_Constant_Euler
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/Constant.cs#L45
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.Constant.Euler
+    commentId: F:Alis.Core.Aspect.Math.Util.Constant.Euler
+- markdown: The euler
+- code: public const float Euler = 2.7182817
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: Log10E
+  id: Alis_Core_Aspect_Math_Util_Constant_Log10E
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/Constant.cs#L51
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.Constant.Log10E
+    commentId: F:Alis.Core.Aspect.Math.Util.Constant.Log10E
+- markdown: Represents the log base ten of e(0.4342945).
+- code: public const float Log10E = 0.4342945
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: Log2E
+  id: Alis_Core_Aspect_Math_Util_Constant_Log2E
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/Constant.cs#L54
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.Constant.Log2E
+    commentId: F:Alis.Core.Aspect.Math.Util.Constant.Log2E
+- markdown: Represents the log base two of e(1.442695).
+- code: public const float Log2E = 1.442695
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: Pi
+  id: Alis_Core_Aspect_Math_Util_Constant_Pi
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/Constant.cs#L57
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.Constant.Pi
+    commentId: F:Alis.Core.Aspect.Math.Util.Constant.Pi
+- markdown: Represents the value of pi(3.14159274).
+- code: public const float Pi = 3.1415927
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: PiOver2
+  id: Alis_Core_Aspect_Math_Util_Constant_PiOver2
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/Constant.cs#L60
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.Constant.PiOver2
+    commentId: F:Alis.Core.Aspect.Math.Util.Constant.PiOver2
+- markdown: Represents the value of pi divided by two(1.57079637).
+- code: public const float PiOver2 = 1.5707964
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: PiOver4
+  id: Alis_Core_Aspect_Math_Util_Constant_PiOver4
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/Constant.cs#L63
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.Constant.PiOver4
+    commentId: F:Alis.Core.Aspect.Math.Util.Constant.PiOver4
+- markdown: Represents the value of pi divided by four(0.7853982).
+- code: public const float PiOver4 = 0.7853982
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: Tau
+  id: Alis_Core_Aspect_Math_Util_Constant_Tau
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/Constant.cs#L69
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.Constant.Tau
+    commentId: F:Alis.Core.Aspect.Math.Util.Constant.Tau
+- markdown: Represents the value of pi times two(6.28318548). This is an alias of TwoPi.
+- code: public const float Tau = 6.2831855
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: TwoPi
+  id: Alis_Core_Aspect_Math_Util_Constant_TwoPi
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/Util/Constant.cs#L66
+  metadata:
+    uid: Alis.Core.Aspect.Math.Util.Constant.TwoPi
+    commentId: F:Alis.Core.Aspect.Math.Util.Constant.TwoPi
+- markdown: Represents the value of pi times two(6.28318548).
+- code: public const float TwoPi = 6.2831855
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+languageId: csharp
+metadata:
+  description: The math constants class

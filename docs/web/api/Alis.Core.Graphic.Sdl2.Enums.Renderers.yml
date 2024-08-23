@@ -1,0 +1,51 @@
+### YamlMime:ApiPage
+title: Enum Renderers
+body:
+- api1: Enum Renderers
+  id: Alis_Core_Graphic_Sdl2_Enums_Renderers
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Enums/Renderers.cs#L37
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Enums.Renderers
+    commentId: T:Alis.Core.Graphic.Sdl2.Enums.Renderers
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Enums
+      url: Alis.Core.Graphic.Sdl2.Enums.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The sdl renderer flags enum
+- code: >-
+    [Flags]
+
+    public enum Renderers : uint
+- h2: Fields
+- parameters:
+  - name: None
+    default: "0"
+    description: >+
+      The none renderer
+
+  - name: SdlRendererSoftware
+    default: "1"
+    description: >+
+      The sdl renderer software sdl renderer flags
+
+  - name: SdlRendererAccelerated
+    default: "2"
+    description: >+
+      The sdl renderer accelerated sdl renderer flags
+
+  - name: SdlRendererPresentVSync
+    default: "4"
+    description: >+
+      The sdl renderer present vsync sdl renderer flags
+
+  - name: SdlRendererTargetTexture
+    default: "8"
+    description: >+
+      The sdl renderer target texture sdl renderer flags
+
+languageId: csharp
+metadata:
+  description: The sdl renderer flags enum

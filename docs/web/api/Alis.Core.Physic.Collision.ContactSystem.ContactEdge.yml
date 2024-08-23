@@ -1,0 +1,106 @@
+### YamlMime:ApiPage
+title: Class ContactEdge
+body:
+- api1: Class ContactEdge
+  id: Alis_Core_Physic_Collision_ContactSystem_ContactEdge
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactEdge.cs#L39
+  metadata:
+    uid: Alis.Core.Physic.Collision.ContactSystem.ContactEdge
+    commentId: T:Alis.Core.Physic.Collision.ContactSystem.ContactEdge
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Physic.Collision.ContactSystem
+      url: Alis.Core.Physic.Collision.ContactSystem.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: >-
+    A contact edge is used to connect bodies and contacts together in a contact graph where each body is a node
+
+    and each contact is an edge. A contact edge belongs to a doubly linked list maintained in each attached body. Each
+
+    contact has two contact nodes, one for each attached body.
+- code: public class ContactEdge
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: ContactEdge
+    url: Alis.Core.Physic.Collision.ContactSystem.ContactEdge.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Properties
+- api3: Contact
+  id: Alis_Core_Physic_Collision_ContactSystem_ContactEdge_Contact
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactEdge.cs#L42
+  metadata:
+    uid: Alis.Core.Physic.Collision.ContactSystem.ContactEdge.Contact
+    commentId: P:Alis.Core.Physic.Collision.ContactSystem.ContactEdge.Contact
+- markdown: The contact
+- code: public Contact Contact { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Contact
+      url: Alis.Core.Physic.Collision.ContactSystem.Contact.html
+- api3: Next
+  id: Alis_Core_Physic_Collision_ContactSystem_ContactEdge_Next
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactEdge.cs#L45
+  metadata:
+    uid: Alis.Core.Physic.Collision.ContactSystem.ContactEdge.Next
+    commentId: P:Alis.Core.Physic.Collision.ContactSystem.ContactEdge.Next
+- markdown: The next contact edge in the body's contact list
+- code: public ContactEdge Next { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: ContactEdge
+      url: Alis.Core.Physic.Collision.ContactSystem.ContactEdge.html
+- api3: Other
+  id: Alis_Core_Physic_Collision_ContactSystem_ContactEdge_Other
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactEdge.cs#L48
+  metadata:
+    uid: Alis.Core.Physic.Collision.ContactSystem.ContactEdge.Other
+    commentId: P:Alis.Core.Physic.Collision.ContactSystem.ContactEdge.Other
+- markdown: Provides quick access to the other body attached.
+- code: public Body Other { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Body
+      url: Alis.Core.Physic.Dynamics.Body.html
+- api3: Prev
+  id: Alis_Core_Physic_Collision_ContactSystem_ContactEdge_Prev
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactEdge.cs#L51
+  metadata:
+    uid: Alis.Core.Physic.Collision.ContactSystem.ContactEdge.Prev
+    commentId: P:Alis.Core.Physic.Collision.ContactSystem.ContactEdge.Prev
+- markdown: The previous contact edge in the body's contact list
+- code: public ContactEdge Prev { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: ContactEdge
+      url: Alis.Core.Physic.Collision.ContactSystem.ContactEdge.html
+languageId: csharp
+metadata:
+  description: >-
+    A contact edge is used to connect bodies and contacts together in a contact graph where each body is a node
+
+    and each contact is an edge. A contact edge belongs to a doubly linked list maintained in each attached body. Each
+
+    contact has two contact nodes, one for each attached body.

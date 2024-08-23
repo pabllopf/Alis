@@ -1,0 +1,174 @@
+### YamlMime:ApiPage
+title: Interface IRuntime
+body:
+- api1: Interface IRuntime
+  id: Alis_Core_Ecs_Entity_Property_IRuntime
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Ecs/src/Entity/Property/IRuntime.cs#L35
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Property.IRuntime
+    commentId: T:Alis.Core.Ecs.Entity.Property.IRuntime
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Ecs.Entity.Property
+      url: Alis.Core.Ecs.Entity.Property.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The runtime interface
+- code: public interface IRuntime
+- h2: Methods
+- api3: OnAfterFixedUpdate()
+  id: Alis_Core_Ecs_Entity_Property_IRuntime_OnAfterFixedUpdate
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Ecs/src/Entity/Property/IRuntime.cs#L85
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Property.IRuntime.OnAfterFixedUpdate
+    commentId: M:Alis.Core.Ecs.Entity.Property.IRuntime.OnAfterFixedUpdate
+- markdown: Ons the after fixed update
+- code: void OnAfterFixedUpdate()
+- api3: OnAfterUpdate()
+  id: Alis_Core_Ecs_Entity_Property_IRuntime_OnAfterUpdate
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Ecs/src/Entity/Property/IRuntime.cs#L70
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Property.IRuntime.OnAfterUpdate
+    commentId: M:Alis.Core.Ecs.Entity.Property.IRuntime.OnAfterUpdate
+- markdown: Afters the update
+- code: void OnAfterUpdate()
+- api3: OnAwake()
+  id: Alis_Core_Ecs_Entity_Property_IRuntime_OnAwake
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Ecs/src/Entity/Property/IRuntime.cs#L50
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Property.IRuntime.OnAwake
+    commentId: M:Alis.Core.Ecs.Entity.Property.IRuntime.OnAwake
+- markdown: Awakes this instance
+- code: void OnAwake()
+- api3: OnBeforeFixedUpdate()
+  id: Alis_Core_Ecs_Entity_Property_IRuntime_OnBeforeFixedUpdate
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Ecs/src/Entity/Property/IRuntime.cs#L75
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Property.IRuntime.OnBeforeFixedUpdate
+    commentId: M:Alis.Core.Ecs.Entity.Property.IRuntime.OnBeforeFixedUpdate
+- markdown: Ons the before fixed update
+- code: void OnBeforeFixedUpdate()
+- api3: OnBeforeUpdate()
+  id: Alis_Core_Ecs_Entity_Property_IRuntime_OnBeforeUpdate
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Ecs/src/Entity/Property/IRuntime.cs#L60
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Property.IRuntime.OnBeforeUpdate
+    commentId: M:Alis.Core.Ecs.Entity.Property.IRuntime.OnBeforeUpdate
+- markdown: Before run the update
+- code: void OnBeforeUpdate()
+- api3: OnCalculate()
+  id: Alis_Core_Ecs_Entity_Property_IRuntime_OnCalculate
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Ecs/src/Entity/Property/IRuntime.cs#L95
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Property.IRuntime.OnCalculate
+    commentId: M:Alis.Core.Ecs.Entity.Property.IRuntime.OnCalculate
+- markdown: Ons the calculate
+- code: void OnCalculate()
+- api3: OnDestroy()
+  id: Alis_Core_Ecs_Entity_Property_IRuntime_OnDestroy
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Ecs/src/Entity/Property/IRuntime.cs#L130
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Property.IRuntime.OnDestroy
+    commentId: M:Alis.Core.Ecs.Entity.Property.IRuntime.OnDestroy
+- markdown: Ons the destroy
+- code: void OnDestroy()
+- api3: OnDisable()
+  id: Alis_Core_Ecs_Entity_Property_IRuntime_OnDisable
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Ecs/src/Entity/Property/IRuntime.cs#L110
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Property.IRuntime.OnDisable
+    commentId: M:Alis.Core.Ecs.Entity.Property.IRuntime.OnDisable
+- markdown: Ons the disable
+- code: void OnDisable()
+- api3: OnDispatchEvents()
+  id: Alis_Core_Ecs_Entity_Property_IRuntime_OnDispatchEvents
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Ecs/src/Entity/Property/IRuntime.cs#L90
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Property.IRuntime.OnDispatchEvents
+    commentId: M:Alis.Core.Ecs.Entity.Property.IRuntime.OnDispatchEvents
+- markdown: Dispatches the events
+- code: void OnDispatchEvents()
+- api3: OnDraw()
+  id: Alis_Core_Ecs_Entity_Property_IRuntime_OnDraw
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Ecs/src/Entity/Property/IRuntime.cs#L100
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Property.IRuntime.OnDraw
+    commentId: M:Alis.Core.Ecs.Entity.Property.IRuntime.OnDraw
+- markdown: Draws this instance
+- code: void OnDraw()
+- api3: OnEnable()
+  id: Alis_Core_Ecs_Entity_Property_IRuntime_OnEnable
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Ecs/src/Entity/Property/IRuntime.cs#L40
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Property.IRuntime.OnEnable
+    commentId: M:Alis.Core.Ecs.Entity.Property.IRuntime.OnEnable
+- markdown: Ons the enable
+- code: void OnEnable()
+- api3: OnExit()
+  id: Alis_Core_Ecs_Entity_Property_IRuntime_OnExit
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Ecs/src/Entity/Property/IRuntime.cs#L125
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Property.IRuntime.OnExit
+    commentId: M:Alis.Core.Ecs.Entity.Property.IRuntime.OnExit
+- markdown: Exits this instance
+- code: void OnExit()
+- api3: OnFixedUpdate()
+  id: Alis_Core_Ecs_Entity_Property_IRuntime_OnFixedUpdate
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Ecs/src/Entity/Property/IRuntime.cs#L80
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Property.IRuntime.OnFixedUpdate
+    commentId: M:Alis.Core.Ecs.Entity.Property.IRuntime.OnFixedUpdate
+- markdown: Update every frame.
+- code: void OnFixedUpdate()
+- api3: OnGui()
+  id: Alis_Core_Ecs_Entity_Property_IRuntime_OnGui
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Ecs/src/Entity/Property/IRuntime.cs#L105
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Property.IRuntime.OnGui
+    commentId: M:Alis.Core.Ecs.Entity.Property.IRuntime.OnGui
+- markdown: Ons the gui
+- code: void OnGui()
+- api3: OnInit()
+  id: Alis_Core_Ecs_Entity_Property_IRuntime_OnInit
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Ecs/src/Entity/Property/IRuntime.cs#L45
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Property.IRuntime.OnInit
+    commentId: M:Alis.Core.Ecs.Entity.Property.IRuntime.OnInit
+- markdown: Inits this instance
+- code: void OnInit()
+- api3: OnReset()
+  id: Alis_Core_Ecs_Entity_Property_IRuntime_OnReset
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Ecs/src/Entity/Property/IRuntime.cs#L115
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Property.IRuntime.OnReset
+    commentId: M:Alis.Core.Ecs.Entity.Property.IRuntime.OnReset
+- markdown: Resets this instance
+- code: void OnReset()
+- api3: OnStart()
+  id: Alis_Core_Ecs_Entity_Property_IRuntime_OnStart
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Ecs/src/Entity/Property/IRuntime.cs#L55
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Property.IRuntime.OnStart
+    commentId: M:Alis.Core.Ecs.Entity.Property.IRuntime.OnStart
+- markdown: Starts this instance
+- code: void OnStart()
+- api3: OnStop()
+  id: Alis_Core_Ecs_Entity_Property_IRuntime_OnStop
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Ecs/src/Entity/Property/IRuntime.cs#L120
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Property.IRuntime.OnStop
+    commentId: M:Alis.Core.Ecs.Entity.Property.IRuntime.OnStop
+- markdown: Stops this instance
+- code: void OnStop()
+- api3: OnUpdate()
+  id: Alis_Core_Ecs_Entity_Property_IRuntime_OnUpdate
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Ecs/src/Entity/Property/IRuntime.cs#L65
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Property.IRuntime.OnUpdate
+    commentId: M:Alis.Core.Ecs.Entity.Property.IRuntime.OnUpdate
+- markdown: Updates this instance
+- code: void OnUpdate()
+languageId: csharp
+metadata:
+  description: The runtime interface

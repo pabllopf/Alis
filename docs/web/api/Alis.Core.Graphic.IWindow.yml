@@ -1,0 +1,61 @@
+### YamlMime:ApiPage
+title: Interface IWindow
+body:
+- api1: Interface IWindow
+  id: Alis_Core_Graphic_IWindow
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/IWindow.cs#L38
+  metadata:
+    uid: Alis.Core.Graphic.IWindow
+    commentId: T:Alis.Core.Graphic.IWindow
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic
+      url: Alis.Core.Graphic.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The window interface
+- code: public interface IWindow
+- h2: Properties
+- api3: Background
+  id: Alis_Core_Graphic_IWindow_Background
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/IWindow.cs#L43
+  metadata:
+    uid: Alis.Core.Graphic.IWindow.Background
+    commentId: P:Alis.Core.Graphic.IWindow.Background
+- markdown: Gets or sets the value of the background
+- code: Color Background { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Color
+      url: Alis.Core.Aspect.Math.Definition.Color.html
+- api3: IsWindowResizable
+  id: Alis_Core_Graphic_IWindow_IsWindowResizable
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/IWindow.cs#L53
+  metadata:
+    uid: Alis.Core.Graphic.IWindow.IsWindowResizable
+    commentId: P:Alis.Core.Graphic.IWindow.IsWindowResizable
+- markdown: Gets or sets the value of the is window resizable
+- code: bool IsWindowResizable { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+- api3: Resolution
+  id: Alis_Core_Graphic_IWindow_Resolution
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/IWindow.cs#L48
+  metadata:
+    uid: Alis.Core.Graphic.IWindow.Resolution
+    commentId: P:Alis.Core.Graphic.IWindow.Resolution
+- markdown: Gets or sets the value of the resolution
+- code: Vector2 Resolution { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+languageId: csharp
+metadata:
+  description: The window interface

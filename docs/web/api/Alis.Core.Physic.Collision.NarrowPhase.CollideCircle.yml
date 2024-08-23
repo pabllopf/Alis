@@ -1,0 +1,312 @@
+### YamlMime:ApiPage
+title: Class CollideCircle
+body:
+- api1: Class CollideCircle
+  id: Alis_Core_Physic_Collision_NarrowPhase_CollideCircle
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/CollideCircle.cs#L41
+  metadata:
+    uid: Alis.Core.Physic.Collision.NarrowPhase.CollideCircle
+    commentId: T:Alis.Core.Physic.Collision.NarrowPhase.CollideCircle
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Physic.Collision.NarrowPhase
+      url: Alis.Core.Physic.Collision.NarrowPhase.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The collide circle class
+- code: public static class CollideCircle
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: CollideCircle
+    url: Alis.Core.Physic.Collision.NarrowPhase.CollideCircle.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Methods
+- api3: CollideCircles(ref Manifold, CircleShape, ref Transform, CircleShape, ref Transform)
+  id: Alis_Core_Physic_Collision_NarrowPhase_CollideCircle_CollideCircles_Alis_Core_Physic_Collision_NarrowPhase_Manifold__Alis_Core_Physic_Collision_Shapes_CircleShape_Alis_Core_Aspect_Math_Transform__Alis_Core_Physic_Collision_Shapes_CircleShape_Alis_Core_Aspect_Math_Transform__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/CollideCircle.cs#L51
+  metadata:
+    uid: Alis.Core.Physic.Collision.NarrowPhase.CollideCircle.CollideCircles(Alis.Core.Physic.Collision.NarrowPhase.Manifold@,Alis.Core.Physic.Collision.Shapes.CircleShape,Alis.Core.Aspect.Math.Transform@,Alis.Core.Physic.Collision.Shapes.CircleShape,Alis.Core.Aspect.Math.Transform@)
+    commentId: M:Alis.Core.Physic.Collision.NarrowPhase.CollideCircle.CollideCircles(Alis.Core.Physic.Collision.NarrowPhase.Manifold@,Alis.Core.Physic.Collision.Shapes.CircleShape,Alis.Core.Aspect.Math.Transform@,Alis.Core.Physic.Collision.Shapes.CircleShape,Alis.Core.Aspect.Math.Transform@)
+- markdown: Collides the circles using the specified manifold
+- code: public static void CollideCircles(ref Manifold manifold, CircleShape circleA, ref Transform xfA, CircleShape circleB, ref Transform xfB)
+- h4: Parameters
+- parameters:
+  - name: manifold
+    type:
+    - text: Manifold
+      url: Alis.Core.Physic.Collision.NarrowPhase.Manifold.html
+    description: The manifold
+  - name: circleA
+    type:
+    - text: CircleShape
+      url: Alis.Core.Physic.Collision.Shapes.CircleShape.html
+    description: The circle
+  - name: xfA
+    type:
+    - text: Transform
+      url: Alis.Core.Aspect.Math.Transform.html
+    description: The xf
+  - name: circleB
+    type:
+    - text: CircleShape
+      url: Alis.Core.Physic.Collision.Shapes.CircleShape.html
+    description: The circle
+  - name: xfB
+    type:
+    - text: Transform
+      url: Alis.Core.Aspect.Math.Transform.html
+    description: The xf
+- api3: CollidePolygonAndCircle(ref Manifold, PolygonShape, ref Transform, CircleShape, ref Transform)
+  id: Alis_Core_Physic_Collision_NarrowPhase_CollideCircle_CollidePolygonAndCircle_Alis_Core_Physic_Collision_NarrowPhase_Manifold__Alis_Core_Physic_Collision_Shapes_PolygonShape_Alis_Core_Aspect_Math_Transform__Alis_Core_Physic_Collision_Shapes_CircleShape_Alis_Core_Aspect_Math_Transform__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/CollideCircle.cs#L87
+  metadata:
+    uid: Alis.Core.Physic.Collision.NarrowPhase.CollideCircle.CollidePolygonAndCircle(Alis.Core.Physic.Collision.NarrowPhase.Manifold@,Alis.Core.Physic.Collision.Shapes.PolygonShape,Alis.Core.Aspect.Math.Transform@,Alis.Core.Physic.Collision.Shapes.CircleShape,Alis.Core.Aspect.Math.Transform@)
+    commentId: M:Alis.Core.Physic.Collision.NarrowPhase.CollideCircle.CollidePolygonAndCircle(Alis.Core.Physic.Collision.NarrowPhase.Manifold@,Alis.Core.Physic.Collision.Shapes.PolygonShape,Alis.Core.Aspect.Math.Transform@,Alis.Core.Physic.Collision.Shapes.CircleShape,Alis.Core.Aspect.Math.Transform@)
+- markdown: Collides the polygon and circle using the specified manifold
+- code: public static void CollidePolygonAndCircle(ref Manifold manifold, PolygonShape polygonA, ref Transform xfA, CircleShape circleB, ref Transform xfB)
+- h4: Parameters
+- parameters:
+  - name: manifold
+    type:
+    - text: Manifold
+      url: Alis.Core.Physic.Collision.NarrowPhase.Manifold.html
+    description: The manifold
+  - name: polygonA
+    type:
+    - text: PolygonShape
+      url: Alis.Core.Physic.Collision.Shapes.PolygonShape.html
+    description: The polygon
+  - name: xfA
+    type:
+    - text: Transform
+      url: Alis.Core.Aspect.Math.Transform.html
+    description: The xf
+  - name: circleB
+    type:
+    - text: CircleShape
+      url: Alis.Core.Physic.Collision.Shapes.CircleShape.html
+    description: The circle
+  - name: xfB
+    type:
+    - text: Transform
+      url: Alis.Core.Aspect.Math.Transform.html
+    description: The xf
+- api3: ComputeBarycentricCoordinates(Vector2, Vector2, Vector2, float, Vector2, ref Manifold, Vertices, int)
+  id: Alis_Core_Physic_Collision_NarrowPhase_CollideCircle_ComputeBarycentricCoordinates_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_System_Single_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Physic_Collision_NarrowPhase_Manifold__Alis_Core_Physic_Shared_Vertices_System_Int32_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/CollideCircle.cs#L201
+  metadata:
+    uid: Alis.Core.Physic.Collision.NarrowPhase.CollideCircle.ComputeBarycentricCoordinates(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,System.Single,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Physic.Collision.NarrowPhase.Manifold@,Alis.Core.Physic.Shared.Vertices,System.Int32)
+    commentId: M:Alis.Core.Physic.Collision.NarrowPhase.CollideCircle.ComputeBarycentricCoordinates(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,System.Single,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Physic.Collision.NarrowPhase.Manifold@,Alis.Core.Physic.Shared.Vertices,System.Int32)
+- markdown: Computes the barycentric coordinates using the specified c local
+- code: internal static void ComputeBarycentricCoordinates(Vector2 cLocal, Vector2 v1, Vector2 v2, float radius, Vector2 circleBPosition, ref Manifold manifold, Vertices normals, int vertIndex1)
+- h4: Parameters
+- parameters:
+  - name: cLocal
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The local
+  - name: v1
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+  - name: v2
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+  - name: radius
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The radius
+  - name: circleBPosition
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The circle position
+  - name: manifold
+    type:
+    - text: Manifold
+      url: Alis.Core.Physic.Collision.NarrowPhase.Manifold.html
+    description: The manifold
+  - name: normals
+    type:
+    - text: Vertices
+      url: Alis.Core.Physic.Shared.Vertices.html
+    description: The normals
+  - name: vertIndex1
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The vert index
+- api3: ComputeCirclePositionInPolygonFrame(ref Transform, Vector2)
+  id: Alis_Core_Physic_Collision_NarrowPhase_CollideCircle_ComputeCirclePositionInPolygonFrame_Alis_Core_Aspect_Math_Transform__Alis_Core_Aspect_Math_Vector_Vector2_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/CollideCircle.cs#L127
+  metadata:
+    uid: Alis.Core.Physic.Collision.NarrowPhase.CollideCircle.ComputeCirclePositionInPolygonFrame(Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Vector.Vector2)
+    commentId: M:Alis.Core.Physic.Collision.NarrowPhase.CollideCircle.ComputeCirclePositionInPolygonFrame(Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Vector.Vector2)
+- markdown: Computes the circle position in polygon frame using the specified xf b
+- code: internal static Vector2 ComputeCirclePositionInPolygonFrame(ref Transform xfB, Vector2 circleBPosition)
+- h4: Parameters
+- parameters:
+  - name: xfB
+    type:
+    - text: Transform
+      url: Alis.Core.Aspect.Math.Transform.html
+    description: The xf
+  - name: circleBPosition
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The circle position
+- h4: Returns
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The vector
+- api3: FindMinSeparatingEdge(Vector2, float, int, Vertices, Vertices)
+  id: Alis_Core_Physic_Collision_NarrowPhase_CollideCircle_FindMinSeparatingEdge_Alis_Core_Aspect_Math_Vector_Vector2_System_Single_System_Int32_Alis_Core_Physic_Shared_Vertices_Alis_Core_Physic_Shared_Vertices_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/CollideCircle.cs#L138
+  metadata:
+    uid: Alis.Core.Physic.Collision.NarrowPhase.CollideCircle.FindMinSeparatingEdge(Alis.Core.Aspect.Math.Vector.Vector2,System.Single,System.Int32,Alis.Core.Physic.Shared.Vertices,Alis.Core.Physic.Shared.Vertices)
+    commentId: M:Alis.Core.Physic.Collision.NarrowPhase.CollideCircle.FindMinSeparatingEdge(Alis.Core.Aspect.Math.Vector.Vector2,System.Single,System.Int32,Alis.Core.Physic.Shared.Vertices,Alis.Core.Physic.Shared.Vertices)
+- markdown: Finds the min separating edge using the specified c local
+- code: internal static int FindMinSeparatingEdge(Vector2 cLocal, float radius, int vertexCount, Vertices vertices, Vertices normals)
+- h4: Parameters
+- parameters:
+  - name: cLocal
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The local
+  - name: radius
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The radius
+  - name: vertexCount
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The vertex count
+  - name: vertices
+    type:
+    - text: Vertices
+      url: Alis.Core.Physic.Shared.Vertices.html
+    description: The vertices
+  - name: normals
+    type:
+    - text: Vertices
+      url: Alis.Core.Physic.Shared.Vertices.html
+    description: The normals
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The normal index
+- api3: IsCenterInsidePolygon(float, Vector2, Vector2, Vertices, int, Vector2, ref Manifold)
+  id: Alis_Core_Physic_Collision_NarrowPhase_CollideCircle_IsCenterInsidePolygon_System_Single_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Physic_Shared_Vertices_System_Int32_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Physic_Collision_NarrowPhase_Manifold__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/CollideCircle.cs#L174
+  metadata:
+    uid: Alis.Core.Physic.Collision.NarrowPhase.CollideCircle.IsCenterInsidePolygon(System.Single,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Physic.Shared.Vertices,System.Int32,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Physic.Collision.NarrowPhase.Manifold@)
+    commentId: M:Alis.Core.Physic.Collision.NarrowPhase.CollideCircle.IsCenterInsidePolygon(System.Single,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Physic.Shared.Vertices,System.Int32,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Physic.Collision.NarrowPhase.Manifold@)
+- markdown: Describes whether is center inside polygon
+- code: internal static bool IsCenterInsidePolygon(float separation, Vector2 v1, Vector2 v2, Vertices normals, int normalIndex, Vector2 circleBPosition, ref Manifold manifold)
+- h4: Parameters
+- parameters:
+  - name: separation
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The separation
+  - name: v1
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+  - name: v2
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+  - name: normals
+    type:
+    - text: Vertices
+      url: Alis.Core.Physic.Shared.Vertices.html
+    description: The normals
+  - name: normalIndex
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The normal index
+  - name: circleBPosition
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The circle position
+  - name: manifold
+    type:
+    - text: Manifold
+      url: Alis.Core.Physic.Collision.NarrowPhase.Manifold.html
+    description: The manifold
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: SetManifoldForVertex(ref Manifold, Vector2, Vector2, Vector2)
+  id: Alis_Core_Physic_Collision_NarrowPhase_CollideCircle_SetManifoldForVertex_Alis_Core_Physic_Collision_NarrowPhase_Manifold__Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/CollideCircle.cs#L249
+  metadata:
+    uid: Alis.Core.Physic.Collision.NarrowPhase.CollideCircle.SetManifoldForVertex(Alis.Core.Physic.Collision.NarrowPhase.Manifold@,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)
+    commentId: M:Alis.Core.Physic.Collision.NarrowPhase.CollideCircle.SetManifoldForVertex(Alis.Core.Physic.Collision.NarrowPhase.Manifold@,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)
+- markdown: Sets the manifold for vertex using the specified manifold
+- code: internal static void SetManifoldForVertex(ref Manifold manifold, Vector2 cLocal, Vector2 vertex, Vector2 circleBPosition)
+- h4: Parameters
+- parameters:
+  - name: manifold
+    type:
+    - text: Manifold
+      url: Alis.Core.Physic.Collision.NarrowPhase.Manifold.html
+    description: The manifold
+  - name: cLocal
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The local
+  - name: vertex
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The vertex
+  - name: circleBPosition
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The circle position
+languageId: csharp
+metadata:
+  description: The collide circle class

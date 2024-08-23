@@ -1,0 +1,15 @@
+### YamlMime:ApiPage
+title: Namespace Alis.Core.Ecs.System.Manager.Audio
+body:
+- api1: Namespace Alis.Core.Ecs.System.Manager.Audio
+  id: Alis_Core_Ecs_System_Manager_Audio
+  metadata:
+    uid: Alis.Core.Ecs.System.Manager.Audio
+    commentId: N:Alis.Core.Ecs.System.Manager.Audio
+- h3: Classes
+- parameters:
+  - type:
+      text: AudioManager
+      url: Alis.Core.Ecs.System.Manager.Audio.AudioManager.html
+    description: The audio manager base class
+languageId: csharp

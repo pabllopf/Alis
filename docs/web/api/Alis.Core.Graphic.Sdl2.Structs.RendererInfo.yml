@@ -1,0 +1,325 @@
+### YamlMime:ApiPage
+title: Struct RendererInfo
+body:
+- api1: Struct RendererInfo
+  id: Alis_Core_Graphic_Sdl2_Structs_RendererInfo
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/RendererInfo.cs#L38
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.RendererInfo
+    commentId: T:Alis.Core.Graphic.Sdl2.Structs.RendererInfo
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Structs
+      url: Alis.Core.Graphic.Sdl2.Structs.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The sdl renderer info
+- code: public struct RendererInfo
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Fields
+- api3: flags
+  id: Alis_Core_Graphic_Sdl2_Structs_RendererInfo_flags
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/RendererInfo.cs#L49
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.RendererInfo.flags
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.RendererInfo.flags
+- markdown: The flags
+- code: public uint flags
+- h4: Field Value
+- parameters:
+  - type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+- api3: maxTextureHeight
+  id: Alis_Core_Graphic_Sdl2_Structs_RendererInfo_maxTextureHeight
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/RendererInfo.cs#L144
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.RendererInfo.maxTextureHeight
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.RendererInfo.maxTextureHeight
+- markdown: The max texture height
+- code: public int maxTextureHeight
+- h4: Field Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: maxTextureWidth
+  id: Alis_Core_Graphic_Sdl2_Structs_RendererInfo_maxTextureWidth
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/RendererInfo.cs#L139
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.RendererInfo.maxTextureWidth
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.RendererInfo.maxTextureWidth
+- markdown: The max texture width
+- code: public int maxTextureWidth
+- h4: Field Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: num_texture_formats
+  id: Alis_Core_Graphic_Sdl2_Structs_RendererInfo_num_texture_formats
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/RendererInfo.cs#L54
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.RendererInfo.num_texture_formats
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.RendererInfo.num_texture_formats
+- markdown: The num texture formats
+- code: public uint num_texture_formats
+- h4: Field Value
+- parameters:
+  - type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+- api3: textureFormats0
+  id: Alis_Core_Graphic_Sdl2_Structs_RendererInfo_textureFormats0
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/RendererInfo.cs#L59
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.RendererInfo.textureFormats0
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.RendererInfo.textureFormats0
+- markdown: The texture formats
+- code: public int textureFormats0
+- h4: Field Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: textureFormats1
+  id: Alis_Core_Graphic_Sdl2_Structs_RendererInfo_textureFormats1
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/RendererInfo.cs#L64
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.RendererInfo.textureFormats1
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.RendererInfo.textureFormats1
+- markdown: The texture formats
+- code: public int textureFormats1
+- h4: Field Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: textureFormats10
+  id: Alis_Core_Graphic_Sdl2_Structs_RendererInfo_textureFormats10
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/RendererInfo.cs#L109
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.RendererInfo.textureFormats10
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.RendererInfo.textureFormats10
+- markdown: The texture formats 10
+- code: public int textureFormats10
+- h4: Field Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: textureFormats11
+  id: Alis_Core_Graphic_Sdl2_Structs_RendererInfo_textureFormats11
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/RendererInfo.cs#L114
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.RendererInfo.textureFormats11
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.RendererInfo.textureFormats11
+- markdown: The texture formats 11
+- code: public int textureFormats11
+- h4: Field Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: textureFormats12
+  id: Alis_Core_Graphic_Sdl2_Structs_RendererInfo_textureFormats12
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/RendererInfo.cs#L119
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.RendererInfo.textureFormats12
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.RendererInfo.textureFormats12
+- markdown: The texture formats 12
+- code: public int textureFormats12
+- h4: Field Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: textureFormats13
+  id: Alis_Core_Graphic_Sdl2_Structs_RendererInfo_textureFormats13
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/RendererInfo.cs#L124
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.RendererInfo.textureFormats13
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.RendererInfo.textureFormats13
+- markdown: The texture formats 13
+- code: public int textureFormats13
+- h4: Field Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: textureFormats14
+  id: Alis_Core_Graphic_Sdl2_Structs_RendererInfo_textureFormats14
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/RendererInfo.cs#L129
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.RendererInfo.textureFormats14
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.RendererInfo.textureFormats14
+- markdown: The texture formats 14
+- code: public int textureFormats14
+- h4: Field Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: textureFormats15
+  id: Alis_Core_Graphic_Sdl2_Structs_RendererInfo_textureFormats15
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/RendererInfo.cs#L134
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.RendererInfo.textureFormats15
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.RendererInfo.textureFormats15
+- markdown: The texture formats 15
+- code: public int textureFormats15
+- h4: Field Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: textureFormats2
+  id: Alis_Core_Graphic_Sdl2_Structs_RendererInfo_textureFormats2
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/RendererInfo.cs#L69
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.RendererInfo.textureFormats2
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.RendererInfo.textureFormats2
+- markdown: The texture formats
+- code: public int textureFormats2
+- h4: Field Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: textureFormats3
+  id: Alis_Core_Graphic_Sdl2_Structs_RendererInfo_textureFormats3
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/RendererInfo.cs#L74
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.RendererInfo.textureFormats3
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.RendererInfo.textureFormats3
+- markdown: The texture formats
+- code: public int textureFormats3
+- h4: Field Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: textureFormats4
+  id: Alis_Core_Graphic_Sdl2_Structs_RendererInfo_textureFormats4
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/RendererInfo.cs#L79
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.RendererInfo.textureFormats4
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.RendererInfo.textureFormats4
+- markdown: The texture formats
+- code: public int textureFormats4
+- h4: Field Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: textureFormats5
+  id: Alis_Core_Graphic_Sdl2_Structs_RendererInfo_textureFormats5
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/RendererInfo.cs#L84
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.RendererInfo.textureFormats5
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.RendererInfo.textureFormats5
+- markdown: The texture formats
+- code: public int textureFormats5
+- h4: Field Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: textureFormats6
+  id: Alis_Core_Graphic_Sdl2_Structs_RendererInfo_textureFormats6
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/RendererInfo.cs#L89
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.RendererInfo.textureFormats6
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.RendererInfo.textureFormats6
+- markdown: The texture formats
+- code: public int textureFormats6
+- h4: Field Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: textureFormats7
+  id: Alis_Core_Graphic_Sdl2_Structs_RendererInfo_textureFormats7
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/RendererInfo.cs#L94
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.RendererInfo.textureFormats7
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.RendererInfo.textureFormats7
+- markdown: The texture formats
+- code: public int textureFormats7
+- h4: Field Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: textureFormats8
+  id: Alis_Core_Graphic_Sdl2_Structs_RendererInfo_textureFormats8
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/RendererInfo.cs#L99
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.RendererInfo.textureFormats8
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.RendererInfo.textureFormats8
+- markdown: The texture formats
+- code: public int textureFormats8
+- h4: Field Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: textureFormats9
+  id: Alis_Core_Graphic_Sdl2_Structs_RendererInfo_textureFormats9
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/RendererInfo.cs#L104
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.RendererInfo.textureFormats9
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.RendererInfo.textureFormats9
+- markdown: The texture formats
+- code: public int textureFormats9
+- h4: Field Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- h2: Properties
+- api3: Name
+  id: Alis_Core_Graphic_Sdl2_Structs_RendererInfo_Name
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/RendererInfo.cs#L44
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.RendererInfo.Name
+    commentId: P:Alis.Core.Graphic.Sdl2.Structs.RendererInfo.Name
+- markdown: The name
+- code: public IntPtr Name { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+- h2: Methods
+- api3: GetName()
+  id: Alis_Core_Graphic_Sdl2_Structs_RendererInfo_GetName
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/RendererInfo.cs#L150
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.RendererInfo.GetName
+    commentId: M:Alis.Core.Graphic.Sdl2.Structs.RendererInfo.GetName
+- markdown: Gets the name
+- code: public string GetName()
+- h4: Returns
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The string
+languageId: csharp
+metadata:
+  description: The sdl renderer info

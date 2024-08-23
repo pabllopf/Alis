@@ -1,0 +1,21 @@
+### YamlMime:ApiPage
+title: Interface IContext
+body:
+- api1: Interface IContext
+  id: Alis_Core_Ecs_System_IContext
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Ecs/src/System/IContext.cs#L35
+  metadata:
+    uid: Alis.Core.Ecs.System.IContext
+    commentId: T:Alis.Core.Ecs.System.IContext
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Ecs.System
+      url: Alis.Core.Ecs.System.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The context interface
+- code: public interface IContext
+languageId: csharp
+metadata:
+  description: The context interface

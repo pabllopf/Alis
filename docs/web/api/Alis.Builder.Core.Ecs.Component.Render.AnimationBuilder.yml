@@ -1,0 +1,183 @@
+### YamlMime:ApiPage
+title: Class AnimationBuilder
+body:
+- api1: Class AnimationBuilder
+  id: Alis_Builder_Core_Ecs_Component_Render_AnimationBuilder
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Builder/Core/Ecs/Component/Render/AnimationBuilder.cs#L41
+  metadata:
+    uid: Alis.Builder.Core.Ecs.Component.Render.AnimationBuilder
+    commentId: T:Alis.Builder.Core.Ecs.Component.Render.AnimationBuilder
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Builder.Core.Ecs.Component.Render
+      url: Alis.Builder.Core.Ecs.Component.Render.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The animation builder class
+- code: 'public class AnimationBuilder : IBuild<Animation>, IName<AnimationBuilder, string>, ISpeed<AnimationBuilder, float>, IOrder<AnimationBuilder, int>, IAddFrame<AnimationBuilder, Func<FrameBuilder, Frame>>'
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: AnimationBuilder
+    url: Alis.Builder.Core.Ecs.Component.Render.AnimationBuilder.html
+- h4: Implements
+- list:
+  - text: IBuild<Animation>
+    url: Alis.Core.Aspect.Fluent.IBuild-1.html
+  - text: IName<AnimationBuilder, string>
+    url: Alis.Core.Aspect.Fluent.Words.IName-2.html
+  - text: ISpeed<AnimationBuilder, float>
+    url: Alis.Core.Aspect.Fluent.Words.ISpeed-2.html
+  - text: IOrder<AnimationBuilder, int>
+    url: Alis.Core.Aspect.Fluent.Words.IOrder-2.html
+  - text: IAddFrame<AnimationBuilder, Func<FrameBuilder, Frame>>
+    url: Alis.Core.Aspect.Fluent.Words.IAddFrame-2.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Fields
+- api3: animation
+  id: Alis_Builder_Core_Ecs_Component_Render_AnimationBuilder_animation
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Builder/Core/Ecs/Component/Render/AnimationBuilder.cs#L51
+  metadata:
+    uid: Alis.Builder.Core.Ecs.Component.Render.AnimationBuilder.animation
+    commentId: F:Alis.Builder.Core.Ecs.Component.Render.AnimationBuilder.animation
+- markdown: The animation
+- code: private readonly Animation animation
+- h4: Field Value
+- parameters:
+  - type:
+    - text: Animation
+      url: Alis.Core.Ecs.Component.Render.Animation.html
+- h2: Methods
+- api3: AddFrame(Func<FrameBuilder, Frame>)
+  id: Alis_Builder_Core_Ecs_Component_Render_AnimationBuilder_AddFrame_System_Func_Alis_Builder_Core_Ecs_Component_Render_FrameBuilder_Alis_Core_Ecs_Component_Render_Frame__
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Builder/Core/Ecs/Component/Render/AnimationBuilder.cs#L59
+  metadata:
+    uid: Alis.Builder.Core.Ecs.Component.Render.AnimationBuilder.AddFrame(System.Func{Alis.Builder.Core.Ecs.Component.Render.FrameBuilder,Alis.Core.Ecs.Component.Render.Frame})
+    commentId: M:Alis.Builder.Core.Ecs.Component.Render.AnimationBuilder.AddFrame(System.Func{Alis.Builder.Core.Ecs.Component.Render.FrameBuilder,Alis.Core.Ecs.Component.Render.Frame})
+- markdown: Adds the frame using the specified value
+- code: public AnimationBuilder AddFrame(Func<FrameBuilder, Frame> value)
+- h4: Parameters
+- parameters:
+  - name: value
+    type:
+    - text: Func
+      url: https://learn.microsoft.com/dotnet/api/system.func-2
+    - <
+    - text: FrameBuilder
+      url: Alis.Builder.Core.Ecs.Component.Render.FrameBuilder.html
+    - ','
+    - " "
+    - text: Frame
+      url: Alis.Core.Ecs.Component.Render.Frame.html
+    - '>'
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - text: AnimationBuilder
+      url: Alis.Builder.Core.Ecs.Component.Render.AnimationBuilder.html
+    description: The animation builder
+- api3: Build()
+  id: Alis_Builder_Core_Ecs_Component_Render_AnimationBuilder_Build
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Builder/Core/Ecs/Component/Render/AnimationBuilder.cs#L69
+  metadata:
+    uid: Alis.Builder.Core.Ecs.Component.Render.AnimationBuilder.Build
+    commentId: M:Alis.Builder.Core.Ecs.Component.Render.AnimationBuilder.Build
+- markdown: Builds this instance
+- code: public Animation Build()
+- h4: Returns
+- parameters:
+  - type:
+    - text: Animation
+      url: Alis.Core.Ecs.Component.Render.Animation.html
+    description: The animation
+- api3: Name(string)
+  id: Alis_Builder_Core_Ecs_Component_Render_AnimationBuilder_Name_System_String_
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Builder/Core/Ecs/Component/Render/AnimationBuilder.cs#L76
+  metadata:
+    uid: Alis.Builder.Core.Ecs.Component.Render.AnimationBuilder.Name(System.String)
+    commentId: M:Alis.Builder.Core.Ecs.Component.Render.AnimationBuilder.Name(System.String)
+- markdown: Names the value
+- code: public AnimationBuilder Name(string value)
+- h4: Parameters
+- parameters:
+  - name: value
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - text: AnimationBuilder
+      url: Alis.Builder.Core.Ecs.Component.Render.AnimationBuilder.html
+    description: The animation builder
+- api3: Order(int)
+  id: Alis_Builder_Core_Ecs_Component_Render_AnimationBuilder_Order_System_Int32_
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Builder/Core/Ecs/Component/Render/AnimationBuilder.cs#L87
+  metadata:
+    uid: Alis.Builder.Core.Ecs.Component.Render.AnimationBuilder.Order(System.Int32)
+    commentId: M:Alis.Builder.Core.Ecs.Component.Render.AnimationBuilder.Order(System.Int32)
+- markdown: Orders the value
+- code: public AnimationBuilder Order(int value)
+- h4: Parameters
+- parameters:
+  - name: value
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - text: AnimationBuilder
+      url: Alis.Builder.Core.Ecs.Component.Render.AnimationBuilder.html
+    description: The animation builder
+- api3: Speed(float)
+  id: Alis_Builder_Core_Ecs_Component_Render_AnimationBuilder_Speed_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Builder/Core/Ecs/Component/Render/AnimationBuilder.cs#L98
+  metadata:
+    uid: Alis.Builder.Core.Ecs.Component.Render.AnimationBuilder.Speed(System.Single)
+    commentId: M:Alis.Builder.Core.Ecs.Component.Render.AnimationBuilder.Speed(System.Single)
+- markdown: Speeds the value
+- code: public AnimationBuilder Speed(float value)
+- h4: Parameters
+- parameters:
+  - name: value
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - text: AnimationBuilder
+      url: Alis.Builder.Core.Ecs.Component.Render.AnimationBuilder.html
+    description: The animation builder
+- h2: See Also
+- list:
+  - - text: IBuild
+      url: Alis.Core.Aspect.Fluent.IBuild-1.html
+    - <
+    - TOrigin
+    - '>'
+languageId: csharp
+metadata:
+  description: The animation builder class

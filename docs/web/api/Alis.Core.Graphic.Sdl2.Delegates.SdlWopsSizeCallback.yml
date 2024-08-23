@@ -1,0 +1,32 @@
+### YamlMime:ApiPage
+title: Delegate SdlWopsSizeCallback
+body:
+- api1: Delegate SdlWopsSizeCallback
+  id: Alis_Core_Graphic_Sdl2_Delegates_SdlWopsSizeCallback
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Delegates/SdlWopsSizeCallback.cs#L38
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Delegates.SdlWopsSizeCallback
+    commentId: T:Alis.Core.Graphic.Sdl2.Delegates.SdlWopsSizeCallback
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Delegates
+      url: Alis.Core.Graphic.Sdl2.Delegates.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The sdl wops size callback
+- code: public delegate long SdlWopsSizeCallback(IntPtr context)
+- h4: Parameters
+- parameters:
+  - name: context
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+- h4: Returns
+- parameters:
+  - type:
+    - text: long
+      url: https://learn.microsoft.com/dotnet/api/system.int64
+languageId: csharp
+metadata:
+  description: The sdl wops size callback

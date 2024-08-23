@@ -1,0 +1,15 @@
+### YamlMime:ApiPage
+title: Namespace Alis.Core.Ecs.Component.Body
+body:
+- api1: Namespace Alis.Core.Ecs.Component.Body
+  id: Alis_Core_Ecs_Component_Body
+  metadata:
+    uid: Alis.Core.Ecs.Component.Body
+    commentId: N:Alis.Core.Ecs.Component.Body
+- h3: Classes
+- parameters:
+  - type:
+      text: RigidBody
+      url: Alis.Core.Ecs.Component.Body.RigidBody.html
+    description: The rigid body class
+languageId: csharp

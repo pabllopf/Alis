@@ -1,0 +1,121 @@
+### YamlMime:ApiPage
+title: Class PropertyDescriptorAccessor
+body:
+- api1: Class PropertyDescriptorAccessor
+  id: Alis_Core_Aspect_Data_Json_PropertyDescriptorAccessor
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/PropertyDescriptorAccessor.cs#L38
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.PropertyDescriptorAccessor
+    commentId: T:Alis.Core.Aspect.Data.Json.PropertyDescriptorAccessor
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Aspect.Data.Json
+      url: Alis.Core.Aspect.Data.Json.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The property descriptor accessor class
+- code: 'internal sealed class PropertyDescriptorAccessor : IMemberAccessor'
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: PropertyDescriptorAccessor
+    url: Alis.Core.Aspect.Data.Json.PropertyDescriptorAccessor.html
+- h4: Implements
+- list:
+  - text: IMemberAccessor
+    url: Alis.Core.Aspect.Data.Json.IMemberAccessor.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Constructors
+- api3: PropertyDescriptorAccessor(PropertyDescriptor)
+  id: Alis_Core_Aspect_Data_Json_PropertyDescriptorAccessor__ctor_System_ComponentModel_PropertyDescriptor_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/PropertyDescriptorAccessor.cs#L49
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.PropertyDescriptorAccessor.#ctor(System.ComponentModel.PropertyDescriptor)
+    commentId: M:Alis.Core.Aspect.Data.Json.PropertyDescriptorAccessor.#ctor(System.ComponentModel.PropertyDescriptor)
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Aspect.Data.Json.PropertyDescriptorAccessor" data-throw-if-not-resolved="false"></xref> class
+- code: public PropertyDescriptorAccessor(PropertyDescriptor pd)
+- h4: Parameters
+- parameters:
+  - name: pd
+    type:
+    - text: PropertyDescriptor
+      url: https://learn.microsoft.com/dotnet/api/system.componentmodel.propertydescriptor
+    description: The pd
+- h2: Fields
+- api3: _pd
+  id: Alis_Core_Aspect_Data_Json_PropertyDescriptorAccessor__pd
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/PropertyDescriptorAccessor.cs#L43
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.PropertyDescriptorAccessor._pd
+    commentId: F:Alis.Core.Aspect.Data.Json.PropertyDescriptorAccessor._pd
+- markdown: The pd
+- code: private readonly PropertyDescriptor _pd
+- h4: Field Value
+- parameters:
+  - type:
+    - text: PropertyDescriptor
+      url: https://learn.microsoft.com/dotnet/api/system.componentmodel.propertydescriptor
+- h2: Methods
+- api3: Get(object)
+  id: Alis_Core_Aspect_Data_Json_PropertyDescriptorAccessor_Get_System_Object_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/PropertyDescriptorAccessor.cs#L56
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.PropertyDescriptorAccessor.Get(System.Object)
+    commentId: M:Alis.Core.Aspect.Data.Json.PropertyDescriptorAccessor.Get(System.Object)
+- markdown: Gets the component
+- code: public object Get(object component)
+- h4: Parameters
+- parameters:
+  - name: component
+    type:
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    description: The component
+- h4: Returns
+- parameters:
+  - type:
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    description: The object
+- api3: Set(object, object)
+  id: Alis_Core_Aspect_Data_Json_PropertyDescriptorAccessor_Set_System_Object_System_Object_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/PropertyDescriptorAccessor.cs#L63
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.PropertyDescriptorAccessor.Set(System.Object,System.Object)
+    commentId: M:Alis.Core.Aspect.Data.Json.PropertyDescriptorAccessor.Set(System.Object,System.Object)
+- markdown: Sets the component
+- code: public void Set(object component, object value)
+- h4: Parameters
+- parameters:
+  - name: component
+    type:
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    description: The component
+  - name: value
+    type:
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    description: The value
+- h2: See Also
+- list:
+  - - text: IMemberAccessor
+      url: Alis.Core.Aspect.Data.Json.IMemberAccessor.html
+languageId: csharp
+metadata:
+  description: The property descriptor accessor class

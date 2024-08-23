@@ -1,0 +1,14 @@
+### YamlMime:ApiPage
+title: Namespace Alis.Core.Graphic.Sdl2.Extensions
+body:
+- api1: Namespace Alis.Core.Graphic.Sdl2.Extensions
+  id: Alis_Core_Graphic_Sdl2_Extensions
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Extensions
+    commentId: N:Alis.Core.Graphic.Sdl2.Extensions
+- h3: Namespaces
+- parameters:
+  - type:
+      text: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
+      url: Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.html
+languageId: csharp

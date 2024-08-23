@@ -1,0 +1,6898 @@
+{
+  "source_base_path": "C:/repositorios/Alis/docs/web",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.Component.Audio.AudioClipBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.Component.Audio.AudioClipBuilder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.Component.Audio.AudioRecorderBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.Component.Audio.AudioRecorderBuilder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.Component.Audio.AudioSourceBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.Component.Audio.AudioSourceBuilder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.Component.Audio.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.Component.Audio.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.Component.Body.RigidBodyBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.Component.Body.RigidBodyBuilder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.Component.Body.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.Component.Body.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.Component.Collider.BoxColliderBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.Component.Collider.BoxColliderBuilder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.Component.Collider.CircleColliderBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.Component.Collider.CircleColliderBuilder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.Component.Collider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.Component.Collider.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.Component.Light.AreaLightBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.Component.Light.AreaLightBuilder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.Component.Light.DirectionalLightBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.Component.Light.DirectionalLightBuilder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.Component.Light.PointLightBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.Component.Light.PointLightBuilder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.Component.Light.SpotLightBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.Component.Light.SpotLightBuilder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.Component.Light.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.Component.Light.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.Component.Render.AnimationBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.Component.Render.AnimationBuilder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.Component.Render.AnimatorBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.Component.Render.AnimatorBuilder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.Component.Render.CameraBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.Component.Render.CameraBuilder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.Component.Render.FrameBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.Component.Render.FrameBuilder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.Component.Render.SpriteBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.Component.Render.SpriteBuilder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.Component.Render.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.Component.Render.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.Component.Ui.CanvasBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.Component.Ui.CanvasBuilder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.Component.Ui.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.Component.Ui.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.Component.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.Component.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.Entity.GameObject.GameObjectBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.Entity.GameObject.GameObjectBuilder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.Entity.GameObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.Entity.GameObject.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.Entity.Scene.SceneBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.Entity.Scene.SceneBuilder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.Entity.Scene.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.Entity.Scene.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.Entity.Transform.TransformBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.Entity.Transform.TransformBuilder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.Entity.Transform.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.Entity.Transform.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.Entity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.Entity.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.System.Manager.Audio.AudioManagerBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.System.Manager.Audio.AudioManagerBuilder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.System.Manager.Audio.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.System.Manager.Audio.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.System.Manager.Graphic.GraphicManagerBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.System.Manager.Graphic.GraphicManagerBuilder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.System.Manager.Graphic.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.System.Manager.Graphic.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.System.Manager.Input.InputManagerBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.System.Manager.Input.InputManagerBuilder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.System.Manager.Input.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.System.Manager.Input.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.System.Manager.Network.NetworkManagerBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.System.Manager.Network.NetworkManagerBuilder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.System.Manager.Network.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.System.Manager.Network.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.System.Manager.Physic.PhysicManagerBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.System.Manager.Physic.PhysicManagerBuilder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.System.Manager.Physic.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.System.Manager.Physic.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.System.Manager.Scene.SceneManagerBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.System.Manager.Scene.SceneManagerBuilder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.System.Manager.Scene.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.System.Manager.Scene.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.System.Manager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.System.Manager.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.System.Setting.Audio.AudioSettingBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.System.Setting.Audio.AudioSettingBuilder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.System.Setting.Audio.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.System.Setting.Audio.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.System.Setting.General.GeneralSettingBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.System.Setting.General.GeneralSettingBuilder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.System.Setting.General.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.System.Setting.General.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.System.Setting.Graphic.GraphicSettingBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.System.Setting.Graphic.GraphicSettingBuilder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.System.Setting.Graphic.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.System.Setting.Graphic.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.System.Setting.Input.InputSettingBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.System.Setting.Input.InputSettingBuilder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.System.Setting.Input.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.System.Setting.Input.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.System.Setting.Network.NetworkSettingBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.System.Setting.Network.NetworkSettingBuilder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.System.Setting.Network.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.System.Setting.Network.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.System.Setting.Physic.PhysicSettingBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.System.Setting.Physic.PhysicSettingBuilder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.System.Setting.Physic.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.System.Setting.Physic.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.System.Setting.Scene.SceneSettingBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.System.Setting.Scene.SceneSettingBuilder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.System.Setting.Scene.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.System.Setting.Scene.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.System.Setting.SettingsBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.System.Setting.SettingsBuilder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.System.Setting.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.System.Setting.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.System.VideoGameBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.System.VideoGameBuilder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.System.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.System.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Ecs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Ecs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Graphic.WindowBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Graphic.WindowBuilder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.Graphic.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.Graphic.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.Core.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.Core.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Builder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Builder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Data.Dll.DllType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Data.Dll.DllType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Data.Dll.EmbeddedDllClass.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Data.Dll.EmbeddedDllClass.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Data.Dll.PlatformInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Data.Dll.PlatformInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Data.Dll.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Data.Dll.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Data.Json.CollectionTObject-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Data.Json.CollectionTObject-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Data.Json.Conversions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Data.Json.Conversions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Data.Json.CustomListObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Data.Json.CustomListObject.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Data.Json.FieldInfoAccessor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Data.Json.FieldInfoAccessor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Data.Json.IMemberAccessor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Data.Json.IMemberAccessor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Data.Json.IOptionsHolder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Data.Json.IOptionsHolder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Data.Json.JAction-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Data.Json.JAction-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Data.Json.JFunc-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Data.Json.JFunc-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Data.Json.JsonCallback.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Data.Json.JsonCallback.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Data.Json.JsonConstructorAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Data.Json.JsonConstructorAttribute.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Data.Json.JsonEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Data.Json.JsonEventArgs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Data.Json.JsonEventType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Data.Json.JsonEventType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Data.Json.JsonException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Data.Json.JsonException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Data.Json.JsonIgnoreAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Data.Json.JsonIgnoreAttribute.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Data.Json.JsonOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Data.Json.JsonOptions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Data.Json.JsonPropertyNameAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Data.Json.JsonPropertyNameAttribute.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Data.Json.JsonSerializationOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Data.Json.JsonSerializationOptions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Data.Json.JsonSerializer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Data.Json.JsonSerializer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Data.Json.KeyValueType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Data.Json.KeyValueType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Data.Json.KeyValueTypeDictionary.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Data.Json.KeyValueTypeDictionary.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Data.Json.KeyValueTypeEnumerator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Data.Json.KeyValueTypeEnumerator.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Data.Json.ListObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Data.Json.ListObject.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Data.Json.MemberDefinition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Data.Json.MemberDefinition.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Data.Json.PropertyDescriptorAccessor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Data.Json.PropertyDescriptorAccessor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Data.Json.PropertyInfoAccessor-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Data.Json.PropertyInfoAccessor-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Data.Json.ReferenceComparer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Data.Json.ReferenceComparer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Data.Json.TypeDef.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Data.Json.TypeDef.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Data.Json.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Data.Json.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Data.Mapping.KeyCodes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Data.Mapping.KeyCodes.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Data.Mapping.SdlInputConst.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Data.Mapping.SdlInputConst.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Data.Mapping.SdlScancode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Data.Mapping.SdlScancode.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Data.Mapping.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Data.Mapping.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Data.Resource.AssetManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Data.Resource.AssetManager.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Data.Resource.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Data.Resource.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Data.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Data.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.IBuild-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.IBuild-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.IBuilder-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.IBuilder-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IAdd-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IAdd-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IAddAnimation-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IAddAnimation-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IAddComponent-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IAddComponent-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IAddFrame-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IAddFrame-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IAds-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IAds-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IAi-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IAi-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IAngularVelocity-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IAngularVelocity-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IAudio-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IAudio-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IAuthor-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IAuthor-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IAutoTilling-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IAutoTilling-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IBackground-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IBackground-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IBackgroundColor-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IBackgroundColor-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IBodyType-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IBodyType-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.ICloud-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.ICloud-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IConfiguration-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IConfiguration-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.ICreate-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.ICreate-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IDebug-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IDebug-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IDebugColor-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IDebugColor-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IDelete-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IDelete-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IDensity-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IDensity-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IDepth-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IDepth-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IDescription-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IDescription-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IFile-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IFile-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IFilePath-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IFilePath-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IFixedRotation-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IFixedRotation-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IFriction-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IFriction-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IGeneral-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IGeneral-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IGraphic-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IGraphic-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IGravity-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IGravity-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IGravityScale-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IGravityScale-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IHas-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IHas-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IIcon-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IIcon-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IInput-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IInput-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IIs-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IIs-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IIsActive-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IIsActive-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IIsDynamic-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IIsDynamic-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IIsResizable-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IIsResizable-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IIsStatic-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IIsStatic-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IIsTrigger-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IIsTrigger-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.ILicense-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.ILicense-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.ILinearVelocity-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.ILinearVelocity-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.ILogLevel-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.ILogLevel-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IManager-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IManager-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IManagerOf-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IManagerOf-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IMass-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IMass-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IMute-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IMute-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IName-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IName-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.INetwork-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.INetwork-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IOrder-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IOrder-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IPhysic-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IPhysic-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IPlayOnAwake-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IPlayOnAwake-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IPlugin-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IPlugin-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IPosition2D-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IPosition2D-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IProfile-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IProfile-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IRelativePosition-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IRelativePosition-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IResolution-3.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IResolution-3.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IRestitution-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IRestitution-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IRotation-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IRotation-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IRun.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IRun.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IScale2D-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IScale2D-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IScene-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IScene-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IScreenMode-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IScreenMode-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IScript-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IScript-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.ISet-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.ISet-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.ISetAudioClip-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.ISetAudioClip-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.ISetMax-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.ISetMax-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.ISetTexture-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.ISetTexture-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.ISettings-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.ISettings-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.ISize-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.ISize-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.ISpeed-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.ISpeed-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.ISplashScreen-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.ISplashScreen-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IStore-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IStore-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IStyle-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IStyle-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.ITime-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.ITime-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.ITransform-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.ITransform-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IUpdate-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IUpdate-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IVersion-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IVersion-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IVolume-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IVolume-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IWhere-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IWhere-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IWindow-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IWindow-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IWith-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IWith-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IWithColor-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IWithColor-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IWithModel-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IWithModel-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IWithName-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IWithName-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IWithTag-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IWithTag-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.IWorld-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.IWorld-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.Words.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.Words.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Fluent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Fluent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Logging.ConsoleController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Logging.ConsoleController.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Logging.ConsoleLogConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Logging.ConsoleLogConfig.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Logging.DetailLevel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Logging.DetailLevel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Logging.LogLevel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Logging.LogLevel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Logging.Logger.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Logging.Logger.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Logging.Message.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Logging.Message.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Logging.MessageType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Logging.MessageType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Logging.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Logging.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Math.CustomMathF.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Math.CustomMathF.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Math.Definition.Color.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Math.Definition.Color.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Math.Definition.Depth.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Math.Definition.Depth.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Math.Definition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Math.Definition.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Math.Direction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Math.Direction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Math.MathUtils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Math.MathUtils.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Math.Matrix.Matrix2X2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Math.Matrix.Matrix2X2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Math.Matrix.Matrix3X2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Math.Matrix.Matrix3X2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Math.Matrix.Matrix3X3.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Math.Matrix.Matrix3X3.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Math.Matrix.Matrix4X4.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Math.Matrix.Matrix4X4.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Math.Matrix.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Math.Matrix.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Math.Rotation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Math.Rotation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Math.Shape.Circle.CircleF.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Math.Shape.Circle.CircleF.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Math.Shape.Circle.CircleI.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Math.Shape.Circle.CircleI.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Math.Shape.Circle.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Math.Shape.Circle.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Math.Shape.IShape.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Math.Shape.IShape.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Math.Shape.Line.LineF.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Math.Shape.Line.LineF.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Math.Shape.Line.LineI.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Math.Shape.Line.LineI.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Math.Shape.Line.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Math.Shape.Line.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Math.Shape.Point.PointF.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Math.Shape.Point.PointF.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Math.Shape.Point.PointI.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Math.Shape.Point.PointI.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Math.Shape.Point.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Math.Shape.Point.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Math.Shape.Rectangle.RectangleF.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Math.Shape.Rectangle.RectangleF.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Math.Shape.Rectangle.RectangleI.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Math.Shape.Rectangle.RectangleI.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Math.Shape.Rectangle.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Math.Shape.Rectangle.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Math.Shape.Square.SquareF.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Math.Shape.Square.SquareF.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Math.Shape.Square.SquareI.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Math.Shape.Square.SquareI.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Math.Shape.Square.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Math.Shape.Square.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Math.Shape.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Math.Shape.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Math.Transform.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Math.Transform.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Math.Util.Constant.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Math.Util.Constant.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Math.Util.HashCode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Math.Util.HashCode.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Math.Util.Helper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Math.Util.Helper.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Math.Util.Quaternion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Math.Util.Quaternion.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Math.Util.RandomUtils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Math.Util.RandomUtils.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Math.Util.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Math.Util.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Math.Vector.Vector2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Math.Vector.Vector2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Math.Vector.Vector3.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Math.Vector.Vector3.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Math.Vector.Vector4.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Math.Vector.Vector4.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Math.Vector.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Math.Vector.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Math.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Math.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Memory.Attributes.IsNotEmptyAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Memory.Attributes.IsNotEmptyAttribute.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Memory.Attributes.IsNotNullAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Memory.Attributes.IsNotNullAttribute.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Memory.Attributes.IsNotZeroAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Memory.Attributes.IsNotZeroAttribute.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Memory.Attributes.IsValidationAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Memory.Attributes.IsValidationAttribute.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Memory.Attributes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Memory.Attributes.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Memory.Exceptions.NotEmptyException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Memory.Exceptions.NotEmptyException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Memory.Exceptions.NotNullException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Memory.Exceptions.NotNullException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Memory.Exceptions.NotZeroException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Memory.Exceptions.NotZeroException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Memory.Exceptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Memory.Exceptions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Memory.Validator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Memory.Validator.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Memory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Memory.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Security.SecureByte.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Security.SecureByte.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Security.SecureChar.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Security.SecureChar.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Security.SecureDecimal.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Security.SecureDecimal.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Security.SecureDouble.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Security.SecureDouble.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Security.SecureFloat.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Security.SecureFloat.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Security.SecureInt.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Security.SecureInt.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Security.SecureLong.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Security.SecureLong.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Security.SecureRandom.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Security.SecureRandom.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Security.SecureString.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Security.SecureString.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Security.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Security.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Thread.ThreadManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Thread.ThreadManager.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Thread.ThreadTask.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Thread.ThreadTask.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Thread.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Thread.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Time.Clock.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Time.Clock.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Time.TimeConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Time.TimeConfiguration.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Time.TimeManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Time.TimeManager.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Time.TimeStep.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Time.TimeStep.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.Time.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.Time.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Aspect.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Aspect.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Audio.Interfaces.IPlayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Audio.Interfaces.IPlayer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Audio.Interfaces.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Audio.Interfaces.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Audio.Player.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Audio.Player.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Audio.Players.LinuxPlayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Audio.Players.LinuxPlayer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Audio.Players.MacPlayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Audio.Players.MacPlayer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Audio.Players.UnixPlayerBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Audio.Players.UnixPlayerBase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Audio.Players.WindowsPlayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Audio.Players.WindowsPlayer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Audio.Players.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Audio.Players.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Audio.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Audio.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.Component.AComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.Component.AComponent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.Component.Audio.AudioClip.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.Component.Audio.AudioClip.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.Component.Audio.AudioRecorder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.Component.Audio.AudioRecorder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.Component.Audio.AudioSource.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.Component.Audio.AudioSource.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.Component.Audio.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.Component.Audio.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.Component.Body.RigidBody.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.Component.Body.RigidBody.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.Component.Body.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.Component.Body.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.Component.Collider.ACollider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.Component.Collider.ACollider.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.Component.Collider.BoxCollider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.Component.Collider.BoxCollider.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.Component.Collider.CircleCollider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.Component.Collider.CircleCollider.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.Component.Collider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.Component.Collider.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.Component.IComponent-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.Component.IComponent-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.Component.Light.ALight.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.Component.Light.ALight.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.Component.Light.AreaLight.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.Component.Light.AreaLight.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.Component.Light.DirectionalLight.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.Component.Light.DirectionalLight.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.Component.Light.PointLight.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.Component.Light.PointLight.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.Component.Light.SpotLight.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.Component.Light.SpotLight.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.Component.Light.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.Component.Light.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.Component.Render.Animation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.Component.Render.Animation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.Component.Render.Animator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.Component.Render.Animator.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.Component.Render.Camera.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.Component.Render.Camera.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.Component.Render.Frame.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.Component.Render.Frame.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.Component.Render.Image.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.Component.Render.Image.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.Component.Render.Sprite.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.Component.Render.Sprite.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.Component.Render.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.Component.Render.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.Component.Ui.Canvas.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.Component.Ui.Canvas.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.Component.Ui.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.Component.Ui.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.Component.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.Component.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.Entity.GameObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.Entity.GameObject.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.Entity.IGameObject-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.Entity.IGameObject-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.Entity.IScene-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.Entity.IScene-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.Entity.Property.ICrud-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.Entity.Property.ICrud-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.Entity.Property.IEnabled.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.Entity.Property.IEnabled.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.Entity.Property.IIdentifier.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.Entity.Property.IIdentifier.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.Entity.Property.IRuntime.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.Entity.Property.IRuntime.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.Entity.Property.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.Entity.Property.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.Entity.Scene.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.Entity.Scene.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.Entity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.Entity.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.IGame.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.IGame.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.System.Context.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.System.Context.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.System.IContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.System.IContext.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.System.Manager.AManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.System.Manager.AManager.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.System.Manager.Audio.AudioManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.System.Manager.Audio.AudioManager.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.System.Manager.Audio.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.System.Manager.Audio.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.System.Manager.Graphic.GraphicManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.System.Manager.Graphic.GraphicManager.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.System.Manager.Graphic.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.System.Manager.Graphic.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.System.Manager.IManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.System.Manager.IManager.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.System.Manager.Input.InputManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.System.Manager.Input.InputManager.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.System.Manager.Input.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.System.Manager.Input.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.System.Manager.Network.NetworkManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.System.Manager.Network.NetworkManager.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.System.Manager.Network.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.System.Manager.Network.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.System.Manager.Physic.PhysicManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.System.Manager.Physic.PhysicManager.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.System.Manager.Physic.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.System.Manager.Physic.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.System.Manager.Scene.SceneManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.System.Manager.Scene.SceneManager.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.System.Manager.Scene.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.System.Manager.Scene.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.System.Manager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.System.Manager.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.System.Setting.Audio.AudioSetting.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.System.Setting.Audio.AudioSetting.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.System.Setting.Audio.IAudioSetting.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.System.Setting.Audio.IAudioSetting.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.System.Setting.Audio.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.System.Setting.Audio.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.System.Setting.General.GeneralSetting.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.System.Setting.General.GeneralSetting.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.System.Setting.General.IGeneralSetting.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.System.Setting.General.IGeneralSetting.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.System.Setting.General.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.System.Setting.General.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.System.Setting.Graphic.GraphicSetting.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.System.Setting.Graphic.GraphicSetting.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.System.Setting.Graphic.IGraphicSetting.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.System.Setting.Graphic.IGraphicSetting.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.System.Setting.Graphic.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.System.Setting.Graphic.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.System.Setting.ISetting.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.System.Setting.ISetting.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.System.Setting.Input.IInputSetting.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.System.Setting.Input.IInputSetting.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.System.Setting.Input.InputSetting.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.System.Setting.Input.InputSetting.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.System.Setting.Input.UpdateMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.System.Setting.Input.UpdateMode.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.System.Setting.Input.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.System.Setting.Input.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.System.Setting.Network.INetworkSetting.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.System.Setting.Network.INetworkSetting.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.System.Setting.Network.NetworkSetting.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.System.Setting.Network.NetworkSetting.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.System.Setting.Network.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.System.Setting.Network.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.System.Setting.Physic.IPhysicSetting.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.System.Setting.Physic.IPhysicSetting.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.System.Setting.Physic.PhysicSetting.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.System.Setting.Physic.PhysicSetting.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.System.Setting.Physic.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.System.Setting.Physic.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.System.Setting.Scene.ISceneSetting.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.System.Setting.Scene.ISceneSetting.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.System.Setting.Scene.SceneSetting.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.System.Setting.Scene.SceneSetting.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.System.Setting.Scene.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.System.Setting.Scene.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.System.Setting.Settings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.System.Setting.Settings.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.System.Setting.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.System.Setting.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.System.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.System.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.VideoGame.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.VideoGame.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Ecs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Ecs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.IWindow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.IWindow.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Properties.Sdl2Dlls.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Properties.Sdl2Dlls.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Properties.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Properties.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Delegates.SdlAudioCallback.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Delegates.SdlAudioCallback.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Delegates.SdlEventFilter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Delegates.SdlEventFilter.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Delegates.SdlHitTest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Delegates.SdlHitTest.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Delegates.SdlIPhoneAnimationCallback.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Delegates.SdlIPhoneAnimationCallback.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Delegates.SdlLogOutputFunction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Delegates.SdlLogOutputFunction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Delegates.SdlMainFunc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Delegates.SdlMainFunc.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Delegates.SdlTimerCallback.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Delegates.SdlTimerCallback.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Delegates.SdlWindowsMessageHook.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Delegates.SdlWindowsMessageHook.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Delegates.SdlWopsCloseCallback.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Delegates.SdlWopsCloseCallback.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Delegates.SdlWopsReadCallback.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Delegates.SdlWopsReadCallback.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Delegates.SdlWopsSeekCallback.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Delegates.SdlWopsSeekCallback.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Delegates.SdlWopsSizeCallback.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Delegates.SdlWopsSizeCallback.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Delegates.SdlWopsWriteCallback.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Delegates.SdlWopsWriteCallback.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Delegates.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Delegates.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.ArrayOrder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.ArrayOrder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.Attr.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.Attr.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.AudioAllow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.AudioAllow.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.AudioStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.AudioStatus.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.BitmapOrder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.BitmapOrder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.BlendFactor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.BlendFactor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.BlendModes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.BlendModes.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.BlendOperation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.BlendOperation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.Contexts.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.Contexts.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.DisplayEventId.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.DisplayEventId.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.DisplayOrientation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.DisplayOrientation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.EventAction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.EventAction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.EventType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.EventType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.FlashOperation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.FlashOperation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.GameControllerAxis.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.GameControllerAxis.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.GameControllerBindType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.GameControllerBindType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.GameControllerButton.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.GameControllerButton.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.Haptic.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.Haptic.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.HapticConstant.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.HapticConstant.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.Hat.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.Hat.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.HintPriority.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.HintPriority.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.HitTestResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.HitTestResult.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.InitSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.InitSettings.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.JoystickPowerLevel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.JoystickPowerLevel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.JoystickType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.JoystickType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.KeyMods.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.KeyMods.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.LogCategory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.LogCategory.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.LogPriority.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.LogPriority.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.MouseWheelDirection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.MouseWheelDirection.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.PackedLayout.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.PackedLayout.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.PackedOrder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.PackedOrder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.PowerState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.PowerState.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.Profiles.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.Profiles.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.RendererFlips.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.RendererFlips.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.Renderers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.Renderers.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.RwOps.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.RwOps.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.RwSeek.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.RwSeek.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.ScaleMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.ScaleMode.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.SensorType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.SensorType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.SysWmType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.SysWmType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.SystemCursor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.SystemCursor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.TextureAccess.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.TextureAccess.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.TextureModulate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.TextureModulate.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.TouchDeviceType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.TouchDeviceType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.TypePixel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.TypePixel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.WinRtDeviceFamily.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.WinRtDeviceFamily.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.WindowEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.WindowEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.WindowEventId.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.WindowEventId.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.WindowPos.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.WindowPos.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.WindowSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.WindowSettings.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Enums.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.NativeSdlTtf.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.SdlTtf.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.SdlTtf.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Extensions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.NativeSdl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.NativeSdl.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Sdl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Sdl.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.AudioDeviceEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.AudioDeviceEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.AudioSpec.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.AudioSpec.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.ControllerAxisEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.ControllerAxisEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.ControllerButtonEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.ControllerButtonEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.ControllerDeviceEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.ControllerDeviceEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.ControllerSensorEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.ControllerSensorEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.ControllerTouchpadEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.ControllerTouchpadEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.DisplayEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.DisplayEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.DisplayMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.DisplayMode.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.DollarGestureEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.DollarGestureEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.DropEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.DropEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.Event.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.Event.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.GameControllerButtonBind.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.GameControllerButtonBind.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.GameControllerType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.GameControllerType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.GenericEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.GenericEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.HapticDirection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.HapticDirection.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.Hint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.Hint.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.InternalAndroidWmInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.InternalAndroidWmInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.InternalCocoaWmInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.InternalCocoaWmInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.InternalDirectfbWmInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.InternalDirectfbWmInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.InternalGameControllerButtonBindHat.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.InternalGameControllerButtonBindHat.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.InternalGameControllerButtonBindUnion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.InternalGameControllerButtonBindUnion.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.InternalKmsWmInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.InternalKmsWmInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.InternalMirWmInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.InternalMirWmInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.InternalOs2WmInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.InternalOs2WmInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.InternalSdlGameControllerButtonBind.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.InternalSdlGameControllerButtonBind.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.InternalSysWmDriverUnion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.InternalSysWmDriverUnion.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.InternalUikitWmInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.InternalUikitWmInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.InternalVivanteWmInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.InternalVivanteWmInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.InternalWaylandWmInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.InternalWaylandWmInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.InternalWindowsWmInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.InternalWindowsWmInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.InternalWinrtWmInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.InternalWinrtWmInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.InternalX11WmInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.InternalX11WmInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.JoyAxisEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.JoyAxisEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.JoyBallEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.JoyBallEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.JoyButtonEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.JoyButtonEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.JoyDeviceEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.JoyDeviceEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.JoyHatEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.JoyHatEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.KeySym.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.KeySym.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.KeyboardEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.KeyboardEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.MouseButtonEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.MouseButtonEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.MouseMotionEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.MouseMotionEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.MouseWheelEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.MouseWheelEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.MultiGestureEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.MultiGestureEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.PixelFormat.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.PixelFormat.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.QuitEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.QuitEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.RendererInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.RendererInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.SensorEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.SensorEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.Surface.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.Surface.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.SysWmEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.SysWmEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.TextEditingEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.TextEditingEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.TouchFingerEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.TouchFingerEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.UserEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.UserEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.Version.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.Version.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.Vertex.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.Vertex.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.Structs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Sdl2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Sdl2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.Window.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.Window.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Graphic.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Graphic.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Network.BufferPool.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Network.BufferPool.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Network.Exceptions.EntityTooLargeException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Network.Exceptions.EntityTooLargeException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Network.Exceptions.InvalidHttpResponseCodeException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Network.Exceptions.InvalidHttpResponseCodeException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Network.Exceptions.MaskKeyLengthException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Network.Exceptions.MaskKeyLengthException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Network.Exceptions.SecWebSocketKeyMissingException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Network.Exceptions.SecWebSocketKeyMissingException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Network.Exceptions.ServerListenerSocketException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Network.Exceptions.ServerListenerSocketException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Network.Exceptions.WebSocketBufferOverflowException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Network.Exceptions.WebSocketBufferOverflowException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Network.Exceptions.WebSocketHandshakeFailedException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Network.Exceptions.WebSocketHandshakeFailedException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Network.Exceptions.WebSocketVersionNotSupportedException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Network.Exceptions.WebSocketVersionNotSupportedException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Network.Exceptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Network.Exceptions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Network.HttpHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Network.HttpHelper.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Network.IBufferPool.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Network.IBufferPool.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Network.IPingPongManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Network.IPingPongManager.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Network.IWebSocketClientFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Network.IWebSocketClientFactory.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Network.IWebSocketServerFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Network.IWebSocketServerFactory.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Network.Internal.BinaryReaderWriter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Network.Internal.BinaryReaderWriter.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Network.Internal.Events.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Network.Internal.Events.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Network.Internal.WebSocketFrame.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Network.Internal.WebSocketFrame.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Network.Internal.WebSocketFrameCommon.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Network.Internal.WebSocketFrameCommon.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Network.Internal.WebSocketFrameReader.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Network.Internal.WebSocketFrameReader.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Network.Internal.WebSocketFrameWriter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Network.Internal.WebSocketFrameWriter.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Network.Internal.WebSocketImplementation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Network.Internal.WebSocketImplementation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Network.Internal.WebSocketOpCode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Network.Internal.WebSocketOpCode.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Network.Internal.WebSocketReadCursor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Network.Internal.WebSocketReadCursor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Network.Internal.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Network.Internal.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Network.PingPongManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Network.PingPongManager.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Network.PongEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Network.PongEventArgs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Network.PublicBufferMemoryStream.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Network.PublicBufferMemoryStream.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Network.WebSocketClientFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Network.WebSocketClientFactory.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Network.WebSocketClientOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Network.WebSocketClientOptions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Network.WebSocketHttpContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Network.WebSocketHttpContext.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Network.WebSocketServerFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Network.WebSocketServerFactory.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Network.WebSocketServerOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Network.WebSocketServerOptions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Network.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Network.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.AabbHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.AabbHelper.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.BroadPhase.DynamicTree-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.BroadPhase.DynamicTree-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.BroadPhase.DynamicTreeBroadPhase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.BroadPhase.DynamicTreeBroadPhase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.BroadPhase.IBroadPhase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.BroadPhase.IBroadPhase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.BroadPhase.Pair.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.BroadPhase.Pair.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.BroadPhase.TreeNode-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.BroadPhase.TreeNode-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.BroadPhase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.BroadPhase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.ContactSystem.Contact.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.ContactSystem.Contact.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.ContactSystem.ContactEdge.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.ContactSystem.ContactEdge.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.ContactSystem.ContactFeature.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.ContactSystem.ContactFeature.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.ContactSystem.ContactFeatureType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.ContactSystem.ContactFeatureType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.ContactSystem.ContactId.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.ContactSystem.ContactId.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.ContactSystem.ContactManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.ContactSystem.ContactManager.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.ContactSystem.ContactSetting.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.ContactSystem.ContactSetting.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.ContactSystem.ContactType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.ContactSystem.ContactType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.ContactSystem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.ContactSystem.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.Distance.DistanceGjk.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.Distance.DistanceGjk.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.Distance.DistanceInput.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.Distance.DistanceInput.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.Distance.DistanceOutput.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.Distance.DistanceOutput.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.Distance.DistanceProxy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.Distance.DistanceProxy.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.Distance.ShapeCastInput.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.Distance.ShapeCastInput.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.Distance.ShapeCastOutput.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.Distance.ShapeCastOutput.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.Distance.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.Distance.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.Filtering.Category.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.Filtering.Category.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.Filtering.Filter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.Filtering.Filter.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.Filtering.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.Filtering.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.Handlers.AfterCollisionHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.Handlers.AfterCollisionHandler.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.Handlers.BeforeCollisionHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.Handlers.BeforeCollisionHandler.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.Handlers.BeginContactHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.Handlers.BeginContactHandler.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.Handlers.BroadPhaseHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.Handlers.BroadPhaseHandler.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.Handlers.CollisionFilterHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.Handlers.CollisionFilterHandler.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.Handlers.EndContactHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.Handlers.EndContactHandler.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.Handlers.OnCollisionHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.Handlers.OnCollisionHandler.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.Handlers.OnSeparationHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.Handlers.OnSeparationHandler.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.Handlers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.Handlers.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.NarrowPhase.ClipVertex.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.NarrowPhase.ClipVertex.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.NarrowPhase.CollideCircle.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.NarrowPhase.CollideCircle.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.TempPolygon.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.TempPolygon.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.NarrowPhase.CollidePolygon.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.NarrowPhase.CollidePolygon.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.NarrowPhase.Collision.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.NarrowPhase.Collision.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.NarrowPhase.EpAxis.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.NarrowPhase.EpAxis.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.NarrowPhase.EpAxisType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.NarrowPhase.EpAxisType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.NarrowPhase.Manifold.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.NarrowPhase.Manifold.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.NarrowPhase.ManifoldPoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.NarrowPhase.ManifoldPoint.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.NarrowPhase.ManifoldType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.NarrowPhase.ManifoldType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.NarrowPhase.PointState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.NarrowPhase.PointState.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.NarrowPhase.ReferenceFace.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.NarrowPhase.ReferenceFace.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.NarrowPhase.Simplex.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.NarrowPhase.Simplex.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.NarrowPhase.SimplexCache.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.NarrowPhase.SimplexCache.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.NarrowPhase.SimplexVertex.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.NarrowPhase.SimplexVertex.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.NarrowPhase.WorldManifold.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.NarrowPhase.WorldManifold.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.NarrowPhase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.NarrowPhase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.RayCast.RayCastInput.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.RayCast.RayCastInput.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.RayCast.RayCastOutput.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.RayCast.RayCastOutput.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.RayCast.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.RayCast.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.RayCastHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.RayCastHelper.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.Shapes.AShape.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.Shapes.AShape.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.Shapes.ChainShape.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.Shapes.ChainShape.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.Shapes.CircleShape.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.Shapes.CircleShape.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.Shapes.EdgeShape.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.Shapes.EdgeShape.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.Shapes.MassData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.Shapes.MassData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.Shapes.PolygonShape.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.Shapes.PolygonShape.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.Shapes.ShapeType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.Shapes.ShapeType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.Shapes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.Shapes.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.TOI.SeparationFunction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.TOI.SeparationFunction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.TOI.SeparationFunctionType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.TOI.SeparationFunctionType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.TOI.Sweep.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.TOI.Sweep.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.TOI.TimeOfImpact.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.TOI.TimeOfImpact.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.TOI.ToiInput.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.TOI.ToiInput.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.TOI.ToiOutput.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.TOI.ToiOutput.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.TOI.ToiOutputState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.TOI.ToiOutputState.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.TOI.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.TOI.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.TestPointHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.TestPointHelper.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Collision.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Collision.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Config.Settings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Config.Settings.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Config.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Config.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Dynamics.Body.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Dynamics.Body.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Dynamics.BodyHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Dynamics.BodyHelper.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Dynamics.BodySettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Dynamics.BodySettings.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Dynamics.BodyType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Dynamics.BodyType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Dynamics.BreakableBody.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Dynamics.BreakableBody.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Dynamics.Fixture.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Dynamics.Fixture.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Dynamics.FixtureProxy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Dynamics.FixtureProxy.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Dynamics.Handlers.BodyHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Dynamics.Handlers.BodyHandler.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Dynamics.Handlers.FixtureHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Dynamics.Handlers.FixtureHandler.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Dynamics.Handlers.JointHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Dynamics.Handlers.JointHandler.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Dynamics.Handlers.PostSolveHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Dynamics.Handlers.PostSolveHandler.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Dynamics.Handlers.PreSolveHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Dynamics.Handlers.PreSolveHandler.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Dynamics.Handlers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Dynamics.Handlers.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Dynamics.Joints.AngleJoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Dynamics.Joints.AngleJoint.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Dynamics.Joints.DistanceJoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Dynamics.Joints.DistanceJoint.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Dynamics.Joints.FrictionJoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Dynamics.Joints.FrictionJoint.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Dynamics.Joints.GearJoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Dynamics.Joints.GearJoint.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Dynamics.Joints.Joint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Dynamics.Joints.Joint.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Dynamics.Joints.JointEdge.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Dynamics.Joints.JointEdge.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Dynamics.Joints.JointType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Dynamics.Joints.JointType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Dynamics.Joints.LimitState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Dynamics.Joints.LimitState.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Dynamics.Joints.MotorJoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Dynamics.Joints.MotorJoint.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Dynamics.Joints.PulleyJoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Dynamics.Joints.PulleyJoint.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Dynamics.Joints.WeldJoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Dynamics.Joints.WeldJoint.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Dynamics.Joints.WheelJoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Dynamics.Joints.WheelJoint.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Dynamics.Joints.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Dynamics.Joints.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Dynamics.Solver.ContactSolver.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Dynamics.Solver.ContactSolver.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Dynamics.Solver.Island.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Dynamics.Solver.Island.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Dynamics.Solver.Position.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Dynamics.Solver.Position.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Dynamics.Solver.PositionSolverManifold.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Dynamics.Solver.PositionSolverManifold.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Dynamics.Solver.SolverData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Dynamics.Solver.SolverData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Dynamics.Solver.Velocity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Dynamics.Solver.Velocity.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Dynamics.Solver.VelocityConstraintPoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Dynamics.Solver.VelocityConstraintPoint.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Dynamics.Solver.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Dynamics.Solver.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Dynamics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Dynamics.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Figure.Line.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Figure.Line.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Figure.Polygon.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Figure.Polygon.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Figure.Rectangle.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Figure.Rectangle.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Figure.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Figure.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Shared.Aabb.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Shared.Aabb.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Shared.PolygonError.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Shared.PolygonError.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Shared.Vertices.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Shared.Vertices.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.Shared.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.Shared.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.World.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.World.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.Physic.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.Physic.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.Core.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.Core.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ApiPage",
+      "source_relative_path": "api/Alis.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alis.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/changelog.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/changelog.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/code_of_conduct.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/code_of_conduct.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/contributing.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/contributing.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/donate.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/donate.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/features.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/features.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/getting-started.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/getting-started.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/introduction.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/introduction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/license.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/license.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/privacy_policy.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/privacy_policy.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/purpose.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/purpose.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/readme.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/readme.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/sample.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/sample.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/security.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/security.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/showcases.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/showcases.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/support.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/support.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "docs/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "docs/toc.html"
+        },
+        ".json": {
+          "relative_path": "docs/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "resources/logo.png",
+      "output": {
+        "resource": {
+          "relative_path": "resources/logo.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "resources/logo/logo.bmp",
+      "output": {
+        "resource": {
+          "relative_path": "resources/logo/logo.bmp"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "resources/logo/logo.svg",
+      "output": {
+        "resource": {
+          "relative_path": "resources/logo/logo.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "resources/logo/logo.xcf",
+      "output": {
+        "resource": {
+          "relative_path": "resources/logo/logo.xcf"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

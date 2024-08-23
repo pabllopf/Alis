@@ -1,0 +1,34 @@
+### YamlMime:ApiPage
+title: Delegate JFunc<T, TResult>
+body:
+- api1: Delegate JFunc<T, TResult>
+  id: Alis_Core_Aspect_Data_Json_JFunc_2
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/JFunc.cs#L35
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.JFunc`2
+    commentId: T:Alis.Core.Aspect.Data.Json.JFunc`2
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Aspect.Data.Json
+      url: Alis.Core.Aspect.Data.Json.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The func
+- code: internal delegate TResult JFunc<in T, out TResult>(T arg)
+- h4: Parameters
+- parameters:
+  - name: arg
+    type:
+    - T
+- h4: Returns
+- parameters:
+  - type:
+    - TResult
+- h4: Type Parameters
+- parameters:
+  - name: T
+  - name: TResult
+languageId: csharp
+metadata:
+  description: The func

@@ -1,0 +1,61 @@
+### YamlMime:ApiPage
+title: Interface IIdentifier
+body:
+- api1: Interface IIdentifier
+  id: Alis_Core_Ecs_Entity_Property_IIdentifier
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Ecs/src/Entity/Property/IIdentifier.cs#L35
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Property.IIdentifier
+    commentId: T:Alis.Core.Ecs.Entity.Property.IIdentifier
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Ecs.Entity.Property
+      url: Alis.Core.Ecs.Entity.Property.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The identifier interface
+- code: public interface IIdentifier
+- h2: Properties
+- api3: Id
+  id: Alis_Core_Ecs_Entity_Property_IIdentifier_Id
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Ecs/src/Entity/Property/IIdentifier.cs#L45
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Property.IIdentifier.Id
+    commentId: P:Alis.Core.Ecs.Entity.Property.IIdentifier.Id
+- markdown: Gets or sets the value of the id
+- code: string Id { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: Name
+  id: Alis_Core_Ecs_Entity_Property_IIdentifier_Name
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Ecs/src/Entity/Property/IIdentifier.cs#L40
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Property.IIdentifier.Name
+    commentId: P:Alis.Core.Ecs.Entity.Property.IIdentifier.Name
+- markdown: Gets or sets the value of the name
+- code: string Name { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: Tag
+  id: Alis_Core_Ecs_Entity_Property_IIdentifier_Tag
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Ecs/src/Entity/Property/IIdentifier.cs#L50
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Property.IIdentifier.Tag
+    commentId: P:Alis.Core.Ecs.Entity.Property.IIdentifier.Tag
+- markdown: Gets or sets the value of the tag
+- code: string Tag { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+languageId: csharp
+metadata:
+  description: The identifier interface

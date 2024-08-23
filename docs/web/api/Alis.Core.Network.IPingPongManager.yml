@@ -1,0 +1,68 @@
+### YamlMime:ApiPage
+title: Interface IPingPongManager
+body:
+- api1: Interface IPingPongManager
+  id: Alis_Core_Network_IPingPongManager
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/IPingPongManager.cs#L39
+  metadata:
+    uid: Alis.Core.Network.IPingPongManager
+    commentId: T:Alis.Core.Network.IPingPongManager
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Network
+      url: Alis.Core.Network.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: Ping Pong Manager used to facilitate ping pong WebSocket messages
+- code: internal interface IPingPongManager
+- h2: Methods
+- api3: SendPing(ArraySegment<byte>, CancellationToken)
+  id: Alis_Core_Network_IPingPongManager_SendPing_System_ArraySegment_System_Byte__System_Threading_CancellationToken_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/IPingPongManager.cs#L51
+  metadata:
+    uid: Alis.Core.Network.IPingPongManager.SendPing(System.ArraySegment{System.Byte},System.Threading.CancellationToken)
+    commentId: M:Alis.Core.Network.IPingPongManager.SendPing(System.ArraySegment{System.Byte},System.Threading.CancellationToken)
+- markdown: Sends a ping frame
+- code: Task SendPing(ArraySegment<byte> payload, CancellationToken cancellation)
+- h4: Parameters
+- parameters:
+  - name: payload
+    type:
+    - text: ArraySegment
+      url: https://learn.microsoft.com/dotnet/api/system.arraysegment-1
+    - <
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+    - '>'
+    description: The payload (must be 125 bytes of less)
+  - name: cancellation
+    type:
+    - text: CancellationToken
+      url: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+    description: The cancellation token
+- h4: Returns
+- parameters:
+  - type:
+    - text: Task
+      url: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+- api3: Pong
+  id: Alis_Core_Network_IPingPongManager_Pong
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/IPingPongManager.cs#L44
+  metadata:
+    uid: Alis.Core.Network.IPingPongManager.Pong
+    commentId: E:Alis.Core.Network.IPingPongManager.Pong
+- markdown: Raised when a Pong frame is received
+- code: event EventHandler<PongEventArgs> Pong
+- h4: Event Type
+- parameters:
+  - type:
+    - text: EventHandler
+      url: https://learn.microsoft.com/dotnet/api/system.eventhandler-1
+    - <
+    - text: PongEventArgs
+      url: Alis.Core.Network.PongEventArgs.html
+    - '>'
+languageId: csharp
+metadata:
+  description: Ping Pong Manager used to facilitate ping pong WebSocket messages

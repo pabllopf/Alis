@@ -1,0 +1,664 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+      <title>Class ContactSolver | Alis - Develop the video games of your dreams &#128175; free!! </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class ContactSolver | Alis - Develop the video games of your dreams &#128175; free!! ">
+      
+      <meta name="description" content="The contact solver class">
+      <link rel="icon" href="../resources/logo.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ApiPage">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../resources/logo.png" alt="Alis">
+            Alis
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 class='section api' data-uid='Alis.Core.Physic.Dynamics.Solver.ContactSolver' data-commentid='T:Alis.Core.Physic.Dynamics.Solver.ContactSolver' id='Alis_Core_Physic_Dynamics_Solver_ContactSolver'>Class ContactSolver    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactSolver.cs#L45'><i class='bi bi-code-slash'></i></a></h1>
+ <div class="facts text-secondary">
+<dl><dt>Namespace</dt><dd><a href='Alis.Core.Physic.Dynamics.Solver.html'>Alis.Core.Physic.Dynamics.Solver</a></dd></dl><dl><dt>Assembly</dt><dd>Alis.dll</dd></dl>
+</div><p>The contact solver class</p>
+<pre><code class='lang-csharp'>internal class ContactSolver</code></pre><h4 class='section'>Inheritance</h4><dl class="typelist inheritance"><dd>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object'>object</a>
+</div>
+<div>
+<a href='Alis.Core.Physic.Dynamics.Solver.ContactSolver.html'>ContactSolver</a>
+</div>
+
+</dd></dl><h4 class='section'>Inherited Members</h4><dl class="typelist"><dd>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)'>object.Equals(object?)</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)'>object.Equals(object?, object?)</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.gethashcode'>object.GetHashCode()</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.gettype'>object.GetType()</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone'>object.MemberwiseClone()</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.referenceequals'>object.ReferenceEquals(object?, object?)</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.tostring'>object.ToString()</a>
+</div>
+
+</dd></dl><h2 class='section'>Fields</h2><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Solver.ContactSolver.VelocityConstraints' data-commentid='F:Alis.Core.Physic.Dynamics.Solver.ContactSolver.VelocityConstraints' id='Alis_Core_Physic_Dynamics_Solver_ContactSolver_VelocityConstraints'>VelocityConstraints    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactSolver.cs#L80'><i class='bi bi-code-slash'></i></a></h3>
+ <p>The velocity constraints</p>
+<pre><code class='lang-csharp'>public List&lt;ContactVelocityConstraint&gt; VelocityConstraints</code></pre><h4 class='section'>Field Value</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1'>List</a>&lt;<a href='Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.html'>ContactVelocityConstraint</a>&gt;  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Solver.ContactSolver.contacts' data-commentid='F:Alis.Core.Physic.Dynamics.Solver.ContactSolver.contacts' id='Alis_Core_Physic_Dynamics_Solver_ContactSolver_contacts'>contacts    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactSolver.cs#L50'><i class='bi bi-code-slash'></i></a></h3>
+ <p>The contacts</p>
+<pre><code class='lang-csharp'>private List&lt;Contact&gt; contacts</code></pre><h4 class='section'>Field Value</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1'>List</a>&lt;<a href='Alis.Core.Physic.Collision.ContactSystem.Contact.html'>Contact</a>&gt;  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Solver.ContactSolver.count' data-commentid='F:Alis.Core.Physic.Dynamics.Solver.ContactSolver.count' id='Alis_Core_Physic_Dynamics_Solver_ContactSolver_count'>count    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactSolver.cs#L55'><i class='bi bi-code-slash'></i></a></h3>
+ <p>The count</p>
+<pre><code class='lang-csharp'>private int count</code></pre><h4 class='section'>Field Value</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Solver.ContactSolver.positionConstraints' data-commentid='F:Alis.Core.Physic.Dynamics.Solver.ContactSolver.positionConstraints' id='Alis_Core_Physic_Dynamics_Solver_ContactSolver_positionConstraints'>positionConstraints    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactSolver.cs#L60'><i class='bi bi-code-slash'></i></a></h3>
+ <p>The position constraints</p>
+<pre><code class='lang-csharp'>private List&lt;ContactPositionConstraint&gt; positionConstraints</code></pre><h4 class='section'>Field Value</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1'>List</a>&lt;<a href='Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint.html'>ContactPositionConstraint</a>&gt;  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Solver.ContactSolver.positions' data-commentid='F:Alis.Core.Physic.Dynamics.Solver.ContactSolver.positions' id='Alis_Core_Physic_Dynamics_Solver_ContactSolver_positions'>positions    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactSolver.cs#L65'><i class='bi bi-code-slash'></i></a></h3>
+ <p>The positions</p>
+<pre><code class='lang-csharp'>private List&lt;Position&gt; positions</code></pre><h4 class='section'>Field Value</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1'>List</a>&lt;<a href='Alis.Core.Physic.Dynamics.Solver.Position.html'>Position</a>&gt;  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Solver.ContactSolver.step' data-commentid='F:Alis.Core.Physic.Dynamics.Solver.ContactSolver.step' id='Alis_Core_Physic_Dynamics_Solver_ContactSolver_step'>step    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactSolver.cs#L70'><i class='bi bi-code-slash'></i></a></h3>
+ <p>The step</p>
+<pre><code class='lang-csharp'>private TimeStep step</code></pre><h4 class='section'>Field Value</h4><dl class='parameters'><dt> <a href='Alis.Core.Aspect.Time.TimeStep.html'>TimeStep</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Solver.ContactSolver.velocities' data-commentid='F:Alis.Core.Physic.Dynamics.Solver.ContactSolver.velocities' id='Alis_Core_Physic_Dynamics_Solver_ContactSolver_velocities'>velocities    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactSolver.cs#L75'><i class='bi bi-code-slash'></i></a></h3>
+ <p>The velocities</p>
+<pre><code class='lang-csharp'>private List&lt;Velocity&gt; velocities</code></pre><h4 class='section'>Field Value</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1'>List</a>&lt;<a href='Alis.Core.Physic.Dynamics.Solver.Velocity.html'>Velocity</a>&gt;  </dt>
+<dd>
+
+
+
+</dd></dl><h2 class='section'>Methods</h2><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Solver.ContactSolver.GrowArrayIfNeeded(System.Int32)' data-commentid='M:Alis.Core.Physic.Dynamics.Solver.ContactSolver.GrowArrayIfNeeded(System.Int32)' id='Alis_Core_Physic_Dynamics_Solver_ContactSolver_GrowArrayIfNeeded_System_Int32_'>GrowArrayIfNeeded(int)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactSolver.cs#L118'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Grows the array if needed using the specified count param</p>
+<pre><code class='lang-csharp'>private void GrowArrayIfNeeded(int countParam)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>countParam</code> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+<p>The count param</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Solver.ContactSolver.InitializeConstraints(System.Int32)' data-commentid='M:Alis.Core.Physic.Dynamics.Solver.ContactSolver.InitializeConstraints(System.Int32)' id='Alis_Core_Physic_Dynamics_Solver_ContactSolver_InitializeConstraints_System_Int32_'>InitializeConstraints(int)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactSolver.cs#L141'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Initializes the constraints using the specified count param</p>
+<pre><code class='lang-csharp'>private void InitializeConstraints(int countParam)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>countParam</code> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+<p>The count param</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Solver.ContactSolver.InitializeParameters(Alis.Core.Aspect.Time.TimeStep,System.Int32,System.Collections.Generic.List{Alis.Core.Physic.Collision.ContactSystem.Contact},System.Collections.Generic.List{Alis.Core.Physic.Dynamics.Solver.Position},System.Collections.Generic.List{Alis.Core.Physic.Dynamics.Solver.Velocity})' data-commentid='M:Alis.Core.Physic.Dynamics.Solver.ContactSolver.InitializeParameters(Alis.Core.Aspect.Time.TimeStep,System.Int32,System.Collections.Generic.List{Alis.Core.Physic.Collision.ContactSystem.Contact},System.Collections.Generic.List{Alis.Core.Physic.Dynamics.Solver.Position},System.Collections.Generic.List{Alis.Core.Physic.Dynamics.Solver.Velocity})' id='Alis_Core_Physic_Dynamics_Solver_ContactSolver_InitializeParameters_Alis_Core_Aspect_Time_TimeStep_System_Int32_System_Collections_Generic_List_Alis_Core_Physic_Collision_ContactSystem_Contact__System_Collections_Generic_List_Alis_Core_Physic_Dynamics_Solver_Position__System_Collections_Generic_List_Alis_Core_Physic_Dynamics_Solver_Velocity__'>InitializeParameters(TimeStep, int, List&lt;Contact&gt;, List&lt;Position&gt;, List&lt;Velocity&gt;)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactSolver.cs#L105'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Initializes the parameters using the specified step param</p>
+<pre><code class='lang-csharp'>private void InitializeParameters(TimeStep stepParam, int countParam, List&lt;Contact&gt; contactList, List&lt;Position&gt; positionList, List&lt;Velocity&gt; velocitiesList)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>stepParam</code> <a href='Alis.Core.Aspect.Time.TimeStep.html'>TimeStep</a>  </dt>
+<dd>
+
+
+<p>The step param</p>
+
+</dd><dt><code>countParam</code> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+<p>The count param</p>
+
+</dd><dt><code>contactList</code> <a href='https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1'>List</a>&lt;<a href='Alis.Core.Physic.Collision.ContactSystem.Contact.html'>Contact</a>&gt;  </dt>
+<dd>
+
+
+<p>The contact list</p>
+
+</dd><dt><code>positionList</code> <a href='https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1'>List</a>&lt;<a href='Alis.Core.Physic.Dynamics.Solver.Position.html'>Position</a>&gt;  </dt>
+<dd>
+
+
+<p>The position list</p>
+
+</dd><dt><code>velocitiesList</code> <a href='https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1'>List</a>&lt;<a href='Alis.Core.Physic.Dynamics.Solver.Velocity.html'>Velocity</a>&gt;  </dt>
+<dd>
+
+
+<p>The velocities list</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Solver.ContactSolver.InitializePositionConstraint(System.Int32,Alis.Core.Physic.Collision.ContactSystem.Contact)' data-commentid='M:Alis.Core.Physic.Dynamics.Solver.ContactSolver.InitializePositionConstraint(System.Int32,Alis.Core.Physic.Collision.ContactSystem.Contact)' id='Alis_Core_Physic_Dynamics_Solver_ContactSolver_InitializePositionConstraint_System_Int32_Alis_Core_Physic_Collision_ContactSystem_Contact_'>InitializePositionConstraint(int, Contact)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactSolver.cs#L185'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Initializes the position constraint using the specified i</p>
+<pre><code class='lang-csharp'>private void InitializePositionConstraint(int i, Contact contact)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>i</code> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>contact</code> <a href='Alis.Core.Physic.Collision.ContactSystem.Contact.html'>Contact</a>  </dt>
+<dd>
+
+
+<p>The contact</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Solver.ContactSolver.InitializeTransforms(System.Single,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,System.Single,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Transform@)' data-commentid='M:Alis.Core.Physic.Dynamics.Solver.ContactSolver.InitializeTransforms(System.Single,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,System.Single,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Transform@)' id='Alis_Core_Physic_Dynamics_Solver_ContactSolver_InitializeTransforms_System_Single_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_System_Single_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Transform__Alis_Core_Aspect_Math_Transform__'>InitializeTransforms(float, Vector2, Vector2, float, Vector2, Vector2, out Transform, out Transform)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactSolver.cs#L299'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Initializes the transforms using the specified a a</p>
+<pre><code class='lang-csharp'>private void InitializeTransforms(float aA, Vector2 cA, Vector2 localCenterA, float aB, Vector2 cB, Vector2 localCenterB, out Transform xfA, out Transform xfB)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>aA</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>cA</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>localCenterA</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The local center</p>
+
+</dd><dt><code>aB</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>cB</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>localCenterB</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The local center</p>
+
+</dd><dt><code>xfA</code> <a href='Alis.Core.Aspect.Math.Transform.html'>Transform</a>  </dt>
+<dd>
+
+
+<p>The xf</p>
+
+</dd><dt><code>xfB</code> <a href='Alis.Core.Aspect.Math.Transform.html'>Transform</a>  </dt>
+<dd>
+
+
+<p>The xf</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Solver.ContactSolver.InitializeVelocityConstraint(System.Int32,Alis.Core.Physic.Collision.ContactSystem.Contact)' data-commentid='M:Alis.Core.Physic.Dynamics.Solver.ContactSolver.InitializeVelocityConstraint(System.Int32,Alis.Core.Physic.Collision.ContactSystem.Contact)' id='Alis_Core_Physic_Dynamics_Solver_ContactSolver_InitializeVelocityConstraint_System_Int32_Alis_Core_Physic_Collision_ContactSystem_Contact_'>InitializeVelocityConstraint(int, Contact)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactSolver.cs#L156'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Initializes the velocity constraint using the specified i</p>
+<pre><code class='lang-csharp'>private void InitializeVelocityConstraint(int i, Contact contact)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>i</code> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>contact</code> <a href='Alis.Core.Physic.Collision.ContactSystem.Contact.html'>Contact</a>  </dt>
+<dd>
+
+
+<p>The contact</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Solver.ContactSolver.InitializeVelocityConstraint(Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint)' data-commentid='M:Alis.Core.Physic.Dynamics.Solver.ContactSolver.InitializeVelocityConstraint(Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint)' id='Alis_Core_Physic_Dynamics_Solver_ContactSolver_InitializeVelocityConstraint_Alis_Core_Physic_Dynamics_Solver_ContactVelocityConstraint_'>InitializeVelocityConstraint(ContactVelocityConstraint)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactSolver.cs#L481'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Initializes the velocity constraint using the specified vc</p>
+<pre><code class='lang-csharp'>private void InitializeVelocityConstraint(ContactVelocityConstraint vc)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>vc</code> <a href='Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.html'>ContactVelocityConstraint</a>  </dt>
+<dd>
+
+
+<p>The vc</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Solver.ContactSolver.InitializeVelocityConstraintPoints(Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,System.Single,System.Single,System.Single,System.Single,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2[],Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,System.Single,System.Single)' data-commentid='M:Alis.Core.Physic.Dynamics.Solver.ContactSolver.InitializeVelocityConstraintPoints(Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,System.Single,System.Single,System.Single,System.Single,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2[],Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,System.Single,System.Single)' id='Alis_Core_Physic_Dynamics_Solver_ContactSolver_InitializeVelocityConstraintPoints_Alis_Core_Physic_Dynamics_Solver_ContactVelocityConstraint_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_System_Single_System_Single_System_Single_System_Single_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2___Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_System_Single_System_Single_'>InitializeVelocityConstraintPoints(ContactVelocityConstraint, Vector2, Vector2, float, float, float, float, Vector2, Vector2[], Vector2, Vector2, float, float)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactSolver.cs#L340'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Initializes the velocity constraint points using the specified vc</p>
+<pre><code class='lang-csharp'>private void InitializeVelocityConstraintPoints(ContactVelocityConstraint vc, Vector2 cA, Vector2 cB, float mA, float mB, float iA, float iB, Vector2 normal, Vector2[] points, Vector2 vA, Vector2 vB, float wA, float wB)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>vc</code> <a href='Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.html'>ContactVelocityConstraint</a>  </dt>
+<dd>
+
+
+<p>The vc</p>
+
+</dd><dt><code>cA</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>cB</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>mA</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>mB</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>iA</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>iB</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>normal</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The normal</p>
+
+</dd><dt><code>points</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>[]  </dt>
+<dd>
+
+
+<p>The points</p>
+
+</dd><dt><code>vA</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>vB</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>wA</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>wB</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Solver.ContactSolver.InitializeVelocityConstraints' data-commentid='M:Alis.Core.Physic.Dynamics.Solver.ContactSolver.InitializeVelocityConstraints' id='Alis_Core_Physic_Dynamics_Solver_ContactSolver_InitializeVelocityConstraints'>InitializeVelocityConstraints()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactSolver.cs#L237'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Initializes the velocity constraints</p>
+<pre><code class='lang-csharp'>public void InitializeVelocityConstraints()</code></pre><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Solver.ContactSolver.InitializeWorldManifold(Alis.Core.Physic.Collision.NarrowPhase.Manifold@,Alis.Core.Aspect.Math.Transform@,System.Single,Alis.Core.Aspect.Math.Transform@,System.Single,Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2[]@)' data-commentid='M:Alis.Core.Physic.Dynamics.Solver.ContactSolver.InitializeWorldManifold(Alis.Core.Physic.Collision.NarrowPhase.Manifold@,Alis.Core.Aspect.Math.Transform@,System.Single,Alis.Core.Aspect.Math.Transform@,System.Single,Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2[]@)' id='Alis_Core_Physic_Dynamics_Solver_ContactSolver_InitializeWorldManifold_Alis_Core_Physic_Collision_NarrowPhase_Manifold__Alis_Core_Aspect_Math_Transform__System_Single_Alis_Core_Aspect_Math_Transform__System_Single_Alis_Core_Aspect_Math_Vector_Vector2__Alis_Core_Aspect_Math_Vector_Vector2____'>InitializeWorldManifold(ref Manifold, ref Transform, float, ref Transform, float, out Vector2, out Vector2[])    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactSolver.cs#L319'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Initializes the world manifold using the specified manifold</p>
+<pre><code class='lang-csharp'>private void InitializeWorldManifold(ref Manifold manifold, ref Transform xfA, float radiusA, ref Transform xfB, float radiusB, out Vector2 normal, out Vector2[] points)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>manifold</code> <a href='Alis.Core.Physic.Collision.NarrowPhase.Manifold.html'>Manifold</a>  </dt>
+<dd>
+
+
+<p>The manifold</p>
+
+</dd><dt><code>xfA</code> <a href='Alis.Core.Aspect.Math.Transform.html'>Transform</a>  </dt>
+<dd>
+
+
+<p>The xf</p>
+
+</dd><dt><code>radiusA</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The radius</p>
+
+</dd><dt><code>xfB</code> <a href='Alis.Core.Aspect.Math.Transform.html'>Transform</a>  </dt>
+<dd>
+
+
+<p>The xf</p>
+
+</dd><dt><code>radiusB</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The radius</p>
+
+</dd><dt><code>normal</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The normal</p>
+
+</dd><dt><code>points</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>[]  </dt>
+<dd>
+
+
+<p>The points</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Solver.ContactSolver.PrepareBlockSolver(Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint,System.Single,System.Single,System.Single,System.Single)' data-commentid='M:Alis.Core.Physic.Dynamics.Solver.ContactSolver.PrepareBlockSolver(Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint,System.Single,System.Single,System.Single,System.Single)' id='Alis_Core_Physic_Dynamics_Solver_ContactSolver_PrepareBlockSolver_Alis_Core_Physic_Dynamics_Solver_ContactVelocityConstraint_System_Single_System_Single_System_Single_System_Single_'>PrepareBlockSolver(ContactVelocityConstraint, float, float, float, float)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactSolver.cs#L384'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Prepares the block solver using the specified vc</p>
+<pre><code class='lang-csharp'>private void PrepareBlockSolver(ContactVelocityConstraint vc, float mA, float mB, float iA, float iB)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>vc</code> <a href='Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.html'>ContactVelocityConstraint</a>  </dt>
+<dd>
+
+
+<p>The vc</p>
+
+</dd><dt><code>mA</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>mB</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>iA</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>iB</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Solver.ContactSolver.Reset(Alis.Core.Aspect.Time.TimeStep,System.Int32,System.Collections.Generic.List{Alis.Core.Physic.Collision.ContactSystem.Contact},System.Collections.Generic.List{Alis.Core.Physic.Dynamics.Solver.Position},System.Collections.Generic.List{Alis.Core.Physic.Dynamics.Solver.Velocity})' data-commentid='M:Alis.Core.Physic.Dynamics.Solver.ContactSolver.Reset(Alis.Core.Aspect.Time.TimeStep,System.Int32,System.Collections.Generic.List{Alis.Core.Physic.Collision.ContactSystem.Contact},System.Collections.Generic.List{Alis.Core.Physic.Dynamics.Solver.Position},System.Collections.Generic.List{Alis.Core.Physic.Dynamics.Solver.Velocity})' id='Alis_Core_Physic_Dynamics_Solver_ContactSolver_Reset_Alis_Core_Aspect_Time_TimeStep_System_Int32_System_Collections_Generic_List_Alis_Core_Physic_Collision_ContactSystem_Contact__System_Collections_Generic_List_Alis_Core_Physic_Dynamics_Solver_Position__System_Collections_Generic_List_Alis_Core_Physic_Dynamics_Solver_Velocity__'>Reset(TimeStep, int, List&lt;Contact&gt;, List&lt;Position&gt;, List&lt;Velocity&gt;)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactSolver.cs#L90'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Resets the step param</p>
+<pre><code class='lang-csharp'>public void Reset(TimeStep stepParam, int countParam, List&lt;Contact&gt; contactList, List&lt;Position&gt; positionList, List&lt;Velocity&gt; velocitiesList)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>stepParam</code> <a href='Alis.Core.Aspect.Time.TimeStep.html'>TimeStep</a>  </dt>
+<dd>
+
+
+<p>The step param</p>
+
+</dd><dt><code>countParam</code> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+<p>The count param</p>
+
+</dd><dt><code>contactList</code> <a href='https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1'>List</a>&lt;<a href='Alis.Core.Physic.Collision.ContactSystem.Contact.html'>Contact</a>&gt;  </dt>
+<dd>
+
+
+<p>The contact list</p>
+
+</dd><dt><code>positionList</code> <a href='https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1'>List</a>&lt;<a href='Alis.Core.Physic.Dynamics.Solver.Position.html'>Position</a>&gt;  </dt>
+<dd>
+
+
+<p>The position list</p>
+
+</dd><dt><code>velocitiesList</code> <a href='https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1'>List</a>&lt;<a href='Alis.Core.Physic.Dynamics.Solver.Velocity.html'>Velocity</a>&gt;  </dt>
+<dd>
+
+
+<p>The velocities list</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Solver.ContactSolver.SolveBlockConstraints(Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint)' data-commentid='M:Alis.Core.Physic.Dynamics.Solver.ContactSolver.SolveBlockConstraints(Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint)' id='Alis_Core_Physic_Dynamics_Solver_ContactSolver_SolveBlockConstraints_Alis_Core_Physic_Dynamics_Solver_ContactVelocityConstraint_'>SolveBlockConstraints(ContactVelocityConstraint)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactSolver.cs#L599'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Solves the block constraints using the specified vc</p>
+<pre><code class='lang-csharp'>private void SolveBlockConstraints(ContactVelocityConstraint vc)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>vc</code> <a href='Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.html'>ContactVelocityConstraint</a>  </dt>
+<dd>
+
+
+<p>The vc</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Solver.ContactSolver.SolveNormalConstraint(Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint,System.Int32)' data-commentid='M:Alis.Core.Physic.Dynamics.Solver.ContactSolver.SolveNormalConstraint(Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint,System.Int32)' id='Alis_Core_Physic_Dynamics_Solver_ContactSolver_SolveNormalConstraint_Alis_Core_Physic_Dynamics_Solver_ContactVelocityConstraint_System_Int32_'>SolveNormalConstraint(ContactVelocityConstraint, int)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactSolver.cs#L570'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Solves the normal constraint using the specified vc</p>
+<pre><code class='lang-csharp'>private void SolveNormalConstraint(ContactVelocityConstraint vc, int j)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>vc</code> <a href='Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.html'>ContactVelocityConstraint</a>  </dt>
+<dd>
+
+
+<p>The vc</p>
+
+</dd><dt><code>j</code> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Solver.ContactSolver.SolveNormalConstraints(Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint)' data-commentid='M:Alis.Core.Physic.Dynamics.Solver.ContactSolver.SolveNormalConstraints(Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint)' id='Alis_Core_Physic_Dynamics_Solver_ContactSolver_SolveNormalConstraints_Alis_Core_Physic_Dynamics_Solver_ContactVelocityConstraint_'>SolveNormalConstraints(ContactVelocityConstraint)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactSolver.cs#L557'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Solves the normal constraints using the specified vc</p>
+<pre><code class='lang-csharp'>private void SolveNormalConstraints(ContactVelocityConstraint vc)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>vc</code> <a href='Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.html'>ContactVelocityConstraint</a>  </dt>
+<dd>
+
+
+<p>The vc</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Solver.ContactSolver.SolvePositionConstraints' data-commentid='M:Alis.Core.Physic.Dynamics.Solver.ContactSolver.SolvePositionConstraints' id='Alis_Core_Physic_Dynamics_Solver_ContactSolver_SolvePositionConstraints'>SolvePositionConstraints()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactSolver.cs#L744'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Describes whether this instance solve position constraints</p>
+<pre><code class='lang-csharp'>public bool SolvePositionConstraints()</code></pre><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+<p>The bool</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Solver.ContactSolver.SolveTangentConstraints(Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint,System.Int32,System.Single,System.Single,System.Single,System.Single,Alis.Core.Aspect.Math.Vector.Vector2,System.Single,Alis.Core.Aspect.Math.Vector.Vector2,System.Single,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,System.Single)' data-commentid='M:Alis.Core.Physic.Dynamics.Solver.ContactSolver.SolveTangentConstraints(Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint,System.Int32,System.Single,System.Single,System.Single,System.Single,Alis.Core.Aspect.Math.Vector.Vector2,System.Single,Alis.Core.Aspect.Math.Vector.Vector2,System.Single,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,System.Single)' id='Alis_Core_Physic_Dynamics_Solver_ContactSolver_SolveTangentConstraints_Alis_Core_Physic_Dynamics_Solver_ContactVelocityConstraint_System_Int32_System_Single_System_Single_System_Single_System_Single_Alis_Core_Aspect_Math_Vector_Vector2_System_Single_Alis_Core_Aspect_Math_Vector_Vector2_System_Single_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_System_Single_'>SolveTangentConstraints(ContactVelocityConstraint, int, float, float, float, float, Vector2, float, Vector2, float, Vector2, Vector2, float)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactSolver.cs#L526'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Solves the tangent constraints using the specified vc</p>
+<pre><code class='lang-csharp'>private void SolveTangentConstraints(ContactVelocityConstraint vc, int j, float mA, float iA, float mB, float iB, Vector2 vA, float wA, Vector2 vB, float wB, Vector2 normal, Vector2 tangent, float friction)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>vc</code> <a href='Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.html'>ContactVelocityConstraint</a>  </dt>
+<dd>
+
+
+<p>The vc</p>
+
+</dd><dt><code>j</code> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>mA</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>iA</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>mB</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>iB</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>vA</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>wA</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>vB</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>wB</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>normal</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The normal</p>
+
+</dd><dt><code>tangent</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The tangent</p>
+
+</dd><dt><code>friction</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The friction</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Solver.ContactSolver.SolveToiPositionConstraints(System.Int32,System.Int32)' data-commentid='M:Alis.Core.Physic.Dynamics.Solver.ContactSolver.SolveToiPositionConstraints(System.Int32,System.Int32)' id='Alis_Core_Physic_Dynamics_Solver_ContactSolver_SolveToiPositionConstraints_System_Int32_System_Int32_'>SolveToiPositionConstraints(int, int)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactSolver.cs#L823'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Describes whether this instance solve toi position constraints</p>
+<pre><code class='lang-csharp'>public bool SolveToiPositionConstraints(int toiIndexA, int toiIndexB)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>toiIndexA</code> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+<p>The toi index</p>
+
+</dd><dt><code>toiIndexB</code> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+<p>The toi index</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+<p>The bool</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Solver.ContactSolver.SolveVelocityConstraints' data-commentid='M:Alis.Core.Physic.Dynamics.Solver.ContactSolver.SolveVelocityConstraints' id='Alis_Core_Physic_Dynamics_Solver_ContactSolver_SolveVelocityConstraints'>SolveVelocityConstraints()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactSolver.cs#L459'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Solves the velocity constraints</p>
+<pre><code class='lang-csharp'>public void SolveVelocityConstraints()</code></pre><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Solver.ContactSolver.StoreImpulses' data-commentid='M:Alis.Core.Physic.Dynamics.Solver.ContactSolver.StoreImpulses' id='Alis_Core_Physic_Dynamics_Solver_ContactSolver_StoreImpulses'>StoreImpulses()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactSolver.cs#L721'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Stores the impulses</p>
+<pre><code class='lang-csharp'>public void StoreImpulses()</code></pre><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Solver.ContactSolver.WarmStart' data-commentid='M:Alis.Core.Physic.Dynamics.Solver.ContactSolver.WarmStart' id='Alis_Core_Physic_Dynamics_Solver_ContactSolver_WarmStart'>WarmStart()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactSolver.cs#L416'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Warms the start</p>
+<pre><code class='lang-csharp'>public void WarmStart()</code></pre>
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Alis - Develop the video games of your dreams 💯 free!! on Windows, MacOS, Linux, Android(soon), IOS(soon).
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

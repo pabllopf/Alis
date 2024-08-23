@@ -1,0 +1,107 @@
+### YamlMime:ApiPage
+title: Class AnimatorBuilder
+body:
+- api1: Class AnimatorBuilder
+  id: Alis_Builder_Core_Ecs_Component_Render_AnimatorBuilder
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Builder/Core/Ecs/Component/Render/AnimatorBuilder.cs#L40
+  metadata:
+    uid: Alis.Builder.Core.Ecs.Component.Render.AnimatorBuilder
+    commentId: T:Alis.Builder.Core.Ecs.Component.Render.AnimatorBuilder
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Builder.Core.Ecs.Component.Render
+      url: Alis.Builder.Core.Ecs.Component.Render.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The animator builder class
+- code: 'public class AnimatorBuilder : IBuild<Animator>, IAddAnimation<AnimatorBuilder, Func<AnimationBuilder, Animation>>'
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: AnimatorBuilder
+    url: Alis.Builder.Core.Ecs.Component.Render.AnimatorBuilder.html
+- h4: Implements
+- list:
+  - text: IBuild<Animator>
+    url: Alis.Core.Aspect.Fluent.IBuild-1.html
+  - text: IAddAnimation<AnimatorBuilder, Func<AnimationBuilder, Animation>>
+    url: Alis.Core.Aspect.Fluent.Words.IAddAnimation-2.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Fields
+- api3: animator
+  id: Alis_Builder_Core_Ecs_Component_Render_AnimatorBuilder_animator
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Builder/Core/Ecs/Component/Render/AnimatorBuilder.cs#L47
+  metadata:
+    uid: Alis.Builder.Core.Ecs.Component.Render.AnimatorBuilder.animator
+    commentId: F:Alis.Builder.Core.Ecs.Component.Render.AnimatorBuilder.animator
+- markdown: The animator
+- code: private readonly Animator animator
+- h4: Field Value
+- parameters:
+  - type:
+    - text: Animator
+      url: Alis.Core.Ecs.Component.Render.Animator.html
+- h2: Methods
+- api3: AddAnimation(Func<AnimationBuilder, Animation>)
+  id: Alis_Builder_Core_Ecs_Component_Render_AnimatorBuilder_AddAnimation_System_Func_Alis_Builder_Core_Ecs_Component_Render_AnimationBuilder_Alis_Core_Ecs_Component_Render_Animation__
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Builder/Core/Ecs/Component/Render/AnimatorBuilder.cs#L54
+  metadata:
+    uid: Alis.Builder.Core.Ecs.Component.Render.AnimatorBuilder.AddAnimation(System.Func{Alis.Builder.Core.Ecs.Component.Render.AnimationBuilder,Alis.Core.Ecs.Component.Render.Animation})
+    commentId: M:Alis.Builder.Core.Ecs.Component.Render.AnimatorBuilder.AddAnimation(System.Func{Alis.Builder.Core.Ecs.Component.Render.AnimationBuilder,Alis.Core.Ecs.Component.Render.Animation})
+- markdown: Adds the animation using the specified value
+- code: public AnimatorBuilder AddAnimation(Func<AnimationBuilder, Animation> value)
+- h4: Parameters
+- parameters:
+  - name: value
+    type:
+    - text: Func
+      url: https://learn.microsoft.com/dotnet/api/system.func-2
+    - <
+    - text: AnimationBuilder
+      url: Alis.Builder.Core.Ecs.Component.Render.AnimationBuilder.html
+    - ','
+    - " "
+    - text: Animation
+      url: Alis.Core.Ecs.Component.Render.Animation.html
+    - '>'
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - text: AnimatorBuilder
+      url: Alis.Builder.Core.Ecs.Component.Render.AnimatorBuilder.html
+    description: The animator builder
+- api3: Build()
+  id: Alis_Builder_Core_Ecs_Component_Render_AnimatorBuilder_Build
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Builder/Core/Ecs/Component/Render/AnimatorBuilder.cs#L64
+  metadata:
+    uid: Alis.Builder.Core.Ecs.Component.Render.AnimatorBuilder.Build
+    commentId: M:Alis.Builder.Core.Ecs.Component.Render.AnimatorBuilder.Build
+- markdown: Builds this instance
+- code: public Animator Build()
+- h4: Returns
+- parameters:
+  - type:
+    - text: Animator
+      url: Alis.Core.Ecs.Component.Render.Animator.html
+    description: The animator
+languageId: csharp
+metadata:
+  description: The animator builder class

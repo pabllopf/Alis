@@ -1,0 +1,172 @@
+### YamlMime:ApiPage
+title: Class NetworkSetting
+body:
+- api1: Class NetworkSetting
+  id: Alis_Core_Ecs_System_Setting_Network_NetworkSetting
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Setting/Network/NetworkSetting.cs#L40
+  metadata:
+    uid: Alis.Core.Ecs.System.Setting.Network.NetworkSetting
+    commentId: T:Alis.Core.Ecs.System.Setting.Network.NetworkSetting
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Ecs.System.Setting.Network
+      url: Alis.Core.Ecs.System.Setting.Network.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The network setting class
+- code: 'public class NetworkSetting : INetworkSetting, IBuilder<NetworkSettingBuilder>'
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: NetworkSetting
+    url: Alis.Core.Ecs.System.Setting.Network.NetworkSetting.html
+- h4: Implements
+- list:
+  - text: INetworkSetting
+    url: Alis.Core.Ecs.System.Setting.Network.INetworkSetting.html
+  - text: IBuilder<NetworkSettingBuilder>
+    url: Alis.Core.Aspect.Fluent.IBuilder-1.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Constructors
+- api3: NetworkSetting()
+  id: Alis_Core_Ecs_System_Setting_Network_NetworkSetting__ctor
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Setting/Network/NetworkSetting.cs#L47
+  metadata:
+    uid: Alis.Core.Ecs.System.Setting.Network.NetworkSetting.#ctor
+    commentId: M:Alis.Core.Ecs.System.Setting.Network.NetworkSetting.#ctor
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Ecs.System.Setting.Network.NetworkSetting" data-throw-if-not-resolved="false"></xref> class
+- code: public NetworkSetting()
+- api3: NetworkSetting(int, string, string, string)
+  id: Alis_Core_Ecs_System_Setting_Network_NetworkSetting__ctor_System_Int32_System_String_System_String_System_String_
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Setting/Network/NetworkSetting.cs#L62
+  metadata:
+    uid: Alis.Core.Ecs.System.Setting.Network.NetworkSetting.#ctor(System.Int32,System.String,System.String,System.String)
+    commentId: M:Alis.Core.Ecs.System.Setting.Network.NetworkSetting.#ctor(System.Int32,System.String,System.String,System.String)
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Ecs.System.Setting.Network.NetworkSetting" data-throw-if-not-resolved="false"></xref> class
+- code: public NetworkSetting(int port, string ip, string host, string protocol)
+- h4: Parameters
+- parameters:
+  - name: port
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The port
+  - name: ip
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The ip
+  - name: host
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The host
+  - name: protocol
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The protocol
+- h2: Properties
+- api3: Host
+  id: Alis_Core_Ecs_System_Setting_Network_NetworkSetting_Host
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Setting/Network/NetworkSetting.cs#L86
+  metadata:
+    uid: Alis.Core.Ecs.System.Setting.Network.NetworkSetting.Host
+    commentId: P:Alis.Core.Ecs.System.Setting.Network.NetworkSetting.Host
+- markdown: Gets or sets the value of the host
+- code: >-
+    [JsonPropertyName("_Host_")]
+
+    public string Host { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: Ip
+  id: Alis_Core_Ecs_System_Setting_Network_NetworkSetting_Ip
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Setting/Network/NetworkSetting.cs#L80
+  metadata:
+    uid: Alis.Core.Ecs.System.Setting.Network.NetworkSetting.Ip
+    commentId: P:Alis.Core.Ecs.System.Setting.Network.NetworkSetting.Ip
+- markdown: Gets or sets the value of the ip
+- code: >-
+    [JsonPropertyName("_Ip_")]
+
+    public string Ip { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: Port
+  id: Alis_Core_Ecs_System_Setting_Network_NetworkSetting_Port
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Setting/Network/NetworkSetting.cs#L74
+  metadata:
+    uid: Alis.Core.Ecs.System.Setting.Network.NetworkSetting.Port
+    commentId: P:Alis.Core.Ecs.System.Setting.Network.NetworkSetting.Port
+- markdown: Gets or sets the value of the port
+- code: >-
+    [JsonPropertyName("_Port_")]
+
+    public int Port { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: Protocol
+  id: Alis_Core_Ecs_System_Setting_Network_NetworkSetting_Protocol
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Setting/Network/NetworkSetting.cs#L92
+  metadata:
+    uid: Alis.Core.Ecs.System.Setting.Network.NetworkSetting.Protocol
+    commentId: P:Alis.Core.Ecs.System.Setting.Network.NetworkSetting.Protocol
+- markdown: Gets or sets the value of the protocol
+- code: >-
+    [JsonPropertyName("_Protocol_")]
+
+    public string Protocol { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- h2: Methods
+- api3: Builder()
+  id: Alis_Core_Ecs_System_Setting_Network_NetworkSetting_Builder
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Setting/Network/NetworkSetting.cs#L99
+  metadata:
+    uid: Alis.Core.Ecs.System.Setting.Network.NetworkSetting.Builder
+    commentId: M:Alis.Core.Ecs.System.Setting.Network.NetworkSetting.Builder
+- markdown: Builders this instance
+- code: public NetworkSettingBuilder Builder()
+- h4: Returns
+- parameters:
+  - type:
+    - text: NetworkSettingBuilder
+      url: Alis.Builder.Core.Ecs.System.Setting.Network.NetworkSettingBuilder.html
+    description: The network setting builder
+- h2: See Also
+- list:
+  - - text: INetworkSetting
+      url: Alis.Core.Ecs.System.Setting.Network.INetworkSetting.html
+languageId: csharp
+metadata:
+  description: The network setting class

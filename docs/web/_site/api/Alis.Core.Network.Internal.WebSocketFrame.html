@@ -1,0 +1,253 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+      <title>Class WebSocketFrame | Alis - Develop the video games of your dreams &#128175; free!! </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class WebSocketFrame | Alis - Develop the video games of your dreams &#128175; free!! ">
+      
+      <meta name="description" content="The web socket frame class">
+      <link rel="icon" href="../resources/logo.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ApiPage">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../resources/logo.png" alt="Alis">
+            Alis
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 class='section api' data-uid='Alis.Core.Network.Internal.WebSocketFrame' data-commentid='T:Alis.Core.Network.Internal.WebSocketFrame' id='Alis_Core_Network_Internal_WebSocketFrame'>Class WebSocketFrame    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/WebSocketFrame.cs#L38'><i class='bi bi-code-slash'></i></a></h1>
+ <div class="facts text-secondary">
+<dl><dt>Namespace</dt><dd><a href='Alis.Core.Network.Internal.html'>Alis.Core.Network.Internal</a></dd></dl><dl><dt>Assembly</dt><dd>Alis.dll</dd></dl>
+</div><p>The web socket frame class</p>
+<pre><code class='lang-csharp'>internal class WebSocketFrame</code></pre><h4 class='section'>Inheritance</h4><dl class="typelist inheritance"><dd>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object'>object</a>
+</div>
+<div>
+<a href='Alis.Core.Network.Internal.WebSocketFrame.html'>WebSocketFrame</a>
+</div>
+
+</dd></dl><h4 class='section'>Inherited Members</h4><dl class="typelist"><dd>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)'>object.Equals(object?)</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)'>object.Equals(object?, object?)</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.gethashcode'>object.GetHashCode()</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.gettype'>object.GetType()</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone'>object.MemberwiseClone()</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.referenceequals'>object.ReferenceEquals(object?, object?)</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.tostring'>object.ToString()</a>
+</div>
+
+</dd></dl><h2 class='section'>Constructors</h2><h3 class='section api' data-uid='Alis.Core.Network.Internal.WebSocketFrame.#ctor(System.Boolean,Alis.Core.Network.Internal.WebSocketOpCode,System.Int32,System.ArraySegment{System.Byte})' data-commentid='M:Alis.Core.Network.Internal.WebSocketFrame.#ctor(System.Boolean,Alis.Core.Network.Internal.WebSocketOpCode,System.Int32,System.ArraySegment{System.Byte})' id='Alis_Core_Network_Internal_WebSocketFrame__ctor_System_Boolean_Alis_Core_Network_Internal_WebSocketOpCode_System_Int32_System_ArraySegment_System_Byte__'>WebSocketFrame(bool, WebSocketOpCode, int, ArraySegment&lt;byte&gt;)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/WebSocketFrame.cs#L47'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Initializes a new instance of the <span class="xref">Alis.Core.Network.Internal.WebSocketFrame</span> class</p>
+<pre><code class='lang-csharp'>public WebSocketFrame(bool isFinBitSet, WebSocketOpCode webSocketOpCode, int count, ArraySegment&lt;byte&gt; maskKey)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>isFinBitSet</code> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+<p>The is fin bit set</p>
+
+</dd><dt><code>webSocketOpCode</code> <a href='Alis.Core.Network.Internal.WebSocketOpCode.html'>WebSocketOpCode</a>  </dt>
+<dd>
+
+
+<p>The web socket op code</p>
+
+</dd><dt><code>count</code> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+<p>The count</p>
+
+</dd><dt><code>maskKey</code> <a href='https://learn.microsoft.com/dotnet/api/system.arraysegment-1'>ArraySegment</a>&lt;<a href='https://learn.microsoft.com/dotnet/api/system.byte'>byte</a>&gt;  </dt>
+<dd>
+
+
+<p>The mask key</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Network.Internal.WebSocketFrame.#ctor(System.Boolean,Alis.Core.Network.Internal.WebSocketOpCode,System.Int32,System.Net.WebSockets.WebSocketCloseStatus,System.String,System.ArraySegment{System.Byte})' data-commentid='M:Alis.Core.Network.Internal.WebSocketFrame.#ctor(System.Boolean,Alis.Core.Network.Internal.WebSocketOpCode,System.Int32,System.Net.WebSockets.WebSocketCloseStatus,System.String,System.ArraySegment{System.Byte})' id='Alis_Core_Network_Internal_WebSocketFrame__ctor_System_Boolean_Alis_Core_Network_Internal_WebSocketOpCode_System_Int32_System_Net_WebSockets_WebSocketCloseStatus_System_String_System_ArraySegment_System_Byte__'>WebSocketFrame(bool, WebSocketOpCode, int, WebSocketCloseStatus, string, ArraySegment&lt;byte&gt;)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/WebSocketFrame.cs#L64'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Initializes a new instance of the <span class="xref">Alis.Core.Network.Internal.WebSocketFrame</span> class</p>
+<pre><code class='lang-csharp'>public WebSocketFrame(bool isFinBitSet, WebSocketOpCode webSocketOpCode, int count, WebSocketCloseStatus closeStatus, string closeStatusDescription, ArraySegment&lt;byte&gt; maskKey)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>isFinBitSet</code> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+<p>The is fin bit set</p>
+
+</dd><dt><code>webSocketOpCode</code> <a href='Alis.Core.Network.Internal.WebSocketOpCode.html'>WebSocketOpCode</a>  </dt>
+<dd>
+
+
+<p>The web socket op code</p>
+
+</dd><dt><code>count</code> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+<p>The count</p>
+
+</dd><dt><code>closeStatus</code> <a href='https://learn.microsoft.com/dotnet/api/system.net.websockets.websocketclosestatus'>WebSocketCloseStatus</a>  </dt>
+<dd>
+
+
+<p>The close status</p>
+
+</dd><dt><code>closeStatusDescription</code> <a href='https://learn.microsoft.com/dotnet/api/system.string'>string</a>  </dt>
+<dd>
+
+
+<p>The close status description</p>
+
+</dd><dt><code>maskKey</code> <a href='https://learn.microsoft.com/dotnet/api/system.arraysegment-1'>ArraySegment</a>&lt;<a href='https://learn.microsoft.com/dotnet/api/system.byte'>byte</a>&gt;  </dt>
+<dd>
+
+
+<p>The mask key</p>
+
+</dd></dl><h2 class='section'>Properties</h2><h3 class='section api' data-uid='Alis.Core.Network.Internal.WebSocketFrame.CloseStatus' data-commentid='P:Alis.Core.Network.Internal.WebSocketFrame.CloseStatus' id='Alis_Core_Network_Internal_WebSocketFrame_CloseStatus'>CloseStatus    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/WebSocketFrame.cs#L90'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Gets the value of the close status</p>
+<pre><code class='lang-csharp'>public WebSocketCloseStatus? CloseStatus { get; }</code></pre><h4 class='section'>Property Value</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.net.websockets.websocketclosestatus'>WebSocketCloseStatus</a>?  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Network.Internal.WebSocketFrame.CloseStatusDescription' data-commentid='P:Alis.Core.Network.Internal.WebSocketFrame.CloseStatusDescription' id='Alis_Core_Network_Internal_WebSocketFrame_CloseStatusDescription'>CloseStatusDescription    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/WebSocketFrame.cs#L95'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Gets the value of the close status description</p>
+<pre><code class='lang-csharp'>public string CloseStatusDescription { get; }</code></pre><h4 class='section'>Property Value</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.string'>string</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Network.Internal.WebSocketFrame.Count' data-commentid='P:Alis.Core.Network.Internal.WebSocketFrame.Count' id='Alis_Core_Network_Internal_WebSocketFrame_Count'>Count    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/WebSocketFrame.cs#L85'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Gets the value of the count</p>
+<pre><code class='lang-csharp'>public int Count { get; }</code></pre><h4 class='section'>Property Value</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Network.Internal.WebSocketFrame.IsFinBitSet' data-commentid='P:Alis.Core.Network.Internal.WebSocketFrame.IsFinBitSet' id='Alis_Core_Network_Internal_WebSocketFrame_IsFinBitSet'>IsFinBitSet    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/WebSocketFrame.cs#L75'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Gets the value of the is fin bit set</p>
+<pre><code class='lang-csharp'>public bool IsFinBitSet { get; }</code></pre><h4 class='section'>Property Value</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Network.Internal.WebSocketFrame.MaskKey' data-commentid='P:Alis.Core.Network.Internal.WebSocketFrame.MaskKey' id='Alis_Core_Network_Internal_WebSocketFrame_MaskKey'>MaskKey    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/WebSocketFrame.cs#L100'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Gets the value of the mask key</p>
+<pre><code class='lang-csharp'>public ArraySegment&lt;byte&gt; MaskKey { get; }</code></pre><h4 class='section'>Property Value</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.arraysegment-1'>ArraySegment</a>&lt;<a href='https://learn.microsoft.com/dotnet/api/system.byte'>byte</a>&gt;  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Network.Internal.WebSocketFrame.OpCode' data-commentid='P:Alis.Core.Network.Internal.WebSocketFrame.OpCode' id='Alis_Core_Network_Internal_WebSocketFrame_OpCode'>OpCode    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Internal/WebSocketFrame.cs#L80'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Gets the value of the op code</p>
+<pre><code class='lang-csharp'>public WebSocketOpCode OpCode { get; }</code></pre><h4 class='section'>Property Value</h4><dl class='parameters'><dt> <a href='Alis.Core.Network.Internal.WebSocketOpCode.html'>WebSocketOpCode</a>  </dt>
+<dd>
+
+
+
+</dd></dl>
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Alis - Develop the video games of your dreams 💯 free!! on Windows, MacOS, Linux, Android(soon), IOS(soon).
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

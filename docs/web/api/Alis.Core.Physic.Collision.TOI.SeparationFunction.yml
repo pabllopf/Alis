@@ -1,0 +1,231 @@
+### YamlMime:ApiPage
+title: Class SeparationFunction
+body:
+- api1: Class SeparationFunction
+  id: Alis_Core_Physic_Collision_TOI_SeparationFunction
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/TOI/SeparationFunction.cs#L41
+  metadata:
+    uid: Alis.Core.Physic.Collision.TOI.SeparationFunction
+    commentId: T:Alis.Core.Physic.Collision.TOI.SeparationFunction
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Physic.Collision.TOI
+      url: Alis.Core.Physic.Collision.TOI.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The separation function class
+- code: public static class SeparationFunction
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: SeparationFunction
+    url: Alis.Core.Physic.Collision.TOI.SeparationFunction.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Methods
+- api3: Evaluate(int, int, float, DistanceProxy, ref Sweep, DistanceProxy, ref Sweep, ref Vector2, ref Vector2, SeparationFunctionType)
+  id: Alis_Core_Physic_Collision_TOI_SeparationFunction_Evaluate_System_Int32_System_Int32_System_Single_Alis_Core_Physic_Collision_Distance_DistanceProxy_Alis_Core_Physic_Collision_TOI_Sweep__Alis_Core_Physic_Collision_Distance_DistanceProxy_Alis_Core_Physic_Collision_TOI_Sweep__Alis_Core_Aspect_Math_Vector_Vector2__Alis_Core_Aspect_Math_Vector_Vector2__Alis_Core_Physic_Collision_TOI_SeparationFunctionType_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/TOI/SeparationFunction.cs#L221
+  metadata:
+    uid: Alis.Core.Physic.Collision.TOI.SeparationFunction.Evaluate(System.Int32,System.Int32,System.Single,Alis.Core.Physic.Collision.Distance.DistanceProxy,Alis.Core.Physic.Collision.TOI.Sweep@,Alis.Core.Physic.Collision.Distance.DistanceProxy,Alis.Core.Physic.Collision.TOI.Sweep@,Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Physic.Collision.TOI.SeparationFunctionType)
+    commentId: M:Alis.Core.Physic.Collision.TOI.SeparationFunction.Evaluate(System.Int32,System.Int32,System.Single,Alis.Core.Physic.Collision.Distance.DistanceProxy,Alis.Core.Physic.Collision.TOI.Sweep@,Alis.Core.Physic.Collision.Distance.DistanceProxy,Alis.Core.Physic.Collision.TOI.Sweep@,Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Physic.Collision.TOI.SeparationFunctionType)
+- markdown: Evaluates the index a
+- code: public static float Evaluate(int indexA, int indexB, float t, DistanceProxy proxyA, ref Sweep sweepA, DistanceProxy proxyB, ref Sweep sweepB, ref Vector2 axis, ref Vector2 localPoint, SeparationFunctionType type)
+- h4: Parameters
+- parameters:
+  - name: indexA
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The index
+  - name: indexB
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The index
+  - name: t
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The
+  - name: proxyA
+    type:
+    - text: DistanceProxy
+      url: Alis.Core.Physic.Collision.Distance.DistanceProxy.html
+    description: The proxy
+  - name: sweepA
+    type:
+    - text: Sweep
+      url: Alis.Core.Physic.Collision.TOI.Sweep.html
+    description: The sweep
+  - name: proxyB
+    type:
+    - text: DistanceProxy
+      url: Alis.Core.Physic.Collision.Distance.DistanceProxy.html
+    description: The proxy
+  - name: sweepB
+    type:
+    - text: Sweep
+      url: Alis.Core.Physic.Collision.TOI.Sweep.html
+    description: The sweep
+  - name: axis
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The axis
+  - name: localPoint
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The local point
+  - name: type
+    type:
+    - text: SeparationFunctionType
+      url: Alis.Core.Physic.Collision.TOI.SeparationFunctionType.html
+    description: The type
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The float
+- api3: FindMinSeparation(out int, out int, float, DistanceProxy, ref Sweep, DistanceProxy, ref Sweep, ref Vector2, ref Vector2, SeparationFunctionType)
+  id: Alis_Core_Physic_Collision_TOI_SeparationFunction_FindMinSeparation_System_Int32__System_Int32__System_Single_Alis_Core_Physic_Collision_Distance_DistanceProxy_Alis_Core_Physic_Collision_TOI_Sweep__Alis_Core_Physic_Collision_Distance_DistanceProxy_Alis_Core_Physic_Collision_TOI_Sweep__Alis_Core_Aspect_Math_Vector_Vector2__Alis_Core_Aspect_Math_Vector_Vector2__Alis_Core_Physic_Collision_TOI_SeparationFunctionType_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/TOI/SeparationFunction.cs#L140
+  metadata:
+    uid: Alis.Core.Physic.Collision.TOI.SeparationFunction.FindMinSeparation(System.Int32@,System.Int32@,System.Single,Alis.Core.Physic.Collision.Distance.DistanceProxy,Alis.Core.Physic.Collision.TOI.Sweep@,Alis.Core.Physic.Collision.Distance.DistanceProxy,Alis.Core.Physic.Collision.TOI.Sweep@,Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Physic.Collision.TOI.SeparationFunctionType)
+    commentId: M:Alis.Core.Physic.Collision.TOI.SeparationFunction.FindMinSeparation(System.Int32@,System.Int32@,System.Single,Alis.Core.Physic.Collision.Distance.DistanceProxy,Alis.Core.Physic.Collision.TOI.Sweep@,Alis.Core.Physic.Collision.Distance.DistanceProxy,Alis.Core.Physic.Collision.TOI.Sweep@,Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Physic.Collision.TOI.SeparationFunctionType)
+- markdown: Finds the min separation using the specified index a
+- code: public static float FindMinSeparation(out int indexA, out int indexB, float t, DistanceProxy proxyA, ref Sweep sweepA, DistanceProxy proxyB, ref Sweep sweepB, ref Vector2 axis, ref Vector2 localPoint, SeparationFunctionType type)
+- h4: Parameters
+- parameters:
+  - name: indexA
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The index
+  - name: indexB
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The index
+  - name: t
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The
+  - name: proxyA
+    type:
+    - text: DistanceProxy
+      url: Alis.Core.Physic.Collision.Distance.DistanceProxy.html
+    description: The proxy
+  - name: sweepA
+    type:
+    - text: Sweep
+      url: Alis.Core.Physic.Collision.TOI.Sweep.html
+    description: The sweep
+  - name: proxyB
+    type:
+    - text: DistanceProxy
+      url: Alis.Core.Physic.Collision.Distance.DistanceProxy.html
+    description: The proxy
+  - name: sweepB
+    type:
+    - text: Sweep
+      url: Alis.Core.Physic.Collision.TOI.Sweep.html
+    description: The sweep
+  - name: axis
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The axis
+  - name: localPoint
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The local point
+  - name: type
+    type:
+    - text: SeparationFunctionType
+      url: Alis.Core.Physic.Collision.TOI.SeparationFunctionType.html
+    description: The type
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The float
+- api3: Initialize(ref SimplexCache, DistanceProxy, ref Sweep, DistanceProxy, ref Sweep, float, out Vector2, out Vector2, out SeparationFunctionType)
+  id: Alis_Core_Physic_Collision_TOI_SeparationFunction_Initialize_Alis_Core_Physic_Collision_NarrowPhase_SimplexCache__Alis_Core_Physic_Collision_Distance_DistanceProxy_Alis_Core_Physic_Collision_TOI_Sweep__Alis_Core_Physic_Collision_Distance_DistanceProxy_Alis_Core_Physic_Collision_TOI_Sweep__System_Single_Alis_Core_Aspect_Math_Vector_Vector2__Alis_Core_Aspect_Math_Vector_Vector2__Alis_Core_Physic_Collision_TOI_SeparationFunctionType__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/TOI/SeparationFunction.cs#L55
+  metadata:
+    uid: Alis.Core.Physic.Collision.TOI.SeparationFunction.Initialize(Alis.Core.Physic.Collision.NarrowPhase.SimplexCache@,Alis.Core.Physic.Collision.Distance.DistanceProxy,Alis.Core.Physic.Collision.TOI.Sweep@,Alis.Core.Physic.Collision.Distance.DistanceProxy,Alis.Core.Physic.Collision.TOI.Sweep@,System.Single,Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Physic.Collision.TOI.SeparationFunctionType@)
+    commentId: M:Alis.Core.Physic.Collision.TOI.SeparationFunction.Initialize(Alis.Core.Physic.Collision.NarrowPhase.SimplexCache@,Alis.Core.Physic.Collision.Distance.DistanceProxy,Alis.Core.Physic.Collision.TOI.Sweep@,Alis.Core.Physic.Collision.Distance.DistanceProxy,Alis.Core.Physic.Collision.TOI.Sweep@,System.Single,Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Physic.Collision.TOI.SeparationFunctionType@)
+- markdown: Initializes the cache
+- code: public static void Initialize(ref SimplexCache cache, DistanceProxy proxyA, ref Sweep sweepA, DistanceProxy proxyB, ref Sweep sweepB, float t1, out Vector2 axis, out Vector2 localPoint, out SeparationFunctionType type)
+- h4: Parameters
+- parameters:
+  - name: cache
+    type:
+    - text: SimplexCache
+      url: Alis.Core.Physic.Collision.NarrowPhase.SimplexCache.html
+    description: The cache
+  - name: proxyA
+    type:
+    - text: DistanceProxy
+      url: Alis.Core.Physic.Collision.Distance.DistanceProxy.html
+    description: The proxy
+  - name: sweepA
+    type:
+    - text: Sweep
+      url: Alis.Core.Physic.Collision.TOI.Sweep.html
+    description: The sweep
+  - name: proxyB
+    type:
+    - text: DistanceProxy
+      url: Alis.Core.Physic.Collision.Distance.DistanceProxy.html
+    description: The proxy
+  - name: sweepB
+    type:
+    - text: Sweep
+      url: Alis.Core.Physic.Collision.TOI.Sweep.html
+    description: The sweep
+  - name: t1
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The
+  - name: axis
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The axis
+  - name: localPoint
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The local point
+  - name: type
+    type:
+    - text: SeparationFunctionType
+      url: Alis.Core.Physic.Collision.TOI.SeparationFunctionType.html
+    description: The type
+languageId: csharp
+metadata:
+  description: The separation function class

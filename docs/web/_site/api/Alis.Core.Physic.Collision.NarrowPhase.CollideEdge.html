@@ -1,0 +1,639 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+      <title>Class CollideEdge | Alis - Develop the video games of your dreams &#128175; free!! </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class CollideEdge | Alis - Develop the video games of your dreams &#128175; free!! ">
+      
+      <meta name="description" content="The collide edge class">
+      <link rel="icon" href="../resources/logo.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ApiPage">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../resources/logo.png" alt="Alis">
+            Alis
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 class='section api' data-uid='Alis.Core.Physic.Collision.NarrowPhase.CollideEdge' data-commentid='T:Alis.Core.Physic.Collision.NarrowPhase.CollideEdge' id='Alis_Core_Physic_Collision_NarrowPhase_CollideEdge'>Class CollideEdge    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/CollideEdge.cs#L42'><i class='bi bi-code-slash'></i></a></h1>
+ <div class="facts text-secondary">
+<dl><dt>Namespace</dt><dd><a href='Alis.Core.Physic.Collision.NarrowPhase.html'>Alis.Core.Physic.Collision.NarrowPhase</a></dd></dl><dl><dt>Assembly</dt><dd>Alis.dll</dd></dl>
+</div><p>The collide edge class</p>
+<pre><code class='lang-csharp'>public static class CollideEdge</code></pre><h4 class='section'>Inheritance</h4><dl class="typelist inheritance"><dd>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object'>object</a>
+</div>
+<div>
+<a href='Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.html'>CollideEdge</a>
+</div>
+
+</dd></dl><h4 class='section'>Inherited Members</h4><dl class="typelist"><dd>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)'>object.Equals(object?)</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)'>object.Equals(object?, object?)</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.gethashcode'>object.GetHashCode()</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.gettype'>object.GetType()</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone'>object.MemberwiseClone()</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.referenceequals'>object.ReferenceEquals(object?, object?)</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.tostring'>object.ToString()</a>
+</div>
+
+</dd></dl><h2 class='section'>Methods</h2><h3 class='section api' data-uid='Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.CollideEdgeAndCircle(Alis.Core.Physic.Collision.NarrowPhase.Manifold@,Alis.Core.Physic.Collision.Shapes.EdgeShape,Alis.Core.Aspect.Math.Transform@,Alis.Core.Physic.Collision.Shapes.CircleShape,Alis.Core.Aspect.Math.Transform@)' data-commentid='M:Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.CollideEdgeAndCircle(Alis.Core.Physic.Collision.NarrowPhase.Manifold@,Alis.Core.Physic.Collision.Shapes.EdgeShape,Alis.Core.Aspect.Math.Transform@,Alis.Core.Physic.Collision.Shapes.CircleShape,Alis.Core.Aspect.Math.Transform@)' id='Alis_Core_Physic_Collision_NarrowPhase_CollideEdge_CollideEdgeAndCircle_Alis_Core_Physic_Collision_NarrowPhase_Manifold__Alis_Core_Physic_Collision_Shapes_EdgeShape_Alis_Core_Aspect_Math_Transform__Alis_Core_Physic_Collision_Shapes_CircleShape_Alis_Core_Aspect_Math_Transform__'>CollideEdgeAndCircle(ref Manifold, EdgeShape, ref Transform, CircleShape, ref Transform)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/CollideEdge.cs#L52'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Collides the edge and circle using the specified manifold</p>
+<pre><code class='lang-csharp'>public static void CollideEdgeAndCircle(ref Manifold manifold, EdgeShape edgeA, ref Transform transformA, CircleShape circleB, ref Transform transformB)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>manifold</code> <a href='Alis.Core.Physic.Collision.NarrowPhase.Manifold.html'>Manifold</a>  </dt>
+<dd>
+
+
+<p>The manifold</p>
+
+</dd><dt><code>edgeA</code> <a href='Alis.Core.Physic.Collision.Shapes.EdgeShape.html'>EdgeShape</a>  </dt>
+<dd>
+
+
+<p>The edge</p>
+
+</dd><dt><code>transformA</code> <a href='Alis.Core.Aspect.Math.Transform.html'>Transform</a>  </dt>
+<dd>
+
+
+<p>The transform</p>
+
+</dd><dt><code>circleB</code> <a href='Alis.Core.Physic.Collision.Shapes.CircleShape.html'>CircleShape</a>  </dt>
+<dd>
+
+
+<p>The circle</p>
+
+</dd><dt><code>transformB</code> <a href='Alis.Core.Aspect.Math.Transform.html'>Transform</a>  </dt>
+<dd>
+
+
+<p>The transform</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.CollideEdgeAndPolygon(Alis.Core.Physic.Collision.NarrowPhase.Manifold@,Alis.Core.Physic.Collision.Shapes.EdgeShape,Alis.Core.Aspect.Math.Transform@,Alis.Core.Physic.Collision.Shapes.PolygonShape,Alis.Core.Aspect.Math.Transform@)' data-commentid='M:Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.CollideEdgeAndPolygon(Alis.Core.Physic.Collision.NarrowPhase.Manifold@,Alis.Core.Physic.Collision.Shapes.EdgeShape,Alis.Core.Aspect.Math.Transform@,Alis.Core.Physic.Collision.Shapes.PolygonShape,Alis.Core.Aspect.Math.Transform@)' id='Alis_Core_Physic_Collision_NarrowPhase_CollideEdge_CollideEdgeAndPolygon_Alis_Core_Physic_Collision_NarrowPhase_Manifold__Alis_Core_Physic_Collision_Shapes_EdgeShape_Alis_Core_Aspect_Math_Transform__Alis_Core_Physic_Collision_Shapes_PolygonShape_Alis_Core_Aspect_Math_Transform__'>CollideEdgeAndPolygon(ref Manifold, EdgeShape, ref Transform, PolygonShape, ref Transform)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/CollideEdge.cs#L258'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Collides the edge and polygon using the specified manifold</p>
+<pre><code class='lang-csharp'>public static void CollideEdgeAndPolygon(ref Manifold manifold, EdgeShape edgeA, ref Transform xfA, PolygonShape polygonB, ref Transform xfB)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>manifold</code> <a href='Alis.Core.Physic.Collision.NarrowPhase.Manifold.html'>Manifold</a>  </dt>
+<dd>
+
+
+<p>The manifold</p>
+
+</dd><dt><code>edgeA</code> <a href='Alis.Core.Physic.Collision.Shapes.EdgeShape.html'>EdgeShape</a>  </dt>
+<dd>
+
+
+<p>The edge</p>
+
+</dd><dt><code>xfA</code> <a href='Alis.Core.Aspect.Math.Transform.html'>Transform</a>  </dt>
+<dd>
+
+
+<p>The xf</p>
+
+</dd><dt><code>polygonB</code> <a href='Alis.Core.Physic.Collision.Shapes.PolygonShape.html'>PolygonShape</a>  </dt>
+<dd>
+
+
+<p>The polygon</p>
+
+</dd><dt><code>xfB</code> <a href='Alis.Core.Aspect.Math.Transform.html'>Transform</a>  </dt>
+<dd>
+
+
+<p>The xf</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.ComputeCirclePositionInEdgeFrame(Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Vector.Vector2@)' data-commentid='M:Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.ComputeCirclePositionInEdgeFrame(Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Vector.Vector2@)' id='Alis_Core_Physic_Collision_NarrowPhase_CollideEdge_ComputeCirclePositionInEdgeFrame_Alis_Core_Aspect_Math_Transform__Alis_Core_Aspect_Math_Transform__Alis_Core_Aspect_Math_Vector_Vector2__'>ComputeCirclePositionInEdgeFrame(ref Transform, ref Transform, ref Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/CollideEdge.cs#L131'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Computes the circle position in edge frame using the specified transform a</p>
+<pre><code class='lang-csharp'>internal static Vector2 ComputeCirclePositionInEdgeFrame(ref Transform transformA, ref Transform transformB, ref Vector2 circlePosition)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>transformA</code> <a href='Alis.Core.Aspect.Math.Transform.html'>Transform</a>  </dt>
+<dd>
+
+
+<p>The transform</p>
+
+</dd><dt><code>transformB</code> <a href='Alis.Core.Aspect.Math.Transform.html'>Transform</a>  </dt>
+<dd>
+
+
+<p>The transform</p>
+
+</dd><dt><code>circlePosition</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The circle position</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The vector</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.ComputeEdgeSeparation(Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.TempPolygon@,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)' data-commentid='M:Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.ComputeEdgeSeparation(Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.TempPolygon@,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)' id='Alis_Core_Physic_Collision_NarrowPhase_CollideEdge_ComputeEdgeSeparation_Alis_Core_Physic_Collision_NarrowPhase_CollideEdge_TempPolygon__Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_'>ComputeEdgeSeparation(ref TempPolygon, Vector2, Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/CollideEdge.cs#L588'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Computes the edge separation using the specified polygon b</p>
+<pre><code class='lang-csharp'>internal static EpAxis ComputeEdgeSeparation(ref CollideEdge.TempPolygon polygonB, Vector2 v1, Vector2 normal1)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>polygonB</code> <a href='Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.html'>CollideEdge</a>.<a href='Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.TempPolygon.html'>TempPolygon</a>  </dt>
+<dd>
+
+
+<p>The polygon</p>
+
+</dd><dt><code>v1</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>normal1</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The normal</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='Alis.Core.Physic.Collision.NarrowPhase.EpAxis.html'>EpAxis</a>  </dt>
+<dd>
+
+
+<p>The axis</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.ComputePolygonSeparation(Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.TempPolygon@,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)' data-commentid='M:Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.ComputePolygonSeparation(Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.TempPolygon@,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)' id='Alis_Core_Physic_Collision_NarrowPhase_CollideEdge_ComputePolygonSeparation_Alis_Core_Physic_Collision_NarrowPhase_CollideEdge_TempPolygon__Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_'>ComputePolygonSeparation(ref TempPolygon, Vector2, Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/CollideEdge.cs#L633'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Computes the polygon separation using the specified polygon b</p>
+<pre><code class='lang-csharp'>internal static EpAxis ComputePolygonSeparation(ref CollideEdge.TempPolygon polygonB, Vector2 v1, Vector2 v2)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>polygonB</code> <a href='Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.html'>CollideEdge</a>.<a href='Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.TempPolygon.html'>TempPolygon</a>  </dt>
+<dd>
+
+
+<p>The polygon</p>
+
+</dd><dt><code>v1</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>v2</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='Alis.Core.Physic.Collision.NarrowPhase.EpAxis.html'>EpAxis</a>  </dt>
+<dd>
+
+
+<p>The axis</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.GetPolygonInFrameA(Alis.Core.Physic.Collision.Shapes.PolygonShape,Alis.Core.Aspect.Math.Transform)' data-commentid='M:Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.GetPolygonInFrameA(Alis.Core.Physic.Collision.Shapes.PolygonShape,Alis.Core.Aspect.Math.Transform)' id='Alis_Core_Physic_Collision_NarrowPhase_CollideEdge_GetPolygonInFrameA_Alis_Core_Physic_Collision_Shapes_PolygonShape_Alis_Core_Aspect_Math_Transform_'>GetPolygonInFrameA(PolygonShape, Transform)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/CollideEdge.cs#L343'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Gets the polygon in frame a using the specified polygon b</p>
+<pre><code class='lang-csharp'>internal static CollideEdge.TempPolygon GetPolygonInFrameA(PolygonShape polygonB, Transform xf)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>polygonB</code> <a href='Alis.Core.Physic.Collision.Shapes.PolygonShape.html'>PolygonShape</a>  </dt>
+<dd>
+
+
+<p>The polygon</p>
+
+</dd><dt><code>xf</code> <a href='Alis.Core.Aspect.Math.Transform.html'>Transform</a>  </dt>
+<dd>
+
+
+<p>The xf</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.html'>CollideEdge</a>.<a href='Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.TempPolygon.html'>TempPolygon</a>  </dt>
+<dd>
+
+
+<p>The temp polygon</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.GetPrimaryAxis(Alis.Core.Physic.Collision.NarrowPhase.EpAxis,Alis.Core.Physic.Collision.NarrowPhase.EpAxis,System.Single)' data-commentid='M:Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.GetPrimaryAxis(Alis.Core.Physic.Collision.NarrowPhase.EpAxis,Alis.Core.Physic.Collision.NarrowPhase.EpAxis,System.Single)' id='Alis_Core_Physic_Collision_NarrowPhase_CollideEdge_GetPrimaryAxis_Alis_Core_Physic_Collision_NarrowPhase_EpAxis_Alis_Core_Physic_Collision_NarrowPhase_EpAxis_System_Single_'>GetPrimaryAxis(EpAxis, EpAxis, float)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/CollideEdge.cs#L362'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Gets the primary axis using the specified polygon axis</p>
+<pre><code class='lang-csharp'>internal static EpAxis GetPrimaryAxis(EpAxis polygonAxis, EpAxis edgeAxis, float radius)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>polygonAxis</code> <a href='Alis.Core.Physic.Collision.NarrowPhase.EpAxis.html'>EpAxis</a>  </dt>
+<dd>
+
+
+<p>The polygon axis</p>
+
+</dd><dt><code>edgeAxis</code> <a href='Alis.Core.Physic.Collision.NarrowPhase.EpAxis.html'>EpAxis</a>  </dt>
+<dd>
+
+
+<p>The edge axis</p>
+
+</dd><dt><code>radius</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The radius</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='Alis.Core.Physic.Collision.NarrowPhase.EpAxis.html'>EpAxis</a>  </dt>
+<dd>
+
+
+<p>The primary axis</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.GetReferenceFace(Alis.Core.Physic.Collision.NarrowPhase.EpAxis,Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.TempPolygon,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Physic.Collision.NarrowPhase.Manifold@)' data-commentid='M:Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.GetReferenceFace(Alis.Core.Physic.Collision.NarrowPhase.EpAxis,Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.TempPolygon,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Physic.Collision.NarrowPhase.Manifold@)' id='Alis_Core_Physic_Collision_NarrowPhase_CollideEdge_GetReferenceFace_Alis_Core_Physic_Collision_NarrowPhase_EpAxis_Alis_Core_Physic_Collision_NarrowPhase_CollideEdge_TempPolygon_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Physic_Collision_NarrowPhase_Manifold__'>GetReferenceFace(EpAxis, TempPolygon, Vector2, Vector2, Vector2, ref Manifold)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/CollideEdge.cs#L449'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Gets the reference face using the specified primary axis</p>
+<pre><code class='lang-csharp'>internal static ReferenceFace GetReferenceFace(EpAxis primaryAxis, CollideEdge.TempPolygon tempPolygonB, Vector2 v1, Vector2 v2, Vector2 edge1, ref Manifold manifold)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>primaryAxis</code> <a href='Alis.Core.Physic.Collision.NarrowPhase.EpAxis.html'>EpAxis</a>  </dt>
+<dd>
+
+
+<p>The primary axis</p>
+
+</dd><dt><code>tempPolygonB</code> <a href='Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.html'>CollideEdge</a>.<a href='Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.TempPolygon.html'>TempPolygon</a>  </dt>
+<dd>
+
+
+<p>The temp polygon</p>
+
+</dd><dt><code>v1</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>v2</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>edge1</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The edge</p>
+
+</dd><dt><code>manifold</code> <a href='Alis.Core.Physic.Collision.NarrowPhase.Manifold.html'>Manifold</a>  </dt>
+<dd>
+
+
+<p>The manifold</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='Alis.Core.Physic.Collision.NarrowPhase.ReferenceFace.html'>ReferenceFace</a>  </dt>
+<dd>
+
+
+<p>The ref</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.HandleOneSidedEdge(Alis.Core.Physic.Collision.NarrowPhase.EpAxis,Alis.Core.Physic.Collision.NarrowPhase.EpAxis,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Physic.Collision.Shapes.EdgeShape)' data-commentid='M:Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.HandleOneSidedEdge(Alis.Core.Physic.Collision.NarrowPhase.EpAxis,Alis.Core.Physic.Collision.NarrowPhase.EpAxis,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Physic.Collision.Shapes.EdgeShape)' id='Alis_Core_Physic_Collision_NarrowPhase_CollideEdge_HandleOneSidedEdge_Alis_Core_Physic_Collision_NarrowPhase_EpAxis_Alis_Core_Physic_Collision_NarrowPhase_EpAxis_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Physic_Collision_Shapes_EdgeShape_'>HandleOneSidedEdge(EpAxis, EpAxis, Vector2, Vector2, Vector2, EdgeShape)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/CollideEdge.cs#L381'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Handles the one sided edge using the specified primary axis</p>
+<pre><code class='lang-csharp'>internal static EpAxis HandleOneSidedEdge(EpAxis primaryAxis, EpAxis edgeAxis, Vector2 v1, Vector2 v2, Vector2 edge1, EdgeShape edgeA)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>primaryAxis</code> <a href='Alis.Core.Physic.Collision.NarrowPhase.EpAxis.html'>EpAxis</a>  </dt>
+<dd>
+
+
+<p>The primary axis</p>
+
+</dd><dt><code>edgeAxis</code> <a href='Alis.Core.Physic.Collision.NarrowPhase.EpAxis.html'>EpAxis</a>  </dt>
+<dd>
+
+
+<p>The edge axis</p>
+
+</dd><dt><code>v1</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>v2</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>edge1</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The edge</p>
+
+</dd><dt><code>edgeA</code> <a href='Alis.Core.Physic.Collision.Shapes.EdgeShape.html'>EdgeShape</a>  </dt>
+<dd>
+
+
+<p>The edge</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='Alis.Core.Physic.Collision.NarrowPhase.EpAxis.html'>EpAxis</a>  </dt>
+<dd>
+
+
+<p>The primary axis</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.HandleRegionA(Alis.Core.Physic.Collision.NarrowPhase.Manifold@,Alis.Core.Physic.Collision.Shapes.EdgeShape,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,System.Single,Alis.Core.Aspect.Math.Vector.Vector2)' data-commentid='M:Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.HandleRegionA(Alis.Core.Physic.Collision.NarrowPhase.Manifold@,Alis.Core.Physic.Collision.Shapes.EdgeShape,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,System.Single,Alis.Core.Aspect.Math.Vector.Vector2)' id='Alis_Core_Physic_Collision_NarrowPhase_CollideEdge_HandleRegionA_Alis_Core_Physic_Collision_NarrowPhase_Manifold__Alis_Core_Physic_Collision_Shapes_EdgeShape_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_System_Single_Alis_Core_Aspect_Math_Vector_Vector2_'>HandleRegionA(ref Manifold, EdgeShape, Vector2, Vector2, float, Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/CollideEdge.cs#L142'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Handles the region a using the specified manifold</p>
+<pre><code class='lang-csharp'>internal static void HandleRegionA(ref Manifold manifold, EdgeShape edgeA, Vector2 edgeStart, Vector2 q, float radiusSum, Vector2 circlePosition)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>manifold</code> <a href='Alis.Core.Physic.Collision.NarrowPhase.Manifold.html'>Manifold</a>  </dt>
+<dd>
+
+
+<p>The manifold</p>
+
+</dd><dt><code>edgeA</code> <a href='Alis.Core.Physic.Collision.Shapes.EdgeShape.html'>EdgeShape</a>  </dt>
+<dd>
+
+
+<p>The edge</p>
+
+</dd><dt><code>edgeStart</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The edge start</p>
+
+</dd><dt><code>q</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>radiusSum</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The radius sum</p>
+
+</dd><dt><code>circlePosition</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The circle position</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.HandleRegionAb(Alis.Core.Physic.Collision.NarrowPhase.Manifold@,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,System.Single,System.Single,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)' data-commentid='M:Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.HandleRegionAb(Alis.Core.Physic.Collision.NarrowPhase.Manifold@,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,System.Single,System.Single,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)' id='Alis_Core_Physic_Collision_NarrowPhase_CollideEdge_HandleRegionAb_Alis_Core_Physic_Collision_NarrowPhase_Manifold__Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_System_Single_System_Single_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_'>HandleRegionAb(ref Manifold, Vector2, Vector2, Vector2, float, float, Vector2, Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/CollideEdge.cs#L101'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Handles the region ab using the specified manifold</p>
+<pre><code class='lang-csharp'>internal static void HandleRegionAb(ref Manifold manifold, Vector2 edgeStart, Vector2 edgeEnd, Vector2 q, float radiusSum, float offset, Vector2 circlePosition, Vector2 edgeNormal)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>manifold</code> <a href='Alis.Core.Physic.Collision.NarrowPhase.Manifold.html'>Manifold</a>  </dt>
+<dd>
+
+
+<p>The manifold</p>
+
+</dd><dt><code>edgeStart</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The edge start</p>
+
+</dd><dt><code>edgeEnd</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The edge end</p>
+
+</dd><dt><code>q</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>radiusSum</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The radius sum</p>
+
+</dd><dt><code>offset</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The offset</p>
+
+</dd><dt><code>circlePosition</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The circle position</p>
+
+</dd><dt><code>edgeNormal</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The edge normal</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.HandleRegionB(Alis.Core.Physic.Collision.NarrowPhase.Manifold@,Alis.Core.Physic.Collision.Shapes.EdgeShape,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,System.Single,Alis.Core.Aspect.Math.Vector.Vector2)' data-commentid='M:Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.HandleRegionB(Alis.Core.Physic.Collision.NarrowPhase.Manifold@,Alis.Core.Physic.Collision.Shapes.EdgeShape,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,System.Single,Alis.Core.Aspect.Math.Vector.Vector2)' id='Alis_Core_Physic_Collision_NarrowPhase_CollideEdge_HandleRegionB_Alis_Core_Physic_Collision_NarrowPhase_Manifold__Alis_Core_Physic_Collision_Shapes_EdgeShape_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_System_Single_Alis_Core_Aspect_Math_Vector_Vector2_'>HandleRegionB(ref Manifold, EdgeShape, Vector2, Vector2, float, Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/CollideEdge.cs#L178'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Handles the region b using the specified manifold</p>
+<pre><code class='lang-csharp'>internal static void HandleRegionB(ref Manifold manifold, EdgeShape edgeA, Vector2 edgeEnd, Vector2 q, float radiusSum, Vector2 circlePosition)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>manifold</code> <a href='Alis.Core.Physic.Collision.NarrowPhase.Manifold.html'>Manifold</a>  </dt>
+<dd>
+
+
+<p>The manifold</p>
+
+</dd><dt><code>edgeA</code> <a href='Alis.Core.Physic.Collision.Shapes.EdgeShape.html'>EdgeShape</a>  </dt>
+<dd>
+
+
+<p>The edge</p>
+
+</dd><dt><code>edgeEnd</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The edge end</p>
+
+</dd><dt><code>q</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>radiusSum</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The radius sum</p>
+
+</dd><dt><code>circlePosition</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The circle position</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.SetManifoldForCircle(Alis.Core.Physic.Collision.NarrowPhase.Manifold@,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)' data-commentid='M:Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.SetManifoldForCircle(Alis.Core.Physic.Collision.NarrowPhase.Manifold@,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)' id='Alis_Core_Physic_Collision_NarrowPhase_CollideEdge_SetManifoldForCircle_Alis_Core_Physic_Collision_NarrowPhase_Manifold__Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_'>SetManifoldForCircle(ref Manifold, Vector2, Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/CollideEdge.cs#L211'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Sets the manifold for circle using the specified manifold</p>
+<pre><code class='lang-csharp'>internal static void SetManifoldForCircle(ref Manifold manifold, Vector2 contactPoint, Vector2 circlePosition)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>manifold</code> <a href='Alis.Core.Physic.Collision.NarrowPhase.Manifold.html'>Manifold</a>  </dt>
+<dd>
+
+
+<p>The manifold</p>
+
+</dd><dt><code>contactPoint</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The contact point</p>
+
+</dd><dt><code>circlePosition</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The circle position</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.SetManifoldForEdge(Alis.Core.Physic.Collision.NarrowPhase.Manifold@,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)' data-commentid='M:Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.SetManifoldForEdge(Alis.Core.Physic.Collision.NarrowPhase.Manifold@,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)' id='Alis_Core_Physic_Collision_NarrowPhase_CollideEdge_SetManifoldForEdge_Alis_Core_Physic_Collision_NarrowPhase_Manifold__Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_'>SetManifoldForEdge(ref Manifold, Vector2, Vector2, Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/CollideEdge.cs#L232'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Sets the manifold for edge using the specified manifold</p>
+<pre><code class='lang-csharp'>internal static void SetManifoldForEdge(ref Manifold manifold, Vector2 edgeStart, Vector2 edgeNormal, Vector2 circlePosition)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>manifold</code> <a href='Alis.Core.Physic.Collision.NarrowPhase.Manifold.html'>Manifold</a>  </dt>
+<dd>
+
+
+<p>The manifold</p>
+
+</dd><dt><code>edgeStart</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The edge start</p>
+
+</dd><dt><code>edgeNormal</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The edge normal</p>
+
+</dd><dt><code>circlePosition</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The circle position</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.SetManifoldPoints(Alis.Core.Physic.Collision.NarrowPhase.Manifold@,Alis.Core.Physic.Collision.NarrowPhase.EpAxis,Alis.Core.Physic.Collision.NarrowPhase.ReferenceFace,Alis.Core.Physic.Collision.NarrowPhase.ClipVertex[],System.Single,Alis.Core.Aspect.Math.Transform,Alis.Core.Physic.Collision.Shapes.PolygonShape)' data-commentid='M:Alis.Core.Physic.Collision.NarrowPhase.CollideEdge.SetManifoldPoints(Alis.Core.Physic.Collision.NarrowPhase.Manifold@,Alis.Core.Physic.Collision.NarrowPhase.EpAxis,Alis.Core.Physic.Collision.NarrowPhase.ReferenceFace,Alis.Core.Physic.Collision.NarrowPhase.ClipVertex[],System.Single,Alis.Core.Aspect.Math.Transform,Alis.Core.Physic.Collision.Shapes.PolygonShape)' id='Alis_Core_Physic_Collision_NarrowPhase_CollideEdge_SetManifoldPoints_Alis_Core_Physic_Collision_NarrowPhase_Manifold__Alis_Core_Physic_Collision_NarrowPhase_EpAxis_Alis_Core_Physic_Collision_NarrowPhase_ReferenceFace_Alis_Core_Physic_Collision_NarrowPhase_ClipVertex___System_Single_Alis_Core_Aspect_Math_Transform_Alis_Core_Physic_Collision_Shapes_PolygonShape_'>SetManifoldPoints(ref Manifold, EpAxis, ReferenceFace, ClipVertex[], float, Transform, PolygonShape)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/CollideEdge.cs#L536'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Sets the manifold points using the specified manifold</p>
+<pre><code class='lang-csharp'>internal static void SetManifoldPoints(ref Manifold manifold, EpAxis primaryAxis, ReferenceFace ref1, ClipVertex[] clipPoints2, float radius, Transform xf, PolygonShape polygonB)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>manifold</code> <a href='Alis.Core.Physic.Collision.NarrowPhase.Manifold.html'>Manifold</a>  </dt>
+<dd>
+
+
+<p>The manifold</p>
+
+</dd><dt><code>primaryAxis</code> <a href='Alis.Core.Physic.Collision.NarrowPhase.EpAxis.html'>EpAxis</a>  </dt>
+<dd>
+
+
+<p>The primary axis</p>
+
+</dd><dt><code>ref1</code> <a href='Alis.Core.Physic.Collision.NarrowPhase.ReferenceFace.html'>ReferenceFace</a>  </dt>
+<dd>
+
+
+<p>The ref</p>
+
+</dd><dt><code>clipPoints2</code> <a href='Alis.Core.Physic.Collision.NarrowPhase.ClipVertex.html'>ClipVertex</a>[]  </dt>
+<dd>
+
+
+<p>The clip points</p>
+
+</dd><dt><code>radius</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The radius</p>
+
+</dd><dt><code>xf</code> <a href='Alis.Core.Aspect.Math.Transform.html'>Transform</a>  </dt>
+<dd>
+
+
+<p>The xf</p>
+
+</dd><dt><code>polygonB</code> <a href='Alis.Core.Physic.Collision.Shapes.PolygonShape.html'>PolygonShape</a>  </dt>
+<dd>
+
+
+<p>The polygon</p>
+
+</dd></dl>
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Alis - Develop the video games of your dreams 💯 free!! on Windows, MacOS, Linux, Android(soon), IOS(soon).
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

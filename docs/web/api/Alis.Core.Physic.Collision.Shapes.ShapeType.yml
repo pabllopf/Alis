@@ -1,0 +1,53 @@
+### YamlMime:ApiPage
+title: Enum ShapeType
+body:
+- api1: Enum ShapeType
+  id: Alis_Core_Physic_Collision_Shapes_ShapeType
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/Shapes/ShapeType.cs#L35
+  metadata:
+    uid: Alis.Core.Physic.Collision.Shapes.ShapeType
+    commentId: T:Alis.Core.Physic.Collision.Shapes.ShapeType
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Physic.Collision.Shapes
+      url: Alis.Core.Physic.Collision.Shapes.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The shape type enum
+- code: public enum ShapeType
+- h2: Fields
+- parameters:
+  - name: Unknown
+    default: "-1"
+    description: >+
+      The unknown shape type
+
+  - name: Circle
+    default: "0"
+    description: >+
+      The circle shape type
+
+  - name: Edge
+    default: "1"
+    description: >+
+      The edge shape type
+
+  - name: Polygon
+    default: "2"
+    description: >+
+      The polygon shape type
+
+  - name: Chain
+    default: "3"
+    description: >+
+      The chain shape type
+
+  - name: TypeCount
+    default: "4"
+    description: >+
+      The type count shape type
+
+languageId: csharp
+metadata:
+  description: The shape type enum

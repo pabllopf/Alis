@@ -1,0 +1,160 @@
+### YamlMime:ApiPage
+title: Enum JsonSerializationOptions
+body:
+- api1: Enum JsonSerializationOptions
+  id: Alis_Core_Aspect_Data_Json_JsonSerializationOptions
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/JsonSerializationOptions.cs#L37
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.JsonSerializationOptions
+    commentId: T:Alis.Core.Aspect.Data.Json.JsonSerializationOptions
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Aspect.Data.Json
+      url: Alis.Core.Aspect.Data.Json.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: Define options for JSON serialization.
+- code: >-
+    [Flags]
+
+    public enum JsonSerializationOptions
+- h2: Fields
+- parameters:
+  - name: None
+    default: "0"
+    description: >+
+      No option.
+
+      Use Type Descriptor (including custom ones) when serializing custom objects.
+
+  - name: UseReflection
+    default: "1"
+    description: >+
+      Use pure reflection when serializing custom objects.
+
+  - name: UseXmlIgnore
+    default: "2"
+    description: >+
+      Avoid fields and properties marked with the XmlIgnore attribute.
+
+  - name: DateFormatCustom
+    default: "4"
+    description: >+
+      Use the format defined in the DateTimeFormat property of the JsonOptions class.
+
+  - name: SerializeFields
+    default: "8"
+    description: >+
+      Serializes fields.
+
+  - name: UseISerializable
+    default: "16"
+    description: >+
+      Use the ISerializable interface.
+
+  - name: DateFormatJs
+    default: "32"
+    description: >+
+      Use the [new Date(utc milliseconds)] format.
+
+      Note this format is not generally supported by browsers native JSON parsers.
+
+  - name: DateFormatIso8601
+    default: "64"
+    description: >+
+      Use the ISO 8601 string format ('s' DateTime format).
+
+  - name: UseScriptIgnore
+    default: "128"
+    description: >+
+      Avoid fields and properties marked with the ScriptIgnore attribute.
+
+  - name: DateFormatRoundtripUtc
+    default: "256"
+    description: >+
+      Use the ISO 8601 roundtrip string format ('o' DateTime format).
+
+  - name: EnumAsText
+    default: "512"
+    description: >+
+      Serialize enum values as text.
+
+  - name: ContinueOnCycle
+    default: "1024"
+    description: >+
+      Continue serialization if a cycle was detected.
+
+  - name: ContinueOnValueError
+    default: "2048"
+    description: >+
+      Continue serialization if getting a value throws error.
+
+  - name: SkipNullPropertyValues
+    default: "4096"
+    description: >+
+      Don't serialize properties with a null value.
+
+  - name: DateTimeOffsetFormatCustom
+    default: "8192"
+    description: >+
+      Use the format defined in the DateTimeOffsetFormat property of the JsonOptions class.
+
+  - name: SkipNullDateTimeValues
+    default: "16384"
+    description: >+
+      Don't serialize null date time values.
+
+  - name: AutoParseDateTime
+    default: "32768"
+    description: >+
+      Automatically parse date time.
+
+  - name: WriteKeysWithoutQuotes
+    default: "65536"
+    description: >+
+      Write dictionary keys without quotes.
+
+  - name: ByteArrayAsBase64
+    default: "131072"
+    description: >+
+      Serializes byte arrays as base 64 strings.
+
+  - name: StreamsAsBase64
+    default: "262144"
+    description: >+
+      Serializes streams as base 64 strings.
+
+  - name: SkipZeroValueTypes
+    default: "524288"
+    description: >+
+      Don't serialize value type with a zero value.
+
+  - name: UseJsonAttribute
+    default: "1048576"
+    description: >+
+      Use the JSON attribute.
+
+  - name: SkipDefaultValues
+    default: "2097152"
+    description: >+
+      Don't serialize values equal to the default member (property, field) value, if defined.
+
+  - name: TimeSpanAsText
+    default: "4194304"
+    description: >+
+      Serialize TimeSpan values as text.
+
+  - name: SkipGetOnly
+    default: "8388608"
+    description: >+
+      Skip members with get only method.
+
+  - name: Default
+    default: "1082392"
+    description: >+
+      The default value.
+
+languageId: csharp
+metadata:
+  description: Define options for JSON serialization.

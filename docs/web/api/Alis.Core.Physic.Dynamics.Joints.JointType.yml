@@ -1,0 +1,113 @@
+### YamlMime:ApiPage
+title: Enum JointType
+body:
+- api1: Enum JointType
+  id: Alis_Core_Physic_Dynamics_Joints_JointType
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/JointType.cs#L35
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.JointType
+    commentId: T:Alis.Core.Physic.Dynamics.Joints.JointType
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Physic.Dynamics.Joints
+      url: Alis.Core.Physic.Dynamics.Joints.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The joint type enum
+- code: public enum JointType
+- h2: Fields
+- parameters:
+  - name: Unknown
+    default: "0"
+    description: >+
+      The unknown joint type
+
+  - name: Revolute
+    default: "1"
+    description: >+
+      The revolute joint type
+
+  - name: Prismatic
+    default: "2"
+    description: >+
+      The prismatic joint type
+
+  - name: Distance
+    default: "3"
+    description: >+
+      The distance joint type
+
+  - name: Pulley
+    default: "4"
+    description: >+
+      The pulley joint type
+
+  - name: Gear
+    default: "5"
+    description: >+
+      The gear joint type
+
+  - name: Wheel
+    default: "6"
+    description: >+
+      The wheel joint type
+
+  - name: Weld
+    default: "7"
+    description: >+
+      The weld joint type
+
+  - name: Friction
+    default: "8"
+    description: >+
+      The friction joint type
+
+  - name: Motor
+    default: "9"
+    description: >+
+      The motor joint type
+
+  - name: Angle
+    default: "10"
+    description: >+
+      The angle joint type
+
+  - name: FixedMouse
+    default: "11"
+    description: >+
+      The fixed mouse joint type
+
+  - name: FixedRevolute
+    default: "12"
+    description: >+
+      The fixed revolute joint type
+
+  - name: FixedDistance
+    default: "13"
+    description: >+
+      The fixed distance joint type
+
+  - name: FixedLine
+    default: "14"
+    description: >+
+      The fixed line joint type
+
+  - name: FixedPrismatic
+    default: "15"
+    description: >+
+      The fixed prismatic joint type
+
+  - name: FixedAngle
+    default: "16"
+    description: >+
+      The fixed angle joint type
+
+  - name: FixedFriction
+    default: "17"
+    description: >+
+      The fixed friction joint type
+
+languageId: csharp
+metadata:
+  description: The joint type enum

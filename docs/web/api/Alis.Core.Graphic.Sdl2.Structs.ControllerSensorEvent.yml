@@ -1,0 +1,127 @@
+### YamlMime:ApiPage
+title: Struct ControllerSensorEvent
+body:
+- api1: Struct ControllerSensorEvent
+  id: Alis_Core_Graphic_Sdl2_Structs_ControllerSensorEvent
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/ControllerSensorEvent.cs#L37
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.ControllerSensorEvent
+    commentId: T:Alis.Core.Graphic.Sdl2.Structs.ControllerSensorEvent
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Structs
+      url: Alis.Core.Graphic.Sdl2.Structs.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The sdl controller sensor event
+- code: public struct ControllerSensorEvent
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Fields
+- api3: data1
+  id: Alis_Core_Graphic_Sdl2_Structs_ControllerSensorEvent_data1
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/ControllerSensorEvent.cs#L63
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.ControllerSensorEvent.data1
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.ControllerSensorEvent.data1
+- markdown: The data
+- code: public readonly float data1
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: data2
+  id: Alis_Core_Graphic_Sdl2_Structs_ControllerSensorEvent_data2
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/ControllerSensorEvent.cs#L68
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.ControllerSensorEvent.data2
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.ControllerSensorEvent.data2
+- markdown: The data
+- code: public readonly float data2
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: data3
+  id: Alis_Core_Graphic_Sdl2_Structs_ControllerSensorEvent_data3
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/ControllerSensorEvent.cs#L73
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.ControllerSensorEvent.data3
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.ControllerSensorEvent.data3
+- markdown: The data
+- code: public readonly float data3
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: sensor
+  id: Alis_Core_Graphic_Sdl2_Structs_ControllerSensorEvent_sensor
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/ControllerSensorEvent.cs#L58
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.ControllerSensorEvent.sensor
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.ControllerSensorEvent.sensor
+- markdown: The sensor
+- code: public readonly int sensor
+- h4: Field Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: timestamp
+  id: Alis_Core_Graphic_Sdl2_Structs_ControllerSensorEvent_timestamp
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/ControllerSensorEvent.cs#L48
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.ControllerSensorEvent.timestamp
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.ControllerSensorEvent.timestamp
+- markdown: The timestamp
+- code: public readonly uint timestamp
+- h4: Field Value
+- parameters:
+  - type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+- api3: type
+  id: Alis_Core_Graphic_Sdl2_Structs_ControllerSensorEvent_type
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/ControllerSensorEvent.cs#L43
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.ControllerSensorEvent.type
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.ControllerSensorEvent.type
+- markdown: The type
+- code: public readonly uint type
+- h4: Field Value
+- parameters:
+  - type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+- api3: which
+  id: Alis_Core_Graphic_Sdl2_Structs_ControllerSensorEvent_which
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/ControllerSensorEvent.cs#L53
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.ControllerSensorEvent.which
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.ControllerSensorEvent.which
+- markdown: The which SDL_JoystickID
+- code: public readonly int which
+- h4: Field Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+languageId: csharp
+metadata:
+  description: The sdl controller sensor event

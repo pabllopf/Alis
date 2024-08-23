@@ -1,0 +1,646 @@
+### YamlMime:ApiPage
+title: Class ContactManager
+body:
+- api1: Class ContactManager
+  id: Alis_Core_Physic_Collision_ContactSystem_ContactManager
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L46
+  metadata:
+    uid: Alis.Core.Physic.Collision.ContactSystem.ContactManager
+    commentId: T:Alis.Core.Physic.Collision.ContactSystem.ContactManager
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Physic.Collision.ContactSystem
+      url: Alis.Core.Physic.Collision.ContactSystem.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The contact manager class
+- code: public class ContactManager
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: ContactManager
+    url: Alis.Core.Physic.Collision.ContactSystem.ContactManager.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Constructors
+- api3: ContactManager(IBroadPhase)
+  id: Alis_Core_Physic_Collision_ContactSystem_ContactManager__ctor_Alis_Core_Physic_Collision_BroadPhase_IBroadPhase_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L67
+  metadata:
+    uid: Alis.Core.Physic.Collision.ContactSystem.ContactManager.#ctor(Alis.Core.Physic.Collision.BroadPhase.IBroadPhase)
+    commentId: M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.#ctor(Alis.Core.Physic.Collision.BroadPhase.IBroadPhase)
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Physic.Collision.ContactSystem.ContactManager" data-throw-if-not-resolved="false"></xref> class
+- code: internal ContactManager(IBroadPhase broadPhase)
+- h4: Parameters
+- parameters:
+  - name: broadPhase
+    type:
+    - text: IBroadPhase
+      url: Alis.Core.Physic.Collision.BroadPhase.IBroadPhase.html
+    description: The broad phase
+- h2: Fields
+- api3: ContactPool
+  id: Alis_Core_Physic_Collision_ContactSystem_ContactManager_ContactPool
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L56
+  metadata:
+    uid: Alis.Core.Physic.Collision.ContactSystem.ContactManager.ContactPool
+    commentId: F:Alis.Core.Physic.Collision.ContactSystem.ContactManager.ContactPool
+- markdown: The contact
+- code: public readonly Queue<Contact> ContactPool
+- h4: Field Value
+- parameters:
+  - type:
+    - text: Queue
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.queue-1
+    - <
+    - text: Contact
+      url: Alis.Core.Physic.Collision.ContactSystem.Contact.html
+    - '>'
+- api3: contactCounter
+  id: Alis_Core_Physic_Collision_ContactSystem_ContactManager_contactCounter
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L61
+  metadata:
+    uid: Alis.Core.Physic.Collision.ContactSystem.ContactManager.contactCounter
+    commentId: F:Alis.Core.Physic.Collision.ContactSystem.ContactManager.contactCounter
+- markdown: The contact count
+- code: internal int contactCounter
+- h4: Field Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: contactList
+  id: Alis_Core_Physic_Collision_ContactSystem_ContactManager_contactList
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L51
+  metadata:
+    uid: Alis.Core.Physic.Collision.ContactSystem.ContactManager.contactList
+    commentId: F:Alis.Core.Physic.Collision.ContactSystem.ContactManager.contactList
+- markdown: The contact list
+- code: internal readonly List<Contact> contactList
+- h4: Field Value
+- parameters:
+  - type:
+    - text: List
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+    - <
+    - text: Contact
+      url: Alis.Core.Physic.Collision.ContactSystem.Contact.html
+    - '>'
+- h2: Properties
+- api3: BeginContact
+  id: Alis_Core_Physic_Collision_ContactSystem_ContactManager_BeginContact
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L80
+  metadata:
+    uid: Alis.Core.Physic.Collision.ContactSystem.ContactManager.BeginContact
+    commentId: P:Alis.Core.Physic.Collision.ContactSystem.ContactManager.BeginContact
+- markdown: Fires when a contact is created
+- code: public BeginContactHandler BeginContact { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: BeginContactHandler
+      url: Alis.Core.Physic.Collision.Handlers.BeginContactHandler.html
+- api3: BroadPhase
+  id: Alis_Core_Physic_Collision_ContactSystem_ContactManager_BroadPhase
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L111
+  metadata:
+    uid: Alis.Core.Physic.Collision.ContactSystem.ContactManager.BroadPhase
+    commentId: P:Alis.Core.Physic.Collision.ContactSystem.ContactManager.BroadPhase
+- markdown: Gets the value of the broad phase
+- code: public IBroadPhase BroadPhase { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: IBroadPhase
+      url: Alis.Core.Physic.Collision.BroadPhase.IBroadPhase.html
+- api3: ContactCount
+  id: Alis_Core_Physic_Collision_ContactSystem_ContactManager_ContactCount
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L117
+  metadata:
+    uid: Alis.Core.Physic.Collision.ContactSystem.ContactManager.ContactCount
+    commentId: P:Alis.Core.Physic.Collision.ContactSystem.ContactManager.ContactCount
+- markdown: Gets the value of the contact count
+- code: public int ContactCount { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: ContactFilter
+  id: Alis_Core_Physic_Collision_ContactSystem_ContactManager_ContactFilter
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L84
+  metadata:
+    uid: Alis.Core.Physic.Collision.ContactSystem.ContactManager.ContactFilter
+    commentId: P:Alis.Core.Physic.Collision.ContactSystem.ContactManager.ContactFilter
+- markdown: The filter used by the contact manager.
+- code: public CollisionFilterHandler ContactFilter { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: CollisionFilterHandler
+      url: Alis.Core.Physic.Collision.Handlers.CollisionFilterHandler.html
+- api3: Current
+  id: Alis_Core_Physic_Collision_ContactSystem_ContactManager_Current
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L106
+  metadata:
+    uid: Alis.Core.Physic.Collision.ContactSystem.ContactManager.Current
+    commentId: P:Alis.Core.Physic.Collision.ContactSystem.ContactManager.Current
+- markdown: The dynamic tree broad phase
+- code: public static ContactManager Current { get; internal set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: ContactManager
+      url: Alis.Core.Physic.Collision.ContactSystem.ContactManager.html
+- api3: EndContact
+  id: Alis_Core_Physic_Collision_ContactSystem_ContactManager_EndContact
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L88
+  metadata:
+    uid: Alis.Core.Physic.Collision.ContactSystem.ContactManager.EndContact
+    commentId: P:Alis.Core.Physic.Collision.ContactSystem.ContactManager.EndContact
+- markdown: Fires when a contact is deleted
+- code: public EndContactHandler EndContact { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: EndContactHandler
+      url: Alis.Core.Physic.Collision.Handlers.EndContactHandler.html
+- api3: LastMinAlpha
+  id: Alis_Core_Physic_Collision_ContactSystem_ContactManager_LastMinAlpha
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L94
+  metadata:
+    uid: Alis.Core.Physic.Collision.ContactSystem.ContactManager.LastMinAlpha
+    commentId: P:Alis.Core.Physic.Collision.ContactSystem.ContactManager.LastMinAlpha
+- markdown: The last min alpha
+- code: public float LastMinAlpha { get; internal set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: OnBroadPhaseCollision
+  id: Alis_Core_Physic_Collision_ContactSystem_ContactManager_OnBroadPhaseCollision
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L76
+  metadata:
+    uid: Alis.Core.Physic.Collision.ContactSystem.ContactManager.OnBroadPhaseCollision
+    commentId: P:Alis.Core.Physic.Collision.ContactSystem.ContactManager.OnBroadPhaseCollision
+- markdown: Fires when the broadphase detects that two Fixtures are close to each other.
+- code: public BroadPhaseHandler OnBroadPhaseCollision { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: BroadPhaseHandler
+      url: Alis.Core.Physic.Collision.Handlers.BroadPhaseHandler.html
+- api3: PostSolve
+  id: Alis_Core_Physic_Collision_ContactSystem_ContactManager_PostSolve
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L97
+  metadata:
+    uid: Alis.Core.Physic.Collision.ContactSystem.ContactManager.PostSolve
+    commentId: P:Alis.Core.Physic.Collision.ContactSystem.ContactManager.PostSolve
+- markdown: Fires after the solver has run
+- code: public PostSolveHandler PostSolve { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: PostSolveHandler
+      url: Alis.Core.Physic.Dynamics.Handlers.PostSolveHandler.html
+- api3: PreSolve
+  id: Alis_Core_Physic_Collision_ContactSystem_ContactManager_PreSolve
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L101
+  metadata:
+    uid: Alis.Core.Physic.Collision.ContactSystem.ContactManager.PreSolve
+    commentId: P:Alis.Core.Physic.Collision.ContactSystem.ContactManager.PreSolve
+- markdown: Fires before the solver runs
+- code: public PreSolveHandler PreSolve { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: PreSolveHandler
+      url: Alis.Core.Physic.Dynamics.Handlers.PreSolveHandler.html
+- h2: Methods
+- api3: AddPair(ref FixtureProxy, ref FixtureProxy)
+  id: Alis_Core_Physic_Collision_ContactSystem_ContactManager_AddPair_Alis_Core_Physic_Dynamics_FixtureProxy__Alis_Core_Physic_Dynamics_FixtureProxy__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L124
+  metadata:
+    uid: Alis.Core.Physic.Collision.ContactSystem.ContactManager.AddPair(Alis.Core.Physic.Dynamics.FixtureProxy@,Alis.Core.Physic.Dynamics.FixtureProxy@)
+    commentId: M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.AddPair(Alis.Core.Physic.Dynamics.FixtureProxy@,Alis.Core.Physic.Dynamics.FixtureProxy@)
+- markdown: Adds the pair using the specified proxy a
+- code: internal void AddPair(ref FixtureProxy proxyA, ref FixtureProxy proxyB)
+- h4: Parameters
+- parameters:
+  - name: proxyA
+    type:
+    - text: FixtureProxy
+      url: Alis.Core.Physic.Dynamics.FixtureProxy.html
+    description: The proxy
+  - name: proxyB
+    type:
+    - text: FixtureProxy
+      url: Alis.Core.Physic.Dynamics.FixtureProxy.html
+    description: The proxy
+- api3: AdjustSweeps(Contact)
+  id: Alis_Core_Physic_Collision_ContactSystem_ContactManager_AdjustSweeps_Alis_Core_Physic_Collision_ContactSystem_Contact_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L556
+  metadata:
+    uid: Alis.Core.Physic.Collision.ContactSystem.ContactManager.AdjustSweeps(Alis.Core.Physic.Collision.ContactSystem.Contact)
+    commentId: M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.AdjustSweeps(Alis.Core.Physic.Collision.ContactSystem.Contact)
+- markdown: Adjusts the sweeps using the specified c
+- code: internal void AdjustSweeps(Contact c)
+- h4: Parameters
+- parameters:
+  - name: c
+    type:
+    - text: Contact
+      url: Alis.Core.Physic.Collision.ContactSystem.Contact.html
+    description: The
+- api3: CalculateMinAlpha()
+  id: Alis_Core_Physic_Collision_ContactSystem_ContactManager_CalculateMinAlpha
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L644
+  metadata:
+    uid: Alis.Core.Physic.Collision.ContactSystem.ContactManager.CalculateMinAlpha
+    commentId: M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.CalculateMinAlpha
+- markdown: Calculates the min alpha
+- code: public float CalculateMinAlpha()
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The float
+- api3: CheckExistingContact(Body, Body, Fixture, Fixture, int, int)
+  id: Alis_Core_Physic_Collision_ContactSystem_ContactManager_CheckExistingContact_Alis_Core_Physic_Dynamics_Body_Alis_Core_Physic_Dynamics_Body_Alis_Core_Physic_Dynamics_Fixture_Alis_Core_Physic_Dynamics_Fixture_System_Int32_System_Int32_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L190
+  metadata:
+    uid: Alis.Core.Physic.Collision.ContactSystem.ContactManager.CheckExistingContact(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Fixture,Alis.Core.Physic.Dynamics.Fixture,System.Int32,System.Int32)
+    commentId: M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.CheckExistingContact(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Fixture,Alis.Core.Physic.Dynamics.Fixture,System.Int32,System.Int32)
+- markdown: Describes whether this instance check existing contact
+- code: internal bool CheckExistingContact(Body bodyA, Body bodyB, Fixture fixtureA, Fixture fixtureB, int indexA, int indexB)
+- h4: Parameters
+- parameters:
+  - name: bodyA
+    type:
+    - text: Body
+      url: Alis.Core.Physic.Dynamics.Body.html
+    description: The body
+  - name: bodyB
+    type:
+    - text: Body
+      url: Alis.Core.Physic.Dynamics.Body.html
+    description: The body
+  - name: fixtureA
+    type:
+    - text: Fixture
+      url: Alis.Core.Physic.Dynamics.Fixture.html
+    description: The fixture
+  - name: fixtureB
+    type:
+    - text: Fixture
+      url: Alis.Core.Physic.Dynamics.Fixture.html
+    description: The fixture
+  - name: indexA
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The index
+  - name: indexB
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The index
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: ClearFlags()
+  id: Alis_Core_Physic_Collision_ContactSystem_ContactManager_ClearFlags
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L633
+  metadata:
+    uid: Alis.Core.Physic.Collision.ContactSystem.ContactManager.ClearFlags
+    commentId: M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.ClearFlags
+- markdown: Clears the flags
+- code: internal void ClearFlags()
+- api3: Collide()
+  id: Alis_Core_Physic_Collision_ContactSystem_ContactManager_Collide
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L367
+  metadata:
+    uid: Alis.Core.Physic.Collision.ContactSystem.ContactManager.Collide
+    commentId: M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.Collide
+- markdown: Collides this instance
+- code: internal void Collide()
+- api3: ComputeTimeOfImpact(Contact)
+  id: Alis_Core_Physic_Collision_ContactSystem_ContactManager_ComputeTimeOfImpact_Alis_Core_Physic_Collision_ContactSystem_Contact_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L580
+  metadata:
+    uid: Alis.Core.Physic.Collision.ContactSystem.ContactManager.ComputeTimeOfImpact(Alis.Core.Physic.Collision.ContactSystem.Contact)
+    commentId: M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.ComputeTimeOfImpact(Alis.Core.Physic.Collision.ContactSystem.Contact)
+- markdown: Computes the time of impact using the specified c
+- code: internal ToiOutput ComputeTimeOfImpact(Contact c)
+- h4: Parameters
+- parameters:
+  - name: c
+    type:
+    - text: Contact
+      url: Alis.Core.Physic.Collision.ContactSystem.Contact.html
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: ToiOutput
+      url: Alis.Core.Physic.Collision.TOI.ToiOutput.html
+    description: The output
+- api3: CreateContact(Fixture, int, Fixture, int)
+  id: Alis_Core_Physic_Collision_ContactSystem_ContactManager_CreateContact_Alis_Core_Physic_Dynamics_Fixture_System_Int32_Alis_Core_Physic_Dynamics_Fixture_System_Int32_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L228
+  metadata:
+    uid: Alis.Core.Physic.Collision.ContactSystem.ContactManager.CreateContact(Alis.Core.Physic.Dynamics.Fixture,System.Int32,Alis.Core.Physic.Dynamics.Fixture,System.Int32)
+    commentId: M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.CreateContact(Alis.Core.Physic.Dynamics.Fixture,System.Int32,Alis.Core.Physic.Dynamics.Fixture,System.Int32)
+- markdown: Creates the contact using the specified fixture a
+- code: internal void CreateContact(Fixture fixtureA, int indexA, Fixture fixtureB, int indexB)
+- h4: Parameters
+- parameters:
+  - name: fixtureA
+    type:
+    - text: Fixture
+      url: Alis.Core.Physic.Dynamics.Fixture.html
+    description: The fixture
+  - name: indexA
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The index
+  - name: fixtureB
+    type:
+    - text: Fixture
+      url: Alis.Core.Physic.Dynamics.Fixture.html
+    description: The fixture
+  - name: indexB
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The index
+- api3: FindNewContacts()
+  id: Alis_Core_Physic_Collision_ContactSystem_ContactManager_FindNewContacts
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L274
+  metadata:
+    uid: Alis.Core.Physic.Collision.ContactSystem.ContactManager.FindNewContacts
+    commentId: M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.FindNewContacts
+- markdown: Finds the new contacts
+- code: internal void FindNewContacts()
+- api3: GetTheMinContact(float)
+  id: Alis_Core_Physic_Collision_ContactSystem_ContactManager_GetTheMinContact_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L479
+  metadata:
+    uid: Alis.Core.Physic.Collision.ContactSystem.ContactManager.GetTheMinContact(System.Single)
+    commentId: M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.GetTheMinContact(System.Single)
+- markdown: Gets the the min contact using the specified min alpha
+- code: internal Contact GetTheMinContact(float minAlpha)
+- h4: Parameters
+- parameters:
+  - name: minAlpha
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The min alpha
+- h4: Returns
+- parameters:
+  - type:
+    - text: Contact
+      url: Alis.Core.Physic.Collision.ContactSystem.Contact.html
+    description: The contact
+- api3: InvalidateToi()
+  id: Alis_Core_Physic_Collision_ContactSystem_ContactManager_InvalidateToi
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L638
+  metadata:
+    uid: Alis.Core.Physic.Collision.ContactSystem.ContactManager.InvalidateToi
+    commentId: M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.InvalidateToi
+- markdown: Invalidates the toi
+- code: public void InvalidateToi()
+- api3: IsActiveContact(Contact)
+  id: Alis_Core_Physic_Collision_ContactSystem_ContactManager_IsActiveContact_Alis_Core_Physic_Collision_ContactSystem_Contact_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L523
+  metadata:
+    uid: Alis.Core.Physic.Collision.ContactSystem.ContactManager.IsActiveContact(Alis.Core.Physic.Collision.ContactSystem.Contact)
+    commentId: M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.IsActiveContact(Alis.Core.Physic.Collision.ContactSystem.Contact)
+- markdown: Describes whether this instance is active contact
+- code: internal bool IsActiveContact(Contact c)
+- h4: Parameters
+- parameters:
+  - name: c
+    type:
+    - text: Contact
+      url: Alis.Core.Physic.Collision.ContactSystem.Contact.html
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: IsCollidableContact(Contact)
+  id: Alis_Core_Physic_Collision_ContactSystem_ContactManager_IsCollidableContact_Alis_Core_Physic_Collision_ContactSystem_Contact_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L539
+  metadata:
+    uid: Alis.Core.Physic.Collision.ContactSystem.ContactManager.IsCollidableContact(Alis.Core.Physic.Collision.ContactSystem.Contact)
+    commentId: M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.IsCollidableContact(Alis.Core.Physic.Collision.ContactSystem.Contact)
+- markdown: Describes whether this instance is collidable contact
+- code: internal bool IsCollidableContact(Contact c)
+- h4: Parameters
+- parameters:
+  - name: c
+    type:
+    - text: Contact
+      url: Alis.Core.Physic.Collision.ContactSystem.Contact.html
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: IsSensorContact(Contact)
+  id: Alis_Core_Physic_Collision_ContactSystem_ContactManager_IsSensorContact_Alis_Core_Physic_Collision_ContactSystem_Contact_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L516
+  metadata:
+    uid: Alis.Core.Physic.Collision.ContactSystem.ContactManager.IsSensorContact(Alis.Core.Physic.Collision.ContactSystem.Contact)
+    commentId: M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.IsSensorContact(Alis.Core.Physic.Collision.ContactSystem.Contact)
+- markdown: Describes whether this instance is sensor contact
+- code: internal bool IsSensorContact(Contact c)
+- h4: Parameters
+- parameters:
+  - name: c
+    type:
+    - text: Contact
+      url: Alis.Core.Physic.Collision.ContactSystem.Contact.html
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: IsValidCachedToi(Contact)
+  id: Alis_Core_Physic_Collision_ContactSystem_ContactManager_IsValidCachedToi_Alis_Core_Physic_Collision_ContactSystem_Contact_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L509
+  metadata:
+    uid: Alis.Core.Physic.Collision.ContactSystem.ContactManager.IsValidCachedToi(Alis.Core.Physic.Collision.ContactSystem.Contact)
+    commentId: M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.IsValidCachedToi(Alis.Core.Physic.Collision.ContactSystem.Contact)
+- markdown: Describes whether this instance is valid cached toi
+- code: internal bool IsValidCachedToi(Contact c)
+- h4: Parameters
+- parameters:
+  - name: c
+    type:
+    - text: Contact
+      url: Alis.Core.Physic.Collision.ContactSystem.Contact.html
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: Remove(Contact)
+  id: Alis_Core_Physic_Collision_ContactSystem_ContactManager_Remove_Alis_Core_Physic_Collision_ContactSystem_Contact_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L283
+  metadata:
+    uid: Alis.Core.Physic.Collision.ContactSystem.ContactManager.Remove(Alis.Core.Physic.Collision.ContactSystem.Contact)
+    commentId: M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.Remove(Alis.Core.Physic.Collision.ContactSystem.Contact)
+- markdown: Removes the c
+- code: internal void Remove(Contact c)
+- h4: Parameters
+- parameters:
+  - name: c
+    type:
+    - text: Contact
+      url: Alis.Core.Physic.Collision.ContactSystem.Contact.html
+    description: The
+- api3: ShouldBodiesCollide(Contact)
+  id: Alis_Core_Physic_Collision_ContactSystem_ContactManager_ShouldBodiesCollide_Alis_Core_Physic_Collision_ContactSystem_Contact_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L447
+  metadata:
+    uid: Alis.Core.Physic.Collision.ContactSystem.ContactManager.ShouldBodiesCollide(Alis.Core.Physic.Collision.ContactSystem.Contact)
+    commentId: M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.ShouldBodiesCollide(Alis.Core.Physic.Collision.ContactSystem.Contact)
+- markdown: Describes whether this instance should bodies collide
+- code: internal bool ShouldBodiesCollide(Contact c)
+- h4: Parameters
+- parameters:
+  - name: c
+    type:
+    - text: Contact
+      url: Alis.Core.Physic.Collision.ContactSystem.Contact.html
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: ShouldCollide(Fixture, Fixture)
+  id: Alis_Core_Physic_Collision_ContactSystem_ContactManager_ShouldCollide_Alis_Core_Physic_Dynamics_Fixture_Alis_Core_Physic_Dynamics_Fixture_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L616
+  metadata:
+    uid: Alis.Core.Physic.Collision.ContactSystem.ContactManager.ShouldCollide(Alis.Core.Physic.Dynamics.Fixture,Alis.Core.Physic.Dynamics.Fixture)
+    commentId: M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.ShouldCollide(Alis.Core.Physic.Dynamics.Fixture,Alis.Core.Physic.Dynamics.Fixture)
+- markdown: Describes whether should collide
+- code: internal static bool ShouldCollide(Fixture fixtureA, Fixture fixtureB)
+- h4: Parameters
+- parameters:
+  - name: fixtureA
+    type:
+    - text: Fixture
+      url: Alis.Core.Physic.Dynamics.Fixture.html
+    description: The fixture
+  - name: fixtureB
+    type:
+    - text: Fixture
+      url: Alis.Core.Physic.Dynamics.Fixture.html
+    description: The fixture
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The collide
+- api3: ShouldPersistContact(Contact)
+  id: Alis_Core_Physic_Collision_ContactSystem_ContactManager_ShouldPersistContact_Alis_Core_Physic_Collision_ContactSystem_Contact_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L419
+  metadata:
+    uid: Alis.Core.Physic.Collision.ContactSystem.ContactManager.ShouldPersistContact(Alis.Core.Physic.Collision.ContactSystem.Contact)
+    commentId: M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.ShouldPersistContact(Alis.Core.Physic.Collision.ContactSystem.Contact)
+- markdown: Describes whether this instance should persist contact
+- code: internal bool ShouldPersistContact(Contact c)
+- h4: Parameters
+- parameters:
+  - name: c
+    type:
+    - text: Contact
+      url: Alis.Core.Physic.Collision.ContactSystem.Contact.html
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The overlap
+- api3: ShouldProcessContact(Contact)
+  id: Alis_Core_Physic_Collision_ContactSystem_ContactManager_ShouldProcessContact_Alis_Core_Physic_Collision_ContactSystem_Contact_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L394
+  metadata:
+    uid: Alis.Core.Physic.Collision.ContactSystem.ContactManager.ShouldProcessContact(Alis.Core.Physic.Collision.ContactSystem.Contact)
+    commentId: M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.ShouldProcessContact(Alis.Core.Physic.Collision.ContactSystem.Contact)
+- markdown: Describes whether this instance should process contact
+- code: internal bool ShouldProcessContact(Contact c)
+- h4: Parameters
+- parameters:
+  - name: c
+    type:
+    - text: Contact
+      url: Alis.Core.Physic.Collision.ContactSystem.Contact.html
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: UpdateContactToi(Contact, ToiOutput)
+  id: Alis_Core_Physic_Collision_ContactSystem_ContactManager_UpdateContactToi_Alis_Core_Physic_Collision_ContactSystem_Contact_Alis_Core_Physic_Collision_TOI_ToiOutput_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L601
+  metadata:
+    uid: Alis.Core.Physic.Collision.ContactSystem.ContactManager.UpdateContactToi(Alis.Core.Physic.Collision.ContactSystem.Contact,Alis.Core.Physic.Collision.TOI.ToiOutput)
+    commentId: M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.UpdateContactToi(Alis.Core.Physic.Collision.ContactSystem.Contact,Alis.Core.Physic.Collision.TOI.ToiOutput)
+- markdown: Updates the contact toi using the specified c
+- code: internal void UpdateContactToi(Contact c, ToiOutput output)
+- h4: Parameters
+- parameters:
+  - name: c
+    type:
+    - text: Contact
+      url: Alis.Core.Physic.Collision.ContactSystem.Contact.html
+    description: The
+  - name: output
+    type:
+    - text: ToiOutput
+      url: Alis.Core.Physic.Collision.TOI.ToiOutput.html
+    description: The output
+languageId: csharp
+metadata:
+  description: The contact manager class

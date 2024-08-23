@@ -1,0 +1,522 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+      <title>Class ContactManager | Alis - Develop the video games of your dreams &#128175; free!! </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class ContactManager | Alis - Develop the video games of your dreams &#128175; free!! ">
+      
+      <meta name="description" content="The contact manager class">
+      <link rel="icon" href="../resources/logo.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ApiPage">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../resources/logo.png" alt="Alis">
+            Alis
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 class='section api' data-uid='Alis.Core.Physic.Collision.ContactSystem.ContactManager' data-commentid='T:Alis.Core.Physic.Collision.ContactSystem.ContactManager' id='Alis_Core_Physic_Collision_ContactSystem_ContactManager'>Class ContactManager    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L46'><i class='bi bi-code-slash'></i></a></h1>
+ <div class="facts text-secondary">
+<dl><dt>Namespace</dt><dd><a href='Alis.Core.Physic.Collision.ContactSystem.html'>Alis.Core.Physic.Collision.ContactSystem</a></dd></dl><dl><dt>Assembly</dt><dd>Alis.dll</dd></dl>
+</div><p>The contact manager class</p>
+<pre><code class='lang-csharp'>public class ContactManager</code></pre><h4 class='section'>Inheritance</h4><dl class="typelist inheritance"><dd>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object'>object</a>
+</div>
+<div>
+<a href='Alis.Core.Physic.Collision.ContactSystem.ContactManager.html'>ContactManager</a>
+</div>
+
+</dd></dl><h4 class='section'>Inherited Members</h4><dl class="typelist"><dd>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)'>object.Equals(object?)</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)'>object.Equals(object?, object?)</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.gethashcode'>object.GetHashCode()</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.gettype'>object.GetType()</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone'>object.MemberwiseClone()</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.referenceequals'>object.ReferenceEquals(object?, object?)</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.tostring'>object.ToString()</a>
+</div>
+
+</dd></dl><h2 class='section'>Constructors</h2><h3 class='section api' data-uid='Alis.Core.Physic.Collision.ContactSystem.ContactManager.#ctor(Alis.Core.Physic.Collision.BroadPhase.IBroadPhase)' data-commentid='M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.#ctor(Alis.Core.Physic.Collision.BroadPhase.IBroadPhase)' id='Alis_Core_Physic_Collision_ContactSystem_ContactManager__ctor_Alis_Core_Physic_Collision_BroadPhase_IBroadPhase_'>ContactManager(IBroadPhase)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L67'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Initializes a new instance of the <span class="xref">Alis.Core.Physic.Collision.ContactSystem.ContactManager</span> class</p>
+<pre><code class='lang-csharp'>internal ContactManager(IBroadPhase broadPhase)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>broadPhase</code> <a href='Alis.Core.Physic.Collision.BroadPhase.IBroadPhase.html'>IBroadPhase</a>  </dt>
+<dd>
+
+
+<p>The broad phase</p>
+
+</dd></dl><h2 class='section'>Fields</h2><h3 class='section api' data-uid='Alis.Core.Physic.Collision.ContactSystem.ContactManager.ContactPool' data-commentid='F:Alis.Core.Physic.Collision.ContactSystem.ContactManager.ContactPool' id='Alis_Core_Physic_Collision_ContactSystem_ContactManager_ContactPool'>ContactPool    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L56'><i class='bi bi-code-slash'></i></a></h3>
+ <p>The contact</p>
+<pre><code class='lang-csharp'>public readonly Queue&lt;Contact&gt; ContactPool</code></pre><h4 class='section'>Field Value</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.collections.generic.queue-1'>Queue</a>&lt;<a href='Alis.Core.Physic.Collision.ContactSystem.Contact.html'>Contact</a>&gt;  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Collision.ContactSystem.ContactManager.contactCounter' data-commentid='F:Alis.Core.Physic.Collision.ContactSystem.ContactManager.contactCounter' id='Alis_Core_Physic_Collision_ContactSystem_ContactManager_contactCounter'>contactCounter    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L61'><i class='bi bi-code-slash'></i></a></h3>
+ <p>The contact count</p>
+<pre><code class='lang-csharp'>internal int contactCounter</code></pre><h4 class='section'>Field Value</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Collision.ContactSystem.ContactManager.contactList' data-commentid='F:Alis.Core.Physic.Collision.ContactSystem.ContactManager.contactList' id='Alis_Core_Physic_Collision_ContactSystem_ContactManager_contactList'>contactList    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L51'><i class='bi bi-code-slash'></i></a></h3>
+ <p>The contact list</p>
+<pre><code class='lang-csharp'>internal readonly List&lt;Contact&gt; contactList</code></pre><h4 class='section'>Field Value</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1'>List</a>&lt;<a href='Alis.Core.Physic.Collision.ContactSystem.Contact.html'>Contact</a>&gt;  </dt>
+<dd>
+
+
+
+</dd></dl><h2 class='section'>Properties</h2><h3 class='section api' data-uid='Alis.Core.Physic.Collision.ContactSystem.ContactManager.BeginContact' data-commentid='P:Alis.Core.Physic.Collision.ContactSystem.ContactManager.BeginContact' id='Alis_Core_Physic_Collision_ContactSystem_ContactManager_BeginContact'>BeginContact    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L80'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Fires when a contact is created</p>
+<pre><code class='lang-csharp'>public BeginContactHandler BeginContact { get; }</code></pre><h4 class='section'>Property Value</h4><dl class='parameters'><dt> <a href='Alis.Core.Physic.Collision.Handlers.BeginContactHandler.html'>BeginContactHandler</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Collision.ContactSystem.ContactManager.BroadPhase' data-commentid='P:Alis.Core.Physic.Collision.ContactSystem.ContactManager.BroadPhase' id='Alis_Core_Physic_Collision_ContactSystem_ContactManager_BroadPhase'>BroadPhase    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L111'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Gets the value of the broad phase</p>
+<pre><code class='lang-csharp'>public IBroadPhase BroadPhase { get; }</code></pre><h4 class='section'>Property Value</h4><dl class='parameters'><dt> <a href='Alis.Core.Physic.Collision.BroadPhase.IBroadPhase.html'>IBroadPhase</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Collision.ContactSystem.ContactManager.ContactCount' data-commentid='P:Alis.Core.Physic.Collision.ContactSystem.ContactManager.ContactCount' id='Alis_Core_Physic_Collision_ContactSystem_ContactManager_ContactCount'>ContactCount    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L117'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Gets the value of the contact count</p>
+<pre><code class='lang-csharp'>public int ContactCount { get; }</code></pre><h4 class='section'>Property Value</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Collision.ContactSystem.ContactManager.ContactFilter' data-commentid='P:Alis.Core.Physic.Collision.ContactSystem.ContactManager.ContactFilter' id='Alis_Core_Physic_Collision_ContactSystem_ContactManager_ContactFilter'>ContactFilter    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L84'><i class='bi bi-code-slash'></i></a></h3>
+ <p>The filter used by the contact manager.</p>
+<pre><code class='lang-csharp'>public CollisionFilterHandler ContactFilter { get; }</code></pre><h4 class='section'>Property Value</h4><dl class='parameters'><dt> <a href='Alis.Core.Physic.Collision.Handlers.CollisionFilterHandler.html'>CollisionFilterHandler</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Collision.ContactSystem.ContactManager.Current' data-commentid='P:Alis.Core.Physic.Collision.ContactSystem.ContactManager.Current' id='Alis_Core_Physic_Collision_ContactSystem_ContactManager_Current'>Current    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L106'><i class='bi bi-code-slash'></i></a></h3>
+ <p>The dynamic tree broad phase</p>
+<pre><code class='lang-csharp'>public static ContactManager Current { get; internal set; }</code></pre><h4 class='section'>Property Value</h4><dl class='parameters'><dt> <a href='Alis.Core.Physic.Collision.ContactSystem.ContactManager.html'>ContactManager</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Collision.ContactSystem.ContactManager.EndContact' data-commentid='P:Alis.Core.Physic.Collision.ContactSystem.ContactManager.EndContact' id='Alis_Core_Physic_Collision_ContactSystem_ContactManager_EndContact'>EndContact    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L88'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Fires when a contact is deleted</p>
+<pre><code class='lang-csharp'>public EndContactHandler EndContact { get; }</code></pre><h4 class='section'>Property Value</h4><dl class='parameters'><dt> <a href='Alis.Core.Physic.Collision.Handlers.EndContactHandler.html'>EndContactHandler</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Collision.ContactSystem.ContactManager.LastMinAlpha' data-commentid='P:Alis.Core.Physic.Collision.ContactSystem.ContactManager.LastMinAlpha' id='Alis_Core_Physic_Collision_ContactSystem_ContactManager_LastMinAlpha'>LastMinAlpha    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L94'><i class='bi bi-code-slash'></i></a></h3>
+ <p>The last min alpha</p>
+<pre><code class='lang-csharp'>public float LastMinAlpha { get; internal set; }</code></pre><h4 class='section'>Property Value</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Collision.ContactSystem.ContactManager.OnBroadPhaseCollision' data-commentid='P:Alis.Core.Physic.Collision.ContactSystem.ContactManager.OnBroadPhaseCollision' id='Alis_Core_Physic_Collision_ContactSystem_ContactManager_OnBroadPhaseCollision'>OnBroadPhaseCollision    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L76'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Fires when the broadphase detects that two Fixtures are close to each other.</p>
+<pre><code class='lang-csharp'>public BroadPhaseHandler OnBroadPhaseCollision { get; }</code></pre><h4 class='section'>Property Value</h4><dl class='parameters'><dt> <a href='Alis.Core.Physic.Collision.Handlers.BroadPhaseHandler.html'>BroadPhaseHandler</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Collision.ContactSystem.ContactManager.PostSolve' data-commentid='P:Alis.Core.Physic.Collision.ContactSystem.ContactManager.PostSolve' id='Alis_Core_Physic_Collision_ContactSystem_ContactManager_PostSolve'>PostSolve    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L97'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Fires after the solver has run</p>
+<pre><code class='lang-csharp'>public PostSolveHandler PostSolve { get; set; }</code></pre><h4 class='section'>Property Value</h4><dl class='parameters'><dt> <a href='Alis.Core.Physic.Dynamics.Handlers.PostSolveHandler.html'>PostSolveHandler</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Collision.ContactSystem.ContactManager.PreSolve' data-commentid='P:Alis.Core.Physic.Collision.ContactSystem.ContactManager.PreSolve' id='Alis_Core_Physic_Collision_ContactSystem_ContactManager_PreSolve'>PreSolve    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L101'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Fires before the solver runs</p>
+<pre><code class='lang-csharp'>public PreSolveHandler PreSolve { get; }</code></pre><h4 class='section'>Property Value</h4><dl class='parameters'><dt> <a href='Alis.Core.Physic.Dynamics.Handlers.PreSolveHandler.html'>PreSolveHandler</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h2 class='section'>Methods</h2><h3 class='section api' data-uid='Alis.Core.Physic.Collision.ContactSystem.ContactManager.AddPair(Alis.Core.Physic.Dynamics.FixtureProxy@,Alis.Core.Physic.Dynamics.FixtureProxy@)' data-commentid='M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.AddPair(Alis.Core.Physic.Dynamics.FixtureProxy@,Alis.Core.Physic.Dynamics.FixtureProxy@)' id='Alis_Core_Physic_Collision_ContactSystem_ContactManager_AddPair_Alis_Core_Physic_Dynamics_FixtureProxy__Alis_Core_Physic_Dynamics_FixtureProxy__'>AddPair(ref FixtureProxy, ref FixtureProxy)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L124'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Adds the pair using the specified proxy a</p>
+<pre><code class='lang-csharp'>internal void AddPair(ref FixtureProxy proxyA, ref FixtureProxy proxyB)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>proxyA</code> <a href='Alis.Core.Physic.Dynamics.FixtureProxy.html'>FixtureProxy</a>  </dt>
+<dd>
+
+
+<p>The proxy</p>
+
+</dd><dt><code>proxyB</code> <a href='Alis.Core.Physic.Dynamics.FixtureProxy.html'>FixtureProxy</a>  </dt>
+<dd>
+
+
+<p>The proxy</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Collision.ContactSystem.ContactManager.AdjustSweeps(Alis.Core.Physic.Collision.ContactSystem.Contact)' data-commentid='M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.AdjustSweeps(Alis.Core.Physic.Collision.ContactSystem.Contact)' id='Alis_Core_Physic_Collision_ContactSystem_ContactManager_AdjustSweeps_Alis_Core_Physic_Collision_ContactSystem_Contact_'>AdjustSweeps(Contact)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L556'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Adjusts the sweeps using the specified c</p>
+<pre><code class='lang-csharp'>internal void AdjustSweeps(Contact c)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>c</code> <a href='Alis.Core.Physic.Collision.ContactSystem.Contact.html'>Contact</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Collision.ContactSystem.ContactManager.CalculateMinAlpha' data-commentid='M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.CalculateMinAlpha' id='Alis_Core_Physic_Collision_ContactSystem_ContactManager_CalculateMinAlpha'>CalculateMinAlpha()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L644'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Calculates the min alpha</p>
+<pre><code class='lang-csharp'>public float CalculateMinAlpha()</code></pre><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The float</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Collision.ContactSystem.ContactManager.CheckExistingContact(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Fixture,Alis.Core.Physic.Dynamics.Fixture,System.Int32,System.Int32)' data-commentid='M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.CheckExistingContact(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Fixture,Alis.Core.Physic.Dynamics.Fixture,System.Int32,System.Int32)' id='Alis_Core_Physic_Collision_ContactSystem_ContactManager_CheckExistingContact_Alis_Core_Physic_Dynamics_Body_Alis_Core_Physic_Dynamics_Body_Alis_Core_Physic_Dynamics_Fixture_Alis_Core_Physic_Dynamics_Fixture_System_Int32_System_Int32_'>CheckExistingContact(Body, Body, Fixture, Fixture, int, int)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L190'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Describes whether this instance check existing contact</p>
+<pre><code class='lang-csharp'>internal bool CheckExistingContact(Body bodyA, Body bodyB, Fixture fixtureA, Fixture fixtureB, int indexA, int indexB)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>bodyA</code> <a href='Alis.Core.Physic.Dynamics.Body.html'>Body</a>  </dt>
+<dd>
+
+
+<p>The body</p>
+
+</dd><dt><code>bodyB</code> <a href='Alis.Core.Physic.Dynamics.Body.html'>Body</a>  </dt>
+<dd>
+
+
+<p>The body</p>
+
+</dd><dt><code>fixtureA</code> <a href='Alis.Core.Physic.Dynamics.Fixture.html'>Fixture</a>  </dt>
+<dd>
+
+
+<p>The fixture</p>
+
+</dd><dt><code>fixtureB</code> <a href='Alis.Core.Physic.Dynamics.Fixture.html'>Fixture</a>  </dt>
+<dd>
+
+
+<p>The fixture</p>
+
+</dd><dt><code>indexA</code> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+<p>The index</p>
+
+</dd><dt><code>indexB</code> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+<p>The index</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+<p>The bool</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Collision.ContactSystem.ContactManager.ClearFlags' data-commentid='M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.ClearFlags' id='Alis_Core_Physic_Collision_ContactSystem_ContactManager_ClearFlags'>ClearFlags()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L633'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Clears the flags</p>
+<pre><code class='lang-csharp'>internal void ClearFlags()</code></pre><h3 class='section api' data-uid='Alis.Core.Physic.Collision.ContactSystem.ContactManager.Collide' data-commentid='M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.Collide' id='Alis_Core_Physic_Collision_ContactSystem_ContactManager_Collide'>Collide()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L367'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Collides this instance</p>
+<pre><code class='lang-csharp'>internal void Collide()</code></pre><h3 class='section api' data-uid='Alis.Core.Physic.Collision.ContactSystem.ContactManager.ComputeTimeOfImpact(Alis.Core.Physic.Collision.ContactSystem.Contact)' data-commentid='M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.ComputeTimeOfImpact(Alis.Core.Physic.Collision.ContactSystem.Contact)' id='Alis_Core_Physic_Collision_ContactSystem_ContactManager_ComputeTimeOfImpact_Alis_Core_Physic_Collision_ContactSystem_Contact_'>ComputeTimeOfImpact(Contact)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L580'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Computes the time of impact using the specified c</p>
+<pre><code class='lang-csharp'>internal ToiOutput ComputeTimeOfImpact(Contact c)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>c</code> <a href='Alis.Core.Physic.Collision.ContactSystem.Contact.html'>Contact</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='Alis.Core.Physic.Collision.TOI.ToiOutput.html'>ToiOutput</a>  </dt>
+<dd>
+
+
+<p>The output</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Collision.ContactSystem.ContactManager.CreateContact(Alis.Core.Physic.Dynamics.Fixture,System.Int32,Alis.Core.Physic.Dynamics.Fixture,System.Int32)' data-commentid='M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.CreateContact(Alis.Core.Physic.Dynamics.Fixture,System.Int32,Alis.Core.Physic.Dynamics.Fixture,System.Int32)' id='Alis_Core_Physic_Collision_ContactSystem_ContactManager_CreateContact_Alis_Core_Physic_Dynamics_Fixture_System_Int32_Alis_Core_Physic_Dynamics_Fixture_System_Int32_'>CreateContact(Fixture, int, Fixture, int)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L228'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Creates the contact using the specified fixture a</p>
+<pre><code class='lang-csharp'>internal void CreateContact(Fixture fixtureA, int indexA, Fixture fixtureB, int indexB)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>fixtureA</code> <a href='Alis.Core.Physic.Dynamics.Fixture.html'>Fixture</a>  </dt>
+<dd>
+
+
+<p>The fixture</p>
+
+</dd><dt><code>indexA</code> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+<p>The index</p>
+
+</dd><dt><code>fixtureB</code> <a href='Alis.Core.Physic.Dynamics.Fixture.html'>Fixture</a>  </dt>
+<dd>
+
+
+<p>The fixture</p>
+
+</dd><dt><code>indexB</code> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+<p>The index</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Collision.ContactSystem.ContactManager.FindNewContacts' data-commentid='M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.FindNewContacts' id='Alis_Core_Physic_Collision_ContactSystem_ContactManager_FindNewContacts'>FindNewContacts()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L274'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Finds the new contacts</p>
+<pre><code class='lang-csharp'>internal void FindNewContacts()</code></pre><h3 class='section api' data-uid='Alis.Core.Physic.Collision.ContactSystem.ContactManager.GetTheMinContact(System.Single)' data-commentid='M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.GetTheMinContact(System.Single)' id='Alis_Core_Physic_Collision_ContactSystem_ContactManager_GetTheMinContact_System_Single_'>GetTheMinContact(float)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L479'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Gets the the min contact using the specified min alpha</p>
+<pre><code class='lang-csharp'>internal Contact GetTheMinContact(float minAlpha)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>minAlpha</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The min alpha</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='Alis.Core.Physic.Collision.ContactSystem.Contact.html'>Contact</a>  </dt>
+<dd>
+
+
+<p>The contact</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Collision.ContactSystem.ContactManager.InvalidateToi' data-commentid='M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.InvalidateToi' id='Alis_Core_Physic_Collision_ContactSystem_ContactManager_InvalidateToi'>InvalidateToi()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L638'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Invalidates the toi</p>
+<pre><code class='lang-csharp'>public void InvalidateToi()</code></pre><h3 class='section api' data-uid='Alis.Core.Physic.Collision.ContactSystem.ContactManager.IsActiveContact(Alis.Core.Physic.Collision.ContactSystem.Contact)' data-commentid='M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.IsActiveContact(Alis.Core.Physic.Collision.ContactSystem.Contact)' id='Alis_Core_Physic_Collision_ContactSystem_ContactManager_IsActiveContact_Alis_Core_Physic_Collision_ContactSystem_Contact_'>IsActiveContact(Contact)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L523'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Describes whether this instance is active contact</p>
+<pre><code class='lang-csharp'>internal bool IsActiveContact(Contact c)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>c</code> <a href='Alis.Core.Physic.Collision.ContactSystem.Contact.html'>Contact</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+<p>The bool</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Collision.ContactSystem.ContactManager.IsCollidableContact(Alis.Core.Physic.Collision.ContactSystem.Contact)' data-commentid='M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.IsCollidableContact(Alis.Core.Physic.Collision.ContactSystem.Contact)' id='Alis_Core_Physic_Collision_ContactSystem_ContactManager_IsCollidableContact_Alis_Core_Physic_Collision_ContactSystem_Contact_'>IsCollidableContact(Contact)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L539'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Describes whether this instance is collidable contact</p>
+<pre><code class='lang-csharp'>internal bool IsCollidableContact(Contact c)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>c</code> <a href='Alis.Core.Physic.Collision.ContactSystem.Contact.html'>Contact</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+<p>The bool</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Collision.ContactSystem.ContactManager.IsSensorContact(Alis.Core.Physic.Collision.ContactSystem.Contact)' data-commentid='M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.IsSensorContact(Alis.Core.Physic.Collision.ContactSystem.Contact)' id='Alis_Core_Physic_Collision_ContactSystem_ContactManager_IsSensorContact_Alis_Core_Physic_Collision_ContactSystem_Contact_'>IsSensorContact(Contact)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L516'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Describes whether this instance is sensor contact</p>
+<pre><code class='lang-csharp'>internal bool IsSensorContact(Contact c)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>c</code> <a href='Alis.Core.Physic.Collision.ContactSystem.Contact.html'>Contact</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+<p>The bool</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Collision.ContactSystem.ContactManager.IsValidCachedToi(Alis.Core.Physic.Collision.ContactSystem.Contact)' data-commentid='M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.IsValidCachedToi(Alis.Core.Physic.Collision.ContactSystem.Contact)' id='Alis_Core_Physic_Collision_ContactSystem_ContactManager_IsValidCachedToi_Alis_Core_Physic_Collision_ContactSystem_Contact_'>IsValidCachedToi(Contact)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L509'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Describes whether this instance is valid cached toi</p>
+<pre><code class='lang-csharp'>internal bool IsValidCachedToi(Contact c)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>c</code> <a href='Alis.Core.Physic.Collision.ContactSystem.Contact.html'>Contact</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+<p>The bool</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Collision.ContactSystem.ContactManager.Remove(Alis.Core.Physic.Collision.ContactSystem.Contact)' data-commentid='M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.Remove(Alis.Core.Physic.Collision.ContactSystem.Contact)' id='Alis_Core_Physic_Collision_ContactSystem_ContactManager_Remove_Alis_Core_Physic_Collision_ContactSystem_Contact_'>Remove(Contact)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L283'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Removes the c</p>
+<pre><code class='lang-csharp'>internal void Remove(Contact c)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>c</code> <a href='Alis.Core.Physic.Collision.ContactSystem.Contact.html'>Contact</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Collision.ContactSystem.ContactManager.ShouldBodiesCollide(Alis.Core.Physic.Collision.ContactSystem.Contact)' data-commentid='M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.ShouldBodiesCollide(Alis.Core.Physic.Collision.ContactSystem.Contact)' id='Alis_Core_Physic_Collision_ContactSystem_ContactManager_ShouldBodiesCollide_Alis_Core_Physic_Collision_ContactSystem_Contact_'>ShouldBodiesCollide(Contact)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L447'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Describes whether this instance should bodies collide</p>
+<pre><code class='lang-csharp'>internal bool ShouldBodiesCollide(Contact c)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>c</code> <a href='Alis.Core.Physic.Collision.ContactSystem.Contact.html'>Contact</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+<p>The bool</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Collision.ContactSystem.ContactManager.ShouldCollide(Alis.Core.Physic.Dynamics.Fixture,Alis.Core.Physic.Dynamics.Fixture)' data-commentid='M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.ShouldCollide(Alis.Core.Physic.Dynamics.Fixture,Alis.Core.Physic.Dynamics.Fixture)' id='Alis_Core_Physic_Collision_ContactSystem_ContactManager_ShouldCollide_Alis_Core_Physic_Dynamics_Fixture_Alis_Core_Physic_Dynamics_Fixture_'>ShouldCollide(Fixture, Fixture)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L616'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Describes whether should collide</p>
+<pre><code class='lang-csharp'>internal static bool ShouldCollide(Fixture fixtureA, Fixture fixtureB)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>fixtureA</code> <a href='Alis.Core.Physic.Dynamics.Fixture.html'>Fixture</a>  </dt>
+<dd>
+
+
+<p>The fixture</p>
+
+</dd><dt><code>fixtureB</code> <a href='Alis.Core.Physic.Dynamics.Fixture.html'>Fixture</a>  </dt>
+<dd>
+
+
+<p>The fixture</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+<p>The collide</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Collision.ContactSystem.ContactManager.ShouldPersistContact(Alis.Core.Physic.Collision.ContactSystem.Contact)' data-commentid='M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.ShouldPersistContact(Alis.Core.Physic.Collision.ContactSystem.Contact)' id='Alis_Core_Physic_Collision_ContactSystem_ContactManager_ShouldPersistContact_Alis_Core_Physic_Collision_ContactSystem_Contact_'>ShouldPersistContact(Contact)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L419'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Describes whether this instance should persist contact</p>
+<pre><code class='lang-csharp'>internal bool ShouldPersistContact(Contact c)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>c</code> <a href='Alis.Core.Physic.Collision.ContactSystem.Contact.html'>Contact</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+<p>The overlap</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Collision.ContactSystem.ContactManager.ShouldProcessContact(Alis.Core.Physic.Collision.ContactSystem.Contact)' data-commentid='M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.ShouldProcessContact(Alis.Core.Physic.Collision.ContactSystem.Contact)' id='Alis_Core_Physic_Collision_ContactSystem_ContactManager_ShouldProcessContact_Alis_Core_Physic_Collision_ContactSystem_Contact_'>ShouldProcessContact(Contact)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L394'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Describes whether this instance should process contact</p>
+<pre><code class='lang-csharp'>internal bool ShouldProcessContact(Contact c)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>c</code> <a href='Alis.Core.Physic.Collision.ContactSystem.Contact.html'>Contact</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+<p>The bool</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Collision.ContactSystem.ContactManager.UpdateContactToi(Alis.Core.Physic.Collision.ContactSystem.Contact,Alis.Core.Physic.Collision.TOI.ToiOutput)' data-commentid='M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.UpdateContactToi(Alis.Core.Physic.Collision.ContactSystem.Contact,Alis.Core.Physic.Collision.TOI.ToiOutput)' id='Alis_Core_Physic_Collision_ContactSystem_ContactManager_UpdateContactToi_Alis_Core_Physic_Collision_ContactSystem_Contact_Alis_Core_Physic_Collision_TOI_ToiOutput_'>UpdateContactToi(Contact, ToiOutput)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactManager.cs#L601'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Updates the contact toi using the specified c</p>
+<pre><code class='lang-csharp'>internal void UpdateContactToi(Contact c, ToiOutput output)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>c</code> <a href='Alis.Core.Physic.Collision.ContactSystem.Contact.html'>Contact</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>output</code> <a href='Alis.Core.Physic.Collision.TOI.ToiOutput.html'>ToiOutput</a>  </dt>
+<dd>
+
+
+<p>The output</p>
+
+</dd></dl>
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Alis - Develop the video games of your dreams 💯 free!! on Windows, MacOS, Linux, Android(soon), IOS(soon).
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,88 @@
+### YamlMime:ApiPage
+title: Struct EpAxis
+body:
+- api1: Struct EpAxis
+  id: Alis_Core_Physic_Collision_NarrowPhase_EpAxis
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/EPAxis.cs#L35
+  metadata:
+    uid: Alis.Core.Physic.Collision.NarrowPhase.EpAxis
+    commentId: T:Alis.Core.Physic.Collision.NarrowPhase.EpAxis
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Physic.Collision.NarrowPhase
+      url: Alis.Core.Physic.Collision.NarrowPhase.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: This structure is used to keep track of the best separating axis.
+- code: public struct EpAxis
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Properties
+- api3: Index
+  id: Alis_Core_Physic_Collision_NarrowPhase_EpAxis_Index
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/EPAxis.cs#L45
+  metadata:
+    uid: Alis.Core.Physic.Collision.NarrowPhase.EpAxis.Index
+    commentId: P:Alis.Core.Physic.Collision.NarrowPhase.EpAxis.Index
+- markdown: The index
+- code: public int Index { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: Normal
+  id: Alis_Core_Physic_Collision_NarrowPhase_EpAxis_Normal
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/EPAxis.cs#L40
+  metadata:
+    uid: Alis.Core.Physic.Collision.NarrowPhase.EpAxis.Normal
+    commentId: P:Alis.Core.Physic.Collision.NarrowPhase.EpAxis.Normal
+- markdown: The normal
+- code: public Vector2 Normal { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: Separation
+  id: Alis_Core_Physic_Collision_NarrowPhase_EpAxis_Separation
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/EPAxis.cs#L50
+  metadata:
+    uid: Alis.Core.Physic.Collision.NarrowPhase.EpAxis.Separation
+    commentId: P:Alis.Core.Physic.Collision.NarrowPhase.EpAxis.Separation
+- markdown: The separation
+- code: public float Separation { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: Type
+  id: Alis_Core_Physic_Collision_NarrowPhase_EpAxis_Type
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/EPAxis.cs#L55
+  metadata:
+    uid: Alis.Core.Physic.Collision.NarrowPhase.EpAxis.Type
+    commentId: P:Alis.Core.Physic.Collision.NarrowPhase.EpAxis.Type
+- markdown: The type
+- code: public EpAxisType Type { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: EpAxisType
+      url: Alis.Core.Physic.Collision.NarrowPhase.EpAxisType.html
+languageId: csharp
+metadata:
+  description: This structure is used to keep track of the best separating axis.

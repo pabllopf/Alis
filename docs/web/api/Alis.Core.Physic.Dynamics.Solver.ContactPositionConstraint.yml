@@ -1,0 +1,240 @@
+### YamlMime:ApiPage
+title: Class ContactPositionConstraint
+body:
+- api1: Class ContactPositionConstraint
+  id: Alis_Core_Physic_Dynamics_Solver_ContactPositionConstraint
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactPositionConstraint.cs#L39
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint
+    commentId: T:Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Physic.Dynamics.Solver
+      url: Alis.Core.Physic.Dynamics.Solver.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The contact position constraint class
+- code: public sealed class ContactPositionConstraint
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: ContactPositionConstraint
+    url: Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Fields
+- api3: LocalPoints
+  id: Alis_Core_Physic_Dynamics_Solver_ContactPositionConstraint_LocalPoints
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactPositionConstraint.cs#L44
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint.LocalPoints
+    commentId: F:Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint.LocalPoints
+- markdown: The max manifold points
+- code: public Vector2[] LocalPoints
+- h4: Field Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    - '['
+    - ']'
+- h2: Properties
+- api3: IndexA
+  id: Alis_Core_Physic_Dynamics_Solver_ContactPositionConstraint_IndexA
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactPositionConstraint.cs#L49
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint.IndexA
+    commentId: P:Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint.IndexA
+- markdown: The index
+- code: public int IndexA { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: IndexB
+  id: Alis_Core_Physic_Dynamics_Solver_ContactPositionConstraint_IndexB
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactPositionConstraint.cs#L54
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint.IndexB
+    commentId: P:Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint.IndexB
+- markdown: The index
+- code: public int IndexB { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: InvIa
+  id: Alis_Core_Physic_Dynamics_Solver_ContactPositionConstraint_InvIa
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactPositionConstraint.cs#L59
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint.InvIa
+    commentId: P:Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint.InvIa
+- markdown: The inv ib
+- code: public float InvIa { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: InvIb
+  id: Alis_Core_Physic_Dynamics_Solver_ContactPositionConstraint_InvIb
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactPositionConstraint.cs#L64
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint.InvIb
+    commentId: P:Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint.InvIb
+- markdown: The inv ib
+- code: public float InvIb { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: InvMassA
+  id: Alis_Core_Physic_Dynamics_Solver_ContactPositionConstraint_InvMassA
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactPositionConstraint.cs#L69
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint.InvMassA
+    commentId: P:Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint.InvMassA
+- markdown: The inv mass
+- code: public float InvMassA { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: InvMassB
+  id: Alis_Core_Physic_Dynamics_Solver_ContactPositionConstraint_InvMassB
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactPositionConstraint.cs#L74
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint.InvMassB
+    commentId: P:Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint.InvMassB
+- markdown: The inv mass
+- code: public float InvMassB { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: LocalCenterA
+  id: Alis_Core_Physic_Dynamics_Solver_ContactPositionConstraint_LocalCenterA
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactPositionConstraint.cs#L79
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint.LocalCenterA
+    commentId: P:Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint.LocalCenterA
+- markdown: The local center
+- code: public Vector2 LocalCenterA { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: LocalCenterB
+  id: Alis_Core_Physic_Dynamics_Solver_ContactPositionConstraint_LocalCenterB
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactPositionConstraint.cs#L84
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint.LocalCenterB
+    commentId: P:Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint.LocalCenterB
+- markdown: The local center
+- code: public Vector2 LocalCenterB { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: LocalNormal
+  id: Alis_Core_Physic_Dynamics_Solver_ContactPositionConstraint_LocalNormal
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactPositionConstraint.cs#L89
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint.LocalNormal
+    commentId: P:Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint.LocalNormal
+- markdown: The local normal
+- code: public Vector2 LocalNormal { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: LocalPoint
+  id: Alis_Core_Physic_Dynamics_Solver_ContactPositionConstraint_LocalPoint
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactPositionConstraint.cs#L94
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint.LocalPoint
+    commentId: P:Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint.LocalPoint
+- markdown: The local point
+- code: public Vector2 LocalPoint { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: PointCount
+  id: Alis_Core_Physic_Dynamics_Solver_ContactPositionConstraint_PointCount
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactPositionConstraint.cs#L99
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint.PointCount
+    commentId: P:Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint.PointCount
+- markdown: The point count
+- code: public int PointCount { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: RadiusA
+  id: Alis_Core_Physic_Dynamics_Solver_ContactPositionConstraint_RadiusA
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactPositionConstraint.cs#L104
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint.RadiusA
+    commentId: P:Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint.RadiusA
+- markdown: The radius
+- code: public float RadiusA { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: RadiusB
+  id: Alis_Core_Physic_Dynamics_Solver_ContactPositionConstraint_RadiusB
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactPositionConstraint.cs#L109
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint.RadiusB
+    commentId: P:Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint.RadiusB
+- markdown: The radius
+- code: public float RadiusB { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: Type
+  id: Alis_Core_Physic_Dynamics_Solver_ContactPositionConstraint_Type
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/ContactPositionConstraint.cs#L114
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint.Type
+    commentId: P:Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint.Type
+- markdown: The type
+- code: public ManifoldType Type { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: ManifoldType
+      url: Alis.Core.Physic.Collision.NarrowPhase.ManifoldType.html
+languageId: csharp
+metadata:
+  description: The contact position constraint class

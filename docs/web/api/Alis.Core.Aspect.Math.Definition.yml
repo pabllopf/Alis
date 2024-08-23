@@ -1,0 +1,19 @@
+### YamlMime:ApiPage
+title: Namespace Alis.Core.Aspect.Math.Definition
+body:
+- api1: Namespace Alis.Core.Aspect.Math.Definition
+  id: Alis_Core_Aspect_Math_Definition
+  metadata:
+    uid: Alis.Core.Aspect.Math.Definition
+    commentId: N:Alis.Core.Aspect.Math.Definition
+- h3: Structs
+- parameters:
+  - type:
+      text: Color
+      url: Alis.Core.Aspect.Math.Definition.Color.html
+    description: The color
+  - type:
+      text: Depth
+      url: Alis.Core.Aspect.Math.Definition.Depth.html
+    description: The depth
+languageId: csharp

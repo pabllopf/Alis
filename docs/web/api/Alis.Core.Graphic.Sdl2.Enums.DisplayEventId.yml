@@ -1,0 +1,43 @@
+### YamlMime:ApiPage
+title: Enum DisplayEventId
+body:
+- api1: Enum DisplayEventId
+  id: Alis_Core_Graphic_Sdl2_Enums_DisplayEventId
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Enums/DisplayEventId.cs#L35
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Enums.DisplayEventId
+    commentId: T:Alis.Core.Graphic.Sdl2.Enums.DisplayEventId
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Enums
+      url: Alis.Core.Graphic.Sdl2.Enums.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The sdl display event id enum
+- code: 'public enum DisplayEventId : byte'
+- h2: Fields
+- parameters:
+  - name: SdlDisplayEventNone
+    default: "0"
+    description: >+
+      The sdl display event none sdl display event id
+
+  - name: SdlDisplayEventOrientation
+    default: "1"
+    description: >+
+      The sdl display event orientation sdl display event id
+
+  - name: SdlDisplayEventConnected
+    default: "2"
+    description: >+
+      The sdl display event connected sdl display event id
+
+  - name: SdlDisplayEventDisconnected
+    default: "3"
+    description: >+
+      The sdl display event disconnected sdl display event id
+
+languageId: csharp
+metadata:
+  description: The sdl display event id enum

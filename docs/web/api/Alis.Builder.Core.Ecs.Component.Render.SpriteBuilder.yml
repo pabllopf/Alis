@@ -1,0 +1,129 @@
+### YamlMime:ApiPage
+title: Class SpriteBuilder
+body:
+- api1: Class SpriteBuilder
+  id: Alis_Builder_Core_Ecs_Component_Render_SpriteBuilder
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Builder/Core/Ecs/Component/Render/SpriteBuilder.cs#L40
+  metadata:
+    uid: Alis.Builder.Core.Ecs.Component.Render.SpriteBuilder
+    commentId: T:Alis.Builder.Core.Ecs.Component.Render.SpriteBuilder
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Builder.Core.Ecs.Component.Render
+      url: Alis.Builder.Core.Ecs.Component.Render.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The sprite builder class
+- code: 'public class SpriteBuilder : IBuild<Sprite>, IDepth<SpriteBuilder, int>, ISetTexture<SpriteBuilder, string>'
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: SpriteBuilder
+    url: Alis.Builder.Core.Ecs.Component.Render.SpriteBuilder.html
+- h4: Implements
+- list:
+  - text: IBuild<Sprite>
+    url: Alis.Core.Aspect.Fluent.IBuild-1.html
+  - text: IDepth<SpriteBuilder, int>
+    url: Alis.Core.Aspect.Fluent.Words.IDepth-2.html
+  - text: ISetTexture<SpriteBuilder, string>
+    url: Alis.Core.Aspect.Fluent.Words.ISetTexture-2.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Fields
+- api3: sprite
+  id: Alis_Builder_Core_Ecs_Component_Render_SpriteBuilder_sprite
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Builder/Core/Ecs/Component/Render/SpriteBuilder.cs#L48
+  metadata:
+    uid: Alis.Builder.Core.Ecs.Component.Render.SpriteBuilder.sprite
+    commentId: F:Alis.Builder.Core.Ecs.Component.Render.SpriteBuilder.sprite
+- markdown: The sprite
+- code: private readonly Sprite sprite
+- h4: Field Value
+- parameters:
+  - type:
+    - text: Sprite
+      url: Alis.Core.Ecs.Component.Render.Sprite.html
+- h2: Methods
+- api3: Build()
+  id: Alis_Builder_Core_Ecs_Component_Render_SpriteBuilder_Build
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Builder/Core/Ecs/Component/Render/SpriteBuilder.cs#L54
+  metadata:
+    uid: Alis.Builder.Core.Ecs.Component.Render.SpriteBuilder.Build
+    commentId: M:Alis.Builder.Core.Ecs.Component.Render.SpriteBuilder.Build
+- markdown: Builds this instance
+- code: public Sprite Build()
+- h4: Returns
+- parameters:
+  - type:
+    - text: Sprite
+      url: Alis.Core.Ecs.Component.Render.Sprite.html
+    description: The sprite
+- api3: Depth(int)
+  id: Alis_Builder_Core_Ecs_Component_Render_SpriteBuilder_Depth_System_Int32_
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Builder/Core/Ecs/Component/Render/SpriteBuilder.cs#L61
+  metadata:
+    uid: Alis.Builder.Core.Ecs.Component.Render.SpriteBuilder.Depth(System.Int32)
+    commentId: M:Alis.Builder.Core.Ecs.Component.Render.SpriteBuilder.Depth(System.Int32)
+- markdown: Depths the value
+- code: public SpriteBuilder Depth(int value)
+- h4: Parameters
+- parameters:
+  - name: value
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - text: SpriteBuilder
+      url: Alis.Builder.Core.Ecs.Component.Render.SpriteBuilder.html
+    description: The sprite builder
+- api3: SetTexture(string)
+  id: Alis_Builder_Core_Ecs_Component_Render_SpriteBuilder_SetTexture_System_String_
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Builder/Core/Ecs/Component/Render/SpriteBuilder.cs#L72
+  metadata:
+    uid: Alis.Builder.Core.Ecs.Component.Render.SpriteBuilder.SetTexture(System.String)
+    commentId: M:Alis.Builder.Core.Ecs.Component.Render.SpriteBuilder.SetTexture(System.String)
+- markdown: Textures the value
+- code: public SpriteBuilder SetTexture(string value)
+- h4: Parameters
+- parameters:
+  - name: value
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - text: SpriteBuilder
+      url: Alis.Builder.Core.Ecs.Component.Render.SpriteBuilder.html
+    description: The sprite builder
+- h2: See Also
+- list:
+  - - text: IBuild
+      url: Alis.Core.Aspect.Fluent.IBuild-1.html
+    - <
+    - TOrigin
+    - '>'
+languageId: csharp
+metadata:
+  description: The sprite builder class

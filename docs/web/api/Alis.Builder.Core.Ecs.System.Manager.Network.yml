@@ -1,0 +1,15 @@
+### YamlMime:ApiPage
+title: Namespace Alis.Builder.Core.Ecs.System.Manager.Network
+body:
+- api1: Namespace Alis.Builder.Core.Ecs.System.Manager.Network
+  id: Alis_Builder_Core_Ecs_System_Manager_Network
+  metadata:
+    uid: Alis.Builder.Core.Ecs.System.Manager.Network
+    commentId: N:Alis.Builder.Core.Ecs.System.Manager.Network
+- h3: Classes
+- parameters:
+  - type:
+      text: NetworkManagerBuilder
+      url: Alis.Builder.Core.Ecs.System.Manager.Network.NetworkManagerBuilder.html
+    description: The scene manager builder class
+languageId: csharp

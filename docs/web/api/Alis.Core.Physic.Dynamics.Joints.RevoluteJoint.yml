@@ -1,0 +1,971 @@
+### YamlMime:ApiPage
+title: Class RevoluteJoint
+body:
+- api1: Class RevoluteJoint
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L58
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint
+    commentId: T:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Physic.Dynamics.Joints
+      url: Alis.Core.Physic.Dynamics.Joints.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: >-
+    A revolute joint constrains to bodies to share a common point while they are free to rotate about the point.
+
+    The relative rotation about the shared point is the joint angle. You can limit the relative rotation with a joint
+
+    limit
+
+    that specifies a lower and upper angle. You can use a motor to drive the relative rotation about the shared point.
+
+    A
+
+    maximum motor torque is provided so that infinite forces are not generated.
+
+    Point-to-point constraint
+
+    C = p2 - p1
+
+    dot = v2 - v1
+
+    = v2 + cross(w2, r2) - v1 - cross(w1, r1)
+
+    J = [-I -r1_skew I r2_skew ]
+
+    Identity used:
+
+    w k % (rx i + ry j) = w * (-ry i + rx j)
+
+    Motor constraint
+
+    dot = w2 - w1
+
+    J = [0 0 -1 0 0 1]
+
+    K = invI1 + invI2
+- code: 'public class RevoluteJoint : Joint'
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: Joint
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html
+  - text: RevoluteJoint
+    url: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.html
+- h4: Inherited Members
+- list:
+  - text: Joint._jointType
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint__jointType
+  - text: Joint.EdgeA
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_EdgeA
+  - text: Joint.EdgeB
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_EdgeB
+  - text: Joint.IslandFlag
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_IslandFlag
+  - text: Joint.JointType
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_JointType
+  - text: Joint.Enabled
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_Enabled
+  - text: Joint.BodyA
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_BodyA
+  - text: Joint.BodyB
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_BodyB
+  - text: Joint.WorldAnchorA
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_WorldAnchorA
+  - text: Joint.WorldAnchorB
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_WorldAnchorB
+  - text: Joint.UserData
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_UserData
+  - text: Joint.CollideConnected
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_CollideConnected
+  - text: Joint.Breakpoint
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_Breakpoint
+  - text: Joint.Broke
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_Broke
+  - text: Joint.GetReactionForce(float)
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_GetReactionForce_System_Single_
+  - text: Joint.GetReactionTorque(float)
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_GetReactionTorque_System_Single_
+  - text: Joint.ShiftOrigin(ref Vector2)
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_ShiftOrigin_Alis_Core_Aspect_Math_Vector_Vector2__
+  - text: Joint.WakeBodies()
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_WakeBodies
+  - text: Joint.IsFixedType()
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_IsFixedType
+  - text: Joint.InitVelocityConstraints(ref SolverData)
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_InitVelocityConstraints_Alis_Core_Physic_Dynamics_Solver_SolverData__
+  - text: Joint.Validate(float)
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_Validate_System_Single_
+  - text: Joint.SolveVelocityConstraints(ref SolverData)
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_SolveVelocityConstraints_Alis_Core_Physic_Dynamics_Solver_SolverData__
+  - text: Joint.SolvePositionConstraints(ref SolverData)
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_SolvePositionConstraints_Alis_Core_Physic_Dynamics_Solver_SolverData__
+  - text: Joint.DisableIslandFlag()
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_DisableIslandFlag
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Constructors
+- api3: RevoluteJoint(Body, Body, JointType, bool, Vector2, Vector2, float, float, float, float, float, bool, bool)
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint__ctor_Alis_Core_Physic_Dynamics_Body_Alis_Core_Physic_Dynamics_Body_Alis_Core_Physic_Dynamics_Joints_JointType_System_Boolean_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_System_Single_System_Single_System_Single_System_Single_System_Single_System_Boolean_System_Boolean_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L194
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.JointType,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,System.Single,System.Single,System.Single,System.Single,System.Single,System.Boolean,System.Boolean)
+    commentId: M:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.JointType,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,System.Single,System.Single,System.Single,System.Single,System.Single,System.Boolean,System.Boolean)
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Physic.Dynamics.Joints.RevoluteJoint" data-throw-if-not-resolved="false"></xref> class
+- code: public RevoluteJoint(Body bodyA = null, Body bodyB = null, JointType jointType = JointType.Unknown, bool collideConnected = false, Vector2 localAnchorA = default, Vector2 localAnchorB = default, float referenceAngle = 0, float lowerAngle = 0, float upperAngle = 0, float motorTorque = 0, float motorSpeed = 0, bool enableLimit = false, bool enableMotor = false)
+- h4: Parameters
+- parameters:
+  - name: bodyA
+    type:
+    - text: Body
+      url: Alis.Core.Physic.Dynamics.Body.html
+    description: The body
+    optional: true
+  - name: bodyB
+    type:
+    - text: Body
+      url: Alis.Core.Physic.Dynamics.Body.html
+    description: The body
+    optional: true
+  - name: jointType
+    type:
+    - text: JointType
+      url: Alis.Core.Physic.Dynamics.Joints.JointType.html
+    description: The joint type
+    optional: true
+  - name: collideConnected
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The collide connected
+    optional: true
+  - name: localAnchorA
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The local anchor
+    optional: true
+  - name: localAnchorB
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The local anchor
+    optional: true
+  - name: referenceAngle
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The reference angle
+    optional: true
+  - name: lowerAngle
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The lower angle
+    optional: true
+  - name: upperAngle
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The upper angle
+    optional: true
+  - name: motorTorque
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The motor torque
+    optional: true
+  - name: motorSpeed
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The motor speed
+    optional: true
+  - name: enableLimit
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The enable limit
+    optional: true
+  - name: enableMotor
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The enable motor
+    optional: true
+- api3: RevoluteJoint(Body, Body, Vector2, Vector2, bool)
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint__ctor_Alis_Core_Physic_Dynamics_Body_Alis_Core_Physic_Dynamics_Body_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_System_Boolean_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L229
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,System.Boolean)
+    commentId: M:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,System.Boolean)
+- markdown: Constructor of RevoluteJoint.
+- code: public RevoluteJoint(Body bodyA, Body bodyB, Vector2 anchorA, Vector2 anchorB, bool useWorldCoordinates = false)
+- h4: Parameters
+- parameters:
+  - name: bodyA
+    type:
+    - text: Body
+      url: Alis.Core.Physic.Dynamics.Body.html
+    description: The first body.
+  - name: bodyB
+    type:
+    - text: Body
+      url: Alis.Core.Physic.Dynamics.Body.html
+    description: The second body.
+  - name: anchorA
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The first body anchor.
+  - name: anchorB
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The second anchor.
+  - name: useWorldCoordinates
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: Set to true if you are using world coordinates as anchors.
+    optional: true
+- api3: RevoluteJoint(Body, Body, Vector2, bool)
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint__ctor_Alis_Core_Physic_Dynamics_Body_Alis_Core_Physic_Dynamics_Body_Alis_Core_Aspect_Math_Vector_Vector2_System_Boolean_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L251
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Aspect.Math.Vector.Vector2,System.Boolean)
+    commentId: M:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Aspect.Math.Vector.Vector2,System.Boolean)
+- markdown: Constructor of RevoluteJoint.
+- code: public RevoluteJoint(Body bodyA, Body bodyB, Vector2 anchor, bool useWorldCoordinates = false)
+- h4: Parameters
+- parameters:
+  - name: bodyA
+    type:
+    - text: Body
+      url: Alis.Core.Physic.Dynamics.Body.html
+    description: The first body.
+  - name: bodyB
+    type:
+    - text: Body
+      url: Alis.Core.Physic.Dynamics.Body.html
+    description: The second body.
+  - name: anchor
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The shared anchor.
+  - name: useWorldCoordinates
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: ''
+    optional: true
+- h2: Fields
+- api3: angle
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_angle
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L63
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.angle
+    commentId: F:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.angle
+- markdown: The angle
+- code: private float angle
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: axialMass
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_axialMass
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L68
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.axialMass
+    commentId: F:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.axialMass
+- markdown: The axial mass
+- code: private float axialMass
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: enableLimit
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_enableLimit
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L73
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.enableLimit
+    commentId: F:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.enableLimit
+- markdown: The enable limit
+- code: private bool enableLimit
+- h4: Field Value
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+- api3: enableMotor
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_enableMotor
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L78
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.enableMotor
+    commentId: F:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.enableMotor
+- markdown: The enable motor
+- code: private bool enableMotor
+- h4: Field Value
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+- api3: impulse
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_impulse
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L83
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.impulse
+    commentId: F:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.impulse
+- markdown: The impulse
+- code: private Vector2 impulse
+- h4: Field Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: indexA
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_indexA
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L89
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.indexA
+    commentId: F:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.indexA
+- markdown: The index
+- code: private int indexA
+- h4: Field Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: indexB
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_indexB
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L94
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.indexB
+    commentId: F:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.indexB
+- markdown: The index
+- code: private int indexB
+- h4: Field Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: invIa
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_invIa
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L99
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.invIa
+    commentId: F:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.invIa
+- markdown: The inv ia
+- code: private float invIa
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: invIb
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_invIb
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L104
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.invIb
+    commentId: F:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.invIb
+- markdown: The inv ib
+- code: private float invIb
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: invMassA
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_invMassA
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L109
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.invMassA
+    commentId: F:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.invMassA
+- markdown: The inv mass
+- code: private float invMassA
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: invMassB
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_invMassB
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L114
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.invMassB
+    commentId: F:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.invMassB
+- markdown: The inv mass
+- code: private float invMassB
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: k
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_k
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L119
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.k
+    commentId: F:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.k
+- markdown: The
+- code: private Matrix2X2 k
+- h4: Field Value
+- parameters:
+  - type:
+    - text: Matrix2X2
+      url: Alis.Core.Aspect.Math.Matrix.Matrix2X2.html
+- api3: localCenterA
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_localCenterA
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L126
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.localCenterA
+    commentId: F:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.localCenterA
+- markdown: The local center
+- code: private Vector2 localCenterA
+- h4: Field Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: localCenterB
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_localCenterB
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L131
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.localCenterB
+    commentId: F:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.localCenterB
+- markdown: The local center
+- code: private Vector2 localCenterB
+- h4: Field Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: lowerAngle
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_lowerAngle
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L136
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.lowerAngle
+    commentId: F:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.lowerAngle
+- markdown: The lower angle
+- code: private float lowerAngle
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: lowerImpulse
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_lowerImpulse
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L141
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.lowerImpulse
+    commentId: F:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.lowerImpulse
+- markdown: The lower impulse
+- code: private float lowerImpulse
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: maxMotorTorque
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_maxMotorTorque
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L146
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.maxMotorTorque
+    commentId: F:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.maxMotorTorque
+- markdown: The max motor torque
+- code: private float maxMotorTorque
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: motorImpulse
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_motorImpulse
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L151
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.motorImpulse
+    commentId: F:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.motorImpulse
+- markdown: The motor impulse
+- code: private float motorImpulse
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: motorSpeed
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_motorSpeed
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L156
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.motorSpeed
+    commentId: F:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.motorSpeed
+- markdown: The motor speed
+- code: private float motorSpeed
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: rA
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_rA
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L161
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.rA
+    commentId: F:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.rA
+- markdown: The
+- code: private Vector2 rA
+- h4: Field Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: rB
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_rB
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L166
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.rB
+    commentId: F:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.rB
+- markdown: The
+- code: private Vector2 rB
+- h4: Field Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: upperAngle
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_upperAngle
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L171
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.upperAngle
+    commentId: F:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.upperAngle
+- markdown: The upper angle
+- code: private float upperAngle
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: upperImpulse
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_upperImpulse
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L176
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.upperImpulse
+    commentId: F:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.upperImpulse
+- markdown: The upper impulse
+- code: private float upperImpulse
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- h2: Properties
+- api3: EnableLimit
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_EnableLimit
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L257
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.EnableLimit
+    commentId: P:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.EnableLimit
+- markdown: A flag to enable joint limits.
+- code: public bool EnableLimit { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+- api3: EnableMotor
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_EnableMotor
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L260
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.EnableMotor
+    commentId: P:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.EnableMotor
+- markdown: A flag to enable the joint motor.
+- code: public bool EnableMotor { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+- api3: JointAngle
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_JointAngle
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L296
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.JointAngle
+    commentId: P:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.JointAngle
+- markdown: Get the current joint angle in radians.
+- code: public float JointAngle { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: JointSpeed
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_JointSpeed
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L299
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.JointSpeed
+    commentId: P:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.JointSpeed
+- markdown: Get the current joint angle speed in radians per second.
+- code: public float JointSpeed { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: LimitEnabled
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_LimitEnabled
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L303
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.LimitEnabled
+    commentId: P:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.LimitEnabled
+- markdown: Is the joint limit enabled?
+- code: public bool LimitEnabled { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+- api3: LocalAnchorA
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_LocalAnchorA
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L269
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.LocalAnchorA
+    commentId: P:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.LocalAnchorA
+- markdown: The local anchor point on BodyA
+- code: public Vector2 LocalAnchorA { get; internal set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: LocalAnchorB
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_LocalAnchorB
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L272
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.LocalAnchorB
+    commentId: P:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.LocalAnchorB
+- markdown: The local anchor point on BodyB
+- code: public Vector2 LocalAnchorB { get; internal set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: LowerAngle
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_LowerAngle
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L263
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.LowerAngle
+    commentId: P:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.LowerAngle
+- markdown: The lower angle for the joint limit (radians).
+- code: public float LowerAngle { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: LowerLimit
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_LowerLimit
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L319
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.LowerLimit
+    commentId: P:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.LowerLimit
+- markdown: Get the lower joint limit in radians.
+- code: public float LowerLimit { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: MotorEnabled
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_MotorEnabled
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L350
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.MotorEnabled
+    commentId: P:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.MotorEnabled
+- markdown: Is the joint motor enabled?
+- code: public bool MotorEnabled { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+- api3: MotorSpeed
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_MotorSpeed
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L364
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.MotorSpeed
+    commentId: P:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.MotorSpeed
+- markdown: Get or set the motor speed in radians per second.
+- code: public float MotorSpeed { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: MotorTorque
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_MotorTorque
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L378
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.MotorTorque
+    commentId: P:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.MotorTorque
+- markdown: Get or set the maximum motor torque, usually in N-m.
+- code: public float MotorTorque { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: ReferenceAngle
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_ReferenceAngle
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L293
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.ReferenceAngle
+    commentId: P:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.ReferenceAngle
+- markdown: The reference angle computed as BodyB angle minus BodyA angle.
+- code: public float ReferenceAngle { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: UpperAngle
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_UpperAngle
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L266
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.UpperAngle
+    commentId: P:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.UpperAngle
+- markdown: The upper angle for the joint limit (radians).
+- code: public float UpperAngle { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: UpperLimit
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_UpperLimit
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L334
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.UpperLimit
+    commentId: P:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.UpperLimit
+- markdown: Get the upper joint limit in radians.
+- code: public float UpperLimit { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: WorldAnchorA
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_WorldAnchorA
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L277
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.WorldAnchorA
+    commentId: P:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.WorldAnchorA
+- markdown: Gets or sets the value of the world anchor a
+- code: public override Vector2 WorldAnchorA { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: WorldAnchorB
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_WorldAnchorB
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L286
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.WorldAnchorB
+    commentId: P:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.WorldAnchorB
+- markdown: Gets or sets the value of the world anchor b
+- code: public override Vector2 WorldAnchorB { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- h2: Methods
+- api3: GetMotorTorque(float)
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_GetMotorTorque_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L408
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.GetMotorTorque(System.Single)
+    commentId: M:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.GetMotorTorque(System.Single)
+- markdown: Gets the motor torque in N-m.
+- code: public float GetMotorTorque(float invDt)
+- h4: Parameters
+- parameters:
+  - name: invDt
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The inverse delta time
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: GetReactionForce(float)
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_GetReactionForce_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L415
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.GetReactionForce(System.Single)
+    commentId: M:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.GetReactionForce(System.Single)
+- markdown: Gets the reaction force using the specified inv dt
+- code: protected override Vector2 GetReactionForce(float invDt)
+- h4: Parameters
+- parameters:
+  - name: invDt
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The inv dt
+- h4: Returns
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The vector
+- api3: GetReactionTorque(float)
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_GetReactionTorque_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L426
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.GetReactionTorque(System.Single)
+    commentId: M:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.GetReactionTorque(System.Single)
+- markdown: Gets the reaction torque using the specified inv dt
+- code: public override float GetReactionTorque(float invDt)
+- h4: Parameters
+- parameters:
+  - name: invDt
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The inv dt
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The float
+- api3: InitVelocityConstraints(ref SolverData)
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_InitVelocityConstraints_Alis_Core_Physic_Dynamics_Solver_SolverData__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L432
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.InitVelocityConstraints(Alis.Core.Physic.Dynamics.Solver.SolverData@)
+    commentId: M:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.InitVelocityConstraints(Alis.Core.Physic.Dynamics.Solver.SolverData@)
+- markdown: Inits the velocity constraints using the specified data
+- code: internal override void InitVelocityConstraints(ref SolverData data)
+- h4: Parameters
+- parameters:
+  - name: data
+    type:
+    - text: SolverData
+      url: Alis.Core.Physic.Dynamics.Solver.SolverData.html
+    description: The data
+- api3: SetLimits(float, float)
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_SetLimits_System_Single_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L394
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.SetLimits(System.Single,System.Single)
+    commentId: M:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.SetLimits(System.Single,System.Single)
+- markdown: Set the joint limits, usually in meters.
+- code: public void SetLimits(float lower, float upper)
+- h4: Parameters
+- parameters:
+  - name: lower
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The lower limit
+  - name: upper
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The upper limit
+- api3: SolvePositionConstraints(ref SolverData)
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_SolvePositionConstraints_Alis_Core_Physic_Dynamics_Solver_SolverData__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L603
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.SolvePositionConstraints(Alis.Core.Physic.Dynamics.Solver.SolverData@)
+    commentId: M:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.SolvePositionConstraints(Alis.Core.Physic.Dynamics.Solver.SolverData@)
+- markdown: Describes whether this instance solve position constraints
+- code: internal override bool SolvePositionConstraints(ref SolverData data)
+- h4: Parameters
+- parameters:
+  - name: data
+    type:
+    - text: SolverData
+      url: Alis.Core.Physic.Dynamics.Solver.SolverData.html
+    description: The data
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: SolveVelocityConstraints(ref SolverData)
+  id: Alis_Core_Physic_Dynamics_Joints_RevoluteJoint_SolveVelocityConstraints_Alis_Core_Physic_Dynamics_Solver_SolverData__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/RevoluteJoint.cs#L525
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.SolveVelocityConstraints(Alis.Core.Physic.Dynamics.Solver.SolverData@)
+    commentId: M:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.SolveVelocityConstraints(Alis.Core.Physic.Dynamics.Solver.SolverData@)
+- markdown: Solves the velocity constraints using the specified data
+- code: internal override void SolveVelocityConstraints(ref SolverData data)
+- h4: Parameters
+- parameters:
+  - name: data
+    type:
+    - text: SolverData
+      url: Alis.Core.Physic.Dynamics.Solver.SolverData.html
+    description: The data
+languageId: csharp
+metadata:
+  description: >-
+    A revolute joint constrains to bodies to share a common point while they are free to rotate about the point.
+
+    The relative rotation about the shared point is the joint angle. You can limit the relative rotation with a joint
+
+    limit
+
+    that specifies a lower and upper angle. You can use a motor to drive the relative rotation about the shared point.
+
+    A
+
+    maximum motor torque is provided so that infinite forces are not generated.
+
+    Point-to-point constraint
+
+    C = p2 - p1
+
+    dot = v2 - v1
+
+    = v2 + cross(w2, r2) - v1 - cross(w1, r1)
+
+    J = [-I -r1_skew I r2_skew ]
+
+    Identity used:
+
+    w k % (rx i + ry j) = w * (-ry i + rx j)
+
+    Motor constraint
+
+    dot = w2 - w1
+
+    J = [0 0 -1 0 0 1]
+
+    K = invI1 + invI2

@@ -1,0 +1,20 @@
+### YamlMime:ApiPage
+title: Namespace Alis.Builder.Core.Ecs.Entity
+body:
+- api1: Namespace Alis.Builder.Core.Ecs.Entity
+  id: Alis_Builder_Core_Ecs_Entity
+  metadata:
+    uid: Alis.Builder.Core.Ecs.Entity
+    commentId: N:Alis.Builder.Core.Ecs.Entity
+- h3: Namespaces
+- parameters:
+  - type:
+      text: Alis.Builder.Core.Ecs.Entity.GameObject
+      url: Alis.Builder.Core.Ecs.Entity.GameObject.html
+  - type:
+      text: Alis.Builder.Core.Ecs.Entity.Scene
+      url: Alis.Builder.Core.Ecs.Entity.Scene.html
+  - type:
+      text: Alis.Builder.Core.Ecs.Entity.Transform
+      url: Alis.Builder.Core.Ecs.Entity.Transform.html
+languageId: csharp

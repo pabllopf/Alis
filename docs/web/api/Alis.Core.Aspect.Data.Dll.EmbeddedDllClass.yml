@@ -1,0 +1,361 @@
+### YamlMime:ApiPage
+title: Class EmbeddedDllClass
+body:
+- api1: Class EmbeddedDllClass
+  id: Alis_Core_Aspect_Data_Dll_EmbeddedDllClass
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Dll/EmbeddedDllClass.cs#L43
+  metadata:
+    uid: Alis.Core.Aspect.Data.Dll.EmbeddedDllClass
+    commentId: T:Alis.Core.Aspect.Data.Dll.EmbeddedDllClass
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Aspect.Data.Dll
+      url: Alis.Core.Aspect.Data.Dll.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The embedded dll class
+- code: public static class EmbeddedDllClass
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: EmbeddedDllClass
+    url: Alis.Core.Aspect.Data.Dll.EmbeddedDllClass.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Methods
+- api3: ExtractEmbeddedDlls(string, DllType, Dictionary<PlatformInfo, string>, Assembly)
+  id: Alis_Core_Aspect_Data_Dll_EmbeddedDllClass_ExtractEmbeddedDlls_System_String_Alis_Core_Aspect_Data_Dll_DllType_System_Collections_Generic_Dictionary_Alis_Core_Aspect_Data_Dll_PlatformInfo_System_String__System_Reflection_Assembly_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Dll/EmbeddedDllClass.cs#L52
+  metadata:
+    uid: Alis.Core.Aspect.Data.Dll.EmbeddedDllClass.ExtractEmbeddedDlls(System.String,Alis.Core.Aspect.Data.Dll.DllType,System.Collections.Generic.Dictionary{Alis.Core.Aspect.Data.Dll.PlatformInfo,System.String},System.Reflection.Assembly)
+    commentId: M:Alis.Core.Aspect.Data.Dll.EmbeddedDllClass.ExtractEmbeddedDlls(System.String,Alis.Core.Aspect.Data.Dll.DllType,System.Collections.Generic.Dictionary{Alis.Core.Aspect.Data.Dll.PlatformInfo,System.String},System.Reflection.Assembly)
+- markdown: Extracts the embedded dlls using the specified dll name
+- code: public static void ExtractEmbeddedDlls(string dllName, DllType dllType, Dictionary<PlatformInfo, string> dllBytes, Assembly assembly)
+- h4: Parameters
+- parameters:
+  - name: dllName
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The dll name
+  - name: dllType
+    type:
+    - text: DllType
+      url: Alis.Core.Aspect.Data.Dll.DllType.html
+    description: ''
+  - name: dllBytes
+    type:
+    - text: Dictionary
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+    - <
+    - text: PlatformInfo
+      url: Alis.Core.Aspect.Data.Dll.PlatformInfo.html
+    - ','
+    - " "
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    - '>'
+    description: The dll bytes
+  - name: assembly
+    type:
+    - text: Assembly
+      url: https://learn.microsoft.com/dotnet/api/system.reflection.assembly
+    description: The assembly
+- api3: ExtractEntry(string, ZipArchiveEntry)
+  id: Alis_Core_Aspect_Data_Dll_EmbeddedDllClass_ExtractEntry_System_String_System_IO_Compression_ZipArchiveEntry_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Dll/EmbeddedDllClass.cs#L213
+  metadata:
+    uid: Alis.Core.Aspect.Data.Dll.EmbeddedDllClass.ExtractEntry(System.String,System.IO.Compression.ZipArchiveEntry)
+    commentId: M:Alis.Core.Aspect.Data.Dll.EmbeddedDllClass.ExtractEntry(System.String,System.IO.Compression.ZipArchiveEntry)
+- markdown: Extracts the entry using the specified file dir
+- code: internal static void ExtractEntry(string fileDir, ZipArchiveEntry entry)
+- h4: Parameters
+- parameters:
+  - name: fileDir
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The file dir
+  - name: entry
+    type:
+    - text: ZipArchiveEntry
+      url: https://learn.microsoft.com/dotnet/api/system.io.compression.ziparchiveentry
+    description: The entry
+- api3: ExtractFileFromEntry(string, ZipArchiveEntry)
+  id: Alis_Core_Aspect_Data_Dll_EmbeddedDllClass_ExtractFileFromEntry_System_String_System_IO_Compression_ZipArchiveEntry_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Dll/EmbeddedDllClass.cs#L229
+  metadata:
+    uid: Alis.Core.Aspect.Data.Dll.EmbeddedDllClass.ExtractFileFromEntry(System.String,System.IO.Compression.ZipArchiveEntry)
+    commentId: M:Alis.Core.Aspect.Data.Dll.EmbeddedDllClass.ExtractFileFromEntry(System.String,System.IO.Compression.ZipArchiveEntry)
+- markdown: Extracts the file from entry using the specified canonical destination path
+- code: internal static void ExtractFileFromEntry(string canonicalDestinationPath, ZipArchiveEntry entry)
+- h4: Parameters
+- parameters:
+  - name: canonicalDestinationPath
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The canonical destination path
+  - name: entry
+    type:
+    - text: ZipArchiveEntry
+      url: https://learn.microsoft.com/dotnet/api/system.io.compression.ziparchiveentry
+    description: The entry
+- api3: ExtractZipFile(string, MemoryStream)
+  id: Alis_Core_Aspect_Data_Dll_EmbeddedDllClass_ExtractZipFile_System_String_System_IO_MemoryStream_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Dll/EmbeddedDllClass.cs#L188
+  metadata:
+    uid: Alis.Core.Aspect.Data.Dll.EmbeddedDllClass.ExtractZipFile(System.String,System.IO.MemoryStream)
+    commentId: M:Alis.Core.Aspect.Data.Dll.EmbeddedDllClass.ExtractZipFile(System.String,System.IO.MemoryStream)
+- markdown: Extracts the zip file using the specified file dir
+- code: internal static void ExtractZipFile(string fileDir, MemoryStream zipData)
+- h4: Parameters
+- parameters:
+  - name: fileDir
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The file dir
+  - name: zipData
+    type:
+    - text: MemoryStream
+      url: https://learn.microsoft.com/dotnet/api/system.io.memorystream
+    description: The zip data
+- api3: GetCurrentPlatform()
+  id: Alis_Core_Aspect_Data_Dll_EmbeddedDllClass_GetCurrentPlatform
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Dll/EmbeddedDllClass.cs#L152
+  metadata:
+    uid: Alis.Core.Aspect.Data.Dll.EmbeddedDllClass.GetCurrentPlatform
+    commentId: M:Alis.Core.Aspect.Data.Dll.EmbeddedDllClass.GetCurrentPlatform
+- markdown: Gets the platform
+- code: public static OSPlatform GetCurrentPlatform()
+- h4: Returns
+- parameters:
+  - type:
+    - text: OSPlatform
+      url: https://learn.microsoft.com/dotnet/api/system.runtime.interopservices.osplatform
+    description: The os platform
+- h4: Exceptions
+- parameters:
+  - type:
+    - text: PlatformNotSupportedException
+      url: https://learn.microsoft.com/dotnet/api/system.platformnotsupportedexception
+    description: Unsupported platform.
+- api3: GetDllExtension(DllType)
+  id: Alis_Core_Aspect_Data_Dll_EmbeddedDllClass_GetDllExtension_Alis_Core_Aspect_Data_Dll_DllType_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Dll/EmbeddedDllClass.cs#L78
+  metadata:
+    uid: Alis.Core.Aspect.Data.Dll.EmbeddedDllClass.GetDllExtension(Alis.Core.Aspect.Data.Dll.DllType)
+    commentId: M:Alis.Core.Aspect.Data.Dll.EmbeddedDllClass.GetDllExtension(Alis.Core.Aspect.Data.Dll.DllType)
+- markdown: Gets the dll extension
+- code: internal static string GetDllExtension(DllType dllType)
+- h4: Parameters
+- parameters:
+  - name: dllType
+    type:
+    - text: DllType
+      url: Alis.Core.Aspect.Data.Dll.DllType.html
+    description: ''
+- h4: Returns
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The string
+- h4: Exceptions
+- parameters:
+  - type:
+    - text: PlatformNotSupportedException
+      url: https://learn.microsoft.com/dotnet/api/system.platformnotsupportedexception
+    description: Unsupported platform.
+- api3: GetExeExtension(OSPlatform)
+  id: Alis_Core_Aspect_Data_Dll_EmbeddedDllClass_GetExeExtension_System_Runtime_InteropServices_OSPlatform_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Dll/EmbeddedDllClass.cs#L101
+  metadata:
+    uid: Alis.Core.Aspect.Data.Dll.EmbeddedDllClass.GetExeExtension(System.Runtime.InteropServices.OSPlatform)
+    commentId: M:Alis.Core.Aspect.Data.Dll.EmbeddedDllClass.GetExeExtension(System.Runtime.InteropServices.OSPlatform)
+- markdown: Gets the exe extension using the specified current platform
+- code: internal static string GetExeExtension(OSPlatform currentPlatform)
+- h4: Parameters
+- parameters:
+  - name: currentPlatform
+    type:
+    - text: OSPlatform
+      url: https://learn.microsoft.com/dotnet/api/system.runtime.interopservices.osplatform
+    description: The current platform
+- h4: Returns
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The string
+- h4: Exceptions
+- parameters:
+  - type:
+    - text: PlatformNotSupportedException
+      url: https://learn.microsoft.com/dotnet/api/system.platformnotsupportedexception
+    description: Unsupported platform.
+- api3: GetLibExtension(OSPlatform)
+  id: Alis_Core_Aspect_Data_Dll_EmbeddedDllClass_GetLibExtension_System_Runtime_InteropServices_OSPlatform_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Dll/EmbeddedDllClass.cs#L127
+  metadata:
+    uid: Alis.Core.Aspect.Data.Dll.EmbeddedDllClass.GetLibExtension(System.Runtime.InteropServices.OSPlatform)
+    commentId: M:Alis.Core.Aspect.Data.Dll.EmbeddedDllClass.GetLibExtension(System.Runtime.InteropServices.OSPlatform)
+- markdown: Gets the lib extension using the specified current platform
+- code: internal static string GetLibExtension(OSPlatform currentPlatform)
+- h4: Parameters
+- parameters:
+  - name: currentPlatform
+    type:
+    - text: OSPlatform
+      url: https://learn.microsoft.com/dotnet/api/system.runtime.interopservices.osplatform
+    description: The current platform
+- h4: Returns
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The string
+- h4: Exceptions
+- parameters:
+  - type:
+    - text: PlatformNotSupportedException
+      url: https://learn.microsoft.com/dotnet/api/system.platformnotsupportedexception
+    description: Unsupported platform.
+- api3: IsAndroidSpecificConditionMet()
+  id: Alis_Core_Aspect_Data_Dll_EmbeddedDllClass_IsAndroidSpecificConditionMet
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Dll/EmbeddedDllClass.cs#L307
+  metadata:
+    uid: Alis.Core.Aspect.Data.Dll.EmbeddedDllClass.IsAndroidSpecificConditionMet
+    commentId: M:Alis.Core.Aspect.Data.Dll.EmbeddedDllClass.IsAndroidSpecificConditionMet
+- markdown: Describes whether is android specific condition met
+- code: internal static bool IsAndroidSpecificConditionMet()
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: IsRunningOnAndroid()
+  id: Alis_Core_Aspect_Data_Dll_EmbeddedDllClass_IsRunningOnAndroid
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Dll/EmbeddedDllClass.cs#L285
+  metadata:
+    uid: Alis.Core.Aspect.Data.Dll.EmbeddedDllClass.IsRunningOnAndroid
+    commentId: M:Alis.Core.Aspect.Data.Dll.EmbeddedDllClass.IsRunningOnAndroid
+- markdown: Describes whether is running on android
+- code: internal static bool IsRunningOnAndroid()
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: IsRunningOniOS()
+  id: Alis_Core_Aspect_Data_Dll_EmbeddedDllClass_IsRunningOniOS
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Dll/EmbeddedDllClass.cs#L279
+  metadata:
+    uid: Alis.Core.Aspect.Data.Dll.EmbeddedDllClass.IsRunningOniOS
+    commentId: M:Alis.Core.Aspect.Data.Dll.EmbeddedDllClass.IsRunningOniOS
+- markdown: Describes whether is running oni os
+- code: internal static bool IsRunningOniOS()
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: IsValidEntry(ZipArchiveEntry)
+  id: Alis_Core_Aspect_Data_Dll_EmbeddedDllClass_IsValidEntry_System_IO_Compression_ZipArchiveEntry_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Dll/EmbeddedDllClass.cs#L206
+  metadata:
+    uid: Alis.Core.Aspect.Data.Dll.EmbeddedDllClass.IsValidEntry(System.IO.Compression.ZipArchiveEntry)
+    commentId: M:Alis.Core.Aspect.Data.Dll.EmbeddedDllClass.IsValidEntry(System.IO.Compression.ZipArchiveEntry)
+- markdown: Describes whether is valid entry
+- code: internal static bool IsValidEntry(ZipArchiveEntry entry)
+- h4: Parameters
+- parameters:
+  - name: entry
+    type:
+    - text: ZipArchiveEntry
+      url: https://learn.microsoft.com/dotnet/api/system.io.compression.ziparchiveentry
+    description: The entry
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: IsiOsSpecificConditionMet()
+  id: Alis_Core_Aspect_Data_Dll_EmbeddedDllClass_IsiOsSpecificConditionMet
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Dll/EmbeddedDllClass.cs#L291
+  metadata:
+    uid: Alis.Core.Aspect.Data.Dll.EmbeddedDllClass.IsiOsSpecificConditionMet
+    commentId: M:Alis.Core.Aspect.Data.Dll.EmbeddedDllClass.IsiOsSpecificConditionMet
+- markdown: Describes whether isi os specific condition met
+- code: internal static bool IsiOsSpecificConditionMet()
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: LoadResource(string, Assembly)
+  id: Alis_Core_Aspect_Data_Dll_EmbeddedDllClass_LoadResource_System_String_System_Reflection_Assembly_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Dll/EmbeddedDllClass.cs#L266
+  metadata:
+    uid: Alis.Core.Aspect.Data.Dll.EmbeddedDllClass.LoadResource(System.String,System.Reflection.Assembly)
+    commentId: M:Alis.Core.Aspect.Data.Dll.EmbeddedDllClass.LoadResource(System.String,System.Reflection.Assembly)
+- markdown: Loads the resource using the specified resource name
+- code: internal static MemoryStream LoadResource(string resourceName, Assembly assembly)
+- h4: Parameters
+- parameters:
+  - name: resourceName
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The resource name
+  - name: assembly
+    type:
+    - text: Assembly
+      url: https://learn.microsoft.com/dotnet/api/system.reflection.assembly
+    description: The assembly
+- h4: Returns
+- parameters:
+  - type:
+    - text: MemoryStream
+      url: https://learn.microsoft.com/dotnet/api/system.io.memorystream
+    description: The memory stream
+- api3: SetFileReadPermission(string)
+  id: Alis_Core_Aspect_Data_Dll_EmbeddedDllClass_SetFileReadPermission_System_String_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Dll/EmbeddedDllClass.cs#L241
+  metadata:
+    uid: Alis.Core.Aspect.Data.Dll.EmbeddedDllClass.SetFileReadPermission(System.String)
+    commentId: M:Alis.Core.Aspect.Data.Dll.EmbeddedDllClass.SetFileReadPermission(System.String)
+- markdown: Sets the file read permission using the specified file path
+- code: internal static void SetFileReadPermission(string filePath)
+- h4: Parameters
+- parameters:
+  - name: filePath
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The file path
+languageId: csharp
+metadata:
+  description: The embedded dll class

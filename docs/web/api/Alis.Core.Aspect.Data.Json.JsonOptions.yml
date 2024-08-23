@@ -1,0 +1,558 @@
+### YamlMime:ApiPage
+title: Class JsonOptions
+body:
+- api1: Class JsonOptions
+  id: Alis_Core_Aspect_Data_Json_JsonOptions
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/JsonOptions.cs#L39
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.JsonOptions
+    commentId: T:Alis.Core.Aspect.Data.Json.JsonOptions
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Aspect.Data.Json
+      url: Alis.Core.Aspect.Data.Json.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: Define options for JSON.
+- code: public class JsonOptions
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: JsonOptions
+    url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Constructors
+- api3: JsonOptions()
+  id: Alis_Core_Aspect_Data_Json_JsonOptions__ctor
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/JsonOptions.cs#L54
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.JsonOptions.#ctor
+    commentId: M:Alis.Core.Aspect.Data.Json.JsonOptions.#ctor
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Aspect.Data.Json.JsonOptions" data-throw-if-not-resolved="false"></xref> class.
+- code: public JsonOptions()
+- h2: Fields
+- api3: DefaultDateTimeStyles
+  id: Alis_Core_Aspect_Data_Json_JsonOptions_DefaultDateTimeStyles
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/JsonOptions.cs#L44
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.JsonOptions.DefaultDateTimeStyles
+    commentId: F:Alis.Core.Aspect.Data.Json.JsonOptions.DefaultDateTimeStyles
+- markdown: The allow white spaces
+- code: internal const DateTimeStyles DefaultDateTimeStyles = AllowWhiteSpaces | AssumeUniversal
+- h4: Field Value
+- parameters:
+  - type:
+    - text: DateTimeStyles
+      url: https://learn.microsoft.com/dotnet/api/system.globalization.datetimestyles
+- api3: _exceptions
+  id: Alis_Core_Aspect_Data_Json_JsonOptions__exceptions
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/JsonOptions.cs#L49
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.JsonOptions._exceptions
+    commentId: F:Alis.Core.Aspect.Data.Json.JsonOptions._exceptions
+- markdown: The exception
+- code: private readonly List<Exception> _exceptions
+- h4: Field Value
+- parameters:
+  - type:
+    - text: List
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+    - <
+    - text: Exception
+      url: https://learn.microsoft.com/dotnet/api/system.exception
+    - '>'
+- h2: Properties
+- api3: AfterWriteObjectCallback
+  id: Alis_Core_Aspect_Data_Json_JsonOptions_AfterWriteObjectCallback
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/JsonOptions.cs#L178
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.JsonOptions.AfterWriteObjectCallback
+    commentId: P:Alis.Core.Aspect.Data.Json.JsonOptions.AfterWriteObjectCallback
+- markdown: Gets or sets a callback that is called before an object (not a value) is serialized.
+- code: public JsonCallback AfterWriteObjectCallback { get; internal set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: JsonCallback
+      url: Alis.Core.Aspect.Data.Json.JsonCallback.html
+- api3: ApplyEntryCallback
+  id: Alis_Core_Aspect_Data_Json_JsonOptions_ApplyEntryCallback
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/JsonOptions.cs#L204
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.JsonOptions.ApplyEntryCallback
+    commentId: P:Alis.Core.Aspect.Data.Json.JsonOptions.ApplyEntryCallback
+- markdown: >-
+    Gets or sets a callback that is called during deserialization, before a dictionary entry is applied to a target
+
+    object.
+- code: public JsonCallback ApplyEntryCallback { get; private set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: JsonCallback
+      url: Alis.Core.Aspect.Data.Json.JsonCallback.html
+- api3: BeforeWriteObjectCallback
+  id: Alis_Core_Aspect_Data_Json_JsonOptions_BeforeWriteObjectCallback
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/JsonOptions.cs#L172
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.JsonOptions.BeforeWriteObjectCallback
+    commentId: P:Alis.Core.Aspect.Data.Json.JsonOptions.BeforeWriteObjectCallback
+- markdown: Gets or sets a callback that is called before an object (not a value) is serialized.
+- code: public JsonCallback BeforeWriteObjectCallback { get; internal set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: JsonCallback
+      url: Alis.Core.Aspect.Data.Json.JsonCallback.html
+- api3: CreateInstanceCallback
+  id: Alis_Core_Aspect_Data_Json_JsonOptions_CreateInstanceCallback
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/JsonOptions.cs#L190
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.JsonOptions.CreateInstanceCallback
+    commentId: P:Alis.Core.Aspect.Data.Json.JsonOptions.CreateInstanceCallback
+- markdown: Gets or sets a callback that is called before an instance of an object is created.
+- code: public JsonCallback CreateInstanceCallback { get; internal set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: JsonCallback
+      url: Alis.Core.Aspect.Data.Json.JsonCallback.html
+- api3: DateTimeFormat
+  id: Alis_Core_Aspect_Data_Json_JsonOptions_DateTimeFormat
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/JsonOptions.cs#L114
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.JsonOptions.DateTimeFormat
+    commentId: P:Alis.Core.Aspect.Data.Json.JsonOptions.DateTimeFormat
+- markdown: Gets or sets the date time format.
+- code: public string DateTimeFormat { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: DateTimeOffsetFormat
+  id: Alis_Core_Aspect_Data_Json_JsonOptions_DateTimeOffsetFormat
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/JsonOptions.cs#L122
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.JsonOptions.DateTimeOffsetFormat
+    commentId: P:Alis.Core.Aspect.Data.Json.JsonOptions.DateTimeOffsetFormat
+- markdown: Gets or sets the date time offset format.
+- code: public string DateTimeOffsetFormat { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: DateTimeStyles
+  id: Alis_Core_Aspect_Data_Json_JsonOptions_DateTimeStyles
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/JsonOptions.cs#L130
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.JsonOptions.DateTimeStyles
+    commentId: P:Alis.Core.Aspect.Data.Json.JsonOptions.DateTimeStyles
+- markdown: Gets or sets the date time styles.
+- code: public DateTimeStyles DateTimeStyles { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: DateTimeStyles
+      url: https://learn.microsoft.com/dotnet/api/system.globalization.datetimestyles
+- api3: Exceptions
+  id: Alis_Core_Aspect_Data_Json_JsonOptions_Exceptions
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/JsonOptions.cs#L154
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.JsonOptions.Exceptions
+    commentId: P:Alis.Core.Aspect.Data.Json.JsonOptions.Exceptions
+- markdown: Gets the des-relation exceptions. Will be empty if ThrowExceptions is set to false.
+- code: public Exception[] Exceptions { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Exception
+      url: https://learn.microsoft.com/dotnet/api/system.exception
+    - '['
+    - ']'
+- api3: FinalObjectGraph
+  id: Alis_Core_Aspect_Data_Json_JsonOptions_FinalObjectGraph
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/JsonOptions.cs#L227
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.JsonOptions.FinalObjectGraph
+    commentId: P:Alis.Core.Aspect.Data.Json.JsonOptions.FinalObjectGraph
+- markdown: Gets the value of the final object graph
+- code: internal IDictionary<object, object> FinalObjectGraph { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: IDictionary
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+    - <
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    - ','
+    - " "
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    - '>'
+- api3: FinalStreamingBufferChunkSize
+  id: Alis_Core_Aspect_Data_Json_JsonOptions_FinalStreamingBufferChunkSize
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/JsonOptions.cs#L222
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.JsonOptions.FinalStreamingBufferChunkSize
+    commentId: P:Alis.Core.Aspect.Data.Json.JsonOptions.FinalStreamingBufferChunkSize
+- markdown: Gets the value of the final streaming buffer chunk size
+- code: internal int FinalStreamingBufferChunkSize { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: FormattingTab
+  id: Alis_Core_Aspect_Data_Json_JsonOptions_FormattingTab
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/JsonOptions.cs#L146
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.JsonOptions.FormattingTab
+    commentId: P:Alis.Core.Aspect.Data.Json.JsonOptions.FormattingTab
+- markdown: Gets or sets the formatting tab string.
+- code: public string FormattingTab { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: GetListObjectCallback
+  id: Alis_Core_Aspect_Data_Json_JsonOptions_GetListObjectCallback
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/JsonOptions.cs#L210
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.JsonOptions.GetListObjectCallback
+    commentId: P:Alis.Core.Aspect.Data.Json.JsonOptions.GetListObjectCallback
+- markdown: Gets or sets a callback that is called during deserialization, to deserialize a list object.
+- code: public JsonCallback GetListObjectCallback { get; internal set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: JsonCallback
+      url: Alis.Core.Aspect.Data.Json.JsonCallback.html
+- api3: GuidFormat
+  id: Alis_Core_Aspect_Data_Json_JsonOptions_GuidFormat
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/JsonOptions.cs#L106
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.JsonOptions.GuidFormat
+    commentId: P:Alis.Core.Aspect.Data.Json.JsonOptions.GuidFormat
+- markdown: Gets or sets the guid format.
+- code: public string GuidFormat { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: JsonPCallback
+  id: Alis_Core_Aspect_Data_Json_JsonOptions_JsonPCallback
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/JsonOptions.cs#L98
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.JsonOptions.JsonPCallback
+    commentId: P:Alis.Core.Aspect.Data.Json.JsonOptions.JsonPCallback
+- markdown: >-
+    Gets or sets the JSONP callback. It will be added as wrapper around the result.
+
+    Check this article for more: http://en.wikipedia.org/wiki/JSONP
+- code: public string JsonPCallback { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: MapEntryCallback
+  id: Alis_Core_Aspect_Data_Json_JsonOptions_MapEntryCallback
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/JsonOptions.cs#L197
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.JsonOptions.MapEntryCallback
+    commentId: P:Alis.Core.Aspect.Data.Json.JsonOptions.MapEntryCallback
+- markdown: >-
+    Gets or sets a callback that is called during deserialization, before a dictionary entry is mapped to a target
+
+    object.
+- code: public JsonCallback MapEntryCallback { get; internal set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: JsonCallback
+      url: Alis.Core.Aspect.Data.Json.JsonCallback.html
+- api3: MaximumExceptionsCount
+  id: Alis_Core_Aspect_Data_Json_JsonOptions_MaximumExceptionsCount
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/JsonOptions.cs#L89
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.JsonOptions.MaximumExceptionsCount
+    commentId: P:Alis.Core.Aspect.Data.Json.JsonOptions.MaximumExceptionsCount
+- markdown: Gets or sets the maximum exceptions count.
+- code: public int MaximumExceptionsCount { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: ObjectGraph
+  id: Alis_Core_Aspect_Data_Json_JsonOptions_ObjectGraph
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/JsonOptions.cs#L217
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.JsonOptions.ObjectGraph
+    commentId: P:Alis.Core.Aspect.Data.Json.JsonOptions.ObjectGraph
+- markdown: >-
+    Gets or sets a utility class that will store an object graph to avoid serialization cycles.
+
+    If null, a Dictionary&lt;object, object&gt; using an object reference comparer will be used.
+- code: internal IDictionary<object, object> ObjectGraph { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: IDictionary
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+    - <
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    - ','
+    - " "
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    - '>'
+- api3: SerializationLevel
+  id: Alis_Core_Aspect_Data_Json_JsonOptions_SerializationLevel
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/JsonOptions.cs#L70
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.JsonOptions.SerializationLevel
+    commentId: P:Alis.Core.Aspect.Data.Json.JsonOptions.SerializationLevel
+- markdown: Gets a value indicating the current serialization level.
+- code: public int SerializationLevel { get; internal set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: SerializationOptions
+  id: Alis_Core_Aspect_Data_Json_JsonOptions_SerializationOptions
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/JsonOptions.cs#L160
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.JsonOptions.SerializationOptions
+    commentId: P:Alis.Core.Aspect.Data.Json.JsonOptions.SerializationOptions
+- markdown: Gets or sets the serialization options.
+- code: public JsonSerializationOptions SerializationOptions { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: JsonSerializationOptions
+      url: Alis.Core.Aspect.Data.Json.JsonSerializationOptions.html
+- api3: StreamingBufferChunkSize
+  id: Alis_Core_Aspect_Data_Json_JsonOptions_StreamingBufferChunkSize
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/JsonOptions.cs#L138
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.JsonOptions.StreamingBufferChunkSize
+    commentId: P:Alis.Core.Aspect.Data.Json.JsonOptions.StreamingBufferChunkSize
+- markdown: Gets or sets the size of the streaming buffer chunk. Minimum value is 512.
+- code: public int StreamingBufferChunkSize { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: ThrowExceptions
+  id: Alis_Core_Aspect_Data_Json_JsonOptions_ThrowExceptions
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/JsonOptions.cs#L81
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.JsonOptions.ThrowExceptions
+    commentId: P:Alis.Core.Aspect.Data.Json.JsonOptions.ThrowExceptions
+- markdown: >-
+    Gets or sets a value indicating whether exceptions can be thrown during serialization or deserialization.
+
+    If this is set to false, exceptions will be stored in the Exceptions collection.
+
+    However, if the number of exceptions is equal to or higher than MaximumExceptionsCount, an exception will be
+
+    thrown.
+- code: public bool ThrowExceptions { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+- api3: WriteNamedValueObjectCallback
+  id: Alis_Core_Aspect_Data_Json_JsonOptions_WriteNamedValueObjectCallback
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/JsonOptions.cs#L184
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.JsonOptions.WriteNamedValueObjectCallback
+    commentId: P:Alis.Core.Aspect.Data.Json.JsonOptions.WriteNamedValueObjectCallback
+- markdown: Gets or sets a callback that is called before an object field or property is serialized.
+- code: public JsonCallback WriteNamedValueObjectCallback { get; internal set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: JsonCallback
+      url: Alis.Core.Aspect.Data.Json.JsonCallback.html
+- api3: WriteValueCallback
+  id: Alis_Core_Aspect_Data_Json_JsonOptions_WriteValueCallback
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/JsonOptions.cs#L166
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.JsonOptions.WriteValueCallback
+    commentId: P:Alis.Core.Aspect.Data.Json.JsonOptions.WriteValueCallback
+- markdown: Gets or sets a write value callback.
+- code: public JsonCallback WriteValueCallback { get; internal set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: JsonCallback
+      url: Alis.Core.Aspect.Data.Json.JsonCallback.html
+- h2: Methods
+- api3: AddException(Exception)
+  id: Alis_Core_Aspect_Data_Json_JsonOptions_AddException_System_Exception_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/JsonOptions.cs#L257
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.JsonOptions.AddException(System.Exception)
+    commentId: M:Alis.Core.Aspect.Data.Json.JsonOptions.AddException(System.Exception)
+- markdown: Adds an exception to the list of exceptions.
+- code: public void AddException(Exception error)
+- h4: Parameters
+- parameters:
+  - name: error
+    type:
+    - text: Exception
+      url: https://learn.microsoft.com/dotnet/api/system.exception
+    description: The exception to add.
+- api3: Clone()
+  id: Alis_Core_Aspect_Data_Json_JsonOptions_Clone
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/JsonOptions.cs#L276
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.JsonOptions.Clone
+    commentId: M:Alis.Core.Aspect.Data.Json.JsonOptions.Clone
+- markdown: Clones this instance.
+- code: public JsonOptions Clone()
+- h4: Returns
+- parameters:
+  - type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: A newly created of this class with all values copied.
+- api3: FinalizeDeserializationMembers(Type, IEnumerable<MemberDefinition>)
+  id: Alis_Core_Aspect_Data_Json_JsonOptions_FinalizeDeserializationMembers_System_Type_System_Collections_Generic_IEnumerable_Alis_Core_Aspect_Data_Json_MemberDefinition__
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/JsonOptions.cs#L251
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.JsonOptions.FinalizeDeserializationMembers(System.Type,System.Collections.Generic.IEnumerable{Alis.Core.Aspect.Data.Json.MemberDefinition})
+    commentId: M:Alis.Core.Aspect.Data.Json.JsonOptions.FinalizeDeserializationMembers(System.Type,System.Collections.Generic.IEnumerable{Alis.Core.Aspect.Data.Json.MemberDefinition})
+- markdown: Finalizes the deserialization members from an initial setup of members.
+- code: public IEnumerable<MemberDefinition> FinalizeDeserializationMembers(Type type, IEnumerable<MemberDefinition> members)
+- h4: Parameters
+- parameters:
+  - name: type
+    type:
+    - text: Type
+      url: https://learn.microsoft.com/dotnet/api/system.type
+    description: The input type. May not be null.
+  - name: members
+    type:
+    - text: IEnumerable
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+    - <
+    - text: MemberDefinition
+      url: Alis.Core.Aspect.Data.Json.MemberDefinition.html
+    - '>'
+    description: The members. May not be null.
+- h4: Returns
+- parameters:
+  - type:
+    - text: IEnumerable
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+    - <
+    - text: MemberDefinition
+      url: Alis.Core.Aspect.Data.Json.MemberDefinition.html
+    - '>'
+    description: A non-null list of members.
+- api3: FinalizeSerializationMembers(Type, IEnumerable<MemberDefinition>)
+  id: Alis_Core_Aspect_Data_Json_JsonOptions_FinalizeSerializationMembers_System_Type_System_Collections_Generic_IEnumerable_Alis_Core_Aspect_Data_Json_MemberDefinition__
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/JsonOptions.cs#L243
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.JsonOptions.FinalizeSerializationMembers(System.Type,System.Collections.Generic.IEnumerable{Alis.Core.Aspect.Data.Json.MemberDefinition})
+    commentId: M:Alis.Core.Aspect.Data.Json.JsonOptions.FinalizeSerializationMembers(System.Type,System.Collections.Generic.IEnumerable{Alis.Core.Aspect.Data.Json.MemberDefinition})
+- markdown: Finalizes the serialization members from an initial setup of members.
+- code: public IEnumerable<MemberDefinition> FinalizeSerializationMembers(Type type, IEnumerable<MemberDefinition> members)
+- h4: Parameters
+- parameters:
+  - name: type
+    type:
+    - text: Type
+      url: https://learn.microsoft.com/dotnet/api/system.type
+    description: The input type. May not be null.
+  - name: members
+    type:
+    - text: IEnumerable
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+    - <
+    - text: MemberDefinition
+      url: Alis.Core.Aspect.Data.Json.MemberDefinition.html
+    - '>'
+    description: The members. May not be null.
+- h4: Returns
+- parameters:
+  - type:
+    - text: IEnumerable
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+    - <
+    - text: MemberDefinition
+      url: Alis.Core.Aspect.Data.Json.MemberDefinition.html
+    - '>'
+    description: A non-null list of members.
+- api3: GetCacheKey()
+  id: Alis_Core_Aspect_Data_Json_JsonOptions_GetCacheKey
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/JsonOptions.cs#L306
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.JsonOptions.GetCacheKey
+    commentId: M:Alis.Core.Aspect.Data.Json.JsonOptions.GetCacheKey
+- markdown: Gets a key that can be used for type cache.
+- code: public string GetCacheKey()
+- h4: Returns
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: A cache key.
+- api3: Max(int, int)
+  id: Alis_Core_Aspect_Data_Json_JsonOptions_Max_System_Int32_System_Int32_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/JsonOptions.cs#L235
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.JsonOptions.Max(System.Int32,System.Int32)
+    commentId: M:Alis.Core.Aspect.Data.Json.JsonOptions.Max(System.Int32,System.Int32)
+- markdown: Maxes the val 1
+- code: public static int Max(int val1, int val2)
+- h4: Parameters
+- parameters:
+  - name: val1
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The val
+  - name: val2
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The val
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The int
+languageId: csharp
+metadata:
+  description: Define options for JSON.

@@ -1,0 +1,50 @@
+### YamlMime:ApiPage
+title: Namespace Alis.Core.Physic.Collision.TOI
+body:
+- api1: Namespace Alis.Core.Physic.Collision.TOI
+  id: Alis_Core_Physic_Collision_TOI
+  metadata:
+    uid: Alis.Core.Physic.Collision.TOI
+    commentId: N:Alis.Core.Physic.Collision.TOI
+- h3: Classes
+- parameters:
+  - type:
+      text: SeparationFunction
+      url: Alis.Core.Physic.Collision.TOI.SeparationFunction.html
+    description: The separation function class
+  - type:
+      text: Sweep
+      url: Alis.Core.Physic.Collision.TOI.Sweep.html
+    description: >-
+      This describes the motion of a body/shape for TOI computation. Shapes are defined with respect to the body
+
+      origin, which may no coincide with the center of mass. However, to support dynamics we must interpolate the center
+
+      of
+
+      mass position.
+  - type:
+      text: TimeOfImpact
+      url: Alis.Core.Physic.Collision.TOI.TimeOfImpact.html
+    description: The time of impact class
+- h3: Structs
+- parameters:
+  - type:
+      text: ToiInput
+      url: Alis.Core.Physic.Collision.TOI.ToiInput.html
+    description: Input parameters for CalculateTimeOfImpact
+  - type:
+      text: ToiOutput
+      url: Alis.Core.Physic.Collision.TOI.ToiOutput.html
+    description: The toi output
+- h3: Enums
+- parameters:
+  - type:
+      text: SeparationFunctionType
+      url: Alis.Core.Physic.Collision.TOI.SeparationFunctionType.html
+    description: The separation function type enum
+  - type:
+      text: ToiOutputState
+      url: Alis.Core.Physic.Collision.TOI.ToiOutputState.html
+    description: The toi output state enum
+languageId: csharp

@@ -1,0 +1,507 @@
+### YamlMime:ApiPage
+title: Struct TextInputEvent
+body:
+- api1: Struct TextInputEvent
+  id: Alis_Core_Graphic_Sdl2_Structs_TextInputEvent
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TextInputEvent.cs#L38
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TextInputEvent
+    commentId: T:Alis.Core.Graphic.Sdl2.Structs.TextInputEvent
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Structs
+      url: Alis.Core.Graphic.Sdl2.Structs.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The sdl text input event
+- code: public struct TextInputEvent
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Fields
+- api3: byte0
+  id: Alis_Core_Graphic_Sdl2_Structs_TextInputEvent_byte0
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TextInputEvent.cs#L59
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte0
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte0
+- markdown: The byte
+- code: internal byte byte0
+- h4: Field Value
+- parameters:
+  - type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+- api3: byte1
+  id: Alis_Core_Graphic_Sdl2_Structs_TextInputEvent_byte1
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TextInputEvent.cs#L64
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte1
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte1
+- markdown: The byte
+- code: internal byte byte1
+- h4: Field Value
+- parameters:
+  - type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+- api3: byte10
+  id: Alis_Core_Graphic_Sdl2_Structs_TextInputEvent_byte10
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TextInputEvent.cs#L109
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte10
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte10
+- markdown: The byte 10
+- code: internal byte byte10
+- h4: Field Value
+- parameters:
+  - type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+- api3: byte11
+  id: Alis_Core_Graphic_Sdl2_Structs_TextInputEvent_byte11
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TextInputEvent.cs#L114
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte11
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte11
+- markdown: The byte 11
+- code: internal byte byte11
+- h4: Field Value
+- parameters:
+  - type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+- api3: byte12
+  id: Alis_Core_Graphic_Sdl2_Structs_TextInputEvent_byte12
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TextInputEvent.cs#L119
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte12
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte12
+- markdown: The byte 12
+- code: internal byte byte12
+- h4: Field Value
+- parameters:
+  - type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+- api3: byte13
+  id: Alis_Core_Graphic_Sdl2_Structs_TextInputEvent_byte13
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TextInputEvent.cs#L124
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte13
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte13
+- markdown: The byte 13
+- code: internal byte byte13
+- h4: Field Value
+- parameters:
+  - type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+- api3: byte14
+  id: Alis_Core_Graphic_Sdl2_Structs_TextInputEvent_byte14
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TextInputEvent.cs#L129
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte14
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte14
+- markdown: The byte 14
+- code: internal byte byte14
+- h4: Field Value
+- parameters:
+  - type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+- api3: byte15
+  id: Alis_Core_Graphic_Sdl2_Structs_TextInputEvent_byte15
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TextInputEvent.cs#L134
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte15
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte15
+- markdown: The byte 15
+- code: internal byte byte15
+- h4: Field Value
+- parameters:
+  - type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+- api3: byte16
+  id: Alis_Core_Graphic_Sdl2_Structs_TextInputEvent_byte16
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TextInputEvent.cs#L139
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte16
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte16
+- markdown: The byte 16
+- code: internal byte byte16
+- h4: Field Value
+- parameters:
+  - type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+- api3: byte17
+  id: Alis_Core_Graphic_Sdl2_Structs_TextInputEvent_byte17
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TextInputEvent.cs#L144
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte17
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte17
+- markdown: The byte 17
+- code: internal byte byte17
+- h4: Field Value
+- parameters:
+  - type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+- api3: byte18
+  id: Alis_Core_Graphic_Sdl2_Structs_TextInputEvent_byte18
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TextInputEvent.cs#L149
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte18
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte18
+- markdown: The byte 18
+- code: internal byte byte18
+- h4: Field Value
+- parameters:
+  - type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+- api3: byte19
+  id: Alis_Core_Graphic_Sdl2_Structs_TextInputEvent_byte19
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TextInputEvent.cs#L154
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte19
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte19
+- markdown: The byte 19
+- code: internal byte byte19
+- h4: Field Value
+- parameters:
+  - type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+- api3: byte2
+  id: Alis_Core_Graphic_Sdl2_Structs_TextInputEvent_byte2
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TextInputEvent.cs#L69
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte2
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte2
+- markdown: The byte
+- code: internal byte byte2
+- h4: Field Value
+- parameters:
+  - type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+- api3: byte20
+  id: Alis_Core_Graphic_Sdl2_Structs_TextInputEvent_byte20
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TextInputEvent.cs#L159
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte20
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte20
+- markdown: The byte 20
+- code: internal byte byte20
+- h4: Field Value
+- parameters:
+  - type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+- api3: byte21
+  id: Alis_Core_Graphic_Sdl2_Structs_TextInputEvent_byte21
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TextInputEvent.cs#L164
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte21
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte21
+- markdown: The byte 21
+- code: internal byte byte21
+- h4: Field Value
+- parameters:
+  - type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+- api3: byte22
+  id: Alis_Core_Graphic_Sdl2_Structs_TextInputEvent_byte22
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TextInputEvent.cs#L169
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte22
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte22
+- markdown: The byte 22
+- code: internal byte byte22
+- h4: Field Value
+- parameters:
+  - type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+- api3: byte23
+  id: Alis_Core_Graphic_Sdl2_Structs_TextInputEvent_byte23
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TextInputEvent.cs#L174
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte23
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte23
+- markdown: The byte 23
+- code: internal byte byte23
+- h4: Field Value
+- parameters:
+  - type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+- api3: byte24
+  id: Alis_Core_Graphic_Sdl2_Structs_TextInputEvent_byte24
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TextInputEvent.cs#L179
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte24
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte24
+- markdown: The byte 24
+- code: internal byte byte24
+- h4: Field Value
+- parameters:
+  - type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+- api3: byte25
+  id: Alis_Core_Graphic_Sdl2_Structs_TextInputEvent_byte25
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TextInputEvent.cs#L184
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte25
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte25
+- markdown: The byte 25
+- code: internal byte byte25
+- h4: Field Value
+- parameters:
+  - type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+- api3: byte26
+  id: Alis_Core_Graphic_Sdl2_Structs_TextInputEvent_byte26
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TextInputEvent.cs#L189
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte26
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte26
+- markdown: The byte 26
+- code: internal byte byte26
+- h4: Field Value
+- parameters:
+  - type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+- api3: byte27
+  id: Alis_Core_Graphic_Sdl2_Structs_TextInputEvent_byte27
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TextInputEvent.cs#L194
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte27
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte27
+- markdown: The byte 27
+- code: internal byte byte27
+- h4: Field Value
+- parameters:
+  - type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+- api3: byte28
+  id: Alis_Core_Graphic_Sdl2_Structs_TextInputEvent_byte28
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TextInputEvent.cs#L199
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte28
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte28
+- markdown: The byte 28
+- code: internal byte byte28
+- h4: Field Value
+- parameters:
+  - type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+- api3: byte29
+  id: Alis_Core_Graphic_Sdl2_Structs_TextInputEvent_byte29
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TextInputEvent.cs#L204
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte29
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte29
+- markdown: The byte 29
+- code: internal byte byte29
+- h4: Field Value
+- parameters:
+  - type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+- api3: byte3
+  id: Alis_Core_Graphic_Sdl2_Structs_TextInputEvent_byte3
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TextInputEvent.cs#L74
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte3
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte3
+- markdown: The byte
+- code: internal byte byte3
+- h4: Field Value
+- parameters:
+  - type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+- api3: byte30
+  id: Alis_Core_Graphic_Sdl2_Structs_TextInputEvent_byte30
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TextInputEvent.cs#L209
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte30
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte30
+- markdown: The byte 30
+- code: internal byte byte30
+- h4: Field Value
+- parameters:
+  - type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+- api3: byte31
+  id: Alis_Core_Graphic_Sdl2_Structs_TextInputEvent_byte31
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TextInputEvent.cs#L214
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte31
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte31
+- markdown: The byte 31
+- code: internal byte byte31
+- h4: Field Value
+- parameters:
+  - type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+- api3: byte4
+  id: Alis_Core_Graphic_Sdl2_Structs_TextInputEvent_byte4
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TextInputEvent.cs#L79
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte4
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte4
+- markdown: The byte
+- code: internal byte byte4
+- h4: Field Value
+- parameters:
+  - type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+- api3: byte5
+  id: Alis_Core_Graphic_Sdl2_Structs_TextInputEvent_byte5
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TextInputEvent.cs#L84
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte5
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte5
+- markdown: The byte
+- code: internal byte byte5
+- h4: Field Value
+- parameters:
+  - type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+- api3: byte6
+  id: Alis_Core_Graphic_Sdl2_Structs_TextInputEvent_byte6
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TextInputEvent.cs#L89
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte6
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte6
+- markdown: The byte
+- code: internal byte byte6
+- h4: Field Value
+- parameters:
+  - type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+- api3: byte7
+  id: Alis_Core_Graphic_Sdl2_Structs_TextInputEvent_byte7
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TextInputEvent.cs#L94
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte7
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte7
+- markdown: The byte
+- code: internal byte byte7
+- h4: Field Value
+- parameters:
+  - type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+- api3: byte8
+  id: Alis_Core_Graphic_Sdl2_Structs_TextInputEvent_byte8
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TextInputEvent.cs#L99
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte8
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte8
+- markdown: The byte
+- code: internal byte byte8
+- h4: Field Value
+- parameters:
+  - type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+- api3: byte9
+  id: Alis_Core_Graphic_Sdl2_Structs_TextInputEvent_byte9
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TextInputEvent.cs#L104
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte9
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.byte9
+- markdown: The byte
+- code: internal byte byte9
+- h4: Field Value
+- parameters:
+  - type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+- api3: timestamp
+  id: Alis_Core_Graphic_Sdl2_Structs_TextInputEvent_timestamp
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TextInputEvent.cs#L49
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.timestamp
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.timestamp
+- markdown: The timestamp
+- code: public uint timestamp
+- h4: Field Value
+- parameters:
+  - type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+- api3: type
+  id: Alis_Core_Graphic_Sdl2_Structs_TextInputEvent_type
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TextInputEvent.cs#L44
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.type
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.type
+- markdown: The type
+- code: public EventType type
+- h4: Field Value
+- parameters:
+  - type:
+    - text: EventType
+      url: Alis.Core.Graphic.Sdl2.Enums.EventType.html
+- api3: windowID
+  id: Alis_Core_Graphic_Sdl2_Structs_TextInputEvent_windowID
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TextInputEvent.cs#L54
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.windowID
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.windowID
+- markdown: The window id
+- code: public uint windowID
+- h4: Field Value
+- parameters:
+  - type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+- h2: Properties
+- api3: Text
+  id: Alis_Core_Graphic_Sdl2_Structs_TextInputEvent_Text
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TextInputEvent.cs#L219
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.Text
+    commentId: P:Alis.Core.Graphic.Sdl2.Structs.TextInputEvent.Text
+- markdown: Gets or sets the value of the text
+- code: public byte[] Text { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+    - '['
+    - ']'
+languageId: csharp
+metadata:
+  description: The sdl text input event

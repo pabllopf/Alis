@@ -1,0 +1,15 @@
+### YamlMime:ApiPage
+title: Namespace Alis.Core.Ecs.System.Manager.Network
+body:
+- api1: Namespace Alis.Core.Ecs.System.Manager.Network
+  id: Alis_Core_Ecs_System_Manager_Network
+  metadata:
+    uid: Alis.Core.Ecs.System.Manager.Network
+    commentId: N:Alis.Core.Ecs.System.Manager.Network
+- h3: Classes
+- parameters:
+  - type:
+      text: NetworkManager
+      url: Alis.Core.Ecs.System.Manager.Network.NetworkManager.html
+    description: The network manager class
+languageId: csharp

@@ -1,0 +1,36 @@
+### YamlMime:ApiPage
+title: Delegate BeforeCollisionHandler
+body:
+- api1: Delegate BeforeCollisionHandler
+  id: Alis_Core_Physic_Collision_Handlers_BeforeCollisionHandler
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/Handlers/BeforeCollisionHandler.cs#L37
+  metadata:
+    uid: Alis.Core.Physic.Collision.Handlers.BeforeCollisionHandler
+    commentId: T:Alis.Core.Physic.Collision.Handlers.BeforeCollisionHandler
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Physic.Collision.Handlers
+      url: Alis.Core.Physic.Collision.Handlers.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The before collision handler
+- code: public delegate bool BeforeCollisionHandler(Fixture fixtureA, Fixture fixtureB)
+- h4: Parameters
+- parameters:
+  - name: fixtureA
+    type:
+    - text: Fixture
+      url: Alis.Core.Physic.Dynamics.Fixture.html
+  - name: fixtureB
+    type:
+    - text: Fixture
+      url: Alis.Core.Physic.Dynamics.Fixture.html
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+languageId: csharp
+metadata:
+  description: The before collision handler

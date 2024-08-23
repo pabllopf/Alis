@@ -1,0 +1,43 @@
+### YamlMime:ApiPage
+title: Enum UpdateMode
+body:
+- api1: Enum UpdateMode
+  id: Alis_Core_Ecs_System_Setting_Input_UpdateMode
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Setting/Input/UpdateMode.cs#L35
+  metadata:
+    uid: Alis.Core.Ecs.System.Setting.Input.UpdateMode
+    commentId: T:Alis.Core.Ecs.System.Setting.Input.UpdateMode
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Ecs.System.Setting.Input
+      url: Alis.Core.Ecs.System.Setting.Input.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The update mode enum
+- code: public enum UpdateMode
+- h2: Fields
+- parameters:
+  - name: Default
+    default: "0"
+    description: >+
+      The default update mode
+
+  - name: DynamicUpdate
+    default: "1"
+    description: >+
+      The dynamic update update mode
+
+  - name: FixedUpdate
+    default: "2"
+    description: >+
+      The fixed update update mode
+
+  - name: ManualUpdate
+    default: "3"
+    description: >+
+      The manual update update mode
+
+languageId: csharp
+metadata:
+  description: The update mode enum

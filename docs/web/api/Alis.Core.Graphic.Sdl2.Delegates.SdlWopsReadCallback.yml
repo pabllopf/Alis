@@ -1,0 +1,44 @@
+### YamlMime:ApiPage
+title: Delegate SdlWopsReadCallback
+body:
+- api1: Delegate SdlWopsReadCallback
+  id: Alis_Core_Graphic_Sdl2_Delegates_SdlWopsReadCallback
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Delegates/SdlWopsReadCallback.cs#L38
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Delegates.SdlWopsReadCallback
+    commentId: T:Alis.Core.Graphic.Sdl2.Delegates.SdlWopsReadCallback
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Delegates
+      url: Alis.Core.Graphic.Sdl2.Delegates.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The sdl wops read callback
+- code: public delegate IntPtr SdlWopsReadCallback(IntPtr context, IntPtr ptr, IntPtr size, IntPtr maxNum)
+- h4: Parameters
+- parameters:
+  - name: context
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+  - name: ptr
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+  - name: size
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+  - name: maxNum
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+- h4: Returns
+- parameters:
+  - type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+languageId: csharp
+metadata:
+  description: The sdl wops read callback

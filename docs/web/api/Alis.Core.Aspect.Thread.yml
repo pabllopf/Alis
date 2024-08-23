@@ -1,0 +1,19 @@
+### YamlMime:ApiPage
+title: Namespace Alis.Core.Aspect.Thread
+body:
+- api1: Namespace Alis.Core.Aspect.Thread
+  id: Alis_Core_Aspect_Thread
+  metadata:
+    uid: Alis.Core.Aspect.Thread
+    commentId: N:Alis.Core.Aspect.Thread
+- h3: Classes
+- parameters:
+  - type:
+      text: ThreadManager
+      url: Alis.Core.Aspect.Thread.ThreadManager.html
+    description: The thread manager class
+  - type:
+      text: ThreadTask
+      url: Alis.Core.Aspect.Thread.ThreadTask.html
+    description: The thread task class
+languageId: csharp

@@ -1,0 +1,450 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+      <title>Class Fixture | Alis - Develop the video games of your dreams &#128175; free!! </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class Fixture | Alis - Develop the video games of your dreams &#128175; free!! ">
+      
+      <meta name="description" content="A fixture is used to attach a Shape to a body for collision detection. A fixture inherits its transform from
+its parent. Fixtures hold additional non-geometric data such as friction, collision filters, etc. Fixtures are
+created
+via Body.CreateFixture. Warning: You cannot reuse fixtures.">
+      <link rel="icon" href="../resources/logo.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ApiPage">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../resources/logo.png" alt="Alis">
+            Alis
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 class='section api' data-uid='Alis.Core.Physic.Dynamics.Fixture' data-commentid='T:Alis.Core.Physic.Dynamics.Fixture' id='Alis_Core_Physic_Dynamics_Fixture'>Class Fixture    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Fixture.cs#L50'><i class='bi bi-code-slash'></i></a></h1>
+ <div class="facts text-secondary">
+<dl><dt>Namespace</dt><dd><a href='Alis.Core.Physic.Dynamics.html'>Alis.Core.Physic.Dynamics</a></dd></dl><dl><dt>Assembly</dt><dd>Alis.dll</dd></dl>
+</div><p>A fixture is used to attach a Shape to a body for collision detection. A fixture inherits its transform from
+its parent. Fixtures hold additional non-geometric data such as friction, collision filters, etc. Fixtures are
+created
+via Body.CreateFixture. Warning: You cannot reuse fixtures.</p>
+<pre><code class='lang-csharp'>public class Fixture</code></pre><h4 class='section'>Inheritance</h4><dl class="typelist inheritance"><dd>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object'>object</a>
+</div>
+<div>
+<a href='Alis.Core.Physic.Dynamics.Fixture.html'>Fixture</a>
+</div>
+
+</dd></dl><h4 class='section'>Inherited Members</h4><dl class="typelist"><dd>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)'>object.Equals(object?)</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)'>object.Equals(object?, object?)</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.gethashcode'>object.GetHashCode()</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.gettype'>object.GetType()</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone'>object.MemberwiseClone()</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.referenceequals'>object.ReferenceEquals(object?, object?)</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.tostring'>object.ToString()</a>
+</div>
+
+</dd></dl><h2 class='section'>Constructors</h2><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Fixture.#ctor(Alis.Core.Physic.Collision.Shapes.AShape,Alis.Core.Physic.Collision.Filtering.Filter,System.Single,System.Single,System.Single,System.Boolean)' data-commentid='M:Alis.Core.Physic.Dynamics.Fixture.#ctor(Alis.Core.Physic.Collision.Shapes.AShape,Alis.Core.Physic.Collision.Filtering.Filter,System.Single,System.Single,System.Single,System.Boolean)' id='Alis_Core_Physic_Dynamics_Fixture__ctor_Alis_Core_Physic_Collision_Shapes_AShape_Alis_Core_Physic_Collision_Filtering_Filter_System_Single_System_Single_System_Single_System_Boolean_'>Fixture(AShape, Filter, float, float, float, bool)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Fixture.cs#L81'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Initializes a new instance of the <span class="xref">Alis.Core.Physic.Dynamics.Fixture</span> class</p>
+<pre><code class='lang-csharp'>public Fixture(AShape shape, Filter filter, float friction = 0.2, float restitution = 0, float restitutionThreshold = 1, bool isSensor = false)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>shape</code> <a href='Alis.Core.Physic.Collision.Shapes.AShape.html'>AShape</a>  </dt>
+<dd>
+
+
+<p>The shape</p>
+
+</dd><dt><code>filter</code> <a href='Alis.Core.Physic.Collision.Filtering.Filter.html'>Filter</a>  </dt>
+<dd>
+
+
+<p>The filter</p>
+
+</dd><dt><code>friction</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The friction</p>
+
+</dd><dt><code>restitution</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The restitution</p>
+
+</dd><dt><code>restitutionThreshold</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The restitution threshold</p>
+
+</dd><dt><code>isSensor</code> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+<p>The is sensor</p>
+
+</dd></dl><h2 class='section'>Fields</h2><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Fixture.CollidesWithprivate' data-commentid='F:Alis.Core.Physic.Dynamics.Fixture.CollidesWithprivate' id='Alis_Core_Physic_Dynamics_Fixture_CollidesWithprivate'>CollidesWithprivate    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Fixture.cs#L55'><i class='bi bi-code-slash'></i></a></h3>
+ <p>The collides with</p>
+<pre><code class='lang-csharp'>internal Category CollidesWithprivate</code></pre><h4 class='section'>Field Value</h4><dl class='parameters'><dt> <a href='Alis.Core.Physic.Collision.Filtering.Category.html'>Category</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Fixture.CollisionCategoriesprivate' data-commentid='F:Alis.Core.Physic.Dynamics.Fixture.CollisionCategoriesprivate' id='Alis_Core_Physic_Dynamics_Fixture_CollisionCategoriesprivate'>CollisionCategoriesprivate    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Fixture.cs#L60'><i class='bi bi-code-slash'></i></a></h3>
+ <p>The collision categories</p>
+<pre><code class='lang-csharp'>internal Category CollisionCategoriesprivate</code></pre><h4 class='section'>Field Value</h4><dl class='parameters'><dt> <a href='Alis.Core.Physic.Collision.Filtering.Category.html'>Category</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Fixture.CollisionGroupPrivate' data-commentid='F:Alis.Core.Physic.Dynamics.Fixture.CollisionGroupPrivate' id='Alis_Core_Physic_Dynamics_Fixture_CollisionGroupPrivate'>CollisionGroupPrivate    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Fixture.cs#L65'><i class='bi bi-code-slash'></i></a></h3>
+ <p>The collision group</p>
+<pre><code class='lang-csharp'>internal short CollisionGroupPrivate</code></pre><h4 class='section'>Field Value</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.int16'>short</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Fixture.IsSensorPrivate' data-commentid='F:Alis.Core.Physic.Dynamics.Fixture.IsSensorPrivate' id='Alis_Core_Physic_Dynamics_Fixture_IsSensorPrivate'>IsSensorPrivate    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Fixture.cs#L70'><i class='bi bi-code-slash'></i></a></h3>
+ <p>The is sensor</p>
+<pre><code class='lang-csharp'>internal bool IsSensorPrivate</code></pre><h4 class='section'>Field Value</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h2 class='section'>Properties</h2><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Fixture.AfterCollision' data-commentid='P:Alis.Core.Physic.Dynamics.Fixture.AfterCollision' id='Alis_Core_Physic_Dynamics_Fixture_AfterCollision'>AfterCollision    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Fixture.cs#L125'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Fires after two shapes has collided and are solved. This gives you a chance to get the impact force.</p>
+<pre><code class='lang-csharp'>public AfterCollisionHandler AfterCollision { get; set; }</code></pre><h4 class='section'>Property Value</h4><dl class='parameters'><dt> <a href='Alis.Core.Physic.Collision.Handlers.AfterCollisionHandler.html'>AfterCollisionHandler</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Fixture.BeforeCollision' data-commentid='P:Alis.Core.Physic.Dynamics.Fixture.BeforeCollision' id='Alis_Core_Physic_Dynamics_Fixture_BeforeCollision'>BeforeCollision    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Fixture.cs#L131'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Fires when two fixtures are close to each other. Due to how the broadphase works, this can be quite inaccurate
+as shapes are approximated using AABBs.</p>
+<pre><code class='lang-csharp'>public BeforeCollisionHandler BeforeCollision { get; set; }</code></pre><h4 class='section'>Property Value</h4><dl class='parameters'><dt> <a href='Alis.Core.Physic.Collision.Handlers.BeforeCollisionHandler.html'>BeforeCollisionHandler</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Fixture.Body' data-commentid='P:Alis.Core.Physic.Dynamics.Fixture.Body' id='Alis_Core_Physic_Dynamics_Fixture_Body'>Body    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Fixture.cs#L261'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Get the parent body of this fixture. This is null if the fixture is not attached.</p>
+<pre><code class='lang-csharp'>public Body Body { get; internal set; }</code></pre><h4 class='section'>Property Value</h4><dl class='parameters'><dt> <a href='Alis.Core.Physic.Dynamics.Body.html'>Body</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Fixture.CollidesWith' data-commentid='P:Alis.Core.Physic.Dynamics.Fixture.CollidesWith' id='Alis_Core_Physic_Dynamics_Fixture_CollidesWith'>CollidesWith    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Fixture.cs#L198'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Defaults to Category.All The collision mask bits. This states the categories that this fixture would accept
+for collision. Use Settings.UseFPECollisionCategories to change the behavior.</p>
+<pre><code class='lang-csharp'>public Category CollidesWith { get; set; }</code></pre><h4 class='section'>Property Value</h4><dl class='parameters'><dt> <a href='Alis.Core.Physic.Collision.Filtering.Category.html'>Category</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Fixture.CollisionCategories' data-commentid='P:Alis.Core.Physic.Dynamics.Fixture.CollisionCategories' id='Alis_Core_Physic_Dynamics_Fixture_CollisionCategories'>CollisionCategories    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Fixture.cs#L219'><i class='bi bi-code-slash'></i></a></h3>
+ <p>The collision categories this fixture is a part of. If Settings.UseFPECollisionCategories is set to false:
+Defaults to Category.Cat1 If Settings.UseFPECollisionCategories is set to true: Defaults to Category.All</p>
+<pre><code class='lang-csharp'>public Category CollisionCategories { get; set; }</code></pre><h4 class='section'>Property Value</h4><dl class='parameters'><dt> <a href='Alis.Core.Physic.Collision.Filtering.Category.html'>Category</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Fixture.CollisionGroup' data-commentid='P:Alis.Core.Physic.Dynamics.Fixture.CollisionGroup' id='Alis_Core_Physic_Dynamics_Fixture_CollisionGroup'>CollisionGroup    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Fixture.cs#L178'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Defaults to 0 If Settings.UseFPECollisionCategories is set to false: Collision groups allow a certain group of
+objects to never collide (negative) or always collide (positive). Zero means no collision group. Non-zero group
+filtering always wins against the mask bits. If Settings.UseFPECollisionCategories is set to true: If 2 fixtures
+are in
+the same collision group, they will not collide.</p>
+<pre><code class='lang-csharp'>public short CollisionGroup { get; set; }</code></pre><h4 class='section'>Property Value</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.int16'>short</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Fixture.Filter' data-commentid='P:Alis.Core.Physic.Dynamics.Fixture.Filter' id='Alis_Core_Physic_Dynamics_Fixture_Filter'>Filter    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Fixture.cs#L149'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Contact filtering data.</p>
+<pre><code class='lang-csharp'>public Filter Filter { get; set; }</code></pre><h4 class='section'>Property Value</h4><dl class='parameters'><dt> <a href='Alis.Core.Physic.Collision.Filtering.Filter.html'>Filter</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Fixture.Friction' data-commentid='P:Alis.Core.Physic.Dynamics.Fixture.Friction' id='Alis_Core_Physic_Dynamics_Fixture_Friction'>Friction    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Fixture.cs#L265'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Set the coefficient of friction. This will <em>not</em> change the friction of existing contacts.</p>
+<pre><code class='lang-csharp'>public float Friction { get; set; }</code></pre><h4 class='section'>Property Value</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Fixture.IgnoreCcdWith' data-commentid='P:Alis.Core.Physic.Dynamics.Fixture.IgnoreCcdWith' id='Alis_Core_Physic_Dynamics_Fixture_IgnoreCcdWith'>IgnoreCcdWith    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Fixture.cs#L155'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Gets or sets the value of the ignore ccd with</p>
+<pre><code class='lang-csharp'>public Category IgnoreCcdWith { get; set; }</code></pre><h4 class='section'>Property Value</h4><dl class='parameters'><dt> <a href='Alis.Core.Physic.Collision.Filtering.Category.html'>Category</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Fixture.IsSensor' data-commentid='P:Alis.Core.Physic.Dynamics.Fixture.IsSensor' id='Alis_Core_Physic_Dynamics_Fixture_IsSensor'>IsSensor    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Fixture.cs#L245'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Gets or sets a value indicating whether this fixture is a sensor.</p>
+<pre><code class='lang-csharp'>public bool IsSensor { get; set; }</code></pre><h4 class='section'>Property Value</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Fixture.OnCollision' data-commentid='P:Alis.Core.Physic.Dynamics.Fixture.OnCollision' id='Alis_Core_Physic_Dynamics_Fixture_OnCollision'>OnCollision    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Fixture.cs#L137'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Fires when two shapes collide and a contact is created between them. Note that the first fixture argument is
+always the fixture that the delegate is subscribed to.</p>
+<pre><code class='lang-csharp'>public OnCollisionHandler OnCollision { get; set; }</code></pre><h4 class='section'>Property Value</h4><dl class='parameters'><dt> <a href='Alis.Core.Physic.Collision.Handlers.OnCollisionHandler.html'>OnCollisionHandler</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Fixture.OnSeparation' data-commentid='P:Alis.Core.Physic.Dynamics.Fixture.OnSeparation' id='Alis_Core_Physic_Dynamics_Fixture_OnSeparation'>OnSeparation    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Fixture.cs#L145'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Fires when two shapes separate and a contact is removed between them. Note: This can in some cases be called
+multiple times, as a fixture can have multiple contacts. Note The first fixture argument is always the fixture that
+the
+delegate is subscribed to.</p>
+<pre><code class='lang-csharp'>public OnSeparationHandler OnSeparation { get; set; }</code></pre><h4 class='section'>Property Value</h4><dl class='parameters'><dt> <a href='Alis.Core.Physic.Collision.Handlers.OnSeparationHandler.html'>OnSeparationHandler</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Fixture.Proxies' data-commentid='P:Alis.Core.Physic.Dynamics.Fixture.Proxies' id='Alis_Core_Physic_Dynamics_Fixture_Proxies'>Proxies    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Fixture.cs#L160'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Gets the value of the proxies</p>
+<pre><code class='lang-csharp'>public FixtureProxy[] Proxies { get; private set; }</code></pre><h4 class='section'>Property Value</h4><dl class='parameters'><dt> <a href='Alis.Core.Physic.Dynamics.FixtureProxy.html'>FixtureProxy</a>[]  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Fixture.ProxyCount' data-commentid='P:Alis.Core.Physic.Dynamics.Fixture.ProxyCount' id='Alis_Core_Physic_Dynamics_Fixture_ProxyCount'>ProxyCount    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Fixture.cs#L165'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Gets the value of the proxy count</p>
+<pre><code class='lang-csharp'>public int ProxyCount { get; private set; }</code></pre><h4 class='section'>Property Value</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Fixture.Restitution' data-commentid='P:Alis.Core.Physic.Dynamics.Fixture.Restitution' id='Alis_Core_Physic_Dynamics_Fixture_Restitution'>Restitution    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Fixture.cs#L269'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Set the coefficient of restitution. This will not change the restitution of existing contacts.</p>
+<pre><code class='lang-csharp'>public float Restitution { get; set; }</code></pre><h4 class='section'>Property Value</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Fixture.RestitutionThreshold' data-commentid='P:Alis.Core.Physic.Dynamics.Fixture.RestitutionThreshold' id='Alis_Core_Physic_Dynamics_Fixture_RestitutionThreshold'>RestitutionThreshold    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Fixture.cs#L168'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Get or set the restitution threshold. This will <em>not</em> change the restitution threshold of existing contacts.</p>
+<pre><code class='lang-csharp'>public float RestitutionThreshold { get; }</code></pre><h4 class='section'>Property Value</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Fixture.Shape' data-commentid='P:Alis.Core.Physic.Dynamics.Fixture.Shape' id='Alis_Core_Physic_Dynamics_Fixture_Shape'>Shape    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Fixture.cs#L240'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Get the child Shape. You can modify the child Shape, however you should not change the number of vertices
+because this will crash some collision caching mechanisms.</p>
+<pre><code class='lang-csharp'>public AShape Shape { get; internal set; }</code></pre><h4 class='section'>Property Value</h4><dl class='parameters'><dt> <a href='Alis.Core.Physic.Collision.Shapes.AShape.html'>AShape</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h2 class='section'>Methods</h2><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Fixture.CreateProxies(Alis.Core.Physic.Collision.BroadPhase.IBroadPhase,Alis.Core.Aspect.Math.Transform@)' data-commentid='M:Alis.Core.Physic.Dynamics.Fixture.CreateProxies(Alis.Core.Physic.Collision.BroadPhase.IBroadPhase,Alis.Core.Aspect.Math.Transform@)' id='Alis_Core_Physic_Dynamics_Fixture_CreateProxies_Alis_Core_Physic_Collision_BroadPhase_IBroadPhase_Alis_Core_Aspect_Math_Transform__'>CreateProxies(IBroadPhase, ref Transform)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Fixture.cs#L342'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Creates the proxies using the specified broad phase</p>
+<pre><code class='lang-csharp'>internal void CreateProxies(IBroadPhase broadPhase, ref Transform xf)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>broadPhase</code> <a href='Alis.Core.Physic.Collision.BroadPhase.IBroadPhase.html'>IBroadPhase</a>  </dt>
+<dd>
+
+
+<p>The broad phase</p>
+
+</dd><dt><code>xf</code> <a href='Alis.Core.Aspect.Math.Transform.html'>Transform</a>  </dt>
+<dd>
+
+
+<p>The xf</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Fixture.Destroy' data-commentid='M:Alis.Core.Physic.Dynamics.Fixture.Destroy' id='Alis_Core_Physic_Dynamics_Fixture_Destroy'>Destroy()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Fixture.cs#L325'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Destroys this instance</p>
+<pre><code class='lang-csharp'>internal void Destroy()</code></pre><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Fixture.DestroyProxies(Alis.Core.Physic.Collision.BroadPhase.IBroadPhase)' data-commentid='M:Alis.Core.Physic.Dynamics.Fixture.DestroyProxies(Alis.Core.Physic.Collision.BroadPhase.IBroadPhase)' id='Alis_Core_Physic_Dynamics_Fixture_DestroyProxies_Alis_Core_Physic_Collision_BroadPhase_IBroadPhase_'>DestroyProxies(IBroadPhase)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Fixture.cs#L365'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Destroys the proxies using the specified broad phase</p>
+<pre><code class='lang-csharp'>internal void DestroyProxies(IBroadPhase broadPhase)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>broadPhase</code> <a href='Alis.Core.Physic.Collision.BroadPhase.IBroadPhase.html'>IBroadPhase</a>  </dt>
+<dd>
+
+
+<p>The broad phase</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Fixture.GetAabb(Alis.Core.Physic.Shared.Aabb@,System.Int32)' data-commentid='M:Alis.Core.Physic.Dynamics.Fixture.GetAabb(Alis.Core.Physic.Shared.Aabb@,System.Int32)' id='Alis_Core_Physic_Dynamics_Fixture_GetAabb_Alis_Core_Physic_Shared_Aabb__System_Int32_'>GetAabb(out Aabb, int)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Fixture.cs#L317'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Get the fixture's AABB. This AABB may be enlarge and/or stale. If you need a more accurate AABB, compute it
+using the Shape and the body transform.</p>
+<pre><code class='lang-csharp'>public void GetAabb(out Aabb aabb, int childIndex)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>aabb</code> <a href='Alis.Core.Physic.Shared.Aabb.html'>Aabb</a>  </dt>
+<dd>
+
+
+<p>The AABB.</p>
+
+</dd><dt><code>childIndex</code> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+<p>Index of the child.</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Fixture.RayCast(Alis.Core.Physic.Collision.RayCast.RayCastOutput@,Alis.Core.Physic.Collision.RayCast.RayCastInput@,System.Int32)' data-commentid='M:Alis.Core.Physic.Dynamics.Fixture.RayCast(Alis.Core.Physic.Collision.RayCast.RayCastOutput@,Alis.Core.Physic.Collision.RayCast.RayCastInput@,System.Int32)' id='Alis_Core_Physic_Dynamics_Fixture_RayCast_Alis_Core_Physic_Collision_RayCast_RayCastOutput__Alis_Core_Physic_Collision_RayCast_RayCastInput__System_Int32_'>RayCast(out RayCastOutput, ref RayCastInput, int)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Fixture.cs#L308'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Cast a ray against this Shape.</p>
+<pre><code class='lang-csharp'>public bool RayCast(out RayCastOutput output, ref RayCastInput input, int childIndex)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>output</code> <a href='Alis.Core.Physic.Collision.RayCast.RayCastOutput.html'>RayCastOutput</a>  </dt>
+<dd>
+
+
+<p>The ray-cast results.</p>
+
+</dd><dt><code>input</code> <a href='Alis.Core.Physic.Collision.RayCast.RayCastInput.html'>RayCastInput</a>  </dt>
+<dd>
+
+
+<p>The ray-cast input parameters.</p>
+
+</dd><dt><code>childIndex</code> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+<p>Index of the child.</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Fixture.Refilter' data-commentid='M:Alis.Core.Physic.Dynamics.Fixture.Refilter' id='Alis_Core_Physic_Dynamics_Fixture_Refilter'>Refilter()    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Fixture.cs#L275'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Contacts are persistent and will keep being persistent unless they are flagged for filtering. This methods
+flags all contacts associated with the body for filtering.</p>
+<pre><code class='lang-csharp'>private void Refilter()</code></pre><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Fixture.Synchronize(Alis.Core.Physic.Collision.BroadPhase.IBroadPhase,Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Transform@)' data-commentid='M:Alis.Core.Physic.Dynamics.Fixture.Synchronize(Alis.Core.Physic.Collision.BroadPhase.IBroadPhase,Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Transform@)' id='Alis_Core_Physic_Dynamics_Fixture_Synchronize_Alis_Core_Physic_Collision_BroadPhase_IBroadPhase_Alis_Core_Aspect_Math_Transform__Alis_Core_Aspect_Math_Transform__'>Synchronize(IBroadPhase, ref Transform, ref Transform)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Fixture.cs#L384'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Synchronizes the broad phase</p>
+<pre><code class='lang-csharp'>internal void Synchronize(IBroadPhase broadPhase, ref Transform transform1, ref Transform transform2)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>broadPhase</code> <a href='Alis.Core.Physic.Collision.BroadPhase.IBroadPhase.html'>IBroadPhase</a>  </dt>
+<dd>
+
+
+<p>The broad phase</p>
+
+</dd><dt><code>transform1</code> <a href='Alis.Core.Aspect.Math.Transform.html'>Transform</a>  </dt>
+<dd>
+
+
+<p>The transform</p>
+
+</dd><dt><code>transform2</code> <a href='Alis.Core.Aspect.Math.Transform.html'>Transform</a>  </dt>
+<dd>
+
+
+<p>The transform</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Physic.Dynamics.Fixture.TestPoint(Alis.Core.Aspect.Math.Vector.Vector2@)' data-commentid='M:Alis.Core.Physic.Dynamics.Fixture.TestPoint(Alis.Core.Aspect.Math.Vector.Vector2@)' id='Alis_Core_Physic_Dynamics_Fixture_TestPoint_Alis_Core_Aspect_Math_Vector_Vector2__'>TestPoint(ref Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Fixture.cs#L302'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Test a point for containment in this fixture.</p>
+<pre><code class='lang-csharp'>public bool TestPoint(ref Vector2 point)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>point</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>A point in world coordinates.</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+
+</dd></dl>
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Alis - Develop the video games of your dreams 💯 free!! on Windows, MacOS, Linux, Android(soon), IOS(soon).
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

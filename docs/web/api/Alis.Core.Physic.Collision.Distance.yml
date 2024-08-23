@@ -1,0 +1,40 @@
+### YamlMime:ApiPage
+title: Namespace Alis.Core.Physic.Collision.Distance
+body:
+- api1: Namespace Alis.Core.Physic.Collision.Distance
+  id: Alis_Core_Physic_Collision_Distance
+  metadata:
+    uid: Alis.Core.Physic.Collision.Distance
+    commentId: N:Alis.Core.Physic.Collision.Distance
+- h3: Classes
+- parameters:
+  - type:
+      text: DistanceGjk
+      url: Alis.Core.Physic.Collision.Distance.DistanceGjk.html
+    description: >-
+      The Gilbert distance algorithm that provides the distance between shapes. Using Voronoi
+
+      regions and Barycentric coordinates.
+- h3: Structs
+- parameters:
+  - type:
+      text: DistanceInput
+      url: Alis.Core.Physic.Collision.Distance.DistanceInput.html
+    description: Input for Distance.ComputeDistance(). You have to option to use the shape radii in the computation.
+  - type:
+      text: DistanceOutput
+      url: Alis.Core.Physic.Collision.Distance.DistanceOutput.html
+    description: Output for Distance.ComputeDistance().
+  - type:
+      text: DistanceProxy
+      url: Alis.Core.Physic.Collision.Distance.DistanceProxy.html
+    description: A distance proxy is used by the GJK algorithm. It encapsulates any shape.
+  - type:
+      text: ShapeCastInput
+      url: Alis.Core.Physic.Collision.Distance.ShapeCastInput.html
+    description: Input parameters for b2ShapeCast
+  - type:
+      text: ShapeCastOutput
+      url: Alis.Core.Physic.Collision.Distance.ShapeCastOutput.html
+    description: Output results for b2ShapeCast
+languageId: csharp

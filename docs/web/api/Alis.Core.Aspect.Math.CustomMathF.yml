@@ -1,0 +1,306 @@
+### YamlMime:ApiPage
+title: Class CustomMathF
+body:
+- api1: Class CustomMathF
+  id: Alis_Core_Aspect_Math_CustomMathF
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/CustomMathF.cs#L35
+  metadata:
+    uid: Alis.Core.Aspect.Math.CustomMathF
+    commentId: T:Alis.Core.Aspect.Math.CustomMathF
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Aspect.Math
+      url: Alis.Core.Aspect.Math.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The math class
+- code: public static class CustomMathF
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: CustomMathF
+    url: Alis.Core.Aspect.Math.CustomMathF.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Fields
+- api3: E
+  id: Alis_Core_Aspect_Math_CustomMathF_E
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/CustomMathF.cs#L38
+  metadata:
+    uid: Alis.Core.Aspect.Math.CustomMathF.E
+    commentId: F:Alis.Core.Aspect.Math.CustomMathF.E
+- markdown: Represents the natural logarithmic base, specified by the constant, <code>e</code>.
+- code: public const float E = 2.7182817
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: MaxIterations
+  id: Alis_Core_Aspect_Math_CustomMathF_MaxIterations
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/CustomMathF.cs#L49
+  metadata:
+    uid: Alis.Core.Aspect.Math.CustomMathF.MaxIterations
+    commentId: F:Alis.Core.Aspect.Math.CustomMathF.MaxIterations
+- markdown: The max iterations
+- code: private const int MaxIterations = 10
+- h4: Field Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: Pi
+  id: Alis_Core_Aspect_Math_CustomMathF_Pi
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/CustomMathF.cs#L41
+  metadata:
+    uid: Alis.Core.Aspect.Math.CustomMathF.Pi
+    commentId: F:Alis.Core.Aspect.Math.CustomMathF.Pi
+- markdown: Represents the ratio of the circumference of a circle to its diameter, specified by the constant, p.
+- code: public const float Pi = 3.1415927
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: Tau
+  id: Alis_Core_Aspect_Math_CustomMathF_Tau
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/CustomMathF.cs#L44
+  metadata:
+    uid: Alis.Core.Aspect.Math.CustomMathF.Tau
+    commentId: F:Alis.Core.Aspect.Math.CustomMathF.Tau
+- markdown: Represents the number of radians in one turn, specified by the constant, τ.
+- code: public const float Tau = 6.2831855
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- h2: Methods
+- api3: Abs(float)
+  id: Alis_Core_Aspect_Math_CustomMathF_Abs_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/CustomMathF.cs#L85
+  metadata:
+    uid: Alis.Core.Aspect.Math.CustomMathF.Abs(System.Single)
+    commentId: M:Alis.Core.Aspect.Math.CustomMathF.Abs(System.Single)
+- markdown: Abs the value
+- code: public static float Abs(float value)
+- h4: Parameters
+- parameters:
+  - name: value
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The float
+- api3: Acos(float)
+  id: Alis_Core_Aspect_Math_CustomMathF_Acos_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/CustomMathF.cs#L156
+  metadata:
+    uid: Alis.Core.Aspect.Math.CustomMathF.Acos(System.Single)
+    commentId: M:Alis.Core.Aspect.Math.CustomMathF.Acos(System.Single)
+- markdown: Acos the x
+- code: public static float Acos(float x)
+- h4: Parameters
+- parameters:
+  - name: x
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The angle
+- api3: Cos(float)
+  id: Alis_Core_Aspect_Math_CustomMathF_Cos_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/CustomMathF.cs#L92
+  metadata:
+    uid: Alis.Core.Aspect.Math.CustomMathF.Cos(System.Single)
+    commentId: M:Alis.Core.Aspect.Math.CustomMathF.Cos(System.Single)
+- markdown: Coses the x
+- code: public static float Cos(float x)
+- h4: Parameters
+- parameters:
+  - name: x
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The result
+- api3: Max(int, int)
+  id: Alis_Core_Aspect_Math_CustomMathF_Max_System_Int32_System_Int32_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/CustomMathF.cs#L188
+  metadata:
+    uid: Alis.Core.Aspect.Math.CustomMathF.Max(System.Int32,System.Int32)
+    commentId: M:Alis.Core.Aspect.Math.CustomMathF.Max(System.Int32,System.Int32)
+- markdown: Maxes the val 1
+- code: public static int Max(int val1, int val2)
+- h4: Parameters
+- parameters:
+  - name: val1
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The val
+  - name: val2
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The val
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The int
+- api3: Max(float, float)
+  id: Alis_Core_Aspect_Math_CustomMathF_Max_System_Single_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/CustomMathF.cs#L204
+  metadata:
+    uid: Alis.Core.Aspect.Math.CustomMathF.Max(System.Single,System.Single)
+    commentId: M:Alis.Core.Aspect.Math.CustomMathF.Max(System.Single,System.Single)
+- markdown: Maxes the val 1
+- code: public static float Max(float val1, float val2)
+- h4: Parameters
+- parameters:
+  - name: val1
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The val
+  - name: val2
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The val
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The float
+- api3: Min(int, int)
+  id: Alis_Core_Aspect_Math_CustomMathF_Min_System_Int32_System_Int32_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/CustomMathF.cs#L196
+  metadata:
+    uid: Alis.Core.Aspect.Math.CustomMathF.Min(System.Int32,System.Int32)
+    commentId: M:Alis.Core.Aspect.Math.CustomMathF.Min(System.Int32,System.Int32)
+- markdown: Mins the y 3
+- code: public static int Min(int y3, int y4)
+- h4: Parameters
+- parameters:
+  - name: y3
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The
+  - name: y4
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The int
+- api3: Min(float, float)
+  id: Alis_Core_Aspect_Math_CustomMathF_Min_System_Single_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/CustomMathF.cs#L212
+  metadata:
+    uid: Alis.Core.Aspect.Math.CustomMathF.Min(System.Single,System.Single)
+    commentId: M:Alis.Core.Aspect.Math.CustomMathF.Min(System.Single,System.Single)
+- markdown: Mins the y 3
+- code: public static float Min(float y3, float y4)
+- h4: Parameters
+- parameters:
+  - name: y3
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The
+  - name: y4
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The float
+- api3: Sin(float)
+  id: Alis_Core_Aspect_Math_CustomMathF_Sin_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/CustomMathF.cs#L119
+  metadata:
+    uid: Alis.Core.Aspect.Math.CustomMathF.Sin(System.Single)
+    commentId: M:Alis.Core.Aspect.Math.CustomMathF.Sin(System.Single)
+- markdown: Sins the x
+- code: public static float Sin(float x)
+- h4: Parameters
+- parameters:
+  - name: x
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The result
+- api3: Sqrt(float)
+  id: Alis_Core_Aspect_Math_CustomMathF_Sqrt_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/CustomMathF.cs#L56
+  metadata:
+    uid: Alis.Core.Aspect.Math.CustomMathF.Sqrt(System.Single)
+    commentId: M:Alis.Core.Aspect.Math.CustomMathF.Sqrt(System.Single)
+- markdown: Sqrt the x
+- code: public static float Sqrt(float x)
+- h4: Parameters
+- parameters:
+  - name: x
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The float
+languageId: csharp
+metadata:
+  description: The math class

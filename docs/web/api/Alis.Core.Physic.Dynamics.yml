@@ -1,0 +1,61 @@
+### YamlMime:ApiPage
+title: Namespace Alis.Core.Physic.Dynamics
+body:
+- api1: Namespace Alis.Core.Physic.Dynamics
+  id: Alis_Core_Physic_Dynamics
+  metadata:
+    uid: Alis.Core.Physic.Dynamics
+    commentId: N:Alis.Core.Physic.Dynamics
+- h3: Namespaces
+- parameters:
+  - type:
+      text: Alis.Core.Physic.Dynamics.Handlers
+      url: Alis.Core.Physic.Dynamics.Handlers.html
+  - type:
+      text: Alis.Core.Physic.Dynamics.Joints
+      url: Alis.Core.Physic.Dynamics.Joints.html
+  - type:
+      text: Alis.Core.Physic.Dynamics.Solver
+      url: Alis.Core.Physic.Dynamics.Solver.html
+- h3: Classes
+- parameters:
+  - type:
+      text: Body
+      url: Alis.Core.Physic.Dynamics.Body.html
+    description: The body class
+  - type:
+      text: BodyHelper
+      url: Alis.Core.Physic.Dynamics.BodyHelper.html
+    description: The body helper class
+  - type:
+      text: BreakableBody
+      url: Alis.Core.Physic.Dynamics.BreakableBody.html
+    description: A type of body that supports multiple fixtures that can break apart.
+  - type:
+      text: Fixture
+      url: Alis.Core.Physic.Dynamics.Fixture.html
+    description: >-
+      A fixture is used to attach a Shape to a body for collision detection. A fixture inherits its transform from
+
+      its parent. Fixtures hold additional non-geometric data such as friction, collision filters, etc. Fixtures are
+
+      created
+
+      via Body.CreateFixture. Warning: You cannot reuse fixtures.
+- h3: Structs
+- parameters:
+  - type:
+      text: FixtureProxy
+      url: Alis.Core.Physic.Dynamics.FixtureProxy.html
+    description: This proxy is used internally to connect fixtures to the broad-phase.
+- h3: Enums
+- parameters:
+  - type:
+      text: BodySettings
+      url: Alis.Core.Physic.Dynamics.BodySettings.html
+    description: The body flags enum
+  - type:
+      text: BodyType
+      url: Alis.Core.Physic.Dynamics.BodyType.html
+    description: The body type.
+languageId: csharp

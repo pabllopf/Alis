@@ -1,0 +1,71 @@
+### YamlMime:ApiPage
+title: Enum InitSettings
+body:
+- api1: Enum InitSettings
+  id: Alis_Core_Graphic_Sdl2_Enums_InitSettings
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Enums/InitSettings.cs#L37
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Enums.InitSettings
+    commentId: T:Alis.Core.Graphic.Sdl2.Enums.InitSettings
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Enums
+      url: Alis.Core.Graphic.Sdl2.Enums.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The sdl init enum
+- code: >-
+    [Flags]
+
+    public enum InitSettings : uint
+- h2: Fields
+- parameters:
+  - name: InitTimer
+    default: "1"
+    description: >+
+      The sdl init timer
+
+  - name: InitAudio
+    default: "16"
+    description: >+
+      The sdl init audio
+
+  - name: InitVideo
+    default: "32"
+    description: >+
+      The sdl init video
+
+  - name: InitJoystick
+    default: "512"
+    description: >+
+      The sdl init joystick
+
+  - name: InitHaptic
+    default: "4096"
+    description: >+
+      The sdl init haptic
+
+  - name: InitGameController
+    default: "8192"
+    description: >+
+      The sdl init game controller
+
+  - name: InitEvents
+    default: "16384"
+    description: >+
+      The sdl init events
+
+  - name: InitSensor
+    default: "32768"
+    description: >+
+      The sdl init sensor
+
+  - name: InitEverything
+    default: "62001"
+    description: >+
+      The init everything sdl init
+
+languageId: csharp
+metadata:
+  description: The sdl init enum

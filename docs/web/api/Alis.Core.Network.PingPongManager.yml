@@ -1,0 +1,334 @@
+### YamlMime:ApiPage
+title: Class PingPongManager
+body:
+- api1: Class PingPongManager
+  id: Alis_Core_Network_PingPongManager
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PingPongManager.cs#L42
+  metadata:
+    uid: Alis.Core.Network.PingPongManager
+    commentId: T:Alis.Core.Network.PingPongManager
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Network
+      url: Alis.Core.Network.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: Ping Pong Manager used to facilitate ping pong WebSocket messages
+- code: 'public class PingPongManager : IPingPongManager'
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: PingPongManager
+    url: Alis.Core.Network.PingPongManager.html
+- h4: Implements
+- list:
+  - text: IPingPongManager
+    url: Alis.Core.Network.IPingPongManager.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Constructors
+- api3: PingPongManager(Guid, WebSocket, TimeSpan, CancellationToken)
+  id: Alis_Core_Network_PingPongManager__ctor_System_Guid_System_Net_WebSockets_WebSocket_System_TimeSpan_System_Threading_CancellationToken_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PingPongManager.cs#L90
+  metadata:
+    uid: Alis.Core.Network.PingPongManager.#ctor(System.Guid,System.Net.WebSockets.WebSocket,System.TimeSpan,System.Threading.CancellationToken)
+    commentId: M:Alis.Core.Network.PingPongManager.#ctor(System.Guid,System.Net.WebSockets.WebSocket,System.TimeSpan,System.Threading.CancellationToken)
+- markdown: >-
+    Initialises a new instance of the PingPongManager to facilitate ping pong WebSocket messages.
+
+    If you are manually creating an instance of this class then it is advisable to set keepAliveInterval to
+
+    TimeSpan.Zero when you create the WebSocket instance (using a factory) otherwise you may be automatically
+
+    be sending duplicate Ping messages (see keepAliveInterval below)
+- code: public PingPongManager(Guid guid, WebSocket webSocket, TimeSpan keepAliveInterval, CancellationToken cancellationToken)
+- h4: Parameters
+- parameters:
+  - name: guid
+    type:
+    - text: Guid
+      url: https://learn.microsoft.com/dotnet/api/system.guid
+    description: ''
+  - name: webSocket
+    type:
+    - text: WebSocket
+      url: https://learn.microsoft.com/dotnet/api/system.net.websockets.websocket
+    description: The web socket used to listen to ping messages and send pong messages
+  - name: keepAliveInterval
+    type:
+    - text: TimeSpan
+      url: https://learn.microsoft.com/dotnet/api/system.timespan
+    description: >-
+      The time between automatically sending ping messages.
+
+      Set this to TimeSpan.Zero if you with to manually control sending ping messages.
+  - name: cancellationToken
+    type:
+    - text: CancellationToken
+      url: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+    description: >-
+      The token used to cancel a pending ping send AND the automatic sending of ping messages
+
+      if keepAliveInterval is positive
+- h2: Fields
+- api3: _cancellationToken
+  id: Alis_Core_Network_PingPongManager__cancellationToken
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PingPongManager.cs#L47
+  metadata:
+    uid: Alis.Core.Network.PingPongManager._cancellationToken
+    commentId: F:Alis.Core.Network.PingPongManager._cancellationToken
+- markdown: The cancellation token
+- code: internal readonly CancellationToken _cancellationToken
+- h4: Field Value
+- parameters:
+  - type:
+    - text: CancellationToken
+      url: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+- api3: _guid
+  id: Alis_Core_Network_PingPongManager__guid
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PingPongManager.cs#L52
+  metadata:
+    uid: Alis.Core.Network.PingPongManager._guid
+    commentId: F:Alis.Core.Network.PingPongManager._guid
+- markdown: The guid
+- code: internal readonly Guid _guid
+- h4: Field Value
+- parameters:
+  - type:
+    - text: Guid
+      url: https://learn.microsoft.com/dotnet/api/system.guid
+- api3: _keepAliveInterval
+  id: Alis_Core_Network_PingPongManager__keepAliveInterval
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PingPongManager.cs#L57
+  metadata:
+    uid: Alis.Core.Network.PingPongManager._keepAliveInterval
+    commentId: F:Alis.Core.Network.PingPongManager._keepAliveInterval
+- markdown: The keep alive interval
+- code: internal readonly TimeSpan _keepAliveInterval
+- h4: Field Value
+- parameters:
+  - type:
+    - text: TimeSpan
+      url: https://learn.microsoft.com/dotnet/api/system.timespan
+- api3: _pingSentTicks
+  id: Alis_Core_Network_PingPongManager__pingSentTicks
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PingPongManager.cs#L72
+  metadata:
+    uid: Alis.Core.Network.PingPongManager._pingSentTicks
+    commentId: F:Alis.Core.Network.PingPongManager._pingSentTicks
+- markdown: The ping sent ticks
+- code: internal long _pingSentTicks
+- h4: Field Value
+- parameters:
+  - type:
+    - text: long
+      url: https://learn.microsoft.com/dotnet/api/system.int64
+- api3: _stopwatch
+  id: Alis_Core_Network_PingPongManager__stopwatch
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PingPongManager.cs#L62
+  metadata:
+    uid: Alis.Core.Network.PingPongManager._stopwatch
+    commentId: F:Alis.Core.Network.PingPongManager._stopwatch
+- markdown: The stopwatch
+- code: internal readonly Stopwatch _stopwatch
+- h4: Field Value
+- parameters:
+  - type:
+    - text: Stopwatch
+      url: https://learn.microsoft.com/dotnet/api/system.diagnostics.stopwatch
+- api3: _webSocket
+  id: Alis_Core_Network_PingPongManager__webSocket
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PingPongManager.cs#L67
+  metadata:
+    uid: Alis.Core.Network.PingPongManager._webSocket
+    commentId: F:Alis.Core.Network.PingPongManager._webSocket
+- markdown: The web socket
+- code: internal readonly WebSocketImplementation _webSocket
+- h4: Field Value
+- parameters:
+  - type:
+    - text: WebSocketImplementation
+      url: Alis.Core.Network.Internal.WebSocketImplementation.html
+- h2: Methods
+- api3: HandleExpiredKeepAliveInterval()
+  id: Alis_Core_Network_PingPongManager_HandleExpiredKeepAliveInterval
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PingPongManager.cs#L207
+  metadata:
+    uid: Alis.Core.Network.PingPongManager.HandleExpiredKeepAliveInterval
+    commentId: M:Alis.Core.Network.PingPongManager.HandleExpiredKeepAliveInterval
+- markdown: Handles the expired keep alive interval
+- code: internal Task HandleExpiredKeepAliveInterval()
+- h4: Returns
+- parameters:
+  - type:
+    - text: Task
+      url: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+- api3: LogPingPongManagerEnd()
+  id: Alis_Core_Network_PingPongManager_LogPingPongManagerEnd
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PingPongManager.cs#L193
+  metadata:
+    uid: Alis.Core.Network.PingPongManager.LogPingPongManagerEnd
+    commentId: M:Alis.Core.Network.PingPongManager.LogPingPongManagerEnd
+- markdown: Logs the ping pong manager end
+- code: internal void LogPingPongManagerEnd()
+- api3: LogPingPongManagerStart()
+  id: Alis_Core_Network_PingPongManager_LogPingPongManagerStart
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PingPongManager.cs#L185
+  metadata:
+    uid: Alis.Core.Network.PingPongManager.LogPingPongManagerStart
+    commentId: M:Alis.Core.Network.PingPongManager.LogPingPongManagerStart
+- markdown: Logs the ping pong manager start
+- code: internal void LogPingPongManagerStart()
+- api3: OnPong(PongEventArgs)
+  id: Alis_Core_Network_PingPongManager_OnPong_Alis_Core_Network_PongEventArgs_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PingPongManager.cs#L131
+  metadata:
+    uid: Alis.Core.Network.PingPongManager.OnPong(Alis.Core.Network.PongEventArgs)
+    commentId: M:Alis.Core.Network.PingPongManager.OnPong(Alis.Core.Network.PongEventArgs)
+- markdown: Ons the pong using the specified e
+- code: protected virtual void OnPong(PongEventArgs e)
+- h4: Parameters
+- parameters:
+  - name: e
+    type:
+    - text: PongEventArgs
+      url: Alis.Core.Network.PongEventArgs.html
+    description: The
+- api3: PingForever()
+  id: Alis_Core_Network_PingPongManager_PingForever
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PingPongManager.cs#L139
+  metadata:
+    uid: Alis.Core.Network.PingPongManager.PingForever
+    commentId: M:Alis.Core.Network.PingPongManager.PingForever
+- markdown: Pings the forever
+- code: internal Task PingForever()
+- h4: Returns
+- parameters:
+  - type:
+    - text: Task
+      url: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+- api3: PingLoop()
+  id: Alis_Core_Network_PingPongManager_PingLoop
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PingPongManager.cs#L158
+  metadata:
+    uid: Alis.Core.Network.PingPongManager.PingLoop
+    commentId: M:Alis.Core.Network.PingPongManager.PingLoop
+- markdown: Pings the loop
+- code: internal Task PingLoop()
+- h4: Returns
+- parameters:
+  - type:
+    - text: Task
+      url: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+- api3: PingSentTicksExist()
+  id: Alis_Core_Network_PingPongManager_PingSentTicksExist
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PingPongManager.cs#L202
+  metadata:
+    uid: Alis.Core.Network.PingPongManager.PingSentTicksExist
+    commentId: M:Alis.Core.Network.PingPongManager.PingSentTicksExist
+- markdown: Describes whether this instance ping sent ticks exist
+- code: internal bool PingSentTicksExist()
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: SendPing(ArraySegment<byte>, CancellationToken)
+  id: Alis_Core_Network_PingPongManager_SendPing_System_ArraySegment_System_Byte__System_Threading_CancellationToken_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PingPongManager.cs#L122
+  metadata:
+    uid: Alis.Core.Network.PingPongManager.SendPing(System.ArraySegment{System.Byte},System.Threading.CancellationToken)
+    commentId: M:Alis.Core.Network.PingPongManager.SendPing(System.ArraySegment{System.Byte},System.Threading.CancellationToken)
+- markdown: Sends a ping frame
+- code: public Task SendPing(ArraySegment<byte> payload, CancellationToken cancellation)
+- h4: Parameters
+- parameters:
+  - name: payload
+    type:
+    - text: ArraySegment
+      url: https://learn.microsoft.com/dotnet/api/system.arraysegment-1
+    - <
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+    - '>'
+    description: The payload (must be 125 bytes of less)
+  - name: cancellation
+    type:
+    - text: CancellationToken
+      url: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+    description: The cancellation token
+- h4: Returns
+- parameters:
+  - type:
+    - text: Task
+      url: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+- api3: SendPing()
+  id: Alis_Core_Network_PingPongManager_SendPing
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PingPongManager.cs#L218
+  metadata:
+    uid: Alis.Core.Network.PingPongManager.SendPing
+    commentId: M:Alis.Core.Network.PingPongManager.SendPing
+- markdown: Sends the ping
+- code: internal Task SendPing()
+- h4: Returns
+- parameters:
+  - type:
+    - text: Task
+      url: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+- api3: WebSocketImplPong(object, PongEventArgs)
+  id: Alis_Core_Network_PingPongManager_WebSocketImplPong_System_Object_Alis_Core_Network_PongEventArgs_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PingPongManager.cs#L230
+  metadata:
+    uid: Alis.Core.Network.PingPongManager.WebSocketImplPong(System.Object,Alis.Core.Network.PongEventArgs)
+    commentId: M:Alis.Core.Network.PingPongManager.WebSocketImplPong(System.Object,Alis.Core.Network.PongEventArgs)
+- markdown: Webs the socket impl pong using the specified sender
+- code: internal void WebSocketImplPong(object sender, PongEventArgs e)
+- h4: Parameters
+- parameters:
+  - name: sender
+    type:
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    description: The sender
+  - name: e
+    type:
+    - text: PongEventArgs
+      url: Alis.Core.Network.PongEventArgs.html
+    description: The
+- api3: Pong
+  id: Alis_Core_Network_PingPongManager_Pong
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PingPongManager.cs#L115
+  metadata:
+    uid: Alis.Core.Network.PingPongManager.Pong
+    commentId: E:Alis.Core.Network.PingPongManager.Pong
+- markdown: Raised when a Pong frame is received
+- code: public event EventHandler<PongEventArgs> Pong
+- h4: Event Type
+- parameters:
+  - type:
+    - text: EventHandler
+      url: https://learn.microsoft.com/dotnet/api/system.eventhandler-1
+    - <
+    - text: PongEventArgs
+      url: Alis.Core.Network.PongEventArgs.html
+    - '>'
+languageId: csharp
+metadata:
+  description: Ping Pong Manager used to facilitate ping pong WebSocket messages

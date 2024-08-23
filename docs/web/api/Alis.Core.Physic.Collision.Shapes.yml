@@ -1,0 +1,60 @@
+### YamlMime:ApiPage
+title: Namespace Alis.Core.Physic.Collision.Shapes
+body:
+- api1: Namespace Alis.Core.Physic.Collision.Shapes
+  id: Alis_Core_Physic_Collision_Shapes
+  metadata:
+    uid: Alis.Core.Physic.Collision.Shapes
+    commentId: N:Alis.Core.Physic.Collision.Shapes
+- h3: Classes
+- parameters:
+  - type:
+      text: AShape
+      url: Alis.Core.Physic.Collision.Shapes.AShape.html
+    description: >-
+      A shape is used for collision detection. You can create a shape however you like. Shapes used for simulation
+
+      in World are created automatically when a Fixture is created. Shapes may encapsulate a one or more child shapes.
+
+      A shape is 2D geometrical object, such as a circle or polygon.
+  - type:
+      text: ChainShape
+      url: Alis.Core.Physic.Collision.Shapes.ChainShape.html
+    description: >-
+      A chain shape is a free form sequence of line segments. The chain has one-sided collision, with the surface
+
+      normal pointing to the right of the edge. This provides a counter-clockwise winding like the polygon shape.
+
+      Connectivity information is used to create smooth collisions. Warning: the chain will not collide properly if there
+
+      are
+
+      self-intersections.
+  - type:
+      text: CircleShape
+      url: Alis.Core.Physic.Collision.Shapes.CircleShape.html
+    description: A circle shape.
+  - type:
+      text: EdgeShape
+      url: Alis.Core.Physic.Collision.Shapes.EdgeShape.html
+    description: >-
+      A line segment (edge) shape. These can be connected in chains or loops to other edge shapes. Edges created
+
+      independently are two-sided and do no provide smooth movement across junctions.
+  - type:
+      text: PolygonShape
+      url: Alis.Core.Physic.Collision.Shapes.PolygonShape.html
+    description: Represents a simple non-self intersecting convex polygon. Create a convex hull from the given array of points.
+- h3: Structs
+- parameters:
+  - type:
+      text: MassData
+      url: Alis.Core.Physic.Collision.Shapes.MassData.html
+    description: This holds the mass data computed for a shape.
+- h3: Enums
+- parameters:
+  - type:
+      text: ShapeType
+      url: Alis.Core.Physic.Collision.Shapes.ShapeType.html
+    description: The shape type enum
+languageId: csharp

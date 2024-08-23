@@ -1,0 +1,162 @@
+### YamlMime:ApiPage
+title: Class WebSocketServerOptions
+body:
+- api1: Class WebSocketServerOptions
+  id: Alis_Core_Network_WebSocketServerOptions
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/WebSocketServerOptions.cs#L37
+  metadata:
+    uid: Alis.Core.Network.WebSocketServerOptions
+    commentId: T:Alis.Core.Network.WebSocketServerOptions
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Network
+      url: Alis.Core.Network.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: Server WebSocket init options
+- code: public class WebSocketServerOptions
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: WebSocketServerOptions
+    url: Alis.Core.Network.WebSocketServerOptions.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Constructors
+- api3: WebSocketServerOptions()
+  id: Alis_Core_Network_WebSocketServerOptions__ctor
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/WebSocketServerOptions.cs#L42
+  metadata:
+    uid: Alis.Core.Network.WebSocketServerOptions.#ctor
+    commentId: M:Alis.Core.Network.WebSocketServerOptions.#ctor
+- markdown: Initialises a new instance of the WebSocketServerOptions class
+- code: public WebSocketServerOptions()
+- api3: WebSocketServerOptions(double, bool, string)
+  id: Alis_Core_Network_WebSocketServerOptions__ctor_System_Double_System_Boolean_System_String_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/WebSocketServerOptions.cs#L55
+  metadata:
+    uid: Alis.Core.Network.WebSocketServerOptions.#ctor(System.Double,System.Boolean,System.String)
+    commentId: M:Alis.Core.Network.WebSocketServerOptions.#ctor(System.Double,System.Boolean,System.String)
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Network.WebSocketServerOptions" data-throw-if-not-resolved="false"></xref> class
+- code: public WebSocketServerOptions(double keepAliveInterval, bool includeExceptionInCloseResponse, string subProtocol)
+- h4: Parameters
+- parameters:
+  - name: keepAliveInterval
+    type:
+    - text: double
+      url: https://learn.microsoft.com/dotnet/api/system.double
+    description: The keep alive interval
+  - name: includeExceptionInCloseResponse
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The include exception in close response
+  - name: subProtocol
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The sub protocol
+- api3: WebSocketServerOptions(TimeSpan, string)
+  id: Alis_Core_Network_WebSocketServerOptions__ctor_System_TimeSpan_System_String_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/WebSocketServerOptions.cs#L68
+  metadata:
+    uid: Alis.Core.Network.WebSocketServerOptions.#ctor(System.TimeSpan,System.String)
+    commentId: M:Alis.Core.Network.WebSocketServerOptions.#ctor(System.TimeSpan,System.String)
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Network.WebSocketServerOptions" data-throw-if-not-resolved="false"></xref> class
+- code: public WebSocketServerOptions(TimeSpan keepAliveInterval, string subProtocol)
+- h4: Parameters
+- parameters:
+  - name: keepAliveInterval
+    type:
+    - text: TimeSpan
+      url: https://learn.microsoft.com/dotnet/api/system.timespan
+    description: The keep alive interval
+  - name: subProtocol
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The sub protocol
+- h2: Properties
+- api3: IncludeExceptionInCloseResponse
+  id: Alis_Core_Network_WebSocketServerOptions_IncludeExceptionInCloseResponse
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/WebSocketServerOptions.cs#L90
+  metadata:
+    uid: Alis.Core.Network.WebSocketServerOptions.IncludeExceptionInCloseResponse
+    commentId: P:Alis.Core.Network.WebSocketServerOptions.IncludeExceptionInCloseResponse
+- markdown: >-
+    Include the full exception (with stack trace) in the close response
+
+    when an exception is encountered and the WebSocket connection is closed
+
+    The default is false
+- code: public bool IncludeExceptionInCloseResponse { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+- api3: KeepAliveInterval
+  id: Alis_Core_Network_WebSocketServerOptions_KeepAliveInterval
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/WebSocketServerOptions.cs#L83
+  metadata:
+    uid: Alis.Core.Network.WebSocketServerOptions.KeepAliveInterval
+    commentId: P:Alis.Core.Network.WebSocketServerOptions.KeepAliveInterval
+- markdown: >-
+    How often to send ping requests to the Client
+
+    The default is 60 seconds
+
+    This is done to prevent proxy servers from closing your connection
+
+    A timespan of zero will disable the automatic ping pong mechanism
+
+    You can manually control ping pong messages using the PingPongManager class.
+
+    If you do that it is advisable to set this KeepAliveInterval to zero in the WebSocketServerFactory
+- code: public TimeSpan KeepAliveInterval { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: TimeSpan
+      url: https://learn.microsoft.com/dotnet/api/system.timespan
+- api3: SubProtocol
+  id: Alis_Core_Network_WebSocketServerOptions_SubProtocol
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/WebSocketServerOptions.cs#L99
+  metadata:
+    uid: Alis.Core.Network.WebSocketServerOptions.SubProtocol
+    commentId: P:Alis.Core.Network.WebSocketServerOptions.SubProtocol
+- markdown: >-
+    Specifies the sub protocol to send back to the client in the opening handshake
+
+    Can be null (the most common use case)
+
+    The client can specify multiple preferred protocols in the opening handshake header
+
+    The server should use the first supported one or set this to null if none of the requested sub protocols are
+
+    supported
+- code: public string SubProtocol { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+languageId: csharp
+metadata:
+  description: Server WebSocket init options

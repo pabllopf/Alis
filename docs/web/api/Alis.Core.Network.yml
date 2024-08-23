@@ -1,0 +1,89 @@
+### YamlMime:ApiPage
+title: Namespace Alis.Core.Network
+body:
+- api1: Namespace Alis.Core.Network
+  id: Alis_Core_Network
+  metadata:
+    uid: Alis.Core.Network
+    commentId: N:Alis.Core.Network
+- h3: Namespaces
+- parameters:
+  - type:
+      text: Alis.Core.Network.Exceptions
+      url: Alis.Core.Network.Exceptions.html
+  - type:
+      text: Alis.Core.Network.Internal
+      url: Alis.Core.Network.Internal.html
+- h3: Classes
+- parameters:
+  - type:
+      text: BufferPool
+      url: Alis.Core.Network.BufferPool.html
+    description: >-
+      This buffer pool is instance thread safe
+
+      Use GetBuffer to get a MemoryStream (with a publically accessible buffer)
+
+      Calling Close on this MemoryStream will clear its internal buffer and return the buffer to the pool for reuse
+
+      MemoryStreams can grow larger than the DEFAULT_BUFFER_SIZE (or whatever you passed in)
+
+      and the underlying buffers will be returned to the pool at their larger sizes
+  - type:
+      text: HttpHelper
+      url: Alis.Core.Network.HttpHelper.html
+    description: The http helper class
+  - type:
+      text: PingPongManager
+      url: Alis.Core.Network.PingPongManager.html
+    description: Ping Pong Manager used to facilitate ping pong WebSocket messages
+  - type:
+      text: PongEventArgs
+      url: Alis.Core.Network.PongEventArgs.html
+    description: Pong EventArgs
+  - type:
+      text: PublicBufferMemoryStream
+      url: Alis.Core.Network.PublicBufferMemoryStream.html
+    description: >-
+      This memory stream is not instance thread safe (not to be confused with the BufferPool which is instance thread
+
+      safe)
+  - type:
+      text: WebSocketClientFactory
+      url: Alis.Core.Network.WebSocketClientFactory.html
+    description: Web socket client factory used to open web socket client connections
+  - type:
+      text: WebSocketClientOptions
+      url: Alis.Core.Network.WebSocketClientOptions.html
+    description: Client WebSocket init options
+  - type:
+      text: WebSocketHttpContext
+      url: Alis.Core.Network.WebSocketHttpContext.html
+    description: The WebSocket HTTP Context used to initiate a WebSocket handshake
+  - type:
+      text: WebSocketServerFactory
+      url: Alis.Core.Network.WebSocketServerFactory.html
+    description: Web socket server factory used to open web socket server connections
+  - type:
+      text: WebSocketServerOptions
+      url: Alis.Core.Network.WebSocketServerOptions.html
+    description: Server WebSocket init options
+- h3: Interfaces
+- parameters:
+  - type:
+      text: IBufferPool
+      url: Alis.Core.Network.IBufferPool.html
+    description: The buffer pool interface
+  - type:
+      text: IPingPongManager
+      url: Alis.Core.Network.IPingPongManager.html
+    description: Ping Pong Manager used to facilitate ping pong WebSocket messages
+  - type:
+      text: IWebSocketClientFactory
+      url: Alis.Core.Network.IWebSocketClientFactory.html
+    description: Web socket client factory used to open web socket client connections
+  - type:
+      text: IWebSocketServerFactory
+      url: Alis.Core.Network.IWebSocketServerFactory.html
+    description: Web socket server factory used to open web socket server connections
+languageId: csharp

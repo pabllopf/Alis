@@ -1,0 +1,21 @@
+### YamlMime:ApiPage
+title: Interface IGeneralSetting
+body:
+- api1: Interface IGeneralSetting
+  id: Alis_Core_Ecs_System_Setting_General_IGeneralSetting
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Setting/General/IGeneralSetting.cs#L35
+  metadata:
+    uid: Alis.Core.Ecs.System.Setting.General.IGeneralSetting
+    commentId: T:Alis.Core.Ecs.System.Setting.General.IGeneralSetting
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Ecs.System.Setting.General
+      url: Alis.Core.Ecs.System.Setting.General.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The general setting interface
+- code: public interface IGeneralSetting
+languageId: csharp
+metadata:
+  description: The general setting interface

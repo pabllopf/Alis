@@ -1,0 +1,46 @@
+### YamlMime:ApiPage
+title: Enum WindowPos
+body:
+- api1: Enum WindowPos
+  id: Alis_Core_Graphic_Sdl2_Enums_WindowPos
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Enums/WindowPos.cs#L37
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Enums.WindowPos
+    commentId: T:Alis.Core.Graphic.Sdl2.Enums.WindowPos
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Enums
+      url: Alis.Core.Graphic.Sdl2.Enums.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The window pos enum
+- code: >-
+    [Flags]
+
+    public enum WindowPos
+- h2: Fields
+- parameters:
+  - name: WindowPosUndefinedMask
+    default: "536805376"
+    description: >+
+      The sdl window pos undefined mask
+
+  - name: WindowPosCenteredMask
+    default: "805240832"
+    description: >+
+      The sdl window pos centered mask
+
+  - name: WindowPosUndefined
+    default: "536805376"
+    description: >+
+      The sdl window pos undefined
+
+  - name: WindowPosCentered
+    default: "805240832"
+    description: >+
+      The sdl window pos centered
+
+languageId: csharp
+metadata:
+  description: The window pos enum

@@ -1,0 +1,125 @@
+### YamlMime:ApiPage
+title: Namespace Alis.Core.Aspect.Data.Json
+body:
+- api1: Namespace Alis.Core.Aspect.Data.Json
+  id: Alis_Core_Aspect_Data_Json
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json
+    commentId: N:Alis.Core.Aspect.Data.Json
+- h3: Classes
+- parameters:
+  - type:
+      text: CollectionTObject<T>
+      url: Alis.Core.Aspect.Data.Json.CollectionTObject-1.html
+    description: The collection object class
+  - type:
+      text: Conversions
+      url: Alis.Core.Aspect.Data.Json.Conversions.html
+    description: The conversions class
+  - type:
+      text: CustomListObject
+      url: Alis.Core.Aspect.Data.Json.CustomListObject.html
+    description: The list object class
+  - type:
+      text: FieldInfoAccessor
+      url: Alis.Core.Aspect.Data.Json.FieldInfoAccessor.html
+    description: The field info accessor class
+  - type:
+      text: JsonConstructorAttribute
+      url: Alis.Core.Aspect.Data.Json.JsonConstructorAttribute.html
+    description: The json constructor attribute class
+  - type:
+      text: JsonEventArgs
+      url: Alis.Core.Aspect.Data.Json.JsonEventArgs.html
+    description: Provides data for a JSON event.
+  - type:
+      text: JsonException
+      url: Alis.Core.Aspect.Data.Json.JsonException.html
+    description: The exception that is thrown when a JSON error occurs.
+  - type:
+      text: JsonIgnoreAttribute
+      url: Alis.Core.Aspect.Data.Json.JsonIgnoreAttribute.html
+    description: The json ignore attribute class
+  - type:
+      text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: Define options for JSON.
+  - type:
+      text: JsonPropertyNameAttribute
+      url: Alis.Core.Aspect.Data.Json.JsonPropertyNameAttribute.html
+    description: Provides options for JSON.
+  - type:
+      text: JsonSerializer
+      url: Alis.Core.Aspect.Data.Json.JsonSerializer.html
+    description: A utility class to serialize and deserialize JSON.
+  - type:
+      text: KeyValueType
+      url: Alis.Core.Aspect.Data.Json.KeyValueType.html
+    description: The key value type class
+  - type:
+      text: KeyValueTypeDictionary
+      url: Alis.Core.Aspect.Data.Json.KeyValueTypeDictionary.html
+    description: The key value type dictionary class
+  - type:
+      text: KeyValueTypeEnumerator
+      url: Alis.Core.Aspect.Data.Json.KeyValueTypeEnumerator.html
+    description: The key value type enumerator class
+  - type:
+      text: ListObject
+      url: Alis.Core.Aspect.Data.Json.ListObject.html
+    description: Defines an object that handles list deserialization.
+  - type:
+      text: MemberDefinition
+      url: Alis.Core.Aspect.Data.Json.MemberDefinition.html
+    description: Defines a type's member.
+  - type:
+      text: PropertyDescriptorAccessor
+      url: Alis.Core.Aspect.Data.Json.PropertyDescriptorAccessor.html
+    description: The property descriptor accessor class
+  - type:
+      text: PropertyInfoAccessor<TComponent, TMember>
+      url: Alis.Core.Aspect.Data.Json.PropertyInfoAccessor-2.html
+    description: The property info accessor class
+  - type:
+      text: ReferenceComparer
+      url: Alis.Core.Aspect.Data.Json.ReferenceComparer.html
+    description: A utility class to compare object by their reference.
+  - type:
+      text: TypeDef
+      url: Alis.Core.Aspect.Data.Json.TypeDef.html
+    description: The type def class
+- h3: Interfaces
+- parameters:
+  - type:
+      text: IMemberAccessor
+      url: Alis.Core.Aspect.Data.Json.IMemberAccessor.html
+    description: Defines an interface for quick access to a type member.
+  - type:
+      text: IOptionsHolder
+      url: Alis.Core.Aspect.Data.Json.IOptionsHolder.html
+    description: Defines an interface for setting or getting options.
+- h3: Enums
+- parameters:
+  - type:
+      text: JsonEventType
+      url: Alis.Core.Aspect.Data.Json.JsonEventType.html
+    description: Defines a type of JSON event.
+  - type:
+      text: JsonSerializationOptions
+      url: Alis.Core.Aspect.Data.Json.JsonSerializationOptions.html
+    description: Define options for JSON serialization.
+- h3: Delegates
+- parameters:
+  - type:
+      text: JAction<T1, T2>
+      url: Alis.Core.Aspect.Data.Json.JAction-2.html
+    description: The action
+  - type:
+      text: JFunc<T, TResult>
+      url: Alis.Core.Aspect.Data.Json.JFunc-2.html
+    description: The func
+  - type:
+      text: JsonCallback
+      url: Alis.Core.Aspect.Data.Json.JsonCallback.html
+    description: Defines a callback delegate to customize JSON serialization and deserialization.
+languageId: csharp

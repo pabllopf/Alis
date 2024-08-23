@@ -1,0 +1,377 @@
+### YamlMime:ApiPage
+title: Struct Aabb
+body:
+- api1: Struct Aabb
+  id: Alis_Core_Physic_Shared_Aabb
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/AABB.cs#L37
+  metadata:
+    uid: Alis.Core.Physic.Shared.Aabb
+    commentId: T:Alis.Core.Physic.Shared.Aabb
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Physic.Shared
+      url: Alis.Core.Physic.Shared.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: An axis aligned bounding box.
+- code: public struct Aabb
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Constructors
+- api3: Aabb(Vector2, Vector2)
+  id: Alis_Core_Physic_Shared_Aabb__ctor_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/AABB.cs#L52
+  metadata:
+    uid: Alis.Core.Physic.Shared.Aabb.#ctor(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)
+    commentId: M:Alis.Core.Physic.Shared.Aabb.#ctor(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Physic.Shared.Aabb" data-throw-if-not-resolved="false"></xref> class
+- code: public Aabb(Vector2 min, Vector2 max)
+- h4: Parameters
+- parameters:
+  - name: min
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The min
+  - name: max
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The max
+- api3: Aabb(Vector2, float, float)
+  id: Alis_Core_Physic_Shared_Aabb__ctor_Alis_Core_Aspect_Math_Vector_Vector2_System_Single_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/AABB.cs#L63
+  metadata:
+    uid: Alis.Core.Physic.Shared.Aabb.#ctor(Alis.Core.Aspect.Math.Vector.Vector2,System.Single,System.Single)
+    commentId: M:Alis.Core.Physic.Shared.Aabb.#ctor(Alis.Core.Aspect.Math.Vector.Vector2,System.Single,System.Single)
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Physic.Shared.Aabb" data-throw-if-not-resolved="false"></xref> class
+- code: public Aabb(Vector2 center, float width, float height)
+- h4: Parameters
+- parameters:
+  - name: center
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The center
+  - name: width
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The width
+  - name: height
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The height
+- api3: Aabb(ref Vector2, ref Vector2)
+  id: Alis_Core_Physic_Shared_Aabb__ctor_Alis_Core_Aspect_Math_Vector_Vector2__Alis_Core_Aspect_Math_Vector_Vector2__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/AABB.cs#L73
+  metadata:
+    uid: Alis.Core.Physic.Shared.Aabb.#ctor(Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@)
+    commentId: M:Alis.Core.Physic.Shared.Aabb.#ctor(Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@)
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Physic.Shared.Aabb" data-throw-if-not-resolved="false"></xref> class
+- code: public Aabb(ref Vector2 min, ref Vector2 max)
+- h4: Parameters
+- parameters:
+  - name: min
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The min
+  - name: max
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The max
+- h2: Fields
+- api3: LowerBound
+  id: Alis_Core_Physic_Shared_Aabb_LowerBound
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/AABB.cs#L40
+  metadata:
+    uid: Alis.Core.Physic.Shared.Aabb.LowerBound
+    commentId: F:Alis.Core.Physic.Shared.Aabb.LowerBound
+- markdown: The lower vertex
+- code: public Vector2 LowerBound
+- h4: Field Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: UpperBound
+  id: Alis_Core_Physic_Shared_Aabb_UpperBound
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/AABB.cs#L44
+  metadata:
+    uid: Alis.Core.Physic.Shared.Aabb.UpperBound
+    commentId: F:Alis.Core.Physic.Shared.Aabb.UpperBound
+- markdown: The upper vertex
+- code: public Vector2 UpperBound
+- h4: Field Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- h2: Properties
+- api3: Center
+  id: Alis_Core_Physic_Shared_Aabb_Center
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/AABB.cs#L90
+  metadata:
+    uid: Alis.Core.Physic.Shared.Aabb.Center
+    commentId: P:Alis.Core.Physic.Shared.Aabb.Center
+- markdown: Get the center of the AABB.
+- code: public Vector2 Center { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: Extents
+  id: Alis_Core_Physic_Shared_Aabb_Extents
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/AABB.cs#L93
+  metadata:
+    uid: Alis.Core.Physic.Shared.Aabb.Extents
+    commentId: P:Alis.Core.Physic.Shared.Aabb.Extents
+- markdown: Get the extents of the AABB (half-widths).
+- code: public Vector2 Extents { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: Height
+  id: Alis_Core_Physic_Shared_Aabb_Height
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/AABB.cs#L87
+  metadata:
+    uid: Alis.Core.Physic.Shared.Aabb.Height
+    commentId: P:Alis.Core.Physic.Shared.Aabb.Height
+- markdown: Gets the value of the height
+- code: public float Height { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: Perimeter
+  id: Alis_Core_Physic_Shared_Aabb_Perimeter
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/AABB.cs#L96
+  metadata:
+    uid: Alis.Core.Physic.Shared.Aabb.Perimeter
+    commentId: P:Alis.Core.Physic.Shared.Aabb.Perimeter
+- markdown: Get the perimeter length
+- code: public float Perimeter { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: Q1
+  id: Alis_Core_Physic_Shared_Aabb_Q1
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/AABB.cs#L124
+  metadata:
+    uid: Alis.Core.Physic.Shared.Aabb.Q1
+    commentId: P:Alis.Core.Physic.Shared.Aabb.Q1
+- markdown: First quadrant
+- code: public Aabb Q1 { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Aabb
+      url: Alis.Core.Physic.Shared.Aabb.html
+- api3: Q2
+  id: Alis_Core_Physic_Shared_Aabb_Q2
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/AABB.cs#L127
+  metadata:
+    uid: Alis.Core.Physic.Shared.Aabb.Q2
+    commentId: P:Alis.Core.Physic.Shared.Aabb.Q2
+- markdown: Second quadrant
+- code: public Aabb Q2 { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Aabb
+      url: Alis.Core.Physic.Shared.Aabb.html
+- api3: Q3
+  id: Alis_Core_Physic_Shared_Aabb_Q3
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/AABB.cs#L130
+  metadata:
+    uid: Alis.Core.Physic.Shared.Aabb.Q3
+    commentId: P:Alis.Core.Physic.Shared.Aabb.Q3
+- markdown: Third quadrant
+- code: public Aabb Q3 { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Aabb
+      url: Alis.Core.Physic.Shared.Aabb.html
+- api3: Q4
+  id: Alis_Core_Physic_Shared_Aabb_Q4
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/AABB.cs#L133
+  metadata:
+    uid: Alis.Core.Physic.Shared.Aabb.Q4
+    commentId: P:Alis.Core.Physic.Shared.Aabb.Q4
+- markdown: Forth quadrant
+- code: public Aabb Q4 { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Aabb
+      url: Alis.Core.Physic.Shared.Aabb.html
+- api3: Vertices
+  id: Alis_Core_Physic_Shared_Aabb_Vertices
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/AABB.cs#L108
+  metadata:
+    uid: Alis.Core.Physic.Shared.Aabb.Vertices
+    commentId: P:Alis.Core.Physic.Shared.Aabb.Vertices
+- markdown: Gets the vertices of the AABB.
+- code: public Vertices Vertices { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Vertices
+      url: Alis.Core.Physic.Shared.Vertices.html
+- api3: Width
+  id: Alis_Core_Physic_Shared_Aabb_Width
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/AABB.cs#L82
+  metadata:
+    uid: Alis.Core.Physic.Shared.Aabb.Width
+    commentId: P:Alis.Core.Physic.Shared.Aabb.Width
+- markdown: Gets the value of the width
+- code: public float Width { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- h2: Methods
+- api3: Combine(ref Aabb)
+  id: Alis_Core_Physic_Shared_Aabb_Combine_Alis_Core_Physic_Shared_Aabb__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/AABB.cs#L146
+  metadata:
+    uid: Alis.Core.Physic.Shared.Aabb.Combine(Alis.Core.Physic.Shared.Aabb@)
+    commentId: M:Alis.Core.Physic.Shared.Aabb.Combine(Alis.Core.Physic.Shared.Aabb@)
+- markdown: Combine an AABB into this one.
+- code: public void Combine(ref Aabb aabb)
+- h4: Parameters
+- parameters:
+  - name: aabb
+    type:
+    - text: Aabb
+      url: Alis.Core.Physic.Shared.Aabb.html
+    description: The AABB.
+- api3: Combine(ref Aabb, ref Aabb)
+  id: Alis_Core_Physic_Shared_Aabb_Combine_Alis_Core_Physic_Shared_Aabb__Alis_Core_Physic_Shared_Aabb__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/AABB.cs#L155
+  metadata:
+    uid: Alis.Core.Physic.Shared.Aabb.Combine(Alis.Core.Physic.Shared.Aabb@,Alis.Core.Physic.Shared.Aabb@)
+    commentId: M:Alis.Core.Physic.Shared.Aabb.Combine(Alis.Core.Physic.Shared.Aabb@,Alis.Core.Physic.Shared.Aabb@)
+- markdown: Combine two AABBs into this one.
+- code: public void Combine(ref Aabb aabb1, ref Aabb aabb2)
+- h4: Parameters
+- parameters:
+  - name: aabb1
+    type:
+    - text: Aabb
+      url: Alis.Core.Physic.Shared.Aabb.html
+    description: The aabb1.
+  - name: aabb2
+    type:
+    - text: Aabb
+      url: Alis.Core.Physic.Shared.Aabb.html
+    description: The aabb2.
+- api3: Contains(ref Aabb)
+  id: Alis_Core_Physic_Shared_Aabb_Contains_Alis_Core_Physic_Shared_Aabb__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/AABB.cs#L164
+  metadata:
+    uid: Alis.Core.Physic.Shared.Aabb.Contains(Alis.Core.Physic.Shared.Aabb@)
+    commentId: M:Alis.Core.Physic.Shared.Aabb.Contains(Alis.Core.Physic.Shared.Aabb@)
+- markdown: Does this AABB contain the provided AABB.
+- code: public bool Contains(ref Aabb aabb)
+- h4: Parameters
+- parameters:
+  - name: aabb
+    type:
+    - text: Aabb
+      url: Alis.Core.Physic.Shared.Aabb.html
+    description: The AABB.
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: <code>true</code> if it contains the specified AABB; otherwise, <code>false</code>.
+- api3: Contains(ref Vector2)
+  id: Alis_Core_Physic_Shared_Aabb_Contains_Alis_Core_Aspect_Math_Vector_Vector2__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/AABB.cs#L176
+  metadata:
+    uid: Alis.Core.Physic.Shared.Aabb.Contains(Alis.Core.Aspect.Math.Vector.Vector2@)
+    commentId: M:Alis.Core.Physic.Shared.Aabb.Contains(Alis.Core.Aspect.Math.Vector.Vector2@)
+- markdown: Determines whether the AABB contains the specified point.
+- code: public bool Contains(ref Vector2 point)
+- h4: Parameters
+- parameters:
+  - name: point
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The point.
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: <code>true</code> if it contains the specified point; otherwise, <code>false</code>.
+- api3: IsValid()
+  id: Alis_Core_Physic_Shared_Aabb_IsValid
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/AABB.cs#L137
+  metadata:
+    uid: Alis.Core.Physic.Shared.Aabb.IsValid
+    commentId: M:Alis.Core.Physic.Shared.Aabb.IsValid
+- markdown: Verify that the bounds are sorted. And the bounds are valid numbers (not NaN).
+- code: public bool IsValid()
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: <code>true</code> if this instance is valid; otherwise, <code>false</code>.
+- api3: TestOverlap(ref Aabb, ref Aabb)
+  id: Alis_Core_Physic_Shared_Aabb_TestOverlap_Alis_Core_Physic_Shared_Aabb__Alis_Core_Physic_Shared_Aabb__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Shared/AABB.cs#L185
+  metadata:
+    uid: Alis.Core.Physic.Shared.Aabb.TestOverlap(Alis.Core.Physic.Shared.Aabb@,Alis.Core.Physic.Shared.Aabb@)
+    commentId: M:Alis.Core.Physic.Shared.Aabb.TestOverlap(Alis.Core.Physic.Shared.Aabb@,Alis.Core.Physic.Shared.Aabb@)
+- markdown: Test if the two AABBs overlap.
+- code: public static bool TestOverlap(ref Aabb a, ref Aabb b)
+- h4: Parameters
+- parameters:
+  - name: a
+    type:
+    - text: Aabb
+      url: Alis.Core.Physic.Shared.Aabb.html
+    description: The first AABB.
+  - name: b
+    type:
+    - text: Aabb
+      url: Alis.Core.Physic.Shared.Aabb.html
+    description: The second AABB.
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: True if they are overlapping.
+languageId: csharp
+metadata:
+  description: An axis aligned bounding box.

@@ -1,0 +1,1035 @@
+### YamlMime:ApiPage
+title: Class PublicBufferMemoryStream
+body:
+- api1: Class PublicBufferMemoryStream
+  id: Alis_Core_Network_PublicBufferMemoryStream
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PublicBufferMemoryStream.cs#L42
+  metadata:
+    uid: Alis.Core.Network.PublicBufferMemoryStream
+    commentId: T:Alis.Core.Network.PublicBufferMemoryStream
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Network
+      url: Alis.Core.Network.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: >-
+    This memory stream is not instance thread safe (not to be confused with the BufferPool which is instance thread
+
+    safe)
+- code: 'public class PublicBufferMemoryStream : MemoryStream, IAsyncDisposable, IDisposable'
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: MarshalByRefObject
+    url: https://learn.microsoft.com/dotnet/api/system.marshalbyrefobject
+  - text: Stream
+    url: https://learn.microsoft.com/dotnet/api/system.io.stream
+  - text: MemoryStream
+    url: https://learn.microsoft.com/dotnet/api/system.io.memorystream
+  - text: PublicBufferMemoryStream
+    url: Alis.Core.Network.PublicBufferMemoryStream.html
+- h4: Implements
+- list:
+  - text: IAsyncDisposable
+    url: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable
+  - text: IDisposable
+    url: https://learn.microsoft.com/dotnet/api/system.idisposable
+- h4: Inherited Members
+- list:
+  - text: MemoryStream.BeginRead(byte[], int, int, AsyncCallback, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.io.memorystream.beginread
+  - text: MemoryStream.BeginWrite(byte[], int, int, AsyncCallback, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.io.memorystream.beginwrite
+  - text: MemoryStream.CopyTo(Stream, int)
+    url: https://learn.microsoft.com/dotnet/api/system.io.memorystream.copyto
+  - text: MemoryStream.CopyToAsync(Stream, int, CancellationToken)
+    url: https://learn.microsoft.com/dotnet/api/system.io.memorystream.copytoasync
+  - text: MemoryStream.Dispose(bool)
+    url: https://learn.microsoft.com/dotnet/api/system.io.memorystream.dispose
+  - text: MemoryStream.EndRead(IAsyncResult)
+    url: https://learn.microsoft.com/dotnet/api/system.io.memorystream.endread
+  - text: MemoryStream.EndWrite(IAsyncResult)
+    url: https://learn.microsoft.com/dotnet/api/system.io.memorystream.endwrite
+  - text: MemoryStream.Flush()
+    url: https://learn.microsoft.com/dotnet/api/system.io.memorystream.flush
+  - text: MemoryStream.FlushAsync(CancellationToken)
+    url: https://learn.microsoft.com/dotnet/api/system.io.memorystream.flushasync
+  - text: MemoryStream.GetBuffer()
+    url: https://learn.microsoft.com/dotnet/api/system.io.memorystream.getbuffer
+  - text: MemoryStream.Read(byte[], int, int)
+    url: https://learn.microsoft.com/dotnet/api/system.io.memorystream.read#system-io-memorystream-read(system-byte()-system-int32-system-int32)
+  - text: MemoryStream.Read(Span<byte>)
+    url: https://learn.microsoft.com/dotnet/api/system.io.memorystream.read#system-io-memorystream-read(system-span((system-byte)))
+  - text: MemoryStream.ReadAsync(byte[], int, int, CancellationToken)
+    url: https://learn.microsoft.com/dotnet/api/system.io.memorystream.readasync#system-io-memorystream-readasync(system-byte()-system-int32-system-int32-system-threading-cancellationtoken)
+  - text: MemoryStream.ReadAsync(Memory<byte>, CancellationToken)
+    url: https://learn.microsoft.com/dotnet/api/system.io.memorystream.readasync#system-io-memorystream-readasync(system-memory((system-byte))-system-threading-cancellationtoken)
+  - text: MemoryStream.ReadByte()
+    url: https://learn.microsoft.com/dotnet/api/system.io.memorystream.readbyte
+  - text: MemoryStream.Seek(long, SeekOrigin)
+    url: https://learn.microsoft.com/dotnet/api/system.io.memorystream.seek
+  - text: MemoryStream.SetLength(long)
+    url: https://learn.microsoft.com/dotnet/api/system.io.memorystream.setlength
+  - text: MemoryStream.ToArray()
+    url: https://learn.microsoft.com/dotnet/api/system.io.memorystream.toarray
+  - text: MemoryStream.TryGetBuffer(out ArraySegment<byte>)
+    url: https://learn.microsoft.com/dotnet/api/system.io.memorystream.trygetbuffer
+  - text: MemoryStream.Write(byte[], int, int)
+    url: https://learn.microsoft.com/dotnet/api/system.io.memorystream.write#system-io-memorystream-write(system-byte()-system-int32-system-int32)
+  - text: MemoryStream.Write(ReadOnlySpan<byte>)
+    url: https://learn.microsoft.com/dotnet/api/system.io.memorystream.write#system-io-memorystream-write(system-readonlyspan((system-byte)))
+  - text: MemoryStream.WriteAsync(byte[], int, int, CancellationToken)
+    url: https://learn.microsoft.com/dotnet/api/system.io.memorystream.writeasync#system-io-memorystream-writeasync(system-byte()-system-int32-system-int32-system-threading-cancellationtoken)
+  - text: MemoryStream.WriteAsync(ReadOnlyMemory<byte>, CancellationToken)
+    url: https://learn.microsoft.com/dotnet/api/system.io.memorystream.writeasync#system-io-memorystream-writeasync(system-readonlymemory((system-byte))-system-threading-cancellationtoken)
+  - text: MemoryStream.WriteByte(byte)
+    url: https://learn.microsoft.com/dotnet/api/system.io.memorystream.writebyte
+  - text: MemoryStream.WriteTo(Stream)
+    url: https://learn.microsoft.com/dotnet/api/system.io.memorystream.writeto
+  - text: MemoryStream.CanRead
+    url: https://learn.microsoft.com/dotnet/api/system.io.memorystream.canread
+  - text: MemoryStream.CanSeek
+    url: https://learn.microsoft.com/dotnet/api/system.io.memorystream.canseek
+  - text: MemoryStream.CanWrite
+    url: https://learn.microsoft.com/dotnet/api/system.io.memorystream.canwrite
+  - text: MemoryStream.Capacity
+    url: https://learn.microsoft.com/dotnet/api/system.io.memorystream.capacity
+  - text: MemoryStream.Length
+    url: https://learn.microsoft.com/dotnet/api/system.io.memorystream.length
+  - text: MemoryStream.Position
+    url: https://learn.microsoft.com/dotnet/api/system.io.memorystream.position
+  - text: Stream.Null
+    url: https://learn.microsoft.com/dotnet/api/system.io.stream.null
+  - text: Stream.BeginRead(byte[], int, int, AsyncCallback, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.io.stream.beginread
+  - text: Stream.BeginWrite(byte[], int, int, AsyncCallback, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.io.stream.beginwrite
+  - text: Stream.Close()
+    url: https://learn.microsoft.com/dotnet/api/system.io.stream.close
+  - text: Stream.CopyTo(Stream)
+    url: https://learn.microsoft.com/dotnet/api/system.io.stream.copyto#system-io-stream-copyto(system-io-stream)
+  - text: Stream.CopyTo(Stream, int)
+    url: https://learn.microsoft.com/dotnet/api/system.io.stream.copyto#system-io-stream-copyto(system-io-stream-system-int32)
+  - text: Stream.CopyToAsync(Stream)
+    url: https://learn.microsoft.com/dotnet/api/system.io.stream.copytoasync#system-io-stream-copytoasync(system-io-stream)
+  - text: Stream.CopyToAsync(Stream, int)
+    url: https://learn.microsoft.com/dotnet/api/system.io.stream.copytoasync#system-io-stream-copytoasync(system-io-stream-system-int32)
+  - text: Stream.CopyToAsync(Stream, int, CancellationToken)
+    url: https://learn.microsoft.com/dotnet/api/system.io.stream.copytoasync#system-io-stream-copytoasync(system-io-stream-system-int32-system-threading-cancellationtoken)
+  - text: Stream.CopyToAsync(Stream, CancellationToken)
+    url: https://learn.microsoft.com/dotnet/api/system.io.stream.copytoasync#system-io-stream-copytoasync(system-io-stream-system-threading-cancellationtoken)
+  - text: Stream.CreateWaitHandle()
+    url: https://learn.microsoft.com/dotnet/api/system.io.stream.createwaithandle
+  - text: Stream.Dispose()
+    url: https://learn.microsoft.com/dotnet/api/system.io.stream.dispose#system-io-stream-dispose
+  - text: Stream.Dispose(bool)
+    url: https://learn.microsoft.com/dotnet/api/system.io.stream.dispose#system-io-stream-dispose(system-boolean)
+  - text: Stream.DisposeAsync()
+    url: https://learn.microsoft.com/dotnet/api/system.io.stream.disposeasync
+  - text: Stream.EndRead(IAsyncResult)
+    url: https://learn.microsoft.com/dotnet/api/system.io.stream.endread
+  - text: Stream.EndWrite(IAsyncResult)
+    url: https://learn.microsoft.com/dotnet/api/system.io.stream.endwrite
+  - text: Stream.Flush()
+    url: https://learn.microsoft.com/dotnet/api/system.io.stream.flush
+  - text: Stream.FlushAsync()
+    url: https://learn.microsoft.com/dotnet/api/system.io.stream.flushasync#system-io-stream-flushasync
+  - text: Stream.FlushAsync(CancellationToken)
+    url: https://learn.microsoft.com/dotnet/api/system.io.stream.flushasync#system-io-stream-flushasync(system-threading-cancellationtoken)
+  - text: Stream.ObjectInvariant()
+    url: https://learn.microsoft.com/dotnet/api/system.io.stream.objectinvariant
+  - text: Stream.Read(byte[], int, int)
+    url: https://learn.microsoft.com/dotnet/api/system.io.stream.read#system-io-stream-read(system-byte()-system-int32-system-int32)
+  - text: Stream.Read(Span<byte>)
+    url: https://learn.microsoft.com/dotnet/api/system.io.stream.read#system-io-stream-read(system-span((system-byte)))
+  - text: Stream.ReadAsync(byte[], int, int)
+    url: https://learn.microsoft.com/dotnet/api/system.io.stream.readasync#system-io-stream-readasync(system-byte()-system-int32-system-int32)
+  - text: Stream.ReadAsync(byte[], int, int, CancellationToken)
+    url: https://learn.microsoft.com/dotnet/api/system.io.stream.readasync#system-io-stream-readasync(system-byte()-system-int32-system-int32-system-threading-cancellationtoken)
+  - text: Stream.ReadAsync(Memory<byte>, CancellationToken)
+    url: https://learn.microsoft.com/dotnet/api/system.io.stream.readasync#system-io-stream-readasync(system-memory((system-byte))-system-threading-cancellationtoken)
+  - text: Stream.ReadByte()
+    url: https://learn.microsoft.com/dotnet/api/system.io.stream.readbyte
+  - text: Stream.Seek(long, SeekOrigin)
+    url: https://learn.microsoft.com/dotnet/api/system.io.stream.seek
+  - text: Stream.SetLength(long)
+    url: https://learn.microsoft.com/dotnet/api/system.io.stream.setlength
+  - text: Stream.Synchronized(Stream)
+    url: https://learn.microsoft.com/dotnet/api/system.io.stream.synchronized
+  - text: Stream.Write(byte[], int, int)
+    url: https://learn.microsoft.com/dotnet/api/system.io.stream.write#system-io-stream-write(system-byte()-system-int32-system-int32)
+  - text: Stream.Write(ReadOnlySpan<byte>)
+    url: https://learn.microsoft.com/dotnet/api/system.io.stream.write#system-io-stream-write(system-readonlyspan((system-byte)))
+  - text: Stream.WriteAsync(byte[], int, int)
+    url: https://learn.microsoft.com/dotnet/api/system.io.stream.writeasync#system-io-stream-writeasync(system-byte()-system-int32-system-int32)
+  - text: Stream.WriteAsync(byte[], int, int, CancellationToken)
+    url: https://learn.microsoft.com/dotnet/api/system.io.stream.writeasync#system-io-stream-writeasync(system-byte()-system-int32-system-int32-system-threading-cancellationtoken)
+  - text: Stream.WriteAsync(ReadOnlyMemory<byte>, CancellationToken)
+    url: https://learn.microsoft.com/dotnet/api/system.io.stream.writeasync#system-io-stream-writeasync(system-readonlymemory((system-byte))-system-threading-cancellationtoken)
+  - text: Stream.WriteByte(byte)
+    url: https://learn.microsoft.com/dotnet/api/system.io.stream.writebyte
+  - text: Stream.CanRead
+    url: https://learn.microsoft.com/dotnet/api/system.io.stream.canread
+  - text: Stream.CanSeek
+    url: https://learn.microsoft.com/dotnet/api/system.io.stream.canseek
+  - text: Stream.CanTimeout
+    url: https://learn.microsoft.com/dotnet/api/system.io.stream.cantimeout
+  - text: Stream.CanWrite
+    url: https://learn.microsoft.com/dotnet/api/system.io.stream.canwrite
+  - text: Stream.Length
+    url: https://learn.microsoft.com/dotnet/api/system.io.stream.length
+  - text: Stream.Position
+    url: https://learn.microsoft.com/dotnet/api/system.io.stream.position
+  - text: Stream.ReadTimeout
+    url: https://learn.microsoft.com/dotnet/api/system.io.stream.readtimeout
+  - text: Stream.WriteTimeout
+    url: https://learn.microsoft.com/dotnet/api/system.io.stream.writetimeout
+  - text: MarshalByRefObject.GetLifetimeService()
+    url: https://learn.microsoft.com/dotnet/api/system.marshalbyrefobject.getlifetimeservice
+  - text: MarshalByRefObject.InitializeLifetimeService()
+    url: https://learn.microsoft.com/dotnet/api/system.marshalbyrefobject.initializelifetimeservice
+  - text: MarshalByRefObject.MemberwiseClone(bool)
+    url: https://learn.microsoft.com/dotnet/api/system.marshalbyrefobject.memberwiseclone
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Constructors
+- api3: PublicBufferMemoryStream(byte[], BufferPool)
+  id: Alis_Core_Network_PublicBufferMemoryStream__ctor_System_Byte___Alis_Core_Network_BufferPool_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PublicBufferMemoryStream.cs#L64
+  metadata:
+    uid: Alis.Core.Network.PublicBufferMemoryStream.#ctor(System.Byte[],Alis.Core.Network.BufferPool)
+    commentId: M:Alis.Core.Network.PublicBufferMemoryStream.#ctor(System.Byte[],Alis.Core.Network.BufferPool)
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Network.PublicBufferMemoryStream" data-throw-if-not-resolved="false"></xref> class
+- code: public PublicBufferMemoryStream(byte[] buffer, BufferPool bufferPool)
+- h4: Parameters
+- parameters:
+  - name: buffer
+    type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+    - '['
+    - ']'
+    description: The buffer
+  - name: bufferPool
+    type:
+    - text: BufferPool
+      url: Alis.Core.Network.BufferPool.html
+    description: The buffer pool
+- h2: Fields
+- api3: _buffer
+  id: Alis_Core_Network_PublicBufferMemoryStream__buffer
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PublicBufferMemoryStream.cs#L52
+  metadata:
+    uid: Alis.Core.Network.PublicBufferMemoryStream._buffer
+    commentId: F:Alis.Core.Network.PublicBufferMemoryStream._buffer
+- markdown: The buffer
+- code: internal byte[] _buffer
+- h4: Field Value
+- parameters:
+  - type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+    - '['
+    - ']'
+- api3: _bufferPoolInternal
+  id: Alis_Core_Network_PublicBufferMemoryStream__bufferPoolInternal
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PublicBufferMemoryStream.cs#L47
+  metadata:
+    uid: Alis.Core.Network.PublicBufferMemoryStream._bufferPoolInternal
+    commentId: F:Alis.Core.Network.PublicBufferMemoryStream._bufferPoolInternal
+- markdown: The buffer pool internal
+- code: internal readonly BufferPool _bufferPoolInternal
+- h4: Field Value
+- parameters:
+  - type:
+    - text: BufferPool
+      url: Alis.Core.Network.BufferPool.html
+- api3: _ms
+  id: Alis_Core_Network_PublicBufferMemoryStream__ms
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PublicBufferMemoryStream.cs#L57
+  metadata:
+    uid: Alis.Core.Network.PublicBufferMemoryStream._ms
+    commentId: F:Alis.Core.Network.PublicBufferMemoryStream._ms
+- markdown: The ms
+- code: internal MemoryStream _ms
+- h4: Field Value
+- parameters:
+  - type:
+    - text: MemoryStream
+      url: https://learn.microsoft.com/dotnet/api/system.io.memorystream
+- h2: Properties
+- api3: CanRead
+  id: Alis_Core_Network_PublicBufferMemoryStream_CanRead
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PublicBufferMemoryStream.cs#L74
+  metadata:
+    uid: Alis.Core.Network.PublicBufferMemoryStream.CanRead
+    commentId: P:Alis.Core.Network.PublicBufferMemoryStream.CanRead
+- markdown: Gets the value of the can read
+- code: public override bool CanRead { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+- api3: CanSeek
+  id: Alis_Core_Network_PublicBufferMemoryStream_CanSeek
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PublicBufferMemoryStream.cs#L79
+  metadata:
+    uid: Alis.Core.Network.PublicBufferMemoryStream.CanSeek
+    commentId: P:Alis.Core.Network.PublicBufferMemoryStream.CanSeek
+- markdown: Gets the value of the can seek
+- code: public override bool CanSeek { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+- api3: CanTimeout
+  id: Alis_Core_Network_PublicBufferMemoryStream_CanTimeout
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PublicBufferMemoryStream.cs#L84
+  metadata:
+    uid: Alis.Core.Network.PublicBufferMemoryStream.CanTimeout
+    commentId: P:Alis.Core.Network.PublicBufferMemoryStream.CanTimeout
+- markdown: Gets the value of the can timeout
+- code: public override bool CanTimeout { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+- api3: CanWrite
+  id: Alis_Core_Network_PublicBufferMemoryStream_CanWrite
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PublicBufferMemoryStream.cs#L89
+  metadata:
+    uid: Alis.Core.Network.PublicBufferMemoryStream.CanWrite
+    commentId: P:Alis.Core.Network.PublicBufferMemoryStream.CanWrite
+- markdown: Gets the value of the can write
+- code: public override bool CanWrite { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+- api3: Capacity
+  id: Alis_Core_Network_PublicBufferMemoryStream_Capacity
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PublicBufferMemoryStream.cs#L94
+  metadata:
+    uid: Alis.Core.Network.PublicBufferMemoryStream.Capacity
+    commentId: P:Alis.Core.Network.PublicBufferMemoryStream.Capacity
+- markdown: Gets or sets the value of the capacity
+- code: public override int Capacity { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: Position
+  id: Alis_Core_Network_PublicBufferMemoryStream_Position
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PublicBufferMemoryStream.cs#L103
+  metadata:
+    uid: Alis.Core.Network.PublicBufferMemoryStream.Position
+    commentId: P:Alis.Core.Network.PublicBufferMemoryStream.Position
+- markdown: Gets or sets the value of the position
+- code: public override long Position { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: long
+      url: https://learn.microsoft.com/dotnet/api/system.int64
+- api3: ReadTimeout
+  id: Alis_Core_Network_PublicBufferMemoryStream_ReadTimeout
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PublicBufferMemoryStream.cs#L112
+  metadata:
+    uid: Alis.Core.Network.PublicBufferMemoryStream.ReadTimeout
+    commentId: P:Alis.Core.Network.PublicBufferMemoryStream.ReadTimeout
+- markdown: Gets or sets the value of the read timeout
+- code: public override int ReadTimeout { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: WriteTimeout
+  id: Alis_Core_Network_PublicBufferMemoryStream_WriteTimeout
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PublicBufferMemoryStream.cs#L121
+  metadata:
+    uid: Alis.Core.Network.PublicBufferMemoryStream.WriteTimeout
+    commentId: P:Alis.Core.Network.PublicBufferMemoryStream.WriteTimeout
+- markdown: Gets or sets the value of the write timeout
+- code: public override int WriteTimeout { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- h2: Methods
+- api3: BeginRead(byte[], int, int, AsyncCallback, object)
+  id: Alis_Core_Network_PublicBufferMemoryStream_BeginRead_System_Byte___System_Int32_System_Int32_System_AsyncCallback_System_Object_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PublicBufferMemoryStream.cs#L136
+  metadata:
+    uid: Alis.Core.Network.PublicBufferMemoryStream.BeginRead(System.Byte[],System.Int32,System.Int32,System.AsyncCallback,System.Object)
+    commentId: M:Alis.Core.Network.PublicBufferMemoryStream.BeginRead(System.Byte[],System.Int32,System.Int32,System.AsyncCallback,System.Object)
+- markdown: Begins the read using the specified buffer
+- code: public override IAsyncResult BeginRead(byte[] buffer, int offset, int count, AsyncCallback callback, object state)
+- h4: Parameters
+- parameters:
+  - name: buffer
+    type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+    - '['
+    - ']'
+    description: The buffer
+  - name: offset
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The offset
+  - name: count
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The count
+  - name: callback
+    type:
+    - text: AsyncCallback
+      url: https://learn.microsoft.com/dotnet/api/system.asynccallback
+    description: The callback
+  - name: state
+    type:
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    description: The state
+- h4: Returns
+- parameters:
+  - type:
+    - text: IAsyncResult
+      url: https://learn.microsoft.com/dotnet/api/system.iasyncresult
+    description: The async result
+- api3: BeginWrite(byte[], int, int, AsyncCallback, object)
+  id: Alis_Core_Network_PublicBufferMemoryStream_BeginWrite_System_Byte___System_Int32_System_Int32_System_AsyncCallback_System_Object_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PublicBufferMemoryStream.cs#L149
+  metadata:
+    uid: Alis.Core.Network.PublicBufferMemoryStream.BeginWrite(System.Byte[],System.Int32,System.Int32,System.AsyncCallback,System.Object)
+    commentId: M:Alis.Core.Network.PublicBufferMemoryStream.BeginWrite(System.Byte[],System.Int32,System.Int32,System.AsyncCallback,System.Object)
+- markdown: Begins the write using the specified buffer
+- code: public override IAsyncResult BeginWrite(byte[] buffer, int offset, int count, AsyncCallback callback, object state)
+- h4: Parameters
+- parameters:
+  - name: buffer
+    type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+    - '['
+    - ']'
+    description: The buffer
+  - name: offset
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The offset
+  - name: count
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The count
+  - name: callback
+    type:
+    - text: AsyncCallback
+      url: https://learn.microsoft.com/dotnet/api/system.asynccallback
+    description: The callback
+  - name: state
+    type:
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    description: The state
+- h4: Returns
+- parameters:
+  - type:
+    - text: IAsyncResult
+      url: https://learn.microsoft.com/dotnet/api/system.iasyncresult
+    description: The async result
+- api3: CalculateInitialNewSize()
+  id: Alis_Core_Network_PublicBufferMemoryStream_CalculateInitialNewSize
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PublicBufferMemoryStream.cs#L289
+  metadata:
+    uid: Alis.Core.Network.PublicBufferMemoryStream.CalculateInitialNewSize
+    commentId: M:Alis.Core.Network.PublicBufferMemoryStream.CalculateInitialNewSize
+- markdown: Calculates the initial new size
+- code: internal long CalculateInitialNewSize()
+- h4: Returns
+- parameters:
+  - type:
+    - text: long
+      url: https://learn.microsoft.com/dotnet/api/system.int64
+    description: The long
+- api3: CalculateNewSize(int, int)
+  id: Alis_Core_Network_PublicBufferMemoryStream_CalculateNewSize_System_Int32_System_Int32_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PublicBufferMemoryStream.cs#L270
+  metadata:
+    uid: Alis.Core.Network.PublicBufferMemoryStream.CalculateNewSize(System.Int32,System.Int32)
+    commentId: M:Alis.Core.Network.PublicBufferMemoryStream.CalculateNewSize(System.Int32,System.Int32)
+- markdown: Calculates the new size using the specified count
+- code: internal long CalculateNewSize(int count, int position)
+- h4: Parameters
+- parameters:
+  - name: count
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The count
+  - name: position
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The position
+- h4: Returns
+- parameters:
+  - type:
+    - text: long
+      url: https://learn.microsoft.com/dotnet/api/system.int64
+    description: The new size
+- h4: Exceptions
+- parameters:
+  - type:
+    - text: WebSocketBufferOverflowException
+      url: Alis.Core.Network.Exceptions.WebSocketBufferOverflowException.html
+    description: >-
+      Tried to create a buffer ({requiredSize:#,##0} bytes) that was
+
+      larger than the max allowed size ({int.MaxValue:#,##0})
+- api3: CalculateRequiredSize(int, int)
+  id: Alis_Core_Network_PublicBufferMemoryStream_CalculateRequiredSize_System_Int32_System_Int32_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PublicBufferMemoryStream.cs#L297
+  metadata:
+    uid: Alis.Core.Network.PublicBufferMemoryStream.CalculateRequiredSize(System.Int32,System.Int32)
+    commentId: M:Alis.Core.Network.PublicBufferMemoryStream.CalculateRequiredSize(System.Int32,System.Int32)
+- markdown: Calculates the required size using the specified count
+- code: internal long CalculateRequiredSize(int count, int position)
+- h4: Parameters
+- parameters:
+  - name: count
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The count
+  - name: position
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The position
+- h4: Returns
+- parameters:
+  - type:
+    - text: long
+      url: https://learn.microsoft.com/dotnet/api/system.int64
+    description: The long
+- api3: Close()
+  id: Alis_Core_Network_PublicBufferMemoryStream_Close
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PublicBufferMemoryStream.cs#L156
+  metadata:
+    uid: Alis.Core.Network.PublicBufferMemoryStream.Close
+    commentId: M:Alis.Core.Network.PublicBufferMemoryStream.Close
+- markdown: Closes this instance
+- code: public override void Close()
+- api3: ComputeCandidateSize(long)
+  id: Alis_Core_Network_PublicBufferMemoryStream_ComputeCandidateSize_System_Int64_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PublicBufferMemoryStream.cs#L329
+  metadata:
+    uid: Alis.Core.Network.PublicBufferMemoryStream.ComputeCandidateSize(System.Int64)
+    commentId: M:Alis.Core.Network.PublicBufferMemoryStream.ComputeCandidateSize(System.Int64)
+- markdown: Computes the candidate size using the specified required size
+- code: internal long ComputeCandidateSize(long requiredSize)
+- h4: Parameters
+- parameters:
+  - name: requiredSize
+    type:
+    - text: long
+      url: https://learn.microsoft.com/dotnet/api/system.int64
+    description: The required size
+- h4: Returns
+- parameters:
+  - type:
+    - text: long
+      url: https://learn.microsoft.com/dotnet/api/system.int64
+    description: The long
+- api3: CopyToAsync(Stream, int, CancellationToken)
+  id: Alis_Core_Network_PublicBufferMemoryStream_CopyToAsync_System_IO_Stream_System_Int32_System_Threading_CancellationToken_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PublicBufferMemoryStream.cs#L173
+  metadata:
+    uid: Alis.Core.Network.PublicBufferMemoryStream.CopyToAsync(System.IO.Stream,System.Int32,System.Threading.CancellationToken)
+    commentId: M:Alis.Core.Network.PublicBufferMemoryStream.CopyToAsync(System.IO.Stream,System.Int32,System.Threading.CancellationToken)
+- markdown: Copies the to using the specified destination
+- code: public override Task CopyToAsync(Stream destination, int bufferSize, CancellationToken cancellationToken)
+- h4: Parameters
+- parameters:
+  - name: destination
+    type:
+    - text: Stream
+      url: https://learn.microsoft.com/dotnet/api/system.io.stream
+    description: The destination
+  - name: bufferSize
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The buffer size
+  - name: cancellationToken
+    type:
+    - text: CancellationToken
+      url: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+    description: The cancellation token
+- h4: Returns
+- parameters:
+  - type:
+    - text: Task
+      url: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+- api3: CreateNewBuffer(int)
+  id: Alis_Core_Network_PublicBufferMemoryStream_CreateNewBuffer_System_Int32_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PublicBufferMemoryStream.cs#L247
+  metadata:
+    uid: Alis.Core.Network.PublicBufferMemoryStream.CreateNewBuffer(System.Int32)
+    commentId: M:Alis.Core.Network.PublicBufferMemoryStream.CreateNewBuffer(System.Int32)
+- markdown: Creates the new buffer using the specified count
+- code: internal void CreateNewBuffer(int count)
+- h4: Parameters
+- parameters:
+  - name: count
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The count
+- api3: EndRead(IAsyncResult)
+  id: Alis_Core_Network_PublicBufferMemoryStream_EndRead_System_IAsyncResult_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PublicBufferMemoryStream.cs#L180
+  metadata:
+    uid: Alis.Core.Network.PublicBufferMemoryStream.EndRead(System.IAsyncResult)
+    commentId: M:Alis.Core.Network.PublicBufferMemoryStream.EndRead(System.IAsyncResult)
+- markdown: Ends the read using the specified async result
+- code: public override int EndRead(IAsyncResult asyncResult)
+- h4: Parameters
+- parameters:
+  - name: asyncResult
+    type:
+    - text: IAsyncResult
+      url: https://learn.microsoft.com/dotnet/api/system.iasyncresult
+    description: The async result
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The int
+- api3: EndWrite(IAsyncResult)
+  id: Alis_Core_Network_PublicBufferMemoryStream_EndWrite_System_IAsyncResult_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PublicBufferMemoryStream.cs#L186
+  metadata:
+    uid: Alis.Core.Network.PublicBufferMemoryStream.EndWrite(System.IAsyncResult)
+    commentId: M:Alis.Core.Network.PublicBufferMemoryStream.EndWrite(System.IAsyncResult)
+- markdown: Ends the write using the specified async result
+- code: public override void EndWrite(IAsyncResult asyncResult)
+- h4: Parameters
+- parameters:
+  - name: asyncResult
+    type:
+    - text: IAsyncResult
+      url: https://learn.microsoft.com/dotnet/api/system.iasyncresult
+    description: The async result
+- api3: EnlargeBufferIfRequired(int)
+  id: Alis_Core_Network_PublicBufferMemoryStream_EnlargeBufferIfRequired_System_Int32_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PublicBufferMemoryStream.cs#L228
+  metadata:
+    uid: Alis.Core.Network.PublicBufferMemoryStream.EnlargeBufferIfRequired(System.Int32)
+    commentId: M:Alis.Core.Network.PublicBufferMemoryStream.EnlargeBufferIfRequired(System.Int32)
+- markdown: Enlarges the buffer if required using the specified count
+- code: internal void EnlargeBufferIfRequired(int count)
+- h4: Parameters
+- parameters:
+  - name: count
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The count
+- h4: Exceptions
+- parameters:
+  - type:
+    - text: WebSocketBufferOverflowException
+      url: Alis.Core.Network.Exceptions.WebSocketBufferOverflowException.html
+    description: >-
+      Tried to create a buffer ({requiredSize:#,##0} bytes) that was
+
+      larger than the max allowed size ({int.MaxValue:#,##0})
+- api3: Flush()
+  id: Alis_Core_Network_PublicBufferMemoryStream_Flush
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PublicBufferMemoryStream.cs#L194
+  metadata:
+    uid: Alis.Core.Network.PublicBufferMemoryStream.Flush
+    commentId: M:Alis.Core.Network.PublicBufferMemoryStream.Flush
+- markdown: Flushes this instance
+- code: public override void Flush()
+- api3: FlushAsync(CancellationToken)
+  id: Alis_Core_Network_PublicBufferMemoryStream_FlushAsync_System_Threading_CancellationToken_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PublicBufferMemoryStream.cs#L203
+  metadata:
+    uid: Alis.Core.Network.PublicBufferMemoryStream.FlushAsync(System.Threading.CancellationToken)
+    commentId: M:Alis.Core.Network.PublicBufferMemoryStream.FlushAsync(System.Threading.CancellationToken)
+- markdown: Flushes the cancellation token
+- code: public override Task FlushAsync(CancellationToken cancellationToken)
+- h4: Parameters
+- parameters:
+  - name: cancellationToken
+    type:
+    - text: CancellationToken
+      url: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+    description: The cancellation token
+- h4: Returns
+- parameters:
+  - type:
+    - text: Task
+      url: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+- api3: GetBuffer()
+  id: Alis_Core_Network_PublicBufferMemoryStream_GetBuffer
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PublicBufferMemoryStream.cs#L209
+  metadata:
+    uid: Alis.Core.Network.PublicBufferMemoryStream.GetBuffer
+    commentId: M:Alis.Core.Network.PublicBufferMemoryStream.GetBuffer
+- markdown: Gets the buffer
+- code: public override byte[] GetBuffer()
+- h4: Returns
+- parameters:
+  - type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+    - '['
+    - ']'
+    description: The byte array
+- api3: IsNewBufferRequired(int)
+  id: Alis_Core_Network_PublicBufferMemoryStream_IsNewBufferRequired_System_Int32_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PublicBufferMemoryStream.cs#L241
+  metadata:
+    uid: Alis.Core.Network.PublicBufferMemoryStream.IsNewBufferRequired(System.Int32)
+    commentId: M:Alis.Core.Network.PublicBufferMemoryStream.IsNewBufferRequired(System.Int32)
+- markdown: Describes whether this instance is new buffer required
+- code: internal bool IsNewBufferRequired(int count)
+- h4: Parameters
+- parameters:
+  - name: count
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The count
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: IsNewSizeLessThanRequiredSize(long, long)
+  id: Alis_Core_Network_PublicBufferMemoryStream_IsNewSizeLessThanRequiredSize_System_Int64_System_Int64_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PublicBufferMemoryStream.cs#L322
+  metadata:
+    uid: Alis.Core.Network.PublicBufferMemoryStream.IsNewSizeLessThanRequiredSize(System.Int64,System.Int64)
+    commentId: M:Alis.Core.Network.PublicBufferMemoryStream.IsNewSizeLessThanRequiredSize(System.Int64,System.Int64)
+- markdown: Describes whether this instance is new size less than required size
+- code: internal bool IsNewSizeLessThanRequiredSize(long newSize, long requiredSize)
+- h4: Parameters
+- parameters:
+  - name: newSize
+    type:
+    - text: long
+      url: https://learn.microsoft.com/dotnet/api/system.int64
+    description: The new size
+  - name: requiredSize
+    type:
+    - text: long
+      url: https://learn.microsoft.com/dotnet/api/system.int64
+    description: The required size
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: Read(byte[], int, int)
+  id: Alis_Core_Network_PublicBufferMemoryStream_Read_System_Byte___System_Int32_System_Int32_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PublicBufferMemoryStream.cs#L218
+  metadata:
+    uid: Alis.Core.Network.PublicBufferMemoryStream.Read(System.Byte[],System.Int32,System.Int32)
+    commentId: M:Alis.Core.Network.PublicBufferMemoryStream.Read(System.Byte[],System.Int32,System.Int32)
+- markdown: Reads the buffer
+- code: public override int Read(byte[] buffer, int offset, int count)
+- h4: Parameters
+- parameters:
+  - name: buffer
+    type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+    - '['
+    - ']'
+    description: The buffer
+  - name: offset
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The offset
+  - name: count
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The count
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The int
+- api3: ReadAsync(byte[], int, int, CancellationToken)
+  id: Alis_Core_Network_PublicBufferMemoryStream_ReadAsync_System_Byte___System_Int32_System_Int32_System_Threading_CancellationToken_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PublicBufferMemoryStream.cs#L378
+  metadata:
+    uid: Alis.Core.Network.PublicBufferMemoryStream.ReadAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)
+    commentId: M:Alis.Core.Network.PublicBufferMemoryStream.ReadAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)
+- markdown: Reads the buffer
+- code: public override Task<int> ReadAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken)
+- h4: Parameters
+- parameters:
+  - name: buffer
+    type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+    - '['
+    - ']'
+    description: The buffer
+  - name: offset
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The offset
+  - name: count
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The count
+  - name: cancellationToken
+    type:
+    - text: CancellationToken
+      url: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+    description: The cancellation token
+- h4: Returns
+- parameters:
+  - type:
+    - text: Task
+      url: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+    - <
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    - '>'
+    description: A task containing the int
+- api3: ReadByte()
+  id: Alis_Core_Network_PublicBufferMemoryStream_ReadByte
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PublicBufferMemoryStream.cs#L386
+  metadata:
+    uid: Alis.Core.Network.PublicBufferMemoryStream.ReadByte
+    commentId: M:Alis.Core.Network.PublicBufferMemoryStream.ReadByte
+- markdown: Reads the byte
+- code: public override int ReadByte()
+- h4: Returns
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The int
+- api3: Seek(long, SeekOrigin)
+  id: Alis_Core_Network_PublicBufferMemoryStream_Seek_System_Int64_System_IO_SeekOrigin_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PublicBufferMemoryStream.cs#L394
+  metadata:
+    uid: Alis.Core.Network.PublicBufferMemoryStream.Seek(System.Int64,System.IO.SeekOrigin)
+    commentId: M:Alis.Core.Network.PublicBufferMemoryStream.Seek(System.Int64,System.IO.SeekOrigin)
+- markdown: Seeks the offset
+- code: public override long Seek(long offset, SeekOrigin loc)
+- h4: Parameters
+- parameters:
+  - name: offset
+    type:
+    - text: long
+      url: https://learn.microsoft.com/dotnet/api/system.int64
+    description: The offset
+  - name: loc
+    type:
+    - text: SeekOrigin
+      url: https://learn.microsoft.com/dotnet/api/system.io.seekorigin
+    description: The loc
+- h4: Returns
+- parameters:
+  - type:
+    - text: long
+      url: https://learn.microsoft.com/dotnet/api/system.int64
+    description: The long
+- api3: SetLength(long)
+  id: Alis_Core_Network_PublicBufferMemoryStream_SetLength_System_Int64_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PublicBufferMemoryStream.cs#L399
+  metadata:
+    uid: Alis.Core.Network.PublicBufferMemoryStream.SetLength(System.Int64)
+    commentId: M:Alis.Core.Network.PublicBufferMemoryStream.SetLength(System.Int64)
+- markdown: 'Note: This will not make the MemoryStream any smaller, only larger'
+- code: public override void SetLength(long value)
+- h4: Parameters
+- parameters:
+  - name: value
+    type:
+    - text: long
+      url: https://learn.microsoft.com/dotnet/api/system.int64
+- api3: ToArray()
+  id: Alis_Core_Network_PublicBufferMemoryStream_ToArray
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PublicBufferMemoryStream.cs#L408
+  metadata:
+    uid: Alis.Core.Network.PublicBufferMemoryStream.ToArray
+    commentId: M:Alis.Core.Network.PublicBufferMemoryStream.ToArray
+- markdown: Returns the array
+- code: public override byte[] ToArray()
+- h4: Returns
+- parameters:
+  - type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+    - '['
+    - ']'
+    description: The byte array
+- api3: ValidateRequiredSize(long)
+  id: Alis_Core_Network_PublicBufferMemoryStream_ValidateRequiredSize_System_Int64_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PublicBufferMemoryStream.cs#L307
+  metadata:
+    uid: Alis.Core.Network.PublicBufferMemoryStream.ValidateRequiredSize(System.Int64)
+    commentId: M:Alis.Core.Network.PublicBufferMemoryStream.ValidateRequiredSize(System.Int64)
+- markdown: Validates the required size using the specified required size
+- code: internal void ValidateRequiredSize(long requiredSize)
+- h4: Parameters
+- parameters:
+  - name: requiredSize
+    type:
+    - text: long
+      url: https://learn.microsoft.com/dotnet/api/system.int64
+    description: The required size
+- h4: Exceptions
+- parameters:
+  - type:
+    - text: WebSocketBufferOverflowException
+      url: Alis.Core.Network.Exceptions.WebSocketBufferOverflowException.html
+    description: >-
+      Tried to create a buffer ({requiredSize:#,##0} bytes) that was
+
+      larger than the max allowed size ({int.MaxValue:#,##0})
+- api3: Write(byte[], int, int)
+  id: Alis_Core_Network_PublicBufferMemoryStream_Write_System_Byte___System_Int32_System_Int32_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PublicBufferMemoryStream.cs#L351
+  metadata:
+    uid: Alis.Core.Network.PublicBufferMemoryStream.Write(System.Byte[],System.Int32,System.Int32)
+    commentId: M:Alis.Core.Network.PublicBufferMemoryStream.Write(System.Byte[],System.Int32,System.Int32)
+- markdown: Writes the buffer
+- code: public override void Write(byte[] buffer, int offset, int count)
+- h4: Parameters
+- parameters:
+  - name: buffer
+    type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+    - '['
+    - ']'
+    description: The buffer
+  - name: offset
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The offset
+  - name: count
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The count
+- api3: WriteAsync(byte[], int, int, CancellationToken)
+  id: Alis_Core_Network_PublicBufferMemoryStream_WriteAsync_System_Byte___System_Int32_System_Int32_System_Threading_CancellationToken_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PublicBufferMemoryStream.cs#L364
+  metadata:
+    uid: Alis.Core.Network.PublicBufferMemoryStream.WriteAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)
+    commentId: M:Alis.Core.Network.PublicBufferMemoryStream.WriteAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)
+- markdown: Writes the buffer
+- code: public override Task WriteAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken)
+- h4: Parameters
+- parameters:
+  - name: buffer
+    type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+    - '['
+    - ']'
+    description: The buffer
+  - name: offset
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The offset
+  - name: count
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The count
+  - name: cancellationToken
+    type:
+    - text: CancellationToken
+      url: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+    description: The cancellation token
+- h4: Returns
+- parameters:
+  - type:
+    - text: Task
+      url: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+- api3: WriteByte(byte)
+  id: Alis_Core_Network_PublicBufferMemoryStream_WriteByte_System_Byte_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PublicBufferMemoryStream.cs#L339
+  metadata:
+    uid: Alis.Core.Network.PublicBufferMemoryStream.WriteByte(System.Byte)
+    commentId: M:Alis.Core.Network.PublicBufferMemoryStream.WriteByte(System.Byte)
+- markdown: Writes the byte using the specified value
+- code: public override void WriteByte(byte value)
+- h4: Parameters
+- parameters:
+  - name: value
+    type:
+    - text: byte
+      url: https://learn.microsoft.com/dotnet/api/system.byte
+    description: The value
+- api3: WriteTo(Stream)
+  id: Alis_Core_Network_PublicBufferMemoryStream_WriteTo_System_IO_Stream_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/PublicBufferMemoryStream.cs#L416
+  metadata:
+    uid: Alis.Core.Network.PublicBufferMemoryStream.WriteTo(System.IO.Stream)
+    commentId: M:Alis.Core.Network.PublicBufferMemoryStream.WriteTo(System.IO.Stream)
+- markdown: Writes the to using the specified stream
+- code: public override void WriteTo(Stream stream)
+- h4: Parameters
+- parameters:
+  - name: stream
+    type:
+    - text: Stream
+      url: https://learn.microsoft.com/dotnet/api/system.io.stream
+    description: The stream
+languageId: csharp
+metadata:
+  description: >-
+    This memory stream is not instance thread safe (not to be confused with the BufferPool which is instance thread
+
+    safe)

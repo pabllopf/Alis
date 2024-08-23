@@ -1,0 +1,153 @@
+### YamlMime:ApiPage
+title: Struct SensorEvent
+body:
+- api1: Struct SensorEvent
+  id: Alis_Core_Graphic_Sdl2_Structs_SensorEvent
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/SensorEvent.cs#L38
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.SensorEvent
+    commentId: T:Alis.Core.Graphic.Sdl2.Structs.SensorEvent
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Structs
+      url: Alis.Core.Graphic.Sdl2.Structs.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The sdl sensor event
+- code: public struct SensorEvent
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Fields
+- api3: float0
+  id: Alis_Core_Graphic_Sdl2_Structs_SensorEvent_float0
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/SensorEvent.cs#L59
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.SensorEvent.float0
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.SensorEvent.float0
+- markdown: The data
+- code: public readonly float float0
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: float1
+  id: Alis_Core_Graphic_Sdl2_Structs_SensorEvent_float1
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/SensorEvent.cs#L64
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.SensorEvent.float1
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.SensorEvent.float1
+- markdown: The data
+- code: public readonly float float1
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: float2
+  id: Alis_Core_Graphic_Sdl2_Structs_SensorEvent_float2
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/SensorEvent.cs#L69
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.SensorEvent.float2
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.SensorEvent.float2
+- markdown: The data
+- code: public readonly float float2
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: float3
+  id: Alis_Core_Graphic_Sdl2_Structs_SensorEvent_float3
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/SensorEvent.cs#L74
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.SensorEvent.float3
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.SensorEvent.float3
+- markdown: The data
+- code: public readonly float float3
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: float4
+  id: Alis_Core_Graphic_Sdl2_Structs_SensorEvent_float4
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/SensorEvent.cs#L79
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.SensorEvent.float4
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.SensorEvent.float4
+- markdown: The data
+- code: public readonly float float4
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: float5
+  id: Alis_Core_Graphic_Sdl2_Structs_SensorEvent_float5
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/SensorEvent.cs#L84
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.SensorEvent.float5
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.SensorEvent.float5
+- markdown: The data
+- code: public readonly float float5
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: timestamp
+  id: Alis_Core_Graphic_Sdl2_Structs_SensorEvent_timestamp
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/SensorEvent.cs#L49
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.SensorEvent.timestamp
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.SensorEvent.timestamp
+- markdown: The timestamp
+- code: public readonly uint timestamp
+- h4: Field Value
+- parameters:
+  - type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+- api3: type
+  id: Alis_Core_Graphic_Sdl2_Structs_SensorEvent_type
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/SensorEvent.cs#L44
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.SensorEvent.type
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.SensorEvent.type
+- markdown: The type
+- code: public readonly EventType type
+- h4: Field Value
+- parameters:
+  - type:
+    - text: EventType
+      url: Alis.Core.Graphic.Sdl2.Enums.EventType.html
+- api3: which
+  id: Alis_Core_Graphic_Sdl2_Structs_SensorEvent_which
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/SensorEvent.cs#L54
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.SensorEvent.which
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.SensorEvent.which
+- markdown: The which
+- code: public readonly int which
+- h4: Field Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+languageId: csharp
+metadata:
+  description: The sdl sensor event

@@ -1,0 +1,40 @@
+### YamlMime:ApiPage
+title: Delegate SdlWopsSeekCallback
+body:
+- api1: Delegate SdlWopsSeekCallback
+  id: Alis_Core_Graphic_Sdl2_Delegates_SdlWopsSeekCallback
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Delegates/SdlWopsSeekCallback.cs#L38
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Delegates.SdlWopsSeekCallback
+    commentId: T:Alis.Core.Graphic.Sdl2.Delegates.SdlWopsSeekCallback
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Delegates
+      url: Alis.Core.Graphic.Sdl2.Delegates.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The sdl wops seek callback
+- code: public delegate long SdlWopsSeekCallback(IntPtr context, long offset, int whence)
+- h4: Parameters
+- parameters:
+  - name: context
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+  - name: offset
+    type:
+    - text: long
+      url: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: whence
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- h4: Returns
+- parameters:
+  - type:
+    - text: long
+      url: https://learn.microsoft.com/dotnet/api/system.int64
+languageId: csharp
+metadata:
+  description: The sdl wops seek callback

@@ -1,0 +1,441 @@
+### YamlMime:ApiPage
+title: Class World
+body:
+- api1: Class World
+  id: Alis_Core_Physic_World
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L43
+  metadata:
+    uid: Alis.Core.Physic.World
+    commentId: T:Alis.Core.Physic.World
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Physic
+      url: Alis.Core.Physic.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The world class manages all physics entities, dynamic simulation, and asynchronous queries.
+- code: public class World
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: World
+    url: Alis.Core.Physic.World.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Constructors
+- api3: World(Vector2)
+  id: Alis_Core_Physic_World__ctor_Alis_Core_Aspect_Math_Vector_Vector2_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L54
+  metadata:
+    uid: Alis.Core.Physic.World.#ctor(Alis.Core.Aspect.Math.Vector.Vector2)
+    commentId: M:Alis.Core.Physic.World.#ctor(Alis.Core.Aspect.Math.Vector.Vector2)
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Physic.World" data-throw-if-not-resolved="false"></xref> class
+- code: public World(Vector2 gravity)
+- h4: Parameters
+- parameters:
+  - name: gravity
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The gravity
+- h2: Fields
+- api3: Island
+  id: Alis_Core_Physic_World_Island
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L48
+  metadata:
+    uid: Alis.Core.Physic.World.Island
+    commentId: F:Alis.Core.Physic.World.Island
+- markdown: The island
+- code: internal readonly Island Island
+- h4: Field Value
+- parameters:
+  - type:
+    - text: Island
+      url: Alis.Core.Physic.Dynamics.Solver.Island.html
+- h2: Properties
+- api3: Bodies
+  id: Alis_Core_Physic_World_Bodies
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L74
+  metadata:
+    uid: Alis.Core.Physic.World.Bodies
+    commentId: P:Alis.Core.Physic.World.Bodies
+- markdown: Gets or sets the value of the bodies
+- code: public List<Body> Bodies { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: List
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+    - <
+    - text: Body
+      url: Alis.Core.Physic.Dynamics.Body.html
+    - '>'
+- api3: BreakableBodies
+  id: Alis_Core_Physic_World_BreakableBodies
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L64
+  metadata:
+    uid: Alis.Core.Physic.World.BreakableBodies
+    commentId: P:Alis.Core.Physic.World.BreakableBodies
+- markdown: The breakable body
+- code: internal List<BreakableBody> BreakableBodies { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: List
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+    - <
+    - text: BreakableBody
+      url: Alis.Core.Physic.Dynamics.BreakableBody.html
+    - '>'
+- api3: ContactManager
+  id: Alis_Core_Physic_World_ContactManager
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L84
+  metadata:
+    uid: Alis.Core.Physic.World.ContactManager
+    commentId: P:Alis.Core.Physic.World.ContactManager
+- markdown: Gets or sets the value of the contact manager
+- code: internal ContactManager ContactManager { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: ContactManager
+      url: Alis.Core.Physic.Collision.ContactSystem.ContactManager.html
+- api3: Gravity
+  id: Alis_Core_Physic_World_Gravity
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L69
+  metadata:
+    uid: Alis.Core.Physic.World.Gravity
+    commentId: P:Alis.Core.Physic.World.Gravity
+- markdown: Gets the value of the gravity
+- code: internal Vector2 Gravity { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: Joints
+  id: Alis_Core_Physic_World_Joints
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L79
+  metadata:
+    uid: Alis.Core.Physic.World.Joints
+    commentId: P:Alis.Core.Physic.World.Joints
+- markdown: Gets or sets the value of the joints
+- code: internal List<Joint> Joints { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: List
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+    - <
+    - text: Joint
+      url: Alis.Core.Physic.Dynamics.Joints.Joint.html
+    - '>'
+- api3: TimeStepGlobal
+  id: Alis_Core_Physic_World_TimeStepGlobal
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L89
+  metadata:
+    uid: Alis.Core.Physic.World.TimeStepGlobal
+    commentId: P:Alis.Core.Physic.World.TimeStepGlobal
+- markdown: Gets or sets the value of the step
+- code: internal TimeStep TimeStepGlobal { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: TimeStep
+      url: Alis.Core.Aspect.Time.TimeStep.html
+- h2: Methods
+- api3: AddBody(Body)
+  id: Alis_Core_Physic_World_AddBody_Alis_Core_Physic_Dynamics_Body_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L95
+  metadata:
+    uid: Alis.Core.Physic.World.AddBody(Alis.Core.Physic.Dynamics.Body)
+    commentId: M:Alis.Core.Physic.World.AddBody(Alis.Core.Physic.Dynamics.Body)
+- markdown: Adds the body using the specified body
+- code: public void AddBody(Body body)
+- h4: Parameters
+- parameters:
+  - name: body
+    type:
+    - text: Body
+      url: Alis.Core.Physic.Dynamics.Body.html
+    description: The body
+- api3: AddBreakableBody(BreakableBody)
+  id: Alis_Core_Physic_World_AddBreakableBody_Alis_Core_Physic_Dynamics_BreakableBody_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L107
+  metadata:
+    uid: Alis.Core.Physic.World.AddBreakableBody(Alis.Core.Physic.Dynamics.BreakableBody)
+    commentId: M:Alis.Core.Physic.World.AddBreakableBody(Alis.Core.Physic.Dynamics.BreakableBody)
+- markdown: Adds the breakable body using the specified breakable body
+- code: public void AddBreakableBody(BreakableBody breakableBody)
+- h4: Parameters
+- parameters:
+  - name: breakableBody
+    type:
+    - text: BreakableBody
+      url: Alis.Core.Physic.Dynamics.BreakableBody.html
+    description: The breakable body
+- api3: AddJoint(Joint)
+  id: Alis_Core_Physic_World_AddJoint_Alis_Core_Physic_Dynamics_Joints_Joint_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L119
+  metadata:
+    uid: Alis.Core.Physic.World.AddJoint(Alis.Core.Physic.Dynamics.Joints.Joint)
+    commentId: M:Alis.Core.Physic.World.AddJoint(Alis.Core.Physic.Dynamics.Joints.Joint)
+- markdown: Adds the joint using the specified joint
+- code: public void AddJoint(Joint joint)
+- h4: Parameters
+- parameters:
+  - name: joint
+    type:
+    - text: Joint
+      url: Alis.Core.Physic.Dynamics.Joints.Joint.html
+    description: The joint
+- api3: ClearForces()
+  id: Alis_Core_Physic_World_ClearForces
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L283
+  metadata:
+    uid: Alis.Core.Physic.World.ClearForces
+    commentId: M:Alis.Core.Physic.World.ClearForces
+- markdown: Clear all forces
+- code: internal void ClearForces()
+- api3: CollideContacts()
+  id: Alis_Core_Physic_World_CollideContacts
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L168
+  metadata:
+    uid: Alis.Core.Physic.World.CollideContacts
+    commentId: M:Alis.Core.Physic.World.CollideContacts
+- markdown: Collides the contacts
+- code: internal void CollideContacts()
+- api3: FindNewContacts()
+  id: Alis_Core_Physic_World_FindNewContacts
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L148
+  metadata:
+    uid: Alis.Core.Physic.World.FindNewContacts
+    commentId: M:Alis.Core.Physic.World.FindNewContacts
+- markdown: Finds the new contacts
+- code: internal void FindNewContacts()
+- api3: InvalidateContactToi()
+  id: Alis_Core_Physic_World_InvalidateContactToi
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L222
+  metadata:
+    uid: Alis.Core.Physic.World.InvalidateContactToi
+    commentId: M:Alis.Core.Physic.World.InvalidateContactToi
+- markdown: Invalidates the contact to is
+- code: internal void InvalidateContactToi()
+- api3: IsMinAlphaGreaterThanEpsilon(float)
+  id: Alis_Core_Physic_World_IsMinAlphaGreaterThanEpsilon_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L265
+  metadata:
+    uid: Alis.Core.Physic.World.IsMinAlphaGreaterThanEpsilon(System.Single)
+    commentId: M:Alis.Core.Physic.World.IsMinAlphaGreaterThanEpsilon(System.Single)
+- markdown: Describes whether this instance is min alpha greater than epsilon
+- code: internal static bool IsMinAlphaGreaterThanEpsilon(float minAlpha)
+- h4: Parameters
+- parameters:
+  - name: minAlpha
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The min alpha
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: RemoveBody(Body)
+  id: Alis_Core_Physic_World_RemoveBody_Alis_Core_Physic_Dynamics_Body_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L101
+  metadata:
+    uid: Alis.Core.Physic.World.RemoveBody(Alis.Core.Physic.Dynamics.Body)
+    commentId: M:Alis.Core.Physic.World.RemoveBody(Alis.Core.Physic.Dynamics.Body)
+- markdown: Removes the body using the specified body
+- code: public void RemoveBody(Body body)
+- h4: Parameters
+- parameters:
+  - name: body
+    type:
+    - text: Body
+      url: Alis.Core.Physic.Dynamics.Body.html
+    description: The body
+- api3: RemoveBreakableBody(BreakableBody)
+  id: Alis_Core_Physic_World_RemoveBreakableBody_Alis_Core_Physic_Dynamics_BreakableBody_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L113
+  metadata:
+    uid: Alis.Core.Physic.World.RemoveBreakableBody(Alis.Core.Physic.Dynamics.BreakableBody)
+    commentId: M:Alis.Core.Physic.World.RemoveBreakableBody(Alis.Core.Physic.Dynamics.BreakableBody)
+- markdown: Removes the breakable body using the specified breakable body
+- code: public void RemoveBreakableBody(BreakableBody breakableBody)
+- h4: Parameters
+- parameters:
+  - name: breakableBody
+    type:
+    - text: BreakableBody
+      url: Alis.Core.Physic.Dynamics.BreakableBody.html
+    description: The breakable body
+- api3: RemoveJoint(Joint)
+  id: Alis_Core_Physic_World_RemoveJoint_Alis_Core_Physic_Dynamics_Joints_Joint_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L125
+  metadata:
+    uid: Alis.Core.Physic.World.RemoveJoint(Alis.Core.Physic.Dynamics.Joints.Joint)
+    commentId: M:Alis.Core.Physic.World.RemoveJoint(Alis.Core.Physic.Dynamics.Joints.Joint)
+- markdown: Removes the joint using the specified joint
+- code: public void RemoveJoint(Joint joint)
+- h4: Parameters
+- parameters:
+  - name: joint
+    type:
+    - text: Joint
+      url: Alis.Core.Physic.Dynamics.Joints.Joint.html
+    description: The joint
+- api3: SetAlphaToZeroForFastMovingBodies()
+  id: Alis_Core_Physic_World_SetAlphaToZeroForFastMovingBodies
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L217
+  metadata:
+    uid: Alis.Core.Physic.World.SetAlphaToZeroForFastMovingBodies
+    commentId: M:Alis.Core.Physic.World.SetAlphaToZeroForFastMovingBodies
+- markdown: Sets the alpha to zero for fast moving bodies
+- code: internal void SetAlphaToZeroForFastMovingBodies()
+- api3: Solve()
+  id: Alis_Core_Physic_World_Solve
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L183
+  metadata:
+    uid: Alis.Core.Physic.World.Solve
+    commentId: M:Alis.Core.Physic.World.Solve
+- markdown: Solves the step
+- code: internal void Solve()
+- api3: SolveToi()
+  id: Alis_Core_Physic_World_SolveToi
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L207
+  metadata:
+    uid: Alis.Core.Physic.World.SolveToi
+    commentId: M:Alis.Core.Physic.World.SolveToi
+- markdown: Solves the toi
+- code: internal void SolveToi()
+- api3: SolveToiEvents()
+  id: Alis_Core_Physic_World_SolveToiEvents
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L227
+  metadata:
+    uid: Alis.Core.Physic.World.SolveToiEvents
+    commentId: M:Alis.Core.Physic.World.SolveToiEvents
+- markdown: Solves the TOI (Time of Impact) events.
+- code: internal void SolveToiEvents()
+- api3: SolveToiIsland(float, int, int)
+  id: Alis_Core_Physic_World_SolveToiIsland_System_Single_System_Int32_System_Int32_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L273
+  metadata:
+    uid: Alis.Core.Physic.World.SolveToiIsland(System.Single,System.Int32,System.Int32)
+    commentId: M:Alis.Core.Physic.World.SolveToiIsland(System.Single,System.Int32,System.Int32)
+- markdown: Solves the toi island using the specified min alpha
+- code: internal void SolveToiIsland(float minAlpha, int islandIndexA, int islandIndexB)
+- h4: Parameters
+- parameters:
+  - name: minAlpha
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The min alpha
+  - name: islandIndexA
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The island index
+  - name: islandIndexB
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The island index
+- api3: Step(float, int, int)
+  id: Alis_Core_Physic_World_Step_System_Single_System_Int32_System_Int32_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L133
+  metadata:
+    uid: Alis.Core.Physic.World.Step(System.Single,System.Int32,System.Int32)
+    commentId: M:Alis.Core.Physic.World.Step(System.Single,System.Int32,System.Int32)
+- markdown: Steps the dt
+- code: public void Step(float dt, int velocityIterations = 8, int positionIterations = 3)
+- h4: Parameters
+- parameters:
+  - name: dt
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The dt
+  - name: velocityIterations
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The velocity iterations
+    optional: true
+  - name: positionIterations
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The position iterations
+    optional: true
+- api3: SynchronizeIslandBodies()
+  id: Alis_Core_Physic_World_SynchronizeIslandBodies
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L278
+  metadata:
+    uid: Alis.Core.Physic.World.SynchronizeIslandBodies
+    commentId: M:Alis.Core.Physic.World.SynchronizeIslandBodies
+- markdown: Synchronizes the island bodies
+- code: internal void SynchronizeIslandBodies()
+- api3: UpdateBreakableBodies()
+  id: Alis_Core_Physic_World_UpdateBreakableBodies
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L178
+  metadata:
+    uid: Alis.Core.Physic.World.UpdateBreakableBodies
+    commentId: M:Alis.Core.Physic.World.UpdateBreakableBodies
+- markdown: Updates the breakable bodies
+- code: internal void UpdateBreakableBodies()
+- api3: UpdateInvertedDeltaTime()
+  id: Alis_Core_Physic_World_UpdateInvertedDeltaTime
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L173
+  metadata:
+    uid: Alis.Core.Physic.World.UpdateInvertedDeltaTime
+    commentId: M:Alis.Core.Physic.World.UpdateInvertedDeltaTime
+- markdown: Updates the inverted delta time using the specified dt
+- code: internal void UpdateInvertedDeltaTime()
+- api3: UpdateTimeStep(float, int, int)
+  id: Alis_Core_Physic_World_UpdateTimeStep_System_Single_System_Int32_System_Int32_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/World.cs#L156
+  metadata:
+    uid: Alis.Core.Physic.World.UpdateTimeStep(System.Single,System.Int32,System.Int32)
+    commentId: M:Alis.Core.Physic.World.UpdateTimeStep(System.Single,System.Int32,System.Int32)
+- markdown: Updates the time step using the specified dt
+- code: internal void UpdateTimeStep(float dt, int velocityIterations, int positionIterations)
+- h4: Parameters
+- parameters:
+  - name: dt
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The dt
+  - name: velocityIterations
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The velocity iterations
+  - name: positionIterations
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The position iterations
+languageId: csharp
+metadata:
+  description: The world class manages all physics entities, dynamic simulation, and asynchronous queries.

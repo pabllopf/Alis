@@ -1,0 +1,15 @@
+### YamlMime:ApiPage
+title: Namespace Alis.Builder.Core.Ecs.System.Manager.Physic
+body:
+- api1: Namespace Alis.Builder.Core.Ecs.System.Manager.Physic
+  id: Alis_Builder_Core_Ecs_System_Manager_Physic
+  metadata:
+    uid: Alis.Builder.Core.Ecs.System.Manager.Physic
+    commentId: N:Alis.Builder.Core.Ecs.System.Manager.Physic
+- h3: Classes
+- parameters:
+  - type:
+      text: PhysicManagerBuilder
+      url: Alis.Builder.Core.Ecs.System.Manager.Physic.PhysicManagerBuilder.html
+    description: The scene manager builder class
+languageId: csharp

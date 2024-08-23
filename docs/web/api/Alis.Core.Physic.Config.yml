@@ -1,0 +1,15 @@
+### YamlMime:ApiPage
+title: Namespace Alis.Core.Physic.Config
+body:
+- api1: Namespace Alis.Core.Physic.Config
+  id: Alis_Core_Physic_Config
+  metadata:
+    uid: Alis.Core.Physic.Config
+    commentId: N:Alis.Core.Physic.Config
+- h3: Classes
+- parameters:
+  - type:
+      text: Settings
+      url: Alis.Core.Physic.Config.Settings.html
+    description: The settings class
+languageId: csharp

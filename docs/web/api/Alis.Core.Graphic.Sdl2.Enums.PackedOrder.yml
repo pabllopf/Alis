@@ -1,0 +1,68 @@
+### YamlMime:ApiPage
+title: Enum PackedOrder
+body:
+- api1: Enum PackedOrder
+  id: Alis_Core_Graphic_Sdl2_Enums_PackedOrder
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Enums/PackedOrder.cs#L35
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Enums.PackedOrder
+    commentId: T:Alis.Core.Graphic.Sdl2.Enums.PackedOrder
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Enums
+      url: Alis.Core.Graphic.Sdl2.Enums.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The sdl packed order enum
+- code: public enum PackedOrder
+- h2: Fields
+- parameters:
+  - name: PackedOrderNone
+    default: "0"
+    description: >+
+      The sdl packed order none sdl packed order
+
+  - name: PackedOrderXRgb
+    default: "1"
+    description: >+
+      The sdl packed order x rgb sdl packed order
+
+  - name: PackedOrderRGbx
+    default: "2"
+    description: >+
+      The sdl packed order r gbx sdl packed order
+
+  - name: PackedOrderARgb
+    default: "3"
+    description: >+
+      The sdl packed order argb sdl packed order
+
+  - name: PackedOrderRGba
+    default: "4"
+    description: >+
+      The sdl packed order rgba sdl packed order
+
+  - name: PackedOrderXBgr
+    default: "5"
+    description: >+
+      The sdl packed order x bgr sdl packed order
+
+  - name: PackedOrderBGrx
+    default: "6"
+    description: >+
+      The sdl packed order b grx sdl packed order
+
+  - name: PackedOrderABgr
+    default: "7"
+    description: >+
+      The sdl packed order a bgr sdl packed order
+
+  - name: PackedOrderBGra
+    default: "8"
+    description: >+
+      The sdl packed order b gra sdl packed order
+
+languageId: csharp
+metadata:
+  description: The sdl packed order enum

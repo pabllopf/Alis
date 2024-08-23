@@ -1,0 +1,468 @@
+### YamlMime:ApiPage
+title: Class BoxCollider
+body:
+- api1: Class BoxCollider
+  id: Alis_Core_Ecs_Component_Collider_BoxCollider
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Collider/BoxCollider.cs#L49
+  metadata:
+    uid: Alis.Core.Ecs.Component.Collider.BoxCollider
+    commentId: T:Alis.Core.Ecs.Component.Collider.BoxCollider
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Ecs.Component.Collider
+      url: Alis.Core.Ecs.Component.Collider.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The box collider class
+- code: 'public class BoxCollider : ACollider, IComponent<GameObject>, IEnabled, IIdentifier, IRuntime, IBuilder<BoxColliderBuilder>'
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: AComponent
+    url: Alis.Core.Ecs.Component.AComponent.html
+  - text: ACollider
+    url: Alis.Core.Ecs.Component.Collider.ACollider.html
+  - text: BoxCollider
+    url: Alis.Core.Ecs.Component.Collider.BoxCollider.html
+- h4: Implements
+- list:
+  - text: IComponent<GameObject>
+    url: Alis.Core.Ecs.Component.IComponent-1.html
+  - text: IEnabled
+    url: Alis.Core.Ecs.Entity.Property.IEnabled.html
+  - text: IIdentifier
+    url: Alis.Core.Ecs.Entity.Property.IIdentifier.html
+  - text: IRuntime
+    url: Alis.Core.Ecs.Entity.Property.IRuntime.html
+  - text: IBuilder<BoxColliderBuilder>
+    url: Alis.Core.Aspect.Fluent.IBuilder-1.html
+- h4: Inherited Members
+- list:
+  - text: ACollider.OnStart()
+    url: Alis.Core.Ecs.Component.Collider.ACollider.html#Alis_Core_Ecs_Component_Collider_ACollider_OnStart
+  - text: ACollider.OnUpdate()
+    url: Alis.Core.Ecs.Component.Collider.ACollider.html#Alis_Core_Ecs_Component_Collider_ACollider_OnUpdate
+  - text: AComponent.Context
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_Context
+  - text: AComponent.IsEnable
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_IsEnable
+  - text: AComponent.Name
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_Name
+  - text: AComponent.Id
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_Id
+  - text: AComponent.Tag
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_Tag
+  - text: AComponent.GameObject
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_GameObject
+  - text: AComponent.OnEnable()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnEnable
+  - text: AComponent.OnInit()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnInit
+  - text: AComponent.OnAwake()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnAwake
+  - text: AComponent.OnStart()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnStart
+  - text: AComponent.OnBeforeUpdate()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnBeforeUpdate
+  - text: AComponent.OnUpdate()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnUpdate
+  - text: AComponent.OnAfterUpdate()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnAfterUpdate
+  - text: AComponent.OnBeforeFixedUpdate()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnBeforeFixedUpdate
+  - text: AComponent.OnFixedUpdate()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnFixedUpdate
+  - text: AComponent.OnAfterFixedUpdate()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnAfterFixedUpdate
+  - text: AComponent.OnDispatchEvents()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnDispatchEvents
+  - text: AComponent.OnCalculate()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnCalculate
+  - text: AComponent.OnDraw()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnDraw
+  - text: AComponent.OnGui()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnGui
+  - text: AComponent.OnDisable()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnDisable
+  - text: AComponent.OnReset()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnReset
+  - text: AComponent.OnStop()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnStop
+  - text: AComponent.OnExit()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnExit
+  - text: AComponent.OnDestroy()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnDestroy
+  - text: AComponent.Attach(GameObject)
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_Attach_Alis_Core_Ecs_Entity_GameObject_
+  - text: AComponent.OnPressDownKey(KeyCodes)
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnPressDownKey_Alis_Core_Aspect_Data_Mapping_KeyCodes_
+  - text: AComponent.OnReleaseKey(KeyCodes)
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnReleaseKey_Alis_Core_Aspect_Data_Mapping_KeyCodes_
+  - text: AComponent.OnPressKey(KeyCodes)
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnPressKey_Alis_Core_Aspect_Data_Mapping_KeyCodes_
+  - text: AComponent.OnCollisionEnter(GameObject)
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnCollisionEnter_Alis_Core_Ecs_Entity_GameObject_
+  - text: AComponent.OnCollisionExit(GameObject)
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnCollisionExit_Alis_Core_Ecs_Entity_GameObject_
+  - text: AComponent.OnCollisionStay(GameObject)
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnCollisionStay_Alis_Core_Ecs_Entity_GameObject_
+  - text: AComponent.OnTriggerEnter(GameObject)
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnTriggerEnter_Alis_Core_Ecs_Entity_GameObject_
+  - text: AComponent.OnTriggerExit(GameObject)
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnTriggerExit_Alis_Core_Ecs_Entity_GameObject_
+  - text: AComponent.OnTriggerStay(GameObject)
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnTriggerStay_Alis_Core_Ecs_Entity_GameObject_
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Fields
+- api3: RectangleF
+  id: Alis_Core_Ecs_Component_Collider_BoxCollider_RectangleF
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Collider/BoxCollider.cs#L54
+  metadata:
+    uid: Alis.Core.Ecs.Component.Collider.BoxCollider.RectangleF
+    commentId: F:Alis.Core.Ecs.Component.Collider.BoxCollider.RectangleF
+- markdown: The rectangle shape
+- code: public RectangleF RectangleF
+- h4: Field Value
+- parameters:
+  - type:
+    - text: RectangleF
+      url: Alis.Core.Aspect.Math.Shape.Rectangle.RectangleF.html
+- h2: Properties
+- api3: AngularVelocity
+  id: Alis_Core_Ecs_Component_Collider_BoxCollider_AngularVelocity
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Collider/BoxCollider.cs#L130
+  metadata:
+    uid: Alis.Core.Ecs.Component.Collider.BoxCollider.AngularVelocity
+    commentId: P:Alis.Core.Ecs.Component.Collider.BoxCollider.AngularVelocity
+- markdown: Gets or sets the value of the angular velocity
+- code: public float AngularVelocity { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: AutoTilling
+  id: Alis_Core_Ecs_Component_Collider_BoxCollider_AutoTilling
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Collider/BoxCollider.cs#L90
+  metadata:
+    uid: Alis.Core.Ecs.Component.Collider.BoxCollider.AutoTilling
+    commentId: P:Alis.Core.Ecs.Component.Collider.BoxCollider.AutoTilling
+- markdown: Gets or sets the value of the auto tilling
+- code: public bool AutoTilling { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+- api3: Body
+  id: Alis_Core_Ecs_Component_Collider_BoxCollider_Body
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Collider/BoxCollider.cs#L85
+  metadata:
+    uid: Alis.Core.Ecs.Component.Collider.BoxCollider.Body
+    commentId: P:Alis.Core.Ecs.Component.Collider.BoxCollider.Body
+- markdown: Gets or sets the value of the body
+- code: public Body Body { get; private set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Body
+      url: Alis.Core.Physic.Dynamics.Body.html
+- api3: BodyType
+  id: Alis_Core_Ecs_Component_Collider_BoxCollider_BodyType
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Collider/BoxCollider.cs#L95
+  metadata:
+    uid: Alis.Core.Ecs.Component.Collider.BoxCollider.BodyType
+    commentId: P:Alis.Core.Ecs.Component.Collider.BoxCollider.BodyType
+- markdown: Gets or sets the value of the body type
+- code: public BodyType BodyType { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: BodyType
+      url: Alis.Core.Physic.Dynamics.BodyType.html
+- api3: FixedRotation
+  id: Alis_Core_Ecs_Component_Collider_BoxCollider_FixedRotation
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Collider/BoxCollider.cs#L110
+  metadata:
+    uid: Alis.Core.Ecs.Component.Collider.BoxCollider.FixedRotation
+    commentId: P:Alis.Core.Ecs.Component.Collider.BoxCollider.FixedRotation
+- markdown: Gets or sets the value of the fixed rotation
+- code: public bool FixedRotation { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+- api3: Friction
+  id: Alis_Core_Ecs_Component_Collider_BoxCollider_Friction
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Collider/BoxCollider.cs#L105
+  metadata:
+    uid: Alis.Core.Ecs.Component.Collider.BoxCollider.Friction
+    commentId: P:Alis.Core.Ecs.Component.Collider.BoxCollider.Friction
+- markdown: Gets or sets the value of the friction
+- code: public float Friction { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: GravityScale
+  id: Alis_Core_Ecs_Component_Collider_BoxCollider_GravityScale
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Collider/BoxCollider.cs#L120
+  metadata:
+    uid: Alis.Core.Ecs.Component.Collider.BoxCollider.GravityScale
+    commentId: P:Alis.Core.Ecs.Component.Collider.BoxCollider.GravityScale
+- markdown: Gets or sets the value of the gravity scale
+- code: public float GravityScale { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: Height
+  id: Alis_Core_Ecs_Component_Collider_BoxCollider_Height
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Collider/BoxCollider.cs#L69
+  metadata:
+    uid: Alis.Core.Ecs.Component.Collider.BoxCollider.Height
+    commentId: P:Alis.Core.Ecs.Component.Collider.BoxCollider.Height
+- markdown: Gets or sets the value of the height
+- code: public float Height { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: IsTrigger
+  id: Alis_Core_Ecs_Component_Collider_BoxCollider_IsTrigger
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Collider/BoxCollider.cs#L59
+  metadata:
+    uid: Alis.Core.Ecs.Component.Collider.BoxCollider.IsTrigger
+    commentId: P:Alis.Core.Ecs.Component.Collider.BoxCollider.IsTrigger
+- markdown: Gets or sets the value of the is trigger
+- code: public bool IsTrigger { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+- api3: LinearVelocity
+  id: Alis_Core_Ecs_Component_Collider_BoxCollider_LinearVelocity
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Collider/BoxCollider.cs#L125
+  metadata:
+    uid: Alis.Core.Ecs.Component.Collider.BoxCollider.LinearVelocity
+    commentId: P:Alis.Core.Ecs.Component.Collider.BoxCollider.LinearVelocity
+- markdown: Gets or sets the value of the linear velocity
+- code: public Vector2 LinearVelocity { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: Mass
+  id: Alis_Core_Ecs_Component_Collider_BoxCollider_Mass
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Collider/BoxCollider.cs#L115
+  metadata:
+    uid: Alis.Core.Ecs.Component.Collider.BoxCollider.Mass
+    commentId: P:Alis.Core.Ecs.Component.Collider.BoxCollider.Mass
+- markdown: Gets or sets the value of the mass
+- code: public float Mass { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: RelativePosition
+  id: Alis_Core_Ecs_Component_Collider_BoxCollider_RelativePosition
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Collider/BoxCollider.cs#L79
+  metadata:
+    uid: Alis.Core.Ecs.Component.Collider.BoxCollider.RelativePosition
+    commentId: P:Alis.Core.Ecs.Component.Collider.BoxCollider.RelativePosition
+- markdown: Gets or sets the value of the relative position
+- code: public Vector2 RelativePosition { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: Restitution
+  id: Alis_Core_Ecs_Component_Collider_BoxCollider_Restitution
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Collider/BoxCollider.cs#L100
+  metadata:
+    uid: Alis.Core.Ecs.Component.Collider.BoxCollider.Restitution
+    commentId: P:Alis.Core.Ecs.Component.Collider.BoxCollider.Restitution
+- markdown: Gets or sets the value of the restitution
+- code: public float Restitution { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: Rotation
+  id: Alis_Core_Ecs_Component_Collider_BoxCollider_Rotation
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Collider/BoxCollider.cs#L74
+  metadata:
+    uid: Alis.Core.Ecs.Component.Collider.BoxCollider.Rotation
+    commentId: P:Alis.Core.Ecs.Component.Collider.BoxCollider.Rotation
+- markdown: Gets or sets the value of the rotation
+- code: public float Rotation { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: Width
+  id: Alis_Core_Ecs_Component_Collider_BoxCollider_Width
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Collider/BoxCollider.cs#L64
+  metadata:
+    uid: Alis.Core.Ecs.Component.Collider.BoxCollider.Width
+    commentId: P:Alis.Core.Ecs.Component.Collider.BoxCollider.Width
+- markdown: Gets or sets the value of the width
+- code: public float Width { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- h2: Methods
+- api3: Builder()
+  id: Alis_Core_Ecs_Component_Collider_BoxCollider_Builder
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Collider/BoxCollider.cs#L136
+  metadata:
+    uid: Alis.Core.Ecs.Component.Collider.BoxCollider.Builder
+    commentId: M:Alis.Core.Ecs.Component.Collider.BoxCollider.Builder
+- markdown: Builders this instance
+- code: public BoxColliderBuilder Builder()
+- h4: Returns
+- parameters:
+  - type:
+    - text: BoxColliderBuilder
+      url: Alis.Builder.Core.Ecs.Component.Collider.BoxColliderBuilder.html
+    description: The box collider builder
+- api3: OnAwake()
+  id: Alis_Core_Ecs_Component_Collider_BoxCollider_OnAwake
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Collider/BoxCollider.cs#L161
+  metadata:
+    uid: Alis.Core.Ecs.Component.Collider.BoxCollider.OnAwake
+    commentId: M:Alis.Core.Ecs.Component.Collider.BoxCollider.OnAwake
+- markdown: Awakes this instance
+- code: public override void OnAwake()
+- api3: OnBeforeUpdate()
+  id: Alis_Core_Ecs_Component_Collider_BoxCollider_OnBeforeUpdate
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Collider/BoxCollider.cs#L277
+  metadata:
+    uid: Alis.Core.Ecs.Component.Collider.BoxCollider.OnBeforeUpdate
+    commentId: M:Alis.Core.Ecs.Component.Collider.BoxCollider.OnBeforeUpdate
+- markdown: Before the update
+- code: public override void OnBeforeUpdate()
+- api3: OnCollision(Fixture, Fixture, Contact)
+  id: Alis_Core_Ecs_Component_Collider_BoxCollider_OnCollision_Alis_Core_Physic_Dynamics_Fixture_Alis_Core_Physic_Dynamics_Fixture_Alis_Core_Physic_Collision_ContactSystem_Contact_
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Collider/BoxCollider.cs#L245
+  metadata:
+    uid: Alis.Core.Ecs.Component.Collider.BoxCollider.OnCollision(Alis.Core.Physic.Dynamics.Fixture,Alis.Core.Physic.Dynamics.Fixture,Alis.Core.Physic.Collision.ContactSystem.Contact)
+    commentId: M:Alis.Core.Ecs.Component.Collider.BoxCollider.OnCollision(Alis.Core.Physic.Dynamics.Fixture,Alis.Core.Physic.Dynamics.Fixture,Alis.Core.Physic.Collision.ContactSystem.Contact)
+- markdown: Ons the collision using the specified fixture a
+- code: private void OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
+- h4: Parameters
+- parameters:
+  - name: fixtureA
+    type:
+    - text: Fixture
+      url: Alis.Core.Physic.Dynamics.Fixture.html
+    description: The fixture a
+  - name: fixtureB
+    type:
+    - text: Fixture
+      url: Alis.Core.Physic.Dynamics.Fixture.html
+    description: The fixture b
+  - name: contact
+    type:
+    - text: Contact
+      url: Alis.Core.Physic.Collision.ContactSystem.Contact.html
+    description: The contact
+- api3: OnDraw()
+  id: Alis_Core_Ecs_Component_Collider_BoxCollider_OnDraw
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Collider/BoxCollider.cs#L321
+  metadata:
+    uid: Alis.Core.Ecs.Component.Collider.BoxCollider.OnDraw
+    commentId: M:Alis.Core.Ecs.Component.Collider.BoxCollider.OnDraw
+- markdown: Draws this instance
+- code: public override void OnDraw()
+- api3: OnExit()
+  id: Alis_Core_Ecs_Component_Collider_BoxCollider_OnExit
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Collider/BoxCollider.cs#L330
+  metadata:
+    uid: Alis.Core.Ecs.Component.Collider.BoxCollider.OnExit
+    commentId: M:Alis.Core.Ecs.Component.Collider.BoxCollider.OnExit
+- markdown: Ons the exit
+- code: public override void OnExit()
+- api3: OnInit()
+  id: Alis_Core_Ecs_Component_Collider_BoxCollider_OnInit
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Collider/BoxCollider.cs#L141
+  metadata:
+    uid: Alis.Core.Ecs.Component.Collider.BoxCollider.OnInit
+    commentId: M:Alis.Core.Ecs.Component.Collider.BoxCollider.OnInit
+- markdown: Inits this instance
+- code: public override void OnInit()
+- api3: OnSeparation(Fixture, Fixture, Contact)
+  id: Alis_Core_Ecs_Component_Collider_BoxCollider_OnSeparation_Alis_Core_Physic_Dynamics_Fixture_Alis_Core_Physic_Dynamics_Fixture_Alis_Core_Physic_Collision_ContactSystem_Contact_
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Collider/BoxCollider.cs#L218
+  metadata:
+    uid: Alis.Core.Ecs.Component.Collider.BoxCollider.OnSeparation(Alis.Core.Physic.Dynamics.Fixture,Alis.Core.Physic.Dynamics.Fixture,Alis.Core.Physic.Collision.ContactSystem.Contact)
+    commentId: M:Alis.Core.Ecs.Component.Collider.BoxCollider.OnSeparation(Alis.Core.Physic.Dynamics.Fixture,Alis.Core.Physic.Dynamics.Fixture,Alis.Core.Physic.Collision.ContactSystem.Contact)
+- markdown: Ons the separation using the specified fixture a
+- code: private void OnSeparation(Fixture fixtureA, Fixture fixtureB, Contact contact)
+- h4: Parameters
+- parameters:
+  - name: fixtureA
+    type:
+    - text: Fixture
+      url: Alis.Core.Physic.Dynamics.Fixture.html
+    description: The fixture a
+  - name: fixtureB
+    type:
+    - text: Fixture
+      url: Alis.Core.Physic.Dynamics.Fixture.html
+    description: The fixture b
+  - name: contact
+    type:
+    - text: Contact
+      url: Alis.Core.Physic.Collision.ContactSystem.Contact.html
+    description: The contact
+- api3: OnStart()
+  id: Alis_Core_Ecs_Component_Collider_BoxCollider_OnStart
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Collider/BoxCollider.cs#L269
+  metadata:
+    uid: Alis.Core.Ecs.Component.Collider.BoxCollider.OnStart
+    commentId: M:Alis.Core.Ecs.Component.Collider.BoxCollider.OnStart
+- markdown: Starts this instance
+- code: public override void OnStart()
+- api3: OnUpdate()
+  id: Alis_Core_Ecs_Component_Collider_BoxCollider_OnUpdate
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Collider/BoxCollider.cs#L313
+  metadata:
+    uid: Alis.Core.Ecs.Component.Collider.BoxCollider.OnUpdate
+    commentId: M:Alis.Core.Ecs.Component.Collider.BoxCollider.OnUpdate
+- markdown: Updates this instance
+- code: public override void OnUpdate()
+- h2: See Also
+- list:
+  - - text: ACollider
+      url: Alis.Core.Ecs.Component.Collider.ACollider.html
+languageId: csharp
+metadata:
+  description: The box collider class

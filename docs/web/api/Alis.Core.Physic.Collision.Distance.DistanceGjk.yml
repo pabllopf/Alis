@@ -1,0 +1,717 @@
+### YamlMime:ApiPage
+title: Class DistanceGjk
+body:
+- api1: Class DistanceGjk
+  id: Alis_Core_Physic_Collision_Distance_DistanceGjk
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/Distance/DistanceGJK.cs#L44
+  metadata:
+    uid: Alis.Core.Physic.Collision.Distance.DistanceGjk
+    commentId: T:Alis.Core.Physic.Collision.Distance.DistanceGjk
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Physic.Collision.Distance
+      url: Alis.Core.Physic.Collision.Distance.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: >-
+    The Gilbert distance algorithm that provides the distance between shapes. Using Voronoi
+
+    regions and Barycentric coordinates.
+- code: public static class DistanceGjk
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: DistanceGjk
+    url: Alis.Core.Physic.Collision.Distance.DistanceGjk.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Properties
+- api3: GjkCalls
+  id: Alis_Core_Physic_Collision_Distance_DistanceGjk_GjkCalls
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/Distance/DistanceGJK.cs#L50
+  metadata:
+    uid: Alis.Core.Physic.Collision.Distance.DistanceGjk.GjkCalls
+    commentId: P:Alis.Core.Physic.Collision.Distance.DistanceGjk.GjkCalls
+- markdown: >-
+    The number of calls made to the ComputeDistance() function. Note: This is only activated when
+
+    Settings.EnableDiagnostics = true
+- code: public static int GjkCalls { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: GjkIter
+  id: Alis_Core_Physic_Collision_Distance_DistanceGjk_GjkIter
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/Distance/DistanceGJK.cs#L57
+  metadata:
+    uid: Alis.Core.Physic.Collision.Distance.DistanceGjk.GjkIter
+    commentId: P:Alis.Core.Physic.Collision.Distance.DistanceGjk.GjkIter
+- markdown: >-
+    The number of iterations that was made on the last call to ComputeDistance(). Note: This is only activated
+
+    when Settings.EnableDiagnostics = true
+- code: public static int GjkIter { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: GjkMaxIter
+  id: Alis_Core_Physic_Collision_Distance_DistanceGjk_GjkMaxIter
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/Distance/DistanceGJK.cs#L64
+  metadata:
+    uid: Alis.Core.Physic.Collision.Distance.DistanceGjk.GjkMaxIter
+    commentId: P:Alis.Core.Physic.Collision.Distance.DistanceGjk.GjkMaxIter
+- markdown: >-
+    The maximum number of iterations calls to the Distance() function. Note: This is only activated when
+
+    Settings.EnableDiagnostics = true
+- code: public static int GjkMaxIter { get; internal set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- h2: Methods
+- api3: AddNewVertexToSimplex(ref Simplex, ref DistanceInput)
+  id: Alis_Core_Physic_Collision_Distance_DistanceGjk_AddNewVertexToSimplex_Alis_Core_Physic_Collision_NarrowPhase_Simplex__Alis_Core_Physic_Collision_Distance_DistanceInput__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/Distance/DistanceGJK.cs#L186
+  metadata:
+    uid: Alis.Core.Physic.Collision.Distance.DistanceGjk.AddNewVertexToSimplex(Alis.Core.Physic.Collision.NarrowPhase.Simplex@,Alis.Core.Physic.Collision.Distance.DistanceInput@)
+    commentId: M:Alis.Core.Physic.Collision.Distance.DistanceGjk.AddNewVertexToSimplex(Alis.Core.Physic.Collision.NarrowPhase.Simplex@,Alis.Core.Physic.Collision.Distance.DistanceInput@)
+- markdown: Adds the new vertex to simplex using the specified simplex
+- code: internal static SimplexVertex AddNewVertexToSimplex(ref Simplex simplex, ref DistanceInput input)
+- h4: Parameters
+- parameters:
+  - name: simplex
+    type:
+    - text: Simplex
+      url: Alis.Core.Physic.Collision.NarrowPhase.Simplex.html
+    description: The simplex
+  - name: input
+    type:
+    - text: DistanceInput
+      url: Alis.Core.Physic.Collision.Distance.DistanceInput.html
+    description: The input
+- h4: Returns
+- parameters:
+  - type:
+    - text: SimplexVertex
+      url: Alis.Core.Physic.Collision.NarrowPhase.SimplexVertex.html
+    description: The vertex
+- api3: ApplyRadii(ref DistanceOutput, ref DistanceInput)
+  id: Alis_Core_Physic_Collision_Distance_DistanceGjk_ApplyRadii_Alis_Core_Physic_Collision_Distance_DistanceOutput__Alis_Core_Physic_Collision_Distance_DistanceInput__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/Distance/DistanceGJK.cs#L269
+  metadata:
+    uid: Alis.Core.Physic.Collision.Distance.DistanceGjk.ApplyRadii(Alis.Core.Physic.Collision.Distance.DistanceOutput@,Alis.Core.Physic.Collision.Distance.DistanceInput@)
+    commentId: M:Alis.Core.Physic.Collision.Distance.DistanceGjk.ApplyRadii(Alis.Core.Physic.Collision.Distance.DistanceOutput@,Alis.Core.Physic.Collision.Distance.DistanceInput@)
+- markdown: Applies the radii using the specified output
+- code: internal static void ApplyRadii(ref DistanceOutput output, ref DistanceInput input)
+- h4: Parameters
+- parameters:
+  - name: output
+    type:
+    - text: DistanceOutput
+      url: Alis.Core.Physic.Collision.Distance.DistanceOutput.html
+    description: The output
+  - name: input
+    type:
+    - text: DistanceInput
+      url: Alis.Core.Physic.Collision.Distance.DistanceInput.html
+    description: The input
+- api3: CalculateOutput(ref ShapeCastOutput, ref Simplex, ref Vector2, ref float, ref Vector2, float)
+  id: Alis_Core_Physic_Collision_Distance_DistanceGjk_CalculateOutput_Alis_Core_Physic_Collision_Distance_ShapeCastOutput__Alis_Core_Physic_Collision_NarrowPhase_Simplex__Alis_Core_Aspect_Math_Vector_Vector2__System_Single__Alis_Core_Aspect_Math_Vector_Vector2__System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/Distance/DistanceGJK.cs#L558
+  metadata:
+    uid: Alis.Core.Physic.Collision.Distance.DistanceGjk.CalculateOutput(Alis.Core.Physic.Collision.Distance.ShapeCastOutput@,Alis.Core.Physic.Collision.NarrowPhase.Simplex@,Alis.Core.Aspect.Math.Vector.Vector2@,System.Single@,Alis.Core.Aspect.Math.Vector.Vector2@,System.Single)
+    commentId: M:Alis.Core.Physic.Collision.Distance.DistanceGjk.CalculateOutput(Alis.Core.Physic.Collision.Distance.ShapeCastOutput@,Alis.Core.Physic.Collision.NarrowPhase.Simplex@,Alis.Core.Aspect.Math.Vector.Vector2@,System.Single@,Alis.Core.Aspect.Math.Vector.Vector2@,System.Single)
+- markdown: Calculates the output using the specified output
+- code: internal static void CalculateOutput(ref ShapeCastOutput output, ref Simplex simplex, ref Vector2 r, ref float lambda, ref Vector2 n, float radiusA)
+- h4: Parameters
+- parameters:
+  - name: output
+    type:
+    - text: ShapeCastOutput
+      url: Alis.Core.Physic.Collision.Distance.ShapeCastOutput.html
+    description: The output
+  - name: simplex
+    type:
+    - text: Simplex
+      url: Alis.Core.Physic.Collision.NarrowPhase.Simplex.html
+    description: The simplex
+  - name: r
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+  - name: lambda
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The lambda
+  - name: n
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+  - name: radiusA
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The radius
+- api3: CalculateRadius(DistanceProxy)
+  id: Alis_Core_Physic_Collision_Distance_DistanceGjk_CalculateRadius_Alis_Core_Physic_Collision_Distance_DistanceProxy_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/Distance/DistanceGJK.cs#L358
+  metadata:
+    uid: Alis.Core.Physic.Collision.Distance.DistanceGjk.CalculateRadius(Alis.Core.Physic.Collision.Distance.DistanceProxy)
+    commentId: M:Alis.Core.Physic.Collision.Distance.DistanceGjk.CalculateRadius(Alis.Core.Physic.Collision.Distance.DistanceProxy)
+- markdown: Calculates the radius using the specified proxy
+- code: internal static float CalculateRadius(DistanceProxy proxy)
+- h4: Parameters
+- parameters:
+  - name: proxy
+    type:
+    - text: DistanceProxy
+      url: Alis.Core.Physic.Collision.Distance.DistanceProxy.html
+    description: The proxy
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The float
+- api3: ComputeDistance(ref DistanceInput, out DistanceOutput, out SimplexCache)
+  id: Alis_Core_Physic_Collision_Distance_DistanceGjk_ComputeDistance_Alis_Core_Physic_Collision_Distance_DistanceInput__Alis_Core_Physic_Collision_Distance_DistanceOutput__Alis_Core_Physic_Collision_NarrowPhase_SimplexCache__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/Distance/DistanceGJK.cs#L73
+  metadata:
+    uid: Alis.Core.Physic.Collision.Distance.DistanceGjk.ComputeDistance(Alis.Core.Physic.Collision.Distance.DistanceInput@,Alis.Core.Physic.Collision.Distance.DistanceOutput@,Alis.Core.Physic.Collision.NarrowPhase.SimplexCache@)
+    commentId: M:Alis.Core.Physic.Collision.Distance.DistanceGjk.ComputeDistance(Alis.Core.Physic.Collision.Distance.DistanceInput@,Alis.Core.Physic.Collision.Distance.DistanceOutput@,Alis.Core.Physic.Collision.NarrowPhase.SimplexCache@)
+- markdown: Computes the distance using the specified input
+- code: public static void ComputeDistance(ref DistanceInput input, out DistanceOutput output, out SimplexCache cache)
+- h4: Parameters
+- parameters:
+  - name: input
+    type:
+    - text: DistanceInput
+      url: Alis.Core.Physic.Collision.Distance.DistanceInput.html
+    description: The input
+  - name: output
+    type:
+    - text: DistanceOutput
+      url: Alis.Core.Physic.Collision.Distance.DistanceOutput.html
+    description: The output
+  - name: cache
+    type:
+    - text: SimplexCache
+      url: Alis.Core.Physic.Collision.NarrowPhase.SimplexCache.html
+    description: The cache
+- api3: ComputeSupport(ref DistanceProxy, ref DistanceProxy, ref Transform, ref Transform, ref Vector2)
+  id: Alis_Core_Physic_Collision_Distance_DistanceGjk_ComputeSupport_Alis_Core_Physic_Collision_Distance_DistanceProxy__Alis_Core_Physic_Collision_Distance_DistanceProxy__Alis_Core_Aspect_Math_Transform__Alis_Core_Aspect_Math_Transform__Alis_Core_Aspect_Math_Vector_Vector2__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/Distance/DistanceGJK.cs#L434
+  metadata:
+    uid: Alis.Core.Physic.Collision.Distance.DistanceGjk.ComputeSupport(Alis.Core.Physic.Collision.Distance.DistanceProxy@,Alis.Core.Physic.Collision.Distance.DistanceProxy@,Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Vector.Vector2@)
+    commentId: M:Alis.Core.Physic.Collision.Distance.DistanceGjk.ComputeSupport(Alis.Core.Physic.Collision.Distance.DistanceProxy@,Alis.Core.Physic.Collision.Distance.DistanceProxy@,Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Vector.Vector2@)
+- markdown: Computes the support using the specified proxy a
+- code: internal static Vector2 ComputeSupport(ref DistanceProxy proxyA, ref DistanceProxy proxyB, ref Transform xfA, ref Transform xfB, ref Vector2 r)
+- h4: Parameters
+- parameters:
+  - name: proxyA
+    type:
+    - text: DistanceProxy
+      url: Alis.Core.Physic.Collision.Distance.DistanceProxy.html
+    description: The proxy
+  - name: proxyB
+    type:
+    - text: DistanceProxy
+      url: Alis.Core.Physic.Collision.Distance.DistanceProxy.html
+    description: The proxy
+  - name: xfA
+    type:
+    - text: Transform
+      url: Alis.Core.Aspect.Math.Transform.html
+    description: The xf
+  - name: xfB
+    type:
+    - text: Transform
+      url: Alis.Core.Aspect.Math.Transform.html
+    description: The xf
+  - name: r
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+- h4: Returns
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+- api3: ComputeV(ref DistanceProxy, ref DistanceProxy, ref Transform, ref Transform, ref Vector2, ref Vector2, ref float, ref Simplex, float)
+  id: Alis_Core_Physic_Collision_Distance_DistanceGjk_ComputeV_Alis_Core_Physic_Collision_Distance_DistanceProxy__Alis_Core_Physic_Collision_Distance_DistanceProxy__Alis_Core_Aspect_Math_Transform__Alis_Core_Aspect_Math_Transform__Alis_Core_Aspect_Math_Vector_Vector2__Alis_Core_Aspect_Math_Vector_Vector2__System_Single__Alis_Core_Physic_Collision_NarrowPhase_Simplex__System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/Distance/DistanceGJK.cs#L410
+  metadata:
+    uid: Alis.Core.Physic.Collision.Distance.DistanceGjk.ComputeV(Alis.Core.Physic.Collision.Distance.DistanceProxy@,Alis.Core.Physic.Collision.Distance.DistanceProxy@,Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@,System.Single@,Alis.Core.Physic.Collision.NarrowPhase.Simplex@,System.Single)
+    commentId: M:Alis.Core.Physic.Collision.Distance.DistanceGjk.ComputeV(Alis.Core.Physic.Collision.Distance.DistanceProxy@,Alis.Core.Physic.Collision.Distance.DistanceProxy@,Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@,System.Single@,Alis.Core.Physic.Collision.NarrowPhase.Simplex@,System.Single)
+- markdown: Computes the v using the specified input
+- code: internal static Vector2 ComputeV(ref DistanceProxy proxyA, ref DistanceProxy proxyB, ref Transform xfA, ref Transform xfB, ref Vector2 r, ref Vector2 n, ref float lambda, ref Simplex simplex, float radius)
+- h4: Parameters
+- parameters:
+  - name: proxyA
+    type:
+    - text: DistanceProxy
+      url: Alis.Core.Physic.Collision.Distance.DistanceProxy.html
+    description: The proxy
+  - name: proxyB
+    type:
+    - text: DistanceProxy
+      url: Alis.Core.Physic.Collision.Distance.DistanceProxy.html
+    description: The proxy
+  - name: xfA
+    type:
+    - text: Transform
+      url: Alis.Core.Aspect.Math.Transform.html
+    description: The xf
+  - name: xfB
+    type:
+    - text: Transform
+      url: Alis.Core.Aspect.Math.Transform.html
+    description: The xf
+  - name: r
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+  - name: n
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+  - name: lambda
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The lambda
+  - name: simplex
+    type:
+    - text: Simplex
+      url: Alis.Core.Physic.Collision.NarrowPhase.Simplex.html
+    description: The simplex
+  - name: radius
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The radius
+- h4: Returns
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+- api3: InitializeOutput(out ShapeCastOutput)
+  id: Alis_Core_Physic_Collision_Distance_DistanceGjk_InitializeOutput_Alis_Core_Physic_Collision_Distance_ShapeCastOutput__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/Distance/DistanceGJK.cs#L342
+  metadata:
+    uid: Alis.Core.Physic.Collision.Distance.DistanceGjk.InitializeOutput(Alis.Core.Physic.Collision.Distance.ShapeCastOutput@)
+    commentId: M:Alis.Core.Physic.Collision.Distance.DistanceGjk.InitializeOutput(Alis.Core.Physic.Collision.Distance.ShapeCastOutput@)
+- markdown: Initializes the output using the specified output
+- code: internal static void InitializeOutput(out ShapeCastOutput output)
+- h4: Parameters
+- parameters:
+  - name: output
+    type:
+    - text: ShapeCastOutput
+      url: Alis.Core.Physic.Collision.Distance.ShapeCastOutput.html
+    description: The output
+- api3: InitializeSimplex(ref SimplexCache, ref DistanceInput)
+  id: Alis_Core_Physic_Collision_Distance_DistanceGjk_InitializeSimplex_Alis_Core_Physic_Collision_NarrowPhase_SimplexCache__Alis_Core_Physic_Collision_Distance_DistanceInput__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/Distance/DistanceGJK.cs#L169
+  metadata:
+    uid: Alis.Core.Physic.Collision.Distance.DistanceGjk.InitializeSimplex(Alis.Core.Physic.Collision.NarrowPhase.SimplexCache@,Alis.Core.Physic.Collision.Distance.DistanceInput@)
+    commentId: M:Alis.Core.Physic.Collision.Distance.DistanceGjk.InitializeSimplex(Alis.Core.Physic.Collision.NarrowPhase.SimplexCache@,Alis.Core.Physic.Collision.Distance.DistanceInput@)
+- markdown: Initializes the simplex using the specified cache
+- code: internal static Simplex InitializeSimplex(ref SimplexCache cache, ref DistanceInput input)
+- h4: Parameters
+- parameters:
+  - name: cache
+    type:
+    - text: SimplexCache
+      url: Alis.Core.Physic.Collision.NarrowPhase.SimplexCache.html
+    description: The cache
+  - name: input
+    type:
+    - text: DistanceInput
+      url: Alis.Core.Physic.Collision.Distance.DistanceInput.html
+    description: The input
+- h4: Returns
+- parameters:
+  - type:
+    - text: Simplex
+      url: Alis.Core.Physic.Collision.NarrowPhase.Simplex.html
+    description: The simplex
+- api3: InitializeSimplex()
+  id: Alis_Core_Physic_Collision_Distance_DistanceGjk_InitializeSimplex
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/Distance/DistanceGJK.cs#L364
+  metadata:
+    uid: Alis.Core.Physic.Collision.Distance.DistanceGjk.InitializeSimplex
+    commentId: M:Alis.Core.Physic.Collision.Distance.DistanceGjk.InitializeSimplex
+- markdown: Initializes the simplex
+- code: internal static Simplex InitializeSimplex()
+- h4: Returns
+- parameters:
+  - type:
+    - text: Simplex
+      url: Alis.Core.Physic.Collision.NarrowPhase.Simplex.html
+    description: The simplex
+- api3: IsConverged(Vector2, ref float, float)
+  id: Alis_Core_Physic_Collision_Distance_DistanceGjk_IsConverged_Alis_Core_Aspect_Math_Vector_Vector2_System_Single__System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/Distance/DistanceGJK.cs#L453
+  metadata:
+    uid: Alis.Core.Physic.Collision.Distance.DistanceGjk.IsConverged(Alis.Core.Aspect.Math.Vector.Vector2,System.Single@,System.Single)
+    commentId: M:Alis.Core.Physic.Collision.Distance.DistanceGjk.IsConverged(Alis.Core.Aspect.Math.Vector.Vector2,System.Single@,System.Single)
+- markdown: Describes whether is converged
+- code: internal static bool IsConverged(Vector2 v, ref float lambda, float radius)
+- h4: Parameters
+- parameters:
+  - name: v
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+  - name: lambda
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The lambda
+  - name: radius
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The radius
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: IsDuplicateSupportPoint(int[], int[], SimplexVertex, int)
+  id: Alis_Core_Physic_Collision_Distance_DistanceGjk_IsDuplicateSupportPoint_System_Int32___System_Int32___Alis_Core_Physic_Collision_NarrowPhase_SimplexVertex_System_Int32_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/Distance/DistanceGJK.cs#L230
+  metadata:
+    uid: Alis.Core.Physic.Collision.Distance.DistanceGjk.IsDuplicateSupportPoint(System.Int32[],System.Int32[],Alis.Core.Physic.Collision.NarrowPhase.SimplexVertex,System.Int32)
+    commentId: M:Alis.Core.Physic.Collision.Distance.DistanceGjk.IsDuplicateSupportPoint(System.Int32[],System.Int32[],Alis.Core.Physic.Collision.NarrowPhase.SimplexVertex,System.Int32)
+- markdown: Describes whether is duplicate support point
+- code: internal static bool IsDuplicateSupportPoint(int[] saveA, int[] saveB, SimplexVertex vertex, int saveCount)
+- h4: Parameters
+- parameters:
+  - name: saveA
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    - '['
+    - ']'
+    description: The save
+  - name: saveB
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    - '['
+    - ']'
+    description: The save
+  - name: vertex
+    type:
+    - text: SimplexVertex
+      url: Alis.Core.Physic.Collision.NarrowPhase.SimplexVertex.html
+    description: The vertex
+  - name: saveCount
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The save count
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: IsNewDirectionNeeded(ref Vector2, ref Vector2, ref float, float)
+  id: Alis_Core_Physic_Collision_Distance_DistanceGjk_IsNewDirectionNeeded_Alis_Core_Aspect_Math_Vector_Vector2__Alis_Core_Aspect_Math_Vector_Vector2__System_Single__System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/Distance/DistanceGJK.cs#L469
+  metadata:
+    uid: Alis.Core.Physic.Collision.Distance.DistanceGjk.IsNewDirectionNeeded(Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@,System.Single@,System.Single)
+    commentId: M:Alis.Core.Physic.Collision.Distance.DistanceGjk.IsNewDirectionNeeded(Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@,System.Single@,System.Single)
+- markdown: Describes whether is new direction needed
+- code: internal static bool IsNewDirectionNeeded(ref Vector2 n, ref Vector2 r, ref float lambda, float radius)
+- h4: Parameters
+- parameters:
+  - name: n
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+  - name: r
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+  - name: lambda
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The lambda
+  - name: radius
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The radius
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: IterateUntilConverged(ref DistanceProxy, ref DistanceProxy, ref Transform, ref Transform, ref Vector2, ref Vector2, ref float, ref Simplex, float)
+  id: Alis_Core_Physic_Collision_Distance_DistanceGjk_IterateUntilConverged_Alis_Core_Physic_Collision_Distance_DistanceProxy__Alis_Core_Physic_Collision_Distance_DistanceProxy__Alis_Core_Aspect_Math_Transform__Alis_Core_Aspect_Math_Transform__Alis_Core_Aspect_Math_Vector_Vector2__Alis_Core_Aspect_Math_Vector_Vector2__System_Single__Alis_Core_Physic_Collision_NarrowPhase_Simplex__System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/Distance/DistanceGJK.cs#L383
+  metadata:
+    uid: Alis.Core.Physic.Collision.Distance.DistanceGjk.IterateUntilConverged(Alis.Core.Physic.Collision.Distance.DistanceProxy@,Alis.Core.Physic.Collision.Distance.DistanceProxy@,Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@,System.Single@,Alis.Core.Physic.Collision.NarrowPhase.Simplex@,System.Single)
+    commentId: M:Alis.Core.Physic.Collision.Distance.DistanceGjk.IterateUntilConverged(Alis.Core.Physic.Collision.Distance.DistanceProxy@,Alis.Core.Physic.Collision.Distance.DistanceProxy@,Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@,System.Single@,Alis.Core.Physic.Collision.NarrowPhase.Simplex@,System.Single)
+- markdown: Describes whether iterate until converged
+- code: internal static bool IterateUntilConverged(ref DistanceProxy proxyA, ref DistanceProxy proxyB, ref Transform xfA, ref Transform xfB, ref Vector2 r, ref Vector2 n, ref float lambda, ref Simplex simplex, float radius)
+- h4: Parameters
+- parameters:
+  - name: proxyA
+    type:
+    - text: DistanceProxy
+      url: Alis.Core.Physic.Collision.Distance.DistanceProxy.html
+    description: The proxy
+  - name: proxyB
+    type:
+    - text: DistanceProxy
+      url: Alis.Core.Physic.Collision.Distance.DistanceProxy.html
+    description: The proxy
+  - name: xfA
+    type:
+    - text: Transform
+      url: Alis.Core.Aspect.Math.Transform.html
+    description: The xf
+  - name: xfB
+    type:
+    - text: Transform
+      url: Alis.Core.Aspect.Math.Transform.html
+    description: The xf
+  - name: r
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+  - name: n
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+  - name: lambda
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The lambda
+  - name: simplex
+    type:
+    - text: Simplex
+      url: Alis.Core.Physic.Collision.NarrowPhase.Simplex.html
+    description: The simplex
+  - name: radius
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The radius
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: PrepareOutput(out DistanceOutput, ref Simplex, ref SimplexCache, ref DistanceInput)
+  id: Alis_Core_Physic_Collision_Distance_DistanceGjk_PrepareOutput_Alis_Core_Physic_Collision_Distance_DistanceOutput__Alis_Core_Physic_Collision_NarrowPhase_Simplex__Alis_Core_Physic_Collision_NarrowPhase_SimplexCache__Alis_Core_Physic_Collision_Distance_DistanceInput__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/Distance/DistanceGJK.cs#L250
+  metadata:
+    uid: Alis.Core.Physic.Collision.Distance.DistanceGjk.PrepareOutput(Alis.Core.Physic.Collision.Distance.DistanceOutput@,Alis.Core.Physic.Collision.NarrowPhase.Simplex@,Alis.Core.Physic.Collision.NarrowPhase.SimplexCache@,Alis.Core.Physic.Collision.Distance.DistanceInput@)
+    commentId: M:Alis.Core.Physic.Collision.Distance.DistanceGjk.PrepareOutput(Alis.Core.Physic.Collision.Distance.DistanceOutput@,Alis.Core.Physic.Collision.NarrowPhase.Simplex@,Alis.Core.Physic.Collision.NarrowPhase.SimplexCache@,Alis.Core.Physic.Collision.Distance.DistanceInput@)
+- markdown: Prepares the output using the specified output
+- code: internal static void PrepareOutput(out DistanceOutput output, ref Simplex simplex, ref SimplexCache cache, ref DistanceInput input)
+- h4: Parameters
+- parameters:
+  - name: output
+    type:
+    - text: DistanceOutput
+      url: Alis.Core.Physic.Collision.Distance.DistanceOutput.html
+    description: The output
+  - name: simplex
+    type:
+    - text: Simplex
+      url: Alis.Core.Physic.Collision.NarrowPhase.Simplex.html
+    description: The simplex
+  - name: cache
+    type:
+    - text: SimplexCache
+      url: Alis.Core.Physic.Collision.NarrowPhase.SimplexCache.html
+    description: The cache
+  - name: input
+    type:
+    - text: DistanceInput
+      url: Alis.Core.Physic.Collision.Distance.DistanceInput.html
+    description: The input
+- api3: SaveSimplexVertices(Simplex, ref int[], ref int[])
+  id: Alis_Core_Physic_Collision_Distance_DistanceGjk_SaveSimplexVertices_Alis_Core_Physic_Collision_NarrowPhase_Simplex_System_Int32____System_Int32____
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/Distance/DistanceGJK.cs#L153
+  metadata:
+    uid: Alis.Core.Physic.Collision.Distance.DistanceGjk.SaveSimplexVertices(Alis.Core.Physic.Collision.NarrowPhase.Simplex,System.Int32[]@,System.Int32[]@)
+    commentId: M:Alis.Core.Physic.Collision.Distance.DistanceGjk.SaveSimplexVertices(Alis.Core.Physic.Collision.NarrowPhase.Simplex,System.Int32[]@,System.Int32[]@)
+- markdown: Saves the simplex vertices using the specified simplex
+- code: internal static void SaveSimplexVertices(Simplex simplex, ref int[] saveA, ref int[] saveB)
+- h4: Parameters
+- parameters:
+  - name: simplex
+    type:
+    - text: Simplex
+      url: Alis.Core.Physic.Collision.NarrowPhase.Simplex.html
+    description: The simplex
+  - name: saveA
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    - '['
+    - ']'
+    description: The save
+  - name: saveB
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    - '['
+    - ']'
+    description: The save
+- api3: ShapeCast(ref ShapeCastInput, out ShapeCastOutput)
+  id: Alis_Core_Physic_Collision_Distance_DistanceGjk_ShapeCast_Alis_Core_Physic_Collision_Distance_ShapeCastInput__Alis_Core_Physic_Collision_Distance_ShapeCastOutput__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/Distance/DistanceGJK.cs#L300
+  metadata:
+    uid: Alis.Core.Physic.Collision.Distance.DistanceGjk.ShapeCast(Alis.Core.Physic.Collision.Distance.ShapeCastInput@,Alis.Core.Physic.Collision.Distance.ShapeCastOutput@)
+    commentId: M:Alis.Core.Physic.Collision.Distance.DistanceGjk.ShapeCast(Alis.Core.Physic.Collision.Distance.ShapeCastInput@,Alis.Core.Physic.Collision.Distance.ShapeCastOutput@)
+- markdown: >-
+    Perform a linear shape cast of shape B moving and shape A fixed. Determines the hit point, normal, and
+
+    translation fraction.
+- code: public static bool ShapeCast(ref ShapeCastInput input, out ShapeCastOutput output)
+- h4: Parameters
+- parameters:
+  - name: input
+    type:
+    - text: ShapeCastInput
+      url: Alis.Core.Physic.Collision.Distance.ShapeCastInput.html
+  - name: output
+    type:
+    - text: ShapeCastOutput
+      url: Alis.Core.Physic.Collision.Distance.ShapeCastOutput.html
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: true if hit, false if there is no hit or an initial overlap
+- api3: SolveSimplex(ref Simplex)
+  id: Alis_Core_Physic_Collision_Distance_DistanceGjk_SolveSimplex_Alis_Core_Physic_Collision_NarrowPhase_Simplex__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/Distance/DistanceGJK.cs#L204
+  metadata:
+    uid: Alis.Core.Physic.Collision.Distance.DistanceGjk.SolveSimplex(Alis.Core.Physic.Collision.NarrowPhase.Simplex@)
+    commentId: M:Alis.Core.Physic.Collision.Distance.DistanceGjk.SolveSimplex(Alis.Core.Physic.Collision.NarrowPhase.Simplex@)
+- markdown: Solves the simplex using the specified simplex
+- code: internal static void SolveSimplex(ref Simplex simplex)
+- h4: Parameters
+- parameters:
+  - name: simplex
+    type:
+    - text: Simplex
+      url: Alis.Core.Physic.Collision.NarrowPhase.Simplex.html
+    description: The simplex
+- api3: UpdateSimplex(ref DistanceProxy, ref DistanceProxy, ref Transform, ref Transform, ref Vector2, ref Vector2, ref Vector2, ref float, ref Simplex, float)
+  id: Alis_Core_Physic_Collision_Distance_DistanceGjk_UpdateSimplex_Alis_Core_Physic_Collision_Distance_DistanceProxy__Alis_Core_Physic_Collision_Distance_DistanceProxy__Alis_Core_Aspect_Math_Transform__Alis_Core_Aspect_Math_Transform__Alis_Core_Aspect_Math_Vector_Vector2__Alis_Core_Aspect_Math_Vector_Vector2__Alis_Core_Aspect_Math_Vector_Vector2__System_Single__Alis_Core_Physic_Collision_NarrowPhase_Simplex__System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/Distance/DistanceGJK.cs#L488
+  metadata:
+    uid: Alis.Core.Physic.Collision.Distance.DistanceGjk.UpdateSimplex(Alis.Core.Physic.Collision.Distance.DistanceProxy@,Alis.Core.Physic.Collision.Distance.DistanceProxy@,Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@,System.Single@,Alis.Core.Physic.Collision.NarrowPhase.Simplex@,System.Single)
+    commentId: M:Alis.Core.Physic.Collision.Distance.DistanceGjk.UpdateSimplex(Alis.Core.Physic.Collision.Distance.DistanceProxy@,Alis.Core.Physic.Collision.Distance.DistanceProxy@,Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@,System.Single@,Alis.Core.Physic.Collision.NarrowPhase.Simplex@,System.Single)
+- markdown: Updates the simplex using the specified input
+- code: internal static void UpdateSimplex(ref DistanceProxy proxyA, ref DistanceProxy proxyB, ref Transform xfA, ref Transform xfB, ref Vector2 r, ref Vector2 v, ref Vector2 n, ref float lambda, ref Simplex simplex, float radius)
+- h4: Parameters
+- parameters:
+  - name: proxyA
+    type:
+    - text: DistanceProxy
+      url: Alis.Core.Physic.Collision.Distance.DistanceProxy.html
+    description: The proxy
+  - name: proxyB
+    type:
+    - text: DistanceProxy
+      url: Alis.Core.Physic.Collision.Distance.DistanceProxy.html
+    description: The proxy
+  - name: xfA
+    type:
+    - text: Transform
+      url: Alis.Core.Aspect.Math.Transform.html
+    description: The xf
+  - name: xfB
+    type:
+    - text: Transform
+      url: Alis.Core.Aspect.Math.Transform.html
+    description: The xf
+  - name: r
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+  - name: v
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+  - name: n
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The
+  - name: lambda
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The lambda
+  - name: simplex
+    type:
+    - text: Simplex
+      url: Alis.Core.Physic.Collision.NarrowPhase.Simplex.html
+    description: The simplex
+  - name: radius
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The radius
+languageId: csharp
+metadata:
+  description: >-
+    The Gilbert distance algorithm that provides the distance between shapes. Using Voronoi
+
+    regions and Barycentric coordinates.

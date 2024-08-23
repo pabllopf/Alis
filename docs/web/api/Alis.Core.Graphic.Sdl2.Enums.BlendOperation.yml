@@ -1,0 +1,48 @@
+### YamlMime:ApiPage
+title: Enum BlendOperation
+body:
+- api1: Enum BlendOperation
+  id: Alis_Core_Graphic_Sdl2_Enums_BlendOperation
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Enums/BlendOperation.cs#L35
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Enums.BlendOperation
+    commentId: T:Alis.Core.Graphic.Sdl2.Enums.BlendOperation
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Enums
+      url: Alis.Core.Graphic.Sdl2.Enums.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The sdl blend operation enum
+- code: public enum BlendOperation
+- h2: Fields
+- parameters:
+  - name: SdlBlendOperationAdd
+    default: "1"
+    description: >+
+      The sdl blend operation add sdl blend operation
+
+  - name: SdlBlendOperationSubtract
+    default: "2"
+    description: >+
+      The sdl blend operation subtract sdl blend operation
+
+  - name: SdlBlendOperationRevSubtract
+    default: "3"
+    description: >+
+      The sdl blend operation rev subtract sdl blend operation
+
+  - name: SdlBlendOperationMinimum
+    default: "4"
+    description: >+
+      The sdl blend operation minimum sdl blend operation
+
+  - name: SdlBlendOperationMaximum
+    default: "5"
+    description: >+
+      The sdl blend operation maximum sdl blend operation
+
+languageId: csharp
+metadata:
+  description: The sdl blend operation enum

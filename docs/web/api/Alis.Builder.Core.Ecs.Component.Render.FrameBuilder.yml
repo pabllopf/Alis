@@ -1,0 +1,99 @@
+### YamlMime:ApiPage
+title: Class FrameBuilder
+body:
+- api1: Class FrameBuilder
+  id: Alis_Builder_Core_Ecs_Component_Render_FrameBuilder
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Builder/Core/Ecs/Component/Render/FrameBuilder.cs#L39
+  metadata:
+    uid: Alis.Builder.Core.Ecs.Component.Render.FrameBuilder
+    commentId: T:Alis.Builder.Core.Ecs.Component.Render.FrameBuilder
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Builder.Core.Ecs.Component.Render
+      url: Alis.Builder.Core.Ecs.Component.Render.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The frame builder class
+- code: 'public class FrameBuilder : IBuild<Frame>, IFilePath<FrameBuilder, string>'
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: FrameBuilder
+    url: Alis.Builder.Core.Ecs.Component.Render.FrameBuilder.html
+- h4: Implements
+- list:
+  - text: IBuild<Frame>
+    url: Alis.Core.Aspect.Fluent.IBuild-1.html
+  - text: IFilePath<FrameBuilder, string>
+    url: Alis.Core.Aspect.Fluent.Words.IFilePath-2.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Fields
+- api3: frame
+  id: Alis_Builder_Core_Ecs_Component_Render_FrameBuilder_frame
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Builder/Core/Ecs/Component/Render/FrameBuilder.cs#L46
+  metadata:
+    uid: Alis.Builder.Core.Ecs.Component.Render.FrameBuilder.frame
+    commentId: F:Alis.Builder.Core.Ecs.Component.Render.FrameBuilder.frame
+- markdown: The frame
+- code: private readonly Frame frame
+- h4: Field Value
+- parameters:
+  - type:
+    - text: Frame
+      url: Alis.Core.Ecs.Component.Render.Frame.html
+- h2: Methods
+- api3: Build()
+  id: Alis_Builder_Core_Ecs_Component_Render_FrameBuilder_Build
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Builder/Core/Ecs/Component/Render/FrameBuilder.cs#L52
+  metadata:
+    uid: Alis.Builder.Core.Ecs.Component.Render.FrameBuilder.Build
+    commentId: M:Alis.Builder.Core.Ecs.Component.Render.FrameBuilder.Build
+- markdown: Builds this instance
+- code: public Frame Build()
+- h4: Returns
+- parameters:
+  - type:
+    - text: Frame
+      url: Alis.Core.Ecs.Component.Render.Frame.html
+    description: The frame
+- api3: FilePath(string)
+  id: Alis_Builder_Core_Ecs_Component_Render_FrameBuilder_FilePath_System_String_
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Builder/Core/Ecs/Component/Render/FrameBuilder.cs#L59
+  metadata:
+    uid: Alis.Builder.Core.Ecs.Component.Render.FrameBuilder.FilePath(System.String)
+    commentId: M:Alis.Builder.Core.Ecs.Component.Render.FrameBuilder.FilePath(System.String)
+- markdown: Files the path using the specified value
+- code: public FrameBuilder FilePath(string value)
+- h4: Parameters
+- parameters:
+  - name: value
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - text: FrameBuilder
+      url: Alis.Builder.Core.Ecs.Component.Render.FrameBuilder.html
+    description: The frame builder
+languageId: csharp
+metadata:
+  description: The frame builder class

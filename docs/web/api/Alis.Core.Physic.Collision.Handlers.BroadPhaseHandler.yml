@@ -1,0 +1,31 @@
+### YamlMime:ApiPage
+title: Delegate BroadPhaseHandler
+body:
+- api1: Delegate BroadPhaseHandler
+  id: Alis_Core_Physic_Collision_Handlers_BroadPhaseHandler
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/Handlers/BroadPhaseHandler.cs#L37
+  metadata:
+    uid: Alis.Core.Physic.Collision.Handlers.BroadPhaseHandler
+    commentId: T:Alis.Core.Physic.Collision.Handlers.BroadPhaseHandler
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Physic.Collision.Handlers
+      url: Alis.Core.Physic.Collision.Handlers.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The broad phase handler
+- code: public delegate void BroadPhaseHandler(ref FixtureProxy proxyA, ref FixtureProxy proxyB)
+- h4: Parameters
+- parameters:
+  - name: proxyA
+    type:
+    - text: FixtureProxy
+      url: Alis.Core.Physic.Dynamics.FixtureProxy.html
+  - name: proxyB
+    type:
+    - text: FixtureProxy
+      url: Alis.Core.Physic.Dynamics.FixtureProxy.html
+languageId: csharp
+metadata:
+  description: The broad phase handler

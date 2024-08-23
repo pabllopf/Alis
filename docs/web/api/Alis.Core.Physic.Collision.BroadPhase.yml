@@ -1,0 +1,51 @@
+### YamlMime:ApiPage
+title: Namespace Alis.Core.Physic.Collision.BroadPhase
+body:
+- api1: Namespace Alis.Core.Physic.Collision.BroadPhase
+  id: Alis_Core_Physic_Collision_BroadPhase
+  metadata:
+    uid: Alis.Core.Physic.Collision.BroadPhase
+    commentId: N:Alis.Core.Physic.Collision.BroadPhase
+- h3: Classes
+- parameters:
+  - type:
+      text: DynamicTree<T>
+      url: Alis.Core.Physic.Collision.BroadPhase.DynamicTree-1.html
+    description: >-
+      A dynamic tree arranges data in a binary tree to accelerate queries such as volume queries and ray casts.
+
+      Leafs are proxies with an AABB. In the tree we expand the proxy AABB by Settings.b2_fatAABBFactor so that the proxy
+
+      AABB is bigger than the client object. This allows the client object to move by small amounts without triggering a
+
+      tree
+
+      update. Nodes are pooled and relocatable, so we use node indices rather than pointers.
+  - type:
+      text: DynamicTreeBroadPhase
+      url: Alis.Core.Physic.Collision.BroadPhase.DynamicTreeBroadPhase.html
+    description: >-
+      The broad-phase is used for computing pairs and performing volume queries and ray casts. This broad-phase does
+
+      not persist pairs. Instead, this reports potentially new pairs. It is up to the client to consume the new pairs and
+
+      to
+
+      track subsequent overlap.
+  - type:
+      text: TreeNode<T>
+      url: Alis.Core.Physic.Collision.BroadPhase.TreeNode-1.html
+    description: A node in the dynamic tree. The client does not interact with this directly.
+- h3: Structs
+- parameters:
+  - type:
+      text: Pair
+      url: Alis.Core.Physic.Collision.BroadPhase.Pair.html
+    description: The pair
+- h3: Interfaces
+- parameters:
+  - type:
+      text: IBroadPhase
+      url: Alis.Core.Physic.Collision.BroadPhase.IBroadPhase.html
+    description: The broad phase interface
+languageId: csharp

@@ -1,0 +1,120 @@
+### YamlMime:ApiPage
+title: Class Filter
+body:
+- api1: Class Filter
+  id: Alis_Core_Physic_Collision_Filtering_Filter
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/Filtering/Filter.cs#L37
+  metadata:
+    uid: Alis.Core.Physic.Collision.Filtering.Filter
+    commentId: T:Alis.Core.Physic.Collision.Filtering.Filter
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Physic.Collision.Filtering
+      url: Alis.Core.Physic.Collision.Filtering.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The filter class
+- code: public class Filter
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: Filter
+    url: Alis.Core.Physic.Collision.Filtering.Filter.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Constructors
+- api3: Filter()
+  id: Alis_Core_Physic_Collision_Filtering_Filter__ctor
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/Filtering/Filter.cs#L42
+  metadata:
+    uid: Alis.Core.Physic.Collision.Filtering.Filter.#ctor
+    commentId: M:Alis.Core.Physic.Collision.Filtering.Filter.#ctor
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Physic.Collision.Filtering.Filter" data-throw-if-not-resolved="false"></xref> class
+- code: public Filter()
+- api3: Filter(short, Category, Category)
+  id: Alis_Core_Physic_Collision_Filtering_Filter__ctor_System_Int16_Alis_Core_Physic_Collision_Filtering_Category_Alis_Core_Physic_Collision_Filtering_Category_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/Filtering/Filter.cs#L55
+  metadata:
+    uid: Alis.Core.Physic.Collision.Filtering.Filter.#ctor(System.Int16,Alis.Core.Physic.Collision.Filtering.Category,Alis.Core.Physic.Collision.Filtering.Category)
+    commentId: M:Alis.Core.Physic.Collision.Filtering.Filter.#ctor(System.Int16,Alis.Core.Physic.Collision.Filtering.Category,Alis.Core.Physic.Collision.Filtering.Category)
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Physic.Collision.Filtering.Filter" data-throw-if-not-resolved="false"></xref> class
+- code: public Filter(short group, Category category, Category mask)
+- h4: Parameters
+- parameters:
+  - name: group
+    type:
+    - text: short
+      url: https://learn.microsoft.com/dotnet/api/system.int16
+    description: The group
+  - name: category
+    type:
+    - text: Category
+      url: Alis.Core.Physic.Collision.Filtering.Category.html
+    description: The category
+  - name: mask
+    type:
+    - text: Category
+      url: Alis.Core.Physic.Collision.Filtering.Category.html
+    description: The mask
+- h2: Properties
+- api3: Category
+  id: Alis_Core_Physic_Collision_Filtering_Filter_Category
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/Filtering/Filter.cs#L69
+  metadata:
+    uid: Alis.Core.Physic.Collision.Filtering.Filter.Category
+    commentId: P:Alis.Core.Physic.Collision.Filtering.Filter.Category
+- markdown: The collision category bits. Normally you would just set one bit.
+- code: public Category Category { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Category
+      url: Alis.Core.Physic.Collision.Filtering.Category.html
+- api3: CategoryMask
+  id: Alis_Core_Physic_Collision_Filtering_Filter_CategoryMask
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/Filtering/Filter.cs#L72
+  metadata:
+    uid: Alis.Core.Physic.Collision.Filtering.Filter.CategoryMask
+    commentId: P:Alis.Core.Physic.Collision.Filtering.Filter.CategoryMask
+- markdown: The collision mask bits. This states the categories that this shape would accept for collision.
+- code: public Category CategoryMask { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Category
+      url: Alis.Core.Physic.Collision.Filtering.Category.html
+- api3: Group
+  id: Alis_Core_Physic_Collision_Filtering_Filter_Group
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/Filtering/Filter.cs#L66
+  metadata:
+    uid: Alis.Core.Physic.Collision.Filtering.Filter.Group
+    commentId: P:Alis.Core.Physic.Collision.Filtering.Filter.Group
+- markdown: >-
+    Collision groups allow a certain group of objects to never collide(negative) or always collide (positive).
+
+    Zero means no collision group. Non-zero group filtering always wins against the mask bits.
+- code: public short Group { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: short
+      url: https://learn.microsoft.com/dotnet/api/system.int16
+languageId: csharp
+metadata:
+  description: The filter class

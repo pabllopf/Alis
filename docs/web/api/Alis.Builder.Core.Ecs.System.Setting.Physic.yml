@@ -1,0 +1,15 @@
+### YamlMime:ApiPage
+title: Namespace Alis.Builder.Core.Ecs.System.Setting.Physic
+body:
+- api1: Namespace Alis.Builder.Core.Ecs.System.Setting.Physic
+  id: Alis_Builder_Core_Ecs_System_Setting_Physic
+  metadata:
+    uid: Alis.Builder.Core.Ecs.System.Setting.Physic
+    commentId: N:Alis.Builder.Core.Ecs.System.Setting.Physic
+- h3: Classes
+- parameters:
+  - type:
+      text: PhysicSettingBuilder
+      url: Alis.Builder.Core.Ecs.System.Setting.Physic.PhysicSettingBuilder.html
+    description: The physic setting builder class
+languageId: csharp

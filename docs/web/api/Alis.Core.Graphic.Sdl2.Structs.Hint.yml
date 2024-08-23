@@ -1,0 +1,1604 @@
+### YamlMime:ApiPage
+title: Class Hint
+body:
+- api1: Class Hint
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L35
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint
+    commentId: T:Alis.Core.Graphic.Sdl2.Structs.Hint
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Structs
+      url: Alis.Core.Graphic.Sdl2.Structs.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The sdl hint class
+- code: public static class Hint
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: Hint
+    url: Alis.Core.Graphic.Sdl2.Structs.Hint.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Fields
+- api3: HintAccelerometerAsJoystick
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintAccelerometerAsJoystick
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L160
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintAccelerometerAsJoystick
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintAccelerometerAsJoystick
+- markdown: The sdl hint accelerometer as joystick
+- code: public const string HintAccelerometerAsJoystick = "SDL_ACCELEROMETER_AS_JOYSTICK"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintAllowAltTabWhileGrabbed
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintAllowAltTabWhileGrabbed
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L560
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintAllowAltTabWhileGrabbed
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintAllowAltTabWhileGrabbed
+- markdown: The sdl hint allow alt tab while grabbed
+- code: public const string HintAllowAltTabWhileGrabbed = "SDL_ALLOW_ALT_TAB_WHILE_GRABBED"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintAllowTopmost
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintAllowTopmost
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L115
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintAllowTopmost
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintAllowTopmost
+- markdown: The sdl hint allow topmost
+- code: public const string HintAllowTopmost = "SDL_ALLOW_TOPMOST"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintAndroidApkExpansionMainFileVersion
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintAndroidApkExpansionMainFileVersion
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L240
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintAndroidApkExpansionMainFileVersion
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintAndroidApkExpansionMainFileVersion
+- markdown: The sdl hint android apk expansion main file version
+- code: public const string HintAndroidApkExpansionMainFileVersion = "SDL_ANDROID_APK_EXPANSION_MAIN_FILE_VERSION"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintAndroidApkExpansionPatchFileVersion
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintAndroidApkExpansionPatchFileVersion
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L245
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintAndroidApkExpansionPatchFileVersion
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintAndroidApkExpansionPatchFileVersion
+- markdown: The sdl hint android apk expansion patch file version
+- code: public const string HintAndroidApkExpansionPatchFileVersion = "SDL_ANDROID_APK_EXPANSION_PATCH_FILE_VERSION"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintAndroidBlockOnPause
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintAndroidBlockOnPause
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L380
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintAndroidBlockOnPause
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintAndroidBlockOnPause
+- markdown: The sdl hint android block on pause
+- code: public const string HintAndroidBlockOnPause = "SDL_ANDROID_BLOCK_ON_PAUSE"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintAndroidBlockOnPausePauseAudio
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintAndroidBlockOnPausePauseAudio
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L485
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintAndroidBlockOnPausePauseAudio
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintAndroidBlockOnPausePauseAudio
+- markdown: The sdl hint android block on pause pause audio
+- code: public const string HintAndroidBlockOnPausePauseAudio = "SDL_ANDROID_BLOCK_ON_PAUSE_PAUSEAUDIO"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintAndroidSeparateMouseAndTouch
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintAndroidSeparateMouseAndTouch
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L195
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintAndroidSeparateMouseAndTouch
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintAndroidSeparateMouseAndTouch
+- markdown: The sdl hint android separate mouse and touch
+- code: public const string HintAndroidSeparateMouseAndTouch = "SDL_ANDROID_SEPARATE_MOUSE_AND_TOUCH"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintAndroidTrapBackButton
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintAndroidTrapBackButton
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L365
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintAndroidTrapBackButton
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintAndroidTrapBackButton
+- markdown: The sdl hint android trap back button
+- code: public const string HintAndroidTrapBackButton = "SDL_ANDROID_TRAP_BACK_BUTTON"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintAppName
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintAppName
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L605
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintAppName
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintAppName
+- markdown: The sdl hint app name
+- code: public const string HintAppName = "SDL_APP_NAME"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintAppleTvRemoteAllowRotation
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintAppleTvRemoteAllowRotation
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L265
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintAppleTvRemoteAllowRotation
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintAppleTvRemoteAllowRotation
+- markdown: The sdl hint apple tv remote allow rotation
+- code: public const string HintAppleTvRemoteAllowRotation = "SDL_APPLE_TV_REMOTE_ALLOW_ROTATION"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintAudioDeviceAppName
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintAudioDeviceAppName
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L455
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintAudioDeviceAppName
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintAudioDeviceAppName
+- markdown: The sdl hint audio device app name
+- code: public const string HintAudioDeviceAppName = "SDL_AUDIO_DEVICE_APP_NAME"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintAudioDeviceStreamName
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintAudioDeviceStreamName
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L460
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintAudioDeviceStreamName
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintAudioDeviceStreamName
+- markdown: The sdl hint audio device stream name
+- code: public const string HintAudioDeviceStreamName = "SDL_AUDIO_DEVICE_STREAM_NAME"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintAudioDeviceStreamRole
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintAudioDeviceStreamRole
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L570
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintAudioDeviceStreamRole
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintAudioDeviceStreamRole
+- markdown: The sdl hint audio device stream role
+- code: public const string HintAudioDeviceStreamRole = "SDL_AUDIO_DEVICE_STREAM_ROLE"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintAudioIncludeMonitors
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintAudioIncludeMonitors
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L590
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintAudioIncludeMonitors
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintAudioIncludeMonitors
+- markdown: The sdl hint audio include monitors
+- code: public const string HintAudioIncludeMonitors = "SDL_AUDIO_INCLUDE_MONITORS"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintAudioResamplingMode
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintAudioResamplingMode
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L270
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintAudioResamplingMode
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintAudioResamplingMode
+- markdown: The sdl hint audio resampling mode
+- code: public const string HintAudioResamplingMode = "SDL_AUDIO_RESAMPLING_MODE"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintAutoUpdateJoysticks
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintAutoUpdateJoysticks
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L505
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintAutoUpdateJoysticks
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintAutoUpdateJoysticks
+- markdown: The sdl hint auto update joysticks
+- code: public const string HintAutoUpdateJoysticks = "SDL_AUTO_UPDATE_JOYSTICKS"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintAutoUpdateSensors
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintAutoUpdateSensors
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L510
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintAutoUpdateSensors
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintAutoUpdateSensors
+- markdown: The sdl hint auto update sensors
+- code: public const string HintAutoUpdateSensors = "SDL_AUTO_UPDATE_SENSORS"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintBmpSaveLegacyFormat
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintBmpSaveLegacyFormat
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L255
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintBmpSaveLegacyFormat
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintBmpSaveLegacyFormat
+- markdown: The sdl hint bmp save legacy format
+- code: public const string HintBmpSaveLegacyFormat = "SDL_BMP_SAVE_LEGACY_FORMAT"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintCtrlClickEmulateRightClick
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintCtrlClickEmulateRightClick
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L135
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintCtrlClickEmulateRightClick
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintCtrlClickEmulateRightClick
+- markdown: The sdl hint ctrl click emulate right click
+- code: public const string HintCtrlClickEmulateRightClick = "SDL_CTRL_CLICK_EMULATE_RIGHT_CLICK"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintDisplayUsableBounds
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintDisplayUsableBounds
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L430
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintDisplayUsableBounds
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintDisplayUsableBounds
+- markdown: The sdl hint display usable bounds
+- code: public const string HintDisplayUsableBounds = "SDL_DISPLAY_USABLE_BOUNDS"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintEmscriptenAsyncify
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintEmscriptenAsyncify
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L475
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintEmscriptenAsyncify
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintEmscriptenAsyncify
+- markdown: The sdl hint emscripten asyncify
+- code: public const string HintEmscriptenAsyncify = "SDL_EMSCRIPTEN_ASYNCIFY"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintEmscriptenKeyboardElement
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintEmscriptenKeyboardElement
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L200
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintEmscriptenKeyboardElement
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintEmscriptenKeyboardElement
+- markdown: The sdl hint emscripten keyboard element
+- code: public const string HintEmscriptenKeyboardElement = "SDL_EMSCRIPTEN_KEYBOARD_ELEMENT"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintEnableSteamControllers
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintEnableSteamControllers
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L360
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintEnableSteamControllers
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintEnableSteamControllers
+- markdown: The sdl hint enable steam controllers
+- code: public const string HintEnableSteamControllers = "SDL_ENABLE_STEAM_CONTROLLERS"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintEventLogging
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintEventLogging
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L390
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintEventLogging
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintEventLogging
+- markdown: The sdl hint event logging
+- code: public const string HintEventLogging = "SDL_EVENT_LOGGING"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintFramebufferAcceleration
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintFramebufferAcceleration
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L40
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintFramebufferAcceleration
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintFramebufferAcceleration
+- markdown: The sdl hint framebuffer acceleration
+- code: public const string HintFramebufferAcceleration = "SDL_FRAMEBUFFER_ACCELERATION"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintGameControllerConfig
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintGameControllerConfig
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L105
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintGameControllerConfig
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintGameControllerConfig
+- markdown: The sdl hint game controller config
+- code: public const string HintGameControllerConfig = "SDL_GAMECONTROLLERCONFIG"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintGameControllerConfigFile
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintGameControllerConfigFile
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L375
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintGameControllerConfigFile
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintGameControllerConfigFile
+- markdown: The sdl hint game controller config file
+- code: public const string HintGameControllerConfigFile = "SDL_GAMECONTROLLERCONFIG_FILE"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintGameControllerType
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintGameControllerType
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L440
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintGameControllerType
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintGameControllerType
+- markdown: The sdl hint game controller type
+- code: public const string HintGameControllerType = "SDL_GAMECONTROLLERTYPE"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintGameControllerUseButtonLabels
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintGameControllerUseButtonLabels
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L415
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintGameControllerUseButtonLabels
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintGameControllerUseButtonLabels
+- markdown: The sdl hint game controller use button labels
+- code: public const string HintGameControllerUseButtonLabels = "SDL_GAMECONTROLLER_USE_BUTTON_LABELS"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintGrabKeyboard
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintGrabKeyboard
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L80
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintGrabKeyboard
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintGrabKeyboard
+- markdown: The sdl hint grab keyboard
+- code: public const string HintGrabKeyboard = "SDL_GRAB_KEYBOARD"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintIdleTimerDisabled
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintIdleTimerDisabled
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L90
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintIdleTimerDisabled
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintIdleTimerDisabled
+- markdown: The sdl hint idle timer disabled
+- code: public const string HintIdleTimerDisabled = "SDL_IOS_IDLE_TIMER_DISABLED"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintImeInternalEditing
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintImeInternalEditing
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L190
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintImeInternalEditing
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintImeInternalEditing
+- markdown: The sdl hint ime internal editing
+- code: public const string HintImeInternalEditing = "SDL_IME_INTERNAL_EDITING"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintImeShowUi
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintImeShowUi
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L615
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintImeShowUi
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintImeShowUi
+- markdown: The sdl hint ime show ui
+- code: public const string HintImeShowUi = "SDL_IME_SHOW_UI"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintIosHideHomeIndicator
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintIosHideHomeIndicator
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L305
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintIosHideHomeIndicator
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintIosHideHomeIndicator
+- markdown: The sdl hint ios hide home indicator
+- code: public const string HintIosHideHomeIndicator = "SDL_IOS_HIDE_HOME_INDICATOR"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintJoystickAllowBackgroundEvents
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintJoystickAllowBackgroundEvents
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L110
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintJoystickAllowBackgroundEvents
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintJoystickAllowBackgroundEvents
+- markdown: The sdl hint joystick allow background events
+- code: public const string HintJoystickAllowBackgroundEvents = "SDL_JOYSTICK_ALLOW_BACKGROUND_EVENTS"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintJoystickDevice
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintJoystickDevice
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L630
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintJoystickDevice
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintJoystickDevice
+- markdown: The sdl hint joystick device
+- code: public const string HintJoystickDevice = "SDL_JOYSTICK_DEVICE"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintJoystickHidapi
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintJoystickHidapi
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L330
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintJoystickHidapi
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintJoystickHidapi
+- markdown: The sdl hint joystick hidapi
+- code: public const string HintJoystickHidapi = "SDL_JOYSTICK_HIDAPI"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintJoystickHidapiCorrelateXInput
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintJoystickHidapiCorrelateXInput
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L445
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintJoystickHidapiCorrelateXInput
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintJoystickHidapiCorrelateXInput
+- markdown: The sdl hint joystick hidapi correlate x input
+- code: public const string HintJoystickHidapiCorrelateXInput = "SDL_JOYSTICK_HIDAPI_CORRELATE_XINPUT"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintJoystickHidapiGameCube
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintJoystickHidapiGameCube
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L425
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintJoystickHidapiGameCube
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintJoystickHidapiGameCube
+- markdown: The sdl hint joystick hidapi game cube
+- code: public const string HintJoystickHidapiGameCube = "SDL_JOYSTICK_HIDAPI_GAMECUBE"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintJoystickHidapiJoyCons
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintJoystickHidapiJoyCons
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L545
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintJoystickHidapiJoyCons
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintJoystickHidapiJoyCons
+- markdown: The sdl hint joystick hidapi joy cons
+- code: public const string HintJoystickHidapiJoyCons = "SDL_JOYSTICK_HIDAPI_JOY_CONS"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintJoystickHidapiLuna
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintJoystickHidapiLuna
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L580
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintJoystickHidapiLuna
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintJoystickHidapiLuna
+- markdown: The sdl hint joystick hidapi luna
+- code: public const string HintJoystickHidapiLuna = "SDL_JOYSTICK_HIDAPI_LUNA"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintJoystickHidapiPs4
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintJoystickHidapiPs4
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L335
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintJoystickHidapiPs4
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintJoystickHidapiPs4
+- markdown: The sdl hint joystick hidapi ps4
+- code: public const string HintJoystickHidapiPs4 = "SDL_JOYSTICK_HIDAPI_PS4"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintJoystickHidapiPs4Rumble
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintJoystickHidapiPs4Rumble
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L340
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintJoystickHidapiPs4Rumble
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintJoystickHidapiPs4Rumble
+- markdown: The sdl hint joystick hidapi ps4 rumble
+- code: public const string HintJoystickHidapiPs4Rumble = "SDL_JOYSTICK_HIDAPI_PS4_RUMBLE"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintJoystickHidapiPs5
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintJoystickHidapiPs5
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L490
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintJoystickHidapiPs5
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintJoystickHidapiPs5
+- markdown: The sdl hint joystick hidapi ps5
+- code: public const string HintJoystickHidapiPs5 = "SDL_JOYSTICK_HIDAPI_PS5"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintJoystickHidapiPs5PlayerLed
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintJoystickHidapiPs5PlayerLed
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L535
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintJoystickHidapiPs5PlayerLed
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintJoystickHidapiPs5PlayerLed
+- markdown: The sdl hint joystick hidapi ps5 player led
+- code: public const string HintJoystickHidapiPs5PlayerLed = "SDL_JOYSTICK_HIDAPI_PS5_PLAYER_LED"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintJoystickHidapiPs5Rumble
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintJoystickHidapiPs5Rumble
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L520
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintJoystickHidapiPs5Rumble
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintJoystickHidapiPs5Rumble
+- markdown: The sdl hint joystick hidapi ps5 rumble
+- code: public const string HintJoystickHidapiPs5Rumble = "SDL_JOYSTICK_HIDAPI_PS5_RUMBLE"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintJoystickHidapiStadia
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintJoystickHidapiStadia
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L550
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintJoystickHidapiStadia
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintJoystickHidapiStadia
+- markdown: The sdl hint joystick hidapi stadia
+- code: public const string HintJoystickHidapiStadia = "SDL_JOYSTICK_HIDAPI_STADIA"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintJoystickHidapiSteam
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintJoystickHidapiSteam
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L345
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintJoystickHidapiSteam
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintJoystickHidapiSteam
+- markdown: The sdl hint joystick hidapi steam
+- code: public const string HintJoystickHidapiSteam = "SDL_JOYSTICK_HIDAPI_STEAM"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintJoystickHidapiSwitch
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintJoystickHidapiSwitch
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L350
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintJoystickHidapiSwitch
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintJoystickHidapiSwitch
+- markdown: The sdl hint joystick hidapi switch
+- code: public const string HintJoystickHidapiSwitch = "SDL_JOYSTICK_HIDAPI_SWITCH"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintJoystickHidapiSwitchHomeLed
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintJoystickHidapiSwitchHomeLed
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L555
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintJoystickHidapiSwitchHomeLed
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintJoystickHidapiSwitchHomeLed
+- markdown: The sdl hint joystick hidapi switch home led
+- code: public const string HintJoystickHidapiSwitchHomeLed = "SDL_JOYSTICK_HIDAPI_SWITCH_HOME_LED"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintJoystickHidapiXbox
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintJoystickHidapiXbox
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L355
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintJoystickHidapiXbox
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintJoystickHidapiXbox
+- markdown: The sdl hint joystick hidapi xbox
+- code: public const string HintJoystickHidapiXbox = "SDL_JOYSTICK_HIDAPI_XBOX"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintJoystickRawInput
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintJoystickRawInput
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L450
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintJoystickRawInput
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintJoystickRawInput
+- markdown: The sdl hint joystick raw input
+- code: public const string HintJoystickRawInput = "SDL_JOYSTICK_RAWINPUT"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintJoystickRawInputCorrelateXInput
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintJoystickRawInputCorrelateXInput
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L585
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintJoystickRawInputCorrelateXInput
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintJoystickRawInputCorrelateXInput
+- markdown: The sdl hint joystick raw input correlate x input
+- code: public const string HintJoystickRawInputCorrelateXInput = "SDL_JOYSTICK_RAWINPUT_CORRELATE_XINPUT"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintKmSdFmRequireDrmMaster
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintKmSdFmRequireDrmMaster
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L565
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintKmSdFmRequireDrmMaster
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintKmSdFmRequireDrmMaster
+- markdown: The sdl hint km sd rm require drm master
+- code: public const string HintKmSdFmRequireDrmMaster = "SDL_KMSDRM_REQUIRE_DRM_MASTER"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintLinuxJoystickClassic
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintLinuxJoystickClassic
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L635
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintLinuxJoystickClassic
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintLinuxJoystickClassic
+- markdown: The sdl hint linux joystick classic
+- code: public const string HintLinuxJoystickClassic = "SDL_LINUX_JOYSTICK_CLASSIC"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintLinuxJoystickDeadZones
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintLinuxJoystickDeadZones
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L480
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintLinuxJoystickDeadZones
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintLinuxJoystickDeadZones
+- markdown: The sdl hint linux joystick dead zones
+- code: public const string HintLinuxJoystickDeadZones = "SDL_LINUX_JOYSTICK_DEADZONES"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintMacBackgroundApp
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintMacBackgroundApp
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L230
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintMacBackgroundApp
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintMacBackgroundApp
+- markdown: The sdl hint mac background app
+- code: public const string HintMacBackgroundApp = "SDL_MAC_BACKGROUND_APP"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintMouseDoubleClickRadius
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintMouseDoubleClickRadius
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L325
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintMouseDoubleClickRadius
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintMouseDoubleClickRadius
+- markdown: The sdl hint mouse double click radius
+- code: public const string HintMouseDoubleClickRadius = "SDL_MOUSE_DOUBLE_CLICK_RADIUS"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintMouseDoubleClickTime
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintMouseDoubleClickTime
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L320
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintMouseDoubleClickTime
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintMouseDoubleClickTime
+- markdown: The sdl hint mouse double click time
+- code: public const string HintMouseDoubleClickTime = "SDL_MOUSE_DOUBLE_CLICK_TIME"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintMouseFocusClickThrough
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintMouseFocusClickThrough
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L250
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintMouseFocusClickThrough
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintMouseFocusClickThrough
+- markdown: The sdl hint mouse focus click through
+- code: public const string HintMouseFocusClickThrough = "SDL_MOUSE_FOCUS_CLICKTHROUGH"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintMouseNormalSpeedScale
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintMouseNormalSpeedScale
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L280
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintMouseNormalSpeedScale
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintMouseNormalSpeedScale
+- markdown: The sdl hint mouse normal speed scale
+- code: public const string HintMouseNormalSpeedScale = "SDL_MOUSE_NORMAL_SPEED_SCALE"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintMouseRelativeModeWarp
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintMouseRelativeModeWarp
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L145
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintMouseRelativeModeWarp
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintMouseRelativeModeWarp
+- markdown: The sdl hint mouse relative mode warp
+- code: public const string HintMouseRelativeModeWarp = "SDL_MOUSE_RELATIVE_MODE_WARP"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintMouseRelativeScaling
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintMouseRelativeScaling
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L515
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintMouseRelativeScaling
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintMouseRelativeScaling
+- markdown: The sdl hint mouse relative scaling
+- code: public const string HintMouseRelativeScaling = "SDL_MOUSE_RELATIVE_SCALING"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintMouseRelativeSpeedScale
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintMouseRelativeSpeedScale
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L285
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintMouseRelativeSpeedScale
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintMouseRelativeSpeedScale
+- markdown: The sdl hint mouse relative speed scale
+- code: public const string HintMouseRelativeSpeedScale = "SDL_MOUSE_RELATIVE_SPEED_SCALE"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintMouseTouchEvents
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintMouseTouchEvents
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L370
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintMouseTouchEvents
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintMouseTouchEvents
+- markdown: The sdl hint mouse touch events
+- code: public const string HintMouseTouchEvents = "SDL_MOUSE_TOUCH_EVENTS"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintNoSignalHandlers
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintNoSignalHandlers
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L185
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintNoSignalHandlers
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintNoSignalHandlers
+- markdown: The sdl hint no signal handlers
+- code: public const string HintNoSignalHandlers = "SDL_NO_SIGNAL_HANDLERS"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintOrientations
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintOrientations
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L95
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintOrientations
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintOrientations
+- markdown: The sdl hint orientations
+- code: public const string HintOrientations = "SDL_IOS_ORIENTATIONS"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintPollSentinel
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintPollSentinel
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L625
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintPollSentinel
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintPollSentinel
+- markdown: The sdl hint poll sentinel
+- code: public const string HintPollSentinel = "SDL_POLL_SENTINEL"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintPreferredLocales
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintPreferredLocales
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L465
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintPreferredLocales
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintPreferredLocales
+- markdown: The sdl hint preferred locales
+- code: public const string HintPreferredLocales = "SDL_PREFERRED_LOCALES"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintRenderBatching
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintRenderBatching
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L385
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintRenderBatching
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintRenderBatching
+- markdown: The sdl hint render batching
+- code: public const string HintRenderBatching = "SDL_RENDER_BATCHING"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintRenderDirect3DThreadsafe
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintRenderDirect3DThreadsafe
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L55
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintRenderDirect3DThreadsafe
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintRenderDirect3DThreadsafe
+- markdown: The sdl hint render direct3d threadsafe
+- code: public const string HintRenderDirect3DThreadsafe = "SDL_RENDER_DIRECT3D_THREADSAFE"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintRenderDriver
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintRenderDriver
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L45
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintRenderDriver
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintRenderDriver
+- markdown: The sdl hint render driver
+- code: public const string HintRenderDriver = "SDL_RENDER_DRIVER"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintRenderLogicalSizeMode
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintRenderLogicalSizeMode
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L275
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintRenderLogicalSizeMode
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintRenderLogicalSizeMode
+- markdown: The sdl hint render logical size mode
+- code: public const string HintRenderLogicalSizeMode = "SDL_RENDER_LOGICAL_SIZE_MODE"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintRenderOpenglShaders
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintRenderOpenglShaders
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L50
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintRenderOpenglShaders
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintRenderOpenglShaders
+- markdown: The sdl hint render opengl shaders
+- code: public const string HintRenderOpenglShaders = "SDL_RENDER_OPENGL_SHADERS"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintRenderScaleQuality
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintRenderScaleQuality
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L125
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintRenderScaleQuality
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintRenderScaleQuality
+- markdown: The sdl hint render scale quality
+- code: public const string HintRenderScaleQuality = "SDL_RENDER_SCALE_QUALITY"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintRenderVsync
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintRenderVsync
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L60
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintRenderVsync
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintRenderVsync
+- markdown: The sdl hint render vsync
+- code: public const string HintRenderVsync = "SDL_RENDER_VSYNC"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintScreensaverInhibitActivityName
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintScreensaverInhibitActivityName
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L610
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintScreensaverInhibitActivityName
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintScreensaverInhibitActivityName
+- markdown: The sdl hint screensaver inhibit activity name
+- code: public const string HintScreensaverInhibitActivityName = "SDL_SCREENSAVER_INHIBIT_ACTIVITY_NAME"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintThreadForceRealtimeTimeCritical
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintThreadForceRealtimeTimeCritical
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L495
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintThreadForceRealtimeTimeCritical
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintThreadForceRealtimeTimeCritical
+- markdown: The sdl hint thread force realtime time critical
+- code: public const string HintThreadForceRealtimeTimeCritical = "SDL_THREAD_FORCE_REALTIME_TIME_CRITICAL"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintThreadPriorityPolicy
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintThreadPriorityPolicy
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L470
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintThreadPriorityPolicy
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintThreadPriorityPolicy
+- markdown: The sdl hint thread priority policy
+- code: public const string HintThreadPriorityPolicy = "SDL_THREAD_PRIORITY_POLICY"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintThreadStackSize
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintThreadStackSize
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L205
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintThreadStackSize
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintThreadStackSize
+- markdown: The sdl hint thread stack size
+- code: public const string HintThreadStackSize = "SDL_THREAD_STACK_SIZE"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintTimerResolution
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintTimerResolution
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L120
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintTimerResolution
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintTimerResolution
+- markdown: The sdl hint timer resolution
+- code: public const string HintTimerResolution = "SDL_TIMER_RESOLUTION"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintTouchMouseEvents
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintTouchMouseEvents
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L290
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintTouchMouseEvents
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintTouchMouseEvents
+- markdown: The sdl hint touch mouse events
+- code: public const string HintTouchMouseEvents = "SDL_TOUCH_MOUSE_EVENTS"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintTvRemoteAsJoystick
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintTvRemoteAsJoystick
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L310
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintTvRemoteAsJoystick
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintTvRemoteAsJoystick
+- markdown: The sdl hint tv remote as joystick
+- code: public const string HintTvRemoteAsJoystick = "SDL_TV_REMOTE_AS_JOYSTICK"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintVideoAllowScreensaver
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintVideoAllowScreensaver
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L155
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintVideoAllowScreensaver
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintVideoAllowScreensaver
+- markdown: The sdl hint video allow screensaver
+- code: public const string HintVideoAllowScreensaver = "SDL_VIDEO_ALLOW_SCREENSAVER"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintVideoEglAllowTransparency
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintVideoEglAllowTransparency
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L600
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintVideoEglAllowTransparency
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintVideoEglAllowTransparency
+- markdown: The sdl hint video egl allow transparency
+- code: public const string HintVideoEglAllowTransparency = "SDL_VIDEO_EGL_ALLOW_TRANSPARENCY"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintVideoExternalContext
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintVideoExternalContext
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L420
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintVideoExternalContext
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintVideoExternalContext
+- markdown: The sdl hint video external context
+- code: public const string HintVideoExternalContext = "SDL_VIDEO_EXTERNAL_CONTEXT"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintVideoHighDpiDisabled
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintVideoHighDpiDisabled
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L130
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintVideoHighDpiDisabled
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintVideoHighDpiDisabled
+- markdown: The sdl hint video high dpi disabled
+- code: public const string HintVideoHighDpiDisabled = "SDL_VIDEO_HIGHDPI_DISABLED"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintVideoMacFullscreenSpaces
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintVideoMacFullscreenSpaces
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L165
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintVideoMacFullscreenSpaces
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintVideoMacFullscreenSpaces
+- markdown: The sdl hint video mac fullscreen spaces
+- code: public const string HintVideoMacFullscreenSpaces = "SDL_VIDEO_MAC_FULLSCREEN_SPACES"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintVideoMinimizeOnFocusLoss
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintVideoMinimizeOnFocusLoss
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L85
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintVideoMinimizeOnFocusLoss
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintVideoMinimizeOnFocusLoss
+- markdown: The sdl hint video minimize on focus loss
+- code: public const string HintVideoMinimizeOnFocusLoss = "SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintVideoWaylandAllowLibDecor
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintVideoWaylandAllowLibDecor
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L595
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintVideoWaylandAllowLibDecor
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintVideoWaylandAllowLibDecor
+- markdown: The sdl hint video wayland allow lib decor
+- code: public const string HintVideoWaylandAllowLibDecor = "SDL_VIDEO_WAYLAND_ALLOW_LIBDECOR"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintVideoWinD3DCompiler
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintVideoWinD3DCompiler
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L140
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintVideoWinD3DCompiler
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintVideoWinD3DCompiler
+- markdown: The sdl hint video win d3d compiler
+- code: public const string HintVideoWinD3DCompiler = "SDL_VIDEO_WIN_D3DCOMPILER"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintVideoWindowSharePixelFormat
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintVideoWindowSharePixelFormat
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L150
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintVideoWindowSharePixelFormat
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintVideoWindowSharePixelFormat
+- markdown: The sdl hint video window share pixel format
+- code: public const string HintVideoWindowSharePixelFormat = "SDL_VIDEO_WINDOW_SHARE_PIXEL_FORMAT"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintVideoX11ForceEgl
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintVideoX11ForceEgl
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L435
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintVideoX11ForceEgl
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintVideoX11ForceEgl
+- markdown: The sdl hint video x11 force egl
+- code: public const string HintVideoX11ForceEgl = "SDL_VIDEO_X11_FORCE_EGL"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintVideoX11NetWmPing
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintVideoX11NetWmPing
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L235
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintVideoX11NetWmPing
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintVideoX11NetWmPing
+- markdown: The sdl hint video x11 net wm ping
+- code: public const string HintVideoX11NetWmPing = "SDL_VIDEO_X11_NET_WM_PING"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintVideoX11WindowVisualId
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintVideoX11WindowVisualId
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L410
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintVideoX11WindowVisualId
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintVideoX11WindowVisualId
+- markdown: The sdl hint x11 window visual id
+- code: public const string HintVideoX11WindowVisualId = "SDL_VIDEO_X11_WINDOW_VISUALID"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintVideoX11XIneRama
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintVideoX11XIneRama
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L70
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintVideoX11XIneRama
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintVideoX11XIneRama
+- markdown: The sdl hint video x11 x ine rama
+- code: public const string HintVideoX11XIneRama = "SDL_VIDEO_X11_XINERAMA"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintVideoX11XVidMode
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintVideoX11XVidMode
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L65
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintVideoX11XVidMode
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintVideoX11XVidMode
+- markdown: The sdl hint video x11 x vid mode
+- code: public const string HintVideoX11XVidMode = "SDL_VIDEO_X11_XVIDMODE"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintVideoX11Xrandr
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintVideoX11Xrandr
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L75
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintVideoX11Xrandr
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintVideoX11Xrandr
+- markdown: The sdl hint video x11 xrandr
+- code: public const string HintVideoX11Xrandr = "SDL_VIDEO_X11_XRANDR"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintWaveFactChunk
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintWaveFactChunk
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L405
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintWaveFactChunk
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintWaveFactChunk
+- markdown: The sdl hint wave fact chunk
+- code: public const string HintWaveFactChunk = "SDL_WAVE_FACT_CHUNK"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintWaveRiffChunkSize
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintWaveRiffChunkSize
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L395
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintWaveRiffChunkSize
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintWaveRiffChunkSize
+- markdown: The sdl hint wave riff chunk size
+- code: public const string HintWaveRiffChunkSize = "SDL_WAVE_RIFF_CHUNK_SIZE"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintWaveTruncation
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintWaveTruncation
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L400
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintWaveTruncation
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintWaveTruncation
+- markdown: The sdl hint wave truncation
+- code: public const string HintWaveTruncation = "SDL_WAVE_TRUNCATION"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintWindowFrameUsableWhileCursorHidden
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintWindowFrameUsableWhileCursorHidden
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L210
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintWindowFrameUsableWhileCursorHidden
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintWindowFrameUsableWhileCursorHidden
+- markdown: The sdl hint window frame usable while cursor hidden
+- code: public const string HintWindowFrameUsableWhileCursorHidden = "SDL_WINDOW_FRAME_USABLE_WHILE_CURSOR_HIDDEN"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintWindowNoActivationWhenShown
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintWindowNoActivationWhenShown
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L620
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintWindowNoActivationWhenShown
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintWindowNoActivationWhenShown
+- markdown: The sdl hint window no activation when shown
+- code: public const string HintWindowNoActivationWhenShown = "SDL_WINDOW_NO_ACTIVATION_WHEN_SHOWN"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintWindowsDisableThreadNaming
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintWindowsDisableThreadNaming
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L260
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintWindowsDisableThreadNaming
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintWindowsDisableThreadNaming
+- markdown: The sdl hint windows disable thread naming
+- code: public const string HintWindowsDisableThreadNaming = "SDL_WINDOWS_DISABLE_THREAD_NAMING"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintWindowsEnableMessageLoop
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintWindowsEnableMessageLoop
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L215
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintWindowsEnableMessageLoop
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintWindowsEnableMessageLoop
+- markdown: The sdl hint windows enable message loop
+- code: public const string HintWindowsEnableMessageLoop = "SDL_WINDOWS_ENABLE_MESSAGELOOP"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintWindowsForceMutexCriticalSections
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintWindowsForceMutexCriticalSections
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L525
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintWindowsForceMutexCriticalSections
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintWindowsForceMutexCriticalSections
+- markdown: The sdl hint windows force mutex critical sections
+- code: public const string HintWindowsForceMutexCriticalSections = "SDL_WINDOWS_FORCE_MUTEX_CRITICAL_SECTIONS"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintWindowsForceSemaphoreKernel
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintWindowsForceSemaphoreKernel
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L530
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintWindowsForceSemaphoreKernel
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintWindowsForceSemaphoreKernel
+- markdown: The sdl hint windows force semaphore kernel
+- code: public const string HintWindowsForceSemaphoreKernel = "SDL_WINDOWS_FORCE_SEMAPHORE_KERNEL"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintWindowsIntroSourceIcon
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintWindowsIntroSourceIcon
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L295
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintWindowsIntroSourceIcon
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintWindowsIntroSourceIcon
+- markdown: The sdl hint windows intro source icon
+- code: public const string HintWindowsIntroSourceIcon = "SDL_WINDOWS_INTRESOURCE_ICON"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintWindowsIntroSourceIconSmall
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintWindowsIntroSourceIconSmall
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L300
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintWindowsIntroSourceIconSmall
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintWindowsIntroSourceIconSmall
+- markdown: The sdl hint windows intro source icon small
+- code: public const string HintWindowsIntroSourceIconSmall = "SDL_WINDOWS_INTRESOURCE_ICON_SMALL"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintWindowsNoCloseOnAltF4
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintWindowsNoCloseOnAltF4
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L220
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintWindowsNoCloseOnAltF4
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintWindowsNoCloseOnAltF4
+- markdown: The sdl hint windows no close on alt f4
+- code: public const string HintWindowsNoCloseOnAltF4 = "SDL_WINDOWS_NO_CLOSE_ON_ALT_F4"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintWindowsUseD3D9Ex
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintWindowsUseD3D9Ex
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L540
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintWindowsUseD3D9Ex
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintWindowsUseD3D9Ex
+- markdown: The sdl hint windows use d3d9ex
+- code: public const string HintWindowsUseD3D9Ex = "SDL_WINDOWS_USE_D3D9EX"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintWinrtHandleBackButton
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintWinrtHandleBackButton
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L180
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintWinrtHandleBackButton
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintWinrtHandleBackButton
+- markdown: The sdl hint winrt handle back button
+- code: public const string HintWinrtHandleBackButton = "SDL_WINRT_HANDLE_BACK_BUTTON"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintWinrtPrivacyPolicyLabel
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintWinrtPrivacyPolicyLabel
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L175
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintWinrtPrivacyPolicyLabel
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintWinrtPrivacyPolicyLabel
+- markdown: The sdl hint winrt privacy policy label
+- code: public const string HintWinrtPrivacyPolicyLabel = "SDL_WINRT_PRIVACY_POLICY_LABEL"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintWinrtPrivacyPolicyUrl
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintWinrtPrivacyPolicyUrl
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L170
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintWinrtPrivacyPolicyUrl
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintWinrtPrivacyPolicyUrl
+- markdown: The sdl hint winrt privacy policy url
+- code: public const string HintWinrtPrivacyPolicyUrl = "SDL_WINRT_PRIVACY_POLICY_URL"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintX11ForceOverrideRedirect
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintX11ForceOverrideRedirect
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L575
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintX11ForceOverrideRedirect
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintX11ForceOverrideRedirect
+- markdown: The sdl hint x11 force override redirect
+- code: public const string HintX11ForceOverrideRedirect = "SDL_X11_FORCE_OVERRIDE_REDIRECT"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintXInputEnabled
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintXInputEnabled
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L100
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintXInputEnabled
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintXInputEnabled
+- markdown: The sdl hint x input enabled
+- code: public const string HintXInputEnabled = "SDL_XINPUT_ENABLED"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: HintXInputUseOldJoystickMapping
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_HintXInputUseOldJoystickMapping
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L225
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.HintXInputUseOldJoystickMapping
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.HintXInputUseOldJoystickMapping
+- markdown: The sdl hint x input use old joystick mapping
+- code: public const string HintXInputUseOldJoystickMapping = "SDL_XINPUT_USE_OLD_JOYSTICK_MAPPING"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: SdlHintJoystickThread
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_SdlHintJoystickThread
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L500
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.SdlHintJoystickThread
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.SdlHintJoystickThread
+- markdown: The sdl hint joystick thread
+- code: public const string SdlHintJoystickThread = "SDL_JOYSTICK_THREAD"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: VideoX11NetWmBypassCompositor
+  id: Alis_Core_Graphic_Sdl2_Structs_Hint_VideoX11NetWmBypassCompositor
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/Hint.cs#L315
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.Hint.VideoX11NetWmBypassCompositor
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.Hint.VideoX11NetWmBypassCompositor
+- markdown: The sdl video x11 net wm bypass compositor
+- code: public const string VideoX11NetWmBypassCompositor = "SDL_VIDEO_X11_NET_WM_BYPASS_COMPOSITOR"
+- h4: Field Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+languageId: csharp
+metadata:
+  description: The sdl hint class

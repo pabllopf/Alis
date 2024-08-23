@@ -1,0 +1,93 @@
+### YamlMime:ApiPage
+title: Enum SysWmType
+body:
+- api1: Enum SysWmType
+  id: Alis_Core_Graphic_Sdl2_Enums_SysWmType
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Enums/SysWmType.cs#L35
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Enums.SysWmType
+    commentId: T:Alis.Core.Graphic.Sdl2.Enums.SysWmType
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Enums
+      url: Alis.Core.Graphic.Sdl2.Enums.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The sdl sys wm type enum
+- code: public enum SysWmType
+- h2: Fields
+- parameters:
+  - name: SdlSysWmUnknown
+    default: "0"
+    description: >+
+      The sdl sys wm unknown sdl sys wm type
+
+  - name: SdlSysWmWindows
+    default: "1"
+    description: >+
+      The sdl sys wm windows sdl sys wm type
+
+  - name: SdlSysWmX11
+    default: "2"
+    description: >+
+      The sdl sys wm x11 sdl sys wm type
+
+  - name: SdlSysWmDirectfb
+    default: "3"
+    description: >+
+      The sdl sys wm directfb sdl sys wm type
+
+  - name: SdlSysWmCocoa
+    default: "4"
+    description: >+
+      The sdl sys wm cocoa sdl sys wm type
+
+  - name: SdlSysWmUikit
+    default: "5"
+    description: >+
+      The sdl sys wm uikit sdl sys wm type
+
+  - name: SdlSysWmWayland
+    default: "6"
+    description: >+
+      The sdl sys wm wayland sdl sys wm type
+
+  - name: SdlSysWmMir
+    default: "7"
+    description: >+
+      The sdl sys wm mir sdl sys wm type
+
+  - name: SdlSysWmWinrt
+    default: "8"
+    description: >+
+      The sdl sys wm winrt sdl sys wm type
+
+  - name: SdlSysWmAndroid
+    default: "9"
+    description: >+
+      The sdl sys wm android sdl sys wm type
+
+  - name: SdlSysWmVivante
+    default: "10"
+    description: >+
+      The sdl sys wm vivante sdl sys wm type
+
+  - name: SdlSysWmOs2
+    default: "11"
+    description: >+
+      The sdl sys wm os2 sdl sys wm type
+
+  - name: SdlSysWmHaiku
+    default: "12"
+    description: >+
+      The sdl sys wm haiku sdl sys wm type
+
+  - name: SdlSysWmKmsDrm
+    default: "13"
+    description: >+
+      The sdl sys wm kms drm sdl sys wm type
+
+languageId: csharp
+metadata:
+  description: The sdl sys wm type enum

@@ -1,0 +1,27 @@
+### YamlMime:ApiPage
+title: Namespace Alis.Core.Ecs.Entity.Property
+body:
+- api1: Namespace Alis.Core.Ecs.Entity.Property
+  id: Alis_Core_Ecs_Entity_Property
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Property
+    commentId: N:Alis.Core.Ecs.Entity.Property
+- h3: Interfaces
+- parameters:
+  - type:
+      text: ICrud<TItem>
+      url: Alis.Core.Ecs.Entity.Property.ICrud-1.html
+    description: The crud interface
+  - type:
+      text: IEnabled
+      url: Alis.Core.Ecs.Entity.Property.IEnabled.html
+    description: The enabled interface
+  - type:
+      text: IIdentifier
+      url: Alis.Core.Ecs.Entity.Property.IIdentifier.html
+    description: The identifier interface
+  - type:
+      text: IRuntime
+      url: Alis.Core.Ecs.Entity.Property.IRuntime.html
+    description: The runtime interface
+languageId: csharp

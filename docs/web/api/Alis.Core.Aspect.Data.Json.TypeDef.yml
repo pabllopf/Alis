@@ -1,0 +1,2412 @@
+### YamlMime:ApiPage
+title: Class TypeDef
+body:
+- api1: Class TypeDef
+  id: Alis_Core_Aspect_Data_Json_TypeDef
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L44
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef
+    commentId: T:Alis.Core.Aspect.Data.Json.TypeDef
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Aspect.Data.Json
+      url: Alis.Core.Aspect.Data.Json.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The type def class
+- code: internal sealed class TypeDef
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: TypeDef
+    url: Alis.Core.Aspect.Data.Json.TypeDef.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Constructors
+- api3: TypeDef(Type, JsonOptions)
+  id: Alis_Core_Aspect_Data_Json_TypeDef__ctor_System_Type_Alis_Core_Aspect_Data_Json_JsonOptions_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L81
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.#ctor(System.Type,Alis.Core.Aspect.Data.Json.JsonOptions)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.#ctor(System.Type,Alis.Core.Aspect.Data.Json.JsonOptions)
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Aspect.Data.Json.TypeDef" data-throw-if-not-resolved="false"></xref> class
+- code: internal TypeDef(Type type, JsonOptions options)
+- h4: Parameters
+- parameters:
+  - name: type
+    type:
+    - text: Type
+      url: https://learn.microsoft.com/dotnet/api/system.type
+    description: The type
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+- h2: Fields
+- api3: Defs
+  id: Alis_Core_Aspect_Data_Json_TypeDef_Defs
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L49
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.Defs
+    commentId: F:Alis.Core.Aspect.Data.Json.TypeDef.Defs
+- markdown: The type def
+- code: internal static readonly Dictionary<string, TypeDef> Defs
+- h4: Field Value
+- parameters:
+  - type:
+    - text: Dictionary
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+    - <
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    - ','
+    - " "
+    - text: TypeDef
+      url: Alis.Core.Aspect.Data.Json.TypeDef.html
+    - '>'
+- api3: KeyType
+  id: Alis_Core_Aspect_Data_Json_TypeDef_KeyType
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L54
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.KeyType
+    commentId: F:Alis.Core.Aspect.Data.Json.TypeDef.KeyType
+- markdown: The key value type
+- code: internal static readonly Dictionary<Type, KeyValueType> KeyType
+- h4: Field Value
+- parameters:
+  - type:
+    - text: Dictionary
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+    - <
+    - text: Type
+      url: https://learn.microsoft.com/dotnet/api/system.type
+    - ','
+    - " "
+    - text: KeyValueType
+      url: Alis.Core.Aspect.Data.Json.KeyValueType.html
+    - '>'
+- api3: LockField
+  id: Alis_Core_Aspect_Data_Json_TypeDef_LockField
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L59
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.LockField
+    commentId: F:Alis.Core.Aspect.Data.Json.TypeDef.LockField
+- markdown: The lock
+- code: internal static readonly object LockField
+- h4: Field Value
+- parameters:
+  - type:
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+- api3: _deserializationMembers
+  id: Alis_Core_Aspect_Data_Json_TypeDef__deserializationMembers
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L64
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef._deserializationMembers
+    commentId: F:Alis.Core.Aspect.Data.Json.TypeDef._deserializationMembers
+- markdown: The member definition
+- code: internal readonly List<MemberDefinition> _deserializationMembers
+- h4: Field Value
+- parameters:
+  - type:
+    - text: List
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+    - <
+    - text: MemberDefinition
+      url: Alis.Core.Aspect.Data.Json.MemberDefinition.html
+    - '>'
+- api3: _serializationMembers
+  id: Alis_Core_Aspect_Data_Json_TypeDef__serializationMembers
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L69
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef._serializationMembers
+    commentId: F:Alis.Core.Aspect.Data.Json.TypeDef._serializationMembers
+- markdown: The member definition
+- code: internal readonly List<MemberDefinition> _serializationMembers
+- h4: Field Value
+- parameters:
+  - type:
+    - text: List
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+    - <
+    - text: MemberDefinition
+      url: Alis.Core.Aspect.Data.Json.MemberDefinition.html
+    - '>'
+- api3: _type
+  id: Alis_Core_Aspect_Data_Json_TypeDef__type
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L74
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef._type
+    commentId: F:Alis.Core.Aspect.Data.Json.TypeDef._type
+- markdown: The type
+- code: internal readonly Type _type
+- h4: Field Value
+- parameters:
+  - type:
+    - text: Type
+      url: https://learn.microsoft.com/dotnet/api/system.type
+- h2: Methods
+- api3: AddDeserializationMember(Type, JsonOptions, MemberDefinition)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_AddDeserializationMember_System_Type_Alis_Core_Aspect_Data_Json_JsonOptions_Alis_Core_Aspect_Data_Json_MemberDefinition_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L462
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.AddDeserializationMember(System.Type,Alis.Core.Aspect.Data.Json.JsonOptions,Alis.Core.Aspect.Data.Json.MemberDefinition)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.AddDeserializationMember(System.Type,Alis.Core.Aspect.Data.Json.JsonOptions,Alis.Core.Aspect.Data.Json.MemberDefinition)
+- markdown: Adds the deserialization member using the specified type
+- code: public static void AddDeserializationMember(Type type, JsonOptions options, MemberDefinition member)
+- h4: Parameters
+- parameters:
+  - name: type
+    type:
+    - text: Type
+      url: https://learn.microsoft.com/dotnet/api/system.type
+    description: The type
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+  - name: member
+    type:
+    - text: MemberDefinition
+      url: Alis.Core.Aspect.Data.Json.MemberDefinition.html
+    description: The member
+- api3: AddSerializationMember(Type, JsonOptions, MemberDefinition)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_AddSerializationMember_System_Type_Alis_Core_Aspect_Data_Json_JsonOptions_Alis_Core_Aspect_Data_Json_MemberDefinition_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L477
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.AddSerializationMember(System.Type,Alis.Core.Aspect.Data.Json.JsonOptions,Alis.Core.Aspect.Data.Json.MemberDefinition)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.AddSerializationMember(System.Type,Alis.Core.Aspect.Data.Json.JsonOptions,Alis.Core.Aspect.Data.Json.MemberDefinition)
+- markdown: Adds the serialization member using the specified type
+- code: public static void AddSerializationMember(Type type, JsonOptions options, MemberDefinition member)
+- h4: Parameters
+- parameters:
+  - name: type
+    type:
+    - text: Type
+      url: https://learn.microsoft.com/dotnet/api/system.type
+    description: The type
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+  - name: member
+    type:
+    - text: MemberDefinition
+      url: Alis.Core.Aspect.Data.Json.MemberDefinition.html
+    description: The member
+- api3: ApplyEntry(IDictionary, object, string, object, JsonOptions)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_ApplyEntry_System_Collections_IDictionary_System_Object_System_String_System_Object_Alis_Core_Aspect_Data_Json_JsonOptions_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L126
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.ApplyEntry(System.Collections.IDictionary,System.Object,System.String,System.Object,Alis.Core.Aspect.Data.Json.JsonOptions)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.ApplyEntry(System.Collections.IDictionary,System.Object,System.String,System.Object,Alis.Core.Aspect.Data.Json.JsonOptions)
+- markdown: Applies the entry using the specified dictionary
+- code: public void ApplyEntry(IDictionary dictionary, object target, string key, object value, JsonOptions options)
+- h4: Parameters
+- parameters:
+  - name: dictionary
+    type:
+    - text: IDictionary
+      url: https://learn.microsoft.com/dotnet/api/system.collections.idictionary
+    description: The dictionary
+  - name: target
+    type:
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    description: The target
+  - name: key
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The key
+  - name: value
+    type:
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    description: The value
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+- api3: CheckJsonAttribute(bool, PropertyInfo, JsonOptions)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_CheckJsonAttribute_System_Boolean_System_Reflection_PropertyInfo_Alis_Core_Aspect_Data_Json_JsonOptions_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L652
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.CheckJsonAttribute(System.Boolean,System.Reflection.PropertyInfo,Alis.Core.Aspect.Data.Json.JsonOptions)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.CheckJsonAttribute(System.Boolean,System.Reflection.PropertyInfo,Alis.Core.Aspect.Data.Json.JsonOptions)
+- markdown: Describes whether check json attribute
+- code: internal static bool CheckJsonAttribute(bool serialization, PropertyInfo info, JsonOptions options)
+- h4: Parameters
+- parameters:
+  - name: serialization
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The serialization
+  - name: info
+    type:
+    - text: PropertyInfo
+      url: https://learn.microsoft.com/dotnet/api/system.reflection.propertyinfo
+    description: The info
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: CheckJsonAttribute(bool, PropertyDescriptor, JsonOptions)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_CheckJsonAttribute_System_Boolean_System_ComponentModel_PropertyDescriptor_Alis_Core_Aspect_Data_Json_JsonOptions_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L1010
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.CheckJsonAttribute(System.Boolean,System.ComponentModel.PropertyDescriptor,Alis.Core.Aspect.Data.Json.JsonOptions)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.CheckJsonAttribute(System.Boolean,System.ComponentModel.PropertyDescriptor,Alis.Core.Aspect.Data.Json.JsonOptions)
+- markdown: Describes whether check json attribute
+- code: internal static bool CheckJsonAttribute(bool serialization, PropertyDescriptor descriptor, JsonOptions options)
+- h4: Parameters
+- parameters:
+  - name: serialization
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The serialization
+  - name: descriptor
+    type:
+    - text: PropertyDescriptor
+      url: https://learn.microsoft.com/dotnet/api/system.componentmodel.propertydescriptor
+    description: The descriptor
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: CheckScriptIgnore(PropertyInfo, JsonOptions)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_CheckScriptIgnore_System_Reflection_PropertyInfo_Alis_Core_Aspect_Data_Json_JsonOptions_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L702
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.CheckScriptIgnore(System.Reflection.PropertyInfo,Alis.Core.Aspect.Data.Json.JsonOptions)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.CheckScriptIgnore(System.Reflection.PropertyInfo,Alis.Core.Aspect.Data.Json.JsonOptions)
+- markdown: Describes whether check script ignore
+- code: internal static bool CheckScriptIgnore(PropertyInfo info, JsonOptions options)
+- h4: Parameters
+- parameters:
+  - name: info
+    type:
+    - text: PropertyInfo
+      url: https://learn.microsoft.com/dotnet/api/system.reflection.propertyinfo
+    description: The info
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: CheckScriptIgnore(PropertyDescriptor, JsonOptions)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_CheckScriptIgnore_System_ComponentModel_PropertyDescriptor_Alis_Core_Aspect_Data_Json_JsonOptions_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L1049
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.CheckScriptIgnore(System.ComponentModel.PropertyDescriptor,Alis.Core.Aspect.Data.Json.JsonOptions)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.CheckScriptIgnore(System.ComponentModel.PropertyDescriptor,Alis.Core.Aspect.Data.Json.JsonOptions)
+- markdown: Describes whether check script ignore
+- code: internal static bool CheckScriptIgnore(PropertyDescriptor descriptor, JsonOptions options)
+- h4: Parameters
+- parameters:
+  - name: descriptor
+    type:
+    - text: PropertyDescriptor
+      url: https://learn.microsoft.com/dotnet/api/system.componentmodel.propertydescriptor
+    description: The descriptor
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: CheckSerialization(bool, PropertyInfo)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_CheckSerialization_System_Boolean_System_Reflection_PropertyInfo_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L721
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.CheckSerialization(System.Boolean,System.Reflection.PropertyInfo)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.CheckSerialization(System.Boolean,System.Reflection.PropertyInfo)
+- markdown: Describes whether check serialization
+- code: internal static bool CheckSerialization(bool serialization, PropertyInfo info)
+- h4: Parameters
+- parameters:
+  - name: serialization
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The serialization
+  - name: info
+    type:
+    - text: PropertyInfo
+      url: https://learn.microsoft.com/dotnet/api/system.reflection.propertyinfo
+    description: The info
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: CheckSkipGetOnly(PropertyDescriptor, JsonOptions)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_CheckSkipGetOnly_System_ComponentModel_PropertyDescriptor_Alis_Core_Aspect_Data_Json_JsonOptions_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L1057
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.CheckSkipGetOnly(System.ComponentModel.PropertyDescriptor,Alis.Core.Aspect.Data.Json.JsonOptions)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.CheckSkipGetOnly(System.ComponentModel.PropertyDescriptor,Alis.Core.Aspect.Data.Json.JsonOptions)
+- markdown: Describes whether check skip get only
+- code: internal static bool CheckSkipGetOnly(PropertyDescriptor descriptor, JsonOptions options)
+- h4: Parameters
+- parameters:
+  - name: descriptor
+    type:
+    - text: PropertyDescriptor
+      url: https://learn.microsoft.com/dotnet/api/system.componentmodel.propertydescriptor
+    description: The descriptor
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: CheckXmlIgnoreAttribute(PropertyInfo, JsonOptions)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_CheckXmlIgnoreAttribute_System_Reflection_PropertyInfo_Alis_Core_Aspect_Data_Json_JsonOptions_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L694
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.CheckXmlIgnoreAttribute(System.Reflection.PropertyInfo,Alis.Core.Aspect.Data.Json.JsonOptions)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.CheckXmlIgnoreAttribute(System.Reflection.PropertyInfo,Alis.Core.Aspect.Data.Json.JsonOptions)
+- markdown: Describes whether check xml ignore attribute
+- code: internal static bool CheckXmlIgnoreAttribute(PropertyInfo info, JsonOptions options)
+- h4: Parameters
+- parameters:
+  - name: info
+    type:
+    - text: PropertyInfo
+      url: https://learn.microsoft.com/dotnet/api/system.reflection.propertyinfo
+    description: The info
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: CheckXmlIgnoreAttribute(PropertyDescriptor, JsonOptions)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_CheckXmlIgnoreAttribute_System_ComponentModel_PropertyDescriptor_Alis_Core_Aspect_Data_Json_JsonOptions_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L1027
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.CheckXmlIgnoreAttribute(System.ComponentModel.PropertyDescriptor,Alis.Core.Aspect.Data.Json.JsonOptions)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.CheckXmlIgnoreAttribute(System.ComponentModel.PropertyDescriptor,Alis.Core.Aspect.Data.Json.JsonOptions)
+- markdown: Describes whether check xml ignore attribute
+- code: internal static bool CheckXmlIgnoreAttribute(PropertyDescriptor descriptor, JsonOptions options)
+- h4: Parameters
+- parameters:
+  - name: descriptor
+    type:
+    - text: PropertyDescriptor
+      url: https://learn.microsoft.com/dotnet/api/system.componentmodel.propertydescriptor
+    description: The descriptor
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: CompareWireName(MemberDefinition, string)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_CompareWireName_Alis_Core_Aspect_Data_Json_MemberDefinition_System_String_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L99
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.CompareWireName(Alis.Core.Aspect.Data.Json.MemberDefinition,System.String)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.CompareWireName(Alis.Core.Aspect.Data.Json.MemberDefinition,System.String)
+- markdown: Compares the wire name with the specified key.
+- code: internal static bool CompareWireName(MemberDefinition def, string key)
+- h4: Parameters
+- parameters:
+  - name: def
+    type:
+    - text: MemberDefinition
+      url: Alis.Core.Aspect.Data.Json.MemberDefinition.html
+    description: The member definition
+  - name: key
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The key
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: True if the wire name matches the key, false otherwise
+- api3: CreateJsonEventArgs(TextWriter, object, IDictionary<object, object>, JsonOptions, bool, string, object)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_CreateJsonEventArgs_System_IO_TextWriter_System_Object_System_Collections_Generic_IDictionary_System_Object_System_Object__Alis_Core_Aspect_Data_Json_JsonOptions_System_Boolean_System_String_System_Object_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L193
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.CreateJsonEventArgs(System.IO.TextWriter,System.Object,System.Collections.Generic.IDictionary{System.Object,System.Object},Alis.Core.Aspect.Data.Json.JsonOptions,System.Boolean,System.String,System.Object)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.CreateJsonEventArgs(System.IO.TextWriter,System.Object,System.Collections.Generic.IDictionary{System.Object,System.Object},Alis.Core.Aspect.Data.Json.JsonOptions,System.Boolean,System.String,System.Object)
+- markdown: Creates the json event args using the specified writer
+- code: internal static JsonEventArgs CreateJsonEventArgs(TextWriter writer, object component, IDictionary<object, object> objectGraph, JsonOptions options, bool first, string name, object value)
+- h4: Parameters
+- parameters:
+  - name: writer
+    type:
+    - text: TextWriter
+      url: https://learn.microsoft.com/dotnet/api/system.io.textwriter
+    description: The writer
+  - name: component
+    type:
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    description: The component
+  - name: objectGraph
+    type:
+    - text: IDictionary
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+    - <
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    - ','
+    - " "
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    - '>'
+    description: The object graph
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+  - name: first
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The first
+  - name: name
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The name
+  - name: value
+    type:
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - text: JsonEventArgs
+      url: Alis.Core.Aspect.Data.Json.JsonEventArgs.html
+    description: The
+- api3: CreateMemberDefinition(bool, PropertyInfo)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_CreateMemberDefinition_System_Boolean_System_Reflection_PropertyInfo_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L729
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.CreateMemberDefinition(System.Boolean,System.Reflection.PropertyInfo)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.CreateMemberDefinition(System.Boolean,System.Reflection.PropertyInfo)
+- markdown: Creates the member definition using the specified serialization
+- code: internal static MemberDefinition CreateMemberDefinition(bool serialization, PropertyInfo info)
+- h4: Parameters
+- parameters:
+  - name: serialization
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The serialization
+  - name: info
+    type:
+    - text: PropertyInfo
+      url: https://learn.microsoft.com/dotnet/api/system.reflection.propertyinfo
+    description: The info
+- h4: Returns
+- parameters:
+  - type:
+    - text: MemberDefinition
+      url: Alis.Core.Aspect.Data.Json.MemberDefinition.html
+    description: The ma
+- api3: CreateMemberDefinition(bool, FieldInfo, JsonOptions)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_CreateMemberDefinition_System_Boolean_System_Reflection_FieldInfo_Alis_Core_Aspect_Data_Json_JsonOptions_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L800
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.CreateMemberDefinition(System.Boolean,System.Reflection.FieldInfo,Alis.Core.Aspect.Data.Json.JsonOptions)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.CreateMemberDefinition(System.Boolean,System.Reflection.FieldInfo,Alis.Core.Aspect.Data.Json.JsonOptions)
+- markdown: Creates the member definition using the specified serialization
+- code: internal static MemberDefinition CreateMemberDefinition(bool serialization, FieldInfo field, JsonOptions options)
+- h4: Parameters
+- parameters:
+  - name: serialization
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The serialization
+  - name: field
+    type:
+    - text: FieldInfo
+      url: https://learn.microsoft.com/dotnet/api/system.reflection.fieldinfo
+    description: The field
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+- h4: Returns
+- parameters:
+  - type:
+    - text: MemberDefinition
+      url: Alis.Core.Aspect.Data.Json.MemberDefinition.html
+    description: The member definition
+- api3: CreateMemberDefinition(bool, FieldInfo)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_CreateMemberDefinition_System_Boolean_System_Reflection_FieldInfo_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L895
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.CreateMemberDefinition(System.Boolean,System.Reflection.FieldInfo)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.CreateMemberDefinition(System.Boolean,System.Reflection.FieldInfo)
+- markdown: Creates the member definition using the specified serialization
+- code: internal static MemberDefinition CreateMemberDefinition(bool serialization, FieldInfo info)
+- h4: Parameters
+- parameters:
+  - name: serialization
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The serialization
+  - name: info
+    type:
+    - text: FieldInfo
+      url: https://learn.microsoft.com/dotnet/api/system.reflection.fieldinfo
+    description: The info
+- h4: Returns
+- parameters:
+  - type:
+    - text: MemberDefinition
+      url: Alis.Core.Aspect.Data.Json.MemberDefinition.html
+    description: The member definition
+- api3: CreateMemberDefinition(bool, PropertyDescriptor)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_CreateMemberDefinition_System_Boolean_System_ComponentModel_PropertyDescriptor_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L1065
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.CreateMemberDefinition(System.Boolean,System.ComponentModel.PropertyDescriptor)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.CreateMemberDefinition(System.Boolean,System.ComponentModel.PropertyDescriptor)
+- markdown: Creates the member definition using the specified serialization
+- code: internal static MemberDefinition CreateMemberDefinition(bool serialization, PropertyDescriptor descriptor)
+- h4: Parameters
+- parameters:
+  - name: serialization
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The serialization
+  - name: descriptor
+    type:
+    - text: PropertyDescriptor
+      url: https://learn.microsoft.com/dotnet/api/system.componentmodel.propertydescriptor
+    description: The descriptor
+- h4: Returns
+- parameters:
+  - type:
+    - text: MemberDefinition
+      url: Alis.Core.Aspect.Data.Json.MemberDefinition.html
+    description: The ma
+- api3: CreateMemberDefinitionForField(bool, FieldInfo, JsonOptions)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_CreateMemberDefinitionForField_System_Boolean_System_Reflection_FieldInfo_Alis_Core_Aspect_Data_Json_JsonOptions_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L769
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.CreateMemberDefinitionForField(System.Boolean,System.Reflection.FieldInfo,Alis.Core.Aspect.Data.Json.JsonOptions)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.CreateMemberDefinitionForField(System.Boolean,System.Reflection.FieldInfo,Alis.Core.Aspect.Data.Json.JsonOptions)
+- markdown: Creates a member definition for the specified field.
+- code: internal static MemberDefinition CreateMemberDefinitionForField(bool serialization, FieldInfo field, JsonOptions options)
+- h4: Parameters
+- parameters:
+  - name: serialization
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The serialization
+  - name: field
+    type:
+    - text: FieldInfo
+      url: https://learn.microsoft.com/dotnet/api/system.reflection.fieldinfo
+    description: The field
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+- h4: Returns
+- parameters:
+  - type:
+    - text: MemberDefinition
+      url: Alis.Core.Aspect.Data.Json.MemberDefinition.html
+    description: A member definition
+- api3: CreateMemberDefinitionIfApplicable(bool, FieldInfo, JsonOptions)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_CreateMemberDefinitionIfApplicable_System_Boolean_System_Reflection_FieldInfo_Alis_Core_Aspect_Data_Json_JsonOptions_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L809
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.CreateMemberDefinitionIfApplicable(System.Boolean,System.Reflection.FieldInfo,Alis.Core.Aspect.Data.Json.JsonOptions)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.CreateMemberDefinitionIfApplicable(System.Boolean,System.Reflection.FieldInfo,Alis.Core.Aspect.Data.Json.JsonOptions)
+- markdown: Creates the member definition if applicable using the specified serialization
+- code: internal static MemberDefinition CreateMemberDefinitionIfApplicable(bool serialization, FieldInfo field, JsonOptions options)
+- h4: Parameters
+- parameters:
+  - name: serialization
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The serialization
+  - name: field
+    type:
+    - text: FieldInfo
+      url: https://learn.microsoft.com/dotnet/api/system.reflection.fieldinfo
+    description: The field
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+- h4: Returns
+- parameters:
+  - type:
+    - text: MemberDefinition
+      url: Alis.Core.Aspect.Data.Json.MemberDefinition.html
+    description: The member definition
+- api3: CreateMemberDefinitionInstance(FieldInfo, string)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_CreateMemberDefinitionInstance_System_Reflection_FieldInfo_System_String_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L910
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.CreateMemberDefinitionInstance(System.Reflection.FieldInfo,System.String)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.CreateMemberDefinitionInstance(System.Reflection.FieldInfo,System.String)
+- markdown: Creates the member definition instance using the specified info
+- code: internal static MemberDefinition CreateMemberDefinitionInstance(FieldInfo info, string name)
+- h4: Parameters
+- parameters:
+  - name: info
+    type:
+    - text: FieldInfo
+      url: https://learn.microsoft.com/dotnet/api/system.reflection.fieldinfo
+    description: The info
+  - name: name
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The name
+- h4: Returns
+- parameters:
+  - type:
+    - text: MemberDefinition
+      url: Alis.Core.Aspect.Data.Json.MemberDefinition.html
+    description: The member definition
+- api3: CreateMemberDefinitions(bool, IEnumerable<FieldInfo>, JsonOptions)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_CreateMemberDefinitions_System_Boolean_System_Collections_Generic_IEnumerable_System_Reflection_FieldInfo__Alis_Core_Aspect_Data_Json_JsonOptions_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L818
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.CreateMemberDefinitions(System.Boolean,System.Collections.Generic.IEnumerable{System.Reflection.FieldInfo},Alis.Core.Aspect.Data.Json.JsonOptions)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.CreateMemberDefinitions(System.Boolean,System.Collections.Generic.IEnumerable{System.Reflection.FieldInfo},Alis.Core.Aspect.Data.Json.JsonOptions)
+- markdown: Creates the member definitions using the specified serialization
+- code: internal static IEnumerable<MemberDefinition> CreateMemberDefinitions(bool serialization, IEnumerable<FieldInfo> fields, JsonOptions options)
+- h4: Parameters
+- parameters:
+  - name: serialization
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The serialization
+  - name: fields
+    type:
+    - text: IEnumerable
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+    - <
+    - text: FieldInfo
+      url: https://learn.microsoft.com/dotnet/api/system.reflection.fieldinfo
+    - '>'
+    description: The fields
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+- h4: Returns
+- parameters:
+  - type:
+    - text: IEnumerable
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+    - <
+    - text: MemberDefinition
+      url: Alis.Core.Aspect.Data.Json.MemberDefinition.html
+    - '>'
+    description: An enumerable of member definition
+- api3: CreateMemberDefinitionsFromDescriptors(bool, IEnumerable<PropertyDescriptor>, JsonOptions)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_CreateMemberDefinitionsFromDescriptors_System_Boolean_System_Collections_Generic_IEnumerable_System_ComponentModel_PropertyDescriptor__Alis_Core_Aspect_Data_Json_JsonOptions_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L957
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.CreateMemberDefinitionsFromDescriptors(System.Boolean,System.Collections.Generic.IEnumerable{System.ComponentModel.PropertyDescriptor},Alis.Core.Aspect.Data.Json.JsonOptions)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.CreateMemberDefinitionsFromDescriptors(System.Boolean,System.Collections.Generic.IEnumerable{System.ComponentModel.PropertyDescriptor},Alis.Core.Aspect.Data.Json.JsonOptions)
+- markdown: Creates member definitions from the specified property descriptors.
+- code: internal static IEnumerable<MemberDefinition> CreateMemberDefinitionsFromDescriptors(bool serialization, IEnumerable<PropertyDescriptor> descriptors, JsonOptions options)
+- h4: Parameters
+- parameters:
+  - name: serialization
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The serialization
+  - name: descriptors
+    type:
+    - text: IEnumerable
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+    - <
+    - text: PropertyDescriptor
+      url: https://learn.microsoft.com/dotnet/api/system.componentmodel.propertydescriptor
+    - '>'
+    description: The property descriptors
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+- h4: Returns
+- parameters:
+  - type:
+    - text: IEnumerable
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+    - <
+    - text: MemberDefinition
+      url: Alis.Core.Aspect.Data.Json.MemberDefinition.html
+    - '>'
+    description: An enumerable of member definition
+- api3: CreateMemberDefinitionsFromProperties(bool, IEnumerable<PropertyInfo>, JsonOptions)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_CreateMemberDefinitionsFromProperties_System_Boolean_System_Collections_Generic_IEnumerable_System_Reflection_PropertyInfo__Alis_Core_Aspect_Data_Json_JsonOptions_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L604
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.CreateMemberDefinitionsFromProperties(System.Boolean,System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo},Alis.Core.Aspect.Data.Json.JsonOptions)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.CreateMemberDefinitionsFromProperties(System.Boolean,System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo},Alis.Core.Aspect.Data.Json.JsonOptions)
+- markdown: Creates the member definitions from properties using the specified serialization
+- code: internal static IEnumerable<MemberDefinition> CreateMemberDefinitionsFromProperties(bool serialization, IEnumerable<PropertyInfo> properties, JsonOptions options)
+- h4: Parameters
+- parameters:
+  - name: serialization
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The serialization
+  - name: properties
+    type:
+    - text: IEnumerable
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+    - <
+    - text: PropertyInfo
+      url: https://learn.microsoft.com/dotnet/api/system.reflection.propertyinfo
+    - '>'
+    description: The properties
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+- h4: Returns
+- parameters:
+  - type:
+    - text: IEnumerable
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+    - <
+    - text: MemberDefinition
+      url: Alis.Core.Aspect.Data.Json.MemberDefinition.html
+    - '>'
+    description: An enumerable of member definition
+- api3: EnumerateDefinitionsUsingReflection(bool, Type, JsonOptions)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_EnumerateDefinitionsUsingReflection_System_Boolean_System_Type_Alis_Core_Aspect_Data_Json_JsonOptions_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L587
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.EnumerateDefinitionsUsingReflection(System.Boolean,System.Type,Alis.Core.Aspect.Data.Json.JsonOptions)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.EnumerateDefinitionsUsingReflection(System.Boolean,System.Type,Alis.Core.Aspect.Data.Json.JsonOptions)
+- markdown: Enumerates the definitions using reflection.
+- code: internal static IEnumerable<MemberDefinition> EnumerateDefinitionsUsingReflection(bool serialization, Type type, JsonOptions options)
+- h4: Parameters
+- parameters:
+  - name: serialization
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The serialization
+  - name: type
+    type:
+    - text: Type
+      url: https://learn.microsoft.com/dotnet/api/system.type
+    description: The type
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+- h4: Returns
+- parameters:
+  - type:
+    - text: IEnumerable
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+    - <
+    - text: MemberDefinition
+      url: Alis.Core.Aspect.Data.Json.MemberDefinition.html
+    - '>'
+    description: An enumerable of member definition
+- api3: EnumerateDefinitionsUsingTypeDescriptors(bool, Type, JsonOptions)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_EnumerateDefinitionsUsingTypeDescriptors_System_Boolean_System_Type_Alis_Core_Aspect_Data_Json_JsonOptions_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L977
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.EnumerateDefinitionsUsingTypeDescriptors(System.Boolean,System.Type,Alis.Core.Aspect.Data.Json.JsonOptions)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.EnumerateDefinitionsUsingTypeDescriptors(System.Boolean,System.Type,Alis.Core.Aspect.Data.Json.JsonOptions)
+- markdown: Enumerates the definitions using type descriptors using the specified serialization
+- code: internal static IEnumerable<MemberDefinition> EnumerateDefinitionsUsingTypeDescriptors(bool serialization, Type type, JsonOptions options)
+- h4: Parameters
+- parameters:
+  - name: serialization
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The serialization
+  - name: type
+    type:
+    - text: Type
+      url: https://learn.microsoft.com/dotnet/api/system.type
+    description: The type
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+- h4: Returns
+- parameters:
+  - type:
+    - text: IEnumerable
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+    - <
+    - text: MemberDefinition
+      url: Alis.Core.Aspect.Data.Json.MemberDefinition.html
+    - '>'
+    description: An enumerable of member definition
+- api3: EnumerateFieldDefinitions(bool, Type, JsonOptions)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_EnumerateFieldDefinitions_System_Boolean_System_Type_Alis_Core_Aspect_Data_Json_JsonOptions_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L570
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.EnumerateFieldDefinitions(System.Boolean,System.Type,Alis.Core.Aspect.Data.Json.JsonOptions)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.EnumerateFieldDefinitions(System.Boolean,System.Type,Alis.Core.Aspect.Data.Json.JsonOptions)
+- markdown: Enumerates the field definitions using reflection if SerializeFields option is enabled.
+- code: internal static IEnumerable<MemberDefinition> EnumerateFieldDefinitions(bool serialization, Type type, JsonOptions options)
+- h4: Parameters
+- parameters:
+  - name: serialization
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The serialization
+  - name: type
+    type:
+    - text: Type
+      url: https://learn.microsoft.com/dotnet/api/system.type
+    description: The type
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+- h4: Returns
+- parameters:
+  - type:
+    - text: IEnumerable
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+    - <
+    - text: MemberDefinition
+      url: Alis.Core.Aspect.Data.Json.MemberDefinition.html
+    - '>'
+    description: An enumerable of member definition
+- api3: EnumeratePropertyDefinitions(bool, Type, JsonOptions)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_EnumeratePropertyDefinitions_System_Boolean_System_Type_Alis_Core_Aspect_Data_Json_JsonOptions_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L561
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.EnumeratePropertyDefinitions(System.Boolean,System.Type,Alis.Core.Aspect.Data.Json.JsonOptions)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.EnumeratePropertyDefinitions(System.Boolean,System.Type,Alis.Core.Aspect.Data.Json.JsonOptions)
+- markdown: Enumerates the property definitions using reflection.
+- code: internal static IEnumerable<MemberDefinition> EnumeratePropertyDefinitions(bool serialization, Type type, JsonOptions options)
+- h4: Parameters
+- parameters:
+  - name: serialization
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The serialization
+  - name: type
+    type:
+    - text: Type
+      url: https://learn.microsoft.com/dotnet/api/system.type
+    description: The type
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+- h4: Returns
+- parameters:
+  - type:
+    - text: IEnumerable
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+    - <
+    - text: MemberDefinition
+      url: Alis.Core.Aspect.Data.Json.MemberDefinition.html
+    - '>'
+    description: An enumerable of member definition
+- api3: FindDeserializationMember(string)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_FindDeserializationMember_System_String_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L106
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.FindDeserializationMember(System.String)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.FindDeserializationMember(System.String)
+- markdown: Finds the deserialization member using the specified key.
+- code: internal MemberDefinition FindDeserializationMember(string key)
+- h4: Parameters
+- parameters:
+  - name: key
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The key
+- h4: Returns
+- parameters:
+  - type:
+    - text: MemberDefinition
+      url: Alis.Core.Aspect.Data.Json.MemberDefinition.html
+    description: The member definition
+- api3: Get(Type, JsonOptions)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_Get_System_Type_Alis_Core_Aspect_Data_Json_JsonOptions_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L522
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.Get(System.Type,Alis.Core.Aspect.Data.Json.JsonOptions)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.Get(System.Type,Alis.Core.Aspect.Data.Json.JsonOptions)
+- markdown: Gets the type
+- code: public static TypeDef Get(Type type, JsonOptions options)
+- h4: Parameters
+- parameters:
+  - name: type
+    type:
+    - text: Type
+      url: https://learn.microsoft.com/dotnet/api/system.type
+    description: The type
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+- h4: Returns
+- parameters:
+  - type:
+    - text: TypeDef
+      url: Alis.Core.Aspect.Data.Json.TypeDef.html
+    description: The type def
+- api3: GetDeserializationMember(string)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_GetDeserializationMember_System_String_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L116
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.GetDeserializationMember(System.String)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.GetDeserializationMember(System.String)
+- markdown: Gets the deserialization member using the specified key
+- code: internal MemberDefinition GetDeserializationMember(string key)
+- h4: Parameters
+- parameters:
+  - name: key
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The key
+- h4: Returns
+- parameters:
+  - type:
+    - text: MemberDefinition
+      url: Alis.Core.Aspect.Data.Json.MemberDefinition.html
+    description: The member definition
+- api3: GetDeserializationMembers(Type, JsonOptions)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_GetDeserializationMembers_System_Type_Alis_Core_Aspect_Data_Json_JsonOptions_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L492
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.GetDeserializationMembers(System.Type,Alis.Core.Aspect.Data.Json.JsonOptions)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.GetDeserializationMembers(System.Type,Alis.Core.Aspect.Data.Json.JsonOptions)
+- markdown: Gets the deserialization members using the specified type
+- code: public static MemberDefinition[] GetDeserializationMembers(Type type, JsonOptions options)
+- h4: Parameters
+- parameters:
+  - name: type
+    type:
+    - text: Type
+      url: https://learn.microsoft.com/dotnet/api/system.type
+    description: The type
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+- h4: Returns
+- parameters:
+  - type:
+    - text: MemberDefinition
+      url: Alis.Core.Aspect.Data.Json.MemberDefinition.html
+    - '['
+    - ']'
+    description: The member definition array
+- api3: GetFieldsFromType(Type)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_GetFieldsFromType_System_Type_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L760
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.GetFieldsFromType(System.Type)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.GetFieldsFromType(System.Type)
+- markdown: Gets the fields from the specified type.
+- code: internal static IEnumerable<FieldInfo> GetFieldsFromType(Type type)
+- h4: Parameters
+- parameters:
+  - name: type
+    type:
+    - text: Type
+      url: https://learn.microsoft.com/dotnet/api/system.type
+    description: The type
+- h4: Returns
+- parameters:
+  - type:
+    - text: IEnumerable
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+    - <
+    - text: FieldInfo
+      url: https://learn.microsoft.com/dotnet/api/system.reflection.fieldinfo
+    - '>'
+    description: An enumerable of FieldInfo
+- api3: GetKey(Type, JsonOptions)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_GetKey_System_Type_Alis_Core_Aspect_Data_Json_JsonOptions_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L390
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.GetKey(System.Type,Alis.Core.Aspect.Data.Json.JsonOptions)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.GetKey(System.Type,Alis.Core.Aspect.Data.Json.JsonOptions)
+- markdown: Gets the key using the specified type
+- code: internal static string GetKey(Type type, JsonOptions options)
+- h4: Parameters
+- parameters:
+  - name: type
+    type:
+    - text: Type
+      url: https://learn.microsoft.com/dotnet/api/system.type
+    description: The type
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+- h4: Returns
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The string
+- api3: GetMemberValueAndName(MemberDefinition, object)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_GetMemberValueAndName_Alis_Core_Aspect_Data_Json_MemberDefinition_System_Object_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L173
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.GetMemberValueAndName(Alis.Core.Aspect.Data.Json.MemberDefinition,System.Object)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.GetMemberValueAndName(Alis.Core.Aspect.Data.Json.MemberDefinition,System.Object)
+- markdown: Gets the member value and name.
+- code: internal static (bool, string, object) GetMemberValueAndName(MemberDefinition member, object component)
+- h4: Parameters
+- parameters:
+  - name: member
+    type:
+    - text: MemberDefinition
+      url: Alis.Core.Aspect.Data.Json.MemberDefinition.html
+    description: The member
+  - name: component
+    type:
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    description: The component
+- h4: Returns
+- parameters:
+  - type:
+    - (
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    - ','
+    - " "
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    - ','
+    - " "
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    - )
+    description: The bool, string and object
+- api3: GetPropertiesFromType(Type)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_GetPropertiesFromType_System_Type_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L595
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.GetPropertiesFromType(System.Type)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.GetPropertiesFromType(System.Type)
+- markdown: Gets the properties from the specified type.
+- code: internal static IEnumerable<PropertyInfo> GetPropertiesFromType(Type type)
+- h4: Parameters
+- parameters:
+  - name: type
+    type:
+    - text: Type
+      url: https://learn.microsoft.com/dotnet/api/system.type
+    description: The type
+- h4: Returns
+- parameters:
+  - type:
+    - text: IEnumerable
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+    - <
+    - text: PropertyInfo
+      url: https://learn.microsoft.com/dotnet/api/system.reflection.propertyinfo
+    - '>'
+    description: An enumerable of PropertyInfo
+- api3: GetPropertiesFromTypeDescriptor(Type)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_GetPropertiesFromTypeDescriptor_System_Type_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L948
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.GetPropertiesFromTypeDescriptor(System.Type)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.GetPropertiesFromTypeDescriptor(System.Type)
+- markdown: Gets the properties from the specified type using TypeDescriptor.
+- code: internal static IEnumerable<PropertyDescriptor> GetPropertiesFromTypeDescriptor(Type type)
+- h4: Parameters
+- parameters:
+  - name: type
+    type:
+    - text: Type
+      url: https://learn.microsoft.com/dotnet/api/system.type
+    description: The type
+- h4: Returns
+- parameters:
+  - type:
+    - text: IEnumerable
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+    - <
+    - text: PropertyDescriptor
+      url: https://learn.microsoft.com/dotnet/api/system.componentmodel.propertydescriptor
+    - '>'
+    description: An enumerable of PropertyDescriptor
+- api3: GetSerializationMembers(Type, JsonOptions)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_GetSerializationMembers_System_Type_Alis_Core_Aspect_Data_Json_JsonOptions_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L507
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.GetSerializationMembers(System.Type,Alis.Core.Aspect.Data.Json.JsonOptions)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.GetSerializationMembers(System.Type,Alis.Core.Aspect.Data.Json.JsonOptions)
+- markdown: Gets the serialization members using the specified type
+- code: public static MemberDefinition[] GetSerializationMembers(Type type, JsonOptions options)
+- h4: Parameters
+- parameters:
+  - name: type
+    type:
+    - text: Type
+      url: https://learn.microsoft.com/dotnet/api/system.type
+    description: The type
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+- h4: Returns
+- parameters:
+  - type:
+    - text: MemberDefinition
+      url: Alis.Core.Aspect.Data.Json.MemberDefinition.html
+    - '['
+    - ']'
+    description: The member definition array
+- api3: HandleCallback(TextWriter, object, IDictionary<object, object>, JsonOptions, bool, bool, string, object)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_HandleCallback_System_IO_TextWriter_System_Object_System_Collections_Generic_IDictionary_System_Object_System_Object__Alis_Core_Aspect_Data_Json_JsonOptions_System_Boolean_System_Boolean_System_String_System_Object_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L275
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.HandleCallback(System.IO.TextWriter,System.Object,System.Collections.Generic.IDictionary{System.Object,System.Object},Alis.Core.Aspect.Data.Json.JsonOptions,System.Boolean,System.Boolean,System.String,System.Object)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.HandleCallback(System.IO.TextWriter,System.Object,System.Collections.Generic.IDictionary{System.Object,System.Object},Alis.Core.Aspect.Data.Json.JsonOptions,System.Boolean,System.Boolean,System.String,System.Object)
+- markdown: Handles the callback if present.
+- code: internal static (bool, bool, string, object) HandleCallback(TextWriter writer, object component, IDictionary<object, object> objectGraph, JsonOptions options, bool first, bool nameChanged, string name, object value)
+- h4: Parameters
+- parameters:
+  - name: writer
+    type:
+    - text: TextWriter
+      url: https://learn.microsoft.com/dotnet/api/system.io.textwriter
+    description: The writer
+  - name: component
+    type:
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    description: The component
+  - name: objectGraph
+    type:
+    - text: IDictionary
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+    - <
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    - ','
+    - " "
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    - '>'
+    description: The object graph
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+  - name: first
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The first
+  - name: nameChanged
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The name changed
+  - name: name
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The name
+  - name: value
+    type:
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - (
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    - ','
+    - " "
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    - ','
+    - " "
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    - ','
+    - " "
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    - )
+    description: The bool, bool, string and object
+- api3: HandleEvent(JsonEventArgs, bool, string, object)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_HandleEvent_Alis_Core_Aspect_Data_Json_JsonEventArgs_System_Boolean_System_String_System_Object_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L244
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.HandleEvent(Alis.Core.Aspect.Data.Json.JsonEventArgs,System.Boolean,System.String,System.Object)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.HandleEvent(Alis.Core.Aspect.Data.Json.JsonEventArgs,System.Boolean,System.String,System.Object)
+- markdown: Handles the event and returns updated values.
+- code: internal static (bool, bool, string, object) HandleEvent(JsonEventArgs e, bool first, string name, object value)
+- h4: Parameters
+- parameters:
+  - name: e
+    type:
+    - text: JsonEventArgs
+      url: Alis.Core.Aspect.Data.Json.JsonEventArgs.html
+    description: The JsonEventArgs
+  - name: first
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The first
+  - name: name
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The name
+  - name: value
+    type:
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - (
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    - ','
+    - " "
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    - ','
+    - " "
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    - ','
+    - " "
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    - )
+    description: The bool, bool, string and object
+- api3: HandleFieldSerialization(bool, Type, JsonOptions)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_HandleFieldSerialization_System_Boolean_System_Type_Alis_Core_Aspect_Data_Json_JsonOptions_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L831
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.HandleFieldSerialization(System.Boolean,System.Type,Alis.Core.Aspect.Data.Json.JsonOptions)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.HandleFieldSerialization(System.Boolean,System.Type,Alis.Core.Aspect.Data.Json.JsonOptions)
+- markdown: Handles the field serialization using the specified serialization
+- code: internal static IEnumerable<MemberDefinition> HandleFieldSerialization(bool serialization, Type type, JsonOptions options)
+- h4: Parameters
+- parameters:
+  - name: serialization
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The serialization
+  - name: type
+    type:
+    - text: Type
+      url: https://learn.microsoft.com/dotnet/api/system.type
+    description: The type
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+- h4: Returns
+- parameters:
+  - type:
+    - text: IEnumerable
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+    - <
+    - text: MemberDefinition
+      url: Alis.Core.Aspect.Data.Json.MemberDefinition.html
+    - '>'
+    description: An enumerable of member definition
+- api3: HandlePropertySerialization(bool, Type, JsonOptions)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_HandlePropertySerialization_System_Boolean_System_Type_Alis_Core_Aspect_Data_Json_JsonOptions_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L622
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.HandlePropertySerialization(System.Boolean,System.Type,Alis.Core.Aspect.Data.Json.JsonOptions)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.HandlePropertySerialization(System.Boolean,System.Type,Alis.Core.Aspect.Data.Json.JsonOptions)
+- markdown: Handles the property serialization using the specified serialization
+- code: internal static IEnumerable<MemberDefinition> HandlePropertySerialization(bool serialization, Type type, JsonOptions options)
+- h4: Parameters
+- parameters:
+  - name: serialization
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The serialization
+  - name: type
+    type:
+    - text: Type
+      url: https://learn.microsoft.com/dotnet/api/system.type
+    description: The type
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+- h4: Returns
+- parameters:
+  - type:
+    - text: IEnumerable
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+    - <
+    - text: MemberDefinition
+      url: Alis.Core.Aspect.Data.Json.MemberDefinition.html
+    - '>'
+    description: An enumerable of member definition
+- api3: HandleWriteNamedValueObjectCallback(TextWriter, object, IDictionary<object, object>, JsonOptions, MemberDefinition, bool)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_HandleWriteNamedValueObjectCallback_System_IO_TextWriter_System_Object_System_Collections_Generic_IDictionary_System_Object_System_Object__Alis_Core_Aspect_Data_Json_JsonOptions_Alis_Core_Aspect_Data_Json_MemberDefinition_System_Boolean_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L291
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.HandleWriteNamedValueObjectCallback(System.IO.TextWriter,System.Object,System.Collections.Generic.IDictionary{System.Object,System.Object},Alis.Core.Aspect.Data.Json.JsonOptions,Alis.Core.Aspect.Data.Json.MemberDefinition,System.Boolean)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.HandleWriteNamedValueObjectCallback(System.IO.TextWriter,System.Object,System.Collections.Generic.IDictionary{System.Object,System.Object},Alis.Core.Aspect.Data.Json.JsonOptions,Alis.Core.Aspect.Data.Json.MemberDefinition,System.Boolean)
+- markdown: Handles the write named value object callback using the specified writer
+- code: internal static (bool, bool, string, object) HandleWriteNamedValueObjectCallback(TextWriter writer, object component, IDictionary<object, object> objectGraph, JsonOptions options, MemberDefinition member, bool first)
+- h4: Parameters
+- parameters:
+  - name: writer
+    type:
+    - text: TextWriter
+      url: https://learn.microsoft.com/dotnet/api/system.io.textwriter
+    description: The writer
+  - name: component
+    type:
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    description: The component
+  - name: objectGraph
+    type:
+    - text: IDictionary
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+    - <
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    - ','
+    - " "
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    - '>'
+    description: The object graph
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+  - name: member
+    type:
+    - text: MemberDefinition
+      url: Alis.Core.Aspect.Data.Json.MemberDefinition.html
+    description: The member
+  - name: first
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The first
+- h4: Returns
+- parameters:
+  - type:
+    - (
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    - ','
+    - " "
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    - ','
+    - " "
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    - ','
+    - " "
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    - )
+    description: The bool, bool, string and object
+- api3: InvokeCallback(JsonOptions, JsonEventArgs)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_InvokeCallback_Alis_Core_Aspect_Data_Json_JsonOptions_Alis_Core_Aspect_Data_Json_JsonEventArgs_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L208
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.InvokeCallback(Alis.Core.Aspect.Data.Json.JsonOptions,Alis.Core.Aspect.Data.Json.JsonEventArgs)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.InvokeCallback(Alis.Core.Aspect.Data.Json.JsonOptions,Alis.Core.Aspect.Data.Json.JsonEventArgs)
+- markdown: Invokes the callback using the specified options
+- code: internal static void InvokeCallback(JsonOptions options, JsonEventArgs e)
+- h4: Parameters
+- parameters:
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+  - name: e
+    type:
+    - text: JsonEventArgs
+      url: Alis.Core.Aspect.Data.Json.JsonEventArgs.html
+    description: The
+- api3: InvokeCallback(TextWriter, object, IDictionary<object, object>, JsonOptions, bool, string, object)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_InvokeCallback_System_IO_TextWriter_System_Object_System_Collections_Generic_IDictionary_System_Object_System_Object__Alis_Core_Aspect_Data_Json_JsonOptions_System_Boolean_System_String_System_Object_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L224
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.InvokeCallback(System.IO.TextWriter,System.Object,System.Collections.Generic.IDictionary{System.Object,System.Object},Alis.Core.Aspect.Data.Json.JsonOptions,System.Boolean,System.String,System.Object)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.InvokeCallback(System.IO.TextWriter,System.Object,System.Collections.Generic.IDictionary{System.Object,System.Object},Alis.Core.Aspect.Data.Json.JsonOptions,System.Boolean,System.String,System.Object)
+- markdown: Invokes the callback using the specified writer
+- code: internal static JsonEventArgs InvokeCallback(TextWriter writer, object component, IDictionary<object, object> objectGraph, JsonOptions options, bool first, string name, object value)
+- h4: Parameters
+- parameters:
+  - name: writer
+    type:
+    - text: TextWriter
+      url: https://learn.microsoft.com/dotnet/api/system.io.textwriter
+    description: The writer
+  - name: component
+    type:
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    description: The component
+  - name: objectGraph
+    type:
+    - text: IDictionary
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+    - <
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    - ','
+    - " "
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    - '>'
+    description: The object graph
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+  - name: first
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The first
+  - name: name
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The name
+  - name: value
+    type:
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - text: JsonEventArgs
+      url: Alis.Core.Aspect.Data.Json.JsonEventArgs.html
+    description: The
+- api3: IsKeyValuePairEnumerable(Type, out Type, out Type)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_IsKeyValuePairEnumerable_System_Type_System_Type__System_Type__
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L537
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.IsKeyValuePairEnumerable(System.Type,System.Type@,System.Type@)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.IsKeyValuePairEnumerable(System.Type,System.Type@,System.Type@)
+- markdown: Describes whether is key value pair enumerable
+- code: public static bool IsKeyValuePairEnumerable(Type type, out Type keyType, out Type valueType)
+- h4: Parameters
+- parameters:
+  - name: type
+    type:
+    - text: Type
+      url: https://learn.microsoft.com/dotnet/api/system.type
+    description: The type
+  - name: keyType
+    type:
+    - text: Type
+      url: https://learn.microsoft.com/dotnet/api/system.type
+    description: The key type
+  - name: valueType
+    type:
+    - text: Type
+      url: https://learn.microsoft.com/dotnet/api/system.type
+    description: The value type
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: IsUsingJsonAttribute(JsonOptions)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_IsUsingJsonAttribute_Alis_Core_Aspect_Data_Json_JsonOptions_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L670
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.IsUsingJsonAttribute(Alis.Core.Aspect.Data.Json.JsonOptions)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.IsUsingJsonAttribute(Alis.Core.Aspect.Data.Json.JsonOptions)
+- markdown: Describes whether is using json attribute
+- code: internal static bool IsUsingJsonAttribute(JsonOptions options)
+- h4: Parameters
+- parameters:
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: IsXmlIgnoreAttributePresent(PropertyDescriptor)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_IsXmlIgnoreAttributePresent_System_ComponentModel_PropertyDescriptor_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L1041
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.IsXmlIgnoreAttributePresent(System.ComponentModel.PropertyDescriptor)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.IsXmlIgnoreAttributePresent(System.ComponentModel.PropertyDescriptor)
+- markdown: Describes whether is xml ignore attribute present
+- code: internal static bool IsXmlIgnoreAttributePresent(PropertyDescriptor descriptor)
+- h4: Parameters
+- parameters:
+  - name: descriptor
+    type:
+    - text: PropertyDescriptor
+      url: https://learn.microsoft.com/dotnet/api/system.componentmodel.propertydescriptor
+    description: The descriptor
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: IsXmlIgnoreOptionSet(JsonOptions)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_IsXmlIgnoreOptionSet_Alis_Core_Aspect_Data_Json_JsonOptions_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L1034
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.IsXmlIgnoreOptionSet(Alis.Core.Aspect.Data.Json.JsonOptions)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.IsXmlIgnoreOptionSet(Alis.Core.Aspect.Data.Json.JsonOptions)
+- markdown: Describes whether is xml ignore option set
+- code: internal static bool IsXmlIgnoreOptionSet(JsonOptions options)
+- h4: Parameters
+- parameters:
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: LockMethod<T>(Action<T>, T)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_LockMethod__1_System_Action___0____0_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L416
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.LockMethod``1(System.Action{``0},``0)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.LockMethod``1(System.Action{``0},``0)
+- markdown: Locks the action
+- code: public static void LockMethod<T>(Action<T> action, T state)
+- h4: Parameters
+- parameters:
+  - name: action
+    type:
+    - text: Action
+      url: https://learn.microsoft.com/dotnet/api/system.action-1
+    - <
+    - T
+    - '>'
+    description: The action
+  - name: state
+    type:
+    - T
+    description: The state
+- h4: Type Parameters
+- parameters:
+  - name: T
+    description: The
+- api3: RemoveDeserializationMember(Type, JsonOptions, MemberDefinition)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_RemoveDeserializationMember_System_Type_Alis_Core_Aspect_Data_Json_JsonOptions_Alis_Core_Aspect_Data_Json_MemberDefinition_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L431
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.RemoveDeserializationMember(System.Type,Alis.Core.Aspect.Data.Json.JsonOptions,Alis.Core.Aspect.Data.Json.MemberDefinition)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.RemoveDeserializationMember(System.Type,Alis.Core.Aspect.Data.Json.JsonOptions,Alis.Core.Aspect.Data.Json.MemberDefinition)
+- markdown: Describes whether remove deserialization member
+- code: public static bool RemoveDeserializationMember(Type type, JsonOptions options, MemberDefinition member)
+- h4: Parameters
+- parameters:
+  - name: type
+    type:
+    - text: Type
+      url: https://learn.microsoft.com/dotnet/api/system.type
+    description: The type
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+  - name: member
+    type:
+    - text: MemberDefinition
+      url: Alis.Core.Aspect.Data.Json.MemberDefinition.html
+    description: The member
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: RemoveSerializationMember(Type, JsonOptions, MemberDefinition)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_RemoveSerializationMember_System_Type_Alis_Core_Aspect_Data_Json_JsonOptions_Alis_Core_Aspect_Data_Json_MemberDefinition_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L447
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.RemoveSerializationMember(System.Type,Alis.Core.Aspect.Data.Json.JsonOptions,Alis.Core.Aspect.Data.Json.MemberDefinition)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.RemoveSerializationMember(System.Type,Alis.Core.Aspect.Data.Json.JsonOptions,Alis.Core.Aspect.Data.Json.MemberDefinition)
+- markdown: Describes whether remove serialization member
+- code: public static bool RemoveSerializationMember(Type type, JsonOptions options, MemberDefinition member)
+- h4: Parameters
+- parameters:
+  - name: type
+    type:
+    - text: Type
+      url: https://learn.microsoft.com/dotnet/api/system.type
+    description: The type
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+  - name: member
+    type:
+    - text: MemberDefinition
+      url: Alis.Core.Aspect.Data.Json.MemberDefinition.html
+    description: The member
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: SetDefaultValue(MemberDefinition, FieldInfo)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_SetDefaultValue_Alis_Core_Aspect_Data_Json_MemberDefinition_System_Reflection_FieldInfo_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L937
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.SetDefaultValue(Alis.Core.Aspect.Data.Json.MemberDefinition,System.Reflection.FieldInfo)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.SetDefaultValue(Alis.Core.Aspect.Data.Json.MemberDefinition,System.Reflection.FieldInfo)
+- markdown: Sets the default value using the specified member definition
+- code: internal static void SetDefaultValue(MemberDefinition memberDefinition, FieldInfo info)
+- h4: Parameters
+- parameters:
+  - name: memberDefinition
+    type:
+    - text: MemberDefinition
+      url: Alis.Core.Aspect.Data.Json.MemberDefinition.html
+    description: The member definition
+  - name: info
+    type:
+    - text: FieldInfo
+      url: https://learn.microsoft.com/dotnet/api/system.reflection.fieldinfo
+    description: The info
+- api3: SetWireNames(bool, MemberDefinition, string)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_SetWireNames_System_Boolean_Alis_Core_Aspect_Data_Json_MemberDefinition_System_String_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L924
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.SetWireNames(System.Boolean,Alis.Core.Aspect.Data.Json.MemberDefinition,System.String)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.SetWireNames(System.Boolean,Alis.Core.Aspect.Data.Json.MemberDefinition,System.String)
+- markdown: Sets the wire names using the specified serialization
+- code: internal static void SetWireNames(bool serialization, MemberDefinition memberDefinition, string name)
+- h4: Parameters
+- parameters:
+  - name: serialization
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The serialization
+  - name: memberDefinition
+    type:
+    - text: MemberDefinition
+      url: Alis.Core.Aspect.Data.Json.MemberDefinition.html
+    description: The member definition
+  - name: name
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The name
+- api3: ShouldCreateMemberDefinition(bool, FieldInfo, JsonOptions)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_ShouldCreateMemberDefinition_System_Boolean_System_Reflection_FieldInfo_Alis_Core_Aspect_Data_Json_JsonOptions_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L791
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.ShouldCreateMemberDefinition(System.Boolean,System.Reflection.FieldInfo,Alis.Core.Aspect.Data.Json.JsonOptions)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.ShouldCreateMemberDefinition(System.Boolean,System.Reflection.FieldInfo,Alis.Core.Aspect.Data.Json.JsonOptions)
+- markdown: Describes whether should create member definition
+- code: internal static bool ShouldCreateMemberDefinition(bool serialization, FieldInfo field, JsonOptions options)
+- h4: Parameters
+- parameters:
+  - name: serialization
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The serialization
+  - name: field
+    type:
+    - text: FieldInfo
+      url: https://learn.microsoft.com/dotnet/api/system.reflection.fieldinfo
+    description: The field
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: ShouldCreateMemberDefinitionForField(bool, FieldInfo, JsonOptions)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_ShouldCreateMemberDefinitionForField_System_Boolean_System_Reflection_FieldInfo_Alis_Core_Aspect_Data_Json_JsonOptions_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L778
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.ShouldCreateMemberDefinitionForField(System.Boolean,System.Reflection.FieldInfo,Alis.Core.Aspect.Data.Json.JsonOptions)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.ShouldCreateMemberDefinitionForField(System.Boolean,System.Reflection.FieldInfo,Alis.Core.Aspect.Data.Json.JsonOptions)
+- markdown: Checks if a member definition should be created for the specified field.
+- code: internal static bool ShouldCreateMemberDefinitionForField(bool serialization, FieldInfo field, JsonOptions options)
+- h4: Parameters
+- parameters:
+  - name: serialization
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The serialization
+  - name: field
+    type:
+    - text: FieldInfo
+      url: https://learn.microsoft.com/dotnet/api/system.reflection.fieldinfo
+    description: The field
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: True if a member definition should be created, false otherwise
+- api3: ShouldIgnoreAttribute(bool, JsonPropertyNameAttribute)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_ShouldIgnoreAttribute_System_Boolean_Alis_Core_Aspect_Data_Json_JsonPropertyNameAttribute_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L678
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.ShouldIgnoreAttribute(System.Boolean,Alis.Core.Aspect.Data.Json.JsonPropertyNameAttribute)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.ShouldIgnoreAttribute(System.Boolean,Alis.Core.Aspect.Data.Json.JsonPropertyNameAttribute)
+- markdown: Describes whether should ignore attribute
+- code: internal static bool ShouldIgnoreAttribute(bool serialization, JsonPropertyNameAttribute attribute)
+- h4: Parameters
+- parameters:
+  - name: serialization
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The serialization
+  - name: attribute
+    type:
+    - text: JsonPropertyNameAttribute
+      url: Alis.Core.Aspect.Data.Json.JsonPropertyNameAttribute.html
+    description: The attribute
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: ShouldIgnoreCustomAttribute(bool, JsonIgnoreAttribute)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_ShouldIgnoreCustomAttribute_System_Boolean_Alis_Core_Aspect_Data_Json_JsonIgnoreAttribute_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L686
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.ShouldIgnoreCustomAttribute(System.Boolean,Alis.Core.Aspect.Data.Json.JsonIgnoreAttribute)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.ShouldIgnoreCustomAttribute(System.Boolean,Alis.Core.Aspect.Data.Json.JsonIgnoreAttribute)
+- markdown: Describes whether should ignore custom attribute
+- code: internal static bool ShouldIgnoreCustomAttribute(bool serialization, JsonIgnoreAttribute attribute)
+- h4: Parameters
+- parameters:
+  - name: serialization
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The serialization
+  - name: attribute
+    type:
+    - text: JsonIgnoreAttribute
+      url: Alis.Core.Aspect.Data.Json.JsonIgnoreAttribute.html
+    description: The attribute
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: ShouldSkipDefaultValues(JsonOptions, MemberDefinition, object)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_ShouldSkipDefaultValues_Alis_Core_Aspect_Data_Json_JsonOptions_Alis_Core_Aspect_Data_Json_MemberDefinition_System_Object_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L342
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.ShouldSkipDefaultValues(Alis.Core.Aspect.Data.Json.JsonOptions,Alis.Core.Aspect.Data.Json.MemberDefinition,System.Object)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.ShouldSkipDefaultValues(Alis.Core.Aspect.Data.Json.JsonOptions,Alis.Core.Aspect.Data.Json.MemberDefinition,System.Object)
+- markdown: Describes whether this instance should skip default values
+- code: internal bool ShouldSkipDefaultValues(JsonOptions options, MemberDefinition member, object value)
+- h4: Parameters
+- parameters:
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+  - name: member
+    type:
+    - text: MemberDefinition
+      url: Alis.Core.Aspect.Data.Json.MemberDefinition.html
+    description: The member
+  - name: value
+    type:
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: ShouldSkipDescriptor(bool, PropertyDescriptor, JsonOptions)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_ShouldSkipDescriptor_System_Boolean_System_ComponentModel_PropertyDescriptor_Alis_Core_Aspect_Data_Json_JsonOptions_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L990
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.ShouldSkipDescriptor(System.Boolean,System.ComponentModel.PropertyDescriptor,Alis.Core.Aspect.Data.Json.JsonOptions)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.ShouldSkipDescriptor(System.Boolean,System.ComponentModel.PropertyDescriptor,Alis.Core.Aspect.Data.Json.JsonOptions)
+- markdown: Describes whether should skip descriptor
+- code: internal static bool ShouldSkipDescriptor(bool serialization, PropertyDescriptor descriptor, JsonOptions options)
+- h4: Parameters
+- parameters:
+  - name: serialization
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The serialization
+  - name: descriptor
+    type:
+    - text: PropertyDescriptor
+      url: https://learn.microsoft.com/dotnet/api/system.componentmodel.propertydescriptor
+    description: The descriptor
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: ShouldSkipDueToJsonAttribute(bool, FieldInfo, JsonOptions)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_ShouldSkipDueToJsonAttribute_System_Boolean_System_Reflection_FieldInfo_Alis_Core_Aspect_Data_Json_JsonOptions_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L860
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.ShouldSkipDueToJsonAttribute(System.Boolean,System.Reflection.FieldInfo,Alis.Core.Aspect.Data.Json.JsonOptions)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.ShouldSkipDueToJsonAttribute(System.Boolean,System.Reflection.FieldInfo,Alis.Core.Aspect.Data.Json.JsonOptions)
+- markdown: Describes whether should skip due to json attribute
+- code: internal static bool ShouldSkipDueToJsonAttribute(bool serialization, FieldInfo info, JsonOptions options)
+- h4: Parameters
+- parameters:
+  - name: serialization
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The serialization
+  - name: info
+    type:
+    - text: FieldInfo
+      url: https://learn.microsoft.com/dotnet/api/system.reflection.fieldinfo
+    description: The info
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: ShouldSkipDueToScriptIgnoreAttribute(FieldInfo, JsonOptions)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_ShouldSkipDueToScriptIgnoreAttribute_System_Reflection_FieldInfo_Alis_Core_Aspect_Data_Json_JsonOptions_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L886
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.ShouldSkipDueToScriptIgnoreAttribute(System.Reflection.FieldInfo,Alis.Core.Aspect.Data.Json.JsonOptions)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.ShouldSkipDueToScriptIgnoreAttribute(System.Reflection.FieldInfo,Alis.Core.Aspect.Data.Json.JsonOptions)
+- markdown: Describes whether should skip due to script ignore attribute
+- code: internal static bool ShouldSkipDueToScriptIgnoreAttribute(FieldInfo info, JsonOptions options)
+- h4: Parameters
+- parameters:
+  - name: info
+    type:
+    - text: FieldInfo
+      url: https://learn.microsoft.com/dotnet/api/system.reflection.fieldinfo
+    description: The info
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: ShouldSkipDueToXmlIgnoreAttribute(FieldInfo, JsonOptions)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_ShouldSkipDueToXmlIgnoreAttribute_System_Reflection_FieldInfo_Alis_Core_Aspect_Data_Json_JsonOptions_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L877
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.ShouldSkipDueToXmlIgnoreAttribute(System.Reflection.FieldInfo,Alis.Core.Aspect.Data.Json.JsonOptions)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.ShouldSkipDueToXmlIgnoreAttribute(System.Reflection.FieldInfo,Alis.Core.Aspect.Data.Json.JsonOptions)
+- markdown: Describes whether should skip due to xml ignore attribute
+- code: internal static bool ShouldSkipDueToXmlIgnoreAttribute(FieldInfo info, JsonOptions options)
+- h4: Parameters
+- parameters:
+  - name: info
+    type:
+    - text: FieldInfo
+      url: https://learn.microsoft.com/dotnet/api/system.reflection.fieldinfo
+    description: The info
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: ShouldSkipField(bool, FieldInfo, JsonOptions)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_ShouldSkipField_System_Boolean_System_Reflection_FieldInfo_Alis_Core_Aspect_Data_Json_JsonOptions_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L849
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.ShouldSkipField(System.Boolean,System.Reflection.FieldInfo,Alis.Core.Aspect.Data.Json.JsonOptions)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.ShouldSkipField(System.Boolean,System.Reflection.FieldInfo,Alis.Core.Aspect.Data.Json.JsonOptions)
+- markdown: Determines whether to skip the field during serialization/deserialization.
+- code: internal static bool ShouldSkipField(bool serialization, FieldInfo info, JsonOptions options)
+- h4: Parameters
+- parameters:
+  - name: serialization
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: Indicates whether serialization is being performed.
+  - name: info
+    type:
+    - text: FieldInfo
+      url: https://learn.microsoft.com/dotnet/api/system.reflection.fieldinfo
+    description: The field information.
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The JSON options.
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: True if the field should be skipped, false otherwise.
+- api3: ShouldSkipNullDateTimeValues(JsonOptions, MemberDefinition, object)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_ShouldSkipNullDateTimeValues_Alis_Core_Aspect_Data_Json_JsonOptions_Alis_Core_Aspect_Data_Json_MemberDefinition_System_Object_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L333
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.ShouldSkipNullDateTimeValues(Alis.Core.Aspect.Data.Json.JsonOptions,Alis.Core.Aspect.Data.Json.MemberDefinition,System.Object)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.ShouldSkipNullDateTimeValues(Alis.Core.Aspect.Data.Json.JsonOptions,Alis.Core.Aspect.Data.Json.MemberDefinition,System.Object)
+- markdown: Describes whether this instance should skip null date time values
+- code: internal bool ShouldSkipNullDateTimeValues(JsonOptions options, MemberDefinition member, object value)
+- h4: Parameters
+- parameters:
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+  - name: member
+    type:
+    - text: MemberDefinition
+      url: Alis.Core.Aspect.Data.Json.MemberDefinition.html
+    description: The member
+  - name: value
+    type:
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: ShouldSkipNullPropertyValues(JsonOptions, object)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_ShouldSkipNullPropertyValues_Alis_Core_Aspect_Data_Json_JsonOptions_System_Object_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L315
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.ShouldSkipNullPropertyValues(Alis.Core.Aspect.Data.Json.JsonOptions,System.Object)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.ShouldSkipNullPropertyValues(Alis.Core.Aspect.Data.Json.JsonOptions,System.Object)
+- markdown: Describes whether this instance should skip null property values
+- code: internal bool ShouldSkipNullPropertyValues(JsonOptions options, object value)
+- h4: Parameters
+- parameters:
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+  - name: value
+    type:
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: ShouldSkipProperty(bool, PropertyInfo, JsonOptions)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_ShouldSkipProperty_System_Boolean_System_Reflection_PropertyInfo_Alis_Core_Aspect_Data_Json_JsonOptions_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L640
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.ShouldSkipProperty(System.Boolean,System.Reflection.PropertyInfo,Alis.Core.Aspect.Data.Json.JsonOptions)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.ShouldSkipProperty(System.Boolean,System.Reflection.PropertyInfo,Alis.Core.Aspect.Data.Json.JsonOptions)
+- markdown: Describes whether should skip property
+- code: internal static bool ShouldSkipProperty(bool serialization, PropertyInfo info, JsonOptions options)
+- h4: Parameters
+- parameters:
+  - name: serialization
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The serialization
+  - name: info
+    type:
+    - text: PropertyInfo
+      url: https://learn.microsoft.com/dotnet/api/system.reflection.propertyinfo
+    description: The info
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: ShouldSkipValue(JsonOptions, MemberDefinition, object)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_ShouldSkipValue_Alis_Core_Aspect_Data_Json_JsonOptions_Alis_Core_Aspect_Data_Json_MemberDefinition_System_Object_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L304
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.ShouldSkipValue(Alis.Core.Aspect.Data.Json.JsonOptions,Alis.Core.Aspect.Data.Json.MemberDefinition,System.Object)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.ShouldSkipValue(Alis.Core.Aspect.Data.Json.JsonOptions,Alis.Core.Aspect.Data.Json.MemberDefinition,System.Object)
+- markdown: Describes whether this instance should skip value
+- code: internal bool ShouldSkipValue(JsonOptions options, MemberDefinition member, object value)
+- h4: Parameters
+- parameters:
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+  - name: member
+    type:
+    - text: MemberDefinition
+      url: Alis.Core.Aspect.Data.Json.MemberDefinition.html
+    description: The member
+  - name: value
+    type:
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: ShouldSkipZeroValueTypes(JsonOptions, MemberDefinition, object)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_ShouldSkipZeroValueTypes_Alis_Core_Aspect_Data_Json_JsonOptions_Alis_Core_Aspect_Data_Json_MemberDefinition_System_Object_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L324
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.ShouldSkipZeroValueTypes(Alis.Core.Aspect.Data.Json.JsonOptions,Alis.Core.Aspect.Data.Json.MemberDefinition,System.Object)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.ShouldSkipZeroValueTypes(Alis.Core.Aspect.Data.Json.JsonOptions,Alis.Core.Aspect.Data.Json.MemberDefinition,System.Object)
+- markdown: Describes whether this instance should skip zero value types
+- code: internal bool ShouldSkipZeroValueTypes(JsonOptions options, MemberDefinition member, object value)
+- h4: Parameters
+- parameters:
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+  - name: member
+    type:
+    - text: MemberDefinition
+      url: Alis.Core.Aspect.Data.Json.MemberDefinition.html
+    description: The member
+  - name: value
+    type:
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: ToString()
+  id: Alis_Core_Aspect_Data_Json_TypeDef_ToString
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L382
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.ToString
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.ToString
+- markdown: Returns the string
+- code: public override string ToString()
+- h4: Returns
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The string
+- api3: UnlockedGet(Type, JsonOptions)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_UnlockedGet_System_Type_Alis_Core_Aspect_Data_Json_JsonOptions_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L398
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.UnlockedGet(System.Type,Alis.Core.Aspect.Data.Json.JsonOptions)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.UnlockedGet(System.Type,Alis.Core.Aspect.Data.Json.JsonOptions)
+- markdown: Unlock the get using the specified type
+- code: internal static TypeDef UnlockedGet(Type type, JsonOptions options)
+- h4: Parameters
+- parameters:
+  - name: type
+    type:
+    - text: Type
+      url: https://learn.microsoft.com/dotnet/api/system.type
+    description: The type
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+- h4: Returns
+- parameters:
+  - type:
+    - text: TypeDef
+      url: Alis.Core.Aspect.Data.Json.TypeDef.html
+    description: The ta
+- api3: WriteMemberValue(TextWriter, JsonOptions, MemberDefinition, bool, string, object, IDictionary<object, object>)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_WriteMemberValue_System_IO_TextWriter_Alis_Core_Aspect_Data_Json_JsonOptions_Alis_Core_Aspect_Data_Json_MemberDefinition_System_Boolean_System_String_System_Object_System_Collections_Generic_IDictionary_System_Object_System_Object__
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L354
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.WriteMemberValue(System.IO.TextWriter,Alis.Core.Aspect.Data.Json.JsonOptions,Alis.Core.Aspect.Data.Json.MemberDefinition,System.Boolean,System.String,System.Object,System.Collections.Generic.IDictionary{System.Object,System.Object})
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.WriteMemberValue(System.IO.TextWriter,Alis.Core.Aspect.Data.Json.JsonOptions,Alis.Core.Aspect.Data.Json.MemberDefinition,System.Boolean,System.String,System.Object,System.Collections.Generic.IDictionary{System.Object,System.Object})
+- markdown: Writes the member value using the specified writer
+- code: internal void WriteMemberValue(TextWriter writer, JsonOptions options, MemberDefinition member, bool nameChanged, string name, object value, IDictionary<object, object> objectGraph)
+- h4: Parameters
+- parameters:
+  - name: writer
+    type:
+    - text: TextWriter
+      url: https://learn.microsoft.com/dotnet/api/system.io.textwriter
+    description: The writer
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+  - name: member
+    type:
+    - text: MemberDefinition
+      url: Alis.Core.Aspect.Data.Json.MemberDefinition.html
+    description: The member
+  - name: nameChanged
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The name changed
+  - name: name
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The name
+  - name: value
+    type:
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    description: The value
+  - name: objectGraph
+    type:
+    - text: IDictionary
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+    - <
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    - ','
+    - " "
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    - '>'
+    description: The object graph
+- api3: WriteValues(TextWriter, object, IDictionary<object, object>, JsonOptions)
+  id: Alis_Core_Aspect_Data_Json_TypeDef_WriteValues_System_IO_TextWriter_System_Object_System_Collections_Generic_IDictionary_System_Object_System_Object__Alis_Core_Aspect_Data_Json_JsonOptions_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/TypeDef.cs#L139
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.TypeDef.WriteValues(System.IO.TextWriter,System.Object,System.Collections.Generic.IDictionary{System.Object,System.Object},Alis.Core.Aspect.Data.Json.JsonOptions)
+    commentId: M:Alis.Core.Aspect.Data.Json.TypeDef.WriteValues(System.IO.TextWriter,System.Object,System.Collections.Generic.IDictionary{System.Object,System.Object},Alis.Core.Aspect.Data.Json.JsonOptions)
+- markdown: Writes the values using the specified writer
+- code: public void WriteValues(TextWriter writer, object component, IDictionary<object, object> objectGraph, JsonOptions options)
+- h4: Parameters
+- parameters:
+  - name: writer
+    type:
+    - text: TextWriter
+      url: https://learn.microsoft.com/dotnet/api/system.io.textwriter
+    description: The writer
+  - name: component
+    type:
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    description: The component
+  - name: objectGraph
+    type:
+    - text: IDictionary
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+    - <
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    - ','
+    - " "
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    - '>'
+    description: The object graph
+  - name: options
+    type:
+    - text: JsonOptions
+      url: Alis.Core.Aspect.Data.Json.JsonOptions.html
+    description: The options
+languageId: csharp
+metadata:
+  description: The type def class

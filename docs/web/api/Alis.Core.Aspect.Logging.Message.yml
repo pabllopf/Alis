@@ -1,0 +1,170 @@
+### YamlMime:ApiPage
+title: Class Message
+body:
+- api1: Class Message
+  id: Alis_Core_Aspect_Logging_Message
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Logging/src/Message.cs#L38
+  metadata:
+    uid: Alis.Core.Aspect.Logging.Message
+    commentId: T:Alis.Core.Aspect.Logging.Message
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Aspect.Logging
+      url: Alis.Core.Aspect.Logging.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The message class
+- code: public class Message
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: Message
+    url: Alis.Core.Aspect.Logging.Message.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Constructors
+- api3: Message(MessageType, string)
+  id: Alis_Core_Aspect_Logging_Message__ctor_Alis_Core_Aspect_Logging_MessageType_System_String_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Logging/src/Message.cs#L45
+  metadata:
+    uid: Alis.Core.Aspect.Logging.Message.#ctor(Alis.Core.Aspect.Logging.MessageType,System.String)
+    commentId: M:Alis.Core.Aspect.Logging.Message.#ctor(Alis.Core.Aspect.Logging.MessageType,System.String)
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Aspect.Logging.Message" data-throw-if-not-resolved="false"></xref> class
+- code: public Message(MessageType messageType, string content = "")
+- h4: Parameters
+- parameters:
+  - name: messageType
+    type:
+    - text: MessageType
+      url: Alis.Core.Aspect.Logging.MessageType.html
+    description: The message type
+  - name: content
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The content
+    optional: true
+- h2: Properties
+- api3: Content
+  id: Alis_Core_Aspect_Logging_Message_Content
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Logging/src/Message.cs#L89
+  metadata:
+    uid: Alis.Core.Aspect.Logging.Message.Content
+    commentId: P:Alis.Core.Aspect.Logging.Message.Content
+- markdown: Gets or sets the value of the content
+- code: public string Content { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: DateTime
+  id: Alis_Core_Aspect_Logging_Message_DateTime
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Logging/src/Message.cs#L74
+  metadata:
+    uid: Alis.Core.Aspect.Logging.Message.DateTime
+    commentId: P:Alis.Core.Aspect.Logging.Message.DateTime
+- markdown: Gets or sets the value of the date time
+- code: public DateTime DateTime { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: DateTime
+      url: https://learn.microsoft.com/dotnet/api/system.datetime
+- api3: File
+  id: Alis_Core_Aspect_Logging_Message_File
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Logging/src/Message.cs#L104
+  metadata:
+    uid: Alis.Core.Aspect.Logging.Message.File
+    commentId: P:Alis.Core.Aspect.Logging.Message.File
+- markdown: Gets or sets the value of the file
+- code: public string File { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: Level
+  id: Alis_Core_Aspect_Logging_Message_Level
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Logging/src/Message.cs#L84
+  metadata:
+    uid: Alis.Core.Aspect.Logging.Message.Level
+    commentId: P:Alis.Core.Aspect.Logging.Message.Level
+- markdown: Gets or sets the value of the level
+- code: public string Level { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: Line
+  id: Alis_Core_Aspect_Logging_Message_Line
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Logging/src/Message.cs#L109
+  metadata:
+    uid: Alis.Core.Aspect.Logging.Message.Line
+    commentId: P:Alis.Core.Aspect.Logging.Message.Line
+- markdown: Gets or sets the value of the line
+- code: public string Line { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: MessageType
+  id: Alis_Core_Aspect_Logging_Message_MessageType
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Logging/src/Message.cs#L79
+  metadata:
+    uid: Alis.Core.Aspect.Logging.Message.MessageType
+    commentId: P:Alis.Core.Aspect.Logging.Message.MessageType
+- markdown: Gets or sets the value of the message type
+- code: public MessageType MessageType { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: MessageType
+      url: Alis.Core.Aspect.Logging.MessageType.html
+- api3: Method
+  id: Alis_Core_Aspect_Logging_Message_Method
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Logging/src/Message.cs#L99
+  metadata:
+    uid: Alis.Core.Aspect.Logging.Message.Method
+    commentId: P:Alis.Core.Aspect.Logging.Message.Method
+- markdown: Gets or sets the value of the method
+- code: public string Method { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: StackTrace
+  id: Alis_Core_Aspect_Logging_Message_StackTrace
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Logging/src/Message.cs#L94
+  metadata:
+    uid: Alis.Core.Aspect.Logging.Message.StackTrace
+    commentId: P:Alis.Core.Aspect.Logging.Message.StackTrace
+- markdown: Gets or sets the value of the stack trace
+- code: public string StackTrace { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+languageId: csharp
+metadata:
+  description: The message class

@@ -1,0 +1,168 @@
+### YamlMime:ApiPage
+title: Class Image
+body:
+- api1: Class Image
+  id: Alis_Core_Ecs_Component_Render_Image
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Render/Image.cs#L42
+  metadata:
+    uid: Alis.Core.Ecs.Component.Render.Image
+    commentId: T:Alis.Core.Ecs.Component.Render.Image
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Ecs.Component.Render
+      url: Alis.Core.Ecs.Component.Render.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The image class
+- code: public class Image
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: Image
+    url: Alis.Core.Ecs.Component.Render.Image.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Constructors
+- api3: Image()
+  id: Alis_Core_Ecs_Component_Render_Image__ctor
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Render/Image.cs#L47
+  metadata:
+    uid: Alis.Core.Ecs.Component.Render.Image.#ctor
+    commentId: M:Alis.Core.Ecs.Component.Render.Image.#ctor
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Ecs.Component.Render.Image" data-throw-if-not-resolved="false"></xref> class
+- code: public Image()
+- api3: Image(string)
+  id: Alis_Core_Ecs_Component_Render_Image__ctor_System_String_
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Render/Image.cs#L58
+  metadata:
+    uid: Alis.Core.Ecs.Component.Render.Image.#ctor(System.String)
+    commentId: M:Alis.Core.Ecs.Component.Render.Image.#ctor(System.String)
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Ecs.Component.Render.Image" data-throw-if-not-resolved="false"></xref> class
+- code: public Image(string nameFile)
+- h4: Parameters
+- parameters:
+  - name: nameFile
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The name file
+- api3: Image(string, Vector2)
+  id: Alis_Core_Ecs_Component_Render_Image__ctor_System_String_Alis_Core_Aspect_Math_Vector_Vector2_
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Render/Image.cs#L70
+  metadata:
+    uid: Alis.Core.Ecs.Component.Render.Image.#ctor(System.String,Alis.Core.Aspect.Math.Vector.Vector2)
+    commentId: M:Alis.Core.Ecs.Component.Render.Image.#ctor(System.String,Alis.Core.Aspect.Math.Vector.Vector2)
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Ecs.Component.Render.Image" data-throw-if-not-resolved="false"></xref> class
+- code: public Image(string nameFile, Vector2 size)
+- h4: Parameters
+- parameters:
+  - name: nameFile
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The name file
+  - name: size
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The size
+- h2: Properties
+- api3: Context
+  id: Alis_Core_Ecs_Component_Render_Image_Context
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Render/Image.cs#L82
+  metadata:
+    uid: Alis.Core.Ecs.Component.Render.Image.Context
+    commentId: P:Alis.Core.Ecs.Component.Render.Image.Context
+- markdown: Gets or sets the value of the context
+- code: private Context Context { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Context
+      url: Alis.Core.Ecs.System.Context.html
+- api3: NameFile
+  id: Alis_Core_Ecs_Component_Render_Image_NameFile
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Render/Image.cs#L94
+  metadata:
+    uid: Alis.Core.Ecs.Component.Render.Image.NameFile
+    commentId: P:Alis.Core.Ecs.Component.Render.Image.NameFile
+- markdown: Gets or sets the value of the name file
+- code: >-
+    [JsonPropertyName("_NameFile_")]
+
+    public string NameFile { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: Path
+  id: Alis_Core_Ecs_Component_Render_Image_Path
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Render/Image.cs#L88
+  metadata:
+    uid: Alis.Core.Ecs.Component.Render.Image.Path
+    commentId: P:Alis.Core.Ecs.Component.Render.Image.Path
+- markdown: Gets or sets the value of the path
+- code: public string Path { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: Size
+  id: Alis_Core_Ecs_Component_Render_Image_Size
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Render/Image.cs#L106
+  metadata:
+    uid: Alis.Core.Ecs.Component.Render.Image.Size
+    commentId: P:Alis.Core.Ecs.Component.Render.Image.Size
+- markdown: Gets or sets the value of the size
+- code: >-
+    [JsonPropertyName("_Size_")]
+
+    public Vector2 Size { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: Texture
+  id: Alis_Core_Ecs_Component_Render_Image_Texture
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Render/Image.cs#L100
+  metadata:
+    uid: Alis.Core.Ecs.Component.Render.Image.Texture
+    commentId: P:Alis.Core.Ecs.Component.Render.Image.Texture
+- markdown: Gets or sets the value of the texture
+- code: public IntPtr Texture { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+- h2: Methods
+- api3: Load()
+  id: Alis_Core_Ecs_Component_Render_Image_Load
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Render/Image.cs#L112
+  metadata:
+    uid: Alis.Core.Ecs.Component.Render.Image.Load
+    commentId: M:Alis.Core.Ecs.Component.Render.Image.Load
+- markdown: Loads this instance
+- code: public void Load()
+languageId: csharp
+metadata:
+  description: The image class

@@ -1,0 +1,308 @@
+### YamlMime:ApiPage
+title: Class Sprite
+body:
+- api1: Class Sprite
+  id: Alis_Core_Ecs_Component_Render_Sprite
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Render/Sprite.cs#L45
+  metadata:
+    uid: Alis.Core.Ecs.Component.Render.Sprite
+    commentId: T:Alis.Core.Ecs.Component.Render.Sprite
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Ecs.Component.Render
+      url: Alis.Core.Ecs.Component.Render.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The sprite class
+- code: 'public class Sprite : AComponent, IComponent<GameObject>, IEnabled, IIdentifier, IRuntime, IBuilder<SpriteBuilder>'
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: AComponent
+    url: Alis.Core.Ecs.Component.AComponent.html
+  - text: Sprite
+    url: Alis.Core.Ecs.Component.Render.Sprite.html
+- h4: Implements
+- list:
+  - text: IComponent<GameObject>
+    url: Alis.Core.Ecs.Component.IComponent-1.html
+  - text: IEnabled
+    url: Alis.Core.Ecs.Entity.Property.IEnabled.html
+  - text: IIdentifier
+    url: Alis.Core.Ecs.Entity.Property.IIdentifier.html
+  - text: IRuntime
+    url: Alis.Core.Ecs.Entity.Property.IRuntime.html
+  - text: IBuilder<SpriteBuilder>
+    url: Alis.Core.Aspect.Fluent.IBuilder-1.html
+- h4: Inherited Members
+- list:
+  - text: AComponent.Context
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_Context
+  - text: AComponent.IsEnable
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_IsEnable
+  - text: AComponent.Name
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_Name
+  - text: AComponent.Id
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_Id
+  - text: AComponent.Tag
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_Tag
+  - text: AComponent.GameObject
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_GameObject
+  - text: AComponent.OnEnable()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnEnable
+  - text: AComponent.OnInit()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnInit
+  - text: AComponent.OnAwake()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnAwake
+  - text: AComponent.OnStart()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnStart
+  - text: AComponent.OnBeforeUpdate()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnBeforeUpdate
+  - text: AComponent.OnUpdate()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnUpdate
+  - text: AComponent.OnAfterUpdate()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnAfterUpdate
+  - text: AComponent.OnBeforeFixedUpdate()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnBeforeFixedUpdate
+  - text: AComponent.OnFixedUpdate()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnFixedUpdate
+  - text: AComponent.OnAfterFixedUpdate()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnAfterFixedUpdate
+  - text: AComponent.OnDispatchEvents()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnDispatchEvents
+  - text: AComponent.OnCalculate()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnCalculate
+  - text: AComponent.OnDraw()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnDraw
+  - text: AComponent.OnGui()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnGui
+  - text: AComponent.OnDisable()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnDisable
+  - text: AComponent.OnReset()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnReset
+  - text: AComponent.OnStop()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnStop
+  - text: AComponent.OnExit()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnExit
+  - text: AComponent.OnDestroy()
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnDestroy
+  - text: AComponent.Attach(GameObject)
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_Attach_Alis_Core_Ecs_Entity_GameObject_
+  - text: AComponent.OnPressDownKey(KeyCodes)
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnPressDownKey_Alis_Core_Aspect_Data_Mapping_KeyCodes_
+  - text: AComponent.OnReleaseKey(KeyCodes)
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnReleaseKey_Alis_Core_Aspect_Data_Mapping_KeyCodes_
+  - text: AComponent.OnPressKey(KeyCodes)
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnPressKey_Alis_Core_Aspect_Data_Mapping_KeyCodes_
+  - text: AComponent.OnCollisionEnter(GameObject)
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnCollisionEnter_Alis_Core_Ecs_Entity_GameObject_
+  - text: AComponent.OnCollisionExit(GameObject)
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnCollisionExit_Alis_Core_Ecs_Entity_GameObject_
+  - text: AComponent.OnCollisionStay(GameObject)
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnCollisionStay_Alis_Core_Ecs_Entity_GameObject_
+  - text: AComponent.OnTriggerEnter(GameObject)
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnTriggerEnter_Alis_Core_Ecs_Entity_GameObject_
+  - text: AComponent.OnTriggerExit(GameObject)
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnTriggerExit_Alis_Core_Ecs_Entity_GameObject_
+  - text: AComponent.OnTriggerStay(GameObject)
+    url: Alis.Core.Ecs.Component.AComponent.html#Alis_Core_Ecs_Component_AComponent_OnTriggerStay_Alis_Core_Ecs_Entity_GameObject_
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Constructors
+- api3: Sprite()
+  id: Alis_Core_Ecs_Component_Render_Sprite__ctor
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Render/Sprite.cs#L52
+  metadata:
+    uid: Alis.Core.Ecs.Component.Render.Sprite.#ctor
+    commentId: M:Alis.Core.Ecs.Component.Render.Sprite.#ctor
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Ecs.Component.Render.Sprite" data-throw-if-not-resolved="false"></xref> class
+- code: public Sprite()
+- api3: Sprite(Image)
+  id: Alis_Core_Ecs_Component_Render_Sprite__ctor_Alis_Core_Ecs_Component_Render_Image_
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Render/Sprite.cs#L63
+  metadata:
+    uid: Alis.Core.Ecs.Component.Render.Sprite.#ctor(Alis.Core.Ecs.Component.Render.Image)
+    commentId: M:Alis.Core.Ecs.Component.Render.Sprite.#ctor(Alis.Core.Ecs.Component.Render.Image)
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Ecs.Component.Render.Sprite" data-throw-if-not-resolved="false"></xref> class
+- code: public Sprite(Image image)
+- h4: Parameters
+- parameters:
+  - name: image
+    type:
+    - text: Image
+      url: Alis.Core.Ecs.Component.Render.Image.html
+    description: The image
+- api3: Sprite(Image, int, RendererFlips)
+  id: Alis_Core_Ecs_Component_Render_Sprite__ctor_Alis_Core_Ecs_Component_Render_Image_System_Int32_Alis_Core_Graphic_Sdl2_Enums_RendererFlips_
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Render/Sprite.cs#L76
+  metadata:
+    uid: Alis.Core.Ecs.Component.Render.Sprite.#ctor(Alis.Core.Ecs.Component.Render.Image,System.Int32,Alis.Core.Graphic.Sdl2.Enums.RendererFlips)
+    commentId: M:Alis.Core.Ecs.Component.Render.Sprite.#ctor(Alis.Core.Ecs.Component.Render.Image,System.Int32,Alis.Core.Graphic.Sdl2.Enums.RendererFlips)
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Ecs.Component.Render.Sprite" data-throw-if-not-resolved="false"></xref> class
+- code: public Sprite(Image image, int depth, RendererFlips flips)
+- h4: Parameters
+- parameters:
+  - name: image
+    type:
+    - text: Image
+      url: Alis.Core.Ecs.Component.Render.Image.html
+    description: The image
+  - name: depth
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The depth
+  - name: flips
+    type:
+    - text: RendererFlips
+      url: Alis.Core.Graphic.Sdl2.Enums.RendererFlips.html
+    description: The flips
+- h2: Properties
+- api3: Depth
+  id: Alis_Core_Ecs_Component_Render_Sprite_Depth
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Render/Sprite.cs#L93
+  metadata:
+    uid: Alis.Core.Ecs.Component.Render.Sprite.Depth
+    commentId: P:Alis.Core.Ecs.Component.Render.Sprite.Depth
+- markdown: The level
+- code: >-
+    [JsonPropertyName("_Depth_")]
+
+    public int Depth { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: Flips
+  id: Alis_Core_Ecs_Component_Render_Sprite_Flips
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Render/Sprite.cs#L99
+  metadata:
+    uid: Alis.Core.Ecs.Component.Render.Sprite.Flips
+    commentId: P:Alis.Core.Ecs.Component.Render.Sprite.Flips
+- markdown: Gets or sets the value of the flip
+- code: >-
+    [JsonPropertyName("_Flips_")]
+
+    public RendererFlips Flips { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: RendererFlips
+      url: Alis.Core.Graphic.Sdl2.Enums.RendererFlips.html
+- api3: Image
+  id: Alis_Core_Ecs_Component_Render_Sprite_Image
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Render/Sprite.cs#L87
+  metadata:
+    uid: Alis.Core.Ecs.Component.Render.Sprite.Image
+    commentId: P:Alis.Core.Ecs.Component.Render.Sprite.Image
+- markdown: The image
+- code: >-
+    [JsonPropertyName("_Image_")]
+
+    public Image Image { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Image
+      url: Alis.Core.Ecs.Component.Render.Image.html
+- h2: Methods
+- api3: Builder()
+  id: Alis_Core_Ecs_Component_Render_Sprite_Builder
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Render/Sprite.cs#L106
+  metadata:
+    uid: Alis.Core.Ecs.Component.Render.Sprite.Builder
+    commentId: M:Alis.Core.Ecs.Component.Render.Sprite.Builder
+- markdown: Builders this instance
+- code: public SpriteBuilder Builder()
+- h4: Returns
+- parameters:
+  - type:
+    - text: SpriteBuilder
+      url: Alis.Builder.Core.Ecs.Component.Render.SpriteBuilder.html
+    description: The sprite builder
+- api3: OnAwake()
+  id: Alis_Core_Ecs_Component_Render_Sprite_OnAwake
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Render/Sprite.cs#L119
+  metadata:
+    uid: Alis.Core.Ecs.Component.Render.Sprite.OnAwake
+    commentId: M:Alis.Core.Ecs.Component.Render.Sprite.OnAwake
+- markdown: Awakes this instance
+- code: public override void OnAwake()
+- api3: OnExit()
+  id: Alis_Core_Ecs_Component_Render_Sprite_OnExit
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Render/Sprite.cs#L127
+  metadata:
+    uid: Alis.Core.Ecs.Component.Render.Sprite.OnExit
+    commentId: M:Alis.Core.Ecs.Component.Render.Sprite.OnExit
+- markdown: Exits this instance
+- code: public override void OnExit()
+- api3: OnInit()
+  id: Alis_Core_Ecs_Component_Render_Sprite_OnInit
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Render/Sprite.cs#L111
+  metadata:
+    uid: Alis.Core.Ecs.Component.Render.Sprite.OnInit
+    commentId: M:Alis.Core.Ecs.Component.Render.Sprite.OnInit
+- markdown: Inits this instance
+- code: public override void OnInit()
+- api3: Render(IntPtr, Camera)
+  id: Alis_Core_Ecs_Component_Render_Sprite_Render_System_IntPtr_Alis_Core_Ecs_Component_Render_Camera_
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Render/Sprite.cs#L137
+  metadata:
+    uid: Alis.Core.Ecs.Component.Render.Sprite.Render(System.IntPtr,Alis.Core.Ecs.Component.Render.Camera)
+    commentId: M:Alis.Core.Ecs.Component.Render.Sprite.Render(System.IntPtr,Alis.Core.Ecs.Component.Render.Camera)
+- markdown: Renders the renderer
+- code: public void Render(IntPtr renderer, Camera camera)
+- h4: Parameters
+- parameters:
+  - name: renderer
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The renderer
+  - name: camera
+    type:
+    - text: Camera
+      url: Alis.Core.Ecs.Component.Render.Camera.html
+    description: ''
+- api3: Render(IntPtr)
+  id: Alis_Core_Ecs_Component_Render_Sprite_Render_System_IntPtr_
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Component/Render/Sprite.cs#L159
+  metadata:
+    uid: Alis.Core.Ecs.Component.Render.Sprite.Render(System.IntPtr)
+    commentId: M:Alis.Core.Ecs.Component.Render.Sprite.Render(System.IntPtr)
+- markdown: Renders the renderer
+- code: public void Render(IntPtr renderer)
+- h4: Parameters
+- parameters:
+  - name: renderer
+    type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+    description: The renderer
+- h2: See Also
+- list:
+  - - text: AComponent
+      url: Alis.Core.Ecs.Component.AComponent.html
+  - - text: IBuilder
+      url: Alis.Core.Aspect.Fluent.IBuilder-1.html
+    - <
+    - TOut
+    - '>'
+languageId: csharp
+metadata:
+  description: The sprite class

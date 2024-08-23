@@ -1,0 +1,126 @@
+### YamlMime:ApiPage
+title: Class WebSocketBufferOverflowException
+body:
+- api1: Class WebSocketBufferOverflowException
+  id: Alis_Core_Network_Exceptions_WebSocketBufferOverflowException
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Exceptions/WebSocketBufferOverflowException.cs#L38
+  metadata:
+    uid: Alis.Core.Network.Exceptions.WebSocketBufferOverflowException
+    commentId: T:Alis.Core.Network.Exceptions.WebSocketBufferOverflowException
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Network.Exceptions
+      url: Alis.Core.Network.Exceptions.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The web socket buffer overflow exception class
+- code: >-
+    [Serializable]
+
+    public class WebSocketBufferOverflowException : Exception, ISerializable
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: Exception
+    url: https://learn.microsoft.com/dotnet/api/system.exception
+  - text: WebSocketBufferOverflowException
+    url: Alis.Core.Network.Exceptions.WebSocketBufferOverflowException.html
+- h4: Implements
+- list:
+  - text: ISerializable
+    url: https://learn.microsoft.com/dotnet/api/system.runtime.serialization.iserializable
+- h4: Inherited Members
+- list:
+  - text: Exception.GetBaseException()
+    url: https://learn.microsoft.com/dotnet/api/system.exception.getbaseexception
+  - text: Exception.GetObjectData(SerializationInfo, StreamingContext)
+    url: https://learn.microsoft.com/dotnet/api/system.exception.getobjectdata
+  - text: Exception.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.exception.gettype
+  - text: Exception.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.exception.tostring
+  - text: Exception.Data
+    url: https://learn.microsoft.com/dotnet/api/system.exception.data
+  - text: Exception.HelpLink
+    url: https://learn.microsoft.com/dotnet/api/system.exception.helplink
+  - text: Exception.HResult
+    url: https://learn.microsoft.com/dotnet/api/system.exception.hresult
+  - text: Exception.InnerException
+    url: https://learn.microsoft.com/dotnet/api/system.exception.innerexception
+  - text: Exception.Message
+    url: https://learn.microsoft.com/dotnet/api/system.exception.message
+  - text: Exception.Source
+    url: https://learn.microsoft.com/dotnet/api/system.exception.source
+  - text: Exception.StackTrace
+    url: https://learn.microsoft.com/dotnet/api/system.exception.stacktrace
+  - text: Exception.TargetSite
+    url: https://learn.microsoft.com/dotnet/api/system.exception.targetsite
+  - text: Exception.SerializeObjectState
+    url: https://learn.microsoft.com/dotnet/api/system.exception.serializeobjectstate
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Constructors
+- api3: WebSocketBufferOverflowException()
+  id: Alis_Core_Network_Exceptions_WebSocketBufferOverflowException__ctor
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Exceptions/WebSocketBufferOverflowException.cs#L44
+  metadata:
+    uid: Alis.Core.Network.Exceptions.WebSocketBufferOverflowException.#ctor
+    commentId: M:Alis.Core.Network.Exceptions.WebSocketBufferOverflowException.#ctor
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Network.Exceptions.WebSocketBufferOverflowException" data-throw-if-not-resolved="false"></xref> class
+- code: public WebSocketBufferOverflowException()
+- api3: WebSocketBufferOverflowException(string)
+  id: Alis_Core_Network_Exceptions_WebSocketBufferOverflowException__ctor_System_String_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Exceptions/WebSocketBufferOverflowException.cs#L52
+  metadata:
+    uid: Alis.Core.Network.Exceptions.WebSocketBufferOverflowException.#ctor(System.String)
+    commentId: M:Alis.Core.Network.Exceptions.WebSocketBufferOverflowException.#ctor(System.String)
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Network.Exceptions.WebSocketBufferOverflowException" data-throw-if-not-resolved="false"></xref> class
+- code: public WebSocketBufferOverflowException(string message)
+- h4: Parameters
+- parameters:
+  - name: message
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The message
+- api3: WebSocketBufferOverflowException(string, Exception)
+  id: Alis_Core_Network_Exceptions_WebSocketBufferOverflowException__ctor_System_String_System_Exception_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Network/src/Exceptions/WebSocketBufferOverflowException.cs#L61
+  metadata:
+    uid: Alis.Core.Network.Exceptions.WebSocketBufferOverflowException.#ctor(System.String,System.Exception)
+    commentId: M:Alis.Core.Network.Exceptions.WebSocketBufferOverflowException.#ctor(System.String,System.Exception)
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Network.Exceptions.WebSocketBufferOverflowException" data-throw-if-not-resolved="false"></xref> class
+- code: public WebSocketBufferOverflowException(string message, Exception inner)
+- h4: Parameters
+- parameters:
+  - name: message
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The message
+  - name: inner
+    type:
+    - text: Exception
+      url: https://learn.microsoft.com/dotnet/api/system.exception
+    description: The inner
+- h2: See Also
+- list:
+  - - text: Exception
+      url: https://learn.microsoft.com/dotnet/api/system.exception
+languageId: csharp
+metadata:
+  description: The web socket buffer overflow exception class

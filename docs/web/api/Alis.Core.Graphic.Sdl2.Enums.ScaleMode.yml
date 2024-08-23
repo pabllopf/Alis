@@ -1,0 +1,38 @@
+### YamlMime:ApiPage
+title: Enum ScaleMode
+body:
+- api1: Enum ScaleMode
+  id: Alis_Core_Graphic_Sdl2_Enums_ScaleMode
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Enums/ScaleMode.cs#L35
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Enums.ScaleMode
+    commentId: T:Alis.Core.Graphic.Sdl2.Enums.ScaleMode
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Enums
+      url: Alis.Core.Graphic.Sdl2.Enums.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The sdl scale mode enum
+- code: public enum ScaleMode
+- h2: Fields
+- parameters:
+  - name: SdlScaleModeNearest
+    default: "0"
+    description: >+
+      The sdl scale mode nearest sdl scale mode
+
+  - name: SdlScaleModeLinear
+    default: "1"
+    description: >+
+      The sdl scale mode linear sdl scale mode
+
+  - name: SdlScaleModeBest
+    default: "2"
+    description: >+
+      The sdl scale mode best sdl scale mode
+
+languageId: csharp
+metadata:
+  description: The sdl scale mode enum

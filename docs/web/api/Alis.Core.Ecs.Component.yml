@@ -1,0 +1,41 @@
+### YamlMime:ApiPage
+title: Namespace Alis.Core.Ecs.Component
+body:
+- api1: Namespace Alis.Core.Ecs.Component
+  id: Alis_Core_Ecs_Component
+  metadata:
+    uid: Alis.Core.Ecs.Component
+    commentId: N:Alis.Core.Ecs.Component
+- h3: Namespaces
+- parameters:
+  - type:
+      text: Alis.Core.Ecs.Component.Audio
+      url: Alis.Core.Ecs.Component.Audio.html
+  - type:
+      text: Alis.Core.Ecs.Component.Body
+      url: Alis.Core.Ecs.Component.Body.html
+  - type:
+      text: Alis.Core.Ecs.Component.Collider
+      url: Alis.Core.Ecs.Component.Collider.html
+  - type:
+      text: Alis.Core.Ecs.Component.Light
+      url: Alis.Core.Ecs.Component.Light.html
+  - type:
+      text: Alis.Core.Ecs.Component.Render
+      url: Alis.Core.Ecs.Component.Render.html
+  - type:
+      text: Alis.Core.Ecs.Component.Ui
+      url: Alis.Core.Ecs.Component.Ui.html
+- h3: Classes
+- parameters:
+  - type:
+      text: AComponent
+      url: Alis.Core.Ecs.Component.AComponent.html
+    description: The component class
+- h3: Interfaces
+- parameters:
+  - type:
+      text: IComponent<T>
+      url: Alis.Core.Ecs.Component.IComponent-1.html
+    description: The component interface
+languageId: csharp

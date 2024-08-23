@@ -1,0 +1,466 @@
+### YamlMime:ApiPage
+title: Class Scene
+body:
+- api1: Class Scene
+  id: Alis_Core_Ecs_Entity_Scene
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Entity/Scene.cs#L40
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Scene
+    commentId: T:Alis.Core.Ecs.Entity.Scene
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Ecs.Entity
+      url: Alis.Core.Ecs.Entity.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The scene class
+- code: 'public class Scene : IScene<GameObject>, IEnabled, IIdentifier, IRuntime, ICrud<GameObject>'
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: Scene
+    url: Alis.Core.Ecs.Entity.Scene.html
+- h4: Implements
+- list:
+  - text: IScene<GameObject>
+    url: Alis.Core.Ecs.Entity.IScene-1.html
+  - text: IEnabled
+    url: Alis.Core.Ecs.Entity.Property.IEnabled.html
+  - text: IIdentifier
+    url: Alis.Core.Ecs.Entity.Property.IIdentifier.html
+  - text: IRuntime
+    url: Alis.Core.Ecs.Entity.Property.IRuntime.html
+  - text: ICrud<GameObject>
+    url: Alis.Core.Ecs.Entity.Property.ICrud-1.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Constructors
+- api3: Scene()
+  id: Alis_Core_Ecs_Entity_Scene__ctor
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Entity/Scene.cs#L45
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Scene.#ctor
+    commentId: M:Alis.Core.Ecs.Entity.Scene.#ctor
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Ecs.Entity.Scene" data-throw-if-not-resolved="false"></xref> class
+- code: public Scene()
+- api3: Scene(bool, string, string, string)
+  id: Alis_Core_Ecs_Entity_Scene__ctor_System_Boolean_System_String_System_String_System_String_
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Entity/Scene.cs#L61
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Scene.#ctor(System.Boolean,System.String,System.String,System.String)
+    commentId: M:Alis.Core.Ecs.Entity.Scene.#ctor(System.Boolean,System.String,System.String,System.String)
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Ecs.Entity.Scene" data-throw-if-not-resolved="false"></xref> class
+- code: public Scene(bool isEnable, string name, string id, string tag)
+- h4: Parameters
+- parameters:
+  - name: isEnable
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The is enable
+  - name: name
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The name
+  - name: id
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The id
+  - name: tag
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The tag
+- api3: Scene(bool, string, string, string, List<GameObject>)
+  id: Alis_Core_Ecs_Entity_Scene__ctor_System_Boolean_System_String_System_String_System_String_System_Collections_Generic_List_Alis_Core_Ecs_Entity_GameObject__
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Entity/Scene.cs#L78
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Scene.#ctor(System.Boolean,System.String,System.String,System.String,System.Collections.Generic.List{Alis.Core.Ecs.Entity.GameObject})
+    commentId: M:Alis.Core.Ecs.Entity.Scene.#ctor(System.Boolean,System.String,System.String,System.String,System.Collections.Generic.List{Alis.Core.Ecs.Entity.GameObject})
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Ecs.Entity.Scene" data-throw-if-not-resolved="false"></xref> class
+- code: public Scene(bool isEnable, string name, string id, string tag, List<GameObject> gameObjects)
+- h4: Parameters
+- parameters:
+  - name: isEnable
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The is enable
+  - name: name
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The name
+  - name: id
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The id
+  - name: tag
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The tag
+  - name: gameObjects
+    type:
+    - text: List
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+    - <
+    - text: GameObject
+      url: Alis.Core.Ecs.Entity.GameObject.html
+    - '>'
+    description: The game objects
+- h2: Properties
+- api3: Context
+  id: Alis_Core_Ecs_Entity_Scene_Context
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Entity/Scene.cs#L90
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Scene.Context
+    commentId: P:Alis.Core.Ecs.Entity.Scene.Context
+- markdown: Gets or sets the value of the context
+- code: >-
+    [JsonPropertyName("_Context_", true, true)]
+
+    protected internal Context Context { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Context
+      url: Alis.Core.Ecs.System.Context.html
+- api3: GameObjects
+  id: Alis_Core_Ecs_Entity_Scene_GameObjects
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Entity/Scene.cs#L121
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Scene.GameObjects
+    commentId: P:Alis.Core.Ecs.Entity.Scene.GameObjects
+- markdown: Gets or sets the value of the game objects
+- code: >-
+    [JsonPropertyName("_GameObjects_")]
+
+    public List<GameObject> GameObjects { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: List
+      url: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+    - <
+    - text: GameObject
+      url: Alis.Core.Ecs.Entity.GameObject.html
+    - '>'
+- api3: Id
+  id: Alis_Core_Ecs_Entity_Scene_Id
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Entity/Scene.cs#L108
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Scene.Id
+    commentId: P:Alis.Core.Ecs.Entity.Scene.Id
+- markdown: Gets or sets the value of the id
+- code: >-
+    [JsonPropertyName("_Id_")]
+
+    public string Id { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: IsEnable
+  id: Alis_Core_Ecs_Entity_Scene_IsEnable
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Entity/Scene.cs#L96
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Scene.IsEnable
+    commentId: P:Alis.Core.Ecs.Entity.Scene.IsEnable
+- markdown: Gets or sets the value of the is enable
+- code: >-
+    [JsonPropertyName("_IsEnable_")]
+
+    public bool IsEnable { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+- api3: Name
+  id: Alis_Core_Ecs_Entity_Scene_Name
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Entity/Scene.cs#L102
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Scene.Name
+    commentId: P:Alis.Core.Ecs.Entity.Scene.Name
+- markdown: Gets or sets the value of the name
+- code: >-
+    [JsonPropertyName("_Name_")]
+
+    public string Name { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- api3: Tag
+  id: Alis_Core_Ecs_Entity_Scene_Tag
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Entity/Scene.cs#L114
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Scene.Tag
+    commentId: P:Alis.Core.Ecs.Entity.Scene.Tag
+- markdown: Gets or sets the value of the tag
+- code: >-
+    [JsonPropertyName("_Tag_")]
+
+    public string Tag { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+- h2: Methods
+- api3: Add<T>(T)
+  id: Alis_Core_Ecs_Entity_Scene_Add__1___0_
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Entity/Scene.cs#L237
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Scene.Add``1(``0)
+    commentId: M:Alis.Core.Ecs.Entity.Scene.Add``1(``0)
+- markdown: Adds the component
+- code: 'public virtual void Add<T>(T component) where T : GameObject'
+- h4: Parameters
+- parameters:
+  - name: component
+    type:
+    - T
+    description: The component
+- h4: Type Parameters
+- parameters:
+  - name: T
+    description: The
+- api3: Clear()
+  id: Alis_Core_Ecs_Entity_Scene_Clear
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Entity/Scene.cs#L263
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Scene.Clear
+    commentId: M:Alis.Core.Ecs.Entity.Scene.Clear
+- markdown: Clears this instance
+- code: public virtual void Clear()
+- api3: Contains<T>()
+  id: Alis_Core_Ecs_Entity_Scene_Contains__1
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Entity/Scene.cs#L258
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Scene.Contains``1
+    commentId: M:Alis.Core.Ecs.Entity.Scene.Contains``1
+- markdown: Describes whether this instance contains
+- code: 'public virtual bool Contains<T>() where T : GameObject'
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- h4: Type Parameters
+- parameters:
+  - name: T
+    description: The
+- api3: Get<T>()
+  id: Alis_Core_Ecs_Entity_Scene_Get__1
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Entity/Scene.cs#L251
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Scene.Get``1
+    commentId: M:Alis.Core.Ecs.Entity.Scene.Get``1
+- markdown: Gets this instance
+- code: 'public virtual T Get<T>() where T : GameObject'
+- h4: Returns
+- parameters:
+  - type:
+    - T
+    description: The
+- h4: Type Parameters
+- parameters:
+  - name: T
+    description: The
+- api3: OnAfterFixedUpdate()
+  id: Alis_Core_Ecs_Entity_Scene_OnAfterFixedUpdate
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Entity/Scene.cs#L179
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Scene.OnAfterFixedUpdate
+    commentId: M:Alis.Core.Ecs.Entity.Scene.OnAfterFixedUpdate
+- markdown: Ons the after fixed update
+- code: public void OnAfterFixedUpdate()
+- api3: OnAfterUpdate()
+  id: Alis_Core_Ecs_Entity_Scene_OnAfterUpdate
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Entity/Scene.cs#L164
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Scene.OnAfterUpdate
+    commentId: M:Alis.Core.Ecs.Entity.Scene.OnAfterUpdate
+- markdown: Ons the after update
+- code: public void OnAfterUpdate()
+- api3: OnAwake()
+  id: Alis_Core_Ecs_Entity_Scene_OnAwake
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Entity/Scene.cs#L144
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Scene.OnAwake
+    commentId: M:Alis.Core.Ecs.Entity.Scene.OnAwake
+- markdown: Ons the awake
+- code: public void OnAwake()
+- api3: OnBeforeFixedUpdate()
+  id: Alis_Core_Ecs_Entity_Scene_OnBeforeFixedUpdate
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Entity/Scene.cs#L169
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Scene.OnBeforeFixedUpdate
+    commentId: M:Alis.Core.Ecs.Entity.Scene.OnBeforeFixedUpdate
+- markdown: Ons the before fixed update
+- code: public void OnBeforeFixedUpdate()
+- api3: OnBeforeUpdate()
+  id: Alis_Core_Ecs_Entity_Scene_OnBeforeUpdate
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Entity/Scene.cs#L154
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Scene.OnBeforeUpdate
+    commentId: M:Alis.Core.Ecs.Entity.Scene.OnBeforeUpdate
+- markdown: Ons the before update
+- code: public void OnBeforeUpdate()
+- api3: OnCalculate()
+  id: Alis_Core_Ecs_Entity_Scene_OnCalculate
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Entity/Scene.cs#L189
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Scene.OnCalculate
+    commentId: M:Alis.Core.Ecs.Entity.Scene.OnCalculate
+- markdown: Ons the calculate
+- code: public void OnCalculate()
+- api3: OnDestroy()
+  id: Alis_Core_Ecs_Entity_Scene_OnDestroy
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Entity/Scene.cs#L230
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Scene.OnDestroy
+    commentId: M:Alis.Core.Ecs.Entity.Scene.OnDestroy
+- markdown: Ons the destroy
+- code: public void OnDestroy()
+- api3: OnDisable()
+  id: Alis_Core_Ecs_Entity_Scene_OnDisable
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Entity/Scene.cs#L204
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Scene.OnDisable
+    commentId: M:Alis.Core.Ecs.Entity.Scene.OnDisable
+- markdown: Ons the disable
+- code: public void OnDisable()
+- api3: OnDispatchEvents()
+  id: Alis_Core_Ecs_Entity_Scene_OnDispatchEvents
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Entity/Scene.cs#L184
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Scene.OnDispatchEvents
+    commentId: M:Alis.Core.Ecs.Entity.Scene.OnDispatchEvents
+- markdown: Ons the dispatch events
+- code: public void OnDispatchEvents()
+- api3: OnDraw()
+  id: Alis_Core_Ecs_Entity_Scene_OnDraw
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Entity/Scene.cs#L194
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Scene.OnDraw
+    commentId: M:Alis.Core.Ecs.Entity.Scene.OnDraw
+- markdown: Ons the draw
+- code: public void OnDraw()
+- api3: OnEnable()
+  id: Alis_Core_Ecs_Entity_Scene_OnEnable
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Entity/Scene.cs#L127
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Scene.OnEnable
+    commentId: M:Alis.Core.Ecs.Entity.Scene.OnEnable
+- markdown: Ons the enable
+- code: public void OnEnable()
+- api3: OnExit()
+  id: Alis_Core_Ecs_Entity_Scene_OnExit
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Entity/Scene.cs#L225
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Scene.OnExit
+    commentId: M:Alis.Core.Ecs.Entity.Scene.OnExit
+- markdown: Ons the exit
+- code: public void OnExit()
+- api3: OnFixedUpdate()
+  id: Alis_Core_Ecs_Entity_Scene_OnFixedUpdate
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Entity/Scene.cs#L174
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Scene.OnFixedUpdate
+    commentId: M:Alis.Core.Ecs.Entity.Scene.OnFixedUpdate
+- markdown: Ons the fixed update
+- code: public void OnFixedUpdate()
+- api3: OnGui()
+  id: Alis_Core_Ecs_Entity_Scene_OnGui
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Entity/Scene.cs#L199
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Scene.OnGui
+    commentId: M:Alis.Core.Ecs.Entity.Scene.OnGui
+- markdown: Ons the gui
+- code: public void OnGui()
+- api3: OnInit()
+  id: Alis_Core_Ecs_Entity_Scene_OnInit
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Entity/Scene.cs#L136
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Scene.OnInit
+    commentId: M:Alis.Core.Ecs.Entity.Scene.OnInit
+- markdown: Ons the init
+- code: public void OnInit()
+- api3: OnReset()
+  id: Alis_Core_Ecs_Entity_Scene_OnReset
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Entity/Scene.cs#L213
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Scene.OnReset
+    commentId: M:Alis.Core.Ecs.Entity.Scene.OnReset
+- markdown: Ons the reset
+- code: public void OnReset()
+- api3: OnStart()
+  id: Alis_Core_Ecs_Entity_Scene_OnStart
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Entity/Scene.cs#L149
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Scene.OnStart
+    commentId: M:Alis.Core.Ecs.Entity.Scene.OnStart
+- markdown: Ons the start
+- code: public void OnStart()
+- api3: OnStop()
+  id: Alis_Core_Ecs_Entity_Scene_OnStop
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Entity/Scene.cs#L220
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Scene.OnStop
+    commentId: M:Alis.Core.Ecs.Entity.Scene.OnStop
+- markdown: Ons the stop
+- code: public void OnStop()
+- api3: OnUpdate()
+  id: Alis_Core_Ecs_Entity_Scene_OnUpdate
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Entity/Scene.cs#L159
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Scene.OnUpdate
+    commentId: M:Alis.Core.Ecs.Entity.Scene.OnUpdate
+- markdown: Ons the update
+- code: public void OnUpdate()
+- api3: Remove<T>(T)
+  id: Alis_Core_Ecs_Entity_Scene_Remove__1___0_
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/Entity/Scene.cs#L244
+  metadata:
+    uid: Alis.Core.Ecs.Entity.Scene.Remove``1(``0)
+    commentId: M:Alis.Core.Ecs.Entity.Scene.Remove``1(``0)
+- markdown: Removes the component
+- code: 'public virtual void Remove<T>(T component) where T : GameObject'
+- h4: Parameters
+- parameters:
+  - name: component
+    type:
+    - T
+    description: The component
+- h4: Type Parameters
+- parameters:
+  - name: T
+    description: The
+languageId: csharp
+metadata:
+  description: The scene class

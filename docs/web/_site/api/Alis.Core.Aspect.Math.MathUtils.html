@@ -1,0 +1,1293 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+      <title>Class MathUtils | Alis - Develop the video games of your dreams &#128175; free!! </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class MathUtils | Alis - Develop the video games of your dreams &#128175; free!! ">
+      
+      <meta name="description" content="The math utils class">
+      <link rel="icon" href="../resources/logo.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ApiPage">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../resources/logo.png" alt="Alis">
+            Alis
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils' data-commentid='T:Alis.Core.Aspect.Math.MathUtils' id='Alis_Core_Aspect_Math_MathUtils'>Class MathUtils    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L39'><i class='bi bi-code-slash'></i></a></h1>
+ <div class="facts text-secondary">
+<dl><dt>Namespace</dt><dd><a href='Alis.Core.Aspect.Math.html'>Alis.Core.Aspect.Math</a></dd></dl><dl><dt>Assembly</dt><dd>Alis.dll</dd></dl>
+</div><p>The math utils class</p>
+<pre><code class='lang-csharp'>public static class MathUtils</code></pre><h4 class='section'>Inheritance</h4><dl class="typelist inheritance"><dd>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object'>object</a>
+</div>
+<div>
+<a href='Alis.Core.Aspect.Math.MathUtils.html'>MathUtils</a>
+</div>
+
+</dd></dl><h4 class='section'>Inherited Members</h4><dl class="typelist"><dd>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)'>object.Equals(object?)</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)'>object.Equals(object?, object?)</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.gethashcode'>object.GetHashCode()</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.gettype'>object.GetType()</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone'>object.MemberwiseClone()</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.referenceequals'>object.ReferenceEquals(object?, object?)</a>
+</div>
+<div>
+<a href='https://learn.microsoft.com/dotnet/api/system.object.tostring'>object.ToString()</a>
+</div>
+
+</dd></dl><h2 class='section'>Methods</h2><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.Abs(Alis.Core.Aspect.Math.Vector.Vector2)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.Abs(Alis.Core.Aspect.Math.Vector.Vector2)' id='Alis_Core_Aspect_Math_MathUtils_Abs_Alis_Core_Aspect_Math_Vector_Vector2_'>Abs(Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L62'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Abses the v</p>
+<pre><code class='lang-csharp'>public static Vector2 Abs(Vector2 v)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>v</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The vector</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.Abs(System.Single)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.Abs(System.Single)' id='Alis_Core_Aspect_Math_MathUtils_Abs_System_Single_'>Abs(float)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L69'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Abses the value</p>
+<pre><code class='lang-csharp'>public static float Abs(float value)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>value</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The value</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The float</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.Area(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.Area(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)' id='Alis_Core_Aspect_Math_MathUtils_Area_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_'>Area(Vector2, Vector2, Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L381'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Returns a positive number if c is to the left of the line going from a to b.</p>
+<pre><code class='lang-csharp'>public static float Area(Vector2 a, Vector2 b, Vector2 c)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>a</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+
+</dd><dt><code>b</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+
+</dd><dt><code>c</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>Positive number if point is left, negative if point is right, and 0 if points are collinear.</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.Area(Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.Area(Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@)' id='Alis_Core_Aspect_Math_MathUtils_Area_Alis_Core_Aspect_Math_Vector_Vector2__Alis_Core_Aspect_Math_Vector_Vector2__Alis_Core_Aspect_Math_Vector_Vector2__'>Area(ref Vector2, ref Vector2, ref Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L385'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Returns a positive number if c is to the left of the line going from a to b.</p>
+<pre><code class='lang-csharp'>public static float Area(ref Vector2 a, ref Vector2 b, ref Vector2 c)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>a</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+
+</dd><dt><code>b</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+
+</dd><dt><code>c</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>Positive number if point is left, negative if point is right, and 0 if points are collinear.</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.Ceil(System.Single)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.Ceil(System.Single)' id='Alis_Core_Aspect_Math_MathUtils_Ceil_System_Single_'>Ceil(float)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L559'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Ceils the log</p>
+<pre><code class='lang-csharp'>public static float Ceil(float log)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>log</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The log</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The float</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.Clamp(System.Int32,System.Int32,System.Int32)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.Clamp(System.Int32,System.Int32,System.Int32)' id='Alis_Core_Aspect_Math_MathUtils_Clamp_System_Int32_System_Int32_System_Int32_'>Clamp(int, int, int)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L317'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Clamps the a</p>
+<pre><code class='lang-csharp'>public static int Clamp(int a, int low, int high)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>a</code> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>low</code> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+<p>The low</p>
+
+</dd><dt><code>high</code> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+<p>The high</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+<p>The int</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.Clamp(System.Single,System.Single,System.Single)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.Clamp(System.Single,System.Single,System.Single)' id='Alis_Core_Aspect_Math_MathUtils_Clamp_System_Single_System_Single_System_Single_'>Clamp(float, float, float)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L326'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Clamps the a</p>
+<pre><code class='lang-csharp'>public static float Clamp(float a, float low, float high)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>a</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>low</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The low</p>
+
+</dd><dt><code>high</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The high</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The float</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.Clamp(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.Clamp(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)' id='Alis_Core_Aspect_Math_MathUtils_Clamp_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_'>Clamp(Vector2, Vector2, Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L335'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Clamps the a</p>
+<pre><code class='lang-csharp'>public static Vector2 Clamp(Vector2 a, Vector2 low, Vector2 high)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>a</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>low</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The low</p>
+
+</dd><dt><code>high</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The high</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The vector</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.Cosf(System.Single)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.Cosf(System.Single)' id='Alis_Core_Aspect_Math_MathUtils_Cosf_System_Single_'>Cosf(float)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L545'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Cosfs the value</p>
+<pre><code class='lang-csharp'>public static float Cosf(float value)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>value</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The value</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The float</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.Cross(Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.Cross(Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@)' id='Alis_Core_Aspect_Math_MathUtils_Cross_Alis_Core_Aspect_Math_Vector_Vector2__Alis_Core_Aspect_Math_Vector_Vector2__'>Cross(ref Vector2, ref Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L42'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Perform the cross product on two vectors.</p>
+<pre><code class='lang-csharp'>public static float Cross(ref Vector2 a, ref Vector2 b)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>a</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+
+</dd><dt><code>b</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.Cross(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.Cross(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)' id='Alis_Core_Aspect_Math_MathUtils_Cross_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_'>Cross(Vector2, Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L45'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Perform the cross product on two vectors.</p>
+<pre><code class='lang-csharp'>public static float Cross(Vector2 a, Vector2 b)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>a</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+
+</dd><dt><code>b</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.Cross(Alis.Core.Aspect.Math.Vector.Vector3,Alis.Core.Aspect.Math.Vector.Vector3)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.Cross(Alis.Core.Aspect.Math.Vector.Vector3,Alis.Core.Aspect.Math.Vector.Vector3)' id='Alis_Core_Aspect_Math_MathUtils_Cross_Alis_Core_Aspect_Math_Vector_Vector3_Alis_Core_Aspect_Math_Vector_Vector3_'>Cross(Vector3, Vector3)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L48'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Perform the cross product on two vectors.</p>
+<pre><code class='lang-csharp'>public static Vector3 Cross(Vector3 a, Vector3 b)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>a</code> <a href='Alis.Core.Aspect.Math.Vector.Vector3.html'>Vector3</a>  </dt>
+<dd>
+
+
+
+</dd><dt><code>b</code> <a href='Alis.Core.Aspect.Math.Vector.Vector3.html'>Vector3</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='Alis.Core.Aspect.Math.Vector.Vector3.html'>Vector3</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.Cross(Alis.Core.Aspect.Math.Vector.Vector2,System.Single)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.Cross(Alis.Core.Aspect.Math.Vector.Vector2,System.Single)' id='Alis_Core_Aspect_Math_MathUtils_Cross_Alis_Core_Aspect_Math_Vector_Vector2_System_Single_'>Cross(Vector2, float)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L52'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Perform the cross product on two vectors.</p>
+<pre><code class='lang-csharp'>public static Vector2 Cross(Vector2 a, float s)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>a</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+
+</dd><dt><code>s</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.Cross(System.Single,Alis.Core.Aspect.Math.Vector.Vector2)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.Cross(System.Single,Alis.Core.Aspect.Math.Vector.Vector2)' id='Alis_Core_Aspect_Math_MathUtils_Cross_System_Single_Alis_Core_Aspect_Math_Vector_Vector2_'>Cross(float, Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L55'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Perform the cross product on two vectors.</p>
+<pre><code class='lang-csharp'>public static Vector2 Cross(float s, Vector2 a)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>s</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+
+</dd><dt><code>a</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.Cross(Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@,System.Single@)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.Cross(Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@,System.Single@)' id='Alis_Core_Aspect_Math_MathUtils_Cross_Alis_Core_Aspect_Math_Vector_Vector2__Alis_Core_Aspect_Math_Vector_Vector2__System_Single__'>Cross(ref Vector2, ref Vector2, out float)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L343'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Crosses the a</p>
+<pre><code class='lang-csharp'>public static void Cross(ref Vector2 a, ref Vector2 b, out float c)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>a</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>b</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>c</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.Cross(System.Single,Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.Cross(System.Single,Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@)' id='Alis_Core_Aspect_Math_MathUtils_Cross_System_Single_Alis_Core_Aspect_Math_Vector_Vector2__Alis_Core_Aspect_Math_Vector_Vector2__'>Cross(float, ref Vector2, out Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L398'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Crosses the s</p>
+<pre><code class='lang-csharp'>public static void Cross(float s, ref Vector2 a, out Vector2 b)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>s</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>a</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>b</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.Distance(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.Distance(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)' id='Alis_Core_Aspect_Math_MathUtils_Distance_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_'>Distance(Vector2, Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L446'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Distances the a</p>
+<pre><code class='lang-csharp'>public static float Distance(Vector2 a, Vector2 b)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>a</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>b</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The float</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.Distance(Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.Distance(Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@)' id='Alis_Core_Aspect_Math_MathUtils_Distance_Alis_Core_Aspect_Math_Vector_Vector2__Alis_Core_Aspect_Math_Vector_Vector2__'>Distance(ref Vector2, ref Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L458'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Distances the a</p>
+<pre><code class='lang-csharp'>public static float Distance(ref Vector2 a, ref Vector2 b)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>a</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>b</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The float</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.DistanceSquared(Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.DistanceSquared(Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@)' id='Alis_Core_Aspect_Math_MathUtils_DistanceSquared_Alis_Core_Aspect_Math_Vector_Vector2__Alis_Core_Aspect_Math_Vector_Vector2__'>DistanceSquared(ref Vector2, ref Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L470'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Distances the squared using the specified a</p>
+<pre><code class='lang-csharp'>public static float DistanceSquared(ref Vector2 a, ref Vector2 b)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>a</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>b</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The float</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.Dot(Alis.Core.Aspect.Math.Vector.Vector3,Alis.Core.Aspect.Math.Vector.Vector3)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.Dot(Alis.Core.Aspect.Math.Vector.Vector3,Alis.Core.Aspect.Math.Vector.Vector3)' id='Alis_Core_Aspect_Math_MathUtils_Dot_Alis_Core_Aspect_Math_Vector_Vector3_Alis_Core_Aspect_Math_Vector_Vector3_'>Dot(Vector3, Vector3)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L363'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Perform the dot product on two vectors.</p>
+<pre><code class='lang-csharp'>public static float Dot(Vector3 a, Vector3 b)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>a</code> <a href='Alis.Core.Aspect.Math.Vector.Vector3.html'>Vector3</a>  </dt>
+<dd>
+
+
+
+</dd><dt><code>b</code> <a href='Alis.Core.Aspect.Math.Vector.Vector3.html'>Vector3</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.Dot(Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.Dot(Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@)' id='Alis_Core_Aspect_Math_MathUtils_Dot_Alis_Core_Aspect_Math_Vector_Vector2__Alis_Core_Aspect_Math_Vector_Vector2__'>Dot(ref Vector2, ref Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L366'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Perform the dot product on two vectors.</p>
+<pre><code class='lang-csharp'>public static float Dot(ref Vector2 a, ref Vector2 b)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>a</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+
+</dd><dt><code>b</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.Dot(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.Dot(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)' id='Alis_Core_Aspect_Math_MathUtils_Dot_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_'>Dot(Vector2, Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L369'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Perform the dot product on two vectors.</p>
+<pre><code class='lang-csharp'>public static float Dot(Vector2 a, Vector2 b)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>a</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+
+</dd><dt><code>b</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.FloatEquals(System.Single,System.Single)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.FloatEquals(System.Single,System.Single)' id='Alis_Core_Aspect_Math_MathUtils_FloatEquals_System_Single_System_Single_'>FloatEquals(float, float)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L409'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Describes whether float equals</p>
+<pre><code class='lang-csharp'>public static bool FloatEquals(float value1, float value2)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>value1</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The value</p>
+
+</dd><dt><code>value2</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The value</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+<p>The bool</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.FloatEquals(System.Single,System.Single,System.Single)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.FloatEquals(System.Single,System.Single,System.Single)' id='Alis_Core_Aspect_Math_MathUtils_FloatEquals_System_Single_System_Single_System_Single_'>FloatEquals(float, float, float)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L414'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Checks if a floating point Value is equal to another, within a certain tolerance.</p>
+<pre><code class='lang-csharp'>public static bool FloatEquals(float value1, float value2, float delta)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>value1</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+
+</dd><dt><code>value2</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+
+</dd><dt><code>delta</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+<p>True if the values are &quot;equal&quot;, false otherwise.</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.FloatInRange(System.Single,System.Single,System.Single)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.FloatInRange(System.Single,System.Single,System.Single)' id='Alis_Core_Aspect_Math_MathUtils_FloatInRange_System_Single_System_Single_System_Single_'>FloatInRange(float, float, float)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L422'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Checks if a floating point Value is within a specified range of values (inclusive).</p>
+<pre><code class='lang-csharp'>public static bool FloatInRange(float value, float min, float max)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>value</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The Value to check.</p>
+
+</dd><dt><code>min</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The minimum Value.</p>
+
+</dd><dt><code>max</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The maximum Value.</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+<p>True if the Value is within the range specified, false otherwise.</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.IsCollinear(Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@,System.Single)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.IsCollinear(Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@,System.Single)' id='Alis_Core_Aspect_Math_MathUtils_IsCollinear_Alis_Core_Aspect_Math_Vector_Vector2__Alis_Core_Aspect_Math_Vector_Vector2__Alis_Core_Aspect_Math_Vector_Vector2__System_Single_'>IsCollinear(ref Vector2, ref Vector2, ref Vector2, float)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L389'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Determines if three vertices are collinear (ie. on a straight line)</p>
+<pre><code class='lang-csharp'>public static bool IsCollinear(ref Vector2 a, ref Vector2 b, ref Vector2 c, float tolerance = 0)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>a</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+
+</dd><dt><code>b</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+
+</dd><dt><code>c</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+
+</dd><dt><code>tolerance</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.IsValid(System.Single)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.IsValid(System.Single)' id='Alis_Core_Aspect_Math_MathUtils_IsValid_System_Single_'>IsValid(float)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L293'><i class='bi bi-code-slash'></i></a></h3>
+ <p>This function is used to ensure that a floating point number is not a NaN or infinity.</p>
+<pre><code class='lang-csharp'>public static bool IsValid(float x)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>x</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The x.</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+<p><code>true</code> if the specified x is valid; otherwise, <code>false</code>.</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.IsValid(Alis.Core.Aspect.Math.Vector.Vector2)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.IsValid(Alis.Core.Aspect.Math.Vector.Vector2)' id='Alis_Core_Aspect_Math_MathUtils_IsValid_Alis_Core_Aspect_Math_Vector_Vector2_'>IsValid(Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L308'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Describes whether is valid</p>
+<pre><code class='lang-csharp'>public static bool IsValid(this Vector2 x)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>x</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.boolean'>bool</a>  </dt>
+<dd>
+
+
+<p>The bool</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.Log(System.Single)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.Log(System.Single)' id='Alis_Core_Aspect_Math_MathUtils_Log_System_Single_'>Log(float)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L566'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Logs the log</p>
+<pre><code class='lang-csharp'>public static float Log(float log)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>log</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The log</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The float</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.Max(System.Single,System.Single)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.Max(System.Single,System.Single)' id='Alis_Core_Aspect_Math_MathUtils_Max_System_Single_System_Single_'>Max(float, float)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L482'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Maxes the value a</p>
+<pre><code class='lang-csharp'>public static float Max(float valueA, float valueB)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>valueA</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The value</p>
+
+</dd><dt><code>valueB</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The value</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The float</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.Max(System.Int32,System.Int32)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.Max(System.Int32,System.Int32)' id='Alis_Core_Aspect_Math_MathUtils_Max_System_Int32_System_Int32_'>Max(int, int)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L490'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Maxes the value a</p>
+<pre><code class='lang-csharp'>public static int Max(int valueA, int valueB)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>valueA</code> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+<p>The value</p>
+
+</dd><dt><code>valueB</code> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+<p>The value</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+<p>The int</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.Min(System.Single,System.Single)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.Min(System.Single,System.Single)' id='Alis_Core_Aspect_Math_MathUtils_Min_System_Single_System_Single_'>Min(float, float)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L498'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Mins the value a</p>
+<pre><code class='lang-csharp'>public static float Min(float valueA, float valueB)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>valueA</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The value</p>
+
+</dd><dt><code>valueB</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The value</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The float</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.Min(System.Int32,System.Int32)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.Min(System.Int32,System.Int32)' id='Alis_Core_Aspect_Math_MathUtils_Min_System_Int32_System_Int32_'>Min(int, int)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L506'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Mins the value a</p>
+<pre><code class='lang-csharp'>public static int Min(int valueA, int valueB)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>valueA</code> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+<p>The value</p>
+
+</dd><dt><code>valueB</code> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+<p>The value</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+<p>The int</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.Mul(Alis.Core.Aspect.Math.Matrix.Matrix2X2@,Alis.Core.Aspect.Math.Vector.Vector2)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.Mul(Alis.Core.Aspect.Math.Matrix.Matrix2X2@,Alis.Core.Aspect.Math.Vector.Vector2)' id='Alis_Core_Aspect_Math_MathUtils_Mul_Alis_Core_Aspect_Math_Matrix_Matrix2X2__Alis_Core_Aspect_Math_Vector_Vector2_'>Mul(ref Matrix2X2, Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L77'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Muls the a</p>
+<pre><code class='lang-csharp'>public static Vector2 Mul(ref Matrix2X2 a, Vector2 v)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>a</code> <a href='Alis.Core.Aspect.Math.Matrix.Matrix2X2.html'>Matrix2X2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>v</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The vector</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.Mul(Alis.Core.Aspect.Math.Matrix.Matrix2X2@,Alis.Core.Aspect.Math.Vector.Vector2@)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.Mul(Alis.Core.Aspect.Math.Matrix.Matrix2X2@,Alis.Core.Aspect.Math.Vector.Vector2@)' id='Alis_Core_Aspect_Math_MathUtils_Mul_Alis_Core_Aspect_Math_Matrix_Matrix2X2__Alis_Core_Aspect_Math_Vector_Vector2__'>Mul(ref Matrix2X2, ref Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L85'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Muls the a</p>
+<pre><code class='lang-csharp'>public static Vector2 Mul(ref Matrix2X2 a, ref Vector2 v)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>a</code> <a href='Alis.Core.Aspect.Math.Matrix.Matrix2X2.html'>Matrix2X2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>v</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The vector</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.Mul(Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Vector.Vector2)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.Mul(Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Vector.Vector2)' id='Alis_Core_Aspect_Math_MathUtils_Mul_Alis_Core_Aspect_Math_Transform__Alis_Core_Aspect_Math_Vector_Vector2_'>Mul(ref Transform, Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L94'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Muls the t</p>
+<pre><code class='lang-csharp'>public static Vector2 Mul(ref Transform T, Vector2 v)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>T</code> <a href='Alis.Core.Aspect.Math.Transform.html'>Transform</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>v</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The vector</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.Mul(Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Vector.Vector2@)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.Mul(Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Vector.Vector2@)' id='Alis_Core_Aspect_Math_MathUtils_Mul_Alis_Core_Aspect_Math_Transform__Alis_Core_Aspect_Math_Vector_Vector2__'>Mul(ref Transform, ref Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L102'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Muls the t</p>
+<pre><code class='lang-csharp'>public static Vector2 Mul(ref Transform T, ref Vector2 v)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>T</code> <a href='Alis.Core.Aspect.Math.Transform.html'>Transform</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>v</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The vector</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.Mul(Alis.Core.Aspect.Math.Matrix.Matrix3X3,Alis.Core.Aspect.Math.Vector.Vector3)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.Mul(Alis.Core.Aspect.Math.Matrix.Matrix3X3,Alis.Core.Aspect.Math.Vector.Vector3)' id='Alis_Core_Aspect_Math_MathUtils_Mul_Alis_Core_Aspect_Math_Matrix_Matrix3X3_Alis_Core_Aspect_Math_Vector_Vector3_'>Mul(Matrix3X3, Vector3)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L169'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Multiply a matrix times a vector.</p>
+<pre><code class='lang-csharp'>public static Vector3 Mul(Matrix3X3 a, Vector3 v)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>a</code> <a href='Alis.Core.Aspect.Math.Matrix.Matrix3X3.html'>Matrix3X3</a>  </dt>
+<dd>
+
+
+
+</dd><dt><code>v</code> <a href='Alis.Core.Aspect.Math.Vector.Vector3.html'>Vector3</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='Alis.Core.Aspect.Math.Vector.Vector3.html'>Vector3</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.Mul(Alis.Core.Aspect.Math.Transform,Alis.Core.Aspect.Math.Transform)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.Mul(Alis.Core.Aspect.Math.Transform,Alis.Core.Aspect.Math.Transform)' id='Alis_Core_Aspect_Math_MathUtils_Mul_Alis_Core_Aspect_Math_Transform_Alis_Core_Aspect_Math_Transform_'>Mul(Transform, Transform)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L177'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Muls the a</p>
+<pre><code class='lang-csharp'>public static Transform Mul(Transform a, Transform b)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>a</code> <a href='Alis.Core.Aspect.Math.Transform.html'>Transform</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>b</code> <a href='Alis.Core.Aspect.Math.Transform.html'>Transform</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='Alis.Core.Aspect.Math.Transform.html'>Transform</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.Mul(Alis.Core.Aspect.Math.Rotation,Alis.Core.Aspect.Math.Rotation)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.Mul(Alis.Core.Aspect.Math.Rotation,Alis.Core.Aspect.Math.Rotation)' id='Alis_Core_Aspect_Math_MathUtils_Mul_Alis_Core_Aspect_Math_Rotation_Alis_Core_Aspect_Math_Rotation_'>Mul(Rotation, Rotation)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L213'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Multiply two rotations: q * r</p>
+<pre><code class='lang-csharp'>public static Rotation Mul(Rotation q, Rotation r)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>q</code> <a href='Alis.Core.Aspect.Math.Rotation.html'>Rotation</a>  </dt>
+<dd>
+
+
+
+</dd><dt><code>r</code> <a href='Alis.Core.Aspect.Math.Rotation.html'>Rotation</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='Alis.Core.Aspect.Math.Rotation.html'>Rotation</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.Mul(Alis.Core.Aspect.Math.Rotation,Alis.Core.Aspect.Math.Vector.Vector2)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.Mul(Alis.Core.Aspect.Math.Rotation,Alis.Core.Aspect.Math.Vector.Vector2)' id='Alis_Core_Aspect_Math_MathUtils_Mul_Alis_Core_Aspect_Math_Rotation_Alis_Core_Aspect_Math_Vector_Vector2_'>Mul(Rotation, Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L280'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Rotate a vector</p>
+<pre><code class='lang-csharp'>public static Vector2 Mul(Rotation q, Vector2 v)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>q</code> <a href='Alis.Core.Aspect.Math.Rotation.html'>Rotation</a>  </dt>
+<dd>
+
+
+<p>The rotation matrix</p>
+
+</dd><dt><code>v</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The value</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.Mul(Alis.Core.Aspect.Math.Rotation@,Alis.Core.Aspect.Math.Vector.Vector2)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.Mul(Alis.Core.Aspect.Math.Rotation@,Alis.Core.Aspect.Math.Vector.Vector2)' id='Alis_Core_Aspect_Math_MathUtils_Mul_Alis_Core_Aspect_Math_Rotation__Alis_Core_Aspect_Math_Vector_Vector2_'>Mul(ref Rotation, Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L430'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Muls the rot</p>
+<pre><code class='lang-csharp'>public static Vector2 Mul(ref Rotation rotation, Vector2 axis)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>rotation</code> <a href='Alis.Core.Aspect.Math.Rotation.html'>Rotation</a>  </dt>
+<dd>
+
+
+<p>The rot</p>
+
+</dd><dt><code>axis</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The axis</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The vector</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.Mul22(Alis.Core.Aspect.Math.Matrix.Matrix3X3,Alis.Core.Aspect.Math.Vector.Vector2)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.Mul22(Alis.Core.Aspect.Math.Matrix.Matrix3X3,Alis.Core.Aspect.Math.Vector.Vector2)' id='Alis_Core_Aspect_Math_MathUtils_Mul22_Alis_Core_Aspect_Math_Matrix_Matrix3X3_Alis_Core_Aspect_Math_Vector_Vector2_'>Mul22(Matrix3X3, Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L209'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Multiply a matrix times a vector.</p>
+<pre><code class='lang-csharp'>public static Vector2 Mul22(Matrix3X3 a, Vector2 v)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>a</code> <a href='Alis.Core.Aspect.Math.Matrix.Matrix3X3.html'>Matrix3X3</a>  </dt>
+<dd>
+
+
+
+</dd><dt><code>v</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.MulT(Alis.Core.Aspect.Math.Matrix.Matrix2X2@,Alis.Core.Aspect.Math.Vector.Vector2)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.MulT(Alis.Core.Aspect.Math.Matrix.Matrix2X2@,Alis.Core.Aspect.Math.Vector.Vector2)' id='Alis_Core_Aspect_Math_MathUtils_MulT_Alis_Core_Aspect_Math_Matrix_Matrix2X2__Alis_Core_Aspect_Math_Vector_Vector2_'>MulT(ref Matrix2X2, Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L116'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Muls the t using the specified a</p>
+<pre><code class='lang-csharp'>public static Vector2 MulT(ref Matrix2X2 a, Vector2 v)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>a</code> <a href='Alis.Core.Aspect.Math.Matrix.Matrix2X2.html'>Matrix2X2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>v</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The vector</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.MulT(Alis.Core.Aspect.Math.Matrix.Matrix2X2@,Alis.Core.Aspect.Math.Vector.Vector2@)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.MulT(Alis.Core.Aspect.Math.Matrix.Matrix2X2@,Alis.Core.Aspect.Math.Vector.Vector2@)' id='Alis_Core_Aspect_Math_MathUtils_MulT_Alis_Core_Aspect_Math_Matrix_Matrix2X2__Alis_Core_Aspect_Math_Vector_Vector2__'>MulT(ref Matrix2X2, ref Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L124'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Muls the t using the specified a</p>
+<pre><code class='lang-csharp'>public static Vector2 MulT(ref Matrix2X2 a, ref Vector2 v)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>a</code> <a href='Alis.Core.Aspect.Math.Matrix.Matrix2X2.html'>Matrix2X2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>v</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The vector</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.MulT(Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Vector.Vector2)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.MulT(Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Vector.Vector2)' id='Alis_Core_Aspect_Math_MathUtils_MulT_Alis_Core_Aspect_Math_Transform__Alis_Core_Aspect_Math_Vector_Vector2_'>MulT(ref Transform, Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L133'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Muls the t using the specified t</p>
+<pre><code class='lang-csharp'>public static Vector2 MulT(ref Transform T, Vector2 v)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>T</code> <a href='Alis.Core.Aspect.Math.Transform.html'>Transform</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>v</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The vector</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.MulT(Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Vector.Vector2@)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.MulT(Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Vector.Vector2@)' id='Alis_Core_Aspect_Math_MathUtils_MulT_Alis_Core_Aspect_Math_Transform__Alis_Core_Aspect_Math_Vector_Vector2__'>MulT(ref Transform, ref Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L141'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Muls the t using the specified t</p>
+<pre><code class='lang-csharp'>public static Vector2 MulT(ref Transform T, ref Vector2 v)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>T</code> <a href='Alis.Core.Aspect.Math.Transform.html'>Transform</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>v</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The vector</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.MulT(Alis.Core.Aspect.Math.Matrix.Matrix2X2@,Alis.Core.Aspect.Math.Matrix.Matrix2X2@,Alis.Core.Aspect.Math.Matrix.Matrix2X2@)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.MulT(Alis.Core.Aspect.Math.Matrix.Matrix2X2@,Alis.Core.Aspect.Math.Matrix.Matrix2X2@,Alis.Core.Aspect.Math.Matrix.Matrix2X2@)' id='Alis_Core_Aspect_Math_MathUtils_MulT_Alis_Core_Aspect_Math_Matrix_Matrix2X2__Alis_Core_Aspect_Math_Matrix_Matrix2X2__Alis_Core_Aspect_Math_Matrix_Matrix2X2__'>MulT(ref Matrix2X2, ref Matrix2X2, out Matrix2X2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L158'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Muls the t using the specified a</p>
+<pre><code class='lang-csharp'>public static void MulT(ref Matrix2X2 a, ref Matrix2X2 b, out Matrix2X2 c)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>a</code> <a href='Alis.Core.Aspect.Math.Matrix.Matrix2X2.html'>Matrix2X2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>b</code> <a href='Alis.Core.Aspect.Math.Matrix.Matrix2X2.html'>Matrix2X2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>c</code> <a href='Alis.Core.Aspect.Math.Matrix.Matrix2X2.html'>Matrix2X2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.MulT(Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Transform@)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.MulT(Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Transform@)' id='Alis_Core_Aspect_Math_MathUtils_MulT_Alis_Core_Aspect_Math_Transform__Alis_Core_Aspect_Math_Transform__Alis_Core_Aspect_Math_Transform__'>MulT(ref Transform, ref Transform, out Transform)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L196'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Muls the t using the specified a</p>
+<pre><code class='lang-csharp'>public static void MulT(ref Transform a, ref Transform b, out Transform c)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>a</code> <a href='Alis.Core.Aspect.Math.Transform.html'>Transform</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>b</code> <a href='Alis.Core.Aspect.Math.Transform.html'>Transform</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>c</code> <a href='Alis.Core.Aspect.Math.Transform.html'>Transform</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.MulT(Alis.Core.Aspect.Math.Transform,Alis.Core.Aspect.Math.Vector.Vector2)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.MulT(Alis.Core.Aspect.Math.Transform,Alis.Core.Aspect.Math.Vector.Vector2)' id='Alis_Core_Aspect_Math_MathUtils_MulT_Alis_Core_Aspect_Math_Transform_Alis_Core_Aspect_Math_Vector_Vector2_'>MulT(Transform, Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L233'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Muls the t using the specified t</p>
+<pre><code class='lang-csharp'>public static Vector2 MulT(Transform T, Vector2 v)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>T</code> <a href='Alis.Core.Aspect.Math.Transform.html'>Transform</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>v</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The vector</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.MulT(Alis.Core.Aspect.Math.Rotation,Alis.Core.Aspect.Math.Rotation)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.MulT(Alis.Core.Aspect.Math.Rotation,Alis.Core.Aspect.Math.Rotation)' id='Alis_Core_Aspect_Math_MathUtils_MulT_Alis_Core_Aspect_Math_Rotation_Alis_Core_Aspect_Math_Rotation_'>MulT(Rotation, Rotation)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L244'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Transpose multiply two rotations: qT * r</p>
+<pre><code class='lang-csharp'>public static Rotation MulT(Rotation q, Rotation r)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>q</code> <a href='Alis.Core.Aspect.Math.Rotation.html'>Rotation</a>  </dt>
+<dd>
+
+
+
+</dd><dt><code>r</code> <a href='Alis.Core.Aspect.Math.Rotation.html'>Rotation</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='Alis.Core.Aspect.Math.Rotation.html'>Rotation</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.MulT(Alis.Core.Aspect.Math.Transform,Alis.Core.Aspect.Math.Transform)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.MulT(Alis.Core.Aspect.Math.Transform,Alis.Core.Aspect.Math.Transform)' id='Alis_Core_Aspect_Math_MathUtils_MulT_Alis_Core_Aspect_Math_Transform_Alis_Core_Aspect_Math_Transform_'>MulT(Transform, Transform)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L264'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Muls the t using the specified a</p>
+<pre><code class='lang-csharp'>public static Transform MulT(Transform a, Transform b)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>a</code> <a href='Alis.Core.Aspect.Math.Transform.html'>Transform</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>b</code> <a href='Alis.Core.Aspect.Math.Transform.html'>Transform</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='Alis.Core.Aspect.Math.Transform.html'>Transform</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.MulT(Alis.Core.Aspect.Math.Rotation,Alis.Core.Aspect.Math.Vector.Vector2)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.MulT(Alis.Core.Aspect.Math.Rotation,Alis.Core.Aspect.Math.Vector.Vector2)' id='Alis_Core_Aspect_Math_MathUtils_MulT_Alis_Core_Aspect_Math_Rotation_Alis_Core_Aspect_Math_Vector_Vector2_'>MulT(Rotation, Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L285'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Inverse rotate a vector</p>
+<pre><code class='lang-csharp'>public static Vector2 MulT(Rotation q, Vector2 v)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>q</code> <a href='Alis.Core.Aspect.Math.Rotation.html'>Rotation</a>  </dt>
+<dd>
+
+
+<p>The rotation matrix</p>
+
+</dd><dt><code>v</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The value</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.MulT(Alis.Core.Aspect.Math.Rotation@,Alis.Core.Aspect.Math.Vector.Vector2)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.MulT(Alis.Core.Aspect.Math.Rotation@,Alis.Core.Aspect.Math.Vector.Vector2)' id='Alis_Core_Aspect_Math_MathUtils_MulT_Alis_Core_Aspect_Math_Rotation__Alis_Core_Aspect_Math_Vector_Vector2_'>MulT(ref Rotation, Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L438'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Muls the t using the specified rot</p>
+<pre><code class='lang-csharp'>public static Vector2 MulT(ref Rotation rotation, Vector2 axis)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>rotation</code> <a href='Alis.Core.Aspect.Math.Rotation.html'>Rotation</a>  </dt>
+<dd>
+
+
+<p>The rot</p>
+
+</dd><dt><code>axis</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The axis</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The vector</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.Normalize(Alis.Core.Aspect.Math.Vector.Vector2@)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.Normalize(Alis.Core.Aspect.Math.Vector.Vector2@)' id='Alis_Core_Aspect_Math_MathUtils_Normalize_Alis_Core_Aspect_Math_Vector_Vector2__'>Normalize(ref Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L518'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Convert this vector into a unit vector. Returns the length.</p>
+<pre><code class='lang-csharp'>public static float Normalize(ref Vector2 v)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>v</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.Sign(System.Single)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.Sign(System.Single)' id='Alis_Core_Aspect_Math_MathUtils_Sign_System_Single_'>Sign(float)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L513'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Signs the value</p>
+<pre><code class='lang-csharp'>public static int Sign(float value)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>value</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The value</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.int32'>int</a>  </dt>
+<dd>
+
+
+<p>The int</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.Sinf(System.Single)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.Sinf(System.Single)' id='Alis_Core_Aspect_Math_MathUtils_Sinf_System_Single_'>Sinf(float)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L552'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Sinfs the value</p>
+<pre><code class='lang-csharp'>public static float Sinf(float value)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>value</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The value</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The float</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.Skew(Alis.Core.Aspect.Math.Vector.Vector2)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.Skew(Alis.Core.Aspect.Math.Vector.Vector2)' id='Alis_Core_Aspect_Math_MathUtils_Skew_Alis_Core_Aspect_Math_Vector_Vector2_'>Skew(Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L288'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Get the skew vector such that dot(skew_vec, other) == cross(vec, other)</p>
+<pre><code class='lang-csharp'>public static Vector2 Skew(Vector2 input)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>input</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.Sqrt(System.Single)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.Sqrt(System.Single)' id='Alis_Core_Aspect_Math_MathUtils_Sqrt_System_Single_'>Sqrt(float)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L538'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Sqrts the value</p>
+<pre><code class='lang-csharp'>public static float Sqrt(float value)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>value</code> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The value</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.single'>float</a>  </dt>
+<dd>
+
+
+<p>The float</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.VectorAngle(Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.VectorAngle(Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@)' id='Alis_Core_Aspect_Math_MathUtils_VectorAngle_Alis_Core_Aspect_Math_Vector_Vector2__Alis_Core_Aspect_Math_Vector_Vector2__'>VectorAngle(ref Vector2, ref Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L354'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Vectors the angle using the specified p 1</p>
+<pre><code class='lang-csharp'>public static double VectorAngle(ref Vector2 p1, ref Vector2 p2)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>p1</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>p2</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.double'>double</a>  </dt>
+<dd>
+
+
+<p>The vector angle</p>
+
+</dd></dl><h3 class='section api' data-uid='Alis.Core.Aspect.Math.MathUtils.VectorAngle(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)' data-commentid='M:Alis.Core.Aspect.Math.MathUtils.VectorAngle(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)' id='Alis_Core_Aspect_Math_MathUtils_VectorAngle_Alis_Core_Aspect_Math_Vector_Vector2_Alis_Core_Aspect_Math_Vector_Vector2_'>VectorAngle(Vector2, Vector2)    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Math/src/MathUtils.cs#L377'><i class='bi bi-code-slash'></i></a></h3>
+ <p>Vectors the angle using the specified p 1</p>
+<pre><code class='lang-csharp'>public static double VectorAngle(Vector2 p1, Vector2 p2)</code></pre><h4 class='section'>Parameters</h4><dl class='parameters'><dt><code>p1</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd><dt><code>p2</code> <a href='Alis.Core.Aspect.Math.Vector.Vector2.html'>Vector2</a>  </dt>
+<dd>
+
+
+<p>The</p>
+
+</dd></dl><h4 class='section'>Returns</h4><dl class='parameters'><dt> <a href='https://learn.microsoft.com/dotnet/api/system.double'>double</a>  </dt>
+<dd>
+
+
+<p>The double</p>
+
+</dd></dl>
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Alis - Develop the video games of your dreams 💯 free!! on Windows, MacOS, Linux, Android(soon), IOS(soon).
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+### YamlMime:ApiPage
+title: Enum RendererFlips
+body:
+- api1: Enum RendererFlips
+  id: Alis_Core_Graphic_Sdl2_Enums_RendererFlips
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Enums/RendererFlips.cs#L37
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Enums.RendererFlips
+    commentId: T:Alis.Core.Graphic.Sdl2.Enums.RendererFlips
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Enums
+      url: Alis.Core.Graphic.Sdl2.Enums.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The sdl renderer flip enum
+- code: >-
+    [Flags]
+
+    public enum RendererFlips
+- h2: Fields
+- parameters:
+  - name: None
+    default: "0"
+    description: >+
+      The sdl flip none sdl renderer flip
+
+  - name: FlipHorizontal
+    default: "1"
+    description: >+
+      The sdl flip horizontal sdl renderer flip
+
+  - name: FlipVertical
+    default: "2"
+    description: >+
+      The sdl flip vertical sdl renderer flip
+
+languageId: csharp
+metadata:
+  description: The sdl renderer flip enum

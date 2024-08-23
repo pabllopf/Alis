@@ -1,0 +1,89 @@
+### YamlMime:ApiPage
+title: Struct DropEvent
+body:
+- api1: Struct DropEvent
+  id: Alis_Core_Graphic_Sdl2_Structs_DropEvent
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/DropEvent.cs#L39
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.DropEvent
+    commentId: T:Alis.Core.Graphic.Sdl2.Structs.DropEvent
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Structs
+      url: Alis.Core.Graphic.Sdl2.Structs.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The sdl drop event
+- code: public struct DropEvent
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Fields
+- api3: timestamp
+  id: Alis_Core_Graphic_Sdl2_Structs_DropEvent_timestamp
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/DropEvent.cs#L50
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.DropEvent.timestamp
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.DropEvent.timestamp
+- markdown: The timestamp
+- code: public readonly uint timestamp
+- h4: Field Value
+- parameters:
+  - type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+- api3: type
+  id: Alis_Core_Graphic_Sdl2_Structs_DropEvent_type
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/DropEvent.cs#L45
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.DropEvent.type
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.DropEvent.type
+- markdown: The type
+- code: public readonly EventType type
+- h4: Field Value
+- parameters:
+  - type:
+    - text: EventType
+      url: Alis.Core.Graphic.Sdl2.Enums.EventType.html
+- api3: windowID
+  id: Alis_Core_Graphic_Sdl2_Structs_DropEvent_windowID
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/DropEvent.cs#L60
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.DropEvent.windowID
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.DropEvent.windowID
+- markdown: The window id
+- code: public readonly uint windowID
+- h4: Field Value
+- parameters:
+  - type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+- h2: Properties
+- api3: File
+  id: Alis_Core_Graphic_Sdl2_Structs_DropEvent_File
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/DropEvent.cs#L55
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.DropEvent.File
+    commentId: P:Alis.Core.Graphic.Sdl2.Structs.DropEvent.File
+- markdown: The file
+- code: public IntPtr File { readonly get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: IntPtr
+      url: https://learn.microsoft.com/dotnet/api/system.intptr
+languageId: csharp
+metadata:
+  description: The sdl drop event

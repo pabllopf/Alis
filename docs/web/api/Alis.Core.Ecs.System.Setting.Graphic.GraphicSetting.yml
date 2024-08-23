@@ -1,0 +1,114 @@
+### YamlMime:ApiPage
+title: Class GraphicSetting
+body:
+- api1: Class GraphicSetting
+  id: Alis_Core_Ecs_System_Setting_Graphic_GraphicSetting
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Setting/Graphic/GraphicSetting.cs#L42
+  metadata:
+    uid: Alis.Core.Ecs.System.Setting.Graphic.GraphicSetting
+    commentId: T:Alis.Core.Ecs.System.Setting.Graphic.GraphicSetting
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Ecs.System.Setting.Graphic
+      url: Alis.Core.Ecs.System.Setting.Graphic.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The graphic setting class
+- code: 'public class GraphicSetting : IGraphicSetting, IBuilder<GraphicSettingBuilder>'
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: GraphicSetting
+    url: Alis.Core.Ecs.System.Setting.Graphic.GraphicSetting.html
+- h4: Implements
+- list:
+  - text: IGraphicSetting
+    url: Alis.Core.Ecs.System.Setting.Graphic.IGraphicSetting.html
+  - text: IBuilder<GraphicSettingBuilder>
+    url: Alis.Core.Aspect.Fluent.IBuilder-1.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Constructors
+- api3: GraphicSetting()
+  id: Alis_Core_Ecs_System_Setting_Graphic_GraphicSetting__ctor
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Setting/Graphic/GraphicSetting.cs#L47
+  metadata:
+    uid: Alis.Core.Ecs.System.Setting.Graphic.GraphicSetting.#ctor
+    commentId: M:Alis.Core.Ecs.System.Setting.Graphic.GraphicSetting.#ctor
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Ecs.System.Setting.Graphic.GraphicSetting" data-throw-if-not-resolved="false"></xref> class
+- code: public GraphicSetting()
+- api3: GraphicSetting(Window)
+  id: Alis_Core_Ecs_System_Setting_Graphic_GraphicSetting__ctor_Alis_Core_Graphic_Window_
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Setting/Graphic/GraphicSetting.cs#L53
+  metadata:
+    uid: Alis.Core.Ecs.System.Setting.Graphic.GraphicSetting.#ctor(Alis.Core.Graphic.Window)
+    commentId: M:Alis.Core.Ecs.System.Setting.Graphic.GraphicSetting.#ctor(Alis.Core.Graphic.Window)
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Ecs.System.Setting.Graphic.GraphicSetting" data-throw-if-not-resolved="false"></xref> class
+- code: public GraphicSetting(Window window)
+- h4: Parameters
+- parameters:
+  - name: window
+    type:
+    - text: Window
+      url: Alis.Core.Graphic.Window.html
+    description: The window
+- h2: Properties
+- api3: Window
+  id: Alis_Core_Ecs_System_Setting_Graphic_GraphicSetting_Window
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Setting/Graphic/GraphicSetting.cs#L59
+  metadata:
+    uid: Alis.Core.Ecs.System.Setting.Graphic.GraphicSetting.Window
+    commentId: P:Alis.Core.Ecs.System.Setting.Graphic.GraphicSetting.Window
+- markdown: Gets or sets the value of the window
+- code: >-
+    [JsonPropertyName("_Window_")]
+
+    public Window Window { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Window
+      url: Alis.Core.Graphic.Window.html
+- h2: Methods
+- api3: Builder()
+  id: Alis_Core_Ecs_System_Setting_Graphic_GraphicSetting_Builder
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Core/Ecs/System/Setting/Graphic/GraphicSetting.cs#L66
+  metadata:
+    uid: Alis.Core.Ecs.System.Setting.Graphic.GraphicSetting.Builder
+    commentId: M:Alis.Core.Ecs.System.Setting.Graphic.GraphicSetting.Builder
+- markdown: Builders this instance
+- code: public GraphicSettingBuilder Builder()
+- h4: Returns
+- parameters:
+  - type:
+    - text: GraphicSettingBuilder
+      url: Alis.Builder.Core.Ecs.System.Setting.Graphic.GraphicSettingBuilder.html
+    description: The graphic setting builder
+- h2: See Also
+- list:
+  - - text: IGraphicSetting
+      url: Alis.Core.Ecs.System.Setting.Graphic.IGraphicSetting.html
+  - - text: IBuilder
+      url: Alis.Core.Aspect.Fluent.IBuilder-1.html
+    - <
+    - TOut
+    - '>'
+languageId: csharp
+metadata:
+  description: The graphic setting class

@@ -1,0 +1,82 @@
+{
+  "metadata": [
+    {
+      "src": [
+        {
+          "src": "../../.",
+          "files": [
+            "**/Alis.csproj"
+          ]
+        }
+      ],
+      "dest": "api",
+      "enumSortOrder": "declaringOrder",
+      "outputFormat": "apiPage",
+      "namespaceLayout": "nested",
+      "includePrivateMembers": true,
+      "disableGitFeatures": false,
+      "disableDefaultFilter": false
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": [
+          "**/*.{md,yml}",
+          "resources/**",
+          "resources/*.png"
+        ],
+        "exclude": [
+          "_site/**"
+        ]
+      }
+    ],
+    "resource": [
+      {
+        "files": [
+          "resources/**",
+          "resources/*.png",
+          "**/resources/logo.png",
+          "**/resources/*.ico",
+          "**/resources/*.png",
+          "**/resources/*.jpg"
+        ]
+      }
+    ],
+    "output": "_site",
+    "template": ["default", "modern"],
+    "globalMetadataFiles": [],
+    "fileMetadataFiles": [],
+    "globalMetadata": {
+      "_appTitle": "Alis - Develop the video games of your dreams \uD83D\uDCAF free!!",
+      "_appName": "Alis",
+      "pdf": true,
+      "pdfTocPage": true,
+      "_gitContribute": {
+        "branch": "master",
+        "apiSpecFolder":"api",
+        "repo": "https://github.com/pabllopf/Alis"
+      },
+      "_gitUrlPattern": "github",
+      "_appFaviconPath": "resources/logo.png",
+      "_appLogoPath": "resources/logo.png",
+      "_appFooter": "Alis - Develop the video games of your dreams \uD83D\uDCAF free!! on Windows, MacOS, Linux, Android(soon), IOS(soon).",
+      "_copyrightFooter":"Developed by Pablo Perdomo Falcón",
+      "_enableSearch": true,
+      "_disableSideFilter": false,
+      "_enableNewTab": true,
+      "_disableContribution": false,
+      "_disableBreadcrumb": false,
+      "_lang" : "en",
+      "_disableNavbar": false,
+      "_disableToc": false,
+      "_disableAffix": false
+    },
+    "postProcessors": [ "ExtractSearchIndex" ],
+    "noLangKeyword": false,
+    "keepFileLink": true,
+    "cleanupCacheHistory": false,
+    "disableGitFeatures": false,
+    "exportViewModel": true
+  }
+}

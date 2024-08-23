@@ -1,0 +1,21 @@
+### YamlMime:ApiPage
+title: Namespace Alis.Core.Physic.Collision.Filtering
+body:
+- api1: Namespace Alis.Core.Physic.Collision.Filtering
+  id: Alis_Core_Physic_Collision_Filtering
+  metadata:
+    uid: Alis.Core.Physic.Collision.Filtering
+    commentId: N:Alis.Core.Physic.Collision.Filtering
+- h3: Classes
+- parameters:
+  - type:
+      text: Filter
+      url: Alis.Core.Physic.Collision.Filtering.Filter.html
+    description: The filter class
+- h3: Enums
+- parameters:
+  - type:
+      text: Category
+      url: Alis.Core.Physic.Collision.Filtering.Category.html
+    description: The category enum
+languageId: csharp

@@ -1,0 +1,116 @@
+### YamlMime:ApiPage
+title: Enum KeyMods
+body:
+- api1: Enum KeyMods
+  id: Alis_Core_Graphic_Sdl2_Enums_KeyMods
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Enums/KeyMods.cs#L37
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Enums.KeyMods
+    commentId: T:Alis.Core.Graphic.Sdl2.Enums.KeyMods
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Enums
+      url: Alis.Core.Graphic.Sdl2.Enums.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The sdl key mod enum
+- code: >-
+    [Flags]
+
+    public enum KeyMods : ushort
+- h2: Fields
+- parameters:
+  - name: None
+    default: "0"
+    description: >+
+      The k mod none sdl key mod
+
+  - name: KModLShift
+    default: "1"
+    description: >+
+      The k mod l shift sdl key mod
+
+  - name: KModRShift
+    default: "2"
+    description: >+
+      The k mod r shift sdl key mod
+
+  - name: KModLCtrl
+    default: "64"
+    description: >+
+      The k mod l ctrl sdl key mod
+
+  - name: KModRCtrl
+    default: "128"
+    description: >+
+      The k mod r ctrl sdl key mod
+
+  - name: KModLAlt
+    default: "256"
+    description: >+
+      The k mod l alt sdl key mod
+
+  - name: KModRAlt
+    default: "512"
+    description: >+
+      The k mod r alt sdl key mod
+
+  - name: KModLGui
+    default: "1024"
+    description: >+
+      The k mod l gui sdl key mod
+
+  - name: KModRGui
+    default: "2048"
+    description: >+
+      The k mod r gui sdl key mod
+
+  - name: KModNum
+    default: "4096"
+    description: >+
+      The k mod num sdl key mod
+
+  - name: KModCaps
+    default: "8192"
+    description: >+
+      The k mod caps sdl key mod
+
+  - name: KModMode
+    default: "16384"
+    description: >+
+      The k mod mode sdl key mod
+
+  - name: KModScroll
+    default: "32768"
+    description: >+
+      The k mod scroll sdl key mod
+
+  - name: KModCtrl
+    default: "192"
+    description: >+
+      The k mod ctrl sdl key mod
+
+  - name: KModShift
+    default: "3"
+    description: >+
+      The k mod shift sdl key mod
+
+  - name: KModAlt
+    default: "768"
+    description: >+
+      The k mod alt sdl key mod
+
+  - name: KModGui
+    default: "3072"
+    description: >+
+      The k mod gui sdl key mod
+
+  - name: KModReserved
+    default: "32768"
+    description: >+
+      The k mod reserved sdl key mod
+
+languageId: csharp
+metadata:
+  description: The sdl key mod enum

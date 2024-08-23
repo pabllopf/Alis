@@ -1,0 +1,126 @@
+### YamlMime:ApiPage
+title: Struct ManifoldPoint
+body:
+- api1: Struct ManifoldPoint
+  id: Alis_Core_Physic_Collision_NarrowPhase_ManifoldPoint
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/ManifoldPoint.cs#L47
+  metadata:
+    uid: Alis.Core.Physic.Collision.NarrowPhase.ManifoldPoint
+    commentId: T:Alis.Core.Physic.Collision.NarrowPhase.ManifoldPoint
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Physic.Collision.NarrowPhase
+      url: Alis.Core.Physic.Collision.NarrowPhase.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: >-
+    A manifold point is a contact point belonging to a contact
+
+    manifold. It holds details related to the geometry and dynamics
+
+    of the contact points.
+
+    The local point usage depends on the manifold type:
+
+    -ShapeType.Circles: the local center of circleB
+
+    -SeparationFunction.FaceA: the local center of cirlceB or the clip point of polygonB
+
+    -SeparationFunction.FaceB: the clip point of polygonA
+
+    This structure is stored across time steps, so we keep it small.
+
+    Note: the impulses are used for internal caching and may not
+
+    provide reliable contact forces, especially for high speed collisions.
+- code: public struct ManifoldPoint
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Fields
+- api3: Id
+  id: Alis_Core_Physic_Collision_NarrowPhase_ManifoldPoint_Id
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/ManifoldPoint.cs#L50
+  metadata:
+    uid: Alis.Core.Physic.Collision.NarrowPhase.ManifoldPoint.Id
+    commentId: F:Alis.Core.Physic.Collision.NarrowPhase.ManifoldPoint.Id
+- markdown: Uniquely identifies a contact point between two Shapes
+- code: public ContactId Id
+- h4: Field Value
+- parameters:
+  - type:
+    - text: ContactId
+      url: Alis.Core.Physic.Collision.ContactSystem.ContactId.html
+- api3: LocalPoint
+  id: Alis_Core_Physic_Collision_NarrowPhase_ManifoldPoint_LocalPoint
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/ManifoldPoint.cs#L54
+  metadata:
+    uid: Alis.Core.Physic.Collision.NarrowPhase.ManifoldPoint.LocalPoint
+    commentId: F:Alis.Core.Physic.Collision.NarrowPhase.ManifoldPoint.LocalPoint
+- markdown: Usage depends on manifold type
+- code: public Vector2 LocalPoint
+- h4: Field Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: NormalImpulse
+  id: Alis_Core_Physic_Collision_NarrowPhase_ManifoldPoint_NormalImpulse
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/ManifoldPoint.cs#L58
+  metadata:
+    uid: Alis.Core.Physic.Collision.NarrowPhase.ManifoldPoint.NormalImpulse
+    commentId: F:Alis.Core.Physic.Collision.NarrowPhase.ManifoldPoint.NormalImpulse
+- markdown: The non-penetration impulse
+- code: public float NormalImpulse
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: TangentImpulse
+  id: Alis_Core_Physic_Collision_NarrowPhase_ManifoldPoint_TangentImpulse
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/ManifoldPoint.cs#L62
+  metadata:
+    uid: Alis.Core.Physic.Collision.NarrowPhase.ManifoldPoint.TangentImpulse
+    commentId: F:Alis.Core.Physic.Collision.NarrowPhase.ManifoldPoint.TangentImpulse
+- markdown: The friction impulse
+- code: public float TangentImpulse
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+languageId: csharp
+metadata:
+  description: >-
+    A manifold point is a contact point belonging to a contact
+
+    manifold. It holds details related to the geometry and dynamics
+
+    of the contact points.
+
+    The local point usage depends on the manifold type:
+
+    -ShapeType.Circles: the local center of circleB
+
+    -SeparationFunction.FaceA: the local center of cirlceB or the clip point of polygonB
+
+    -SeparationFunction.FaceB: the clip point of polygonA
+
+    This structure is stored across time steps, so we keep it small.
+
+    Note: the impulses are used for internal caching and may not
+
+    provide reliable contact forces, especially for high speed collisions.

@@ -1,0 +1,38 @@
+### YamlMime:ApiPage
+title: Enum ManifoldType
+body:
+- api1: Enum ManifoldType
+  id: Alis_Core_Physic_Collision_NarrowPhase_ManifoldType
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/NarrowPhase/ManifoldType.cs#L35
+  metadata:
+    uid: Alis.Core.Physic.Collision.NarrowPhase.ManifoldType
+    commentId: T:Alis.Core.Physic.Collision.NarrowPhase.ManifoldType
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Physic.Collision.NarrowPhase
+      url: Alis.Core.Physic.Collision.NarrowPhase.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The manifold type enum
+- code: public enum ManifoldType
+- h2: Fields
+- parameters:
+  - name: Circles
+    default: "0"
+    description: >+
+      The circles manifold type
+
+  - name: FaceA
+    default: "1"
+    description: >+
+      The face manifold type
+
+  - name: FaceB
+    default: "2"
+    description: >+
+      The face manifold type
+
+languageId: csharp
+metadata:
+  description: The manifold type enum

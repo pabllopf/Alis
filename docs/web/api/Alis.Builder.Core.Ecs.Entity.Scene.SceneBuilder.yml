@@ -1,0 +1,141 @@
+### YamlMime:ApiPage
+title: Class SceneBuilder
+body:
+- api1: Class SceneBuilder
+  id: Alis_Builder_Core_Ecs_Entity_Scene_SceneBuilder
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Builder/Core/Ecs/Entity/Scene/SceneBuilder.cs#L41
+  metadata:
+    uid: Alis.Builder.Core.Ecs.Entity.Scene.SceneBuilder
+    commentId: T:Alis.Builder.Core.Ecs.Entity.Scene.SceneBuilder
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Builder.Core.Ecs.Entity.Scene
+      url: Alis.Builder.Core.Ecs.Entity.Scene.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The scene builder class
+- code: 'public class SceneBuilder : IBuild<Scene>, IName<SceneBuilder, string>, IAdd<SceneBuilder, Func<GameObjectBuilder, GameObject>>'
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: SceneBuilder
+    url: Alis.Builder.Core.Ecs.Entity.Scene.SceneBuilder.html
+- h4: Implements
+- list:
+  - text: IBuild<Scene>
+    url: Alis.Core.Aspect.Fluent.IBuild-1.html
+  - text: IName<SceneBuilder, string>
+    url: Alis.Core.Aspect.Fluent.Words.IName-2.html
+  - text: IAdd<SceneBuilder, Func<GameObjectBuilder, GameObject>>
+    url: Alis.Core.Aspect.Fluent.Words.IAdd-2.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Properties
+- api3: Scene
+  id: Alis_Builder_Core_Ecs_Entity_Scene_SceneBuilder_Scene
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Builder/Core/Ecs/Entity/Scene/SceneBuilder.cs#L49
+  metadata:
+    uid: Alis.Builder.Core.Ecs.Entity.Scene.SceneBuilder.Scene
+    commentId: P:Alis.Builder.Core.Ecs.Entity.Scene.SceneBuilder.Scene
+- markdown: Gets the value of the scene
+- code: private Scene Scene { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Scene
+      url: Alis.Core.Ecs.Entity.Scene.html
+- h2: Methods
+- api3: Add<T>(Func<GameObjectBuilder, GameObject>)
+  id: Alis_Builder_Core_Ecs_Entity_Scene_SceneBuilder_Add__1_System_Func_Alis_Builder_Core_Ecs_Entity_GameObject_GameObjectBuilder_Alis_Core_Ecs_Entity_GameObject__
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Builder/Core/Ecs/Entity/Scene/SceneBuilder.cs#L57
+  metadata:
+    uid: Alis.Builder.Core.Ecs.Entity.Scene.SceneBuilder.Add``1(System.Func{Alis.Builder.Core.Ecs.Entity.GameObject.GameObjectBuilder,Alis.Core.Ecs.Entity.GameObject})
+    commentId: M:Alis.Builder.Core.Ecs.Entity.Scene.SceneBuilder.Add``1(System.Func{Alis.Builder.Core.Ecs.Entity.GameObject.GameObjectBuilder,Alis.Core.Ecs.Entity.GameObject})
+- markdown: Adds the value
+- code: public SceneBuilder Add<T>(Func<GameObjectBuilder, GameObject> value)
+- h4: Parameters
+- parameters:
+  - name: value
+    type:
+    - text: Func
+      url: https://learn.microsoft.com/dotnet/api/system.func-2
+    - <
+    - text: GameObjectBuilder
+      url: Alis.Builder.Core.Ecs.Entity.GameObject.GameObjectBuilder.html
+    - ','
+    - " "
+    - text: GameObject
+      url: Alis.Core.Ecs.Entity.GameObject.html
+    - '>'
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - text: SceneBuilder
+      url: Alis.Builder.Core.Ecs.Entity.Scene.SceneBuilder.html
+    description: The scene builder
+- h4: Type Parameters
+- parameters:
+  - name: T
+    description: The
+- api3: Build()
+  id: Alis_Builder_Core_Ecs_Entity_Scene_SceneBuilder_Build
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Builder/Core/Ecs/Entity/Scene/SceneBuilder.cs#L67
+  metadata:
+    uid: Alis.Builder.Core.Ecs.Entity.Scene.SceneBuilder.Build
+    commentId: M:Alis.Builder.Core.Ecs.Entity.Scene.SceneBuilder.Build
+- markdown: Builds this instance
+- code: public Scene Build()
+- h4: Returns
+- parameters:
+  - type:
+    - text: Scene
+      url: Alis.Core.Ecs.Entity.Scene.html
+    description: The scene
+- api3: Name(string)
+  id: Alis_Builder_Core_Ecs_Entity_Scene_SceneBuilder_Name_System_String_
+  src: https://github.com/pabllopf/Alis/blob/master/2_Application/Alis/src/Builder/Core/Ecs/Entity/Scene/SceneBuilder.cs#L74
+  metadata:
+    uid: Alis.Builder.Core.Ecs.Entity.Scene.SceneBuilder.Name(System.String)
+    commentId: M:Alis.Builder.Core.Ecs.Entity.Scene.SceneBuilder.Name(System.String)
+- markdown: Names the value
+- code: public SceneBuilder Name(string value)
+- h4: Parameters
+- parameters:
+  - name: value
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The value
+- h4: Returns
+- parameters:
+  - type:
+    - text: SceneBuilder
+      url: Alis.Builder.Core.Ecs.Entity.Scene.SceneBuilder.html
+    description: The scene builder
+- h2: See Also
+- list:
+  - - text: IBuild
+      url: Alis.Core.Aspect.Fluent.IBuild-1.html
+    - <
+    - TOrigin
+    - '>'
+languageId: csharp
+metadata:
+  description: The scene builder class

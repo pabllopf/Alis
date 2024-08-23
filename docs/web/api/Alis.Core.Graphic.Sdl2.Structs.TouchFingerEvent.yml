@@ -1,0 +1,166 @@
+### YamlMime:ApiPage
+title: Struct TouchFingerEvent
+body:
+- api1: Struct TouchFingerEvent
+  id: Alis_Core_Graphic_Sdl2_Structs_TouchFingerEvent
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TouchFingerEvent.cs#L37
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TouchFingerEvent
+    commentId: T:Alis.Core.Graphic.Sdl2.Structs.TouchFingerEvent
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Structs
+      url: Alis.Core.Graphic.Sdl2.Structs.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The sdl touch finger event
+- code: public struct TouchFingerEvent
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Fields
+- api3: dx
+  id: Alis_Core_Graphic_Sdl2_Structs_TouchFingerEvent_dx
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TouchFingerEvent.cs#L73
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TouchFingerEvent.dx
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TouchFingerEvent.dx
+- markdown: The dx
+- code: public float dx
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: dy
+  id: Alis_Core_Graphic_Sdl2_Structs_TouchFingerEvent_dy
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TouchFingerEvent.cs#L78
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TouchFingerEvent.dy
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TouchFingerEvent.dy
+- markdown: The dy
+- code: public float dy
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: fingerId
+  id: Alis_Core_Graphic_Sdl2_Structs_TouchFingerEvent_fingerId
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TouchFingerEvent.cs#L58
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TouchFingerEvent.fingerId
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TouchFingerEvent.fingerId
+- markdown: The finger id
+- code: public long fingerId
+- h4: Field Value
+- parameters:
+  - type:
+    - text: long
+      url: https://learn.microsoft.com/dotnet/api/system.int64
+- api3: pressure
+  id: Alis_Core_Graphic_Sdl2_Structs_TouchFingerEvent_pressure
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TouchFingerEvent.cs#L83
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TouchFingerEvent.pressure
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TouchFingerEvent.pressure
+- markdown: The pressure
+- code: public float pressure
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: timestamp
+  id: Alis_Core_Graphic_Sdl2_Structs_TouchFingerEvent_timestamp
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TouchFingerEvent.cs#L48
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TouchFingerEvent.timestamp
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TouchFingerEvent.timestamp
+- markdown: The timestamp
+- code: public uint timestamp
+- h4: Field Value
+- parameters:
+  - type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+- api3: touchId
+  id: Alis_Core_Graphic_Sdl2_Structs_TouchFingerEvent_touchId
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TouchFingerEvent.cs#L53
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TouchFingerEvent.touchId
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TouchFingerEvent.touchId
+- markdown: The touch id
+- code: public long touchId
+- h4: Field Value
+- parameters:
+  - type:
+    - text: long
+      url: https://learn.microsoft.com/dotnet/api/system.int64
+- api3: type
+  id: Alis_Core_Graphic_Sdl2_Structs_TouchFingerEvent_type
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TouchFingerEvent.cs#L43
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TouchFingerEvent.type
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TouchFingerEvent.type
+- markdown: The type
+- code: public uint type
+- h4: Field Value
+- parameters:
+  - type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+- api3: windowID
+  id: Alis_Core_Graphic_Sdl2_Structs_TouchFingerEvent_windowID
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TouchFingerEvent.cs#L88
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TouchFingerEvent.windowID
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TouchFingerEvent.windowID
+- markdown: The window id
+- code: public uint windowID
+- h4: Field Value
+- parameters:
+  - type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+- api3: x
+  id: Alis_Core_Graphic_Sdl2_Structs_TouchFingerEvent_x
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TouchFingerEvent.cs#L63
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TouchFingerEvent.x
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TouchFingerEvent.x
+- markdown: The
+- code: public float x
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: y
+  id: Alis_Core_Graphic_Sdl2_Structs_TouchFingerEvent_y
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/TouchFingerEvent.cs#L68
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.TouchFingerEvent.y
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.TouchFingerEvent.y
+- markdown: The
+- code: public float y
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+languageId: csharp
+metadata:
+  description: The sdl touch finger event

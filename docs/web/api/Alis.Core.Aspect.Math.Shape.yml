@@ -1,0 +1,32 @@
+### YamlMime:ApiPage
+title: Namespace Alis.Core.Aspect.Math.Shape
+body:
+- api1: Namespace Alis.Core.Aspect.Math.Shape
+  id: Alis_Core_Aspect_Math_Shape
+  metadata:
+    uid: Alis.Core.Aspect.Math.Shape
+    commentId: N:Alis.Core.Aspect.Math.Shape
+- h3: Namespaces
+- parameters:
+  - type:
+      text: Alis.Core.Aspect.Math.Shape.Circle
+      url: Alis.Core.Aspect.Math.Shape.Circle.html
+  - type:
+      text: Alis.Core.Aspect.Math.Shape.Line
+      url: Alis.Core.Aspect.Math.Shape.Line.html
+  - type:
+      text: Alis.Core.Aspect.Math.Shape.Point
+      url: Alis.Core.Aspect.Math.Shape.Point.html
+  - type:
+      text: Alis.Core.Aspect.Math.Shape.Rectangle
+      url: Alis.Core.Aspect.Math.Shape.Rectangle.html
+  - type:
+      text: Alis.Core.Aspect.Math.Shape.Square
+      url: Alis.Core.Aspect.Math.Shape.Square.html
+- h3: Interfaces
+- parameters:
+  - type:
+      text: IShape
+      url: Alis.Core.Aspect.Math.Shape.IShape.html
+    description: The figure interface
+languageId: csharp

@@ -1,0 +1,275 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+      <title>Enum JsonSerializationOptions | Alis - Develop the video games of your dreams &#128175; free!! </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Enum JsonSerializationOptions | Alis - Develop the video games of your dreams &#128175; free!! ">
+      
+      <meta name="description" content="Define options for JSON serialization.">
+      <link rel="icon" href="../resources/logo.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ApiPage">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../resources/logo.png" alt="Alis">
+            Alis
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 class='section api' data-uid='Alis.Core.Aspect.Data.Json.JsonSerializationOptions' data-commentid='T:Alis.Core.Aspect.Data.Json.JsonSerializationOptions' id='Alis_Core_Aspect_Data_Json_JsonSerializationOptions'>Enum JsonSerializationOptions    <a class='header-action link-secondary' title='View source' href='https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/JsonSerializationOptions.cs#L37'><i class='bi bi-code-slash'></i></a></h1>
+ <div class="facts text-secondary">
+<dl><dt>Namespace</dt><dd><a href='Alis.Core.Aspect.Data.Json.html'>Alis.Core.Aspect.Data.Json</a></dd></dl><dl><dt>Assembly</dt><dd>Alis.dll</dd></dl>
+</div><p>Define options for JSON serialization.</p>
+<pre><code class='lang-csharp'>[Flags]
+public enum JsonSerializationOptions</code></pre><h2 class='section'>Fields</h2><dl class='parameters'><dt><code>None = 0</code>   </dt>
+<dd>
+
+
+<p>No option.
+Use Type Descriptor (including custom ones) when serializing custom objects.</p>
+
+</dd><dt><code>UseReflection = 1</code>   </dt>
+<dd>
+
+
+<p>Use pure reflection when serializing custom objects.</p>
+
+</dd><dt><code>UseXmlIgnore = 2</code>   </dt>
+<dd>
+
+
+<p>Avoid fields and properties marked with the XmlIgnore attribute.</p>
+
+</dd><dt><code>DateFormatCustom = 4</code>   </dt>
+<dd>
+
+
+<p>Use the format defined in the DateTimeFormat property of the JsonOptions class.</p>
+
+</dd><dt><code>SerializeFields = 8</code>   </dt>
+<dd>
+
+
+<p>Serializes fields.</p>
+
+</dd><dt><code>UseISerializable = 16</code>   </dt>
+<dd>
+
+
+<p>Use the ISerializable interface.</p>
+
+</dd><dt><code>DateFormatJs = 32</code>   </dt>
+<dd>
+
+
+<p>Use the [new Date(utc milliseconds)] format.
+Note this format is not generally supported by browsers native JSON parsers.</p>
+
+</dd><dt><code>DateFormatIso8601 = 64</code>   </dt>
+<dd>
+
+
+<p>Use the ISO 8601 string format ('s' DateTime format).</p>
+
+</dd><dt><code>UseScriptIgnore = 128</code>   </dt>
+<dd>
+
+
+<p>Avoid fields and properties marked with the ScriptIgnore attribute.</p>
+
+</dd><dt><code>DateFormatRoundtripUtc = 256</code>   </dt>
+<dd>
+
+
+<p>Use the ISO 8601 roundtrip string format ('o' DateTime format).</p>
+
+</dd><dt><code>EnumAsText = 512</code>   </dt>
+<dd>
+
+
+<p>Serialize enum values as text.</p>
+
+</dd><dt><code>ContinueOnCycle = 1024</code>   </dt>
+<dd>
+
+
+<p>Continue serialization if a cycle was detected.</p>
+
+</dd><dt><code>ContinueOnValueError = 2048</code>   </dt>
+<dd>
+
+
+<p>Continue serialization if getting a value throws error.</p>
+
+</dd><dt><code>SkipNullPropertyValues = 4096</code>   </dt>
+<dd>
+
+
+<p>Don't serialize properties with a null value.</p>
+
+</dd><dt><code>DateTimeOffsetFormatCustom = 8192</code>   </dt>
+<dd>
+
+
+<p>Use the format defined in the DateTimeOffsetFormat property of the JsonOptions class.</p>
+
+</dd><dt><code>SkipNullDateTimeValues = 16384</code>   </dt>
+<dd>
+
+
+<p>Don't serialize null date time values.</p>
+
+</dd><dt><code>AutoParseDateTime = 32768</code>   </dt>
+<dd>
+
+
+<p>Automatically parse date time.</p>
+
+</dd><dt><code>WriteKeysWithoutQuotes = 65536</code>   </dt>
+<dd>
+
+
+<p>Write dictionary keys without quotes.</p>
+
+</dd><dt><code>ByteArrayAsBase64 = 131072</code>   </dt>
+<dd>
+
+
+<p>Serializes byte arrays as base 64 strings.</p>
+
+</dd><dt><code>StreamsAsBase64 = 262144</code>   </dt>
+<dd>
+
+
+<p>Serializes streams as base 64 strings.</p>
+
+</dd><dt><code>SkipZeroValueTypes = 524288</code>   </dt>
+<dd>
+
+
+<p>Don't serialize value type with a zero value.</p>
+
+</dd><dt><code>UseJsonAttribute = 1048576</code>   </dt>
+<dd>
+
+
+<p>Use the JSON attribute.</p>
+
+</dd><dt><code>SkipDefaultValues = 2097152</code>   </dt>
+<dd>
+
+
+<p>Don't serialize values equal to the default member (property, field) value, if defined.</p>
+
+</dd><dt><code>TimeSpanAsText = 4194304</code>   </dt>
+<dd>
+
+
+<p>Serialize TimeSpan values as text.</p>
+
+</dd><dt><code>SkipGetOnly = 8388608</code>   </dt>
+<dd>
+
+
+<p>Skip members with get only method.</p>
+
+</dd><dt><code>Default = 1082392</code>   </dt>
+<dd>
+
+
+<p>The default value.</p>
+
+</dd></dl>
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Alis - Develop the video games of your dreams 💯 free!! on Windows, MacOS, Linux, Android(soon), IOS(soon).
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

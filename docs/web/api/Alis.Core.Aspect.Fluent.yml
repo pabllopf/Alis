@@ -1,0 +1,24 @@
+### YamlMime:ApiPage
+title: Namespace Alis.Core.Aspect.Fluent
+body:
+- api1: Namespace Alis.Core.Aspect.Fluent
+  id: Alis_Core_Aspect_Fluent
+  metadata:
+    uid: Alis.Core.Aspect.Fluent
+    commentId: N:Alis.Core.Aspect.Fluent
+- h3: Namespaces
+- parameters:
+  - type:
+      text: Alis.Core.Aspect.Fluent.Words
+      url: Alis.Core.Aspect.Fluent.Words.html
+- h3: Interfaces
+- parameters:
+  - type:
+      text: IBuild<TOrigin>
+      url: Alis.Core.Aspect.Fluent.IBuild-1.html
+    description: The build interface
+  - type:
+      text: IBuilder<TOut>
+      url: Alis.Core.Aspect.Fluent.IBuilder-1.html
+    description: The builder interface
+languageId: csharp

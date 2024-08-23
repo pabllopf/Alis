@@ -1,0 +1,68 @@
+### YamlMime:ApiPage
+title: Enum Hat
+body:
+- api1: Enum Hat
+  id: Alis_Core_Graphic_Sdl2_Enums_Hat
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Enums/Hat.cs#L35
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Enums.Hat
+    commentId: T:Alis.Core.Graphic.Sdl2.Enums.Hat
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Enums
+      url: Alis.Core.Graphic.Sdl2.Enums.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The hat enum
+- code: 'public enum Hat : byte'
+- h2: Fields
+- parameters:
+  - name: HatCentered
+    default: "0"
+    description: >+
+      The sdl hat centered
+
+  - name: HatUp
+    default: "1"
+    description: >+
+      The sdl hat up
+
+  - name: HatRight
+    default: "2"
+    description: >+
+      The sdl hat right
+
+  - name: HatDown
+    default: "4"
+    description: >+
+      The sdl hat down
+
+  - name: HatLeft
+    default: "8"
+    description: >+
+      The sdl hat left
+
+  - name: HatRightUp
+    default: "3"
+    description: >+
+      The sdl hat up
+
+  - name: HatRightDown
+    default: "6"
+    description: >+
+      The sdl hat down
+
+  - name: HatLeftUp
+    default: "9"
+    description: >+
+      The sdl hat up
+
+  - name: HatLeftDown
+    default: "12"
+    description: >+
+      The sdl hat down
+
+languageId: csharp
+metadata:
+  description: The hat enum

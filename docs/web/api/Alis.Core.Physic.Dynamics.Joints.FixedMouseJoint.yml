@@ -1,0 +1,553 @@
+### YamlMime:ApiPage
+title: Class FixedMouseJoint
+body:
+- api1: Class FixedMouseJoint
+  id: Alis_Core_Physic_Dynamics_Joints_FixedMouseJoint
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/FixedMouseJoint.cs#L51
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint
+    commentId: T:Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Physic.Dynamics.Joints
+      url: Alis.Core.Physic.Dynamics.Joints.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: >-
+    A mouse joint is used to make a point on a body track a specified world point. This a soft constraint with a
+
+    maximum force. This allows the constraint to stretch and without applying huge forces. NOTE: this joint is not
+
+    documented in the manual because it was developed to be used in the testbed. If you want to learn how to use the
+
+    mouse
+
+    joint, look at the testbed.
+
+    p = attached point, m = mouse point
+
+    C = p - m
+
+    cDot = v
+
+    = v + cross(w, r)
+
+    J = [I r_skew]
+
+    Identity used:
+
+    w k % (rx i + ry j) = w * (-ry i + rx j)
+- code: 'public class FixedMouseJoint : Joint'
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: Joint
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html
+  - text: FixedMouseJoint
+    url: Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.html
+- h4: Inherited Members
+- list:
+  - text: Joint._jointType
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint__jointType
+  - text: Joint.EdgeA
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_EdgeA
+  - text: Joint.EdgeB
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_EdgeB
+  - text: Joint.IslandFlag
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_IslandFlag
+  - text: Joint.JointType
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_JointType
+  - text: Joint.Enabled
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_Enabled
+  - text: Joint.BodyA
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_BodyA
+  - text: Joint.BodyB
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_BodyB
+  - text: Joint.WorldAnchorA
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_WorldAnchorA
+  - text: Joint.WorldAnchorB
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_WorldAnchorB
+  - text: Joint.UserData
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_UserData
+  - text: Joint.CollideConnected
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_CollideConnected
+  - text: Joint.Breakpoint
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_Breakpoint
+  - text: Joint.Broke
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_Broke
+  - text: Joint.GetReactionForce(float)
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_GetReactionForce_System_Single_
+  - text: Joint.GetReactionTorque(float)
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_GetReactionTorque_System_Single_
+  - text: Joint.ShiftOrigin(ref Vector2)
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_ShiftOrigin_Alis_Core_Aspect_Math_Vector_Vector2__
+  - text: Joint.WakeBodies()
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_WakeBodies
+  - text: Joint.IsFixedType()
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_IsFixedType
+  - text: Joint.InitVelocityConstraints(ref SolverData)
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_InitVelocityConstraints_Alis_Core_Physic_Dynamics_Solver_SolverData__
+  - text: Joint.Validate(float)
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_Validate_System_Single_
+  - text: Joint.SolveVelocityConstraints(ref SolverData)
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_SolveVelocityConstraints_Alis_Core_Physic_Dynamics_Solver_SolverData__
+  - text: Joint.SolvePositionConstraints(ref SolverData)
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_SolvePositionConstraints_Alis_Core_Physic_Dynamics_Solver_SolverData__
+  - text: Joint.DisableIslandFlag()
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_DisableIslandFlag
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Constructors
+- api3: FixedMouseJoint(Body, Body, JointType, bool, Vector2, float, float, float)
+  id: Alis_Core_Physic_Dynamics_Joints_FixedMouseJoint__ctor_Alis_Core_Physic_Dynamics_Body_Alis_Core_Physic_Dynamics_Body_Alis_Core_Physic_Dynamics_Joints_JointType_System_Boolean_Alis_Core_Aspect_Math_Vector_Vector2_System_Single_System_Single_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/FixedMouseJoint.cs#L121
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.JointType,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2,System.Single,System.Single,System.Single)
+    commentId: M:Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.JointType,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2,System.Single,System.Single,System.Single)
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint" data-throw-if-not-resolved="false"></xref> class
+- code: public FixedMouseJoint(Body bodyA = null, Body bodyB = null, JointType jointType = JointType.FixedMouse, bool collideConnected = false, Vector2 target = default, float maxForce = 0, float stiffness = 0, float damping = 0)
+- h4: Parameters
+- parameters:
+  - name: bodyA
+    type:
+    - text: Body
+      url: Alis.Core.Physic.Dynamics.Body.html
+    description: The body
+    optional: true
+  - name: bodyB
+    type:
+    - text: Body
+      url: Alis.Core.Physic.Dynamics.Body.html
+    description: The body
+    optional: true
+  - name: jointType
+    type:
+    - text: JointType
+      url: Alis.Core.Physic.Dynamics.Joints.JointType.html
+    description: The joint type
+    optional: true
+  - name: collideConnected
+    type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The collide connected
+    optional: true
+  - name: target
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The target
+    optional: true
+  - name: maxForce
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The max force
+    optional: true
+  - name: stiffness
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The stiffness
+    optional: true
+  - name: damping
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The damping
+    optional: true
+- api3: FixedMouseJoint(Body, Vector2)
+  id: Alis_Core_Physic_Dynamics_Joints_FixedMouseJoint__ctor_Alis_Core_Physic_Dynamics_Body_Alis_Core_Aspect_Math_Vector_Vector2_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/FixedMouseJoint.cs#L142
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Aspect.Math.Vector.Vector2)
+    commentId: M:Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Aspect.Math.Vector.Vector2)
+- markdown: This requires a world target point, tuning parameters, and the time step.
+- code: public FixedMouseJoint(Body body, Vector2 target)
+- h4: Parameters
+- parameters:
+  - name: body
+    type:
+    - text: Body
+      url: Alis.Core.Physic.Dynamics.Body.html
+    description: The body.
+  - name: target
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The target.
+- h2: Fields
+- api3: beta
+  id: Alis_Core_Physic_Dynamics_Joints_FixedMouseJoint_beta
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/FixedMouseJoint.cs#L56
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.beta
+    commentId: F:Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.beta
+- markdown: The beta
+- code: private float beta
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: c
+  id: Alis_Core_Physic_Dynamics_Joints_FixedMouseJoint_c
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/FixedMouseJoint.cs#L61
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.c
+    commentId: F:Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.c
+- markdown: The
+- code: private Vector2 c
+- h4: Field Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: gamma
+  id: Alis_Core_Physic_Dynamics_Joints_FixedMouseJoint_gamma
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/FixedMouseJoint.cs#L66
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.gamma
+    commentId: F:Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.gamma
+- markdown: The gamma
+- code: private float gamma
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: impulse
+  id: Alis_Core_Physic_Dynamics_Joints_FixedMouseJoint_impulse
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/FixedMouseJoint.cs#L72
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.impulse
+    commentId: F:Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.impulse
+- markdown: The impulse
+- code: private Vector2 impulse
+- h4: Field Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: indexA
+  id: Alis_Core_Physic_Dynamics_Joints_FixedMouseJoint_indexA
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/FixedMouseJoint.cs#L78
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.indexA
+    commentId: F:Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.indexA
+- markdown: The index
+- code: private int indexA
+- h4: Field Value
+- parameters:
+  - type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+- api3: invIa
+  id: Alis_Core_Physic_Dynamics_Joints_FixedMouseJoint_invIa
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/FixedMouseJoint.cs#L83
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.invIa
+    commentId: F:Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.invIa
+- markdown: The inv ia
+- code: private float invIa
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: invMassA
+  id: Alis_Core_Physic_Dynamics_Joints_FixedMouseJoint_invMassA
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/FixedMouseJoint.cs#L88
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.invMassA
+    commentId: F:Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.invMassA
+- markdown: The inv mass
+- code: private float invMassA
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: localCenterA
+  id: Alis_Core_Physic_Dynamics_Joints_FixedMouseJoint_localCenterA
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/FixedMouseJoint.cs#L93
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.localCenterA
+    commentId: F:Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.localCenterA
+- markdown: The local center
+- code: private Vector2 localCenterA
+- h4: Field Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: mass
+  id: Alis_Core_Physic_Dynamics_Joints_FixedMouseJoint_mass
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/FixedMouseJoint.cs#L98
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.mass
+    commentId: F:Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.mass
+- markdown: The mass
+- code: private Matrix2X2 mass
+- h4: Field Value
+- parameters:
+  - type:
+    - text: Matrix2X2
+      url: Alis.Core.Aspect.Math.Matrix.Matrix2X2.html
+- api3: rA
+  id: Alis_Core_Physic_Dynamics_Joints_FixedMouseJoint_rA
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/FixedMouseJoint.cs#L103
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.rA
+    commentId: F:Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.rA
+- markdown: The
+- code: private Vector2 rA
+- h4: Field Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: targetB
+  id: Alis_Core_Physic_Dynamics_Joints_FixedMouseJoint_targetB
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/FixedMouseJoint.cs#L108
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.targetB
+    commentId: F:Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.targetB
+- markdown: The target
+- code: private Vector2 targetB
+- h4: Field Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- h2: Properties
+- api3: Damping
+  id: Alis_Core_Physic_Dynamics_Joints_FixedMouseJoint_Damping
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/FixedMouseJoint.cs#L185
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.Damping
+    commentId: P:Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.Damping
+- markdown: Set/get linear damping in N*s/m
+- code: private float Damping { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: Force
+  id: Alis_Core_Physic_Dynamics_Joints_FixedMouseJoint_Force
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/FixedMouseJoint.cs#L179
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.Force
+    commentId: P:Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.Force
+- markdown: >-
+    The maximum constraint force that can be exerted to move the candidate body. Usually you will express as some
+
+    multiple of the weight (multiplier * mass * gravity). Set/get the maximum force in Newtons.
+- code: private float Force { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: LocalAnchorA
+  id: Alis_Core_Physic_Dynamics_Joints_FixedMouseJoint_LocalAnchorA
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/FixedMouseJoint.cs#L150
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.LocalAnchorA
+    commentId: P:Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.LocalAnchorA
+- markdown: The local anchor point on BodyB
+- code: internal Vector2 LocalAnchorA { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: Stiffness
+  id: Alis_Core_Physic_Dynamics_Joints_FixedMouseJoint_Stiffness
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/FixedMouseJoint.cs#L182
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.Stiffness
+    commentId: P:Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.Stiffness
+- markdown: Set/get the linear stiffness in N/m
+- code: private float Stiffness { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: WorldAnchorA
+  id: Alis_Core_Physic_Dynamics_Joints_FixedMouseJoint_WorldAnchorA
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/FixedMouseJoint.cs#L153
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.WorldAnchorA
+    commentId: P:Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.WorldAnchorA
+- markdown: Use this to update the target point.
+- code: public override Vector2 WorldAnchorA { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: WorldAnchorB
+  id: Alis_Core_Physic_Dynamics_Joints_FixedMouseJoint_WorldAnchorB
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/FixedMouseJoint.cs#L162
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.WorldAnchorB
+    commentId: P:Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.WorldAnchorB
+- markdown: Gets or sets the value of the world anchor b
+- code: public override Vector2 WorldAnchorB { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- h2: Methods
+- api3: GetReactionForce(float)
+  id: Alis_Core_Physic_Dynamics_Joints_FixedMouseJoint_GetReactionForce_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/FixedMouseJoint.cs#L201
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.GetReactionForce(System.Single)
+    commentId: M:Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.GetReactionForce(System.Single)
+- markdown: Gets the reaction force using the specified inv dt
+- code: protected override Vector2 GetReactionForce(float invDt)
+- h4: Parameters
+- parameters:
+  - name: invDt
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The inv dt
+- h4: Returns
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The vector
+- api3: GetReactionTorque(float)
+  id: Alis_Core_Physic_Dynamics_Joints_FixedMouseJoint_GetReactionTorque_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/FixedMouseJoint.cs#L208
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.GetReactionTorque(System.Single)
+    commentId: M:Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.GetReactionTorque(System.Single)
+- markdown: Gets the reaction torque using the specified inv dt
+- code: public override float GetReactionTorque(float invDt)
+- h4: Parameters
+- parameters:
+  - name: invDt
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The inv dt
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The float
+- api3: InitVelocityConstraints(ref SolverData)
+  id: Alis_Core_Physic_Dynamics_Joints_FixedMouseJoint_InitVelocityConstraints_Alis_Core_Physic_Dynamics_Solver_SolverData__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/FixedMouseJoint.cs#L214
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.InitVelocityConstraints(Alis.Core.Physic.Dynamics.Solver.SolverData@)
+    commentId: M:Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.InitVelocityConstraints(Alis.Core.Physic.Dynamics.Solver.SolverData@)
+- markdown: Inits the velocity constraints using the specified data
+- code: internal override void InitVelocityConstraints(ref SolverData data)
+- h4: Parameters
+- parameters:
+  - name: data
+    type:
+    - text: SolverData
+      url: Alis.Core.Physic.Dynamics.Solver.SolverData.html
+    description: The data
+- api3: ShiftOrigin(ref Vector2)
+  id: Alis_Core_Physic_Dynamics_Joints_FixedMouseJoint_ShiftOrigin_Alis_Core_Aspect_Math_Vector_Vector2__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/FixedMouseJoint.cs#L191
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.ShiftOrigin(Alis.Core.Aspect.Math.Vector.Vector2@)
+    commentId: M:Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.ShiftOrigin(Alis.Core.Aspect.Math.Vector.Vector2@)
+- markdown: Shifts the origin using the specified new origin
+- code: public override void ShiftOrigin(ref Vector2 newOrigin)
+- h4: Parameters
+- parameters:
+  - name: newOrigin
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The new origin
+- api3: SolvePositionConstraints(ref SolverData)
+  id: Alis_Core_Physic_Dynamics_Joints_FixedMouseJoint_SolvePositionConstraints_Alis_Core_Physic_Dynamics_Solver_SolverData__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/FixedMouseJoint.cs#L314
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.SolvePositionConstraints(Alis.Core.Physic.Dynamics.Solver.SolverData@)
+    commentId: M:Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.SolvePositionConstraints(Alis.Core.Physic.Dynamics.Solver.SolverData@)
+- markdown: Describes whether this instance solve position constraints
+- code: internal override bool SolvePositionConstraints(ref SolverData data)
+- h4: Parameters
+- parameters:
+  - name: data
+    type:
+    - text: SolverData
+      url: Alis.Core.Physic.Dynamics.Solver.SolverData.html
+    description: The data
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: SolveVelocityConstraints(ref SolverData)
+  id: Alis_Core_Physic_Dynamics_Joints_FixedMouseJoint_SolveVelocityConstraints_Alis_Core_Physic_Dynamics_Solver_SolverData__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/FixedMouseJoint.cs#L283
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.SolveVelocityConstraints(Alis.Core.Physic.Dynamics.Solver.SolverData@)
+    commentId: M:Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.SolveVelocityConstraints(Alis.Core.Physic.Dynamics.Solver.SolverData@)
+- markdown: Solves the velocity constraints using the specified data
+- code: internal override void SolveVelocityConstraints(ref SolverData data)
+- h4: Parameters
+- parameters:
+  - name: data
+    type:
+    - text: SolverData
+      url: Alis.Core.Physic.Dynamics.Solver.SolverData.html
+    description: The data
+languageId: csharp
+metadata:
+  description: >-
+    A mouse joint is used to make a point on a body track a specified world point. This a soft constraint with a
+
+    maximum force. This allows the constraint to stretch and without applying huge forces. NOTE: this joint is not
+
+    documented in the manual because it was developed to be used in the testbed. If you want to learn how to use the
+
+    mouse
+
+    joint, look at the testbed.
+
+    p = attached point, m = mouse point
+
+    C = p - m
+
+    cDot = v
+
+    = v + cross(w, r)
+
+    J = [I r_skew]
+
+    Identity used:
+
+    w k % (rx i + ry j) = w * (-ry i + rx j)

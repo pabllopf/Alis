@@ -1,0 +1,30 @@
+### YamlMime:ApiPage
+title: Interface IRun
+body:
+- api1: Interface IRun
+  id: Alis_Core_Aspect_Fluent_Words_IRun
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Fluent/src/Words/IRun.cs#L35
+  metadata:
+    uid: Alis.Core.Aspect.Fluent.Words.IRun
+    commentId: T:Alis.Core.Aspect.Fluent.Words.IRun
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Aspect.Fluent.Words
+      url: Alis.Core.Aspect.Fluent.Words.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The run interface
+- code: public interface IRun
+- h2: Methods
+- api3: Run()
+  id: Alis_Core_Aspect_Fluent_Words_IRun_Run
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Fluent/src/Words/IRun.cs#L40
+  metadata:
+    uid: Alis.Core.Aspect.Fluent.Words.IRun.Run
+    commentId: M:Alis.Core.Aspect.Fluent.Words.IRun.Run
+- markdown: Runs this instance
+- code: void Run()
+languageId: csharp
+metadata:
+  description: The run interface

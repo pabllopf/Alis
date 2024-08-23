@@ -1,0 +1,206 @@
+### YamlMime:ApiPage
+title: Class KeyValueTypeEnumerator
+body:
+- api1: Class KeyValueTypeEnumerator
+  id: Alis_Core_Aspect_Data_Json_KeyValueTypeEnumerator
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/KeyValueTypeEnumerator.cs#L40
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.KeyValueTypeEnumerator
+    commentId: T:Alis.Core.Aspect.Data.Json.KeyValueTypeEnumerator
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Aspect.Data.Json
+      url: Alis.Core.Aspect.Data.Json.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The key value type enumerator class
+- code: 'internal sealed class KeyValueTypeEnumerator : IDictionaryEnumerator, IEnumerator, IDisposable'
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: KeyValueTypeEnumerator
+    url: Alis.Core.Aspect.Data.Json.KeyValueTypeEnumerator.html
+- h4: Implements
+- list:
+  - text: IDictionaryEnumerator
+    url: https://learn.microsoft.com/dotnet/api/system.collections.idictionaryenumerator
+  - text: IEnumerator
+    url: https://learn.microsoft.com/dotnet/api/system.collections.ienumerator
+  - text: IDisposable
+    url: https://learn.microsoft.com/dotnet/api/system.idisposable
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Constructors
+- api3: KeyValueTypeEnumerator(object)
+  id: Alis_Core_Aspect_Data_Json_KeyValueTypeEnumerator__ctor_System_Object_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/KeyValueTypeEnumerator.cs#L66
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.KeyValueTypeEnumerator.#ctor(System.Object)
+    commentId: M:Alis.Core.Aspect.Data.Json.KeyValueTypeEnumerator.#ctor(System.Object)
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Aspect.Data.Json.KeyValueTypeEnumerator" data-throw-if-not-resolved="false"></xref> class
+- code: public KeyValueTypeEnumerator(object value)
+- h4: Parameters
+- parameters:
+  - name: value
+    type:
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+    description: The value
+- h2: Fields
+- api3: enumerator
+  id: Alis_Core_Aspect_Data_Json_KeyValueTypeEnumerator_enumerator
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/KeyValueTypeEnumerator.cs#L45
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.KeyValueTypeEnumerator.enumerator
+    commentId: F:Alis.Core.Aspect.Data.Json.KeyValueTypeEnumerator.enumerator
+- markdown: The enumerator
+- code: private readonly IEnumerator enumerator
+- h4: Field Value
+- parameters:
+  - type:
+    - text: IEnumerator
+      url: https://learn.microsoft.com/dotnet/api/system.collections.ienumerator
+- api3: keyProp
+  id: Alis_Core_Aspect_Data_Json_KeyValueTypeEnumerator_keyProp
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/KeyValueTypeEnumerator.cs#L55
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.KeyValueTypeEnumerator.keyProp
+    commentId: F:Alis.Core.Aspect.Data.Json.KeyValueTypeEnumerator.keyProp
+- markdown: The key prop
+- code: private PropertyInfo keyProp
+- h4: Field Value
+- parameters:
+  - type:
+    - text: PropertyInfo
+      url: https://learn.microsoft.com/dotnet/api/system.reflection.propertyinfo
+- api3: value
+  id: Alis_Core_Aspect_Data_Json_KeyValueTypeEnumerator_value
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/KeyValueTypeEnumerator.cs#L50
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.KeyValueTypeEnumerator.value
+    commentId: F:Alis.Core.Aspect.Data.Json.KeyValueTypeEnumerator.value
+- markdown: The value
+- code: private readonly IEnumerable value
+- h4: Field Value
+- parameters:
+  - type:
+    - text: IEnumerable
+      url: https://learn.microsoft.com/dotnet/api/system.collections.ienumerable
+- api3: valueProp
+  id: Alis_Core_Aspect_Data_Json_KeyValueTypeEnumerator_valueProp
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/KeyValueTypeEnumerator.cs#L60
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.KeyValueTypeEnumerator.valueProp
+    commentId: F:Alis.Core.Aspect.Data.Json.KeyValueTypeEnumerator.valueProp
+- markdown: The value prop
+- code: private PropertyInfo valueProp
+- h4: Field Value
+- parameters:
+  - type:
+    - text: PropertyInfo
+      url: https://learn.microsoft.com/dotnet/api/system.reflection.propertyinfo
+- h2: Properties
+- api3: Current
+  id: Alis_Core_Aspect_Data_Json_KeyValueTypeEnumerator_Current
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/KeyValueTypeEnumerator.cs#L115
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.KeyValueTypeEnumerator.Current
+    commentId: P:Alis.Core.Aspect.Data.Json.KeyValueTypeEnumerator.Current
+- markdown: Gets the value of the current
+- code: public object Current { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+- api3: Entry
+  id: Alis_Core_Aspect_Data_Json_KeyValueTypeEnumerator_Entry
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/KeyValueTypeEnumerator.cs#L77
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.KeyValueTypeEnumerator.Entry
+    commentId: P:Alis.Core.Aspect.Data.Json.KeyValueTypeEnumerator.Entry
+- markdown: Gets the value of the entry
+- code: public DictionaryEntry Entry { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: DictionaryEntry
+      url: https://learn.microsoft.com/dotnet/api/system.collections.dictionaryentry
+- api3: Key
+  id: Alis_Core_Aspect_Data_Json_KeyValueTypeEnumerator_Key
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/KeyValueTypeEnumerator.cs#L105
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.KeyValueTypeEnumerator.Key
+    commentId: P:Alis.Core.Aspect.Data.Json.KeyValueTypeEnumerator.Key
+- markdown: Gets the value of the key
+- code: public object Key { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+- api3: Value
+  id: Alis_Core_Aspect_Data_Json_KeyValueTypeEnumerator_Value
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/KeyValueTypeEnumerator.cs#L110
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.KeyValueTypeEnumerator.Value
+    commentId: P:Alis.Core.Aspect.Data.Json.KeyValueTypeEnumerator.Value
+- markdown: Gets the value of the value
+- code: public object Value { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: object
+      url: https://learn.microsoft.com/dotnet/api/system.object
+- h2: Methods
+- api3: Dispose()
+  id: Alis_Core_Aspect_Data_Json_KeyValueTypeEnumerator_Dispose
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/KeyValueTypeEnumerator.cs#L131
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.KeyValueTypeEnumerator.Dispose
+    commentId: M:Alis.Core.Aspect.Data.Json.KeyValueTypeEnumerator.Dispose
+- markdown: Disposes this instance
+- code: public void Dispose()
+- api3: MoveNext()
+  id: Alis_Core_Aspect_Data_Json_KeyValueTypeEnumerator_MoveNext
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/KeyValueTypeEnumerator.cs#L121
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.KeyValueTypeEnumerator.MoveNext
+    commentId: M:Alis.Core.Aspect.Data.Json.KeyValueTypeEnumerator.MoveNext
+- markdown: Describes whether this instance move next
+- code: public bool MoveNext()
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: Reset()
+  id: Alis_Core_Aspect_Data_Json_KeyValueTypeEnumerator_Reset
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Json/KeyValueTypeEnumerator.cs#L126
+  metadata:
+    uid: Alis.Core.Aspect.Data.Json.KeyValueTypeEnumerator.Reset
+    commentId: M:Alis.Core.Aspect.Data.Json.KeyValueTypeEnumerator.Reset
+- markdown: Resets this instance
+- code: public void Reset()
+- h2: See Also
+- list:
+  - - text: IDictionaryEnumerator
+      url: https://learn.microsoft.com/dotnet/api/system.collections.idictionaryenumerator
+languageId: csharp
+metadata:
+  description: The key value type enumerator class

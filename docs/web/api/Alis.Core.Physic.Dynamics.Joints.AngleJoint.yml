@@ -1,0 +1,340 @@
+### YamlMime:ApiPage
+title: Class AngleJoint
+body:
+- api1: Class AngleJoint
+  id: Alis_Core_Physic_Dynamics_Joints_AngleJoint
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/AngleJoint.cs#L38
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.AngleJoint
+    commentId: T:Alis.Core.Physic.Dynamics.Joints.AngleJoint
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Physic.Dynamics.Joints
+      url: Alis.Core.Physic.Dynamics.Joints.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: Maintains a fixed angle between two bodies
+- code: 'public class AngleJoint : Joint'
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: Joint
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html
+  - text: AngleJoint
+    url: Alis.Core.Physic.Dynamics.Joints.AngleJoint.html
+- h4: Inherited Members
+- list:
+  - text: Joint._jointType
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint__jointType
+  - text: Joint.EdgeA
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_EdgeA
+  - text: Joint.EdgeB
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_EdgeB
+  - text: Joint.IslandFlag
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_IslandFlag
+  - text: Joint.JointType
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_JointType
+  - text: Joint.Enabled
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_Enabled
+  - text: Joint.BodyA
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_BodyA
+  - text: Joint.BodyB
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_BodyB
+  - text: Joint.WorldAnchorA
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_WorldAnchorA
+  - text: Joint.WorldAnchorB
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_WorldAnchorB
+  - text: Joint.UserData
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_UserData
+  - text: Joint.CollideConnected
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_CollideConnected
+  - text: Joint.Breakpoint
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_Breakpoint
+  - text: Joint.Broke
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_Broke
+  - text: Joint.GetReactionForce(float)
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_GetReactionForce_System_Single_
+  - text: Joint.GetReactionTorque(float)
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_GetReactionTorque_System_Single_
+  - text: Joint.ShiftOrigin(ref Vector2)
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_ShiftOrigin_Alis_Core_Aspect_Math_Vector_Vector2__
+  - text: Joint.WakeBodies()
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_WakeBodies
+  - text: Joint.IsFixedType()
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_IsFixedType
+  - text: Joint.InitVelocityConstraints(ref SolverData)
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_InitVelocityConstraints_Alis_Core_Physic_Dynamics_Solver_SolverData__
+  - text: Joint.Validate(float)
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_Validate_System_Single_
+  - text: Joint.SolveVelocityConstraints(ref SolverData)
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_SolveVelocityConstraints_Alis_Core_Physic_Dynamics_Solver_SolverData__
+  - text: Joint.SolvePositionConstraints(ref SolverData)
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_SolvePositionConstraints_Alis_Core_Physic_Dynamics_Solver_SolverData__
+  - text: Joint.DisableIslandFlag()
+    url: Alis.Core.Physic.Dynamics.Joints.Joint.html#Alis_Core_Physic_Dynamics_Joints_Joint_DisableIslandFlag
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Constructors
+- api3: AngleJoint(Body, Body)
+  id: Alis_Core_Physic_Dynamics_Joints_AngleJoint__ctor_Alis_Core_Physic_Dynamics_Body_Alis_Core_Physic_Dynamics_Body_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/AngleJoint.cs#L65
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.AngleJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body)
+    commentId: M:Alis.Core.Physic.Dynamics.Joints.AngleJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body)
+- markdown: Initializes a new instance of the <xref href="Alis.Core.Physic.Dynamics.Joints.AngleJoint" data-throw-if-not-resolved="false"></xref> class
+- code: public AngleJoint(Body bodyA, Body bodyB)
+- h4: Parameters
+- parameters:
+  - name: bodyA
+    type:
+    - text: Body
+      url: Alis.Core.Physic.Dynamics.Body.html
+    description: The body
+  - name: bodyB
+    type:
+    - text: Body
+      url: Alis.Core.Physic.Dynamics.Body.html
+    description: The body
+- h2: Fields
+- api3: bias
+  id: Alis_Core_Physic_Dynamics_Joints_AngleJoint_bias
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/AngleJoint.cs#L43
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.AngleJoint.bias
+    commentId: F:Alis.Core.Physic.Dynamics.Joints.AngleJoint.bias
+- markdown: The bias
+- code: private float bias
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: jointError
+  id: Alis_Core_Physic_Dynamics_Joints_AngleJoint_jointError
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/AngleJoint.cs#L48
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.AngleJoint.jointError
+    commentId: F:Alis.Core.Physic.Dynamics.Joints.AngleJoint.jointError
+- markdown: The joint error
+- code: private float jointError
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: massFactor
+  id: Alis_Core_Physic_Dynamics_Joints_AngleJoint_massFactor
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/AngleJoint.cs#L53
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.AngleJoint.massFactor
+    commentId: F:Alis.Core.Physic.Dynamics.Joints.AngleJoint.massFactor
+- markdown: The mass factor
+- code: private float massFactor
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: targetAngle
+  id: Alis_Core_Physic_Dynamics_Joints_AngleJoint_targetAngle
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/AngleJoint.cs#L58
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.AngleJoint.targetAngle
+    commentId: F:Alis.Core.Physic.Dynamics.Joints.AngleJoint.targetAngle
+- markdown: The target angle
+- code: private float targetAngle
+- h4: Field Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- h2: Properties
+- api3: BiasFactor
+  id: Alis_Core_Physic_Dynamics_Joints_AngleJoint_BiasFactor
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/AngleJoint.cs#L105
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.AngleJoint.BiasFactor
+    commentId: P:Alis.Core.Physic.Dynamics.Joints.AngleJoint.BiasFactor
+- markdown: Gets or sets the bias factor. Defaults to 0.2
+- code: private float BiasFactor { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: Impulse
+  id: Alis_Core_Physic_Dynamics_Joints_AngleJoint_Impulse
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/AngleJoint.cs#L108
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.AngleJoint.Impulse
+    commentId: P:Alis.Core.Physic.Dynamics.Joints.AngleJoint.Impulse
+- markdown: Gets or sets the maximum impulse. Defaults to float.MaxValue
+- code: private float Impulse { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: Softness
+  id: Alis_Core_Physic_Dynamics_Joints_AngleJoint_Softness
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/AngleJoint.cs#L111
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.AngleJoint.Softness
+    commentId: P:Alis.Core.Physic.Dynamics.Joints.AngleJoint.Softness
+- markdown: Gets or sets the softness of the joint. Defaults to 0
+- code: private float Softness { get; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: TargetAngle
+  id: Alis_Core_Physic_Dynamics_Joints_AngleJoint_TargetAngle
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/AngleJoint.cs#L91
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.AngleJoint.TargetAngle
+    commentId: P:Alis.Core.Physic.Dynamics.Joints.AngleJoint.TargetAngle
+- markdown: The desired angle between BodyA and BodyB
+- code: public float TargetAngle { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+- api3: WorldAnchorA
+  id: Alis_Core_Physic_Dynamics_Joints_AngleJoint_WorldAnchorA
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/AngleJoint.cs#L75
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.AngleJoint.WorldAnchorA
+    commentId: P:Alis.Core.Physic.Dynamics.Joints.AngleJoint.WorldAnchorA
+- markdown: Gets or sets the value of the world anchor a
+- code: public override Vector2 WorldAnchorA { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- api3: WorldAnchorB
+  id: Alis_Core_Physic_Dynamics_Joints_AngleJoint_WorldAnchorB
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/AngleJoint.cs#L84
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.AngleJoint.WorldAnchorB
+    commentId: P:Alis.Core.Physic.Dynamics.Joints.AngleJoint.WorldAnchorB
+- markdown: Gets or sets the value of the world anchor b
+- code: public override Vector2 WorldAnchorB { get; set; }
+- h4: Property Value
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+- h2: Methods
+- api3: GetReactionForce(float)
+  id: Alis_Core_Physic_Dynamics_Joints_AngleJoint_GetReactionForce_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/AngleJoint.cs#L118
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.AngleJoint.GetReactionForce(System.Single)
+    commentId: M:Alis.Core.Physic.Dynamics.Joints.AngleJoint.GetReactionForce(System.Single)
+- markdown: Gets the reaction force using the specified inv dt
+- code: protected override Vector2 GetReactionForce(float invDt)
+- h4: Parameters
+- parameters:
+  - name: invDt
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The inv dt
+- h4: Returns
+- parameters:
+  - type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The vector
+- api3: GetReactionTorque(float)
+  id: Alis_Core_Physic_Dynamics_Joints_AngleJoint_GetReactionTorque_System_Single_
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/AngleJoint.cs#L125
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.AngleJoint.GetReactionTorque(System.Single)
+    commentId: M:Alis.Core.Physic.Dynamics.Joints.AngleJoint.GetReactionTorque(System.Single)
+- markdown: Gets the reaction torque using the specified inv dt
+- code: public override float GetReactionTorque(float invDt)
+- h4: Parameters
+- parameters:
+  - name: invDt
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The inv dt
+- h4: Returns
+- parameters:
+  - type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The float
+- api3: InitVelocityConstraints(ref SolverData)
+  id: Alis_Core_Physic_Dynamics_Joints_AngleJoint_InitVelocityConstraints_Alis_Core_Physic_Dynamics_Solver_SolverData__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/AngleJoint.cs#L131
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.AngleJoint.InitVelocityConstraints(Alis.Core.Physic.Dynamics.Solver.SolverData@)
+    commentId: M:Alis.Core.Physic.Dynamics.Joints.AngleJoint.InitVelocityConstraints(Alis.Core.Physic.Dynamics.Solver.SolverData@)
+- markdown: Inits the velocity constraints using the specified data
+- code: internal override void InitVelocityConstraints(ref SolverData data)
+- h4: Parameters
+- parameters:
+  - name: data
+    type:
+    - text: SolverData
+      url: Alis.Core.Physic.Dynamics.Solver.SolverData.html
+    description: The data
+- api3: SolvePositionConstraints(ref SolverData)
+  id: Alis_Core_Physic_Dynamics_Joints_AngleJoint_SolvePositionConstraints_Alis_Core_Physic_Dynamics_Solver_SolverData__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/AngleJoint.cs#L166
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.AngleJoint.SolvePositionConstraints(Alis.Core.Physic.Dynamics.Solver.SolverData@)
+    commentId: M:Alis.Core.Physic.Dynamics.Joints.AngleJoint.SolvePositionConstraints(Alis.Core.Physic.Dynamics.Solver.SolverData@)
+- markdown: Describes whether this instance solve position constraints
+- code: internal override bool SolvePositionConstraints(ref SolverData data)
+- h4: Parameters
+- parameters:
+  - name: data
+    type:
+    - text: SolverData
+      url: Alis.Core.Physic.Dynamics.Solver.SolverData.html
+    description: The data
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: The bool
+- api3: SolveVelocityConstraints(ref SolverData)
+  id: Alis_Core_Physic_Dynamics_Joints_AngleJoint_SolveVelocityConstraints_Alis_Core_Physic_Dynamics_Solver_SolverData__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Joints/AngleJoint.cs#L148
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Joints.AngleJoint.SolveVelocityConstraints(Alis.Core.Physic.Dynamics.Solver.SolverData@)
+    commentId: M:Alis.Core.Physic.Dynamics.Joints.AngleJoint.SolveVelocityConstraints(Alis.Core.Physic.Dynamics.Solver.SolverData@)
+- markdown: Solves the velocity constraints using the specified data
+- code: internal override void SolveVelocityConstraints(ref SolverData data)
+- h4: Parameters
+- parameters:
+  - name: data
+    type:
+    - text: SolverData
+      url: Alis.Core.Physic.Dynamics.Solver.SolverData.html
+    description: The data
+languageId: csharp
+metadata:
+  description: Maintains a fixed angle between two bodies

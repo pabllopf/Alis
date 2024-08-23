@@ -1,0 +1,62 @@
+### YamlMime:ApiPage
+title: Struct GenericEvent
+body:
+- api1: Struct GenericEvent
+  id: Alis_Core_Graphic_Sdl2_Structs_GenericEvent
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/GenericEvent.cs#L38
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.GenericEvent
+    commentId: T:Alis.Core.Graphic.Sdl2.Structs.GenericEvent
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Structs
+      url: Alis.Core.Graphic.Sdl2.Structs.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The sdl generic event
+- code: public struct GenericEvent
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Fields
+- api3: timestamp
+  id: Alis_Core_Graphic_Sdl2_Structs_GenericEvent_timestamp
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/GenericEvent.cs#L49
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.GenericEvent.timestamp
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.GenericEvent.timestamp
+- markdown: The timestamp
+- code: public uint timestamp
+- h4: Field Value
+- parameters:
+  - type:
+    - text: uint
+      url: https://learn.microsoft.com/dotnet/api/system.uint32
+- api3: type
+  id: Alis_Core_Graphic_Sdl2_Structs_GenericEvent_type
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Structs/GenericEvent.cs#L44
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Structs.GenericEvent.type
+    commentId: F:Alis.Core.Graphic.Sdl2.Structs.GenericEvent.type
+- markdown: The type
+- code: public EventType type
+- h4: Field Value
+- parameters:
+  - type:
+    - text: EventType
+      url: Alis.Core.Graphic.Sdl2.Enums.EventType.html
+languageId: csharp
+metadata:
+  description: The sdl generic event

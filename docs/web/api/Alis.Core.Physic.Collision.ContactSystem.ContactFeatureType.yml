@@ -1,0 +1,33 @@
+### YamlMime:ApiPage
+title: Enum ContactFeatureType
+body:
+- api1: Enum ContactFeatureType
+  id: Alis_Core_Physic_Collision_ContactSystem_ContactFeatureType
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/ContactSystem/ContactFeatureType.cs#L35
+  metadata:
+    uid: Alis.Core.Physic.Collision.ContactSystem.ContactFeatureType
+    commentId: T:Alis.Core.Physic.Collision.ContactSystem.ContactFeatureType
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Physic.Collision.ContactSystem
+      url: Alis.Core.Physic.Collision.ContactSystem.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The contact feature type enum
+- code: 'public enum ContactFeatureType : byte'
+- h2: Fields
+- parameters:
+  - name: Vertex
+    default: "0"
+    description: >+
+      The vertex contact feature type
+
+  - name: Face
+    default: "1"
+    description: >+
+      The face contact feature type
+
+languageId: csharp
+metadata:
+  description: The contact feature type enum

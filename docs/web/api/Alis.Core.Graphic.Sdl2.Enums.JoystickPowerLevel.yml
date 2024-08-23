@@ -1,0 +1,58 @@
+### YamlMime:ApiPage
+title: Enum JoystickPowerLevel
+body:
+- api1: Enum JoystickPowerLevel
+  id: Alis_Core_Graphic_Sdl2_Enums_JoystickPowerLevel
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Enums/JoystickPowerLevel.cs#L35
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Enums.JoystickPowerLevel
+    commentId: T:Alis.Core.Graphic.Sdl2.Enums.JoystickPowerLevel
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Enums
+      url: Alis.Core.Graphic.Sdl2.Enums.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The sdl joystick power level enum
+- code: public enum JoystickPowerLevel
+- h2: Fields
+- parameters:
+  - name: SdlJoystickPowerUnknown
+    default: "-1"
+    description: >+
+      The sdl joystick power unknown sdl joystick power level
+
+  - name: SdlJoystickPowerEmpty
+    default: "0"
+    description: >+
+      The sdl joystick power empty sdl joystick power level
+
+  - name: SdlJoystickPowerLow
+    default: "1"
+    description: >+
+      The sdl joystick power low sdl joystick power level
+
+  - name: SdlJoystickPowerMedium
+    default: "2"
+    description: >+
+      The sdl joystick power medium sdl joystick power level
+
+  - name: SdlJoystickPowerFull
+    default: "3"
+    description: >+
+      The sdl joystick power full sdl joystick power level
+
+  - name: SdlJoystickPowerWired
+    default: "4"
+    description: >+
+      The sdl joystick power wired sdl joystick power level
+
+  - name: SdlJoystickPowerMax
+    default: "5"
+    description: >+
+      The sdl joystick power max sdl joystick power level
+
+languageId: csharp
+metadata:
+  description: The sdl joystick power level enum

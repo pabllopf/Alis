@@ -1,0 +1,48 @@
+### YamlMime:ApiPage
+title: Enum DisplayOrientation
+body:
+- api1: Enum DisplayOrientation
+  id: Alis_Core_Graphic_Sdl2_Enums_DisplayOrientation
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Enums/DisplayOrientation.cs#L35
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Enums.DisplayOrientation
+    commentId: T:Alis.Core.Graphic.Sdl2.Enums.DisplayOrientation
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Enums
+      url: Alis.Core.Graphic.Sdl2.Enums.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The sdl display orientation enum
+- code: public enum DisplayOrientation
+- h2: Fields
+- parameters:
+  - name: SdlOrientationUnknown
+    default: "0"
+    description: >+
+      The sdl orientation unknown sdl display orientation
+
+  - name: SdlOrientationLandscape
+    default: "1"
+    description: >+
+      The sdl orientation landscape sdl display orientation
+
+  - name: SdlOrientationLandscapeFlipped
+    default: "2"
+    description: >+
+      The sdl orientation landscape flipped sdl display orientation
+
+  - name: SdlOrientationPortrait
+    default: "3"
+    description: >+
+      The sdl orientation portrait sdl display orientation
+
+  - name: SdlOrientationPortraitFlipped
+    default: "4"
+    description: >+
+      The sdl orientation portrait flipped sdl display orientation
+
+languageId: csharp
+metadata:
+  description: The sdl display orientation enum

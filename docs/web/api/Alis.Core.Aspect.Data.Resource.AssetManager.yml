@@ -1,0 +1,281 @@
+### YamlMime:ApiPage
+title: Class AssetManager
+body:
+- api1: Class AssetManager
+  id: Alis_Core_Aspect_Data_Resource_AssetManager
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Resource/AssetManager.cs#L38
+  metadata:
+    uid: Alis.Core.Aspect.Data.Resource.AssetManager
+    commentId: T:Alis.Core.Aspect.Data.Resource.AssetManager
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Aspect.Data.Resource
+      url: Alis.Core.Aspect.Data.Resource.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The example class
+- code: public static class AssetManager
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: AssetManager
+    url: Alis.Core.Aspect.Data.Resource.AssetManager.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Methods
+- api3: Find(string)
+  id: Alis_Core_Aspect_Data_Resource_AssetManager_Find_System_String_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Resource/AssetManager.cs#L45
+  metadata:
+    uid: Alis.Core.Aspect.Data.Resource.AssetManager.Find(System.String)
+    commentId: M:Alis.Core.Aspect.Data.Resource.AssetManager.Find(System.String)
+- markdown: Finds the asset name in the "assets" folder and its subdirectories.
+- code: public static string Find(string assetName)
+- h4: Parameters
+- parameters:
+  - name: assetName
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The asset name.
+- h4: Returns
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The full path of the asset if found; otherwise, an empty string.
+- api3: GetAssetsDirectory()
+  id: Alis_Core_Aspect_Data_Resource_AssetManager_GetAssetsDirectory
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Resource/AssetManager.cs#L129
+  metadata:
+    uid: Alis.Core.Aspect.Data.Resource.AssetManager.GetAssetsDirectory
+    commentId: M:Alis.Core.Aspect.Data.Resource.AssetManager.GetAssetsDirectory
+- markdown: Gets the assets directory
+- code: internal static string GetAssetsDirectory()
+- h4: Returns
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The string
+- api3: GetFilePath(string[])
+  id: Alis_Core_Aspect_Data_Resource_AssetManager_GetFilePath_System_String___
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Resource/AssetManager.cs#L165
+  metadata:
+    uid: Alis.Core.Aspect.Data.Resource.AssetManager.GetFilePath(System.String[])
+    commentId: M:Alis.Core.Aspect.Data.Resource.AssetManager.GetFilePath(System.String[])
+- markdown: Gets the file path using the specified files
+- code: internal static string GetFilePath(string[] files)
+- h4: Parameters
+- parameters:
+  - name: files
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    - '['
+    - ']'
+    description: The files
+- h4: Returns
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The string
+- api3: GetFilesInAssetsDirectory(string, string)
+  id: Alis_Core_Aspect_Data_Resource_AssetManager_GetFilesInAssetsDirectory_System_String_System_String_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Resource/AssetManager.cs#L141
+  metadata:
+    uid: Alis.Core.Aspect.Data.Resource.AssetManager.GetFilesInAssetsDirectory(System.String,System.String)
+    commentId: M:Alis.Core.Aspect.Data.Resource.AssetManager.GetFilesInAssetsDirectory(System.String,System.String)
+- markdown: Gets the files in assets directory using the specified assets directory
+- code: internal static string[] GetFilesInAssetsDirectory(string assetsDirectory, string assetName)
+- h4: Parameters
+- parameters:
+  - name: assetsDirectory
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The assets directory
+  - name: assetName
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The asset name
+- h4: Returns
+- parameters:
+  - type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    - '['
+    - ']'
+    description: The string array
+- api3: IsInvalidAssetName(string)
+  id: Alis_Core_Aspect_Data_Resource_AssetManager_IsInvalidAssetName_System_String_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Resource/AssetManager.cs#L110
+  metadata:
+    uid: Alis.Core.Aspect.Data.Resource.AssetManager.IsInvalidAssetName(System.String)
+    commentId: M:Alis.Core.Aspect.Data.Resource.AssetManager.IsInvalidAssetName(System.String)
+- markdown: Checks if the asset name has any invalid characters
+- code: internal static bool IsInvalidAssetName(string assetName)
+- h4: Parameters
+- parameters:
+  - name: assetName
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The asset name
+- h4: Returns
+- parameters:
+  - type:
+    - text: bool
+      url: https://learn.microsoft.com/dotnet/api/system.boolean
+    description: True if the asset name is invalid, false otherwise
+- api3: ValidateAssetName(string)
+  id: Alis_Core_Aspect_Data_Resource_AssetManager_ValidateAssetName_System_String_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Resource/AssetManager.cs#L58
+  metadata:
+    uid: Alis.Core.Aspect.Data.Resource.AssetManager.ValidateAssetName(System.String)
+    commentId: M:Alis.Core.Aspect.Data.Resource.AssetManager.ValidateAssetName(System.String)
+- markdown: Validates the asset name using the specified asset name
+- code: internal static void ValidateAssetName(string assetName)
+- h4: Parameters
+- parameters:
+  - name: assetName
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The asset name
+- api3: ValidateAssetNameHasExtension(string)
+  id: Alis_Core_Aspect_Data_Resource_AssetManager_ValidateAssetNameHasExtension_System_String_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Resource/AssetManager.cs#L117
+  metadata:
+    uid: Alis.Core.Aspect.Data.Resource.AssetManager.ValidateAssetNameHasExtension(System.String)
+    commentId: M:Alis.Core.Aspect.Data.Resource.AssetManager.ValidateAssetNameHasExtension(System.String)
+- markdown: Validates the asset name has extension using the specified asset name
+- code: internal static void ValidateAssetNameHasExtension(string assetName)
+- h4: Parameters
+- parameters:
+  - name: assetName
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The asset name
+- h4: Exceptions
+- parameters:
+  - type:
+    - text: ArgumentException
+      url: https://learn.microsoft.com/dotnet/api/system.argumentexception
+    description: The asset name must have extension.
+- api3: ValidateAssetNameHasNoInvalidChars(string)
+  id: Alis_Core_Aspect_Data_Resource_AssetManager_ValidateAssetNameHasNoInvalidChars_System_String_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Resource/AssetManager.cs#L97
+  metadata:
+    uid: Alis.Core.Aspect.Data.Resource.AssetManager.ValidateAssetNameHasNoInvalidChars(System.String)
+    commentId: M:Alis.Core.Aspect.Data.Resource.AssetManager.ValidateAssetNameHasNoInvalidChars(System.String)
+- markdown: Validates the asset name has no invalid chars using the specified asset name
+- code: internal static void ValidateAssetNameHasNoInvalidChars(string assetName)
+- h4: Parameters
+- parameters:
+  - name: assetName
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The asset name
+- h4: Exceptions
+- parameters:
+  - type:
+    - text: ArgumentException
+      url: https://learn.microsoft.com/dotnet/api/system.argumentexception
+    description: The asset name contains invalid characters.
+- api3: ValidateAssetNameIsNotEmpty(string)
+  id: Alis_Core_Aspect_Data_Resource_AssetManager_ValidateAssetNameIsNotEmpty_System_String_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Resource/AssetManager.cs#L84
+  metadata:
+    uid: Alis.Core.Aspect.Data.Resource.AssetManager.ValidateAssetNameIsNotEmpty(System.String)
+    commentId: M:Alis.Core.Aspect.Data.Resource.AssetManager.ValidateAssetNameIsNotEmpty(System.String)
+- markdown: Validates the asset name is not empty using the specified asset name
+- code: internal static void ValidateAssetNameIsNotEmpty(string assetName)
+- h4: Parameters
+- parameters:
+  - name: assetName
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The asset name
+- h4: Exceptions
+- parameters:
+  - type:
+    - text: ArgumentException
+      url: https://learn.microsoft.com/dotnet/api/system.argumentexception
+    description: The asset name cannot be empty.
+- api3: ValidateAssetNameIsNotNull(string)
+  id: Alis_Core_Aspect_Data_Resource_AssetManager_ValidateAssetNameIsNotNull_System_String_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Resource/AssetManager.cs#L71
+  metadata:
+    uid: Alis.Core.Aspect.Data.Resource.AssetManager.ValidateAssetNameIsNotNull(System.String)
+    commentId: M:Alis.Core.Aspect.Data.Resource.AssetManager.ValidateAssetNameIsNotNull(System.String)
+- markdown: Validates the asset name is not null using the specified asset name
+- code: internal static void ValidateAssetNameIsNotNull(string assetName)
+- h4: Parameters
+- parameters:
+  - name: assetName
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The asset name
+- h4: Exceptions
+- parameters:
+  - type:
+    - text: ArgumentNullException
+      url: https://learn.microsoft.com/dotnet/api/system.argumentnullexception
+    description: ''
+- api3: ValidateFileCount(string[], string)
+  id: Alis_Core_Aspect_Data_Resource_AssetManager_ValidateFileCount_System_String___System_String_
+  src: https://github.com/pabllopf/Alis/blob/master/6_Ideation/Data/src/Resource/AssetManager.cs#L152
+  metadata:
+    uid: Alis.Core.Aspect.Data.Resource.AssetManager.ValidateFileCount(System.String[],System.String)
+    commentId: M:Alis.Core.Aspect.Data.Resource.AssetManager.ValidateFileCount(System.String[],System.String)
+- markdown: Validates the file count using the specified files
+- code: internal static void ValidateFileCount(string[] files, string assetName)
+- h4: Parameters
+- parameters:
+  - name: files
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    - '['
+    - ']'
+    description: The files
+  - name: assetName
+    type:
+    - text: string
+      url: https://learn.microsoft.com/dotnet/api/system.string
+    description: The asset name
+- h4: Exceptions
+- parameters:
+  - type:
+    - text: InvalidOperationException
+      url: https://learn.microsoft.com/dotnet/api/system.invalidoperationexception
+    description: >-
+      Multiple files with the name '{assetName}' were found. Unable to determine
+
+      the correct file.
+languageId: csharp
+metadata:
+  description: The example class

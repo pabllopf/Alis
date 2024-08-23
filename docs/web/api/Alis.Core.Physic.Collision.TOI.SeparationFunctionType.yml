@@ -1,0 +1,38 @@
+### YamlMime:ApiPage
+title: Enum SeparationFunctionType
+body:
+- api1: Enum SeparationFunctionType
+  id: Alis_Core_Physic_Collision_TOI_SeparationFunctionType
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Collision/TOI/SeparationFunctionType.cs#L35
+  metadata:
+    uid: Alis.Core.Physic.Collision.TOI.SeparationFunctionType
+    commentId: T:Alis.Core.Physic.Collision.TOI.SeparationFunctionType
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Physic.Collision.TOI
+      url: Alis.Core.Physic.Collision.TOI.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The separation function type enum
+- code: public enum SeparationFunctionType
+- h2: Fields
+- parameters:
+  - name: Points
+    default: "0"
+    description: >+
+      The points separation function type
+
+  - name: FaceA
+    default: "1"
+    description: >+
+      The face separation function type
+
+  - name: FaceB
+    default: "2"
+    description: >+
+      The face separation function type
+
+languageId: csharp
+metadata:
+  description: The separation function type enum

@@ -1,0 +1,89 @@
+### YamlMime:ApiPage
+title: Class PositionSolverManifold
+body:
+- api1: Class PositionSolverManifold
+  id: Alis_Core_Physic_Dynamics_Solver_PositionSolverManifold
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/PositionSolverManifold.cs#L40
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Solver.PositionSolverManifold
+    commentId: T:Alis.Core.Physic.Dynamics.Solver.PositionSolverManifold
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Physic.Dynamics.Solver
+      url: Alis.Core.Physic.Dynamics.Solver.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The position solver manifold class
+- code: public static class PositionSolverManifold
+- h4: Inheritance
+- inheritance:
+  - text: object
+    url: https://learn.microsoft.com/dotnet/api/system.object
+  - text: PositionSolverManifold
+    url: Alis.Core.Physic.Dynamics.Solver.PositionSolverManifold.html
+- h4: Inherited Members
+- list:
+  - text: object.Equals(object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - text: object.Equals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - text: object.GetHashCode()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - text: object.GetType()
+    url: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - text: object.MemberwiseClone()
+    url: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - text: object.ReferenceEquals(object?, object?)
+    url: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - text: object.ToString()
+    url: https://learn.microsoft.com/dotnet/api/system.object.tostring
+- h2: Methods
+- api3: Initialize(ContactPositionConstraint, ref Transform, ref Transform, int, out Vector2, out Vector2, out float)
+  id: Alis_Core_Physic_Dynamics_Solver_PositionSolverManifold_Initialize_Alis_Core_Physic_Dynamics_Solver_ContactPositionConstraint_Alis_Core_Aspect_Math_Transform__Alis_Core_Aspect_Math_Transform__System_Int32_Alis_Core_Aspect_Math_Vector_Vector2__Alis_Core_Aspect_Math_Vector_Vector2__System_Single__
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Physic/src/Dynamics/Solver/PositionSolverManifold.cs#L52
+  metadata:
+    uid: Alis.Core.Physic.Dynamics.Solver.PositionSolverManifold.Initialize(Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint,Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Transform@,System.Int32,Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@,System.Single@)
+    commentId: M:Alis.Core.Physic.Dynamics.Solver.PositionSolverManifold.Initialize(Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint,Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Transform@,System.Int32,Alis.Core.Aspect.Math.Vector.Vector2@,Alis.Core.Aspect.Math.Vector.Vector2@,System.Single@)
+- markdown: Initializes the pc
+- code: public static void Initialize(ContactPositionConstraint pc, ref Transform xfA, ref Transform xfB, int index, out Vector2 normal, out Vector2 point, out float separation)
+- h4: Parameters
+- parameters:
+  - name: pc
+    type:
+    - text: ContactPositionConstraint
+      url: Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint.html
+    description: The pc
+  - name: xfA
+    type:
+    - text: Transform
+      url: Alis.Core.Aspect.Math.Transform.html
+    description: The xf
+  - name: xfB
+    type:
+    - text: Transform
+      url: Alis.Core.Aspect.Math.Transform.html
+    description: The xf
+  - name: index
+    type:
+    - text: int
+      url: https://learn.microsoft.com/dotnet/api/system.int32
+    description: The index
+  - name: normal
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The normal
+  - name: point
+    type:
+    - text: Vector2
+      url: Alis.Core.Aspect.Math.Vector.Vector2.html
+    description: The point
+  - name: separation
+    type:
+    - text: float
+      url: https://learn.microsoft.com/dotnet/api/system.single
+    description: The separation
+languageId: csharp
+metadata:
+  description: The position solver manifold class

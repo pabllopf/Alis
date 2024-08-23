@@ -1,0 +1,43 @@
+### YamlMime:ApiPage
+title: Enum Haptic
+body:
+- api1: Enum Haptic
+  id: Alis_Core_Graphic_Sdl2_Enums_Haptic
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Enums/Haptic.cs#L35
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Enums.Haptic
+    commentId: T:Alis.Core.Graphic.Sdl2.Enums.Haptic
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Enums
+      url: Alis.Core.Graphic.Sdl2.Enums.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The haptic enum
+- code: 'public enum Haptic : byte'
+- h2: Fields
+- parameters:
+  - name: HapticPolar
+    default: "0"
+    description: >+
+      The sdl haptic polar
+
+  - name: HapticCartesian
+    default: "1"
+    description: >+
+      The sdl haptic cartesian
+
+  - name: HapticSpherical
+    default: "2"
+    description: >+
+      The sdl haptic spherical
+
+  - name: HapticSteeringAxis
+    default: "3"
+    description: >+
+      The sdl haptic steering axis
+
+languageId: csharp
+metadata:
+  description: The haptic enum

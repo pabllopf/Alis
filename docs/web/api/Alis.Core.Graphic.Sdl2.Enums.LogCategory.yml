@@ -1,0 +1,123 @@
+### YamlMime:ApiPage
+title: Enum LogCategory
+body:
+- api1: Enum LogCategory
+  id: Alis_Core_Graphic_Sdl2_Enums_LogCategory
+  src: https://github.com/pabllopf/Alis/blob/master/4_Operation/Graphic/src/Sdl2/Enums/LogCategory.cs#L35
+  metadata:
+    uid: Alis.Core.Graphic.Sdl2.Enums.LogCategory
+    commentId: T:Alis.Core.Graphic.Sdl2.Enums.LogCategory
+- facts:
+  - name: Namespace
+    value:
+      text: Alis.Core.Graphic.Sdl2.Enums
+      url: Alis.Core.Graphic.Sdl2.Enums.html
+  - name: Assembly
+    value: Alis.dll
+- markdown: The sdl log category enum
+- code: public enum LogCategory
+- h2: Fields
+- parameters:
+  - name: SdlLogCategoryApplication
+    default: "0"
+    description: >+
+      The sdl log category application sdl log category
+
+  - name: SdlLogCategoryError
+    default: "1"
+    description: >+
+      The sdl log category error sdl log category
+
+  - name: SdlLogCategoryAssert
+    default: "2"
+    description: >+
+      The sdl log category assert sdl log category
+
+  - name: SdlLogCategorySystem
+    default: "3"
+    description: >+
+      The sdl log category system sdl log category
+
+  - name: SdlLogCategoryAudio
+    default: "4"
+    description: >+
+      The sdl log category audio sdl log category
+
+  - name: SdlLogCategoryVideo
+    default: "5"
+    description: >+
+      The sdl log category video sdl log category
+
+  - name: SdlLogCategoryRender
+    default: "6"
+    description: >+
+      The sdl log category render sdl log category
+
+  - name: SdlLogCategoryInput
+    default: "7"
+    description: >+
+      The sdl log category input sdl log category
+
+  - name: SdlLogCategoryTest
+    default: "8"
+    description: >+
+      The sdl log category test sdl log category
+
+  - name: SdlLogCategoryReserved1
+    default: "9"
+    description: >+
+      The sdl log category reserved1 sdl log category
+
+  - name: SdlLogCategoryReserved2
+    default: "10"
+    description: >+
+      The sdl log category reserved2 sdl log category
+
+  - name: SdlLogCategoryReserved3
+    default: "11"
+    description: >+
+      The sdl log category reserved3 sdl log category
+
+  - name: SdlLogCategoryReserved4
+    default: "12"
+    description: >+
+      The sdl log category reserved4 sdl log category
+
+  - name: SdlLogCategoryReserved5
+    default: "13"
+    description: >+
+      The sdl log category reserved5 sdl log category
+
+  - name: SdlLogCategoryReserved6
+    default: "14"
+    description: >+
+      The sdl log category reserved6 sdl log category
+
+  - name: SdlLogCategoryReserved7
+    default: "15"
+    description: >+
+      The sdl log category reserved7 sdl log category
+
+  - name: SdlLogCategoryReserved8
+    default: "16"
+    description: >+
+      The sdl log category reserved8 sdl log category
+
+  - name: SdlLogCategoryReserved9
+    default: "17"
+    description: >+
+      The sdl log category reserved9 sdl log category
+
+  - name: SdlLogCategoryReserved10
+    default: "18"
+    description: >+
+      The sdl log category reserved10 sdl log category
+
+  - name: SdlLogCategoryCustom
+    default: "19"
+    description: >+
+      The sdl log category custom sdl log category
+
+languageId: csharp
+metadata:
+  description: The sdl log category enum
