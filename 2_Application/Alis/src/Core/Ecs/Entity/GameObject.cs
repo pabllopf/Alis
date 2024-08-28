@@ -57,7 +57,7 @@ namespace Alis.Core.Ecs.Entity
             Id = Guid.NewGuid().ToString();
             Tag = GetType().Name;
             Transform = new Transform(new Vector2(0, 0), new Rotation(0), new Vector2(1, 1));
-            Components = new Dictionary<Type, AComponent>();
+            Components = new Dictionary<string, AComponent>();
         }
         
         /// <summary>
@@ -76,7 +76,7 @@ namespace Alis.Core.Ecs.Entity
             Id = id;
             Tag = tag;
             Transform = transform;
-            Components = new Dictionary<Type, AComponent>();
+            Components = new Dictionary<string, AComponent>();
         }
         
         /// <summary>
@@ -88,7 +88,7 @@ namespace Alis.Core.Ecs.Entity
         /// <param name="tag">The tag</param>
         /// <param name="transform">The transform</param>
         /// <param name="components">The components</param>
-        public GameObject(bool isEnable, string name, string id, string tag, Transform transform, Dictionary<Type, AComponent> components) : this()
+        public GameObject(bool isEnable, string name, string id, string tag, Transform transform, Dictionary<string, AComponent> components) : this()
         {
             IsEnable = isEnable;
             Name = name;
@@ -144,7 +144,7 @@ namespace Alis.Core.Ecs.Entity
         ///     Gets or sets the value of the components
         /// </summary>
         [JsonPropertyName("_Components_")]
-        public Dictionary<Type, AComponent> Components { get; set; }
+        public Dictionary<string, AComponent> Components { get; set; }
         
         /// <summary>
         ///     Adds the component
@@ -153,13 +153,14 @@ namespace Alis.Core.Ecs.Entity
         /// <param name="component">The component</param>
         public void Add<T>(T component) where T : AComponent
         {
-            if (Components.ContainsKey(typeof(T)))
+            string name = component.GetType().FullName;
+            if (Components.ContainsKey(name ?? throw new InvalidOperationException()))
             {
-                Components[typeof(T)] = component;
+                Components[name] = component;
             }
             else
             {
-                Components.Add(typeof(T), component);
+                Components.Add(name, component);
             }
         }
         
@@ -173,7 +174,7 @@ namespace Alis.Core.Ecs.Entity
             if (component != null && Components.Count > 0)
             {
                 // Use the type of the component to remove it from the dictionary
-                Components.Remove(typeof(T));
+                Components.Remove( component.GetType().FullName ?? throw new InvalidOperationException());
             }
         }
         
@@ -184,7 +185,7 @@ namespace Alis.Core.Ecs.Entity
         /// <returns>The</returns>
         public T Get<T>() where T : AComponent
         {
-            if (Components.TryGetValue(typeof(T), out AComponent component))
+            if (Components.TryGetValue(typeof(T).FullName ?? throw new InvalidOperationException(), out AComponent component))
             {
                 return (T)component;
             }
@@ -199,10 +200,9 @@ namespace Alis.Core.Ecs.Entity
         /// <returns>The bool</returns>
         public bool Contains<T>() where T : AComponent
         {
-            return Components.ContainsKey(typeof(T));
+            return Components.ContainsKey(typeof(T).FullName ?? throw new InvalidOperationException());
         }
         
-
         /// <summary>
         /// Clears this instance
         /// </summary>

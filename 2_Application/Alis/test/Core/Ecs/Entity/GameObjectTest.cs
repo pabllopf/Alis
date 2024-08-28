@@ -431,9 +431,9 @@ namespace Alis.Test.Core.Ecs.Entity
             Assert.Empty(gameObject.Components);
             
             List<AComponent> componentList = new List<AComponent> {new Sample2Component()};
-            gameObject.Components = new Dictionary<Type, AComponent>
+            gameObject.Components = new Dictionary<string, AComponent>
             {
-                {typeof(Sample2Component), componentList[0]}
+                {typeof(Sample2Component).FullName, componentList[0]}
             };
             Assert.Equal(componentList, gameObject.Components.Values);
         }

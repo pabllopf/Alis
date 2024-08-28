@@ -32,6 +32,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Alis.Core.Aspect.Data.Json;
+using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
@@ -274,9 +275,10 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Logger.Info($"Display {displayIndex} SELECTED Mode: {displayMode2.format}, {displayMode2.w}, {displayMode2.h}, {displayMode2.refresh_rate}");
             Sdl.SetWindowDisplayMode(Window, ref displayMode2);
             
-            if (!string.IsNullOrEmpty(Context.Settings.General.Icon) && File.Exists(Context.Settings.General.Icon))
+            
+            if (!string.IsNullOrEmpty(Context.Settings.General.Icon) && File.Exists(AssetManager.Find(Context.Settings.General.Icon)))
             {
-                IntPtr icon = Sdl.LoadBmp(Context.Settings.General.Icon);
+                IntPtr icon = Sdl.LoadBmp(AssetManager.Find(Context.Settings.General.Icon));
                 Sdl.SetWindowIcon(Window, icon);
             }
             
