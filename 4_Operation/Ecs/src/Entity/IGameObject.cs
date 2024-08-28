@@ -41,6 +41,6 @@ namespace Alis.Core.Ecs.Entity
         /// <summary>
         ///     Gets or sets the value of the components
         /// </summary>
-        public Dictionary<Type, T> Components { get; set; }
+        public Dictionary<string, T> Components { get; set; }
     }
 }
