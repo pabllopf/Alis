@@ -4,4 +4,13 @@
     <PropertyGroup>
         <OutDir>bin/$(Configuration)/$(RuntimeIdentifier)/lib/$(TargetFramework)/</OutDir>
     </PropertyGroup>
+    <ItemGroup>
+      <Compile Remove="Benchmarks\**" />
+    </ItemGroup>
+    <ItemGroup>
+      <EmbeddedResource Remove="Benchmarks\**" />
+    </ItemGroup>
+    <ItemGroup>
+      <None Remove="Benchmarks\**" />
+    </ItemGroup>
 </Project>
