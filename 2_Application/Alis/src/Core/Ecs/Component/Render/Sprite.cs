@@ -132,10 +132,10 @@ namespace Alis.Core.Ecs.Component.Render
             Sdl.QueryTexture(Image.Texture, out _, out _, out w, out h);
 
             dstRect = new RectangleI(
-                (int) (GameObject.Transform.Position.X - w * GameObject.Transform.Scale.X / 2),
-                (int) (GameObject.Transform.Position.Y - h * GameObject.Transform.Scale.Y / 2),
-                (int) (w * GameObject.Transform.Scale.X),
-                (int) (h * GameObject.Transform.Scale.Y));
+                 (int)(GameObject.Transform.Position.X - w * GameObject.Transform.Scale.X / 2),
+                 (int)(GameObject.Transform.Position.Y - h * GameObject.Transform.Scale.Y / 2),
+                 (int)(w * GameObject.Transform.Scale.X),
+                 (int)(h * GameObject.Transform.Scale.Y));
         }
         
         /// <summary>
@@ -146,27 +146,27 @@ namespace Alis.Core.Ecs.Component.Render
             Context?.GraphicManager.UnAttach(this);
         }
         
-        /// <summary>
-        ///     Renders the renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="camera"></param>
         public void Render(IntPtr renderer, Camera camera)
         {
             if (Context is null)
             {
                 return;
             }
-            /*
-            Sdl.QueryTexture(Image.Texture, out _, out _, out int w, out int h);
-            
-            RectangleI dstRect = new RectangleI(
-                (int) (GameObject.Transform.Position.X - w * GameObject.Transform.Scale.X / 2 - (camera.Viewport.X - camera.Viewport.W / 2) + camera.CameraBorder),
-                (int) (GameObject.Transform.Position.Y - h * GameObject.Transform.Scale.Y / 2 - (camera.Viewport.Y - camera.Viewport.H / 2) + camera.CameraBorder),
-                (int) (w * GameObject.Transform.Scale.X),
-                (int) (h * GameObject.Transform.Scale.Y));
-            
-            Sdl.RenderCopyEx(renderer, Image.Texture, IntPtr.Zero, ref dstRect, GameObject.Transform.Rotation.Angle, IntPtr.Zero, Flips);*/
+
+            float halfViewportWidth = camera.Viewport.W / 2;
+            float halfViewportHeight = camera.Viewport.H / 2;
+            float cameraBorder = camera.CameraBorder;
+            float scaleX = GameObject.Transform.Scale.X;
+            float scaleY = GameObject.Transform.Scale.Y;
+            float posX = GameObject.Transform.Position.X;
+            float posY = GameObject.Transform.Position.Y;
+
+            dstRect.X = (int)(posX - w * scaleX / 2 - (camera.Viewport.X - halfViewportWidth) + cameraBorder);
+            dstRect.Y = (int)(posY - h * scaleY / 2 - (camera.Viewport.Y - halfViewportHeight) + cameraBorder);
+            dstRect.W = (int)(w * scaleX);
+            dstRect.H = (int)(h * scaleY);
+
+            Sdl.RenderCopyEx(renderer, Image.Texture, IntPtr.Zero, ref dstRect, GameObject.Transform.Rotation.Angle, IntPtr.Zero, Flips);
         }
         
         /// <summary>
@@ -180,24 +180,12 @@ namespace Alis.Core.Ecs.Component.Render
                 return;
             }
 
-            dstRect.X = (int) (GameObject.Transform.Position.X - w * GameObject.Transform.Scale.X / 2);
-            dstRect.Y = (int) (GameObject.Transform.Position.Y - h * GameObject.Transform.Scale.Y / 2);
-            dstRect.W = (int) (w * GameObject.Transform.Scale.X);
-            dstRect.H = (int) (h * GameObject.Transform.Scale.Y);
+            dstRect.X =  (int)(GameObject.Transform.Position.X - w * GameObject.Transform.Scale.X / 2);
+            dstRect.Y =  (int)(GameObject.Transform.Position.Y - h * GameObject.Transform.Scale.Y / 2);
+            dstRect.W =  (int)(w * GameObject.Transform.Scale.X);
+            dstRect.H =  (int)(h * GameObject.Transform.Scale.Y);
             
             Sdl.RenderCopyEx(renderer, Image.Texture, IntPtr.Zero, ref dstRect, GameObject.Transform.Rotation.Angle, IntPtr.Zero, Flips);
-            
-            
-            /*
-            Sdl.QueryTexture(Image.Texture, out _, out _, out int w, out int h);
-            
-            RectangleI dstRect = new RectangleI(
-                (int) (GameObject.Transform.Position.X - w * GameObject.Transform.Scale.X / 2),
-                (int) (GameObject.Transform.Position.Y - h * GameObject.Transform.Scale.Y / 2),
-                (int) (w * GameObject.Transform.Scale.X),
-                (int) (h * GameObject.Transform.Scale.Y));
-            
-            Sdl.RenderCopyEx(renderer, Image.Texture, IntPtr.Zero, ref dstRect, GameObject.Transform.Rotation.Angle, IntPtr.Zero, Flips);*/
         }
     }
 }
