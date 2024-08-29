@@ -46,6 +46,12 @@ namespace Alis.Core.Ecs.Component.Render
         AComponent,
         IBuilder<SpriteBuilder>
     {
+        private RectangleI dstRect;
+        
+        private int w;
+        
+        private int h;
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="Sprite" /> class
         /// </summary>
@@ -121,6 +127,17 @@ namespace Alis.Core.Ecs.Component.Render
             Context?.GraphicManager.Attach(this);
         }
         
+        public override void OnStart()
+        {
+            Sdl.QueryTexture(Image.Texture, out _, out _, out w, out h);
+
+            dstRect = new RectangleI(
+                (int) (GameObject.Transform.Position.X - w * GameObject.Transform.Scale.X / 2),
+                (int) (GameObject.Transform.Position.Y - h * GameObject.Transform.Scale.Y / 2),
+                (int) (w * GameObject.Transform.Scale.X),
+                (int) (h * GameObject.Transform.Scale.Y));
+        }
+        
         /// <summary>
         ///     Exits this instance
         /// </summary>
@@ -140,7 +157,7 @@ namespace Alis.Core.Ecs.Component.Render
             {
                 return;
             }
-            
+            /*
             Sdl.QueryTexture(Image.Texture, out _, out _, out int w, out int h);
             
             RectangleI dstRect = new RectangleI(
@@ -149,7 +166,7 @@ namespace Alis.Core.Ecs.Component.Render
                 (int) (w * GameObject.Transform.Scale.X),
                 (int) (h * GameObject.Transform.Scale.Y));
             
-            Sdl.RenderCopyEx(renderer, Image.Texture, IntPtr.Zero, ref dstRect, GameObject.Transform.Rotation.Angle, IntPtr.Zero, Flips);
+            Sdl.RenderCopyEx(renderer, Image.Texture, IntPtr.Zero, ref dstRect, GameObject.Transform.Rotation.Angle, IntPtr.Zero, Flips);*/
         }
         
         /// <summary>
@@ -162,7 +179,16 @@ namespace Alis.Core.Ecs.Component.Render
             {
                 return;
             }
+
+            dstRect.X = (int) (GameObject.Transform.Position.X - w * GameObject.Transform.Scale.X / 2);
+            dstRect.Y = (int) (GameObject.Transform.Position.Y - h * GameObject.Transform.Scale.Y / 2);
+            dstRect.W = (int) (w * GameObject.Transform.Scale.X);
+            dstRect.H = (int) (h * GameObject.Transform.Scale.Y);
             
+            Sdl.RenderCopyEx(renderer, Image.Texture, IntPtr.Zero, ref dstRect, GameObject.Transform.Rotation.Angle, IntPtr.Zero, Flips);
+            
+            
+            /*
             Sdl.QueryTexture(Image.Texture, out _, out _, out int w, out int h);
             
             RectangleI dstRect = new RectangleI(
@@ -171,7 +197,7 @@ namespace Alis.Core.Ecs.Component.Render
                 (int) (w * GameObject.Transform.Scale.X),
                 (int) (h * GameObject.Transform.Scale.Y));
             
-            Sdl.RenderCopyEx(renderer, Image.Texture, IntPtr.Zero, ref dstRect, GameObject.Transform.Rotation.Angle, IntPtr.Zero, Flips);
+            Sdl.RenderCopyEx(renderer, Image.Texture, IntPtr.Zero, ref dstRect, GameObject.Transform.Rotation.Angle, IntPtr.Zero, Flips);*/
         }
     }
 }
