@@ -285,7 +285,22 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             {
                 sprite.Render(Renderer);
             }
+            
+            if (Context.Settings.Physic.DebugMode)
+            {
+                // Sets color
+                Color color = Context.Settings.Physic.DebugColor;
+            
+                // render color
+                Sdl.SetRenderDrawColor(Renderer, color.R, color.G, color.B, color.A);
 
+                foreach (BoxCollider collider in ColliderBases)
+                {
+                    Sdl.RenderDrawRectF(Renderer, ref collider.RectangleF);
+                }
+            }
+
+            Sdl.SetRenderDrawColor(Renderer, 0, 0, 0, 255);
             Sdl.RenderPresent(Renderer);
         }
 
