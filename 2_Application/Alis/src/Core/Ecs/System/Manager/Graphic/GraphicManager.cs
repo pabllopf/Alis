@@ -31,6 +31,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Data.Dll;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
@@ -153,37 +155,9 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Version version = Sdl.GetVersion();
             Logger.Info(@$"SDL2 VERSION {version.major}.{version.minor}.{version.patch}");
             
-/*
-            // CONFIG THE SDL2 AN OPENGL CONFIGURATION
-            Sdl.SetAttributeByInt(GlAttr.SdlGlContextFlags, (int) GlContexts.SdlGlContextForwardCompatibleFlag);
-            Sdl.SetAttributeByProfile(GlAttr.SdlGlContextProfileMask, GlProfiles.SdlGlContextProfileCore);
-            Sdl.SetAttributeByInt(GlAttr.SdlGlContextMajorVersion, 3);
-            Sdl.SetAttributeByInt(GlAttr.SdlGlContextMinorVersion, 2);
-
-            Sdl.SetAttributeByProfile(GlAttr.SdlGlContextProfileMask, GlProfiles.SdlGlContextProfileCore);
-            Sdl.SetAttributeByInt(GlAttr.SdlGlDoubleBuffer, 1);
-            Sdl.SetAttributeByInt(GlAttr.SdlGlDepthSize, 24);
-            Sdl.SetAttributeByInt(GlAttr.SdlGlAlphaSize, 8);
-            Sdl.SetAttributeByInt(GlAttr.SdlGlStencilSize, 8);
-
             // Enable vsync
             Sdl.SetSwapInterval(1);
-
-            if (EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.Windows)
-            {
-                Sdl.SetHint(Hint.HintRenderDriver, "opengl");
-            }
-
-            if (EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.OSX)
-            {
-                Sdl.SetHint(Hint.HintRenderDriver, "opengl");
-            }
-
-            if (EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.Linux)
-            {
-                Sdl.SetHint(Hint.HintRenderDriver, "opengl");
-            }*/
-            
+            Sdl.SetHint(Hint.HintRenderDriver, "opengl");
             
             // Create the window
             // create the window which should be able to have a valid OpenGL context and is resizable
@@ -305,17 +279,73 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// </summary>
         public override void OnUpdate()
         {
-            if (Context is null)
-            {
-                return;
-            }
+            Sdl.RenderClear(Renderer);
             
-            SetWindowTitle();
-            RenderSpritesAndDebugMode();
-            DrawCameraTexture();
+            foreach (Sprite sprite in Sprites)
+            {
+                sprite.Render(Renderer);
+            }
+
             Sdl.RenderPresent(Renderer);
         }
+
+        /// <summary>
+        ///     Attaches the sprite
+        /// </summary>
+        /// <param name="sprite">The sprite</param>
+        public void Attach(Sprite sprite)
+        {
+            Sprites.Add(sprite);
+            Sprites = Sprites.OrderBy(o => o.Depth).ToList();
+        }
         
+        /// <summary>
+        ///     Uns the attach using the specified sprite
+        /// </summary>
+        /// <param name="sprite">The sprite</param>
+        public void UnAttach(Sprite sprite)
+        {
+            Sprites.Remove(sprite);
+            Sprites = Sprites.OrderBy(o => o.Depth).ToList();
+        }
+        
+        /// <summary>
+        ///     Attaches the collider
+        /// </summary>
+        /// <param name="collider">The collider</param>
+        public void Attach(BoxCollider collider)
+        {
+            ColliderBases.Add(collider);
+        }
+        
+        /// <summary>
+        ///     Attaches the camera
+        /// </summary>
+        /// <param name="camera">The camera</param>
+        public void Attach(Camera camera)
+        {
+            Cameras.Add(camera);
+        }
+        
+        /// <summary>
+        ///     Uns the attach using the specified collider
+        /// </summary>
+        /// <param name="collider">The collider</param>
+        public void UnAttach(BoxCollider collider)
+        {
+            ColliderBases.Remove(collider);
+        }
+        
+        /// <summary>
+        ///     Uns the attach using the specified camera
+        /// </summary>
+        /// <param name="camera">The camera</param>
+        public void UnAttach(Camera camera)
+        {
+            Cameras.Remove(camera);
+        }
+        
+        /*
         /// <summary>
         ///     Ons the exit
         /// </summary>
@@ -348,8 +378,6 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                 Sdl.SetRenderDrawColor(Renderer, camera.BackgroundColor.R, camera.BackgroundColor.G, camera.BackgroundColor.B, camera.BackgroundColor.A);
                 Sdl.RenderClear(Renderer);
                 
-                Sprites = Sprites.OrderBy(o => o.Depth).ToList();
-                
                 // Draws sprites:
                 foreach (Sprite sprite in Sprites.Where(sprite => sprite.Image != null))
                 {
@@ -361,9 +389,9 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                     DrawDebugRectangles(camera);
                 }
                 
-                Sdl.SetRenderTarget(Renderer, IntPtr.Zero);
-                Sdl.SetRenderDrawColor(Renderer, 0, 0, 0, 255);
-                Sdl.RenderClear(Renderer);
+                //Sdl.SetRenderTarget(Renderer, IntPtr.Zero);
+                //Sdl.SetRenderDrawColor(Renderer, 0, 0, 0, 255);
+                //Sdl.RenderClear(Renderer);
             }
         }
         
@@ -508,6 +536,6 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         public void UnAttach(Camera camera)
         {
             Cameras.Remove(camera);
-        }
+        }*/
     }
 }
