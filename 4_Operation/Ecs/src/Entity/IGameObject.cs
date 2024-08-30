@@ -42,5 +42,10 @@ namespace Alis.Core.Ecs.Entity
         ///     Gets or sets the value of the components
         /// </summary>
         public Dictionary<string, T> Components { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the value of the is static
+        /// </summary>
+        public bool IsStatic { get; set; }
     }
 }

@@ -31,7 +31,9 @@ using System;
 using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
+using Alis.Core.Ecs.Component.Collider;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;
 
@@ -46,10 +48,19 @@ namespace Alis.Core.Ecs.Component.Render
         AComponent,
         IBuilder<SpriteBuilder>
     {
+        /// <summary>
+        /// The dst rect
+        /// </summary>
         private RectangleI dstRect;
-        
+
+        /// <summary>
+        /// The 
+        /// </summary>
         private int w;
-        
+
+        /// <summary>
+        /// The 
+        /// </summary>
         private int h;
 
         /// <summary>
@@ -61,7 +72,7 @@ namespace Alis.Core.Ecs.Component.Render
             Depth = 0;
             Flips = RendererFlips.None;
         }
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="Sprite" /> class
         /// </summary>
@@ -72,7 +83,7 @@ namespace Alis.Core.Ecs.Component.Render
             Depth = 0;
             Flips = RendererFlips.None;
         }
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="Sprite" /> class
         /// </summary>
@@ -86,31 +97,31 @@ namespace Alis.Core.Ecs.Component.Render
             Depth = depth;
             Flips = flips;
         }
-        
+
         /// <summary>
         ///     The image
         /// </summary>
         [JsonPropertyName("_Image_")]
         public Image Image { get; set; }
-        
+
         /// <summary>
         ///     The level
         /// </summary>
         [JsonPropertyName("_Depth_")]
         public int Depth { get; set; }
-        
+
         /// <summary>
         ///     Gets or sets the value of the flip
         /// </summary>
         [JsonPropertyName("_Flips_")]
         public RendererFlips Flips { get; set; }
-        
+
         /// <summary>
         ///     Builders this instance
         /// </summary>
         /// <returns>The sprite builder</returns>
         public SpriteBuilder Builder() => new SpriteBuilder();
-        
+
         /// <summary>
         ///     Inits this instance
         /// </summary>
@@ -118,7 +129,7 @@ namespace Alis.Core.Ecs.Component.Render
         {
             Image.Load();
         }
-        
+
         /// <summary>
         ///     Awakes this instance
         /// </summary>
@@ -126,18 +137,22 @@ namespace Alis.Core.Ecs.Component.Render
         {
             Context?.GraphicManager.Attach(this);
         }
-        
+
+        /// <summary>
+        /// Ons the start
+        /// </summary>
         public override void OnStart()
         {
             Sdl.QueryTexture(Image.Texture, out _, out _, out w, out h);
 
+            
             dstRect = new RectangleI(
-                 (int)(GameObject.Transform.Position.X - w * GameObject.Transform.Scale.X / 2),
-                 (int)(GameObject.Transform.Position.Y - h * GameObject.Transform.Scale.Y / 2),
-                 (int)(w * GameObject.Transform.Scale.X),
-                 (int)(h * GameObject.Transform.Scale.Y));
+                (int) (GameObject.Transform.Position.X - w * GameObject.Transform.Scale.X / 2),
+                (int) (GameObject.Transform.Position.Y - h * GameObject.Transform.Scale.Y / 2),
+                (int) (w * GameObject.Transform.Scale.X),
+                (int) (h * GameObject.Transform.Scale.Y));
         }
-        
+
         /// <summary>
         ///     Exits this instance
         /// </summary>
@@ -145,7 +160,12 @@ namespace Alis.Core.Ecs.Component.Render
         {
             Context?.GraphicManager.UnAttach(this);
         }
-        
+
+        /// <summary>
+        /// Renders the sprite
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="camera">The camera</param>
         public void Render(IntPtr renderer, Camera camera)
         {
             if (Context is null)
@@ -153,22 +173,21 @@ namespace Alis.Core.Ecs.Component.Render
                 return;
             }
 
+            // Calculate camera's viewport in world coordinates
             float halfViewportWidth = camera.Viewport.W / 2;
             float halfViewportHeight = camera.Viewport.H / 2;
-            float cameraBorder = camera.CameraBorder;
-            float scaleX = GameObject.Transform.Scale.X;
-            float scaleY = GameObject.Transform.Scale.Y;
-            float posX = GameObject.Transform.Position.X;
-            float posY = GameObject.Transform.Position.Y;
+            float cameraLeft = camera.Viewport.X - halfViewportWidth;
+            float cameraTop = camera.Viewport.Y - halfViewportHeight;
 
-            dstRect.X = (int)(posX - w * scaleX / 2 - (camera.Viewport.X - halfViewportWidth) + cameraBorder);
-            dstRect.Y = (int)(posY - h * scaleY / 2 - (camera.Viewport.Y - halfViewportHeight) + cameraBorder);
-            dstRect.W = (int)(w * scaleX);
-            dstRect.H = (int)(h * scaleY);
+            // Adjust sprite's position based on the camera's position and viewport
+            dstRect.X = (int)(GameObject.Transform.Position.X - w * GameObject.Transform.Scale.X / 2 - cameraLeft);
+            dstRect.Y = (int)(GameObject.Transform.Position.Y - h * GameObject.Transform.Scale.Y / 2 - cameraTop);
+            dstRect.W = (int)(w * GameObject.Transform.Scale.X);
+            dstRect.H = (int)(h * GameObject.Transform.Scale.Y);
 
             Sdl.RenderCopyEx(renderer, Image.Texture, IntPtr.Zero, ref dstRect, GameObject.Transform.Rotation.Angle, IntPtr.Zero, Flips);
         }
-        
+
         /// <summary>
         ///     Renders the renderer
         /// </summary>
@@ -180,12 +199,42 @@ namespace Alis.Core.Ecs.Component.Render
                 return;
             }
 
-            dstRect.X =  (int)(GameObject.Transform.Position.X - w * GameObject.Transform.Scale.X / 2);
-            dstRect.Y =  (int)(GameObject.Transform.Position.Y - h * GameObject.Transform.Scale.Y / 2);
-            dstRect.W =  (int)(w * GameObject.Transform.Scale.X);
-            dstRect.H =  (int)(h * GameObject.Transform.Scale.Y);
-            
+            dstRect.X = (int) (GameObject.Transform.Position.X - w * GameObject.Transform.Scale.X / 2);
+            dstRect.Y = (int) (GameObject.Transform.Position.Y - h * GameObject.Transform.Scale.Y / 2);
+            dstRect.W = (int) (w * GameObject.Transform.Scale.X);
+            dstRect.H = (int) (h * GameObject.Transform.Scale.Y);
+
             Sdl.RenderCopyEx(renderer, Image.Texture, IntPtr.Zero, ref dstRect, GameObject.Transform.Rotation.Angle, IntPtr.Zero, Flips);
+        }
+
+        /// <summary>
+        /// Describes whether this instance is visible
+        /// </summary>
+        /// <param name="camera">The camera</param>
+        /// <returns>The is visible</returns>
+        public bool IsVisible(Camera camera)
+        {
+            // Calculate sprite's bounding box in world coordinates
+            float spriteLeft = GameObject.Transform.Position.X - (w * GameObject.Transform.Scale.X / 2);
+            float spriteRight = GameObject.Transform.Position.X + (w * GameObject.Transform.Scale.X / 2);
+            float spriteTop = GameObject.Transform.Position.Y - (h * GameObject.Transform.Scale.Y / 2);
+            float spriteBottom = GameObject.Transform.Position.Y + (h * GameObject.Transform.Scale.Y / 2);
+
+            // Calculate camera's viewport in world coordinates
+            float halfViewportWidth = camera.Viewport.W / 2;
+            float halfViewportHeight = camera.Viewport.H / 2;
+            float cameraLeft = camera.Viewport.X - halfViewportWidth;
+            float cameraRight = camera.Viewport.X + halfViewportWidth;
+            float cameraTop = camera.Viewport.Y - halfViewportHeight;
+            float cameraBottom = camera.Viewport.Y + halfViewportHeight;
+
+            // Check if the sprite's bounding box intersects with the camera's viewport
+            bool isVisible = spriteRight > cameraLeft &&
+                             spriteLeft < cameraRight &&
+                             spriteBottom > cameraTop &&
+                             spriteTop < cameraBottom;
+            
+            return isVisible;
         }
     }
 }

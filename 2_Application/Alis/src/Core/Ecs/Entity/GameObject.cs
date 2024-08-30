@@ -145,7 +145,13 @@ namespace Alis.Core.Ecs.Entity
         /// </summary>
         [JsonPropertyName("_Components_")]
         public Dictionary<string, AComponent> Components { get; set; }
-        
+
+        /// <summary>
+        /// Gets or sets the value of the is static
+        /// </summary>
+        [JsonPropertyName("_IsStatic_")]
+        public bool IsStatic { get; set; } = false;
+ 
         /// <summary>
         ///     Adds the component
         /// </summary>

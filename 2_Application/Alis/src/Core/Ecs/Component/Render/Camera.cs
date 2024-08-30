@@ -112,7 +112,12 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         [JsonPropertyName("_CameraBorder_")]
         public float CameraBorder { get; set; }
-        
+
+        /// <summary>
+        /// Gets or sets the value of the static viewport
+        /// </summary>
+        internal IntPtr StaticViewport { get; set; }
+
         /// <summary>
         ///     Builders this instance
         /// </summary>
@@ -136,7 +141,9 @@ namespace Alis.Core.Ecs.Component.Render
             
             Viewport = new RectangleI(x, y, w, h);
             TextureTarget = Sdl.CreateTexture(Context.GraphicManager.Renderer, Sdl.PixelFormatRgba8888, (int) TextureAccess.SdlTextureAccessTarget, Viewport.W, Viewport.H);
+            StaticViewport = Sdl.CreateTexture(Context.GraphicManager.Renderer, Sdl.PixelFormatRgba8888, (int) TextureAccess.SdlTextureAccessTarget, Viewport.W, Viewport.H);
             Context.GraphicManager.Attach(this);
+            
         }
         
         /// <summary>

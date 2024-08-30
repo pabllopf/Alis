@@ -89,6 +89,7 @@ namespace Alis.Sample.King.Platform
                         // PLAYER
                         .Add<GameObject>(player => player
                             .Name("King")
+                            .IsStatic(false)
                             .WithTag("player")
                             .Transform(transform => transform
                                 .Position(50, 0)
