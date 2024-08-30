@@ -41,6 +41,7 @@ namespace Alis.Builder.Core.Ecs.Entity.GameObject
     public class GameObjectBuilder :
         IBuild<Alis.Core.Ecs.Entity.GameObject>,
         IName<GameObjectBuilder, string>,
+        IIsStatic<GameObjectBuilder, bool>,
         IAddComponent<GameObjectBuilder, AComponent>,
         ITransform<GameObjectBuilder, Func<TransformBuilder, Alis.Core.Aspect.Math.Transform>>,
         IWithTag<GameObjectBuilder, string>
@@ -103,6 +104,27 @@ namespace Alis.Builder.Core.Ecs.Entity.GameObject
         public GameObjectBuilder Transform(Func<TransformBuilder, Alis.Core.Aspect.Math.Transform> value)
         {
             gameObject.Transform = value.Invoke(new TransformBuilder());
+            return this;
+        }
+
+        /// <summary>
+        /// Ises the static
+        /// </summary>
+        /// <returns>The game object builder</returns>
+        public GameObjectBuilder IsStatic()
+        {
+            gameObject.IsStatic = true;
+            return this;
+        }
+
+        /// <summary>
+        /// Ises the static using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The game object builder</returns>
+        public GameObjectBuilder IsStatic(bool value)
+        {
+            gameObject.IsStatic = value;
             return this;
         }
         

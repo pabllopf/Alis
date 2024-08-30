@@ -172,6 +172,7 @@ namespace Alis.Sample.Pong
                             .Build())
                         .Add<GameObject>(downWall => downWall
                             .Name("downWall")
+                            .IsStatic()
                             .Transform(transform => transform
                                 .Position(512, 635)
                                 .Build())
@@ -193,6 +194,7 @@ namespace Alis.Sample.Pong
                             .Build())
                         .Add<GameObject>(upWall => upWall
                             .Name("upWall")
+                            .IsStatic()
                             .Transform(transform => transform
                                 .Position(512, 0)
                                 .Build())
@@ -214,6 +216,7 @@ namespace Alis.Sample.Pong
                             .Build())
                         .Add<GameObject>(leftWall => leftWall
                             .Name("leftWall")
+                            .IsStatic()
                             .Transform(transform => transform
                                 .Position(0, 320)
                                 .Build())
@@ -235,6 +238,7 @@ namespace Alis.Sample.Pong
                             .Build())
                         .Add<GameObject>(rightWall => rightWall
                             .Name("rightWall")
+                            .IsStatic()
                             .Transform(transform => transform
                                 .Position(1024, 320)
                                 .Build())
