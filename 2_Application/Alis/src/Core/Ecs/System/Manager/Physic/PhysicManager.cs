@@ -29,6 +29,8 @@
 
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic;
+using Alis.Core.Physic.Collision;
+using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Ecs.System.Manager.Physic
@@ -39,13 +41,7 @@ namespace Alis.Core.Ecs.System.Manager.Physic
     /// <seealso cref="AManager" />
     public class PhysicManager : AManager
     {
-        /// <summary>
-        ///     The vector
-        /// </summary>
-        private readonly World world = new World(new Vector2(0, 9.8f));
-        
-        private float accumulator = 0.0f;
-        private const float timeStep = 1.0f / 60.0f;
+        public World World = new World(new AABB(){LowerBound = new Vec2(-10000.0f, -10000.0f), UpperBound = new Vec2(10000.0f, 10000.0f)}, new Vec2(0.0f, 0f), true);
         
         /// <summary>
         ///     Ons the update
@@ -56,24 +52,7 @@ namespace Alis.Core.Ecs.System.Manager.Physic
             {
                 return;
             }
-
-            float deltaTime = Context.TimeManager.FixedDeltaTime;
-            accumulator += deltaTime;
-
-            while (accumulator >= timeStep)
-            {
-                world.Step(timeStep, 6, 2);
-                accumulator -= timeStep;
-            }
-        }
-        
-        /// <summary>
-        ///     Attaches the body
-        /// </summary>
-        /// <param name="body">The body</param>
-        public void Attach(Body body)
-        {
-            world.AddBody(body);
+            World.Step(1/30.0f, 8, 3);
         }
         
         /// <summary>
@@ -82,7 +61,7 @@ namespace Alis.Core.Ecs.System.Manager.Physic
         /// <param name="body">The body</param>
         public void UnAttach(Body body)
         {
-            world.RemoveBody(body);
+            World.DestroyBody(body);
         }
     }
 }

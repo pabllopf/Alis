@@ -32,6 +32,7 @@ using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component;
 using Alis.Core.Ecs.Component.Collider;
+using Alis.Core.Physic.Common;
 
 namespace Alis.Sample.Pong
 {
@@ -72,19 +73,19 @@ namespace Alis.Sample.Pong
         /// <param name="key">The key</param>
         public override void OnReleaseKey(KeyCodes key)
         {
-            Vector2 velocity = boxCollider.Body.LinearVelocity;
+            Vec2 velocity = boxCollider.Body.GetLinearVelocity();
             switch (playerId)
             {
                 case 1:
                     switch (key)
                     {
                         case KeyCodes.W:
-                            velocity = new Vector2(velocity.X, 0);
-                            boxCollider.Body.LinearVelocity = velocity;
+                            velocity = new Vec2(velocity.X, 0);
+                            boxCollider.Body.SetLinearVelocity(velocity);
                             return;
                         case KeyCodes.S:
-                            velocity = new Vector2(velocity.X, 0);
-                            boxCollider.Body.LinearVelocity = velocity;
+                            velocity = new Vec2(velocity.X, 0);
+                            boxCollider.Body.SetLinearVelocity(velocity);
                             break;
                     }
                     
@@ -93,12 +94,12 @@ namespace Alis.Sample.Pong
                     switch (key)
                     {
                         case KeyCodes.Up:
-                            velocity = new Vector2(velocity.X, 0);
-                            boxCollider.Body.LinearVelocity = velocity;
+                            velocity = new Vec2(velocity.X, 0);
+                            boxCollider.Body.SetLinearVelocity(velocity);
                             return;
                         case KeyCodes.Down:
-                            velocity = new Vector2(velocity.X, 0);
-                            boxCollider.Body.LinearVelocity = velocity;
+                            velocity = new Vec2(velocity.X, 0);
+                            boxCollider.Body.SetLinearVelocity(velocity);
                             break;
                     }
                     
@@ -113,7 +114,7 @@ namespace Alis.Sample.Pong
         /// <param name="key">The key</param>
         public override void OnPressDownKey(KeyCodes key)
         {
-            Vector2 velocity = boxCollider.Body.LinearVelocity;
+            Vec2 velocity = boxCollider.Body.GetLinearVelocity();
             
             switch (playerId)
             {
@@ -121,12 +122,12 @@ namespace Alis.Sample.Pong
                     switch (key)
                     {
                         case KeyCodes.W:
-                            velocity = new Vector2(velocity.X, -3);
-                            boxCollider.Body.LinearVelocity = velocity;
+                            velocity = new Vec2(velocity.X, -3);
+                            boxCollider.Body.SetLinearVelocity(velocity);
                             return;
                         case KeyCodes.S:
-                            velocity = new Vector2(velocity.X, 3);
-                            boxCollider.Body.LinearVelocity = velocity;
+                            velocity = new Vec2(velocity.X, 3);
+                            boxCollider.Body.SetLinearVelocity(velocity);
                             break;
                     }
                     
@@ -135,12 +136,12 @@ namespace Alis.Sample.Pong
                     switch (key)
                     {
                         case KeyCodes.Up:
-                            velocity = new Vector2(velocity.X, -3);
-                            boxCollider.Body.LinearVelocity = velocity;
+                            velocity = new Vec2(velocity.X, -3);
+                            boxCollider.Body.SetLinearVelocity(velocity);
                             return;
                         case KeyCodes.Down:
-                            velocity = new Vector2(velocity.X, 3);
-                            boxCollider.Body.LinearVelocity = velocity;
+                            velocity = new Vec2(velocity.X, 3);
+                            boxCollider.Body.SetLinearVelocity(velocity);
                             break;
                     }
                     

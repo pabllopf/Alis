@@ -109,7 +109,7 @@ namespace Alis.Core.Aspect.Math.Matrix
             float col2Y = Ey.Y;
             
             float det = col1X * col2Y - col2X * col1Y;
-            //Box2DxDebug.Assert(det != 0.0f);
+            //Debug.Assert(det != 0.0f);
             det = 1.0f / det;
             
             Matrix2X2 matrix2X2 = new Matrix2X2(
@@ -132,7 +132,7 @@ namespace Alis.Core.Aspect.Math.Matrix
             float col1Y = Ex.Y;
             float col2Y = Ey.Y;
             float det = col1X * col2Y - col2X * col1Y;
-            //Box2DxDebug.Assert(det != 0.0f);
+            //Debug.Assert(det != 0.0f);
             det = 1.0f / det;
             Vector2 x = new Vector2(
                 det * (col2Y * b.X - col2X * b.Y),
