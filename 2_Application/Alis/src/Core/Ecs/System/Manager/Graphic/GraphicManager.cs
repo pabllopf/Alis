@@ -124,7 +124,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// </summary>
         [JsonPropertyName("_Cameras_")]
         public List<Camera> Cameras { get; }
-        
+
         /// <summary>
         ///     Ons the enable
         /// </summary>
@@ -283,56 +283,58 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             // Precompute values outside the loop
             Color debugColor = Context.Settings.Physic.DebugColor;
             bool debugMode = Context.Settings.Physic.DebugMode;
+            IntPtr renderer = Renderer;
+            List<Sprite> sprites = Sprites;
+            List<BoxCollider> colliders = ColliderBases;
+            List<Camera> cameras = Cameras;
 
-            foreach (Camera camera in Cameras)
+            int camerasCount = cameras.Count;
+            int spritesCount = sprites.Count;
+            int collidersCount = colliders.Count;
+
+            for (int i = 0; i < camerasCount; i++)
             {
+                Camera camera = cameras[i];
+                IntPtr cameraTexture = camera.TextureTarget;
+                Color bgColor = camera.BackgroundColor;
+
                 // Set render target to camera texture
-                Sdl.SetRenderTarget(Renderer, camera.TextureTarget);
-                Sdl.SetRenderDrawColor(Renderer, camera.BackgroundColor.R, camera.BackgroundColor.G, camera.BackgroundColor.B, camera.BackgroundColor.A);
-                Sdl.RenderClear(Renderer);
+                Sdl.SetRenderTarget(renderer, cameraTexture);
+                Sdl.SetRenderDrawColor(renderer, bgColor.R, bgColor.G, bgColor.B, bgColor.A);
+                Sdl.RenderClear(renderer);
 
                 // Render dynamic sprites
-                foreach (Sprite sprite in Sprites)
+                for (int j = 0; j < spritesCount; j++)
                 {
+                    Sprite sprite = sprites[j];
                     if (sprite.GameObject.IsEnable && sprite.IsVisible(camera))
                     {
-                        sprite.Render(Renderer, camera);
+                        sprite.Render(renderer, camera);
                     }
                 }
 
                 // Render debug rectangles to the custom backbuffer if debug mode is enabled
                 if (debugMode)
                 {
-                    Sdl.SetRenderDrawColor(Renderer, debugColor.R, debugColor.G, debugColor.B, debugColor.A);
+                    Sdl.SetRenderDrawColor(renderer, debugColor.R, debugColor.G, debugColor.B, debugColor.A);
 
-                    foreach (BoxCollider collider in ColliderBases)
+                    for (int k = 0; k < collidersCount; k++)
                     {
+                        BoxCollider collider = colliders[k];
                         if (collider.GameObject.IsEnable && collider.IsVisible(camera))
                         {
-                            float colliderX = collider.GameObject.Transform.Position.X - collider.RectangleF.W * collider.GameObject.Transform.Scale.X / 2 - (camera.Viewport.X - camera.Viewport.W / 2) + camera.CameraBorder;
-                            float colliderY = collider.GameObject.Transform.Position.Y - collider.RectangleF.H * collider.GameObject.Transform.Scale.Y / 2 - (camera.Viewport.Y - camera.Viewport.H / 2) + camera.CameraBorder;
-
-                            collider.RectangleF.X = (int) colliderX;
-                            collider.RectangleF.Y = (int) colliderY;
-
-                            if (collider.GameObject.Contains<Camera>())
-                            {
-                                collider.RectangleF.X += collider.RectangleF.W / 2;
-                                collider.RectangleF.Y += collider.RectangleF.H / 2;
-                            }
-
-                            Sdl.RenderDrawRectF(Renderer, ref collider.RectangleF);
+                            collider.Render(renderer, camera);
                         }
                     }
                 }
 
                 // Reset the render target to the default SDL backbuffer
-                Sdl.SetRenderTarget(Renderer, IntPtr.Zero);
+                Sdl.SetRenderTarget(renderer, IntPtr.Zero);
 
                 // Copy the custom backbuffer to the SDL backbuffer
-                Sdl.RenderCopy(Renderer, camera.TextureTarget, IntPtr.Zero, IntPtr.Zero);
+                Sdl.RenderCopy(renderer, cameraTexture, IntPtr.Zero, IntPtr.Zero);
 
-                Sdl.RenderPresent(Renderer);
+                Sdl.RenderPresent(renderer);
             }
         }
 

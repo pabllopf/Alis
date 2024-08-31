@@ -36,6 +36,7 @@ using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Entity;
+using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Physic.Collision.ContactSystem;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Figure;
@@ -338,16 +339,22 @@ namespace Alis.Core.Ecs.Component.Collider
         /// Describes whether this instance is visible
         /// </summary>
         /// <param name="camera">The camera</param>
-        /// <returns>The is visible</returns>
-        public bool IsVisible(Camera camera)
+        /// <returns>The bool</returns>
+        internal bool IsVisible(Camera camera)
         {
-            // Calculate collider's bounding box in world coordinates
-            float colliderLeft = GameObject.Transform.Position.X + RelativePosition.X - Width / 2;
-            float colliderRight = GameObject.Transform.Position.X + RelativePosition.X + Width / 2;
-            float colliderTop = GameObject.Transform.Position.Y + RelativePosition.Y - Height / 2;
-            float colliderBottom = GameObject.Transform.Position.Y + RelativePosition.Y + Height / 2;
+            // Precompute values
+            float posX = GameObject.Transform.Position.X + RelativePosition.X;
+            float posY = GameObject.Transform.Position.Y + RelativePosition.Y;
+            float halfWidth = Width / 2;
+            float halfHeight = Height / 2;
 
-            // Calculate camera's viewport in world coordinates
+            // Collider's bounding box
+            float colliderLeft = posX - halfWidth;
+            float colliderRight = posX + halfWidth;
+            float colliderTop = posY - halfHeight;
+            float colliderBottom = posY + halfHeight;
+
+            // Camera's viewport
             float halfViewportWidth = camera.Viewport.W / 2;
             float halfViewportHeight = camera.Viewport.H / 2;
             float cameraLeft = camera.Viewport.X - halfViewportWidth;
@@ -355,13 +362,48 @@ namespace Alis.Core.Ecs.Component.Collider
             float cameraTop = camera.Viewport.Y - halfViewportHeight;
             float cameraBottom = camera.Viewport.Y + halfViewportHeight;
 
-            // Check if the collider's bounding box intersects with the camera's viewport
-            bool isVisible = colliderRight > cameraLeft &&
-                             colliderLeft < cameraRight &&
-                             colliderBottom > cameraTop &&
-                             colliderTop < cameraBottom;
+            // Check visibility
+            return colliderRight > cameraLeft &&
+                   colliderLeft < cameraRight &&
+                   colliderBottom > cameraTop &&
+                   colliderTop < cameraBottom;
+        }
 
-            return isVisible;
+        /// <summary>
+        /// Renders the renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="camera">The camera</param>
+        public void Render(IntPtr renderer, Camera camera)
+        {
+            float colliderX = GameObject.Transform.Position.X - RectangleF.W * GameObject.Transform.Scale.X / 2 - (camera.Viewport.X - camera.Viewport.W / 2) + camera.CameraBorder;
+            float colliderY = GameObject.Transform.Position.Y - RectangleF.H * GameObject.Transform.Scale.Y / 2 - (camera.Viewport.Y - camera.Viewport.H / 2) + camera.CameraBorder;
+
+            RectangleF.X = (int) colliderX;
+            RectangleF.Y = (int) colliderY;
+
+            if (GameObject.Contains<Camera>())
+            {
+                RectangleF.X += RectangleF.W / 2;
+                RectangleF.Y += RectangleF.H / 2;
+            }
+
+            Sdl.RenderDrawRectF(renderer, ref RectangleF);
+        }
+
+        /// <summary>
+        /// Renders the renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        public void Render(IntPtr renderer)
+        {
+            float colliderX = GameObject.Transform.Position.X - RectangleF.W * GameObject.Transform.Scale.X / 2;
+            float colliderY = GameObject.Transform.Position.Y - RectangleF.H * GameObject.Transform.Scale.Y / 2;
+
+            RectangleF.X = (int) colliderX;
+            RectangleF.Y = (int) colliderY;
+
+            Sdl.RenderDrawRectF(renderer, ref RectangleF);
         }
     }
 }

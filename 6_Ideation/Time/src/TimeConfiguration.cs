@@ -40,7 +40,7 @@ namespace Alis.Core.Aspect.Time
         /// <param name="fixedTimeStep">The fixed time step</param>
         /// <param name="maximumAllowedTimeStep">The maximum allowed time step</param>
         /// <param name="timeScale">The time scale</param>
-        public TimeConfiguration(float fixedTimeStep = 0.016f, float maximumAllowedTimeStep = 0.10f, float timeScale = 1.00f)
+        public TimeConfiguration(float fixedTimeStep = 0.05f, float maximumAllowedTimeStep = 0.125f, float timeScale = 1.00f)
         {
             FixedTimeStep = fixedTimeStep;
             MaximumAllowedTimeStep = maximumAllowedTimeStep;
@@ -68,6 +68,6 @@ namespace Alis.Core.Aspect.Time
         /// <summary>
         ///     Gets or sets the value of the log output
         /// </summary>
-        public bool LogOutput { get; set; } = false;
+        public bool LogOutput { get; set; } = true;
     }
 }

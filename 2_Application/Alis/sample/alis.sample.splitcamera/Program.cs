@@ -54,7 +54,6 @@ namespace Alis.Sample.SplitCamera
                         .Description("Sample camera game.")
                         .Debug(true)
                         .License("GNU General Public License v3.0")
-                        .Icon("app.bmp")
                         .Build())
                     .Audio(audio => audio
                         .Build())
@@ -97,6 +96,7 @@ namespace Alis.Sample.SplitCamera
                         // Decoration tree-001
                         .Add<GameObject>(gameObject => gameObject
                             .Name("tree-002")
+                            .IsStatic()
                             .Transform(transform => transform
                                 .Position(400, 400)
                                 .Scale(2, 2)
@@ -108,6 +108,7 @@ namespace Alis.Sample.SplitCamera
                             .Build())
                         .Add<GameObject>(gameObject => gameObject
                             .Name("tree-001")
+                            .IsStatic()
                             .Transform(transform => transform
                                 .Position(-100, -100)
                                 .Scale(2, 2)
@@ -119,6 +120,7 @@ namespace Alis.Sample.SplitCamera
                             .Build())
                         .Add<GameObject>(gameObject => gameObject
                             .Name("tree-001")
+                            .IsStatic()
                             .Transform(transform => transform
                                 .Position(-200, -200)
                                 .Scale(2, 2)

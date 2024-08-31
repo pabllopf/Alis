@@ -145,7 +145,7 @@ namespace Alis.Core.Ecs.Component.Render
         {
             Sdl.QueryTexture(Image.Texture, out _, out _, out w, out h);
 
-            
+
             dstRect = new RectangleI(
                 (int) (GameObject.Transform.Position.X - w * GameObject.Transform.Scale.X / 2),
                 (int) (GameObject.Transform.Position.Y - h * GameObject.Transform.Scale.Y / 2),
@@ -180,10 +180,10 @@ namespace Alis.Core.Ecs.Component.Render
             float cameraTop = camera.Viewport.Y - halfViewportHeight;
 
             // Adjust sprite's position based on the camera's position and viewport
-            dstRect.X = (int)(GameObject.Transform.Position.X - w * GameObject.Transform.Scale.X / 2 - cameraLeft);
-            dstRect.Y = (int)(GameObject.Transform.Position.Y - h * GameObject.Transform.Scale.Y / 2 - cameraTop);
-            dstRect.W = (int)(w * GameObject.Transform.Scale.X);
-            dstRect.H = (int)(h * GameObject.Transform.Scale.Y);
+            dstRect.X = (int) (GameObject.Transform.Position.X - w * GameObject.Transform.Scale.X / 2 - cameraLeft);
+            dstRect.Y = (int) (GameObject.Transform.Position.Y - h * GameObject.Transform.Scale.Y / 2 - cameraTop);
+            dstRect.W = (int) (w * GameObject.Transform.Scale.X);
+            dstRect.H = (int) (h * GameObject.Transform.Scale.Y);
 
             Sdl.RenderCopyEx(renderer, Image.Texture, IntPtr.Zero, ref dstRect, GameObject.Transform.Rotation.Angle, IntPtr.Zero, Flips);
         }
@@ -211,16 +211,24 @@ namespace Alis.Core.Ecs.Component.Render
         /// Describes whether this instance is visible
         /// </summary>
         /// <param name="camera">The camera</param>
-        /// <returns>The is visible</returns>
+        /// <returns>The bool</returns>
         public bool IsVisible(Camera camera)
         {
-            // Calculate sprite's bounding box in world coordinates
-            float spriteLeft = GameObject.Transform.Position.X - (w * GameObject.Transform.Scale.X / 2);
-            float spriteRight = GameObject.Transform.Position.X + (w * GameObject.Transform.Scale.X / 2);
-            float spriteTop = GameObject.Transform.Position.Y - (h * GameObject.Transform.Scale.Y / 2);
-            float spriteBottom = GameObject.Transform.Position.Y + (h * GameObject.Transform.Scale.Y / 2);
+            // Precompute values
+            float posX = GameObject.Transform.Position.X;
+            float posY = GameObject.Transform.Position.Y;
+            float scaleX = GameObject.Transform.Scale.X;
+            float scaleY = GameObject.Transform.Scale.Y;
+            float halfWidth = w * scaleX / 2;
+            float halfHeight = h * scaleY / 2;
 
-            // Calculate camera's viewport in world coordinates
+            // Sprite's bounding box
+            float spriteLeft = posX - halfWidth;
+            float spriteRight = posX + halfWidth;
+            float spriteTop = posY - halfHeight;
+            float spriteBottom = posY + halfHeight;
+
+            // Camera's viewport
             float halfViewportWidth = camera.Viewport.W / 2;
             float halfViewportHeight = camera.Viewport.H / 2;
             float cameraLeft = camera.Viewport.X - halfViewportWidth;
@@ -228,13 +236,11 @@ namespace Alis.Core.Ecs.Component.Render
             float cameraTop = camera.Viewport.Y - halfViewportHeight;
             float cameraBottom = camera.Viewport.Y + halfViewportHeight;
 
-            // Check if the sprite's bounding box intersects with the camera's viewport
-            bool isVisible = spriteRight > cameraLeft &&
-                             spriteLeft < cameraRight &&
-                             spriteBottom > cameraTop &&
-                             spriteTop < cameraBottom;
-            
-            return isVisible;
+            // Check visibility
+            return spriteRight > cameraLeft &&
+                   spriteLeft < cameraRight &&
+                   spriteBottom > cameraTop &&
+                   spriteTop < cameraBottom;
         }
     }
 }

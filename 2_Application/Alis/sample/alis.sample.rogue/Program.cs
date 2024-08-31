@@ -112,6 +112,7 @@ namespace Alis.Sample.Rogue
                         // Decoration tree-001
                         .Add<GameObject>(gameObject => gameObject
                             .Name("tree-001")
+                            .IsStatic()
                             .Transform(transform => transform
                                 .Position(100, 100)
                                 .Scale(2, 2)
@@ -125,6 +126,7 @@ namespace Alis.Sample.Rogue
                         // Decoration tree-001
                         .Add<GameObject>(gameObject => gameObject
                             .Name("tree-002")
+                             .IsStatic()
                             .Transform(transform => transform
                                 .Position(400, 400)
                                 .Scale(2, 2)
@@ -136,6 +138,7 @@ namespace Alis.Sample.Rogue
                             .Build())
                         .Add<GameObject>(gameObject => gameObject
                             .Name("tree-001")
+                            .IsStatic()
                             .Transform(transform => transform
                                 .Position(-100, -100)
                                 .Scale(2, 2)
@@ -147,6 +150,7 @@ namespace Alis.Sample.Rogue
                             .Build())
                         .Add<GameObject>(gameObject => gameObject
                             .Name("tree-001")
+                            .IsStatic()
                             .Transform(transform => transform
                                 .Position(-200, -200)
                                 .Scale(2, 2)

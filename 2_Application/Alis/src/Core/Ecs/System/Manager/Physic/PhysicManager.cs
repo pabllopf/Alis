@@ -54,7 +54,7 @@ namespace Alis.Core.Ecs.System.Manager.Physic
                 return;
             }
             
-            world.Step(Context.TimeManager.Configuration.FixedTimeStep);
+            world.Step(0.016666666666666666f, 4, 2);
         }
         
         /// <summary>

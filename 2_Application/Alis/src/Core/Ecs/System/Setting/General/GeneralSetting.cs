@@ -43,6 +43,8 @@ namespace Alis.Core.Ecs.System.Setting.General
         IGeneralSetting,
         IBuilder<GeneralSettingBuilder>
     {
+        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="GeneralSetting" /> class
         /// </summary>
@@ -56,7 +58,7 @@ namespace Alis.Core.Ecs.System.Setting.General
             License = "GPL-3.0 license";
             Icon = AssetManager.Find("app.bmp");
         }
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="GeneralSetting" /> class
         /// </summary>
@@ -83,7 +85,7 @@ namespace Alis.Core.Ecs.System.Setting.General
             Version = version;
             Author = author;
             License = license;
-            Icon = icon;
+            Icon = AssetManager.Find(icon);
         }
         
         /// <summary>
