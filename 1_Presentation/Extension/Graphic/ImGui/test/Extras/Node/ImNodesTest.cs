@@ -648,7 +648,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         [Fact]
         public void MiniMap_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImNodes.MiniMap());
+            Assert.Throws<MarshalDirectiveException>(() => ImNodes.MiniMap());
         }
         
         /// <summary>
@@ -657,7 +657,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         [Fact]
         public void MiniMap_WithMinimapSizeFraction_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImNodes.MiniMap(0.2f));
+            Assert.Throws<MarshalDirectiveException>(() => ImNodes.MiniMap(0.2f));
         }
         
         /// <summary>
@@ -666,7 +666,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         [Fact]
         public void MiniMap_WithMinimapSizeFractionAndLocation_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImNodes.MiniMap(0.2f, ImNodesMiniMapLocation.TopLeft));
+            Assert.Throws<MarshalDirectiveException>(() => ImNodes.MiniMap(0.2f, ImNodesMiniMapLocation.TopLeft));
         }
         
         /// <summary>
@@ -675,7 +675,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         [Fact]
         public void MiniMap_WithMinimapSizeFractionLocationAndCallback_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImNodes.MiniMap(0.2f, ImNodesMiniMapLocation.TopLeft, null));
+            Assert.Throws<MarshalDirectiveException>(() => ImNodes.MiniMap(0.2f, ImNodesMiniMapLocation.TopLeft, null));
         }
         
         /// <summary>
@@ -684,7 +684,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         [Fact]
         public void MiniMap_WithAllParams_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImNodes.MiniMap(0.2f, ImNodesMiniMapLocation.TopLeft, null, null));
+            Assert.Throws<MarshalDirectiveException>(() => ImNodes.MiniMap(0.2f, ImNodesMiniMapLocation.TopLeft, null, null));
         }
         
         /// <summary>
@@ -920,7 +920,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         [Fact]
         public void StyleColorsClassic_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImNodes.StyleColorsClassic());
+            Assert.Throws<TypeLoadException>(() => ImNodes.StyleColorsClassic());
         }
         
         /// <summary>
@@ -929,7 +929,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         [Fact]
         public void StyleColorsClassic_WithDest_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImNodes.StyleColorsClassic(new ImNodesStyle()));
+            Assert.Throws<TypeLoadException>(() => ImNodes.StyleColorsClassic(new ImNodesStyle()));
         }
         
         /// <summary>
@@ -938,7 +938,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         [Fact]
         public void StyleColorsDark_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImNodes.StyleColorsDark());
+            Assert.Throws<TypeLoadException>(() => ImNodes.StyleColorsDark());
         }
         
         /// <summary>
@@ -947,7 +947,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         [Fact]
         public void StyleColorsDark_WithDest_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImNodes.StyleColorsDark(new ImNodesStyle()));
+            Assert.Throws<TypeLoadException>(() => ImNodes.StyleColorsDark(new ImNodesStyle()));
         }
         
         /// <summary>
@@ -956,7 +956,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         [Fact]
         public void StyleColorsLight_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImNodes.StyleColorsLight());
+            Assert.Throws<TypeLoadException>(() => ImNodes.StyleColorsLight());
         }
         
         /// <summary>
@@ -965,7 +965,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
         [Fact]
         public void StyleColorsLight_WithDest_ThrowsDllNotFoundException()
         {
-            Assert.Throws<DllNotFoundException>(() => ImNodes.StyleColorsLight(new ImNodesStyle()));
+            Assert.Throws<TypeLoadException>(() => ImNodes.StyleColorsLight(new ImNodesStyle()));
         }
     }
 }
