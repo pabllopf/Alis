@@ -47,7 +47,7 @@ namespace Alis.Sample.King.Platform
         /// <summary>
         ///     The jump force
         /// </summary>
-        private const float JumpForce = 20f;
+        private const float JumpForce = 30;
         
         /// <summary>
         ///     The velocity player
@@ -70,25 +70,33 @@ namespace Alis.Sample.King.Platform
         private BoxCollider boxCollider;
         
         /// <summary>
-        ///     The cool down jump
-        /// </summary>
-        private float coolDownJump;
-        
-        /// <summary>
         ///     The vector
         /// </summary>
         private Vector2 directionPlayer = new Vector2(0, 0);
         
         /// <summary>
-        ///     The is jumping
-        /// </summary>
-        private bool isJumping;
-        
-        /// <summary>
         ///     The sprite
         /// </summary>
         private Sprite sprite;
+
+        /// <summary>
+        /// The jump force
+        /// </summary>
+        const float JUMP_FORCE = 20.0f;
+        /// <summary>
+        /// The jump duration
+        /// </summary>
+        const float JUMP_DURATION = 0.35f;
         
+        /// <summary>
+        /// The jump button pressed
+        /// </summary>
+        private bool jumpButtonPressed;
+        /// <summary>
+        /// The jump time
+        /// </summary>
+        private float jumpTime = 0.0f;
+
         /// <summary>
         ///     Ons the start
         /// </summary>
@@ -104,18 +112,26 @@ namespace Alis.Sample.King.Platform
         /// </summary>
         public override void OnUpdate()
         {
-            coolDownJump -= 1 * Context.TimeManager.DeltaTime;
-            
-            if (isJumping)
+            // Handle jumping
+            if (jumpButtonPressed)
             {
-                if (coolDownJump <= 0)
+                if (jumpTime <= JUMP_DURATION)
                 {
-                    JumpPlayer();
+                    // Apply jump force
+                    boxCollider.Body.ApplyForce(new Vector2(0, -JUMP_FORCE));
+                    jumpTime += Context.TimeManager.DeltaTime;
+                    Logger.Warning($"Jumping {jumpTime}");
+                }
+                else
+                {
+                    jumpButtonPressed = false;
+                    jumpTime = 0.0f;
                 }
             }
-            
+
             boxCollider.Body.LinearVelocity = new Vector2(directionPlayer.X * VelocityPlayer, boxCollider.Body.LinearVelocity.Y);
         }
+        
         
         /// <summary>
         ///     Ons the release key using the specified key
@@ -142,10 +158,9 @@ namespace Alis.Sample.King.Platform
         /// <param name="key">The key</param>
         public override void OnPressDownKey(KeyCodes key)
         {
-            if (!isJumping && (coolDownJump <= 0) && (key == KeyCodes.Space))
+            if (key == KeyCodes.Space)
             {
-                isJumping = true;
-                Logger.Info("Jump because space key is pressed");
+                jumpButtonPressed = true;
             }
             
             if (key == KeyCodes.D)
@@ -161,28 +176,6 @@ namespace Alis.Sample.King.Platform
                 animator.ChangeAnimationTo("Run", RendererFlips.FlipHorizontal);
                 Logger.Info($"Run to left because A key is pressed {directionPlayer}");
             }
-        }
-        
-        /// <summary>
-        ///     Jumps the player
-        /// </summary>
-        /// <exception cref="ArgumentOutOfRangeException"></exception>
-        private void JumpPlayer()
-        {
-            boxCollider.Body.LinearVelocity = new Vector2(boxCollider.Body.LinearVelocity.X, -JumpForce);
-            
-            isJumping = false;
-            
-            if (Math.Abs(directionPlayer.X - 1) < 0.1f)
-            {
-                animator.ChangeAnimationTo("Jump", RendererFlips.None);
-            }
-            else if (Math.Abs(directionPlayer.X - -1) < 0.1f)
-            {
-                animator.ChangeAnimationTo("Jump", RendererFlips.FlipHorizontal);
-            }
-            
-            coolDownJump = ResetCoolDownJump;
         }
     }
 }
