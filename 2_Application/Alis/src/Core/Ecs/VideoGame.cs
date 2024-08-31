@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Threading;
 using Alis.Builder.Core.Ecs.System;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Logging;
@@ -403,28 +404,33 @@ namespace Alis.Core.Ecs
             // Log output every 1 second
             if ((newTime - lastLogTime >= 0.5) && Context.TimeManager.Configuration.LogOutput)
             {
-                Logger.Trace(
-                    " FrameCount: " + Context.TimeManager.FrameCount +
-                    " TotalFrames: " + Context.TimeManager.TotalFrames +
-                    " AverageFps: " + Context.TimeManager.AverageFrames +
-                    " Time: " + Context.TimeManager.DeltaTime +
-                    " FixedTimeStep: " + Context.TimeManager.Configuration.FixedTimeStep +
-                    " FixedTime: " + Context.TimeManager.FixedTime +
-                    " FixedUnscaledDeltaTime: " + Context.TimeManager.FixedUnscaledDeltaTime +
-                    " FixedDeltaTime: " + Context.TimeManager.FixedDeltaTime +
-                    " FixedTimeAsDouble: " + Context.TimeManager.FixedTimeAsDouble +
-                    " FixedUnscaledTime: " + Context.TimeManager.FixedUnscaledTime +
-                    " FixedUnscaledTimeAsDouble: " + Context.TimeManager.FixedUnscaledTimeAsDouble +
-                    " InFixedTimeStep: " + Context.TimeManager.InFixedTimeStep +
-                    " MaximumDeltaTime: " + Context.TimeManager.MaximumDeltaTime +
-                    " RealtimeSinceStartup: " + Context.TimeManager.RealtimeSinceStartup +
-                    " RealtimeSinceStartupAsDouble: " + Context.TimeManager.RealtimeSinceStartupAsDouble +
-                    " SmoothDeltaTime: " + Context.TimeManager.SmoothDeltaTime +
-                    " TimeAsDouble: " + Context.TimeManager.TimeAsDouble +
-                    " TimeScale: " + Context.TimeManager.TimeScale +
-                    " UnscaledDeltaTime: " + Context.TimeManager.UnscaledDeltaTime +
-                    " UnscaledTime: " + Context.TimeManager.UnscaledTime +
-                    " UnscaledTimeAsDouble: " + Context.TimeManager.UnscaledTimeAsDouble);
+                Logger.Warning(
+                    " FrameCount: " + Context.TimeManager.FrameCount + "\n" +
+                    " TotalFrames: " + Context.TimeManager.TotalFrames + "\n" +
+                    " AverageFps: " + Context.TimeManager.AverageFrames + "\n");
+                /*
+                Logger.Warning(
+                    " FrameCount: " + Context.TimeManager.FrameCount + "\n" +
+                    " TotalFrames: " + Context.TimeManager.TotalFrames + "\n" +
+                    " AverageFps: " + Context.TimeManager.AverageFrames +"\n" +
+                    " Time: " + Context.TimeManager.DeltaTime +"\n" +
+                    " FixedTimeStep: " + Context.TimeManager.Configuration.FixedTimeStep +"\n" +
+                    " FixedTime: " + Context.TimeManager.FixedTime +"\n" +
+                    " FixedUnscaledDeltaTime: " + Context.TimeManager.FixedUnscaledDeltaTime +"\n" +
+                    " FixedDeltaTime: " + Context.TimeManager.FixedDeltaTime +"\n" +
+                    " FixedTimeAsDouble: " + Context.TimeManager.FixedTimeAsDouble +"\n" +
+                    " FixedUnscaledTime: " + Context.TimeManager.FixedUnscaledTime +"\n" +
+                    " FixedUnscaledTimeAsDouble: " + Context.TimeManager.FixedUnscaledTimeAsDouble +"\n" +
+                    " InFixedTimeStep: " + Context.TimeManager.InFixedTimeStep +"\n" +
+                    " MaximumDeltaTime: " + Context.TimeManager.MaximumDeltaTime +"\n" +
+                    " RealtimeSinceStartup: " + Context.TimeManager.RealtimeSinceStartup +"\n" +
+                    " RealtimeSinceStartupAsDouble: " + Context.TimeManager.RealtimeSinceStartupAsDouble +"\n" +
+                    " SmoothDeltaTime: " + Context.TimeManager.SmoothDeltaTime +"\n" +
+                    " TimeAsDouble: " + Context.TimeManager.TimeAsDouble +"\n" +
+                    " TimeScale: " + Context.TimeManager.TimeScale +"\n" +
+                    " UnscaledDeltaTime: " + Context.TimeManager.UnscaledDeltaTime +"\n" +
+                    " UnscaledTime: " + Context.TimeManager.UnscaledTime +"\n" +
+                    " UnscaledTimeAsDouble: " + Context.TimeManager.UnscaledTimeAsDouble);*/
                 lastLogTime = newTime;
             }
             

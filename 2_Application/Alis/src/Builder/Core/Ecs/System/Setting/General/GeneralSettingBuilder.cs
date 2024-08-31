@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Ecs.System.Setting.General;
@@ -98,7 +99,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting.General
         /// <returns>The general setting builder</returns>
         public GeneralSettingBuilder Icon(string value)
         {
-            generalSetting.Icon = value;
+            generalSetting.Icon = AssetManager.Find(value);
             return this;
         }
         
