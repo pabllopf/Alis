@@ -41,7 +41,7 @@ namespace Alis.Builder.Core.Ecs.Component.Collider
     public class BoxColliderBuilder :
         IBuild<BoxCollider>,
         IIsActive<BoxColliderBuilder, bool>,
-        IBodyType<BoxColliderBuilder, BodyType>,
+        IBodyType<BoxColliderBuilder, Alis.Core.Physic.Dynamics.Body.BodyType>,
         ISize<BoxColliderBuilder, float>,
         IMass<BoxColliderBuilder, float>,
         IAutoTilling<BoxColliderBuilder, bool>,
@@ -87,7 +87,7 @@ namespace Alis.Builder.Core.Ecs.Component.Collider
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The box collider builder</returns>
-        public BoxColliderBuilder BodyType(BodyType value)
+        public BoxColliderBuilder BodyType(Alis.Core.Physic.Dynamics.Body.BodyType value)
         {
             boxCollider.BodyType = value;
             return this;

@@ -37,10 +37,11 @@ using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Entity;
 using Alis.Core.Graphic.Sdl2;
-using Alis.Core.Physic.Collision.ContactSystem;
+using Alis.Core.Physic.Collision.Shapes;
+using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Dynamics;
-using Alis.Core.Physic.Figure;
-using Sprite = Alis.Core.Ecs.Component.Render.Sprite;
+using Alis.Core.Physic.Dynamics.Contacts;
+using Math = Alis.Core.Physic.Common.Math;
 
 namespace Alis.Core.Ecs.Component.Collider
 {
@@ -94,7 +95,7 @@ namespace Alis.Core.Ecs.Component.Collider
         /// <summary>
         ///     Gets or sets the value of the body type
         /// </summary>
-        public BodyType BodyType { get; set; } = BodyType.Static;
+        public Physic.Dynamics.Body.BodyType BodyType { get; set; } = Physic.Dynamics.Body.BodyType.Dynamic;
 
         /// <summary>
         ///     Gets or sets the value of the restitution
@@ -170,46 +171,36 @@ namespace Alis.Core.Ecs.Component.Collider
                 H = Height
             };
 
+            
+            BodyDef bodyDefinition = new BodyDef();
+            bodyDefinition.Position.Set(GameObject.Transform.Position.X + RelativePosition.X,  GameObject.Transform.Position.Y + RelativePosition.Y);
 
-            Body = new Rectangle(
-                Width,
-                Height,
-                new Vector2(
-                    GameObject.Transform.Position.X + RelativePosition.X,
-                    GameObject.Transform.Position.Y + RelativePosition.Y
-                ),
-                LinearVelocity,
-                BodyType,
-                Rotation,
-                AngularVelocity,
-                0,
-                0,
-                false,
-                true,
-                FixedRotation,
-                true,
-                true,
-                GravityScale
-            );
+            PolygonDef boxDefinition = new PolygonDef();
+            boxDefinition.SetAsBox(Width, Height);
+            boxDefinition.Density = (BodyType == Physic.Dynamics.Body.BodyType.Dynamic ? 1 : 0);
+            boxDefinition.Friction = Friction;
+            boxDefinition.Restitution = Restitution;
+            boxDefinition.IsSensor = IsTrigger;
+            
+            Body = Context.PhysicManager.World.CreateBody(bodyDefinition);
+            Body.CreateFixture(boxDefinition);
+            Body.SetMassFromShapes();
+            Body.SetUserData(GameObject);
+            
+            Body.SetLinearVelocity(new Vec2(LinearVelocity.X, LinearVelocity.Y));
+            Body.SetAngularVelocity(AngularVelocity);
+            Body.SetFixedRotation(FixedRotation);
+            
+            
 
-            Body.Restitution = Restitution;
-            Body.Friction = Friction;
-            Body.FixedRotation = FixedRotation;
-            Body.Mass = Mass;
-            Body.SleepingAllowed = false;
-            Body.IsBullet = true;
-            Body.GravityScale = GravityScale;
-            Body.LinearVelocity = LinearVelocity;
-            Body.Awake = true;
-            Body.IsSensor = IsTrigger;
-            Body.GameObject = GameObject;
-
-            Body.OnCollision += OnCollision;
-            Body.OnSeparation += OnSeparation;
-
+            //Body.SetBullet(true);
+            //Body.SetMass(new MassData(){Mass = Mass});
+            
+            
             Context.GraphicManager.Attach(this);
-            Context.PhysicManager.Attach(Body);
         }
+        
+        
 
         /// <summary>
         ///     Ons the separation using the specified fixture a
@@ -219,8 +210,8 @@ namespace Alis.Core.Ecs.Component.Collider
         /// <param name="contact">The contact</param>
         private void OnSeparation(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
-            GameObject fixtureGameObject = (GameObject) fixtureA.Body.GameObject;
-            GameObject fixtureBGameObject = (GameObject) fixtureB.Body.GameObject;
+            GameObject fixtureGameObject = (GameObject) fixtureA.Body.GetUserData();
+            GameObject fixtureBGameObject = (GameObject) fixtureB.Body.GetUserData();
 
             if (fixtureGameObject.Equals(GameObject) && fixtureBGameObject.Contains<BoxCollider>())
             {
@@ -246,8 +237,8 @@ namespace Alis.Core.Ecs.Component.Collider
         /// <param name="contact">The contact</param>
         private void OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
-            GameObject fixtureGameObject = (GameObject) fixtureA.Body.GameObject;
-            GameObject fixtureBGameObject = (GameObject) fixtureB.Body.GameObject;
+            GameObject fixtureGameObject = (GameObject) fixtureA.Body.GetUserData();
+            GameObject fixtureBGameObject = (GameObject) fixtureB.Body.GetUserData();
 
             if (fixtureGameObject.Equals(GameObject) && fixtureBGameObject.Contains<BoxCollider>())
             {
@@ -281,15 +272,15 @@ namespace Alis.Core.Ecs.Component.Collider
             float xOdl = GameObject.Transform.Position.X;
             float yOld = GameObject.Transform.Position.Y;
 
-            float xNew = Body.Position.X;
-            float yNew = Body.Position.Y;
+            float xNew = Body.GetPosition().X;
+            float yNew = Body.GetPosition().Y;
 
             if (Math.Abs(xOdl - xNew) >= 1.1f)
             {
                 Transform transform = new Transform
                 {
-                    Position = new Vector2(Body.Position.X, GameObject.Transform.Position.Y),
-                    Rotation = new Rotation(Body.Rotation),
+                    Position = new Vector2(Body.GetPosition().X, GameObject.Transform.Position.Y),
+                    Rotation = new Rotation(Body.GetAngle()),
                     Scale = GameObject.Transform.Scale
                 };
 
@@ -300,8 +291,8 @@ namespace Alis.Core.Ecs.Component.Collider
             {
                 Transform transform = new Transform
                 {
-                    Position = new Vector2(GameObject.Transform.Position.X, Body.Position.Y),
-                    Rotation = new Rotation(Body.Rotation),
+                    Position = new Vector2(GameObject.Transform.Position.X, Body.GetPosition().Y),
+                    Rotation = new Rotation(Body.GetAngle()),
                     Scale = GameObject.Transform.Scale
                 };
 

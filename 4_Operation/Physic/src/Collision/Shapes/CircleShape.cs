@@ -1,174 +1,180 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:CircleShape.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+﻿/*
+  Box2DX Copyright (c) 2009 Ihar Kalasouski http://code.google.com/p/box2dx
+  Box2D original C++ version Copyright (c) 2006-2009 Erin Catto http://www.gphysics.com
 
-using Alis.Core.Aspect.Math;
-using Alis.Core.Aspect.Math.Util;
-using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Collision.RayCast;
-using Alis.Core.Physic.Shared;
+  This software is provided 'as-is', without any express or implied
+  warranty.  In no event will the authors be held liable for any damages
+  arising from the use of this software.
+
+  Permission is granted to anyone to use this software for any purpose,
+  including commercial applications, and to alter it and redistribute it
+  freely, subject to the following restrictions:
+
+  1. The origin of this software must not be misrepresented; you must not
+     claim that you wrote the original software. If you use this software
+     in a product, an acknowledgment in the product documentation would be
+     appreciated but is not required.
+  2. Altered source versions must be plainly marked as such, and must not be
+     misrepresented as being the original software.
+  3. This notice may not be removed or altered from any source distribution.
+*/
+
+using System.Diagnostics;
+using Alis.Core.Physic.Common;
 
 namespace Alis.Core.Physic.Collision.Shapes
 {
-    /// <summary>A circle shape.</summary>
-    public class CircleShape : AShape
-    {
-        /// <summary>
-        ///     The position
-        /// </summary>
-        internal Vector2 PositionCircle;
-        
-        /// <summary>Create a new circle with the desired radius and density.</summary>
-        /// <param name="radius">The radius of the circle.</param>
-        /// <param name="density">The density of the circle.</param>
-        /// <param name="position">Position of the shape</param>
-        public CircleShape(float radius, float density, Vector2 position = default(Vector2)) : base(ShapeType.Circle,
-            radius, density)
-        {
-            PositionCircle = position;
-            ComputeProperties();
-        }
-        
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="CircleShape" /> class
-        /// </summary>
-        /// <param name="density">The density</param>
-        public CircleShape(float density) : base(ShapeType.Circle, 0, density)
-        {
-            ComputeProperties();
-        }
-        
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="CircleShape" /> class
-        /// </summary>
-        private CircleShape() : base(ShapeType.Circle)
-        {
-        }
-        
-        /// <summary>
-        ///     Gets the value of the child count
-        /// </summary>
-        public override int ChildCount => 1;
-        
-        /// <summary>Get or set the position of the circle</summary>
-        public Vector2 Position
-        {
-            get => PositionCircle;
-            set
-            {
-                if (PositionCircle != value)
-                {
-                    PositionCircle = value;
-                    ComputeInertia();
-                }
-            }
-        }
-        
-        /// <summary>
-        ///     Describes whether this instance test point
-        /// </summary>
-        /// <param name="transform">The transform</param>
-        /// <param name="point">The point</param>
-        /// <returns>The bool</returns>
-        public override bool TestPoint(ref Transform transform, ref Vector2 point) =>
-            TestPointHelper.TestPointCircle(ref PositionCircle, RadiusPrivate, ref point, ref transform);
-        
-        /// <summary>
-        ///     Describes whether this instance ray cast
-        /// </summary>
-        /// <param name="input">The input</param>
-        /// <param name="transform">The transform</param>
-        /// <param name="childIndex">The child index</param>
-        /// <param name="output">The output</param>
-        /// <returns>The bool</returns>
-        public override bool RayCast(ref RayCastInput input, ref Transform transform, int childIndex,
-            out RayCastOutput output) =>
-            RayCastHelper.RayCastCircle(ref PositionCircle, RadiusPrivate, ref input, ref transform, out output);
-        
-        /// <summary>
-        ///     Computes the aabb using the specified transform
-        /// </summary>
-        /// <param name="transform">The transform</param>
-        /// <param name="childIndex">The child index</param>
-        /// <param name="aabb">The aabb</param>
-        public override void ComputeAabb(ref Transform transform, int childIndex, out Aabb aabb)
-        {
-            AabbHelper.ComputeCircleAabb(ref PositionCircle, RadiusPrivate, ref transform, out aabb);
-        }
-        
-        /// <summary>
-        ///     Computes the properties
-        /// </summary>
-        internal override void ComputeProperties()
-        {
-            ComputeMass();
-            ComputeInertia();
-        }
-        
-        /// <summary>
-        ///     Computes the mass
-        /// </summary>
-        private void ComputeMass()
-        {
-            //Velcro: We calculate area for later consumption
-            float area = Constant.Pi * RadiusPrivate * RadiusPrivate;
-            MassDataPrivate.Area = area;
-            MassDataPrivate.Mass = DensityPrivate * area;
-        }
-        
-        /// <summary>
-        ///     Computes the inertia
-        /// </summary>
-        private void ComputeInertia()
-        {
-            MassDataPrivate.Centroid = PositionCircle;
-            
-            // inertia about the local origin
-            MassDataPrivate.Inertia = MassDataPrivate.Mass *
-                                      (0.5f * RadiusPrivate * RadiusPrivate +
-                                       Vector2.Dot(PositionCircle, PositionCircle));
-        }
-        
-        /// <summary>
-        ///     Clones this instance
-        /// </summary>
-        /// <returns>The clone</returns>
-        public override AShape Clone()
-        {
-            CircleShape clone = new CircleShape
-            {
-                ShapeTypePrivate = ShapeTypePrivate,
-                RadiusPrivate = RadiusPrivate,
-                DensityPrivate = DensityPrivate,
-                PositionCircle = PositionCircle,
-                MassDataPrivate = MassDataPrivate
-            };
-            return clone;
-        }
-    }
+	/// <summary>
+	/// A circle shape.
+	/// </summary>
+	public class CircleShape : Shape
+	{
+		// Position
+		internal Vec2 _position;
+
+		public CircleShape()			
+		{
+			_type = ShapeType.CircleShape;
+		}
+
+		public override bool TestPoint(XForm transform, Vec2 p)
+		{
+			Vec2 center = transform.Position + Common.Math.Mul(transform.R, _position);
+			Vec2 d = p - center;
+			return Vec2.Dot(d, d) <= _radius * _radius;
+		}
+
+		// Collision Detection in Interactive 3D Environments by Gino van den Bergen
+		// From Section 3.1.2
+		// x = s + a * r
+		// norm(x) = radius
+		public override SegmentCollide TestSegment(XForm transform, out float lambda, out Vec2 normal, Segment segment, float maxLambda)
+		{
+			lambda = 0f;
+			normal = Vec2.Zero;
+
+			Vec2 position = transform.Position + Common.Math.Mul(transform.R, _position);
+			Vec2 s = segment.P1 - position;
+			float b = Vec2.Dot(s, s) - _radius * _radius;
+
+			// Does the segment start inside the circle?
+			if (b < 0.0f)
+			{
+				lambda = 0f;
+				return SegmentCollide.StartInsideCollide;
+			}
+
+			// Solve quadratic equation.
+			Vec2 r = segment.P2 - segment.P1;
+			float c = Vec2.Dot(s, r);
+			float rr = Vec2.Dot(r, r);
+			float sigma = c * c - rr * b;
+
+			// Check for negative discriminant and short segment.
+			if (sigma < 0.0f || rr < Common.Settings.FLT_EPSILON)
+			{
+				return SegmentCollide.MissCollide;
+			}
+
+			// Find the point of intersection of the line with the circle.
+			float a = -(c + Common.Math.Sqrt(sigma));
+
+			// Is the intersection point on the segment?
+			if (0.0f <= a && a <= maxLambda * rr)
+			{
+				a /= rr;
+				lambda = a;
+				normal = s + a * r;
+				normal.Normalize();
+				return SegmentCollide.HitCollide;
+			}
+
+			return SegmentCollide.MissCollide;
+		}
+
+		public override void ComputeAABB(out AABB aabb, XForm transform)
+		{
+			aabb = new AABB();
+
+			Vec2 p = transform.Position + Common.Math.Mul(transform.R, _position);
+			aabb.LowerBound.Set(p.X - _radius, p.Y - _radius);
+			aabb.UpperBound.Set(p.X + _radius, p.Y + _radius);
+		}
+
+		public override void ComputeMass(out MassData massData, float density)
+		{
+			massData = new MassData();
+
+			massData.Mass = density * Settings.Pi * _radius * _radius;
+			massData.Center = _position;
+
+			// inertia about the local origin
+			massData.I = massData.Mass * (0.5f * _radius * _radius + Vec2.Dot(_position, _position));
+		}		
+
+		public override float ComputeSubmergedArea(Vec2 normal, float offset, XForm xf, out Vec2 c)
+		{
+			Vec2 p = Math.Mul(xf, _position);
+			float l = -(Vec2.Dot(normal, p) - offset);
+			if (l < -_radius + Settings.FLT_EPSILON)
+			{
+				//Completely dry
+				c = new Vec2();
+				return 0;
+			}
+			if (l > _radius)
+			{
+				//Completely wet
+				c = p;
+				return Settings.Pi * _radius * _radius;
+			}
+
+			//Magic
+			float r2 = _radius * _radius;
+			float l2 = l * l;
+			float area = r2 * ((float)System.Math.Asin(l / _radius) + Settings.Pi / 2) +
+				l * Math.Sqrt(r2 - l2);
+			float com = -2.0f / 3.0f * (float)System.Math.Pow(r2 - l2, 1.5f) / area;
+
+			c.X = p.X + normal.X * com;
+			c.Y = p.Y + normal.Y * com;
+
+			return area;
+		}
+
+		/// <summary>
+		/// Get the supporting vertex index in the given direction.
+		/// </summary>
+		public override int GetSupport(Vec2 d)
+		{
+			return 0;
+		}
+
+		/// <summary>
+		/// Get the supporting vertex in the given direction.
+		/// </summary>
+		public override Vec2 GetSupportVertex(Vec2 d)
+		{
+			return _position;
+		}
+
+		/// <summary>
+		/// Get a vertex by index. Used by Distance.
+		/// </summary>
+		public override Vec2 GetVertex(int index)
+		{
+			Debug.Assert(index == 0);
+			return _position;
+		}
+
+		public override float ComputeSweepRadius(Vec2 pivot)
+		{
+			return Vec2.Distance(_position, pivot);
+		}
+
+		/// <summary>
+		/// Get the vertex count.
+		/// </summary>
+		public int VertexCount { get { return 1; } }
+	}
 }
