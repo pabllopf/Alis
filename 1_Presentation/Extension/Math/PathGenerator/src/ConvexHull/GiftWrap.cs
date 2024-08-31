@@ -29,6 +29,7 @@
 
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic.Shared;
 
 namespace Alis.Extension.Math.PathGenerator.ConvexHull
 {

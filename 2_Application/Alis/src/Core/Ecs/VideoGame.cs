@@ -53,47 +53,47 @@ namespace Alis.Core.Ecs
         ///     The instancie
         /// </summary>
         [JsonIgnore] public static VideoGame _instancie;
-
+        
         /// <summary>
         ///     The accumulator
         /// </summary>
         private double accumulator;
-
+        
         /// <summary>
         ///     The current time
         /// </summary>
         private double currentTime;
-
+        
         /// <summary>
         ///     The last delta time
         /// </summary>
         private float lastDeltaTime;
-
+        
         /// <summary>
         ///     The last log time
         /// </summary>
         private double lastLogTime;
-
+        
         /// <summary>
         ///     The last time
         /// </summary>
         private double lastTime;
-
+        
         /// <summary>
         ///     The smooth delta time count
         /// </summary>
         private int smoothDeltaTimeCount;
-
+        
         /// <summary>
         ///     The smooth delta time sum
         /// </summary>
         private float smoothDeltaTimeSum;
-
+        
         /// <summary>
         ///     The total time
         /// </summary>
         private double totalTime;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="VideoGame" /> class
         /// </summary>
@@ -102,7 +102,7 @@ namespace Alis.Core.Ecs
             Context = new Context(new Settings());
             _instancie = this;
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="VideoGame" /> class
         /// </summary>
@@ -113,7 +113,7 @@ namespace Alis.Core.Ecs
             Context = context;
             _instancie = this;
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="VideoGame" /> class
         /// </summary>
@@ -136,144 +136,130 @@ namespace Alis.Core.Ecs
                 PhysicManager = physicManager,
                 SceneManager = sceneManager
             };
-
+            
             _instancie = this;
         }
-
+        
         /// <summary>
         ///     Gets or sets the value of the context
         /// </summary>
         [JsonPropertyName("_Context_")]
         public Context Context { get; set; }
-
-        // Target frame duration for 30 FPS
-        private const double TargetFrameDuration = 1.0 / 60.0;
-
+        
         /// <summary>
         ///     Run program
         /// </summary>
-        // Target frame duration for 30 FPS
         public void Run()
         {
             OnInit();
             OnAwake();
             OnStart();
-
+            
             currentTime = Context.TimeManager.Clock.Elapsed.TotalSeconds;
             accumulator = 0;
-
+            
             // Variables for calculating FPS
             lastTime = Context.TimeManager.Clock.Elapsed.TotalSeconds;
             Context.TimeManager.FrameCount = 0;
             Context.TimeManager.TotalFrames = 0;
             Context.TimeManager.AverageFrames = 0;
-
+            
             // Variables for calculating average FPS
             totalTime = 0;
-
+            
             // Variables for SmoothDeltaTime
             lastDeltaTime = 0f;
             smoothDeltaTimeSum = 0f;
             smoothDeltaTimeCount = 0;
-
+            
             // Variable for log output
             lastLogTime = Context.TimeManager.Clock.Elapsed.TotalSeconds;
-
+            
+            
             while (Context.TimeManager.IsRunning)
             {
-                double frameStartTime = Context.TimeManager.Clock.Elapsed.TotalSeconds;
-                double newTime = frameStartTime;
+                double newTime = Context.TimeManager.Clock.Elapsed.TotalSeconds;
                 Context.TimeManager.DeltaTime = (float) (newTime - currentTime);
-
+                
                 // Update Context.TimeManager properties
                 Context.TimeManager.UnscaledDeltaTime = (float) (newTime - currentTime);
                 Context.TimeManager.UnscaledTime += Context.TimeManager.UnscaledDeltaTime;
                 Context.TimeManager.UnscaledTimeAsDouble += Context.TimeManager.UnscaledDeltaTime;
                 Context.TimeManager.Time = Context.TimeManager.UnscaledTime * Context.TimeManager.TimeScale;
                 Context.TimeManager.TimeAsDouble = Context.TimeManager.UnscaledTimeAsDouble * Context.TimeManager.TimeScale;
-
+                
                 // Update MaximumDeltaTime
                 Context.TimeManager.MaximumDeltaTime = Math.Max(Context.TimeManager.MaximumDeltaTime, Context.TimeManager.DeltaTime);
-
+                
                 currentTime = newTime;
                 accumulator += Context.TimeManager.DeltaTime;
-
+                
                 // Increment frame counter
                 Context.TimeManager.FrameCount++;
                 Context.TimeManager.TotalFrames++;
-
+                
                 // If a second has passed since the last FPS calculation
                 if (newTime - lastTime >= 1.0)
                 {
                     // Calculate average FPS
                     totalTime += newTime - lastTime;
                     Context.TimeManager.AverageFrames = (int) (Context.TimeManager.TotalFrames / totalTime);
-
+                    
                     // Reset frame counter and update last time
                     Context.TimeManager.FrameCount = 0;
                     lastTime = newTime;
                 }
-
+                
                 OnDispatchEvents();
                 OnBeforeUpdate();
                 OnUpdate();
                 OnAfterUpdate();
-
-                /*
+                
                 // Run fixed methods
                 while (accumulator >= Context.TimeManager.Configuration.FixedTimeStep)
                 {
                     Context.TimeManager.InFixedTimeStep = true;
-
+                    
                     Context.TimeManager.FixedTime += Context.TimeManager.Configuration.FixedTimeStep;
                     Context.TimeManager.FixedTimeAsDouble += Context.TimeManager.Configuration.FixedTimeStep;
                     Context.TimeManager.FixedDeltaTime = Context.TimeManager.Configuration.FixedTimeStep;
                     Context.TimeManager.FixedUnscaledDeltaTime = Context.TimeManager.Configuration.FixedTimeStep / Context.TimeManager.TimeScale;
-
+                    
                     // Update FixedUnscaledTime and FixedUnscaledTimeAsDouble
                     Context.TimeManager.FixedUnscaledTime += Context.TimeManager.FixedUnscaledDeltaTime;
                     Context.TimeManager.FixedUnscaledTimeAsDouble += Context.TimeManager.FixedUnscaledDeltaTime;
-
+                    
                     OnBeforeFixedUpdate();
                     OnFixedUpdate();
                     OnAfterFixedUpdate();
-
-                    accumulator %= Context.TimeManager.Configuration.FixedTimeStep;
-
+                    
+                    accumulator -= Context.TimeManager.Configuration.FixedTimeStep;
+                    
                     Context.TimeManager.InFixedTimeStep = false;
-                }*/
-
+                }
+                
                 OnCalculate();
                 OnDraw();
                 OnGui();
-
+                
                 // Update SmoothDeltaTime
                 smoothDeltaTimeSum += Context.TimeManager.DeltaTime - lastDeltaTime;
                 smoothDeltaTimeCount++;
                 Context.TimeManager.SmoothDeltaTime = smoothDeltaTimeSum / smoothDeltaTimeCount;
                 lastDeltaTime = Context.TimeManager.DeltaTime;
-
+                
                 lastLogTime = LastLogTime(newTime, lastLogTime);
-
-                /*
-                // Calculate frame duration and sleep if necessary
-                double frameEndTime = Context.TimeManager.Clock.Elapsed.TotalSeconds;
-                double frameDuration = frameEndTime - frameStartTime;
-                if (frameDuration < TargetFrameDuration)
-                {
-                    Thread.Sleep((int) ((TargetFrameDuration - frameDuration) * 1000));
-                }*/
             }
-
+            
             OnStop();
             OnExit();
         }
-
+        
         /// <summary>
         ///     Exits this instance
         /// </summary>
         public void Exit() => Context.TimeManager.IsRunning = false;
-
+        
         /// <summary>
         ///     Inits the preview
         /// </summary>
@@ -282,28 +268,28 @@ namespace Alis.Core.Ecs
             OnInit();
             OnAwake();
             OnStart();
-
+            
             currentTime = Context.TimeManager.Clock.Elapsed.TotalSeconds;
             accumulator = 0;
-
+            
             // Variables for calculating FPS
             lastTime = Context.TimeManager.Clock.Elapsed.TotalSeconds;
             Context.TimeManager.FrameCount = 0;
             Context.TimeManager.TotalFrames = 0;
             Context.TimeManager.AverageFrames = 0;
-
+            
             // Variables for calculating average FPS
             totalTime = 0;
-
+            
             // Variables for SmoothDeltaTime
             lastDeltaTime = 0f;
             smoothDeltaTimeSum = 0f;
             smoothDeltaTimeCount = 0;
-
+            
             // Variable for log output
             lastLogTime = Context.TimeManager.Clock.Elapsed.TotalSeconds;
         }
-
+        
         /// <summary>
         ///     Runs the preview
         /// </summary>
@@ -311,78 +297,77 @@ namespace Alis.Core.Ecs
         {
             double newTime = Context.TimeManager.Clock.Elapsed.TotalSeconds;
             Context.TimeManager.DeltaTime = (float) (newTime - currentTime);
-
+            
             // Update Context.TimeManager properties
             Context.TimeManager.UnscaledDeltaTime = (float) (newTime - currentTime);
             Context.TimeManager.UnscaledTime += Context.TimeManager.UnscaledDeltaTime;
             Context.TimeManager.UnscaledTimeAsDouble += Context.TimeManager.UnscaledDeltaTime;
             Context.TimeManager.Time = Context.TimeManager.UnscaledTime * Context.TimeManager.TimeScale;
             Context.TimeManager.TimeAsDouble = Context.TimeManager.UnscaledTimeAsDouble * Context.TimeManager.TimeScale;
-
+            
             // Update MaximumDeltaTime
             Context.TimeManager.MaximumDeltaTime = Math.Max(Context.TimeManager.MaximumDeltaTime, Context.TimeManager.DeltaTime);
-
+            
             currentTime = newTime;
             accumulator += Context.TimeManager.DeltaTime;
-
+            
             // Increment frame counter
             Context.TimeManager.FrameCount++;
             Context.TimeManager.TotalFrames++;
-
+            
             // If a second has passed since the last FPS calculation
             if (newTime - lastTime >= 1.0)
             {
                 // Calculate average FPS
                 totalTime += newTime - lastTime;
                 Context.TimeManager.AverageFrames = (int) (Context.TimeManager.TotalFrames / totalTime);
-
+                
                 // Reset frame counter and update last time
                 Context.TimeManager.FrameCount = 0;
                 lastTime = newTime;
             }
-
+            
             OnDispatchEvents();
             OnBeforeUpdate();
             OnUpdate();
             OnAfterUpdate();
-
-            /*
+            
             // Run fixed methods
             while (accumulator >= Context.TimeManager.Configuration.FixedTimeStep)
             {
                 Context.TimeManager.InFixedTimeStep = true;
-
+                
                 Context.TimeManager.FixedTime += Context.TimeManager.Configuration.FixedTimeStep;
                 Context.TimeManager.FixedTimeAsDouble += Context.TimeManager.Configuration.FixedTimeStep;
                 Context.TimeManager.FixedDeltaTime = Context.TimeManager.Configuration.FixedTimeStep;
                 Context.TimeManager.FixedUnscaledDeltaTime = Context.TimeManager.Configuration.FixedTimeStep / Context.TimeManager.TimeScale;
-
+                
                 // Update FixedUnscaledTime and FixedUnscaledTimeAsDouble
                 Context.TimeManager.FixedUnscaledTime += Context.TimeManager.FixedUnscaledDeltaTime;
                 Context.TimeManager.FixedUnscaledTimeAsDouble += Context.TimeManager.FixedUnscaledDeltaTime;
-
+                
                 OnBeforeFixedUpdate();
                 OnFixedUpdate();
                 OnAfterFixedUpdate();
-
+                
                 accumulator -= Context.TimeManager.Configuration.FixedTimeStep;
-
+                
                 Context.TimeManager.InFixedTimeStep = false;
-            }*/
-
+            }
+            
             OnCalculate();
             OnDraw();
             OnGui();
-
+            
             // Update SmoothDeltaTime
             smoothDeltaTimeSum += Context.TimeManager.DeltaTime - lastDeltaTime;
             smoothDeltaTimeCount++;
             Context.TimeManager.SmoothDeltaTime = smoothDeltaTimeSum / smoothDeltaTimeCount;
             lastDeltaTime = Context.TimeManager.DeltaTime;
-
+            
             lastLogTime = LastLogTime(newTime, lastLogTime);
         }
-
+        
         /// <summary>
         ///     Exits the preview
         /// </summary>
@@ -391,7 +376,7 @@ namespace Alis.Core.Ecs
             OnStop();
             OnExit();
         }
-
+        
         /// <summary>
         ///     Ons the exit
         /// </summary>
@@ -399,7 +384,7 @@ namespace Alis.Core.Ecs
         {
             Context.OnExit();
         }
-
+        
         /// <summary>
         ///     Ons the stop
         /// </summary>
@@ -407,7 +392,7 @@ namespace Alis.Core.Ecs
         {
             Context.OnStop();
         }
-
+        
         /// <summary>
         ///     Lasts the log time using the specified new time
         /// </summary>
@@ -448,10 +433,10 @@ namespace Alis.Core.Ecs
                     " UnscaledTimeAsDouble: " + Context.TimeManager.UnscaledTimeAsDouble);*/
                 lastLogTime = newTime;
             }
-
+            
             return lastLogTime;
         }
-
+        
         /// <summary>
         ///     Ons the gui
         /// </summary>
@@ -459,7 +444,7 @@ namespace Alis.Core.Ecs
         {
             Context.OnGui();
         }
-
+        
         /// <summary>
         ///     Ons the draw
         /// </summary>
@@ -467,7 +452,7 @@ namespace Alis.Core.Ecs
         {
             Context.OnDraw();
         }
-
+        
         /// <summary>
         ///     Ons the calculate
         /// </summary>
@@ -475,7 +460,7 @@ namespace Alis.Core.Ecs
         {
             Context.OnCalculate();
         }
-
+        
         /// <summary>
         ///     Ons the after fixed update
         /// </summary>
@@ -483,7 +468,7 @@ namespace Alis.Core.Ecs
         {
             Context.OnAfterFixedUpdate();
         }
-
+        
         /// <summary>
         ///     Ons the fixed update
         /// </summary>
@@ -491,7 +476,7 @@ namespace Alis.Core.Ecs
         {
             Context.OnFixedUpdate();
         }
-
+        
         /// <summary>
         ///     Ons the before fixed update
         /// </summary>
@@ -499,7 +484,7 @@ namespace Alis.Core.Ecs
         {
             Context.OnBeforeFixedUpdate();
         }
-
+        
         /// <summary>
         ///     Ons the after update
         /// </summary>
@@ -507,7 +492,7 @@ namespace Alis.Core.Ecs
         {
             Context.OnAfterUpdate();
         }
-
+        
         /// <summary>
         ///     Ons the update
         /// </summary>
@@ -515,7 +500,7 @@ namespace Alis.Core.Ecs
         {
             Context.OnUpdate();
         }
-
+        
         /// <summary>
         ///     Ons the before update
         /// </summary>
@@ -523,7 +508,7 @@ namespace Alis.Core.Ecs
         {
             Context.OnBeforeUpdate();
         }
-
+        
         /// <summary>
         ///     Ons the dispatch events
         /// </summary>
@@ -531,7 +516,7 @@ namespace Alis.Core.Ecs
         {
             Context.OnDispatchEvents();
         }
-
+        
         /// <summary>
         ///     Ons the start
         /// </summary>
@@ -539,7 +524,7 @@ namespace Alis.Core.Ecs
         {
             Context.OnStart();
         }
-
+        
         /// <summary>
         ///     Ons the awake
         /// </summary>
@@ -547,7 +532,7 @@ namespace Alis.Core.Ecs
         {
             Context.OnAwake();
         }
-
+        
         /// <summary>
         ///     Ons the init
         /// </summary>
@@ -555,19 +540,19 @@ namespace Alis.Core.Ecs
         {
             Context.OnInit();
         }
-
+        
         /// <summary>
         ///     Builders
         /// </summary>
         /// <returns>The video game builder</returns>
         public static VideoGameBuilder Builder() => new VideoGameBuilder();
-
+        
         /// <summary>
         ///     Gets the context
         /// </summary>
         /// <returns>The context</returns>
         public static Context GetContext() => _instancie.Context;
-
+        
         /// <summary>
         ///     Sets the context using the specified context
         /// </summary>
