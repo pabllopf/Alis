@@ -40,6 +40,7 @@ using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component.Collider;
 using Alis.Core.Ecs.Component.Render;
+using Alis.Core.Ecs.Entity;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf;
@@ -123,7 +124,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// </summary>
         [JsonPropertyName("_Cameras_")]
         public List<Camera> Cameras { get; }
-
+        
         /// <summary>
         ///     Ons the enable
         /// </summary>
@@ -278,103 +279,63 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// Ons the update
         /// </summary>
         public override void OnUpdate()
-{
-    // Precompute values outside the loop
-    Color debugColor = Context.Settings.Physic.DebugColor;
-
-    foreach (Camera camera in Cameras)
-    {
-        // Render static objects to a separate texture if not already rendered
-        Sdl.SetRenderTarget(Renderer, camera.StaticViewport);
-        Sdl.SetRenderDrawColor(Renderer, camera.BackgroundColor.R, camera.BackgroundColor.G, camera.BackgroundColor.B, camera.BackgroundColor.A);
-        Sdl.RenderClear(Renderer);
-
-        foreach (Sprite sprite in Sprites)
         {
-            if (sprite.GameObject.IsStatic && sprite.GameObject.IsEnable && sprite.IsVisible(camera))
-            {
-                sprite.Render(Renderer, camera);
-            }
-        }
+            // Precompute values outside the loop
+            Color debugColor = Context.Settings.Physic.DebugColor;
+            bool debugMode = Context.Settings.Physic.DebugMode;
 
-        // Render debug rectangles to the custom backbuffer if debug mode is enabled
-        if (Context.Settings.Physic.DebugMode)
-        {
-            Sdl.SetRenderDrawColor(Renderer, debugColor.R, debugColor.G, debugColor.B, debugColor.A);
-
-            foreach (BoxCollider collider in ColliderBases)
+            foreach (Camera camera in Cameras)
             {
-                if (!collider.GameObject.IsStatic && collider.GameObject.IsEnable && collider.IsVisible(camera))
+                // Set render target to camera texture
+                Sdl.SetRenderTarget(Renderer, camera.TextureTarget);
+                Sdl.SetRenderDrawColor(Renderer, camera.BackgroundColor.R, camera.BackgroundColor.G, camera.BackgroundColor.B, camera.BackgroundColor.A);
+                Sdl.RenderClear(Renderer);
+
+                // Render dynamic sprites
+                foreach (Sprite sprite in Sprites)
                 {
-                    RectangleF rect = new RectangleF(
-                        (int)(collider.GameObject.Transform.Position.X - collider.RectangleF.W * collider.GameObject.Transform.Scale.X / 2 - (camera.Viewport.X - camera.Viewport.W / 2) + camera.CameraBorder),
-                        (int)(collider.GameObject.Transform.Position.Y - collider.RectangleF.H * collider.GameObject.Transform.Scale.Y / 2 - (camera.Viewport.Y - camera.Viewport.H / 2) + camera.CameraBorder),
-                        (int)collider.RectangleF.W,
-                        (int)collider.RectangleF.H);
-
-                    if (collider.GameObject.Contains<Camera>())
+                    if (sprite.GameObject.IsEnable && sprite.IsVisible(camera))
                     {
-                        rect.X += rect.W / 2;
-                        rect.Y += rect.H / 2;
+                        sprite.Render(Renderer, camera);
                     }
-
-                    Sdl.RenderDrawRectF(Renderer, ref rect);
                 }
-            }
-        }
 
-        // Set render target to camera texture
-        Sdl.SetRenderTarget(Renderer, camera.TextureTarget);
-        Sdl.SetRenderDrawColor(Renderer, camera.BackgroundColor.R, camera.BackgroundColor.G, camera.BackgroundColor.B, camera.BackgroundColor.A);
-        Sdl.RenderClear(Renderer);
-
-        // Copy static texture to the current render target
-        Sdl.RenderCopy(Renderer, camera.StaticViewport, IntPtr.Zero, IntPtr.Zero);
-
-        // Render dynamic sprites
-        foreach (Sprite sprite in Sprites)
-        {
-            if (!sprite.GameObject.IsStatic && sprite.GameObject.IsEnable && sprite.IsVisible(camera))
-            {
-                sprite.Render(Renderer, camera);
-            }
-        }
-
-        // Render debug rectangles to the custom backbuffer if debug mode is enabled
-        if (Context.Settings.Physic.DebugMode)
-        {
-            Sdl.SetRenderDrawColor(Renderer, debugColor.R, debugColor.G, debugColor.B, debugColor.A);
-
-            foreach (BoxCollider collider in ColliderBases)
-            {
-                if (collider.GameObject.IsStatic && collider.GameObject.IsEnable && collider.IsVisible(camera))
+                // Render debug rectangles to the custom backbuffer if debug mode is enabled
+                if (debugMode)
                 {
-                    RectangleF rect = new RectangleF(
-                        (int)(collider.GameObject.Transform.Position.X - collider.RectangleF.W * collider.GameObject.Transform.Scale.X / 2 - (camera.Viewport.X - camera.Viewport.W / 2) + camera.CameraBorder),
-                        (int)(collider.GameObject.Transform.Position.Y - collider.RectangleF.H * collider.GameObject.Transform.Scale.Y / 2 - (camera.Viewport.Y - camera.Viewport.H / 2) + camera.CameraBorder),
-                        (int)collider.RectangleF.W,
-                        (int)collider.RectangleF.H);
+                    Sdl.SetRenderDrawColor(Renderer, debugColor.R, debugColor.G, debugColor.B, debugColor.A);
 
-                    if (collider.GameObject.Contains<Camera>())
+                    foreach (BoxCollider collider in ColliderBases)
                     {
-                        rect.X += rect.W / 2;
-                        rect.Y += rect.H / 2;
-                    }
+                        if (collider.GameObject.IsEnable && collider.IsVisible(camera))
+                        {
+                            float colliderX = collider.GameObject.Transform.Position.X - collider.RectangleF.W * collider.GameObject.Transform.Scale.X / 2 - (camera.Viewport.X - camera.Viewport.W / 2) + camera.CameraBorder;
+                            float colliderY = collider.GameObject.Transform.Position.Y - collider.RectangleF.H * collider.GameObject.Transform.Scale.Y / 2 - (camera.Viewport.Y - camera.Viewport.H / 2) + camera.CameraBorder;
 
-                    Sdl.RenderDrawRectF(Renderer, ref rect);
+                            collider.RectangleF.X = (int) colliderX;
+                            collider.RectangleF.Y = (int) colliderY;
+
+                            if (collider.GameObject.Contains<Camera>())
+                            {
+                                collider.RectangleF.X += collider.RectangleF.W / 2;
+                                collider.RectangleF.Y += collider.RectangleF.H / 2;
+                            }
+
+                            Sdl.RenderDrawRectF(Renderer, ref collider.RectangleF);
+                        }
+                    }
                 }
+
+                // Reset the render target to the default SDL backbuffer
+                Sdl.SetRenderTarget(Renderer, IntPtr.Zero);
+
+                // Copy the custom backbuffer to the SDL backbuffer
+                Sdl.RenderCopy(Renderer, camera.TextureTarget, IntPtr.Zero, IntPtr.Zero);
+
+                Sdl.RenderPresent(Renderer);
             }
         }
 
-        // Reset the render target to the default SDL backbuffer
-        Sdl.SetRenderTarget(Renderer, IntPtr.Zero);
-
-        // Copy the custom backbuffer to the SDL backbuffer
-        Sdl.RenderCopy(Renderer, camera.TextureTarget, IntPtr.Zero, IntPtr.Zero);
-
-        Sdl.RenderPresent(Renderer);
-    }
-}
         /// <summary>
         ///     Attaches the sprite
         /// </summary>

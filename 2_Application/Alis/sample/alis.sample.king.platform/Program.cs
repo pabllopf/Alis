@@ -170,6 +170,7 @@ namespace Alis.Sample.King.Platform
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Floor")
                             .WithTag("Floor Down")
+                            .IsStatic()
                             .Transform(transform => transform
                                 .Position(512, 500)
                                 .Scale(1, 1)
