@@ -44,6 +44,9 @@ namespace Alis.Core.Ecs.System.Manager.Physic
         /// </summary>
         private readonly World world = new World(new Vector2(0, 9.8f));
         
+        private float accumulator = 0.0f;
+        private const float timeStep = 1.0f / 60.0f;
+        
         /// <summary>
         ///     Ons the update
         /// </summary>
@@ -53,8 +56,15 @@ namespace Alis.Core.Ecs.System.Manager.Physic
             {
                 return;
             }
-            
-            world.Step(0.016666666666666666f, 4, 2);
+
+            float deltaTime = Context.TimeManager.FixedDeltaTime;
+            accumulator += deltaTime;
+
+            while (accumulator >= timeStep)
+            {
+                world.Step(timeStep, 6, 2);
+                accumulator -= timeStep;
+            }
         }
         
         /// <summary>

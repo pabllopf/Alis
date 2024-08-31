@@ -47,7 +47,7 @@ namespace Alis.Sample.King.Platform
         /// <summary>
         ///     The jump force
         /// </summary>
-        private const float JumpForce = 15f;
+        private const float JumpForce = 20f;
         
         /// <summary>
         ///     The velocity player
