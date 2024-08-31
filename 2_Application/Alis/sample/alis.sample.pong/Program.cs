@@ -34,7 +34,6 @@ using Alis.Core.Ecs.Component.Collider;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Entity;
 using Alis.Core.Physic.Dynamics;
-using Color = System.Drawing.Color;
 
 namespace Alis.Sample.Pong
 {
@@ -65,13 +64,13 @@ namespace Alis.Sample.Pong
                         .Window(window => window
                             .Resolution(1024, 640)
                             .IsResizable(false)
-                            .Background(Alis.Core.Aspect.Math.Definition.Color.Black)
+                            .Background(Color.Black)
                             .Build())
                         .Build())
                     .Physic(physic => physic
                         .Gravity(0.0f, -9.8f)
                         .Debug(true)
-                        .DebugColor(Alis.Core.Aspect.Math.Definition.Color.Red)
+                        .DebugColor(Color.Red)
                         .Build())
                     .Build())
                 .World(sceneManager => sceneManager
@@ -85,7 +84,7 @@ namespace Alis.Sample.Pong
                             .AddComponent<Camera>(camera => camera
                                 .Builder()
                                 .Resolution(1024, 640)
-                                .BackgroundColor(Alis.Core.Aspect.Math.Definition.Color.Black)
+                                .BackgroundColor(Color.Black)
                                 .Build())
                             .Build())
                         .Add<GameObject>(soundTrack => soundTrack
@@ -109,7 +108,7 @@ namespace Alis.Sample.Pong
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()
                                 .IsActive(true)
-                                .BodyType(Body.BodyType.Dynamic)
+                                .BodyType(BodyType.Kinematic)
                                 .IsTrigger(false)
                                 .AutoTilling(false)
                                 .Size(10, 100)
@@ -133,7 +132,7 @@ namespace Alis.Sample.Pong
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()
                                 .IsActive(true)
-                                .BodyType(Body.BodyType.MaxTypes)
+                                .BodyType(BodyType.Kinematic)
                                 .IsTrigger(false)
                                 .AutoTilling(false)
                                 .Size(10, 100)
@@ -157,7 +156,7 @@ namespace Alis.Sample.Pong
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()
                                 .IsActive(true)
-                                .BodyType(Body.BodyType.Dynamic)
+                                .BodyType(BodyType.Dynamic)
                                 .IsTrigger(false)
                                 .AutoTilling(false)
                                 .Size(35, 35)
@@ -180,7 +179,7 @@ namespace Alis.Sample.Pong
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()
                                 .IsActive(true)
-                                .BodyType(Body.BodyType.Static)
+                                .BodyType(BodyType.Static)
                                 .IsTrigger(false)
                                 .AutoTilling(false)
                                 .Size(1024, 10)
@@ -202,7 +201,7 @@ namespace Alis.Sample.Pong
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()
                                 .IsActive(true)
-                                .BodyType(Body.BodyType.Static)
+                                .BodyType(BodyType.Static)
                                 .IsTrigger(false)
                                 .AutoTilling(false)
                                 .Size(1024, 10)
@@ -224,7 +223,7 @@ namespace Alis.Sample.Pong
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()
                                 .IsActive(true)
-                                .BodyType(Body.BodyType.Static)
+                                .BodyType(BodyType.Static)
                                 .IsTrigger(false)
                                 .AutoTilling(false)
                                 .Size(10, 640)
@@ -246,7 +245,7 @@ namespace Alis.Sample.Pong
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()
                                 .IsActive(true)
-                                .BodyType(Body.BodyType.Static)
+                                .BodyType(BodyType.Static)
                                 .IsTrigger(false)
                                 .AutoTilling(false)
                                 .Size(10, 640)
