@@ -1,430 +1,329 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:MotorJoint.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+/* Original source Farseer Physics Engine:
+ * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
+ * Microsoft Permissive License (Ms-PL) v1.1
+ */
 
-using System;
-using Alis.Core.Aspect.Math;
-using Alis.Core.Aspect.Math.Matrix;
+/*
+* Farseer Physics Engine:
+* Copyright (c) 2012 Ian Qvist
+* 
+* Original source Box2D:
+* Copyright (c) 2006-2011 Erin Catto http://www.box2d.org 
+* 
+* This software is provided 'as-is', without any express or implied 
+* warranty.  In no event will the authors be held liable for any damages 
+* arising from the use of this software. 
+* Permission is granted to anyone to use this software for any purpose, 
+* including commercial applications, and to alter it and redistribute it 
+* freely, subject to the following restrictions: 
+* 1. The origin of this software must not be misrepresented; you must not 
+* claim that you wrote the original software. If you use this software 
+* in a product, an acknowledgment in the product documentation would be 
+* appreciated but is not required. 
+* 2. Altered source versions must be plainly marked as such, and must not be 
+* misrepresented as being the original software. 
+* 3. This notice may not be removed or altered from any source distribution. 
+*/
+
+using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Dynamics.Solver;
+using Alis.Core.Physic.Common;
+#if XNAAPI
+using Complex = nkast.Aether.Physics2D.Common.Complex;
+using Vector2 = Microsoft.Xna.Framework.Vector2;
+#endif
 
 namespace Alis.Core.Physic.Dynamics.Joints
 {
     /// <summary>
-    ///     A motor joint is used to control the relative motion between two bodies. A typical usage is to control the
-    ///     movement of a dynamic body with respect to the ground.
+    /// A motor joint is used to control the relative motion
+    /// between two bodies. A typical usage is to control the movement
+    /// of a dynamic body with respect to the ground.
     /// </summary>
     public class MotorJoint : Joint
     {
-        /// <summary>
-        ///     The angular error
-        /// </summary>
-        private float angularError;
-        
-        /// <summary>
-        ///     The angular impulse
-        /// </summary>
-        private float angularImpulse;
-        
-        /// <summary>
-        ///     The angular mass
-        /// </summary>
-        private float angularMass;
-        
-        /// <summary>
-        ///     The angular offset
-        /// </summary>
-        private float angularOffset;
-        
-        // Solver temp
-        /// <summary>
-        ///     The index
-        /// </summary>
-        private int indexA;
-        
-        /// <summary>
-        ///     The index
-        /// </summary>
-        private int indexB;
-        
-        /// <summary>
-        ///     The inv ia
-        /// </summary>
-        private float invIa;
-        
-        /// <summary>
-        ///     The inv ib
-        /// </summary>
-        private float invIb;
-        
-        /// <summary>
-        ///     The inv mass
-        /// </summary>
-        private float invMassA;
-        
-        /// <summary>
-        ///     The inv mass
-        /// </summary>
-        private float invMassB;
-        
-        /// <summary>
-        ///     The linear error
-        /// </summary>
-        private Vector2 linearError;
-        
-        /// <summary>
-        ///     The linear impulse
-        /// </summary>
-        private Vector2 linearImpulse;
-        
-        /// <summary>
-        ///     The linear mass
-        /// </summary>
-        private Matrix2X2 linearMass;
-        
         // Solver shared
-        /// <summary>
-        ///     The linear offset
-        /// </summary>
-        private Vector2 linearOffset;
-        
-        /// <summary>
-        ///     The local center
-        /// </summary>
-        private Vector2 localCenterA;
-        
-        /// <summary>
-        ///     The local center
-        /// </summary>
-        private Vector2 localCenterB;
-        
-        /// <summary>
-        ///     The max force
-        /// </summary>
-        private float maxForce;
-        
-        /// <summary>
-        ///     The
-        /// </summary>
-        private Vector2 rA;
-        
-        /// <summary>
-        ///     The
-        /// </summary>
-        private Vector2 rB;
-        
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="MotorJoint" /> class
-        /// </summary>
-        /// <param name="bodyA">The body</param>
-        /// <param name="bodyB">The body</param>
-        /// <param name="jointType">The joint type</param>
-        /// <param name="collideConnected">The collide connected</param>
-        /// <param name="linearOffset">The linear offset</param>
-        /// <param name="angularOffset">The angular offset</param>
-        /// <param name="maxForce">The max force</param>
-        /// <param name="maxTorque">The max torque</param>
-        /// <param name="correctionFactor">The correction factor</param>
-        public MotorJoint(
-            Body bodyA = null,
-            Body bodyB = null,
-            JointType jointType = default(JointType),
-            bool collideConnected = false,
-            Vector2 linearOffset = default(Vector2),
-            float angularOffset = 0.0f,
-            float maxForce = 1.0f,
-            float maxTorque = 1.0f,
-            float correctionFactor = 0.3f
-        )
-            : base(bodyA, bodyB, jointType, collideConnected)
+        private Vector2 _linearOffset;
+        private float _angularOffset;
+        private Vector2 _linearImpulse;
+        private float _angularImpulse;
+        private float _maxForce;
+        private float _maxTorque;
+
+        // Solver temp
+        private int _indexA;
+        private int _indexB;
+        private Vector2 _rA;
+        private Vector2 _rB;
+        private Vector2 _localCenterA;
+        private Vector2 _localCenterB;
+        private Vector2 _linearError;
+        private float _angularError;
+        private float _invMassA;
+        private float _invMassB;
+        private float _invIA;
+        private float _invIB;
+        private Mat22 _linearMass;
+        private float _angularMass;
+
+        internal MotorJoint()
         {
-            this.linearOffset = linearOffset;
-            this.angularOffset = angularOffset;
-            this.maxForce = maxForce;
-            Torque = maxTorque;
-            CorrectionFactor = correctionFactor;
+            JointType = JointType.Motor;
         }
-        
-        /// <summary>Constructor for MotorJoint.</summary>
+
+        /// <summary>
+        /// Constructor for MotorJoint.
+        /// </summary>
         /// <param name="bodyA">The first body</param>
         /// <param name="bodyB">The second body</param>
         /// <param name="useWorldCoordinates">Set to true if you are using world coordinates as anchors.</param>
         public MotorJoint(Body bodyA, Body bodyB, bool useWorldCoordinates = false)
-            : base(bodyA, bodyB, JointType.Motor)
+            : base(bodyA, bodyB)
         {
-            Vector2 xB = bodyB.Position;
-            
+            JointType = JointType.Motor;
+
+            Vector2 xB = BodyB.Position;
+
             if (useWorldCoordinates)
-            {
-                linearOffset = bodyA.GetLocalPoint(xB);
-            }
+                _linearOffset = BodyA.GetLocalPoint(xB);
             else
-            {
-                linearOffset = xB;
-            }
-            
-            maxForce = 1.0f;
-            Torque = 1.0f;
+                _linearOffset = xB;
+
+            //Defaults
+            _angularOffset = 0.0f;
+            _maxForce = 1.0f;
+            _maxTorque = 1.0f;
             CorrectionFactor = 0.3f;
-            
-            angularOffset = bodyB.Rotation - bodyA.Rotation;
+
+            _angularOffset = BodyB.Rotation - BodyA.Rotation;
         }
-        
-        /// <summary>
-        ///     Gets or sets the value of the world anchor a
-        /// </summary>
+
         public override Vector2 WorldAnchorA
         {
-            get => BodyA.Position;
-            set => throw new ArgumentException(value.ToString());
+            get { return BodyA.Position; }
+            set { Debug.Assert(false, "You can't set the world anchor on this joint type."); }
         }
-        
-        /// <summary>
-        ///     Gets or sets the value of the world anchor b
-        /// </summary>
+
         public override Vector2 WorldAnchorB
         {
-            get => BodyB.Position;
-            set => throw new ArgumentException(value.ToString());
+            get { return BodyB.Position; }
+            set { Debug.Assert(false, "You can't set the world anchor on this joint type."); }
         }
-        
-        /// <summary>Get/set the maximum friction force in N.</summary>
-        public float Force
-        {
-            set => maxForce = value;
-            get => maxForce;
-        }
-        
-        /// <summary>Get/set the maximum friction torque in N*m.</summary>
-        public float Torque { set; get; }
-        
+
         /// <summary>
-        ///     Get/set the position correction factor in the range [0,1].
+        /// The maximum amount of force that can be applied to BodyA
         /// </summary>
-        public float CorrectionFactor { set; get; }
-        
-        /// <summary>The linear (translation) offset.</summary>
+        public float MaxForce
+        {
+            set
+            {
+                Debug.Assert(MathUtils.IsValid(value) && value >= 0.0f);
+                _maxForce = value;
+            }
+            get { return _maxForce; }
+        }
+
+        /// <summary>
+        /// The maximum amount of torque that can be applied to BodyA
+        /// </summary>
+        public float MaxTorque
+        {
+            set
+            {
+                Debug.Assert(MathUtils.IsValid(value) && value >= 0.0f);
+                _maxTorque = value;
+            }
+            get { return _maxTorque; }
+        }
+
+        /// <summary>
+        /// The linear (translation) offset.
+        /// </summary>
         public Vector2 LinearOffset
         {
             set
             {
-                if (linearOffset != value)
+                if (_linearOffset.X != value.X || _linearOffset.Y != value.Y)
                 {
                     WakeBodies();
-                    linearOffset = value;
+                    _linearOffset = value;
                 }
             }
-            get => linearOffset;
+            get { return _linearOffset; }
         }
-        
-        /// <summary>Get or set the angular offset.</summary>
+
+        /// <summary>
+        /// Get or set the angular offset.
+        /// </summary>
         public float AngularOffset
         {
             set
             {
-                if (CustomMathF.Abs(angularOffset - value) >= float.Epsilon)
+                if (_angularOffset != value)
                 {
                     WakeBodies();
-                    angularOffset = value;
+                    _angularOffset = value;
                 }
             }
-            get => angularOffset;
+            get { return _angularOffset; }
         }
-        
-        /// <summary>
-        ///     Gets the reaction force using the specified inv dt
-        /// </summary>
-        /// <param name="invDt">The inv dt</param>
-        /// <returns>The vector</returns>
-        protected override Vector2 GetReactionForce(float invDt) => invDt * linearImpulse;
-        
-        /// <summary>
-        ///     Gets the reaction torque using the specified inv dt
-        /// </summary>
-        /// <param name="invDt">The inv dt</param>
-        /// <returns>The float</returns>
-        public override float GetReactionTorque(float invDt) => invDt * angularImpulse;
-        
-        /// <summary>
-        ///     Inits the velocity constraints using the specified data
-        /// </summary>
-        /// <param name="data">The data</param>
+
+        //FPE note: Used for serialization.
+        internal float CorrectionFactor { get; set; }
+
+        public override Vector2 GetReactionForce(float invDt)
+        {
+            return invDt * _linearImpulse;
+        }
+
+        public override float GetReactionTorque(float invDt)
+        {
+            return invDt * _angularImpulse;
+        }
+
         internal override void InitVelocityConstraints(ref SolverData data)
         {
-            indexA = BodyA.IslandIndex;
-            indexB = BodyB.IslandIndex;
-            localCenterA = BodyA.Sweep.LocalCenter;
-            localCenterB = BodyB.Sweep.LocalCenter;
-            invMassA = BodyA.InvMass;
-            invMassB = BodyB.InvMass;
-            invIa = BodyA.InvI;
-            invIb = BodyB.InvI;
-            
-            Vector2 cA = data.Positions[indexA].C;
-            float aA = data.Positions[indexA].A;
-            Vector2 vA = data.Velocities[indexA].V;
-            float wA = data.Velocities[indexA].W;
-            
-            Vector2 cB = data.Positions[indexB].C;
-            float aB = data.Positions[indexB].A;
-            Vector2 vB = data.Velocities[indexB].V;
-            float wB = data.Velocities[indexB].W;
-            
-            Rotation qA = new Rotation(aA);
-            Rotation qB = new Rotation(aB);
-            
+            _indexA = BodyA.IslandIndex;
+            _indexB = BodyB.IslandIndex;
+            _localCenterA = BodyA._sweep.LocalCenter;
+            _localCenterB = BodyB._sweep.LocalCenter;
+            _invMassA = BodyA._invMass;
+            _invMassB = BodyB._invMass;
+            _invIA = BodyA._invI;
+            _invIB = BodyB._invI;
+
+            Vector2 cA = data.positions[_indexA].c;
+            float aA = data.positions[_indexA].a;
+            Vector2 vA = data.velocities[_indexA].v;
+            float wA = data.velocities[_indexA].w;
+
+            Vector2 cB = data.positions[_indexB].c;
+            float aB = data.positions[_indexB].a;
+            Vector2 vB = data.velocities[_indexB].v;
+            float wB = data.velocities[_indexB].w;
+
+            Complex qA = Complex.FromAngle(aA);
+            Complex qB = Complex.FromAngle(aB);
+
             // Compute the effective mass matrix.
-            rA = MathUtils.Mul(qA, linearOffset - localCenterA);
-            rB = MathUtils.Mul(qB, -localCenterB);
-            
+            _rA = -Complex.Multiply(ref _localCenterA, ref qA);
+            _rB = -Complex.Multiply(ref _localCenterB, ref qB);
+
             // J = [-I -r1_skew I r2_skew]
             //     [ 0       -1 0       1]
             // r_skew = [-ry; rx]
-            
+
             // Matlab
             // K = [ mA+r1y^2*iA+mB+r2y^2*iB,  -r1y*iA*r1x-r2y*iB*r2x,          -r1y*iA-r2y*iB]
             //     [  -r1y*iA*r1x-r2y*iB*r2x, mA+r1x^2*iA+mB+r2x^2*iB,           r1x*iA+r2x*iB]
             //     [          -r1y*iA-r2y*iB,           r1x*iA+r2x*iB,                   iA+iB]
-            
-            float mA = invMassA, mB = invMassB;
-            float iA = invIa, iB = invIb;
-            
-            // Upper 2 by 2 of K for point to point
-            Matrix2X2 k = new Matrix2X2(
-                mA + mB + iA * rA.Y * rA.Y + iB * rB.Y * rB.Y,
-                -iA * rA.X * rA.Y - iB * rB.X * rB.Y,
-                -iA * rA.X * rA.Y - iB * rB.X * rB.Y,
-                mA + mB + iA * rA.X * rA.X + iB * rB.X * rB.X
-            );
-            
-            linearMass = k.Inverse;
-            
-            angularMass = iA + iB;
-            if (angularMass > 0.0f)
+
+            float mA = _invMassA, mB = _invMassB;
+            float iA = _invIA, iB = _invIB;
+
+            Mat22 K = new Mat22();
+            K.ex.X = mA + mB + iA * _rA.Y * _rA.Y + iB * _rB.Y * _rB.Y;
+            K.ex.Y = -iA * _rA.X * _rA.Y - iB * _rB.X * _rB.Y;
+            K.ey.X = K.ex.Y;
+            K.ey.Y = mA + mB + iA * _rA.X * _rA.X + iB * _rB.X * _rB.X;
+
+            _linearMass = K.Inverse;
+
+            _angularMass = iA + iB;
+            if (_angularMass > 0.0f)
             {
-                angularMass = 1.0f / angularMass;
+                _angularMass = 1.0f / _angularMass;
             }
-            
-            linearError = cB + rB - cA - rA;
-            angularError = aB - aA - angularOffset;
-            
-            if (data.Step.WarmStarting)
+
+            _linearError = cB + _rB - cA - _rA - Complex.Multiply(ref _linearOffset, ref qA);
+            _angularError = aB - aA - _angularOffset;
+
+            if (data.step.warmStarting)
             {
                 // Scale impulses to support a variable time step.
-                linearImpulse *= data.Step.DeltaTimeRatio;
-                angularImpulse *= data.Step.DeltaTimeRatio;
-                
-                Vector2 p = new Vector2(linearImpulse.X, linearImpulse.Y);
-                vA -= mA * p;
-                wA -= iA * (MathUtils.Cross(rA, p) + angularImpulse);
-                vB += mB * p;
-                wB += iB * (MathUtils.Cross(rB, p) + angularImpulse);
+                _linearImpulse *= data.step.dtRatio;
+                _angularImpulse *= data.step.dtRatio;
+
+                Vector2 P = new Vector2(_linearImpulse.X, _linearImpulse.Y);
+
+                vA -= mA * P;
+                wA -= iA * (MathUtils.Cross(ref _rA, ref P) + _angularImpulse);
+                vB += mB * P;
+                wB += iB * (MathUtils.Cross(ref _rB, ref P) + _angularImpulse);
             }
             else
             {
-                linearImpulse = Vector2.Zero;
-                angularImpulse = 0.0f;
+                _linearImpulse = Vector2.Zero;
+                _angularImpulse = 0.0f;
             }
-            
-            data.Velocities[indexA].V = vA;
-            data.Velocities[indexA].W = wA;
-            data.Velocities[indexB].V = vB;
-            data.Velocities[indexB].W = wB;
+
+            data.velocities[_indexA].v = vA;
+            data.velocities[_indexA].w = wA;
+            data.velocities[_indexB].v = vB;
+            data.velocities[_indexB].w = wB;
         }
-        
-        /// <summary>
-        ///     Solves the velocity constraints using the specified data
-        /// </summary>
-        /// <param name="data">The data</param>
+
         internal override void SolveVelocityConstraints(ref SolverData data)
         {
-            Vector2 vA = data.Velocities[indexA].V;
-            float wA = data.Velocities[indexA].W;
-            Vector2 vB = data.Velocities[indexB].V;
-            float wB = data.Velocities[indexB].W;
-            
-            float mA = invMassA, mB = invMassB;
-            float iA = invIa, iB = invIb;
-            
-            float h = data.Step.DeltaTime;
-            float invH = data.Step.InvertedDeltaTime;
-            
+            Vector2 vA = data.velocities[_indexA].v;
+            float wA = data.velocities[_indexA].w;
+            Vector2 vB = data.velocities[_indexB].v;
+            float wB = data.velocities[_indexB].w;
+
+            float mA = _invMassA, mB = _invMassB;
+            float iA = _invIA, iB = _invIB;
+
+            float h = data.step.dt;
+            float inv_h = data.step.inv_dt;
+
             // Solve angular friction
             {
-                float cdot = wB - wA + invH * CorrectionFactor * angularError;
-                float impulse = -angularMass * cdot;
-                
-                float oldImpulse = angularImpulse;
-                float maxImpulse = h * Torque;
-                angularImpulse = MathUtils.Clamp(angularImpulse + impulse, -maxImpulse, maxImpulse);
-                impulse = angularImpulse - oldImpulse;
-                
+                float Cdot = wB - wA + inv_h * CorrectionFactor * _angularError;
+                float impulse = -_angularMass * Cdot;
+
+                float oldImpulse = _angularImpulse;
+                float maxImpulse = h * _maxTorque;
+                _angularImpulse = MathUtils.Clamp(_angularImpulse + impulse, -maxImpulse, maxImpulse);
+                impulse = _angularImpulse - oldImpulse;
+
                 wA -= iA * impulse;
                 wB += iB * impulse;
             }
-            
+
             // Solve linear friction
             {
-                Vector2 cdot = vB + MathUtils.Cross(wB, rB) - vA - MathUtils.Cross(wA, rA) +
-                               invH * CorrectionFactor * linearError;
-                
-                Vector2 impulse = -MathUtils.Mul(ref linearMass, ref cdot);
-                Vector2 oldImpulse = linearImpulse;
-                linearImpulse += impulse;
-                
-                float maxImpulse = h * maxForce;
-                
-                if (linearImpulse.LengthSquared() > maxImpulse * maxImpulse)
+                Vector2 Cdot = vB + MathUtils.Cross(wB, ref _rB) - vA - MathUtils.Cross(wA, ref _rA) + inv_h * CorrectionFactor * _linearError;
+
+                Vector2 impulse = -MathUtils.Mul(ref _linearMass, ref Cdot);
+                Vector2 oldImpulse = _linearImpulse;
+                _linearImpulse += impulse;
+
+                float maxImpulse = h * _maxForce;
+
+                if (_linearImpulse.LengthSquared() > maxImpulse * maxImpulse)
                 {
-                    linearImpulse = Vector2.Normalize(linearImpulse);
-                    linearImpulse *= maxImpulse;
+                    _linearImpulse.Normalize();
+                    _linearImpulse *= maxImpulse;
                 }
-                
-                impulse = linearImpulse - oldImpulse;
-                
+
+                impulse = _linearImpulse - oldImpulse;
+
                 vA -= mA * impulse;
-                wA -= iA * MathUtils.Cross(rA, impulse);
-                
+                wA -= iA * MathUtils.Cross(ref _rA, ref impulse);
+
                 vB += mB * impulse;
-                wB += iB * MathUtils.Cross(rB, impulse);
+                wB += iB * MathUtils.Cross(ref _rB, ref impulse);
             }
-            
-            data.Velocities[indexA].V = vA;
-            data.Velocities[indexA].W = wA;
-            data.Velocities[indexB].V = vB;
-            data.Velocities[indexB].W = wB;
+
+            data.velocities[_indexA].v = vA;
+            data.velocities[_indexA].w = wA;
+            data.velocities[_indexB].v = vB;
+            data.velocities[_indexB].w = wB;
         }
-        
-        /// <summary>
-        ///     Describes whether this instance solve position constraints
-        /// </summary>
-        /// <param name="data">The data</param>
-        /// <returns>The bool</returns>
-        internal override bool SolvePositionConstraints(ref SolverData data) => true;
+
+        internal override bool SolvePositionConstraints(ref SolverData data)
+        {
+            return true;
+        }
     }
 }

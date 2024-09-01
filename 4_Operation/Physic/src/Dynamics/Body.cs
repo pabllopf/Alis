@@ -1,948 +1,768 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:Body.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+﻿// Copyright (c) 2017-2021 Kastellanos Nikolaos
 
-using System.Collections.Generic;
-using Alis.Core.Aspect.Math;
-using Alis.Core.Aspect.Math.Util;
+/* Original source Farseer Physics Engine:
+ * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
+ * Microsoft Permissive License (Ms-PL) v1.1
+ */
+
+/*
+* Farseer Physics Engine:
+* Copyright (c) 2012 Ian Qvist
+* 
+* Original source Box2D:
+* Copyright (c) 2006-2011 Erin Catto http://www.box2d.org 
+* 
+* This software is provided 'as-is', without any express or implied 
+* warranty.  In no event will the authors be held liable for any damages 
+* arising from the use of this software. 
+* Permission is granted to anyone to use this software for any purpose, 
+* including commercial applications, and to alter it and redistribute it 
+* freely, subject to the following restrictions: 
+* 1. The origin of this software must not be misrepresented; you must not 
+* claim that you wrote the original software. If you use this software 
+* in a product, an acknowledgment in the product documentation would be 
+* appreciated but is not required. 
+* 2. Altered source versions must be plainly marked as such, and must not be 
+* misrepresented as being the original software. 
+* 3. This notice may not be removed or altered from any source distribution. 
+*/
+
+
+using System;
+using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Collision.BroadPhase;
-using Alis.Core.Physic.Collision.ContactSystem;
-using Alis.Core.Physic.Collision.Filtering;
-using Alis.Core.Physic.Collision.Handlers;
+using Alis.Core.Physic.Collision;
 using Alis.Core.Physic.Collision.Shapes;
-using Alis.Core.Physic.Collision.TOI;
+using Alis.Core.Physic.Common;
+using Alis.Core.Physic.Common.PhysicsLogic;
+using Alis.Core.Physic.Dynamics.Contacts;
 using Alis.Core.Physic.Dynamics.Joints;
+#if XNAAPI
+using Complex = nkast.Aether.Physics2D.Common.Complex;
+using Vector2 = Microsoft.Xna.Framework.Vector2;
+#endif
 
 namespace Alis.Core.Physic.Dynamics
 {
-    /// <summary>
-    ///     The body class
-    /// </summary>
-    public class Body
+    public partial class Body
     {
-        /// <summary>
-        ///     The angular velocity
-        /// </summary>
-        private float angularVelocity;
-        
-        /// <summary>
-        ///     The inertia
-        /// </summary>
-        private float inertia;
-        
-        /// <summary>
-        ///     The linear velocity
-        /// </summary>
-        private Vector2 linearVelc;
-        
-        /// <summary>
-        ///     The mass
-        /// </summary>
-        private float mass;
-        
-        /// <summary>
-        ///     The type
-        /// </summary>
-        internal BodyType Type;
-        
-        /// <summary>
-        ///     The xf
-        /// </summary>
-        internal Transform Xf; // the body origin transform
-        
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Body" /> class
-        /// </summary>
-        /// <param name="position">The position</param>
-        /// <param name="linearVelocity">The linear velocity</param>
-        /// <param name="bodyType">The body type</param>
-        /// <param name="angle">The angle</param>
-        /// <param name="angularVelocity">The angular velocity</param>
-        /// <param name="linearDamping">The linear damping</param>
-        /// <param name="angularDamping">The angular damping</param>
-        /// <param name="allowSleep">The allow sleep</param>
-        /// <param name="awake">The awake</param>
-        /// <param name="fixedRotation">The fixed rotation</param>
-        /// <param name="isBullet">The is bullet</param>
-        /// <param name="enabled">The enabled</param>
-        /// <param name="gravityScale">The gravity scale</param>
-        public Body(
-            Vector2 position,
-            Vector2 linearVelocity,
-            BodyType bodyType = BodyType.Static,
-            float angle = 0.0f,
-            float angularVelocity = 0.0f,
-            float linearDamping = 0.0f,
-            float angularDamping = 0.0f,
-            bool allowSleep = true,
-            bool awake = true,
-            bool fixedRotation = false,
-            bool isBullet = false,
-            bool enabled = true,
-            float gravityScale = 1.0f
-        )
-        {
-            FixtureList = new List<Fixture>(1);
-            
-            if (isBullet)
-            {
-                Flags |= BodySettings.BulletFlag;
-            }
-            
-            if (fixedRotation)
-            {
-                Flags |= BodySettings.FixedRotationFlag;
-            }
-            
-            if (allowSleep)
-            {
-                Flags |= BodySettings.AutoSleepFlag;
-            }
-            
-            if (awake)
-            {
-                Flags |= BodySettings.AwakeFlag;
-            }
-            
-            if (enabled)
-            {
-                Flags |= BodySettings.Enabled;
-            }
-            
-            Xf.Position = position;
-            Xf.Rotation.Set(angle);
-            
-            Sweep.C0 = Xf.Position;
-            Sweep.C = Xf.Position;
-            Sweep.A0 = angle;
-            Sweep.A = angle;
-            
-            LinearVelocity = linearVelocity;
-            AngularVelocity = angularVelocity;
-            
-            LinearDamping = linearDamping;
-            AngularDamping = angularDamping;
-            GravityScale = gravityScale;
-            
-            Type = bodyType;
-            
-            mass = 0.0f;
-            InvMass = 0.0f;
-        }
-        
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Body" /> class
-        /// </summary>
+        private float _angularDamping;
+        private BodyType _bodyType;
+        private float _inertia;
+        private float _linearDamping;
+        private float _mass;
+        private bool _sleepingAllowed;
+        private bool _awake;
+        private bool _fixedRotation;
+
+        internal bool _enabled;
+        internal float _angularVelocity;
+        internal Vector2 _linearVelocity;
+        internal Vector2 _force;
+        internal float _invI;
+        internal float _invMass;
+        internal float _sleepTime;
+        internal Sweep _sweep; // the swept motion for CCD
+        internal float _torque;
+        internal World _world;
+        internal Transform _xf; // the body origin transform
+        internal bool _island;
+        internal int _lock;
+        internal int _lockOrder;
+
+        public ControllerFilter ControllerFilter = new ControllerFilter(ControllerCategory.All);
+
         public Body()
         {
-            Vector2 position = Vector2.Zero;
-            Vector2 linearVelocity = Vector2.Zero;
-            BodyType bodyType = BodyType.Static;
-            float angle = 0.0f;
-            LinearDamping = 0.0f;
-            AngularDamping = 0.0f;
-            GravityScale = 1.0f;
-            SleepingAllowed = true;
-            angularVelocity = 0.0f;
-            Awake = true;
-            IsBullet = false;
-            FixedRotation = false;
-            Enabled = true;
-            
-            FixtureList = new List<Fixture>(1);
-            
-            Flags |= BodySettings.AutoSleepFlag;
-            
-            Flags |= BodySettings.AwakeFlag;
-            
-            Flags |= BodySettings.Enabled;
-            
-            Xf.Position = position;
-            Xf.Rotation.Set(angle);
-            
-            Sweep.C0 = Xf.Position;
-            Sweep.C = Xf.Position;
-            Sweep.A0 = angle;
-            Sweep.A = angle;
-            
-            LinearVelocity = linearVelocity;
-            AngularVelocity = angularVelocity;
-            
-            Type = bodyType;
-            
-            mass = 0.0f;
-            InvMass = 0.0f;
+            FixtureList = new FixtureCollection(this);
+
+            _enabled = true;
+            _awake = true;
+            _sleepingAllowed = true;
+            _xf.q = Complex.One;
+
+            BodyType = BodyType.Static;
         }
-        
+
         /// <summary>
-        ///     The game object
+        /// Get the parent World of this body. This is null if the body is not attached.
         /// </summary>
-        public object GameObject { get; set; }
+        public World World { get {return _world; } }
+
+        /// <remarks>Deprecated in version 1.6</remarks>
         
+        public int IslandIndex { get; internal set; }
+
         /// <summary>
-        ///     Fires when two shapes collide and a contact is created between them. Note that the first fixture argument is
-        ///     always the fixture that the delegate is subscribed to.
+        /// Set the user data. Use this to store your application specific data.
         /// </summary>
-        public OnCollisionHandler OnCollision { get; set; }
-        
+        /// <value>The user data.</value>
+        public object Tag;
+
         /// <summary>
-        ///     Fires when two shapes separate and a contact is removed between them. Note: This can in some cases be called
-        ///     multiple times, as a fixture can have multiple contacts. Note The first fixture argument is always the fixture that
-        ///     the
-        ///     delegate is subscribed to.
+        /// Gets the total number revolutions the body has made.
         /// </summary>
-        public OnSeparationHandler OnSeparation { get; set; }
-        
-        /// <summary>
-        ///     The flags
-        /// </summary>
-        internal BodySettings Flags { get; set; }
-        
-        /// <summary>
-        ///     The force
-        /// </summary>
-        public Vector2 Force { get; set; }
-        
-        /// <summary>
-        ///     The inv
-        /// </summary>
-        internal float InvI { get; set; }
-        
-        /// <summary>
-        ///     The inv mass
-        /// </summary>
-        internal float InvMass { get; set; }
-        
-        /// <summary>
-        ///     The sweep
-        /// </summary>
-        
-        internal Sweep Sweep { get; set; } = new Sweep();
-        
-        /// <summary>
-        ///     The torque
-        /// </summary>
-        public float Torque { get; set; }
-        
-        /// <summary>
-        ///     Gets or sets the value of the sleep time
-        /// </summary>
-        
-        public float SleepTime { get; set; }
-        
-        /// <summary>
-        ///     Gets or sets the value of the island index
-        /// </summary>
-        
-        public int IslandIndex { get; set; }
-        
-        /// <summary>
-        ///     Scale the gravity applied to this body. Defaults to 1. A value of 2 means double the gravity is applied to
-        ///     this body.
-        /// </summary>
-        public float GravityScale { get; set; }
-        
-        /// <summary>Gets the total number revolutions the body has made.</summary>
         /// <value>The revolutions.</value>
-        
-        public float Revolutions => Rotation / Constant.Pi;
-        
-        /// <summary>Gets or sets the body type. Warning: Calling this mid-update might cause a crash.</summary>
+        public float Revolutions
+        {
+            get { return Rotation / (2 * (float)Math.PI); }
+        }
+
+        /// <summary>
+        /// Gets or sets the body type.
+        /// Warning: This property is readonly during callbacks.
+        /// </summary>
         /// <value>The type of body.</value>
-        
+        /// <exception cref="System.InvalidOperationException">Thrown when the world is Locked/Stepping.</exception>
         public BodyType BodyType
         {
-            get => Type;
+            get { return _bodyType; }
             set
             {
-                if (Type == value)
-                {
+                if (World != null && World.IsLocked)
+                    throw new InvalidOperationException("The World is locked.");
+
+                if (_bodyType == value)
                     return;
-                }
-                
-                Type = value;
-                
+
+                _bodyType = value;
+
                 ResetMassData();
-                
-                if (Type == BodyType.Static)
+
+                if (_bodyType == BodyType.Static)
                 {
-                    LinearVelocity = Vector2.Zero;
-                    AngularVelocity = 0.0f;
-                    Sweep.A0 = Sweep.A;
-                    Sweep.C0 = Sweep.C;
-                    Flags &= ~BodySettings.AwakeFlag;
+                    _linearVelocity = Vector2.Zero;
+                    _angularVelocity = 0.0f;
+                    _sweep.A0 = _sweep.A;
+                    _sweep.C0 = _sweep.C;
                     SynchronizeFixtures();
                 }
-                
+
                 Awake = true;
-                
-                Force = Vector2.Zero;
-                Torque = 0.0f;
-                
+
+                _force = Vector2.Zero;
+                _torque = 0.0f;
+
+                // Delete the attached contacts.
                 ContactEdge ce = ContactList;
                 while (ce != null)
                 {
                     ContactEdge ce0 = ce;
                     ce = ce.Next;
-                    ContactManager.Current.Remove(ce0.Contact);
+                    World.ContactManager.Destroy(ce0.Contact);
                 }
-                
                 ContactList = null;
                 
-                IBroadPhase broadPhase = ContactManager.Current.BroadPhase;
-                foreach (Fixture fixture in FixtureList)
+                if (World != null)
                 {
-                    int proxyCount = fixture.ProxyCount;
-                    for (int j = 0; j < proxyCount; j++)
-                    {
-                        broadPhase.TouchProxy(fixture.Proxies[j].ProxyId);
-                    }
+                    // Touch the proxies so that new contacts will be created (when appropriate)
+                    IBroadPhase broadPhase = World.ContactManager.BroadPhase;
+                    foreach (Fixture fixture in FixtureList)
+                        fixture.TouchProxies(broadPhase);
                 }
             }
         }
-        
-        /// <summary>Get or sets the linear velocity of the center of mass.</summary>
+
+        /// <summary>
+        /// Get or sets the linear velocity of the center of mass. Property has no effect on <see cref="BodyType.Static"/> bodies.
+        /// </summary>
         /// <value>The linear velocity.</value>
-        
         public Vector2 LinearVelocity
         {
-            get => linearVelc;
             set
             {
-                if (Type == BodyType.Static)
-                {
+                Debug.Assert(!float.IsNaN(value.X) && !float.IsNaN(value.Y));
+
+                if (_bodyType == BodyType.Static)
                     return;
-                }
-                
+
                 if (Vector2.Dot(value, value) > 0.0f)
-                {
                     Awake = true;
-                }
-                
-                linearVelc = value;
+
+                _linearVelocity = value;
             }
+            get { return _linearVelocity; }
         }
-        
-        /// <summary>Gets or sets the angular velocity. Radians/second.</summary>
+
+        /// <summary>
+        /// Gets or sets the angular velocity. Radians/second.
+        /// </summary>
         /// <value>The angular velocity.</value>
-        
         public float AngularVelocity
         {
-            get => angularVelocity;
             set
             {
-                if (Type == BodyType.Static)
-                {
+                Debug.Assert(!float.IsNaN(value));
+
+                if (_bodyType == BodyType.Static)
                     return;
-                }
-                
+
                 if (value * value > 0.0f)
-                {
                     Awake = true;
-                }
-                
-                angularVelocity = value;
+
+                _angularVelocity = value;
             }
+            get { return _angularVelocity; }
         }
-        
-        /// <summary>Gets or sets the linear damping.</summary>
+
+        /// <summary>
+        /// Gets or sets the linear damping.
+        /// </summary>
         /// <value>The linear damping.</value>
-        public float LinearDamping { get; }
-        
-        /// <summary>Gets or sets the angular damping.</summary>
-        /// <value>The angular damping.</value>
-        public float AngularDamping { get; }
-        
-        /// <summary>Gets or sets a value indicating whether this body should be included in the CCD solver.</summary>
-        /// <value><c>true</c> if this instance is included in CCD; otherwise, <c>false</c>.</value>
-        
-        public bool IsBullet
+        public float LinearDamping
         {
-            get => (Flags & BodySettings.BulletFlag) == BodySettings.BulletFlag;
+            get { return _linearDamping; }
             set
             {
-                if (value)
-                {
-                    Flags |= BodySettings.BulletFlag;
-                }
-                else
-                {
-                    Flags &= ~BodySettings.BulletFlag;
-                }
+                Debug.Assert(!float.IsNaN(value));
+
+                _linearDamping = value;
             }
         }
-        
-        /// <summary>You can disable sleeping on this body. If you disable sleeping, the body will be woken.</summary>
+
+        /// <summary>
+        /// Gets or sets the angular damping.
+        /// </summary>
+        /// <value>The angular damping.</value>
+        public float AngularDamping
+        {
+            get { return _angularDamping; }
+            set
+            {
+                Debug.Assert(!float.IsNaN(value));
+
+                _angularDamping = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this body should be included in the CCD solver.
+        /// </summary>
+        /// <value><c>true</c> if this instance is included in CCD; otherwise, <c>false</c>.</value>
+        public bool IsBullet { get; set; }
+
+        /// <summary>
+        /// You can disable sleeping on this body. If you disable sleeping, the
+        /// body will be woken.
+        /// </summary>
         /// <value><c>true</c> if sleeping is allowed; otherwise, <c>false</c>.</value>
-        
         public bool SleepingAllowed
         {
-            get => (Flags & BodySettings.AutoSleepFlag) == BodySettings.AutoSleepFlag;
             set
             {
-                if (value)
-                {
-                    Flags |= BodySettings.AutoSleepFlag;
-                }
-                else
-                {
-                    Flags &= ~BodySettings.AutoSleepFlag;
+                if (!value)
                     Awake = true;
-                }
+
+                _sleepingAllowed = value;
             }
+            get { return _sleepingAllowed; }
         }
-        
-        /// <summary>Set the sleep state of the body. A sleeping body has very low CPU cost.</summary>
+
+        /// <summary>
+        /// Set the sleep state of the body. A sleeping body has very
+        /// low CPU cost.
+        /// </summary>
         /// <value><c>true</c> if awake; otherwise, <c>false</c>.</value>
-        
         public bool Awake
         {
-            get => (Flags & BodySettings.AwakeFlag) == BodySettings.AwakeFlag;
             set
             {
-                if (Type == BodyType.Static)
-                {
-                    return;
-                }
-                
                 if (value)
                 {
-                    Flags |= BodySettings.AwakeFlag;
-                    SleepTime = 0.0f;
+                    if (!_awake)
+                    {
+                        _sleepTime = 0.0f;
+                        
+#if USE_ACTIVE_CONTACT_SET
+                        World.ContactManager.UpdateActiveContacts(ContactList, true);
+#endif
+
+#if USE_AWAKE_BODY_SET
+						if (InWorld && !World.AwakeBodySet.Contains(this))
+							World.AwakeBodySet.Add(this);
+#endif
+                    }
                 }
                 else
                 {
-                    Flags &= ~BodySettings.AwakeFlag;
+#if USE_AWAKE_BODY_SET
+					// Check even for BodyType.Static because if this body had just been changed to Static it will have
+					// set Awake = false in the process.
+					if (InWorld && World.AwakeBodySet.Contains(this))
+						World.AwakeBodySet.Remove(this);
+#endif
                     ResetDynamics();
-                    SleepTime = 0.0f;
+                    _sleepTime = 0.0f;
+                    
+#if USE_ACTIVE_CONTACT_SET
+                    World.ContactManager.UpdateActiveContacts(ContactList, false);
+#endif
                 }
+
+                _awake = value;
             }
+            get { return _awake; }
         }
-        
+
         /// <summary>
-        ///     Set the active state of the body. An inactive body is not simulated and cannot be collided with or woken up.
-        ///     If you pass a flag of true, all fixtures will be added to the broad-phase. If you pass a flag of false, all
-        ///     fixtures
-        ///     will be removed from the broad-phase and all contacts will be destroyed. Fixtures and joints are otherwise
-        ///     unaffected.
-        ///     You may continue to create/destroy fixtures and joints on inactive bodies. Fixtures on an inactive body are
-        ///     implicitly
-        ///     inactive and will not participate in collisions, ray-casts, or queries. Joints connected to an inactive body are
-        ///     implicitly inactive. An inactive body is still owned by a b2World object and remains in the body list.
+        /// Set the active state of the body. An inactive body is not
+        /// simulated and cannot be collided with or woken up.
+        /// If you pass a flag of true, all fixtures will be added to the
+        /// broad-phase.
+        /// If you pass a flag of false, all fixtures will be removed from
+        /// the broad-phase and all contacts will be destroyed.
+        /// Fixtures and joints are otherwise unaffected. You may continue
+        /// to create/destroy fixtures and joints on inactive bodies.
+        /// Fixtures on an inactive body are implicitly inactive and will
+        /// not participate in collisions, ray-casts, or queries.
+        /// Joints connected to an inactive body are implicitly inactive.
+        /// An inactive body is still owned by a b2World object and remains
+        /// in the body list.
+        /// Warning: This property is readonly during callbacks.
         /// </summary>
         /// <value><c>true</c> if active; otherwise, <c>false</c>.</value>
-        
+        /// <exception cref="System.InvalidOperationException">Thrown when the world is Locked/Stepping.</exception>
         public bool Enabled
         {
-            get => (Flags & BodySettings.Enabled) == BodySettings.Enabled;
-            
+            get { return _enabled; }
             set
             {
-                if (value == Enabled)
-                {
+                if (World != null && World.IsLocked)
+                    throw new InvalidOperationException("The World is locked.");
+
+                if (value == _enabled)
                     return;
-                }
-                
-                if (value)
+
+                _enabled = value;
+
+                if (Enabled)
                 {
-                    Flags |= BodySettings.Enabled;
-                    
-                    IBroadPhase broadPhase = ContactManager.Current.BroadPhase;
-                    if (FixtureList != null)
-                    {
-                        for (int i = 0; i < FixtureList.Count; i++)
-                        {
-                            FixtureList[i].CreateProxies(broadPhase, ref Xf);
-                        }
-                    }
+                    if (World != null)
+                        CreateProxies();
+
+                    // Contacts are created the next time step.
                 }
                 else
                 {
-                    Flags &= ~BodySettings.Enabled;
-                    
-                    IBroadPhase broadPhase = ContactManager.Current.BroadPhase;
-                    
-                    for (int i = 0; i < FixtureList.Count; i++)
+                    if (World != null)
                     {
-                        FixtureList[i].DestroyProxies(broadPhase);
+                        DestroyProxies();
+                        DestroyContacts();
                     }
-                    
-                    ContactEdge ce = ContactList;
-                    while (ce != null)
-                    {
-                        ContactEdge ce0 = ce;
-                        ce = ce.Next;
-                        ContactManager.Current.Remove(ce0.Contact);
-                    }
-                    
-                    ContactList = null;
                 }
             }
         }
-        
-        /// <summary>Set this body to have fixed rotation. This causes the mass to be reset.</summary>
+
+        /// <summary>
+        /// Create all proxies.
+        /// </summary>
+        internal void CreateProxies()
+        {   
+            IBroadPhase broadPhase = World.ContactManager.BroadPhase;
+            for (int i = 0; i < FixtureList._list.Count; i++)
+                FixtureList._list[i].CreateProxies(broadPhase, ref _xf);
+        }
+
+        /// <summary>
+        /// Destroy all proxies.
+        /// </summary>
+        internal void DestroyProxies()
+        {
+            IBroadPhase broadPhase = World.ContactManager.BroadPhase;
+            for (int i = 0; i < FixtureList._list.Count; i++)
+                FixtureList._list[i].DestroyProxies(broadPhase);
+        }
+
+        /// <summary>
+        /// Destroy the attached contacts.
+        /// </summary>
+        private void DestroyContacts()
+        {            
+            ContactEdge ce = ContactList;
+            while (ce != null)
+            {
+                ContactEdge ce0 = ce;
+                ce = ce.Next;
+                World.ContactManager.Destroy(ce0.Contact);
+            }
+            ContactList = null;
+        }
+
+
+        /// <summary>
+        /// Set this body to have fixed rotation. This causes the mass
+        /// to be reset.
+        /// </summary>
         /// <value><c>true</c> if it has fixed rotation; otherwise, <c>false</c>.</value>
-        
         public bool FixedRotation
         {
-            get => (Flags & BodySettings.FixedRotationFlag) == BodySettings.FixedRotationFlag;
             set
             {
-                if (value == FixedRotation)
-                {
+                if (_fixedRotation == value)
                     return;
-                }
-                
-                if (value)
-                {
-                    Flags |= BodySettings.FixedRotationFlag;
-                }
-                else
-                {
-                    Flags &= ~BodySettings.FixedRotationFlag;
-                }
-                
-                AngularVelocity = 0f;
+
+                _fixedRotation = value;
+
+                _angularVelocity = 0f;
                 ResetMassData();
             }
+            get { return _fixedRotation; }
         }
-        
-        /// <summary>Gets all the fixtures attached to this body.</summary>
-        /// <value>The fixture list.</value>
-        public List<Fixture> FixtureList { get; }
-        
-        /// <summary>Get the list of all joints attached to this body.</summary>
-        /// <value>The joint list.</value>
-        
-        public JointEdge JointList { get; }
-        
+
         /// <summary>
-        ///     Get the list of all contacts attached to this body. Warning: this list changes during the time step and you
-        ///     may miss some collisions if you don't use ContactListener.
+        /// Gets all the fixtures attached to this body.
+        /// </summary>
+        /// <value>The fixture list.</value>
+        public readonly FixtureCollection FixtureList;
+
+        /// <summary>
+        /// Get the list of all joints attached to this body.
+        /// </summary>
+        /// <value>The joint list.</value>
+        public JointEdge JointList { get; internal set; }
+
+        /// <summary>
+        /// Get the list of all contacts attached to this body.
+        /// Warning: this list changes during the time step and you may
+        /// miss some collisions if you don't use callback events.
         /// </summary>
         /// <value>The contact list.</value>
-        
-        public ContactEdge ContactList { get; set; }
-        
-        /// <summary>Get the world body origin position.</summary>
+        public ContactEdge ContactList { get; internal set; }
+
+        /// <summary>
+        /// Get the world body origin position.
+        /// </summary>
         /// <returns>Return the world position of the body's origin.</returns>
-        
         public Vector2 Position
         {
-            get => Xf.Position;
-            set =>
-                //Debug.Assert(!float.IsNaN(value.X) && !float.IsNaN(value.Y));
-                SetTransform(ref value, Sweep.A);
+            get { return _xf.p; }
+            set
+            {
+                Debug.Assert(!float.IsNaN(value.X) && !float.IsNaN(value.Y));
+
+                if (World == null)
+                    _xf.p = value;
+                else
+                    SetTransform(ref value, Rotation);
+            }
         }
-        
-        /// <summary>Get the angle in radians.</summary>
+
+        /// <summary>
+        /// Get the angle in radians.
+        /// </summary>
         /// <returns>Return the current world rotation angle in radians.</returns>
         public float Rotation
         {
-            get => Sweep.A;
-            set => SetTransform(ref Xf.Position, value);
+            get { return _sweep.A; }
+            set
+            {
+                Debug.Assert(!float.IsNaN(value));
+
+                if (World == null)
+                    _sweep.A = value;
+                else
+                    SetTransform(ref _xf.p, value);
+            }
         }
-        
-        //Velcro: We don't add a setter here since it requires a branch, and we only use it internally
+
         /// <summary>
-        ///     Gets the value of the is island
+        /// Gets or sets a value indicating whether this body ignores gravity.
         /// </summary>
-        internal bool IsIsland => (Flags & BodySettings.IslandFlag) == BodySettings.IslandFlag;
-        
+        /// <value><c>true</c> if  it ignores gravity; otherwise, <c>false</c>.</value>
+        public bool IgnoreGravity { get; set; }
+
         /// <summary>
-        ///     Gets the value of the is static
+        /// Get the world position of the center of mass.
         /// </summary>
-        public bool IsStatic => Type == BodyType.Static;
-        
-        /// <summary>
-        ///     Gets the value of the is kinematic
-        /// </summary>
-        public bool IsKinematic => Type == BodyType.Kinematic;
-        
-        /// <summary>
-        ///     Gets the value of the is dynamic
-        /// </summary>
-        public bool IsDynamic => Type == BodyType.Dynamic;
-        
-        /// <summary>Get the world position of the center of mass.</summary>
         /// <value>The world position.</value>
         public Vector2 WorldCenter
         {
-            get => Sweep.C;
-            set => Sweep.C = value;
+            get { return _sweep.C; }
         }
-        
-        /// <summary>Get the local position of the center of mass.</summary>
+
+        /// <summary>
+        /// Get the local position of the center of mass.
+        /// Warning: This property is readonly during callbacks.
+        /// </summary>
         /// <value>The local position.</value>
-        
+        /// <exception cref="System.InvalidOperationException">Thrown when the world is Locked/Stepping.</exception>
         public Vector2 LocalCenter
         {
-            get => Sweep.LocalCenter;
+            get { return _sweep.LocalCenter; }
             set
             {
-                if (Type != BodyType.Dynamic)
-                {
+                if (World != null && World.IsLocked)
+                    throw new InvalidOperationException("The World is locked.");
+
+                if (_bodyType != BodyType.Dynamic)
                     return;
-                }
-                
-                Vector2 oldCenter = Sweep.C;
-                Sweep.LocalCenter = value;
-                Sweep.C0 = Sweep.C = MathUtils.Mul(ref Xf, ref Sweep.LocalCenter);
-                
-                Vector2 a = Sweep.C - oldCenter;
-                LinearVelocity += new Vector2(-AngularVelocity * a.Y, AngularVelocity * a.X);
+
+                // Move center of mass.
+                Vector2 oldCenter = _sweep.C;
+                _sweep.LocalCenter = value;
+                _sweep.C0 = _sweep.C = Transform.Multiply(ref _sweep.LocalCenter, ref _xf);
+
+                // Update center of mass velocity.
+                Vector2 a = _sweep.C - oldCenter;
+                _linearVelocity += new Vector2(-_angularVelocity * a.Y, _angularVelocity * a.X);
             }
         }
-        
-        /// <summary>Gets or sets the mass. Usually in kilograms (kg).</summary>
+
+        /// <summary>
+        /// Gets or sets the mass. Usually in kilograms (kg).
+        /// Warning: This property is readonly during callbacks.
+        /// </summary>
         /// <value>The mass.</value>
-        
+        /// <exception cref="System.InvalidOperationException">Thrown when the world is Locked/Stepping.</exception>
         public float Mass
         {
-            get => mass;
+            get { return _mass; }
             set
             {
-                if (Type != BodyType.Dynamic)
-                {
+                if (World != null && World.IsLocked)
+                    throw new InvalidOperationException("The World is locked.");
+
+                Debug.Assert(!float.IsNaN(value));
+
+                if (_bodyType != BodyType.Dynamic) //Make an assert
                     return;
-                }
-                
-                mass = value;
-                
-                if (mass <= 0.0f)
-                {
-                    mass = 1.0f;
-                }
-                
-                InvMass = 1.0f / mass;
+
+                _mass = value;
+
+                if (_mass <= 0.0f)
+                    _mass = 1.0f;
+
+                _invMass = 1.0f / _mass;
             }
         }
-        
-        /// <summary>Get or set the rotational inertia of the body about the local origin. usually in kg-m^2.</summary>
+
+        /// <summary>
+        /// Get or set the rotational inertia of the body about the local origin. usually in kg-m^2.
+        /// Warning: This property is readonly during callbacks.
+        /// </summary>
         /// <value>The inertia.</value>
-        
+        /// <exception cref="System.InvalidOperationException">Thrown when the world is Locked/Stepping.</exception>
         public float Inertia
         {
-            get => inertia + mass * Vector2.Dot(Sweep.LocalCenter, Sweep.LocalCenter);
+            get { return _inertia + Mass * Vector2.Dot(_sweep.LocalCenter, _sweep.LocalCenter); }
             set
             {
-                if (Type != BodyType.Dynamic)
-                {
+                if (World != null && World.IsLocked)
+                    throw new InvalidOperationException("The World is locked.");
+
+                Debug.Assert(!float.IsNaN(value));
+
+                if (_bodyType != BodyType.Dynamic) //Make an assert
                     return;
-                }
-                
-                
-                if ((value > 0.0f) && !FixedRotation)
+
+                if (value > 0.0f && !_fixedRotation) //Make an assert
                 {
-                    inertia = value - mass * Vector2.Dot(Sweep.LocalCenter, Sweep.LocalCenter);
-                    
-                    InvI = 1.0f / inertia;
+                    _inertia = value - Mass * Vector2.Dot(LocalCenter, LocalCenter);
+                    Debug.Assert(_inertia > 0.0f);
+                    _invI = 1.0f / _inertia;
                 }
             }
         }
-        
+
+        public bool IgnoreCCD { get; set; }
+
         /// <summary>
-        ///     Sets the value of the restitution
+        /// Resets the dynamics of this body.
+        /// Sets torque, force and linear/angular velocity to 0
         /// </summary>
-        
-        public float Restitution
-        {
-            set
-            {
-                for (int i = 0; i < FixtureList.Count; i++)
-                {
-                    FixtureList[i].Restitution = value;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///     Sets the value of the friction
-        /// </summary>
-        
-        public float Friction
-        {
-            set
-            {
-                for (int i = 0; i < FixtureList.Count; i++)
-                {
-                    FixtureList[i].Friction = value;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///     Sets the value of the collision categories
-        /// </summary>
-        
-        public Category CollisionCategories
-        {
-            set
-            {
-                for (int i = 0; i < FixtureList.Count; i++)
-                {
-                    FixtureList[i].CollisionCategories = value;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///     Sets the value of the collides with
-        /// </summary>
-        
-        public Category CollidesWith
-        {
-            set
-            {
-                for (int i = 0; i < FixtureList.Count; i++)
-                {
-                    FixtureList[i].CollidesWith = value;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///     Body objects can define which categories of bodies they wish to ignore CCD with. This allows certain bodies to
-        ///     be configured to ignore CCD with objects that aren't a penetration problem due to the way content has been
-        ///     prepared.
-        ///     This is compared against the other Body's fixture CollisionCategories within World.SolveTOI().
-        /// </summary>
-        
-        public Category IgnoreCcdWith
-        {
-            set
-            {
-                for (int i = 0; i < FixtureList.Count; i++)
-                {
-                    FixtureList[i].IgnoreCcdWith = value;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///     Sets the value of the collision group
-        /// </summary>
-        
-        public short CollisionGroup
-        {
-            set
-            {
-                for (int i = 0; i < FixtureList.Count; i++)
-                {
-                    FixtureList[i].CollisionGroup = value;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///     Sets the value of the is sensor
-        /// </summary>
-        
-        public bool IsSensor
-        {
-            set
-            {
-                for (int i = 0; i < FixtureList.Count; i++)
-                {
-                    FixtureList[i].IsSensor = value;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///     Gets or sets the value of the ignore ccd
-        /// </summary>
-        
-        public bool IgnoreCcd
-        {
-            get => (Flags & BodySettings.IgnoreCcd) == BodySettings.IgnoreCcd;
-            set
-            {
-                if (value)
-                {
-                    Flags |= BodySettings.IgnoreCcd;
-                }
-                else
-                {
-                    Flags &= ~BodySettings.IgnoreCcd;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///     Gets the mass data using the specified data
-        /// </summary>
-        /// <param name="data">The data</param>
-        public void GetMassData(out MassData data)
-        {
-            data = new MassData
-            {
-                Mass = mass,
-                Inertia = inertia + mass * MathUtils.Dot(ref Sweep.LocalCenter, ref Sweep.LocalCenter),
-                Centroid = Sweep.LocalCenter
-            };
-        }
-        
-        /// <summary>Resets the dynamics of this body. Sets torque, force and linear/angular velocity to 0</summary>
         public void ResetDynamics()
         {
-            Torque = 0;
-            AngularVelocity = 0;
-            Force = Vector2.Zero;
-            LinearVelocity = Vector2.Zero;
+            _torque = 0;
+            _angularVelocity = 0;
+            _force = Vector2.Zero;
+            _linearVelocity = Vector2.Zero;
         }
-        
-        /// <summary>
-        ///     Creates a fixture and attach it to this body. If the density is non-zero, this function automatically updates
-        ///     the mass of the body. Contacts are not created until the next time step. Warning: This function is locked during
-        ///     callbacks.
-        /// </summary>
-        public Fixture AddFixture(Fixture fixture)
+
+        ///<summary>
+        /// Warning: This method is locked during callbacks.
+        /// </summary>>
+        /// <exception cref="System.InvalidOperationException">Thrown when the world is Locked/Stepping.</exception>
+        public void Add(Fixture fixture)
         {
-            if ((Flags & BodySettings.Enabled) == BodySettings.Enabled)
+            if (World != null && World.IsLocked)
+                throw new InvalidOperationException("The World is locked.");
+            if (fixture == null)
+                throw new ArgumentNullException("fixture");
+            if (fixture.Body != null)
             {
-                if (ContactManager.Current != null)
-                {
-                    IBroadPhase broadPhase = ContactManager.Current.BroadPhase;
-                    fixture.CreateProxies(broadPhase, ref Xf);
-                }
+                if (fixture.Body == this)
+                    throw new ArgumentException("You are adding the same fixture more than once.", "fixture");
+                else
+                    throw new ArgumentException("fixture belongs to another body.", "fixture");
             }
-            
-            FixtureList.Add(fixture);
-            
+
             fixture.Body = this;
-            
-            if (fixture.Shape.DensityPrivate > 0.0f)
-            {
+            FixtureList._list.Add(fixture);
+            FixtureList._generationStamp++;
+#if DEBUG
+            if (fixture.Shape.ShapeType == ShapeType.Polygon)
+                ((PolygonShape)fixture.Shape).Vertices.AttachedToBody = true;
+#endif
+
+            // Adjust mass properties if needed.
+            if (fixture.Shape._density > 0.0f)
                 ResetMassData();
+
+            if (World != null)
+            {
+                if (Enabled)
+                {
+                    IBroadPhase broadPhase = World.ContactManager.BroadPhase;
+                    fixture.CreateProxies(broadPhase, ref _xf);
+                }
+
+                // Let the world know we have a new fixture. This will cause new contacts
+                // to be created at the beginning of the next time step.
+                World._worldHasNewFixture = true;
+
+                var fixtureAddedHandler = World.FixtureAdded;
+                if (fixtureAddedHandler != null)
+                    fixtureAddedHandler(World, this, fixture);
             }
-            
-            
-            return fixture;
         }
-        
+
         /// <summary>
-        ///     Creates a fixture and attach it to this body. If the density is non-zero, this function automatically updates
-        ///     the mass of the body. Contacts are not created until the next time step. Warning: This function is locked during
-        ///     callbacks.
-        /// </summary>
-        public Fixture AddFixture(AShape shape) => AddFixture(new Fixture(shape, new Filter()));
-        
-        /// <summary>
-        ///     Destroy a fixture. This removes the fixture from the broad-phase and destroys all contacts associated with
-        ///     this fixture. This will automatically adjust the mass of the body if the body is dynamic and the fixture has
-        ///     positive
-        ///     density. All fixtures attached to a body are implicitly destroyed when the body is destroyed. Warning: This
-        ///     function is
-        ///     locked during callbacks.
+        /// Destroy a fixture. This removes the fixture from the broad-phase and
+        /// destroys all contacts associated with this fixture. This will
+        /// automatically adjust the mass of the body if the body is dynamic and the
+        /// fixture has positive density.
+        /// All fixtures attached to a body are implicitly destroyed when the body is destroyed.
+        /// Warning: This method is locked during callbacks.
         /// </summary>
         /// <param name="fixture">The fixture to be removed.</param>
-        public void RemoveFixture(Fixture fixture)
+        /// <exception cref="System.InvalidOperationException">Thrown when the world is Locked/Stepping.</exception>
+        public virtual void Remove(Fixture fixture)
         {
+            if (World != null && World.IsLocked)
+                throw new InvalidOperationException("The World is locked.");
             if (fixture == null)
-            {
-                return;
-            }
-            
+                throw new ArgumentNullException("fixture");
+            if (fixture.Body != this)
+                throw new ArgumentException("You are removing a fixture that does not belong to this Body.", "fixture");
+
+            // Destroy any contacts associated with the fixture.
             ContactEdge edge = ContactList;
             while (edge != null)
             {
                 Contact c = edge.Contact;
                 edge = edge.Next;
-                
+
                 Fixture fixtureA = c.FixtureA;
                 Fixture fixtureB = c.FixtureB;
-                
+
                 if (fixture == fixtureA || fixture == fixtureB)
                 {
-                    ContactManager.Current.Remove(c);
+                    // This destroys the contact and removes it from
+                    // this body's contact list.
+                    World.ContactManager.Destroy(c);
                 }
             }
-            
-            if ((Flags & BodySettings.Enabled) == BodySettings.Enabled)
+
+            if (Enabled)
             {
-                IBroadPhase broadPhase = ContactManager.Current.BroadPhase;
+                IBroadPhase broadPhase = World.ContactManager.BroadPhase;
                 fixture.DestroyProxies(broadPhase);
             }
-            
-            FixtureList.Remove(fixture);
-            fixture.Destroy();
+
             fixture.Body = null;
-            
+            FixtureList._list.Remove(fixture);
+            FixtureList._generationStamp++;
+#if DEBUG
+            if (fixture.Shape.ShapeType == ShapeType.Polygon)
+                ((PolygonShape)fixture.Shape).Vertices.AttachedToBody = false;
+#endif
+
+            var fixtureRemovedHandler = World.FixtureRemoved;
+            if (fixtureRemovedHandler != null)
+                fixtureRemovedHandler(World, this, fixture);
+
             ResetMassData();
         }
-        
+
         /// <summary>
-        ///     Set the position of the body's origin and rotation. This breaks any contacts and wakes the other bodies.
-        ///     Manipulating a body's transform may cause non-physical behavior.
+        /// Set the position of the body's origin and rotation.
+        /// This breaks any contacts and wakes the other bodies.
+        /// Manipulating a body's transform may cause non-physical behavior.
+        /// Warning: This method is locked during callbacks.
         /// </summary>
         /// <param name="position">The world position of the body's local origin.</param>
         /// <param name="rotation">The world rotation in radians.</param>
+        /// <exception cref="System.InvalidOperationException">Thrown when the world is Locked/Stepping.</exception>
+        public void SetTransform(ref Vector2 position, float rotation)
+        {
+            SetTransformIgnoreContacts(ref position, rotation);
+
+            World.ContactManager.FindNewContacts();
+        }
+
+        /// <summary>
+        /// Set the position of the body's origin and rotation.
+        /// This breaks any contacts and wakes the other bodies.
+        /// Manipulating a body's transform may cause non-physical behavior.
+        /// Warning: This method is locked during callbacks.
+        /// </summary>
+        /// <param name="position">The world position of the body's local origin.</param>
+        /// <param name="rotation">The world rotation in radians.</param>
+        /// <exception cref="System.InvalidOperationException">Thrown when the world is Locked/Stepping.</exception>
         public void SetTransform(Vector2 position, float rotation)
         {
             SetTransform(ref position, rotation);
         }
-        
+
         /// <summary>
-        ///     Set the position of the body's origin and rotation. This breaks any contacts and wakes the other bodies.
-        ///     Manipulating a body's transform may cause non-physical behavior.
+        /// For teleporting a body without considering new contacts immediately.
+        /// Warning: This method is locked during callbacks.
         /// </summary>
-        /// <param name="position">The world position of the body's local origin.</param>
-        /// <param name="rotation">The world rotation in radians.</param>
-        public void SetTransform(ref Vector2 position, float rotation)
+        /// <param name="position">The position.</param>
+        /// <param name="angle">The angle.</param>
+        /// <exception cref="System.InvalidOperationException">Thrown when the world is Locked/Stepping.</exception>
+        public void SetTransformIgnoreContacts(ref Vector2 position, float angle)
         {
-            Xf.Rotation.Set(rotation);
-            Xf.Position = position;
-            
-            Sweep.C = MathUtils.Mul(ref Xf, Sweep.LocalCenter);
-            Sweep.A = rotation;
-            
-            Sweep.C0 = Sweep.C;
-            Sweep.A0 = rotation;
-            
-            IBroadPhase broadPhase = ContactManager.Current.BroadPhase;
-            for (int i = 0; i < FixtureList.Count; i++)
-            {
-                FixtureList[i].Synchronize(broadPhase, ref Xf, ref Xf);
-            }
+            Debug.Assert(World != null);
+            if (World.IsLocked)
+                throw new InvalidOperationException("The World is locked.");
+
+            _xf.q.Phase = angle;
+            _xf.p = position;
+
+            _sweep.C = Transform.Multiply(ref _sweep.LocalCenter, ref _xf);
+            _sweep.A = angle;
+
+            _sweep.C0 = _sweep.C;
+            _sweep.A0 = angle;
+
+            IBroadPhase broadPhase = World.ContactManager.BroadPhase;
+            for (int i = 0; i < FixtureList._list.Count; i++)
+                FixtureList._list[i].Synchronize(broadPhase, ref _xf, ref _xf);
         }
-        
-        /// <summary>Get the body transform for the body's origin.</summary>
+
+        /// <summary>
+        /// Get the body transform for the body's origin.
+        /// </summary>
+        /// <param name="transform">The transform of the body's origin.</param>
+        public Transform GetTransform()
+        {
+            return _xf;
+        }
+
+        /// <summary>
+        /// Get the body transform for the body's origin.
+        /// </summary>
         /// <param name="transform">The transform of the body's origin.</param>
         public void GetTransform(out Transform transform)
         {
-            transform = Xf;
+            transform = _xf;
         }
-        
+
         /// <summary>
-        ///     Apply a force at a world point. If the force is not applied at the center of mass, it will generate a torque
-        ///     and affect the angular velocity. This wakes up the body.
+        /// Apply a force at a world point. If the force is not
+        /// applied at the center of mass, it will generate a torque and
+        /// affect the angular velocity. This wakes up the body.
         /// </summary>
         /// <param name="force">The world force vector, usually in Newtons (N).</param>
         /// <param name="point">The world position of the point of application.</param>
@@ -950,70 +770,83 @@ namespace Alis.Core.Physic.Dynamics
         {
             ApplyForce(ref force, ref point);
         }
-        
-        /// <summary>Applies a force at the center of mass.</summary>
+
+        /// <summary>
+        /// Applies a force at the center of mass.
+        /// </summary>
         /// <param name="force">The force.</param>
         public void ApplyForce(ref Vector2 force)
         {
-            ApplyForce(ref force, ref Xf.Position);
+            ApplyForce(ref force, ref _xf.p);
         }
-        
-        /// <summary>Applies a force at the center of mass.</summary>
+
+        /// <summary>
+        /// Applies a force at the center of mass.
+        /// </summary>
         /// <param name="force">The force.</param>
         public void ApplyForce(Vector2 force)
         {
-            ApplyForce(ref force, ref Xf.Position);
+            ApplyForce(ref force, ref _xf.p);
         }
-        
+
         /// <summary>
-        ///     Apply a force at a world point. If the force is not applied at the center of mass, it will generate a torque
-        ///     and affect the angular velocity. This wakes up the body.
+        /// Apply a force at a world point. If the force is not
+        /// applied at the center of mass, it will generate a torque and
+        /// affect the angular velocity. This wakes up the body.
         /// </summary>
         /// <param name="force">The world force vector, usually in Newtons (N).</param>
         /// <param name="point">The world position of the point of application.</param>
         public void ApplyForce(ref Vector2 force, ref Vector2 point)
         {
-            if (Type != BodyType.Dynamic)
+            Debug.Assert(!float.IsNaN(force.X));
+            Debug.Assert(!float.IsNaN(force.Y));
+            Debug.Assert(!float.IsNaN(point.X));
+            Debug.Assert(!float.IsNaN(point.Y));
+
+            if (_bodyType == BodyType.Dynamic)
             {
-                return;
+                if (Awake == false)
+                    Awake = true;
+
+                _force += force;
+                _torque += (point.X - _sweep.C.X) * force.Y - (point.Y - _sweep.C.Y) * force.X;
             }
-            
-            if (!Awake)
-            {
-                Awake = true;
-            }
-            
-            Force += force;
-            Torque += MathUtils.Cross(point - Sweep.C, force);
         }
-        
-        /// <summary>Apply a torque. This affects the angular velocity without affecting the linear velocity of the center of mass.</summary>
+
+        /// <summary>
+        /// Apply a torque. This affects the angular velocity
+        /// without affecting the linear velocity of the center of mass.
+        /// This wakes up the body.
+        /// </summary>
         /// <param name="torque">The torque about the z-axis (out of the screen), usually in N-m.</param>
         public void ApplyTorque(float torque)
         {
-            if (Type != BodyType.Dynamic)
+            Debug.Assert(!float.IsNaN(torque));
+
+            if (_bodyType == BodyType.Dynamic)
             {
-                return;
+                if (Awake == false)
+                    Awake = true;
+
+                _torque += torque;
             }
-            
-            if (!Awake)
-            {
-                Awake = true;
-            }
-            
-            Torque += torque;
         }
-        
-        /// <summary>Apply an impulse at a point. This immediately modifies the velocity. This wakes up the body.</summary>
+
+        /// <summary>
+        /// Apply an impulse at a point. This immediately modifies the velocity.
+        /// This wakes up the body.
+        /// </summary>
         /// <param name="impulse">The world impulse vector, usually in N-seconds or kg-m/s.</param>
         public void ApplyLinearImpulse(Vector2 impulse)
         {
             ApplyLinearImpulse(ref impulse);
         }
-        
+
         /// <summary>
-        ///     Apply an impulse at a point. This immediately modifies the velocity. It also modifies the angular velocity if
-        ///     the point of application is not at the center of mass. This wakes up the body.
+        /// Apply an impulse at a point. This immediately modifies the velocity.
+        /// It also modifies the angular velocity if the point of application
+        /// is not at the center of mass.
+        /// This wakes up the body.
         /// </summary>
         /// <param name="impulse">The world impulse vector, usually in N-seconds or kg-m/s.</param>
         /// <param name="point">The world position of the point of application.</param>
@@ -1021,321 +854,460 @@ namespace Alis.Core.Physic.Dynamics
         {
             ApplyLinearImpulse(ref impulse, ref point);
         }
-        
-        /// <summary>Apply an impulse at a point. This immediately modifies the velocity. This wakes up the body.</summary>
+
+        /// <summary>
+        /// Apply an impulse at a point. This immediately modifies the velocity.
+        /// This wakes up the body.
+        /// </summary>
         /// <param name="impulse">The world impulse vector, usually in N-seconds or kg-m/s.</param>
         public void ApplyLinearImpulse(ref Vector2 impulse)
         {
-            if (Type != BodyType.Dynamic)
+            if (_bodyType != BodyType.Dynamic)
             {
                 return;
             }
-            
-            if (!Awake)
+            if (Awake == false)
             {
                 Awake = true;
             }
-            
-            LinearVelocity += InvMass * impulse;
+            _linearVelocity += _invMass * impulse;
         }
-        
+
         /// <summary>
-        ///     Apply an impulse at a point. This immediately modifies the velocity. It also modifies the angular velocity if
-        ///     the point of application is not at the center of mass. This wakes up the body.
+        /// Apply an impulse at a point. This immediately modifies the velocity.
+        /// It also modifies the angular velocity if the point of application
+        /// is not at the center of mass.
+        /// This wakes up the body.
         /// </summary>
         /// <param name="impulse">The world impulse vector, usually in N-seconds or kg-m/s.</param>
         /// <param name="point">The world position of the point of application.</param>
         public void ApplyLinearImpulse(ref Vector2 impulse, ref Vector2 point)
         {
-            if (Type != BodyType.Dynamic)
-            {
+            if (_bodyType != BodyType.Dynamic)
                 return;
-            }
-            
-            if (!Awake)
-            {
+
+            if (Awake == false)
                 Awake = true;
-            }
-            
-            LinearVelocity += InvMass * impulse;
-            AngularVelocity += InvI * MathUtils.Cross(point - Sweep.C, impulse);
+
+            _linearVelocity += _invMass * impulse;
+            _angularVelocity += _invI * ((point.X - _sweep.C.X) * impulse.Y - (point.Y - _sweep.C.Y) * impulse.X);
         }
-        
-        /// <summary>Apply an angular impulse.</summary>
+
+        /// <summary>
+        /// Apply an angular impulse.
+        /// </summary>
         /// <param name="impulse">The angular impulse in units of kg*m*m/s.</param>
         public void ApplyAngularImpulse(float impulse)
         {
-            if (Type != BodyType.Dynamic)
+            if (_bodyType != BodyType.Dynamic)
             {
                 return;
             }
-            
-            if (!Awake)
+
+            if (Awake == false)
             {
                 Awake = true;
             }
-            
-            AngularVelocity += InvI * impulse;
+
+            _angularVelocity += _invI * impulse;
         }
-        
+
         /// <summary>
-        ///     This resets the mass properties to the sum of the mass properties of the fixtures. This normally does not need
-        ///     to be called unless you called SetMassData to override the mass and you later want to reset the mass.
+        /// This resets the mass properties to the sum of the mass properties of the fixtures.
+        /// This normally does not need to be called unless you called SetMassData to override
+        /// the mass and you later want to reset the mass.
         /// </summary>
         public void ResetMassData()
         {
-            mass = 0.0f;
-            InvMass = 0.0f;
-            inertia = 0.0f;
-            InvI = 0.0f;
-            Sweep.LocalCenter = Vector2.Zero;
-            
-            
-            if (Type == BodyType.Kinematic)
+            // Compute mass data from shapes. Each shape has its own density.
+            _mass = 0.0f;
+            _invMass = 0.0f;
+            _inertia = 0.0f;
+            _invI = 0.0f;
+            _sweep.LocalCenter = Vector2.Zero;
+
+            // Kinematic bodies have zero mass.
+            if (BodyType == BodyType.Kinematic)
             {
-                Sweep.C0 = Xf.Position;
-                Sweep.C = Xf.Position;
-                Sweep.A0 = Sweep.A;
+                _sweep.C0 = _xf.p;
+                _sweep.C = _xf.p;
+                _sweep.A0 = _sweep.A;
                 return;
             }
-            
+
+            Debug.Assert(BodyType == BodyType.Dynamic || BodyType == BodyType.Static);
+
+            // Accumulate mass over all fixtures.
             Vector2 localCenter = Vector2.Zero;
             foreach (Fixture f in FixtureList)
             {
-                if (CustomMathF.Abs(f.Shape.DensityPrivate) < float.Epsilon)
+                if (f.Shape._density == 0)
                 {
                     continue;
                 }
-                
-                MassData massData = f.Shape.MassDataPrivate;
-                mass += massData.Mass;
+
+                MassData massData = f.Shape.MassData;
+                _mass += massData.Mass;
                 localCenter += massData.Mass * massData.Centroid;
-                inertia += massData.Inertia;
+                _inertia += massData.Inertia;
             }
-            
-            
-            if (Type == BodyType.Static)
+
+            //FPE: Static bodies only have mass, they don't have other properties. A little hacky tho...
+            if (BodyType == BodyType.Static)
             {
-                Sweep.C0 = Sweep.C = Xf.Position;
+                _sweep.C0 = _sweep.C = _xf.p;
                 return;
             }
-            
-            
-            if (mass > 0.0f)
+
+            // Compute center of mass.
+            if (_mass > 0.0f)
             {
-                InvMass = 1.0f / mass;
-                localCenter *= InvMass;
-            }
-            
-            if ((inertia > 0.0f) && ((Flags & BodySettings.FixedRotationFlag) == 0))
-            {
-                inertia -= mass * Vector2.Dot(localCenter, localCenter);
-                
-                InvI = 1.0f / inertia;
+                _invMass = 1.0f / _mass;
+                localCenter *= _invMass;
             }
             else
             {
-                inertia = 0.0f;
-                InvI = 0.0f;
+                // Force all dynamic bodies to have a positive mass.
+                _mass = 1.0f;
+                _invMass = 1.0f;
             }
-            
-            
-            Vector2 oldCenter = Sweep.C;
-            Sweep.LocalCenter = localCenter;
-            Sweep.C0 = Sweep.C = MathUtils.Mul(ref Xf, ref Sweep.LocalCenter);
-            
-            Vector2 a = Sweep.C - oldCenter;
-            LinearVelocity += new Vector2(-AngularVelocity * a.Y, AngularVelocity * a.X);
+
+            if (_inertia > 0.0f && !_fixedRotation)
+            {
+                // Center the inertia about the center of mass.
+                _inertia -= _mass * Vector2.Dot(localCenter, localCenter);
+
+                Debug.Assert(_inertia > 0.0f);
+                _invI = 1.0f / _inertia;
+            }
+            else
+            {
+                _inertia = 0.0f;
+                _invI = 0.0f;
+            }
+
+            // Move center of mass.
+            Vector2 oldCenter = _sweep.C;
+            _sweep.LocalCenter = localCenter;
+            _sweep.C0 = _sweep.C = Transform.Multiply(ref _sweep.LocalCenter, ref _xf);
+
+            // Update center of mass velocity.
+            Vector2 a = _sweep.C - oldCenter;
+            _linearVelocity += new Vector2(-_angularVelocity * a.Y, _angularVelocity * a.X);
         }
-        
-        /// <summary>Get the world coordinates of a point given the local coordinates.</summary>
-        /// <param name="localPoint">A point on the body measured relative the body's origin.</param>
-        /// <returns>The same point expressed in world coordinates.</returns>
-        public Vector2 GetWorldPoint(ref Vector2 localPoint) => MathUtils.Mul(ref Xf, ref localPoint);
-        
-        /// <summary>Get the world coordinates of a point given the local coordinates.</summary>
-        /// <param name="localPoint">A point on the body measured relative the body's origin.</param>
-        /// <returns>The same point expressed in world coordinates.</returns>
-        public Vector2 GetWorldPoint(Vector2 localPoint) => GetWorldPoint(ref localPoint);
-        
+
         /// <summary>
-        ///     Get the world coordinates of a vector given the local coordinates. Note that the vector only takes the
-        ///     rotation into account, not the position.
+        /// Get the world coordinates of a point given the local coordinates.
+        /// </summary>
+        /// <param name="localPoint">A point on the body measured relative the the body's origin.</param>
+        /// <returns>The same point expressed in world coordinates.</returns>
+        public Vector2 GetWorldPoint(ref Vector2 localPoint)
+        {
+            return Transform.Multiply(ref localPoint, ref _xf);
+        }
+
+        /// <summary>
+        /// Get the world coordinates of a point given the local coordinates.
+        /// </summary>
+        /// <param name="localPoint">A point on the body measured relative the the body's origin.</param>
+        /// <returns>The same point expressed in world coordinates.</returns>
+        public Vector2 GetWorldPoint(Vector2 localPoint)
+        {
+            return GetWorldPoint(ref localPoint);
+        }
+
+        /// <summary>
+        /// Get the world coordinates of a vector given the local coordinates.
+        /// Note that the vector only takes the rotation into account, not the position.
         /// </summary>
         /// <param name="localVector">A vector fixed in the body.</param>
         /// <returns>The same vector expressed in world coordinates.</returns>
-        public Vector2 GetWorldVector(ref Vector2 localVector) => MathUtils.Mul(ref Xf.Rotation, localVector);
-        
-        /// <summary>Get the world coordinates of a vector given the local coordinates.</summary>
+        public Vector2 GetWorldVector(ref Vector2 localVector)
+        {
+            return Complex.Multiply(ref localVector, ref _xf.q);
+        }
+
+        /// <summary>
+        /// Get the world coordinates of a vector given the local coordinates.
+        /// </summary>
         /// <param name="localVector">A vector fixed in the body.</param>
         /// <returns>The same vector expressed in world coordinates.</returns>
-        public Vector2 GetWorldVector(Vector2 localVector) => GetWorldVector(ref localVector);
-        
+        public Vector2 GetWorldVector(Vector2 localVector)
+        {
+            return GetWorldVector(ref localVector);
+        }
+
         /// <summary>
-        ///     Gets a local point relative to the body's origin given a world point. Note that the vector only takes the
-        ///     rotation into account, not the position.
+        /// Gets a local point relative to the body's origin given a world point.
+        /// Note that the vector only takes the rotation into account, not the position.
         /// </summary>
         /// <param name="worldPoint">A point in world coordinates.</param>
         /// <returns>The corresponding local point relative to the body's origin.</returns>
-        public Vector2 GetLocalPoint(ref Vector2 worldPoint) => MathUtils.MulT(ref Xf, worldPoint);
-        
-        /// <summary>Gets a local point relative to the body's origin given a world point.</summary>
+        public Vector2 GetLocalPoint(ref Vector2 worldPoint)
+        {
+            return Transform.Divide(ref worldPoint, ref _xf);
+        }
+
+        /// <summary>
+        /// Gets a local point relative to the body's origin given a world point.
+        /// </summary>
         /// <param name="worldPoint">A point in world coordinates.</param>
         /// <returns>The corresponding local point relative to the body's origin.</returns>
-        public Vector2 GetLocalPoint(Vector2 worldPoint) => GetLocalPoint(ref worldPoint);
-        
+        public Vector2 GetLocalPoint(Vector2 worldPoint)
+        {
+            return GetLocalPoint(ref worldPoint);
+        }
+
         /// <summary>
-        ///     Gets a local vector given a world vector. Note that the vector only takes the rotation into account, not the
-        ///     position.
+        /// Gets a local vector given a world vector.
+        /// Note that the vector only takes the rotation into account, not the position.
         /// </summary>
         /// <param name="worldVector">A vector in world coordinates.</param>
         /// <returns>The corresponding local vector.</returns>
-        public Vector2 GetLocalVector(ref Vector2 worldVector) => MathUtils.MulT(Xf.Rotation, worldVector);
-        
+        public Vector2 GetLocalVector(ref Vector2 worldVector)
+        {
+            return Complex.Divide(ref worldVector, ref _xf.q);
+        }
+
         /// <summary>
-        ///     Gets a local vector given a world vector. Note that the vector only takes the rotation into account, not the
-        ///     position.
+        /// Gets a local vector given a world vector.
+        /// Note that the vector only takes the rotation into account, not the position.
         /// </summary>
         /// <param name="worldVector">A vector in world coordinates.</param>
         /// <returns>The corresponding local vector.</returns>
-        public Vector2 GetLocalVector(Vector2 worldVector) => GetLocalVector(ref worldVector);
-        
-        /// <summary>Get the world linear velocity of a world point attached to this body.</summary>
-        /// <param name="worldPoint">A point in world coordinates.</param>
-        /// <returns>The world velocity of a point.</returns>
-        public Vector2 GetLinearVelocityFromWorldPoint(Vector2 worldPoint) =>
-            GetLinearVelocityFromWorldPoint(ref worldPoint);
-        
-        /// <summary>Get the world linear velocity of a world point attached to this body.</summary>
-        /// <param name="worldPoint">A point in world coordinates.</param>
-        /// <returns>The world velocity of a point.</returns>
-        public Vector2 GetLinearVelocityFromWorldPoint(ref Vector2 worldPoint) =>
-            LinearVelocity + MathUtils.Cross(AngularVelocity, worldPoint - Sweep.C);
-        
-        /// <summary>Get the world velocity of a local point.</summary>
-        /// <param name="localPoint">A point in local coordinates.</param>
-        /// <returns>The world velocity of a point.</returns>
-        public Vector2 GetLinearVelocityFromLocalPoint(Vector2 localPoint) =>
-            GetLinearVelocityFromLocalPoint(ref localPoint);
-        
-        /// <summary>Get the world velocity of a local point.</summary>
-        /// <param name="localPoint">A point in local coordinates.</param>
-        /// <returns>The world velocity of a point.</returns>
-        public Vector2 GetLinearVelocityFromLocalPoint(ref Vector2 localPoint) =>
-            GetLinearVelocityFromWorldPoint(GetWorldPoint(ref localPoint));
-        
+        public Vector2 GetLocalVector(Vector2 worldVector)
+        {
+            return GetLocalVector(ref worldVector);
+        }
+
         /// <summary>
-        ///     Synchronizes the fixtures
+        /// Get the world linear velocity of a world point attached to this body.
         /// </summary>
+        /// <param name="worldPoint">A point in world coordinates.</param>
+        /// <returns>The world velocity of a point.</returns>
+        public Vector2 GetLinearVelocityFromWorldPoint(Vector2 worldPoint)
+        {
+            return GetLinearVelocityFromWorldPoint(ref worldPoint);
+        }
+
+        /// <summary>
+        /// Get the world linear velocity of a world point attached to this body.
+        /// </summary>
+        /// <param name="worldPoint">A point in world coordinates.</param>
+        /// <returns>The world velocity of a point.</returns>
+        public Vector2 GetLinearVelocityFromWorldPoint(ref Vector2 worldPoint)
+        {
+            return _linearVelocity +
+                   new Vector2(-_angularVelocity * (worldPoint.Y - _sweep.C.Y),
+                               _angularVelocity * (worldPoint.X - _sweep.C.X));
+        }
+
+        /// <summary>
+        /// Get the world velocity of a local point.
+        /// </summary>
+        /// <param name="localPoint">A point in local coordinates.</param>
+        /// <returns>The world velocity of a point.</returns>
+        public Vector2 GetLinearVelocityFromLocalPoint(Vector2 localPoint)
+        {
+            return GetLinearVelocityFromLocalPoint(ref localPoint);
+        }
+
+        /// <summary>
+        /// Get the world velocity of a local point.
+        /// </summary>
+        /// <param name="localPoint">A point in local coordinates.</param>
+        /// <returns>The world velocity of a point.</returns>
+        public Vector2 GetLinearVelocityFromLocalPoint(ref Vector2 localPoint)
+        {
+            return GetLinearVelocityFromWorldPoint(GetWorldPoint(ref localPoint));
+        }
+
         internal void SynchronizeFixtures()
         {
-            IBroadPhase broadPhase = ContactManager.Current.BroadPhase;
-            
-            if ((Flags & BodySettings.AwakeFlag) == BodySettings.AwakeFlag)
+            Transform xf1 = new Transform(Vector2.Zero, _sweep.A0);
+            xf1.p = _sweep.C0 - Complex.Multiply(ref _sweep.LocalCenter, ref xf1.q);
+
+            IBroadPhase broadPhase = World.ContactManager.BroadPhase;
+            for (int i = 0; i < FixtureList._list.Count; i++)
             {
-                Transform xf1 = new Transform();
-                xf1.Rotation.Set(Sweep.A0);
-                xf1.Position = Sweep.C0 - MathUtils.Mul(xf1.Rotation, Sweep.LocalCenter);
-                
-                for (int i = 0; i < FixtureList.Count; i++)
-                {
-                    FixtureList[i].Synchronize(broadPhase, ref xf1, ref Xf);
-                }
-            }
-            else
-            {
-                for (int i = 0; i < FixtureList.Count; i++)
-                {
-                    FixtureList[i].Synchronize(broadPhase, ref Xf, ref Xf);
-                }
+                FixtureList._list[i].Synchronize(broadPhase, ref xf1, ref _xf);
             }
         }
-        
-        /// <summary>
-        ///     Synchronizes the transform
-        /// </summary>
+
         internal void SynchronizeTransform()
         {
-            Xf.Rotation.Set(Sweep.A);
-            Xf.Position = Sweep.C - MathUtils.Mul(Xf.Rotation, Sweep.LocalCenter);
+            _xf.q.Phase = _sweep.A;
+            _xf.p = _sweep.C - Complex.Multiply(ref _sweep.LocalCenter, ref _xf.q);
         }
-        
-        /// <summary>This is used to prevent connected bodies from colliding. It may lie, depending on the collideConnected flag.</summary>
+
+        /// <summary>
+        /// This is used to prevent connected bodies from colliding.
+        /// It may lie, depending on the collideConnected flag.
+        /// </summary>
         /// <param name="other">The other body.</param>
+        /// <returns></returns>
         internal bool ShouldCollide(Body other)
         {
-            if ((Type != BodyType.Dynamic) && (other.Type != BodyType.Dynamic))
+            // At least one body should be dynamic.
+            if (_bodyType != BodyType.Dynamic && other._bodyType != BodyType.Dynamic)
             {
                 return false;
             }
-            
+
+            // Does a joint prevent collision?
             for (JointEdge jn = JointList; jn != null; jn = jn.Next)
             {
                 if (jn.Other == other)
                 {
-                    if (!jn.Joint1.CollideConnected)
+                    if (jn.Joint.CollideConnected == false)
                     {
                         return false;
                     }
                 }
             }
-            
+
             return true;
         }
-        
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="ClearFlags" /> class
-        /// </summary>
-        internal void ClearFlags() => Flags &= ~BodySettings.IslandFlag;
-        
-        /// <summary>
-        ///     Advances the alpha
-        /// </summary>
-        /// <param name="alpha">The alpha</param>
+
         internal void Advance(float alpha)
         {
-            Sweep.Advance(alpha);
-            Sweep.C = Sweep.C0;
-            Sweep.A = Sweep.A0;
-            Xf.Rotation.Set(Sweep.A);
-            Xf.Position = Sweep.C - MathUtils.Mul(Xf.Rotation, Sweep.LocalCenter);
+            // Advance to the new safe time. This doesn't sync the broad-phase.
+            _sweep.Advance(alpha);
+            _sweep.C = _sweep.C0;
+            _sweep.A = _sweep.A0;
+            _xf.q.Phase = _sweep.A;
+            _xf.p = _sweep.C - Complex.Multiply(ref _sweep.LocalCenter, ref _xf.q);
         }
-        
-        /// <summary>
-        ///     Clears the forces
-        /// </summary>
-        internal void ClearForces()
+
+        internal OnCollisionEventHandler onCollisionEventHandler;
+        public event OnCollisionEventHandler OnCollision
         {
-            Force = Vector2.Zero;
-            Torque = 0.0f;
+            add { onCollisionEventHandler += value; }
+            remove { onCollisionEventHandler -= value; }
         }
-        
-        /// <summary>
-        ///     Checks the out range
-        /// </summary>
-        public void CheckOutRange()
+
+        internal OnSeparationEventHandler onSeparationEventHandler;
+        public event OnSeparationEventHandler OnSeparation
         {
-            // If a body was not in an island then it did not move.
-            if ((Flags & BodySettings.IslandFlag) == 0)
+            add { onSeparationEventHandler += value; }
+            remove { onSeparationEventHandler -= value; }
+        }
+
+
+        /// <summary>
+        /// Set restitution on all fixtures.
+        /// Warning: This method applies the value on existing Fixtures. It's not a property of Body.
+        /// </summary>
+        /// <param name="restitution"></param>
+        /// <remarks>Deprecated in version 1.6</remarks>
+        
+        public void SetRestitution(float restitution)
+        {
+            for (int i = 0; i < FixtureList._list.Count; i++)
+                FixtureList._list[i].Restitution = restitution;
+        }
+
+        /// <summary>
+        /// Set friction on all fixtures.
+        /// Warning: This method applies the value on existing Fixtures. It's not a property of Body.
+        /// </summary>
+        /// <param name="friction"></param>
+        /// <remarks>Deprecated in version 1.6</remarks>
+        
+        public void SetFriction(float friction)
+        {
+            for (int i = 0; i < FixtureList._list.Count; i++)
+                FixtureList._list[i].Friction = friction;
+        }
+
+        /// <summary>
+        /// Warning: This method applies the value on existing Fixtures. It's not a property of Body.
+        /// </summary>
+        /// <remarks>Deprecated in version 1.6</remarks>
+        
+        public void SetCollisionCategories(Category category)
+        {
+            for (int i = 0; i < FixtureList._list.Count; i++)
+                FixtureList._list[i].CollisionCategories = category;
+        }
+
+        /// <summary>
+        /// Warning: This method applies the value on existing Fixtures. It's not a property of Body.
+        /// </summary>
+        /// <remarks>Deprecated in version 1.6</remarks>
+        
+        public void SetCollidesWith(Category category)
+        {
+            for (int i = 0; i < FixtureList._list.Count; i++)
+                FixtureList._list[i].CollidesWith = category;
+        }
+
+        /// <summary>
+        /// Warning: This method applies the value on existing Fixtures. It's not a property of Body.
+        /// </summary>
+        /// <remarks>Deprecated in version 1.6</remarks>
+        
+        public void SetCollisionGroup(short collisionGroup)
+        {
+            for (int i = 0; i < FixtureList._list.Count; i++)
+                FixtureList._list[i].CollisionGroup = collisionGroup;
+        }
+
+        /// <summary>
+        /// Warning: This method applies the value on existing Fixtures. It's not a property of Body.
+        /// </summary>
+        /// <remarks>Deprecated in version 1.6</remarks>
+        
+        public void SetIsSensor(bool isSensor)
+        {
+            for (int i = 0; i < FixtureList._list.Count; i++)
+                FixtureList._list[i].IsSensor = isSensor;
+        }
+
+        /// <summary>
+        /// Makes a clone of the body. Fixtures and therefore shapes are not included.
+        /// Use DeepClone() to clone the body, as well as fixtures and shapes.
+        /// </summary>
+        /// <param name="world"></param>
+        /// <returns></returns>
+        public Body Clone(World world = null)
+        {
+            world = world ?? World;
+            Body body = world.CreateBody(Position, Rotation);
+            body._bodyType = _bodyType;
+            body._linearVelocity = _linearVelocity;
+            body._angularVelocity = _angularVelocity;
+            body.Tag = Tag;
+            body._enabled = _enabled;
+            body._fixedRotation = _fixedRotation;
+            body._sleepingAllowed = _sleepingAllowed;
+            body._linearDamping = _linearDamping;
+            body._angularDamping = _angularDamping;
+            body._awake = _awake;
+            body.IsBullet = IsBullet;
+            body.IgnoreCCD = IgnoreCCD;
+            body.IgnoreGravity = IgnoreGravity;
+            body._torque = _torque;
+
+            return body;
+        }
+
+        /// <summary>
+        /// Clones the body and all attached fixtures and shapes. Simply said, it makes a complete copy of the body.
+        /// </summary>
+        /// <param name="world"></param>
+        /// <returns></returns>
+        public Body DeepClone(World world = null)
+        {
+            Body body = Clone(world ?? World);
+
+            int count = FixtureList._list.Count; //Make a copy of the count. Otherwise it causes an infinite loop.
+            for (int i = 0; i < count; i++)
             {
-                return;
+                FixtureList._list[i].CloneOnto(body);
             }
-            
-            if (BodyType == BodyType.Static)
-            {
-                return;
-            }
-            
-            SynchronizeFixtures();
-        }
-        
-        /// <summary>
-        ///     Sets the alpha to zero
-        /// </summary>
-        public void SetAlphaToZero()
-        {
-            Flags &= ~BodySettings.IslandFlag;
-            Sweep.Alpha0 = 0.0f;
+
+            return body;
         }
     }
 }

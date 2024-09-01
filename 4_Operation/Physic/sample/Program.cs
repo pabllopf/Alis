@@ -29,6 +29,7 @@
 
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Physic.Sample
 {
@@ -53,7 +54,7 @@ namespace Alis.Core.Physic.Sample
             
             for (int i = 0; i < 100; i++)
             {
-                world.Step(1.0f / 60.0f, 6, 2);
+                world.Step(1.0f / 60.0f);
                 Logger.Info($"Step {i}");
             }
             

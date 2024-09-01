@@ -79,6 +79,9 @@ namespace Alis.Sample.King.Platform
         /// </summary>
         private Sprite sprite;
 
+        private bool moveLeft;
+        private bool moveRight;
+
         /// <summary>
         /// The jump force
         /// </summary>
@@ -87,15 +90,6 @@ namespace Alis.Sample.King.Platform
         /// The jump duration
         /// </summary>
         const float JUMP_DURATION = 0.35f;
-        
-        /// <summary>
-        /// The jump button pressed
-        /// </summary>
-        private bool jumpButtonPressed;
-        /// <summary>
-        /// The jump time
-        /// </summary>
-        private float jumpTime = 0.0f;
 
         /// <summary>
         ///     Ons the start
@@ -112,43 +106,14 @@ namespace Alis.Sample.King.Platform
         /// </summary>
         public override void OnUpdate()
         {
-            // Handle jumping
-            if (jumpButtonPressed)
+            if (moveRight)
             {
-                if (jumpTime <= JUMP_DURATION)
-                {
-                    // Apply jump force
-                    boxCollider.Body.ApplyForce(new Vector2(0, -JUMP_FORCE));
-                    jumpTime += Context.TimeManager.DeltaTime;
-                    Logger.Warning($"Jumping {jumpTime}");
-                }
-                else
-                {
-                    jumpButtonPressed = false;
-                    jumpTime = 0.0f;
-                }
-            }
-
-            boxCollider.Body.LinearVelocity = new Vector2(directionPlayer.X * VelocityPlayer, boxCollider.Body.LinearVelocity.Y);
-        }
-        
-        
-        /// <summary>
-        ///     Ons the release key using the specified key
-        /// </summary>
-        /// <param name="key">The key</param>
-        public override void OnReleaseKey(KeyCodes key)
-        {
-            if (key == KeyCodes.D)
-            {
-                directionPlayer = new Vector2(0, 0);
-                animator.ChangeAnimationTo("Run", RendererFlips.None);
+                boxCollider.Body.ApplyTorque(10);
             }
             
-            if (key == KeyCodes.A)
+            if (moveLeft)
             {
-                directionPlayer = new Vector2(0, 0);
-                animator.ChangeAnimationTo("Run", RendererFlips.FlipHorizontal);
+                boxCollider.Body.ApplyTorque(-10);
             }
         }
         
@@ -158,23 +123,14 @@ namespace Alis.Sample.King.Platform
         /// <param name="key">The key</param>
         public override void OnPressDownKey(KeyCodes key)
         {
-            if (key == KeyCodes.Space)
-            {
-                jumpButtonPressed = true;
-            }
-            
             if (key == KeyCodes.D)
             {
-                directionPlayer = new Vector2(1, 0);
-                animator.ChangeAnimationTo("Run", RendererFlips.None);
-                Logger.Info($"Run to right because D key is pressed {directionPlayer}");
+                moveRight = true;
             }
             
             if (key == KeyCodes.A)
             {
-                directionPlayer = new Vector2(-1, 0);
-                animator.ChangeAnimationTo("Run", RendererFlips.FlipHorizontal);
-                Logger.Info($"Run to left because A key is pressed {directionPlayer}");
+                moveLeft = true;
             }
         }
     }

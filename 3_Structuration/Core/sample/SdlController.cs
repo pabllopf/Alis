@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Threading;
 using Alis.Core.Aspect.Data.Dll;
@@ -37,9 +38,11 @@ using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf;
 using Alis.Core.Graphic.Sdl2.Structs;
+using Alis.Core.Physic.Dynamics;
 using Sdl = Alis.Core.Graphic.Sdl2.Sdl;
 using Version = Alis.Core.Graphic.Sdl2.Structs.Version;
 
@@ -54,62 +57,73 @@ namespace Alis.Core.Sample
         ///     The width
         /// </summary>
         private const int Width = 640;
-        
+
         /// <summary>
         ///     The height
         /// </summary>
         private const int Height = 480;
-        
+
         /// <summary>
         ///     The sdl game controller axis
         /// </summary>
         private static readonly List<GameControllerAxis> Axis = new List<GameControllerAxis>((GameControllerAxis[]) Enum.GetValues(typeof(GameControllerAxis)));
-        
+
         /// <summary>
         ///     The sdl game controller button
         /// </summary>
         private static readonly List<GameControllerButton> Buttons = new List<GameControllerButton>((GameControllerButton[]) Enum.GetValues(typeof(GameControllerButton)));
-        
+
         /// <summary>
         ///     The blue
         /// </summary>
         private static byte _blue;
-        
+
         /// <summary>
         ///     The blue
         /// </summary>
         private static byte _green;
-        
+
         /// <summary>
         ///     The sdl keycode
         /// </summary>
         private static List<KeyCodes> _keys = new List<KeyCodes>((KeyCodes[]) Enum.GetValues(typeof(KeyCodes)));
-        
+
         /// <summary>
         ///     The blue
         /// </summary>
         private static byte _red;
-        
+
         /// <summary>
         ///     The running
         /// </summary>
         private static bool _running = true;
-        
+
         /// <summary>
         ///     The sdl event
         /// </summary>
         private static Event _sdlEvent;
-        
+
         /// <summary>
         ///     The texture font
         /// </summary>
         private static IntPtr _textureFont1;
-        
+
         /// <summary>
         ///     The dst rect font
         /// </summary>
         private static RectangleI _dstRectFont1;
-        
+
+        private static Body _playerBody;
+        private static float _playerBodyRadius = 1.5f / 2f; // player diameter is 1.5 meters
+
+        // Add a variable to store the desired frame rate
+        private static int targetFps = 30;
+
+        // Calculate the frame duration based on the desired frame rate
+        private static int frameDuration = 1000 / targetFps;
+
+        private const float PIXELS_PER_METER = 32f;
+
         /// <summary>
         ///     Runs
         /// </summary>
@@ -123,32 +137,32 @@ namespace Alis.Core.Sample
             {
                 Logger.Info("Init all");
             }
-            
+
             // GET VERSION SDL2
             Version versionSdl2 = Sdl.GetVersion();
             Logger.Info($"SDL2 VERSION {versionSdl2.major}.{versionSdl2.minor}.{versionSdl2.patch}");
-            
+
             if (EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.Windows)
             {
                 Sdl.SetHint(Hint.HintRenderDriver, "direct3d");
             }
-            
+
             if (EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.OSX)
             {
                 Sdl.SetHint(Hint.HintRenderDriver, "opengl");
             }
-            
+
             if (EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.Linux)
             {
                 Sdl.SetHint(Hint.HintRenderDriver, "opengl");
             }
-            
+
             // create the window which should be able to have a valid OpenGL context and is resizable
-            WindowSettings flags = WindowSettings.WindowResizable | WindowSettings.WindowShown;
-            
+            WindowSettings flags = WindowSettings.WindowResizable | WindowSettings.WindowShown | WindowSettings.WindowOpengl;
+
             // Creates a new SDL window at the center of the screen with the given width and height.
             IntPtr window = Sdl.CreateWindow("Sample", (int) WindowPos.WindowPosCentered, (int) WindowPos.WindowPosCentered, Width, Height, flags);
-            
+
             // Check if the window was created successfully.
             if (window == IntPtr.Zero)
             {
@@ -158,13 +172,13 @@ namespace Alis.Core.Sample
             {
                 Logger.Info("Window created");
             }
-            
+
             // Creates a new SDL hardware renderer using the default graphics device with VSYNC enabled.
             IntPtr renderer = Sdl.CreateRenderer(
                 window,
                 -1,
                 Renderers.SdlRendererAccelerated);
-            
+
             if (renderer == IntPtr.Zero)
             {
                 Logger.Exception($"There was an issue creating the renderer. {Sdl.GetError()}");
@@ -173,65 +187,65 @@ namespace Alis.Core.Sample
             {
                 Logger.Info("Renderer created");
             }
-            
+
             SdlTtf.Init();
             Logger.Info($"SDL_TTF Version: {SdlTtf.GetVersion().major}.{SdlTtf.GetVersion().minor}.{SdlTtf.GetVersion().patch}");
-            
+
             Logger.Info("Platform: " + EmbeddedDllClass.GetCurrentPlatform());
             Logger.Info("Processor: " + RuntimeInformation.ProcessArchitecture);
-            
+
             int outlineSize = 1;
-            
+
             // Load the font
             IntPtr font = SdlTtf.OpenFont(AssetManager.Find("FontSample.otf"), 55);
-            
+
             // Load the font
             IntPtr fontOutline = SdlTtf.OpenFont(AssetManager.Find("FontSample.otf"), 55);
-            
+
             // define outline font
             SdlTtf.SetFontOutline(font, outlineSize);
-            
+
             // define style font
             SdlTtf.SetFontStyle(font, SdlTtf.TtfStyleNormal);
-            
+
             // Pixels to render the text
             IntPtr bgSurface = SdlTtf.RenderTextBlended(
                 fontOutline,
                 "0123456789",
                 new Color(255, 255, 255, 255));
-            
+
             IntPtr fgSurface = SdlTtf.RenderTextBlended(
                 font,
                 "0123456789",
                 new Color(84, 52, 68, 255));
-            
+
             // get size fg_surface
             //SDL_QueryTexture(fg_surface, NULL, NULL, &w, &h); :
             Sdl.QueryTexture(fgSurface, out _, out _, out int wOut, out int hOut);
-            
+
             //SDL_Rect rect = {OUTLINE_SIZE, OUTLINE_SIZE, fg_surface->w, fg_surface->h};
             RectangleI rect = new RectangleI(0, 0, wOut, hOut);
-            
+
             //SDL_SetSurfaceBlendMode(fg_surface, SDL_BLENDMODE_BLEND); :
             Sdl.SetSurfaceBlendMode(fgSurface, BlendModes.BlendModeBlend);
-            
+
             //SDL_BlitSurface(fg_surface, NULL, bg_surface, &rect);
             Sdl.BlitSurface(fgSurface, IntPtr.Zero, bgSurface, ref rect);
-            
+
             // Create a texture from the surface
             _textureFont1 = Sdl.CreateTextureFromSurface(renderer, bgSurface);
-            
+
             // Get the width and height of the texture
             Sdl.QueryTexture(_textureFont1, out _, out _, out int textureWidth, out int textureHeight);
-            
+
             // Create a destination intPtr dstRect
             _dstRectFont1 = new RectangleI(0, 0, textureWidth, textureHeight);
-            
+
             IntPtr icon = Sdl.LoadBmp(AssetManager.Find("logo.bmp"));
             Sdl.SetWindowIcon(window, icon);
-            
+
             Sdlinput();
-            
+
             // Rectangle to be drawn outline.
             RectangleI rectBorder = new RectangleI
             {
@@ -240,7 +254,7 @@ namespace Alis.Core.Sample
                 W = 50,
                 H = 50
             };
-            
+
             // Rectangle to be drawn filled.
             RectangleI rectFilled = new RectangleI
             {
@@ -249,7 +263,7 @@ namespace Alis.Core.Sample
                 W = 100,
                 H = 100
             };
-            
+
             RectangleI tileRectangleI = new RectangleI
             {
                 X = 0,
@@ -257,17 +271,62 @@ namespace Alis.Core.Sample
                 W = 32,
                 H = 64
             };
-            
+
             // Load the image from the specified path.
             IntPtr imageTilePtr = Sdl.LoadBmp("Assets/tile000.bmp");
-            
+
             // Create a new texture from the image.
             IntPtr textureTile = Sdl.CreateTextureFromSurface(renderer, imageTilePtr);
+
+            World world = new World();
+            //float PIXELS_PER_METER = 32f;
+
+            /* Circle */
+            Vector2 playerPosition = new Vector2(0, 50);
+
+            // Create the player fixture
+            _playerBody = world.CreateBody(playerPosition, 0, BodyType.Dynamic);
+            Fixture pfixture = _playerBody.CreateCircle(_playerBodyRadius, 1f);
+
+            // Give it some bounce and friction
+            pfixture.Restitution = 0.3f;
+            pfixture.Friction = 0.5f;
+
+            // add dynamic box of 1x1 meters
+            Vector2 sizeBox = new Vector2(10, 1);
+            Body box = world.CreateRectangle(sizeBox.X, sizeBox.Y, 1);
+            box.BodyType = BodyType.Static;
+            box.Position = new Vector2(0, 0);
+            box.SetFriction(0.5f);
+            box.SetRestitution(0.3f);
+
+            Stopwatch stopwatch = new Stopwatch();
+            
+            Stopwatch realTimeStopwatch = new Stopwatch();
+            realTimeStopwatch.Start();
+            int frameCounter = 0;
+
+            float timeStepPhysics = 1f / 20f;
+            if (targetFps > 60)
+            {
+                timeStepPhysics = 1f / 60f;
+            }
+            if (targetFps <= 60 && targetFps > 30)
+            {
+                timeStepPhysics = 1f / 30f;
+            }
+            
+            if (targetFps <= 30)
+            {
+                timeStepPhysics = 1f / 10f;
+            }
             
             while (_running)
             {
+                stopwatch.Restart();
+
                 Sdl.JoystickUpdate();
-                
+
                 while (Sdl.PollEvent(out _sdlEvent) != 0)
                 {
                     switch (_sdlEvent.type)
@@ -280,31 +339,56 @@ namespace Alis.Core.Sample
                             {
                                 _running = false;
                             }
-                            
+
                             if (_sdlEvent.key.KeySym.sym == KeyCodes.Up)
                             {
                                 rectBorder.Y -= 10;
                             }
-                            
+
                             if (_sdlEvent.key.KeySym.sym == KeyCodes.Down)
                             {
                                 rectBorder.Y += 10;
                             }
-                            
+
                             if (_sdlEvent.key.KeySym.sym == KeyCodes.Left)
                             {
                                 rectBorder.X -= 10;
                             }
-                            
+
                             if (_sdlEvent.key.KeySym.sym == KeyCodes.Right)
                             {
                                 rectBorder.X += 10;
                             }
-                            
-                            Logger.Info(_sdlEvent.key.KeySym.sym + " was pressed");
+
+                            if (_sdlEvent.key.KeySym.sym == KeyCodes.W)
+                            {
+
+                            }
+
+                            if (_sdlEvent.key.KeySym.sym == KeyCodes.S)
+                            {
+
+                            }
+
+                            if (_sdlEvent.key.KeySym.sym == KeyCodes.A)
+                            {
+                                _playerBody.ApplyTorque(10); // Apply positive torque to rotate right
+                            }
+
+                            if (_sdlEvent.key.KeySym.sym == KeyCodes.D)
+                            {
+                                _playerBody.ApplyTorque(-10); // Apply negative torque to rotate left
+                            }
+
+                            if (_sdlEvent.key.KeySym.sym == KeyCodes.Space)
+                            {
+                                _playerBody.ApplyLinearImpulse(new Vector2(0, 10));
+                            }
+
+                            //Logger.Info(_sdlEvent.key.KeySym.sym + " was pressed");
                             break;
                     }
-                    
+
                     foreach (GameControllerButton button in Buttons)
                     {
                         if ((_sdlEvent.type == EventType.JoyButtonDown)
@@ -313,7 +397,7 @@ namespace Alis.Core.Sample
                             Logger.Info($"[SDL_JoystickName_id = '{_sdlEvent.cDevice.which}'] Pressed button={button}");
                         }
                     }
-                    
+
                     foreach (GameControllerAxis axi in Axis)
                     {
                         if ((_sdlEvent.type == EventType.JoyAxisMotion)
@@ -323,49 +407,128 @@ namespace Alis.Core.Sample
                         }
                     }
                 }
-                
-                
+
+
+                world.Step(timeStepPhysics);
+
                 RenderColors();
-                
+
                 // Sets the color that the screen will be cleared with.
                 Sdl.SetRenderDrawColor(renderer, _red, _green, _blue, 255);
                 
-                // Clears the current render surface.
                 Sdl.RenderClear(renderer);
+
                 
                 // Sets the color that the rectangle will be drawn with.
                 Sdl.SetRenderDrawColor(renderer, 255, 255, 255, 255);
                 // Draws a rectangle outline.
-                //Sdl.RenderDrawRect(renderer, ref rectBorder);
-                
+                Sdl.RenderDrawRect(renderer, ref rectBorder);
+
                 // Sets the color that the rectangle will be drawn with.
                 Sdl.SetRenderDrawColor(renderer, 0, 0, 0, 255);
-                
+
                 // Draws a filled rectangle.
-                //Sdl.RenderFillRect(renderer, ref rectFilled);
-                
+                Sdl.RenderFillRect(renderer, ref rectFilled);
+
                 Sdl.RenderCopy(renderer, _textureFont1, IntPtr.Zero, ref _dstRectFont1);
-                
+
                 Sdl.RenderCopy(renderer, textureTile, IntPtr.Zero, ref tileRectangleI);
-                
+
                 Sdl.RenderDrawRects(renderer, new[] {rectBorder, rectFilled}, 2);
-                
-                
+
+
                 // draw a line
                 Sdl.SetRenderDrawColor(renderer, 255, 0, 0, 255);
                 Sdl.RenderDrawLine(renderer, 0, 0, 100, 100);
                 
+
+                // Draw the player circle:
+                int circleX = Width / 2 + (int) (_playerBody.Position.X * PIXELS_PER_METER);
+                int circleY = Height / 2 - (int) (_playerBody.Position.Y * PIXELS_PER_METER);
+                Sdl.SetRenderDrawColor(renderer, 0, 255, 0, 255);
+                DrawCircle(renderer, circleX, circleY, (int) (_playerBodyRadius * PIXELS_PER_METER));
+
+                // Draw the box:
+                int boxX = Width / 2 + (int) (box.Position.X * PIXELS_PER_METER);
+                int boxY = Height / 2 - (int) (box.Position.Y * PIXELS_PER_METER);
+                Sdl.SetRenderDrawColor(renderer, 255, 0, 0, 255);
+                RectangleI boxRect = new RectangleI
+                {
+                    X = (int) (boxX - (sizeBox.X * PIXELS_PER_METER / 2)),
+                    Y = boxY - (int) (sizeBox.Y * PIXELS_PER_METER / 2),
+                    W = (int) (sizeBox.X * PIXELS_PER_METER),
+                    H = (int) (sizeBox.Y * PIXELS_PER_METER)
+                };
+                Sdl.RenderDrawRect(renderer, ref boxRect);
+
+                // Present the renderer to the window.
                 Sdl.RenderPresent(renderer);
-                
-                
-                Thread.Sleep(1000 / 60);
+
+
+
+                stopwatch.Stop();
+                int frameTime = (int)stopwatch.ElapsedMilliseconds;
+
+                // Sleep for the remaining time to maintain the desired frame rate
+                if (frameTime < frameDuration)
+                {
+                    Thread.Sleep(frameDuration - frameTime);
+                }
+
+                frameCounter++;
+
+                if (realTimeStopwatch.ElapsedMilliseconds >= 500)
+                {
+                    double averageFps = frameCounter / (realTimeStopwatch.ElapsedMilliseconds / 1000.0);
+                    Console.WriteLine($"Average FPS: {averageFps:F2}");
+                    frameCounter = 0;
+                    realTimeStopwatch.Restart();
+                }
             }
-            
+
             Sdl.DestroyRenderer(renderer);
             Sdl.DestroyWindow(window);
             Sdl.Quit();
         }
-        
+
+
+        private static void DrawCircle(IntPtr renderer, int x0, int y0, int radius)
+        {
+            int x = radius - 1;
+            int y = 0;
+            int dx = 1;
+            int dy = 1;
+            int err = dx - (radius << 1);
+
+            while (x >= y)
+            {
+                Sdl.RenderDrawPoint(renderer, x0 + x, y0 + y);
+                Sdl.RenderDrawPoint(renderer, x0 + y, y0 + x);
+                Sdl.RenderDrawPoint(renderer, x0 - y, y0 + x);
+                Sdl.RenderDrawPoint(renderer, x0 - x, y0 + y);
+                Sdl.RenderDrawPoint(renderer, x0 - x, y0 - y);
+                Sdl.RenderDrawPoint(renderer, x0 - y, y0 - x);
+                Sdl.RenderDrawPoint(renderer, x0 + y, y0 - x);
+                Sdl.RenderDrawPoint(renderer, x0 + x, y0 - y);
+
+                if (err <= 0)
+                {
+                    y++;
+                    err += dy;
+                    dy += 2;
+                }
+
+                if (err > 0)
+                {
+                    x--;
+                    dx += 2;
+                    err += dx - (radius << 1);
+                }
+            }
+        }
+
+
+
         /// <summary>
         ///     Renders the colors
         /// </summary>
@@ -390,8 +553,8 @@ namespace Alis.Core.Sample
                 _blue = 0;
             }
         }
-        
-        
+
+
         /// <summary>
         ///     Sdlinputs
         /// </summary>
@@ -399,7 +562,7 @@ namespace Alis.Core.Sample
         {
             Sdl.SetHint(Hint.HintXInputEnabled, "0");
             Sdl.SetHint(Hint.SdlHintJoystickThread, "1");
-            
+
             for (int i = 0; i < Sdl.NumJoysticks(); i++)
             {
                 IntPtr myJoystick = Sdl.JoystickOpen(i);

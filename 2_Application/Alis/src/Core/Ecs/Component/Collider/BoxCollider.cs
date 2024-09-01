@@ -37,9 +37,8 @@ using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Entity;
 using Alis.Core.Graphic.Sdl2;
-using Alis.Core.Physic.Collision.ContactSystem;
 using Alis.Core.Physic.Dynamics;
-using Alis.Core.Physic.Figure;
+using Alis.Core.Physic.Dynamics.Contacts;
 using Sprite = Alis.Core.Ecs.Component.Render.Sprite;
 
 namespace Alis.Core.Ecs.Component.Collider
@@ -171,100 +170,28 @@ namespace Alis.Core.Ecs.Component.Collider
             };
 
 
-            Body = new Rectangle(
+            Body = Context.PhysicManager.World.CreateRectangle(
                 Width,
                 Height,
-                new Vector2(
-                    GameObject.Transform.Position.X + RelativePosition.X,
-                    GameObject.Transform.Position.Y + RelativePosition.Y
-                ),
-                LinearVelocity,
-                BodyType,
+                1.0f,
+                new Vector2(GameObject.Transform.Position.X + RelativePosition.X, GameObject.Transform.Position.Y + RelativePosition.Y),
                 Rotation,
-                AngularVelocity,
-                0,
-                0,
-                false,
-                true,
-                FixedRotation,
-                true,
-                true,
-                GravityScale
-            );
+                BodyType);
 
-            Body.Restitution = Restitution;
-            Body.Friction = Friction;
+            Body.SetRestitution(Restitution);
+            Body.SetFriction(Friction);
             Body.FixedRotation = FixedRotation;
             Body.Mass = Mass;
             Body.SleepingAllowed = false;
             Body.IsBullet = true;
-            Body.GravityScale = GravityScale;
+            Body.IgnoreGravity = false;
             Body.LinearVelocity = LinearVelocity;
             Body.Awake = true;
-            Body.IsSensor = IsTrigger;
-            Body.GameObject = GameObject;
-
-            Body.OnCollision += OnCollision;
-            Body.OnSeparation += OnSeparation;
-
+            Body.SetIsSensor(IsTrigger);
+            Body.Tag = GameObject;
             Context.GraphicManager.Attach(this);
-            Context.PhysicManager.Attach(Body);
         }
-
-        /// <summary>
-        ///     Ons the separation using the specified fixture a
-        /// </summary>
-        /// <param name="fixtureA">The fixture a</param>
-        /// <param name="fixtureB">The fixture b</param>
-        /// <param name="contact">The contact</param>
-        private void OnSeparation(Fixture fixtureA, Fixture fixtureB, Contact contact)
-        {
-            GameObject fixtureGameObject = (GameObject) fixtureA.Body.GameObject;
-            GameObject fixtureBGameObject = (GameObject) fixtureB.Body.GameObject;
-
-            if (fixtureGameObject.Equals(GameObject) && fixtureBGameObject.Contains<BoxCollider>())
-            {
-                foreach (AComponent component in fixtureBGameObject.Components.Values)
-                {
-                    component.OnCollisionExit(GameObject);
-                }
-            }
-            else if (fixtureBGameObject.Equals(GameObject) && fixtureGameObject.Contains<BoxCollider>())
-            {
-                foreach (AComponent component in fixtureGameObject.Components.Values)
-                {
-                    component.OnCollisionExit(GameObject);
-                }
-            }
-        }
-
-        /// <summary>
-        ///     Ons the collision using the specified fixture a
-        /// </summary>
-        /// <param name="fixtureA">The fixture a</param>
-        /// <param name="fixtureB">The fixture b</param>
-        /// <param name="contact">The contact</param>
-        private void OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
-        {
-            GameObject fixtureGameObject = (GameObject) fixtureA.Body.GameObject;
-            GameObject fixtureBGameObject = (GameObject) fixtureB.Body.GameObject;
-
-            if (fixtureGameObject.Equals(GameObject) && fixtureBGameObject.Contains<BoxCollider>())
-            {
-                foreach (AComponent component in fixtureBGameObject.Components.Values)
-                {
-                    component.OnCollisionEnter(GameObject);
-                }
-            }
-            else if (fixtureBGameObject.Equals(GameObject) && fixtureGameObject.Contains<BoxCollider>())
-            {
-                foreach (AComponent component in fixtureGameObject.Components.Values)
-                {
-                    component.OnCollisionEnter(GameObject);
-                }
-            }
-        }
-
+        
         /// <summary>
         ///     Starts this instance
         /// </summary>

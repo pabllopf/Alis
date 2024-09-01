@@ -150,7 +150,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         /// The target frame duration
         /// </summary>
-        private const double TargetFrameDuration = 1.0 / 240.0;
+        private const double TargetFrameDuration = 1.0 / 120.0;
 
         /// <summary>
         ///     Run program
@@ -220,7 +220,8 @@ namespace Alis.Core.Ecs
                 OnBeforeUpdate();
                 OnUpdate();
                 OnAfterUpdate();
-
+                
+                
                 // Run fixed methods
                 while (accumulator >= Context.TimeManager.Configuration.FixedTimeStep)
                 {
@@ -256,13 +257,13 @@ namespace Alis.Core.Ecs
 
                 lastLogTime = LastLogTime(newTime, lastLogTime);
 
-                // Calculate frame duration and sleep if necessary
+                /*// Calculate frame duration and sleep if necessary
                 double frameEndTime = Context.TimeManager.Clock.Elapsed.TotalSeconds;
                 double frameDuration = frameEndTime - frameStartTime;
                 if (frameDuration < TargetFrameDuration)
                 {
                     Thread.Sleep((int) ((TargetFrameDuration - frameDuration) * 1000));
-                }
+                }*/
             }
 
             OnStop();
