@@ -147,7 +147,7 @@ namespace Alis.Core.Ecs
         public Context Context { get; set; }
 
 
-        public static double targetframes = 240;
+        public static double targetframes = 30;
         
         /// <summary>
         /// The target frame duration
@@ -255,11 +255,14 @@ namespace Alis.Core.Ecs
                 }
 
                 OnDispatchEvents();
+                
+                Context.PhysicManager.World.Step(timeStepPhysics);
+                
                 OnBeforeUpdate();
                 OnUpdate();
                 OnAfterUpdate();
                 
-                 Context.PhysicManager.World.Step(timeStepPhysics);
+                 
                 
                 // Run fixed methods
                 while (accumulator >= Context.TimeManager.Configuration.FixedTimeStep)

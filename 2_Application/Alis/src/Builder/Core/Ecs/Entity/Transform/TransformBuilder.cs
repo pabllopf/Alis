@@ -47,7 +47,7 @@ namespace Alis.Builder.Core.Ecs.Entity.Transform
         /// <summary>
         ///     The transform
         /// </summary>
-        private Alis.Core.Aspect.Math.Transform transform = new Alis.Core.Aspect.Math.Transform(new Vector2(0, 0), new Rotation(0), new Vector2(1, 1));
+        private Alis.Core.Aspect.Math.Transform transform = new Alis.Core.Aspect.Math.Transform(new Vector2(0, 0), 0, new Vector2(1, 1));
         
         /// <summary>
         ///     Builds this instance
@@ -74,7 +74,7 @@ namespace Alis.Builder.Core.Ecs.Entity.Transform
         /// <returns>The transform builder</returns>
         public TransformBuilder Rotation(float angle)
         {
-            transform.Rotation.Set(angle);
+            transform.Rotation = angle;
             return this;
         }
         

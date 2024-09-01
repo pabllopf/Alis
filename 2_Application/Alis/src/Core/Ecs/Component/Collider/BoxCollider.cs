@@ -136,6 +136,8 @@ namespace Alis.Core.Ecs.Component.Collider
         /// <returns>The box collider builder</returns>
         public BoxColliderBuilder Builder() => new BoxColliderBuilder();
 
+        private const float PIXELS_PER_METER = 32.0f;
+
         /// <summary>
         ///     Inits this instance
         /// </summary>
@@ -182,14 +184,15 @@ namespace Alis.Core.Ecs.Component.Collider
         /// </summary>
         public override void OnBeforeUpdate()
         {
-           
+            GameObject.Transform = new Transform(Body.Position, Body.Rotation, GameObject.Transform.Scale);
         }
-
+        
         /// <summary>
         ///     Updates this instance
         /// </summary>
         public override void OnUpdate()
         {
+            
         }
 
         /// <summary>

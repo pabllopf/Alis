@@ -283,7 +283,26 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             
                 Sdl.SetRenderDrawColor(Renderer, 0, 0, 0, 255);
                 Sdl.RenderClear(Renderer);
-                
+
+                // Draw the sprites:
+                foreach (Sprite sprite in Sprites)
+                {
+                    if (sprite.Image != null)
+                    {
+                        int w, h;
+                        Sdl.QueryTexture(sprite.Image.Texture, out _, out _, out w, out h);
+                        RectangleI dstRect = new RectangleI
+                        {
+                            X = Width / 2 + (int) (sprite.GameObject.Transform.Position.X * PIXELS_PER_METER) - (int) (w * sprite.GameObject.Transform.Scale.X / 2),
+                            Y = Height / 2 - (int) (sprite.GameObject.Transform.Position.Y * PIXELS_PER_METER) - (int) (h * sprite.GameObject.Transform.Scale.Y / 2),
+                            W = (int) (w * sprite.GameObject.Transform.Scale.X),
+                            H = (int) (h * sprite.GameObject.Transform.Scale.Y)
+                        };
+                        Sdl.RenderCopy(Renderer, sprite.Image.Texture, IntPtr.Zero, ref dstRect);
+                    }
+                }
+
+                // Draw the colliders:
                 foreach (BoxCollider collider in ColliderBases)
                 {
                     // Draw the box:
@@ -292,10 +311,10 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                     Sdl.SetRenderDrawColor(Renderer, 255, 0, 0, 255);
                     RectangleI boxRect = new RectangleI
                     {
-                        X = (int) (boxX - (collider.Width * PIXELS_PER_METER / 2)),
-                        Y = boxY - (int) (collider.Height * PIXELS_PER_METER / 2),
-                        W = (int) ( collider.Width * PIXELS_PER_METER),
-                        H = (int) (collider.Height * PIXELS_PER_METER)
+                        X = (int) (boxX - (collider.Width * PIXELS_PER_METER * collider.GameObject.Transform.Scale.X / 2)),
+                        Y = boxY - (int) (collider.Height * PIXELS_PER_METER * collider.GameObject.Transform.Scale.Y / 2),
+                        W = (int) (collider.Width * PIXELS_PER_METER * collider.GameObject.Transform.Scale.X),
+                        H = (int) (collider.Height * PIXELS_PER_METER * collider.GameObject.Transform.Scale.Y)
                     };
                     Sdl.RenderDrawRect(Renderer, ref boxRect);
                 }

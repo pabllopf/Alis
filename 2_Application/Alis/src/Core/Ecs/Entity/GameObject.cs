@@ -56,7 +56,7 @@ namespace Alis.Core.Ecs.Entity
             Name = GetType().Name;
             Id = Guid.NewGuid().ToString();
             Tag = GetType().Name;
-            Transform = new Transform(new Vector2(0, 0), new Rotation(0), new Vector2(1, 1));
+            Transform = new Transform(new Vector2(0, 0), 0, new Vector2(1, 1));
             Components = new Dictionary<string, AComponent>();
         }
         
