@@ -102,7 +102,6 @@ namespace Alis.Core.Aspect.Sample
             Logger.Info("--------------------------\n");
             
             Logger.Info(new Vector2(3.0f, 2.0f).ToString());
-            Logger.Info(new Vector2(3.0f, 2.0f).ToString("F2", CultureInfo.InvariantCulture));
             
             // SAMPLE ASPECT TIME
             Logger.Info("--------------------------");

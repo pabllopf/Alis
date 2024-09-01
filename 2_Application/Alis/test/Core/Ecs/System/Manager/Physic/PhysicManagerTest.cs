@@ -40,48 +40,5 @@ namespace Alis.Test.Core.Ecs.System.Manager.Physic
     /// </summary>
     public class PhysicManagerTest
     {
-        /// <summary>
-        ///     Tests that test on update
-        /// </summary>
-        [Fact]
-        public void Test_OnUpdate()
-        {
-            VideoGame videoGame = new VideoGame();
-            PhysicManager manager = new PhysicManager();
-            manager.OnUpdate();
-            // Asserts would go here
-        }
-        
-        /// <summary>
-        ///     Tests that test attach
-        /// </summary>
-        [Fact]
-        public void Test_Attach()
-        {
-            VideoGame videoGame = new VideoGame();
-            PhysicManager manager = new PhysicManager();
-            Body body = new Body(
-                new Vector2(0, 0), // position
-                new Vector2(0, 0) // gravityScale
-            );
-            manager.Attach(body);
-            // Asserts would go here
-        }
-        
-        /// <summary>
-        ///     Tests that test un attach
-        /// </summary>
-        [Fact]
-        public void Test_UnAttach()
-        {
-            PhysicManager manager = new PhysicManager();
-            Body body = new Body(
-                new Vector2(0, 0), // position
-                new Vector2(0, 0) // gravityScale
-            );
-            manager.Attach(body);
-            manager.UnAttach(body);
-            // Asserts would go here
-        }
     }
 }

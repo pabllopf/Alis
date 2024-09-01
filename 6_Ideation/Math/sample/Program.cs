@@ -45,7 +45,6 @@ namespace Alis.Core.Aspect.Math.Sample
         public static void Main(string[] args)
         {
             Console.WriteLine(new Vector2(3.0f, 2.0f).ToString());
-            Console.WriteLine(new Vector2(3.0f, 2.0f).ToString("F2", CultureInfo.InvariantCulture));
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
         }

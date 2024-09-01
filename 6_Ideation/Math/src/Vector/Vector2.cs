@@ -1,6 +1,7 @@
 ﻿// Copyright (c) 2017 Kastellanos Nikolaos
 
 using System;
+using System.Globalization;
 
 namespace Alis.Core.Aspect.Math.Vector
 {
@@ -66,6 +67,16 @@ namespace Alis.Core.Aspect.Math.Vector
             Y *= invLength;
         }
 
+        public static Vector2 Normalize(Vector2 vector)
+        {
+            var length = (float)System.Math.Sqrt((vector.X * vector.X) + (vector.Y * vector.Y));
+            var invLength = 1.0f / length;
+            vector.X *= invLength;
+            vector.Y *= invLength;
+            return vector;
+        }
+
+        
         public override int GetHashCode()
         {
             return (X.GetHashCode() ^ Y.GetHashCode());
@@ -228,5 +239,14 @@ namespace Alis.Core.Aspect.Math.Vector
 
         #endregion Fast ref methods
 
+        public string ToString(string f2, CultureInfo cultureInfo)
+        {
+            return String.Format("{{X: {0} Y: {1}}}", X.ToString(f2, cultureInfo), Y.ToString(f2, cultureInfo));
+        }
+
+        public static Vector2 Add(Vector2 vectorA, Vector2 vectorB)
+        {
+            return new Vector2(vectorA.X + vectorB.X, vectorA.Y + vectorB.Y);
+        }
     }
 }
