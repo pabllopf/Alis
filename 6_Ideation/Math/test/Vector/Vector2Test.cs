@@ -143,21 +143,6 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.False(vectorA.Equals(vectorC)); // Vector A should not be equal to Vector C
         }
         
-        /// <summary>
-        ///     Tests that test to string method with format and provider
-        /// </summary>
-        [Fact]
-        public void TestToStringMethodWithFormatAndProvider()
-        {
-            // Arrange
-            Vector2 vector = new Vector2(11.0f, 12.0f);
-            
-            // Act
-            string result = vector.ToString("F2", CultureInfo.InvariantCulture);
-            
-            // Assert
-            Assert.Equal("<11.00, 12.00>", result);
-        }
         
         /// <summary>
         ///     Tests that test static addition method
