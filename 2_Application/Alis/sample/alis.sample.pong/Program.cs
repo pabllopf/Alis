@@ -115,7 +115,7 @@ namespace Alis.Sample.Pong
                                 .Rotation(0.0f)
                                 .RelativePosition(0, 0)
                                 .Mass(10.0f)
-                                .Restitution(1.0f)
+                                .Restitution(1f)
                                 .Friction(0f)
                                 .FixedRotation(true)
                                 .GravityScale(0.0f)

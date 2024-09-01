@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic;
 using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Ecs.System.Manager.Physic
@@ -42,7 +41,7 @@ namespace Alis.Core.Ecs.System.Manager.Physic
         /// <summary>
         ///     The vector
         /// </summary>
-        private readonly World world = new World(new Vector2(0, 9.8f));
+        public World World = new World(new Vector2(0, 9.8f));
         
         /// <summary>
         ///     Ons the update
@@ -54,17 +53,10 @@ namespace Alis.Core.Ecs.System.Manager.Physic
                 return;
             }
 
-            world.Step(1f, 8, 3);
+            World.Step(1.0f / 60.0f);
         }
         
-        /// <summary>
-        ///     Attaches the body
-        /// </summary>
-        /// <param name="body">The body</param>
-        public void Attach(Body body)
-        {
-            world.AddBody(body);
-        }
+
         
         /// <summary>
         ///     Uns the attach using the specified body
@@ -72,7 +64,7 @@ namespace Alis.Core.Ecs.System.Manager.Physic
         /// <param name="body">The body</param>
         public void UnAttach(Body body)
         {
-            world.RemoveBody(body);
+            World.Remove(body);
         }
     }
 }

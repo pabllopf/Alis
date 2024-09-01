@@ -1,203 +1,288 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:EdgeShape.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+/* Original source Farseer Physics Engine:
+ * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
+ * Microsoft Permissive License (Ms-PL) v1.1
+ */
 
-using Alis.Core.Aspect.Math;
+/*
+* Farseer Physics Engine:
+* Copyright (c) 2012 Ian Qvist
+* 
+* Original source Box2D:
+* Copyright (c) 2006-2011 Erin Catto http://www.box2d.org 
+* 
+* This software is provided 'as-is', without any express or implied 
+* warranty.  In no event will the authors be held liable for any damages 
+* arising from the use of this software. 
+* Permission is granted to anyone to use this software for any purpose, 
+* including commercial applications, and to alter it and redistribute it 
+* freely, subject to the following restrictions: 
+* 1. The origin of this software must not be misrepresented; you must not 
+* claim that you wrote the original software. If you use this software 
+* in a product, an acknowledgment in the product documentation would be 
+* appreciated but is not required. 
+* 2. Altered source versions must be plainly marked as such, and must not be 
+* misrepresented as being the original software. 
+* 3. This notice may not be removed or altered from any source distribution. 
+*/
+
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Collision.RayCast;
-using Alis.Core.Physic.Config;
-using Alis.Core.Physic.Shared;
+using Alis.Core.Physic.Common;
+#if XNAAPI
+using Complex = nkast.Aether.Physics2D.Common.Complex;
+using Vector2 = Microsoft.Xna.Framework.Vector2;
+#endif
 
 namespace Alis.Core.Physic.Collision.Shapes
 {
     /// <summary>
-    ///     A line segment (edge) shape. These can be connected in chains or loops to other edge shapes. Edges created
-    ///     independently are two-sided and do no provide smooth movement across junctions.
+    /// A line segment (edge) shape. These can be connected in chains or loops
+    /// to other edge shapes.
+    /// The connectivity information is used to ensure correct contact normals.
     /// </summary>
-    public class EdgeShape : AShape
+    public class EdgeShape : Shape
     {
         /// <summary>
-        ///     The vertex
+        /// Edge start vertex
         /// </summary>
-        private Vector2 vertex1;
-        
+        internal Vector2 _vertex1;
+
         /// <summary>
-        ///     The vertex
+        /// Edge end vertex
         /// </summary>
-        private Vector2 vertex2;
-        
-        /// <summary>Create a new EdgeShape with the specified start and end. This edge supports two-sided collision.</summary>
+        internal Vector2 _vertex2;
+
+        internal EdgeShape()
+            : base(0)
+        {
+            ShapeType = ShapeType.Edge;
+            _radius = Settings.PolygonRadius;
+        }
+
+        /// <summary>
+        /// Create a new EdgeShape with the specified start and end.
+        /// </summary>
         /// <param name="start">The start of the edge.</param>
         /// <param name="end">The end of the edge.</param>
-        public EdgeShape(Vector2 start, Vector2 end) : base(ShapeType.Edge, Settings.PolygonRadius)
+        public EdgeShape(Vector2 start, Vector2 end)
+            : base(0)
         {
-            SetTwoSided(start, end);
+            ShapeType = ShapeType.Edge;
+            _radius = Settings.PolygonRadius;
+            Set(start, end);
         }
-        
-        /// <summary>Create a new EdgeShape with ghost vertices for smooth collision. This edge only supports one-sided collision.</summary>
-        public EdgeShape(Vector2 v0, Vector2 v1, Vector2 v2, Vector2 v3) : base(ShapeType.Edge, Settings.PolygonRadius)
+
+        public override int ChildCount
         {
-            SetOneSided(v0, v1, v2, v3);
+            get { return 1; }
         }
-        
+
         /// <summary>
-        ///     Initializes a new instance of the <see cref="EdgeShape" /> class
+        /// Is true if the edge is connected to an adjacent vertex before vertex 1.
         /// </summary>
-        public EdgeShape() : base(ShapeType.Edge, Settings.PolygonRadius)
-        {
-        }
-        
+        public bool HasVertex0 { get; set; }
+
         /// <summary>
-        ///     Gets the value of the child count
+        /// Is true if the edge is connected to an adjacent vertex after vertex2.
         /// </summary>
-        public override int ChildCount => 1;
-        
-        /// <summary>Is true if the edge is connected to an adjacent vertex before vertex 1.</summary>
-        public bool OneSided { get; set; }
-        
-        /// <summary>Optional adjacent vertices. These are used for smooth collision.</summary>
+        public bool HasVertex3 { get; set; }
+
+        /// <summary>
+        /// Optional adjacent vertices. These are used for smooth collision.
+        /// </summary>
         public Vector2 Vertex0 { get; set; }
-        
-        /// <summary>Optional adjacent vertices. These are used for smooth collision.</summary>
+
+        /// <summary>
+        /// Optional adjacent vertices. These are used for smooth collision.
+        /// </summary>
         public Vector2 Vertex3 { get; set; }
-        
-        /// <summary>These are the edge vertices</summary>
+
+        /// <summary>
+        /// These are the edge vertices
+        /// </summary>
         public Vector2 Vertex1
         {
-            get => vertex1;
+            get { return _vertex1; }
             set
             {
-                vertex1 = value;
+                _vertex1 = value;
                 ComputeProperties();
             }
         }
-        
-        /// <summary>These are the edge vertices</summary>
+
+        /// <summary>
+        /// These are the edge vertices
+        /// </summary>
         public Vector2 Vertex2
         {
-            get => vertex2;
+            get { return _vertex2; }
             set
             {
-                vertex2 = value;
+                _vertex2 = value;
                 ComputeProperties();
             }
         }
-        
+
         /// <summary>
-        ///     Sets the one sided using the specified v 0
+        /// Set this as an isolated edge.
         /// </summary>
-        /// <param name="v0">The </param>
-        /// <param name="v1">The </param>
-        /// <param name="v2">The </param>
-        /// <param name="v3">The </param>
-        internal void SetOneSided(Vector2 v0, Vector2 v1, Vector2 v2, Vector2 v3)
+        /// <param name="start">The start.</param>
+        /// <param name="end">The end.</param>
+        public void Set(Vector2 start, Vector2 end)
         {
-            Vertex0 = v0;
-            Vertex1 = v1;
-            Vertex2 = v2;
-            Vertex3 = v3;
-            OneSided = true;
-            
+            _vertex1 = start;
+            _vertex2 = end;
+            HasVertex0 = false;
+            HasVertex3 = false;
+
             ComputeProperties();
         }
-        
-        /// <summary>
-        ///     Sets the two sided using the specified start
-        /// </summary>
-        /// <param name="start">The start</param>
-        /// <param name="end">The end</param>
-        internal void SetTwoSided(Vector2 start, Vector2 end)
+
+        public override bool TestPoint(ref Transform transform, ref Vector2 point)
         {
-            Vertex1 = start;
-            Vertex2 = end;
-            OneSided = false;
-            
-            ComputeProperties();
+            return false;
         }
-        
-        /// <summary>
-        ///     Describes whether this instance test point
-        /// </summary>
-        /// <param name="transform">The transform</param>
-        /// <param name="point">The point</param>
-        /// <returns>The bool</returns>
-        public override bool TestPoint(ref Transform transform, ref Vector2 point) => false;
-        
-        /// <summary>
-        ///     Describes whether this instance ray cast
-        /// </summary>
-        /// <param name="input">The input</param>
-        /// <param name="transform">The transform</param>
-        /// <param name="childIndex">The child index</param>
-        /// <param name="output">The output</param>
-        /// <returns>The bool</returns>
-        public override bool RayCast(ref RayCastInput input, ref Transform transform, int childIndex,
-            out RayCastOutput output) =>
-            RayCastHelper.RayCastEdge(ref vertex1, ref vertex2, OneSided, ref input,
-                ref transform, out output);
-        
-        /// <summary>
-        ///     Computes the aabb using the specified transform
-        /// </summary>
-        /// <param name="transform">The transform</param>
-        /// <param name="childIndex">The child index</param>
-        /// <param name="aabb">The aabb</param>
-        public override void ComputeAabb(ref Transform transform, int childIndex, out Aabb aabb)
+
+        public override bool RayCast(out RayCastOutput output, ref RayCastInput input, ref Transform transform, int childIndex)
         {
-            AabbHelper.ComputeEdgeAabb(ref vertex1, ref vertex2, ref transform, out aabb);
-        }
-        
-        /// <summary>
-        ///     Computes the properties
-        /// </summary>
-        internal sealed override void ComputeProperties()
-        {
-            MassDataPrivate.Centroid = 0.5f * (Vertex1 + Vertex2);
-        }
-        
-        /// <summary>
-        ///     Clones this instance
-        /// </summary>
-        /// <returns>The clone</returns>
-        public override AShape Clone()
-        {
-            EdgeShape clone = new EdgeShape
+            // p = p1 + t * d
+            // v = v1 + s * e
+            // p1 + t * d = v1 + s * e
+            // s * e - t * d = p1 - v1
+
+            output = new RayCastOutput();
+
+            // Put the ray into the edge's frame of reference.
+            Vector2 p1 = Complex.Divide(input.Point1 - transform.p, ref transform.q);
+            Vector2 p2 = Complex.Divide(input.Point2 - transform.p, ref transform.q);
+            Vector2 d = p2 - p1;
+
+            Vector2 v1 = _vertex1;
+            Vector2 v2 = _vertex2;
+            Vector2 e = v2 - v1;
+            Vector2 normal = new Vector2(e.Y, -e.X); //TODO: Could possibly cache the normal.
+            normal.Normalize();
+
+            // q = p1 + t * d
+            // dot(normal, q - v1) = 0
+            // dot(normal, p1 - v1) + t * dot(normal, d) = 0
+            float numerator = Vector2.Dot(normal, v1 - p1);
+            float denominator = Vector2.Dot(normal, d);
+
+            if (denominator == 0.0f)
             {
-                ShapeTypePrivate = ShapeTypePrivate,
-                RadiusPrivate = RadiusPrivate,
-                DensityPrivate = DensityPrivate,
-                OneSided = OneSided,
-                Vertex0 = Vertex0,
-                Vertex1 = Vertex1,
-                Vertex2 = Vertex2,
-                Vertex3 = Vertex3,
-                MassDataPrivate = MassDataPrivate
-            };
+                return false;
+            }
+
+            float t = numerator / denominator;
+            if (t < 0.0f || input.MaxFraction < t)
+            {
+                return false;
+            }
+
+            Vector2 q = p1 + t * d;
+
+            // q = v1 + s * r
+            // s = dot(q - v1, r) / dot(r, r)
+            Vector2 r = v2 - v1;
+            float rr = Vector2.Dot(r, r);
+            if (rr == 0.0f)
+            {
+                return false;
+            }
+
+            float s = Vector2.Dot(q - v1, r) / rr;
+            if (s < 0.0f || 1.0f < s)
+            {
+                return false;
+            }
+
+            output.Fraction = t;
+            if (numerator > 0.0f)
+            {
+                output.Normal = -normal;
+            }
+            else
+            {
+                output.Normal = normal;
+            }
+            return true;
+        }
+
+        public override void ComputeAABB(out AABB aabb, ref Transform transform, int childIndex)
+        {
+            // OPT: Vector2 v1 = Transform.Multiply(ref _vertex1, ref transform);            
+            float v1X = (_vertex1.X * transform.q.R - _vertex1.Y * transform.q.i) + transform.p.X;
+            float v1Y = (_vertex1.Y * transform.q.R + _vertex1.X * transform.q.i) + transform.p.Y;
+            // OPT: Vector2 v2 = Transform.Multiply(ref _vertex2, ref transform);
+            float v2X = (_vertex2.X * transform.q.R - _vertex2.Y * transform.q.i) + transform.p.X;
+            float v2Y = (_vertex2.Y * transform.q.R + _vertex2.X * transform.q.i) + transform.p.Y;
+
+            // OPT: aabb.LowerBound = Vector2.Min(v1, v2);
+            // OPT: aabb.UpperBound = Vector2.Max(v1, v2);
+            if (v1X < v2X)
+            {
+                aabb.LowerBound.X = v1X;
+                aabb.UpperBound.X = v2X;
+            }
+            else
+            {
+                aabb.LowerBound.X = v2X;
+                aabb.UpperBound.X = v1X;
+            }
+            if (v1Y < v2Y)
+            {
+                aabb.LowerBound.Y = v1Y;
+                aabb.UpperBound.Y = v2Y;
+            }
+            else
+            {
+                aabb.LowerBound.Y = v2Y;
+                aabb.UpperBound.Y = v1Y;
+            }
+
+            // OPT: Vector2 r = new Vector2(Radius, Radius);
+            // OPT: aabb.LowerBound = aabb.LowerBound - r;
+            // OPT: aabb.UpperBound = aabb.LowerBound + r;
+            aabb.LowerBound.X -= Radius;
+            aabb.LowerBound.Y -= Radius;
+            aabb.UpperBound.X += Radius;
+            aabb.UpperBound.Y += Radius;
+        }
+
+        protected override void ComputeProperties()
+        {
+            MassData.Centroid = 0.5f * (_vertex1 + _vertex2);
+        }
+
+        public override float ComputeSubmergedArea(ref Vector2 normal, float offset, ref Transform xf, out Vector2 sc)
+        {
+            sc = Vector2.Zero;
+            return 0;
+        }
+
+        public bool CompareTo(EdgeShape shape)
+        {
+            return (HasVertex0 == shape.HasVertex0 &&
+                    HasVertex3 == shape.HasVertex3 &&
+                    Vertex0 == shape.Vertex0 &&
+                    Vertex1 == shape.Vertex1 &&
+                    Vertex2 == shape.Vertex2 &&
+                    Vertex3 == shape.Vertex3);
+        }
+
+        public override Shape Clone()
+        {
+            EdgeShape clone = new EdgeShape();
+            clone.ShapeType = ShapeType;
+            clone._radius = _radius;
+            clone._density = _density;
+            clone.HasVertex0 = HasVertex0;
+            clone.HasVertex3 = HasVertex3;
+            clone.Vertex0 = Vertex0;
+            clone._vertex1 = _vertex1;
+            clone._vertex2 = _vertex2;
+            clone.Vertex3 = Vertex3;
+            clone.MassData = MassData;
             return clone;
         }
     }

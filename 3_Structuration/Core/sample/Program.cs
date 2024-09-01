@@ -45,8 +45,6 @@ namespace Alis.Core.Sample
         {
             Logger.Info("Alis.Core.Sample with " + args.Length + " args");
             SdlController.Run();
-            Logger.Info("End of program. Press any key to exit.");
-            Console.ReadKey();
         }
     }
 }

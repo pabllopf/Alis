@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Test.Helper
+namespace Alis.Benchmark.Helper
 {
     /// <summary>
     /// The benchmark result class
