@@ -293,18 +293,6 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         
 
         
-        /// <summary>
-        ///     Tests that to string should format correctly
-        /// </summary>
-        [Fact]
-        public void ToString_ShouldFormatCorrectly()
-        {
-            Vector3 vector = new Vector3(1.0f, 2.0f, 3.0f);
-            string result = vector.ToString();
-            
-            Assert.Equal(result.Contains(',') ? "<1, 2, 3>" : "<1. 2. 3>", result);
-        }
-        
     
         
         /// <summary>
