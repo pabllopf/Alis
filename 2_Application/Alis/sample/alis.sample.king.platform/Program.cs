@@ -89,14 +89,13 @@ namespace Alis.Sample.King.Platform
                         // PLAYER
                         .Add<GameObject>(player => player
                             .Name("King")
-                            .IsStatic(false)
                             .WithTag("player")
                             .Transform(transform => transform
-                                .Position(50, 0)
-                                .Scale(2, 2)
+                                .Position(0, 0)
+                                .Scale(1, 1)
                                 .Rotation(0)
                                 .Build())
-                            .AddComponent<Sprite>(sprite => sprite
+                            /*.AddComponent<Sprite>(sprite => sprite
                                 .Builder()
                                 .Depth(1)
                                 .SetTexture("tile023.bmp")
@@ -145,7 +144,7 @@ namespace Alis.Sample.King.Platform
                                         .FilePath("tile030.bmp")
                                         .Build())
                                     .Build())
-                                .Build())
+                                .Build())*/
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()
                                 .IsActive(true)
@@ -153,6 +152,7 @@ namespace Alis.Sample.King.Platform
                                 .IsTrigger(false)
                                 .AutoTilling(true)
                                 .Rotation(0.0f)
+                                .Size(1, 1)
                                 .Mass(1.0f)
                                 .Restitution(0f)
                                 .Friction(0f)
@@ -160,10 +160,10 @@ namespace Alis.Sample.King.Platform
                                 .GravityScale(1f)
                                 .Build())
                             .AddComponent(new PlayerMovement())
-                            .AddComponent<Camera>(camera => camera.Builder()
+                            /*.AddComponent<Camera>(camera => camera.Builder()
                                 .BackgroundColor(Color.Brown)
                                 .Resolution(1024, 640)
-                                .Build())
+                                .Build())*/
                             .Build())
                         
                         // FLOOR
@@ -172,7 +172,7 @@ namespace Alis.Sample.King.Platform
                             .WithTag("Floor Down")
                             .IsStatic()
                             .Transform(transform => transform
-                                .Position(512, 500)
+                                .Position(0, -9)
                                 .Scale(1, 1)
                                 .Rotation(0)
                                 .Build())
@@ -182,7 +182,7 @@ namespace Alis.Sample.King.Platform
                                 .BodyType(BodyType.Static)
                                 .IsTrigger(false)
                                 .AutoTilling(false)
-                                .Size(1024, 10)
+                                .Size(32, 1)
                                 .Rotation(0.0f)
                                 .RelativePosition(0, 0)
                                 .Mass(10.0f)

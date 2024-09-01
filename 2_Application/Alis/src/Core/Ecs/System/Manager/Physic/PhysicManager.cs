@@ -41,7 +41,7 @@ namespace Alis.Core.Ecs.System.Manager.Physic
         /// <summary>
         ///     The vector
         /// </summary>
-        public World World = new World(new Vector2(0, 9.8f));
+        public World World = new World();
         
         /// <summary>
         ///     Ons the update
@@ -52,8 +52,6 @@ namespace Alis.Core.Ecs.System.Manager.Physic
             {
                 return;
             }
-
-            World.Step(1.0f / 60.0f);
         }
         
 

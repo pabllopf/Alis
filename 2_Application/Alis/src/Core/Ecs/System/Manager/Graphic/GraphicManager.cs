@@ -270,67 +270,36 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Sprites = Sprites.OrderBy(o => o.Depth).ToList();
         }
 
+        private const float PIXELS_PER_METER = 32.0f;
+
         /// <summary>
         /// Ons the update
         /// </summary>
         public override void OnUpdate()
         {
-            // Precompute values outside the loop
-            Color debugColor = Context.Settings.Physic.DebugColor;
-            bool debugMode = Context.Settings.Physic.DebugMode;
-            IntPtr renderer = Renderer;
-            List<Sprite> sprites = Sprites;
-            List<BoxCollider> colliders = ColliderBases;
-            List<Camera> cameras = Cameras;
+                int Width = (int)DefaultSize.X;
+                int Height = (int)DefaultSize.Y;
+            
+                Sdl.SetRenderDrawColor(Renderer, 0, 0, 0, 255);
+                Sdl.RenderClear(Renderer);
 
-            int camerasCount = cameras.Count;
-            int spritesCount = sprites.Count;
-            int collidersCount = colliders.Count;
-
-            for (int i = 0; i < camerasCount; i++)
-            {
-                Camera camera = cameras[i];
-                IntPtr cameraTexture = camera.TextureTarget;
-                Color bgColor = camera.BackgroundColor;
-
-                // Set render target to camera texture
-                Sdl.SetRenderTarget(renderer, cameraTexture);
-                Sdl.SetRenderDrawColor(renderer, bgColor.R, bgColor.G, bgColor.B, bgColor.A);
-                Sdl.RenderClear(renderer);
-
-                // Render dynamic sprites
-                for (int j = 0; j < spritesCount; j++)
+                foreach (BoxCollider collider in ColliderBases)
                 {
-                    Sprite sprite = sprites[j];
-                    if (sprite.GameObject.IsEnable && sprite.IsVisible(camera))
+                    // Draw the box:
+                    int boxX = Width / 2 + (int) (collider.Body.Position.X * PIXELS_PER_METER);
+                    int boxY = Height / 2 - (int) (collider.Body.Position.Y * PIXELS_PER_METER);
+                    Sdl.SetRenderDrawColor(Renderer, 255, 0, 0, 255);
+                    RectangleI boxRect = new RectangleI
                     {
-                        sprite.Render(renderer, camera);
-                    }
+                        X = (int) (boxX - (collider.Width * PIXELS_PER_METER / 2)),
+                        Y = boxY - (int) (collider.Height * PIXELS_PER_METER / 2),
+                        W = (int) ( collider.Width * PIXELS_PER_METER),
+                        H = (int) (collider.Height * PIXELS_PER_METER)
+                    };
+                    Sdl.RenderDrawRect(Renderer, ref boxRect);
                 }
-
-                // Render debug rectangles to the custom backbuffer if debug mode is enabled
-                if (debugMode)
-                {
-                    Sdl.SetRenderDrawColor(renderer, debugColor.R, debugColor.G, debugColor.B, debugColor.A);
-
-                    for (int k = 0; k < collidersCount; k++)
-                    {
-                        BoxCollider collider = colliders[k];
-                        if (collider.GameObject.IsEnable && collider.IsVisible(camera))
-                        {
-                            collider.Render(renderer, camera);
-                        }
-                    }
-                }
-
-                // Reset the render target to the default SDL backbuffer
-                Sdl.SetRenderTarget(renderer, IntPtr.Zero);
-
-                // Copy the custom backbuffer to the SDL backbuffer
-                Sdl.RenderCopy(renderer, cameraTexture, IntPtr.Zero, IntPtr.Zero);
-
-                Sdl.RenderPresent(renderer);
-            }
+                
+                Sdl.RenderPresent(Renderer);
         }
 
         /// <summary>

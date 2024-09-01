@@ -145,13 +145,15 @@ namespace Alis.Core.Ecs
         /// </summary>
         [JsonPropertyName("_Context_")]
         public Context Context { get; set; }
-        
+
+
+        public static double targetframes = 240;
         
         /// <summary>
         /// The target frame duration
         /// </summary>
-        private const double TargetFrameDuration = 1.0 / 120.0;
-
+        public double TargetFrameDuration = 1/ targetframes;
+        
         /// <summary>
         ///     Run program
         /// </summary>
@@ -177,6 +179,42 @@ namespace Alis.Core.Ecs
             lastDeltaTime = 0f;
             smoothDeltaTimeSum = 0f;
             smoothDeltaTimeCount = 0;
+            
+            float timeStepPhysics = 1f / 20f;
+            if (targetframes <= 240)
+            {
+                timeStepPhysics = 1f / 80f;
+            }
+
+            if (targetframes <= 200)
+            {
+                timeStepPhysics = 1f / 60f;
+            }
+
+            if (targetframes <= 120)
+            {
+                timeStepPhysics = 1f / 40f;
+            }
+
+            if (targetframes <= 60)
+            {
+                timeStepPhysics = 1f / 30f;
+            }
+
+            if (targetframes <= 30)
+            {
+                timeStepPhysics = 1f / 15f;
+            }
+
+            if (targetframes <= 15)
+            {
+                timeStepPhysics = 1f / 10f;
+            }
+
+            if (targetframes <= 5)
+            {
+                timeStepPhysics = 1f / 5f;
+            }
 
             // Variable for log output
             lastLogTime = Context.TimeManager.Clock.Elapsed.TotalSeconds;
@@ -221,6 +259,7 @@ namespace Alis.Core.Ecs
                 OnUpdate();
                 OnAfterUpdate();
                 
+                 Context.PhysicManager.World.Step(timeStepPhysics);
                 
                 // Run fixed methods
                 while (accumulator >= Context.TimeManager.Configuration.FixedTimeStep)
@@ -257,13 +296,13 @@ namespace Alis.Core.Ecs
 
                 lastLogTime = LastLogTime(newTime, lastLogTime);
 
-                /*// Calculate frame duration and sleep if necessary
+                // Calculate frame duration and sleep if necessary
                 double frameEndTime = Context.TimeManager.Clock.Elapsed.TotalSeconds;
                 double frameDuration = frameEndTime - frameStartTime;
                 if (frameDuration < TargetFrameDuration)
                 {
                     Thread.Sleep((int) ((TargetFrameDuration - frameDuration) * 1000));
-                }*/
+                }
             }
 
             OnStop();

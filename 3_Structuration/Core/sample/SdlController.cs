@@ -117,7 +117,7 @@ namespace Alis.Core.Sample
         private static float _playerBodyRadius = 1.5f / 2f; // player diameter is 1.5 meters
 
         // Add a variable to store the desired frame rate
-        private static int targetFps = 30;
+        private static int targetFps = 60;
 
         // Calculate the frame duration based on the desired frame rate
         private static int frameDuration = 1000 / targetFps;
@@ -307,18 +307,39 @@ namespace Alis.Core.Sample
             int frameCounter = 0;
 
             float timeStepPhysics = 1f / 20f;
-            if (targetFps > 60)
+            if (targetFps <= 240)
+            {
+                timeStepPhysics = 1f / 80f;
+            }
+
+            if (targetFps <= 200)
             {
                 timeStepPhysics = 1f / 60f;
             }
-            if (targetFps <= 60 && targetFps > 30)
+
+            if (targetFps <= 120)
+            {
+                timeStepPhysics = 1f / 40f;
+            }
+
+            if (targetFps <= 60)
             {
                 timeStepPhysics = 1f / 30f;
             }
-            
+
             if (targetFps <= 30)
             {
+                timeStepPhysics = 1f / 15f;
+            }
+
+            if (targetFps <= 15)
+            {
                 timeStepPhysics = 1f / 10f;
+            }
+
+            if (targetFps <= 5)
+            {
+                timeStepPhysics = 1f / 5f;
             }
             
             while (_running)
