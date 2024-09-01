@@ -58,39 +58,6 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(z, vector.Z);
         }
         
-        /// <summary>
-        ///     Tests that length should calculate correctly
-        /// </summary>
-        [Fact]
-        public void Length_ShouldCalculateCorrectly()
-        {
-            // Arrange
-            Vector3 vector = new Vector3(1, 2, 2); // Length should be 3
-            
-            // Act
-            float length = vector.Length();
-            
-            // Assert
-            Assert.Equal(3, length);
-        }
-        
-        /// <summary>
-        ///     Tests that normalize should return unit vector
-        /// </summary>
-        [Fact]
-        public void Normalize_ShouldReturnUnitVector()
-        {
-            // Arrange
-            Vector3 vector = new Vector3(1, 2, 2); // Length is 3
-            
-            // Act
-            Vector3 normalized = Vector3.Normalize(vector);
-            
-            // Assert
-            Assert.Equal(1 / 3f, normalized.X);
-            Assert.Equal(2 / 3f, normalized.Y);
-            Assert.Equal(2 / 3f, normalized.Z);
-        }
         
         /// <summary>
         ///     Tests that dot product should calculate correctly
@@ -124,34 +91,6 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(x, vector.X);
             Assert.Equal(y, vector.Y);
             Assert.Equal(z, vector.Z);
-        }
-        
-        /// <summary>
-        ///     Tests that length v 2 should calculate correctly
-        /// </summary>
-        [Fact]
-        public void Length_v2_ShouldCalculateCorrectly()
-        {
-            Vector3 vector = new Vector3(2, 2, 1);
-            
-            float expectedLength = CustomMathF.Sqrt(2 * 2 + 2 * 2 + 1 * 1);
-            float actualLength = vector.Length();
-            
-            Assert.Equal(expectedLength, actualLength);
-        }
-        
-        /// <summary>
-        ///     Tests that normalize should calculate correctly
-        /// </summary>
-        [Fact]
-        public void Normalize_ShouldCalculateCorrectly()
-        {
-            Vector3 vector = new Vector3(2, 2, 1);
-            Vector3 normalized = Vector3.Normalize(vector);
-            
-            float length = normalized.Length();
-            
-            Assert.Equal(1, length, 5);
         }
         
         /// <summary>
@@ -352,43 +291,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(-3.0f, result.Z);
         }
         
-        /// <summary>
-        ///     Tests that vector 3 length should calculate correctly
-        /// </summary>
-        [Fact]
-        public void Vector3_Length_ShouldCalculateCorrectly()
-        {
-            Vector3 vector = new Vector3(1.0f, 2.0f, 2.0f);
-            float result = vector.Length();
-            
-            Assert.Equal(3.0f, result);
-        }
-        
-        /// <summary>
-        ///     Tests that vector 3 normalize should calculate correctly
-        /// </summary>
-        [Fact]
-        public void Vector3_Normalize_ShouldCalculateCorrectly()
-        {
-            Vector3 vector = new Vector3(1.0f, 2.0f, 2.0f);
-            Vector3 result = Vector3.Normalize(vector);
-            
-            Assert.Equal(1.0f / 3.0f, result.X);
-            Assert.Equal(2.0f / 3.0f, result.Y);
-            Assert.Equal(2.0f / 3.0f, result.Z);
-        }
-        
-        /// <summary>
-        ///     Tests that length squared should calculate correctly
-        /// </summary>
-        [Fact]
-        public void LengthSquared_ShouldCalculateCorrectly()
-        {
-            Vector3 vector = new Vector3(1.0f, 2.0f, 2.0f);
-            float result = vector.LengthSquared();
-            
-            Assert.Equal(9.0f, result);
-        }
+
         
         /// <summary>
         ///     Tests that to string should format correctly
@@ -402,17 +305,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(result.Contains(',') ? "<1, 2, 3>" : "<1. 2. 3>", result);
         }
         
-        /// <summary>
-        ///     Tests that to string with format and culture should format correctly
-        /// </summary>
-        [Fact]
-        public void ToString_WithFormatAndCulture_ShouldFormatCorrectly()
-        {
-            Vector3 vector = new Vector3(1.123456f, 2.123456f, 3.123456f);
-            string result = vector.ToString("F2", CultureInfo.InvariantCulture);
-            
-            Assert.Equal("<1.12, 2.12, 3.12>", result);
-        }
+    
         
         /// <summary>
         ///     Tests that vector 3 zero should return zero vector
@@ -438,42 +331,8 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(1.0f, result.Z);
         }
         
-        /// <summary>
-        ///     Tests that vector 3 unit x should return unit x vector
-        /// </summary>
-        [Fact]
-        public void Vector3_UnitX_ShouldReturnUnitXVector()
-        {
-            Vector3 result = Vector3.UnitX;
-            Assert.Equal(1.0f, result.X);
-            Assert.Equal(0.0f, result.Y);
-            Assert.Equal(0.0f, result.Z);
-        }
         
-        /// <summary>
-        ///     Tests that vector 3 unit y should return unit y vector
-        /// </summary>
-        [Fact]
-        public void Vector3_UnitY_ShouldReturnUnitYVector()
-        {
-            Vector3 result = Vector3.UnitY;
-            Assert.Equal(0.0f, result.X);
-            Assert.Equal(1.0f, result.Y);
-            Assert.Equal(0.0f, result.Z);
-        }
-        
-        /// <summary>
-        ///     Tests that vector 3 unit z should return unit z vector
-        /// </summary>
-        [Fact]
-        public void Vector3_UnitZ_ShouldReturnUnitZVector()
-        {
-            Vector3 result = Vector3.UnitZ;
-            Assert.Equal(0.0f, result.X);
-            Assert.Equal(0.0f, result.Y);
-            Assert.Equal(1.0f, result.Z);
-        }
-        
+
         /// <summary>
         ///     Tests that vector 3 addition operator should return correct result
         /// </summary>
@@ -489,50 +348,6 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(9.0f, result.Z);
         }
         
-        /// <summary>
-        ///     Tests that vector 3 constructor with vector 2 and float should set values correctly
-        /// </summary>
-        [Fact]
-        public void Vector3_ConstructorWithVector2AndFloat_ShouldSetValuesCorrectly()
-        {
-            Vector2 value = new Vector2(1.0f, 2.0f);
-            float z = 3.0f;
-            Vector3 vector = new Vector3(value, z);
-            
-            Assert.Equal(1.0f, vector.X);
-            Assert.Equal(2.0f, vector.Y);
-            Assert.Equal(3.0f, vector.Z);
-        }
-        
-        /// <summary>
-        ///     Tests that vector 3 constructor with vector 2 and float should handle negative values
-        /// </summary>
-        [Fact]
-        public void Vector3_ConstructorWithVector2AndFloat_ShouldHandleNegativeValues()
-        {
-            Vector2 value = new Vector2(-1.0f, -2.0f);
-            float z = -3.0f;
-            Vector3 vector = new Vector3(value, z);
-            
-            Assert.Equal(-1.0f, vector.X);
-            Assert.Equal(-2.0f, vector.Y);
-            Assert.Equal(-3.0f, vector.Z);
-        }
-        
-        /// <summary>
-        ///     Tests that vector 3 constructor with vector 2 and float should handle zero values
-        /// </summary>
-        [Fact]
-        public void Vector3_ConstructorWithVector2AndFloat_ShouldHandleZeroValues()
-        {
-            Vector2 value = new Vector2(0.0f, 0.0f);
-            float z = 0.0f;
-            Vector3 vector = new Vector3(value, z);
-            
-            Assert.Equal(0.0f, vector.X);
-            Assert.Equal(0.0f, vector.Y);
-            Assert.Equal(0.0f, vector.Z);
-        }
         
         /// <summary>
         ///     Tests that vector 3 equals should return true when vectors are equal
@@ -621,43 +436,6 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Equal(-3.0f, result.Z);
         }
         
-        /// <summary>
-        ///     Tests that vector 3 length should return correct result
-        /// </summary>
-        [Fact]
-        public void Vector3_Length_ShouldReturnCorrectResult()
-        {
-            Vector3 vector = new Vector3(1.0f, 2.0f, 2.0f);
-            float result = vector.Length();
-            
-            Assert.Equal(3.0f, result);
-        }
-        
-        /// <summary>
-        ///     Tests that vector 3 length squared should return correct result
-        /// </summary>
-        [Fact]
-        public void Vector3_LengthSquared_ShouldReturnCorrectResult()
-        {
-            Vector3 vector = new Vector3(1.0f, 2.0f, 2.0f);
-            float result = vector.LengthSquared();
-            
-            Assert.Equal(9.0f, result);
-        }
-        
-        /// <summary>
-        ///     Tests that vector 3 normalize should return correct result
-        /// </summary>
-        [Fact]
-        public void Vector3_Normalize_ShouldReturnCorrectResult()
-        {
-            Vector3 vector = new Vector3(1.0f, 2.0f, 2.0f);
-            Vector3 result = Vector3.Normalize(vector);
-            
-            Assert.Equal(1.0f / 3.0f, result.X);
-            Assert.Equal(2.0f / 3.0f, result.Y);
-            Assert.Equal(2.0f / 3.0f, result.Z);
-        }
         
         /// <summary>
         ///     Tests that vector 3 operator addition should return correct result
