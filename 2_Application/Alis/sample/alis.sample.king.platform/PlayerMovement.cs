@@ -79,18 +79,6 @@ namespace Alis.Sample.King.Platform
         /// </summary>
         private Sprite sprite;
 
-        private bool moveLeft;
-        private bool moveRight;
-
-        /// <summary>
-        /// The jump force
-        /// </summary>
-        const float JUMP_FORCE = 20.0f;
-        /// <summary>
-        /// The jump duration
-        /// </summary>
-        const float JUMP_DURATION = 0.35f;
-
         /// <summary>
         ///     Ons the start
         /// </summary>
@@ -106,31 +94,13 @@ namespace Alis.Sample.King.Platform
         /// </summary>
         public override void OnUpdate()
         {
-            if (moveRight)
-            {
-                boxCollider.Body.ApplyTorque(10);
-            }
-            
-            if (moveLeft)
-            {
-                boxCollider.Body.ApplyTorque(-10);
-            }
         }
         
-        /// <summary>
-        ///     Ons the press down key using the specified key
-        /// </summary>
-        /// <param name="key">The key</param>
-        public override void OnPressDownKey(KeyCodes key)
+        public override void OnPressKey(KeyCodes key)
         {
-            if (key == KeyCodes.D)
+            if (key == KeyCodes.Space)
             {
-                moveRight = true;
-            }
-            
-            if (key == KeyCodes.A)
-            {
-                moveLeft = true;
+                boxCollider.Body.ApplyLinearImpulse(new Vector2(0, 10));
             }
         }
     }

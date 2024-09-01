@@ -296,6 +296,8 @@ namespace Alis.Core.Ecs.Component.Collider
                    colliderTop < cameraBottom;
         }
 
+        private const float PIXELS_PER_METER = 32.0f;
+
         /// <summary>
         /// Renders the renderer
         /// </summary>
@@ -303,8 +305,8 @@ namespace Alis.Core.Ecs.Component.Collider
         /// <param name="camera">The camera</param>
         public void Render(IntPtr renderer, Camera camera)
         {
-            float colliderX = GameObject.Transform.Position.X - RectangleF.W * GameObject.Transform.Scale.X / 2 - (camera.Viewport.X - camera.Viewport.W / 2) + camera.CameraBorder;
-            float colliderY = GameObject.Transform.Position.Y - RectangleF.H * GameObject.Transform.Scale.Y / 2 - (camera.Viewport.Y - camera.Viewport.H / 2) + camera.CameraBorder;
+            float colliderX = (GameObject.Transform.Position.X - RectangleF.W * GameObject.Transform.Scale.X / 2 - (camera.Viewport.X - camera.Viewport.W / 2) + camera.CameraBorder) * PIXELS_PER_METER;
+            float colliderY = (GameObject.Transform.Position.Y - RectangleF.H * GameObject.Transform.Scale.Y / 2 - (camera.Viewport.Y - camera.Viewport.H / 2) + camera.CameraBorder) * PIXELS_PER_METER;
 
             RectangleF.X = (int) colliderX;
             RectangleF.Y = (int) colliderY;

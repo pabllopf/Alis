@@ -159,6 +159,8 @@ namespace Alis.Core.Ecs.Component.Render
             Context?.GraphicManager.UnAttach(this);
         }
 
+        private const float PIXELS_PER_METER = 32.0f;
+
         /// <summary>
         /// Renders the sprite
         /// </summary>
@@ -178,10 +180,10 @@ namespace Alis.Core.Ecs.Component.Render
             float cameraTop = camera.Viewport.Y - halfViewportHeight;
 
             // Adjust sprite's position based on the camera's position and viewport
-            dstRect.X = (int) (GameObject.Transform.Position.X - w * GameObject.Transform.Scale.X / 2 - cameraLeft);
-            dstRect.Y = (int) (GameObject.Transform.Position.Y - h * GameObject.Transform.Scale.Y / 2 - cameraTop);
-            dstRect.W = (int) (w * GameObject.Transform.Scale.X);
-            dstRect.H = (int) (h * GameObject.Transform.Scale.Y);
+            dstRect.X = (int)((GameObject.Transform.Position.X - w * GameObject.Transform.Scale.X / 2 - cameraLeft) * PIXELS_PER_METER);
+            dstRect.Y = (int)((GameObject.Transform.Position.Y - h * GameObject.Transform.Scale.Y / 2 - cameraTop) * PIXELS_PER_METER);
+            dstRect.W = (int)(w * GameObject.Transform.Scale.X * PIXELS_PER_METER);
+            dstRect.H = (int)(h * GameObject.Transform.Scale.Y * PIXELS_PER_METER);
 
             Sdl.RenderCopyEx(renderer, Image.Texture, IntPtr.Zero, ref dstRect, GameObject.Transform.Rotation.Angle, IntPtr.Zero, Flips);
         }
