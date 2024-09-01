@@ -95,7 +95,7 @@ namespace Alis.Sample.King.Platform
                                 .Scale(1, 1)
                                 .Rotation(0)
                                 .Build())
-                            /*.AddComponent<Sprite>(sprite => sprite
+                            .AddComponent<Sprite>(sprite => sprite
                                 .Builder()
                                 .Depth(1)
                                 .SetTexture("tile023.bmp")
@@ -144,7 +144,7 @@ namespace Alis.Sample.King.Platform
                                         .FilePath("tile030.bmp")
                                         .Build())
                                     .Build())
-                                .Build())*/
+                                .Build())
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()
                                 .IsActive(true)

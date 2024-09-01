@@ -36,6 +36,7 @@ using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component.Collider;
 using Alis.Core.Ecs.Component.Render;
+using Alis.Core.Ecs.Entity;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf;
@@ -282,7 +283,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             
                 Sdl.SetRenderDrawColor(Renderer, 0, 0, 0, 255);
                 Sdl.RenderClear(Renderer);
-
+                
                 foreach (BoxCollider collider in ColliderBases)
                 {
                     // Draw the box:
