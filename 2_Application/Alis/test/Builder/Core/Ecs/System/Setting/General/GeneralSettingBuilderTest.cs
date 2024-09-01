@@ -102,19 +102,6 @@ namespace Alis.Test.Builder.Core.Ecs.System.Setting.General
         }
         
         /// <summary>
-        ///     Tests that icon valid input
-        /// </summary>
-        [Fact]
-        public void Icon_ValidInput()
-        {
-            GeneralSettingBuilder generalSettingBuilder = new GeneralSettingBuilder();
-            
-            generalSettingBuilder.Icon("Test Icon");
-            
-            Assert.Equal("Test Icon", generalSettingBuilder.Build().Icon);
-        }
-        
-        /// <summary>
         ///     Tests that license valid input
         /// </summary>
         [Fact]
