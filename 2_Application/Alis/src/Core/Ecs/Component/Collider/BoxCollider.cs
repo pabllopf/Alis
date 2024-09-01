@@ -141,19 +141,6 @@ namespace Alis.Core.Ecs.Component.Collider
         /// </summary>
         public override void OnInit()
         {
-            if (AutoTilling)
-            {
-                if (GameObject.Contains<Sprite>())
-                {
-                    Width = GameObject.Get<Sprite>().Image.Size.X * GameObject.Transform.Scale.X;
-                    Height = GameObject.Get<Sprite>().Image.Size.Y * GameObject.Transform.Scale.Y;
-                }
-            }
-            else
-            {
-                Width *= GameObject.Transform.Scale.X;
-                Height *= GameObject.Transform.Scale.Y;
-            }
         }
 
         /// <summary>
@@ -161,15 +148,6 @@ namespace Alis.Core.Ecs.Component.Collider
         /// </summary>
         public override void OnAwake()
         {
-            RectangleF = new RectangleF
-            {
-                X = GameObject.Transform.Position.X + RelativePosition.X - Width / 2,
-                Y = GameObject.Transform.Position.Y + RelativePosition.Y - Height / 2,
-                W = Width,
-                H = Height
-            };
-
-
             Body = Context.PhysicManager.World.CreateRectangle(
                 Width,
                 Height,
@@ -197,7 +175,6 @@ namespace Alis.Core.Ecs.Component.Collider
         /// </summary>
         public override void OnStart()
         {
-            Logger.Trace();
         }
 
         /// <summary>
@@ -205,35 +182,7 @@ namespace Alis.Core.Ecs.Component.Collider
         /// </summary>
         public override void OnBeforeUpdate()
         {
-            float xOdl = GameObject.Transform.Position.X;
-            float yOld = GameObject.Transform.Position.Y;
-
-            float xNew = Body.Position.X;
-            float yNew = Body.Position.Y;
-
-            if (Math.Abs(xOdl - xNew) >= 1.1f)
-            {
-                Transform transform = new Transform
-                {
-                    Position = new Vector2(Body.Position.X, GameObject.Transform.Position.Y),
-                    Rotation = new Rotation(Body.Rotation),
-                    Scale = GameObject.Transform.Scale
-                };
-
-                GameObject.Transform = transform;
-            }
-
-            if (Math.Abs(yOld - yNew) >= 1.1f)
-            {
-                Transform transform = new Transform
-                {
-                    Position = new Vector2(GameObject.Transform.Position.X, Body.Position.Y),
-                    Rotation = new Rotation(Body.Rotation),
-                    Scale = GameObject.Transform.Scale
-                };
-
-                GameObject.Transform = transform;
-            }
+           
         }
 
         /// <summary>
@@ -241,7 +190,6 @@ namespace Alis.Core.Ecs.Component.Collider
         /// </summary>
         public override void OnUpdate()
         {
-            Logger.Trace();
         }
 
         /// <summary>
@@ -249,8 +197,6 @@ namespace Alis.Core.Ecs.Component.Collider
         /// </summary>
         public override void OnDraw()
         {
-            RectangleF.X = GameObject.Transform.Position.X + RelativePosition.X - Width / 2;
-            RectangleF.Y = GameObject.Transform.Position.Y + RelativePosition.Y - Height / 2;
         }
 
         /// <summary>
@@ -258,81 +204,6 @@ namespace Alis.Core.Ecs.Component.Collider
         /// </summary>
         public override void OnExit()
         {
-            Context.GraphicManager.UnAttach(this);
-            Context.PhysicManager.UnAttach(Body);
-        }
-
-        /// <summary>
-        /// Describes whether this instance is visible
-        /// </summary>
-        /// <param name="camera">The camera</param>
-        /// <returns>The bool</returns>
-        internal bool IsVisible(Camera camera)
-        {
-            // Precompute values
-            float posX = GameObject.Transform.Position.X + RelativePosition.X;
-            float posY = GameObject.Transform.Position.Y + RelativePosition.Y;
-            float halfWidth = Width / 2;
-            float halfHeight = Height / 2;
-
-            // Collider's bounding box
-            float colliderLeft = posX - halfWidth;
-            float colliderRight = posX + halfWidth;
-            float colliderTop = posY - halfHeight;
-            float colliderBottom = posY + halfHeight;
-
-            // Camera's viewport
-            float halfViewportWidth = camera.Viewport.W / 2;
-            float halfViewportHeight = camera.Viewport.H / 2;
-            float cameraLeft = camera.Viewport.X - halfViewportWidth;
-            float cameraRight = camera.Viewport.X + halfViewportWidth;
-            float cameraTop = camera.Viewport.Y - halfViewportHeight;
-            float cameraBottom = camera.Viewport.Y + halfViewportHeight;
-
-            // Check visibility
-            return colliderRight > cameraLeft &&
-                   colliderLeft < cameraRight &&
-                   colliderBottom > cameraTop &&
-                   colliderTop < cameraBottom;
-        }
-
-        private const float PIXELS_PER_METER = 32.0f;
-
-        /// <summary>
-        /// Renders the renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="camera">The camera</param>
-        public void Render(IntPtr renderer, Camera camera)
-        {
-            float colliderX = (GameObject.Transform.Position.X - RectangleF.W * GameObject.Transform.Scale.X / 2 - (camera.Viewport.X - camera.Viewport.W / 2) + camera.CameraBorder) * PIXELS_PER_METER;
-            float colliderY = (GameObject.Transform.Position.Y - RectangleF.H * GameObject.Transform.Scale.Y / 2 - (camera.Viewport.Y - camera.Viewport.H / 2) + camera.CameraBorder) * PIXELS_PER_METER;
-
-            RectangleF.X = (int) colliderX;
-            RectangleF.Y = (int) colliderY;
-
-            if (GameObject.Contains<Camera>())
-            {
-                RectangleF.X += RectangleF.W / 2;
-                RectangleF.Y += RectangleF.H / 2;
-            }
-
-            Sdl.RenderDrawRectF(renderer, ref RectangleF);
-        }
-
-        /// <summary>
-        /// Renders the renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        public void Render(IntPtr renderer)
-        {
-            float colliderX = GameObject.Transform.Position.X - RectangleF.W * GameObject.Transform.Scale.X / 2;
-            float colliderY = GameObject.Transform.Position.Y - RectangleF.H * GameObject.Transform.Scale.Y / 2;
-
-            RectangleF.X = (int) colliderX;
-            RectangleF.Y = (int) colliderY;
-
-            Sdl.RenderDrawRectF(renderer, ref RectangleF);
         }
     }
 }
