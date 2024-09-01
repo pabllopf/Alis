@@ -84,29 +84,7 @@ namespace Alis.Core.Aspect.Math
         /// <returns>The vector</returns>
         public static Vector2 Mul(ref Matrix2X2 a, ref Vector2 v) =>
             new Vector2(a.Ex.X * v.X + a.Ey.X * v.Y, a.Ex.Y * v.X + a.Ey.Y * v.Y);
-        
-        /// <summary>
-        ///     Muls the t
-        /// </summary>
-        /// <param name="T">The </param>
-        /// <param name="v">The </param>
-        /// <returns>The vector</returns>
-        public static Vector2 Mul(ref Transform T, Vector2 v) => Mul(ref T, ref v);
-        
-        /// <summary>
-        ///     Muls the t
-        /// </summary>
-        /// <param name="T">The </param>
-        /// <param name="v">The </param>
-        /// <returns>The vector</returns>
-        public static Vector2 Mul(ref Transform T, ref Vector2 v)
-        {
-            float x = T.Rotation.Cosine * v.X - T.Rotation.Sine * v.Y + T.Position.X;
-            float y = T.Rotation.Sine * v.X + T.Rotation.Cosine * v.Y + T.Position.Y;
-            
-            return new Vector2(x, y);
-        }
-        
+
         /// <summary>
         ///     Muls the t using the specified a
         /// </summary>
@@ -124,29 +102,6 @@ namespace Alis.Core.Aspect.Math
         public static Vector2 MulT(ref Matrix2X2 a, ref Vector2 v) =>
             new Vector2(v.X * a.Ex.X + v.Y * a.Ex.Y, v.X * a.Ey.X + v.Y * a.Ey.Y);
         
-        /// <summary>
-        ///     Muls the t using the specified t
-        /// </summary>
-        /// <param name="T">The </param>
-        /// <param name="v">The </param>
-        /// <returns>The vector</returns>
-        public static Vector2 MulT(ref Transform T, Vector2 v) => MulT(ref T, ref v);
-        
-        /// <summary>
-        ///     Muls the t using the specified t
-        /// </summary>
-        /// <param name="T">The </param>
-        /// <param name="v">The </param>
-        /// <returns>The vector</returns>
-        public static Vector2 MulT(ref Transform T, ref Vector2 v)
-        {
-            float px = v.X - T.Position.X;
-            float py = v.Y - T.Position.Y;
-            float x = T.Rotation.Cosine * px + T.Rotation.Sine * py;
-            float y = -T.Rotation.Sine * px + T.Rotation.Cosine * py;
-            
-            return new Vector2(x, y);
-        }
         
         // A^T * B
         /// <summary>
@@ -168,43 +123,6 @@ namespace Alis.Core.Aspect.Math
         /// <summary>Multiply a matrix times a vector.</summary>
         public static Vector3 Mul(Matrix3X3 a, Vector3 v) => v.X * a.Ex + v.Y * a.Ey + v.Z * a.Ez;
         
-        /// <summary>
-        ///     Muls the a
-        /// </summary>
-        /// <param name="a">The </param>
-        /// <param name="b">The </param>
-        /// <returns>The </returns>
-        public static Transform Mul(Transform a, Transform b)
-        {
-            // v2 = A.q.Rot(B.q.Rot(v1) + B.p) + A.p
-            //    = (A.q * B.q).Rot(v1) + A.q.Rot(B.p) + A.p
-            
-            Transform c = new Transform
-            {
-                Rotation = Mul(a.Rotation, b.Rotation),
-                Position = Mul(a.Rotation, b.Position) + a.Position
-            };
-            return c;
-        }
-        
-        /// <summary>
-        ///     Muls the t using the specified a
-        /// </summary>
-        /// <param name="a">The </param>
-        /// <param name="b">The </param>
-        /// <param name="c">The </param>
-        public static void MulT(ref Transform a, ref Transform b, out Transform c)
-        {
-            // v2 = A.q' * (B.q * v1 + B.p - A.p)
-            //    = A.q' * B.q * v1 + A.q' * (B.p - A.p)
-            
-            c = new Transform
-            {
-                Rotation = MulT(a.Rotation, b.Rotation),
-                Position = MulT(a.Rotation, b.Position - a.Position)
-            };
-        }
-        
         /// <summary>Multiply a matrix times a vector.</summary>
         public static Vector2 Mul22(Matrix3X3 a, Vector2 v) =>
             new Vector2(a.Ex.X * v.X + a.Ey.X * v.Y, a.Ex.Y * v.X + a.Ey.Y * v.Y);
@@ -224,22 +142,6 @@ namespace Alis.Core.Aspect.Math
             return qr;
         }
         
-        /// <summary>
-        ///     Muls the t using the specified t
-        /// </summary>
-        /// <param name="T">The </param>
-        /// <param name="v">The </param>
-        /// <returns>The vector</returns>
-        public static Vector2 MulT(Transform T, Vector2 v)
-        {
-            float px = v.X - T.Position.X;
-            float py = v.Y - T.Position.Y;
-            float x = T.Rotation.Cosine * px + T.Rotation.Sine * py;
-            float y = -T.Rotation.Sine * px + T.Rotation.Cosine * py;
-            
-            return new Vector2(x, y);
-        }
-        
         /// <summary>Transpose multiply two rotations: qT * r</summary>
         public static Rotation MulT(Rotation q, Rotation r)
         {
@@ -255,24 +157,6 @@ namespace Alis.Core.Aspect.Math
             return qr;
         }
         
-        /// <summary>
-        ///     Muls the t using the specified a
-        /// </summary>
-        /// <param name="a">The </param>
-        /// <param name="b">The </param>
-        /// <returns>The </returns>
-        public static Transform MulT(Transform a, Transform b)
-        {
-            // v2 = A.q' * (B.q * v1 + B.p - A.p)
-            //    = A.q' * B.q * v1 + A.q' * (B.p - A.p)
-            
-            Transform c = new Transform
-            {
-                Rotation = MulT(a.Rotation, b.Rotation),
-                Position = MulT(a.Rotation, b.Position - a.Position)
-            };
-            return c;
-        }
         
         /// <summary>Rotate a vector</summary>
         /// <param name="q">The rotation matrix</param>

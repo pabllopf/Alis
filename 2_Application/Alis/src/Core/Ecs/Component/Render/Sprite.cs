@@ -47,6 +47,21 @@ namespace Alis.Core.Ecs.Component.Render
         IBuilder<SpriteBuilder>
     {
         /// <summary>
+        /// The dst rect
+        /// </summary>
+        private RectangleI dstRect;
+
+        /// <summary>
+        /// The 
+        /// </summary>
+        private int w;
+
+        /// <summary>
+        /// The 
+        /// </summary>
+        private int h;
+        
+        /// <summary>
         ///     Initializes a new instance of the <see cref="Sprite" /> class
         /// </summary>
         public Sprite()
@@ -110,6 +125,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         public override void OnInit()
         {
+           Image.Load();
         }
 
         /// <summary>
@@ -117,6 +133,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         public override void OnAwake()
         {
+            Context.GraphicManager.Attach(this);
         }
 
         /// <summary>
@@ -124,6 +141,9 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         public override void OnStart()
         {
+            Sdl.QueryTexture(Image.Texture, out _, out _, out w, out h);
+            
+            dstRect = new RectangleI( (int)GameObject.Transform.Position.X, (int)GameObject.Transform.Position.Y, w, h);
         }
 
         /// <summary>

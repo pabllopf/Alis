@@ -55,7 +55,7 @@ namespace Alis.Core.Aspect.Math
         /// <summary>
         ///     The
         /// </summary>
-        public Rotation Rotation;
+        public float Rotation;
         
         
         /// <summary>
@@ -64,7 +64,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="position">The position</param>
         /// <param name="rotation">The rotation</param>
         /// <param name="scale">The scale</param>
-        public Transform(Vector2 position, Rotation rotation, Vector2 scale)
+        public Transform(Vector2 position, float rotation, Vector2 scale)
         {
             Position = position;
             Rotation = rotation;
@@ -75,7 +75,7 @@ namespace Alis.Core.Aspect.Math
         public void SetIdentity()
         {
             Position = Vector2.Zero;
-            Rotation.SetIdentity();
+            Rotation = 0.0f;
         }
         
         /// <summary>Set this based on the position and angle.</summary>
@@ -84,7 +84,7 @@ namespace Alis.Core.Aspect.Math
         public void Set(Vector2 position, float angle)
         {
             Position = position;
-            Rotation.Set(angle);
+            Rotation = angle;
         }
         
         /// <summary>
