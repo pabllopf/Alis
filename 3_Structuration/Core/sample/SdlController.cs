@@ -36,6 +36,7 @@ using Alis.Core.Aspect.Data.Dll;
 using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
@@ -299,6 +300,14 @@ namespace Alis.Core.Sample
             box.Position = new Vector2(0, 0);
             box.SetFriction(0.5f);
             box.SetRestitution(0.3f);
+            
+            
+            // Define two Transform objects to store the positions of the bodies
+            Transform playerTransform = new Transform();
+            Transform boxTransform = new Transform();
+            
+            Camera camera = new Camera(renderer);
+            
 
             Stopwatch stopwatch = new Stopwatch();
             
@@ -363,22 +372,22 @@ namespace Alis.Core.Sample
 
                             if (_sdlEvent.key.KeySym.sym == KeyCodes.Up)
                             {
-                                rectBorder.Y -= 10;
+                                camera.Position.Y += 10;
                             }
 
                             if (_sdlEvent.key.KeySym.sym == KeyCodes.Down)
                             {
-                                rectBorder.Y += 10;
+                                camera.Position.Y -= 10;
                             }
 
                             if (_sdlEvent.key.KeySym.sym == KeyCodes.Left)
                             {
-                                rectBorder.X -= 10;
+                                camera.Position.X -= 10;
                             }
 
                             if (_sdlEvent.key.KeySym.sym == KeyCodes.Right)
                             {
-                                rectBorder.X += 10;
+                                camera.Position.X += 10;
                             }
 
                             if (_sdlEvent.key.KeySym.sym == KeyCodes.W)
@@ -430,9 +439,9 @@ namespace Alis.Core.Sample
                 }
 
 
-                world.Step(timeStepPhysics);
+               
 
-                RenderColors();
+                /*RenderColors();
 
                 // Sets the color that the screen will be cleared with.
                 Sdl.SetRenderDrawColor(renderer, _red, _green, _blue, 255);
@@ -455,38 +464,68 @@ namespace Alis.Core.Sample
 
                 Sdl.RenderCopy(renderer, textureTile, IntPtr.Zero, ref tileRectangleI);
 
-                Sdl.RenderDrawRects(renderer, new[] {rectBorder, rectFilled}, 2);
-
-
-                // draw a line
-                Sdl.SetRenderDrawColor(renderer, 255, 0, 0, 255);
-                Sdl.RenderDrawLine(renderer, 0, 0, 100, 100);
+                Sdl.RenderDrawRects(renderer, new[] {rectBorder, rectFilled}, 2);*/
                 
+                
+                // PHYSICS:
+                world.Step(timeStepPhysics);
+
+                // TRANSFORMS:
+                // Update the transforms with the positions of the bodies
+                playerTransform.Position = _playerBody.Position;
+                playerTransform.Rotation = _playerBody.Rotation;
+
+                boxTransform.Position = box.Position;
+                boxTransform.Rotation = box.Rotation;
+
+                // START RENDER THE CAMERA
+                IntPtr cameraTexture = camera.TextureTarget;
+                Color bgColor = camera.BackgroundColor;
+
+                // Set render target to camera texture
+                Sdl.SetRenderTarget(renderer, cameraTexture);
+                Sdl.SetRenderDrawColor(renderer, bgColor.R, bgColor.G, bgColor.B, bgColor.A);
+                Sdl.RenderClear(renderer);
+
+                // RENDER:
+
+                // Convert positions and sizes from meters to pixels
+                float playerPosX = playerTransform.Position.X * PIXELS_PER_METER;
+                float playerPosY = playerTransform.Position.Y * PIXELS_PER_METER;
+                float boxPosX = boxTransform.Position.X * PIXELS_PER_METER;
+                float boxPosY = boxTransform.Position.Y * PIXELS_PER_METER;
+                float boxWidth = sizeBox.X * PIXELS_PER_METER;
+                float boxHeight = sizeBox.Y * PIXELS_PER_METER;
 
                 // Draw the player circle:
-                int circleX = Width / 2 + (int) (_playerBody.Position.X * PIXELS_PER_METER);
-                int circleY = Height / 2 - (int) (_playerBody.Position.Y * PIXELS_PER_METER);
+                int circleX = (int)((playerPosX - camera.Position.X + camera.Resolution.X / 2));
+                int circleY = (int)((playerPosY - camera.Position.Y + camera.Resolution.Y / 2));
                 Sdl.SetRenderDrawColor(renderer, 0, 255, 0, 255);
-                DrawCircle(renderer, circleX, circleY, (int) (_playerBodyRadius * PIXELS_PER_METER));
+                DrawCircle(renderer, circleX, circleY, (int)(_playerBodyRadius * PIXELS_PER_METER));
 
                 // Draw the box:
-                int boxX = Width / 2 + (int) (box.Position.X * PIXELS_PER_METER);
-                int boxY = Height / 2 - (int) (box.Position.Y * PIXELS_PER_METER);
+                int boxX = (int)((boxPosX - camera.Position.X + camera.Resolution.X / 2));
+                int boxY = (int)((boxPosY - camera.Position.Y + camera.Resolution.Y / 2));
                 Sdl.SetRenderDrawColor(renderer, 255, 0, 0, 255);
                 RectangleI boxRect = new RectangleI
                 {
-                    X = (int) (boxX - (sizeBox.X * PIXELS_PER_METER / 2)),
-                    Y = boxY - (int) (sizeBox.Y * PIXELS_PER_METER / 2),
-                    W = (int) (sizeBox.X * PIXELS_PER_METER),
-                    H = (int) (sizeBox.Y * PIXELS_PER_METER)
+                    X = (int)(boxX - (boxWidth / 2)),
+                    Y = (int)(boxY - (boxHeight / 2)),
+                    W = (int)(boxWidth),
+                    H = (int)(boxHeight)
                 };
                 Sdl.RenderDrawRect(renderer, ref boxRect);
+                
+                // RENDER THE CAMERA
+                // Reset the render target to the default SDL backbuffer
+                Sdl.SetRenderTarget(renderer, IntPtr.Zero);
 
-                // Present the renderer to the window.
+                // Copy the custom backbuffer to the SDL backbuffer with vertical flip
+                Sdl.RenderCopyEx(renderer, cameraTexture, IntPtr.Zero, IntPtr.Zero, 0, IntPtr.Zero, RendererFlips.FlipVertical);
+
                 Sdl.RenderPresent(renderer);
 
-
-
+               
                 stopwatch.Stop();
                 int frameTime = (int)stopwatch.ElapsedMilliseconds;
 
