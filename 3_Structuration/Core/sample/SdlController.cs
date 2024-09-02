@@ -501,7 +501,7 @@ namespace Alis.Core.Sample
                 int circleX = (int)((playerPosX - camera.Position.X + camera.Resolution.X / 2));
                 int circleY = (int)((playerPosY - camera.Position.Y + camera.Resolution.Y / 2));
                 Sdl.SetRenderDrawColor(renderer, 0, 255, 0, 255);
-                DrawCircle(renderer, circleX, circleY, (int)(_playerBodyRadius * PIXELS_PER_METER));
+                DrawCircleWithLine(renderer, circleX, circleY, (int)(_playerBodyRadius * PIXELS_PER_METER), playerTransform.Rotation * 180 / MathF.PI);
 
                 // Draw the box:
                 int boxX = (int)((boxPosX - camera.Position.X + camera.Resolution.X / 2));
@@ -586,7 +586,91 @@ namespace Alis.Core.Sample
                 }
             }
         }
+        
+        private static void DrawHalfCircle(IntPtr renderer, int x0, int y0, int radius)
+        {
+            int x = radius - 1;
+            int y = 0;
+            int dx = 1;
+            int dy = 1;
+            int err = dx - (radius << 1);
 
+            while (x >= y)
+            {
+                for (int i = -x; i <= x; i++)
+                {
+                    Sdl.RenderDrawPoint(renderer, x0 + i, y0 + y);
+                    Sdl.RenderDrawPoint(renderer, x0 + i, y0 - y);
+                }
+
+                for (int i = -y; i <= y; i++)
+                {
+                    Sdl.RenderDrawPoint(renderer, x0 + i, y0 + x);
+                    Sdl.RenderDrawPoint(renderer, x0 + i, y0 - x);
+                }
+
+                if (err <= 0)
+                {
+                    y++;
+                    err += dy;
+                    dy += 2;
+                }
+
+                if (err > 0)
+                {
+                    x--;
+                    dx += 2;
+                    err += dx - (radius << 1);
+                }
+            }
+        }
+        
+        private static void DrawCircleWithLine(IntPtr renderer, int x0, int y0, int radius, float angle)
+        {
+            int x = radius - 1;
+            int y = 0;
+            int dx = 1;
+            int dy = 1;
+            int err = dx - (radius << 1);
+
+            while (x >= y)
+            {
+                Sdl.RenderDrawPoint(renderer, x0 + x, y0 + y);
+                Sdl.RenderDrawPoint(renderer, x0 + y, y0 + x);
+                Sdl.RenderDrawPoint(renderer, x0 - y, y0 + x);
+                Sdl.RenderDrawPoint(renderer, x0 - x, y0 + y);
+                Sdl.RenderDrawPoint(renderer, x0 - x, y0 - y);
+                Sdl.RenderDrawPoint(renderer, x0 - y, y0 - x);
+                Sdl.RenderDrawPoint(renderer, x0 + y, y0 - x);
+                Sdl.RenderDrawPoint(renderer, x0 + x, y0 - y);
+
+                if (err <= 0)
+                {
+                    y++;
+                    err += dy;
+                    dy += 2;
+                }
+
+                if (err > 0)
+                {
+                    x--;
+                    dx += 2;
+                    err += dx - (radius << 1);
+                }
+            }
+
+            // Calculate the end points of the line based on the angle
+            float radian = angle * (float)Math.PI / 180f;
+            int lineX1 = x0 + (int)(radius * Math.Cos(radian));
+            int lineY1 = y0 + (int)(radius * Math.Sin(radian));
+            int lineX2 = x0 - (int)(radius * Math.Cos(radian));
+            int lineY2 = y0 - (int)(radius * Math.Sin(radian));
+
+            // Draw the line
+            Sdl.RenderDrawLine(renderer, lineX1, lineY1, lineX2, lineY2);
+        }
+        
+       
 
 
         /// <summary>
