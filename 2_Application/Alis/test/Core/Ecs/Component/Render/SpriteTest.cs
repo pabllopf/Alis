@@ -94,7 +94,7 @@ namespace Alis.Test.Core.Ecs.Component.Render
         {
             VideoGame videoGame = new VideoGame();
             Sprite sprite = new Sprite(new Image("dino_assets.png"));
-            IntPtr renderer = IntPtr.Zero; // You would need to initialize a valid renderer here
+            IntPtr renderer = IntPtr.Zero; 
         }
         
         /// <summary>
