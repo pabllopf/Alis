@@ -597,19 +597,6 @@ namespace Alis.Core.Aspect.Math.Test
         
         
         /// <summary>
-        ///     Tests that test mul t transform
-        /// </summary>
-        [Fact]
-        public void TestMulT_Transform()
-        {
-            Transform a = new Transform();
-            Transform b = new Transform();
-            Transform expected = MathUtils.MulT(a, b);
-            Transform result = MathUtils.MulT(a, b);
-            Assert.Equal(expected, result);
-        }
-        
-        /// <summary>
         ///     Tests that test mul 22
         /// </summary>
         [Fact]
@@ -632,19 +619,6 @@ namespace Alis.Core.Aspect.Math.Test
             Rotation r = new Rotation();
             Rotation expected = MathUtils.Mul(q, r);
             Rotation result = MathUtils.Mul(q, r);
-            Assert.Equal(expected, result);
-        }
-        
-        /// <summary>
-        ///     Tests that test mul t vector 2
-        /// </summary>
-        [Fact]
-        public void TestMulT_Vector2()
-        {
-            Transform t = new Transform();
-            Vector2 v = new Vector2(1.0f, 2.0f);
-            Vector2 expected = MathUtils.MulT(t, v);
-            Vector2 result = MathUtils.MulT(t, v);
             Assert.Equal(expected, result);
         }
         
@@ -767,33 +741,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
         
         
-        /// <summary>
-        ///     Tests that test mul
-        /// </summary>
-        [Fact]
-        public void TestMul()
-        {
-            Transform a = new Transform();
-            Transform b = new Transform();
-            Transform expected = MathUtils.Mul(a, b);
-            Transform result = MathUtils.Mul(a, b);
-            Assert.Equal(expected, result);
-        }
-        
-        /// <summary>
-        ///     Tests that test v 3 mul t
-        /// </summary>
-        [Fact]
-        public void Test_v3_MulT()
-        {
-            Transform a = new Transform();
-            Transform b = new Transform();
-            Transform expected;
-            MathUtils.MulT(ref a, ref b, out expected);
-            Transform result;
-            MathUtils.MulT(ref a, ref b, out result);
-            Assert.Equal(expected, result);
-        }
+       
         
         /// <summary>
         ///     Tests that test skew
@@ -888,33 +836,7 @@ namespace Alis.Core.Aspect.Math.Test
             Assert.Equal(expected, result);
         }
         
-        
-        /// <summary>
-        ///     Tests that test v 5 mul
-        /// </summary>
-        [Fact]
-        public void Test_v5_Mul()
-        {
-            Transform t = new Transform();
-            Vector2 v = new Vector2(1.0f, 2.0f);
-            Vector2 expected = MathUtils.Mul(ref t, v);
-            Vector2 result = MathUtils.Mul(ref t, v);
-            Assert.Equal(expected, result);
-        }
-        
-        /// <summary>
-        ///     Tests that test mul ref
-        /// </summary>
-        [Fact]
-        public void TestMul_Ref()
-        {
-            Transform t = new Transform();
-            Vector2 v = new Vector2(1.0f, 2.0f);
-            Vector2 expected = MathUtils.Mul(ref t, ref v);
-            Vector2 result = MathUtils.Mul(ref t, ref v);
-            Assert.Equal(expected, result);
-        }
-        
+      
         /// <summary>
         ///     Tests that test v 4 mul t
         /// </summary>
@@ -942,32 +864,7 @@ namespace Alis.Core.Aspect.Math.Test
         }
         
         
-        /// <summary>
-        ///     Tests that test mul t v 5 vector 2
-        /// </summary>
-        [Fact]
-        public void TestMulT_v5_Vector2()
-        {
-            Transform t = new Transform();
-            Vector2 v = new Vector2(1.0f, 2.0f);
-            Vector2 expected = MathUtils.MulT(ref t, v);
-            Vector2 result = MathUtils.MulT(ref t, v);
-            Assert.Equal(expected, result);
-        }
-        
-        /// <summary>
-        ///     Tests that test mul t ref vector 2
-        /// </summary>
-        [Fact]
-        public void TestMulT_Ref_Vector2()
-        {
-            Transform t = new Transform();
-            Vector2 v = new Vector2(1.0f, 2.0f);
-            Vector2 expected = MathUtils.MulT(ref t, ref v);
-            Vector2 result = MathUtils.MulT(ref t, ref v);
-            Assert.Equal(expected, result);
-        }
-        
+     
         /// <summary>
         ///     Tests that test mul t matrix 2 x 2
         /// </summary>
@@ -997,34 +894,7 @@ namespace Alis.Core.Aspect.Math.Test
             Assert.Equal(expected, result);
         }
         
-        /// <summary>
-        ///     Tests that test mul transform
-        /// </summary>
-        [Fact]
-        public void TestMul_Transform()
-        {
-            Transform a = new Transform();
-            Transform b = new Transform();
-            Transform expected = MathUtils.Mul(a, b);
-            Transform result = MathUtils.Mul(a, b);
-            Assert.Equal(expected, result);
-        }
-        
-        /// <summary>
-        ///     Tests that test mul t v 3 transform
-        /// </summary>
-        [Fact]
-        public void TestMulT_v3_Transform()
-        {
-            Transform a = new Transform();
-            Transform b = new Transform();
-            Transform expected;
-            MathUtils.MulT(ref a, ref b, out expected);
-            Transform result;
-            MathUtils.MulT(ref a, ref b, out result);
-            Assert.Equal(expected, result);
-        }
-        
+ 
         /// <summary>
         ///     Tests that test mul 22 matrix 3 x 3 vector 2
         /// </summary>

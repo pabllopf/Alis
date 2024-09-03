@@ -45,14 +45,14 @@ namespace Alis.Core.Aspect.Math.Test
         public void SetIdentity_ShouldSetToIdentity()
         {
             // Arrange
-            Transform transform = new Transform(new Vector2(0, 0), new Rotation(45), new Vector2(1, 1));
+            Transform transform = new Transform(new Vector2(0, 0), 45, new Vector2(1, 1));
             
             // Act
             transform.SetIdentity();
             
             // Assert
             Assert.Equal(Vector2.Zero, transform.Position);
-            Assert.Equal(45, transform.Rotation.Angle);
+            Assert.Equal(45, transform.Rotation);
             Assert.Equal(Vector2.One, transform.Scale);
         }
         
@@ -72,7 +72,7 @@ namespace Alis.Core.Aspect.Math.Test
             
             // Assert
             Assert.Equal(position, transform.Position);
-            Assert.Equal(angle, transform.Rotation.Angle);
+            Assert.Equal(angle, transform.Rotation);
         }
         
         /// <summary>
@@ -83,7 +83,7 @@ namespace Alis.Core.Aspect.Math.Test
         {
             // Arrange
             Vector2 position = new Vector2(1, 1);
-            Rotation rotation = new Rotation(45);
+            float rotation = 45;
             Vector2 scale = new Vector2(2, 2);
             
             // Act
@@ -91,7 +91,7 @@ namespace Alis.Core.Aspect.Math.Test
             
             // Assert
             Assert.Equal(position, transform.Position);
-            Assert.Equal(rotation.Angle, transform.Rotation.Angle);
+            Assert.Equal(rotation, transform.Rotation);
             Assert.Equal(scale, transform.Scale);
         }
         
@@ -101,11 +101,11 @@ namespace Alis.Core.Aspect.Math.Test
         [Fact]
         public void SetIdentity_SetsPositionToZeroAndRotationToIdentity()
         {
-            Transform transform = new Transform(new Vector2(1, 2), new Rotation(45), new Vector2(3, 4));
+            Transform transform = new Transform(new Vector2(1, 2), 45, new Vector2(3, 4));
             transform.SetIdentity();
             
             Assert.Equal(Vector2.Zero, transform.Position);
-            Assert.Equal(45, transform.Rotation.Angle);
+            Assert.Equal(45, transform.Rotation);
         }
         
         /// <summary>
@@ -121,7 +121,7 @@ namespace Alis.Core.Aspect.Math.Test
             transform.Set(newPosition, newAngle);
             
             Assert.Equal(newPosition, transform.Position);
-            Assert.Equal(newAngle, transform.Rotation.Angle);
+            Assert.Equal(newAngle, transform.Rotation);
         }
         
         /// <summary>
@@ -130,7 +130,7 @@ namespace Alis.Core.Aspect.Math.Test
         [Fact]
         public void GetObjectData_SerializesPropertiesCorrectly()
         {
-            Transform transform = new Transform(new Vector2(1, 2), new Rotation(45), new Vector2(3, 4));
+            Transform transform = new Transform(new Vector2(1, 2), 45, new Vector2(3, 4));
             SerializationInfo info = new SerializationInfo(typeof(Transform), new FormatterConverter());
             StreamingContext context = new StreamingContext();
             
