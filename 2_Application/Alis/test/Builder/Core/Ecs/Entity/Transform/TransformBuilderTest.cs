@@ -84,7 +84,7 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.Transform
             
             transformBuilder.Rotation(45.0f);
             
-            Assert.Equal(new Rotation(45.0f), transformBuilder.Build().Rotation);
+            Assert.Equal(45.0f, transformBuilder.Build().Rotation);
         }
         
         /// <summary>

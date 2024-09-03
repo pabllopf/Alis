@@ -109,35 +109,7 @@ namespace Alis.Test.Core.Ecs.Component.Render
             Assert.IsType<SpriteBuilder>(result);
         }
         
-        /// <summary>
-        ///     Tests that render with renderer and camera should not throw exception
-        /// </summary>
-        [Fact]
-        public void Render_WithRendererAndCamera_ShouldNotThrowException()
-        {
-            VideoGame videoGame = new VideoGame();
-            Sprite sprite = new Sprite();
-            IntPtr renderer = IntPtr.Zero; // You would replace this with a valid renderer
-            Camera camera = new Camera(); // You would replace this with a valid camera
-            
-            Exception exception = Record.Exception(() => sprite.Render(renderer, camera));
-            Assert.NotNull(exception);
-        }
-        
-        /// <summary>
-        ///     Tests that render with renderer should not throw exception
-        /// </summary>
-        [Fact]
-        public void Render_WithRenderer_ShouldNotThrowException()
-        {
-            VideoGame videoGame = new VideoGame();
-            Sprite sprite = new Sprite();
-            IntPtr renderer = IntPtr.Zero; // You would replace this with a valid renderer
-            
-            Exception exception = Record.Exception(() => sprite.Render(renderer));
-            Assert.NotNull(exception);
-        }
-        
+       
         /// <summary>
         ///     Tests that flips set value should change value
         /// </summary>

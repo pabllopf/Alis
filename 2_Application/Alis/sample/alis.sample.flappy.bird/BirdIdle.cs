@@ -85,7 +85,7 @@ namespace Alis.Sample.Flappy.Bird
             
             Vector2 scale = GameObject.Transform.Scale;
             
-            Rotation rotation = GameObject.Transform.Rotation;
+            float rotation = GameObject.Transform.Rotation;
             
             // create a new position:
             Vector2 newPosition;
