@@ -292,8 +292,7 @@ namespace Alis.Core.Sample
             // Give it some bounce and friction
             pfixture.Restitution = 0.3f;
             pfixture.Friction = 0.5f;
-
-            // add dynamic box of 1x1 meters
+            
             Vector2 sizeBox = new Vector2(10, 1);
             Body box = world.CreateRectangle(sizeBox.X, sizeBox.Y, 1);
             box.BodyType = BodyType.Static;
@@ -302,9 +301,17 @@ namespace Alis.Core.Sample
             box.SetRestitution(0.3f);
             
             
+            Vector2 textureBoxSize = new Vector2(1, 1);
+            Body textureBox = world.CreateRectangle(textureBoxSize.X, textureBoxSize.Y, 1);
+            textureBox.BodyType = BodyType.Static;
+            textureBox.Position = new Vector2(0, 0);
+            textureBox.SetFriction(0.5f);
+            textureBox.SetRestitution(0.3f);
+            
             // Define two Transform objects to store the positions of the bodies
             Transform playerTransform = new Transform();
             Transform boxTransform = new Transform();
+            Transform textureTransform = new Transform();
             
             Camera camera = new Camera(renderer);
             
@@ -477,6 +484,9 @@ namespace Alis.Core.Sample
 
                 boxTransform.Position = box.Position;
                 boxTransform.Rotation = box.Rotation;
+                
+                textureTransform.Position = textureBox.Position;
+                textureTransform.Rotation = textureBox.Rotation;
 
                 // START RENDER THE CAMERA
                 IntPtr cameraTexture = camera.TextureTarget;
@@ -515,6 +525,23 @@ namespace Alis.Core.Sample
                     H = (int)(boxHeight)
                 };
                 Sdl.RenderDrawRect(renderer, ref boxRect);
+                
+                // render the texture box
+                float textureBoxPosX = textureTransform.Position.X * PIXELS_PER_METER;
+                float textureBoxPosY = textureTransform.Position.Y * PIXELS_PER_METER;
+                int textureBoxX = (int)((textureBoxPosX - camera.Position.X + camera.Resolution.X / 2));
+                int textureBoxY = (int)((textureBoxPosY - camera.Position.Y + camera.Resolution.Y / 2));
+                Sdl.SetRenderDrawColor(renderer, 0, 0, 255, 255);
+                RectangleI textureBoxRect = new RectangleI
+                {
+                    X = (int)(textureBoxX - (textureBoxSize.X * PIXELS_PER_METER / 2)),
+                    Y = (int)(textureBoxY - (textureBoxSize.Y * PIXELS_PER_METER / 2)),
+                    W = (int)(textureBoxSize.X * PIXELS_PER_METER),
+                    H = (int)(textureBoxSize.Y * PIXELS_PER_METER)
+                };
+                Sdl.RenderDrawRect(renderer, ref textureBoxRect);
+                Sdl.RenderCopy(renderer, textureTile, IntPtr.Zero, ref textureBoxRect);
+                
                 
                 // RENDER THE CAMERA
                 // Reset the render target to the default SDL backbuffer
