@@ -304,7 +304,7 @@ namespace Alis.Core.Sample
             Vector2 textureBoxSize = new Vector2(1, 1);
             Body textureBox = world.CreateRectangle(textureBoxSize.X, textureBoxSize.Y, 1);
             textureBox.BodyType = BodyType.Static;
-            textureBox.Position = new Vector2(0, 0);
+            textureBox.Position = new Vector2(5, 5);
             textureBox.SetFriction(0.5f);
             textureBox.SetRestitution(0.3f);
             
@@ -534,13 +534,14 @@ namespace Alis.Core.Sample
                 Sdl.SetRenderDrawColor(renderer, 0, 0, 255, 255);
                 RectangleI textureBoxRect = new RectangleI
                 {
-                    X = (int)(textureBoxX - (textureBoxSize.X * PIXELS_PER_METER / 2)),
-                    Y = (int)(textureBoxY - (textureBoxSize.Y * PIXELS_PER_METER / 2)),
-                    W = (int)(textureBoxSize.X * PIXELS_PER_METER),
-                    H = (int)(textureBoxSize.Y * PIXELS_PER_METER)
+                    X = (int)((textureTransform.Position.X * PIXELS_PER_METER - camera.Position.X + camera.Resolution.X / 2) - (32 / 2)),
+                    Y = (int)((textureTransform.Position.Y * PIXELS_PER_METER - camera.Position.Y + camera.Resolution.Y / 2) - (64 / 2)),
+                    W = 32,
+                    H = 64
                 };
                 Sdl.RenderDrawRect(renderer, ref textureBoxRect);
-                Sdl.RenderCopy(renderer, textureTile, IntPtr.Zero, ref textureBoxRect);
+                Sdl.RenderCopyEx(renderer, textureTile, IntPtr.Zero, ref textureBoxRect, textureTransform.Rotation * 180 / MathF.PI, IntPtr.Zero, RendererFlips.FlipVertical);
+                
                 
                 
                 // RENDER THE CAMERA
