@@ -165,24 +165,28 @@ namespace Alis.Core.Ecs.Component.Render
         {
             Vector2 spritePosition = GameObject.Transform.Position;
             Vector2 spriteSize = Image.Size;
+            Vector2 spriteScale = GameObject.Transform.Scale;
 
             float spritePosX = spritePosition.X * pixelsPerMeter;
             float spritePosY = spritePosition.Y * pixelsPerMeter;
 
-            int x = (int)(spritePosX - cameraPosition.X * pixelsPerMeter + cameraResolution.X / 2 - spriteSize.X / 2);
-            int y = (int)(spritePosY - cameraPosition.Y * pixelsPerMeter + cameraResolution.Y / 2 - spriteSize.Y / 2);
+            int scaledWidth = (int)(spriteSize.X * spriteScale.X);
+            int scaledHeight = (int)(spriteSize.Y * spriteScale.Y);
+
+            int x = (int)(spritePosX - cameraPosition.X * pixelsPerMeter + cameraResolution.X / 2 - scaledWidth / 2);
+            int y = (int)(spritePosY - cameraPosition.Y * pixelsPerMeter + cameraResolution.Y / 2 - scaledHeight / 2);
 
             Rectangle = new RectangleI
             {
                 X = x,
                 Y = y,
-                W = (int)spriteSize.X,
-                H = (int)spriteSize.Y
+                W = scaledWidth,
+                H = scaledHeight
             };
 
             Sdl.RenderCopyEx(renderer, Image.Texture, IntPtr.Zero, ref Rectangle, 0, IntPtr.Zero, RendererFlips.FlipVertical);
         }
-        
+      
         public bool IsVisible(Vector2 cameraPosition, Vector2 cameraResolution, float pixelsPerMeter)
         {
             Vector2 spritePosition = GameObject.Transform.Position;

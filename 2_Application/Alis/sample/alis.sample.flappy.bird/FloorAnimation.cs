@@ -42,7 +42,7 @@ namespace Alis.Sample.Flappy.Bird
         /// <summary>
         ///     The velocity
         /// </summary>
-        private const float Velocity = 70.0f;
+        private const float Velocity = 2.0f;
         
         /// <summary>
         ///     The old
@@ -72,7 +72,7 @@ namespace Alis.Sample.Flappy.Bird
             float displace = Velocity * Context.TimeManager.DeltaTime;
             
             // if the x position is less than -50.0f, then reset the x position to 0.0f
-            Vector2 newPosition = x < -25.0f ? new Vector2(xOld, y) : new Vector2(x - displace, y);
+            Vector2 newPosition = x < -1.0f ? new Vector2(xOld, y) : new Vector2(x - displace, y);
             
             Transform transform = new Transform
             {
