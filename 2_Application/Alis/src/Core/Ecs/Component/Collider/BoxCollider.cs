@@ -147,8 +147,8 @@ namespace Alis.Core.Ecs.Component.Collider
         public override void OnAwake()
         {
             Body = Context.PhysicManager.World.CreateRectangle(
-                Width,
-                Height,
+                Width * GameObject.Transform.Scale.X,
+                Height * GameObject.Transform.Scale.Y,
                 1.0f,
                 new Vector2(GameObject.Transform.Position.X + RelativePosition.X, GameObject.Transform.Position.Y + RelativePosition.Y),
                 Rotation,
@@ -214,14 +214,15 @@ namespace Alis.Core.Ecs.Component.Collider
         {
         }
         
-        public void Render(IntPtr renderer, Vector2 cameraPosition, Vector2 cameraResolution, float pixelsPerMeter, Color debugColor)
+       public void Render(IntPtr renderer, Vector2 cameraPosition, Vector2 cameraResolution, float pixelsPerMeter, Color debugColor)
         {
             Vector2 colliderPosition = GameObject.Transform.Position;
+            Vector2 colliderScale = GameObject.Transform.Scale;
 
             float posX = colliderPosition.X * pixelsPerMeter;
             float posY = colliderPosition.Y * pixelsPerMeter;
-            float width = Width * pixelsPerMeter;
-            float height = Height * pixelsPerMeter;
+            float width = Width * pixelsPerMeter * colliderScale.X;
+            float height = Height * pixelsPerMeter * colliderScale.Y;
 
             int x = (int)(posX - cameraPosition.X * pixelsPerMeter + cameraResolution.X / 2);
             int y = (int)(posY - cameraPosition.Y * pixelsPerMeter + cameraResolution.Y / 2);
@@ -234,7 +235,7 @@ namespace Alis.Core.Ecs.Component.Collider
             Sdl.SetRenderDrawColor(renderer, debugColor.R, debugColor.G, debugColor.B, debugColor.A);
             Sdl.RenderDrawRect(renderer, ref Rectangle);
         }
-
+       
         public bool IsVisible(Vector2 cameraPosition, Vector2 cameraResolution, float pixelsPerMeter)
         {
             Vector2 colliderPosition = GameObject.Transform.Position;
