@@ -273,7 +273,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Sprites = Sprites.OrderBy(o => o.Depth).ToList();
         }
 
-        private const float PIXELS_PER_METER = 32.0f;
+        private const float PixelsPerMeter = 32.0f;
 
         public override void OnUpdate()
         {
@@ -282,7 +282,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                 return;
             }
 
-            float pixelsPerMeter = PIXELS_PER_METER;
+            float pixelsPerMeter = PixelsPerMeter;
             IntPtr renderer = Renderer;
             Settings contextSettings = Context.Settings;
             PhysicSetting physicSettings = contextSettings.Physic;
