@@ -62,7 +62,7 @@ namespace Alis.Sample.King.Platform
                         .Build())
                     .Graphic(graphic => graphic
                         .Window(window => window
-                            .Resolution(1024, 640)
+                            .Resolution(1024, 768)
                             .Background(Color.Black)
                             .Build())
                         .Build())
@@ -154,7 +154,7 @@ namespace Alis.Sample.King.Platform
                                 .Rotation(0.0f)
                                 .Size(1, 1)
                                 .Mass(1.0f)
-                                .Restitution(0f)
+                                .Restitution(0.0f)
                                 .Friction(0f)
                                 .FixedRotation(true)
                                 .GravityScale(1f)
@@ -162,9 +162,16 @@ namespace Alis.Sample.King.Platform
                             .AddComponent(new PlayerMovement())
                             .AddComponent<Camera>(camera => camera.Builder()
                                 .BackgroundColor(Color.Brown)
-                                .Resolution(1024, 640)
+                                .Resolution(640, 480)
                                 .Build())
                             .Build())
+                        
+                        /*.Add<GameObject>(camara => camara
+                            .AddComponent<Camera>(camera => camera.Builder()
+                                .BackgroundColor(Color.Brown)
+                                .Resolution(640, 480)
+                                .Build())
+                            .Build())*/
                         
                         // FLOOR
                         .Add<GameObject>(gameObject => gameObject
@@ -182,7 +189,7 @@ namespace Alis.Sample.King.Platform
                                 .BodyType(BodyType.Static)
                                 .IsTrigger(false)
                                 .AutoTilling(false)
-                                .Size(32, 1)
+                                .Size(16, 1)
                                 .Rotation(0.0f)
                                 .RelativePosition(0, 0)
                                 .Mass(10.0f)
