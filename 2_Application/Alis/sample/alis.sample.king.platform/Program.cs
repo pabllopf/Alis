@@ -92,7 +92,7 @@ namespace Alis.Sample.King.Platform
                             .WithTag("player")
                             .Transform(transform => transform
                                 .Position(0, 2)
-                                .Scale(1, 1)
+                                .Scale(2, 2)
                                 .Rotation(0)
                                 .Build())
                             .AddComponent<Sprite>(sprite => sprite
