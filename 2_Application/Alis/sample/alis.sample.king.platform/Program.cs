@@ -166,7 +166,7 @@ namespace Alis.Sample.King.Platform
                                 .Build())
                             .Build())
                         
-                        /*.Add<GameObject>(camara => camara
+                       /* .Add<GameObject>(camara => camara
                             .AddComponent<Camera>(camera => camera.Builder()
                                 .BackgroundColor(Color.Brown)
                                 .Resolution(640, 480)

@@ -527,10 +527,6 @@ namespace Alis.Core.Sample
                 Sdl.RenderDrawRect(renderer, ref boxRect);
                 
                 // render the texture box
-                float textureBoxPosX = textureTransform.Position.X * PIXELS_PER_METER;
-                float textureBoxPosY = textureTransform.Position.Y * PIXELS_PER_METER;
-                int textureBoxX = (int)((textureBoxPosX - camera.Position.X + camera.Resolution.X / 2));
-                int textureBoxY = (int)((textureBoxPosY - camera.Position.Y + camera.Resolution.Y / 2));
                 Sdl.SetRenderDrawColor(renderer, 0, 0, 255, 255);
                 RectangleI textureBoxRect = new RectangleI
                 {

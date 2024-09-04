@@ -273,7 +273,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
 
         private const float PIXELS_PER_METER = 32.0f;
 
-        public override void OnUpdate()
+      public override void OnUpdate()
         {
             if (Context is null)
             {
@@ -288,7 +288,40 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                 Sdl.SetRenderTarget(Renderer, cameraTexture);
                 Sdl.SetRenderDrawColor(Renderer, bgColor.R, bgColor.G, bgColor.B, bgColor.A);
                 Sdl.RenderClear(Renderer);
-                
+
+                foreach (BoxCollider collider in ColliderBases)
+                {
+                    collider.GameObject.Transform.Position = new Vector2(collider.Body.Position.X, collider.Body.Position.Y);
+                    collider.GameObject.Transform.Rotation = collider.Body.Rotation;
+
+                    // If the collider contains a camera, update the camera position
+                    if (collider.GameObject.Contains<Camera>())
+                    {
+                        camera.Position = collider.GameObject.Transform.Position;
+                    }
+                }
+
+                // Render sprites
+                foreach (Sprite sprite in Sprites)
+                {
+                    float spritePosX = sprite.GameObject.Transform.Position.X * PIXELS_PER_METER;
+                    float spritePosY = sprite.GameObject.Transform.Position.Y * PIXELS_PER_METER;
+
+                    int x = (int)((spritePosX - camera.Position.X * PIXELS_PER_METER + camera.Resolution.X / 2) - (sprite.Image.Size.X / 2));
+                    int y = (int)((spritePosY - camera.Position.Y * PIXELS_PER_METER + camera.Resolution.Y / 2) - (sprite.Image.Size.Y / 2));
+
+                    RectangleI dstRect = new RectangleI
+                    {
+                        X = x,
+                        Y = y,
+                        W = (int)sprite.Image.Size.X,
+                        H = (int)sprite.Image.Size.Y
+                    };
+
+                    Sdl.RenderCopyEx(Renderer, sprite.Image.Texture, IntPtr.Zero, ref dstRect, 0, IntPtr.Zero, RendererFlips.FlipVertical);
+                }
+
+                // Render colliders
                 foreach (BoxCollider collider in ColliderBases)
                 {
                     float posX = collider.GameObject.Transform.Position.X * PIXELS_PER_METER;
@@ -296,16 +329,16 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                     float width = collider.Width * PIXELS_PER_METER;
                     float height = collider.Height * PIXELS_PER_METER;
 
-                    int x = (int) ((posX - camera.Position.X * PIXELS_PER_METER + camera.Resolution.X / 2));
-                    int y = (int) ((posY - camera.Position.Y * PIXELS_PER_METER + camera.Resolution.Y / 2));
+                    int x = (int)((posX - camera.Position.X * PIXELS_PER_METER + camera.Resolution.X / 2));
+                    int y = (int)((posY - camera.Position.Y * PIXELS_PER_METER + camera.Resolution.Y / 2));
 
                     Sdl.SetRenderDrawColor(Renderer, Context.Settings.Physic.DebugColor.R, Context.Settings.Physic.DebugColor.G, Context.Settings.Physic.DebugColor.B, Context.Settings.Physic.DebugColor.A);
                     RectangleI rect = new RectangleI
                     {
-                        X = (int) (x - (width / 2)),
-                        Y = (int) (y - (height / 2)),
-                        W = (int) width,
-                        H = (int) height
+                        X = (int)(x - (width / 2)),
+                        Y = (int)(y - (height / 2)),
+                        W = (int)width,
+                        H = (int)height
                     };
 
                     Sdl.RenderDrawRect(Renderer, ref rect);
@@ -313,12 +346,14 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
 
                 Sdl.SetRenderTarget(Renderer, IntPtr.Zero);
 
+                // Copy the custom backbuffer to the SDL backbuffer with vertical flip
                 Sdl.RenderCopyEx(Renderer, cameraTexture, IntPtr.Zero, IntPtr.Zero, 0, IntPtr.Zero, RendererFlips.FlipVertical);
             }
 
             Sdl.RenderPresent(Renderer);
         }
-
+      
+      
         /// <summary>
         ///     Attaches the sprite
         /// </summary>

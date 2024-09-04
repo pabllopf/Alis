@@ -198,7 +198,7 @@ namespace Alis.Core.Ecs.Component.Collider
             // If the collider contains a camera, update the camera position
             if (GameObject.Contains<Camera>())
             {
-                var camera = GameObject.Get<Camera>();
+                Camera camera = GameObject.Get<Camera>();
                 camera.Position.X =GameObject.Transform.Position.X;
                 camera.Position.Y =GameObject.Transform.Position.Y;
             }
