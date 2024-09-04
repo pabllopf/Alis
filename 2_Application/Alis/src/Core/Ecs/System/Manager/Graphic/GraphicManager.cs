@@ -288,20 +288,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                 Sdl.SetRenderTarget(Renderer, cameraTexture);
                 Sdl.SetRenderDrawColor(Renderer, bgColor.R, bgColor.G, bgColor.B, bgColor.A);
                 Sdl.RenderClear(Renderer);
-
-                foreach (BoxCollider collider in ColliderBases)
-                {
-                    collider.GameObject.Transform.Position = new Vector2(collider.Body.Position.X, collider.Body.Position.Y);
-                    collider.GameObject.Transform.Rotation = collider.Body.Rotation;
-
-                    // If the collider contains a camera, update the camera position
-                    if (collider.GameObject.Contains<Camera>())
-                    {
-                        camera.Position.X = collider.GameObject.Transform.Position.X;
-                        camera.Position.Y = collider.GameObject.Transform.Position.Y;
-                    }
-                }
-
+                
                 foreach (BoxCollider collider in ColliderBases)
                 {
                     float posX = collider.GameObject.Transform.Position.X * PIXELS_PER_METER;
