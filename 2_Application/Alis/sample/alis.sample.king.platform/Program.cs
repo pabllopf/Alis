@@ -74,18 +74,7 @@ namespace Alis.Sample.King.Platform
                     .Build())
                 .World(sceneManager => sceneManager
                     .Add<Scene>(gameScene => gameScene
-                        /*.Add<GameObject>(soundTrack => soundTrack
-                            .Name("Soundtrack")
-                            .AddComponent<AudioSource>(audioSource => audioSource
-                                .Builder()
-                                .PlayOnAwake(true)
-                                .SetAudioClip(audioClip => audioClip
-                                    .FilePath("World_Theme.wav"))
-                                    .Volume(100.0f)
-                                    .Build())
-                                .Build())
-                            .Build())*/
-                        
+                            
                         // PLAYER
                         .Add<GameObject>(player => player
                             .Name("King")
@@ -157,7 +146,7 @@ namespace Alis.Sample.King.Platform
                                 .Restitution(0.0f)
                                 .Friction(0f)
                                 .FixedRotation(true)
-                                .GravityScale(1f)
+                                .IgnoreGravity(false)
                                 .Build())
                             .AddComponent(new PlayerMovement())
                             .AddComponent<Camera>(camera => camera.Builder()
@@ -165,13 +154,6 @@ namespace Alis.Sample.King.Platform
                                 .Resolution(640, 480)
                                 .Build())
                             .Build())
-                        
-                       /* .Add<GameObject>(camara => camara
-                            .AddComponent<Camera>(camera => camera.Builder()
-                                .BackgroundColor(Color.Brown)
-                                .Resolution(640, 480)
-                                .Build())
-                            .Build())*/
                         
                         // FLOOR
                         .Add<GameObject>(gameObject => gameObject
@@ -196,7 +178,7 @@ namespace Alis.Sample.King.Platform
                                 .Restitution(0.0f)
                                 .Friction(0.1f)
                                 .FixedRotation(true)
-                                .GravityScale(0.0f)
+                                .IgnoreGravity(false)
                                 .Build())
                             .Build())
                         .Build())
