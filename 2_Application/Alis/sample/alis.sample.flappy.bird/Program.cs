@@ -123,9 +123,9 @@ namespace Alis.Sample.Flappy.Bird
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Floor")
                             .Transform(transform => transform
-                                .Position(1f, 0)
+                                .Position(0, -6.5f)
                                 .Rotation(0)
-                                .Scale(1f, 1f)
+                                .Scale(2f, 1f)
                                 .Build())
                             .AddComponent<Sprite>(sprite => sprite
                                 .Builder()
@@ -141,7 +141,7 @@ namespace Alis.Sample.Flappy.Bird
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Message Menu")
                             .Transform(transform => transform
-                                .Position(0, 0f)
+                                .Position(-0.1f, 1f)
                                 .Rotation(0)
                                 .Scale(1f, 1f)
                                 .Build())
@@ -171,7 +171,7 @@ namespace Alis.Sample.Flappy.Bird
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Bird")
                             .Transform(transform => transform
-                                .Position(0, 0f)
+                                .Position(-1.5f, -0.5f)
                                 .Rotation(0)
                                 .Scale(1f, 1.0f)
                                 .Build())
