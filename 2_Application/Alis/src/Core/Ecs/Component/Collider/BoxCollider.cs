@@ -116,7 +116,7 @@ namespace Alis.Core.Ecs.Component.Collider
         /// <summary>
         ///     Gets or sets the value of the gravity scale
         /// </summary>
-        public float GravityScale { get; set; } = 1.0f;
+        public bool IgnoreGravity { get; set; } = false;
 
         /// <summary>
         ///     Gets or sets the value of the linear velocity
@@ -160,7 +160,7 @@ namespace Alis.Core.Ecs.Component.Collider
             Body.Mass = Mass;
             Body.SleepingAllowed = false;
             Body.IsBullet = true;
-            Body.IgnoreGravity = false;
+            Body.IgnoreGravity = IgnoreGravity;
             Body.LinearVelocity = LinearVelocity;
             Body.Awake = true;
             Body.SetIsSensor(IsTrigger);

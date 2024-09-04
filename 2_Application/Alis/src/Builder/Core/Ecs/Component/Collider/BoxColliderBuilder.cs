@@ -46,7 +46,6 @@ namespace Alis.Builder.Core.Ecs.Component.Collider
         IMass<BoxColliderBuilder, float>,
         IAutoTilling<BoxColliderBuilder, bool>,
         IFixedRotation<BoxColliderBuilder, bool>,
-        IGravityScale<BoxColliderBuilder, float>,
         IFriction<BoxColliderBuilder, float>,
         IRotation<BoxColliderBuilder, float>,
         IRelativePosition<BoxColliderBuilder, float>,
@@ -121,14 +120,10 @@ namespace Alis.Builder.Core.Ecs.Component.Collider
             return this;
         }
         
-        /// <summary>
-        ///     Gravities the scale using the specified value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The box collider builder</returns>
-        public BoxColliderBuilder GravityScale(float value)
+
+        public BoxColliderBuilder IgnoreGravity(bool value)
         {
-            boxCollider.GravityScale = value;
+            boxCollider.IgnoreGravity = value;
             return this;
         }
         

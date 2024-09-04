@@ -121,11 +121,11 @@ namespace Alis.Sample.Pong
                     switch (key)
                     {
                         case KeyCodes.W:
-                            velocity = new Vector2(velocity.X, -3);
+                            velocity = new Vector2(velocity.X, 3);
                             boxCollider.Body.LinearVelocity = velocity;
                             return;
                         case KeyCodes.S:
-                            velocity = new Vector2(velocity.X, 3);
+                            velocity = new Vector2(velocity.X, -3);
                             boxCollider.Body.LinearVelocity = velocity;
                             break;
                     }
@@ -135,11 +135,11 @@ namespace Alis.Sample.Pong
                     switch (key)
                     {
                         case KeyCodes.Up:
-                            velocity = new Vector2(velocity.X, -3);
+                            velocity = new Vector2(velocity.X, 3);
                             boxCollider.Body.LinearVelocity = velocity;
                             return;
                         case KeyCodes.Down:
-                            velocity = new Vector2(velocity.X, 3);
+                            velocity = new Vector2(velocity.X, -3);
                             boxCollider.Body.LinearVelocity = velocity;
                             break;
                     }
