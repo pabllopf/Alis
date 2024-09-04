@@ -61,7 +61,9 @@ namespace Alis.Core.Ecs.Component.Render
         /// The 
         /// </summary>
         private int h;
-        
+
+        private RectangleI Rectangle;
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="Sprite" /> class
         /// </summary>
@@ -157,6 +159,49 @@ namespace Alis.Core.Ecs.Component.Render
         public override void OnExit()
         {
            
+        }
+
+        public void Render(IntPtr renderer, Vector2 cameraPosition, Vector2 cameraResolution, float pixelsPerMeter)
+        {
+            Vector2 spritePosition = GameObject.Transform.Position;
+            Vector2 spriteSize = Image.Size;
+
+            float spritePosX = spritePosition.X * pixelsPerMeter;
+            float spritePosY = spritePosition.Y * pixelsPerMeter;
+
+            int x = (int)(spritePosX - cameraPosition.X * pixelsPerMeter + cameraResolution.X / 2 - spriteSize.X / 2);
+            int y = (int)(spritePosY - cameraPosition.Y * pixelsPerMeter + cameraResolution.Y / 2 - spriteSize.Y / 2);
+
+            Rectangle = new RectangleI
+            {
+                X = x,
+                Y = y,
+                W = (int)spriteSize.X,
+                H = (int)spriteSize.Y
+            };
+
+            Sdl.RenderCopyEx(renderer, Image.Texture, IntPtr.Zero, ref Rectangle, 0, IntPtr.Zero, RendererFlips.FlipVertical);
+        }
+        
+        public bool IsVisible(Vector2 cameraPosition, Vector2 cameraResolution, float pixelsPerMeter)
+        {
+            Vector2 spritePosition = GameObject.Transform.Position;
+            Vector2 spriteSize = Image.Size;
+
+            float spritePosX = spritePosition.X * pixelsPerMeter;
+            float spritePosY = spritePosition.Y * pixelsPerMeter;
+
+            float cameraLeft = cameraPosition.X * pixelsPerMeter - cameraResolution.X / 2;
+            float cameraRight = cameraPosition.X * pixelsPerMeter + cameraResolution.X / 2;
+            float cameraTop = cameraPosition.Y * pixelsPerMeter - cameraResolution.Y / 2;
+            float cameraBottom = cameraPosition.Y * pixelsPerMeter + cameraResolution.Y / 2;
+
+            float spriteLeft = spritePosX - spriteSize.X / 2;
+            float spriteRight = spritePosX + spriteSize.X / 2;
+            float spriteTop = spritePosY - spriteSize.Y / 2;
+            float spriteBottom = spritePosY + spriteSize.Y / 2;
+
+            return spriteRight > cameraLeft && spriteLeft < cameraRight && spriteBottom > cameraTop && spriteTop < cameraBottom;
         }
     }
 }

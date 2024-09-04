@@ -32,6 +32,7 @@ using Alis.Builder.Core.Ecs.Component.Collider;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component.Render;
@@ -49,10 +50,7 @@ namespace Alis.Core.Ecs.Component.Collider
     /// <seealso cref="ACollider" />
     public class BoxCollider : ACollider, IBuilder<BoxColliderBuilder>
     {
-        /// <summary>
-        ///     The rectangle shape
-        /// </summary>
-        public RectangleF RectangleF;
+        private RectangleI Rectangle;
 
         /// <summary>
         ///     Gets or sets the value of the is trigger
@@ -135,9 +133,7 @@ namespace Alis.Core.Ecs.Component.Collider
         /// </summary>
         /// <returns>The box collider builder</returns>
         public BoxColliderBuilder Builder() => new BoxColliderBuilder();
-
-        private const float PIXELS_PER_METER = 32.0f;
-
+        
         /// <summary>
         ///     Inits this instance
         /// </summary>
@@ -216,6 +212,48 @@ namespace Alis.Core.Ecs.Component.Collider
         /// </summary>
         public override void OnExit()
         {
+        }
+        
+        public void Render(IntPtr renderer, Vector2 cameraPosition, Vector2 cameraResolution, float pixelsPerMeter, Color debugColor)
+        {
+            Vector2 colliderPosition = GameObject.Transform.Position;
+
+            float posX = colliderPosition.X * pixelsPerMeter;
+            float posY = colliderPosition.Y * pixelsPerMeter;
+            float width = Width * pixelsPerMeter;
+            float height = Height * pixelsPerMeter;
+
+            int x = (int)(posX - cameraPosition.X * pixelsPerMeter + cameraResolution.X / 2);
+            int y = (int)(posY - cameraPosition.Y * pixelsPerMeter + cameraResolution.Y / 2);
+            
+            Rectangle.X = (int) (x - width / 2);
+            Rectangle.Y = (int) (y - height / 2);
+            Rectangle.W = (int) width;
+            Rectangle.H = (int) height;
+
+            Sdl.SetRenderDrawColor(renderer, debugColor.R, debugColor.G, debugColor.B, debugColor.A);
+            Sdl.RenderDrawRect(renderer, ref Rectangle);
+        }
+
+        public bool IsVisible(Vector2 cameraPosition, Vector2 cameraResolution, float pixelsPerMeter)
+        {
+            Vector2 colliderPosition = GameObject.Transform.Position;
+            Vector2 colliderSize = new Vector2(Width, Height);
+
+            float colliderPosX = colliderPosition.X * pixelsPerMeter;
+            float colliderPosY = colliderPosition.Y * pixelsPerMeter;
+
+            float cameraLeft = cameraPosition.X * pixelsPerMeter - cameraResolution.X / 2;
+            float cameraRight = cameraPosition.X * pixelsPerMeter + cameraResolution.X / 2;
+            float cameraTop = cameraPosition.Y * pixelsPerMeter - cameraResolution.Y / 2;
+            float cameraBottom = cameraPosition.Y * pixelsPerMeter + cameraResolution.Y / 2;
+
+            float colliderLeft = colliderPosX - colliderSize.X / 2;
+            float colliderRight = colliderPosX + colliderSize.X / 2;
+            float colliderTop = colliderPosY - colliderSize.Y / 2;
+            float colliderBottom = colliderPosY + colliderSize.Y / 2;
+
+            return colliderRight > cameraLeft && colliderLeft < cameraRight && colliderBottom > cameraTop && colliderTop < cameraBottom;
         }
     }
 }
