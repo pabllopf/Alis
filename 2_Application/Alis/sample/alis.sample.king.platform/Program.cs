@@ -189,7 +189,7 @@ namespace Alis.Sample.King.Platform
                                 .BodyType(BodyType.Static)
                                 .IsTrigger(false)
                                 .AutoTilling(false)
-                                .Size(16, 1)
+                                .Size(20, 1)
                                 .Rotation(0.0f)
                                 .RelativePosition(0, 0)
                                 .Mass(10.0f)

@@ -95,12 +95,30 @@ namespace Alis.Sample.King.Platform
         public override void OnUpdate()
         {
         }
-        
+
+        public override void OnReleaseKey(KeyCodes key)
+        {
+            if (key == KeyCodes.A || key == KeyCodes.D)
+            {
+                boxCollider.Body.LinearVelocity = new Vector2(0, boxCollider.Body.LinearVelocity.Y);
+            }
+        }
+
         public override void OnPressKey(KeyCodes key)
         {
             if (key == KeyCodes.Space)
             {
                 boxCollider.Body.ApplyLinearImpulse(new Vector2(0, 10));
+            }
+            
+            if (key == KeyCodes.A)
+            {
+                boxCollider.Body.LinearVelocity = new Vector2(-VelocityPlayer, boxCollider.Body.LinearVelocity.Y);
+            }
+            
+            if (key == KeyCodes.D)
+            {
+                boxCollider.Body.ApplyLinearImpulse(new Vector2(VelocityPlayer, boxCollider.Body.LinearVelocity.Y));
             }
         }
     }

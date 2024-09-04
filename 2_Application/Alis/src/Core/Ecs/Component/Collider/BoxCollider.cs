@@ -192,7 +192,16 @@ namespace Alis.Core.Ecs.Component.Collider
         /// </summary>
         public override void OnUpdate()
         {
-            
+            GameObject.Transform.Position = new Vector2(Body.Position.X,Body.Position.Y);
+            GameObject.Transform.Rotation =Body.Rotation;
+
+            // If the collider contains a camera, update the camera position
+            if (GameObject.Contains<Camera>())
+            {
+                var camera = GameObject.Get<Camera>();
+                camera.Position.X =GameObject.Transform.Position.X;
+                camera.Position.Y =GameObject.Transform.Position.Y;
+            }
         }
 
         /// <summary>
