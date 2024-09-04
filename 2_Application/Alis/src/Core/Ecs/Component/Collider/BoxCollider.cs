@@ -184,7 +184,7 @@ namespace Alis.Core.Ecs.Component.Collider
         /// </summary>
         public override void OnBeforeUpdate()
         {
-            GameObject.Transform = new Transform(Body.Position, Body.Rotation, GameObject.Transform.Scale);
+            //GameObject.Transform = new Transform(Body.Position, Body.Rotation, GameObject.Transform.Scale);
         }
         
         /// <summary>

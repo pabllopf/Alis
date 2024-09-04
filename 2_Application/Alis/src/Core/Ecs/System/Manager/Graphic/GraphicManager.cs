@@ -278,48 +278,55 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// </summary>
         public override void OnUpdate()
         {
-                int Width = (int)DefaultSize.X;
-                int Height = (int)DefaultSize.Y;
+            if (Context is null)
+            {
+                return;
+            }
             
-                Sdl.SetRenderDrawColor(Renderer, 0, 0, 0, 255);
+            foreach (Camera camera in Cameras)
+            {
+                IntPtr cameraTexture = camera.TextureTarget;
+                Color bgColor = camera.BackgroundColor;
+                
+                Sdl.SetRenderTarget(Renderer, cameraTexture);
+                Sdl.SetRenderDrawColor(Renderer, bgColor.R, bgColor.G, bgColor.B, bgColor.A);
                 Sdl.RenderClear(Renderer);
-
-                // Draw the sprites:
-                foreach (Sprite sprite in Sprites)
-                {
-                    if (sprite.Image != null)
-                    {
-                        int w, h;
-                        Sdl.QueryTexture(sprite.Image.Texture, out _, out _, out w, out h);
-                        RectangleI dstRect = new RectangleI
-                        {
-                            X = Width / 2 + (int) (sprite.GameObject.Transform.Position.X * PIXELS_PER_METER) - (int) (w * sprite.GameObject.Transform.Scale.X / 2),
-                            Y = Height / 2 - (int) (sprite.GameObject.Transform.Position.Y * PIXELS_PER_METER) - (int) (h * sprite.GameObject.Transform.Scale.Y / 2),
-                            W = (int) (w * sprite.GameObject.Transform.Scale.X),
-                            H = (int) (h * sprite.GameObject.Transform.Scale.Y)
-                        };
-                        Sdl.RenderCopy(Renderer, sprite.Image.Texture, IntPtr.Zero, ref dstRect);
-                    }
-                }
-
-                // Draw the colliders:
+                
                 foreach (BoxCollider collider in ColliderBases)
                 {
-                    // Draw the box:
-                    int boxX = Width / 2 + (int) (collider.Body.Position.X * PIXELS_PER_METER);
-                    int boxY = Height / 2 - (int) (collider.Body.Position.Y * PIXELS_PER_METER);
-                    Sdl.SetRenderDrawColor(Renderer, 255, 0, 0, 255);
-                    RectangleI boxRect = new RectangleI
+                    collider.GameObject.Transform.Position = new Vector2(collider.Body.Position.X, collider.Body.Position.Y);
+                    collider.GameObject.Transform.Rotation = collider.Body.Rotation;
+                    
+                    float posX = collider.GameObject.Transform.Position.X * PIXELS_PER_METER;
+                    float posY = collider.GameObject.Transform.Position.Y * PIXELS_PER_METER;
+                    float width = collider.Width * PIXELS_PER_METER;
+                    float height = collider.Height * PIXELS_PER_METER;
+                    
+                    int x = (int)((posX - camera.Position.X + camera.Resolution.X / 2));
+                    int y = (int)((posY - camera.Position.Y + camera.Resolution.Y / 2));
+                    
+                    Sdl.SetRenderDrawColor(Renderer,Context.Settings.Physic.DebugColor.R, Context.Settings.Physic.DebugColor.G, Context.Settings.Physic.DebugColor.B, Context.Settings.Physic.DebugColor.A);
+                    RectangleI rect = new RectangleI
                     {
-                        X = (int) (boxX - (collider.Width * PIXELS_PER_METER * collider.GameObject.Transform.Scale.X / 2)),
-                        Y = boxY - (int) (collider.Height * PIXELS_PER_METER * collider.GameObject.Transform.Scale.Y / 2),
-                        W = (int) (collider.Width * PIXELS_PER_METER * collider.GameObject.Transform.Scale.X),
-                        H = (int) (collider.Height * PIXELS_PER_METER * collider.GameObject.Transform.Scale.Y)
+                        X = (int)(x - (width / 2)),
+                        Y = (int)(y - (height / 2)),
+                        W = (int)width,
+                        H = (int)height
                     };
-                    Sdl.RenderDrawRect(Renderer, ref boxRect);
+                    Sdl.RenderDrawRect(Renderer, ref rect);
                 }
                 
-                Sdl.RenderPresent(Renderer);
+                // RENDER THE CAMERA
+                // Reset the render target to the default SDL backbuffer
+                Sdl.SetRenderTarget(Renderer, IntPtr.Zero);
+                
+                // Copy the custom backbuffer to the SDL backbuffer with vertical flip
+                Sdl.RenderCopyEx(Renderer, cameraTexture, IntPtr.Zero, IntPtr.Zero, 0, IntPtr.Zero, RendererFlips.FlipVertical);
+
+            }
+            
+           
+            Sdl.RenderPresent(Renderer);
         }
 
         /// <summary>

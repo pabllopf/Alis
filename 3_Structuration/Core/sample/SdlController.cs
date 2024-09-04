@@ -534,10 +534,10 @@ namespace Alis.Core.Sample
                 Sdl.SetRenderDrawColor(renderer, 0, 0, 255, 255);
                 RectangleI textureBoxRect = new RectangleI
                 {
-                    X = (int)((textureTransform.Position.X * PIXELS_PER_METER - camera.Position.X + camera.Resolution.X / 2) - (32 / 2)),
-                    Y = (int)((textureTransform.Position.Y * PIXELS_PER_METER - camera.Position.Y + camera.Resolution.Y / 2) - (64 / 2)),
-                    W = 32,
-                    H = 64
+                    X = (int)((textureTransform.Position.X * PIXELS_PER_METER - camera.Position.X + camera.Resolution.X / 2) - (tileRectangleI.W / 2)),
+                    Y = (int)((textureTransform.Position.Y * PIXELS_PER_METER - camera.Position.Y + camera.Resolution.Y / 2) - (tileRectangleI.H / 2)),
+                    W = tileRectangleI.W,
+                    H = tileRectangleI.H
                 };
                 Sdl.RenderDrawRect(renderer, ref textureBoxRect);
                 Sdl.RenderCopyEx(renderer, textureTile, IntPtr.Zero, ref textureBoxRect, textureTransform.Rotation * 180 / MathF.PI, IntPtr.Zero, RendererFlips.FlipVertical);

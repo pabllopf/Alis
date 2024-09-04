@@ -91,7 +91,7 @@ namespace Alis.Sample.King.Platform
                             .Name("King")
                             .WithTag("player")
                             .Transform(transform => transform
-                                .Position(0, 0)
+                                .Position(0, 2)
                                 .Scale(1, 1)
                                 .Rotation(0)
                                 .Build())
@@ -160,10 +160,10 @@ namespace Alis.Sample.King.Platform
                                 .GravityScale(1f)
                                 .Build())
                             .AddComponent(new PlayerMovement())
-                            /*.AddComponent<Camera>(camera => camera.Builder()
+                            .AddComponent<Camera>(camera => camera.Builder()
                                 .BackgroundColor(Color.Brown)
                                 .Resolution(1024, 640)
-                                .Build())*/
+                                .Build())
                             .Build())
                         
                         // FLOOR
@@ -172,7 +172,7 @@ namespace Alis.Sample.King.Platform
                             .WithTag("Floor Down")
                             .IsStatic()
                             .Transform(transform => transform
-                                .Position(0, -9)
+                                .Position(0, 0)
                                 .Scale(1, 1)
                                 .Rotation(0)
                                 .Build())
