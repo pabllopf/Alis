@@ -32,6 +32,7 @@ using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;
 
@@ -146,11 +147,16 @@ namespace Alis.Core.Ecs.Component.Render
             dstRect = new RectangleI( (int)GameObject.Transform.Position.X, (int)GameObject.Transform.Position.Y, w, h);
         }
 
+        public override void OnUpdate()
+        {
+        }
+
         /// <summary>
         ///     Exits this instance
         /// </summary>
         public override void OnExit()
         {
+           
         }
     }
 }
