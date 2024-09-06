@@ -238,7 +238,7 @@ namespace Alis.Sample.Flappy.Bird
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Background")
                             .Transform(transform => transform
-                                .Position(144, 256)
+                                .Position(0, 0)
                                 .Build())
                             .AddComponent<Sprite>(sprite => sprite
                                 .Builder()
@@ -253,18 +253,19 @@ namespace Alis.Sample.Flappy.Bird
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Floor")
                             .Transform(transform => transform
-                                .Position(168, 456)
+                                .Position(0, -6.5f)
                                 .Rotation(0)
-                                .Scale(2f, 1.1f)
+                                .Scale(2f, 1f)
                                 .Build())
                             .AddComponent<Sprite>(sprite => sprite
                                 .Builder()
                                 .SetTexture("base.bmp")
-                                .Depth(2)
+                                .Depth(1)
                                 .Build())
                             .AddComponent(new FloorAnimation())
                             .Build())
                         
+                        /*
                         ////////////////////////////////////////
                         // GAME SCENE: FLOOR COLLISION
                         ////////////////////////////////////////
@@ -489,7 +490,7 @@ namespace Alis.Sample.Flappy.Bird
                                 .IgnoreGravity(false)
                                 .Build())
                             .AddComponent(new BirdController())
-                            .Build()) // end bird 
+                            .Build()) // end bird */
                         .Build()) // end scene manager
                     .Build()) // end video game
                 .Build();

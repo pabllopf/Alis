@@ -250,8 +250,7 @@ namespace Alis.Core.Physic.Common
             x *= 0.5;
             y *= 0.5;
 
-            result.X = (float)x;
-            result.Y = (float)y;
+            result = new Vector2((float)x, (float)y);
         }
 
         /// <summary>
@@ -270,9 +269,8 @@ namespace Alis.Core.Physic.Common
 
             Vector2.Subtract(ref a, ref b, out temp);
 
-            output.X = -temp.Y;
-            output.Y = temp.X;
-
+            output = new Vector2(temp.Y, -temp.X);
+            
             output.Normalize();
 
             return output;

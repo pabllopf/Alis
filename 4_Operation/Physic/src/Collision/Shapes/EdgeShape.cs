@@ -210,7 +210,10 @@ namespace Alis.Core.Physic.Collision.Shapes
 
         public override void ComputeAABB(out AABB aabb, ref Transform transform, int childIndex)
         {
-            // OPT: Vector2 v1 = Transform.Multiply(ref _vertex1, ref transform);            
+            // Initialize aabb
+            aabb = new AABB();
+
+            // OPT: Vector2 v1 = Transform.Multiply(ref _vertex1, ref transform);
             float v1X = (_vertex1.X * transform.q.R - _vertex1.Y * transform.q.i) + transform.p.X;
             float v1Y = (_vertex1.Y * transform.q.R + _vertex1.X * transform.q.i) + transform.p.Y;
             // OPT: Vector2 v2 = Transform.Multiply(ref _vertex2, ref transform);

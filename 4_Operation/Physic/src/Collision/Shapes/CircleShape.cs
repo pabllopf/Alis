@@ -143,10 +143,9 @@ namespace Alis.Core.Physic.Collision.Shapes
 
             // OPT: aabb.LowerBound = new Vector2(p.X - Radius, p.Y - Radius);
             // OPT: aabb.UpperBound = new Vector2(p.X + Radius, p.Y + Radius);
-            aabb.LowerBound.X = pX - Radius;
-            aabb.LowerBound.Y = pY - Radius;
-            aabb.UpperBound.X = pX + Radius;
-            aabb.UpperBound.Y = pY + Radius;
+            aabb.LowerBound = new Vector2(pX - Radius, pY - Radius);
+            
+            aabb.UpperBound = new Vector2(pX + Radius, pY + Radius);
         }
 
         protected override sealed void ComputeProperties()

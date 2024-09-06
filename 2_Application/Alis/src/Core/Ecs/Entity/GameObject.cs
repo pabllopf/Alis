@@ -57,7 +57,7 @@ namespace Alis.Core.Ecs.Entity
             Id = Guid.NewGuid().ToString();
             Tag = GetType().Name;
             Transform = new Transform(new Vector2(0, 0), 0, new Vector2(1, 1));
-            Components = new Dictionary<string, AComponent>();
+            Components = new List<AComponent>();
         }
         
         /// <summary>
@@ -76,7 +76,7 @@ namespace Alis.Core.Ecs.Entity
             Id = id;
             Tag = tag;
             Transform = transform;
-            Components = new Dictionary<string, AComponent>();
+            Components = new List<AComponent>();
         }
         
         /// <summary>
@@ -88,7 +88,7 @@ namespace Alis.Core.Ecs.Entity
         /// <param name="tag">The tag</param>
         /// <param name="transform">The transform</param>
         /// <param name="components">The components</param>
-        public GameObject(bool isEnable, string name, string id, string tag, Transform transform, Dictionary<string, AComponent> components) : this()
+        public GameObject(bool isEnable, string name, string id, string tag, Transform transform, List<AComponent> components) : this()
         {
             IsEnable = isEnable;
             Name = name;
@@ -144,7 +144,7 @@ namespace Alis.Core.Ecs.Entity
         ///     Gets or sets the value of the components
         /// </summary>
         [JsonPropertyName("_Components_")]
-        public Dictionary<string, AComponent> Components { get; set; }
+        public List<AComponent> Components { get; set; }
 
         /// <summary>
         /// Gets or sets the value of the is static
@@ -159,14 +159,9 @@ namespace Alis.Core.Ecs.Entity
         /// <param name="component">The component</param>
         public void Add<T>(T component) where T : AComponent
         {
-            string name = component.GetType().FullName;
-            if (Components.ContainsKey(name ?? throw new InvalidOperationException()))
+            if (!Components.Contains(component))
             {
-                Components[name] = component;
-            }
-            else
-            {
-                Components.Add(name, component);
+                Components.Add(component);
             }
         }
         
@@ -177,10 +172,9 @@ namespace Alis.Core.Ecs.Entity
         /// <param name="component">The component</param>
         public void Remove<T>(T component) where T : AComponent
         {
-            if (component != null && Components.Count > 0)
+            if (Components.Contains(component))
             {
-                // Use the type of the component to remove it from the dictionary
-                Components.Remove( component.GetType().FullName ?? throw new InvalidOperationException());
+                Components.Remove(component);
             }
         }
         
@@ -191,12 +185,7 @@ namespace Alis.Core.Ecs.Entity
         /// <returns>The</returns>
         public T Get<T>() where T : AComponent
         {
-            if (Components.TryGetValue(typeof(T).FullName ?? throw new InvalidOperationException(), out AComponent component))
-            {
-                return (T)component;
-            }
-            
-            return null;
+            return Components.Find(i => i is T) as T;
         }
         
         /// <summary>
@@ -206,7 +195,7 @@ namespace Alis.Core.Ecs.Entity
         /// <returns>The bool</returns>
         public bool Contains<T>() where T : AComponent
         {
-            return Components.ContainsKey(typeof(T).FullName ?? throw new InvalidOperationException());
+            return Components.Contains(Get<T>());
         }
         
         /// <summary>
@@ -220,7 +209,7 @@ namespace Alis.Core.Ecs.Entity
         public void OnEnable()
         {
             IsEnable = true;
-            foreach (AComponent component in Components.Values)
+            foreach (AComponent component in Components)
             {
                 component.OnEnable();
             }
@@ -231,7 +220,7 @@ namespace Alis.Core.Ecs.Entity
         /// </summary>
         public void OnInit()
         {
-            foreach (AComponent component in Components.Values)
+            foreach (AComponent component in Components)
             {
                 component.Attach(this);
                 component.OnInit();
@@ -243,7 +232,7 @@ namespace Alis.Core.Ecs.Entity
         /// </summary>
         public void OnAwake()
         {
-            foreach (AComponent component in Components.Values)
+            foreach (AComponent component in Components)
             {
                 component.OnAwake();
             }
@@ -254,7 +243,7 @@ namespace Alis.Core.Ecs.Entity
         /// </summary>
         public void OnStart()
         {
-            foreach (AComponent component in Components.Values)
+            foreach (AComponent component in Components)
             {
                 component.OnStart();
             }
@@ -265,7 +254,7 @@ namespace Alis.Core.Ecs.Entity
         /// </summary>
         public void OnBeforeUpdate()
         {
-            foreach (AComponent component in Components.Values)
+            foreach (AComponent component in Components)
             {
                 component.OnBeforeUpdate();
             }
@@ -276,7 +265,7 @@ namespace Alis.Core.Ecs.Entity
         /// </summary>
         public void OnUpdate()
         {
-            foreach (AComponent component in Components.Values)
+            foreach (AComponent component in Components)
             {
                 component.OnUpdate();
             }
@@ -287,7 +276,7 @@ namespace Alis.Core.Ecs.Entity
         /// </summary>
         public void OnAfterUpdate()
         {
-            foreach (AComponent component in Components.Values)
+            foreach (AComponent component in Components)
             {
                 component.OnAfterUpdate();
             }
@@ -298,7 +287,7 @@ namespace Alis.Core.Ecs.Entity
         /// </summary>
         public void OnBeforeFixedUpdate()
         {
-            foreach (AComponent component in Components.Values)
+            foreach (AComponent component in Components)
             {
                 component.OnBeforeFixedUpdate();
             }
@@ -309,7 +298,7 @@ namespace Alis.Core.Ecs.Entity
         /// </summary>
         public void OnFixedUpdate()
         {
-            foreach (AComponent component in Components.Values)
+            foreach (AComponent component in Components)
             {
                 component.OnFixedUpdate();
             }
@@ -320,7 +309,7 @@ namespace Alis.Core.Ecs.Entity
         /// </summary>
         public void OnAfterFixedUpdate()
         {
-            foreach (AComponent component in Components.Values)
+            foreach (AComponent component in Components)
             {
                 component.OnAfterFixedUpdate();
             }
@@ -331,7 +320,7 @@ namespace Alis.Core.Ecs.Entity
         /// </summary>
         public void OnDispatchEvents()
         {
-            foreach (AComponent component in Components.Values)
+            foreach (AComponent component in Components)
             {
                 component.OnDispatchEvents();
             }
@@ -342,7 +331,7 @@ namespace Alis.Core.Ecs.Entity
         /// </summary>
         public void OnCalculate()
         {
-            foreach (AComponent component in Components.Values)
+            foreach (AComponent component in Components)
             {
                 component.OnCalculate();
             }
@@ -353,7 +342,7 @@ namespace Alis.Core.Ecs.Entity
         /// </summary>
         public void OnDraw()
         {
-            foreach (AComponent component in Components.Values)
+            foreach (AComponent component in Components)
             {
                 component.OnDraw();
             }
@@ -364,7 +353,7 @@ namespace Alis.Core.Ecs.Entity
         /// </summary>
         public void OnGui()
         {
-            foreach (AComponent component in Components.Values)
+            foreach (AComponent component in Components)
             {
                 component.OnGui();
             }
@@ -376,7 +365,7 @@ namespace Alis.Core.Ecs.Entity
         public void OnDisable()
         {
             IsEnable = false;
-            foreach (AComponent component in Components.Values)
+            foreach (AComponent component in Components)
             {
                 component.OnDisable();
             }
@@ -387,7 +376,7 @@ namespace Alis.Core.Ecs.Entity
         /// </summary>
         public void OnReset()
         {
-            foreach (AComponent component in Components.Values)
+            foreach (AComponent component in Components)
             {
                 component.OnReset();
             }
@@ -398,7 +387,7 @@ namespace Alis.Core.Ecs.Entity
         /// </summary>
         public void OnStop()
         {
-            foreach (AComponent component in Components.Values)
+            foreach (AComponent component in Components)
             {
                 component.OnStop();
             }
@@ -409,7 +398,7 @@ namespace Alis.Core.Ecs.Entity
         /// </summary>
         public void OnExit()
         {
-            foreach (AComponent component in Components.Values)
+            foreach (AComponent component in Components)
             {
                 component.OnExit();
             }
@@ -420,7 +409,7 @@ namespace Alis.Core.Ecs.Entity
         /// </summary>
         public void OnDestroy()
         {
-            foreach (AComponent component in Components.Values)
+            foreach (AComponent component in Components)
             {
                 component.OnDestroy();
             }
