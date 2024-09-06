@@ -56,7 +56,7 @@ namespace Alis.Test.Core.Ecs.Component.Collider
             Assert.Equal(new Vector2(0, 0), boxCollider.RelativePosition);
             Assert.Equal(BodyType.Static, boxCollider.BodyType);
             Assert.Equal(10.0f, boxCollider.Mass);
-            Assert.Equal(1.0f, boxCollider.GravityScale);
+            Assert.False(boxCollider.IgnoreGravity);
             Assert.Equal(Vector2.Zero, boxCollider.LinearVelocity);
         }
         
@@ -255,8 +255,8 @@ namespace Alis.Test.Core.Ecs.Component.Collider
         public void GravityScale_PropertySet_GetReturnsCorrectValue()
         {
             BoxCollider boxCollider = new BoxCollider();
-            boxCollider.GravityScale = 1.0f;
-            Assert.Equal(1.0f, boxCollider.GravityScale);
+            boxCollider.IgnoreGravity = false;
+            Assert.False(boxCollider.IgnoreGravity);
         }
         
         /// <summary>

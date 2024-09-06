@@ -141,11 +141,11 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Collider
         public void GravityScale_ValidInput()
         {
             BoxColliderBuilder boxColliderBuilder = new BoxColliderBuilder();
-            float gravityScale = 1.0f;
+            bool gravityScale = true;
             
-            boxColliderBuilder.GravityScale(gravityScale);
+            boxColliderBuilder.IgnoreGravity(gravityScale);
             
-            Assert.Equal(gravityScale, boxColliderBuilder.Build().GravityScale);
+            Assert.Equal(gravityScale, boxColliderBuilder.Build().IgnoreGravity);
         }
         
         /// <summary>
