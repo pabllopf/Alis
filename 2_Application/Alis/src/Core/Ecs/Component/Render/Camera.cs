@@ -149,5 +149,10 @@ namespace Alis.Core.Ecs.Component.Render
             
             //Viewport = new RectangleI((int) GameObject.Transform.Position.X, (int) GameObject.Transform.Position.Y, Viewport.W, Viewport.H);
         }
+
+        public override void OnExit()
+        {
+            Context.GraphicManager.UnAttach(this);
+        }
     }
 }

@@ -198,7 +198,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
             
             foreach (GameObject currentSceneGameObject in Context.SceneManager.CurrentScene.GameObjects)
             {
-                foreach (AComponent currentSceneGameObjectComponent in currentSceneGameObject.Components.Values)
+                foreach (AComponent currentSceneGameObjectComponent in currentSceneGameObject.Components)
                 {
                     currentSceneGameObjectComponent.OnPressKey(key);
                 }
@@ -218,7 +218,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
             
             foreach (GameObject currentSceneGameObject in Context.SceneManager.CurrentScene.GameObjects)
             {
-                foreach (AComponent currentSceneGameObjectComponent in currentSceneGameObject.Components.Values)
+                foreach (AComponent currentSceneGameObjectComponent in currentSceneGameObject.Components)
                 {
                     currentSceneGameObjectComponent.OnReleaseKey(key);
                 }
@@ -238,7 +238,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
             
             foreach (GameObject currentSceneGameObject in Context.SceneManager.CurrentScene.GameObjects)
             {
-                foreach (AComponent currentSceneGameObjectComponent in currentSceneGameObject.Components.Values)
+                foreach (AComponent currentSceneGameObjectComponent in currentSceneGameObject.Components)
                 {
                     currentSceneGameObjectComponent.OnPressDownKey(key);
                 }

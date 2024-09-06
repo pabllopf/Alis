@@ -320,6 +320,8 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="childIndex">The child shape index.</param>
         public override void ComputeAABB(out AABB aabb, ref Transform transform, int childIndex)
         {
+            aabb = new AABB();
+            
             // OPT: aabb.LowerBound = Transform.Multiply(Vertices[0], ref transform);
             var vert = Vertices[0];
             aabb.LowerBound.X = (vert.X * transform.q.R - vert.Y * transform.q.i) + transform.p.X;

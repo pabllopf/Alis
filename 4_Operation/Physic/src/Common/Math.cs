@@ -101,16 +101,7 @@ namespace Alis.Core.Physic.Common
             return new Vector2(v.X * A.ex.X + v.Y * A.ex.Y, v.X * A.ey.X + v.Y * A.ey.Y);
         }
 
-
-        // A^T * B
-        public static void MulT(ref Mat22 A, ref Mat22 B, out Mat22 C)
-        {
-            C.ex.X = A.ex.X * B.ex.X + A.ex.Y * B.ex.Y;
-            C.ex.Y = A.ey.X * B.ex.X + A.ey.Y * B.ex.Y;
-            C.ey.X = A.ex.X * B.ey.X + A.ex.Y * B.ey.Y;
-            C.ey.Y = A.ey.X * B.ey.X + A.ey.Y * B.ey.Y;
-        }
-
+        
         /// Multiply a matrix times a vector.
         public static Vector3 Mul(Mat33 A, Vector3 v)
         {
@@ -249,12 +240,7 @@ namespace Alis.Core.Physic.Common
         {
             return FloatInRange(Area(ref a, ref b, ref c), -tolerance, tolerance);
         }
-
-        public static void Cross(float s, ref Vector2 a, out Vector2 b)
-        {
-            b.X = -s * a.Y;
-            b.Y =  s * a.X;
-        }
+        
 
         public static bool FloatEquals(float value1, float value2)
         {
@@ -317,10 +303,8 @@ namespace Alis.Core.Physic.Common
         /// <param name="a22">The a22.</param>
         public Mat22(float a11, float a12, float a21, float a22)
         {
-            ex.X = a11;
-            ex.Y = a21;
-            ey.X = a12;
-            ey.Y = a22;
+            ex = new Vector2(a11, a21);
+            ey = new Vector2(a12, a22);
         }
 
         public Mat22 Inverse
@@ -335,11 +319,8 @@ namespace Alis.Core.Physic.Common
                 }
 
                 Mat22 result;
-                result.ex.X = det * d;
-                result.ex.Y = -det * c;
-
-                result.ey.X = -det * b;
-                result.ey.Y = det * a;
+                result.ex = new Vector2(det * d, -det * c);
+                result.ey = new Vector2(-det * b, det * a);
 
                 return result;
             }
@@ -582,8 +563,9 @@ namespace Alis.Core.Physic.Common
             // Opt: var result = Complex.Divide(left - right.p, right);
             float px = left.X - right.p.X;
             float py = left.Y - right.p.Y;
-            result.X = (px * right.q.R + py * right.q.i);
-            result.Y = (py * right.q.R - px * right.q.i);
+            result = new Vector2(
+                (px * right.q.R + py * right.q.i),
+                (py * right.q.R - px * right.q.i));
         }
 
         public static Transform Multiply(ref Transform left, ref Transform right)
@@ -659,8 +641,7 @@ namespace Alis.Core.Physic.Common
         /// <param name="beta">beta is a factor in [0,1], where 0 indicates alpha0.</param>
         public void GetTransform(out Transform xfb, float beta)
         {
-            xfb.p.X = (1.0f - beta) * C0.X + beta * C.X;
-            xfb.p.Y = (1.0f - beta) * C0.Y + beta * C.Y;
+            xfb.p = new Vector2((1.0f - beta) * C0.X + beta * C.X, (1.0f - beta) * C0.Y + beta * C.Y);
             float angle = (1.0f - beta) * A0 + beta * A;
             xfb.q = Complex.FromAngle(angle);
 
