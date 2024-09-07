@@ -44,12 +44,12 @@ namespace Alis.Extension.Profile.Test
         {
             ProfileData profileData = new ProfileData();
             long expectedMemoryUsage = 1024;
-            
+
             profileData.MemoryUsage = expectedMemoryUsage;
-            
+
             Assert.Equal(expectedMemoryUsage, profileData.MemoryUsage);
         }
-        
+
         /// <summary>
         ///     Tests that cpu usage set and get returns correct value
         /// </summary>
@@ -58,9 +58,9 @@ namespace Alis.Extension.Profile.Test
         {
             ProfileData profileData = new ProfileData();
             double expectedCpuUsage = 3.14;
-            
+
             profileData.CpuUsage = expectedCpuUsage;
-            
+
             Assert.Equal(expectedCpuUsage, profileData.CpuUsage);
         }
     }

@@ -46,11 +46,11 @@ namespace Alis.Test.Core.Ecs.Component.Render
         public void Animator_DefaultConstructor_ValidInput()
         {
             Animator animator = new Animator();
-            
+
             Assert.NotNull(animator);
             Assert.Empty(animator.Animations);
         }
-        
+
         /// <summary>
         ///     Tests that animator constructor with parameters valid input
         /// </summary>
@@ -59,11 +59,11 @@ namespace Alis.Test.Core.Ecs.Component.Render
         {
             List<Animation> animations = new List<Animation> {new Animation()};
             Animator animator = new Animator(animations);
-            
+
             Assert.NotNull(animator);
             Assert.Equal(animations, animator.Animations);
         }
-        
+
         /// <summary>
         ///     Tests that add animation valid input
         /// </summary>
@@ -72,12 +72,12 @@ namespace Alis.Test.Core.Ecs.Component.Render
         {
             Animator animator = new Animator();
             Animation animation = new Animation();
-            
+
             animator.AddAnimation(animation);
-            
+
             Assert.Contains(animation, animator.Animations);
         }
-        
+
         /// <summary>
         ///     Tests that on init valid input
         /// </summary>
@@ -86,12 +86,12 @@ namespace Alis.Test.Core.Ecs.Component.Render
         {
             List<Animation> animations = new List<Animation> {new Animation()};
             Animator animator = new Animator(animations);
-            
+
             animator.OnInit();
-            
+
             Assert.Equal(animations[0], animator.GetCurrentAnimation());
         }
-        
+
         /// <summary>
         ///     Tests that on awake valid input
         /// </summary>
@@ -99,12 +99,12 @@ namespace Alis.Test.Core.Ecs.Component.Render
         public void OnAwake_ValidInput()
         {
             Animator animator = new Animator();
-            
+
             animator.OnAwake();
-            
+
             Assert.True(animator.Timer.IsRunning);
         }
-        
+
         /// <summary>
         ///     Tests that change animation to valid input
         /// </summary>
@@ -113,12 +113,12 @@ namespace Alis.Test.Core.Ecs.Component.Render
         {
             List<Animation> animations = new List<Animation> {new Animation {Name = "Test"}};
             Animator animator = new Animator(animations);
-            
+
             animator.ChangeAnimationTo("Test");
-            
+
             Assert.Equal(animations[0], animator.GetCurrentAnimation());
         }
-        
+
         /// <summary>
         ///     Tests that get current animation valid input
         /// </summary>
@@ -127,12 +127,12 @@ namespace Alis.Test.Core.Ecs.Component.Render
         {
             List<Animation> animations = new List<Animation> {new Animation {Name = "Test"}};
             Animator animator = new Animator(animations);
-            
+
             Animation currentAnimation = animator.GetCurrentAnimation();
-            
+
             Assert.Equal(animations[0], currentAnimation);
         }
-        
+
         /// <summary>
         ///     Tests that name property set get returns correct value
         /// </summary>
@@ -143,7 +143,7 @@ namespace Alis.Test.Core.Ecs.Component.Render
             animation.Name = "TestAnimation";
             Assert.Equal("TestAnimation", animation.Name);
         }
-        
+
         /// <summary>
         ///     Tests that order property set get returns correct value
         /// </summary>
@@ -154,7 +154,7 @@ namespace Alis.Test.Core.Ecs.Component.Render
             animation.Order = 1;
             Assert.Equal(1, animation.Order);
         }
-        
+
         /// <summary>
         ///     Tests that speed property set get returns correct value
         /// </summary>
@@ -165,7 +165,7 @@ namespace Alis.Test.Core.Ecs.Component.Render
             animation.Speed = 1.0f;
             Assert.Equal(1.0f, animation.Speed);
         }
-        
+
         /// <summary>
         ///     Tests that has next when frames not empty returns true
         /// </summary>
@@ -176,7 +176,7 @@ namespace Alis.Test.Core.Ecs.Component.Render
             animation.AddFrame(new Frame());
             Assert.True(animation.HasNext());
         }
-        
+
         /// <summary>
         ///     Tests that has next when frames empty returns false
         /// </summary>
@@ -186,7 +186,7 @@ namespace Alis.Test.Core.Ecs.Component.Render
             Animation animation = new Animation();
             Assert.False(animation.HasNext());
         }
-        
+
         /// <summary>
         ///     Tests that next texture when called changes index
         /// </summary>
@@ -199,7 +199,7 @@ namespace Alis.Test.Core.Ecs.Component.Render
             Frame result = animation.NextTexture();
             Assert.Equal(frame, result);
         }
-        
+
         /// <summary>
         ///     Tests that add frame when called adds frame to frames
         /// </summary>
@@ -211,7 +211,7 @@ namespace Alis.Test.Core.Ecs.Component.Render
             animation.AddFrame(frame);
             Assert.Contains(frame, animation.Frames);
         }
-        
+
         /// <summary>
         ///     Tests that builder when called returns animator builder
         /// </summary>

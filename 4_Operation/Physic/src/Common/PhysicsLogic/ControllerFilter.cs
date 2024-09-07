@@ -1,4 +1,31 @@
-﻿// Copyright (c) 2017 Kastellanos Nikolaos
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:ControllerFilter.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
 
 /* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
@@ -12,7 +39,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
     [Flags]
     public enum ControllerCategory
     {
-        None  = 0x00000000,
+        None = 0x00000000,
         Cat01 = 0x00000001,
         Cat02 = 0x00000002,
         Cat03 = 0x00000004,
@@ -44,20 +71,17 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         Cat29 = 0x10000000,
         Cat30 = 0x20000000,
         Cat31 = 0x40000000,
-        All = int.MaxValue,
+        All = int.MaxValue
     }
 
     public struct ControllerFilter
     {
         public ControllerCategory ControllerCategories;
-        
-        public ControllerFilter(ControllerCategory controllerCategory)
-        {
-            this.ControllerCategories = controllerCategory;
-        }
+
+        public ControllerFilter(ControllerCategory controllerCategory) => ControllerCategories = controllerCategory;
 
         /// <summary>
-        /// Ignores the controller. The controller has no effect on this body.
+        ///     Ignores the controller. The controller has no effect on this body.
         /// </summary>
         /// <param name="type">The logic type.</param>
         public void IgnoreController(ControllerCategory category)
@@ -66,25 +90,21 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         }
 
         /// <summary>
-        /// Restore the controller. The controller affects this body.
+        ///     Restore the controller. The controller affects this body.
         /// </summary>
         /// <param name="category">The logic type.</param>
         public void RestoreController(ControllerCategory category)
-        {   
+        {
             ControllerCategories |= category;
         }
 
         /// <summary>
-        /// Determines whether this body ignores the the specified controller.
+        ///     Determines whether this body ignores the the specified controller.
         /// </summary>
         /// <param name="category">The logic type.</param>
         /// <returns>
-        /// 	<c>true</c> if the body has the specified flag; otherwise, <c>false</c>.
+        ///     <c>true</c> if the body has the specified flag; otherwise, <c>false</c>.
         /// </returns>
-        public bool IsControllerIgnored(ControllerCategory category)
-        {
-            return (ControllerCategories & category) != category;
-        }
-
+        public bool IsControllerIgnored(ControllerCategory category) => (ControllerCategories & category) != category;
     }
 }

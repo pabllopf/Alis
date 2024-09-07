@@ -48,7 +48,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             uint timestamp = 1234567890;
             int which = 1;
             byte axis = 2;
-            
+
             ControllerAxisEvent eventStruct = new ControllerAxisEvent
             {
                 type = eventType,
@@ -56,7 +56,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
                 which = which,
                 axis = axis
             };
-            
+
             Assert.Equal(eventType, eventStruct.type);
             Assert.Equal(timestamp, eventStruct.timestamp);
             Assert.Equal(which, eventStruct.which);

@@ -49,7 +49,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             int which = 1;
             byte button = 2;
             byte state = 1;
-            
+
             ControllerButtonEvent eventStruct = new ControllerButtonEvent
             {
                 type = eventType,
@@ -58,7 +58,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
                 button = button,
                 state = state
             };
-            
+
             Assert.Equal(eventType, eventStruct.type);
             Assert.Equal(timestamp, eventStruct.timestamp);
             Assert.Equal(which, eventStruct.which);

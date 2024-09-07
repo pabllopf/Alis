@@ -1,4 +1,33 @@
-﻿/* Original source Farseer Physics Engine:
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Polygon.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+/* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
@@ -59,7 +88,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
         protected List<DelaunayTriangle> _triangles;
 
         /// <summary>
-        /// Create a polygon from a list of at least 3 points with no duplicates.
+        ///     Create a polygon from a list of at least 3 points with no duplicates.
         /// </summary>
         /// <param name="points">A list of unique points</param>
         public Polygon(IList<PolygonPoint> points)
@@ -70,14 +99,14 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
             // Its something that often happen when importing polygon data from other formats
             if (points[0].Equals(points[points.Count - 1])) points.RemoveAt(points.Count - 1);
 
-            _points.AddRange(points.Cast<TriangulationPoint>());
+            _points.AddRange(points);
         }
 
         /// <summary>
-        /// Create a polygon from a list of at least 3 points with no duplicates.
+        ///     Create a polygon from a list of at least 3 points with no duplicates.
         /// </summary>
         /// <param name="points">A list of unique points.</param>
-        public Polygon(IEnumerable<PolygonPoint> points) : this((points as IList<PolygonPoint>) ?? points.ToArray())
+        public Polygon(IEnumerable<PolygonPoint> points) : this(points as IList<PolygonPoint> ?? points.ToArray())
         {
         }
 
@@ -85,87 +114,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
         {
         }
 
-        public IList<Polygon> Holes
-        {
-            get { return _holes; }
-        }
-
-        #region Triangulatable Members
-
-        public TriangulationMode TriangulationMode
-        {
-            get { return TriangulationMode.Polygon; }
-        }
-
-        public IList<TriangulationPoint> Points
-        {
-            get { return _points; }
-        }
-
-        public IList<DelaunayTriangle> Triangles
-        {
-            get { return _triangles; }
-        }
-
-        public void AddTriangle(DelaunayTriangle t)
-        {
-            _triangles.Add(t);
-        }
-
-        public void AddTriangles(IEnumerable<DelaunayTriangle> list)
-        {
-            _triangles.AddRange(list);
-        }
-
-        public void ClearTriangles()
-        {
-            if (_triangles != null) _triangles.Clear();
-        }
-
-        /// <summary>
-        /// Creates constraints and populates the context with points
-        /// </summary>
-        /// <param name="tcx">The context</param>
-        public void PrepareTriangulation(TriangulationContext tcx)
-        {
-            if (_triangles == null)
-            {
-                _triangles = new List<DelaunayTriangle>(_points.Count);
-            }
-            else
-            {
-                _triangles.Clear();
-            }
-
-            // Outer constraints
-            for (int i = 0; i < _points.Count - 1; i++)
-            {
-                tcx.NewConstraint(_points[i], _points[i + 1]);
-            }
-            tcx.NewConstraint(_points[0], _points[_points.Count - 1]);
-            tcx.Points.AddRange(_points);
-
-            // Hole constraints
-            if (_holes != null)
-            {
-                foreach (Polygon p in _holes)
-                {
-                    for (int i = 0; i < p._points.Count - 1; i++)
-                    {
-                        tcx.NewConstraint(p._points[i], p._points[i + 1]);
-                    }
-                    tcx.NewConstraint(p._points[0], p._points[p._points.Count - 1]);
-                    tcx.Points.AddRange(p._points);
-                }
-            }
-
-            if (_steinerPoints != null)
-            {
-                tcx.Points.AddRange(_steinerPoints);
-            }
-        }
-
-        #endregion
+        public IList<Polygon> Holes => _holes;
 
         public void AddSteinerPoint(TriangulationPoint point)
         {
@@ -173,6 +122,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
             {
                 _steinerPoints = new List<TriangulationPoint>();
             }
+
             _steinerPoints.Add(point);
         }
 
@@ -182,6 +132,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
             {
                 _steinerPoints = new List<TriangulationPoint>();
             }
+
             _steinerPoints.AddRange(points);
         }
 
@@ -194,7 +145,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
         }
 
         /// <summary>
-        /// Add a hole to the polygon.
+        ///     Add a hole to the polygon.
         /// </summary>
         /// <param name="poly">A subtraction polygon fully contained inside this polygon.</param>
         public void AddHole(Polygon poly)
@@ -206,7 +157,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
         }
 
         /// <summary>
-        /// Inserts newPoint after point.
+        ///     Inserts newPoint after point.
         /// </summary>
         /// <param name="point">The point to insert after in the polygon</param>
         /// <param name="newPoint">The point to insert into the polygon</param>
@@ -225,7 +176,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
         }
 
         /// <summary>
-        /// Inserts list (after last point in polygon?)
+        ///     Inserts list (after last point in polygon?)
         /// </summary>
         /// <param name="list"></param>
         public void AddPoints(IEnumerable<PolygonPoint> list)
@@ -239,16 +190,18 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
                     p.Next = _last.Next;
                     _last.Next = p;
                 }
+
                 _last = p;
                 _points.Add(p);
             }
+
             first = (PolygonPoint) _points[0];
             _last.Next = first;
             first.Previous = _last;
         }
 
         /// <summary>
-        /// Adds a point after the last in the polygon.
+        ///     Adds a point after the last in the polygon.
         /// </summary>
         /// <param name="p">The point to add</param>
         public void AddPoint(PolygonPoint p)
@@ -260,7 +213,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
         }
 
         /// <summary>
-        /// Removes a point from the polygon.
+        ///     Removes a point from the polygon.
         /// </summary>
         /// <param name="p"></param>
         public void RemovePoint(PolygonPoint p)
@@ -273,5 +226,75 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
             next.Previous = prev;
             _points.Remove(p);
         }
+
+        #region Triangulatable Members
+
+        public TriangulationMode TriangulationMode => TriangulationMode.Polygon;
+
+        public IList<TriangulationPoint> Points => _points;
+
+        public IList<DelaunayTriangle> Triangles => _triangles;
+
+        public void AddTriangle(DelaunayTriangle t)
+        {
+            _triangles.Add(t);
+        }
+
+        public void AddTriangles(IEnumerable<DelaunayTriangle> list)
+        {
+            _triangles.AddRange(list);
+        }
+
+        public void ClearTriangles()
+        {
+            if (_triangles != null) _triangles.Clear();
+        }
+
+        /// <summary>
+        ///     Creates constraints and populates the context with points
+        /// </summary>
+        /// <param name="tcx">The context</param>
+        public void PrepareTriangulation(TriangulationContext tcx)
+        {
+            if (_triangles == null)
+            {
+                _triangles = new List<DelaunayTriangle>(_points.Count);
+            }
+            else
+            {
+                _triangles.Clear();
+            }
+
+            // Outer constraints
+            for (int i = 0; i < _points.Count - 1; i++)
+            {
+                tcx.NewConstraint(_points[i], _points[i + 1]);
+            }
+
+            tcx.NewConstraint(_points[0], _points[_points.Count - 1]);
+            tcx.Points.AddRange(_points);
+
+            // Hole constraints
+            if (_holes != null)
+            {
+                foreach (Polygon p in _holes)
+                {
+                    for (int i = 0; i < p._points.Count - 1; i++)
+                    {
+                        tcx.NewConstraint(p._points[i], p._points[i + 1]);
+                    }
+
+                    tcx.NewConstraint(p._points[0], p._points[p._points.Count - 1]);
+                    tcx.Points.AddRange(p._points);
+                }
+            }
+
+            if (_steinerPoints != null)
+            {
+                tcx.Points.AddRange(_steinerPoints);
+            }
+        }
+
+        #endregion
     }
 }

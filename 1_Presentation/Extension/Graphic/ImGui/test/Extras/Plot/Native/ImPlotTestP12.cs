@@ -47,7 +47,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram("label", new byte[] {1, 2, 3}, 3, 10, 1.0, new ImPlotRange()));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram byte array with flags throws dll not found exception
         /// </summary>
@@ -56,7 +56,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram("label", new byte[] {1, 2, 3}, 3, 10, 1.0, new ImPlotRange(), ImPlotHistogramFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram short array throws dll not found exception
         /// </summary>
@@ -65,7 +65,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram("label", new short[] {1, 2, 3}, 3));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram short array with bins throws dll not found exception
         /// </summary>
@@ -74,7 +74,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram("label", new short[] {1, 2, 3}, 3, 10));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram short array with bar scale throws dll not found exception
         /// </summary>
@@ -83,7 +83,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram("label", new short[] {1, 2, 3}, 3, 10, 1.0));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram short array with range throws dll not found exception
         /// </summary>
@@ -92,7 +92,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram("label", new short[] {1, 2, 3}, 3, 10, 1.0, new ImPlotRange()));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram short array with flags throws dll not found exception
         /// </summary>
@@ -101,7 +101,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram("label", new short[] {1, 2, 3}, 3, 10, 1.0, new ImPlotRange(), ImPlotHistogramFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram u short array throws dll not found exception
         /// </summary>
@@ -110,7 +110,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram("label", new ushort[] {1, 2, 3}, 3));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram u short array with bins throws dll not found exception
         /// </summary>
@@ -119,7 +119,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram("label", new ushort[] {1, 2, 3}, 3, 10));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram u short array with bar scale throws dll not found exception
         /// </summary>
@@ -128,7 +128,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram("label", new ushort[] {1, 2, 3}, 3, 10, 1.0));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram u short array with range throws dll not found exception
         /// </summary>
@@ -137,7 +137,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram("label", new ushort[] {1, 2, 3}, 3, 10, 1.0, new ImPlotRange()));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram u short array with flags throws dll not found exception
         /// </summary>
@@ -146,7 +146,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram("label", new ushort[] {1, 2, 3}, 3, 10, 1.0, new ImPlotRange(), ImPlotHistogramFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram int array throws dll not found exception
         /// </summary>
@@ -155,7 +155,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram("label", new[] {1, 2, 3}, 3));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram int array with bins throws dll not found exception
         /// </summary>
@@ -164,7 +164,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram("label", new[] {1, 2, 3}, 3, 10));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram int array with bar scale throws dll not found exception
         /// </summary>
@@ -173,7 +173,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram("label", new[] {1, 2, 3}, 3, 10, 1.0));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram int array with range throws dll not found exception
         /// </summary>
@@ -182,7 +182,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram("label", new[] {1, 2, 3}, 3, 10, 1.0, new ImPlotRange()));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram int array with flags throws dll not found exception
         /// </summary>
@@ -191,7 +191,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram("label", new[] {1, 2, 3}, 3, 10, 1.0, new ImPlotRange(), ImPlotHistogramFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram u int array throws dll not found exception
         /// </summary>
@@ -200,7 +200,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram("label", new uint[] {1, 2, 3}, 3));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram u int array with bins throws dll not found exception
         /// </summary>
@@ -209,7 +209,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram("label", new uint[] {1, 2, 3}, 3, 10));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram u int array with bar scale throws dll not found exception
         /// </summary>
@@ -218,7 +218,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram("label", new uint[] {1, 2, 3}, 3, 10, 1.0));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram u int array with range throws dll not found exception
         /// </summary>
@@ -227,7 +227,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram("label", new uint[] {1, 2, 3}, 3, 10, 1.0, new ImPlotRange()));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram u int array with flags throws dll not found exception
         /// </summary>
@@ -236,7 +236,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram("label", new uint[] {1, 2, 3}, 3, 10, 1.0, new ImPlotRange(), ImPlotHistogramFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram long array throws dll not found exception
         /// </summary>
@@ -245,7 +245,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram("label", new long[] {1, 2, 3}, 3));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram long array with bins throws dll not found exception
         /// </summary>
@@ -254,7 +254,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram("label", new long[] {1, 2, 3}, 3, 10));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram long array with bar scale throws dll not found exception
         /// </summary>
@@ -263,7 +263,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram("label", new long[] {1, 2, 3}, 3, 10, 1.0));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram long array with range throws dll not found exception
         /// </summary>
@@ -272,7 +272,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram("label", new long[] {1, 2, 3}, 3, 10, 1.0, new ImPlotRange()));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram long array with flags throws dll not found exception
         /// </summary>
@@ -281,7 +281,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram("label", new long[] {1, 2, 3}, 3, 10, 1.0, new ImPlotRange(), ImPlotHistogramFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram u long array throws dll not found exception
         /// </summary>
@@ -290,7 +290,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram("label", new ulong[] {1, 2, 3}, 3));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram u long array with bins throws dll not found exception
         /// </summary>
@@ -299,7 +299,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram("label", new ulong[] {1, 2, 3}, 3, 10));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram u long array with bar scale throws dll not found exception
         /// </summary>
@@ -308,7 +308,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram("label", new ulong[] {1, 2, 3}, 3, 10, 1.0));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram u long array with range throws dll not found exception
         /// </summary>
@@ -317,7 +317,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram("label", new ulong[] {1, 2, 3}, 3, 10, 1.0, new ImPlotRange()));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram u long array with flags throws dll not found exception
         /// </summary>
@@ -326,7 +326,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram("label", new ulong[] {1, 2, 3}, 3, 10, 1.0, new ImPlotRange(), ImPlotHistogramFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram 2 d float throws dll not found exception
         /// </summary>
@@ -336,7 +336,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             float xs = 1.0f, ys = 2.0f;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram2D("label", ref xs, ref ys, 3));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram 2 d float with x bins throws dll not found exception
         /// </summary>
@@ -346,7 +346,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             float xs = 1.0f, ys = 2.0f;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram2D("label", ref xs, ref ys, 3, 10));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram 2 d float with xy bins throws dll not found exception
         /// </summary>
@@ -356,7 +356,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             float xs = 1.0f, ys = 2.0f;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram2D("label", ref xs, ref ys, 3, 10, 10));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram 2 d float with range throws dll not found exception
         /// </summary>
@@ -366,7 +366,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             float xs = 1.0f, ys = 2.0f;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram2D("label", ref xs, ref ys, 3, 10, 10, new ImPlotRect()));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram 2 d float with flags throws dll not found exception
         /// </summary>
@@ -376,7 +376,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             float xs = 1.0f, ys = 2.0f;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram2D("label", ref xs, ref ys, 3, 10, 10, new ImPlotRect(), ImPlotHistogramFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram 2 d double throws dll not found exception
         /// </summary>
@@ -386,7 +386,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             double xs = 1.0, ys = 2.0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram2D("label", ref xs, ref ys, 3));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram 2 d double with x bins throws dll not found exception
         /// </summary>
@@ -396,7 +396,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             double xs = 1.0, ys = 2.0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram2D("label", ref xs, ref ys, 3, 10));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram 2 d double with xy bins throws dll not found exception
         /// </summary>
@@ -406,7 +406,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             double xs = 1.0, ys = 2.0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram2D("label", ref xs, ref ys, 3, 10, 10));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram 2 d double with range throws dll not found exception
         /// </summary>
@@ -416,7 +416,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             double xs = 1.0, ys = 2.0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram2D("label", ref xs, ref ys, 3, 10, 10, new ImPlotRect()));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram 2 d double with flags throws dll not found exception
         /// </summary>
@@ -426,7 +426,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             double xs = 1.0, ys = 2.0;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram2D("label", ref xs, ref ys, 3, 10, 10, new ImPlotRect(), ImPlotHistogramFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram 2 d s byte throws dll not found exception
         /// </summary>
@@ -436,7 +436,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             sbyte xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram2D("label", ref xs, ref ys, 3));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram 2 d s byte with x bins throws dll not found exception
         /// </summary>
@@ -446,7 +446,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             sbyte xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram2D("label", ref xs, ref ys, 3, 10));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram 2 d s byte with xy bins throws dll not found exception
         /// </summary>
@@ -456,7 +456,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             sbyte xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram2D("label", ref xs, ref ys, 3, 10, 10));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram 2 d s byte with range throws dll not found exception
         /// </summary>
@@ -466,7 +466,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             sbyte xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram2D("label", ref xs, ref ys, 3, 10, 10, new ImPlotRect()));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram 2 d s byte with flags throws dll not found exception
         /// </summary>
@@ -476,7 +476,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             sbyte xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram2D("label", ref xs, ref ys, 3, 10, 10, new ImPlotRect(), ImPlotHistogramFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram 2 d byte throws dll not found exception
         /// </summary>
@@ -486,7 +486,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             byte xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram2D("label", ref xs, ref ys, 3));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram 2 d byte with x bins throws dll not found exception
         /// </summary>
@@ -496,7 +496,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             byte xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram2D("label", ref xs, ref ys, 3, 10));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram 2 d byte with xy bins throws dll not found exception
         /// </summary>
@@ -506,7 +506,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             byte xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram2D("label", ref xs, ref ys, 3, 10, 10));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram 2 d byte with range throws dll not found exception
         /// </summary>
@@ -516,7 +516,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Plot.Native
             byte xs = 1, ys = 2;
             Assert.Throws<DllNotFoundException>(() => ImPlot.PlotHistogram2D("label", ref xs, ref ys, 3, 10, 10, new ImPlotRect()));
         }
-        
+
         /// <summary>
         ///     Tests that plot histogram 2 d byte with flags throws dll not found exception
         /// </summary>

@@ -1,4 +1,33 @@
-﻿/* Original source Farseer Physics Engine:
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:ChainHull.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+/* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
@@ -12,19 +41,18 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 namespace Alis.Core.Physic.Common.ConvexHull
 {
     /// <summary>
-    /// Andrew's Monotone Chain Convex Hull algorithm.
-    /// Used to get the convex hull of a point cloud.
-    /// 
-    /// Source: http://www.softsurfer.com/Archive/algorithm_0109/algorithm_0109.htm
+    ///     Andrew's Monotone Chain Convex Hull algorithm.
+    ///     Used to get the convex hull of a point cloud.
+    ///     Source: http://www.softsurfer.com/Archive/algorithm_0109/algorithm_0109.htm
     /// </summary>
     public static class ChainHull
     {
         //Copyright 2001, softSurfer (www.softsurfer.com)
 
-        private static PointComparer _pointComparer = new PointComparer();
+        private static readonly PointComparer _pointComparer = new PointComparer();
 
         /// <summary>
-        /// Returns the convex hull from the given vertices..
+        ///     Returns the convex hull from the given vertices..
         /// </summary>
         public static Vertices GetConvexHull(Vertices vertices)
         {
@@ -81,6 +109,7 @@ namespace Alis.Core.Physic.Common.ConvexHull
                 if (pointSet[i].X != xmax)
                     break;
             }
+
             int maxmin = i + 1;
 
             // Compute the lower hull on the stack H
@@ -89,7 +118,7 @@ namespace Alis.Core.Physic.Common.ConvexHull
             while (++i <= maxmin)
             {
                 // the lower line joins P[minmin] with P[maxmin]
-                if (MathUtils.Area(pointSet[minmin], pointSet[maxmin], pointSet[i]) >= 0 && i < maxmin)
+                if ((MathUtils.Area(pointSet[minmin], pointSet[maxmin], pointSet[i]) >= 0) && (i < maxmin))
                     continue; // ignore P[i] above or on the lower line
 
                 while (top > 0) // there are at least 2 points on the stack
@@ -100,6 +129,7 @@ namespace Alis.Core.Physic.Common.ConvexHull
 
                     top--; // pop top point off stack
                 }
+
                 h[++top] = pointSet[i]; // push P[i] onto stack
             }
 
@@ -111,7 +141,7 @@ namespace Alis.Core.Physic.Common.ConvexHull
             while (--i >= minmax)
             {
                 // the upper line joins P[maxmax] with P[minmax]
-                if (MathUtils.Area(pointSet[maxmax], pointSet[minmax], pointSet[i]) >= 0 && i > minmax)
+                if ((MathUtils.Area(pointSet[maxmax], pointSet[minmax], pointSet[i]) >= 0) && (i > minmax))
                     continue; // ignore P[i] below or on the upper line
 
                 while (top > bot) // at least 2 points on the upper stack

@@ -1,29 +1,58 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:FrictionJoint.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 /* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
 
 /*
-* Farseer Physics Engine:
-* Copyright (c) 2012 Ian Qvist
-* 
-* Original source Box2D:
-* Copyright (c) 2006-2011 Erin Catto http://www.box2d.org 
-* 
-* This software is provided 'as-is', without any express or implied 
-* warranty.  In no event will the authors be held liable for any damages 
-* arising from the use of this software. 
-* Permission is granted to anyone to use this software for any purpose, 
-* including commercial applications, and to alter it and redistribute it 
-* freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
-* claim that you wrote the original software. If you use this software 
-* in a product, an acknowledgment in the product documentation would be 
-* appreciated but is not required. 
-* 2. Altered source versions must be plainly marked as such, and must not be 
-* misrepresented as being the original software. 
-* 3. This notice may not be removed or altered from any source distribution. 
-*/
+ * Farseer Physics Engine:
+ * Copyright (c) 2012 Ian Qvist
+ *
+ * Original source Box2D:
+ * Copyright (c) 2006-2011 Erin Catto http://www.box2d.org
+ *
+ * This software is provided 'as-is', without any express or implied
+ * warranty.  In no event will the authors be held liable for any damages
+ * arising from the use of this software.
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely, subject to the following restrictions:
+ * 1. The origin of this software must not be misrepresented; you must not
+ * claim that you wrote the original software. If you use this software
+ * in a product, an acknowledgment in the product documentation would be
+ * appreciated but is not required.
+ * 2. Altered source versions must be plainly marked as such, and must not be
+ * misrepresented as being the original software.
+ * 3. This notice may not be removed or altered from any source distribution.
+ */
 
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
@@ -47,36 +76,35 @@ namespace Alis.Core.Physic.Dynamics.Joints
     // K = invI1 + invI2
 
     /// <summary>
-    /// Friction joint. This is used for top-down friction.
-    /// It provides 2D translational friction and angular friction.
+    ///     Friction joint. This is used for top-down friction.
+    ///     It provides 2D translational friction and angular friction.
     /// </summary>
     public class FrictionJoint : Joint
     {
-        // Solver shared
-        private Vector2 _linearImpulse;
         private float _angularImpulse;
+        private float _angularMass;
 
         // Solver temp
         private int _indexA;
         private int _indexB;
-        private Vector2 _rA;
-        private Vector2 _rB;
-        private Vector2 _localCenterA;
-        private Vector2 _localCenterB;
-        private float _invMassA;
-        private float _invMassB;
         private float _invIA;
         private float _invIB;
-        private float _angularMass;
-        private Mat22 _linearMass;
+        private float _invMassA;
 
-        internal FrictionJoint()
-        {
-            JointType = JointType.Friction;
-        }
+        private float _invMassB;
+
+        // Solver shared
+        private Vector2 _linearImpulse;
+        private Mat22 _linearMass;
+        private Vector2 _localCenterA;
+        private Vector2 _localCenterB;
+        private Vector2 _rA;
+        private Vector2 _rB;
+
+        internal FrictionJoint() => JointType = JointType.Friction;
 
         /// <summary>
-        /// Constructor for FrictionJoint.
+        ///     Constructor for FrictionJoint.
         /// </summary>
         /// <param name="bodyA"></param>
         /// <param name="bodyB"></param>
@@ -100,46 +128,40 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// The local anchor point on BodyA
+        ///     The local anchor point on BodyA
         /// </summary>
         public Vector2 LocalAnchorA { get; set; }
 
         /// <summary>
-        /// The local anchor point on BodyB
+        ///     The local anchor point on BodyB
         /// </summary>
         public Vector2 LocalAnchorB { get; set; }
 
         public override Vector2 WorldAnchorA
         {
-            get { return BodyA.GetWorldPoint(LocalAnchorA); }
-            set { LocalAnchorA = BodyA.GetLocalPoint(value); }
+            get => BodyA.GetWorldPoint(LocalAnchorA);
+            set => LocalAnchorA = BodyA.GetLocalPoint(value);
         }
 
         public override Vector2 WorldAnchorB
         {
-            get { return BodyB.GetWorldPoint(LocalAnchorB); }
-            set { LocalAnchorB = BodyB.GetLocalPoint(value); }
+            get => BodyB.GetWorldPoint(LocalAnchorB);
+            set => LocalAnchorB = BodyB.GetLocalPoint(value);
         }
 
         /// <summary>
-        /// The maximum friction force in N.
+        ///     The maximum friction force in N.
         /// </summary>
         public float MaxForce { get; set; }
 
         /// <summary>
-        /// The maximum friction torque in N-m.
+        ///     The maximum friction torque in N-m.
         /// </summary>
         public float MaxTorque { get; set; }
 
-        public override Vector2 GetReactionForce(float invDt)
-        {
-            return invDt * _linearImpulse;
-        }
+        public override Vector2 GetReactionForce(float invDt) => invDt * _linearImpulse;
 
-        public override float GetReactionTorque(float invDt)
-        {
-            return invDt * _angularImpulse;
-        }
+        public override float GetReactionTorque(float invDt) => invDt * _angularImpulse;
 
         internal override void InitVelocityConstraints(ref SolverData data)
         {
@@ -274,9 +296,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.velocities[_indexB].w = wB;
         }
 
-        internal override bool SolvePositionConstraints(ref SolverData data)
-        {
-            return true;
-        }
+        internal override bool SolvePositionConstraints(ref SolverData data) => true;
     }
 }

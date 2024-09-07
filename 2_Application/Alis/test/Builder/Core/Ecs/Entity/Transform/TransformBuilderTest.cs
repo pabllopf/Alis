@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Builder.Core.Ecs.Entity.Transform;
-using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Xunit;
 
@@ -46,10 +45,10 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.Transform
         public void TransformBuilder_DefaultConstructor_ValidInput()
         {
             TransformBuilder transformBuilder = new TransformBuilder();
-            
+
             Assert.NotNull(transformBuilder);
         }
-        
+
         /// <summary>
         ///     Tests that build valid input
         /// </summary>
@@ -57,10 +56,10 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.Transform
         public void Build_ValidInput()
         {
             TransformBuilder transformBuilder = new TransformBuilder();
-            
+
             Alis.Core.Aspect.Math.Transform transform = transformBuilder.Build();
         }
-        
+
         /// <summary>
         ///     Tests that position valid input
         /// </summary>
@@ -68,12 +67,12 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.Transform
         public void Position_ValidInput()
         {
             TransformBuilder transformBuilder = new TransformBuilder();
-            
+
             transformBuilder.Position(1.0f, 2.0f);
-            
+
             Assert.Equal(new Vector2(1.0f, 2.0f), transformBuilder.Build().Position);
         }
-        
+
         /// <summary>
         ///     Tests that rotation valid input
         /// </summary>
@@ -81,12 +80,12 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.Transform
         public void Rotation_ValidInput()
         {
             TransformBuilder transformBuilder = new TransformBuilder();
-            
+
             transformBuilder.Rotation(45.0f);
-            
+
             Assert.Equal(45.0f, transformBuilder.Build().Rotation);
         }
-        
+
         /// <summary>
         ///     Tests that scale valid input
         /// </summary>
@@ -94,9 +93,9 @@ namespace Alis.Test.Builder.Core.Ecs.Entity.Transform
         public void Scale_ValidInput()
         {
             TransformBuilder transformBuilder = new TransformBuilder();
-            
+
             transformBuilder.Scale(3.0f, 4.0f);
-            
+
             Assert.Equal(new Vector2(3.0f, 4.0f), transformBuilder.Build().Scale);
         }
     }

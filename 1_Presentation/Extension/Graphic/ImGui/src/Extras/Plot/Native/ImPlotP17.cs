@@ -52,7 +52,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_S64PtrS64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, barSize, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -65,7 +65,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_U64PtrU64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, barSize, 0, 0, sizeof(ulong));
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -79,7 +79,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_U64PtrU64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, barSize, flags, 0, sizeof(ulong));
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -94,7 +94,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_U64PtrU64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, barSize, flags, offset, sizeof(ulong));
         }
-        
+
         /// <summary>
         ///     Plots the bars using the specified label id
         /// </summary>
@@ -110,7 +110,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBars_U64PtrU64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, barSize, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the bars g using the specified label id
         /// </summary>
@@ -123,7 +123,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBarsG(Encoding.UTF8.GetBytes(labelId), getter, data, count, barSize, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bars g using the specified label id
         /// </summary>
@@ -137,7 +137,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotBarsG(Encoding.UTF8.GetBytes(labelId), getter, data, count, barSize, flags);
         }
-        
+
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
@@ -149,7 +149,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotDigital_FloatPtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, sizeof(float));
         }
-        
+
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
@@ -162,7 +162,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotDigital_FloatPtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, 0, sizeof(float));
         }
-        
+
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
@@ -176,7 +176,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotDigital_FloatPtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, sizeof(float));
         }
-        
+
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
@@ -191,7 +191,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotDigital_FloatPtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
@@ -203,7 +203,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotDigital_doublePtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, sizeof(double));
         }
-        
+
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
@@ -216,7 +216,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotDigital_doublePtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, 0, sizeof(double));
         }
-        
+
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
@@ -230,7 +230,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotDigital_doublePtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, sizeof(double));
         }
-        
+
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
@@ -245,7 +245,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotDigital_doublePtr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
@@ -257,7 +257,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotDigital_S8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, sizeof(sbyte));
         }
-        
+
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
@@ -270,7 +270,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotDigital_S8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, 0, sizeof(sbyte));
         }
-        
+
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
@@ -284,7 +284,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotDigital_S8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, sizeof(sbyte));
         }
-        
+
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
@@ -299,7 +299,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotDigital_S8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
@@ -311,7 +311,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotDigital_U8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, sizeof(byte));
         }
-        
+
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
@@ -324,7 +324,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotDigital_U8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, 0, sizeof(byte));
         }
-        
+
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
@@ -338,7 +338,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotDigital_U8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, sizeof(byte));
         }
-        
+
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
@@ -353,7 +353,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotDigital_U8Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
@@ -365,7 +365,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotDigital_S16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, sizeof(short));
         }
-        
+
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
@@ -378,7 +378,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotDigital_S16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, 0, sizeof(short));
         }
-        
+
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
@@ -392,7 +392,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotDigital_S16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, sizeof(short));
         }
-        
+
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
@@ -407,7 +407,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotDigital_S16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
@@ -419,7 +419,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotDigital_U16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, sizeof(ushort));
         }
-        
+
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
@@ -432,7 +432,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotDigital_U16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, 0, sizeof(ushort));
         }
-        
+
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
@@ -446,7 +446,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotDigital_U16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, sizeof(ushort));
         }
-        
+
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
@@ -461,7 +461,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotDigital_U16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
@@ -473,7 +473,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotDigital_S32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, sizeof(int));
         }
-        
+
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
@@ -486,7 +486,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotDigital_S32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, 0, sizeof(int));
         }
-        
+
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
@@ -500,7 +500,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotDigital_S32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, sizeof(int));
         }
-        
+
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
@@ -515,7 +515,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotDigital_S32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
@@ -527,7 +527,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotDigital_U32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, sizeof(uint));
         }
-        
+
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
@@ -540,7 +540,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotDigital_U32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, 0, sizeof(uint));
         }
-        
+
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
@@ -554,7 +554,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotDigital_U32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, sizeof(uint));
         }
-        
+
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
@@ -569,7 +569,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotDigital_U32Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
@@ -581,7 +581,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotDigital_S64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, sizeof(long));
         }
-        
+
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
@@ -594,7 +594,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotDigital_S64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, 0, sizeof(long));
         }
-        
+
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
@@ -608,7 +608,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotDigital_S64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, sizeof(long));
         }
-        
+
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
@@ -623,7 +623,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotDigital_S64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
@@ -635,7 +635,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotDigital_U64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, 0, 0, sizeof(ulong));
         }
-        
+
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
@@ -648,7 +648,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotDigital_U64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, 0, sizeof(ulong));
         }
-        
+
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
@@ -662,7 +662,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotDigital_U64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, sizeof(ulong));
         }
-        
+
         /// <summary>
         ///     Plots the digital using the specified label id
         /// </summary>
@@ -677,7 +677,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotDigital_U64Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, flags, offset, stride);
         }
-        
+
         /// <summary>
         ///     Plots the digital g using the specified label id
         /// </summary>
@@ -689,7 +689,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotDigitalG(Encoding.UTF8.GetBytes(labelId), getter, data, count, 0);
         }
-        
+
         /// <summary>
         ///     Plots the digital g using the specified label id
         /// </summary>
@@ -702,7 +702,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotDigitalG(Encoding.UTF8.GetBytes(labelId), getter, data, count, flags);
         }
-        
+
         /// <summary>
         ///     Plots the dummy using the specified label id
         /// </summary>
@@ -711,7 +711,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotDummy(Encoding.UTF8.GetBytes(labelId), 0);
         }
-        
+
         /// <summary>
         ///     Plots the dummy using the specified label id
         /// </summary>
@@ -721,7 +721,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotDummy(Encoding.UTF8.GetBytes(labelId), flags);
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>
@@ -734,7 +734,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_PlotErrorBars_FloatPtrFloatPtrFloatPtrInt(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, err, count, 0, 0, sizeof(float));
         }
-        
+
         /// <summary>
         ///     Plots the error bars using the specified label id
         /// </summary>

@@ -44,12 +44,12 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Square
         public void Constructor_InitializesPropertiesCorrectly()
         {
             SquareF square = new SquareF {X = 1.0f, Y = 2.0f, W = 3.0f};
-            
+
             Assert.Equal(1.0f, square.X);
             Assert.Equal(2.0f, square.Y);
             Assert.Equal(3.0f, square.W);
         }
-        
+
         /// <summary>
         ///     Tests that properties set values correctly
         /// </summary>
@@ -60,7 +60,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Square
         public void Properties_SetValuesCorrectly(float x, float y, float w)
         {
             SquareF square = new SquareF {X = x, Y = y, W = w};
-            
+
             Assert.Equal(x, square.X);
             Assert.Equal(y, square.Y);
             Assert.Equal(w, square.W);

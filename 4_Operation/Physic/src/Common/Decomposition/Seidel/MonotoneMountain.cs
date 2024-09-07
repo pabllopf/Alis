@@ -1,4 +1,33 @@
-﻿/* Original source Farseer Physics Engine:
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:MonotoneMountain.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+/* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
@@ -13,19 +42,19 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
     {
         // Almost Pi!
         private const float PiSlop = 3.1f;
-
-        // Triangles that constitute the mountain
-        public List<List<Point>> Triangles;
-        private HashSet<Point> _convexPoints;
+        private readonly HashSet<Point> _convexPoints;
         private Point _head;
 
         // Monotone mountain points
-        private List<Point> _monoPoly;
+        private readonly List<Point> _monoPoly;
 
         // Used to track which side of the line we are on
         private bool _positive;
         private int _size;
         private Point _tail;
+
+        // Triangles that constitute the mountain
+        public List<List<Point>> Triangles;
 
         public MonotoneMountain()
         {
@@ -130,10 +159,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             Debug.Assert(_size <= 3, "Triangulation bug, please report");
         }
 
-        private bool Valid(Point p)
-        {
-            return p.Neq(_head) && p.Neq(_tail) && IsConvex(p);
-        }
+        private bool Valid(Point p) => p.Neq(_head) && p.Neq(_tail) && IsConvex(p);
 
         // Create the monotone polygon
         private void GenMonoPoly()
@@ -148,22 +174,22 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
 
         private float Angle(Point p)
         {
-            Point a = (p.Next - p);
-            Point b = (p.Prev - p);
-            return (float)Math.Atan2(a.Cross(b), a.Dot(b));
+            Point a = p.Next - p;
+            Point b = p.Prev - p;
+            return (float) Math.Atan2(a.Cross(b), a.Dot(b));
         }
 
         private bool AngleSign()
         {
-            Point a = (_head.Next - _head);
-            Point b = (_tail - _head);
+            Point a = _head.Next - _head;
+            Point b = _tail - _head;
             return Math.Atan2(a.Cross(b), a.Dot(b)) >= 0;
         }
 
         // Determines if the inslide angle is convex or reflex
         private bool IsConvex(Point p)
         {
-            if (_positive != (Angle(p) >= 0))
+            if (_positive != Angle(p) >= 0)
                 return false;
             return true;
         }

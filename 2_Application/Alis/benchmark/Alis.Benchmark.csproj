@@ -5,12 +5,12 @@
         <OutDir>bin/$(Configuration)/$(RuntimeIdentifier)/lib/$(TargetFramework)/</OutDir>
     </PropertyGroup>
     <ItemGroup>
-      <Compile Remove="Benchmarks\**" />
+        <Compile Remove="Benchmarks\**"/>
     </ItemGroup>
     <ItemGroup>
-      <EmbeddedResource Remove="Benchmarks\**" />
+        <EmbeddedResource Remove="Benchmarks\**"/>
     </ItemGroup>
     <ItemGroup>
-      <None Remove="Benchmarks\**" />
+        <None Remove="Benchmarks\**"/>
     </ItemGroup>
 </Project>

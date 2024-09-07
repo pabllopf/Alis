@@ -42,12 +42,12 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     Refers to an HWND
         /// </summary>
         public IntPtr Window { get; set; }
-        
+
         /// <summary>
         ///     Refers to an HDC
         /// </summary>
         public IntPtr Hdc { get; set; }
-        
+
         /// <summary>
         ///     Refers to an H INSTANCE
         /// </summary>

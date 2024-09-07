@@ -1,4 +1,33 @@
-﻿/* Original source Farseer Physics Engine:
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:AdvancingFront.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+/* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
@@ -48,7 +77,6 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
     /**
      * @author Thomas Åhlen (thahlen@gmail.com)
      */
-
     internal class AdvancingFront
     {
         public AdvancingFrontNode Head;
@@ -83,27 +111,24 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                 sb.Append(node.Point.X).Append("->");
                 node = node.Next;
             }
+
             sb.Append(Tail.Point.X);
             return sb.ToString();
         }
 
         /// <summary>
-        /// MM:  This seems to be used by LocateNode to guess a position in the implicit linked list of AdvancingFrontNodes near x
-        ///      Removed an overload that depended on this being exact
+        ///     MM:  This seems to be used by LocateNode to guess a position in the implicit linked list of AdvancingFrontNodes
+        ///     near x
+        ///     Removed an overload that depended on this being exact
         /// </summary>
-        private AdvancingFrontNode FindSearchNode(double x)
-        {
+        private AdvancingFrontNode FindSearchNode(double x) =>
             // TODO: implement BST index 
-            return Search;
-        }
+            Search;
 
         /// <summary>
-        /// We use a balancing tree to locate a node smaller or equal to given key value
+        ///     We use a balancing tree to locate a node smaller or equal to given key value
         /// </summary>
-        public AdvancingFrontNode LocateNode(TriangulationPoint point)
-        {
-            return LocateNode(point.X);
-        }
+        public AdvancingFrontNode LocateNode(TriangulationPoint point) => LocateNode(point.X);
 
         private AdvancingFrontNode LocateNode(double x)
         {
@@ -126,11 +151,12 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                         return node.Prev;
                     }
             }
+
             return null;
         }
 
         /// <summary>
-        /// This implementation will use simple node traversal algorithm to find a point on the front
+        ///     This implementation will use simple node traversal algorithm to find a point on the front
         /// </summary>
         public AdvancingFrontNode LocatePoint(TriangulationPoint point)
         {
@@ -178,6 +204,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                     }
                 }
             }
+
             Search = node;
             return node;
         }

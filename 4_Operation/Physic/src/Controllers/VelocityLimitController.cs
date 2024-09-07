@@ -1,4 +1,33 @@
-﻿/* Original source Farseer Physics Engine:
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:VelocityLimitController.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+/* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
@@ -10,23 +39,23 @@ using Alis.Core.Physic.Dynamics;
 namespace Alis.Core.Physic.Controllers
 {
     /// <summary>
-    /// Put a limit on the linear (translation - the movespeed) and angular (rotation) velocity
-    /// of bodies added to this controller.
+    ///     Put a limit on the linear (translation - the movespeed) and angular (rotation) velocity
+    ///     of bodies added to this controller.
     /// </summary>
     public class VelocityLimitController : Controller
     {
-        public bool LimitAngularVelocity = true;
-        public bool LimitLinearVelocity = true;
-        private List<Body> _bodies = new List<Body>();
+        private readonly List<Body> _bodies = new List<Body>();
         private float _maxAngularSqared;
         private float _maxAngularVelocity;
         private float _maxLinearSqared;
         private float _maxLinearVelocity;
+        public bool LimitAngularVelocity = true;
+        public bool LimitLinearVelocity = true;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="VelocityLimitController"/> class.
-        /// Sets the max linear velocity to Settings.MaxTranslation
-        /// Sets the max angular velocity to Settings.MaxRotation
+        ///     Initializes a new instance of the <see cref="VelocityLimitController" /> class.
+        ///     Sets the max linear velocity to Settings.MaxTranslation
+        ///     Sets the max angular velocity to Settings.MaxRotation
         /// </summary>
         public VelocityLimitController()
         {
@@ -35,9 +64,9 @@ namespace Alis.Core.Physic.Controllers
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="VelocityLimitController"/> class.
-        /// Pass in 0 or float.MaxValue to disable the limit.
-        /// maxAngularVelocity = 0 will disable the angular velocity limit.
+        ///     Initializes a new instance of the <see cref="VelocityLimitController" /> class.
+        ///     Pass in 0 or float.MaxValue to disable the limit.
+        ///     maxAngularVelocity = 0 will disable the angular velocity limit.
         /// </summary>
         /// <param name="maxLinearVelocity">The max linear velocity.</param>
         /// <param name="maxAngularVelocity">The max angular velocity.</param>
@@ -54,12 +83,12 @@ namespace Alis.Core.Physic.Controllers
         }
 
         /// <summary>
-        /// Gets or sets the max angular velocity.
+        ///     Gets or sets the max angular velocity.
         /// </summary>
         /// <value>The max angular velocity.</value>
         public float MaxAngularVelocity
         {
-            get { return _maxAngularVelocity; }
+            get => _maxAngularVelocity;
             set
             {
                 _maxAngularVelocity = value;
@@ -68,12 +97,12 @@ namespace Alis.Core.Physic.Controllers
         }
 
         /// <summary>
-        /// Gets or sets the max linear velocity.
+        ///     Gets or sets the max linear velocity.
         /// </summary>
         /// <value>The max linear velocity.</value>
         public float MaxLinearVelocity
         {
-            get { return _maxLinearVelocity; }
+            get => _maxLinearVelocity;
             set
             {
                 _maxLinearVelocity = value;
@@ -98,7 +127,7 @@ namespace Alis.Core.Physic.Controllers
 
                     if (result > dt * _maxLinearSqared)
                     {
-                        float sq = (float)Math.Sqrt(result);
+                        float sq = (float) Math.Sqrt(result);
 
                         float ratio = _maxLinearVelocity / sq;
                         body._linearVelocity.X *= ratio;

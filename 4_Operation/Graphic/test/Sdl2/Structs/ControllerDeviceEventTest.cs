@@ -47,14 +47,14 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             EventType eventType = EventType.ControllerButtonUp;
             uint timestamp = 123456789;
             int which = 1;
-            
+
             ControllerDeviceEvent eventStruct = new ControllerDeviceEvent
             {
                 type = eventType,
                 timestamp = timestamp,
                 which = which
             };
-            
+
             Assert.Equal(eventType, eventStruct.type);
             Assert.Equal(timestamp, eventStruct.timestamp);
             Assert.Equal(which, eventStruct.which);

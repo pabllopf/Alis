@@ -46,7 +46,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ShowAboutWindow());
         }
-        
+
         /// <summary>
         ///     Tests that show about window should throw dll not found exception v 2
         /// </summary>
@@ -56,7 +56,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             bool pOpen = true;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ShowAboutWindow(ref pOpen));
         }
-        
+
         /// <summary>
         ///     Tests that show debug log window should throw dll not found exception
         /// </summary>
@@ -65,7 +65,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ShowDebugLogWindow());
         }
-        
+
         /// <summary>
         ///     Tests that show debug log window should throw dll not found exception v 2
         /// </summary>
@@ -75,7 +75,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             bool pOpen = true;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ShowDebugLogWindow(ref pOpen));
         }
-        
+
         /// <summary>
         ///     Tests that show demo window should throw dll not found exception
         /// </summary>
@@ -84,7 +84,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ShowDemoWindow());
         }
-        
+
         /// <summary>
         ///     Tests that show demo window should throw dll not found exception v 2
         /// </summary>
@@ -94,7 +94,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             bool pOpen = true;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ShowDemoWindow(ref pOpen));
         }
-        
+
         /// <summary>
         ///     Tests that show font selector should throw dll not found exception
         /// </summary>
@@ -103,7 +103,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ShowFontSelector("label"));
         }
-        
+
         /// <summary>
         ///     Tests that show metrics window should throw dll not found exception
         /// </summary>
@@ -112,7 +112,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ShowMetricsWindow());
         }
-        
+
         /// <summary>
         ///     Tests that show metrics window should throw dll not found exception v 2
         /// </summary>
@@ -122,7 +122,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             bool pOpen = true;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ShowMetricsWindow(ref pOpen));
         }
-        
+
         /// <summary>
         ///     Tests that show stack tool window should throw dll not found exception
         /// </summary>
@@ -131,7 +131,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ShowStackToolWindow());
         }
-        
+
         /// <summary>
         ///     Tests that show stack tool window should throw dll not found exception v 2
         /// </summary>
@@ -141,7 +141,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             bool pOpen = true;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ShowStackToolWindow(ref pOpen));
         }
-        
+
         /// <summary>
         ///     Tests that show style editor should throw dll not found exception
         /// </summary>
@@ -150,7 +150,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ShowStyleEditor());
         }
-        
+
         /// <summary>
         ///     Tests that show style editor should throw dll not found exception v 2
         /// </summary>
@@ -160,7 +160,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             ImGuiStyle style = new ImGuiStyle();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ShowStyleEditor(style));
         }
-        
+
         /// <summary>
         ///     Tests that show style selector should throw dll not found exception
         /// </summary>
@@ -169,7 +169,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ShowStyleSelector("label"));
         }
-        
+
         /// <summary>
         ///     Tests that show user guide should throw dll not found exception
         /// </summary>
@@ -178,7 +178,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ShowUserGuide());
         }
-        
+
         /// <summary>
         ///     Tests that slider angle should throw dll not found exception v 1
         /// </summary>
@@ -188,7 +188,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             float vRad = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderAngle("label", ref vRad));
         }
-        
+
         /// <summary>
         ///     Tests that slider angle should throw dll not found exception v 2
         /// </summary>
@@ -198,7 +198,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             float vRad = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderAngle("label", ref vRad, -360.0f));
         }
-        
+
         /// <summary>
         ///     Tests that slider angle should throw dll not found exception v 3
         /// </summary>
@@ -208,7 +208,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             float vRad = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderAngle("label", ref vRad, -360.0f, 360.0f));
         }
-        
+
         /// <summary>
         ///     Tests that slider angle should throw dll not found exception v 4
         /// </summary>
@@ -218,7 +218,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             float vRad = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderAngle("label", ref vRad, -360.0f, 360.0f, "%.0f deg"));
         }
-        
+
         /// <summary>
         ///     Tests that slider angle should throw dll not found exception v 5
         /// </summary>
@@ -228,7 +228,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             float vRad = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderAngle("label", ref vRad, -360.0f, 360.0f, "%.0f deg", 0));
         }
-        
+
         /// <summary>
         ///     Tests that slider float should throw dll not found exception v 1
         /// </summary>
@@ -238,7 +238,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             float v = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderFloat("label", ref v, 0.0f, 1.0f));
         }
-        
+
         /// <summary>
         ///     Tests that slider float should throw dll not found exception v 2
         /// </summary>
@@ -248,7 +248,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             float v = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderFloat("label", ref v, 0.0f, 1.0f, "%.3f"));
         }
-        
+
         /// <summary>
         ///     Tests that slider float should throw dll not found exception v 3
         /// </summary>
@@ -258,7 +258,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             float v = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderFloat("label", ref v, 0.0f, 1.0f, "%.3f", 0));
         }
-        
+
         /// <summary>
         ///     Tests that slider float 2 should throw dll not found exception v 1
         /// </summary>
@@ -268,7 +268,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             Vector2 v = new Vector2();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderFloat2("label", ref v, 0.0f, 1.0f));
         }
-        
+
         /// <summary>
         ///     Tests that slider float 2 should throw dll not found exception v 2
         /// </summary>
@@ -278,7 +278,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             Vector2 v = new Vector2();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderFloat2("label", ref v, 0.0f, 1.0f, "%.3f"));
         }
-        
+
         /// <summary>
         ///     Tests that slider float 2 should throw dll not found exception v 3
         /// </summary>
@@ -288,7 +288,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             Vector2 v = new Vector2();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderFloat2("label", ref v, 0.0f, 1.0f, "%.3f", 0));
         }
-        
+
         /// <summary>
         ///     Tests that slider float 3 should throw dll not found exception v 1
         /// </summary>
@@ -298,7 +298,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             Vector3 v = new Vector3();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderFloat3("label", ref v, 0.0f, 1.0f));
         }
-        
+
         /// <summary>
         ///     Tests that slider float 3 should throw dll not found exception v 2
         /// </summary>
@@ -308,7 +308,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             Vector3 v = new Vector3();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderFloat3("label", ref v, 0.0f, 1.0f, "%.3f"));
         }
-        
+
         /// <summary>
         ///     Tests that slider float 3 should throw dll not found exception v 3
         /// </summary>
@@ -318,7 +318,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             Vector3 v = new Vector3();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderFloat3("label", ref v, 0.0f, 1.0f, "%.3f", 0));
         }
-        
+
         /// <summary>
         ///     Tests that slider float 4 should throw dll not found exception v 1
         /// </summary>
@@ -328,7 +328,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             Vector4 v = new Vector4();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.SliderFloat4("label", ref v, 0.0f, 1.0f));
         }
-        
+
         /// <summary>
         ///     Tests that slider float 4 should throw dll not found exception v 2
         /// </summary>

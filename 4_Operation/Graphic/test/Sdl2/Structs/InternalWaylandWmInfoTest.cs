@@ -50,7 +50,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             IntPtr eglWindowPtr = new IntPtr(4);
             IntPtr xdgSurfacePtr = new IntPtr(5);
             IntPtr xdgToplevelPtr = new IntPtr(6);
-            
+
             InternalWaylandWmInfo info = new InternalWaylandWmInfo
             {
                 Display = displayPtr,
@@ -60,7 +60,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
                 XdgSurface = xdgSurfacePtr,
                 XdgToplevel = xdgToplevelPtr
             };
-            
+
             Assert.Equal(displayPtr, info.Display);
             Assert.Equal(surfacePtr, info.Surface);
             Assert.Equal(shellSurfacePtr, info.ShellSurface);

@@ -1,12 +1,41 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:AngleJoint.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 /* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
 
 /*
-* Farseer Physics Engine:
-* Copyright (c) 2012 Ian Qvist
-*/
+ * Farseer Physics Engine:
+ * Copyright (c) 2012 Ian Qvist
+ */
 
 using System;
 using System.Diagnostics;
@@ -18,7 +47,7 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 namespace Alis.Core.Physic.Dynamics.Joints
 {
     /// <summary>
-    /// Maintains a fixed angle between two bodies
+    ///     Maintains a fixed angle between two bodies
     /// </summary>
     public class AngleJoint : Joint
     {
@@ -27,13 +56,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
         private float _massFactor;
         private float _targetAngle;
 
-        internal AngleJoint()
-        {
-            JointType = JointType.Angle;
-        }
+        internal AngleJoint() => JointType = JointType.Angle;
 
         /// <summary>
-        /// Constructor for AngleJoint
+        ///     Constructor for AngleJoint
         /// </summary>
         /// <param name="bodyA">The first body</param>
         /// <param name="bodyB">The second body</param>
@@ -47,22 +73,22 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
         public override Vector2 WorldAnchorA
         {
-            get { return BodyA.Position; }
-            set { Debug.Assert(false, "You can't set the world anchor on this joint type."); }
+            get => BodyA.Position;
+            set => Debug.Assert(false, "You can't set the world anchor on this joint type.");
         }
 
         public override Vector2 WorldAnchorB
         {
-            get { return BodyB.Position; }
-            set { Debug.Assert(false, "You can't set the world anchor on this joint type."); }
+            get => BodyB.Position;
+            set => Debug.Assert(false, "You can't set the world anchor on this joint type.");
         }
 
         /// <summary>
-        /// The desired angle between BodyA and BodyB
+        ///     The desired angle between BodyA and BodyB
         /// </summary>
         public float TargetAngle
         {
-            get { return _targetAngle; }
+            get => _targetAngle;
             set
             {
                 if (value != _targetAngle)
@@ -74,34 +100,29 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Gets or sets the bias factor.
-        /// Defaults to 0.2
+        ///     Gets or sets the bias factor.
+        ///     Defaults to 0.2
         /// </summary>
         public float BiasFactor { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the maximum impulse
-        /// Defaults to float.MaxValue
+        ///     Gets or sets the maximum impulse
+        ///     Defaults to float.MaxValue
         /// </summary>
         public float MaxImpulse { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the softness of the joint
-        /// Defaults to 0
+        ///     Gets or sets the softness of the joint
+        ///     Defaults to 0
         /// </summary>
         public float Softness { get; set; }
 
-        public override Vector2 GetReactionForce(float invDt)
-        {
+        public override Vector2 GetReactionForce(float invDt) =>
             //TODO
             //return _inv_dt * _impulse;
-            return Vector2.Zero;
-        }
+            Vector2.Zero;
 
-        public override float GetReactionTorque(float invDt)
-        {
-            return 0;
-        }
+        public override float GetReactionTorque(float invDt) => 0;
 
         internal override void InitVelocityConstraints(ref SolverData data)
         {
@@ -111,7 +132,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float aW = data.positions[indexA].a;
             float bW = data.positions[indexB].a;
 
-            _jointError = (bW - aW - TargetAngle);
+            _jointError = bW - aW - TargetAngle;
             _bias = -BiasFactor * data.step.inv_dt * _jointError;
             _massFactor = (1 - Softness) / (BodyA._invI + BodyB._invI);
         }
@@ -127,10 +148,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.velocities[indexB].w += BodyB._invI * Math.Sign(p) * Math.Min(Math.Abs(p), MaxImpulse);
         }
 
-        internal override bool SolvePositionConstraints(ref SolverData data)
-        {
+        internal override bool SolvePositionConstraints(ref SolverData data) =>
             //no position solving for this joint
-            return true;
-        }
+            true;
     }
 }

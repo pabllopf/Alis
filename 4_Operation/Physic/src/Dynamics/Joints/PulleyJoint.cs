@@ -1,29 +1,58 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:PulleyJoint.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 /* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
 
 /*
-* Farseer Physics Engine:
-* Copyright (c) 2012 Ian Qvist
-* 
-* Original source Box2D:
-* Copyright (c) 2006-2011 Erin Catto http://www.box2d.org 
-* 
-* This software is provided 'as-is', without any express or implied 
-* warranty.  In no event will the authors be held liable for any damages 
-* arising from the use of this software. 
-* Permission is granted to anyone to use this software for any purpose, 
-* including commercial applications, and to alter it and redistribute it 
-* freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
-* claim that you wrote the original software. If you use this software 
-* in a product, an acknowledgment in the product documentation would be 
-* appreciated but is not required. 
-* 2. Altered source versions must be plainly marked as such, and must not be 
-* misrepresented as being the original software. 
-* 3. This notice may not be removed or altered from any source distribution. 
-*/
+ * Farseer Physics Engine:
+ * Copyright (c) 2012 Ian Qvist
+ *
+ * Original source Box2D:
+ * Copyright (c) 2006-2011 Erin Catto http://www.box2d.org
+ *
+ * This software is provided 'as-is', without any express or implied
+ * warranty.  In no event will the authors be held liable for any damages
+ * arising from the use of this software.
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely, subject to the following restrictions:
+ * 1. The origin of this software must not be misrepresented; you must not
+ * claim that you wrote the original software. If you use this software
+ * in a product, an acknowledgment in the product documentation would be
+ * appreciated but is not required.
+ * 2. Altered source versions must be plainly marked as such, and must not be
+ * misrepresented as being the original software.
+ * 3. This notice may not be removed or altered from any source distribution.
+ */
 
 using System;
 using System.Diagnostics;
@@ -49,14 +78,13 @@ namespace Alis.Core.Physic.Dynamics.Joints
     //   = invMass1 + invI1 * cross(r1, u1)^2 + ratio^2 * (invMass2 + invI2 * cross(r2, u2)^2)
 
     /// <summary>
-    /// The pulley joint is connected to two bodies and two fixed world points.
-    /// The pulley supports a ratio such that:
-    /// <![CDATA[length1 + ratio * length2 <= constant]]>
-    /// Yes, the force transmitted is scaled by the ratio.
-    /// 
-    /// Warning: the pulley joint can get a bit squirrelly by itself. They often
-    /// work better when combined with prismatic joints. You should also cover the
-    /// the anchor points with static shapes to prevent one side from going to zero length.
+    ///     The pulley joint is connected to two bodies and two fixed world points.
+    ///     The pulley supports a ratio such that:
+    ///     <![CDATA[length1 + ratio * length2 <= constant]]>
+    ///     Yes, the force transmitted is scaled by the ratio.
+    ///     Warning: the pulley joint can get a bit squirrelly by itself. They often
+    ///     work better when combined with prismatic joints. You should also cover the
+    ///     the anchor points with static shapes to prevent one side from going to zero length.
     /// </summary>
     public class PulleyJoint : Joint
     {
@@ -66,25 +94,22 @@ namespace Alis.Core.Physic.Dynamics.Joints
         // Solver temp
         private int _indexA;
         private int _indexB;
-        private Vector2 _uA;
-        private Vector2 _uB;
-        private Vector2 _rA;
-        private Vector2 _rB;
-        private Vector2 _localCenterA;
-        private Vector2 _localCenterB;
-        private float _invMassA;
-        private float _invMassB;
         private float _invIA;
         private float _invIB;
+        private float _invMassA;
+        private float _invMassB;
+        private Vector2 _localCenterA;
+        private Vector2 _localCenterB;
         private float _mass;
+        private Vector2 _rA;
+        private Vector2 _rB;
+        private Vector2 _uA;
+        private Vector2 _uB;
 
-        internal PulleyJoint()
-        {
-            JointType = JointType.Pulley;
-        }
+        internal PulleyJoint() => JointType = JointType.Pulley;
 
         /// <summary>
-        /// Constructor for PulleyJoint.
+        ///     Constructor for PulleyJoint.
         /// </summary>
         /// <param name="bodyA">The first body.</param>
         /// <param name="bodyB">The second body.</param>
@@ -132,41 +157,41 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// The local anchor point on BodyA
+        ///     The local anchor point on BodyA
         /// </summary>
         public Vector2 LocalAnchorA { get; set; }
 
         /// <summary>
-        /// The local anchor point on BodyB
+        ///     The local anchor point on BodyB
         /// </summary>
         public Vector2 LocalAnchorB { get; set; }
 
         /// <summary>
-        /// Get the first world anchor.
+        ///     Get the first world anchor.
         /// </summary>
         /// <value></value>
-        public override sealed Vector2 WorldAnchorA { get; set; }
+        public sealed override Vector2 WorldAnchorA { get; set; }
 
         /// <summary>
-        /// Get the second world anchor.
+        ///     Get the second world anchor.
         /// </summary>
         /// <value></value>
-        public override sealed Vector2 WorldAnchorB { get; set; }
+        public sealed override Vector2 WorldAnchorB { get; set; }
 
         /// <summary>
-        /// Get the current length of the segment attached to body1.
+        ///     Get the current length of the segment attached to body1.
         /// </summary>
         /// <value></value>
         public float LengthA { get; set; }
 
         /// <summary>
-        /// Get the current length of the segment attached to body2.
+        ///     Get the current length of the segment attached to body2.
         /// </summary>
         /// <value></value>
         public float LengthB { get; set; }
 
         /// <summary>
-        /// The current length between the anchor point on BodyA and WorldAnchorA
+        ///     The current length between the anchor point on BodyA and WorldAnchorA
         /// </summary>
         public float CurrentLengthA
         {
@@ -180,7 +205,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// The current length between the anchor point on BodyB and WorldAnchorB
+        ///     The current length between the anchor point on BodyB and WorldAnchorB
         /// </summary>
         public float CurrentLengthB
         {
@@ -194,7 +219,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Get the pulley ratio.
+        ///     Get the pulley ratio.
         /// </summary>
         /// <value></value>
         public float Ratio { get; set; }
@@ -208,10 +233,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             return invDt * P;
         }
 
-        public override float GetReactionTorque(float invDt)
-        {
-            return 0.0f;
-        }
+        public override float GetReactionTorque(float invDt) => 0.0f;
 
         internal override void InitVelocityConstraints(ref SolverData data)
         {
@@ -285,8 +307,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 _impulse *= data.step.dtRatio;
 
                 // Warm starting.
-                Vector2 PA = -(_impulse) * _uA;
-                Vector2 PB = (-Ratio * _impulse) * _uB;
+                Vector2 PA = -_impulse * _uA;
+                Vector2 PB = -Ratio * _impulse * _uB;
 
                 vA += _invMassA * PA;
                 wA += _invIA * MathUtils.Cross(ref _rA, ref PA);

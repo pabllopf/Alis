@@ -46,7 +46,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnEnable();
         }
-        
+
         /// <summary>
         ///     Tests that on init valid input
         /// </summary>
@@ -56,7 +56,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnInit();
         }
-        
+
         /// <summary>
         ///     Tests that on awake valid input
         /// </summary>
@@ -66,7 +66,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnAwake();
         }
-        
+
         /// <summary>
         ///     Tests that on start valid input
         /// </summary>
@@ -76,7 +76,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnStart();
         }
-        
+
         /// <summary>
         ///     Tests that on before update valid input
         /// </summary>
@@ -86,7 +86,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnBeforeUpdate();
         }
-        
+
         /// <summary>
         ///     Tests that on update valid input
         /// </summary>
@@ -96,7 +96,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnUpdate();
         }
-        
+
         /// <summary>
         ///     Tests that on after update valid input
         /// </summary>
@@ -106,7 +106,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnAfterUpdate();
         }
-        
+
         /// <summary>
         ///     Tests that on before fixed update valid input
         /// </summary>
@@ -116,7 +116,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnBeforeFixedUpdate();
         }
-        
+
         /// <summary>
         ///     Tests that on fixed update valid input
         /// </summary>
@@ -126,7 +126,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnFixedUpdate();
         }
-        
+
         /// <summary>
         ///     Tests that on after fixed update valid input
         /// </summary>
@@ -136,7 +136,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnAfterFixedUpdate();
         }
-        
+
         /// <summary>
         ///     Tests that on dispatch events valid input
         /// </summary>
@@ -146,7 +146,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnDispatchEvents();
         }
-        
+
         /// <summary>
         ///     Tests that on calculate valid input
         /// </summary>
@@ -156,7 +156,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnCalculate();
         }
-        
+
         /// <summary>
         ///     Tests that on draw valid input
         /// </summary>
@@ -166,7 +166,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnDraw();
         }
-        
+
         /// <summary>
         ///     Tests that on gui valid input
         /// </summary>
@@ -176,7 +176,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnGui();
         }
-        
+
         /// <summary>
         ///     Tests that on disable valid input
         /// </summary>
@@ -186,7 +186,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnDisable();
         }
-        
+
         /// <summary>
         ///     Tests that on reset valid input
         /// </summary>
@@ -196,7 +196,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnReset();
         }
-        
+
         /// <summary>
         ///     Tests that on stop valid input
         /// </summary>
@@ -206,7 +206,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnStop();
         }
-        
+
         /// <summary>
         ///     Tests that on exit valid input
         /// </summary>
@@ -216,7 +216,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnExit();
         }
-        
+
         /// <summary>
         ///     Tests that on destroy valid input
         /// </summary>
@@ -226,7 +226,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             SceneManager sceneManager = new SceneManager();
             sceneManager.OnDestroy();
         }
-        
+
         /// <summary>
         ///     Tests that remove valid input removes scene
         /// </summary>
@@ -239,7 +239,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             sceneManager.Remove(scene);
             Assert.DoesNotContain(scene, sceneManager.Scenes);
         }
-        
+
         /// <summary>
         ///     Tests that get valid input returns scene
         /// </summary>
@@ -252,7 +252,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             Alis.Core.Ecs.Entity.Scene result = sceneManager.Get<Alis.Core.Ecs.Entity.Scene>();
             Assert.Equal(scene, result);
         }
-        
+
         /// <summary>
         ///     Tests that contains valid input returns true
         /// </summary>
@@ -265,7 +265,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             bool result = sceneManager.Contains<Alis.Core.Ecs.Entity.Scene>();
             Assert.True(result);
         }
-        
+
         /// <summary>
         ///     Tests that clear valid input clears scenes
         /// </summary>
@@ -278,7 +278,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             sceneManager.Clear<Alis.Core.Ecs.Entity.Scene>();
             Assert.Empty(sceneManager.Scenes);
         }
-        
+
         /// <summary>
         ///     Tests that load scene valid scene sets current scene
         /// </summary>
@@ -290,7 +290,7 @@ namespace Alis.Test.Core.Ecs.System.Manager.Scene
             sceneManager.LoadScene(scene);
             Assert.Equal(scene, sceneManager.CurrentScene);
         }
-        
+
         /// <summary>
         ///     Tests that reload scene valid scene sets current scene
         /// </summary>

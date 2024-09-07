@@ -43,20 +43,20 @@ namespace Alis.Extension.Updater.Services.Files
         /// <param name="directory">The directory</param>
         /// <returns>A task containing the string</returns>
         Task<string> DownloadFileAsync(string url, string directory);
-        
+
         /// <summary>
         ///     Extracts the and replace using the specified zip path
         /// </summary>
         /// <param name="zipPath">The zip path</param>
         /// <param name="directory">The directory</param>
         void ExtractAndReplace(string zipPath, string directory);
-        
+
         /// <summary>
         ///     Cleans the temp files using the specified directory
         /// </summary>
         /// <param name="directory">The directory</param>
         void CleanTempFiles(string directory);
-        
+
         /// <summary>
         ///     Backups the directory
         /// </summary>

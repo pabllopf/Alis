@@ -46,14 +46,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImDrawCmdHeader drawCmdHeader = new ImDrawCmdHeader {ClipRect = new Vector4(1.0f, 2.0f, 3.0f, 4.0f)};
-            
+
             // Act
             Vector4 clipRect = drawCmdHeader.ClipRect;
-            
+
             // Assert
             Assert.Equal(new Vector4(1.0f, 2.0f, 3.0f, 4.0f), clipRect);
         }
-        
+
         /// <summary>
         ///     Tests that texture id should be initialized correctly
         /// </summary>
@@ -62,14 +62,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImDrawCmdHeader drawCmdHeader = new ImDrawCmdHeader {TextureId = new IntPtr(123)};
-            
+
             // Act
             IntPtr textureId = drawCmdHeader.TextureId;
-            
+
             // Assert
             Assert.Equal(new IntPtr(123), textureId);
         }
-        
+
         /// <summary>
         ///     Tests that vtx offset should be initialized correctly
         /// </summary>
@@ -78,10 +78,10 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImDrawCmdHeader drawCmdHeader = new ImDrawCmdHeader {VtxOffset = 10};
-            
+
             // Act
             uint vtxOffset = drawCmdHeader.VtxOffset;
-            
+
             // Assert
             Assert.Equal(10u, vtxOffset);
         }

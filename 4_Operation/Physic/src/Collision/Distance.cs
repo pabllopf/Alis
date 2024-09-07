@@ -1,29 +1,58 @@
-﻿/* Original source Farseer Physics Engine:
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Distance.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+/* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
 
 /*
-* Farseer Physics Engine:
-* Copyright (c) 2012 Ian Qvist
-* 
-* Original source Box2D:
-* Copyright (c) 2006-2011 Erin Catto http://www.box2d.org 
-* 
-* This software is provided 'as-is', without any express or implied 
-* warranty.  In no event will the authors be held liable for any damages 
-* arising from the use of this software. 
-* Permission is granted to anyone to use this software for any purpose, 
-* including commercial applications, and to alter it and redistribute it 
-* freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
-* claim that you wrote the original software. If you use this software 
-* in a product, an acknowledgment in the product documentation would be 
-* appreciated but is not required. 
-* 2. Altered source versions must be plainly marked as such, and must not be 
-* misrepresented as being the original software. 
-* 3. This notice may not be removed or altered from any source distribution. 
-*/
+ * Farseer Physics Engine:
+ * Copyright (c) 2012 Ian Qvist
+ *
+ * Original source Box2D:
+ * Copyright (c) 2006-2011 Erin Catto http://www.box2d.org
+ *
+ * This software is provided 'as-is', without any express or implied
+ * warranty.  In no event will the authors be held liable for any damages
+ * arising from the use of this software.
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely, subject to the following restrictions:
+ * 1. The origin of this software must not be misrepresented; you must not
+ * claim that you wrote the original software. If you use this software
+ * in a product, an acknowledgment in the product documentation would be
+ * appreciated but is not required.
+ * 2. Altered source versions must be plainly marked as such, and must not be
+ * misrepresented as being the original software.
+ * 3. This notice may not be removed or altered from any source distribution.
+ */
 
 using System;
 using System.Diagnostics;
@@ -38,8 +67,8 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 namespace Alis.Core.Physic.Collision
 {
     /// <summary>
-    /// A distance proxy is used by the GJK algorithm.
-    /// It encapsulates any shape.
+    ///     A distance proxy is used by the GJK algorithm.
+    ///     It encapsulates any shape.
     /// </summary>
     public struct DistanceProxy
     {
@@ -49,8 +78,8 @@ namespace Alis.Core.Physic.Collision
         // GJK using Voronoi regions (Christer Ericson) and Barycentric coordinates.
 
         /// <summary>
-        /// Initialize the proxy using the given shape. The shape
-        /// must remain in scope while the proxy is in use.
+        ///     Initialize the proxy using the given shape. The shape
+        ///     must remain in scope while the proxy is in use.
         /// </summary>
         /// <param name="shape">The shape.</param>
         /// <param name="index">The index.</param>
@@ -61,46 +90,47 @@ namespace Alis.Core.Physic.Collision
             switch (shape.ShapeType)
             {
                 case ShapeType.Circle:
-                    {
-                        CircleShape circle = (CircleShape)shape;
-                        Vertices.Clear();
-                        Vertices.Add(circle.Position);
-                        Radius = circle.Radius;
-                    }
+                {
+                    CircleShape circle = (CircleShape) shape;
+                    Vertices.Clear();
+                    Vertices.Add(circle.Position);
+                    Radius = circle.Radius;
+                }
                     break;
 
                 case ShapeType.Polygon:
+                {
+                    PolygonShape polygon = (PolygonShape) shape;
+                    Vertices.Clear();
+                    for (int i = 0; i < polygon.Vertices.Count; i++)
                     {
-                        PolygonShape polygon = (PolygonShape)shape;
-                        Vertices.Clear();
-                        for (int i = 0; i < polygon.Vertices.Count; i++)
-                        {
-                            Vertices.Add(polygon.Vertices[i]);
-                        }
-                        Radius = polygon.Radius;
+                        Vertices.Add(polygon.Vertices[i]);
                     }
+
+                    Radius = polygon.Radius;
+                }
                     break;
 
                 case ShapeType.Chain:
-                    {
-                        ChainShape chain = (ChainShape)shape;
-                        Debug.Assert(0 <= index && index < chain.Vertices.Count);
-                        Vertices.Clear();
-                        Vertices.Add(chain.Vertices[index]);
-                        Vertices.Add(index + 1 < chain.Vertices.Count ? chain.Vertices[index + 1] : chain.Vertices[0]);
+                {
+                    ChainShape chain = (ChainShape) shape;
+                    Debug.Assert((0 <= index) && (index < chain.Vertices.Count));
+                    Vertices.Clear();
+                    Vertices.Add(chain.Vertices[index]);
+                    Vertices.Add(index + 1 < chain.Vertices.Count ? chain.Vertices[index + 1] : chain.Vertices[0]);
 
-                        Radius = chain.Radius;
-                    }
+                    Radius = chain.Radius;
+                }
                     break;
 
                 case ShapeType.Edge:
-                    {
-                        EdgeShape edge = (EdgeShape)shape;
-                        Vertices.Clear();
-                        Vertices.Add(edge.Vertex1);
-                        Vertices.Add(edge.Vertex2);
-                        Radius = edge.Radius;
-                    }
+                {
+                    EdgeShape edge = (EdgeShape) shape;
+                    Vertices.Clear();
+                    Vertices.Add(edge.Vertex1);
+                    Vertices.Add(edge.Vertex2);
+                    Radius = edge.Radius;
+                }
                     break;
 
                 default:
@@ -111,7 +141,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Get the supporting vertex index in the given direction.
+        ///     Get the supporting vertex index in the given direction.
         /// </summary>
         /// <param name="direction">The direction.</param>
         /// <returns></returns>
@@ -133,7 +163,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Get the supporting vertex in the given direction.
+        ///     Get the supporting vertex in the given direction.
         /// </summary>
         /// <param name="direction">The direction.</param>
         /// <returns></returns>
@@ -156,23 +186,23 @@ namespace Alis.Core.Physic.Collision
     }
 
     /// <summary>
-    /// Used to warm start ComputeDistance.
-    /// Set count to zero on first call.
+    ///     Used to warm start ComputeDistance.
+    ///     Set count to zero on first call.
     /// </summary>
     public struct SimplexCache
     {
         /// <summary>
-        /// Length or area
+        ///     Length or area
         /// </summary>
         public ushort Count;
 
         /// <summary>
-        /// Vertices on shape A
+        ///     Vertices on shape A
         /// </summary>
         public FixedArray3<byte> IndexA;
 
         /// <summary>
-        /// Vertices on shape B
+        ///     Vertices on shape B
         /// </summary>
         public FixedArray3<byte> IndexB;
 
@@ -180,8 +210,8 @@ namespace Alis.Core.Physic.Collision
     }
 
     /// <summary>
-    /// Input for Distance.ComputeDistance().
-    /// You have to option to use the shape radii in the computation. 
+    ///     Input for Distance.ComputeDistance().
+    ///     You have to option to use the shape radii in the computation.
     /// </summary>
     public struct DistanceInput
     {
@@ -193,24 +223,24 @@ namespace Alis.Core.Physic.Collision
     }
 
     /// <summary>
-    /// Output for Distance.ComputeDistance().
+    ///     Output for Distance.ComputeDistance().
     /// </summary>
     public struct DistanceOutput
     {
         public float Distance;
 
         /// <summary>
-        /// Number of GJK iterations used
+        ///     Number of GJK iterations used
         /// </summary>
         public int Iterations;
 
         /// <summary>
-        /// Closest point on shapeA
+        ///     Closest point on shapeA
         /// </summary>
         public Vector2 PointA;
 
         /// <summary>
-        /// Closest point on shapeB
+        ///     Closest point on shapeB
         /// </summary>
         public Vector2 PointB;
     }
@@ -218,32 +248,32 @@ namespace Alis.Core.Physic.Collision
     internal struct SimplexVertex
     {
         /// <summary>
-        /// Barycentric coordinate for closest point 
+        ///     Barycentric coordinate for closest point
         /// </summary>
         public float A;
 
         /// <summary>
-        /// wA index
+        ///     wA index
         /// </summary>
         public int IndexA;
 
         /// <summary>
-        /// wB index
+        ///     wB index
         /// </summary>
         public int IndexB;
 
         /// <summary>
-        /// wB - wA
+        ///     wB - wA
         /// </summary>
         public Vector2 W;
 
         /// <summary>
-        /// Support point in proxyA
+        ///     Support point in proxyA
         /// </summary>
         public Vector2 WA;
 
         /// <summary>
-        /// Support point in proxyB
+        ///     Support point in proxyB
         /// </summary>
         public Vector2 WB;
     }
@@ -306,11 +336,11 @@ namespace Alis.Core.Physic.Collision
         internal void WriteCache(ref SimplexCache cache)
         {
             cache.Metric = GetMetric();
-            cache.Count = (UInt16)Count;
+            cache.Count = (ushort) Count;
             for (int i = 0; i < Count; ++i)
             {
-                cache.IndexA[i] = (byte)(V[i].IndexA);
-                cache.IndexB[i] = (byte)(V[i].IndexB);
+                cache.IndexA[i] = (byte) V[i].IndexA;
+                cache.IndexB[i] = (byte) V[i].IndexB;
             }
         }
 
@@ -322,20 +352,18 @@ namespace Alis.Core.Physic.Collision
                     return -V[0].W;
 
                 case 2:
+                {
+                    Vector2 e12 = V[1].W - V[0].W;
+                    float sgn = MathUtils.Cross(e12, -V[0].W);
+                    if (sgn > 0.0f)
                     {
-                        Vector2 e12 = V[1].W - V[0].W;
-                        float sgn = MathUtils.Cross(e12, -V[0].W);
-                        if (sgn > 0.0f)
-                        {
-                            // Origin is left of e12.
-                            return new Vector2(-e12.Y, e12.X);
-                        }
-                        else
-                        {
-                            // Origin is right of e12.
-                            return new Vector2(e12.Y, -e12.X);
-                        }
+                        // Origin is left of e12.
+                        return new Vector2(-e12.Y, e12.X);
                     }
+
+                    // Origin is right of e12.
+                    return new Vector2(e12.Y, -e12.X);
+                }
 
                 default:
                     Debug.Assert(false);
@@ -533,7 +561,7 @@ namespace Alis.Core.Physic.Collision
             float d123_3 = n123 * MathUtils.Cross(ref w1, ref w2);
 
             // w1 region
-            if (d12_2 <= 0.0f && d13_2 <= 0.0f)
+            if ((d12_2 <= 0.0f) && (d13_2 <= 0.0f))
             {
                 SimplexVertex v0_1 = V[0];
                 v0_1.A = 1.0f;
@@ -543,7 +571,7 @@ namespace Alis.Core.Physic.Collision
             }
 
             // e12
-            if (d12_1 > 0.0f && d12_2 > 0.0f && d123_3 <= 0.0f)
+            if ((d12_1 > 0.0f) && (d12_2 > 0.0f) && (d123_3 <= 0.0f))
             {
                 float inv_d12 = 1.0f / (d12_1 + d12_2);
                 SimplexVertex v0_2 = V[0];
@@ -557,7 +585,7 @@ namespace Alis.Core.Physic.Collision
             }
 
             // e13
-            if (d13_1 > 0.0f && d13_2 > 0.0f && d123_2 <= 0.0f)
+            if ((d13_1 > 0.0f) && (d13_2 > 0.0f) && (d123_2 <= 0.0f))
             {
                 float inv_d13 = 1.0f / (d13_1 + d13_2);
                 SimplexVertex v0_3 = V[0];
@@ -572,7 +600,7 @@ namespace Alis.Core.Physic.Collision
             }
 
             // w2 region
-            if (d12_1 <= 0.0f && d23_2 <= 0.0f)
+            if ((d12_1 <= 0.0f) && (d23_2 <= 0.0f))
             {
                 SimplexVertex v1_4 = V[1];
                 v1_4.A = 1.0f;
@@ -583,7 +611,7 @@ namespace Alis.Core.Physic.Collision
             }
 
             // w3 region
-            if (d13_1 <= 0.0f && d23_1 <= 0.0f)
+            if ((d13_1 <= 0.0f) && (d23_1 <= 0.0f))
             {
                 SimplexVertex v2_5 = V[2];
                 v2_5.A = 1.0f;
@@ -594,7 +622,7 @@ namespace Alis.Core.Physic.Collision
             }
 
             // e23
-            if (d23_1 > 0.0f && d23_2 > 0.0f && d123_1 <= 0.0f)
+            if ((d23_1 > 0.0f) && (d23_2 > 0.0f) && (d123_1 <= 0.0f))
             {
                 float inv_d23 = 1.0f / (d23_1 + d23_2);
                 SimplexVertex v1_6 = V[1];
@@ -624,30 +652,27 @@ namespace Alis.Core.Physic.Collision
     }
 
     /// <summary>
-    /// The Gilbert–Johnson–Keerthi distance algorithm that provides the distance between shapes.
+    ///     The Gilbert–Johnson–Keerthi distance algorithm that provides the distance between shapes.
     /// </summary>
     public static class Distance
     {
         /// <summary>
-        /// The number of calls made to the ComputeDistance() function.
-        /// Note: This is only activated when Settings.EnableDiagnostics = true
+        ///     The number of calls made to the ComputeDistance() function.
+        ///     Note: This is only activated when Settings.EnableDiagnostics = true
         /// </summary>
-        [ThreadStatic]
-        public static int GJKCalls;
+        [ThreadStatic] public static int GJKCalls;
 
         /// <summary>
-        /// The number of iterations that was made on the last call to ComputeDistance().
-        /// Note: This is only activated when Settings.EnableDiagnostics = true
+        ///     The number of iterations that was made on the last call to ComputeDistance().
+        ///     Note: This is only activated when Settings.EnableDiagnostics = true
         /// </summary>
-        [ThreadStatic]
-        public static int GJKIters;
+        [ThreadStatic] public static int GJKIters;
 
         /// <summary>
-        /// The maximum numer of iterations ever mae with calls to the CompteDistance() funtion.
-        /// Note: This is only activated when Settings.EnableDiagnostics = true
+        ///     The maximum numer of iterations ever mae with calls to the CompteDistance() funtion.
+        ///     Note: This is only activated when Settings.EnableDiagnostics = true
         /// </summary>
-        [ThreadStatic]
-        public static int GJKMaxIters;
+        [ThreadStatic] public static int GJKMaxIters;
 
         public static void ComputeDistance(out DistanceOutput output, out SimplexCache cache, DistanceInput input)
         {
@@ -732,7 +757,7 @@ namespace Alis.Core.Physic.Collision
                 vertex.IndexA = input.ProxyA.GetSupport(-Complex.Divide(ref d, ref input.TransformA.q));
                 vertex.WA = Transform.Multiply(input.ProxyA.Vertices[vertex.IndexA], ref input.TransformA);
 
-                vertex.IndexB = input.ProxyB.GetSupport( Complex.Divide(ref d, ref input.TransformB.q));
+                vertex.IndexB = input.ProxyB.GetSupport(Complex.Divide(ref d, ref input.TransformB.q));
                 vertex.WB = Transform.Multiply(input.ProxyB.Vertices[vertex.IndexB], ref input.TransformB);
                 vertex.W = vertex.WB - vertex.WA;
                 simplex.V[simplex.Count] = vertex;
@@ -747,7 +772,7 @@ namespace Alis.Core.Physic.Collision
                 bool duplicate = false;
                 for (int i = 0; i < saveCount; ++i)
                 {
-                    if (vertex.IndexA == saveA[i] && vertex.IndexB == saveB[i])
+                    if ((vertex.IndexA == saveA[i]) && (vertex.IndexB == saveB[i]))
                     {
                         duplicate = true;
                         break;
@@ -781,7 +806,7 @@ namespace Alis.Core.Physic.Collision
                 float rA = input.ProxyA.Radius;
                 float rB = input.ProxyB.Radius;
 
-                if (output.Distance > rA + rB && output.Distance > Settings.Epsilon)
+                if ((output.Distance > rA + rB) && (output.Distance > Settings.Epsilon))
                 {
                     // Shapes are still no overlapped.
                     // Move the witness points to the outer surface.

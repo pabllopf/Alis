@@ -45,7 +45,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_EndDragDropTarget();
         }
-        
+
         /// <summary>
         ///     Ends the legend popup
         /// </summary>
@@ -53,7 +53,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_EndLegendPopup();
         }
-        
+
         /// <summary>
         ///     Ends the plot
         /// </summary>
@@ -61,7 +61,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_EndPlot();
         }
-        
+
         /// <summary>
         ///     Ends the subplots
         /// </summary>
@@ -69,7 +69,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_EndSubplots();
         }
-        
+
         /// <summary>
         ///     Gets the colormap color using the specified idx
         /// </summary>
@@ -81,7 +81,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             ImPlotNative.ImPlot_GetColormapColor(out Vector4 retval, idx, cmap);
             return retval;
         }
-        
+
         /// <summary>
         ///     Gets the colormap color using the specified idx
         /// </summary>
@@ -93,7 +93,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             ImPlotNative.ImPlot_GetColormapColor(out Vector4 retval, idx, cmap);
             return retval;
         }
-        
+
         /// <summary>
         ///     Gets the colormap count
         /// </summary>
@@ -103,7 +103,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             int ret = ImPlotNative.ImPlot_GetColormapCount();
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the colormap index using the specified name
         /// </summary>
@@ -114,14 +114,14 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             ImPlotColormap ret = ImPlotNative.ImPlot_GetColormapIndex(Encoding.UTF8.GetBytes(name));
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the colormap name using the specified cmap
         /// </summary>
         /// <param name="cmap">The cmap</param>
         /// <returns>The string</returns>
         public static string GetColormapName(ImPlotColormap cmap) => Encoding.UTF8.GetString(ImPlotNative.ImPlot_GetColormapName(cmap));
-        
+
         /// <summary>
         ///     Gets the colormap size
         /// </summary>
@@ -132,7 +132,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             int ret = ImPlotNative.ImPlot_GetColormapSize(cmap);
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the colormap size using the specified cmap
         /// </summary>
@@ -143,7 +143,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             int ret = ImPlotNative.ImPlot_GetColormapSize(cmap);
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the current context
         /// </summary>
@@ -153,13 +153,13 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             IntPtr ret = ImPlotNative.ImPlot_GetCurrentContext();
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the input map
         /// </summary>
         /// <returns>The im plot input map ptr</returns>
         public static ImPlotInputMap GetInputMap() => ImPlotNative.ImPlot_GetInputMap();
-        
+
         /// <summary>
         ///     Gets the last item color
         /// </summary>
@@ -169,20 +169,20 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             ImPlotNative.ImPlot_GetLastItemColor(out Vector4 retval);
             return retval;
         }
-        
+
         /// <summary>
         ///     Gets the marker name using the specified idx
         /// </summary>
         /// <param name="idx">The idx</param>
         /// <returns>The string</returns>
         public static string GetMarkerName(ImPlotMarker idx) => Encoding.UTF8.GetString(ImPlotNative.ImPlot_GetMarkerName(idx));
-        
+
         /// <summary>
         ///     Gets the plot draw list
         /// </summary>
         /// <returns>The im draw list ptr</returns>
         public static ImDrawList GetPlotDrawList() => ImPlotNative.ImPlot_GetPlotDrawList();
-        
+
         /// <summary>
         ///     Gets the plot limits
         /// </summary>
@@ -194,7 +194,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             ImPlotRect ret = ImPlotNative.ImPlot_GetPlotLimits(xAxis, yAxis);
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the plot limits using the specified x axis
         /// </summary>
@@ -206,7 +206,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             ImPlotRect ret = ImPlotNative.ImPlot_GetPlotLimits(xAxis, yAxis);
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the plot limits using the specified x axis
         /// </summary>
@@ -218,7 +218,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             ImPlotRect ret = ImPlotNative.ImPlot_GetPlotLimits(xAxis, yAxis);
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the plot mouse pos
         /// </summary>
@@ -230,7 +230,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             ImPlotNative.ImPlot_GetPlotMousePos(out ImPlotPoint retval, xAxis, yAxis);
             return retval;
         }
-        
+
         /// <summary>
         ///     Gets the plot mouse pos using the specified x axis
         /// </summary>
@@ -242,7 +242,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             ImPlotNative.ImPlot_GetPlotMousePos(out ImPlotPoint retval, xAxis, yAxis);
             return retval;
         }
-        
+
         /// <summary>
         ///     Gets the plot mouse pos using the specified x axis
         /// </summary>
@@ -254,7 +254,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             ImPlotNative.ImPlot_GetPlotMousePos(out ImPlotPoint retval, xAxis, yAxis);
             return retval;
         }
-        
+
         /// <summary>
         ///     Gets the plot pos
         /// </summary>
@@ -264,7 +264,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             ImPlotNative.ImPlot_GetPlotPos(out Vector2 retval);
             return retval;
         }
-        
+
         /// <summary>
         ///     Gets the plot selection
         /// </summary>
@@ -276,7 +276,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             ImPlotRect ret = ImPlotNative.ImPlot_GetPlotSelection(xAxis, yAxis);
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the plot selection using the specified x axis
         /// </summary>
@@ -288,7 +288,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             ImPlotRect ret = ImPlotNative.ImPlot_GetPlotSelection(xAxis, yAxis);
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the plot selection using the specified x axis
         /// </summary>
@@ -300,7 +300,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             ImPlotRect ret = ImPlotNative.ImPlot_GetPlotSelection(xAxis, yAxis);
             return ret;
         }
-        
+
         /// <summary>
         ///     Gets the plot size
         /// </summary>
@@ -310,20 +310,20 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             ImPlotNative.ImPlot_GetPlotSize(out Vector2 retval);
             return retval;
         }
-        
+
         /// <summary>
         ///     Gets the style
         /// </summary>
         /// <returns>The im plot style ptr</returns>
         public static ImPlotStyle GetStyle() => ImPlotNative.ImPlot_GetStyle();
-        
+
         /// <summary>
         ///     Gets the style color name using the specified idx
         /// </summary>
         /// <param name="idx">The idx</param>
         /// <returns>The string</returns>
         public static string GetStyleColorName(ImPlotCol idx) => Encoding.UTF8.GetString(ImPlotNative.ImPlot_GetStyleColorName(idx));
-        
+
         /// <summary>
         ///     Hides the next item
         /// </summary>
@@ -333,7 +333,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             ImPlotCond cond = ImPlotCond.Once;
             ImPlotNative.ImPlot_HideNextItem(hidden, cond);
         }
-        
+
         /// <summary>
         ///     Hides the next item using the specified hidden
         /// </summary>
@@ -344,7 +344,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             ImPlotCond cond = ImPlotCond.Once;
             ImPlotNative.ImPlot_HideNextItem(nativeHidden, cond);
         }
-        
+
         /// <summary>
         ///     Hides the next item using the specified hidden
         /// </summary>
@@ -355,7 +355,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte nativeHidden = hidden ? (byte) 1 : (byte) 0;
             ImPlotNative.ImPlot_HideNextItem(nativeHidden, cond);
         }
-        
+
         /// <summary>
         ///     Describes whether is axis hovered
         /// </summary>
@@ -366,7 +366,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_IsAxisHovered(axis);
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is legend entry hovered
         /// </summary>
@@ -377,7 +377,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_IsLegendEntryHovered(Encoding.UTF8.GetBytes(labelId));
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is plot hovered
         /// </summary>
@@ -387,7 +387,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_IsPlotHovered();
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is plot selected
         /// </summary>
@@ -397,7 +397,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_IsPlotSelected();
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether is subplots hovered
         /// </summary>
@@ -407,7 +407,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             byte ret = ImPlotNative.ImPlot_IsSubplotsHovered();
             return ret != 0;
         }
-        
+
         /// <summary>
         ///     Items the icon using the specified col
         /// </summary>
@@ -416,7 +416,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_ItemIcon_Vec4(col);
         }
-        
+
         /// <summary>
         ///     Items the icon using the specified col
         /// </summary>
@@ -425,7 +425,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_ItemIcon_U32(col);
         }
-        
+
         /// <summary>
         ///     Maps the input default
         /// </summary>
@@ -433,7 +433,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_MapInputDefault(new ImPlotInputMap());
         }
-        
+
         /// <summary>
         ///     Maps the input default using the specified dst
         /// </summary>
@@ -442,7 +442,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_MapInputDefault(dst);
         }
-        
+
         /// <summary>
         ///     Maps the input reverse
         /// </summary>
@@ -450,7 +450,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_MapInputReverse(new ImPlotInputMap());
         }
-        
+
         /// <summary>
         ///     Maps the input reverse using the specified dst
         /// </summary>
@@ -459,7 +459,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
         {
             ImPlotNative.ImPlot_MapInputReverse(dst);
         }
-        
+
         /// <summary>
         ///     Nexts the colormap color
         /// </summary>
@@ -469,7 +469,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             ImPlotNative.ImPlot_NextColormapColor(out Vector4 retval);
             return retval;
         }
-        
+
         /// <summary>
         ///     Pixelses the to plot using the specified pix
         /// </summary>
@@ -482,7 +482,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             ImPlotNative.ImPlot_PixelsToPlot_Vec2(out ImPlotPoint retval, pix, xAxis, yAxis);
             return retval;
         }
-        
+
         /// <summary>
         ///     Pixelses the to plot using the specified pix
         /// </summary>
@@ -495,7 +495,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             ImPlotNative.ImPlot_PixelsToPlot_Vec2(out ImPlotPoint retval, pix, xAxis, yAxis);
             return retval;
         }
-        
+
         /// <summary>
         ///     Pixelses the to plot using the specified pix
         /// </summary>
@@ -508,7 +508,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             ImPlotNative.ImPlot_PixelsToPlot_Vec2(out ImPlotPoint retval, pix, xAxis, yAxis);
             return retval;
         }
-        
+
         /// <summary>
         ///     Pixelses the to plot using the specified x
         /// </summary>
@@ -522,7 +522,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             ImPlotNative.ImPlot_PixelsToPlot_Float(out ImPlotPoint retval, x, y, xAxis, yAxis);
             return retval;
         }
-        
+
         /// <summary>
         ///     Pixelses the to plot using the specified x
         /// </summary>
@@ -536,7 +536,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             ImPlotNative.ImPlot_PixelsToPlot_Float(out ImPlotPoint retval, x, y, xAxis, yAxis);
             return retval;
         }
-        
+
         /// <summary>
         ///     Pixelses the to plot using the specified x
         /// </summary>
@@ -550,7 +550,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
             ImPlotNative.ImPlot_PixelsToPlot_Float(out ImPlotPoint retval, x, y, xAxis, yAxis);
             return retval;
         }
-        
+
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
@@ -566,10 +566,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
                 string s = labelIds[i];
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(s);
             }
-            
+
             ImPlotNative.ImPlot_PlotBarGroups_FloatPtr(nativeLabelIds, values, itemCount, groupCount, 0.67, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
@@ -586,10 +586,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
                 string s = labelIds[i];
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(s);
             }
-            
+
             ImPlotNative.ImPlot_PlotBarGroups_FloatPtr(nativeLabelIds, values, itemCount, groupCount, groupSize, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
@@ -607,10 +607,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
                 string s = labelIds[i];
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(s);
             }
-            
+
             ImPlotNative.ImPlot_PlotBarGroups_FloatPtr(nativeLabelIds, values, itemCount, groupCount, groupSize, shift, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
@@ -629,10 +629,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
                 string s = labelIds[i];
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(s);
             }
-            
+
             ImPlotNative.ImPlot_PlotBarGroups_FloatPtr(nativeLabelIds, values, itemCount, groupCount, groupSize, shift, flags);
         }
-        
+
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
@@ -648,10 +648,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
                 string s = labelIds[i];
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(s);
             }
-            
+
             ImPlotNative.ImPlot_PlotBarGroups_doublePtr(nativeLabelIds, values, itemCount, groupCount, 0.67, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
@@ -668,10 +668,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
                 string s = labelIds[i];
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(s);
             }
-            
+
             ImPlotNative.ImPlot_PlotBarGroups_doublePtr(nativeLabelIds, values, itemCount, groupCount, groupSize, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
@@ -689,10 +689,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
                 string s = labelIds[i];
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(s);
             }
-            
+
             ImPlotNative.ImPlot_PlotBarGroups_doublePtr(nativeLabelIds, values, itemCount, groupCount, groupSize, shift, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
@@ -711,10 +711,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
                 string s = labelIds[i];
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(s);
             }
-            
+
             ImPlotNative.ImPlot_PlotBarGroups_doublePtr(nativeLabelIds, values, itemCount, groupCount, groupSize, shift, flags);
         }
-        
+
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
@@ -730,10 +730,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
                 string s = labelIds[i];
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(s);
             }
-            
+
             ImPlotNative.ImPlot_PlotBarGroups_S8Ptr(nativeLabelIds, values, itemCount, groupCount, 0.67, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
@@ -750,10 +750,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
                 string s = labelIds[i];
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(s);
             }
-            
+
             ImPlotNative.ImPlot_PlotBarGroups_S8Ptr(nativeLabelIds, values, itemCount, groupCount, groupSize, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
@@ -771,10 +771,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
                 string s = labelIds[i];
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(s);
             }
-            
+
             ImPlotNative.ImPlot_PlotBarGroups_S8Ptr(nativeLabelIds, values, itemCount, groupCount, groupSize, shift, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
@@ -793,10 +793,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
                 string s = labelIds[i];
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(s);
             }
-            
+
             ImPlotNative.ImPlot_PlotBarGroups_S8Ptr(nativeLabelIds, values, itemCount, groupCount, groupSize, shift, flags);
         }
-        
+
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
@@ -812,10 +812,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
                 string s = labelIds[i];
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(s);
             }
-            
+
             ImPlotNative.ImPlot_PlotBarGroups_U8Ptr(nativeLabelIds, values, itemCount, groupCount, 0.67, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
@@ -832,10 +832,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
                 string s = labelIds[i];
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(s);
             }
-            
+
             ImPlotNative.ImPlot_PlotBarGroups_U8Ptr(nativeLabelIds, values, itemCount, groupCount, groupSize, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
@@ -853,10 +853,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
                 string s = labelIds[i];
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(s);
             }
-            
+
             ImPlotNative.ImPlot_PlotBarGroups_U8Ptr(nativeLabelIds, values, itemCount, groupCount, groupSize, shift, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
@@ -875,10 +875,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
                 string s = labelIds[i];
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(s);
             }
-            
+
             ImPlotNative.ImPlot_PlotBarGroups_U8Ptr(nativeLabelIds, values, itemCount, groupCount, groupSize, shift, flags);
         }
-        
+
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
@@ -894,10 +894,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
                 string s = labelIds[i];
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(s);
             }
-            
+
             ImPlotNative.ImPlot_PlotBarGroups_S16Ptr(nativeLabelIds, values, itemCount, groupCount, 0.67, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
@@ -914,10 +914,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
                 string s = labelIds[i];
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(s);
             }
-            
+
             ImPlotNative.ImPlot_PlotBarGroups_S16Ptr(nativeLabelIds, values, itemCount, groupCount, groupSize, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
@@ -935,10 +935,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
                 string s = labelIds[i];
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(s);
             }
-            
+
             ImPlotNative.ImPlot_PlotBarGroups_S16Ptr(nativeLabelIds, values, itemCount, groupCount, groupSize, shift, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
@@ -957,10 +957,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
                 string s = labelIds[i];
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(s);
             }
-            
+
             ImPlotNative.ImPlot_PlotBarGroups_S16Ptr(nativeLabelIds, values, itemCount, groupCount, groupSize, shift, flags);
         }
-        
+
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
@@ -976,10 +976,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
                 string s = labelIds[i];
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(s);
             }
-            
+
             ImPlotNative.ImPlot_PlotBarGroups_U16Ptr(nativeLabelIds, values, itemCount, groupCount, 0.67, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
@@ -996,10 +996,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
                 string s = labelIds[i];
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(s);
             }
-            
+
             ImPlotNative.ImPlot_PlotBarGroups_U16Ptr(nativeLabelIds, values, itemCount, groupCount, groupSize, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
@@ -1017,10 +1017,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
                 string s = labelIds[i];
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(s);
             }
-            
+
             ImPlotNative.ImPlot_PlotBarGroups_U16Ptr(nativeLabelIds, values, itemCount, groupCount, groupSize, shift, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
@@ -1039,10 +1039,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
                 string s = labelIds[i];
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(s);
             }
-            
+
             ImPlotNative.ImPlot_PlotBarGroups_U16Ptr(nativeLabelIds, values, itemCount, groupCount, groupSize, shift, flags);
         }
-        
+
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
@@ -1058,10 +1058,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
                 string s = labelIds[i];
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(s);
             }
-            
+
             ImPlotNative.ImPlot_PlotBarGroups_S32Ptr(nativeLabelIds, values, itemCount, groupCount, 0.67, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
@@ -1078,10 +1078,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
                 string s = labelIds[i];
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(s);
             }
-            
+
             ImPlotNative.ImPlot_PlotBarGroups_S32Ptr(nativeLabelIds, values, itemCount, groupCount, groupSize, 0, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
@@ -1099,10 +1099,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
                 string s = labelIds[i];
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(s);
             }
-            
+
             ImPlotNative.ImPlot_PlotBarGroups_S32Ptr(nativeLabelIds, values, itemCount, groupCount, groupSize, shift, 0);
         }
-        
+
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
@@ -1121,10 +1121,10 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
                 string s = labelIds[i];
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(s);
             }
-            
+
             ImPlotNative.ImPlot_PlotBarGroups_S32Ptr(nativeLabelIds, values, itemCount, groupCount, groupSize, shift, flags);
         }
-        
+
         /// <summary>
         ///     Plots the bar groups using the specified label ids
         /// </summary>
@@ -1140,7 +1140,7 @@ namespace Alis.Extension.Graphic.ImGui.Extras.Plot.Native
                 string s = labelIds[i];
                 nativeLabelIds[i] = Encoding.UTF8.GetBytes(s);
             }
-            
+
             ImPlotNative.ImPlot_PlotBarGroups_U32Ptr(nativeLabelIds, values, itemCount, groupCount, 0.67, 0, 0);
         }
     }

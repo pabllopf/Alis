@@ -47,7 +47,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiSizeCallbackData data = new ImGuiSizeCallbackData();
             Assert.Equal(IntPtr.Zero, data.UserData);
         }
-        
+
         /// <summary>
         ///     Tests that pos should be initialized
         /// </summary>
@@ -57,7 +57,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiSizeCallbackData data = new ImGuiSizeCallbackData();
             Assert.Equal(default(Vector2), data.Pos);
         }
-        
+
         /// <summary>
         ///     Tests that current size should be initialized
         /// </summary>
@@ -67,7 +67,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiSizeCallbackData data = new ImGuiSizeCallbackData();
             Assert.Equal(default(Vector2), data.CurrentSize);
         }
-        
+
         /// <summary>
         ///     Tests that desired size should be initialized
         /// </summary>
@@ -77,7 +77,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiSizeCallbackData data = new ImGuiSizeCallbackData();
             Assert.Equal(default(Vector2), data.DesiredSize);
         }
-        
+
         /// <summary>
         ///     Tests that user data should set and get correctly
         /// </summary>
@@ -89,7 +89,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             data.UserData = userData;
             Assert.Equal(userData, data.UserData);
         }
-        
+
         /// <summary>
         ///     Tests that pos should set and get correctly
         /// </summary>
@@ -101,7 +101,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             data.Pos = pos;
             Assert.Equal(pos, data.Pos);
         }
-        
+
         /// <summary>
         ///     Tests that current size should set and get correctly
         /// </summary>
@@ -113,7 +113,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             data.CurrentSize = currentSize;
             Assert.Equal(currentSize, data.CurrentSize);
         }
-        
+
         /// <summary>
         ///     Tests that desired size should set and get correctly
         /// </summary>

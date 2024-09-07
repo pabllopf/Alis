@@ -46,7 +46,7 @@ namespace Alis.Core.Network.Test
             BufferPool bufferPool = new BufferPool();
             Assert.NotNull(bufferPool);
         }
-        
+
         /// <summary>
         ///     Tests that buffer pool constructor custom size
         /// </summary>
@@ -56,7 +56,7 @@ namespace Alis.Core.Network.Test
             BufferPool bufferPool = new BufferPool(1024);
             Assert.NotNull(bufferPool);
         }
-        
+
         /// <summary>
         ///     Tests that buffer pool get buffer
         /// </summary>
@@ -67,7 +67,7 @@ namespace Alis.Core.Network.Test
             MemoryStream buffer = bufferPool.GetBuffer();
             Assert.NotNull(buffer);
         }
-        
+
         /// <summary>
         ///     Tests that public buffer memory stream constructor
         /// </summary>
@@ -79,7 +79,7 @@ namespace Alis.Core.Network.Test
             PublicBufferMemoryStream stream = new PublicBufferMemoryStream(buffer.GetBuffer(), bufferPool);
             Assert.NotNull(stream);
         }
-        
+
         /// <summary>
         ///     Tests that public buffer memory stream write byte
         /// </summary>
@@ -92,7 +92,7 @@ namespace Alis.Core.Network.Test
             stream.WriteByte(0x20);
             Assert.Equal(0, stream.Length);
         }
-        
+
         /// <summary>
         ///     Tests that public buffer memory stream write
         /// </summary>
@@ -105,7 +105,7 @@ namespace Alis.Core.Network.Test
             stream.Write(new byte[] {0x20, 0x30}, 0, 2);
             Assert.Equal(0, stream.Length);
         }
-        
+
         /// <summary>
         ///     Tests that public buffer memory stream read byte
         /// </summary>
@@ -119,7 +119,7 @@ namespace Alis.Core.Network.Test
             stream.Position = 0;
             Assert.Equal(0x20, stream.ReadByte());
         }
-        
+
         /// <summary>
         ///     Tests that public buffer memory stream read
         /// </summary>
@@ -135,7 +135,7 @@ namespace Alis.Core.Network.Test
             stream.Read(readBuffer, 0, 2);
             Assert.Equal(new byte[] {0x20, 0x30}, readBuffer);
         }
-        
+
         /// <summary>
         ///     Tests that public buffer memory stream close
         /// </summary>

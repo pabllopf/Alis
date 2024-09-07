@@ -1,29 +1,58 @@
-﻿/* Original source Farseer Physics Engine:
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Math.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+/* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
 
 /*
-* Farseer Physics Engine:
-* Copyright (c) 2012 Ian Qvist
-* 
-* Original source Box2D:
-* Copyright (c) 2006-2011 Erin Catto http://www.box2d.org 
-* 
-* This software is provided 'as-is', without any express or implied 
-* warranty.  In no event will the authors be held liable for any damages 
-* arising from the use of this software. 
-* Permission is granted to anyone to use this software for any purpose, 
-* including commercial applications, and to alter it and redistribute it 
-* freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
-* claim that you wrote the original software. If you use this software 
-* in a product, an acknowledgment in the product documentation would be 
-* appreciated but is not required. 
-* 2. Altered source versions must be plainly marked as such, and must not be 
-* misrepresented as being the original software. 
-* 3. This notice may not be removed or altered from any source distribution. 
-*/
+ * Farseer Physics Engine:
+ * Copyright (c) 2012 Ian Qvist
+ *
+ * Original source Box2D:
+ * Copyright (c) 2006-2011 Erin Catto http://www.box2d.org
+ *
+ * This software is provided 'as-is', without any express or implied
+ * warranty.  In no event will the authors be held liable for any damages
+ * arising from the use of this software.
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely, subject to the following restrictions:
+ * 1. The origin of this software must not be misrepresented; you must not
+ * claim that you wrote the original software. If you use this software
+ * in a product, an acknowledgment in the product documentation would be
+ * appreciated but is not required.
+ * 2. Altered source versions must be plainly marked as such, and must not be
+ * misrepresented as being the original software.
+ * 3. This notice may not be removed or altered from any source distribution.
+ */
 
 using System;
 using System.Diagnostics;
@@ -38,76 +67,37 @@ namespace Alis.Core.Physic.Common
 {
     public static class MathUtils
     {
-        public static float Cross(ref Vector2 a, ref Vector2 b)
-        {
-            return a.X * b.Y - a.Y * b.X;
-        }
+        public static float Cross(ref Vector2 a, ref Vector2 b) => a.X * b.Y - a.Y * b.X;
 
-        public static float Cross(Vector2 a, Vector2 b)
-        {
-            return Cross(ref a, ref b);
-        }
+        public static float Cross(Vector2 a, Vector2 b) => Cross(ref a, ref b);
 
         /// Perform the cross product on two vectors.
-        public static Vector3 Cross(ref Vector3 a, ref Vector3 b)
-        {
-            return new Vector3( a.Y * b.Z - a.Z * b.Y, 
-                                a.Z * b.X - a.X * b.Z, 
-                                a.X * b.Y - a.Y * b.X);
-        }
+        public static Vector3 Cross(ref Vector3 a, ref Vector3 b) => new Vector3(a.Y * b.Z - a.Z * b.Y,
+            a.Z * b.X - a.X * b.Z,
+            a.X * b.Y - a.Y * b.X);
 
-        public static Vector2 Cross(Vector2 a, float s)
-        {
-            return new Vector2(s * a.Y, -s * a.X);
-        }
+        public static Vector2 Cross(Vector2 a, float s) => new Vector2(s * a.Y, -s * a.X);
 
-        public static Vector2 Rot270(ref Vector2 a)
-        {
-            return new Vector2(a.Y, -a.X);
-        }
+        public static Vector2 Rot270(ref Vector2 a) => new Vector2(a.Y, -a.X);
 
-        public static Vector2 Cross(float s, ref Vector2 a)
-        {
-            return new Vector2(-s * a.Y, s * a.X);
-        }
+        public static Vector2 Cross(float s, ref Vector2 a) => new Vector2(-s * a.Y, s * a.X);
 
-        public static Vector2 Rot90(ref Vector2 a)
-        {
-            return new Vector2(-a.Y, a.X);
-        }
+        public static Vector2 Rot90(ref Vector2 a) => new Vector2(-a.Y, a.X);
 
-        public static Vector2 Abs(Vector2 v)
-        {
-            return new Vector2(Math.Abs(v.X), Math.Abs(v.Y));
-        }
+        public static Vector2 Abs(Vector2 v) => new Vector2(Math.Abs(v.X), Math.Abs(v.Y));
 
-        public static Vector2 Mul(ref Mat22 A, Vector2 v)
-        {
-            return Mul(ref A, ref v);
-        }
+        public static Vector2 Mul(ref Mat22 A, Vector2 v) => Mul(ref A, ref v);
 
-        public static Vector2 Mul(ref Mat22 A, ref Vector2 v)
-        {
-            return new Vector2(A.ex.X * v.X + A.ey.X * v.Y, A.ex.Y * v.X + A.ey.Y * v.Y);
-        }
-        
-        public static Vector2 MulT(ref Mat22 A, Vector2 v)
-        {
-            return MulT(ref A, ref v);
-        }
+        public static Vector2 Mul(ref Mat22 A, ref Vector2 v) => new Vector2(A.ex.X * v.X + A.ey.X * v.Y, A.ex.Y * v.X + A.ey.Y * v.Y);
 
-        public static Vector2 MulT(ref Mat22 A, ref Vector2 v)
-        {
-            return new Vector2(v.X * A.ex.X + v.Y * A.ex.Y, v.X * A.ey.X + v.Y * A.ey.Y);
-        }
+        public static Vector2 MulT(ref Mat22 A, Vector2 v) => MulT(ref A, ref v);
 
-        
+        public static Vector2 MulT(ref Mat22 A, ref Vector2 v) => new Vector2(v.X * A.ex.X + v.Y * A.ex.Y, v.X * A.ey.X + v.Y * A.ey.Y);
+
+
         /// Multiply a matrix times a vector.
-        public static Vector3 Mul(Mat33 A, Vector3 v)
-        {
-            return v.X * A.ex + v.Y * A.ey + v.Z * A.ez;
-        }
-        
+        public static Vector3 Mul(Mat33 A, Vector3 v) => v.X * A.ex + v.Y * A.ey + v.Z * A.ez;
+
         public static void Swap<T>(ref T a, ref T b)
         {
             T tmp = a;
@@ -116,24 +106,18 @@ namespace Alis.Core.Physic.Common
         }
 
         /// Multiply a matrix times a vector.
-        public static Vector2 Mul22(Mat33 A, Vector2 v)
-        {
-            return new Vector2(A.ex.X * v.X + A.ey.X * v.Y, A.ex.Y * v.X + A.ey.Y * v.Y);
-        }
-        
+        public static Vector2 Mul22(Mat33 A, Vector2 v) => new Vector2(A.ex.X * v.X + A.ey.X * v.Y, A.ex.Y * v.X + A.ey.Y * v.Y);
+
         /// Get the skew vector such that dot(skew_vec, other) == cross(vec, other)
-        public static Vector2 Skew(Vector2 input)
-        {
-            return new Vector2(-input.Y, input.X);
-        }
+        public static Vector2 Skew(Vector2 input) => new Vector2(-input.Y, input.X);
 
         /// <summary>
-        /// This function is used to ensure that a floating point number is
-        /// not a NaN or infinity.
+        ///     This function is used to ensure that a floating point number is
+        ///     not a NaN or infinity.
         /// </summary>
         /// <param name="x">The x.</param>
         /// <returns>
-        /// 	<c>true</c> if the specified x is valid; otherwise, <c>false</c>.
+        ///     <c>true</c> if the specified x is valid; otherwise, <c>false</c>.
         /// </returns>
         public static bool IsValid(float x)
         {
@@ -146,20 +130,11 @@ namespace Alis.Core.Physic.Common
             return !float.IsInfinity(x);
         }
 
-        public static bool IsValid(this Vector2 x)
-        {
-            return IsValid(x.X) && IsValid(x.Y);
-        }
+        public static bool IsValid(this Vector2 x) => IsValid(x.X) && IsValid(x.Y);
 
-        public static int Clamp(int a, int low, int high)
-        {
-            return Math.Max(low, Math.Min(a, high));
-        }
+        public static int Clamp(int a, int low, int high) => Math.Max(low, Math.Min(a, high));
 
-        public static float Clamp(float a, float low, float high)
-        {
-            return Math.Max(low, Math.Min(a, high));
-        }
+        public static float Clamp(float a, float low, float high) => Math.Max(low, Math.Min(a, high));
 
         public static Vector2 Clamp(Vector2 a, Vector2 low, Vector2 high)
         {
@@ -174,9 +149,9 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Return the angle between two vectors on a plane
-        /// The angle is from vector 1 to vector 2, positive anticlockwise
-        /// The result is between -pi -> pi
+        ///     Return the angle between two vectors on a plane
+        ///     The angle is from vector 1 to vector 2, positive anticlockwise
+        ///     The result is between -pi -> pi
         /// </summary>
         public static double VectorAngle(ref Vector2 p1, ref Vector2 p2)
         {
@@ -184,107 +159,85 @@ namespace Alis.Core.Physic.Common
             double theta2 = Math.Atan2(p2.Y, p2.X);
             double dtheta = theta2 - theta1;
             while (dtheta > Math.PI)
-                dtheta -= (2 * Math.PI);
+                dtheta -= 2 * Math.PI;
             while (dtheta < -Math.PI)
-                dtheta += (2 * Math.PI);
+                dtheta += 2 * Math.PI;
 
-            return (dtheta);
+            return dtheta;
         }
 
         /// Perform the dot product on two vectors.
-        public static float Dot(Vector3 a, Vector3 b)
-        {
-            return a.X * b.X + a.Y * b.Y + a.Z * b.Z;
-        }
+        public static float Dot(Vector3 a, Vector3 b) => a.X * b.X + a.Y * b.Y + a.Z * b.Z;
 
         /// Perform the dot product on two vectors.
-        public static float Dot(Vector2 a, ref Vector2 b)
-        {
-            return a.X * b.X + a.Y * b.Y;
-        }
+        public static float Dot(Vector2 a, ref Vector2 b) => a.X * b.X + a.Y * b.Y;
 
-        public static double VectorAngle(Vector2 p1, Vector2 p2)
-        {
-            return VectorAngle(ref p1, ref p2);
-        }
+        public static double VectorAngle(Vector2 p1, Vector2 p2) => VectorAngle(ref p1, ref p2);
 
         /// <summary>
-        /// Returns a positive number if c is to the left of the line going from a to b.
+        ///     Returns a positive number if c is to the left of the line going from a to b.
         /// </summary>
-        /// <returns>Positive number if point is left, negative if point is right, 
-        /// and 0 if points are collinear.</returns>
-        public static float Area(Vector2 a, Vector2 b, Vector2 c)
-        {
-            return Area(ref a, ref b, ref c);
-        }
+        /// <returns>
+        ///     Positive number if point is left, negative if point is right,
+        ///     and 0 if points are collinear.
+        /// </returns>
+        public static float Area(Vector2 a, Vector2 b, Vector2 c) => Area(ref a, ref b, ref c);
 
         /// <summary>
-        /// Returns a positive number if c is to the left of the line going from a to b.
+        ///     Returns a positive number if c is to the left of the line going from a to b.
         /// </summary>
-        /// <returns>Positive number if point is left, negative if point is right, 
-        /// and 0 if points are collinear.</returns>
-        public static float Area(ref Vector2 a, ref Vector2 b, ref Vector2 c)
-        {
-            return a.X * (b.Y - c.Y) + b.X * (c.Y - a.Y) + c.X * (a.Y - b.Y);
-        }
+        /// <returns>
+        ///     Positive number if point is left, negative if point is right,
+        ///     and 0 if points are collinear.
+        /// </returns>
+        public static float Area(ref Vector2 a, ref Vector2 b, ref Vector2 c) => a.X * (b.Y - c.Y) + b.X * (c.Y - a.Y) + c.X * (a.Y - b.Y);
 
         /// <summary>
-        /// Determines if three vertices are collinear (ie. on a straight line)
+        ///     Determines if three vertices are collinear (ie. on a straight line)
         /// </summary>
         /// <param name="a">First vertex</param>
         /// <param name="b">Second vertex</param>
         /// <param name="c">Third vertex</param>
         /// <param name="tolerance">The tolerance</param>
         /// <returns></returns>
-        public static bool IsCollinear(ref Vector2 a, ref Vector2 b, ref Vector2 c, float tolerance = 0)
-        {
-            return FloatInRange(Area(ref a, ref b, ref c), -tolerance, tolerance);
-        }
-        
+        public static bool IsCollinear(ref Vector2 a, ref Vector2 b, ref Vector2 c, float tolerance = 0) => FloatInRange(Area(ref a, ref b, ref c), -tolerance, tolerance);
 
-        public static bool FloatEquals(float value1, float value2)
-        {
-            return Math.Abs(value1 - value2) <= Settings.Epsilon;
-        }
+
+        public static bool FloatEquals(float value1, float value2) => Math.Abs(value1 - value2) <= Settings.Epsilon;
 
         /// <summary>
-        /// Checks if a floating point Value is equal to another,
-        /// within a certain tolerance.
+        ///     Checks if a floating point Value is equal to another,
+        ///     within a certain tolerance.
         /// </summary>
         /// <param name="value1">The first floating point Value.</param>
         /// <param name="value2">The second floating point Value.</param>
         /// <param name="delta">The floating point tolerance.</param>
         /// <returns>True if the values are "equal", false otherwise.</returns>
-        public static bool FloatEquals(float value1, float value2, float delta)
-        {
-            return FloatInRange(value1, value2 - delta, value2 + delta);
-        }
+        public static bool FloatEquals(float value1, float value2, float delta) => FloatInRange(value1, value2 - delta, value2 + delta);
 
         /// <summary>
-        /// Checks if a floating point Value is within a specified
-        /// range of values (inclusive).
+        ///     Checks if a floating point Value is within a specified
+        ///     range of values (inclusive).
         /// </summary>
         /// <param name="value">The Value to check.</param>
         /// <param name="min">The minimum Value.</param>
         /// <param name="max">The maximum Value.</param>
-        /// <returns>True if the Value is within the range specified,
-        /// false otherwise.</returns>
-        public static bool FloatInRange(float value, float min, float max)
-        {
-            return (value >= min && value <= max);
-        }
-
+        /// <returns>
+        ///     True if the Value is within the range specified,
+        ///     false otherwise.
+        /// </returns>
+        public static bool FloatInRange(float value, float min, float max) => (value >= min) && (value <= max);
     }
 
     /// <summary>
-    /// A 2-by-2 matrix. Stored in column-major order.
+    ///     A 2-by-2 matrix. Stored in column-major order.
     /// </summary>
     public struct Mat22
     {
         public Vector2 ex, ey;
 
         /// <summary>
-        /// Construct this matrix using columns.
+        ///     Construct this matrix using columns.
         /// </summary>
         /// <param name="c1">The c1.</param>
         /// <param name="c2">The c2.</param>
@@ -295,7 +248,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Construct this matrix using scalars.
+        ///     Construct this matrix using scalars.
         /// </summary>
         /// <param name="a11">The a11.</param>
         /// <param name="a12">The a12.</param>
@@ -327,7 +280,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Initialize this matrix using columns.
+        ///     Initialize this matrix using columns.
         /// </summary>
         /// <param name="c1">The c1.</param>
         /// <param name="c2">The c2.</param>
@@ -338,7 +291,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Set this to the identity matrix.
+        ///     Set this to the identity matrix.
         /// </summary>
         public void SetIdentity()
         {
@@ -349,7 +302,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Set this matrix to all zeros.
+        ///     Set this matrix to all zeros.
         /// </summary>
         public void SetZero()
         {
@@ -360,8 +313,8 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Solve A * x = b, where b is a column vector. This is more efficient
-        /// than computing the inverse in one-shot cases.
+        ///     Solve A * x = b, where b is a column vector. This is more efficient
+        ///     than computing the inverse in one-shot cases.
         /// </summary>
         /// <param name="b">The b.</param>
         /// <returns></returns>
@@ -385,14 +338,14 @@ namespace Alis.Core.Physic.Common
     }
 
     /// <summary>
-    /// A 3-by-3 matrix. Stored in column-major order.
+    ///     A 3-by-3 matrix. Stored in column-major order.
     /// </summary>
     public struct Mat33
     {
         public Vector3 ex, ey, ez;
 
         /// <summary>
-        /// Construct this matrix using columns.
+        ///     Construct this matrix using columns.
         /// </summary>
         /// <param name="c1">The c1.</param>
         /// <param name="c2">The c2.</param>
@@ -405,7 +358,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Set this matrix to all zeros.
+        ///     Set this matrix to all zeros.
         /// </summary>
         public void SetZero()
         {
@@ -415,8 +368,8 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Solve A * x = b, where b is a column vector. This is more efficient
-        /// than computing the inverse in one-shot cases.
+        ///     Solve A * x = b, where b is a column vector. This is more efficient
+        ///     than computing the inverse in one-shot cases.
         /// </summary>
         /// <param name="b">The b.</param>
         /// <returns></returns>
@@ -432,9 +385,9 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Solve A * x = b, where b is a column vector. This is more efficient
-        /// than computing the inverse in one-shot cases. Solve only the upper
-        /// 2-by-2 matrix equation.
+        ///     Solve A * x = b, where b is a column vector. This is more efficient
+        ///     than computing the inverse in one-shot cases. Solve only the upper
+        ///     2-by-2 matrix equation.
         /// </summary>
         /// <param name="b">The b.</param>
         /// <returns></returns>
@@ -462,9 +415,15 @@ namespace Alis.Core.Physic.Common
                 det = 1.0f / det;
             }
 
-            M.ex.X = det * d; M.ey.X = -det * b; M.ex.Z = 0.0f;
-            M.ex.Y = -det * c; M.ey.Y = det * a; M.ey.Z = 0.0f;
-            M.ez.X = 0.0f; M.ez.Y = 0.0f; M.ez.Z = 0.0f;
+            M.ex.X = det * d;
+            M.ey.X = -det * b;
+            M.ex.Z = 0.0f;
+            M.ex.Y = -det * c;
+            M.ey.Y = det * a;
+            M.ey.Z = 0.0f;
+            M.ez.X = 0.0f;
+            M.ez.Y = 0.0f;
+            M.ez.Z = 0.0f;
         }
 
         /// Get the symmetric inverse of this matrix as a 3-by-3.
@@ -495,22 +454,20 @@ namespace Alis.Core.Physic.Common
         }
     }
 
-    
+
     /// <summary>
-    /// A transform contains translation and rotation. It is used to represent
-    /// the position and orientation of rigid frames.
+    ///     A transform contains translation and rotation. It is used to represent
+    ///     the position and orientation of rigid frames.
     /// </summary>
     public struct Transform
     {
-        private static readonly Transform _identity = new Transform(Vector2.Zero, Complex.One);
-
         public Complex q;
         public Vector2 p;
 
-        public static Transform Identity { get { return _identity; } }
+        public static Transform Identity { get; } = new Transform(Vector2.Zero, Complex.One);
 
         /// <summary>
-        /// Initialize using a position vector and a Complex rotation.
+        ///     Initialize using a position vector and a Complex rotation.
         /// </summary>
         /// <param name="position">The position.</param>
         /// <param name="rotation">The rotation</param>
@@ -521,7 +478,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Initialize using a position vector and a rotation.
+        ///     Initialize using a position vector and a rotation.
         /// </summary>
         /// <param name="position">The position.</param>
         /// <param name="angle">The rotation angle</param>
@@ -529,24 +486,16 @@ namespace Alis.Core.Physic.Common
             : this(position, Complex.FromAngle(angle))
         {
         }
-                
-        public static Vector2 Multiply(Vector2 left, ref Transform right)
-        {
-            return Multiply(ref left, ref right);
-        }
 
-        public static Vector2 Multiply(ref Vector2 left, ref Transform right)
-        {
+        public static Vector2 Multiply(Vector2 left, ref Transform right) => Multiply(ref left, ref right);
+
+        public static Vector2 Multiply(ref Vector2 left, ref Transform right) =>
             // Opt: var result = Complex.Multiply(left, right.q) + right.p;
-            return new Vector2(
-                (left.X * right.q.R - left.Y * right.q.i) + right.p.X,
-                (left.Y * right.q.R + left.X * right.q.i) + right.p.Y);
-        }
+            new Vector2(
+                left.X * right.q.R - left.Y * right.q.i + right.p.X,
+                left.Y * right.q.R + left.X * right.q.i + right.p.Y);
 
-        public static Vector2 Divide(Vector2 left, ref Transform right)
-        {
-            return Divide(ref left, ref right);
-        }
+        public static Vector2 Divide(Vector2 left, ref Transform right) => Divide(ref left, ref right);
 
         public static Vector2 Divide(ref Vector2 left, ref Transform right)
         {
@@ -554,8 +503,8 @@ namespace Alis.Core.Physic.Common
             float px = left.X - right.p.X;
             float py = left.Y - right.p.Y;
             return new Vector2(
-                (px * right.q.R + py * right.q.i),
-                (py * right.q.R - px * right.q.i));
+                px * right.q.R + py * right.q.i,
+                py * right.q.R - px * right.q.i);
         }
 
         public static void Divide(Vector2 left, ref Transform right, out Vector2 result)
@@ -564,36 +513,30 @@ namespace Alis.Core.Physic.Common
             float px = left.X - right.p.X;
             float py = left.Y - right.p.Y;
             result = new Vector2(
-                (px * right.q.R + py * right.q.i),
-                (py * right.q.R - px * right.q.i));
+                px * right.q.R + py * right.q.i,
+                py * right.q.R - px * right.q.i);
         }
 
-        public static Transform Multiply(ref Transform left, ref Transform right)
-        {
-            return new Transform(
-                    Complex.Multiply(ref left.p, ref right.q) + right.p,
-                    Complex.Multiply(ref left.q, ref right.q));
-        }
+        public static Transform Multiply(ref Transform left, ref Transform right) => new Transform(
+            Complex.Multiply(ref left.p, ref right.q) + right.p,
+            Complex.Multiply(ref left.q, ref right.q));
 
-        public static Transform Divide(ref Transform left, ref Transform right)
-        {
-            return new Transform(
-                Complex.Divide(left.p - right.p, ref right.q),
-                Complex.Divide(ref left.q, ref right.q));
-        }
-        
+        public static Transform Divide(ref Transform left, ref Transform right) => new Transform(
+            Complex.Divide(left.p - right.p, ref right.q),
+            Complex.Divide(ref left.q, ref right.q));
+
         public static void Divide(ref Transform left, ref Transform right, out Transform result)
         {
             Complex.Divide(left.p - right.p, ref right.q, out result.p);
             Complex.Divide(ref left.q, ref right.q, out result.q);
         }
-            
+
         public static void Multiply(ref Transform left, Complex right, out Transform result)
         {
             result.p = Complex.Multiply(ref left.p, ref right);
             result.q = Complex.Multiply(ref left.q, ref right);
         }
-        
+
         public static void Divide(ref Transform left, Complex right, out Transform result)
         {
             result.p = Complex.Divide(ref left.p, ref right);
@@ -602,40 +545,40 @@ namespace Alis.Core.Physic.Common
     }
 
     /// <summary>
-    /// This describes the motion of a body/shape for TOI computation.
-    /// Shapes are defined with respect to the body origin, which may
-    /// no coincide with the center of mass. However, to support dynamics
-    /// we must interpolate the center of mass position.
+    ///     This describes the motion of a body/shape for TOI computation.
+    ///     Shapes are defined with respect to the body origin, which may
+    ///     no coincide with the center of mass. However, to support dynamics
+    ///     we must interpolate the center of mass position.
     /// </summary>
     public struct Sweep
     {
         /// <summary>
-        /// World angles
+        ///     World angles
         /// </summary>
         public float A;
 
         public float A0;
 
         /// <summary>
-        /// Fraction of the current time step in the range [0,1]
-        /// c0 and a0 are the positions at alpha0.
+        ///     Fraction of the current time step in the range [0,1]
+        ///     c0 and a0 are the positions at alpha0.
         /// </summary>
         public float Alpha0;
 
         /// <summary>
-        /// Center world positions
+        ///     Center world positions
         /// </summary>
         public Vector2 C;
 
         public Vector2 C0;
 
         /// <summary>
-        /// Local center of mass position
+        ///     Local center of mass position
         /// </summary>
         public Vector2 LocalCenter;
 
         /// <summary>
-        /// Get the interpolated transform at a specific time.
+        ///     Get the interpolated transform at a specific time.
         /// </summary>
         /// <param name="xfb">The transform.</param>
         /// <param name="beta">beta is a factor in [0,1], where 0 indicates alpha0.</param>
@@ -650,7 +593,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Advance the sweep forward, yielding a new initial state.
+        ///     Advance the sweep forward, yielding a new initial state.
         /// </summary>
         /// <param name="alpha">new initial time..</param>
         public void Advance(float alpha)
@@ -663,11 +606,11 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Normalize the angles.
+        ///     Normalize the angles.
         /// </summary>
         public void Normalize()
         {
-            float d = Constant.Tau * (float)Math.Floor(A0 / Constant.Tau);
+            float d = Constant.Tau * (float) Math.Floor(A0 / Constant.Tau);
             A0 -= d;
             A -= d;
         }

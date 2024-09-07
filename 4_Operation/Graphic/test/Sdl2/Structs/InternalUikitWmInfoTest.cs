@@ -48,7 +48,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             uint expectedFramebuffer = 456u;
             uint expectedColorBuffer = 789u;
             uint expectedResolveFramebuffer = 101112u;
-            
+
             InternalUikitWmInfo info = new InternalUikitWmInfo
             {
                 Window = expectedWindow,
@@ -56,7 +56,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
                 colorBuffer = expectedColorBuffer,
                 resolveFramebuffer = expectedResolveFramebuffer
             };
-            
+
             Assert.Equal(expectedWindow, info.Window);
             Assert.Equal(expectedFramebuffer, info.framebuffer);
             Assert.Equal(expectedColorBuffer, info.colorBuffer);

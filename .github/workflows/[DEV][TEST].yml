@@ -56,7 +56,7 @@ jobs:
       - name: clean_obj_sln
         shell: cmd
         run: FOR /d /r . %%d IN (obj) DO @IF EXIST "%%d" rd /s /q "%%d"
-      
+
       - name: setup
         uses: actions/setup-dotnet@v4
         with:

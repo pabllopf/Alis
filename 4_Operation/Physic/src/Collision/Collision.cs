@@ -1,4 +1,31 @@
-﻿// Copyright (c) 2017 Kastellanos Nikolaos
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Collision.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
 
 /* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
@@ -6,26 +33,26 @@
  */
 
 /*
-* Farseer Physics Engine:
-* Copyright (c) 2012 Ian Qvist
-* 
-* Original source Box2D:
-* Copyright (c) 2006-2011 Erin Catto http://www.box2d.org 
-* 
-* This software is provided 'as-is', without any express or implied 
-* warranty.  In no event will the authors be held liable for any damages 
-* arising from the use of this software. 
-* Permission is granted to anyone to use this software for any purpose, 
-* including commercial applications, and to alter it and redistribute it 
-* freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
-* claim that you wrote the original software. If you use this software 
-* in a product, an acknowledgment in the product documentation would be 
-* appreciated but is not required. 
-* 2. Altered source versions must be plainly marked as such, and must not be 
-* misrepresented as being the original software. 
-* 3. This notice may not be removed or altered from any source distribution. 
-*/
+ * Farseer Physics Engine:
+ * Copyright (c) 2012 Ian Qvist
+ *
+ * Original source Box2D:
+ * Copyright (c) 2006-2011 Erin Catto http://www.box2d.org
+ *
+ * This software is provided 'as-is', without any express or implied
+ * warranty.  In no event will the authors be held liable for any damages
+ * arising from the use of this software.
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely, subject to the following restrictions:
+ * 1. The origin of this software must not be misrepresented; you must not
+ * claim that you wrote the original software. If you use this software
+ * in a product, an acknowledgment in the product documentation would be
+ * appreciated but is not required.
+ * 2. Altered source versions must be plainly marked as such, and must not be
+ * misrepresented as being the original software.
+ * 3. This notice may not be removed or altered from any source distribution.
+ */
 
 using System;
 using System.Collections.Generic;
@@ -44,86 +71,84 @@ namespace Alis.Core.Physic.Collision
     internal enum ContactFeatureType : byte
     {
         Vertex = 0,
-        Face = 1,
+        Face = 1
     }
 
     /// <summary>
-    /// The features that intersect to form the contact point
-    /// This must be 4 bytes or less.
+    ///     The features that intersect to form the contact point
+    ///     This must be 4 bytes or less.
     /// </summary>
     public struct ContactFeature
     {
         /// <summary>
-        /// Feature index on ShapeA
+        ///     Feature index on ShapeA
         /// </summary>
         public byte IndexA;
 
         /// <summary>
-        /// Feature index on ShapeB
+        ///     Feature index on ShapeB
         /// </summary>
         public byte IndexB;
 
         /// <summary>
-        /// The feature type on ShapeA
+        ///     The feature type on ShapeA
         /// </summary>
         public byte TypeA;
 
         /// <summary>
-        /// The feature type on ShapeB
+        ///     The feature type on ShapeB
         /// </summary>
         public byte TypeB;
     }
 
     /// <summary>
-    /// Contact ids to facilitate warm starting.
+    ///     Contact ids to facilitate warm starting.
     /// </summary>
     [StructLayout(LayoutKind.Explicit)]
     public struct ContactID
     {
         /// <summary>
-        /// The features that intersect to form the contact point
+        ///     The features that intersect to form the contact point
         /// </summary>
-        [FieldOffset(0)]
-        public ContactFeature Features;
+        [FieldOffset(0)] public ContactFeature Features;
 
         /// <summary>
-        /// Used to quickly compare contact ids.
+        ///     Used to quickly compare contact ids.
         /// </summary>
-        [FieldOffset(0)]
-        public uint Key;
+        [FieldOffset(0)] public uint Key;
     }
 
     /// <summary>
-    /// A manifold point is a contact point belonging to a contact
-    /// manifold. It holds details related to the geometry and dynamics
-    /// of the contact points.
-    /// The local point usage depends on the manifold type:
-    /// -ShapeType.Circles: the local center of circleB
-    /// -SeparationFunction.FaceA: the local center of cirlceB or the clip point of polygonB
-    /// -SeparationFunction.FaceB: the clip point of polygonA
-    /// This structure is stored across time steps, so we keep it small.
-    /// Note: the impulses are used for internal caching and may not
-    /// provide reliable contact forces, especially for high speed collisions.
+    ///     A manifold point is a contact point belonging to a contact
+    ///     manifold. It holds details related to the geometry and dynamics
+    ///     of the contact points.
+    ///     The local point usage depends on the manifold type:
+    ///     -ShapeType.Circles: the local center of circleB
+    ///     -SeparationFunction.FaceA: the local center of cirlceB or the clip point of polygonB
+    ///     -SeparationFunction.FaceB: the clip point of polygonA
+    ///     This structure is stored across time steps, so we keep it small.
+    ///     Note: the impulses are used for internal caching and may not
+    ///     provide reliable contact forces, especially for high speed collisions.
     /// </summary>
     public struct ManifoldPoint
     {
         /// <summary>
-        /// Uniquely identifies a contact point between two Shapes
+        ///     Uniquely identifies a contact point between two Shapes
         /// </summary>
         public ContactID Id;
 
         /// <summary>
-        /// Usage depends on manifold type
+        ///     Usage depends on manifold type
         /// </summary>
         public Vector2 LocalPoint;
 
         /// <summary>
-        /// The non-penetration impulse
+        ///     The non-penetration impulse
         /// </summary>
         public float NormalImpulse;
 
         /// <summary>
-        /// The friction impulse
+        ///     The friction impulse
         /// </summary>
         public float TangentImpulse;
     }
@@ -136,42 +161,42 @@ namespace Alis.Core.Physic.Collision
     }
 
     /// <summary>
-    /// A manifold for two touching convex Shapes.
-    /// Box2D supports multiple types of contact:
-    /// - Clip point versus plane with radius
-    /// - Point versus point with radius (circles)
-    /// The local point usage depends on the manifold type:
-    /// - ShapeType.Circles: the local center of circleA
-    /// - SeparationFunction.FaceA: the center of faceA
-    /// - SeparationFunction.FaceB: the center of faceB
-    /// Similarly the local normal usage:
-    /// - ShapeType.Circles: not used
-    /// - SeparationFunction.FaceA: the normal on polygonA
-    /// - SeparationFunction.FaceB: the normal on polygonB
-    /// We store contacts in this way so that position correction can
-    /// account for movement, which is critical for continuous physics.
-    /// All contact scenarios must be expressed in one of these types.
-    /// This structure is stored across time steps, so we keep it small.
+    ///     A manifold for two touching convex Shapes.
+    ///     Box2D supports multiple types of contact:
+    ///     - Clip point versus plane with radius
+    ///     - Point versus point with radius (circles)
+    ///     The local point usage depends on the manifold type:
+    ///     - ShapeType.Circles: the local center of circleA
+    ///     - SeparationFunction.FaceA: the center of faceA
+    ///     - SeparationFunction.FaceB: the center of faceB
+    ///     Similarly the local normal usage:
+    ///     - ShapeType.Circles: not used
+    ///     - SeparationFunction.FaceA: the normal on polygonA
+    ///     - SeparationFunction.FaceB: the normal on polygonB
+    ///     We store contacts in this way so that position correction can
+    ///     account for movement, which is critical for continuous physics.
+    ///     All contact scenarios must be expressed in one of these types.
+    ///     This structure is stored across time steps, so we keep it small.
     /// </summary>
     public struct Manifold
     {
         /// <summary>
-        /// Not use for Type.SeparationFunction.Points
+        ///     Not use for Type.SeparationFunction.Points
         /// </summary>
         public Vector2 LocalNormal;
 
         /// <summary>
-        /// Usage depends on manifold type
+        ///     Usage depends on manifold type
         /// </summary>
         public Vector2 LocalPoint;
 
         /// <summary>
-        /// The number of manifold points
+        ///     The number of manifold points
         /// </summary>
         public int PointCount;
 
         /// <summary>
-        /// The points of contact
+        ///     The points of contact
         /// </summary>
         public FixedArray2<ManifoldPoint> Points;
 
@@ -179,33 +204,33 @@ namespace Alis.Core.Physic.Collision
     }
 
     /// <summary>
-    /// This is used for determining the state of contact points.
+    ///     This is used for determining the state of contact points.
     /// </summary>
     public enum PointState
     {
         /// <summary>
-        /// Point does not exist
+        ///     Point does not exist
         /// </summary>
         Null,
 
         /// <summary>
-        /// Point was added in the update
+        ///     Point was added in the update
         /// </summary>
         Add,
 
         /// <summary>
-        /// Point persisted across the update
+        ///     Point persisted across the update
         /// </summary>
         Persist,
 
         /// <summary>
-        /// Point was removed in the update
+        ///     Point was removed in the update
         /// </summary>
-        Remove,
+        Remove
     }
 
     /// <summary>
-    /// Used for computing contact manifolds.
+    ///     Used for computing contact manifolds.
     /// </summary>
     public struct ClipVertex
     {
@@ -214,57 +239,57 @@ namespace Alis.Core.Physic.Collision
     }
 
     /// <summary>
-    /// Ray-cast input data.
+    ///     Ray-cast input data.
     /// </summary>
     public struct RayCastInput
     {
         /// <summary>
-        /// The ray extends from p1 to p1 + maxFraction * (p2 - p1).
-        /// If you supply a max fraction of 1, the ray extends from p1 to p2.
-        /// A max fraction of 0.5 makes the ray go from p1 and half way to p2.
+        ///     The ray extends from p1 to p1 + maxFraction * (p2 - p1).
+        ///     If you supply a max fraction of 1, the ray extends from p1 to p2.
+        ///     A max fraction of 0.5 makes the ray go from p1 and half way to p2.
         /// </summary>
         public float MaxFraction;
 
         /// <summary>
-        /// The starting point of the ray.
+        ///     The starting point of the ray.
         /// </summary>
         public Vector2 Point1;
 
         /// <summary>
-        /// The ending point of the ray.
+        ///     The ending point of the ray.
         /// </summary>
         public Vector2 Point2;
     }
 
     /// <summary>
-    /// Ray-cast output data. 
+    ///     Ray-cast output data.
     /// </summary>
     public struct RayCastOutput
     {
         /// <summary>
-        /// The ray hits at p1 + fraction * (p2 - p1), where p1 and p2 come from RayCastInput.
-        /// Contains the actual fraction of the ray where it has the intersection point.
+        ///     The ray hits at p1 + fraction * (p2 - p1), where p1 and p2 come from RayCastInput.
+        ///     Contains the actual fraction of the ray where it has the intersection point.
         /// </summary>
         public float Fraction;
 
         /// <summary>
-        /// The normal of the face of the shape the ray has hit.
+        ///     The normal of the face of the shape the ray has hit.
         /// </summary>
         public Vector2 Normal;
     }
 
     /// <summary>
-    /// An axis aligned bounding box.
+    ///     An axis aligned bounding box.
     /// </summary>
     public struct AABB
     {
         /// <summary>
-        /// The lower vertex
+        ///     The lower vertex
         /// </summary>
         public Vector2 LowerBound;
 
         /// <summary>
-        /// The upper vertex
+        ///     The upper vertex
         /// </summary>
         public Vector2 UpperBound;
 
@@ -285,34 +310,22 @@ namespace Alis.Core.Physic.Collision
             UpperBound = center + new Vector2(width / 2, height / 2);
         }
 
-        public float Width
-        {
-            get { return UpperBound.X - LowerBound.X; }
-        }
+        public float Width => UpperBound.X - LowerBound.X;
 
-        public float Height
-        {
-            get { return UpperBound.Y - LowerBound.Y; }
-        }
+        public float Height => UpperBound.Y - LowerBound.Y;
 
         /// <summary>
-        /// Get the center of the AABB.
+        ///     Get the center of the AABB.
         /// </summary>
-        public Vector2 Center
-        {
-            get { return 0.5f * (LowerBound + UpperBound); }
-        }
+        public Vector2 Center => 0.5f * (LowerBound + UpperBound);
 
         /// <summary>
-        /// Get the extents of the AABB (half-widths).
+        ///     Get the extents of the AABB (half-widths).
         /// </summary>
-        public Vector2 Extents
-        {
-            get { return 0.5f * (UpperBound - LowerBound); }
-        }
+        public Vector2 Extents => 0.5f * (UpperBound - LowerBound);
 
         /// <summary>
-        /// Get the perimeter length
+        ///     Get the perimeter length
         /// </summary>
         public float Perimeter
         {
@@ -325,7 +338,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Gets the vertices of the AABB.
+        ///     Gets the vertices of the AABB.
         /// </summary>
         /// <value>The corners of the AABB</value>
         public Vertices Vertices
@@ -342,53 +355,41 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// First quadrant
+        ///     First quadrant
         /// </summary>
-        public AABB Q1
-        {
-            get { return new AABB(Center, UpperBound); }
-        }
+        public AABB Q1 => new AABB(Center, UpperBound);
 
         /// <summary>
-        /// Second quadrant
+        ///     Second quadrant
         /// </summary>
-        public AABB Q2
-        {
-            get { return new AABB(new Vector2(LowerBound.X, Center.Y), new Vector2(Center.X, UpperBound.Y)); }
-        }
+        public AABB Q2 => new AABB(new Vector2(LowerBound.X, Center.Y), new Vector2(Center.X, UpperBound.Y));
 
         /// <summary>
-        /// Third quadrant
+        ///     Third quadrant
         /// </summary>
-        public AABB Q3
-        {
-            get { return new AABB(LowerBound, Center); }
-        }
+        public AABB Q3 => new AABB(LowerBound, Center);
 
         /// <summary>
-        /// Forth quadrant
+        ///     Forth quadrant
         /// </summary>
-        public AABB Q4
-        {
-            get { return new AABB(new Vector2(Center.X, LowerBound.Y), new Vector2(UpperBound.X, Center.Y)); }
-        }
+        public AABB Q4 => new AABB(new Vector2(Center.X, LowerBound.Y), new Vector2(UpperBound.X, Center.Y));
 
         /// <summary>
-        /// Verify that the bounds are sorted. And the bounds are valid numbers (not NaN).
+        ///     Verify that the bounds are sorted. And the bounds are valid numbers (not NaN).
         /// </summary>
         /// <returns>
-        /// 	<c>true</c> if this instance is valid; otherwise, <c>false</c>.
+        ///     <c>true</c> if this instance is valid; otherwise, <c>false</c>.
         /// </returns>
         public bool IsValid()
         {
             Vector2 d = UpperBound - LowerBound;
-            bool valid = d.X >= 0.0f && d.Y >= 0.0f;
+            bool valid = (d.X >= 0.0f) && (d.Y >= 0.0f);
             valid = valid && LowerBound.IsValid() && UpperBound.IsValid();
             return valid;
         }
 
         /// <summary>
-        /// Combine an AABB into this one.
+        ///     Combine an AABB into this one.
         /// </summary>
         /// <param name="aabb">The aabb.</param>
         public void Combine(ref AABB aabb)
@@ -398,7 +399,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Combine two AABBs into this one.
+        ///     Combine two AABBs into this one.
         /// </summary>
         /// <param name="aabb1">The aabb1.</param>
         /// <param name="aabb2">The aabb2.</param>
@@ -409,38 +410,36 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Does this aabb contain the provided AABB.
+        ///     Does this aabb contain the provided AABB.
         /// </summary>
         /// <param name="aabb">The aabb.</param>
         /// <returns>
-        /// 	<c>true</c> if it contains the specified aabb; otherwise, <c>false</c>.
+        ///     <c>true</c> if it contains the specified aabb; otherwise, <c>false</c>.
         /// </returns>
         public bool Contains(ref AABB aabb)
         {
             bool result = true;
-            result = result && LowerBound.X <= aabb.LowerBound.X;
-            result = result && LowerBound.Y <= aabb.LowerBound.Y;
-            result = result && aabb.UpperBound.X <= UpperBound.X;
-            result = result && aabb.UpperBound.Y <= UpperBound.Y;
+            result = result && (LowerBound.X <= aabb.LowerBound.X);
+            result = result && (LowerBound.Y <= aabb.LowerBound.Y);
+            result = result && (aabb.UpperBound.X <= UpperBound.X);
+            result = result && (aabb.UpperBound.Y <= UpperBound.Y);
             return result;
         }
 
         /// <summary>
-        /// Determines whether the AAABB contains the specified point.
+        ///     Determines whether the AAABB contains the specified point.
         /// </summary>
         /// <param name="point">The point.</param>
         /// <returns>
-        /// 	<c>true</c> if it contains the specified point; otherwise, <c>false</c>.
+        ///     <c>true</c> if it contains the specified point; otherwise, <c>false</c>.
         /// </returns>
-        public bool Contains(ref Vector2 point)
-        {
+        public bool Contains(ref Vector2 point) =>
             //using epsilon to try and gaurd against float rounding errors.
-            return (point.X > (LowerBound.X + Settings.Epsilon) && point.X < (UpperBound.X - Settings.Epsilon) &&
-                   (point.Y > (LowerBound.Y + Settings.Epsilon) && point.Y < (UpperBound.Y - Settings.Epsilon)));
-        }
+            (point.X > LowerBound.X + Settings.Epsilon) && (point.X < UpperBound.X - Settings.Epsilon) &&
+            (point.Y > LowerBound.Y + Settings.Epsilon) && (point.Y < UpperBound.Y - Settings.Epsilon);
 
         /// <summary>
-        /// Test if the two AABBs overlap.
+        ///     Test if the two AABBs overlap.
         /// </summary>
         /// <param name="a">The first AABB.</param>
         /// <param name="b">The second AABB.</param>
@@ -457,7 +456,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Raycast against this AABB using the specificed points and maxfraction (found in input)
+        ///     Raycast against this AABB using the specificed points and maxfraction (found in input)
         /// </summary>
         /// <param name="output">The results of the raycast.</param>
         /// <param name="input">The parameters for the raycast.</param>
@@ -549,7 +548,7 @@ namespace Alis.Core.Physic.Collision
     }
 
     /// <summary>
-    /// This structure is used to keep track of the best separating axis.
+    ///     This structure is used to keep track of the best separating axis.
     /// </summary>
     public struct EPAxis
     {
@@ -559,7 +558,7 @@ namespace Alis.Core.Physic.Collision
     }
 
     /// <summary>
-    /// Reference face used for clipping
+    ///     Reference face used for clipping
     /// </summary>
     public struct ReferenceFace
     {
@@ -580,16 +579,16 @@ namespace Alis.Core.Physic.Collision
     {
         Unknown,
         EdgeA,
-        EdgeB,
+        EdgeB
     }
 
     /// <summary>
-    /// Collision methods
+    ///     Collision methods
     /// </summary>
     public static class Collision
     {
         /// <summary>
-        /// Test overlap between the two shapes.
+        ///     Test overlap between the two shapes.
         /// </summary>
         /// <param name="shapeA">The first shape.</param>
         /// <param name="indexA">The index for the first shape.</param>
@@ -655,7 +654,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Compute the collision manifold between two circles.
+        ///     Compute the collision manifold between two circles.
         /// </summary>
         public static void CollideCircles(ref Manifold manifold, CircleShape circleA, ref Transform xfA, CircleShape circleB, ref Transform xfB)
         {
@@ -686,7 +685,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Compute the collision manifold between a polygon and a circle.
+        ///     Compute the collision manifold between a polygon and a circle.
         /// </summary>
         /// <param name="manifold">The manifold.</param>
         /// <param name="polygonA">The polygon A.</param>
@@ -832,7 +831,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Compute the collision manifold between two polygons.
+        ///     Compute the collision manifold between two polygons.
         /// </summary>
         /// <param name="manifold">The manifold.</param>
         /// <param name="polyA">The poly A.</param>
@@ -969,8 +968,8 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Compute contact points for edge versus circle.
-        /// This accounts for edge connectivity.
+        ///     Compute contact points for edge versus circle.
+        ///     This accounts for edge connectivity.
         /// </summary>
         /// <param name="manifold">The manifold.</param>
         /// <param name="edgeA">The edge A.</param>
@@ -995,7 +994,7 @@ namespace Alis.Core.Physic.Collision
 
             ContactFeature cf;
             cf.IndexB = 0;
-            cf.TypeB = (byte)ContactFeatureType.Vertex;
+            cf.TypeB = (byte) ContactFeatureType.Vertex;
 
             Vector2 P, d;
 
@@ -1027,7 +1026,7 @@ namespace Alis.Core.Physic.Collision
                 }
 
                 cf.IndexA = 0;
-                cf.TypeA = (byte)ContactFeatureType.Vertex;
+                cf.TypeA = (byte) ContactFeatureType.Vertex;
                 manifold.PointCount = 1;
                 manifold.Type = ManifoldType.Circles;
                 manifold.LocalNormal = Vector2.Zero;
@@ -1068,7 +1067,7 @@ namespace Alis.Core.Physic.Collision
                 }
 
                 cf.IndexA = 1;
-                cf.TypeA = (byte)ContactFeatureType.Vertex;
+                cf.TypeA = (byte) ContactFeatureType.Vertex;
                 manifold.PointCount = 1;
                 manifold.Type = ManifoldType.Circles;
                 manifold.LocalNormal = Vector2.Zero;
@@ -1085,7 +1084,7 @@ namespace Alis.Core.Physic.Collision
             float den;
             Vector2.Dot(ref e, ref e, out den);
             Debug.Assert(den > 0.0f);
-            P = (1.0f / den) * (u * A + v * B);
+            P = 1.0f / den * (u * A + v * B);
             d = Q - P;
             float dd2;
             Vector2.Dot(ref d, ref d, out dd2);
@@ -1099,10 +1098,11 @@ namespace Alis.Core.Physic.Collision
             {
                 n = new Vector2(-n.X, -n.Y);
             }
+
             n.Normalize();
 
             cf.IndexA = 0;
-            cf.TypeA = (byte)ContactFeatureType.Face;
+            cf.TypeA = (byte) ContactFeatureType.Face;
             manifold.PointCount = 1;
             manifold.Type = ManifoldType.FaceA;
             manifold.LocalNormal = n;
@@ -1115,7 +1115,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Collides and edge and a polygon, taking into account edge adjacency.
+        ///     Collides and edge and a polygon, taking into account edge adjacency.
         /// </summary>
         /// <param name="manifold">The manifold.</param>
         /// <param name="edgeA">The edge A.</param>
@@ -1127,25 +1127,246 @@ namespace Alis.Core.Physic.Collision
             EPCollider.Collide(ref manifold, edgeA, ref xfA, polygonB, ref xfB);
         }
 
-        private static class EPCollider
+        /// <summary>
+        ///     Clipping for contact manifolds.
+        /// </summary>
+        /// <param name="vOut">The v out.</param>
+        /// <param name="vIn">The v in.</param>
+        /// <param name="normal">The normal.</param>
+        /// <param name="offset">The offset.</param>
+        /// <param name="vertexIndexA">The vertex index A.</param>
+        /// <returns></returns>
+        private static int ClipSegmentToLine(out FixedArray2<ClipVertex> vOut, ref FixedArray2<ClipVertex> vIn, Vector2 normal, float offset, int vertexIndexA)
         {
-            /// <summary>
-            /// This holds polygon B expressed in frame A.
-            /// </summary>
-            internal struct TempPolygon
-            {
-                public Vector2[] Vertices;
-                public Vector2[] Normals;
-                public int Count;
+            vOut = new FixedArray2<ClipVertex>();
 
-                internal TempPolygon(int maxPolygonVertices)
+            ClipVertex v0 = vIn[0];
+            ClipVertex v1 = vIn[1];
+
+            // Start with no output points
+            int numOut = 0;
+
+            // Calculate the distance of end points to the line
+            float distance0 = normal.X * v0.V.X + normal.Y * v0.V.Y - offset;
+            float distance1 = normal.X * v1.V.X + normal.Y * v1.V.Y - offset;
+
+            // If the points are behind the plane
+            if (distance0 <= 0.0f) vOut[numOut++] = v0;
+            if (distance1 <= 0.0f) vOut[numOut++] = v1;
+
+            // If the points are on different sides of the plane
+            if (distance0 * distance1 < 0.0f)
+            {
+                // Find intersection point of edge and plane
+                float interp = distance0 / (distance0 - distance1);
+
+                ClipVertex cv = vOut[numOut];
+
+                cv.V.X = v0.V.X + interp * (v1.V.X - v0.V.X);
+                cv.V.Y = v0.V.Y + interp * (v1.V.Y - v0.V.Y);
+
+                // VertexA is hitting edgeB.
+                cv.ID.Features.IndexA = (byte) vertexIndexA;
+                cv.ID.Features.IndexB = v0.ID.Features.IndexB;
+                cv.ID.Features.TypeA = (byte) ContactFeatureType.Vertex;
+                cv.ID.Features.TypeB = (byte) ContactFeatureType.Face;
+
+                vOut[numOut] = cv;
+
+                ++numOut;
+            }
+
+            return numOut;
+        }
+
+        /// <summary>
+        ///     Find the separation between poly1 and poly2 for a give edge normal on poly1.
+        /// </summary>
+        /// <param name="poly1">The poly1.</param>
+        /// <param name="xf1">The XF1.</param>
+        /// <param name="edge1">The edge1.</param>
+        /// <param name="poly2">The poly2.</param>
+        /// <param name="xf2">The XF2.</param>
+        /// <returns></returns>
+        private static float EdgeSeparation(PolygonShape poly1, ref Transform xf1To2, int edge1, PolygonShape poly2)
+        {
+            List<Vector2> vertices1 = poly1.Vertices;
+            List<Vector2> normals1 = poly1.Normals;
+
+            int count2 = poly2.Vertices.Count;
+            List<Vector2> vertices2 = poly2.Vertices;
+
+            Debug.Assert((0 <= edge1) && (edge1 < poly1.Vertices.Count));
+
+            // Convert normal from poly1's frame into poly2's frame.
+            Vector2 normal1 = Complex.Multiply(normals1[edge1], ref xf1To2.q);
+
+            // Find support vertex on poly2 for -normal.
+            int index = 0;
+            float minDot = Settings.MaxFloat;
+
+            for (int i = 0; i < count2; ++i)
+            {
+                float dot = MathUtils.Dot(vertices2[i], ref normal1);
+                if (dot < minDot)
                 {
-                    Vertices = new Vector2[maxPolygonVertices];
-                    Normals = new Vector2[maxPolygonVertices];
-                    Count = 0;
+                    minDot = dot;
+                    index = i;
                 }
             }
 
+            Vector2 v1 = Transform.Multiply(vertices1[edge1], ref xf1To2);
+            Vector2 v2 = vertices2[index];
+            float separation = MathUtils.Dot(v2 - v1, ref normal1);
+
+            return separation;
+        }
+
+        /// <summary>
+        ///     Find the max separation between poly1 and poly2 using edge normals from poly1.
+        /// </summary>
+        /// <param name="edgeIndex">Index of the edge.</param>
+        /// <param name="poly1">The poly1.</param>
+        /// <param name="xf1">The XF1.</param>
+        /// <param name="poly2">The poly2.</param>
+        /// <param name="xf2">The XF2.</param>
+        /// <returns></returns>
+        private static float FindMaxSeparation(out int edgeIndex, PolygonShape poly1, ref Transform xf1, PolygonShape poly2, ref Transform xf2)
+        {
+            int count1 = poly1.Vertices.Count;
+            List<Vector2> normals1 = poly1.Normals;
+
+            var xf1To2 = Transform.Divide(ref xf1, ref xf2);
+
+            // Vector pointing from the centroid of poly1 to the centroid of poly2.
+            Vector2 c2local = Transform.Divide(poly2.MassData.Centroid, ref xf1To2);
+            Vector2 dLocal1 = c2local - poly1.MassData.Centroid;
+
+            // Find edge normal on poly1 that has the largest projection onto d.
+            int edge = 0;
+            float maxDot = -Settings.MaxFloat;
+            for (int i = 0; i < count1; ++i)
+            {
+                float dot = MathUtils.Dot(normals1[i], ref dLocal1);
+                if (dot > maxDot)
+                {
+                    maxDot = dot;
+                    edge = i;
+                }
+            }
+
+            // Get the separation for the edge normal.
+            float s = EdgeSeparation(poly1, ref xf1To2, edge, poly2);
+
+            // Check the separation for the previous edge normal.
+            int prevEdge = edge - 1 >= 0 ? edge - 1 : count1 - 1;
+            float sPrev = EdgeSeparation(poly1, ref xf1To2, prevEdge, poly2);
+
+            // Check the separation for the next edge normal.
+            int nextEdge = edge + 1 < count1 ? edge + 1 : 0;
+            float sNext = EdgeSeparation(poly1, ref xf1To2, nextEdge, poly2);
+
+            // Find the best edge and the search direction.
+            int bestEdge;
+            float bestSeparation;
+            int increment;
+            if ((sPrev > s) && (sPrev > sNext))
+            {
+                increment = -1;
+                bestEdge = prevEdge;
+                bestSeparation = sPrev;
+            }
+            else if (sNext > s)
+            {
+                increment = 1;
+                bestEdge = nextEdge;
+                bestSeparation = sNext;
+            }
+            else
+            {
+                edgeIndex = edge;
+                return s;
+            }
+
+            // Perform a local search for the best edge normal.
+            for (;;)
+            {
+                if (increment == -1)
+                    edge = bestEdge - 1 >= 0 ? bestEdge - 1 : count1 - 1;
+                else
+                    edge = bestEdge + 1 < count1 ? bestEdge + 1 : 0;
+
+                s = EdgeSeparation(poly1, ref xf1To2, edge, poly2);
+
+                if (s > bestSeparation)
+                {
+                    bestEdge = edge;
+                    bestSeparation = s;
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            edgeIndex = bestEdge;
+            return bestSeparation;
+        }
+
+        private static void FindIncidentEdge(out FixedArray2<ClipVertex> c, PolygonShape poly1, ref Transform xf1, int edge1, PolygonShape poly2, ref Transform xf2)
+        {
+            c = new FixedArray2<ClipVertex>();
+            Vertices normals1 = poly1.Normals;
+
+            int count2 = poly2.Vertices.Count;
+            Vertices vertices2 = poly2.Vertices;
+            Vertices normals2 = poly2.Normals;
+
+            Debug.Assert((0 <= edge1) && (edge1 < poly1.Vertices.Count));
+
+            // Get the normal of the reference edge in poly2's frame.
+            Vector2 normal1 = Complex.Divide(Complex.Multiply(normals1[edge1], ref xf1.q), ref xf2.q);
+
+
+            // Find the incident edge on poly2.
+            int index = 0;
+            float minDot = Settings.MaxFloat;
+            for (int i = 0; i < count2; ++i)
+            {
+                float dot = Vector2.Dot(normal1, normals2[i]);
+                if (dot < minDot)
+                {
+                    minDot = dot;
+                    index = i;
+                }
+            }
+
+            // Build the clip vertices for the incident edge.
+            int i1 = index;
+            int i2 = i1 + 1 < count2 ? i1 + 1 : 0;
+
+            ClipVertex cv0 = c[0];
+
+            cv0.V = Transform.Multiply(vertices2[i1], ref xf2);
+            cv0.ID.Features.IndexA = (byte) edge1;
+            cv0.ID.Features.IndexB = (byte) i1;
+            cv0.ID.Features.TypeA = (byte) ContactFeatureType.Face;
+            cv0.ID.Features.TypeB = (byte) ContactFeatureType.Vertex;
+
+            c[0] = cv0;
+
+            ClipVertex cv1 = c[1];
+            cv1.V = Transform.Multiply(vertices2[i2], ref xf2);
+            cv1.ID.Features.IndexA = (byte) edge1;
+            cv1.ID.Features.IndexB = (byte) i2;
+            cv1.ID.Features.TypeA = (byte) ContactFeatureType.Face;
+            cv1.ID.Features.TypeB = (byte) ContactFeatureType.Vertex;
+
+            c[1] = cv1;
+        }
+
+        private static class EPCollider
+        {
             public static void Collide(ref Manifold manifold, EdgeShape edgeA, ref Transform xfA, PolygonShape polygonB, ref Transform xfB)
             {
                 // Algorithm:
@@ -1229,7 +1450,7 @@ namespace Alis.Core.Physic.Collision
                     }
                     else if (convex1)
                     {
-                        front = offset0 >= 0.0f || (offset1 >= 0.0f && offset2 >= 0.0f);
+                        front = offset0 >= 0.0f || ((offset1 >= 0.0f) && (offset2 >= 0.0f));
                         if (front)
                         {
                             normal = normal1;
@@ -1245,7 +1466,7 @@ namespace Alis.Core.Physic.Collision
                     }
                     else if (convex2)
                     {
-                        front = offset2 >= 0.0f || (offset0 >= 0.0f && offset1 >= 0.0f);
+                        front = offset2 >= 0.0f || ((offset0 >= 0.0f) && (offset1 >= 0.0f));
                         if (front)
                         {
                             normal = normal1;
@@ -1261,7 +1482,7 @@ namespace Alis.Core.Physic.Collision
                     }
                     else
                     {
-                        front = offset0 >= 0.0f && offset1 >= 0.0f && offset2 >= 0.0f;
+                        front = (offset0 >= 0.0f) && (offset1 >= 0.0f) && (offset2 >= 0.0f);
                         if (front)
                         {
                             normal = normal1;
@@ -1296,7 +1517,7 @@ namespace Alis.Core.Physic.Collision
                     }
                     else
                     {
-                        front = offset0 >= 0.0f && offset1 >= 0.0f;
+                        front = (offset0 >= 0.0f) && (offset1 >= 0.0f);
                         if (front)
                         {
                             normal = normal1;
@@ -1331,7 +1552,7 @@ namespace Alis.Core.Physic.Collision
                     }
                     else
                     {
-                        front = offset1 >= 0.0f && offset2 >= 0.0f;
+                        front = (offset1 >= 0.0f) && (offset2 >= 0.0f);
                         if (front)
                         {
                             normal = normal1;
@@ -1389,7 +1610,7 @@ namespace Alis.Core.Physic.Collision
                 }
 
                 EPAxis polygonAxis = ComputePolygonSeparation(ref tempPolygonB, ref normal, ref v1, ref v2, ref lowerLimit, ref upperLimit, radius);
-                if (polygonAxis.Type != EPAxisType.Unknown && polygonAxis.Separation > radius)
+                if ((polygonAxis.Type != EPAxisType.Unknown) && (polygonAxis.Separation > radius))
                 {
                     return;
                 }
@@ -1437,17 +1658,17 @@ namespace Alis.Core.Physic.Collision
                     ClipVertex c0 = ie[0];
                     c0.V = tempPolygonB.Vertices[i1];
                     c0.ID.Features.IndexA = 0;
-                    c0.ID.Features.IndexB = (byte)i1;
-                    c0.ID.Features.TypeA = (byte)ContactFeatureType.Face;
-                    c0.ID.Features.TypeB = (byte)ContactFeatureType.Vertex;
+                    c0.ID.Features.IndexB = (byte) i1;
+                    c0.ID.Features.TypeA = (byte) ContactFeatureType.Face;
+                    c0.ID.Features.TypeB = (byte) ContactFeatureType.Vertex;
                     ie[0] = c0;
 
                     ClipVertex c1 = ie[1];
                     c1.V = tempPolygonB.Vertices[i2];
                     c1.ID.Features.IndexA = 0;
-                    c1.ID.Features.IndexB = (byte)i2;
-                    c1.ID.Features.TypeA = (byte)ContactFeatureType.Face;
-                    c1.ID.Features.TypeB = (byte)ContactFeatureType.Vertex;
+                    c1.ID.Features.IndexB = (byte) i2;
+                    c1.ID.Features.TypeA = (byte) ContactFeatureType.Face;
+                    c1.ID.Features.TypeB = (byte) ContactFeatureType.Vertex;
                     ie[1] = c1;
 
                     if (front)
@@ -1473,17 +1694,17 @@ namespace Alis.Core.Physic.Collision
                     ClipVertex c0 = ie[0];
                     c0.V = v1;
                     c0.ID.Features.IndexA = 0;
-                    c0.ID.Features.IndexB = (byte)primaryAxis.Index;
-                    c0.ID.Features.TypeA = (byte)ContactFeatureType.Vertex;
-                    c0.ID.Features.TypeB = (byte)ContactFeatureType.Face;
+                    c0.ID.Features.IndexB = (byte) primaryAxis.Index;
+                    c0.ID.Features.TypeA = (byte) ContactFeatureType.Vertex;
+                    c0.ID.Features.TypeB = (byte) ContactFeatureType.Face;
                     ie[0] = c0;
 
                     ClipVertex c1 = ie[1];
                     c1.V = v2;
                     c1.ID.Features.IndexA = 0;
-                    c1.ID.Features.IndexB = (byte)primaryAxis.Index;
-                    c1.ID.Features.TypeA = (byte)ContactFeatureType.Vertex;
-                    c1.ID.Features.TypeB = (byte)ContactFeatureType.Face;
+                    c1.ID.Features.IndexB = (byte) primaryAxis.Index;
+                    c1.ID.Features.TypeA = (byte) ContactFeatureType.Vertex;
+                    c1.ID.Features.TypeB = (byte) ContactFeatureType.Face;
                     ie[1] = c1;
 
                     rf.i1 = primaryAxis.Index;
@@ -1633,244 +1854,23 @@ namespace Alis.Core.Physic.Collision
 
                 return axis;
             }
-        }
 
-        /// <summary>
-        /// Clipping for contact manifolds.
-        /// </summary>
-        /// <param name="vOut">The v out.</param>
-        /// <param name="vIn">The v in.</param>
-        /// <param name="normal">The normal.</param>
-        /// <param name="offset">The offset.</param>
-        /// <param name="vertexIndexA">The vertex index A.</param>
-        /// <returns></returns>
-        private static int ClipSegmentToLine(out FixedArray2<ClipVertex> vOut, ref FixedArray2<ClipVertex> vIn, Vector2 normal, float offset, int vertexIndexA)
-        {
-            vOut = new FixedArray2<ClipVertex>();
-
-            ClipVertex v0 = vIn[0];
-            ClipVertex v1 = vIn[1];
-
-            // Start with no output points
-            int numOut = 0;
-
-            // Calculate the distance of end points to the line
-            float distance0 = normal.X * v0.V.X + normal.Y * v0.V.Y - offset;
-            float distance1 = normal.X * v1.V.X + normal.Y * v1.V.Y - offset;
-
-            // If the points are behind the plane
-            if (distance0 <= 0.0f) vOut[numOut++] = v0;
-            if (distance1 <= 0.0f) vOut[numOut++] = v1;
-
-            // If the points are on different sides of the plane
-            if (distance0 * distance1 < 0.0f)
+            /// <summary>
+            ///     This holds polygon B expressed in frame A.
+            /// </summary>
+            internal struct TempPolygon
             {
-                // Find intersection point of edge and plane
-                float interp = distance0 / (distance0 - distance1);
+                public readonly Vector2[] Vertices;
+                public readonly Vector2[] Normals;
+                public int Count;
 
-                ClipVertex cv = vOut[numOut];
-
-                cv.V.X = v0.V.X + interp * (v1.V.X - v0.V.X);
-                cv.V.Y = v0.V.Y + interp * (v1.V.Y - v0.V.Y);
-
-                // VertexA is hitting edgeB.
-                cv.ID.Features.IndexA = (byte)vertexIndexA;
-                cv.ID.Features.IndexB = v0.ID.Features.IndexB;
-                cv.ID.Features.TypeA = (byte)ContactFeatureType.Vertex;
-                cv.ID.Features.TypeB = (byte)ContactFeatureType.Face;
-
-                vOut[numOut] = cv;
-
-                ++numOut;
-            }
-
-            return numOut;
-        }
-
-        /// <summary>
-        /// Find the separation between poly1 and poly2 for a give edge normal on poly1.
-        /// </summary>
-        /// <param name="poly1">The poly1.</param>
-        /// <param name="xf1">The XF1.</param>
-        /// <param name="edge1">The edge1.</param>
-        /// <param name="poly2">The poly2.</param>
-        /// <param name="xf2">The XF2.</param>
-        /// <returns></returns>
-        private static float EdgeSeparation(PolygonShape poly1, ref Transform xf1To2, int edge1, PolygonShape poly2)
-        {
-            List<Vector2> vertices1 = poly1.Vertices;
-            List<Vector2> normals1 = poly1.Normals;
-
-            int count2 = poly2.Vertices.Count;
-            List<Vector2> vertices2 = poly2.Vertices;
-
-            Debug.Assert(0 <= edge1 && edge1 < poly1.Vertices.Count);
-
-            // Convert normal from poly1's frame into poly2's frame.
-            Vector2 normal1 = Complex.Multiply(normals1[edge1], ref xf1To2.q);
-
-            // Find support vertex on poly2 for -normal.
-            int index = 0;
-            float minDot = Settings.MaxFloat;
-
-            for (int i = 0; i < count2; ++i)
-            {
-                float dot = MathUtils.Dot(vertices2[i], ref normal1);
-                if (dot < minDot)
+                internal TempPolygon(int maxPolygonVertices)
                 {
-                    minDot = dot;
-                    index = i;
+                    Vertices = new Vector2[maxPolygonVertices];
+                    Normals = new Vector2[maxPolygonVertices];
+                    Count = 0;
                 }
             }
-
-            Vector2 v1 = Transform.Multiply(vertices1[edge1], ref xf1To2);
-            Vector2 v2 = vertices2[index];
-            float separation = MathUtils.Dot(v2 - v1, ref normal1);
-
-            return separation;
-        }
-
-        /// <summary>
-        /// Find the max separation between poly1 and poly2 using edge normals from poly1.
-        /// </summary>
-        /// <param name="edgeIndex">Index of the edge.</param>
-        /// <param name="poly1">The poly1.</param>
-        /// <param name="xf1">The XF1.</param>
-        /// <param name="poly2">The poly2.</param>
-        /// <param name="xf2">The XF2.</param>
-        /// <returns></returns>
-        private static float FindMaxSeparation(out int edgeIndex, PolygonShape poly1, ref Transform xf1, PolygonShape poly2, ref Transform xf2)
-        {
-            int count1 = poly1.Vertices.Count;
-            List<Vector2> normals1 = poly1.Normals;
-
-            var xf1To2 = Transform.Divide(ref xf1, ref xf2);
-
-            // Vector pointing from the centroid of poly1 to the centroid of poly2.
-            Vector2 c2local = Transform.Divide(poly2.MassData.Centroid, ref xf1To2);
-            Vector2 dLocal1 = c2local - poly1.MassData.Centroid;            
-
-            // Find edge normal on poly1 that has the largest projection onto d.
-            int edge = 0;
-            float maxDot = -Settings.MaxFloat;
-            for (int i = 0; i < count1; ++i)
-            {
-                float dot = MathUtils.Dot(normals1[i], ref dLocal1);
-                if (dot > maxDot)
-                {
-                    maxDot = dot;
-                    edge = i;
-                }
-            }
-
-            // Get the separation for the edge normal.
-            float s = EdgeSeparation(poly1, ref xf1To2, edge, poly2);
-
-            // Check the separation for the previous edge normal.
-            int prevEdge = edge - 1 >= 0 ? edge - 1 : count1 - 1;
-            float sPrev = EdgeSeparation(poly1, ref xf1To2, prevEdge, poly2);
-
-            // Check the separation for the next edge normal.
-            int nextEdge = edge + 1 < count1 ? edge + 1 : 0;
-            float sNext = EdgeSeparation(poly1, ref xf1To2, nextEdge, poly2);
-
-            // Find the best edge and the search direction.
-            int bestEdge;
-            float bestSeparation;
-            int increment;
-            if (sPrev > s && sPrev > sNext)
-            {
-                increment = -1;
-                bestEdge = prevEdge;
-                bestSeparation = sPrev;
-            }
-            else if (sNext > s)
-            {
-                increment = 1;
-                bestEdge = nextEdge;
-                bestSeparation = sNext;
-            }
-            else
-            {
-                edgeIndex = edge;
-                return s;
-            }
-
-            // Perform a local search for the best edge normal.
-            for (; ; )
-            {
-                if (increment == -1)
-                    edge = bestEdge - 1 >= 0 ? bestEdge - 1 : count1 - 1;
-                else
-                    edge = bestEdge + 1 < count1 ? bestEdge + 1 : 0;
-
-                s = EdgeSeparation(poly1, ref xf1To2, edge, poly2);
-
-                if (s > bestSeparation)
-                {
-                    bestEdge = edge;
-                    bestSeparation = s;
-                }
-                else
-                {
-                    break;
-                }
-            }
-
-            edgeIndex = bestEdge;
-            return bestSeparation;
-        }
-
-        private static void FindIncidentEdge(out FixedArray2<ClipVertex> c, PolygonShape poly1, ref Transform xf1, int edge1, PolygonShape poly2, ref Transform xf2)
-        {
-            c = new FixedArray2<ClipVertex>();
-            Vertices normals1 = poly1.Normals;
-
-            int count2 = poly2.Vertices.Count;
-            Vertices vertices2 = poly2.Vertices;
-            Vertices normals2 = poly2.Normals;
-
-            Debug.Assert(0 <= edge1 && edge1 < poly1.Vertices.Count);
-
-            // Get the normal of the reference edge in poly2's frame.
-            Vector2 normal1 = Complex.Divide(Complex.Multiply(normals1[edge1], ref xf1.q), ref xf2.q);
-
-
-            // Find the incident edge on poly2.
-            int index = 0;
-            float minDot = Settings.MaxFloat;
-            for (int i = 0; i < count2; ++i)
-            {
-                float dot = Vector2.Dot(normal1, normals2[i]);
-                if (dot < minDot)
-                {
-                    minDot = dot;
-                    index = i;
-                }
-            }
-
-            // Build the clip vertices for the incident edge.
-            int i1 = index;
-            int i2 = i1 + 1 < count2 ? i1 + 1 : 0;
-
-            ClipVertex cv0 = c[0];
-
-            cv0.V = Transform.Multiply(vertices2[i1], ref xf2);
-            cv0.ID.Features.IndexA = (byte)edge1;
-            cv0.ID.Features.IndexB = (byte)i1;
-            cv0.ID.Features.TypeA = (byte)ContactFeatureType.Face;
-            cv0.ID.Features.TypeB = (byte)ContactFeatureType.Vertex;
-
-            c[0] = cv0;
-
-            ClipVertex cv1 = c[1];
-            cv1.V = Transform.Multiply(vertices2[i2], ref xf2);
-            cv1.ID.Features.IndexA = (byte)edge1;
-            cv1.ID.Features.IndexB = (byte)i2;
-            cv1.ID.Features.TypeA = (byte)ContactFeatureType.Face;
-            cv1.ID.Features.TypeB = (byte)ContactFeatureType.Vertex;
-
-            c[1] = cv1;
         }
     }
 }

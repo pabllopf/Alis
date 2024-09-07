@@ -51,7 +51,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             float expectedX = 0.5f;
             float expectedY = 0.75f;
             float expectedPressure = 0.25f;
-            
+
             ControllerTouchpadEvent eventStruct = new ControllerTouchpadEvent
             {
                 type = expectedType,
@@ -63,7 +63,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
                 y = expectedY,
                 pressure = expectedPressure
             };
-            
+
             Assert.Equal(expectedType, eventStruct.type);
             Assert.Equal(expectedTimestamp, eventStruct.timestamp);
             Assert.Equal(expectedWhich, eventStruct.which);

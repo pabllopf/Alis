@@ -46,10 +46,10 @@ namespace Alis.Test.Core.Ecs.Component.Render
         public void Frame_DefaultConstructor_ValidInput()
         {
             Frame frame = new Frame();
-            
+
             Assert.NotNull(frame);
         }
-        
+
         /// <summary>
         ///     Tests that frame constructor with parameters valid input
         /// </summary>
@@ -57,13 +57,13 @@ namespace Alis.Test.Core.Ecs.Component.Render
         public void Frame_ConstructorWithParameters_ValidInput()
         {
             VideoGame videoGame = new VideoGame();
-            
+
             string filePath = "dino_assets.png";
             Frame frame = new Frame(filePath);
-            
+
             Assert.NotNull(frame);
         }
-        
+
         /// <summary>
         ///     Tests that frame file path property valid input
         /// </summary>
@@ -73,10 +73,10 @@ namespace Alis.Test.Core.Ecs.Component.Render
             string filePath = "dino_assets.png";
             Frame frame = new Frame();
             frame.FilePath = filePath;
-            
+
             Assert.NotNull(frame);
         }
-        
+
         /// <summary>
         ///     Tests that frame builder valid input
         /// </summary>
@@ -85,7 +85,7 @@ namespace Alis.Test.Core.Ecs.Component.Render
         {
             Frame frame = new Frame();
             FrameBuilder frameBuilder = frame.Builder();
-            
+
             Assert.NotNull(frame);
         }
     }

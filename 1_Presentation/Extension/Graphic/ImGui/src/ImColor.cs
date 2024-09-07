@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The value
         /// </summary>
         public Vector4 Value { get; set; }
-        
+
         /// <summary>
         ///     Sets the hsv using the specified h
         /// </summary>
@@ -48,7 +48,7 @@ namespace Alis.Extension.Graphic.ImGui
         /// <param name="s">The </param>
         /// <param name="v">The </param>
         public void SetHsv(float h, float s, float v) => ImGuiNative.ImColor_SetHSV(ref this, h, s, v, 1.0f);
-        
+
         /// <summary>
         ///     Sets the hsv using the specified h
         /// </summary>

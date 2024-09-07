@@ -44,11 +44,11 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
         public void Constructor_InitializesPropertiesCorrectly()
         {
             PointF point = new PointF {X = 1.0f, Y = 2.0f};
-            
+
             Assert.Equal(1.0f, point.X);
             Assert.Equal(2.0f, point.Y);
         }
-        
+
         /// <summary>
         ///     Tests that properties set values correctly
         /// </summary>
@@ -58,7 +58,7 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
         public void Properties_SetValuesCorrectly(float x, float y)
         {
             PointF point = new PointF {X = x, Y = y};
-            
+
             Assert.Equal(x, point.X);
             Assert.Equal(y, point.Y);
         }

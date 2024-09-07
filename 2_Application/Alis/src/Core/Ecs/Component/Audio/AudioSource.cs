@@ -50,7 +50,7 @@ namespace Alis.Core.Ecs.Component.Audio
             AudioClip = audioClip;
             Logger.Trace();
         }
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="AudioSource" /> class
         /// </summary>
@@ -59,22 +59,22 @@ namespace Alis.Core.Ecs.Component.Audio
             AudioClip = new AudioClip();
             Logger.Trace();
         }
-        
+
         /// <summary>
         ///     Gets or sets the value of the audio clip
         /// </summary>
         public AudioClip AudioClip { get; set; }
-        
+
         /// <summary>
         ///     Gets the value of the is playing
         /// </summary>
         public bool IsPlaying => AudioClip.IsPlaying;
-        
+
         /// <summary>
         ///     Gets or sets the value of the play on awake
         /// </summary>
         public bool PlayOnAwake { get; set; }
-        
+
         /// <summary>
         ///     Gets or sets the value of the mute
         /// </summary>
@@ -83,7 +83,7 @@ namespace Alis.Core.Ecs.Component.Audio
             get => AudioClip.IsMute;
             set => AudioClip.IsMute = value;
         }
-        
+
         /// <summary>
         ///     Gets or sets the value of the loop
         /// </summary>
@@ -92,7 +92,7 @@ namespace Alis.Core.Ecs.Component.Audio
             get => AudioClip.IsLooping;
             set => AudioClip.IsLooping = value;
         }
-        
+
         /// <summary>
         ///     Gets or sets the value of the volume
         /// </summary>
@@ -105,28 +105,28 @@ namespace Alis.Core.Ecs.Component.Audio
                 AudioClip.Volume = value;
             }
         }
-        
+
         /// <summary>
         ///     Builders this instance
         /// </summary>
         /// <returns>The audio source builder</returns>
         public AudioSourceBuilder Builder() => new AudioSourceBuilder();
-        
+
         /// <summary>
         ///     Plays this instance
         /// </summary>
         public void Play() => AudioClip.Play();
-        
+
         /// <summary>
         ///     Stops this instance
         /// </summary>
         public void Stop() => AudioClip.Stop();
-        
+
         /// <summary>
         ///     Resumes this instance
         /// </summary>
         public void Resume() => AudioClip.Resume();
-        
+
         /// <summary>
         ///     Ons the init
         /// </summary>
@@ -134,7 +134,7 @@ namespace Alis.Core.Ecs.Component.Audio
         {
             ThreadPool.SetMinThreads(200, 200);
         }
-        
+
         /// <summary>
         ///     Starts this instance
         /// </summary>
@@ -145,8 +145,8 @@ namespace Alis.Core.Ecs.Component.Audio
                 Play();
             }
         }
-        
-        
+
+
         /// <summary>
         ///     Ons the stop
         /// </summary>
@@ -154,7 +154,7 @@ namespace Alis.Core.Ecs.Component.Audio
         {
             Stop();
         }
-        
+
         /// <summary>
         ///     Ons the exit
         /// </summary>

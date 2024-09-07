@@ -45,10 +45,10 @@ namespace Alis.Test.Builder.Core.Ecs.System.Setting.Scene
         public void SceneSettingBuilder_DefaultConstructor_ValidInput()
         {
             SceneSettingBuilder sceneSettingBuilder = new SceneSettingBuilder();
-            
+
             Assert.NotNull(sceneSettingBuilder);
         }
-        
+
         /// <summary>
         ///     Tests that build valid input
         /// </summary>
@@ -56,9 +56,9 @@ namespace Alis.Test.Builder.Core.Ecs.System.Setting.Scene
         public void Build_ValidInput()
         {
             SceneSettingBuilder sceneSettingBuilder = new SceneSettingBuilder();
-            
+
             SceneSetting sceneSetting = sceneSettingBuilder.Build();
-            
+
             Assert.NotNull(sceneSetting);
         }
     }

@@ -1,27 +1,56 @@
-﻿/* Original source Farseer Physics Engine:
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:EarclipDecomposer.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+/* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
 
 /*
-* C# Version Ported by Matt Bettcher and Ian Qvist 2009-2010
-* 
-* Original C++ Version Copyright (c) 2007 Eric Jordan
-*
-* This software is provided 'as-is', without any express or implied
-* warranty.  In no event will the authors be held liable for any damages
-* arising from the use of this software.
-* Permission is granted to anyone to use this software for any purpose,
-* including commercial applications, and to alter it and redistribute it
-* freely, subject to the following restrictions:
-* 1. The origin of this software must not be misrepresented; you must not
-* claim that you wrote the original software. If you use this software
-* in a product, an acknowledgment in the product documentation would be
-* appreciated but is not required.
-* 2. Altered source versions must be plainly marked as such, and must not be
-* misrepresented as being the original software.
-* 3. This notice may not be removed or altered from any source distribution.
-*/
+ * C# Version Ported by Matt Bettcher and Ian Qvist 2009-2010
+ *
+ * Original C++ Version Copyright (c) 2007 Eric Jordan
+ *
+ * This software is provided 'as-is', without any express or implied
+ * warranty.  In no event will the authors be held liable for any damages
+ * arising from the use of this software.
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely, subject to the following restrictions:
+ * 1. The origin of this software must not be misrepresented; you must not
+ * claim that you wrote the original software. If you use this software
+ * in a product, an acknowledgment in the product documentation would be
+ * appreciated but is not required.
+ * 2. Altered source versions must be plainly marked as such, and must not be
+ * misrepresented as being the original software.
+ * 3. This notice may not be removed or altered from any source distribution.
+ */
 
 using System;
 using System.Collections.Generic;
@@ -34,22 +63,20 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 namespace Alis.Core.Physic.Common.Decomposition
 {
     /// <summary>
-    /// Convex decomposition algorithm using ear clipping
-    /// 
-    /// Properties:
-    /// - Only works on simple polygons.
-    /// - Does not support holes.
-    /// - Running time is O(n^2), n = number of vertices.
-    /// 
-    /// Source: http://www.ewjordan.com/earClip/
+    ///     Convex decomposition algorithm using ear clipping
+    ///     Properties:
+    ///     - Only works on simple polygons.
+    ///     - Does not support holes.
+    ///     - Running time is O(n^2), n = number of vertices.
+    ///     Source: http://www.ewjordan.com/earClip/
     /// </summary>
     internal static class EarclipDecomposer
     {
         //box2D rev 32 - for details, see http://www.box2d.org/forum/viewtopic.php?f=4&t=83&start=50 
 
         /// <summary>
-        /// Decompose the polygon into several smaller non-concave polygon.
-        /// Each resulting polygon will have no more than Settings.MaxPolygonVertices vertices.
+        ///     Decompose the polygon into several smaller non-concave polygon.
+        ///     Each resulting polygon will have no more than Settings.MaxPolygonVertices vertices.
         /// </summary>
         /// <param name="vertices">The vertices.</param>
         /// <param name="tolerance">The tolerance.</param>
@@ -62,22 +89,20 @@ namespace Alis.Core.Physic.Common.Decomposition
         }
 
         /// <summary>
-        /// Triangulates a polygon using simple ear-clipping algorithm. Returns
-        /// size of Triangle array unless the polygon can't be triangulated.
-        /// This should only happen if the polygon self-intersects,
-        /// though it will not _always_ return null for a bad polygon - it is the
-        /// caller's responsibility to check for self-intersection, and if it
-        /// doesn't, it should at least check that the return value is non-null
-        /// before using. You're warned!
-        ///
-        /// Triangles may be degenerate, especially if you have identical points
-        /// in the input to the algorithm.  Check this before you use them.
-        ///
-        /// This is totally unoptimized, so for large polygons it should not be part
-        /// of the simulation loop.
+        ///     Triangulates a polygon using simple ear-clipping algorithm. Returns
+        ///     size of Triangle array unless the polygon can't be triangulated.
+        ///     This should only happen if the polygon self-intersects,
+        ///     though it will not _always_ return null for a bad polygon - it is the
+        ///     caller's responsibility to check for self-intersection, and if it
+        ///     doesn't, it should at least check that the return value is non-null
+        ///     before using. You're warned!
+        ///     Triangles may be degenerate, especially if you have identical points
+        ///     in the input to the algorithm.  Check this before you use them.
+        ///     This is totally unoptimized, so for large polygons it should not be part
+        ///     of the simulation loop.
         /// </summary>
         /// <remarks>
-        /// Only works on simple polygons.
+        ///     Only works on simple polygons.
         /// </remarks>
         private static List<Vertices> TriangulatePolygon(Vertices vertices, float tolerance)
         {
@@ -102,6 +127,7 @@ namespace Alis.Core.Physic.Common.Decomposition
                 {
                     results.Add(new Vertices(mergeA[i]));
                 }
+
                 for (int i = 0; i < mergeB.Count; ++i)
                 {
                     results.Add(new Vertices(mergeB[i]));
@@ -192,10 +218,10 @@ namespace Alis.Core.Physic.Common.Decomposition
                 }
 
                 // - add the clipped triangle to the triangle list
-                int under = (earIndex == 0) ? (vNum) : (earIndex - 1);
-                int over = (earIndex == vNum) ? 0 : (earIndex + 1);
+                int under = earIndex == 0 ? vNum : earIndex - 1;
+                int over = earIndex == vNum ? 0 : earIndex + 1;
                 Triangle toAdd = new Triangle(xrem[earIndex], yrem[earIndex], xrem[over], yrem[over], xrem[under],
-                                              yrem[under]);
+                    yrem[under]);
                 buffer[bufferSize] = toAdd;
                 ++bufferSize;
 
@@ -217,15 +243,12 @@ namespace Alis.Core.Physic.Common.Decomposition
         }
 
         /// <summary>
-        /// Finds and fixes "pinch points," points where two polygon
-        /// vertices are at the same point.
-        /// 
-        /// If a pinch point is found, pin is broken up into poutA and poutB
-        /// and true is returned; otherwise, returns false.
-        /// 
-        /// Mostly for internal use.
-        /// 
-        /// O(N^2) time, which sucks...
+        ///     Finds and fixes "pinch points," points where two polygon
+        ///     vertices are at the same point.
+        ///     If a pinch point is found, pin is broken up into poutA and poutB
+        ///     and true is returned; otherwise, returns false.
+        ///     Mostly for internal use.
+        ///     O(N^2) time, which sucks...
         /// </summary>
         /// <param name="pin">The pin.</param>
         /// <param name="poutA">The pout A.</param>
@@ -248,7 +271,7 @@ namespace Alis.Core.Physic.Common.Decomposition
                 {
                     //Don't worry about pinch points where the points
                     //are actually just dupe neighbors
-                    if (Math.Abs(pin[i].X - pin[j].X) < tolerance && Math.Abs(pin[i].Y - pin[j].Y) < tolerance && j != i + 1)
+                    if ((Math.Abs(pin[i].X - pin[j].X) < tolerance) && (Math.Abs(pin[i].Y - pin[j].Y) < tolerance) && (j != i + 1))
                     {
                         pinchIndexA = i;
                         pinchIndexB = j;
@@ -256,8 +279,10 @@ namespace Alis.Core.Physic.Common.Decomposition
                         break;
                     }
                 }
+
                 if (hasPinchPoint) break;
             }
+
             if (hasPinchPoint)
             {
                 int sizeA = pinchIndexB - pinchIndexA;
@@ -275,11 +300,12 @@ namespace Alis.Core.Physic.Common.Decomposition
                     poutB.Add(pin[ind]);
                 }
             }
+
             return hasPinchPoint;
         }
 
         /// <summary>
-        /// Fix for obnoxious behavior for the % operator for negative numbers...
+        ///     Fix for obnoxious behavior for the % operator for negative numbers...
         /// </summary>
         /// <param name="x">The x.</param>
         /// <param name="modulus">The modulus.</param>
@@ -291,21 +317,22 @@ namespace Alis.Core.Physic.Common.Decomposition
             {
                 rem += modulus;
             }
+
             return rem;
         }
 
         /// <summary>
-        /// Checks if vertex i is the tip of an ear in polygon defined by xv[] and  yv[].
+        ///     Checks if vertex i is the tip of an ear in polygon defined by xv[] and  yv[].
         /// </summary>
         /// <param name="i">The i.</param>
         /// <param name="xv">The xv.</param>
         /// <param name="yv">The yv.</param>
         /// <param name="xvLength">Length of the xv.</param>
         /// <remarks>
-        /// Assumes clockwise orientation of polygon.
+        ///     Assumes clockwise orientation of polygon.
         /// </remarks>
         /// <returns>
-        /// 	<c>true</c> if the specified i is ear; otherwise, <c>false</c>.
+        ///     <c>true</c> if the specified i is ear; otherwise, <c>false</c>.
         /// </returns>
         private static bool IsEar(int i, float[] xv, float[] yv, int xvLength)
         {
@@ -314,6 +341,7 @@ namespace Alis.Core.Physic.Common.Decomposition
             {
                 return false;
             }
+
             int upper = i + 1;
             int lower = i - 1;
             if (i == 0)
@@ -354,6 +382,7 @@ namespace Alis.Core.Physic.Common.Decomposition
                 if (myTri.IsInside(xv[j], yv[j]))
                     return false;
             }
+
             return true;
         }
 
@@ -383,10 +412,10 @@ namespace Alis.Core.Physic.Common.Decomposition
                 Vector2 b = this[1];
                 Vector2 c = this[2];
 
-                if (x < a.X && x < b.X && x < c.X) return false;
-                if (x > a.X && x > b.X && x > c.X) return false;
-                if (y < a.Y && y < b.Y && y < c.Y) return false;
-                if (y > a.Y && y > b.Y && y > c.Y) return false;
+                if ((x < a.X) && (x < b.X) && (x < c.X)) return false;
+                if ((x > a.X) && (x > b.X) && (x > c.X)) return false;
+                if ((y < a.Y) && (y < b.Y) && (y < c.Y)) return false;
+                if ((y > a.Y) && (y > b.Y) && (y > c.Y)) return false;
 
                 float vx2 = x - a.X;
                 float vy2 = y - a.Y;
@@ -404,7 +433,7 @@ namespace Alis.Core.Physic.Common.Decomposition
                 float u = (dot11 * dot02 - dot01 * dot12) * invDenom;
                 float v = (dot00 * dot12 - dot01 * dot02) * invDenom;
 
-                return ((u > 0) && (v > 0) && (u + v < 1));
+                return (u > 0) && (v > 0) && (u + v < 1);
             }
         }
     }

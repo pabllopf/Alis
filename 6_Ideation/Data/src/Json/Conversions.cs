@@ -45,14 +45,14 @@ namespace Alis.Core.Aspect.Data.Json
         ///     The enum separators
         /// </summary>
         internal static readonly char[] EnumSeparators = {',', ';', '+', '|', ' '};
-        
+
         /// <summary>
         ///     Describes whether is valid
         /// </summary>
         /// <param name="dt">The dt</param>
         /// <returns>The bool</returns>
         internal static bool IsValid(DateTime dt) => (dt != DateTime.MinValue) && (dt != DateTime.MaxValue) && (dt.Kind != DateTimeKind.Unspecified);
-        
+
         /// <summary>
         ///     Changes the type using the specified input
         /// </summary>
@@ -62,7 +62,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="provider">The provider</param>
         /// <returns>The value</returns>
         public static T ChangeType<T>(object input, T defaultValue = default(T), IFormatProvider provider = null) => !TryChangeType(input, provider, out T value) ? defaultValue : value;
-        
+
         /// <summary>
         ///     Describes whether try change type
         /// </summary>
@@ -71,7 +71,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
         public static bool TryChangeType<T>(object input, out T value) => TryChangeType(input, null, out value);
-        
+
         /// <summary>
         ///     Describes whether try change type
         /// </summary>
@@ -87,11 +87,11 @@ namespace Alis.Core.Aspect.Data.Json
                 value = default(T);
                 return false;
             }
-            
+
             value = (T) tValue;
             return true;
         }
-        
+
         /// <summary>
         ///     Changes the type using the specified input
         /// </summary>
@@ -108,13 +108,13 @@ namespace Alis.Core.Aspect.Data.Json
                 {
                     return def;
                 }
-                
+
                 return IsReallyValueType(conversionType) ? Activator.CreateInstance(conversionType) : null;
             }
-            
+
             return value;
         }
-        
+
         /// <summary>
         ///     Describes whether try change type
         /// </summary>
@@ -123,8 +123,8 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
         public static bool TryChangeType(object input, Type conversionType, out object value) => TryChangeType(input, conversionType, null, out value);
-        
-        
+
+
         /// <summary>
         ///     Describes whether try change type
         /// </summary>
@@ -140,34 +140,34 @@ namespace Alis.Core.Aspect.Data.Json
             {
                 throw new ArgumentNullException(nameof(conversionType));
             }
-            
+
             if (conversionType == typeof(object))
             {
                 value = input;
                 return true;
             }
-            
+
             if (IsNullable(conversionType))
             {
                 return TryChangeToNullable(input, conversionType, provider, out value);
             }
-            
+
             value = IsReallyValueType(conversionType) ? Activator.CreateInstance(conversionType) : null;
             if (input == null)
             {
                 return !IsReallyValueType(conversionType);
             }
-            
+
             Type inputType = input.GetType();
             if (conversionType.IsAssignableFrom(inputType))
             {
                 value = input;
                 return true;
             }
-            
+
             return TryChangeTypeBasedOnInputType(input, conversionType, provider, inputType, out value);
         }
-        
+
         /// <summary>
         ///     Describes whether try change type based on input type
         /// </summary>
@@ -183,15 +183,15 @@ namespace Alis.Core.Aspect.Data.Json
             {
                 return TryChangeToEnum(conversionType, input, out value);
             }
-            
+
             if (inputType.IsEnum)
             {
                 return TryChangeFromEnum(conversionType, input, out value);
             }
-            
+
             return TryChangeBasedOnConversionType(input, conversionType, provider, inputType, out value);
         }
-        
+
         /// <summary>
         ///     Describes whether try change based on conversion type
         /// </summary>
@@ -207,35 +207,35 @@ namespace Alis.Core.Aspect.Data.Json
             {
                 return TryChangeToGuid(input, provider, out value);
             }
-            
+
             if (conversionType == typeof(Uri))
             {
                 return TryConvertToUri(input.ToString(), out value);
             }
-            
+
             if (conversionType == typeof(IntPtr))
             {
                 return TryChangeToIntPtr(input, out value);
             }
-            
+
             if (IsNumericType(conversionType))
             {
                 return TryChangeToNumeric(input, conversionType, out value);
             }
-            
+
             if (IsDateTimeType(conversionType))
             {
                 return TryChangeToDateTime(input, conversionType, inputType, out value);
             }
-            
+
             if (conversionType == typeof(TimeSpan))
             {
                 return TryChangeToTimeSpan(input, provider, out value);
             }
-            
+
             return TryChangeBasedOnOtherTypes(input, conversionType, provider, inputType, out value);
         }
-        
+
         /// <summary>
         ///     Describes whether try change based on other types
         /// </summary>
@@ -251,25 +251,25 @@ namespace Alis.Core.Aspect.Data.Json
             {
                 return TryChangeToCollection(input, conversionType, elementType, out value);
             }
-            
+
             if (IsCultureInfoOrFormatProvider(conversionType))
             {
                 return TryChangeToCultureInfo(input, out value);
             }
-            
+
             if (IsBool(conversionType))
             {
                 return TryChangeToBool(input, provider, out value);
             }
-            
+
             if (IsConvertible(input, out IConvertible convertible))
             {
                 return TryChangeWithIConvertible(convertible, conversionType, provider, out value);
             }
-            
+
             return TryConvert(input, conversionType, inputType, out value);
         }
-        
+
         /// <summary>
         ///     Describes whether is array or generic list
         /// </summary>
@@ -281,21 +281,21 @@ namespace Alis.Core.Aspect.Data.Json
             elementType = null;
             return conversionType.IsArray || IsGenericList(conversionType, out elementType);
         }
-        
+
         /// <summary>
         ///     Describes whether is culture info or format provider
         /// </summary>
         /// <param name="conversionType">The conversion type</param>
         /// <returns>The bool</returns>
         internal static bool IsCultureInfoOrFormatProvider(Type conversionType) => conversionType == typeof(CultureInfo) || conversionType == typeof(IFormatProvider);
-        
+
         /// <summary>
         ///     Describes whether is bool
         /// </summary>
         /// <param name="conversionType">The conversion type</param>
         /// <returns>The bool</returns>
         internal static bool IsBool(Type conversionType) => conversionType == typeof(bool);
-        
+
         /// <summary>
         ///     Describes whether is convertible
         /// </summary>
@@ -307,21 +307,21 @@ namespace Alis.Core.Aspect.Data.Json
             convertible = input as IConvertible;
             return convertible != null;
         }
-        
+
         /// <summary>
         ///     Describes whether is numeric type
         /// </summary>
         /// <param name="conversionType">The conversion type</param>
         /// <returns>The bool</returns>
         internal static bool IsNumericType(Type conversionType) => conversionType == typeof(int) || conversionType == typeof(long) || conversionType == typeof(short) || conversionType == typeof(sbyte) || conversionType == typeof(uint) || conversionType == typeof(ulong) || conversionType == typeof(ushort) || conversionType == typeof(byte);
-        
+
         /// <summary>
         ///     Describes whether is date time type
         /// </summary>
         /// <param name="conversionType">The conversion type</param>
         /// <returns>The bool</returns>
         internal static bool IsDateTimeType(Type conversionType) => conversionType == typeof(DateTime) || conversionType == typeof(DateTimeOffset);
-        
+
         /// <summary>
         ///     Attempts to convert the input to a nullable type.
         /// </summary>
@@ -333,22 +333,22 @@ namespace Alis.Core.Aspect.Data.Json
         internal static bool TryChangeToNullable(object input, Type conversionType, IFormatProvider provider, out object value)
         {
             value = null;
-            
+
             if (input == null)
             {
                 return true;
             }
-            
+
             Type nullableUnderlyingType = Nullable.GetUnderlyingType(conversionType);
             if (nullableUnderlyingType != null)
             {
                 value = Convert.ChangeType(input, nullableUnderlyingType, provider);
                 return true;
             }
-            
+
             return false;
         }
-        
+
         /// <summary>
         ///     Describes whether try change to enum
         /// </summary>
@@ -363,11 +363,11 @@ namespace Alis.Core.Aspect.Data.Json
                 value = Enum.Parse(conversionType, input.ToString());
                 return true;
             }
-            
+
             value = null;
             return false;
         }
-        
+
         /// <summary>
         ///     Describes whether try change from enum
         /// </summary>
@@ -382,11 +382,11 @@ namespace Alis.Core.Aspect.Data.Json
                 value = Convert.ChangeType(input, conversionType);
                 return true;
             }
-            
+
             value = null;
             return false;
         }
-        
+
         /// <summary>
         ///     Describes whether try change to guid
         /// </summary>
@@ -401,11 +401,11 @@ namespace Alis.Core.Aspect.Data.Json
                 value = guid;
                 return true;
             }
-            
+
             value = null;
             return false;
         }
-        
+
         /// <summary>
         ///     Describes whether try convert to uri
         /// </summary>
@@ -415,22 +415,22 @@ namespace Alis.Core.Aspect.Data.Json
         internal static bool TryConvertToUri(string inputString, out object result)
         {
             result = null;
-            
+
             if (string.IsNullOrEmpty(inputString))
             {
                 return false;
             }
-            
+
             bool isUriCreated = Uri.TryCreate(inputString, UriKind.RelativeOrAbsolute, out Uri uri);
-            
+
             if (isUriCreated)
             {
                 result = uri;
             }
-            
+
             return isUriCreated;
         }
-        
+
         /// <summary>
         ///     Describes whether try change to int ptr
         /// </summary>
@@ -444,11 +444,11 @@ namespace Alis.Core.Aspect.Data.Json
                 value = new IntPtr(intResult);
                 return true;
             }
-            
+
             value = null;
             return false;
         }
-        
+
         /// <summary>
         ///     Describes whether try change to numeric
         /// </summary>
@@ -467,10 +467,10 @@ namespace Alis.Core.Aspect.Data.Json
                 value = null;
                 return false;
             }
-            
+
             return true;
         }
-        
+
         /// <summary>
         ///     Describes whether try change to date time
         /// </summary>
@@ -486,11 +486,11 @@ namespace Alis.Core.Aspect.Data.Json
                 value = dateTime;
                 return true;
             }
-            
+
             value = null;
             return false;
         }
-        
+
         /// <summary>
         ///     Describes whether try change to time span
         /// </summary>
@@ -505,11 +505,11 @@ namespace Alis.Core.Aspect.Data.Json
                 value = timeSpan;
                 return true;
             }
-            
+
             value = null;
             return false;
         }
-        
+
         /// <summary>
         ///     Describes whether try change to collection
         /// </summary>
@@ -527,15 +527,15 @@ namespace Alis.Core.Aspect.Data.Json
                 {
                     result.Add(Convert.ChangeType(item, elementType));
                 }
-                
+
                 value = result;
                 return true;
             }
-            
+
             value = null;
             return false;
         }
-        
+
         /// <summary>
         ///     Describes whether try change to culture info
         /// </summary>
@@ -549,11 +549,11 @@ namespace Alis.Core.Aspect.Data.Json
                 value = new CultureInfo(input.ToString());
                 return true;
             }
-            
+
             value = null;
             return false;
         }
-        
+
         /// <summary>
         ///     Describes whether try change to bool
         /// </summary>
@@ -568,11 +568,11 @@ namespace Alis.Core.Aspect.Data.Json
                 value = boolValue;
                 return true;
             }
-            
+
             value = null;
             return false;
         }
-        
+
         /// <summary>
         ///     Describes whether try change with i convertible
         /// </summary>
@@ -594,7 +594,7 @@ namespace Alis.Core.Aspect.Data.Json
                 return false;
             }
         }
-        
+
         /// <summary>
         ///     Tries to convert the input value to the target type.
         /// </summary>
@@ -606,24 +606,24 @@ namespace Alis.Core.Aspect.Data.Json
         internal static bool TryConvert(object value, Type target, Type source, out object result)
         {
             TypeConverter converter = GetConverter(target);
-            
+
             if (converter.CanConvertFrom(source))
             {
                 result = converter.ConvertFrom(value);
                 return true;
             }
-            
+
             result = null;
             return false;
         }
-        
+
         /// <summary>
         ///     Gets the type converter for the specified type.
         /// </summary>
         /// <param name="type">The type to get the converter for.</param>
         /// <returns>The type converter for the specified type.</returns>
         internal static TypeConverter GetConverter(Type type) => TypeDescriptor.GetConverter(type);
-        
+
         /// <summary>
         ///     Enums the to u int 64 using the specified value
         /// </summary>
@@ -636,7 +636,7 @@ namespace Alis.Core.Aspect.Data.Json
             {
                 throw new ArgumentNullException(nameof(value));
             }
-            
+
             TypeCode typeCode = Convert.GetTypeCode(value);
             switch (typeCode)
             {
@@ -645,13 +645,13 @@ namespace Alis.Core.Aspect.Data.Json
                 case TypeCode.Int32:
                 case TypeCode.Int64:
                     return (ulong) Convert.ToInt64(value, CultureInfo.InvariantCulture);
-                
+
                 case TypeCode.Byte:
                 case TypeCode.UInt16:
                 case TypeCode.UInt32:
                 case TypeCode.UInt64:
                     return Convert.ToUInt64(value, CultureInfo.InvariantCulture);
-                
+
                 //case TypeCode.String:
                 case TypeCode.Boolean:
                 case TypeCode.Char:
@@ -667,7 +667,7 @@ namespace Alis.Core.Aspect.Data.Json
                     return ChangeType<ulong>(value, 0, CultureInfo.InvariantCulture);
             }
         }
-        
+
         /// <summary>
         ///     Tries to convert a string to an enum value.
         /// </summary>
@@ -688,11 +688,11 @@ namespace Alis.Core.Aspect.Data.Json
             {
                 return true;
             }
-            
+
             value = Activator.CreateInstance(type);
             return false;
         }
-        
+
         /// <summary>
         ///     Describes whether try match names
         /// </summary>
@@ -711,11 +711,11 @@ namespace Alis.Core.Aspect.Data.Json
                     return true;
                 }
             }
-            
+
             value = null;
             return false;
         }
-        
+
         /// <summary>
         ///     Describes whether try match values
         /// </summary>
@@ -745,18 +745,18 @@ namespace Alis.Core.Aspect.Data.Json
                     }
                 }
             }
-            
+
             value = null;
             return false;
         }
-        
+
         /// <summary>
         ///     Describes whether is input negative
         /// </summary>
         /// <param name="input">The input</param>
         /// <returns>The bool</returns>
         internal static bool IsInputNegative(string input) => (input.Length > 0) && (input[0] == '-');
-        
+
         /// <summary>
         ///     Describes whether match negative input
         /// </summary>
@@ -768,7 +768,7 @@ namespace Alis.Core.Aspect.Data.Json
             long ul = (long) EnumToUInt64(valueI);
             return ul.ToString().EqualsIgnoreCase(input);
         }
-        
+
         /// <summary>
         ///     Describes whether match positive input
         /// </summary>
@@ -780,7 +780,7 @@ namespace Alis.Core.Aspect.Data.Json
             ulong ul = EnumToUInt64(valueI);
             return ul.ToString().EqualsIgnoreCase(input);
         }
-        
+
         /// <summary>
         ///     Describes whether try handle digit or sign start
         /// </summary>
@@ -795,10 +795,10 @@ namespace Alis.Core.Aspect.Data.Json
                 value = CreateInstance(type);
                 return false;
             }
-            
+
             return TryConvertToEnumAndAssignValue(type, input, out value);
         }
-        
+
         /// <summary>
         ///     Tries to convert the input to an enum and assign it to the value.
         /// </summary>
@@ -814,24 +814,24 @@ namespace Alis.Core.Aspect.Data.Json
                 value = CreateInstance(type);
                 return false;
             }
-            
+
             return true;
         }
-        
+
         /// <summary>
         ///     Describes whether starts with digit or sign
         /// </summary>
         /// <param name="input">The input</param>
         /// <returns>The bool</returns>
         internal static bool StartsWithDigitOrSign(string input) => char.IsDigit(input[0]) || input[0] == '-' || input[0] == '+';
-        
+
         /// <summary>
         ///     Creates the instance using the specified type
         /// </summary>
         /// <param name="type">The type</param>
         /// <returns>The object</returns>
         internal static object CreateInstance(Type type) => Activator.CreateInstance(type);
-        
+
         /// <summary>
         ///     Converts the to enum using the specified type
         /// </summary>
@@ -839,7 +839,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="input">The input</param>
         /// <returns>The object</returns>
         internal static object ConvertToEnum(Type type, string input) => EnumToObject(type, input);
-        
+
         /// <summary>
         ///     Enums the to object using the specified enum type
         /// </summary>
@@ -852,15 +852,15 @@ namespace Alis.Core.Aspect.Data.Json
             {
                 return null;
             }
-            
+
             if (value is string stringValue)
             {
                 return ParseEnum(enumType, stringValue);
             }
-            
+
             return ConvertToEnum(enumType, value);
         }
-        
+
         /// <summary>
         ///     Describes whether is invalid
         /// </summary>
@@ -868,7 +868,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
         internal static bool IsInvalid(Type enumType, object value) => enumType == null || value == null || !enumType.IsEnum;
-        
+
         /// <summary>
         ///     Parses the enum using the specified enum type
         /// </summary>
@@ -876,7 +876,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="stringValue">The string value</param>
         /// <returns>The object</returns>
         internal static object ParseEnum(Type enumType, string stringValue) => Enum.Parse(enumType, stringValue);
-        
+
         /// <summary>
         ///     Converts the to enum using the specified enum type
         /// </summary>
@@ -897,7 +897,7 @@ namespace Alis.Core.Aspect.Data.Json
                 _ => null
             };
         }
-        
+
         /// <summary>
         ///     Returns the enum using the specified text
         /// </summary>
@@ -911,12 +911,12 @@ namespace Alis.Core.Aspect.Data.Json
             {
                 throw new ArgumentNullException(nameof(enumType));
             }
-            
+
             EnumTryParse(enumType, text, out object value);
             return value;
         }
-        
-        
+
+
         /// <summary>
         ///     Describes whether enum try parse
         /// </summary>
@@ -931,23 +931,23 @@ namespace Alis.Core.Aspect.Data.Json
                 value = null;
                 return false;
             }
-            
+
             string stringInput = FormatInput(input);
-            
+
             if (IsHexadecimalAndCanBeParsed(stringInput, type, out value))
             {
                 return true;
             }
-            
+
             if (!CanGetEnumNamesAndValues(type, out string[] names, out Array values))
             {
                 value = null;
                 return false;
             }
-            
+
             return CanParseTokens(stringInput, type, names, values, out value);
         }
-        
+
         /// <summary>
         ///     Describes whether is valid input
         /// </summary>
@@ -955,8 +955,8 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="input">The input</param>
         /// <returns>The bool</returns>
         internal static bool IsValidInput(Type type, object input) => (type != null) && (input != null);
-        
-        
+
+
         /// <summary>
         ///     Describes whether is hexadecimal and can be parsed
         /// </summary>
@@ -969,7 +969,7 @@ namespace Alis.Core.Aspect.Data.Json
             value = null;
             return input.StartsWith("0x") && TryParseHexadecimal(input, type, out value);
         }
-        
+
         /// <summary>
         ///     Describes whether can get enum names and values
         /// </summary>
@@ -983,7 +983,7 @@ namespace Alis.Core.Aspect.Data.Json
             values = null;
             return type.IsEnum && TryGetEnumNamesAndValues(type, out names, out values);
         }
-        
+
         /// <summary>
         ///     Describes whether can parse tokens
         /// </summary>
@@ -994,14 +994,14 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
         internal static bool CanParseTokens(string input, Type type, string[] names, Array values, out object value) => TryParseTokens(input, type, names, values, out value);
-        
+
         /// <summary>
         ///     Formats the input using the specified input
         /// </summary>
         /// <param name="input">The input</param>
         /// <returns>The string</returns>
         internal static string FormatInput(object input) => string.Format(CultureInfo.InvariantCulture, "{0}", input).Nullify();
-        
+
         /// <summary>
         ///     Describes whether try parse hexadecimal
         /// </summary>
@@ -1019,11 +1019,11 @@ namespace Alis.Core.Aspect.Data.Json
                     return true;
                 }
             }
-            
+
             value = null;
             return false;
         }
-        
+
         /// <summary>
         ///     Describes whether try get enum names and values
         /// </summary>
@@ -1035,10 +1035,10 @@ namespace Alis.Core.Aspect.Data.Json
         {
             names = Enum.GetNames(type);
             values = Enum.GetValues(type);
-            
+
             return names.Length != 0;
         }
-        
+
         /// <summary>
         ///     Describes whether try parse tokens
         /// </summary>
@@ -1054,17 +1054,17 @@ namespace Alis.Core.Aspect.Data.Json
             {
                 return TryStringToEnum(type, names, values, input, out value);
             }
-            
+
             string[] tokens = input.Split(EnumSeparators, StringSplitOptions.RemoveEmptyEntries);
             if (tokens.Length == 0)
             {
                 value = Activator.CreateInstance(type);
                 return false;
             }
-            
+
             return TryParseTokenValues(tokens, type, names, values, out value);
         }
-        
+
         /// <summary>
         ///     Describes whether try parse token values
         /// </summary>
@@ -1077,7 +1077,7 @@ namespace Alis.Core.Aspect.Data.Json
         internal static bool TryParseTokenValues(string[] tokens, Type type, string[] names, Array values, out object value)
         {
             ulong parsedValue = 0;
-            
+
             foreach (string token in tokens)
             {
                 if (!TryParseToken(token, type, names, values, out object tokenValue))
@@ -1085,14 +1085,14 @@ namespace Alis.Core.Aspect.Data.Json
                     value = Activator.CreateInstance(type);
                     return false;
                 }
-                
+
                 parsedValue |= ConvertTokenValueToUlong(tokenValue);
             }
-            
+
             value = Enum.ToObject(type, parsedValue);
             return true;
         }
-        
+
         /// <summary>
         ///     Describes whether try parse token
         /// </summary>
@@ -1105,30 +1105,30 @@ namespace Alis.Core.Aspect.Data.Json
         internal static bool TryParseToken(string token, Type type, string[] names, Array values, out object tokenValue)
         {
             string sanitizedToken = SanitizeToken(token);
-            
+
             if (IsTokenNull(sanitizedToken))
             {
                 tokenValue = null;
                 return false;
             }
-            
+
             return TryConvertTokenToEnumValue(type, names, values, sanitizedToken, out tokenValue);
         }
-        
+
         /// <summary>
         ///     Sanitizes the token using the specified token
         /// </summary>
         /// <param name="token">The token</param>
         /// <returns>The string</returns>
         internal static string SanitizeToken(string token) => token.Nullify();
-        
+
         /// <summary>
         ///     Describes whether is token null
         /// </summary>
         /// <param name="sanitizedToken">The sanitized token</param>
         /// <returns>The bool</returns>
         internal static bool IsTokenNull(string sanitizedToken) => sanitizedToken == null;
-        
+
         /// <summary>
         ///     Describes whether try convert token to enum value
         /// </summary>
@@ -1139,7 +1139,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <param name="tokenValue">The token value</param>
         /// <returns>The bool</returns>
         internal static bool TryConvertTokenToEnumValue(Type type, string[] names, Array values, string token, out object tokenValue) => TryStringToEnum(type, names, values, token, out tokenValue);
-        
+
         /// <summary>
         ///     Converts the token value to ulong using the specified token value
         /// </summary>
@@ -1154,12 +1154,12 @@ namespace Alis.Core.Aspect.Data.Json
                 case TypeCode.Int64:
                 case TypeCode.SByte:
                     return (ulong) Convert.ToInt64(tokenValue, CultureInfo.InvariantCulture);
-                
+
                 default:
                     return Convert.ToUInt64(tokenValue, CultureInfo.InvariantCulture);
             }
         }
-        
+
         /// <summary>
         ///     Describes whether is generic list
         /// </summary>
@@ -1173,17 +1173,17 @@ namespace Alis.Core.Aspect.Data.Json
             {
                 throw new ArgumentNullException(nameof(type));
             }
-            
+
             if (type.IsGenericType && (type.GetGenericTypeDefinition() == typeof(List<>)))
             {
                 elementType = type.GetGenericArguments()[0];
                 return true;
             }
-            
+
             elementType = null;
             return false;
         }
-        
+
         /// <summary>
         ///     Describes whether is really value type
         /// </summary>
@@ -1196,10 +1196,10 @@ namespace Alis.Core.Aspect.Data.Json
             {
                 throw new ArgumentNullException(nameof(type));
             }
-            
+
             return type.IsValueType && !IsNullable(type);
         }
-        
+
         /// <summary>
         ///     Describes whether is nullable
         /// </summary>
@@ -1212,7 +1212,7 @@ namespace Alis.Core.Aspect.Data.Json
             {
                 throw new ArgumentNullException(nameof(type));
             }
-            
+
             return type.IsGenericType && (type.GetGenericTypeDefinition() == typeof(Nullable<>));
         }
     }

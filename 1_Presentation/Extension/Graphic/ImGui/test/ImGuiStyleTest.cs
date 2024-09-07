@@ -47,7 +47,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.Alpha = 0.5f;
             Assert.Equal(0.5f, style.Alpha);
         }
-        
+
         /// <summary>
         ///     Tests that disabled alpha should set and get correctly
         /// </summary>
@@ -58,7 +58,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.DisabledAlpha = 0.3f;
             Assert.Equal(0.3f, style.DisabledAlpha);
         }
-        
+
         /// <summary>
         ///     Tests that window padding should set and get correctly
         /// </summary>
@@ -70,7 +70,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.WindowPadding = padding;
             Assert.Equal(padding, style.WindowPadding);
         }
-        
+
         /// <summary>
         ///     Tests that window rounding should set and get correctly
         /// </summary>
@@ -81,7 +81,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.WindowRounding = 5.0f;
             Assert.Equal(5.0f, style.WindowRounding);
         }
-        
+
         /// <summary>
         ///     Tests that window border size should set and get correctly
         /// </summary>
@@ -92,7 +92,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.WindowBorderSize = 1.0f;
             Assert.Equal(1.0f, style.WindowBorderSize);
         }
-        
+
         /// <summary>
         ///     Tests that window min size should set and get correctly
         /// </summary>
@@ -104,7 +104,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.WindowMinSize = minSize;
             Assert.Equal(minSize, style.WindowMinSize);
         }
-        
+
         /// <summary>
         ///     Tests that window title align should set and get correctly
         /// </summary>
@@ -116,7 +116,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.WindowTitleAlign = align;
             Assert.Equal(align, style.WindowTitleAlign);
         }
-        
+
         /// <summary>
         ///     Tests that window menu button position should set and get correctly
         /// </summary>
@@ -127,7 +127,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.WindowMenuButtonPosition = ImGuiDir.Left;
             Assert.Equal(ImGuiDir.Left, style.WindowMenuButtonPosition);
         }
-        
+
         /// <summary>
         ///     Tests that child rounding should set and get correctly
         /// </summary>
@@ -138,7 +138,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.ChildRounding = 3.0f;
             Assert.Equal(3.0f, style.ChildRounding);
         }
-        
+
         /// <summary>
         ///     Tests that child border size should set and get correctly
         /// </summary>
@@ -149,7 +149,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.ChildBorderSize = 2.0f;
             Assert.Equal(2.0f, style.ChildBorderSize);
         }
-        
+
         /// <summary>
         ///     Tests that popup rounding should set and get correctly
         /// </summary>
@@ -160,7 +160,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.PopupRounding = 4.0f;
             Assert.Equal(4.0f, style.PopupRounding);
         }
-        
+
         /// <summary>
         ///     Tests that popup border size should set and get correctly
         /// </summary>
@@ -171,7 +171,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.PopupBorderSize = 1.5f;
             Assert.Equal(1.5f, style.PopupBorderSize);
         }
-        
+
         /// <summary>
         ///     Tests that frame padding should set and get correctly
         /// </summary>
@@ -183,7 +183,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.FramePadding = padding;
             Assert.Equal(padding, style.FramePadding);
         }
-        
+
         /// <summary>
         ///     Tests that frame rounding should set and get correctly
         /// </summary>
@@ -194,7 +194,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.FrameRounding = 2.0f;
             Assert.Equal(2.0f, style.FrameRounding);
         }
-        
+
         /// <summary>
         ///     Tests that frame border size should set and get correctly
         /// </summary>
@@ -205,7 +205,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.FrameBorderSize = 1.0f;
             Assert.Equal(1.0f, style.FrameBorderSize);
         }
-        
+
         /// <summary>
         ///     Tests that item spacing should set and get correctly
         /// </summary>
@@ -217,7 +217,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.ItemSpacing = spacing;
             Assert.Equal(spacing, style.ItemSpacing);
         }
-        
+
         /// <summary>
         ///     Tests that item inner spacing should set and get correctly
         /// </summary>
@@ -229,7 +229,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.ItemInnerSpacing = innerSpacing;
             Assert.Equal(innerSpacing, style.ItemInnerSpacing);
         }
-        
+
         /// <summary>
         ///     Tests that cell padding should set and get correctly
         /// </summary>
@@ -241,7 +241,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.CellPadding = padding;
             Assert.Equal(padding, style.CellPadding);
         }
-        
+
         /// <summary>
         ///     Tests that touch extra padding should set and get correctly
         /// </summary>
@@ -253,7 +253,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.TouchExtraPadding = padding;
             Assert.Equal(padding, style.TouchExtraPadding);
         }
-        
+
         /// <summary>
         ///     Tests that indent spacing should set and get correctly
         /// </summary>
@@ -264,7 +264,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.IndentSpacing = 10.0f;
             Assert.Equal(10.0f, style.IndentSpacing);
         }
-        
+
         /// <summary>
         ///     Tests that columns min spacing should set and get correctly
         /// </summary>
@@ -275,7 +275,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.ColumnsMinSpacing = 5.0f;
             Assert.Equal(5.0f, style.ColumnsMinSpacing);
         }
-        
+
         /// <summary>
         ///     Tests that scrollbar size should set and get correctly
         /// </summary>
@@ -286,7 +286,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.ScrollbarSize = 15.0f;
             Assert.Equal(15.0f, style.ScrollbarSize);
         }
-        
+
         /// <summary>
         ///     Tests that scrollbar rounding should set and get correctly
         /// </summary>
@@ -297,7 +297,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.ScrollbarRounding = 3.0f;
             Assert.Equal(3.0f, style.ScrollbarRounding);
         }
-        
+
         /// <summary>
         ///     Tests that grab min size should set and get correctly
         /// </summary>
@@ -308,7 +308,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.GrabMinSize = 8.0f;
             Assert.Equal(8.0f, style.GrabMinSize);
         }
-        
+
         /// <summary>
         ///     Tests that grab rounding should set and get correctly
         /// </summary>
@@ -319,7 +319,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.GrabRounding = 2.0f;
             Assert.Equal(2.0f, style.GrabRounding);
         }
-        
+
         /// <summary>
         ///     Tests that log slider deadzone should set and get correctly
         /// </summary>
@@ -330,7 +330,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.LogSliderDeadzone = 0.1f;
             Assert.Equal(0.1f, style.LogSliderDeadzone);
         }
-        
+
         /// <summary>
         ///     Tests that tab rounding should set and get correctly
         /// </summary>
@@ -341,7 +341,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.TabRounding = 4.0f;
             Assert.Equal(4.0f, style.TabRounding);
         }
-        
+
         /// <summary>
         ///     Tests that tab border size should set and get correctly
         /// </summary>
@@ -352,7 +352,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.TabBorderSize = 1.0f;
             Assert.Equal(1.0f, style.TabBorderSize);
         }
-        
+
         /// <summary>
         ///     Tests that tab min width for close button should set and get correctly
         /// </summary>
@@ -363,7 +363,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.TabMinWidthForCloseButton = 20.0f;
             Assert.Equal(20.0f, style.TabMinWidthForCloseButton);
         }
-        
+
         /// <summary>
         ///     Tests that color button position should set and get correctly
         /// </summary>
@@ -374,7 +374,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.ColorButtonPosition = ImGuiDir.Right;
             Assert.Equal(ImGuiDir.Right, style.ColorButtonPosition);
         }
-        
+
         /// <summary>
         ///     Tests that button text align should set and get correctly
         /// </summary>
@@ -386,7 +386,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.ButtonTextAlign = align;
             Assert.Equal(align, style.ButtonTextAlign);
         }
-        
+
         /// <summary>
         ///     Tests that selectable text align should set and get correctly
         /// </summary>
@@ -398,7 +398,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.SelectableTextAlign = align;
             Assert.Equal(align, style.SelectableTextAlign);
         }
-        
+
         /// <summary>
         ///     Tests that display window padding should set and get correctly
         /// </summary>
@@ -410,7 +410,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.DisplayWindowPadding = padding;
             Assert.Equal(padding, style.DisplayWindowPadding);
         }
-        
+
         /// <summary>
         ///     Tests that display safe area padding should set and get correctly
         /// </summary>
@@ -422,7 +422,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.DisplaySafeAreaPadding = padding;
             Assert.Equal(padding, style.DisplaySafeAreaPadding);
         }
-        
+
         /// <summary>
         ///     Tests that mouse cursor scale should set and get correctly
         /// </summary>
@@ -433,7 +433,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.MouseCursorScale = 1.5f;
             Assert.Equal(1.5f, style.MouseCursorScale);
         }
-        
+
         /// <summary>
         ///     Tests that anti aliased lines should set and get correctly
         /// </summary>
@@ -444,7 +444,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.AntiAliasedLines = 1;
             Assert.Equal(1, style.AntiAliasedLines);
         }
-        
+
         /// <summary>
         ///     Tests that anti aliased lines use tex should set and get correctly
         /// </summary>
@@ -455,7 +455,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.AntiAliasedLinesUseTex = 1;
             Assert.Equal(1, style.AntiAliasedLinesUseTex);
         }
-        
+
         /// <summary>
         ///     Tests that anti aliased fill should set and get correctly
         /// </summary>
@@ -466,7 +466,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.AntiAliasedFill = 1;
             Assert.Equal(1, style.AntiAliasedFill);
         }
-        
+
         /// <summary>
         ///     Tests that curve tessellation tol should set and get correctly
         /// </summary>
@@ -477,7 +477,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.CurveTessellationTol = 1.25f;
             Assert.Equal(1.25f, style.CurveTessellationTol);
         }
-        
+
         /// <summary>
         ///     Tests that circle tessellation max error should set and get correctly
         /// </summary>
@@ -488,7 +488,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.CircleTessellationMaxError = 0.3f;
             Assert.Equal(0.3f, style.CircleTessellationMaxError);
         }
-        
+
         /// <summary>
         ///     Tests that colors 0 should set and get correctly
         /// </summary>
@@ -500,7 +500,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.Colors0 = color;
             Assert.Equal(color, style.Colors0);
         }
-        
+
         /// <summary>
         ///     Tests that colors 1 should set and get correctly
         /// </summary>
@@ -512,7 +512,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.Colors1 = color;
             Assert.Equal(color, style.Colors1);
         }
-        
+
         /// <summary>
         ///     Tests that colors 2 should set and get correctly
         /// </summary>
@@ -524,7 +524,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.Colors2 = color;
             Assert.Equal(color, style.Colors2);
         }
-        
+
         /// <summary>
         ///     Tests that colors 3 should set and get correctly
         /// </summary>
@@ -536,7 +536,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.Colors3 = color;
             Assert.Equal(color, style.Colors3);
         }
-        
+
         /// <summary>
         ///     Tests that colors 4 should set and get correctly
         /// </summary>
@@ -548,7 +548,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.Colors4 = color;
             Assert.Equal(color, style.Colors4);
         }
-        
+
         /// <summary>
         ///     Tests that colors 5 should set and get correctly
         /// </summary>
@@ -560,7 +560,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.Colors5 = color;
             Assert.Equal(color, style.Colors5);
         }
-        
+
         /// <summary>
         ///     Tests that colors 6 should set and get correctly
         /// </summary>
@@ -572,7 +572,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.Colors6 = color;
             Assert.Equal(color, style.Colors6);
         }
-        
+
         /// <summary>
         ///     Tests that colors 7 should set and get correctly
         /// </summary>
@@ -584,7 +584,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.Colors7 = color;
             Assert.Equal(color, style.Colors7);
         }
-        
+
         /// <summary>
         ///     Tests that colors 8 should set and get correctly
         /// </summary>
@@ -596,7 +596,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.Colors8 = color;
             Assert.Equal(color, style.Colors8);
         }
-        
+
         /// <summary>
         ///     Tests that colors 9 should set and get correctly
         /// </summary>
@@ -608,7 +608,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.Colors9 = color;
             Assert.Equal(color, style.Colors9);
         }
-        
+
         /// <summary>
         ///     Tests that colors 10 should set and get correctly
         /// </summary>
@@ -620,7 +620,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.Colors10 = color;
             Assert.Equal(color, style.Colors10);
         }
-        
+
         /// <summary>
         ///     Tests that colors 11 should set and get correctly
         /// </summary>
@@ -632,7 +632,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.Colors11 = color;
             Assert.Equal(color, style.Colors11);
         }
-        
+
         /// <summary>
         ///     Tests that colors 12 should set and get correctly
         /// </summary>
@@ -644,7 +644,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.Colors12 = color;
             Assert.Equal(color, style.Colors12);
         }
-        
+
         /// <summary>
         ///     Tests that colors 13 should set and get correctly
         /// </summary>
@@ -656,7 +656,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.Colors13 = color;
             Assert.Equal(color, style.Colors13);
         }
-        
+
         /// <summary>
         ///     Tests that colors 14 should set and get correctly
         /// </summary>
@@ -668,7 +668,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.Colors14 = color;
             Assert.Equal(color, style.Colors14);
         }
-        
+
         /// <summary>
         ///     Tests that colors 15 should set and get correctly
         /// </summary>
@@ -680,7 +680,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.Colors15 = color;
             Assert.Equal(color, style.Colors15);
         }
-        
+
         /// <summary>
         ///     Tests that colors 16 should set and get correctly
         /// </summary>
@@ -692,7 +692,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.Colors16 = color;
             Assert.Equal(color, style.Colors16);
         }
-        
+
         /// <summary>
         ///     Tests that colors 17 should set and get correctly
         /// </summary>
@@ -704,7 +704,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.Colors17 = color;
             Assert.Equal(color, style.Colors17);
         }
-        
+
         /// <summary>
         ///     Tests that colors 18 should set and get correctly
         /// </summary>
@@ -716,7 +716,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.Colors18 = color;
             Assert.Equal(color, style.Colors18);
         }
-        
+
         /// <summary>
         ///     Tests that colors 19 should set and get correctly
         /// </summary>
@@ -728,7 +728,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.Colors19 = color;
             Assert.Equal(color, style.Colors19);
         }
-        
+
         /// <summary>
         ///     Tests that colors 20 should set and get correctly
         /// </summary>
@@ -740,7 +740,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.Colors20 = color;
             Assert.Equal(color, style.Colors20);
         }
-        
+
         /// <summary>
         ///     Tests that colors 21 should set and get correctly
         /// </summary>
@@ -752,7 +752,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.Colors21 = color;
             Assert.Equal(color, style.Colors21);
         }
-        
+
         /// <summary>
         ///     Tests that colors 22 should set and get correctly
         /// </summary>
@@ -764,7 +764,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.Colors22 = color;
             Assert.Equal(color, style.Colors22);
         }
-        
+
         /// <summary>
         ///     Tests that colors 23 should set and get correctly
         /// </summary>
@@ -776,7 +776,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.Colors23 = color;
             Assert.Equal(color, style.Colors23);
         }
-        
+
         /// <summary>
         ///     Tests that colors 24 should set and get correctly
         /// </summary>
@@ -788,7 +788,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.Colors24 = color;
             Assert.Equal(color, style.Colors24);
         }
-        
+
         /// <summary>
         ///     Tests that colors 25 should set and get correctly
         /// </summary>
@@ -800,7 +800,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             style.Colors25 = color;
             Assert.Equal(color, style.Colors25);
         }
-        
+
         /// <summary>
         ///     Tests that colors 26 set and get returns correct value
         /// </summary>
@@ -812,7 +812,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.Colors26 = value;
             Assert.Equal(value, obj.Colors26);
         }
-        
+
         /// <summary>
         ///     Tests that colors 27 set and get returns correct value
         /// </summary>
@@ -824,7 +824,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.Colors27 = value;
             Assert.Equal(value, obj.Colors27);
         }
-        
+
         /// <summary>
         ///     Tests that colors 28 set and get returns correct value
         /// </summary>
@@ -836,7 +836,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.Colors28 = value;
             Assert.Equal(value, obj.Colors28);
         }
-        
+
         /// <summary>
         ///     Tests that colors 29 set and get returns correct value
         /// </summary>
@@ -848,7 +848,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.Colors29 = value;
             Assert.Equal(value, obj.Colors29);
         }
-        
+
         /// <summary>
         ///     Tests that colors 30 set and get returns correct value
         /// </summary>
@@ -860,7 +860,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.Colors30 = value;
             Assert.Equal(value, obj.Colors30);
         }
-        
+
         /// <summary>
         ///     Tests that colors 31 set and get returns correct value
         /// </summary>
@@ -872,7 +872,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.Colors31 = value;
             Assert.Equal(value, obj.Colors31);
         }
-        
+
         /// <summary>
         ///     Tests that colors 32 set and get returns correct value
         /// </summary>
@@ -884,7 +884,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.Colors32 = value;
             Assert.Equal(value, obj.Colors32);
         }
-        
+
         /// <summary>
         ///     Tests that colors 33 set and get returns correct value
         /// </summary>
@@ -896,7 +896,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.Colors33 = value;
             Assert.Equal(value, obj.Colors33);
         }
-        
+
         /// <summary>
         ///     Tests that colors 34 set and get returns correct value
         /// </summary>
@@ -908,7 +908,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.Colors34 = value;
             Assert.Equal(value, obj.Colors34);
         }
-        
+
         /// <summary>
         ///     Tests that colors 35 set and get returns correct value
         /// </summary>
@@ -920,7 +920,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.Colors35 = value;
             Assert.Equal(value, obj.Colors35);
         }
-        
+
         /// <summary>
         ///     Tests that colors 36 set and get returns correct value
         /// </summary>
@@ -932,7 +932,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.Colors36 = value;
             Assert.Equal(value, obj.Colors36);
         }
-        
+
         /// <summary>
         ///     Tests that colors 37 set and get returns correct value
         /// </summary>
@@ -944,7 +944,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.Colors37 = value;
             Assert.Equal(value, obj.Colors37);
         }
-        
+
         /// <summary>
         ///     Tests that colors 38 set and get returns correct value
         /// </summary>
@@ -956,7 +956,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.Colors38 = value;
             Assert.Equal(value, obj.Colors38);
         }
-        
+
         /// <summary>
         ///     Tests that colors 39 set and get returns correct value
         /// </summary>
@@ -968,7 +968,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.Colors39 = value;
             Assert.Equal(value, obj.Colors39);
         }
-        
+
         /// <summary>
         ///     Tests that colors 40 set and get returns correct value
         /// </summary>
@@ -980,7 +980,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.Colors40 = value;
             Assert.Equal(value, obj.Colors40);
         }
-        
+
         /// <summary>
         ///     Tests that colors 41 set and get returns correct value
         /// </summary>
@@ -992,7 +992,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.Colors41 = value;
             Assert.Equal(value, obj.Colors41);
         }
-        
+
         /// <summary>
         ///     Tests that colors 42 set and get returns correct value
         /// </summary>
@@ -1004,7 +1004,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.Colors42 = value;
             Assert.Equal(value, obj.Colors42);
         }
-        
+
         /// <summary>
         ///     Tests that colors 43 set and get returns correct value
         /// </summary>
@@ -1016,7 +1016,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.Colors43 = value;
             Assert.Equal(value, obj.Colors43);
         }
-        
+
         /// <summary>
         ///     Tests that colors 44 set and get returns correct value
         /// </summary>
@@ -1028,7 +1028,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.Colors44 = value;
             Assert.Equal(value, obj.Colors44);
         }
-        
+
         /// <summary>
         ///     Tests that colors 45 set and get returns correct value
         /// </summary>
@@ -1040,7 +1040,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.Colors45 = value;
             Assert.Equal(value, obj.Colors45);
         }
-        
+
         /// <summary>
         ///     Tests that colors 46 set and get returns correct value
         /// </summary>
@@ -1052,7 +1052,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.Colors46 = value;
             Assert.Equal(value, obj.Colors46);
         }
-        
+
         /// <summary>
         ///     Tests that colors 47 set and get returns correct value
         /// </summary>
@@ -1064,7 +1064,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.Colors47 = value;
             Assert.Equal(value, obj.Colors47);
         }
-        
+
         /// <summary>
         ///     Tests that colors 48 set and get returns correct value
         /// </summary>
@@ -1076,7 +1076,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.Colors48 = value;
             Assert.Equal(value, obj.Colors48);
         }
-        
+
         /// <summary>
         ///     Tests that colors 49 set and get returns correct value
         /// </summary>
@@ -1088,7 +1088,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.Colors49 = value;
             Assert.Equal(value, obj.Colors49);
         }
-        
+
         /// <summary>
         ///     Tests that colors 50 set and get returns correct value
         /// </summary>
@@ -1100,7 +1100,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.Colors50 = value;
             Assert.Equal(value, obj.Colors50);
         }
-        
+
         /// <summary>
         ///     Tests that colors 51 set and get returns correct value
         /// </summary>
@@ -1112,7 +1112,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.Colors51 = value;
             Assert.Equal(value, obj.Colors51);
         }
-        
+
         /// <summary>
         ///     Tests that colors 52 set and get returns correct value
         /// </summary>
@@ -1124,7 +1124,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.Colors52 = value;
             Assert.Equal(value, obj.Colors52);
         }
-        
+
         /// <summary>
         ///     Tests that colors 53 set and get returns correct value
         /// </summary>
@@ -1136,7 +1136,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.Colors53 = value;
             Assert.Equal(value, obj.Colors53);
         }
-        
+
         /// <summary>
         ///     Tests that colors 54 set and get returns correct value
         /// </summary>

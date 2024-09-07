@@ -1,4 +1,33 @@
-﻿/* Original source Farseer Physics Engine:
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Path.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+/* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
@@ -18,31 +47,28 @@ namespace Alis.Core.Physic.Common
     //Contributed by Matthew Bettcher
 
     /// <summary>
-    /// Path:
-    /// Very similar to Vertices, but this
-    /// class contains vectors describing
-    /// control points on a Catmull-Rom
-    /// curve.
+    ///     Path:
+    ///     Very similar to Vertices, but this
+    ///     class contains vectors describing
+    ///     control points on a Catmull-Rom
+    ///     curve.
     /// </summary>
     public class Path
     {
-        /// <summary>
-        /// All the points that makes up the curve
-        /// </summary>
-        public List<Vector2> ControlPoints;
-
         private float _deltaT;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Path"/> class.
+        ///     All the points that makes up the curve
         /// </summary>
-        public Path()
-        {
-            ControlPoints = new List<Vector2>();
-        }
+        public List<Vector2> ControlPoints;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Path"/> class.
+        ///     Initializes a new instance of the <see cref="Path" /> class.
+        /// </summary>
+        public Path() => ControlPoints = new List<Vector2>();
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Path" /> class.
         /// </summary>
         /// <param name="vertices">The vertices to created the path from.</param>
         public Path(Vector2[] vertices)
@@ -56,7 +82,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Path"/> class.
+        ///     Initializes a new instance of the <see cref="Path" /> class.
         /// </summary>
         /// <param name="vertices">The vertices to created the path from.</param>
         public Path(IList<Vector2> vertices)
@@ -69,13 +95,13 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// True if the curve is closed.
+        ///     True if the curve is closed.
         /// </summary>
         /// <value><c>true</c> if closed; otherwise, <c>false</c>.</value>
         public bool Closed { get; set; }
 
         /// <summary>
-        /// Gets the next index of a controlpoint
+        ///     Gets the next index of a controlpoint
         /// </summary>
         /// <param name="index">The index.</param>
         /// <returns></returns>
@@ -85,11 +111,12 @@ namespace Alis.Core.Physic.Common
             {
                 return 0;
             }
+
             return index + 1;
         }
 
         /// <summary>
-        /// Gets the previous index of a controlpoint
+        ///     Gets the previous index of a controlpoint
         /// </summary>
         /// <param name="index">The index.</param>
         /// <returns></returns>
@@ -99,11 +126,12 @@ namespace Alis.Core.Physic.Common
             {
                 return ControlPoints.Count - 1;
             }
+
             return index - 1;
         }
 
         /// <summary>
-        /// Translates the control points by the specified vector.
+        ///     Translates the control points by the specified vector.
         /// </summary>
         /// <param name="vector">The vector.</param>
         public void Translate(ref Vector2 vector)
@@ -113,7 +141,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Scales the control points by the specified vector.
+        ///     Scales the control points by the specified vector.
         /// </summary>
         /// <param name="value">The Value.</param>
         public void Scale(ref Vector2 value)
@@ -123,7 +151,7 @@ namespace Alis.Core.Physic.Common
         }
 
         /// <summary>
-        /// Rotate the control points by the defined value in radians.
+        ///     Rotate the control points by the defined value in radians.
         /// </summary>
         /// <param name="value">The amount to rotate by in radians.</param>
         public void Rotate(float value)
@@ -145,13 +173,14 @@ namespace Alis.Core.Physic.Common
                     builder.Append(" ");
                 }
             }
+
             return builder.ToString();
         }
 
         /// <summary>
-        /// Returns a set of points defining the
-        /// curve with the specifed number of divisions
-        /// between each control point.
+        ///     Returns a set of points defining the
+        ///     curve with the specifed number of divisions
+        ///     between each control point.
         /// </summary>
         /// <param name="divisions">Number of divisions between each control point.</param>
         /// <returns></returns>
@@ -182,7 +211,7 @@ namespace Alis.Core.Physic.Common
 
                 _deltaT = 1f / (ControlPoints.Count - 1);
 
-                int p = (int)(time / _deltaT);
+                int p = (int) (time / _deltaT);
 
                 // use a circular indexing system
                 int p0 = p - 1;
@@ -207,7 +236,7 @@ namespace Alis.Core.Physic.Common
             }
             else
             {
-                int p = (int)(time / _deltaT);
+                int p = (int) (time / _deltaT);
 
                 // 
                 int p0 = p - 1;
@@ -236,7 +265,7 @@ namespace Alis.Core.Physic.Common
         {
             double sqAmount = amount * amount;
             double cuAmount = sqAmount * amount;
-            
+
             double x;
             double y;
             x = 2.0 * p1.X;
@@ -250,11 +279,11 @@ namespace Alis.Core.Physic.Common
             x *= 0.5;
             y *= 0.5;
 
-            result = new Vector2((float)x, (float)y);
+            result = new Vector2((float) x, (float) y);
         }
 
         /// <summary>
-        /// Gets the normal for the given time.
+        ///     Gets the normal for the given time.
         /// </summary>
         /// <param name="time">The time</param>
         /// <returns>The normal.</returns>
@@ -270,7 +299,7 @@ namespace Alis.Core.Physic.Common
             Vector2.Subtract(ref a, ref b, out temp);
 
             output = new Vector2(temp.Y, -temp.X);
-            
+
             output.Normalize();
 
             return output;
@@ -339,7 +368,7 @@ namespace Alis.Core.Physic.Common
             for (int i = 1; i < divisions; i++)
             {
                 Vector2 normal = GetPositionNormal(t);
-                float angle = (float)Math.Atan2(normal.Y, normal.X);
+                float angle = (float) Math.Atan2(normal.Y, normal.X);
 
                 verts.Add(new Vector3(end.X, end.Y, angle));
 
@@ -352,11 +381,13 @@ namespace Alis.Core.Physic.Common
                     if (t >= 1f)
                         break;
                 }
+
                 if (t >= 1f)
                     break;
 
                 start = end;
             }
+
             return verts;
         }
     }

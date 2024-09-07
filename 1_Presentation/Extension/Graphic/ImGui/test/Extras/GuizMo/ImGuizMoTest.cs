@@ -47,7 +47,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.GuizMo
         {
             Assert.Throws<DllNotFoundException>(() => ImGuizMo.AllowAxisFlip(true));
         }
-        
+
         /// <summary>
         ///     Tests that begin frame should not throw
         /// </summary>
@@ -56,7 +56,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.GuizMo
         {
             Assert.Throws<DllNotFoundException>(() => ImGuizMo.BeginFrame());
         }
-        
+
         /// <summary>
         ///     Tests that decompose matrix to components should not throw
         /// </summary>
@@ -69,7 +69,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.GuizMo
             float[] scale = new float[3];
             Assert.Throws<DllNotFoundException>(() => ImGuizMo.DecomposeMatrixToComponents(ref matrix, ref translation, ref rotation, ref scale));
         }
-        
+
         /// <summary>
         ///     Tests that draw cubes should not throw
         /// </summary>
@@ -82,7 +82,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.GuizMo
             int matrixCount = 1;
             Assert.Throws<DllNotFoundException>(() => ImGuizMo.DrawCubes(ref view, ref projection, ref matrices, matrixCount));
         }
-        
+
         /// <summary>
         ///     Tests that draw grid should not throw
         /// </summary>
@@ -95,7 +95,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.GuizMo
             float gridSize = 1.0f;
             Assert.Throws<DllNotFoundException>(() => ImGuizMo.DrawGrid(ref view, ref projection, ref matrix, gridSize));
         }
-        
+
         /// <summary>
         ///     Tests that enable should not throw
         /// </summary>
@@ -104,7 +104,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.GuizMo
         {
             Assert.Throws<DllNotFoundException>(() => ImGuizMo.Enable(true));
         }
-        
+
         /// <summary>
         ///     Tests that is over should return bool
         /// </summary>
@@ -113,7 +113,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.GuizMo
         {
             Assert.Throws<DllNotFoundException>(() => ImGuizMo.IsOver());
         }
-        
+
         /// <summary>
         ///     Tests that is over with operation should return bool
         /// </summary>
@@ -122,7 +122,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.GuizMo
         {
             Assert.Throws<DllNotFoundException>(() => ImGuizMo.IsOver(Operation.Translate));
         }
-        
+
         /// <summary>
         ///     Tests that is using should return bool
         /// </summary>
@@ -131,7 +131,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.GuizMo
         {
             Assert.Throws<DllNotFoundException>(() => ImGuizMo.IsUsing());
         }
-        
+
         /// <summary>
         ///     Tests that manipulate should return byte
         /// </summary>
@@ -143,7 +143,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.GuizMo
             float[] matrix = new float[16];
             Assert.Throws<DllNotFoundException>(() => ImGuizMo.Manipulate(view, projection, Operation.Translate, Mode.Local, matrix));
         }
-        
+
         /// <summary>
         ///     Tests that recompose matrix from components should not throw
         /// </summary>
@@ -156,7 +156,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.GuizMo
             float[] matrix = new float[16];
             Assert.Throws<DllNotFoundException>(() => ImGuizMo.RecomposeMatrixFromComponents(ref translation, ref rotation, ref scale, ref matrix));
         }
-        
+
         /// <summary>
         ///     Tests that set draw list should not throw
         /// </summary>
@@ -165,7 +165,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.GuizMo
         {
             Assert.Throws<DllNotFoundException>(() => ImGuizMo.SetDrawList());
         }
-        
+
         /// <summary>
         ///     Tests that set draw list with draw list should not throw
         /// </summary>
@@ -175,7 +175,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.GuizMo
             ImDrawList drawList = new ImDrawList();
             Assert.Throws<DllNotFoundException>(() => ImGuizMo.SetDrawList(drawList));
         }
-        
+
         /// <summary>
         ///     Tests that set gizmo size clip space should not throw
         /// </summary>
@@ -184,7 +184,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.GuizMo
         {
             Assert.Throws<DllNotFoundException>(() => ImGuizMo.SetGizmoSizeClipSpace(1.0f));
         }
-        
+
         /// <summary>
         ///     Tests that set id should not throw
         /// </summary>
@@ -193,7 +193,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.GuizMo
         {
             Assert.Throws<DllNotFoundException>(() => ImGuizMo.SetId(1));
         }
-        
+
         /// <summary>
         ///     Tests that set im gui context should not throw
         /// </summary>
@@ -203,7 +203,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.GuizMo
             IntPtr ctx = IntPtr.Zero;
             Assert.Throws<DllNotFoundException>(() => ImGuizMo.SetImGuiContext(ctx));
         }
-        
+
         /// <summary>
         ///     Tests that set orthographic should not throw
         /// </summary>
@@ -212,7 +212,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.GuizMo
         {
             Assert.Throws<DllNotFoundException>(() => ImGuizMo.SetOrthographic(true));
         }
-        
+
         /// <summary>
         ///     Tests that set rect should not throw
         /// </summary>
@@ -221,7 +221,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.GuizMo
         {
             Assert.Throws<DllNotFoundException>(() => ImGuizMo.SetRect(0.0f, 0.0f, 1.0f, 1.0f));
         }
-        
+
         /// <summary>
         ///     Tests that view manipulate should not throw
         /// </summary>

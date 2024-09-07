@@ -47,14 +47,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
             // Arrange
             IntPtr data = new IntPtr(123);
             RangePtrAccessor<int> accessor = new RangePtrAccessor<int>(data, 10);
-            
+
             // Act
             IntPtr result = accessor.Data;
-            
+
             // Assert
             Assert.Equal(data, result);
         }
-        
+
         /// <summary>
         ///     Tests that count should be initialized correctly
         /// </summary>
@@ -63,14 +63,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             RangePtrAccessor<int> accessor = new RangePtrAccessor<int>(new IntPtr(123), 10);
-            
+
             // Act
             int result = accessor.Count;
-            
+
             // Assert
             Assert.Equal(10, result);
         }
-        
+
         /// <summary>
         ///     Tests that indexer should return correct value
         /// </summary>
@@ -82,17 +82,17 @@ namespace Alis.Extension.Graphic.ImGui.Test
             IntPtr ptr = Marshal.AllocHGlobal(Marshal.SizeOf<int>() * data.Length);
             Marshal.Copy(data, 0, ptr, data.Length);
             RangePtrAccessor<int> accessor = new RangePtrAccessor<int>(ptr, data.Length);
-            
+
             // Act
             int result = accessor[2];
-            
+
             // Assert
             Assert.Equal(3, result);
-            
+
             // Cleanup
             Marshal.FreeHGlobal(ptr);
         }
-        
+
         /// <summary>
         ///     Tests that indexer should throw index out of range exception
         /// </summary>
@@ -101,7 +101,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             RangePtrAccessor<int> accessor = new RangePtrAccessor<int>(new IntPtr(123), 10);
-            
+
             // Act & Assert
             Assert.Throws<IndexOutOfRangeException>(() => accessor[10]);
         }

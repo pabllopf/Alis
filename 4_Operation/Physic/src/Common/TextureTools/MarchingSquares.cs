@@ -1,4 +1,33 @@
-﻿/* Original source Farseer Physics Engine:
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:MarchingSquares.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+/* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
@@ -22,12 +51,12 @@ namespace Alis.Core.Physic.Common.TextureTools
     provided that the following conditions are met:
 
         * Redistributions of source code must retain the above copyright notice, this list of conditions
-	      and the following disclaimer.
+          and the following disclaimer.
         * Redistributions in binary form must reproduce the above copyright notice, this list of
-	      conditions and the following disclaimer in the documentation and/or other materials provided
-	      with the distribution.
+          conditions and the following disclaimer in the documentation and/or other materials provided
+          with the distribution.
         * Neither the name of the nape project nor the names of its contributors may be used to endorse
-	     or promote products derived from this software without specific prior written permission.
+         or promote products derived from this software without specific prior written permission.
 
     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR
     IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
@@ -42,12 +71,11 @@ namespace Alis.Core.Physic.Common.TextureTools
     public static class MarchingSquares
     {
         /// <summary>
-        /// Marching squares over the given domain using the mesh defined via the dimensions
-        ///    (wid,hei) to build a set of polygons such that f(x,y) less than 0, using the given number
-        ///    'bin' for recursive linear inteprolation along cell boundaries.
-        ///
-        ///    if 'comb' is true, then the polygons will also be composited into larger possible concave
-        ///    polygons.
+        ///     Marching squares over the given domain using the mesh defined via the dimensions
+        ///     (wid,hei) to build a set of polygons such that f(x,y) less than 0, using the given number
+        ///     'bin' for recursive linear inteprolation along cell boundaries.
+        ///     if 'comb' is true, then the polygons will also be composited into larger possible concave
+        ///     polygons.
         /// </summary>
         /// <param name="domain"></param>
         /// <param name="cellWidth"></param>
@@ -57,7 +85,7 @@ namespace Alis.Core.Physic.Common.TextureTools
         /// <param name="combine"></param>
         /// <returns></returns>
         public static List<Vertices> DetectSquares(AABB domain, float cellWidth, float cellHeight, sbyte[,] f,
-                                                   int lerpCount, bool combine)
+            int lerpCount, bool combine)
         {
             CxFastList<GeomPoly> ret = new CxFastList<GeomPoly>();
 
@@ -67,10 +95,10 @@ namespace Alis.Core.Physic.Common.TextureTools
             List<GeomPoly> polyList;
             GeomPoly gp;
 
-            int xn = (int)(domain.Extents.X * 2 / cellWidth);
-            bool xp = xn == (domain.Extents.X * 2 / cellWidth);
-            int yn = (int)(domain.Extents.Y * 2 / cellHeight);
-            bool yp = yn == (domain.Extents.Y * 2 / cellHeight);
+            int xn = (int) (domain.Extents.X * 2 / cellWidth);
+            bool xp = xn == domain.Extents.X * 2 / cellWidth;
+            int yn = (int) (domain.Extents.Y * 2 / cellHeight);
+            bool yp = yn == domain.Extents.Y * 2 / cellHeight;
             if (!xp) xn++;
             if (!yp) yn++;
 
@@ -81,13 +109,13 @@ namespace Alis.Core.Physic.Common.TextureTools
             for (int x = 0; x < xn + 1; x++)
             {
                 int x0;
-                if (x == xn) x0 = (int)domain.UpperBound.X;
-                else x0 = (int)(x * cellWidth + domain.LowerBound.X);
+                if (x == xn) x0 = (int) domain.UpperBound.X;
+                else x0 = (int) (x * cellWidth + domain.LowerBound.X);
                 for (int y = 0; y < yn + 1; y++)
                 {
                     int y0;
-                    if (y == yn) y0 = (int)domain.UpperBound.Y;
-                    else y0 = (int)(y * cellHeight + domain.LowerBound.Y);
+                    if (y == yn) y0 = (int) domain.UpperBound.Y;
+                    else y0 = (int) (y * cellHeight + domain.LowerBound.Y);
                     fs[x, y] = f[x0, y0];
                 }
             }
@@ -112,20 +140,23 @@ namespace Alis.Core.Physic.Common.TextureTools
                     int key = MarchSquare(f, fs, ref gp, x, y, x0, y0, x1, y1, lerpCount);
                     if (gp.Length != 0)
                     {
-                        if (combine && pre != null && (key & 9) != 0)
+                        if (combine && (pre != null) && ((key & 9) != 0))
                         {
                             combLeft(ref pre, ref gp);
                             gp = pre;
                         }
                         else
                             ret.Add(gp);
+
                         ps[x, y] = new GeomPolyVal(gp, key);
                     }
                     else
                         gp = null;
+
                     pre = gp;
                 }
             }
+
             if (!combine)
             {
                 polyList = ret.GetListOfElements();
@@ -210,8 +241,10 @@ namespace Alis.Core.Physic.Common.TextureTools
                             brk = false;
                             break;
                         }
+
                         ai = ai.Next();
                     }
+
                     if (brk)
                     {
                         x++;
@@ -227,36 +260,41 @@ namespace Alis.Core.Physic.Common.TextureTools
                         if (bj == bp.End()) bj = bp.Begin();
                         u.GeomP.Length++;
                     }
+
                     //u.p.simplify(float.Epsilon,float.Epsilon);
                     //
                     ax = x + 1;
                     while (ax < xn)
                     {
-                        GeomPolyVal p2 = ps[(int)ax, y];
+                        GeomPolyVal p2 = ps[(int) ax, y];
                         if (p2 == null || p2.GeomP != p.GeomP)
                         {
                             ax++;
                             continue;
                         }
+
                         p2.GeomP = u.GeomP;
                         ax++;
                     }
+
                     ax = x - 1;
                     while (ax >= 0)
                     {
-                        GeomPolyVal p2 = ps[(int)ax, y];
+                        GeomPolyVal p2 = ps[(int) ax, y];
                         if (p2 == null || p2.GeomP != p.GeomP)
                         {
                             ax--;
                             continue;
                         }
+
                         p2.GeomP = u.GeomP;
                         ax--;
                     }
+
                     ret.Remove(p.GeomP);
                     p.GeomP = u.GeomP;
 
-                    x = (int)((bi.Next().Elem().X - domain.LowerBound.X) / cellWidth) + 1;
+                    x = (int) ((bi.Next().Elem().X - domain.LowerBound.X) / cellWidth) + 1;
                     //x++; this was already commented out!
                 }
             }
@@ -275,14 +313,16 @@ namespace Alis.Core.Physic.Common.TextureTools
 
         //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
-        /** Linearly interpolate between (x0 to x1) given a value at these coordinates (v0 and v1)
-            such as to approximate value(return) = 0
-        **/
-
-        private static int[] _lookMarch = {
-                                              0x00, 0xE0, 0x38, 0xD8, 0x0E, 0xEE, 0x36, 0xD6, 0x83, 0x63, 0xBB, 0x5B, 0x8D,
-                                              0x6D, 0xB5, 0x55
-                                          };
+        /**
+         * Linearly interpolate between (x0 to x1) given a value at these coordinates (v0 and v1)
+         * such as to approximate value(return) = 0
+         * *
+         */
+        private static readonly int[] _lookMarch =
+        {
+            0x00, 0xE0, 0x38, 0xD8, 0x0E, 0xEE, 0x36, 0xD6, 0x83, 0x63, 0xBB, 0x5B, 0x8D,
+            0x6D, 0xB5, 0x55
+        };
 
         private static float Lerp(float x0, float x1, float v0, float v1)
         {
@@ -297,14 +337,13 @@ namespace Alis.Core.Physic.Common.TextureTools
         //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
         /** Recursive linear interpolation for use in marching squares **/
-
         private static float Xlerp(float x0, float x1, float y, float v0, float v1, sbyte[,] f, int c)
         {
             float xm = Lerp(x0, x1, v0, v1);
             if (c == 0)
                 return xm;
 
-            sbyte vm = f[(int)xm, (int)y];
+            sbyte vm = f[(int) xm, (int) y];
 
             if (v0 * vm < 0)
                 return Xlerp(x0, xm, y, v0, vm, f, c - 1);
@@ -313,14 +352,13 @@ namespace Alis.Core.Physic.Common.TextureTools
         }
 
         /** Recursive linear interpolation for use in marching squares **/
-
         private static float Ylerp(float y0, float y1, float x, float v0, float v1, sbyte[,] f, int c)
         {
             float ym = Lerp(y0, y1, v0, v1);
             if (c == 0)
                 return ym;
 
-            sbyte vm = f[(int)x, (int)ym];
+            sbyte vm = f[(int) x, (int) ym];
 
             if (v0 * vm < 0)
                 return Ylerp(y0, ym, x, v0, vm, f, c - 1);
@@ -329,11 +367,7 @@ namespace Alis.Core.Physic.Common.TextureTools
         }
 
         /** Square value for use in marching squares **/
-
-        private static float Square(float x)
-        {
-            return x * x;
-        }
+        private static float Square(float x) => x * x;
 
         private static float VecDsq(Vector2 a, Vector2 b)
         {
@@ -341,23 +375,20 @@ namespace Alis.Core.Physic.Common.TextureTools
             return d.X * d.X + d.Y * d.Y;
         }
 
-        private static float VecCross(Vector2 a, Vector2 b)
-        {
-            return a.X * b.Y - a.Y * b.X;
-        }
+        private static float VecCross(Vector2 a, Vector2 b) => a.X * b.Y - a.Y * b.X;
 
-        /** Look-up table to relate polygon key with the vertices that should be used for
-            the sub polygon in marching squares
-        **/
-
-        /** Perform a single celled marching square for for the given cell defined by (x0,y0) (x1,y1)
-            using the function f for recursive interpolation, given the look-up table 'fs' of
-            the values of 'f' at cell vertices with the result to be stored in 'poly' given the actual
-            coordinates of 'ax' 'ay' in the marching squares mesh.
-        **/
-
+        /**
+         * Look-up table to relate polygon key with the vertices that should be used for
+         * the sub polygon in marching squares
+         * *
+         * Perform a single celled marching square for for the given cell defined by (x0,y0) (x1,y1)
+         * using the function f for recursive interpolation, given the look-up table 'fs' of
+         * the values of 'f' at cell vertices with the result to be stored in 'poly' given the actual
+         * coordinates of 'ax' 'ay' in the marching squares mesh.
+         * *
+         */
         private static int MarchSquare(sbyte[,] f, sbyte[,] fs, ref GeomPoly poly, int ax, int ay, float x0, float y0,
-                                       float x1, float y1, int bin)
+            float x1, float y1, int bin)
         {
             //key lookup
             int key = 0;
@@ -379,7 +410,7 @@ namespace Alis.Core.Physic.Common.TextureTools
                     Vector2 p;
                     if ((val & (1 << i)) != 0)
                     {
-                        if (i == 7 && (val & 1) == 0)
+                        if ((i == 7) && ((val & 1) == 0))
                             poly.Points.Add(p = new Vector2(x0, Ylerp(y0, y1, x0, v0, v3, f, bin)));
                         else
                         {
@@ -396,18 +427,21 @@ namespace Alis.Core.Physic.Common.TextureTools
 
                             pi = poly.Points.Insert(pi, p);
                         }
+
                         poly.Length++;
                     }
                 }
                 //poly.simplify(float.Epsilon,float.Epsilon);
             }
+
             return key;
         }
 
-        /** Used in polygon composition to composit polygons into scan lines
-            Combining polya and polyb into one super-polygon stored in polya.
-        **/
-
+        /**
+         * Used in polygon composition to composit polygons into scan lines
+         * Combining polya and polyb into one super-polygon stored in polya.
+         * *
+         */
         private static void combLeft(ref GeomPoly polya, ref GeomPoly polyb)
         {
             CxFastList<Vector2> ap = polya.Points;
@@ -454,6 +488,7 @@ namespace Alis.Core.Physic.Common.TextureTools
                             polya.Length++;
                             preb = ai;
                         }
+
                         fst = false;
                     }
 
@@ -477,6 +512,7 @@ namespace Alis.Core.Physic.Common.TextureTools
 
                     return;
                 }
+
                 prea = ai;
                 ai = ai.Next();
             }
@@ -489,40 +525,32 @@ namespace Alis.Core.Physic.Common.TextureTools
         #region Nested type: CxFastList
 
         /// <summary>
-        /// Designed as a complete port of CxFastList from CxStd.
+        ///     Designed as a complete port of CxFastList from CxStd.
         /// </summary>
         internal class CxFastList<T>
         {
-            // first node in the list
-            private CxFastListNode<T> _head;
             private int _count;
 
-            /// <summary>
-            /// Iterator to start of list (O(1))
-            /// </summary>
-            public CxFastListNode<T> Begin()
-            {
-                return _head;
-            }
+            // first node in the list
+            private CxFastListNode<T> _head;
 
             /// <summary>
-            /// Iterator to end of list (O(1))
+            ///     Iterator to start of list (O(1))
             /// </summary>
-            public CxFastListNode<T> End()
-            {
-                return null;
-            }
+            public CxFastListNode<T> Begin() => _head;
 
             /// <summary>
-            /// Returns first element of list (O(1))
+            ///     Iterator to end of list (O(1))
             /// </summary>
-            public T Front()
-            {
-                return _head.Elem();
-            }
+            public CxFastListNode<T> End() => null;
 
             /// <summary>
-            /// add object to list (O(1))
+            ///     Returns first element of list (O(1))
+            /// </summary>
+            public T Front() => _head.Elem();
+
+            /// <summary>
+            ///     add object to list (O(1))
             /// </summary>
             public CxFastListNode<T> Add(T value)
             {
@@ -534,6 +562,7 @@ namespace Alis.Core.Physic.Common.TextureTools
                     _count++;
                     return newNode;
                 }
+
                 newNode._next = _head;
                 _head = newNode;
 
@@ -543,7 +572,7 @@ namespace Alis.Core.Physic.Common.TextureTools
             }
 
             /// <summary>
-            /// remove object from list, returns true if an element was removed (O(n))
+            ///     remove object from list, returns true if an element was removed (O(n))
             /// </summary>
             public bool Remove(T value)
             {
@@ -569,37 +598,34 @@ namespace Alis.Core.Physic.Common.TextureTools
                                     _count--;
                                     return true;
                                 }
-                                else
-                                {
-                                    // were not at the head
-                                    prev._next = head._next;
-                                    _count--;
-                                    return true;
-                                }
+
+                                // were not at the head
+                                prev._next = head._next;
+                                _count--;
+                                return true;
                             }
+
                             // cache the current as the previous for the next go around
                             prev = head;
                             head = head._next;
                         } while (head != null);
                     }
                 }
+
                 return false;
             }
 
             /// <summary>
-            /// pop element from head of list (O(1)) Note: this does not return the object popped! 
-            /// There is good reason to this, and it regards the Alloc list variants which guarantee 
-            /// objects are released to the object pool. You do not want to retrieve an element 
-            /// through pop or else that object may suddenly be used by another piece of code which 
-            /// retrieves it from the object pool.
+            ///     pop element from head of list (O(1)) Note: this does not return the object popped!
+            ///     There is good reason to this, and it regards the Alloc list variants which guarantee
+            ///     objects are released to the object pool. You do not want to retrieve an element
+            ///     through pop or else that object may suddenly be used by another piece of code which
+            ///     retrieves it from the object pool.
             /// </summary>
-            public CxFastListNode<T> Pop()
-            {
-                return Erase(null, _head);
-            }
+            public CxFastListNode<T> Pop() => Erase(null, _head);
 
             /// <summary>
-            /// insert object after 'node' returning an iterator to the inserted object.
+            ///     insert object after 'node' returning an iterator to the inserted object.
             /// </summary>
             public CxFastListNode<T> Insert(CxFastListNode<T> node, T value)
             {
@@ -607,6 +633,7 @@ namespace Alis.Core.Physic.Common.TextureTools
                 {
                     return Add(value);
                 }
+
                 CxFastListNode<T> newNode = new CxFastListNode<T>(value);
                 CxFastListNode<T> nextNode = node._next;
                 newNode._next = nextNode;
@@ -618,8 +645,8 @@ namespace Alis.Core.Physic.Common.TextureTools
             }
 
             /// <summary>
-            /// removes the element pointed to by 'node' with 'prev' being the previous iterator, 
-            /// returning an iterator to the element following that of 'node' (O(1))
+            ///     removes the element pointed to by 'node' with 'prev' being the previous iterator,
+            ///     returning an iterator to the element following that of 'node' (O(1))
             /// </summary>
             public CxFastListNode<T> Erase(CxFastListNode<T> prev, CxFastListNode<T> node)
             {
@@ -637,7 +664,7 @@ namespace Alis.Core.Physic.Common.TextureTools
             }
 
             /// <summary>
-            /// whether the list is empty (O(1))
+            ///     whether the list is empty (O(1))
             /// </summary>
             public bool Empty()
             {
@@ -647,7 +674,7 @@ namespace Alis.Core.Physic.Common.TextureTools
             }
 
             /// <summary>
-            /// computes size of list (O(n))
+            ///     computes size of list (O(n))
             /// </summary>
             public int Size()
             {
@@ -663,7 +690,7 @@ namespace Alis.Core.Physic.Common.TextureTools
             }
 
             /// <summary>
-            /// empty the list (O(1) if CxMixList, O(n) otherwise)
+            ///     empty the list (O(1) if CxMixList, O(n) otherwise)
             /// </summary>
             public void Clear()
             {
@@ -674,17 +701,15 @@ namespace Alis.Core.Physic.Common.TextureTools
                     head = head._next;
                     node2._next = null;
                 }
+
                 _head = null;
                 _count = 0;
             }
 
             /// <summary>
-            /// returns true if 'value' is an element of the list (O(n))
+            ///     returns true if 'value' is an element of the list (O(n))
             /// </summary>
-            public bool Has(T value)
-            {
-                return (Find(value) != null);
-            }
+            public bool Has(T value) => Find(value) != null;
 
             // Non CxFastList Methods 
             public CxFastListNode<T> Find(T value)
@@ -702,6 +727,7 @@ namespace Alis.Core.Physic.Common.TextureTools
                             {
                                 return head;
                             }
+
                             head = head._next;
                         } while (head != _head);
                     }
@@ -713,10 +739,12 @@ namespace Alis.Core.Physic.Common.TextureTools
                             {
                                 return head;
                             }
+
                             head = head._next;
                         } while (head != _head);
                     }
                 }
+
                 return null;
             }
 
@@ -734,6 +762,7 @@ namespace Alis.Core.Physic.Common.TextureTools
                         iter = iter._next;
                     } while (iter != null);
                 }
+
                 return list;
             }
         }
@@ -747,20 +776,11 @@ namespace Alis.Core.Physic.Common.TextureTools
             internal T _elt;
             internal CxFastListNode<T> _next;
 
-            public CxFastListNode(T obj)
-            {
-                _elt = obj;
-            }
+            public CxFastListNode(T obj) => _elt = obj;
 
-            public T Elem()
-            {
-                return _elt;
-            }
+            public T Elem() => _elt;
 
-            public CxFastListNode<T> Next()
-            {
-                return _next;
-            }
+            public CxFastListNode<T> Next() => _next;
         }
 
         #endregion
@@ -789,10 +809,11 @@ namespace Alis.Core.Physic.Common.TextureTools
 
         private class GeomPolyVal
         {
+            public GeomPoly GeomP;
+
             /** Associated polygon at coordinate **/
             /** Key of original sub-polygon **/
-            public int Key;
-            public GeomPoly GeomP;
+            public readonly int Key;
 
             public GeomPolyVal(GeomPoly geomP, int K)
             {

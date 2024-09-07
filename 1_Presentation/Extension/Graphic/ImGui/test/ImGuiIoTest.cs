@@ -47,7 +47,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiIo io = new ImGuiIo();
             Assert.True(io.KeysData407.AnalogValue >= 0);
         }
-        
+
         /// <summary>
         ///     Tests that keys data 408 should be initialized
         /// </summary>
@@ -57,19 +57,19 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiIo io = new ImGuiIo();
             Assert.True(io.KeysData408.AnalogValue >= 0);
         }
-        
+
 // Repeat similar tests for all KeysData properties
 
-/// <summary>
-///     Tests that want capture mouse unless popup close should be initialized
-/// </summary>
-[Fact]
+        /// <summary>
+        ///     Tests that want capture mouse unless popup close should be initialized
+        /// </summary>
+        [Fact]
         public void WantCaptureMouseUnlessPopupClose_ShouldBeInitialized()
         {
             ImGuiIo io = new ImGuiIo();
             Assert.Equal(0, io.WantCaptureMouseUnlessPopupClose);
         }
-        
+
         /// <summary>
         ///     Tests that mouse pos prev should be initialized
         /// </summary>
@@ -79,7 +79,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiIo io = new ImGuiIo();
             Assert.Equal(default(Vector2), io.MousePosPrev);
         }
-        
+
         /// <summary>
         ///     Tests that mouse clicked pos 0 should be initialized
         /// </summary>
@@ -89,19 +89,19 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiIo io = new ImGuiIo();
             Assert.Equal(default(Vector2), io.MouseClickedPos0);
         }
-        
+
 // Repeat similar tests for all MouseClickedPos properties
 
-/// <summary>
-///     Tests that mouse clicked time should be initialized
-/// </summary>
-[Fact]
+        /// <summary>
+        ///     Tests that mouse clicked time should be initialized
+        /// </summary>
+        [Fact]
         public void MouseClickedTime_ShouldBeInitialized()
         {
             ImGuiIo io = new ImGuiIo();
             Assert.Null(io.MouseClickedTime);
         }
-        
+
         /// <summary>
         ///     Tests that mouse clicked should be initialized
         /// </summary>
@@ -111,7 +111,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiIo io = new ImGuiIo();
             Assert.Null(io.MouseClicked);
         }
-        
+
         /// <summary>
         ///     Tests that mouse double clicked should be initialized
         /// </summary>
@@ -121,7 +121,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiIo io = new ImGuiIo();
             Assert.Null(io.MouseDoubleClicked);
         }
-        
+
         /// <summary>
         ///     Tests that mouse clicked count should be initialized
         /// </summary>
@@ -131,7 +131,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiIo io = new ImGuiIo();
             Assert.Null(io.MouseClickedCount);
         }
-        
+
         /// <summary>
         ///     Tests that mouse clicked last count should be initialized
         /// </summary>
@@ -141,7 +141,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiIo io = new ImGuiIo();
             Assert.Null(io.MouseClickedLastCount);
         }
-        
+
         /// <summary>
         ///     Tests that mouse released should be initialized
         /// </summary>
@@ -151,7 +151,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiIo io = new ImGuiIo();
             Assert.Null(io.MouseReleased);
         }
-        
+
         /// <summary>
         ///     Tests that mouse down owned should be initialized
         /// </summary>
@@ -161,7 +161,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiIo io = new ImGuiIo();
             Assert.Null(io.MouseDownOwned);
         }
-        
+
         /// <summary>
         ///     Tests that mouse down owned unless popup close should be initialized
         /// </summary>
@@ -171,7 +171,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiIo io = new ImGuiIo();
             Assert.Null(io.MouseDownOwnedUnlessPopupClose);
         }
-        
+
         /// <summary>
         ///     Tests that mouse down duration should be initialized
         /// </summary>
@@ -181,7 +181,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiIo io = new ImGuiIo();
             Assert.Null(io.MouseDownDuration);
         }
-        
+
         /// <summary>
         ///     Tests that mouse down duration prev should be initialized
         /// </summary>
@@ -191,7 +191,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiIo io = new ImGuiIo();
             Assert.Null(io.MouseDownDurationPrev);
         }
-        
+
         /// <summary>
         ///     Tests that mouse drag max distance abs 0 should be initialized
         /// </summary>
@@ -201,7 +201,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiIo io = new ImGuiIo();
             Assert.Equal(default(Vector2), io.MouseDragMaxDistanceAbs0);
         }
-        
+
         /// <summary>
         ///     Tests that mouse drag max distance sqr should be initialized
         /// </summary>
@@ -211,7 +211,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiIo io = new ImGuiIo();
             Assert.Null(io.MouseDragMaxDistanceSqr);
         }
-        
+
         /// <summary>
         ///     Tests that pen pressure should be initialized
         /// </summary>
@@ -221,7 +221,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiIo io = new ImGuiIo();
             Assert.Equal(0f, io.PenPressure);
         }
-        
+
         /// <summary>
         ///     Tests that app focus lost should be initialized
         /// </summary>
@@ -231,7 +231,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiIo io = new ImGuiIo();
             Assert.Equal(0, io.AppFocusLost);
         }
-        
+
         /// <summary>
         ///     Tests that app accepting events should be initialized
         /// </summary>
@@ -241,7 +241,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiIo io = new ImGuiIo();
             Assert.Equal(0, io.AppAcceptingEvents);
         }
-        
+
         /// <summary>
         ///     Tests that backend using legacy key arrays should be initialized
         /// </summary>
@@ -251,7 +251,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiIo io = new ImGuiIo();
             Assert.Equal(0, io.BackendUsingLegacyKeyArrays);
         }
-        
+
         /// <summary>
         ///     Tests that backend using legacy nav input array should be initialized
         /// </summary>
@@ -261,7 +261,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiIo io = new ImGuiIo();
             Assert.Equal(0, io.BackendUsingLegacyNavInputArray);
         }
-        
+
         /// <summary>
         ///     Tests that input queue surrogate should be initialized
         /// </summary>
@@ -271,7 +271,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiIo io = new ImGuiIo();
             Assert.Equal(0, io.InputQueueSurrogate);
         }
-        
+
         /// <summary>
         ///     Tests that input queue characters should be initialized
         /// </summary>
@@ -281,7 +281,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiIo io = new ImGuiIo();
             Assert.True(io.InputQueueCharacters.Size >= 0);
         }
-        
+
         /// <summary>
         ///     Tests that config flags set and get returns correct value
         /// </summary>
@@ -293,7 +293,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.ConfigFlags = value;
             Assert.Equal(value, obj.ConfigFlags);
         }
-        
+
         /// <summary>
         ///     Tests that backend flags set and get returns correct value
         /// </summary>
@@ -305,7 +305,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.BackendFlags = value;
             Assert.Equal(value, obj.BackendFlags);
         }
-        
+
         /// <summary>
         ///     Tests that display size set and get returns correct value
         /// </summary>
@@ -317,7 +317,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.DisplaySize = value;
             Assert.Equal(value, obj.DisplaySize);
         }
-        
+
         /// <summary>
         ///     Tests that delta time set and get returns correct value
         /// </summary>
@@ -329,7 +329,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.DeltaTime = value;
             Assert.Equal(value, obj.DeltaTime);
         }
-        
+
         /// <summary>
         ///     Tests that ini saving rate set and get returns correct value
         /// </summary>
@@ -341,7 +341,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.IniSavingRate = value;
             Assert.Equal(value, obj.IniSavingRate);
         }
-        
+
         /// <summary>
         ///     Tests that ini filename set and get returns correct value
         /// </summary>
@@ -353,7 +353,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.IniFilename = value;
             Assert.Equal(value, obj.IniFilename);
         }
-        
+
         /// <summary>
         ///     Tests that log filename set and get returns correct value
         /// </summary>
@@ -365,7 +365,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.LogFilename = value;
             Assert.Equal(value, obj.LogFilename);
         }
-        
+
         /// <summary>
         ///     Tests that mouse double click time set and get returns correct value
         /// </summary>
@@ -377,7 +377,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.MouseDoubleClickTime = value;
             Assert.Equal(value, obj.MouseDoubleClickTime);
         }
-        
+
         /// <summary>
         ///     Tests that mouse double click max dist set and get returns correct value
         /// </summary>
@@ -389,7 +389,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.MouseDoubleClickMaxDist = value;
             Assert.Equal(value, obj.MouseDoubleClickMaxDist);
         }
-        
+
         /// <summary>
         ///     Tests that mouse drag threshold set and get returns correct value
         /// </summary>
@@ -401,7 +401,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.MouseDragThreshold = value;
             Assert.Equal(value, obj.MouseDragThreshold);
         }
-        
+
         /// <summary>
         ///     Tests that key repeat delay set and get returns correct value
         /// </summary>
@@ -413,7 +413,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeyRepeatDelay = value;
             Assert.Equal(value, obj.KeyRepeatDelay);
         }
-        
+
         /// <summary>
         ///     Tests that key repeat rate set and get returns correct value
         /// </summary>
@@ -425,7 +425,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.KeyRepeatRate = value;
             Assert.Equal(value, obj.KeyRepeatRate);
         }
-        
+
         /// <summary>
         ///     Tests that hover delay normal set and get returns correct value
         /// </summary>
@@ -437,7 +437,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.HoverDelayNormal = value;
             Assert.Equal(value, obj.HoverDelayNormal);
         }
-        
+
         /// <summary>
         ///     Tests that hover delay short set and get returns correct value
         /// </summary>
@@ -449,7 +449,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.HoverDelayShort = value;
             Assert.Equal(value, obj.HoverDelayShort);
         }
-        
+
         /// <summary>
         ///     Tests that user data set and get returns correct value
         /// </summary>
@@ -461,7 +461,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.UserData = value;
             Assert.Equal(value, obj.UserData);
         }
-        
+
         /// <summary>
         ///     Tests that fonts set and get returns correct value
         /// </summary>
@@ -473,7 +473,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.Fonts = value;
             Assert.Equal(value, obj.Fonts);
         }
-        
+
         /// <summary>
         ///     Tests that font global scale set and get returns correct value
         /// </summary>
@@ -485,7 +485,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.FontGlobalScale = value;
             Assert.Equal(value, obj.FontGlobalScale);
         }
-        
+
         /// <summary>
         ///     Tests that font allow user scaling set and get returns correct value
         /// </summary>
@@ -497,7 +497,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.FontAllowUserScaling = value;
             Assert.Equal(value, obj.FontAllowUserScaling);
         }
-        
+
         /// <summary>
         ///     Tests that font default set and get returns correct value
         /// </summary>
@@ -509,7 +509,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.FontDefault = value;
             Assert.Equal(value, obj.FontDefault);
         }
-        
+
         /// <summary>
         ///     Tests that display framebuffer scale set and get returns correct value
         /// </summary>
@@ -521,7 +521,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.DisplayFramebufferScale = value;
             Assert.Equal(value, obj.DisplayFramebufferScale);
         }
-        
+
         /// <summary>
         ///     Tests that config docking no split set and get returns correct value
         /// </summary>
@@ -533,7 +533,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.ConfigDockingNoSplit = value;
             Assert.Equal(value, obj.ConfigDockingNoSplit);
         }
-        
+
         /// <summary>
         ///     Tests that config docking with shift set and get returns correct value
         /// </summary>
@@ -545,7 +545,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.ConfigDockingWithShift = value;
             Assert.Equal(value, obj.ConfigDockingWithShift);
         }
-        
+
         /// <summary>
         ///     Tests that config docking always tab bar set and get returns correct value
         /// </summary>
@@ -557,7 +557,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.ConfigDockingAlwaysTabBar = value;
             Assert.Equal(value, obj.ConfigDockingAlwaysTabBar);
         }
-        
+
         /// <summary>
         ///     Tests that config docking transparent payload set and get returns correct value
         /// </summary>

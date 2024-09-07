@@ -1,29 +1,58 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:WeldJoint.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 /* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
 
 /*
-* Farseer Physics Engine:
-* Copyright (c) 2012 Ian Qvist
-* 
-* Original source Box2D:
-* Copyright (c) 2006-2011 Erin Catto http://www.box2d.org 
-* 
-* This software is provided 'as-is', without any express or implied 
-* warranty.  In no event will the authors be held liable for any damages 
-* arising from the use of this software. 
-* Permission is granted to anyone to use this software for any purpose, 
-* including commercial applications, and to alter it and redistribute it 
-* freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
-* claim that you wrote the original software. If you use this software 
-* in a product, an acknowledgment in the product documentation would be 
-* appreciated but is not required. 
-* 2. Altered source versions must be plainly marked as such, and must not be 
-* misrepresented as being the original software. 
-* 3. This notice may not be removed or altered from any source distribution. 
-*/
+ * Farseer Physics Engine:
+ * Copyright (c) 2012 Ian Qvist
+ *
+ * Original source Box2D:
+ * Copyright (c) 2006-2011 Erin Catto http://www.box2d.org
+ *
+ * This software is provided 'as-is', without any express or implied
+ * warranty.  In no event will the authors be held liable for any damages
+ * arising from the use of this software.
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely, subject to the following restrictions:
+ * 1. The origin of this software must not be misrepresented; you must not
+ * claim that you wrote the original software. If you use this software
+ * in a product, an acknowledgment in the product documentation would be
+ * appreciated but is not required.
+ * 2. Altered source versions must be plainly marked as such, and must not be
+ * misrepresented as being the original software.
+ * 3. This notice may not be removed or altered from any source distribution.
+ */
 
 using System;
 using Alis.Core.Aspect.Math.Vector;
@@ -51,41 +80,39 @@ namespace Alis.Core.Physic.Dynamics.Joints
     // K = invI1 + invI2
 
     /// <summary>
-    /// A weld joint essentially glues two bodies together. A weld joint may
-    /// distort somewhat because the island constraint solver is approximate.
-    /// 
-    /// The joint is soft constraint based, which means the two bodies will move
-    /// relative to each other, when a force is applied. To combine two bodies
-    /// in a rigid fashion, combine the fixtures to a single body instead.
+    ///     A weld joint essentially glues two bodies together. A weld joint may
+    ///     distort somewhat because the island constraint solver is approximate.
+    ///     The joint is soft constraint based, which means the two bodies will move
+    ///     relative to each other, when a force is applied. To combine two bodies
+    ///     in a rigid fashion, combine the fixtures to a single body instead.
     /// </summary>
     public class WeldJoint : Joint
     {
+        private float _bias;
+
+        private float _gamma;
+
         // Solver shared
         private Vector3 _impulse;
-        private float _gamma;
-        private float _bias;
 
         // Solver temp
         private int _indexA;
         private int _indexB;
-        private Vector2 _rA;
-        private Vector2 _rB;
-        private Vector2 _localCenterA;
-        private Vector2 _localCenterB;
-        private float _invMassA;
-        private float _invMassB;
         private float _invIA;
         private float _invIB;
+        private float _invMassA;
+        private float _invMassB;
+        private Vector2 _localCenterA;
+        private Vector2 _localCenterB;
         private Mat33 _mass;
+        private Vector2 _rA;
+        private Vector2 _rB;
 
-        internal WeldJoint()
-        {
-            JointType = JointType.Weld;
-        }
+        internal WeldJoint() => JointType = JointType.Weld;
 
         /// <summary>
-        /// You need to specify an anchor point where they are attached.
-        /// The position of the anchor point is important for computing the reaction torque.
+        ///     You need to specify an anchor point where they are attached.
+        ///     The position of the anchor point is important for computing the reaction torque.
         /// </summary>
         /// <param name="bodyA">The first body</param>
         /// <param name="bodyB">The second body</param>
@@ -112,54 +139,48 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// The local anchor point on BodyA
+        ///     The local anchor point on BodyA
         /// </summary>
         public Vector2 LocalAnchorA { get; set; }
 
         /// <summary>
-        /// The local anchor point on BodyB
+        ///     The local anchor point on BodyB
         /// </summary>
         public Vector2 LocalAnchorB { get; set; }
 
         public override Vector2 WorldAnchorA
         {
-            get { return BodyA.GetWorldPoint(LocalAnchorA); }
-            set { LocalAnchorA = BodyA.GetLocalPoint(value); }
+            get => BodyA.GetWorldPoint(LocalAnchorA);
+            set => LocalAnchorA = BodyA.GetLocalPoint(value);
         }
 
         public override Vector2 WorldAnchorB
         {
-            get { return BodyB.GetWorldPoint(LocalAnchorB); }
-            set { LocalAnchorB = BodyB.GetLocalPoint(value); }
+            get => BodyB.GetWorldPoint(LocalAnchorB);
+            set => LocalAnchorB = BodyB.GetLocalPoint(value);
         }
 
         /// <summary>
-        /// The bodyB angle minus bodyA angle in the reference state (radians).
+        ///     The bodyB angle minus bodyA angle in the reference state (radians).
         /// </summary>
         public float ReferenceAngle { get; set; }
 
         /// <summary>
-        /// The frequency of the joint. A higher frequency means a stiffer joint, but
-        /// a too high value can cause the joint to oscillate.
-        /// Default is 0, which means the joint does no spring calculations.
+        ///     The frequency of the joint. A higher frequency means a stiffer joint, but
+        ///     a too high value can cause the joint to oscillate.
+        ///     Default is 0, which means the joint does no spring calculations.
         /// </summary>
         public float FrequencyHz { get; set; }
 
         /// <summary>
-        /// The damping on the joint. The damping is only used when
-        /// the joint has a frequency (> 0). A higher value means more damping.
+        ///     The damping on the joint. The damping is only used when
+        ///     the joint has a frequency (> 0). A higher value means more damping.
         /// </summary>
         public float DampingRatio { get; set; }
 
-        public override Vector2 GetReactionForce(float invDt)
-        {
-            return invDt * new Vector2(_impulse.X, _impulse.Y);
-        }
+        public override Vector2 GetReactionForce(float invDt) => invDt * new Vector2(_impulse.X, _impulse.Y);
 
-        public override float GetReactionTorque(float invDt)
-        {
-            return invDt * _impulse.Z;
-        }
+        public override float GetReactionTorque(float invDt) => invDt * _impulse.Z;
 
         internal override void InitVelocityConstraints(ref SolverData data)
         {
@@ -391,10 +412,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
                     Vector2 impulse2 = -K.Solve22(C1);
                     impulse = new Vector3(impulse2.X, impulse2.Y, 0.0f);
                 }
-                else 
+                else
                 {
                     impulse = -K.Solve33(C);
                 }
+
                 Vector2 P = new Vector2(impulse.X, impulse.Y);
 
                 cA -= mA * P;
@@ -409,7 +431,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.positions[_indexB].c = cB;
             data.positions[_indexB].a = aB;
 
-            return positionError <= Settings.LinearSlop && angularError <= Settings.AngularSlop;
+            return (positionError <= Settings.LinearSlop) && (angularError <= Settings.AngularSlop);
         }
     }
 }

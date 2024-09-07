@@ -1,4 +1,33 @@
-﻿/* Original source Farseer Physics Engine:
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:CuttingTools.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+/* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
@@ -19,7 +48,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         //Cutting a shape into two is based on the work of Daid and his prototype BoxCutter: http://www.box2d.org/forum/viewtopic.php?f=3&t=1473
 
         /// <summary>
-        /// Split a fixture into 2 vertice collections using the given entry and exit-point.
+        ///     Split a fixture into 2 vertice collections using the given entry and exit-point.
         /// </summary>
         /// <param name="fixture">The Fixture to split</param>
         /// <param name="entryPoint">The entry point - The start point</param>
@@ -59,7 +88,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                 newPolygon[i] = new Vertices(vertices.Count);
             }
 
-            int[] cutAdded = { -1, -1 };
+            int[] cutAdded = {-1, -1};
             int last = -1;
             for (int i = 0; i < vertices.Count; i++)
             {
@@ -80,6 +109,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                         newPolygon[last].Add(localExitPoint);
                         newPolygon[last].Add(localEntryPoint);
                     }
+
                     if (last == 1)
                     {
                         Debug.Assert(cutAdded[last] == -1);
@@ -100,6 +130,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                 newPolygon[0].Add(localExitPoint);
                 newPolygon[0].Add(localEntryPoint);
             }
+
             if (cutAdded[1] == -1)
             {
                 cutAdded[1] = newPolygon[1].Count;
@@ -112,12 +143,13 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                 Vector2 offset;
                 if (cutAdded[n] > 0)
                 {
-                    offset = (newPolygon[n][cutAdded[n] - 1] - newPolygon[n][cutAdded[n]]);
+                    offset = newPolygon[n][cutAdded[n] - 1] - newPolygon[n][cutAdded[n]];
                 }
                 else
                 {
-                    offset = (newPolygon[n][newPolygon[n].Count - 1] - newPolygon[n][0]);
+                    offset = newPolygon[n][newPolygon[n].Count - 1] - newPolygon[n][0];
                 }
+
                 offset.Normalize();
 
                 if (!offset.IsValid())
@@ -127,12 +159,13 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
 
                 if (cutAdded[n] < newPolygon[n].Count - 2)
                 {
-                    offset = (newPolygon[n][cutAdded[n] + 2] - newPolygon[n][cutAdded[n] + 1]);
+                    offset = newPolygon[n][cutAdded[n] + 2] - newPolygon[n][cutAdded[n] + 1];
                 }
                 else
                 {
-                    offset = (newPolygon[n][0] - newPolygon[n][newPolygon[n].Count - 1]);
+                    offset = newPolygon[n][0] - newPolygon[n][newPolygon[n].Count - 1];
                 }
+
                 offset.Normalize();
 
                 if (!offset.IsValid())
@@ -146,8 +179,8 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         }
 
         /// <summary>
-        /// This is a high-level function to cuts fixtures inside the given world, using the start and end points.
-        /// Note: We don't support cutting when the start or end is inside a shape.
+        ///     This is a high-level function to cuts fixtures inside the given world, using the start and end points.
+        ///     Note: We don't support cutting when the start or end is inside a shape.
         /// </summary>
         /// <param name="world">The world.</param>
         /// <param name="start">The startpoint.</param>
@@ -165,18 +198,18 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
 
             //Get the entry points
             world.RayCast((f, p, n, fr) =>
-                              {
-                                  fixtures.Add(f);
-                                  entryPoints.Add(p);
-                                  return 1;
-                              }, start, end);
+            {
+                fixtures.Add(f);
+                entryPoints.Add(p);
+                return 1;
+            }, start, end);
 
             //Reverse the ray to get the exitpoints
             world.RayCast((f, p, n, fr) =>
-                              {
-                                  exitPoints.Add(p);
-                                  return 1;
-                              }, end, start);
+            {
+                exitPoints.Add(p);
+                return 1;
+            }, end, start);
 
             //We only have a single point. We need at least 2
             if (entryPoints.Count + exitPoints.Count < 2)

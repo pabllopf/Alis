@@ -38,7 +38,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         ///     The value test enumuint
         /// </summary>
         Value1 = 1,
-        
+
         /// <summary>
         ///     The value test enumuint
         /// </summary>

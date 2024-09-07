@@ -53,7 +53,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
                 Callback = null,
                 Userdata = IntPtr.Zero
             };
-            
+
             Assert.Equal(44100, audioSpec.Freq);
             Assert.Equal((ushort) 32784, audioSpec.Format);
             Assert.Equal((byte) 2, audioSpec.Channels);
@@ -61,7 +61,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             Assert.Null(audioSpec.Callback);
             Assert.Equal(IntPtr.Zero, audioSpec.Userdata);
         }
-        
+
         /// <summary>
         ///     Tests that properties set values correctly
         /// </summary>
@@ -81,7 +81,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
                 Callback = null,
                 Userdata = IntPtr.Zero
             };
-            
+
             Assert.Equal(freq, audioSpec.Freq);
             Assert.Equal(format, audioSpec.Format);
             Assert.Equal(channels, audioSpec.Channels);

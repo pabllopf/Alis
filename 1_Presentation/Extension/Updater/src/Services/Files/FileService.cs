@@ -45,7 +45,7 @@ namespace Alis.Extension.Updater.Services.Files
         /// <param name="directory">The directory</param>
         /// <returns>A task containing the string</returns>
         public Task<string> DownloadFileAsync(string url, string directory) => throw new NotImplementedException();
-        
+
         /// <summary>
         ///     Extracts the and replace using the specified zip path
         /// </summary>
@@ -56,7 +56,7 @@ namespace Alis.Extension.Updater.Services.Files
         {
             throw new NotImplementedException();
         }
-        
+
         /// <summary>
         ///     Cleans the temp files using the specified directory
         /// </summary>
@@ -66,7 +66,7 @@ namespace Alis.Extension.Updater.Services.Files
         {
             throw new NotImplementedException();
         }
-        
+
         /// <summary>
         ///     Backups the directory
         /// </summary>

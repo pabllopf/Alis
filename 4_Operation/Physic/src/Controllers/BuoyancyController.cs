@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:BuoyancyController.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 /* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
@@ -16,37 +45,39 @@ namespace Alis.Core.Physic.Controllers
 {
     public sealed class BuoyancyController : Controller
     {
+        private AABB _container;
+
+        private readonly Vector2 _gravity;
+        private Vector2 _normal;
+        private float _offset;
+        private readonly ICollection<Body> _uniqueBodies = new List<Body>();
+
         /// <summary>
-        /// Controls the rotational drag that the fluid exerts on the bodies within it. Use higher values will simulate thick fluid, like honey, lower values to
-        /// simulate water-like fluids. 
+        ///     Controls the rotational drag that the fluid exerts on the bodies within it. Use higher values will simulate thick
+        ///     fluid, like honey, lower values to
+        ///     simulate water-like fluids.
         /// </summary>
         public float AngularDragCoefficient;
 
         /// <summary>
-        /// Density of the fluid. Higher values will make things more buoyant, lower values will cause things to sink.
+        ///     Density of the fluid. Higher values will make things more buoyant, lower values will cause things to sink.
         /// </summary>
         public float Density;
 
         /// <summary>
-        /// Controls the linear drag that the fluid exerts on the bodies within it.  Use higher values will simulate thick fluid, like honey, lower values to
-        /// simulate water-like fluids.
+        ///     Controls the linear drag that the fluid exerts on the bodies within it.  Use higher values will simulate thick
+        ///     fluid, like honey, lower values to
+        ///     simulate water-like fluids.
         /// </summary>
         public float LinearDragCoefficient;
 
         /// <summary>
-        /// Acts like waterflow. Defaults to 0,0.
+        ///     Acts like waterflow. Defaults to 0,0.
         /// </summary>
         public Vector2 Velocity;
 
-        private AABB _container;
-
-        private Vector2 _gravity;
-        private Vector2 _normal;
-        private float _offset;
-        private ICollection<Body> _uniqueBodies = new List<Body>();
-
         /// <summary>
-        /// Initializes a new instance of the <see cref="BuoyancyController"/> class.
+        ///     Initializes a new instance of the <see cref="BuoyancyController" /> class.
         /// </summary>
         /// <param name="container">Only bodies inside this AABB will be influenced by the controller</param>
         /// <param name="density">Density of the fluid</param>
@@ -65,7 +96,7 @@ namespace Alis.Core.Physic.Controllers
 
         public AABB Container
         {
-            get { return _container; }
+            get => _container;
             set
             {
                 _container = value;
@@ -77,15 +108,15 @@ namespace Alis.Core.Physic.Controllers
         {
             _uniqueBodies.Clear();
             World.QueryAABB(fixture =>
-                                {
-                                    if (fixture.Body.BodyType == BodyType.Static || !fixture.Body.Awake)
-                                        return true;
+            {
+                if (fixture.Body.BodyType == BodyType.Static || !fixture.Body.Awake)
+                    return true;
 
-                                    if (!_uniqueBodies.Contains(fixture.Body))
-                                        _uniqueBodies.Add(fixture.Body);
+                if (!_uniqueBodies.Contains(fixture.Body))
+                    _uniqueBodies.Add(fixture.Body);
 
-                                    return true;
-                                }, ref _container);
+                return true;
+            }, ref _container);
 
             foreach (Body body in _uniqueBodies)
             {
@@ -96,7 +127,7 @@ namespace Alis.Core.Physic.Controllers
 
                 foreach (Fixture fixture in body.FixtureList)
                 {
-                    if (fixture.Shape.ShapeType != ShapeType.Polygon && fixture.Shape.ShapeType != ShapeType.Circle)
+                    if ((fixture.Shape.ShapeType != ShapeType.Polygon) && (fixture.Shape.ShapeType != ShapeType.Circle))
                         continue;
 
                     Shape shape = fixture.Shape;

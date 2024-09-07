@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Globalization;
 using System.Threading;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Logging;
@@ -52,7 +51,7 @@ namespace Alis.Core.Aspect.Sample
         ///     Gets or sets the value of the non zero value
         /// </summary>
         [IsNotZero] private static int _nonZeroValue;
-        
+
         /// <summary>
         ///     Main the args
         /// </summary>
@@ -63,21 +62,21 @@ namespace Alis.Core.Aspect.Sample
             Logger.Info("--------------------------");
             Logger.Info("Fluent sample");
             Logger.Info("--------------------------\n");
-            
+
             Car sampleCar = Car
                 .Create()
                 .WithName("Ferrari")
                 .WithModel("F8")
                 .WithColor("Red")
                 .Build();
-            
+
             Logger.Info($"Car: Name={sampleCar.Name} Model={sampleCar.Model} Color={sampleCar.Color}");
-            
+
             // SAMPLE ASPECT DATA
             Logger.Info("--------------------------");
             Logger.Info("Data sample");
             Logger.Info("--------------------------\n");
-            
+
             Music musicInfo2 = new Music
             {
                 Name = "Prince Charming",
@@ -85,59 +84,59 @@ namespace Alis.Core.Aspect.Sample
                 Genre = "Rock and Metal",
                 Album = "Reload"
             };
-            
+
             // This will produce a JSON String
             string serialized2 = JsonSerializer.Serialize(musicInfo2);
-            
+
             Logger.Info(serialized2);
-            
+
             // This will produce a copy of the instance you created earlier
             JsonSerializer.Deserialize<Music>(serialized2);
-            
+
             Logger.Info("deserialized 2");
-            
+
             // SAMPLE ASPECT MATH
             Logger.Info("--------------------------");
             Logger.Info("Math sample");
             Logger.Info("--------------------------\n");
-            
+
             Logger.Info(new Vector2(3.0f, 2.0f).ToString());
-            
+
             // SAMPLE ASPECT TIME
             Logger.Info("--------------------------");
             Logger.Info("Time sample");
             Logger.Info("--------------------------\n");
             Clock clock = new Clock();
             clock.Start();
-            
+
             // Create a new TimeConfiguration instance
             TimeConfiguration timeConfig = new TimeConfiguration();
-            
+
             // Create a new TimeManager instance
             TimeManager timeManager = new TimeManager();
-            
+
             int i = 0;
             while (i < 1000)
             {
                 System.Threading.Thread.Sleep(1);
                 i++;
             }
-            
+
             // Stop the clock and print the elapsed time
             clock.Stop();
             Logger.Info($"Elapsed time: {clock.ElapsedMilliseconds} ms");
-            
+
             // Print some TimeManager properties
             Logger.Info($"DeltaTime: {timeManager.DeltaTime}");
             Logger.Info($"TimeScale: {timeConfig.TimeScale}");
-            
-            
+
+
             // SAMPLE ASPECT THREAD
             Logger.Info("--------------------------");
             Logger.Info("Thread sample");
             Logger.Info("--------------------------\n");
             ThreadManager threadManager = new ThreadManager();
-            
+
             CancellationTokenSource cts1 = new CancellationTokenSource();
             ThreadTask task1 = new ThreadTask(token =>
             {
@@ -147,7 +146,7 @@ namespace Alis.Core.Aspect.Sample
                     System.Threading.Thread.Sleep(1000);
                 }
             }, cts1.Token);
-            
+
             CancellationTokenSource cts2 = new CancellationTokenSource();
             ThreadTask task2 = new ThreadTask(token =>
             {
@@ -157,20 +156,20 @@ namespace Alis.Core.Aspect.Sample
                     System.Threading.Thread.Sleep(1000);
                 }
             }, cts2.Token);
-            
+
             threadManager.StartThread(task1);
             threadManager.StartThread(task2);
-            
+
             Logger.Info("Press any key to stop threads...");
             Console.ReadKey();
-            
+
             threadManager.StopAllThreads();
-            
+
             // SAMPLE ASPECT MEMORY
             Logger.Info("--------------------------");
             Logger.Info("Memory sample");
             Logger.Info("--------------------------\n");
-            
+
             try
             {
                 _nonZeroValue = 0;
@@ -180,8 +179,8 @@ namespace Alis.Core.Aspect.Sample
             {
                 Logger.Exception(ex);
             }
-            
-            
+
+
             // SAMPLE ASPECT LOGGING
             Logger.Info("--------------------------");
             Logger.Info("Logging sample");
@@ -189,17 +188,17 @@ namespace Alis.Core.Aspect.Sample
             Logger.LogLevel = LogLevel.Trace;
             Logger.Trace();
             Logger.Info();
-            
+
             Logger.Trace("Sample");
-            
+
             Logger.Log("Sample");
             Logger.Info("Sample");
-            
+
             Logger.Event("Sample");
-            
+
             Logger.Warning("Sample");
             Logger.Error("Sample");
-            
+
             try
             {
                 throw new NullReferenceException();

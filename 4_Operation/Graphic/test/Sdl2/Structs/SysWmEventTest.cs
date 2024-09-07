@@ -47,12 +47,12 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
         {
             EventType expectedType = EventType.FirstEvent;
             IntPtr expectedMsg = new IntPtr(123456);
-            
+
             SysWmEvent sysWmEvent = new SysWmEvent
             {
                 Msg = expectedMsg
             };
-            
+
             Assert.Equal(expectedType, sysWmEvent.type);
             Assert.Equal(expectedMsg, sysWmEvent.Msg);
         }

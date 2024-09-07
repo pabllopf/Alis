@@ -48,7 +48,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             uint expectedTimestamp = 123456;
             uint expectedDisplay = 1;
             DisplayEventId expectedDisplayEvent = DisplayEventId.SdlDisplayEventNone;
-            
+
             DisplayEvent eventStruct = new DisplayEvent
             {
                 type = expectedType,
@@ -56,7 +56,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
                 display = expectedDisplay,
                 displayEvent = expectedDisplayEvent
             };
-            
+
             Assert.Equal(expectedType, eventStruct.type);
             Assert.Equal(expectedTimestamp, eventStruct.timestamp);
             Assert.Equal(expectedDisplay, eventStruct.display);

@@ -48,62 +48,62 @@ namespace Alis.App.Engine.Core
         ///     The icon demo
         /// </summary>
         public readonly IconDemo iconDemo = new IconDemo();
-        
+
         /// <summary>
         ///     The im gui demo
         /// </summary>
         public readonly ImGuiDemo imGuiDemo = new ImGuiDemo();
-        
+
         /// <summary>
         ///     The im guizmo demo
         /// </summary>
         public readonly ImGuizmoDemo imGuizmoDemo = new ImGuizmoDemo();
-        
+
         /// <summary>
         ///     The im node demo
         /// </summary>
         public readonly ImNodeDemo imNodeDemo = new ImNodeDemo();
-        
+
         /// <summary>
         ///     The im plot demo
         /// </summary>
         public readonly ImPlotDemo imPlotDemo = new ImPlotDemo();
-        
+
         /// <summary>
         ///     The context
         /// </summary>
         public IntPtr ContextGui;
-        
+
         /// <summary>
         ///     The io
         /// </summary>
         public ImGuiIoPtr Io;
-        
+
         /// <summary>
         ///     The renderer game
         /// </summary>
         public IntPtr rendererGame;
-        
+
         /// <summary>
         ///     The style
         /// </summary>
         public ImGuiStyle Style;
-        
+
         /// <summary>
         ///     Gets or sets the value of the viewport
         /// </summary>
         public ImGuiViewportPtr Viewport;
-        
+
         /// <summary>
         ///     The window
         /// </summary>
         public IntPtr Window;
-        
+
         /// <summary>
         ///     The window game
         /// </summary>
         public IntPtr windowGame;
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="SpaceWork" /> class
         /// </summary>
@@ -119,7 +119,7 @@ namespace Alis.App.Engine.Core
             AssetsWindow = new AssetsWindow(this);
             TopMenu = new TopMenu(this);
             BottomMenu = new BottomMenu(this);
-            
+
             VideoGame = VideoGame
                 .Builder()
                 .Settings(setting => setting
@@ -182,7 +182,7 @@ namespace Alis.App.Engine.Core
                                 .BackgroundColor(Color.DarkGreen)
                                 .Build())
                             .Build())
-                        
+
                         // Decoration tree-001
                         .Add<GameObject>(gameObject => gameObject
                             .Name("tree-001")
@@ -195,7 +195,7 @@ namespace Alis.App.Engine.Core
                                 .SetTexture("tree-001.bmp")
                                 .Build())
                             .Build())
-                        
+
                         // Decoration tree-001
                         .Add<GameObject>(gameObject => gameObject
                             .Name("tree-002")
@@ -234,80 +234,80 @@ namespace Alis.App.Engine.Core
                     .Build())
                 .BuildPreview();
         }
-        
+
         /// <summary>
         ///     Gets the value of the console window
         /// </summary>
         internal ConsoleWindow ConsoleWindow { get; }
-        
+
         /// <summary>
         ///     Gets the value of the game window
         /// </summary>
         internal GameWindow GameWindow { get; }
-        
+
         /// <summary>
         ///     Gets the value of the inspector window
         /// </summary>
         internal InspectorWindow InspectorWindow { get; }
-        
+
         /// <summary>
         ///     Gets the value of the solution window
         /// </summary>
         internal SolutionWindow SolutionWindow { get; }
-        
+
         /// <summary>
         ///     Gets the value of the scene window
         /// </summary>
         internal SceneWindow SceneWindow { get; }
-        
+
         /// <summary>
         ///     Gets the value of the project window
         /// </summary>
         internal ProjectWindow ProjectWindow { get; }
-        
+
         /// <summary>
         ///     Gets the value of the top menu
         /// </summary>
         internal TopMenu TopMenu { get; }
-        
+
         /// <summary>
         ///     Gets the value of the bottom menu
         /// </summary>
         internal BottomMenu BottomMenu { get; }
-        
+
         /// <summary>
         ///     Gets the value of the audio player window
         /// </summary>
         internal AudioPlayerWindow AudioPlayerWindow { get; }
-        
+
         /// <summary>
         ///     Gets the value of the assets window
         /// </summary>
         internal AssetsWindow AssetsWindow { get; }
-        
+
         /// <summary>
         ///     Gets or sets the value of the fps
         /// </summary>
         public int Fps { get; set; } = 60;
-        
+
         /// <summary>
         ///     Gets the value of the video game
         /// </summary>
         public VideoGame VideoGame { get; }
-        
+
         /// <summary>
         ///     Initializes this instance
         /// </summary>
         public void Initialize()
         {
             VideoGame.InitPreview();
-            
+
             imGuiDemo.Initialize();
             imPlotDemo.Initialize();
             imGuizmoDemo.Initialize();
             imNodeDemo.Initialize();
             iconDemo.Initialize();
-            
+
             TopMenu.Initialize();
             BottomMenu.Initialize();
             ConsoleWindow.Initialize();
@@ -319,7 +319,7 @@ namespace Alis.App.Engine.Core
             AudioPlayerWindow.Initialize();
             AssetsWindow.Initialize();
         }
-        
+
         /// <summary>
         ///     Starts this instance
         /// </summary>
@@ -330,7 +330,7 @@ namespace Alis.App.Engine.Core
             imGuizmoDemo.Start();
             imNodeDemo.Start();
             iconDemo.Start();
-            
+
             TopMenu.Start();
             BottomMenu.Start();
             ConsoleWindow.Start();
@@ -342,7 +342,7 @@ namespace Alis.App.Engine.Core
             AudioPlayerWindow.Start();
             AssetsWindow.Start();
         }
-        
+
         /// <summary>
         ///     Updates this instance
         /// </summary>
@@ -353,7 +353,7 @@ namespace Alis.App.Engine.Core
             imGuizmoDemo.Run();
             imNodeDemo.Run();
             iconDemo.Run();
-            
+
             TopMenu.Render();
             BottomMenu.Render();
             ConsoleWindow.Render();

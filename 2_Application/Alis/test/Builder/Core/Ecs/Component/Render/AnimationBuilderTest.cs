@@ -46,10 +46,10 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Render
         public void AnimationBuilder_DefaultConstructor_ValidInput()
         {
             AnimationBuilder animationBuilder = new AnimationBuilder();
-            
+
             Assert.NotNull(animationBuilder);
         }
-        
+
         /// <summary>
         ///     Tests that build valid input
         /// </summary>
@@ -57,12 +57,12 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Render
         public void Build_ValidInput()
         {
             AnimationBuilder animationBuilder = new AnimationBuilder();
-            
+
             Animation animation = animationBuilder.Build();
-            
+
             Assert.NotNull(animation);
         }
-        
+
         /// <summary>
         ///     Tests that name valid input
         /// </summary>
@@ -71,12 +71,12 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Render
         {
             AnimationBuilder animationBuilder = new AnimationBuilder();
             string name = "testName";
-            
+
             animationBuilder.Name(name);
-            
+
             Assert.Equal(name, animationBuilder.Build().Name);
         }
-        
+
         /// <summary>
         ///     Tests that order valid input
         /// </summary>
@@ -85,12 +85,12 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Render
         {
             AnimationBuilder animationBuilder = new AnimationBuilder();
             int order = 1;
-            
+
             animationBuilder.Order(order);
-            
+
             Assert.Equal(order, animationBuilder.Build().Order);
         }
-        
+
         /// <summary>
         ///     Tests that speed valid input
         /// </summary>
@@ -99,12 +99,12 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Render
         {
             AnimationBuilder animationBuilder = new AnimationBuilder();
             float speed = 1.0f;
-            
+
             animationBuilder.Speed(speed);
-            
+
             Assert.Equal(speed, animationBuilder.Build().Speed);
         }
-        
+
         /// <summary>
         ///     Tests that add frame valid input
         /// </summary>
@@ -113,11 +113,11 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Render
         {
             AnimationBuilder animationBuilder = new AnimationBuilder();
             Func<FrameBuilder, Frame> frameFunc = fb => fb.Build();
-            
+
             animationBuilder.AddFrame(frameFunc);
-            
+
             Animation animation = animationBuilder.Build();
-            
+
             Assert.Single(animation.Frames);
         }
     }

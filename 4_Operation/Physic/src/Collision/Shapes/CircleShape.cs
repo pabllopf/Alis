@@ -1,29 +1,58 @@
-﻿/* Original source Farseer Physics Engine:
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:CircleShape.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+/* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
 
 /*
-* Farseer Physics Engine:
-* Copyright (c) 2012 Ian Qvist
-* 
-* Original source Box2D:
-* Copyright (c) 2006-2011 Erin Catto http://www.box2d.org
-*
-* This software is provided 'as-is', without any express or implied
-* warranty.  In no event will the authors be held liable for any damages
-* arising from the use of this software.
-* Permission is granted to anyone to use this software for any purpose,
-* including commercial applications, and to alter it and redistribute it
-* freely, subject to the following restrictions:
-* 1. The origin of this software must not be misrepresented; you must not
-* claim that you wrote the original software. If you use this software
-* in a product, an acknowledgment in the product documentation would be
-* appreciated but is not required.
-* 2. Altered source versions must be plainly marked as such, and must not be
-* misrepresented as being the original software.
-* 3. This notice may not be removed or altered from any source distribution.
-*/
+ * Farseer Physics Engine:
+ * Copyright (c) 2012 Ian Qvist
+ *
+ * Original source Box2D:
+ * Copyright (c) 2006-2011 Erin Catto http://www.box2d.org
+ *
+ * This software is provided 'as-is', without any express or implied
+ * warranty.  In no event will the authors be held liable for any damages
+ * arising from the use of this software.
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely, subject to the following restrictions:
+ * 1. The origin of this software must not be misrepresented; you must not
+ * claim that you wrote the original software. If you use this software
+ * in a product, an acknowledgment in the product documentation would be
+ * appreciated but is not required.
+ * 2. Altered source versions must be plainly marked as such, and must not be
+ * misrepresented as being the original software.
+ * 3. This notice may not be removed or altered from any source distribution.
+ */
 
 using System;
 using System.Diagnostics;
@@ -37,14 +66,14 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 namespace Alis.Core.Physic.Collision.Shapes
 {
     /// <summary>
-    /// A circle shape.
+    ///     A circle shape.
     /// </summary>
     public class CircleShape : Shape
     {
         internal Vector2 _position;
 
         /// <summary>
-        /// Create a new circle with the desired radius and density.
+        ///     Create a new circle with the desired radius and density.
         /// </summary>
         /// <param name="radius">The radius of the circle.</param>
         /// <param name="density">The density of the circle.</param>
@@ -67,17 +96,14 @@ namespace Alis.Core.Physic.Collision.Shapes
             _position = Vector2.Zero;
         }
 
-        public override int ChildCount
-        {
-            get { return 1; }
-        }
+        public override int ChildCount => 1;
 
         /// <summary>
-        /// Get or set the position of the circle
+        ///     Get or set the position of the circle
         /// </summary>
         public Vector2 Position
         {
-            get { return _position; }
+            get => _position;
             set
             {
                 _position = value;
@@ -118,10 +144,10 @@ namespace Alis.Core.Physic.Collision.Shapes
             }
 
             // Find the point of intersection of the line with the circle.
-            float a = -(c + (float)Math.Sqrt(sigma));
+            float a = -(c + (float) Math.Sqrt(sigma));
 
             // Is the intersection point on the segment?
-            if (0.0f <= a && a <= input.MaxFraction * rr)
+            if ((0.0f <= a) && (a <= input.MaxFraction * rr))
             {
                 a /= rr;
                 output.Fraction = a;
@@ -138,17 +164,17 @@ namespace Alis.Core.Physic.Collision.Shapes
         public override void ComputeAABB(out AABB aabb, ref Transform transform, int childIndex)
         {
             // OPT: Vector2 p = transform.p + Complex.Multiply(ref _position, ref transform.q);
-            var pX = (_position.X * transform.q.R - _position.Y * transform.q.i) + transform.p.X;
-            var pY = (_position.Y * transform.q.R + _position.X * transform.q.i) + transform.p.Y;
+            var pX = _position.X * transform.q.R - _position.Y * transform.q.i + transform.p.X;
+            var pY = _position.Y * transform.q.R + _position.X * transform.q.i + transform.p.Y;
 
             // OPT: aabb.LowerBound = new Vector2(p.X - Radius, p.Y - Radius);
             // OPT: aabb.UpperBound = new Vector2(p.X + Radius, p.Y + Radius);
             aabb.LowerBound = new Vector2(pX - Radius, pY - Radius);
-            
+
             aabb.UpperBound = new Vector2(pX + Radius, pY + Radius);
         }
 
-        protected override sealed void ComputeProperties()
+        protected sealed override void ComputeProperties()
         {
             float area = Constant.Pi * _2radius;
             MassData.Area = area;
@@ -170,6 +196,7 @@ namespace Alis.Core.Physic.Collision.Shapes
                 //Completely dry
                 return 0;
             }
+
             if (l > Radius)
             {
                 //Completely wet
@@ -179,8 +206,8 @@ namespace Alis.Core.Physic.Collision.Shapes
 
             //Magic
             float l2 = l * l;
-            float area = _2radius * (float)((Math.Asin(l / Radius) + Constant.Pi / 2) + l * Math.Sqrt(_2radius - l2));
-            float com = -2.0f / 3.0f * (float)Math.Pow(_2radius - l2, 1.5f) / area;
+            float area = _2radius * (float) (Math.Asin(l / Radius) + Constant.Pi / 2 + l * Math.Sqrt(_2radius - l2));
+            float com = -2.0f / 3.0f * (float) Math.Pow(_2radius - l2, 1.5f) / area;
 
             sc.X = p.X + normal.X * com;
             sc.Y = p.Y + normal.Y * com;
@@ -189,14 +216,11 @@ namespace Alis.Core.Physic.Collision.Shapes
         }
 
         /// <summary>
-        /// Compare the circle to another circle
+        ///     Compare the circle to another circle
         /// </summary>
         /// <param name="shape">The other circle</param>
         /// <returns>True if the two circles are the same size and have the same position</returns>
-        public bool CompareTo(CircleShape shape)
-        {
-            return (Radius == shape.Radius && Position == shape.Position);
-        }
+        public bool CompareTo(CircleShape shape) => (Radius == shape.Radius) && (Position == shape.Position);
 
         public override Shape Clone()
         {

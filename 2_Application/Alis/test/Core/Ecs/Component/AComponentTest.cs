@@ -52,7 +52,7 @@ namespace Alis.Test.Core.Ecs.Component
             ComponentSample component = new ComponentSample();
             component.OnEnable();
         }
-        
+
         /// <summary>
         ///     Tests that on init valid input
         /// </summary>
@@ -62,7 +62,7 @@ namespace Alis.Test.Core.Ecs.Component
             ComponentSample component = new ComponentSample();
             component.OnInit();
         }
-        
+
         /// <summary>
         ///     Tests that on awake valid input
         /// </summary>
@@ -72,7 +72,7 @@ namespace Alis.Test.Core.Ecs.Component
             ComponentSample component = new ComponentSample();
             component.OnAwake();
         }
-        
+
         /// <summary>
         ///     Tests that on start valid input
         /// </summary>
@@ -82,7 +82,7 @@ namespace Alis.Test.Core.Ecs.Component
             ComponentSample component = new ComponentSample();
             component.OnStart();
         }
-        
+
         /// <summary>
         ///     Tests that on before update valid input
         /// </summary>
@@ -92,7 +92,7 @@ namespace Alis.Test.Core.Ecs.Component
             ComponentSample component = new ComponentSample();
             component.OnBeforeUpdate();
         }
-        
+
         /// <summary>
         ///     Tests that on update valid input
         /// </summary>
@@ -102,7 +102,7 @@ namespace Alis.Test.Core.Ecs.Component
             ComponentSample component = new ComponentSample();
             component.OnUpdate();
         }
-        
+
         /// <summary>
         ///     Tests that on after update valid input
         /// </summary>
@@ -112,7 +112,7 @@ namespace Alis.Test.Core.Ecs.Component
             ComponentSample component = new ComponentSample();
             component.OnAfterUpdate();
         }
-        
+
         /// <summary>
         ///     Tests that on before fixed update valid input
         /// </summary>
@@ -122,7 +122,7 @@ namespace Alis.Test.Core.Ecs.Component
             ComponentSample component = new ComponentSample();
             component.OnBeforeFixedUpdate();
         }
-        
+
         /// <summary>
         ///     Tests that on fixed update valid input
         /// </summary>
@@ -132,7 +132,7 @@ namespace Alis.Test.Core.Ecs.Component
             ComponentSample component = new ComponentSample();
             component.OnFixedUpdate();
         }
-        
+
         /// <summary>
         ///     Tests that on after fixed update valid input
         /// </summary>
@@ -142,7 +142,7 @@ namespace Alis.Test.Core.Ecs.Component
             ComponentSample component = new ComponentSample();
             component.OnAfterFixedUpdate();
         }
-        
+
         /// <summary>
         ///     Tests that on dispatch events valid input
         /// </summary>
@@ -152,7 +152,7 @@ namespace Alis.Test.Core.Ecs.Component
             ComponentSample component = new ComponentSample();
             component.OnDispatchEvents();
         }
-        
+
         /// <summary>
         ///     Tests that on calculate valid input
         /// </summary>
@@ -162,7 +162,7 @@ namespace Alis.Test.Core.Ecs.Component
             ComponentSample component = new ComponentSample();
             component.OnCalculate();
         }
-        
+
         /// <summary>
         ///     Tests that on draw valid input
         /// </summary>
@@ -172,7 +172,7 @@ namespace Alis.Test.Core.Ecs.Component
             ComponentSample component = new ComponentSample();
             component.OnDraw();
         }
-        
+
         /// <summary>
         ///     Tests that on gui valid input
         /// </summary>
@@ -182,7 +182,7 @@ namespace Alis.Test.Core.Ecs.Component
             ComponentSample component = new ComponentSample();
             component.OnGui();
         }
-        
+
         /// <summary>
         ///     Tests that on disable valid input
         /// </summary>
@@ -192,7 +192,7 @@ namespace Alis.Test.Core.Ecs.Component
             ComponentSample component = new ComponentSample();
             component.OnDisable();
         }
-        
+
         /// <summary>
         ///     Tests that on reset valid input
         /// </summary>
@@ -202,7 +202,7 @@ namespace Alis.Test.Core.Ecs.Component
             ComponentSample component = new ComponentSample();
             component.OnReset();
         }
-        
+
         /// <summary>
         ///     Tests that on stop valid input
         /// </summary>
@@ -212,7 +212,7 @@ namespace Alis.Test.Core.Ecs.Component
             ComponentSample component = new ComponentSample();
             component.OnStop();
         }
-        
+
         /// <summary>
         ///     Tests that on exit valid input
         /// </summary>
@@ -222,7 +222,7 @@ namespace Alis.Test.Core.Ecs.Component
             ComponentSample component = new ComponentSample();
             component.OnExit();
         }
-        
+
         /// <summary>
         ///     Tests that on destroy valid input
         /// </summary>
@@ -232,8 +232,8 @@ namespace Alis.Test.Core.Ecs.Component
             ComponentSample component = new ComponentSample();
             component.OnDestroy();
         }
-        
-        
+
+
         /// <summary>
         ///     Tests that on press down key calls logger trace
         /// </summary>
@@ -243,7 +243,7 @@ namespace Alis.Test.Core.Ecs.Component
             Sample2Component sample2Component = new Sample2Component();
             sample2Component.OnPressDownKey(KeyCodes.A);
         }
-        
+
         /// <summary>
         ///     Tests that on release key calls logger trace
         /// </summary>
@@ -253,7 +253,7 @@ namespace Alis.Test.Core.Ecs.Component
             Sample2Component sample2Component = new Sample2Component();
             sample2Component.OnReleaseKey(KeyCodes.A);
         }
-        
+
         /// <summary>
         ///     Tests that on press key calls logger trace
         /// </summary>
@@ -263,7 +263,7 @@ namespace Alis.Test.Core.Ecs.Component
             Sample2Component sample2Component = new Sample2Component();
             sample2Component.OnPressKey(KeyCodes.A);
         }
-        
+
         /// <summary>
         ///     Tests that on collision enter calls logger trace
         /// </summary>
@@ -274,7 +274,7 @@ namespace Alis.Test.Core.Ecs.Component
             GameObject gameObject = new GameObject();
             sample2Component.OnCollisionEnter(gameObject);
         }
-        
+
         /// <summary>
         ///     Tests that on collision exit calls logger trace
         /// </summary>
@@ -285,7 +285,7 @@ namespace Alis.Test.Core.Ecs.Component
             GameObject gameObject = new GameObject();
             sample2Component.OnCollisionExit(gameObject);
         }
-        
+
         /// <summary>
         ///     Tests that set context sets context
         /// </summary>
@@ -297,7 +297,7 @@ namespace Alis.Test.Core.Ecs.Component
             Context context = new Context(new Settings());
             Assert.NotEqual(context, sample2Component.Context);
         }
-        
+
         /// <summary>
         ///     Tests that on collision stay calls logger trace
         /// </summary>
@@ -308,7 +308,7 @@ namespace Alis.Test.Core.Ecs.Component
             GameObject gameObject = new GameObject();
             sample2Component.OnCollisionStay(gameObject);
         }
-        
+
         /// <summary>
         ///     Tests that on trigger enter calls logger trace
         /// </summary>
@@ -319,7 +319,7 @@ namespace Alis.Test.Core.Ecs.Component
             GameObject gameObject = new GameObject();
             sample2Component.OnTriggerEnter(gameObject);
         }
-        
+
         /// <summary>
         ///     Tests that on trigger exit calls logger trace
         /// </summary>
@@ -330,7 +330,7 @@ namespace Alis.Test.Core.Ecs.Component
             GameObject gameObject = new GameObject();
             sample2Component.OnTriggerExit(gameObject);
         }
-        
+
         /// <summary>
         ///     Tests that on trigger stay calls logger trace
         /// </summary>
@@ -341,7 +341,7 @@ namespace Alis.Test.Core.Ecs.Component
             GameObject gameObject = new GameObject();
             sample2Component.OnTriggerStay(gameObject);
         }
-        
+
         /// <summary>
         ///     Tests that name property set get returns correct value
         /// </summary>
@@ -352,7 +352,7 @@ namespace Alis.Test.Core.Ecs.Component
             component.Name = "TestComponent";
             Assert.Equal("TestComponent", component.Name);
         }
-        
+
         /// <summary>
         ///     Tests that id property set get returns correct value
         /// </summary>
@@ -363,7 +363,7 @@ namespace Alis.Test.Core.Ecs.Component
             component.Id = "1";
             Assert.Equal("1", component.Id);
         }
-        
+
         /// <summary>
         ///     Tests that tag property set get returns correct value
         /// </summary>

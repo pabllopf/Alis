@@ -1,29 +1,58 @@
-﻿/* Original source Farseer Physics Engine:
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:TimeOfImpact.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+/* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
 
 /*
-* Farseer Physics Engine:
-* Copyright (c) 2012 Ian Qvist
-* 
-* Original source Box2D:
-* Copyright (c) 2006-2011 Erin Catto http://www.box2d.org 
-* 
-* This software is provided 'as-is', without any express or implied 
-* warranty.  In no event will the authors be held liable for any damages 
-* arising from the use of this software. 
-* Permission is granted to anyone to use this software for any purpose, 
-* including commercial applications, and to alter it and redistribute it 
-* freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
-* claim that you wrote the original software. If you use this software 
-* in a product, an acknowledgment in the product documentation would be 
-* appreciated but is not required. 
-* 2. Altered source versions must be plainly marked as such, and must not be 
-* misrepresented as being the original software. 
-* 3. This notice may not be removed or altered from any source distribution. 
-*/
+ * Farseer Physics Engine:
+ * Copyright (c) 2012 Ian Qvist
+ *
+ * Original source Box2D:
+ * Copyright (c) 2006-2011 Erin Catto http://www.box2d.org
+ *
+ * This software is provided 'as-is', without any express or implied
+ * warranty.  In no event will the authors be held liable for any damages
+ * arising from the use of this software.
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely, subject to the following restrictions:
+ * 1. The origin of this software must not be misrepresented; you must not
+ * claim that you wrote the original software. If you use this software
+ * in a product, an acknowledgment in the product documentation would be
+ * appreciated but is not required.
+ * 2. Altered source versions must be plainly marked as such, and must not be
+ * misrepresented as being the original software.
+ * 3. This notice may not be removed or altered from any source distribution.
+ */
 
 using System;
 using System.Diagnostics;
@@ -37,7 +66,7 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 namespace Alis.Core.Physic.Collision
 {
     /// <summary>
-    /// Input parameters for CalculateTimeOfImpact
+    ///     Input parameters for CalculateTimeOfImpact
     /// </summary>
     public class TOIInput
     {
@@ -54,7 +83,7 @@ namespace Alis.Core.Physic.Collision
         Failed,
         Overlapped,
         Touching,
-        Seperated,
+        Seperated
     }
 
     public struct TOIOutput
@@ -72,18 +101,17 @@ namespace Alis.Core.Physic.Collision
 
     public static class SeparationFunction
     {
-        [ThreadStatic]
-        private static Vector2 _axis;
-        [ThreadStatic]
-        private static Vector2 _localPoint;
-        [ThreadStatic]
-        private static DistanceProxy _proxyA;
-        [ThreadStatic]
-        private static DistanceProxy _proxyB;
-        [ThreadStatic]
-        private static Sweep _sweepA, _sweepB;
-        [ThreadStatic]
-        private static SeparationFunctionType _type;
+        [ThreadStatic] private static Vector2 _axis;
+
+        [ThreadStatic] private static Vector2 _localPoint;
+
+        [ThreadStatic] private static DistanceProxy _proxyA;
+
+        [ThreadStatic] private static DistanceProxy _proxyB;
+
+        [ThreadStatic] private static Sweep _sweepA, _sweepB;
+
+        [ThreadStatic] private static SeparationFunctionType _type;
 
         public static void Set(ref SimplexCache cache, ref DistanceProxy proxyA, ref Sweep sweepA, ref DistanceProxy proxyB, ref Sweep sweepB, float t1)
         {
@@ -91,7 +119,7 @@ namespace Alis.Core.Physic.Collision
             _proxyA = proxyA;
             _proxyB = proxyB;
             int count = cache.Count;
-            Debug.Assert(0 < count && count < 3);
+            Debug.Assert((0 < count) && (count < 3));
 
             _sweepA = sweepA;
             _sweepB = sweepB;
@@ -169,56 +197,56 @@ namespace Alis.Core.Physic.Collision
             switch (_type)
             {
                 case SeparationFunctionType.Points:
-                    {
-                        Vector2 axisA =  Complex.Divide(ref _axis, ref xfA.q);
-                        Vector2 axisB = -Complex.Divide(ref _axis, ref xfB.q);
+                {
+                    Vector2 axisA = Complex.Divide(ref _axis, ref xfA.q);
+                    Vector2 axisB = -Complex.Divide(ref _axis, ref xfB.q);
 
-                        indexA = _proxyA.GetSupport(axisA);
-                        indexB = _proxyB.GetSupport(axisB);
+                    indexA = _proxyA.GetSupport(axisA);
+                    indexB = _proxyB.GetSupport(axisB);
 
-                        Vector2 localPointA = _proxyA.Vertices[indexA];
-                        Vector2 localPointB = _proxyB.Vertices[indexB];
+                    Vector2 localPointA = _proxyA.Vertices[indexA];
+                    Vector2 localPointB = _proxyB.Vertices[indexB];
 
-                        Vector2 pointA = Transform.Multiply(ref localPointA, ref xfA);
-                        Vector2 pointB = Transform.Multiply(ref localPointB, ref xfB);
+                    Vector2 pointA = Transform.Multiply(ref localPointA, ref xfA);
+                    Vector2 pointB = Transform.Multiply(ref localPointB, ref xfB);
 
-                        float separation = Vector2.Dot(pointB - pointA, _axis);
-                        return separation;
-                    }
+                    float separation = Vector2.Dot(pointB - pointA, _axis);
+                    return separation;
+                }
 
                 case SeparationFunctionType.FaceA:
-                    {
-                        Vector2 normal = Complex.Multiply(ref _axis, ref xfA.q);
-                        Vector2 pointA = Transform.Multiply(ref _localPoint, ref xfA);
+                {
+                    Vector2 normal = Complex.Multiply(ref _axis, ref xfA.q);
+                    Vector2 pointA = Transform.Multiply(ref _localPoint, ref xfA);
 
-                        Vector2 axisB = -Complex.Divide(ref normal, ref xfB.q);
+                    Vector2 axisB = -Complex.Divide(ref normal, ref xfB.q);
 
-                        indexA = -1;
-                        indexB = _proxyB.GetSupport(axisB);
+                    indexA = -1;
+                    indexB = _proxyB.GetSupport(axisB);
 
-                        Vector2 localPointB = _proxyB.Vertices[indexB];
-                        Vector2 pointB = Transform.Multiply(ref localPointB, ref xfB);
+                    Vector2 localPointB = _proxyB.Vertices[indexB];
+                    Vector2 pointB = Transform.Multiply(ref localPointB, ref xfB);
 
-                        float separation = Vector2.Dot(pointB - pointA, normal);
-                        return separation;
-                    }
+                    float separation = Vector2.Dot(pointB - pointA, normal);
+                    return separation;
+                }
 
                 case SeparationFunctionType.FaceB:
-                    {
-                        Vector2 normal = Complex.Multiply(ref _axis, ref xfB.q);
-                        Vector2 pointB = Transform.Multiply(ref _localPoint, ref xfB);
+                {
+                    Vector2 normal = Complex.Multiply(ref _axis, ref xfB.q);
+                    Vector2 pointB = Transform.Multiply(ref _localPoint, ref xfB);
 
-                        Vector2 axisA = -Complex.Divide(ref normal, ref xfA.q);
+                    Vector2 axisA = -Complex.Divide(ref normal, ref xfA.q);
 
-                        indexB = -1;
-                        indexA = _proxyA.GetSupport(axisA);
+                    indexB = -1;
+                    indexA = _proxyA.GetSupport(axisA);
 
-                        Vector2 localPointA = _proxyA.Vertices[indexA];
-                        Vector2 pointA = Transform.Multiply(ref localPointA, ref xfA);
+                    Vector2 localPointA = _proxyA.Vertices[indexA];
+                    Vector2 pointA = Transform.Multiply(ref localPointA, ref xfA);
 
-                        float separation = Vector2.Dot(pointA - pointB, normal);
-                        return separation;
-                    }
+                    float separation = Vector2.Dot(pointA - pointB, normal);
+                    return separation;
+                }
 
                 default:
                     Debug.Assert(false);
@@ -237,38 +265,38 @@ namespace Alis.Core.Physic.Collision
             switch (_type)
             {
                 case SeparationFunctionType.Points:
-                    {
-                        Vector2 localPointA = _proxyA.Vertices[indexA];
-                        Vector2 localPointB = _proxyB.Vertices[indexB];
+                {
+                    Vector2 localPointA = _proxyA.Vertices[indexA];
+                    Vector2 localPointB = _proxyB.Vertices[indexB];
 
-                        Vector2 pointA = Transform.Multiply(ref localPointA, ref xfA);
-                        Vector2 pointB = Transform.Multiply(ref localPointB, ref xfB);
-                        float separation = Vector2.Dot(pointB - pointA, _axis);
+                    Vector2 pointA = Transform.Multiply(ref localPointA, ref xfA);
+                    Vector2 pointB = Transform.Multiply(ref localPointB, ref xfB);
+                    float separation = Vector2.Dot(pointB - pointA, _axis);
 
-                        return separation;
-                    }
+                    return separation;
+                }
                 case SeparationFunctionType.FaceA:
-                    {
-                        Vector2 normal = Complex.Multiply(ref _axis, ref xfA.q);
-                        Vector2 pointA = Transform.Multiply(ref _localPoint, ref xfA);
+                {
+                    Vector2 normal = Complex.Multiply(ref _axis, ref xfA.q);
+                    Vector2 pointA = Transform.Multiply(ref _localPoint, ref xfA);
 
-                        Vector2 localPointB = _proxyB.Vertices[indexB];
-                        Vector2 pointB = Transform.Multiply(ref localPointB, ref xfB);
+                    Vector2 localPointB = _proxyB.Vertices[indexB];
+                    Vector2 pointB = Transform.Multiply(ref localPointB, ref xfB);
 
-                        float separation = Vector2.Dot(pointB - pointA, normal);
-                        return separation;
-                    }
+                    float separation = Vector2.Dot(pointB - pointA, normal);
+                    return separation;
+                }
                 case SeparationFunctionType.FaceB:
-                    {
-                        Vector2 normal = Complex.Multiply(ref _axis, ref xfB.q);
-                        Vector2 pointB = Transform.Multiply(ref _localPoint, ref xfB);
+                {
+                    Vector2 normal = Complex.Multiply(ref _axis, ref xfB.q);
+                    Vector2 pointB = Transform.Multiply(ref _localPoint, ref xfB);
 
-                        Vector2 localPointA = _proxyA.Vertices[indexA];
-                        Vector2 pointA = Transform.Multiply(ref localPointA, ref xfA);
+                    Vector2 localPointA = _proxyA.Vertices[indexA];
+                    Vector2 pointA = Transform.Multiply(ref localPointA, ref xfA);
 
-                        float separation = Vector2.Dot(pointA - pointB, normal);
-                        return separation;
-                    }
+                    float separation = Vector2.Dot(pointA - pointB, normal);
+                    return separation;
+                }
                 default:
                     Debug.Assert(false);
                     return 0.0f;
@@ -281,17 +309,16 @@ namespace Alis.Core.Physic.Collision
         // CCD via the local separating axis method. This seeks progression
         // by computing the largest time at which separation is maintained.
 
-        [ThreadStatic]
-        public static int TOICalls, TOIIters, TOIMaxIters;
-        [ThreadStatic]
-        public static int TOIRootIters, TOIMaxRootIters;
+        [ThreadStatic] public static int TOICalls, TOIIters, TOIMaxIters;
+
+        [ThreadStatic] public static int TOIRootIters, TOIMaxRootIters;
 
         /// <summary>
-        /// Compute the upper bound on time before two shapes penetrate. Time is represented as
-        /// a fraction between [0,tMax]. This uses a swept separating axis and may miss some intermediate,
-        /// non-tunneling collision. If you change the time interval, you should call this function
-        /// again.
-        /// Note: use Distance() to compute the contact point and normal at the time of impact.
+        ///     Compute the upper bound on time before two shapes penetrate. Time is represented as
+        ///     a fraction between [0,tMax]. This uses a swept separating axis and may miss some intermediate,
+        ///     non-tunneling collision. If you change the time interval, you should call this function
+        ///     again.
+        ///     Note: use Distance() to compute the contact point and normal at the time of impact.
         /// </summary>
         /// <param name="output">The output.</param>
         /// <param name="input">The input.</param>
@@ -331,7 +358,7 @@ namespace Alis.Core.Physic.Collision
 
             // The outer loop progressively attempts to compute new separating axes.
             // This loop terminates when an axis is repeated (no progress is made).
-            for (; ; )
+            for (;;)
             {
                 Transform xfA, xfB;
                 sweepA.GetTransform(out xfA, t1);
@@ -369,7 +396,7 @@ namespace Alis.Core.Physic.Collision
                 bool done = false;
                 float t2 = tMax;
                 int pushBackIter = 0;
-                for (; ; )
+                for (;;)
                 {
                     // Find the deepest point at t2. Store the witness point indices.
                     int indexA, indexB;
@@ -419,7 +446,7 @@ namespace Alis.Core.Physic.Collision
                     // Compute 1D root of: f(x) - target = 0
                     int rootIterCount = 0;
                     float a1 = t1, a2 = t2;
-                    for (; ; )
+                    for (;;)
                     {
                         // Use a mix of the secant rule and bisection.
                         float t;

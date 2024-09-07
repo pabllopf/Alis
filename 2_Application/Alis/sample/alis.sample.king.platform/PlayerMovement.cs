@@ -27,14 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core.Aspect.Data.Mapping;
-using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component;
 using Alis.Core.Ecs.Component.Collider;
 using Alis.Core.Ecs.Component.Render;
-using Alis.Core.Graphic.Sdl2.Enums;
 
 namespace Alis.Sample.King.Platform
 {
@@ -48,32 +45,32 @@ namespace Alis.Sample.King.Platform
         ///     The jump force
         /// </summary>
         private const float JumpForce = 30;
-        
+
         /// <summary>
         ///     The velocity player
         /// </summary>
         private const float VelocityPlayer = 5f;
-        
+
         /// <summary>
         ///     The reset cool down jump
         /// </summary>
         private const float ResetCoolDownJump = 0.8f;
-        
+
         /// <summary>
         ///     The animator
         /// </summary>
         private Animator animator;
-        
+
         /// <summary>
         ///     The box collider
         /// </summary>
         private BoxCollider boxCollider;
-        
+
         /// <summary>
         ///     The vector
         /// </summary>
         private Vector2 directionPlayer = new Vector2(0, 0);
-        
+
         /// <summary>
         ///     The sprite
         /// </summary>
@@ -88,7 +85,7 @@ namespace Alis.Sample.King.Platform
             boxCollider = GameObject.Get<BoxCollider>();
             sprite = GameObject.Get<Sprite>();
         }
-        
+
         /// <summary>
         ///     Ons the update
         /// </summary>
@@ -110,12 +107,12 @@ namespace Alis.Sample.King.Platform
             {
                 boxCollider.Body.ApplyLinearImpulse(new Vector2(0, 10));
             }
-            
+
             if (key == KeyCodes.A)
             {
                 boxCollider.Body.LinearVelocity = new Vector2(-VelocityPlayer, boxCollider.Body.LinearVelocity.Y);
             }
-            
+
             if (key == KeyCodes.D)
             {
                 boxCollider.Body.ApplyLinearImpulse(new Vector2(VelocityPlayer, boxCollider.Body.LinearVelocity.Y));

@@ -1,29 +1,58 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:WheelJoint.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 /* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
 
 /*
-* Farseer Physics Engine:
-* Copyright (c) 2012 Ian Qvist
-* 
-* Original source Box2D:
-* Copyright (c) 2006-2011 Erin Catto http://www.box2d.org 
-* 
-* This software is provided 'as-is', without any express or implied 
-* warranty.  In no event will the authors be held liable for any damages 
-* arising from the use of this software. 
-* Permission is granted to anyone to use this software for any purpose, 
-* including commercial applications, and to alter it and redistribute it 
-* freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
-* claim that you wrote the original software. If you use this software 
-* in a product, an acknowledgment in the product documentation would be 
-* appreciated but is not required. 
-* 2. Altered source versions must be plainly marked as such, and must not be 
-* misrepresented as being the original software. 
-* 3. This notice may not be removed or altered from any source distribution. 
-*/
+ * Farseer Physics Engine:
+ * Copyright (c) 2012 Ian Qvist
+ *
+ * Original source Box2D:
+ * Copyright (c) 2006-2011 Erin Catto http://www.box2d.org
+ *
+ * This software is provided 'as-is', without any express or implied
+ * warranty.  In no event will the authors be held liable for any damages
+ * arising from the use of this software.
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely, subject to the following restrictions:
+ * 1. The origin of this software must not be misrepresented; you must not
+ * claim that you wrote the original software. If you use this software
+ * in a product, an acknowledgment in the product documentation would be
+ * appreciated but is not required.
+ * 2. Altered source versions must be plainly marked as such, and must not be
+ * misrepresented as being the original software.
+ * 3. This notice may not be removed or altered from any source distribution.
+ */
 
 using System;
 using Alis.Core.Aspect.Math.Vector;
@@ -53,55 +82,53 @@ namespace Alis.Core.Physic.Dynamics.Joints
     // J = [0 0 -1 0 0 1]
 
     /// <summary>
-    /// A wheel joint. This joint provides two degrees of freedom: translation
-    /// along an axis fixed in bodyA and rotation in the plane. You can use a
-    /// joint limit to restrict the range of motion and a joint motor to drive
-    /// the rotation or to model rotational friction.
-    /// This joint is designed for vehicle suspensions.
+    ///     A wheel joint. This joint provides two degrees of freedom: translation
+    ///     along an axis fixed in bodyA and rotation in the plane. You can use a
+    ///     joint limit to restrict the range of motion and a joint motor to drive
+    ///     the rotation or to model rotational friction.
+    ///     This joint is designed for vehicle suspensions.
     /// </summary>
     public class WheelJoint : Joint
     {
-        // Solver shared
-        private Vector2 _localXAxis;
-        private Vector2 _localYAxis;
+        private Vector2 _ax, _ay;
+        private Vector2 _axis;
+
+        private float _bias;
+        private bool _enableMotor;
+        private float _gamma;
 
         private float _impulse;
-        private float _motorImpulse;
-        private float _springImpulse;
-
-        private float _maxMotorTorque;
-        private float _motorSpeed;
-        private bool _enableMotor;
 
         // Solver temp
         private int _indexA;
         private int _indexB;
-        private Vector2 _localCenterA;
-        private Vector2 _localCenterB;
-        private float _invMassA;
-        private float _invMassB;
         private float _invIA;
         private float _invIB;
+        private float _invMassA;
+        private float _invMassB;
+        private Vector2 _localCenterA;
 
-        private Vector2 _ax, _ay;
-        private float _sAx, _sBx;
-        private float _sAy, _sBy;
+        private Vector2 _localCenterB;
+
+        // Solver shared
+        private Vector2 _localXAxis;
+        private Vector2 _localYAxis;
 
         private float _mass;
+
+        private float _maxMotorTorque;
+        private float _motorImpulse;
         private float _motorMass;
+        private float _motorSpeed;
+        private float _sAx, _sBx;
+        private float _sAy, _sBy;
+        private float _springImpulse;
         private float _springMass;
 
-        private float _bias;
-        private float _gamma;
-        private Vector2 _axis;
-
-        internal WheelJoint()
-        {
-            JointType = JointType.Wheel;
-        }
+        internal WheelJoint() => JointType = JointType.Wheel;
 
         /// <summary>
-        /// Constructor for WheelJoint
+        ///     Constructor for WheelJoint
         /// </summary>
         /// <param name="bodyA">The first body</param>
         /// <param name="bodyB">The second body</param>
@@ -128,33 +155,33 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// The local anchor point on BodyA
+        ///     The local anchor point on BodyA
         /// </summary>
         public Vector2 LocalAnchorA { get; set; }
 
         /// <summary>
-        /// The local anchor point on BodyB
+        ///     The local anchor point on BodyB
         /// </summary>
         public Vector2 LocalAnchorB { get; set; }
 
         public override Vector2 WorldAnchorA
         {
-            get { return BodyA.GetWorldPoint(LocalAnchorA); }
-            set { LocalAnchorA = BodyA.GetLocalPoint(value); }
+            get => BodyA.GetWorldPoint(LocalAnchorA);
+            set => LocalAnchorA = BodyA.GetLocalPoint(value);
         }
 
         public override Vector2 WorldAnchorB
         {
-            get { return BodyB.GetWorldPoint(LocalAnchorB); }
-            set { LocalAnchorB = BodyB.GetLocalPoint(value); }
+            get => BodyB.GetWorldPoint(LocalAnchorB);
+            set => LocalAnchorB = BodyB.GetLocalPoint(value);
         }
 
         /// <summary>
-        /// The axis at which the suspension moves.
+        ///     The axis at which the suspension moves.
         /// </summary>
         public Vector2 Axis
         {
-            get { return _axis; }
+            get => _axis;
             set
             {
                 _axis = value;
@@ -164,16 +191,16 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// The axis in local coordinates relative to BodyA
+        ///     The axis in local coordinates relative to BodyA
         /// </summary>
-        public Vector2 LocalXAxis { get { return _localXAxis; } }
+        public Vector2 LocalXAxis => _localXAxis;
 
         /// <summary>
-        /// The desired motor speed in radians per second.
+        ///     The desired motor speed in radians per second.
         /// </summary>
         public float MotorSpeed
         {
-            get { return _motorSpeed; }
+            get => _motorSpeed;
             set
             {
                 WakeBodies();
@@ -182,11 +209,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// The maximum motor torque, usually in N-m.
+        ///     The maximum motor torque, usually in N-m.
         /// </summary>
         public float MaxMotorTorque
         {
-            get { return _maxMotorTorque; }
+            get => _maxMotorTorque;
             set
             {
                 WakeBodies();
@@ -195,17 +222,17 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Suspension frequency, zero indicates no suspension
+        ///     Suspension frequency, zero indicates no suspension
         /// </summary>
         public float Frequency { get; set; }
 
         /// <summary>
-        /// Suspension damping ratio, one indicates critical damping
+        ///     Suspension damping ratio, one indicates critical damping
         /// </summary>
         public float DampingRatio { get; set; }
 
         /// <summary>
-        /// Gets the translation along the axis
+        ///     Gets the translation along the axis
         /// </summary>
         public float JointTranslation
         {
@@ -225,7 +252,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Gets the angular velocity of the joint
+        ///     Gets the angular velocity of the joint
         /// </summary>
         public float JointSpeed
         {
@@ -238,11 +265,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Enable/disable the joint motor.
+        ///     Enable/disable the joint motor.
         /// </summary>
         public bool MotorEnabled
         {
-            get { return _enableMotor; }
+            get => _enableMotor;
             set
             {
                 WakeBodies();
@@ -251,23 +278,14 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Gets the torque of the motor
+        ///     Gets the torque of the motor
         /// </summary>
         /// <param name="invDt">inverse delta time</param>
-        public float GetMotorTorque(float invDt)
-        {
-            return invDt * _motorImpulse;
-        }
+        public float GetMotorTorque(float invDt) => invDt * _motorImpulse;
 
-        public override Vector2 GetReactionForce(float invDt)
-        {
-            return invDt * (_impulse * _ay + _springImpulse * _ax);
-        }
+        public override Vector2 GetReactionForce(float invDt) => invDt * (_impulse * _ay + _springImpulse * _ax);
 
-        public override float GetReactionTorque(float invDt)
-        {
-            return invDt * _motorImpulse;
-        }
+        public override float GetReactionTorque(float invDt) => invDt * _motorImpulse;
 
         internal override void InitVelocityConstraints(ref SolverData data)
         {
@@ -485,7 +503,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             Vector2 rA = Complex.Multiply(LocalAnchorA - _localCenterA, ref qA);
             Vector2 rB = Complex.Multiply(LocalAnchorB - _localCenterB, ref qB);
-            Vector2 d = (cB - cA) + rB - rA;
+            Vector2 d = cB - cA + rB - rA;
 
             Vector2 ay = Complex.Multiply(ref _localYAxis, ref qA);
 

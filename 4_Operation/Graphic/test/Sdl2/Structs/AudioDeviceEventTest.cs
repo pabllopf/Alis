@@ -50,7 +50,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
                 which = 2,
                 isCapture = 1
             };
-            
+
             Assert.Equal(1u, audioDeviceEvent.type);
             Assert.Equal(100u, audioDeviceEvent.timestamp);
             Assert.Equal(2u, audioDeviceEvent.which);

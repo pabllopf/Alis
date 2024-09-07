@@ -27,12 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Ecs;
-using Alis.Core.Ecs.System.Manager.Physic;
-using Alis.Core.Physic.Dynamics;
-using Xunit;
-
 namespace Alis.Test.Core.Ecs.System.Manager.Physic
 {
     /// <summary>

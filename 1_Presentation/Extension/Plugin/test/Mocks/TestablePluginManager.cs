@@ -39,7 +39,7 @@ namespace Alis.Extension.Plugin.Test.Mocks
         ///     The load plugin from file call count
         /// </summary>
         public int LoadPluginFromFileCallCount;
-        
+
         /// <summary>
         ///     Loads the plugin from file using the specified plugin file
         /// </summary>

@@ -1,29 +1,58 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:MotorJoint.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 /* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
 
 /*
-* Farseer Physics Engine:
-* Copyright (c) 2012 Ian Qvist
-* 
-* Original source Box2D:
-* Copyright (c) 2006-2011 Erin Catto http://www.box2d.org 
-* 
-* This software is provided 'as-is', without any express or implied 
-* warranty.  In no event will the authors be held liable for any damages 
-* arising from the use of this software. 
-* Permission is granted to anyone to use this software for any purpose, 
-* including commercial applications, and to alter it and redistribute it 
-* freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
-* claim that you wrote the original software. If you use this software 
-* in a product, an acknowledgment in the product documentation would be 
-* appreciated but is not required. 
-* 2. Altered source versions must be plainly marked as such, and must not be 
-* misrepresented as being the original software. 
-* 3. This notice may not be removed or altered from any source distribution. 
-*/
+ * Farseer Physics Engine:
+ * Copyright (c) 2012 Ian Qvist
+ *
+ * Original source Box2D:
+ * Copyright (c) 2006-2011 Erin Catto http://www.box2d.org
+ *
+ * This software is provided 'as-is', without any express or implied
+ * warranty.  In no event will the authors be held liable for any damages
+ * arising from the use of this software.
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely, subject to the following restrictions:
+ * 1. The origin of this software must not be misrepresented; you must not
+ * claim that you wrote the original software. If you use this software
+ * in a product, an acknowledgment in the product documentation would be
+ * appreciated but is not required.
+ * 2. Altered source versions must be plainly marked as such, and must not be
+ * misrepresented as being the original software.
+ * 3. This notice may not be removed or altered from any source distribution.
+ */
 
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
@@ -36,43 +65,42 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 namespace Alis.Core.Physic.Dynamics.Joints
 {
     /// <summary>
-    /// A motor joint is used to control the relative motion
-    /// between two bodies. A typical usage is to control the movement
-    /// of a dynamic body with respect to the ground.
+    ///     A motor joint is used to control the relative motion
+    ///     between two bodies. A typical usage is to control the movement
+    ///     of a dynamic body with respect to the ground.
     /// </summary>
     public class MotorJoint : Joint
     {
-        // Solver shared
-        private Vector2 _linearOffset;
-        private float _angularOffset;
-        private Vector2 _linearImpulse;
+        private float _angularError;
         private float _angularImpulse;
-        private float _maxForce;
-        private float _maxTorque;
+        private float _angularMass;
+        private float _angularOffset;
 
         // Solver temp
         private int _indexA;
         private int _indexB;
-        private Vector2 _rA;
-        private Vector2 _rB;
-        private Vector2 _localCenterA;
-        private Vector2 _localCenterB;
-        private Vector2 _linearError;
-        private float _angularError;
-        private float _invMassA;
-        private float _invMassB;
         private float _invIA;
         private float _invIB;
-        private Mat22 _linearMass;
-        private float _angularMass;
+        private float _invMassA;
+        private float _invMassB;
+        private Vector2 _linearError;
+        private Vector2 _linearImpulse;
 
-        internal MotorJoint()
-        {
-            JointType = JointType.Motor;
-        }
+        private Mat22 _linearMass;
+
+        // Solver shared
+        private Vector2 _linearOffset;
+        private Vector2 _localCenterA;
+        private Vector2 _localCenterB;
+        private float _maxForce;
+        private float _maxTorque;
+        private Vector2 _rA;
+        private Vector2 _rB;
+
+        internal MotorJoint() => JointType = JointType.Motor;
 
         /// <summary>
-        /// Constructor for MotorJoint.
+        ///     Constructor for MotorJoint.
         /// </summary>
         /// <param name="bodyA">The first body</param>
         /// <param name="bodyB">The second body</param>
@@ -100,44 +128,44 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
         public override Vector2 WorldAnchorA
         {
-            get { return BodyA.Position; }
-            set { Debug.Assert(false, "You can't set the world anchor on this joint type."); }
+            get => BodyA.Position;
+            set => Debug.Assert(false, "You can't set the world anchor on this joint type.");
         }
 
         public override Vector2 WorldAnchorB
         {
-            get { return BodyB.Position; }
-            set { Debug.Assert(false, "You can't set the world anchor on this joint type."); }
+            get => BodyB.Position;
+            set => Debug.Assert(false, "You can't set the world anchor on this joint type.");
         }
 
         /// <summary>
-        /// The maximum amount of force that can be applied to BodyA
+        ///     The maximum amount of force that can be applied to BodyA
         /// </summary>
         public float MaxForce
         {
             set
             {
-                Debug.Assert(MathUtils.IsValid(value) && value >= 0.0f);
+                Debug.Assert(MathUtils.IsValid(value) && (value >= 0.0f));
                 _maxForce = value;
             }
-            get { return _maxForce; }
+            get => _maxForce;
         }
 
         /// <summary>
-        /// The maximum amount of torque that can be applied to BodyA
+        ///     The maximum amount of torque that can be applied to BodyA
         /// </summary>
         public float MaxTorque
         {
             set
             {
-                Debug.Assert(MathUtils.IsValid(value) && value >= 0.0f);
+                Debug.Assert(MathUtils.IsValid(value) && (value >= 0.0f));
                 _maxTorque = value;
             }
-            get { return _maxTorque; }
+            get => _maxTorque;
         }
 
         /// <summary>
-        /// The linear (translation) offset.
+        ///     The linear (translation) offset.
         /// </summary>
         public Vector2 LinearOffset
         {
@@ -149,11 +177,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
                     _linearOffset = value;
                 }
             }
-            get { return _linearOffset; }
+            get => _linearOffset;
         }
 
         /// <summary>
-        /// Get or set the angular offset.
+        ///     Get or set the angular offset.
         /// </summary>
         public float AngularOffset
         {
@@ -165,21 +193,15 @@ namespace Alis.Core.Physic.Dynamics.Joints
                     _angularOffset = value;
                 }
             }
-            get { return _angularOffset; }
+            get => _angularOffset;
         }
 
         //FPE note: Used for serialization.
         internal float CorrectionFactor { get; set; }
 
-        public override Vector2 GetReactionForce(float invDt)
-        {
-            return invDt * _linearImpulse;
-        }
+        public override Vector2 GetReactionForce(float invDt) => invDt * _linearImpulse;
 
-        public override float GetReactionTorque(float invDt)
-        {
-            return invDt * _angularImpulse;
-        }
+        public override float GetReactionTorque(float invDt) => invDt * _angularImpulse;
 
         internal override void InitVelocityConstraints(ref SolverData data)
         {
@@ -321,9 +343,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.velocities[_indexB].w = wB;
         }
 
-        internal override bool SolvePositionConstraints(ref SolverData data)
-        {
-            return true;
-        }
+        internal override bool SolvePositionConstraints(ref SolverData data) => true;
     }
 }

@@ -45,20 +45,20 @@ namespace Alis.Core.Ecs.System.Setting.Input
         ///     Initializes a new instance of the <see cref="InputSetting" /> class
         /// </summary>
         public InputSetting() => UpdateMode = UpdateMode.DynamicUpdate;
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="InputSetting" /> class
         /// </summary>
         /// <param name="updateMode">The update mode</param>
         [JsonConstructor]
         public InputSetting(UpdateMode updateMode) => UpdateMode = updateMode;
-        
+
         /// <summary>
         ///     Gets or sets the value of the update mode
         /// </summary>
         [JsonPropertyName("_UpdateMode_")]
         public UpdateMode UpdateMode { get; set; }
-        
+
         /// <summary>
         ///     Builders this instance
         /// </summary>

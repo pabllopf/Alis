@@ -1,4 +1,31 @@
-﻿// Copyright (c) 2021 Kastellanos Nikolaos
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:World.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
 
 /* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
@@ -6,26 +33,26 @@
  */
 
 /*
-* Farseer Physics Engine:
-* Copyright (c) 2012 Ian Qvist
-* 
-* Original source Box2D:
-* Copyright (c) 2006-2011 Erin Catto http://www.box2d.org 
-* 
-* This software is provided 'as-is', without any express or implied 
-* warranty.  In no event will the authors be held liable for any damages 
-* arising from the use of this software. 
-* Permission is granted to anyone to use this software for any purpose, 
-* including commercial applications, and to alter it and redistribute it 
-* freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
-* claim that you wrote the original software. If you use this software 
-* in a product, an acknowledgment in the product documentation would be 
-* appreciated but is not required. 
-* 2. Altered source versions must be plainly marked as such, and must not be 
-* misrepresented as being the original software. 
-* 3. This notice may not be removed or altered from any source distribution. 
-*/
+ * Farseer Physics Engine:
+ * Copyright (c) 2012 Ian Qvist
+ *
+ * Original source Box2D:
+ * Copyright (c) 2006-2011 Erin Catto http://www.box2d.org
+ *
+ * This software is provided 'as-is', without any express or implied
+ * warranty.  In no event will the authors be held liable for any damages
+ * arising from the use of this software.
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely, subject to the following restrictions:
+ * 1. The origin of this software must not be misrepresented; you must not
+ * claim that you wrote the original software. If you use this software
+ * in a product, an acknowledgment in the product documentation would be
+ * appreciated but is not required.
+ * 2. Altered source versions must be plainly marked as such, and must not be
+ * misrepresented as being the original software.
+ * 3. This notice may not be removed or altered from any source distribution.
+ */
 
 // Inactive objects optimizations. 
 // See: id:9178 at https://farseerphysics.codeplex.com/SourceControl/list/patches
@@ -50,33 +77,36 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>
-    /// The world class manages all physics entities, dynamic simulation,
-    /// and asynchronous queries.
+    ///     The world class manages all physics entities, dynamic simulation,
+    ///     and asynchronous queries.
     /// </summary>
     public partial class World
     {
         #region These are for debugging the solver.
+
         /// <summary>This is only for debugging the solver</summary>
         private const bool _warmStarting = true;
+
         /// <summary>This is only for debugging the solver</summary>
         private const bool _subStepping = false;
+
         #endregion
 
-        Vector2 _gravity;
+        private Vector2 _gravity;
 
         private bool _stepComplete = true;
 
         private float _invDt0;
         private Body[] _stack = new Body[64];
         private QueryReportFixtureDelegate _queryDelegateTmp;
-        private BroadPhaseQueryCallback _queryCallbackCache;
+        private readonly BroadPhaseQueryCallback _queryCallbackCache;
         private TOIInput _input = new TOIInput();
         private Vector2 _testPointPointTmp;
         private Fixture _testPointFixtureTmp;
-        private QueryReportFixtureDelegate _testPointDelegateCache;
-        private Stopwatch _watch = new Stopwatch();
+        private readonly QueryReportFixtureDelegate _testPointDelegateCache;
+        private readonly Stopwatch _watch = new Stopwatch();
         private RayCastReportFixtureDelegate _rayCastDelegateTmp;
-        private BroadPhaseRayCastCallback _rayCastCallbackCache;
+        private readonly BroadPhaseRayCastCallback _rayCastCallbackCache;
 
         internal bool _worldHasNewFixture;
 
@@ -90,53 +120,53 @@ namespace Alis.Core.Physic.Dynamics
 
 
         /// <summary>
-        /// Set the user data. Use this to store your application specific data.
+        ///     Set the user data. Use this to store your application specific data.
         /// </summary>
         /// <value>The user data.</value>
         public object Tag;
 
         /// <summary>
-        /// Fires whenever a body has been added
+        ///     Fires whenever a body has been added
         /// </summary>
         public BodyDelegate BodyAdded;
 
         /// <summary>
-        /// Fires whenever a body has been removed
+        ///     Fires whenever a body has been removed
         /// </summary>
         public BodyDelegate BodyRemoved;
 
         /// <summary>
-        /// Fires whenever a fixture has been added
+        ///     Fires whenever a fixture has been added
         /// </summary>
         public FixtureDelegate FixtureAdded;
 
         /// <summary>
-        /// Fires whenever a fixture has been removed
+        ///     Fires whenever a fixture has been removed
         /// </summary>
         public FixtureDelegate FixtureRemoved;
 
         /// <summary>
-        /// Fires whenever a joint has been added
+        ///     Fires whenever a joint has been added
         /// </summary>
         public JointDelegate JointAdded;
 
         /// <summary>
-        /// Fires whenever a joint has been removed
+        ///     Fires whenever a joint has been removed
         /// </summary>
         public JointDelegate JointRemoved;
 
         /// <summary>
-        /// Fires every time a controller is added to the World.
+        ///     Fires every time a controller is added to the World.
         /// </summary>
         public ControllerDelegate ControllerAdded;
 
         /// <summary>
-        /// Fires every time a controlelr is removed form the World.
+        ///     Fires every time a controlelr is removed form the World.
         /// </summary>
         public ControllerDelegate ControllerRemoved;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="World"/> class.
+        ///     Initializes a new instance of the <see cref="World" /> class.
         /// </summary>
         public World()
         {
@@ -157,9 +187,9 @@ namespace Alis.Core.Physic.Dynamics
             TOISet = new HashSet<Body>();
 #endif
 
-            _queryCallbackCache = new BroadPhaseQueryCallback(QueryAABBCallback);
-            _rayCastCallbackCache = new BroadPhaseRayCastCallback(RayCastCallback);
-            _testPointDelegateCache = new QueryReportFixtureDelegate(this.TestPointCallback);
+            _queryCallbackCache = QueryAABBCallback;
+            _rayCastCallbackCache = RayCastCallback;
+            _testPointDelegateCache = TestPointCallback;
 
 
             ContactManager = new ContactManager(new DynamicTreeBroadPhase());
@@ -167,29 +197,23 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="World"/> class.
+        ///     Initializes a new instance of the <see cref="World" /> class.
         /// </summary>
         /// <param name="gravity">The gravity.</param>
-        public World(Vector2 gravity) : this()
-        {
-            Gravity = gravity;
-        }
+        public World(Vector2 gravity) : this() => Gravity = gravity;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="World"/> class.
+        ///     Initializes a new instance of the <see cref="World" /> class.
         /// </summary>
-        public World(IBroadPhase broadPhase) : this()
-        {
-            ContactManager = new ContactManager(broadPhase);
-        }
+        public World(IBroadPhase broadPhase) : this() => ContactManager = new ContactManager(broadPhase);
 
         private void Solve(ref TimeStep step)
         {
             // Size the island for the worst case.
             Island.Reset(BodyList.Count,
-                         ContactManager.ContactCount,
-                         JointList.Count,
-                         ContactManager);
+                ContactManager.ContactCount,
+                JointList.Count,
+                ContactManager);
 
             // Clear all the island flags.
 #if USE_ISLAND_SET
@@ -224,11 +248,10 @@ namespace Alis.Core.Physic.Dynamics
                 _stack = new Body[Math.Max(_stack.Length * 2, stackSize)];
 
 #if USE_AWAKE_BODY_SET
-
             // If AwakeBodyList is empty, the Island code will not have a chance
             // to update the diagnostics timer so reset the timer here. 
             Island.JointUpdateTime = 0;
-      
+
             Debug.Assert(AwakeBodyList.Count == 0);
             AwakeBodyList.AddRange(AwakeBodySet);
 
@@ -261,8 +284,8 @@ namespace Alis.Core.Physic.Dynamics
                 _stack[stackCount++] = seed;
 
 #if USE_ISLAND_SET
-            if (!IslandSet.Contains(body))
-                IslandSet.Add(body);
+                if (!IslandSet.Contains(body))
+                    IslandSet.Add(body);
 #endif
                 seed._island = true;
 
@@ -397,6 +420,7 @@ namespace Alis.Core.Physic.Dynamics
                 {
                     continue;
                 }
+
                 Debug.Assert(b.BodyType != BodyType.Static);
 
                 // Update fixtures (for broad-phase).
@@ -410,6 +434,7 @@ namespace Alis.Core.Physic.Dynamics
                 {
                     continue;
                 }
+
                 if (b.BodyType == BodyType.Static)
                 {
                     continue;
@@ -477,7 +502,7 @@ namespace Alis.Core.Physic.Dynamics
             }
 
             // Find TOI events and solve them.
-            for (; ; )
+            for (;;)
             {
                 // Find the first TOI.
                 Contact minContact = null;
@@ -527,11 +552,11 @@ namespace Alis.Core.Physic.Dynamics
                         BodyType typeB = bB.BodyType;
                         Debug.Assert(typeA == BodyType.Dynamic || typeB == BodyType.Dynamic);
 
-                        bool activeA = bA.Awake && typeA != BodyType.Static;
-                        bool activeB = bB.Awake && typeB != BodyType.Static;
+                        bool activeA = bA.Awake && (typeA != BodyType.Static);
+                        bool activeB = bB.Awake && (typeB != BodyType.Static);
 
                         // Is at least one body active (awake and dynamic or kinematic)?
-                        if (activeA == false && activeB == false)
+                        if ((activeA == false) && (activeB == false))
                         {
                             continue;
                         }
@@ -540,7 +565,7 @@ namespace Alis.Core.Physic.Dynamics
                         bool collideB = (bB.IsBullet || typeB != BodyType.Dynamic) && !bB.IgnoreCCD;
 
                         // Are these two non-bullet dynamic bodies?
-                        if (collideA == false && collideB == false)
+                        if ((collideA == false) && (collideB == false))
                         {
                             continue;
                         }
@@ -554,6 +579,7 @@ namespace Alis.Core.Physic.Dynamics
                                 bA.Flags &= ~BodyFlags.Island;
                                 bA.Sweep.Alpha0 = 0.0f;
                             }
+
                             if (!TOISet.Contains(bB))
                             {
                                 TOISet.Add(bB);
@@ -662,7 +688,7 @@ namespace Alis.Core.Physic.Dynamics
                 minContact.IslandFlag = true;
 
                 // Get contacts on bodyA and bodyB.
-                Body[] bodies = { bA0, bB0 };
+                Body[] bodies = {bA0, bB0};
                 for (int i = 0; i < 2; ++i)
                 {
                     Body body = bodies[i];
@@ -690,8 +716,8 @@ namespace Alis.Core.Physic.Dynamics
 
                             // Only add static, kinematic, or bullet bodies.
                             Body other = ce.Other;
-                            if (other.BodyType == BodyType.Dynamic &&
-                                body.IsBullet == false && other.IsBullet == false)
+                            if ((other.BodyType == BodyType.Dynamic) &&
+                                (body.IsBullet == false) && (other.IsBullet == false))
                             {
                                 continue;
                             }
@@ -806,57 +832,51 @@ namespace Alis.Core.Physic.Dynamics
         public TimeSpan UpdateTime { get; private set; }
         public TimeSpan ContinuousPhysicsTime { get; private set; }
         public TimeSpan ControllersUpdateTime { get; private set; }
-        public TimeSpan AddRemoveTime { get; private set; }
+        public TimeSpan AddRemoveTime { get; }
         public TimeSpan NewContactsTime { get; private set; }
         public TimeSpan ContactsUpdateTime { get; private set; }
         public TimeSpan SolveUpdateTime { get; private set; }
 
         /// <summary>
-        /// Get the number of broad-phase proxies.
+        ///     Get the number of broad-phase proxies.
         /// </summary>
         /// <value>The proxy count.</value>
-        public int ProxyCount
-        {
-            get { return ContactManager.BroadPhase.ProxyCount; }
-        }
+        public int ProxyCount => ContactManager.BroadPhase.ProxyCount;
 
         /// <summary>
-        /// Get the number of contacts (each may have 0 or more contact points).
+        ///     Get the number of contacts (each may have 0 or more contact points).
         /// </summary>
         /// <value>The contact count.</value>
-        public int ContactCount
-        {
-            get { return ContactManager.ContactCount; }
-        }
+        public int ContactCount => ContactManager.ContactCount;
 
         /// <summary>
-        /// Change the global gravity vector.
+        ///     Change the global gravity vector.
         /// </summary>
         /// <value>The gravity.</value>
         public Vector2 Gravity
         {
-            get { return _gravity; }
-            set 
+            get => _gravity;
+            set
             {
                 if (IsLocked)
                     throw new InvalidOperationException("The World is locked.");
                 _gravity = value;
             }
         }
-        
+
         /// <summary>
-        /// Is the world locked (in the middle of a time step).
-        /// </summary>        
+        ///     Is the world locked (in the middle of a time step).
+        /// </summary>
         public bool IsLocked { get; private set; }
 
         /// <summary>
-        /// Get the contact manager for testing.
+        ///     Get the contact manager for testing.
         /// </summary>
         /// <value>The contact manager.</value>
         public readonly ContactManager ContactManager;
 
         /// <summary>
-        /// Get the world body list.
+        ///     Get the world body list.
         /// </summary>
         /// <value>The head of the world body list.</value>
         public readonly BodyCollection BodyList;
@@ -873,33 +893,30 @@ namespace Alis.Core.Physic.Dynamics
 #endif
 
         /// <summary>
-        /// Get the world joint list. 
+        ///     Get the world joint list.
         /// </summary>
         /// <value>The joint list.</value>
         public readonly JointCollection JointList;
 
         /// <summary>
-        /// Get the world contact list. 
-        /// ContactList is the head of a circular linked list. Use Contact.Next to get
-        /// the next contact in the world list. A contact equal to ContactList indicates the end of the list.
+        ///     Get the world contact list.
+        ///     ContactList is the head of a circular linked list. Use Contact.Next to get
+        ///     the next contact in the world list. A contact equal to ContactList indicates the end of the list.
         /// </summary>
         /// <value>The head of the world contact list.</value>
         /// <example>for (Contact c = World.ContactList.Next; c != World..ContactList; c = c.Next)</example>
-        public ContactListHead ContactList
-        {
-            get { return ContactManager.ContactList; }
-        }
+        public ContactListHead ContactList => ContactManager.ContactList;
 
         /// <summary>
-        /// If false, the whole simulation stops. It still processes added and removed geometries.
+        ///     If false, the whole simulation stops. It still processes added and removed geometries.
         /// </summary>
         public bool Enabled { get; set; }
 
-        public Island Island { get; private set; }
+        public Island Island { get; }
 
         /// <summary>
-        /// Add a rigid body.
-        /// Warning: This method is locked during callbacks.
+        ///     Add a rigid body.
+        ///     Warning: This method is locked during callbacks.
         /// </summary>
         /// <exception cref="System.InvalidOperationException">Thrown when the world is Locked/Stepping.</exception>
         public virtual void Add(Body body)
@@ -914,17 +931,17 @@ namespace Alis.Core.Physic.Dynamics
                 throw new ArgumentException("body belongs to another world.", "body");
 
 #if USE_AWAKE_BODY_SET
-                    Debug.Assert(!body.IsDisposed);
-                    if (body.Awake)
-                    {
-                        if (!AwakeBodySet.Contains(body))
-                            AwakeBodySet.Add(body);
-                    }
-                    else
-                    {
-                        if (AwakeBodySet.Contains(body))
-                            AwakeBodySet.Remove(body);
-                    }
+            Debug.Assert(!body.IsDisposed);
+            if (body.Awake)
+            {
+                if (!AwakeBodySet.Contains(body))
+                    AwakeBodySet.Add(body);
+            }
+            else
+            {
+                if (AwakeBodySet.Contains(body))
+                    AwakeBodySet.Remove(body);
+            }
 #endif
 
             body._world = this;
@@ -947,7 +964,7 @@ namespace Alis.Core.Physic.Dynamics
             var bodyAddedHandler = BodyAdded;
             if (bodyAddedHandler != null)
                 bodyAddedHandler(this, body);
-            
+
             var fixtureAddedHandler = FixtureAdded;
             if (fixtureAddedHandler != null)
                 for (int i = 0; i < body.FixtureList._list.Count; i++)
@@ -955,9 +972,9 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Destroy a rigid body.
-        /// Warning: This automatically deletes all associated shapes and joints.
-        /// Warning: This method is locked during callbacks.
+        ///     Destroy a rigid body.
+        ///     Warning: This automatically deletes all associated shapes and joints.
+        ///     Warning: This method is locked during callbacks.
         /// </summary>
         /// <param name="body">The body.</param>
         /// <exception cref="System.InvalidOperationException">Thrown when the world is Locked/Stepping.</exception>
@@ -983,6 +1000,7 @@ namespace Alis.Core.Physic.Dynamics
 
                 Remove(je0.Joint);
             }
+
             body.JointList = null;
 
             // Delete the attached contacts.
@@ -993,6 +1011,7 @@ namespace Alis.Core.Physic.Dynamics
                 ce = ce.Next;
                 ContactManager.Destroy(ce0.Contact);
             }
+
             body.ContactList = null;
 
             // remove the attached contact callbacks
@@ -1018,10 +1037,10 @@ namespace Alis.Core.Physic.Dynamics
             Debug.Assert(!AwakeBodySet.Contains(body));
 #endif
         }
-        
+
         /// <summary>
-        /// Create a joint to constrain bodies together. This may cause the connected bodies to cease colliding.
-        /// Warning: This method is locked during callbacks.
+        ///     Create a joint to constrain bodies together. This may cause the connected bodies to cease colliding.
+        ///     Warning: This method is locked during callbacks.
         /// </summary>
         /// <param name="joint">The joint.</param>
         /// <exception cref="System.InvalidOperationException">Thrown when the world is Locked/Stepping.</exception>
@@ -1092,10 +1111,10 @@ namespace Alis.Core.Physic.Dynamics
 
             // Note: creating a joint doesn't wake the bodies.
         }
-        
+
         /// <summary>
-        /// Destroy a joint. This may cause the connected bodies to begin colliding.
-        /// Warning: This method is locked during callbacks.
+        ///     Destroy a joint. This may cause the connected bodies to begin colliding.
+        ///     Warning: This method is locked during callbacks.
         /// </summary>
         /// <param name="joint">The joint.</param>
         /// <exception cref="System.InvalidOperationException">Thrown when the world is Locked/Stepping.</exception>
@@ -1198,6 +1217,7 @@ namespace Alis.Core.Physic.Dynamics
 
 
         #region LEGACY_ASYNCADDREMOVE
+
 #if LEGACY_ASYNCADDREMOVE
         /// <summary>
         /// Add a rigid body.
@@ -1267,7 +1287,7 @@ namespace Alis.Core.Physic.Dynamics
             else
                 Add(joint);
         }
-        
+
         /// <summary>
         /// Destroy a joint. This may cause the connected bodies to begin colliding.
         /// </summary>
@@ -1287,7 +1307,7 @@ namespace Alis.Core.Physic.Dynamics
             else
                 Remove(joint);
         }
-        
+
         /// <summary>
         /// All Async adds and removes are cached by the World during a World step.
         /// To process the changes before the world updates again, call this method.
@@ -1301,7 +1321,7 @@ namespace Alis.Core.Physic.Dynamics
                     Add(body);
                 _bodyAddList.Clear();
             }
-            
+
             // ProcessAddedJoints
             if (_jointAddList.Count > 0)
             {
@@ -1332,33 +1352,34 @@ namespace Alis.Core.Physic.Dynamics
 #endif
         }
 #endif
+
         #endregion // LEGACY_ASYNCADDREMOVE
 
-        
+
         /// <summary>
-        /// Take a time step. This performs collision detection, integration,
-        /// and consraint solution.
+        ///     Take a time step. This performs collision detection, integration,
+        ///     and consraint solution.
         /// </summary>
         /// <param name="dt">The amount of time to simulate, this should not vary.</param>
         public void Step(TimeSpan dt)
         {
-            Step((float)dt.TotalSeconds);
+            Step((float) dt.TotalSeconds);
         }
 
         /// <summary>
-        /// Take a time step. This performs collision detection, integration,
-        /// and consraint solution.
+        ///     Take a time step. This performs collision detection, integration,
+        ///     and consraint solution.
         /// </summary>
         /// <param name="dt">The amount of time to simulate, this should not vary.</param>
         public void Step(TimeSpan dt, ref SolverIterations iterations)
         {
-            Step((float)dt.TotalSeconds, ref iterations);
+            Step((float) dt.TotalSeconds, ref iterations);
         }
 
         /// <summary>
-        /// Take a time step. This performs collision detection, integration,
-        /// and consraint solution.
-        /// Warning: This method is locked during callbacks.
+        ///     Take a time step. This performs collision detection, integration,
+        ///     and consraint solution.
+        ///     Warning: This method is locked during callbacks.
         /// </summary>
         /// <param name="dt">The amount of time to simulate in seconds, this should not vary.</param>
         /// <exception cref="System.InvalidOperationException">Thrown when the world is Locked/Stepping.</exception>
@@ -1373,9 +1394,9 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Take a time step. This performs collision detection, integration,
-        /// and consraint solution.
-        /// Warning: This method is locked during callbacks.
+        ///     Take a time step. This performs collision detection, integration,
+        ///     and consraint solution.
+        ///     Warning: This method is locked during callbacks.
         /// </summary>
         /// <param name="dt">The amount of time to simulate in seconds, this should not vary.</param>
         /// <exception cref="System.InvalidOperationException">Thrown when the world is Locked/Stepping.</exception>
@@ -1402,6 +1423,7 @@ namespace Alis.Core.Physic.Dynamics
                 ContactManager.FindNewContacts();
                 _worldHasNewFixture = false;
             }
+
             if (Settings.EnableDiagnostics)
                 NewContactsTime = TimeSpan.FromTicks(_watch.ElapsedTicks) - AddRemoveTime;
 
@@ -1410,7 +1432,7 @@ namespace Alis.Core.Physic.Dynamics
             step.positionIterations = iterations.PositionIterations;
             step.velocityIterations = iterations.VelocityIterations;
             step.dt = dt;
-            step.inv_dt = (dt > 0.0f) ? (1.0f / dt) : 0.0f;
+            step.inv_dt = dt > 0.0f ? 1.0f / dt : 0.0f;
             step.dtRatio = _invDt0 * dt;
             step.warmStarting = _warmStarting;
 
@@ -1422,6 +1444,7 @@ namespace Alis.Core.Physic.Dynamics
                 {
                     ControllerList._list[i].Update(dt);
                 }
+
                 if (Settings.EnableDiagnostics)
                     ControllersUpdateTime = TimeSpan.FromTicks(_watch.ElapsedTicks) - (AddRemoveTime + NewContactsTime);
 
@@ -1431,18 +1454,20 @@ namespace Alis.Core.Physic.Dynamics
                     ContactsUpdateTime = TimeSpan.FromTicks(_watch.ElapsedTicks) - (AddRemoveTime + NewContactsTime + ControllersUpdateTime);
 
                 // Integrate velocities, solve velocity constraints, and integrate positions.
-                if (_stepComplete && step.dt > 0.0f)
+                if (_stepComplete && (step.dt > 0.0f))
                 {
                     Solve(ref step);
                 }
+
                 if (Settings.EnableDiagnostics)
                     SolveUpdateTime = TimeSpan.FromTicks(_watch.ElapsedTicks) - (AddRemoveTime + NewContactsTime + ControllersUpdateTime + ContactsUpdateTime);
 
                 // Handle TOI events.
-                if (Settings.ContinuousPhysics && step.dt > 0.0f)
+                if (Settings.ContinuousPhysics && (step.dt > 0.0f))
                 {
                     SolveTOI(ref step, ref iterations);
                 }
+
                 if (Settings.EnableDiagnostics)
                     ContinuousPhysicsTime = TimeSpan.FromTicks(_watch.ElapsedTicks) - (AddRemoveTime + NewContactsTime + ControllersUpdateTime + ContactsUpdateTime + SolveUpdateTime);
 
@@ -1466,9 +1491,9 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Call this after you are done with time steps to clear the forces. You normally
-        /// call this after each call to Step, unless you are performing sub-steps. By default,
-        /// forces will be automatically cleared, so you don't need to call this function.
+        ///     Call this after you are done with time steps to clear the forces. You normally
+        ///     call this after each call to Step, unless you are performing sub-steps. By default,
+        ///     forces will be automatically cleared, so you don't need to call this function.
         /// </summary>
         public void ClearForces()
         {
@@ -1481,11 +1506,10 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Query the world for all fixtures that potentially overlap the provided AABB.
-        /// 
-        /// Inside the callback:
-        /// Return true: Continues the query
-        /// Return false: Terminate the query
+        ///     Query the world for all fixtures that potentially overlap the provided AABB.
+        ///     Inside the callback:
+        ///     Return true: Continues the query
+        ///     Return false: Terminate the query
         /// </summary>
         /// <param name="callback">A user implemented callback class.</param>
         /// <param name="aabb">The aabb query box.</param>
@@ -1495,11 +1519,10 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Query the world for all fixtures that potentially overlap the provided AABB.
-        /// 
-        /// Inside the callback:
-        /// Return true: Continues the query
-        /// Return false: Terminate the query
+        ///     Query the world for all fixtures that potentially overlap the provided AABB.
+        ///     Inside the callback:
+        ///     Return true: Continues the query
+        ///     Return false: Terminate the query
         /// </summary>
         /// <param name="callback">A user implemented callback class.</param>
         /// <param name="aabb">The aabb query box.</param>
@@ -1517,15 +1540,14 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Ray-cast the world for all fixtures in the path of the ray. Your callback
-        /// controls whether you get the closest point, any point, or n-points.
-        /// The ray-cast ignores shapes that contain the starting point.
-        /// 
-        /// Inside the callback:
-        /// return -1: ignore this fixture and continue
-        /// return 0: terminate the ray cast
-        /// return fraction: clip the ray to this point
-        /// return 1: don't clip the ray and continue
+        ///     Ray-cast the world for all fixtures in the path of the ray. Your callback
+        ///     controls whether you get the closest point, any point, or n-points.
+        ///     The ray-cast ignores shapes that contain the starting point.
+        ///     Inside the callback:
+        ///     return -1: ignore this fixture and continue
+        ///     return 0: terminate the ray cast
+        ///     return fraction: clip the ray to this point
+        ///     return 1: don't clip the ray and continue
         /// </summary>
         /// <param name="callback">A user implemented callback class.</param>
         /// <param name="point1">The ray starting point.</param>
@@ -1561,7 +1583,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Warning: This method is locked during callbacks.
+        ///     Warning: This method is locked during callbacks.
         /// </summary>
         /// <exception cref="System.InvalidOperationException">Thrown when the world is Locked/Stepping.</exception>
         public void Add(Controller controller)
@@ -1585,7 +1607,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Warning: This method is locked during callbacks.
+        ///     Warning: This method is locked during callbacks.
         /// </summary>
         /// <exception cref="System.InvalidOperationException">Thrown when the world is Locked/Stepping.</exception>
         public void Remove(Controller controller)
@@ -1595,7 +1617,7 @@ namespace Alis.Core.Physic.Dynamics
             if (controller == null)
                 throw new ArgumentNullException("controller");
             if (controller.World != this)
-                    throw new ArgumentException("You are removing a controller that is not in the simulation.", "controller");
+                throw new ArgumentException("You are removing a controller that is not in the simulation.", "controller");
 
             controller.World = null;
             ControllerList._list.Remove(controller);
@@ -1657,7 +1679,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Warning: This method is locked during callbacks.
+        ///     Warning: This method is locked during callbacks.
         /// </summary>
         /// <exception cref="System.InvalidOperationException">Thrown when the world is Locked/Stepping.</exception>
         public void Clear()
@@ -1678,7 +1700,6 @@ namespace Alis.Core.Physic.Dynamics
             {
                 Remove(ControllerList._list[i]);
             }
-
         }
     }
 }

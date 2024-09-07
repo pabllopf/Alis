@@ -74,7 +74,7 @@ namespace Alis.Sample.King.Platform
                     .Build())
                 .World(sceneManager => sceneManager
                     .Add<Scene>(gameScene => gameScene
-                            
+
                         // PLAYER
                         .Add<GameObject>(player => player
                             .Name("King")
@@ -154,7 +154,7 @@ namespace Alis.Sample.King.Platform
                                 .Resolution(640, 480)
                                 .Build())
                             .Build())
-                        
+
                         // FLOOR
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Floor")

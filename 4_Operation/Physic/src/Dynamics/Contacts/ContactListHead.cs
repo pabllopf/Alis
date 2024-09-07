@@ -1,4 +1,31 @@
-﻿// Copyright (c) 2017 Kastellanos Nikolaos
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:ContactListHead.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
 
 using System.Collections;
 using System.Collections.Generic;
@@ -6,63 +33,56 @@ using System.Collections.Generic;
 namespace Alis.Core.Physic.Dynamics.Contacts
 {
     /// <summary>
-    /// Head of a circular doubly linked list.
+    ///     Head of a circular doubly linked list.
     /// </summary>
-    public class ContactListHead : Contact , IEnumerable<Contact>
+    public class ContactListHead : Contact, IEnumerable<Contact>
     {
-        internal ContactListHead(): base(null, 0, null, 0)
+        internal ContactListHead() : base(null, 0, null, 0)
         {
-            this.Prev = this;
-            this.Next = this;
-        }
-        
-        IEnumerator<Contact> IEnumerable<Contact>.GetEnumerator()
-        {
-            return new ContactEnumerator(this);
+            Prev = this;
+            Next = this;
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return new ContactEnumerator(this);
-        }
+        IEnumerator<Contact> IEnumerable<Contact>.GetEnumerator() => new ContactEnumerator(this);
 
-        
+        IEnumerator IEnumerable.GetEnumerator() => new ContactEnumerator(this);
+
+
         #region Nested type: ContactEnumerator
 
         private struct ContactEnumerator : IEnumerator<Contact>
         {
             private ContactListHead _head;
-            private Contact _current;
 
-            public Contact Current { get { return _current; } }
-            object IEnumerator.Current { get { return _current; } }
+            public Contact Current { get; private set; }
+
+            object IEnumerator.Current => Current;
 
 
             public ContactEnumerator(ContactListHead contact)
             {
                 _head = contact;
-                 _current = _head;
+                Current = _head;
             }
 
             public void Reset()
             {
-                _current = _head;
+                Current = _head;
             }
 
             public bool MoveNext()
             {
-                _current = _current.Next;
-                return (_current != _head);
+                Current = Current.Next;
+                return Current != _head;
             }
 
             public void Dispose()
             {
                 _head = null;
-                _current = null;
+                Current = null;
             }
         }
 
         #endregion
-
     }
 }

@@ -46,7 +46,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Io io = new Io();
             Assert.Equal(default(EmulateThreeButtonMouse), io.EmulateThreeButtonMouse);
         }
-        
+
         /// <summary>
         ///     Tests that link detach with modifier click should be initialized
         /// </summary>
@@ -56,7 +56,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             Io io = new Io();
             Assert.Equal(default(LinkDetachWithModifierClick), io.LinkDetachWithModifierClick);
         }
-        
+
         /// <summary>
         ///     Tests that emulate three button mouse should set and get correctly
         /// </summary>
@@ -68,7 +68,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             io.EmulateThreeButtonMouse = value;
             Assert.Equal(value, io.EmulateThreeButtonMouse);
         }
-        
+
         /// <summary>
         ///     Tests that link detach with modifier click should set and get correctly
         /// </summary>

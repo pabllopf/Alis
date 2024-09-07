@@ -46,7 +46,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
             MockManager manager = new MockManager();
             manager.OnEnable();
         }
-        
+
         /// <summary>
         ///     Tests that test on init
         /// </summary>
@@ -56,7 +56,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
             MockManager manager = new MockManager();
             manager.OnInit();
         }
-        
+
         /// <summary>
         ///     Tests that test on awake
         /// </summary>
@@ -66,7 +66,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
             MockManager manager = new MockManager();
             manager.OnAwake();
         }
-        
+
         /// <summary>
         ///     Tests that test on start
         /// </summary>
@@ -76,7 +76,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
             MockManager manager = new MockManager();
             manager.OnStart();
         }
-        
+
         /// <summary>
         ///     Tests that test on before update
         /// </summary>
@@ -86,7 +86,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
             MockManager manager = new MockManager();
             manager.OnBeforeUpdate();
         }
-        
+
         /// <summary>
         ///     Tests that test on update
         /// </summary>
@@ -96,7 +96,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
             MockManager manager = new MockManager();
             manager.OnUpdate();
         }
-        
+
         /// <summary>
         ///     Tests that test on after update
         /// </summary>
@@ -106,7 +106,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
             MockManager manager = new MockManager();
             manager.OnAfterUpdate();
         }
-        
+
         /// <summary>
         ///     Tests that test on before fixed update
         /// </summary>
@@ -116,7 +116,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
             MockManager manager = new MockManager();
             manager.OnBeforeFixedUpdate();
         }
-        
+
         /// <summary>
         ///     Tests that test on fixed update
         /// </summary>
@@ -126,7 +126,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
             MockManager manager = new MockManager();
             manager.OnFixedUpdate();
         }
-        
+
         /// <summary>
         ///     Tests that test on after fixed update
         /// </summary>
@@ -136,7 +136,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
             MockManager manager = new MockManager();
             manager.OnAfterFixedUpdate();
         }
-        
+
         /// <summary>
         ///     Tests that test on dispatch events
         /// </summary>
@@ -146,7 +146,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
             MockManager manager = new MockManager();
             manager.OnDispatchEvents();
         }
-        
+
         /// <summary>
         ///     Tests that test on calculate
         /// </summary>
@@ -156,7 +156,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
             MockManager manager = new MockManager();
             manager.OnCalculate();
         }
-        
+
         /// <summary>
         ///     Tests that test on draw
         /// </summary>
@@ -166,7 +166,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
             MockManager manager = new MockManager();
             manager.OnDraw();
         }
-        
+
         /// <summary>
         ///     Tests that test on gui
         /// </summary>
@@ -176,7 +176,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
             MockManager manager = new MockManager();
             manager.OnGui();
         }
-        
+
         /// <summary>
         ///     Tests that test on disable
         /// </summary>
@@ -186,7 +186,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
             MockManager manager = new MockManager();
             manager.OnDisable();
         }
-        
+
         /// <summary>
         ///     Tests that test on reset
         /// </summary>
@@ -196,7 +196,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
             MockManager manager = new MockManager();
             manager.OnReset();
         }
-        
+
         /// <summary>
         ///     Tests that test on stop
         /// </summary>
@@ -206,7 +206,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
             MockManager manager = new MockManager();
             manager.OnStop();
         }
-        
+
         /// <summary>
         ///     Tests that test on exit
         /// </summary>
@@ -216,7 +216,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
             MockManager manager = new MockManager();
             manager.OnExit();
         }
-        
+
         /// <summary>
         ///     Tests that test on destroy
         /// </summary>
@@ -226,7 +226,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
             MockManager manager = new MockManager();
             manager.OnDestroy();
         }
-        
+
         /// <summary>
         ///     Tests that is enable property set get returns correct value
         /// </summary>
@@ -237,7 +237,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
             manager.IsEnable = true;
             Assert.True(manager.IsEnable);
         }
-        
+
         /// <summary>
         ///     Tests that name property set get returns correct value
         /// </summary>
@@ -248,7 +248,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
             manager.Name = "TestManager";
             Assert.Equal("TestManager", manager.Name);
         }
-        
+
         /// <summary>
         ///     Tests that id property set get returns correct value
         /// </summary>
@@ -259,7 +259,7 @@ namespace Alis.Test.Core.Ecs.System.Manager
             manager.Id = "TestId";
             Assert.Equal("TestId", manager.Id);
         }
-        
+
         /// <summary>
         ///     Tests that tag property set get returns correct value
         /// </summary>

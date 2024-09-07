@@ -47,7 +47,7 @@ namespace Alis.Extension.Profile.Test
             Assert.True(profilerService.GetProfileData().CpuUsage > 0);
             Assert.True(profilerService.GetProfileData().MemoryUsage > 0);
         }
-        
+
         /// <summary>
         ///     Tests that stop profiling returns profile data with cpu and memory usage
         /// </summary>
@@ -61,7 +61,7 @@ namespace Alis.Extension.Profile.Test
             Assert.True(profileData.CpuUsage > 0);
             Assert.True(profileData.MemoryUsage > 0);
         }
-        
+
         /// <summary>
         ///     Tests that get cpu usage returns positive value
         /// </summary>
@@ -73,7 +73,7 @@ namespace Alis.Extension.Profile.Test
             double cpuUsage = profilerService.GetCpuUsage();
             Assert.True(cpuUsage > 0);
         }
-        
+
         /// <summary>
         ///     Tests that get memory usage returns positive value
         /// </summary>

@@ -47,7 +47,7 @@ namespace Alis.Core.Network.Test
             MemoryStream buffer = bufferPool.GetBuffer();
             Assert.IsType<PublicBufferMemoryStream>(buffer);
         }
-        
+
         /// <summary>
         ///     Tests that get buffer should return different instances
         /// </summary>
@@ -59,7 +59,7 @@ namespace Alis.Core.Network.Test
             MemoryStream buffer2 = bufferPool.GetBuffer();
             Assert.NotSame(buffer1, buffer2);
         }
-        
+
         /// <summary>
         ///     Tests that get buffer should return pooled memory stream
         /// </summary>

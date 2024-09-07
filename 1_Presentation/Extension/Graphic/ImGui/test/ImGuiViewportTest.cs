@@ -47,7 +47,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiViewport viewport = new ImGuiViewport();
             Assert.Equal(0u, viewport.Id);
         }
-        
+
         /// <summary>
         ///     Tests that flags should be initialized
         /// </summary>
@@ -57,7 +57,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiViewport viewport = new ImGuiViewport();
             Assert.Equal(default(ImGuiViewportFlags), viewport.Flags);
         }
-        
+
         /// <summary>
         ///     Tests that pos should be initialized
         /// </summary>
@@ -67,7 +67,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiViewport viewport = new ImGuiViewport();
             Assert.Equal(default(Vector2), viewport.Pos);
         }
-        
+
         /// <summary>
         ///     Tests that size should be initialized
         /// </summary>
@@ -77,7 +77,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiViewport viewport = new ImGuiViewport();
             Assert.Equal(default(Vector2), viewport.Size);
         }
-        
+
         /// <summary>
         ///     Tests that work pos should be initialized
         /// </summary>
@@ -87,7 +87,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiViewport viewport = new ImGuiViewport();
             Assert.Equal(default(Vector2), viewport.WorkPos);
         }
-        
+
         /// <summary>
         ///     Tests that work size should be initialized
         /// </summary>
@@ -97,7 +97,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiViewport viewport = new ImGuiViewport();
             Assert.Equal(default(Vector2), viewport.WorkSize);
         }
-        
+
         /// <summary>
         ///     Tests that dpi scale should be initialized
         /// </summary>
@@ -107,7 +107,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiViewport viewport = new ImGuiViewport();
             Assert.Equal(0f, viewport.DpiScale);
         }
-        
+
         /// <summary>
         ///     Tests that parent viewport id should be initialized
         /// </summary>
@@ -117,7 +117,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiViewport viewport = new ImGuiViewport();
             Assert.Equal(0u, viewport.ParentViewportId);
         }
-        
+
         /// <summary>
         ///     Tests that draw data should be initialized
         /// </summary>
@@ -127,7 +127,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiViewport viewport = new ImGuiViewport();
             Assert.Equal(IntPtr.Zero, viewport.DrawData);
         }
-        
+
         /// <summary>
         ///     Tests that renderer user data should be initialized
         /// </summary>
@@ -137,7 +137,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiViewport viewport = new ImGuiViewport();
             Assert.Equal(IntPtr.Zero, viewport.RendererUserData);
         }
-        
+
         /// <summary>
         ///     Tests that platform user data should be initialized
         /// </summary>
@@ -147,7 +147,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiViewport viewport = new ImGuiViewport();
             Assert.Equal(IntPtr.Zero, viewport.PlatformUserData);
         }
-        
+
         /// <summary>
         ///     Tests that platform handle should be initialized
         /// </summary>
@@ -157,7 +157,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiViewport viewport = new ImGuiViewport();
             Assert.Equal(IntPtr.Zero, viewport.PlatformHandle);
         }
-        
+
         /// <summary>
         ///     Tests that platform handle raw should be initialized
         /// </summary>
@@ -167,7 +167,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiViewport viewport = new ImGuiViewport();
             Assert.Equal(IntPtr.Zero, viewport.PlatformHandleRaw);
         }
-        
+
         /// <summary>
         ///     Tests that platform window created should be initialized
         /// </summary>
@@ -177,7 +177,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiViewport viewport = new ImGuiViewport();
             Assert.Equal((byte) 0, viewport.PlatformWindowCreated);
         }
-        
+
         /// <summary>
         ///     Tests that platform request move should be initialized
         /// </summary>
@@ -187,7 +187,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiViewport viewport = new ImGuiViewport();
             Assert.Equal((byte) 0, viewport.PlatformRequestMove);
         }
-        
+
         /// <summary>
         ///     Tests that platform request resize should be initialized
         /// </summary>
@@ -197,7 +197,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiViewport viewport = new ImGuiViewport();
             Assert.Equal((byte) 0, viewport.PlatformRequestResize);
         }
-        
+
         /// <summary>
         ///     Tests that platform request close should be initialized
         /// </summary>
@@ -207,7 +207,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImGuiViewport viewport = new ImGuiViewport();
             Assert.Equal((byte) 0, viewport.PlatformRequestClose);
         }
-        
+
         /// <summary>
         ///     Tests that id set and get returns correct value
         /// </summary>
@@ -219,7 +219,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.Id = value;
             Assert.Equal(value, obj.Id);
         }
-        
+
         /// <summary>
         ///     Tests that flags set and get returns correct value
         /// </summary>
@@ -231,7 +231,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.Flags = value;
             Assert.Equal(value, obj.Flags);
         }
-        
+
         /// <summary>
         ///     Tests that pos set and get returns correct value
         /// </summary>
@@ -243,7 +243,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.Pos = value;
             Assert.Equal(value, obj.Pos);
         }
-        
+
         /// <summary>
         ///     Tests that size set and get returns correct value
         /// </summary>
@@ -255,7 +255,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.Size = value;
             Assert.Equal(value, obj.Size);
         }
-        
+
         /// <summary>
         ///     Tests that work pos set and get returns correct value
         /// </summary>
@@ -267,7 +267,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.WorkPos = value;
             Assert.Equal(value, obj.WorkPos);
         }
-        
+
         /// <summary>
         ///     Tests that work size set and get returns correct value
         /// </summary>
@@ -279,7 +279,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.WorkSize = value;
             Assert.Equal(value, obj.WorkSize);
         }
-        
+
         /// <summary>
         ///     Tests that dpi scale set and get returns correct value
         /// </summary>
@@ -291,7 +291,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.DpiScale = value;
             Assert.Equal(value, obj.DpiScale);
         }
-        
+
         /// <summary>
         ///     Tests that parent viewport id set and get returns correct value
         /// </summary>
@@ -303,7 +303,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.ParentViewportId = value;
             Assert.Equal(value, obj.ParentViewportId);
         }
-        
+
         /// <summary>
         ///     Tests that draw data set and get returns correct value
         /// </summary>
@@ -315,7 +315,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.DrawData = value;
             Assert.Equal(value, obj.DrawData);
         }
-        
+
         /// <summary>
         ///     Tests that renderer user data set and get returns correct value
         /// </summary>
@@ -327,7 +327,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.RendererUserData = value;
             Assert.Equal(value, obj.RendererUserData);
         }
-        
+
         /// <summary>
         ///     Tests that platform user data set and get returns correct value
         /// </summary>
@@ -339,7 +339,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.PlatformUserData = value;
             Assert.Equal(value, obj.PlatformUserData);
         }
-        
+
         /// <summary>
         ///     Tests that platform handle set and get returns correct value
         /// </summary>
@@ -351,7 +351,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.PlatformHandle = value;
             Assert.Equal(value, obj.PlatformHandle);
         }
-        
+
         /// <summary>
         ///     Tests that platform handle raw set and get returns correct value
         /// </summary>
@@ -363,7 +363,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.PlatformHandleRaw = value;
             Assert.Equal(value, obj.PlatformHandleRaw);
         }
-        
+
         /// <summary>
         ///     Tests that platform window created set and get returns correct value
         /// </summary>
@@ -375,7 +375,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.PlatformWindowCreated = value;
             Assert.Equal(value, obj.PlatformWindowCreated);
         }
-        
+
         /// <summary>
         ///     Tests that platform request move set and get returns correct value
         /// </summary>
@@ -387,7 +387,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.PlatformRequestMove = value;
             Assert.Equal(value, obj.PlatformRequestMove);
         }
-        
+
         /// <summary>
         ///     Tests that platform request resize set and get returns correct value
         /// </summary>
@@ -399,7 +399,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             obj.PlatformRequestResize = value;
             Assert.Equal(value, obj.PlatformRequestResize);
         }
-        
+
         /// <summary>
         ///     Tests that platform request close set and get returns correct value
         /// </summary>

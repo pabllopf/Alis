@@ -51,7 +51,7 @@ namespace Alis.Core.Network.Test
         ///     The web socket server factory
         /// </summary>
         private IWebSocketServerFactory _webSocketServerFactory;
-        
+
         /// <summary>
         ///     Tests that connect async valid input
         /// </summary>
@@ -62,15 +62,15 @@ namespace Alis.Core.Network.Test
             _webSocketServerFactory = new WebSocketServerFactory();
             StartWebServer(cts.Token, 8081);
             Uri uri = new Uri("ws://localhost:8081");
-            
+
             WebSocketClientFactory factory = new WebSocketClientFactory();
-            
-            
+
+
             WebSocket result = await factory.ConnectAsync(uri);
-            
+
             await result.CloseAsync(WebSocketCloseStatus.NormalClosure, "", new CancellationToken());
         }
-        
+
         /// <summary>
         ///     Starts the web server using the specified cts token
         /// </summary>
@@ -91,7 +91,7 @@ namespace Alis.Core.Network.Test
                 Logger.Exception(ex.ToString());
             }
         }
-        
+
         /// <summary>
         ///     Tests that connect async with custom buffer factory
         /// </summary>
@@ -102,13 +102,13 @@ namespace Alis.Core.Network.Test
             _webSocketServerFactory = new WebSocketServerFactory();
             StartWebServer(cts.Token, 27416);
             Uri uri = new Uri("ws://localhost:8081");
-            
+
             WebSocketClientFactory factory = new WebSocketClientFactory(() => new MemoryStream());
-            
+
             await factory.ConnectAsync(uri);
         }
-        
-        
+
+
         /// <summary>
         ///     Tests that dispose closes web socket
         /// </summary>
@@ -117,11 +117,11 @@ namespace Alis.Core.Network.Test
         {
             WebSocketClientFactory factory = new WebSocketClientFactory();
             Uri uri = new Uri("ws://localhost:8080");
-            
+
             Task<WebSocket> webSocket = factory.ConnectAsync(uri);
             factory.Dispose();
         }
-        
+
         /// <summary>
         ///     Tests that validate server certificate should return true when ssl policy errors none
         /// </summary>
@@ -131,7 +131,7 @@ namespace Alis.Core.Network.Test
             bool result = WebSocketClientFactory.ValidateServerCertificate(null, null, null, SslPolicyErrors.None);
             Assert.True(result);
         }
-        
+
         /// <summary>
         ///     Tests that validate server certificate should return false when ssl policy errors not none
         /// </summary>
@@ -141,7 +141,7 @@ namespace Alis.Core.Network.Test
             bool result = WebSocketClientFactory.ValidateServerCertificate(null, null, null, SslPolicyErrors.RemoteCertificateNotAvailable);
             Assert.False(result);
         }
-        
+
         /// <summary>
         ///     Tests that get additional headers should return empty string when additional headers is null
         /// </summary>
@@ -151,7 +151,7 @@ namespace Alis.Core.Network.Test
             string result = WebSocketClientFactory.GetAdditionalHeaders(null);
             Assert.Equal(string.Empty, result);
         }
-        
+
         /// <summary>
         ///     Tests that get additional headers should return correct string when additional headers is not null
         /// </summary>
@@ -163,13 +163,13 @@ namespace Alis.Core.Network.Test
                 {"TestKey1", "TestValue1"},
                 {"TestKey2", "TestValue2"}
             };
-            
+
             string result = WebSocketClientFactory.GetAdditionalHeaders(additionalHeaders);
             string expected = "TestKey1: TestValue1\r\nTestKey2: TestValue2\r\n";
-            
+
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that validate server certificate should return true when ssl policy errors none v 2
         /// </summary>
@@ -179,7 +179,7 @@ namespace Alis.Core.Network.Test
             bool result = WebSocketClientFactory.ValidateServerCertificate(null, null, null, SslPolicyErrors.None);
             Assert.True(result);
         }
-        
+
         /// <summary>
         ///     Tests that validate server certificate should return false when ssl policy errors not none v 2
         /// </summary>
@@ -189,7 +189,7 @@ namespace Alis.Core.Network.Test
             bool result = WebSocketClientFactory.ValidateServerCertificate(null, null, null, SslPolicyErrors.RemoteCertificateNotAvailable);
             Assert.False(result);
         }
-        
+
         /// <summary>
         ///     Tests that get additional headers should return empty string when additional headers is null v 2
         /// </summary>
@@ -199,7 +199,7 @@ namespace Alis.Core.Network.Test
             string result = WebSocketClientFactory.GetAdditionalHeaders(null);
             Assert.Equal(string.Empty, result);
         }
-        
+
         /// <summary>
         ///     Tests that get additional headers should return correct string when additional headers is not null v 2
         /// </summary>
@@ -211,13 +211,13 @@ namespace Alis.Core.Network.Test
                 {"TestKey1", "TestValue1"},
                 {"TestKey2", "TestValue2"}
             };
-            
+
             string result = WebSocketClientFactory.GetAdditionalHeaders(additionalHeaders);
             string expected = "TestKey1: TestValue1\r\nTestKey2: TestValue2\r\n";
-            
+
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that connect async should return web socket when stream is open
         /// </summary>
@@ -228,10 +228,10 @@ namespace Alis.Core.Network.Test
             WebSocketClientOptions options = new WebSocketClientOptions();
             string secWebSocketKey = "dGhlIHNhbXBsZSBub25jZQ=="; // Sample key
             MemoryStream stream = new MemoryStream();
-            
+
             await Assert.ThrowsAsync<InvalidHttpResponseCodeException>(() => factory.ConnectAsync(stream, secWebSocketKey, options));
         }
-        
+
         /// <summary>
         ///     Tests that connect async should throw exception when stream is closed
         /// </summary>
@@ -243,10 +243,10 @@ namespace Alis.Core.Network.Test
             string secWebSocketKey = "dGhlIHNhbXBsZSBub25jZQ=="; // Sample key
             MemoryStream stream = new MemoryStream();
             stream.Close();
-            
+
             await Assert.ThrowsAsync<WebSocketHandshakeFailedException>(() => factory.ConnectAsync(stream, secWebSocketKey, options));
         }
-        
+
         /// <summary>
         ///     Tests that get sub protocol from header should return correct sub protocol when response contains sub protocol
         /// </summary>
@@ -259,12 +259,12 @@ namespace Alis.Core.Network.Test
                               "Connection: Upgrade\r\n" +
                               "Sec-WebSocket-Accept: s3pPLMBiTxaQ9kYGzzhZRbK+xOo=\r\n" +
                               "Sec-WebSocket-Protocol: chat\r\n\r\n";
-            
+
             string result = factory.GetSubProtocolFromHeader(response);
-            
+
             Assert.Equal("chat", result);
         }
-        
+
         /// <summary>
         ///     Tests that get sub protocol from header should return null when response does not contain sub protocol
         /// </summary>
@@ -276,12 +276,12 @@ namespace Alis.Core.Network.Test
                               "Upgrade: websocket\r\n" +
                               "Connection: Upgrade\r\n" +
                               "Sec-WebSocket-Accept: s3pPLMBiTxaQ9kYGzzhZRbK+xOo=\r\n\r\n";
-            
+
             string result = factory.GetSubProtocolFromHeader(response);
-            
+
             Assert.Null(result);
         }
-        
+
         /// <summary>
         ///     Tests that throw if invalid accept string should throw exception when accept string is invalid
         /// </summary>
@@ -291,10 +291,10 @@ namespace Alis.Core.Network.Test
             WebSocketClientFactory factory = new WebSocketClientFactory();
             string response = "Sec-WebSocket-Accept: invalid_accept_string";
             string secWebSocketKey = "dGhlIHNhbXBsZSBub25jZQ=="; // Sample key
-            
+
             Assert.Throws<WebSocketHandshakeFailedException>(() => factory.ThrowIfInvalidAcceptString(Guid.NewGuid(), response, secWebSocketKey));
         }
-        
+
         /// <summary>
         ///     Tests that throw if invalid accept string should not throw exception when accept string is valid
         /// </summary>
@@ -305,11 +305,11 @@ namespace Alis.Core.Network.Test
             string secWebSocketKey = "dGhlIHNhbXBsZSBub25jZQ=="; // Sample key
             string validAcceptString = HttpHelper.ComputeSocketAcceptString(secWebSocketKey);
             string response = $"Sec-WebSocket-Accept: {validAcceptString}";
-            
+
             Exception exception = Record.Exception(() => factory.ThrowIfInvalidAcceptString(Guid.NewGuid(), response, secWebSocketKey));
             Assert.Null(exception);
         }
-        
+
         /// <summary>
         ///     Tests that generate sec web socket key should return valid base 64 string
         /// </summary>
@@ -319,18 +319,18 @@ namespace Alis.Core.Network.Test
             WebSocketClientFactory factory = new WebSocketClientFactory();
             string result = factory.GenerateSecWebSocketKey();
             byte[] bytes = Convert.FromBase64String(result);
-            
+
             Assert.NotNull(result);
             Assert.NotEmpty(result);
-            
+
             // Check if the result is a valid Base64 string
             int base64Bytes;
             Assert.True(Convert.TryFromBase64String(result, bytes, out base64Bytes));
-            
+
             // Check if the length of the byte array is 16
             Assert.Equal(16, base64Bytes);
         }
-        
+
         /// <summary>
         ///     Tests that tls authenticate as client test
         /// </summary>
@@ -341,7 +341,7 @@ namespace Alis.Core.Network.Test
             string host = "localhost";
             Assert.Throws<IOException>(() => webSocketClientFactory.TlsAuthenticateAsClient(new SslStream(new NetworkStream(new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp))), host));
         }
-        
+
         /// <summary>
         ///     Tests that send handshake request test
         /// </summary>
@@ -359,16 +359,16 @@ namespace Alis.Core.Network.Test
                                           "Sec-WebSocket-Protocol: chat\r\n" +
                                           "Sec-WebSocket-Version: 13\r\n\r\n";
             MemoryStream stream = new MemoryStream();
-            
+
             await webSocketClientFactory.SendHandshakeRequest(stream, handshakeHttpRequest, guid);
-            
+
             stream.Position = 0;
             StreamReader reader = new StreamReader(stream);
             string result = await reader.ReadToEndAsync();
-            
+
             Assert.Equal(handshakeHttpRequest, result);
         }
-        
+
         /// <summary>
         ///     Tests that build handshake request test
         /// </summary>
@@ -380,9 +380,9 @@ namespace Alis.Core.Network.Test
             string secWebSocketKey = "dGhlIHNhbXBsZSBub25jZQ=="; // Sample key
             string secWebSocketProtocol = "chat";
             string additionalHeaders = "Additional-Header: Value\r\n";
-            
+
             string result = webSocketClientFactory.BuildHandshakeRequest(uri, secWebSocketKey, secWebSocketProtocol, additionalHeaders);
-            
+
             string expected = "GET / HTTP/1.1\r\n" +
                               "Host: localhost:80\r\n" +
                               "Upgrade: websocket\r\n" +
@@ -392,10 +392,10 @@ namespace Alis.Core.Network.Test
                               "Sec-WebSocket-Protocol: chat\r\n" +
                               "Additional-Header: Value\r\n" +
                               "Sec-WebSocket-Version: 13\r\n\r\n";
-            
+
             Assert.Equal(expected, result);
         }
-        
+
         /// <summary>
         ///     Tests that perform handshake test
         /// </summary>
@@ -407,7 +407,7 @@ namespace Alis.Core.Network.Test
             Uri uri = new Uri("http://localhost:80");
             MemoryStream stream = new MemoryStream();
             WebSocketClientOptions options = new WebSocketClientOptions();
-            
+
             await Assert.ThrowsAsync<InvalidHttpResponseCodeException>(() => webSocketClientFactory.PerformHandshake(guid, uri, stream, options, CancellationToken.None));
         }
     }

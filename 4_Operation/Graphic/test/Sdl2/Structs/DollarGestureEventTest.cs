@@ -51,7 +51,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
             float expectedError = 0.1f;
             float expectedX = 0.5f;
             float expectedY = 0.75f;
-            
+
             DollarGestureEvent eventStruct = new DollarGestureEvent
             {
                 type = expectedType,
@@ -63,7 +63,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
                 x = expectedX,
                 y = expectedY
             };
-            
+
             Assert.Equal(expectedType, eventStruct.type);
             Assert.Equal(expectedTimestamp, eventStruct.timestamp);
             Assert.Equal(expectedTouchId, eventStruct.touchId);

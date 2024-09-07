@@ -45,7 +45,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     <c>true</c> if this instance's owner must be ignored when serializing; otherwise, <c>false</c>.
         /// </value>
         public bool IgnoreWhenSerializing { get; } = true;
-        
+
         /// <summary>
         ///     Gets or sets a value indicating whether to ignore this instance's owner when deserializing.
         /// </summary>

@@ -45,10 +45,10 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Audio
         public void AudioRecorderBuilder_DefaultConstructor_ValidInput()
         {
             AudioRecorderBuilder audioRecorderBuilder = new AudioRecorderBuilder();
-            
+
             Assert.NotNull(audioRecorderBuilder);
         }
-        
+
         /// <summary>
         ///     Tests that build valid input
         /// </summary>
@@ -56,9 +56,9 @@ namespace Alis.Test.Builder.Core.Ecs.Component.Audio
         public void Build_ValidInput()
         {
             AudioRecorderBuilder audioRecorderBuilder = new AudioRecorderBuilder();
-            
+
             AudioRecorder audioRecorder = audioRecorderBuilder.Build();
-            
+
             Assert.NotNull(audioRecorder);
         }
     }

@@ -54,19 +54,19 @@ namespace Alis.Extension.Updater
         ///     The file service
         /// </summary>
         private readonly IFileService _fileService;
-        
+
         /// <summary>
         ///     The git hub api service
         /// </summary>
         private readonly IGitHubApiService _gitHubApiService;
-        
+
         /// <summary>
         ///     The program folder
         /// </summary>
         private readonly string _programFolder;
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="UpdateManager"/> class
+        ///     Initializes a new instance of the <see cref="UpdateManager" /> class
         /// </summary>
         /// <param name="gitHubApiService">The git hub api service</param>
         /// <param name="fileService">The file service</param>
@@ -77,22 +77,22 @@ namespace Alis.Extension.Updater
             _fileService = fileService;
             _programFolder = programFolder;
         }
-        
+
         /// <summary>
         ///     Gets or sets the value of the progress
         /// </summary>
         public float Progress { get; private set; }
-        
+
         /// <summary>
         ///     Gets or sets the value of the message
         /// </summary>
         public string Message { get; private set; }
-        
+
         /// <summary>
         ///     Event handler for the update progress
         /// </summary>
         public event UpdateProgressEventHandler UpdateProgressChanged;
-        
+
         /// <summary>
         ///     Ons the update progress changed using the specified progress
         /// </summary>
@@ -104,7 +104,7 @@ namespace Alis.Extension.Updater
             Progress = progress;
             Message = message;
         }
-        
+
         /// <summary>
         ///     Updates the game
         /// </summary>
@@ -115,16 +115,16 @@ namespace Alis.Extension.Updater
             {
                 Dictionary<string, object> latestRelease = await GetLatestReleaseAsync();
                 if (latestRelease == null) return false;
-                
+
                 string platform = GetPlatform();
                 string architecture = RuntimeInformation.OSArchitecture.ToString().ToLower();
-                
+
                 Logger.Info($"{platform}-{architecture} platform detected");
                 OnUpdateProgressChanged(0.1f, $"{platform}-{architecture} platform detected");
                 WaitForContinue();
-                
+
                 object[] assets = (object[]) latestRelease["assets"];
-                
+
                 Dictionary<string, object> selectedAsset = SelectAsset(assets, platform, architecture);
                 if (selectedAsset == null)
                 {
@@ -132,27 +132,27 @@ namespace Alis.Extension.Updater
                     Logger.Info("No compatible package found.");
                     return false;
                 }
-                
+
                 string downloadUrl = selectedAsset["browser_download_url"]?.ToString();
                 string version = latestRelease["tag_name"]?.ToString();
                 Logger.Info($"The latest version available is {version}");
                 OnUpdateProgressChanged(0.2f, $"The latest version available is {version}");
-                
+
                 // wait 1 second
                 WaitForContinue();
                 Logger.Info($"Downloading package for {platform}-{architecture}...");
                 OnUpdateProgressChanged(0.3f, $"Downloading package for {platform}-{architecture}...");
-                
+
                 // wait 1 second
                 WaitForContinue();
                 if (downloadUrl != null)
                 {
                     string fileName = Path.GetFileName(new Uri(downloadUrl).AbsolutePath);
                     string filePath = Path.Combine(Environment.CurrentDirectory, fileName);
-                    
+
                     OnUpdateProgressChanged(0.4f, "Checking if the latest version is already installed...");
                     WaitForContinue();
-                    
+
                     // Verificar si ya está descargada la última versión
                     if (File.Exists(filePath))
                     {
@@ -163,11 +163,11 @@ namespace Alis.Extension.Updater
                         return true;
                     }
                 }
-                
+
                 OnUpdateProgressChanged(0.5f, $"Downloading the latest version '{version}'");
                 Logger.Info($"Downloading the latest version '{version}'");
                 WaitForContinue();
-                
+
                 string fileAsync = await DownloadFileAsync(downloadUrl);
                 if (string.IsNullOrEmpty(fileAsync))
                 {
@@ -176,16 +176,16 @@ namespace Alis.Extension.Updater
                     WaitForContinue();
                     return false;
                 }
-                
+
                 //Backup the current program:
                 Backup();
-                
+
                 OnUpdateProgressChanged(0.6f, "Installing the latest version...");
                 Logger.Info($"Installing the latest version '{version}'");
                 WaitForContinue();
-                
+
                 ExtractAndReplace(fileAsync);
-                
+
                 CleanTempFile();
                 OnUpdateProgressChanged(1, "Update completed successfully.");
                 Logger.Info("Update completed successfully.");
@@ -197,7 +197,7 @@ namespace Alis.Extension.Updater
                 throw new Exception($"Error updating program: {ex.Message}");
             }
         }
-        
+
         /// <summary>
         ///     Backups this instance
         /// </summary>
@@ -210,35 +210,35 @@ namespace Alis.Extension.Updater
                 Thread.Sleep(1000);
                 return;
             }
-            
+
             Logger.Info("Doing backup...");
             OnUpdateProgressChanged(0.7f, "Doing backup...");
-            
+
             string backupPath = Path.Combine(Environment.CurrentDirectory, "Backup_" + DateTime.Now.ToString("yyyyMMddHHmmss"));
             Directory.Move(_programFolder, backupPath);
-            
+
             WaitForContinue();
-            
+
             OnUpdateProgressChanged(0.72f, "Folder moved to backup.");
             Logger.Info("Folder moved to backup.");
-            
+
             WaitForContinue();
-            
+
             // Comprimir el backup:
             string zipBackupPath = Path.Combine(Environment.CurrentDirectory, "Backup_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".zip");
             ZipFile.CreateFromDirectory(backupPath, zipBackupPath);
             Directory.Delete(backupPath, true);
             Logger.Info("Backup compressed.");
             OnUpdateProgressChanged(0.75f, "Backup compressed.");
-            
+
             WaitForContinue();
-            
+
             // Mantener solo los 2 backups más recientes
             List<FileInfo> backupFiles = Directory.GetFiles(Environment.CurrentDirectory, "Backup_*.zip")
                 .Select(file => new FileInfo(file))
                 .OrderByDescending(fi => fi.CreationTime)
                 .ToList();
-            
+
             if (backupFiles.Count > 2)
             {
                 foreach (FileInfo file in backupFiles.Skip(2))
@@ -250,7 +250,7 @@ namespace Alis.Extension.Updater
                 }
             }
         }
-        
+
         /// <summary>
         ///     Gets the platform
         /// </summary>
@@ -263,8 +263,8 @@ namespace Alis.Extension.Updater
             if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX)) return "osx";
             throw new PlatformNotSupportedException("Platform not supported.");
         }
-        
-        
+
+
         /// <summary>
         ///     Selects the asset using the specified assets
         /// </summary>
@@ -283,10 +283,10 @@ namespace Alis.Extension.Updater
                     return asset;
                 }
             }
-            
+
             return null;
         }
-        
+
         /// <summary>
         ///     Gets the latest release
         /// </summary>
@@ -298,7 +298,7 @@ namespace Alis.Extension.Updater
             string response = await client.GetStringAsync("https://api.github.com/repos/pabllopf/alis/releases/latest");
             return JsonSerializer.Deserialize<Dictionary<string, object>>(response);
         }
-        
+
         /// <summary>
         ///     Downloads the file using the specified url
         /// </summary>
@@ -308,17 +308,17 @@ namespace Alis.Extension.Updater
         {
             string fileName = Path.GetFileName(new Uri(url).AbsolutePath);
             string filePath = Path.Combine(Environment.CurrentDirectory, fileName);
-            
+
             using HttpClient client = new HttpClient();
             using HttpResponseMessage response = await client.GetAsync(url);
             using FileStream fs = new FileStream(filePath, FileMode.CreateNew);
             await response.Content.CopyToAsync(fs);
-            
+
             OnUpdateProgressChanged(0.5f, "Download completed.");
-            
+
             return filePath;
         }
-        
+
         /// <summary>
         ///     Extracts the and replace using the specified file async
         /// </summary>
@@ -333,7 +333,7 @@ namespace Alis.Extension.Updater
                 Logger.Info("Extracted and replaced .zip file.");
                 return;
             }
-            
+
             if (fileAsync.Contains(".dmg"))
             {
                 ExtractDmg(fileAsync);
@@ -341,10 +341,10 @@ namespace Alis.Extension.Updater
                 Logger.Info("Extracted and replaced .dmg file.");
                 return;
             }
-            
+
             throw new InvalidOperationException("The file has an invalid extension.");
         }
-        
+
         /// <summary>
         ///     Extracts the dmg using the specified file async
         /// </summary>
@@ -353,37 +353,37 @@ namespace Alis.Extension.Updater
         {
             // Define the path where the .dmg will be mounted
             string mountPath = Path.Combine("/Volumes", Path.GetFileNameWithoutExtension(fileAsync));
-            
+
             // Mount the .dmg file
             ExecuteShellCommand($"hdiutil attach \"{fileAsync}\" -nobrowse -mountpoint \"{mountPath}\"");
             OnUpdateProgressChanged(0.82f, "Mounted .dmg file.");
             Logger.Info("Mounted .dmg file.");
-            
+
             WaitForContinue();
-            
+
             // Assuming _programFolder is the destination where you want to copy the contents of the .dmg
             if (!Directory.Exists(_programFolder))
             {
                 Directory.CreateDirectory(_programFolder);
             }
-            
+
             WaitForContinue();
-            
+
             OnUpdateProgressChanged(0.85f, "Copying contents from .dmg to target directory...");
             Logger.Info("Copying contents from .dmg to target directory...");
-            
+
             // Copy the contents from the mounted .dmg to the target directory
             ExecuteShellCommand($"cp -R \"{mountPath}/.\" \"{_programFolder}\"");
-            
-            
+
+
             WaitForContinue();
-            
+
             // Unmount the .dmg file
             OnUpdateProgressChanged(0.88f, "Unmounting .dmg file...");
             Logger.Info("Unmounting .dmg file...");
             ExecuteShellCommand($"hdiutil detach \"{mountPath}\"");
         }
-        
+
         /// <summary>
         ///     Waits the for continue
         /// </summary>
@@ -391,7 +391,7 @@ namespace Alis.Extension.Updater
         {
             Thread.Sleep(1000);
         }
-        
+
         /// <summary>
         ///     Executes the shell command using the specified command
         /// </summary>
@@ -407,12 +407,12 @@ namespace Alis.Extension.Updater
                 process.StartInfo.UseShellExecute = false;
                 process.StartInfo.CreateNoWindow = true;
                 process.Start();
-                
+
                 process.WaitForExit();
             }
         }
-        
-        
+
+
         /// <summary>
         ///     Extracts the zip using the specified file async
         /// </summary>
@@ -425,7 +425,7 @@ namespace Alis.Extension.Updater
             ZipFile.ExtractToDirectory(fileAsync, _programFolder);
             OnUpdateProgressChanged(0.7f, "Extracted and replaced.");
         }
-        
+
         /// <summary>
         ///     Cleans the backup
         /// </summary>
@@ -445,7 +445,7 @@ namespace Alis.Extension.Updater
                     WaitForContinue();
                 }
             }
-            
+
             files = Directory.GetFiles(Environment.CurrentDirectory, "*.dmg");
             foreach (string file in files)
             {

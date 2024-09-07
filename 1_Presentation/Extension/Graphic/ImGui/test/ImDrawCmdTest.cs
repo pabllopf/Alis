@@ -46,14 +46,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImDrawCmd drawCmd = new ImDrawCmd {ClipRect = new Vector4(1.0f, 2.0f, 3.0f, 4.0f)};
-            
+
             // Act
             Vector4 clipRect = drawCmd.ClipRect;
-            
+
             // Assert
             Assert.Equal(new Vector4(1.0f, 2.0f, 3.0f, 4.0f), clipRect);
         }
-        
+
         /// <summary>
         ///     Tests that texture id should be initialized correctly
         /// </summary>
@@ -62,14 +62,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImDrawCmd drawCmd = new ImDrawCmd {TextureId = new IntPtr(123)};
-            
+
             // Act
             IntPtr textureId = drawCmd.TextureId;
-            
+
             // Assert
             Assert.Equal(new IntPtr(123), textureId);
         }
-        
+
         /// <summary>
         ///     Tests that vtx offset should be initialized correctly
         /// </summary>
@@ -78,14 +78,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImDrawCmd drawCmd = new ImDrawCmd {VtxOffset = 10};
-            
+
             // Act
             uint vtxOffset = drawCmd.VtxOffset;
-            
+
             // Assert
             Assert.Equal(10u, vtxOffset);
         }
-        
+
         /// <summary>
         ///     Tests that idx offset should be initialized correctly
         /// </summary>
@@ -94,14 +94,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImDrawCmd drawCmd = new ImDrawCmd {IdxOffset = 20};
-            
+
             // Act
             uint idxOffset = drawCmd.IdxOffset;
-            
+
             // Assert
             Assert.Equal(20u, idxOffset);
         }
-        
+
         /// <summary>
         ///     Tests that elem count should be initialized correctly
         /// </summary>
@@ -110,14 +110,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImDrawCmd drawCmd = new ImDrawCmd {ElemCount = 30};
-            
+
             // Act
             uint elemCount = drawCmd.ElemCount;
-            
+
             // Assert
             Assert.Equal(30u, elemCount);
         }
-        
+
         /// <summary>
         ///     Tests that user callback should be initialized correctly
         /// </summary>
@@ -126,14 +126,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImDrawCmd drawCmd = new ImDrawCmd {UserCallback = new IntPtr(456)};
-            
+
             // Act
             IntPtr userCallback = drawCmd.UserCallback;
-            
+
             // Assert
             Assert.Equal(new IntPtr(456), userCallback);
         }
-        
+
         /// <summary>
         ///     Tests that user callback data should be initialized correctly
         /// </summary>
@@ -142,14 +142,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImDrawCmd drawCmd = new ImDrawCmd {UserCallbackData = new IntPtr(789)};
-            
+
             // Act
             IntPtr userCallbackData = drawCmd.UserCallbackData;
-            
+
             // Assert
             Assert.Equal(new IntPtr(789), userCallbackData);
         }
-        
+
         /// <summary>
         ///     Tests that get clip rect should return correct value
         /// </summary>
@@ -158,14 +158,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImDrawCmd drawCmd = new ImDrawCmd {ClipRect = new Vector4(1.0f, 2.0f, 3.0f, 4.0f)};
-            
+
             // Act
             Vector4 clipRect = drawCmd.GetClipRect();
-            
+
             // Assert
             Assert.Equal(new Vector4(1.0f, 2.0f, 3.0f, 4.0f), clipRect);
         }
-        
+
         /// <summary>
         ///     Tests that get texture id should return correct value
         /// </summary>
@@ -174,14 +174,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImDrawCmd drawCmd = new ImDrawCmd {TextureId = new IntPtr(123)};
-            
+
             // Act
             IntPtr textureId = drawCmd.GetTextureId();
-            
+
             // Assert
             Assert.Equal(new IntPtr(123), textureId);
         }
-        
+
         /// <summary>
         ///     Tests that get vtx offset should return correct value
         /// </summary>
@@ -190,14 +190,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImDrawCmd drawCmd = new ImDrawCmd {VtxOffset = 10};
-            
+
             // Act
             uint vtxOffset = drawCmd.GetVtxOffset();
-            
+
             // Assert
             Assert.Equal(10u, vtxOffset);
         }
-        
+
         /// <summary>
         ///     Tests that get idx offset should return correct value
         /// </summary>
@@ -206,14 +206,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImDrawCmd drawCmd = new ImDrawCmd {IdxOffset = 20};
-            
+
             // Act
             uint idxOffset = drawCmd.GetIdxOffset();
-            
+
             // Assert
             Assert.Equal(20u, idxOffset);
         }
-        
+
         /// <summary>
         ///     Tests that get elem count should return correct value
         /// </summary>
@@ -222,14 +222,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImDrawCmd drawCmd = new ImDrawCmd {ElemCount = 30};
-            
+
             // Act
             uint elemCount = drawCmd.GetElemCount();
-            
+
             // Assert
             Assert.Equal(30u, elemCount);
         }
-        
+
         /// <summary>
         ///     Tests that get user callback should return correct value
         /// </summary>
@@ -238,14 +238,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImDrawCmd drawCmd = new ImDrawCmd {UserCallback = new IntPtr(456)};
-            
+
             // Act
             IntPtr userCallback = drawCmd.GetUserCallback();
-            
+
             // Assert
             Assert.Equal(new IntPtr(456), userCallback);
         }
-        
+
         /// <summary>
         ///     Tests that get user callback data should return correct value
         /// </summary>
@@ -254,14 +254,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
         {
             // Arrange
             ImDrawCmd drawCmd = new ImDrawCmd {UserCallbackData = new IntPtr(789)};
-            
+
             // Act
             IntPtr userCallbackData = drawCmd.GetUserCallbackData();
-            
+
             // Assert
             Assert.Equal(new IntPtr(789), userCallbackData);
         }
-        
+
         /// <summary>
         ///     Tests that set user callback data should set correct value
         /// </summary>
@@ -271,14 +271,14 @@ namespace Alis.Extension.Graphic.ImGui.Test
             // Arrange
             ImDrawCmd drawCmd = new ImDrawCmd();
             IntPtr value = new IntPtr(789);
-            
+
             // Act
             drawCmd.SetUserCallbackData(value);
-            
+
             // Assert
             Assert.Equal(value, drawCmd.UserCallbackData);
         }
-        
+
         /// <summary>
         ///     Tests that get clip rect returns clip rect
         /// </summary>
@@ -288,7 +288,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawCmd cmd = new ImDrawCmd {ClipRect = new Vector4(1, 2, 3, 4)};
             Assert.Equal(new Vector4(1, 2, 3, 4), cmd.GetClipRect());
         }
-        
+
         /// <summary>
         ///     Tests that get texture id returns texture id
         /// </summary>
@@ -298,7 +298,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawCmd cmd = new ImDrawCmd {TextureId = new IntPtr(123)};
             Assert.Equal(new IntPtr(123), cmd.GetTextureId());
         }
-        
+
         /// <summary>
         ///     Tests that get vtx offset returns vtx offset
         /// </summary>
@@ -308,7 +308,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawCmd cmd = new ImDrawCmd {VtxOffset = 123};
             Assert.Equal((uint) 123, cmd.GetVtxOffset());
         }
-        
+
         /// <summary>
         ///     Tests that get idx offset returns idx offset
         /// </summary>
@@ -318,7 +318,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawCmd cmd = new ImDrawCmd {IdxOffset = 123};
             Assert.Equal((uint) 123, cmd.GetIdxOffset());
         }
-        
+
         /// <summary>
         ///     Tests that get elem count returns elem count
         /// </summary>
@@ -328,7 +328,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawCmd cmd = new ImDrawCmd {ElemCount = 123};
             Assert.Equal((uint) 123, cmd.GetElemCount());
         }
-        
+
         /// <summary>
         ///     Tests that get user callback returns user callback
         /// </summary>
@@ -338,7 +338,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawCmd cmd = new ImDrawCmd {UserCallback = new IntPtr(123)};
             Assert.Equal(new IntPtr(123), cmd.GetUserCallback());
         }
-        
+
         /// <summary>
         ///     Tests that get user callback data returns user callback data
         /// </summary>
@@ -348,7 +348,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             ImDrawCmd cmd = new ImDrawCmd {UserCallbackData = new IntPtr(123)};
             Assert.Equal(new IntPtr(123), cmd.GetUserCallbackData());
         }
-        
+
         /// <summary>
         ///     Tests that set user callback data sets user callback data
         /// </summary>
@@ -360,7 +360,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             cmd.SetUserCallbackData(ptr);
             Assert.Equal(ptr, cmd.GetUserCallbackData());
         }
-        
+
         /// <summary>
         ///     Tests that get tex id returns tex id
         /// </summary>

@@ -36,7 +36,6 @@ using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component.Collider;
 using Alis.Core.Ecs.Component.Render;
-using Alis.Core.Ecs.Entity;
 using Alis.Core.Ecs.System.Setting;
 using Alis.Core.Ecs.System.Setting.Physic;
 using Alis.Core.Graphic.Sdl2;
@@ -54,6 +53,8 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
     /// <seealso cref="AManager" />
     public class GraphicManager : AManager
     {
+        private const float PixelsPerMeter = 32.0f;
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="GraphicManager" /> class
         /// </summary>
@@ -273,8 +274,6 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Sprites = Sprites.OrderBy(o => o.Depth).ToList();
         }
 
-        private const float PixelsPerMeter = 32.0f;
-
         public override void OnUpdate()
         {
             if (Context is null)
@@ -329,8 +328,8 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
 
             Sdl.RenderPresent(renderer);
         }
-              
-      
+
+
         /// <summary>
         ///     Attaches the sprite
         /// </summary>

@@ -34,39 +34,42 @@ using System.Threading;
 namespace Alis.Benchmark.Helper
 {
     /// <summary>
-    /// The benchmark helper class
+    ///     The benchmark helper class
     /// </summary>
     public static class BenchmarkHelper
     {
         /// <summary>
-        /// Measures the action
+        ///     Measures the action
         /// </summary>
         /// <param name="action">The action</param>
         /// <exception cref="Exception">The method took {elapsedMilliseconds} ms, which exceeds the limit of {maxMilliseconds} ms.</exception>
-        /// <exception cref="Exception">The method used {memoryUsed} bytes of memory, which exceeds the limit of {maxMemoryBytes} bytes.</exception>
+        /// <exception cref="Exception">
+        ///     The method used {memoryUsed} bytes of memory, which exceeds the limit of {maxMemoryBytes}
+        ///     bytes.
+        /// </exception>
         public static BenchmarkResult Measure(Action action)
         {
             // Warm-up
             action();
-            
+
             GC.Collect();
             GC.WaitForPendingFinalizers();
             GC.Collect();
-            
+
             ThreadPriority originalPriority = Thread.CurrentThread.Priority;
             Thread.CurrentThread.Priority = ThreadPriority.Highest;
-            
+
             try
             {
                 long startTimestamp = Stopwatch.GetTimestamp();
-                action(); 
+                action();
                 long endTimestamp = Stopwatch.GetTimestamp();
-                
+
                 double elapsedNanoseconds = (endTimestamp - startTimestamp) * (1_000_000_000.0 / Stopwatch.Frequency);
-                
-                return new BenchmarkResult()
+
+                return new BenchmarkResult
                 {
-                    ElapsedMilliseconds = (long)elapsedNanoseconds / 1_000_000,
+                    ElapsedMilliseconds = (long) elapsedNanoseconds / 1_000_000,
                     ElapsedNanoseconds = elapsedNanoseconds
                 };
             }
@@ -75,6 +78,5 @@ namespace Alis.Benchmark.Helper
                 Thread.CurrentThread.Priority = originalPriority;
             }
         }
-
     }
 }

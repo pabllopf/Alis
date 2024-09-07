@@ -1,12 +1,41 @@
-﻿/* Original source Farseer Physics Engine:
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:SeidelDecomposer.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+/* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
 
 /*
-* Farseer Physics Engine:
-* Copyright (c) 2012 Ian Qvist
-*/
+ * Farseer Physics Engine:
+ * Copyright (c) 2012 Ian Qvist
+ */
 
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -20,31 +49,26 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 namespace Alis.Core.Physic.Common.Decomposition
 {
     /// <summary>
-    /// Convex decomposition algorithm created by Raimund Seidel
-    /// 
-    /// Properties:
-    /// - Decompose the polygon into trapezoids, then triangulate.
-    /// - To use the trapezoid data, use ConvexPartitionTrapezoid()
-    /// - Generate a lot of garbage due to incapsulation of the Poly2Tri library.
-    /// - Running time is O(n log n), n = number of vertices.
-    /// - Running time is almost linear for most simple polygons.
-    /// - Does not care about winding order. 
-    /// 
-    /// For more information, see Raimund Seidel's paper "A simple and fast incremental randomized
-    /// algorithm for computing trapezoidal decompositions and for triangulating polygons"
-    /// 
-    /// See also: "Computational Geometry", 3rd edition, by Mark de Berg et al, Chapter 6.2
-    ///           "Computational Geometry in C", 2nd edition, by Joseph O'Rourke
-    /// 
-    /// Original code from the Poly2Tri project by Mason Green.
-    /// http://code.google.com/p/poly2tri/source/browse?repo=archive#hg/scala/src/org/poly2tri/seidel
-    /// 
-    /// This implementation is from Dec 14, 2010
+    ///     Convex decomposition algorithm created by Raimund Seidel
+    ///     Properties:
+    ///     - Decompose the polygon into trapezoids, then triangulate.
+    ///     - To use the trapezoid data, use ConvexPartitionTrapezoid()
+    ///     - Generate a lot of garbage due to incapsulation of the Poly2Tri library.
+    ///     - Running time is O(n log n), n = number of vertices.
+    ///     - Running time is almost linear for most simple polygons.
+    ///     - Does not care about winding order.
+    ///     For more information, see Raimund Seidel's paper "A simple and fast incremental randomized
+    ///     algorithm for computing trapezoidal decompositions and for triangulating polygons"
+    ///     See also: "Computational Geometry", 3rd edition, by Mark de Berg et al, Chapter 6.2
+    ///     "Computational Geometry in C", 2nd edition, by Joseph O'Rourke
+    ///     Original code from the Poly2Tri project by Mason Green.
+    ///     http://code.google.com/p/poly2tri/source/browse?repo=archive#hg/scala/src/org/poly2tri/seidel
+    ///     This implementation is from Dec 14, 2010
     /// </summary>
     internal static class SeidelDecomposer
     {
         /// <summary>
-        /// Decompose the polygon into several smaller non-concave polygons.
+        ///     Decompose the polygon into several smaller non-concave polygons.
         /// </summary>
         /// <param name="vertices">The polygon to decompose.</param>
         /// <param name="sheer">The sheer to use if you get bad results, try using a higher value.</param>
@@ -80,7 +104,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         }
 
         /// <summary>
-        /// Decompose the polygon into several smaller non-concave polygons.
+        ///     Decompose the polygon into several smaller non-concave polygons.
         /// </summary>
         /// <param name="vertices">The polygon to decompose.</param>
         /// <param name="sheer">The sheer to use if you get bad results, try using a higher value.</param>

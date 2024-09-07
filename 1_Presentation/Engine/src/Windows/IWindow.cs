@@ -40,7 +40,7 @@ namespace Alis.App.Engine.Windows
         ///     Initializes this instance
         /// </summary>
         public void Initialize();
-        
+
         /// <summary>
         ///     Starts this instance
         /// </summary>

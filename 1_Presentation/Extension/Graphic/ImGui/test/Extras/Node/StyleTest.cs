@@ -48,7 +48,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             style.GridSpacing = value;
             Assert.Equal(value, style.GridSpacing);
         }
-        
+
         /// <summary>
         ///     Tests that node corner rounding should set and get correctly
         /// </summary>
@@ -60,7 +60,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             style.NodeCornerRounding = value;
             Assert.Equal(value, style.NodeCornerRounding);
         }
-        
+
         /// <summary>
         ///     Tests that node padding horizontal should set and get correctly
         /// </summary>
@@ -72,7 +72,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             style.NodePaddingHorizontal = value;
             Assert.Equal(value, style.NodePaddingHorizontal);
         }
-        
+
         /// <summary>
         ///     Tests that node padding vertical should set and get correctly
         /// </summary>
@@ -84,7 +84,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             style.NodePaddingVertical = value;
             Assert.Equal(value, style.NodePaddingVertical);
         }
-        
+
         /// <summary>
         ///     Tests that node border thickness should set and get correctly
         /// </summary>
@@ -96,7 +96,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             style.NodeBorderThickness = value;
             Assert.Equal(value, style.NodeBorderThickness);
         }
-        
+
         /// <summary>
         ///     Tests that link thickness should set and get correctly
         /// </summary>
@@ -108,7 +108,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             style.LinkThickness = value;
             Assert.Equal(value, style.LinkThickness);
         }
-        
+
         /// <summary>
         ///     Tests that link line segments per length should set and get correctly
         /// </summary>
@@ -120,7 +120,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             style.LinkLineSegmentsPerLength = value;
             Assert.Equal(value, style.LinkLineSegmentsPerLength);
         }
-        
+
         /// <summary>
         ///     Tests that link hover distance should set and get correctly
         /// </summary>
@@ -132,7 +132,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             style.LinkHoverDistance = value;
             Assert.Equal(value, style.LinkHoverDistance);
         }
-        
+
         /// <summary>
         ///     Tests that pin circle radius should set and get correctly
         /// </summary>
@@ -144,7 +144,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             style.PinCircleRadius = value;
             Assert.Equal(value, style.PinCircleRadius);
         }
-        
+
         /// <summary>
         ///     Tests that pin quad side length should set and get correctly
         /// </summary>
@@ -156,7 +156,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             style.PinQuadSideLength = value;
             Assert.Equal(value, style.PinQuadSideLength);
         }
-        
+
         /// <summary>
         ///     Tests that pin triangle side length should set and get correctly
         /// </summary>
@@ -168,7 +168,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             style.PinTriangleSideLength = value;
             Assert.Equal(value, style.PinTriangleSideLength);
         }
-        
+
         /// <summary>
         ///     Tests that pin line thickness should set and get correctly
         /// </summary>
@@ -180,7 +180,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             style.PinLineThickness = value;
             Assert.Equal(value, style.PinLineThickness);
         }
-        
+
         /// <summary>
         ///     Tests that pin hover radius should set and get correctly
         /// </summary>
@@ -192,7 +192,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             style.PinHoverRadius = value;
             Assert.Equal(value, style.PinHoverRadius);
         }
-        
+
         /// <summary>
         ///     Tests that pin offset should set and get correctly
         /// </summary>
@@ -204,7 +204,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             style.PinOffset = value;
             Assert.Equal(value, style.PinOffset);
         }
-        
+
         /// <summary>
         ///     Tests that flags should set and get correctly
         /// </summary>
@@ -216,7 +216,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Extras.Node
             style.Flags = value;
             Assert.Equal(value, style.Flags);
         }
-        
+
         /// <summary>
         ///     Tests that colors should set and get correctly
         /// </summary>

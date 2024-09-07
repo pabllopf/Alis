@@ -42,27 +42,27 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     The type
         /// </summary>
         public uint type;
-        
+
         /// <summary>
         ///     The timestamp
         /// </summary>
         public uint timestamp;
-        
+
         /// <summary>
         ///     The window id
         /// </summary>
         public uint windowID;
-        
+
         /// <summary>
         ///     The code
         /// </summary>
         public int code;
-        
+
         /// <summary>
         ///     The data
         /// </summary>
         public IntPtr Data1 { get; set; }
-        
+
         /// <summary>
         ///     The data
         /// </summary>

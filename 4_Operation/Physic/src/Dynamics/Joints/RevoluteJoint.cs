@@ -1,29 +1,58 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:RevoluteJoint.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 /* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
 
 /*
-* Farseer Physics Engine:
-* Copyright (c) 2012 Ian Qvist
-* 
-* Original source Box2D:
-* Copyright (c) 2006-2011 Erin Catto http://www.box2d.org 
-* 
-* This software is provided 'as-is', without any express or implied 
-* warranty.  In no event will the authors be held liable for any damages 
-* arising from the use of this software. 
-* Permission is granted to anyone to use this software for any purpose, 
-* including commercial applications, and to alter it and redistribute it 
-* freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
-* claim that you wrote the original software. If you use this software 
-* in a product, an acknowledgment in the product documentation would be 
-* appreciated but is not required. 
-* 2. Altered source versions must be plainly marked as such, and must not be 
-* misrepresented as being the original software. 
-* 3. This notice may not be removed or altered from any source distribution. 
-*/
+ * Farseer Physics Engine:
+ * Copyright (c) 2012 Ian Qvist
+ *
+ * Original source Box2D:
+ * Copyright (c) 2006-2011 Erin Catto http://www.box2d.org
+ *
+ * This software is provided 'as-is', without any express or implied
+ * warranty.  In no event will the authors be held liable for any damages
+ * arising from the use of this software.
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely, subject to the following restrictions:
+ * 1. The origin of this software must not be misrepresented; you must not
+ * claim that you wrote the original software. If you use this software
+ * in a product, an acknowledgment in the product documentation would be
+ * appreciated but is not required.
+ * 2. Altered source versions must be plainly marked as such, and must not be
+ * misrepresented as being the original software.
+ * 3. This notice may not be removed or altered from any source distribution.
+ */
 
 using System;
 using Alis.Core.Aspect.Math.Vector;
@@ -37,50 +66,47 @@ using Vector3 = Microsoft.Xna.Framework.Vector3;
 namespace Alis.Core.Physic.Dynamics.Joints
 {
     /// <summary>
-    /// A revolute joint constrains to bodies to share a common point while they
-    /// are free to rotate about the point. The relative rotation about the shared
-    /// point is the joint angle. You can limit the relative rotation with
-    /// a joint limit that specifies a lower and upper angle. You can use a motor
-    /// to drive the relative rotation about the shared point. A maximum motor torque
-    /// is provided so that infinite forces are not generated.
+    ///     A revolute joint constrains to bodies to share a common point while they
+    ///     are free to rotate about the point. The relative rotation about the shared
+    ///     point is the joint angle. You can limit the relative rotation with
+    ///     a joint limit that specifies a lower and upper angle. You can use a motor
+    ///     to drive the relative rotation about the shared point. A maximum motor torque
+    ///     is provided so that infinite forces are not generated.
     /// </summary>
     public class RevoluteJoint : Joint
     {
-        // Solver shared
-        private Vector3 _impulse;
-        private float _motorImpulse;
+        private bool _enableLimit;
 
         private bool _enableMotor;
-        private float _maxMotorTorque;
-        private float _motorSpeed;
 
-        private bool _enableLimit;
-        private float _referenceAngle;
-        private float _lowerAngle;
-        private float _upperAngle;
+        // Solver shared
+        private Vector3 _impulse;
 
         // Solver temp
         private int _indexA;
         private int _indexB;
-        private Vector2 _rA;
-        private Vector2 _rB;
-        private Vector2 _localCenterA;
-        private Vector2 _localCenterB;
-        private float _invMassA;
-        private float _invMassB;
         private float _invIA;
         private float _invIB;
-        private Mat33 _mass;			// effective mass for point-to-point constraint.
-        private float _motorMass;	    // effective mass for motor/limit angular constraint.
+        private float _invMassA;
+        private float _invMassB;
         private LimitState _limitState;
+        private Vector2 _localCenterA;
+        private Vector2 _localCenterB;
+        private float _lowerAngle;
+        private Mat33 _mass; // effective mass for point-to-point constraint.
+        private float _maxMotorTorque;
+        private float _motorImpulse;
+        private float _motorMass; // effective mass for motor/limit angular constraint.
+        private float _motorSpeed;
+        private Vector2 _rA;
+        private Vector2 _rB;
+        private float _referenceAngle;
+        private float _upperAngle;
 
-        internal RevoluteJoint()
-        {
-            JointType = JointType.Revolute;
-        }
+        internal RevoluteJoint() => JointType = JointType.Revolute;
 
         /// <summary>
-        /// Constructor of RevoluteJoint. 
+        ///     Constructor of RevoluteJoint.
         /// </summary>
         /// <param name="bodyA">The first body.</param>
         /// <param name="bodyB">The second body.</param>
@@ -110,7 +136,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Constructor of RevoluteJoint. 
+        ///     Constructor of RevoluteJoint.
         /// </summary>
         /// <param name="bodyA">The first body.</param>
         /// <param name="bodyB">The second body.</param>
@@ -122,33 +148,33 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// The local anchor point on BodyA
+        ///     The local anchor point on BodyA
         /// </summary>
         public Vector2 LocalAnchorA { get; set; }
 
         /// <summary>
-        /// The local anchor point on BodyB
+        ///     The local anchor point on BodyB
         /// </summary>
         public Vector2 LocalAnchorB { get; set; }
 
         public override Vector2 WorldAnchorA
         {
-            get { return BodyA.GetWorldPoint(LocalAnchorA); }
-            set { LocalAnchorA = BodyA.GetLocalPoint(value); }
+            get => BodyA.GetWorldPoint(LocalAnchorA);
+            set => LocalAnchorA = BodyA.GetLocalPoint(value);
         }
 
         public override Vector2 WorldAnchorB
         {
-            get { return BodyB.GetWorldPoint(LocalAnchorB); }
-            set { LocalAnchorB = BodyB.GetLocalPoint(value); }
+            get => BodyB.GetWorldPoint(LocalAnchorB);
+            set => LocalAnchorB = BodyB.GetLocalPoint(value);
         }
 
         /// <summary>
-        /// The referance angle computed as BodyB angle minus BodyA angle.
+        ///     The referance angle computed as BodyB angle minus BodyA angle.
         /// </summary>
         public float ReferenceAngle
         {
-            get { return _referenceAngle; }
+            get => _referenceAngle;
             set
             {
                 WakeBodies();
@@ -157,28 +183,22 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Get the current joint angle in radians.
+        ///     Get the current joint angle in radians.
         /// </summary>
-        public float JointAngle
-        {
-            get { return BodyB._sweep.A - BodyA._sweep.A - ReferenceAngle; }
-        }
+        public float JointAngle => BodyB._sweep.A - BodyA._sweep.A - ReferenceAngle;
 
         /// <summary>
-        /// Get the current joint angle speed in radians per second.
+        ///     Get the current joint angle speed in radians per second.
         /// </summary>
-        public float JointSpeed
-        {
-            get { return BodyB._angularVelocity - BodyA._angularVelocity; }
-        }
+        public float JointSpeed => BodyB._angularVelocity - BodyA._angularVelocity;
 
         /// <summary>
-        /// Is the joint limit enabled?
+        ///     Is the joint limit enabled?
         /// </summary>
         /// <value><c>true</c> if [limit enabled]; otherwise, <c>false</c>.</value>
         public bool LimitEnabled
         {
-            get { return _enableLimit; }
+            get => _enableLimit;
             set
             {
                 if (_enableLimit != value)
@@ -191,11 +211,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Get the lower joint limit in radians.
+        ///     Get the lower joint limit in radians.
         /// </summary>
         public float LowerLimit
         {
-            get { return _lowerAngle; }
+            get => _lowerAngle;
             set
             {
                 if (_lowerAngle != value)
@@ -208,11 +228,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Get the upper joint limit in radians.
+        ///     Get the upper joint limit in radians.
         /// </summary>
         public float UpperLimit
         {
-            get { return _upperAngle; }
+            get => _upperAngle;
             set
             {
                 if (_upperAngle != value)
@@ -225,7 +245,60 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Set the joint limits, usually in meters.
+        ///     Is the joint motor enabled?
+        /// </summary>
+        /// <value><c>true</c> if [motor enabled]; otherwise, <c>false</c>.</value>
+        public bool MotorEnabled
+        {
+            get => _enableMotor;
+            set
+            {
+                WakeBodies();
+                _enableMotor = value;
+            }
+        }
+
+        /// <summary>
+        ///     Get or set the motor speed in radians per second.
+        /// </summary>
+        public float MotorSpeed
+        {
+            set
+            {
+                WakeBodies();
+                _motorSpeed = value;
+            }
+            get => _motorSpeed;
+        }
+
+        /// <summary>
+        ///     Get or set the maximum motor torque, usually in N-m.
+        /// </summary>
+        public float MaxMotorTorque
+        {
+            set
+            {
+                WakeBodies();
+                _maxMotorTorque = value;
+            }
+            get => _maxMotorTorque;
+        }
+
+        /// <summary>
+        ///     Get or set the current motor impulse, usually in N-m.
+        /// </summary>
+        public float MotorImpulse
+        {
+            get => _motorImpulse;
+            set
+            {
+                WakeBodies();
+                _motorImpulse = value;
+            }
+        }
+
+        /// <summary>
+        ///     Set the joint limits, usually in meters.
         /// </summary>
         /// <param name="lower">The lower limit</param>
         /// <param name="upper">The upper limit</param>
@@ -241,66 +314,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Is the joint motor enabled?
-        /// </summary>
-        /// <value><c>true</c> if [motor enabled]; otherwise, <c>false</c>.</value>
-        public bool MotorEnabled
-        {
-            get { return _enableMotor; }
-            set
-            {
-                WakeBodies();
-                _enableMotor = value;
-            }
-        }
-
-        /// <summary>
-        /// Get or set the motor speed in radians per second.
-        /// </summary>
-        public float MotorSpeed
-        {
-            set
-            {
-                WakeBodies();
-                _motorSpeed = value;
-            }
-            get { return _motorSpeed; }
-        }
-
-        /// <summary>
-        /// Get or set the maximum motor torque, usually in N-m.
-        /// </summary>
-        public float MaxMotorTorque
-        {
-            set
-            {
-                WakeBodies();
-                _maxMotorTorque = value;
-            }
-            get { return _maxMotorTorque; }
-        }
-
-        /// <summary>
-        /// Get or set the current motor impulse, usually in N-m.
-        /// </summary>
-        public float MotorImpulse
-        {
-            get { return _motorImpulse; }
-            set
-            {
-                WakeBodies();
-                _motorImpulse = value;
-            }
-        }
-
-        /// <summary>
-        /// Gets the motor torque in N-m.
+        ///     Gets the motor torque in N-m.
         /// </summary>
         /// <param name="invDt">The inverse delta time</param>
-        public float GetMotorTorque(float invDt)
-        {
-            return invDt * _motorImpulse;
-        }
+        public float GetMotorTorque(float invDt) => invDt * _motorImpulse;
 
         public override Vector2 GetReactionForce(float invDt)
         {
@@ -308,10 +325,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             return invDt * p;
         }
 
-        public override float GetReactionTorque(float invDt)
-        {
-            return invDt * _impulse.Z;
-        }
+        public override float GetReactionTorque(float invDt) => invDt * _impulse.Z;
 
         internal override void InitVelocityConstraints(ref SolverData data)
         {
@@ -350,7 +364,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float mA = _invMassA, mB = _invMassB;
             float iA = _invIA, iB = _invIB;
 
-            bool fixedRotation = (iA + iB == 0.0f);
+            bool fixedRotation = iA + iB == 0.0f;
 
             _mass.ex.X = mA + mB + _rA.Y * _rA.Y * iA + _rB.Y * _rB.Y * iB;
             _mass.ey.X = -_rA.Y * _rA.X * iA - _rB.Y * _rB.X * iB;
@@ -373,7 +387,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 _motorImpulse = 0.0f;
             }
 
-            if (_enableLimit && fixedRotation == false)
+            if (_enableLimit && (fixedRotation == false))
             {
                 float jointAngle = aB - aA - ReferenceAngle;
                 if (Math.Abs(_upperAngle - _lowerAngle) < 2.0f * Settings.AngularSlop)
@@ -386,6 +400,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                     {
                         _impulse.Z = 0.0f;
                     }
+
                     _limitState = LimitState.AtLower;
                 }
                 else if (jointAngle >= _upperAngle)
@@ -394,6 +409,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                     {
                         _impulse.Z = 0.0f;
                     }
+
                     _limitState = LimitState.AtUpper;
                 }
                 else
@@ -443,13 +459,13 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float mA = _invMassA, mB = _invMassB;
             float iA = _invIA, iB = _invIB;
 
-            bool fixedRotation = (iA + iB == 0.0f);
+            bool fixedRotation = iA + iB == 0.0f;
 
             // Solve motor constraint.
-            if (_enableMotor && _limitState != LimitState.Equal && fixedRotation == false)
+            if (_enableMotor && (_limitState != LimitState.Equal) && (fixedRotation == false))
             {
                 float Cdot = wB - wA - _motorSpeed;
-                float impulse = _motorMass * (-Cdot);
+                float impulse = _motorMass * -Cdot;
                 float oldImpulse = _motorImpulse;
                 float maxImpulse = data.step.dt * _maxMotorTorque;
                 _motorImpulse = MathUtils.Clamp(_motorImpulse + impulse, -maxImpulse, maxImpulse);
@@ -460,7 +476,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             }
 
             // Solve limit constraint.
-            if (_enableLimit && _limitState != LimitState.Inactive && fixedRotation == false)
+            if (_enableLimit && (_limitState != LimitState.Inactive) && (fixedRotation == false))
             {
                 Vector2 Cdot1 = vB + MathUtils.Cross(wB, ref _rB) - vA - MathUtils.Cross(wA, ref _rA);
                 float Cdot2 = wB - wA;
@@ -552,10 +568,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float angularError = 0.0f;
             float positionError;
 
-            bool fixedRotation = (_invIA + _invIB == 0.0f);
+            bool fixedRotation = _invIA + _invIB == 0.0f;
 
             // Solve angular limit constraint.
-            if (_enableLimit && _limitState != LimitState.Inactive && fixedRotation == false)
+            if (_enableLimit && (_limitState != LimitState.Inactive) && (fixedRotation == false))
             {
                 float angle = aB - aA - ReferenceAngle;
                 float limitImpulse = 0.0f;
@@ -623,7 +639,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.positions[_indexB].c = cB;
             data.positions[_indexB].a = aB;
 
-            return positionError <= Settings.LinearSlop && angularError <= Settings.AngularSlop;
+            return (positionError <= Settings.LinearSlop) && (angularError <= Settings.AngularSlop);
         }
     }
 }

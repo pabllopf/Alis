@@ -1,4 +1,33 @@
-﻿/* Original source Farseer Physics Engine:
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Triangulator.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+/* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
@@ -10,17 +39,18 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
 {
     internal class Triangulator
     {
+        // Initialize trapezoidal map and query structure
+        private readonly Trapezoid _boundingBox;
+        private readonly List<Edge> _edgeList;
+        private readonly QueryGraph _queryGraph;
+        private readonly float _sheer = 0.001f;
+        private readonly TrapezoidalMap _trapezoidalMap;
+
+        private readonly List<MonotoneMountain> _xMonoPoly;
+
         // Trapezoid decomposition list
         public List<Trapezoid> Trapezoids;
         public List<List<Point>> Triangles;
-
-        // Initialize trapezoidal map and query structure
-        private Trapezoid _boundingBox;
-        private List<Edge> _edgeList;
-        private QueryGraph _queryGraph;
-        private float _sheer = 0.001f;
-        private TrapezoidalMap _trapezoidalMap;
-        private List<MonotoneMountain> _xMonoPoly;
 
         public Triangulator(List<Point> polyLine, float sheer)
         {
@@ -72,12 +102,14 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
                         tList = _trapezoidalMap.Case4(t, edge);
                         _queryGraph.Case4(t.Sink, edge, tList);
                     }
+
                     // Add new trapezoids to map
                     foreach (Trapezoid y in tList)
                     {
                         _trapezoidalMap.Map.Add(y);
                     }
                 }
+
                 _trapezoidalMap.Clear();
             }
 
@@ -153,6 +185,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             {
                 edges.Add(new Edge(points[i], points[i + 1]));
             }
+
             edges.Add(new Edge(points[0], points[points.Count - 1]));
             return OrderSegments(edges);
         }
@@ -200,9 +233,6 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
 
         // Prevents any two distinct endpoints from lying on a common vertical line, and avoiding
         // the degenerate case. See Mark de Berg et al, Chapter 6.3
-        private Point ShearTransform(Point point)
-        {
-            return new Point(point.X + _sheer * point.Y, point.Y);
-        }
+        private Point ShearTransform(Point point) => new Point(point.X + _sheer * point.Y, point.Y);
     }
 }

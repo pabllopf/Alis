@@ -42,13 +42,13 @@ namespace Alis.Extension.Graphic.ImGui
         ///     The data
         /// </summary>
         public readonly IntPtr Data;
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="NullTerminatedString" /> class
         /// </summary>
         /// <param name="data">The data</param>
         public NullTerminatedString(IntPtr data) => Data = data;
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="NullTerminatedString" /> class
         /// </summary>
@@ -59,7 +59,7 @@ namespace Alis.Extension.Graphic.ImGui
             Marshal.Copy(data, 0, Data, data.Length);
             Marshal.WriteByte(Data + data.Length, 0);
         }
-        
+
         /// <summary>
         ///     Returns the string
         /// </summary>
@@ -68,19 +68,19 @@ namespace Alis.Extension.Graphic.ImGui
         {
             if (Data == IntPtr.Zero)
                 return string.Empty;
-            
+
             int length = 0;
             while (Marshal.ReadByte(Data, length) != 0)
                 length++;
-            
+
             if (length == 0)
                 return string.Empty;
-            
+
             byte[] buffer = new byte[length];
             Marshal.Copy(Data, buffer, 0, length);
             return Encoding.UTF8.GetString(buffer);
         }
-        
+
         /// <summary>
         /// </summary>
         /// <param name="nts"></param>

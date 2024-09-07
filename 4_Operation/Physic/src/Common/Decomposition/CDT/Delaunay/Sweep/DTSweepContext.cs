@@ -1,4 +1,33 @@
-﻿/* Original source Farseer Physics Engine:
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:DTSweepContext.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+/* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
@@ -37,22 +66,19 @@
 namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
 {
     /**
-     * 
      * @author Thomas Åhlén, thahlen@gmail.com
-     *
      */
-
     internal class DTSweepContext : TriangulationContext
     {
         // Inital triangle factor, seed triangle will extend 30% of 
         // PointSet width to both left and right.
         private const float ALPHA = 0.3f;
 
+        private readonly DTSweepPointComparator _comparator = new DTSweepPointComparator();
+        public AdvancingFront aFront;
+
         public DTSweepBasin Basin = new DTSweepBasin();
         public DTSweepEdgeEvent EdgeEvent = new DTSweepEdgeEvent();
-
-        private DTSweepPointComparator _comparator = new DTSweepPointComparator();
-        public AdvancingFront aFront;
 
         public DTSweepContext()
         {
@@ -83,7 +109,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
 
         private void MeshCleanReq(DelaunayTriangle triangle)
         {
-            if (triangle != null && !triangle.IsInterior)
+            if ((triangle != null) && !triangle.IsInterior)
             {
                 triangle.IsInterior = true;
                 Triangulatable.AddTriangle(triangle);
@@ -117,10 +143,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             aFront.RemoveNode(node);
         }
 
-        public AdvancingFrontNode LocateNode(TriangulationPoint point)
-        {
-            return aFront.LocateNode(point);
-        }
+        public AdvancingFrontNode LocateNode(TriangulationPoint point) => aFront.LocateNode(point);
 
         public void CreateAdvancingFront()
         {
@@ -147,8 +170,8 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         }
 
         /// <summary>
-        /// Try to map a node to all sides of this triangle that don't have 
-        /// a neighbor.
+        ///     Try to map a node to all sides of this triangle that don't have
+        ///     a neighbor.
         /// </summary>
         public void MapTriangleToNodes(DelaunayTriangle t)
         {
@@ -189,8 +212,8 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                     ymin = p.Y;
             }
 
-            double deltaX = ALPHA*(xmax - xmin);
-            double deltaY = ALPHA*(ymax - ymin);
+            double deltaX = ALPHA * (xmax - xmin);
+            double deltaY = ALPHA * (ymax - ymin);
             TriangulationPoint p1 = new TriangulationPoint(xmax + deltaX, ymin - deltaY);
             TriangulationPoint p2 = new TriangulationPoint(xmin - deltaX, ymin - deltaY);
 
@@ -210,10 +233,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             Triangles.Clear();
         }
 
-        public override TriangulationConstraint NewConstraint(TriangulationPoint a, TriangulationPoint b)
-        {
-            return new DTSweepConstraint(a, b);
-        }
+        public override TriangulationConstraint NewConstraint(TriangulationPoint a, TriangulationPoint b) => new DTSweepConstraint(a, b);
 
         #region Nested type: DTSweepBasin
 

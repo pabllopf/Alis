@@ -86,43 +86,43 @@ jobs:
 
       - name: publish osx-arm64 engine
         run: dotnet publish ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -f net8.0 -p:PublishTrimmed=false -r osx-arm64 -o ./.build/osx_arm64/Alis.app/Contents/MacOS/bin/
-        
+
       - name: publish osx-arm64 installer
         run: dotnet publish ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -f net8.0 -p:PublishTrimmed=false -r osx-arm64 -o ./.build/osx_arm64/Alis.app/Contents/MacOS/
-        
+
       - name: move info.plist
         run: mv .build/osx_arm64/Alis.app/Contents/MacOS/Assets/Info.plist .build/osx_arm64/Alis.app/Contents/Info.plist
-      
+
       - name: move icon
         run: mkdir -p .build/osx_arm64/Alis.app/Contents/Resources/ &&  mv .build/osx_arm64/Alis.app/Contents/MacOS/logo.png .build/osx_arm64/Alis.app/Contents/Resources/logo.png
-    
+
       - name: create temp dmg
         run: hdiutil create /tmp/tmp.dmg -ov -volname "Alis_Engine_osx_arm64" -fs HFS+ -srcfolder .build/osx_arm64/
-        
+
       - name: create dmg
         run: hdiutil convert /tmp/tmp.dmg -format UDZO -o .build/osx_arm64/Alis_Engine_osx_arm64.dmg
 
       - name: publish osx-x64
         run: dotnet publish ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -f net8.0 -p:PublishTrimmed=false -r osx-x64 -o ./.build/osx_x64/Alis.app/Contents/MacOS/bin/
-        
+
       - name: publish osx-x64 installer
         run: dotnet publish ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -f net8.0 -p:PublishTrimmed=false -r osx-x64 -o ./.build/osx_x64/Alis.app/Contents/MacOS/
-        
+
       - name: move info.plist
         run: mv .build/osx_x64/Alis.app/Contents/MacOS/Assets/Info.plist .build/osx_x64/Alis.app/Contents/Info.plist
-        
+
       - name: move icon
         run: mkdir -p .build/osx_x64/Alis.app/Contents/Resources/ &&  mv .build/osx_x64/Alis.app/Contents/MacOS/logo.png .build/osx_x64/Alis.app/Contents/Resources/logo.png
 
       - name: create temp dmg
         run: hdiutil create /tmp/tmp.dmg -ov -volname "Alis_Engine_osx_x64" -fs HFS+ -srcfolder .build/osx_x64/
-        
+
       - name: create dmg
         run: hdiutil convert /tmp/tmp.dmg -format UDZO -o .build/osx_x64/Alis_Engine_osx_x64.dmg
 
       - name: publish win-x64
         run: dotnet publish ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -f net8.0 -p:PublishTrimmed=false -r win-x64 -o ./.build/win_x64/bin/
-      
+
       - name: publish win-x64 installer
         run: dotnet publish ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -f net8.0 -p:PublishTrimmed=false -r win-x64 -o ./.build/win_x64/
 
@@ -135,7 +135,7 @@ jobs:
 
       - name: publish win-arm64
         run: dotnet publish ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -f net8.0 -p:PublishTrimmed=false -r win-arm64 -o ./.build/win_arm64/bin/
-        
+
       - name: publish win-arm64 installer
         run: dotnet publish ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -f net8.0 -p:PublishTrimmed=false -r win-arm64 -o ./.build/win_arm64/
 
@@ -148,7 +148,7 @@ jobs:
 
       - name: publish win-x86
         run: dotnet publish ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -f net8.0 -p:PublishTrimmed=false -r win-x86 -o ./.build/win_x86/bin/
-      
+
       - name: publish win-x86 installer
         run: dotnet publish ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -f net8.0 -p:PublishTrimmed=false -r win-x86 -o ./.build/win_x86/
 
@@ -161,7 +161,7 @@ jobs:
 
       - name: publish linux-x64
         run: dotnet publish ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -f net8.0 -p:PublishTrimmed=false -r linux-x64 -o ./.build/linux_x64/bin/
-      
+
       - name: publish linux-x64 installer
         run: dotnet publish ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -f net8.0 -p:PublishTrimmed=false -r linux-x64 -o ./.build/linux_x64/
 
@@ -174,7 +174,7 @@ jobs:
 
       - name: publish linux-arm64
         run: dotnet publish ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -f net8.0 -p:PublishTrimmed=false -r linux-arm64 -o ./.build/linux_arm64/bin/
-      
+
       - name: publish linux-arm64 installer
         run: dotnet publish ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -f net8.0 -p:PublishTrimmed=false -r linux-arm64 -o ./.build/linux_arm64/
 

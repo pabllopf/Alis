@@ -1,4 +1,33 @@
-﻿/* Original source Farseer Physics Engine:
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Melkman.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+/* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
  * Microsoft Permissive License (Ms-PL) v1.1
  */
@@ -12,21 +41,21 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 namespace Alis.Core.Physic.Common.ConvexHull
 {
     /// <summary>
-    /// Creates a convex hull.
-    /// Note:
-    /// 1. Vertices must be of a simple polygon, i.e. edges do not overlap.
-    /// 2. Melkman does not work on point clouds
+    ///     Creates a convex hull.
+    ///     Note:
+    ///     1. Vertices must be of a simple polygon, i.e. edges do not overlap.
+    ///     2. Melkman does not work on point clouds
     /// </summary>
     /// <remarks>
-    /// Implemented using Melkman's Convex Hull Algorithm - O(n) time complexity.
-    /// Reference: http://www.ams.sunysb.edu/~jsbm/courses/345/melkman.pdf
+    ///     Implemented using Melkman's Convex Hull Algorithm - O(n) time complexity.
+    ///     Reference: http://www.ams.sunysb.edu/~jsbm/courses/345/melkman.pdf
     /// </remarks>
     public static class Melkman
     {
         //Melkman based convex hull algorithm contributed by Cowdozer
 
         /// <summary>
-        /// Returns a convex hull from the given vertices.
+        ///     Returns a convex hull from the given vertices.
         /// </summary>
         /// <returns>A convex hull in counter clockwise winding order.</returns>
         public static Vertices GetConvexHull(Vertices vertices)
@@ -85,7 +114,7 @@ namespace Alis.Core.Physic.Common.ConvexHull
                 Vector2 nextPt = vertices[i];
 
                 //Ignore if it is already within the convex hull we have constructed
-                if (MathUtils.Area(ref deque[qfm1], ref deque[qf], ref nextPt) > 0 && MathUtils.Area(ref deque[qb], ref deque[qbm1], ref nextPt) > 0)
+                if ((MathUtils.Area(ref deque[qfm1], ref deque[qf], ref nextPt) > 0) && (MathUtils.Area(ref deque[qb], ref deque[qbm1], ref nextPt) > 0))
                     continue;
 
                 //Pop front until convex
@@ -108,6 +137,7 @@ namespace Alis.Core.Physic.Common.ConvexHull
                     qb = qbm1; //qb++;
                     qbm1 = qb == deque.Length - 1 ? 0 : qb + 1; //qbm1 = qb + 1;
                 }
+
                 //Add vertex to the back of the queue
                 qb = qb == 0 ? deque.Length - 1 : qb - 1; //qb--;
                 qbm1 = qb == deque.Length - 1 ? 0 : qb + 1; //qbm1 = qb + 1;

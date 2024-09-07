@@ -47,7 +47,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.AcceptDragDropPayload("type"));
         }
-        
+
         /// <summary>
         ///     Tests that accept drag drop payload with type and flags throws dll not found exception
         /// </summary>
@@ -56,7 +56,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.AcceptDragDropPayload("type", ImGuiDragDropFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that align text to frame padding throws dll not found exception
         /// </summary>
@@ -65,7 +65,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.AlignTextToFramePadding());
         }
-        
+
         /// <summary>
         ///     Tests that arrow button throws dll not found exception
         /// </summary>
@@ -74,7 +74,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ArrowButton("strId", ImGuiDir.None));
         }
-        
+
         /// <summary>
         ///     Tests that begin with name throws dll not found exception
         /// </summary>
@@ -83,7 +83,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.Begin("name"));
         }
-        
+
         /// <summary>
         ///     Tests that begin with name and ref bool throws dll not found exception
         /// </summary>
@@ -93,7 +93,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             bool pOpen = true;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.Begin("name", ref pOpen));
         }
-        
+
         /// <summary>
         ///     Tests that begin with name ref bool and flags throws dll not found exception
         /// </summary>
@@ -103,7 +103,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             bool pOpen = true;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.Begin("name", ref pOpen, ImGuiWindowFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that begin child with str id throws dll not found exception
         /// </summary>
@@ -112,7 +112,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginChild("strId"));
         }
-        
+
         /// <summary>
         ///     Tests that begin child with str id and size throws dll not found exception
         /// </summary>
@@ -121,7 +121,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginChild("strId", new Vector2()));
         }
-        
+
         /// <summary>
         ///     Tests that begin child with str id size and border throws dll not found exception
         /// </summary>
@@ -130,7 +130,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginChild("strId", new Vector2(), true));
         }
-        
+
         /// <summary>
         ///     Tests that begin child with str id size border and flags throws dll not found exception
         /// </summary>
@@ -139,7 +139,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginChild("strId", new Vector2(), true, ImGuiWindowFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that begin child with id throws dll not found exception
         /// </summary>
@@ -148,7 +148,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginChild(1u));
         }
-        
+
         /// <summary>
         ///     Tests that begin child with id and size throws dll not found exception
         /// </summary>
@@ -157,7 +157,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginChild(1u, new Vector2()));
         }
-        
+
         /// <summary>
         ///     Tests that begin child with id size and border throws dll not found exception
         /// </summary>
@@ -166,7 +166,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginChild(1u, new Vector2(), true));
         }
-        
+
         /// <summary>
         ///     Tests that begin child with id size border and flags throws dll not found exception
         /// </summary>
@@ -175,7 +175,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginChild(1u, new Vector2(), true, ImGuiWindowFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that begin child frame with id and size throws dll not found exception
         /// </summary>
@@ -184,7 +184,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginChildFrame(1u, new Vector2()));
         }
-        
+
         /// <summary>
         ///     Tests that begin child frame with id size and flags throws dll not found exception
         /// </summary>
@@ -193,7 +193,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginChildFrame(1u, new Vector2(), ImGuiWindowFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that begin combo with label and preview value throws dll not found exception
         /// </summary>
@@ -202,7 +202,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginCombo("label", "previewValue"));
         }
-        
+
         /// <summary>
         ///     Tests that begin combo with label preview value and flags throws dll not found exception
         /// </summary>
@@ -211,7 +211,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginCombo("label", "previewValue", ImGuiComboFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that begin disabled throws dll not found exception
         /// </summary>
@@ -220,7 +220,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginDisabled());
         }
-        
+
         /// <summary>
         ///     Tests that begin disabled with bool throws dll not found exception
         /// </summary>
@@ -229,7 +229,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginDisabled(true));
         }
-        
+
         /// <summary>
         ///     Tests that begin drag drop source throws dll not found exception
         /// </summary>
@@ -238,7 +238,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginDragDropSource());
         }
-        
+
         /// <summary>
         ///     Tests that begin drag drop source with flags throws dll not found exception
         /// </summary>
@@ -247,7 +247,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginDragDropSource(ImGuiDragDropFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that begin drag drop target throws dll not found exception
         /// </summary>
@@ -256,7 +256,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginDragDropTarget());
         }
-        
+
         /// <summary>
         ///     Tests that begin group throws dll not found exception
         /// </summary>
@@ -265,7 +265,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginGroup());
         }
-        
+
         /// <summary>
         ///     Tests that begin list box with label throws dll not found exception
         /// </summary>
@@ -274,7 +274,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginListBox("label"));
         }
-        
+
         /// <summary>
         ///     Tests that begin list box with label and size throws dll not found exception
         /// </summary>
@@ -283,7 +283,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginListBox("label", new Vector2()));
         }
-        
+
         /// <summary>
         ///     Tests that begin main menu bar throws dll not found exception
         /// </summary>
@@ -292,7 +292,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginMainMenuBar());
         }
-        
+
         /// <summary>
         ///     Tests that begin menu with label throws dll not found exception
         /// </summary>
@@ -301,7 +301,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginMenu("label"));
         }
-        
+
         /// <summary>
         ///     Tests that begin menu with label and enabled throws dll not found exception
         /// </summary>
@@ -310,7 +310,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginMenu("label", true));
         }
-        
+
         /// <summary>
         ///     Tests that begin menu bar throws dll not found exception
         /// </summary>
@@ -319,7 +319,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginMenuBar());
         }
-        
+
         /// <summary>
         ///     Tests that begin popup with str id throws dll not found exception
         /// </summary>
@@ -328,7 +328,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginPopup("strId"));
         }
-        
+
         /// <summary>
         ///     Tests that begin popup with str id and flags throws dll not found exception
         /// </summary>
@@ -337,7 +337,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginPopup("strId", ImGuiWindowFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that begin popup context item throws dll not found exception
         /// </summary>
@@ -346,7 +346,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginPopupContextItem());
         }
-        
+
         /// <summary>
         ///     Tests that begin popup context item with str id throws dll not found exception
         /// </summary>
@@ -355,7 +355,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginPopupContextItem("strId"));
         }
-        
+
         /// <summary>
         ///     Tests that begin popup context item with str id and popup flags throws dll not found exception
         /// </summary>
@@ -364,7 +364,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginPopupContextItem("strId", ImGuiPopupFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that begin popup context void throws dll not found exception
         /// </summary>
@@ -373,7 +373,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginPopupContextVoid());
         }
-        
+
         /// <summary>
         ///     Tests that begin popup context void with str id throws dll not found exception
         /// </summary>
@@ -382,7 +382,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginPopupContextVoid("strId"));
         }
-        
+
         /// <summary>
         ///     Tests that begin popup context void with str id and popup flags throws dll not found exception
         /// </summary>
@@ -391,7 +391,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginPopupContextVoid("strId", ImGuiPopupFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that begin popup context window throws dll not found exception
         /// </summary>
@@ -400,7 +400,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginPopupContextWindow());
         }
-        
+
         /// <summary>
         ///     Tests that begin popup context window with str id throws dll not found exception
         /// </summary>
@@ -409,7 +409,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginPopupContextWindow("strId"));
         }
-        
+
         /// <summary>
         ///     Tests that begin popup context window with str id and popup flags throws dll not found exception
         /// </summary>
@@ -418,7 +418,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginPopupContextWindow("strId", ImGuiPopupFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that begin popup modal with name throws dll not found exception
         /// </summary>
@@ -427,7 +427,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginPopupModal("name"));
         }
-        
+
         /// <summary>
         ///     Tests that begin popup modal with name and ref bool throws dll not found exception
         /// </summary>
@@ -437,7 +437,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             bool pOpen = true;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginPopupModal("name", ref pOpen));
         }
-        
+
         /// <summary>
         ///     Tests that begin popup modal with name ref bool and flags throws dll not found exception
         /// </summary>
@@ -447,7 +447,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             bool pOpen = true;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginPopupModal("name", ref pOpen, ImGuiWindowFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that begin tab bar with str id throws dll not found exception
         /// </summary>
@@ -456,7 +456,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginTabBar("strId"));
         }
-        
+
         /// <summary>
         ///     Tests that begin tab bar with str id and flags throws dll not found exception
         /// </summary>
@@ -465,7 +465,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginTabBar("strId", ImGuiTabBarFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that begin tab item with label throws dll not found exception
         /// </summary>
@@ -474,7 +474,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginTabItem("label"));
         }
-        
+
         /// <summary>
         ///     Tests that begin tab item with label and ref bool throws dll not found exception
         /// </summary>
@@ -484,7 +484,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             bool pOpen = true;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginTabItem("label", ref pOpen));
         }
-        
+
         /// <summary>
         ///     Tests that begin tab item with label ref bool and flags throws dll not found exception
         /// </summary>
@@ -494,7 +494,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             bool pOpen = true;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginTabItem("label", ref pOpen, ImGuiTabItemFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that begin table with str id and column throws dll not found exception
         /// </summary>
@@ -503,7 +503,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginTable("strId", 1));
         }
-        
+
         /// <summary>
         ///     Tests that begin table with str id column and flags throws dll not found exception
         /// </summary>
@@ -512,7 +512,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginTable("strId", 1, ImGuiTableFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that begin table with str id column flags and outer size throws dll not found exception
         /// </summary>
@@ -521,7 +521,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginTable("strId", 1, ImGuiTableFlags.None, new Vector2()));
         }
-        
+
         /// <summary>
         ///     Tests that begin table with str id column flags outer size and inner width throws dll not found exception
         /// </summary>
@@ -530,7 +530,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginTable("strId", 1, ImGuiTableFlags.None, new Vector2(), 0.0f));
         }
-        
+
         /// <summary>
         ///     Tests that begin tooltip throws dll not found exception
         /// </summary>
@@ -539,7 +539,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BeginTooltip());
         }
-        
+
         /// <summary>
         ///     Tests that bullet throws dll not found exception
         /// </summary>
@@ -548,7 +548,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.Bullet());
         }
-        
+
         /// <summary>
         ///     Tests that bullet text throws dll not found exception
         /// </summary>
@@ -557,7 +557,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.BulletText("fmt"));
         }
-        
+
         /// <summary>
         ///     Tests that button with label throws dll not found exception
         /// </summary>
@@ -566,7 +566,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.Button("label"));
         }
-        
+
         /// <summary>
         ///     Tests that button with label and size throws dll not found exception
         /// </summary>
@@ -575,7 +575,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.Button("label", new Vector2()));
         }
-        
+
         /// <summary>
         ///     Tests that calc item width throws dll not found exception
         /// </summary>
@@ -584,7 +584,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.CalcItemWidth());
         }
-        
+
         /// <summary>
         ///     Tests that checkbox with label and ref bool throws dll not found exception
         /// </summary>
@@ -594,7 +594,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             bool v = true;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.Checkbox("label", ref v));
         }
-        
+
         /// <summary>
         ///     Tests that checkbox flags with label ref int and flags value throws dll not found exception
         /// </summary>
@@ -604,7 +604,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             int flags = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.CheckboxFlags("label", ref flags, 1));
         }
-        
+
         /// <summary>
         ///     Tests that checkbox flags with label ref uint and flags value throws dll not found exception
         /// </summary>
@@ -614,7 +614,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             uint flags = 0;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.CheckboxFlags("label", ref flags, 1u));
         }
-        
+
         /// <summary>
         ///     Tests that close current popup throws dll not found exception
         /// </summary>
@@ -623,7 +623,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.CloseCurrentPopup());
         }
-        
+
         /// <summary>
         ///     Tests that collapsing header with label throws dll not found exception
         /// </summary>
@@ -632,7 +632,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.CollapsingHeader("label"));
         }
-        
+
         /// <summary>
         ///     Tests that collapsing header with label and flags throws dll not found exception
         /// </summary>
@@ -641,7 +641,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.CollapsingHeader("label", ImGuiTreeNodeFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that collapsing header with label and ref bool throws dll not found exception
         /// </summary>
@@ -651,7 +651,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             bool pVisible = true;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.CollapsingHeader("label", ref pVisible));
         }
-        
+
         /// <summary>
         ///     Tests that collapsing header with label ref bool and flags throws dll not found exception
         /// </summary>
@@ -661,7 +661,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             bool pVisible = true;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.CollapsingHeader("label", ref pVisible, ImGuiTreeNodeFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that color button with desc id and col throws dll not found exception
         /// </summary>
@@ -670,7 +670,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ColorButton("descId", new Vector4()));
         }
-        
+
         /// <summary>
         ///     Tests that color button with desc id col and flags throws dll not found exception
         /// </summary>
@@ -679,7 +679,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ColorButton("descId", new Vector4(), ImGuiColorEditFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that color button with desc id col flags and size throws dll not found exception
         /// </summary>
@@ -688,7 +688,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ColorButton("descId", new Vector4(), ImGuiColorEditFlags.None, new Vector2()));
         }
-        
+
         /// <summary>
         ///     Tests that color convert float 4 to u 32 throws dll not found exception
         /// </summary>
@@ -697,7 +697,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ColorConvertFloat4ToU32(new Vector4()));
         }
-        
+
         /// <summary>
         ///     Tests that color convert hs vto rgb throws dll not found exception
         /// </summary>
@@ -706,7 +706,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ColorConvertHsVtoRgb(0.0f, 0.0f, 0.0f, out float outR, out float outG, out float outB));
         }
-        
+
         /// <summary>
         ///     Tests that color convert rg bto hsv throws dll not found exception
         /// </summary>
@@ -715,7 +715,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ColorConvertRgBtoHsv(0.0f, 0.0f, 0.0f, out float outH, out float outS, out float outV));
         }
-        
+
         /// <summary>
         ///     Tests that color convert u 32 to float 4 throws dll not found exception
         /// </summary>
@@ -724,7 +724,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ColorConvertU32ToFloat4(0u));
         }
-        
+
         /// <summary>
         ///     Tests that color edit 3 with label and ref vector 3 throws dll not found exception
         /// </summary>
@@ -734,7 +734,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             Vector3 col = new Vector3();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ColorEdit3("label", ref col));
         }
-        
+
         /// <summary>
         ///     Tests that color edit 3 with label ref vector 3 and flags throws dll not found exception
         /// </summary>
@@ -744,7 +744,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             Vector3 col = new Vector3();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ColorEdit3("label", ref col, ImGuiColorEditFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that color edit 4 with label and ref vector 4 throws dll not found exception
         /// </summary>
@@ -754,7 +754,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             Vector4 col = new Vector4();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ColorEdit4("label", ref col));
         }
-        
+
         /// <summary>
         ///     Tests that color edit 4 with label ref vector 4 and flags throws dll not found exception
         /// </summary>
@@ -764,7 +764,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             Vector4 col = new Vector4();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ColorEdit4("label", ref col, ImGuiColorEditFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that color picker 3 with label and ref vector 3 throws dll not found exception
         /// </summary>
@@ -774,7 +774,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             Vector3 col = new Vector3();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ColorPicker3("label", ref col));
         }
-        
+
         /// <summary>
         ///     Tests that color picker 3 with label ref vector 3 and flags throws dll not found exception
         /// </summary>
@@ -784,7 +784,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             Vector3 col = new Vector3();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ColorPicker3("label", ref col, ImGuiColorEditFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that color picker 4 with label and ref vector 4 throws dll not found exception
         /// </summary>
@@ -794,7 +794,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             Vector4 col = new Vector4();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ColorPicker4("label", ref col));
         }
-        
+
         /// <summary>
         ///     Tests that color picker 4 with label ref vector 4 and flags throws dll not found exception
         /// </summary>
@@ -804,7 +804,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             Vector4 col = new Vector4();
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ColorPicker4("label", ref col, ImGuiColorEditFlags.None));
         }
-        
+
         /// <summary>
         ///     Tests that color picker 4 with label ref vector 4 flags and ref col throws dll not found exception
         /// </summary>
@@ -815,7 +815,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
             float refCol = 0.0f;
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.ColorPicker4("label", ref col, ImGuiColorEditFlags.None, ref refCol));
         }
-        
+
         /// <summary>
         ///     Tests that columns throws dll not found exception
         /// </summary>
@@ -824,7 +824,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.Columns());
         }
-        
+
         /// <summary>
         ///     Tests that columns with count throws dll not found exception
         /// </summary>
@@ -833,7 +833,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.Columns(1));
         }
-        
+
         /// <summary>
         ///     Tests that columns with count and id throws dll not found exception
         /// </summary>
@@ -842,7 +842,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.Columns(1, "id"));
         }
-        
+
         /// <summary>
         ///     Tests that columns with count id and border throws dll not found exception
         /// </summary>
@@ -851,7 +851,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
         {
             Assert.Throws<DllNotFoundException>(() => ImGui.Native.ImGui.Columns(1, "id", true));
         }
-        
+
         /// <summary>
         ///     Tests that combo throws dll not found exception
         /// </summary>
@@ -864,7 +864,7 @@ namespace Alis.Extension.Graphic.ImGui.Test.Native
                 return ImGui.Native.ImGui.Combo("label", ref currentItem, new[] {"item1", "item2"}, 2);
             });
         }
-        
+
         /// <summary>
         ///     Tests that combo with popup max height in items throws dll not found exception
         /// </summary>

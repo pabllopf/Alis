@@ -47,22 +47,22 @@ namespace Alis.Extension.Language.Dialogue
             Text = text;
             Options = new List<DialogOption>();
         }
-        
+
         /// <summary>
         ///     Gets or sets the value of the id
         /// </summary>
         public string Id { get; set; }
-        
+
         /// <summary>
         ///     Gets or sets the value of the text
         /// </summary>
         public string Text { get; set; }
-        
+
         /// <summary>
         ///     Gets or sets the value of the options
         /// </summary>
         public List<DialogOption> Options { get; set; }
-        
+
         /// <summary>
         ///     Adds the option using the specified option
         /// </summary>

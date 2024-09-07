@@ -41,28 +41,28 @@ namespace Alis.Extension.Plugin.Test.Mocks
         public void Dispose()
         {
         }
-        
+
         /// <summary>
         ///     Initializes this instance
         /// </summary>
         public void Initialize()
         {
         }
-        
+
         /// <summary>
         ///     Updates this instance
         /// </summary>
         public void Update()
         {
         }
-        
+
         /// <summary>
         ///     Renders this instance
         /// </summary>
         public void Render()
         {
         }
-        
+
         /// <summary>
         ///     Shutdowns this instance
         /// </summary>

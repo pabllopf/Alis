@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Ecs.System.Manager.Physic
@@ -42,7 +41,7 @@ namespace Alis.Core.Ecs.System.Manager.Physic
         ///     The vector
         /// </summary>
         public World World = new World();
-        
+
         /// <summary>
         ///     Ons the update
         /// </summary>
@@ -50,12 +49,10 @@ namespace Alis.Core.Ecs.System.Manager.Physic
         {
             if (Context is null)
             {
-                return;
             }
         }
-        
 
-        
+
         /// <summary>
         ///     Uns the attach using the specified body
         /// </summary>

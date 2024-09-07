@@ -1,9 +1,9 @@
 <Project>
     <ItemGroup Condition="$(AssemblyName.Contains('Test')) == true">
-        
+
         <!-- benchmark -->
-        <PackageReference Include="BenchmarkDotNet" Version="0.14.0" />
-        
+        <PackageReference Include="BenchmarkDotNet" Version="0.14.0"/>
+
         <!-- Test packs -->
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1"/>
         <PackageReference Include="xunit" Version="2.6.6"/>
@@ -29,7 +29,7 @@
     <ItemGroup Condition="$(AssemblyName.Contains('Benchmark'))">
         <PackageReference Include="BenchmarkDotNet" Version="0.13.2"/>
     </ItemGroup>
-    
+
     <ItemGroup Condition="$(AssemblyName.Equals('Alis.Extension.Payment.Stripe'))">
         <PackageReference Include="Stripe.net" Version="43.20.0" />
     </ItemGroup>

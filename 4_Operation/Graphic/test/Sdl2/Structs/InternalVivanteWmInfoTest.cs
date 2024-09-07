@@ -46,13 +46,13 @@ namespace Alis.Core.Graphic.Test.Sdl2.Structs
         {
             IntPtr expectedDisplay = new IntPtr(123);
             IntPtr expectedWindow = new IntPtr(456);
-            
+
             InternalVivanteWmInfo info = new InternalVivanteWmInfo
             {
                 Display = expectedDisplay,
                 Window = expectedWindow
             };
-            
+
             Assert.Equal(expectedDisplay, info.Display);
             Assert.Equal(expectedWindow, info.Window);
         }

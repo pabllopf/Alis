@@ -48,7 +48,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             drawList.CmdBuffer = cmdBuffer;
             Assert.Equal(cmdBuffer, drawList.CmdBuffer);
         }
-        
+
         /// <summary>
         ///     Tests that idx buffer should set and get correctly
         /// </summary>
@@ -60,7 +60,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             drawList.IdxBuffer = idxBuffer;
             Assert.Equal(idxBuffer, drawList.IdxBuffer);
         }
-        
+
         /// <summary>
         ///     Tests that vtx buffer should set and get correctly
         /// </summary>
@@ -72,7 +72,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             drawList.VtxBuffer = vtxBuffer;
             Assert.Equal(vtxBuffer, drawList.VtxBuffer);
         }
-        
+
         /// <summary>
         ///     Tests that flags should set and get correctly
         /// </summary>
@@ -83,7 +83,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             drawList.Flags = ImDrawListFlags.AntiAliasedLines;
             Assert.Equal(ImDrawListFlags.AntiAliasedLines, drawList.Flags);
         }
-        
+
         /// <summary>
         ///     Tests that vtx current idx should set and get correctly
         /// </summary>
@@ -94,7 +94,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             drawList.VtxCurrentIdx = 100;
             Assert.Equal(100u, drawList.VtxCurrentIdx);
         }
-        
+
         /// <summary>
         ///     Tests that data should set and get correctly
         /// </summary>
@@ -106,7 +106,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             drawList.Data = data;
             Assert.Equal(data, drawList.Data);
         }
-        
+
         /// <summary>
         ///     Tests that owner name should set and get correctly
         /// </summary>
@@ -118,7 +118,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             drawList.OwnerName = ownerName;
             Assert.Equal(ownerName, drawList.OwnerName);
         }
-        
+
         /// <summary>
         ///     Tests that vtx write ptr should set and get correctly
         /// </summary>
@@ -130,7 +130,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             drawList.VtxWritePtr = vtxWritePtr;
             Assert.Equal(vtxWritePtr, drawList.VtxWritePtr);
         }
-        
+
         /// <summary>
         ///     Tests that idx write ptr should set and get correctly
         /// </summary>
@@ -142,7 +142,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             drawList.IdxWritePtr = idxWritePtr;
             Assert.Equal(idxWritePtr, drawList.IdxWritePtr);
         }
-        
+
         /// <summary>
         ///     Tests that clip rect stack should set and get correctly
         /// </summary>
@@ -154,7 +154,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             drawList.ClipRectStack = clipRectStack;
             Assert.Equal(clipRectStack, drawList.ClipRectStack);
         }
-        
+
         /// <summary>
         ///     Tests that texture id stack should set and get correctly
         /// </summary>
@@ -166,7 +166,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             drawList.TextureIdStack = textureIdStack;
             Assert.Equal(textureIdStack, drawList.TextureIdStack);
         }
-        
+
         /// <summary>
         ///     Tests that path should set and get correctly
         /// </summary>
@@ -178,7 +178,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             drawList.Path = path;
             Assert.Equal(path, drawList.Path);
         }
-        
+
         /// <summary>
         ///     Tests that cmd header should set and get correctly
         /// </summary>
@@ -190,7 +190,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             drawList.CmdHeader = cmdHeader;
             Assert.Equal(cmdHeader, drawList.CmdHeader);
         }
-        
+
         /// <summary>
         ///     Tests that splitter should set and get correctly
         /// </summary>
@@ -202,7 +202,7 @@ namespace Alis.Extension.Graphic.ImGui.Test
             drawList.Splitter = splitter;
             Assert.Equal(splitter, drawList.Splitter);
         }
-        
+
         /// <summary>
         ///     Tests that fringe scale should set and get correctly
         /// </summary>

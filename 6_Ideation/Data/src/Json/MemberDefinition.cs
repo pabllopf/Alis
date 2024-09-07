@@ -42,27 +42,27 @@ namespace Alis.Core.Aspect.Data.Json
         ///     The accessor
         /// </summary>
         private IMemberAccessor _accessor;
-        
+
         /// <summary>
         ///     The escaped wire name
         /// </summary>
         private string _escapedWireName;
-        
+
         /// <summary>
         ///     The name
         /// </summary>
         private string _name;
-        
+
         /// <summary>
         ///     The type
         /// </summary>
         private Type _type;
-        
+
         /// <summary>
         ///     The wire name
         /// </summary>
         private string _wireName;
-        
+
         /// <summary>
         ///     Gets or sets the member name.
         /// </summary>
@@ -78,11 +78,11 @@ namespace Alis.Core.Aspect.Data.Json
                 {
                     throw new ArgumentException(null, nameof(value));
                 }
-                
+
                 _name = value;
             }
         }
-        
+
         /// <summary>
         ///     Gets or sets the name used for serialization and des-serialization.
         /// </summary>
@@ -98,11 +98,11 @@ namespace Alis.Core.Aspect.Data.Json
                 {
                     throw new ArgumentException(null, nameof(value));
                 }
-                
+
                 _wireName = value;
             }
         }
-        
+
         /// <summary>
         ///     Gets or sets the escaped name used during serialization and des-serialization.
         /// </summary>
@@ -118,11 +118,11 @@ namespace Alis.Core.Aspect.Data.Json
                 {
                     throw new ArgumentException(null, nameof(value));
                 }
-                
+
                 _escapedWireName = value;
             }
         }
-        
+
         /// <summary>
         ///     Gets or sets a value indicating whether this instance has default value.
         /// </summary>
@@ -130,7 +130,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     <c>true</c> if this instance has default value; otherwise, <c>false</c>.
         /// </value>
         public bool HasDefaultValue { get; set; }
-        
+
         /// <summary>
         ///     Gets or sets the default value.
         /// </summary>
@@ -138,7 +138,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     The default value.
         /// </value>
         public object DefaultValue { get; set; }
-        
+
         /// <summary>
         ///     Gets or sets the accessor.
         /// </summary>
@@ -150,7 +150,7 @@ namespace Alis.Core.Aspect.Data.Json
             get => _accessor;
             set => _accessor = value ?? throw new ArgumentNullException(nameof(value));
         }
-        
+
         /// <summary>
         ///     Gets or sets the member type.
         /// </summary>
@@ -162,7 +162,7 @@ namespace Alis.Core.Aspect.Data.Json
             get => _type;
             set => _type = value ?? throw new ArgumentNullException(nameof(value));
         }
-        
+
         /// <summary>
         ///     Returns a <see cref="string" /> that represents this instance.
         /// </summary>
@@ -170,7 +170,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     A <see cref="string" /> that represents this instance.
         /// </returns>
         public override string ToString() => Name;
-        
+
         /// <summary>
         ///     Gets or creates a member instance.
         /// </summary>
@@ -196,7 +196,7 @@ namespace Alis.Core.Aspect.Data.Json
             {
                 targetValue = Accessor.Get(target);
             }
-            
+
             // sufficient array?
             if (targetValue == null || (targetValue is Array array && (array.GetLength(0) < elementsCount)))
             {
@@ -204,17 +204,17 @@ namespace Alis.Core.Aspect.Data.Json
                 {
                     return null;
                 }
-                
+
                 targetValue = JsonSerializer.CreateInstance(target, Type, elementsCount, options, targetValue);
                 if (targetValue != null)
                 {
                     Accessor.Set(target, targetValue);
                 }
             }
-            
+
             return targetValue;
         }
-        
+
         /// <summary>
         ///     Applies the dictionary entry to this member.
         /// </summary>
@@ -232,7 +232,7 @@ namespace Alis.Core.Aspect.Data.Json
                     ["dictionary"] = dictionary,
                     ["member"] = this
                 };
-                
+
                 JsonEventArgs e = new JsonEventArgs(null, value, og, options, key, target)
                 {
                     EventType = JsonEventType.ApplyEntry
@@ -242,17 +242,17 @@ namespace Alis.Core.Aspect.Data.Json
                 {
                     return;
                 }
-                
+
                 value = e.Value;
             }
-            
+
             if (value is IDictionary dic)
             {
                 object targetValue = GetOrCreateInstance(target, dic.Count, options);
                 JsonSerializer.Apply(dic, targetValue, options);
                 return;
             }
-            
+
             ListObject lo = JsonSerializer.GetListObject(Type, options, target, value, dictionary, key);
             if (lo != null)
             {
@@ -263,19 +263,19 @@ namespace Alis.Core.Aspect.Data.Json
                     return;
                 }
             }
-            
-            
+
+
             object changeValue = JsonSerializer.ChangeType(target, value, Type, options);
             Accessor.Set(target, changeValue);
         }
-        
+
         /// <summary>
         ///     Determines whether the specified value is equal to the zero value for its type.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>true if the specified value is equal to the zero value.</returns>
         public bool IsNullDateTimeValue(object value) => value == null || DateTime.MinValue.Equals(value);
-        
+
         /// <summary>
         ///     Determines whether the specified value is equal to the zero value for its type.
         /// </summary>
@@ -287,18 +287,18 @@ namespace Alis.Core.Aspect.Data.Json
             {
                 return false;
             }
-            
+
             Type type = value.GetType();
             return (type == Type) && JsonSerializer.IsZeroValueType(value);
         }
-        
+
         /// <summary>
         ///     Determines if a value equals the default value.
         /// </summary>
         /// <param name="value">The value to compare.</param>
         /// <returns>true if both values are equal; false otherwise.</returns>
         public bool EqualsDefaultValue(object value) => JsonSerializer.AreValuesEqual(DefaultValue, value);
-        
+
         /// <summary>
         ///     Removes a deserialization member.
         /// </summary>
@@ -312,16 +312,16 @@ namespace Alis.Core.Aspect.Data.Json
             {
                 throw new ArgumentNullException(nameof(type));
             }
-            
+
             if (member == null)
             {
                 throw new ArgumentNullException(nameof(member));
             }
-            
+
             options ??= new JsonOptions();
             return TypeDef.RemoveDeserializationMember(type, options, member);
         }
-        
+
         /// <summary>
         ///     Removes a serialization member.
         /// </summary>
@@ -335,16 +335,16 @@ namespace Alis.Core.Aspect.Data.Json
             {
                 throw new ArgumentNullException(nameof(type));
             }
-            
+
             if (member == null)
             {
                 throw new ArgumentNullException(nameof(member));
             }
-            
+
             options ??= new JsonOptions();
             return TypeDef.RemoveSerializationMember(type, options, member);
         }
-        
+
         /// <summary>
         ///     Adds a deserialization member.
         /// </summary>
@@ -358,16 +358,16 @@ namespace Alis.Core.Aspect.Data.Json
             {
                 throw new ArgumentNullException(nameof(type));
             }
-            
+
             if (member == null)
             {
                 throw new ArgumentNullException(nameof(member));
             }
-            
+
             options ??= new JsonOptions();
             TypeDef.AddDeserializationMember(type, options, member);
         }
-        
+
         /// <summary>
         ///     Adds a serialization member.
         /// </summary>
@@ -381,16 +381,16 @@ namespace Alis.Core.Aspect.Data.Json
             {
                 throw new ArgumentNullException(nameof(type));
             }
-            
+
             if (member == null)
             {
                 throw new ArgumentNullException(nameof(member));
             }
-            
+
             options ??= new JsonOptions();
             TypeDef.AddSerializationMember(type, options, member);
         }
-        
+
         /// <summary>
         ///     Gets the serialization members for a given type.
         /// </summary>
@@ -403,11 +403,11 @@ namespace Alis.Core.Aspect.Data.Json
             {
                 throw new ArgumentNullException(nameof(type));
             }
-            
+
             options ??= new JsonOptions();
             return TypeDef.GetSerializationMembers(type, options);
         }
-        
+
         /// <summary>
         ///     Gets the deserialization members for a given type.
         /// </summary>
@@ -420,11 +420,11 @@ namespace Alis.Core.Aspect.Data.Json
             {
                 throw new ArgumentNullException(nameof(type));
             }
-            
+
             options ??= new JsonOptions();
             return TypeDef.GetDeserializationMembers(type, options);
         }
-        
+
         /// <summary>
         ///     Run a specified action, using the member definition lock.
         /// </summary>
@@ -437,7 +437,7 @@ namespace Alis.Core.Aspect.Data.Json
             {
                 throw new ArgumentNullException(nameof(action));
             }
-            
+
             TypeDef.LockMethod(action, state);
         }
     }

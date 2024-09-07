@@ -1,4 +1,31 @@
-﻿// Copyright (c) 2018-2021 Kastellanos Nikolaos
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:DynamicTree.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
 
 /* Original source Farseer Physics Engine:
  * Copyright (c) 2014 Ian Qvist, http://farseerphysics.codeplex.com
@@ -6,26 +33,26 @@
  */
 
 /*
-* Farseer Physics Engine:
-* Copyright (c) 2012 Ian Qvist
-* 
-* Original source Box2D:
-* Copyright (c) 2006-2011 Erin Catto http://www.box2d.org 
-* 
-* This software is provided 'as-is', without any express or implied 
-* warranty.  In no event will the authors be held liable for any damages 
-* arising from the use of this software. 
-* Permission is granted to anyone to use this software for any purpose, 
-* including commercial applications, and to alter it and redistribute it 
-* freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
-* claim that you wrote the original software. If you use this software 
-* in a product, an acknowledgment in the product documentation would be 
-* appreciated but is not required. 
-* 2. Altered source versions must be plainly marked as such, and must not be 
-* misrepresented as being the original software. 
-* 3. This notice may not be removed or altered from any source distribution. 
-*/
+ * Farseer Physics Engine:
+ * Copyright (c) 2012 Ian Qvist
+ *
+ * Original source Box2D:
+ * Copyright (c) 2006-2011 Erin Catto http://www.box2d.org
+ *
+ * This software is provided 'as-is', without any express or implied
+ * warranty.  In no event will the authors be held liable for any damages
+ * arising from the use of this software.
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely, subject to the following restrictions:
+ * 1. The origin of this software must not be misrepresented; you must not
+ * claim that you wrote the original software. If you use this software
+ * in a product, an acknowledgment in the product documentation would be
+ * appreciated but is not required.
+ * 2. Altered source versions must be plainly marked as such, and must not be
+ * misrepresented as being the original software.
+ * 3. This notice may not be removed or altered from any source distribution.
+ */
 
 using System;
 using System.Collections.Generic;
@@ -39,12 +66,12 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 namespace Alis.Core.Physic.Collision
 {
     /// <summary>
-    /// A node in the dynamic tree. The client does not interact with this directly.
+    ///     A node in the dynamic tree. The client does not interact with this directly.
     /// </summary>
     internal struct TreeNode<TNode>
     {
         /// <summary>
-        /// Enlarged AABB
+        ///     Enlarged AABB
         /// </summary>
         internal AABB AABB;
 
@@ -57,45 +84,41 @@ namespace Alis.Core.Physic.Collision
 
         // to reduce struct size we use Parent for the Free linked-list
         /// <summary>
-        /// Next free node
+        ///     Next free node
         /// </summary>
         internal int Next
         {
-            get { return Parent; }
-            set { Parent = value; }
+            get => Parent;
+            set => Parent = value;
         }
 
         internal TNode UserData;
 
 
-        internal bool IsLeaf()
-        {
-            return Child1 == DynamicTree<TNode>.NullNode;
-        }
+        internal bool IsLeaf() => Child1 == DynamicTree<TNode>.NullNode;
     }
 
     /// <summary>
-    /// A dynamic tree arranges data in a binary tree to accelerate
-    /// queries such as volume queries and ray casts. Leafs are proxies
-    /// with an AABB. In the tree we expand the proxy AABB by Settings.b2_fatAABBFactor
-    /// so that the proxy AABB is bigger than the client object. This allows the client
-    /// object to move by small amounts without triggering a tree update.
-    ///
-    /// Nodes are pooled and relocatable, so we use node indices rather than pointers.
+    ///     A dynamic tree arranges data in a binary tree to accelerate
+    ///     queries such as volume queries and ray casts. Leafs are proxies
+    ///     with an AABB. In the tree we expand the proxy AABB by Settings.b2_fatAABBFactor
+    ///     so that the proxy AABB is bigger than the client object. This allows the client
+    ///     object to move by small amounts without triggering a tree update.
+    ///     Nodes are pooled and relocatable, so we use node indices rather than pointers.
     /// </summary>
     public class DynamicTree<TNode>
     {
-        private Stack<int> _raycastStack = new Stack<int>(256);
-        private Stack<int> _queryStack = new Stack<int>(256);
+        internal const int NullNode = -1;
         private int _freeList;
         private int _nodeCapacity;
         private int _nodeCount;
         private TreeNode<TNode>[] _nodes;
+        private readonly Stack<int> _queryStack = new Stack<int>(256);
+        private readonly Stack<int> _raycastStack = new Stack<int>(256);
         private int _root;
-        internal const int NullNode = -1;
 
         /// <summary>
-        /// Constructing the tree initializes the node pool.
+        ///     Constructing the tree initializes the node pool.
         /// </summary>
         public DynamicTree()
         {
@@ -111,6 +134,7 @@ namespace Alis.Core.Physic.Collision
                 _nodes[i].Next = i + 1;
                 _nodes[i].Height = -1;
             }
+
             // build last node
             _nodes[_nodeCapacity - 1].Next = NullNode;
             _nodes[_nodeCapacity - 1].Height = -1;
@@ -118,7 +142,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Compute the height of the binary tree in O(N) time. Should not be called often.
+        ///     Compute the height of the binary tree in O(N) time. Should not be called often.
         /// </summary>
         public int Height
         {
@@ -134,7 +158,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Get the ratio of the sum of the node areas to the root area.
+        ///     Get the ratio of the sum of the node areas to the root area.
         /// </summary>
         public float AreaRatio
         {
@@ -166,8 +190,8 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Get the maximum balance of an node in the tree. The balance is the difference
-        /// in height of the two children of a node.
+        ///     Get the maximum balance of an node in the tree. The balance is the difference
+        ///     in height of the two children of a node.
         /// </summary>
         public int MaxBalance
         {
@@ -195,10 +219,11 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Create a proxy in the tree as a leaf node. We return the index
-        /// of the node instead of a pointer so that we can grow
-        /// the node pool.        
-        /// /// </summary>
+        ///     Create a proxy in the tree as a leaf node. We return the index
+        ///     of the node instead of a pointer so that we can grow
+        ///     the node pool.
+        ///     ///
+        /// </summary>
         /// <param name="aabb">The aabb.</param>
         /// <param name="userData">The user data.</param>
         /// <returns>Index of the created proxy</returns>
@@ -218,12 +243,12 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Destroy a proxy. This asserts if the id is invalid.
+        ///     Destroy a proxy. This asserts if the id is invalid.
         /// </summary>
         /// <param name="proxyId">The proxy id.</param>
         public void RemoveProxy(int proxyId)
         {
-            Debug.Assert(0 <= proxyId && proxyId < _nodeCapacity);
+            Debug.Assert((0 <= proxyId) && (proxyId < _nodeCapacity));
             Debug.Assert(_nodes[proxyId].IsLeaf());
 
             RemoveLeaf(proxyId);
@@ -231,9 +256,9 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Move a proxy with a swepted AABB. If the proxy has moved outside of its fattened AABB,
-        /// then the proxy is removed from the tree and re-inserted. Otherwise
-        /// the function returns immediately.
+        ///     Move a proxy with a swepted AABB. If the proxy has moved outside of its fattened AABB,
+        ///     then the proxy is removed from the tree and re-inserted. Otherwise
+        ///     the function returns immediately.
         /// </summary>
         /// <param name="proxyId">The proxy id.</param>
         /// <param name="aabb">The aabb.</param>
@@ -241,7 +266,7 @@ namespace Alis.Core.Physic.Collision
         /// <returns>true if the proxy was re-inserted.</returns>
         public bool MoveProxy(int proxyId, ref AABB aabb, Vector2 displacement)
         {
-            Debug.Assert(0 <= proxyId && proxyId < _nodeCapacity);
+            Debug.Assert((0 <= proxyId) && (proxyId < _nodeCapacity));
 
             Debug.Assert(_nodes[proxyId].IsLeaf());
 
@@ -286,7 +311,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Set proxy user data.
+        ///     Set proxy user data.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="proxyId">The proxy id.</param>
@@ -297,54 +322,54 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Get proxy user data.
+        ///     Get proxy user data.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="proxyId">The proxy id.</param>
         /// <returns>the proxy user data or 0 if the id is invalid.</returns>
         public TNode GetUserData(int proxyId)
         {
-            Debug.Assert(0 <= proxyId && proxyId < _nodeCapacity);
+            Debug.Assert((0 <= proxyId) && (proxyId < _nodeCapacity));
             return _nodes[proxyId].UserData;
         }
 
         /// <summary>
-        /// Get the fat AABB for a proxy.
+        ///     Get the fat AABB for a proxy.
         /// </summary>
         /// <param name="proxyId">The proxy id.</param>
         /// <param name="fatAABB">The fat AABB.</param>
         public void GetFatAABB(int proxyId, out AABB fatAABB)
         {
-            Debug.Assert(0 <= proxyId && proxyId < _nodeCapacity);
+            Debug.Assert((0 <= proxyId) && (proxyId < _nodeCapacity));
             fatAABB = _nodes[proxyId].AABB;
         }
 
         /// <summary>
-        /// Get the fat AABB for a proxy.
+        ///     Get the fat AABB for a proxy.
         /// </summary>
         /// <param name="proxyId">The proxy id.</param>
         /// <returns>The fat AABB.</returns>
         public AABB GetFatAABB(int proxyId)
         {
-            Debug.Assert(0 <= proxyId && proxyId < _nodeCapacity);
+            Debug.Assert((0 <= proxyId) && (proxyId < _nodeCapacity));
             return _nodes[proxyId].AABB;
         }
 
         /// <summary>
-        /// Test overlap of fat AABBs.
+        ///     Test overlap of fat AABBs.
         /// </summary>
         /// <param name="proxyIdA">The proxy id A.</param>
         /// <param name="proxyIdB">The proxy id B.</param>
         public bool TestFatAABBOverlap(int proxyIdA, int proxyIdB)
         {
-            Debug.Assert(0 <= proxyIdA && proxyIdA < _nodeCapacity);
-            Debug.Assert(0 <= proxyIdB && proxyIdB < _nodeCapacity);
+            Debug.Assert((0 <= proxyIdA) && (proxyIdA < _nodeCapacity));
+            Debug.Assert((0 <= proxyIdB) && (proxyIdB < _nodeCapacity));
             return AABB.TestOverlap(ref _nodes[proxyIdA].AABB, ref _nodes[proxyIdB].AABB);
         }
 
         /// <summary>
-        /// Query an AABB for overlapping proxies. The callback class
-        /// is called for each proxy that overlaps the supplied AABB.
+        ///     Query an AABB for overlapping proxies. The callback class
+        ///     is called for each proxy that overlaps the supplied AABB.
         /// </summary>
         /// <param name="callback">The callback.</param>
         /// <param name="aabb">The aabb.</param>
@@ -383,11 +408,11 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Ray-cast against the proxies in the tree. This relies on the callback
-        /// to perform a exact ray-cast in the case were the proxy contains a Shape.
-        /// The callback also performs the any collision filtering. This has performance
-        /// roughly equal to k * log(n), where k is the number of collisions and n is the
-        /// number of proxies in the tree.
+        ///     Ray-cast against the proxies in the tree. This relies on the callback
+        ///     to perform a exact ray-cast in the case were the proxy contains a Shape.
+        ///     The callback also performs the any collision filtering. This has performance
+        ///     roughly equal to k * log(n), where k is the number of collisions and n is the
+        ///     number of proxies in the tree.
         /// </summary>
         /// <param name="callback">A callback class that is called for each proxy that is hit by the ray.</param>
         /// <param name="input">The ray-cast input data. The ray extends from p1 to p1 + maxFraction * (p2 - p1).</param>
@@ -494,6 +519,7 @@ namespace Alis.Core.Physic.Collision
                     _nodes[i].Next = i + 1;
                     _nodes[i].Height = -1;
                 }
+
                 // build last node
                 _nodes[_nodeCapacity - 1].Next = NullNode;
                 _nodes[_nodeCapacity - 1].Height = -1;
@@ -515,7 +541,7 @@ namespace Alis.Core.Physic.Collision
 
         private void FreeNode(int nodeId)
         {
-            Debug.Assert(0 <= nodeId && nodeId < _nodeCapacity);
+            Debug.Assert((0 <= nodeId) && (nodeId < _nodeCapacity));
             Debug.Assert(0 < _nodeCount);
             _nodes[nodeId].Next = _freeList;
             _nodes[nodeId].Height = -1;
@@ -566,7 +592,7 @@ namespace Alis.Core.Physic.Collision
                     aabb.Combine(ref leafAABB, ref _nodes[child1].AABB);
                     float oldArea = _nodes[child1].AABB.Perimeter;
                     float newArea = aabb.Perimeter;
-                    cost1 = (newArea - oldArea) + inheritanceCost;
+                    cost1 = newArea - oldArea + inheritanceCost;
                 }
 
                 // Cost of descending into child2
@@ -587,7 +613,7 @@ namespace Alis.Core.Physic.Collision
                 }
 
                 // Descend according to the minimum cost.
-                if (cost < cost1 && cost1 < cost2)
+                if ((cost < cost1) && (cost1 < cost2))
                 {
                     break;
                 }
@@ -692,6 +718,7 @@ namespace Alis.Core.Physic.Collision
                 {
                     _nodes[grandParent].Child2 = sibling;
                 }
+
                 _nodes[sibling].Parent = grandParent;
                 FreeNode(parent);
 
@@ -721,7 +748,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Perform a left or right rotation if node N is imbalanced.
+        ///     Perform a left or right rotation if node N is imbalanced.
         /// </summary>
         /// <param name="iN"></param>
         /// <returns>the new root index.</returns>
@@ -737,8 +764,8 @@ namespace Alis.Core.Physic.Collision
 
             int iA = _nodes[iN].Child1;
             int iB = _nodes[iN].Child2;
-            Debug.Assert(0 <= iA && iA < _nodeCapacity);
-            Debug.Assert(0 <= iB && iB < _nodeCapacity);
+            Debug.Assert((0 <= iA) && (iA < _nodeCapacity));
+            Debug.Assert((0 <= iB) && (iB < _nodeCapacity));
 
             //TreeNode<T>* A = &_nodes[iA];
             //TreeNode<T>* B = &_nodes[iB];
@@ -754,8 +781,8 @@ namespace Alis.Core.Physic.Collision
                 //TreeNode<T>* P  = &_nodes[iN->Parent];
                 //TreeNode<T>* BA = &_nodes[iBA];
                 //TreeNode<T>* BB = &_nodes[iBB];
-                Debug.Assert(0 <= iBA && iBA < _nodeCapacity);
-                Debug.Assert(0 <= iBB && iBB < _nodeCapacity);
+                Debug.Assert((0 <= iBA) && (iBA < _nodeCapacity));
+                Debug.Assert((0 <= iBB) && (iBB < _nodeCapacity));
 
                 // Swap N and B
                 _nodes[iB].Child1 = iN;
@@ -816,8 +843,8 @@ namespace Alis.Core.Physic.Collision
                 //TreeNode<T>* P  = &_nodes[iN->Parent];
                 //TreeNode<T>* AA = &_nodes[iAA];
                 //TreeNode<T>* AB = &_nodes[iAB];
-                Debug.Assert(0 <= iAA && iAA < _nodeCapacity);
-                Debug.Assert(0 <= iAB && iAB < _nodeCapacity);
+                Debug.Assert((0 <= iAA) && (iAA < _nodeCapacity));
+                Debug.Assert((0 <= iAB) && (iAB < _nodeCapacity));
 
                 // Swap N and A
                 _nodes[iA].Child1 = iN;
@@ -848,7 +875,7 @@ namespace Alis.Core.Physic.Collision
                     _nodes[iA].Child2 = iAA;
                     _nodes[iN].Child1 = iAB;
                     _nodes[iAB].Parent = iN;
-                    _nodes[iN].AABB.Combine(ref _nodes[iB].AABB, ref  _nodes[iAB].AABB);
+                    _nodes[iN].AABB.Combine(ref _nodes[iB].AABB, ref _nodes[iAB].AABB);
                     _nodes[iA].AABB.Combine(ref _nodes[iN].AABB, ref _nodes[iAA].AABB);
 
                     _nodes[iN].Height = 1 + Math.Max(_nodes[iB].Height, _nodes[iAB].Height);
@@ -873,13 +900,13 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Compute the height of a sub-tree.
+        ///     Compute the height of a sub-tree.
         /// </summary>
         /// <param name="nodeId">The node id to use as parent.</param>
         /// <returns>The height of the tree.</returns>
         public int ComputeHeight(int nodeId)
         {
-            Debug.Assert(0 <= nodeId && nodeId < _nodeCapacity);
+            Debug.Assert((0 <= nodeId) && (nodeId < _nodeCapacity));
             //TreeNode<T>* node = &_nodes[nodeId];
 
             if (_nodes[nodeId].IsLeaf())
@@ -893,7 +920,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Compute the height of the entire tree.
+        ///     Compute the height of the entire tree.
         /// </summary>
         /// <returns>The height of the tree.</returns>
         public int ComputeHeight()
@@ -927,8 +954,8 @@ namespace Alis.Core.Physic.Collision
                 return;
             }
 
-            Debug.Assert(0 <= child1 && child1 < _nodeCapacity);
-            Debug.Assert(0 <= child2 && child2 < _nodeCapacity);
+            Debug.Assert((0 <= child1) && (child1 < _nodeCapacity));
+            Debug.Assert((0 <= child2) && (child2 < _nodeCapacity));
 
             Debug.Assert(_nodes[child1].Parent == index);
             Debug.Assert(_nodes[child2].Parent == index);
@@ -957,8 +984,8 @@ namespace Alis.Core.Physic.Collision
                 return;
             }
 
-            Debug.Assert(0 <= child1 && child1 < _nodeCapacity);
-            Debug.Assert(0 <= child2 && child2 < _nodeCapacity);
+            Debug.Assert((0 <= child1) && (child1 < _nodeCapacity));
+            Debug.Assert((0 <= child2) && (child2 < _nodeCapacity));
 
             int height1 = _nodes[child1].Height;
             int height2 = _nodes[child2].Height;
@@ -976,7 +1003,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Validate this tree. For testing.
+        ///     Validate this tree. For testing.
         /// </summary>
         public void Validate()
         {
@@ -987,7 +1014,7 @@ namespace Alis.Core.Physic.Collision
             int freeIndex = _freeList;
             while (freeIndex != NullNode)
             {
-                Debug.Assert(0 <= freeIndex && freeIndex < _nodeCapacity);
+                Debug.Assert((0 <= freeIndex) && (freeIndex < _nodeCapacity));
                 freeIndex = _nodes[freeIndex].Next;
                 ++freeCount;
             }
@@ -998,7 +1025,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Build an optimal tree. Very expensive. For testing.
+        ///     Build an optimal tree. Very expensive. For testing.
         /// </summary>
         public void RebuildBottomUp()
         {
@@ -1076,7 +1103,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Shift the origin of the nodes
+        ///     Shift the origin of the nodes
         /// </summary>
         /// <param name="newOrigin">The displacement to use.</param>
         public void ShiftOrigin(Vector2 newOrigin)

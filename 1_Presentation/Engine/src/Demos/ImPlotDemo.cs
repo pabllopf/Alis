@@ -46,14 +46,14 @@ namespace Alis.App.Engine.Demos
         public void Initialize()
         {
         }
-        
+
         /// <summary>
         ///     Starts this instance
         /// </summary>
         public void Start()
         {
         }
-        
+
         /// <summary>
         ///     Runs this instance
         /// </summary>
@@ -62,7 +62,7 @@ namespace Alis.App.Engine.Demos
             DefaultDemo();
             SimplePlot();
         }
-        
+
         /// <summary>
         ///     Defaults the demo
         /// </summary>
@@ -71,7 +71,7 @@ namespace Alis.App.Engine.Demos
         {
             ImPlot.ShowDemoWindow();
         }
-        
+
         /// <summary>
         ///     Simples the plot
         /// </summary>
@@ -89,7 +89,7 @@ namespace Alis.App.Engine.Demos
                 ImPlot.PlotLine("Vertical", lineData, 10, 1, 1, ImPlotLineFlags.None, 0);
                 ImPlot.EndPlot();
             }
-            
+
             ImGui.End();
         }
     }
