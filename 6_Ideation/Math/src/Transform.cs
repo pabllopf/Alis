@@ -38,7 +38,7 @@ namespace Alis.Core.Aspect.Math
     ///     frames.
     /// </summary>
     [Serializable]
-    public class Transform : ISerializable
+    public struct Transform : ISerializable
     {
         /// <summary>
         ///     The
@@ -55,15 +55,7 @@ namespace Alis.Core.Aspect.Math
         ///     The scale
         /// </summary>
         public Vector2 Scale;
-
-
-        public Transform()
-        {
-            Position = Vector2.Zero;
-            Rotation = 0.0f;
-            Scale = Vector2.One;
-        }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Transform" /> class
         /// </summary>
