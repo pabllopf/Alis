@@ -245,6 +245,8 @@ namespace Alis.Core.Ecs.Component.Collider
         /// </summary>
         public override void OnExit()
         {
+            Context.GraphicManager.UnAttach(this);
+            Context.PhysicManager.World.Remove(Body);
         }
 
         public void Render(IntPtr renderer, Vector2 cameraPosition, Vector2 cameraResolution, float pixelsPerMeter, Color debugColor)
