@@ -290,7 +290,7 @@ namespace Alis.Sample.Flappy.Bird
                                 .FixedRotation(true)
                                 .IgnoreGravity(false)
                                 .Build())
-                            //.AddComponent(new DeathZone())
+                            .AddComponent(new DeathZone())
                             .Build())
 
                         ////////////////////////////////////////
@@ -364,7 +364,7 @@ namespace Alis.Sample.Flappy.Bird
                                 .IgnoreGravity(false)
                                 .Build())
                             .AddComponent(new PipelineController())
-                            //.AddComponent(new DeathZone())
+                            .AddComponent(new DeathZone())
                             .Build())
 
                         ////////////////////////////////////////
@@ -434,7 +434,7 @@ namespace Alis.Sample.Flappy.Bird
                                 .IgnoreGravity(true)
                                 .Build())
                             .AddComponent(new PipelineController())
-                            //.AddComponent(new DeathZone())
+                            .AddComponent(new DeathZone())
                             .Build())
 
                         ////////////////////////////////////////
