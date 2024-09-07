@@ -74,7 +74,7 @@ namespace Alis.Sample.Flappy.Bird
         {
             if (key == KeyCodes.Space)
             {
-                boxCollider.Body.LinearVelocity = new Vector2(0, -8f);
+                boxCollider.Body.ApplyLinearImpulse(new Vector2(0, 10));
                 Logger.Info("Go up!");
             }
         }
